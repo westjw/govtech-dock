@@ -1,4 +1,433 @@
 {
   "date": "2026-08-16",
-  "changes": []
+  "previous": null,
+  "changes": [
+    {
+      "company": "First Due",
+      "id": "first-due",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page too small - likely JS-rendered"
+    },
+    {
+      "company": "Dryad Networks",
+      "id": "dryad-networks",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Frontline Wildfire Defense",
+      "id": "frontline-wildfire-defense",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Perimeter",
+      "id": "perimeter",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Genasys",
+      "id": "genasys",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page too small - likely JS-rendered"
+    },
+    {
+      "company": "Axon",
+      "id": "axon",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Skydio",
+      "id": "skydio",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "LiveView Technologies (LVT)",
+      "id": "liveview-technologies",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "ImageTrend",
+      "id": "imagetrend",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "RapidSOS",
+      "id": "rapidsos",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Join our Go-To-Market Talent Commu only"
+    },
+    {
+      "company": "Carbyne",
+      "id": "carbyne",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Priority Dispatch",
+      "id": "priority-dispatch",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Rave Mobile Safety",
+      "id": "rave-mobile-safety",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Veoci",
+      "id": "veoci",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Rubicon",
+      "id": "rubicon",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Routeware",
+      "id": "routeware",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Glacier",
+      "id": "glacier",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Verra Mobility",
+      "id": "verra-mobility",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Hayden AI",
+      "id": "hayden-ai",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "BusPatrol",
+      "id": "buspatrol",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Regional Account Executive, DE, MD (US - Remote)"
+    },
+    {
+      "company": "Urban SDK",
+      "id": "urban-sdk",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.urbansdk.com/ca"
+    },
+    {
+      "company": "RoadBotics (Michelin)",
+      "id": "roadbotics",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Conduent",
+      "id": "conduent",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "120Water",
+      "id": "120water",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "SewerAI",
+      "id": "sewerai",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Account Executive, Enterprise (Remote)"
+    },
+    {
+      "company": "Esri",
+      "id": "esri",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page too small - likely JS-rendered"
+    },
+    {
+      "company": "Brightly",
+      "id": "brightly",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Granicus",
+      "id": "granicus",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Polimorphic",
+      "id": "polimorphic",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Polco",
+      "id": "polco",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Tyler Technologies",
+      "id": "tyler-technologies",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "ClearGov",
+      "id": "cleargov",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Edwin",
+      "id": "edwin",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Pavilion",
+      "id": "pavilion",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 405 for https://www.withpavilion.co"
+    },
+    {
+      "company": "GovSpend",
+      "id": "govspend",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "NEOGOV",
+      "id": "neogov",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "UKG",
+      "id": "ukg",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Holly",
+      "id": "holly",
+      "from": "None found",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Kaizen Labs",
+      "id": "kaizen-labs",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "RecDesk",
+      "id": "recdesk",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": " Customer Support Specialist I, Ac only"
+    },
+    {
+      "company": "Vermont Systems",
+      "id": "vermont-systems",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": " Customer Support Specialist I, Ac only"
+    },
+    {
+      "company": "Active Network",
+      "id": "active-network",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Amilia",
+      "id": "amilia",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "PerfectMind (Xplor Recreation)",
+      "id": "perfectmind",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Account Executive (Bryan, TX)"
+    },
+    {
+      "company": "Daxko",
+      "id": "daxko",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 429 for https://www.daxko.com/compa"
+    },
+    {
+      "company": "LeagueApps",
+      "id": "leagueapps",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://leagueapps.com/care"
+    },
+    {
+      "company": "SportsEngine",
+      "id": "sportsengine",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.sportsengine.co"
+    },
+    {
+      "company": "Raptor Technologies",
+      "id": "raptor-technologies",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Senior Account Executive  (Remote - US)"
+    },
+    {
+      "company": "Evolv Technology",
+      "id": "evolv-technology",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://www.evolvtechnology"
+    },
+    {
+      "company": "Gaggle",
+      "id": "gaggle",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "GoGuardian",
+      "id": "goguardian",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Senior Sales Coach only"
+    },
+    {
+      "company": "Securly",
+      "id": "securly",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Account Executive, Large/Enterpris (United States of A)"
+    },
+    {
+      "company": "HopSkipDrive",
+      "id": "hopskipdrive",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Regional Account Manager (Remote USA )"
+    },
+    {
+      "company": "Zonar Systems",
+      "id": "zonar-systems",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Edulog",
+      "id": "edulog",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Infinite Campus",
+      "id": "infinite-campus",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Frontline Education",
+      "id": "frontline-education",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://careers.frontlineed"
+    },
+    {
+      "company": "ParentSquare",
+      "id": "parentsquare",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Masabi",
+      "id": "masabi",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Manager - UK only"
+    },
+    {
+      "company": "ParkMobile",
+      "id": "parkmobile",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Populus",
+      "id": "populus",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    }
+  ]
 }

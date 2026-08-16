@@ -3,212 +3,480 @@
   "companies": {
     "seneca": {
       "status": "None found",
-      "note": "site: 8 roles, none sales",
+      "note": "",
       "roles": []
     },
     "rain": {
       "status": "None found",
-      "note": "eng roles only",
+      "note": "",
       "roles": []
     },
     "pano-ai": {
       "status": "Yes",
-      "note": "Strat Accts Sales Mgr",
-      "roles": []
+      "note": "Senior Enterprise Account Executiv (San Francisco, Cal)",
+      "roles": [
+        {
+          "title": "Senior Enterprise Account Executive - Public Sector ",
+          "location": "San Francisco, California",
+          "url": "https://jobs.ashbyhq.com/pano-ai/a97b1ce3-7a87-4ac5-a3ff-db748f8a18af"
+        }
+      ]
     },
     "burnbot": {
       "status": "Unknown",
-      "note": "careers page blocked",
+      "note": "no ATS on file",
       "roles": []
     },
     "first-due": {
-      "status": "Sales (non-AE)",
-      "note": "SDR opening only",
+      "status": "Unknown",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "technosylva": {
       "status": "Unknown",
-      "note": "careers JS-walled",
+      "note": "no ATS on file",
       "roles": []
     },
     "dryad-networks": {
-      "status": "None found",
-      "note": "open application only",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "frontline-wildfire-defense": {
-      "status": "None found",
-      "note": "no roles on site",
+      "status": "Unknown",
+      "note": "no ATS on file",
       "roles": []
     },
     "perimeter": {
-      "status": "None found",
-      "note": "site: eng roles only",
+      "status": "Unknown",
+      "note": "no ATS on file",
       "roles": []
     },
     "genasys": {
-      "status": "None found",
-      "note": "site board empty",
+      "status": "Unknown",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "axon": {
-      "status": "Yes",
-      "note": "Sr Enterprise AE +",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "motorola-solutions": {
       "status": "Yes",
-      "note": "AE reqs on Workday",
-      "roles": []
+      "note": "Account Executive Germany (Germany Offsite (Z)",
+      "roles": [
+        {
+          "title": "Account Executive Germany",
+          "location": "Germany Offsite (ZWG99)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Germany-Offsite-ZWG99/Account-Executive-Germany_R65052-1"
+        },
+        {
+          "title": "Account Executive with German",
+          "location": "Poland Offsite (ZPL99)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Poland-Offsite-ZPL99/Account-Executive-with-German_R62704"
+        },
+        {
+          "title": "Senior Account Executive - Cybersecurity",
+          "location": "Georgia, US Offsite, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Georgia-US-Offsite/Senior-Account-Executive---Cybersecurity_R66805"
+        },
+        {
+          "title": "Senior Account Executive - Cybersecurity (North)",
+          "location": "Chicago, IL, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Senior-Account-Executive---Cybersecurity--North-_R67048"
+        },
+        {
+          "title": "Senior Account Executive - SLED (Software)",
+          "location": "Texas Remote Work",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Texas-Remote-Work/Senior-Account-Executive---SLED--Software-_R66712"
+        },
+        {
+          "title": "Senior Account Executive - Cybersecurity (Federal)",
+          "location": "Chicago, IL, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Senior-Account-Executive---Cybersecurity--Federal-_R67743-1"
+        },
+        {
+          "title": "Sr. Account Executive - Theatro Software Sales",
+          "location": "Richardson, TX (TX141), More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Richardson-TX-TX141/Sr-Account-Executive---Theatro-Software-Sales_R64276"
+        },
+        {
+          "title": "Sr. Enterprise Account Executive - Cloud Software Sales",
+          "location": "Chicago, IL, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Job-Posting-Title-Sr-Enterprise-Account-Executive---Cloud-Software-Sales_R66094"
+        },
+        {
+          "title": "Senior Account Executive \u2013 Video Security & Analytics (Government & Defense), Central Europe",
+          "location": "Germany Offsite (ZWG99), More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Germany-Offsite-ZWG99/Senior-Account-Executive---Video-Security---Analytics--Government---Defense---Central-Europe_R63231"
+        },
+        {
+          "title": "Senior Account Executive - Cybersecurity (Canada)/ Cadre senior aux ventes \u2013 Cybers\u00e9curit\u00e9 (Canada)",
+          "location": "Toronto, Canada (ONT40), More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Toronto-Canada-ONT40/Senior-Account-Executive---Cybersecurity--Canada-_R67049"
+        },
+        {
+          "title": "Sales Executive - Fixed Video Solutions (United Kingdom & Ireland)",
+          "location": "United Kingdom Offsite (ZUK99)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/United-Kingdom-Offsite-ZUK99/Sales-Executive---Fixed-Video-Solutions--United-Kingdom---Ireland-_R62486"
+        },
+        {
+          "title": "Sales Executive - Fixed Video Solutions (Sub-Saharan Africa)",
+          "location": "South Africa Offsite (ZSA99)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/South-Africa-Offsite-ZSA99/Sales-Executive---Fixed-Video-Solutions--Sub-Saharan-Africa-_R66662-1"
+        },
+        {
+          "title": "Desk Account Manager",
+          "location": "Cork, Ireland, More...",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Cork-Ireland/Desk-Account-Manager_R66990"
+        },
+        {
+          "title": "Corporate Sales Executive",
+          "location": "Tokyo, Japan",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Tokyo-Japan/Corporate-Sales-Executive_R66327"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "Dubai, UAE",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Dubai-UAE/Regional-Sales-Manager_R65192"
+        },
+        {
+          "title": "Inbound Sales Representative",
+          "location": "Allen, TX (TX139)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Allen-TX-TX139/Inbound-Sales-Representative_R64814"
+        },
+        {
+          "title": "Inbound Sales Representative",
+          "location": "Allen, TX (TX139)",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Allen-TX-TX139/Inbound-Sales-Representative_R66381"
+        },
+        {
+          "title": "Alta Solutions Sales Executive",
+          "location": "Mexico City, Mexico",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Mexico-City-Mexico/Alta-Solutions-Sales-Executive_R66125"
+        }
+      ]
     },
     "flock-safety": {
       "status": "Yes",
-      "note": "Local & Strategic AE",
-      "roles": []
+      "note": "Regional Account Executive (TN/KY) (Chicago, IL)",
+      "roles": [
+        {
+          "title": "Regional Account Executive (TN/KY)",
+          "location": "Chicago, IL",
+          "url": "https://jobs.ashbyhq.com/flock%20safety/c3a02405-63c2-49f4-beb1-a888803e4f75"
+        },
+        {
+          "title": "Regional Account Executive (Illinois)",
+          "location": "Chicago, IL",
+          "url": "https://jobs.ashbyhq.com/flock%20safety/78cb2f57-bfa7-4cb3-a432-d9f0bb3fd897"
+        }
+      ]
     },
     "skydio": {
-      "status": "Yes",
-      "note": "AE West Coast",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "brinc": {
       "status": "Yes",
-      "note": "AE Fire; ASM East",
-      "roles": []
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://brincdrones.com/careers"
+        }
+      ]
     },
     "mark43": {
       "status": "Yes",
-      "note": "Regional AE - Florida",
-      "roles": []
+      "note": "Account Executive - Software (Manchester)",
+      "roles": [
+        {
+          "title": "Account Executive - Software",
+          "location": "Manchester",
+          "url": "https://mark43.com/list-job/7850930?gh_jid=7850930"
+        }
+      ]
     },
     "peregrine": {
       "status": "Yes",
-      "note": "Federal + CA Growth AE",
-      "roles": []
+      "note": "Federal Account Executive (Washington, D.C.)",
+      "roles": [
+        {
+          "title": "Federal Account Executive",
+          "location": "Washington, D.C.",
+          "url": "https://job-boards.greenhouse.io/peregrinetechnologies/jobs/4723413005"
+        }
+      ]
     },
     "soundthinking": {
-      "status": "None found",
-      "note": "ATS: no openings",
-      "roles": []
-    },
-    "liveview-technologies": {
-      "status": "Sales (non-AE)",
-      "note": "Strat Rev Exec",
-      "roles": []
-    },
-    "truleo": {
-      "status": "Yes",
-      "note": "Sr AE SW $200-400k OTE",
-      "roles": []
-    },
-    "kaiden-ai": {
-      "status": "None found",
-      "note": "no open roles",
-      "roles": []
-    },
-    "eso": {
-      "status": "Yes",
-      "note": "Regional AE EMS/Fire",
-      "roles": []
-    },
-    "imagetrend": {
-      "status": "Sales (non-AE)",
-      "note": "VP Sales + Fed Dir",
-      "roles": []
-    },
-    "rapidsos": {
-      "status": "None found",
-      "note": "no sales reqs",
-      "roles": []
-    },
-    "carbyne": {
-      "status": "None found",
-      "note": "no open roles",
-      "roles": []
-    },
-    "prepared": {
-      "status": "Yes",
-      "note": "Strategic AE + SDR",
-      "roles": []
-    },
-    "zoll-medical": {
-      "status": "Yes",
-      "note": "Territory Mgrs + RSMs",
-      "roles": []
-    },
-    "pulsara": {
-      "status": "None found",
-      "note": "general app only",
-      "roles": []
-    },
-    "priority-dispatch": {
       "status": "None found",
       "note": "",
       "roles": []
     },
+    "liveview-technologies": {
+      "status": "Unknown",
+      "note": "no ATS on file",
+      "roles": []
+    },
+    "truleo": {
+      "status": "Yes",
+      "note": "Senior Account Executive, Southwes (United States)",
+      "roles": [
+        {
+          "title": "Senior Account Executive, Southwest",
+          "location": "United States",
+          "url": "https://truleo.breezy.hr/p/6b79968cb121-senior-account-executive-southwest"
+        },
+        {
+          "title": "Technical Account Manager",
+          "location": "Phoenix, AZ",
+          "url": "https://truleo.breezy.hr/p/ee82d998be48-technical-account-manager"
+        },
+        {
+          "title": "Technical Account Manager",
+          "location": "Greenville, SC",
+          "url": "https://truleo.breezy.hr/p/ce0110253345-technical-account-manager"
+        }
+      ]
+    },
+    "kaiden-ai": {
+      "status": "None found",
+      "note": "",
+      "roles": []
+    },
+    "eso": {
+      "status": "Yes",
+      "note": "Regional Account Executive EMS/Fir (Remote, Pennsylvan)",
+      "roles": [
+        {
+          "title": "Regional Account Executive EMS/Fire - Pennsylvania ",
+          "location": "Remote, Pennsylvania",
+          "url": "https://www.eso.com/careers/job/?gh_jid=4720101005"
+        }
+      ]
+    },
+    "imagetrend": {
+      "status": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://careers.jobscore.com/careers/imagetrend"
+        }
+      ]
+    },
+    "rapidsos": {
+      "status": "Sales (non-AE)",
+      "note": "Join our Go-To-Market Talent Commu only",
+      "roles": []
+    },
+    "carbyne": {
+      "status": "Unknown",
+      "note": "no ATS on file",
+      "roles": []
+    },
+    "prepared": {
+      "status": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://www.prepared911.com/careers"
+        }
+      ]
+    },
+    "zoll-medical": {
+      "status": "Yes",
+      "note": "Account Executive - TherOx (SS02)  (6 Locations)",
+      "roles": [
+        {
+          "title": "Account Executive - TherOx (SS02) CA/NV/AZ/UT",
+          "location": "6 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/San-Jose-CA/Account-Executive---TherOx--SS02--CA-NV-AZ-UT_R19485-1"
+        },
+        {
+          "title": "Sales Executive, Strategic Accounts - Manhattan",
+          "location": "New York, NY",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/New-York-NY/Sales-Executive--Strategic-Accounts---Manhattan_R19194-1"
+        },
+        {
+          "title": "Sales Executive, Strategic Accounts - Seattle",
+          "location": "Seattle, WA",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Seattle-WA/Sales-Executive--Strategic-Accounts---Seattle_R19931"
+        },
+        {
+          "title": "Business Development Manager, Gov/Military (APAC)",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Kuala-Lumpur-Malaysia/Business-Development-Manager--Gov-Military--APAC-_R18734"
+        },
+        {
+          "title": "Territory Manager Hospital/EMS",
+          "location": "Selangor, Malaysia",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Selangor-Malaysia/Territory-Manager-Hospital-EMS_R19655-1"
+        },
+        {
+          "title": "Regional Sales Manager - Des Moines, IA",
+          "location": "Des Moines, IA",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Des-Moines-IA/Regional-Sales-Manager---Des-Moines--IA_R19416"
+        },
+        {
+          "title": "Regional Sales Manager - Chicago, IL",
+          "location": "Chicago, IL",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Chicago-IL/Regional-Sales-Manager---Chicago--IL_R19576"
+        },
+        {
+          "title": "Associate Territory Manager - New Zealand",
+          "location": "New Zealand Remote",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/New-Zealand-Remote/Associate-Territory-Manager---New-Zealand_R19890"
+        },
+        {
+          "title": "Business Development Manager, APAC",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Kuala-Lumpur-Malaysia/Business-Development-Manager--APAC_R18784"
+        },
+        {
+          "title": "Territory Manager - Wausau",
+          "location": "Wausau, WI",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Wausau-WI/Territory-Manager---Wausau_R18061"
+        },
+        {
+          "title": "Territory Manager Hospital - South Germany",
+          "location": "Stuttgart, Germany",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Stuttgart-Germany/Territory-Manager-Hospital---BW_R18058"
+        },
+        {
+          "title": "Territory Manager, EMS",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Boise-ID/Territory-Manager--EMS_R18265"
+        },
+        {
+          "title": "Territory Manager \u00d6sterreich",
+          "location": "Vienna, Austria",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Vienna-Austria/Territory-Manager-sterreich_R18427"
+        },
+        {
+          "title": "Territory Manager- North Carolina",
+          "location": "US NC Remote",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/US-NC-Remote/Territory-Manager--North-Carolina_R18399-1"
+        },
+        {
+          "title": "Associate Territory Manager - Reading",
+          "location": "Reading, PA",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Reading-PA/Associate-Territory-Manager---Reading_R18573"
+        },
+        {
+          "title": "Territory Manager, Delhi and Mumbai",
+          "location": "New Delhi, India",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/New-Delhi-India/Territory-Manager--Delhi-and-Mumbai_R18492"
+        },
+        {
+          "title": "Territory Manager, Hospital",
+          "location": "2 Locations",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Omaha-NE/Territory-Manager--Hospital_R18759"
+        }
+      ]
+    },
+    "pulsara": {
+      "status": "None found",
+      "note": "",
+      "roles": []
+    },
+    "priority-dispatch": {
+      "status": "Unknown",
+      "note": "no ATS on file",
+      "roles": []
+    },
     "aurelian": {
       "status": "None found",
-      "note": "all eng/ops",
+      "note": "",
       "roles": []
     },
     "md-ally": {
       "status": "None found",
-      "note": "physician role only",
+      "note": "",
       "roles": []
     },
     "everbridge": {
       "status": "Yes",
-      "note": "AE roles UK/Germany",
-      "roles": []
+      "note": "Account Executive (United Kingdom)",
+      "roles": [
+        {
+          "title": "Account Executive",
+          "location": "United Kingdom",
+          "url": "https://jobs.lever.co/everbridge/09236dde-4a28-4f44-8423-dd583b48fe9f"
+        },
+        {
+          "title": "Account Executive - Mittelstand (Remote in Germany)",
+          "location": "Germany",
+          "url": "https://jobs.lever.co/everbridge/62af77b6-058a-4cb2-ad78-bdd41e23ec3e"
+        },
+        {
+          "title": "Senior Account Executive",
+          "location": "Dubai",
+          "url": "https://jobs.lever.co/everbridge/1ea1ff4e-2064-48aa-9b6a-5bf11bc88af0"
+        }
+      ]
     },
     "rave-mobile-safety": {
-      "status": "Yes",
-      "note": "Motorola CCS AE remote",
+      "status": "Unknown",
+      "note": "no ATS on file",
       "roles": []
     },
     "juvare": {
       "status": "None found",
-      "note": "eng/support only",
+      "note": "",
       "roles": []
     },
     "veoci": {
-      "status": "None found",
-      "note": "accountant only",
+      "status": "Unknown",
+      "note": "no ATS on file",
       "roles": []
     },
     "rubicon": {
-      "status": "Sales (non-AE)",
-      "note": "Key Account Mgr",
+      "status": "Unknown",
+      "note": "no ATS on file",
       "roles": []
     },
     "routeware": {
-      "status": "Yes",
-      "note": "AE Munis, Mtn West",
+      "status": "Unknown",
+      "note": "no ATS on file",
       "roles": []
     },
     "amcs-group": {
       "status": "Yes",
-      "note": "AE Boston/London",
-      "roles": []
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://amcsgroup.hirehive.com/"
+        }
+      ]
     },
     "amp": {
       "status": "None found",
-      "note": "no open roles",
+      "note": "",
       "roles": []
     },
     "glacier": {
-      "status": "None found",
-      "note": "AE West removed Jan 26",
+      "status": "Unknown",
+      "note": "no ATS on file",
       "roles": []
     },
     "greyparrot": {
       "status": "Sales (non-AE)",
-      "note": "VP Sales London",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "sensoneo": {
       "status": "None found",
-      "note": "tech roles only",
+      "note": "",
       "roles": []
     },
     "ecube-labs": {
@@ -218,113 +486,279 @@
     },
     "rehrig-pacific": {
       "status": "Yes",
-      "note": "Territory Mgr PacNW",
-      "roles": []
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://rehrig.hrmdirect.com/employment/job-openings.php?search=true"
+        }
+      ]
     },
     "recycle-track-systems": {
-      "status": "None found",
-      "note": "cust care only",
-      "roles": []
-    },
-    "econolite": {
-      "status": "Yes",
-      "note": "AEs VA/MD/NY/WA/UT",
-      "roles": []
-    },
-    "verra-mobility": {
-      "status": "Yes",
-      "note": "Strategic AE (NY!)",
-      "roles": []
-    },
-    "rekor-systems": {
-      "status": "Unknown",
-      "note": "ADP portal JS-walled",
-      "roles": []
-    },
-    "miovision": {
-      "status": "Yes",
-      "note": "Ent AE Opticom SE US",
-      "roles": []
-    },
-    "notraffic": {
-      "status": "None found",
-      "note": "site board: 0 jobs",
-      "roles": []
-    },
-    "hayden-ai": {
-      "status": "None found",
-      "note": "19 roles, all technical",
-      "roles": []
-    },
-    "obvio": {
-      "status": "Yes",
-      "note": "AE San Carlos (site)",
-      "roles": []
-    },
-    "buspatrol": {
-      "status": "Sales (non-AE)",
-      "note": "VP Reg Sales NE open",
-      "roles": []
-    },
-    "urban-sdk": {
-      "status": "Yes",
-      "note": "AE, Jacksonville",
-      "roles": []
-    },
-    "roadbotics": {
       "status": "None found",
       "note": "",
       "roles": []
     },
+    "econolite": {
+      "status": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://www.econolite.com/about/careers/career-opportunities/"
+        }
+      ]
+    },
+    "verra-mobility": {
+      "status": "None found",
+      "note": "",
+      "roles": []
+    },
+    "rekor-systems": {
+      "status": "Unknown",
+      "note": "no ATS on file",
+      "roles": []
+    },
+    "miovision": {
+      "status": "Yes",
+      "note": "Enterprise Account Executive, Opti (Southeastern USA)",
+      "roles": [
+        {
+          "title": "Enterprise Account Executive, Opticom Solutions (Southeastern USA)",
+          "location": "Southeastern USA",
+          "url": "https://jobs.ashbyhq.com/miovision/6d688b32-995b-43bb-964a-ba3c2638fcc9"
+        }
+      ]
+    },
+    "notraffic": {
+      "status": "None found",
+      "note": "",
+      "roles": []
+    },
+    "hayden-ai": {
+      "status": "Unknown",
+      "note": "no ATS on file",
+      "roles": []
+    },
+    "obvio": {
+      "status": "Yes",
+      "note": "Account Executive ( College Park, MD)",
+      "roles": [
+        {
+          "title": "Account Executive",
+          "location": " College Park, MD",
+          "url": "https://jobs.ashbyhq.com/obvio/8d487de1-4709-455b-811b-80eaeaf94176"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Colorado",
+          "url": "https://jobs.ashbyhq.com/obvio/80ec2b67-ee76-4a7d-b918-f018567bfb38"
+        }
+      ]
+    },
+    "buspatrol": {
+      "status": "Yes",
+      "note": "Regional Account Executive, DE, MD (US - Remote)",
+      "roles": [
+        {
+          "title": "Regional Account Executive, DE, MD, PA, VA",
+          "location": "US - Remote",
+          "url": "https://jobs.ashbyhq.com/buspatrol/bda9fc4a-5541-489c-a6e7-de973cc96b58"
+        }
+      ]
+    },
+    "urban-sdk": {
+      "status": "Unknown",
+      "note": "HTTP 404 for https://www.urbansdk.com/ca",
+      "roles": []
+    },
+    "roadbotics": {
+      "status": "Unknown",
+      "note": "no ATS on file",
+      "roles": []
+    },
     "quarterhill": {
       "status": "None found",
-      "note": "no sales listings",
+      "note": "",
       "roles": []
     },
     "conduent": {
-      "status": "Yes",
-      "note": "Sales Exec Tolling",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "cyvl": {
       "status": "Yes",
-      "note": "Sr AE Boston (site)",
-      "roles": []
+      "note": "Senior Account Executive (Boston, Massachuse)",
+      "roles": [
+        {
+          "title": "Senior Account Executive",
+          "location": "Boston, Massachusetts",
+          "url": "https://jobs.ashbyhq.com/cyvl/04626c46-12fe-4ac2-96b4-05de6d2b4a44"
+        }
+      ]
     },
     "roundabout-technologies": {
       "status": "None found",
-      "note": "no jobs on YC page",
+      "note": "",
       "roles": []
     },
     "xylem": {
       "status": "Yes",
-      "note": "RSM + field sales open",
-      "roles": []
+      "note": "Key Account Manager (Budapest, Hungary)",
+      "roles": [
+        {
+          "title": "Key Account Manager",
+          "location": "Budapest, Hungary",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Budapest-Hungary/Key-Account-Manager_R48396"
+        },
+        {
+          "title": "Business Development Manager - India",
+          "location": "2 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Chennai-10th-Floor/Business-Development-Manager---India_R47320"
+        },
+        {
+          "title": "Capital Account Manager, Sales & BD",
+          "location": "12 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Boston-MA/Capital-Account-Manager--Sales---BD_R49897-1"
+        },
+        {
+          "title": "Key Account Manager, WI Transport",
+          "location": "Parramatta",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Parramatta/Key-Account-Manager--WI-Transport_R49750"
+        },
+        {
+          "title": "Treatment Senior Sales Representative",
+          "location": "2 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Budapest/Senior-Sales-Representative_R48765"
+        },
+        {
+          "title": "Flygt Pumps Sales Representative",
+          "location": "6 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Mokena-Illinois/Technical-Sales-Representative--Municipal-and-Industrial-Wastewater_R49665"
+        },
+        {
+          "title": "Sales Representative",
+          "location": "Fort Mill, South Carolina",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Fort-Mill-South-Carolina/Sales-Representative_R48823"
+        },
+        {
+          "title": "Senior Sales Representative",
+          "location": "2 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Salem-Oregon/Senior-Sales-Representative_R47390"
+        },
+        {
+          "title": "Sales Representative",
+          "location": "Wilmington, North Carolina",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Wilmington-North-Carolina/Sales-Representative_R49125"
+        },
+        {
+          "title": "Sales Representative",
+          "location": "Sacramento - 8570",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Sacramento---8570/Sales-Representative_R49569"
+        },
+        {
+          "title": "Sales Representative",
+          "location": "Pompano Beach, Florida",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Pompano-Beach-Florida/Sales-Representative_R49721"
+        },
+        {
+          "title": "Sales Representative",
+          "location": "Richmond, Virginia (Office)",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Richmond-Virginia-Office/Sales-Representative_R49760"
+        },
+        {
+          "title": "Internal Sales Representative",
+          "location": "2 Locations",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Vadodara-73-East-Ave/Internal-Sales-Representative_R47610"
+        },
+        {
+          "title": "Senior Sales Representative",
+          "location": "Miami, Florida",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Miami-Florida/Senior-Sales-Representative_R49342-1"
+        },
+        {
+          "title": "Executive Sales Representative",
+          "location": "Milpitas Ames, California",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Milpitas-Ames-California/Executive-Sales-Representative_R49635"
+        }
+      ]
     },
     "badger-meter": {
       "status": "Yes",
-      "note": "Municipal AM MD/SoCal",
-      "roles": []
+      "note": "Account Manager- Private Water (4 Locations)",
+      "roles": [
+        {
+          "title": "Account Manager- Private Water",
+          "location": "4 Locations",
+          "url": "https://badgermeter.wd5.myworkdayjobs.com/en-US/us_careersite/job/US---WI---Remote/Account-Manager--Private-Water_4532"
+        },
+        {
+          "title": "Municipal Account Manager- South",
+          "location": "3 Locations",
+          "url": "https://badgermeter.wd5.myworkdayjobs.com/en-US/us_careersite/job/Jackson-MS/Municipal-Account-Manager--South_4517"
+        }
+      ]
     },
     "mueller-water-products": {
       "status": "Yes",
-      "note": "Territory Mgrs NC/OH/CO",
-      "roles": []
+      "note": "Jr. Sales Representative (Remote - Tennessee)",
+      "roles": [
+        {
+          "title": "Jr. Sales Representative",
+          "location": "Remote - Tennessee",
+          "url": "https://muellerwaterproducts.wd5.myworkdayjobs.com/en-US/Mueller/job/Remote---Tennessee/Jr-Sales-Representative_R6686-1"
+        },
+        {
+          "title": "U.S. Pipe Valve & Hydrant \u2013 Territory Manager",
+          "location": "7 Locations",
+          "url": "https://muellerwaterproducts.wd5.myworkdayjobs.com/en-US/Mueller/job/Philadelphia-Pennsylvania/US-Pipe-Valve---Hydrant---Territory-Manager_R5907"
+        },
+        {
+          "title": "Infrastructure Territory Manager",
+          "location": "6 Locations",
+          "url": "https://muellerwaterproducts.wd5.myworkdayjobs.com/en-US/Mueller/job/Phoenix-Arizona/Infrastructure-Territory-Manager_R6728"
+        },
+        {
+          "title": "Customer Experience Account Manager",
+          "location": "Decatur, IL",
+          "url": "https://muellerwaterproducts.wd5.myworkdayjobs.com/en-US/Mueller/job/Decatur-IL/Customer-Experience-Account-Manager_R6762"
+        }
+      ]
     },
     "120water": {
-      "status": "None found",
-      "note": "AE closed 6+ mo ago",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "klir": {
       "status": "Yes",
-      "note": "Strategic AE TX/remote",
-      "roles": []
+      "note": "Strategic Account Executive - Texa",
+      "roles": [
+        {
+          "title": "Strategic Account Executive - Texas",
+          "location": "",
+          "url": "https://ats.rippling.com/klir/jobs"
+        },
+        {
+          "title": "Strategic Account Executive - USA",
+          "location": "",
+          "url": "https://ats.rippling.com/klir/jobs"
+        }
+      ]
     },
     "voda-ai": {
       "status": "Yes",
-      "note": "AE Central US",
-      "roles": []
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://careers.voda.ai/jobs"
+        }
+      ]
     },
     "ketos": {
       "status": "None found",
@@ -333,172 +767,286 @@
     },
     "asterra": {
       "status": "None found",
-      "note": "sales posts expired",
+      "note": "",
       "roles": []
     },
     "sewerai": {
-      "status": "None found",
-      "note": "AE posting 404s",
-      "roles": []
+      "status": "Yes",
+      "note": "Account Executive, Enterprise (Remote)",
+      "roles": [
+        {
+          "title": "Account Executive, Enterprise",
+          "location": "Remote",
+          "url": "https://jobs.ashbyhq.com/sewer-ai/69c33686-9a00-4dba-8f22-1f45112b4c82"
+        },
+        {
+          "title": "Account Executive, SMB (Municipal & Utility)",
+          "location": "Remote",
+          "url": "https://jobs.ashbyhq.com/sewer-ai/c13f0d51-ee3e-44f0-8c46-d75d37a26e87"
+        },
+        {
+          "title": "Account Executive, Mid-Market",
+          "location": "Remote",
+          "url": "https://jobs.ashbyhq.com/sewer-ai/931eacf2-91ce-408b-a5e7-c9d266d5987d"
+        },
+        {
+          "title": "Technical Account Manager",
+          "location": "Remote",
+          "url": "https://jobs.ashbyhq.com/sewer-ai/3e70623d-eb4c-469f-97e3-349ec55e03e2"
+        }
+      ]
     },
     "redzone-robotics": {
       "status": "Yes",
-      "note": "Regional Sales Mgr",
-      "roles": []
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://redzone.com/company/employment/"
+        }
+      ]
     },
     "esri": {
-      "status": "Yes",
-      "note": "GIS Account Manager",
+      "status": "Unknown",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "samsara": {
       "status": "Yes",
-      "note": "Major AE, remote",
-      "roles": []
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://www.samsara.com/company/careers/roles"
+        }
+      ]
     },
     "geotab": {
       "status": "Yes",
-      "note": "Technical AE, remote",
-      "roles": []
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://careers.geotab.com/department/sales/"
+        }
+      ]
     },
     "cartegraph": {
       "status": "Yes",
-      "note": "OpenGov AE Chicago",
-      "roles": []
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://opengov.com/careers/"
+        }
+      ]
     },
     "brightly": {
-      "status": "Yes",
-      "note": "Sr Acct Mgr Education NC",
+      "status": "Unknown",
+      "note": "no ATS on file",
       "roles": []
     },
     "vantiq": {
       "status": "Unknown",
-      "note": "careers JS-walled",
+      "note": "no ATS on file",
       "roles": []
     },
     "granicus": {
-      "status": "Yes",
-      "note": "AE Midwest remote",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "civicplus": {
       "status": "Yes",
-      "note": "AE, remote",
-      "roles": []
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://jobs.jobvite.com/civicplus/search"
+        }
+      ]
     },
     "polimorphic": {
-      "status": "Yes",
-      "note": "Senior AE, remote",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "polco": {
-      "status": "Yes",
-      "note": "AE remote $80-115k",
+      "status": "Unknown",
+      "note": "no ATS on file",
       "roles": []
     },
     "accela": {
       "status": "Yes",
-      "note": "AE remote US",
-      "roles": []
+      "note": "Account Executive (Remote Based - US)",
+      "roles": [
+        {
+          "title": "Account Executive",
+          "location": "Remote Based - US",
+          "url": "https://job-boards.greenhouse.io/accela/jobs/8055856"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Remote Based - US",
+          "url": "https://job-boards.greenhouse.io/accela/jobs/8021707"
+        }
+      ]
     },
     "opengov": {
       "status": "Yes",
-      "note": "AE + 3 Ent AE Chi/Bos",
-      "roles": []
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://opengov.com/careers/"
+        }
+      ]
     },
     "clariti": {
       "status": "None found",
-      "note": "8 roles, no sales",
+      "note": "",
       "roles": []
     },
     "govwell": {
       "status": "Yes",
-      "note": "SMB Gov AE, NYC",
-      "roles": []
+      "note": "Account Executive - Small & Medium (New York, NY)",
+      "roles": [
+        {
+          "title": "Account Executive - Small & Medium Governments",
+          "location": "New York, NY",
+          "url": "https://jobs.ashbyhq.com/govwell/08633e61-cd6d-45c1-a1cd-ccf191fac2a5"
+        },
+        {
+          "title": "Business Development Manager",
+          "location": "New York, NY",
+          "url": "https://jobs.ashbyhq.com/govwell/76c30e6f-37f3-4c67-b2a4-05853ca957a9"
+        },
+        {
+          "title": "Account Executive - Mid Market",
+          "location": "New York, NY",
+          "url": "https://jobs.ashbyhq.com/govwell/3bee822e-1401-47dc-bd0c-35e3151eaef6"
+        }
+      ]
     },
     "city-detect": {
       "status": "Yes",
-      "note": "AE remote $85-95k",
-      "roles": []
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://jobs.gusto.com/boards/city-detect-6e1a4cdf-356e-4986-9f1d-55d200b345e9"
+        }
+      ]
     },
     "tyler-technologies": {
-      "status": "Yes",
-      "note": "many AEs; ERP AE West",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "euna-solutions": {
       "status": "Unknown",
-      "note": "careers JS-walled",
+      "note": "no ATS on file",
       "roles": []
     },
     "cleargov": {
-      "status": "Yes",
-      "note": "AE, remote",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "edwin": {
-      "status": "Sales (non-AE)",
-      "note": "BDR only",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "pavilion": {
-      "status": "Sales (non-AE)",
-      "note": "BD Associate only",
+      "status": "Unknown",
+      "note": "HTTP 405 for https://www.withpavilion.co",
       "roles": []
     },
     "govspend": {
-      "status": "Yes",
-      "note": "AE remote FL/VA",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "payit": {
       "status": "None found",
-      "note": "site board: no sales",
+      "note": "",
       "roles": []
     },
     "paymentus": {
       "status": "Unknown",
-      "note": "own ATS not readable",
+      "note": "no ATS on file",
       "roles": []
     },
     "invoicecloud": {
       "status": "Yes",
-      "note": "MM AE Boston + Acct Dirs",
-      "roles": []
+      "note": "Mid Market Account Executive (Boston, MA)",
+      "roles": [
+        {
+          "title": "Mid Market Account Executive",
+          "location": "Boston, MA",
+          "url": "http://invoicecloud.net/careers/open-positions?gh_jid=7762791003"
+        }
+      ]
     },
     "neogov": {
-      "status": "Unknown",
-      "note": "site blocked; AE indexed",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "ukg": {
-      "status": "Yes",
-      "note": "multiple AEs, own site",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "govinvest": {
       "status": "Yes",
-      "note": "TrueComp MM AE remote",
-      "roles": []
+      "note": "Mid-Market Account Executive",
+      "roles": [
+        {
+          "title": "Mid-Market Account Executive",
+          "location": "",
+          "url": "https://ats.rippling.com/truecomp/jobs"
+        }
+      ]
     },
     "holly": {
-      "status": "None found",
-      "note": "5 roles, none sales",
-      "roles": []
+      "status": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://www.hollygov.com/careers"
+        }
+      ]
     },
     "kaizen-labs": {
-      "status": "Yes",
-      "note": "AE, remote+travel",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "rec": {
       "status": "Yes",
-      "note": "Ent AE, SF/East Coast",
-      "roles": []
+      "note": "Enterprise Account Executive (San Francisco, CA)",
+      "roles": [
+        {
+          "title": "Enterprise Account Executive",
+          "location": "San Francisco, CA",
+          "url": "https://jobs.ashbyhq.com/rec/cede69ef-9f26-402d-9ef5-10c0d8f1256d"
+        }
+      ]
     },
     "recdesk": {
-      "status": "None found",
-      "note": "QA eng only",
+      "status": "Sales (non-AE)",
+      "note": " Customer Support Specialist I, Ac only",
       "roles": []
     },
     "myrec-com": {
@@ -507,183 +1055,322 @@
       "roles": []
     },
     "vermont-systems": {
-      "status": "None found",
-      "note": "site board: no sales",
+      "status": "Sales (non-AE)",
+      "note": " Customer Support Specialist I, Ac only",
       "roles": []
     },
     "active-network": {
-      "status": "Unknown",
-      "note": "GlobalPay AE unverified",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "amilia": {
-      "status": "Yes",
-      "note": "Ent AE Public Sector US",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "perfectmind": {
-      "status": "None found",
-      "note": "Xplor: no rec AEs",
-      "roles": []
+      "status": "Yes",
+      "note": "Account Executive (Bryan, TX)",
+      "roles": [
+        {
+          "title": "Account Executive",
+          "location": "Bryan, TX",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000142667091"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Chandler, AZ",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000140971725"
+        },
+        {
+          "title": "Account Executive",
+          "location": "San Diego, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000140971869"
+        },
+        {
+          "title": "Account Executive",
+          "location": "New York, NY",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000140969035"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Jacksonville, FL",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000139692759"
+        },
+        {
+          "title": "Account Executive Sales Careers at Xplor Technologies",
+          "location": "Atlanta, GA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000136887497"
+        },
+        {
+          "title": "Full-Cycle Account Executive",
+          "location": "Tokyo, Tokyo",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000130174094"
+        }
+      ]
     },
     "daxko": {
-      "status": "None found",
-      "note": "own site: 0 open jobs",
+      "status": "Unknown",
+      "note": "HTTP 429 for https://www.daxko.com/compa",
       "roles": []
     },
     "leagueapps": {
-      "status": "None found",
-      "note": "AE removed May 26",
+      "status": "Unknown",
+      "note": "HTTP 404 for https://leagueapps.com/care",
       "roles": []
     },
     "sportsengine": {
-      "status": "None found",
-      "note": "post expired",
+      "status": "Unknown",
+      "note": "HTTP 404 for https://www.sportsengine.co",
       "roles": []
     },
     "teamsnap": {
       "status": "Yes",
-      "note": "Enterprise AE, remote",
-      "roles": []
+      "note": "Enterprise Account Executive (Remote)",
+      "roles": [
+        {
+          "title": "Enterprise Account Executive",
+          "location": "Remote",
+          "url": "https://jobs.lever.co/teamsnap/80441878-3ec4-4cb3-9d56-a9fa9b351a32"
+        }
+      ]
     },
     "teamsideline": {
       "status": "None found",
-      "note": "no open roles",
+      "note": "",
       "roles": []
     },
     "raptor-technologies": {
-      "status": "None found",
-      "note": "site: 2 jobs, no sales",
-      "roles": []
+      "status": "Yes",
+      "note": "Senior Account Executive  (Remote - US)",
+      "roles": [
+        {
+          "title": "Senior Account Executive ",
+          "location": "Remote - US",
+          "url": "https://job-boards.greenhouse.io/raptortechnologies/jobs/5385932008"
+        }
+      ]
     },
     "centegix": {
       "status": "Yes",
-      "note": "Sales Exec, Central",
-      "roles": []
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://www.centegix.com/careers/"
+        }
+      ]
     },
     "zeroeyes": {
       "status": "None found",
-      "note": "tech/ops only",
+      "note": "",
       "roles": []
     },
     "evolv-technology": {
-      "status": "None found",
-      "note": "LA AE closed",
+      "status": "Unknown",
+      "note": "HTTP 403 for https://www.evolvtechnology",
       "roles": []
     },
     "gaggle": {
-      "status": "Yes",
-      "note": "Regional SM, West",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "goguardian": {
-      "status": "Yes",
-      "note": "New Business Exec",
+      "status": "Sales (non-AE)",
+      "note": "Senior Sales Coach only",
       "roles": []
     },
     "securly": {
-      "status": "None found",
-      "note": "talent community only",
-      "roles": []
+      "status": "Yes",
+      "note": "Account Executive, Large/Enterpris (United States of A)",
+      "roles": [
+        {
+          "title": "Account Executive, Large/Enterprise \u2013 Join Our Remote Talent Community",
+          "location": "United States of America - Remote",
+          "url": "https://www.securly.com/job-description?gh_jid=6742197"
+        },
+        {
+          "title": "Account Executive, SMB  \u2013 Join Our Remote Talent Community",
+          "location": "United States of America - Remote",
+          "url": "https://www.securly.com/job-description?gh_jid=6745045"
+        }
+      ]
     },
     "zum": {
       "status": "None found",
-      "note": "BD Mgr closed",
+      "note": "",
       "roles": []
     },
     "hopskipdrive": {
-      "status": "Sales (non-AE)",
-      "note": "Reg Acct Mgrs + SDR",
-      "roles": []
+      "status": "Yes",
+      "note": "Regional Account Manager (Remote USA )",
+      "roles": [
+        {
+          "title": "Regional Account Manager",
+          "location": "Remote USA ",
+          "url": "https://job-boards.greenhouse.io/hopskipdrive/jobs/6009635004"
+        },
+        {
+          "title": "Sr. Regional Account Manager ",
+          "location": "Remote USA",
+          "url": "https://job-boards.greenhouse.io/hopskipdrive/jobs/6014647004"
+        },
+        {
+          "title": "Strategic Account Executive",
+          "location": "Remote USA ",
+          "url": "https://job-boards.greenhouse.io/hopskipdrive/jobs/6014632004"
+        }
+      ]
     },
     "zonar-systems": {
-      "status": "Yes",
-      "note": "2 Strat Sales Dir remote",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "edulog": {
-      "status": "None found",
-      "note": "IT tech only",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "powerschool": {
       "status": "Sales (non-AE)",
-      "note": "Inside Sales AM",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "infinite-campus": {
-      "status": "None found",
-      "note": "",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "frontline-education": {
-      "status": "Yes",
-      "note": "Strategic AE + RSM",
+      "status": "Unknown",
+      "note": "HTTP 403 for https://careers.frontlineed",
       "roles": []
     },
     "parentsquare": {
-      "status": "None found",
-      "note": "CS/RevOps only",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "cubic-transportation-systems": {
       "status": "Yes",
-      "note": "Sales AE on own Workday",
-      "roles": []
+      "note": "Account Manager - East Coast (2 Locations)",
+      "roles": [
+        {
+          "title": "Account Manager - East Coast",
+          "location": "2 Locations",
+          "url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_USA_careers/job/Boston-Massachusetts/Account-Manager---East-Coast_REQ_49493"
+        },
+        {
+          "title": "Defense Sales Account Manager",
+          "location": "United States",
+          "url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_USA_careers/job/United-States/Defense-Sales-Account-Manager_REQ_47794"
+        },
+        {
+          "title": "SATCOM Sales Account Manager (RF & mmWave Systems)",
+          "location": "United States",
+          "url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_USA_careers/job/United-States/SATCOM-Sales-Account-Manager_REQ_47792"
+        }
+      ]
     },
     "clever-devices": {
       "status": "None found",
-      "note": "21 roles, none sales",
+      "note": "",
       "roles": []
     },
     "via": {
       "status": "Yes",
-      "note": "Sr Ent AE, Eastern US",
-      "roles": []
+      "note": "Account Executive, Western Europe  (Paris)",
+      "roles": [
+        {
+          "title": "Account Executive, Western Europe ",
+          "location": "Paris",
+          "url": "https://job-boards.greenhouse.io/via/jobs/8580068002"
+        },
+        {
+          "title": "Enterprise Account Executive, Central US",
+          "location": "Chicago",
+          "url": "https://job-boards.greenhouse.io/via/jobs/8571029002"
+        },
+        {
+          "title": "Enterprise Account Executive, Central US (Remote)",
+          "location": "Remote, Central US",
+          "url": "https://job-boards.greenhouse.io/via/jobs/8529711002"
+        },
+        {
+          "title": "Principal Account Manager",
+          "location": "Berlin",
+          "url": "https://job-boards.greenhouse.io/via/jobs/8585306002"
+        },
+        {
+          "title": "Senior Account Executive, DACH",
+          "location": "Berlin",
+          "url": "https://job-boards.greenhouse.io/via/jobs/7876174002"
+        },
+        {
+          "title": "Senior Enterprise Account Executive, Central US (Remote)",
+          "location": "Remote - Central US",
+          "url": "https://job-boards.greenhouse.io/via/jobs/8370532002"
+        },
+        {
+          "title": "Strategic Account Manager",
+          "location": "Berlin",
+          "url": "https://job-boards.greenhouse.io/via/jobs/8617400002"
+        }
+      ]
     },
     "optibus": {
       "status": "None found",
-      "note": "ATS: 0 openings",
+      "note": "",
       "roles": []
     },
     "swiftly": {
       "status": "Yes",
-      "note": "SMB Sales Mgr",
-      "roles": []
+      "note": "Senior Account Manager \u2014 Talent Co (United States)",
+      "roles": [
+        {
+          "title": "Senior Account Manager \u2014 Talent Community",
+          "location": "United States",
+          "url": "https://jobs.lever.co/goswift/c71cbfaa-bec4-42f7-a0b5-ed502ec9f034"
+        }
+      ]
     },
     "masabi": {
-      "status": "None found",
-      "note": "site: 7 roles, none sales",
+      "status": "Sales (non-AE)",
+      "note": "Customer Success Manager - UK only",
       "roles": []
     },
     "token-transit": {
       "status": "Unknown",
-      "note": "site JS-walled",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "passport": {
       "status": "Unknown",
-      "note": "ADP portal JS-walled",
+      "note": "no ATS on file",
       "roles": []
     },
     "parkmobile": {
-      "status": "None found",
-      "note": "no sales jobs",
+      "status": "Unknown",
+      "note": "no ATS on file",
       "roles": []
     },
     "ips-group": {
       "status": "Unknown",
-      "note": "careers JS-walled",
+      "note": "no ATS on file",
       "roles": []
     },
     "automotus": {
       "status": "None found",
-      "note": "marketing only",
+      "note": "",
       "roles": []
     },
     "populus": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "no ATS on file",
       "roles": []
     }
   }
