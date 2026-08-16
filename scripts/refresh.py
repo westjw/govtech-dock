@@ -6,6 +6,7 @@ Usage:
   python scripts/refresh.py --company obvio # refresh one company (by id or name)
   python scripts/refresh.py --dry-run       # fetch + classify, write nothing
   python scripts/refresh.py --ci            # quieter output for GitHub Actions
+  python scripts/refresh.py --force         # replace today's snapshot if re-running
 
 What a run does:
   1. For each company, fetch its job board via scripts/ats.py and classify
@@ -50,6 +51,11 @@ def dump_json(path, obj):
 
 
 def previous_snapshot(today: str):
+    """Snapshot to diff against. If a run already happened today, that run is
+    the baseline - otherwise a same-day re-run would report every company as
+    unchanged-from-nothing and lose the real movement."""
+    if (HISTORY / f"{today}.json").exists():
+        return today
     snaps = sorted(p.stem for p in HISTORY.glob("*.json") if p.stem != today)
     return snaps[-1] if snaps else None
 
@@ -75,9 +81,18 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--ci", action="store_true")
     ap.add_argument("--delay", type=float, default=0.5, help="seconds between requests")
+    ap.add_argument("--force", action="store_true",
+                    help="overwrite today's snapshot if a run already happened today")
     args = ap.parse_args()
 
     today = dt.date.today().isoformat()
+    if (HISTORY / f"{today}.json").exists() and not (args.force or args.dry_run):
+        print(f"data/hiring_history/{today}.json already exists - a run already "
+              f"happened today.\nRe-run with --force to replace it (the diff will "
+              f"then be against that run), or --dry-run to look without writing.",
+              file=sys.stderr)
+        return 1
+
     companies = load_json(DATA / "companies.json")
     prev_name = previous_snapshot(today)
     prev = load_json(HISTORY / f"{prev_name}.json")["companies"] if prev_name else {}

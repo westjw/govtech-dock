@@ -61,20 +61,45 @@ def classify_title(title: str) -> str:
     return "none"
 
 
+# A board that explicitly says it has nothing open. This is the only way a page
+# scan can *establish* absence - otherwise an empty scan is indistinguishable
+# from a JS shell whose listings never rendered.
+# \b0\b matters: without it "Sales 130 jobs" matches "0 jobs" and a busy board
+# reads as an empty one.
+NO_OPENINGS_PAT = re.compile(
+    r"no (current(ly)? )?(open |available )?(openings|positions|jobs|roles|vacancies)"
+    r"|there are (currently )?no open|no results found|\b0 (open )?(jobs|positions)\b",
+    re.I,
+)
+
+
 def scan_pagetext(text: str) -> str:
     """For 'html'-type boards we only have page text, not discrete titles.
-    Look for AE-ish phrases in visible text. Conservative: page text mentioning
-    'account executive' etc. usually means a live posting on that page."""
-    if AE_PAT.search(text) and not re.search(r"no (current )?open(ings| positions)", text, re.I):
+
+    Returns 'ae' | 'sales_other' | 'none' | 'unreadable'. A page scan can only
+    ever prove *presence*: finding "Account Executive" means a live posting,
+    but finding nothing means either an empty board or - far more often - a
+    JS shell whose listings never loaded. So we assert a status only on
+    concrete evidence, and call everything else unreadable rather than
+    reporting a false "None found" that would hide a warm door.
+
+    Concrete evidence is checked before any "no openings" claim: such text is
+    often an inert JS template branch ("There are no open positions matching
+    your filter selection") sitting on a page that is in fact full of roles.
+    """
+    if AE_PAT.search(text):
         return "ae"
-    if re.search(r"sales", text, re.I):
-        return "sales_other"
-    return "none"
+    if SALES_ORG_NON_AE_PAT.search(text):
+        return "sales_other"                # a concrete non-AE sales title rendered
+    if NO_OPENINGS_PAT.search(text):
+        return "none"                       # board rendered; it is genuinely empty
+    return "unreadable"
 
 
 def rollup(jobs: list[dict]) -> tuple[str, str, list[dict]]:
     """Roll a fetched job list up to (status, note, ae_roles)."""
     ae_roles, sales_other = [], []
+    unreadable = False
     for j in jobs:
         if "_pagetext" in j:
             verdict = scan_pagetext(j["_pagetext"])
@@ -83,6 +108,8 @@ def rollup(jobs: list[dict]) -> tuple[str, str, list[dict]]:
                                  "url": j.get("url", "")})
             elif verdict == "sales_other":
                 sales_other.append(j)
+            elif verdict == "unreadable":
+                unreadable = True
             continue
         verdict = classify_title(j.get("title", ""))
         if verdict == "ae":
@@ -98,4 +125,6 @@ def rollup(jobs: list[dict]) -> tuple[str, str, list[dict]]:
         titles = [j.get("title", "") for j in sales_other if j.get("title")]
         note = (titles[0][:34] + " only") if titles else "sales roles, none AE"
         return "Sales (non-AE)", note, []
+    if unreadable:
+        return "Unknown", "page scan found no listings", []
     return "None found", "", []

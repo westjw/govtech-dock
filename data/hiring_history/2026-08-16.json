@@ -7,8 +7,8 @@
       "roles": []
     },
     "rain": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "pano-ai": {
@@ -38,8 +38,8 @@
       "roles": []
     },
     "dryad-networks": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "frontline-wildfire-defense": {
@@ -58,8 +58,8 @@
       "roles": []
     },
     "axon": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "motorola-solutions": {
@@ -175,9 +175,15 @@
       ]
     },
     "skydio": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
-      "roles": []
+      "status": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://www.skydio.com/careers"
+        }
+      ]
     },
     "brinc": {
       "status": "Yes",
@@ -383,8 +389,8 @@
       ]
     },
     "pulsara": {
-      "status": "None found",
-      "note": "",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "priority-dispatch": {
@@ -393,13 +399,13 @@
       "roles": []
     },
     "aurelian": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "md-ally": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "everbridge": {
@@ -470,18 +476,18 @@
       "roles": []
     },
     "greyparrot": {
+      "status": "Unknown",
+      "note": "page scan found no listings",
+      "roles": []
+    },
+    "sensoneo": {
       "status": "Sales (non-AE)",
       "note": "sales roles, none AE",
       "roles": []
     },
-    "sensoneo": {
-      "status": "None found",
-      "note": "",
-      "roles": []
-    },
     "ecube-labs": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "rehrig-pacific": {
@@ -512,8 +518,8 @@
       ]
     },
     "verra-mobility": {
-      "status": "None found",
-      "note": "",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "rekor-systems": {
@@ -580,13 +586,13 @@
       "roles": []
     },
     "quarterhill": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "conduent": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "cyvl": {
@@ -761,13 +767,13 @@
       ]
     },
     "ketos": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "asterra": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "sewerai": {
@@ -856,8 +862,8 @@
       "roles": []
     },
     "granicus": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "civicplus": {
@@ -946,8 +952,8 @@
       ]
     },
     "tyler-technologies": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "euna-solutions": {
@@ -961,8 +967,8 @@
       "roles": []
     },
     "edwin": {
-      "status": "None found",
-      "note": "",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "pavilion": {
@@ -1050,8 +1056,8 @@
       "roles": []
     },
     "myrec-com": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "vermont-systems": {
@@ -1060,8 +1066,8 @@
       "roles": []
     },
     "active-network": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "amilia": {
@@ -1164,8 +1170,8 @@
       ]
     },
     "zeroeyes": {
-      "status": "None found",
-      "note": "",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "evolv-technology": {
@@ -1174,8 +1180,8 @@
       "roles": []
     },
     "gaggle": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "goguardian": {
@@ -1200,8 +1206,8 @@
       ]
     },
     "zum": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "hopskipdrive": {
@@ -1231,18 +1237,18 @@
       "roles": []
     },
     "edulog": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "powerschool": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "infinite-campus": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "frontline-education": {
@@ -1277,8 +1283,8 @@
       ]
     },
     "clever-devices": {
-      "status": "None found",
-      "note": "",
+      "status": "Sales (non-AE)",
+      "note": "sales roles, none AE",
       "roles": []
     },
     "via": {

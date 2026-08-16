@@ -27,7 +27,12 @@ version. Three parts:
   Claude Code sessions, and its *conclusions* get written into
   `data/companies.json` (an `ats` entry, a classifier rule) — not into the run.
 - New classifier edge cases go into `classify.py` **with a matching case in
-  `selftest.py`'s CLASSIFIER_CASES**.
+  `selftest.py`'s CLASSIFIER_CASES** (title rules) or **PAGESCAN_CASES**
+  (`html` page-text rules).
+- **A page scan never proves absence.** `scan_pagetext` may return `unreadable`
+  → status `Unknown`. Don't "simplify" that back into `None found`: a false
+  `None found` silently deletes a warm door, which is the one failure this
+  tool cannot afford. Assert a status only on concrete evidence in the text.
 - After any data or script change: `python scripts/selftest.py` must pass.
 - The site is deliberately dependency-free (no build step, no framework). Keep
   it a single `index.html` unless the owner asks to graduate it.

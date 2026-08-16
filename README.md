@@ -33,7 +33,7 @@ data because of browser fetch rules.
 |---|---|
 | `ashby`, `greenhouse`, `lever`, `workable`, `recruitee`, `breezy`, `smartrecruiters`, `workday` | official public JSON APIs |
 | `rippling`, `jazzhr` | server-rendered boards, parsed |
-| `html` | careers page fetched and text-scanned (weakest signal — statuses get a `[page scan - verify]` note) |
+| `html` | careers page fetched and text-scanned (weakest signal — a `Yes` gets a `[page scan - verify]` note) |
 | `unknown` | skipped; listed at the end of each run as "needs ATS discovery" |
 
 Titles are classified by `scripts/classify.py` into **Yes** (quota-carrying
@@ -98,5 +98,13 @@ enforces consistency.
 - Founding years for the youngest startups are best-effort from press coverage.
 - `html`-type checks are text scans, not structured data — treat their "Yes"
   as a lead, not a fact, until upgraded via `/discover-ats`.
+- A page scan can only prove *presence*. Finding no AE role on an `html` page
+  means "we couldn't read this board", not "this board is empty", so it is
+  reported as **Unknown**, never "None found". "None found" from a page scan
+  requires the page to say so outright ("no open positions"). This is why
+  Unknown is large (55) — those are boards to fix, not companies to skip.
 - A handful of boards (BurnBot, Vantiq, NEOGOV, Paymentus…) are JS-walled with
   no public API found yet; they stay "Unknown" until someone finds their ATS.
+- Snapshots are keyed by date, so a second run on the same day would overwrite
+  the first. `refresh.py` refuses to do that unless you pass `--force`, in
+  which case the earlier run becomes the diff baseline.

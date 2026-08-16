@@ -46,6 +46,26 @@ CLASSIFIER_CASES = [
     ("Marketing Coordinator", "none"),  # marketing alone is not a sales-org signal
 ]
 
+# 'html'-type boards give us page text, not titles. A scan can prove presence
+# but never absence, so anything without concrete evidence is 'unreadable'
+# (-> status Unknown) rather than a false 'none' (-> status None found).
+PAGESCAN_CASES = [
+    ("Open Roles Senior Account Executive, SLED Apply Now", "ae"),
+    ("Careers We are hiring a Sales Development Representative", "sales_other"),
+    ("Careers at Acme. There are currently no open positions.", "none"),
+    ("Careers Search Jobs No results found", "none"),
+    # nav chrome from a JS shell - the real Granicus/Polimorphic failure mode
+    ("Who we serve Local Government State government Federal government "
+     "Education Special districts Tourism Solutions Pricing About", "unreadable"),
+    # product names containing sales-ish words must not fake a listing
+    ("Enterprise Asset Manager Revenue Management Suite Permitting", "unreadable"),
+    # a busy board must not read as empty via the "0 jobs" substring of "130 jobs"
+    ("Engineering 12 jobs Marketing 13 jobs Sales 130 jobs Support 11 jobs", "unreadable"),
+    # inert JS template branch on a page that is actually full of roles
+    ("There are no open positions matching your filter selection. "
+     "Autonomy Engineer Deep Learning. Enterprise Account Executive, SLED", "ae"),
+]
+
 
 def fail(msg):
     print(f"FAIL: {msg}")
@@ -97,13 +117,28 @@ def main() -> int:
     if status != "None found":
         errors += fail("rollup: engineer only should be None found")
 
+    for text, expected in PAGESCAN_CASES:
+        got = classify.scan_pagetext(text)
+        if got != expected:
+            errors += fail(f"scan_pagetext({text[:32]!r}...) = {got}, expected {expected}")
+
+    # an unreadable page scan must surface as Unknown, never as None found
+    status, note, _ = classify.rollup([{"url": "x", "_pagetext": "Solutions Pricing About Us"}])
+    if status != "Unknown":
+        errors += fail(f"rollup: unreadable page scan should be Unknown, got {status}")
+    status, _, _ = classify.rollup(
+        [{"url": "x", "_pagetext": "Careers. There are currently no open positions."}])
+    if status != "None found":
+        errors += fail(f"rollup: explicit empty board should be None found, got {status}")
+
     hist = sorted((DATA / "hiring_history").glob("*.json"))
     if not hist:
         errors += fail("no hiring_history snapshots")
 
     n_api = sum(1 for c in companies if c["ats"]["type"] not in ("html", "unknown"))
     print(f"{len(companies)} companies | {n_api} on structured ATS APIs | "
-          f"{len(hist)} snapshot(s) | classifier cases: {len(CLASSIFIER_CASES)}")
+          f"{len(hist)} snapshot(s) | classifier cases: {len(CLASSIFIER_CASES)} title, "
+          f"{len(PAGESCAN_CASES)} page-scan")
     if errors:
         print(f"\n{errors} problem(s) found")
         return 1
