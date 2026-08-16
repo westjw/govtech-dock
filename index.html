@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GovTech Dock</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page:           #f9f9f7;
+    --surface-1:      #fcfcfb;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --grid:           #e1e0d9;
+    --border:         rgba(11,11,11,0.10);
+    --accent:         #2a78d6;
+    --status-good:    #0ca30c;
+    --status-warn:    #fab219;
+    --status-muted:   #898781;
+    --good-text:      #006300;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page:           #0d0d0d;
+      --surface-1:      #1a1a19;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --grid:           #2c2c2a;
+      --border:         rgba(255,255,255,0.10);
+      --accent:         #3987e5;
+      --good-text:      #0ca30c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--page); color: var(--text-primary);
+    font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 24px 20px 64px; }
+  header h1 { font-size: 22px; margin: 0; letter-spacing: -0.01em; }
+  header p  { margin: 4px 0 0; color: var(--text-secondary); }
+  header .meta { color: var(--text-muted); font-size: 12.5px; margin-top: 2px; }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+           gap: 10px; margin: 18px 0 16px; }
+  .tile { background: var(--surface-1); border: 1px solid var(--border);
+          border-radius: 10px; padding: 12px 14px; }
+  .tile .v { font-size: 24px; font-weight: 650; }
+  .tile .l { color: var(--text-secondary); font-size: 12.5px; margin-top: 2px; }
+  .tile .d { color: var(--text-muted); font-size: 11.5px; margin-top: 1px; }
+
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+              margin: 0 0 12px; }
+  .controls input[type="search"], .controls select {
+    background: var(--surface-1); color: var(--text-primary);
+    border: 1px solid var(--grid); border-radius: 8px; padding: 7px 10px;
+    font: inherit;
+  }
+  .controls input[type="search"] { min-width: 220px; flex: 1 1 220px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill { border: 1px solid var(--grid); background: var(--surface-1);
+          color: var(--text-secondary); border-radius: 999px; padding: 6px 12px;
+          cursor: pointer; font: inherit; font-size: 13px; }
+  .pill[aria-pressed="true"] { background: var(--accent); border-color: var(--accent);
+          color: #fff; }
+
+  .diff { background: var(--surface-1); border: 1px solid var(--border);
+          border-radius: 10px; margin: 0 0 14px; }
+  .diff summary { padding: 10px 14px; cursor: pointer; color: var(--text-secondary);
+          font-size: 13px; }
+  .diff ul { margin: 0; padding: 0 16px 12px 30px; color: var(--text-secondary);
+          font-size: 13px; }
+  .diff .to-yes { color: var(--good-text); font-weight: 600; }
+
+  .tablewrap { background: var(--surface-1); border: 1px solid var(--border);
+          border-radius: 12px; overflow: auto; }
+  table { border-collapse: collapse; width: 100%; min-width: 960px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--grid);
+          vertical-align: top; }
+  th { position: sticky; top: 0; background: var(--surface-1); z-index: 1;
+       font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em;
+       color: var(--text-muted); cursor: pointer; user-select: none; white-space: nowrap; }
+  th .arrow { font-size: 10px; }
+  tr:last-child td { border-bottom: none; }
+  td.year { font-variant-numeric: tabular-nums; color: var(--text-secondary); }
+  td.desc { color: var(--text-secondary); max-width: 420px; }
+  td.name a { color: var(--text-primary); font-weight: 600; text-decoration: none;
+          border-bottom: 1px solid var(--grid); }
+  td.name a:hover { border-bottom-color: var(--accent); }
+  td.name span.nolink { font-weight: 600; }
+  .cat  { color: var(--text-secondary); white-space: nowrap; }
+  .sector { color: var(--text-muted); font-size: 12.5px; white-space: nowrap; }
+
+  .badge { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+           font-weight: 600; }
+  .badge .dot { width: 8px; height: 8px; border-radius: 50%; flex: none;
+           box-shadow: 0 0 0 2px var(--surface-1); }
+  .badge.yes  { color: var(--good-text); }
+  .badge.yes .dot { background: var(--status-good); }
+  .badge.warn { color: var(--text-primary); }
+  .badge.warn .dot { background: var(--status-warn); }
+  .badge.none, .badge.unknown { color: var(--text-muted); font-weight: 500; }
+  .badge.none .dot { background: var(--status-muted); }
+  .badge.unknown .dot { background: transparent; border: 1.5px solid var(--status-muted); }
+  .hnote { display: block; color: var(--text-muted); font-size: 12px; font-weight: 400;
+           margin-top: 2px; max-width: 240px; white-space: normal; }
+  .hnote a { color: var(--accent); text-decoration: none; }
+
+  .count { color: var(--text-muted); font-size: 12.5px; margin: 10px 2px; }
+  .empty { padding: 32px; text-align: center; color: var(--text-muted); }
+  footer { color: var(--text-muted); font-size: 12px; margin-top: 18px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>GovTech Dock</h1>
+    <p>A running map of state &amp; local government technology companies — and who's hiring AEs.</p>
+    <div class="meta" id="meta">loading&hellip;</div>
+  </header>
+
+  <div class="tiles" id="tiles"></div>
+
+  <details class="diff" id="diff" hidden>
+    <summary id="diffSummary"></summary>
+    <ul id="diffList"></ul>
+  </details>
+
+  <div class="controls">
+    <input type="search" id="q" placeholder="Search companies, descriptions, locations&hellip;" aria-label="Search">
+    <div class="pills" id="sectorPills" role="group" aria-label="Sector filter"></div>
+    <select id="category" aria-label="Category filter"><option value="">All categories</option></select>
+    <select id="hiring" aria-label="Hiring filter">
+      <option value="">Hiring: all</option>
+      <option value="Yes">Hiring AEs</option>
+      <option value="Sales (non-AE)">Sales (non-AE)</option>
+      <option value="None found">None found</option>
+      <option value="Unknown">Unknown</option>
+    </select>
+  </div>
+
+  <div class="count" id="count"></div>
+  <div class="tablewrap">
+    <table id="table" aria-label="GovTech companies">
+      <thead><tr id="headRow"></tr></thead>
+      <tbody id="body"></tbody>
+    </table>
+  </div>
+  <footer>Data lives in <code>data/companies.json</code> · refresh with <code>python scripts/refresh.py</code> ·
+    spreadsheet export via <code>scripts/export_xlsx.py</code></footer>
+</div>
+
+<script>
+(async function () {
+  async function j(path) {
+    const r = await fetch(path);
+    if (!r.ok) throw new Error(path + ": " + r.status);
+    return r.json();
+  }
+  let companies, schema, meta, diff;
+  try {
+    [companies, schema, meta, diff] = await Promise.all([
+      j("data/companies.json"), j("data/schema.json"),
+      j("data/meta.json"), j("data/latest_diff.json").catch(() => null),
+    ]);
+  } catch (err) {
+    document.getElementById("meta").textContent =
+      "Could not load data/ — serve the repo root (python -m http.server) rather than opening the file directly.";
+    return;
+  }
+
+  const state = { q: "", sector: "", category: "", hiring: "", sortKey: null, sortDir: 1 };
+  const $ = (id) => document.getElementById(id);
+
+  // ---- header meta + tiles
+  $("meta").textContent = "Last refresh: " + (meta.last_run || "never") +
+    (meta.previous_run ? " · previous: " + meta.previous_run : "");
+  const yesCount = companies.filter(c => c.hiring.status === "Yes").length;
+  const tiles = [
+    [companies.length, "Companies", "across " + schema.sectors.length + " sectors"],
+    [yesCount, "Hiring AEs", "verified open field-sales reqs"],
+    [companies.filter(c => c.hiring.status === "Unknown").length, "Unknown", "boards we can't read yet"],
+    [(diff && diff.changes ? diff.changes.length : 0), "Changed last run", diff && diff.previous ? "vs " + diff.previous : "first snapshot"],
+  ];
+  $("tiles").innerHTML = tiles.map(t =>
+    '<div class="tile"><div class="v">' + t[0] + '</div><div class="l">' + t[1] +
+    '</div><div class="d">' + t[2] + "</div></div>").join("");
+
+  // ---- diff panel
+  if (diff && diff.changes && diff.changes.length) {
+    $("diff").hidden = false;
+    $("diffSummary").textContent = "Changes since " + (diff.previous || "last run") +
+      " (" + diff.changes.length + ")";
+    $("diffList").innerHTML = diff.changes.map(ch =>
+      "<li" + (ch.to === "Yes" ? ' class="to-yes"' : "") + ">" + esc(ch.company) + ": " +
+      esc(ch.from) + " → " + esc(ch.to) + (ch.note ? " — " + esc(ch.note) : "") + "</li>").join("");
+  }
+
+  // ---- controls
+  const pills = ['<button class="pill" data-s="" aria-pressed="true">All sectors</button>']
+    .concat(schema.sectors.map(s =>
+      '<button class="pill" data-s="' + esc(s.name) + '" aria-pressed="false">' + esc(s.name) + "</button>"));
+  $("sectorPills").innerHTML = pills.join("");
+  $("sectorPills").addEventListener("click", (e) => {
+    const b = e.target.closest(".pill");
+    if (!b) return;
+    state.sector = b.dataset.s;
+    state.category = "";
+    document.querySelectorAll(".pill").forEach(p =>
+      p.setAttribute("aria-pressed", p === b ? "true" : "false"));
+    fillCategories();
+    render();
+  });
+  function fillCategories() {
+    const sel = $("category");
+    const cats = state.sector
+      ? schema.sectors.find(s => s.name === state.sector).categories
+      : [...new Set(schema.sectors.flatMap(s => s.categories))];
+    sel.innerHTML = '<option value="">All categories</option>' +
+      cats.map(c => '<option value="' + esc(c) + '">' + esc(c) + "</option>").join("");
+  }
+  fillCategories();
+  $("category").addEventListener("change", (e) => { state.category = e.target.value; render(); });
+  $("hiring").addEventListener("change", (e) => { state.hiring = e.target.value; render(); });
+  $("q").addEventListener("input", (e) => { state.q = e.target.value.toLowerCase(); render(); });
+
+  // ---- table
+  const COLS = [
+    ["name", "Company"], ["location", "Location"], ["year_founded", "Founded"],
+    ["sector", "Sector"], ["category", "Category"], ["description", "What they do"],
+    ["hiring", "Hiring AEs?"],
+  ];
+  $("headRow").innerHTML = COLS.map(c =>
+    '<th data-k="' + c[0] + '">' + c[1] + ' <span class="arrow"></span></th>').join("");
+  $("headRow").addEventListener("click", (e) => {
+    const th = e.target.closest("th");
+    if (!th) return;
+    const k = th.dataset.k;
+    state.sortDir = state.sortKey === k ? -state.sortDir : 1;
+    state.sortKey = k;
+    render();
+  });
+
+  const HIRE_RANK = { "Yes": 0, "Sales (non-AE)": 1, "Unknown": 2, "None found": 3 };
+  const BADGE = { "Yes": "yes", "Sales (non-AE)": "warn", "None found": "none", "Unknown": "unknown" };
+  const LABEL = { "Yes": "Hiring AEs", "Sales (non-AE)": "Sales (non-AE)",
+                  "None found": "None found", "Unknown": "Unknown" };
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"]/g, ch =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]);
+  }
+
+  function rows() {
+    let out = companies.filter(c =>
+      (!state.sector || c.sector === state.sector) &&
+      (!state.category || c.category === state.category) &&
+      (!state.hiring || c.hiring.status === state.hiring) &&
+      (!state.q || (c.name + " " + c.description + " " + c.location + " " + c.category)
+        .toLowerCase().includes(state.q)));
+    if (state.sortKey) {
+      const k = state.sortKey, dir = state.sortDir;
+      out = out.slice().sort((a, b) => {
+        const av = k === "hiring" ? HIRE_RANK[a.hiring.status] : a[k];
+        const bv = k === "hiring" ? HIRE_RANK[b.hiring.status] : b[k];
+        return (av > bv ? 1 : av < bv ? -1 : 0) * dir;
+      });
+    }
+    return out;
+  }
+
+  function render() {
+    const data = rows();
+    document.querySelectorAll("#headRow .arrow").forEach(a => a.textContent = "");
+    if (state.sortKey) {
+      const th = document.querySelector('#headRow th[data-k="' + state.sortKey + '"] .arrow');
+      if (th) th.textContent = state.sortDir === 1 ? "▲" : "▼";
+    }
+    $("count").textContent = data.length + " of " + companies.length + " companies";
+    if (!data.length) {
+      $("body").innerHTML = '<tr><td colspan="7" class="empty">Nothing matches — clear a filter.</td></tr>';
+      return;
+    }
+    $("body").innerHTML = data.map(c => {
+      const h = c.hiring;
+      const cls = BADGE[h.status] || "unknown";
+      const role = (h.roles && h.roles[0]) || null;
+      const noteHtml = h.note
+        ? '<span class="hnote">' + (role && role.url
+            ? '<a href="' + esc(role.url) + '" target="_blank" rel="noopener">' + esc(h.note) + "</a>"
+            : esc(h.note)) + "</span>"
+        : "";
+      const nameHtml = c.website
+        ? '<a href="' + esc(c.website) + '" target="_blank" rel="noopener">' + esc(c.name) + "</a>"
+        : '<span class="nolink">' + esc(c.name) + "</span>";
+      return "<tr>" +
+        '<td class="name">' + nameHtml + "</td>" +
+        "<td>" + esc(c.location) + "</td>" +
+        '<td class="year">' + esc(c.year_founded) + "</td>" +
+        '<td class="sector">' + esc(c.sector) + "</td>" +
+        '<td class="cat">' + esc(c.category) + "</td>" +
+        '<td class="desc">' + esc(c.description) + "</td>" +
+        '<td><span class="badge ' + cls + '"><span class="dot"></span>' + LABEL[h.status] +
+        "</span>" + noteHtml + "</td>" +
+        "</tr>";
+    }).join("");
+  }
+  render();
+})();
+</script>
+</body>
+</html>

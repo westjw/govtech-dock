@@ -1,0 +1,78 @@
+{
+  "sectors": [
+    {
+      "name": "Public Safety",
+      "categories": [
+        "Fire",
+        "Police",
+        "EMS",
+        "Emergency Mgmt"
+      ],
+      "xlsx": {
+        "head": "C0392B",
+        "band": "FDEDEC"
+      }
+    },
+    {
+      "name": "Public Works",
+      "categories": [
+        "Waste & Recycling",
+        "Streets",
+        "Water",
+        "Fleet & Asset Mgmt"
+      ],
+      "xlsx": {
+        "head": "1F618D",
+        "band": "EBF5FB"
+      }
+    },
+    {
+      "name": "General Gov",
+      "categories": [
+        "Citizen Services",
+        "Permitting & Licensing",
+        "Finance & ERP",
+        "Procurement & Payments",
+        "HR & Workforce"
+      ],
+      "xlsx": {
+        "head": "1E8449",
+        "band": "E9F7EF"
+      }
+    },
+    {
+      "name": "Parks & Rec",
+      "categories": [
+        "Recreation Management",
+        "Youth Sports & Leagues"
+      ],
+      "xlsx": {
+        "head": "CA6F1E",
+        "band": "FDF2E9"
+      }
+    },
+    {
+      "name": "K-12 Schools",
+      "categories": [
+        "School Safety",
+        "Transportation",
+        "Operations & SIS"
+      ],
+      "xlsx": {
+        "head": "6C3483",
+        "band": "F4ECF7"
+      }
+    },
+    {
+      "name": "Transit & Parking",
+      "categories": [
+        "Transit Tech",
+        "Parking & Curb"
+      ],
+      "xlsx": {
+        "head": "148F77",
+        "band": "E8F8F5"
+      }
+    }
+  ]
+}

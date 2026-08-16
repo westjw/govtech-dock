@@ -1,0 +1,690 @@
+{
+  "date": "2026-08-16",
+  "companies": {
+    "seneca": {
+      "status": "None found",
+      "note": "site: 8 roles, none sales",
+      "roles": []
+    },
+    "rain": {
+      "status": "None found",
+      "note": "eng roles only",
+      "roles": []
+    },
+    "pano-ai": {
+      "status": "Yes",
+      "note": "Strat Accts Sales Mgr",
+      "roles": []
+    },
+    "burnbot": {
+      "status": "Unknown",
+      "note": "careers page blocked",
+      "roles": []
+    },
+    "first-due": {
+      "status": "Sales (non-AE)",
+      "note": "SDR opening only",
+      "roles": []
+    },
+    "technosylva": {
+      "status": "Unknown",
+      "note": "careers JS-walled",
+      "roles": []
+    },
+    "dryad-networks": {
+      "status": "None found",
+      "note": "open application only",
+      "roles": []
+    },
+    "frontline-wildfire-defense": {
+      "status": "None found",
+      "note": "no roles on site",
+      "roles": []
+    },
+    "perimeter": {
+      "status": "None found",
+      "note": "site: eng roles only",
+      "roles": []
+    },
+    "genasys": {
+      "status": "None found",
+      "note": "site board empty",
+      "roles": []
+    },
+    "axon": {
+      "status": "Yes",
+      "note": "Sr Enterprise AE +",
+      "roles": []
+    },
+    "motorola-solutions": {
+      "status": "Yes",
+      "note": "AE reqs on Workday",
+      "roles": []
+    },
+    "flock-safety": {
+      "status": "Yes",
+      "note": "Local & Strategic AE",
+      "roles": []
+    },
+    "skydio": {
+      "status": "Yes",
+      "note": "AE West Coast",
+      "roles": []
+    },
+    "brinc": {
+      "status": "Yes",
+      "note": "AE Fire; ASM East",
+      "roles": []
+    },
+    "mark43": {
+      "status": "Yes",
+      "note": "Regional AE - Florida",
+      "roles": []
+    },
+    "peregrine": {
+      "status": "Yes",
+      "note": "Federal + CA Growth AE",
+      "roles": []
+    },
+    "soundthinking": {
+      "status": "None found",
+      "note": "ATS: no openings",
+      "roles": []
+    },
+    "liveview-technologies": {
+      "status": "Sales (non-AE)",
+      "note": "Strat Rev Exec",
+      "roles": []
+    },
+    "truleo": {
+      "status": "Yes",
+      "note": "Sr AE SW $200-400k OTE",
+      "roles": []
+    },
+    "kaiden-ai": {
+      "status": "None found",
+      "note": "no open roles",
+      "roles": []
+    },
+    "eso": {
+      "status": "Yes",
+      "note": "Regional AE EMS/Fire",
+      "roles": []
+    },
+    "imagetrend": {
+      "status": "Sales (non-AE)",
+      "note": "VP Sales + Fed Dir",
+      "roles": []
+    },
+    "rapidsos": {
+      "status": "None found",
+      "note": "no sales reqs",
+      "roles": []
+    },
+    "carbyne": {
+      "status": "None found",
+      "note": "no open roles",
+      "roles": []
+    },
+    "prepared": {
+      "status": "Yes",
+      "note": "Strategic AE + SDR",
+      "roles": []
+    },
+    "zoll-medical": {
+      "status": "Yes",
+      "note": "Territory Mgrs + RSMs",
+      "roles": []
+    },
+    "pulsara": {
+      "status": "None found",
+      "note": "general app only",
+      "roles": []
+    },
+    "priority-dispatch": {
+      "status": "None found",
+      "note": "",
+      "roles": []
+    },
+    "aurelian": {
+      "status": "None found",
+      "note": "all eng/ops",
+      "roles": []
+    },
+    "md-ally": {
+      "status": "None found",
+      "note": "physician role only",
+      "roles": []
+    },
+    "everbridge": {
+      "status": "Yes",
+      "note": "AE roles UK/Germany",
+      "roles": []
+    },
+    "rave-mobile-safety": {
+      "status": "Yes",
+      "note": "Motorola CCS AE remote",
+      "roles": []
+    },
+    "juvare": {
+      "status": "None found",
+      "note": "eng/support only",
+      "roles": []
+    },
+    "veoci": {
+      "status": "None found",
+      "note": "accountant only",
+      "roles": []
+    },
+    "rubicon": {
+      "status": "Sales (non-AE)",
+      "note": "Key Account Mgr",
+      "roles": []
+    },
+    "routeware": {
+      "status": "Yes",
+      "note": "AE Munis, Mtn West",
+      "roles": []
+    },
+    "amcs-group": {
+      "status": "Yes",
+      "note": "AE Boston/London",
+      "roles": []
+    },
+    "amp": {
+      "status": "None found",
+      "note": "no open roles",
+      "roles": []
+    },
+    "glacier": {
+      "status": "None found",
+      "note": "AE West removed Jan 26",
+      "roles": []
+    },
+    "greyparrot": {
+      "status": "Sales (non-AE)",
+      "note": "VP Sales London",
+      "roles": []
+    },
+    "sensoneo": {
+      "status": "None found",
+      "note": "tech roles only",
+      "roles": []
+    },
+    "ecube-labs": {
+      "status": "None found",
+      "note": "",
+      "roles": []
+    },
+    "rehrig-pacific": {
+      "status": "Yes",
+      "note": "Territory Mgr PacNW",
+      "roles": []
+    },
+    "recycle-track-systems": {
+      "status": "None found",
+      "note": "cust care only",
+      "roles": []
+    },
+    "econolite": {
+      "status": "Yes",
+      "note": "AEs VA/MD/NY/WA/UT",
+      "roles": []
+    },
+    "verra-mobility": {
+      "status": "Yes",
+      "note": "Strategic AE (NY!)",
+      "roles": []
+    },
+    "rekor-systems": {
+      "status": "Unknown",
+      "note": "ADP portal JS-walled",
+      "roles": []
+    },
+    "miovision": {
+      "status": "Yes",
+      "note": "Ent AE Opticom SE US",
+      "roles": []
+    },
+    "notraffic": {
+      "status": "None found",
+      "note": "site board: 0 jobs",
+      "roles": []
+    },
+    "hayden-ai": {
+      "status": "None found",
+      "note": "19 roles, all technical",
+      "roles": []
+    },
+    "obvio": {
+      "status": "Yes",
+      "note": "AE San Carlos (site)",
+      "roles": []
+    },
+    "buspatrol": {
+      "status": "Sales (non-AE)",
+      "note": "VP Reg Sales NE open",
+      "roles": []
+    },
+    "urban-sdk": {
+      "status": "Yes",
+      "note": "AE, Jacksonville",
+      "roles": []
+    },
+    "roadbotics": {
+      "status": "None found",
+      "note": "",
+      "roles": []
+    },
+    "quarterhill": {
+      "status": "None found",
+      "note": "no sales listings",
+      "roles": []
+    },
+    "conduent": {
+      "status": "Yes",
+      "note": "Sales Exec Tolling",
+      "roles": []
+    },
+    "cyvl": {
+      "status": "Yes",
+      "note": "Sr AE Boston (site)",
+      "roles": []
+    },
+    "roundabout-technologies": {
+      "status": "None found",
+      "note": "no jobs on YC page",
+      "roles": []
+    },
+    "xylem": {
+      "status": "Yes",
+      "note": "RSM + field sales open",
+      "roles": []
+    },
+    "badger-meter": {
+      "status": "Yes",
+      "note": "Municipal AM MD/SoCal",
+      "roles": []
+    },
+    "mueller-water-products": {
+      "status": "Yes",
+      "note": "Territory Mgrs NC/OH/CO",
+      "roles": []
+    },
+    "120water": {
+      "status": "None found",
+      "note": "AE closed 6+ mo ago",
+      "roles": []
+    },
+    "klir": {
+      "status": "Yes",
+      "note": "Strategic AE TX/remote",
+      "roles": []
+    },
+    "voda-ai": {
+      "status": "Yes",
+      "note": "AE Central US",
+      "roles": []
+    },
+    "ketos": {
+      "status": "None found",
+      "note": "",
+      "roles": []
+    },
+    "asterra": {
+      "status": "None found",
+      "note": "sales posts expired",
+      "roles": []
+    },
+    "sewerai": {
+      "status": "None found",
+      "note": "AE posting 404s",
+      "roles": []
+    },
+    "redzone-robotics": {
+      "status": "Yes",
+      "note": "Regional Sales Mgr",
+      "roles": []
+    },
+    "esri": {
+      "status": "Yes",
+      "note": "GIS Account Manager",
+      "roles": []
+    },
+    "samsara": {
+      "status": "Yes",
+      "note": "Major AE, remote",
+      "roles": []
+    },
+    "geotab": {
+      "status": "Yes",
+      "note": "Technical AE, remote",
+      "roles": []
+    },
+    "cartegraph": {
+      "status": "Yes",
+      "note": "OpenGov AE Chicago",
+      "roles": []
+    },
+    "brightly": {
+      "status": "Yes",
+      "note": "Sr Acct Mgr Education NC",
+      "roles": []
+    },
+    "vantiq": {
+      "status": "Unknown",
+      "note": "careers JS-walled",
+      "roles": []
+    },
+    "granicus": {
+      "status": "Yes",
+      "note": "AE Midwest remote",
+      "roles": []
+    },
+    "civicplus": {
+      "status": "Yes",
+      "note": "AE, remote",
+      "roles": []
+    },
+    "polimorphic": {
+      "status": "Yes",
+      "note": "Senior AE, remote",
+      "roles": []
+    },
+    "polco": {
+      "status": "Yes",
+      "note": "AE remote $80-115k",
+      "roles": []
+    },
+    "accela": {
+      "status": "Yes",
+      "note": "AE remote US",
+      "roles": []
+    },
+    "opengov": {
+      "status": "Yes",
+      "note": "AE + 3 Ent AE Chi/Bos",
+      "roles": []
+    },
+    "clariti": {
+      "status": "None found",
+      "note": "8 roles, no sales",
+      "roles": []
+    },
+    "govwell": {
+      "status": "Yes",
+      "note": "SMB Gov AE, NYC",
+      "roles": []
+    },
+    "city-detect": {
+      "status": "Yes",
+      "note": "AE remote $85-95k",
+      "roles": []
+    },
+    "tyler-technologies": {
+      "status": "Yes",
+      "note": "many AEs; ERP AE West",
+      "roles": []
+    },
+    "euna-solutions": {
+      "status": "Unknown",
+      "note": "careers JS-walled",
+      "roles": []
+    },
+    "cleargov": {
+      "status": "Yes",
+      "note": "AE, remote",
+      "roles": []
+    },
+    "edwin": {
+      "status": "Sales (non-AE)",
+      "note": "BDR only",
+      "roles": []
+    },
+    "pavilion": {
+      "status": "Sales (non-AE)",
+      "note": "BD Associate only",
+      "roles": []
+    },
+    "govspend": {
+      "status": "Yes",
+      "note": "AE remote FL/VA",
+      "roles": []
+    },
+    "payit": {
+      "status": "None found",
+      "note": "site board: no sales",
+      "roles": []
+    },
+    "paymentus": {
+      "status": "Unknown",
+      "note": "own ATS not readable",
+      "roles": []
+    },
+    "invoicecloud": {
+      "status": "Yes",
+      "note": "MM AE Boston + Acct Dirs",
+      "roles": []
+    },
+    "neogov": {
+      "status": "Unknown",
+      "note": "site blocked; AE indexed",
+      "roles": []
+    },
+    "ukg": {
+      "status": "Yes",
+      "note": "multiple AEs, own site",
+      "roles": []
+    },
+    "govinvest": {
+      "status": "Yes",
+      "note": "TrueComp MM AE remote",
+      "roles": []
+    },
+    "holly": {
+      "status": "None found",
+      "note": "5 roles, none sales",
+      "roles": []
+    },
+    "kaizen-labs": {
+      "status": "Yes",
+      "note": "AE, remote+travel",
+      "roles": []
+    },
+    "rec": {
+      "status": "Yes",
+      "note": "Ent AE, SF/East Coast",
+      "roles": []
+    },
+    "recdesk": {
+      "status": "None found",
+      "note": "QA eng only",
+      "roles": []
+    },
+    "myrec-com": {
+      "status": "None found",
+      "note": "",
+      "roles": []
+    },
+    "vermont-systems": {
+      "status": "None found",
+      "note": "site board: no sales",
+      "roles": []
+    },
+    "active-network": {
+      "status": "Unknown",
+      "note": "GlobalPay AE unverified",
+      "roles": []
+    },
+    "amilia": {
+      "status": "Yes",
+      "note": "Ent AE Public Sector US",
+      "roles": []
+    },
+    "perfectmind": {
+      "status": "None found",
+      "note": "Xplor: no rec AEs",
+      "roles": []
+    },
+    "daxko": {
+      "status": "None found",
+      "note": "own site: 0 open jobs",
+      "roles": []
+    },
+    "leagueapps": {
+      "status": "None found",
+      "note": "AE removed May 26",
+      "roles": []
+    },
+    "sportsengine": {
+      "status": "None found",
+      "note": "post expired",
+      "roles": []
+    },
+    "teamsnap": {
+      "status": "Yes",
+      "note": "Enterprise AE, remote",
+      "roles": []
+    },
+    "teamsideline": {
+      "status": "None found",
+      "note": "no open roles",
+      "roles": []
+    },
+    "raptor-technologies": {
+      "status": "None found",
+      "note": "site: 2 jobs, no sales",
+      "roles": []
+    },
+    "centegix": {
+      "status": "Yes",
+      "note": "Sales Exec, Central",
+      "roles": []
+    },
+    "zeroeyes": {
+      "status": "None found",
+      "note": "tech/ops only",
+      "roles": []
+    },
+    "evolv-technology": {
+      "status": "None found",
+      "note": "LA AE closed",
+      "roles": []
+    },
+    "gaggle": {
+      "status": "Yes",
+      "note": "Regional SM, West",
+      "roles": []
+    },
+    "goguardian": {
+      "status": "Yes",
+      "note": "New Business Exec",
+      "roles": []
+    },
+    "securly": {
+      "status": "None found",
+      "note": "talent community only",
+      "roles": []
+    },
+    "zum": {
+      "status": "None found",
+      "note": "BD Mgr closed",
+      "roles": []
+    },
+    "hopskipdrive": {
+      "status": "Sales (non-AE)",
+      "note": "Reg Acct Mgrs + SDR",
+      "roles": []
+    },
+    "zonar-systems": {
+      "status": "Yes",
+      "note": "2 Strat Sales Dir remote",
+      "roles": []
+    },
+    "edulog": {
+      "status": "None found",
+      "note": "IT tech only",
+      "roles": []
+    },
+    "powerschool": {
+      "status": "Sales (non-AE)",
+      "note": "Inside Sales AM",
+      "roles": []
+    },
+    "infinite-campus": {
+      "status": "None found",
+      "note": "",
+      "roles": []
+    },
+    "frontline-education": {
+      "status": "Yes",
+      "note": "Strategic AE + RSM",
+      "roles": []
+    },
+    "parentsquare": {
+      "status": "None found",
+      "note": "CS/RevOps only",
+      "roles": []
+    },
+    "cubic-transportation-systems": {
+      "status": "Yes",
+      "note": "Sales AE on own Workday",
+      "roles": []
+    },
+    "clever-devices": {
+      "status": "None found",
+      "note": "21 roles, none sales",
+      "roles": []
+    },
+    "via": {
+      "status": "Yes",
+      "note": "Sr Ent AE, Eastern US",
+      "roles": []
+    },
+    "optibus": {
+      "status": "None found",
+      "note": "ATS: 0 openings",
+      "roles": []
+    },
+    "swiftly": {
+      "status": "Yes",
+      "note": "SMB Sales Mgr",
+      "roles": []
+    },
+    "masabi": {
+      "status": "None found",
+      "note": "site: 7 roles, none sales",
+      "roles": []
+    },
+    "token-transit": {
+      "status": "Unknown",
+      "note": "site JS-walled",
+      "roles": []
+    },
+    "passport": {
+      "status": "Unknown",
+      "note": "ADP portal JS-walled",
+      "roles": []
+    },
+    "parkmobile": {
+      "status": "None found",
+      "note": "no sales jobs",
+      "roles": []
+    },
+    "ips-group": {
+      "status": "Unknown",
+      "note": "careers JS-walled",
+      "roles": []
+    },
+    "automotus": {
+      "status": "None found",
+      "note": "marketing only",
+      "roles": []
+    },
+    "populus": {
+      "status": "None found",
+      "note": "",
+      "roles": []
+    }
+  }
+}

@@ -1,0 +1,2766 @@
+[
+  {
+    "id": "seneca",
+    "name": "Seneca",
+    "website": "https://www.seneca.com",
+    "location": "Sausalito, CA",
+    "year_founded": 2024,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Autonomous fire-suppression drones (Argo-1) for rapid initial attack on wildfires and ember defense",
+    "ats": {
+      "type": "ashby",
+      "ref": "seneca"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "site: 8 roles, none sales",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "rain",
+    "name": "Rain",
+    "website": "https://www.rain.aero",
+    "location": "Alameda, CA",
+    "year_founded": 2017,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Wildfire mission autonomy for firefighting aircraft; autonomous Black Hawk demos with Sikorsky",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.rain.aero/careers"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "eng roles only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "pano-ai",
+    "name": "Pano AI",
+    "website": "https://www.pano.ai",
+    "location": "San Francisco, CA",
+    "year_founded": 2020,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "AI mountaintop camera stations for early wildfire detection and confirmed alerts",
+    "ats": {
+      "type": "ashby",
+      "ref": "pano-ai"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Strat Accts Sales Mgr",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "burnbot",
+    "name": "BurnBot",
+    "website": "https://www.burnbot.com",
+    "location": "San Francisco, CA",
+    "year_founded": 2022,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Remote-operated prescribed burn machines for fuels reduction without smoke/escape risk",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "careers page blocked",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "first-due",
+    "name": "First Due",
+    "website": "https://www.firstdue.com",
+    "location": "Garden City, NY",
+    "year_founded": 2016,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Cloud fire department suite: pre-incident planning, RMS, scheduling, and response",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.firstdue.com/careers"
+    },
+    "hiring": {
+      "status": "Sales (non-AE)",
+      "note": "SDR opening only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "technosylva",
+    "name": "Technosylva",
+    "website": "https://www.technosylva.com",
+    "location": "La Jolla, CA",
+    "year_founded": 1997,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Wildfire spread modeling and risk analytics used by CAL FIRE and major utilities",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "careers JS-walled",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "dryad-networks",
+    "name": "Dryad Networks",
+    "website": "https://www.dryad.net",
+    "location": "Berlin, Germany",
+    "year_founded": 2020,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Solar-powered gas sensors under the forest canopy for ultra-early fire detection",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.dryad.net/jobs"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "open application only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "frontline-wildfire-defense",
+    "name": "Frontline Wildfire Defense",
+    "website": "https://www.frontlinewildfire.com",
+    "location": "San Francisco, CA",
+    "year_founded": 2019,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Exterior retardant/foam systems and app-based wildfire defense for homes and HOAs",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "no roles on site",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "perimeter",
+    "name": "Perimeter",
+    "website": "https://www.perimeterplatform.com",
+    "location": "San Francisco, CA",
+    "year_founded": 2019,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Evacuation management and real-time incident mapping for fire and emergency agencies",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "site: eng roles only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "genasys",
+    "name": "Genasys",
+    "website": "https://www.genasys.com",
+    "location": "San Diego, CA",
+    "year_founded": 1980,
+    "sector": "Public Safety",
+    "category": "Fire",
+    "description": "Emergency alerting and evacuation software plus long-range acoustic devices (LRAD)",
+    "ats": {
+      "type": "html",
+      "ref": "https://genasys.applicantpro.com/jobs/"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "site board empty",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "axon",
+    "name": "Axon",
+    "website": "https://www.axon.com",
+    "location": "Scottsdale, AZ",
+    "year_founded": 1993,
+    "sector": "Public Safety",
+    "category": "Police",
+    "description": "Body cameras, TASER energy weapons, digital evidence cloud, and real-time operations",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.axon.com/careers/all"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Sr Enterprise AE +",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "motorola-solutions",
+    "name": "Motorola Solutions",
+    "website": "https://www.motorolasolutions.com",
+    "location": "Chicago, IL",
+    "year_founded": 1928,
+    "sector": "Public Safety",
+    "category": "Police",
+    "description": "Radios, 911 call handling, CAD, and video security (Avigilon) for public safety",
+    "ats": {
+      "type": "workday",
+      "ref": [
+        "motorolasolutions",
+        "wd5",
+        "Careers"
+      ]
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE reqs on Workday",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "flock-safety",
+    "name": "Flock Safety",
+    "website": "https://www.flocksafety.com",
+    "location": "Atlanta, GA",
+    "year_founded": 2017,
+    "sector": "Public Safety",
+    "category": "Police",
+    "description": "License plate readers, gunshot detection, and drone-as-first-responder (Aerodome)",
+    "ats": {
+      "type": "ashby",
+      "ref": "flock safety"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Local & Strategic AE",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "skydio",
+    "name": "Skydio",
+    "website": "https://www.skydio.com",
+    "location": "San Mateo, CA",
+    "year_founded": 2014,
+    "sector": "Public Safety",
+    "category": "Police",
+    "description": "Autonomous drones for police DFR programs and public-sector inspection",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.skydio.com/careers"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE West Coast",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "brinc",
+    "name": "Brinc",
+    "website": "https://www.brincdrones.com",
+    "location": "Seattle, WA",
+    "year_founded": 2017,
+    "sector": "Public Safety",
+    "category": "Police",
+    "description": "911-response and tactical drones staged on police and fire station rooftops",
+    "ats": {
+      "type": "html",
+      "ref": "https://brincdrones.com/careers"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE Fire; ASM East",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "mark43",
+    "name": "Mark43",
+    "website": "https://www.mark43.com",
+    "location": "New York, NY",
+    "year_founded": 2012,
+    "sector": "Public Safety",
+    "category": "Police",
+    "description": "Cloud-native CAD and records management (RMS) for law enforcement",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "mark43"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Regional AE - Florida",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "peregrine",
+    "name": "Peregrine",
+    "website": "https://www.peregrine.io",
+    "location": "San Francisco, CA",
+    "year_founded": 2017,
+    "sector": "Public Safety",
+    "category": "Police",
+    "description": "Data integration and real-time intelligence platform for police and city agencies",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "peregrinetechnologies"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Federal + CA Growth AE",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "soundthinking",
+    "name": "SoundThinking (ShotSpotter)",
+    "website": "https://www.soundthinking.com",
+    "location": "Fremont, CA",
+    "year_founded": 1996,
+    "sector": "Public Safety",
+    "category": "Police",
+    "description": "Acoustic gunshot detection and policing analytics",
+    "ats": {
+      "type": "html",
+      "ref": "https://app.trinethire.com/companies/32876-soundthinking-inc/jobs"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "ATS: no openings",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "liveview-technologies",
+    "name": "LiveView Technologies (LVT)",
+    "website": "https://www.lvt.com",
+    "location": "Orem, UT",
+    "year_founded": 2005,
+    "sector": "Public Safety",
+    "category": "Police",
+    "description": "Solar-powered mobile surveillance units for cities, retail, and infrastructure",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Sales (non-AE)",
+      "note": "Strat Rev Exec",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "truleo",
+    "name": "Truleo",
+    "website": "https://www.truleo.ai",
+    "location": "Chicago, IL",
+    "year_founded": 2019,
+    "sector": "Public Safety",
+    "category": "Police",
+    "description": "AI analysis of body-camera audio for officer professionalism and supervision",
+    "ats": {
+      "type": "breezy",
+      "ref": "truleo"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Sr AE SW $200-400k OTE",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "kaiden-ai",
+    "name": "Kaiden AI",
+    "website": "https://www.kaiden.ai",
+    "location": "Fairfax, VA",
+    "year_founded": 2024,
+    "sector": "Public Safety",
+    "category": "Police",
+    "description": "AI-voiced simulation training for police academies: de-escalation and scenario practice",
+    "ats": {
+      "type": "html",
+      "ref": "https://jobs.gusto.com/boards/kaiden-incorporated-868aff01-6710-4309-b719-c196125e023c"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "no open roles",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "eso",
+    "name": "ESO",
+    "website": "https://www.eso.com",
+    "location": "Austin, TX",
+    "year_founded": 2004,
+    "sector": "Public Safety",
+    "category": "EMS",
+    "description": "ePCR, records, and analytics connecting EMS, fire, and hospitals",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "eso"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Regional AE EMS/Fire",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "imagetrend",
+    "name": "ImageTrend",
+    "website": "https://www.imagetrend.com",
+    "location": "Lakeville, MN",
+    "year_founded": 1998,
+    "sector": "Public Safety",
+    "category": "EMS",
+    "description": "Incident records and ePCR data platform for EMS and fire agencies",
+    "ats": {
+      "type": "html",
+      "ref": "https://careers.jobscore.com/careers/imagetrend"
+    },
+    "hiring": {
+      "status": "Sales (non-AE)",
+      "note": "VP Sales + Fed Dir",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "rapidsos",
+    "name": "RapidSOS",
+    "website": "https://www.rapidsos.com",
+    "location": "New York, NY",
+    "year_founded": 2012,
+    "sector": "Public Safety",
+    "category": "EMS",
+    "description": "Intelligent 911 platform streaming device location and data to dispatch",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "rapidsos"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "no sales reqs",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "carbyne",
+    "name": "Carbyne",
+    "website": "https://www.carbyne.com",
+    "location": "New York, NY",
+    "year_founded": 2014,
+    "sector": "Public Safety",
+    "category": "EMS",
+    "description": "Cloud-native 911 call handling with live video, location, and AI triage",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "no open roles",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "prepared",
+    "name": "Prepared",
+    "website": "https://www.prepared911.com",
+    "location": "New York, NY",
+    "year_founded": 2019,
+    "sector": "Public Safety",
+    "category": "EMS",
+    "description": "Assistive AI for 911 centers: transcription, translation, text-to-911, and video",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.prepared911.com/careers"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Strategic AE + SDR",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "zoll-medical",
+    "name": "ZOLL Medical",
+    "website": "https://www.zoll.com",
+    "location": "Chelmsford, MA",
+    "year_founded": 1980,
+    "sector": "Public Safety",
+    "category": "EMS",
+    "description": "Defibrillators, monitors, and EMS software (ePCR, dispatch, billing)",
+    "ats": {
+      "type": "workday",
+      "ref": [
+        "zoll",
+        "wd5",
+        "ZOLLMedicalCorp"
+      ]
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Territory Mgrs + RSMs",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "pulsara",
+    "name": "Pulsara",
+    "website": "https://www.pulsara.com",
+    "location": "Bozeman, MT",
+    "year_founded": 2013,
+    "sector": "Public Safety",
+    "category": "EMS",
+    "description": "Real-time EMS-to-hospital communication and patient handoff platform",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.pulsara.com/careers"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "general app only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "priority-dispatch",
+    "name": "Priority Dispatch",
+    "website": "https://www.prioritydispatch.net",
+    "location": "Salt Lake City, UT",
+    "year_founded": 1988,
+    "sector": "Public Safety",
+    "category": "EMS",
+    "description": "Emergency dispatch protocols and ProQA software for 911 centers",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "aurelian",
+    "name": "Aurelian",
+    "website": "https://www.aurelian.io",
+    "location": "Seattle, WA",
+    "year_founded": 2023,
+    "sector": "Public Safety",
+    "category": "EMS",
+    "description": "AI voice agents answering non-emergency calls for 911 centers",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.ycombinator.com/companies/aurelian/jobs"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "all eng/ops",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "md-ally",
+    "name": "MD Ally",
+    "website": "https://www.mdally.com",
+    "location": "Philadelphia, PA",
+    "year_founded": 2019,
+    "sector": "Public Safety",
+    "category": "EMS",
+    "description": "Routes non-emergency 911 calls to telehealth and virtual care",
+    "ats": {
+      "type": "html",
+      "ref": "https://jobs.gusto.com/boards/md-ally-c850a9b3-b1cc-4760-8048-14be33f3c922"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "physician role only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "everbridge",
+    "name": "Everbridge",
+    "website": "https://www.everbridge.com",
+    "location": "Burlington, MA",
+    "year_founded": 2002,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "Mass notification and critical event management platform",
+    "ats": {
+      "type": "lever",
+      "ref": "everbridge"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE roles UK/Germany",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "rave-mobile-safety",
+    "name": "Rave Mobile Safety",
+    "website": "https://www.ravemobilesafety.com",
+    "location": "Framingham, MA",
+    "year_founded": 2004,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "Panic button, 911 data, and community alerting suite (Motorola)",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Motorola CCS AE remote",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "juvare",
+    "name": "Juvare",
+    "website": "https://www.juvare.com",
+    "location": "Atlanta, GA",
+    "year_founded": 2018,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "WebEOC emergency operations center and incident management software",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "juvare"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "eng/support only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "veoci",
+    "name": "Veoci",
+    "website": "https://www.veoci.com",
+    "location": "New Haven, CT",
+    "year_founded": 2011,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "Virtual EOC, continuity, and incident management platform",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "accountant only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "rubicon",
+    "name": "Rubicon",
+    "website": "https://www.rubicon.com",
+    "location": "Lexington, KY",
+    "year_founded": 2008,
+    "sector": "Public Works",
+    "category": "Waste & Recycling",
+    "description": "Waste and recycling software; smart city tools for municipal fleets",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Sales (non-AE)",
+      "note": "Key Account Mgr",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "routeware",
+    "name": "Routeware",
+    "website": "https://www.routeware.com",
+    "location": "Portland, OR",
+    "year_founded": 1999,
+    "sector": "Public Works",
+    "category": "Waste & Recycling",
+    "description": "Routing, in-cab fleet tech, and resident apps for waste operations",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE Munis, Mtn West",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "amcs-group",
+    "name": "AMCS Group",
+    "website": "https://www.amcsgroup.com",
+    "location": "Limerick, Ireland",
+    "year_founded": 2003,
+    "sector": "Public Works",
+    "category": "Waste & Recycling",
+    "description": "Enterprise software and vehicle technology for waste and recycling operators",
+    "ats": {
+      "type": "html",
+      "ref": "https://amcsgroup.hirehive.com/"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE Boston/London",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "amp",
+    "name": "AMP",
+    "website": "https://www.ampsortation.com",
+    "location": "Louisville, CO",
+    "year_founded": 2014,
+    "sector": "Public Works",
+    "category": "Waste & Recycling",
+    "description": "AI robotic sorting systems for recycling facilities (MRFs)",
+    "ats": {
+      "type": "html",
+      "ref": "https://ampsortation.com/careers"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "no open roles",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "glacier",
+    "name": "Glacier",
+    "website": "https://www.endwaste.io",
+    "location": "San Francisco, CA",
+    "year_founded": 2019,
+    "sector": "Public Works",
+    "category": "Waste & Recycling",
+    "description": "AI recycling-sorting robots and real-time bale/line data",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "AE West removed Jan 26",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "greyparrot",
+    "name": "Greyparrot",
+    "website": "https://www.greyparrot.ai",
+    "location": "London, UK",
+    "year_founded": 2019,
+    "sector": "Public Works",
+    "category": "Waste & Recycling",
+    "description": "AI waste-recognition cameras and analytics for sorting plants",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.greyparrot.ai/careers"
+    },
+    "hiring": {
+      "status": "Sales (non-AE)",
+      "note": "VP Sales London",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "sensoneo",
+    "name": "Sensoneo",
+    "website": "https://www.sensoneo.com",
+    "location": "Bratislava, Slovakia",
+    "year_founded": 2017,
+    "sector": "Public Works",
+    "category": "Waste & Recycling",
+    "description": "Smart bin fill-level sensors and collection route optimization",
+    "ats": {
+      "type": "html",
+      "ref": "https://sensoneo.com/career/"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "tech roles only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "ecube-labs",
+    "name": "Ecube Labs",
+    "website": "https://www.ecubelabs.com",
+    "location": "Seoul, South Korea",
+    "year_founded": 2011,
+    "sector": "Public Works",
+    "category": "Waste & Recycling",
+    "description": "Solar compacting smart bins (CleanCUBE) and fill monitoring",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.ecubelabs.com/careers/"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "rehrig-pacific",
+    "name": "Rehrig Pacific",
+    "website": "https://www.rehrig.com",
+    "location": "Los Angeles, CA",
+    "year_founded": 1913,
+    "sector": "Public Works",
+    "category": "Waste & Recycling",
+    "description": "Carts and bins with embedded RFID/telematics for collection programs",
+    "ats": {
+      "type": "html",
+      "ref": "https://rehrig.hrmdirect.com/employment/job-openings.php?search=true"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Territory Mgr PacNW",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "recycle-track-systems",
+    "name": "Recycle Track Systems (RTS)",
+    "website": "https://www.rts.com",
+    "location": "New York, NY",
+    "year_founded": 2015,
+    "sector": "Public Works",
+    "category": "Waste & Recycling",
+    "description": "Tech-enabled hauling with tracking, diversion data, and on-demand pickup",
+    "ats": {
+      "type": "rippling",
+      "ref": "rts-careers"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "cust care only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "econolite",
+    "name": "Econolite",
+    "website": "https://www.econolite.com",
+    "location": "Anaheim, CA",
+    "year_founded": 1933,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Traffic signal controllers, cabinets, and intersection management systems",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.econolite.com/about/careers/career-opportunities/"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AEs VA/MD/NY/WA/UT",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "verra-mobility",
+    "name": "Verra Mobility",
+    "website": "https://www.verramobility.com",
+    "location": "Mesa, AZ",
+    "year_founded": 1987,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Automated enforcement: school-zone speed, red-light, and bus-lane cameras",
+    "ats": {
+      "type": "html",
+      "ref": "https://careers.verramobility.com/search-jobs"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Strategic AE (NY!)",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "rekor-systems",
+    "name": "Rekor Systems",
+    "website": "https://www.rekor.ai",
+    "location": "Columbia, MD",
+    "year_founded": 2017,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "AI roadway intelligence: ALPR, traffic monitoring, incident detection",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "ADP portal JS-walled",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "miovision",
+    "name": "Miovision",
+    "website": "https://www.miovision.com",
+    "location": "Kitchener, ON, Canada",
+    "year_founded": 2005,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Traffic data collection and smart intersection technology",
+    "ats": {
+      "type": "ashby",
+      "ref": "miovision"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Ent AE Opticom SE US",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "notraffic",
+    "name": "NoTraffic",
+    "website": "https://www.notraffic.tech",
+    "location": "Tel Aviv, Israel",
+    "year_founded": 2017,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "AI-powered traffic signal optimization platform",
+    "ats": {
+      "type": "workable",
+      "ref": "notraffic"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "site board: 0 jobs",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "hayden-ai",
+    "name": "Hayden AI",
+    "website": "https://www.hayden.ai",
+    "location": "Oakland, CA",
+    "year_founded": 2019,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Bus-mounted AI cameras enforcing bus lanes and stops for transit agencies",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "19 roles, all technical",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "obvio",
+    "name": "Obvio",
+    "website": "https://www.obvio.ai",
+    "location": "San Carlos, CA",
+    "year_founded": 2023,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "AI stop-sign and speed safety cameras for local streets",
+    "ats": {
+      "type": "ashby",
+      "ref": "obvio"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE San Carlos (site)",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "buspatrol",
+    "name": "BusPatrol",
+    "website": "https://www.buspatrol.com",
+    "location": "Austin, TX",
+    "year_founded": 2017,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "School bus stop-arm cameras with violator-funded safety programs",
+    "ats": {
+      "type": "ashby",
+      "ref": "buspatrol"
+    },
+    "hiring": {
+      "status": "Sales (non-AE)",
+      "note": "VP Reg Sales NE open",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "urban-sdk",
+    "name": "Urban SDK",
+    "website": "https://www.urbansdk.com",
+    "location": "Jacksonville, FL",
+    "year_founded": 2018,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Speed, volume, and congestion analytics for public works and police",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.urbansdk.com/careers"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE, Jacksonville",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "roadbotics",
+    "name": "RoadBotics (Michelin)",
+    "website": "https://www.roadbotics.com",
+    "location": "Pittsburgh, PA",
+    "year_founded": 2016,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Smartphone-based AI pavement condition assessment",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "quarterhill",
+    "name": "Quarterhill",
+    "website": "https://www.quarterhill.com",
+    "location": "Toronto, ON, Canada",
+    "year_founded": 1992,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Tolling and intelligent transportation systems (owns IRD, ETC); acquiring Conduent's tolling unit",
+    "ats": {
+      "type": "html",
+      "ref": "https://careers.quarterhill.com/Quarterhill/jobs/categories"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "no sales listings",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "conduent",
+    "name": "Conduent",
+    "website": "https://www.conduent.com",
+    "location": "Florham Park, NJ",
+    "year_founded": 2017,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Government services giant (Xerox spinoff): transit fare, payments, DMV; selling tolling to Quarterhill",
+    "ats": {
+      "type": "html",
+      "ref": "https://careers.conduent.com/us/en/search-results"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Sales Exec Tolling",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "cyvl",
+    "name": "Cyvl",
+    "website": "https://www.cyvl.com",
+    "location": "Boston, MA",
+    "year_founded": 2020,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Vehicle-mounted lidar + AI for pavement condition, sidewalk ADA, and street asset inventories",
+    "ats": {
+      "type": "ashby",
+      "ref": "cyvl"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Sr AE Boston (site)",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "roundabout-technologies",
+    "name": "Roundabout Technologies",
+    "website": "https://www.roundabout.tech",
+    "location": "San Francisco, CA",
+    "year_founded": 2024,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "AI traffic signal control using existing cameras; ex-Waymo/Zoox founders (YC F24)",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.ycombinator.com/companies/roundabout-technologies/jobs"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "no jobs on YC page",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "xylem",
+    "name": "Xylem",
+    "website": "https://www.xylem.com",
+    "location": "Washington, DC",
+    "year_founded": 2011,
+    "sector": "Public Works",
+    "category": "Water",
+    "description": "Water infrastructure: pumps, treatment, smart meters (Sensus), and analytics",
+    "ats": {
+      "type": "workday",
+      "ref": [
+        "xylem",
+        "wd5",
+        "xylem-careers"
+      ]
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "RSM + field sales open",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "badger-meter",
+    "name": "Badger Meter",
+    "website": "https://www.badgermeter.com",
+    "location": "Milwaukee, WI",
+    "year_founded": 1905,
+    "sector": "Public Works",
+    "category": "Water",
+    "description": "Water meters and ORION AMI networks for utilities",
+    "ats": {
+      "type": "workday",
+      "ref": [
+        "badgermeter",
+        "wd5",
+        "us_careersite"
+      ]
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Municipal AM MD/SoCal",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "mueller-water-products",
+    "name": "Mueller Water Products",
+    "website": "https://www.muellerwaterproducts.com",
+    "location": "Atlanta, GA",
+    "year_founded": 1857,
+    "sector": "Public Works",
+    "category": "Water",
+    "description": "Hydrants, valves, and acoustic leak detection for water systems",
+    "ats": {
+      "type": "workday",
+      "ref": [
+        "muellerwaterproducts",
+        "wd5",
+        "Mueller"
+      ]
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Territory Mgrs NC/OH/CO",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "120water",
+    "name": "120Water",
+    "website": "https://www.120water.com",
+    "location": "Zionsville, IN",
+    "year_founded": 2016,
+    "sector": "Public Works",
+    "category": "Water",
+    "description": "Lead service line inventories, sampling, and compliance software",
+    "ats": {
+      "type": "html",
+      "ref": "https://120water.com/careers"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "AE closed 6+ mo ago",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "klir",
+    "name": "Klir",
+    "website": "https://www.klir.com",
+    "location": "Dublin, Ireland",
+    "year_founded": 2018,
+    "sector": "Public Works",
+    "category": "Water",
+    "description": "Permitting, compliance, and workflow software for water utilities",
+    "ats": {
+      "type": "rippling",
+      "ref": "klir"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Strategic AE TX/remote",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "voda-ai",
+    "name": "VODA.ai",
+    "website": "https://www.voda.ai",
+    "location": "Boston, MA",
+    "year_founded": 2017,
+    "sector": "Public Works",
+    "category": "Water",
+    "description": "AI pipe-failure prediction for main replacement planning",
+    "ats": {
+      "type": "html",
+      "ref": "https://careers.voda.ai/jobs"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE Central US",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "ketos",
+    "name": "KETOS",
+    "website": "https://www.ketos.co",
+    "location": "San Jose, CA",
+    "year_founded": 2015,
+    "sector": "Public Works",
+    "category": "Water",
+    "description": "Automated water quality monitoring as a service",
+    "ats": {
+      "type": "html",
+      "ref": "https://ketos.co/jobs"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "asterra",
+    "name": "ASTERRA",
+    "website": "https://www.asterra.io",
+    "location": "San Diego, CA",
+    "year_founded": 2013,
+    "sector": "Public Works",
+    "category": "Water",
+    "description": "Satellite-based leak detection and underground pipe assessment",
+    "ats": {
+      "type": "html",
+      "ref": "https://asterra.io/about/careers/"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "sales posts expired",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "sewerai",
+    "name": "SewerAI",
+    "website": "https://www.sewerai.com",
+    "location": "Walnut Creek, CA",
+    "year_founded": 2019,
+    "sector": "Public Works",
+    "category": "Water",
+    "description": "AI defect detection and coding for sewer inspection video",
+    "ats": {
+      "type": "ashby",
+      "ref": "sewer-ai"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "AE posting 404s",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "redzone-robotics",
+    "name": "RedZone Robotics",
+    "website": "https://www.redzone.com",
+    "location": "Pittsburgh, PA",
+    "year_founded": 1987,
+    "sector": "Public Works",
+    "category": "Water",
+    "description": "Robotic sewer inspection and condition assessment services",
+    "ats": {
+      "type": "html",
+      "ref": "https://redzone.com/company/employment/"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Regional Sales Mgr",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "esri",
+    "name": "Esri",
+    "website": "https://www.esri.com",
+    "location": "Redlands, CA",
+    "year_founded": 1969,
+    "sector": "Public Works",
+    "category": "Fleet & Asset Mgmt",
+    "description": "ArcGIS - the mapping and asset data backbone of most public works departments",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.esri.com/en-us/about/careers/job-search"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "GIS Account Manager",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "samsara",
+    "name": "Samsara",
+    "website": "https://www.samsara.com",
+    "location": "San Francisco, CA",
+    "year_founded": 2015,
+    "sector": "Public Works",
+    "category": "Fleet & Asset Mgmt",
+    "description": "IoT telematics and video safety for government fleets (public co)",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.samsara.com/company/careers/roles"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Major AE, remote",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "geotab",
+    "name": "Geotab",
+    "website": "https://www.geotab.com",
+    "location": "Oakville, ON, Canada",
+    "year_founded": 2000,
+    "sector": "Public Works",
+    "category": "Fleet & Asset Mgmt",
+    "description": "Fleet telematics with one of the largest municipal footprints",
+    "ats": {
+      "type": "html",
+      "ref": "https://careers.geotab.com/department/sales/"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Technical AE, remote",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "cartegraph",
+    "name": "Cartegraph",
+    "website": "https://www.cartegraph.com",
+    "location": "Dubuque, IA",
+    "year_founded": 1994,
+    "sector": "Public Works",
+    "category": "Fleet & Asset Mgmt",
+    "description": "Asset and work order management for DPWs (part of OpenGov)",
+    "ats": {
+      "type": "html",
+      "ref": "https://opengov.com/careers/"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "OpenGov AE Chicago",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "brightly",
+    "name": "Brightly",
+    "website": "https://www.brightlysoftware.com",
+    "location": "Cary, NC",
+    "year_founded": 1999,
+    "sector": "Public Works",
+    "category": "Fleet & Asset Mgmt",
+    "description": "Asset management ex-Dude Solutions, now Siemens-owned",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Sr Acct Mgr Education NC",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "vantiq",
+    "name": "Vantiq",
+    "website": "https://www.vantiq.com",
+    "location": "Walnut Creek, CA",
+    "year_founded": 2015,
+    "sector": "General Gov",
+    "category": "Citizen Services",
+    "description": "Real-time agentic AI platform used for smart city and public service monitoring",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "careers JS-walled",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "granicus",
+    "name": "Granicus",
+    "website": "https://www.granicus.com",
+    "location": "Denver, CO",
+    "year_founded": 1999,
+    "sector": "General Gov",
+    "category": "Citizen Services",
+    "description": "Resident communications (govDelivery), meeting and agenda management, digital services",
+    "ats": {
+      "type": "html",
+      "ref": "https://careers-granicus.icims.com/jobs/search?ss=1"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE Midwest remote",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "civicplus",
+    "name": "CivicPlus",
+    "website": "https://www.civicplus.com",
+    "location": "Manhattan, KS",
+    "year_founded": 1994,
+    "sector": "General Gov",
+    "category": "Citizen Services",
+    "description": "Municipal websites, 311/CRM, mass notification, and agenda software",
+    "ats": {
+      "type": "html",
+      "ref": "https://jobs.jobvite.com/civicplus/search"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE, remote",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "polimorphic",
+    "name": "Polimorphic",
+    "website": "https://www.polimorphic.com",
+    "location": "New York, NY",
+    "year_founded": 2021,
+    "sector": "General Gov",
+    "category": "Citizen Services",
+    "description": "AI voice and chat agents plus constituent CRM for local governments",
+    "ats": {
+      "type": "html",
+      "ref": "https://app.trinethire.com/companies/381666-polimorphic/jobs"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Senior AE, remote",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "polco",
+    "name": "Polco",
+    "website": "https://www.polco.us",
+    "location": "Madison, WI",
+    "year_founded": 2015,
+    "sector": "General Gov",
+    "category": "Citizen Services",
+    "description": "Community surveys, benchmarking, and budget simulation (owns National Research Center)",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE remote $80-115k",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "accela",
+    "name": "Accela",
+    "website": "https://www.accela.com",
+    "location": "San Ramon, CA",
+    "year_founded": 1999,
+    "sector": "General Gov",
+    "category": "Permitting & Licensing",
+    "description": "Permitting, licensing, and code enforcement platform for state and local government",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "accela"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE remote US",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "opengov",
+    "name": "OpenGov",
+    "website": "https://www.opengov.com",
+    "location": "San Jose, CA",
+    "year_founded": 2012,
+    "sector": "General Gov",
+    "category": "Permitting & Licensing",
+    "description": "Permitting, budgeting, procurement, and asset management cloud suite (Cox-owned)",
+    "ats": {
+      "type": "html",
+      "ref": "https://opengov.com/careers/"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE + 3 Ent AE Chi/Bos",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "clariti",
+    "name": "Clariti",
+    "website": "https://www.claritisoftware.com",
+    "location": "Vancouver, BC, Canada",
+    "year_founded": 2008,
+    "sector": "General Gov",
+    "category": "Permitting & Licensing",
+    "description": "Community development permitting and licensing software (founded as BasicGov)",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "clariticloudinc"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "8 roles, no sales",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "govwell",
+    "name": "GovWell",
+    "website": "https://www.govwell.com",
+    "location": "New York, NY",
+    "year_founded": 2023,
+    "sector": "General Gov",
+    "category": "Permitting & Licensing",
+    "description": "AI permitting and licensing platform: 24/7 resident assistant, AI code-compliance review",
+    "ats": {
+      "type": "ashby",
+      "ref": "govwell"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "SMB Gov AE, NYC",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "city-detect",
+    "name": "City Detect",
+    "website": "https://www.citydetect.com",
+    "location": "Tuscaloosa, AL",
+    "year_founded": 2021,
+    "sector": "General Gov",
+    "category": "Permitting & Licensing",
+    "description": "AI cameras on city fleet vehicles detect blight, graffiti, dumping for code enforcement",
+    "ats": {
+      "type": "html",
+      "ref": "https://jobs.gusto.com/boards/city-detect-6e1a4cdf-356e-4986-9f1d-55d200b345e9"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE remote $85-95k",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "tyler-technologies",
+    "name": "Tyler Technologies",
+    "website": "https://www.tylertech.com",
+    "location": "Plano, TX",
+    "year_founded": 1966,
+    "sector": "General Gov",
+    "category": "Finance & ERP",
+    "description": "The govtech giant: ERP, courts, public safety, permitting, and payments",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.tylertech.com/careers/job-listings"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "many AEs; ERP AE West",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "euna-solutions",
+    "name": "Euna Solutions",
+    "website": "https://www.eunasolutions.com",
+    "location": "Atlanta, GA",
+    "year_founded": 2023,
+    "sector": "General Gov",
+    "category": "Finance & ERP",
+    "description": "Procurement, budgeting, and grants suite - Bonfire, Questica, eCivis (formerly GTY)",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "careers JS-walled",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "cleargov",
+    "name": "ClearGov",
+    "website": "https://www.cleargov.com",
+    "location": "Maynard, MA",
+    "year_founded": 2015,
+    "sector": "General Gov",
+    "category": "Finance & ERP",
+    "description": "Budget building and transparency software for local governments and schools",
+    "ats": {
+      "type": "jazzhr",
+      "ref": "cleargov"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE, remote",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "edwin",
+    "name": "Edwin",
+    "website": "https://www.edwingov.com",
+    "location": "Los Angeles, CA",
+    "year_founded": 2026,
+    "sector": "General Gov",
+    "category": "Finance & ERP",
+    "description": "Treasury platform for local government finance teams: AI reconciliation and cash forecasting",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.edwingov.com/careers"
+    },
+    "hiring": {
+      "status": "Sales (non-AE)",
+      "note": "BDR only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "pavilion",
+    "name": "Pavilion",
+    "website": "https://www.withpavilion.com",
+    "location": "San Francisco, CA",
+    "year_founded": 2018,
+    "sector": "General Gov",
+    "category": "Procurement & Payments",
+    "description": "Free search marketplace for cooperative contracts (formerly CoProcure)",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.withpavilion.com/about/careers"
+    },
+    "hiring": {
+      "status": "Sales (non-AE)",
+      "note": "BD Associate only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "govspend",
+    "name": "GovSpend",
+    "website": "https://www.govspend.com",
+    "location": "Boca Raton, FL",
+    "year_founded": 2011,
+    "sector": "General Gov",
+    "category": "Procurement & Payments",
+    "description": "Government purchasing data and procurement intelligence (ex-SmartProcure)",
+    "ats": {
+      "type": "jazzhr",
+      "ref": "smartprocuregovspend"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE remote FL/VA",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "payit",
+    "name": "PayIt",
+    "website": "https://www.payitgov.com",
+    "location": "Kansas City, MO",
+    "year_founded": 2013,
+    "sector": "General Gov",
+    "category": "Procurement & Payments",
+    "description": "Digital services and payments platform for state and local government",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "payit"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "site board: no sales",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "paymentus",
+    "name": "Paymentus",
+    "website": "https://www.paymentus.com",
+    "location": "Charlotte, NC",
+    "year_founded": 2004,
+    "sector": "General Gov",
+    "category": "Procurement & Payments",
+    "description": "Bill presentment and payments for governments and utilities (public co)",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "own ATS not readable",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "invoicecloud",
+    "name": "InvoiceCloud",
+    "website": "https://www.invoicecloud.com",
+    "location": "Braintree, MA",
+    "year_founded": 2009,
+    "sector": "General Gov",
+    "category": "Procurement & Payments",
+    "description": "Electronic billing and payments for local government and utilities",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "invoicecloud"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "MM AE Boston + Acct Dirs",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "neogov",
+    "name": "NEOGOV",
+    "website": "https://www.neogov.com",
+    "location": "El Segundo, CA",
+    "year_founded": 2000,
+    "sector": "General Gov",
+    "category": "HR & Workforce",
+    "description": "Public-sector HR suite: recruiting, onboarding, and performance",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.neogov.com/about-us/careers"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "site blocked; AE indexed",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "ukg",
+    "name": "UKG",
+    "website": "https://www.ukg.com",
+    "location": "Lowell, MA",
+    "year_founded": 2020,
+    "sector": "General Gov",
+    "category": "HR & Workforce",
+    "description": "Workforce management giant (Kronos + Ultimate merger) with large gov base",
+    "ats": {
+      "type": "html",
+      "ref": "https://apply.ukg.com/careers"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "multiple AEs, own site",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "govinvest",
+    "name": "GovInvest (TrueComp)",
+    "website": "https://www.truecomp.com",
+    "location": "Torrance, CA",
+    "year_founded": 2015,
+    "sector": "General Gov",
+    "category": "HR & Workforce",
+    "description": "Pension, OPEB, and labor cost analytics for governments",
+    "ats": {
+      "type": "rippling",
+      "ref": "truecomp"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "TrueComp MM AE remote",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "holly",
+    "name": "Holly",
+    "website": "https://www.hollygov.com",
+    "location": "New York, NY",
+    "year_founded": 2023,
+    "sector": "General Gov",
+    "category": "HR & Workforce",
+    "description": "AI classification & compensation for local gov HR: job specs, salary benchmarking (Harvard-born)",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.hollygov.com/careers"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "5 roles, none sales",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "kaizen-labs",
+    "name": "Kaizen Labs",
+    "website": "https://www.kaizenlabs.co",
+    "location": "New York, NY",
+    "year_founded": 2021,
+    "sector": "Parks & Rec",
+    "category": "Recreation Management",
+    "description": "Modern resident services platform born in parks & rec registration; $21M Series A (NEA, a16z, Accel)",
+    "ats": {
+      "type": "ashby",
+      "ref": "kaizenlabs"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "AE, remote+travel",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "rec",
+    "name": "Rec",
+    "website": "https://www.rec.us",
+    "location": "San Francisco, CA",
+    "year_founded": 2022,
+    "sector": "Parks & Rec",
+    "category": "Recreation Management",
+    "description": "Parks & rec program management and booking platform founded by early Uber employees",
+    "ats": {
+      "type": "ashby",
+      "ref": "rec"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Ent AE, SF/East Coast",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "recdesk",
+    "name": "RecDesk",
+    "website": "https://www.recdesk.com",
+    "location": "Old Lyme, CT",
+    "year_founded": 2007,
+    "sector": "Parks & Rec",
+    "category": "Recreation Management",
+    "description": "Simple recreation management software for small-town rec departments (Clubessential Holdings)",
+    "ats": {
+      "type": "rippling",
+      "ref": "clubessential-holdings-cjb"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "QA eng only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "myrec-com",
+    "name": "MyRec.com",
+    "website": "https://www.myrec.com",
+    "location": "Killington, VT",
+    "year_founded": 2003,
+    "sector": "Parks & Rec",
+    "category": "Recreation Management",
+    "description": "Recreation department registration, facility, and program management software",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.myrec.com/careers/"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "vermont-systems",
+    "name": "Vermont Systems",
+    "website": "https://www.vermontsystems.com",
+    "location": "Essex Junction, VT",
+    "year_founded": 1985,
+    "sector": "Parks & Rec",
+    "category": "Recreation Management",
+    "description": "RecTrac - the legacy standard for municipal parks & rec management (Clubessential Holdings)",
+    "ats": {
+      "type": "rippling",
+      "ref": "clubessential-holdings-cjb"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "site board: no sales",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "active-network",
+    "name": "Active Network",
+    "website": "https://www.activenetwork.com",
+    "location": "Dallas, TX",
+    "year_founded": 1999,
+    "sector": "Parks & Rec",
+    "category": "Recreation Management",
+    "description": "ACTIVEnet registration and payments giant for communities and rec agencies (Global Payments)",
+    "ats": {
+      "type": "html",
+      "ref": "https://jobs.globalpayments.com/en/jobs/?search=account+executive"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "GlobalPay AE unverified",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "amilia",
+    "name": "Amilia",
+    "website": "https://www.amilia.com",
+    "location": "Montreal, QC, Canada",
+    "year_founded": 2009,
+    "sector": "Parks & Rec",
+    "category": "Recreation Management",
+    "description": "SmartRec activity registration and facility management platform",
+    "ats": {
+      "type": "recruitee",
+      "ref": "amilia"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Ent AE Public Sector US",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "perfectmind",
+    "name": "PerfectMind (Xplor Recreation)",
+    "website": "https://www.nextrec.com",
+    "location": "North Vancouver, BC, Canada",
+    "year_founded": 2000,
+    "sector": "Parks & Rec",
+    "category": "Recreation Management",
+    "description": "Recreation and community center management platform, now part of Xplor",
+    "ats": {
+      "type": "smartrecruiters",
+      "ref": "Xplor"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "Xplor: no rec AEs",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "daxko",
+    "name": "Daxko",
+    "website": "https://www.daxko.com",
+    "location": "Birmingham, AL",
+    "year_founded": 1998,
+    "sector": "Parks & Rec",
+    "category": "Recreation Management",
+    "description": "Membership and operations software for YMCAs, JCCs, and community rec centers",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.daxko.com/company/job-listings"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "own site: 0 open jobs",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "leagueapps",
+    "name": "LeagueApps",
+    "website": "https://www.leagueapps.com",
+    "location": "New York, NY",
+    "year_founded": 2009,
+    "sector": "Parks & Rec",
+    "category": "Youth Sports & Leagues",
+    "description": "Youth sports league and club management platform used by local sports organizations",
+    "ats": {
+      "type": "html",
+      "ref": "https://leagueapps.com/careers/"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "AE removed May 26",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "sportsengine",
+    "name": "SportsEngine",
+    "website": "https://www.sportsengine.com",
+    "location": "Minneapolis, MN",
+    "year_founded": 2008,
+    "sector": "Parks & Rec",
+    "category": "Youth Sports & Leagues",
+    "description": "NBC Sports-owned registration, scheduling, and website platform for youth sports",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.sportsengine.com/careers"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "post expired",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "teamsnap",
+    "name": "TeamSnap",
+    "website": "https://www.teamsnap.com",
+    "location": "Boulder, CO",
+    "year_founded": 2009,
+    "sector": "Parks & Rec",
+    "category": "Youth Sports & Leagues",
+    "description": "Team and league management apps for youth sports, with a business tier for rec orgs",
+    "ats": {
+      "type": "lever",
+      "ref": "teamsnap"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Enterprise AE, remote",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "teamsideline",
+    "name": "TeamSideline",
+    "website": "https://www.teamsideline.com",
+    "location": "Roseville, CA",
+    "year_founded": 2007,
+    "sector": "Parks & Rec",
+    "category": "Youth Sports & Leagues",
+    "description": "League management, registration, and scheduling for rec departments and leagues",
+    "ats": {
+      "type": "rippling",
+      "ref": "teamsideline-job-board"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "no open roles",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "raptor-technologies",
+    "name": "Raptor Technologies",
+    "website": "https://www.raptortech.com",
+    "location": "Houston, TX",
+    "year_founded": 2002,
+    "sector": "K-12 Schools",
+    "category": "School Safety",
+    "description": "Visitor management, emergency management, and reunification software for K-12",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "raptortechnologies"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "site: 2 jobs, no sales",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "centegix",
+    "name": "Centegix",
+    "website": "https://www.centegix.com",
+    "location": "Atlanta, GA",
+    "year_founded": 2018,
+    "sector": "K-12 Schools",
+    "category": "School Safety",
+    "description": "CrisisAlert wearable panic buttons for school staff; 18M+ people covered",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.centegix.com/careers/"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Sales Exec, Central",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "zeroeyes",
+    "name": "ZeroEyes",
+    "website": "https://www.zeroeyes.com",
+    "location": "Conshohocken, PA",
+    "year_founded": 2018,
+    "sector": "K-12 Schools",
+    "category": "School Safety",
+    "description": "AI gun detection layered onto existing school security cameras",
+    "ats": {
+      "type": "html",
+      "ref": "https://zeroeyes.com/careers-portal/"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "tech/ops only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "evolv-technology",
+    "name": "Evolv Technology",
+    "website": "https://www.evolvtechnology.com",
+    "location": "Waltham, MA",
+    "year_founded": 2013,
+    "sector": "K-12 Schools",
+    "category": "School Safety",
+    "description": "AI weapons-screening entry gates used by districts and venues",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.evolvtechnology.com/careers"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "LA AE closed",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "gaggle",
+    "name": "Gaggle",
+    "website": "https://www.gaggle.net",
+    "location": "Bloomington, IL",
+    "year_founded": 1999,
+    "sector": "K-12 Schools",
+    "category": "School Safety",
+    "description": "Monitors school email/docs for self-harm and threat signals",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.gaggle.net/careers"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Regional SM, West",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "goguardian",
+    "name": "GoGuardian",
+    "website": "https://www.goguardian.com",
+    "location": "Los Angeles, CA",
+    "year_founded": 2014,
+    "sector": "K-12 Schools",
+    "category": "School Safety",
+    "description": "Device filtering, classroom management, and student wellness (Beacon)",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "goguardian"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "New Business Exec",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "securly",
+    "name": "Securly",
+    "website": "https://www.securly.com",
+    "location": "San Jose, CA",
+    "year_founded": 2013,
+    "sector": "K-12 Schools",
+    "category": "School Safety",
+    "description": "Cloud web filtering and student safety monitoring",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "securly13"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "talent community only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "zum",
+    "name": "Zum",
+    "website": "https://www.ridezum.com",
+    "location": "Redwood City, CA",
+    "year_founded": 2015,
+    "sector": "K-12 Schools",
+    "category": "Transportation",
+    "description": "Tech-first school transportation operator: EV buses, parent app, routing",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.ridezum.com/company/careers/"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "BD Mgr closed",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "hopskipdrive",
+    "name": "HopSkipDrive",
+    "website": "https://www.hopskipdrive.com",
+    "location": "Los Angeles, CA",
+    "year_founded": 2014,
+    "sector": "K-12 Schools",
+    "category": "Transportation",
+    "description": "Vetted small-vehicle student rides supplementing district bus fleets",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "hopskipdrive"
+    },
+    "hiring": {
+      "status": "Sales (non-AE)",
+      "note": "Reg Acct Mgrs + SDR",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "zonar-systems",
+    "name": "Zonar Systems",
+    "website": "https://www.zonarsystems.com",
+    "location": "Seattle, WA",
+    "year_founded": 2001,
+    "sector": "K-12 Schools",
+    "category": "Transportation",
+    "description": "School bus telematics, electronic inspections, and ridership tracking",
+    "ats": {
+      "type": "jazzhr",
+      "ref": "zonar"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "2 Strat Sales Dir remote",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "edulog",
+    "name": "Edulog",
+    "website": "https://www.edulog.com",
+    "location": "Missoula, MT",
+    "year_founded": 1977,
+    "sector": "K-12 Schools",
+    "category": "Transportation",
+    "description": "Longtime standard for school bus routing and planning software",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.edulog.com/careers/"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "IT tech only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "powerschool",
+    "name": "PowerSchool",
+    "website": "https://www.powerschool.com",
+    "location": "Folsom, CA",
+    "year_founded": 1997,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Student information system giant plus enrollment, comms, and analytics",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.powerschool.com/company/careers/"
+    },
+    "hiring": {
+      "status": "Sales (non-AE)",
+      "note": "Inside Sales AM",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "infinite-campus",
+    "name": "Infinite Campus",
+    "website": "https://www.infinitecampus.com",
+    "location": "Blaine, MN",
+    "year_founded": 1993,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "SIS serving thousands of districts nationwide",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.infinitecampus.com/about/careers"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "frontline-education",
+    "name": "Frontline Education",
+    "website": "https://www.frontlineeducation.com",
+    "location": "Malvern, PA",
+    "year_founded": 1998,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "K-12 HR, absence and substitute management, and operations software",
+    "ats": {
+      "type": "html",
+      "ref": "https://careers.frontlineeducation.com/search/sales/jobs"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Strategic AE + RSM",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "parentsquare",
+    "name": "ParentSquare",
+    "website": "https://www.parentsquare.com",
+    "location": "Santa Barbara, CA",
+    "year_founded": 2011,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Unified school-home communication platform",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.parentsquare.com/careers/"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "CS/RevOps only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "cubic-transportation-systems",
+    "name": "Cubic Transportation Systems",
+    "website": "https://www.cubic.com",
+    "location": "San Diego, CA",
+    "year_founded": 1951,
+    "sector": "Transit & Parking",
+    "category": "Transit Tech",
+    "description": "Fare collection giant behind OMNY, Opal, and Oyster; ITS systems",
+    "ats": {
+      "type": "workday",
+      "ref": [
+        "cubic",
+        "wd1",
+        "cubic_USA_careers"
+      ]
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Sales AE on own Workday",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "clever-devices",
+    "name": "Clever Devices",
+    "website": "https://www.cleverdevices.com",
+    "location": "Woodbury, NY",
+    "year_founded": 1988,
+    "sector": "Transit & Parking",
+    "category": "Transit Tech",
+    "description": "Bus ITS: CAD/AVL, real-time passenger info, and fleet health",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.cleverdevices.com/careers"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "21 roles, none sales",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "via",
+    "name": "Via",
+    "website": "https://www.ridewithvia.com",
+    "location": "New York, NY",
+    "year_founded": 2012,
+    "sector": "Transit & Parking",
+    "category": "Transit Tech",
+    "description": "On-demand transit, paratransit, and network planning software for agencies",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "via"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "Sr Ent AE, Eastern US",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "optibus",
+    "name": "Optibus",
+    "website": "https://www.optibus.com",
+    "location": "Tel Aviv, Israel",
+    "year_founded": 2014,
+    "sector": "Transit & Parking",
+    "category": "Transit Tech",
+    "description": "AI scheduling, rostering, and planning platform for bus networks",
+    "ats": {
+      "type": "html",
+      "ref": "https://www.comeet.com/jobs/optibus/D1.00C"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "ATS: 0 openings",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "swiftly",
+    "name": "Swiftly",
+    "website": "https://www.goswift.ly",
+    "location": "San Francisco, CA",
+    "year_founded": 2014,
+    "sector": "Transit & Parking",
+    "category": "Transit Tech",
+    "description": "Real-time transit data: arrival predictions and on-time performance",
+    "ats": {
+      "type": "lever",
+      "ref": "goswift"
+    },
+    "hiring": {
+      "status": "Yes",
+      "note": "SMB Sales Mgr",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "masabi",
+    "name": "Masabi",
+    "website": "https://www.masabi.com",
+    "location": "London, UK",
+    "year_founded": 2001,
+    "sector": "Transit & Parking",
+    "category": "Transit Tech",
+    "description": "Justride fare payments SaaS used by hundreds of agencies",
+    "ats": {
+      "type": "ashby",
+      "ref": "masabi"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "site: 7 roles, none sales",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "token-transit",
+    "name": "Token Transit",
+    "website": "https://www.tokentransit.com",
+    "location": "San Francisco, CA",
+    "year_founded": 2015,
+    "sector": "Transit & Parking",
+    "category": "Transit Tech",
+    "description": "Mobile fare payment app covering 200+ North American agencies",
+    "ats": {
+      "type": "html",
+      "ref": "https://jobs.gem.com/token-transit"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "site JS-walled",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "passport",
+    "name": "Passport",
+    "website": "https://www.passportinc.com",
+    "location": "Charlotte, NC",
+    "year_founded": 2010,
+    "sector": "Transit & Parking",
+    "category": "Parking & Curb",
+    "description": "Mobile parking payments, digital permits, and curb platform for cities",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "ADP portal JS-walled",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "parkmobile",
+    "name": "ParkMobile",
+    "website": "https://www.parkmobile.io",
+    "location": "Atlanta, GA",
+    "year_founded": 2008,
+    "sector": "Transit & Parking",
+    "category": "Parking & Curb",
+    "description": "Leading mobile parking payments app (EasyPark Group)",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "no sales jobs",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "ips-group",
+    "name": "IPS Group",
+    "website": "https://www.ipsgroup.com",
+    "location": "San Diego, CA",
+    "year_founded": 1994,
+    "sector": "Transit & Parking",
+    "category": "Parking & Curb",
+    "description": "Smart single-space parking meters and enforcement systems",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "careers JS-walled",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "automotus",
+    "name": "Automotus",
+    "website": "https://www.automotus.co",
+    "location": "Los Angeles, CA",
+    "year_founded": 2017,
+    "sector": "Transit & Parking",
+    "category": "Parking & Curb",
+    "description": "Computer vision curb management and automated loading-zone payments",
+    "ats": {
+      "type": "jazzhr",
+      "ref": "automotus"
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "marketing only",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  },
+  {
+    "id": "populus",
+    "name": "Populus",
+    "website": "https://www.populus.ai",
+    "location": "San Francisco, CA",
+    "year_founded": 2017,
+    "sector": "Transit & Parking",
+    "category": "Parking & Curb",
+    "description": "Curb and mobility data platform for pricing and street policy",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "None found",
+      "note": "",
+      "roles": [],
+      "checked": "2026-08-16"
+    }
+  }
+]
