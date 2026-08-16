@@ -18,7 +18,8 @@ DATA = ROOT / "data"
 
 STATUSES = {"Yes", "Sales (non-AE)", "None found", "Unknown"}
 ATS_TYPES = {"ashby", "greenhouse", "lever", "workable", "recruitee", "breezy",
-             "smartrecruiters", "workday", "rippling", "jazzhr", "html", "unknown"}
+             "smartrecruiters", "bamboohr", "workday", "rippling", "jazzhr",
+             "html", "unknown"}
 
 CLASSIFIER_CASES = [
     ("Account Executive", "ae"),
@@ -64,6 +65,12 @@ PAGESCAN_CASES = [
     # inert JS template branch on a page that is actually full of roles
     ("There are no open positions matching your filter selection. "
      "Autonomy Engineer Deep Learning. Enterprise Account Executive, SLED", "ae"),
+    # nav sections named after sales functions must not read as open reqs
+    ("Platform Solutions Customer Success Channel Partners Pricing Contact", "unreadable"),
+    ("Why Us Partnerships Customer Success Stories Resources Blog", "unreadable"),
+    # ...but the same words with a role noun are real postings
+    ("Open Roles: Customer Success Manager, Remote. Apply", "sales_other"),
+    ("Careers Channel Manager - Northeast", "sales_other"),
 ]
 
 

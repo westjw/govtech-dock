@@ -6,7 +6,8 @@ error, 404 slug, JS-walled page). Callers treat AtsError as status "Unknown".
 
 Supported types (data/companies.json -> ats.type):
   ashby, greenhouse, lever, workable, recruitee, breezy, smartrecruiters,
-  workday, rippling, jazzhr    -> structured JSON APIs / server-rendered boards
+  bamboohr, workday, rippling, jazzhr
+                               -> structured JSON APIs / server-rendered boards
   html                         -> fetch page, strip tags, scan visible text (weak signal)
   unknown                      -> not fetchable; needs ATS discovery (ask Claude Code)
 """
@@ -110,6 +111,23 @@ def fetch_breezy(slug: str) -> list[dict]:
              "url": j.get("url", "")} for j in data]
 
 
+def fetch_bamboohr(slug: str) -> list[dict]:
+    """https://<slug>.bamboohr.com/careers/list -> {"result": [...]}.
+    Location arrives as parts (city/state/country), not one string."""
+    url = f"https://{slug}.bamboohr.com/careers/list"
+    data = _json(_get(url))
+    if not isinstance(data, dict) or "result" not in data:
+        raise AtsError("unexpected bamboohr payload")
+    out = []
+    for j in data.get("result", []):
+        loc = j.get("location") or {}
+        parts = [loc.get(k) for k in ("city", "state", "country")]
+        out.append({"title": j.get("jobOpeningName", ""),
+                    "location": ", ".join(p for p in parts if p),
+                    "url": f"https://{slug}.bamboohr.com/careers/{j.get('id', '')}"})
+    return out
+
+
 def fetch_smartrecruiters(slug: str) -> list[dict]:
     url = f"https://api.smartrecruiters.com/v1/companies/{slug}/postings?limit=100"
     data = _json(_get(url))
@@ -199,6 +217,7 @@ FETCHERS = {
     "recruitee": fetch_recruitee,
     "breezy": fetch_breezy,
     "smartrecruiters": fetch_smartrecruiters,
+    "bamboohr": fetch_bamboohr,
     "workday": fetch_workday,
     "rippling": fetch_rippling,
     "jazzhr": fetch_jazzhr,

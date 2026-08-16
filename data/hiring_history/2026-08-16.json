@@ -33,8 +33,8 @@
       "roles": []
     },
     "technosylva": {
-      "status": "Unknown",
-      "note": "no ATS on file",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "dryad-networks": {
@@ -43,9 +43,20 @@
       "roles": []
     },
     "frontline-wildfire-defense": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": []
+      "status": "Yes",
+      "note": "Territory Manager - LA (Los Angeles, CA)",
+      "roles": [
+        {
+          "title": "Territory Manager - LA",
+          "location": "Los Angeles, CA",
+          "url": "https://job-boards.greenhouse.io/frontlinewildfire/jobs/4361134009"
+        },
+        {
+          "title": "Territory Manager - Pacific Northwest",
+          "location": "Remote",
+          "url": "https://job-boards.greenhouse.io/frontlinewildfire/jobs/4357640009"
+        }
+      ]
     },
     "perimeter": {
       "status": "Unknown",
@@ -389,8 +400,8 @@
       ]
     },
     "pulsara": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "priority-dispatch": {
@@ -450,9 +461,20 @@
       "roles": []
     },
     "routeware": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": []
+      "status": "Yes",
+      "note": "Account Executive - Municipalities",
+      "roles": [
+        {
+          "title": "Account Executive - Municipalities (Mountain West Territory)",
+          "location": "",
+          "url": "https://ats.rippling.com/routeware-careers/jobs"
+        },
+        {
+          "title": "Technical Account Manager ",
+          "location": "",
+          "url": "https://ats.rippling.com/routeware-careers/jobs"
+        }
+      ]
     },
     "amcs-group": {
       "status": "Yes",
@@ -735,8 +757,8 @@
       ]
     },
     "120water": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "klir": {
@@ -883,9 +905,15 @@
       "roles": []
     },
     "polco": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": []
+      "status": "Yes",
+      "note": "Account Executive (Madison, WI)",
+      "roles": [
+        {
+          "title": "Account Executive",
+          "location": "Madison, WI",
+          "url": "https://polco.breezy.hr/p/1d53e97042f7-account-executive"
+        }
+      ]
     },
     "accela": {
       "status": "Yes",
@@ -957,9 +985,20 @@
       "roles": []
     },
     "euna-solutions": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": []
+      "status": "Yes",
+      "note": "Account Executive (Mid-Market)",
+      "roles": [
+        {
+          "title": "Account Executive (Mid-Market)",
+          "location": "",
+          "url": "https://euna.bamboohr.com/careers/651"
+        },
+        {
+          "title": "Senior Director, Enterprise Sales",
+          "location": "",
+          "url": "https://euna.bamboohr.com/careers/704"
+        }
+      ]
     },
     "cleargov": {
       "status": "None found",
@@ -1003,13 +1042,13 @@
       ]
     },
     "neogov": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "ukg": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "govinvest": {
@@ -1170,8 +1209,8 @@
       ]
     },
     "zeroeyes": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "evolv-technology": {
@@ -1283,8 +1322,8 @@
       ]
     },
     "clever-devices": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": []
     },
     "via": {
@@ -1365,8 +1404,8 @@
       "roles": []
     },
     "ips-group": {
-      "status": "Unknown",
-      "note": "no ATS on file",
+      "status": "Sales (non-AE)",
+      "note": "Sr. Client Success Manager only",
       "roles": []
     },
     "automotus": {

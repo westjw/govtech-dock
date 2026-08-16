@@ -115,12 +115,12 @@
     "category": "Fire",
     "description": "Wildfire spread modeling and risk analytics used by CAL FIRE and major utilities",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "bamboohr",
+      "ref": "technosylva"
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "no ATS on file",
+      "status": "None found",
+      "note": "",
       "roles": [],
       "checked": "2026-08-16"
     }
@@ -155,13 +155,24 @@
     "category": "Fire",
     "description": "Exterior retardant/foam systems and app-based wildfire defense for homes and HOAs",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "greenhouse",
+      "ref": "frontlinewildfire"
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": [],
+      "status": "Yes",
+      "note": "Territory Manager - LA (Los Angeles, CA)",
+      "roles": [
+        {
+          "title": "Territory Manager - LA",
+          "location": "Los Angeles, CA",
+          "url": "https://job-boards.greenhouse.io/frontlinewildfire/jobs/4361134009"
+        },
+        {
+          "title": "Territory Manager - Pacific Northwest",
+          "location": "Remote",
+          "url": "https://job-boards.greenhouse.io/frontlinewildfire/jobs/4357640009"
+        }
+      ],
       "checked": "2026-08-16"
     }
   },
@@ -813,8 +824,8 @@
       "ref": "https://www.pulsara.com/careers"
     },
     "hiring": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-08-16"
     }
@@ -1005,13 +1016,24 @@
     "category": "Waste & Recycling",
     "description": "Routing, in-cab fleet tech, and resident apps for waste operations",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "rippling",
+      "ref": "routeware-careers"
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": [],
+      "status": "Yes",
+      "note": "Account Executive - Municipalities",
+      "roles": [
+        {
+          "title": "Account Executive - Municipalities (Mountain West Territory)",
+          "location": "",
+          "url": "https://ats.rippling.com/routeware-careers/jobs"
+        },
+        {
+          "title": "Technical Account Manager ",
+          "location": "",
+          "url": "https://ats.rippling.com/routeware-careers/jobs"
+        }
+      ],
       "checked": "2026-08-16"
     }
   },
@@ -1696,8 +1718,8 @@
       "ref": "https://120water.com/careers"
     },
     "hiring": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-08-16"
     }
@@ -2080,13 +2102,19 @@
     "category": "Citizen Services",
     "description": "Community surveys, benchmarking, and budget simulation (owns National Research Center)",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "breezy",
+      "ref": "polco"
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": [],
+      "status": "Yes",
+      "note": "Account Executive (Madison, WI)",
+      "roles": [
+        {
+          "title": "Account Executive",
+          "location": "Madison, WI",
+          "url": "https://polco.breezy.hr/p/1d53e97042f7-account-executive"
+        }
+      ],
       "checked": "2026-08-16"
     }
   },
@@ -2259,13 +2287,24 @@
     "category": "Finance & ERP",
     "description": "Procurement, budgeting, and grants suite - Bonfire, Questica, eCivis (formerly GTY)",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "bamboohr",
+      "ref": "euna"
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": [],
+      "status": "Yes",
+      "note": "Account Executive (Mid-Market)",
+      "roles": [
+        {
+          "title": "Account Executive (Mid-Market)",
+          "location": "",
+          "url": "https://euna.bamboohr.com/careers/651"
+        },
+        {
+          "title": "Senior Director, Enterprise Sales",
+          "location": "",
+          "url": "https://euna.bamboohr.com/careers/704"
+        }
+      ],
       "checked": "2026-08-16"
     }
   },
@@ -2429,8 +2468,8 @@
       "ref": "https://www.neogov.com/about-us/careers"
     },
     "hiring": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-08-16"
     }
@@ -2449,8 +2488,8 @@
       "ref": "https://apply.ukg.com/careers"
     },
     "hiring": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-08-16"
     }
@@ -2881,8 +2920,8 @@
       "ref": "https://zeroeyes.com/careers-portal/"
     },
     "hiring": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-08-16"
     }
@@ -3208,8 +3247,8 @@
       "ref": "https://www.cleverdevices.com/careers"
     },
     "hiring": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page scan found no listings",
       "roles": [],
       "checked": "2026-08-16"
     }
@@ -3406,12 +3445,12 @@
     "category": "Parking & Curb",
     "description": "Smart single-space parking meters and enforcement systems",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "bamboohr",
+      "ref": "ipsgroupinc"
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "no ATS on file",
+      "status": "Sales (non-AE)",
+      "note": "Sr. Client Success Manager only",
       "roles": [],
       "checked": "2026-08-16"
     }

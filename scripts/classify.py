@@ -73,6 +73,24 @@ NO_OPENINGS_PAT = re.compile(
 )
 
 
+# Page scans only. SALES_ORG_NON_AE_PAT is tuned for discrete job titles, where
+# every string it sees is already known to be a title. Loose on free page text:
+# "Customer Success" and "Channel" are nav sections on half the marketing sites
+# in this list. Require the role noun too, so we match reqs and not navigation.
+PAGESCAN_SALES_ROLE_PAT = re.compile(
+    r"\bsdr\b|\bbdr\b"
+    r"|sales development (rep\b|representative|manager)"
+    r"|business development (rep\b|representative|associate)"
+    r"|inside sales (rep\b|representative|associate|manager)"
+    r"|(customer|client) success (manager|associate|specialist|lead|director)"
+    r"|sales (engineer|operations manager|enablement manager|trainer)"
+    r"|solutions? (engineer|consultant|architect)"
+    r"|renewals? (manager|specialist)"
+    r"|(channel|partnerships?) (manager|director)",
+    re.I,
+)
+
+
 def scan_pagetext(text: str) -> str:
     """For 'html'-type boards we only have page text, not discrete titles.
 
@@ -89,7 +107,7 @@ def scan_pagetext(text: str) -> str:
     """
     if AE_PAT.search(text):
         return "ae"
-    if SALES_ORG_NON_AE_PAT.search(text):
+    if PAGESCAN_SALES_ROLE_PAT.search(text):
         return "sales_other"                # a concrete non-AE sales title rendered
     if NO_OPENINGS_PAT.search(text):
         return "none"                       # board rendered; it is genuinely empty

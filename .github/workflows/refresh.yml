@@ -25,7 +25,9 @@ jobs:
         run: python scripts/selftest.py
 
       - name: Refresh hiring data
-        run: python scripts/refresh.py --ci
+        # --force so a manual re-run on the same day still works; the previous
+        # snapshot stays recoverable in git history, which is the audit trail here.
+        run: python scripts/refresh.py --ci --force
 
       - name: Regenerate spreadsheet
         run: python scripts/export_xlsx.py

@@ -43,9 +43,14 @@ version. Three parts:
 
 - Company `id` = kebab-case name (parenthetical suffixes dropped).
 - `ats.type` ∈ ashby | greenhouse | lever | workable | recruitee | breezy |
-  smartrecruiters | workday | rippling | jazzhr | html | unknown.
+  smartrecruiters | bamboohr | workday | rippling | jazzhr | html | unknown.
   Prefer structured API types; `html` is a last resort; `unknown` means
   "needs discovery" and is skipped by refresh.
+- **Never point a company at its parent's job board.** Several here were
+  acquired (Rave → Motorola Solutions, RoadBotics → Michelin) and their
+  careers pages redirect to the parent's Workday. Wiring that up would report
+  a parent-company AE req as the subsidiary's, which is a false "Yes". Leave
+  them `unknown` unless the board can be scoped to the product line.
 - Descriptions: one line, what they sell + to whom, no marketing fluff.
 - Python: stdlib + requests + openpyxl only. Match existing style (typed,
   small functions, no classes where a function does).

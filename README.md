@@ -31,7 +31,7 @@ data because of browser fetch rules.
 
 | ats.type | How it's read |
 |---|---|
-| `ashby`, `greenhouse`, `lever`, `workable`, `recruitee`, `breezy`, `smartrecruiters`, `workday` | official public JSON APIs |
+| `ashby`, `greenhouse`, `lever`, `workable`, `recruitee`, `breezy`, `smartrecruiters`, `bamboohr`, `workday` | official public JSON APIs |
 | `rippling`, `jazzhr` | server-rendered boards, parsed |
 | `html` | careers page fetched and text-scanned (weakest signal — a `Yes` gets a `[page scan - verify]` note) |
 | `unknown` | skipped; listed at the end of each run as "needs ATS discovery" |
