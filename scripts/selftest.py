@@ -46,6 +46,13 @@ CLASSIFIER_CASES = [
     ("Product Manager", "none"),
     ("Firmware Engineer", "none"),
     ("Marketing Coordinator", "none"),  # marketing alone is not a sales-org signal
+    # finance roles: "account" is a substring of "accountant"/"accounting"
+    ("Senior Accountant", "none"),
+    ("Accounting Manager, Lease & Fixed Assets", "none"),
+    ("Accounts Payable Specialist", "none"),
+    ("Corporate Controller", "none"),
+    # ...but a real AE req that happens to mention accounting still counts
+    ("Account Executive, Accounting Software", "ae"),
 ]
 
 # 'html'-type boards give us page text, not titles. A scan can prove presence

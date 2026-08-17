@@ -43,6 +43,16 @@ AMBIGUOUS_PAT = re.compile(
 # Anything that signals the sales org at all (for the ambiguous check).
 SALESY_PAT = re.compile(r"sales|account|business development|revenue|go.to.market|gtm", re.I)
 
+# Finance roles. SALESY_PAT matches the bare substring "account", so without
+# this guard "Senior Accountant" and "Accounting Manager, Lease & Fixed Assets"
+# both land in Sales (non-AE). Checked after AE_PAT, so a genuine
+# "Account Executive, Accounting Software" still classifies as an AE req.
+FINANCE_NOT_SALES_PAT = re.compile(
+    r"\baccountant\b|\baccounting\b|accounts (payable|receivable)"
+    r"|\bbookkeep|\bcontroller\b|\bauditor\b",
+    re.I,
+)
+
 
 def classify_title(title: str) -> str:
     """Return 'ae' | 'sales_other' | 'none' for one job title."""
@@ -56,6 +66,8 @@ def classify_title(title: str) -> str:
         return "sales_other" if SALESY_PAT.search(t) else "none"
     if AE_PAT.search(t):
         return "ae"
+    if FINANCE_NOT_SALES_PAT.search(t):
+        return "none"
     if SALESY_PAT.search(t):
         return "sales_other"
     return "none"

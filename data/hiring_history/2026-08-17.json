@@ -498,8 +498,8 @@
       "roles": []
     },
     "greyparrot": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "Sales (non-AE)",
+      "note": "VP Sales only",
       "roles": []
     },
     "sensoneo": {
@@ -566,8 +566,8 @@
       "roles": []
     },
     "hayden-ai": {
-      "status": "Unknown",
-      "note": "no ATS on file",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "obvio": {
@@ -598,9 +598,20 @@
       ]
     },
     "urban-sdk": {
-      "status": "Unknown",
-      "note": "HTTP 404 for https://www.urbansdk.com/ca",
-      "roles": []
+      "status": "Yes",
+      "note": "Account Manager",
+      "roles": [
+        {
+          "title": "Account Manager",
+          "location": "",
+          "url": "https://ats.rippling.com/urban-sdk/jobs"
+        },
+        {
+          "title": "Account Executive",
+          "location": "",
+          "url": "https://ats.rippling.com/urban-sdk/jobs"
+        }
+      ]
     },
     "roadbotics": {
       "status": "Unknown",
@@ -711,6 +722,11 @@
           "title": "Executive Sales Representative",
           "location": "Milpitas Ames, California",
           "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Milpitas-Ames-California/Executive-Sales-Representative_R49635"
+        },
+        {
+          "title": "Aftermarket Sales Representative",
+          "location": "Kemps Creek",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Kemps-Creek/Aftermarket-Sales-Representative_R49746"
         }
       ]
     },
@@ -1091,7 +1107,7 @@
     },
     "recdesk": {
       "status": "Sales (non-AE)",
-      "note": " Customer Support Specialist I, Ac only",
+      "note": "Customer Success Manager only",
       "roles": []
     },
     "myrec-com": {
@@ -1101,7 +1117,7 @@
     },
     "vermont-systems": {
       "status": "Sales (non-AE)",
-      "note": " Customer Support Specialist I, Ac only",
+      "note": "Customer Success Manager only",
       "roles": []
     },
     "active-network": {
@@ -1116,22 +1132,162 @@
     },
     "perfectmind": {
       "status": "Yes",
-      "note": "Account Executive (Bryan, TX)",
+      "note": "Account Executive (Amarillo, TX)",
       "roles": [
         {
           "title": "Account Executive",
-          "location": "Bryan, TX",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000142667091"
+          "location": "Amarillo, TX",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143845452"
         },
         {
           "title": "Account Executive",
-          "location": "Chandler, AZ",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000140971725"
+          "location": "San Angelo, TX",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143845189"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Abilene, TX",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143839755"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Brownwood, TX",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143841390"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Bastrop, TX",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143844229"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Marble Falls, TX",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143843774"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Kerrville, TX",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143842500"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Corpus Christi, TX",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143842113"
+        },
+        {
+          "title": "Account Executive",
+          "location": "San Antonio, TX",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143841070"
+        },
+        {
+          "title": "Account Executive",
+          "location": "San Marcos, TX",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143842590"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Austin, TX",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143842739"
+        },
+        {
+          "title": "Account Executive",
+          "location": "San Jose, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143842609"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Westminster, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143840130"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Fresno, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143840881"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Cerritos, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143839066"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Las Vegas, NV",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143841228"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Montebello, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143838133"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Santa Ana, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143838732"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Chino, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143839100"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Fontana, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143838147"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Brea, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143837989"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Rosemead, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143837799"
+        },
+        {
+          "title": "Account Executive",
+          "location": "San Gabriel, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143837589"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Thousand Oaks, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143837439"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Santa Clarita, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143834869"
+        },
+        {
+          "title": "Account Executive",
+          "location": "El Monte, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143833815"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Lancaster, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143833250"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Pasadena, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143832610"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Torrance, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143833879"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Santa Monica, CA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143830294"
         },
         {
           "title": "Account Executive",
           "location": "San Diego, CA",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000140971869"
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143833459"
         },
         {
           "title": "Account Executive",
@@ -1161,8 +1317,8 @@
       "roles": []
     },
     "leagueapps": {
-      "status": "Unknown",
-      "note": "HTTP 404 for https://leagueapps.com/care",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "sportsengine": {
@@ -1245,8 +1401,8 @@
       ]
     },
     "zum": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": "",
       "roles": []
     },
     "hopskipdrive": {
