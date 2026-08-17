@@ -11,6 +11,11 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    # Runners are UTC. Snapshots are keyed by date, so an evening manual run
+    # would otherwise be stamped tomorrow and sort ahead of a same-evening
+    # local run. Pin to the owner's clock so dates match their calendar.
+    env:
+      TZ: America/New_York
     steps:
       - uses: actions/checkout@v4
 
