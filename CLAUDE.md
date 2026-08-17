@@ -65,7 +65,15 @@ version. Three parts:
   from schema.json, find their ATS (try the API URL patterns in
   `scripts/ats.py` docstrings), append to companies.json, run selftest, run
   `refresh.py --company <id>`, then `export_xlsx.py`.
-- **Discover an ATS:** careers page source usually reveals it — look for
+- **Discover an ATS (JS-walled board):** `python scripts/discover_js.py noats`
+  renders each Unknown in headless Chromium and prints the ATS endpoint its
+  board actually calls. Needs `pip install playwright` + `python -m playwright
+  install chromium`, which is **why it's a separate script**: the browser is a
+  one-off discovery tool, its conclusions get written into `companies.json` as
+  normal `ats` entries, and `refresh.py`/CI stay stdlib-only. Always verify a
+  slug with a real fetch before writing it — Lever slugs are lowercase, and an
+  off-site careers link occasionally lands on another company's board.
+- **Discover an ATS (plain):** careers page source usually reveals it — look for
   greenhouse.io / lever.co / ashbyhq.com / myworkdayjobs.com / workable.com
   URLs in the HTML, or try `https://boards-api.greenhouse.io/v1/boards/<slug>/jobs`
   style probes with obvious slugs.

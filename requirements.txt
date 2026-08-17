@@ -1,2 +1,7 @@
 requests>=2.31
 openpyxl>=3.1
+
+# Optional, for scripts/discover_js.py only. Not needed by refresh.py, the
+# weekly Action, or the site — install it when hunting a JS-walled board:
+#   pip install playwright && python -m playwright install chromium
+# playwright>=1.40
