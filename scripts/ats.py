@@ -6,7 +6,7 @@ error, 404 slug, JS-walled page). Callers treat AtsError as status "Unknown".
 
 Supported types (data/companies.json -> ats.type):
   ashby, greenhouse, lever, workable, recruitee, breezy, smartrecruiters,
-  bamboohr, workday, rippling, jazzhr
+  bamboohr, workday, rippling, jazzhr, icims
                                -> structured JSON APIs / server-rendered boards
   html                         -> fetch page, strip tags, scan visible text (weak signal)
   unknown                      -> not fetchable; needs ATS discovery (ask Claude Code)
@@ -200,6 +200,37 @@ def _strip(raw: str) -> str:
     return re.sub(r"\s+", " ", html_lib.unescape(text))
 
 
+def fetch_icims(ref: str) -> list[dict]:
+    """iCIMS portals serve a ~600-character shell at the plain URL and put the
+    actual listing inside an iframe, which is why these boards read as empty
+    JS walls. ?in_iframe=1 returns the real server-rendered list.
+
+    ref is either a portal slug ("careers-granicus") or a full URL. Titles live
+    in the anchor's title attribute as "<req id> - <title>".
+    """
+    base = ref if ref.startswith("http") else f"https://{ref}.icims.com/jobs/search?ss=1"
+    joiner = "&" if "?" in base else "?"
+    out, seen = [], set()
+    for page in range(3):                     # portals page at 50; 150 is plenty
+        url = f"{base}{joiner}in_iframe=1&pr={page}"
+        html = _get(url).text
+        found = re.findall(
+            r'<a\s+href="([^"]+)"[^>]*class="iCIMS_Anchor"[^>]*title="([^"]+)"', html)
+        new = 0
+        for href, raw in found:
+            title = re.sub(r"^\d+\s*-\s*", "", html_lib.unescape(raw)).strip()
+            if title and title not in seen:
+                seen.add(title)
+                new += 1
+                out.append({"title": title, "location": "",
+                            "url": html_lib.unescape(href)})
+        if not new:
+            break
+    if not out:
+        raise AtsError("no jobs parsed from iCIMS portal")
+    return out
+
+
 def fetch_html(url: str) -> list[dict]:
     """Weakest fetcher: returns one pseudo-job carrying the page text for the
     classifier to scan. If the page is a JS shell (very little text), raise."""
@@ -221,6 +252,7 @@ FETCHERS = {
     "workday": fetch_workday,
     "rippling": fetch_rippling,
     "jazzhr": fetch_jazzhr,
+    "icims": fetch_icims,
     "html": fetch_html,
 }
 

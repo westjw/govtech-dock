@@ -20,7 +20,7 @@ DATA = ROOT / "data"
 STATUSES = {"Yes", "Sales (non-AE)", "None found", "Unknown"}
 ATS_TYPES = {"ashby", "greenhouse", "lever", "workable", "recruitee", "breezy",
              "smartrecruiters", "bamboohr", "workday", "rippling", "jazzhr",
-             "html", "unknown"}
+             "icims", "html", "unknown"}
 
 CLASSIFIER_CASES = [
     ("Account Executive", "ae"),

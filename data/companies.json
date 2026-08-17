@@ -1592,6 +1592,11 @@
           "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Fort-Mill-South-Carolina/Sales-Representative_R48823"
         },
         {
+          "title": "Sales Representative",
+          "location": "Pompano Beach, Florida",
+          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Pompano-Beach-Florida/Sales-Representative_R49721"
+        },
+        {
           "title": "Senior Sales Representative",
           "location": "2 Locations",
           "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Salem-Oregon/Senior-Sales-Representative_R47390"
@@ -1605,11 +1610,6 @@
           "title": "Sales Representative",
           "location": "Sacramento - 8570",
           "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Sacramento---8570/Sales-Representative_R49569"
-        },
-        {
-          "title": "Sales Representative",
-          "location": "Pompano Beach, Florida",
-          "url": "https://xylem.wd5.myworkdayjobs.com/en-US/xylem-careers/job/Pompano-Beach-Florida/Sales-Representative_R49721"
         },
         {
           "title": "Sales Representative",
@@ -2052,13 +2052,74 @@
     "category": "Citizen Services",
     "description": "Resident communications (govDelivery), meeting and agenda management, digital services",
     "ats": {
-      "type": "html",
-      "ref": "https://careers-granicus.icims.com/jobs/search?ss=1"
+      "type": "icims",
+      "ref": "careers-granicus"
     },
     "hiring": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": [],
+      "status": "Yes",
+      "note": "Enterprise Account Executive - KS,",
+      "roles": [
+        {
+          "title": "Enterprise Account Executive - KS, OK, NE",
+          "location": "",
+          "url": "https://careers-granicus.icims.com/jobs/10391/enterprise-account-executive---ks%2c-ok%2c-ne/job?in_iframe=1"
+        },
+        {
+          "title": "Enterprise Account Executive - WA, OR, AK, HI",
+          "location": "",
+          "url": "https://careers-granicus.icims.com/jobs/10373/enterprise-account-executive---wa%2c-or%2c-ak%2c-hi/job?in_iframe=1"
+        },
+        {
+          "title": "Account Executive - Southeast",
+          "location": "",
+          "url": "https://careers-granicus.icims.com/jobs/10365/account-executive---southeast/job?in_iframe=1"
+        },
+        {
+          "title": "Account Executive - Washington & Oregon",
+          "location": "",
+          "url": "https://careers-granicus.icims.com/jobs/10347/account-executive---washington-%26-oregon/job?in_iframe=1"
+        },
+        {
+          "title": "Enterprise Account Executive - West",
+          "location": "",
+          "url": "https://careers-granicus.icims.com/jobs/10309/enterprise-account-executive---west/job?in_iframe=1"
+        },
+        {
+          "title": "Strategic Account Manager - Illinois & Ohio",
+          "location": "",
+          "url": "https://careers-granicus.icims.com/jobs/10297/strategic-account-manager---illinois-%26-ohio/job?in_iframe=1"
+        },
+        {
+          "title": "Strategic Account Manager - Texas",
+          "location": "",
+          "url": "https://careers-granicus.icims.com/jobs/10213/strategic-account-manager---texas/job?in_iframe=1"
+        },
+        {
+          "title": "Federal Account Executive",
+          "location": "",
+          "url": "https://careers-granicus.icims.com/jobs/10174/federal-account-executive/job?in_iframe=1"
+        },
+        {
+          "title": "Enterprise Account Executive - NY, MA, VT, NH, ME",
+          "location": "",
+          "url": "https://careers-granicus.icims.com/jobs/9837/enterprise-account-executive---ny%2c-ma%2c-vt%2c-nh%2c-me/job?in_iframe=1"
+        },
+        {
+          "title": "Federal Account Executive (Evergreen)",
+          "location": "",
+          "url": "https://careers-granicus.icims.com/jobs/9824/federal-account-executive-%28evergreen%29/job?in_iframe=1"
+        },
+        {
+          "title": "Indigov Enterprise Account Executive - West",
+          "location": "",
+          "url": "https://careers-granicus.icims.com/jobs/9624/indigov-enterprise-account-executive---west/job?in_iframe=1"
+        },
+        {
+          "title": "State Enterprise Account Executive - East (Evergreen)",
+          "location": "",
+          "url": "https://careers-granicus.icims.com/jobs/9532/state-enterprise-account-executive---east-%28evergreen%29/job?in_iframe=1"
+        }
+      ],
       "checked": "2026-08-17"
     }
   },
@@ -2723,8 +2784,73 @@
     },
     "hiring": {
       "status": "Yes",
-      "note": "Account Executive (Amarillo, TX)",
+      "note": "Account Executive (Springfield, IL)",
       "roles": [
+        {
+          "title": "Account Executive",
+          "location": "Springfield, IL",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143901144"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Ann Arbor, MI",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143899865"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Burlington, VT",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143900101"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Ypsilanti, MI",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143901060"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Milwaukee, WI",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143898945"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Plattsburgh, NY",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143900789"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Buffalo, NY",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143900549"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Binghamton, NY",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143900268"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Indianapolis, IN",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143899769"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Erie, PA",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143898604"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Chicago, IL",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143899299"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Green Bay, WI",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143882110"
+        },
+        {
+          "title": "Account Executive",
+          "location": "Detroit, MI",
+          "url": "https://jobs.smartrecruiters.com/Xplor/744000143882769"
+        },
         {
           "title": "Account Executive",
           "location": "Amarillo, TX",

@@ -43,7 +43,8 @@ version. Three parts:
 
 - Company `id` = kebab-case name (parenthetical suffixes dropped).
 - `ats.type` ∈ ashby | greenhouse | lever | workable | recruitee | breezy |
-  smartrecruiters | bamboohr | workday | rippling | jazzhr | html | unknown.
+  smartrecruiters | bamboohr | workday | rippling | jazzhr | icims | html |
+  unknown.
   Prefer structured API types; `html` is a last resort; `unknown` means
   "needs discovery" and is skipped by refresh.
 - **Never point a company at its parent's job board.** Several here were
