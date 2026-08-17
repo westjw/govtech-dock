@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   refresh:
@@ -45,6 +46,20 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes this week."
           else
-            git commit -m "chore: weekly hiring refresh ($(date -u +%F))"
+            git commit -m "chore: weekly hiring refresh ($(date +%F))"
             git push
+          fi
+
+      - name: Open an issue for new AE openings
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "$(python scripts/alert.py "$RUNNER_TEMP/alert.md")" = "alert" ]; then
+            COUNT=$(grep -c '^### ' "$RUNNER_TEMP/alert.md")
+            gh issue create \
+              --title "$COUNT new AE opening(s) — $(date +%F)" \
+              --body-file "$RUNNER_TEMP/alert.md" \
+              --assignee "${{ github.repository_owner }}"
+          else
+            echo "No new AE openings this run."
           fi

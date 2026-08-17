@@ -11,6 +11,7 @@ import pathlib
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
+import alert     # noqa: E402
 import classify  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -137,6 +138,19 @@ def main() -> int:
         [{"url": "x", "_pagetext": "Careers. There are currently no open positions."}])
     if status != "None found":
         errors += fail(f"rollup: explicit empty board should be None found, got {status}")
+
+    # alerting: only transitions *into* Yes, and never on a first snapshot
+    changes = [{"company": "A", "id": "a", "from": "Unknown", "to": "Yes"},
+               {"company": "B", "id": "b", "from": "None found", "to": "Yes"},
+               {"company": "C", "id": "c", "from": "Yes", "to": "None found"},
+               {"company": "D", "id": "d", "from": "Yes", "to": "Yes"},
+               {"company": "E", "id": "e", "from": "None found", "to": "Sales (non-AE)"}]
+    hits = [h["id"] for h in alert.new_ae_openings({"previous": "2026-01-01",
+                                                    "changes": changes})]
+    if hits != ["a", "b"]:
+        errors += fail(f"alert: expected new-Yes ['a','b'], got {hits}")
+    if alert.new_ae_openings({"previous": None, "changes": changes}):
+        errors += fail("alert: first snapshot should never alert")
 
     hist = sorted((DATA / "hiring_history").glob("*.json"))
     if not hist:
