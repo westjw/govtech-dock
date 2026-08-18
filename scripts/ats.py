@@ -20,7 +20,14 @@ import urllib.parse
 
 import requests
 
-UA = {"User-Agent": "govtech-dock/1.0 (job-board reader; personal research tool)"}
+# Conventional bot identification: Mozilla/5.0 prefix, a name, and a contact URL.
+# This is the standard well-behaved-crawler format, not a browser impersonation.
+# Many WAFs reject anything without the Mozilla prefix outright, which is what was
+# turning Pavilion into a 405. Where a site blocks this too (Daxko returns 429),
+# that is a deliberate refusal and it goes to the manual worklist rather than
+# getting a spoofed Chrome string.
+UA = {"User-Agent": "Mozilla/5.0 (compatible; govtech-dock/1.0; "
+                    "+https://github.com/westjw/govtech-dock)"}
 TIMEOUT = 20
 
 
@@ -228,6 +235,53 @@ def fetch_icims(ref: str) -> list[dict]:
             break
     if not out:
         raise AtsError("no jobs parsed from iCIMS portal")
+    return out
+
+
+# A careers page lists jobs as links. Anchor text plus a job-shaped href is
+# enough to enumerate most of them, which is the difference between a company
+# appearing on a job board and being invisible on it.
+_ANCHOR = re.compile(r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>', re.I | re.S)
+_JOB_HREF = re.compile(r"/(job|jobs|career|careers|position|opening|vacanc|"
+                       r"apply|posting|req)[/\-_?=]|jobId|requisition", re.I)
+_TITLEISH = re.compile(r"\b(engineer|developer|manager|director|analyst|specialist|"
+                       r"executive|representative|coordinator|associate|lead|architect|"
+                       r"designer|scientist|consultant|administrator|technician|"
+                       r"supervisor|officer|president|counsel|accountant|recruiter|"
+                       r"marketer|strategist|advocate|partner|intern|apprentice|"
+                       r"operator|driver|installer|trainer|writer|editor|"
+                       r"controller|planner|advisor|agent)\b", re.I)
+# Navigation and marketing links that would otherwise pass as titles.
+_NAV = re.compile(r"^(apply|apply now|learn more|read more|view (all|jobs|openings)|"
+                  r"see (all|more)|careers?|jobs?|open (roles|positions)|back|next|"
+                  r"previous|home|about|contact|search|filter|all departments?|"
+                  r"privacy|terms|cookie)s?$", re.I)
+
+
+def fetch_html_titles(url: str) -> list[dict]:
+    """Enumerate job titles from a server-rendered careers page.
+
+    Deliberately conservative: a link counts only if its href looks like a job
+    URL and its text reads like a job title. Requires at least two hits, because
+    one match is far more likely to be a stray link than a real board.
+    """
+    resp = _get(url)
+    seen, out = set(), []
+    for href, inner in _ANCHOR.findall(resp.text):
+        text = re.sub(r"\s+", " ", _ANYTAG.sub(" ", inner)).strip()
+        text = html_lib.unescape(text)
+        if not (6 <= len(text) <= 90) or _NAV.match(text):
+            continue
+        if not (_JOB_HREF.search(href) and _TITLEISH.search(text)):
+            continue
+        key = text.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append({"title": text, "location": "",
+                    "url": urllib.parse.urljoin(url, html_lib.unescape(href))})
+    if len(out) < 2:
+        raise AtsError("no enumerable job links on the page")
     return out
 
 

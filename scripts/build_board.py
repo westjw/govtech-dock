@@ -96,6 +96,8 @@ def main() -> int:
     ap.add_argument("--limit", type=int)
     ap.add_argument("--company")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--write-partial", action="store_true",
+                    help="allow a --limit/--company run to overwrite the full board")
     ap.add_argument("--delay", type=float, default=0.4)
     a = ap.parse_args()
 
@@ -109,13 +111,29 @@ def main() -> int:
     postings, orgs, unreadable = [], [], 0
 
     for c in companies:
+        kind = (c.get("ats") or {}).get("type")
+        ref = (c.get("ats") or {}).get("ref")
+        enumerable = True
         try:
-            jobs = ats.fetch(c["ats"])
+            if kind == "html" and isinstance(ref, str):
+                # The html fetcher returns page text for keyword scanning, never
+                # discrete titles, so an html company contributed nothing to the
+                # board. Try enumerating the links first; most of these pages are
+                # JS-rendered and cannot be, which is why they are html-type.
+                jobs = ats.fetch_html_titles(ref)
+            else:
+                jobs = ats.fetch(c["ats"])
+            err = None
         except Exception as exc:
             jobs, err = [], str(exc)[:60]
-            unreadable += 1
-        else:
-            err = None
+            if kind == "html":
+                # A board that exists but cannot be enumerated is a different
+                # state from a board that cannot be reached. Saying "no roles"
+                # for either is the lie worth avoiding.
+                enumerable = False
+                err = None
+            else:
+                unreadable += 1
 
         fams = collections.Counter()
         kept = 0
@@ -151,6 +169,7 @@ def main() -> int:
             "quota_roles": sum(1 for p in postings
                                if p["company_id"] == c["id"] and p["quota_carrying"]),
             "unreadable": err,
+            "enumerable": enumerable,
         })
         time.sleep(a.delay)
 
@@ -211,6 +230,14 @@ def main() -> int:
         print(f"  {n:>4}  {roles.LABEL.get(f, f)}")
     if a.dry_run:
         print("\n(dry run, nothing written)")
+        return 0
+
+    # A partial run must never overwrite the full board. --limit and --company are
+    # for testing a fetcher, and writing 3 companies over 137 silently destroys the
+    # dataset the site reads. Learned the hard way.
+    if (a.limit or a.company) and not a.write_partial:
+        print("\npartial run, not written. Pass --write-partial to overwrite the "
+              "full board on purpose.")
         return 0
 
     DATA.mkdir(exist_ok=True)

@@ -1,8 +1,11 @@
-name: weekly-refresh
+name: daily-refresh
 
 on:
   schedule:
-    - cron: "0 12 * * 1"   # Mondays 12:00 UTC (~8am ET)
+    # Daily. GitHub cron is always UTC regardless of the TZ env below, which only
+    # sets the container clock for date stamps. 10:00 UTC is 06:00 ET, so a role
+    # posted overnight is on the board before the working day starts.
+    - cron: "0 10 * * *"
   workflow_dispatch: {}
 
 permissions:

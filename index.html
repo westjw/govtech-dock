@@ -137,7 +137,8 @@ function companies(){
       <option value="selling">Selling</option><option value="building">Building</option>
       <option value="absorbing">Absorbing</option><option value="mixed">Mixed</option></select>
     <select id="c-hiring"><option value="">All</option>
-      <option value="1">Has open roles</option><option value="q">Hiring quota-carriers</option></select>`)
+      <option value="1">Has open roles</option><option value="q">Hiring quota-carriers</option>
+      <option value="x">Roles not readable</option></select>`)
     +`<div class="wrap"><table><thead><tr><th>Company</th><th class="num">Open</th>
       <th class="num">Quota</th><th>Phase</th><th>Sector</th><th>ATS</th><th>HQ</th>
       </tr></thead><tbody id="c-body"></tbody></table></div>`;
@@ -153,6 +154,7 @@ function drawCos(){
     if(ph&&!(o.phase||"").startsWith(ph))return false;
     if(h==="1"&&!o.open_roles)return false;
     if(h==="q"&&!o.quota_roles)return false;
+    if(h==="x"&&o.enumerable!==false&&!o.unreadable)return false;
     return true;
   }).sort((a,b)=>b.quota_roles-a.quota_roles||b.open_roles-a.open_roles||a.name.localeCompare(b.name));
   $("#c-n").textContent=`${rows.length} of ${D.organizations.length} companies`;
@@ -160,7 +162,7 @@ function drawCos(){
     <td><strong>${esc(o.name)}</strong><div class="kv">${esc((o.description||"").slice(0,72))}</div></td>
     <td class="num">${o.open_roles||"-"}</td>
     <td class="num">${o.quota_roles?`<strong class="ok">${o.quota_roles}</strong>`:"-"}</td>
-    <td class="kv">${esc(o.phase||"")}</td>
+    <td class="kv">${esc(o.phase||"")}${o.enumerable===false?' <span class="chip warn">not readable</span>':""}</td>
     <td class="kv">${esc(o.sector)}</td>
     <td><span class="chip ${o.ats_ranks==="hard"?"bad":o.ats_ranks==="soft"?"warn":""}">${esc(o.ats||"unknown")}</span></td>
     <td class="kv">${esc(o.location||"")}</td></tr>`).join("")
@@ -191,6 +193,7 @@ function co(encId){
     </div>
     ${o.board_url?`<p><a href="${esc(o.board_url)}" target="_blank" rel="noopener">Open their hiring board &rarr;</a>
       ${o.unreadable?` <span class="chip warn">board could not be read: ${esc(o.unreadable)}</span>`:""}
+      ${o.enumerable===false?` <span class="chip warn">their board is live but its roles cannot be read automatically, so this list may be incomplete</span>`:""}
       ${o.checked_by_hand?` <span class="chip">checked by hand ${esc(o.checked_by_hand)}</span>`:""}</p>`
       :o.unreadable?`<p><span class="chip warn">board could not be read: ${esc(o.unreadable)}</span></p>`:""}
     <h3 style="font-size:13px;margin-top:20px">What kind of hiring</h3>
