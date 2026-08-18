@@ -1,0 +1,29 @@
+name: Add a company
+description: Suggest a state or local government technology company to track
+title: "Add: "
+labels: ["add-company"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit a company URL. A bot works out the name, sector, category and
+        applicant-tracking system, verifies the board can actually be read, and
+        opens a pull request. A person reviews it before anything is added.
+
+        It will not add a company whose sector cannot be inferred confidently or
+        whose job board cannot be read, because a company that looks monitored
+        and is not is worse than one that was never added.
+  - type: input
+    id: url
+    attributes:
+      label: Company website
+      placeholder: https://example.com
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything the bot will get wrong
+      description: Sector, what they actually sell, or where their board really lives.
+    validations:
+      required: false
