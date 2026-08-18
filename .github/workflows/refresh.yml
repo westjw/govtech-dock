@@ -35,6 +35,11 @@ jobs:
         # snapshot stays recoverable in git history, which is the audit trail here.
         run: python scripts/refresh.py --ci --force
 
+      - name: Build the job board and market intel
+        # Keeps every posting, not only AE reqs: the board and the intel both
+        # depend on knowing what KIND of hiring a company is doing.
+        run: python scripts/build_board.py
+
       - name: Regenerate spreadsheet
         run: python scripts/export_xlsx.py
 
