@@ -30,6 +30,15 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Install the browser used for JS-rendered boards
+        # Optional at runtime: build_board falls back to the requests path when
+        # Playwright is absent, so a failure here degrades the board rather than
+        # breaking the run.
+        continue-on-error: true
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
       - name: Self-test
         run: python scripts/selftest.py
 

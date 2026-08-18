@@ -31,6 +31,11 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import ats            # noqa: E402
 import roles          # noqa: E402
 
+try:
+    import render_fetch                            # noqa: E402  optional
+except ImportError:                                # pragma: no cover
+    render_fetch = None
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 HISTORY = DATA / "history"
@@ -96,6 +101,8 @@ def main() -> int:
     ap.add_argument("--limit", type=int)
     ap.add_argument("--company")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--no-render", action="store_true",
+                    help="skip the browser fallback even if Playwright is installed")
     ap.add_argument("--write-partial", action="store_true",
                     help="allow a --limit/--company run to overwrite the full board")
     ap.add_argument("--delay", type=float, default=0.4)
@@ -108,7 +115,7 @@ def main() -> int:
         companies = companies[:a.limit]
 
     today = dt.date.today().isoformat()
-    postings, orgs, unreadable = [], [], 0
+    postings, orgs, unreadable, rendered = [], [], 0, 0
 
     for c in companies:
         kind = (c.get("ats") or {}).get("type")
@@ -126,14 +133,25 @@ def main() -> int:
             err = None
         except Exception as exc:
             jobs, err = [], str(exc)[:60]
-            if kind == "html":
-                # A board that exists but cannot be enumerated is a different
-                # state from a board that cannot be reached. Saying "no roles"
-                # for either is the lie worth avoiding.
-                enumerable = False
-                err = None
-            else:
-                unreadable += 1
+            # Last resort: render the page. Most html boards are JS shells, which
+            # is why requests cannot see them. Optional by design, so the stdlib
+            # path still works end to end when Playwright is absent.
+            if (kind == "html" and isinstance(ref, str) and not a.no_render
+                    and render_fetch is not None and render_fetch.available()):
+                try:
+                    jobs, err = render_fetch.fetch_rendered(ref), None
+                    rendered += 1
+                except Exception:
+                    jobs = []
+            if not jobs:
+                if kind == "html":
+                    # A board that exists but cannot be enumerated is a different
+                    # state from a board that cannot be reached. Saying "no roles"
+                    # for either is the lie worth avoiding.
+                    enumerable = False
+                    err = None
+                else:
+                    unreadable += 1
 
         fams = collections.Counter()
         kept = 0
@@ -211,6 +229,7 @@ def main() -> int:
     payload = {
         "generated": today,
         "companies_read": len(companies), "unreadable": unreadable,
+        "rendered": rendered,
         "manual_postings": manual_count,
         "totals": {
             "postings": len(postings),
@@ -223,7 +242,8 @@ def main() -> int:
         "postings": postings,
     }
 
-    print(f"{len(companies)} companies read, {unreadable} unreadable")
+    print(f"{len(companies)} companies read, {unreadable} unreadable, "
+          f"{rendered} recovered by rendering")
     print(f"{len(postings)} open postings, "
           f"{payload['totals']['quota_carrying']} quota-carrying")
     for f, n in fam_totals.most_common():
