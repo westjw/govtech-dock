@@ -88,18 +88,21 @@ function jobs(){
     <select id="j-us"><option value="">Anywhere</option><option value="1">US only</option>
       <option value="0">Outside the US</option></select>
     <select id="j-quota"><option value="">Any role</option>
-      <option value="1">Quota-carrying only</option></select>`)
+      <option value="1">Quota-carrying only</option></select>
+    <select id="j-src"><option value="">Any source</option>
+      <option value="ats">From a job board</option>
+      <option value="manual">Checked by hand</option></select>`)
     +`<div class="wrap"><table><thead><tr><th>Role</th><th>Company</th><th>Family</th>
       <th>Sector</th><th>Location</th></tr></thead><tbody id="j-body"></tbody></table></div>
       <p class="hint">Every open posting across ${D.organizations.length} state and local
       government technology companies, refreshed weekly. Roles link straight to the posting.
       Undetermined location means the posting did not say, not that it is remote.</p>`;
-  ["j-q","j-fam","j-sec","j-us","j-quota"].forEach(i=>$("#"+i).addEventListener("input",drawJobs));
+  ["j-q","j-fam","j-sec","j-us","j-quota","j-src"].forEach(i=>$("#"+i).addEventListener("input",drawJobs));
   drawJobs();
 }
 function drawJobs(){
   const q=$("#j-q").value.toLowerCase(),f=$("#j-fam").value,s=$("#j-sec").value,
-        u=$("#j-us").value,k=$("#j-quota").value;
+        u=$("#j-us").value,k=$("#j-quota").value,src=$("#j-src").value;
   const rows=D.postings.filter(p=>{
     if(q&&!`${p.title} ${p.company} ${p.location||""} ${p.category}`.toLowerCase().includes(q))return false;
     if(f&&p.family!==f)return false;
@@ -107,12 +110,14 @@ function drawJobs(){
     if(u==="1"&&p.is_us!==true)return false;
     if(u==="0"&&p.is_us!==false)return false;
     if(k==="1"&&!p.quota_carrying)return false;
+    if(src&&(p.source||"ats")!==src)return false;
     return true;
   }).sort((a,b)=>(b.quota_carrying?1:0)-(a.quota_carrying?1:0)||a.company.localeCompare(b.company));
   $("#j-n").textContent=`${rows.length} of ${D.postings.length} postings`;
   $("#j-body").innerHTML=rows.slice(0,400).map(p=>`<tr>
     <td>${p.url?`<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a>`:esc(p.title)}
-      ${p.quota_carrying?'<span class="chip ok">quota</span>':""}</td>
+      ${p.quota_carrying?'<span class="chip ok">quota</span>':""}
+      ${p.source==="manual"?'<span class="chip warn">checked by hand</span>':""}</td>
     <td class="clk" onclick="co('${encodeURIComponent(p.company_id)}')"><strong>${esc(p.company)}</strong></td>
     <td class="kv">${esc(FAM[p.family]||p.family)}</td>
     <td class="kv">${esc(p.sector)} / ${esc(p.category)}</td>
@@ -185,7 +190,8 @@ function co(encId){
         <div class="lbl">${esc(ATSNOTE[o.ats_ranks]||"")}</div></div>
     </div>
     ${o.board_url?`<p><a href="${esc(o.board_url)}" target="_blank" rel="noopener">Open their hiring board &rarr;</a>
-      ${o.unreadable?` <span class="chip warn">board could not be read: ${esc(o.unreadable)}</span>`:""}</p>`
+      ${o.unreadable?` <span class="chip warn">board could not be read: ${esc(o.unreadable)}</span>`:""}
+      ${o.checked_by_hand?` <span class="chip">checked by hand ${esc(o.checked_by_hand)}</span>`:""}</p>`
       :o.unreadable?`<p><span class="chip warn">board could not be read: ${esc(o.unreadable)}</span></p>`:""}
     <h3 style="font-size:13px;margin-top:20px">What kind of hiring</h3>
     ${tot?fam.map(([f,n])=>`<div class="kv"><span style="display:inline-block;width:26px;text-align:right">${n}</span>

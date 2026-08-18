@@ -136,7 +136,7 @@ def main() -> int:
                 "location": loc, "is_us": us,
                 "url": j.get("url") or board_url(c),
                 "sector": c["sector"], "category": c["category"],
-                "first_seen": today,
+                "first_seen": today, "source": "ats",
             })
 
         orgs.append({
@@ -154,6 +154,31 @@ def main() -> int:
         })
         time.sleep(a.delay)
 
+    # Merge hand-checked findings. These come from companies the fetchers cannot
+    # read at all, so an automated run must never delete them: absence from this
+    # run means the fetcher still cannot see the company, not that the role closed.
+    # Only `manual.py none` closes a manual posting.
+    manual_path = DATA / "manual.json"
+    manual_count = 0
+    if manual_path.exists():
+        man = json.loads(manual_path.read_text())
+        checks = man.get("checks", {})
+        by_id = {o["id"]: o for o in orgs}
+        for mp in man.get("postings", []):
+            postings.append({**mp, "source": "manual"})
+            manual_count += 1
+            o = by_id.get(mp["company_id"])
+            if o is not None:
+                o["open_roles"] += 1
+                o["families"][mp["family"]] = o["families"].get(mp["family"], 0) + 1
+                if mp.get("quota_carrying"):
+                    o["quota_roles"] += 1
+                o["phase"] = phase(o["families"])
+        for org in orgs:
+            chk = checks.get(org["id"])
+            if chk:
+                org["checked_by_hand"] = chk.get("checked_on")
+
     # carry first_seen forward so a posting keeps its original date
     prev_path = DATA / "board.json"
     if prev_path.exists():
@@ -167,6 +192,7 @@ def main() -> int:
     payload = {
         "generated": today,
         "companies_read": len(companies), "unreadable": unreadable,
+        "manual_postings": manual_count,
         "totals": {
             "postings": len(postings),
             "quota_carrying": sum(1 for p in postings if p["quota_carrying"]),
