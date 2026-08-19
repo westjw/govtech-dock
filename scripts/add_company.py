@@ -229,8 +229,10 @@ def main() -> int:
 
     url = a.url if a.url.startswith("http") else "https://" + a.url
     companies = json.loads((DATA / "companies.json").read_text())
+    suppliers_path = DATA / "suppliers.json"
+    suppliers = json.loads(suppliers_path.read_text()) if suppliers_path.exists() else []
     host = urllib.parse.urlparse(url).netloc.replace("www.", "")
-    dupe = next((c for c in companies
+    dupe = next((c for c in companies + suppliers
                  if host and host in (c.get("website") or "")), None)
     if dupe:
         print(f"already tracked: {dupe['name']} ({dupe['id']})")

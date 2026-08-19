@@ -6,7 +6,9 @@
         "Fire",
         "Police",
         "EMS",
-        "Emergency Mgmt"
+        "Emergency Mgmt",
+        "Corrections",
+        "Suppliers & Services"
       ],
       "xlsx": {
         "head": "C0392B",
@@ -19,7 +21,8 @@
         "Waste & Recycling",
         "Streets",
         "Water",
-        "Fleet & Asset Mgmt"
+        "Fleet & Asset Mgmt",
+        "Suppliers & Services"
       ],
       "xlsx": {
         "head": "1F618D",
@@ -33,7 +36,13 @@
         "Permitting & Licensing",
         "Finance & ERP",
         "Procurement & Payments",
-        "HR & Workforce"
+        "HR & Workforce",
+        "Cemetery Management",
+        "Strategy & Performance",
+        "Health & Human Services",
+        "Elections",
+        "Courts & Justice",
+        "Suppliers & Services"
       ],
       "xlsx": {
         "head": "1E8449",
@@ -44,7 +53,10 @@
       "name": "Parks & Rec",
       "categories": [
         "Recreation Management",
-        "Youth Sports & Leagues"
+        "Youth Sports & Leagues",
+        "Park Ops & Safety Tech",
+        "Events & Tourism",
+        "Suppliers & Services"
       ],
       "xlsx": {
         "head": "CA6F1E",
@@ -56,7 +68,8 @@
       "categories": [
         "School Safety",
         "Transportation",
-        "Operations & SIS"
+        "Operations & SIS",
+        "Suppliers & Services"
       ],
       "xlsx": {
         "head": "6C3483",
@@ -66,12 +79,43 @@
     {
       "name": "Transit & Parking",
       "categories": [
-        "Transit Tech",
-        "Parking & Curb"
+        "Fare & Payments",
+        "Fleet & Operations",
+        "Rider Experience",
+        "Demand-Response & AV",
+        "Parking & Curb",
+        "Suppliers & Services"
       ],
       "xlsx": {
         "head": "148F77",
         "band": "E8F8F5"
+      }
+    },
+    {
+      "name": "Utilities & Energy",
+      "categories": [
+        "Street Lighting & Poles",
+        "Grid & Energy",
+        "Suppliers & Services",
+        "Broadband & Connectivity"
+      ],
+      "xlsx": {
+        "head": "B7950B",
+        "band": "FEF9E7"
+      }
+    },
+    {
+      "name": "Airports & Aviation",
+      "categories": [
+        "Airfield & Operations",
+        "Terminal & Passenger Experience",
+        "Security & Screening",
+        "Parking & Ground Transport",
+        "Suppliers & Services"
+      ],
+      "xlsx": {
+        "head": "5B2C6F",
+        "band": "F3EAF7"
       }
     }
   ]

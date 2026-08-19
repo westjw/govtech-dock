@@ -163,6 +163,119 @@ STATE = re.compile(r",\s*(A[LKZR]|C[AOT]|DE|FL|GA|HI|I[DLNA]|K[SY]|LA|M[EDAINSOT
                    r"N[EVHJMYCD]|O[HKR]|PA|RI|S[CD]|T[NX]|UT|V[TA]|W[AVIY]|DC)\b")
 
 
+# ---------------------------------------------------------------- territory
+STATE_CODES = {
+    "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA",
+    "KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ",
+    "NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT",
+    "VA","WA","WV","WI","WY","DC"}
+STATE_NAMES = {
+    "alabama":"AL","alaska":"AK","arizona":"AZ","arkansas":"AR","california":"CA",
+    "colorado":"CO","connecticut":"CT","delaware":"DE","florida":"FL","georgia":"GA",
+    "hawaii":"HI","idaho":"ID","illinois":"IL","indiana":"IN","iowa":"IA",
+    "kansas":"KS","kentucky":"KY","louisiana":"LA","maine":"ME","maryland":"MD",
+    "massachusetts":"MA","michigan":"MI","minnesota":"MN","mississippi":"MS",
+    "missouri":"MO","montana":"MT","nebraska":"NE","nevada":"NV",
+    "new hampshire":"NH","new jersey":"NJ","new mexico":"NM","new york":"NY",
+    "north carolina":"NC","north dakota":"ND","ohio":"OH","oklahoma":"OK",
+    "oregon":"OR","pennsylvania":"PA","rhode island":"RI","south carolina":"SC",
+    "south dakota":"SD","tennessee":"TN","texas":"TX","utah":"UT","vermont":"VT",
+    "virginia":"VA","washington":"WA","west virginia":"WV","wisconsin":"WI",
+    "wyoming":"WY","district of columbia":"DC"}
+REGIONS = {
+    "Northeast": {"NY","NJ","CT","MA","PA","RI","VT","NH","ME","MD","DE","DC"},
+    "Southeast": {"FL","GA","NC","SC","VA","WV","TN","KY","AL","MS","AR","LA"},
+    "Midwest": {"OH","MI","IN","IL","WI","MN","IA","MO","ND","SD","NE","KS"},
+    "Southwest": {"TX","OK","NM","AZ"},
+    "West": {"CA","OR","WA","NV","ID","UT","CO","MT","WY","AK","HI"},
+}
+REGION_WORDS = {
+    "northeast":"Northeast","north east":"Northeast","new england":"Northeast",
+    "mid-atlantic":"Northeast","mid atlantic":"Northeast","tri-state":"Northeast",
+    "east coast":"Northeast","eastern":"Northeast",
+    "southeast":"Southeast","south east":"Southeast","gulf coast":"Southeast",
+    "midwest":"Midwest","mid-west":"Midwest","great lakes":"Midwest",
+    "southwest":"Southwest","south west":"Southwest",
+    "west coast":"West","western":"West","pacific northwest":"West","pnw":"West",
+    "mountain west":"West",
+}
+
+REMOTE_RE = re.compile(r"\bremote\b|\bwork from home\b|\bwfh\b|\banywhere\b", re.I)
+HYBRID_RE = re.compile(r"\bhybrid\b", re.I)
+ONSITE_RE = re.compile(r"\bon-?site\b|\bin-?office\b|\bin-?person\b", re.I)
+
+
+def territory(location_text: str, title: str = "") -> dict:
+    """States and region a posting covers, and how the work is done.
+
+    Territory sales put the geography in the TITLE and the company HQ in the
+    location field: "Enterprise Account Executive - NY, MA, VT, NH" listed as
+    "Denver, CO". Reading only the location field files a Northeast territory
+    under Colorado, so both are searched and title states win.
+    """
+    blob = f"{title} {location_text or ''}"
+    codes = {c for c in re.findall(r"\b([A-Z]{2})\b", title or "") if c in STATE_CODES}
+    if not codes:
+        codes = {c for c in re.findall(r"\b([A-Z]{2})\b", location_text or "")
+                 if c in STATE_CODES}
+    low = blob.lower()
+    for name, code in STATE_NAMES.items():
+        if re.search(r"\b" + re.escape(name) + r"\b", low):
+            codes.add(code)
+    region = None
+    for word, reg in REGION_WORDS.items():
+        if re.search(r"\b" + re.escape(word) + r"\b", low):
+            region = reg
+            break
+    if region is None and codes:
+        for reg, members in REGIONS.items():
+            if codes & members and codes <= members:
+                region = reg
+                break
+    # States named in the TITLE describe a territory to cover, not an office to sit
+    # in. Calling "Enterprise AE - NY, MA, VT, NH" onsite because it lists states
+    # would file a field role as desk-bound.
+    title_states = bool({c for c in re.findall(r"\b([A-Z]{2})\b", title or "")
+                         if c in STATE_CODES}) or (region and
+                                                   re.search(r"\b(territory|regional)\b",
+                                                             title or "", re.I))
+    if REMOTE_RE.search(blob) and not ONSITE_RE.search(blob):
+        mode = "remote"
+    elif HYBRID_RE.search(blob):
+        mode = "hybrid"
+    elif title_states:
+        mode = "territory"
+    elif ONSITE_RE.search(blob) or codes:
+        mode = "onsite"
+    else:
+        mode = "unknown"
+    return {"states": sorted(codes), "region": region, "work_mode": mode}
+
+
+# ---------------------------------------------------------------- seniority
+# A proxy for the years a JD will ask for, derivable from the title alone. Actual
+# years live in the JD body, which is not fetched for every posting.
+_LEAD = re.compile(r"\b(chief|\bc[efimoprt]o\b|founder|president|vp\b|"
+                   r"vice president|head of|general manager)\b", re.I)
+_SENIOR = re.compile(r"\b(senior|sr\.?|principal|staff|lead\b|director|"
+                     r"strategic|major|enterprise)\b", re.I)
+_JUNIOR = re.compile(r"\b(junior|jr\.?|associate|entry|intern|apprentice|"
+                     r"assistant|graduate|trainee|\bsdr\b|\bbdr\b|"
+                     r"sales development (rep|representative)|"
+                     r"business development (rep|representative))\b", re.I)
+
+
+def seniority(title: str) -> str:
+    t = title or ""
+    if _LEAD.search(t):
+        return "leadership"
+    if _SENIOR.search(t):
+        return "senior"
+    if _JUNIOR.search(t):
+        return "junior"
+    return "mid"
+
+
 def is_us(location_text: str, title: str = "") -> bool | None:
     """True, False, or None when undeterminable.
 

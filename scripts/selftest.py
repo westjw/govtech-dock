@@ -99,9 +99,12 @@ def main() -> int:
         errors += fail("duplicate company ids")
     for c in companies:
         where = f"{c.get('name', '???')}"
-        for field in ("id", "name", "location", "year_founded", "sector",
-                      "category", "description", "ats", "hiring"):
-            if c.get(field) in (None, "") and field != "website":
+        # Required to function: an entry without these cannot be keyed, placed in
+        # the market map, or monitored. Everything else is research that may not
+        # exist yet for a company somebody just added, and demanding it would mean
+        # refusing to track a real company for want of a founding year.
+        for field in ("id", "name", "sector", "category", "ats", "hiring"):
+            if c.get(field) in (None, ""):
                 errors += fail(f"{where}: missing {field}")
         if c["sector"] not in sector_cats:
             errors += fail(f"{where}: unknown sector {c['sector']}")
@@ -111,8 +114,9 @@ def main() -> int:
             errors += fail(f"{where}: bad ats type {c['ats']['type']}")
         if c["hiring"]["status"] not in STATUSES:
             errors += fail(f"{where}: bad status {c['hiring']['status']}")
-        if not isinstance(c["year_founded"], int) or not (1800 <= c["year_founded"] <= 2100):
-            errors += fail(f"{where}: suspicious year {c['year_founded']}")
+        y = c.get("year_founded")
+        if y is not None and (not isinstance(y, int) or not (1800 <= y <= 2100)):
+            errors += fail(f"{where}: suspicious year {y}")
 
     for title, expected in CLASSIFIER_CASES:
         got = classify.classify_title(title)
@@ -164,6 +168,10 @@ def main() -> int:
         errors += fail("no hiring_history snapshots")
 
     n_api = sum(1 for c in companies if c["ats"]["type"] not in ("html", "unknown"))
+    thin = sum(1 for c in companies if not c.get("location") or not c.get("year_founded"))
+    if thin:
+        print(f"note: {thin} companies are missing optional research "
+              f"(location or founding year)")
     print(f"{len(companies)} companies | {n_api} on structured ATS APIs | "
           f"{len(hist)} snapshot(s) | classifier cases: {len(CLASSIFIER_CASES)} title, "
           f"{len(PAGESCAN_CASES)} page-scan")

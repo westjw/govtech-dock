@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import concurrent.futures as cf
 import datetime as dt
 import json
 import pathlib
@@ -42,7 +43,10 @@ HISTORY = DATA / "history"
 
 # sector -> buyer motion tier. 1 = municipal SaaS full-cycle, 2 = adjacent.
 TIER = {"General Gov": 1, "Public Works": 1, "Parks & Rec": 1,
-        "Public Safety": 2, "Transit & Parking": 2, "K-12 Schools": 2}
+        "Public Safety": 2, "Transit & Parking": 2, "K-12 Schools": 2,
+        # Municipal utilities and airports are public-sector buyers with the same
+        # procurement motion, one step further from the city-hall relationship.
+        "Utilities & Energy": 2, "Airports & Aviation": 2}
 
 # Which applicant-tracking systems actually rank applicants. A resume seeded with
 # exact keywords helps on the first two and does close to nothing on the third.
@@ -106,6 +110,7 @@ def main() -> int:
     ap.add_argument("--write-partial", action="store_true",
                     help="allow a --limit/--company run to overwrite the full board")
     ap.add_argument("--delay", type=float, default=0.4)
+    ap.add_argument("--workers", type=int, default=10)
     a = ap.parse_args()
 
     companies = json.loads((DATA / "companies.json").read_text())
@@ -117,41 +122,49 @@ def main() -> int:
     today = dt.date.today().isoformat()
     postings, orgs, unreadable, rendered = [], [], 0, 0
 
-    for c in companies:
+    # Fetch in parallel. Sequentially, 362 boards plus renders took 71 minutes,
+    # which does not fit a daily job. Most of that is waiting on sockets, so
+    # concurrency is the whole fix. Rendering stays sequential afterwards: it is
+    # heavy, and only a handful of pages need it.
+    def read_board(c):
         kind = (c.get("ats") or {}).get("type")
         ref = (c.get("ats") or {}).get("ref")
-        enumerable = True
+        if kind in (None, "unknown") or ref is None:
+            return c, [], None, True, False       # nothing on file to read
         try:
             if kind == "html" and isinstance(ref, str):
-                # The html fetcher returns page text for keyword scanning, never
-                # discrete titles, so an html company contributed nothing to the
-                # board. Try enumerating the links first; most of these pages are
-                # JS-rendered and cannot be, which is why they are html-type.
-                jobs = ats.fetch_html_titles(ref)
-            else:
-                jobs = ats.fetch(c["ats"])
-            err = None
+                return c, ats.fetch_html_titles(ref), None, True, False
+            return c, ats.fetch(c["ats"]), None, True, False
         except Exception as exc:
-            jobs, err = [], str(exc)[:60]
-            # Last resort: render the page. Most html boards are JS shells, which
-            # is why requests cannot see them. Optional by design, so the stdlib
-            # path still works end to end when Playwright is absent.
-            if (kind == "html" and isinstance(ref, str) and not a.no_render
-                    and render_fetch is not None and render_fetch.available()):
-                try:
-                    jobs, err = render_fetch.fetch_rendered(ref), None
-                    rendered += 1
-                except Exception:
-                    jobs = []
-            if not jobs:
-                if kind == "html":
-                    # A board that exists but cannot be enumerated is a different
-                    # state from a board that cannot be reached. Saying "no roles"
-                    # for either is the lie worth avoiding.
-                    enumerable = False
-                    err = None
-                else:
-                    unreadable += 1
+            return c, [], str(exc)[:60], True, kind == "html"
+
+    fetched = []
+    with cf.ThreadPoolExecutor(max_workers=a.workers) as ex:
+        for i, res in enumerate(ex.map(read_board, companies), 1):
+            fetched.append(res)
+            if i % 500 == 0:
+                print(f"  fetched {i}/{len(companies)}...")
+
+    for c, jobs, err, enumerable, may_render in fetched:
+        kind = (c.get("ats") or {}).get("type")
+        ref = (c.get("ats") or {}).get("ref")
+        no_board = kind in (None, "unknown") or ref is None
+
+        if err and may_render and not a.no_render and render_fetch is not None \
+                and render_fetch.available():
+            try:
+                jobs, err = render_fetch.fetch_rendered(ref), None
+                rendered += 1
+            except Exception:
+                jobs = []
+        if err and not jobs:
+            if kind == "html":
+                enumerable = False
+                err = None
+            else:
+                unreadable += 1
+        if not jobs and kind == "html" and not err:
+            enumerable = False
 
         fams = collections.Counter()
         kept = 0
@@ -161,7 +174,7 @@ def main() -> int:
                 continue
             loc = j.get("location") or ""
             fam = roles.family(title)
-            us = roles.is_us(loc, title)
+            terr = roles.territory(loc, title)
             fams[fam] += 1
             kept += 1
             postings.append({
@@ -169,7 +182,10 @@ def main() -> int:
                 "company": c["name"], "company_id": c["id"],
                 "title": title, "family": fam,
                 "quota_carrying": roles.is_quota_carrying(title),
-                "location": loc, "is_us": us,
+                "seniority": roles.seniority(title),
+                "states": terr["states"], "region": terr["region"],
+                "work_mode": terr["work_mode"],
+                "location": loc, "is_us": roles.is_us(loc, title),
                 "url": j.get("url") or board_url(c),
                 "sector": c["sector"], "category": c["category"],
                 "first_seen": today, "source": "ats",
@@ -180,16 +196,19 @@ def main() -> int:
             "category": c["category"], "location": c.get("location"),
             "year_founded": c.get("year_founded"), "description": c.get("description"),
             "website": c.get("website"), "board_url": board_url(c),
-            "ats": (c.get("ats") or {}).get("type"),
-            "ats_ranks": ats_tier((c.get("ats") or {}).get("type")),
+            "ats": kind, "ats_ranks": ats_tier(kind),
             "tier": TIER.get(c["sector"]),
+            "vendor_type": c.get("vendor_type"), "govtech": c.get("govtech"),
             "open_roles": kept, "families": dict(fams), "phase": phase(fams),
             "quota_roles": sum(1 for p in postings
                                if p["company_id"] == c["id"] and p["quota_carrying"]),
             "unreadable": err,
+            # A company with nothing on file has not failed; it has never been
+            # tried. Counting 4,137 of those as "unreadable" made a discovery
+            # backlog look like a systemic fetch failure.
+            "no_board_on_file": no_board,
             "enumerable": enumerable,
         })
-        time.sleep(a.delay)
 
     # Merge hand-checked findings. These come from companies the fetchers cannot
     # read at all, so an automated run must never delete them: absence from this
@@ -224,12 +243,19 @@ def main() -> int:
             if p["id"] in prev:
                 p["first_seen"] = prev[p["id"]]["first_seen"]
 
+    for mp in postings:
+        if "seniority" not in mp:            # manual entries predate these fields
+            t = roles.territory(mp.get("location", ""), mp.get("title", ""))
+            mp.update(seniority=roles.seniority(mp.get("title", "")),
+                      states=t["states"], region=t["region"], work_mode=t["work_mode"])
+
     fam_totals = collections.Counter(p["family"] for p in postings)
     sector_totals = collections.Counter(p["sector"] for p in postings)
     payload = {
         "generated": today,
         "companies_read": len(companies), "unreadable": unreadable,
         "rendered": rendered,
+        "no_board_on_file": sum(1 for o in orgs if o.get("no_board_on_file")),
         "manual_postings": manual_count,
         "totals": {
             "postings": len(postings),
@@ -242,8 +268,10 @@ def main() -> int:
         "postings": postings,
     }
 
-    print(f"{len(companies)} companies read, {unreadable} unreadable, "
-          f"{rendered} recovered by rendering")
+    no_board = sum(1 for o in orgs if o.get("no_board_on_file"))
+    print(f"{len(companies)} companies: {len(companies) - no_board} with a board on "
+          f"file, {no_board} awaiting discovery")
+    print(f"  {unreadable} boards unreadable, {rendered} recovered by rendering")
     print(f"{len(postings)} open postings, "
           f"{payload['totals']['quota_carrying']} quota-carrying")
     for f, n in fam_totals.most_common():

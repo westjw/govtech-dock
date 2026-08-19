@@ -86,6 +86,8 @@ function filters(id,extra){return `<div class="bar">
 function jobs(){
   const fams=[...new Set(D.postings.map(p=>p.family))].sort((a,b)=>(FAM[a]||a).localeCompare(FAM[b]||b));
   const secs=[...new Set(D.postings.map(p=>p.sector))].sort();
+  const states=[...new Set(D.postings.flatMap(p=>p.states||[]))].sort();
+  const regions=[...new Set(D.postings.map(p=>p.region).filter(Boolean))].sort();
   $("#view").innerHTML=filters("j",`
     <select id="j-fam"><option value="">All role families</option>
       ${fams.map(f=>`<option value="${f}">${esc(FAM[f]||f)}</option>`).join("")}</select>
@@ -97,18 +99,35 @@ function jobs(){
       <option value="1">Quota-carrying only</option></select>
     <select id="j-src"><option value="">Any source</option>
       <option value="ats">From a job board</option>
-      <option value="manual">Checked by hand</option></select>`)
+      <option value="manual">Checked by hand</option></select>
+    <select id="j-state"><option value="">Any state</option>
+      ${states.map(x=>`<option>${x}</option>`).join("")}</select>
+    <select id="j-region"><option value="">Any region</option>
+      ${regions.map(x=>`<option>${esc(x)}</option>`).join("")}</select>
+    <select id="j-mode"><option value="">Any work mode</option>
+      <option value="remote">Remote</option><option value="hybrid">Hybrid</option>
+      <option value="territory">Field territory</option>
+      <option value="onsite">Onsite</option><option value="unknown">Not stated</option></select>
+    <select id="j-sen"><option value="">Any level</option>
+      <option value="junior">Junior</option><option value="mid">Mid</option>
+      <option value="senior">Senior</option><option value="leadership">Leadership</option></select>`)
     +`<div class="wrap"><table><thead><tr><th>Role</th><th>Company</th><th>Family</th>
-      <th>Sector</th><th>Location</th></tr></thead><tbody id="j-body"></tbody></table></div>
+      <th>Sector</th><th>Level</th><th>Where</th></tr></thead><tbody id="j-body"></tbody></table></div>
       <p class="hint">Every open posting across ${D.organizations.length} state and local
       government technology companies, refreshed weekly. Roles link straight to the posting.
-      Undetermined location means the posting did not say, not that it is remote.</p>`;
-  ["j-q","j-fam","j-sec","j-us","j-quota","j-src"].forEach(i=>$("#"+i).addEventListener("input",drawJobs));
+      Undetermined location means the posting did not say, not that it is remote.
+      Level is inferred from the title, which is a proxy: the years a posting actually
+      asks for live in the job description, and only titles are fetched for every
+      company. Field territory means the states are named in the title, so the role
+      covers them rather than sitting in them.</p>`;
+  ["j-q","j-fam","j-sec","j-us","j-quota","j-src","j-state","j-region","j-mode","j-sen"].forEach(i=>$("#"+i).addEventListener("input",drawJobs));
   drawJobs();
 }
 function drawJobs(){
   const q=$("#j-q").value.toLowerCase(),f=$("#j-fam").value,s=$("#j-sec").value,
-        u=$("#j-us").value,k=$("#j-quota").value,src=$("#j-src").value;
+        u=$("#j-us").value,k=$("#j-quota").value,src=$("#j-src").value,
+        st=$("#j-state").value,rg=$("#j-region").value,md=$("#j-mode").value,
+        sen=$("#j-sen").value;
   const rows=D.postings.filter(p=>{
     if(q&&!`${p.title} ${p.company} ${p.location||""} ${p.category}`.toLowerCase().includes(q))return false;
     if(f&&p.family!==f)return false;
@@ -117,6 +136,10 @@ function drawJobs(){
     if(u==="0"&&p.is_us!==false)return false;
     if(k==="1"&&!p.quota_carrying)return false;
     if(src&&(p.source||"ats")!==src)return false;
+    if(st&&!(p.states||[]).includes(st))return false;
+    if(rg&&p.region!==rg)return false;
+    if(md&&p.work_mode!==md)return false;
+    if(sen&&p.seniority!==sen)return false;
     return true;
   }).sort((a,b)=>(b.quota_carrying?1:0)-(a.quota_carrying?1:0)||a.company.localeCompare(b.company));
   $("#j-n").textContent=`${rows.length} of ${D.postings.length} postings`;
@@ -127,9 +150,12 @@ function drawJobs(){
     <td class="clk" onclick="co('${encodeURIComponent(p.company_id)}')"><strong>${esc(p.company)}</strong></td>
     <td class="kv">${esc(FAM[p.family]||p.family)}</td>
     <td class="kv">${esc(p.sector)} / ${esc(p.category)}</td>
+    <td class="kv">${esc(p.seniority||"")}</td>
     <td class="kv">${esc(p.location||"not stated")}
+      ${p.work_mode&&p.work_mode!=="unknown"?`<span class="chip">${esc(p.work_mode)}</span>`:""}
+      ${(p.states||[]).length?`<span class="chip">${esc((p.states||[]).slice(0,4).join(" "))}</span>`:""}
       ${p.is_us===false?'<span class="chip">non-US</span>':""}</td></tr>`).join("")
-    ||`<tr><td colspan="5" class="empty">No postings match.</td></tr>`;
+    ||`<tr><td colspan="6" class="empty">No postings match.</td></tr>`;
   if(rows.length>400) $("#j-n").textContent+=" (showing 400)";
 }
 
