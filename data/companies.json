@@ -7239,7 +7239,8 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "NACo 2026",
-    "researched": true
+    "researched": true,
+    "adjacent_to_us": "recruiting and classification software sold to agencies"
   },
   {
     "id": "bamboo-health",
@@ -9955,7 +9956,8 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "direct add",
-    "researched": true
+    "researched": true,
+    "adjacent_to_us": "application and recruiting platform sold to police departments"
   },
   {
     "id": "forcemetrics",
@@ -20287,7 +20289,8 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "IACP 2026",
-    "researched": false
+    "researched": false,
+    "adjacent_to_us": "public safety HR and job board sold to agencies"
   },
   {
     "id": "vocal-technologies-inc",
@@ -26185,30 +26188,6 @@
     "ats": {
       "type": "html",
       "ref": "https://skillsmart.us/careers"
-    },
-    "hiring": {
-      "status": "Unknown",
-      "note": "from competitor sweep; hiring unverified",
-      "roles": [],
-      "checked": null
-    },
-    "govtech": true,
-    "researched": false,
-    "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
-  },
-  {
-    "id": "careers-in-government",
-    "name": "Careers In Government",
-    "website": "https://www.careersingovernment.com",
-    "location": "Los Angeles, CA",
-    "year_founded": 1996,
-    "sector": "General Gov",
-    "category": "HR & Workforce",
-    "description": "Job board and employer branding for public sector hiring agencies",
-    "ats": {
-      "type": "unknown",
-      "ref": null
     },
     "hiring": {
       "status": "Unknown",

@@ -1,12 +1,12 @@
 {
- "generated": "2026-08-18",
- "total": 2776,
- "with_website": 367,
+ "generated": "2026-08-19",
+ "total": 2777,
+ "with_website": 368,
  "vendor_types": {
   "Equipment / Components": 1801,
   "Distributor / Reseller / Co-op": 163,
   "Services (non-tech)": 225,
-  "Association / Gov / Media": 273,
+  "Association / Gov / Media": 274,
   "Engineering / Consulting": 314
  },
  "sectors": {
@@ -14,7 +14,7 @@
   "Parks & Rec": 561,
   "Public Safety": 638,
   "Transit & Parking": 548,
-  "General Gov": 492,
+  "General Gov": 493,
   "Utilities & Energy": 8,
   "Airports & Aviation": 153
  },
@@ -27778,6 +27778,16 @@
    "description": "Industry association with a State Broadband Office membership program: research, events, technician training - exhibited at Broadband Nation 2026",
    "website": "https://fiberbroadband.org",
    "source": "Broadband Nation 2026"
+  },
+  {
+   "id": "careers-in-government",
+   "name": "Careers In Government",
+   "sector": "General Gov",
+   "category": "Suppliers & Services",
+   "vendor_type": "Association / Gov / Media",
+   "description": "Job board and employer branding for public sector hiring agencies",
+   "website": "https://www.careersingovernment.com",
+   "source": "competitor sweep"
   }
  ]
 }
