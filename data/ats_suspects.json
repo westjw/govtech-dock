@@ -1,0 +1,50 @@
+{
+ "loop": {
+  "ats": {
+   "type": "bamboohr",
+   "ref": "boxclever"
+  },
+  "note": "bamboohr:boxclever reads, but the slug does not match 'Loop'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "camino-technologies": {
+  "ats": {
+   "type": "greenhouse",
+   "ref": "clariticloudinc"
+  },
+  "note": "greenhouse:clariticloudinc reads, but the slug does not match 'Camino Technologies'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "careers-in-government": {
+  "ats": {
+   "type": "breezy",
+   "ref": "skagit-911"
+  },
+  "note": "breezy:skagit-911 reads, but the slug does not match 'Careers In Government'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "bonfire-interactive": {
+  "ats": {
+   "type": "bamboohr",
+   "ref": "euna"
+  },
+  "note": "bamboohr:euna reads, but the slug does not match 'Bonfire Interactive'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "mdf-commerce": {
+  "ats": {
+   "type": "ashby",
+   "ref": "sovra"
+  },
+  "note": "ashby:sovra reads, but the slug does not match 'mdf commerce'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "ionwave-technologies": {
+  "ats": {
+   "type": "bamboohr",
+   "ref": "euna"
+  },
+  "note": "bamboohr:euna reads, but the slug does not match 'Ionwave Technologies'; likely someone else's board",
+  "on": "2026-08-19"
+ }
+}

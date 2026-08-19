@@ -33,6 +33,7 @@ import pathlib
 import re
 import sys
 import threading
+import time
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import ats            # noqa: E402
@@ -40,6 +41,7 @@ import ats            # noqa: E402
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 LOG = DATA / "discovery_log.json"
+SUSPECTS = DATA / "ats_suspects.json"
 
 # Retry a failed probe after this long. Companies add job boards; a permanent
 # "nothing found" would freeze a company out of monitoring forever.
@@ -82,17 +84,26 @@ def slug_matches(slug: str, company: dict) -> bool:
     sl = _norm(slug)
     if not sl:
         return False
-    name = _norm(company.get("name", ""))
+    raw = company.get("name", "")
+    name = _norm(raw)
     host = _norm((company.get("website") or "").split("//")[-1].split("/")[0]
                  .replace("www.", "").split(".")[0])
-    for other in (name, host):
+    # A parenthetical usually names the acquirer: "Simpleview (Granicus)" posts on
+    # Granicus's board, and rejecting that loses a real, correct find.
+    paren = [_norm(x) for x in re.findall(r"\(([^)]{2,40})\)", raw)]
+    first = _norm(re.split(r"[^A-Za-z0-9]+", raw)[0]) if raw else ""
+
+    for other in [name, host, *paren]:
         if not other:
             continue
         if sl in other or other in sl:
             return True
-        # a short shared prefix catches "escribe" vs "escribemeetings"
         if len(sl) >= 5 and len(other) >= 5 and sl[:5] == other[:5]:
             return True
+    # A slug built from the company's first word plus a suffix is theirs:
+    # "MCM Technology LLC" posts at rippling:mcmjobs.
+    if len(first) >= 3 and sl.startswith(first):
+        return True
     return False
 
 _lock = threading.Lock()
@@ -112,11 +123,28 @@ def stale(entry: dict | None) -> bool:
     return age >= RETRY_DAYS
 
 
+# Discovery probes do not need the fetcher's patience. At 20 seconds a request
+# and up to eight paths per company, one dead domain costs 160 seconds of worker
+# time, which is what turned a 1,245-company sweep into a multi-hour run.
+PROBE_TIMEOUT = 6
+
+
 def get(url: str) -> str:
+    import requests
     try:
-        return ats._get(url).text
+        r = requests.get(url, headers=ats.UA, timeout=PROBE_TIMEOUT,
+                         allow_redirects=True)
     except Exception:
         return ""
+    return r.text if r.status_code == 200 else ""
+
+
+# A hard ceiling per company. requests' timeout governs each socket operation,
+# not the whole request, so a server trickling bytes can hold a worker open
+# indefinitely: a 1,245-company sweep ran 10.5 hours, past the point where every
+# fetch timing out would have finished, and wrote nothing. No company is worth
+# more than this.
+COMPANY_BUDGET = 25
 
 
 def probe(company: dict) -> dict:
@@ -124,7 +152,11 @@ def probe(company: dict) -> dict:
     site = (company.get("website") or "").rstrip("/")
     if not site:
         return {"id": company["id"], "found": None, "note": "no website on file"}
+    started = time.monotonic()
     for path in [""] + CAREER_PATHS:
+        if time.monotonic() - started > COMPANY_BUDGET:
+            return {"id": company["id"], "found": None,
+                    "note": f"gave up after {COMPANY_BUDGET}s"}
         html = get(site + path)
         if not html:
             continue
@@ -137,7 +169,11 @@ def probe(company: dict) -> dict:
                 continue
             block = {"type": kind, "ref": slug}
             try:
-                jobs = ats.fetch(block)
+                saved, ats.TIMEOUT = ats.TIMEOUT, 10
+                try:
+                    jobs = ats.fetch(block)
+                finally:
+                    ats.TIMEOUT = saved
             except Exception as exc:
                 return {"id": company["id"], "found": None,
                         "note": f"{kind}:{slug} found but unreadable ({str(exc)[:40]})"}
@@ -166,10 +202,47 @@ def main() -> int:
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--stats", action="store_true")
+    ap.add_argument("--review", action="store_true",
+                    help="list boards that read fine but whose slug did not match")
+    ap.add_argument("--confirm", metavar="COMPANY_ID",
+                    help="accept a reviewed board for this company")
     a = ap.parse_args()
 
     companies = json.loads((DATA / "companies.json").read_text())
     log = load_log()
+
+    if a.confirm:
+        sus = json.loads(SUSPECTS.read_text()) if SUSPECTS.exists() else {}
+        entry = sus.get(a.confirm)
+        if not entry:
+            print(f"no reviewable board for {a.confirm!r}", file=sys.stderr)
+            return 1
+        by_id = {c["id"]: c for c in companies}
+        if a.confirm not in by_id:
+            print(f"no company {a.confirm!r}", file=sys.stderr)
+            return 1
+        by_id[a.confirm]["ats"] = entry["ats"]
+        (DATA / "companies.json").write_text(json.dumps(companies, indent=2) + "\n")
+        sus.pop(a.confirm)
+        SUSPECTS.write_text(json.dumps(sus, indent=1) + "\n")
+        print(f"{by_id[a.confirm]['name']} now monitored via "
+              f"{entry['ats']['type']}:{entry['ats']['ref']}")
+        return 0
+
+    if a.review:
+        sus = json.loads(SUSPECTS.read_text()) if SUSPECTS.exists() else {}
+        if not sus:
+            print("nothing awaiting review")
+            return 0
+        by_id = {c["id"]: c for c in companies}
+        print(f"{len(sus)} board(s) read fine but the slug did not match the company.")
+        print("These are usually acquisitions. Confirm the ones that are real:\n")
+        for cid, e in sus.items():
+            name = by_id.get(cid, {}).get("name", cid)
+            print(f"  {name}")
+            print(f"    board:   {e['ats']['type']}:{e['ats']['ref']}")
+            print(f"    accept:  python3 scripts/discover_ats.py --confirm {cid}")
+        return 0
 
     if a.stats:
         t = collections.Counter((c.get("ats") or {}).get("type") for c in companies)
@@ -199,17 +272,43 @@ def main() -> int:
         print("nothing to probe. every company either has a board or was tried recently.")
         return 0
 
-    print(f"probing {len(todo)} companies with {a.workers} workers...")
+    print(f"probing {len(todo)} companies with {a.workers} workers...", flush=True)
     today = dt.date.today().isoformat()
     results = []
+    by_id_all = {c["id"]: c for c in companies}
+
+    def checkpoint():
+        """Write what we have. Without this a long sweep that is interrupted, or
+        that someone has to stop, loses every probe it completed."""
+        for r in results:
+            log[r["id"]] = {"on": today, "found": bool(r.get("found")),
+                            "note": r["note"]}
+            if a.write and r.get("found"):
+                by_id_all[r["id"]]["ats"] = r["found"]
+        LOG.write_text(json.dumps(log, indent=1) + "\n")
+        if a.write:
+            (DATA / "companies.json").write_text(json.dumps(companies, indent=2) + "\n")
+
     with cf.ThreadPoolExecutor(max_workers=a.workers) as ex:
         for i, r in enumerate(ex.map(probe, todo), 1):
             results.append(r)
             if i % 50 == 0:
-                print(f"  {i}/{len(todo)}...")
+                hits = sum(1 for x in results if x.get("found"))
+                print(f"  {i}/{len(todo)}, {hits} board(s) found so far", flush=True)
+                checkpoint()
+    checkpoint()
 
+    # Persist the near-misses. A readable board whose slug does not match is
+    # usually an acquisition the name gives no hint of: Bonfire Interactive posts
+    # on Euna's board because Euna bought them. No string comparison can know
+    # that, and a person can confirm it in seconds, so these are kept for review
+    # rather than guessed at in either direction.
     suspect = [r for r in results if r.get("suspect")]
     if suspect:
+        prior = json.loads(SUSPECTS.read_text()) if SUSPECTS.exists() else {}
+        for r in suspect:
+            prior[r["id"]] = {"ats": r["suspect"], "note": r["note"], "on": today}
+        SUSPECTS.write_text(json.dumps(prior, indent=1) + "\n")
         print(f"\n{len(suspect)} slug(s) read fine but do not match the company, "
               "so they are not being written:")
         for r in suspect[:8]:
