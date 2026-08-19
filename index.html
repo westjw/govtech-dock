@@ -214,6 +214,8 @@ function co(encId){
     <div class="sub">${esc(o.sector)} / ${esc(o.category)}${o.location?" &middot; "+esc(o.location):""}
       ${o.year_founded?" &middot; founded "+o.year_founded:""}${o.tier?" &middot; tier "+o.tier:""}</div>
     ${o.description?`<p class="kv" style="max-width:72ch">${esc(o.description)}</p>`:""}
+    ${o.parent?`<p class="kv"><span class="chip">part of ${esc(o.parent)}</span>
+      ${esc(o.ats_note||"")}</p>`:""}
     <div class="cards" style="margin-top:14px">
       <div class="card"><div class="bignum">${o.open_roles||0}</div><div class="lbl">open roles</div></div>
       <div class="card"><div class="bignum">${o.quota_roles||0}</div><div class="lbl">quota-carrying</div></div>

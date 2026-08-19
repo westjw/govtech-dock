@@ -22387,8 +22387,8 @@
     "category": "Police",
     "description": "Incident command and dispatch software for police and fire responders",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "greenhouse",
+      "ref": "versaterm"
     },
     "hiring": {
       "status": "Unknown",
@@ -22399,7 +22399,9 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "parent": "versaterm",
+    "ats_note": "Versaterm acquired Adashi; board found on Adashi Systems's own site and applications go to the parent's ATS"
   },
   {
     "id": "digital-ally",
@@ -25651,8 +25653,8 @@
     "category": "Citizen Services",
     "description": "Resident-facing permitting and application workflows for city government",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "greenhouse",
+      "ref": "clariticloudinc"
     },
     "hiring": {
       "status": "Unknown",
@@ -25663,7 +25665,9 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "parent": "Clariti",
+    "ats_note": "Clariti acquired Camino; board found on Camino Technologies's own site and applications go to the parent's ATS"
   },
   {
     "id": "geographic-solutions",
@@ -28315,8 +28319,8 @@
     "category": "Operations & SIS",
     "description": "ERP, HR and finance on Microsoft for school boards and districts",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "lever",
+      "ref": "Ionicpartners"
     },
     "hiring": {
       "status": "Unknown",
@@ -28327,7 +28331,9 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "parent": "Ionic Partners",
+    "ats_note": "Ionic Partners acquired Sparkrock; board found on Sparkrock's own site and applications go to the parent's ATS"
   },
   {
     "id": "cybersoft-technologies",
@@ -28675,8 +28681,8 @@
     "category": "Operations & SIS",
     "description": "Facility use request and scheduling software for K-12 districts",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "greenhouse",
+      "ref": "follettsoftware"
     },
     "hiring": {
       "status": "Unknown",
@@ -28687,7 +28693,9 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "parent": "Follett Software",
+    "ats_note": "Follett acquired Master Library Software; board found on ML Schedules (Master Library Software)'s own site and applications go to the parent's ATS"
   },
   {
     "id": "pikmykid",
@@ -30427,8 +30435,8 @@
     "category": "Parking & Ground Transport",
     "description": "Parking operations, payments and analytics for airports and venues",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "workable",
+      "ref": "justpark"
     },
     "hiring": {
       "status": "Unknown",
@@ -30439,7 +30447,9 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "parent": "JustPark",
+    "ats_note": "ParkHub and JustPark merged; board found on ParkHub's own site and applications go to the parent's ATS"
   },
   {
     "id": "airgarage",
@@ -31483,8 +31493,8 @@
     "category": "Procurement & Payments",
     "description": "Strategic sourcing and bid evaluation platform for public procurement teams",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "bamboohr",
+      "ref": "euna"
     },
     "hiring": {
       "status": "Unknown",
@@ -31495,7 +31505,9 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "parent": "Euna Solutions",
+    "ats_note": "Euna Solutions owns Bonfire; board found on Bonfire Interactive's own site and applications go to the parent's ATS"
   },
   {
     "id": "mdf-commerce",
@@ -31507,8 +31519,8 @@
     "category": "Procurement & Payments",
     "description": "EProcurement and bid notification platforms for North American public buyers",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "ashby",
+      "ref": "sovra"
     },
     "hiring": {
       "status": "Unknown",
@@ -31519,7 +31531,9 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "parent": "Sovra",
+    "ats_note": "mdf commerce rebranded to Sovra; board found on mdf commerce's own site and applications go to the parent's ATS"
   },
   {
     "id": "ionwave-technologies",
@@ -31531,8 +31545,8 @@
     "category": "Procurement & Payments",
     "description": "EBidding and vendor management software for cities, counties and schools",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "bamboohr",
+      "ref": "euna"
     },
     "hiring": {
       "status": "Unknown",
@@ -31543,7 +31557,9 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "parent": "Euna Solutions",
+    "ats_note": "Euna Solutions owns Ionwave; board found on Ionwave Technologies's own site and applications go to the parent's ATS"
   },
   {
     "id": "vendor-registry",
@@ -33643,8 +33659,8 @@
     "category": "Corrections",
     "description": "Inmate telephone, video visitation and tablets for jails and prisons",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "icims",
+      "ref": "careers-tkcholdings"
     },
     "hiring": {
       "status": "Unknown",
@@ -33655,7 +33671,9 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "parent": "TKC Holdings",
+    "ats_note": "TKC Holdings owns ICSolutions; board found on ICSolutions's own site and applications go to the parent's ATS"
   },
   {
     "id": "legacy-inmate-communications",
@@ -36619,8 +36637,8 @@
     "category": "Terminal & Passenger Experience",
     "description": "Passenger flow, queue measurement and airport revenue software for airport operators",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "bamboohr",
+      "ref": "gentrack"
     },
     "hiring": {
       "status": "Unknown",
@@ -36631,7 +36649,9 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "parent": "Gentrack",
+    "ats_note": "Gentrack acquired Veovo; board found on Veovo's own site and applications go to the parent's ATS"
   },
   {
     "id": "blip-systems",
@@ -42307,8 +42327,8 @@
     "category": "Broadband & Connectivity",
     "description": "Construction management platform for fiber and municipal infrastructure builds",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "bamboohr",
+      "ref": "fresnelsoftware"
     },
     "hiring": {
       "status": "Unknown",
@@ -42319,7 +42339,9 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "parent": "Fresnel Software",
+    "ats_note": "Fresnel Software parent; board found on Vitruvi Software's own site and applications go to the parent's ATS"
   },
   {
     "id": "ospinsight",

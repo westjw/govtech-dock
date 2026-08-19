@@ -199,6 +199,7 @@ def main() -> int:
             "ats": kind, "ats_ranks": ats_tier(kind),
             "tier": TIER.get(c["sector"]),
             "vendor_type": c.get("vendor_type"), "govtech": c.get("govtech"),
+            "parent": c.get("parent"), "ats_note": c.get("ats_note"),
             "open_roles": kept, "families": dict(fams), "phase": phase(fams),
             "quota_roles": sum(1 for p in postings
                                if p["company_id"] == c["id"] and p["quota_carrying"]),

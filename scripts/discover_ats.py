@@ -32,8 +32,10 @@ import json
 import pathlib
 import re
 import sys
+import html as html_lib
 import threading
 import time
+import urllib.parse
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import ats            # noqa: E402
@@ -147,17 +149,54 @@ def get(url: str) -> str:
 COMPANY_BUDGET = 25
 
 
+# Follow the site's own careers link instead of only guessing paths. 718 probes
+# found nothing, and a guessed path list cannot cover /company/join,
+# /life-at-x, /work-with-us and the rest. The homepage already knows where its
+# careers page is.
+CAREER_LINK = re.compile(
+    r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(?:(?!</a>).)*?'
+    r'(career|jobs?|join us|work with us|we[\'’]re hiring|open roles|'
+    r'life at|opportunit)', re.I | re.S)
+
+
+def career_links(html: str, base: str) -> list[str]:
+    out, seen = [], set()
+    for m in CAREER_LINK.finditer(html or ""):
+        href = html_lib.unescape(m.group(1)).strip()
+        if href.startswith(("mailto:", "tel:", "#", "javascript:")):
+            continue
+        url = urllib.parse.urljoin(base + "/", href)
+        if url.rstrip("/") == base.rstrip("/") or url in seen:
+            continue
+        seen.add(url)
+        out.append(url)
+        if len(out) >= 3:
+            break
+    return out
+
+
 def probe(company: dict) -> dict:
     """Look for an ATS on a company's site. Returns a result record."""
     site = (company.get("website") or "").rstrip("/")
     if not site:
         return {"id": company["id"], "found": None, "note": "no website on file"}
     started = time.monotonic()
-    for path in [""] + CAREER_PATHS:
+    # The homepage is read once, and its own careers links are tried before the
+    # guessed paths, since a real link beats a guess.
+    home = get(site)
+    extra = career_links(home, site) if home else []
+    # dedupe while preserving order: real links first, then guessed paths
+    targets, seen = [], set()
+    for t in [site] + extra + [site + p for p in CAREER_PATHS]:
+        t = t.rstrip("/")
+        if t not in seen:
+            seen.add(t)
+            targets.append(t)
+    for target in targets:
         if time.monotonic() - started > COMPANY_BUDGET:
             return {"id": company["id"], "found": None,
                     "note": f"gave up after {COMPANY_BUDGET}s"}
-        html = get(site + path)
+        html = home if target == site.rstrip("/") else get(target)
         if not html:
             continue
         for kind, pat in MARKERS:
@@ -188,11 +227,12 @@ def probe(company: dict) -> dict:
                     "postings": len(real)}
         # A careers page with no ATS marker is still better than nothing: the
         # html path can sometimes enumerate it, and a person can always read it.
-        if path and re.search(r"\b(open positions|current openings|join our team|"
+        if target != site and re.search(r"\b(open positions|current openings|join our team|"
                               r"we're hiring|we are hiring|view (all )?jobs|"
                               r"apply now)\b", html, re.I):
-            return {"id": company["id"], "found": {"type": "html", "ref": site + path},
-                    "note": f"careers page at {path}, no ATS marker", "postings": 0}
+            return {"id": company["id"], "found": {"type": "html", "ref": target},
+                    "note": f"careers page at {target[len(site):] or '/'}, no ATS marker",
+                    "postings": 0}
     return {"id": company["id"], "found": None, "note": "no board found"}
 
 
