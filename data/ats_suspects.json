@@ -5,8 +5,7 @@
    "ref": "boxclever"
   },
   "note": "bamboohr:boxclever reads, but the slug does not match 'Loop'; likely someone else's board",
-  "on": "2026-08-19",
-  "held": "no evidence linking Loop to Boxclever; the name is generic enough that the match may be a mis-association rather than a parent"
+  "on": "2026-08-19"
  },
  "simpleview": {
   "ats": {
@@ -22,6 +21,166 @@
    "ref": "mcmjobs"
   },
   "note": "rippling:mcmjobs reads, but the slug does not match 'MCM Technology LLC'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "ike-smart-city": {
+  "ats": {
+   "type": "rippling",
+   "ref": "orange-barrel-media"
+  },
+  "note": "rippling:orange-barrel-media reads, but the slug does not match 'IKE Smart City'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "camino-technologies": {
+  "ats": {
+   "type": "greenhouse",
+   "ref": "clariticloudinc"
+  },
+  "note": "greenhouse:clariticloudinc reads, but the slug does not match 'Camino Technologies'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "careers-in-government": {
+  "ats": {
+   "type": "breezy",
+   "ref": "skagit-911"
+  },
+  "note": "breezy:skagit-911 reads, but the slug does not match 'Careers In Government'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "bonfire-interactive": {
+  "ats": {
+   "type": "bamboohr",
+   "ref": "euna"
+  },
+  "note": "bamboohr:euna reads, but the slug does not match 'Bonfire Interactive'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "mdf-commerce": {
+  "ats": {
+   "type": "ashby",
+   "ref": "sovra"
+  },
+  "note": "ashby:sovra reads, but the slug does not match 'mdf commerce'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "ionwave-technologies": {
+  "ats": {
+   "type": "bamboohr",
+   "ref": "euna"
+  },
+  "note": "bamboohr:euna reads, but the slug does not match 'Ionwave Technologies'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "ecivis": {
+  "ats": {
+   "type": "bamboohr",
+   "ref": "euna"
+  },
+  "note": "bamboohr:euna reads, but the slug does not match 'eCivis'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "amplifund": {
+  "ats": {
+   "type": "bamboohr",
+   "ref": "euna"
+  },
+  "note": "bamboohr:euna reads, but the slug does not match 'AmpliFund (StreamLink Software)'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "global-traffic-technologies": {
+  "ats": {
+   "type": "ashby",
+   "ref": "miovision"
+  },
+  "note": "ashby:miovision reads, but the slug does not match 'Global Traffic Technologies (GTT)'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "rapid-flow-technologies": {
+  "ats": {
+   "type": "ashby",
+   "ref": "miovision"
+  },
+  "note": "ashby:miovision reads, but the slug does not match 'Rapid Flow Technologies'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "opencounter": {
+  "ats": {
+   "type": "bamboohr",
+   "ref": "euna"
+  },
+  "note": "bamboohr:euna reads, but the slug does not match 'OpenCounter'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "adashi-systems": {
+  "ats": {
+   "type": "greenhouse",
+   "ref": "versaterm"
+  },
+  "note": "greenhouse:versaterm reads, but the slug does not match 'Adashi Systems'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "icsolutions": {
+  "ats": {
+   "type": "icims",
+   "ref": "careers-tkcholdings"
+  },
+  "note": "icims:careers-tkcholdings reads, but the slug does not match 'ICSolutions'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "sparkrock": {
+  "ats": {
+   "type": "lever",
+   "ref": "Ionicpartners"
+  },
+  "note": "lever:Ionicpartners reads, but the slug does not match 'Sparkrock'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "scribbles-software": {
+  "ats": {
+   "type": "ashby",
+   "ref": "instructure"
+  },
+  "note": "ashby:instructure reads, but the slug does not match 'Scribbles Software'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "ml-schedules": {
+  "ats": {
+   "type": "greenhouse",
+   "ref": "follettsoftware"
+  },
+  "note": "greenhouse:follettsoftware reads, but the slug does not match 'ML Schedules (Master Library Software)'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "comsof": {
+  "ats": {
+   "type": "bamboohr",
+   "ref": "iqgeo"
+  },
+  "note": "bamboohr:iqgeo reads, but the slug does not match 'Comsof'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "vitruvi-software": {
+  "ats": {
+   "type": "bamboohr",
+   "ref": "fresnelsoftware"
+  },
+  "note": "bamboohr:fresnelsoftware reads, but the slug does not match 'Vitruvi Software'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "ospinsight": {
+  "ats": {
+   "type": "bamboohr",
+   "ref": "iqgeo"
+  },
+  "note": "bamboohr:iqgeo reads, but the slug does not match 'OSPInsight'; likely someone else's board",
+  "on": "2026-08-19"
+ },
+ "veovo": {
+  "ats": {
+   "type": "bamboohr",
+   "ref": "gentrack"
+  },
+  "note": "bamboohr:gentrack reads, but the slug does not match 'Veovo'; likely someone else's board",
   "on": "2026-08-19"
  }
 }
