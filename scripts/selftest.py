@@ -82,6 +82,45 @@ PAGESCAN_CASES = [
 ]
 
 
+# Role-family cases. Most of these were 'Unclassified' on a live board, and each
+# was a specific bug rather than an ambiguous title: \brecruit\b cannot match
+# "Recruiter", "people ops" cannot match "People Operations", and
+# chief\s+\w+\s+officer cannot match "Chief Services and Delivery Officer".
+FAMILY_CASES = [
+    ("Recruiter", "ga"),
+    ("Recruiting Coordinator", "ga"),
+    ("People Operations Coordinator", "ga"),
+    ("Chief Services and Delivery Officer", "exec"),
+    ("Customer Support Analyst - Level 2", "cs"),
+    ("Customer Engagement Manager", "cs"),
+    ("Accounts Payable Specialist", "ga"),
+    ("Pensions Calculation Analyst", "ga"),
+    ("Office Manager", "ga"),
+    ("Enrollment Agent I", "ga"),
+    ("Director of Strategic Accounts", "gtm"),
+    ("Lead Generation Manager", "gtm"),
+    ("Partner Development Director", "gtm"),
+    ("Field Marketer, Customer", "gtm"),
+    ("Road Supervisor", "field"),
+    ("Mechanic", "field"),
+    ("Data Annotator", "data"),
+    ("Business Analyst", "data"),
+    ("Technical Writer", "product"),
+    ("Member of Technical Staff", "engineering"),
+    ("Deal Operations Administrator", "ops"),
+    ("Account Development Representative", "gtm"),
+    ("Commercial Manager", "gtm"),
+    ("Administrative Assistant", "ga"),
+    ("Call Center Agent", "cs"),
+    ("Assembler", "field"),
+    # the decisions that must not regress
+    ("Account Executive, SLED", "gtm"),
+    ("Sales Engineer", "gtm"),
+    ("Associate General Counsel, Revenue", "ga"),
+    ("Senior Software Engineer", "engineering"),
+]
+
+
 def fail(msg):
     print(f"FAIL: {msg}")
     return 1
@@ -117,6 +156,15 @@ def main() -> int:
         y = c.get("year_founded")
         if y is not None and (not isinstance(y, int) or not (1800 <= y <= 2100)):
             errors += fail(f"{where}: suspicious year {y}")
+
+    import roles as _roles
+    for title, expected in FAMILY_CASES:
+        got = _roles.family(title)
+        if got != expected:
+            errors += fail(f"family({title!r}) = {got}, expected {expected}")
+    for t in ("Spontaneous Application", "Interested in joining our team?"):
+        if not _roles.is_evergreen(t):
+            errors += fail(f"{t!r} should be treated as an evergreen posting")
 
     for title, expected in CLASSIFIER_CASES:
         got = classify.classify_title(title)

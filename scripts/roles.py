@@ -43,7 +43,9 @@ EVERGREEN = re.compile(
     r"general application|don.?t see (a|the) (job|role|position)|"
     r"talent (pool|community|network)|future opportunit|open application|"
     r"speculative|join our (talent|network)|other opportunit|"
-    r"submit your (resume|cv)|no (matching )?role|\(evergreen\)|\bevergreen\b", re.I)
+    r"submit your (resume|cv)|no (matching )?role|\(evergreen\)|\bevergreen\b|spontaneous application|interested in joining|"
+    r"can.?t find|didn.?t find|general interest|future consideration|"
+    r"create your own role", re.I)
 
 
 def is_junk(title: str) -> bool:
@@ -56,8 +58,10 @@ def is_evergreen(title: str) -> bool:
 
 
 RULES: list[tuple[str, re.Pattern]] = [
-    ("exec", re.compile(r"\b(chief\s+\w+\s+officer|\bc[efimoprt]o\b|founder|"
-                        r"president\b|general manager)\b", re.I)),
+    # "Chief Services and Delivery Officer" has three words between chief and
+    # officer, so a single \w+ never matched it.
+    ("exec", re.compile(r"\b(chief[\w\s,&/-]{0,40}officer|chief of staff|"
+                        r"\bc[efimoprt]o\b|founder|president\b|general manager)\b", re.I)),
     # Legal and admin before GTM: "Associate General Counsel, Revenue" matched the
     # GTM rule on the word "revenue" and read as a seller. It is a lawyer.
     ("ga", re.compile(r"\b(general counsel|counsel\b|paralegal|attorney|legal\b|"
@@ -74,47 +78,76 @@ RULES: list[tuple[str, re.Pattern]] = [
                        r"business operations|biz\s?ops|deal desk|sales enablement|"
                        r"strategy (and|&) operations|strategy & ops|"
                        r"program manager|programme manager|transformation|"
-                       r"strategy (principal|associate|manager|lead))\b", re.I)),
+                       r"strategy (principal|associate|manager|lead)|"
+                       # "People/Talent Operations Manager" is HR, not business ops,
+                       # and ops is tested before ga so it would win by position
+                       r"deal operations|(?<!people )(?<!talent )operations "
+                       r"(manager|lead|coordinator)|"
+                       r"change manager|service delivery)\b", re.I)),
     # Bid and proposal work is how public-sector deals are actually won.
     ("gtm", re.compile(r"\b(proposals?\b|\bbids?\b|tenders?|\brfp\b|capture manager|"
-                       r"account management|social media|brand marketing)\b", re.I)),
+                       r"account management|social media|brand marketing|"
+                       r"strategic accounts?|account director|lead generation|"
+                       r"partner (development|success)|alliances|enablement|"
+                       r"campaign operations|commercial (director|development)|"
+                       r"field marketer)\b", re.I)),
     ("gtm", re.compile(r"\b(account executive|account manager|sales|seller|"
                        r"paid media|website|seo\b|digital marketing|field marketing|"
                        r"product marketing|business development|\bbdr\b|\bsdr\b|"
                        r"territory|quota|marketing|demand gen\w*|growth|partnerships?|"
                        r"channel|revenue|go.to.market|\bgtm\b|brand|communications?|"
-                       r"content|community manager|events?)\b", re.I)),
+                       r"content|community manager|events?|account development|"
+                       r"commercial (lead|manager|director|executive)|"
+                       r"country (director|manager)|\bbd manager)\b", re.I)),
     ("cs", re.compile(r"\b(customer success|client success|customer experience|"
-                      r"technical success|support lead|technical solutions|"
+                      r"customer (engagement|service|trust|care)|"
+                      r"support (analyst|lead|desk)|application support|"
+                      r"technical success|technical solutions|"
                       r"customer delivery|client advocate|customer advocate|"
                       r"client services|account management associate|"
                       r"support (engineer|specialist|representative|manager|agent)|"
                       r"technical support|helpdesk|help desk|onboarding specialist|"
-                      r"renewals?)\b", re.I)),
+                      r"renewals?|call cent(er|re)|application specialist)\b", re.I)),
     ("field", re.compile(r"\b(implementation|deployment|professional services|"
                          r"training\b|curriculum|consultant\b|dispatcher|maintenance|"
+                         r"mechanic|road supervisor|protection agent|fleet technician|"
                          r"service (supervisor|manager|technician)|utility worker|"
                          r"operator\b|driver\b|construction|superintendent|"
                          r"project manager|project engineer|"
                          r"safety (manager|coordinator|specialist)|"
                          r"solutions? delivery|field (service|technician|operations)|"
-                         r"installation|trainer|technical program manager)\b", re.I)),
-    ("data", re.compile(r"\b(data (scientist|engineer|analyst|architect)|analytics|"
+                         r"installation|trainer|technical program manager|"
+                         r"assembler|material handler|machinist|fabrication|"
+                         r"manufacturing (supervisor|technician|associate)|"
+                         r"installer)\b", re.I)),
+    ("data", re.compile(r"\b(data (scientist|engineer|analyst|architect|annotator)|"
+                        r"business analyst|applied ai|analytics|"
                         r"scientist|research (scientist|engineer|lead)|machine learning|"
                         r"\bml\b|business intelligence|statistician)\b", re.I)),
     ("engineering", re.compile(r"\b(engineer|engineering|developer|programmer|software|"
+                               r"member of technical staff|technical lead|"
+                               r"site reliability|"
                                r"firmware|hardware|devops|\bsre\b|platform|"
                                r"infrastructure|security engineer|qa\b|test engineer|"
                                r"architect|technician|robotics|mechanical|electrical)\b",
                                re.I)),
     ("product", re.compile(r"\b(product manag\w*|product owner|vp,? (of )?product|"
-                           r"product specialist|head of product|product design|"
+                           r"product (specialist|lead)|director,? (of )?product|"
+                           r"head of product|product design|technical writer|"
+                           r"creative director|"
                            r"\bux\b|\bui\b|designer|design lead|user research)\b", re.I)),
-    ("ga", re.compile(r"\b(recruit|talent|people ops|human resources|\bhr\b|fp&a|"
-                      r"financial analyst|collections|compensation|strategic sourcing|"
-                      r"procurement|vendor management|warehouse|facilities|finance|"
-                      r"accountant|accounting|controller|payroll|compliance|"
-                      r"executive assistant)\b", re.I)),
+    ("ga", re.compile(r"\b(recruit\w*|talent acquisition|people (ops|operations|"
+                      r"relations|experience)|human resources|\bhr\b|fp&a|"
+                      r"financial (analyst|planning)|collections|compensation|"
+                      r"strategic sourcing|procurement|purchasing|vendor management|"
+                      r"warehouse|facilities|finance|accountant|accounting|"
+                      r"accounts (payable|receivable)|controller|payroll|compliance|"
+                      r"executive assistant|office manager|administrative business "
+                      r"partner|contracts? specialist|commercial contracts|"
+                      r"\btax\b|pensions?|benefits? (analyst|specialist)|"
+                      r"pricing|security governance|shipping|logistics|"
+                      r"enrollment agent|clerk|"
+                  r"administrative (assistant|manager|specialist|coordinator))\b", re.I)),
 ]
 
 
