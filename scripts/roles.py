@@ -215,11 +215,40 @@ NON_US = re.compile(
     r"Singapore|Tokyo|Japan|Seoul|Korea|Hong Kong|Shanghai|Beijing|China|"
     r"Bangalore|Bengaluru|Mumbai|Delhi|India|Manila|Philippines|Jakarta|"
     r"Indonesia|Bangkok|Thailand|Vietnam|Johannesburg|South Africa|Nairobi|"
-    r"Kenya|Cairo|Egypt)\b", re.I)
-US_HINT = re.compile(r"\b(United States|\bUSA?\b|U\.S\.|remote.{0,12}\bus\b|"
-                     r"\bus\b.{0,12}remote|nationwide)\b", re.I)
+    r"Kenya|Cairo|Egypt|"
+    # Added after four "Pakistan - Remote" AE roles reached a New York
+    # shortlist banded "strong": the list knew a lot of Europe and nothing of
+    # South Asia beyond India, so is_us returned None and the non-US branch of
+    # the prescreen never fired.
+    r"Pakistan|Islamabad|Lahore|Karachi|Bangladesh|Dhaka|Sri Lanka|Colombo|"
+    r"Nepal|Kathmandu|Malaysia|Kuala Lumpur|Taiwan|Taipei|Bucharest|Romania|"
+    r"Sofia|Bulgaria|Belgrade|Serbia|Zagreb|Croatia|Kyiv|Kiev|Ukraine|"
+    r"Riga|Latvia|Vilnius|Lithuania|Tallinn|Estonia|Bratislava|Slovakia|"
+    r"Ljubljana|Slovenia|Reykjav[ií]k|Iceland|Luxembourg|Malta|Cyprus|"
+    r"Casablanca|Morocco|Tunis|Tunisia|Lagos|Nigeria|Accra|Ghana|"
+    r"Abu Dhabi|\bUAE\b|Qatar|Doha|Riyadh|Saudi|Kuwait|Bahrain|Amman|Jordan|"
+    r"Lima|Peru|Bogot[aá]|Quito|Ecuador|Montevideo|Uruguay|Asunci[oó]n|"
+    r"San Jos[eé], Costa Rica|Costa Rica|Panama|Guatemala|Santo Domingo|"
+    r"Dominican Republic|Guadalajara|Monterrey|Mexico City|CDMX)\b", re.I)
+# "U.S." is deliberately outside the trailing \b: a word boundary after a
+# period needs a word character next, so "U.S. (Remote)" failed its own hint.
+US_HINT = re.compile(r"\b(United States|USA?\b|remote.{0,12}\bus\b|"
+                     r"\bus\b.{0,12}remote|nationwide)|U\.S\.", re.I)
+# Cities that are unambiguously US and routinely appear without a state.
+US_CITY = re.compile(r"\b(NYC|New York City|Los Angeles|Chicago|Boston|Seattle|"
+                     r"Atlanta|Denver|Austin|Dallas|Houston|Phoenix|Philadelphia|"
+                     r"San Francisco|Bay Area|Silicon Valley|Washington,? D\.?C\.?|"
+                     r"Minneapolis|Detroit|Pittsburgh|Baltimore|Nashville|"
+                     r"Charlotte|Portland, Oregon|Salt Lake City|Kansas City|"
+                     r"St\.? Louis|San Diego|Sacramento|Tampa|Orlando|Miami)\b", re.I)
 STATE = re.compile(r",\s*(A[LKZR]|C[AOT]|DE|FL|GA|HI|I[DLNA]|K[SY]|LA|M[EDAINSOT]|"
                    r"N[EVHJMYCD]|O[HKR]|PA|RI|S[CD]|T[NX]|UT|V[TA]|W[AVIY]|DC)\b")
+# Spelled-out state names, minus the ones that are also common words or places
+# elsewhere: Georgia is a country, Washington needs no help, and "Indiana"
+# style names are safe. Built below, once STATE_NAMES exists.
+
+
+AMBIGUOUS_STATE_NAMES = {"georgia"}      # also a country
 
 
 # ---------------------------------------------------------------- territory
@@ -241,6 +270,13 @@ STATE_NAMES = {
     "south dakota":"SD","tennessee":"TN","texas":"TX","utah":"UT","vermont":"VT",
     "virginia":"VA","washington":"WA","west virginia":"WV","wisconsin":"WI",
     "wyoming":"WY","district of columbia":"DC"}
+
+# Word-bounded spelled-out state names, for is_us. Georgia is excluded: it is
+# also a country, and NON_US is checked first only for cities inside it.
+STATE_NAME_RE = re.compile(
+    r"\b(" + "|".join(re.escape(n) for n in sorted(STATE_NAMES)
+                       if n not in AMBIGUOUS_STATE_NAMES) + r")\b", re.I)
+
 REGIONS = {
     "Northeast": {"NY","NJ","CT","MA","PA","RI","VT","NH","ME","MD","DE","DC"},
     "Southeast": {"FL","GA","NC","SC","VA","WV","TN","KY","AL","MS","AR","LA"},
@@ -346,7 +382,13 @@ def is_us(location_text: str, title: str = "") -> bool | None:
         return None
     if NON_US.search(blob):
         return False
-    if US_HINT.search(blob) or STATE.search(blob):
+    if US_HINT.search(blob) or STATE.search(blob) or US_CITY.search(blob):
+        return True
+    # STATE only matches a comma-prefixed two-letter code, so "Texas Remote
+    # Work" and "Arizona Remote Work" read as undeterminable. The spelled-out
+    # names were already on file for territory() and simply never consulted
+    # here. Georgia is omitted on purpose - it is also a country.
+    if STATE_NAME_RE.search(blob):
         return True
     if re.search(r"\bremote\b", blob, re.I):
         return None

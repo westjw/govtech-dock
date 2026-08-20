@@ -162,6 +162,24 @@ def main() -> int:
         got = _roles.family(title)
         if got != expected:
             errors += fail(f"family({title!r}) = {got}, expected {expected}")
+    # is_us: a country the list does not know returns None, and None does not
+    # trip the non-US branch downstream. Four "Pakistan - Remote" AE roles
+    # reached a New York shortlist banded "strong" that way.
+    for loc, want in [("Pakistan - Remote", False), ("Karachi", False),
+                      ("Bucharest, Romania", False), ("Guadalajara, Mexico", False),
+                      ("United States - Remote", True), ("New York, NY", True),
+                      ("San Jose, CA", True), ("Remote", None),
+                      # STATE wanted a comma-prefixed code, so spelled-out
+                      # names read as undeterminable and NYC-shaped locations
+                      # never resolved at all
+                      ("New York City", True), ("NYC Headquarters", True),
+                      ("Texas Remote Work", True), ("U.S. (Remote)", True),
+                      ("London, England", False), ("Toronto", False),
+                      ("2 Locations", None)]:
+        got = _roles.is_us(loc, "Account Executive")
+        if got != want:
+            errors += fail(f"is_us({loc!r}) = {got!r}, expected {want!r}")
+
     for t in ("Spontaneous Application", "Interested in joining our team?"):
         if not _roles.is_evergreen(t):
             errors += fail(f"{t!r} should be treated as an evergreen posting")
