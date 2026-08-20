@@ -46,9 +46,16 @@ TITLE = re.compile(r"<title[^>]*>(.*?)</title>", re.I | re.S)
 META = re.compile(r'<meta[^>]+(?:name|property)=["\'](?:description|og:site_name|'
                   r'og:title)["\'][^>]+content=["\']([^"\']{3,300})', re.I)
 H1 = re.compile(r"<h1[^>]*>(.*?)</h1>", re.I | re.S)
+# "domain for sale" only catches resellers that use the word "domain".
+# Spaceship and NamePros write "GetOracle.com for sale", which read as a live
+# page and put ten for-sale listings into the dataset. Requiring a domain-shaped
+# token before "for sale" keeps a real page that happens to list property.
 PARKED = re.compile(r"domain (is )?for sale|buy this domain|parked (free )?(at|by)|"
                     r"godaddy|namecheap|sedo|hugedomains|this domain may be for sale|"
-                    r"under construction|coming soon", re.I)
+                    r"under construction|coming soon|"
+                    r"[\w-]+\.(com|net|io|co|us|ai|org)\s+(is\s+)?for sale|"
+                    r"spaceship\.com|namepros|domains for sale|parked domain|"
+                    r"human verification", re.I)
 
 
 def norm(s: str) -> str:
@@ -93,7 +100,7 @@ def candidates(name: str) -> list[str]:
     return out[:10]
 
 
-def identifies(html: str, name: str) -> bool:
+def identifies(html: str, name: str, base: str | None = None) -> bool:
     """Does this page actually claim to be this company?
 
     A live page proves a domain resolves, nothing more. Parked pages, squatters
@@ -114,6 +121,13 @@ def identifies(html: str, name: str) -> bool:
         return False
     full = norm(name)
     if len(full) >= 6 and full in ident_n:
+        return True
+    # An exact domain match is evidence in its own right. adobe.com for "Adobe"
+    # is a different kind of claim than frame.com for "A-Frame Solutions": the
+    # first is the whole name, the second is a fragment of it. Short names fail
+    # the generic-word guard below and can otherwise never be resolved at all,
+    # which left ADP, Adobe and Auror permanently websiteless.
+    if base and base == "".join(tk) and all(norm(t) in ident_n for t in tk):
         return True
     # every distinctive word present, which catches "Orange Data" on a page
     # titled "Orange Data | Permit resolution for cities"
@@ -137,17 +151,35 @@ def identifies(html: str, name: str) -> bool:
     return True
 
 
+def short_name(name: str) -> bool:
+    """Is this name too short to identify a company on its own?
+
+    A one-word name under six characters matches whatever else holds the
+    domain: kodex.* is a Samsung ETF brand, band.us is a group-chat app,
+    blitz.com is not this company. The page really does say the word, so no
+    amount of text matching separates them - only a person can. These get
+    queued instead of written, because a wrong website is the key discovery
+    uses to find a job board, and would attribute another company's postings
+    to a govtech company.
+    """
+    tk = tokens(name)
+    return len(tk) == 1 and len(tk[0]) < 6
+
+
 def probe(company: dict) -> dict:
     name = company.get("name", "")
     for url in candidates(name):
+        base = url.split("//", 1)[1].rsplit(".", 1)[0]
         try:
             r = ats._get(url)
         except Exception:
             continue
-        if identifies(r.text, name):
+        if identifies(r.text, name, base):
             return {"id": company["id"], "url": str(r.url).rstrip("/"),
-                    "note": "page identifies the company"}
-    return {"id": company["id"], "url": None, "note": "no candidate domain identified it"}
+                    "note": "page identifies the company",
+                    "review": short_name(name)}
+    return {"id": company["id"], "url": None, "note": "no candidate domain identified it",
+            "review": False}
 
 
 def load_log() -> dict:
@@ -204,7 +236,21 @@ def main() -> int:
             if i % 50 == 0:
                 print(f"  {i}/{len(todo)}...")
 
-    hits = [r for r in results if r["url"]]
+    queued = [r for r in results if r["url"] and r.get("review")]
+    if queued:
+        rp = DATA / "website_review.json"
+        pending = json.loads(rp.read_text()) if rp.exists() else {}
+        names = {c["id"]: c["name"] for c in companies}
+        for r in queued:
+            pending[r["id"]] = {"name": names.get(r["id"]), "url": r["url"],
+                                "found_on": dt.date.today().isoformat()}
+        rp.write_text(json.dumps(pending, indent=1) + "\n")
+        print(f"\n{len(queued)} short-name match(es) queued in data/website_review.json "
+              f"for a person to confirm, not written:")
+        for r in queued:
+            print(f"   {names.get(r['id'], r['id']):<26} {r['url']}")
+
+    hits = [r for r in results if r["url"] and not r.get("review")]
     print(f"\n{len(hits)} of {len(todo)} identified ({len(hits) * 100 // len(todo)}%)")
     for r in hits[:12]:
         print(f"   {r['id']:<30} {r['url']}")
