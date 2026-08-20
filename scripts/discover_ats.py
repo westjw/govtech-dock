@@ -659,7 +659,11 @@ def main() -> int:
              "Public Safety": 3, "Transit & Parking": 4, "K-12 Schools": 5,
              "Utilities & Energy": 6, "Airports & Aviation": 7}
     todo.sort(key=lambda c: order.get(c.get("sector"), 9))
-    todo = todo[:a.limit]
+    # An explicit id list is already the decision about scope. Clipping it to
+    # --limit silently probed 300 of 768 and reported as though that were all
+    # of them.
+    if not a.only:
+        todo = todo[:a.limit]
     if not todo:
         print("nothing to probe. every company either has a board or was tried recently.")
         return 0
