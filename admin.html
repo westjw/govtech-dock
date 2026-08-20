@@ -124,6 +124,15 @@ const INTRO = {
   acquisitions: 'The board reads fine but its slug does not match the company name, which '
     + 'usually means the company was acquired and its careers page now redirects to the parent. '
     + 'Confirming wires it up; a parent-company board must never be recorded as the subsidiary’s.',
+  submissions: 'Companies and jobs sent in from outside. A submission is a claim, '
+    + 'not a fact — nothing here has touched companies.json or the board. Approving '
+    + 'a company runs the same intake check as adding one by hand and shows what the '
+    + 'page says about itself first.',
+  capture: 'For the boards nothing automated can read. 537 careers pages on file have '
+    + 'no enumerable job list at all — rendering them in headless Chromium finds '
+    + 'nothing either, because they are widgets in iframes and session-gated boards. '
+    + 'Your browser runs all of that. Capture the page you are looking at, paste it '
+    + 'here, pick the company.',
   review: 'Short one-word names where the domain matched exactly but the page could belong '
     + 'to anyone — kodex.* is a Samsung ETF brand. The page really does say the word, so no '
     + 'text rule separates them.'
@@ -135,6 +144,9 @@ async function boot() {
   $('#sub').textContent = `${META.companies.toLocaleString()} govtech companies · `
     + `${META.postings.toLocaleString()} postings · board built ${META.generated || '—'}`;
   const nav = $('#tabs'); nav.innerHTML = '';
+  const capBtn = el('button', null, 'Capture');
+  capBtn.dataset.key = '__capture'; capBtn.onclick = () => showCapture();
+  nav.appendChild(capBtn);
   const sortBtn = el('button', null, 'Sort board');
   sortBtn.dataset.key = '__sort'; sortBtn.onclick = () => showSort();
   nav.appendChild(sortBtn);
@@ -397,6 +409,87 @@ RENDER.acquisitions = s => {
   return n;
 };
 
+RENDER.submissions = s => {
+  const n = el('div', 'item');
+  n.appendChild(el('h3', null, s.kind === 'company'
+    ? (s.name || s.url) : s.title));
+  const kv = el('div', 'kv');
+  kv.append(el('span', 'chip', s.kind), el('span', 'chip', 'sent ' + s.on));
+  if (s.submitted_by) kv.append(el('span', 'chip', 'by ' + s.submitted_by));
+  n.appendChild(kv);
+  if (s.url) {
+    const w = el('div', 'kv');
+    const a = el('a', null, s.url); a.href = s.url; a.target = '_blank';
+    a.rel = 'noopener'; w.appendChild(a); n.appendChild(w);
+  }
+  if (s.company) n.appendChild(el('div', 'kv', 'at ' + s.company));
+  if (s.location) n.appendChild(el('div', 'kv', s.location));
+  if (s.note) n.appendChild(el('div', 'kv', s.note));
+
+  const row = el('div', 'row');
+  let fields = null;
+  if (s.kind === 'company') {
+    const look = el('button', 'act', 'Read the page');
+    const secSel = el('select', 'sel'), catSel = el('select', 'sel');
+    const sectors = SCHEMA.sectors || [];
+    sectors.forEach(x => secSel.appendChild(new Option(x.name, x.name)));
+    const fillCats = () => {
+      catSel.innerHTML = '';
+      (sectors.find(x => x.name === secSel.value) || {categories: []})
+        .categories.forEach(c => catSel.appendChild(new Option(c, c)));
+    };
+    fillCats(); secSel.onchange = fillCats;
+    look.onclick = async () => {
+      look.disabled = true; look.textContent = 'reading…';
+      const r = await api('/api/inspect-submission', {url: s.url});
+      look.disabled = false; look.textContent = 'Read the page';
+      n.querySelectorAll('.evi').forEach(x => x.remove());
+      if (r.error) return toast(r.error, true);
+      fields = r;
+      const e = el('div', 'evi');
+      e.innerHTML = `<div><b>${esc(r.name)}</b></div>`
+        + `<div style="color:var(--dim)">${esc(r.description || '')}</div>`
+        + `<div style="margin-top:6px">reads as <b>${esc(r.sector || '—')}</b> / `
+        + `${esc(r.category || '—')} · confidence `
+        + `<span class="${r.confidence === 'high' ? 'ok' : 'warn'}">`
+        + `${esc(r.confidence)}</span></div>`
+        + (r.confidence !== 'high'
+            ? '<div class="kv warn">Not confident. Place this one yourself rather '
+              + 'than letting one incidental keyword decide.</div>' : '');
+      n.insertBefore(e, row);
+      if (r.sector) { secSel.value = r.sector; fillCats(); }
+      if (r.category) catSel.value = r.category;
+    };
+    const ok = el('button', 'act go', 'Approve');
+    ok.onclick = async () => {
+      const r = await api('/api/resolve-submission', {id: s.id, action: 'approve',
+        fields: {name: (fields && fields.name) || s.name,
+                 description: fields && fields.description,
+                 sector: secSel.value, category: catSel.value}});
+      if (r.error) return toast(r.error, true);
+      toast(r.message); n.remove(); refreshCounts();
+    };
+    row.append(look, secSel, catSel, ok);
+  } else {
+    const ok = el('button', 'act go', 'Approve');
+    ok.onclick = async () => {
+      const r = await api('/api/resolve-submission', {id: s.id, action: 'approve'});
+      if (r.error) return toast(r.error, true);
+      toast(r.message); n.remove(); refreshCounts();
+    };
+    row.append(ok);
+  }
+  const no = el('button', 'act mute', 'Reject');
+  no.onclick = async () => {
+    const r = await api('/api/resolve-submission', {id: s.id, action: 'reject'});
+    if (r.error) return toast(r.error, true);
+    n.remove(); refreshCounts();
+  };
+  row.appendChild(no);
+  n.appendChild(row);
+  return n;
+};
+
 RENDER.review = r => {
   const n = el('div', 'item');
   n.appendChild(el('h3', null, r.name || r.id));
@@ -416,6 +509,102 @@ RENDER.review = r => {
   n.appendChild(row);
   return n;
 };
+
+/* ------------------------------------------------------------------ capture */
+
+async function showCapture() {
+  document.querySelectorAll('nav button').forEach(b =>
+    b.setAttribute('aria-selected', b.dataset.key === '__capture'));
+  const v = $('#view'); v.innerHTML = '';
+  v.appendChild(el('p', 'intro', INTRO.capture));
+
+  const help = el('div', 'item');
+  help.innerHTML = '<h3>The bookmarklet</h3>'
+    + '<div class="kv">Install it once from <a href="/capture" target="_blank">'
+    + '/capture</a>, then click it on any careers page or LinkedIn list you have '
+    + 'open. It copies what it finds; paste it below.</div>';
+  v.appendChild(help);
+
+  const n = el('div', 'item');
+  n.appendChild(el('h3', null, 'Paste a capture'));
+  const ta = el('textarea');
+  ta.placeholder = 'paste here';
+  ta.style.cssText = 'width:100%;height:110px;margin-top:9px;font:12px/1.5 '
+    + 'ui-monospace,SFMono-Regular,Menlo,monospace;padding:9px;border-radius:7px;'
+    + 'border:1px solid var(--line);background:var(--bg);color:var(--ink)';
+  n.appendChild(ta);
+
+  const row = el('div', 'row');
+  const q = el('input', 'txt'); q.type = 'text';
+  q.placeholder = 'which company?';
+  const hits = el('div'); hits.style.cssText = 'width:100%';
+  const go = el('button', 'act go', 'Add to the board'); go.disabled = true;
+  let company = null, parsed = null;
+
+  ta.oninput = () => {
+    n.querySelectorAll('.evi').forEach(x => x.remove());
+    parsed = null; go.disabled = true;
+    if (!ta.value.trim()) return;
+    try { parsed = JSON.parse(ta.value); }
+    catch { 
+      const e = el('div', 'evi bad', 'That is not a capture. Click the bookmarklet '
+        + 'again and use Copy for admin.');
+      n.insertBefore(e, row); return;
+    }
+    const jobs = parsed.jobs || [];
+    const e = el('div', 'evi');
+    e.innerHTML = `<div><b>${jobs.length} posting${jobs.length === 1 ? '' : 's'}</b>`
+      + (parsed.page_title ? ' from ' + esc(parsed.page_title) : '') + '</div>'
+      + '<div style="margin-top:6px;color:var(--dim)">'
+      + jobs.slice(0, 8).map(j => esc(j.title)).join(' · ')
+      + (jobs.length > 8 ? ` … and ${jobs.length - 8} more` : '') + '</div>';
+    n.insertBefore(e, row);
+    go.disabled = !company;
+  };
+
+  let timer;
+  q.oninput = () => {
+    clearTimeout(timer);
+    company = null; go.disabled = true;
+    timer = setTimeout(async () => {
+      hits.innerHTML = '';
+      if (q.value.trim().length < 2) return;
+      const r = await api('/api/search-companies', {q: q.value});
+      (r.results || []).forEach(c => {
+        const d = el('div', null, '');
+        d.style.cssText = 'padding:5px 8px;border-radius:6px;cursor:pointer;'
+          + 'font-size:12.5px';
+        d.innerHTML = `${esc(c.name)} <span style="color:var(--faint)">`
+          + `${esc(c.sector)}</span>`;
+        d.onmouseenter = () => d.style.background = 'var(--chip)';
+        d.onmouseleave = () => d.style.background = '';
+        d.onclick = () => {
+          company = c; q.value = c.name; hits.innerHTML = '';
+          go.disabled = !parsed;
+        };
+        hits.appendChild(d);
+      });
+      if (!(r.results || []).length) {
+        hits.appendChild(el('div', 'kv warn', 'No company by that name is tracked. '
+          + 'Add it from the Submissions tab first.'));
+      }
+    }, 220);
+  };
+
+  go.onclick = async () => {
+    const r = await api('/api/capture', {company_id: company.id,
+      jobs: parsed.jobs, page_url: parsed.page_url});
+    if (r.error) return toast(r.error, true);
+    toast(r.message);
+    ta.value = ''; q.value = ''; company = null; parsed = null;
+    go.disabled = true;
+    n.querySelectorAll('.evi').forEach(x => x.remove());
+  };
+
+  row.append(q, go);
+  n.append(row, hits);
+  v.appendChild(n);
+}
 
 /* ------------------------------------------------------------------ sort board
 

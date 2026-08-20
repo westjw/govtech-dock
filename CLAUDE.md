@@ -80,6 +80,54 @@ a company with a live board is the one worth getting right. Dropping onto the
 rail sets sector *and* category together - setting the sector alone would strand
 the old category and `validate()` would refuse the write, correctly.
 
+## Capture, and why it is a bookmarklet
+
+`scripts/capture.js`, installed from <http://127.0.0.1:8787/capture>.
+
+537 careers pages on file have a board recorded and produce nothing. They are
+not JS shells hiding a list - rendering a sample of 25 in headless Chromium
+recovered **zero**. They are third-party widgets in iframes, session-gated
+boards, and pages that only draw a list after an interaction. No fetcher we
+write will read them. A person looking at the page sees the jobs anyway.
+
+So capture reads what is already on screen and hands it over. Three things
+about it are load-bearing:
+
+- **The handoff is the clipboard, not a request.** Chrome blocks a page on
+  https from reaching `http://127.0.0.1` - both `fetch` and a `<script>` tag,
+  even with CORS and `Access-Control-Allow-Private-Network` set. Verified, not
+  assumed. Copy-and-paste is the only channel that works on every site.
+- **The bookmarklet is self-contained** for the same reason, so editing
+  `capture.js` means dragging the button again.
+- **It runs once, on click, over the current document.** It does not scroll,
+  paginate, follow links, log in, or run on a timer. That is the line between
+  reading a page you opened and harvesting a site, and it is why this is
+  usable on LinkedIn when server-side scraping is not.
+
+Two rules the harvester learned the hard way, both worth keeping:
+
+- A job link is the job **segment plus something after it**. Matching `/careers`
+  alone returned CHALLENGES, SOLUTIONS and Cookie Preferences - the same nav
+  chrome that fools page scans.
+- **Position first, pattern second.** Take the first non-chip line as the title,
+  then look for a location among the lines *after* it. Testing the location
+  pattern first stole the title whenever one looked like a place: "Database
+  Administrator, Infrastructure - UK" matched, and the row came back with
+  Manchester as the job.
+
+Captured postings live in `data/manual.json` and an automated run never deletes
+them - absence from a refresh means the fetcher still cannot see that company.
+
+## Submissions
+
+`data/submissions.json`, reviewed in the admin Submissions queue. Outside
+parties can send a company or a job. **A submission is a claim, not a fact**:
+nothing reaches `companies.json` or the board without a person approving it,
+for the same reason the fact bank refuses unverified records. Approving a
+company runs the same identity and sector guess as intake and shows the
+evidence, and reports low confidence as low rather than filing on one
+incidental keyword. Approving a job writes it through the capture path.
+
 ## Conventions
 
 - Company `id` = kebab-case name (parenthetical suffixes dropped).

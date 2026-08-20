@@ -251,11 +251,18 @@ def q_review(companies, board) -> list:
             if not is_dismissed("review", k)]
 
 
-QUEUES = {"duplicates": q_duplicates, "websites": q_websites, "boards": q_boards,
+def q_submissions(companies, board) -> list:
+    subs = read("submissions.json", {"items": []})
+    names = {c["id"]: c["name"] for c in companies}
+    return [{**i, "company": names.get(i.get("company_id"))}
+            for i in subs["items"] if i.get("status") == "pending"]
+
+
+QUEUES = {"submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards,
           "placement": q_placement, "unclassified": q_unclassified,
           "acquisitions": q_acquisitions, "review": q_review}
 
-LABEL = {"duplicates": "Duplicates", "websites": "Missing websites",
+LABEL = {"submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
          "boards": "Missing boards", "placement": "Wrong placement",
          "unclassified": "Unclassified roles", "acquisitions": "Acquisitions",
          "review": "Website review"}
@@ -432,6 +439,194 @@ def act_set_family(body: dict) -> dict:
     return {"ok": True, "message": f"{title} -> {roles.LABEL[fam]}"}
 
 
+def act_capture(body: dict) -> dict:
+    """Take job titles a person is looking at in their own browser.
+
+    537 careers pages on file have no enumerable job list at all - not a JS
+    shell hiding one, genuinely no job anchors - so rendering them recovers
+    nothing. A person opening the page sees the jobs anyway, because their
+    browser runs the widget, the iframe and the session that ours does not.
+    This is the shortest path from "they can see it" to "the board has it".
+
+    The capture is whatever is on screen when a person clicks, one page at a
+    time. It does not crawl, paginate, scroll or run on its own, which is the
+    line between reading a page you opened and harvesting a site.
+    """
+    cid = body.get("company_id")
+    companies = read("companies.json", [])
+    c = next((x for x in companies if x["id"] == cid), None)
+    if not c:
+        return {"error": "pick a company to attribute these to"}
+    raw = body.get("jobs") or []
+    if not raw:
+        return {"error": "no job titles in that capture"}
+    man = read("manual.json", {"checks": {}, "postings": []})
+    today = dt.date.today().isoformat()
+    existing = {p["id"] for p in man["postings"]}
+    added = 0
+    for j in raw:
+        title = (j.get("title") or "").strip()
+        if not title or roles.is_junk(title) or roles.is_evergreen(title):
+            continue
+        pid = f"{cid}::{title}"
+        if pid in existing:
+            continue
+        loc = (j.get("location") or "").strip()
+        terr = roles.territory(loc, title)
+        man["postings"].append({
+            "id": pid, "company": c["name"], "company_id": cid,
+            "title": title, "family": roles.family(title),
+            "quota_carrying": roles.is_quota_carrying(title),
+            "seniority": roles.seniority(title),
+            "states": terr["states"], "region": terr["region"],
+            "work_mode": terr["work_mode"],
+            "location": loc, "is_us": roles.is_us(loc, title),
+            "url": j.get("url") or body.get("page_url"),
+            "sector": c["sector"], "category": c["category"],
+            "first_seen": today,
+            "captured_from": body.get("page_url"),
+        })
+        existing.add(pid)
+        added += 1
+    man["checks"][cid] = {"checked_on": today, "by": "capture",
+                          "source": body.get("page_url")}
+    write_atomic("manual.json", man)
+    return {"ok": True, "added": added, "company": c["name"],
+            "message": f"{added} posting(s) captured for {c['name']}"
+                       + (f", {len(raw) - added} skipped as duplicate or junk"
+                          if len(raw) - added else "")}
+
+
+def act_submit(body: dict) -> dict:
+    """Take an outside submission - a company, or a job at a company.
+
+    Submissions are claims, not facts. Nothing here writes to companies.json or
+    the board; it lands in a queue with whoever sent it and waits for a person.
+    The same rule the fact bank runs on: an outside assertion never becomes
+    canon without review, because the cost of a wrong company in a market map
+    is paid by everyone reading it.
+    """
+    kind = body.get("kind")
+    if kind not in ("company", "job"):
+        return {"error": "kind must be company or job"}
+    url = clean_url(body.get("url"))
+    if kind == "company" and not url:
+        return {"error": "a company submission needs a URL"}
+    if kind == "job" and not (body.get("title") or "").strip():
+        return {"error": "a job submission needs a title"}
+    subs = read("submissions.json", {"items": []})
+    sid = f"{kind}-{len(subs['items']) + 1}-{dt.date.today().isoformat()}"
+    subs["items"].append({
+        "id": sid, "kind": kind, "on": dt.date.today().isoformat(),
+        "status": "pending",
+        "url": url, "name": (body.get("name") or "").strip(),
+        "title": (body.get("title") or "").strip(),
+        "company_id": body.get("company_id"),
+        "location": (body.get("location") or "").strip(),
+        "note": (body.get("note") or "").strip(),
+        "submitted_by": (body.get("submitted_by") or "").strip(),
+    })
+    write_atomic("submissions.json", subs)
+    return {"ok": True, "id": sid,
+            "message": "submitted for review; nothing is published until a "
+                       "person approves it"}
+
+
+def act_resolve_submission(body: dict) -> dict:
+    """Approve or reject one submission.
+
+    Approving a company runs the same intake add_company.py does - identity and
+    sector are guessed from the page and shown - but still lands as a proposal
+    to check, never a silent write. Approving a job writes it to manual.json,
+    where an automated run will not delete it.
+    """
+    subs = read("submissions.json", {"items": []})
+    item = next((i for i in subs["items"] if i["id"] == body.get("id")), None)
+    if not item:
+        return {"error": "submission not found"}
+    action = body.get("action")
+    if action == "reject":
+        item["status"] = "rejected"
+        item["resolved_on"] = dt.date.today().isoformat()
+        item["why"] = body.get("why", "")
+        write_atomic("submissions.json", subs)
+        return {"ok": True, "message": "rejected"}
+    if action != "approve":
+        return {"error": "action must be approve or reject"}
+
+    if item["kind"] == "job":
+        r = act_capture({"company_id": item.get("company_id"),
+                         "page_url": item.get("url"),
+                         "jobs": [{"title": item["title"], "url": item.get("url"),
+                                   "location": item.get("location")}]})
+        if r.get("error"):
+            return r
+        item["status"] = "approved"
+    else:
+        fields = body.get("fields") or {}
+        companies = read("companies.json", [])
+        cid = fields.get("id") or re.sub(r"[^a-z0-9]+", "-",
+                                         (fields.get("name") or item["name"]).lower()).strip("-")
+        if any(c["id"] == cid for c in companies):
+            return {"error": f"{cid} is already tracked"}
+        companies.append({
+            "id": cid, "name": fields.get("name") or item["name"],
+            "sector": fields.get("sector"), "category": fields.get("category"),
+            "website": item.get("url"),
+            "description": fields.get("description") or item.get("note"),
+            "govtech": True, "vendor_type": "GovTech Product",
+            "ats": {"type": "unknown", "ref": None},
+            "hiring": {"status": "Unknown", "checked": None, "note":
+                       "added from a submission; board not discovered yet"},
+            "source": "submission", "added_on": dt.date.today().isoformat(),
+        })
+        err = validate(companies)
+        if err:
+            return {"error": err}
+        write_atomic("companies.json", companies)
+        item["status"] = "approved"
+        item["company_id"] = cid
+    item["resolved_on"] = dt.date.today().isoformat()
+    write_atomic("submissions.json", subs)
+    return {"ok": True, "message": f"approved {item.get('name') or item.get('title')}"}
+
+
+def act_inspect_submission(body: dict) -> dict:
+    """Guess identity and sector for a submitted company URL, showing evidence.
+
+    Same routine intake uses. Low confidence is reported as low - a submission
+    that cannot be placed confidently should be placed by hand, not filed
+    wherever one incidental keyword pointed.
+    """
+    url = clean_url(body.get("url"))
+    if not url:
+        return {"error": "no URL on that submission"}
+    try:
+        r = add_company.fetch(url)
+        html = r[0] if isinstance(r, tuple) else r
+        name, desc = add_company.guess_identity(html, url)
+    except Exception as exc:
+        return {"error": f"could not read that page: {type(exc).__name__}"}
+    sec, cat, conf, why = add_company.guess_sector(f"{name} {desc}".lower())
+    return {"ok": True, "name": name, "description": desc,
+            "sector": sec, "category": cat, "confidence": conf, "why": why}
+
+
+def act_search_companies(body: dict) -> dict:
+    """Name lookup for the capture overlay, which has no company list of its own."""
+    q = norm(body.get("q") or "")
+    if len(q) < 2:
+        return {"results": []}
+    out = []
+    for c in read("companies.json", []):
+        n = norm(c["name"])
+        if q in n:
+            out.append({"id": c["id"], "name": c["name"], "sector": c["sector"],
+                        "rank": 0 if n.startswith(q) else 1})
+    out.sort(key=lambda r: (r["rank"], len(r["name"])))
+    return {"results": out[:12]}
+
+
 def act_dismiss(body: dict) -> dict:
     dismiss(body.get("queue", ""), body.get("key", ""), body.get("why", ""))
     return {"ok": True, "message": "dismissed"}
@@ -514,10 +709,84 @@ def sort_roles() -> dict:
 ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "verify-website": act_verify_website, "verify-board": act_verify_board,
            "set-board": act_set_board, "set-family": act_set_family,
+           "capture": act_capture, "search-companies": act_search_companies,
+           "submit": act_submit, "resolve-submission": act_resolve_submission,
+           "inspect-submission": act_inspect_submission,
            "dismiss": act_dismiss}
 
 
 # ---------------------------------------------------------------- server
+
+CAPTURE_PAGE = """<!doctype html><meta charset=utf-8>
+<title>GovTech Dock — page capture</title>
+<style>
+ :root{--bg:#fbfaf8;--panel:#fff;--line:#e5e1db;--ink:#1a1815;--dim:#6a655d;
+       --faint:#969086;--accent:#2f6f4f;--chip:#f1eeea}
+ @media (prefers-color-scheme:dark){:root{--bg:#121110;--panel:#1a1918;--line:#2f2c28;
+   --ink:#eae6e0;--dim:#a09a90;--faint:#726c63;--accent:#6fb98a;--chip:#232120}}
+ body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 ui-sans-serif,
+      -apple-system,"Segoe UI",Roboto,sans-serif}
+ main{max-width:720px;margin:0 auto;padding:34px 22px 70px}
+ h1{font-size:21px;margin:0 0 4px;letter-spacing:-.015em}
+ h2{font-size:14px;margin:30px 0 8px}
+ p{color:var(--dim);font-size:14px}
+ .drag{display:inline-block;background:var(--accent);color:#fff;font-weight:600;
+   padding:11px 22px;border-radius:9px;text-decoration:none;font-size:14.5px;
+   cursor:grab;margin:6px 0}
+ ol{color:var(--dim);font-size:14px;padding-left:20px}
+ li{margin:7px 0}
+ code{background:var(--chip);padding:1px 6px;border-radius:5px;font-size:13px}
+ .note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);
+   border-radius:8px;padding:13px 16px;font-size:13.5px;color:var(--dim);margin:18px 0}
+ a{color:var(--accent)}
+</style>
+<main>
+<h1>Page capture</h1>
+<p>For the boards the fetcher cannot read. Your browser runs the widgets, iframes
+and sessions ours does not, so if you can see the jobs, this can take them.</p>
+
+<h2>Install</h2>
+<p>Drag this to your bookmarks bar:</p>
+<a class="drag" href="__LOADER__">GTD capture</a>
+<p style="font-size:13px">If your bookmarks bar is hidden, press
+<code>&#8984;&#8679;B</code> first. Right-clicking the button and copying the link
+also works — make a bookmark by hand and paste it as the URL.</p>
+
+<h2>Use</h2>
+<ol>
+ <li>Open a careers page, or a LinkedIn jobs list, in your normal browser.</li>
+ <li>Click <b>GTD capture</b>. A panel lists every job link it can see.</li>
+ <li>Uncheck anything that is not a posting, then <b>Copy for admin</b>.</li>
+ <li>Paste it into the <a href="/#capture">Capture tab</a> here and pick the
+     company. It lands in <code>data/manual.json</code>.</li>
+</ol>
+<p style="font-size:13px">The clipboard is the handoff because the page cannot
+reach this server: Chrome will not let an https site talk to
+<code>127.0.0.1</code>. Copying works everywhere and needs no permissions.</p>
+
+<div class="note">
+Captured postings are never deleted by an automated run. Absence from a refresh
+means the fetcher still cannot see that company, not that the role closed, so
+only <code>python scripts/manual.py none</code> closes one.
+</div>
+
+<h2>What it does not do</h2>
+<p>It reads the page you have open, once, when you click. It does not scroll,
+paginate, follow links, log in, or run on its own — which is the line between
+reading a page you opened and harvesting a site. On LinkedIn that matters: use it
+on a list you are already looking at, not as a crawler.</p>
+
+<h2>When it finds nothing</h2>
+<p>Usually the board is inside an iframe. Right-click it &rarr; <i>This Frame</i>
+&rarr; <i>Show Only This Frame</i>, then click the bookmarklet again.</p>
+
+<p style="margin-top:34px;font-size:13px;color:var(--faint)">
+The button carries all of <code>scripts/capture.js</code> (__LINES__ lines,
+__SIZE__) in its own URL, because a page on https cannot load anything from a
+loopback server. Editing the script means dragging the button again.
+&nbsp;·&nbsp; <a href="/">back to admin</a></p>
+</main>"""
+
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *a, **kw):
@@ -527,9 +796,25 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if "/api/" in (self.path or ""):
             sys.stderr.write(f"  {self.command} {self.path}\n")
 
+    def _cors(self):
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+        # Chrome's Private Network Access blocks a public page from reaching a
+        # loopback server unless the server opts in. Without this the capture
+        # bookmarklet fails with a bare "Failed to fetch" on every https site.
+        self.send_header("Access-Control-Allow-Private-Network", "true")
+
+    def do_OPTIONS(self):
+        self.send_response(204)
+        self._cors()
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+
     def _json(self, payload, code=200):
         body = json.dumps(payload).encode()
         self.send_response(code)
+        self._cors()
         self.send_header("Content-Type", "application/json")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
@@ -554,6 +839,16 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 return self._json({"error": "no such queue"}, 404)
             companies, board = read("companies.json", []), read("board.json", {})
             return self._json({"items": QUEUES[name](companies, board)[:400]})
+        if path == "/capture":
+            return self._capture_page()
+        if path == "/capture.js":
+            js = (pathlib.Path(__file__).parent / "capture.js").read_bytes()
+            self.send_response(200)
+            self._cors()
+            self.send_header("Content-Type", "application/javascript")
+            self.send_header("Content-Length", str(len(js)))
+            self.end_headers()
+            return self.wfile.write(js)
         if path == "/api/sort/companies":
             qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
             return self._json(sort_companies((qs.get("sector") or [""])[0]))
@@ -564,6 +859,27 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if path == "/api/families":
             return self._json(roles.LABEL)
         return super().do_GET()
+
+    def _capture_page(self):
+        js = (pathlib.Path(__file__).parent / "capture.js").read_text()
+        # A bookmarklet has to be one URI-encoded line. Loading the real file
+        # from the local server instead of inlining it means editing capture.js
+        # takes effect on the next click, with no reinstall.
+        # Self-contained on purpose. Chrome blocks a page on https from loading
+        # anything off http://127.0.0.1 - fetch and script tag alike - so a
+        # loader bookmarklet would fail on every real careers site. The whole
+        # script rides in the URL instead, which is why editing capture.js means
+        # dragging the button again.
+        loader = "javascript:" + urllib.parse.quote(js, safe="")
+        html = CAPTURE_PAGE.replace("__LOADER__", loader.replace('"', "&quot;")) \
+                           .replace("__LINES__", str(len(js.splitlines()))) \
+                           .replace("__SIZE__", f"{len(loader) // 1024} KB")
+        body = html.encode()
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
 
     def do_POST(self):
         path = urllib.parse.urlparse(self.path).path
