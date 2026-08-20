@@ -50,7 +50,7 @@ TIER = {"General Gov": 1, "Public Works": 1, "Parks & Rec": 1,
 
 # Which applicant-tracking systems actually rank applicants. A resume seeded with
 # exact keywords helps on the first two and does close to nothing on the third.
-# Kept in lockstep with job-hunter's core/scoring.py RANKS_* sets: a company
+# Kept in lockstep with job-hunter's core/parsers.py RANKS_* sets: a company
 # scored "hard" in one repo and "soft" in the other would condition a resume
 # score on a reader the dock says does not exist. oracle/paylocity/rippling
 # were added when discovery learned those ATS families.
