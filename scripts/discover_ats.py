@@ -102,6 +102,17 @@ MARKERS: list[tuple[str, str]] = [
 # came off the company's own page.
 URL_MARKERS = {"paylocity", "oracle"}
 RESERVED = {"www", "jobs", "careers", "api", "embed", "app", "static", "cdn", "js"}
+# The ATS vendor's own name is never the tenant. On jobs.jobvite.com/acmesoft the
+# readable label is "jobvite", and checking THAT against the company would pass
+# nothing and fail everything.
+VENDOR_HOSTS = {
+    "jobvite", "greenhouse", "lever", "ashbyhq", "workable", "recruitee",
+    "breezy", "bamboohr", "applytojob", "rippling", "icims", "paylocity",
+    "oraclecloud", "adp", "paycomonline", "teamtailor", "hibob",
+    "myworkdayjobs", "myworkdaysite", "smartrecruiters", "applicantpro",
+    "clearcompany", "isolvedhire", "dayforcehcm", "ultipro", "pinpointhq",
+    "taleo", "avature", "csod", "workforcenow",
+}
 
 
 def _norm(s: str) -> str:
@@ -313,9 +324,47 @@ def career_links(html: str, resp_url: str) -> list[str]:
     return [u for _, u in scored[:8]]
 
 
+def identity_of(kind: str, groups: list, ref) -> str:
+    """The tenant name inside a discovered board reference.
+
+    Every board has one, whatever shape the ref takes, and it is the only thing
+    that can be checked against the company. Skipping the check for
+    awkwardly-shaped refs is how a Workday board belonging to Terex nearly got
+    written as ZenRobotics' - 31 of the parent's postings under the
+    subsidiary's name, which is the one thing this file exists to prevent.
+    """
+    if kind == "workday":
+        # Two host shapes: acme.wd12.myworkdayjobs.com/Site -> (acme, wd12, Site)
+        # and wd3.myworkdaysite.com/recruiting/acme/Site -> (wd3, acme, Site).
+        # The tenant is whichever element is not the pod.
+        return next((g for g in groups[:2] if not re.fullmatch(r"wd\d+", g or "")), "")
+    text = ref if isinstance(ref, str) else " ".join(str(g) for g in groups)
+    # Some vendors key a board by an opaque id with no company name anywhere in
+    # it. There is nothing to check, so these must not be written on trust -
+    # they return "" and the caller routes them to review.
+    if re.search(r"workforcenow\.adp\.com|paycomonline\.net", text, re.I):
+        return ""
+    if kind == "paylocity":
+        # .../jobs/All/<uuid>/<Company-Name>
+        tail = text.rstrip("/").rsplit("/", 1)[-1]
+        return "" if re.fullmatch(r"[0-9a-f-]{36}", tail) else tail
+    host = text.split("//")[-1].split("/")[0]
+    labels = host.split(".")
+    label = labels[0]
+    if label in RESERVED and len(labels) > 1:
+        label = labels[1]
+    if label in RESERVED or label in VENDOR_HOSTS:
+        # No host to read - fall back to the first path segment, which is where
+        # jobs.jobvite.com/<company> keeps it.
+        segs = [x for x in text.split("//")[-1].split("/")[1:] if x]
+        label = segs[0] if segs else ""
+    return label
+
+
 def read_marker(html: str, company: dict) -> tuple[dict | None, str]:
-    """First ATS marker in the page, as a fetchable block. Body only, never
-    headers - WordPress.com stamps an ad for join.a8c.com on every response."""
+    """First ATS marker in the page, as a fetchable block, plus the tenant name
+    to check it against. Body only, never headers - WordPress.com stamps an ad
+    for join.a8c.com on every response it serves."""
     for kind, pat in MARKERS:
         m = re.search(pat, html, re.I)
         if not m:
@@ -326,17 +375,16 @@ def read_marker(html: str, company: dict) -> tuple[dict | None, str]:
         if kind == "workday":
             if len(groups) < 3:
                 continue
-            return {"type": kind, "ref": list(groups[:3])}, groups[0]
+            block = {"type": kind, "ref": list(groups[:3])}
+            return block, identity_of(kind, groups, block["ref"])
         ref = groups[0]
         if kind in URL_MARKERS or "/" in ref or "." in ref:
-            # A full URL or host: already pinned to one tenant, and it came off
-            # this company's own page.
             if not ref.startswith("http"):
                 ref = "https://" + ref
-            return {"type": kind, "ref": ref}, ref
+            return {"type": kind, "ref": ref}, identity_of(kind, groups, ref)
         if ref.lower() in RESERVED:
             continue
-        return {"type": kind, "ref": ref}, ref
+        return {"type": kind, "ref": ref}, identity_of(kind, groups, ref)
     return None, ""
 
 
@@ -444,6 +492,7 @@ def probe(company: dict) -> dict:
 
     if block is not None:
         ref = block["ref"]
+        identity = slug
         try:
             saved, ats.TIMEOUT = ats.TIMEOUT, 10
             try:
@@ -455,13 +504,21 @@ def probe(company: dict) -> dict:
                     "note": f"{block['type']}:{str(ref)[:34]} found but unreadable "
                             f"({str(exc)[:36]})"}
         real = [j for j in jobs if (j.get("title") or "").strip()]
-        # A URL-shaped ref is already pinned to one tenant and came off this
-        # company's own page, so the name test does not apply to it.
-        needs_check = isinstance(ref, str) and not ref.startswith("http")
-        if needs_check and not slug_matches(ref, company):
+        # Every board gets the name test, whatever shape its ref takes. A board
+        # found on a company's own careers page is routinely the parent's: an
+        # acquired product line's careers link points at the acquirer.
+        if not identity:
+            # No company name anywhere in the reference, so nothing can confirm
+            # it belongs here. A person can, in seconds.
             return {"id": company["id"], "found": None, "suspect": block,
-                    "note": f"{block['type']}:{ref} reads, but the slug does not "
-                            f"match {company['name']!r}; likely someone else's board"}
+                    "note": f"{block['type']} board reads ({len(real)} posting(s)) but "
+                            f"its reference carries no company name, so it cannot "
+                            f"be checked automatically"}
+        if not slug_matches(identity, company):
+            return {"id": company["id"], "found": None, "suspect": block,
+                    "note": f"{block['type']}:{identity} reads ({len(real)} posting(s)), "
+                            f"but does not match {company['name']!r}; "
+                            f"likely a parent or another company"}
         return {"id": company["id"], "found": block,
                 "note": f"{block['type']}:{str(ref)[:40]}, {len(real)} posting(s) readable",
                 "postings": len(real)}
@@ -474,8 +531,11 @@ def probe(company: dict) -> dict:
         note = "careers page, no ATS behind it"
         if careers_empty:
             note = "careers page, says it has no openings"
+        # Show the path, not a blind slice of the URL: a redirect can change the
+        # host, and site-length slicing then prints "eers/" for "/careers/".
+        shown = urllib.parse.urlsplit(careers_url).path or "/"
         return {"id": company["id"], "found": {"type": "html", "ref": careers_url},
-                "note": f"{note} ({careers_url[len(site):][:40] or '/'})",
+                "note": f"{note} ({shown[:44]})",
                 "postings": 0, "weak": True}
 
     if catch_all:
