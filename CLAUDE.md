@@ -128,6 +128,35 @@ company runs the same identity and sector guess as intake and shows the
 evidence, and reports low confidence as low rather than filing on one
 incidental keyword. Approving a job writes it through the capture path.
 
+## Coverage: read `scripts/coverage.py`, not the raw fraction
+
+`python scripts/coverage.py [--by-sector]`
+
+"839 of 1,722 monitored" was wrong in both directions and it drove bad
+decisions for a while. It counted a careers page nothing can enumerate the
+same as a Greenhouse API, and it counted companies that have **no job board at
+all** as a gap to be closed. The real split:
+
+```
+structured   213   a real API. Titles, locations, links. THIS is the number to move.
+page only    629   a page a person can read and a fetcher mostly cannot.
+blocked       98   a bot wall or transport error. We learned nothing. NOT a zero.
+absent       652   checked, no public board exists. A finished state, not a gap.
+unchecked    130
+```
+
+A 15-agent field audit (n=90 random re-probe, plus 24 investigated by hand)
+found **55-63% of the "no board found" pile is genuinely boardless** - small
+SLED vendors hiring on LinkedIn or by email. Rebuilding discovery on that
+audit's findings and A/B-ing it on a fresh 70-company sample recovered
+**1-2 structured boards per 70**, against a projection of ~10. Measure, then
+report the measurement; the projections in that audit were drawn from a sample
+selected for being interesting.
+
+So: **`page only` is a worklist for the capture bookmarklet, not coverage.**
+Converting those to `structured` is mostly impossible - there is no ATS behind
+them to find. Do not add the two together in a status report.
+
 ## Conventions
 
 - Company `id` = kebab-case name (parenthetical suffixes dropped).
