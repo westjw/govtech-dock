@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8000"],
       "port": 8000
+    },
+    {
+      "name": "govtech-dock-admin",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["scripts/admin.py", "--port", "8787"],
+      "port": 8787
     }
   ]
 }

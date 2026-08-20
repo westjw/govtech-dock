@@ -39,6 +39,37 @@ version. Three parts:
 - Statuses are exactly: `Yes`, `Sales (non-AE)`, `None found`, `Unknown` —
   renderer, exporter, and selftest all assume this set.
 
+## The admin backend
+
+`python scripts/admin.py` then <http://127.0.0.1:8787>. Loopback only, on
+purpose: it writes `companies.json` with no auth in front of it.
+
+It is where the residue of every automated pass goes - the parts that need
+judgment rather than a better regex. Seven queues: duplicates, missing
+websites, missing boards, wrong placement, unclassified roles, acquisitions,
+website review. Rules that hold there:
+
+- **Every write is validated against the same invariants `selftest.py`
+  enforces**, on the whole file, then lands atomically. A bad edit is refused,
+  never half-applied.
+- **A merge never loses research.** The survivor keeps what it has and inherits
+  what it lacks; a discovered ATS always beats an `unknown` one; the dropped
+  name is kept in `also_known_as`.
+- **Evidence before the write.** Pasting a URL shows the page title, whether it
+  is parked, whether it identifies the company, which ATS is behind it and
+  whether the slug matches - then a person decides. A slug mismatch says so in
+  red, because saving it would record a parent's postings as the subsidiary's.
+- **An empty page scan is not a board.** Reading zero titles means the page is
+  unreadable, not that the board is empty; the UI says so and relabels the
+  button "Save anyway".
+- **Dismissals are recorded** in `data/admin_dismissed.json` with a reason, so a
+  queue shrinks when a person says "this is fine" and does not re-ask forever.
+- **Hand family assignments are data, not rules.** `data/family_overrides.json`
+  is keyed by exact title and read by `roles.family()`. Use it for titles with
+  no pattern to write ("Manager", "Commercial Development"). A title that *does*
+  suggest a rule still gets one in `roles.py` with a `selftest.py` case.
+- Nothing in admin touches `data/hiring_history/`.
+
 ## Conventions
 
 - Company `id` = kebab-case name (parenthetical suffixes dropped).

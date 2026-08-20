@@ -14,6 +14,8 @@ lawyer, not a seller. Each is a specific decision and selftest.py pins them.
 """
 from __future__ import annotations
 
+import json
+import pathlib
 import re
 
 FAMILIES = ("gtm", "cs", "ops", "engineering", "product", "data", "policy",
@@ -151,10 +153,34 @@ RULES: list[tuple[str, re.Pattern]] = [
 ]
 
 
+# Hand assignments from the admin queue, keyed by exact title. Some titles name
+# a rank with no function - "Manager", "Executive", "Commercial Development" -
+# and the family lives in the JD body, which the board does not fetch. There is
+# no pattern to write for those, so the judgment is stored as data. A title that
+# does suggest a rule still gets one below, with a selftest case.
+_OVERRIDES: dict | None = None
+
+
+def overrides() -> dict:
+    global _OVERRIDES
+    if _OVERRIDES is None:
+        p = pathlib.Path(__file__).resolve().parent.parent / "data" / "family_overrides.json"
+        try:
+            raw = json.loads(p.read_text())
+        except (OSError, json.JSONDecodeError):
+            raw = {}
+        _OVERRIDES = {k: v["family"] if isinstance(v, dict) else v
+                      for k, v in raw.items()}
+    return _OVERRIDES
+
+
 def family(title: str) -> str:
     t = (title or "").strip()
     if not t:
         return "other"
+    o = overrides().get(t)
+    if o:
+        return o
     for fam, pat in RULES:
         if pat.search(t):
             return fam
