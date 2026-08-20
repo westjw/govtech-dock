@@ -1865,144 +1865,150 @@
   "note": "careers page at /careers, no ATS marker"
  },
  "threefold": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "cims-cemetery-software": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:https://ramaker.isolvedhire.com found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
  },
  "aclarian": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "comcate": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "hera-property-registry": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "tolemi": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "citibot": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "flashvote": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "revize": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/index.php)",
+  "weak": true
  },
  "loop": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "bamboohr:boxclever reads, but the slug does not match 'Loop'; likely someone else's board"
+  "note": "bamboohr:boxclever reads (0 posting(s)), but does not match 'Loop'; likely a parent or another company"
  },
  "readyly": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "madison-ai": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "govinity": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "openmeeting-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "clerkbase": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "legislaide": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "beacon-bid": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "zoomgrants": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "avila": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "mygovernmentonline": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "verdant": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "elation-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "public-surplus": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/sms/about/careers)",
+  "weak": true
  },
  "citystream": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "social-explorer": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "savi": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at ny/bysavi/jobs (HTTP 403)",
+  "retry_soon": true
  },
  "govskills": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "stage-cares": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
  },
  "matterhorn": {
   "on": "2026-08-19",
@@ -2010,79 +2016,80 @@
   "note": "careers page at reers, no ATS marker"
  },
  "justicetext": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "bids-tenders": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "biddingo": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "hazel": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "sysoft-getall": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
- "rfp360-ai": {
-  "on": "2026-08-19",
+ "sysoft-getall": {
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
+ },
+ "rfp360-ai": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "gave up after 75s"
  },
  "bid-locker": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "varidx": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "azora-software": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "orange-data": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "rep-d": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "unstackr": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "letzchat": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "offerioai": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "govstream-ai": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "active": {
   "on": "2026-08-19",
@@ -2090,9 +2097,10 @@
   "note": "careers page at network.com, no ATS marker"
  },
  "aatral-vr-ar-training": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "amazon-web-services": {
   "on": "2026-08-19",
@@ -2100,19 +2108,19 @@
   "note": "no board found"
  },
  "andrews-technology": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "barkpass-pet-licensing-dog-park-management": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "biddingo-com": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "brightly-software": {
   "on": "2026-08-19",
@@ -2120,54 +2128,57 @@
   "note": "no board found"
  },
  "creatio": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers)",
+  "weak": true
  },
  "dwarpaal-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "imagesource-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "inseer-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "intellisafe-analytics": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "intelligent-clinical-systems-llc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "knarrtek-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "monday-com": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "nutanix": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en/)",
+  "weak": true
  },
  "parkzilla": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "partake": {
   "on": "2026-08-19",
@@ -2175,99 +2186,106 @@
   "note": "no board found"
  },
  "procore": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/)",
+  "weak": true
  },
  "qualtrics": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/us/en)",
+  "weak": true
  },
  "revize-government-websites": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/index.php)",
+  "weak": true
  },
  "salesforce": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers/)",
+  "weak": true
  },
  "simforge": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "sotaog": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "surety-2000": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "surety2000": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "threefold-ai": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "trimble": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en/careers)",
+  "weak": true
  },
  "veritypay": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "ncase-technologies-llc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "ike-smart-city": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "rippling:orange-barrel-media reads, but the slug does not match 'IKE Smart City'; likely someone else's board"
+  "note": "rippling:orange-barrel-media reads (20 posting(s)), but does not match 'IKE Smart City'; likely a parent or another company"
  },
  "munibit": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "omicron-technology-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "summer": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "textbychoice": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "vottiv": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "rock-solid-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "qscend-technologies": {
   "on": "2026-08-19",
@@ -2280,64 +2298,72 @@
   "note": "careers page at /career, no ATS marker"
  },
  "konveio": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "accesse11": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "gave up after 45s",
+  "retry_soon": true
  },
  "general-code": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "cyracom-international": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "iworq-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "justfoia": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "camino-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "greenhouse:clariticloudinc reads, but the slug does not match 'Camino Technologies'; likely someone else's board"
+  "note": "greenhouse:clariticloudinc reads (9 posting(s)), but does not match 'Camino Technologies'; likely a parent or another company"
  },
  "vitech-systems-group": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 200)",
+  "retry_soon": true
  },
  "american-fidelity": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 200)",
+  "retry_soon": true
  },
  "avue-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "acendre": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "vidcruiter": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/list/careers)",
+  "weak": true
  },
  "i-o-solutions": {
   "on": "2026-08-19",
@@ -2345,9 +2371,10 @@
   "note": "careers page at ice-officer-jobs, no ATS marker"
  },
  "national-testing-network": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "public-safety-testing": {
   "on": "2026-08-19",
@@ -2355,9 +2382,10 @@
   "note": "careers page at /for-candidates/career-opportunities/all, no ATS marker"
  },
  "fire-police-selection": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ReadTimeout)",
+  "retry_soon": true
  },
  "planit-schedule": {
   "on": "2026-08-19",
@@ -2365,14 +2393,15 @@
   "note": "careers page at rs, no ATS marker"
  },
  "springbrook-software": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:https://springbrooksoftware.isolve found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
  },
  "careers-in-government": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "breezy:skagit-911 reads, but the slug does not match 'Careers In Government'; likely someone else's board"
+  "note": "breezy:skagit-911 reads (2 posting(s)), but does not match 'Careers In Government'; likely a parent or another company"
  },
  "dominion-voting-systems": {
   "on": "2026-08-19",
@@ -2380,39 +2409,43 @@
   "note": "careers page at om/recruiting/jobs/All/d26bc2af-65c9-44bc-8038-5ec10cc05f98/Liberty-Vote-USA-Inc, no ATS marker"
  },
  "unisyn-voting-solutions": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers)",
+  "weak": true
  },
  "microvote-general-corporation": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "smartmatic": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "scytl-election-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "civix": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "democracy-live": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "tenex-software-solutions": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/tenex-careers.html)",
+  "weak": true
  },
  "vr-systems": {
   "on": "2026-08-19",
@@ -2420,9 +2453,9 @@
   "note": "careers page at /About-Us/Careers, no ATS marker"
  },
  "dfm-associates": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "pcc-technology-group": {
   "on": "2026-08-19",
@@ -2430,7 +2463,7 @@
   "note": "no board found"
  },
  "konnech": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -2440,109 +2473,121 @@
   "note": "careers page at /about/career-opportunities, no ATS marker"
  },
  "voatz": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at company/voatz/jobs (HTTP 403)",
+  "retry_soon": true
  },
  "simply-voting": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career-opportunities-at-simply-voting/)",
+  "weak": true
  },
  "ballottrax": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "caliper-corporation": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at /jobs (HTTP 403)",
+  "retry_soon": true
  },
  "netfile": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "phoenix-graphics": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "seachange-print-innovations": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "bell-and-howell": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-us/career/)",
+  "weak": true
  },
  "robis-elections": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "platinum-technology-resource": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "oset-institute": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
+ "oset-institute": {
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/join-us)",
+  "weak": true
+ },
  "inclusion-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "trueballot": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "optum-serve": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (404)",
+  "retry_soon": true
  },
  "acentra-health": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "icims:incareers-acentra found but unreadable (no jobs parsed from iCIMS portal)"
+  "note": "icims:incareers-acentra found but unreadable (no jobs parsed from iCIMS portal)",
+  "retry_soon": true
  },
  "redmane-technology": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "cardinality-ai": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "casebook-pbc": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "merative": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "workday:['merative', 'wd12', 'External_Career_Si, 21 posting(s) readable"
  },
  "findhelp": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "wellsky": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "getinsured": {
   "on": "2026-08-19",
@@ -2550,84 +2595,90 @@
   "note": "careers page at .com/about/working-at-get-insured, no ATS marker"
  },
  "id-me": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "pondera-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "fortuna-health": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "ashby:fortuna-health, 3 posting(s) readable"
  },
  "healthy-together": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "voyatek": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/our-culture/)",
+  "weak": true
  },
  "bonfire-interactive": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "bamboohr:euna reads, but the slug does not match 'Bonfire Interactive'; likely someone else's board"
+  "note": "bamboohr:euna reads (36 posting(s)), but does not match 'Bonfire Interactive'; likely a parent or another company"
  },
  "mdf-commerce": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "ashby:sovra reads, but the slug does not match 'mdf commerce'; likely someone else's board"
+  "note": "ashby:sovra reads (8 posting(s)), but does not match 'mdf commerce'; likely a parent or another company"
  },
  "ionwave-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "bamboohr:euna reads, but the slug does not match 'Ionwave Technologies'; likely someone else's board"
+  "note": "bamboohr:euna reads (36 posting(s)), but does not match 'Ionwave Technologies'; likely a parent or another company"
  },
  "vendor-registry": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "demandstar": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
+ "demandstar": {
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
  "questcdn": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "ebid-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "coprocure": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "marketplace-city": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "oracle:https://saasfaprod1.fa.ocs.oraclec found but unreadable (HTTP 503 for https://saasfaprod1.fa.)",
+  "retry_soon": true
  },
  "zycus": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "proactis": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
+ },
+ "proactis": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "fluxx": {
   "on": "2026-08-19",
@@ -2635,19 +2686,19 @@
   "note": "greenhouse:fluxx, 3 posting(s) readable"
  },
  "ecivis": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "bamboohr:euna reads, but the slug does not match 'eCivis'; likely someone else's board"
+  "note": "bamboohr:euna reads (36 posting(s)), but does not match 'eCivis'; likely a parent or another company"
  },
  "amplifund": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "bamboohr:euna reads, but the slug does not match 'AmpliFund (StreamLink Software)'; likely someone else's board"
+  "note": "bamboohr:euna reads (36 posting(s)), but does not match 'AmpliFund (StreamLink Software)'; likely a parent or another company"
  },
  "citybase": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "grant-street-group": {
   "on": "2026-08-19",
@@ -2655,7 +2706,7 @@
   "note": "lever:grantstreet, 7 posting(s) readable"
  },
  "csg-forte": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -2670,24 +2721,25 @@
   "note": "careers page at /jobs, no ATS marker"
  },
  "payment-service-network": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "core-business-technologies": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/core-business-technologies/jobs)",
+  "weak": true
  },
  "aci-worldwide": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "oracle:ebwg reads (0 posting(s)), but does not match 'ACI Worldwide'; likely a parent or another company"
  },
  "paynearme": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "greenhouse:paynearmeinc, 8 posting(s) readable"
  },
  "ncourt": {
   "on": "2026-08-19",
@@ -2700,7 +2752,7 @@
   "note": "careers page at areers, no ATS marker"
  },
  "webcemeteries": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -2710,119 +2762,124 @@
   "note": "careers page at paycor.com/career/CareerHome.action?clientId=8a7883c695f8539001965ab69dd33816, no ATS marker"
  },
  "pontem-software": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "chronicle": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "everspot": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "everark": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "grave-discover-software": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "cemeteryfind": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "legacy-mark": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "memorial-business-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at /jobs (HTTP 403)",
+  "retry_soon": true
  },
  "srs-computing": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "all-funeral-services": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "newcom-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "lazarus-cemetery-mapping": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "deventit": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "datawing": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "axiom-cemetery-management-solutions": {
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
- "axiom-cemetery-management-solutions": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
  "resting-gardens": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "p-rennia": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "citizenserve": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "munilogic": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "bitco-software": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "symbium": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "permitify": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "system-automation": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "govbuilt": {
   "on": "2026-08-19",
@@ -2830,94 +2887,103 @@
   "note": "careers page at om/careers, no ATS marker"
  },
  "gridics": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "avenu-insights-analytics": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "archistar": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "idox-group": {
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
- "idox-group": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
  "balancing-act": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "munetrix": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/k-12-careers)",
+  "weak": true
  },
  "onstrategy": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "corporater": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "html:https://corporater.teamtailor.com, 0 posting(s) readable"
  },
  "urbanfootprint": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "greenhouse:urbanfootprint found but unreadable (HTTP 404 for https://boards-api.greenhou)"
+  "note": "greenhouse:urbanfootprint found but unreadable (HTTP 404 for https://boards-api.gree)",
+  "retry_soon": true
  },
  "planet-labs": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers/)",
+  "weak": true
  },
  "opendatasoft": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en/careers/)",
+  "weak": true
  },
  "junar": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "resourcex": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "elucd": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "numina": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "equivant": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "justice-systems-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "imagesoft": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "karpel-solutions": {
   "on": "2026-08-19",
@@ -2925,64 +2991,70 @@
   "note": "careers page at ck/v2/r01/___https:/recruiting.paylocity.com/recruiting/jobs/All/a786a5bd-4f45-473b-b68a-385f9a5ec0ad/Karpel-Computer-Systems-Inc___.YXAzOmthcnBlbHNvbHV0aW9uczphOm86MmUzZmI5OWZlZTA2YzZmMDBlNjcxODJkOTRjNTk1NzI6Nzo5YzQxOjdlMGZkYWUwNjcyOTI0ODQ3ZWQwMmZlNmJkYTkxOTA5ZDlhY2JkNjc3ZjdhNDRkOTdhNGIxOGExNmM0ZDFhMGM6aDpUOkY, no ATS marker"
  },
  "tybera-development-group": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "judicial-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "juryq": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "promise": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "justice-av-solutions": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "courtsmart": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/employment/)",
+  "weak": true
  },
  "bis-digital": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "viq-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "courtcall": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "legalserver": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "accufund": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "devnet-inc": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/jobs/)",
+  "weak": true
  },
  "bondlink": {
   "on": "2026-08-19",
@@ -2995,114 +3067,119 @@
   "note": "careers page at /company/neubrain-careers, no ATS marker"
  },
  "unit4": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "glacier": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "ashby:glacier, 3 posting(s) readable"
  },
  "roadbotics": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "workday:michelinhr reads (28 posting(s)) and matches the acquirer named in 'RoadBotics (Michelin)'; confirm it is scoped to this product line before wiring it up"
  },
  "brightly": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en-us/company/jobs/)",
+  "weak": true
  },
  "deepwalk": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "cityrover": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "placemetry": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "tenzing-one": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "i-probe": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "novotx": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "vueworks": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "atlasview": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "atomai-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "dynamic-infrastructure": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "frost-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "streetsaver": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "edgital": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "iseechange": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "inlogic": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
  },
  "oversite": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "modelve": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "aurigo-software-technologies-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "avolve": {
   "on": "2026-08-19",
@@ -3125,14 +3202,15 @@
   "note": "no board found"
  },
  "precise-mrm-llc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
  },
  "route4me": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "wrangler-ai": {
   "on": "2026-08-19",
@@ -3140,79 +3218,86 @@
   "note": "no board found"
  },
  "kapsch-trafficcom": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "yunex-traffic": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "rhythm-engineering": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "sensys-networks": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "global-traffic-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "ashby:miovision reads, but the slug does not match 'Global Traffic Technologies (GTT)'; likely someone else's board"
+  "note": "ashby:miovision reads (8 posting(s)), but does not match 'Global Traffic Technologies (GTT)'; likely a parent or another company"
  },
  "rapid-flow-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "ashby:miovision reads, but the slug does not match 'Rapid Flow Technologies'; likely someone else's board"
+  "note": "ashby:miovision reads (8 posting(s)), but does not match 'Rapid Flow Technologies'; likely a parent or another company"
  },
  "derq": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "flow-labs": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "inrix": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "streetlight-data": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "replica": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "numetric": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
+  "found": false,
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
+ },
+ "agileassets": {
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
- "agileassets": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
  "streetscan": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "haas-alert": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "vitronic": {
   "on": "2026-08-19",
@@ -3220,79 +3305,89 @@
   "note": "careers page at /en-us/corporation/career, no ATS marker"
  },
  "nexar": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "compass-iot": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "cityworks": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "hexagon-asset-lifecycle-intelligence": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "accruent": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/accruent/)",
+  "weak": true
  },
  "ifs": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "emaint": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/)",
+  "weak": true
  },
  "roadbotics-by-michelin": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "workday:michelinhr reads (28 posting(s)), but does not match 'RoadBotics by Michelin'; likely a parent or another company"
  },
  "sedaru": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "e-j-ward": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/assets/careers.png)",
+  "weak": true
  },
  "kamstrup": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 429)",
+  "retry_soon": true
  },
  "diehl-metering": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "zenner-usa": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
  },
  "innovyze": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "aquatic-informatics": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "hach": {
   "on": "2026-08-19",
@@ -3300,94 +3395,106 @@
   "note": "careers page at .com/global/en/hach?origin=dropdown&c1=careers&clickedon=careers, no ATS marker"
  },
  "fathom": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/our-story/careers/)",
+  "weak": true
  },
  "gutermann": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "ovarro": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en/global/about-us/careers/2/)",
+  "weak": true
  },
  "aquarius-spectrum": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "cues": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/pages/careers)",
+  "weak": true
  },
  "envirosight": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "wincan": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "smartcover-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "ads-environmental-services": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-us/ads-careers)",
+  "weak": true
  },
  "infosense": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "pani-energy": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "kisters": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "watchtower-robotics": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "trihedral-engineering": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "tomra": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "machinex": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "bulk-handling-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "zenrobotics": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "workday:terex reads (31 posting(s)), but does not match 'ZenRobotics'; likely a parent or another company"
  },
  "waste-robotics": {
   "on": "2026-08-19",
@@ -3395,9 +3502,9 @@
   "note": "bamboohr:wasterobotics, 1 posting(s) readable"
  },
  "prairie-robotics": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "nordsense": {
   "on": "2026-08-19",
@@ -3405,14 +3512,15 @@
   "note": "careers page at /job, no ATS marker"
  },
  "enevo": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "evreka": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career/)",
+  "weak": true
  },
  "wastehero": {
   "on": "2026-08-19",
@@ -3420,19 +3528,21 @@
   "note": "careers page at /company/jobs, no ATS marker"
  },
  "recycle-coach": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/solutions/careers)",
+  "weak": true
  },
  "emerge-knowledge": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "soft-pak": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "workday:terex reads (31 posting(s)), but does not match 'Soft-Pak'; likely a parent or another company"
  },
  "ivy-computer": {
   "on": "2026-08-19",
@@ -3440,134 +3550,141 @@
   "note": "bamboohr:ivycomputer, 4 posting(s) readable"
  },
  "battle-motors": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "curbtender": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
  },
  "wastequip": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "workday:['wastequip', 'wd108', 'Wastequip_Career, 15 posting(s) readable"
  },
  "otto-environmental-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "sonrai-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "greenq": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/join-us/)",
+  "weak": true
  },
  "cleanrobotics": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "sadako-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "communitypass": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "barkpass": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "arly": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:https://www.paycomonline.net/v4/at found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
  },
  "quickscores": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "ankored": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "playground-guardian": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "istrike-alerts": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "hydroapps": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "eventhub": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "visit-widget": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "greehill": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "peak-software-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "upace": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "yodel-pass": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "epact": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "productive-parks": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "volunteerlocal": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "onsight": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "becs-technology": {
   "on": "2026-08-19",
@@ -3575,62 +3692,64 @@
   "note": "careers page at aylocity.com/recruiting/jobs/All/6eb7eeec-a57c-496e-a69d-bc4237f8f773/BECS-TECHNOLOGY-INC, no ATS marker"
  },
  "tinymobilerobots": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "sportreach": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "etrak-recreation-software": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "parkify": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "athletify": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "myvolunteer": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "myrec-com-recreation-software": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers/)",
+  "weak": true
  },
  "myvolunteer-by-crc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "patch-retention": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "playmetrics": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "jersey-watch": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "daysmart-recreation": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -3640,29 +3759,30 @@
   "note": "careers page at m/boards/upper-hand-89518d41-1ea4-4e74-8937-17ff05442a66, no ATS marker"
  },
  "leaguelobster": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "playerspace": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "gotsport": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "sportsplus": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "spond": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page at .com/careers, no ATS marker"
  },
  "heja": {
   "on": "2026-08-19",
@@ -3670,42 +3790,44 @@
   "note": "careers page at o, no ATS marker"
  },
  "isport360": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "teamgenius": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "epact-network": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "sterling-volunteers": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "national-center-for-safety-initiatives": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "jdp": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "ssci": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "praesidium": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -3715,14 +3837,14 @@
   "note": "careers page at rtandrecreation.com/about, no ATS marker"
  },
  "rectimes": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "sportskey": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "rain-bird": {
   "on": "2026-08-19",
@@ -3730,59 +3852,59 @@
   "note": "careers page at /corporate/careers-home, no ATS marker"
  },
  "hunter-industries": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "baseline-irrigation-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "swimeye": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "sightbit": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "thor-guard": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "dtn": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "weatherstem": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page at /jobs, no ATS marker"
  },
  "trafx-research": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "aspira": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "us-edirect": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "novo-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "greensight": {
   "on": "2026-08-19",
@@ -3795,89 +3917,96 @@
   "note": "careers page at /job-openings, no ATS marker"
  },
  "trailhead-labs": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 429)",
+  "retry_soon": true
  },
  "bandwango": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "arrivalist": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "jackrabbit-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "harmari": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "opencounter": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "bamboohr:euna reads, but the slug does not match 'OpenCounter'; likely someone else's board"
+  "note": "bamboohr:euna reads (36 posting(s)), but does not match 'OpenCounter'; likely a parent or another company"
  },
  "apply4-technology": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "citygrows": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "reel-scout": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "etix": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "24-7-software": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers-india)",
+  "weak": true
  },
  "marketwurks": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "manage-my-market": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "galaxy-digital": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "better-impact": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "volgistics": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/jobs/)",
+  "weak": true
  },
  "point": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "initlive": {
   "on": "2026-08-19",
@@ -3885,112 +4014,121 @@
   "note": "greenhouse:bloomerang, 9 posting(s) readable"
  },
  "travelstorys": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "brandkit": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "workday:generalmotors reads (39 posting(s)), but does not match 'Brandkit'; likely a parent or another company"
  },
  "cuseum": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "idss": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "innosoft-canada": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "maximum-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "rec1": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "campspot": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "rippling:campspot, 8 posting(s) readable"
  },
  "camis": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "outerspatial": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 429)",
+  "retry_soon": true
  },
  "bond-sports": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "playeasy": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "burnbot": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "perimeter": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "priority-dispatch": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:https://www.paycomonline.net/v4/at found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
  },
  "rave-mobile-safety": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "goodsam": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "debristech": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "porter-lee": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at /jobs (HTTP 403)",
+  "retry_soon": true
  },
  "veripic": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "leadsonline": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers.html)",
+  "weak": true
  },
  "facetec": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -4000,44 +4138,46 @@
   "note": "careers page at /job-listings, no ATS marker"
  },
  "milo-range": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers/)",
+  "weak": true
  },
  "alli-connect": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "pace-scheduler": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "readyop": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "ncic-inmate-communications": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "jailgeek": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "guard1": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "orijin": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "turnkey-corrections": {
   "on": "2026-08-19",
@@ -4045,49 +4185,52 @@
   "note": "careers page at .outlook.com/?url=https%3A%2F%2Frecruiting.paylocity.com%2Frecruiting%2Fjobs%2FAll%2F281738b4-8c12-499f-9675-d58fbec1da87%2FTW-VENDING-INC&data=04%7C01%7CKatym%40tkc32m.com%7C474b2a98f0eb4c9a324d08d9e1b4e8df%7C8c76fae6dea14cf3b8975c4b1ee817b7%7C0%7C0%7C637788989378298241%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000&sdata=jncO1CHTozoOvq3u3TsTYkAzoWBT46AVHLqeAeGyL9k%3D&reserved=0, no ATS marker"
  },
  "tiger-correctional-services": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
+  "found": false,
+  "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
+ },
+ "vendnovation": {
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
- "vendnovation": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
  "4sight-labs": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "cell-guardian": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "neuralguard": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "ecins": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "barricade-ai": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "itouch-biometrics": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "fieldware": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "tranquility-ai": {
   "on": "2026-08-19",
@@ -4095,154 +4238,157 @@
   "note": "careers page at /boards/tranquility-ai-inc-bb9f0c71-bab2-453e-af2e-ba90d745a5ad, no ATS marker"
  },
  "airsight": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "berkeley-varitronics-systems": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "securetech-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
- "precision-kiosk-technologies": {
-  "on": "2026-08-19",
+ "securetech-systems": {
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
+ },
+ "precision-kiosk-technologies": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "gave up after 75s"
  },
  "od-security-north-america": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "vitalsense-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "reassurance-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "iris-intel": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "flash-ai": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "peach-safety": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
- "thesheriffapp": {
-  "on": "2026-08-19",
+ "flash-ai": {
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
+ },
+ "peach-safety": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "thesheriffapp": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "no board found"
  },
  "nexsos": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "breadcrumbs": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "detail-kommander": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "defendeye-usa": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "8a-payments": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "911-inform": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "911-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "alpha-vision": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "ambient-ai": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "black-spirit-software-solutions-llc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "clipr-ai": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "coreforce": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "critical-response-group-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "dragonforce": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "elovate": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "evidence-grade": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "first-arriving": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/jobs/)",
+  "weak": true
  },
  "imprivata": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers)",
+  "weak": true
  },
  "lexisnexis": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "lexisnexis-risk-solutions": {
   "on": "2026-08-19",
@@ -4255,39 +4401,41 @@
   "note": "no board found"
  },
  "neutralaiz-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "new-in-blue": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "nuegov": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "osintpilot": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "operative-iq": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "operator-xr": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers)",
+  "weak": true
  },
  "operator-xr-llc": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers)",
+  "weak": true
  },
  "oracle": {
   "on": "2026-08-19",
@@ -4300,54 +4448,58 @@
   "note": "no board found"
  },
  "peerless-vr": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "pimloc-inc": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/)",
+  "weak": true
  },
  "porter-lee-corporation": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at /jobs (HTTP 403)",
+  "retry_soon": true
  },
  "powerdetails": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "renvizon-qed": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "smartforce": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "stackbench": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "thepoliceapp-com": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "thesheriffapp-com": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "tracwire-inc": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, says it has no openings (/about/careers)",
+  "weak": true
  },
  "vocal-technologies-inc": {
   "on": "2026-08-19",
@@ -4355,47 +4507,50 @@
   "note": "no board found"
  },
  "vetted-holdings": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "visionations-crimepad": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "vocalis": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "esleuth-ai": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "hexagon": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "caliber-public-safety": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "southern-software": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "sun-ridge-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "eforce-software": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -4405,64 +4560,71 @@
   "note": "careers page at /about-us/career, no ATS marker"
  },
  "valor-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "adashi-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "greenhouse:versaterm reads, but the slug does not match 'Adashi Systems'; likely someone else's board"
+  "note": "greenhouse:versaterm reads (31 posting(s)), but does not match 'Adashi Systems'; likely a parent or another company"
  },
  "getac-video-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (404)",
+  "retry_soon": true
  },
  "i-pro-americas": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "nice": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "nec-corporation-of-america": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "dataworks-plus": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "roc": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "shadowdragon": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "oxygen-forensics": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "adf-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "griffeye": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "miller-mendel": {
   "on": "2026-08-19",
@@ -4470,42 +4632,45 @@
   "note": "careers page at .com/career, no ATS marker"
  },
  "guardian-alliance-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "ci-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "greenhouse:versaterm reads (31 posting(s)), but does not match 'CI Technologies'; likely a parent or another company"
  },
  "apex-officer": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "wrap-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "fortem-technologies": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/jobs/search/)",
+  "weak": true
  },
  "firstwatch": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "traumasoft": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "beyond-lucid-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -4515,14 +4680,14 @@
   "note": "careers page at /careers, no ATS marker"
  },
  "digitech": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "tablet-command": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "workable:tablet-command, 1 posting(s) readable"
  },
  "locution-systems": {
   "on": "2026-08-19",
@@ -4530,24 +4695,25 @@
   "note": "careers page at /, no ATS marker"
  },
  "us-digital-designs": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "zetron": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "hexagon-safety-infrastructure-geospatial": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
- "rapiddeploy": {
-  "on": "2026-08-19",
+ "hexagon-safety-infrastructure-geospatial": {
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "rapiddeploy": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "gave up after 75s"
  },
  "intrado-life-safety": {
   "on": "2026-08-19",
@@ -4555,102 +4721,110 @@
   "note": "careers page at .com, no ATS marker"
  },
  "geocomm": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "twiage": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "3am-innovations": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "angeltrack": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "marquis-software-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "syscon-justice-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "abilis-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "jailcore": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "executive-information-services": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page at /companycareers, no ATS marker"
  },
  "journal-technologies": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "icsolutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "icims:careers-tkcholdings reads, but the slug does not match 'ICSolutions'; likely someone else's board"
+  "note": "icims:careers-tkcholdings reads (21 posting(s)), but does not match 'ICSolutions'; likely a parent or another company"
  },
  "legacy-inmate-communications": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "prodigy-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "textbehind": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "edovo": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
  },
  "uptrust": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "bi-incorporated": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "sentinel-offender-services": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
  },
  "shadowtrack-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "jsg-monitoring": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -4660,129 +4834,139 @@
   "note": "no board found"
  },
  "buddi": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "talitrix": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
  },
  "accurate-controls": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "montgomery-technology": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "southern-folger-detention-equipment": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/Careers)",
+  "weak": true
  },
  "norix-group": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-us/careers/)",
+  "weak": true
  },
  "vendengine": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "averhealth": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:https://www.paycomonline.net/v4/at found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
  },
  "union-supply-group": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "zoll-data-systems": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "workday:['zoll', 'wd5', 'ZOLLMedicalCorp'], 35 posting(s) readable"
  },
  "intterra": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "station-boss": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "responserack": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "apx-data": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "incident-response-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "vibrant-planet": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "ashby:Vibrant found but unreadable (HTTP 404 for https://api.ashbyhq.com/pos)"
+  "note": "ashby:Vibrant found but unreadable (HTTP 404 for https://api.ashbyhq.com)",
+  "retry_soon": true
  },
  "alchera-x": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "insight-robotics": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "bamboohr:insight found but unreadable (non-JSON response)"
+  "note": "bamboohr:insight found but unreadable (non-JSON response)",
+  "retry_soon": true
  },
  "n5-sensors": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "bullard": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "lion-group": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:recruiting reads (0 posting(s)), but does not match 'LION Group'; likely a parent or another company"
  },
  "pierce-manufacturing": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "workday:oshkoshcorporation reads (25 posting(s)), but does not match 'Pierce Manufacturing'; likely a parent or another company"
  },
  "holmatro": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "alertsense": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "d4h-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:ecoonline reads (0 posting(s)), but does not match 'D4H Technologies'; likely a parent or another company"
  },
  "disaster-tech": {
   "on": "2026-08-19",
@@ -4790,132 +4974,140 @@
   "note": "careers page at com/careers-hiring, no ATS marker"
  },
  "one-concern": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "lever:oneconcern found but unreadable (HTTP 404 for https://api.lever.co/v0/pos)"
+  "note": "lever:oneconcern found but unreadable (HTTP 404 for https://api.lever.co/v0)",
+  "retry_soon": true
  },
  "jupiter-intelligence": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "salamander-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "mutualink": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "buffalo-computer-graphics": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers)",
+  "weak": true
  },
  "noggin": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en_us/about/careers.html)",
+  "weak": true
  },
  "passport": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
  },
  "parkmobile": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/)",
+  "weak": true
  },
  "populus": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "line-mobility": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "ventek-international": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "municipal-parking-services": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "tmoney": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "straffic-america": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "matawan": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "bea-transit-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "vontas": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "workday:['wd3', 'modaxo', 'Vontas'] found but unreadable (network error: HTTPSConnectionPool(h)",
+  "retry_soon": true
  },
  "transitcheck": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "transit-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "railroad-software": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "sil4-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "citiri": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "csit": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "knaq": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "rok-brothers": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "in-a-blink": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -4925,32 +5117,34 @@
   "note": "no board found"
  },
  "transify": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "streamax-america": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "protran-technology": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "infodev-edi": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-infodev/careers/)",
+  "weak": true
  },
  "urban-transportation-associates": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "visual-counter": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -4960,47 +5154,49 @@
   "note": "careers page at /recruitment/were-hiring-design-engineer-development-engineer, no ATS marker"
  },
  "connectpoint": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "peak-transit": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "signagent": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "waysine": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "it-curves": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "tss-paratransit": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "adastec": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "silverride": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "ontra-mobility": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -5010,22 +5206,23 @@
   "note": "no board found"
  },
  "fleetwatch-by-s-a-systems-inc": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers.html)",
+  "weak": true
  },
  "indra-group": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "intellicene": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "workday:volarisgroup reads (0 posting(s)), but does not match 'Intellicene'; likely a parent or another company"
  },
  "lux-modus": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -5050,34 +5247,35 @@
   "note": "careers page at /our-company/careers, no ATS marker"
  },
  "transit-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "uptale-usa-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "workday": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "workday:['workday', 'wd5', 'Workday'], 39 posting(s) readable"
  },
  "faster-asset-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "fleet-complete": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "ridecell": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "omnitracs": {
   "on": "2026-08-19",
@@ -5085,12 +5283,12 @@
   "note": "careers page at reers, no ATS marker"
  },
  "apollo-video-technology": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "passio-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -5100,44 +5298,47 @@
   "note": "careers page at /openpositions, no ATS marker"
  },
  "liftango": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "padam-mobility": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "flowbird": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/)",
+  "weak": true
  },
  "civicsmart": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "amano-mcgann": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "trapeze-group": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "workday:['wd3', 'modaxo', 'Trapeze'] found but unreadable (network error: HTTPSConnectionPool(h)",
+  "retry_soon": true
  },
  "easypark-group": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (404)",
+  "retry_soon": true
  },
  "unwire": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "fairtiq": {
   "on": "2026-08-19",
@@ -5150,69 +5351,73 @@
   "note": "careers page at /contact-us/careers, no ATS marker"
  },
  "tannery-creek-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "nwave-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "fybr": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "smart-parking-limited": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "park-assist": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/us/careers/)",
+  "weak": true
  },
  "curbiq": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/)",
+  "weak": true
  },
  "whoosh": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "data-ticket": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "turbo-data-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "complus-data-innovations": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
+  "found": false,
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
+ },
+ "aims-parking": {
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
- "aims-parking": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
  "ecolane": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "cts-software": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "liberty-mobility-now": {
   "on": "2026-08-19",
@@ -5225,104 +5430,113 @@
   "note": "careers page at about-us/jobs, no ATS marker"
  },
  "shotl": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "moia": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "tripshot": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "mjm-innovations": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "glydways": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "greenhouse:glydways, 12 posting(s) readable"
  },
  "swyft-cities": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "easymile": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en/companies-v1/easymile/jobs)",
+  "weak": true
  },
  "navya": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "holon": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "karsan": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "aurrigo": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "2getthere": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-us/careers)",
+  "weak": true
  },
  "forterra": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "oxa": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "auve-tech": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers/)",
+  "weak": true
  },
  "ohmio-automotion": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "actionfigure": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "hopthru": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "lever:goswift reads (11 posting(s)), but does not match 'Hopthru'; likely a parent or another company"
  },
  "saferwatch": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "aequitas-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "ems-linq": {
   "on": "2026-08-19",
@@ -5330,14 +5544,15 @@
   "note": "greenhouse:emslinqinc, 9 posting(s) readable"
  },
  "escape-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "sparkrock": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "lever:Ionicpartners reads, but the slug does not match 'Sparkrock'; likely someone else's board"
+  "note": "lever:Ionicpartners reads (9 posting(s)), but does not match 'Sparkrock'; likely a parent or another company"
  },
  "cybersoft-technologies": {
   "on": "2026-08-19",
@@ -5345,19 +5560,21 @@
   "note": "careers page at et/careers, no ATS marker"
  },
  "heartland-school-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "everdriven": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "scribbles-software": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "ashby:instructure reads, but the slug does not match 'Scribbles Software'; likely someone else's board"
+  "note": "ashby:instructure reads (45 posting(s)), but does not match 'Scribbles Software'; likely a parent or another company"
  },
  "edlio": {
   "on": "2026-08-19",
@@ -5375,69 +5592,74 @@
   "note": "careers page at /resources/careers, no ATS marker"
  },
  "ml-schedules": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "greenhouse:follettsoftware reads, but the slug does not match 'ML Schedules (Master Library Software)'; likely someone else's board"
+  "note": "greenhouse:follettsoftware reads (9 posting(s)), but does not match 'ML Schedules (Master Library Software)'; likely a parent or another company"
  },
  "clever": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
  },
  "bark-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "qoria": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "impero-software": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "contentkeeper": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "crisisgo": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "titan-hst": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "schoolpass": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "icims:careers-raptortech found but unreadable (HTTP 404 for https://careers-raptortech.)"
+  "note": "icims:careers-raptortech found but unreadable (HTTP 404 for https://careers-raptort)",
+  "retry_soon": true
  },
  "actuate-ai": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "scylla-ai": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "anonymous-alerts": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "stopit-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "greenhouse:lightspeedsystems reads (13 posting(s)), but does not match 'STOPit Solutions'; likely a parent or another company"
  },
  "ident-a-kid": {
   "on": "2026-08-19",
@@ -5445,74 +5667,79 @@
   "note": "careers page at com/careers, no ATS marker"
  },
  "lobbyguard-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "catapult-ems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "soter-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "zeptive": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
  },
  "ipvideo": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en_us/about/careers.html)",
+  "weak": true
  },
  "busboss": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "unitegps": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "bytecurve": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "buswhere": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "safestop": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at /about/careers (HTTP 403)",
+  "retry_soon": true
  },
  "alc-schools": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "kango": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "gave up after 75s"
  },
  "247security": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "blue-bird-corporation": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "thomas-built-buses": {
   "on": "2026-08-19",
@@ -5520,32 +5747,33 @@
   "note": "careers page at ut-us/careers, no ATS marker"
  },
  "ic-bus": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "lion-electric": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "greenpower-motor-company": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "flashnet": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "nimble-energy": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
+ "greenpower-motor-company": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "no board found"
+ },
+ "flashnet": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "gave up after 75s"
+ },
+ "nimble-energy": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
+ },
  "airworks": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -5555,47 +5783,48 @@
   "note": "careers page at /careers/china.html, no ATS marker"
  },
  "telensa": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "signify": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "acuity-brands": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "current-lighting-solutions": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "cree-lighting": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "leotek-electronics-usa": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "evluma": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "gave up after 25s"
- },
- "lumca": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
+ "signify": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "no board found"
+ },
+ "acuity-brands": {
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page at s, no ATS marker"
+ },
+ "current-lighting-solutions": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "gave up after 75s"
+ },
+ "cree-lighting": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "gave up after 75s"
+ },
+ "leotek-electronics-usa": {
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page at /about/careers, no ATS marker"
+ },
+ "evluma": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "gave up after 75s"
+ },
+ "lumca": {
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, says it has no openings (/contact/careers/available-positions)",
+  "weak": true
+ },
  "sternberg-lighting": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -5605,14 +5834,16 @@
   "note": "icims:careers-selux, 6 posting(s) readable"
  },
  "stresscrete-group": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "shakespeare-composite-structures": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "hapco": {
   "on": "2026-08-19",
@@ -5620,14 +5851,16 @@
   "note": "careers page at /employment, no ATS marker"
  },
  "structural-steel-products": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "tvilight": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career/)",
+  "weak": true
  },
  "lucy-zodion": {
   "on": "2026-08-19",
@@ -5635,14 +5868,16 @@
   "note": "careers page at cloud.com/hcmUI/CandidateExperience/en/sites/Lucyzodion, no ATS marker"
  },
  "schreder": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en/careers)",
+  "weak": true
  },
  "cimcon-lighting": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "paradox-engineering": {
   "on": "2026-08-19",
@@ -5650,54 +5885,59 @@
   "note": "careers page at /about-us/join-our-team, no ATS marker"
  },
  "trilliant": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "selc-ireland": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "juganu": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "led-roadway-lighting": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "sepco": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "greenshine-new-energy": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "clearworld": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "ledvance": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en-int/company/career)",
+  "weak": true
  },
  "intermatic": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "amerlux": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "aclara-technologies": {
   "on": "2026-08-19",
@@ -5710,14 +5950,16 @@
   "note": "careers page at /, no ATS marker"
  },
  "aspentech-osi": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "survalent-technology": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "milsoft-utility-solutions": {
   "on": "2026-08-19",
@@ -5725,29 +5967,33 @@
   "note": "bamboohr:milsoft, 1 posting(s) readable"
  },
  "harris-utilities": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "workday:['harriscomputer', 'wd3', '1'], 36 posting(s) readable"
  },
  "sentient-energy": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "camus-energy": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "greenhouse:camusenergy found but unreadable (HTTP 404 for https://boards-api.gree)",
+  "retry_soon": true
  },
  "utilidata": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "rhizome": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "heimdall-power": {
   "on": "2026-08-19",
@@ -5755,14 +6001,16 @@
   "note": "careers page at .com, no ATS marker"
  },
  "copperleaf-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at /company/careers (HTTP 403)",
+  "retry_soon": true
  },
  "render-networks": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "costquest-associates": {
   "on": "2026-08-19",
@@ -5770,19 +6018,20 @@
   "note": "careers page at /about-us/careers, no ATS marker"
  },
  "ookla": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "html:https://jobs.jobvite.com/ookla, 0 posting(s) readable"
  },
  "adtran": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "workday:['adtran', 'wd3', 'ADTRAN'], 29 posting(s) readable"
  },
  "tarana-wireless": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "ikegps": {
   "on": "2026-08-19",
@@ -5800,24 +6049,24 @@
   "note": "careers page at /work-with-us?hsLang=en, no ATS marker"
  },
  "comsof": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "bamboohr:iqgeo reads, but the slug does not match 'Comsof'; likely someone else's board"
+  "note": "bamboohr:iqgeo reads (9 posting(s)), but does not match 'Comsof'; likely a parent or another company"
  },
  "vitruvi-software": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "bamboohr:fresnelsoftware reads, but the slug does not match 'Vitruvi Software'; likely someone else's board"
+  "note": "bamboohr:fresnelsoftware reads (0 posting(s)), but does not match 'Vitruvi Software'; likely a parent or another company"
  },
  "ospinsight": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "bamboohr:iqgeo reads, but the slug does not match 'OSPInsight'; likely someone else's board"
+  "note": "bamboohr:iqgeo reads (9 posting(s)), but does not match 'OSPInsight'; likely a parent or another company"
  },
  "federated-wireless": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "sifi-networks": {
   "on": "2026-08-19",
@@ -5825,39 +6074,40 @@
   "note": "careers page at /corporate/available-career-opportunities-sifi-networks, no ATS marker"
  },
  "boldyn-networks": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "workday:baicommunications reads (5 posting(s)), but does not match 'Boldyn Networks'; likely a parent or another company"
  },
  "33-alerts": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "a-ice": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "aerocloud-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "aerosimple-llc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "agents-of-discovery": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "airline-data-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "gave up after 25s"
+  "note": "no board found"
  },
  "amadeus-airport-it-americas-inc": {
   "on": "2026-08-19",
@@ -5865,12 +6115,13 @@
   "note": "careers page at deus, no ATS marker"
  },
  "ascento-ag": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "breezy:assets-cdn found but unreadable (non-JSON response)"
+  "note": "breezy:assets-cdn found but unreadable (non-JSON response)",
+  "retry_soon": true
  },
  "chargerback": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -5880,27 +6131,30 @@
   "note": "careers page at /collinsaerospace/careers/engineering, no ATS marker"
  },
  "cyberlock-inc": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/contact-us/careers/)",
+  "weak": true
  },
  "flightbi": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/join-us/)",
+  "weak": true
  },
  "goapron-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "hub-parking-technology-usa-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "breezy:assets-cdn found but unreadable (non-JSON response)",
+  "retry_soon": true
  },
  "illuminex-ai": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -5910,42 +6164,46 @@
   "note": "careers page at /job-openings.html, no ATS marker"
  },
  "kova-corp": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "liberty-defense": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers/)",
+  "weak": true
  },
  "lost-returns": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "parkspace-by-bookflowgo": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "passur-aerospace": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-us/careers/)",
+  "weak": true
  },
  "prodigiq-inc": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers/)",
+  "weak": true
  },
  "qless-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "rebokeh-vision-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -5955,42 +6213,47 @@
   "note": "careers page at /who-we-are/careers, no ATS marker"
  },
  "runwaystats": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "saab-inc": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career)",
+  "weak": true
  },
  "tadera": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "workday:['wd3', 'modaxo', 'Tadera'] found but unreadable (network error: HTTPSConnectionPool(h)",
+  "retry_soon": true
  },
  "thoroughtec-simulation-usa-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "tiba-parking-systems-llc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "tkh-security-park-assist": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "vector-airport-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:https://vectorus.clearcompany.com found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
  },
  "virtower-llc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -6010,94 +6273,109 @@
   "note": "careers page at /en/careers, no ATS marker"
  },
  "frogparking": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "nedap-identification-systems": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en/careers/vacancies)",
+  "weak": true
  },
  "wps-parking-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "parking-boxx": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "smart-parking": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/us/careers/)",
+  "weak": true
  },
  "leidos-security-detection-automation": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at idos.com (HTTP 403)",
+  "retry_soon": true
  },
  "astrophysics-inc": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 202)",
+  "retry_soon": true
  },
  "voti-detection": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "teledyne-flir": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "thales": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 200)",
+  "retry_soon": true
  },
  "bigbear-ai": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "icims:careers-bigbearai found but unreadable (no jobs parsed from iCIMS portal)"
+  "note": "icims:careers-bigbearai found but unreadable (no jobs parsed from iCIMS portal)",
+  "retry_soon": true
  },
  "vision-box": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "dedrone-by-axon": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/all)",
+  "weak": true
  },
  "hidden-level": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
  },
  "hid-global": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "gallagher-security": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en-US/Careers)",
+  "weak": true
  },
  "veovo": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "bamboohr:gentrack reads, but the slug does not match 'Veovo'; likely someone else's board"
+  "note": "bamboohr:gentrack reads (2 posting(s)), but does not match 'Veovo'; likely a parent or another company"
  },
  "blip-systems": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "inform-gmbh": {
   "on": "2026-08-19",
@@ -6105,9 +6383,9 @@
   "note": "careers page at /en/career, no ATS marker"
  },
  "copenhagen-optimization": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "html:https://copenhagenoptimization.teamtailo, 0 posting(s) readable"
  },
  "adb-safegate": {
   "on": "2026-08-19",
@@ -6115,9 +6393,10 @@
   "note": "careers page at /about/career, no ATS marker"
  },
  "tav-technologies": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en-EN/about-us/pages/career)",
+  "weak": true
  },
  "vanderlande": {
   "on": "2026-08-19",
@@ -6125,77 +6404,86 @@
   "note": "careers page at .com/all-jobs, no ATS marker"
  },
  "daifuku-airport-technologies": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (404)",
+  "retry_soon": true
  },
  "materna-ips": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "elenium-automation": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "ier": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en)",
+  "weak": true
  },
  "synect": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "ink-innovation": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "could not fetch the site (ConnectionError)",
+  "retry_soon": true
  },
  "gcr": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "paylocity:Civix reads (4 posting(s)), but does not match 'GCR (Woolpert)'; likely a parent or another company"
  },
  "airit": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "grab": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en/)",
+  "weak": true
  },
  "notlost": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "amadeus-it-group": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en/careers/teams)",
+  "weak": true
  },
  "indra-sistemas": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "uavionix": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
-  "note": "no board found"
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
  },
  "damarel-systems-international": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers/)",
+  "weak": true
  },
  "resa": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
@@ -6205,12 +6493,93 @@
   "note": "careers page at n/careers, no ATS marker"
  },
  "kale-logistics-solutions": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  },
  "atac-corporation": {
-  "on": "2026-08-19",
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "adp": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "no board found"
+ },
+ "adobe": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "no board found"
+ },
+ "box": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "no board found"
+ },
+ "infor": {
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page at /about/careers, no ATS marker"
+ },
+ "kpa": {
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page at /careers, no ATS marker"
+ },
+ "mcci": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "no board found"
+ },
+ "mitel": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "no board found"
+ },
+ "nuvei": {
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page at /partner-with-us, no ATS marker"
+ },
+ "lvt": {
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page at /careers, no ATS marker"
+ },
+ "noti-fly-inc": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "no board found"
+ },
+ "911-tech-inc": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "no board found"
+ },
+ "auror": {
+  "on": "2026-08-20",
+  "found": true,
+  "note": "ashby:auror, 19 posting(s) readable"
+ },
+ "saltus-technologies": {
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page at /careers, no ATS marker"
+ },
+ "simsi-inc": {
+  "on": "2026-08-20",
+  "found": false,
+  "note": "no board found"
+ },
+ "ibm": {
+  "on": "2026-08-20",
+  "found": true,
+  "note": "careers page at /careers, no ATS marker"
+ },
+ "moev-inc": {
+  "on": "2026-08-20",
   "found": false,
   "note": "no board found"
  }
