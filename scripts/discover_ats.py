@@ -135,12 +135,16 @@ def slug_matches(slug: str, company: dict) -> bool:
     name = _norm(raw)
     host = _norm((company.get("website") or "").split("//")[-1].split("/")[0]
                  .replace("www.", "").split(".")[0])
-    # A parenthetical usually names the acquirer: "Simpleview (Granicus)" posts on
-    # Granicus's board, and rejecting that loses a real, correct find.
+    # A parenthetical names the acquirer. That is a real signal and a dangerous
+    # one: "Simpleview (Granicus)" really does post on Granicus's board, but
+    # "RoadBotics (Michelin)" posting on Michelin's Workday would file a tyre
+    # company's reqs under a road-scanning startup. Both look identical here, so
+    # a parenthetical match is routed to review rather than written - see
+    # paren_only() and the ats_suspects queue.
     paren = [_norm(x) for x in re.findall(r"\(([^)]{2,40})\)", raw)]
     first = _norm(re.split(r"[^A-Za-z0-9]+", raw)[0]) if raw else ""
 
-    for other in [name, host, *paren]:
+    for other in [name, host]:
         if not other:
             continue
         if sl in other or other in sl:
@@ -151,6 +155,23 @@ def slug_matches(slug: str, company: dict) -> bool:
     # "MCM Technology LLC" posts at rippling:mcmjobs.
     if len(first) >= 3 and sl.startswith(first):
         return True
+    return False
+
+
+def paren_only(slug: str, company: dict) -> bool:
+    """True when a slug matches ONLY through the acquirer in parentheses.
+
+    Those are real finds and they are also the single most dangerous write this
+    script can make, so they go to a person instead of into companies.json.
+    """
+    if slug_matches(slug, company):
+        return False
+    sl = _norm(slug)
+    for other in [_norm(x) for x in
+                  re.findall(r"\(([^)]{2,40})\)", company.get("name", ""))]:
+        if other and (sl in other or other in sl
+                      or (len(sl) >= 5 and len(other) >= 5 and sl[:5] == other[:5])):
+            return True
     return False
 
 _lock = threading.Lock()
@@ -213,8 +234,11 @@ class Fetch:
 def get(url: str) -> Fetch:
     import requests
     try:
-        r = requests.get(url, headers=ats.UA, timeout=PROBE_TIMEOUT,
-                         allow_redirects=True)
+        # (connect, read) rather than one number. A bare timeout still let an
+        # ssl.read sit for over a minute, which stalls a worker and - with an
+        # in-order result iterator - stalled the entire sweep's reporting.
+        r = requests.get(url, headers=ats.UA, timeout=(5, PROBE_TIMEOUT),
+                         allow_redirects=True, stream=False)
     except Exception as exc:
         return Fetch(url=url, outcome="error", status=0,
                      text=type(exc).__name__)
@@ -381,7 +405,20 @@ def read_marker(html: str, company: dict) -> tuple[dict | None, str]:
         if kind in URL_MARKERS or "/" in ref or "." in ref:
             if not ref.startswith("http"):
                 ref = "https://" + ref
-            return {"type": kind, "ref": ref}, identity_of(kind, groups, ref)
+            ident = identity_of(kind, groups, ref)
+            if ident.lower() in RESERVED or ident.lower() in VENDOR_HOSTS:
+                continue          # the vendor's own app host, not a tenant
+            if not ident:
+                # No tenant name anywhere. That is fine when the reference still
+                # pins one employer - ADP's ?cid= and Paycom's ?clientkey= do -
+                # and meaningless for a bare vendor host like app.teamtailor.com,
+                # which identifies nobody and should not reach the review queue.
+                rest = ref.split("//", 1)[-1]
+                if "?" not in rest and len(rest.split("/", 1)) < 2:
+                    continue
+                if "?" not in rest and not rest.split("/", 1)[1].strip("/"):
+                    continue
+            return {"type": kind, "ref": ref}, ident
         if ref.lower() in RESERVED:
             continue
         return {"type": kind, "ref": ref}, identity_of(kind, groups, ref)
@@ -514,6 +551,12 @@ def probe(company: dict) -> dict:
                     "note": f"{block['type']} board reads ({len(real)} posting(s)) but "
                             f"its reference carries no company name, so it cannot "
                             f"be checked automatically"}
+        if paren_only(identity, company):
+            return {"id": company["id"], "found": None, "suspect": block,
+                    "note": f"{block['type']}:{identity} reads ({len(real)} posting(s)) "
+                            f"and matches the acquirer named in "
+                            f"{company['name']!r}; confirm it is scoped to this "
+                            f"product line before wiring it up"}
         if not slug_matches(identity, company):
             return {"id": company["id"], "found": None, "suspect": block,
                     "note": f"{block['type']}:{identity} reads ({len(real)} posting(s)), "
@@ -689,10 +732,20 @@ def main() -> int:
         if a.write:
             (DATA / "companies.json").write_text(json.dumps(companies, indent=2) + "\n")
 
+    # as_completed, not map. map yields in submission order, so one company
+    # whose socket hangs blocks every finished result behind it: a 768-company
+    # sweep ran 37 minutes and printed nothing while the workers were in fact
+    # working. Results now land as they finish, and so do the checkpoints.
     with cf.ThreadPoolExecutor(max_workers=a.workers) as ex:
-        for i, r in enumerate(ex.map(probe, todo), 1):
-            results.append(r)
-            if i % 50 == 0:
+        futures = {ex.submit(probe, c): c for c in todo}
+        for i, fut in enumerate(cf.as_completed(futures), 1):
+            try:
+                results.append(fut.result())
+            except Exception as exc:
+                c = futures[fut]
+                results.append({"id": c["id"], "found": None, "retry_soon": True,
+                                "note": f"probe crashed: {type(exc).__name__}"})
+            if i % 25 == 0:
                 hits = sum(1 for x in results if x.get("found"))
                 print(f"  {i}/{len(todo)}, {hits} board(s) found so far", flush=True)
                 checkpoint()
