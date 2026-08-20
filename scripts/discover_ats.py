@@ -231,6 +231,12 @@ class Fetch:
         return self.outcome == "ok" and bool(self.text)
 
 
+# Everything past this size is not a careers page. An unbounded read means one
+# link to a PDF or a video holds a worker for the whole file, and with 12
+# workers sharing one GIL, one pathological page can starve the entire sweep.
+BODY_CAP = 600_000
+
+
 def get(url: str) -> Fetch:
     import requests
     try:
@@ -238,11 +244,20 @@ def get(url: str) -> Fetch:
         # ssl.read sit for over a minute, which stalls a worker and - with an
         # in-order result iterator - stalled the entire sweep's reporting.
         r = requests.get(url, headers=ats.UA, timeout=(5, PROBE_TIMEOUT),
-                         allow_redirects=True, stream=False)
+                         allow_redirects=True, stream=True)
+        raw = b""
+        for chunk in r.iter_content(chunk_size=65536):
+            raw += chunk
+            if len(raw) >= BODY_CAP:
+                break
+        r.close()
     except Exception as exc:
         return Fetch(url=url, outcome="error", status=0,
                      text=type(exc).__name__)
-    body = r.text or ""
+    try:
+        body = raw.decode(r.encoding or "utf-8", errors="replace")
+    except LookupError:
+        body = raw.decode("utf-8", errors="replace")
     # 202 is SiteGround's tell; the rest are the usual refusals.
     if r.status_code in (202, 403, 429, 503):
         return Fetch(status=r.status_code, url=str(r.url), outcome="blocked")
@@ -260,9 +275,34 @@ def get(url: str) -> Fetch:
     return Fetch(text=body, status=r.status_code, url=str(r.url), outcome="ok")
 
 
+def _strip_blocks(html: str, tag: str) -> str:
+    """Remove <tag>...</tag> blocks with str.find, not a regex.
+
+    The regex version ((?is)<(script|...)\b.*?</\1>) rescans to end-of-page for
+    every unclosed opener, which on a page whose JS bundle contains literal
+    "<script" strings is quadratic - and a thread stuck in a regex holds the
+    GIL, so one such page froze all twelve workers at once.
+    """
+    low, out, i = html.lower(), [], 0
+    opener, closer = "<" + tag, "</" + tag
+    while True:
+        j = low.find(opener, i)
+        if j < 0:
+            out.append(html[i:])
+            return "".join(out)
+        out.append(html[i:j])
+        k = low.find(closer, j)
+        if k < 0:
+            return "".join(out)          # unclosed: drop the rest, it is script
+        end = low.find(">", k)
+        i = (end + 1) if end > 0 else len(html)
+
+
 def visible(html: str) -> str:
     """Text with markup, script and style removed - what a reader would see."""
-    t = re.sub(r"(?is)<(script|style|noscript)\b.*?</\1>", " ", html or "")
+    t = html or ""
+    for tag in ("script", "style", "noscript"):
+        t = _strip_blocks(t, tag)
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", t)).strip()
 
 

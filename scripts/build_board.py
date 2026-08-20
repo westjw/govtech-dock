@@ -50,9 +50,15 @@ TIER = {"General Gov": 1, "Public Works": 1, "Parks & Rec": 1,
 
 # Which applicant-tracking systems actually rank applicants. A resume seeded with
 # exact keywords helps on the first two and does close to nothing on the third.
-RANKS_HARD = {"workday", "icims", "taleo", "successfactors", "adp", "paycom"}
+# Kept in lockstep with job-hunter's core/scoring.py RANKS_* sets: a company
+# scored "hard" in one repo and "soft" in the other would condition a resume
+# score on a reader the dock says does not exist. oracle/paylocity/rippling
+# were added when discovery learned those ATS families.
+RANKS_HARD = {"workday", "icims", "taleo", "successfactors", "adp", "paycom",
+              "oracle"}
 RANKS_SOFT = {"greenhouse", "lever", "ashby", "smartrecruiters", "jazzhr",
-              "workable", "recruitee", "jobvite", "bamboohr", "breezy"}
+              "workable", "recruitee", "jobvite", "bamboohr", "breezy",
+              "rippling", "paylocity"}
 
 
 def ats_tier(kind: str | None) -> str:
