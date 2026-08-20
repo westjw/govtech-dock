@@ -437,7 +437,81 @@ def act_dismiss(body: dict) -> dict:
     return {"ok": True, "message": "dismissed"}
 
 
-ACTIONS = {"merge": act_merge, "patch": act_patch,
+def act_move(body: dict) -> dict:
+    """Move a company to a sector and category in one write.
+
+    Dragging across sectors needs both fields to change together. Setting the
+    sector alone would leave the old category behind, which validate() refuses -
+    correctly, since 'Police' is not a category of General Gov.
+    """
+    companies = read("companies.json", [])
+    c = next((x for x in companies if x["id"] == body.get("id")), None)
+    if not c:
+        return {"error": "company not found"}
+    sec, cat = body.get("sector"), body.get("category")
+    schema = read("schema.json", {"sectors": []})
+    cats = {x["name"]: x["categories"] for x in schema["sectors"]}
+    if sec not in cats:
+        return {"error": f"unknown sector {sec}"}
+    if not cat:
+        # Dropping onto a sector rail says where it belongs, not which shelf.
+        # Suppliers & Services is the catch-all when the sector has one.
+        cat = "Suppliers & Services" if "Suppliers & Services" in cats[sec] \
+              else cats[sec][0]
+    if cat not in cats[sec]:
+        return {"error": f"{cat} is not a category of {sec}"}
+    was = f"{c['sector']} / {c['category']}"
+    c["sector"], c["category"] = sec, cat
+    err = validate(companies)
+    if err:
+        return {"error": err}
+    write_atomic("companies.json", companies)
+    return {"ok": True, "message": f"{c['name']}: {was} -> {sec} / {cat}",
+            "sector": sec, "category": cat}
+
+
+def sort_companies(sector: str) -> dict:
+    companies = read("companies.json", [])
+    board = read("board.json", {})
+    schema = read("schema.json", {"sectors": []})
+    posts = collections.Counter(p["company_id"] for p in board.get("postings", []))
+    cats = {x["name"]: x["categories"] for x in schema["sectors"]}
+    if sector not in cats:
+        sector = next(iter(cats), "")
+    # The placement queue already asked this question for some of these. Marking
+    # them here means the board shows its own suggestions instead of hiding them
+    # in another tab.
+    flagged = {i["id"]: i["suggested"] for i in q_placement(companies, board)}
+    rows = [{"id": c["id"], "name": c["name"], "category": c["category"],
+             "description": c.get("description"), "website": c.get("website"),
+             "ats": (c.get("ats") or {}).get("type"),
+             "postings": posts.get(c["id"], 0),
+             "suggested": flagged.get(c["id"])}
+            for c in companies if c["sector"] == sector]
+    rows.sort(key=lambda r: (-r["postings"], r["name"].lower()))
+    return {"sector": sector, "sectors": list(cats), "categories": cats[sector],
+            "companies": rows}
+
+
+def sort_roles() -> dict:
+    board = read("board.json", {})
+    over = read("family_overrides.json", {})
+    seen = {}
+    for p in board.get("postings", []):
+        if p.get("family") != "other":
+            continue
+        t = p["title"]
+        if t in over or is_dismissed("unclassified", t):
+            continue
+        e = seen.setdefault(t, {"title": t, "company": p["company"],
+                                "url": p.get("url"), "count": 0})
+        e["count"] += 1
+    rows = sorted(seen.values(), key=lambda r: (-r["count"], r["title"].lower()))
+    return {"families": {k: v for k, v in roles.LABEL.items() if k != "other"},
+            "titles": rows}
+
+
+ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "verify-website": act_verify_website, "verify-board": act_verify_board,
            "set-board": act_set_board, "set-family": act_set_family,
            "dismiss": act_dismiss}
@@ -480,6 +554,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 return self._json({"error": "no such queue"}, 404)
             companies, board = read("companies.json", []), read("board.json", {})
             return self._json({"items": QUEUES[name](companies, board)[:400]})
+        if path == "/api/sort/companies":
+            qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+            return self._json(sort_companies((qs.get("sector") or [""])[0]))
+        if path == "/api/sort/roles":
+            return self._json(sort_roles())
         if path == "/api/schema":
             return self._json(read("schema.json", {}))
         if path == "/api/families":

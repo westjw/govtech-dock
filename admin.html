@@ -53,6 +53,30 @@
     border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;
     padding:11px 15px;font-size:13px;box-shadow:0 6px 22px rgba(0,0,0,.13);max-width:380px}
   .toast.bad{border-left-color:var(--bad)}
+  .count{color:var(--faint);font-size:12px;margin-left:auto}
+  .board{display:flex;gap:10px;align-items:flex-start;overflow-x:auto;padding-bottom:10px}
+  .rail{flex:0 0 172px;position:sticky;left:0}
+  .rail h4,.col h4{margin:0 0 8px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--faint);font-weight:600}
+  .rail .drop{border:1px dashed var(--line);border-radius:8px;padding:8px 10px;margin-bottom:6px;
+    font-size:12.5px;color:var(--dim)}
+  .col{flex:0 0 236px;background:var(--bg);border:1px solid var(--line);border-radius:9px;
+    padding:10px;min-height:120px}
+  .col.wide{flex:0 0 292px}
+  .col .n{color:var(--faint);font-weight:400;letter-spacing:0;text-transform:none;font-size:11px}
+  .drop.over,.col.over{border-color:var(--accent);background:var(--chip)}
+  .cd{background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:7px 9px;
+    margin-bottom:6px;font-size:12.5px;cursor:grab;line-height:1.4}
+  .cd:active{cursor:grabbing}
+  .cd.dragging{opacity:.4}
+  .cd .m{color:var(--faint);font-size:11px;margin-top:2px}
+  .cd .sug{color:var(--warn);font-size:11px;margin-top:2px}
+  .more{font-size:11.5px;color:var(--faint);text-align:center;padding:5px;cursor:pointer}
+  .more:hover{color:var(--accent)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .seg button{font:inherit;font-size:12.5px;padding:6px 13px;border:0;background:var(--bg);
+    color:var(--dim);cursor:pointer}
+  .seg button[aria-pressed=true]{background:var(--accent);color:#fff;font-weight:600}
 </style>
 </head>
 <body>
@@ -111,6 +135,9 @@ async function boot() {
   $('#sub').textContent = `${META.companies.toLocaleString()} govtech companies · `
     + `${META.postings.toLocaleString()} postings · board built ${META.generated || '—'}`;
   const nav = $('#tabs'); nav.innerHTML = '';
+  const sortBtn = el('button', null, 'Sort board');
+  sortBtn.dataset.key = '__sort'; sortBtn.onclick = () => showSort();
+  nav.appendChild(sortBtn);
   Object.keys(META.labels).forEach(k => {
     const b = el('button', null, META.labels[k]);
     b.appendChild(el('span', 'n', META.counts[k]));
@@ -123,7 +150,8 @@ async function boot() {
 async function refreshCounts() {
   META = await api('/api/queues');
   document.querySelectorAll('nav button').forEach(b => {
-    b.querySelector('.n').textContent = META.counts[b.dataset.key];
+    const n = b.querySelector('.n');
+    if (n) n.textContent = META.counts[b.dataset.key];
   });
 }
 
@@ -388,6 +416,162 @@ RENDER.review = r => {
   n.appendChild(row);
   return n;
 };
+
+/* ------------------------------------------------------------------ sort board
+
+   The queue tabs ask one question at a time, which is right when the answer
+   needs evidence. Sorting is a different job: you are comparing a company
+   against its neighbours, and the fastest way to see that a vendor is in the
+   wrong bucket is to see the bucket. Cards carry their posting count because a
+   company with a live board is the one worth getting right.
+*/
+let SORT_MODE = 'companies', SORT_SECTOR = null, SHOWN = {};
+const PAGE = 40;
+
+function showSort() {
+  document.querySelectorAll('nav button').forEach(b =>
+    b.setAttribute('aria-selected', b.dataset.key === '__sort'));
+  SHOWN = {};
+  const v = $('#view'); v.innerHTML = '';
+  const bar = el('div', 'row'); bar.style.marginBottom = '14px';
+  const seg = el('div', 'seg');
+  [['companies', 'Companies'], ['roles', 'Job families']].forEach(([k, lbl]) => {
+    const b = el('button', null, lbl);
+    b.setAttribute('aria-pressed', SORT_MODE === k);
+    b.onclick = () => { SORT_MODE = k; showSort(); };
+    seg.appendChild(b);
+  });
+  bar.appendChild(seg);
+  v.appendChild(bar);
+  v.appendChild(el('p', 'intro', SORT_MODE === 'companies'
+    ? 'Drag a company between categories, or onto a sector on the left to move it '
+      + 'out of this sector entirely. Cards are ordered by open postings, so the '
+      + 'companies with a live board — the ones worth getting right — come first. '
+      + '“Suppliers & Services” is the catch-all the bulk import dumped into; '
+      + 'emptying it is most of the work here.'
+    : 'Drag a title into the family it belongs to. These are the titles the '
+      + 'classifier could not place, so each one is a judgment stored against that '
+      + 'exact title — not a rule. A title that suggests a real pattern is better '
+      + 'fixed in roles.py with a selftest case.'));
+  const host = el('div', 'board'); v.appendChild(host);
+  (SORT_MODE === 'companies' ? drawCompanies : drawRoles)(host, bar);
+}
+
+function card(inner, payload) {
+  const c = el('div', 'cd');
+  c.draggable = true;
+  c.innerHTML = inner;
+  c.addEventListener('dragstart', e => {
+    e.dataTransfer.setData('text/plain', JSON.stringify(payload));
+    e.dataTransfer.effectAllowed = 'move';
+    c.classList.add('dragging');
+  });
+  c.addEventListener('dragend', () => c.classList.remove('dragging'));
+  return c;
+}
+
+function dropzone(node, onDrop) {
+  node.addEventListener('dragover', e => {
+    e.preventDefault(); e.dataTransfer.dropEffect = 'move';
+    node.classList.add('over');
+  });
+  node.addEventListener('dragleave', () => node.classList.remove('over'));
+  node.addEventListener('drop', async e => {
+    e.preventDefault(); node.classList.remove('over');
+    let payload; try { payload = JSON.parse(e.dataTransfer.getData('text/plain')); }
+    catch { return; }
+    await onDrop(payload, e);
+  });
+  return node;
+}
+
+function fill(col, key, items, make) {
+  col.querySelectorAll('.cd,.more').forEach(n => n.remove());
+  const limit = SHOWN[key] || PAGE;
+  items.slice(0, limit).forEach(it => col.appendChild(make(it)));
+  if (items.length > limit) {
+    const m = el('div', 'more', `show ${Math.min(PAGE, items.length - limit)} more `
+      + `of ${items.length - limit}`);
+    m.onclick = () => { SHOWN[key] = limit + PAGE; fill(col, key, items, make); };
+    col.appendChild(m);
+  }
+}
+
+async function drawCompanies(host, bar) {
+  const d = await api('/api/sort/companies'
+    + (SORT_SECTOR ? '?sector=' + encodeURIComponent(SORT_SECTOR) : ''));
+  SORT_SECTOR = d.sector;
+  const sel = el('select', 'sel');
+  d.sectors.forEach(x => sel.appendChild(new Option(x, x)));
+  sel.value = d.sector;
+  sel.onchange = () => { SORT_SECTOR = sel.value; showSort(); };
+  bar.appendChild(sel);
+  bar.appendChild(el('span', 'count', `${d.companies.length} companies`));
+
+  const byCat = {};
+  d.categories.forEach(c => byCat[c] = []);
+  d.companies.forEach(c => (byCat[c.category] = byCat[c.category] || []).push(c));
+
+  // rail: every other sector, as a drop target
+  const rail = el('div', 'rail');
+  rail.appendChild(el('h4', null, 'Move to sector'));
+  d.sectors.filter(x => x !== d.sector).forEach(x => {
+    const z = dropzone(el('div', 'drop', x), async (p) => {
+      const r = await api('/api/move', {id: p.id, sector: x});
+      if (r.error) return toast(r.error, true);
+      toast(r.message); showSort(); refreshCounts();
+    });
+    rail.appendChild(z);
+  });
+  host.appendChild(rail);
+
+  const make = c => {
+    const sug = c.suggested && c.suggested.sector !== d.sector
+      ? `<div class="sug">looks like ${esc(c.suggested.sector)}</div>` : '';
+    return card(`<div>${esc(c.name)}</div><div class="m">`
+      + (c.postings ? `${c.postings} posting${c.postings === 1 ? '' : 's'} · ` : '')
+      + `${esc(c.ats || 'no board')}</div>` + sug, {id: c.id, name: c.name});
+  };
+  d.categories.forEach(cat => {
+    const col = el('div', 'col');
+    const h = el('h4', null, cat + ' ');
+    h.appendChild(el('span', 'n', String((byCat[cat] || []).length)));
+    col.appendChild(h);
+    dropzone(col, async (p) => {
+      const r = await api('/api/move', {id: p.id, sector: d.sector, category: cat});
+      if (r.error) return toast(r.error, true);
+      toast(r.message); showSort(); refreshCounts();
+    });
+    fill(col, 'c:' + cat, byCat[cat] || [], make);
+    host.appendChild(col);
+  });
+}
+
+async function drawRoles(host, bar) {
+  const d = await api('/api/sort/roles');
+  bar.appendChild(el('span', 'count', `${d.titles.length} unplaced titles`));
+
+  const src = el('div', 'col wide');
+  const h = el('h4', null, 'Unclassified ');
+  h.appendChild(el('span', 'n', String(d.titles.length)));
+  src.appendChild(h);
+  const make = t => card(`<div>${esc(t.title)}</div><div class="m">${esc(t.company)}`
+    + (t.count > 1 ? ` · ${t.count} postings` : '') + '</div>',
+    {title: t.title});
+  fill(src, 'roles', d.titles, make);
+  host.appendChild(src);
+
+  Object.entries(d.families).forEach(([k, label]) => {
+    const col = el('div', 'col');
+    col.appendChild(el('h4', null, label));
+    dropzone(col, async (p) => {
+      const r = await api('/api/set-family', {title: p.title, family: k});
+      if (r.error) return toast(r.error, true);
+      toast(r.message); showSort(); refreshCounts();
+    });
+    host.appendChild(col);
+  });
+}
 
 boot();
 </script>

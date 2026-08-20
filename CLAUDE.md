@@ -70,6 +70,16 @@ website review. Rules that hold there:
   suggest a rule still gets one in `roles.py` with a `selftest.py` case.
 - Nothing in admin touches `data/hiring_history/`.
 
+**The Sort board** is the same writes with a different grip. The queue tabs ask
+one question at a time, which is right when the answer needs evidence; sorting
+is a comparison job, and the fastest way to see a vendor is in the wrong bucket
+is to see the bucket. Companies mode gives category columns for one sector plus
+a rail of every other sector as a drop target; job-families mode drags
+unclassified titles into a family. Cards carry their open-posting count, because
+a company with a live board is the one worth getting right. Dropping onto the
+rail sets sector *and* category together - setting the sector alone would strand
+the old category and `validate()` would refuse the write, correctly.
+
 ## Conventions
 
 - Company `id` = kebab-case name (parenthetical suffixes dropped).
