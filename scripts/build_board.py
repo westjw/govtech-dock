@@ -116,6 +116,11 @@ def main() -> int:
     ap.add_argument("--write-partial", action="store_true",
                     help="allow a --limit/--company run to overwrite the full board")
     ap.add_argument("--delay", type=float, default=0.4)
+    ap.add_argument("--render-budget", type=float, default=900,
+                    help="seconds to spend on the browser fallback in total "
+                         "(default 900). Rendering is sequential and costs "
+                         "~27s a page, so an uncapped render phase can run "
+                         "longer than the entire parallel fetch.")
     ap.add_argument("--workers", type=int, default=10)
     a = ap.parse_args()
 
@@ -144,12 +149,16 @@ def main() -> int:
         except Exception as exc:
             return c, [], str(exc)[:60], True, kind == "html"
 
+    render_started = time.monotonic()
     fetched = []
     with cf.ThreadPoolExecutor(max_workers=a.workers) as ex:
         for i, res in enumerate(ex.map(read_board, companies), 1):
             fetched.append(res)
-            if i % 500 == 0:
-                print(f"  fetched {i}/{len(companies)}...")
+            if i % 250 == 0:
+                # flush: redirected stdout is block-buffered, so an unflushed
+                # progress line is invisible for the whole run. A 57-minute
+                # rebuild looked hung when it was working fine.
+                print(f"  fetched {i}/{len(companies)}...", flush=True)
 
     for c, jobs, err, enumerable, may_render in fetched:
         kind = (c.get("ats") or {}).get("type")
@@ -157,12 +166,16 @@ def main() -> int:
         no_board = kind in (None, "unknown") or ref is None
 
         if err and may_render and not a.no_render and render_fetch is not None \
-                and render_fetch.available():
+                and render_fetch.available() \
+                and time.monotonic() - render_started < a.render_budget:
             try:
                 jobs, err = render_fetch.fetch_rendered(ref), None
                 rendered += 1
             except Exception:
                 jobs = []
+            if rendered and rendered % 10 == 0:
+                print(f"  rendered {rendered} board(s), "
+                      f"{time.monotonic() - render_started:.0f}s spent", flush=True)
         if err and not jobs:
             if kind == "html":
                 enumerable = False
