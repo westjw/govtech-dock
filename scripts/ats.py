@@ -148,7 +148,20 @@ def fetch_smartrecruiters(slug: str) -> list[dict]:
 
 
 def fetch_workday(ref: list) -> list[dict]:
+    """Workday, on either of its two board hosts.
+
+    myworkdayjobs.com is tenant-first: acme.wd12.myworkdayjobs.com/Careers.
+    myworkdaysite.com is pod-first and carries the tenant in the path:
+    wd3.myworkdaysite.com/recruiting/modaxo/Tadera. The pod ("wd3", "wd12",
+    "wd502") is never guessable - it has to come out of the URL that was found.
+    """
     tenant, host, site = ref
+    if str(host).startswith("wd") and str(tenant).startswith("wd"):
+        # ("wd3", "modaxo", "Tadera") - pod, tenant, site
+        pod, tenant, site = tenant, host, site
+        base = f"https://{pod}.myworkdaysite.com/recruiting/{tenant}/{site}"
+        api = f"https://{pod}.myworkdaysite.com/wday/cxs/{tenant}/{site}/jobs"
+        return _workday_jobs(api, base, site)
     base = f"https://{tenant}.{host}.myworkdayjobs.com"
     api = f"{base}/wday/cxs/{tenant}/{site}/jobs"
     out, seen = [], set()
@@ -164,6 +177,68 @@ def fetch_workday(ref: list) -> list[dict]:
             out.append({"title": j.get("title", ""),
                         "location": j.get("locationsText", "") or "",
                         "url": f"{base}/en-US/{site}{path}"})
+    return out
+
+
+def _workday_jobs(api: str, base: str, site: str) -> list[dict]:
+    out, seen = [], set()
+    for term in ("account executive", "sales"):
+        data = _post_json(api, {"appliedFacets": {}, "limit": 20, "offset": 0,
+                                "searchText": term})
+        for j in data.get("jobPostings", []):
+            key = j.get("externalPath", j.get("title", ""))
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append({"title": j.get("title", ""),
+                        "location": j.get("locationsText", "") or "",
+                        "url": base + (j.get("externalPath", "") or "")})
+    return out
+
+
+def fetch_paylocity(ref: str) -> list[dict]:
+    """Paylocity publishes no JSON API; the board ships its data in the page.
+
+    The list lives in a window.pageData assignment, so the titles are exact
+    rather than scraped out of markup.
+    """
+    resp = _get(ref)
+    m = re.search(r"window\.pageData\s*=\s*(\{.*?\})\s*;", resp.text, re.S)
+    if not m:
+        raise AtsError("paylocity board carried no pageData block")
+    try:
+        data = json.loads(m.group(1))
+    except json.JSONDecodeError as exc:
+        raise AtsError(f"paylocity pageData did not parse: {exc}") from exc
+    out = []
+    for j in data.get("Jobs", []) or []:
+        title = (j.get("JobTitle") or "").strip()
+        if not title:
+            continue
+        out.append({"title": title,
+                    "location": (j.get("LocationName") or j.get("Location") or "").strip(),
+                    "url": j.get("JobUrl") or ref})
+    return out
+
+
+def fetch_oracle(ref: str) -> list[dict]:
+    """Oracle Recruiting Cloud. `ref` is the host it was discovered on."""
+    host = ref if ref.startswith("http") else f"https://{ref}"
+    api = (f"{host.rstrip('/')}/hcmRestApi/resources/latest/"
+           "recruitingCEJobRequisitions?onlyData=true"
+           "&finder=findReqs;siteNumber=CX_1")
+    data = _json(_get(api))
+    out = []
+    items = (data or {}).get("items") or []
+    for block in items:
+        for j in block.get("requisitionList", []) or []:
+            title = (j.get("Title") or "").strip()
+            if not title:
+                continue
+            out.append({"title": title,
+                        "location": (j.get("PrimaryLocation") or "").strip(),
+                        "url": f"{host.rstrip('/')}/hcmUI/CandidateExperience/en/"
+                               f"sites/CX_1/job/{j.get('Id', '')}"})
     return out
 
 
@@ -307,6 +382,8 @@ FETCHERS = {
     "rippling": fetch_rippling,
     "jazzhr": fetch_jazzhr,
     "icims": fetch_icims,
+    "paylocity": fetch_paylocity,
+    "oracle": fetch_oracle,
     "html": fetch_html,
 }
 

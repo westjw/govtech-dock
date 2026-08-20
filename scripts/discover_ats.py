@@ -28,6 +28,7 @@ import argparse
 import collections
 import concurrent.futures as cf
 import datetime as dt
+import hashlib
 import json
 import pathlib
 import re
@@ -53,6 +54,13 @@ CAREER_PATHS = ["/careers", "/careers/", "/jobs", "/company/careers",
                 "/about/careers", "/join-us", "/careers/open-positions"]
 
 # Ordered: a structured API beats a generic careers page.
+#
+# Every pattern is anchored to a full hostname, never a bare product word. A
+# company site published a post about *greenhouse gas* and a substring test fired
+# on it. Markers are matched against page bodies only - never response headers,
+# because WordPress.com stamps "x-hacker: ... visit join.a8c.com" on every
+# response it serves, which makes a bare join.com test hit a company with no
+# board at all.
 MARKERS: list[tuple[str, str]] = [
     ("ashby", r"jobs\.ashbyhq\.com/(?:embed\?org=)?([a-zA-Z0-9._-]+)"),
     ("greenhouse", r"(?:job-boards|boards)\.greenhouse\.io/"
@@ -66,7 +74,33 @@ MARKERS: list[tuple[str, str]] = [
     ("jazzhr", r"([a-zA-Z0-9-]+)\.applytojob\.com"),
     ("rippling", r"ats\.rippling\.com/([a-zA-Z0-9-]+)"),
     ("icims", r"([a-zA-Z0-9-]+)\.icims\.com"),
+    # Families a field audit found on real govtech careers pages, in plain HTML,
+    # that the script simply had no pattern for. This was the single highest
+    # recovery-per-line change available.
+    ("workday", r"([a-z0-9-]+)\.(wd\d+)\.myworkdayjobs\.com/(?:en-US/)?([A-Za-z0-9_-]+)"),
+    ("workday", r"(wd\d+)\.myworkdaysite\.com/(?:en-US/)?recruiting/"
+                r"([a-z0-9-]+)/([A-Za-z0-9_-]+)"),
+    ("paylocity", r"(recruiting\.paylocity\.com/recruiting/jobs/All/[0-9a-f-]{36}/[^\s\"'<>]*)"),
+    ("oracle", r"([a-z0-9]+\.fa\.[a-z0-9]+\.oraclecloud\.com)"),
+    ("html", r"(workforcenow\.adp\.com/mascsr/default/mdf/recruitment/"
+             r"recruitment\.html\?cid=[0-9a-f-]{36}[^\s\"'<>]*)"),
+    ("html", r"([a-z0-9-]+\.paycomonline\.net/v4/ats/web\.php/jobs\?clientkey=[0-9A-F]{32})"),
+    ("html", r"(jobs\.jobvite\.com/[a-z0-9-]+)"),
+    ("html", r"([a-z0-9-]+\.teamtailor\.com)"),
+    ("html", r"([a-z0-9-]+\.applicantpro\.com|[a-z0-9-]+\.clearcompany\.com|"
+             r"[a-z0-9-]+\.isolvedhire\.com|[a-z0-9-]+\.dayforcehcm\.com|"
+             r"recruiting\d*\.ultipro\.com/[A-Z0-9_]+|[a-z0-9-]+\.pinpointhq\.com|"
+             r"[a-z0-9-]+\.taleo\.net|[a-z0-9-]+\.avature\.net|[a-z0-9-]+\.csod\.com)"),
+    # HiBob is deliberately last and deliberately never slug-probed: every
+    # subdomain returns a byte-identical 1342-byte shell, so a probe proves
+    # nothing. It only counts when the company's own site links to it.
+    ("html", r"([a-z0-9-]+\.careers\.hibob\.com)"),
 ]
+
+# Marker types whose captured group is a full URL rather than a slug. These skip
+# slug_matches - the host is already pinned to a specific tenant id, and the URL
+# came off the company's own page.
+URL_MARKERS = {"paylocity", "oracle"}
 RESERVED = {"www", "jobs", "careers", "api", "embed", "app", "static", "cdn", "js"}
 
 
@@ -115,6 +149,12 @@ def load_log() -> dict:
     return json.loads(LOG.read_text()) if LOG.exists() else {}
 
 
+# A refusal is not an answer. A blocked or errored probe learned nothing, so it
+# comes back around in days rather than sitting out the full window as though it
+# had proved something.
+RETRY_SOON_DAYS = 7
+
+
 def stale(entry: dict | None) -> bool:
     if not entry:
         return True
@@ -122,23 +162,77 @@ def stale(entry: dict | None) -> bool:
         age = (dt.date.today() - dt.date.fromisoformat(entry["on"])).days
     except (KeyError, ValueError):
         return True
-    return age >= RETRY_DAYS
+    return age >= (RETRY_SOON_DAYS if entry.get("retry_soon") else RETRY_DAYS)
 
 
 # Discovery probes do not need the fetcher's patience. At 20 seconds a request
 # and up to eight paths per company, one dead domain costs 160 seconds of worker
 # time, which is what turned a 1,245-company sweep into a multi-hour run.
-PROBE_TIMEOUT = 6
+PROBE_TIMEOUT = 8
 
 
-def get(url: str) -> str:
+# A bot wall answers, so a naive fetcher reads it as a page and then reads the
+# absence of an ATS marker as an absence of a board. That is the page-scan
+# mistake wearing a different hat, and a field audit found ~70 of 633 "no board
+# found" records were really this. Detecting it changes nothing about coverage
+# and everything about honesty.
+BLOCK_PAT = re.compile(
+    r"sgcaptcha|/\.well-known/(sg)?captcha|__cf_chl|cf-browser-verification|"
+    r"Checking your browser|Just a moment|_Incapsula_|Pardon Our Interruption|"
+    r"reese84|PerimeterX|Attention Required", re.I)
+
+
+class Fetch:
+    """The outcome of one request, not just its body.
+
+    `ok` means we read the page. `blocked` and `error` mean we did not, and must
+    never be recorded as "no board" - they requeue on a short cadence instead of
+    the 45-day one.
+    """
+
+    __slots__ = ("text", "status", "url", "outcome")
+
+    def __init__(self, text="", status=0, url="", outcome="error"):
+        self.text, self.status, self.url, self.outcome = text, status, url, outcome
+
+    def __bool__(self):
+        return self.outcome == "ok" and bool(self.text)
+
+
+def get(url: str) -> Fetch:
     import requests
     try:
         r = requests.get(url, headers=ats.UA, timeout=PROBE_TIMEOUT,
                          allow_redirects=True)
-    except Exception:
-        return ""
-    return r.text if r.status_code == 200 else ""
+    except Exception as exc:
+        return Fetch(url=url, outcome="error", status=0,
+                     text=type(exc).__name__)
+    body = r.text or ""
+    # 202 is SiteGround's tell; the rest are the usual refusals.
+    if r.status_code in (202, 403, 429, 503):
+        return Fetch(status=r.status_code, url=str(r.url), outcome="blocked")
+    # The size gate is load-bearing: a real 135KB page can carry "Just a moment"
+    # inside a Turnstile widget on its contact form. Only a small body that is
+    # *mostly* the challenge counts.
+    if len(body) < 2048 and BLOCK_PAT.search(body):
+        return Fetch(status=r.status_code, url=str(r.url), outcome="blocked")
+    if r.status_code == 404:
+        return Fetch(status=404, url=str(r.url), outcome="notfound")
+    # A 5xx that still ships a full page is worth parsing - one company serves
+    # 445KB of real site under a 500.
+    if r.status_code >= 400 and len(body) < 5000:
+        return Fetch(status=r.status_code, url=str(r.url), outcome="error")
+    return Fetch(text=body, status=r.status_code, url=str(r.url), outcome="ok")
+
+
+def visible(html: str) -> str:
+    """Text with markup, script and style removed - what a reader would see."""
+    t = re.sub(r"(?is)<(script|style|noscript)\b.*?</\1>", " ", html or "")
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", t)).strip()
+
+
+def fingerprint(html: str) -> str:
+    return hashlib.md5(visible(html).encode("utf-8", "replace")).hexdigest()
 
 
 # A hard ceiling per company. requests' timeout governs each socket operation,
@@ -146,100 +240,283 @@ def get(url: str) -> str:
 # indefinitely: a 1,245-company sweep ran 10.5 hours, past the point where every
 # fetch timing out would have finished, and wrote nothing. No company is worth
 # more than this.
-COMPANY_BUDGET = 25
+COMPANY_BUDGET = 45   # default; --budget raises it for a retry sweep
 
 
 # Follow the site's own careers link instead of only guessing paths. 718 probes
 # found nothing, and a guessed path list cannot cover /company/join,
 # /life-at-x, /work-with-us and the rest. The homepage already knows where its
 # careers page is.
-CAREER_LINK = re.compile(
-    r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(?:(?!</a>).)*?'
-    r'(career|jobs?|join us|work with us|we[\'’]re hiring|open roles|'
-    r'life at|opportunit)', re.I | re.S)
+# Any href, quoted or not. The old pattern required both quotes and matched on
+# anchor TEXT alone, which missed unquoted attributes, "./about-us/careers"
+# relatives, and bare http:// links. Small individually; together they were
+# silently dropping links the rest of the pipeline depended on.
+HREF = re.compile(r"""href\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)""", re.I)
+CAREER_HREF = re.compile(r"(career|jobs?|join-?us|work-?with-?us|employment|"
+                         r"vacanc|open-?positions?|hiring|opportunit)", re.I)
+# A path that IS a careers page, rather than one that merely mentions the word.
+CAREER_PATH = re.compile(r"/(careers?|jobs?|join-?us|work-?with-?us|employment|"
+                         r"vacanc\w*|open-?positions?)(/|$|\.\w+$)", re.I)
+# A page whose PATH does not say careers has to say it loudly in the title. A
+# bare "job" matched a blog post called "Why jobs matter", which would then have
+# been recorded as this company's job board.
+CAREER_TITLE = re.compile(r"\b(careers?|join (our|the) team|work (with|for) us|"
+                          r"open (positions?|roles?)|we(\'re| are) hiring|"
+                          r"job openings?|vacancies|now hiring)\b", re.I)
+# Article-shaped paths never qualify on a title alone, whatever it says.
+ARTICLE_PATH = re.compile(r"/(blog|news|press|resources?|insights?|articles?|"
+                          r"stories|posts?|events?|webinars?)(/|$)", re.I)
+# One hop past the homepage. A field audit found three companies whose board was
+# an ATS already in MARKERS, sitting behind /about - purely a reach problem.
+HOP_PATHS = ["/about", "/about-us", "/company", "/team", "/our-team"]
+# An honest empty board. "No current vacancies" is a real page saying a real
+# thing, and recording it as a failed probe loses that.
+NO_OPENINGS = re.compile(r"no (current |open |available )?(vacanc|opening|position|role)s?\b|"
+                         r"check back|not currently hiring", re.I)
 
 
-def career_links(html: str, base: str) -> list[str]:
-    out, seen = [], set()
-    for m in CAREER_LINK.finditer(html or ""):
-        href = html_lib.unescape(m.group(1)).strip()
-        if href.startswith(("mailto:", "tel:", "#", "javascript:")):
+def career_links(html: str, resp_url: str) -> list[str]:
+    """Careers-looking links, ranked.
+
+    urljoin resolves against the RESPONSE url, not base + "/". The old form
+    resolved relatives under the wrong directory and once inflated one company's
+    job-link count from 0 to 42 against a page that had none.
+    """
+    scored, seen = [], set()
+    for m in HREF.finditer(html or ""):
+        href = html_lib.unescape(m.group(1).strip("\"'")).strip()
+        if not href or href.startswith(("mailto:", "tel:", "javascript:")):
             continue
-        url = urllib.parse.urljoin(base + "/", href)
-        if url.rstrip("/") == base.rstrip("/") or url in seen:
+        if href.startswith("#"):
             continue
-        seen.add(url)
-        out.append(url)
-        if len(out) >= 3:
-            break
-    return out
+        try:
+            url = urllib.parse.urljoin(resp_url, href)
+        except ValueError:
+            continue
+        if not url.startswith("http"):
+            continue
+        parts = urllib.parse.urlsplit(url)
+        # A careers subdomain counts even when the path says nothing.
+        subdomain = parts.netloc.split(".")[0].lower() in ("careers", "jobs")
+        if not (CAREER_HREF.search(parts.path + "?" + parts.query) or subdomain):
+            continue
+        key = url.split("#")[0].rstrip("/")
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        # A short path ending /careers beats a long blog slug that happens to
+        # contain the word.
+        rank = (0 if CAREER_PATH.search(parts.path) or subdomain else 1,
+                len(parts.path))
+        scored.append((rank, key))
+    scored.sort()
+    return [u for _, u in scored[:8]]
+
+
+def read_marker(html: str, company: dict) -> tuple[dict | None, str]:
+    """First ATS marker in the page, as a fetchable block. Body only, never
+    headers - WordPress.com stamps an ad for join.a8c.com on every response."""
+    for kind, pat in MARKERS:
+        m = re.search(pat, html, re.I)
+        if not m:
+            continue
+        groups = [g for g in m.groups() if g]
+        if not groups:
+            continue
+        if kind == "workday":
+            if len(groups) < 3:
+                continue
+            return {"type": kind, "ref": list(groups[:3])}, groups[0]
+        ref = groups[0]
+        if kind in URL_MARKERS or "/" in ref or "." in ref:
+            # A full URL or host: already pinned to one tenant, and it came off
+            # this company's own page.
+            if not ref.startswith("http"):
+                ref = "https://" + ref
+            return {"type": kind, "ref": ref}, ref
+        if ref.lower() in RESERVED:
+            continue
+        return {"type": kind, "ref": ref}, ref
+    return None, ""
 
 
 def probe(company: dict) -> dict:
-    """Look for an ATS on a company's site. Returns a result record."""
+    """Look for an ATS on a company's site. Returns a result record.
+
+    The outcome vocabulary matters as much as the finding. "blocked" and
+    "fetch error" are not "no board found": a bot wall answers, and reading its
+    answer as an absence is the same mistake a page scan makes when it reports a
+    board is empty because it could not read it.
+    """
     site = (company.get("website") or "").rstrip("/")
-    if not site:
-        return {"id": company["id"], "found": None, "note": "no website on file"}
+    if not site.startswith("http"):
+        return {"id": company["id"], "found": None,
+                "note": f"website on file is not a URL: {site[:40]!r}"}
     started = time.monotonic()
-    # The homepage is read once, and its own careers links are tried before the
-    # guessed paths, since a real link beats a guess.
+
     home = get(site)
-    extra = career_links(home, site) if home else []
-    # dedupe while preserving order: real links first, then guessed paths
+    if home.outcome == "blocked":
+        return {"id": company["id"], "found": None, "retry_soon": True,
+                "note": f"blocked at the door (HTTP {home.status})"}
+    if home.outcome != "ok":
+        return {"id": company["id"], "found": None, "retry_soon": True,
+                "note": f"could not fetch the site ({home.text or home.status})"}
+
+    # A control request first. One host in five answers 200 to a path that
+    # cannot exist, so on those hosts a 200 carries no information at all - and
+    # accepting careers pages without this test would write ~127 records
+    # pointing at homepages.
+    ctl = get(site + "/zz-no-such-page-8471")
+    bad = {fingerprint(home.text)}
+    catch_all = False
+    if ctl.outcome == "ok":
+        bad.add(fingerprint(ctl.text))
+        catch_all = True
+
+    links = career_links(home.text, home.url)
+    # Only fall back to guessed paths when the page offered nothing. Measured:
+    # 3 companies in 90 needed a guess, and skipping them buys the budget that
+    # the control request and the one-hop crawl cost.
+    guesses = [] if len(links) >= 2 or catch_all else [site + p for p in CAREER_PATHS]
     targets, seen = [], set()
-    for t in [site] + extra + [site + p for p in CAREER_PATHS]:
+    for t in links + guesses:
         t = t.rstrip("/")
-        if t not in seen:
+        if t and t not in seen and t != site:
             seen.add(t)
             targets.append(t)
-    for target in targets:
-        if time.monotonic() - started > COMPANY_BUDGET:
-            return {"id": company["id"], "found": None,
-                    "note": f"gave up after {COMPANY_BUDGET}s"}
-        html = home if target == site.rstrip("/") else get(target)
-        if not html:
-            continue
-        for kind, pat in MARKERS:
-            m = re.search(pat, html, re.I)
-            if not m:
+
+    block, slug = read_marker(home.text, company)
+    pages = [(site, home.text)]
+    careers_url, careers_empty = None, False
+    hopped = False
+
+    while True:
+        if block is None:
+            for target in targets:
+                if time.monotonic() - started > COMPANY_BUDGET:
+                    return {"id": company["id"], "found": None, "retry_soon": True,
+                            "note": f"gave up after {COMPANY_BUDGET}s"}
+                r = get(target)
+                if r.outcome == "blocked":
+                    return {"id": company["id"], "found": None, "retry_soon": True,
+                            "note": f"blocked at {target[len(site):] or '/'} "
+                                    f"(HTTP {r.status})"}
+                if r.outcome != "ok":
+                    continue
+                if fingerprint(r.text) in bad:
+                    continue          # soft 404: the homepage wearing a new URL
+                pages.append((r.url, r.text))
+                block, slug = read_marker(r.text, company)
+                if block is not None:
+                    break
+                if careers_url is None and _is_careers(r.url, r.text):
+                    careers_url = r.url
+                    careers_empty = bool(NO_OPENINGS.search(visible(r.text)[:4000]))
+        if block is not None or hopped:
+            break
+        # Nothing yet. Try one hop into the pages that tend to hide a careers
+        # link, and re-run link extraction on them.
+        hopped = True
+        if time.monotonic() - started > COMPANY_BUDGET - 6:
+            break
+        more = []
+        for hp in HOP_PATHS:
+            if time.monotonic() - started > COMPANY_BUDGET - 3:
+                break
+            r = get(site + hp)
+            if r.outcome != "ok" or fingerprint(r.text) in bad:
                 continue
-            slug = next((g for g in m.groups() if g), "")
-            if not slug or slug.lower() in RESERVED:
-                continue
-            block = {"type": kind, "ref": slug}
+            block, slug = read_marker(r.text, company)
+            if block is not None:
+                break
+            more += [u for u in career_links(r.text, r.url)
+                     if u.rstrip("/") not in seen]
+        if block is not None:
+            break
+        targets = []
+        for u in more:
+            k = u.rstrip("/")
+            if k not in seen:
+                seen.add(k)
+                targets.append(k)
+        if not targets:
+            break
+
+    if block is not None:
+        ref = block["ref"]
+        try:
+            saved, ats.TIMEOUT = ats.TIMEOUT, 10
             try:
-                saved, ats.TIMEOUT = ats.TIMEOUT, 10
-                try:
-                    jobs = ats.fetch(block)
-                finally:
-                    ats.TIMEOUT = saved
-            except Exception as exc:
-                return {"id": company["id"], "found": None,
-                        "note": f"{kind}:{slug} found but unreadable ({str(exc)[:40]})"}
-            real = [j for j in jobs if (j.get("title") or "").strip()]
-            if not slug_matches(slug, company):
-                return {"id": company["id"], "found": None,
-                        "suspect": block,
-                        "note": f"{kind}:{slug} reads, but the slug does not match "
-                                f"{company['name']!r}; likely someone else's board"}
-            return {"id": company["id"], "found": block,
-                    "note": f"{kind}:{slug}, {len(real)} posting(s) readable",
-                    "postings": len(real)}
-        # A careers page with no ATS marker is still better than nothing: the
-        # html path can sometimes enumerate it, and a person can always read it.
-        if target != site and re.search(r"\b(open positions|current openings|join our team|"
-                              r"we're hiring|we are hiring|view (all )?jobs|"
-                              r"apply now)\b", html, re.I):
-            return {"id": company["id"], "found": {"type": "html", "ref": target},
-                    "note": f"careers page at {target[len(site):] or '/'}, no ATS marker",
-                    "postings": 0}
+                jobs = ats.fetch(block)
+            finally:
+                ats.TIMEOUT = saved
+        except Exception as exc:
+            return {"id": company["id"], "found": None, "retry_soon": True,
+                    "note": f"{block['type']}:{str(ref)[:34]} found but unreadable "
+                            f"({str(exc)[:36]})"}
+        real = [j for j in jobs if (j.get("title") or "").strip()]
+        # A URL-shaped ref is already pinned to one tenant and came off this
+        # company's own page, so the name test does not apply to it.
+        needs_check = isinstance(ref, str) and not ref.startswith("http")
+        if needs_check and not slug_matches(ref, company):
+            return {"id": company["id"], "found": None, "suspect": block,
+                    "note": f"{block['type']}:{ref} reads, but the slug does not "
+                            f"match {company['name']!r}; likely someone else's board"}
+        return {"id": company["id"], "found": block,
+                "note": f"{block['type']}:{str(ref)[:40]}, {len(real)} posting(s) readable",
+                "postings": len(real)}
+
+    if careers_url:
+        # Honest about what this is worth: a careers page with no ATS behind it
+        # is a page a person can read and a text scan can sometimes mine. It is
+        # not a structured board, and counting it as one inflates the number
+        # that matters.
+        note = "careers page, no ATS behind it"
+        if careers_empty:
+            note = "careers page, says it has no openings"
+        return {"id": company["id"], "found": {"type": "html", "ref": careers_url},
+                "note": f"{note} ({careers_url[len(site):][:40] or '/'})",
+                "postings": 0, "weak": True}
+
+    if catch_all:
+        return {"id": company["id"], "found": None,
+                "note": "no board found; host answers 200 to any path, so a "
+                        "negative here is weak"}
     return {"id": company["id"], "found": None, "note": "no board found"}
+
+
+def _is_careers(url: str, html: str) -> bool:
+    """Is this actually a careers page?
+
+    The old test was a phrase gate - "open positions", "we're hiring" and
+    friends. Measured against real careers pages found by hand, it matched 3 of
+    29. Path and title are far better signals, and the length floor keeps a
+    redirect stub or an empty shell from qualifying.
+    """
+    path = urllib.parse.urlsplit(url).path
+    heads = re.findall(r"<title[^>]*>(.*?)</title>", html or "", re.I | re.S)[:1]
+    heads += re.findall(r"<h1[^>]*>(.*?)</h1>", html or "", re.I | re.S)[:2]
+    head = re.sub(r"<[^>]+>", " ", " ".join(heads))
+    if CAREER_PATH.search(path):
+        pass
+    elif CAREER_TITLE.search(head) and not ARTICLE_PATH.search(path):
+        pass
+    else:
+        return False
+    return len(visible(html)) >= 400
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=300)
     ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--budget", type=int,
+                    help="seconds per company before giving up (default 25). "
+                         "104 companies were cut off by the default, and a slow "
+                         "site is not the same as a site with no board.")
+    ap.add_argument("--only", metavar="FILE",
+                    help="probe only the company ids listed in this file, one "
+                         "per line, ignoring the retry window")
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--stats", action="store_true")
     ap.add_argument("--review", action="store_true",
@@ -298,9 +575,24 @@ def main() -> int:
         print(f"  {len(pending)} ready to probe now")
         return 0
 
-    todo = [c for c in companies
-            if (c.get("ats") or {}).get("type") in (None, "unknown")
-            and c.get("website") and stale(log.get(c["id"]))]
+    if a.budget:
+        # A slow site is not a site with no board. 104 companies were cut off by
+        # the default budget mid-probe and recorded as a failure, which is the
+        # same false-absence mistake the page scans make.
+        global COMPANY_BUDGET
+        COMPANY_BUDGET = a.budget
+
+    if a.only:
+        wanted = {ln.strip() for ln in pathlib.Path(a.only).read_text().splitlines()
+                  if ln.strip()}
+        todo = [c for c in companies if c["id"] in wanted and c.get("website")]
+        missing = wanted - {c["id"] for c in todo}
+        if missing:
+            print(f"  ({len(missing)} id(s) in the list have no website or no record)")
+    else:
+        todo = [c for c in companies
+                if (c.get("ats") or {}).get("type") in (None, "unknown")
+                and c.get("website") and stale(log.get(c["id"]))]
     # Sector order is the buyer-motion order: the closest markets first, so a
     # partial run is still the most useful partial run.
     order = {"General Gov": 0, "Public Works": 1, "Parks & Rec": 2,
@@ -323,6 +615,10 @@ def main() -> int:
         for r in results:
             log[r["id"]] = {"on": today, "found": bool(r.get("found")),
                             "note": r["note"]}
+            if r.get("retry_soon"):
+                log[r["id"]]["retry_soon"] = True
+            if r.get("weak"):
+                log[r["id"]]["weak"] = True
             if a.write and r.get("found"):
                 by_id_all[r["id"]]["ats"] = r["found"]
         LOG.write_text(json.dumps(log, indent=1) + "\n")
@@ -355,15 +651,30 @@ def main() -> int:
             print(f"   {r['id']:<28} {r['note'][:74]}")
 
     found = [r for r in results if r.get("found")]
-    by_kind = collections.Counter(r["found"]["type"] for r in found)
-    print(f"\n{len(found)} of {len(todo)} produced a board:")
+    strong = [r for r in found if not r.get("weak")]
+    weak = [r for r in found if r.get("weak")]
+    blocked = [r for r in results if r.get("retry_soon")]
+    by_kind = collections.Counter(r["found"]["type"] for r in strong)
+    # Structured boards and careers pages are not the same finding, and adding
+    # them together is how a discovery sweep reports a number nobody can use.
+    print(f"\n{len(strong)} of {len(todo)} produced a structured board:")
     for k, n in by_kind.most_common():
         print(f"  {n:>4}  {k}")
-    with_jobs = sum(1 for r in found if r.get("postings"))
+    with_jobs = sum(1 for r in strong if r.get("postings"))
     print(f"  {with_jobs} of those currently have readable postings")
+    if weak:
+        print(f"\n{len(weak)} more have a careers page with no ATS behind it. "
+              "A person can read those; a fetcher mostly cannot.")
+    if blocked:
+        print(f"{len(blocked)} were blocked or unreachable - not a negative, "
+              f"and requeued in {RETRY_SOON_DAYS} days.")
 
     for r in results:
         log[r["id"]] = {"on": today, "found": bool(r.get("found")), "note": r["note"]}
+        if r.get("retry_soon"):
+            log[r["id"]]["retry_soon"] = True
+        if r.get("weak"):
+            log[r["id"]]["weak"] = True
 
     if not a.write:
         print("\ndry run. re-run with --write to record the discoveries.")
