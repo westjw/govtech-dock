@@ -42445,5 +42445,47 @@
     "researched": false,
     "vendor_type": "GovTech Product",
     "source": "competitor sweep"
+  },
+  {
+    "id": "anthropic",
+    "name": "Anthropic",
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "Claude, sold to state and local agencies through GSA and cooperative vehicles alongside its commercial business",
+    "website": "https://www.anthropic.com",
+    "ats": {
+      "type": "greenhouse",
+      "ref": "anthropic"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "checked": null,
+      "note": "added 2026-08-21; board verified at intake, 506 postings"
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "location": "San Francisco, CA",
+    "sled_only": true
+  },
+  {
+    "id": "openai",
+    "name": "OpenAI",
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "ChatGPT and the API, sold to public sector including named state and local government roles",
+    "website": "https://openai.com",
+    "ats": {
+      "type": "ashby",
+      "ref": "openai"
+    },
+    "hiring": {
+      "status": "Unknown",
+      "checked": null,
+      "note": "added 2026-08-21; ashby:openai verified, 752 postings"
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "location": "San Francisco, CA",
+    "sled_only": true
   }
 ]

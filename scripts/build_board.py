@@ -89,6 +89,30 @@ def board_url(c: dict) -> str | None:
     return c.get("website")
 
 
+# Some companies belong here for a slice of what they do. Anthropic and OpenAI
+# sell into state and local government, but their boards are 500 and 750
+# postings of research and infrastructure, and importing all of it would bury
+# the market this board is about under a horizontal company's headcount.
+#
+# This is NOT the same as Palantir or Verkada carrying engineering reqs. Those
+# ARE govtech companies, and what they are building is real signal about where
+# they are. A horizontal vendor's ML researcher is not.
+#
+# So: `sled_only: true` on a company keeps the roles that name the public sector
+# and drops the rest. The company still appears with an honest count.
+SLED_ROLE = re.compile(
+    r"public[- ]sector|state (and|&) local|SLED|gov(ernment|tech)?|"
+    r"civic|municipal|federal|public safety|K-?12|higher[- ]ed", re.I)
+
+# ...but not another country's public sector. "Account Executive - Public
+# Sector (ASEAN)" and "Account Director, Public Sector - Tokyo" both matched,
+# and neither is this market. This board is US state and local.
+NOT_OUR_GOV = re.compile(
+    r"\bASEAN\b|\bEMEA\b|\bAPAC\b|\bLATAM\b|\bUK\b|Tokyo|Japan|Singapore|"
+    r"Korea|India|Australia|Canada|Germany|France|Netherlands|Nordics|Ireland|"
+    r"Brazil|Mexico|Dubai|\bUAE\b|Israel", re.I)
+
+
 def phase(families: dict) -> str:
     """What the family mix says about where a company is."""
     total = sum(families.values())
@@ -246,9 +270,15 @@ def main() -> int:
 
         fams = collections.Counter()
         kept = 0
+        sled_only = bool(c.get("sled_only"))
+        dropped_offtopic = 0
         for j in jobs:
             title = (j.get("title") or "").strip()
             if roles.is_junk(title) or roles.is_evergreen(title):
+                continue
+            if sled_only and (not SLED_ROLE.search(title)
+                              or NOT_OUR_GOV.search(title)):
+                dropped_offtopic += 1
                 continue
             loc = j.get("location") or ""
             fam = roles.family(title)
@@ -282,6 +312,8 @@ def main() -> int:
             "quota_roles": sum(1 for p in postings
                                if p["company_id"] == c["id"] and p["quota_carrying"]),
             "unreadable": err,
+            "sled_only": sled_only or None,
+            "offtopic_dropped": dropped_offtopic or None,
             "shares_board_with": owns.get(c["id"]),
             "board_owner_unverified": c["id"] in unowned or None,
             # A company with nothing on file has not failed; it has never been
@@ -362,6 +394,15 @@ def main() -> int:
         if unowned:
             print(f"   ({len(unowned)} of those boards are held arbitrarily: the slug "
                   f"names none of the companies sharing it)")
+
+    filtered = [o for o in orgs if o.get("offtopic_dropped")]
+    if filtered:
+        tot = sum(o["offtopic_dropped"] for o in filtered)
+        print(f"{tot} off-topic posting(s) dropped from {len(filtered)} horizontal "
+              f"vendor(s) marked sled_only:")
+        for o in sorted(filtered, key=lambda x: -x["offtopic_dropped"])[:6]:
+            print(f"   {o['name'][:26]:<26} kept {o['open_roles']:>3}, "
+                  f"dropped {o['offtopic_dropped']}")
 
     no_board = sum(1 for o in orgs if o.get("no_board_on_file"))
     print(f"{len(companies)} companies: {len(companies) - no_board} with a board on "
