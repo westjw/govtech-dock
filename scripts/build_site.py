@@ -61,10 +61,96 @@ def sanitize(board: dict) -> dict:
     return board, stripped
 
 
+# A refresh that breaks quietly is the failure mode a daily unattended deploy
+# invents. Every fetcher this repo has broken in some new way, and the symptom
+# is always the same shape: the board still builds, it is just suddenly much
+# smaller. Publishing that at 06:00 replaces a good board with a bad one and
+# nobody finds out until they look.
+#
+# So the gate refuses to build on a sharp DROP, and only a drop: growth is
+# never suspicious here, and a threshold that fires on growth would have
+# blocked every real improvement this month (2,273 -> 4,033 -> 4,199).
+MAX_DROP = 0.25          # postings, day over day
+MAX_HIRING_DROP = 0.40   # companies showing at least one opening
+
+
+class StaleData(Exception):
+    pass
+
+
+def previous_snapshot() -> tuple[str, int] | None:
+    """The most recent history snapshot BEFORE today's, as (date, count).
+
+    build_board writes one per run, so today's exists by the time this runs.
+    """
+    snaps = sorted((ROOT / "data" / "history").glob("*.json"))
+    if len(snaps) < 2:
+        return None
+    prev = json.loads(snaps[-2].read_text())
+    return prev.get("date", snaps[-2].stem), len(prev.get("ids", []))
+
+
+def sanity_check(board: dict) -> list[str]:
+    """Reasons this board should not be published. Empty means go."""
+    bad = []
+    postings = len(board.get("postings", []))
+    hiring = sum(1 for o in board.get("organizations", []) if o.get("open_roles"))
+
+    if postings == 0:
+        bad.append("the board has no postings at all")
+    if hiring == 0:
+        bad.append("no company shows a single opening")
+
+    prev = previous_snapshot()
+    if prev is None:
+        # Nothing to compare against is not a failure, it is a first run.
+        return bad
+    prev_date, prev_n = prev
+    if prev_n and postings < prev_n * (1 - MAX_DROP):
+        drop = (1 - postings / prev_n) * 100
+        bad.append(f"postings fell {drop:.0f}% since {prev_date} "
+                   f"({prev_n} -> {postings}), past the {MAX_DROP:.0%} limit")
+
+    # A big fall in companies-with-openings usually means a fetcher broke
+    # rather than a market that emptied overnight.
+    meta = ROOT / "data" / "meta.json"
+    if meta.exists():
+        m = json.loads(meta.read_text())
+        was = m.get("companies_hiring")
+        if was and hiring < was * (1 - MAX_HIRING_DROP):
+            bad.append(f"companies with an opening fell from {was} to {hiring}")
+    return bad
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="public")
+    ap.add_argument("--force", action="store_true",
+                    help="publish even if the sanity gate objects. For when you "
+                         "have looked and the drop is real.")
+    ap.add_argument("--check-only", action="store_true",
+                    help="run the gate and exit; write nothing")
     a = ap.parse_args()
+
+    board_src = json.loads((ROOT / "data" / "board.json").read_text())
+    objections = sanity_check(board_src)
+    if objections:
+        print("the sanity gate is refusing to publish this board:", file=sys.stderr)
+        for o in objections:
+            print(f"  - {o}", file=sys.stderr)
+        if not a.force:
+            print("\nA board that shrinks overnight is usually a broken fetcher, not a\n"
+                  "market that emptied. Look at the run first. If the drop is real,\n"
+                  "re-run with --force.", file=sys.stderr)
+            return 1
+        print("  (--force given, publishing anyway)", file=sys.stderr)
+    else:
+        prev = previous_snapshot()
+        if prev:
+            print(f"sanity gate: {len(board_src['postings'])} postings against "
+                  f"{prev[1]} on {prev[0]}, within limits")
+    if a.check_only:
+        return 0
 
     out = ROOT / a.out
     if out.exists():
@@ -74,8 +160,7 @@ def main() -> int:
     for name in SHIP:
         shutil.copy2(ROOT / name, out / name)
 
-    board = json.loads((ROOT / "data" / "board.json").read_text())
-    board, stripped = sanitize(board)
+    board, stripped = sanitize(board_src)
     # separators: the site is served gzipped, but 300KB of whitespace is still
     # 300KB the browser has to parse.
     (out / "data" / "board.json").write_text(
