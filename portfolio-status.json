@@ -1,0 +1,25 @@
+{
+  "project_id": "govtech_dock",
+  "repo": "westjw/govtech-dock",
+  "last_updated": "2026-08-21T14:01:31-04:00",
+  "status": "Active Build",
+  "progress_pct": 55,
+  "progress_note": "~55% against the full scope (free board, then paid product). The free board is close to shippable and nothing is public yet; the paid half has not started. Against the free board alone it would read ~85%.",
+  "next_move": "Deploy the public board. The build is done - allowlist bundle, sanity gate, mobile layout - and it is blocked only on a domain and a host account, both of which need the owner.",
+  "session_summary": "Rebuilt the public job board and companies tab on a Claude Design pass (option 4a: editorial hero, a shelf of what is new, a grouped list) and gave both a phone layout, which the site had never had. Added a deploy path that ships by allowlist rather than exclusion, plus a sanity gate that refuses to publish a board that shrank more than 25% overnight. Found and fixed a 16% inflation of the headline: 20 ATS refs were claimed by two or more companies each, double-counting 112 of 704 quota-carrying roles.",
+  "recent_work": [
+    "Public job board rebuilt on design option 4a, on tokens so dark still works",
+    "Companies tab rebuilt in the same language; hero copy fixed (\"130 of them\" had no antecedent)",
+    "Phone layout for the board: table becomes a card list below 768px",
+    "scripts/build_site.py assembles public/ from an allowlist, and sanitises internal fetch errors out of the published copy",
+    "Sanity gate blocks a publish on a >25% overnight drop; verified by breaking the data, not by trusting the arithmetic",
+    "Shared-board dedupe: one ATS ref is one board. 4,199 -> 3,994 postings, 704 -> 585 quota-carrying",
+    "Discovery rebuilt on a 15-agent field audit; coverage reported honestly as structured / page-only / blocked / absent",
+    "Capture bookmarklet for the 772 boards no fetcher can read"
+  ],
+  "blockers": [
+    "Not deployed: needs a domain and a Cloudflare or Vercel account, both owner-side",
+    "Market intel tab is still the pre-redesign table",
+    "Paid tier is undefined - no accounts, no payments, no scoping yet"
+  ]
+}

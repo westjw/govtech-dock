@@ -157,6 +157,47 @@ So: **`page only` is a worklist for the capture bookmarklet, not coverage.**
 Converting those to `structured` is mostly impossible - there is no ATS behind
 them to find. Do not add the two together in a status report.
 
+## Portfolio Dashboard Sync
+
+This project is tracked in a personal portfolio dashboard. Maintain
+`portfolio-status.json` in the project root throughout every session.
+
+**Project ID:** govtech_dock
+**Repo:** westjw/govtech-dock (private)
+
+### Rules
+- READ portfolio-status.json at the start of every session
+- UPDATE it whenever a significant feature is completed, a section of the
+  market map is published, or the public board changes state
+- ALWAYS update it at the end of every session before wrapping up
+- Commit it with: `git add portfolio-status.json && git commit -m "chore: portfolio sync"`
+
+### Format - keep every field current
+```json
+{
+  "project_id": "govtech_dock",
+  "repo": "westjw/govtech-dock",
+  "last_updated": "[ISO timestamp]",
+  "status": "Active Build",
+  "progress_pct": 0,
+  "progress_note": "~0% - [what just changed in one line]",
+  "next_move": "The single most important next action right now",
+  "session_summary": "2-3 sentences on what was built or published this session",
+  "recent_work": [
+    "Specific thing completed"
+  ],
+  "blockers": []
+}
+```
+
+Do not change project_id or repo. All other fields should reflect reality
+after every session.
+
+**On progress_pct honestly.** The scope the owner set is "free as a board,
+paid as a product". Report against BOTH halves, not just the half that is
+nearly done, and say which frame the number uses. The free board being
+shippable is not the project being 90% finished.
+
 ## Conventions
 
 - Company `id` = kebab-case name (parenthetical suffixes dropped).
