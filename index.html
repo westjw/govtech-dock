@@ -6,10 +6,13 @@
 <title>GovTech Dock</title>
 <style>
   :root{ --bg:#fbfaf8; --panel:#fff; --line:#e5e1db; --ink:#1a1815; --dim:#6a655d;
-         --faint:#969086; --accent:#2f6f4f; --warn:#a8620f; --bad:#a3342a; --chip:#f1eeea; }
+         --faint:#969086; --accent:#2f6f4f; --warn:#a8620f; --bad:#a3342a; --chip:#f1eeea;
+         /* on the inverted feature card, which is dark in light mode */
+         --inv-accent:#6fb98a; --inv-dim:#a09a90; }
   @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
     --bg:#121110; --panel:#1a1918; --line:#2f2c28; --ink:#eae6e0; --dim:#a09a90;
-    --faint:#726c63; --accent:#6fb98a; --warn:#d9973f; --bad:#e0705f; --chip:#232120; }}
+    --faint:#726c63; --accent:#6fb98a; --warn:#d9973f; --bad:#e0705f; --chip:#232120;
+    --inv-accent:#2f6f4f; --inv-dim:#6a655d; }}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
        font:15px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -51,6 +54,96 @@
   .barfill{display:inline-block;height:8px;border-radius:4px;background:var(--accent);
     vertical-align:middle;margin:0 8px}
   .empty{color:var(--faint);padding:26px 0;text-align:center;font-size:13px}
+
+  /* ------------------------------------------------ the store treatment
+     From the Claude Design pass (option 4a, "quiet chrome, loud content").
+     Translated to tokens rather than the design's hardcoded hexes, because
+     the app has a dark theme and the design was drawn light-only. */
+  .hero{max-width:980px;margin:0 auto;padding:46px 0 0;text-align:center}
+  .hero h2{margin:0;font-size:44px;line-height:1.08;letter-spacing:-.032em;
+    font-weight:700;text-wrap:balance}
+  .hero p{margin:14px auto 0;font-size:16px;color:var(--dim);max-width:52ch;
+    text-wrap:pretty;line-height:1.5}
+  .hsearch{max-width:660px;margin:30px auto 0;position:relative}
+  .hsearch input{font:inherit;font-size:16px;padding:17px 24px;border:1px solid var(--line);
+    border-radius:30px;background:var(--panel);color:var(--ink);width:100%;
+    box-shadow:0 1px 2px rgba(26,24,21,.06),0 14px 44px rgba(26,24,21,.09)}
+  .hsearch button{position:absolute;right:7px;top:7px;bottom:7px;padding:0 22px;
+    border-radius:24px;border:0;background:var(--accent);color:#fff;font:inherit;
+    font-size:13.5px;font-weight:600;cursor:pointer}
+  .pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+  .pill{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;
+    border-radius:22px;border:1px solid var(--line);background:var(--panel);color:var(--ink);
+    font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;white-space:nowrap}
+  .pill:hover{border-color:var(--ink)}
+  .pill[aria-pressed=true]{border-color:var(--ink)}
+  .pill .v{color:var(--faint);font-weight:400}
+  .pill .v.on{color:var(--accent);font-weight:600}
+  .seg{display:inline-flex;align-items:center;height:44px;padding:4px;border-radius:22px;
+    border:1px solid var(--line);background:var(--panel)}
+  .seg button{height:36px;padding:0 16px;border-radius:18px;border:0;background:none;
+    color:var(--dim);font:inherit;font-size:13px;cursor:pointer}
+  .seg button[aria-pressed=true]{background:var(--ink);color:var(--bg);font-weight:600}
+
+  .shelf{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:14px;margin-top:18px}
+  .feature{background:var(--ink);color:var(--bg);border-radius:22px;padding:26px;
+    display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(26,24,21,.16)}
+  .feature .why{font-size:12.5px;color:var(--inv-dim);margin-top:14px;line-height:1.6;
+    text-wrap:pretty}
+  .ncard{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:24px;
+    display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(26,24,21,.06)}
+  .mono-tile{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;
+    justify-content:center;font-size:14px;font-weight:700}
+  .sechead{display:flex;align-items:baseline;gap:12px;margin-top:46px}
+  .sechead h3{margin:0;font-size:22px;letter-spacing:-.02em;font-weight:700}
+  .sechead .n{font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums}
+
+  .list{background:var(--panel);border:1px solid var(--line);border-radius:22px;margin-top:18px;
+    box-shadow:0 10px 30px rgba(26,24,21,.06);overflow:hidden}
+  .row{display:flex;gap:16px;align-items:center;padding:17px 24px}
+  .row:hover{background:var(--bg)}
+  .row + .row{border-top:1px solid var(--chip)}
+  .row .tile{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;
+    justify-content:center;font-size:14px;font-weight:700;flex:none}
+  .row .main{flex:1;min-width:0}
+  .row .t{font-size:15.5px;font-weight:650;letter-spacing:-.01em}
+  .row .m{font-size:13px;color:var(--dim);margin-top:2px}
+  .row .when{font-size:12.5px;white-space:nowrap;color:var(--faint)}
+  .row .when.new{color:var(--accent);font-weight:600}
+  .more{padding:14px 24px;border-top:1px solid var(--chip);text-align:center;font-size:13px;
+    font-weight:600;color:var(--accent);cursor:pointer}
+  .more:hover{background:var(--bg)}
+  .foot{font-size:12px;color:var(--faint);margin:22px auto 0;line-height:1.7;max-width:76ch;
+    text-align:center;text-wrap:pretty}
+
+  @media (max-width:900px){ .shelf{grid-template-columns:1fr} }
+  @media (max-width:768px){
+    .hero{padding:26px 0 0}
+    /* 44px is a desktop display size; on a 390px screen it pushed the search,
+       the filters and every posting below the fold. */
+    .hero h2{font-size:29px;line-height:1.12;letter-spacing:-.022em}
+    .hero p{font-size:14.5px;margin-top:10px}
+    .hsearch{margin-top:20px}
+    /* right padding clears the Search button, which was overlapping the
+       placeholder text */
+    .hsearch input{font-size:15px;padding:14px 108px 14px 18px}
+    .hsearch button{padding:0 18px;font-size:13px}
+    .pills{gap:7px;margin-top:14px}
+    .pill,.seg{height:40px}
+    .seg button{height:32px;padding:0 13px}
+    .sechead{margin-top:32px;flex-wrap:wrap;gap:6px}
+    .sechead h3{font-size:19px}
+    .feature,.ncard{border-radius:16px;padding:20px}
+    .feature > div:nth-child(2){margin-top:22px!important;font-size:19px!important}
+    .list{border-radius:16px}
+    .row{padding:14px 15px;gap:12px}
+    .row .tile{width:38px;height:38px;border-radius:11px;font-size:12.5px}
+    .row .t{font-size:14.5px}
+    .row .m{font-size:12.5px}
+    .row .when{display:none}          /* the date is the first thing to go */
+    #j-bar{flex-direction:column}
+    #j-bar select{width:100%}
+  }
 
   /* ---------------------------------------------------------------- phones
      Below 768px the table becomes a card list. Six columns cannot survive a
@@ -142,80 +235,230 @@ function toggleFilters(btn){
 }
 
 // ------------------------------------------------------------------- job board
+/* Deterministic tile colour from the company name. The design used per-company
+   brand colours; we have no logos and no palette on file, so inventing one per
+   company would be decoration pretending to be data. Instead: three tints from
+   the existing token set, picked by a hash, so a company always looks the same
+   without implying the colour means anything. */
+const TILE=[["var(--chip)","var(--dim)"],["#eef3ef","var(--accent)"],["#f4efe6","var(--warn)"]];
+function tile(name){let h=0;for(const c of name||"")h=(h*31+c.charCodeAt(0))|0;
+  return TILE[Math.abs(h)%TILE.length];}
+function initials(name){const w=(name||"").replace(/[^A-Za-z ]/g," ").trim().split(/\s+/);
+  return ((w[0]||"?")[0]+(w[1]?w[1][0]:(w[0]||"?")[1]||"")).replace(/[^A-Za-z]/g,"");}
+
+/* "today" / "yesterday" / a date, from first_seen against the build date. */
+function when(seen,gen){
+  if(!seen)return{txt:"",cls:""};
+  const d=(new Date(gen)-new Date(seen))/864e5;
+  if(d<=0)return{txt:"today",cls:"new"};
+  if(d<=1)return{txt:"yesterday",cls:""};
+  return{txt:`${Math.round(d)} days ago`,cls:""};
+}
+
 function jobs(){
   const fams=[...new Set(D.postings.map(p=>p.family))].sort((a,b)=>(FAM[a]||a).localeCompare(FAM[b]||b));
   const secs=[...new Set(D.postings.map(p=>p.sector))].sort();
   const states=[...new Set(D.postings.flatMap(p=>p.states||[]))].sort();
   const regions=[...new Set(D.postings.map(p=>p.region).filter(Boolean))].sort();
-  $("#view").innerHTML=filters("j",`
-    <select id="j-fam"><option value="">All role families</option>
-      ${fams.map(f=>`<option value="${f}">${esc(FAM[f]||f)}</option>`).join("")}</select>
-    <select id="j-sec"><option value="">All sectors</option>
-      ${secs.map(s=>`<option>${esc(s)}</option>`).join("")}</select>
-    <select id="j-us"><option value="">Anywhere</option><option value="1">US only</option>
-      <option value="0">Outside the US</option></select>
-    <select id="j-quota"><option value="">Any role</option>
-      <option value="1">Quota-carrying only</option></select>
-    <select id="j-src"><option value="">Any source</option>
-      <option value="ats">From a job board</option>
-      <option value="manual">Checked by hand</option></select>
-    <select id="j-state"><option value="">Any state</option>
-      ${states.map(x=>`<option>${x}</option>`).join("")}</select>
-    <select id="j-region"><option value="">Any region</option>
-      ${regions.map(x=>`<option>${esc(x)}</option>`).join("")}</select>
-    <select id="j-mode"><option value="">Any work mode</option>
-      <option value="remote">Remote</option><option value="hybrid">Hybrid</option>
-      <option value="territory">Field territory</option>
-      <option value="onsite">Onsite</option><option value="unknown">Not stated</option></select>
-    <select id="j-sen"><option value="">Any level</option>
-      <option value="junior">Junior</option><option value="mid">Mid</option>
-      <option value="senior">Senior</option><option value="leadership">Leadership</option></select>`)
-    +`<div class="wrap"><table><thead><tr><th>Role</th><th>Company</th><th>Family</th>
-      <th>Sector</th><th>Level</th><th>Where</th></tr></thead><tbody id="j-body"></tbody></table></div>
-      <p class="hint">Every open posting across ${D.organizations.length} state and local
-      government technology companies, refreshed weekly. Roles link straight to the posting.
-      Undetermined location means the posting did not say, not that it is remote.
-      Level is inferred from the title, which is a proxy: the years a posting actually
-      asks for live in the job description, and only titles are fetched for every
-      company. Field territory means the states are named in the title, so the role
-      covers them rather than sitting in them.</p>`;
-  ["j-q","j-fam","j-sec","j-us","j-quota","j-src","j-state","j-region","j-mode","j-sen"].forEach(i=>$("#"+i).addEventListener("input",drawJobs));
+  const quota=D.postings.filter(p=>p.quota_carrying).length;
+  const fresh=D.postings.filter(p=>p.first_seen===D.generated);
+  const freshQ=fresh.filter(p=>p.quota_carrying);
+
+  /* The design's feature card told a "board came back today" story. We do not
+     store per-run readability history, so that specific claim is not ours to
+     make. The strongest TRUE story in the same shape: a company whose first
+     quota-carrying posting we have ever recorded appeared in this run. */
+  const seenBefore=new Set(D.postings.filter(p=>p.first_seen!==D.generated).map(p=>p.company_id));
+  /* US first. The first pick landed on a Manchester role, which is a poor lead
+     for a board whose readers sell to American cities and counties. Tier 1
+     sectors next, since a municipal-SaaS door is worth more than an adjacent
+     one. Falls back rather than showing nothing. */
+  const T1=["General Gov","Public Works","Parks & Rec"];
+  const rank=p=>(p.is_us===true?0:2)+(T1.includes(p.sector)?0:1);
+  const debut=freshQ.filter(p=>!seenBefore.has(p.company_id)).sort((a,b)=>rank(a)-rank(b));
+  const feature=debut[0]||freshQ.filter(p=>p.is_us===true)[0]||freshQ[0]||fresh[0];
+  const others=(debut.length?debut.slice(1):freshQ.slice(1)).slice(0,2);
+
+  $("#view").innerHTML=`
+  <div class="hero">
+    <h2>${quota.toLocaleString()} sellers wanted,<br>across all of govtech.</h2>
+    <p>Every open role at ${D.organizations.length.toLocaleString()} state and local government
+       technology companies. ${D.postings.length.toLocaleString()} postings, read from the boards
+       themselves.</p>
+    <div class="hsearch">
+      <input type="search" id="j-q" placeholder="Try &ldquo;account executive kansas&rdquo;">
+      <button type="button" onclick="drawJobs()">Search</button>
+    </div>
+    <div class="pills">
+      <button class="pill" type="button" id="j-quota-pill" aria-pressed="true"
+        onclick="toggleQuota(this)">Job type <span class="v on" id="j-quota-v">Quota-carrying</span></button>
+      <div class="seg" id="j-where">
+        <button type="button" data-v="" aria-pressed="true" onclick="setWhere(this)">Anywhere</button>
+        <button type="button" data-v="remote" aria-pressed="false" onclick="setWhere(this)">Remote</button>
+        <button type="button" data-v="onsite" aria-pressed="false" onclick="setWhere(this)">In person</button>
+      </div>
+      <button class="pill" type="button" aria-expanded="false"
+        onclick="toggleMore(this)">More filters <span class="v" id="j-more-v"></span></button>
+    </div>
+
+    <!-- Every filter is kept. The design showed three pills; territory, state,
+         region, family and seniority are the ones a seller actually opens with,
+         so they live one click away rather than being cut. -->
+    <div class="bar" id="j-bar" style="display:none;justify-content:center;margin-top:16px">
+      <select id="j-fam"><option value="">All role families</option>
+        ${fams.map(f=>`<option value="${f}">${esc(FAM[f]||f)}</option>`).join("")}</select>
+      <select id="j-sec"><option value="">All sectors</option>
+        ${secs.map(x=>`<option>${esc(x)}</option>`).join("")}</select>
+      <select id="j-state"><option value="">Any state</option>
+        ${states.map(x=>`<option>${x}</option>`).join("")}</select>
+      <select id="j-region"><option value="">Any region</option>
+        ${regions.map(x=>`<option>${esc(x)}</option>`).join("")}</select>
+      <select id="j-sen"><option value="">Any level</option>
+        <option value="junior">Junior</option><option value="mid">Mid</option>
+        <option value="senior">Senior</option><option value="leadership">Leadership</option></select>
+      <select id="j-us"><option value="">Anywhere in the world</option>
+        <option value="1">US only</option><option value="0">Outside the US</option></select>
+      <select id="j-mode"><option value="">Any work mode</option>
+        <option value="remote">Remote</option><option value="hybrid">Hybrid</option>
+        <option value="territory">Field territory</option>
+        <option value="onsite">Onsite</option><option value="unknown">Not stated</option></select>
+      <select id="j-src"><option value="">Any source</option>
+        <option value="ats">From a job board</option>
+        <option value="manual">Checked by hand</option></select>
+    </div>
+  </div>
+
+  ${fresh.length?`
+  <div class="sechead"><h3>New this run</h3>
+    <div class="n">${freshQ.length} quota-carrying of ${fresh.length} new postings</div></div>
+  <div class="shelf">
+    ${feature?featureCard(feature,debut.length>0):""}
+    ${others.map(p=>newCard(p)).join("")}
+  </div>`:""}
+
+  <div class="sechead"><h3 id="j-h">All quota-carrying roles</h3>
+    <div class="n" id="j-n"></div></div>
+  <div class="list" id="j-list"></div>
+  <p class="foot">Level is inferred from the title: the years a role actually asks for live in the
+    description, which is not fetched. &ldquo;Not stated&rdquo; means the posting did not say where,
+    not that it is remote. ${D.organizations.filter(o=>o.no_board_on_file||o.unreadable).length}
+    companies produced no readable board this run, so they show no roles rather than none
+    existing.</p>`;
+
+  ["j-q","j-fam","j-sec","j-us","j-state","j-region","j-mode","j-sen","j-src"]
+    .forEach(i=>{const el=$("#"+i);if(el)el.addEventListener("input",drawJobs);});
   drawJobs();
 }
+
+function featureCard(p,isDebut){
+  const w=when(p.first_seen,D.generated);
+  return `<div class="feature clk" onclick="window.open('${esc(p.url||"#")}','_blank')">
+    <span style="align-self:flex-start;font-size:11px;padding:4px 11px;border-radius:20px;
+      background:rgba(47,111,79,.14);color:var(--inv-accent);font-weight:600">
+      ${isDebut?"first seller req we have seen here":"new "+w.txt}</span>
+    <div style="font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.2;
+      margin-top:44px;text-wrap:balance">${esc(p.title)}</div>
+    <div style="font-size:13.5px;color:var(--inv-dim);margin-top:6px">${esc(p.company)} &middot;
+      ${esc(p.sector)} / ${esc(p.category)}</div>
+    <div class="why">${isDebut
+      ? "No posting from this company was on the board before this run. Nobody has worked this door yet."
+      : "New on the board this run."}</div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:16px;font-size:13px;
+      font-weight:600;color:var(--inv-accent)">Open the posting <span>&rarr;</span></div>
+  </div>`;
+}
+
+function newCard(p){
+  const [bg,fg]=tile(p.company);
+  return `<div class="ncard clk" onclick="window.open('${esc(p.url||"#")}','_blank')">
+    <div class="mono-tile" style="background:${bg};color:${fg}">${esc(initials(p.company))}</div>
+    <div style="font-size:17px;font-weight:650;letter-spacing:-.015em;margin-top:16px">
+      ${esc(p.title)}</div>
+    <div style="font-size:13px;color:var(--dim);margin-top:3px">${esc(p.company)} &middot;
+      ${esc(p.category)}</div>
+    <div style="font-size:12.5px;color:var(--faint);margin-top:auto;padding-top:18px">
+      ${esc(p.location||"location not stated")}${p.work_mode&&p.work_mode!=="unknown"
+        ?" &middot; "+esc(p.work_mode):""}</div>
+  </div>`;
+}
+
+/* filter chrome ------------------------------------------------------------ */
+let SHOWN=60;
+function toggleQuota(btn){
+  const on=btn.getAttribute("aria-pressed")!=="true";
+  btn.setAttribute("aria-pressed",on);
+  const v=$("#j-quota-v");
+  v.textContent=on?"Quota-carrying":"Any role";
+  v.className="v"+(on?" on":"");
+  SHOWN=60;drawJobs();
+}
+function setWhere(btn){
+  [...btn.parentElement.children].forEach(b=>b.setAttribute("aria-pressed",b===btn));
+  SHOWN=60;drawJobs();
+}
+function toggleMore(btn){
+  const bar=$("#j-bar");
+  const open=bar.style.display==="none";
+  bar.style.display=open?"flex":"none";
+  btn.setAttribute("aria-expanded",open);
+}
+function showMore(){SHOWN+=60;drawJobs();}
+
 function drawJobs(){
-  const q=$("#j-q").value.toLowerCase(),f=$("#j-fam").value,s=$("#j-sec").value,
-        u=$("#j-us").value,k=$("#j-quota").value,src=$("#j-src").value,
-        st=$("#j-state").value,rg=$("#j-region").value,md=$("#j-mode").value,
-        sen=$("#j-sen").value;
+  const g=i=>{const el=$("#"+i);return el?el.value:"";};
+  const q=(g("j-q")||"").toLowerCase();
+  const quotaOnly=$("#j-quota-pill")?.getAttribute("aria-pressed")==="true";
+  const whereBtn=$("#j-where")?.querySelector('[aria-pressed="true"]');
+  const where=whereBtn?whereBtn.dataset.v:"";
+  const f=g("j-fam"),s=g("j-sec"),u=g("j-us"),st=g("j-state"),
+        rg=g("j-region"),md=g("j-mode"),sen=g("j-sen"),src=g("j-src");
+
   const rows=D.postings.filter(p=>{
     if(q&&!`${p.title} ${p.company} ${p.location||""} ${p.category}`.toLowerCase().includes(q))return false;
+    if(quotaOnly&&!p.quota_carrying)return false;
+    if(where==="remote"&&p.work_mode!=="remote")return false;
+    if(where==="onsite"&&!(p.work_mode==="onsite"||p.work_mode==="hybrid"))return false;
     if(f&&p.family!==f)return false;
     if(s&&p.sector!==s)return false;
     if(u==="1"&&p.is_us!==true)return false;
     if(u==="0"&&p.is_us!==false)return false;
-    if(k==="1"&&!p.quota_carrying)return false;
-    if(src&&(p.source||"ats")!==src)return false;
     if(st&&!(p.states||[]).includes(st))return false;
     if(rg&&p.region!==rg)return false;
     if(md&&p.work_mode!==md)return false;
     if(sen&&p.seniority!==sen)return false;
+    if(src&&(p.source||"ats")!==src)return false;
     return true;
-  }).sort((a,b)=>(b.quota_carrying?1:0)-(a.quota_carrying?1:0)||a.company.localeCompare(b.company));
-  $("#j-n").textContent=`${rows.length} of ${D.postings.length} postings`;
-  $("#j-body").innerHTML=rows.slice(0,400).map(p=>`<tr>
-    <td>${p.url?`<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a>`:esc(p.title)}
-      ${p.quota_carrying?'<span class="chip ok">quota</span>':""}
-      ${p.source==="manual"?'<span class="chip warn">checked by hand</span>':""}</td>
-    <td class="clk" onclick="co('${encodeURIComponent(p.company_id)}')"><strong>${esc(p.company)}</strong></td>
-    <td class="kv">${esc(FAM[p.family]||p.family)}</td>
-    <td class="kv">${esc(p.sector)} / ${esc(p.category)}</td>
-    <td class="kv">${esc(p.seniority||"")}</td>
-    <td class="kv">${esc(p.location||"not stated")}
-      ${p.work_mode&&p.work_mode!=="unknown"?`<span class="chip">${esc(p.work_mode)}</span>`:""}
-      ${(p.states||[]).length?`<span class="chip">${esc((p.states||[]).slice(0,4).join(" "))}</span>`:""}
-      ${p.is_us===false?'<span class="chip">non-US</span>':""}</td></tr>`).join("")
-    ||`<tr><td colspan="6" class="empty">No postings match.</td></tr>`;
-  if(rows.length>400) $("#j-n").textContent+=" (showing 400)";
+  }).sort((a,b)=>(b.first_seen||"").localeCompare(a.first_seen||"")
+    ||(b.quota_carrying?1:0)-(a.quota_carrying?1:0)
+    ||a.company.localeCompare(b.company));
+
+  const extra=["j-fam","j-sec","j-state","j-region","j-sen","j-us","j-mode","j-src"]
+    .filter(i=>g(i)).length;
+  const mv=$("#j-more-v");if(mv)mv.textContent=extra?`${extra} on`:"";
+  if(mv)mv.className="v"+(extra?" on":"");
+  $("#j-h").textContent=quotaOnly?"All quota-carrying roles":"All roles";
+  $("#j-n").textContent=rows.length.toLocaleString();
+
+  $("#j-list").innerHTML=rows.slice(0,SHOWN).map(p=>{
+    const [bg,fg]=tile(p.company),w=when(p.first_seen,D.generated);
+    return `<div class="row clk" onclick="${p.url?`window.open('${esc(p.url)}','_blank')`
+      :`co('${encodeURIComponent(p.company_id)}')`}">
+      <div class="tile" style="background:${bg};color:${fg}">${esc(initials(p.company))}</div>
+      <div class="main">
+        <div class="t">${esc(p.title)}</div>
+        <div class="m">${esc(p.company)} &middot; ${esc(p.sector)} / ${esc(p.category)}
+          &middot; ${esc(p.location||"not stated")}
+          <span style="color:var(--faint)">${p.is_us===false?" &middot; non-US":""}${
+            p.seniority?" &middot; "+esc(p.seniority)+", from the title":""}${
+            p.source==="manual"?" &middot; checked by hand":""}</span></div>
+      </div>
+      <div class="when ${w.cls}">${w.txt}</div>
+      <span style="color:var(--line);font-size:15px">&rsaquo;</span>
+    </div>`;}).join("")
+    ||`<div class="empty">No postings match.</div>`;
+  if(rows.length>SHOWN)
+    $("#j-list").innerHTML+=`<div class="more" onclick="showMore()">Show ${
+      Math.min(60,rows.length-SHOWN)} more of ${(rows.length-SHOWN).toLocaleString()}</div>`;
 }
 
 // ------------------------------------------------------------------- companies
