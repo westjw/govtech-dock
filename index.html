@@ -464,43 +464,120 @@ function drawJobs(){
 // ------------------------------------------------------------------- companies
 function companies(){
   const secs=[...new Set(D.organizations.map(o=>o.sector))].sort();
-  $("#view").innerHTML=filters("c",`
-    <select id="c-sec"><option value="">All sectors</option>
-      ${secs.map(s=>`<option>${esc(s)}</option>`).join("")}</select>
-    <select id="c-phase"><option value="">Any phase</option>
-      <option value="selling">Selling</option><option value="building">Building</option>
-      <option value="absorbing">Absorbing</option><option value="mixed">Mixed</option></select>
-    <select id="c-hiring"><option value="">All</option>
-      <option value="1">Has open roles</option><option value="q">Hiring quota-carriers</option>
-      <option value="x">Roles not readable</option></select>`)
-    +`<div class="wrap"><table><thead><tr><th>Company</th><th class="num">Open</th>
-      <th class="num">Quota</th><th>Phase</th><th>Sector</th><th>ATS</th><th>HQ</th>
-      </tr></thead><tbody id="c-body"></tbody></table></div>`;
-  ["c-q","c-sec","c-phase","c-hiring"].forEach(i=>$("#"+i).addEventListener("input",drawCos));
+  const hiring=D.organizations.filter(o=>o.open_roles>0).length;
+  const withQuota=D.organizations.filter(o=>o.quota_roles>0).length;
+  $("#view").innerHTML=`
+  <div class="hero">
+    <h2>${withQuota} govtech companies<br>are hiring sellers.</h2>
+    <p>Every vendor selling software to American cities, counties, schools and agencies:
+       ${D.organizations.length.toLocaleString()} tracked, ${hiring.toLocaleString()} with something open right now.</p>
+    <div class="hsearch">
+      <input type="search" id="c-q" placeholder="Try &ldquo;permitting&rdquo; or &ldquo;Austin&rdquo;">
+      <button type="button" onclick="drawCos()">Search</button>
+    </div>
+    <div class="pills">
+      <button class="pill" type="button" id="c-hire-pill" aria-pressed="true"
+        onclick="toggleHiring(this)">Showing <span class="v on" id="c-hire-v">Hiring now</span></button>
+      <button class="pill" type="button" aria-expanded="false"
+        onclick="toggleMoreCo(this)">More filters <span class="v" id="c-more-v"></span></button>
+    </div>
+    <div class="bar" id="c-bar" style="display:none;justify-content:center;margin-top:16px">
+      <select id="c-sec"><option value="">All sectors</option>
+        ${secs.map(x=>`<option>${esc(x)}</option>`).join("")}</select>
+      <select id="c-phase"><option value="">Any phase</option>
+        <option value="selling">Selling</option><option value="building">Building</option>
+        <option value="absorbing">Absorbing</option><option value="mixed">Mixed</option></select>
+      <select id="c-reads"><option value="">Any board</option>
+        <option value="api">Readable board</option>
+        <option value="x">Board we cannot read</option>
+        <option value="none">No board on file</option></select>
+    </div>
+  </div>
+
+  <div class="sechead"><h3 id="c-h">Hiring now</h3><div class="n" id="c-n"></div></div>
+  <div class="list" id="c-list"></div>
+  <p class="foot">Phase reads the mix of what a company is hiring, not what it says about
+    itself: heavy engineering means building, heavy sales means a go-to-market push, heavy
+    support means absorbing customers it already won. A company with no readable board shows
+    no roles rather than none existing.</p>`;
+  ["c-q","c-sec","c-phase","c-reads"].forEach(i=>{
+    const el=$("#"+i);if(el)el.addEventListener("input",drawCos);});
   drawCos();
 }
+
+let CSHOWN=60;
+function toggleHiring(btn){
+  const on=btn.getAttribute("aria-pressed")!=="true";
+  btn.setAttribute("aria-pressed",on);
+  const v=$("#c-hire-v");
+  v.textContent=on?"Hiring now":"Everyone we track";
+  v.className="v"+(on?" on":"");
+  CSHOWN=60;drawCos();
+}
+function toggleMoreCo(btn){
+  const bar=$("#c-bar"),open=bar.style.display==="none";
+  bar.style.display=open?"flex":"none";
+  btn.setAttribute("aria-expanded",open);
+}
+function showMoreCo(){CSHOWN+=60;drawCos();}
+
 function drawCos(){
-  const q=$("#c-q").value.toLowerCase(),s=$("#c-sec").value,
-        ph=$("#c-phase").value,h=$("#c-hiring").value;
+  const g=i=>{const el=$("#"+i);return el?el.value:"";};
+  const q=(g("c-q")||"").toLowerCase();
+  const hiringOnly=$("#c-hire-pill")?.getAttribute("aria-pressed")==="true";
+  const s=g("c-sec"),ph=g("c-phase"),rd=g("c-reads");
   const rows=D.organizations.filter(o=>{
     if(q&&!`${o.name} ${o.description||""} ${o.location||""} ${o.category}`.toLowerCase().includes(q))return false;
+    if(hiringOnly&&!o.open_roles)return false;
     if(s&&o.sector!==s)return false;
     if(ph&&!(o.phase||"").startsWith(ph))return false;
-    if(h==="1"&&!o.open_roles)return false;
-    if(h==="q"&&!o.quota_roles)return false;
-    if(h==="x"&&o.enumerable!==false&&!o.unreadable)return false;
+    if(rd==="api"&&!(o.open_roles>0))return false;
+    if(rd==="x"&&o.enumerable!==false&&!o.unreadable)return false;
+    if(rd==="none"&&o.ats&&o.ats!=="unknown")return false;
     return true;
-  }).sort((a,b)=>b.quota_roles-a.quota_roles||b.open_roles-a.open_roles||a.name.localeCompare(b.name));
-  $("#c-n").textContent=`${rows.length} of ${D.organizations.length} companies`;
-  $("#c-body").innerHTML=rows.map(o=>`<tr class="clk" onclick="co('${encodeURIComponent(o.id)}')">
-    <td><strong>${esc(o.name)}</strong><div class="kv">${esc((o.description||"").slice(0,72))}</div></td>
-    <td class="num">${o.open_roles||"-"}</td>
-    <td class="num">${o.quota_roles?`<strong class="ok">${o.quota_roles}</strong>`:"-"}</td>
-    <td class="kv">${esc(o.phase||"")}${o.enumerable===false?' <span class="chip warn">not readable</span>':""}</td>
-    <td class="kv">${esc(o.sector)}</td>
-    <td><span class="chip ${o.ats_ranks==="hard"?"bad":o.ats_ranks==="soft"?"warn":""}">${esc(o.ats||"unknown")}</span></td>
-    <td class="kv">${esc(o.location||"")}</td></tr>`).join("")
-    ||`<tr><td colspan="7" class="empty">No companies match.</td></tr>`;
+  }).sort((a,b)=>b.quota_roles-a.quota_roles||b.open_roles-a.open_roles
+    ||a.name.localeCompare(b.name));
+
+  const extra=["c-sec","c-phase","c-reads"].filter(i=>g(i)).length;
+  const mv=$("#c-more-v");
+  if(mv){mv.textContent=extra?`${extra} on`:"";mv.className="v"+(extra?" on":"");}
+  $("#c-h").textContent=hiringOnly?"Hiring now":"Everyone we track";
+  $("#c-n").textContent=rows.length.toLocaleString();
+
+  $("#c-list").innerHTML=rows.slice(0,CSHOWN).map(o=>{
+    const [bg,fg]=tile(o.name);
+    /* The count is the point of this row, so it gets the position and the
+       weight. A company with quota seats reads as accent; one that is hiring
+       but not selling reads plain; one we cannot read says so instead of
+       showing a zero, because a zero here would be a claim we cannot make. */
+    const unreadable=o.enumerable===false||o.unreadable;
+    return `<div class="row clk" onclick="co('${encodeURIComponent(o.id)}')">
+      <div class="tile" style="background:${bg};color:${fg}">${esc(initials(o.name))}</div>
+      <div class="main">
+        <div class="t">${esc(o.name)}</div>
+        <div class="m">${esc(o.sector)} / ${esc(o.category)}${
+          o.location?" &middot; "+esc(o.location):""}
+          <span style="color:var(--faint)">${o.phase?" &middot; "+esc(o.phase):""}</span></div>
+      </div>
+      ${unreadable
+        ?`<div class="when" style="color:var(--warn)">board not readable</div>`
+        :o.quota_roles
+          ?`<div style="text-align:right;white-space:nowrap">
+              <div style="font-size:17px;font-weight:700;color:var(--accent);
+                font-variant-numeric:tabular-nums">${o.quota_roles}</div>
+              <div style="font-size:11px;color:var(--faint)">carrying a number</div></div>`
+          :o.open_roles
+            ?`<div style="text-align:right;white-space:nowrap">
+                <div style="font-size:17px;font-weight:700;
+                  font-variant-numeric:tabular-nums">${o.open_roles}</div>
+                <div style="font-size:11px;color:var(--faint)">open</div></div>`
+            :`<div class="when">nothing open</div>`}
+      <span style="color:var(--line);font-size:15px">&rsaquo;</span>
+    </div>`;}).join("")
+    ||`<div class="empty">No companies match.</div>`;
+  if(rows.length>CSHOWN)
+    $("#c-list").innerHTML+=`<div class="more" onclick="showMoreCo()">Show ${
+      Math.min(60,rows.length-CSHOWN)} more of ${(rows.length-CSHOWN).toLocaleString()}</div>`;
 }
 
 // --------------------------------------------------------------- company card

@@ -25,6 +25,7 @@ import concurrent.futures as cf
 import datetime as dt
 import json
 import pathlib
+import re
 import sys
 import time
 
@@ -150,6 +151,60 @@ def main() -> int:
             return c, [], str(exc)[:60], True, kind == "html"
 
     render_started = time.monotonic()
+    # Two companies pointing at ONE board is not two boards. It happens after an
+    # acquisition: both the product and its acquirer end up with the parent's
+    # careers URL, and the same postings get counted under both names. Twenty
+    # refs were shared this way, double-counting 112 of 704 quota-carrying
+    # roles - a 16% inflation of the single number this board exists to report.
+    #
+    # The board belongs to whoever the slug names. Everyone else sharing it is
+    # marked and contributes nothing, rather than silently doubling the total.
+    shared: dict[tuple, list] = collections.defaultdict(list)
+    for c in companies:
+        kind = (c.get("ats") or {}).get("type")
+        ref = (c.get("ats") or {}).get("ref")
+        if kind in (None, "unknown") or ref is None:
+            continue
+        shared[(kind, json.dumps(ref, sort_keys=True))].append(c)
+
+    owns: dict[str, str] = {}          # company id -> id of the board's owner
+    unowned: set[str] = set()          # holders the slug does not name
+    for (kind, ref_json), group in shared.items():
+        if len(group) < 2:
+            continue
+        ref = json.loads(ref_json)
+        slug = ref if isinstance(ref, str) else " ".join(str(x) for x in ref)
+        norm = lambda t: re.sub(r"[^a-z0-9]", "", (t or "").lower())
+        ns = norm(slug)
+
+        def closeness(c):
+            """How much of this company's name the slug accounts for.
+
+            Taking the first name that merely CONTAINS the slug gave the Xplor
+            board to "PerfectMind (Xplor Recreation)" over "Xplor Recreation",
+            which is the company the slug is actually named after. The slug
+            covering more of the name is the better claim.
+            """
+            n = norm(c["name"])
+            if not n or not ns:
+                return 0.0
+            if n in ns or ns in n:
+                return len(ns) / max(len(n), len(ns))
+            return 0.0
+
+        holder = max(group, key=closeness)
+        unverified = closeness(holder) == 0
+        if unverified:
+            # Nobody is named by the slug. Three Catalis brands share
+            # catalisgov.com and none of them IS Catalis, so whoever holds it
+            # holds it arbitrarily. Keep the pick stable and say so, rather
+            # than letting an arbitrary attribution look decided.
+            holder = group[0]
+            unowned.add(holder["id"])
+        for c in group:
+            if c["id"] != holder["id"]:
+                owns[c["id"]] = holder["id"]
+
     fetched = []
     with cf.ThreadPoolExecutor(max_workers=a.workers) as ex:
         for i, res in enumerate(ex.map(read_board, companies), 1):
@@ -161,6 +216,10 @@ def main() -> int:
                 print(f"  fetched {i}/{len(companies)}...", flush=True)
 
     for c, jobs, err, enumerable, may_render in fetched:
+        if c["id"] in owns:
+            # Somebody else's board. Keep the company on the list with its real
+            # state, and no postings: a shared board is one board.
+            jobs, err = [], None
         kind = (c.get("ats") or {}).get("type")
         ref = (c.get("ats") or {}).get("ref")
         no_board = kind in (None, "unknown") or ref is None
@@ -223,6 +282,8 @@ def main() -> int:
             "quota_roles": sum(1 for p in postings
                                if p["company_id"] == c["id"] and p["quota_carrying"]),
             "unreadable": err,
+            "shares_board_with": owns.get(c["id"]),
+            "board_owner_unverified": c["id"] in unowned or None,
             # A company with nothing on file has not failed; it has never been
             # tried. Counting 4,137 of those as "unreadable" made a discovery
             # backlog look like a systemic fetch failure.
@@ -287,6 +348,20 @@ def main() -> int:
         "organizations": orgs,
         "postings": postings,
     }
+
+    if owns:
+        by_holder = collections.Counter(owns.values())
+        print(f"{len(owns)} company(ies) share a board with another and were not "
+              f"counted twice:")
+        names = {c["id"]: c["name"] for c in companies}
+        for follower, holder in sorted(owns.items())[:8]:
+            print(f"   {names.get(follower, follower)[:30]:<30} -> "
+                  f"{names.get(holder, holder)[:30]}")
+        if len(owns) > 8:
+            print(f"   ... and {len(owns) - 8} more")
+        if unowned:
+            print(f"   ({len(unowned)} of those boards are held arbitrarily: the slug "
+                  f"names none of the companies sharing it)")
 
     no_board = sum(1 for o in orgs if o.get("no_board_on_file"))
     print(f"{len(companies)} companies: {len(companies) - no_board} with a board on "
