@@ -297,6 +297,11 @@ function jobs(){
         <button type="button" data-v="remote" aria-pressed="false" onclick="setWhere(this)">Remote</button>
         <button type="button" data-v="onsite" aria-pressed="false" onclick="setWhere(this)">In person</button>
       </div>
+      <select class="pill" id="j-fam-pill" onchange="famPill()"
+        style="appearance:none;padding-right:36px;background-image:none">
+        <option value="">Any kind of role</option>
+        ${fams.map(f=>`<option value="${f}">${esc(FAM[f]||f)}</option>`).join("")}
+      </select>
       <button class="pill" type="button" aria-expanded="false"
         onclick="toggleMore(this)">More filters <span class="v" id="j-more-v"></span></button>
     </div>
@@ -396,6 +401,13 @@ function setWhere(btn){
   [...btn.parentElement.children].forEach(b=>b.setAttribute("aria-pressed",b===btn));
   SHOWN=60;drawJobs();
 }
+/* One family control, two places. The pill is the primary; the select in More
+   filters is the same value, kept in step so they can never disagree. */
+function famPill(){
+  const v=$("#j-fam-pill").value;
+  if($("#j-fam")) $("#j-fam").value=v;
+  SHOWN=60; drawJobs();
+}
 function toggleMore(btn){
   const bar=$("#j-bar");
   const open=bar.style.display==="none";
@@ -403,6 +415,24 @@ function toggleMore(btn){
   btn.setAttribute("aria-expanded",open);
 }
 function showMore(){SHOWN+=60;drawJobs();}
+
+/* An empty result should say why it is empty. Picking "Engineering" while
+   Quota-carrying is on returns nothing, because engineers do not carry a
+   number - and a blank panel makes that look like the board has no engineers.
+   Same principle as everywhere else here: absence needs a reason attached. */
+function emptyJobs(quotaOnly,fam,where){
+  const others=D.postings.filter(p=>!fam||p.family===fam).length;
+  if(quotaOnly&&fam&&fam!=="gtm"&&others)
+    return `<div class="empty">No <strong>${esc(FAM[fam]||fam)}</strong> roles carry a
+      quota, which is expected: quota-carrying means a sales number.<br>
+      <span style="color:var(--accent);cursor:pointer;font-weight:600"
+        onclick="toggleQuota(document.getElementById('j-quota-pill'))">
+        Show all ${others.toLocaleString()} ${esc(FAM[fam]||fam)} roles instead &rarr;</span></div>`;
+  if(where&&others)
+    return `<div class="empty">Nothing matches that work mode. ${others.toLocaleString()}
+      roles match everything else you have set.</div>`;
+  return `<div class="empty">No postings match.</div>`;
+}
 
 function drawJobs(){
   const g=i=>{const el=$("#"+i);return el?el.value:"";};
@@ -432,8 +462,11 @@ function drawJobs(){
     ||(b.quota_carrying?1:0)-(a.quota_carrying?1:0)
     ||a.company.localeCompare(b.company));
 
-  const extra=["j-fam","j-sec","j-state","j-region","j-sen","j-us","j-mode","j-src"]
+  // family has its own pill now, so it does not also count as an overflow filter
+  const extra=["j-sec","j-state","j-region","j-sen","j-us","j-mode","j-src"]
     .filter(i=>g(i)).length;
+  if($("#j-fam-pill") && $("#j-fam") && $("#j-fam-pill").value!==$("#j-fam").value)
+    $("#j-fam-pill").value=$("#j-fam").value;
   const mv=$("#j-more-v");if(mv)mv.textContent=extra?`${extra} on`:"";
   if(mv)mv.className="v"+(extra?" on":"");
   $("#j-h").textContent=quotaOnly?"All quota-carrying roles":"All roles";
@@ -455,7 +488,7 @@ function drawJobs(){
       <div class="when ${w.cls}">${w.txt}</div>
       <span style="color:var(--line);font-size:15px">&rsaquo;</span>
     </div>`;}).join("")
-    ||`<div class="empty">No postings match.</div>`;
+    ||emptyJobs(quotaOnly,f,where);
   if(rows.length>SHOWN)
     $("#j-list").innerHTML+=`<div class="more" onclick="showMore()">Show ${
       Math.min(60,rows.length-SHOWN)} more of ${(rows.length-SHOWN).toLocaleString()}</div>`;
