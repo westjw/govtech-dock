@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "SoleSource Capture",
+  "version": "1.0",
+  "description": "Capture job postings from the page you are viewing into the local SoleSource admin. Runs only when clicked.",
+  "action": { "default_title": "Capture jobs on this page" },
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["http://127.0.0.1:8787/*"],
+  "background": { "service_worker": "background.js" }
+}

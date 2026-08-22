@@ -536,8 +536,13 @@ def act_capture(body: dict) -> dict:
             continue
         loc = (j.get("location") or "").strip()
         terr = roles.territory(loc, title)
+        # The extension's single-posting mode sends the JD body - the thing the
+        # board never has and scoring always wants. Kept on the manual record
+        # with provenance; the dock itself only ever renders the title.
+        jd = (j.get("jd_text") or "").strip()[:20000]
         man["postings"].append({
             "id": pid, "company": c["name"], "company_id": cid,
+            **({"jd_text": jd} if jd else {}),
             "title": title, "family": roles.family(title),
             "quota_carrying": roles.is_quota_carrying(title),
             "seniority": roles.seniority(title),
