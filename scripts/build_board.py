@@ -107,6 +107,12 @@ SLED_ROLE = re.compile(
 # ...but not another country's public sector. "Account Executive - Public
 # Sector (ASEAN)" and "Account Director, Public Sector - Tokyo" both matched,
 # and neither is this market. This board is US state and local.
+# Kept by the filter, but not confidently in scope. These go to the admin's
+# Scope review queue rather than being decided by a regex.
+AMBIGUOUS_SCOPE = re.compile(
+    r"federal|national security|intelligence community|\bDoD\b|"
+    r"civilian agenc|\bCONUS\b|department of defen[cs]e", re.I)
+
 NOT_OUR_GOV = re.compile(
     r"\bASEAN\b|\bEMEA\b|\bAPAC\b|\bLATAM\b|\bUK\b|Tokyo|Japan|Singapore|"
     r"Korea|India|Australia|Canada|Germany|France|Netherlands|Nordics|Ireland|"
@@ -150,6 +156,11 @@ def main() -> int:
     a = ap.parse_args()
 
     companies = json.loads((DATA / "companies.json").read_text())
+    # A person's rulings on whether a posting belongs on this board at all.
+    # Keyed by posting id (company::title), so a role that reposts under the
+    # same title keeps its ruling and is not asked about twice.
+    scope_path = DATA / "scope_decisions.json"
+    scope = json.loads(scope_path.read_text()) if scope_path.exists() else {}
     if a.company:
         companies = [c for c in companies if c["id"] == a.company]
     if a.limit:
@@ -272,20 +283,38 @@ def main() -> int:
         kept = 0
         sled_only = bool(c.get("sled_only"))
         dropped_offtopic = 0
+        pending = 0
         for j in jobs:
             title = (j.get("title") or "").strip()
             if roles.is_junk(title) or roles.is_evergreen(title):
                 continue
-            if sled_only and (not SLED_ROLE.search(title)
-                              or NOT_OUR_GOV.search(title)):
-                dropped_offtopic += 1
-                continue
+            pid = f"{c['id']}::{title}"
+            ruling = scope.get(pid)
+            scope_pending = False
+            if sled_only or ruling:
+                if ruling is not None:
+                    # A person has already decided. Their ruling beats the
+                    # pattern in both directions.
+                    if not ruling.get("in_scope"):
+                        dropped_offtopic += 1
+                        continue
+                elif not SLED_ROLE.search(title) or NOT_OUR_GOV.search(title):
+                    dropped_offtopic += 1
+                    continue
+                elif AMBIGUOUS_SCOPE.search(title):
+                    # Kept by the pattern, but the pattern is not sure. Federal
+                    # is the live case: it is selling tech to government and it
+                    # is not state and local, and only a person settles which
+                    # of those this board is about.
+                    pending += 1
+                    scope_pending = True
             loc = j.get("location") or ""
             fam = roles.family(title)
             terr = roles.territory(loc, title)
             fams[fam] += 1
             kept += 1
             postings.append({
+                "scope_pending": scope_pending or None,
                 "id": f"{c['id']}::{title}",
                 "company": c["name"], "company_id": c["id"],
                 "title": title, "family": fam,

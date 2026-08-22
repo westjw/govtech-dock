@@ -251,6 +251,69 @@ def q_review(companies, board) -> list:
             if not is_dismissed("review", k)]
 
 
+def q_scope(companies, board) -> list:
+    """Postings a filter kept but could not confirm belong on this board.
+
+    The live case is federal. A Federal Civilian Sales AE is selling technology
+    to government, and it is not state and local, and no regex settles which of
+    those this board is about. Rather than let a pattern decide quietly in
+    either direction, the posting stays visible and asks.
+    """
+    decided = read("scope_decisions.json", {})
+    out = []
+    for p in board.get("postings", []):
+        if not p.get("scope_pending") or p["id"] in decided:
+            continue
+        out.append({"id": p["id"], "title": p["title"], "company": p["company"],
+                    "company_id": p["company_id"], "url": p.get("url"),
+                    "location": p.get("location"), "family": p.get("family"),
+                    "quota": p.get("quota_carrying"),
+                    "sector": p.get("sector"), "category": p.get("category")})
+    out.sort(key=lambda r: (r["company"], r["title"]))
+    return out
+
+
+def act_scope(body: dict) -> dict:
+    """Rule one posting in or out of scope. The ruling beats the pattern.
+
+    Stored by posting id, which is company::title, so a role that reposts under
+    the same title keeps the ruling and is never asked about twice.
+    """
+    pid, keep = body.get("id"), body.get("in_scope")
+    if not pid or keep is None:
+        return {"error": "need a posting id and a decision"}
+    d = read("scope_decisions.json", {})
+    d[pid] = {"in_scope": bool(keep), "on": dt.date.today().isoformat(),
+              "why": (body.get("why") or "").strip() or None}
+    write_atomic("scope_decisions.json", d)
+    return {"ok": True,
+            "message": f"{'kept on the board' if keep else 'out of scope'}; "
+                       f"takes effect on the next build"}
+
+
+def act_scope_all(body: dict) -> dict:
+    """Rule every pending posting matching a pattern at once.
+
+    Six near-identical 'Federal Civilian Sales' rows is not six decisions, it
+    is one decision asked six times.
+    """
+    keep, pat = body.get("in_scope"), (body.get("match") or "").strip()
+    if keep is None or not pat:
+        return {"error": "need a decision and something to match on"}
+    board = read("board.json", {})
+    d = read("scope_decisions.json", {})
+    n = 0
+    for p in board.get("postings", []):
+        if p.get("scope_pending") and p["id"] not in d \
+                and re.search(re.escape(pat), p["title"], re.I):
+            d[p["id"]] = {"in_scope": bool(keep), "on": dt.date.today().isoformat(),
+                          "why": f"bulk ruling on {pat!r}"}
+            n += 1
+    write_atomic("scope_decisions.json", d)
+    return {"ok": True, "message": f"{n} posting(s) ruled "
+                                   f"{'in' if keep else 'out of'} scope"}
+
+
 def q_submissions(companies, board) -> list:
     subs = read("submissions.json", {"items": []})
     names = {c["id"]: c["name"] for c in companies}
@@ -258,11 +321,11 @@ def q_submissions(companies, board) -> list:
             for i in subs["items"] if i.get("status") == "pending"]
 
 
-QUEUES = {"submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards,
+QUEUES = {"scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards,
           "placement": q_placement, "unclassified": q_unclassified,
           "acquisitions": q_acquisitions, "review": q_review}
 
-LABEL = {"submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
+LABEL = {"scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
          "boards": "Missing boards", "placement": "Wrong placement",
          "unclassified": "Unclassified roles", "acquisitions": "Acquisitions",
          "review": "Website review"}
@@ -710,6 +773,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "verify-website": act_verify_website, "verify-board": act_verify_board,
            "set-board": act_set_board, "set-family": act_set_family,
            "capture": act_capture, "search-companies": act_search_companies,
+           "scope": act_scope, "scope-all": act_scope_all,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "dismiss": act_dismiss}

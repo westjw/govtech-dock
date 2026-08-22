@@ -124,6 +124,11 @@ const INTRO = {
   acquisitions: 'The board reads fine but its slug does not match the company name, which '
     + 'usually means the company was acquired and its careers page now redirects to the parent. '
     + 'Confirming wires it up; a parent-company board must never be recorded as the subsidiary’s.',
+  scope: 'Postings a filter kept but could not confirm belong on this board. The live '
+    + 'case is federal: a Federal Civilian Sales AE is selling technology to government, '
+    + 'and it is not state and local, and no pattern settles which of those this board is '
+    + 'about. Rather than let a regex decide quietly in either direction, the posting stays '
+    + 'visible and asks. A ruling is stored against the title, so a repost is never asked twice.',
   submissions: 'Companies and jobs sent in from outside. A submission is a claim, '
     + 'not a fact — nothing here has touched companies.json or the board. Approving '
     + 'a company runs the same intake check as adding one by hand and shows what the '
@@ -405,6 +410,59 @@ RENDER.acquisitions = s => {
     toast(r.message); n.remove(); refreshCounts();
   };
   row.append(yes, dismissBtn('acquisitions', s.id, 'Reject — different company'));
+  n.appendChild(row);
+  return n;
+};
+
+RENDER.scope = p => {
+  const n = document.createElement('div');
+  n.className = 'item';
+  n.appendChild(el('h3', null, p.title));
+  const kv = el('div', 'kv');
+  kv.append(el('span', 'chip', p.company),
+            el('span', 'chip', `${esc(p.sector || '')} / ${esc(p.category || '')}`));
+  if (p.quota) kv.appendChild(el('span', 'chip', 'carries a number'));
+  if (p.location) kv.appendChild(document.createTextNode(p.location));
+  n.appendChild(kv);
+  if (p.url) {
+    const w = el('div', 'kv');
+    const a = el('a', null, 'open the posting');
+    a.href = p.url; a.target = '_blank'; a.rel = 'noopener';
+    w.appendChild(a); n.appendChild(w);
+  }
+
+  const row = el('div', 'row');
+  const rule = (keep, label, cls) => {
+    const b = el('button', 'act ' + cls, label);
+    b.onclick = async () => {
+      const r = await api('/api/scope', {id: p.id, in_scope: keep});
+      if (r.error) return toast(r.error, true);
+      toast(r.message); n.remove(); refreshCounts();
+    };
+    return b;
+  };
+  row.append(rule(true, 'In scope', 'go'), rule(false, 'Not this board', 'mute'));
+
+  // Six near-identical "Federal Civilian Sales" rows is one decision asked six
+  // times. Offer to settle the pattern rather than the row.
+  // Prefer the term the question is actually about. Matching in title order
+  // picked "Public Sector" out of "Applied AI Architect, Public Sector
+  // (National Security)", offering to rule on the broader word when the
+  // narrow one is the thing in doubt.
+  const stem = ['Intelligence Community', 'National Security', 'Federal Civilian',
+                'Federal Partners', 'Federal', 'Public Sector']
+    .find(t => new RegExp(t, 'i').test(p.title));
+  if (stem) {
+    const all = el('button', 'act mute', `Rule every “${stem.trim()}” at once`);
+    all.onclick = async () => {
+      const keep = confirm(`Keep every pending posting matching “${stem.trim()}”?\n\n`
+        + `OK keeps them on the board. Cancel rules them out of scope.`);
+      const r = await api('/api/scope-all', {match: stem.trim(), in_scope: keep});
+      if (r.error) return toast(r.error, true);
+      toast(r.message); show('scope'); refreshCounts();
+    };
+    row.appendChild(all);
+  }
   n.appendChild(row);
   return n;
 };
