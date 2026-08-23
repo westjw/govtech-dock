@@ -32,6 +32,43 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 # deliberate act; nothing is included by walking a directory.
 SHIP = ["index.html"]
 
+
+def build_admin_bundle(out: "pathlib.Path") -> None:
+    """The web admin: the judgment queues, precomputed at build time.
+
+    Served under /admin, which the Cloudflare Access application must cover
+    BEFORE the ruling token is configured - the function refuses to write
+    without Access headers, so the misconfigured state fails closed. The
+    page shows company names and public postings data only, the same facts
+    the public board already serves; the rulings it records go through
+    functions/admin/api/rule.js into the repo, and the daily run applies
+    them with validation.
+    """
+    import sys as _sys
+    _sys.path.insert(0, str(ROOT / "scripts"))
+    import admin as _admin
+    companies = json.loads((ROOT / "data" / "companies.json").read_text())
+    board = json.loads((ROOT / "data" / "board.json").read_text())
+    schema = json.loads((ROOT / "data" / "schema.json").read_text())
+    tri = _admin.triage(companies, board)
+    payload = {
+        "generated": board.get("generated"),
+        "companies": len(companies),
+        "postings": len(board.get("postings", [])),
+        "game": tri.get("game"),
+        "schema": {x["name"]: [c for c in x["categories"]
+                               if c != "Suppliers & Services"]
+                   for x in schema["sectors"]},
+        "vendors": _admin.q_vendor_scope(companies, board),
+        "miscategorized": _admin.q_miscategorized(companies, board),
+    }
+    admin_dir = out / "admin"
+    admin_dir.mkdir(parents=True, exist_ok=True)
+    (admin_dir / "index.html").write_text((ROOT / "admin-web.html").read_text())
+    (admin_dir / "data.json").write_text(json.dumps(payload))
+    print(f"  admin bundle: {len(payload['vendors'])} vendors, "
+          f"{len(payload['miscategorized'])} wrong-bucket")
+
 # Organization fields the site never reads. Dropping them is not security -
 # the data is public job postings - it is not publishing internal bookkeeping
 # under a domain that looks authoritative.
@@ -174,6 +211,8 @@ def main() -> int:
 
     for name in SHIP:
         shutil.copy2(ROOT / name, out / name)
+
+    build_admin_bundle(out)
 
     board, stripped = sanitize(board_src)
     # separators: the site is served gzipped, but 300KB of whitespace is still

@@ -42,6 +42,12 @@ jobs:
       - name: Self-test
         run: python scripts/selftest.py
 
+      - name: Apply rulings recorded on the web
+        # The web admin appends opinions; this is where they become moves,
+        # in Python, behind validate(). A ruling that would break an
+        # invariant stays pending and says why, rather than half-applying.
+        run: python scripts/apply_web_rulings.py
+
       - name: Refresh hiring data
         # --force so a manual re-run on the same day still works; the previous
         # snapshot stays recoverable in git history, which is the audit trail here.

@@ -81,5 +81,30 @@ submission cannot ping anyone, and never passes GitHub's error text back to an
 anonymous caller. Nothing it receives reaches the dataset: the bot re-derives
 every field from the company's own site, and merging stays a human action.
 
+## 7. The web admin (~5 min, two steps IN ORDER)
+
+solesourcejobs.com/admin is the judgment half of the admin - Vendor scope
+and Wrong bucket - workable from any browser, phone included. Rulings
+commit to the repo as you, and the daily run applies them with validation.
+It ships fail-closed: until both steps below are done, the page is
+read-only and every ruling is refused.
+
+1. **Access first.** Zero Trust -> Access -> Applications -> Add ->
+   Self-hosted. Application domain: `solesourcejobs.com`, path: `admin`.
+   Policy: your email (and later your employee's), one-time PIN. This is
+   what makes the ruling endpoint trust the request; without it, writes are
+   refused with "not behind Access".
+2. **Then the token.** GitHub -> Settings -> Developer settings ->
+   Fine-grained tokens -> new token scoped to ONLY westjw/govtech-dock with
+   **Contents: Read and write** (this is more power than the submit token -
+   it can write repo files - which is why Access must exist first).
+   Cloudflare Pages -> solesource -> Settings -> Variables and Secrets ->
+   add `GITHUB_ADMIN_TOKEN`, encrypted, Production. Redeploy to take effect.
+
+Until step 1 is done the /admin page itself is publicly viewable. It shows
+only company names, descriptions and queue proposals - the same facts the
+public board serves - and nothing on it can write. Do step 1 promptly
+anyway.
+
 That is all of it. Nothing in this file can be done from this machine without
 your credentials, which is the correct reason it has not been done.

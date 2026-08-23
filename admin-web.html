@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SoleSource — Admin</title>
+<style>
+  :root{--bg:#fbfaf8;--panel:#fff;--line:#e5e1db;--ink:#1a1815;--dim:#6a655d;
+        --faint:#969086;--accent:#2f6f4f;--warn:#a8620f;--bad:#a3342a;--chip:#f1eeea}
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#121110;--panel:#1a1918;--line:#2f2c28;--ink:#eae6e0;--dim:#a09a90;
+    --faint:#726c63;--accent:#6fb98a;--warn:#d9973f;--bad:#e0705f;--chip:#232120}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:15px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:20px 16px 70px}
+  h1{font-size:19px;margin:4px 0 2px}
+  .sub{color:var(--dim);font-size:12.5px;margin-bottom:14px}
+  .strip{display:flex;gap:20px;padding:12px 14px;border:1px solid var(--line);
+    border-radius:10px;background:var(--chip);margin-bottom:16px;flex-wrap:wrap}
+  .stat strong{display:block;font-size:18px}
+  .stat span{font-size:11px;color:var(--dim)}
+  nav{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+  nav button{font:inherit;font-size:13px;padding:8px 14px;border-radius:18px;
+    border:1px solid var(--line);background:var(--panel);color:var(--dim);cursor:pointer}
+  nav button[aria-selected=true]{border-color:var(--accent);color:var(--ink);font-weight:600}
+  .item{border:1px solid var(--line);border-radius:12px;background:var(--panel);
+    padding:14px 16px;margin-bottom:10px}
+  .item h3{margin:0 0 4px;font-size:15px}
+  .kv{color:var(--dim);font-size:12.5px;margin:3px 0}
+  .chip{font-size:10.5px;padding:2px 8px;border-radius:14px;background:var(--chip);
+    color:var(--dim);display:inline-block;margin:2px 4px 0 0;white-space:nowrap}
+  .chip.ok{color:var(--accent)}
+  .row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  button.act{font:inherit;font-size:12.5px;padding:8px 14px;border-radius:16px;
+    border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+  button.act.good{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
+  button.act.bad{color:var(--bad)}
+  input,select{font:inherit;font-size:13px;padding:7px 10px;border:1px solid var(--line);
+    border-radius:8px;background:var(--bg);color:var(--ink);max-width:100%}
+  input{width:100%;margin-top:8px}
+  .group{margin:20px 0 8px;padding:12px 14px;border:1px solid var(--line);
+    border-radius:10px;background:var(--chip)}
+  .group strong{display:block;margin-bottom:8px}
+  .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);
+    background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:20px;
+    font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw}
+  .toast.on{opacity:1}
+  .empty{color:var(--faint);text-align:center;padding:36px 0;font-size:13.5px}
+  .note{font-size:12px;color:var(--faint);line-height:1.6;margin:14px 0}
+</style>
+</head>
+<body>
+<main>
+  <h1>SoleSource admin</h1>
+  <div class="sub" id="sub">loading…</div>
+  <div class="strip" id="strip"></div>
+  <nav id="tabs"></nav>
+  <div id="view"><div class="empty">loading the queues…</div></div>
+  <p class="note">Rulings save straight to the repository as you, and the daily
+  run applies them with full validation. Data refreshes with each site build;
+  items you have already ruled are hidden live. The full admin - merges,
+  captures, board pastes - stays on the desk: this page is the judgment half,
+  which is the half that travels.</p>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const el=(t,c,txt)=>{const n=document.createElement(t);if(c)n.className=c;
+  if(txt!==undefined)n.textContent=txt;return n};
+let TOAST_T=null;
+function toast(m,bad){const t=$("#toast");t.textContent=m;
+  t.style.background=bad?"var(--bad)":"var(--ink)";t.classList.add("on");
+  clearTimeout(TOAST_T);TOAST_T=setTimeout(()=>t.classList.remove("on"),2600)}
+async function rule(payload){
+  const r=await fetch("/admin/api/rule",{method:"POST",
+    headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+  let j;try{j=await r.json()}catch{j={error:"the endpoint did not answer"}}
+  if(!r.ok||j.error){toast(j.error||"refused",true);return null}
+  toast(j.message);return j;
+}
+
+const RAW="https://raw.githubusercontent.com/westjw/govtech-dock/main/";
+let D=null,RULED={vendor:{},place:{}},TAB="vendors";
+const vkey=n=>String(n||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
+
+async function boot(){
+  const [data,vend,plc]=await Promise.all([
+    fetch("data.json").then(r=>r.json()),
+    fetch(RAW+"data/vendor_scope_decisions.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).catch(()=>({})),
+    fetch(RAW+"data/placement_rulings.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).catch(()=>({})),
+  ]);
+  D=data;RULED.vendor=vend||{};RULED.place=plc||{};
+  $("#sub").textContent=`${D.companies.toLocaleString()} companies · `
+    +`${D.postings.toLocaleString()} postings · data as of ${D.generated}`;
+  const g=D.game||{};
+  const strip=$("#strip");strip.innerHTML="";
+  const stat=(n,l)=>{const d=el("div","stat");d.appendChild(el("strong",null,String(n)));
+    d.appendChild(el("span",null,l));strip.appendChild(d)};
+  stat(remaining("vendors"),"vendors awaiting your call");
+  stat(remaining("miscategorized"),"in the wrong bucket");
+  if(g.why_coverage!==null&&g.why_coverage!==undefined)stat(g.why_coverage+"%","rulings carrying a why");
+  const tabs=$("#tabs");tabs.innerHTML="";
+  [["vendors","Vendor scope"],["miscategorized","Wrong bucket"]].forEach(([k,l])=>{
+    const b=el("button",null,l);b.dataset.k=k;
+    b.onclick=()=>{TAB=k;draw()};tabs.appendChild(b)});
+  draw();
+}
+function remaining(q){
+  if(q==="vendors")return (D.vendors||[]).filter(v=>!(vkey(v.name) in RULED.vendor)).length;
+  return (D.miscategorized||[]).filter(c=>!(c.id in RULED.place)).length;
+}
+function draw(){
+  document.querySelectorAll("nav button").forEach(b=>
+    b.setAttribute("aria-selected",b.dataset.k===TAB));
+  const v=$("#view");v.innerHTML="";
+  (TAB==="vendors"?drawVendors:drawBucket)(v);
+}
+
+function drawVendors(v){
+  const rows=(D.vendors||[]).filter(x=>!(vkey(x.name) in RULED.vendor));
+  if(!rows.length){v.appendChild(el("div","empty","Scope settled. Every vendor has a call."));return}
+  let theme=null;
+  rows.forEach(x=>{
+    if(x.theme!==theme){
+      theme=x.theme;
+      const peers=rows.filter(y=>y.theme===theme);
+      const g=el("div","group");
+      g.appendChild(el("strong",null,`${theme} — ${peers.length}`));
+      if(theme!=="Everything else"){
+        const why=el("input");why.placeholder="why (recorded against every one)";
+        const row=el("div","row");
+        [["in","All in","good"],["sled","All SLED-only",""],["out","All out","bad"]].forEach(([call,label,cls])=>{
+          const b=el("button","act "+cls,label);
+          b.onclick=async()=>{
+            const names=peers.map(p=>p.name);
+            if(!confirm(`${label} for all ${names.length} in ${theme}?\n\n`
+              +names.slice(0,10).join(", ")+(names.length>10?` and ${names.length-10} more`:"")))return;
+            const r=await rule({kind:"vendor",names,call,theme,why:why.value});
+            if(r){names.forEach(n=>RULED.vendor[vkey(n)]={});boot()}
+          };row.appendChild(b)});
+        g.appendChild(why);g.appendChild(row);
+      }
+      v.appendChild(g);
+    }
+    const n=el("div","item");
+    n.appendChild(el("h3",null,x.name));
+    const kv=el("div","kv");
+    if(x.source_event)kv.appendChild(el("span","chip",x.source_event));
+    kv.appendChild(document.createTextNode(x.description||""));
+    n.appendChild(kv);
+    if(x.website){const a=el("a",null,x.website.replace(/^https?:\/\//,""));
+      a.href=x.website;a.target="_blank";a.rel="noopener";
+      const w=el("div","kv");w.appendChild(a);n.appendChild(w)}
+    const why=el("input");why.placeholder="why (optional - it teaches the next pass)";
+    n.appendChild(why);
+    const row=el("div","row");
+    [["in","In: full company","good"],["sled","SLED-only roles",""],["out","Not this board","bad"]].forEach(([call,label,cls])=>{
+      const b=el("button","act "+cls,label);
+      b.onclick=async()=>{
+        const r=await rule({kind:"vendor",name:x.name,call,why:why.value,
+          description:x.description,website:x.website,source_event:x.source_event});
+        if(r){RULED.vendor[vkey(x.name)]={};n.remove();boot()}
+      };row.appendChild(b)});
+    n.appendChild(row);
+    v.appendChild(n);
+  });
+}
+
+function drawBucket(v){
+  const rows=(D.miscategorized||[]).filter(c=>!(c.id in RULED.place));
+  if(!rows.length){v.appendChild(el("div","empty","Clean shelves. Nothing is in the wrong bucket."));return}
+  rows.forEach(c=>{
+    const n=el("div","item");
+    n.appendChild(el("h3",null,c.name));
+    const kv=el("div","kv");
+    if(c.open_roles)kv.appendChild(el("span","chip ok",c.open_roles+" open"));
+    kv.appendChild(el("span","chip",`now: ${c.sector} / ${c.category}`));
+    n.appendChild(kv);
+    if(c.description)n.appendChild(el("div","kv",c.description));
+    const secSel=el("select"),catSel=el("select");
+    const fill=()=>{catSel.innerHTML="";
+      (D.schema[secSel.value]||[]).forEach(x=>{const o=el("option",null,x);o.value=x;catSel.appendChild(o)})};
+    Object.keys(D.schema).forEach(x=>{const o=el("option",null,x);o.value=x;secSel.appendChild(o)});
+    secSel.value=(c.proposed_sector&&D.schema[c.proposed_sector])?c.proposed_sector:c.sector;
+    fill();
+    if(c.proposed_category&&(D.schema[secSel.value]||[]).includes(c.proposed_category))
+      catSel.value=c.proposed_category;
+    secSel.onchange=fill;
+    const pick=el("div","row");pick.append(secSel,catSel);
+    if(c.confidence&&c.proposed_sector)pick.appendChild(el("span","chip","guess: "+c.confidence));
+    n.appendChild(pick);
+    const why=el("input");why.placeholder="why (optional)";n.appendChild(why);
+    const row=el("div","row");
+    const move=el("button","act good","File it here");
+    move.onclick=async()=>{
+      const r=await rule({kind:"place",id:c.id,sector:secSel.value,category:catSel.value,
+        why:why.value,was:`${c.sector} / ${c.category}`,
+        proposed:`${c.proposed_sector} / ${c.proposed_category}`,description:c.description});
+      if(r){RULED.place[c.id]={};n.remove();boot()}
+    };
+    const keep=el("button","act","Bucket is right");
+    keep.onclick=async()=>{
+      const r=await rule({kind:"dismiss",key:`miscategorized:${c.id}`,why:why.value});
+      if(r){RULED.place[c.id]={};n.remove();boot()}
+    };
+    row.append(move,keep);n.appendChild(row);
+    v.appendChild(n);
+  });
+}
+boot().catch(e=>{$("#view").innerHTML='<div class="empty">could not load - '+esc(e)+'</div>'});
+</script>
+</body>
+</html>
