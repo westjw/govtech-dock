@@ -186,6 +186,21 @@ So: **`page only` is a worklist for the capture bookmarklet, not coverage.**
 Converting those to `structured` is mostly impossible - there is no ATS behind
 them to find. Do not add the two together in a status report.
 
+## Build order (owner, 2026-08-23)
+
+This repo comes first, and inside it: front end, back end, data, admin. The
+job-hunter repo waits. The owner's framing is that the board is the product
+being launched, so anything that makes the board better for a stranger
+outranks anything that makes his own search easier.
+
+Practical reading of that when choosing what to do next:
+
+- A gap a visitor would notice beats a gap only the owner would notice.
+- Data completeness beats new features: 4,733 catalogued suppliers and 670
+  researched candidates are worth more than another filter.
+- Admin work is product work here, because the queues are what keep the data
+  honest, and one day they are meant to be playable.
+
 ## Portfolio Dashboard Sync
 
 This project is tracked in a personal portfolio dashboard. Maintain

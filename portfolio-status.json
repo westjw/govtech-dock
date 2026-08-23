@@ -1,26 +1,23 @@
 {
-  "project_id": "govtech_dock",
-  "repo": "westjw/govtech-dock",
-  "last_updated": "2026-08-22T16:20:18-04:00",
-  "status": "Active Build",
-  "progress_pct": 65,
-  "progress_note": "~65% against the full scope. The free board is LIVE at solesourcejobs.com behind Cloudflare Access, self-updating daily through the shrinkage gate. The paid half remains unstarted.",
-  "next_move": "Decide what the paid tier is. The free board is shipped; everything else on the roadmap now serves that question.",
-  "session_summary": "SoleSource went live: solesourcejobs.com on Cloudflare Pages, allowlist build with the sanity gate as the build command, Access login verified in a clean incognito session. Also shipped a Chrome extension for one-click capture with a single-posting mode that pulls full JD text.",
-  "recent_work": [
-    "solesourcejobs.com live: Pages + custom domain + Access one-time-PIN login, incognito-verified",
-    "Deploy is the daily refresh itself: push -> Pages build -> build_site.py gate -> two-file publish",
-    "Chrome extension (extension/): one-click capture, direct to the local admin, JD text on single postings",
-    "Federal ruled in scope via the Scope review queue, reason recorded",
-    "Role detail page in Job Hunter on the design's 1b/1c take, with persisted per-dimension ceilings",
-    "Public job board rebuilt on design option 4a, on tokens so dark still works",
-    "Companies tab rebuilt in the same language; hero copy fixed (\"130 of them\" had no antecedent)",
-    "Phone layout for the board: table becomes a card list below 768px",
-    "scripts/build_site.py assembles public/ from an allowlist, and sanitises internal fetch errors out of the published copy"
-  ],
-  "blockers": [
-    "Two stale root-publish deployments (eaffc723, 5394c974) await owner deletion - gated but not gone",
-    "Comp minimums unset - the gate stays inert until three numbers land",
-    "Paid tier undefined"
-  ]
+ "project_id": "govtech_dock",
+ "repo": "westjw/govtech-dock",
+ "last_updated": "2026-08-23T00:00:00Z",
+ "status": "Active Build",
+ "progress_pct": 72,
+ "progress_note": "~72% of the free board; the paid product is undefined so that half is not scored",
+ "next_move": "Land the 670 researched cards, then rule the horizontal vendors in the new Vendor scope queue",
+ "session_summary": "Site went public: Access gate removed and both whole-repo deployments deleted first. Public add-a-company form and header button shipped. The conference sweep completed its readable half (27 of 28 clean, NAFA partial): 1,956 suppliers, 670 govtech candidates, 41 conferences represented. Territory, office and work mode became three separate filterable facts. The 6am refresh crash was fixed and data now commits before the spreadsheet.",
+ "recent_work": [
+  "solesourcejobs.com is public - Access application deleted, stale whole-repo deployments removed",
+  "Public submission form + Cloudflare Function, 15 tests, degrades to the GitHub issue form",
+  "Conference sweep: 28 readable directories sept, 1,956 suppliers, 670 candidates staged",
+  "Event tags issued by the catalog, not by scraping agents (three APPAs collided)",
+  "Vendor scope admin queue for horizontal vendors, rulings record author, reason and inputs",
+  "promote_candidates.py: validated door from candidate to company card",
+  "Territory vs office vs work mode split into separate filters on the board"
+ ],
+ "blockers": [
+  "Repo visibility flip to public is the owner's click; it also switches on public submissions",
+  "ATS discovery for the new cards is a later pass, so they land unmonitored"
+ ]
 }

@@ -124,6 +124,13 @@ const INTRO = {
   acquisitions: 'The board reads fine but its slug does not match the company name, which '
     + 'usually means the company was acquired and its careers page now redirects to the parent. '
     + 'Confirming wires it up; a parent-company board must never be recorded as the subsidiary’s.',
+  miscategorized: 'Companies that call themselves GovTech Products and are filed under '
+    + 'Suppliers & Services, the bucket meant for everything that is NOT a product. Most '
+    + 'also carry the sector of whichever trade show found them rather than what they sell, '
+    + 'which is why Workday sat in Transit & Parking. These sort by open roles because the '
+    + 'ones hiring hardest are the top rows on the public Companies tab. Each carries a '
+    + 'proposed placement and the words it was inferred from; where the guesser has nothing '
+    + 'to go on it says so instead of guessing.',
   vendors: 'Real product companies that took a booth on a government floor but sell '
     + 'to every industry: general data platforms, general CRM, general security. Alteryx '
     + 'is the shape of it. They are not consultancies and they are not govtech the way '
@@ -416,6 +423,74 @@ RENDER.acquisitions = s => {
     toast(r.message); n.remove(); refreshCounts();
   };
   row.append(yes, dismissBtn('acquisitions', s.id, 'Reject — different company'));
+  n.appendChild(row);
+  return n;
+};
+
+RENDER.miscategorized = c => {
+  const n = document.createElement('div');
+  n.className = 'item';
+  n.appendChild(el('h3', null, c.name));
+  const kv = el('div', 'kv');
+  if (c.open_roles) kv.appendChild(el('span', 'chip', c.open_roles + ' open'));
+  kv.appendChild(el('span', 'chip', `now: ${esc(c.sector)} / ${esc(c.category)}`));
+  n.appendChild(kv);
+  if (c.description) n.appendChild(el('div', 'kv', c.description));
+  if (c.website) {
+    const w = el('div', 'kv');
+    const a = el('a', null, c.website.replace(/^https?:\/\//, ''));
+    a.href = c.website; a.target = '_blank'; a.rel = 'noopener';
+    w.appendChild(a); n.appendChild(w);
+  }
+  if (c.evidence && c.evidence.length)
+    n.appendChild(el('div', 'kv dim', c.evidence.join(' · ')));
+
+  const cats = {};
+  (SCHEMA.sectors || []).forEach(s => { cats[s.name] = s.categories; });
+  const secSel = el('select'), catSel = el('select');
+  const fill = () => {
+    catSel.innerHTML = '';
+    (cats[secSel.value] || []).forEach(x => {
+      const o = el('option', null, x); o.value = x; catSel.appendChild(o);
+    });
+  };
+  Object.keys(cats).forEach(x => {
+    const o = el('option', null, x); o.value = x; secSel.appendChild(o);
+  });
+  secSel.value = (c.proposed_sector && cats[c.proposed_sector]) ? c.proposed_sector : c.sector;
+  fill();
+  if (c.proposed_category && (cats[secSel.value] || []).includes(c.proposed_category))
+    catSel.value = c.proposed_category;
+  secSel.onchange = fill;
+
+  const pick = el('div', 'row');
+  pick.append(secSel, catSel);
+  if (c.confidence && c.proposed_sector)
+    pick.appendChild(el('span', 'chip', 'guess: ' + c.confidence));
+  n.appendChild(pick);
+
+  const why = el('input');
+  why.placeholder = 'why (optional)';
+  n.appendChild(why);
+
+  const row = el('div', 'row');
+  const move = el('button', 'act good', 'File it here');
+  move.onclick = async () => {
+    const r = await api('/api/place', {
+      id: c.id, sector: secSel.value, category: catSel.value, why: why.value,
+      was: `${c.sector} / ${c.category}`,
+      proposed: `${c.proposed_sector} / ${c.proposed_category}`,
+      description: c.description});
+    if (r.error) return toast(r.error, true);
+    toast(r.message); n.remove(); refreshCounts();
+  };
+  const keep = el('button', 'act', 'Bucket is right');
+  keep.onclick = async () => {
+    const r = await api('/api/place', {id: c.id, keep: true, why: why.value});
+    if (r.error) return toast(r.error, true);
+    toast(r.message); n.remove(); refreshCounts();
+  };
+  row.append(move, keep);
   n.appendChild(row);
   return n;
 };

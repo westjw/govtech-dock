@@ -314,6 +314,46 @@ def act_scope_all(body: dict) -> dict:
                                    f"{'in' if keep else 'out of'} scope"}
 
 
+def q_miscategorized(companies, board) -> list:
+    """Product companies parked in the Suppliers & Services bucket.
+
+    These records contradict themselves: vendor_type "GovTech Product" and
+    govtech true, filed under the category reserved for everything that is
+    NOT a product, and usually carrying the sector of whichever trade show
+    found them rather than what they sell. Workday sits in Transit & Parking
+    because it exhibited at APTA.
+
+    They are the most visible rows on the public Companies tab - the ones
+    hiring hardest sort to the top - so this is a front-of-house problem, not
+    bookkeeping. Each row arrives with a proposed placement from the same
+    guesser intake uses, and its evidence, because a proposal a person cannot
+    interrogate is just a default with extra steps.
+    """
+    dismissed = read("admin_dismissed.json", {})
+    hiring = {o["id"]: o.get("open_roles", 0)
+              for o in board.get("organizations", [])}
+    out = []
+    for c in companies:
+        if c.get("category") != "Suppliers & Services":
+            continue
+        if not (c.get("govtech") or c.get("vendor_type") == "GovTech Product"):
+            continue
+        if f"miscategorized:{c['id']}" in dismissed:
+            continue
+        blob = f"{c['name']} {c.get('description') or ''}".lower()
+        sec, cat, conf, why = add_company.guess_sector(blob)
+        out.append({
+            "id": c["id"], "name": c["name"], "sector": c["sector"],
+            "category": c["category"], "website": c.get("website"),
+            "description": c.get("description"), "open_roles": hiring.get(c["id"], 0),
+            "proposed_sector": sec, "proposed_category": cat,
+            "confidence": conf, "evidence": why})
+    # Hiring first: a wrong bucket on a company with 100 open roles is seen by
+    # every visitor, a wrong bucket on a dormant one is seen by nobody.
+    out.sort(key=lambda r: (-r["open_roles"], r["name"]))
+    return out
+
+
 def q_vendor_scope(companies, board) -> list:
     """Horizontal product companies found on a government exhibit floor.
 
@@ -337,6 +377,42 @@ def q_vendor_scope(companies, board) -> list:
 
 def _vkey(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", (name or "").lower()).strip("-")
+
+
+def act_place(body: dict) -> dict:
+    """File a miscategorized company where it belongs, or say it is fine.
+
+    Reuses act_move for the write, so placement goes through the one path
+    that validates the whole file. Recording who ruled and what they were
+    shown is the same bargain as everywhere else: it costs nothing now and
+    cannot be added later.
+    """
+    cid = body.get("id")
+    if not cid:
+        return {"error": "need a company id"}
+    if body.get("keep"):
+        d = read("admin_dismissed.json", {})
+        d[f"miscategorized:{cid}"] = {
+            "on": dt.date.today().isoformat(),
+            "by": (body.get("by") or "owner").strip(),
+            "why": (body.get("why") or "").strip() or "the bucket is right"}
+        write_atomic("admin_dismissed.json", d)
+        return {"ok": True, "message": "left where it is"}
+
+    res = act_move({"id": cid, "sector": body.get("sector"),
+                    "category": body.get("category")})
+    if res.get("error"):
+        return res
+    rulings = read("placement_rulings.json", {})
+    rulings[cid] = {"sector": body.get("sector"), "category": body.get("category"),
+                    "on": dt.date.today().isoformat(),
+                    "by": (body.get("by") or "owner").strip(),
+                    "why": (body.get("why") or "").strip() or None,
+                    "saw": {"was": body.get("was"),
+                            "proposed": body.get("proposed"),
+                            "description": body.get("description")}}
+    write_atomic("placement_rulings.json", rulings)
+    return res
 
 
 def act_vendor_scope(body: dict) -> dict:
@@ -372,11 +448,11 @@ def q_submissions(companies, board) -> list:
             for i in subs["items"] if i.get("status") == "pending"]
 
 
-QUEUES = {"vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards,
+QUEUES = {"miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards,
           "placement": q_placement, "unclassified": q_unclassified,
           "acquisitions": q_acquisitions, "review": q_review}
 
-LABEL = {"vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
+LABEL = {"miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
          "boards": "Missing boards", "placement": "Wrong placement",
          "unclassified": "Unclassified roles", "acquisitions": "Acquisitions",
          "review": "Website review"}
@@ -830,7 +906,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "set-board": act_set_board, "set-family": act_set_family,
            "capture": act_capture, "search-companies": act_search_companies,
            "scope": act_scope, "scope-all": act_scope_all,
-           "vendor-scope": act_vendor_scope,
+           "vendor-scope": act_vendor_scope, "place": act_place,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "dismiss": act_dismiss}

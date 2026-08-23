@@ -73,19 +73,19 @@ SECTOR_HINTS: list[tuple[str, str, str]] = [
                                 r"right of way)\b"),
     ("Public Works", "Fleet & Asset Mgmt", r"\b(fleet|asset management|maintenance "
                                            r"management|public works)\b"),
-    ("Transit & Parking", "Parking", r"\b(parking|curb|meter|enforcement)\b"),
-    ("Transit & Parking", "Transit Tech", r"\b(transit|bus|paratransit|rail|mobility|"
+    ("Transit & Parking", "Parking & Curb", r"\b(parking|curb|meter|enforcement)\b"),
+    ("Transit & Parking", "Rider Experience", r"\b(transit|bus|paratransit|rail|mobility|"
                                           r"microtransit)\b"),
     ("K-12 Schools", "School Safety", r"\b(school safety|student safety|campus)\b"),
-    ("K-12 Schools", "Student Transport", r"\b(school bus|student transport)\b"),
-    ("Parks & Rec", "Rec Management", r"\b(parks|recreation|rec department|"
+    ("K-12 Schools", "Transportation", r"\b(school bus|student transport)\b"),
+    ("Parks & Rec", "Recreation Management", r"\b(parks|recreation|rec department|"
                                       r"facility booking|camp registration)\b"),
     ("General Gov", "Permitting & Licensing", r"\b(permit|licens|inspection|"
                                               r"code enforcement|zoning|land use)\b"),
-    ("General Gov", "Procurement", r"\b(procure|bid|rfp|sourcing|contract management)\b"),
+    ("General Gov", "Procurement & Payments", r"\b(procure|bid|rfp|sourcing|contract management)\b"),
     ("General Gov", "Citizen Services", r"\b(citizen|resident|constituent|311|"
                                         r"agenda|meeting management|civic)\b"),
-    ("General Gov", "Budget & Finance", r"\b(budget|finance|payments|billing|revenue|"
+    ("General Gov", "Finance & ERP", r"\b(budget|finance|payments|billing|revenue|"
                                         r"utility billing|tax)\b"),
     ("General Gov", "HR & Workforce", r"\b(workforce|human resources|hiring|payroll)\b"),
 ]

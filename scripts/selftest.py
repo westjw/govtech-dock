@@ -192,6 +192,19 @@ def main() -> int:
             errors += fail("descriptions carry event tags the catalog never "
                            f"issued: {sorted(stray)[:6]}")
 
+    # The intake guesser proposes a sector and category; every pair it can
+    # propose must be one the validator would accept. They drifted apart once
+    # already: the schema gained categories and renamed others while
+    # SECTOR_HINTS kept the old names, so intake proposed placements that
+    # could never be written.
+    import add_company as _addco
+    for sector, category, _pat in _addco.SECTOR_HINTS:
+        if sector not in sector_cats:
+            errors += fail(f"SECTOR_HINTS names unknown sector {sector!r}")
+        elif category not in sector_cats[sector]:
+            errors += fail(f"SECTOR_HINTS: {category!r} is not a category of "
+                           f"{sector!r} in schema.json")
+
     import export_xlsx as _xlsx
     for c in companies:
         try:
