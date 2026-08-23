@@ -1,0 +1,8 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<style>
+  .fill-x { fill: black }
+  @media (prefers-color-scheme: dark) {
+    .fill-x { fill: white }
+  }
+</style>
+<g fill-rule="nonzero" fill="none"><path class="fill-x" d="M25.448 11.643 33.18 1h13.272L32.077 20.9l-6.63-9.257Zm6.562 13.035L48 46.993H35.002l-9.554-13.161 6.562-9.154Z"/><path fill="#03A1F9" d="M1.644 1.007h13.398l15.575 21.738L13.228 47H0l17.412-24.226z"/></g></svg>

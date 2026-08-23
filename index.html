@@ -328,7 +328,7 @@ async function sendAdd(){
 <script>
 const $=(s,r=document)=>r.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-let D=null, tab="jobs", PENDING_URL=null;
+let D=null, tab="jobs", PENDING_URL=null, ROLE=null;
 const TABS=[["jobs","Job board"],["companies","Companies"],["saved","Saved"],["intel","Market intel"]];
 const FAM={gtm:"GTM",cs:"Customer Success",ops:"Ops / RevOps",engineering:"Engineering",
   product:"Product & Design",data:"Data & Research",policy:"Policy & Gov Affairs",
@@ -458,6 +458,75 @@ const TILE=[["var(--chip)","var(--dim)"],["#eef3ef","var(--accent)"],["#f4efe6",
    and silent on the other. Silence is reported as silence: "12 say nothing
    about location" is a fact a seller can act on, and inventing a guess in
    its place would be the kind of quiet lie this board is built against. */
+/* One role, and what we know about it that the posting will not say.
+   The value here is not a copy of the job description - we do not have one -
+   it is the context around it: who the company is, how hard they are hiring,
+   how their board treats an application, how long this has been up, and what
+   else is open there. A seller deciding whether to spend an evening on an
+   application can answer "is this worth it" from this page. */
+function roleView(id){
+  const p=D.postings.find(x=>x.id===id);
+  if(!p){$("#view").innerHTML=`<div class="empty">That role is no longer on the board.
+    It may have been filled, or the company&rsquo;s board stopped listing it.</div>`;return}
+  const o=D.organizations.find(x=>x.id===p.company_id)||{};
+  const siblings=D.postings.filter(x=>x.company_id===p.company_id&&x.id!==p.id);
+  const age=when(p.first_seen,D.generated);
+  const ats=ATSNOTE[o.ats_ranks]||"";
+  $("#view").innerHTML=`
+    <p><button onclick="ROLE=null;tab='jobs';render()" style="background:none;border:0;
+      color:var(--dim);cursor:pointer;font:inherit;padding:0">&larr; back to the board</button></p>
+    <div class="cohead">
+      ${tileHTML(p.company,p.company_id,"cotile")}
+      <div>
+        <h2 style="margin:0 0 2px;font-size:21px;letter-spacing:-.015em">${esc(p.title)}</h2>
+        <div class="sub"><a href="#" onclick="ROLE=null;co('${encodeURIComponent(p.company_id)}');return false">${esc(p.company)}</a>
+          &middot; ${esc(p.sector)} / ${esc(p.category)}</div>
+      </div>
+      <span class="savehost" style="margin-left:auto"></span>
+    </div>
+    <div class="kv" style="margin-top:12px">${geoBits(p).map(esc).join(" &middot; ")}
+      ${p.seniority?` &middot; ${esc(p.seniority)}, from the title`:""}
+      ${p.quota_carrying?' &middot; <span class="chip ok">carries a number</span>':""}</div>
+    ${p.url?`<p class="colinks"><a class="golink" href="${esc(p.url)}" target="_blank"
+      rel="noopener">Open the posting &rarr;</a>
+      <span class="chip">${age.txt==="new today"?"first seen today":"on the board "+esc(age.txt)}</span>
+      ${p.source==="manual"?'<span class="chip">found by hand</span>':""}</p>`:""}
+
+    <h3 style="font-size:13px;margin-top:22px">Before you apply</h3>
+    <div class="kv" style="max-width:74ch">${ats?esc(ats)+" ":""}${
+      o.ats_ranks==="hard"?"Their board ranks applicants automatically, so the exact words in the posting matter more here than anywhere else."
+      :o.ats_ranks==="soft"?"Their board is searchable but rarely auto-rejects, so a person is likely to read this."
+      :o.ats_ranks==="none"?"A person opens this list. Write for a reader, not a parser."
+      :"We could not tell what runs their board, so assume a person reads it and write plainly."}</div>
+    ${o.phase?`<div class="kv">The company overall is <strong>${esc(o.phase)}</strong>${
+      o.open_roles?` — ${o.open_roles} role${o.open_roles===1?"":"s"} open, ${o.quota_roles||0} carrying a number`:""}.</div>`:""}
+    ${o.description?`<div class="kv" style="max-width:74ch">${esc(o.description)}</div>`:""}
+    ${o.unreadable?`<div class="kv"><span class="chip warn">their board could not be read
+      automatically this run, so this list may be incomplete</span></div>`:""}
+
+    ${siblings.length?`<h3 style="font-size:13px;margin-top:22px">Also open at ${esc(p.company)}</h3>
+      <div class="list" id="r-sibs"></div>`:""}`;
+  const host=$(".savehost"); if(host)host.replaceWith(saveButton(p));
+  if(siblings.length){
+    const h=$("#r-sibs");
+    siblings.slice(0,12).forEach(x=>{
+      const row=document.createElement("div");
+      row.className="row clk";
+      row.onclick=()=>openRole(x.id);
+      row.innerHTML=`${tileHTML(x.company,x.company_id,"tile")}
+        <div class="main"><div class="t">${esc(x.title)}</div>
+        <div class="m">${geoBits(x).map(esc).join(" &middot; ")}</div></div>
+        <span style="color:var(--line);font-size:15px">&rsaquo;</span>`;
+      h.appendChild(row);
+    });
+    if(siblings.length>12)
+      h.innerHTML+=`<div class="more" onclick="ROLE=null;co('${encodeURIComponent(p.company_id)}')">
+        See all ${siblings.length} at this company</div>`;
+  }
+}
+function openRole(id){ROLE=id;tab="jobs";render();
+  history.replaceState(null,"",location.pathname+"?role="+encodeURIComponent(id));
+  window.scrollTo(0,0)}
 function whereSummary(mine){
   const terr={}, off={}; let remote=0, silent=0;
   mine.forEach(p=>{
@@ -500,6 +569,7 @@ function when(seen,gen){
 }
 
 function jobs(){
+  if(ROLE){roleView(ROLE);return}
   const fams=[...new Set(D.postings.map(p=>p.family))].sort((a,b)=>(FAM[a]||a).localeCompare(FAM[b]||b));
   const secs=[...new Set(D.postings.map(p=>p.sector))].sort();
   const states=[...new Set(D.postings.flatMap(p=>p.states||[]))].sort();
@@ -712,7 +782,7 @@ const URLKEYS={q:"j-q",fam:"j-fam",sec:"j-sec",st:"j-state",off:"j-office",
   reg:"j-region",sen:"j-sen",us:"j-us",mode:"j-mode",src:"j-src"};
 let URL_LOADING=false;
 function writeUrl(){
-  if(URL_LOADING)return;
+  if(URL_LOADING||ROLE)return;
   const u=new URLSearchParams();
   if(tab!=="jobs")u.set("tab",tab);
   Object.entries(URLKEYS).forEach(([k,id])=>{
@@ -813,7 +883,7 @@ function savedView(){
     const gone=!live.has(p.id);
     const row=document.createElement("div");
     row.className="row clk";
-    row.onclick=()=>{if(p.url)window.open(p.url,"_blank")};
+    row.onclick=()=>{live.has(p.id)?openRole(p.id):(p.url&&window.open(p.url,"_blank"))};
     row.innerHTML=`${tileHTML(p.company,p.company_id,"tile")}
       <div class="main"><div class="t">${esc(p.title)}</div>
         <div class="m">${esc(p.company)} &middot; ${esc(p.sector||"")}${
@@ -917,8 +987,7 @@ function drawJobs(){
 
   $("#j-list").innerHTML=rows.slice(0,SHOWN).map(p=>{
     const [bg,fg]=tile(p.company),w=when(p.first_seen,D.generated);
-    return `<div class="row clk" onclick="${p.url?`window.open('${esc(p.url)}','_blank')`
-      :`co('${encodeURIComponent(p.company_id)}')`}">
+    return `<div class="row clk" onclick="openRole('${esc(p.id).replace(/'/g,"\\'")}')">
       ${tileHTML(p.company,p.company_id,"tile")}
       <div class="main">
         <div class="t">${esc(p.title)}</div>
@@ -1170,10 +1239,12 @@ fetch("data/board.json").then(r=>r.json()).then(d=>{
   [...$("#tabs").children].forEach(b=>b.onclick=()=>{tab=b.dataset.t;render();});
   PENDING_URL=readUrl();
   if(PENDING_URL&&PENDING_URL.get("tab"))tab=PENDING_URL.get("tab");
+  if(PENDING_URL&&PENDING_URL.get("role")){ROLE=PENDING_URL.get("role");tab="jobs"}
   render();
   // the back button should undo a search, not leave the page
   window.addEventListener("popstate",()=>{
     PENDING_URL=readUrl();
+    ROLE=PENDING_URL?PENDING_URL.get("role"):null;
     if(PENDING_URL&&PENDING_URL.get("tab"))tab=PENDING_URL.get("tab");
     render();
   });
