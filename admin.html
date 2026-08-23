@@ -84,6 +84,13 @@
   .starthead{display:flex;align-items:baseline;gap:12px;margin:6px 0 16px}
   .starthead strong{font-size:17px}
   .starthead .dim{color:var(--faint);font-size:12.5px;margin-left:auto}
+  .gamestrip{display:flex;gap:22px;margin:0 0 16px;padding:13px 16px;
+    border:1px solid var(--line);border-radius:10px;background:var(--chip);flex-wrap:wrap}
+  .gstat strong{display:block;font-size:19px;letter-spacing:-.02em}
+  .gstat span{font-size:11.5px;color:var(--dim)}
+  .gstat.low strong{color:var(--warn)}
+  .endbar{height:7px;border-radius:4px;background:var(--chip);margin:10px 0 4px;overflow:hidden}
+  .endfill{height:100%;border-radius:4px;background:var(--accent)}
 </style>
 </head>
 <body>
@@ -219,14 +226,53 @@ async function showStart() {
     `${t.done} ruling${t.done === 1 ? '' : 's'} recorded so far`));
   v.appendChild(head);
 
+  /* The game layer, such as it is: yourself against your own last 30 days,
+     and one craft meter. The why on a ruling is what teaches the classifier
+     later, so its coverage is the number worth keeping at 100. Volume is
+     deliberately not scored - a wrong ruling here is invisible and
+     permanent, so care has to pay better than speed. */
+  if (t.game) {
+    const g = t.game;
+    const strip = el('div', 'gamestrip');
+    const stat = (num, lbl) => {
+      const d = el('div', 'gstat');
+      d.appendChild(el('strong', null, String(num)));
+      d.appendChild(el('span', null, lbl));
+      return d;
+    };
+    strip.appendChild(stat(g.today, 'rulings today'));
+    strip.appendChild(stat(g.best_30, 'your best day, last 30'));
+    if (g.why_coverage !== null) {
+      const d = stat(g.why_coverage + '%', 'rulings carrying a why');
+      if (g.why_coverage < 90) d.classList.add('low');
+      strip.appendChild(d);
+    }
+    v.appendChild(strip);
+    if (g.today > g.best_30 && g.best_30 > 0)
+      v.appendChild(el('div', 'kv ok',
+        'Personal best - more rulings today than any day in the last month.'));
+  }
+
   if (!t.recommend.length)
     v.appendChild(el('div', 'empty', 'Nothing pressing. The queues are clear.'));
 
+  const stateOf = {};
+  ((t.game && t.game.states) || []).forEach(st => { stateOf[st.queue] = st; });
   t.recommend.forEach(r => {
     const card = el('div', 'item');
     const h = el('h3', null, r.headline);
     card.appendChild(h);
     card.appendChild(el('div', 'kv', r.why));
+    const st = stateOf[r.queue];
+    if (st) {
+      const bar = el('div', 'endbar');
+      const fill = el('div', 'endfill');
+      fill.style.width = Math.max(2, st.pct) + '%';
+      bar.appendChild(fill);
+      card.appendChild(bar);
+      card.appendChild(el('div', 'kv',
+        `${st.pct}% of the way to “${st.name}” — ${st.left} left`));
+    }
     const b = el('button', 'act good', `Open ${META.labels[r.queue]}`);
     b.onclick = () => show(r.queue);
     const row = el('div', 'row'); row.appendChild(b);

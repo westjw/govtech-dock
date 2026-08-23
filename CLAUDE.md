@@ -130,32 +130,67 @@ incidental keyword. Approving a job writes it through the capture path.
 
 ## The admin queues are meant to become a game (owner, 2026-08-23)
 
-Not to build now. But every queue built from here should be built so this is
-possible later, because retrofitting it means re-recording history.
+Not to build all at once. But every queue built from here should make this
+possible, because retrofitting means re-recording history.
 
 The owner's reasoning, in his words: gamifying admin work would "help train
 the AI, speed up backend manual work, and enhance the product if someone
-else were to do it." Three payoffs, and the third is the one with teeth: a
-queue a stranger would willingly work is a different product from a queue
-only the owner tolerates.
+else were to do it." The game is for him and possibly one employee.
 
-What that implies for anything built today, at no cost today:
+### The mechanics, chosen against a 10-mechanic framework (owner, 2026-08-23)
 
-- **Every ruling gets an author, a timestamp and a reason.** Already true of
-  `admin_dismissed.json` and `scope_decisions.json`. Keep it true everywhere.
-  A ruling without an author cannot be scored, trusted, or learned from, and
-  you cannot add the author afterwards.
-- **A ruling is training data.** Each one is a labeled example: this title is
-  that family, this vendor belongs in that sector, this federal role is in
-  scope. Store the INPUT the person saw alongside their answer, not just the
-  answer, or the label is useless for teaching the classifier later.
-- **Keep the confident cases out of the queue.** The fun in a queue is that
-  every item needed a person. Padding it with items a rule could have settled
-  is what makes admin work feel like a chore.
-- **Never let a score reward volume over correctness.** The asymmetric error
-  rule holds: a wrong "not a govtech company" is invisible and permanent. Any
-  future points system must make care pay better than speed, or it will
-  manufacture exactly the errors this repo is built to avoid.
+The owner supplied a framework of ten gamification mechanics - eight safe,
+two aggressive - and the product decides which fit. This product is a
+two-person, correctness-critical review tool where every ruling becomes
+training data and the asymmetric error rule holds: a wrong "not govtech" is
+invisible and permanent, so care must always pay better than speed.
+
+**Built into Start here (the core three plus framing):**
+
+1. *Quests with a payoff you'd want anyway* (#4). Every recommendation
+   names what the work buys: "rule the 16 hiring miscategorised companies
+   -> the public Companies tab is correct today." The reward is the product
+   working better, never a badge.
+2. *Personal bests* (#5). The user against their own last 30 days of
+   rulings. Zero social risk, works for one person, never demotivates.
+3. *Visible craft signals* (#6). The why-coverage meter: what fraction of
+   rulings carry a reason. The why is what teaches the classifier later,
+   so its absence is the sloppiness worth making visible - and it is a
+   CARE metric, which volume metrics are not.
+4. *Named end states* (#1, as framing). Queues do not go to zero, they
+   reach a state with a title: Wrong bucket -> "Clean shelves", Vendor
+   scope -> "Scope settled". People finish things that have a name.
+
+**Deferred until there are two players:** streaks on the smallest real
+action (#2 - and the action is RULING, never opening the app), team-level
+cooperative goals (#7 - one shared board-health bar, no individual
+ranking), unlockable depth (#3 - only meaningful for strangers), surprise
+recognition (#8 - sparingly, or it reads as spam).
+
+**Rejected, with the framework's own caveats as the reason:**
+
+- *Public leaderboard with relegation* (#9): works only where the metric is
+  fully within the person's control and the population is competitive by
+  self-selection. A two-person team reviewing ambiguous companies is
+  neither, and ranking would reward exactly the speed the asymmetric rule
+  forbids.
+- *Loss-framed status decay* (#10): loss aversion is ~2x as motivating and
+  reads as manipulation the moment it is noticed. Churning your one
+  employee out of resentment is fatal, not a conversion cost.
+- The caveat that governs both, kept verbatim: "both convert intrinsic
+  motivation into extrinsic, and that trade is hard to reverse. Once people
+  work for the points, removing the points removes the work."
+
+### What that implies for everything built today (unchanged)
+
+- **Every ruling gets an author, a timestamp and a reason.** A ruling
+  without them cannot be scored, trusted, or learned from, and none can be
+  added afterwards.
+- **A ruling is training data.** Store the INPUT the person saw alongside
+  their answer, or the label is useless for teaching the classifier later.
+- **Keep the confident cases out of the queue.** Padding it with items a
+  rule could settle is what makes admin work feel like a chore.
+- **Never let a score reward volume over correctness.**
 
 ## Coverage: read `scripts/coverage.py`, not the raw fraction
 

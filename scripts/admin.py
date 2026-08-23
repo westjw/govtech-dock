@@ -439,6 +439,66 @@ def act_vendor_scope_all(body: dict) -> dict:
     return {"ok": True, "message": f"{n} vendor(s) {said}"}
 
 
+END_STATE = {
+    "miscategorized": "Clean shelves",
+    "vendors": "Scope settled",
+    "duplicates": "One record per vendor",
+    "boards": "Every door mapped",
+    "websites": "Every name reachable",
+    "blocked": "Every wall retried",
+}
+
+
+def _game(counts: dict) -> dict:
+    """The gamification layer, built strictly from ruling records.
+
+    Three mechanics, chosen in CLAUDE.md against the owner's framework:
+    quests whose reward is the product working better, personal bests
+    against the user's own last 30 days, and a craft signal - why-coverage -
+    because the reason on a ruling is what teaches the classifier later, and
+    it is a measure of care rather than volume. Volume is deliberately never
+    scored on its own: a wrong ruling is invisible and permanent here.
+    """
+    per_day = collections.Counter()
+    with_why = total = 0
+    sources = [("vendor_scope_decisions.json", "vendors"),
+               ("placement_rulings.json", "miscategorized"),
+               ("scope_decisions.json", "scope")]
+    done_by_queue = collections.Counter()
+    for fname, queue in sources:
+        for r in read(fname, {}).values():
+            if not isinstance(r, dict):
+                continue
+            total += 1
+            done_by_queue[queue] += 1
+            per_day[r.get("on") or "?"] += 1
+            if (r.get("why") or "").strip():
+                with_why += 1
+    for key, entry in read("admin_dismissed.json", {}).items():
+        if isinstance(entry, dict) and isinstance(key, str) and ":" in key:
+            total += 1
+            done_by_queue[key.split(":", 1)[0]] += 1
+            per_day[entry.get("on") or "?"] += 1
+            if (entry.get("why") or "").strip():
+                with_why += 1
+
+    today = dt.date.today()
+    days = [(today - dt.timedelta(days=i)).isoformat() for i in range(30)]
+    best = max((per_day.get(d, 0) for d in days[1:]), default=0)
+    states = []
+    for q, name in END_STATE.items():
+        left = counts.get(q, 0)
+        done = done_by_queue.get(q, 0)
+        if left or done:
+            states.append({"queue": q, "name": name, "done": done,
+                           "left": left,
+                           "pct": round(100 * done / (done + left))
+                                  if (done + left) else 100})
+    return {"today": per_day.get(days[0], 0), "best_30": best,
+            "why_coverage": round(100 * with_why / total) if total else None,
+            "rulings_total": total, "states": states}
+
+
 def triage(companies, board) -> dict:
     """What to work on next, and honestly how much of each pile is workable.
 
@@ -496,6 +556,7 @@ def triage(companies, board) -> dict:
         rulings += len(read(f, {}))
     return {
         "counts": counts,
+        "game": _game(counts),
         "recommend": recs,
         "notes": [
             f"{counts.get('boards', 0)} companies have no readable board, but only "
