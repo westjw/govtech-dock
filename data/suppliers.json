@@ -66624,32 +66624,6 @@
   "source": "Broadband Nation 2026"
  },
  {
-  "id": "careers-in-government",
-  "name": "Careers In Government",
-  "website": "https://www.careersingovernment.com",
-  "location": "Los Angeles, CA",
-  "year_founded": 1996,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Job board and employer branding for public sector hiring agencies",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "from competitor sweep; hiring unverified",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "researched": false,
-  "vendor_type": "Association / Gov / Media",
-  "source": "competitor sweep",
-  "competitor": true,
-  "note": "Job board for roles INSIDE government, not software sold TO government. Adjacent to this product rather than part of the market it maps, so it is catalogued and not monitored."
- },
- {
   "id": "1government-procurement-alliance",
   "name": "1Government Procurement Alliance",
   "website": null,
@@ -75670,26 +75644,6 @@
   }
  },
  {
-  "id": "local-government-hispanic-network",
-  "name": "Local Government Hispanic Network",
-  "website": "https://www.lghn.org",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Local government professional association - exhibited at GFOA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
   "id": "lsl",
   "name": "LSL",
   "website": "https://lslcpas.com/",
@@ -76078,26 +76032,6 @@
   "sector": "General Gov",
   "category": "Suppliers & Services",
   "description": "Workday business process outsourcing - exhibited at GFOA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "pars",
-  "name": "PARS",
-  "website": "https://www.pars.org/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Public agency retirement services - exhibited at GFOA 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -76618,26 +76552,6 @@
   "sector": "General Gov",
   "category": "Suppliers & Services",
   "description": "Local government management association - exhibited at NLC City Summit 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "lsi",
-  "name": "LSI",
-  "website": "lsiwins.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Supply chain and logistics services - exhibited at NLC City Summit 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -87618,26 +87532,6 @@
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
   "description": "Pumps and pumping systems - exhibited at AWWA ACE 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  }
- },
- {
-  "id": "hach",
-  "name": "Hach",
-  "website": "http://www.hach.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "Utilities & Energy",
-  "category": "Suppliers & Services",
-  "description": "Water quality analyzers and lab kits - exhibited at AWWA ACE 2026",
   "ats": {
    "type": "unknown",
    "ref": null
