@@ -213,7 +213,14 @@
    "event_year": "2026",
    "approx_count": 35,
    "discovery_notes": "Sept 9-11, 2026, Denver. '2026 Conference Sponsors' page lists ~35 sponsors/exhibitors by tier directly in HTML (CivAll is Grand Sponsor); 3CMA treats sponsors as its exhibitor roster - no separate exhibitor floor-plan app.",
-   "event_tag": "3CMA 2026"
+   "event_tag": "3CMA 2026",
+   "sweep": {
+    "captured": 35,
+    "govtech": 23,
+    "complete": true,
+    "swept_on": "2026-08-23",
+    "notes": "Source: https://3cma.org/401/Conference-Sponsors, fetched cleanly with WebFetch and re-verified against raw curl HTML (no 403, no pagination, single page, all tiers inline). Captured all 35 sponsors across 4 tiers: Grand (CivAll|Social News Desk), 15 event-specific tier sponsors, 14 Super Supporters, 5 Conference Supporters -- matches the ~35 estimate in discovery notes. As the notes said, 3CMA has no separate exhibitor app; sponsors ARE the exhibitor roster. File: /private/tmp/claude-501/-Users-wyethwest/bae54666-b02f-4b55-98ed-4e5a5f866107/scratchpad/dock-work/data/conference_intake/staged/3cma-2026.json. JUDGMENT RULE APPLIED: is_govtech=true only when the EXHIBITED offering is a purpose-built public-sector product; horizontal SaaS whose gov business is a slice of a general commercial product was marked false (Canva, Pantheon, Siteimprove) -- flag these three if the tracker prefers to count horizontal vendors with SLED sales teams. Other false calls: North Star, Granite Sky, Q1Media (marketing/ad agencies), SoSu.TV (video production services), Chandlerthinks and Raftelis (consultancies), CPC Program at TCU (university program), Your Very Favorite (activity-book publisher), Digital Accessibility by WeCo (audit/training services, explicitly 'no fees for software'). Borderline TRUE calls worth a second look: Tightrope Media Systems and CASTUS (gov video playout/streaming -- software-centric but shipped partly as appliances), Telephone Town Hall Meeting (tech plus managed serv"
+   }
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -398,7 +405,14 @@
    "event_year": "2026",
    "approx_count": 80,
    "discovery_notes": "NASCIO explicitly has NO exhibit hall or trade show - conferences are sponsorship-only ('relationships, not products'). This URL is the sponsor directory for the 2026 Annual Conference (Sept 27-30, 2026, San Diego), ~80 sponsors across Pinnacle/Gold/Silver/Bronze and specialty tiers, plain HTML. 2026 sponsorship is sold out. A comparable sponsors page exists for the Midyear under /events/conferences/.",
-   "event_tag": "NASCIO 2026"
+   "event_tag": "NASCIO 2026",
+   "sweep": {
+    "captured": 76,
+    "govtech": 41,
+    "complete": true,
+    "swept_on": "2026-08-23",
+    "notes": "Sponsor-only directory (NASCIO has no exhibit hall), 8 tiers: Pinnacle 2, Networking Hub 2, WiFi 1, Headshot Lounge 1, Give Back 6, Gold 32, Silver 20, Bronze 12 = 76. No pagination. Discovery note said ~80; actual is 76. curl returned 403 even with the Chrome UA and full header set, so I used WebFetch plus live-DOM extraction in the browser. Guard against a summarizer bug: WebFetch reported bogus totals ('98 companies', 'Gold 33') while its own name list held 76 -- I enumerated headings and logo alts directly from the DOM to confirm exactly 8 tiers and 76 names, matching WebFetch name-for-name. Names come from logo alt text; the only links on the page are nascio.org member-directory profiles, not company sites, so the website field holds each company's real canonical domain rather than a NASCIO profile URL. Classification: excluded integrators/consultancies (Accenture, Deloitte, EY, McKinsey, Capgemini, NTT DATA, SAIC, GDIT, Peraton, Unisys, Slalom, TekStream, Egen, Nava), named resellers (Carahsoft, SHI, CDW-G, Presidio, WWT), analysts (Gartner, Forrester), accounting firms (BerryDunn, RSM), hardware makers (Dell, AMD, HPE, Yubico), telecoms (AT&T, Verizon, T-Mobile, Comcast, Spectrum), services (TTEC, Luna Data, Optum). Judgment calls: Palo Alto and Fortinet kept true as security-platform software despite selling appliances; Pluralsight true as a SaaS training platform."
+   }
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -412,7 +426,14 @@
    "event_year": "2026",
    "approx_count": 36,
    "discovery_notes": "GMIS MEETS 2026, Aug 23-26 2026, Williamsburg VA. Full alphabetical exhibitor list with booth numbers (36 booths) plus sponsor tiers, all in plain HTML. CAVEAT for automation: gmis.org returns HTTP 403 to non-browser clients (WebFetch was blocked); names were extracted by loading the page with a real browser UA - a scraper needs a browser user agent.",
-   "event_tag": "GMIS International 2026"
+   "event_tag": "GMIS International 2026",
+   "sweep": {
+    "captured": 36,
+    "govtech": 21,
+    "complete": true,
+    "swept_on": "2026-08-23",
+    "notes": "File: staged/gmis-international-2026.json. gmis.org sits behind a Cloudflare managed JS challenge - curl with the Chrome UA still got HTTP 403 ('Just a moment...' interstitial), so I loaded the page in a real browser where the interstitial cleared on its own (no CAPTCHA was solved). Captured the full alphabetical booth list: booths 1-36 present with no gaps, matching the 36-booth count in the discovery notes. Cross-checked the Platinum/Gold/Silver sponsor logo blocks (rendered as images, so names came from alt text + link hrefs): every sponsor maps to a company already in the booth list, so there are no exhibitors outside the 36. Websites came from each booth's outbound link; only GMIS Accreditation Program (booth 36) has no external link since it is the association's own program (set to gmis.org). Judgment calls: marked FALSE for managed-service and services firms (ControlAltProtect, ThinkGard, OTM Cyber, TraceSecurity), resellers/integrators (Howard Technology Solutions, MCCi as a Laserfiche VAR, MRA International, Global Solutions Group, StarNet), hardware (Nfina, Top Ten USA), telecom (T-Mobile, Brightspeed), and the ITML Institute training body. Verified the ambiguous ones by fetching their sites: Sectri is a genuine cyber program-management PLATFORM (true), GovAI is a real AI platform not a training shop (true). Borderline TRUE calls worth knowing: Scale Computing (HCI software sold with appliances), Wasabi (cloud storage), Tricentis (generic enterprise test automation,"
+   }
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -534,12 +555,20 @@
    "flagship": true,
    "swept": false,
    "exhibitor_url": "https://www.nafainstitute.org/exhibitors-sponsors/",
-   "fetchability": "readable",
+   "fetchability": "js-walled",
    "platform": "custom HTML (WordPress); full directory was MapYourShow",
    "event_year": "2026",
    "approx_count": 23,
    "discovery_notes": "2026 edition was April 13-15, Cleveland. The readable page is the sponsor list (~23 names, extracted verbatim). The full 230+ exhibitor directory lived at nafa26.mapyourshow.com but that MapYourShow site now 302-redirects to nafainstitute.org post-event, so the sponsor page is the only public list left. Site is already booking 2027 (April 5-7, Pittsburgh).",
-   "event_tag": "NAFA I&E 2026"
+   "event_tag": "NAFA I&E 2026",
+   "sweep": {
+    "captured": 23,
+    "govtech": 9,
+    "complete": false,
+    "swept_on": "2026-08-23",
+    "notes": "Captured only the 23-name sponsor list from nafainstitute.org/exhibitors-sponsors/ (heading: 'Thank You 2026 I&E Sponsors'). MISSING: the full 230+ exhibitor directory. Confirmed unreachable - both https://nafa26.mapyourshow.com/ and https://nafa26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm return HTTP 302 to https://www.nafainstitute.org/, so roughly 207+ exhibitors are unrecoverable from this source. WebFetch's markdown rendering silently omitted 2 of the 23 sponsors (KeyTrak, Legends of the Road); recovered by parsing raw HTML anchors, which is the count I trust. Note a CMS bug: the keytrak.com link carries a logo file named 'Merchants.png' - I used the link target (KeyTrak), not the filename. 9 govtech: Assetworks, Fleeta, Fleetio, Geotab, IntelliShift, Motive, Motus, RTA, Samsara. Excluded as non-govtech: automakers (Honda, Hyundai, Stellantis Pro One), lessors/fleet-management services (Enterprise, Holman, Merchants Fleet, Wheels), US Bank (Voyager fuel card), JJ Kane (auctions), Whelen (emergency lighting), Driverge and Legends of the Road (upfitting/van products), KeyTrak (electronic key cabinets), Inspiration (EV financing)."
+   },
+   "needs_person": true
   },
   {
    "block": "Public works and infrastructure",
@@ -857,7 +886,14 @@
    "event_year": "2026",
    "approx_count": 8,
    "discovery_notes": "2026 Annual Conference, Hyatt Regency Jacksonville Riverfront (July 2026). This is a SPONSOR list (education/social-event sponsors) on the conference page - names extracted from fetched HTML. No public full exhibitor directory found: https://nacmnet.org/conferences/exhibit-sponsor-info/ is a prospectus (booth contract returned by email), not a list.",
-   "event_tag": "NACM 2026"
+   "event_tag": "NACM 2026",
+   "sweep": {
+    "captured": 9,
+    "govtech": 7,
+    "complete": true,
+    "swept_on": "2026-08-23",
+    "notes": "Sponsor list only, exactly as the discovery note predicted -- confirmed https://nacmnet.org/conferences/exhibit-sponsor-info/ is a prospectus/pricing page with zero company names, so no full exhibitor directory exists publicly. The 9 sponsors live in a collapsed tab panel (#tabs_desc_11682_7); I extracted the panel directly to get all 9 logo links. Tier split: Education 6 (Tyler, For The Record, i3 Verticals, Thomson Reuters, Mission Critical Partners, equivant), WiFi 1 (AWS), Social Event entertainment 1 (Infax), Social Event drinks 1 (Linebarger). DATA-QUALITY CATCH: WebFetch hallucinated the last sponsor as 'Linebarger Gidel Strunk & Associates (LGBS)'. The logo image has no alt text, so that name was invented. I verified lgbs.com directly -- the real name is Linebarger Goggan Blair & Sampson, LLP, a government-collections law firm (false). Mission Critical Partners marked false as a public-safety consulting firm rather than a product vendor."
+   }
   },
   {
    "block": "Courts, corrections, justice",
@@ -972,7 +1008,14 @@
    "event_year": "2026",
    "approx_count": null,
    "discovery_notes": "2026 Summit page (June 14-17, Arlington VA) lists sponsors by tier (Champion/Collaborator/Benefactor/Influence/Build/Connect/Tabletop) directly in HTML; Tabletop tier is effectively the exhibitor list. Full list extends well beyond the sample. Old microsite aphsanationalsummit.com now redirects here. Next edition: Kansas City, June 27-30, 2027.",
-   "event_tag": "APHSA 2026"
+   "event_tag": "APHSA 2026",
+   "sweep": {
+    "captured": 59,
+    "govtech": 30,
+    "complete": true,
+    "swept_on": "2026-08-23",
+    "notes": "File: staged/aphsa-2026.json. Fetched aphsa.org/national-summit/ fine (HTTP 200, no blocking). Parsed the raw HTML by tier region and confirmed the full roster: Champion 4, Collaborator 1, Benefactor 10, Influence 8, Build 2, Connect 5, Tabletop 29 = 59. The raw-HTML extraction matched the rendered read exactly, so nothing was truncated despite the discovery note's warning that the list runs past the sample. IMPORTANT DATA GAP (not a completeness gap): the Tabletop tier is plain text with NO hyperlinks, so those 29 have no website on the page - I filled in URLs only where I independently verified the company (Beam, GiveCard, NCT, Northwoods, RedMane, TuaPath, Shine Early, Sivic) and left website empty for the other 21 rather than guess. Verified the ambiguous sponsors by fetching their sites: Citiz3n (a Softheon brand), Clarity Solutions Group (ClarityLink platform), HeyMirza, Vimo, SteadyIQ, CivicReach, Civic Roundtable all confirmed as product companies (true); CSG Government Solutions, Human Services Group, Citi (citi-us.com, an IT consultancy - NOT Citibank), InApp, Shine Early and Sivic Solutions Group confirmed as consulting/services (false). Two calls to flag: 'Equifax/Carahsoft' is co-listed with a reseller but I judged it TRUE on the substantive vendor (Equifax income-verification data); Optum I marked FALSE as a diversified health-services/BPO firm rather than a software product vendor. One unresolved: 'Wise Care Counts, LLC' returned nothing in search - I defaulted"
+   }
   },
   {
    "block": "Health and human services",
@@ -996,7 +1039,14 @@
    "event_year": "2026",
    "approx_count": null,
    "discovery_notes": "No event-specific exhibitor directory found for the 2026 Leadership Symposium (Aug 10-13, Galt House, Louisville KY) — the symposium page has no sponsor/exhibitor section. Recorded instead NCSEA's current Corporate Partners page (Platinum: CGI, Conduent, Deloitte, SMI; Gold: Adobe, FAST, GreenCourt, Protech, Stellarware; Silver: Courtland, CSG, Maximus, KPMG, Veritas HHS, YoungWilliams), which is the de facto symposium sponsor roster. ~15 companies listed.",
-   "event_tag": "NCSEA 2026"
+   "event_tag": "NCSEA 2026",
+   "sweep": {
+    "captured": 15,
+    "govtech": 3,
+    "complete": true,
+    "swept_on": "2026-08-23",
+    "notes": "IMPORTANT SCOPE CAVEAT: this is NOT a symposium exhibitor floor list. I re-confirmed the discovery note -- WebFetch of https://www.ncsea.org/ncsea-leadership-symposium/ returned no sponsor, exhibitor, or vendor-directory section for the Aug 10-13, 2026 Galt House event (it carries only event/hotel details, past-symposium history, and a state agency directory), and a web search surfaced no exhibitor list either. So the file records NCSEA's year-round Corporate Partners roster from https://www.ncsea.org/ncsea-corporate-partners-2/, exactly as discovery intended. complete=true refers to that page: I captured all 15 partners across all 3 tiers (Platinum 4, Gold 5, Silver 6 -- verified against raw curl HTML; no Bronze tier, no pagination, no A-Z split, nothing truncated). If the tracker needs the actual 2026 symposium exhibit-hall roster, it does not exist on the public site and would need a request to NCSEA. File: /private/tmp/claude-501/-Users-wyethwest/bae54666-b02f-4b55-98ed-4e5a5f866107/scratchpad/dock-work/data/conference_intake/staged/ncsea-2026.json. Only 3 of 15 are govtech (Fast Enterprises/FastCSE, GreenCourt/GovLink, Stellarware/CSLN and new-hire reporting) -- this roster is dominated by integrators, consultancies, and BPO operators, which is normal for the child support IV-D market. Borderline FALSE calls the parent may want to revisit: Conduent (sells child support enforcement SYSTEMS alongside SDU operations, ExpertPay, and a card program -- marked false because the"
+   }
   },
   {
    "block": "Health and human services",
@@ -1010,7 +1060,14 @@
    "event_year": "2026",
    "approx_count": null,
    "discovery_notes": "NatCon 2026 (National Council for Mental Wellbeing, April 27-29 2026, Denver) full exhibitor directory renders server-side with booth numbers and categories, browsable alphabetically. Also available: NatCon26 exhibitor prospectus PDF at thenationalcouncil.org/wp-content/uploads/2025/10/NatCon26_Exhibitor-Prospectus-v1-3b.pdf.",
-   "event_tag": "NatCon 2026"
+   "event_tag": "NatCon 2026",
+   "sweep": {
+    "captured": 222,
+    "govtech": 75,
+    "complete": true,
+    "swept_on": "2026-08-23",
+    "notes": "Full directory captured. The eventScribe A-Z nav defaults to the 'All' view, which renders all 224 rows server-side - no pagination and no per-letter fetching needed. (WebFetch claimed '400+ exhibitors'; that was a guess, the real count is 224.) Deduped 2 exact duplicate rows - Netsmart and Simplifyance each appear twice under separate booths with identical website and description - giving 222 entries. FETCH QUIRK worth recording for future sweeps: exhibitor detail pages live at /fsPopup.asp?BoothID=N&mode=exhibitorInfo (the /ajaxcalls/ExhibitorInfo.asp URL in the list markup 302s there). Fetching them 8-way parallel tripped Cloudflare - 120 of 224 returned identical 6045-byte 'Just a moment...' challenge pages that parse as legitimately-empty records rather than as errors. Refetched serially with a cookie jar and ~1s pacing: 120/120 recovered. Any agent that trusts the parallel pass will under-report ~128 exhibitors as having no website/category/description. Websites also sit behind an encrypted /includes/tracking/exhibitorAssetTracking.asp?assetFP= redirect, but the Contact Info pane usually prints the raw URL too - spot-checked 6 against the redirect target and they matched. 19 entries genuinely have no website in the directory (not a parse failure). Bristol Bay Area Health Corporation's Website button resolves to a broken link (exhibitor entered their company name instead of a URL) so website left blank; fixed Harm Reduction Therapeutics' typo 'www,harmreductiontherapeuti"
+   }
   },
   {
    "block": "Health and human services",
@@ -1101,7 +1158,14 @@
    "event_year": "2026",
    "approx_count": 8,
    "discovery_notes": "2026 Annual Conference, Oct 25-28, New Orleans (Hyatt Regency). Exhibitor page currently lists 3 Spotlight Exhibitors plus 5 regular exhibitors with descriptions; list will likely grow as the October event approaches - recheck closer to the date.",
-   "event_tag": "IEDC 2026"
+   "event_tag": "IEDC 2026",
+   "sweep": {
+    "captured": 8,
+    "govtech": 4,
+    "complete": true,
+    "swept_on": "2026-08-23",
+    "notes": "Captured the complete published list at https://neworleans.iedconline.org/exhibitors - 3 Spotlight Exhibitors (Camoin Associates, ROI Research on Investment, Sikich Cloud Nine) + 5 regular Exhibitors (Data-Axle, GIS WebTech, Grow America, Localintel, Resimplifi). Static page, no pagination. Two entries appear only as logo images with no body text (Camoin Associates, Data-Axle) - names taken from their img alt attributes. DATA QUALITY WARNING: the Data-Axle logo on the IEDC page is hyperlinked to https://www.cleco.com/ (Cleco, a Louisiana utility), which is almost certainly a CMS error; I recorded the company as Data-Axle with website https://www.data-axle.com/ rather than propagating the mismatched link. Worth re-verifying whether that booth is Data-Axle or Cleco. Judgment calls: Sikich = false (top-tier CPA/advisory and Microsoft Dynamics implementation firm; Cloud Nine is a packaged CRM overlay but the company's primary offering is consulting/integration); Camoin and ROI = false (economic development consultancies); Grow America = false (community development nonprofit lender/advisor). Sector 'Housing & Community Dev' used as the closest fit for economic development. Per the discovery notes this list will grow before the Oct 25-28 event - complete=true reflects everything published as of today (2026-08-23), and this one should be re-swept closer to the date."
+   }
   },
   {
    "block": "Community development",
@@ -1115,7 +1179,14 @@
    "event_year": "2026",
    "approx_count": null,
    "discovery_notes": "2026 NAHRO National Conference & Exhibition, Oct 15-17 2026, Denver. Alphabetical directory fetched with names in HTML; total count not shown on page (listing extends at least A through M in the fetched chunk).",
-   "event_tag": "NAHRO 2026"
+   "event_tag": "NAHRO 2026",
+   "sweep": {
+    "captured": 72,
+    "govtech": 24,
+    "complete": true,
+    "swept_on": "2026-08-23",
+    "notes": "Full directory captured: 2 pager pages, 40 + 32 = 72, A ('8AI by Blue Flame Group') through Z ('Zagaran Software'), alphabetically continuous across the page break (page 1 ends MRI Software, page 2 starts Nan McKay). Pager exposed only pages 1 and 2 with empty ellipsis containers and page 2 as the active non-link, confirming 2 pages total. The discovery note's concern was justified -- a plain WebFetch of the URL silently truncates at 40 entries (ends at MRI Software) with no visible pagination control, so a single fetch would have looked complete while missing all of N-Z. I drove the JS pager in the browser to reach page 2. To avoid guessing at cryptic names, I then same-origin-fetched all 72 exhibitor profile pages and pulled each one's 'What We Do' text, category tags, and real website URL -- this resolved several I would otherwise have miscoded (Tsunami is a surveillance-camera system, not software; Gilson Housing Partners self-describes as a software provider; Patter COMPASS is a resident communication app; SocialBridge sells TAAG case-management software; TurboPass is SaaS income verification). 14 profiles had no website listed, so the website field is omitted for those rather than fabricated. Lower-confidence calls worth a second look: 'Tikler' (tikler.io) and 'Kanso Software', 'SACS Software', 'Zagaran Software' had blank profile descriptions and were judged true from name/domain plus known PHA-software reputation; 'Leumas Residential' had a blank profile and was judge"
+   }
   },
   {
    "block": "Community development",
@@ -1180,7 +1251,14 @@
    "event_year": "2026",
    "approx_count": null,
    "discovery_notes": "PLA 2026, April 1-3 2026, Minneapolis (already held). Directory HTML contains names; no total count stated. Found via placonference.org/exhibits.",
-   "event_tag": "PLA 2026"
+   "event_tag": "PLA 2026",
+   "sweep": {
+    "captured": 304,
+    "govtech": 73,
+    "complete": true,
+    "swept_on": "2026-08-23",
+    "notes": "304 exhibitors - the full list. The Small World Labs directory at https://pla2026.smallworldlabs.com/exhibitors renders only the first 40 rows server-side and loads the rest through a jsPaginator POST to /index.php that requires per-session tk/tm CSRF tokens; I reproduced the tokens and session cookie and it still 302'd to /home, and URL params (?limit/?offset/?page) are ignored. I worked around it via the a2z booth directory the notes mention: https://s23.a2zinc.net/clients/corcexpo/PLA2026/Public/eventmap.aspx?shMode=E renders all booths in one page - 304 unique BoothIDs, 304 unique names, which exactly matches the total of 304 that the Small World Labs paginator itself reports, so the list is confirmed whole. I then fetched all 304 eBooth.aspx detail pages for website + profile text + product categories: 256 have a website (48 left the field blank), 169 have profile text, 196 have product categories. Sector note: there is no library sector in the allowed list, so library-serving vendors are tagged 'General Gov' as the closest fit, with a few tagged K-12 Schools, Higher Education, Health & Human Services, or Parks & Rec where the offering clearly points there. Two junk rows are in the source directory and I kept them verbatim rather than silently dropping them: 'Carmenttest' (a Corcoran Expositions test record, website corcexpo.com) and 'Cultural Surroundings (keep)'. Four more have no profile, no website, and no categories and are flagged as unverified in their vertical: C"
+   }
   },
   {
    "block": "Parks, recreation, libraries",
@@ -1243,7 +1321,14 @@
    "event_year": "2026",
    "approx_count": 80,
    "discovery_notes": "CoSN 2026 Annual Conference, April 13-15 2026, Chicago. Combined sponsor + exhibitor directory tiered Diamond through Basic Exhibitor; roughly 80+ companies listed and names present in fetched HTML.",
-   "event_tag": "CoSN 2026"
+   "event_tag": "CoSN 2026",
+   "sweep": {
+    "captured": 99,
+    "govtech": 61,
+    "complete": true,
+    "swept_on": "2026-08-23",
+    "notes": "Full combined sponsor+exhibitor directory captured from https://cosn2026.eventscribe.net/sponsors.asp?pfp=Sponsors - single page, no pagination. Extracted 99 unique ExhibitorIDs (198 anchor links = logo + name pair per card), which matches the tier-by-tier render (Diamond 2, Platinum 1, Gold 10, Silver 15, Bronze 13, Premium Exhibitor 45, Basic Exhibitor 13). Websites are NOT on the directory page; I pulled each company's site + boilerplate from its detail popup at /fsPopup.asp?BoothID=..&ExhibitorID=..&mode=exhibitorInfo (all 99 fetched). 90 of 99 have a website; 9 blank (Logitech, Panorama Education, IPEVO, Veracity Verification Solutions, Get Set Tech, Jamf, ClassDojo, Typing.com, Trafera) because the exhibitor left the field empty - I did not substitute guessed URLs. Three had no profile text and were resolved by lookup: Veracity Verification Solutions = K-12 edtech inventory/vetting SaaS (true), Jotit = student handwriting/annotation platform (true), Get Set Tech = Google Workspace reseller/services partner (false). Judgment calls: hardware makers (HPE, Cisco, Dell, Acer, Arista, Extreme, Tellabs, Logitech, IPEVO, Clear Touch, Hovercam, PowerGistics, JAR Systems, InfoCase, CTL, Nextivity, Vivi) = false; resellers/VARs (CDW, Connection, B&H, Camcor, Trafera, Prime Systems, UDT, Get Set Tech) = false; device-lifecycle/repair services (Vivacity Tech, Secured Tech, K12 Tech, Mac of all Trades) = false; carriers (Zayo, Spectrum Business, Mission Telecom) = false; E-rate consu"
+   }
   },
   {
    "block": "K-12 education",
@@ -1325,7 +1410,14 @@
    "event_year": "2026",
    "approx_count": null,
    "discovery_notes": "2026 EDUCAUSE Annual Conference, Denver CO, Sept 29-Oct 2 2026. Directory page footer says 'Powered by A2Z Events' but the smallworldlabs.com page itself renders names + booth numbers in fetchable HTML (booths e.g. 1Kosmos #1861, Adobe #1101). Full alphabetical directory; total count not captured but list is large.",
-   "event_tag": "EDUCAUSE 2026"
+   "event_tag": "EDUCAUSE 2026",
+   "sweep": {
+    "captured": 321,
+    "govtech": 209,
+    "complete": true,
+    "swept_on": "2026-08-23",
+    "notes": "File: staged/educause-2026.json. The smallworldlabs page only renders the first 40 exhibitors; the rest come from an AJAX paginator (module organizations_organization_list, POST /index.php) whose init call declares a hard total of 321. Replaying that endpoint with curl returned empty bodies (needs session/form-token context), so I drove the real browser through all 9 pager pages and harvested each card's name, booth, and outbound website. VERIFICATION: collected exactly 321 unique item ids, matching the paginator's declared total, and I SHA-256'd the sorted name list in the browser against my transcribed file - the digests match (a644cc5a..., 4312 chars), so all 321 names are character-identical to the source with nothing dropped or mistyped. 6 exhibitors have no website link on their card (1Kosmos, Box, Catchbox, Equinix, TeamDynamix, Xfinity Communities) - left empty rather than guessed. Sector is 'Higher Education' for all rows since every buyer at this show is a higher-ed institution. I checked ~35 unfamiliar vendors against their own sites before judging. Consistent lines I drew, so you can re-cut them if you disagree: FALSE for hardware/AV/display/furniture makers (Dell, HP, HPE, Lenovo, Crestron, Extron, Epson, Planar, ViewSonic, Logitech, Jabra, Neat, Owl Labs, Axis, Verkada, ASSA ABLOY, etc.), networking equipment (Cisco, Arista, Extreme, RUCKUS, NETGEAR, A10) and network-as-a-service (Meter, Nile, Boldyn), resellers/distributors (CDW, SHI, Carahsoft, Connection, Ins"
+   }
   },
   {
    "block": "Higher education",

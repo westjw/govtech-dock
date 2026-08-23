@@ -1,8 +1,9 @@
-# Exhibitor lists I can't read - your half of the sweep
+# Exhibitor lists I cannot read - your half of the sweep
 
-For each: open the link, copy the exhibitor names (booth list or floor plan
-sidebar), and hand them back in any format - name + website if shown is
-plenty. I'll classify, dedupe and land them. PDFs: the link IS the list.
+Open the link, copy the exhibitor names (booth list or floor-plan
+sidebar), and hand them back in any format: name plus website if shown
+is plenty. I classify, dedupe and land them. For PDFs the link IS the
+list.
 
 ## Interactive floor-plan apps (need a person with a browser)
 
@@ -68,6 +69,13 @@ plenty. I'll classify, dedupe and land them. PDFs: the link IS the list.
 - Link: https://naccho2026.mapyourshow.com/8_0/explore/exhibitor-gallery.cfm
 - Platform: MapYourShow
 - Notes: Official 2026 NACCHO360 (July 14-17, Louisville KY) exhibitor directory on MapYourShow; fetched HTML renders the search shell but no exhibitor names ('No exhibitors could be found' placeholder). Fallback: naccho360.org hosts a downloadable '2024_and_2025_NACCHO360_Exhibitor_List.pdf' on its Past NACCHO360 Exhibitors page (naccho360.org/sponsorships-and-exhibits/exhibitor-resource-center/past-naccho360-exhibitors).
+
+### NAFA I&E (Fleet)
+- Link: https://www.nafainstitute.org/exhibitors-sponsors/
+- Platform: custom HTML (WordPress); full directory was MapYourShow
+- Roughly 23 exhibitors
+- **Partly done**: 23 sponsors already landed as NAFA I&E 2026; the rest is what is missing.
+- Notes: 2026 edition was April 13-15, Cleveland. The readable page is the sponsor list (~23 names, extracted verbatim). The full 230+ exhibitor directory lived at nafa26.mapyourshow.com but that MapYourShow site now 302-redirects to nafainstitute.org post-event, so the sponsor page is the only public list left. Site is already booking 2027 (April 5-7, Pittsburgh).
 
 ### NAPT Summit (Pupil transportation)
 - Link: https://homebase.map-dynamics.com/napt2026/floorplan
