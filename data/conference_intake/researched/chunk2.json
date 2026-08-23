@@ -1,0 +1,109 @@
+[
+  {
+    "verdict": "scope_review",
+    "company_name": "Cornerstone OnDemand",
+    "website": "https://www.cornerstoneondemand.com",
+    "description": "Talent management, learning and workforce development software sold to employers in every industry, including public sector agencies",
+    "hq_location": "Santa Monica, CA",
+    "year_founded": 1999,
+    "sector": "General Gov",
+    "category": "HR & Workforce",
+    "source_event": "PSHRA 2026",
+    "notes": "Horizontal HR/LMS platform with a public sector practice, not a govtech-specific product"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "EduTrak Software",
+    "website": "https://www.edutrak.com",
+    "description": "Cafeteria point-of-sale, online payments, tuition, activity registration and ticketing software for K-12 school districts",
+    "hq_location": "Bloomington, MN",
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "source_event": "SNA ANC 2027",
+    "notes": "A subsidiary of Advanced Payment Technologies; also lists a Boulder, CO office. Founding year not stated on site"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "Nutri-Link Technologies",
+    "website": "https://nutrilinktechnologies.com",
+    "description": "Free and reduced meal application processing, cafeteria point-of-sale and school fee payment software for K-12 districts and state education agencies",
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "source_event": "SNA ANC 2027",
+    "notes": "Old URL www.nutri-linktechnologies.com 301-redirects to nutrilinktechnologies.com. Site gives its location only as 'Georgia, USA' with no city, and claims 'over two decades' without a founding year, so both fields are omitted"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "Hansen Technologies",
+    "website": "https://www.hansencx.com",
+    "description": "Customer information system, billing and meter-to-cash software for energy and water utilities, including municipal and public power utilities",
+    "hq_location": "Melbourne, Australia",
+    "sector": "Utilities & Energy",
+    "category": "Grid & Energy",
+    "source_event": "APPA Public Power 2026",
+    "notes": "ASX-listed. Roughly half the business is billing software for telecom carriers rather than utilities. Site says '50 years+' serving customers but gives no founding year"
+  },
+  {
+    "verdict": "unverifiable",
+    "company_name": "MasterMind LLC",
+    "description": "Reported traffic sign inventory software for county road departments; company could not be confirmed",
+    "sector": "Public Works",
+    "category": "Streets",
+    "source_event": "NACE 2026",
+    "notes": "Not found by these searches: mastermindllc.com and signmastermind.com both resolve but serve only a parked-domain lander redirect; mastermindsigns.com, mastermind-llc.com and themastermindllc.com do not resolve. Web search was unavailable this session, so this is 'not found by these searches', not proof the company does not exist. The name is also generic enough that any match would need collision checking"
+  },
+  {
+    "verdict": "scope_review",
+    "company_name": "Xakia Technologies",
+    "website": "https://xakiatech.com",
+    "description": "Legal matter management, intake, contract and spend software for in-house legal departments across all industries",
+    "sector": "Courts & Justice",
+    "category": "Prosecution & Defense",
+    "source_event": "IMLA 2026",
+    "notes": "Exhibited at the municipal lawyers association, and city and county attorney offices are a plausible buyer, but the site's named customers are corporates (Nissan, Coca-Cola, Virgin) and there is no public sector page, so this reads as horizontal legal-ops software. Australian-founded; HQ and founding year not stated on site"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "Tyler Technologies",
+    "website": "https://www.tylertech.com",
+    "description": "Court case management, corrections, supervision, ERP, permitting and payments software for state and local government",
+    "hq_location": "Plano, TX",
+    "year_founded": 1966,
+    "sector": "Courts & Justice",
+    "category": "Courts & Case Management",
+    "source_event": "APPA Probation 2026",
+    "notes": "Broad-line government software vendor; categorized to courts and justice because that is the product line behind this exhibit, but Tyler also sells across finance, permitting, public safety and payments"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "SuperCom",
+    "website": "https://www.supercom.com",
+    "description": "Electronic offender monitoring, GPS ankle bracelets and biometric identification systems for probation, corrections and homeland security agencies",
+    "hq_location": "Tel Aviv, Israel",
+    "sector": "Courts & Justice",
+    "category": "Probation & Supervision",
+    "source_event": "APPA Probation 2026",
+    "notes": "Legal entity SuperCom Ltd., Nasdaq-listed. Site claims 'over 26 years of experience' but states no founding year"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "iCEV",
+    "website": "https://www.icevonline.com",
+    "description": "Online career and technical education curriculum and industry certification testing for school districts, workforce programs and reentry education",
+    "hq_location": "Lubbock, TX",
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "source_event": "APPA Probation 2026",
+    "notes": "Legal entity appears to be CEV Multimedia, Ltd. Product is instructional content and certification testing rather than school operations software; filed under Operations & SIS as the closest K-12 software category. Exhibited at the probation conference for its justice-involved learner programs"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "Baseform",
+    "website": "https://www.baseform.com",
+    "description": "Network data analytics software for water utilities covering leakage, infiltration, energy use and capital planning",
+    "sector": "Public Works",
+    "category": "Water",
+    "source_event": "AWWA ACE 2026",
+    "notes": "Legal entity BF Software, Lda., a Portuguese company; the site does not name a city, and no founding year is published. www.baseform.com 302-redirects to baseform.com/np4/home"
+  }
+]

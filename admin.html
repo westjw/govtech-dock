@@ -77,6 +77,10 @@
   .seg button{font:inherit;font-size:12.5px;padding:6px 13px;border:0;background:var(--bg);
     color:var(--dim);cursor:pointer}
   .seg button[aria-pressed=true]{background:var(--accent);color:#fff;font-weight:600}
+  .grouphead{margin:22px 0 8px;padding:12px 14px;border:1px solid var(--line);
+    border-radius:10px;background:var(--chip)}
+  .grouphead strong{display:block;margin-bottom:8px;font-size:14px}
+  .grouphead input{width:100%;margin-bottom:8px}
 </style>
 </head>
 <body>
@@ -93,7 +97,7 @@ const el = (t, cls, txt) => { const n = document.createElement(t);
   if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; };
 const esc = s => (s ?? '').toString();
 
-let META = null, SCHEMA = null, FAMILIES = null, TAB = null;
+let META = null, SCHEMA = null, FAMILIES = null, TAB = null, LAST_ITEMS = null;
 
 async function api(path, body) {
   const r = await fetch(path, body ? {method:'POST',
@@ -195,6 +199,8 @@ async function show(key) {
   const { items } = await api('/api/queue/' + key);
   load.remove();
   if (!items.length) { v.appendChild(el('div', 'empty', 'Nothing in this queue.')); return; }
+  // the whole set, so a renderer can offer to act on a group it belongs to
+  LAST_ITEMS = items; VTHEME = null;
   items.forEach(it => v.appendChild(RENDER[key](it)));
 }
 
@@ -495,7 +501,37 @@ RENDER.miscategorized = c => {
   return n;
 };
 
+let VTHEME = null;
 RENDER.vendors = v => {
+  const wrap = document.createDocumentFragment();
+  if (v.theme && v.theme !== VTHEME) {
+    VTHEME = v.theme;
+    const peers = (LAST_ITEMS || []).filter(x => x.theme === v.theme);
+    const h = el('div', 'grouphead');
+    h.appendChild(el('strong', null, `${v.theme} — ${peers.length}`));
+    const why = el('input');
+    why.placeholder = 'why (recorded against every one of them)';
+    const bulk = (call, label, cls) => {
+      const b = el('button', 'act ' + cls, label);
+      b.onclick = async () => {
+        const names = peers.map(x => x.name);
+        if (!confirm(`${label} for all ${names.length} in ${v.theme}?\n\n`
+                     + names.slice(0, 12).join(', ')
+                     + (names.length > 12 ? `, and ${names.length - 12} more` : '')))
+          return;
+        const r = await api('/api/vendor-scope-all',
+          {names, call, theme: v.theme, why: why.value});
+        if (r.error) return toast(r.error, true);
+        toast(r.message); show(TAB); refreshCounts();
+      };
+      return b;
+    };
+    const row = el('div', 'row');
+    row.append(bulk('in', 'All in', 'good'), bulk('sled', 'All SLED-only', ''),
+               bulk('out', 'All out', 'bad'));
+    h.append(why, row);
+    wrap.appendChild(h);
+  }
   const n = document.createElement('div');
   n.className = 'item';
   n.appendChild(el('h3', null, v.name));
@@ -531,7 +567,8 @@ RENDER.vendors = v => {
              rule('sled', 'SLED-only roles', ''),
              rule('out', 'Not this board', 'bad'));
   n.appendChild(row);
-  return n;
+  wrap.appendChild(n);
+  return wrap;
 };
 
 RENDER.scope = p => {

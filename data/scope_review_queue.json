@@ -2,17 +2,1545 @@
  "items": [
   {
    "name": "Alteryx",
-   "website": "https://alteryx.com",
-   "description": "Horizontal data analytics and automation platform",
-   "why": "sells to government among every other industry",
+   "website": "https://www.alteryx.com",
+   "description": "Data preparation, analytics automation, and AI workflow platform sold across all industries including public sector and higher education",
+   "why": "Horizontal analytics platform - owner example of scope_review. Founded 1997 as SRC LLC, renamed Alteryx 2010; taken private by Clearlake/Insight 2024.",
    "source_event": "NACUBO 2026",
    "queued_on": "2026-08-23"
   },
   {
+   "name": "Strategy",
+   "website": "https://www.strategy.com",
+   "description": "Business intelligence, reporting, and analytics software sold to enterprises, government agencies, and universities",
+   "why": "Formerly MicroStrategy; renamed Strategy in 2025. Horizontal BI product, same shape as the Alteryx example. Note the public company is now primarily a bitcoin treasury vehicle alongside the software business - strategy.com foregrounds MSTR bitcoin metrics.",
+   "source_event": "NACUBO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "RF-SMART",
+   "website": "https://www.rfsmart.com",
+   "description": "Barcode inventory and warehouse management software extending Oracle NetSuite and Microsoft Dynamics ERP for distribution, manufacturing, and healthcare",
+   "why": "A division of ICS (Integrated Custom Software). Horizontal ERP add-on - their own site names distribution, manufacturing, retail, and healthcare, not government; they exhibited at GFOA for public-sector ERP inventory. Founding year 1982 is from directory profiles, not their site.",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Express Evaluations",
+   "website": "https://www.expressevaluations.com",
+   "description": "Employee performance review, goal tracking, and feedback software for HR teams",
+   "why": "General HR performance-management software - their own Solutions page segments by industry, role, and company size with no public-sector emphasis, and their /government page is 'under construction'. Third-party writeups say local government is a target segment, which is presumably why they exhibited at PSHRA. HQ not stated on site (phone is a Utah 385 area code, not enough to place them); founding year not found.",
+   "source_event": "PSHRA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "NetDocuments",
+   "website": "https://www.netdocuments.com",
+   "description": "Cloud document and email management with legal AI for law firms, corporate legal departments, and government legal offices",
+   "why": "Candidate had no URL; netdocuments.com confirmed. Judgment call for the owner: it is legal-vertical rather than truly horizontal, but its primary buyers are private law firms and corporate legal, with government legal (why it exhibited at IMLA, the municipal attorneys' association) as one segment among several - so not government-primary.",
+   "source_event": "IMLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "TRU Solutions",
+   "website": "https://www.trusolutions.com",
+   "description": "Field data capture and asset inspection platform for industrial coatings, shipbuilding, pipeline, and energy construction compliance",
+   "why": "Real product company, but their own site lists industries as coating inspection, infrastructure, marine, and oil and gas - not government. Navy shipbuilding compliance is the only public-sector-adjacent use named. Worth a look at whether this belongs in a SLED tracker at all. Founding year not found by these searches.",
+   "source_event": "AWWA ACE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "BLR",
+   "website": "https://blr.com",
+   "description": "HR and environmental health and safety compliance software, regulatory content, and training courseware for employers in all industries",
+   "why": "Horizontal compliance vendor - their own site claims 34,000 companies across manufacturing, construction, healthcare, and retail, with public risk pools (why they exhibited at PRIMA) as one slice. Also part publisher: revenue mixes SaaS (EHS Hero, HR Hero, TrainingToday) with attorney-verified content subscriptions, so the owner may see it as more content than product. Formerly Business & Legal Resources / M. Lee Smith Publishers.",
+   "source_event": "PRIMA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "OutSystems",
+   "website": "https://www.outsystems.com",
+   "description": "Low-code and AI application development platform used to build custom apps across banking, insurance, government, manufacturing, healthcare, and retail",
+   "why": "Horizontal dev platform - government is one of eight industries listed on their own site. Founded 2001 in Lisbon, Portugal; US headquarters now Boston.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Netskope",
+   "website": "https://www.netskope.com",
+   "description": "Cloud access security broker, SASE, and zero trust networking software for enterprises and government agencies",
+   "why": "General-purpose enterprise cybersecurity, not government-specific. Their homepage renders almost nothing to fetch; HQ and founding year come from directory profiles rather than their own site.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Armis",
+   "website": "https://www.armis.com",
+   "description": "Connected asset, IoT, and OT security platform for enterprises, healthcare, manufacturing, and public agencies",
+   "why": "General cybersecurity. armis.com returns 403 to fetch and curl, so details come from directory profiles rather than page text.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Black Duck",
+   "website": "https://www.blackduck.com",
+   "description": "Application security testing software - SAST, DAST, and software composition analysis - for software teams in all industries",
+   "why": "General AppSec, not government-specific. Founding year deliberately omitted and worth a human call: the original Black Duck Software was founded in 2002, acquired by Synopsys in 2017, then sold by Synopsys to Clearlake and Francisco Partners in October 2024 and relaunched under the old name - so 2002 and 2024 are both defensible and both misleading alone.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "CyberFOX",
+   "website": "https://www.cyberfox.com",
+   "description": "Privileged access management, password management, and DNS filtering software sold to managed service providers and lean IT teams",
+   "why": "General cybersecurity; their own site lists MSPs first, with government and education as segments among manufacturing and enterprise. 2022 is the CyberFOX brand launch (June 2022) uniting AutoElevate, founded 2018, and Password Boss - not a clean incorporation date.",
+   "source_event": "GMIS International 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Wasabi Technologies",
+   "website": "https://wasabi.com",
+   "description": "S3-compatible cloud object storage sold as a low-cost alternative to hyperscalers for backup, archive, AI, and video surveillance data",
+   "why": "Horizontal cloud infrastructure - their own site names AI, healthcare, media, backup, and surveillance as target industries, not government. Founded September 2015 by David Friend and Jeff Flowers; product launched 2017.",
+   "source_event": "GMIS International 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Jamf",
+   "website": "https://www.jamf.com",
+   "description": "Apple device management and endpoint security for enterprises, schools, universities, healthcare, and small business",
+   "why": "Candidate had no URL; jamf.com confirmed. Horizontal device management - their own site's first industry tab is Enterprise, with K-12 and Higher Education alongside. Founding year 2000 is stated on their About page (co-founded by Zach Halmstad at UW-Eau Claire); the About page names Minnesota and Wisconsin but no city, so Minneapolis is from Jamf's public company filings, not the page.",
+   "source_event": "CoSN 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Clearspeed",
+   "website": "https://www.clearspeed.com",
+   "description": "Voice-analysis risk assessment used for personnel vetting, claims triage, and fraud screening across government, defense, insurance, and banking",
+   "why": "Real product, but their own navigation splits Public Sector (government, immigration, benefits integrity, defense) from Commercial (insurance, banking, sports integrity) - it sells the same engine into many industries, so the owner should rule on scope. First major defense client was U.S. Special Operations Command in 2018. Founding year not stated on their site.",
+   "source_event": "APHSA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "ObservSMART",
+   "website": "https://www.observsmart.com",
+   "description": "Proximity-verified patient observation rounding and safety compliance software for behavioral health units, hospitals, and long-term care",
+   "why": "Flagged rather than decided: a real product, but their own site's 500+ customers span acute care hospitals, emergency departments, skilled nursing, and long-term care - a healthcare market where public psychiatric and county facilities are one slice, not the core. Founding year not stated on the site.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Adobe",
+   "website": "https://aqua.adobe.com",
+   "description": "Aqua, a free digital art and drawing app for children and families, offered by Adobe alongside its wider creative software line",
+   "why": "Not a standalone company: the site says Aqua is 'made with love by parents at Adobe' - the exhibitor is Adobe Inc. showing a consumer kids' app to public libraries. Big-tech horizontal vendor, so the owner should rule on whether it belongs at all. HQ San Jose is from general knowledge of Adobe, not the Aqua page; founding year omitted for the same reason.",
+   "source_event": "PLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "CustomGuide",
+   "website": "https://www.customguide.com",
+   "description": "Editable training courseware and skill assessments for Microsoft Office, Google Workspace, compliance, and soft skills, with a built-in LMS",
+   "why": "Candidate had no URL; customguide.com confirmed. Horizontal training content - 3,000+ organizations named include Amazon and Yale alongside government agencies, nonprofits, and public libraries. It is also more courseware than software. HQ omitted: the only locator is a 612 Minneapolis phone number, and the About and Contact pages render nothing to fetch. Founding year not found.",
+   "source_event": "PLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Answerr",
+   "website": "https://answerr.ai",
+   "description": "AI capability assessment and AIQ credentialing platform for individuals, universities, and employers",
+   "why": "Flagged for a human check: the candidate described 'AI voice answering for institutions', but answerr.ai today sells AI capability measurement and credentialing (legal entity Answer Labs Inc.) - either the candidate's vertical was wrong or the company pivoted, and I could not rule out a name collision. Also sells to enterprises and individuals, not just institutions. HQ and founding year not disclosed on the site.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "BeyondTrust",
+   "website": "https://www.beyondtrust.com",
+   "description": "Privileged access management and identity security software for enterprises, government agencies, and universities",
+   "why": "General cybersecurity, not education-specific - the candidate URL was their /education landing page. beyondtrust.com returns 403 to fetch and renders nothing to curl, so HQ is from general knowledge rather than the site, and the founding year is omitted (the company is a roll-up of Symark, eEye, and the original BeyondTrust, with no single clean date).",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Canva",
+   "website": "https://www.canva.com",
+   "description": "Browser-based visual design and presentation software used by businesses, schools, universities, and nonprofits",
+   "why": "Horizontal design tool; the candidate URL was the Canva for Campus landing page. canva.com renders nothing to curl, so HQ and founding year are from general knowledge, not the site. Legal entity Canva Pty Ltd.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Cribl",
+   "website": "https://cribl.io",
+   "description": "Telemetry data pipeline and observability software that routes logs, metrics, and traces for enterprise IT and security teams",
+   "why": "Horizontal infrastructure software - roughly half the Fortune 100, with public sector one of eight industries listed. Their own Our Story timeline dates the founding by Clint Sharp, Dritan Bitincka, and Ledion Bitincka in San Francisco to July 2018.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "GitLab",
+   "website": "https://about.gitlab.com",
+   "description": "DevOps platform for source control, CI/CD, and security scanning used by software teams in every industry",
+   "why": "Horizontal developer tooling. about.gitlab.com returns 403 to fetch, so HQ and founding year are from general knowledge of the public company rather than the site; GitLab is all-remote with San Francisco as its registered headquarters, so the city is nominal.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Opkey",
+   "website": "https://www.opkey.com",
+   "description": "AI test automation and change-impact analysis for Oracle Cloud, Workday, and SAP ERP implementations across all industries",
+   "why": "Horizontal ERP tooling - their own site lists eight industries with Government (SLED) as one, alongside Fortune 500 logos like Gap, Pfizer, and Dell. Their /about-us and /contact-us return 403 to curl, so HQ and founding year are not confirmed and are omitted.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Poll Everywhere",
+   "website": "https://www.polleverywhere.com",
+   "description": "Live audience polling and response software for classroom instruction, corporate meetings, and events",
+   "why": "Horizontal engagement tool - their own About page claims 82% of the Fortune 500 alongside 91% of R1 universities. Founded 2008 in San Francisco per that page; the company is now remote-first, so the city is nominal.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "ReadSpeaker",
+   "website": "https://www.readspeaker.com",
+   "description": "Text-to-speech and voice technology for websites, learning platforms, gaming, transportation, and embedded applications",
+   "why": "Horizontal voice technology - their own sector menu lists gaming, transportation, workplace, government, assistive technology, healthcare, fintech, and media alongside education. HQ and founding year are not published on the site; the company operates across Europe and the US.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Superhuman",
+   "website": "https://superhuman.com",
+   "description": "AI email, document, and writing productivity suite - Grammarly, Superhuman Mail, and Docs - for individuals, companies, and institutions",
+   "why": "Horizontal productivity software; the candidate URL was the /edu landing page. Corporate history is tangled: their own About timeline starts '2009: Grammarly is founded', and the company later acquired Superhuman and Coda and rebranded the whole suite as Superhuman - so 2009 is the entity's origin, not the Superhuman product's. Claims 40M+ daily users and 3,000+ academic institutions. HQ not published on the site.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Veeam Software",
+   "website": "https://www.veeam.com",
+   "description": "Backup, disaster recovery, and ransomware resilience software for hybrid cloud data across all industries",
+   "why": "Horizontal data protection - their own solutions menu lists government and education alongside financial services, healthcare, enterprise, service providers, and small business. Neither their About nor Contact page states an HQ or founding year, so both are omitted.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "ASUENE USA Inc.",
+   "website": "https://asuene.com/us",
+   "description": "Carbon accounting and ESG disclosure software for enterprises, aimed mainly at manufacturers and their supply chains",
+   "why": "Given URL www.asuene.com does not resolve; canonical US site is asuene.com/us. US subsidiary of Asuene Inc. (Tokyo), relocated from Los Angeles to Torrance. Horizontal ESG platform sold across industry verticals (automotive, electronics, chemicals, consumer goods), not a public-sector product, despite exhibiting at NACUBO. Founding year not found by these searches.",
+   "source_event": "NACUBO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "CoStar Real Estate Manager",
+   "website": "https://costarmanager.com",
+   "description": "Lease accounting and lease administration software for corporate, retail, and public-sector real estate portfolios",
+   "why": "Horizontal lease accounting product sold across all industries; GASB 87 support is one compliance mode among ASC 842 and IFRS 16. Acquired Visual Lease, now merged into this brand. Part of CoStar Group. Founding year not found by these searches.",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "FinQuery",
+   "website": "https://finquery.com",
+   "description": "Lease, debt, and accrual accounting automation software for finance teams in any industry",
+   "why": "Formerly LeaseQuery. Horizontal accounting-compliance product; government issuers are one segment among corporates and CPA firms.",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Sage",
+   "website": "https://www.sage.com/en-us/",
+   "description": "Accounting, payroll, and ERP software for small and mid-sized businesses across all industries",
+   "why": "sage.com blocks automated fetch (Cloudflare 403) for both WebFetch and curl; details from company profile sources. Horizontal SMB accounting/ERP vendor with a public sector practice (Sage Intacct), not a govtech-specific product.",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Oracle",
+   "website": "https://www.oracle.com",
+   "description": "Cloud infrastructure, database, ERP, and HCM software sold to enterprises and governments across every industry",
+   "why": "Candidate was listed as the US operating entity Oracle America, Inc.; the canonical brand is Oracle (Oracle Corporation). Horizontal big-tech vendor with a public sector division, not a govtech-specific company.",
+   "source_event": "PSHRA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Checkbox",
+   "website": "https://www.checkbox.ai",
+   "description": "No-code legal request intake, matter management, and workflow automation software for in-house legal teams",
+   "why": "No URL was supplied; resolved to checkbox.ai (Checkbox Technology Pty Ltd), not the unrelated Checkbox survey software at checkbox.com. Horizontal legal-ops product whose named customers are corporates (BMW, PepsiCo, SAP, Deloitte); municipal law departments are one buyer type among many.",
+   "source_event": "IMLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Multi-Health Systems Inc. (MHS)",
+   "website": "https://mhs.com",
+   "description": "Psychological and risk-needs assessments delivered through an online assessment platform, sold to clinical, education, public safety, and corporate talent buyers",
+   "why": "Judgment call: MHS is an assessment publisher rather than a pure software company, and it sells across clinical, education, corrections, and corporate HR. Its offender risk-needs instruments (LS/CMI, YLS/CMI) are the reason it exhibits at APPA, but the business is not government-specific.",
+   "source_event": "APPA Probation 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Vexcel",
+   "website": "https://vexceldata.com",
+   "description": "Aerial imagery, 3D models, and AI-derived property data licensed to government, insurance, utilities, telecom, energy, and financial services",
+   "why": "Given URL vexcelgroup.com did not respond; the live commercial site is vexceldata.com (footer entity Vexcel Imaging US, Inc.). Horizontal geospatial data business: government property assessment is one of eight named industries alongside insurance, which is the largest commercial segment. Founded 1992 in Graz, Austria as Vexcel Imaging; US group HQ now Boulder, CO.",
+   "source_event": "IAAO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "KYND",
+   "website": "https://www.kynd.io",
+   "description": "Cyber risk scanning and portfolio monitoring software sold to insurance brokers, underwriters, financial services firms, and risk pools",
+   "why": "General-purpose cyber risk analytics distributed mainly through the insurance channel; public entity risk pools are one buyer segment among brokers, carriers, and corporates. Backed by Verisk and BGF. HQ and founding year from funding press, not the company site.",
+   "source_event": "PRIMA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Siteimprove",
+   "website": "https://www.siteimprove.com",
+   "description": "Web accessibility, content quality, analytics, and SEO software for organizations in government, higher education, healthcare, finance, and retail",
+   "why": "Horizontal digital-presence platform; government and higher ed are two of many named verticals, with corporates such as Vodafone, BT, and Costco as flagship customers. Legal entity Siteimprove A/S.",
+   "source_event": "3CMA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Microsoft",
+   "website": "https://www.microsoft.com",
+   "description": "Cloud infrastructure, productivity, and AI software sold to enterprises, governments, and consumers worldwide",
+   "why": "Big-tech horizontal vendor with a public sector division; not govtech-specific.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Ping Identity",
+   "website": "https://www.pingidentity.com",
+   "description": "Identity and access management, verification, and fraud protection software for large enterprises",
+   "why": "General-purpose IAM: the company markets itself on Fortune 100 and large-bank adoption, with government as one vertical. Denver HQ confirmed on the company's contact page; founding year is from general reference sources, not the site. Owned by Thoma Bravo.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "CoreView",
+   "website": "https://www.coreview.com",
+   "description": "Microsoft 365 tenant governance, configuration management, and license optimization software for enterprise IT teams",
+   "why": "Horizontal Microsoft 365 management tool; named customers span higher ed, state government, banking, shipping, and nonprofits. Company lists a US HQ in Washington, DC, an EMEA HQ in Milan, Italy, and an Australian office. GovRAMP Premier Member. Founding year not found by these searches.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Cloudera",
+   "website": "https://www.cloudera.com",
+   "description": "Hybrid data lakehouse and enterprise AI platform sold to large organizations across all industries",
+   "why": "General enterprise data platform (Global 2000 positioning) with public sector as one vertical. HQ and founding year could not be confirmed on cloudera.com itself; both come from general reference sources and should be spot-checked.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Nomic Networks",
+   "website": "https://nomicnetworks.com",
+   "description": "Managed network detection and response and managed security operations for organizations with small IT teams",
+   "why": "Formerly Sentinel IPS. Delivered largely as a managed service rather than self-serve software, and sold across local government, banking, healthcare, and higher ed, so it is horizontal cybersecurity rather than a govtech product. HQ and founding year from Crunchbase/ZoomInfo-style profiles.",
+   "source_event": "GMIS International 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Zoom Communications",
+   "website": "https://www.zoom.com",
+   "description": "Video meetings, phone, chat, and contact center software sold to businesses, schools, and governments",
+   "why": "Renamed from Zoom Video Communications to Zoom Communications, Inc. in 2024. Horizontal communications platform; education and government are two of many named verticals.",
+   "source_event": "CoSN 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Logikcull",
+   "website": "https://www.logikcull.com",
+   "description": "Cloud e-discovery, legal hold, and public records request automation for law firms, corporations, government agencies, and schools",
+   "why": "Acquired by Reveal Data in August 2023 and now operates as a Reveal brand; the logikcull.com site is still live with its own product pages. Horizontal legal tech, with FOIA and public records handling as one workflow among corporate e-discovery use cases.",
+   "source_event": "CoSN 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "ScreenSteps",
+   "website": "https://www.screensteps.com",
+   "description": "Knowledge base, SOP authoring, and in-app agent guidance software for contact centers and regulated back offices",
+   "why": "Horizontal knowledge-operations tool; the industries it names are credit unions, banks, farm credit associations, contact centers, and law firms, with human services agencies as an adjacent buyer. Founding year not found by these searches.",
+   "source_event": "APHSA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "PaymentVision",
+   "website": "https://www.paymentvision.com",
+   "description": "Payment gateway for card, ACH, and check payments taken by phone, web, and API, sold to lenders, collectors, healthcare billers, utilities, and government agencies",
+   "why": "A brand of Autoscribe Corporation. Horizontal biller-facing payments processor; housing authorities and municipalities are one of five named verticals alongside collections and consumer finance.",
+   "source_event": "NAHRO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Amigo AI",
+   "website": "https://amigo.ai",
+   "description": "Platform for building and deploying AI clinical agents that automate patient-facing workflows for healthcare providers",
+   "why": "Judgment call worth a second look: the buyers are clinics and health systems across primary care, orthopedics, women's health, oncology, and behavioral health, so it is a healthcare AI vendor rather than a public-agency product, despite exhibiting at NatCon. HQ and founding year are not published on the site and were not found by these searches.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Kipu Health",
+   "website": "https://www.kipuhealth.com",
+   "description": "CRM, EMR, billing, and compliance platform for addiction treatment, eating disorder, and behavioral health facilities",
+   "why": "Judgment call worth a second look: a real behavioral health software product, but its named market is private residential and outpatient treatment centers rather than county or state agencies, so it may not belong on a public-sector tracker. Founding year not found by these searches.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Oracle Health",
+   "website": "https://www.oracle.com/health/",
+   "description": "Electronic health record and clinical data platform for hospitals, health systems, and behavioral health providers",
+   "why": "This is Oracle's healthcare division, the former Cerner, acquired by Oracle in 2022 and still operating from the Kansas City area campus. It is the same corporate entity as the separate Oracle candidate from PSHRA 2026, so the two should probably be merged rather than carded twice. Founding year omitted because Oracle (1977), Cerner (1979), and Oracle Health (2022) are three different dates.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Candid",
+   "website": "https://candid.org",
+   "description": "Database of roughly 1.9 million US nonprofits plus grants and funder data, licensed to nonprofits, grantmakers, and public libraries",
+   "why": "Candid is itself a 501(c)(3) nonprofit (EIN 13-1837418) formed in 2019 by the merger of GuideStar and Foundation Center, so 2019 is the merged entity's date, not the lineage's. Its primary users are nonprofits and funders; public libraries are one distribution channel, which is why this is flagged rather than carded as govtech. HQ from general reference sources; the site's contact page did not resolve.",
+   "source_event": "PLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Data Axle",
+   "website": "https://www.data-axle.com",
+   "description": "US business and consumer reference databases, sold to marketers broadly and to libraries and academic institutions as Reference Solutions",
+   "why": "Reference Solutions is the library-facing product line of a general-purpose B2B and consumer data company (formerly Infogroup), which is why this is scope review rather than govtech. Corporate locations listed are Grapevine TX, Boston MA, and Omaha NE, with Grapevine listed first; the site says 'since 1972' rather than naming a founding year outright.",
+   "source_event": "PLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SenSource, Inc.",
+   "website": "https://www.sensourceinc.com",
+   "description": "Stereo-video people counting sensors and occupancy analytics software for retail, libraries, museums, campuses, and public buildings",
+   "why": "Horizontal traffic-analytics vendor: retail is listed first among ten industries, and the offering is a sensor-plus-software package with installation services, so it is part hardware business.",
+   "source_event": "PLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Action1",
+   "website": "https://www.action1.com",
+   "description": "Cloud patch management and endpoint vulnerability remediation software for IT teams across industries",
+   "why": "Could not read the site: action1.com serves a Cloudflare JavaScript challenge to WebFetch and to curl with full browser headers, and the session's web search budget was exhausted before an alternate source could be checked. Verdict, description, and category rest on general knowledge of Action1 as a horizontal patch management vendor and should be verified by hand; HQ and founding year are deliberately omitted rather than guessed.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Carousel Digital Signage",
+   "website": "https://www.carouselsignage.com",
+   "description": "Cloud digital signage content management and emergency messaging software for schools, campuses, offices, hospitals, and government buildings",
+   "why": "A product of Tightrope Media Systems. Horizontal signage platform sold across five named industries. The site claims nearly 30 years in business but never states a founding year, so none is recorded.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Commvault",
+   "website": "https://www.commvault.com",
+   "description": "Data backup, cyber recovery, and identity resilience software for enterprises across all industries",
+   "why": "Horizontal enterprise data protection vendor; government, healthcare, financial services, and education are named as verticals. Publicly traded (NASDAQ: CVLT). HQ and founding year from general reference sources, not the site.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Cvent",
+   "website": "https://www.cvent.com",
+   "description": "Event registration, venue sourcing, mobile app, and check-in software for event and marketing teams across all industries",
+   "why": "Horizontal event management platform with a higher-ed page; the company markets on 89% of the Fortune 100 as customers. Legal name Cvent, Inc. Address from the site footer; founding year from general reference sources, matching the site's '25+ years' claim. Sector assignment is awkward: the product is event software, so it was mapped to Events & Tourism rather than to the conference it exhibited at.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "EfficientIP",
+   "website": "https://efficientip.com",
+   "description": "DNS, DHCP, and IP address management software with DNS security, sold to enterprises and service providers across all industries",
+   "why": "Horizontal network infrastructure vendor; reference customers are Netflix, Heineken, Orange, Airbus, and Credit Agricole, with education one of six named verticals. Originally a French company (EfficientIP SAS); West Chester, PA is the address listed first on its contact page and appears to be the US HQ, so the corporate HQ in France is worth confirming. Founding year from the site's 'Since 2004'.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "GoMeddo",
+   "website": "https://www.gomeddo.com",
+   "description": "Salesforce-native scheduling, booking, and resource reservation software sold across education, healthcare, hospitality, retail, and financial services",
+   "why": "Horizontal Salesforce ISV listing ten industries; education is one. Founding year not found by these searches.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "HaloITSM",
+   "website": "https://usehalo.com/haloitsm",
+   "description": "IT service management, enterprise service management, and CRM software sold across public sector, retail, education, healthcare, and financial services",
+   "why": "Corporate entity is Halo Service Solutions; HaloITSM is one product alongside HaloPSA, HaloCRM, and HaloCSM. Horizontal service-desk vendor across roughly fifteen named industries. Founding year not found by these searches.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "MyWorkDrive",
+   "website": "https://www.myworkdrive.com",
+   "description": "VPN-free secure remote access to on-premises and cloud file servers, sold across healthcare, education, government, legal, finance, and manufacturing",
+   "why": "Legal entity MyWorkDrive, LLC. Horizontal file-access product spanning seven named industries. HQ and founding year not published on the site and not found by these searches.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Orchestry",
+   "website": "https://www.orchestry.com",
+   "description": "Microsoft 365 workspace provisioning, lifecycle, and governance software for IT teams across construction, healthcare, higher education, legal, manufacturing, and public sector",
+   "why": "Legal entity Orchestry Software Inc. Horizontal Microsoft ecosystem ISV; overlaps directly with the CoreView candidate from NASCIO 2026. HQ and founding year not published on the site and not found by these searches.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Red Hat",
+   "website": "https://www.redhat.com",
+   "description": "Enterprise Linux, Kubernetes, automation, and AI platform subscriptions sold to large organizations in every industry",
+   "why": "An IBM subsidiary since 2019. Horizontal enterprise open source vendor with an academic program; not govtech-specific.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "ScreenComply",
+   "website": "https://screencomply.ai",
+   "description": "Software that detects undisclosed AI assistance in live interviews, proctored exams, and recorded video sessions",
+   "why": "Three named markets: technical hiring, higher education and certification proctoring, and assessment platforms, so corporate recruiting is co-equal with education. Site notes SDVOSB certification and FedRAMP-aligned controls. HQ and founding year are not published on the site and were not found by these searches; the company appears to be very early stage.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Smartsheet",
+   "website": "https://www.smartsheet.com",
+   "description": "Work and project portfolio management platform sold to enterprises across every industry",
+   "why": "Horizontal work management vendor marketing on 85%+ Fortune 500 adoption; government and higher education are two of six named verticals. Legal name Smartsheet Inc. HQ and founding year from general reference sources because the site does not publish either.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Asset Systems, Inc.",
+   "website": "https://www.assetsystems.com",
+   "description": "Fixed asset tracking software, barcode hardware, and physical inventory services sold across government, education, healthcare, and corporate clients",
+   "why": "Horizontal asset-tracking vendor (Ingenium cloud and AssetWIN on-prem) with a mixed software-plus-services model; public sector is one named market among many, alongside Fortune 500 clients",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "CSG",
+   "website": "https://www.csgi.com",
+   "description": "Billing, revenue management, payments, and customer engagement software for telecom, utilities, and other high-volume billers",
+   "why": "Horizontal enterprise billing vendor - telecom is the core market, government is one listed industry. Site announces completed acquisition by NEC and Netcracker. Founded 1982 as a First Data division; 1994 is when it became CSG Systems International.",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "FirsTech",
+   "website": "https://firstechpayments.com",
+   "description": "Bill payment processing, lockbox, and integrated receivables for utilities, insurers, telecoms, healthcare, and government billers",
+   "why": "Wholly-owned subsidiary of Busey Bank; horizontal payments processor where government/municipalities is one of six named verticals",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "National Payment Corporation (NatPay)",
+   "website": "https://natpay.com",
+   "description": "ACH direct deposit, payroll payments, and electronic payroll document delivery for employers of any size",
+   "why": "Horizontal third-party ACH processor serving 318,000+ clients across all industries; no public sector specialization on the site",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SAP",
+   "website": "https://www.sap.com",
+   "description": "Enterprise ERP, finance, HR, and supply chain software for organizations in every industry",
+   "why": "Big-enterprise horizontal ERP; sap.com returned 403 to WebFetch, confirmed founding year via curl with a Chrome user agent",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Pulpstream",
+   "website": "https://www.pulpstream.com",
+   "description": "No-code workflow software for employee leave, accommodations, workplace incidents, and claims at large employers",
+   "why": "Horizontal HR/risk workflow product - government is one of roughly fifteen industries listed alongside manufacturing, retail, and hospitality. Operates as an offering of Venforce, Inc.; founding year 2013 is from third-party company databases (the legal entity was incorporated in 2015) and is not stated on the site.",
+   "source_event": "PSHRA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Clio",
+   "website": "https://www.clio.com",
+   "description": "Cloud legal practice management, billing, and document software for law firms",
+   "why": "Exhibited at the municipal attorneys' conference, but the stated target market is solo practitioners and small-to-midsize private law firms - government legal departments are a slice, not the primary buyer. Real product company, so flagging for the owner rather than calling it govtech. Legal entity Themis Solutions Inc.; clio.com returns 403 to both WebFetch and curl, so details come from Clio's own blog/about pages via search.",
+   "source_event": "IMLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Snowflake",
+   "website": "https://www.snowflake.com",
+   "description": "Cloud data warehouse and AI platform for enterprises in every industry",
+   "why": "Horizontal big-data platform with ~12,000 customers across financial services, healthcare, retail, and manufacturing; public sector is one vertical go-to-market. Snowflake's own about page does not state HQ or founding year - both are from widely reported public filings/coverage.",
+   "source_event": "NASWA 2025",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Powerfront",
+   "website": "https://www.powerfront.com",
+   "description": "AI chat, messaging, and live agent customer service software (INSIDE) for retailers, councils, and universities",
+   "why": "Horizontal customer-service product - the marquee references are luxury retail (Versace, Valentino, Dolce & Gabbana, L'Oreal) with government/councils listed as one of eight industries. Founded in Melbourne, Australia in 2001 and moved US operations to Beverly Hills in 2012; founding year is from third-party profiles (one source says 2004) and is not on the site.",
+   "source_event": "3CMA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SAP",
+   "website": "https://www.sap.com",
+   "description": "Enterprise ERP, finance, HR, and supply chain software for organizations in every industry",
+   "why": "Duplicate candidate - same company as the \"SAP\" row from GFOA 2026 earlier in this file, listed here under the SAP Public Services line of business. Merge the two before carding.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Pluralsight",
+   "website": "https://www.pluralsight.com",
+   "description": "Subscription technology skills training, hands-on labs, and certification prep for enterprise and public sector IT teams",
+   "why": "Horizontal corporate learning platform - 22,000 business customers and 70% of the Fortune 500, with public sector as one segment. The about page says only \"Headquartered in Texas\" with no city, and older records list Draper, UT, so hq_location omitted rather than guessed.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Fortinet",
+   "website": "https://www.fortinet.com",
+   "description": "Network security, firewall, and SASE products for enterprises, service providers, and government",
+   "why": "Horizontal cybersecurity vendor with 1M+ customers across all industries. Fortinet's own page says only \"founded in the San Francisco Bay Area in 2000\"; Sunnyvale is its long-published corporate address.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Omnissa",
+   "website": "https://www.omnissa.com",
+   "description": "Digital workspace, virtual desktop, and endpoint management software (Horizon, Workspace ONE) for enterprise IT",
+   "why": "Horizontal end-user computing vendor, formerly VMware's EUC business, spun out as an independent KKR-owned company on July 1, 2024. Site footer gives a Mountain View, CA corporate address while press coverage often says Atlanta, GA - worth confirming which the owner wants on the card.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Scale Computing",
+   "website": "https://www.scalecomputing.com",
+   "description": "Edge virtualization and hyperconverged infrastructure software for distributed sites in retail, healthcare, government, and education",
+   "why": "Horizontal infrastructure vendor (SC//HyperCore, SC//Fleet Manager); government and education are two of several named industries. Reported acquired by Acumera in July 2025 - confirm current ownership before carding.",
+   "source_event": "GMIS International 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Argyle",
+   "website": "https://argyle.com",
+   "description": "Direct-source payroll and banking data for income, employment, and asset verification",
+   "why": "Horizontal verification data network - government benefits is one of six named markets alongside mortgage, personal lending, background checks, tenant screening, and gig economy. Legal entity Argyle Systems Inc.; \"Since 2018\" is on their about page but no headquarters address appears on the site or in its privacy policy, so hq_location omitted.",
+   "source_event": "APHSA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Dazos",
+   "website": "https://dazos.com",
+   "description": "Behavioral health CRM covering admissions, marketing, insurance verification, and billing for treatment facilities",
+   "why": "Real vertical product, but the buyer is overwhelmingly private treatment operators - substance use treatment centers, ABA and TMS clinics, methadone programs - with community mental health and Medicaid clinics as one segment. Flagging rather than calling it govtech since there is no public-agency sales motion evident on the site.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "exydoc",
+   "website": "https://www.exydoc.com",
+   "description": "Provider data management, credentialing, enrollment, and roster software for healthcare organizations",
+   "why": "Candidate described it as a \"reporting and data platform\" - the site is actually provider credentialing and roster management. Customers shown are medical practices, therapy centers, and healthcare networks, i.e. private providers, not public agencies. Category is a weak fit: the sector map has no credentialing bucket and Behavioral Health was chosen for the NatCon-facing customer base. No founding year published.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Mergent",
+   "website": "https://www.lseg.com/en/ftse-russell",
+   "description": "Company financials, business directory, and index data products sold to financial institutions and to academic and public libraries",
+   "why": "mergent.com now 302-redirects to the FTSE Russell page on lseg.com - Mergent is a brand inside FTSE Russell, part of the London Stock Exchange Group, and has no standalone site left. Flagging rather than calling it govtech: this is a financial data business whose library subscriptions (Mergent Online, Mergent Intellect) are one channel. No founding year recorded - the Mergent name traces back to the Moody's manuals and would be misleading on the card.",
+   "source_event": "PLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Concentric AI",
+   "website": "https://concentric.ai",
+   "description": "AI data security posture management for discovering, classifying, and governing access to sensitive enterprise data",
+   "why": "Horizontal data security vendor - the customer logos are financial services, healthcare, technology, and professional services, with higher ed as one buyer. HQ from the address on their contact page; no founding year published on the site, so omitted.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Elastic",
+   "website": "https://www.elastic.co",
+   "description": "Elasticsearch-based search, observability, and security data platform for enterprises and government",
+   "why": "Horizontal search and data platform - the public sector page is one of several industry pages alongside financial services, manufacturing, retail, and telecom. Legal entity is Elasticsearch B.V. / Elastic N.V. (Dutch-registered); HQ and founding year come from public filings and coverage, not the fetched page.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Fischer Identity",
+   "website": "https://www.fischeridentity.com",
+   "description": "Managed identity governance and access management platform automating user lifecycle and provisioning",
+   "why": "Higher education is the strongest vertical (Baylor, Auburn, UVA are the marquee logos), but they market equally to healthcare, financial services, and manufacturing - horizontal enough to leave the call to the owner. Site says \"years of IAM expertise\" with no founding year, so omitted.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "GRAIL",
+   "website": "https://enterprise.grailai.io",
+   "description": "Autonomous AI agent platform running preconfigured expert skills on private servers",
+   "why": "Hard to verify: both enterprise.grailai.io and grailai.io are JavaScript shells that render no crawlable text, so everything here comes from the page's own meta tags - which name InnovationAI Inc. as author and describe an \"autonomous agent preloaded with PhD-level skills on secure servers\" with no education specialization. Distinct from GRAIL, the cancer-screening company at grail.com - name collision resolved by the candidate's own subdomain. No HQ or founding year discoverable; recommend a human check before carding.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Relish",
+   "website": "https://relishiq.com",
+   "description": "Supplier, invoice, bank account, and worker data validation add-ons for Workday, SAP, Oracle, and Coupa",
+   "why": "The candidate described it as higher education workflow software; the site is a horizontal ERP data-validation product with Higher Education and Public Sector as two of eight industries alongside PayPal, Best Buy, PepsiCo, and Capital One. Higher ed references are real (University of Nebraska, Grand Valley State, University of Tampa). Site claims 20+ years but names no founding year.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
    "name": "Blackbaud",
-   "website": "https://blackbaud.com",
-   "description": "Fundraising and financial software for nonprofits and education",
-   "why": "education and nonprofit, not government-specific",
+   "website": "https://www.blackbaud.com",
+   "description": "Fundraising, fund accounting, and constituent management software for nonprofits, foundations, K-12 schools, and universities",
+   "why": "Named by the owner as a scope_review example. Sells across the whole nonprofit/social-impact market, of which public universities and school districts are one slice.",
+   "source_event": "NACUBO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Virtual Incentives",
+   "website": "https://www.virtualincentives.com",
+   "description": "Digital rewards and payout platform issuing prepaid cards, gift cards, and cash disbursements for research, employee, and customer programs",
+   "why": "Horizontal incentives/payouts vendor - market research, employee engagement, healthcare, sales. No government-specific offering visible on the site; exhibited at a higher-ed business officers show.",
+   "source_event": "NACUBO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "OneStream",
+   "website": "https://www.onestream.com",
+   "description": "Financial close, consolidation, and planning software for large enterprises",
+   "why": "Horizontal enterprise CPM platform - 1,900+ customers, 21% of the Fortune 500. Has a public-sector segment but is not govtech-specific.",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SOFTRAX",
+   "website": "https://www.softrax.com",
+   "description": "Revenue recognition and complex billing software for enterprises with subscription, consumption, and milestone revenue models",
+   "why": "Horizontal revenue lifecycle vendor across telecom, software, and entertainment, with a public-sector chargeback offering. Founding year appears as both 1995 and 1999 in third-party profiles and is absent from the company's own site, so it is omitted.",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "LawVu",
+   "website": "https://lawvu.com",
+   "description": "Matter, contract, and spend management workspace for in-house legal teams",
+   "why": "No URL was supplied; found at lawvu.com. Horizontal in-house legal ops platform sold across industries; municipal law departments (the IMLA audience) are one segment, not the product's focus.",
+   "source_event": "IMLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SentiLink",
+   "website": "https://www.sentilink.com",
+   "description": "Identity risk and synthetic fraud detection scores used at account application by banks, credit unions, telecoms, and government programs",
+   "why": "Horizontal identity/fraud data platform - core market is financial institutions (13 of the 15 largest US banks), with government among 500+ other customers. Exhibited at NASWA because of unemployment-insurance fraud.",
+   "source_event": "NASWA 2025",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Fiserv",
+   "website": "https://www.fiserv.com",
+   "description": "Payment processing, core banking, and disbursement technology for financial institutions, merchants, and large enterprises",
+   "why": "Fortune 500 horizontal fintech infrastructure provider; government disbursements (e.g. UI benefit cards) are one line of business among many.",
+   "source_event": "NASWA 2025",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Atlassian",
+   "website": "https://www.atlassian.com",
+   "description": "Issue tracking, project management, and team collaboration software for software and business teams",
+   "why": "Horizontal collaboration software (Jira, Confluence) with a government edition; not govtech-specific.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Rubrik",
+   "website": "https://www.rubrik.com",
+   "description": "Data backup, immutable storage, and cyber recovery software for enterprise IT",
+   "why": "Horizontal data security/resilience vendor with a FedRAMP public-sector line; sells across every industry.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Google Public Sector",
+   "website": "https://publicsector.google",
+   "description": "Google Cloud, Workspace, and AI services resold and supported for US federal, state, local, and education customers",
+   "why": "A subsidiary/division of Google LLC announced June 2022, not an independent company. The candidate URL cloud.google.com/gov redirects into Google Cloud; the division's own site is publicsector.google. Big-tech cloud, which the owner flagged as scope_review territory.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Qlik",
+   "website": "https://www.qlik.com",
+   "description": "Business intelligence, data integration, and analytics software for enterprises",
+   "why": "Horizontal BI/data platform; founded 1993 in Lund, Sweden, now US-headquartered.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Secto",
+   "website": "https://secto.io",
+   "description": "Browser security software that protects credentials, blocks phishing, and governs employee AI tool use inside existing browsers",
+   "why": "Legal name Secto AI, Inc. Horizontal enterprise browser security aimed at regulated industries generally, not a government product. No founding year published.",
+   "source_event": "GMIS International 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Huntress",
+   "website": "https://www.huntress.com",
+   "description": "Managed endpoint detection and response, identity threat detection, and SIEM for small and mid-sized organizations, largely delivered through managed service providers",
+   "why": "Horizontal managed cybersecurity across 270k+ organizations in every industry; education and government are segments, not the focus.",
+   "source_event": "CoSN 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "MRI Software",
+   "website": "https://www.mrisoftware.com",
+   "description": "Property management and real estate ERP software spanning commercial, multifamily, affordable, and public housing including Housing Choice Voucher administration",
+   "why": "Real public housing authority product line, but it sits inside a large horizontal real estate software company whose main market is commercial and multifamily landlords - closest in shape to the Blackbaud example. Founded 1971 in Cleveland as Management Reports Incorporated.",
+   "source_event": "NAHRO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Assured Health, Inc.",
+   "website": "https://withassured.com",
+   "description": "AI provider credentialing, payer enrollment, and license monitoring platform for health systems, medical groups, and health plans",
+   "why": "Real product, but the named buyers are digital health companies, health systems, multi-specialty groups, and payers - no public agency market stated on the site. May simply be out of scope for a state-and-local tracker rather than a horizontal case. Raised a $19M Series A; no founding year published.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Circle Health",
+   "website": "https://www.circlehealth.co",
+   "description": "AI assistants that automate clinical charting, utilization review, prior authorization, and claims for addiction treatment and behavioral health facilities",
+   "why": "Named customers are private and nonprofit treatment providers (Pyramid Healthcare, Monument Recovery, Catholic Guardian Services), not public agencies, so this is flagged for the owner rather than called govtech. No founding year published.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "mdhub",
+   "website": "https://mdhub.ai",
+   "description": "AI documentation, admissions, and billing agents with an integrated EHR and CRM for behavioral health clinics and group practices",
+   "why": "Buyers are behavioral health clinics, group practices, and CCBHCs rather than public agencies, so flagged for the owner. No founding year published.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Nanonets Health",
+   "website": "https://www.nanonets.health",
+   "description": "AI agents for healthcare revenue cycle work including patient intake, eligibility checks, prior authorization, scheduling, and medical billing",
+   "why": "Legal name Nano Net Technologies Inc.; the product brands as Nanonets Health. Buyers are private clinics across many specialties (PT, dental, dermatology, radiology, SNF, behavioral health) - no public agency market stated, so flagged for the owner. No HQ or founding year on the site.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "ReflexAI",
+   "website": "https://www.reflexai.com",
+   "description": "AI roleplay simulations and automated quality assurance for contact center and frontline conversation training",
+   "why": "Started in crisis intervention (The Trevor Project, VA) but the site now sells across healthcare, education, financial services, insurance, staffing, travel, and retail, with Block, Square, Pearson, One Medical, and Caesars as named customers - horizontal enough to hand to the owner. No HQ or founding year on the site.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Videra Health",
+   "website": "https://www.viderahealth.com",
+   "description": "AI patient engagement, video assessment, documentation, and remote monitoring platform for behavioral health facilities and health systems",
+   "why": "Founding year and location both from the company's own About and Contact pages. Buyers are behavioral health facilities, health systems, and life sciences companies rather than public agencies, so flagged for the owner rather than called govtech.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "PolicyMap",
+   "website": "https://www.policymap.com",
+   "description": "Neighborhood and socioeconomic data mapping, analytics, and data licensing across thousands of public datasets",
+   "why": "Sells the same data platform to universities, nonprofits, government agencies, health systems, banks, libraries, and pharma - horizontal in the Alteryx sense. Also lists Los Angeles, Baltimore, and Toronto offices. No founding year published.",
+   "source_event": "PLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Adaptive Security",
+   "website": "https://adaptivesecurity.com",
+   "description": "Security awareness training, deepfake and phishing simulation, email security, and AI usage governance for enterprises",
+   "why": "Horizontal security awareness/email security vendor selling into finance, tech, healthcare, government, and education alike. No founding year published.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "ASCERA",
+   "website": "https://ascera.com",
+   "description": "CUIComply GRC software that automates evidence collection and reporting for CMMC, DFARS, and NIST 800-171 compliance",
+   "why": "Buyers are defense industrial base contractors and the assessors (C3PAOs/RPOs) who serve them - a federal-contracting compliance product rather than a state-and-local one, which is why it goes to the owner. Universities with DoD research contracts are the likely EDUCAUSE angle. The About Us page could not be reached; no HQ or founding year published on the pages that load.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Boomi",
+   "website": "https://boomi.com",
+   "description": "Integration platform as a service for connecting applications, data, APIs, and AI agents across the enterprise",
+   "why": "Horizontal iPaaS with 30,000+ customers across every industry. HQ and founding year omitted - the company/about pages return only navigation to WebFetch and curl, and I could not source either from the company's own site.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "ConfidentialMind",
+   "website": "https://confidentialmind.com",
+   "description": "Self-hosted platform for deploying large language models, RAG systems, and AI agents inside an organization's own infrastructure",
+   "why": "Horizontal private-AI infrastructure sold to enterprises, government agencies, universities, and hosting providers. Founding year omitted - the only date signal is a 2023 copyright start, which is not a founding year.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Freshworks",
+   "website": "https://www.freshworks.com",
+   "description": "IT service management, customer support, and CRM software for businesses of all sizes",
+   "why": "Horizontal SaaS suite (Freshservice, Freshdesk, Freshsales) with 74,000+ customers in 120+ countries; higher ed is one vertical. HQ and founding year omitted - the company and contact pages I could reach publish neither.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "LogicMonitor",
+   "website": "https://www.logicmonitor.com",
+   "description": "Hybrid infrastructure and cloud observability, log management, and AIOps software for IT operations teams",
+   "why": "Horizontal observability platform sold across healthcare, financial services, MSPs, and the public sector. HQ and founding year omitted - not published on the pages that render for WebFetch or curl.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Pangram Labs",
+   "website": "https://www.pangram.com",
+   "description": "AI-generated text and image detection with plagiarism checking, delivered by API, browser extension, and LMS integration",
+   "why": "Horizontal detection tool - buyers listed are schools and universities but also publishers, enterprises, compliance teams, content moderation platforms, law firms, and recruiters.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Praxis AI",
+   "website": "https://www.praxis-ai.com",
+   "description": "AI digital twin, learning experience platform, and AI governance middleware that packages subject-matter expertise into assistants",
+   "why": "Site markets across education, enterprise, healthcare, sports, and research, which makes it horizontal rather than an education product; the higher-ed line is the strongest and the owner may see it differently. Second office in Atlanta, GA. No founding year published.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SecureW2",
+   "website": "https://securew2.com",
+   "description": "Cloud PKI, certificate-based passwordless Wi-Fi and network authentication, and device onboarding for campus and enterprise networks",
+   "why": "Higher ed is the landing page the candidate pointed at, but the same product is sold to enterprises, K-12, and state and local government - horizontal network security. No HQ or founding year published on the pages reachable without search.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Sophos",
+   "website": "https://www.sophos.com",
+   "description": "Endpoint, network, email, and cloud security products plus managed detection and response for organizations of all sizes",
+   "why": "Horizontal cybersecurity vendor with 600K+ customers across education, finance, government, healthcare, manufacturing, and retail. HQ and founding year omitted - the company, contact, and press pages returned no address or founding date to WebFetch or curl.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "OneStream",
+   "website": "https://www.onestream.com",
+   "description": "Financial close, consolidation and planning platform for large enterprise finance teams across all industries",
+   "why": "Horizontal corporate performance management vendor (Nasdaq: OS) selling to Costco, UPS, Toyota et al.; higher ed and public sector are one of many verticals. Owner call.",
+   "source_event": "NACUBO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "AbsenceSoft",
+   "website": "https://absencesoft.com",
+   "description": "Employee leave of absence and ADA accommodation management software for employers, TPAs and PEOs in all industries",
+   "why": "Horizontal HR compliance software. Public employers (K-12 districts, higher ed) are two of five named verticals alongside healthcare and banking. Owner call.",
+   "source_event": "PSHRA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Totara",
+   "website": "https://www.totara.com",
+   "description": "Open-source enterprise learning management and performance software sold across healthcare, government, retail and manufacturing",
+   "why": "Horizontal LMS: government is one of eleven industries listed on their own site. Sold largely through a reseller/partner network. Owner call.",
+   "source_event": "PSHRA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Eightfold AI",
+   "website": "https://eightfold.ai",
+   "description": "AI talent intelligence and recruiting platform for large enterprises across technology, finance, pharma, telecom and government",
+   "why": "Horizontal HR tech: named customers are Salesforce, Citi, HP, HSBC. They hold FedRAMP authorization and sell to state workforce agencies, which is why they exhibited at NASWA, but government is one vertical among many. Owner call.",
+   "source_event": "NASWA 2025",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Incode Technologies",
+   "website": "https://incode.com",
+   "description": "Biometric identity verification, liveness and KYC platform sold to banks, fintechs, gaming, telecom, healthcare and government",
+   "why": "Horizontal identity vendor. It has government-specific products (GovFaceMatch, state unemployment-fraud use cases) but its own industry list runs from crypto to dating apps. Owner call.",
+   "source_event": "NASWA 2025",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Pantheon",
+   "website": "https://pantheon.io",
+   "description": "Managed WebOps hosting and site management platform for WordPress and Drupal, sold to universities, agencies, brands and media companies",
+   "why": "Legal name Pantheon Systems, Inc. Higher ed and government are two of seven verticals it lists alongside Home Depot and Clorox; The City of San Diego and Princeton are both named customers. Owner call.",
+   "source_event": "3CMA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Fleeta",
+   "website": "https://fleeta.io",
+   "description": "No-contract AI dashcam telematics and fleet tracking subscription for small and mid-size fleet operators",
+   "why": "Name resolution: FLEETA is the fleet management service of BlackVue (Pittasoft), the Korean connected-dashcam maker, which is the entity that exhibited it at NAFA 2026 - not a standalone startup. HQ given is BlackVue/Pittasoft's; a separate US operating address was not found. Horizontal by design: the stated target is ELD-exempt local SMB fleets, with government fleets incidental. There is also an unrelated-looking fleeta.ai; the NAFA exhibitor is fleeta.io.",
+   "source_event": "NAFA I&E 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "BMC Software",
+   "website": "https://www.bmc.com",
+   "description": "IT service management, mainframe and IT operations automation software for large enterprises in every industry",
+   "why": "Horizontal enterprise IT vendor, privately held by KKR. State government is a named vertical but a small slice of the business. Owner call.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Wiz",
+   "website": "https://www.wiz.io",
+   "description": "Agentless cloud security posture and workload protection platform for enterprises running AWS, Azure and Google Cloud",
+   "why": "Google completed its $32B acquisition of Wiz in March 2026, so Wiz now sits inside Google Cloud - which strengthens the case that this is a big-tech horizontal rather than a govtech card. Owner call.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Okta",
+   "website": "https://www.okta.com",
+   "description": "Workforce and customer identity and access management platform sold to organizations in every industry",
+   "why": "Horizontal identity vendor (Nasdaq: OKTA) with a FedRAMP-authorized public sector edition. Owner call.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SecurityScorecard",
+   "website": "https://securityscorecard.com",
+   "description": "Cyber risk ratings and third-party attack surface monitoring for enterprises, insurers and government agencies",
+   "why": "Horizontal ratings product used for vendor risk, board reporting and cyber insurance underwriting across all industries. Owner call.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Lumu Technologies",
+   "website": "https://lumu.io",
+   "description": "Network detection and response platform that flags confirmed network compromises, sold across education, banking, healthcare and government",
+   "why": "The K-12 landing page in the candidate URL is a vertical microsite, not the company's focus: education is one of six industries Lumu lists, and much of its go-to-market runs through MSPs. Owner call.",
+   "source_event": "CoSN 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Truv",
+   "website": "https://truv.com",
+   "description": "Consumer-permissioned income, employment and asset verification API for mortgage lenders, banks, tenant screeners and benefits agencies",
+   "why": "Acquired by Checkr, announced August 2026 - so this card and the Checkr card in this batch are now one company; worth merging or cross-linking. Public sector (SNAP/Medicaid eligibility verification) is one of seven verticals, with mortgage lending the largest. Owner call.",
+   "source_event": "APHSA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Checkr",
+   "website": "https://checkr.com",
+   "description": "Background check, identity verification and continuous criminal monitoring platform for employers across all industries",
+   "why": "Horizontal screening platform serving 140,000+ businesses from gig platforms to staffing. It entered the government market in August 2026 by acquiring Truv, also in this batch. Owner call.",
+   "source_event": "APHSA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Attunement",
+   "website": "https://attunement.ai",
+   "description": "AI platform that turns outside medical records, faxes and imaging into structured clinical summaries for specialty medicine practices",
+   "why": "Y Combinator W24 company. Their site pitches specialty medicine and healthcare organizations generally, not public behavioral health specifically, so this is general healthcare AI that happened to exhibit at NatCon - flagging rather than deciding. Founding year omitted: Tracxn says 2024, CB Insights implies 2023, and the site states neither. There is also an unrelated attunementclinical.com (assessment tools for testing psychologists) - the NatCon exhibitor is attunement.ai.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Clarity Group, Inc.",
+   "website": "https://www.claritygrp.com",
+   "description": "Healthcare SafetyZone incident reporting and patient safety risk management software for hospitals, FQHCs, long-term care and behavioral health providers",
+   "why": "Real software (Healthcare SafetyZone) paired with a Patient Safety Organization advisory arm. Buyer base is healthcare providers of every type, public and private, so behavioral health is one segment rather than the focus. No founding year published; they claim four decades in healthcare risk management and 20 years of SafetyZone.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Doxy.me",
+   "website": "https://doxy.me",
+   "description": "Browser-based HIPAA-compliant telehealth video platform for individual clinicians, clinics and health systems",
+   "why": "General-purpose telehealth used across all of healthcare, with behavioral health as one large user segment; not a public-sector product. Founding year is soft: their own who-we-are page dates the project to 2013 while CB Insights lists 2014.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "NextGen Healthcare",
+   "website": "https://www.nextgen.com",
+   "description": "Ambulatory EHR, practice management and revenue cycle software for 40+ medical specialties including behavioral health and community health centers",
+   "why": "General ambulatory health IT: behavioral health and FQHCs are two of forty-plus specialties. Legal entity is NXGN Management, LLC (taken private by Thoma Bravo in 2023). Year 1974 is from their own site copyright line, which is the only date they publish. HQ omitted - the company runs remote-first and publishes no headquarters city.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Relias",
+   "website": "https://www.relias.com",
+   "description": "Healthcare workforce training, compliance and competency assessment platform for hospitals, post-acute, home care and behavioral health organizations",
+   "why": "Horizontal healthcare LMS serving roughly 13,000 organizations across every care setting; behavioral health and government health entities are two segments among many. No founding year on their about page.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Weave",
+   "website": "https://www.getweave.com",
+   "description": "All-in-one phone, texting, scheduling and payments platform for small dental, optometry and medical practices",
+   "why": "Legal name Weave Communications, Inc. (NYSE: WEAV). This is small-business practice communication software, heavily dental-led, with no public sector orientation - the weakest govtech fit of the NatCon exhibitors. Sector/category assigned only to satisfy the map. No founding year found before the search budget ran out.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Morningstar, Inc.",
+   "website": "https://www.morningstar.com",
+   "description": "Investment research, fund ratings and portfolio data sold to asset managers, advisors and institutions, with a library-facing Investing Center database",
+   "why": "The candidate URL points at Investing Center, the one product public libraries subscribe to; the company itself (Nasdaq: MORN) is a financial data business where libraries are a rounding error. Sector/category reflect the exhibited product, not the company. Owner call.",
+   "source_event": "PLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Advanced Software Products Group",
+   "website": "https://www.aspg.com",
+   "description": "Mainframe encryption, password reset and storage administration utilities for enterprises in education, government, healthcare and finance",
+   "why": "Horizontal z/OS systems software (MegaCryption, ReACT, WizDom). Universities are a customer segment, not the market. Owner call.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Bravura Security",
+   "website": "https://www.bravurasecurity.com",
+   "description": "Unified identity, privileged access and password management platform for mid-to-large enterprises in finance, higher education and manufacturing",
+   "why": "Formerly Hitachi ID Systems, rebranded to Bravura Security after Volaris Group acquired it; their site dates the identity business to 1992. HQ read from the site's structured-data block. Horizontal IAM/PAM with higher ed as one vertical. Owner call.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Cloudflare",
+   "website": "https://www.cloudflare.com",
+   "description": "Global CDN, DDoS protection, zero trust networking and edge compute platform used by websites and applications in every industry",
+   "why": "Big-tech horizontal (NYSE: NET). The candidate URL is their FedRAMP High government landing page, but this is internet infrastructure sold to everyone. Owner call.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Datadog",
+   "website": "https://www.datadoghq.com",
+   "description": "Cloud observability, log management and application performance monitoring platform for engineering teams in every industry",
+   "why": "Horizontal observability vendor (Nasdaq: DDOG); education and government are two of nine industries it lists. Owner call.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Enghouse Interactive",
+   "website": "https://www.enghouseinteractive.com",
+   "description": "Contact center, IVR and video communication software for customer service operations across all industries",
+   "why": "A division of Enghouse Systems Limited (TSX: ENGH); the 1984 date is the parent's founding. Horizontal contact center vendor - higher ed is one of many customer types. HQ omitted: enghouseinteractive.com sits behind a Cloudflare challenge and enghouse.com's contact page returned 403, so I could not confirm a city (the parent is Canadian). Owner call.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "FUSE Next",
+   "website": "https://www.fusenext.com",
+   "description": "AI federated search and content discovery platform that unifies scattered content into one index for associations and member organizations",
+   "why": "Flagged rather than decided: they exhibited at EDUCAUSE, but their own site pitches associations and organizations generally, with no higher-ed-specific product. Operating entity is NotchPoint, LLC d.b.a. FUSE Next (formerly FUSE Search). Founding year omitted - the only signal is a '2006-2025' copyright range. No address published on their contact page.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Hyland",
+   "website": "https://www.hyland.com",
+   "description": "Enterprise content management, intelligent document processing and workflow automation software for large organizations in every industry",
+   "why": "Horizontal ECM (OnBase/Alfresco lineage) with more than half the Fortune 100 as customers; government and education are two of a dozen listed verticals. Owner call.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Kahoot!",
+   "website": "https://kahoot.com",
+   "description": "Game-based quiz and engagement platform sold in three separate lines to schools, to businesses for training and events, and to consumers",
+   "why": "Genuinely ambiguous and worth the owner's ruling. Education (Kahoot! EDU) is a real institutional business sold to districts and universities, but the corporate line (Kahoot! 360) and the consumer line are comparably sized, which is why I flagged rather than called it govtech.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Lucid Software",
+   "website": "https://lucid.co",
+   "description": "Lucidchart and Lucidspark visual collaboration, diagramming and whiteboarding software for teams in every industry",
+   "why": "Horizontal collaboration software; education and public sector are two of nine listed solution areas. Founding date from Wikipedia (December 2008); the company converted from Lucidchart, LLC to Lucid Software Inc. in January 2011, so some sources cite 2010 or 2011. Owner call.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Panopto",
+   "website": "https://www.panopto.com",
+   "description": "Video capture, management and search platform for lecture recording and enterprise training",
+   "why": "Closest call in this batch. Higher education is Panopto's anchor market and origin (Carnegie Mellon), but their own site now splits '2,000+ customers across higher education and enterprise' and lists aviation, energy, insurance, manufacturing and telecom. The owner may reasonably want this as govtech.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "ServiceNow",
+   "website": "https://www.servicenow.com",
+   "description": "IT service management and enterprise workflow automation platform used by large organizations in every industry",
+   "why": "Big-tech horizontal (NYSE: NOW) with a large FedRAMP public sector practice, but ITSM is sold to everyone. Their site returns 403 to automated fetches; details from Wikipedia. Owner call.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Tines",
+   "website": "https://www.tines.com",
+   "description": "No-code workflow automation and AI agent platform for security, IT, finance and operations teams at enterprises",
+   "why": "Dual headquarters: Dublin is the European HQ and Boston the US HQ per their contact page; I used the founding location. Horizontal security automation - named customers are Coinbase, Databricks, Reddit and Snowflake, with public sector one of four listed solution segments. Owner call.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Workiva",
+   "website": "https://www.workiva.com",
+   "description": "Cloud platform for financial, risk and sustainability reporting and compliance across all industries",
+   "why": "Horizontal enterprise reporting/GRC platform; government and higher education are two of many listed industries alongside banking, investments, insurance and energy. Founded as WebFilings LLC in 2008.",
+   "source_event": "NACUBO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "BlackLine",
+   "website": "https://www.blackline.com",
+   "description": "Financial close, account reconciliation and intercompany accounting automation software for large enterprises",
+   "why": "Horizontal accounting-automation SaaS sold across all industries; public sector is one vertical among many.",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "RedBeam",
+   "website": "https://redbeam.com",
+   "description": "Barcode and RFID fixed-asset and inventory tracking software for organizations across retail, manufacturing, healthcare, education and government",
+   "why": "Horizontal asset-tracking SaaS; government and education are two of ten listed industries. Founded 2004 by David Bissonnette inside Strategic Systems & Technology, which formally acquired RedBeam in 2020.",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Bandana",
+   "website": "https://www.bandana.com",
+   "description": "Two-sided marketplace where employers post hourly and entry-level jobs with upfront pay, benefits and commute data",
+   "why": "Legal entity is Workwise Solutions Inc. Horizontal hourly-hiring marketplace whose stated focus is retail, hospitality, food service, warehousing and logistics; public sector employers are one buyer type among many. Site lists no HQ or founding year; Brooklyn and 2022 come from Crunchbase/TechCrunch funding coverage.",
+   "source_event": "PSHRA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "The Integra Group",
+   "website": "https://www.theintegragroup.com",
+   "description": "BOSS business operations software covering CRM, bidding, ordering, inventory, billing and accounting for landscaping, field service, marine and food service companies",
+   "why": "Candidate was listed as 'BOSS by Integra'; BOSS is the product, The Integra Group is the company. Their food service page lists 'K-12 options' as one module feature, which is presumably the SNA angle, but the site names no government or school district customers and the other verticals are all private industry. Address is a PO Box in Manchester, MO. No founding year on site.",
+   "source_event": "SNA ANC 2027",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Onit",
+   "website": "https://www.onit.com",
+   "description": "Enterprise legal management, legal spend and contract lifecycle software for corporate legal departments",
+   "why": "Candidate had no URL; onit.com confirmed. Horizontal corporate legal-ops vendor: the site lists Government alongside Pharmaceutical, Finance, Insurance and Technology as industries. Category is a stretch - the map has no general 'legal department' bucket, and municipal law offices are the plausible IMLA buyer.",
+   "source_event": "IMLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Autodesk",
+   "website": "https://www.autodesk.com",
+   "description": "Design, engineering and BIM software including water and civil infrastructure modeling tools, sold across architecture, construction, manufacturing and media",
+   "why": "Horizontal design-software vendor; the AWWA presence is the water infrastructure product line (Info360, InfoWorks ICM via the Innovyze acquisition), not a government-specific business. autodesk.com blocks automated fetches with an Akamai 403; classification is from the company's public product and corporate information.",
+   "source_event": "AWWA ACE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SafetyLine Lone Worker",
+   "website": "https://safetylineloneworker.com",
+   "description": "Lone worker check-in, fall detection and panic alert app with satellite device support and 24/7 monitoring, sold to employers with remote or solo staff",
+   "why": "Operated by Tsunami Solutions Ltd. The homepage leads with government, utility, home healthcare and nonprofit workforces, but the industries page is fully horizontal - agriculture, energy, oil and gas and more - so this is a general occupational-safety product rather than a govtech one. Also an authorized reseller of Globalstar and Garmin satellite hardware.",
+   "source_event": "AWWA ACE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Google Cloud",
+   "website": "https://cloud.google.com",
+   "description": "Cloud infrastructure, data platform and AI services sold to every industry, with a dedicated state and local government practice",
+   "why": "Business unit of Google LLC, not a standalone company. Year founded omitted as ambiguous - Google was founded 1998 and Google Cloud Platform launched 2008.",
+   "source_event": "NASWA 2025",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "IntelliShift",
+   "website": "https://intellishift.com",
+   "description": "Unified fleet telematics, AI dash cam, maintenance and compliance platform for commercial fleets in construction, utilities, field services and last-mile delivery",
+   "why": "Legal entity is Vehicle Tracking Solutions, LLC d/b/a IntelliShift. Industries named on the site are construction, utilities, field services and last-mile delivery; government fleets are not called out as a segment, which is why this is scope_review rather than govtech despite the NAFA presence.",
+   "source_event": "NAFA I&E 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Broadcom",
+   "website": "https://www.broadcom.com",
+   "description": "Semiconductor and enterprise infrastructure software vendor whose software arm sells VMware virtualization, mainframe tooling and Symantec security to large enterprises",
+   "why": "Candidate was listed as 'Broadcom Software', which is the software segment of Broadcom Inc. rather than a separate company. Year founded omitted as ambiguous: Broadcom Inc. in its current form dates to the 2018 Broadcom/Avago restructuring while the corporate lineage runs back to 1961. About page returns no usable text to automated fetches.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Zscaler",
+   "website": "https://www.zscaler.com",
+   "description": "Zero trust cloud security platform for secure internet and private application access, sold to large enterprises across every industry",
+   "why": "Founding year 2007 confirmed on the company's own about page; HQ is not stated there and comes from the company's public corporate filings. 9,400+ customers including 40% of the Forbes Global 2000 - government is one segment among many.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Precisely",
+   "website": "https://www.precisely.com",
+   "description": "Data integrity software, curated location and business datasets, and data strategy consulting for large enterprises",
+   "why": "Industries listed are financial services, insurance, healthcare, government, retail, telecom, utilities, manufacturing, advertising, oil and gas and more, so government is one of a dozen. Year founded omitted: the site only claims '50+ years of experience' and the Precisely name dates to the 2020 rebrand of Syncsort. HQ is not stated on the site.",
+   "source_event": "NASCIO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Blumira",
+   "website": "https://www.blumira.com",
+   "description": "Cloud SIEM and automated threat detection and response platform aimed at small IT teams",
+   "why": "Site lists State & Local Government as one industry alongside healthcare, retail, financial services, credit unions, manufacturing and industrial, and the compliance list spans CJIS, HIPAA, PCI and CMMC - a horizontal SMB security product. No founding year or address published on the site; Ann Arbor is from the company's public corporate record, and the year is omitted rather than guessed.",
+   "source_event": "GMIS International 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SysAid",
+   "website": "https://www.sysaid.com",
+   "description": "AI-driven IT and enterprise service management platform with asset management and workflow automation, sold across all industries",
+   "why": "Horizontal ITSM vendor - named customers include IKEA, Coca-Cola, Motorola and Johns Hopkins School of Medicine, with education, healthcare, manufacturing, MSP and government as listed verticals. Neither HQ nor founding year appears on the site, so both fields are omitted; the company is Israel-based.",
+   "source_event": "GMIS International 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SysCloud",
+   "website": "https://www.syscloud.com",
+   "description": "Automated immutable SaaS backup, ransomware detection, eDiscovery and compliance for Google Workspace, Microsoft 365 and other cloud apps",
+   "why": "Has a real K-12 practice and district-specific compliance features, but the current site positions the product horizontally for businesses, nonprofits, accounting firms and educational institutions alike, so the owner should rule on whether the K-12 concentration is enough. No founding year on the site.",
+   "source_event": "CoSN 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "PDQ",
+   "website": "https://www.pdq.com",
+   "description": "Windows and macOS endpoint management, patch deployment, inventory and vulnerability scanning for IT teams",
+   "why": "Legal entity is PDQ.com Corporation, 2200 S Main St STE 200, South Salt Lake, UT. Industries listed are Education, Finance, Manufacturing, Nonprofit and Government - a horizontal sysadmin tool. No founding year on the site.",
+   "source_event": "CoSN 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Equifax",
+   "website": "https://www.equifax.com",
+   "description": "Consumer and employment data bureau whose Work Number database supplies income, employment and incarceration verification used in benefits eligibility determinations",
+   "why": "The candidate URL is carahsoft.com/equifax, which is Carahsoft's reseller landing page, not a company. Two separate entities are bundled here: Carahsoft is a government IT distributor (a supplier, not a product company), and Equifax is the product owner via its Workforce Solutions / The Work Number line. Equifax itself is a horizontal credit and data bureau selling to lenders, employers, insurers and government alike. Founding year omitted - not confirmed from a company source in this pass.",
+   "source_event": "APHSA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Tikler",
+   "website": "https://www.tikler.io",
+   "description": "Document management and workflow platform with templates, rules, tagging and automated retention for teams in any organization",
+   "why": "Marketed as a general-purpose document collaboration tool 'for organizations of all shapes and sizes' with no housing-specific features described, which is why this is scope_review - but the only named customer on the site is the Port Arthur Housing Authority, so the housing concentration may be real. No address or founding year on the site.",
+   "source_event": "NAHRO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "DrChrono",
+   "website": "https://www.drchrono.com",
+   "description": "Cloud EHR, practice management and medical billing platform for independent ambulatory medical practices",
+   "why": "Legal entity is EverHealth Solutions Inc. dba DrChrono, part of the EverHealth family alongside CollaborateMD and Updox. Buyers are private family medicine, pediatrics, internal medicine, psychiatry and counseling practices - not public agencies - which is why this is scope_review despite the NatCon booth. Neither HQ nor founding year appears on the site.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "MedTrainer",
+   "website": "https://www.medtrainer.com",
+   "description": "Healthcare workforce compliance platform combining staff training, provider credentialing and policy, incident and accreditation management",
+   "why": "Buyers span ambulatory surgery centers, urgent care, physician offices, hospitals, dental, long-term care and behavioral health - a horizontal healthcare compliance tool where public-sector entities such as FQHCs and Indian Health are two segments among fifteen. US address is a Las Vegas mailing address; the site also lists a Mexico headquarters in Queretaro. No founding year published.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Nirvana",
+   "website": "https://meetnirvana.com",
+   "description": "Real-time insurance eligibility, benefit verification and patient cost estimation API for healthcare providers, digital health companies and EHR vendors",
+   "why": "Started in behavioral health but the site says it is now expanding into physical therapy, intensive outpatient and primary care; buyers are providers, digital health partners and EHR vendors rather than public agencies. No HQ or founding year published on the site and the about page 404s.",
+   "source_event": "NatCon 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Airia",
+   "website": "https://airia.com",
+   "description": "Enterprise AI discovery, security, governance and agent orchestration platform covering shadow AI inventory, guardrails and compliance reporting",
+   "why": "Horizontal enterprise AI governance tool - named logos are ArcelorMittal, BuzzFeed, Mars, KOA and Northwestern, so education is one segment among many. Legal entity is Airia LLC; no HQ or founding year published on the site.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Aviz Networks",
+   "website": "https://aviznetworks.com",
+   "description": "Vendor-agnostic network operating system support, observability and AI operations software built on open-source SONiC for data center and enterprise networks",
+   "why": "Industries listed run from automotive and e-commerce to telco, with education, federal government and public sector as three of thirteen. Also lists a Dallas, TX office. No founding year on the site.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Spektra Systems",
+   "website": "https://spektrasystems.com",
+   "description": "CloudLabs hands-on cloud lab environments plus SaaSify cloud-marketplace listing and CSP billing automation for ISVs, Microsoft partners, enterprises and schools",
+   "why": "Candidate was listed as 'CloudLabs by Spektra Systems'; CloudLabs is one of three products and education is one of four buyer segments alongside ISVs, Microsoft CSP partners, enterprises and systems integrators. Offices also in Vancouver, BC (as Cloudstra Systems Inc.) and Bengaluru. No founding year on the site.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Delinea",
+   "website": "https://delinea.com",
+   "description": "Privileged access management and identity security platform including secrets vaulting, privilege elevation and access governance for enterprises",
+   "why": "Horizontal identity security vendor with a FedRAMP-authorized federal offering; higher education is one buyer segment. Formed from the combination of Thycotic and Centrify. Neither HQ nor founding year appears on the site pages fetched - Redwood City is from the company's public corporate record and the year is omitted rather than guessed.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Entrinsik",
+   "website": "https://entrinsik.com",
+   "description": "Informer BI and analytics platform plus Enrole non-credit enrollment software, sold to higher education, insurance agencies, title insurers, government and manufacturers",
+   "why": "Higher education is the largest vertical and Enrole is education-specific, but Informer is a general reporting tool sold across insurance, title, MultiValue legacy data, manufacturing and OEM embedding, so the owner should rule. Office at 7721 Six Forks Road Suite 100, Raleigh, NC. No founding year on the site.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "IDrive",
+   "website": "https://www.idrive.com",
+   "description": "Cloud backup, object storage and SaaS application backup for consumers, small businesses and enterprises",
+   "why": "Consumer and SMB cloud backup with heavy retail pricing on the homepage; education is not a called-out segment, so this is a horizontal storage vendor exhibiting at a higher-ed show. Neither HQ nor founding year is published on the pages fetched.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Kaltura",
+   "website": "https://www.kaltura.com",
+   "description": "Video management, events, streaming and AI avatar platform sold to enterprises, education institutions and media and telecom companies",
+   "why": "Has a substantial dedicated education suite (virtual classroom, lecture capture, LMS video) but sits alongside enterprise learning and a media and telecom suite including Cloud TV, so it is horizontal. Neither HQ nor founding year is published on the pages fetched.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Mentimeter",
+   "website": "https://www.mentimeter.com",
+   "description": "Interactive presentation and live audience polling tool for meetings, training and classrooms",
+   "why": "Site splits buyers into Business, Education and Enterprise - a general audience-engagement tool rather than an education product. Swedish company; neither HQ nor founding year is published on the pages fetched.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Public Insight",
+   "website": "https://publicinsight.io",
+   "description": "Job market intelligence and enriched labor data for talent acquisition teams, higher education institutions, career planning providers and private equity firms",
+   "why": "Candidate was listed as 'Public Insight Data Corporation' with the vertical 'public sector data analytics', which the site does not support - the use cases are recruitment marketing, career planning, higher ed and private equity, and the products are TalentView and CollegeView. Horizontal labor-market data business. No HQ or founding year published.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SailPoint",
+   "website": "https://www.sailpoint.com",
+   "description": "Identity governance and access management platform covering provisioning, access certification, non-employee risk and machine and AI identities",
+   "why": "Industries listed are financial services, healthcare, manufacturing, education, government, oil and gas and utilities - horizontal enterprise identity security. The site's timeline shows milestones (2017, 2022, 2025) but no founding year, and no HQ is published on the pages fetched.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Zoom",
+   "website": "https://www.zoom.com",
+   "description": "Meetings, phone, chat, contact center and AI productivity platform sold to organizations in every sector",
+   "why": "Horizontal communications platform; education is one of many verticals. Candidate URL zoom.us still resolves but the company's canonical domain is now zoom.com. Neither HQ nor founding year is published on the homepage.",
+   "source_event": "EDUCAUSE 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Docusign",
+   "website": "https://www.docusign.com",
+   "description": "Electronic signature and agreement management software sold to organizations in every industry, including government and higher education",
+   "why": "Horizontal e-signature/CLM platform with a government and education vertical, not a govtech-specific product",
+   "source_event": "NACUBO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SAP",
+   "website": "https://www.sap.com",
+   "description": "Enterprise resource planning and business application software sold across all industries, including public sector and higher education",
+   "why": "Exhibited as SAP America, Inc., the US subsidiary. Horizontal ERP vendor, not govtech-specific",
+   "source_event": "NACUBO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "REPAY",
+   "website": "https://repay.com",
+   "description": "Integrated payment processing and payables automation for lenders, healthcare, HOAs, auto, B2B and government billers",
+   "why": "Horizontal payments company serving 15+ industries; government/municipalities is one vertical among many. Legally M & A Ventures, LLC d/b/a REPAY, publicly traded. Founding year not confirmed from their own site",
+   "source_event": "GFOA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Cornerstone OnDemand",
+   "website": "https://www.cornerstoneondemand.com",
+   "description": "Talent management, learning and workforce development software sold to employers in every industry, including public sector agencies",
+   "why": "Horizontal HR/LMS platform with a public sector practice, not a govtech-specific product",
+   "source_event": "PSHRA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Xakia Technologies",
+   "website": "https://xakiatech.com",
+   "description": "Legal matter management, intake, contract and spend software for in-house legal departments across all industries",
+   "why": "Exhibited at the municipal lawyers association, and city and county attorney offices are a plausible buyer, but the site's named customers are corporates (Nissan, Coca-Cola, Virgin) and there is no public sector page, so this reads as horizontal legal-ops software. Australian-founded; HQ and founding year not stated on site",
+   "source_event": "IMLA 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "DRUID AI",
+   "website": "https://www.druidai.com",
+   "description": "Enterprise conversational and agentic AI platform sold across banking, insurance, retail, healthcare and higher education",
+   "why": "Horizontal enterprise AI agent platform; higher education is one named vertical among many. HQ not stated anywhere on the site (about and contact pages give no address).",
+   "source_event": "NACUBO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Kyriba",
+   "website": "https://www.kyriba.com",
+   "description": "Treasury, payments and liquidity management SaaS for corporate CFOs and treasurers",
+   "why": "Horizontal corporate treasury platform; named customers are private enterprises (Spotify, HelloFresh, Baxter). Site, contact and privacy pages give no HQ address and no founding year, so both omitted.",
+   "source_event": "NACUBO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Strata Decision Technology",
+   "website": "https://www.stratadecision.com",
+   "description": "Financial planning, cost accounting and decision-support analytics for health systems, universities and banks",
+   "why": "Primary market is health systems, with higher education and financial institutions as secondary verticals - a multi-industry product rather than a government-specific one, so flagged for owner review. Founding year not stated on site.",
    "source_event": "NACUBO 2026",
    "queued_on": "2026-08-23"
   }

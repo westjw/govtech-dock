@@ -1,0 +1,113 @@
+[
+  {
+    "verdict": "scope_review",
+    "company_name": "CrowdStrike",
+    "website": "https://www.crowdstrike.com",
+    "description": "Endpoint detection and response, identity and cloud security platform sold to enterprises and public agencies in every sector",
+    "hq_location": "Austin, TX",
+    "year_founded": 2011,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "source_event": "NASCIO 2026",
+    "notes": "General-purpose cybersecurity platform with a state and local government practice, not govtech-specific"
+  },
+  {
+    "verdict": "scope_review",
+    "company_name": "Abnormal AI",
+    "website": "https://abnormal.ai",
+    "description": "Behavioral AI email security that blocks business email compromise and account takeover for organizations in every sector",
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "source_event": "NASCIO 2026",
+    "notes": "Formerly Abnormal Security. General-purpose email security, not govtech-specific. Site is heavily client-rendered and no about or contact page resolved, so HQ and founding year are omitted rather than guessed"
+  },
+  {
+    "verdict": "scope_review",
+    "company_name": "Recorded Future",
+    "website": "https://www.recordedfuture.com",
+    "description": "Threat intelligence data and analytics platform sold to enterprise security teams, government agencies and defense",
+    "hq_location": "Boston, MA",
+    "year_founded": 2009,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "source_event": "NASCIO 2026",
+    "notes": "General cybersecurity intelligence vendor serving all sectors; now a Mastercard subsidiary"
+  },
+  {
+    "verdict": "scope_review",
+    "company_name": "BOSS Solutions",
+    "website": "https://www.boss-solutions.com",
+    "description": "BOSSDesk IT service desk, ticketing and asset management software sold across government, education, healthcare, retail and finance",
+    "hq_location": "Peachtree Corners, GA",
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "source_event": "GMIS International 2026",
+    "notes": "Legal entity Business Oriented Software Solutions Inc. Long-standing presence at government IT shows, but their own site lists eight industries and does not position as public-sector-only, so this is a general ITSM product. bossdesk.com 302-redirects to boss-solutions.com. No founding year published"
+  },
+  {
+    "verdict": "scope_review",
+    "company_name": "ThreatLocker",
+    "website": "https://www.threatlocker.com",
+    "description": "Application allowlisting, ringfencing and zero trust endpoint controls sold to organizations in every sector",
+    "hq_location": "Orlando, FL",
+    "year_founded": 2017,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "source_event": "GMIS International 2026",
+    "notes": "General endpoint security product, not govtech-specific"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "Linewize",
+    "website": "https://www.linewize.com",
+    "description": "Web filtering, classroom management, self-harm and threat detection and parent engagement software for K-12 school districts",
+    "hq_location": "San Diego, CA",
+    "sector": "K-12 Schools",
+    "category": "School Safety",
+    "source_event": "CoSN 2026",
+    "notes": "US entity registered as Family Zone Inc; part of Qoria, the ASX-listed parent formerly named Family Zone Cyber Safety. No founding year on the US site"
+  },
+  {
+    "verdict": "scope_review",
+    "company_name": "SolarWinds",
+    "website": "https://www.solarwinds.com",
+    "description": "Network, systems and database monitoring and observability software sold to IT teams in every industry",
+    "hq_location": "Austin, TX",
+    "year_founded": 1999,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "source_event": "CoSN 2026",
+    "notes": "General IT monitoring vendor with a public sector and education practice, not govtech-specific"
+  },
+  {
+    "verdict": "scope_review",
+    "company_name": "Senturo",
+    "website": "https://senturo.com",
+    "description": "Device location tracking, geofencing and security policy enforcement for mobile fleets in schools, healthcare, retail and field services",
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "source_event": "CoSN 2026",
+    "notes": "K-12 and higher ed are two of six named verticals alongside healthcare, enterprise, field services and retail, so this reads as a general device management product. No HQ or founding year published on site"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "itopia",
+    "website": "https://itopia.com",
+    "description": "Browser-delivered virtual computer labs, classroom AI safety controls and work-based learning software for school districts and colleges",
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "source_event": "CoSN 2026",
+    "notes": "Products are CloudApps, SecureClass, GoSprout and itopia U. The company started as a horizontal Google Cloud virtual-desktop vendor and has repositioned entirely to education, which is how the current site reads. No HQ or founding year published"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "Doorman",
+    "website": "https://doorman.school",
+    "description": "Phone-free school software that blocks distracting apps during class and records attendance for K-12 districts",
+    "hq_location": "New York, NY",
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "source_event": "CoSN 2026",
+    "notes": "Integrates with student information systems for rostering and attendance. No founding year published"
+  }
+]

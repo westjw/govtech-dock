@@ -314,6 +314,36 @@ def act_scope_all(body: dict) -> dict:
                                    f"{'in' if keep else 'out of'} scope"}
 
 
+def act_vendor_scope_all(body: dict) -> dict:
+    """Rule a family of horizontal vendors in one go.
+
+    Takes the NAMES the person was actually shown, not a pattern. A pattern
+    would sweep in the ones that look alike and are not: "payments" matches
+    Kipu Health and Clio, and ruling those out on a regex is the invisible,
+    permanent error this whole repo is built around.
+    """
+    names, call = body.get("names") or [], body.get("call")
+    if not names or call not in ("in", "sled", "out"):
+        return {"error": "need names and a call of in, sled or out"}
+    d = read("vendor_scope_decisions.json", {})
+    n = 0
+    for name in names:
+        k = _vkey(name)
+        if k in d:
+            continue
+        d[k] = {"call": call, "name": name, "on": dt.date.today().isoformat(),
+                "by": (body.get("by") or "owner").strip(),
+                "why": (body.get("why") or "").strip()
+                       or f"bulk ruling on {body.get('theme') or 'a group'}",
+                "bulk": True, "saw": {"theme": body.get("theme")}}
+        n += 1
+    write_atomic("vendor_scope_decisions.json", d)
+    said = {"in": "added as full companies",
+            "sled": "added, public-sector roles only",
+            "out": "left off the board"}[call]
+    return {"ok": True, "message": f"{n} vendor(s) {said}"}
+
+
 def q_miscategorized(companies, board) -> list:
     """Product companies parked in the Suppliers & Services bucket.
 
@@ -354,6 +384,37 @@ def q_miscategorized(companies, board) -> list:
     return out
 
 
+# Horizontal vendors arrive in recognisable families, and 42 near-identical
+# endpoint-security companies is not 42 decisions. These patterns only GROUP
+# the queue so a person can see a family at once; they never rule. Bulk
+# rulings act on explicit names the person was shown, never on the pattern,
+# because "payments" also catches Kipu Health and Clio, which are arguably
+# exactly the govtech this board is for.
+VENDOR_THEMES = [
+    ("Cybersecurity", r"security|endpoint|threat|siem|firewall|identit(y|ies)|"
+                      r"zero.trust|phishing|vulnerab"),
+    ("HR and payroll", r"\bhr\b|human resources|payroll|benefits|recruit|"
+                       r"workforce management|talent"),
+    ("Data and analytics", r"analytics|business intelligence|\bbi\b|data platform|"
+                           r"data warehouse|dashboards?"),
+    ("Cloud and infrastructure", r"cloud infrastructure|hosting|data cent|compute|"
+                                 r"kubernetes|devops|hyperscal|storage"),
+    ("Payments and finance ops", r"payment|billing|invoice|expense|treasury|"
+                                 r"accounts payable|\berp\b"),
+    ("Comms and collaboration", r"collaborat|messaging|video conferenc|"
+                                r"work management|project management|\bcrm\b"),
+    ("Health and clinical", r"clinical|patient|telehealth|behavioral health|"
+                            r"\behr\b|electronic health"),
+]
+
+
+def _theme(text: str) -> str:
+    for name, pat in VENDOR_THEMES:
+        if re.search(pat, text or "", re.I):
+            return name
+    return "Everything else"
+
+
 def q_vendor_scope(companies, board) -> list:
     """Horizontal product companies found on a government exhibit floor.
 
@@ -371,8 +432,18 @@ def q_vendor_scope(companies, board) -> list:
     """
     q = read("scope_review_queue.json", {"items": []})
     ruled = read("vendor_scope_decisions.json", {})
-    return [{**i, "key": _vkey(i["name"])}
-            for i in q.get("items", []) if _vkey(i["name"]) not in ruled]
+    out = [{**i, "key": _vkey(i["name"]),
+            "theme": _theme(f"{i.get('name','')} {i.get('description','')}")}
+           for i in q.get("items", []) if _vkey(i["name"]) not in ruled]
+    # families together, and the biggest family first: that is the sitting
+    # where one look settles the most rows.
+    sizes = collections.Counter(r["theme"] for r in out)
+    # biggest family first, because that is where one look settles the most
+    # rows - but "Everything else" is not a family and cannot be bulk-ruled,
+    # so it goes last however large it is.
+    out.sort(key=lambda r: (r["theme"] == "Everything else",
+                            -sizes[r["theme"]], r["theme"], r["name"]))
+    return out
 
 
 def _vkey(name: str) -> str:
@@ -906,7 +977,8 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "set-board": act_set_board, "set-family": act_set_family,
            "capture": act_capture, "search-companies": act_search_companies,
            "scope": act_scope, "scope-all": act_scope_all,
-           "vendor-scope": act_vendor_scope, "place": act_place,
+           "vendor-scope": act_vendor_scope,
+           "vendor-scope-all": act_vendor_scope_all, "place": act_place,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "dismiss": act_dismiss}

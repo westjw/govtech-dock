@@ -1,0 +1,220 @@
+{"researched": [
+{
+  "verdict": "scope_review",
+  "company_name": "DRUID AI",
+  "website": "https://www.druidai.com",
+  "description": "Enterprise conversational and agentic AI platform sold across banking, insurance, retail, healthcare and higher education",
+  "year_founded": 2018,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "source_event": "NACUBO 2026",
+  "notes": "Horizontal enterprise AI agent platform; higher education is one named vertical among many. HQ not stated anywhere on the site (about and contact pages give no address)."
+},
+{
+  "verdict": "scope_review",
+  "company_name": "Kyriba",
+  "website": "https://www.kyriba.com",
+  "description": "Treasury, payments and liquidity management SaaS for corporate CFOs and treasurers",
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "source_event": "NACUBO 2026",
+  "notes": "Horizontal corporate treasury platform; named customers are private enterprises (Spotify, HelloFresh, Baxter). Site, contact and privacy pages give no HQ address and no founding year, so both omitted."
+},
+{
+  "verdict": "scope_review",
+  "company_name": "Strata Decision Technology",
+  "website": "https://www.stratadecision.com",
+  "description": "Financial planning, cost accounting and decision-support analytics for health systems, universities and banks",
+  "hq_location": "Chicago, IL",
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "source_event": "NACUBO 2026",
+  "notes": "Primary market is health systems, with higher education and financial institutions as secondary verticals - a multi-industry product rather than a government-specific one, so flagged for owner review. Founding year not stated on site."
+},
+{
+  "verdict": "govtech",
+  "company_name": "DocuPet",
+  "website": "https://www.docupet.com",
+  "description": "Pet licensing, registration and lost-pet reunification platform for municipal animal services departments",
+  "hq_location": "Kingston, Canada",
+  "year_founded": 2012,
+  "sector": "General Gov",
+  "category": "Permitting & Licensing",
+  "source_event": "Animal Care Expo 2026",
+  "notes": "Municipal-facing site is at partnerships.docupet.com; docupet.com is the pet-owner front end. Founded in Kingston, Ontario in 2012, added a New York office in 2018."
+},
+{
+  "verdict": "govtech",
+  "company_name": "ShelterBuddy",
+  "website": "https://www.shelterbuddy.com",
+  "description": "Animal shelter and animal control management software tracking intakes, outcomes, licensing and donations for municipal shelters",
+  "hq_location": "Boston, MA",
+  "sector": "General Gov",
+  "category": "Citizen Services",
+  "source_event": "Animal Care Expo 2026",
+  "notes": "Operated by Pet Loyalty Inc (petloyalty.co), which also owns Adopets; HQ address taken from the ShelterBuddy privacy notice. Founding year not published."
+},
+{
+  "verdict": "govtech",
+  "company_name": "CIP Software",
+  "website": "https://www.cipsoftware.com",
+  "description": "Plan-It capital improvement planning and budgeting software for cities, counties, utilities, school districts and park districts",
+  "hq_location": "Sartell, MN",
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "source_event": "GFOA 2026",
+  "notes": "Product is branded Plan-It; HQ read from the site's structured-data postal address. Site claims 25+ years in CIP but gives no founding year."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Envisio",
+  "website": "https://envisio.com",
+  "description": "Strategic planning and performance management software for local governments, public agencies and other publicly funded organizations",
+  "hq_location": "Vancouver, Canada",
+  "sector": "General Gov",
+  "category": "Strategy & Performance",
+  "source_event": "GFOA 2026",
+  "notes": "Founding year not stated on the about page."
+},
+{
+  "verdict": "govtech",
+  "company_name": "IntelliPay",
+  "website": "https://intellipay.com",
+  "description": "Online, IVR and in-person payment processing for government agencies collecting property taxes, utility bills and court fees",
+  "hq_location": "Draper, UT",
+  "sector": "General Gov",
+  "category": "Procurement & Payments",
+  "source_event": "GFOA 2026",
+  "notes": "Legal entity is Convenient Payments dba IntelliPay. Also sells to medical, nonprofit and property management, but the government page is the deepest vertical and claims two decades serving state governments. Founding year omitted: site copyright reads 2011 but the government page claims 20+ years, so the two conflict."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Revenue Solutions, Inc.",
+  "website": "https://www.rsidelivers.com",
+  "description": "Tax, property and revenue administration software for state and local government revenue agencies",
+  "hq_location": "Pembroke, MA",
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "source_event": "GFOA 2026",
+  "notes": "Sells both the Government Premier platform and implementation consulting; the product line is the core offering. Site says 'nearly three decades' but names no founding year."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Systems & Software",
+  "website": "https://ssivt.com",
+  "description": "enQuesta customer information and billing system for municipal electric, gas, water and wastewater utilities",
+  "hq_location": "Winooski, VT",
+  "sector": "Utilities & Energy",
+  "category": "Grid & Energy",
+  "source_event": "GFOA 2026",
+  "notes": "Site claims 50 years of utility expertise but states no founding year."
+},
+{
+  "verdict": "scope_review",
+  "company_name": "Dayforce",
+  "website": "https://www.dayforce.com",
+  "description": "Human capital management platform covering HR, payroll, workforce management and talent for enterprises across all industries",
+  "sector": "General Gov",
+  "category": "HR & Workforce",
+  "source_event": "PSHRA 2026",
+  "notes": "Horizontal HCM (formerly Ceridian); public sector is one of six named industries alongside retail, manufacturing, financial services and sports. No HQ or founding year published on the site's company or contact pages."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Harris School Solutions",
+  "website": "https://www.harrisschoolsolutions.com",
+  "description": "School district financial management, school nutrition and student data software for K-12 districts",
+  "hq_location": "Ottawa, Canada",
+  "sector": "K-12 Schools",
+  "category": "Operations & SIS",
+  "source_event": "SNA ANC 2027",
+  "notes": "A division of Harris Computer (Constellation Software); the locations page lists the Harris Computer Systems HQ in Ottawa with US offices in Easley SC, Mobile AL, Parsons KS, Pittsburgh PA and elsewhere. Product lines include AptaFund, NextGen, WinCap, eTrition, MealTime and EZSchoolPay. No founding year given."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Nutrislice",
+  "website": "https://www.nutrislice.com",
+  "description": "Digital menus, signage, e-ink food labels and mobile ordering for K-12 school nutrition and campus dining programs",
+  "hq_location": "Denver, CO",
+  "year_founded": 2011,
+  "sector": "K-12 Schools",
+  "category": "Operations & SIS",
+  "source_event": "SNA ANC 2027",
+  "notes": "Also sells to corporate dining and healthcare foodservice, but K-12 and higher education are the core markets. HQ address taken from the privacy policy (1550 Wewatta St, Denver)."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Oxcart Permit Systems",
+  "website": "https://www.oxcartpermits.com",
+  "description": "Online oversize/overweight, right-of-way and towing permit system for cities, villages, counties and road commissions",
+  "sector": "General Gov",
+  "category": "Permitting & Licensing",
+  "source_event": "NACE 2026",
+  "notes": "Site is a JavaScript app that returns almost no text to a plain fetch; content read via a rendered browser session. Free to the local agency, with carriers paying for permits. No HQ or founding year published."
+},
+{
+  "verdict": "scope_review",
+  "company_name": "Filevine",
+  "website": "https://www.filevine.com",
+  "description": "Legal case management, document and AI drafting platform for law firms, in-house counsel and government legal offices",
+  "hq_location": "Salt Lake City, UT",
+  "sector": "Courts & Justice",
+  "category": "Prosecution & Defense",
+  "source_event": "IMLA 2026",
+  "notes": "Primary buyer is private law firms; state and federal government legal departments (prosecutors, public defenders, attorneys general) are a named but secondary segment, so flagged for owner review. HQ from the privacy policy. Founding year not stated on the site."
+},
+{
+  "verdict": "govtech",
+  "company_name": "CCS Health",
+  "website": "https://ccs.health",
+  "description": "Community Health Record and care coordination software linking aging networks, FQHCs and state and county health and social services agencies",
+  "year_founded": 2012,
+  "sector": "Health & Human Services",
+  "category": "Aging & Veterans",
+  "source_event": "USAging 2026",
+  "notes": "Formerly Care Coordination Systems, rebranded to CCS Health in 2023. No HQ address published on the site or its contact pages."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Corrections Software Solutions",
+  "website": "https://correctionssoftware.com",
+  "description": "Case management software for community supervision, pretrial services and specialty courts used by probation departments",
+  "hq_location": "Austin, TX",
+  "sector": "Courts & Justice",
+  "category": "Probation & Supervision",
+  "source_event": "APPA Probation 2026",
+  "notes": "Site claims 30 years and 378 departments but states no founding year."
+},
+{
+  "verdict": "scope_review",
+  "company_name": "SolusGuard",
+  "website": "https://www.solusguard.com",
+  "description": "Lone-worker safety app, wearable panic button and alert monitoring service for organizations with mobile and field staff",
+  "hq_location": "Saskatoon, Canada",
+  "sector": "General Gov",
+  "category": "HR & Workforce",
+  "source_event": "APPA Probation 2026",
+  "notes": "Named industries mix public (social services, probation and parole, utilities) with private (mining, home builders, property management), so it reads as a cross-industry worker-safety product rather than a govtech one. No founding year published."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Securus Monitoring",
+  "website": "https://www.securusmonitoring.com",
+  "description": "Electronic monitoring devices and community supervision software for parole, probation and pretrial agencies",
+  "hq_location": "Carrollton, TX",
+  "sector": "Courts & Justice",
+  "category": "Probation & Supervision",
+  "source_event": "APPA Probation 2026",
+  "notes": "An Aventiv Technologies company (parent of Securus Technologies and JPay); HQ ZIP 75007 taken from the site's structured data. Offering is device plus platform, not software alone. No founding year published."
+},
+{
+  "verdict": "scope_review",
+  "company_name": "Calejo",
+  "website": "https://calejo.ai",
+  "description": "AI decision-support and process optimization software for industrial operators, including a smart water offering for water and wastewater systems",
+  "sector": "Public Works",
+  "category": "Water",
+  "source_event": "AWWA ACE 2026",
+  "notes": "Could not load calejo.ai from this environment - the origin refused every direct request and a proxy attempt hit a Cloudflare challenge, so all detail comes from indexed search snippets of the site. The registered entity appears to be Calejo Hybrid Intelligence AB (Sweden), whose flagship is Calejo Optimize for smart industries with Calejo Smart Water as a water vertical; I could not confirm that the exhibitor name 'Calejo Water Intelligence' is that same entity, and could not confirm HQ city or founding year. Worth a second look."
+}
+]}
