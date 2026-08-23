@@ -149,8 +149,14 @@ async def main():
         targets = [c for c in targets if c["ats"]["type"] == "unknown"]
     elif grp == "js":
         targets = [c for c in targets if c["ats"]["type"] != "unknown"]
+    # --limit N bounds the run. One long unbounded Chromium session is how a
+    # discovery tool turns into a machine-killer; a bounded batch is a
+    # measurement you can repeat.
+    if "--limit" in sys.argv:
+        n = int(sys.argv[sys.argv.index("--limit") + 1])
+        targets = targets[:n]
     print(f"rendering {len(targets)} companies\n", flush=True)
-    sem = asyncio.Semaphore(4)
+    sem = asyncio.Semaphore(2)
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         res = await asyncio.gather(*[probe_one(browser, c, sem) for c in targets])

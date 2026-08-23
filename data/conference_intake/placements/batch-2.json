@@ -1,0 +1,388 @@
+{
+  "placements": [
+    {
+      "id": "tanium",
+      "name": "Tanium",
+      "proposed_sector": "General Gov",
+      "proposed_category": "IT & AI Platforms",
+      "confidence": "high",
+      "why": "Endpoint security is core enterprise IT tooling"
+    },
+    {
+      "id": "hello-heart",
+      "name": "Hello Heart",
+      "proposed_sector": "General Gov",
+      "proposed_category": "HR & Workforce",
+      "confidence": "low",
+      "why": "Likely employee health benefit; could be Public Health"
+    },
+    {
+      "id": "longeye",
+      "name": "Longeye",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "high",
+      "why": "Investigations platform sold to law enforcement"
+    },
+    {
+      "id": "with-community-calendar",
+      "name": "'with' Community Calendar",
+      "proposed_sector": "General Gov",
+      "proposed_category": "Citizen Services",
+      "confidence": "medium",
+      "why": "City-facing resident engagement; could be Events & Tourism"
+    },
+    {
+      "id": "a-frame-solutions",
+      "name": "A-Frame Solutions",
+      "proposed_sector": "General Gov",
+      "proposed_category": "IT & AI Platforms",
+      "confidence": "medium",
+      "why": "No-code AI platform, not procurement despite NIGP"
+    },
+    {
+      "id": "activu-corporation",
+      "name": "Activu Corporation",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Emergency Mgmt",
+      "confidence": "low",
+      "why": "Control rooms; need EOC versus traffic-center split"
+    },
+    {
+      "id": "alpha-vision",
+      "name": "Alpha Vision",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "high",
+      "why": "Real-time crime center software for police"
+    },
+    {
+      "id": "assetworks-eam",
+      "name": "AssetWorks EAM",
+      "proposed_sector": "Public Works",
+      "proposed_category": "Fleet & Asset Mgmt",
+      "confidence": "high",
+      "why": "Enterprise asset and fleet management software"
+    },
+    {
+      "id": "band",
+      "name": "BAND",
+      "proposed_sector": "Parks & Rec",
+      "proposed_category": "Youth Sports & Leagues",
+      "confidence": "medium",
+      "why": "Team and league group communication app"
+    },
+    {
+      "id": "batonroute-school-and-staff-transport-app",
+      "name": "BatOnRoute - School and Staff Transport App",
+      "proposed_sector": "K-12 Schools",
+      "proposed_category": "Transportation",
+      "confidence": "high",
+      "why": "School bus tracking, sold to districts"
+    },
+    {
+      "id": "blue-voice",
+      "name": "Blue Voice",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "high",
+      "why": "AI assistant built for police officers"
+    },
+    {
+      "id": "crimewatch-technologies-inc",
+      "name": "CRIMEWATCH Technologies, Inc",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "high",
+      "why": "Police department community engagement platform"
+    },
+    {
+      "id": "consat-canada",
+      "name": "Consat Canada",
+      "proposed_sector": "Transit & Parking",
+      "proposed_category": "Fleet & Operations",
+      "confidence": "medium",
+      "why": "AVL and ITS; rider info is secondary"
+    },
+    {
+      "id": "critical-response-group-inc",
+      "name": "Critical Response Group. Inc.",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Emergency Mgmt",
+      "confidence": "medium",
+      "why": "Incident mapping spans police, fire, schools"
+    },
+    {
+      "id": "deleteme",
+      "name": "DeleteMe",
+      "proposed_sector": "General Gov",
+      "proposed_category": "IT & AI Platforms",
+      "confidence": "low",
+      "why": "Data privacy service; officer-safety or HR benefit unclear"
+    },
+    {
+      "id": "enkon-information-systems-inc",
+      "name": "ENKON Information Systems (USA) Inc",
+      "proposed_sector": "General Gov",
+      "proposed_category": "Permitting & Licensing",
+      "confidence": "low",
+      "why": "Land records; could be recorder, assessor, or planning"
+    },
+    {
+      "id": "edge-ai-solutions",
+      "name": "Edge AI Solutions",
+      "proposed_sector": "General Gov",
+      "proposed_category": "IT & AI Platforms",
+      "confidence": "low",
+      "why": "Generic video analytics; need traffic versus security use"
+    },
+    {
+      "id": "first-arriving",
+      "name": "First Arriving",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Fire",
+      "confidence": "low",
+      "why": "Station dashboards skew fire, but police plausible"
+    },
+    {
+      "id": "govshield-inc",
+      "name": "GovShield, Inc.",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "medium",
+      "why": "CJIS alignment implies law enforcement buyer"
+    },
+    {
+      "id": "icc-innovation",
+      "name": "ICC Innovation",
+      "proposed_sector": "General Gov",
+      "proposed_category": "Permitting & Licensing",
+      "confidence": "high",
+      "why": "Digital permitting and building code solutions"
+    },
+    {
+      "id": "imagry-autonomous-buses-shuttles",
+      "name": "Imagry Autonomous Buses & Shuttles",
+      "proposed_sector": "Transit & Parking",
+      "proposed_category": "Demand-Response & AV",
+      "confidence": "high",
+      "why": "Autonomous driving software for buses and shuttles"
+    },
+    {
+      "id": "inseer-inc",
+      "name": "Inseer, Inc.",
+      "proposed_sector": "General Gov",
+      "proposed_category": "HR & Workforce",
+      "confidence": "low",
+      "why": "Worker ergonomics; safety-risk buyer unclear in government"
+    },
+    {
+      "id": "johnson-controls-openblue",
+      "name": "Johnson Controls OpenBlue",
+      "proposed_sector": "Utilities & Energy",
+      "proposed_category": "Grid & Energy",
+      "confidence": "low",
+      "why": "Smart buildings; facilities asset management also defensible"
+    },
+    {
+      "id": "knarrtek-inc",
+      "name": "KnarrTek Inc.",
+      "proposed_sector": "Public Works",
+      "proposed_category": "Fleet & Asset Mgmt",
+      "confidence": "low",
+      "why": "Inventory tracking reads industrial; government buyer unknown"
+    },
+    {
+      "id": "lexisnexis",
+      "name": "LexisNexis",
+      "proposed_sector": "Courts & Justice",
+      "proposed_category": "Prosecution & Defense",
+      "confidence": "medium",
+      "why": "Legal research for government attorneys"
+    },
+    {
+      "id": "loop-websites-for-municipalities",
+      "name": "Loop - Websites for Municipalities",
+      "proposed_sector": "General Gov",
+      "proposed_category": "Citizen Services",
+      "confidence": "high",
+      "why": "Municipal website and resident-facing platform"
+    },
+    {
+      "id": "mitel",
+      "name": "Mitel",
+      "proposed_sector": "General Gov",
+      "proposed_category": "IT & AI Platforms",
+      "confidence": "high",
+      "why": "Unified communications is IT infrastructure"
+    },
+    {
+      "id": "netchex",
+      "name": "Netchex",
+      "proposed_sector": "General Gov",
+      "proposed_category": "HR & Workforce",
+      "confidence": "high",
+      "why": "Payroll and HR software, not parks"
+    },
+    {
+      "id": "novotx-an-accela-company",
+      "name": "Novotx, An Accela Company",
+      "proposed_sector": "Public Works",
+      "proposed_category": "Fleet & Asset Mgmt",
+      "confidence": "high",
+      "why": "Elements XS is asset and work management"
+    },
+    {
+      "id": "offerioai-by-blu-ai-technologies",
+      "name": "OfferioAI by Blu AI Technologies",
+      "proposed_sector": "General Gov",
+      "proposed_category": "Procurement & Payments",
+      "confidence": "high",
+      "why": "AI procurement and bid software"
+    },
+    {
+      "id": "operator-xr",
+      "name": "Operator XR",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "high",
+      "why": "VR tactical training for police officers"
+    },
+    {
+      "id": "pmweb",
+      "name": "PMWEB",
+      "proposed_sector": "General Gov",
+      "proposed_category": "Finance & ERP",
+      "confidence": "low",
+      "why": "Capital cost and contract management; airport focus uncertain"
+    },
+    {
+      "id": "peach-ai-inc",
+      "name": "Peach AI inc.",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "high",
+      "why": "AI police report writing"
+    },
+    {
+      "id": "porter-lee-corporation",
+      "name": "Porter Lee Corporation",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "high",
+      "why": "Evidence and crime lab management software"
+    },
+    {
+      "id": "prophoenix-corporation",
+      "name": "ProPhoenix Corporation",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "high",
+      "why": "CAD and RMS core; jail module secondary"
+    },
+    {
+      "id": "pulse-transit-software",
+      "name": "Pulse Transit Software",
+      "proposed_sector": "Transit & Parking",
+      "proposed_category": "Fleet & Operations",
+      "confidence": "high",
+      "why": "Transit operations software"
+    },
+    {
+      "id": "rfxpremier",
+      "name": "RFXPremier",
+      "proposed_sector": "General Gov",
+      "proposed_category": "Procurement & Payments",
+      "confidence": "high",
+      "why": "RFP and solicitation management"
+    },
+    {
+      "id": "roadway-management-technologies",
+      "name": "Roadway Management Technologies",
+      "proposed_sector": "Public Works",
+      "proposed_category": "Streets",
+      "confidence": "high",
+      "why": "Roadway and infrastructure management software"
+    },
+    {
+      "id": "salesforce",
+      "name": "Salesforce",
+      "proposed_sector": "General Gov",
+      "proposed_category": "Citizen Services",
+      "confidence": "medium",
+      "why": "Constituent CRM and case management; platform framing also fits"
+    },
+    {
+      "id": "simsi-inc",
+      "name": "Simsi, Inc",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "medium",
+      "why": "Public safety analytics, IACP suggests police buyer"
+    },
+    {
+      "id": "status-solutions-network",
+      "name": "Status Solutions Network",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Emergency Mgmt",
+      "confidence": "medium",
+      "why": "Mass notification and situational awareness"
+    },
+    {
+      "id": "tootris-child-care-solutions",
+      "name": "TOOTRiS Child Care Solutions",
+      "proposed_sector": "Health & Human Services",
+      "proposed_category": "Child & Family Services",
+      "confidence": "medium",
+      "why": "Child care benefits; employer-benefit angle also possible"
+    },
+    {
+      "id": "thomson-reuters",
+      "name": "Thomson Reuters",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "medium",
+      "why": "CLEAR is investigative data for law enforcement"
+    },
+    {
+      "id": "trimble",
+      "name": "Trimble",
+      "proposed_sector": "Public Works",
+      "proposed_category": "Fleet & Asset Mgmt",
+      "confidence": "high",
+      "why": "Cityworks asset and work management for public works"
+    },
+    {
+      "id": "vcs-hr-jobs4blue",
+      "name": "VCS HR & Jobs4Blue",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "low",
+      "why": "Police-specific HR; General Gov HR & Workforce equally defensible"
+    },
+    {
+      "id": "vetted-holdings",
+      "name": "Vetted Holdings",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "high",
+      "why": "CAD and RMS for law enforcement"
+    },
+    {
+      "id": "wavepoint-solutions-llc",
+      "name": "Wavepoint Solutions, LLC",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "high",
+      "why": "Gunshot detection deployed by police agencies"
+    },
+    {
+      "id": "esleuth-ai",
+      "name": "eSleuth.ai",
+      "proposed_sector": "Public Safety",
+      "proposed_category": "Police",
+      "confidence": "high",
+      "why": "AI investigative analysis for law enforcement"
+    }
+  ]
+}
