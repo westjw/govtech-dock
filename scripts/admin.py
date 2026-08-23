@@ -576,25 +576,46 @@ def triage(companies, board) -> dict:
     families = collections.Counter(v["theme"] for v in vendors)
     rulable = sum(n for t, n in families.items() if t != "Everything else")
 
+    # A sortie is scoped to what a SITTING can finish, not to the whole
+    # queue. Three bars at 0-of-240 read as a mountain and kill the appetite
+    # they exist to build; the same work framed as "16 of 16" is a thing you
+    # close before lunch. The full queue total still shows on its tab.
     recs = []
     if visible:
         recs.append({"queue": "miscategorized", "n": visible,
-                     "headline": f"{visible} miscategorised companies are hiring right now",
-                     "why": "they are the top rows of the public Companies tab, "
-                            "filed in the bucket meant for things that are not products"})
-    if rulable:
-        recs.append({"queue": "vendors", "n": rulable,
-                     "headline": f"{rulable} horizontal vendors sit in {len(families) - 1} families",
-                     "why": "each family takes one decision, so this clears far "
-                            "faster than its count suggests"})
+                     "scope": visible, "done": 0,
+                     "goal": "the storefront is right",
+                     "headline": f"Fix the {visible} the public can see",
+                     "why": f"{visible} miscategorised companies are hiring right "
+                            f"now, so they are the top rows of the public "
+                            f"Companies tab. The other "
+                            f"{counts.get('miscategorized', 0) - visible} are "
+                            f"invisible today and can wait."})
+    if families:
+        top, n_top = families.most_common(1)[0]
+        if top == "Everything else" and len(families) > 1:
+            top, n_top = families.most_common(2)[1]
+        recs.append({"queue": "vendors", "n": n_top,
+                     "scope": n_top, "done": 0,
+                     "goal": f"{top} is settled",
+                     "headline": f"Settle {top} in one decision",
+                     "why": f"{n_top} vendors, one call. The largest family on "
+                            f"the board, and the whole line leaves the queue "
+                            f"with your reason on every one of them."})
     if counts.get("duplicates"):
         recs.append({"queue": "duplicates", "n": counts["duplicates"],
-                     "headline": f"{counts['duplicates']} duplicate pairs",
-                     "why": "small, and every merge keeps the research from both sides"})
+                     "scope": counts["duplicates"], "done": 0,
+                     "goal": "one record per vendor",
+                     "headline": f"Merge the {counts['duplicates']} duplicate pairs",
+                     "why": "the whole queue is small enough to end today, and "
+                            "every merge keeps the research from both sides"})
     if counts.get("submissions"):
         recs.append({"queue": "submissions", "n": counts["submissions"],
-                     "headline": f"{counts['submissions']} waiting from outside",
-                     "why": "someone is waiting on an answer"})
+                     "scope": counts["submissions"], "done": 0,
+                     "goal": "nobody is left waiting",
+                     "headline": f"Answer the {counts['submissions']} from outside",
+                     "why": "a stranger submitted a company and is waiting to "
+                            "see whether it landed"})
 
     rulings = 0
     for f in ("vendor_scope_decisions.json", "placement_rulings.json",

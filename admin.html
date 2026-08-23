@@ -109,6 +109,7 @@
   .endbar{flex:1;height:7px;border-radius:4px;background:var(--chip);overflow:hidden}
   .endfill{height:100%;border-radius:4px;background:var(--accent)}
   .toward{font-size:11.5px;color:var(--dim);white-space:nowrap}
+  .far{font-size:11.5px;color:var(--dim);margin-top:4px}
   /* the floors: stamps for what is finished, bars for what is close */
   .floors{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:10px}
   .floor{background:var(--panel);border:1px solid var(--line);border-radius:10px;
@@ -299,18 +300,24 @@ async function showStart() {
     const card = el('div', 'sortie');
     card.appendChild(el('h3', null, r.headline));
     card.appendChild(el('div', 'kv', r.why));
-    const st = stateOf[r.queue];
-    if (st) {
+    /* The bar measures the SITTING, not the queue. A sortie you can finish
+       shows a bar that can fill; the queue's own total lives on its tab. */
+    if (r.scope) {
+      const pct = Math.round(100 * (r.done || 0) / r.scope);
       const wrapb = el('div', 'barwrap');
       const bar = el('div', 'endbar');
       const fill = el('div', 'endfill');
-      fill.style.width = Math.max(2, st.pct) + '%';
+      fill.style.width = Math.max(2, pct) + '%';
       bar.appendChild(fill);
       wrapb.appendChild(bar);
       wrapb.appendChild(el('span', 'toward',
-        `${st.done} of ${st.done + st.left} → “${st.name}”`));
+        `${r.done || 0} of ${r.scope}${r.goal ? ' → ' + r.goal : ''}`));
       card.appendChild(wrapb);
     }
+    const st = stateOf[r.queue];
+    if (st && st.left)
+      card.appendChild(el('div', 'far',
+        `${st.done + st.left} on the board behind it — “${st.name}” when it is empty`));
     const b = el('button', 'act good', `Open ${META.labels[r.queue]}`);
     b.onclick = () => show(r.queue);
     const row = el('div', 'row'); row.appendChild(b);
