@@ -81,6 +81,9 @@
     border-radius:10px;background:var(--chip)}
   .grouphead strong{display:block;margin-bottom:8px;font-size:14px}
   .grouphead input{width:100%;margin-bottom:8px}
+  .starthead{display:flex;align-items:baseline;gap:12px;margin:6px 0 16px}
+  .starthead strong{font-size:17px}
+  .starthead .dim{color:var(--faint);font-size:12.5px;margin-left:auto}
 </style>
 </head>
 <body>
@@ -166,6 +169,9 @@ async function boot() {
   $('#sub').textContent = `${META.companies.toLocaleString()} govtech companies · `
     + `${META.postings.toLocaleString()} postings · board built ${META.generated || '—'}`;
   const nav = $('#tabs'); nav.innerHTML = '';
+  const startBtn = el('button', null, 'Start here');
+  startBtn.dataset.key = '__start'; startBtn.onclick = () => showStart();
+  nav.appendChild(startBtn);
   const capBtn = el('button', null, 'Capture');
   capBtn.dataset.key = '__capture'; capBtn.onclick = () => showCapture();
   nav.appendChild(capBtn);
@@ -178,7 +184,7 @@ async function boot() {
     b.onclick = () => show(k);
     b.dataset.key = k; nav.appendChild(b);
   });
-  show(Object.keys(META.labels)[0]);
+  showStart();
 }
 
 async function refreshCounts() {
@@ -187,6 +193,43 @@ async function refreshCounts() {
     const n = b.querySelector('.n');
     if (n) n.textContent = META.counts[b.dataset.key];
   });
+}
+
+
+/* The landing view. Eleven tabs and two thousand rows is a wall; this says
+   which handful of them changes anything today, and what is already done. */
+async function showStart() {
+  TAB = '__start';
+  document.querySelectorAll('nav button').forEach(b =>
+    b.setAttribute('aria-selected', b.dataset.key === '__start'));
+  const v = $('#view'); v.innerHTML = '';
+  const t = await api('/api/triage');
+
+  const head = el('div', 'starthead');
+  head.appendChild(el('strong', null, 'Where to start'));
+  head.appendChild(el('span', 'dim',
+    `${t.done} ruling${t.done === 1 ? '' : 's'} recorded so far`));
+  v.appendChild(head);
+
+  if (!t.recommend.length)
+    v.appendChild(el('div', 'empty', 'Nothing pressing. The queues are clear.'));
+
+  t.recommend.forEach(r => {
+    const card = el('div', 'item');
+    const h = el('h3', null, r.headline);
+    card.appendChild(h);
+    card.appendChild(el('div', 'kv', r.why));
+    const b = el('button', 'act good', `Open ${META.labels[r.queue]}`);
+    b.onclick = () => show(r.queue);
+    const row = el('div', 'row'); row.appendChild(b);
+    card.appendChild(row);
+    v.appendChild(card);
+  });
+
+  const notes = el('div', 'item');
+  notes.appendChild(el('h3', null, 'Worth knowing before you judge the numbers'));
+  t.notes.forEach(n => notes.appendChild(el('div', 'kv', n)));
+  v.appendChild(notes);
 }
 
 async function show(key) {

@@ -36,6 +36,7 @@ import tempfile
 import urllib.parse
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
+import ats  # noqa: E402
 import add_company    # noqa: E402
 import discover_ats   # noqa: E402
 import find_websites  # noqa: E402
@@ -44,9 +45,12 @@ import roles          # noqa: E402
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
-ATS_TYPES = {"ashby", "greenhouse", "lever", "workable", "recruitee", "breezy",
-             "smartrecruiters", "bamboohr", "workday", "rippling", "jazzhr",
-             "icims", "html", "unknown"}
+# Derived from the fetchers that exist, never hand-listed. The two drifted:
+# ats.py grew paylocity and oracle fetchers while this set kept the old
+# fourteen, so discovery could find a board the validator then refused. A
+# type is legal exactly when something can read it, plus "unknown", which
+# means nothing has looked yet.
+ATS_TYPES = set(ats.FETCHERS) | {"unknown"}
 STATUSES = {"Yes", "Sales (non-AE)", "None found", "Unknown"}
 
 # Words that carry no identity, so two records differing only by these are the
@@ -358,6 +362,75 @@ def act_vendor_scope_all(body: dict) -> dict:
             "sled": "added, public-sector roles only",
             "out": "left off the board"}[call]
     return {"ok": True, "message": f"{n} vendor(s) {said}"}
+
+
+def triage(companies, board) -> dict:
+    """What to work on next, and honestly how much of each pile is workable.
+
+    Eleven tabs and two thousand items is a wall, and a wall is the thing
+    people stop opening. Three facts turn it back into work:
+
+    WHAT IT CHANGES. A wrong bucket on a company with open roles is on the
+    public page; the same error on a dormant company is seen by nobody. The
+    same queue can be urgent and irrelevant at once, so the recommendation
+    counts the visible part separately.
+
+    WHAT IS ACTUALLY WORKABLE. 1,033 companies have no readable board, but a
+    hundred of them have no website either, so there is nothing for a person
+    to open. Presenting those as pending work is how a queue teaches you to
+    ignore it.
+
+    WHAT IS ALREADY DONE. Rulings are recorded for the day they become a
+    score. Until then they are the only evidence the pile is shrinking.
+    """
+    hiring = {o["id"]: o.get("open_roles", 0)
+              for o in board.get("organizations", [])}
+    counts = {k: len(f(companies, board)) for k, f in QUEUES.items()}
+
+    mis = q_miscategorized(companies, board)
+    visible = sum(1 for r in mis if r["open_roles"])
+    boards = q_boards(companies, board)
+    reachable = sum(1 for r in boards if r.get("website"))
+    vendors = q_vendor_scope(companies, board)
+    families = collections.Counter(v["theme"] for v in vendors)
+    rulable = sum(n for t, n in families.items() if t != "Everything else")
+
+    recs = []
+    if visible:
+        recs.append({"queue": "miscategorized", "n": visible,
+                     "headline": f"{visible} miscategorised companies are hiring right now",
+                     "why": "they are the top rows of the public Companies tab, "
+                            "filed in the bucket meant for things that are not products"})
+    if rulable:
+        recs.append({"queue": "vendors", "n": rulable,
+                     "headline": f"{rulable} horizontal vendors sit in {len(families) - 1} families",
+                     "why": "each family takes one decision, so this clears far "
+                            "faster than its count suggests"})
+    if counts.get("duplicates"):
+        recs.append({"queue": "duplicates", "n": counts["duplicates"],
+                     "headline": f"{counts['duplicates']} duplicate pairs",
+                     "why": "small, and every merge keeps the research from both sides"})
+    if counts.get("submissions"):
+        recs.append({"queue": "submissions", "n": counts["submissions"],
+                     "headline": f"{counts['submissions']} waiting from outside",
+                     "why": "someone is waiting on an answer"})
+
+    rulings = 0
+    for f in ("vendor_scope_decisions.json", "placement_rulings.json",
+              "scope_decisions.json"):
+        rulings += len(read(f, {}))
+    return {
+        "counts": counts,
+        "recommend": recs,
+        "notes": [
+            f"{counts.get('boards', 0)} companies have no readable board, but only "
+            f"{reachable} have a website to open. The rest need a website first.",
+            f"{counts.get('miscategorized', 0)} are in the wrong bucket; {visible} of "
+            f"those are hiring, so the other {counts.get('miscategorized', 0) - visible} "
+            f"are invisible to visitors today.",
+        ],
+        "done": rulings,
+    }
 
 
 def q_miscategorized(companies, board) -> list:
@@ -1144,6 +1217,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if path == "/":
             self.path = "/admin.html"
             return super().do_GET()
+        if path == "/api/triage":
+            companies, board = read("companies.json", []), read("board.json", {})
+            return self._json(triage(companies, board))
         if path == "/api/queues":
             companies, board = read("companies.json", []), read("board.json", {})
             return self._json({"counts": {k: len(f(companies, board))

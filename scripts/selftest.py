@@ -19,9 +19,14 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
 STATUSES = {"Yes", "Sales (non-AE)", "None found", "Unknown"}
-ATS_TYPES = {"ashby", "greenhouse", "lever", "workable", "recruitee", "breezy",
-             "smartrecruiters", "bamboohr", "workday", "rippling", "jazzhr",
-             "icims", "html", "unknown"}
+import ats  # noqa: E402
+
+# Derived from the fetchers that exist, never hand-listed. The two drifted:
+# ats.py grew paylocity and oracle fetchers while this set kept the old
+# fourteen, so discovery could find a board the validator then refused. A
+# type is legal exactly when something can read it, plus "unknown", which
+# means nothing has looked yet.
+ATS_TYPES = set(ats.FETCHERS) | {"unknown"}
 
 CLASSIFIER_CASES = [
     ("Account Executive", "ae"),

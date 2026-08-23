@@ -6582,5 +6582,1214 @@
   "on": "2026-08-20",
   "found": false,
   "note": "no board found"
+ },
+ "castus": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "coderight-inc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "univerus": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "brainfuse": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/jobs/)",
+  "weak": true
+ },
+ "gale": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "doobert": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "shelterluv": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "oclc": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "workday:['oclc', 'wd1', 'OCLC_Careers'], 8 posting(s) readable"
+ },
+ "esri-canada": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en-ca/about/careers/overview)",
+  "weak": true
+ },
+ "allocore": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "munipro": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "asldeafined": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at /careers (HTTP 403)",
+  "retry_soon": true
+ },
+ "cogsdale-corporation": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "workday:harriscomputer reads (0 posting(s)), but does not match 'Cogsdale Corporation'; likely a parent or another company"
+ },
+ "tind": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "gimlet": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "medici-tv": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "library-market": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "velosimo": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "library-ideas-llc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "home-to-home": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "common-sense": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "ashby:commonsense found but unreadable (HTTP 404 for https://api.ashbyhq.com)",
+  "retry_soon": true
+ },
+ "planstreet": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "fairfax-software": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/home/about-us/career-opportunities/)",
+  "weak": true
+ },
+ "the-library-corporation": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career-opportunities/)",
+  "weak": true
+ },
+ "open-point": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers/)",
+  "weak": true
+ },
+ "assabet-interactive": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "decodable-reads": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "hoopla-digital": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "simplyanalytics": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "jazzhr:simplyanalytics, 0 posting(s) readable"
+ },
+ "meescan-inc": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "collectionhq": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "farragut": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "lightbox-learning": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "recollect": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "govstack": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "oracle:ejov reads (0 posting(s)), but does not match 'Govstack'; likely a parent or another company"
+ },
+ "playgarden-prep-online": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "atozdatabases": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "sdl-2": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-us/careers/)",
+  "weak": true
+ },
+ "communico": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "digitalia": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "autoagent": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "sirsidynix": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "workday:harriscomputer reads (34 posting(s)), but does not match 'SirsiDynix'; likely a parent or another company"
+ },
+ "simplicity-ils": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "overdrive": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "pawlytics": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "noisenet": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "digital-assurance-certification-llc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "azavar": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "sectri": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "infobase": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers/)",
+  "weak": true
+ },
+ "llmc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "ebsco-information-services": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "icims:careers-ebscoind reads (20 posting(s)), but does not match 'EBSCO Information Services'; likely a parent or another company"
+ },
+ "transparent-language": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "jazzhr:transparentlanguage, 0 posting(s) readable"
+ },
+ "innovative": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "workday:clarivate reads (29 posting(s)), but does not match 'Innovative'; likely a parent or another company"
+ },
+ "fundview": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "pressreader": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "awe-learning": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "govsense": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "localhop": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "sympro": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "mtw-solutions-llc": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
+ },
+ "solus": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "envisionware": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "workday:volarisgroup reads (0 posting(s)), but does not match 'EnvisionWare'; likely a parent or another company"
+ },
+ "lote4kids": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "insignia-software": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/Careers)",
+  "weak": true
+ },
+ "springshare": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers)",
+  "weak": true
+ },
+ "can-am-technologies": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at s.com/careers (HTTP 403)",
+  "retry_soon": true
+ },
+ "myfilmfriend": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "petstablished": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "comprise-technologies-inc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "harris": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "workday:['harriscomputer', 'wd3', '1'], 34 posting(s) readable"
+ },
+ "system-innovators": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "workday:harriscomputer reads (34 posting(s)), but does not match 'System Innovators'; likely a parent or another company"
+ },
+ "orlo": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "valuebase": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "beanstack": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/who-we-are/careers)",
+  "weak": true
+ },
+ "bibliocommons": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "workday:volarisgroup reads (2 posting(s)), but does not match 'BiblioCommons'; likely a parent or another company"
+ },
+ "divdat-powered-by-meridian": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers)",
+  "weak": true
+ },
+ "makemake": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "tightrope-media-systems": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "steelcloud": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "quipu-group": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "shelterbuddy": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "stackmap": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "newsbank": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "revenue-solutions-inc": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "paylocity:https://recruiting.paylocity.com/recruit, 1 posting(s) readable"
+ },
+ "cip-software": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "liblime": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "oxcart-permit-systems": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "civic-roundtable": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "ashby:Civic found but unreadable (HTTP 404 for https://api.ashbyhq.com)",
+  "retry_soon": true
+ },
+ "sand": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "book-systems": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers)",
+  "weak": true
+ },
+ "mindmixer": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/join-our-team/saci-careers-page/)",
+  "weak": true
+ },
+ "librarica": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "mango-languages": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "lever:mangolanguage, 2 posting(s) readable"
+ },
+ "reader-zone": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "apply-government-solutions": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "intellipay": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "am": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/)",
+  "weak": true
+ },
+ "muni-link": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "html:recruiting reads (0 posting(s)), but does not match 'Muni-Link'; likely a parent or another company"
+ },
+ "niche-academy": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "docupet": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "xylem-vue": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "workday:['xylem', 'wd5', 'xylem-careers'], 38 posting(s) readable"
+ },
+ "exevision-inc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "specific-energy": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "builterra": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "spout": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "vtscada-by-trihedral": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "waterly-inc": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "daupler": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "bamboohr:daupler, 2 posting(s) readable"
+ },
+ "kahua": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers/)",
+  "weak": true
+ },
+ "nobel-systems-inc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "aquanuity-inc": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers/)",
+  "weak": true
+ },
+ "rl-core-technologies": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career)",
+  "weak": true
+ },
+ "watura": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "aquatic-informatics-2": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-aquatic-informatics/careers/)",
+  "weak": true
+ },
+ "diversified-computer-services": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "streametric": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "delta-bravo-ai": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "njbsoft": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "teamsolve": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "dareesoft-inc": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career)",
+  "weak": true
+ },
+ "baseform": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/np4/careers.html)",
+  "weak": true
+ },
+ "leakzon": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "fieldman": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "rta": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "paylocity:Ron-Turley-Associates-Inc reads (4 posting(s)), but does not match 'RTA'; likely a parent or another company"
+ },
+ "swiftcomply": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "tova-earth": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "aventiv-technologies": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "servicelink": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "kando": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career/)",
+  "weak": true
+ },
+ "minga": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "bamboohr:minga, 3 posting(s) readable"
+ },
+ "brainfreeze": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "instinctive": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "kloudgin": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "health-e-pro": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers/)",
+  "weak": true
+ },
+ "wi-plat-co-ltd": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "saavor": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "droplet": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "greenhouse:droplet, 3 posting(s) readable"
+ },
+ "linq": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "greenhouse:emslinqinc, 7 posting(s) readable"
+ },
+ "follett-software": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "greenhouse:follettsoftware, 9 posting(s) readable"
+ },
+ "i3-verticals-education": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "html:recruiting2 reads (0 posting(s)), but does not match 'i3 Verticals Education (PaySchools)'; likely a parent or another company"
+ },
+ "intellischool": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "primeroedge": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "classdojo": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at /company/careers (HTTP 403)",
+  "retry_soon": true
+ },
+ "ativion": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "brisk-teaching": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "ashby:brisk-teaching, 5 posting(s) readable"
+ },
+ "miyo-health": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "mealmanage-inc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "schoolday": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career-readiness/)",
+  "weak": true
+ },
+ "cybernut": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "ashby:cybernut, 0 posting(s) readable"
+ },
+ "incident-iq": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "simpledu": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "secure-schools": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "workable:secure-schools, 0 posting(s) readable"
+ },
+ "veracity": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "nuxight": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "magicschool": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "ashby:magicschool, 2 posting(s) readable"
+ },
+ "typing-com": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "beacon-by-trek-medics": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "managedmethods": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "pcs-revenue-control-systems-inc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "jotit": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "panorama-education": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
+ },
+ "edutrak-software": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "icev": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "paylocity:CEV-MULTIMEDIA-LTD reads (2 posting(s)), but does not match 'iCEV'; likely a parent or another company"
+ },
+ "harris-school-solutions": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "nutri-link-technologies": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "doorman": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "eratesync": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at /careers (HTTP 403)",
+  "retry_soon": true
+ },
+ "sergeant-laboratories": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "menulogic-k12": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/hiring)",
+  "weak": true
+ },
+ "hapara": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers/)",
+  "weak": true
+ },
+ "linewize": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "thinkverse": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "onflo": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
+ },
+ "schoolai": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "rippling:schoolai, 3 posting(s) readable"
+ },
+ "itopia": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "cayenta": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "workday:harriscomputer reads (0 posting(s)), but does not match 'Cayenta'; likely a parent or another company"
+ },
+ "nutrislice": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "scrible": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "silverblaze": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "workday:harriscomputer reads (0 posting(s)), but does not match 'Silverblaze'; likely a parent or another company"
+ },
+ "identity-automation": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers/)",
+  "weak": true
+ },
+ "fyld": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career)",
+  "weak": true
+ },
+ "convey": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "ashby:Convey, 2 posting(s) readable"
+ },
+ "inhance-utilities-solutions": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "workday:harriscomputer reads (34 posting(s)), but does not match 'inHANCE Utilities Solutions'; likely a parent or another company"
+ },
+ "smartworks": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "workday:['harriscomputer', 'wd3', 'Smartworks'], 0 posting(s) readable"
+ },
+ "ascend-analytics": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "greenhouse:ascendanalytics found but unreadable (HTTP 404 for https://boards-api.gree)",
+  "retry_soon": true
+ },
+ "advanced-utility-systems": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
+ },
+ "hansen-technologies": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "oracle:eoja reads (0 posting(s)), but does not match 'Hansen Technologies'; likely a parent or another company"
+ },
+ "northstar-utilities-solutions": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "lambent": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "systems-software": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "workday:harriscomputer reads (1 posting(s)), but does not match 'Systems & Software'; likely a parent or another company"
+ },
+ "sprypoint": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "duett-inc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "cusi": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "localintel": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "breezy:localintel, 0 posting(s) readable"
+ },
+ "propel": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "ashby:propel, 8 posting(s) readable"
+ },
+ "outreach-smartphone-monitoring": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "epoch-solutions-group": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "eab": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "myoneflow": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "patter-compass": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "netacent": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "core-solutions-inc": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "reconnect-inc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "kana-health": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "eleos-health": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career/)",
+  "weak": true
+ },
+ "pulse-for-good": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "explorance": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "bamboohr:explorance, 30 posting(s) readable"
+ },
+ "professional-computer-solutions-llc": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "mission-driven-data": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "prg-insight": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "collegenet": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "edmo": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "halda": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "intellicampus": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "moodle-us": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/us/careers/)",
+  "weak": true
+ },
+ "touchnet-a-global-payments-company": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "careloop-health": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "meadow": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "ashby:Meadow, 5 posting(s) readable"
+ },
+ "technolutions": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "remotecom": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "saraworks": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "greenhouse:saraworks, 0 posting(s) readable"
+ },
+ "schoolyear": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "betterage": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "givepulse": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
  }
 }
