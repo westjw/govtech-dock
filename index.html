@@ -31,6 +31,7 @@
   nav{display:flex;gap:3px;margin:16px 0 0;flex-wrap:wrap}
   nav button{background:none;border:0;padding:8px 14px;border-radius:7px 7px 0 0;font:inherit;
     font-size:13px;color:var(--dim);cursor:pointer;border-bottom:2px solid transparent}
+  .tabn{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:600;font-size:11.5px}
   nav button[aria-selected=true]{color:var(--ink);background:var(--panel);
     border-bottom-color:var(--accent);font-weight:600}
   main{max-width:1340px;margin:0 auto;padding:0 22px 60px}
@@ -62,6 +63,10 @@
   .barfill{display:inline-block;height:8px;border-radius:4px;background:var(--accent);
     vertical-align:middle;margin:0 8px}
   .empty{color:var(--faint);padding:26px 0;text-align:center;font-size:13px}
+  /* the company's own site sits beside its board: you read the company
+     before you read its jobs */
+  .colinks{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0 0}
+  .golink{font-size:13.5px;font-weight:600}
 
   /* ------------------------------------------------ the store treatment
      From the Claude Design pass (option 4a, "quiet chrome, loud content").
@@ -118,6 +123,10 @@
   .row .m{font-size:13px;color:var(--dim);margin-top:2px}
   .row .when{font-size:12.5px;white-space:nowrap;color:var(--faint)}
   .row .when.new{color:var(--accent);font-weight:600}
+  .savebtn{flex:none;background:none;border:0;padding:6px;border-radius:8px;cursor:pointer;
+    color:var(--faint);line-height:0}
+  .savebtn:hover{color:var(--ink);background:var(--chip)}
+  .savebtn[aria-pressed=true]{color:var(--accent)}
   .more{padding:14px 24px;border-top:1px solid var(--chip);text-align:center;font-size:13px;
     font-weight:600;color:var(--accent);cursor:pointer}
   .more:hover{background:var(--bg)}
@@ -310,8 +319,8 @@ async function sendAdd(){
 <script>
 const $=(s,r=document)=>r.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-let D=null, tab="jobs";
-const TABS=[["jobs","Job board"],["companies","Companies"],["intel","Market intel"]];
+let D=null, tab="jobs", PENDING_URL=null;
+const TABS=[["jobs","Job board"],["companies","Companies"],["saved","Saved"],["intel","Market intel"]];
 const FAM={gtm:"GTM",cs:"Customer Success",ops:"Ops / RevOps",engineering:"Engineering",
   product:"Product & Design",data:"Data & Research",policy:"Policy & Gov Affairs",
   ga:"G&A",exec:"Executive",field:"Field & implementation",other:"Unclassified"};
@@ -544,6 +553,7 @@ function jobs(){
 
   ["j-q","j-fam","j-sec","j-us","j-state","j-region","j-office","j-mode","j-sen","j-src"]
     .forEach(i=>{const el=$("#"+i);if(el)el.addEventListener("input",drawJobs);});
+  applyUrl(PENDING_URL); PENDING_URL=null;
   drawJobs();
 }
 
@@ -646,6 +656,127 @@ function emptyJobs(quotaOnly,fam,where){
   return `<div class="empty">No postings match.</div>`;
 }
 
+/* A search you cannot send to someone is half a tool. Every filter lives in
+   the URL, so a result set is a link: bookmark it, share it, hit back and
+   land where you were. The keys are short because the URL is read by
+   people. */
+const URLKEYS={q:"j-q",fam:"j-fam",sec:"j-sec",st:"j-state",off:"j-office",
+  reg:"j-region",sen:"j-sen",us:"j-us",mode:"j-mode",src:"j-src"};
+let URL_LOADING=false;
+function writeUrl(){
+  if(URL_LOADING)return;
+  const u=new URLSearchParams();
+  if(tab!=="jobs")u.set("tab",tab);
+  Object.entries(URLKEYS).forEach(([k,id])=>{
+    const el=$("#"+id); if(el&&el.value)u.set(k,el.value);
+  });
+  const quota=$("#j-quota-pill");
+  if(quota&&quota.getAttribute("aria-pressed")!=="true")u.set("any","1");
+  const where=$("#j-where")?.querySelector('[aria-pressed="true"]');
+  if(where&&where.dataset.v)u.set("where",where.dataset.v);
+  const qs=u.toString();
+  const next=location.pathname+(qs?"?"+qs:"");
+  if(next!==location.pathname+location.search)
+    history.replaceState(null,"",next);
+}
+function readUrl(){
+  const u=new URLSearchParams(location.search);
+  if(!u.toString())return null;
+  return u;
+}
+function applyUrl(u){
+  if(!u)return;
+  URL_LOADING=true;
+  Object.entries(URLKEYS).forEach(([k,id])=>{
+    const el=$("#"+id); if(el&&u.has(k))el.value=u.get(k);
+  });
+  if(u.has("any")){
+    const pill=$("#j-quota-pill");
+    if(pill){pill.setAttribute("aria-pressed","false");
+      const v=$("#j-quota-v"); if(v){v.textContent="Any role";v.className="v";}}
+  }
+  if(u.has("where")){
+    const seg=$("#j-where");
+    if(seg)[...seg.children].forEach(b=>
+      b.setAttribute("aria-pressed",b.dataset.v===u.get("where")));
+  }
+  // an incoming link with overflow filters set should show them, not hide them
+  const extras=["fam","sec","st","off","reg","sen","us","mode","src"];
+  if(extras.some(k=>u.has(k))){
+    const bar=$("#j-bar"), btn=document.querySelector('[onclick*="toggleMore"]');
+    if(bar){bar.style.display="flex"; if(btn)btn.setAttribute("aria-expanded","true");}
+  }
+  const fp=$("#j-fam-pill"), f=$("#j-fam");
+  if(fp&&f)fp.value=f.value;
+  URL_LOADING=false;
+}
+/* Saved roles. A board you cannot come back to is a board you visit once.
+   This lives in the browser, not on a server: no account, no sign-in, and
+   nothing about what you are looking for leaves the machine - which for a
+   job search someone is running quietly is the right default, not a
+   limitation. A saved role keeps its own copy of what it said, so it still
+   reads correctly after the posting comes down. */
+const SAVED_KEY="solesource.saved.v1";
+function savedAll(){
+  try{return JSON.parse(localStorage.getItem(SAVED_KEY)||"{}")}catch{return {}}
+}
+function isSaved(id){return !!savedAll()[id]}
+function toggleSave(p,btn){
+  const all=savedAll();
+  if(all[p.id]){delete all[p.id]}
+  else{
+    all[p.id]={id:p.id,title:p.title,company:p.company,company_id:p.company_id,
+      url:p.url,sector:p.sector,category:p.category,family:p.family,
+      quota_carrying:p.quota_carrying,seniority:p.seniority,
+      territory:p.territory,office:p.office,work_mode:p.work_mode,
+      saved_on:new Date().toISOString().slice(0,10)};
+  }
+  try{localStorage.setItem(SAVED_KEY,JSON.stringify(all))}catch{}
+  if(btn)paintSave(btn,isSaved(p.id));
+  const c=$("#savedcount"); if(c)c.textContent=Object.keys(savedAll()).length||"";
+}
+function paintSave(btn,on){
+  btn.setAttribute("aria-pressed",on?"true":"false");
+  btn.title=on?"saved — click to remove":"save this role";
+  btn.innerHTML=on
+    ? '<svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path d="M5 2.5h10a1 1 0 011 1v14l-6-3.6-6 3.6v-14a1 1 0 011-1z"/></svg>'
+    : '<svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M5 2.5h10a1 1 0 011 1v14l-6-3.6-6 3.6v-14a1 1 0 011-1z"/></svg>';
+}
+function saveButton(p){
+  const b=document.createElement("button");
+  b.className="savebtn";
+  b.onclick=e=>{e.stopPropagation();toggleSave(p,b)};
+  paintSave(b,isSaved(p.id));
+  return b;
+}
+function savedView(){
+  const all=Object.values(savedAll())
+    .sort((a,b)=>(b.saved_on||"").localeCompare(a.saved_on||""));
+  const live=new Set(D.postings.map(p=>p.id));
+  $("#view").innerHTML=`<div class="sechead"><h3>Saved roles</h3>
+      <div class="n">${all.length} kept on this device</div></div>`
+    + (all.length?`<div class="list" id="s-list"></div>`
+       :`<div class="empty">Nothing saved yet. Use the bookmark on any role and it
+          waits here — on this browser, without an account.</div>`);
+  if(!all.length)return;
+  const host=$("#s-list");
+  all.forEach(p=>{
+    const [bg,fg]=tile(p.company);
+    const gone=!live.has(p.id);
+    const row=document.createElement("div");
+    row.className="row clk";
+    row.onclick=()=>{if(p.url)window.open(p.url,"_blank")};
+    row.innerHTML=`<div class="tile" style="background:${bg};color:${fg}">${esc(initials(p.company))}</div>
+      <div class="main"><div class="t">${esc(p.title)}</div>
+        <div class="m">${esc(p.company)} &middot; ${esc(p.sector||"")}${
+          p.category?" / "+esc(p.category):""} &middot; ${geoBits(p).map(esc).join(" &middot; ")}
+          ${gone?'<span class="chip warn">no longer on the board — it may have been filled or the board stopped listing it</span>':""}
+        </div></div>
+      <div class="when">saved ${esc(p.saved_on||"")}</div>`;
+    row.appendChild(saveButton(p));
+    host.appendChild(row);
+  });
+}
 function drawJobs(){
   const g=i=>{const el=$("#"+i);return el?el.value:"";};
   const q=(g("j-q")||"").toLowerCase();
@@ -731,6 +862,7 @@ function drawJobs(){
     $("#j-fam-pill").value=$("#j-fam").value;
   const mv=$("#j-more-v");if(mv)mv.textContent=extra?`${extra} on`:"";
   if(mv)mv.className="v"+(extra?" on":"");
+  writeUrl();
   $("#j-h").textContent=quotaOnly?"All quota-carrying roles":"All roles";
   $("#j-n").textContent=rows.length.toLocaleString()
     +(relaxed?` \u00b7 showing all roles: ${relaxed} work does not carry a quota`:"");
@@ -749,12 +881,16 @@ function drawJobs(){
             p.source==="manual"?" &middot; checked by hand":""}</span></div>
       </div>
       <div class="when ${w.cls}">${w.txt}</div>
-      <span style="color:var(--line);font-size:15px">&rsaquo;</span>
+      <span class="savehost"></span>
     </div>`;}).join("")
     ||emptyJobs(quotaOnly,f,where);
   if(rows.length>SHOWN)
     $("#j-list").innerHTML+=`<div class="more" onclick="showMore()">Show ${
       Math.min(60,rows.length-SHOWN)} more of ${(rows.length-SHOWN).toLocaleString()}</div>`;
+  // the bookmark carries a handler, so it is built rather than stringified
+  [...$("#j-list").querySelectorAll(".savehost")].forEach((host,i)=>{
+    const p=rows[i]; if(p)host.replaceWith(saveButton(p));
+  });
 }
 
 // ------------------------------------------------------------------- companies
@@ -902,6 +1038,11 @@ function co(encId){
         <span class="chip ${o.ats_ranks==="hard"?"bad":o.ats_ranks==="soft"?"warn":""}">${esc(o.ats||"unknown")}</span></div>
         <div class="lbl">${esc(ATSNOTE[o.ats_ranks]||"")}</div></div>
     </div>
+    <p class="colinks">
+      ${o.website?`<a class="golink" href="${esc(o.website)}" target="_blank" rel="noopener">
+        Visit ${esc(o.website.replace(/^https?:\/\//,"").replace(/\/$/,""))} &rarr;</a>`:""}
+      ${(o.also||[]).map(a=>`<span class="chip">also ${esc(a.sector)} / ${esc(a.category)}</span>`).join("")}
+    </p>
     ${o.board_url?`<p><a href="${esc(o.board_url)}" target="_blank" rel="noopener">Open their hiring board &rarr;</a>
       ${o.unreadable?` <span class="chip warn">board could not be read: ${esc(o.unreadable)}</span>`:""}
       ${o.enumerable===false?` <span class="chip warn">their board is live but its roles cannot be read automatically, so this list may be incomplete</span>`:""}
@@ -963,15 +1104,24 @@ function intel(){
     read this run, so those companies show zero openings rather than none existing.</p>`;
 }
 
-const VIEWS={jobs,companies,intel};
+const VIEWS={jobs,companies,saved:savedView,intel};
 function render(){VIEWS[tab]();[...$("#tabs").children].forEach(b=>b.setAttribute("aria-selected",b.dataset.t===tab));}
 fetch("data/board.json").then(r=>r.json()).then(d=>{
   D=d;
   $("#sub").textContent=`${d.totals.postings} open roles across ${d.organizations.length} `
     +`state and local govtech companies · ${d.totals.quota_carrying} quota-carrying · refreshed ${d.generated}`;
-  $("#tabs").innerHTML=TABS.map(([t,l])=>`<button data-t="${t}">${l}</button>`).join("");
+  $("#tabs").innerHTML=TABS.map(([t,l])=>`<button data-t="${t}">${l}${t==="saved"?' <span id="savedcount" class="tabn"></span>':""}</button>`).join("");
+  { const c=$("#savedcount"); if(c)c.textContent=Object.keys(savedAll()).length||""; }
   [...$("#tabs").children].forEach(b=>b.onclick=()=>{tab=b.dataset.t;render();});
+  PENDING_URL=readUrl();
+  if(PENDING_URL&&PENDING_URL.get("tab"))tab=PENDING_URL.get("tab");
   render();
+  // the back button should undo a search, not leave the page
+  window.addEventListener("popstate",()=>{
+    PENDING_URL=readUrl();
+    if(PENDING_URL&&PENDING_URL.get("tab"))tab=PENDING_URL.get("tab");
+    render();
+  });
 }).catch(()=>{$("#view").innerHTML=`<div class="empty">Could not load data/board.json.
   Run <code>python3 scripts/build_board.py</code>, then serve this folder.</div>`;});
 </script>
