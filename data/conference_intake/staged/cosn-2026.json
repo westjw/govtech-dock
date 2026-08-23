@@ -1,0 +1,698 @@
+{
+  "conference": "CoSN 2026",
+  "exhibitors": [
+    {
+      "name": "ClassLink",
+      "website": "https://www.classlink.com/",
+      "is_govtech": true,
+      "vertical": "School SSO, rostering, analytics",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Lightspeed Systems",
+      "website": "https://www.lightspeedsystems.com/",
+      "is_govtech": true,
+      "vertical": "Web filtering and student safety",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Clever Inc.",
+      "website": "http://www.clever.com",
+      "is_govtech": true,
+      "vertical": "School SSO and data rostering",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "MagicSchool",
+      "website": "https://www.magicschool.ai/",
+      "is_govtech": true,
+      "vertical": "AI assistant for teachers",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Vivacity Tech",
+      "website": "http://vivacitytech.com",
+      "is_govtech": false,
+      "vertical": "Chromebook deployment and repair services",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Linewize",
+      "website": "https://www.linewize.com/",
+      "is_govtech": true,
+      "vertical": "Student web filtering and wellbeing",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Identity Automation, a Jamf Company",
+      "website": "http://identityautomation.com/",
+      "is_govtech": true,
+      "vertical": "Identity and access management for schools",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "HPE",
+      "website": "https://www.hpe.com",
+      "is_govtech": false,
+      "vertical": "Enterprise servers, networking hardware",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Google",
+      "website": "http://edu.google.com/",
+      "is_govtech": true,
+      "vertical": "Workspace and Gemini for Education",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Spectrum Business",
+      "website": "http://www.spectrum.com/business",
+      "is_govtech": false,
+      "vertical": "Broadband and managed network services",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "GoGuardian and Pear Deck Learning",
+      "website": "https://www.goguardian.com/",
+      "is_govtech": true,
+      "vertical": "K-12 safety and instruction software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Funds for Learning",
+      "website": "http://www.fundsforlearning.com/",
+      "is_govtech": false,
+      "vertical": "E-rate consulting and compliance services",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Cisco",
+      "website": "https://www.cisco.com/site/us/en/solutions/industries/education/us-k-12/index.html",
+      "is_govtech": false,
+      "vertical": "Networking and security hardware",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Fortinet",
+      "website": "http://www.fortinet.com",
+      "is_govtech": true,
+      "vertical": "Network security platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Palo Alto Networks",
+      "website": "http://www.paloaltonetworks.com",
+      "is_govtech": true,
+      "vertical": "AI-powered cybersecurity platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "ParentSquare",
+      "website": "https://www.parentsquare.com/",
+      "is_govtech": true,
+      "vertical": "School-home communication platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "PowerSchool",
+      "website": "https://www.powerschool.com/",
+      "is_govtech": true,
+      "vertical": "K-12 student information system",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "CDW Education",
+      "website": "http://www.cdw.com/content/cdw/en/industries/k-12-education-technology.html",
+      "is_govtech": false,
+      "vertical": "IT reseller and integration services",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Securly",
+      "website": "http://www.securly.com",
+      "is_govtech": true,
+      "vertical": "Student web filtering and safety",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Zoom Communications",
+      "website": "https://www.zoom.com/",
+      "is_govtech": true,
+      "vertical": "Video meetings and communications software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Secured Tech",
+      "website": "http://securedtech.com",
+      "is_govtech": false,
+      "vertical": "Device lifecycle, repair, buyback services",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Apptegy",
+      "website": "https://www.apptegy.com/",
+      "is_govtech": true,
+      "vertical": "District communication and website platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Follett Software",
+      "website": "http://follettsoftware.com",
+      "is_govtech": true,
+      "vertical": "Library and resource management software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Clear Touch",
+      "website": "http://www.getcleartouch.com",
+      "is_govtech": false,
+      "vertical": "Interactive displays and digital signage",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Microsoft",
+      "website": "https://www.microsoft.com/en-us/education",
+      "is_govtech": true,
+      "vertical": "Productivity, cloud and education software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Brisk Teaching",
+      "website": "https://www.briskteaching.com/",
+      "is_govtech": true,
+      "vertical": "AI curriculum and differentiation tools",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Zayo",
+      "website": "http://www.zayo.com/",
+      "is_govtech": false,
+      "vertical": "Dark fiber and bandwidth services",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "JAR Systems",
+      "website": "http://www.jar-systems.com",
+      "is_govtech": false,
+      "vertical": "Device charging and storage hardware",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Logitech",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Classroom peripherals and video hardware",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Cybernut K12 Phishing Training",
+      "website": "http://www.cybernut.com/",
+      "is_govtech": true,
+      "vertical": "AI phishing training for schools",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Panorama Education",
+      "website": "",
+      "is_govtech": true,
+      "vertical": "Student survey and analytics platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "United Data Technologies",
+      "website": "http://www.udtonline.com",
+      "is_govtech": false,
+      "vertical": "IT integration and managed services",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "SolarWinds",
+      "website": "https://www.solarwinds.com/",
+      "is_govtech": true,
+      "vertical": "IT monitoring and observability software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Eratesync",
+      "website": "http://www.eratesync.com",
+      "is_govtech": true,
+      "vertical": "E-Rate program management software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Sourcewell",
+      "website": "https://www.sourcewell-mn.gov",
+      "is_govtech": false,
+      "vertical": "Cooperative purchasing contracts",
+      "sector": "General Gov"
+    },
+    {
+      "name": "BrainFreeze by Airia",
+      "website": "http://brainfreeze.ai/",
+      "is_govtech": true,
+      "vertical": "AI assistant platform for K-12",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Logikcull",
+      "website": "https://logikcull.com/education",
+      "is_govtech": true,
+      "vertical": "Public records request and e-discovery",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "CTL Corporation",
+      "website": "http://ctl.net/",
+      "is_govtech": false,
+      "vertical": "Chromebooks and classroom hardware",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Five Star Technology Solutions",
+      "website": "https://fivestartech.com",
+      "is_govtech": false,
+      "vertical": "Managed IT services for districts",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Instructure",
+      "website": "http://www.instructure.com/k12",
+      "is_govtech": true,
+      "vertical": "Canvas learning management system",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Learn21",
+      "website": "https://www.learn21.org",
+      "is_govtech": false,
+      "vertical": "Nonprofit K-12 tech support services",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "IPEVO",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Document cameras and classroom hardware",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Adobe",
+      "website": "http://www.adobeforeducation.com/",
+      "is_govtech": true,
+      "vertical": "Creative and design software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Veracity Verification Solutions",
+      "website": "",
+      "is_govtech": true,
+      "vertical": "EdTech inventory and vetting platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Incident IQ",
+      "website": "https://www.incidentiq.com/",
+      "is_govtech": true,
+      "vertical": "K-12 asset and service ticketing",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Get Set Tech",
+      "website": "https://getsettech.com",
+      "is_govtech": false,
+      "vertical": "Google Workspace services and licensing",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "InfoCase",
+      "website": "http://www.infocase.com",
+      "is_govtech": false,
+      "vertical": "Protective cases for school devices",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "AristotleK12",
+      "website": "http://www.aristotlek12.com",
+      "is_govtech": true,
+      "vertical": "Student filtering and asset tracking",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Skyward, Inc.",
+      "website": "http://www.skyward.com",
+      "is_govtech": true,
+      "vertical": "School SIS and business software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Senturo",
+      "website": "http://senturo.com",
+      "is_govtech": true,
+      "vertical": "Device location tracking software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Thinkverse",
+      "website": "https://www.thinkverse.com/",
+      "is_govtech": true,
+      "vertical": "AI math tutoring platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Edupoint Educational Systems",
+      "website": "https://www.edupoint.com/",
+      "is_govtech": true,
+      "vertical": "Synergy student information system",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Jamf",
+      "website": "",
+      "is_govtech": true,
+      "vertical": "Apple device management software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "CrowdStrike",
+      "website": "https://www.crowdstrike.com/",
+      "is_govtech": true,
+      "vertical": "Endpoint and cloud security platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Ativion - ContentKeeper",
+      "website": "http://www.ativion.com/",
+      "is_govtech": true,
+      "vertical": "Web filtering and student safety",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Deledao",
+      "website": "https://www.deledao.com/",
+      "is_govtech": true,
+      "vertical": "AI-powered K-12 web filtering",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Mission Telecom",
+      "website": "https://missiontelecom.org/",
+      "is_govtech": false,
+      "vertical": "Nonprofit wireless broadband carrier",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "SchoolDay",
+      "website": "http://schoolday.com/",
+      "is_govtech": true,
+      "vertical": "Student data privacy orchestration",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Secure Schools",
+      "website": "https://www.secureschools.com/en-us/",
+      "is_govtech": true,
+      "vertical": "K-12 cyber readiness platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Hapara",
+      "website": "https://hapara.com",
+      "is_govtech": true,
+      "vertical": "Classroom management and workflow software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "SysCloud",
+      "website": "https://www.syscloud.com",
+      "is_govtech": true,
+      "vertical": "SaaS backup and compliance for schools",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "itopia",
+      "website": "https://itopia.com/",
+      "is_govtech": true,
+      "vertical": "Virtual desktop and app streaming",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "K12 Insight",
+      "website": "https://www.k12insight.com/",
+      "is_govtech": true,
+      "vertical": "District service desk and engagement",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Instinctive",
+      "website": "https://instinctive.app",
+      "is_govtech": true,
+      "vertical": "Chromebook inventory and login security",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Droplet",
+      "website": "http://droplet.io",
+      "is_govtech": true,
+      "vertical": "No-code workflow automation for districts",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "B&H B2B",
+      "website": "http://www.BandH.com",
+      "is_govtech": false,
+      "vertical": "Technology and AV reseller",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Dell Technologies",
+      "website": "https://www.dell.com/en-us/lp/dt/industry-k12-ed",
+      "is_govtech": false,
+      "vertical": "PCs, servers and storage hardware",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Prime Systems",
+      "website": "http://www.primesystems.com",
+      "is_govtech": false,
+      "vertical": "Value-added reseller and device services",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "ClassDojo",
+      "website": "",
+      "is_govtech": true,
+      "vertical": "Classroom communication and engagement app",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Huntress",
+      "website": "https://www.huntress.com/",
+      "is_govtech": true,
+      "vertical": "Managed endpoint detection and response",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Connection Public Sector Solutions",
+      "website": "http://www.connection.com/public-sector/k-12-education",
+      "is_govtech": false,
+      "vertical": "Public sector IT reseller",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Blocksi",
+      "website": "https://blocksi.net/",
+      "is_govtech": true,
+      "vertical": "Web filtering and classroom management",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Typing.com",
+      "website": "",
+      "is_govtech": true,
+      "vertical": "Typing and digital literacy curriculum",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Camcor",
+      "website": "http://www.camcor.com",
+      "is_govtech": false,
+      "vertical": "Education technology and AV reseller",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Arista",
+      "website": "http://www.arista.com",
+      "is_govtech": false,
+      "vertical": "Campus and data center networking hardware",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "PDQ",
+      "website": "https://www.pdq.com/",
+      "is_govtech": true,
+      "vertical": "Patch management and device software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Vivi",
+      "website": "https://www.vivi.io",
+      "is_govtech": false,
+      "vertical": "Wireless screen casting hardware and alerts",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "PowerGistics",
+      "website": "https://powergistics.com/",
+      "is_govtech": false,
+      "vertical": "Device charging towers manufacturer",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Rubrik",
+      "website": "http://www.rubrik.com",
+      "is_govtech": true,
+      "vertical": "Data security and backup software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Mac of all Trades",
+      "website": "http://www.macofalltrades.com",
+      "is_govtech": false,
+      "vertical": "Apple hardware buyback and resale",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "K12 Tech",
+      "website": "http://k12techrepairs.com",
+      "is_govtech": false,
+      "vertical": "School device repair services",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Doorman",
+      "website": "http://doorman.school",
+      "is_govtech": true,
+      "vertical": "Phone-free school policy software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Nextivity",
+      "website": "https://nextivityinc.com/",
+      "is_govtech": false,
+      "vertical": "Cellular and public safety DAS hardware",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Scrible",
+      "website": "http://www.scrible.com/",
+      "is_govtech": true,
+      "vertical": "Research and writing platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Minga",
+      "website": "http://minga.io",
+      "is_govtech": true,
+      "vertical": "Student behavior management platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Hovercam / eGlass / Pathway Innovations, Inc.",
+      "website": "https://www.hovercam.com/",
+      "is_govtech": false,
+      "vertical": "Document cameras and casting hardware",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Acer America Corporation",
+      "website": "http://www.acer.com",
+      "is_govtech": false,
+      "vertical": "Laptops and Chromebooks manufacturer",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Intellischool",
+      "website": "http://intellischool.co",
+      "is_govtech": true,
+      "vertical": "District data warehouse and analytics",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "ManagedMethods",
+      "website": "http://www.ManagedMethods.com",
+      "is_govtech": true,
+      "vertical": "Cloud security for Google and Microsoft",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Softdocs",
+      "website": "http://www.softdocs.com",
+      "is_govtech": true,
+      "vertical": "eForms and document process automation",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Exteme Networks",
+      "website": "https://www.extremenetworks.com/solutions/primary-and-secondary-education",
+      "is_govtech": false,
+      "vertical": "Cloud-managed networking hardware",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Tellabs",
+      "website": "https://tellabs.com",
+      "is_govtech": false,
+      "vertical": "Passive optical networking equipment",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "simpldiscipline",
+      "website": "https://www.simpledu.com",
+      "is_govtech": true,
+      "vertical": "Student discipline management software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Gaggle",
+      "website": "https://www.gaggle.net",
+      "is_govtech": true,
+      "vertical": "Student safety monitoring and intervention",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Lumu Technologies",
+      "website": "https://lumu.io/cybersecurity-for-schools/",
+      "is_govtech": true,
+      "vertical": "Network compromise detection software",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Jotit",
+      "website": "http://www.jotit.io",
+      "is_govtech": true,
+      "vertical": "Digital handwriting and annotation platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Trafera",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Device reseller and deployment services",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Xpel by Forward Edge",
+      "website": "http://www.xpelcyber.com",
+      "is_govtech": false,
+      "vertical": "Managed cybersecurity services for K-12",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "NTP Cybersecurity",
+      "website": "http://ntpcybersecurity.com",
+      "is_govtech": false,
+      "vertical": "Managed security monitoring services",
+      "sector": "K-12 Schools"
+    }
+  ]
+}

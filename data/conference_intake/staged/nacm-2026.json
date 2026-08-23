@@ -1,0 +1,14 @@
+{
+  "conference": "NACM 2026",
+  "exhibitors": [
+    {"name": "Tyler Technologies", "website": "https://www.tylertech.com/", "is_govtech": true, "vertical": "Court case management software", "sector": "Courts & Justice"},
+    {"name": "For The Record", "website": "https://fortherecord.com/", "is_govtech": true, "vertical": "Digital court recording and transcription software", "sector": "Courts & Justice"},
+    {"name": "i3 Verticals", "website": "https://www.i3verticals.com/", "is_govtech": true, "vertical": "Public sector software and payments", "sector": "Courts & Justice"},
+    {"name": "Thomson Reuters", "website": "https://www.thomsonreuters.com/en", "is_govtech": true, "vertical": "Legal research and court data software", "sector": "Courts & Justice"},
+    {"name": "Mission Critical Partners", "website": "https://www.missioncriticalpartners.com/", "is_govtech": false, "vertical": "Public safety technology consulting services", "sector": "Public Safety"},
+    {"name": "equivant", "website": "https://www.equivant.com/", "is_govtech": true, "vertical": "Court case management and pretrial software", "sector": "Courts & Justice"},
+    {"name": "Amazon Web Services (AWS)", "website": "https://aws.amazon.com/", "is_govtech": true, "vertical": "Cloud infrastructure and AI platform", "sector": "General Gov"},
+    {"name": "Infax", "website": "https://www.infax.com/courts-market.html", "is_govtech": true, "vertical": "Jury management and courthouse queuing software", "sector": "Courts & Justice"},
+    {"name": "Linebarger Goggan Blair & Sampson, LLP", "website": "https://www.lgbs.com/", "is_govtech": false, "vertical": "Government collections law firm", "sector": "Courts & Justice"}
+  ]
+}

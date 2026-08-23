@@ -1,0 +1,2131 @@
+{
+  "conference": "PLA 2026",
+  "exhibitors": [
+    {
+      "name": "3branch: Product Design Solutions",
+      "website": "http://www.3branch.com",
+      "is_govtech": false,
+      "vertical": "Library furniture and displays",
+      "sector": "General Gov"
+    },
+    {
+      "name": "4imprint",
+      "website": "http://www.4imprint.com",
+      "is_govtech": false,
+      "vertical": "Promotional products supplier"
+    },
+    {
+      "name": "720 design",
+      "website": "http://www.720design.net",
+      "is_govtech": false,
+      "vertical": "Library architecture and interior design",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ABDO",
+      "website": "http://www.abdobooks.com",
+      "is_govtech": false,
+      "vertical": "Children's educational book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Adilam Inc.",
+      "website": "http://adilaminc.com",
+      "is_govtech": false,
+      "vertical": "Library RFID and materials handling",
+      "sector": "General Gov"
+    },
+    {
+      "name": "AdventureKEEN",
+      "website": "http://www.adventurewithkeen.com",
+      "is_govtech": false,
+      "vertical": "Nature and regional book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ALA Office of Intellectual Freedom – UABB – Freedom to Read Foundation",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Library association advocacy program",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ALA Publishing & Media and ALA Store",
+      "website": "http://www.alastore.ala.org/",
+      "is_govtech": false,
+      "vertical": "Library association publishing and store",
+      "sector": "General Gov"
+    },
+    {
+      "name": "AM Quartex",
+      "website": "https://www.amdigital.co.uk/create/am-quartex",
+      "is_govtech": true,
+      "vertical": "Digital collections and archive platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "AmazeWorks",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Anti-bias education nonprofit",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Amazon Business",
+      "website": "http://www.amazon.com/business",
+      "is_govtech": false,
+      "vertical": "Business procurement marketplace",
+      "sector": "General Gov"
+    },
+    {
+      "name": "American Psychological Association",
+      "website": "http://www.apa.org/books",
+      "is_govtech": false,
+      "vertical": "Psychology publisher and association",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Andrews McMeel Publishing",
+      "website": "http://publishing.andrewsmcmeel.com",
+      "is_govtech": false,
+      "vertical": "Comics and children's publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Annick Press",
+      "website": "http://www.annickpress.com",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Anvil Press",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Independent literary publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "APG Books",
+      "website": "https://apg-sales.com/",
+      "is_govtech": false,
+      "vertical": "Book sales and distribution",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Aqua by Adobe",
+      "website": "https://aqua.adobe.com/",
+      "is_govtech": true,
+      "vertical": "Creative software for library patrons",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Arcadia Publishing",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Local history book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ASLdeafined",
+      "website": "http://www.asldeafined.com",
+      "is_govtech": true,
+      "vertical": "Online sign language learning",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Assabet Interactive",
+      "website": "https://www.assabetinteractive.com",
+      "is_govtech": true,
+      "vertical": "Library events and room booking software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Association for Rural & Small Libraries",
+      "website": "http://arsl.org",
+      "is_govtech": false,
+      "vertical": "Library professional association",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Association of Bookmobile and Outreach Services",
+      "website": "http://www.abos-outreach.com",
+      "is_govtech": false,
+      "vertical": "Library outreach association",
+      "sector": "General Gov"
+    },
+    {
+      "name": "AtoZdatabases",
+      "website": "http://www.atozdatabases.com",
+      "is_govtech": true,
+      "vertical": "Business and consumer reference database",
+      "sector": "General Gov"
+    },
+    {
+      "name": "AWE Learning",
+      "website": "http://www.awelearning.com",
+      "is_govtech": true,
+      "vertical": "Early literacy digital learning stations",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Backstage Library Works",
+      "website": "http://www.bslw.com",
+      "is_govtech": false,
+      "vertical": "Cataloging and digitization services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Baker Publishing Group",
+      "website": "http://www.bakerpublishinggroup.com",
+      "is_govtech": false,
+      "vertical": "Christian book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Beacon Press",
+      "website": "http://www.beacon.org",
+      "is_govtech": false,
+      "vertical": "Independent nonfiction publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Beanstack",
+      "website": "http://www.beanstack.com",
+      "is_govtech": true,
+      "vertical": "Reading challenge management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Beech Street Books",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Better Containers Mfg. Co.",
+      "website": "http://www.bettercontainers.com",
+      "is_govtech": false,
+      "vertical": "Reusable library book bags",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Better World Books",
+      "website": "http://www.betterworldbooks.com",
+      "is_govtech": false,
+      "vertical": "Online used book retailer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "BiblioCommons Corp.",
+      "website": "http://www.bibliocommons.com",
+      "is_govtech": true,
+      "vertical": "Library catalog and website platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Bibliotheca",
+      "website": "http://www.bibliotheca.com",
+      "is_govtech": false,
+      "vertical": "Library RFID and self-service hardware",
+      "sector": "General Gov"
+    },
+    {
+      "name": "BKV Group",
+      "website": "https://www.bkvgroup.com",
+      "is_govtech": false,
+      "vertical": "Architecture and engineering firm",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Blackstone Publishing",
+      "website": "http://www.blackstonelibrary.com",
+      "is_govtech": false,
+      "vertical": "Audiobook publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Blick Art Materials",
+      "website": "http://www.dickblick.com",
+      "is_govtech": false,
+      "vertical": "Art supplies retailer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Bloomsbury",
+      "website": "http://www.rowman.com",
+      "is_govtech": false,
+      "vertical": "Academic and trade publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "BMI Digital Reel",
+      "website": "http://www.bmiimaging.com",
+      "is_govtech": false,
+      "vertical": "Microfilm scanning and hosting services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Book Systems Inc.",
+      "website": "http://www.booksys.com",
+      "is_govtech": true,
+      "vertical": "Integrated library system",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Booklist Publications",
+      "website": "https://www.booklistonline.com",
+      "is_govtech": false,
+      "vertical": "Book review journal",
+      "sector": "General Gov"
+    },
+    {
+      "name": "BookPage",
+      "website": "http://www.bookpage.com",
+      "is_govtech": false,
+      "vertical": "Book review publication",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Books Unbanned",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Library access advocacy program",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Bound To Stay Bound Books, Inc.",
+      "website": "http://www.btsb.com",
+      "is_govtech": false,
+      "vertical": "Prebound library book supplier",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Brainfuse",
+      "website": "http://www.brainfuse.com",
+      "is_govtech": true,
+      "vertical": "Online tutoring and homework help",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Bridge Publications, Inc",
+      "website": "https://www.bridgepub.com/about/",
+      "is_govtech": false,
+      "vertical": "Book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Brodart Co.",
+      "website": "http://www.brodart.com",
+      "is_govtech": false,
+      "vertical": "Library supplies and furnishings",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Burgeon Group, LLC",
+      "website": "http://www.burgeongroup.com",
+      "is_govtech": false,
+      "vertical": "Interactive library play environments",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ByWater Solutions",
+      "website": "https://bywatersolutions.com/",
+      "is_govtech": false,
+      "vertical": "Open source ILS support services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Califa Group",
+      "website": "https://califa.org/",
+      "is_govtech": false,
+      "vertical": "Library consortium nonprofit",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Candid",
+      "website": "https://candid.org/resources/candid-near-you/community-resources/",
+      "is_govtech": true,
+      "vertical": "Nonprofit and grants database",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Capstone",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "CareerOneStop",
+      "website": "https://www.careeronestop.org",
+      "is_govtech": false,
+      "vertical": "Federal career resources agency",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Carmenttest",
+      "website": "https://www.corcexpo.com/",
+      "is_govtech": false,
+      "vertical": "Test listing, not a real company"
+    },
+    {
+      "name": "Carnegie Library of Pittsburgh",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Public library system",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Charlesbridge",
+      "website": "http://www.charlesbridge.com",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Charlotte Mecklenburg Library",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Public library system",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Cherry Lake Publishing Group",
+      "website": "http://www.cherrylakepublishing.com",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ChinaSprout, Inc.",
+      "website": "http://www.chinasprout.com",
+      "is_govtech": false,
+      "vertical": "Chinese language books and gifts",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Chronicle Books",
+      "website": "https://www.chroniclekids.com/",
+      "is_govtech": false,
+      "vertical": "Illustrated book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Civica",
+      "website": "https://www.civica.com/en-us/product-pages/spydus-integrated-library-management-system/",
+      "is_govtech": true,
+      "vertical": "Spydus library management system",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Coach House Books",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Independent literary publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Collaborative Summer Library Program",
+      "website": "http://cslpreads.org",
+      "is_govtech": false,
+      "vertical": "Summer reading program nonprofit",
+      "sector": "General Gov"
+    },
+    {
+      "name": "collectionHQ",
+      "website": "https://www.collectionhq.com/",
+      "is_govtech": true,
+      "vertical": "Library collection analytics software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Combined Book Exhibit",
+      "website": "http://www.combinedbook.com",
+      "is_govtech": false,
+      "vertical": "Collective publisher exhibit service",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Communico",
+      "website": "http://communico.us",
+      "is_govtech": true,
+      "vertical": "Library patron engagement software suite",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Comprise Technologies",
+      "website": "http://www.comprisetechnologies.com",
+      "is_govtech": true,
+      "vertical": "Library print, copy and payment software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ConnectWell",
+      "website": "http://www.connectwell.health",
+      "is_govtech": true,
+      "vertical": "Consumer health information platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Consortium Book Sales and Distribution",
+      "website": "https://www.cbsd.com/",
+      "is_govtech": false,
+      "vertical": "Book distribution",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Core Knowledge",
+      "website": "https://www.coreknowledge.org/",
+      "is_govtech": false,
+      "vertical": "Curriculum nonprofit",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Core, a division of the American Library Assoc",
+      "website": "https://www.ala.org/core/",
+      "is_govtech": false,
+      "vertical": "Library professional association",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Counting Opinions",
+      "website": "https://www.countingopinions.com",
+      "is_govtech": true,
+      "vertical": "Library data management platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Cover One, Inc.",
+      "website": "http://www.coverone.net",
+      "is_govtech": false,
+      "vertical": "Book repair machines and supplies",
+      "sector": "General Gov"
+    },
+    {
+      "name": "CPG",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Book publisher, unverified profile",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Craft & Hobby",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Craft supplies, unverified profile",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Creativebug",
+      "website": "https://www.creativebug.com/libraries",
+      "is_govtech": true,
+      "vertical": "Online craft class streaming",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Cultural Surroundings (keep)",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Unverified exhibitor listing",
+      "sector": "General Gov"
+    },
+    {
+      "name": "CustomGuide",
+      "website": "",
+      "is_govtech": true,
+      "vertical": "Software skills training courseware",
+      "sector": "General Gov"
+    },
+    {
+      "name": "D-Tech International USA, LLC",
+      "website": "http://www.d-techinternational.com/us",
+      "is_govtech": false,
+      "vertical": "Library self-service kiosk hardware",
+      "sector": "General Gov"
+    },
+    {
+      "name": "D.K. Agencies (P) Ltd.",
+      "website": "http://www.dkagencies.com",
+      "is_govtech": false,
+      "vertical": "South Asian book supplier",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Daniels and Zermack Architects",
+      "website": "http://www.danielsandzermack.com",
+      "is_govtech": false,
+      "vertical": "Architecture firm",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Data Axle, Reference Solutions",
+      "website": "https://www.data-axle.com/what-we-do/reference-solutions/",
+      "is_govtech": true,
+      "vertical": "Business and consumer reference database",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Decodable Reads",
+      "website": "https://decodablereads.com/literacy-leap",
+      "is_govtech": true,
+      "vertical": "Decodable literacy reading platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Delaware County District Library",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Public library system",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Demco",
+      "website": "http://www.demco.com",
+      "is_govtech": false,
+      "vertical": "Library furniture and supplies",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Digitalia Publishing",
+      "website": "https://www.digitaliapublishing.com/",
+      "is_govtech": true,
+      "vertical": "Spanish language ebook platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Disney Publishing",
+      "website": "http://disneybooks.com",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Dominican University, School of Information Studies",
+      "website": "http://www.gslis.dom.edu",
+      "is_govtech": false,
+      "vertical": "Library science graduate school",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Drawn & Quarterly",
+      "website": "https://drawnandquarterly.com/",
+      "is_govtech": false,
+      "vertical": "Graphic novel publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "e-ImageData Corp",
+      "website": "http://www.e-imagedata.com",
+      "is_govtech": false,
+      "vertical": "Microfilm scanner manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "East View Information Services",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Foreign language content distributor",
+      "sector": "General Gov"
+    },
+    {
+      "name": "EBSCO Information Services",
+      "website": "https://about.ebsco.com/",
+      "is_govtech": true,
+      "vertical": "Research databases and discovery",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ECW Press",
+      "website": "http://www.ecwpress.com",
+      "is_govtech": false,
+      "vertical": "Independent book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Elva Resa Publishing | Military Family Books",
+      "website": "https://elvaresa.com",
+      "is_govtech": false,
+      "vertical": "Military family book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "EnvisionWare",
+      "website": "http://www.envisionware.com",
+      "is_govtech": true,
+      "vertical": "Library print and PC management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Equinox Open Library Initiative",
+      "website": "https://www.equinoxoli.org/",
+      "is_govtech": false,
+      "vertical": "Open source library support services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Estey / Tennsco",
+      "website": "http://www.esteyshelving.com",
+      "is_govtech": false,
+      "vertical": "Library shelving manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ESU School of Library and Information Management",
+      "website": "http://emporia.edu/slim",
+      "is_govtech": false,
+      "vertical": "Library science graduate school",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Europa",
+      "website": "http://www.europaeditions.com",
+      "is_govtech": false,
+      "vertical": "Literary fiction publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "FacilitySight",
+      "website": "https://facilitysight.io",
+      "is_govtech": true,
+      "vertical": "Facility occupancy analytics software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "FamilySearch International",
+      "website": "https://www.familysearch.org/en/united-states/",
+      "is_govtech": false,
+      "vertical": "Genealogy records nonprofit",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Farber Specialty Vehicles",
+      "website": "http://www.farberspecialty.com",
+      "is_govtech": false,
+      "vertical": "Bookmobile vehicle manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Farmington Public Library",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Public library",
+      "sector": "General Gov"
+    },
+    {
+      "name": "FaxScan24",
+      "website": "https://www.faxscan24.com",
+      "is_govtech": true,
+      "vertical": "Library fax and scan software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "FE Technologies",
+      "website": "http://www.fetechgroup.com",
+      "is_govtech": false,
+      "vertical": "Library RFID hardware solutions",
+      "sector": "General Gov"
+    },
+    {
+      "name": "FIMO/Historical Information Gatherers, Inc.",
+      "website": "http://www.historicalinfo.com",
+      "is_govtech": false,
+      "vertical": "Historical property research services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Firefly Books",
+      "website": "http://www.fireflybooks.com",
+      "is_govtech": false,
+      "vertical": "Illustrated nonfiction publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "First Book",
+      "website": "https://www.fbmarketplace.org/",
+      "is_govtech": false,
+      "vertical": "Book access nonprofit",
+      "sector": "General Gov"
+    },
+    {
+      "name": "FlutterBee",
+      "website": "https://www.flutterbee.com",
+      "is_govtech": false,
+      "vertical": "Children's nonfiction publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Follett Content Solutions",
+      "website": "https://www.follettcontent.com",
+      "is_govtech": false,
+      "vertical": "School library content distributor",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Galaxy Press",
+      "website": "https://galaxypress.com/library/",
+      "is_govtech": false,
+      "vertical": "Book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Gale, part of Cengage Group",
+      "website": "http://www.gale.com",
+      "is_govtech": true,
+      "vertical": "Library research databases and ebooks",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Gimlet — Simple & Refreshing Desk Stats",
+      "website": "https://gimlet.us",
+      "is_govtech": true,
+      "vertical": "Reference desk statistics software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Glo Pals",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Children's sensory toys",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Greystone",
+      "website": "http://www.greystonekids.com",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Groundwood Books",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Grove",
+      "website": "http://www.groveatlantic.com",
+      "is_govtech": false,
+      "vertical": "Literary book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Hachette Book Group",
+      "website": "http://www.hbgusa.com",
+      "is_govtech": false,
+      "vertical": "Trade book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "HamiltonBuhl",
+      "website": "https://www.hamiltonbuhl.com/",
+      "is_govtech": false,
+      "vertical": "Classroom audiovisual equipment",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "HarperCollins Publishers",
+      "website": "http://www.harpercollins.com",
+      "is_govtech": false,
+      "vertical": "Trade book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Haymarket Books",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Independent political publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Heifer Project International",
+      "website": "http://www.heifer.org/readtofeed",
+      "is_govtech": false,
+      "vertical": "Global development nonprofit",
+      "sector": "General Gov"
+    },
+    {
+      "name": "hoopla",
+      "website": "https://www.hoopladigital.com",
+      "is_govtech": true,
+      "vertical": "Digital media lending platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "India For Everyone",
+      "website": "https://indiaforeveryone.org/",
+      "is_govtech": false,
+      "vertical": "South Asian children's books",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Indus International, Inc.",
+      "website": "https://www.indususa.com",
+      "is_govtech": false,
+      "vertical": "Book and microfilm scanner manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Infobase",
+      "website": "http://www.Infobase.com",
+      "is_govtech": true,
+      "vertical": "Reference databases and streaming video",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Ingram Library Services",
+      "website": "http://www.ingramcontent.com",
+      "is_govtech": false,
+      "vertical": "Book wholesaler and distributor",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Ingram Publisher Services",
+      "website": "https://www.ingramcontent.com/publishers/publisher-services",
+      "is_govtech": false,
+      "vertical": "Publisher distribution services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "IngramSpark",
+      "website": "https://sparkpublications.com/blog/home/",
+      "is_govtech": false,
+      "vertical": "Self-publishing print services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Inhabit Media",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Indigenous book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Innovative - ProQuest, Part of Clarivate",
+      "website": "https://about.proquest.com/en/news/2020/Ex-Libris-Completes-the-Acquisition-of-Innovative/",
+      "is_govtech": true,
+      "vertical": "Library systems and research databases",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Insignia Software",
+      "website": "http://www.insigniasoftware.com",
+      "is_govtech": true,
+      "vertical": "Integrated library system",
+      "sector": "General Gov"
+    },
+    {
+      "name": "International Library Services",
+      "website": "http://www.internationallibraryservices.com",
+      "is_govtech": false,
+      "vertical": "Library vending and locker kiosks",
+      "sector": "General Gov"
+    },
+    {
+      "name": "iREAD",
+      "website": "https://www.ireadprogram.org/",
+      "is_govtech": false,
+      "vertical": "Summer reading program nonprofit",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ISG",
+      "website": "https://www.isginc.com/",
+      "is_govtech": false,
+      "vertical": "Architecture and engineering firm",
+      "sector": "General Gov"
+    },
+    {
+      "name": "JanWay Company",
+      "website": "http://www.janway.com",
+      "is_govtech": false,
+      "vertical": "Custom promotional products",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Johns Hopkins University, Bloomberg American Health Initiative",
+      "website": "https://americanhealth.jhu.edu/",
+      "is_govtech": false,
+      "vertical": "University public health initiative",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Junior Library Guild",
+      "website": "http://www.juniorlibraryguild.com",
+      "is_govtech": false,
+      "vertical": "Book curation subscription service",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Kajeet",
+      "website": "https://www.kajeet.com/",
+      "is_govtech": false,
+      "vertical": "Managed wireless connectivity services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Kensington Publishing Corp",
+      "website": "http://www.kensingtonbooks.com",
+      "is_govtech": false,
+      "vertical": "Trade book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Kidzpace Interactive",
+      "website": "https://kidzpace.com/industry/library/",
+      "is_govtech": false,
+      "vertical": "Interactive play equipment manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Komatsu Architecture",
+      "website": "http://www.komatsu-inc.com",
+      "is_govtech": false,
+      "vertical": "Architecture and interior design",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Laptops Anytime",
+      "website": "http://www.laptopsanytime.com",
+      "is_govtech": false,
+      "vertical": "Laptop dispensing kiosk hardware",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Lark Signs",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Library signage, unverified profile",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Las Vegas-Clark County Library District",
+      "website": "https://thelibrarydistrict.org/",
+      "is_govtech": false,
+      "vertical": "Public library district",
+      "sector": "General Gov"
+    },
+    {
+      "name": "LDV, Inc.",
+      "website": "https://www.ldvusa.com",
+      "is_govtech": false,
+      "vertical": "Bookmobile vehicle manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Lerner Publishing Group",
+      "website": "http://www.lernerbooks.com",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "LibLime",
+      "website": "https://liblime.com",
+      "is_govtech": true,
+      "vertical": "Cloud library services platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Libraria",
+      "website": "http://www.libraria.com",
+      "is_govtech": false,
+      "vertical": "Children's book distributor",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Librarica LLC",
+      "website": "https://www.librarica.com",
+      "is_govtech": true,
+      "vertical": "Public computer and print management",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Libraries Without Borders",
+      "website": "http://www.librarieswithoutborders.us",
+      "is_govtech": false,
+      "vertical": "Library access nonprofit",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Library Bound Inc.",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Library book supplier",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Library Comic",
+      "website": "http://www.librarycomic.com",
+      "is_govtech": false,
+      "vertical": "Comics and library merchandise",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Library Freedom Project",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Library privacy nonprofit",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Library Ideas, LLC",
+      "website": "http://www.libraryideas.com",
+      "is_govtech": true,
+      "vertical": "Digital music and ebook platforms",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Library Journal/School Library Journal/ TheHorn Book",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Library trade publications",
+      "sector": "General Gov"
+    },
+    {
+      "name": "LIBRARY LIFTERS / MILLIKEN",
+      "website": "http://www.librarylifters.com",
+      "is_govtech": false,
+      "vertical": "Library shelving and lift equipment",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Library Market",
+      "website": "http://www.librarymarket.com",
+      "is_govtech": true,
+      "vertical": "Library websites and event calendars",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Library of Congress",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Federal library agency",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Library of Congress FCU",
+      "website": "https://www.lcfcu.org",
+      "is_govtech": false,
+      "vertical": "Credit union financial services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Library Speakers Consortium",
+      "website": "http://libraryc.org",
+      "is_govtech": false,
+      "vertical": "Author event programming service",
+      "sector": "General Gov"
+    },
+    {
+      "name": "LibraryIQ",
+      "website": "http://www.libraryiq.com",
+      "is_govtech": false,
+      "vertical": "Library analytics consulting services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "LibraryOne Digital Inc.",
+      "website": "https://www.libraryone.com/",
+      "is_govtech": false,
+      "vertical": "Book and digital content wholesaler",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Lightbox Learning",
+      "website": "",
+      "is_govtech": true,
+      "vertical": "Interactive digital book platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Little Free Library",
+      "website": "https://littlefreelibrary.org/",
+      "is_govtech": false,
+      "vertical": "Book sharing nonprofit",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Llewellyn Worldwide, Ltd.",
+      "website": "http://www.llewellyn.com",
+      "is_govtech": false,
+      "vertical": "Mind body spirit publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "LLMC",
+      "website": "https://llmc.com/",
+      "is_govtech": true,
+      "vertical": "Legal and government digital archive",
+      "sector": "General Gov"
+    },
+    {
+      "name": "LocalHop",
+      "website": "http://www.getlocalhop.com",
+      "is_govtech": true,
+      "vertical": "Library event management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "LOTE4Kids",
+      "website": "https://lote4kids.com/",
+      "is_govtech": true,
+      "vertical": "Multilingual children's ebook platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "LPi",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Print and communication services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "LSE Architects",
+      "website": "https://www.lse-architects.com/",
+      "is_govtech": false,
+      "vertical": "Architecture firm",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Lyngsoe Systems, Inc.",
+      "website": "http://www.lyngsoesystems.com",
+      "is_govtech": false,
+      "vertical": "Automated materials handling systems",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Lyrasis",
+      "website": "https://www.lyrasis.org",
+      "is_govtech": false,
+      "vertical": "Library consortium nonprofit services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Mackin",
+      "website": "https://www.mackin.com",
+      "is_govtech": false,
+      "vertical": "Book and ebook wholesaler",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Macmillan Children's Publishing Group - MCPG",
+      "website": "https://www.mackidsschoolandlibrary.com/",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Macmillan Publishers",
+      "website": "http://www.macmillanlibrary.com",
+      "is_govtech": false,
+      "vertical": "Trade book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "MakeMake Digital Library en Español",
+      "website": "https://makemake.com.co/",
+      "is_govtech": true,
+      "vertical": "Spanish children's ebook platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Mango Languages",
+      "website": "",
+      "is_govtech": true,
+      "vertical": "Online language learning platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Mayo",
+      "website": "https://mcpress.mayoclinic.org/",
+      "is_govtech": false,
+      "vertical": "Health book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "MCGRATH CONSULTING GROUP, INC.",
+      "website": "https://mcgrathhumanresources.com",
+      "is_govtech": false,
+      "vertical": "HR and compensation consulting",
+      "sector": "General Gov"
+    },
+    {
+      "name": "medici.tv",
+      "website": "https://edu.medici.tv/",
+      "is_govtech": true,
+      "vertical": "Classical music video streaming",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Meescan Inc.",
+      "website": "http://www.meescan.com",
+      "is_govtech": true,
+      "vertical": "Library self-checkout software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Mergent by FTSE Russell",
+      "website": "",
+      "is_govtech": true,
+      "vertical": "Financial and business data",
+      "sector": "General Gov"
+    },
+    {
+      "name": "MEternally, LLC (Joy Through Reminiscence)",
+      "website": "https://www.meternally.com",
+      "is_govtech": false,
+      "vertical": "Dementia reminiscence media products",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Midwest Library Service",
+      "website": "http://www.midwestls.com",
+      "is_govtech": false,
+      "vertical": "Book wholesaler",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Milkweed",
+      "website": "https://milkweed.org/",
+      "is_govtech": false,
+      "vertical": "Independent literary publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Millonex LLC",
+      "website": "http://www.simplicity-ils.com",
+      "is_govtech": true,
+      "vertical": "Simplicity cloud ILS",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Minitex",
+      "website": "https://minitex.umn.edu/",
+      "is_govtech": false,
+      "vertical": "State library network program",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Minnesota State Library Services",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "State library agency",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Mission Telecom",
+      "website": "https://missiontelecom.org/",
+      "is_govtech": false,
+      "vertical": "Nonprofit wireless broadband carrier",
+      "sector": "General Gov"
+    },
+    {
+      "name": "MJ Library Shelving by Aurora",
+      "website": "https://www.aurorastorage.com/products/mjlibrary/",
+      "is_govtech": false,
+      "vertical": "Library shelving manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Momentum Interactives",
+      "website": "http://momentuminteractives.com",
+      "is_govtech": false,
+      "vertical": "Interactive exhibit manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Morningstar, Inc.",
+      "website": "https://www.morningstar.com/business/brands/data-analytics/products/investing-center",
+      "is_govtech": true,
+      "vertical": "Investment research data platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Moshun",
+      "website": "https://www.moshun.com/library/",
+      "is_govtech": false,
+      "vertical": "Door slam control hardware",
+      "sector": "General Gov"
+    },
+    {
+      "name": "MSR Design",
+      "website": "https://msrdesign.com/",
+      "is_govtech": false,
+      "vertical": "Architecture and design firm",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Mugo Web",
+      "website": "https://www.mugo.ca/libraries",
+      "is_govtech": false,
+      "vertical": "Library website development agency",
+      "sector": "General Gov"
+    },
+    {
+      "name": "myfilmfriend",
+      "website": "http://www.myfilmfriend.com",
+      "is_govtech": true,
+      "vertical": "Film streaming service for libraries",
+      "sector": "General Gov"
+    },
+    {
+      "name": "National Center for Victims of Crime",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Victim services nonprofit",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "National Highlights Inc.",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "National Library Service f/t Blind & Print Disabled",
+      "website": "http://www.loc.gov/nls",
+      "is_govtech": false,
+      "vertical": "Federal accessible reading agency",
+      "sector": "General Gov"
+    },
+    {
+      "name": "NewsBank inc.",
+      "website": "http://www.newsbank.com",
+      "is_govtech": true,
+      "vertical": "News archive research databases",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Niche Academy",
+      "website": "http://www.nicheacademy.com",
+      "is_govtech": true,
+      "vertical": "Library staff and patron training platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Nook Wellness Pods",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Wellness pod furniture",
+      "sector": "General Gov"
+    },
+    {
+      "name": "North Star Editions",
+      "website": "https://northstareditions.com/",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Novare Library Services",
+      "website": "http://novarelibrary.com",
+      "is_govtech": false,
+      "vertical": "Library staff training services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "OCLC, Inc.",
+      "website": "",
+      "is_govtech": true,
+      "vertical": "Shared cataloging and library services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "OMNI",
+      "website": "https://www.healthbridgessolutions.com",
+      "is_govtech": false,
+      "vertical": "Health resources vendor, unverified profile",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "OPN Architects",
+      "website": "http://www.opnarchitects.com",
+      "is_govtech": false,
+      "vertical": "Architecture firm",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Orca Book Publishers",
+      "website": "https://www.orcabook.com",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Other Press",
+      "website": "http://www.otherpress.com",
+      "is_govtech": false,
+      "vertical": "Literary book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "OverDrive",
+      "website": "https://company.overdrive.com/",
+      "is_govtech": true,
+      "vertical": "Digital ebook lending platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Owlkids",
+      "website": "https://owlkids.com/",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Pannier Graphics",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Signage manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Partners for Rural Impact",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Rural education nonprofit",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "PAVE PREVENTION",
+      "website": "https://www.paveprevention.com/",
+      "is_govtech": false,
+      "vertical": "Workplace safety consulting",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Penguin Random House Adult Library",
+      "website": "https://penguinrandomhouselibrary.com/",
+      "is_govtech": false,
+      "vertical": "Trade book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Percussion Play",
+      "website": "https://www.percussionplay.com",
+      "is_govtech": false,
+      "vertical": "Outdoor musical instruments",
+      "sector": "Parks & Rec"
+    },
+    {
+      "name": "Playaway Products",
+      "website": "https://shop.playaway.com/",
+      "is_govtech": false,
+      "vertical": "Preloaded audiobook devices",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Playgarden Online",
+      "website": "https://playgardenonline.com",
+      "is_govtech": true,
+      "vertical": "Online preschool learning platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Playscapes",
+      "website": "https://playscapes.com/",
+      "is_govtech": false,
+      "vertical": "Playground equipment manufacturer",
+      "sector": "Parks & Rec"
+    },
+    {
+      "name": "Pluto Press",
+      "website": "https://www.plutobooks.com/",
+      "is_govtech": false,
+      "vertical": "Independent political publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "PolicyMap",
+      "website": "http://www.policymap.com",
+      "is_govtech": true,
+      "vertical": "Geographic data mapping platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Pontiac Public Library",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Public library",
+      "sector": "General Gov"
+    },
+    {
+      "name": "PressReader",
+      "website": "https://about.pressreader.com/libraries-institutions/",
+      "is_govtech": true,
+      "vertical": "Digital newspaper and magazine platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Princeton University Press",
+      "website": "http://www.press.princeton.edu",
+      "is_govtech": false,
+      "vertical": "University press publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Publisher Spotlight",
+      "website": "http://www.publisherspotlight.com/",
+      "is_govtech": false,
+      "vertical": "Children's book distributor",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Publishers Group West",
+      "website": "http://www.pgw.com/",
+      "is_govtech": false,
+      "vertical": "Book sales and distribution",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Publishers Weekly",
+      "website": "http://www.publishersweekly.com",
+      "is_govtech": false,
+      "vertical": "Publishing trade magazine",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Pushkin Press",
+      "website": "https://pushkinpress.com/",
+      "is_govtech": false,
+      "vertical": "Independent book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "PuviTheca S.L - Puvill Libros",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Spanish language book supplier",
+      "sector": "General Gov"
+    },
+    {
+      "name": "QR Print",
+      "website": "https://getqrprint.com",
+      "is_govtech": true,
+      "vertical": "Library mobile printing software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Quarto Group, The",
+      "website": "https://www.quarto.com/",
+      "is_govtech": false,
+      "vertical": "Illustrated book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Quinn Evans",
+      "website": "http://www.quinnevans.com",
+      "is_govtech": false,
+      "vertical": "Architecture and preservation firm",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Quipu Group, LLC",
+      "website": "http://www.quipugroup.com",
+      "is_govtech": true,
+      "vertical": "Library card and incident tracking software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Reader Zone",
+      "website": "http://www.readerzone.com",
+      "is_govtech": true,
+      "vertical": "Reading program management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Reading2Connect®",
+      "website": "https://www.reading2connect.com/",
+      "is_govtech": false,
+      "vertical": "Dementia-friendly reading materials",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Recollect CMS",
+      "website": "https://www.recollectcms.com/",
+      "is_govtech": true,
+      "vertical": "Digital collections management platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Red Hen",
+      "website": "https://redhen.org/",
+      "is_govtech": false,
+      "vertical": "Independent literary publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Reycraft Books",
+      "website": "http://www.reycraftbooks.com/",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Rhode Island Novelty",
+      "website": "http://www.rinovelty.com",
+      "is_govtech": false,
+      "vertical": "Toy and novelty wholesaler",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Romance Writers of America",
+      "website": "https://www.rwa.org/",
+      "is_govtech": false,
+      "vertical": "Writers professional association",
+      "sector": "General Gov"
+    },
+    {
+      "name": "San José State University - School of Information",
+      "website": "https://ischool.sjsu.edu/",
+      "is_govtech": false,
+      "vertical": "Library science graduate school",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Sarabande Books",
+      "website": "https://www.sarabandebooks.org/",
+      "is_govtech": false,
+      "vertical": "Independent literary publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ScannX, Inc.",
+      "website": "https://www.scannx.com",
+      "is_govtech": false,
+      "vertical": "Library book scanner hardware",
+      "sector": "General Gov"
+    },
+    {
+      "name": "SenSource, Inc.",
+      "website": "http://www.sensourceinc.com",
+      "is_govtech": true,
+      "vertical": "People counting and occupancy analytics",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Seven Stories Press",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Independent book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Shadow Mountain Publishing",
+      "website": "http://www.shadowmountain.com",
+      "is_govtech": false,
+      "vertical": "Book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Simon & Schuster",
+      "website": "http://www.simonandschuster.com",
+      "is_govtech": false,
+      "vertical": "Trade book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "SimplyAnalytics, Inc.",
+      "website": "http://www.simplyanalytics.com",
+      "is_govtech": true,
+      "vertical": "Data visualization and mapping platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "SirsiDynix",
+      "website": "https://www.sirsidynix.com",
+      "is_govtech": true,
+      "vertical": "Integrated library system",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Smart Horizons Career Online High School",
+      "website": "https://www.shcoe.org/",
+      "is_govtech": false,
+      "vertical": "Online accredited high school program",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Smith System",
+      "website": "http://www.smithsystem.com",
+      "is_govtech": false,
+      "vertical": "Classroom furniture manufacturer",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Soho Press, Inc",
+      "website": "http://sohopress.com",
+      "is_govtech": false,
+      "vertical": "Independent book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Solus UK Ltd.",
+      "website": "http://wp.sol.us",
+      "is_govtech": true,
+      "vertical": "Library mobile app platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Source Graphics",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Wide format printing equipment",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Sourcebooks LLC",
+      "website": "http://www.sourcebooks.com",
+      "is_govtech": false,
+      "vertical": "Independent trade publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Spacesaver Corporation",
+      "website": "https://www.spacesaver.com/libraries",
+      "is_govtech": false,
+      "vertical": "Mobile shelving manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Springshare",
+      "website": "http://www.springshare.com",
+      "is_govtech": true,
+      "vertical": "Library web and reference software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ST Imaging, Inc.",
+      "website": "http://www.stimaging.com",
+      "is_govtech": false,
+      "vertical": "Microfilm scanner manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "St. Catherine University",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "University library science program",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "StackMap",
+      "website": "https://www.stackmap.io/",
+      "is_govtech": true,
+      "vertical": "Library indoor wayfinding software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "StatsUSA",
+      "website": "http://statsusa.org",
+      "is_govtech": true,
+      "vertical": "Government statistics data platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Studio GC architecture + interiors",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Architecture and interiors firm",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Summit Bodyworks",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Specialty vehicle manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Swank Movie Licensing USA",
+      "website": "https://www.swank.com/public-libraries/",
+      "is_govtech": false,
+      "vertical": "Public performance movie licensing",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Tablet Medium",
+      "website": "https://tabletmedium.org",
+      "is_govtech": false,
+      "vertical": "Library tablet lending startup",
+      "sector": "General Gov"
+    },
+    {
+      "name": "TALK by MCLS",
+      "website": "https://textandlearn.org",
+      "is_govtech": false,
+      "vertical": "School readiness texting program",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Teacher Created Materials",
+      "website": "https://www.teachercreatedmaterials.com/imprint/free-spirit",
+      "is_govtech": false,
+      "vertical": "Educational book publisher",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Tech Logic",
+      "website": "http://www.tech-logic.com",
+      "is_govtech": false,
+      "vertical": "Library automation hardware and sorters",
+      "sector": "General Gov"
+    },
+    {
+      "name": "The Charlie Cart Project",
+      "website": "https://charliecart.org",
+      "is_govtech": false,
+      "vertical": "Mobile kitchen education carts",
+      "sector": "General Gov"
+    },
+    {
+      "name": "The Child's World, Inc",
+      "website": "http://www.childsworld.com",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "The Creative Company",
+      "website": "http://www.thecreativecompany.us",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "The Gilder Lehrman Institute of American History",
+      "website": "https://www.gilderlehrman.org",
+      "is_govtech": false,
+      "vertical": "History education nonprofit",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "The New York Times",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "News publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "The Penworthy Company, LLC",
+      "website": "http://www.penworthy.com",
+      "is_govtech": false,
+      "vertical": "Prebound children's books",
+      "sector": "General Gov"
+    },
+    {
+      "name": "The Wall Street Journal",
+      "website": "https://education.wsj.com/",
+      "is_govtech": false,
+      "vertical": "News publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Third Week Books",
+      "website": "http://www.thirdweekbooks.com",
+      "is_govtech": false,
+      "vertical": "Early literacy board books",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Thomas Klise/Crimson Multimedia",
+      "website": "https://crimsoninc.com/",
+      "is_govtech": false,
+      "vertical": "Educational media distributor",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ThriftBooks",
+      "website": "http://www.thriftbooks.com",
+      "is_govtech": false,
+      "vertical": "Used book online retailer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "TIND",
+      "website": "http://www.tind.io",
+      "is_govtech": true,
+      "vertical": "Digital archive and repository platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "TLC (The Library Corporation)",
+      "website": "http://www.tlcdelivers.com",
+      "is_govtech": true,
+      "vertical": "Integrated library system software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "TMC Furniture",
+      "website": "http://www.tmcfurniture.com",
+      "is_govtech": false,
+      "vertical": "Library furniture manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Today's Business Solutions",
+      "website": "http://www.tbsit360.com",
+      "is_govtech": true,
+      "vertical": "Library print and PC reservation software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Traf-Sys Inc.",
+      "website": "http://www.trafsys.com",
+      "is_govtech": true,
+      "vertical": "People counting and occupancy software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Transparent Language",
+      "website": "http://www.transparent.com/libraries",
+      "is_govtech": true,
+      "vertical": "Online language learning platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Tundra Books",
+      "website": "https://tundrabooks.com/",
+      "is_govtech": false,
+      "vertical": "Children's book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Tutor.com",
+      "website": "https://www.tutor.com/libraries",
+      "is_govtech": true,
+      "vertical": "Online tutoring platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Tuttle",
+      "website": "https://tuttlepublishing.com/",
+      "is_govtech": false,
+      "vertical": "Asian culture book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Two Rivers",
+      "website": "http://www.tworiversdistribution.com/",
+      "is_govtech": false,
+      "vertical": "Book sales and distribution",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Tyndale House Publishers",
+      "website": "http://www.tyndale.com",
+      "is_govtech": false,
+      "vertical": "Faith-based book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "U.S. Census Bureau",
+      "website": "https://www.census.gov",
+      "is_govtech": false,
+      "vertical": "Federal statistical agency",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Union Square & Co",
+      "website": "http://www.unionsquareandco.com",
+      "is_govtech": false,
+      "vertical": "Trade book publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Unique Management Services, Inc.",
+      "website": "http://www.uniquelibrary.com",
+      "is_govtech": false,
+      "vertical": "Library collection recovery services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "United for Libraries",
+      "website": "http://www.ala.org/united",
+      "is_govtech": false,
+      "vertical": "Library trustees association",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Universal Services Administrative Company",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Federal E-rate program administrator",
+      "sector": "General Gov"
+    },
+    {
+      "name": "University of Wisconsin Milwaukee - School of Information Studies",
+      "website": "https://ischool.uwm.edu",
+      "is_govtech": false,
+      "vertical": "Library science graduate school",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Urban Librarians Unite",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Library advocacy nonprofit",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Value Line",
+      "website": "https://www.valuelinelibrary.com/",
+      "is_govtech": true,
+      "vertical": "Investment research data service",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Verso Books",
+      "website": "http://www.versobooks.com",
+      "is_govtech": false,
+      "vertical": "Independent political publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Vintage Aerial",
+      "website": "https://vintageaerial.com/",
+      "is_govtech": false,
+      "vertical": "Historic aerial photography archive",
+      "sector": "General Gov"
+    },
+    {
+      "name": "VIRCO INC",
+      "website": "http://www.virco.com",
+      "is_govtech": false,
+      "vertical": "School and library furniture",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Vista Higher Learning",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "World language curriculum publisher",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "W. W. Norton & Company",
+      "website": "https://wwnorton.com/",
+      "is_govtech": false,
+      "vertical": "Trade and academic publisher",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Worden",
+      "website": "http://www.wordencompany.com",
+      "is_govtech": false,
+      "vertical": "Library furniture manufacturer",
+      "sector": "General Gov"
+    },
+    {
+      "name": "WT Cox Information Services",
+      "website": "http://www.wtcox.com",
+      "is_govtech": false,
+      "vertical": "Serials subscription agent",
+      "sector": "General Gov"
+    }
+  ]
+}

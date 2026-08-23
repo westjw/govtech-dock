@@ -1,0 +1,2252 @@
+{
+  "conference": "EDUCAUSE 2026",
+  "exhibitors": [
+    {
+      "name": "1Kosmos, Inc.",
+      "website": "",
+      "is_govtech": true,
+      "vertical": "Passwordless identity verification software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "A10 Networks",
+      "website": "http://www.a10networks.com",
+      "is_govtech": false,
+      "vertical": "Application delivery and security appliances",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ABCloudz Inc.",
+      "website": "https://abcloudz.com/",
+      "is_govtech": false,
+      "vertical": "Cloud consulting and development services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Abnormal AI",
+      "website": "https://abnormal.ai/",
+      "is_govtech": true,
+      "vertical": "AI email security platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Academia by Serosoft, Inc.",
+      "website": "https://www.academiasis.com/",
+      "is_govtech": true,
+      "vertical": "Student information system software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Accenture",
+      "website": "http://www.accenture.com/education",
+      "is_govtech": false,
+      "vertical": "Consulting and systems integration",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Accruent",
+      "website": "https://www.accruent.com/",
+      "is_govtech": true,
+      "vertical": "Facilities and asset management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Accu-Time Systems Inc.",
+      "website": "https://atstimecom.accu-time.com/",
+      "is_govtech": false,
+      "vertical": "Time and attendance clock hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Action1",
+      "website": "https://www.action1.com/",
+      "is_govtech": true,
+      "vertical": "Patch management and endpoint software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Ad Astra",
+      "website": "http://www.aais.com",
+      "is_govtech": true,
+      "vertical": "Academic scheduling and course demand software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Adaptive Security",
+      "website": "http://adaptivesecurity.com",
+      "is_govtech": true,
+      "vertical": "AI social engineering defense training",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Adobe",
+      "website": "https://www.adobeforeducation.com/higher-ed",
+      "is_govtech": true,
+      "vertical": "Creative and document software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Advanced Software Product Group",
+      "website": "https://www.aspg.com",
+      "is_govtech": true,
+      "vertical": "Mainframe security and storage software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Airia",
+      "website": "https://airia.com",
+      "is_govtech": true,
+      "vertical": "Enterprise AI orchestration platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "AIRIA",
+      "website": "http://airia20.com",
+      "is_govtech": true,
+      "vertical": "Space utilization intelligence platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Airtable",
+      "website": "http://airtable.com",
+      "is_govtech": true,
+      "vertical": "No-code database and app platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Alchemy",
+      "website": "https://alchemy.us",
+      "is_govtech": false,
+      "vertical": "Workday consulting services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Alertus Technologies",
+      "website": "http://www.alertus.com",
+      "is_govtech": true,
+      "vertical": "Mass notification and emergency alerting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Amazon Web Services",
+      "website": "http://www.aws.amazon.com/education",
+      "is_govtech": true,
+      "vertical": "Cloud infrastructure platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "AMSimpkins & Associates",
+      "website": "https://www.amsa-highered.com",
+      "is_govtech": true,
+      "vertical": "Student identity verification and data integration",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Answerr.ai",
+      "website": "https://answerr.ai/",
+      "is_govtech": true,
+      "vertical": "AI voice answering for institutions",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Apporto",
+      "website": "http://www.apporto.com/apporto-education",
+      "is_govtech": true,
+      "vertical": "Cloud virtual desktop software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "AppsAnywhere",
+      "website": "https://www.appsanywhere.com",
+      "is_govtech": true,
+      "vertical": "Campus software delivery platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Arista Networks",
+      "website": "http://www.aristanetworks.com",
+      "is_govtech": false,
+      "vertical": "Network switching hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Armis",
+      "website": "https://www.armis.com",
+      "is_govtech": true,
+      "vertical": "Asset and IoT security platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ASCERA",
+      "website": "https://ASCERA.com",
+      "is_govtech": true,
+      "vertical": "Security compliance automation software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ASSA ABLOY",
+      "website": "http://www.assaabloydss.com",
+      "is_govtech": false,
+      "vertical": "Door locks and access hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Atlassian",
+      "website": "https://www.atlassian.com/",
+      "is_govtech": true,
+      "vertical": "Work and software collaboration tools",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Atomic Jolt",
+      "website": "http://www.atomicjolt.com",
+      "is_govtech": true,
+      "vertical": "Learning tools and LTI apps",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Attain Partners",
+      "website": "https://attainpartners.com/",
+      "is_govtech": false,
+      "vertical": "Higher education consulting services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Avaap",
+      "website": "http://avaap.com",
+      "is_govtech": false,
+      "vertical": "ERP implementation consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "AVer Information, Inc.",
+      "website": "http://www.averusa.com/",
+      "is_govtech": false,
+      "vertical": "Classroom cameras and AV hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Aviz Networks",
+      "website": "http://aviznetworks.com",
+      "is_govtech": true,
+      "vertical": "Open network operating software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Axis Communications Inc.",
+      "website": "https://www.axis.com/en-us",
+      "is_govtech": false,
+      "vertical": "Network security cameras",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Axonius",
+      "website": "https://www.axonius.com",
+      "is_govtech": true,
+      "vertical": "Cyber asset attack surface management",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Barracuda Networks Inc.",
+      "website": "https://www.barracuda.com/",
+      "is_govtech": true,
+      "vertical": "Email and network security software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "BerryDunn",
+      "website": "https://www.berrydunn.com/services/higher-education-consulting",
+      "is_govtech": false,
+      "vertical": "Accounting and higher education consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Bettera",
+      "website": "http://bettera.co",
+      "is_govtech": false,
+      "vertical": "ServiceNow consulting for higher education",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "BeyondTrust",
+      "website": "https://www.beyondtrust.com/education",
+      "is_govtech": true,
+      "vertical": "Privileged access management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "BlackBeltHelp",
+      "website": "https://www.blackbelthelp.com/",
+      "is_govtech": false,
+      "vertical": "Outsourced IT help desk services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Blackboard",
+      "website": "https://www.blackboard.com/",
+      "is_govtech": true,
+      "vertical": "Learning management system",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Boldyn Networks",
+      "website": "https://www.boldyn.com/",
+      "is_govtech": false,
+      "vertical": "Wireless network infrastructure services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "BoodleBox",
+      "website": "https://boodlebox.ai/",
+      "is_govtech": true,
+      "vertical": "Collaborative AI platform for education",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Boomi",
+      "website": "http://www.boomi.com",
+      "is_govtech": true,
+      "vertical": "Integration and automation platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Box Inc",
+      "website": "",
+      "is_govtech": true,
+      "vertical": "Cloud content management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Bravura Security",
+      "website": "https://www.bravurasecurity.com/",
+      "is_govtech": true,
+      "vertical": "Identity and privileged access software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Brickfield Education Labs",
+      "website": "https://www.brickfield.ie/",
+      "is_govtech": true,
+      "vertical": "Moodle accessibility toolkit software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "BRUNS-PAK",
+      "website": "http://www.bruns-pak.com/",
+      "is_govtech": false,
+      "vertical": "Data center design and construction",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "CampusMind",
+      "website": "https://campusmind.ai/",
+      "is_govtech": true,
+      "vertical": "AI agents for campus operations",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Canonical",
+      "website": "http://www.canonical.com",
+      "is_govtech": true,
+      "vertical": "Ubuntu Linux and open source software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Canva Pty Ltd",
+      "website": "http://www.canva.com/for-campus",
+      "is_govtech": true,
+      "vertical": "Visual design software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Carahsoft Technology Corp",
+      "website": "https://www.carahsoft.com/buy#education",
+      "is_govtech": false,
+      "vertical": "Government software reseller",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Carousel Digital Signage",
+      "website": "https://www.carouselsignage.com/",
+      "is_govtech": true,
+      "vertical": "Digital signage software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Catchbox",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Throwable microphone hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "CDW",
+      "website": "http://www.CDWG.com",
+      "is_govtech": false,
+      "vertical": "IT hardware and software reseller",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Cirrus Identity, Inc.",
+      "website": "http://cirrusidentity.com",
+      "is_govtech": true,
+      "vertical": "Identity federation and SSO software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Cisco Systems, Inc.",
+      "website": "http://www.cisco.com/",
+      "is_govtech": false,
+      "vertical": "Networking hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Civitas Learning Inc.",
+      "website": "https://www.civitaslearning.com/",
+      "is_govtech": true,
+      "vertical": "Student success analytics platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ClassLink",
+      "website": "https://www.classlink.com/",
+      "is_govtech": true,
+      "vertical": "Single sign-on and rostering software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Clear Touch Interactive",
+      "website": "https://www.getcleartouch.com/",
+      "is_govtech": false,
+      "vertical": "Interactive display hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "CloudAI Technologies",
+      "website": "https://cloudaillc.com/",
+      "is_govtech": false,
+      "vertical": "Cloud and AI development services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Cloudflare",
+      "website": "https://www.cloudflare.com/cloudflare-for-government/",
+      "is_govtech": true,
+      "vertical": "Web security and performance platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Cloudforce",
+      "website": "https://gocloudforce.com/",
+      "is_govtech": false,
+      "vertical": "Microsoft cloud managed services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "CloudLabs by Spektra Systems",
+      "website": "https://spektrasystems.com",
+      "is_govtech": true,
+      "vertical": "Cloud lab and training environments",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Codio Inc.",
+      "website": "http://codio.com",
+      "is_govtech": true,
+      "vertical": "Computing education platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "COLAJ",
+      "website": "http://colaj.ai",
+      "is_govtech": true,
+      "vertical": "Real-time classroom engagement platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "CollegeNET, Inc.",
+      "website": "http://www.collegenet.com",
+      "is_govtech": true,
+      "vertical": "Scheduling and admissions software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "CollegeVine",
+      "website": "https://www.collegevine.com/",
+      "is_govtech": true,
+      "vertical": "AI recruitment and admissions platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Comcast",
+      "website": "https://business.comcast.com/enterprise/industry-solutions/education",
+      "is_govtech": false,
+      "vertical": "Broadband and telecom services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Commvault",
+      "website": "http://www.commvault.com/",
+      "is_govtech": true,
+      "vertical": "Backup and cyber resilience software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Concentric AI",
+      "website": "https://concentric.ai/",
+      "is_govtech": true,
+      "vertical": "Data security posture management",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ConfidentialMind",
+      "website": "https://confidentialmind.com/",
+      "is_govtech": true,
+      "vertical": "Private LLM deployment platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Connection - Public Sector Solutions",
+      "website": "https://www.connection.com/public-sector/higher-education",
+      "is_govtech": false,
+      "vertical": "IT products reseller",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Constituo Software LLC",
+      "website": "http://www.constituo.com",
+      "is_govtech": true,
+      "vertical": "Higher education integration platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Cornerstone OnDemand, Inc.",
+      "website": "https://www.cornerstoneondemand.com/industries/higher-education/",
+      "is_govtech": true,
+      "vertical": "Talent and learning management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Coursedog, Inc.",
+      "website": "https://www.coursedog.com",
+      "is_govtech": true,
+      "vertical": "Curriculum and scheduling software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "CourseLeaf",
+      "website": "http://www.courseleaf.com/",
+      "is_govtech": true,
+      "vertical": "Catalog and curriculum management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Coursera",
+      "website": "https://www.coursera.org/campus",
+      "is_govtech": false,
+      "vertical": "Online course content library",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "CrashPlan",
+      "website": "https://www.crashplan.com/",
+      "is_govtech": true,
+      "vertical": "Endpoint backup software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Crestron Electronics Inc",
+      "website": "http://www.crestron.com",
+      "is_govtech": false,
+      "vertical": "AV control hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Cribl, Inc",
+      "website": "http://cribl.io",
+      "is_govtech": true,
+      "vertical": "Telemetry data pipeline software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "CrowdStrike",
+      "website": "http://www.crowdstrike.com",
+      "is_govtech": true,
+      "vertical": "Endpoint detection and response software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Cvent Inc",
+      "website": "https://www.cvent.com/en/education-solutions",
+      "is_govtech": true,
+      "vertical": "Event management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "D2L",
+      "website": "http://www.d2l.com",
+      "is_govtech": true,
+      "vertical": "Learning management system",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "DataCampus",
+      "website": "https://hidatacampus.com",
+      "is_govtech": true,
+      "vertical": "Higher education data lakehouse platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Datadog",
+      "website": "https://www.datadoghq.com",
+      "is_govtech": true,
+      "vertical": "Observability and monitoring software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Delinea",
+      "website": "https://delinea.com/",
+      "is_govtech": true,
+      "vertical": "Privileged access management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Dell Technologies",
+      "website": "https://www.dell.com/en-us/lp/industry-higher-ed",
+      "is_govtech": false,
+      "vertical": "Computer and server hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Deloitte",
+      "website": "https://www2.deloitte.com/us/en/pages/public-sector/solutions/higher-education-services.html",
+      "is_govtech": false,
+      "vertical": "Consulting and systems integration",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "DHE Computer Systems, LLC",
+      "website": "https://www.dhecs.com/",
+      "is_govtech": false,
+      "vertical": "Full-service IT services provider",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Drivestream",
+      "website": "https://www.drivestream.com",
+      "is_govtech": false,
+      "vertical": "Oracle cloud implementation consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Druid AI",
+      "website": "http://druidai.com",
+      "is_govtech": true,
+      "vertical": "Conversational AI agent platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Dynatrace",
+      "website": "http://dynatrace.com",
+      "is_govtech": true,
+      "vertical": "Application performance monitoring software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "EAB",
+      "website": "https://www.eab.com/",
+      "is_govtech": true,
+      "vertical": "Student success and enrollment platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Echo360",
+      "website": "http://www.echo360.com/",
+      "is_govtech": true,
+      "vertical": "Lecture capture and video platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "EDMO",
+      "website": "https://goedmo.com/",
+      "is_govtech": true,
+      "vertical": "AI enrollment management platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Educational & Institutional Cooperative Services Inc (E&I)",
+      "website": "https://www.eandi.org/who-we-serve/by-category/technology/",
+      "is_govtech": false,
+      "vertical": "Group purchasing cooperative",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "EfficientIP",
+      "website": "https://efficientip.com",
+      "is_govtech": true,
+      "vertical": "DNS, DHCP, and IPAM software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Elastic",
+      "website": "https://www.elastic.co/industries/public-sector/",
+      "is_govtech": true,
+      "vertical": "Search and observability software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Element451 Inc",
+      "website": "https://www.element451.com/",
+      "is_govtech": true,
+      "vertical": "AI student engagement CRM",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Ellucian",
+      "website": "http://www.ellucian.com",
+      "is_govtech": true,
+      "vertical": "Higher education ERP and SIS",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Emergent LLC",
+      "website": "http://emergent360.com",
+      "is_govtech": false,
+      "vertical": "Higher education technology consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Enghouse Interactive",
+      "website": "https://www.enghouseinteractive.com",
+      "is_govtech": true,
+      "vertical": "Contact center and video software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Entrinsik, Inc.",
+      "website": "https://entrinsik.com/",
+      "is_govtech": true,
+      "vertical": "Reporting and data analytics software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Epson",
+      "website": "http://www.epson.com/education",
+      "is_govtech": false,
+      "vertical": "Projectors and printers",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Equinix, Inc.",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Data center colocation",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ERPA",
+      "website": "https://www.erpa.com/",
+      "is_govtech": false,
+      "vertical": "ERP managed services and consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ESET LLC",
+      "website": "https://www.eset.com/us/",
+      "is_govtech": true,
+      "vertical": "Endpoint antivirus software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Evisions",
+      "website": "http://www.evisions.com/",
+      "is_govtech": true,
+      "vertical": "Higher education reporting software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Explorance",
+      "website": "http://www.explorance.com",
+      "is_govtech": true,
+      "vertical": "Course evaluation and feedback software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Extreme Networks",
+      "website": "http://www.extremenetworks.com",
+      "is_govtech": false,
+      "vertical": "Network switching hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Extron",
+      "website": "http://www.extron.com/",
+      "is_govtech": false,
+      "vertical": "AV signal distribution hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "FeedbackFruits",
+      "website": "http://feedbackfruits.com",
+      "is_govtech": true,
+      "vertical": "Teaching and learning engagement tools",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Ferrilli",
+      "website": "https://ferrilli.com/",
+      "is_govtech": false,
+      "vertical": "Higher education IT consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Fischer Identity LLC",
+      "website": "https://www.fischeridentity.com",
+      "is_govtech": true,
+      "vertical": "Identity and access management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "FlexKey",
+      "website": "https://flexkey.tech/",
+      "is_govtech": false,
+      "vertical": "Public sector IT support services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Fortinet",
+      "website": "https://www.fortinet.com",
+      "is_govtech": true,
+      "vertical": "Network security software and firewalls",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Four Inc.",
+      "website": "http://www.fourinc.com/",
+      "is_govtech": false,
+      "vertical": "Government IT distributor",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Freshworks",
+      "website": "http://www.freshworks.com",
+      "is_govtech": true,
+      "vertical": "IT service management and CRM software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "FUSE Next",
+      "website": "https://www.fusenext.com/",
+      "is_govtech": true,
+      "vertical": "AI federated search platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Gartner Inc",
+      "website": "http://www.gartner.com/",
+      "is_govtech": false,
+      "vertical": "IT research and advisory",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Gecko",
+      "website": "http://www.geckoengage.com",
+      "is_govtech": true,
+      "vertical": "Student engagement chatbot and CRM",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Genesys Cloud Services, Inc.",
+      "website": "http://genesys.com",
+      "is_govtech": true,
+      "vertical": "Cloud contact center software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Gigamon",
+      "website": "https://www.gigamon.com/",
+      "is_govtech": true,
+      "vertical": "Network visibility and observability platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "GitLab",
+      "website": "https://about.gitlab.com",
+      "is_govtech": true,
+      "vertical": "DevOps and source code platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "GoMeddo",
+      "website": "https://www.gomeddo.com/",
+      "is_govtech": true,
+      "vertical": "Scheduling and booking software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Google",
+      "website": "https://cloud.google.com/solutions/education",
+      "is_govtech": true,
+      "vertical": "Cloud and productivity software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "GovSpend",
+      "website": "http://govspend.com",
+      "is_govtech": true,
+      "vertical": "Government procurement and spend data",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "GRAIL",
+      "website": "http://enterprise.grailai.io",
+      "is_govtech": true,
+      "vertical": "Enterprise AI platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Gravyty",
+      "website": "https://gravyty.com/",
+      "is_govtech": true,
+      "vertical": "AI student and donor engagement",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Gray Decision Intelligence",
+      "website": "https://www.graydi.us/",
+      "is_govtech": true,
+      "vertical": "Academic program market analytics",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "greymatter Student Lifecycle CRM",
+      "website": "https://greymattercrm.com",
+      "is_govtech": true,
+      "vertical": "Student lifecycle CRM software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "GuidePoint Security LLC",
+      "website": "http://www.guidepointsecurity.com",
+      "is_govtech": false,
+      "vertical": "Security reseller and consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "HackerOne",
+      "website": "https://www.hackerone.com/",
+      "is_govtech": true,
+      "vertical": "Bug bounty and pentest platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Halcyon",
+      "website": "http://halcyon.ai",
+      "is_govtech": true,
+      "vertical": "Anti-ransomware endpoint software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Halda.AI",
+      "website": "http://halda.ai",
+      "is_govtech": true,
+      "vertical": "AI student recruitment engagement",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "HaloITSM",
+      "website": "https://usehalo.com/haloitsm",
+      "is_govtech": true,
+      "vertical": "IT service management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Harmonize",
+      "website": "http://harmonizelearning.com",
+      "is_govtech": true,
+      "vertical": "Online course engagement software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Heckler Design",
+      "website": "http://hecklerdesign.com",
+      "is_govtech": false,
+      "vertical": "AV mounts and furniture",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "HelioCampus",
+      "website": "http://www.heliocampus.com",
+      "is_govtech": true,
+      "vertical": "Higher education analytics and benchmarking",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Hermathena Labs",
+      "website": "https://hermathenalabs.com",
+      "is_govtech": false,
+      "vertical": "Cybersecurity compliance consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Hewlett Packard Enterprise",
+      "website": "https://www.hpe.com",
+      "is_govtech": false,
+      "vertical": "Server and storage hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Hitachi Vantara",
+      "website": "https://www.hitachivantara.com",
+      "is_govtech": false,
+      "vertical": "Storage hardware and data infrastructure",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Honorlock Inc",
+      "website": "https://honorlock.com",
+      "is_govtech": true,
+      "vertical": "Online exam proctoring software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Hounder",
+      "website": "https://hounder.co/",
+      "is_govtech": false,
+      "vertical": "Digital transformation services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "HP Inc",
+      "website": "http://www.hp.com/hied",
+      "is_govtech": false,
+      "vertical": "Computer and printer hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Huntress",
+      "website": "https://www.huntress.com/",
+      "is_govtech": true,
+      "vertical": "Managed endpoint detection software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Huron",
+      "website": "http://www.huronconsultinggroup.com/",
+      "is_govtech": false,
+      "vertical": "Higher education consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Hyland",
+      "website": "https://www.hyland.com/HigherEducation",
+      "is_govtech": true,
+      "vertical": "Enterprise content management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "IData, Inc",
+      "website": "http://www.idatainc.com/",
+      "is_govtech": false,
+      "vertical": "Data governance consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "IDrive Inc.",
+      "website": "http://www.idrive.com",
+      "is_govtech": true,
+      "vertical": "Cloud backup and storage software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "IGEL Technology Corporation",
+      "website": "https://www.igel.com/",
+      "is_govtech": true,
+      "vertical": "Secure endpoint operating system",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Illumia",
+      "website": "https://illumiatech.com/",
+      "is_govtech": false,
+      "vertical": "Payments and campus systems integration",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Info-Tech Research Group",
+      "website": "http://www.infotech.com",
+      "is_govtech": false,
+      "vertical": "IT research and advisory",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "InfoReady",
+      "website": "http://www.inforeadycorp.com",
+      "is_govtech": true,
+      "vertical": "Research administration workflow software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Ingram Micro, Inc.",
+      "website": "http://www.ingrammicro.com/",
+      "is_govtech": false,
+      "vertical": "IT products distributor",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "inLighten",
+      "website": "https://www.inlighten.net",
+      "is_govtech": false,
+      "vertical": "Digital signage systems and hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Insight Public Sector",
+      "website": "http://www.ips.insight.com/",
+      "is_govtech": false,
+      "vertical": "IT products reseller",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Instructure",
+      "website": "http://instructure.com",
+      "is_govtech": true,
+      "vertical": "Canvas learning management system",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Instrumental Identity",
+      "website": "https://www.instrumentalidentity.com",
+      "is_govtech": false,
+      "vertical": "SailPoint implementation services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Intellicampus",
+      "website": "https://intellicampus.com",
+      "is_govtech": true,
+      "vertical": "Enterprise AI platform for higher education",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Intelligent Video Solutions",
+      "website": "http://ipivs.com",
+      "is_govtech": true,
+      "vertical": "Video observation and recording software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Invoke Learning",
+      "website": "http://www.invokelearning.com",
+      "is_govtech": true,
+      "vertical": "Higher education data platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "IPEVO Inc",
+      "website": "http://www.ipevo.com",
+      "is_govtech": false,
+      "vertical": "Document cameras and classroom hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "IPv4.Global by Hilco Global",
+      "website": "https://ipv4.global/",
+      "is_govtech": false,
+      "vertical": "IP address brokerage marketplace",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Island",
+      "website": "https://www.island.io/industries/higher-education",
+      "is_govtech": true,
+      "vertical": "Enterprise browser software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Jabra",
+      "website": "https://www.jabra.com/",
+      "is_govtech": false,
+      "vertical": "Headsets and audio hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Jamf",
+      "website": "https://jamf.com",
+      "is_govtech": true,
+      "vertical": "Apple device management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Jenzabar",
+      "website": "https://jenzabar.com/",
+      "is_govtech": true,
+      "vertical": "Higher education ERP and SIS",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "K16 Solutions",
+      "website": "https://www.k16solutions.com/",
+      "is_govtech": true,
+      "vertical": "Course migration and archiving software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Kahoot!",
+      "website": "https://kahoot.com",
+      "is_govtech": true,
+      "vertical": "Interactive learning engagement software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Kaltura Inc",
+      "website": "http://www.kaltura.com",
+      "is_govtech": true,
+      "vertical": "Video management platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Keenious",
+      "website": "https://keenious.com/?landing",
+      "is_govtech": true,
+      "vertical": "AI research discovery tool",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "KnowBe4",
+      "website": "https://www.knowbe4.com/",
+      "is_govtech": true,
+      "vertical": "Security awareness training platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Kortext",
+      "website": "http://www.kortext.com",
+      "is_govtech": false,
+      "vertical": "Digital textbook content platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Kuali",
+      "website": "http://www.kuali.co",
+      "is_govtech": true,
+      "vertical": "Research administration and curriculum software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Kyron Learning",
+      "website": "http://kyronlearning.com",
+      "is_govtech": true,
+      "vertical": "AI conversational teaching platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Lambent Spaces",
+      "website": "http://lambentspaces.com",
+      "is_govtech": true,
+      "vertical": "Campus space utilization analytics",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "LaptopsAnytime",
+      "website": "http://www.laptopsanytime.com",
+      "is_govtech": false,
+      "vertical": "Laptop vending kiosk hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Laserfiche",
+      "website": "https://www.laserfiche.com/solutions/education/",
+      "is_govtech": true,
+      "vertical": "Document management and workflow software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "LearnWise AI",
+      "website": "http://learnwise.ai",
+      "is_govtech": true,
+      "vertical": "AI student support assistant",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Lenovo",
+      "website": "https://techtoday.lenovo.com/ww/en/solutions/education",
+      "is_govtech": false,
+      "vertical": "Computer and server hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "LogicMonitor",
+      "website": "http://www.logicmonitor.com",
+      "is_govtech": true,
+      "vertical": "Infrastructure monitoring software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Logitech, Inc.",
+      "website": "http://logitech.com",
+      "is_govtech": false,
+      "vertical": "Peripherals and video hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Lucid Software",
+      "website": "https://lucid.co/solutions/education",
+      "is_govtech": true,
+      "vertical": "Visual collaboration and diagramming software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Lumens Integration",
+      "website": "http://www.mylumens.com/",
+      "is_govtech": false,
+      "vertical": "Cameras and AV hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Lumu Technologies",
+      "website": "https://lumu.io/cybersecurity-for-schools/",
+      "is_govtech": true,
+      "vertical": "Network threat detection software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Marshall Furniture Inc.",
+      "website": "http://www.marshallfurniture.com/",
+      "is_govtech": false,
+      "vertical": "AV furniture manufacturer",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "McGraw Hill",
+      "website": "http://www.mheducation.com",
+      "is_govtech": false,
+      "vertical": "Educational publisher and courseware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Mentimeter",
+      "website": "http://mentimeter.com",
+      "is_govtech": true,
+      "vertical": "Audience engagement and polling software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Meter",
+      "website": "http://meter.com/",
+      "is_govtech": false,
+      "vertical": "Network as a service infrastructure",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Microsoft Corporation",
+      "website": "https://www.microsoft.com/en-us/education",
+      "is_govtech": true,
+      "vertical": "Cloud, productivity, and AI software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Microtek",
+      "website": "https://microtek-co.com/",
+      "is_govtech": false,
+      "vertical": "Student technology kits and logistics",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Mimo",
+      "website": "https://mimomonitors.com",
+      "is_govtech": false,
+      "vertical": "Small touchscreen display hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Modern Campus",
+      "website": "https://www.moderncampus.com",
+      "is_govtech": true,
+      "vertical": "Web CMS and catalog software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Modo Labs Inc",
+      "website": "http://www.modolabs.com/",
+      "is_govtech": true,
+      "vertical": "Campus mobile app platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Moodle US LLC",
+      "website": "https://moodle.com/us/",
+      "is_govtech": true,
+      "vertical": "Open source learning management system",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Moran Technology Consulting",
+      "website": "http://www.morantechnology.com/",
+      "is_govtech": false,
+      "vertical": "Higher education IT consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "MSI",
+      "website": "http://www.msi.com",
+      "is_govtech": false,
+      "vertical": "Computer hardware manufacturer",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Mythics",
+      "website": "http://www.mythics.com",
+      "is_govtech": false,
+      "vertical": "Oracle reseller and integrator",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "MyWorkDrive",
+      "website": "http://myworkdrive.com",
+      "is_govtech": true,
+      "vertical": "Secure remote file access software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "N2N Services",
+      "website": "https://n2nservices.com/",
+      "is_govtech": true,
+      "vertical": "Higher education integration platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Nagarro Inc.",
+      "website": "http://www.nagarro.com",
+      "is_govtech": false,
+      "vertical": "IT engineering services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Neat",
+      "website": "https://neat.no/",
+      "is_govtech": false,
+      "vertical": "Video conferencing hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Nelnet Campus Commerce",
+      "website": "http://www.CampusCommerce.com",
+      "is_govtech": true,
+      "vertical": "Tuition payment and billing software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "NetApp, Inc.",
+      "website": "http://www.netapp.com",
+      "is_govtech": false,
+      "vertical": "Data storage hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "NETGEAR Inc.",
+      "website": "http://www.netgear.com/",
+      "is_govtech": false,
+      "vertical": "Networking hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Newline Interactive",
+      "website": "https://newline-interactive.com/usa",
+      "is_govtech": false,
+      "vertical": "Interactive display hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Nile",
+      "website": "https://nilesecure.com/solutions/higher-education",
+      "is_govtech": false,
+      "vertical": "Network as a service infrastructure",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "NinjaOne",
+      "website": "https://www.ninjaone.com/solutions-for-it-professionals/education/",
+      "is_govtech": true,
+      "vertical": "Endpoint management and patching software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Nuventive",
+      "website": "http://www.nuventive.com/",
+      "is_govtech": true,
+      "vertical": "Assessment and planning software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "nuXight",
+      "website": "https://nuxight.com/",
+      "is_govtech": true,
+      "vertical": "AI grading and assessment tools",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "OculusIT",
+      "website": "http://www.oculusit.com",
+      "is_govtech": false,
+      "vertical": "Higher education managed IT services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "OKhuman",
+      "website": "https://okhuman.com",
+      "is_govtech": true,
+      "vertical": "Writing provenance verification software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Okta",
+      "website": "https://www.okta.com/solutions/public-sector/education/",
+      "is_govtech": true,
+      "vertical": "Identity and access management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Omnissa",
+      "website": "https://www.omnissa.com/",
+      "is_govtech": true,
+      "vertical": "Digital workspace and virtual desktop software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "OneWorldSIS",
+      "website": "http://www.oneworldsis.com",
+      "is_govtech": true,
+      "vertical": "Student information system software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Onspring Technologies",
+      "website": "https://onspring.com/",
+      "is_govtech": true,
+      "vertical": "Governance risk and compliance software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Opkey",
+      "website": "https://www.opkey.com/",
+      "is_govtech": true,
+      "vertical": "ERP test automation software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Oracle",
+      "website": "https://www.oracle.com/industries/government/education/higher-education/",
+      "is_govtech": true,
+      "vertical": "Enterprise database and cloud software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Orchestry",
+      "website": "https://www.orchestry.com/",
+      "is_govtech": true,
+      "vertical": "Microsoft 365 governance software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Ovation",
+      "website": "http://ovationvr.com",
+      "is_govtech": true,
+      "vertical": "VR public speaking training software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Owl Labs",
+      "website": "http://www.owllabs.com",
+      "is_govtech": false,
+      "vertical": "Video conferencing cameras",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Palo Alto Networks",
+      "website": "http://www.paloaltonetworks.com/",
+      "is_govtech": true,
+      "vertical": "Network and cloud security software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Pangram Labs",
+      "website": "https://www.pangram.com/",
+      "is_govtech": true,
+      "vertical": "AI text detection software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Panopto",
+      "website": "https://www.panopto.com",
+      "is_govtech": true,
+      "vertical": "Video capture and management platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Pathify",
+      "website": "https://pathify.com/",
+      "is_govtech": true,
+      "vertical": "Campus engagement portal software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Pathlock",
+      "website": "https://pathlock.com",
+      "is_govtech": true,
+      "vertical": "Application access governance software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "PathSolutions",
+      "website": "http://pathsolutions.com",
+      "is_govtech": true,
+      "vertical": "Network performance monitoring software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Paymentus",
+      "website": "https://www.paymentus.com/education/",
+      "is_govtech": true,
+      "vertical": "Electronic bill payment platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Peak InfoSec LLC",
+      "website": "https://peakinfosec.com/",
+      "is_govtech": false,
+      "vertical": "Cybersecurity compliance consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Planar",
+      "website": "http://www.planar.com",
+      "is_govtech": false,
+      "vertical": "Display hardware manufacturer",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Plante Moran, PLLC",
+      "website": "http://www.plantemoran.com",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Pluralsight",
+      "website": "https://www.pluralsight.com/industries/public-sector",
+      "is_govtech": false,
+      "vertical": "Technology skills content library",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "PMO Partners LLC",
+      "website": "http://pmopartners.com/",
+      "is_govtech": false,
+      "vertical": "Project management staffing and consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Poll Everywhere",
+      "website": "http://www.polleverywhere.com/",
+      "is_govtech": true,
+      "vertical": "Audience response and polling software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Pope Tech Corporation",
+      "website": "https://pope.tech/",
+      "is_govtech": true,
+      "vertical": "Web accessibility testing software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Potential.ly",
+      "website": "https://www.potential.ly",
+      "is_govtech": true,
+      "vertical": "Student skills development platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Praxis AI",
+      "website": "https://www.praxis-ai.com",
+      "is_govtech": true,
+      "vertical": "AI learning assistant platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Presidio",
+      "website": "http://www.presidio.com/",
+      "is_govtech": false,
+      "vertical": "IT integrator and managed services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Proofpoint, Inc.",
+      "website": "https://www.proofpoint.com/us/solutions/higher-education-security",
+      "is_govtech": true,
+      "vertical": "Email security and compliance software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Propeller",
+      "website": "https://propeller.cloud",
+      "is_govtech": true,
+      "vertical": "Cloud virtual desktop for education",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Public Insight Data Corporation",
+      "website": "https://publicinsight.io/",
+      "is_govtech": true,
+      "vertical": "Public sector data analytics platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "QuickLaunch",
+      "website": "https://quicklaunch.io",
+      "is_govtech": true,
+      "vertical": "Identity and single sign-on software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Quodus",
+      "website": "https://quodus.ai/",
+      "is_govtech": true,
+      "vertical": "Campus space analytics software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Rapid7",
+      "website": "http://www.rapid7.com",
+      "is_govtech": true,
+      "vertical": "Vulnerability management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ReadSpeaker",
+      "website": "http://readspeaker.com",
+      "is_govtech": true,
+      "vertical": "Text-to-speech accessibility software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Red Hat LLC",
+      "website": "https://www.redhat.com/academic",
+      "is_govtech": true,
+      "vertical": "Enterprise open source software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Relish",
+      "website": "http://relishiq.com",
+      "is_govtech": true,
+      "vertical": "Higher education workflow software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Respondus",
+      "website": "http://www.respondus.com/",
+      "is_govtech": true,
+      "vertical": "Assessment and exam proctoring software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Revolution Lightboards",
+      "website": "https://revolutionlightboards.com",
+      "is_govtech": false,
+      "vertical": "Lightboard recording hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "RhetorixLab",
+      "website": "http://rhetorixlab.io",
+      "is_govtech": true,
+      "vertical": "AI-resistant oral assessment software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Rubrik",
+      "website": "http://rubrik.com",
+      "is_govtech": true,
+      "vertical": "Data backup and cyber recovery software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "RUCKUS",
+      "website": "https://www.ruckusnetworks.com/",
+      "is_govtech": false,
+      "vertical": "Wireless networking hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SailPoint Technologies",
+      "website": "http://www.sailpoint.com",
+      "is_govtech": true,
+      "vertical": "Identity governance software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Salesforce",
+      "website": "https://www.salesforce.com/education",
+      "is_govtech": true,
+      "vertical": "CRM and student engagement platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SaltyCloud PBC",
+      "website": "https://www.saltycloud.com",
+      "is_govtech": true,
+      "vertical": "Security compliance workflow software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Schneider Electric",
+      "website": "http://www.se.com",
+      "is_govtech": false,
+      "vertical": "Electrical and power equipment",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SchoolAI",
+      "website": "http://schoolai.com",
+      "is_govtech": true,
+      "vertical": "AI classroom assistant platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Schoolyear",
+      "website": "http://schoolyear.com",
+      "is_govtech": true,
+      "vertical": "Exam security and lockdown software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ScreenComply",
+      "website": "http://screencomply.ai",
+      "is_govtech": true,
+      "vertical": "Interview and exam integrity software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SEAtS ONE",
+      "website": "https://seatsone.com/",
+      "is_govtech": true,
+      "vertical": "Student attendance and engagement software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SecureW2",
+      "website": "https://securew2.com/higher-education",
+      "is_govtech": true,
+      "vertical": "Certificate-based network onboarding software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SecurityMetrics",
+      "website": "https://www.securitymetrics.com/higher-education-solutions",
+      "is_govtech": false,
+      "vertical": "PCI compliance audit services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ServiceNow",
+      "website": "http://www.servicenow.com/",
+      "is_govtech": true,
+      "vertical": "IT service management platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ShareStream",
+      "website": "https://www.sharestream.com/",
+      "is_govtech": true,
+      "vertical": "Video streaming platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SHI International Corp.",
+      "website": "https://www.publicsector.shidirect.com/",
+      "is_govtech": false,
+      "vertical": "IT products reseller",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Sierra-Cedar",
+      "website": "http://www.Sierra-Cedar.com",
+      "is_govtech": false,
+      "vertical": "ERP consulting and systems integration",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Simple Higher Ed",
+      "website": "https://simplehighered.com/",
+      "is_govtech": true,
+      "vertical": "Syllabus management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SimpleStudyingAI Inc",
+      "website": "http://studycrowd.ai",
+      "is_govtech": true,
+      "vertical": "AI study and tutoring platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SIS Global",
+      "website": "https://sisglobal.com/education-specialized-partner-technologies/",
+      "is_govtech": false,
+      "vertical": "Technology reseller and integrator",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Siteimprove Inc.",
+      "website": "http://siteimprove.com",
+      "is_govtech": true,
+      "vertical": "Web accessibility and analytics software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Skillsoft Corporation",
+      "website": "http://www.skillsoft.com/",
+      "is_govtech": false,
+      "vertical": "Corporate training content library",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Slate",
+      "website": "https://technolutions.com",
+      "is_govtech": true,
+      "vertical": "Admissions and enrollment CRM",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Smartsheet",
+      "website": "http://www.smartsheet.com/",
+      "is_govtech": true,
+      "vertical": "Work management platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SmowlTech",
+      "website": "http://smowl.net/en/",
+      "is_govtech": true,
+      "vertical": "Online proctoring software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Snowflake Inc.",
+      "website": "http://snowflake.com/publicsector",
+      "is_govtech": true,
+      "vertical": "Cloud data platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Softdocs",
+      "website": "https://www.softdocs.com/",
+      "is_govtech": true,
+      "vertical": "Document management and e-forms software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SolarWinds",
+      "website": "https://www.solarwinds.com/solutions/education-it-solutions",
+      "is_govtech": true,
+      "vertical": "IT monitoring and management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SOMACyber, Inc.",
+      "website": "https://somacyber.com/",
+      "is_govtech": false,
+      "vertical": "Penetration testing and vCISO services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Sophos, Inc.",
+      "website": "http://www.sophos.com/products/education/higher/",
+      "is_govtech": true,
+      "vertical": "Endpoint and network security software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Sourcewell",
+      "website": "http://sourcewell-mn.gov",
+      "is_govtech": false,
+      "vertical": "Government purchasing cooperative",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Spectrum Business",
+      "website": "https://spectrum.com/business",
+      "is_govtech": false,
+      "vertical": "Broadband and telecom services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Spectrum Industries Inc",
+      "website": "http://www.spectrumfurniture.com/",
+      "is_govtech": false,
+      "vertical": "Classroom furniture manufacturer",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "StarRez",
+      "website": "https://www.starrez.com/",
+      "is_govtech": true,
+      "vertical": "Student housing management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SteelCloud",
+      "website": "http://www.steelcloud.com",
+      "is_govtech": true,
+      "vertical": "STIG compliance automation software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Stellic",
+      "website": "https://www.stellic.com",
+      "is_govtech": true,
+      "vertical": "Degree planning and advising software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Strata Information Group",
+      "website": "http://www.sigcorp.com/",
+      "is_govtech": false,
+      "vertical": "Higher education IT consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "StudyStash",
+      "website": "https://studystash.com/",
+      "is_govtech": true,
+      "vertical": "Adaptive learning software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Summit 7 Systems",
+      "website": "http://Summit7.us",
+      "is_govtech": false,
+      "vertical": "Microsoft and CMMC managed services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Superhuman",
+      "website": "https://superhuman.com/edu",
+      "is_govtech": true,
+      "vertical": "AI email productivity software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Talkdesk",
+      "website": "http://talkdesk.com",
+      "is_govtech": true,
+      "vertical": "Cloud contact center software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Tanium",
+      "website": "http://www.tanium.com/solutions/education/",
+      "is_govtech": true,
+      "vertical": "Endpoint management and security software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "TeamDynamix",
+      "website": "",
+      "is_govtech": true,
+      "vertical": "IT service and project management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "TEAMia",
+      "website": "http://www.teamia.com",
+      "is_govtech": false,
+      "vertical": "ECM reseller and solutions integrator",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "TekStream Solutions",
+      "website": "https://www.tekstream.com/",
+      "is_govtech": false,
+      "vertical": "IT integration and staffing services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "TERMINALFOUR",
+      "website": "https://www.terminalfour.com/",
+      "is_govtech": true,
+      "vertical": "Higher education web content management",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ThreatLocker",
+      "website": "http://threatlocker.com",
+      "is_govtech": true,
+      "vertical": "Endpoint allowlisting security software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "TimelyGrader",
+      "website": "https://www.timelygrader.ai/",
+      "is_govtech": true,
+      "vertical": "AI grading and feedback software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Tines",
+      "website": "http://tines.io",
+      "is_govtech": true,
+      "vertical": "Security workflow automation software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Toptal",
+      "website": "https://www.toptal.com/industry/higher-education",
+      "is_govtech": false,
+      "vertical": "Freelance talent marketplace",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Toshiba America Business Solutions",
+      "website": "http://business.toshiba.com",
+      "is_govtech": false,
+      "vertical": "Printers and imaging hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "TouchNet",
+      "website": "http://www.touchnet.com/",
+      "is_govtech": true,
+      "vertical": "Campus payments and commerce software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Tru Consulting",
+      "website": "http://truedconsulting.com",
+      "is_govtech": false,
+      "vertical": "Higher education technology consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Unifuse AI",
+      "website": "http://unifuse.ai",
+      "is_govtech": true,
+      "vertical": "AI engine for higher education",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Vasion Print, formerly PrinterLogic",
+      "website": "https://vasion.com/",
+      "is_govtech": true,
+      "vertical": "Print management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Veeam Software Corporation",
+      "website": "http://www.veeam.com",
+      "is_govtech": true,
+      "vertical": "Backup and data resilience software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Verkada",
+      "website": "https://www.verkada.com/",
+      "is_govtech": false,
+      "vertical": "Cloud-managed security cameras",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Vertosoft",
+      "website": "https://www.vertosoft.com/",
+      "is_govtech": false,
+      "vertical": "Government technology distributor",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ViewSonic Corporation",
+      "website": "http://www.viewsonic.com",
+      "is_govtech": false,
+      "vertical": "Display hardware manufacturer",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Wasabi Technologies",
+      "website": "http://www.wasabi.com",
+      "is_govtech": true,
+      "vertical": "Cloud object storage",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Wooclap",
+      "website": "https://www.wooclap.com/",
+      "is_govtech": true,
+      "vertical": "Classroom engagement and polling software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Workday",
+      "website": "http://www.workday.com/",
+      "is_govtech": true,
+      "vertical": "Finance, HR, and student ERP",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "WriteSea",
+      "website": "https://writesea.com/",
+      "is_govtech": true,
+      "vertical": "AI career services platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Xfinity Communities",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Broadband and telecom services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Xopolis Inc",
+      "website": "http://xopol.is",
+      "is_govtech": false,
+      "vertical": "Unverified early-stage vendor",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Yealink (Xiamen) Network Technology CO., Ltd",
+      "website": "http://www.yealink.com",
+      "is_govtech": false,
+      "vertical": "Phones and video conferencing hardware",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "YuJa",
+      "website": "http://www.yuja.com",
+      "is_govtech": true,
+      "vertical": "Video and accessibility software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ZaristAI",
+      "website": "http://www.aristai.io",
+      "is_govtech": true,
+      "vertical": "AI tutoring and accessibility tools",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Zoom",
+      "website": "http://zoom.us",
+      "is_govtech": true,
+      "vertical": "Video conferencing software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Zscaler",
+      "website": "http://www.zscaler.com",
+      "is_govtech": true,
+      "vertical": "Cloud security and zero trust software",
+      "sector": "Higher Education"
+    }
+  ]
+}

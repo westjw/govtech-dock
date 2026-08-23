@@ -1,0 +1,1542 @@
+{
+  "conference": "NatCon 2026",
+  "exhibitors": [
+    {
+      "name": "988 Colorado Mental Health Line",
+      "website": "http://www.988colorado.com",
+      "is_govtech": false,
+      "vertical": "Statewide 988 crisis hotline",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "AB Staffing Solutions",
+      "website": "http://www.abstaffing.com/for-clients/",
+      "is_govtech": false,
+      "vertical": "Behavioral health clinical staffing",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Accreditation Guru, Inc.",
+      "website": "http://AccreditationGuru.com/",
+      "is_govtech": false,
+      "vertical": "Accreditation consulting and training",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Advanced Pharmacy Solutions (APS)",
+      "website": "http://www.apsremoterx.com",
+      "is_govtech": false,
+      "vertical": "Remote pharmacy services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Aegis Sciences Corporation",
+      "website": "http://www.aegislabs.com",
+      "is_govtech": false,
+      "vertical": "Toxicology and medication testing labs",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Aetna Medicaid",
+      "website": "http://www.aetnabetterhealth.com/",
+      "is_govtech": false,
+      "vertical": "Medicaid managed care plans",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Altruix",
+      "website": "http://www.altruix.com",
+      "is_govtech": false,
+      "vertical": "Behavioral health pharmacy services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Amazon Business",
+      "website": "http://amazonbusiness.com",
+      "is_govtech": false,
+      "vertical": "B2B procurement marketplace",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Amergis Government Staffing",
+      "website": "http://amergis.com",
+      "is_govtech": false,
+      "vertical": "Government healthcare staffing",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "American Bedding MFG., Inc.",
+      "website": "http://americanbeddingmfg.com/",
+      "is_govtech": false,
+      "vertical": "Behavioral health furniture and mattresses",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "AmeriHealth Caritas",
+      "website": "http://www.amerihealthcaritas.com/",
+      "is_govtech": false,
+      "vertical": "Medicaid managed care plans",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Amigo AI",
+      "website": "http://amigo.ai",
+      "is_govtech": true,
+      "vertical": "AI clinical agents for behavioral health",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "AMIkids, Inc.",
+      "website": "http://AMIkids.org",
+      "is_govtech": false,
+      "vertical": "Youth treatment and education programs",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Andrus Sanctuary Institute",
+      "website": "http://andrus1928.org",
+      "is_govtech": false,
+      "vertical": "Trauma-informed care training",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Anonymous Health",
+      "website": "http://www.anonymoushealth.com/",
+      "is_govtech": true,
+      "vertical": "AI intake and engagement platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Arapahoe Community College",
+      "website": "http://arapahoe.edu",
+      "is_govtech": false,
+      "vertical": "Behavioral health credential programs",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Ascend Healthcare",
+      "website": "http://ascendtelehealth.com",
+      "is_govtech": false,
+      "vertical": "Behavioral health services for clinics",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Assured Health, Inc.",
+      "website": "http://withassured.com",
+      "is_govtech": true,
+      "vertical": "AI provider credentialing and enrollment",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Attunement Inc.",
+      "website": "http://attunement.ai",
+      "is_govtech": true,
+      "vertical": "AI clinical records intelligence platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Baker Tilly",
+      "website": "https://www.bakertilly.com/industries/healthcare/behavioral-health",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Barrins & Associates",
+      "website": "http://www.barrins-assoc.com",
+      "is_govtech": false,
+      "vertical": "Accreditation and compliance consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Beck Institute for Cognitive Behavior Therapy",
+      "website": "http://www.beckinstitute.org",
+      "is_govtech": false,
+      "vertical": "CBT training and certification",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "BEE Medic",
+      "website": "http://www.beemedic.com",
+      "is_govtech": false,
+      "vertical": "Neurofeedback EEG equipment",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Behavioral Health RCM Solutions, LLC",
+      "website": "http://www.BHRCMS.com",
+      "is_govtech": false,
+      "vertical": "Revenue cycle management services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Bellis",
+      "website": "http://mybellis.org",
+      "is_govtech": false,
+      "vertical": "Grief and loss nonprofit",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Bowling Business Strategies",
+      "website": "http://www.bowlingbiz.com",
+      "is_govtech": false,
+      "vertical": "Behavioral health system consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Bristol Bay Area Health Corporation",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Tribal health care provider",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Burrows Consulting",
+      "website": "http://www.burrowsconsulting.net",
+      "is_govtech": false,
+      "vertical": "Health center development consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Butler Human Services Furniture",
+      "website": "http://butlerhumanservices.com",
+      "is_govtech": false,
+      "vertical": "Human services furniture supplier",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "California Correctional Health Care Services",
+      "website": "https://www.californiacorrectionalmentalhealth.org/",
+      "is_govtech": false,
+      "vertical": "State correctional health agency",
+      "sector": "Courts & Justice"
+    },
+    {
+      "name": "Cantata Health Solutions",
+      "website": "http://CantataHealth.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health EHR software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "CapGrow Partners LLC",
+      "website": "http://capgrowpartners.com",
+      "is_govtech": false,
+      "vertical": "Behavioral health real estate leasing",
+      "sector": "Housing & Community Dev"
+    },
+    {
+      "name": "CaraSolva",
+      "website": "http://www.carasolva.com",
+      "is_govtech": true,
+      "vertical": "Electronic medication administration software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Care Predictor",
+      "website": "http://carepredictor.com",
+      "is_govtech": true,
+      "vertical": "Workforce assessment and hiring platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "CareCredit",
+      "website": "http://www.carecredit.com",
+      "is_govtech": false,
+      "vertical": "Patient financing credit cards",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "CareLoop Health",
+      "website": "http://www.careloop.health",
+      "is_govtech": true,
+      "vertical": "Digital therapeutic for psychosis relapse",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "CARF International",
+      "website": "http://www.carf.org",
+      "is_govtech": false,
+      "vertical": "Human services accreditation body",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "CCBHC Lounge",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference lounge feature"
+    },
+    {
+      "name": "Centerstone",
+      "website": "http://centerstone.org",
+      "is_govtech": false,
+      "vertical": "Community behavioral health provider",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Chazin",
+      "website": "http://chazinandcompany.com",
+      "is_govtech": false,
+      "vertical": "Nonprofit outsourced accounting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "CHESS Health",
+      "website": "http://www.chess.health",
+      "is_govtech": true,
+      "vertical": "Digital substance use disorder platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Chestnut Ridge Foam Inc.",
+      "website": "http://www.chestnutridgefoam.com",
+      "is_govtech": false,
+      "vertical": "Behavioral health mattress manufacturer",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Chorus Innovations, Inc",
+      "website": "http://joinchorus.com",
+      "is_govtech": true,
+      "vertical": "Rapid digital health application platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Circle Health",
+      "website": "http://www.circlehealth.co",
+      "is_govtech": true,
+      "vertical": "AI utilization review automation",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Clarity Group, Inc.",
+      "website": "http://www.claritygrp.com",
+      "is_govtech": true,
+      "vertical": "Incident reporting and risk software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Clinically AI",
+      "website": "http://clinicallyai.com",
+      "is_govtech": true,
+      "vertical": "AI clinical documentation and compliance",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "ClinicMind",
+      "website": "http://www.clinicmind.com",
+      "is_govtech": true,
+      "vertical": "Practice management and billing platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "CohnReznick LLP",
+      "website": "http://www.cohnreznick.com",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Colorado Department of Corrections",
+      "website": "https://cdoc.colorado.gov/",
+      "is_govtech": false,
+      "vertical": "State corrections agency",
+      "sector": "Courts & Justice"
+    },
+    {
+      "name": "Community Zone",
+      "website": "https://www.thenationalcouncil.org/",
+      "is_govtech": false,
+      "vertical": "Conference community zone feature"
+    },
+    {
+      "name": "Compass Health Network",
+      "website": "http://compasshealthnetwork.org/",
+      "is_govtech": false,
+      "vertical": "Community health and behavioral provider",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Continuity Consulting",
+      "website": "http://continuity.consulting/",
+      "is_govtech": false,
+      "vertical": "EHR administration and consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "ContinuumCloud",
+      "website": "http://www.continuumcloud.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health EHR and HCM software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Core Solutions, Inc.",
+      "website": "http://www.coresolutionsinc.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health and IDD EHR",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Correctional Counseling Inc",
+      "website": "http://www.ccimrt.com",
+      "is_govtech": false,
+      "vertical": "Cognitive behavioral treatment training",
+      "sector": "Courts & Justice"
+    },
+    {
+      "name": "CredibleMind",
+      "website": "http://crediblemind.com",
+      "is_govtech": true,
+      "vertical": "Mental health self-care content platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Crestwood Behavioral Health, Inc.",
+      "website": "http://www.crestwoodbehavioralhealth.com/",
+      "is_govtech": false,
+      "vertical": "Behavioral health treatment provider",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Culinary Services Group",
+      "website": "http://culinaryservicesgroup.com/",
+      "is_govtech": false,
+      "vertical": "Food service management",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Dazos",
+      "website": "http://dazos.com/",
+      "is_govtech": true,
+      "vertical": "Behavioral health CRM and revenue platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Deerfield Solutions, LLC",
+      "website": "http://www.deerfieldsolutions.com",
+      "is_govtech": true,
+      "vertical": "Electronic LOCUS clinical assessment tools",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Devereux",
+      "website": "http://www.devereux.org/site/SPageServer/?NONCE_TOKEN=3202301FA865A9F80EC7DEF5B53951E4",
+      "is_govtech": false,
+      "vertical": "Behavioral health treatment provider",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "DLA-20 Insights",
+      "website": "http://dla-20insights.com",
+      "is_govtech": false,
+      "vertical": "Assessment implementation consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Doxy.me",
+      "website": "http://doxy.me",
+      "is_govtech": true,
+      "vertical": "HIPAA-compliant telehealth platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "DrChrono",
+      "website": "https://www.drchrono.com/",
+      "is_govtech": true,
+      "vertical": "EHR and practice management software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Ease Health",
+      "website": "http://easehealth.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health EHR and billing platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "eClinicalWorks",
+      "website": "http://www.eclinicalworks.com",
+      "is_govtech": true,
+      "vertical": "Cloud EHR and practice management",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Eleos Health",
+      "website": "http://eleos.health/",
+      "is_govtech": true,
+      "vertical": "AI documentation for behavioral health",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Empower Community Care",
+      "website": "http://empowercommunitycare.com",
+      "is_govtech": false,
+      "vertical": "Evidence-based program distribution and training",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "EnSoftek Inc./DrCloudEHR",
+      "website": "http://www.drcloudehr.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health EHR software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "EverSpring Pharmacy",
+      "website": "http://www.everspringrx.com",
+      "is_govtech": false,
+      "vertical": "IDD pharmacy services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Exhibitor Services",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference exhibitor services desk"
+    },
+    {
+      "name": "Exhibitors Lounge",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference lounge feature"
+    },
+    {
+      "name": "Expert Insight Sessions",
+      "website": "https://www.thenationalcouncil.org/natcon/program/consulting/",
+      "is_govtech": false,
+      "vertical": "Conference consulting sessions"
+    },
+    {
+      "name": "Expo Theater",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference session theater"
+    },
+    {
+      "name": "exydoc",
+      "website": "http://www.exydoc.com",
+      "is_govtech": true,
+      "vertical": "Reporting and data platform software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "FasPsych, LLC",
+      "website": "http://www.faspsych.com",
+      "is_govtech": false,
+      "vertical": "Telepsychiatry clinical services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Find Your Anchor",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Suicide prevention nonprofit",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "First Nonprofit",
+      "website": "http://firstnonprofit.com",
+      "is_govtech": false,
+      "vertical": "Nonprofit unemployment cost programs",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Five Element Analytics LLC",
+      "website": "http://www.5eanalytics.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health data analytics platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Fivebase, LLC",
+      "website": "http://fivebase.com",
+      "is_govtech": false,
+      "vertical": "EHR consulting and development",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Flatrock Inc",
+      "website": "https://www.flatrockinc.org/",
+      "is_govtech": false,
+      "vertical": "Adult foster care provider",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Florence Crittenton Training Institute",
+      "website": "https://www.florencecrittenton.org/trainings/",
+      "is_govtech": false,
+      "vertical": "Trauma and home visiting training",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "FTI Consulting",
+      "website": "http://www.fticonsulting.com/insights/service-sheets/certified-community-behavioral-health-clinic",
+      "is_govtech": false,
+      "vertical": "Business advisory consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Genoa Healthcare",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "On-site behavioral health pharmacies",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Genoa Replishment Spa",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference refreshment lounge"
+    },
+    {
+      "name": "Giv.",
+      "website": "http://givhealthcare.com",
+      "is_govtech": true,
+      "vertical": "IDD and HCBS agency software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Greenspace Health",
+      "website": "http://www.greenspacehealth.com",
+      "is_govtech": true,
+      "vertical": "Measurement-based care platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "GUARD1 by TimeKeeping Systems, Inc.",
+      "website": "http://www.guard1.com",
+      "is_govtech": true,
+      "vertical": "Patient safety check documentation system",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Guardian Pharmacy Services",
+      "website": "http://www.guardianpharmacy.com",
+      "is_govtech": false,
+      "vertical": "Behavioral health pharmacy services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Haleon",
+      "website": "http://www.haleon.com",
+      "is_govtech": false,
+      "vertical": "Nicotine replacement products",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Harm Reduction Therapeutics, Inc.",
+      "website": "http://www.harmreductiontherapeutics.org",
+      "is_govtech": false,
+      "vertical": "OTC naloxone nasal spray",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Hazelden Betty Ford Foundation",
+      "website": "https://discover.hazeldenbettyford.org/asam-criteria",
+      "is_govtech": false,
+      "vertical": "Addiction treatment and publishing",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Headshot Cafe",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference headshot station"
+    },
+    {
+      "name": "HiBoop",
+      "website": "http://www.hiboop.com",
+      "is_govtech": true,
+      "vertical": "Measurement-based care assessment platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Hispanic/Latino Behavioral Health Center of Excellence",
+      "website": "http://hispaniclatinobehavioralhealth.org/",
+      "is_govtech": false,
+      "vertical": "Behavioral health technical assistance",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "INCITE Consulting Solutions",
+      "website": "http://www.INCITEconsultingsolutions.com",
+      "is_govtech": false,
+      "vertical": "Organizational change consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Indian Health Service",
+      "website": "http://www.ihs.gov",
+      "is_govtech": false,
+      "vertical": "Federal tribal health agency",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "IPC -Integrated Psychiatric Consultants",
+      "website": "http://www.integrated-pc.com",
+      "is_govtech": false,
+      "vertical": "Telepsychiatry provider staffing",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Iris Telehealth",
+      "website": "http://www.iristelehealth.com",
+      "is_govtech": false,
+      "vertical": "Virtual behavioral health services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "ISC Group, Inc.",
+      "website": "http://www.iscgroup.com",
+      "is_govtech": false,
+      "vertical": "Retirement plan administration services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ITO Health PBC",
+      "website": "http://www.itohealth.org",
+      "is_govtech": true,
+      "vertical": "Medicaid coverage and social needs platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Jackson and Coker",
+      "website": "http://jacksoncoker.com",
+      "is_govtech": false,
+      "vertical": "Locum tenens physician staffing",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Johnson & Johnson",
+      "website": "https://www.jnj.com/",
+      "is_govtech": false,
+      "vertical": "Pharmaceutical manufacturer",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Joint Commission",
+      "website": "http://www.jointcommission.org/bhc",
+      "is_govtech": false,
+      "vertical": "Healthcare accreditation body",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Journeyworks Publishing",
+      "website": "http://www.journeyworks.com",
+      "is_govtech": false,
+      "vertical": "Health education pamphlet publisher",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Kana Health",
+      "website": "http://nonprofits.kanahealth.ai/",
+      "is_govtech": true,
+      "vertical": "Clinical intelligence platform for CCBHCs",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Kings View Professional Services",
+      "website": "http://KVPS.com",
+      "is_govtech": false,
+      "vertical": "Health IT and operational support services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Kipu Health",
+      "website": "http://www.kipuhealth.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health EMR and RCM software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Kitty Korner",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference animal lounge feature"
+    },
+    {
+      "name": "Labcorp",
+      "website": "http://www.labcorp.com",
+      "is_govtech": false,
+      "vertical": "Clinical laboratory and drug testing",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "LearnWell",
+      "website": "http://www.learnwellservices.com",
+      "is_govtech": false,
+      "vertical": "Education services for hospitalized students",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "LocumTenens.com",
+      "website": "http://LocumTenens.com",
+      "is_govtech": false,
+      "vertical": "Locum tenens staffing agency",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Lunch Station 1",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference lunch station"
+    },
+    {
+      "name": "Lunch Station 2",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference lunch station"
+    },
+    {
+      "name": "Lyssn",
+      "website": "http://www.lyssn.io/",
+      "is_govtech": true,
+      "vertical": "AI quality assurance for therapy sessions",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Marigold Health",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Tech-enabled peer support provider",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "McLean Hospital",
+      "website": "http://mcleanhospital.org",
+      "is_govtech": false,
+      "vertical": "Psychiatric hospital and training",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "mdhub",
+      "website": "http://mdhub.ai",
+      "is_govtech": true,
+      "vertical": "AI documentation platform for clinics",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "MedSuite",
+      "website": "http://MedSuite.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health RCM and clinical software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "MedTrainer",
+      "website": "http://www.medtrainer.com",
+      "is_govtech": true,
+      "vertical": "Compliance and credentialing platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Mend",
+      "website": "http://www.mend.com",
+      "is_govtech": true,
+      "vertical": "Patient engagement and telehealth software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Mental Health Risk Retention Group/Negley Associates",
+      "website": "http://www.jjnegley.com",
+      "is_govtech": false,
+      "vertical": "Behavioral health liability insurance",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Mercer Government",
+      "website": "http://www.mercer-government.mercer.com",
+      "is_govtech": false,
+      "vertical": "State Medicaid policy and actuarial consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Milliman Inc",
+      "website": "http://www.milliman.com",
+      "is_govtech": false,
+      "vertical": "Actuarial and Medicaid consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Mindset Care, Inc.",
+      "website": "https://mindset.care/",
+      "is_govtech": false,
+      "vertical": "SSI and SSDI application support",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Mission Driven Data AI",
+      "website": "http://missiondrivendata.com/ai",
+      "is_govtech": true,
+      "vertical": "AI tools for community mental health",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Mission Driven Data, LLC",
+      "website": "http://www.missiondrivendata.com",
+      "is_govtech": true,
+      "vertical": "Data reporting and integration tools",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "MIYO Health",
+      "website": "http://miyohealth.com",
+      "is_govtech": true,
+      "vertical": "Youth behavioral health and special education platform",
+      "sector": "K-12 Schools"
+    },
+    {
+      "name": "Modality",
+      "website": "http://www.findmodality.com",
+      "is_govtech": true,
+      "vertical": "AI workforce skill-building platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Molina Healthcare",
+      "website": "http://www.Molinahealthcare.com",
+      "is_govtech": false,
+      "vertical": "Government-sponsored managed care plans",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Motivo",
+      "website": "http://motivohealth.com",
+      "is_govtech": false,
+      "vertical": "Clinical supervision marketplace",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "MTM Services",
+      "website": "http://MTMServices.org",
+      "is_govtech": false,
+      "vertical": "Behavioral health operations consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Mutual of America Financial Group",
+      "website": "http://www.mutualofamerica.com",
+      "is_govtech": false,
+      "vertical": "Retirement plans and financial services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Nano Net Technologies Inc.",
+      "website": "http://www.nanonets.health",
+      "is_govtech": true,
+      "vertical": "AI revenue cycle automation platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "NatCon Memories Photo Station",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference photo station"
+    },
+    {
+      "name": "NatCon Sales Office",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference sales office"
+    },
+    {
+      "name": "National Alliance on Mental Illness",
+      "website": "https://www.nami.org/",
+      "is_govtech": false,
+      "vertical": "Mental health advocacy nonprofit",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "National Committee for Quality Assurance (NCQA)",
+      "website": "http://www.ncqa.org",
+      "is_govtech": false,
+      "vertical": "Health plan accreditation and measures",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "National Peer Support Training Center",
+      "website": "http://www.PeerSupportTrainingCenter.com",
+      "is_govtech": false,
+      "vertical": "Peer support certification training",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Nationwide Mutual Insurance",
+      "website": "http://www.nationwide.com/",
+      "is_govtech": false,
+      "vertical": "Insurance and financial services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Netsmart",
+      "website": "http://www.ntst.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health EHR and interoperability",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "New Harbinger Publications",
+      "website": "http://newharbinger.com",
+      "is_govtech": false,
+      "vertical": "Psychology and CE publisher",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "NextGen Healthcare",
+      "website": "http://www.nextgen.com",
+      "is_govtech": true,
+      "vertical": "Integrated EHR for behavioral health",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Nirvana",
+      "website": "http://meetnirvana.com",
+      "is_govtech": true,
+      "vertical": "AI insurance eligibility verification",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Notenetic EHR",
+      "website": "http://www.notenetic.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health EHR platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Ntracts",
+      "website": "https://www.ntracts.com/what-we-do/healthcare-provider-credentialing-tools",
+      "is_govtech": true,
+      "vertical": "Healthcare contract lifecycle management",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "ObservSMART",
+      "website": "http://www.observsmart.com",
+      "is_govtech": true,
+      "vertical": "Patient safety rounding compliance platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Office of Behavioral Health Advocacy (OBHA)",
+      "website": "http://www.obhadvocacy.org/",
+      "is_govtech": false,
+      "vertical": "Behavioral health advocacy services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Oracle Health",
+      "website": "http://www.oracle.com/health/continuum-care/behavioral-health/",
+      "is_govtech": true,
+      "vertical": "Behavioral health EHR solutions",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Otsuka America Pharmaceutical, Inc",
+      "website": "http://www.otsuka-us.com/",
+      "is_govtech": false,
+      "vertical": "Pharmaceutical manufacturer",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Parkview Health Services",
+      "website": "http://www.parkviewhs.com",
+      "is_govtech": false,
+      "vertical": "Behavioral health pharmacy services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Personal Transformationm Institute",
+      "website": "http://emdr-training.net",
+      "is_govtech": false,
+      "vertical": "EMDR clinician training",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "PharmaSmart International",
+      "website": "http://www.pharma-smart.com",
+      "is_govtech": false,
+      "vertical": "Vital signs screening kiosks",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "PharMerica",
+      "website": "http://www.pharmerica.com/",
+      "is_govtech": false,
+      "vertical": "Institutional pharmacy services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "PlanStreet Inc",
+      "website": "http://www.planstreet.com",
+      "is_govtech": true,
+      "vertical": "Care management and claims platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Plated Foodservice",
+      "website": "http://platedfoodservice.com",
+      "is_govtech": false,
+      "vertical": "Ready-to-serve meal service",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Poster Pavilion",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference poster pavilion"
+    },
+    {
+      "name": "PowerDMS",
+      "website": "http://www.powerdms.com",
+      "is_govtech": true,
+      "vertical": "Policy and compliance management software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Praesidium",
+      "website": "http://www.praesidiuminc.com",
+      "is_govtech": false,
+      "vertical": "Abuse prevention consulting and training",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Preferra Insurance Company RRG",
+      "website": "http://www.preferrainsurance.com",
+      "is_govtech": false,
+      "vertical": "Professional liability insurance",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Proven Software",
+      "website": "http://provensoftware.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health EHR software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Provista",
+      "website": "http://www.provista.com",
+      "is_govtech": false,
+      "vertical": "Group purchasing organization",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Psych Hub",
+      "website": "http://psychhub.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health e-learning platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Psychology Tools",
+      "website": "http://www.psychologytools.com",
+      "is_govtech": true,
+      "vertical": "Online therapy resource platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Psyrin",
+      "website": "http://psyrin.ai/",
+      "is_govtech": true,
+      "vertical": "AI intake and assessment automation",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Public Health Supportive Services",
+      "website": "http://www.phsupport.org",
+      "is_govtech": false,
+      "vertical": "Public health support staffing",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Pulse For Good",
+      "website": "http://pulseforgood.com",
+      "is_govtech": true,
+      "vertical": "Client feedback kiosk platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Puppy Park",
+      "website": "http://truecompanions.org/",
+      "is_govtech": false,
+      "vertical": "Conference animal lounge feature"
+    },
+    {
+      "name": "Qualifacts",
+      "website": "http://www.qualifacts.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health EHR software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "QUALO",
+      "website": "http://www.qualo.net",
+      "is_govtech": true,
+      "vertical": "Behavioral health operational intelligence platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "R1 Learning",
+      "website": "http://www.R1Learning.com",
+      "is_govtech": false,
+      "vertical": "Behavioral health curriculum and training",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Radicle Health",
+      "website": "http://www.radicle-health.com",
+      "is_govtech": true,
+      "vertical": "Human services EHR and care coordination",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "ReflexAI",
+      "website": "http://www.reflexai.com",
+      "is_govtech": true,
+      "vertical": "AI training and QA for crisis lines",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Relias",
+      "website": "http://www.relias.com",
+      "is_govtech": true,
+      "vertical": "Healthcare workforce learning platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Resource & eMpowerment Technical Assistance Center for Behavioral Health",
+      "website": "http://www.rmtac.org",
+      "is_govtech": false,
+      "vertical": "Behavioral health technical assistance",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Ride Care",
+      "website": "http://www.ridecaretransportation.com",
+      "is_govtech": false,
+      "vertical": "Secure behavioral health transportation",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Row Partners",
+      "website": "http://www.rowpartners.com",
+      "is_govtech": false,
+      "vertical": "PEO payroll and billing services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Salesforce",
+      "website": "http://www.salesforce.com",
+      "is_govtech": true,
+      "vertical": "Cloud CRM and case management",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Secure Telehealth Inc.",
+      "website": "http://www.securetelehealth.com",
+      "is_govtech": false,
+      "vertical": "Telehealth video conferencing services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "SempiternusRx",
+      "website": "http://sempiternusrx.com",
+      "is_govtech": false,
+      "vertical": "Behavioral health pharmacy services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "ShiftKey",
+      "website": "http://www.shiftkey.com/",
+      "is_govtech": false,
+      "vertical": "Healthcare workforce marketplace",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Sigmund Software",
+      "website": "http://www.sigmundsoftware.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health EHR software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "SimCare",
+      "website": "http://simcare.ai",
+      "is_govtech": true,
+      "vertical": "AI simulation training for clinicians",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "SimiTree",
+      "website": "http://simitreehc.com",
+      "is_govtech": false,
+      "vertical": "Billing services and consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Simplifyance",
+      "website": "https://simplifyance.com/",
+      "is_govtech": true,
+      "vertical": "Compliance and operations software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Social Current",
+      "website": "http://www.social-current.org",
+      "is_govtech": false,
+      "vertical": "Nonprofit accreditation and advocacy",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Solari, Inc.",
+      "website": "http://Solari-inc.org",
+      "is_govtech": false,
+      "vertical": "Crisis line operations provider",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Southwest Lab",
+      "website": "http://southwestlab.com",
+      "is_govtech": false,
+      "vertical": "Clinical and toxicology laboratory",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Substance Use First Aid/National Opioid Settlement Conference",
+      "website": "http://steadmangroup.com",
+      "is_govtech": false,
+      "vertical": "Substance use prevention training",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Storage",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference storage area"
+    },
+    {
+      "name": "Streamline Healthcare Solutions",
+      "website": "http://streamlinehealthcare.com/",
+      "is_govtech": true,
+      "vertical": "Behavioral health EHR platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Substance Abuse and Mental Health Services Administration",
+      "website": "http://www.samhsa.gov/substance-use/prevention/talk-they-hear-you",
+      "is_govtech": false,
+      "vertical": "Federal behavioral health agency",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "T. Scott Consulting",
+      "website": "http://Tscottconsulting.com",
+      "is_govtech": false,
+      "vertical": "CARF accreditation consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "The Epilepsy Foundation of Colorado and Wyoming",
+      "website": "https://epilepsycoloradowyoming.org/",
+      "is_govtech": false,
+      "vertical": "Epilepsy advocacy nonprofit",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "The Mahoney Group",
+      "website": "http://www.mahoneygroup.com/",
+      "is_govtech": false,
+      "vertical": "Insurance brokerage and risk consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "The Meadows",
+      "website": "http://www.themeadows.com/",
+      "is_govtech": false,
+      "vertical": "Behavioral health treatment centers",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "The Meyers Group",
+      "website": "http://www.mr-themeyersgroup.com",
+      "is_govtech": false,
+      "vertical": "Behavioral health executive search",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "PRG Insight",
+      "website": "http://www.prginsight.com",
+      "is_govtech": true,
+      "vertical": "Grant data collection and visualization",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "The Quell Foundation",
+      "website": "https://thequellfoundation.org/",
+      "is_govtech": false,
+      "vertical": "Mental health stigma nonprofit",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Topaz Systems Inc.",
+      "website": "http://www.TopazSystems.com",
+      "is_govtech": false,
+      "vertical": "Electronic signature pads and software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Trauma Recovery EMDR HAP",
+      "website": "http://www.emdrhap.org",
+      "is_govtech": false,
+      "vertical": "EMDR training nonprofit",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Beacon Crisis Dispatch",
+      "website": "http://www.trekmedics.org/beacon",
+      "is_govtech": true,
+      "vertical": "Crisis response dispatch software",
+      "sector": "Public Safety"
+    },
+    {
+      "name": "Triad",
+      "website": "http://www.triadhq.com/",
+      "is_govtech": false,
+      "vertical": "Behavioral health career resources",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Trust Insurance",
+      "website": "https://www.trustinsurance.com/",
+      "is_govtech": false,
+      "vertical": "Professional liability insurance",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "TRX Development Solutions",
+      "website": "http://www.trxdevelopment.com",
+      "is_govtech": false,
+      "vertical": "Program evaluation and research services",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "U.S. Department of State Bureau of Medical Services",
+      "website": "http://careers.state.gov/",
+      "is_govtech": false,
+      "vertical": "Federal agency psychiatrist recruiting",
+      "sector": "General Gov"
+    },
+    {
+      "name": "UST Workforce Solutions",
+      "website": "http://www.ChooseUST.org",
+      "is_govtech": false,
+      "vertical": "Nonprofit unemployment and HR solutions",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Vandoit",
+      "website": "http://vandoit.com",
+      "is_govtech": false,
+      "vertical": "Mobile outreach vehicle builds",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Vanguard Research Group",
+      "website": "http://www.vanguardresearchgroup.com",
+      "is_govtech": false,
+      "vertical": "Clinical research network",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Verity",
+      "website": "http://www.verityhealth.io",
+      "is_govtech": true,
+      "vertical": "Gamified patient incentive platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Vibrant Emotional Health and the 988 Suicide & Crisis Lifeline",
+      "website": "http://vibrant.org",
+      "is_govtech": false,
+      "vertical": "Crisis line services nonprofit",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Videra Health",
+      "website": "http://www.viderahealth.com",
+      "is_govtech": true,
+      "vertical": "AI patient assessment and monitoring",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "VieMed Healthcare Staffing",
+      "website": "http://www.viemedstaffing.com/",
+      "is_govtech": false,
+      "vertical": "Healthcare and correctional staffing",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Walden University",
+      "website": "http://www.waldenu.edu/nationalcouncil",
+      "is_govtech": false,
+      "vertical": "Online degree programs",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "WEAVE",
+      "website": "http://WWW.GETWEAVE.COM/EVENTS",
+      "is_govtech": true,
+      "vertical": "Practice communication and engagement platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Wellbeing Salon",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Conference wellness salon"
+    },
+    {
+      "name": "Wellness Consultants",
+      "website": "http://www.wellnessconsultantsllc.com",
+      "is_govtech": false,
+      "vertical": "Workplace wellness programs",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Willetts Technology, Inc",
+      "website": "http://www.pupssoftware.com",
+      "is_govtech": true,
+      "vertical": "Behavioral health case management software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Xpio Health",
+      "website": "http://xpiohealth.com/",
+      "is_govtech": false,
+      "vertical": "Behavioral health IT consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Zero Overdose",
+      "website": "",
+      "is_govtech": false,
+      "vertical": "Overdose prevention training nonprofit",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Zero Suicide Institute at Education Development Center",
+      "website": "http://www.zerosuicideinstitute.com",
+      "is_govtech": false,
+      "vertical": "Suicide prevention training and consulting",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Zoobook Systems",
+      "website": "https://zoobooksystems.com/",
+      "is_govtech": true,
+      "vertical": "Behavioral health EHR software",
+      "sector": "Health & Human Services"
+    }
+  ]
+}

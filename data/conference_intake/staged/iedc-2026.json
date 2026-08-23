@@ -1,0 +1,61 @@
+{
+  "conference": "IEDC 2026",
+  "exhibitors": [
+    {
+      "name": "Camoin Associates",
+      "website": "https://camoinassociates.com/",
+      "is_govtech": false,
+      "vertical": "Economic development consulting",
+      "sector": "Housing & Community Dev"
+    },
+    {
+      "name": "ROI Research on Investment",
+      "website": "https://researchoninvestment.com/",
+      "is_govtech": false,
+      "vertical": "Investment attraction advisory services",
+      "sector": "Housing & Community Dev"
+    },
+    {
+      "name": "Sikich - Cloud Nine | Economic Development",
+      "website": "https://www.sikich.com/technology/products/dynamics-365/dynamics-crm/cloud-nine-for-economic-development-professionals/",
+      "is_govtech": false,
+      "vertical": "Dynamics 365 CRM consulting for EDOs",
+      "sector": "Housing & Community Dev"
+    },
+    {
+      "name": "Data-Axle",
+      "website": "https://www.data-axle.com/",
+      "is_govtech": true,
+      "vertical": "Business and consumer data products",
+      "sector": "General Gov"
+    },
+    {
+      "name": "GIS WebTech",
+      "website": "https://giswebtech.com/",
+      "is_govtech": true,
+      "vertical": "GIS site selection platform",
+      "sector": "Housing & Community Dev"
+    },
+    {
+      "name": "Grow America",
+      "website": "https://growamerica.org/",
+      "is_govtech": false,
+      "vertical": "Community development lending and advisory",
+      "sector": "Housing & Community Dev"
+    },
+    {
+      "name": "Localintel",
+      "website": "https://www.localintel.com/",
+      "is_govtech": true,
+      "vertical": "Community data and content platform",
+      "sector": "Housing & Community Dev"
+    },
+    {
+      "name": "Resimplifi",
+      "website": "https://resimplifi.com/econ-dev",
+      "is_govtech": true,
+      "vertical": "Commercial real estate listing data",
+      "sector": "Housing & Community Dev"
+    }
+  ]
+}
