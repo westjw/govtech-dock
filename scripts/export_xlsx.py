@@ -29,6 +29,17 @@ THIN = Side(style="thin", color="D9D9D9")
 BORDER = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
 
 
+def row_values(comp: dict) -> list:
+    """One spreadsheet row. Optional fields render blank rather than crashing
+    the run: this exporter once killed a 41-minute refresh over a missing
+    year_founded, taking the day's uncommitted data with it. Only the fields
+    selftest's validate() actually guarantees may be indexed directly."""
+    h = comp["hiring"]
+    hire_text = h["status"] + (f" - {h['note']}" if h.get("note") else "")
+    return [comp["name"], comp.get("location", ""), comp.get("year_founded"),
+            comp["category"], comp.get("description", ""), hire_text]
+
+
 def main() -> None:
     companies = json.load(open(DATA / "companies.json"))
     schema = json.load(open(DATA / "schema.json"))
@@ -58,10 +69,8 @@ def main() -> None:
         rows.sort(key=lambda c: sec["categories"].index(c["category"]))  # stable: keeps file order within category
         r = 2
         for comp in rows:
+            values = row_values(comp)
             h = comp["hiring"]
-            hire_text = h["status"] + (f" - {h['note']}" if h.get("note") else "")
-            values = [comp["name"], comp["location"], comp["year_founded"],
-                      comp["category"], comp["description"], hire_text]
             for c, v in enumerate(values, start=1):
                 cell = ws.cell(row=r, column=c, value=v)
                 cell.border = BORDER

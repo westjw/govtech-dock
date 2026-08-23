@@ -21,9 +21,9 @@ jobs:
     env:
       TZ: America/New_York
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -52,18 +52,32 @@ jobs:
         # depend on knowing what KIND of hiring a company is doing.
         run: python scripts/build_board.py
 
-      - name: Regenerate spreadsheet
-        run: python scripts/export_xlsx.py
-
-      - name: Commit changes
+      - name: Commit the refreshed data
+        # BEFORE the spreadsheet and everything after it, deliberately: the
+        # fetch takes ~40 minutes and is the part that cannot be re-created
+        # for free. A crash in any later step once discarded a whole day's
+        # snapshots because this commit sat at the end of the job.
         run: |
           git config user.name "govtech-dock-bot"
           git config user.email "actions@users.noreply.github.com"
           git add -A
           if git diff --cached --quiet; then
-            echo "No changes this week."
+            echo "No changes today."
           else
-            git commit -m "chore: weekly hiring refresh ($(date +%F))"
+            git commit -m "chore: daily hiring refresh ($(date +%F))"
+            git push
+          fi
+
+      - name: Regenerate spreadsheet
+        run: python scripts/export_xlsx.py
+
+      - name: Commit the spreadsheet
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Spreadsheet unchanged."
+          else
+            git commit -m "chore: spreadsheet rebuild ($(date +%F))"
             git push
           fi
 

@@ -157,6 +157,19 @@ def main() -> int:
         if y is not None and (not isinstance(y, int) or not (1800 <= y <= 2100)):
             errors += fail(f"{where}: suspicious year {y}")
 
+    # The exporter must honor exactly the guarantees the loop above makes:
+    # year_founded, location and description are optional, and an entry
+    # missing them still gets a row. A KeyError here once crashed the 6am run
+    # after the 40-minute fetch and lost the day's uncommitted snapshots.
+    import export_xlsx as _xlsx
+    for c in companies:
+        try:
+            _xlsx.row_values(c)
+        except Exception as e:  # noqa: BLE001 - any crash is the failure
+            errors += fail(f"{c.get('name', '???')}: export_xlsx.row_values "
+                           f"crashed: {type(e).__name__}: {e}")
+            break
+
     import roles as _roles
     for title, expected in FAMILY_CASES:
         got = _roles.family(title)
