@@ -84,13 +84,48 @@
   .starthead{display:flex;align-items:baseline;gap:12px;margin:6px 0 16px}
   .starthead strong{font-size:17px}
   .starthead .dim{color:var(--faint);font-size:12.5px;margin-left:auto}
-  .gamestrip{display:flex;gap:22px;margin:0 0 16px;padding:13px 16px;
-    border:1px solid var(--line);border-radius:10px;background:var(--chip);flex-wrap:wrap}
-  .gstat strong{display:block;font-size:19px;letter-spacing:-.02em}
-  .gstat span{font-size:11.5px;color:var(--dim)}
-  .gstat.low strong{color:var(--warn)}
-  .endbar{height:7px;border-radius:4px;background:var(--chip);margin:10px 0 4px;overflow:hidden}
+  /* the counter: three numbers, sized like a floor board */
+  .counter{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:2px 0 10px}
+  .bignum{background:var(--panel);border:1px solid var(--line);border-radius:4px;
+    padding:14px 16px;border-top:3px solid var(--line)}
+  .bignum strong{display:block;font-size:34px;font-weight:800;letter-spacing:-.025em;
+    line-height:1.05;font-variant-numeric:tabular-nums}
+  .bignum span{display:block;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--dim);margin-top:4px;line-height:1.35}
+  .bignum.amber{border-top-color:var(--warn)}
+  .bignum.green{border-top-color:var(--accent)}
+  .bignum.green strong{color:var(--accent)}
+  .yourline{display:flex;gap:10px;align-items:center;font-size:12px;color:var(--dim);
+    margin-bottom:20px}
+  .yourline .pb{background:var(--accent);color:var(--bg);font-weight:700;font-size:10.5px;
+    padding:2px 9px;border-radius:12px;letter-spacing:.04em;text-transform:uppercase}
+  .lbl{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);
+    margin:22px 0 9px}
+  .sortie{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;margin-bottom:10px}
+  .sortie h3{margin:0 0 5px;font-size:15.5px;letter-spacing:-.01em}
+  .sortie.muted{background:none}
+  .barwrap{display:flex;align-items:center;gap:12px;margin:12px 0 4px}
+  .endbar{flex:1;height:7px;border-radius:4px;background:var(--chip);overflow:hidden}
   .endfill{height:100%;border-radius:4px;background:var(--accent)}
+  .toward{font-size:11.5px;color:var(--dim);white-space:nowrap}
+  /* the floors: stamps for what is finished, bars for what is close */
+  .floors{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:10px}
+  .floor{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:13px 14px}
+  .floor .fname{font-size:12.5px;font-weight:650;margin-bottom:7px}
+  .floor .fsub{font-size:10.5px;color:var(--faint);margin-top:6px}
+  .floor.stamped{display:flex;flex-direction:column;align-items:center;text-align:center;
+    color:var(--accent);border-color:var(--accent)}
+  .floor.stamped .fname{margin-top:6px;color:var(--ink)}
+  .hintline{font-size:11.5px;color:var(--faint);margin-top:10px;line-height:1.6}
+  .tape{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:12px 16px;font-size:12px}
+  .trow{display:flex;gap:10px;align-items:baseline;padding:4px 0;color:var(--dim)}
+  .trow + .trow{border-top:1px solid var(--chip)}
+  .tdate{color:var(--faint);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .twhy{color:var(--faint);font-style:italic;margin-left:auto;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:45%}
   .cdinfo{margin-top:8px;padding-top:8px;border-top:1px solid var(--line);
     font-size:12.5px;line-height:1.55;color:var(--dim);cursor:default}
   .cdinfo a{display:inline-block;margin-top:5px}
@@ -223,59 +258,58 @@ async function showStart() {
     b.setAttribute('aria-selected', b.dataset.key === '__start'));
   const v = $('#view'); v.innerHTML = '';
   const t = await api('/api/triage');
+  const g = t.game || {};
 
-  const head = el('div', 'starthead');
-  head.appendChild(el('strong', null, 'Where to start'));
-  head.appendChild(el('span', 'dim',
-    `${t.done} ruling${t.done === 1 ? '' : 's'} recorded so far`));
-  v.appendChild(head);
+  /* THE COUNTER. Three numbers, and each is chosen to answer a different
+     question: how much is on the table, how much of it the public can see
+     right now, and whether the paper is clean. Volume is never one of them -
+     a wrong ruling here is invisible and permanent, so the craft stat is the
+     one that gets the accent colour. */
+  const onTable = (t.counts.vendors || 0) + (t.counts.miscategorized || 0)
+                + (t.counts.duplicates || 0);
+  const visible = (t.recommend.find(r => r.queue === 'miscategorized') || {}).n || 0;
+  const counter = el('div', 'counter');
+  const big = (num, lbl, cls) => {
+    const d = el('div', 'bignum' + (cls ? ' ' + cls : ''));
+    d.appendChild(el('strong', null, String(num)));
+    d.appendChild(el('span', null, lbl));
+    return d;
+  };
+  counter.append(
+    big(onTable, 'calls on the table'),
+    big(visible, 'visible from the street', 'amber'),
+    big(g.why_coverage === null || g.why_coverage === undefined
+        ? '—' : g.why_coverage + '%', 'clean paper · every call has its why', 'green'));
+  v.appendChild(counter);
 
-  /* The game layer, such as it is: yourself against your own last 30 days,
-     and one craft meter. The why on a ruling is what teaches the classifier
-     later, so its coverage is the number worth keeping at 100. Volume is
-     deliberately not scored - a wrong ruling here is invisible and
-     permanent, so care has to pay better than speed. */
-  if (t.game) {
-    const g = t.game;
-    const strip = el('div', 'gamestrip');
-    const stat = (num, lbl) => {
-      const d = el('div', 'gstat');
-      d.appendChild(el('strong', null, String(num)));
-      d.appendChild(el('span', null, lbl));
-      return d;
-    };
-    strip.appendChild(stat(g.today, 'rulings today'));
-    strip.appendChild(stat(g.best_30, 'your best day, last 30'));
-    if (g.why_coverage !== null) {
-      const d = stat(g.why_coverage + '%', 'rulings carrying a why');
-      if (g.why_coverage < 90) d.classList.add('low');
-      strip.appendChild(d);
-    }
-    v.appendChild(strip);
-    if (g.today > g.best_30 && g.best_30 > 0)
-      v.appendChild(el('div', 'kv ok',
-        'Personal best - more rulings today than any day in the last month.'));
-  }
+  const line = el('div', 'yourline');
+  line.appendChild(el('span', null,
+    `${g.today || 0} today · your best day this month is ${g.best_30 || 0}`));
+  if ((g.today || 0) > (g.best_30 || 0) && (g.best_30 || 0) > 0)
+    line.appendChild(el('span', 'pb', 'personal best'));
+  v.appendChild(line);
 
-  if (!t.recommend.length)
-    v.appendChild(el('div', 'empty', 'Nothing pressing. The queues are clear.'));
-
+  /* THE SORTIES. Each names what the work buys and how close its queue is to
+     a state with a title. A bar that fills toward "Clean shelves" finishes;
+     a percentage does not. */
   const stateOf = {};
-  ((t.game && t.game.states) || []).forEach(st => { stateOf[st.queue] = st; });
+  ((g.states) || []).forEach(st => { stateOf[st.queue] = st; });
+  if (t.recommend.length) v.appendChild(el('div', 'lbl', "Today's sorties"));
   t.recommend.forEach(r => {
-    const card = el('div', 'item');
-    const h = el('h3', null, r.headline);
-    card.appendChild(h);
+    const card = el('div', 'sortie');
+    card.appendChild(el('h3', null, r.headline));
     card.appendChild(el('div', 'kv', r.why));
     const st = stateOf[r.queue];
     if (st) {
+      const wrapb = el('div', 'barwrap');
       const bar = el('div', 'endbar');
       const fill = el('div', 'endfill');
       fill.style.width = Math.max(2, st.pct) + '%';
       bar.appendChild(fill);
-      card.appendChild(bar);
-      card.appendChild(el('div', 'kv',
-        `${st.pct}% of the way to “${st.name}” — ${st.left} left`));
+      wrapb.appendChild(bar);
+      wrapb.appendChild(el('span', 'toward',
+        `${st.done} of ${st.done + st.left} → “${st.name}”`));
+      card.appendChild(wrapb);
     }
     const b = el('button', 'act good', `Open ${META.labels[r.queue]}`);
     b.onclick = () => show(r.queue);
@@ -284,7 +318,61 @@ async function showStart() {
     v.appendChild(card);
   });
 
-  const notes = el('div', 'item');
+  /* THE FLOORS. The capture worklist is worked by conference, so its
+     progress is per conference: doors mapped out of doors known. A floor at
+     100% is stamped and stays stamped - nothing here expires. */
+  const fl = (t.floors || []).filter(f => f.left > 0).slice(0, 6);
+  const done = (t.floors || []).filter(f => f.left === 0);
+  if (fl.length || done.length) {
+    v.appendChild(el('div', 'lbl', 'The floors'));
+    const grid = el('div', 'floors');
+    done.slice(0, 3).forEach(f => {
+      const d = el('div', 'floor stamped');
+      d.innerHTML = '<svg width="34" height="34" viewBox="0 0 52 52" fill="none">'
+        + '<circle cx="26" cy="26" r="23" stroke="currentColor" stroke-width="2.5"/>'
+        + '<circle cx="26" cy="26" r="18" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>'
+        + '<path d="M17 27l6 6 12-13" stroke="currentColor" stroke-width="2.5" '
+        + 'stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      d.appendChild(el('div', 'fname', f.event));
+      d.appendChild(el('div', 'fsub', `all ${f.total} doors mapped`));
+      grid.appendChild(d);
+    });
+    fl.forEach(f => {
+      const d = el('div', 'floor');
+      d.appendChild(el('div', 'fname', f.event));
+      const bar = el('div', 'endbar');
+      const fill = el('div', 'endfill');
+      fill.style.width = Math.max(3, f.pct) + '%';
+      bar.appendChild(fill);
+      d.appendChild(bar);
+      d.appendChild(el('div', 'fsub',
+        f.left === 1 ? 'one door from a full map'
+                     : `${f.left} doors left of ${f.total}`));
+      grid.appendChild(d);
+    });
+    v.appendChild(grid);
+    v.appendChild(el('div', 'hintline',
+      'Doors close in No board found and Missing websites — or on the floor '
+      + 'itself, with the capture extension.'));
+  }
+
+  /* THE TAPE. Not a score: a record that the work caused something. */
+  if ((g.tape || []).length) {
+    v.appendChild(el('div', 'lbl', 'The tape'));
+    const tape = el('div', 'tape');
+    g.tape.forEach(x => {
+      const r = el('div', 'trow');
+      r.appendChild(el('span', 'tdate', x.on));
+      r.appendChild(el('span', null,
+        x.verb === 'refiled' ? `refiled to ${x.what}`
+                             : `${x.what} — ${x.call}`));
+      if (x.why) r.appendChild(el('span', 'twhy', x.why));
+      tape.appendChild(r);
+    });
+    v.appendChild(tape);
+  }
+
+  const notes = el('div', 'sortie muted');
   notes.appendChild(el('h3', null, 'Worth knowing before you judge the numbers'));
   t.notes.forEach(n => notes.appendChild(el('div', 'kv', n)));
   v.appendChild(notes);

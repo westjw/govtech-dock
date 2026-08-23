@@ -56,6 +56,9 @@ def build_admin_bundle(out: "pathlib.Path") -> None:
         "companies": len(companies),
         "postings": len(board.get("postings", [])),
         "game": tri.get("game"),
+        "floors": tri.get("floors"),
+        "visible_now": next((r["n"] for r in tri.get("recommend", [])
+                             if r["queue"] == "miscategorized"), 0),
         "schema": {x["name"]: [c for c in x["categories"]
                                if c != "Suppliers & Services"]
                    for x in schema["sectors"]},

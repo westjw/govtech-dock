@@ -486,6 +486,21 @@ def _game(counts: dict) -> dict:
     today = dt.date.today()
     days = [(today - dt.timedelta(days=i)).isoformat() for i in range(30)]
     best = max((per_day.get(d, 0) for d in days[1:]), default=0)
+
+    # The tape: what the last few rulings were, newest first. Not a score -
+    # a record of consequence, so the work reads as having caused something.
+    tape = []
+    for fname, verb in (("vendor_scope_decisions.json", "ruled"),
+                        ("placement_rulings.json", "refiled")):
+        for r in read(fname, {}).values():
+            if not isinstance(r, dict) or not r.get("on"):
+                continue
+            what = r.get("name") or r.get("sector")
+            if verb == "refiled":
+                what = f"{r.get('sector')} / {r.get('category')}"
+            tape.append({"on": r["on"], "verb": verb, "what": what,
+                         "call": r.get("call"), "why": r.get("why")})
+    tape.sort(key=lambda t: t["on"], reverse=True)
     states = []
     for q, name in END_STATE.items():
         left = counts.get(q, 0)
@@ -497,7 +512,37 @@ def _game(counts: dict) -> dict:
                                   if (done + left) else 100})
     return {"today": per_day.get(days[0], 0), "best_30": best,
             "why_coverage": round(100 * with_why / total) if total else None,
-            "rulings_total": total, "states": states}
+            "rulings_total": total, "states": states, "tape": tape[:6]}
+
+
+def floors(companies, board) -> list:
+    """Per-conference progress on the capture worklist.
+
+    The 680-company no-board pile is worked BY FLOOR - you stand on the NACo
+    carpet with the extension open, not in an alphabetical list - so the
+    progress that matters is per floor: of the companies we know exhibit
+    there, how many now have a door we can watch. A floor with every door
+    mapped is finished, and stays finished; nothing here decays.
+    """
+    tally = collections.defaultdict(lambda: {"mapped": 0, "left": 0})
+    for c in companies:
+        evs = _events(c.get("description"))
+        if not evs:
+            continue
+        has = (c.get("ats") or {}).get("type") not in (None, "unknown")
+        for ev in evs:
+            tally[ev]["mapped" if has else "left"] += 1
+    out = []
+    for ev, t in tally.items():
+        total = t["mapped"] + t["left"]
+        if total < 4:            # too small to be a floor worth pacing
+            continue
+        out.append({"event": ev, "mapped": t["mapped"], "left": t["left"],
+                    "total": total, "pct": round(100 * t["mapped"] / total)})
+    # nearly-done floors first: the ones a sitting could actually finish
+    out.sort(key=lambda r: (r["left"] == 0, -r["pct"] if r["left"] else 0,
+                            r["left"]))
+    return out
 
 
 def triage(companies, board) -> dict:
@@ -558,10 +603,19 @@ def triage(companies, board) -> dict:
     return {
         "counts": counts,
         "game": _game(counts),
+        "floors": floors(companies, board),
         "recommend": recs,
         "notes": [
-            f"{counts.get('boards', 0)} companies have no readable board, but only "
-            f"{reachable} have a website to open. The rest need a website first.",
+            # boards is now website-only by construction, so the honest note is
+            # about the pile's NATURE, not a second number: most of it is
+            # genuinely boardless and no fetcher will ever fix it.
+            f"{counts.get('boards', 0)} companies have a website and no findable "
+            f"board. A field audit put 55-63% of that pile as genuinely "
+            f"boardless - they hire on LinkedIn or by email - so this is the "
+            f"capture extension's work, not a fetcher's.",
+            f"{counts.get('blocked', 0)} more were blocked or unreachable when "
+            f"probed, which is not evidence of anything; they re-probe "
+            f"themselves weekly.",
             f"{counts.get('miscategorized', 0)} are in the wrong bucket; {visible} of "
             f"those are hiring, so the other {counts.get('miscategorized', 0) - visible} "
             f"are invisible to visitors today.",
