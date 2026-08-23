@@ -276,11 +276,15 @@ async function showStart() {
     d.appendChild(el('span', null, lbl));
     return d;
   };
+  /* Labels say what the number is, in words that need no gloss. The first
+     drafts - "calls on the table", "visible from the street", "clean paper" -
+     were floor slang I invented, and a label you have to explain has already
+     failed. */
   counter.append(
-    big(onTable, 'calls on the table'),
-    big(visible, 'visible from the street', 'amber'),
+    big(onTable, 'decisions waiting on you'),
+    big(visible, 'of them wrong on the public site right now', 'amber'),
     big(g.why_coverage === null || g.why_coverage === undefined
-        ? '—' : g.why_coverage + '%', 'clean paper · every call has its why', 'green'));
+        ? '—' : g.why_coverage + '%', 'of your rulings say why', 'green'));
   v.appendChild(counter);
 
   const line = el('div', 'yourline');
