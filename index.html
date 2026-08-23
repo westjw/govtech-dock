@@ -315,6 +315,79 @@ const TABS=[["jobs","Job board"],["companies","Companies"],["intel","Market inte
 const FAM={gtm:"GTM",cs:"Customer Success",ops:"Ops / RevOps",engineering:"Engineering",
   product:"Product & Design",data:"Data & Research",policy:"Policy & Gov Affairs",
   ga:"G&A",exec:"Executive",field:"Field & implementation",other:"Unclassified"};
+/* Search that reads for MEANING, not for characters.
+   "AE in dc" matched nothing when the test was "does this string appear",
+   because no posting anywhere contains the letters AE - they say Account
+   Executive. But the pipeline has already worked out what every posting IS:
+   its role family, its seniority, whether it carries a number, its territory,
+   its office, its work mode. So the query is translated into those same
+   facts and compared fact-to-fact. Words the vocabulary does not recognise
+   fall through to a plain text match, so nothing gets worse. */
+const STOP=new Set(["a","an","and","the","of","for","in","at","on","to","with",
+  "based","near","around","located","location","job","jobs","role","roles",
+  "position","positions","work","working","looking","or","is","are","any",
+  "me","i","want","find","show","that","this","who","which"]);
+const PLACE={nyc:["new york","ny"],"new york city":["new york","ny"],
+  sf:["san francisco","ca"],"bay area":["san francisco","ca"],
+  la:["los angeles","ca"],socal:["los angeles","ca"],
+  dc:["washington","dc"],"d.c.":["washington","dc"],
+  philly:["philadelphia","pa"],chi:["chicago","il"],
+  atl:["atlanta","ga"],bos:["boston","ma"],sea:["seattle","wa"],
+  pdx:["portland","or"],dfw:["dallas","tx"],atx:["austin","tx"],
+  hou:["houston","tx"],phx:["phoenix","az"],den:["denver","co"],
+  nola:["new orleans","la"],"twin cities":["minneapolis","mn"]};
+/* Each entry: the phrases people type, and the FACT they mean. Multi-word
+   phrases are matched before single words so "in person" is not read as
+   "person". */
+const CONCEPTS=[
+  {say:["account executive","ae","aes","seller","sellers","sales rep",
+        "salesperson","quota carrying","quota-carrying","closer"],
+   is:{family:"gtm",quota:true}},
+  {say:["sdr","bdr","business development rep","business development"],
+   is:{family:"gtm",seniority:"junior"}},
+  {say:["sales engineer","solutions engineer","sales engineering"],
+   is:{family:"gtm"}},
+  {say:["sales","selling","gtm","go to market","revenue"],is:{family:"gtm"}},
+  {say:["customer success","csm","account manager","renewals"],is:{family:"cs"}},
+  {say:["engineer","engineering","developer","software engineer","swe"],
+   is:{family:"engineering"}},
+  {say:["product manager","product management","pm","design","designer"],
+   is:{family:"product"}},
+  {say:["marketing","demand gen","growth"],is:{family:"gtm"}},
+  {say:["implementation","professional services","field"],is:{family:"field"}},
+  {say:["senior","sr","experienced","enterprise","strategic","major"],
+   is:{seniority:"senior"}},
+  {say:["junior","entry level","entry-level","associate","early career"],
+   is:{seniority:"junior"}},
+  {say:["vp","vice president","head of","director","leadership","chief"],
+   is:{seniority:"leadership"}},
+  {say:["remote","work from home","wfh","anywhere"],is:{mode:"remote"}},
+  {say:["hybrid"],is:{mode:"hybrid"}},
+  {say:["onsite","on site","in office","in person","on-site"],is:{mode:"onsite"}},
+];
+function parseQuery(q){
+  let t=" "+(q||"").toLowerCase().replace(/[.,]/g," ")+" ";
+  const want={terms:[],family:null,seniority:null,mode:null,quota:false};
+  // longest phrases first, so "business development rep" beats "development"
+  const phrases=[];
+  CONCEPTS.forEach(c=>c.say.forEach(sy=>phrases.push([sy,c.is])));
+  phrases.sort((a,b)=>b[0].length-a[0].length);
+  phrases.forEach(([sy,is])=>{
+    const re=new RegExp("(?:^|\\s)"+sy.replace(/[-\/]/g,"\\$&")+"(?=\\s|$)","g");
+    if(re.test(t)){
+      t=t.replace(re," ");
+      if(is.family&&!want.family)want.family=is.family;
+      if(is.seniority&&!want.seniority)want.seniority=is.seniority;
+      if(is.mode&&!want.mode)want.mode=is.mode;
+      if(is.quota)want.quota=true;
+    }
+  });
+  Object.keys(PLACE).filter(k=>k.includes(" ")).forEach(k=>{
+    if(t.includes(k))t=t.replace(k," "+PLACE[k].join(" ")+" ")});
+  want.terms=t.split(/[\s,]+/).filter(Boolean).filter(w=>!STOP.has(w))
+    .map(w=>PLACE[w]||[w]);
+  return want;
+}
 const inSector=(r,s)=>r.sector===s||(r.also||[]).some(a=>a.sector===s);
 const inCategory=(r,c)=>r.category===c||(r.also||[]).some(a=>a.category===c);
 const STATE_FULL={AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",
@@ -401,7 +474,7 @@ function jobs(){
        technology companies. ${D.postings.length.toLocaleString()} postings, read from the boards
        themselves.</p>
     <div class="hsearch">
-      <input type="search" id="j-q" placeholder="Try &ldquo;account executive kansas&rdquo;">
+      <input type="search" id="j-q" placeholder="Try &ldquo;senior AE remote&rdquo; or &ldquo;account executive in nyc&rdquo;">
       <button type="button" onclick="drawJobs()">Search</button>
     </div>
     <div class="pills">
@@ -576,13 +649,32 @@ function emptyJobs(quotaOnly,fam,where){
 function drawJobs(){
   const g=i=>{const el=$("#"+i);return el?el.value:"";};
   const q=(g("j-q")||"").toLowerCase();
-  const quotaOnly=$("#j-quota-pill")?.getAttribute("aria-pressed")==="true";
+  let quotaOnly=$("#j-quota-pill")?.getAttribute("aria-pressed")==="true";
   const whereBtn=$("#j-where")?.querySelector('[aria-pressed="true"]');
   const where=whereBtn?whereBtn.dataset.v:"";
   const f=g("j-fam"),s=g("j-sec"),u=g("j-us"),st=g("j-state"),
         rg=g("j-region"),md=g("j-mode"),sen=g("j-sen"),src=g("j-src"),
         off=g("j-office");
 
+  const WANT=parseQuery(q);
+  /* A search can contradict a filter, and when it does the words the person
+     just typed win over a toggle they may not have noticed. "customer
+     success remote" returned nothing while 53 such roles sat on the board,
+     because the quota-carrying pill was on and CS roles carry no quota - a
+     silently wrong empty, which is the failure this whole board is built to
+     avoid. So the pill releases itself, visibly, and the reason is printed
+     next to the count. */
+  let relaxed=null;
+  if(quotaOnly&&WANT.family&&WANT.family!=="gtm"){
+    const pill=$("#j-quota-pill");
+    if(pill){
+      pill.setAttribute("aria-pressed","false");
+      const vv=$("#j-quota-v");
+      if(vv){vv.textContent="Any role";vv.className="v"}
+    }
+    quotaOnly=false;
+    relaxed=FAM[WANT.family]||WANT.family;
+  }
   const rows=D.postings.filter(p=>{
     // The searchable text includes the office and territory the classifier
     // extracted - as codes AND full names, so the hero's own suggestion
@@ -594,7 +686,19 @@ function drawJobs(){
       geoCodes.map(c=>STATE_FULL[c]||"").join(" ")}`.toLowerCase();
     // Every word must land somewhere, not the phrase as one substring:
     // "account executive kansas" is a title plus a place, never adjacent.
-    if(q&&!q.split(/\s+/).every(w=>hay.includes(w)))return false;
+    // the meaning first, against facts the pipeline already derived
+    if(WANT.family&&p.family!==WANT.family)return false;
+    if(WANT.seniority&&p.seniority!==WANT.seniority)return false;
+    if(WANT.quota&&!p.quota_carrying)return false;
+    if(WANT.mode){
+      if(WANT.mode==="remote"&&p.work_mode!=="remote")return false;
+      if(WANT.mode==="hybrid"&&p.work_mode!=="hybrid")return false;
+      if(WANT.mode==="onsite"&&!(p.work_mode==="onsite"||p.work_mode==="hybrid"
+        ||(p.office&&p.work_mode!=="remote")))return false;
+    }
+    // then whatever the vocabulary did not recognise, as plain text
+    if(WANT.terms.length&&!WANT.terms.every(alts=>alts.some(w=>hay.includes(w))))
+      return false;
     if(quotaOnly&&!p.quota_carrying)return false;
     if(where==="remote"&&p.work_mode!=="remote")return false;
     // "In person": the job demonstrably sits somewhere - a stated onsite or
@@ -628,7 +732,8 @@ function drawJobs(){
   const mv=$("#j-more-v");if(mv)mv.textContent=extra?`${extra} on`:"";
   if(mv)mv.className="v"+(extra?" on":"");
   $("#j-h").textContent=quotaOnly?"All quota-carrying roles":"All roles";
-  $("#j-n").textContent=rows.length.toLocaleString();
+  $("#j-n").textContent=rows.length.toLocaleString()
+    +(relaxed?` \u00b7 showing all roles: ${relaxed} work does not carry a quota`:"");
 
   $("#j-list").innerHTML=rows.slice(0,SHOWN).map(p=>{
     const [bg,fg]=tile(p.company),w=when(p.first_seen,D.generated);
