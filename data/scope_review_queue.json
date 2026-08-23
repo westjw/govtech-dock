@@ -1,0 +1,20 @@
+{
+ "items": [
+  {
+   "name": "Alteryx",
+   "website": "https://alteryx.com",
+   "description": "Horizontal data analytics and automation platform",
+   "why": "sells to government among every other industry",
+   "source_event": "NACUBO 2026",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Blackbaud",
+   "website": "https://blackbaud.com",
+   "description": "Fundraising and financial software for nonprofits and education",
+   "why": "education and nonprofit, not government-specific",
+   "source_event": "NACUBO 2026",
+   "queued_on": "2026-08-23"
+  }
+ ]
+}

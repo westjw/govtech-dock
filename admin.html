@@ -124,6 +124,12 @@ const INTRO = {
   acquisitions: 'The board reads fine but its slug does not match the company name, which '
     + 'usually means the company was acquired and its careers page now redirects to the parent. '
     + 'Confirming wires it up; a parent-company board must never be recorded as the subsidiary’s.',
+  vendors: 'Real product companies that took a booth on a government floor but sell '
+    + 'to every industry: general data platforms, general CRM, general security. Alteryx '
+    + 'is the shape of it. They are not consultancies and they are not govtech the way '
+    + 'Tyler is, so the research pass refuses to rule either way and asks. In adds a full '
+    + 'company; SLED-only adds one whose public-sector roles are the only ones that show; '
+    + 'Out leaves it off and remembers, so the same name is never asked twice.',
   scope: 'Postings a filter kept but could not confirm belong on this board. The live '
     + 'case is federal: a Federal Civilian Sales AE is selling technology to government, '
     + 'and it is not state and local, and no pattern settles which of those this board is '
@@ -410,6 +416,45 @@ RENDER.acquisitions = s => {
     toast(r.message); n.remove(); refreshCounts();
   };
   row.append(yes, dismissBtn('acquisitions', s.id, 'Reject — different company'));
+  n.appendChild(row);
+  return n;
+};
+
+RENDER.vendors = v => {
+  const n = document.createElement('div');
+  n.className = 'item';
+  n.appendChild(el('h3', null, v.name));
+  const kv = el('div', 'kv');
+  if (v.source_event) kv.appendChild(el('span', 'chip', v.source_event));
+  if (v.description) kv.appendChild(document.createTextNode(v.description));
+  n.appendChild(kv);
+  if (v.why) n.appendChild(el('div', 'kv', v.why));
+  if (v.website) {
+    const w = el('div', 'kv');
+    const a = el('a', null, v.website.replace(/^https?:\/\//, ''));
+    a.href = v.website; a.target = '_blank'; a.rel = 'noopener';
+    w.appendChild(a); n.appendChild(w);
+  }
+  const why = el('input');
+  why.placeholder = 'why (optional, but it is what teaches the next pass)';
+  n.appendChild(why);
+
+  const row = el('div', 'row');
+  const rule = (call, label, cls) => {
+    const b = el('button', 'act ' + cls, label);
+    b.onclick = async () => {
+      const r = await api('/api/vendor-scope', {
+        name: v.name, call, why: why.value,
+        description: v.description, website: v.website,
+        source_event: v.source_event});
+      if (r.error) return toast(r.error, true);
+      toast(r.message); n.remove(); refreshCounts();
+    };
+    return b;
+  };
+  row.append(rule('in', 'In: full company', 'good'),
+             rule('sled', 'SLED-only roles', ''),
+             rule('out', 'Not this board', 'bad'));
   n.appendChild(row);
   return n;
 };

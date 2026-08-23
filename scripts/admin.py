@@ -314,6 +314,57 @@ def act_scope_all(body: dict) -> dict:
                                    f"{'in' if keep else 'out of'} scope"}
 
 
+def q_vendor_scope(companies, board) -> list:
+    """Horizontal product companies found on a government exhibit floor.
+
+    Alteryx sells data analytics to everyone, and it took a booth at a
+    university-finance show. It is a real product company, it does sell to
+    public buyers, and it is not govtech the way Tyler is. The research pass
+    refuses to decide these on its own for the same reason the federal roles
+    are queued: a pattern that quietly rules either way is worse than a
+    question, and a wrong "not govtech" is invisible and permanent.
+
+    Three answers, each recorded with who gave it and why:
+      in    a full card, monitored like any other company
+      sled  a card flagged sled_only, so only public-sector roles show
+      out   not on this board; the name is remembered so it is never re-asked
+    """
+    q = read("scope_review_queue.json", {"items": []})
+    ruled = read("vendor_scope_decisions.json", {})
+    return [{**i, "key": _vkey(i["name"])}
+            for i in q.get("items", []) if _vkey(i["name"]) not in ruled]
+
+
+def _vkey(name: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", (name or "").lower()).strip("-")
+
+
+def act_vendor_scope(body: dict) -> dict:
+    """Rule one horizontal vendor. Stored by name-key so it is asked once.
+
+    The ruling carries an author and a reason, not because anything reads
+    them today, but because a ruling without them cannot be scored, trusted,
+    or used to teach the classifier later, and neither can be added after
+    the fact.
+    """
+    name, call = body.get("name"), body.get("call")
+    if not name or call not in ("in", "sled", "out"):
+        return {"error": "need a name and a call of in, sled or out"}
+    d = read("vendor_scope_decisions.json", {})
+    d[_vkey(name)] = {"call": call, "name": name,
+                      "on": dt.date.today().isoformat(),
+                      "by": (body.get("by") or "owner").strip(),
+                      "why": (body.get("why") or "").strip() or None,
+                      "saw": {"description": body.get("description"),
+                              "website": body.get("website"),
+                              "source_event": body.get("source_event")}}
+    write_atomic("vendor_scope_decisions.json", d)
+    msg = {"in": "will be added as a full company",
+           "sled": "will be added, public-sector roles only",
+           "out": "left off the board"}[call]
+    return {"ok": True, "message": f"{name}: {msg}"}
+
+
 def q_submissions(companies, board) -> list:
     subs = read("submissions.json", {"items": []})
     names = {c["id"]: c["name"] for c in companies}
@@ -321,11 +372,11 @@ def q_submissions(companies, board) -> list:
             for i in subs["items"] if i.get("status") == "pending"]
 
 
-QUEUES = {"scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards,
+QUEUES = {"vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards,
           "placement": q_placement, "unclassified": q_unclassified,
           "acquisitions": q_acquisitions, "review": q_review}
 
-LABEL = {"scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
+LABEL = {"vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
          "boards": "Missing boards", "placement": "Wrong placement",
          "unclassified": "Unclassified roles", "acquisitions": "Acquisitions",
          "review": "Website review"}
@@ -779,6 +830,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "set-board": act_set_board, "set-family": act_set_family,
            "capture": act_capture, "search-companies": act_search_companies,
            "scope": act_scope, "scope-all": act_scope_all,
+           "vendor-scope": act_vendor_scope,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "dismiss": act_dismiss}
