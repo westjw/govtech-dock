@@ -451,6 +451,15 @@ def q_miscategorized(companies, board) -> list:
     dismissed = read("admin_dismissed.json", {})
     hiring = {o["id"]: o.get("open_roles", 0)
               for o in board.get("organizations", [])}
+    proposals = {}
+    pdir = DATA / "conference_intake" / "placements"
+    if pdir.exists():
+        for f in sorted(pdir.glob("*.json")):
+            try:
+                for row in json.loads(f.read_text()).get("placements", []):
+                    proposals[row["id"]] = row
+            except (json.JSONDecodeError, KeyError, OSError):
+                continue
     out = []
     for c in companies:
         if c.get("category") != "Suppliers & Services":
@@ -461,6 +470,15 @@ def q_miscategorized(companies, board) -> list:
             continue
         blob = f"{c['name']} {c.get('description') or ''}".lower()
         sec, cat, conf, why = add_company.guess_sector(blob)
+        # A read of the description beats keyword counting on one-line
+        # descriptions: the guesser could place only 92 of 238, because
+        # "Endpoint management and security platform" contains none of its
+        # vocabulary. Where a proposal exists it wins, and it says so.
+        prop = proposals.get(c["id"])
+        if prop and prop.get("proposed_sector"):
+            sec, cat = prop["proposed_sector"], prop["proposed_category"]
+            conf = prop.get("confidence") or "medium"
+            why = [prop.get("why") or "proposed from the description"]
         out.append({
             "id": c["id"], "name": c["name"], "sector": c["sector"],
             "category": c["category"], "website": c.get("website"),
