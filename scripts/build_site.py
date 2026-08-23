@@ -215,6 +215,12 @@ def main() -> int:
     for name in SHIP:
         shutil.copy2(ROOT / name, out / name)
 
+    # logos are public by nature - they are the companies' own marks, served
+    # from our origin so no visitor is reported to a logo service
+    logos = ROOT / "assets" / "logos"
+    if logos.exists():
+        shutil.copytree(logos, out / "assets" / "logos")
+
     build_admin_bundle(out)
 
     board, stripped = sanitize(board_src)

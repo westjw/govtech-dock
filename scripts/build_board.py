@@ -419,8 +419,18 @@ def main() -> int:
 
     fam_totals = collections.Counter(p["family"] for p in postings)
     sector_totals = collections.Counter(p["sector"] for p in postings)
+    # which companies have a logo on file, and in what format. The page
+    # needs the extension to build the src, and a manifest is cheaper than
+    # 2,100 speculative requests that mostly 404.
+    logos = {}
+    ldir = ROOT / "assets" / "logos"
+    if ldir.exists():
+        for f in ldir.glob("*.*"):
+            logos[f.stem] = f.suffix.lstrip(".")
+
     payload = {
         "generated": today,
+        "logos": logos,
         "companies_read": len(companies), "unreadable": unreadable,
         "rendered": rendered,
         "no_board_on_file": sum(1 for o in orgs if o.get("no_board_on_file")),
