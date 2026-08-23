@@ -186,11 +186,18 @@ def guess_sector(blob: str) -> tuple[str | None, str | None, str, list[str]]:
     return sector, category, confidence, evidence
 
 
-def find_ats(url: str) -> tuple[dict | None, str | None, list[str]]:
-    """Probe the site for an ATS. Returns (ats, careers_url, notes)."""
+def find_ats(url: str, paths: list[str] | None = None
+             ) -> tuple[dict | None, str | None, list[str]]:
+    """Probe the site for an ATS. Returns (ats, careers_url, notes).
+
+    paths narrows the probe. The admin's retry button passes just the root
+    and /careers, because the admin server is single-threaded and a full
+    eight-path probe of a slow host freezes every other request while it
+    runs. Bulk discovery keeps the full list.
+    """
     base = url.rstrip("/")
     notes = []
-    for path in [""] + CAREER_PATHS:
+    for path in [""] + (CAREER_PATHS if paths is None else paths):
         page_url = base + path
         html, _ = fetch(page_url)
         if not html:

@@ -116,6 +116,11 @@ async def probe_one(browser, comp, sem):
             # follow the site's own careers links (incl. off-site ATS links)
             cand, host = [], urlparse(start).netloc
             for h in links:
+                # a JS-built page can put an object where an href belongs;
+                # one framework's router did exactly that and killed a whole
+                # batch 79 companies in
+                if not isinstance(h, str):
+                    continue
                 if not CAREER_LINK.search(h) or NOISE.search(h):
                     continue
                 if urlparse(h).netloc != host:      # off-site => likely the ATS itself

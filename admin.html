@@ -119,9 +119,17 @@ const INTRO = {
   websites: 'Names too generic to guess a domain from. A website is the key everything '
     + 'downstream needs: no site means no board, which means the company can never be monitored. '
     + 'Paste a URL and it is checked against the page before it is written.',
-  boards: 'Companies with no job board on file, or one the fetchers cannot read. '
-    + 'Paste a careers URL — the ATS behind it is detected and the slug is checked against '
-    + 'the company name, which is also how an acquisition shows up.',
+  blocked: 'Probed and turned away: a 403, a timeout, an SSL failure. Not evidence of '
+    + 'anything except that the fetcher was refused - these re-probe themselves after '
+    + 'seven days. Retry now is for when the block looked transient or you just fixed '
+    + 'the website field.',
+  boards: 'Probed, and nothing found. Most of these genuinely have no public job board - '
+    + 'they hire on LinkedIn or by email - so this is the capture extension\'s worklist: '
+    + 'open the company, find where they actually post, paste the address. The green '
+    + 'chips are the conference floors they exhibit on, because the fastest way to work '
+    + 'this list is by floor, standing on it. Paste a careers URL and the ATS behind '
+    + 'it is detected, with the slug checked against the company name - which is also '
+    + 'how an acquisition shows up.',
   placement: 'The description disagrees with the sector the company is filed under. '
     + 'This is the same question intake asks, applied to records that arrived in bulk '
     + 'and never went through the front door.',
@@ -328,12 +336,44 @@ RENDER.websites = c => {
   return n;
 };
 
+RENDER.blocked = c => {
+  const n = el('div', 'item');
+  n.appendChild(el('h3', null, c.name));
+  const meta = el('div', 'kv');
+  meta.append(el('span', 'chip warn', 'blocked'), document.createTextNode(c.sector));
+  (c.events || []).forEach(ev => meta.appendChild(el('span', 'chip ok', ev)));
+  n.appendChild(meta);
+  if (c.probe_note)
+    n.appendChild(el('div', 'kv', `${c.probe_note} — last tried ${c.probed_on || '?'}`));
+  if (c.website) {
+    const w = el('div', 'kv');
+    const a = el('a', null, c.website.replace(/^https?:\/\//, ''));
+    a.href = c.website; a.target = '_blank'; a.rel = 'noopener';
+    w.appendChild(a); n.appendChild(w);
+  }
+  const row = el('div', 'row');
+  const retry = el('button', 'act good', 'Retry now');
+  retry.onclick = async () => {
+    retry.disabled = true; retry.textContent = 'Probing… (can take ~30s)';
+    const r = await api('/api/retry-board', {id: c.id});
+    retry.disabled = false; retry.textContent = 'Retry now';
+    if (r.error) return toast(r.error, true);
+    toast(r.message);
+    if (/found and verified/.test(r.message)) { n.remove(); refreshCounts(); }
+  };
+  row.appendChild(retry);
+  n.appendChild(row);
+  return n;
+};
+
 RENDER.boards = c => {
   const n = el('div', 'item');
   n.appendChild(el('h3', null, c.name));
   const meta = el('div', 'kv');
   meta.append(el('span', 'chip', c.why), el('span', 'chip', 'tier ' + c.tier),
               document.createTextNode(c.sector));
+  // the floors this company stands on: how this list is actually worked
+  (c.events || []).forEach(ev => meta.appendChild(el('span', 'chip ok', ev)));
   n.appendChild(meta);
   if (c.website) {
     const w = el('div', 'kv');

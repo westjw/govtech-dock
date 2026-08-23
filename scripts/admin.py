@@ -182,15 +182,41 @@ def q_duplicates(companies, board) -> list:
 def q_websites(companies, board) -> list:
     return [{"id": c["id"], "name": c["name"], "sector": c["sector"],
              "category": c["category"], "description": c.get("description"),
+             "events": _events(c.get("description")),
              "tier": 1 if c["sector"] in ("General Gov", "Public Works", "Parks & Rec")
                      else 2}
             for c in companies
             if not c.get("website") and not is_dismissed("websites", c["id"])]
 
 
-def q_boards(companies, board) -> list:
+BLOCKED_MARKERS = ("blocked at the door", "could not fetch", "gave up after")
+
+
+def _events(description: str) -> list:
+    """The conferences a company exhibited at, from its description note.
+
+    For a company with no findable board this is often the most useful fact
+    on the row: it says where a person has stood within arm's reach of them,
+    and it is how the owner will actually work the list - by floor, with the
+    capture extension, not alphabetically.
+    """
+    m = re.search(r"exhibited at ([^;.\n]+)", description or "")
+    return [t.strip() for t in m.group(1).split(",")] if m else []
+
+
+def _probe(cid: str) -> dict:
+    log = read("discovery_log.json", {})
+    e = log.get(cid)
+    if not e:
+        return {"state": "unprobed", "note": None, "on": None}
+    note = e.get("note") or ""
+    state = ("blocked" if any(mk in note for mk in BLOCKED_MARKERS)
+             else "none-found")
+    return {"state": state, "note": note, "on": e.get("on")}
+
+
+def _board_rows(companies, board):
     orgs = {o["id"]: o for o in board.get("organizations", [])}
-    out = []
     for c in companies:
         o = orgs.get(c["id"], {})
         kind = (c.get("ats") or {}).get("type")
@@ -199,14 +225,48 @@ def q_boards(companies, board) -> list:
             continue
         if is_dismissed("boards", c["id"]):
             continue
-        out.append({"id": c["id"], "name": c["name"], "sector": c["sector"],
-                    "website": c.get("website"), "ats": kind,
-                    "why": "board unreadable" if o.get("unreadable")
-                           else "no board on file",
-                    "note": c.get("ats_note"),
-                    "tier": o.get("tier") or 3})
-    # tier 1 first: a municipal-SaaS board is worth more than an adjacent one
-    out.sort(key=lambda r: (r["tier"], 0 if r["website"] else 1, r["name"]))
+        pr = _probe(c["id"])
+        yield {"id": c["id"], "name": c["name"], "sector": c["sector"],
+               "website": c.get("website"), "ats": kind,
+               "why": "board unreadable" if o.get("unreadable")
+                      else "no board on file",
+               "note": c.get("ats_note"),
+               "events": _events(c.get("description")),
+               "probe": pr["state"], "probe_note": pr["note"],
+               "probed_on": pr["on"],
+               "tier": o.get("tier") or 3}
+
+
+def q_boards(companies, board) -> list:
+    """Probed, and nothing found: the capture-extension worklist.
+
+    These are companies whose sites were read and yielded no ATS and no
+    careers page a fetcher can use. Most genuinely have no public board -
+    they hire on LinkedIn or by email - so the fix is a person pasting an
+    address they found by hand, or standing on a conference floor. Blocked
+    and never-probed companies live in their own queues; mixing them in here
+    made this list look endless and taught nobody to open it.
+    """
+    out = [r for r in _board_rows(companies, board)
+           if r["probe"] != "blocked" and r["website"]]
+    # by conference first: this list is worked by floor, with the extension,
+    # not alphabetically. Companies seen at more floors sort earlier because
+    # the owner is likelier to be within reach of them again.
+    out.sort(key=lambda r: (r["tier"], -len(r["events"]),
+                            r["events"][0] if r["events"] else "~", r["name"]))
+    return out
+
+
+def q_blocked(companies, board) -> list:
+    """Blocked or unreachable when probed: a retry pile, not a worklist.
+
+    A 403 or a timeout is not evidence of anything except that the fetcher
+    was turned away. These re-probe themselves after seven days; the button
+    here is for retrying one NOW, when you think the block was transient or
+    you just fixed the website field.
+    """
+    out = [r for r in _board_rows(companies, board) if r["probe"] == "blocked"]
+    out.sort(key=lambda r: (r["probed_on"] or "", r["name"]))
     return out
 
 
@@ -626,6 +686,45 @@ def act_place(body: dict) -> dict:
     return res
 
 
+def act_retry_board(body: dict) -> dict:
+    """Re-probe one blocked company right now, instead of waiting a week.
+
+    For when the block looked transient, or the website field was just
+    fixed. Same probe, same verification: a slug is written only after a
+    real fetch confirmed the board reads.
+    """
+    cid = body.get("id")
+    companies = read("companies.json", [])
+    c = next((x for x in companies if x["id"] == cid), None)
+    if c is None:
+        return {"error": "no such company"}
+    if not c.get("website"):
+        return {"error": "no website on file - add one first"}
+    # two paths only: this runs inside a single-threaded server, and a
+    # deliberate button press may wait seconds, not minutes
+    ats_block, careers, notes = add_company.find_ats(c["website"],
+                                                     paths=["/careers"])
+    log = read("discovery_log.json", {})
+    if ats_block:
+        okay, why = discover_ats.verify(ats_block)
+        if okay:
+            c["ats"] = ats_block
+            err = validate(companies)
+            if err:
+                return {"error": err}
+            write_atomic("companies.json", companies)
+            log[cid] = {"on": dt.date.today().isoformat(), "found": True,
+                        "note": f"retry: {'; '.join(notes)[:120]}"}
+            write_atomic("discovery_log.json", log)
+            return {"ok": True, "message": f"{c['name']}: board found and "
+                                          f"verified ({ats_block['type']})"}
+    log[cid] = {"on": dt.date.today().isoformat(), "found": False,
+                "note": f"retry: {'; '.join(notes)[:120] or 'still nothing'}"}
+    write_atomic("discovery_log.json", log)
+    return {"ok": True, "message": f"{c['name']}: still nothing readable - "
+                                   f"{'; '.join(notes)[:90] or 'no marker found'}"}
+
+
 def act_vendor_scope(body: dict) -> dict:
     """Rule one horizontal vendor. Stored by name-key so it is asked once.
 
@@ -659,12 +758,12 @@ def q_submissions(companies, board) -> list:
             for i in subs["items"] if i.get("status") == "pending"]
 
 
-QUEUES = {"miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards,
+QUEUES = {"miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
           "placement": q_placement, "unclassified": q_unclassified,
           "acquisitions": q_acquisitions, "review": q_review}
 
 LABEL = {"miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
-         "boards": "Missing boards", "placement": "Wrong placement",
+         "boards": "No board found", "blocked": "Blocked boards", "placement": "Wrong placement",
          "unclassified": "Unclassified roles", "acquisitions": "Acquisitions",
          "review": "Website review"}
 
@@ -1119,7 +1218,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "scope": act_scope, "scope-all": act_scope_all,
            "vendor-scope": act_vendor_scope,
            "vendor-scope-all": act_vendor_scope_all,
-           "also": act_also, "place": act_place,
+           "also": act_also, "retry-board": act_retry_board, "place": act_place,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "dismiss": act_dismiss}
