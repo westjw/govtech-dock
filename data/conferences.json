@@ -1,0 +1,1064 @@
+{
+ "note": "Conference catalog for exhibitor intake, from Wyeth 2026-08-23. swept=true means an exhibitor sweep already landed in companies.json/suppliers.json (see 'exhibited at' notes).",
+ "conferences": [
+  {
+   "block": "Executive / administration",
+   "department": "City & county management",
+   "conference": "ICMA Annual",
+   "flagship": true,
+   "swept": true,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Counties",
+   "conference": "NACo Annual",
+   "flagship": true,
+   "swept": true,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Counties",
+   "conference": "NACo Legislative",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Cities (elected)",
+   "conference": "NLC City Summit",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Cities (elected)",
+   "conference": "USCM Winter/Annual",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Townships / small gov",
+   "conference": "NATaT",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Executive / administration",
+   "department": "State governors",
+   "conference": "NGA Summer/Winter",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Executive / administration",
+   "department": "State legislatures",
+   "conference": "NCSL Legislative Summit",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Executive / administration",
+   "department": "State legislatures",
+   "conference": "NALIT",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Performance / innovation",
+   "conference": "Smart Cities Connect",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Clerk, records, elections, legal",
+   "department": "Municipal clerks",
+   "conference": "IIMC Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Clerk, records, elections, legal",
+   "department": "Records management",
+   "conference": "NAGARA",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Clerk, records, elections, legal",
+   "department": "Records management",
+   "conference": "ARMA InfoCon",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Clerk, records, elections, legal",
+   "department": "Elections",
+   "conference": "Election Center National Conference",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Clerk, records, elections, legal",
+   "department": "Elections",
+   "conference": "NASS Winter/Summer",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Clerk, records, elections, legal",
+   "department": "Elections",
+   "conference": "NASED",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Clerk, records, elections, legal",
+   "department": "Municipal attorneys",
+   "conference": "IMLA Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Clerk, records, elections, legal",
+   "department": "State attorneys general",
+   "conference": "NAAG",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Clerk, records, elections, legal",
+   "department": "Communications / PIO",
+   "conference": "3CMA",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Clerk, records, elections, legal",
+   "department": "Communications / PIO",
+   "conference": "NAGC",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "Finance / budget",
+   "conference": "GFOA Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "State budget",
+   "conference": "NASBO",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "Treasurers",
+   "conference": "NAST",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "Auditors",
+   "conference": "ALGA",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "Auditors",
+   "conference": "NSAA",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "Auditors",
+   "conference": "AGA PDT",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "Assessors / property tax",
+   "conference": "IAAO Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "State tax",
+   "conference": "FTA Annual",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "Procurement (local)",
+   "conference": "NIGP Forum",
+   "flagship": true,
+   "swept": true,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "Procurement (state)",
+   "conference": "NASPO Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "Human resources",
+   "conference": "IPMA-HR International",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "Human resources",
+   "conference": "NPELRA",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "Retirement systems",
+   "conference": "NCPERS",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "Risk management",
+   "conference": "PRIMA Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "IT / CIO (state)",
+   "conference": "NASCIO Annual & Midyear",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "IT / CIO (local)",
+   "conference": "GMIS International",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "IT / CIO (local)",
+   "conference": "PTI",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "GIS",
+   "conference": "Esri UC",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "GIS",
+   "conference": "URISA GIS-Pro",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "GIS",
+   "conference": "NSGIC",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Public works",
+   "conference": "APWA PWX",
+   "flagship": true,
+   "swept": true,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "County engineers",
+   "conference": "NACE Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Streets / roads / DOT",
+   "conference": "AASHTO Annual",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Streets / roads / DOT",
+   "conference": "TRB Annual",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Traffic engineering",
+   "conference": "ITE Annual",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Traffic engineering",
+   "conference": "ITS America",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Fleet",
+   "conference": "NAFA I&E",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Fleet",
+   "conference": "Government Fleet Expo",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Facilities",
+   "conference": "IFMA World Workplace",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Stormwater",
+   "conference": "StormCon",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Water",
+   "conference": "AWWA ACE",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Wastewater",
+   "conference": "WEFTEC",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Solid waste",
+   "conference": "SWANA WASTECON",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Solid waste",
+   "conference": "WasteExpo",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Public power",
+   "conference": "APPA National Conference",
+   "flagship": true,
+   "swept": false,
+   "note": "American Public Power - NOT probation, NOT edu facilities",
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Public power",
+   "conference": "DISTRIBUTECH",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Broadband",
+   "conference": "Broadband Communities Summit",
+   "flagship": false,
+   "swept": true,
+   "note": "landed as Broadband Nation 2026",
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Broadband",
+   "conference": "NATOA",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Transportation",
+   "department": "Transit",
+   "conference": "APTA TRANSform",
+   "flagship": true,
+   "swept": true,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Transportation",
+   "department": "Rural transit",
+   "conference": "CTAA EXPO",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Transportation",
+   "department": "Airports",
+   "conference": "AAAE Annual",
+   "flagship": true,
+   "swept": true,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Transportation",
+   "department": "Airports",
+   "conference": "ACI-NA",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Transportation",
+   "department": "Ports",
+   "conference": "AAPA Annual",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Transportation",
+   "department": "DMV",
+   "conference": "AAMVA Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public safety",
+   "department": "Police",
+   "conference": "IACP Annual",
+   "flagship": true,
+   "swept": true,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public safety",
+   "department": "Sheriffs",
+   "conference": "NSA Annual",
+   "flagship": true,
+   "swept": true,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public safety",
+   "department": "911 / dispatch",
+   "conference": "APCO Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public safety",
+   "department": "911 / dispatch",
+   "conference": "NENA",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public safety",
+   "department": "Fire",
+   "conference": "IAFC Fire-Rescue International",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public safety",
+   "department": "Fire",
+   "conference": "FDIC International",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public safety",
+   "department": "EMS",
+   "conference": "EMS World Expo",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public safety",
+   "department": "Emergency management",
+   "conference": "IAEM Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Public safety",
+   "department": "Fire code / building safety",
+   "conference": "ICC Annual Conference",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Courts, corrections, justice",
+   "department": "Courts",
+   "conference": "NACM Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Courts, corrections, justice",
+   "department": "Court tech",
+   "conference": "NCSC Court Technology Conference",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Courts, corrections, justice",
+   "department": "Corrections (state)",
+   "conference": "ACA Congress",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Courts, corrections, justice",
+   "department": "Jails (county)",
+   "conference": "AJA Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Courts, corrections, justice",
+   "department": "Probation & parole",
+   "conference": "APPA Training Institute",
+   "flagship": true,
+   "swept": false,
+   "note": "American Probation and Parole - NOT public power",
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Courts, corrections, justice",
+   "department": "Juvenile justice",
+   "conference": "CJJ",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Health and human services",
+   "department": "Local public health",
+   "conference": "NACCHO 360",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Health and human services",
+   "department": "State public health",
+   "conference": "ASTHO",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Health and human services",
+   "department": "Medicaid systems",
+   "conference": "MESC",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Health and human services",
+   "department": "Human services",
+   "conference": "APHSA National HHS Summit",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Health and human services",
+   "department": "Child welfare",
+   "conference": "CWLA",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Health and human services",
+   "department": "Child support",
+   "conference": "NCSEA Leadership Symposium",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Health and human services",
+   "department": "Behavioral health",
+   "conference": "NatCon",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Health and human services",
+   "department": "Aging services",
+   "conference": "n4a Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Health and human services",
+   "department": "Veterans services",
+   "conference": "NACVSO",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Health and human services",
+   "department": "Workforce / unemployment",
+   "conference": "NASWA",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Health and human services",
+   "department": "Animal services",
+   "conference": "Animal Care Expo",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Community development",
+   "department": "Planning & zoning",
+   "conference": "APA National Planning Conference",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Community development",
+   "department": "Code enforcement",
+   "conference": "AACE",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Community development",
+   "department": "Economic development",
+   "conference": "IEDC Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Community development",
+   "department": "Housing authorities",
+   "conference": "NAHRO National Conference",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Community development",
+   "department": "State housing finance",
+   "conference": "NCSHA Annual",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Community development",
+   "department": "Real estate / land use",
+   "conference": "ULI Fall Meeting",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Parks, recreation, libraries",
+   "department": "Parks & recreation",
+   "conference": "NRPA Annual",
+   "flagship": true,
+   "swept": true,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Parks, recreation, libraries",
+   "department": "Rec facilities",
+   "conference": "Athletic Business Show",
+   "flagship": false,
+   "swept": true,
+   "note": "landed as AB Show 2026",
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Parks, recreation, libraries",
+   "department": "Youth sports",
+   "conference": "NAYS",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Parks, recreation, libraries",
+   "department": "Public libraries",
+   "conference": "PLA Conference",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Parks, recreation, libraries",
+   "department": "Public libraries",
+   "conference": "ALA Annual",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "K-12 education",
+   "department": "Superintendents",
+   "conference": "AASA National Conference on Education",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "K-12 education",
+   "department": "School boards",
+   "conference": "NSBA Annual",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "K-12 education",
+   "department": "Business officials",
+   "conference": "ASBO International",
+   "flagship": true,
+   "swept": false,
+   "note": "school business officials - tag by domain not acronym",
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "K-12 education",
+   "department": "Technology directors",
+   "conference": "CoSN Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "K-12 education",
+   "department": "Technology directors",
+   "conference": "ISTELive",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "K-12 education",
+   "department": "Principals",
+   "conference": "NAESP",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "K-12 education",
+   "department": "Pupil transportation",
+   "conference": "NAPT Summit",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "K-12 education",
+   "department": "School nutrition",
+   "conference": "SNA ANC",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "K-12 education",
+   "department": "School safety",
+   "conference": "NASRO",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "K-12 education",
+   "department": "Special education",
+   "conference": "CEC Convention",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Higher education",
+   "department": "IT",
+   "conference": "EDUCAUSE Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Higher education",
+   "department": "Business / finance",
+   "conference": "NACUBO Annual",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Higher education",
+   "department": "Facilities",
+   "conference": "APPA Leadership in Educational Facilities",
+   "flagship": false,
+   "swept": false,
+   "note": "educational facilities APPA - third of the three APPAs",
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Higher education",
+   "department": "Registrars",
+   "conference": "AACRAO",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Higher education",
+   "department": "Financial aid",
+   "conference": "NASFAA",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  },
+  {
+   "block": "Higher education",
+   "department": "Campus safety",
+   "conference": "IACLEA",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null
+  }
+ ]
+}
