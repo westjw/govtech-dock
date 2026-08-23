@@ -330,12 +330,17 @@ def main() -> int:
                 "location": loc, "is_us": roles.is_us(loc, title),
                 "url": j.get("url") or board_url(c),
                 "sector": c["sector"], "category": c["category"],
+                # extra departments this vendor also sells into, so a
+                # filter on Courts finds Tyler even though its primary
+                # home is General Gov
+                "also": c.get("also") or None,
                 "first_seen": today, "source": "ats",
             })
 
         orgs.append({
             "id": c["id"], "name": c["name"], "sector": c["sector"],
-            "category": c["category"], "location": c.get("location"),
+            "category": c["category"], "also": c.get("also") or None,
+            "location": c.get("location"),
             "year_founded": c.get("year_founded"), "description": c.get("description"),
             "website": c.get("website"), "board_url": board_url(c),
             "ats": kind, "ats_ranks": ats_tier(kind),

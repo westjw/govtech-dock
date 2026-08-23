@@ -1,0 +1,111 @@
+[
+  {
+    "verdict": "scope_review",
+    "company_name": "Data Axle",
+    "website": "https://www.data-axle.com",
+    "description": "Business and consumer marketing data, audience platforms and campaign services sold across technology, finance, retail, nonprofit, academia and government",
+    "hq_location": "Grapevine, TX",
+    "year_founded": 1972,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "source_event": "IEDC 2026",
+    "notes": "General-purpose data and marketing services vendor; government is one of nine listed verticals. Formerly Infogroup. Their contact page lists four offices with no explicit HQ label; Grapevine, TX is listed first and used here"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "Clarity Solutions Group",
+    "website": "https://claritysolutionsgroup.net",
+    "description": "ClarityLink communication, document automation and workflow platform for state and local health and human services agencies running Medicaid, SNAP, TANF and WIC",
+    "sector": "Health & Human Services",
+    "category": "Benefits & Medicaid Systems",
+    "source_event": "APHSA 2026",
+    "notes": "Judgment call: they sell consulting alongside the platform (transformation roadmaps, procurement oversight, change management), so part of the business is services. Counted as govtech because ClarityLink is a real product with named public agency buyers. No HQ or founding year published"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "CivicReach",
+    "website": "https://www.civicreach.ai",
+    "description": "AI phone intake, eligibility screening, referral and case follow-up software for social service agencies and community action agencies",
+    "sector": "Health & Human Services",
+    "category": "Benefits & Medicaid Systems",
+    "source_event": "APHSA 2026",
+    "notes": "Buyers are a mix of city and county agencies and nonprofit community-based organizations. Site references a Tampa Bay, Florida presence but gives no HQ address or founding year, so both are omitted"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "AffordableHousing.com",
+    "website": "https://www.affordablehousing.com",
+    "description": "Rental listing marketplace and landlord outreach platform operated for public housing authorities running Housing Choice Voucher programs",
+    "year_founded": 2003,
+    "sector": "Housing & Community Dev",
+    "category": "Housing & Assistance",
+    "source_event": "NAHRO 2026",
+    "notes": "Judgment call worth a second look: the consumer-facing side is a rental marketplace for renters and landlords, but the site says it partners with HUD and 700+ housing authorities, which is the government-purchased side. Formerly GoSection8. No HQ published"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "Neighborly Software",
+    "website": "https://www.neighborlysoftware.com",
+    "description": "Grant and program administration software for affordable housing, disaster recovery, vouchers and energy rebate programs run by local and state agencies",
+    "hq_location": "Atlanta, GA",
+    "year_founded": 2016,
+    "sector": "Housing & Community Dev",
+    "category": "Housing & Assistance",
+    "source_event": "NAHRO 2026",
+    "notes": "Founding year from the site's 'Since 2016' statement"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "TurboPass Corporation",
+    "website": "https://turbopassusa.com",
+    "description": "Applicant-permissioned income, employment, identity and benefits verification reports for public housing authority caseworkers",
+    "hq_location": "Helotes, TX",
+    "sector": "Housing & Community Dev",
+    "category": "Housing & Assistance",
+    "source_event": "NAHRO 2026",
+    "notes": "The site's copyright reads 2019-2026, which hints at a 2019 start but is not a founding statement, so year_founded is omitted"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "CaraSolva",
+    "website": "https://www.carasolva.com",
+    "description": "Electronic medication administration record and point-of-care software for intellectual and developmental disability, behavioral health and home and community-based service agencies",
+    "hq_location": "Boulder, CO",
+    "sector": "Health & Human Services",
+    "category": "Behavioral Health",
+    "source_event": "NatCon 2026",
+    "notes": "Legal entity CaraSolva Inc. Buyers are largely Medicaid-funded provider agencies, some county-operated. No founding year published; the site's stat counters render as zeros"
+  },
+  {
+    "verdict": "scope_review",
+    "company_name": "ClinicMind",
+    "website": "https://www.clinicmind.com",
+    "description": "EHR, billing and revenue cycle software for independent chiropractic, mental health, personal injury and multi-specialty private practices",
+    "sector": "Health & Human Services",
+    "category": "Behavioral Health",
+    "source_event": "NatCon 2026",
+    "notes": "Flagged rather than counted as govtech: the named buyer is the independent private practice, not a public agency or publicly funded community provider. Operates as part of Vericle. Site claims '25+ years' with no founding year and no HQ address"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "Ease Health",
+    "website": "https://easehealth.com",
+    "description": "AI-native CRM, EHR and revenue cycle platform for behavioral health, medication-assisted treatment and substance use disorder providers",
+    "sector": "Health & Human Services",
+    "category": "Behavioral Health",
+    "source_event": "NatCon 2026",
+    "notes": "Buyer base is the publicly funded community behavioral health sector. No HQ or founding year published on site"
+  },
+  {
+    "verdict": "govtech",
+    "company_name": "HiBoop",
+    "website": "https://www.hiboop.com",
+    "description": "Measurement-based care software that automates validated mental health screenings, scoring and outcome tracking for behavioral health teams",
+    "hq_location": "Victoria, Canada",
+    "year_founded": 2018,
+    "sector": "Health & Human Services",
+    "category": "Behavioral Health",
+    "source_event": "NatCon 2026",
+    "notes": "Legal entity HiBoop Inc., based in Victoria, British Columbia"
+  }
+]

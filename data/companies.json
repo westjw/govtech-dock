@@ -2599,7 +2599,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; ICMA 2025; NACo 2026; NIGP 2026; NSA 2026; ICMA 2026",
-  "researched": true
+  "researched": true,
+  "also": [
+   {
+    "sector": "General Gov",
+    "category": "Courts & Justice"
+   }
+  ]
  },
  {
   "id": "euna-solutions",

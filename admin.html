@@ -134,7 +134,7 @@ const INTRO = {
     + 'which is why Workday sat in Transit & Parking. These sort by open roles because the '
     + 'ones hiring hardest are the top rows on the public Companies tab. Each carries a '
     + 'proposed placement and the words it was inferred from; where the guesser has nothing '
-    + 'to go on it says so instead of guessing.',
+    + 'to go on it says so instead of guessing. A vendor that genuinely sells into several departments can take more than one: File it here replaces the primary, Also file here keeps it and adds another.',
   vendors: 'Real product companies that took a booth on a government floor but sell '
     + 'to every industry: general data platforms, general CRM, general security. Alteryx '
     + 'is the shape of it. They are not consultancies and they are not govtech the way '
@@ -480,6 +480,14 @@ RENDER.miscategorized = c => {
   n.appendChild(why);
 
   const row = el('div', 'row');
+  const also = el('button', 'act', 'Also file here');
+  also.title = 'keep its current home and add this one too';
+  also.onclick = async () => {
+    const r = await api('/api/also',
+      {id: c.id, sector: secSel.value, category: catSel.value});
+    if (r.error) return toast(r.error, true);
+    toast(r.message); n.remove(); refreshCounts();
+  };
   const move = el('button', 'act good', 'File it here');
   move.onclick = async () => {
     const r = await api('/api/place', {
@@ -496,7 +504,7 @@ RENDER.miscategorized = c => {
     if (r.error) return toast(r.error, true);
     toast(r.message); n.remove(); refreshCounts();
   };
-  row.append(move, keep);
+  row.append(move, also, keep);
   n.appendChild(row);
   return n;
 };

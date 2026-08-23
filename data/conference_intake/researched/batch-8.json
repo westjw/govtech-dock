@@ -216,5 +216,221 @@
   "category": "Water",
   "source_event": "AWWA ACE 2026",
   "notes": "Could not load calejo.ai from this environment - the origin refused every direct request and a proxy attempt hit a Cloudflare challenge, so all detail comes from indexed search snippets of the site. The registered entity appears to be Calejo Hybrid Intelligence AB (Sweden), whose flagship is Calejo Optimize for smart industries with Calejo Smart Water as a water vertical; I could not confirm that the exhibitor name 'Calejo Water Intelligence' is that same entity, and could not confirm HQ city or founding year. Worth a second look."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Fieldman",
+  "website": "https://fieldman.co",
+  "description": "Field work order and asset management software for local governments and utilities running smart meter and infrastructure projects",
+  "hq_location": "Sawyer, MI",
+  "sector": "Public Works",
+  "category": "Fleet & Asset Mgmt",
+  "source_event": "AWWA ACE 2026",
+  "notes": "Heavy focus on AMI/smart meter deployment programs for gas, water and power utilities. No founding year published."
+},
+{
+  "verdict": "scope_review",
+  "company_name": "Locus Technologies",
+  "website": "https://www.locustec.com",
+  "description": "Cloud environmental data management, EHS compliance and ESG reporting software for regulated enterprises and water utilities",
+  "hq_location": "Mountain View, CA",
+  "sector": "Public Works",
+  "category": "Water",
+  "source_event": "AWWA ACE 2026",
+  "notes": "Real product company, but the buyer set is any environmentally regulated enterprise - chemical manufacturers and industrials alongside water utilities - so it is not government-specific. Site says 'nearly 30 years' without a founding year."
+},
+{
+  "verdict": "govtech",
+  "company_name": "ServiceLink",
+  "website": "https://servicelinksoftware.com",
+  "description": "Mobile field service and workforce management software for municipal water, gas, electric, fiber and sanitation utilities",
+  "hq_location": "North Vancouver, Canada",
+  "sector": "Public Works",
+  "category": "Fleet & Asset Mgmt",
+  "source_event": "AWWA ACE 2026",
+  "notes": "Name collision resolved: this is not ServiceLink the mortgage/title services firm (svclnk.com). The given URL service-link.us 301-redirects to servicelinksoftware.com, which is the canonical site. Site claims 30 years of industry experience but no founding year."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Tova Earth",
+  "website": "https://tova.earth",
+  "description": "Physics-informed AI forecasting of water supply, quality and drought risk for water utilities and infrastructure operators",
+  "sector": "Public Works",
+  "category": "Water",
+  "source_event": "AWWA ACE 2026",
+  "notes": "Also markets to corporate water users and investors on supply-chain and disclosure risk, which pulls it partly outside the public-sector buyer; utilities are the first named audience. Site is a JS app read via a rendered browser session; no about page, HQ or founding year published."
+},
+{
+  "verdict": "supplier",
+  "company_name": "Kofile",
+  "website": "https://www.kofile.com",
+  "description": "Records digitization, preservation and archival supply services for county clerks, courts and assessors",
+  "hq_location": "Dallas, TX",
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "source_event": "IAAO 2026",
+  "notes": "Judgment call: they do ship a software platform (Kleio, AI document intelligence), but the solutions pages present preservation, digitization and archival products - binders, boxes, plat cabinets, shelving - as the core, staffed by preservationists and archivists. Reads as a services firm with a software layer, not a product company. No founding year published."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Metrix Learning",
+  "website": "https://metrixlearning.com",
+  "description": "Online workforce skills training and career services platform for state workforce agencies and local workforce development boards",
+  "year_founded": 2008,
+  "sector": "Health & Human Services",
+  "category": "Workforce & Labor",
+  "source_event": "NASWA 2025",
+  "notes": "Legal entity is NY Wired for Education dba Metrix Learning, founded by Brian Lee; the about page dates the launch to 2008. Company is in upstate New York (518 area code) but no city is published, so HQ omitted."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Apply Government Solutions",
+  "website": "https://www.applygovernmentsolutions.com",
+  "description": "FedHire talent acquisition and hiring management system for government agencies",
+  "sector": "General Gov",
+  "category": "HR & Workforce",
+  "source_event": "NASWA 2025",
+  "notes": "Rebranded from Monster Government Solutions in 2025; monstergov.com now 301-redirects here. Current site is positioned almost entirely at federal agencies, which is a shift from the state workforce systems the MonsterGov name was known for - worth a look if the tracker is state-and-local only. Claims 24+ years but names no founding year, and no HQ address is published."
+},
+{
+  "verdict": "scope_review",
+  "company_name": "Socure",
+  "website": "https://www.socure.com",
+  "description": "AI identity verification, fraud detection and risk decisioning platform sold across banking, crypto, gaming, telecom and public sector",
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "source_event": "NASWA 2025",
+  "notes": "Horizontal identity platform; public sector is one of roughly ten named industries and the flagship references are large banks and card issuers. No HQ or founding year published on the site."
+},
+{
+  "verdict": "govtech",
+  "company_name": "MindMixer",
+  "website": "https://mindmixer.com",
+  "description": "Social media management, community engagement surveys and public-records archiving for government communications teams",
+  "hq_location": "Lincoln, NE",
+  "sector": "General Gov",
+  "category": "Citizen Services",
+  "source_event": "3CMA 2026",
+  "notes": "Two things to flag. First, this is not the original MindMixer civic-engagement startup (that became mySidewalk); the name is now used by Social Assurance, which rebranded its 'Social Assurance for Government' line as MindMixer. Second, the parent also serves banking, financial services and education, so only the MindMixer line is government-specific. No founding year published."
+},
+{
+  "verdict": "govtech",
+  "company_name": "RTA",
+  "website": "https://rtafleet.com",
+  "description": "RTA Fleet360 fleet maintenance and asset management system for government fleets, school districts and transit agencies",
+  "hq_location": "Glendale, AZ",
+  "year_founded": 1979,
+  "sector": "Public Works",
+  "category": "Fleet & Asset Mgmt",
+  "source_event": "NAFA I&E 2026",
+  "notes": "HQ from the site's structured-data address; homepage states 'Est. 1979'."
+},
+{
+  "verdict": "scope_review",
+  "company_name": "Island",
+  "website": "https://www.island.io",
+  "description": "Enterprise secure browser and workspace control plane sold across healthcare, financial services, BPO, manufacturing, retail, government and education",
+  "hq_location": "Dallas, TX",
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "source_event": "NASCIO 2026",
+  "notes": "Horizontal enterprise security product; government and education are two of eight named industries. No founding year published."
+},
+{
+  "verdict": "scope_review",
+  "company_name": "Appian",
+  "website": "https://www.appian.com",
+  "description": "Low-code process orchestration, RPA and AI automation platform for enterprises across financial services, insurance, life sciences and government",
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "source_event": "NASCIO 2026",
+  "notes": "Horizontal low-code platform. Site claims 25+ years but gives no founding year, and no HQ address is exposed on the company or offices pages."
+},
+{
+  "verdict": "scope_review",
+  "company_name": "Talkdesk",
+  "website": "https://www.talkdesk.com",
+  "description": "Cloud contact center and AI customer experience platform sold across financial services, retail, healthcare, utilities and government",
+  "hq_location": "San Francisco, CA",
+  "sector": "General Gov",
+  "category": "Citizen Services",
+  "source_event": "NASCIO 2026",
+  "notes": "Horizontal CCaaS vendor; 'Government & Education' is one of nine named industries and the marquee logos are consumer brands. Founding year not confirmed from the company's own pages, so omitted."
+},
+{
+  "verdict": "scope_review",
+  "company_name": "Check Point Software Technologies",
+  "website": "https://www.checkpoint.com",
+  "description": "Network, cloud, endpoint and workspace cybersecurity products for enterprises and governments worldwide",
+  "hq_location": "Tel Aviv, Israel",
+  "year_founded": 1993,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "source_event": "GMIS International 2026",
+  "notes": "General-purpose cybersecurity vendor; federal and state/local government is one of eight named industries. About page states 'a leader in cyber security since 1993' and lists Tel Aviv as international corporate HQ."
+},
+{
+  "verdict": "scope_review",
+  "company_name": "Tricentis",
+  "website": "https://www.tricentis.com",
+  "description": "Automated software testing and quality engineering platform for enterprise and public sector IT organizations",
+  "hq_location": "Austin, TX",
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "source_event": "GMIS International 2026",
+  "notes": "Horizontal test-automation tooling with a public sector landing page. Homepage blocked WebFetch with a header-overflow error; read via curl. No founding year published."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Identity Automation",
+  "website": "https://identityautomation.com",
+  "description": "Identity and access management, rostering and access governance for K-12 school districts and universities",
+  "hq_location": "Minneapolis, MN",
+  "sector": "K-12 Schools",
+  "category": "Operations & SIS",
+  "source_event": "CoSN 2026",
+  "notes": "Acquired by Jamf and now branded 'Identity Automation, a Jamf Company'; the contact page now lists Jamf's Minneapolis global HQ plus an Austin office, so the historic Houston HQ no longer applies. Healthcare is a third named vertical alongside K-12 and higher ed. No founding year published."
+},
+{
+  "verdict": "govtech",
+  "company_name": "ErateSync",
+  "website": "https://www.eratesync.com",
+  "description": "E-Rate application, funding and compliance management software for schools, libraries and the vendors that serve them",
+  "sector": "K-12 Schools",
+  "category": "Operations & SIS",
+  "source_event": "CoSN 2026",
+  "notes": "Sells to both sides of the E-Rate program - school and library applicants, and the service providers, VARs and OEMs bidding on that funding. No HQ or founding year published; the phone number is a California 626 area code but that is not confirmation."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Thinkverse",
+  "website": "https://www.thinkverse.com",
+  "description": "AI math tutoring platform with a teacher dashboard for K-12 schools and districts",
+  "hq_location": "Boston, MA",
+  "sector": "K-12 Schools",
+  "category": "Operations & SIS",
+  "source_event": "CoSN 2026",
+  "notes": "Legal entity is Learnie, Inc. dba Thinkverse. No founding year published. Category is the closest fit in the map; there is no K-12 instruction/curriculum category."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Onflo",
+  "website": "https://www.onflo.com",
+  "description": "AI service desk and service operations platform unifying IT, facilities, HR and transportation requests for K-12 districts",
+  "hq_location": "Herndon, VA",
+  "sector": "K-12 Schools",
+  "category": "Operations & SIS",
+  "source_event": "CoSN 2026",
+  "notes": "Candidate was listed as K12 Insight; k12insight.com now 308-redirects to onflo.com and the footer reads 'Onflo (formerly K12 Insight)', so the card should carry the new name. No founding year published."
+},
+{
+  "verdict": "govtech",
+  "company_name": "Scrible",
+  "website": "https://www.scrible.com",
+  "description": "Web research, annotation and writing platform licensed by schools and districts for students and teachers",
+  "sector": "K-12 Schools",
+  "category": "Operations & SIS",
+  "source_event": "CoSN 2026",
+  "notes": "Also sold to individual professionals, but the school and district edition is the institutional business. No HQ or founding year published on the site."
 }
 ]}

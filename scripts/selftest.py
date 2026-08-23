@@ -150,6 +150,19 @@ def main() -> int:
             errors += fail(f"{where}: unknown sector {c['sector']}")
         elif c["category"] not in sector_cats[c["sector"]]:
             errors += fail(f"{where}: category {c['category']} not in {c['sector']}")
+        # extra placements, for vendors that genuinely sell into several
+        # departments. The primary stays single so the xlsx has one tab per
+        # company and "where does this live" has one answer.
+        placed = {(c["sector"], c["category"])}
+        for extra in c.get("also") or []:
+            s2, c2 = extra.get("sector"), extra.get("category")
+            if s2 not in sector_cats:
+                errors += fail(f"{where}: also names unknown sector {s2}")
+            elif c2 not in sector_cats[s2]:
+                errors += fail(f"{where}: also: {c2} not a category of {s2}")
+            elif (s2, c2) in placed:
+                errors += fail(f"{where}: filed twice under {s2} / {c2}")
+            placed.add((s2, c2))
         if c["ats"]["type"] not in ATS_TYPES:
             errors += fail(f"{where}: bad ats type {c['ats']['type']}")
         if c["hiring"]["status"] not in STATUSES:

@@ -315,6 +315,8 @@ const TABS=[["jobs","Job board"],["companies","Companies"],["intel","Market inte
 const FAM={gtm:"GTM",cs:"Customer Success",ops:"Ops / RevOps",engineering:"Engineering",
   product:"Product & Design",data:"Data & Research",policy:"Policy & Gov Affairs",
   ga:"G&A",exec:"Executive",field:"Field & implementation",other:"Unclassified"};
+const inSector=(r,s)=>r.sector===s||(r.also||[]).some(a=>a.sector===s);
+const inCategory=(r,c)=>r.category===c||(r.also||[]).some(a=>a.category===c);
 const STATE_FULL={AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",
   CO:"Colorado",CT:"Connecticut",DE:"Delaware",FL:"Florida",GA:"Georgia",HI:"Hawaii",
   ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",
@@ -600,7 +602,9 @@ function drawJobs(){
     if(where==="onsite"&&!(p.work_mode==="onsite"||p.work_mode==="hybrid"
       ||(p.office&&p.work_mode!=="remote")))return false;
     if(f&&p.family!==f)return false;
-    if(s&&p.sector!==s)return false;
+    // a vendor can sell into several departments; a filter on any one
+    // of them should find it
+    if(s&&!inSector(p,s))return false;
     if(u==="1"&&p.is_us!==true)return false;
     if(u==="0"&&p.is_us!==false)return false;
     if(st==="__none"){if(p.territory&&p.territory.stated)return false;}
@@ -714,9 +718,10 @@ function drawCos(){
   const hiringOnly=$("#c-hire-pill")?.getAttribute("aria-pressed")==="true";
   const s=g("c-sec"),ph=g("c-phase"),rd=g("c-reads");
   const rows=D.organizations.filter(o=>{
-    if(q&&!`${o.name} ${o.description||""} ${o.location||""} ${o.category}`.toLowerCase().includes(q))return false;
+    if(q&&!`${o.name} ${o.description||""} ${o.location||""} ${o.category} ${
+      (o.also||[]).map(a=>a.sector+" "+a.category).join(" ")}`.toLowerCase().includes(q))return false;
     if(hiringOnly&&!o.open_roles)return false;
-    if(s&&o.sector!==s)return false;
+    if(s&&!inSector(o,s))return false;
     if(ph&&!(o.phase||"").startsWith(ph))return false;
     if(rd==="api"&&!(o.open_roles>0))return false;
     if(rd==="x"&&o.enumerable!==false&&!o.unreadable)return false;
@@ -743,6 +748,7 @@ function drawCos(){
       <div class="main">
         <div class="t">${esc(o.name)}</div>
         <div class="m">${esc(o.sector)} / ${esc(o.category)}${
+          (o.also||[]).map(a=>" &middot; "+esc(a.sector)+" / "+esc(a.category)).join("")}${
           o.location?" &middot; "+esc(o.location):""}
           <span style="color:var(--faint)">${o.phase?" &middot; "+esc(o.phase):""}</span></div>
       </div>

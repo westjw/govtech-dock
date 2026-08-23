@@ -113,6 +113,22 @@ def validate(companies: list) -> str | None:
             return f"{who}: unknown sector {c['sector']}"
         if c["category"] not in cats[c["sector"]]:
             return f"{who}: category {c['category']} is not in {c['sector']}"
+        # A vendor can genuinely belong in several places: Tyler sells court
+        # case management, municipal ERP and public-safety records, and
+        # filing it under one of those hides it from people looking for the
+        # other two. sector/category stay the PRIMARY home - the xlsx puts
+        # each company on exactly one tab, and a canonical answer to "where
+        # does this live" is worth keeping - and `also` carries the rest.
+        placements = {(c["sector"], c["category"])}
+        for extra in c.get("also") or []:
+            s2, c2 = extra.get("sector"), extra.get("category")
+            if s2 not in cats:
+                return f"{who}: also names unknown sector {s2}"
+            if c2 not in cats[s2]:
+                return f"{who}: also: {c2} is not a category of {s2}"
+            if (s2, c2) in placements:
+                return f"{who}: filed twice under {s2} / {c2}"
+            placements.add((s2, c2))
         if (c.get("ats") or {}).get("type") not in ATS_TYPES:
             return f"{who}: bad ats type {(c.get('ats') or {}).get('type')}"
         if (c.get("hiring") or {}).get("status") not in STATUSES:
@@ -448,6 +464,39 @@ def q_vendor_scope(companies, board) -> list:
 
 def _vkey(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", (name or "").lower()).strip("-")
+
+
+def act_also(body: dict) -> dict:
+    """Add or drop an extra department for a company.
+
+    Moving is the wrong verb for a vendor that genuinely sells into several:
+    Tyler under Courts is not Tyler leaving General Gov. The primary stays
+    put and this adds alongside it, so a filter on either finds them.
+    """
+    cid, sector, category = body.get("id"), body.get("sector"), body.get("category")
+    if not cid or not sector or not category:
+        return {"error": "need a company, a sector and a category"}
+    companies = read("companies.json", [])
+    c = next((x for x in companies if x["id"] == cid), None)
+    if c is None:
+        return {"error": "no such company"}
+    also = [a for a in (c.get("also") or [])
+            if not (a.get("sector") == sector and a.get("category") == category)]
+    dropped = len(also) != len(c.get("also") or [])
+    if not dropped:
+        if (c["sector"], c["category"]) == (sector, category):
+            return {"error": "that is already its primary home"}
+        also.append({"sector": sector, "category": category})
+    c["also"] = also or None
+    if c["also"] is None:
+        c.pop("also", None)
+    err = validate(companies)
+    if err:
+        return {"error": err}
+    write_atomic("companies.json", companies)
+    verb = "no longer also in" if dropped else "also filed under"
+    return {"ok": True, "message": f"{c['name']} {verb} {sector} / {category}",
+            "also": c.get("also") or []}
 
 
 def act_place(body: dict) -> dict:
@@ -978,7 +1027,8 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "capture": act_capture, "search-companies": act_search_companies,
            "scope": act_scope, "scope-all": act_scope_all,
            "vendor-scope": act_vendor_scope,
-           "vendor-scope-all": act_vendor_scope_all, "place": act_place,
+           "vendor-scope-all": act_vendor_scope_all,
+           "also": act_also, "place": act_place,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "dismiss": act_dismiss}
