@@ -300,51 +300,93 @@ HYBRID_RE = re.compile(r"\bhybrid\b", re.I)
 ONSITE_RE = re.compile(r"\bon-?site\b|\bin-?office\b|\bin-?person\b", re.I)
 
 
-def territory(location_text: str, title: str = "") -> dict:
-    """States and region a posting covers, and how the work is done.
-
-    Territory sales put the geography in the TITLE and the company HQ in the
-    location field: "Enterprise Account Executive - NY, MA, VT, NH" listed as
-    "Denver, CO". Reading only the location field files a Northeast territory
-    under Colorado, so both are searched and title states win.
-    """
-    blob = f"{title} {location_text or ''}"
-    codes = {c for c in re.findall(r"\b([A-Z]{2})\b", title or "") if c in STATE_CODES}
-    if not codes:
-        codes = {c for c in re.findall(r"\b([A-Z]{2})\b", location_text or "")
-                 if c in STATE_CODES}
-    low = blob.lower()
-    for name, code in STATE_NAMES.items():
-        if re.search(r"\b" + re.escape(name) + r"\b", low):
-            codes.add(code)
-    region = None
+def _region_of(codes: set, text_low: str) -> str | None:
     for word, reg in REGION_WORDS.items():
-        if re.search(r"\b" + re.escape(word) + r"\b", low):
-            region = reg
-            break
-    if region is None and codes:
+        if re.search(r"\b" + re.escape(word) + r"\b", text_low):
+            return reg
+    if codes:
         for reg, members in REGIONS.items():
             if codes & members and codes <= members:
-                region = reg
-                break
-    # States named in the TITLE describe a territory to cover, not an office to sit
-    # in. Calling "Enterprise AE - NY, MA, VT, NH" onsite because it lists states
-    # would file a field role as desk-bound.
-    title_states = bool({c for c in re.findall(r"\b([A-Z]{2})\b", title or "")
-                         if c in STATE_CODES}) or (region and
-                                                   re.search(r"\b(territory|regional)\b",
-                                                             title or "", re.I))
+                return reg
+    return None
+
+
+def _codes_in(text: str) -> set:
+    codes = {c for c in re.findall(r"\b([A-Z]{2})\b", text or "") if c in STATE_CODES}
+    low = (text or "").lower()
+    for name, code in STATE_NAMES.items():
+        if name not in AMBIGUOUS_STATE_NAMES and \
+                re.search(r"\b" + re.escape(name) + r"\b", low):
+            codes.add(code)
+    return codes
+
+
+# "City, ST" - the shape a location field uses for an office. The city part
+# excludes digits so "9-5, TX" style noise cannot match.
+_CITY_ST = re.compile(r"([A-Z][A-Za-z .'-]{1,40}?),\s*([A-Z]{2})\b")
+
+
+def geography(location_text: str, title: str = "") -> dict:
+    """Three separate facts about a posting, each honest about absence.
+
+      territory  what the ROLE COVERS. Territory sales put the geography in
+                 the TITLE and the company HQ in the location field:
+                 "Enterprise AE - NY, MA, VT, NH" listed as "Denver, CO".
+                 Reading only the location field files a Northeast territory
+                 under Colorado, so the title wins. stated=False is a real,
+                 renderable state: "territory not stated", never invented.
+      office     where the JOB SITS, read only from the location field, and
+                 only when it names one place. A location listing several
+                 states is a coverage or hiring-eligibility list, not a desk.
+      work_mode  remote / hybrid / onsite exactly as STATED, else
+                 "not stated". A bare city is an office, not proof of onsite:
+                 conflating them is how a field role gets filed as desk-bound.
+    """
+    title = title or ""
+    loc = location_text or ""
+    blob = f"{title} {loc}"
+
+    # ---- territory: the title's geography, then an explicit multi-state list
+    t_codes = _codes_in(title)
+    t_region = _region_of(t_codes, title.lower())
+    loc_codes = _codes_in(loc)
+    if not t_codes and not t_region and len(loc_codes) > 1 \
+            and re.search(r"\b(territory|regional)\b", title, re.I):
+        t_codes = loc_codes            # "Territory Manager" over "TX, OK"
+    if not t_region:
+        t_region = _region_of(t_codes, "")
+    territory = {"states": sorted(t_codes), "region": t_region,
+                 "stated": bool(t_codes or t_region)}
+
+    # ---- office: one nameable place in the location field, or nothing
+    office = None
+    m = _CITY_ST.search(loc)
+    if m and len(loc_codes) <= 1:
+        office = {"city": m.group(1).strip(), "state": m.group(2)}
+    elif len(loc_codes) == 1 and not REMOTE_RE.search(loc):
+        # a bare "Texas" or "TX" with no city still pins the seat to a state
+        office = {"city": None, "state": next(iter(loc_codes))}
+
+    # ---- work mode: only what the posting says
     if REMOTE_RE.search(blob) and not ONSITE_RE.search(blob):
         mode = "remote"
+        office = None                  # "Remote - NY" is eligibility, not a desk
     elif HYBRID_RE.search(blob):
         mode = "hybrid"
-    elif title_states:
-        mode = "territory"
-    elif ONSITE_RE.search(blob) or codes:
+    elif ONSITE_RE.search(blob):
         mode = "onsite"
     else:
-        mode = "unknown"
-    return {"states": sorted(codes), "region": region, "work_mode": mode}
+        mode = "not stated"
+
+    return {"territory": territory, "office": office, "work_mode": mode}
+
+
+def territory(location_text: str, title: str = "") -> dict:
+    """The flat legacy shape some consumers still read; geography() is the
+    source of truth. states/region here are TERRITORY facts only."""
+    g = geography(location_text, title)
+    return {"states": g["territory"]["states"], "region": g["territory"]["region"],
+            "work_mode": g["work_mode"]}
 
 
 # ---------------------------------------------------------------- seniority

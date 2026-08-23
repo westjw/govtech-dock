@@ -213,6 +213,16 @@ const TABS=[["jobs","Job board"],["companies","Companies"],["intel","Market inte
 const FAM={gtm:"GTM",cs:"Customer Success",ops:"Ops / RevOps",engineering:"Engineering",
   product:"Product & Design",data:"Data & Research",policy:"Policy & Gov Affairs",
   ga:"G&A",exec:"Executive",field:"Field & implementation",other:"Unclassified"};
+const STATE_FULL={AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",
+  CO:"Colorado",CT:"Connecticut",DE:"Delaware",FL:"Florida",GA:"Georgia",HI:"Hawaii",
+  ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",
+  LA:"Louisiana",ME:"Maine",MD:"Maryland",MA:"Massachusetts",MI:"Michigan",
+  MN:"Minnesota",MS:"Mississippi",MO:"Missouri",MT:"Montana",NE:"Nebraska",
+  NV:"Nevada",NH:"New Hampshire",NJ:"New Jersey",NM:"New Mexico",NY:"New York",
+  NC:"North Carolina",ND:"North Dakota",OH:"Ohio",OK:"Oklahoma",OR:"Oregon",
+  PA:"Pennsylvania",RI:"Rhode Island",SC:"South Carolina",SD:"South Dakota",
+  TN:"Tennessee",TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",
+  WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming",DC:"District of Columbia"};
 const ATSNOTE={hard:"Ranking engine likely. Seed exact keywords once.",
   soft:"Searchable board, rarely auto-rejecting.",
   none:"A person opens this list. Keyword tuning buys little."};
@@ -260,6 +270,7 @@ function jobs(){
   const secs=[...new Set(D.postings.map(p=>p.sector))].sort();
   const states=[...new Set(D.postings.flatMap(p=>p.states||[]))].sort();
   const regions=[...new Set(D.postings.map(p=>p.region).filter(Boolean))].sort();
+  const offStates=[...new Set(D.postings.map(p=>p.office&&p.office.state).filter(Boolean))].sort();
   const quota=D.postings.filter(p=>p.quota_carrying).length;
   const fresh=D.postings.filter(p=>p.first_seen===D.generated);
   const freshQ=fresh.filter(p=>p.quota_carrying);
@@ -314,10 +325,14 @@ function jobs(){
         ${fams.map(f=>`<option value="${f}">${esc(FAM[f]||f)}</option>`).join("")}</select>
       <select id="j-sec"><option value="">All sectors</option>
         ${secs.map(x=>`<option>${esc(x)}</option>`).join("")}</select>
-      <select id="j-state"><option value="">Any state</option>
-        ${states.map(x=>`<option>${x}</option>`).join("")}</select>
-      <select id="j-region"><option value="">Any region</option>
+      <select id="j-state"><option value="">Territory: any</option>
+        <option value="__none">No stated territory</option>
+        ${states.map(x=>`<option value="${x}">Territory: ${x}</option>`).join("")}</select>
+      <select id="j-region"><option value="">Territory region: any</option>
         ${regions.map(x=>`<option>${esc(x)}</option>`).join("")}</select>
+      <select id="j-office"><option value="">Office: anywhere</option>
+        <option value="__none">Office not stated</option>
+        ${offStates.map(x=>`<option value="${x}">Office in ${x}</option>`).join("")}</select>
       <select id="j-sen"><option value="">Any level</option>
         <option value="junior">Junior</option><option value="mid">Mid</option>
         <option value="senior">Senior</option><option value="leadership">Leadership</option></select>
@@ -325,8 +340,8 @@ function jobs(){
         <option value="1">US only</option><option value="0">Outside the US</option></select>
       <select id="j-mode"><option value="">Any work mode</option>
         <option value="remote">Remote</option><option value="hybrid">Hybrid</option>
-        <option value="territory">Field territory</option>
-        <option value="onsite">Onsite</option><option value="unknown">Not stated</option></select>
+        <option value="onsite">Onsite</option>
+        <option value="not stated">Work mode not stated</option></select>
       <select id="j-src"><option value="">Any source</option>
         <option value="ats">From a job board</option>
         <option value="manual">Checked by hand</option></select>
@@ -350,7 +365,7 @@ function jobs(){
     companies produced no readable board this run, so they show no roles rather than none
     existing.</p>`;
 
-  ["j-q","j-fam","j-sec","j-us","j-state","j-region","j-mode","j-sen","j-src"]
+  ["j-q","j-fam","j-sec","j-us","j-state","j-region","j-office","j-mode","j-sen","j-src"]
     .forEach(i=>{const el=$("#"+i);if(el)el.addEventListener("input",drawJobs);});
   drawJobs();
 }
@@ -373,6 +388,27 @@ function featureCard(p,isDebut){
   </div>`;
 }
 
+/* Territory (what the role covers), office (where the job sits) and work
+   mode are three separate facts, and a card states each one or says the
+   posting did not - "no stated territory" is information a seller acts on,
+   not blank space. Silence on the posting is never upgraded to a claim. */
+function geoBits(p){
+  const bits=[];
+  const t=p.territory;
+  if(t&&t.stated)
+    bits.push("territory: "+(t.states&&t.states.length?t.states.join(", "):t.region));
+  else if(p.quota_carrying)
+    bits.push("no stated territory");
+  if(p.work_mode==="remote")bits.push("remote");
+  else if(p.office)
+    bits.push((p.work_mode==="hybrid"?"hybrid - ":"in office - ")
+      +(p.office.city?p.office.city+", ":"")+p.office.state
+      +(p.work_mode==="not stated"?" (mode not stated)":""));
+  else if(p.work_mode==="hybrid"||p.work_mode==="onsite")bits.push(p.work_mode);
+  else bits.push("work mode not stated");
+  return bits;
+}
+
 function newCard(p){
   const [bg,fg]=tile(p.company);
   return `<div class="ncard clk" onclick="window.open('${esc(p.url||"#")}','_blank')">
@@ -382,8 +418,7 @@ function newCard(p){
     <div style="font-size:13px;color:var(--dim);margin-top:3px">${esc(p.company)} &middot;
       ${esc(p.category)}</div>
     <div style="font-size:12.5px;color:var(--faint);margin-top:auto;padding-top:18px">
-      ${esc(p.location||"location not stated")}${p.work_mode&&p.work_mode!=="unknown"
-        ?" &middot; "+esc(p.work_mode):""}</div>
+      ${geoBits(p).map(esc).join(" &middot; ")}</div>
   </div>`;
 }
 
@@ -441,18 +476,35 @@ function drawJobs(){
   const whereBtn=$("#j-where")?.querySelector('[aria-pressed="true"]');
   const where=whereBtn?whereBtn.dataset.v:"";
   const f=g("j-fam"),s=g("j-sec"),u=g("j-us"),st=g("j-state"),
-        rg=g("j-region"),md=g("j-mode"),sen=g("j-sen"),src=g("j-src");
+        rg=g("j-region"),md=g("j-mode"),sen=g("j-sen"),src=g("j-src"),
+        off=g("j-office");
 
   const rows=D.postings.filter(p=>{
-    if(q&&!`${p.title} ${p.company} ${p.location||""} ${p.category}`.toLowerCase().includes(q))return false;
+    // The searchable text includes the office and territory the classifier
+    // extracted - as codes AND full names, so the hero's own suggestion
+    // "account executive kansas" finds a territory stored as KS.
+    const geoCodes=[...(p.states||[]),p.office?p.office.state:null].filter(Boolean);
+    const hay=`${p.title} ${p.company} ${p.location||""} ${p.category} ${
+      p.office?(p.office.city||"")+" "+p.office.state:""} ${
+      (p.states||[]).join(" ")} ${p.region||""} ${
+      geoCodes.map(c=>STATE_FULL[c]||"").join(" ")}`.toLowerCase();
+    // Every word must land somewhere, not the phrase as one substring:
+    // "account executive kansas" is a title plus a place, never adjacent.
+    if(q&&!q.split(/\s+/).every(w=>hay.includes(w)))return false;
     if(quotaOnly&&!p.quota_carrying)return false;
     if(where==="remote"&&p.work_mode!=="remote")return false;
-    if(where==="onsite"&&!(p.work_mode==="onsite"||p.work_mode==="hybrid"))return false;
+    // "In person": the job demonstrably sits somewhere - a stated onsite or
+    // hybrid mode, or a named office on a role that is not remote.
+    if(where==="onsite"&&!(p.work_mode==="onsite"||p.work_mode==="hybrid"
+      ||(p.office&&p.work_mode!=="remote")))return false;
     if(f&&p.family!==f)return false;
     if(s&&p.sector!==s)return false;
     if(u==="1"&&p.is_us!==true)return false;
     if(u==="0"&&p.is_us!==false)return false;
-    if(st&&!(p.states||[]).includes(st))return false;
+    if(st==="__none"){if(p.territory&&p.territory.stated)return false;}
+    else if(st&&!(p.states||[]).includes(st))return false;
+    if(off==="__none"){if(p.office)return false;}
+    else if(off&&!(p.office&&p.office.state===off))return false;
     if(rg&&p.region!==rg)return false;
     if(md&&p.work_mode!==md)return false;
     if(sen&&p.seniority!==sen)return false;
@@ -463,7 +515,7 @@ function drawJobs(){
     ||a.company.localeCompare(b.company));
 
   // family has its own pill now, so it does not also count as an overflow filter
-  const extra=["j-sec","j-state","j-region","j-sen","j-us","j-mode","j-src"]
+  const extra=["j-sec","j-state","j-region","j-office","j-sen","j-us","j-mode","j-src"]
     .filter(i=>g(i)).length;
   if($("#j-fam-pill") && $("#j-fam") && $("#j-fam-pill").value!==$("#j-fam").value)
     $("#j-fam-pill").value=$("#j-fam").value;
@@ -480,7 +532,7 @@ function drawJobs(){
       <div class="main">
         <div class="t">${esc(p.title)}</div>
         <div class="m">${esc(p.company)} &middot; ${esc(p.sector)} / ${esc(p.category)}
-          &middot; ${esc(p.location||"not stated")}
+          &middot; ${geoBits(p).map(esc).join(" &middot; ")}
           <span style="color:var(--faint)">${p.is_us===false?" &middot; non-US":""}${
             p.seniority?" &middot; "+esc(p.seniority)+", from the title":""}${
             p.source==="manual"?" &middot; checked by hand":""}</span></div>

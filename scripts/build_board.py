@@ -310,7 +310,7 @@ def main() -> int:
                     scope_pending = True
             loc = j.get("location") or ""
             fam = roles.family(title)
-            terr = roles.territory(loc, title)
+            geo = roles.geography(loc, title)
             fams[fam] += 1
             kept += 1
             postings.append({
@@ -320,8 +320,13 @@ def main() -> int:
                 "title": title, "family": fam,
                 "quota_carrying": roles.is_quota_carrying(title),
                 "seniority": roles.seniority(title),
-                "states": terr["states"], "region": terr["region"],
-                "work_mode": terr["work_mode"],
+                # territory (what the role covers) and office (where the job
+                # sits) are separate, filterable facts; states/region repeat
+                # the territory half for older consumers.
+                "territory": geo["territory"], "office": geo["office"],
+                "states": geo["territory"]["states"],
+                "region": geo["territory"]["region"],
+                "work_mode": geo["work_mode"],
                 "location": loc, "is_us": roles.is_us(loc, title),
                 "url": j.get("url") or board_url(c),
                 "sector": c["sector"], "category": c["category"],
@@ -386,10 +391,12 @@ def main() -> int:
                 p["first_seen"] = prev[p["id"]]["first_seen"]
 
     for mp in postings:
-        if "seniority" not in mp:            # manual entries predate these fields
-            t = roles.territory(mp.get("location", ""), mp.get("title", ""))
+        if "territory" not in mp:            # manual entries predate these fields
+            g = roles.geography(mp.get("location", ""), mp.get("title", ""))
             mp.update(seniority=roles.seniority(mp.get("title", "")),
-                      states=t["states"], region=t["region"], work_mode=t["work_mode"])
+                      territory=g["territory"], office=g["office"],
+                      states=g["territory"]["states"],
+                      region=g["territory"]["region"], work_mode=g["work_mode"])
 
     fam_totals = collections.Counter(p["family"] for p in postings)
     sector_totals = collections.Counter(p["sector"] for p in postings)

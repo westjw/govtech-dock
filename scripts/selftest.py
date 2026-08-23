@@ -202,6 +202,42 @@ def main() -> int:
         if got != expected:
             errors += fail(f"classify({title!r}) = {got}, expected {expected}")
 
+    # Territory, office and work mode are three separate facts, each honest
+    # about absence. Every case here is a conflation that once happened or
+    # plausibly would: title-states filed as a desk, a bare city read as
+    # proof of onsite, "Remote - NY" read as a New York office.
+    GEOGRAPHY_CASES = [
+        # (location, title) -> (territory_states, territory_stated,
+        #                       office_state, work_mode)
+        (("Denver, CO", "Enterprise Account Executive - NY, MA, VT, NH"),
+         (["MA", "NH", "NY", "VT"], True, "CO", "not stated")),
+        (("New York, NY", "Account Executive"),
+         ([], False, "NY", "not stated")),
+        (("Remote - NY, NJ, CT", "Account Executive"),
+         ([], False, None, "remote")),
+        (("", "Territory Manager, Pacific Northwest"),
+         ([], True, None, "not stated")),        # region stated, no states
+        (("TX, OK", "Territory Manager"),
+         (["OK", "TX"], True, None, "not stated")),
+        (("Chicago, IL (Hybrid)", "Account Executive"),
+         ([], False, "IL", "hybrid")),
+        (("San Antonio, TX", "On-site Account Executive"),
+         ([], False, "TX", "onsite")),
+        (("Remote", "Account Executive"),
+         ([], False, None, "remote")),
+        (("", "Account Executive"),
+         ([], False, None, "not stated")),
+        (("Manchester, United Kingdom", "Account Executive"),
+         ([], False, None, "not stated")),       # no US state = no office claim
+    ]
+    for (loc, title), (t_states, t_stated, o_state, mode) in GEOGRAPHY_CASES:
+        g = _roles.geography(loc, title)
+        got = (g["territory"]["states"], g["territory"]["stated"],
+               g["office"]["state"] if g["office"] else None, g["work_mode"])
+        if got != (t_states, t_stated, o_state, mode):
+            errors += fail(f"geography({loc!r}, {title!r}) = {got}, "
+                           f"expected {(t_states, t_stated, o_state, mode)}")
+
     status, note, roles = classify.rollup([
         {"title": "Account Executive, SLED", "location": "New York, NY", "url": "x"},
         {"title": "SDR", "location": "", "url": "y"},
