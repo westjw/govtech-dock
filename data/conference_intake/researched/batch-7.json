@@ -760,6 +760,147 @@
    "category": "IT & AI Platforms",
    "source_event": "EDUCAUSE 2026",
    "notes": "General observability vendor with an education and public sector practice, not govtech-specific"
+  },
+  {
+   "verdict": "scope_review",
+   "company_name": "ESET",
+   "website": "https://www.eset.com/us/",
+   "description": "Endpoint antivirus, detection and response and email security sold to consumers and organizations in every industry",
+   "hq_location": "Bratislava, Slovakia",
+   "year_founded": 1992,
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "source_event": "EDUCAUSE 2026",
+   "notes": "Exhibited as ESET LLC, the North American subsidiary. General-purpose security software, not govtech-specific"
+  },
+  {
+   "verdict": "scope_review",
+   "company_name": "Genesys",
+   "website": "https://www.genesys.com",
+   "description": "Cloud contact center, routing and customer experience software sold to organizations in every industry, including government service centers",
+   "hq_location": "Menlo Park, CA",
+   "year_founded": 1990,
+   "sector": "General Gov",
+   "category": "Citizen Services",
+   "source_event": "EDUCAUSE 2026",
+   "notes": "Exhibited as Genesys Cloud Services, Inc. Horizontal CX platform with a public sector practice, not govtech-specific"
+  },
+  {
+   "verdict": "scope_review",
+   "company_name": "HackerOne",
+   "website": "https://www.hackerone.com",
+   "description": "Bug bounty, vulnerability disclosure and pentest-as-a-service marketplace used by companies and agencies in every sector",
+   "hq_location": "San Francisco, CA",
+   "year_founded": 2012,
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "source_event": "EDUCAUSE 2026",
+   "notes": "General cybersecurity platform, not govtech-specific"
+  },
+  {
+   "verdict": "scope_review",
+   "company_name": "IGEL",
+   "website": "https://www.igel.com",
+   "description": "Secure Linux endpoint operating system and management software for VDI, DaaS and cloud workspaces across healthcare, finance, retail, manufacturing and government",
+   "hq_location": "Bremen, Germany",
+   "year_founded": 2001,
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "source_event": "EDUCAUSE 2026",
+   "notes": "Exhibited as IGEL Technology Corporation, the US entity. General endpoint software sold across many industries. Recently acquired Stratodesk"
+  },
+  {
+   "verdict": "govtech",
+   "company_name": "Keenious",
+   "website": "https://keenious.com",
+   "description": "AI research discovery tool that recommends academic literature from a working document, licensed institution-wide by universities and their libraries",
+   "sector": "Higher Education",
+   "category": "IT & Administration",
+   "source_event": "EDUCAUSE 2026",
+   "notes": "Also sold to individual students and researchers alongside institutional licenses. Norwegian-origin company; no HQ or founding year published on site"
+  },
+  {
+   "verdict": "govtech",
+   "company_name": "Modern Campus",
+   "website": "https://www.moderncampus.com",
+   "description": "Web content management, catalog and curriculum, scheduling, continuing education and student engagement software for colleges and universities",
+   "hq_location": "Toronto, Canada",
+   "sector": "Higher Education",
+   "category": "IT & Administration",
+   "source_event": "EDUCAUSE 2026",
+   "notes": "US entity is Modern Campus USA Inc. with an office in Camarillo, CA; primary address on the site is 2482 Yonge Street, Toronto. Site claims 1,700+ institutions. No founding year published"
+  },
+  {
+   "verdict": "govtech",
+   "company_name": "OneWorldSIS",
+   "website": "https://www.oneworldsis.com",
+   "description": "Student information system built on Microsoft Dynamics 365 covering recruitment, admissions, records, alumni and student financials for colleges and universities",
+   "hq_location": "Charlottesville, VA",
+   "sector": "Higher Education",
+   "category": "IT & Administration",
+   "source_event": "EDUCAUSE 2026",
+   "notes": "Legal entity OneWorldSIS, Inc. No founding year published"
+  },
+  {
+   "verdict": "scope_review",
+   "company_name": "Pathlock",
+   "website": "https://pathlock.com",
+   "description": "Application access governance, segregation-of-duties and continuous controls monitoring for ERP systems such as SAP and Oracle across all industries",
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "source_event": "EDUCAUSE 2026",
+   "notes": "Horizontal enterprise identity governance and compliance product; higher education is one buyer segment. No HQ or founding year readable from the site, which returns 403 to WebFetch"
+  },
+  {
+   "verdict": "govtech",
+   "company_name": "QuickLaunch",
+   "website": "https://quicklaunch.io",
+   "description": "Single sign-on, multi-factor authentication and identity lifecycle software built only for universities, community colleges and HBCUs",
+   "sector": "Higher Education",
+   "category": "IT & Administration",
+   "source_event": "EDUCAUSE 2026",
+   "notes": "Integrates with Ellucian Banner, Colleague and Workday Student; site claims 200+ institutions. No HQ or founding year published"
+  },
+  {
+   "verdict": "govtech",
+   "company_name": "SaltyCloud",
+   "website": "https://www.saltycloud.com",
+   "description": "Isora GRC risk assessment, vendor review and compliance workflow software for higher education and public sector security teams",
+   "hq_location": "Austin, TX",
+   "sector": "Higher Education",
+   "category": "IT & Administration",
+   "source_event": "EDUCAUSE 2026",
+   "notes": "Legal entity SaltyCloud, PBC, a public benefit corporation. Higher ed is the lead market but the site also names financial institutions and general enterprises, which is worth a second look. No founding year published"
+  },
+  {
+   "verdict": "govtech",
+   "company_name": "Simple Higher Ed",
+   "website": "https://simplehighered.com",
+   "description": "Syllabus management, course readiness and AI course support software for colleges and universities",
+   "sector": "Higher Education",
+   "category": "IT & Administration",
+   "source_event": "EDUCAUSE 2026",
+   "notes": "Parent brand for Simple Syllabus, Simple Prep and Simple TA; site claims 600+ institutions. No HQ or founding year published"
+  },
+  {
+   "verdict": "govtech",
+   "company_name": "Stellic",
+   "website": "https://www.stellic.com",
+   "description": "Degree planning, advising, transfer pathway and registration software for public universities, community colleges and private institutions",
+   "sector": "Higher Education",
+   "category": "IT & Administration",
+   "source_event": "EDUCAUSE 2026",
+   "notes": "Named customers include Carnegie Mellon, Florida State, Duke and University of Virginia. No HQ or founding year published on site"
+  },
+  {
+   "verdict": "govtech",
+   "company_name": "Unifuse AI",
+   "website": "https://unifuse.ai",
+   "description": "AI agents that connect campus systems and automate administrative tasks for colleges and universities",
+   "sector": "Higher Education",
+   "category": "IT & Administration",
+   "source_event": "EDUCAUSE 2026",
+   "notes": "Very early stage: the site says the company is in stealth and partnering with select institutions during the second half of 2026, so there is no product detail, customer list, HQ or founding year to record yet. Worth re-checking before this becomes a live card"
   }
  ]
 }
