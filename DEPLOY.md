@@ -22,16 +22,21 @@ Everything after it is already automated.
 → policy: Emails ending in your address, or a one-time PIN. Free for up to 50
 users, and real auth rather than a shared password.
 
-## 4. Let the daily refresh deploy itself (~2 min, optional)
-The workflow already contains a deploy step that skips until these exist:
-- Repo **Settings → Secrets and variables → Actions**:
-  - secret `CLOUDFLARE_API_TOKEN` (dash → My Profile → API Tokens →
-    "Edit Cloudflare Workers" template works, or a custom token with
-    Pages:Edit)
-  - secret `CLOUDFLARE_ACCOUNT_ID` (dash home, right sidebar)
-  - variable `CLOUDFLARE_PROJECT` = the Pages project name from step 2
-Once set, every 06:00 refresh publishes - behind the sanity gate, which
-refuses a board that shrank more than 25% overnight.
+## 4. Deploying: already handled, and deliberately only one way
+
+Cloudflare Pages is connected to the repository and builds on every push to
+main. Its build command is `python3 scripts/build_site.py`, so the sanity
+gate runs in the real deploy path: verified 2026-08-23 by feeding it a board
+collapsed to 50 postings, which exits 1, fails the build, and leaves the
+previous site up.
+
+The workflow used to carry its own deploy step, gated on a variable. It is
+gone. Two doors to production is worse than one, and the door that skips
+silently when a variable is unset is the one nobody checks.
+
+The CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets are now unused by
+any workflow. Nothing breaks if you leave them, but deleting them removes two
+credentials that no longer do anything.
 
 ## 5. Going public (~5 min)
 

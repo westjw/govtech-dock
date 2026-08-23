@@ -7791,5 +7791,556 @@
   "found": true,
   "note": "careers page, no ATS behind it (/about/careers)",
   "weak": true
+ },
+ "academia-by-serosoft": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "pairin": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers/)",
+  "weak": true
+ },
+ "chess-health": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
+ },
+ "c-ram-by-merative": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "workday:['merative', 'wd12', 'External_Career_Si, 21 posting(s) readable"
+ },
+ "resimplifi": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "housingos": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "feedbackfruits": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "ashby:feedbackfruits, 5 posting(s) readable"
+ },
+ "ellucian": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers-home)",
+  "weak": true
+ },
+ "crediblemind": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers/)",
+  "weak": true
+ },
+ "qualo": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "blackboard": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers)",
+  "weak": true
+ },
+ "intelligent-video-solutions": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "paylocity:https://recruiting.paylocity.com/recruit, 0 posting(s) readable"
+ },
+ "pope-tech": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/jobs)",
+  "weak": true
+ },
+ "wooclap": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "evertrue": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "ensoftek-inc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "nelnet-campus-commerce": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "apporto": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "for-the-record-2": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "teamdynamix": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "bibliu": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "bamboohr:bibliu, 46 posting(s) readable"
+ },
+ "unimarket": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "givecard": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "ashby:GiveCard found but unreadable (HTTP 404 for https://api.ashbyhq.com)",
+  "retry_soon": true
+ },
+ "instructure": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "ashby:instructure, 45 posting(s) readable"
+ },
+ "casebase": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "pha-web": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "paylocity:Management-Computer-Support-Inc reads (1 posting(s)), but does not match 'PHA-Web'; likely a parent or another company"
+ },
+ "cognisen": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "anonymous-health": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at /careers (HTTP 403)",
+  "retry_soon": true
+ },
+ "steadyiq": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/jobs/employer/steadyiq)",
+  "weak": true
+ },
+ "modality": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at /careers (HTTP 403)",
+  "retry_soon": true
+ },
+ "cumulus": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "ad-astra-information-systems": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "html:https://workforcenow.adp.com/mascs found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
+ },
+ "verity": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "kanso": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "appsanywhere": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers)",
+  "weak": true
+ },
+ "radicle-health": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "greenhouse:radiclehealth, 3 posting(s) readable"
+ },
+ "chorus-innovations": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers)",
+  "weak": true
+ },
+ "boodlebox": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "sagitec": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "lyssn": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-us/careers/)",
+  "weak": true
+ },
+ "ovation": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/how-ut-san-antonio-uses-ovation-to-scale-ca)",
+  "weak": true
+ },
+ "seats-one": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "smowl": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "n2n-services": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "learnwise-ai": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at com/news/uk-student-finance-transformation-opportunities-lifelong-learning-education-tech-2509 (HTTP 403)",
+  "retry_soon": true
+ },
+ "terminalfour": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at /jobs (HTTP 403)",
+  "retry_soon": true
+ },
+ "cirrus-identity": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers)",
+  "weak": true
+ },
+ "potential-ly": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at uk/e-learning/new-platform-bids-to-help-young-people-in-pandemic-hit-jobs-market (HTTP 403)",
+  "retry_soon": true
+ },
+ "d2l": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "niche": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at /careers (HTTP 403)",
+  "retry_soon": true
+ },
+ "harmonize": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, says it has no openings (/about/careers/)",
+  "weak": true
+ },
+ "career-team": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "greenhouse:careerteam, 45 posting(s) readable"
+ },
+ "invoke-learning": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "vimo": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "trualta": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "bamboohr:trualta, 1 posting(s) readable"
+ },
+ "adventfs": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
+ },
+ "augintel": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "heliocampus": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers)",
+  "weak": true
+ },
+ "greencourt-legal-technologies-inc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "noble-software-group": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "gravyty": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "bamboohr:gravyty, 1 posting(s) readable"
+ },
+ "civitas-learning": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "greenhouse:civitaslearning, 2 posting(s) readable"
+ },
+ "datacampus": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "sacs-software": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "next-chapter-technology-inc": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "deerfield-solutions-llc": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "honorlock": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "html:recruiting reads (0 posting(s)), but does not match 'Honorlock'; likely a parent or another company"
+ },
+ "k16-solutions": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
+ },
+ "writesea": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "yuja": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "bamboohr:yuja, 14 posting(s) readable"
+ },
+ "timelygrader": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "tcare-inc": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
+ },
+ "honest-jobs": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "html:https://facebook.csod.com found but unreadable (network error: HTTPSConnectionPool(h)",
+  "retry_soon": true
+ },
+ "respondus": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "vitalsource": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-us/careers)",
+  "weak": true
+ },
+ "campusiq": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/campusiq-resources/campusiq-careers)",
+  "weak": true
+ },
+ "element451": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "stellarware-corporation": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "craft-education": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "workday:wgu reads (27 posting(s)), but does not match 'Craft Education'; likely a parent or another company"
+ },
+ "giv": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "legaledge-software": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "medsuite": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "q2i": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "propeller": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "atomic-jolt": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "starrez": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "greenhouse:starrez, 19 posting(s) readable"
+ },
+ "nuventive": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "socialbridge-technologies": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "proven-software": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "collegevine": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "ashby:https://collegevine.com found but unreadable (HTTP 401 for https://api.ashbyhq.com)",
+  "retry_soon": true
+ },
+ "tuapath": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/college-career-centers/)",
+  "weak": true
+ },
+ "rhetorixlab": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "constituo-software": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "collabrios-health": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "paylocity:https://recruiting.paylocity.com/recruit, 0 posting(s) readable"
+ },
+ "gray-decision-intelligence": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career-insights-widget)",
+  "weak": true
+ },
+ "job-machine": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/solutions/career-colleges)",
+  "weak": true
+ },
+ "blue-flame-group": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "zaristai": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "futurefit-ai": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "jenzabar": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  }
 }

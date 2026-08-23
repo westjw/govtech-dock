@@ -100,20 +100,13 @@ jobs:
             echo "No new AE openings this run."
           fi
 
-      # ---------------------------------------------------------------- deploy
-      # Publishes the public site to Cloudflare Pages, but ONLY once the two
-      # secrets exist - until then this step skips cleanly, so the workflow is
-      # safe to ship before the account does. build_site.py runs the sanity
-      # gate first: a board that shrank >25% overnight refuses to publish, so
-      # a broken fetcher cannot replace a good public board at 06:00 unattended.
-      - name: Build the public site (sanity-gated)
-        if: ${{ vars.CLOUDFLARE_PROJECT != '' }}
-        run: python scripts/build_site.py
-
-      - name: Deploy to Cloudflare Pages
-        if: ${{ vars.CLOUDFLARE_PROJECT != '' }}
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy public --project-name=${{ vars.CLOUDFLARE_PROJECT }}
+      # ------------------------------------------------------------- deploy
+      # There is no deploy step here on purpose. Cloudflare Pages is connected
+      # to this repository and builds on every push to main, running
+      # `python3 scripts/build_site.py` as its build command - so the sanity
+      # gate stands in the real deploy path: a board that shrank more than 25%
+      # exits non-zero, the Pages build fails, and the previous site stays up.
+      #
+      # A second deploy step here would be a second door to production, and the
+      # one that skips silently when a variable is unset is exactly the door
+      # nobody remembers to check.
