@@ -8342,5 +8342,340 @@
   "found": true,
   "note": "careers page, no ATS behind it (/careers)",
   "weak": true
+ },
+ "quodus": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "clinically-ai": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "ashby:ClinicallyAI, 9 posting(s) readable"
+ },
+ "dims": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "psych-hub": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers)",
+  "weak": true
+ },
+ "coursedog": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "html:https://coursedog.pinpointhq.com found but unreadable (page too small - likely JS-rendered)",
+  "retry_soon": true
+ },
+ "cantata-health-solutions": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "willetts-technology": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "sigmund-software": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "citiz3n": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "okhuman": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "pathify": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "html:https://pathify.pinpointhq.com, 0 posting(s) readable"
+ },
+ "touchnet": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "nec-software-solutions": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "clarity-solutions-group": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "gecko": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/)",
+  "weak": true
+ },
+ "kuali": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-us/work-with-us)",
+  "weak": true
+ },
+ "civicreach": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "supercom": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, says it has no openings (/jobs/supercom/46.00A)",
+  "weak": true
+ },
+ "greenspace-health": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en-us/company/careers/)",
+  "weak": true
+ },
+ "carasolva": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "neighborly-software": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "ashby:neighborly-software, 11 posting(s) readable"
+ },
+ "ease-health": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "mend": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "turbopass-corporation": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "brickfield-education-labs": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "simcare": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "sharestream": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-us/careers/)",
+  "weak": true
+ },
+ "zoobook-systems": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "affordablehousing-com": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/join-us/)",
+  "weak": true
+ },
+ "campusmind": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "courseleaf": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "paylocity:Leepfrog-Technologies-Inc reads (2 posting(s)), but does not match 'CourseLeaf'; likely a parent or another company"
+ },
+ "greymatter": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "hiboop": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/open-positions)",
+  "weak": true
+ },
+ "modern-campus": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "rippling:moderncampus, 5 posting(s) readable"
+ },
+ "quicklaunch": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "codio": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "oneworldsis": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "stellic": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "ashby:stellic, 10 posting(s) readable"
+ },
+ "notenetic": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "unifuse-ai": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "saltycloud": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "simple-higher-ed": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "securus-monitoring": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "keenious": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "mirza": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "corrections-software-solutions": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "care-predictor": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "gis-webtech": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers)",
+  "weak": true
+ },
+ "psyrin": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
+ },
+ "metrix-learning": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "emphasys-software": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "ccs-health": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "continuumcloud": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "ito-health": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "simplifyance": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "colaj": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "echo360": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "workable:echo360-inc, 1 posting(s) readable"
+ },
+ "a-m-simpkins-and-associates": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "gave up after 45s",
+  "retry_soon": true
+ },
+ "studystash": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "evisions": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "bamboohr:evisions, 1 posting(s) readable"
+ },
+ "infoready": {
+  "on": "2026-08-23",
+  "found": false,
+  "note": "no board found"
+ },
+ "modo-labs": {
+  "on": "2026-08-23",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  }
 }

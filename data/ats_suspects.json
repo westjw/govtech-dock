@@ -334,5 +334,217 @@
   },
   "note": "paylocity:Civix reads (4 posting(s)), but does not match 'GCR (Woolpert)'; likely a parent or another company",
   "on": "2026-08-20"
+ },
+ "cogsdale-corporation": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "harriscomputer",
+    "wd3",
+    "Cogsdale"
+   ]
+  },
+  "note": "workday:harriscomputer reads (0 posting(s)), but does not match 'Cogsdale Corporation'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "govstack": {
+  "ats": {
+   "type": "oracle",
+   "ref": "https://ejov.fa.ca2.oraclecloud.com"
+  },
+  "note": "oracle:ejov reads (0 posting(s)), but does not match 'Govstack'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "sirsidynix": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "harriscomputer",
+    "wd3",
+    "1"
+   ]
+  },
+  "note": "workday:harriscomputer reads (34 posting(s)), but does not match 'SirsiDynix'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "ebsco-information-services": {
+  "ats": {
+   "type": "icims",
+   "ref": "careers-ebscoind"
+  },
+  "note": "icims:careers-ebscoind reads (20 posting(s)), but does not match 'EBSCO Information Services'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "innovative": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "clarivate",
+    "wd3",
+    "Clarivate_Careers"
+   ]
+  },
+  "note": "workday:clarivate reads (29 posting(s)), but does not match 'Innovative'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "envisionware": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "volarisgroup",
+    "wd3",
+    "EnvisionWare"
+   ]
+  },
+  "note": "workday:volarisgroup reads (0 posting(s)), but does not match 'EnvisionWare'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "system-innovators": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "harriscomputer",
+    "wd3",
+    "1"
+   ]
+  },
+  "note": "workday:harriscomputer reads (34 posting(s)), but does not match 'System Innovators'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "bibliocommons": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "volarisgroup",
+    "wd3",
+    "BiblioCommons"
+   ]
+  },
+  "note": "workday:volarisgroup reads (2 posting(s)), but does not match 'BiblioCommons'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "muni-link": {
+  "ats": {
+   "type": "html",
+   "ref": "https://recruiting.ultipro.com/ROP1001ROPER"
+  },
+  "note": "html:recruiting reads (0 posting(s)), but does not match 'Muni-Link'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "rta": {
+  "ats": {
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/0a0e566f-6f23-49c1-b072-cd5e24d4d38b/Ron-Turley-Associates-Inc"
+  },
+  "note": "paylocity:Ron-Turley-Associates-Inc reads (4 posting(s)), but does not match 'RTA'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "i3-verticals-education": {
+  "ats": {
+   "type": "html",
+   "ref": "https://recruiting2.ultipro.com/IVE1000IVEC"
+  },
+  "note": "html:recruiting2 reads (0 posting(s)), but does not match 'i3 Verticals Education (PaySchools)'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "icev": {
+  "ats": {
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/646acf7b-3795-46d1-8ec6-8ec7238debd9/CEV-MULTIMEDIA-LTD"
+  },
+  "note": "paylocity:CEV-MULTIMEDIA-LTD reads (2 posting(s)), but does not match 'iCEV'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "cayenta": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "harriscomputer",
+    "wd3",
+    "Cayenta"
+   ]
+  },
+  "note": "workday:harriscomputer reads (0 posting(s)), but does not match 'Cayenta'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "silverblaze": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "harriscomputer",
+    "wd3",
+    "Silverblaze"
+   ]
+  },
+  "note": "workday:harriscomputer reads (0 posting(s)), but does not match 'Silverblaze'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "inhance-utilities-solutions": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "harriscomputer",
+    "wd3",
+    "1"
+   ]
+  },
+  "note": "workday:harriscomputer reads (34 posting(s)), but does not match 'inHANCE Utilities Solutions'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "hansen-technologies": {
+  "ats": {
+   "type": "oracle",
+   "ref": "https://eoja.fa.ap1.oraclecloud.com"
+  },
+  "note": "oracle:eoja reads (0 posting(s)), but does not match 'Hansen Technologies'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "systems-software": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "harriscomputer",
+    "wd3",
+    "S_and_S"
+   ]
+  },
+  "note": "workday:harriscomputer reads (1 posting(s)), but does not match 'Systems & Software'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "pha-web": {
+  "ats": {
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/e388d7be-324c-4613-864a-476a02d101e4/Management-Computer-Support-Inc"
+  },
+  "note": "paylocity:Management-Computer-Support-Inc reads (1 posting(s)), but does not match 'PHA-Web'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "honorlock": {
+  "ats": {
+   "type": "html",
+   "ref": "https://recruiting.ultipro.com/HON1001HONR"
+  },
+  "note": "html:recruiting reads (0 posting(s)), but does not match 'Honorlock'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "craft-education": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "wgu",
+    "wd5",
+    "External"
+   ]
+  },
+  "note": "workday:wgu reads (27 posting(s)), but does not match 'Craft Education'; likely a parent or another company",
+  "on": "2026-08-23"
+ },
+ "courseleaf": {
+  "ats": {
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/17713721-eeb1-49c8-a8fe-8a7ec37f0088/Leepfrog-Technologies-Inc"
+  },
+  "note": "paylocity:Leepfrog-Technologies-Inc reads (2 posting(s)), but does not match 'CourseLeaf'; likely a parent or another company",
+  "on": "2026-08-23"
  }
 }
