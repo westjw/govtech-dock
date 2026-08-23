@@ -65,6 +65,10 @@ jobs:
             echo "No changes today."
           else
             git commit -m "chore: daily hiring refresh ($(date +%F))"
+            # Main may have moved during the 40-minute fetch. Rebase, and on a
+            # conflict in generated files let this run's freshly built data
+            # win (-X theirs = the commit being replayed, i.e. ours-just-built).
+            git pull --rebase -X theirs origin main
             git push
           fi
 
@@ -78,6 +82,7 @@ jobs:
             echo "Spreadsheet unchanged."
           else
             git commit -m "chore: spreadsheet rebuild ($(date +%F))"
+            git pull --rebase -X theirs origin main
             git push
           fi
 
