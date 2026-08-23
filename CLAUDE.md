@@ -128,6 +128,35 @@ company runs the same identity and sector guess as intake and shows the
 evidence, and reports low confidence as low rather than filing on one
 incidental keyword. Approving a job writes it through the capture path.
 
+## The admin queues are meant to become a game (owner, 2026-08-23)
+
+Not to build now. But every queue built from here should be built so this is
+possible later, because retrofitting it means re-recording history.
+
+The owner's reasoning, in his words: gamifying admin work would "help train
+the AI, speed up backend manual work, and enhance the product if someone
+else were to do it." Three payoffs, and the third is the one with teeth: a
+queue a stranger would willingly work is a different product from a queue
+only the owner tolerates.
+
+What that implies for anything built today, at no cost today:
+
+- **Every ruling gets an author, a timestamp and a reason.** Already true of
+  `admin_dismissed.json` and `scope_decisions.json`. Keep it true everywhere.
+  A ruling without an author cannot be scored, trusted, or learned from, and
+  you cannot add the author afterwards.
+- **A ruling is training data.** Each one is a labeled example: this title is
+  that family, this vendor belongs in that sector, this federal role is in
+  scope. Store the INPUT the person saw alongside their answer, not just the
+  answer, or the label is useless for teaching the classifier later.
+- **Keep the confident cases out of the queue.** The fun in a queue is that
+  every item needed a person. Padding it with items a rule could have settled
+  is what makes admin work feel like a chore.
+- **Never let a score reward volume over correctness.** The asymmetric error
+  rule holds: a wrong "not a govtech company" is invisible and permanent. Any
+  future points system must make care pay better than speed, or it will
+  manufacture exactly the errors this repo is built to avoid.
+
 ## Coverage: read `scripts/coverage.py`, not the raw fraction
 
 `python scripts/coverage.py [--by-sector]`

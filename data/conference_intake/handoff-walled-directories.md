@@ -102,24 +102,33 @@ list.
 - Roughly 211 exhibitors
 - Notes: WASTECON was rebranded to RCon starting 2025. PDF verified by download: '2025 RCon Exhibitors as of 11.4.2025' with booth numbers (Great Lakes Fusion, AGRU America, Veolia, Machinex, RouteSmart, WSP USA, ...); SWANA says the sold-out 2025 hall had 211 exhibitors. Upcoming RCon 2026 (St. Louis, Sept 29-Oct 1) exposes only a JS floor plan at rcon2026.expofp.com (empty HTML shell) plus swana.org/events/rcon2026/exhibit-hall.
 
-## No public list found (may need your member login, or skip)
+## Published nothing a fetcher could read (5)
+
+No public exhibitor directory exists for these. Start here; the vendor
+list is usually in the printed program, behind a member login, or only
+in a sponsor prospectus PDF.
 
 ### AAMVA Annual (DMV)
-- Roughly 90 exhibitors
-- Notes: No public exhibitor directory for AIC 2025 (Phoenix) or 2026 (Providence, Sep 29-Oct 1). Tried: AAMVA 2026 and 2025 exhibit-sponsor pages (prospectus/pricing only; 2026 hall sold out with waiting list, typical ~90 exhibitors), searches for exhibitor list/booth numbers/program PDF, the 2026 AIC main page (no sponsor logos in HTML), and third-party ExpoGage (HTTP 403/paywalled). Exhibitor names appear to be attendee-only (conference app). Closest page: https://www.aamva.org/events-education/conferences-meetings/conferences/2026-annual-international-conference/exhibit-sponsor
+- https://www.aamva.org/events-education/aamva-conferences/2026-annual-international-conference
+- https://www.aamva.org/getmedia/ (exhibit prospectus PDF, linked from that page)
+- What was tried: No public exhibitor directory for AIC 2025 (Phoenix) or 2026 (Providence, Sep 29-Oct 1). Tried: AAMVA 2026 and 2025 exhibit-sponsor pages (prospectus/pricing only; 2026 hall sold out with waiting list, typical ~90 exhibitors), searches for exhibitor list/booth
 
 ### Election Center National Conference (Elections)
-- Platform: iMIS portal (portal.electioncenter.org) for registration only
-- Notes: 41st Annual, Aug 19-21, 2026, Kansas City MO. No public exhibitor/sponsor directory found. Tried: 'Election Center national conference exhibitors/sponsors 2025 and 2026', site:electioncenter.org search, and direct fetches - electioncenter.org and portal.electioncenter.org both return 403 to the fetcher; only login-walled iMIS exhibitor-registration pages (EventKey BOOTH825) surface. Vendor names likely only in the printed program or behind member login.
+- https://www.electioncenter.org/annual-conference.html
+- https://portal.electioncenter.org (member login; vendor list is behind it)
+- What was tried: 41st Annual, Aug 19-21, 2026, Kansas City MO. No public exhibitor/sponsor directory found. Tried: 'Election Center national conference exhibitors/sponsors 2025 and 2026', site:electioncenter.org search, and direct fetches - electioncenter.org and portal.electi
 
 ### Esri UC (GIS)
-- Platform: Esri event portal (JS app) - directory currently offline
-- Notes: No public exhibitor list is live right now. The 2026 UC (July 13-17 2026, San Diego) had a 'Sponsors and Exhibitors' section at esri.com/en-us/about/events/uc/agenda/sponsors-exhibitors inside a JS event portal, but that URL now redirects to the 2027 UC overview (site rolled over post-event); a Wayback snapshot of the same path is only the portal shell with no names. Also tried: uc/agenda/expo page (no names, live and archived), coolmaps.esri.com/UC/UCMap26 (404), site:esri.com searches, 10times.com (403). Re-check the /uc/agenda/sponsors-exhibitors URL when the 2027 portal populates; 2026 roster otherwise lived in the Esri Events mobile app.
+- https://www.esri.com/en-us/about/events/uc/agenda/sponsors-exhibitors
+- https://www.esri.com/en-us/about/events/uc/overview
+- What was tried: No public exhibitor list is live right now. The 2026 UC (July 13-17 2026, San Diego) had a 'Sponsors and Exhibitors' section at esri.com/en-us/about/events/uc/agenda/sponsors-exhibitors inside a JS event portal, but that URL now redirects to the 2027 UC overvi
 
 ### MESC (Medicaid systems)
-- Platform: custom (WordPress/WooCommerce booth-sales site)
-- Notes: MESC 2026 (Aug 17-20, Portland OR, run by NESCSO) publishes no public exhibitor/sponsor roster. Tried: 'MESC 2026 exhibitor list' searches, mesconference.org homepage, /sponsorships-2026/ (404), /sponsorships-2026/exhibit-hall/ (static floor-plan image, no names), and the booth-selection chart at mesconference.org/tc_seat_charts/mesc-2026-exhibit-hall-c/ (JS seat-picker, no names in HTML and unclear it ever shows company names). Site claims 'well over 100 exhibitors' (~100+). Third-party gated list exists at vendelux.com/insights/mesc-2026-attendee-list. Known 2026 sponsors from vendor pages: Conduent, Gainwell, Maximus, Acentra Health, PCG, Catalyst Solutions.
+- https://www.mesconference.org/
+- https://www.nescso.org/mesc
+- What was tried: MESC 2026 (Aug 17-20, Portland OR, run by NESCSO) publishes no public exhibitor/sponsor roster. Tried: 'MESC 2026 exhibitor list' searches, mesconference.org homepage, /sponsorships-2026/ (404), /sponsorships-2026/exhibit-hall/ (static floor-plan image, no nam
 
 ### NASPO Annual (Procurement (state))
-- Platform: Cvent (events.naspo.org) for event pages; naspo.org behind Cloudflare
-- Notes: No public exhibitor or sponsor roster found. Tried: web searches for 2025 and 2026 annual conference sponsor/exhibitor lists; Cvent pages events.naspo.org/event/2025NASPOAnnualConference/summary and the Exchange 2026 page (fetchable, but name no companies); naspo.org pages (naspo-annual, get-involved/partnerships) blocked by Cloudflare challenge to both WebFetch and curl. NASPO Annual (Sept 27-30 2026, Phoenix) is a member-focused event with a Strategic Partner program (20+ partners) rather than a public expo directory - nearest page is https://www.naspo.org/get-involved/partnerships/ (walled). NASPO Exchange is the trade-show-format sibling event.
+- https://www.naspo.org/get-involved/partnerships/
+- https://events.naspo.org/
+- What was tried: No public exhibitor or sponsor roster found. Tried: web searches for 2025 and 2026 annual conference sponsor/exhibitor lists; Cvent pages events.naspo.org/event/2025NASPOAnnualConference/summary and the Exchange 2026 page (fetchable, but name no companies); na
