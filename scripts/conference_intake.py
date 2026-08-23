@@ -63,12 +63,21 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("file")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--default-sector", default="General Gov",
+                    help="sector for suppliers the classifier left unplaced; "
+                         "set from the conference's buyer block, so a courts "
+                         "vendor's stenography firm files under Courts & "
+                         "Justice rather than the generic bucket")
     a = ap.parse_args()
 
     staged = json.loads(pathlib.Path(a.file).read_text())
     event = staged["conference"]
     companies = json.loads((DATA / "companies.json").read_text())
     suppliers = json.loads((DATA / "suppliers.json").read_text())
+    valid_sectors = {s["name"] for s in
+                     json.loads((DATA / "schema.json").read_text())["sectors"]}
+    if a.default_sector not in valid_sectors:
+        raise SystemExit(f"unknown --default-sector {a.default_sector!r}")
 
     by_name: dict[str, tuple[str, dict]] = {}
     for kind, rows in (("company", companies), ("supplier", suppliers)):
@@ -100,7 +109,9 @@ def main() -> int:
                 "id": kebab(ex["name"]), "name": ex["name"],
                 "website": ex.get("website"), "location": None,
                 "year_founded": None,
-                "sector": ex.get("sector") or "General Gov",
+                "sector": (ex.get("sector")
+                           if ex.get("sector") in valid_sectors
+                           else a.default_sector),
                 "category": "Suppliers & Services",
                 "description": add_event(ex.get("vertical")
                                          or ex.get("description"), event),
