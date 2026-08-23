@@ -1,0 +1,264 @@
+{
+ "conference": "APPA Public Power 2026",
+ "exhibitors": [
+  {
+   "name": "Irby",
+   "website": "https://www.irby.com",
+   "is_govtech": false,
+   "vertical": "Electrical utility products distribution",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Cloverleaf Infrastructure",
+   "website": "https://www.cloverleafinfra.com",
+   "is_govtech": false,
+   "vertical": "Grid-connected site development",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Bloom Energy",
+   "website": "https://www.bloomenergy.com",
+   "is_govtech": false,
+   "vertical": "Solid oxide fuel cell systems",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Convey",
+   "website": "https://www.goconvey.com",
+   "is_govtech": true,
+   "vertical": "Utility customer engagement platform",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Soltage",
+   "website": "https://www.soltage.com",
+   "is_govtech": false,
+   "vertical": "Distributed solar project development",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Caterpillar",
+   "website": "https://www.caterpillar.com",
+   "is_govtech": false,
+   "vertical": "Generators and heavy equipment",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "ERMCO",
+   "website": "https://www.ermco-eci.com",
+   "is_govtech": false,
+   "vertical": "Distribution transformer manufacturing",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Tantalus",
+   "website": "http://tantalus.com",
+   "is_govtech": true,
+   "vertical": "Smart grid AMI network and software",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Utility Financial Solutions (UFS)",
+   "website": "https://ufsweb.com",
+   "is_govtech": false,
+   "vertical": "Utility rate and financial consulting",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Alpha Generation",
+   "website": "https://www.alphagen.com",
+   "is_govtech": false,
+   "vertical": "Independent power generation",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Baker Tilly",
+   "website": "http://www.bakertilly.com",
+   "is_govtech": false,
+   "vertical": "Accounting and advisory services",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "CBS Construction Services",
+   "website": "https://www.buildcbs.com",
+   "is_govtech": false,
+   "vertical": "Utility construction services",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Duncan, Weinberg, Genzer & Pembroke (DWG&P)",
+   "website": "https://www.dwgp.com",
+   "is_govtech": false,
+   "vertical": "Energy regulatory law firm",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Fitch Ratings",
+   "website": "http://www.fitchratings.com",
+   "is_govtech": false,
+   "vertical": "Municipal credit ratings",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "GDS Associates",
+   "website": "http://www.gdsassociates.com",
+   "is_govtech": false,
+   "vertical": "Utility engineering and consulting",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Mainspring Energy",
+   "website": "https://www.mainspringenergy.com",
+   "is_govtech": false,
+   "vertical": "Linear generator power systems",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "MMWEC",
+   "website": "https://www.mmwec.org",
+   "is_govtech": false,
+   "vertical": "Municipal wholesale power agency",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Milepost",
+   "website": "http://www.engagemilepost.com",
+   "is_govtech": false,
+   "vertical": "Energy strategy and creative consulting",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "NewGen Strategies & Solutions",
+   "website": "http://www.newgenstrategies.net",
+   "is_govtech": false,
+   "vertical": "Utility rate and management consulting",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "NISC",
+   "website": "https://www.nisc.coop",
+   "is_govtech": true,
+   "vertical": "Utility billing and CIS software",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "RWE Clean Energy",
+   "website": "https://www.rwe.com/en/the-group/rwe-clean-energy/",
+   "is_govtech": false,
+   "vertical": "Renewable energy development",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Rye Development",
+   "website": "https://www.ryedevelopment.com",
+   "is_govtech": false,
+   "vertical": "Hydropower project development",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Tenaska Power Services Co.",
+   "website": "https://www.tenaska.com",
+   "is_govtech": false,
+   "vertical": "Wholesale power marketing services",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "The Energy Authority",
+   "website": "http://www.teainc.org",
+   "is_govtech": false,
+   "vertical": "Public power portfolio management services",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Hometown Connections",
+   "website": "http://www.hometownconnections.com",
+   "is_govtech": false,
+   "vertical": "Utility business services and consulting",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Ascend Analytics",
+   "website": "https://www.ascendanalytics.com",
+   "is_govtech": true,
+   "vertical": "Energy market analytics software",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Spiegel & McDiarmid",
+   "website": "http://www.spiegelmcd.com",
+   "is_govtech": false,
+   "vertical": "Public power law firm",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "nFront Consulting",
+   "website": "http://www.nfrontconsulting.com",
+   "is_govtech": false,
+   "vertical": "Utility financial and rate consulting",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Google",
+   "website": "https://www.google.com",
+   "is_govtech": false,
+   "vertical": "Cloud and search technology",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "WESCO",
+   "website": "https://www.wesco.com",
+   "is_govtech": false,
+   "vertical": "Electrical products distribution",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "West Peak Energy",
+   "website": "http://www.westpeakenergy.net",
+   "is_govtech": false,
+   "vertical": "Power engineering and technical advisory",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "TemplarShield",
+   "website": "https://www.templarshield.com",
+   "is_govtech": false,
+   "vertical": "Risk, compliance, and security consulting",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Hansen Technologies",
+   "website": "https://www.hansencx.com",
+   "is_govtech": true,
+   "vertical": "Utility billing and CIS software",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Langston Construction",
+   "website": "https://langstonconstr.com",
+   "is_govtech": false,
+   "vertical": "Utility construction services",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Mesa Power Solutions",
+   "website": "https://mesapowersolutions.com",
+   "is_govtech": false,
+   "vertical": "Generators and power distribution gear",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "CleanSpark",
+   "website": "https://www.cleanspark.com",
+   "is_govtech": false,
+   "vertical": "Bitcoin mining and energy operations",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "WSP",
+   "website": "https://www.wsp.com/en-us",
+   "is_govtech": false,
+   "vertical": "Engineering and design consulting",
+   "sector": "Utilities & Energy"
+  }
+ ]
+}

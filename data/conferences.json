@@ -1,5 +1,5 @@
 {
- "note": "Conference catalog for exhibitor intake, from Wyeth 2026-08-23. swept=true means an exhibitor sweep already landed in companies.json/suppliers.json (see 'exhibited at' notes).",
+ "note": "Conference catalog for exhibitor intake, from Wyeth 2026-08-23. swept=true means an exhibitor sweep already landed in companies.json/suppliers.json (see 'exhibited at' notes). event_tag is the string that lands in company descriptions; it is assigned here, never by a scraping agent, because the acronyms collide (three APPAs, two ASBOs).",
  "conferences": [
   {
    "block": "Executive / administration",
@@ -8,7 +8,12 @@
    "flagship": true,
    "swept": true,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "ICMA 2025",
+   "tag_note": "tag fixed by the sweep that already ran; kept as-is so existing descriptions stay true",
+   "prior_tags": [
+    "ICMA 2026"
+   ]
   },
   {
    "block": "Executive / administration",
@@ -17,7 +22,8 @@
    "flagship": true,
    "swept": true,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NACo 2026"
   },
   {
    "block": "Executive / administration",
@@ -26,7 +32,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NACo Legislative 2026"
   },
   {
    "block": "Executive / administration",
@@ -39,7 +46,8 @@
    "platform": "a2z (a2zinc.net, corcexpo client)",
    "event_year": "2026",
    "approx_count": 129,
-   "discovery_notes": "Nov 18-21, 2026, Nashville. The a2z exhibitor list renders server-side with names and booth numbers (129 exhibitors as of fetch; NLC projects 275+). The citysummit.nlc.org/expo page itself has no names, only links into the a2z system."
+   "discovery_notes": "Nov 18-21, 2026, Nashville. The a2z exhibitor list renders server-side with names and booth numbers (129 exhibitors as of fetch; NLC projects 275+). The citysummit.nlc.org/expo page itself has no names, only links into the a2z system.",
+   "event_tag": "NLC City Summit 2026"
   },
   {
    "block": "Executive / administration",
@@ -48,7 +56,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "USCM Winter/Annual 2026"
   },
   {
    "block": "Executive / administration",
@@ -57,7 +66,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NATaT 2026"
   },
   {
    "block": "Executive / administration",
@@ -66,7 +76,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NGA Summer/Winter 2026"
   },
   {
    "block": "Executive / administration",
@@ -75,7 +86,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NCSL Legislative Summit 2026"
   },
   {
    "block": "Executive / administration",
@@ -84,7 +96,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NALIT 2026"
   },
   {
    "block": "Executive / administration",
@@ -93,7 +106,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "Smart Cities Connect 2026"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -106,7 +120,8 @@
    "platform": "CivicPlus DocumentCenter PDF",
    "event_year": "2026",
    "approx_count": 43,
-   "discovery_notes": "80th Annual, May 17-21, 2026, Reno NV. Conference program PDF (4.8MB) contains a '2026 Exhibitors' page with ~43 names incl. American Legal Publishing, CivicPlus, ClerkBase, Dominion Voting Systems, Granicus, JustFOIA, Laserfiche, MCCi, OpenGov, Televic - extracted via pdftotext, so a person or PDF pipeline can read it. No HTML exhibitor directory exists; iimcfoundation.com/170/Exhibitors is a prospectus page with no names."
+   "discovery_notes": "80th Annual, May 17-21, 2026, Reno NV. Conference program PDF (4.8MB) contains a '2026 Exhibitors' page with ~43 names incl. American Legal Publishing, CivicPlus, ClerkBase, Dominion Voting Systems, Granicus, JustFOIA, Laserfiche, MCCi, OpenGov, Televic - extracted via pdftotext, so a person or PDF pipeline can read it. No HTML exhibitor directory exists; iimcfoundation.com/170/Exhibitors is a prospectus page with no names.",
+   "event_tag": "IIMC 2026"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -115,7 +130,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NAGARA 2026"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -124,7 +140,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "ARMA InfoCon 2026"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -137,7 +154,8 @@
    "platform": "iMIS portal (portal.electioncenter.org) for registration only",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "41st Annual, Aug 19-21, 2026, Kansas City MO. No public exhibitor/sponsor directory found. Tried: 'Election Center national conference exhibitors/sponsors 2025 and 2026', site:electioncenter.org search, and direct fetches - electioncenter.org and portal.electioncenter.org both return 403 to the fetcher; only login-walled iMIS exhibitor-registration pages (EventKey BOOTH825) surface. Vendor names likely only in the printed program or behind member login."
+   "discovery_notes": "41st Annual, Aug 19-21, 2026, Kansas City MO. No public exhibitor/sponsor directory found. Tried: 'Election Center national conference exhibitors/sponsors 2025 and 2026', site:electioncenter.org search, and direct fetches - electioncenter.org and portal.electioncenter.org both return 403 to the fetcher; only login-walled iMIS exhibitor-registration pages (EventKey BOOTH825) surface. Vendor names likely only in the printed program or behind member login.",
+   "event_tag": "Election Center 2026"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -146,7 +164,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NASS Winter/Summer 2026"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -155,7 +174,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NASED 2026"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -168,7 +188,8 @@
    "platform": "custom HTML (WordPress, imla.org)",
    "event_year": "2026",
    "approx_count": 29,
-   "discovery_notes": "Sept 23-27, 2026, Salt Lake City. Page lists tiered sponsors (Gold/Silver/Bronze/Supporter, ~29 total) directly in HTML; sponsors effectively double as the exhibitor pool - no separate exhibitor directory published."
+   "discovery_notes": "Sept 23-27, 2026, Salt Lake City. Page lists tiered sponsors (Gold/Silver/Bronze/Supporter, ~29 total) directly in HTML; sponsors effectively double as the exhibitor pool - no separate exhibitor directory published.",
+   "event_tag": "IMLA 2026"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -177,7 +198,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NAAG 2026"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -190,7 +212,8 @@
    "platform": "custom HTML (CivicPlus CMS)",
    "event_year": "2026",
    "approx_count": 35,
-   "discovery_notes": "Sept 9-11, 2026, Denver. '2026 Conference Sponsors' page lists ~35 sponsors/exhibitors by tier directly in HTML (CivAll is Grand Sponsor); 3CMA treats sponsors as its exhibitor roster - no separate exhibitor floor-plan app."
+   "discovery_notes": "Sept 9-11, 2026, Denver. '2026 Conference Sponsors' page lists ~35 sponsors/exhibitors by tier directly in HTML (CivAll is Grand Sponsor); 3CMA treats sponsors as its exhibitor roster - no separate exhibitor floor-plan app.",
+   "event_tag": "3CMA 2026"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -199,7 +222,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NAGC 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -212,7 +236,8 @@
    "platform": "custom HTML (gfoa.org, server-rendered table)",
    "event_year": "2026",
    "approx_count": 221,
-   "discovery_notes": "120th Annual Conference, Chicago, June 28-Jul 1 2026. Full exhibitor+booth table is server-rendered (~221 rows). Caveat: gfoa.org returns 403 to generic fetchers (WebFetch failed); curl with a Chrome user-agent retrieved the complete list, so scrape with a browser UA."
+   "discovery_notes": "120th Annual Conference, Chicago, June 28-Jul 1 2026. Full exhibitor+booth table is server-rendered (~221 rows). Caveat: gfoa.org returns 403 to generic fetchers (WebFetch failed); curl with a Chrome user-agent retrieved the complete list, so scrape with a browser UA.",
+   "event_tag": "GFOA 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -221,7 +246,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NASBO 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -230,7 +256,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NAST 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -239,7 +266,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "ALGA 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -248,7 +276,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NSAA 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -257,7 +286,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "AGA PDT 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -270,7 +300,8 @@
    "platform": "custom (IAAO Research Exchange, bepress/Digital Commons)",
    "event_year": "2026",
    "approx_count": 18,
-   "discovery_notes": "92nd Annual Conference on Assessment Administration, Calgary AB, Oct 13-16 2026. Exhibitor Showcase names render in fetched HTML (10 listed plus ~8 more visible). A 2026 Exhibiting Prospectus PDF also exists at https://www.iaao.org/wp-content/uploads/2026_Exhibiting_Prospectus.pdf."
+   "discovery_notes": "92nd Annual Conference on Assessment Administration, Calgary AB, Oct 13-16 2026. Exhibitor Showcase names render in fetched HTML (10 listed plus ~8 more visible). A 2026 Exhibiting Prospectus PDF also exists at https://www.iaao.org/wp-content/uploads/2026_Exhibiting_Prospectus.pdf.",
+   "event_tag": "IAAO 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -279,7 +310,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "FTA 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -288,7 +320,9 @@
    "flagship": true,
    "swept": true,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NIGP 2026",
+   "tag_note": "tag fixed by the sweep that already ran; kept as-is so existing descriptions stay true"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -301,7 +335,8 @@
    "platform": "Cvent (events.naspo.org) for event pages; naspo.org behind Cloudflare",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "No public exhibitor or sponsor roster found. Tried: web searches for 2025 and 2026 annual conference sponsor/exhibitor lists; Cvent pages events.naspo.org/event/2025NASPOAnnualConference/summary and the Exchange 2026 page (fetchable, but name no companies); naspo.org pages (naspo-annual, get-involved/partnerships) blocked by Cloudflare challenge to both WebFetch and curl. NASPO Annual (Sept 27-30 2026, Phoenix) is a member-focused event with a Strategic Partner program (20+ partners) rather than a public expo directory - nearest page is https://www.naspo.org/get-involved/partnerships/ (walled). NASPO Exchange is the trade-show-format sibling event."
+   "discovery_notes": "No public exhibitor or sponsor roster found. Tried: web searches for 2025 and 2026 annual conference sponsor/exhibitor lists; Cvent pages events.naspo.org/event/2025NASPOAnnualConference/summary and the Exchange 2026 page (fetchable, but name no companies); naspo.org pages (naspo-annual, get-involved/partnerships) blocked by Cloudflare challenge to both WebFetch and curl. NASPO Annual (Sept 27-30 2026, Phoenix) is a member-focused event with a Strategic Partner program (20+ partners) rather than a public expo directory - nearest page is https://www.naspo.org/get-involved/partnerships/ (walled). NASPO Exchange is the trade-show-format sibling event.",
+   "event_tag": "NASPO 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -314,7 +349,8 @@
    "platform": "eShow (goeshow.com)",
    "event_year": "2026",
    "approx_count": 37,
-   "discovery_notes": "IPMA-HR rebranded to PSHRA (Public Sector HR Association). PSHRA 2026 Annual Conference, Portland OR, Sept 28-30 2026. Combined exhibitor+sponsor list with booth numbers renders in fetched HTML; 37 entries (3 booths TBD)."
+   "discovery_notes": "IPMA-HR rebranded to PSHRA (Public Sector HR Association). PSHRA 2026 Annual Conference, Portland OR, Sept 28-30 2026. Combined exhibitor+sponsor list with booth numbers renders in fetched HTML; 37 entries (3 booths TBD).",
+   "event_tag": "PSHRA 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -323,7 +359,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NPELRA 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -332,7 +369,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NCPERS 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -345,7 +383,8 @@
    "platform": "eShow (goeshow.com) powering conference.primacentral.org",
    "event_year": "2026",
    "approx_count": 19,
-   "discovery_notes": "PRIMA 2026, Fort Lauderdale FL, June 7-10 2026 (100+ exhibitors claimed). Sponsor names (19 across 5 tiers) render in fetched HTML at sponsors.cfm. The full exhibitor roster lives only in the eShow interactive floor plan at https://conference.primacentral.org/exhibit_map.cfm (js-walled) - a person should open that for the complete exhibitor list."
+   "discovery_notes": "PRIMA 2026, Fort Lauderdale FL, June 7-10 2026 (100+ exhibitors claimed). Sponsor names (19 across 5 tiers) render in fetched HTML at sponsors.cfm. The full exhibitor roster lives only in the eShow interactive floor plan at https://conference.primacentral.org/exhibit_map.cfm (js-walled) - a person should open that for the complete exhibitor list.",
+   "event_tag": "PRIMA 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -358,7 +397,8 @@
    "platform": "custom HTML (WordPress, nascio.org)",
    "event_year": "2026",
    "approx_count": 80,
-   "discovery_notes": "NASCIO explicitly has NO exhibit hall or trade show - conferences are sponsorship-only ('relationships, not products'). This URL is the sponsor directory for the 2026 Annual Conference (Sept 27-30, 2026, San Diego), ~80 sponsors across Pinnacle/Gold/Silver/Bronze and specialty tiers, plain HTML. 2026 sponsorship is sold out. A comparable sponsors page exists for the Midyear under /events/conferences/."
+   "discovery_notes": "NASCIO explicitly has NO exhibit hall or trade show - conferences are sponsorship-only ('relationships, not products'). This URL is the sponsor directory for the 2026 Annual Conference (Sept 27-30, 2026, San Diego), ~80 sponsors across Pinnacle/Gold/Silver/Bronze and specialty tiers, plain HTML. 2026 sponsorship is sold out. A comparable sponsors page exists for the Midyear under /events/conferences/.",
+   "event_tag": "NASCIO 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -371,7 +411,8 @@
    "platform": "YourMembership CMS (custom HTML)",
    "event_year": "2026",
    "approx_count": 36,
-   "discovery_notes": "GMIS MEETS 2026, Aug 23-26 2026, Williamsburg VA. Full alphabetical exhibitor list with booth numbers (36 booths) plus sponsor tiers, all in plain HTML. CAVEAT for automation: gmis.org returns HTTP 403 to non-browser clients (WebFetch was blocked); names were extracted by loading the page with a real browser UA - a scraper needs a browser user agent."
+   "discovery_notes": "GMIS MEETS 2026, Aug 23-26 2026, Williamsburg VA. Full alphabetical exhibitor list with booth numbers (36 booths) plus sponsor tiers, all in plain HTML. CAVEAT for automation: gmis.org returns HTTP 403 to non-browser clients (WebFetch was blocked); names were extracted by loading the page with a real browser UA - a scraper needs a browser user agent.",
+   "event_tag": "GMIS International 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -380,7 +421,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "PTI 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -393,7 +435,8 @@
    "platform": "Esri event portal (JS app) - directory currently offline",
    "event_year": "",
    "approx_count": null,
-   "discovery_notes": "No public exhibitor list is live right now. The 2026 UC (July 13-17 2026, San Diego) had a 'Sponsors and Exhibitors' section at esri.com/en-us/about/events/uc/agenda/sponsors-exhibitors inside a JS event portal, but that URL now redirects to the 2027 UC overview (site rolled over post-event); a Wayback snapshot of the same path is only the portal shell with no names. Also tried: uc/agenda/expo page (no names, live and archived), coolmaps.esri.com/UC/UCMap26 (404), site:esri.com searches, 10times.com (403). Re-check the /uc/agenda/sponsors-exhibitors URL when the 2027 portal populates; 2026 roster otherwise lived in the Esri Events mobile app."
+   "discovery_notes": "No public exhibitor list is live right now. The 2026 UC (July 13-17 2026, San Diego) had a 'Sponsors and Exhibitors' section at esri.com/en-us/about/events/uc/agenda/sponsors-exhibitors inside a JS event portal, but that URL now redirects to the 2027 UC overview (site rolled over post-event); a Wayback snapshot of the same path is only the portal shell with no names. Also tried: uc/agenda/expo page (no names, live and archived), coolmaps.esri.com/UC/UCMap26 (404), site:esri.com searches, 10times.com (403). Re-check the /uc/agenda/sponsors-exhibitors URL when the 2027 portal populates; 2026 roster otherwise lived in the Esri Events mobile app.",
+   "event_tag": "Esri UC 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -402,7 +445,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "URISA GIS-Pro 2026"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -411,7 +455,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NSGIC 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -420,7 +465,9 @@
    "flagship": true,
    "swept": true,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "PWX 2026",
+   "tag_note": "tag fixed by the sweep that already ran; kept as-is so existing descriptions stay true"
   },
   {
    "block": "Public works and infrastructure",
@@ -433,7 +480,8 @@
    "platform": "custom HTML (WordPress, countyengineers.org)",
    "event_year": "2026",
    "approx_count": 50,
-   "discovery_notes": "National Association of County Engineers (countyengineers.org - NOT naceweb.org, which is a different NACE). 2026 Annual Conference, April 12-15 2026, Arlington TX (already held). ~50 exhibitors with booth numbers in plain HTML, plus a floorplan image."
+   "discovery_notes": "National Association of County Engineers (countyengineers.org - NOT naceweb.org, which is a different NACE). 2026 Annual Conference, April 12-15 2026, Arlington TX (already held). ~50 exhibitors with booth numbers in plain HTML, plus a floorplan image.",
+   "event_tag": "NACE 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -442,7 +490,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "AASHTO 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -451,7 +500,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "TRB 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -460,7 +510,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "ITE 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -473,7 +524,8 @@
    "platform": "RX Global (Reed Exhibitions) directory app",
    "event_year": "2026",
    "approx_count": 174,
-   "discovery_notes": "Labeled '2026 Exhibitor Directory' covering the 2026 Conference & Expo (June 9-12 2026, Detroit); site chrome now brands the 2027 Salt Lake City edition but the directory data is 2026's. WebFetch gets only the RX app shell - names load client-side (verified in a real browser: counter shows '174 Exhibitors'; e.g. AT&T Connected Solutions, GHD, Arcadis, Michelin Mobility Intelligence, S.M.S Smart Microwave Sensors). A person opening the URL will see the full list with search/filter."
+   "discovery_notes": "Labeled '2026 Exhibitor Directory' covering the 2026 Conference & Expo (June 9-12 2026, Detroit); site chrome now brands the 2027 Salt Lake City edition but the directory data is 2026's. WebFetch gets only the RX app shell - names load client-side (verified in a real browser: counter shows '174 Exhibitors'; e.g. AT&T Connected Solutions, GHD, Arcadis, Michelin Mobility Intelligence, S.M.S Smart Microwave Sensors). A person opening the URL will see the full list with search/filter.",
+   "event_tag": "ITS America 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -486,7 +538,8 @@
    "platform": "custom HTML (WordPress); full directory was MapYourShow",
    "event_year": "2026",
    "approx_count": 23,
-   "discovery_notes": "2026 edition was April 13-15, Cleveland. The readable page is the sponsor list (~23 names, extracted verbatim). The full 230+ exhibitor directory lived at nafa26.mapyourshow.com but that MapYourShow site now 302-redirects to nafainstitute.org post-event, so the sponsor page is the only public list left. Site is already booking 2027 (April 5-7, Pittsburgh)."
+   "discovery_notes": "2026 edition was April 13-15, Cleveland. The readable page is the sponsor list (~23 names, extracted verbatim). The full 230+ exhibitor directory lived at nafa26.mapyourshow.com but that MapYourShow site now 302-redirects to nafainstitute.org post-event, so the sponsor page is the only public list left. Site is already booking 2027 (April 5-7, Pittsburgh).",
+   "event_tag": "NAFA I&E 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -495,7 +548,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "Government Fleet Expo 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -504,7 +558,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "IFMA World Workplace 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -513,7 +568,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "StormCon 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -526,7 +582,8 @@
    "platform": "A2Z Events (Personify) on smallworldlabs.com",
    "event_year": "2026",
    "approx_count": 450,
-   "discovery_notes": "ACE26, June 21-24 2026, Washington DC. Exhibitor names render in server HTML ('Powered by A2Z Events'). AWWA claims 450+ exhibitors. A companion info page also exists at s36.a2zinc.net/clients/awwa/ace2026/."
+   "discovery_notes": "ACE26, June 21-24 2026, Washington DC. Exhibitor names render in server HTML ('Powered by A2Z Events'). AWWA claims 450+ exhibitors. A companion info page also exists at s36.a2zinc.net/clients/awwa/ace2026/.",
+   "event_tag": "AWWA ACE 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -539,7 +596,8 @@
    "platform": "MapYourShow",
    "event_year": "2026",
    "approx_count": 950,
-   "discovery_notes": "WEFTEC 2026, Sept 26-30, New Orleans. Fetched HTML is a MapYourShow app shell (only UI strings like 'Selected Exhibitor'), no company names server-side. WEF claims 950+ exhibitors; exhibitor waitlist already closed. A person should open weftec26.mapyourshow.com."
+   "discovery_notes": "WEFTEC 2026, Sept 26-30, New Orleans. Fetched HTML is a MapYourShow app shell (only UI strings like 'Selected Exhibitor'), no company names server-side. WEF claims 950+ exhibitors; exhibitor waitlist already closed. A person should open weftec26.mapyourshow.com.",
+   "event_tag": "WEFTEC 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -552,7 +610,8 @@
    "platform": "PDF on swana.org; 2026 floor plan on ExpoFP",
    "event_year": "2025",
    "approx_count": 211,
-   "discovery_notes": "WASTECON was rebranded to RCon starting 2025. PDF verified by download: '2025 RCon Exhibitors as of 11.4.2025' with booth numbers (Great Lakes Fusion, AGRU America, Veolia, Machinex, RouteSmart, WSP USA, ...); SWANA says the sold-out 2025 hall had 211 exhibitors. Upcoming RCon 2026 (St. Louis, Sept 29-Oct 1) exposes only a JS floor plan at rcon2026.expofp.com (empty HTML shell) plus swana.org/events/rcon2026/exhibit-hall."
+   "discovery_notes": "WASTECON was rebranded to RCon starting 2025. PDF verified by download: '2025 RCon Exhibitors as of 11.4.2025' with booth numbers (Great Lakes Fusion, AGRU America, Veolia, Machinex, RouteSmart, WSP USA, ...); SWANA says the sold-out 2025 hall had 211 exhibitors. Upcoming RCon 2026 (St. Louis, Sept 29-Oct 1) exposes only a JS floor plan at rcon2026.expofp.com (empty HTML shell) plus swana.org/events/rcon2026/exhibit-hall.",
+   "event_tag": "SWANA WASTECON 2025"
   },
   {
    "block": "Public works and infrastructure",
@@ -561,7 +620,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "WasteExpo 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -575,7 +635,8 @@
    "platform": "custom (Drupal, publicpower.org) behind bot protection",
    "event_year": "2026",
    "approx_count": 37,
-   "discovery_notes": "American Public Power Association, June 26-July 1 2026, Boston. Names are in the page HTML as a 37-logo 'Thank You to Our Generous Sponsors' carousel (names from img alt text) - sponsors, not a full exhibitor directory; the 100+ vendor Public Power Expo has no public exhibitor list found. Caveat: live publicpower.org returns 403 to automated fetches; extraction was from the Wayback Machine snapshot of this exact URL, so a scraper needs a real browser or web.archive.org."
+   "discovery_notes": "American Public Power Association, June 26-July 1 2026, Boston. Names are in the page HTML as a 37-logo 'Thank You to Our Generous Sponsors' carousel (names from img alt text) - sponsors, not a full exhibitor directory; the 100+ vendor Public Power Expo has no public exhibitor list found. Caveat: live publicpower.org returns 403 to automated fetches; extraction was from the Wayback Machine snapshot of this exact URL, so a scraper needs a real browser or web.archive.org.",
+   "event_tag": "APPA Public Power 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -584,7 +645,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "DISTRIBUTECH 2026"
   },
   {
    "block": "Public works and infrastructure",
@@ -594,7 +656,9 @@
    "swept": true,
    "note": "landed as Broadband Nation 2026",
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "Broadband Nation 2026",
+   "tag_note": "tag fixed by the sweep that already ran; kept as-is so existing descriptions stay true"
   },
   {
    "block": "Public works and infrastructure",
@@ -603,7 +667,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NATOA 2026"
   },
   {
    "block": "Transportation",
@@ -612,7 +677,9 @@
    "flagship": true,
    "swept": true,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "APTA 2026",
+   "tag_note": "tag fixed by the sweep that already ran; kept as-is so existing descriptions stay true"
   },
   {
    "block": "Transportation",
@@ -625,7 +692,8 @@
    "platform": "Map Dynamics",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "EXPO 2026 (Omaha, presented by Forest River). Floorplan link found on https://ctaa.org/trade-show-2026/ ('Floorplan' button). Map Dynamics page is a jQuery app shell; exhibitor data loads via AJAX with no names in static HTML and no discoverable public JSON endpoint. Note: ctaa.org returns 403 to generic fetchers but serves pages to a browser user agent. Sponsors page https://ctaa.org/sponsors-2026/ shows sponsor tiers as logo images (only alt text found: UZURV). Prospectus PDF: https://ctaa.org/wp-content/uploads/2026/04/CTAA-EXPO-2026-Promotional-Opportunities-Prospectus_apr_8.pdf"
+   "discovery_notes": "EXPO 2026 (Omaha, presented by Forest River). Floorplan link found on https://ctaa.org/trade-show-2026/ ('Floorplan' button). Map Dynamics page is a jQuery app shell; exhibitor data loads via AJAX with no names in static HTML and no discoverable public JSON endpoint. Note: ctaa.org returns 403 to generic fetchers but serves pages to a browser user agent. Sponsors page https://ctaa.org/sponsors-2026/ shows sponsor tiers as logo images (only alt text found: UZURV). Prospectus PDF: https://ctaa.org/wp-content/uploads/2026/04/CTAA-EXPO-2026-Promotional-Opportunities-Prospectus_apr_8.pdf",
+   "event_tag": "CTAA EXPO 2026"
   },
   {
    "block": "Transportation",
@@ -634,7 +702,8 @@
    "flagship": true,
    "swept": true,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "AAAE 2026"
   },
   {
    "block": "Transportation",
@@ -643,7 +712,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "ACI-NA 2026"
   },
   {
    "block": "Transportation",
@@ -652,7 +722,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "AAPA 2026"
   },
   {
    "block": "Transportation",
@@ -665,7 +736,8 @@
    "platform": "",
    "event_year": "2026",
    "approx_count": 90,
-   "discovery_notes": "No public exhibitor directory for AIC 2025 (Phoenix) or 2026 (Providence, Sep 29-Oct 1). Tried: AAMVA 2026 and 2025 exhibit-sponsor pages (prospectus/pricing only; 2026 hall sold out with waiting list, typical ~90 exhibitors), searches for exhibitor list/booth numbers/program PDF, the 2026 AIC main page (no sponsor logos in HTML), and third-party ExpoGage (HTTP 403/paywalled). Exhibitor names appear to be attendee-only (conference app). Closest page: https://www.aamva.org/events-education/conferences-meetings/conferences/2026-annual-international-conference/exhibit-sponsor"
+   "discovery_notes": "No public exhibitor directory for AIC 2025 (Phoenix) or 2026 (Providence, Sep 29-Oct 1). Tried: AAMVA 2026 and 2025 exhibit-sponsor pages (prospectus/pricing only; 2026 hall sold out with waiting list, typical ~90 exhibitors), searches for exhibitor list/booth numbers/program PDF, the 2026 AIC main page (no sponsor logos in HTML), and third-party ExpoGage (HTTP 403/paywalled). Exhibitor names appear to be attendee-only (conference app). Closest page: https://www.aamva.org/events-education/conferences-meetings/conferences/2026-annual-international-conference/exhibit-sponsor",
+   "event_tag": "AAMVA 2026"
   },
   {
    "block": "Public safety",
@@ -674,7 +746,8 @@
    "flagship": true,
    "swept": true,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "IACP 2026"
   },
   {
    "block": "Public safety",
@@ -683,7 +756,8 @@
    "flagship": true,
    "swept": true,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NSA 2026"
   },
   {
    "block": "Public safety",
@@ -696,7 +770,8 @@
    "platform": "CadmiumCD eventScribe / Conference Harvester",
    "event_year": "2026",
    "approx_count": 250,
-   "discovery_notes": "APCO 2026, San Antonio, Aug 2-5 2026 (just held). Official 'Exhibitor List / Floor Plan' link from https://apco2026.org/expo/ goes to the eventScribe floor plan (same data at https://www.conferenceharvester.com/floorplan/v2/index.asp?EventKey=JBBFWNZS); both are JS-rendered with no names in HTML. However, the /expo/ page itself is readable and lists sponsors by name (FirstNet, Axon, L3Harris, Motorola, RapidSOS, Comcast, General Motors, Eventide) — a person opening the floor plan will get the full 250+ exhibitor list."
+   "discovery_notes": "APCO 2026, San Antonio, Aug 2-5 2026 (just held). Official 'Exhibitor List / Floor Plan' link from https://apco2026.org/expo/ goes to the eventScribe floor plan (same data at https://www.conferenceharvester.com/floorplan/v2/index.asp?EventKey=JBBFWNZS); both are JS-rendered with no names in HTML. However, the /expo/ page itself is readable and lists sponsors by name (FirstNet, Axon, L3Harris, Motorola, RapidSOS, Comcast, General Motors, Eventide) — a person opening the floor plan will get the full 250+ exhibitor list.",
+   "event_tag": "APCO 2026"
   },
   {
    "block": "Public safety",
@@ -705,7 +780,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NENA 2026"
   },
   {
    "block": "Public safety",
@@ -718,7 +794,8 @@
    "platform": "MapYourShow",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "FRI 2026 exhibitor directory is live on MapYourShow (alphabetical list + floor plan at fri26.mapyourshow.com), but the fetched HTML is a JS app shell with no exhibitor names. Linked from https://www.iafc.org/events/fri/fri26. FRI 2025's list was on fri2025.eventscribe.net."
+   "discovery_notes": "FRI 2026 exhibitor directory is live on MapYourShow (alphabetical list + floor plan at fri26.mapyourshow.com), but the fetched HTML is a JS app shell with no exhibitor names. Linked from https://www.iafc.org/events/fri/fri26. FRI 2025's list was on fri2025.eventscribe.net.",
+   "event_tag": "IAFC FRI 2026"
   },
   {
    "block": "Public safety",
@@ -727,7 +804,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "FDIC International 2026"
   },
   {
    "block": "Public safety",
@@ -736,7 +814,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "EMS World Expo 2026"
   },
   {
    "block": "Public safety",
@@ -749,7 +828,8 @@
    "platform": "MapYourShow",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "IAEM 74th Annual Conference & EMEX 2026, Long Beach CA, Nov 2026. The 2026 MapYourShow floor plan is live but JS-rendered (no names in HTML); the exhibitor alphalist page (iaem2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm) currently 302-redirects to iaem.org/usconf, suggesting the named exhibitor list is not published yet this far ahead of the show. The 2025 edition's directory (iaem2025.mapyourshow.com) has been taken down (also redirects). Exhibit info hub: https://www.iaem.org/usconf/exhibit/Quick-Facts"
+   "discovery_notes": "IAEM 74th Annual Conference & EMEX 2026, Long Beach CA, Nov 2026. The 2026 MapYourShow floor plan is live but JS-rendered (no names in HTML); the exhibitor alphalist page (iaem2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm) currently 302-redirects to iaem.org/usconf, suggesting the named exhibitor list is not published yet this far ahead of the show. The 2025 edition's directory (iaem2025.mapyourshow.com) has been taken down (also redirects). Exhibit info hub: https://www.iaem.org/usconf/exhibit/Quick-Facts",
+   "event_tag": "IAEM 2026"
   },
   {
    "block": "Public safety",
@@ -762,7 +842,8 @@
    "platform": "ConferenceHarvester (CadmiumCD)",
    "event_year": "2026",
    "approx_count": 251,
-   "discovery_notes": "2026 Annual Conference & Expo, Nashville Oct 18-21, 2026. Interactive exhibitor floor plan renders via JS only; ~251 exhibitors per third-party listing (Vendelux). A readable SPONSOR list exists at https://www.iccsafe.org/events/conference/sponsors-ac/ (~13 names actually extracted: 4LEAF Inc, Acta Solutions, AHRI, AGA, CISPI, Computronix, Denlar Hoods, IPEX, Lowe's, Mitchell Humphrey, OpenGov, SAFEbuilt, TENMAT). 2025 Cleveland edition floor plan: same platform, EventKey=GFOCKUAP."
+   "discovery_notes": "2026 Annual Conference & Expo, Nashville Oct 18-21, 2026. Interactive exhibitor floor plan renders via JS only; ~251 exhibitors per third-party listing (Vendelux). A readable SPONSOR list exists at https://www.iccsafe.org/events/conference/sponsors-ac/ (~13 names actually extracted: 4LEAF Inc, Acta Solutions, AHRI, AGA, CISPI, Computronix, Denlar Hoods, IPEX, Lowe's, Mitchell Humphrey, OpenGov, SAFEbuilt, TENMAT). 2025 Cleveland edition floor plan: same platform, EventKey=GFOCKUAP.",
+   "event_tag": "ICC 2026"
   },
   {
    "block": "Courts, corrections, justice",
@@ -775,7 +856,8 @@
    "platform": "custom HTML (WordPress, nacmnet.org)",
    "event_year": "2026",
    "approx_count": 8,
-   "discovery_notes": "2026 Annual Conference, Hyatt Regency Jacksonville Riverfront (July 2026). This is a SPONSOR list (education/social-event sponsors) on the conference page - names extracted from fetched HTML. No public full exhibitor directory found: https://nacmnet.org/conferences/exhibit-sponsor-info/ is a prospectus (booth contract returned by email), not a list."
+   "discovery_notes": "2026 Annual Conference, Hyatt Regency Jacksonville Riverfront (July 2026). This is a SPONSOR list (education/social-event sponsors) on the conference page - names extracted from fetched HTML. No public full exhibitor directory found: https://nacmnet.org/conferences/exhibit-sponsor-info/ is a prospectus (booth contract returned by email), not a list.",
+   "event_tag": "NACM 2026"
   },
   {
    "block": "Courts, corrections, justice",
@@ -784,7 +866,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NCSC Court Technology 2026"
   },
   {
    "block": "Courts, corrections, justice",
@@ -797,7 +880,8 @@
    "platform": "a2z (Personify, s36.a2zinc.net)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "156th Congress of Correction, July 30-Aug 2, 2026 (Pittsburgh). Direct fetch of the Exhibitors.aspx list page returns an 'Oops, something went wrong' shell, but the directory is live: individual eBooth pages render server-side (verified: Tidal Wave Telecom, booth 1027). Open the list URL in a real browser. ACA Winter 2026 (Long Beach) has a parallel a2z site under /clients/ACA/ACA/."
+   "discovery_notes": "156th Congress of Correction, July 30-Aug 2, 2026 (Pittsburgh). Direct fetch of the Exhibitors.aspx list page returns an 'Oops, something went wrong' shell, but the directory is live: individual eBooth pages render server-side (verified: Tidal Wave Telecom, booth 1027). Open the list URL in a real browser. ACA Winter 2026 (Long Beach) has a parallel a2z site under /clients/ACA/ACA/.",
+   "event_tag": "ACA Congress 2026"
   },
   {
    "block": "Courts, corrections, justice",
@@ -810,7 +894,8 @@
    "platform": "MapYourShow",
    "event_year": "2027",
    "approx_count": null,
-   "discovery_notes": "The 2026 edition (45th Annual Conference & Jail Expo, Milwaukee, May 16-20, 2026) directory at aja2026.mapyourshow.com now 302-redirects to americanjail.org - taken down after the event, and americanjail.org/exhibitors-2026 404s. The next edition's MapYourShow site (2027 Conference & Jail Expo, Spokane, May 22-26, 2027) is live but is a JS shell with no names in static HTML."
+   "discovery_notes": "The 2026 edition (45th Annual Conference & Jail Expo, Milwaukee, May 16-20, 2026) directory at aja2026.mapyourshow.com now 302-redirects to americanjail.org - taken down after the event, and americanjail.org/exhibitors-2026 404s. The next edition's MapYourShow site (2027 Conference & Jail Expo, Spokane, May 22-26, 2027) is live but is a JS shell with no names in static HTML.",
+   "event_tag": "AJA 2027"
   },
   {
    "block": "Courts, corrections, justice",
@@ -824,7 +909,8 @@
    "platform": "custom HTML (appa-net.org)",
    "event_year": "2026",
    "approx_count": 50,
-   "discovery_notes": "American Probation and Parole Association 51st Annual Training Institute, Chicago, Aug 16-19, 2026 (correct APPA - not public power). Page contains a full booth directory (~50+ companies, booths CV1-422) plus tiered sponsor sections, all in static HTML. The 2026 Winter Training Institute (Atlanta, Mar 1-4) has a separate exhibitor page at /institutes/2026-Atlanta/exhibitor.html and a PDF exhibitor kit."
+   "discovery_notes": "American Probation and Parole Association 51st Annual Training Institute, Chicago, Aug 16-19, 2026 (correct APPA - not public power). Page contains a full booth directory (~50+ companies, booths CV1-422) plus tiered sponsor sections, all in static HTML. The 2026 Winter Training Institute (Atlanta, Mar 1-4) has a separate exhibitor page at /institutes/2026-Atlanta/exhibitor.html and a PDF exhibitor kit.",
+   "event_tag": "APPA Probation 2026"
   },
   {
    "block": "Courts, corrections, justice",
@@ -833,7 +919,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "CJJ 2026"
   },
   {
    "block": "Health and human services",
@@ -846,7 +933,8 @@
    "platform": "MapYourShow",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "Official 2026 NACCHO360 (July 14-17, Louisville KY) exhibitor directory on MapYourShow; fetched HTML renders the search shell but no exhibitor names ('No exhibitors could be found' placeholder). Fallback: naccho360.org hosts a downloadable '2024_and_2025_NACCHO360_Exhibitor_List.pdf' on its Past NACCHO360 Exhibitors page (naccho360.org/sponsorships-and-exhibits/exhibitor-resource-center/past-naccho360-exhibitors)."
+   "discovery_notes": "Official 2026 NACCHO360 (July 14-17, Louisville KY) exhibitor directory on MapYourShow; fetched HTML renders the search shell but no exhibitor names ('No exhibitors could be found' placeholder). Fallback: naccho360.org hosts a downloadable '2024_and_2025_NACCHO360_Exhibitor_List.pdf' on its Past NACCHO360 Exhibitors page (naccho360.org/sponsorships-and-exhibits/exhibitor-resource-center/past-naccho360-exhibitors).",
+   "event_tag": "NACCHO 360 2026"
   },
   {
    "block": "Health and human services",
@@ -855,7 +943,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "ASTHO 2026"
   },
   {
    "block": "Health and human services",
@@ -868,7 +957,8 @@
    "platform": "custom (WordPress/WooCommerce booth-sales site)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "MESC 2026 (Aug 17-20, Portland OR, run by NESCSO) publishes no public exhibitor/sponsor roster. Tried: 'MESC 2026 exhibitor list' searches, mesconference.org homepage, /sponsorships-2026/ (404), /sponsorships-2026/exhibit-hall/ (static floor-plan image, no names), and the booth-selection chart at mesconference.org/tc_seat_charts/mesc-2026-exhibit-hall-c/ (JS seat-picker, no names in HTML and unclear it ever shows company names). Site claims 'well over 100 exhibitors' (~100+). Third-party gated list exists at vendelux.com/insights/mesc-2026-attendee-list. Known 2026 sponsors from vendor pages: Conduent, Gainwell, Maximus, Acentra Health, PCG, Catalyst Solutions."
+   "discovery_notes": "MESC 2026 (Aug 17-20, Portland OR, run by NESCSO) publishes no public exhibitor/sponsor roster. Tried: 'MESC 2026 exhibitor list' searches, mesconference.org homepage, /sponsorships-2026/ (404), /sponsorships-2026/exhibit-hall/ (static floor-plan image, no names), and the booth-selection chart at mesconference.org/tc_seat_charts/mesc-2026-exhibit-hall-c/ (JS seat-picker, no names in HTML and unclear it ever shows company names). Site claims 'well over 100 exhibitors' (~100+). Third-party gated list exists at vendelux.com/insights/mesc-2026-attendee-list. Known 2026 sponsors from vendor pages: Conduent, Gainwell, Maximus, Acentra Health, PCG, Catalyst Solutions.",
+   "event_tag": "MESC 2026"
   },
   {
    "block": "Health and human services",
@@ -881,7 +971,8 @@
    "platform": "custom HTML (WordPress on aphsa.org)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "2026 Summit page (June 14-17, Arlington VA) lists sponsors by tier (Champion/Collaborator/Benefactor/Influence/Build/Connect/Tabletop) directly in HTML; Tabletop tier is effectively the exhibitor list. Full list extends well beyond the sample. Old microsite aphsanationalsummit.com now redirects here. Next edition: Kansas City, June 27-30, 2027."
+   "discovery_notes": "2026 Summit page (June 14-17, Arlington VA) lists sponsors by tier (Champion/Collaborator/Benefactor/Influence/Build/Connect/Tabletop) directly in HTML; Tabletop tier is effectively the exhibitor list. Full list extends well beyond the sample. Old microsite aphsanationalsummit.com now redirects here. Next edition: Kansas City, June 27-30, 2027.",
+   "event_tag": "APHSA 2026"
   },
   {
    "block": "Health and human services",
@@ -890,7 +981,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "CWLA 2026"
   },
   {
    "block": "Health and human services",
@@ -903,7 +995,8 @@
    "platform": "custom HTML (WordPress on ncsea.org)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "No event-specific exhibitor directory found for the 2026 Leadership Symposium (Aug 10-13, Galt House, Louisville KY) — the symposium page has no sponsor/exhibitor section. Recorded instead NCSEA's current Corporate Partners page (Platinum: CGI, Conduent, Deloitte, SMI; Gold: Adobe, FAST, GreenCourt, Protech, Stellarware; Silver: Courtland, CSG, Maximus, KPMG, Veritas HHS, YoungWilliams), which is the de facto symposium sponsor roster. ~15 companies listed."
+   "discovery_notes": "No event-specific exhibitor directory found for the 2026 Leadership Symposium (Aug 10-13, Galt House, Louisville KY) — the symposium page has no sponsor/exhibitor section. Recorded instead NCSEA's current Corporate Partners page (Platinum: CGI, Conduent, Deloitte, SMI; Gold: Adobe, FAST, GreenCourt, Protech, Stellarware; Silver: Courtland, CSG, Maximus, KPMG, Veritas HHS, YoungWilliams), which is the de facto symposium sponsor roster. ~15 companies listed.",
+   "event_tag": "NCSEA 2026"
   },
   {
    "block": "Health and human services",
@@ -916,7 +1009,8 @@
    "platform": "eventScribe (CadmiumCD)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "NatCon 2026 (National Council for Mental Wellbeing, April 27-29 2026, Denver) full exhibitor directory renders server-side with booth numbers and categories, browsable alphabetically. Also available: NatCon26 exhibitor prospectus PDF at thenationalcouncil.org/wp-content/uploads/2025/10/NatCon26_Exhibitor-Prospectus-v1-3b.pdf."
+   "discovery_notes": "NatCon 2026 (National Council for Mental Wellbeing, April 27-29 2026, Denver) full exhibitor directory renders server-side with booth numbers and categories, browsable alphabetically. Also available: NatCon26 exhibitor prospectus PDF at thenationalcouncil.org/wp-content/uploads/2025/10/NatCon26_Exhibitor-Prospectus-v1-3b.pdf.",
+   "event_tag": "NatCon 2026"
   },
   {
    "block": "Health and human services",
@@ -929,7 +1023,9 @@
    "platform": "custom HTML (usagingconference.org)",
    "event_year": "2026",
    "approx_count": 42,
-   "discovery_notes": "n4a rebranded as USAging; event is the USAging Annual Conference and Tradeshow, July 2026 in San Diego. Conference_Supporters page thanks 'sponsors and exhibitors participating in the upcoming 2026 conference' with ~40-45 org names across tiers. The /tradeshow page says ~100 exhibitors but publishes no interactive directory or floor plan."
+   "discovery_notes": "n4a rebranded as USAging; event is the USAging Annual Conference and Tradeshow, July 2026 in San Diego. Conference_Supporters page thanks 'sponsors and exhibitors participating in the upcoming 2026 conference' with ~40-45 org names across tiers. The /tradeshow page says ~100 exhibitors but publishes no interactive directory or floor plan.",
+   "event_tag": "USAging 2026",
+   "tag_note": "tag fixed by the sweep that already ran; kept as-is so existing descriptions stay true"
   },
   {
    "block": "Health and human services",
@@ -938,7 +1034,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NACVSO 2026"
   },
   {
    "block": "Health and human services",
@@ -951,7 +1048,8 @@
    "platform": "custom HTML (naswa.org, Drupal)",
    "event_year": "2025 (2026 list not yet published)",
    "approx_count": 20,
-   "discovery_notes": "Flagship event is the NASWA Summit (2026 edition Sept 16-17, Milwaukee). The 2026 Summit page shows only presenting sponsor FAST Enterprises so far; the 2025 Summit page lists full tiered sponsors (Diamond/Platinum/Gold/Silver/Bronze). 2026 sponsorship prospectus PDF: https://www.naswa.org/system/files/2025-12/2026conferencesponsorships.pdf"
+   "discovery_notes": "Flagship event is the NASWA Summit (2026 edition Sept 16-17, Milwaukee). The 2026 Summit page shows only presenting sponsor FAST Enterprises so far; the 2025 Summit page lists full tiered sponsors (Diamond/Platinum/Gold/Silver/Bronze). 2026 sponsorship prospectus PDF: https://www.naswa.org/system/files/2025-12/2026conferencesponsorships.pdf",
+   "event_tag": "NASWA 2025"
   },
   {
    "block": "Health and human services",
@@ -964,7 +1062,8 @@
    "platform": "custom HTML (humanepro.org); floor plan was MapYourShow",
    "event_year": "2026",
    "approx_count": 400,
-   "discovery_notes": "Humane World for Animals (ex-HSUS) event. Expo 2026 (Pittsburgh, April 7-10) already happened; its MapYourShow directory (ace26.mapyourshow.com/8_0/exhview/index.cfm) now 302-redirects to humanepro.org/expo. Readable alternatives: this past-exhibitors page (~400 names, alphabetical) and the 2026 sponsors page https://humanepro.org/expo/animal-care-expo-sponsors (~30 names incl. Maddie's Fund, Hill's Pet Nutrition, Donorbox). Next edition: May 2027, Grapevine TX."
+   "discovery_notes": "Humane World for Animals (ex-HSUS) event. Expo 2026 (Pittsburgh, April 7-10) already happened; its MapYourShow directory (ace26.mapyourshow.com/8_0/exhview/index.cfm) now 302-redirects to humanepro.org/expo. Readable alternatives: this past-exhibitors page (~400 names, alphabetical) and the 2026 sponsors page https://humanepro.org/expo/animal-care-expo-sponsors (~30 names incl. Maddie's Fund, Hill's Pet Nutrition, Donorbox). Next edition: May 2027, Grapevine TX.",
+   "event_tag": "Animal Care Expo 2026"
   },
   {
    "block": "Community development",
@@ -977,7 +1076,8 @@
    "platform": "eShow (maps.goeshow.com)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "NPC26 was April 25-28, 2026 in Detroit. planning.org/conference/sponsors/ has rolled over to NPC27 (sales 'open in coming weeks', no names) but links the NPC26 exhibitor list on the eShow platform; fetching it returns only an 'eShow' JS shell with no names - open in a real browser."
+   "discovery_notes": "NPC26 was April 25-28, 2026 in Detroit. planning.org/conference/sponsors/ has rolled over to NPC27 (sales 'open in coming weeks', no names) but links the NPC26 exhibitor list on the eShow platform; fetching it returns only an 'eShow' JS shell with no names - open in a real browser.",
+   "event_tag": "APA Planning 2026"
   },
   {
    "block": "Community development",
@@ -986,7 +1086,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "AACE 2026"
   },
   {
    "block": "Community development",
@@ -999,7 +1100,8 @@
    "platform": "custom HTML (neworleans.iedconline.org)",
    "event_year": "2026",
    "approx_count": 8,
-   "discovery_notes": "2026 Annual Conference, Oct 25-28, New Orleans (Hyatt Regency). Exhibitor page currently lists 3 Spotlight Exhibitors plus 5 regular exhibitors with descriptions; list will likely grow as the October event approaches - recheck closer to the date."
+   "discovery_notes": "2026 Annual Conference, Oct 25-28, New Orleans (Hyatt Regency). Exhibitor page currently lists 3 Spotlight Exhibitors plus 5 regular exhibitors with descriptions; list will likely grow as the October event approaches - recheck closer to the date.",
+   "event_tag": "IEDC 2026"
   },
   {
    "block": "Community development",
@@ -1012,7 +1114,8 @@
    "platform": "Small World Labs (Personify) directory; booth pages on a2zinc.net (a2z)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "2026 NAHRO National Conference & Exhibition, Oct 15-17 2026, Denver. Alphabetical directory fetched with names in HTML; total count not shown on page (listing extends at least A through M in the fetched chunk)."
+   "discovery_notes": "2026 NAHRO National Conference & Exhibition, Oct 15-17 2026, Denver. Alphabetical directory fetched with names in HTML; total count not shown on page (listing extends at least A through M in the fetched chunk).",
+   "event_tag": "NAHRO 2026"
   },
   {
    "block": "Community development",
@@ -1021,7 +1124,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NCSHA 2026"
   },
   {
    "block": "Community development",
@@ -1030,7 +1134,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "ULI Fall Meeting 2026"
   },
   {
    "block": "Parks, recreation, libraries",
@@ -1039,7 +1144,8 @@
    "flagship": true,
    "swept": true,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NRPA 2026"
   },
   {
    "block": "Parks, recreation, libraries",
@@ -1049,7 +1155,8 @@
    "swept": true,
    "note": "landed as AB Show 2026",
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "AB Show 2026"
   },
   {
    "block": "Parks, recreation, libraries",
@@ -1058,7 +1165,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NAYS 2026"
   },
   {
    "block": "Parks, recreation, libraries",
@@ -1071,7 +1179,8 @@
    "platform": "Small World Labs (Personify) directory; booth sales via a2zinc.net (Corcoran Expositions)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "PLA 2026, April 1-3 2026, Minneapolis (already held). Directory HTML contains names; no total count stated. Found via placonference.org/exhibits."
+   "discovery_notes": "PLA 2026, April 1-3 2026, Minneapolis (already held). Directory HTML contains names; no total count stated. Found via placonference.org/exhibits.",
+   "event_tag": "PLA 2026"
   },
   {
    "block": "Parks, recreation, libraries",
@@ -1080,7 +1189,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "ALA 2026"
   },
   {
    "block": "K-12 education",
@@ -1093,7 +1203,8 @@
    "platform": "ExpoCad FX (smithbucklin.expocad.com)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "2026 NCE was Feb 12-14 2026, Nashville. ExpoCad floor plan/exhibitor search is a JS app shell with no names in HTML. The site's Exhibit Hall page (https://nce.aasa.org/nce-exhibit-hall/) now points at the 2027 edition (https://smithbucklin.expocad.com/Events/27aasa/index.html) and does show sponsor names in HTML (Wayfinder, American Reading Company, BrainFuse, CentralReach, Finalsite, Xello) but no full exhibitor list."
+   "discovery_notes": "2026 NCE was Feb 12-14 2026, Nashville. ExpoCad floor plan/exhibitor search is a JS app shell with no names in HTML. The site's Exhibit Hall page (https://nce.aasa.org/nce-exhibit-hall/) now points at the 2027 edition (https://smithbucklin.expocad.com/Events/27aasa/index.html) and does show sponsor names in HTML (Wayfinder, American Reading Company, BrainFuse, CentralReach, Finalsite, Xello) but no full exhibitor list.",
+   "event_tag": "AASA 2026"
   },
   {
    "block": "K-12 education",
@@ -1102,7 +1213,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NSBA 2026"
   },
   {
    "block": "K-12 education",
@@ -1116,7 +1228,8 @@
    "platform": "eShow / GoExpo (goeshow.com)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "School business officials association (asbointl.org), Annual Conference & Expo Oct 14-17 2026, Pittsburgh. Exhibit Hall Floorplan page loads exhibitor data via JS; no names in fetched HTML. Also tried network.asbointl.org exhibitor pages for 2025 and 2026 (no names) and the goeshow exhibit_sales page (booth-purchase shell only). No static/public exhibitor list found for either edition."
+   "discovery_notes": "School business officials association (asbointl.org), Annual Conference & Expo Oct 14-17 2026, Pittsburgh. Exhibit Hall Floorplan page loads exhibitor data via JS; no names in fetched HTML. Also tried network.asbointl.org exhibitor pages for 2025 and 2026 (no names) and the goeshow exhibit_sales page (booth-purchase shell only). No static/public exhibitor list found for either edition.",
+   "event_tag": "ASBO School Business 2026"
   },
   {
    "block": "K-12 education",
@@ -1129,7 +1242,8 @@
    "platform": "CadmiumCD eventScribe (eventscribe.net)",
    "event_year": "2026",
    "approx_count": 80,
-   "discovery_notes": "CoSN 2026 Annual Conference, April 13-15 2026, Chicago. Combined sponsor + exhibitor directory tiered Diamond through Basic Exhibitor; roughly 80+ companies listed and names present in fetched HTML."
+   "discovery_notes": "CoSN 2026 Annual Conference, April 13-15 2026, Chicago. Combined sponsor + exhibitor directory tiered Diamond through Basic Exhibitor; roughly 80+ companies listed and names present in fetched HTML.",
+   "event_tag": "CoSN 2026"
   },
   {
    "block": "K-12 education",
@@ -1138,7 +1252,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "ISTELive 2026"
   },
   {
    "block": "K-12 education",
@@ -1147,7 +1262,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NAESP 2026"
   },
   {
    "block": "K-12 education",
@@ -1160,7 +1276,8 @@
    "platform": "Map Dynamics",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "NAPT ACTS 2026 (49th Annual, Louisville KY, Oct 3-7 2026). napt.org/conference has no exhibitor list, only Cvent registration (also a JS shell). Map Dynamics hosts the trade show floorplan/exhibitor viewer (napt2026 instance confirmed live with Floorplan + Exhibitors tabs), but all names render client-side; the napt2025 (Grand Rapids) instance at homebase.map-dynamics.com/napt2025/floorplan is equally JS-walled. A person opening the URL should see the exhibitor tab."
+   "discovery_notes": "NAPT ACTS 2026 (49th Annual, Louisville KY, Oct 3-7 2026). napt.org/conference has no exhibitor list, only Cvent registration (also a JS shell). Map Dynamics hosts the trade show floorplan/exhibitor viewer (napt2026 instance confirmed live with Floorplan + Exhibitors tabs), but all names render client-side; the napt2025 (Grand Rapids) instance at homebase.map-dynamics.com/napt2025/floorplan is equally JS-walled. A person opening the URL should see the exhibitor tab.",
+   "event_tag": "NAPT Summit 2026"
   },
   {
    "block": "K-12 education",
@@ -1173,7 +1290,8 @@
    "platform": "a2z (a2zinc.net / Personify A2Z Events)",
    "event_year": "2027",
    "approx_count": 281,
-   "discovery_notes": "anc.schoolnutrition.org has rolled over to ANC 2027; the ANC 2026 (Charlotte, July 12-14 2026) directory is no longer online (a2z Exhibitors.aspx for ANC2026 and ANC2027 both error). However the a2z EventMap page for ANC2027 serves a server-rendered alphabetical exhibitor list with booth numbers (~281 exhibitors) - names extracted directly from the fetched HTML. Names likely carry over heavily from ANC26 rebookings."
+   "discovery_notes": "anc.schoolnutrition.org has rolled over to ANC 2027; the ANC 2026 (Charlotte, July 12-14 2026) directory is no longer online (a2z Exhibitors.aspx for ANC2026 and ANC2027 both error). However the a2z EventMap page for ANC2027 serves a server-rendered alphabetical exhibitor list with booth numbers (~281 exhibitors) - names extracted directly from the fetched HTML. Names likely carry over heavily from ANC26 rebookings.",
+   "event_tag": "SNA ANC 2027"
   },
   {
    "block": "K-12 education",
@@ -1182,7 +1300,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NASRO 2026"
   },
   {
    "block": "K-12 education",
@@ -1191,7 +1310,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "CEC Convention 2026"
   },
   {
    "block": "Higher education",
@@ -1204,7 +1324,8 @@
    "platform": "A2Z Events (Small World Labs frontend; s23.a2zinc.net backend)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "2026 EDUCAUSE Annual Conference, Denver CO, Sept 29-Oct 2 2026. Directory page footer says 'Powered by A2Z Events' but the smallworldlabs.com page itself renders names + booth numbers in fetchable HTML (booths e.g. 1Kosmos #1861, Adobe #1101). Full alphabetical directory; total count not captured but list is large."
+   "discovery_notes": "2026 EDUCAUSE Annual Conference, Denver CO, Sept 29-Oct 2 2026. Directory page footer says 'Powered by A2Z Events' but the smallworldlabs.com page itself renders names + booth numbers in fetchable HTML (booths e.g. 1Kosmos #1861, Adobe #1101). Full alphabetical directory; total count not captured but list is large.",
+   "event_tag": "EDUCAUSE 2026"
   },
   {
    "block": "Higher education",
@@ -1217,7 +1338,8 @@
    "platform": "eShow",
    "event_year": "2026",
    "approx_count": 180,
-   "discovery_notes": "NACUBO 2026 Annual Meeting (Anaheim CA, July 18-21 2026 - just-past edition). eShow exhibitor portal; exhibitor_list.cfm serves a plain HTML alphabetical list with booth numbers, ~180 exhibitors (booths 104-749). Floor plan also at floor_plan.cfm on the same host."
+   "discovery_notes": "NACUBO 2026 Annual Meeting (Anaheim CA, July 18-21 2026 - just-past edition). eShow exhibitor portal; exhibitor_list.cfm serves a plain HTML alphabetical list with booth numbers, ~180 exhibitors (booths 104-749). Floor plan also at floor_plan.cfm on the same host.",
+   "event_tag": "NACUBO 2026"
   },
   {
    "block": "Higher education",
@@ -1227,7 +1349,8 @@
    "swept": false,
    "note": "educational facilities APPA - third of the three APPAs",
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "APPA Educational Facilities 2026"
   },
   {
    "block": "Higher education",
@@ -1236,7 +1359,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "AACRAO 2026"
   },
   {
    "block": "Higher education",
@@ -1245,7 +1369,8 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "NASFAA 2026"
   },
   {
    "block": "Higher education",
@@ -1254,7 +1379,19 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null
+   "fetchability": null,
+   "event_tag": "IACLEA 2026"
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "IT / innovation",
+   "conference": "TechConnect",
+   "flagship": false,
+   "swept": true,
+   "event_tag": "TechConnect 2026",
+   "exhibitor_url": null,
+   "fetchability": null,
+   "note": "swept before this catalog existed; listed so its tag is issued"
   }
  ]
 }

@@ -1,0 +1,257 @@
+{
+  "conference": "PSHRA 2026",
+  "exhibitors": [
+    {
+      "name": "AbsenceSoft",
+      "website": "https://www.absencesoft.com",
+      "is_govtech": true,
+      "vertical": "Leave and absence management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ADP",
+      "website": "https://www.adp.com",
+      "is_govtech": true,
+      "vertical": "Payroll and HR software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Aflac",
+      "website": "https://www.aflac.com",
+      "is_govtech": false,
+      "vertical": "Supplemental insurance",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Baker Tilly",
+      "website": "https://www.bakertilly.com",
+      "is_govtech": false,
+      "vertical": "Accounting and consulting services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Bandana",
+      "website": "https://www.bandana.com",
+      "is_govtech": true,
+      "vertical": "Hourly job posting marketplace",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Bolton Partners, Inc.",
+      "website": "https://www.boltonusa.com",
+      "is_govtech": false,
+      "vertical": "Actuarial and benefits consulting",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Carahsoft",
+      "website": "https://www.carahsoft.com",
+      "is_govtech": false,
+      "vertical": "Government software reseller",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Carrot",
+      "website": "https://www.get-carrot.com",
+      "is_govtech": false,
+      "vertical": "Fertility and family benefits",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Colonial Life",
+      "website": "https://www.coloniallife.com",
+      "is_govtech": false,
+      "vertical": "Supplemental insurance",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Cornerstone OnDemand",
+      "website": "https://www.cornerstoneondemand.com",
+      "is_govtech": true,
+      "vertical": "Talent management and learning software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "CPS HR Consulting",
+      "website": "https://www.cpshr.us",
+      "is_govtech": false,
+      "vertical": "Public sector HR consulting",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Dayforce",
+      "website": "https://www.dayforce.com",
+      "is_govtech": true,
+      "vertical": "HR, payroll and workforce software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Express Evaluations",
+      "website": "https://www.expressevaluations.com",
+      "is_govtech": true,
+      "vertical": "Employee performance review software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Guidehouse",
+      "website": "https://www.guidehouse.com",
+      "is_govtech": false,
+      "vertical": "Government consulting services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Hello Heart",
+      "website": "https://www.helloheart.com",
+      "is_govtech": false,
+      "vertical": "Digital heart health benefit",
+      "sector": "General Gov"
+    },
+    {
+      "name": "IMA Financial Group, Inc",
+      "website": "https://www.imacorp.com",
+      "is_govtech": false,
+      "vertical": "Insurance brokerage",
+      "sector": "General Gov"
+    },
+    {
+      "name": "International Foundation of Employee Benefit Plans",
+      "website": "https://www.ifebp.org",
+      "is_govtech": false,
+      "vertical": "Benefits education association",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Job Accommodation Network",
+      "website": "https://www.askjan.org",
+      "is_govtech": false,
+      "vertical": "ADA accommodation guidance service",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Kaiser Permanente",
+      "website": "https://www.kp.org",
+      "is_govtech": false,
+      "vertical": "Health plan and care delivery",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Medefy",
+      "website": "https://www.medefyhealth.com",
+      "is_govtech": false,
+      "vertical": "Health benefits navigation service",
+      "sector": "General Gov"
+    },
+    {
+      "name": "NEOGOV",
+      "website": "https://www.neogov.com",
+      "is_govtech": true,
+      "vertical": "Public sector HR and recruiting software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Ochs, Inc.",
+      "website": "https://www.ochsinc.com",
+      "is_govtech": false,
+      "vertical": "Public sector benefits administration",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Oracle America, Inc.",
+      "website": "https://www.oracle.com",
+      "is_govtech": true,
+      "vertical": "Enterprise ERP and HCM software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Plante Moran",
+      "website": "https://www.plantemoran.com",
+      "is_govtech": false,
+      "vertical": "Accounting and consulting services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Pulpstream",
+      "website": "https://www.pulpstream.com",
+      "is_govtech": true,
+      "vertical": "No-code HR workflow automation",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Robert Half",
+      "website": "https://www.roberthalf.com",
+      "is_govtech": false,
+      "vertical": "Staffing and recruiting agency",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Segal",
+      "website": "https://www.segalco.com",
+      "is_govtech": false,
+      "vertical": "Benefits and actuarial consulting",
+      "sector": "General Gov"
+    },
+    {
+      "name": "SimpliVerified",
+      "website": "https://www.simpliverified.com",
+      "is_govtech": true,
+      "vertical": "Background screening platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "The Phia Group",
+      "website": "https://www.phiagroup.com",
+      "is_govtech": false,
+      "vertical": "Health plan cost containment services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Totara",
+      "website": "https://www.totara.com",
+      "is_govtech": true,
+      "vertical": "Learning management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "TrueComp",
+      "website": "https://www.truecomp.com",
+      "is_govtech": true,
+      "vertical": "Public sector compensation analytics software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Tyler Technologies, Inc.",
+      "website": "https://www.tylertech.com",
+      "is_govtech": true,
+      "vertical": "Public sector ERP and HR software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "UnitedHealthCare Retiree Solutions",
+      "website": "https://www.uhc.com",
+      "is_govtech": false,
+      "vertical": "Retiree health plans",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Via Benefits",
+      "website": "https://www.viabenefits.com",
+      "is_govtech": false,
+      "vertical": "Benefits exchange administration",
+      "sector": "General Gov"
+    },
+    {
+      "name": "WEX",
+      "website": "https://www.wexinc.com",
+      "is_govtech": false,
+      "vertical": "Benefit accounts and payments",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Workday",
+      "website": "https://www.workday.com",
+      "is_govtech": true,
+      "vertical": "ERP, HR and finance software",
+      "sector": "General Gov"
+    }
+  ]
+}

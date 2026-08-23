@@ -1,0 +1,205 @@
+{
+  "conference": "USAging 2026",
+  "exhibitors": [
+    {
+      "name": "CCS Health",
+      "website": "https://ccs.health/",
+      "is_govtech": true,
+      "vertical": "Care coordination software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Duett",
+      "website": "https://duett.io/",
+      "is_govtech": true,
+      "vertical": "Care referral matching software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "BetterAge",
+      "website": "https://www.betterage.com/",
+      "is_govtech": true,
+      "vertical": "AI aging well-being assessment platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Cumulus",
+      "website": "https://cumulus.care/",
+      "is_govtech": true,
+      "vertical": "Closed-loop referral and care software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "WellSky",
+      "website": "https://www.wellsky.com/",
+      "is_govtech": true,
+      "vertical": "Care management and HCBS software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Trualta",
+      "website": "https://www.trualta.com/",
+      "is_govtech": true,
+      "vertical": "Family caregiver education platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "TCARE",
+      "website": "https://tcare.ai/",
+      "is_govtech": true,
+      "vertical": "Caregiver assessment and support platform",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Collabrios Health",
+      "website": "https://collabrios.com/",
+      "is_govtech": true,
+      "vertical": "PACE and aging agency software",
+      "sector": "Health & Human Services"
+    },
+    {
+      "name": "Elevance Health",
+      "website": "https://www.elevancehealth.com/",
+      "is_govtech": false,
+      "vertical": "Health insurance plans"
+    },
+    {
+      "name": "Ring (Amazon)",
+      "website": "https://ring.com/",
+      "is_govtech": false,
+      "vertical": "Home security devices"
+    },
+    {
+      "name": "Caregiving.com",
+      "website": "https://caregiving.com/",
+      "is_govtech": false,
+      "vertical": "Caregiver media community"
+    },
+    {
+      "name": "TRIO Community Meals",
+      "website": "https://triocommunitymeals.com/",
+      "is_govtech": false,
+      "vertical": "Senior meal program services"
+    },
+    {
+      "name": "Audien Hearing",
+      "website": "https://audienhearing.com/",
+      "is_govtech": false,
+      "vertical": "Over-the-counter hearing aids"
+    },
+    {
+      "name": "Brown, Roberts & Associates",
+      "website": "https://brcoachllc.com/",
+      "is_govtech": false,
+      "vertical": "Leadership and business consulting"
+    },
+    {
+      "name": "Mom's Meals",
+      "website": "http://www.momsmeals.com",
+      "is_govtech": false,
+      "vertical": "Home-delivered medically tailored meals"
+    },
+    {
+      "name": "Vivo",
+      "website": "https://teamvivo.com/",
+      "is_govtech": false,
+      "vertical": "Online senior strength training classes"
+    },
+    {
+      "name": "Centene",
+      "website": "http://www.centene.com",
+      "is_govtech": false,
+      "vertical": "Managed care health plans"
+    },
+    {
+      "name": "Humana",
+      "website": "http://www.humana.com",
+      "is_govtech": false,
+      "vertical": "Medicare and health insurance plans"
+    },
+    {
+      "name": "Addus HomeCare",
+      "website": "https://addus.com/",
+      "is_govtech": false,
+      "vertical": "In-home personal care services"
+    },
+    {
+      "name": "Aetna Better Health",
+      "website": "https://www.aetnabetterhealth.com/",
+      "is_govtech": false,
+      "vertical": "Medicaid managed care plans"
+    },
+    {
+      "name": "Amgen",
+      "website": "https://www.amgen.com/",
+      "is_govtech": false,
+      "vertical": "Pharmaceuticals"
+    },
+    {
+      "name": "Independent Living Systems",
+      "website": "https://ilshealth.com/",
+      "is_govtech": false,
+      "vertical": "Managed long-term care services"
+    },
+    {
+      "name": "Pfizer",
+      "website": "https://www.pfizer.com/",
+      "is_govtech": false,
+      "vertical": "Pharmaceuticals"
+    },
+    {
+      "name": "PhRMA",
+      "website": "https://phrma.org/",
+      "is_govtech": false,
+      "vertical": "Pharmaceutical industry association"
+    },
+    {
+      "name": "Wells Fargo",
+      "website": "https://www.wellsfargo.com/",
+      "is_govtech": false,
+      "vertical": "Banking and financial services"
+    },
+    {
+      "name": "AmeriHealth Caritas",
+      "website": "https://www.amerihealthcaritas.com/",
+      "is_govtech": false,
+      "vertical": "Medicaid managed care plans"
+    },
+    {
+      "name": "Dementia Society of America",
+      "website": "https://www.dementiasociety.org/",
+      "is_govtech": false,
+      "vertical": "Dementia awareness nonprofit"
+    },
+    {
+      "name": "Defeat Malnutrition Today",
+      "website": "https://defeatmalnutrition.today/",
+      "is_govtech": false,
+      "vertical": "Malnutrition advocacy coalition"
+    },
+    {
+      "name": "Molina Healthcare",
+      "website": "https://www.molinahealthcare.com/",
+      "is_govtech": false,
+      "vertical": "Medicaid managed care plans"
+    },
+    {
+      "name": "CareSource",
+      "website": "https://www.caresource.com/",
+      "is_govtech": false,
+      "vertical": "Medicaid managed care plans"
+    },
+    {
+      "name": "CSD Access",
+      "website": "https://www.csdaccess.org/",
+      "is_govtech": false,
+      "vertical": "ASL interpreting and video relay services"
+    },
+    {
+      "name": "Senior Proof",
+      "website": "https://www.seniorproof.com/",
+      "is_govtech": false,
+      "vertical": "Home modification contracting"
+    }
+  ]
+}

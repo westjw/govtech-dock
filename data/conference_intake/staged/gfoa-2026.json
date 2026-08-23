@@ -1,0 +1,1421 @@
+{
+  "conference": "GFOA 2026",
+  "exhibitors": [
+    {
+      "name": "Abdo",
+      "website": "https://abdosolutions.com/",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "ACI Worldwide",
+      "website": "https://www.aciworldwide.com/",
+      "is_govtech": true,
+      "vertical": "Payments processing software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Aclarian",
+      "website": "https://www.aclarian.com/home",
+      "is_govtech": true,
+      "vertical": "Local government ERP software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "AGA",
+      "website": "https://www.agacgfm.org",
+      "is_govtech": false,
+      "vertical": "Government finance professional association"
+    },
+    {
+      "name": "Allocore",
+      "website": "https://allocore.com/",
+      "is_govtech": true,
+      "vertical": "Government loan and grant platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Amazon Business",
+      "website": "https://business.amazon.com/",
+      "is_govtech": false,
+      "vertical": "Business purchasing marketplace"
+    },
+    {
+      "name": "American Express",
+      "website": "https://www.americanexpress.com/",
+      "is_govtech": false,
+      "vertical": "Corporate cards and financial services"
+    },
+    {
+      "name": "American Water Works Association",
+      "website": "https://www.awwa.org/",
+      "is_govtech": false,
+      "vertical": "Water industry association"
+    },
+    {
+      "name": "Anaplan",
+      "website": "https://www.anaplan.com/industries/public-sector/",
+      "is_govtech": true,
+      "vertical": "Planning and budgeting software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Andrews Technology",
+      "website": "https://andrewstechnology.com/",
+      "is_govtech": true,
+      "vertical": "Time and attendance software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Argent Institutional Trust Company",
+      "website": "https://aitc.argentfinancial.com/",
+      "is_govtech": false,
+      "vertical": "Institutional trust services"
+    },
+    {
+      "name": "Asset Systems",
+      "website": "https://www.assetsystems.com/company/about-asset-systems/",
+      "is_govtech": true,
+      "vertical": "Fixed asset tracking software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Autoagent",
+      "website": "https://autoagent.com/",
+      "is_govtech": true,
+      "vertical": "Property tax payment platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Avero Advisors",
+      "website": "https://www.averoadvisors.com/",
+      "is_govtech": false,
+      "vertical": "Government technology consulting"
+    },
+    {
+      "name": "Avila Technologies",
+      "website": "https://www.getavila.ai/",
+      "is_govtech": true,
+      "vertical": "AI grant discovery and writing",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Azavar/Localgov",
+      "website": "https://www.azavar.com/home-azavar",
+      "is_govtech": true,
+      "vertical": "Local tax filing and revenue software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Baker Tilly",
+      "website": "https://www.bakertilly.com/",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "BDO",
+      "website": "https://www.bdo.com/industries/state-and-local-government",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "Beacon Bid",
+      "website": "https://www.beaconbid.com/",
+      "is_govtech": true,
+      "vertical": "Bid and procurement portal",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Blackbaud",
+      "website": "https://www.blackbaud.com/",
+      "is_govtech": true,
+      "vertical": "Grant and fund accounting software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "BlackLine",
+      "website": "https://www.blackline.com/",
+      "is_govtech": true,
+      "vertical": "Accounting close automation software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "BLX Group",
+      "website": "https://www.blxgroup.com/",
+      "is_govtech": false,
+      "vertical": "Arbitrage rebate and bond compliance"
+    },
+    {
+      "name": "BMO Bank",
+      "website": "https://commercial.bmo.com/en/us/industry-expertise/governments/",
+      "is_govtech": false,
+      "vertical": "Commercial and government banking"
+    },
+    {
+      "name": "BNY",
+      "website": "https://www.bny.com",
+      "is_govtech": false,
+      "vertical": "Custody and corporate trust banking"
+    },
+    {
+      "name": "The Bond Buyer",
+      "website": "https://arizent.com/",
+      "is_govtech": false,
+      "vertical": "Municipal finance news publisher"
+    },
+    {
+      "name": "The Bond Buyer's Municipal Marketplace (The Red Book)",
+      "website": "https://www.munimarketplace.com/",
+      "is_govtech": false,
+      "vertical": "Municipal finance directory publication"
+    },
+    {
+      "name": "BondLink",
+      "website": "https://www.bondlink.com/",
+      "is_govtech": true,
+      "vertical": "Municipal bond investor relations platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Bourntec Solutions",
+      "website": "https://www.bourntec.com/",
+      "is_govtech": false,
+      "vertical": "IT consulting and integration"
+    },
+    {
+      "name": "Bronner Group",
+      "website": "https://www.bronnergroup.com/",
+      "is_govtech": false,
+      "vertical": "Public sector management consulting"
+    },
+    {
+      "name": "BS&A Software",
+      "website": "https://www.bsasoftware.com/",
+      "is_govtech": true,
+      "vertical": "Local government ERP software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Byline Bank",
+      "website": "https://www.bylinebank.com/municipal-banking/",
+      "is_govtech": false,
+      "vertical": "Municipal banking services"
+    },
+    {
+      "name": "Can/Am Teller Cashiering",
+      "website": "https://www.goteller.com/",
+      "is_govtech": true,
+      "vertical": "Cashiering and receipting software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Carr, Riggs & Ingram",
+      "website": "https://www.criadv.com/",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "Caselle",
+      "website": "https://www.caselle.com/",
+      "is_govtech": true,
+      "vertical": "Local government ERP software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "CBIZ",
+      "website": "https://www.cbiz.com/",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "CentralSquare Technologies",
+      "website": "https://www.centralsquare.com/",
+      "is_govtech": true,
+      "vertical": "Public sector ERP and safety software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "CGI",
+      "website": "https://www.cgi.com/us/en-us/state-local-government",
+      "is_govtech": false,
+      "vertical": "IT systems integration and consulting"
+    },
+    {
+      "name": "Chandler Asset Management",
+      "website": "https://www.chandlerasset.com/",
+      "is_govtech": false,
+      "vertical": "Public funds investment management"
+    },
+    {
+      "name": "Cherry Bekaert Advisory",
+      "website": "https://www.cbh.com/government/",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "CIP Software",
+      "website": "https://www.cipsoftware.com/",
+      "is_govtech": true,
+      "vertical": "Capital improvement planning software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "CKH Group",
+      "website": "https://www.ckhgroup.com/",
+      "is_govtech": false,
+      "vertical": "Accounting and tax advisory"
+    },
+    {
+      "name": "CLA",
+      "website": "https://www.claconnect.com",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "Claremont Lincoln University",
+      "website": "https://claremontlincoln.edu/",
+      "is_govtech": false,
+      "vertical": "University degree programs"
+    },
+    {
+      "name": "ClearGov",
+      "website": "https://cleargov.com/",
+      "is_govtech": true,
+      "vertical": "Budgeting and transparency software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Client First Technology Consulting",
+      "website": "https://clientfirstcg.com/",
+      "is_govtech": false,
+      "vertical": "IT consulting for local government"
+    },
+    {
+      "name": "CLOUDVICE",
+      "website": "https://www.cloudvice.com/",
+      "is_govtech": false,
+      "vertical": "Oracle Cloud implementation services"
+    },
+    {
+      "name": "CodeRight, Inc.",
+      "website": "https://www.capitalpathpro.com/",
+      "is_govtech": true,
+      "vertical": "Capital planning software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Colonial Life & Accident Insurance Company",
+      "website": "https://www.coloniallife.com/",
+      "is_govtech": false,
+      "vertical": "Voluntary employee insurance"
+    },
+    {
+      "name": "CommercePayments",
+      "website": "https://www.commercebank.com/payments",
+      "is_govtech": false,
+      "vertical": "Bank commercial payment services"
+    },
+    {
+      "name": "Computershare Corporate Trust",
+      "website": "https://www.computershare.com/corporate_trust",
+      "is_govtech": false,
+      "vertical": "Corporate trust services"
+    },
+    {
+      "name": "CORE Business Technologies",
+      "website": "https://www.corebt.com/",
+      "is_govtech": true,
+      "vertical": "Government payment and billing software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Corpay",
+      "website": "https://www.corpay.com/",
+      "is_govtech": true,
+      "vertical": "Corporate payments automation software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "CoStar Real Estate Manager + Visual Lease",
+      "website": "https://costarmanager.com/",
+      "is_govtech": true,
+      "vertical": "Lease accounting software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Crowe LLP",
+      "website": "https://www.crowe.com/",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "CSG",
+      "website": "https://www.csgi.com/",
+      "is_govtech": true,
+      "vertical": "Billing and customer engagement software",
+      "sector": "Utilities & Energy"
+    },
+    {
+      "name": "CUSI",
+      "website": "https://cusi.com/",
+      "is_govtech": true,
+      "vertical": "Utility billing software",
+      "sector": "Utilities & Energy"
+    },
+    {
+      "name": "DAC Bond",
+      "website": "https://www.dacbond.com",
+      "is_govtech": true,
+      "vertical": "Municipal disclosure and bond data platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "DataCognyx",
+      "website": "https://datacognyx.com/",
+      "is_govtech": true,
+      "vertical": "Financial data reconciliation platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "DebtBook",
+      "website": "https://www.debtbook.com",
+      "is_govtech": true,
+      "vertical": "Debt and lease management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Decision Optimization Technology - US",
+      "website": "https://www.bettercapitalplanning.com/",
+      "is_govtech": true,
+      "vertical": "Capital planning and asset software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Deloitte",
+      "website": "https://www.deloitte.com/global/en/Industries/government-public/about.html",
+      "is_govtech": false,
+      "vertical": "Consulting and systems integration"
+    },
+    {
+      "name": "Denovo",
+      "website": "https://www.denovo-us.com/",
+      "is_govtech": false,
+      "vertical": "ERP managed services and hosting"
+    },
+    {
+      "name": "DivDat Powered by Meridian",
+      "website": "https://www.divdat.com/",
+      "is_govtech": true,
+      "vertical": "Government bill payment platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "DLT Solutions",
+      "website": "https://www.dlt.com/",
+      "is_govtech": false,
+      "vertical": "Government software reseller"
+    },
+    {
+      "name": "DRS",
+      "website": "https://www.drsconsults.com",
+      "is_govtech": false,
+      "vertical": "Disaster recovery and grant services"
+    },
+    {
+      "name": "Edmunds GovTech",
+      "website": "https://www.edmundsgovtech.com/",
+      "is_govtech": true,
+      "vertical": "Local government ERP software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Edwin",
+      "website": "www.edwingov.com",
+      "is_govtech": true,
+      "vertical": "Public treasury management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Eide Bailly",
+      "website": "https://www.eidebailly.com/industries/government/government-advisory-services",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "Elavon",
+      "website": "https://www.elavon.com/",
+      "is_govtech": false,
+      "vertical": "Bank-owned merchant payment services"
+    },
+    {
+      "name": "Ellipse Solutions",
+      "website": "https://ellipsesolutions.com/",
+      "is_govtech": false,
+      "vertical": "Microsoft Dynamics implementation partner"
+    },
+    {
+      "name": "Engine",
+      "website": "https://engine.com/",
+      "is_govtech": true,
+      "vertical": "Travel booking and management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Envisio Solutions",
+      "website": "https://envisio.com/",
+      "is_govtech": true,
+      "vertical": "Strategic planning and performance software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Equitable",
+      "website": "https://equitable.com/retirement",
+      "is_govtech": false,
+      "vertical": "Retirement and insurance products"
+    },
+    {
+      "name": "ERPA",
+      "website": "http://www.erpa.com/",
+      "is_govtech": false,
+      "vertical": "ERP managed services and consulting"
+    },
+    {
+      "name": "Euna Solutions",
+      "website": "https://eunasolutions.com/",
+      "is_govtech": true,
+      "vertical": "Procurement and budgeting software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Fairfax Software",
+      "website": "https://fairfaxsoftware.com/",
+      "is_govtech": true,
+      "vertical": "Cashiering and document capture software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "FinQuery",
+      "website": "https://finquery.com/",
+      "is_govtech": true,
+      "vertical": "Lease and contract accounting software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "FirsTech",
+      "website": "https://firstechpayments.com/",
+      "is_govtech": true,
+      "vertical": "Bill payment processing platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Fitch Ratings",
+      "website": "https://www.fitchratings.com/",
+      "is_govtech": false,
+      "vertical": "Credit rating agency"
+    },
+    {
+      "name": "Fluxx Labs",
+      "website": "https://www.fluxx.io/",
+      "is_govtech": true,
+      "vertical": "Grants management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "FMX",
+      "website": "https://www.gofmx.com/",
+      "is_govtech": true,
+      "vertical": "Facilities and maintenance software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Forvis Mazars",
+      "website": "https://www.forvismazars.us/",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "FourthSquare",
+      "website": "https://fourthsquare.com/company/",
+      "is_govtech": false,
+      "vertical": "Workday and planning implementation consulting"
+    },
+    {
+      "name": "FUNDVIEW Software",
+      "website": "https://www.fundviewsoftware.com/",
+      "is_govtech": true,
+      "vertical": "Government fund accounting software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "GFOA's Research & Consulting Center",
+      "website": "https://www.gfoa.org/rcc",
+      "is_govtech": false,
+      "vertical": "Association research and consulting"
+    },
+    {
+      "name": "GilFlo Consulting Services",
+      "website": "https://www.gilfloconsulting.com/",
+      "is_govtech": false,
+      "vertical": "Finance and accounting consulting"
+    },
+    {
+      "name": "GNC Consulting",
+      "website": "https://www.gnc-consulting.com",
+      "is_govtech": false,
+      "vertical": "Government finance consulting"
+    },
+    {
+      "name": "Government Portfolio Advisors",
+      "website": "https://gpafixedincome.com/",
+      "is_govtech": false,
+      "vertical": "Public funds investment advisory"
+    },
+    {
+      "name": "Government Window",
+      "website": "www.governmentwindow.com",
+      "is_govtech": true,
+      "vertical": "Government e-payment platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "GovPilot",
+      "website": "https://www.govpilot.com/",
+      "is_govtech": true,
+      "vertical": "Local government process automation software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "GovSense",
+      "website": "https://govsense.com/",
+      "is_govtech": true,
+      "vertical": "Cloud local government ERP software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Grant Street Group",
+      "website": "https://www.grantstreet.com/",
+      "is_govtech": true,
+      "vertical": "Tax billing, auction and payment software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "GrayLopez Strategic Solutions",
+      "website": "https://graylopez.com/",
+      "is_govtech": false,
+      "vertical": "Public sector strategy consulting"
+    },
+    {
+      "name": "Green Office Partner",
+      "website": "https://www.greenofficepartner.com/",
+      "is_govtech": false,
+      "vertical": "Managed print and office technology"
+    },
+    {
+      "name": "Guidehouse",
+      "website": "https://guidehouse.com",
+      "is_govtech": false,
+      "vertical": "Management consulting services"
+    },
+    {
+      "name": "Harris",
+      "website": "https://www.harriscomputer.com/",
+      "is_govtech": true,
+      "vertical": "Public sector and utility software",
+      "sector": "Utilities & Energy"
+    },
+    {
+      "name": "Hawkins Delafield & Wood LLP",
+      "website": "https://www.hawkins.com/",
+      "is_govtech": false,
+      "vertical": "Public finance law firm"
+    },
+    {
+      "name": "HCA Asset Management",
+      "website": "https://hcamgt.com/",
+      "is_govtech": false,
+      "vertical": "Public funds investment management"
+    },
+    {
+      "name": "HdL Companies",
+      "website": "https://www.hdlcompanies.com/",
+      "is_govtech": false,
+      "vertical": "Revenue audit and recovery services"
+    },
+    {
+      "name": "HGACBuy",
+      "website": "https://hgacbuy.org/Home",
+      "is_govtech": false,
+      "vertical": "Government cooperative purchasing program"
+    },
+    {
+      "name": "HHM CPAs",
+      "website": "https://hhmcpas.com/",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "Highstreet IT Solutions",
+      "website": "https://highstreetit.com/",
+      "is_govtech": false,
+      "vertical": "Oracle cloud managed services"
+    },
+    {
+      "name": "HilltopSecurities",
+      "website": "https://www.hilltopsecurities.com/",
+      "is_govtech": false,
+      "vertical": "Municipal broker-dealer and advisory"
+    },
+    {
+      "name": "Holly",
+      "website": "https://www.hollygov.com/",
+      "is_govtech": true,
+      "vertical": "AI classification and compensation software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Holman Capital Corporation",
+      "website": "https://www.holmancapital.com/",
+      "is_govtech": false,
+      "vertical": "Municipal lease financing"
+    },
+    {
+      "name": "Huron",
+      "website": "https://www.huronconsultinggroup.com/",
+      "is_govtech": false,
+      "vertical": "Management consulting services"
+    },
+    {
+      "name": "i3 Verticals",
+      "website": "https://www.i3verticals.com/",
+      "is_govtech": true,
+      "vertical": "Government payments and software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "IBM",
+      "website": "https://www.ibm.com/",
+      "is_govtech": false,
+      "vertical": "IT consulting, hardware and software"
+    },
+    {
+      "name": "ICL",
+      "website": "https://instcl.com/",
+      "is_govtech": false,
+      "vertical": "Audit and business advisory services"
+    },
+    {
+      "name": "ICMA",
+      "website": "https://www.icma.org/",
+      "is_govtech": false,
+      "vertical": "Local government professional association"
+    },
+    {
+      "name": "Illinois GFOA",
+      "website": "https://www.igfoa.org/",
+      "is_govtech": false,
+      "vertical": "State finance officers association"
+    },
+    {
+      "name": "ImageMaster",
+      "website": "https://www.imagemaster.com/",
+      "is_govtech": false,
+      "vertical": "Document imaging and printing services"
+    },
+    {
+      "name": "Infor",
+      "website": "https://www.infor.com/",
+      "is_govtech": true,
+      "vertical": "Public sector ERP software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "InfoSend",
+      "website": "https://infosend.com/",
+      "is_govtech": false,
+      "vertical": "Billing print and mail services"
+    },
+    {
+      "name": "inLogic, Inc.",
+      "website": "https://www.inlogic.com/",
+      "is_govtech": true,
+      "vertical": "RFID fixed asset tracking software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Insight Investment",
+      "website": "https://www.insightinvestment.com/united-states/",
+      "is_govtech": false,
+      "vertical": "Institutional asset management"
+    },
+    {
+      "name": "IntelliPay",
+      "website": "https://intellipay.com/",
+      "is_govtech": true,
+      "vertical": "Government payment processing software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "IntraFi",
+      "website": "https://www.intrafi.com/",
+      "is_govtech": false,
+      "vertical": "Bank deposit placement network"
+    },
+    {
+      "name": "InvoiceCloud",
+      "website": "https://invoicecloud.net/",
+      "is_govtech": true,
+      "vertical": "Online bill payment software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "iteria.us",
+      "website": "https://www.iteria.us/",
+      "is_govtech": false,
+      "vertical": "IT managed services provider"
+    },
+    {
+      "name": "JAGGAER",
+      "website": "https://www.jaggaer.com/",
+      "is_govtech": true,
+      "vertical": "Procurement and sourcing software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "J.P. Morgan",
+      "website": "https://www.jpmorgan.com/industries-we-serve/public-sector/government",
+      "is_govtech": false,
+      "vertical": "Banking and public finance services"
+    },
+    {
+      "name": "Keen360",
+      "website": "https://keen360.com/",
+      "is_govtech": false,
+      "vertical": "IT consulting and staffing"
+    },
+    {
+      "name": "Koa Hills Consulting",
+      "website": "https://www.koahills.com/",
+      "is_govtech": false,
+      "vertical": "ERP implementation consulting"
+    },
+    {
+      "name": "Lincoln Financial",
+      "website": "https://www.lincolnfinancial.com/public/individuals",
+      "is_govtech": false,
+      "vertical": "Retirement and insurance products"
+    },
+    {
+      "name": "Lincoln Institute of Land Policy",
+      "website": "https://www.lincolninst.edu/",
+      "is_govtech": false,
+      "vertical": "Land policy research institute"
+    },
+    {
+      "name": "Linebarger Attorneys At Law",
+      "website": "https://www.lgbs.com/",
+      "is_govtech": false,
+      "vertical": "Government collections law firm"
+    },
+    {
+      "name": "Local Government Hispanic Network",
+      "website": "https://www.lghn.org",
+      "is_govtech": false,
+      "vertical": "Local government professional association"
+    },
+    {
+      "name": "LSL",
+      "website": "https://lslcpas.com/",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "Madison AI",
+      "website": "https://www.madisonai.com/",
+      "is_govtech": true,
+      "vertical": "AI platform for local government",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Matrix Consulting Group",
+      "website": "https://www.matrixcg.net/",
+      "is_govtech": false,
+      "vertical": "Local government management consulting"
+    },
+    {
+      "name": "Mauldin & Jenkins",
+      "website": "https://www.mjcpa.com/",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "Maximus",
+      "website": "https://maximus.com/",
+      "is_govtech": false,
+      "vertical": "Government BPO and program services"
+    },
+    {
+      "name": "Meeder Public Funds",
+      "website": "https://meederinvestment.com/public-funds",
+      "is_govtech": false,
+      "vertical": "Public funds investment management"
+    },
+    {
+      "name": "Merchant Advocate",
+      "website": "https://merchantadvocate.com/",
+      "is_govtech": false,
+      "vertical": "Merchant fee audit consulting"
+    },
+    {
+      "name": "Merchant Cost Consulting",
+      "website": "https://merchantcostconsulting.com/",
+      "is_govtech": false,
+      "vertical": "Merchant fee audit consulting"
+    },
+    {
+      "name": "Metaformers, Inc. (Meta)",
+      "website": "https://metaformers.com/",
+      "is_govtech": false,
+      "vertical": "ERP implementation consulting"
+    },
+    {
+      "name": "Metropolitan Commercial Bank",
+      "website": "https://mcbankny.com/",
+      "is_govtech": false,
+      "vertical": "Commercial banking services"
+    },
+    {
+      "name": "MGT",
+      "website": "https://www.mgt.us/",
+      "is_govtech": false,
+      "vertical": "Public sector management consulting"
+    },
+    {
+      "name": "MissionSquare",
+      "website": "https://www.missionsq.org/",
+      "is_govtech": false,
+      "vertical": "Public employee retirement plans"
+    },
+    {
+      "name": "Moody's Ratings",
+      "website": "https://www.moodys.com/pfg",
+      "is_govtech": false,
+      "vertical": "Credit rating agency"
+    },
+    {
+      "name": "Morgan Stanley Investment Management",
+      "website": "https://www.morganstanley.com/liquidity",
+      "is_govtech": false,
+      "vertical": "Institutional asset management"
+    },
+    {
+      "name": "Multi-Bank Securities, Inc.",
+      "website": "https://mbssecurities.com/",
+      "is_govtech": false,
+      "vertical": "Fixed income broker-dealer"
+    },
+    {
+      "name": "Muni-Link",
+      "website": "https://muni-link.com/",
+      "is_govtech": true,
+      "vertical": "Utility billing software",
+      "sector": "Utilities & Energy"
+    },
+    {
+      "name": "MuniPro",
+      "website": "https://www.munipro.com/",
+      "is_govtech": true,
+      "vertical": "Municipal debt management and market data",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Mythics",
+      "website": "https://mythics.com/",
+      "is_govtech": false,
+      "vertical": "Oracle software reseller and integrator"
+    },
+    {
+      "name": "National Forum for Black Public Administrators (NFBPA)",
+      "website": "https://www.nfbpa.org/home",
+      "is_govtech": false,
+      "vertical": "Public administration association"
+    },
+    {
+      "name": "National Payment Corporation (NatPay)",
+      "website": "https://natpay.com/",
+      "is_govtech": true,
+      "vertical": "Direct deposit and payroll payments",
+      "sector": "General Gov"
+    },
+    {
+      "name": "National Procurement Institute (NPI)",
+      "website": "https://www.npi-aep.org/",
+      "is_govtech": false,
+      "vertical": "Public procurement association"
+    },
+    {
+      "name": "Neumo",
+      "website": "https://neumo.com/",
+      "is_govtech": true,
+      "vertical": "Cloud government revenue and court software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "New Orleans Visitors Bureau Get ready for GFOA 2027!",
+      "website": "https://www.neworleans.com/",
+      "is_govtech": false,
+      "vertical": "Destination marketing organization"
+    },
+    {
+      "name": "Next Generation Inc, an HR Path Company",
+      "website": "https://nxtgeninc.com/",
+      "is_govtech": false,
+      "vertical": "HR and payroll consulting"
+    },
+    {
+      "name": "NIGP Code & Consulting",
+      "website": "https://www.nigp.org/our-profession/nigp-consulting",
+      "is_govtech": false,
+      "vertical": "Procurement code and consulting"
+    },
+    {
+      "name": "Northern Illinois University",
+      "website": "https://www.niu.edu/index.shtml",
+      "is_govtech": false,
+      "vertical": "University degree programs"
+    },
+    {
+      "name": "Northern Trust",
+      "website": "https://www.northerntrust.com/united-states/home",
+      "is_govtech": false,
+      "vertical": "Custody banking and asset management"
+    },
+    {
+      "name": "Old National Bank",
+      "website": "https://www.oldnational.com/business/commercial-banking/specialized-industries/government-and-municipalities/",
+      "is_govtech": false,
+      "vertical": "Government and municipal banking"
+    },
+    {
+      "name": "Omnibus",
+      "website": "https://omnibus.io/",
+      "is_govtech": false,
+      "vertical": "Unclear, site not yet launched"
+    },
+    {
+      "name": "OnActuate, a Microsoft & Dayforce Partner",
+      "website": "https://www.onactuate.com/",
+      "is_govtech": false,
+      "vertical": "Microsoft and Dayforce implementation partner"
+    },
+    {
+      "name": "One Source Virtual",
+      "website": "https://www.onesourcevirtual.com/",
+      "is_govtech": false,
+      "vertical": "Workday business process outsourcing"
+    },
+    {
+      "name": "OneStream",
+      "website": "https://www.onestream.com",
+      "is_govtech": true,
+      "vertical": "Financial close and planning software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "OpenGov",
+      "website": "https://opengov.com/",
+      "is_govtech": true,
+      "vertical": "Budgeting and government ERP software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Oracle",
+      "website": "https://www.oracle.com/government/",
+      "is_govtech": true,
+      "vertical": "Cloud ERP and database software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "PARS",
+      "website": "https://www.pars.org/",
+      "is_govtech": false,
+      "vertical": "Public agency retirement services"
+    },
+    {
+      "name": "PayIt",
+      "website": "https://www.payitgov.com",
+      "is_govtech": true,
+      "vertical": "Government digital payment platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Paymentus",
+      "website": "https://www.paymentus.com/",
+      "is_govtech": true,
+      "vertical": "Electronic bill payment software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "PaymentWorks",
+      "website": "https://www.paymentworks.com/",
+      "is_govtech": true,
+      "vertical": "Vendor onboarding and payment fraud software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "PFM",
+      "website": "https://www.pfm.com/",
+      "is_govtech": false,
+      "vertical": "Municipal financial advisory"
+    },
+    {
+      "name": "PFM Asset Management",
+      "website": "https://www.pfmam.com/",
+      "is_govtech": false,
+      "vertical": "Public funds investment management"
+    },
+    {
+      "name": "PlanetBids",
+      "website": "https://home.planetbids.com/",
+      "is_govtech": true,
+      "vertical": "E-procurement and bid management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Plante Moran",
+      "website": "https://www.plantemoran.com/industries/government",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "PNC Bank",
+      "website": "https://www.pnc.com",
+      "is_govtech": false,
+      "vertical": "Government banking services"
+    },
+    {
+      "name": "Point & Pay",
+      "website": "https://www.pointandpay.com/",
+      "is_govtech": true,
+      "vertical": "Government payment processing software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Professional",
+      "website": "https://professionalcredit.com/",
+      "is_govtech": false,
+      "vertical": "Debt collection agency"
+    },
+    {
+      "name": "PTMA Financial Solutions",
+      "website": "https://ptma.com/",
+      "is_govtech": false,
+      "vertical": "Public sector investment services"
+    },
+    {
+      "name": "Public Sector HealthCare Roundtable",
+      "website": "https://www.healthcareroundtable.us/",
+      "is_govtech": false,
+      "vertical": "Public employer healthcare association"
+    },
+    {
+      "name": "Quant16",
+      "website": "https://www.quant16.com/",
+      "is_govtech": true,
+      "vertical": "AI analytics and optimization platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Ramp",
+      "website": "https://ramp.com/",
+      "is_govtech": true,
+      "vertical": "Spend management and card software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "RCI",
+      "website": "https://rcitech.com/",
+      "is_govtech": false,
+      "vertical": "Records retention and asset services"
+    },
+    {
+      "name": "RedBeam",
+      "website": "https://redbeam.com/",
+      "is_govtech": true,
+      "vertical": "Asset tracking and inventory software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "REPAY",
+      "website": "https://repay.com/",
+      "is_govtech": true,
+      "vertical": "Payment processing software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Revenue Solutions, Inc. (RSI)",
+      "website": "https://www.rsidelivers.com/",
+      "is_govtech": true,
+      "vertical": "Tax and revenue administration software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "RF-SMART",
+      "website": "https://www.rfsmart.com/",
+      "is_govtech": true,
+      "vertical": "Warehouse and inventory software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "SAFEChecks",
+      "website": "https://www.safechecks.com/",
+      "is_govtech": false,
+      "vertical": "Secure check printing and fraud supplies"
+    },
+    {
+      "name": "Sage",
+      "website": "https://www.sage.com/en-us/",
+      "is_govtech": true,
+      "vertical": "Accounting and ERP software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "SAP",
+      "website": "https://www.sap.com/index.html",
+      "is_govtech": true,
+      "vertical": "Enterprise ERP software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "SAP Concur",
+      "website": "https://www.concur.com/",
+      "is_govtech": true,
+      "vertical": "Travel and expense management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "SIB",
+      "website": "https://www.aboutsib.com/",
+      "is_govtech": false,
+      "vertical": "Fixed cost reduction consulting"
+    },
+    {
+      "name": "Sierra-Cedar",
+      "website": "https://www.sierra-cedar.com/",
+      "is_govtech": false,
+      "vertical": "ERP and HR systems integration"
+    },
+    {
+      "name": "Sikich",
+      "website": "https://www.sikich.com/",
+      "is_govtech": false,
+      "vertical": "Accounting and technology consulting"
+    },
+    {
+      "name": "S&P Global Ratings",
+      "website": "https://www.spglobal.com/uspublicfinance",
+      "is_govtech": false,
+      "vertical": "Credit rating agency"
+    },
+    {
+      "name": "SOFTRAX",
+      "website": "https://www.softrax.com/",
+      "is_govtech": true,
+      "vertical": "Revenue management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "SoftResources",
+      "website": "https://softresources.com/",
+      "is_govtech": false,
+      "vertical": "Software selection consulting"
+    },
+    {
+      "name": "Software Solutions",
+      "website": "https://www.mysoftwaresolutions.com/",
+      "is_govtech": true,
+      "vertical": "Local government financial software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Springbrook Software",
+      "website": "https://springbrooksoftware.com/",
+      "is_govtech": true,
+      "vertical": "Local government ERP software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "SpryPoint",
+      "website": "https://www.sprypoint.com/",
+      "is_govtech": true,
+      "vertical": "Utility customer information software",
+      "sector": "Utilities & Energy"
+    },
+    {
+      "name": "Squire & Company",
+      "website": "https://www.squire.com/",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "Strada",
+      "website": "https://stradaglobal.com/",
+      "is_govtech": false,
+      "vertical": "Payroll and HR outsourcing services"
+    },
+    {
+      "name": "SymPro",
+      "website": "https://sympro.com/",
+      "is_govtech": true,
+      "vertical": "Treasury and debt management software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "System Innovators",
+      "website": "https://www.systeminnovators.com/",
+      "is_govtech": true,
+      "vertical": "Cashiering and revenue collection software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Systems & Software",
+      "website": "https://ssivt.com/",
+      "is_govtech": true,
+      "vertical": "Utility customer billing software",
+      "sector": "Utilities & Energy"
+    },
+    {
+      "name": "TCP Software",
+      "website": "https://tcpsoftware.com/?utm_source=event&amp;utm_medium=event-industry&amp;utm_campaign=all_gov__25q4_ts-2026-06-gfoa&amp;utm_content=registration",
+      "is_govtech": true,
+      "vertical": "Workforce time and scheduling software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Third Millennium Associates",
+      "website": "https://www.tmainc.org/",
+      "is_govtech": false,
+      "vertical": "Utility bill print and mail services"
+    },
+    {
+      "name": "TIAA",
+      "website": "https://www.tiaa.org/public",
+      "is_govtech": false,
+      "vertical": "Retirement and insurance products"
+    },
+    {
+      "name": "Tyler Technologies",
+      "website": "https://www.tylertech.com/",
+      "is_govtech": true,
+      "vertical": "Public sector software suite",
+      "sector": "General Gov"
+    },
+    {
+      "name": "UKG",
+      "website": "https://www.ukg.com/",
+      "is_govtech": true,
+      "vertical": "HR, payroll and workforce software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "UMB Bank",
+      "website": "https://www.umb.com/business-banking/why-umb",
+      "is_govtech": false,
+      "vertical": "Commercial and institutional banking"
+    },
+    {
+      "name": "Univerus",
+      "website": "https://www.univerus.com/",
+      "is_govtech": true,
+      "vertical": "Government and utility enterprise software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "U.S. Bank",
+      "website": "https://www.usbank.com",
+      "is_govtech": false,
+      "vertical": "Government banking services"
+    },
+    {
+      "name": "Util-Assist",
+      "website": "https://utilassist.com/",
+      "is_govtech": false,
+      "vertical": "Utility AMI consulting services"
+    },
+    {
+      "name": "Velosimo",
+      "website": "https://www.velosimo.com/",
+      "is_govtech": true,
+      "vertical": "Government software integration platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Vertosoft",
+      "website": "https://vertosoft.com/",
+      "is_govtech": false,
+      "vertical": "Government software distributor"
+    },
+    {
+      "name": "VISA",
+      "website": "https://usa.visa.com/",
+      "is_govtech": false,
+      "vertical": "Payment card network"
+    },
+    {
+      "name": "Voya Financial",
+      "website": "https://www.voya.com/",
+      "is_govtech": false,
+      "vertical": "Retirement and insurance products"
+    },
+    {
+      "name": "Watson & Yates",
+      "website": "https://www.watsonyates.com/",
+      "is_govtech": false,
+      "vertical": "Public sector fiscal consulting"
+    },
+    {
+      "name": "Wealthspire",
+      "website": "www.wealthspire.com",
+      "is_govtech": false,
+      "vertical": "Wealth and investment advisory"
+    },
+    {
+      "name": "Weaver",
+      "website": "https://weaver.com/",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services"
+    },
+    {
+      "name": "Wells Fargo",
+      "website": "https://www.wellsfargo.com/com/solutions/global-payments-liquidity/?utm_medium=www-redirect&amp;utm_source=com--treasury-management",
+      "is_govtech": false,
+      "vertical": "Government banking and treasury services"
+    },
+    {
+      "name": "Workday",
+      "website": "https://www.workday.com/",
+      "is_govtech": true,
+      "vertical": "Cloud finance and HR software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Workiva",
+      "website": "https://www.workiva.com/",
+      "is_govtech": true,
+      "vertical": "Financial reporting and disclosure software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Xpress Bill Pay",
+      "website": "https://www.xpressbillpay.com/",
+      "is_govtech": true,
+      "vertical": "Online utility bill payment software",
+      "sector": "Utilities & Energy"
+    },
+    {
+      "name": "Zions Bank",
+      "website": "https://www.zionsbank.com",
+      "is_govtech": false,
+      "vertical": "Public finance banking services"
+    }
+  ]
+}

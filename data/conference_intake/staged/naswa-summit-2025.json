@@ -1,0 +1,326 @@
+{
+ "conference": "NASWA 2025",
+ "exhibitors": [
+  {
+   "name": "FAST Enterprises",
+   "website": "https://www.fastenterprises.com/",
+   "is_govtech": true,
+   "vertical": "Tax, UI and DMV agency software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "CAI",
+   "website": "https://www.cai.io/",
+   "is_govtech": false,
+   "vertical": "IT services and staffing"
+  },
+  {
+   "name": "Career TEAM / Career EDGE",
+   "website": "https://careeredge.com/",
+   "is_govtech": true,
+   "vertical": "Workforce development case management software",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Deloitte",
+   "website": "https://www2.deloitte.com/us/en/pages/public-sector/solutions/labor-and-employment-services.html",
+   "is_govtech": false,
+   "vertical": "Consulting and systems integration"
+  },
+  {
+   "name": "Eightfold AI",
+   "website": "https://eightfold.ai/",
+   "is_govtech": true,
+   "vertical": "AI talent and skills matching platform",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Geographic Solutions",
+   "website": "https://www.geographicsolutions.com/",
+   "is_govtech": true,
+   "vertical": "Workforce and UI agency software",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Google Cloud",
+   "website": "https://cloud.google.com/gov/state-and-local",
+   "is_govtech": true,
+   "vertical": "Cloud infrastructure and AI services",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Amazon Web Services",
+   "website": "https://aws.amazon.com/stateandlocal/",
+   "is_govtech": true,
+   "vertical": "Cloud infrastructure services",
+   "sector": "General Gov"
+  },
+  {
+   "name": "CATCH Intelligence",
+   "website": "https://catchintelligence.com/",
+   "is_govtech": false,
+   "vertical": "Business intelligence consulting"
+  },
+  {
+   "name": "Infosys Public Services",
+   "website": "https://www.infosyspublicservices.com/",
+   "is_govtech": false,
+   "vertical": "IT consulting and systems integration"
+  },
+  {
+   "name": "Metrix Learning",
+   "website": "https://metrixlearning.com/",
+   "is_govtech": true,
+   "vertical": "Online workforce skills training platform",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "myOneFlow",
+   "website": "https://www.myoneflow.com/",
+   "is_govtech": true,
+   "vertical": "AI workforce case management software",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "PAIRIN",
+   "website": "https://www.pairin.com/",
+   "is_govtech": true,
+   "vertical": "Skills assessment and career pathway software",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Sagitec",
+   "website": "https://www.sagitec.com/",
+   "is_govtech": true,
+   "vertical": "UI and pension administration software",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Salesforce",
+   "website": "https://www.salesforce.com/solutions/industries/government/overview/",
+   "is_govtech": true,
+   "vertical": "CRM and case management platform",
+   "sector": "General Gov"
+  },
+  {
+   "name": "SentiLink",
+   "website": "https://www.sentilink.com/",
+   "is_govtech": true,
+   "vertical": "Identity fraud detection data platform",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Tata Consultancy Services",
+   "website": "https://www.tcs.com/",
+   "is_govtech": false,
+   "vertical": "IT consulting and systems integration"
+  },
+  {
+   "name": "ADP",
+   "website": "https://www.adp.com/",
+   "is_govtech": true,
+   "vertical": "Payroll and HR software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Catalis",
+   "website": "https://catalisgov.com/",
+   "is_govtech": true,
+   "vertical": "Government software and payments",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Change & Innovation Agency",
+   "website": "https://changeagents.info/",
+   "is_govtech": false,
+   "vertical": "Human services process consulting"
+  },
+  {
+   "name": "Conduent",
+   "website": "https://www.conduent.com/government-solutions/",
+   "is_govtech": false,
+   "vertical": "Government BPO and payment services"
+  },
+  {
+   "name": "Craft Education",
+   "website": "http://www.crafteducation.com/",
+   "is_govtech": true,
+   "vertical": "Apprenticeship management platform",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "CSG Government Solutions",
+   "website": "https://csgdelivers.com/",
+   "is_govtech": false,
+   "vertical": "Government program modernization consulting"
+  },
+  {
+   "name": "EY",
+   "website": "https://www.ey.com/en_us/industries/government-public-sector/state-and-local-government-consulting",
+   "is_govtech": false,
+   "vertical": "Consulting and advisory services"
+  },
+  {
+   "name": "Future Fit AI",
+   "website": "https://www.futurefit.ai/",
+   "is_govtech": true,
+   "vertical": "AI career navigation platform",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "GovWebworks",
+   "website": "https://www.govwebworks.com/",
+   "is_govtech": false,
+   "vertical": "Government web design and development"
+  },
+  {
+   "name": "IBM",
+   "website": "https://www.ibm.com/consulting/state-local-government",
+   "is_govtech": false,
+   "vertical": "IT consulting, hardware and software"
+  },
+  {
+   "name": "ID.me",
+   "website": "https://www.id.me/",
+   "is_govtech": true,
+   "vertical": "Digital identity verification platform",
+   "sector": "General Gov"
+  },
+  {
+   "name": "LinkedIn + Carahsoft",
+   "website": "https://carahsoft.com/linkedin",
+   "is_govtech": true,
+   "vertical": "Talent data and recruiting platform",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Monster Government Solutions",
+   "website": "http://www.monstergov.com/",
+   "is_govtech": true,
+   "vertical": "Job matching and workforce software",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Nava PBC",
+   "website": "https://www.navapbc.com/",
+   "is_govtech": false,
+   "vertical": "Digital government services consultancy"
+  },
+  {
+   "name": "Netacent",
+   "website": "https://netacent.com/",
+   "is_govtech": true,
+   "vertical": "Unemployment insurance agency software",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Novatio Solutions",
+   "website": "https://novatiosolutions.com/",
+   "is_govtech": false,
+   "vertical": "AI and SAP implementation consulting"
+  },
+  {
+   "name": "Resultant",
+   "website": "https://resultant.com/",
+   "is_govtech": false,
+   "vertical": "Data and technology consulting"
+  },
+  {
+   "name": "SaraWorks",
+   "website": "https://saraworks.com/",
+   "is_govtech": true,
+   "vertical": "Client outreach software for workforce agencies",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Snowflake",
+   "website": "https://www.snowflake.com/",
+   "is_govtech": true,
+   "vertical": "Cloud data platform",
+   "sector": "General Gov"
+  },
+  {
+   "name": "UI Professional Services (UIPS)",
+   "website": "https://uips.com",
+   "is_govtech": false,
+   "vertical": "Unemployment insurance systems consulting"
+  },
+  {
+   "name": "Accenture",
+   "website": "https://www.accenture.com/us-en",
+   "is_govtech": false,
+   "vertical": "Consulting and systems integration"
+  },
+  {
+   "name": "eSystems",
+   "website": "https://www.esystems-inc.com/",
+   "is_govtech": false,
+   "vertical": "Systems integration and IT consulting"
+  },
+  {
+   "name": "Fiserv",
+   "website": "https://www.fiserv.com/",
+   "is_govtech": true,
+   "vertical": "Payments and disbursement technology",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Guidehouse",
+   "website": "https://guidehouse.com/services/workforce-transformation",
+   "is_govtech": false,
+   "vertical": "Management consulting services"
+  },
+  {
+   "name": "Incode Technologies",
+   "website": "https://incode.com/",
+   "is_govtech": true,
+   "vertical": "Identity verification and biometrics platform",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Job Machine",
+   "website": "https://getjobmachine.com/",
+   "is_govtech": true,
+   "vertical": "AI job placement platform",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Lightcast",
+   "website": "https://lightcast.io/",
+   "is_govtech": true,
+   "vertical": "Labor market data and analytics",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "KPMG",
+   "website": "https://kpmg.com/us/en/industries/government-public-sector/state-local-government.html",
+   "is_govtech": false,
+   "vertical": "Consulting and advisory services"
+  },
+  {
+   "name": "North End Teleservices",
+   "website": "https://www.northendteleservices.com/",
+   "is_govtech": false,
+   "vertical": "Contact center outsourcing"
+  },
+  {
+   "name": "Socure",
+   "website": "https://www.socure.com/",
+   "is_govtech": true,
+   "vertical": "Identity verification and fraud analytics",
+   "sector": "General Gov"
+  },
+  {
+   "name": "U.S. Bank",
+   "website": "https://www.usbank.com/business-banking/business-services/business-prepaid-cards.html",
+   "is_govtech": false,
+   "vertical": "Banking and prepaid card services"
+  },
+  {
+   "name": "UWC Strategy",
+   "website": "https://uwcstrategy.org/",
+   "is_govtech": false,
+   "vertical": "Employer UI and workers comp association"
+  }
+ ]
+}

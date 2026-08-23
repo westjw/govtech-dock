@@ -7,6 +7,7 @@ touching the network. Run after any edit to data/ or scripts/.
 from __future__ import annotations
 
 import json
+import re
 import pathlib
 import sys
 
@@ -161,6 +162,36 @@ def main() -> int:
     # year_founded, location and description are optional, and an entry
     # missing them still gets a row. A KeyError here once crashed the 6am run
     # after the 40-minute fetch and lost the day's uncommitted snapshots.
+    # Conference event tags end up inside company descriptions forever, so
+    # they are assigned in conferences.json rather than by whatever agent
+    # scraped the floor. Acronyms collide: three associations are called APPA
+    # and two are called ASBO, and a bare "APPA 2026" cannot be read back six
+    # months later. Every tag must be unique, and every tag written into a
+    # description must be one the catalog actually issued.
+    conf_p = DATA / "conferences.json"
+    if conf_p.exists():
+        confs = json.load(open(conf_p))["conferences"]
+        tags = [c.get("event_tag") for c in confs if c.get("event_tag")]
+        dupes = {t for t in tags if tags.count(t) > 1}
+        if dupes:
+            errors += fail(f"conference event_tag is not unique: {sorted(dupes)}")
+        for c in confs:
+            t = c.get("event_tag") or ""
+            if t and not re.match(r"^[\w &.'/-]+ 20\d{2}$", t):
+                errors += fail(f"{c['conference']}: event_tag {t!r} is not "
+                               f"'<name> <year>'")
+        issued = set(tags) | {t for c in confs
+                              for t in (c.get('prior_tags') or [])}
+        seen = set()
+        for row in companies + json.load(open(DATA / "suppliers.json")):
+            m = re.search(r"exhibited at ([^;.\n]+)", row.get("description") or "")
+            if m:
+                seen.update(x.strip() for x in m.group(1).split(","))
+        stray = {t for t in seen if t not in issued}
+        if stray:
+            errors += fail("descriptions carry event tags the catalog never "
+                           f"issued: {sorted(stray)[:6]}")
+
     import export_xlsx as _xlsx
     for c in companies:
         try:

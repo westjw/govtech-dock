@@ -63,6 +63,12 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("file")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--event-tag",
+                    help="the string that lands in descriptions ('GFOA 2026'). "
+                         "Comes from conferences.json, because acronyms collide: "
+                         "three associations are called APPA and a bare "
+                         "'APPA 2026' cannot be read six months later. Overrides "
+                         "whatever the staged file called itself.")
     ap.add_argument("--default-sector", default="General Gov",
                     help="sector for suppliers the classifier left unplaced; "
                          "set from the conference's buyer block, so a courts "
@@ -71,7 +77,7 @@ def main() -> int:
     a = ap.parse_args()
 
     staged = json.loads(pathlib.Path(a.file).read_text())
-    event = staged["conference"]
+    event = a.event_tag or staged["conference"]
     companies = json.loads((DATA / "companies.json").read_text())
     suppliers = json.loads((DATA / "suppliers.json").read_text())
     valid_sectors = {s["name"] for s in

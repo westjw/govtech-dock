@@ -1,0 +1,908 @@
+{
+ "conference": "NLC City Summit 2026",
+ "exhibitors": [
+  {
+   "name": "4LEAF, Inc.",
+   "website": "http://4LEAFINC.com",
+   "is_govtech": false,
+   "vertical": "Plan review and building inspection services",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "Accela, Inc",
+   "website": "http://www.accela.com",
+   "is_govtech": true,
+   "vertical": "Permitting and licensing software",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "AchieveIt",
+   "website": "https://www.achieveit.com/",
+   "is_govtech": true,
+   "vertical": "Strategic plan execution software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Airbnb",
+   "website": "http://www.airbnb.com",
+   "is_govtech": false,
+   "vertical": "Short-term rental marketplace",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "Ameresco, Inc.",
+   "website": "http://www.ameresco.com",
+   "is_govtech": false,
+   "vertical": "Energy efficiency construction services",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "American Golf Corporation",
+   "website": "www.americangolf.com",
+   "is_govtech": false,
+   "vertical": "Golf course management services",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "American Kennel Club",
+   "website": "http://www.akcgr.org",
+   "is_govtech": false,
+   "vertical": "Dog registry and breeder association",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "American Planning Association",
+   "website": "http://www.planning.org",
+   "is_govtech": false,
+   "vertical": "Urban planning membership association",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "American Ramp Company",
+   "website": "http://www.americanrampcompany.com",
+   "is_govtech": false,
+   "vertical": "Skatepark design and construction",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "Amtrak",
+   "website": "http://amtrak.com",
+   "is_govtech": false,
+   "vertical": "Intercity passenger rail service",
+   "sector": "Transit & Parking"
+  },
+  {
+   "name": "Apptegy",
+   "website": "http://www.apptegy.com",
+   "is_govtech": true,
+   "vertical": "School communications platform",
+   "sector": "K-12 Schools"
+  },
+  {
+   "name": "AquaWorx",
+   "website": "https://www.aquaworxusa.com/",
+   "is_govtech": false,
+   "vertical": "Splash pad and aquatic play equipment",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "Arborjet",
+   "website": "http://www.arborjet.com",
+   "is_govtech": false,
+   "vertical": "Tree injection treatment products",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "Association of Secular Elected Officials",
+   "website": "https://www.secularofficials.org/",
+   "is_govtech": false,
+   "vertical": "Elected officials membership association",
+   "sector": "General Gov"
+  },
+  {
+   "name": "AT&T",
+   "website": "http://www.att.com",
+   "is_govtech": false,
+   "vertical": "Telecommunications and connectivity services",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Avila Technologies",
+   "website": "getavila.ai",
+   "is_govtech": true,
+   "vertical": "AI grant discovery and writing",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Avive Solutions",
+   "website": "www.avive.life",
+   "is_govtech": false,
+   "vertical": "Connected AED devices",
+   "sector": "Public Safety"
+  },
+  {
+   "name": "Axon Enterprise",
+   "website": "https://www.axon.com/",
+   "is_govtech": true,
+   "vertical": "Body cameras and evidence software",
+   "sector": "Public Safety"
+  },
+  {
+   "name": "Azora Software",
+   "website": "www.azorasoftware.com",
+   "is_govtech": true,
+   "vertical": "Short-term rental compliance software",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "Baker Tilly",
+   "website": "www.springsted.com",
+   "is_govtech": false,
+   "vertical": "Municipal advisory and accounting services",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Beacon Design",
+   "website": "beacondesign.com",
+   "is_govtech": false,
+   "vertical": "Custom commemorative ornaments",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Berliner Play Equipment Corporation",
+   "website": "http://www.berliner-playequipment.com",
+   "is_govtech": false,
+   "vertical": "Playground equipment",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "Best Friends Animal Society",
+   "website": "https://bestfriends.org",
+   "is_govtech": false,
+   "vertical": "Animal welfare nonprofit",
+   "sector": "General Gov"
+  },
+  {
+   "name": "BeWith",
+   "website": "https://bewith.io/",
+   "is_govtech": true,
+   "vertical": "AI community events calendar platform",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Big Top",
+   "website": "bigtopusa.com",
+   "is_govtech": false,
+   "vertical": "Fabric shade structures",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "Block by Block",
+   "website": "blockbyblock.com",
+   "is_govtech": false,
+   "vertical": "Downtown cleaning and ambassador services",
+   "sector": "Public Works"
+  },
+  {
+   "name": "Bolton & Menk, Inc.",
+   "website": "http://www.bolton-menk.com",
+   "is_govtech": false,
+   "vertical": "Civil engineering and planning services",
+   "sector": "Public Works"
+  },
+  {
+   "name": "Bureau Veritas North America, Inc.",
+   "website": "www.bvna.com",
+   "is_govtech": false,
+   "vertical": "Building inspection and code services",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "Busch Systems International Inc.",
+   "website": "https://www.buschsystems.com",
+   "is_govtech": false,
+   "vertical": "Recycling and waste containers",
+   "sector": "Public Works"
+  },
+  {
+   "name": "CALEA",
+   "website": "http://www.calea.org",
+   "is_govtech": false,
+   "vertical": "Public safety agency accreditation",
+   "sector": "Public Safety"
+  },
+  {
+   "name": "CentralSquare Technologies",
+   "website": "https://www.centralsquare.com/",
+   "is_govtech": true,
+   "vertical": "Public safety and administrative software",
+   "sector": "Public Safety"
+  },
+  {
+   "name": "Chandlerthinks",
+   "website": "www.chandlerthinks.com",
+   "is_govtech": false,
+   "vertical": "Community branding consulting",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Chick-fil-A, Inc.",
+   "website": "https://www.chick-fil-a.com/",
+   "is_govtech": false,
+   "vertical": "Restaurant chain",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Citibot",
+   "website": "http://www.citibot.io",
+   "is_govtech": true,
+   "vertical": "AI citizen service chatbot",
+   "sector": "General Gov"
+  },
+  {
+   "name": "City Detect",
+   "website": "www.citydetect.com",
+   "is_govtech": true,
+   "vertical": "AI blight detection imagery and data",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "City Health Dashboard",
+   "website": "http://www.cityhealthdashboard.com",
+   "is_govtech": false,
+   "vertical": "University city health data project",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "CityStream",
+   "website": "citystream.com",
+   "is_govtech": true,
+   "vertical": "AI agenda and records request software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "CivicPlus",
+   "website": "https://www.civicplus.com",
+   "is_govtech": true,
+   "vertical": "Government website and engagement software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Colonial Flag",
+   "website": "http://colonialflag.com",
+   "is_govtech": false,
+   "vertical": "Flags and flagpoles",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Common Sense",
+   "website": "https://www.commonsensetech.ai/",
+   "is_govtech": true,
+   "vertical": "AI tools for local government",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Crossing Guard Services",
+   "website": "https://crossingguardservices.com/",
+   "is_govtech": false,
+   "vertical": "School crossing guard staffing",
+   "sector": "K-12 Schools"
+  },
+  {
+   "name": "Cyvl",
+   "website": "https://cyvl.ai",
+   "is_govtech": true,
+   "vertical": "AI LiDAR road asset data",
+   "sector": "Public Works"
+  },
+  {
+   "name": "DAWGS Vacant Property Security",
+   "website": "www.dawgsinc.com",
+   "is_govtech": false,
+   "vertical": "Vacant property steel door guards",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "DBT Support, LLC",
+   "website": "https://www.dbtsupport.com",
+   "is_govtech": false,
+   "vertical": "Managed IT and cybersecurity services",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Deckard Technologies",
+   "website": "deckard.com",
+   "is_govtech": true,
+   "vertical": "Rental compliance data platform",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "Design-Build Institute of America (DBIA)",
+   "website": "http://www.dbia.org",
+   "is_govtech": false,
+   "vertical": "Design-build industry association",
+   "sector": "Public Works"
+  },
+  {
+   "name": "EarthDaily",
+   "website": "https://earthdaily.com/",
+   "is_govtech": true,
+   "vertical": "Satellite earth observation data",
+   "sector": "Public Works"
+  },
+  {
+   "name": "Engage by Cell",
+   "website": "www.engagebycell.com",
+   "is_govtech": true,
+   "vertical": "Mobile engagement and SMS platform",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Esri",
+   "website": "http://www.esri.com",
+   "is_govtech": true,
+   "vertical": "GIS mapping software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "FlashVote",
+   "website": "https://www.flashvote.com/",
+   "is_govtech": true,
+   "vertical": "Resident survey software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "FLT | First Light Technologies",
+   "website": "flt.com",
+   "is_govtech": false,
+   "vertical": "Solar outdoor lighting",
+   "sector": "Public Works"
+  },
+  {
+   "name": "GM Fleet",
+   "website": "https://www.gmfleet.com",
+   "is_govtech": false,
+   "vertical": "Fleet vehicles",
+   "sector": "Public Works"
+  },
+  {
+   "name": "GoRail",
+   "website": "www.gorail.org",
+   "is_govtech": false,
+   "vertical": "Rail advocacy nonprofit",
+   "sector": "Transit & Parking"
+  },
+  {
+   "name": "Gordian",
+   "website": "gordian.com",
+   "is_govtech": true,
+   "vertical": "Construction cost data and JOC software",
+   "sector": "Public Works"
+  },
+  {
+   "name": "GovAI",
+   "website": "govai.com",
+   "is_govtech": true,
+   "vertical": "AI platform and training for government staff",
+   "sector": "General Gov"
+  },
+  {
+   "name": "GovWell",
+   "website": "www.govwell.com",
+   "is_govtech": true,
+   "vertical": "Permitting and government workflow software",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "Greenfields Outdoor Fitness",
+   "website": "http://www.greenfieldsfitness.com",
+   "is_govtech": false,
+   "vertical": "Outdoor fitness equipment",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "Grow America (formerly NDC)",
+   "website": "https://growamerica.org/",
+   "is_govtech": false,
+   "vertical": "Community development finance and training",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "Harvard University John F. Kennedy School of Government",
+   "website": "hks.harvard.edu",
+   "is_govtech": false,
+   "vertical": "Executive education for government",
+   "sector": "Higher Education"
+  },
+  {
+   "name": "HayDay Services",
+   "website": "https://haydayservices.com",
+   "is_govtech": false,
+   "vertical": "Grant writing coaching and training",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Hera Property Registry",
+   "website": "heraregistry.com",
+   "is_govtech": true,
+   "vertical": "Rental property registry data",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "HGACBuy",
+   "website": "https://hgacbuy.org/about",
+   "is_govtech": false,
+   "vertical": "Cooperative purchasing program",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Hillpointe",
+   "website": "https://www.hillpointe.com/",
+   "is_govtech": false,
+   "vertical": "Workforce housing development",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "Human Rights Campaign",
+   "website": "http://www.hrc.org",
+   "is_govtech": false,
+   "vertical": "LGBTQ advocacy nonprofit",
+   "sector": "General Gov"
+  },
+  {
+   "name": "IKE Smart City",
+   "website": "http://IKEsmartcity.com",
+   "is_govtech": false,
+   "vertical": "Interactive city kiosks",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Institute for Justice",
+   "website": "http://www.ij.org",
+   "is_govtech": false,
+   "vertical": "Public interest litigation nonprofit",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Intermountain Slurry Seal, Inc.",
+   "website": "https://www.intermountainslurryseal.com",
+   "is_govtech": false,
+   "vertical": "Pavement slurry seal contracting",
+   "sector": "Public Works"
+  },
+  {
+   "name": "International City/County Management Association",
+   "website": "www.icma.org",
+   "is_govtech": false,
+   "vertical": "Local government management association",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Iteris, Inc.",
+   "website": "http://www.iteris.com",
+   "is_govtech": true,
+   "vertical": "Traffic detection and mobility software",
+   "sector": "Transit & Parking"
+  },
+  {
+   "name": "Just Appraised",
+   "website": "http://justappraised.com/",
+   "is_govtech": true,
+   "vertical": "Property assessment automation software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "JustServe",
+   "website": "http://justserve.org",
+   "is_govtech": false,
+   "vertical": "Nonprofit volunteer matching platform",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Landscape Structures Inc.",
+   "website": "http://www.playlsi.com",
+   "is_govtech": false,
+   "vertical": "Playground equipment",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "LSI",
+   "website": "lsiwins.com",
+   "is_govtech": false,
+   "vertical": "Supply chain and logistics services",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Master Meter",
+   "website": "www.mastermeter.com",
+   "is_govtech": false,
+   "vertical": "Water meters and AMI hardware",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Miracle Recreation",
+   "website": "https://www.miracle-recreation.com/",
+   "is_govtech": false,
+   "vertical": "Playground equipment",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "MissionSquare",
+   "website": "https://www.missionsq.org/",
+   "is_govtech": false,
+   "vertical": "Public sector retirement plans",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Moleaer Inc.",
+   "website": "https://www.moleaer.com",
+   "is_govtech": false,
+   "vertical": "Nanobubble water treatment equipment",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Munibit",
+   "website": "www.munibit.com",
+   "is_govtech": true,
+   "vertical": "Local government website platform",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Municipal Services Bureau",
+   "website": "https://www.msbgovserv.com/",
+   "is_govtech": true,
+   "vertical": "Government payment processing",
+   "sector": "General Gov"
+  },
+  {
+   "name": "National Association of State Procurement Officials (NASPO)",
+   "website": "https://www.naspo.org/",
+   "is_govtech": false,
+   "vertical": "State procurement officials association",
+   "sector": "General Gov"
+  },
+  {
+   "name": "National Construction Rentals",
+   "website": "https://www.rentnational.com/",
+   "is_govtech": false,
+   "vertical": "Temporary fencing and barricade rental",
+   "sector": "Public Works"
+  },
+  {
+   "name": "National Sign Plazas, Inc",
+   "website": "http://www.nsp.biz",
+   "is_govtech": false,
+   "vertical": "Signs and sign structures",
+   "sector": "Public Works"
+  },
+  {
+   "name": "Nightcap",
+   "website": "nightcapit.com",
+   "is_govtech": false,
+   "vertical": "Drink spiking prevention products",
+   "sector": "Public Safety"
+  },
+  {
+   "name": "OBIC",
+   "website": "www.obicproducts.com",
+   "is_govtech": false,
+   "vertical": "Sewer and manhole lining coatings",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Off Duty Management",
+   "website": "https://offdutymanagement.com/",
+   "is_govtech": false,
+   "vertical": "Off-duty police staffing management",
+   "sector": "Public Safety"
+  },
+  {
+   "name": "Ohpynez LLC",
+   "website": "https://www.ohpynez.com",
+   "is_govtech": true,
+   "vertical": "Anonymous polling and survey software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Omicron Technology Solutions, LLC.",
+   "website": "www.OmicronTech.net",
+   "is_govtech": true,
+   "vertical": "School safety and transit SaaS",
+   "sector": "K-12 Schools"
+  },
+  {
+   "name": "OpenGov, Inc",
+   "website": "http://www.opengov.com",
+   "is_govtech": true,
+   "vertical": "Budgeting, ERP, and permitting software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Opportunity Strategies LLC",
+   "website": "https://www.opportunitystrategies.com/",
+   "is_govtech": false,
+   "vertical": "Economic development consulting",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "PlayCore",
+   "website": "http://www.playcore.com",
+   "is_govtech": false,
+   "vertical": "Playground and recreation equipment",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "Playcraft Systems, A PlayCore Company",
+   "website": "playcraftsystems.com",
+   "is_govtech": false,
+   "vertical": "Playground equipment",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "Polimorphic Inc.",
+   "website": "https://www.polimorphic.com",
+   "is_govtech": true,
+   "vertical": "AI CRM and permitting software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Precision Concrete Cutting",
+   "website": "http://www.safesidewalks.com",
+   "is_govtech": false,
+   "vertical": "Sidewalk trip hazard repair services",
+   "sector": "Public Works"
+  },
+  {
+   "name": "Premium Parking Service, L.L.C.",
+   "website": "www.premiumparking.com",
+   "is_govtech": false,
+   "vertical": "Parking facility management operations",
+   "sector": "Transit & Parking"
+  },
+  {
+   "name": "Public Restroom Company",
+   "website": "http://publicrestroomcompany.com/",
+   "is_govtech": false,
+   "vertical": "Prefabricated public restroom buildings",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "Quorum",
+   "website": "http://www.quorum.us",
+   "is_govtech": true,
+   "vertical": "Legislative tracking and public affairs software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Readyly",
+   "website": "https://www.readyly.com/",
+   "is_govtech": true,
+   "vertical": "Agentic AI phone receptionist for government",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Revize Government Websites",
+   "website": "https://www.revize.com",
+   "is_govtech": true,
+   "vertical": "Government website CMS",
+   "sector": "General Gov"
+  },
+  {
+   "name": "SAFEbuilt, Inc",
+   "website": "http://www.safebuilt.com",
+   "is_govtech": false,
+   "vertical": "Outsourced building department services",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "Samsara",
+   "website": "https://www.samsara.com/",
+   "is_govtech": true,
+   "vertical": "Fleet telematics and safety platform",
+   "sector": "Public Works"
+  },
+  {
+   "name": "Schneider Geospatial",
+   "website": "https://www.schneidergis.com",
+   "is_govtech": true,
+   "vertical": "GIS and property records software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "SDL",
+   "website": "https://getsdl.com",
+   "is_govtech": true,
+   "vertical": "Local government operations software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Share Our Strength",
+   "website": "https://shareourstrength.org/",
+   "is_govtech": false,
+   "vertical": "Child hunger relief nonprofit",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Skydio",
+   "website": "https://www.skydio.com/",
+   "is_govtech": true,
+   "vertical": "Autonomous drones for public safety",
+   "sector": "Public Safety"
+  },
+  {
+   "name": "Spohn Ranch Skateparks",
+   "website": "http://www.spohnranch.com",
+   "is_govtech": false,
+   "vertical": "Skatepark design and construction",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "Sprung Structures",
+   "website": "www.sprung.com",
+   "is_govtech": false,
+   "vertical": "Prefabricated fabric buildings",
+   "sector": "Public Works"
+  },
+  {
+   "name": "Street Dynamics",
+   "website": "http://www.stalkerradar.com",
+   "is_govtech": false,
+   "vertical": "Radar speed signs and traffic hardware",
+   "sector": "Public Safety"
+  },
+  {
+   "name": "Strike Visuals",
+   "website": "www.strikenow.com",
+   "is_govtech": false,
+   "vertical": "Custom tents and event displays",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Summer",
+   "website": "https://www.meetsummer.com/",
+   "is_govtech": true,
+   "vertical": "Student loan benefit platform",
+   "sector": "General Gov"
+  },
+  {
+   "name": "TextByChoice",
+   "website": "https://textbychoice.com",
+   "is_govtech": true,
+   "vertical": "SMS messaging and engagement platform",
+   "sector": "General Gov"
+  },
+  {
+   "name": "The Mobile Voting Project",
+   "website": "www.mobilevoting.org",
+   "is_govtech": false,
+   "vertical": "Mobile voting research nonprofit",
+   "sector": "General Gov"
+  },
+  {
+   "name": "The Portland Loo",
+   "website": "http://www.portlandloo.com",
+   "is_govtech": false,
+   "vertical": "Prefabricated public restrooms",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "The Public Group, Public Surplus",
+   "website": "https://www.publicsurplus.com",
+   "is_govtech": true,
+   "vertical": "Government surplus auction platform",
+   "sector": "General Gov"
+  },
+  {
+   "name": "The Sports Facilities Companies",
+   "website": "http://www.sportsfacilities.com",
+   "is_govtech": false,
+   "vertical": "Sports facility management services",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "TIPS - The Interlocal Purchasing System",
+   "website": "http://www.tips-usa.com",
+   "is_govtech": false,
+   "vertical": "Cooperative purchasing program",
+   "sector": "General Gov"
+  },
+  {
+   "name": "TowerCo",
+   "website": "https://www.towerco.com/",
+   "is_govtech": false,
+   "vertical": "Cell tower infrastructure",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Tyler Technologies, Inc",
+   "website": "http://www.tylertech.com",
+   "is_govtech": true,
+   "vertical": "Government ERP, courts, and public safety software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "U.S. Census Bureau",
+   "website": "https://www.census.gov/en.html",
+   "is_govtech": false,
+   "vertical": "Federal statistical agency",
+   "sector": "General Gov"
+  },
+  {
+   "name": "U.S. Green Building Council",
+   "website": "https://www.usgbc.org/",
+   "is_govtech": false,
+   "vertical": "Green building certification nonprofit",
+   "sector": "Housing & Community Dev"
+  },
+  {
+   "name": "U-Haul International",
+   "website": "https://www.uhaul.com/About/Sustainability/",
+   "is_govtech": false,
+   "vertical": "Truck and trailer rental",
+   "sector": "General Gov"
+  },
+  {
+   "name": "UTOPIA Fiber",
+   "website": "https://www.utopiafiber.com/",
+   "is_govtech": false,
+   "vertical": "Municipal open-access fiber network",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "VC3",
+   "website": "http://vc3.com",
+   "is_govtech": false,
+   "vertical": "Managed IT services for government",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Vector Disease Control International (VDCI)",
+   "website": "https://www.vdci.net",
+   "is_govtech": false,
+   "vertical": "Mosquito and vector control services",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Vehicle Management Solutions",
+   "website": "http://www.vmsolutions.com",
+   "is_govtech": false,
+   "vertical": "Vehicle impound and towing services",
+   "sector": "Public Safety"
+  },
+  {
+   "name": "Veolia North America",
+   "website": "https://www.veolianorthamerica.com/",
+   "is_govtech": false,
+   "vertical": "Water and waste utility operations",
+   "sector": "Utilities & Energy"
+  },
+  {
+   "name": "Vortex Aquatic Structures International",
+   "website": "http://www.vortex-intl.com",
+   "is_govtech": false,
+   "vertical": "Aquatic play structures",
+   "sector": "Parks & Rec"
+  },
+  {
+   "name": "Vottiv",
+   "website": "https://www.vottiv.com/",
+   "is_govtech": false,
+   "vertical": "Political campaign management software",
+   "sector": "General Gov"
+  },
+  {
+   "name": "What Works Cities",
+   "website": "https://whatworkscities.bloomberg.org/",
+   "is_govtech": false,
+   "vertical": "City data improvement program",
+   "sector": "General Gov"
+  },
+  {
+   "name": "Your Very Favorite",
+   "website": "https://yourveryfavorite.com",
+   "is_govtech": false,
+   "vertical": "Custom activity and coloring books",
+   "sector": "General Gov"
+  }
+ ]
+}

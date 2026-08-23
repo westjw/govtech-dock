@@ -1,0 +1,159 @@
+{
+  "conference": "PRIMA 2026",
+  "exhibitors": [
+    {
+      "name": "Alliant",
+      "website": "https://alliant.com/",
+      "is_govtech": false,
+      "vertical": "Public entity insurance brokerage",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Aon",
+      "website": "https://www.aon.com/",
+      "is_govtech": false,
+      "vertical": "Insurance brokerage and risk consulting",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Gallagher",
+      "website": "https://www.ajg.com/",
+      "is_govtech": false,
+      "vertical": "Insurance brokerage and risk consulting",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Genesis Insurance",
+      "website": "https://genesisinsurance.com/",
+      "is_govtech": false,
+      "vertical": "Public entity reinsurance",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Marsh",
+      "website": "https://www.marsh.com/en/industries/public-sector.html",
+      "is_govtech": false,
+      "vertical": "Public sector insurance brokerage",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Munich Re America",
+      "website": "https://www.munichreamerica.com/",
+      "is_govtech": false,
+      "vertical": "Reinsurance and specialty insurance",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Travelers",
+      "website": "https://www.travelers.com/",
+      "is_govtech": false,
+      "vertical": "Commercial property and casualty insurance",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Ambridge Group",
+      "website": "https://ambridge-group.com/",
+      "is_govtech": false,
+      "vertical": "Specialty insurance underwriting",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Berkley Public Entity",
+      "website": "https://www.berkleypublicentity.com/",
+      "is_govtech": false,
+      "vertical": "Public entity insurance",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Midwest Employers Casualty",
+      "website": "https://www.mecasualty.com/",
+      "is_govtech": false,
+      "vertical": "Excess workers compensation insurance",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Old Republic Insurance Group",
+      "website": "https://www.oldrepublicinsurancegroup.com/",
+      "is_govtech": false,
+      "vertical": "Commercial insurance underwriting",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Safety National",
+      "website": "https://www.safetynational.com/",
+      "is_govtech": false,
+      "vertical": "Excess workers compensation insurance",
+      "sector": "General Gov"
+    },
+    {
+      "name": "TRISTAR",
+      "website": "https://www.tristargroup.net/",
+      "is_govtech": false,
+      "vertical": "Third party claims administration",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Euclid Public Sector",
+      "website": "https://euclidps.com/",
+      "is_govtech": false,
+      "vertical": "Public entity insurance programs",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Sedgwick",
+      "website": "https://www.sedgwick.com/",
+      "is_govtech": false,
+      "vertical": "Claims administration services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Commercial Risk Management, Inc.",
+      "website": "https://crm-su.com/",
+      "is_govtech": false,
+      "vertical": "Risk management and claims services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Charles Taylor",
+      "website": "https://us.charlestaylor.com/",
+      "is_govtech": false,
+      "vertical": "Insurance claims and adjusting services",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Samsara",
+      "website": "https://www.samsara.com/",
+      "is_govtech": true,
+      "vertical": "Fleet telematics and safety software",
+      "sector": "Public Works"
+    },
+    {
+      "name": "BLR",
+      "website": "https://blr.com/",
+      "is_govtech": true,
+      "vertical": "HR and EHS compliance software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Glatfelter Insurance Group",
+      "website": "https://glatfelters.com/",
+      "is_govtech": false,
+      "vertical": "Public entity and emergency services insurance",
+      "sector": "Public Safety"
+    },
+    {
+      "name": "KYND",
+      "website": "https://www.kynd.io/",
+      "is_govtech": true,
+      "vertical": "Cyber risk analytics platform",
+      "sector": "General Gov"
+    },
+    {
+      "name": "Trident Public Risk",
+      "website": "https://paragoninsgroup.com/our-brands/trident-public-risk/",
+      "is_govtech": false,
+      "vertical": "Public entity insurance",
+      "sector": "General Gov"
+    }
+  ]
+}

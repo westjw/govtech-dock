@@ -1,0 +1,810 @@
+{
+  "conference": "NACUBO 2026",
+  "exhibitors": [
+    {
+      "name": "1Government Procurement Alliance",
+      "is_govtech": false,
+      "vertical": "Government cooperative purchasing",
+      "sector": "General Gov"
+    },
+    {
+      "name": "ABM Industries, Inc.",
+      "website": "https://www.abm.com",
+      "is_govtech": false,
+      "vertical": "Facility and janitorial services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Alteryx, Inc",
+      "website": "https://www.alteryx.com",
+      "is_govtech": true,
+      "vertical": "Data analytics and automation software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Ambassador Education Solutions",
+      "website": "https://www.ambassadored.com",
+      "is_govtech": false,
+      "vertical": "Course materials distribution",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Ameresco, Inc.",
+      "website": "https://www.ameresco.com",
+      "is_govtech": false,
+      "vertical": "Energy efficiency infrastructure projects",
+      "sector": "Utilities & Energy"
+    },
+    {
+      "name": "American Dining Creations",
+      "is_govtech": false,
+      "vertical": "Campus dining services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "American Express",
+      "website": "https://www.americanexpress.com",
+      "is_govtech": false,
+      "vertical": "Corporate cards and payments",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Anaplan",
+      "website": "https://www.anaplan.com",
+      "is_govtech": true,
+      "vertical": "Financial planning and budgeting software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "AP Fleet Management",
+      "is_govtech": false,
+      "vertical": "Vehicle fleet leasing and management",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Aramark Collegiate Hospitality",
+      "website": "https://www.aramark.com",
+      "is_govtech": false,
+      "vertical": "Campus dining and hospitality services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ARO",
+      "website": "https://www.aro.tech",
+      "is_govtech": false,
+      "vertical": "Managed IT and cloud services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ASUENE USA Inc.",
+      "website": "https://www.asuene.com",
+      "is_govtech": true,
+      "vertical": "Carbon accounting and ESG software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Attain Partners",
+      "website": "https://www.attainpartners.com",
+      "is_govtech": false,
+      "vertical": "Higher education consulting services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Barnes & Noble College",
+      "website": "https://www.bncollege.com",
+      "is_govtech": false,
+      "vertical": "Campus bookstore operations",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "BibliU Inc.",
+      "website": "https://www.bibliu.com",
+      "is_govtech": true,
+      "vertical": "Digital courseware delivery platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Blackbaud",
+      "website": "https://www.blackbaud.com",
+      "is_govtech": true,
+      "vertical": "Fundraising and financial software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Boldyn Networks",
+      "website": "https://www.boldyn.com",
+      "is_govtech": false,
+      "vertical": "Wireless network infrastructure",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Boundless Learning",
+      "website": "https://www.boundlesslearning.com",
+      "is_govtech": false,
+      "vertical": "Online program management services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Brailsford & Dunlavey",
+      "website": "https://www.bdconnect.com",
+      "is_govtech": false,
+      "vertical": "Facilities planning consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "CampusIQ",
+      "website": "https://www.campusiq.com",
+      "is_govtech": true,
+      "vertical": "Campus space occupancy analytics",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Capstone Development Partners",
+      "is_govtech": false,
+      "vertical": "Student housing development",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Capstone On-Campus Management (COCM)",
+      "is_govtech": false,
+      "vertical": "Student housing management services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Carahsoft",
+      "website": "https://www.carahsoft.com",
+      "is_govtech": false,
+      "vertical": "Government software reseller",
+      "sector": "General Gov"
+    },
+    {
+      "name": "CBIZ",
+      "website": "https://www.cbiz.com",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Cedar Financial",
+      "website": "https://www.cedarfinancial.com",
+      "is_govtech": false,
+      "vertical": "Debt collection services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Chartwells Higher Education",
+      "is_govtech": false,
+      "vertical": "Campus dining services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Cherry Bekaert",
+      "website": "https://www.cbh.com",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Citi",
+      "website": "https://www.citi.com",
+      "is_govtech": false,
+      "vertical": "Banking and treasury services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "CLA (CliftonLarsonAllen LLP)",
+      "website": "https://www.claconnect.com",
+      "is_govtech": false,
+      "vertical": "Accounting and audit services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "CohnReznick LLP",
+      "website": "https://www.cohnreznick.com",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "CollegeVine",
+      "website": "https://www.collegevine.com",
+      "is_govtech": true,
+      "vertical": "AI student recruitment platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Collegiate Health Solutions",
+      "is_govtech": false,
+      "vertical": "Student health center consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Core Education PBC",
+      "website": "https://www.core.edu",
+      "is_govtech": false,
+      "vertical": "Higher ed shared services outsourcing",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Corpay Inc",
+      "website": "https://www.corpay.com",
+      "is_govtech": false,
+      "vertical": "Corporate payments and AP services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Crowe LLP",
+      "website": "https://www.crowe.com",
+      "is_govtech": false,
+      "vertical": "Accounting and consulting services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "DebtBook",
+      "website": "https://www.debtbook.com",
+      "is_govtech": true,
+      "vertical": "Debt and lease accounting software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Docusign Inc.",
+      "website": "https://www.docusign.com",
+      "is_govtech": true,
+      "vertical": "Electronic signature software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Drivestream",
+      "website": "https://www.drivestream.com",
+      "is_govtech": false,
+      "vertical": "Oracle cloud implementation services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Druid AI",
+      "website": "https://www.druidai.com",
+      "is_govtech": true,
+      "vertical": "Conversational AI agent platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "E&I Cooperative Services",
+      "website": "https://www.eandi.org",
+      "is_govtech": false,
+      "vertical": "Education purchasing cooperative",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "EAB",
+      "website": "https://www.eab.com",
+      "is_govtech": true,
+      "vertical": "Student success and enrollment software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "eCampus.com Higher Ed",
+      "website": "https://www.ecampus.com",
+      "is_govtech": false,
+      "vertical": "Online course materials retail",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "ECSI",
+      "website": "https://heartland.ecsi.net",
+      "is_govtech": false,
+      "vertical": "Student loan servicing and tax compliance",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Elior Collegiate Dining",
+      "is_govtech": false,
+      "vertical": "Campus dining services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Ellucian",
+      "website": "https://www.ellucian.com",
+      "is_govtech": true,
+      "vertical": "Higher ed ERP and student information systems",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Emburse",
+      "website": "https://www.emburse.com",
+      "is_govtech": true,
+      "vertical": "Expense and spend management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Euna Solutions",
+      "website": "https://www.eunasolutions.com",
+      "is_govtech": true,
+      "vertical": "Procurement and budgeting software",
+      "sector": "General Gov"
+    },
+    {
+      "name": "EverTrue",
+      "website": "https://www.evertrue.com",
+      "is_govtech": true,
+      "vertical": "Donor engagement and fundraising software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "First Carolina Bank I BankMobile Disbursements, Inc.",
+      "is_govtech": false,
+      "vertical": "Student refund disbursement banking",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Fitch Ratings",
+      "website": "https://www.fitchratings.com",
+      "is_govtech": false,
+      "vertical": "Credit rating services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "FMX",
+      "website": "https://www.gofmx.com",
+      "is_govtech": true,
+      "vertical": "Facilities maintenance management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Follett Higher Education",
+      "website": "https://www.follett.com",
+      "is_govtech": false,
+      "vertical": "Campus bookstore operations",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Forvis Mazars",
+      "website": "https://www.forvismazars.us",
+      "is_govtech": false,
+      "vertical": "Accounting and audit services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "GovDeals",
+      "website": "https://www.govdeals.com",
+      "is_govtech": true,
+      "vertical": "Government surplus auction marketplace",
+      "sector": "General Gov"
+    },
+    {
+      "name": "GradGuard",
+      "website": "https://www.gradguard.com",
+      "is_govtech": false,
+      "vertical": "Tuition and renters insurance",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "HelioCampus",
+      "website": "https://www.heliocampus.com",
+      "is_govtech": true,
+      "vertical": "Higher ed data analytics platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "HES Facilities Management",
+      "website": "https://www.hesfacilities.com",
+      "is_govtech": false,
+      "vertical": "Facilities management services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "HHM CPAs",
+      "website": "https://www.hhmcpas.com",
+      "is_govtech": false,
+      "vertical": "Accounting and audit services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "HUB International",
+      "website": "https://www.hubinternational.com",
+      "is_govtech": false,
+      "vertical": "Insurance brokerage",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Huron Consulting Group",
+      "website": "https://www.hcg.com",
+      "is_govtech": false,
+      "vertical": "Higher education consulting services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Illumia (formerly Transact + CBORD)",
+      "is_govtech": true,
+      "vertical": "Campus payments and ID software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Independent College Bookstore Association",
+      "website": "https://www.icbainc.org",
+      "is_govtech": false,
+      "vertical": "Bookstore trade association",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "IST Management Services",
+      "website": "https://www.istmanagement.com",
+      "is_govtech": false,
+      "vertical": "Mailroom and document services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Jaggaer",
+      "website": "https://www.jaggaer.com",
+      "is_govtech": true,
+      "vertical": "Procurement and spend management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Jenzabar",
+      "website": "https://www.jenzabar.com",
+      "is_govtech": true,
+      "vertical": "Higher ed ERP and student information systems",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "JPMorgan",
+      "website": "https://www.jpmorgan.com",
+      "is_govtech": false,
+      "vertical": "Banking and treasury services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Kuali",
+      "website": "https://www.kuali.co",
+      "is_govtech": true,
+      "vertical": "Higher ed administration software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "KYRIBA",
+      "website": "https://www.kyriba.com",
+      "is_govtech": true,
+      "vertical": "Treasury management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Lambent",
+      "website": "https://www.lambentspaces.com",
+      "is_govtech": true,
+      "vertical": "Campus space occupancy analytics",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "LearningMate",
+      "website": "https://www.learningmate.com",
+      "is_govtech": false,
+      "vertical": "Courseware development services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Mauve Group",
+      "website": "https://www.mauvegroup.com",
+      "is_govtech": false,
+      "vertical": "Global employment and EOR services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "MAXIMUS Higher Education, Inc.",
+      "website": "https://www.maximus.com",
+      "is_govtech": false,
+      "vertical": "Student loan servicing and BPO",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Meadow",
+      "website": "https://www.meadowfi.com",
+      "is_govtech": true,
+      "vertical": "Student billing and payments platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Merchant Advocate",
+      "website": "https://www.merchantadvocate.com",
+      "is_govtech": false,
+      "vertical": "Credit card fee auditing",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Metz Culinary Management",
+      "website": "https://www.metzculinary.com",
+      "is_govtech": false,
+      "vertical": "Campus dining services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "MOHELA",
+      "website": "https://www.mohela.com",
+      "is_govtech": false,
+      "vertical": "Student loan servicing",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Moody's Ratings",
+      "website": "https://www.moodys.com",
+      "is_govtech": false,
+      "vertical": "Credit rating services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "myFootpath",
+      "website": "https://www.myfootpath.com",
+      "is_govtech": false,
+      "vertical": "Enrollment and re-engagement services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Nelnet Campus Commerce",
+      "website": "https://www.campuscommerce.com",
+      "is_govtech": true,
+      "vertical": "Tuition billing and payment software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Niche",
+      "website": "https://www.niche.com",
+      "is_govtech": true,
+      "vertical": "College search and enrollment marketing data",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "OculusIT LLC",
+      "website": "https://www.oculusit.com",
+      "is_govtech": false,
+      "vertical": "Managed IT services for colleges",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "OneSource Virtual",
+      "website": "https://www.onesourcevirtual.com",
+      "is_govtech": false,
+      "vertical": "Workday managed services and BPO",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "OneStream Software LLC",
+      "website": "https://www.onestream.com",
+      "is_govtech": true,
+      "vertical": "Financial consolidation and planning software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "PayLock",
+      "website": "https://www.paylock.com",
+      "is_govtech": false,
+      "vertical": "Parking enforcement boot technology",
+      "sector": "Transit & Parking"
+    },
+    {
+      "name": "PFM Asset Management",
+      "website": "https://www.pfmam.com",
+      "is_govtech": false,
+      "vertical": "Investment advisory services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Piper Sandler",
+      "website": "https://www.pipersandler.com",
+      "is_govtech": false,
+      "vertical": "Investment banking services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Plante Moran",
+      "website": "https://www.plantemoran.com",
+      "is_govtech": false,
+      "vertical": "Accounting and consulting services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Porter Khouw Consulting, Inc.",
+      "website": "https://www.pkc-inc.com",
+      "is_govtech": false,
+      "vertical": "Campus dining consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Quodus",
+      "website": "https://www.quodus.ai",
+      "is_govtech": true,
+      "vertical": "Campus space utilization analytics",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Radnor Property Group",
+      "is_govtech": false,
+      "vertical": "Campus real estate development",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Ramp",
+      "website": "https://www.ramp.com",
+      "is_govtech": true,
+      "vertical": "Corporate spend management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "RGMA",
+      "website": "https://www.rgmasolutions.com",
+      "is_govtech": false,
+      "vertical": "Supplier inclusion consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "RISE Real Estate Company",
+      "is_govtech": false,
+      "vertical": "Student housing real estate",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Rize Education",
+      "website": "https://www.rizeeducation.com",
+      "is_govtech": false,
+      "vertical": "Online course sharing programs",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "S&P Global Ratings",
+      "website": "https://www.spglobal.com",
+      "is_govtech": false,
+      "vertical": "Credit rating services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SAP America",
+      "website": "https://www.sap.com",
+      "is_govtech": true,
+      "vertical": "Enterprise ERP software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "SAP Concur",
+      "website": "https://www.concur.com",
+      "is_govtech": true,
+      "vertical": "Travel and expense management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Segal",
+      "website": "https://www.segalco.com",
+      "is_govtech": false,
+      "vertical": "Benefits and actuarial consulting",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Slingshot",
+      "website": "https://www.slingshotedu.com",
+      "is_govtech": false,
+      "vertical": "Campus store and course materials services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Sodexo Campus",
+      "website": "https://www.sodexo.com",
+      "is_govtech": false,
+      "vertical": "Campus dining and facilities services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Southern Association of College and Business Officers",
+      "website": "https://www.sacubo.org",
+      "is_govtech": false,
+      "vertical": "Higher ed business officer association",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Stantec Architecture Inc.",
+      "website": "https://www.stantec.com",
+      "is_govtech": false,
+      "vertical": "Architecture and engineering services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Strata Decision Technology",
+      "website": "https://www.stratadecision.com",
+      "is_govtech": true,
+      "vertical": "Financial planning and analytics software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Strategy",
+      "website": "https://www.strategy.com",
+      "is_govtech": true,
+      "vertical": "Business intelligence and analytics software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Tessera",
+      "is_govtech": false,
+      "vertical": "Campus facilities management services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "TIAA",
+      "website": "https://www.tiaa.org",
+      "is_govtech": false,
+      "vertical": "Retirement and financial services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "TouchNet, A Global Payments Company",
+      "website": "https://www.touchnet.com",
+      "is_govtech": true,
+      "vertical": "Campus payments and billing software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Transamerica",
+      "website": "https://www.transamerica.com",
+      "is_govtech": false,
+      "vertical": "Retirement and insurance products",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Tru Consulting",
+      "is_govtech": false,
+      "vertical": "Higher education consulting services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Unimarket",
+      "website": "https://www.unimarket.com",
+      "is_govtech": true,
+      "vertical": "eProcurement and spend management software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "University of Kentucky-Martin School",
+      "website": "https://martin.uky.edu",
+      "is_govtech": false,
+      "vertical": "Public policy graduate program",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Virtual Incentives",
+      "website": "https://www.virtualincentives.com",
+      "is_govtech": true,
+      "vertical": "Digital rewards and incentives platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "VitalSource",
+      "website": "https://www.vitalsource.com",
+      "is_govtech": true,
+      "vertical": "Digital textbook delivery platform",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Wellfleet Student",
+      "website": "https://www.wellfleetinsurance.com",
+      "is_govtech": false,
+      "vertical": "Student health insurance",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Withum",
+      "website": "https://www.withum.com",
+      "is_govtech": false,
+      "vertical": "Accounting and advisory services",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Workday, Inc.",
+      "website": "https://www.workday.com",
+      "is_govtech": true,
+      "vertical": "ERP, HR and finance software",
+      "sector": "Higher Education"
+    },
+    {
+      "name": "Workiva",
+      "website": "https://www.workiva.com",
+      "is_govtech": true,
+      "vertical": "Financial reporting and compliance software",
+      "sector": "Higher Education"
+    }
+  ]
+}

@@ -1,0 +1,397 @@
+{
+ "conference": "APPA Probation 2026",
+ "exhibitors": [
+  {
+   "name": "Tyler Tech",
+   "website": "https://www.tylertech.com/",
+   "is_govtech": true,
+   "vertical": "Courts and corrections software",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Smart Start",
+   "website": "https://www.smartstartinc.com/",
+   "is_govtech": false,
+   "vertical": "Ignition interlock devices",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Corrections Software Solutions, LP",
+   "website": "https://correctionssoftware.com/",
+   "is_govtech": true,
+   "vertical": "Community supervision case management",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Track Group",
+   "website": "https://trackgrp.com/",
+   "is_govtech": true,
+   "vertical": "GPS offender monitoring platform",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "SCRAM",
+   "website": "https://www.scramsystems.com/",
+   "is_govtech": true,
+   "vertical": "Alcohol and GPS monitoring systems",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "RemoteCOM",
+   "website": "https://remotecom.net/",
+   "is_govtech": true,
+   "vertical": "Offender computer monitoring software",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "FieldWare",
+   "website": "https://fieldware.com/",
+   "is_govtech": true,
+   "vertical": "Supervision case management software",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Intoxalock",
+   "website": "https://www.intoxalock.com/",
+   "is_govtech": false,
+   "vertical": "Ignition interlock devices",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Cognisen",
+   "website": "https://cognisen.com/",
+   "is_govtech": true,
+   "vertical": "AI automation for probation agencies",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "LifeSafer",
+   "website": "https://www.lifesafer.com/",
+   "is_govtech": false,
+   "vertical": "Ignition interlock devices",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "NCTI",
+   "website": "https://ncti.com/",
+   "is_govtech": false,
+   "vertical": "Corrections training curriculum",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "BI Incorporated",
+   "website": "https://bi.com/",
+   "is_govtech": true,
+   "vertical": "Electronic monitoring and supervision",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "The Change Companies",
+   "website": "https://changecompanies.net/",
+   "is_govtech": false,
+   "vertical": "Behavioral change workbooks",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Empower Community Care",
+   "website": "https://www.empowercommunitycare.com/",
+   "is_govtech": false,
+   "vertical": "Evidence-based treatment training",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Noble Software",
+   "website": "https://www.noblesg.com/",
+   "is_govtech": true,
+   "vertical": "Juvenile and probation case management",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Honest Jobs",
+   "website": "https://www.honestjobs.com/",
+   "is_govtech": true,
+   "vertical": "Reentry employment platform",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Journal Technologies",
+   "website": "https://www.journaltech.com/",
+   "is_govtech": true,
+   "vertical": "Court case management software",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Allied Universal Electronic Monitoring",
+   "website": "https://www.aus.com/professional-services/electronic-monitoring",
+   "is_govtech": true,
+   "vertical": "Electronic monitoring platform",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "APPA",
+   "website": "https://www.appa-net.org",
+   "is_govtech": false,
+   "vertical": "Probation and parole association",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Averhealth",
+   "website": "https://averhealth.com/",
+   "is_govtech": false,
+   "vertical": "Drug testing lab services",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "SuperCom",
+   "website": "https://www.supercom.com/",
+   "is_govtech": true,
+   "vertical": "Electronic monitoring technology",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "SolusGuard",
+   "website": "https://www.solusguard.com/",
+   "is_govtech": true,
+   "vertical": "Lone worker safety app",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Reconnect",
+   "website": "https://reconnect.io/",
+   "is_govtech": true,
+   "vertical": "Virtual supervision case management",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Abbott Toxicology",
+   "website": "https://www.toxicology.abbott/us/en/index.html",
+   "is_govtech": false,
+   "vertical": "Drug testing products",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Multi Health Systems (MHS)",
+   "website": "https://mhs.com/",
+   "is_govtech": true,
+   "vertical": "Risk and behavioral assessments",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Engage by Cell",
+   "website": "https://www.engagebycell.com/",
+   "is_govtech": true,
+   "vertical": "Mobile engagement and texting platform",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Procivica",
+   "website": "https://www.procivica.com/",
+   "is_govtech": false,
+   "vertical": "Online court-mandated courses",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Holon Health",
+   "website": "https://www.holonhealth.com/",
+   "is_govtech": false,
+   "vertical": "Justice-involved health services",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Casebase",
+   "website": "https://www.casebase.co/",
+   "is_govtech": true,
+   "vertical": "AI probation case management",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Clean Enterprises",
+   "website": "https://www.thecleanway.us/",
+   "is_govtech": false,
+   "vertical": "Drug testing supplies",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "GEO Care",
+   "website": "https://www.geogroup.com/geo-care/",
+   "is_govtech": false,
+   "vertical": "Reentry and treatment facilities",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "AdventFS",
+   "website": "https://www.adventfs.com/",
+   "is_govtech": true,
+   "vertical": "Cloud software for supervision agencies",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "University of Cincinnati Corrections Institute",
+   "website": "https://www.cech.uc.edu/about/centers/ucci.html",
+   "is_govtech": false,
+   "vertical": "University research institute",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Gateway Foundation, Inc.",
+   "website": "https://www.gatewayfoundation.org/",
+   "is_govtech": false,
+   "vertical": "Addiction treatment nonprofit",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Options Lab",
+   "website": "https://options-lab.com/",
+   "is_govtech": false,
+   "vertical": "Corrections vendor (unidentified)",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "AWEC",
+   "website": "https://www.awec.us/",
+   "is_govtech": false,
+   "vertical": "Online court-ordered classes",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Abraxas Youth & Family Services",
+   "website": "https://abraxasyfs.org/",
+   "is_govtech": false,
+   "vertical": "Youth treatment programs",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "Endur ID",
+   "website": "https://endurid.com/",
+   "is_govtech": false,
+   "vertical": "Inmate ID wristbands and badging",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Q2i",
+   "website": "https://q2i.com/",
+   "is_govtech": true,
+   "vertical": "Digital health software for recovery",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "DIMS Product Suite",
+   "website": "https://dimsservices.com/",
+   "is_govtech": true,
+   "vertical": "Drug court and probation software",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Buddi",
+   "website": "https://www.buddi.com/",
+   "is_govtech": true,
+   "vertical": "Electronic monitoring devices",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "iCEV",
+   "website": "https://www.icevonline.com/",
+   "is_govtech": true,
+   "vertical": "Online CTE curriculum platform",
+   "sector": "K-12 Schools"
+  },
+  {
+   "name": "North American Learning Institute",
+   "website": "https://nalearning.org/",
+   "is_govtech": false,
+   "vertical": "Online court-ordered courses",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Securus Monitoring",
+   "website": "https://www.securusmonitoring.com/",
+   "is_govtech": true,
+   "vertical": "Electronic monitoring platform",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "USDTL",
+   "website": "https://www.usdtl.com/",
+   "is_govtech": false,
+   "vertical": "Toxicology laboratory services",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Micro-Distributing, INC",
+   "website": "https://www.micro-distributing.com/",
+   "is_govtech": false,
+   "vertical": "Drug test kit distributor",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Tomo Drug Testing",
+   "website": "https://www.yourdrugtesting.com/",
+   "is_govtech": false,
+   "vertical": "Drug testing services",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Outreach Smartphone Monitoring",
+   "website": "https://osmnow.com/",
+   "is_govtech": true,
+   "vertical": "Smartphone offender monitoring",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Premier Biotech",
+   "website": "https://premierbiotech.com/",
+   "is_govtech": false,
+   "vertical": "Drug testing products",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "JSG/A 2nd Chance Monitoring",
+   "website": "https://a2ndchancemonitoring.com/",
+   "is_govtech": false,
+   "vertical": "Electronic monitoring services",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "CATALIS",
+   "website": "https://catalisgov.com/",
+   "is_govtech": true,
+   "vertical": "Courts and government software",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "National Association of Service Providers",
+   "website": "https://nadsp.org/",
+   "is_govtech": false,
+   "vertical": "Service provider association",
+   "sector": "Health & Human Services"
+  },
+  {
+   "name": "LifeLab Studios",
+   "website": "https://www.journeydo.com/lifelabs.html",
+   "is_govtech": false,
+   "vertical": "Justice-involved youth programs",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "Aventiv Technologies",
+   "website": "https://www.aventiv.com/",
+   "is_govtech": true,
+   "vertical": "Corrections communications technology",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "CMIT (Correctional Management Institute of Texas)",
+   "website": "https://www.cmitonline.org/",
+   "is_govtech": false,
+   "vertical": "Corrections management training institute",
+   "sector": "Courts & Justice"
+  },
+  {
+   "name": "NAPE (National Association of Probation Executives)",
+   "website": "https://www.napehome.org/",
+   "is_govtech": false,
+   "vertical": "Probation executives association",
+   "sector": "Courts & Justice"
+  }
+ ]
+}
