@@ -1266,6 +1266,9 @@ def sort_companies(sector: str) -> dict:
     flagged = {i["id"]: i["suggested"] for i in q_placement(companies, board)}
     rows = [{"id": c["id"], "name": c["name"], "category": c["category"],
              "description": c.get("description"), "website": c.get("website"),
+             "location": c.get("location"),
+             "year_founded": c.get("year_founded"),
+             "events": _events(c.get("description")),
              "ats": (c.get("ats") or {}).get("type"),
              "postings": posts.get(c["id"], 0),
              "suggested": flagged.get(c["id"])}

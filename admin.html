@@ -91,6 +91,10 @@
   .gstat.low strong{color:var(--warn)}
   .endbar{height:7px;border-radius:4px;background:var(--chip);margin:10px 0 4px;overflow:hidden}
   .endfill{height:100%;border-radius:4px;background:var(--accent)}
+  .cdinfo{margin-top:8px;padding-top:8px;border-top:1px solid var(--line);
+    font-size:12.5px;line-height:1.55;color:var(--dim);cursor:default}
+  .cdinfo a{display:inline-block;margin-top:5px}
+  .cdinfo .chip{margin:4px 4px 0 0}
 </style>
 </head>
 <body>
@@ -1073,9 +1077,38 @@ async function drawCompanies(host, bar) {
   const make = c => {
     const sug = c.suggested && c.suggested.sector !== d.sector
       ? `<div class="sug">looks like ${esc(c.suggested.sector)}</div>` : '';
-    return card(`<div>${esc(c.name)}</div><div class="m">`
+    const cd = card(`<div>${esc(c.name)}</div><div class="m">`
       + (c.postings ? `${c.postings} posting${c.postings === 1 ? '' : 's'} · ` : '')
       + `${esc(c.ats || 'no board')}</div>` + sug, {id: c.id, name: c.name});
+    /* Click for the blurb: sorting a company you cannot remember is a
+       guess, and a guess filed with confidence is worse than a queue.
+       Everything shown is on file already - nothing is fetched. */
+    cd.addEventListener('click', () => {
+      const open = cd.querySelector('.cdinfo');
+      if (open) { open.remove(); return; }
+      const info = el('div', 'cdinfo');
+      const bits = [];
+      const desc = (c.description || '').replace(/\s*-\s*exhibited at [^;.]*/i, '').trim();
+      if (desc) bits.push(desc + '.');
+      const facts = [c.location, c.year_founded && `founded ${c.year_founded}`]
+        .filter(Boolean).join(' · ');
+      if (facts) bits.push(facts + '.');
+      info.appendChild(el('div', null,
+        bits.join(' ') || 'No description on file - the card is the research gap.'));
+      if (c.events && c.events.length) {
+        const evrow = el('div', 'm');
+        c.events.forEach(ev => evrow.appendChild(el('span', 'chip ok', ev)));
+        info.appendChild(evrow);
+      }
+      if (c.website) {
+        const a = el('a', null, c.website.replace(/^https?:\/\//, '').replace(/\/$/, ''));
+        a.href = c.website; a.target = '_blank'; a.rel = 'noopener';
+        a.addEventListener('click', e => e.stopPropagation());
+        info.appendChild(a);
+      }
+      cd.appendChild(info);
+    });
+    return cd;
   };
   d.categories.forEach(cat => {
     const col = el('div', 'col');
