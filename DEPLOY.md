@@ -33,5 +33,48 @@ The workflow already contains a deploy step that skips until these exist:
 Once set, every 06:00 refresh publishes - behind the sanity gate, which
 refuses a board that shrank more than 25% overnight.
 
+## 5. Going public (~5 min)
+
+Do these in order. The first one matters most.
+
+1. **Delete the stale deployments.** Pages → the project → Deployments:
+   remove `eaffc723` and `5394c974`. Those were built by a workaround that
+   published the whole repo rather than the allowlisted `public/`, and each
+   Cloudflare deployment keeps its own permanent hash URL. Behind Access that
+   was contained. Without Access it is a live copy of everything.
+2. **Repo → Settings → General → bottom → Change visibility → Public.**
+   Audited 2026-08-23: no tokens or keys in the tree or in the whole git
+   history, no `.env` ever committed, no per-company prospecting notes, no
+   personal email in the data. What becomes readable is company facts, public
+   job postings, and the conference catalog.
+3. **Zero Trust → Access → Applications → delete the SoleSource application.**
+   That takes the login gate off the domain. Do it last, after 1 and 2.
+
+Making the repo public is also what switches ON public submissions: the
+`add-company` issue template and its workflow (issue → a bot researches the
+company and opens a pull request → you merge) cannot be used by anyone who
+cannot see the repo.
+
+## 6. The in-page submission form (~3 min, optional)
+
+`functions/api/submit.js` lets someone add a company **without** a GitHub
+account: the form on the site opens the same issue the template does. It works
+with no setup, degrading to "submit it on GitHub instead" - so the only thing
+this step buys is that a visitor never has to leave the site or make an
+account.
+
+- GitHub → Settings → Developer settings → **Fine-grained tokens** → new token,
+  scoped to **this repository only**, permission **Issues: Read and write**,
+  nothing else. Set an expiry you will actually renew.
+- Cloudflare Pages → the project → Settings → **Variables and Secrets** → add
+  `GITHUB_SUBMIT_TOKEN` as an **encrypted** variable (Production, and Preview
+  if you want it there too), then redeploy so it takes effect.
+
+The endpoint refuses anything that is not an http(s) URL with a real hostname,
+carries a honeypot field against form bots, defuses `@mentions` so a
+submission cannot ping anyone, and never passes GitHub's error text back to an
+anonymous caller. Nothing it receives reaches the dataset: the bot re-derives
+every field from the company's own site, and merging stays a human action.
+
 That is all of it. Nothing in this file can be done from this machine without
 your credentials, which is the correct reason it has not been done.

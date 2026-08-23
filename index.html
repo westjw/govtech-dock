@@ -198,13 +198,100 @@
   <div class="sub" id="sub">loading</div>
   <div class="sub" style="margin-top:6px">
     <a href="https://github.com/westjw/govtech-dock/issues/new?template=add-company.yml"
-       target="_blank" rel="noopener">Add a company &rarr;</a>
+       id="addco" onclick="openAdd(event)">Add a company &rarr;</a>
     <span style="color:var(--faint)">submit a link; a bot works out the sector and
     board, then a person reviews it</span>
   </div>
   <nav id="tabs"></nav>
 </header>
 <main><div class="panel" id="view"></div></main>
+
+<!-- Anyone can propose a company. Nothing here writes to the map: it opens a
+     submission, a bot researches it and opens a pull request, a person merges.
+     The link behind it still works with JavaScript off. -->
+<dialog id="add-dlg" style="border:1px solid var(--line);border-radius:14px;padding:0;
+    background:var(--panel);color:var(--ink);max-width:min(520px,92vw);width:100%">
+  <form method="dialog" id="add-form" style="padding:22px 24px 20px;margin:0">
+    <h2 style="margin:0 0 4px;font-size:19px;letter-spacing:-.02em">Add a company</h2>
+    <p style="margin:0 0 16px;font-size:13px;color:var(--dim);line-height:1.5">
+      A govtech company we are missing. A bot reads the site, works out the sector
+      and job board, and opens a pull request. A person reviews it before it
+      appears here, so nothing you send goes live on its own.</p>
+
+    <label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:5px">
+      Company website</label>
+    <input id="add-url" type="url" required placeholder="https://example.com"
+      style="width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;
+             background:var(--bg);color:var(--ink);font:inherit;font-size:14px;
+             box-sizing:border-box">
+
+    <label style="display:block;font-size:12.5px;font-weight:600;margin:14px 0 5px">
+      Anything the bot will get wrong <span style="font-weight:400;color:var(--faint)">(optional)</span></label>
+    <textarea id="add-ctx" rows="3" placeholder="What they actually sell, or where their job board really lives."
+      style="width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;
+             background:var(--bg);color:var(--ink);font:inherit;font-size:14px;
+             box-sizing:border-box;resize:vertical"></textarea>
+
+    <!-- not for people -->
+    <input id="add-fax" name="company_fax" tabindex="-1" autocomplete="off"
+      aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+
+    <div id="add-msg" style="font-size:13px;margin-top:12px;line-height:1.5"></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
+      <button type="button" onclick="document.getElementById('add-dlg').close()"
+        style="font:inherit;font-size:13.5px;padding:9px 16px;border-radius:20px;
+               border:1px solid var(--line);background:none;color:var(--dim);cursor:pointer">
+        Cancel</button>
+      <button type="button" id="add-go" onclick="sendAdd()"
+        style="font:inherit;font-size:13.5px;font-weight:600;padding:9px 20px;border:0;
+               border-radius:20px;background:var(--accent);color:var(--bg);cursor:pointer">
+        Submit</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+function openAdd(e){
+  const d=document.getElementById("add-dlg");
+  if(!d || !d.showModal) return;            // no dialog support: follow the link
+  e.preventDefault();
+  document.getElementById("add-msg").textContent="";
+  d.showModal();
+  document.getElementById("add-url").focus();
+}
+async function sendAdd(){
+  const url=document.getElementById("add-url"),
+        msg=document.getElementById("add-msg"),
+        go=document.getElementById("add-go");
+  if(!url.checkValidity()){ url.reportValidity(); return; }
+  go.disabled=true; go.textContent="Sending...";
+  msg.style.color="var(--dim)"; msg.textContent="";
+  let r, j;
+  try{
+    r=await fetch("/api/submit",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({website:url.value,
+        context:document.getElementById("add-ctx").value,
+        company_fax:document.getElementById("add-fax").value})});
+    j=await r.json();
+  }catch(err){ j={fallback:document.getElementById("addco").href}; }
+  go.disabled=false; go.textContent="Submit";
+  if(j && j.ok){
+    msg.style.color="var(--accent)";
+    msg.innerHTML="Thank you. It is queued as submission "
+      +(j.number?("#"+j.number):"")+", and a person reviews it before it appears.";
+    url.value=""; document.getElementById("add-ctx").value="";
+    return;
+  }
+  // Anything else: say what happened and hand over the route that always works.
+  const link=(j&&j.fallback)||document.getElementById("addco").href;
+  msg.style.color="var(--warn,#c9822b)";
+  msg.innerHTML=(j&&j.error&&j.error!=="not_configured"
+      ? esc(j.error)+" "
+      : "The form is not wired up on this deployment yet. ")
+    +`<a href="${link}" target="_blank" rel="noopener">Submit it on GitHub instead &rarr;</a>`;
+}
+</script>
+
 <script>
 const $=(s,r=document)=>r.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
