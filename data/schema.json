@@ -43,6 +43,8 @@
     "Health & Human Services",
     "Elections",
     "Courts & Justice",
+    "Elections & Voting",
+    "Libraries",
     "Suppliers & Services"
    ],
    "xlsx": {
@@ -117,6 +119,60 @@
    "xlsx": {
     "head": "5B2C6F",
     "band": "F3EAF7"
+   }
+  },
+  {
+   "name": "Courts & Justice",
+   "categories": [
+    "Courts & Case Management",
+    "Prosecution & Defense",
+    "Probation & Supervision",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "884EA0",
+    "band": "F5EEF8"
+   }
+  },
+  {
+   "name": "Health & Human Services",
+   "categories": [
+    "Public Health",
+    "Benefits & Medicaid Systems",
+    "Child & Family Services",
+    "Behavioral Health",
+    "Aging & Veterans",
+    "Workforce & Labor",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "117A65",
+    "band": "E8F6F3"
+   }
+  },
+  {
+   "name": "Higher Education",
+   "categories": [
+    "IT & Administration",
+    "Business & Finance",
+    "Campus Safety",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "2471A3",
+    "band": "EAF2F8"
+   }
+  },
+  {
+   "name": "Housing & Community Dev",
+   "categories": [
+    "Housing & Assistance",
+    "Planning & Economic Development",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "A04000",
+    "band": "FBEEE6"
    }
   }
  ]
