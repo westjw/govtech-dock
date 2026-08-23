@@ -192,6 +192,7 @@ def q_duplicates(companies, board) -> list:
 def q_websites(companies, board) -> list:
     return [{"id": c["id"], "name": c["name"], "sector": c["sector"],
              "category": c["category"], "description": c.get("description"),
+             "also_known_as": c.get("also_known_as") or [],
              "events": _events(c.get("description")),
              "tier": 1 if c["sector"] in ("General Gov", "Public Works", "Parks & Rec")
                      else 2}
@@ -893,8 +894,11 @@ def act_patch(body: dict) -> dict:
     c = next((x for x in companies if x["id"] == body.get("id")), None)
     if not c:
         return {"error": "company not found"}
+    # also_known_as is here for renames: the merge rule holds everywhere -
+    # a dropped name is kept as an alias, never discarded
     allowed = {"name", "sector", "category", "website", "description",
-               "location", "year_founded", "vendor_type", "parent", "ats_note"}
+               "location", "year_founded", "vendor_type", "parent", "ats_note",
+               "also_known_as"}
     for k, v in (body.get("fields") or {}).items():
         if k in allowed:
             c[k] = v

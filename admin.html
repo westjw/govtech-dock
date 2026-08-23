@@ -375,11 +375,34 @@ RENDER.websites = c => {
                         : '<span class="warn">page does not name this company — your call</span>'}</div>`;
     n.appendChild(e);
     save.disabled = r.parked;
+    /* The page just told us what the company calls itself. When that differs
+       from the stored name, offer the rename with the save - editable,
+       because a <title> is marketing copy and the person decides. The old
+       name is kept as an alias, same as a merge. */
+    n.querySelectorAll('.renamer').forEach(x => x.remove());
+    const canonical = (r.title || '').split(/\s+[—|·–]\s+|\s+-\s+/)[0].trim();
+    if (canonical && canonical.toLowerCase() !== c.name.toLowerCase()
+        && canonical.length >= 2 && canonical.length <= 60) {
+      const wrapR = el('div', 'renamer kv');
+      wrapR.appendChild(document.createTextNode('rename to '));
+      const ri = el('input'); ri.value = canonical; ri.id = 'rn-' + c.id;
+      wrapR.appendChild(ri);
+      wrapR.appendChild(document.createTextNode(` (was “${c.name}”, kept as an alias)`));
+      n.insertBefore(wrapR, row.nextSibling);
+    }
   };
   save.onclick = async () => {
-    const r = await api('/api/patch', {id: c.id, fields: {website: verified.url}});
+    const fields = {website: verified.url};
+    const ri = document.getElementById('rn-' + c.id);
+    const newName = ri && ri.value.trim();
+    if (newName && newName.toLowerCase() !== c.name.toLowerCase()) {
+      fields.name = newName;
+      fields.also_known_as = [...new Set([...(c.also_known_as || []), c.name])];
+    }
+    const r = await api('/api/patch', {id: c.id, fields});
     if (r.error) return toast(r.error, true);
-    toast(r.message); n.remove(); refreshCounts();
+    toast(fields.name ? `${r.message} — renamed to ${fields.name}` : r.message);
+    n.remove(); refreshCounts();
   };
   row.append(inp, check, save, dismissBtn('websites', c.id, 'No site exists'));
   n.appendChild(row);
