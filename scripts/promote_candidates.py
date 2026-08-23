@@ -42,7 +42,10 @@ SUFFIX = re.compile(r"\b(inc|llc|corp(oration)?|co|company|ltd|lp|group|"
 
 
 def norm(name: str) -> str:
-    s = re.sub(r"[^a-z0-9 ]", " ", (name or "").lower())
+    # parentheticals go the way kebab() sends them, or "SoundThinking
+    # (ShotSpotter)" dedupes differently than it ids and lands twice
+    s = re.sub(r"\([^)]*\)", " ", (name or "").lower())
+    s = re.sub(r"[^a-z0-9 ]", " ", s)
     return re.sub(r"\s+", " ", SUFFIX.sub(" ", s)).strip()
 
 

@@ -72,9 +72,19 @@ def read(name: str, default):
     if not p.exists():
         return default
     try:
-        return json.loads(p.read_text())
+        data = json.loads(p.read_text())
     except json.JSONDecodeError:
         return default
+    # A present-but-wrong-shaped file once crashed every GET endpoint and the
+    # server's own startup: submissions.json as '{}' met subs["items"]. The
+    # shape contract belongs here, where every reader inherits it.
+    if not isinstance(data, type(default)):
+        return default
+    if isinstance(default, dict):
+        for k, v in default.items():
+            if k not in data or not isinstance(data[k], type(v)):
+                data[k] = v
+    return data
 
 
 def write_atomic(name: str, payload) -> None:
@@ -403,6 +413,11 @@ def act_vendor_scope_all(body: dict) -> dict:
     permanent error this whole repo is built around.
     """
     names, call = body.get("names") or [], body.get("call")
+    if isinstance(names, str) or not isinstance(names, list) \
+            or not all(isinstance(n, str) and n.strip() for n in names):
+        # a bare string iterates per CHARACTER and writes a junk ruling for
+        # each - permanent, because rulings are never re-asked
+        return {"error": "names must be a list of company names"}
     if not names or call not in ("in", "sled", "out"):
         return {"error": "need names and a call of in, sled or out"}
     d = read("vendor_scope_decisions.json", {})
@@ -526,7 +541,8 @@ def q_miscategorized(companies, board) -> list:
             continue
         if not (c.get("govtech") or c.get("vendor_type") == "GovTech Product"):
             continue
-        if f"miscategorized:{c['id']}" in dismissed:
+        if f"miscategorized:{c['id']}" in dismissed \
+                or c["id"] in dismissed.get("miscategorized", {}):
             continue
         blob = f"{c['name']} {c.get('description') or ''}".lower()
         sec, cat, conf, why = add_company.guess_sector(blob)
@@ -773,6 +789,11 @@ LABEL = {"miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "
 def act_merge(body: dict) -> dict:
     """Fold one record into another. The survivor keeps every field it has and
     inherits the ones it is missing, so a merge never loses research."""
+    if body.get("keep") == body.get("drop"):
+        # merging a record into itself no-ops the inheritance loop and then
+        # deletes the id from the file - reported as a successful merge. The
+        # UI cannot send this; the API refused nothing. Now it does.
+        return {"error": "keep and drop are the same company"}
     keep_id, drop_id = body.get("keep"), body.get("drop")
     companies = read("companies.json", [])
     keep = next((c for c in companies if c["id"] == keep_id), None)
@@ -1081,7 +1102,7 @@ def act_resolve_submission(body: dict) -> dict:
             "description": fields.get("description") or item.get("note"),
             "govtech": True, "vendor_type": "GovTech Product",
             "ats": {"type": "unknown", "ref": None},
-            "hiring": {"status": "Unknown", "checked": None, "note":
+            "hiring": {"roles": [], "status": "Unknown", "checked": None, "note":
                        "added from a submission; board not discovered yet"},
             "source": "submission", "added_on": dt.date.today().isoformat(),
         })

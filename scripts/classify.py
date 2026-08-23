@@ -56,6 +56,9 @@ FINANCE_NOT_SALES_PAT = re.compile(
 
 def classify_title(title: str) -> str:
     """Return 'ae' | 'sales_other' | 'none' for one job title."""
+    # a board can emit "title": null; None is an unclassifiable title, not
+    # a crash
+    title = title or ""
     t = title.strip()
     if not t:
         return "none"

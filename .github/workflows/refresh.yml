@@ -72,6 +72,14 @@ jobs:
             git push
           fi
 
+      - name: Sound the alarm if the board collapsed
+        # The sanity gate's real home is the Cloudflare Pages build, where a
+        # refusal keeps the old site up - but a Pages failure is invisible
+        # unless someone opens that dashboard. Running the same check here
+        # AFTER the data commit makes a collapse fail this workflow, which
+        # emails the owner. The data is already safe; this step only shouts.
+        run: python scripts/build_site.py --check-only
+
       - name: Regenerate spreadsheet
         run: python scripts/export_xlsx.py
 

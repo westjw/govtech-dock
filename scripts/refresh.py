@@ -67,9 +67,20 @@ def check_company(comp: dict) -> dict:
         return {"status": "Unknown", "note": "no ATS on file", "roles": [], "skipped": True}
     try:
         jobs = ats.fetch(comp["ats"])
+        status, note, roles = classify.rollup(jobs)
     except ats.AtsError as exc:
         return {"status": "Unknown", "note": str(exc)[:40], "roles": []}
-    status, note, roles = classify.rollup(jobs)
+    except Exception as exc:  # noqa: BLE001 - deliberately everything
+        # One malformed job among ~1,150 boards - a null title, a payload
+        # that came back as a list, a workday ref of the wrong shape - used
+        # to kill the entire run, and because every write happens after the
+        # loop, 40 minutes of successful fetches died with it. The review
+        # reproduced nineteen distinct ways in. A company whose board cannot
+        # be understood is Unknown, exactly like one whose board cannot be
+        # reached; it is never a reason to lose everyone else's snapshot.
+        return {"status": "Unknown",
+                "note": f"fetcher crashed: {type(exc).__name__}"[:40],
+                "roles": []}
     if kind == "html" and status == "Yes":
         note = (note + " [page scan - verify]")[:60]
     return {"status": status, "note": note, "roles": roles}

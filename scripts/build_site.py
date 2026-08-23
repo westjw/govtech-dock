@@ -35,7 +35,12 @@ SHIP = ["index.html"]
 # Organization fields the site never reads. Dropping them is not security -
 # the data is public job postings - it is not publishing internal bookkeeping
 # under a domain that looks authoritative.
-DROP_ORG = {"no_board_on_file", "vendor_type", "govtech"}
+# no_board_on_file stays: index.html renders an honest "N companies produced
+# no readable board" count from it, and stripping it silently turned 969
+# into 16 on the public page - the field the comment called never-read was
+# read every day. ats_note stays stripped (internal review notes); the site
+# degrades gracefully without it.
+DROP_ORG = {"vendor_type", "govtech"}
 
 
 def sanitize(board: dict) -> dict:
@@ -79,15 +84,25 @@ class StaleData(Exception):
 
 
 def previous_snapshot() -> tuple[str, int] | None:
-    """The most recent history snapshot BEFORE today's, as (date, count).
+    """The strongest recent snapshot BEFORE today's, as (date, count).
 
-    build_board writes one per run, so today's exists by the time this runs.
+    Comparing against yesterday alone let the gate disarm itself: a broken
+    fetcher's collapsed snapshot still landed in history, so day two compared
+    broken-with-broken and published the broken board. Comparing against the
+    BEST of the last week means a collapse stays blocked until the numbers
+    actually recover or a person looks and forces it - which is the entire
+    point of having a gate.
     """
     snaps = sorted((ROOT / "data" / "history").glob("*.json"))
     if len(snaps) < 2:
         return None
-    prev = json.loads(snaps[-2].read_text())
-    return prev.get("date", snaps[-2].stem), len(prev.get("ids", []))
+    best = None
+    for sp in snaps[-8:-1]:
+        d = json.loads(sp.read_text())
+        n = len(d.get("ids", []))
+        if best is None or n > best[1]:
+            best = (d.get("date", sp.stem), n)
+    return best
 
 
 def sanity_check(board: dict) -> list[str]:

@@ -403,6 +403,20 @@ def main() -> int:
                       states=g["territory"]["states"],
                       region=g["territory"]["region"], work_mode=g["work_mode"])
 
+    # Byte-identical duplicate rows are a fetcher stutter, not two jobs.
+    # (Same-id rows that DIFFER - one title across 93 locations - are real
+    # and stay; the id scheme owes them a rethink, recorded in the backlog.)
+    unique, seen_rows = [], set()
+    for mp in postings:
+        key = json.dumps(mp, sort_keys=True)
+        if key in seen_rows:
+            continue
+        seen_rows.add(key)
+        unique.append(mp)
+    if len(unique) != len(postings):
+        print(f"  dropped {len(postings) - len(unique)} byte-identical duplicate posting rows")
+    postings = unique
+
     fam_totals = collections.Counter(p["family"] for p in postings)
     sector_totals = collections.Counter(p["sector"] for p in postings)
     payload = {

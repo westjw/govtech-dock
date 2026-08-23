@@ -569,7 +569,9 @@ RENDER.miscategorized = c => {
     const r = await api('/api/also',
       {id: c.id, sector: secSel.value, category: catSel.value});
     if (r.error) return toast(r.error, true);
-    toast(r.message); n.remove(); refreshCounts();
+    // the primary is still the supplier bucket, so the row still needs its
+    // real fix; removing the card here just brought it back on reload
+    toast(r.message + ' — primary still needs filing');
   };
   const move = el('button', 'act good', 'File it here');
   move.onclick = async () => {
@@ -617,10 +619,12 @@ RENDER.vendors = v => {
       };
       return b;
     };
-    const row = el('div', 'row');
-    row.append(bulk('in', 'All in', 'good'), bulk('sled', 'All SLED-only', ''),
-               bulk('out', 'All out', 'bad'));
-    h.append(why, row);
+    if (v.theme !== 'Everything else') {
+      const row = el('div', 'row');
+      row.append(bulk('in', 'All in', 'good'), bulk('sled', 'All SLED-only', ''),
+                 bulk('out', 'All out', 'bad'));
+      h.append(why, row);
+    }
     wrap.appendChild(h);
   }
   const n = document.createElement('div');

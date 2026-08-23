@@ -38,24 +38,29 @@ jobs:
 
       - name: Propose the entry
         id: propose
+        env:
+          SUBMITTED_URL: ${{ steps.url.outputs.url }}
         run: |
           set +e
-          python scripts/add_company.py "${{ steps.url.outputs.url }}" > proposal.txt 2>&1
+          python scripts/add_company.py "$SUBMITTED_URL" > proposal.txt 2>&1
           echo "status=$?" >> "$GITHUB_OUTPUT"
           cat proposal.txt
 
       - name: Write it in, if nothing is blocking
         id: write
         if: steps.propose.outputs.status == '0'
+        env:
+          SUBMITTED_URL: ${{ steps.url.outputs.url }}
         run: |
           set +e
-          python scripts/add_company.py "${{ steps.url.outputs.url }}" --write
+          python scripts/add_company.py "$SUBMITTED_URL" --write
           echo "wrote=$?" >> "$GITHUB_OUTPUT"
 
       - name: Open a pull request
         if: steps.write.outputs.wrote == '0'
         env:
           GH_TOKEN: ${{ github.token }}
+          SUBMITTED_URL: ${{ steps.url.outputs.url }}
         run: |
           BR="add-company/issue-${{ github.event.issue.number }}"
           git config user.name "govtech-dock-bot"
@@ -66,7 +71,7 @@ jobs:
           git push -u origin "$BR"
           gh pr create --title "Add company from #${{ github.event.issue.number }}" \
             --body "$(printf 'Proposed from %s\n\nCloses #%s\n\n```\n%s\n```' \
-              "${{ steps.url.outputs.url }}" "${{ github.event.issue.number }}" \
+              "$SUBMITTED_URL" "${{ github.event.issue.number }}" \
               "$(cat proposal.txt)")"
 
       - name: Report back on the issue
