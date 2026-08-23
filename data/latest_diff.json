@@ -1,13 +1,3821 @@
 {
-  "date": "2026-08-17",
+  "date": "2026-08-23",
   "previous": "2026-08-17",
   "changes": [
     {
-      "company": "Granicus",
-      "id": "granicus",
+      "company": "Technosylva",
+      "id": "technosylva",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Sr. Manager, FP&A & Sales Operatio only"
+    },
+    {
+      "company": "Flock Safety",
+      "id": "flock-safety",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Director, Product Management - Cus only"
+    },
+    {
+      "company": "Veoci",
+      "id": "veoci",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Glacier",
+      "id": "glacier",
       "from": "Unknown",
       "to": "Yes",
-      "note": "Enterprise Account Executive - KS,"
+      "note": "Account Executive - Climate Tech ( (West - Remote)"
+    },
+    {
+      "company": "Greyparrot",
+      "id": "greyparrot",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Verra Mobility",
+      "id": "verra-mobility",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Urban SDK",
+      "id": "urban-sdk",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.urbansdk.com/ca"
+    },
+    {
+      "company": "Granicus",
+      "id": "granicus",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Pavilion",
+      "id": "pavilion",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Paymentus",
+      "id": "paymentus",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "GovInvest (TrueComp)",
+      "id": "govinvest",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "RecDesk",
+      "id": "recdesk",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Vermont Systems",
+      "id": "vermont-systems",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "LeagueApps",
+      "id": "leagueapps",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://leagueapps.com/care"
+    },
+    {
+      "company": "Zum",
+      "id": "zum",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Ubicquia",
+      "id": "ubicquia",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Dimonoff",
+      "id": "dimonoff",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "FLASHNET",
+      "id": "flashnet",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Gridware",
+      "id": "gridware",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Manager only"
+    },
+    {
+      "company": "Urbint",
+      "id": "urbint",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "AiDash",
+      "id": "aidash",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "DeepWalk",
+      "id": "deepwalk",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "CITYROVER",
+      "id": "cityrover",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Placemetry",
+      "id": "placemetry",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "TerraGo Technologies",
+      "id": "terrago-technologies",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Threefold",
+      "id": "threefold",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Partage",
+      "id": "partage",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.partage.club/ca"
+    },
+    {
+      "company": "Line Mobility",
+      "id": "line-mobility",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Premium Parking",
+      "id": "premium-parking",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page too small - likely JS-rendered"
+    },
+    {
+      "company": "CampLife",
+      "id": "camplife",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "CommunityPass",
+      "id": "communitypass",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "BarkPass",
+      "id": "barkpass",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Arly",
+      "id": "arly",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "QuickScores",
+      "id": "quickscores",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Ankored",
+      "id": "ankored",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Bchex",
+      "id": "bchex",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Eco-Counter",
+      "id": "eco-counter",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Playground Guardian",
+      "id": "playground-guardian",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "iStrike Alerts",
+      "id": "istrike-alerts",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "HydroApps",
+      "id": "hydroapps",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Eventeny",
+      "id": "eventeny",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Enterprise Account Executive"
+    },
+    {
+      "company": "EventHub",
+      "id": "eventhub",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Visit Widget",
+      "id": "visit-widget",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "PlotBox",
+      "id": "plotbox",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "CIMS Cemetery Software",
+      "id": "cims-cemetery-software",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "FMX",
+      "id": "fmx",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "GovDeals",
+      "id": "govdeals",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Just Appraised",
+      "id": "just-appraised",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Manager (West Coa only"
+    },
+    {
+      "company": "ZacTax",
+      "id": "zactax",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Software Solutions, Inc.",
+      "id": "software-solutions-inc",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Schneider Geospatial",
+      "id": "schneider-geospatial",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Aclarian",
+      "id": "aclarian",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Gravity",
+      "id": "gravity",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Comcate",
+      "id": "comcate",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Hera Property Registry",
+      "id": "hera-property-registry",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Zencity",
+      "id": "zencity",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://zencity.io/careers"
+    },
+    {
+      "company": "Citibot",
+      "id": "citibot",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Indigov",
+      "id": "indigov",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "FlashVote",
+      "id": "flashvote",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Social Pinpoint",
+      "id": "social-pinpoint",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.socialpinpoint."
+    },
+    {
+      "company": "Social News Desk",
+      "id": "social-news-desk",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Account Executive (USA (Remote))"
+    },
+    {
+      "company": "Revize",
+      "id": "revize",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Loop",
+      "id": "loop",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Wordly",
+      "id": "wordly",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://api.ashbyhq.com/pos"
+    },
+    {
+      "company": "EffiGov",
+      "id": "effigov",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Readyly",
+      "id": "readyly",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Common Sense AI",
+      "id": "common-sense-ai",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Prophecy Gov",
+      "id": "prophecy-gov",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://api.ashbyhq.com/pos"
+    },
+    {
+      "company": "Govinity",
+      "id": "govinity",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "OpenMeeting Technologies",
+      "id": "openmeeting-technologies",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "ClerkBase",
+      "id": "clerkbase",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "AchieveIt",
+      "id": "achieveit",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Envisio",
+      "id": "envisio",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Senior Account Executive - Public  (Canada)"
+    },
+    {
+      "company": "Legislaide",
+      "id": "legislaide",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "PlanetBids",
+      "id": "planetbids",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 405 for https://planetbids.com/care"
+    },
+    {
+      "company": "ZoomGrants",
+      "id": "zoomgrants",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "SOVRA",
+      "id": "sovra",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Manager (Greater Tri-State )"
+    },
+    {
+      "company": "Avila",
+      "id": "avila",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "i3 Verticals",
+      "id": "i3-verticals",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Bentek",
+      "id": "bentek",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Apptegy",
+      "id": "apptegy",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://api.lever.co/v0/pos"
+    },
+    {
+      "company": "GoodSAM",
+      "id": "goodsam",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Fonroche Lighting America",
+      "id": "fonroche-lighting-america",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "EagleView",
+      "id": "eagleview",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Kofile",
+      "id": "kofile",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "three+one",
+      "id": "three-one",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "MyGovernmentOnline",
+      "id": "mygovernmentonline",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Verdant",
+      "id": "verdant",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Elation Systems",
+      "id": "elation-systems",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "GOGov",
+      "id": "gogov",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Tele-Town Hall (TTH)",
+      "id": "tele-town-hall",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Social Explorer",
+      "id": "social-explorer",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Savi",
+      "id": "savi",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "GovSkills",
+      "id": "govskills",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Bamboo Health",
+      "id": "bamboo-health",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Netsmart",
+      "id": "netsmart",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "TOOTRiS",
+      "id": "tootris",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://tootris.com/careers"
+    },
+    {
+      "company": "Stage CARES",
+      "id": "stage-cares",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "ES&S (Election Systems & Software)",
+      "id": "es-s",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "BallotReady",
+      "id": "ballotready",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://about.ballotready.o"
+    },
+    {
+      "company": "ContentActive (ePollBooks.app)",
+      "id": "contentactive",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://contentactive.com/c"
+    },
+    {
+      "company": "Status Solutions",
+      "id": "status-solutions",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Garage",
+      "id": "garage",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "i-Probe",
+      "id": "i-probe",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "FASTER (Transit Technologies)",
+      "id": "faster",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://fasterasset.com/car"
+    },
+    {
+      "company": "Powerfleet",
+      "id": "powerfleet",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Forward Thinking Systems",
+      "id": "forward-thinking-systems",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Azuga",
+      "id": "azuga",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "MaintStar",
+      "id": "maintstar",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "MaintainX",
+      "id": "maintainx",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://boards-api.greenhou"
+    },
+    {
+      "company": "VUEWorks",
+      "id": "vueworks",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Wavetronix",
+      "id": "wavetronix",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "vialytics",
+      "id": "vialytics",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.vialytics.com/c"
+    },
+    {
+      "company": "Blyncsy",
+      "id": "blyncsy",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Cyclomedia",
+      "id": "cyclomedia",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://cyclomedia.recruite"
+    },
+    {
+      "company": "Frost Solutions",
+      "id": "frost-solutions",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "StreetSaver (MTC)",
+      "id": "streetsaver",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "EDGITAL",
+      "id": "edgital",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Forerunner",
+      "id": "forerunner",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://boards-api.greenhou"
+    },
+    {
+      "company": "ISeeChange",
+      "id": "iseechange",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "VAPAR",
+      "id": "vapar",
+      "from": "None found",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "greehill",
+      "id": "greehill",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Weathermatic",
+      "id": "weathermatic",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "CentralSquare Technologies",
+      "id": "centralsquare-technologies",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "CODY Systems",
+      "id": "cody-systems",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.codysystems.com"
+    },
+    {
+      "company": "365Labs",
+      "id": "365labs",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://www.365labs.com/car"
+    },
+    {
+      "company": "Omnigo Software",
+      "id": "omnigo-software",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Kaseware",
+      "id": "kaseware",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Porter Lee",
+      "id": "porter-lee",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "VeriPic",
+      "id": "veripic",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Cellebrite",
+      "id": "cellebrite",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://cellebrite.com/en/c"
+    },
+    {
+      "company": "Magnet Forensics",
+      "id": "magnet-forensics",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://api.lever.co/v0/pos"
+    },
+    {
+      "company": "Amped Software",
+      "id": "amped-software",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Penlink",
+      "id": "penlink",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "TRM Labs",
+      "id": "trm-labs",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://api.ashbyhq.com/pos"
+    },
+    {
+      "company": "Chorus Intelligence",
+      "id": "chorus-intelligence",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "SS8 Networks",
+      "id": "ss8-networks",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Clearview AI",
+      "id": "clearview-ai",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page too small - likely JS-rendered"
+    },
+    {
+      "company": "Dataminr",
+      "id": "dataminr",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive, International D (2 Locations)"
+    },
+    {
+      "company": "FaceTec",
+      "id": "facetec",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Paladin Drones",
+      "id": "paladin-drones",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "SkyfireAI",
+      "id": "skyfireai",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Echodyne",
+      "id": "echodyne",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://boards-api.greenhou"
+    },
+    {
+      "company": "Bounce Imaging",
+      "id": "bounce-imaging",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "StarChase",
+      "id": "starchase",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Robin Radar Systems",
+      "id": "robin-radar-systems",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Account Manager - Nordics (Nordics)"
+    },
+    {
+      "company": "VirTra",
+      "id": "virtra",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://www.virtra.com/care"
+    },
+    {
+      "company": "InVeris Training Solutions",
+      "id": "inveris-training-solutions",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Vector Solutions",
+      "id": "vector-solutions",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Alli Connect",
+      "id": "alli-connect",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "InTime Solutions",
+      "id": "intime-solutions",
+      "from": "None found",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Pace Scheduler",
+      "id": "pace-scheduler",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "ForceMetrics",
+      "id": "forcemetrics",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Regional Sales Manager FL area for"
+    },
+    {
+      "company": "Abel Police",
+      "id": "abel-police",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Shark Robotics",
+      "id": "shark-robotics",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Active911",
+      "id": "active911",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "ReadyOp",
+      "id": "readyop",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "SaferWatch",
+      "id": "saferwatch",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Acusensus",
+      "id": "acusensus",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "NovoaGlobal",
+      "id": "novoaglobal",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "T2 Systems",
+      "id": "t2-systems",
+      "from": "None found",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Municipal Parking Services",
+      "id": "municipal-parking-services",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Laserfiche",
+      "id": "laserfiche",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Peak Software Systems",
+      "id": "peak-software-systems",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Upace",
+      "id": "upace",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Yodel Pass",
+      "id": "yodel-pass",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "ePACT",
+      "id": "epact",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Productive Parks",
+      "id": "productive-parks",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "VolunteerLocal",
+      "id": "volunteerlocal",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Peachjar",
+      "id": "peachjar",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://app.trinethire.com/"
+    },
+    {
+      "company": "B2Gnow",
+      "id": "b2gnow",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "JAGGAER",
+      "id": "jaggaer",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
+    },
+    {
+      "company": "Procurated",
+      "id": "procurated",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Hazel (hazelai.com)",
+      "id": "hazel",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Civic Marketplace",
+      "id": "civic-marketplace",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Boostlingo",
+      "id": "boostlingo",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Brain Co.",
+      "id": "brain-co",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://api.ashbyhq.com/pos"
+    },
+    {
+      "company": "COLBI Technologies",
+      "id": "colbi-technologies",
+      "from": "None found",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Black Creek Integrated Systems",
+      "id": "black-creek-integrated-systems",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "GUARDIAN RFID",
+      "id": "guardian-rfid",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://guardianrfid.com/ca"
+    },
+    {
+      "company": "Securus Technologies",
+      "id": "securus-technologies",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Smart Communications",
+      "id": "smart-communications",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.smartcommunicat"
+    },
+    {
+      "company": "HomeWAV",
+      "id": "homewav",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "NCIC Inmate Communications",
+      "id": "ncic-inmate-communications",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Encartele",
+      "id": "encartele",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Combined Public Communications",
+      "id": "combined-public-communications",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.cpcjail.com/car"
+    },
+    {
+      "company": "JailGeek",
+      "id": "jailgeek",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Guard1",
+      "id": "guard1",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Justice Systems by LONG",
+      "id": "justice-systems-by-long",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://longbuildingtechcar"
+    },
+    {
+      "company": "OffenderWatch",
+      "id": "offenderwatch",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "SCRAM Systems",
+      "id": "scram-systems",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 202 for https://scramsystems.dejobs"
+    },
+    {
+      "company": "Orijin",
+      "id": "orijin",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "TurnKey Corrections",
+      "id": "turnkey-corrections",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "VendNovation",
+      "id": "vendnovation",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Keefe Group",
+      "id": "keefe-group",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "LeoTech",
+      "id": "leotech",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "4Sight Labs",
+      "id": "4sight-labs",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Cell-Guardian",
+      "id": "cell-guardian",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "LINEV Systems US",
+      "id": "linev-systems-us",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "CompuMed",
+      "id": "compumed",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://compumedinc.com/car"
+    },
+    {
+      "company": "Barricade AI",
+      "id": "barricade-ai",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Safience (Biometrica)",
+      "id": "safience",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "iTouch Biometrics",
+      "id": "itouch-biometrics",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "SurePassID",
+      "id": "surepassid",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://surepassid.com/care"
+    },
+    {
+      "company": "FieldWare",
+      "id": "fieldware",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Tranquility AI",
+      "id": "tranquility-ai",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "InVita Healthcare Technologies",
+      "id": "invita-healthcare-technologies",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "D-Fend Solutions",
+      "id": "d-fend-solutions",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Sentrycs",
+      "id": "sentrycs",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "AirSight",
+      "id": "airsight",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Berkeley Varitronics Systems",
+      "id": "berkeley-varitronics-systems",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Videray Technologies",
+      "id": "videray-technologies",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://apply.workable.com/"
+    },
+    {
+      "company": "Ekin Smart City Technologies",
+      "id": "ekin-smart-city-technologies",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.ekin.com/career"
+    },
+    {
+      "company": "SecureTech Systems",
+      "id": "securetech-systems",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "PlaySight",
+      "id": "playsight",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "OnSight",
+      "id": "onsight",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Colorado Time Systems",
+      "id": "colorado-time-systems",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "SportReach",
+      "id": "sportreach",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Azora Software",
+      "id": "azora-software",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Rep'd",
+      "id": "rep-d",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Unstackr",
+      "id": "unstackr",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "etrak Recreation Software",
+      "id": "etrak-recreation-software",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Parkify",
+      "id": "parkify",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Athletify",
+      "id": "athletify",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Precision Kiosk Technologies",
+      "id": "precision-kiosk-technologies",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "OD Security North America",
+      "id": "od-security-north-america",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "IRIS Intel",
+      "id": "iris-intel",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Detail Kommander",
+      "id": "detail-kommander",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Genfare",
+      "id": "genfare",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Scheidt & Bachmann",
+      "id": "scheidt-bachmann",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.scheidt-bachman"
+    },
+    {
+      "company": "Kuba",
+      "id": "kuba",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Modeshift",
+      "id": "modeshift",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://www.modeshift.com/c"
+    },
+    {
+      "company": "INIT",
+      "id": "init",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.initse.com/enus"
+    },
+    {
+      "company": "Avail Technologies",
+      "id": "avail-technologies",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://availtec.com/career"
+    },
+    {
+      "company": "GIRO",
+      "id": "giro",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Director, Strategic Business Devel only"
+    },
+    {
+      "company": "IVU Traffic Technologies",
+      "id": "ivu-traffic-technologies",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.ivu.com/career"
+    },
+    {
+      "company": "Modaxo",
+      "id": "modaxo",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Sales & Marketing Director only"
+    },
+    {
+      "company": "Vontas",
+      "id": "vontas",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Enghouse Transportation",
+      "id": "enghouse-transportation",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://www.enghouse.com/ca"
+    },
+    {
+      "company": "Consat",
+      "id": "consat",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.consat.com/care"
+    },
+    {
+      "company": "GMV",
+      "id": "gmv",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.gmv.com/en/care"
+    },
+    {
+      "company": "CSched",
+      "id": "csched",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Transit-Systems (TSL)",
+      "id": "transit-systems",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Interloc Solutions",
+      "id": "interloc-solutions",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.interlocsolutio"
+    },
+    {
+      "company": "Wi-Tronix",
+      "id": "wi-tronix",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Quester Tangent",
+      "id": "quester-tangent",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Railroad Software",
+      "id": "railroad-software",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Willowglen Systems",
+      "id": "willowglen-systems",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Knaq",
+      "id": "knaq",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "LYT",
+      "id": "lyt",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Sahay AI",
+      "id": "sahay-ai",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "AngelTrax",
+      "id": "angeltrax",
+      "from": "None found",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Safety Vision",
+      "id": "safety-vision",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "r2p",
+      "id": "r2p",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Rosco Vision",
+      "id": "rosco-vision",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Gatekeeper Systems",
+      "id": "gatekeeper-systems",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "March Networks",
+      "id": "march-networks",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://apply.workable.com/"
+    },
+    {
+      "company": "Xovis",
+      "id": "xovis",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Urban Transportation Associates",
+      "id": "urban-transportation-associates",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Transit",
+      "id": "transit",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Papercast",
+      "id": "papercast",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Connectpoint",
+      "id": "connectpoint",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Peak Transit",
+      "id": "peak-transit",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Luminator Technology Group",
+      "id": "luminator-technology-group",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Hanover Displays",
+      "id": "hanover-displays",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://www.hanoverdisplays"
+    },
+    {
+      "company": "Axon Vibe",
+      "id": "axon-vibe",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://axonvibe.com/career"
+    },
+    {
+      "company": "BusPas",
+      "id": "buspas",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Spare",
+      "id": "spare",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "RideCo",
+      "id": "rideco",
+      "from": "None found",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "QRyde by HBSS",
+      "id": "qryde-by-hbss",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://qryde.com/employmen"
+    },
+    {
+      "company": "Imagry",
+      "id": "imagry",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Ontra Mobility",
+      "id": "ontra-mobility",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "RideShark",
+      "id": "rideshark",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.rideshark.com/c"
+    },
+    {
+      "company": "Applied Information",
+      "id": "applied-information",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "GovStream.AI",
+      "id": "govstream-ai",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "ACTIVE",
+      "id": "active",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Anaplan",
+      "id": "anaplan",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Arrive",
+      "id": "arrive",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "B2B Account Executive (m/w/d) (Berlin)"
+    },
+    {
+      "company": "Auror",
+      "id": "auror",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Account Manager (Biling (Remote - United St)"
+    },
+    {
+      "company": "BlackRainbow Inc",
+      "id": "blackrainbow-inc",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Blue Voice",
+      "id": "blue-voice",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "CARFAX",
+      "id": "carfax",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Card Integrity",
+      "id": "card-integrity",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Code Four",
+      "id": "code-four",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Concourse",
+      "id": "concourse",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Founding Account Executive (New York City)"
+    },
+    {
+      "company": "DailyPay",
+      "id": "dailypay",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Business Development Manager (NYC Headquarters)"
+    },
+    {
+      "company": "Emburse",
+      "id": "emburse",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive - Midmarket (rem (Atlanta, GA)"
+    },
+    {
+      "company": "GameChanger",
+      "id": "gamechanger",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Hello Heart",
+      "id": "hello-heart",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Associate Director, Client Success only"
+    },
+    {
+      "company": "LeoSight",
+      "id": "leosight",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Longeye",
+      "id": "longeye",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Account Executive"
+    },
+    {
+      "company": "MCM Technology LLC",
+      "id": "mcm-technology-llc",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Monday.com",
+      "id": "monday-com",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Netchex",
+      "id": "netchex",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "NinjaOne",
+      "id": "ninjaone",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Nuvei",
+      "id": "nuvei",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Operator XR",
+      "id": "operator-xr",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Operator XR LLC",
+      "id": "operator-xr-llc",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Palo Alto Networks",
+      "id": "palo-alto-networks",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Pimloc, Inc.",
+      "id": "pimloc-inc",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "PoliceApp.com",
+      "id": "policeapp-com",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "ProPhoenix Corporation",
+      "id": "prophoenix-corporation",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Procore",
+      "id": "procore",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Salesforce",
+      "id": "salesforce",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Saltus Technologies",
+      "id": "saltus-technologies",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "TSO Mobile",
+      "id": "tso-mobile",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Tanium",
+      "id": "tanium",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Business Analyst - Salesforce only"
+    },
+    {
+      "company": "The Mobility House",
+      "id": "the-mobility-house",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Thomson Reuters",
+      "id": "thomson-reuters",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "TrackVia",
+      "id": "trackvia",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Verizon Connect",
+      "id": "verizon-connect",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Workday",
+      "id": "workday",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (Japan, Tokyo)"
+    },
+    {
+      "company": "Xplor Recreation",
+      "id": "xplor-recreation",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (Tucson, AZ)"
+    },
+    {
+      "company": "EarthDaily",
+      "id": "earthdaily",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Engage by Cell",
+      "id": "engage-by-cell",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "IKE Smart City",
+      "id": "ike-smart-city",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Iteris",
+      "id": "iteris",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Munibit",
+      "id": "munibit",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Omicron Technology Solutions",
+      "id": "omicron-technology-solutions",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Summer",
+      "id": "summer",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "TextByChoice",
+      "id": "textbychoice",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Vottiv",
+      "id": "vottiv",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "33 ALERTS",
+      "id": "33-alerts",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "AeroCloud Systems",
+      "id": "aerocloud-systems",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Aerosimple, LLC",
+      "id": "aerosimple-llc",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Agents of Discovery",
+      "id": "agents-of-discovery",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "AirBadge",
+      "id": "airbadge",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Airline Data Inc.",
+      "id": "airline-data-inc",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Amadeus Airport IT Americas, Inc",
+      "id": "amadeus-airport-it-americas-inc",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Chargerback",
+      "id": "chargerback",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Collins Aerospace, An RTX Business",
+      "id": "collins-aerospace-an-rtx-business",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "DESIGNA",
+      "id": "designa",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Ensight Technologies",
+      "id": "ensight-technologies",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "GoApron, Inc.",
+      "id": "goapron-inc",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "HUB Parking Technology USA, Inc.",
+      "id": "hub-parking-technology-usa-inc",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Illuminex AI",
+      "id": "illuminex-ai",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Infax, Inc.",
+      "id": "infax-inc",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Liberty Defense",
+      "id": "liberty-defense",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "PASSUR Aerospace",
+      "id": "passur-aerospace",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "ProDIGIQ Inc.",
+      "id": "prodigiq-inc",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "QLess, Inc.",
+      "id": "qless-inc",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "ReBokeh Vision Technologies",
+      "id": "rebokeh-vision-technologies",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "RunwayStats",
+      "id": "runwaystats",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Saab, Inc.",
+      "id": "saab-inc",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "SITA Information Networking Computing USA Inc.",
+      "id": "sita-information-networking-computing-usa-inc",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Tadera",
+      "id": "tadera",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "The Weather Company",
+      "id": "the-weather-company",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Transoft Solutions",
+      "id": "transoft-solutions",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Manager (Vancouver, British)"
+    },
+    {
+      "company": "UFA, Inc.",
+      "id": "ufa-inc",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Virtower LLC",
+      "id": "virtower-llc",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Sitetracker",
+      "id": "sitetracker",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "AirWorks",
+      "id": "airworks",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no ATS on file"
+    },
+    {
+      "company": "Calix",
+      "id": "calix",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "BriefCam",
+      "id": "briefcam",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "IDEMIA Public Security",
+      "id": "idemia-public-security",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Senior Enterprise Solutions Sales  only"
+    },
+    {
+      "company": "Integrated Biometrics",
+      "id": "integrated-biometrics",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Palantir Technologies",
+      "id": "palantir-technologies",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Forward Deployed Enablement Engine only"
+    },
+    {
+      "company": "Miller Mendel",
+      "id": "miller-mendel",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Netradyne",
+      "id": "netradyne",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive, Mid-Market (San Diego, Califor)"
+    },
+    {
+      "company": "CalAmp",
+      "id": "calamp",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Dossier Systems",
+      "id": "dossier-systems",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Utilimarc",
+      "id": "utilimarc",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Whip Around",
+      "id": "whip-around",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Vix Technology",
+      "id": "vix-technology",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Spare Labs",
+      "id": "spare-labs",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "PayByPhone",
+      "id": "paybyphone",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Sales Director"
+    },
+    {
+      "company": "Upper Hand",
+      "id": "upper-hand",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Byga",
+      "id": "byga",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Player's Health",
+      "id": "player-s-health",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Risk Advisor (Commercial Insurance only"
+    },
+    {
+      "company": "Selux",
+      "id": "selux",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Sales Manager - Eastern R"
+    },
+    {
+      "company": "Hapco",
+      "id": "hapco",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Tvilight",
+      "id": "tvilight",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Schreder",
+      "id": "schreder",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Trilliant",
+      "id": "trilliant",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Carmanah Technologies",
+      "id": "carmanah-technologies",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Amerlux",
+      "id": "amerlux",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "SimpliGov",
+      "id": "simpligov",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Manager only"
+    },
+    {
+      "company": "Jadu",
+      "id": "jadu",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Regroup Mass Notification",
+      "id": "regroup-mass-notification",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative only"
+    },
+    {
+      "company": "gWorks",
+      "id": "gworks",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Sagitec Solutions",
+      "id": "sagitec-solutions",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "TCP Software",
+      "id": "tcp-software",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "VidCruiter",
+      "id": "vidcruiter",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Authorium",
+      "id": "authorium",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Manager only"
+    },
+    {
+      "company": "Propelus",
+      "id": "propelus",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Manager, Customer Success only"
+    },
+    {
+      "company": "Edmunds GovTech",
+      "id": "edmunds-govtech",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Clear Ballot Group",
+      "id": "clear-ballot-group",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "VotingWorks",
+      "id": "votingworks",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive, Field Sales (United States)"
+    },
+    {
+      "company": "Enhanced Voting",
+      "id": "enhanced-voting",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Fort Orange Press",
+      "id": "fort-orange-press",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Ecopia AI",
+      "id": "ecopia-ai",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Business Development (Intern) only"
+    },
+    {
+      "company": "Deighton Associates",
+      "id": "deighton-associates",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Sensys Gatso Group",
+      "id": "sensys-gatso-group",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Banyan Water",
+      "id": "banyan-water",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Lynxight",
+      "id": "lynxight",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Baron Weather",
+      "id": "baron-weather",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Knightscope",
+      "id": "knightscope",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Skyward",
+      "id": "skyward",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Focus School Software",
+      "id": "focus-school-software",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Alma",
+      "id": "alma",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "EMS LINQ",
+      "id": "ems-linq",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Senior Account Executive (Iowa)"
+    },
+    {
+      "company": "Transfinder",
+      "id": "transfinder",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "SchoolMint",
+      "id": "schoolmint",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative  only"
+    },
+    {
+      "company": "Finalsite",
+      "id": "finalsite",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "SchoolStatus",
+      "id": "schoolstatus",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (Future Opportun (Remote)"
+    },
+    {
+      "company": "Red Rover",
+      "id": "red-rover",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Swing Education",
+      "id": "swing-education",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Nimble",
+      "id": "nimble",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Pikmykid",
+      "id": "pikmykid",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "ClassLink",
+      "id": "classlink",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Simpleview (Granicus)",
+      "id": "simpleview",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Local Government Account Executive"
+    },
+    {
+      "company": "CrowdRiff",
+      "id": "crowdriff",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Zartico",
+      "id": "zartico",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Key Data Dashboard",
+      "id": "key-data-dashboard",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "AirDNA",
+      "id": "airdna",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive - DMO (Remote)"
+    },
+    {
+      "company": "Momentus Technologies",
+      "id": "momentus-technologies",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "accesso Technology Group",
+      "id": "accesso-technology-group",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "InitLive (Bloomerang Volunteer)",
+      "id": "initlive",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive Level 3  (Remote, US)"
+    },
+    {
+      "company": "Accruent",
+      "id": "accruent",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Limble",
+      "id": "limble",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (United Kingdom)"
+    },
+    {
+      "company": "UpKeep",
+      "id": "upkeep",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Fiix (Rockwell Automation)",
+      "id": "fiix",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "VertiGIS",
+      "id": "vertigis",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive, Utilities (Homeoffice)"
+    },
+    {
+      "company": "Handtevy",
+      "id": "handtevy",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Account Executive (Davie, Florida)"
+    },
+    {
+      "company": "Aladtec (TCP Software)",
+      "id": "aladtec",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Tablet Command",
+      "id": "tablet-command",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Account Executive"
+    },
+    {
+      "company": "Locution Systems",
+      "id": "locution-systems",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Intrado Life & Safety",
+      "id": "intrado-life-safety",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Corti",
+      "id": "corti",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "GTM Engineer only"
+    },
+    {
+      "company": "FLASH",
+      "id": "flash",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Estimator, Inside Sales only"
+    },
+    {
+      "company": "SpotHero",
+      "id": "spothero",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "ParkHub",
+      "id": "parkhub",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "AirGarage",
+      "id": "airgarage",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative only"
+    },
+    {
+      "company": "Nedap Identification Systems",
+      "id": "nedap-identification-systems",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "TagMaster",
+      "id": "tagmaster",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Smart Parking",
+      "id": "smart-parking",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Neology",
+      "id": "neology",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Binti",
+      "id": "binti",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Northwoods",
+      "id": "northwoods",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Merative",
+      "id": "merative",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Strategic Account Executive, Marke (Remote \u2013 United St)"
+    },
+    {
+      "company": "Foothold Technology",
+      "id": "foothold-technology",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Bitfocus",
+      "id": "bitfocus",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "AidKit",
+      "id": "aidkit",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Fortuna Health",
+      "id": "fortuna-health",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Unison (Unison Global)",
+      "id": "unison",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Ivalua",
+      "id": "ivalua",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (Singapore, Singapo)"
+    },
+    {
+      "company": "Fluxx",
+      "id": "fluxx",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Grant Street Group",
+      "id": "grant-street-group",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (United States (Rem)"
+    },
+    {
+      "company": "KUBRA",
+      "id": "kubra",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "CORE Business Technologies",
+      "id": "core-business-technologies",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "PayNearMe",
+      "id": "paynearme",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (Credit Unions/B (Remote)"
+    },
+    {
+      "company": "Emovis",
+      "id": "emovis",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Ridango",
+      "id": "ridango",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Senior Enterprise Account Executiv"
+    },
+    {
+      "company": "Lightspeed Systems",
+      "id": "lightspeed-systems",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Manager (REMOTE, United Kin)"
+    },
+    {
+      "company": "Blocksi",
+      "id": "blocksi",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Rhombus Systems",
+      "id": "rhombus-systems",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive - Canada (Toronto, Ontario)"
+    },
+    {
+      "company": "Athena Security",
+      "id": "athena-security",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Xtract One Technologies",
+      "id": "xtract-one-technologies",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Sales Manager"
+    },
+    {
+      "company": "Ident-A-Kid",
+      "id": "ident-a-kid",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Alertus Technologies",
+      "id": "alertus-technologies",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Account Manager - Educati (Baltimore, MD)"
+    },
+    {
+      "company": "Bruker Detection",
+      "id": "bruker-detection",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Account Manager, MIR/Raman"
+    },
+    {
+      "company": "IDEMIA",
+      "id": "idemia",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Senior Enterprise Solutions Sales  only"
+    },
+    {
+      "company": "CLEAR (Alclear)",
+      "id": "clear",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Account Executive (C1 - (New York, New York)"
+    },
+    {
+      "company": "SITA",
+      "id": "sita",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Senstar",
+      "id": "senstar",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Business Development Manager"
+    },
+    {
+      "company": "Identiv",
+      "id": "identiv",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "UVeye",
+      "id": "uveye",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Ameelio",
+      "id": "ameelio",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Recidiviz",
+      "id": "recidiviz",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "State Partnerships Manager (Austin only"
+    },
+    {
+      "company": "Emergency Reporting",
+      "id": "emergency-reporting",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "ZOLL Data Systems",
+      "id": "zoll-data-systems",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive - TherOx (SS02)  (6 Locations)"
+    },
+    {
+      "company": "Ladris Technologies",
+      "id": "ladris-technologies",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "eleven-x",
+      "id": "eleven-x",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Highland Electric Fleets",
+      "id": "highland-electric-fleets",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Skedda",
+      "id": "skedda",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "CampMinder",
+      "id": "campminder",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Manager - Mid Mar only"
+    },
+    {
+      "company": "Campspot",
+      "id": "campspot",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "National Outbound Sales Account Ex"
+    },
+    {
+      "company": "ROLLER",
+      "id": "roller",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive - Mid-Market and (London, United Kin)"
+    },
+    {
+      "company": "CenterEdge Software",
+      "id": "centeredge-software",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Bond Sports",
+      "id": "bond-sports",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "In-Situ",
+      "id": "in-situ",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Electro Scan",
+      "id": "electro-scan",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "CUES (SPX)",
+      "id": "cues",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Aquasight",
+      "id": "aquasight",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Transcend",
+      "id": "transcend",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "BlueConduit",
+      "id": "blueconduit",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Opti (OptiRTC)",
+      "id": "opti",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "2NDNATURE",
+      "id": "2ndnature",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "ADB SAFEGATE",
+      "id": "adb-safegate",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Embross",
+      "id": "embross",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Zensors",
+      "id": "zensors",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Account Executive (San Francisco)"
+    },
+    {
+      "company": "Aira",
+      "id": "aira",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Pointr",
+      "id": "pointr",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Senior Account Manager, Strategic  (Boston Office)"
+    },
+    {
+      "company": "Oracle Utilities",
+      "id": "oracle-utilities",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Survalent Technology",
+      "id": "survalent-technology",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Milsoft Utility Solutions",
+      "id": "milsoft-utility-solutions",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Harris Utilities",
+      "id": "harris-utilities",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "(Remote) Enterprise Account Execut (6 Locations)"
+    },
+    {
+      "company": "Tantalus Systems",
+      "id": "tantalus-systems",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Senior Manager, Customer Success only"
+    },
+    {
+      "company": "GridUnity",
+      "id": "gridunity",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Bidgely",
+      "id": "bidgely",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Director Europe (European Union)"
+    },
+    {
+      "company": "EnergyHub",
+      "id": "energyhub",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales Engineer only"
+    },
+    {
+      "company": "Virtual Peaker",
+      "id": "virtual-peaker",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Client Success Manager only"
+    },
+    {
+      "company": "LineVision",
+      "id": "linevision",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Neara",
+      "id": "neara",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive - USA (East Coas (New York)"
+    },
+    {
+      "company": "EnergyCAP",
+      "id": "energycap",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "OpusXenta",
+      "id": "opusxenta",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "CemSites",
+      "id": "cemsites",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "SRS Computing",
+      "id": "srs-computing",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Tribute Technology",
+      "id": "tribute-technology",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "e-PlanSoft",
+      "id": "e-plansoft",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "ePermitHub",
+      "id": "epermithub",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Objective Corporation",
+      "id": "objective-corporation",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Business Development Manager (Reading)"
+    },
+    {
+      "company": "Civica",
+      "id": "civica",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive - CES (London)"
+    },
+    {
+      "company": "Pantonium",
+      "id": "pantonium",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Glydways",
+      "id": "glydways",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "2getthere",
+      "id": "2getthere",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "WeRide",
+      "id": "weride",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Waste Robotics",
+      "id": "waste-robotics",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "WasteHero",
+      "id": "wastehero",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Zabble",
+      "id": "zabble",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Ivy Computer (Trash Flow)",
+      "id": "ivy-computer",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "McNeilus",
+      "id": "mcneilus",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Wastequip",
+      "id": "wastequip",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Sales Manager (2 Locations)"
+    },
+    {
+      "company": "Corporater",
+      "id": "corporater",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Opendatasoft",
+      "id": "opendatasoft",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "IdeaScale",
+      "id": "ideascale",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "eCourtDate",
+      "id": "ecourtdate",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "For The Record (FTR)",
+      "id": "for-the-record",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "CourtSmart",
+      "id": "courtsmart",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Measures for Justice",
+      "id": "measures-for-justice",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "DeTect Inc",
+      "id": "detect-inc",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Vision Government Solutions",
+      "id": "vision-government-solutions",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "The Sidwell Company",
+      "id": "the-sidwell-company",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Buffalo Computer Graphics",
+      "id": "buffalo-computer-graphics",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "VETRO",
+      "id": "vetro",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Senior Account Executive - Portlan (Portland, ME)"
+    },
+    {
+      "company": "IQGeo",
+      "id": "iqgeo",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Director"
+    },
+    {
+      "company": "Ookla",
+      "id": "ookla",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Ready.net",
+      "id": "ready-net",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Product Solutions Engineer only"
+    },
+    {
+      "company": "Adtran",
+      "id": "adtran",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Director NSP (2 Locations)"
+    },
+    {
+      "company": "Cambium Networks",
+      "id": "cambium-networks",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "ikeGPS",
+      "id": "ikegps",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "SiFi Networks",
+      "id": "sifi-networks",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Anthropic",
+      "id": "anthropic",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive, AI Native (New York City, NY;)"
+    },
+    {
+      "company": "OpenAI",
+      "id": "openai",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Sales Manager, Banking (New York City)"
     }
   ]
 }
