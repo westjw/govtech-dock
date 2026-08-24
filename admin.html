@@ -3,13 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GovTech Dock — Admin</title>
+<title>SLED JOBS — Admin</title>
 <style>
-  :root{ --bg:#fbfaf8; --panel:#fff; --line:#e5e1db; --ink:#1a1815; --dim:#6a655d;
-         --faint:#969086; --accent:#2f6f4f; --warn:#a8620f; --bad:#a3342a; --chip:#f1eeea; }
+  /* SLED JOBS palette (data/brand.json). Ice is the ground and the only
+     white; cards sit on Belly; rules are Frost. --dim is DERIVED - Fog is
+     2.7:1 and the kit says labels only, never reading copy - so it is Fog's
+     own hue darkened to 4.6:1. --faint IS Fog, and is used only for tiny
+     uppercase labels. Beak is a highlight and is never text. */
+  :root{ --bg:#E8F1F7; --panel:#FAF7F0; --line:#C9DCE8; --ink:#1F2536; --dim:#556F82;
+         --faint:#7C97AA; --accent:#0B57C4; --warn:#C1341F; --bad:#C1341F;
+         --beak:#F5A623; --chip:#DCE9F1; }
   @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
-    --bg:#121110; --panel:#1a1918; --line:#2f2c28; --ink:#eae6e0; --dim:#a09a90;
-    --faint:#726c63; --accent:#6fb98a; --warn:#d9973f; --bad:#e0705f; --chip:#232120; }}
+    /* ground becomes Penguin, so the accents lighten along their own hue
+       until they clear AA on it again (Badge 2.3:1 -> 4.7:1) */
+    --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7; --dim:#A8BCCA;
+    --faint:#7C97AA; --accent:#478EF5; --warn:#E46855; --bad:#E46855;
+    --beak:#F5A623; --chip:#2E3852; }}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
        font:15px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -142,7 +151,7 @@
 </head>
 <body>
 <header>
-  <h1>GovTech Dock — Admin</h1>
+  <h1>SLED JOBS — Admin</h1>
   <div class="sub" id="sub">loading…</div>
   <nav id="tabs"></nav>
 </header>

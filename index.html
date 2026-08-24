@@ -570,6 +570,8 @@ function roleView(id){
         ${p.comp.raw?`<div style="margin-top:3px">as posted: &ldquo;${esc(p.comp.raw)}&rdquo;</div>`:""}</div>`;
       return `<div class="kv" style="margin-top:8px;max-width:74ch">${p.jd_seen
         ? "<strong>No salary stated.</strong> We read this posting and it gave no figure — which is not a statement about what it pays."
+        : p.source==="manual"
+        ? "<strong>No description to read.</strong> This one was found by hand on a board no fetcher can enumerate, so there is a title and no text behind it. It may state pay we have not seen."
         : "<strong>We could not read this posting.</strong> Its description never reached us, so it may state pay we have not seen."}</div>`;
     })()}
     ${purl?`<p class="colinks"><a class="golink" href="${esc(purl)}" target="_blank"
@@ -754,7 +756,14 @@ function payBit(p){
   if(!hasPay(p))return null;
   const t=payText(p.comp);
   if(t)return{cls:"pay",txt:t};
-  return{cls:"paynone",txt:p.jd_seen?"no salary stated":"we could not read this posting"};
+  if(p.jd_seen)return{cls:"paynone",txt:"no salary stated"};
+  /* A hand-captured row has jd_seen false for a different reason: a person
+     read the page, there was simply never a description behind the title.
+     Saying "we could not read this posting" about a posting somebody read by
+     hand is a small false claim about ourselves, and the row is already
+     labelled "checked by hand" two words later. */
+  return{cls:"paynone",txt:p.source==="manual"?"no description to read"
+    :"we could not read this posting"};
 }
 function payHTML(p){
   const b=payBit(p);
@@ -785,7 +794,10 @@ function paySetAsideText(t){
   const n=v=>v.toLocaleString();
   const parts=[];
   if(t.none)parts.push(`${n(t.none)} state no salary`);
-  if(t.unread)parts.push(`${n(t.unread)} we could not read`);
+  // covers both silences we own: a description that never reached us, and a
+  // hand-captured row that never had one. Neither is the posting saying it
+  // pays nothing.
+  if(t.unread)parts.push(`${n(t.unread)} we have no description for`);
   if(t.period)parts.push(`${n(t.period)} state an hourly or monthly rate, which a yearly floor cannot compare`);
   if(t.maxonly)parts.push(`${n(t.maxonly)} state only a maximum`);
   if(t.unrecorded)parts.push(`${n(t.unrecorded)} came from a source that records no pay`);

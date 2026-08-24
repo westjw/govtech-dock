@@ -8,13 +8,23 @@
      separate from index.html. -->
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
-<title>Alerts · SoleSource</title>
+<title>Alerts · SLED JOBS</title>
 <style>
-  :root{ --bg:#fbfaf8; --panel:#fff; --line:#e5e1db; --ink:#1a1815; --dim:#6a655d;
-         --faint:#969086; --accent:#2f6f4f; --warn:#a8620f; --bad:#a3342a; --chip:#f1eeea; }
+  /* SLED JOBS palette. Ice is the ground and the only white; cards sit on
+     Belly; rules are Frost. Two tokens are DERIVED rather than from the kit
+     and data/brand.json says why: --dim is Fog's hue darkened to 4.6:1,
+     because Fog itself is 2.7:1 and the kit is explicit that it is for tiny
+     uppercase labels and never reading copy. Beak is a highlight and is
+     never used for text anywhere. */
+  :root{ --bg:#E8F1F7; --panel:#FAF7F0; --line:#C9DCE8; --ink:#1F2536;
+         --dim:#556F82; --faint:#7C97AA; --accent:#0B57C4; --warn:#C1341F;
+         --bad:#C1341F; --beak:#F5A623; --chip:#DCE9F1; }
   @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
-    --bg:#121110; --panel:#1a1918; --line:#2f2c28; --ink:#eae6e0; --dim:#a09a90;
-    --faint:#726c63; --accent:#6fb98a; --warn:#d9973f; --bad:#e0705f; --chip:#232120; }}
+    /* the ground becomes Penguin, which drops Badge to 2.3:1 - so the two
+       accents lighten along their own hue until they clear AA again */
+    --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7;
+    --dim:#A8BCCA; --faint:#7C97AA; --accent:#478EF5; --warn:#E46855;
+    --bad:#E46855; --beak:#F5A623; --chip:#2E3852; }}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
        font:15px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -57,8 +67,8 @@
 <body>
 <div class="wrap">
   <h1>Role alerts</h1>
-  <p class="sub"><a href="/">SoleSource</a> — every open sales role at state &amp;
-    local govtech companies.</p>
+  <p class="sub"><a href="/">SLED JOBS</a> &mdash; every open sales role at state &amp;
+    local govtech companies. It&rsquo;s tough SLEDing out there.</p>
   <div id="view"></div>
   <p class="foot">
     We store your email address, these settings, and any roles you saved. Nothing

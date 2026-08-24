@@ -220,7 +220,7 @@ function confirmMail(token, prefs) {
                  twice: "Tuesday and Thursday mornings",
                  weekly: "Wednesday mornings" }[prefs.cadence];
   const text =
-`Confirm your SoleSource alerts
+`Confirm your SLED JOBS alerts
 
 Someone - hopefully you - asked for govtech sales role alerts ${when}.
 Click to confirm. Until you do, nothing is sent.
@@ -233,21 +233,21 @@ address and the request expires on its own.
 The same link is your settings page afterwards: change what you get, or stop
 the alerts, without a password.`;
   const html =
-`<!doctype html><html><body style="margin:0;background:#fbfaf8;font:15px/1.55
- -apple-system,'Segoe UI',Roboto,sans-serif;color:#1a1815;padding:28px 24px">
+`<!doctype html><html><body style="margin:0;background:#E8F1F7;font:15px/1.55
+ -apple-system,'Segoe UI',Roboto,sans-serif;color:#1F2536;padding:28px 24px">
 <div style="max-width:520px;margin:0 auto">
-<div style="font-size:19px;font-weight:700">Confirm your SoleSource alerts</div>
-<p style="color:#4a453d">Someone &mdash; hopefully you &mdash; asked for govtech
+<div style="font-size:19px;font-weight:700">Confirm your SLED JOBS alerts</div>
+<p style="color:#3A4658">Someone &mdash; hopefully you &mdash; asked for govtech
  sales role alerts <strong>${when}</strong>. Until you confirm, nothing is sent.</p>
-<p><a href="${link}" style="display:inline-block;background:#2f6f4f;color:#fff;
+<p><a href="${link}" style="display:inline-block;background:#0B57C4;color:#fff;
  text-decoration:none;padding:11px 20px;border-radius:8px;font-weight:600">
  Confirm alerts</a></p>
-<p style="color:#6a655d;font-size:13px">If this was not you, ignore this email.
+<p style="color:#556F82;font-size:13px">If this was not you, ignore this email.
  Nothing further will be sent to this address and the request expires on its own.</p>
-<p style="color:#6a655d;font-size:13px">The same link is your settings page
+<p style="color:#556F82;font-size:13px">The same link is your settings page
  afterwards &mdash; change what you get, or stop the alerts, no password.</p>
 </div></body></html>`;
-  return ["Confirm your SoleSource alerts", text, html];
+  return ["Confirm your SLED JOBS alerts", text, html];
 }
 
 /* --- read (settings page) ----------------------------------------------- */
@@ -351,12 +351,12 @@ async function subscribe(body, env) {
       const sub = JSON.parse(raw);
       if (sub.confirmed) {
         // Already subscribed: send the settings link, not a second signup.
-        await send(env, email, "Your SoleSource alert settings",
+        await send(env, email, "Your SLED JOBS alert settings",
           `Your settings link:\n\n${SITE}/alerts?t=${existing}\n\n` +
           `You are already subscribed, so nothing changed. Use the link to ` +
           `adjust what you get or stop the emails.`,
           `<p>Your settings link: <a href="${SITE}/alerts?t=${existing}">open settings</a></p>` +
-          `<p style="color:#6a655d">You are already subscribed, so nothing changed.</p>`);
+          `<p style="color:#556F82">You are already subscribed, so nothing changed.</p>`);
         return same;
       }
       // Pending: re-send the confirmation, but not more than once an hour, so

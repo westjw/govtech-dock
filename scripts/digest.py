@@ -194,7 +194,7 @@ def render(digest: dict, sub: dict, board: dict) -> tuple[str, str, str]:
 
     esc = (lambda s: str(s or "").replace("&", "&amp;").replace("<", "&lt;")
            .replace(">", "&gt;"))
-    PILL = ('<span style="background:#e9f7ef;color:#2f6f4f;font-size:11px;'
+    PILL = ('<span style="background:#e9f7ef;color:#0B57C4;font-size:11px;'
             'padding:2px 8px;border-radius:12px;margin-left:8px">'
             'carries a number</span>')
 
@@ -202,31 +202,31 @@ def render(digest: dict, sub: dict, board: dict) -> tuple[str, str, str]:
         href = SITE + "/?role=" + urllib.parse.quote(str(p["id"]), safe="")
         pill = PILL if p.get("quota_carrying") else ""
         return (
-            '<tr><td style="padding:14px 0;border-bottom:1px solid #e5e1db">'
-            f'<a href="{href}" style="color:#1a1815;text-decoration:none;'
+            '<tr><td style="padding:14px 0;border-bottom:1px solid #C9DCE8">'
+            f'<a href="{href}" style="color:#1F2536;text-decoration:none;'
             f'font-weight:600;font-size:15px">{esc(p["title"])}</a>{pill}'
-            '<div style="color:#6a655d;font-size:13px;margin-top:3px">'
+            '<div style="color:#556F82;font-size:13px;margin-top:3px">'
             f'{esc(p["company"])} · {esc(p.get("sector", ""))} · {esc(_where(p))}'
             '</div></td></tr>')
 
     cards = "".join(card(p) for p in roles[:40])
-    html = f"""<!doctype html><html><body style="margin:0;background:#fbfaf8;
- font:15px/1.55 -apple-system,'Segoe UI',Roboto,sans-serif;color:#1a1815">
+    html = f"""<!doctype html><html><body style="margin:0;background:#E8F1F7;
+ font:15px/1.55 -apple-system,'Segoe UI',Roboto,sans-serif;color:#1F2536">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0"
  style="max-width:600px;padding:28px 24px">
 <tr><td style="font-size:19px;font-weight:700;letter-spacing:-.015em">{esc(subject)}</td></tr>
-<tr><td style="color:#6a655d;font-size:13px;padding-top:4px">
+<tr><td style="color:#556F82;font-size:13px;padding-top:4px">
   On the board since {esc(digest['since'])}. Nothing here has been sent to you before.</td></tr>
 <tr><td><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
   style="margin-top:10px">{cards}</table></td></tr>
-{f'<tr><td style="color:#6a655d;font-size:13px;padding-top:12px">and {n-40} more on the board</td></tr>' if n > 40 else ''}
-<tr><td style="padding-top:22px;font-size:12px;color:#969086;line-height:1.6">
-  <a href="{SITE}" style="color:#2f6f4f">SoleSource</a> — every open role at
+{f'<tr><td style="color:#556F82;font-size:13px;padding-top:12px">and {n-40} more on the board</td></tr>' if n > 40 else ''}
+<tr><td style="padding-top:22px;font-size:12px;color:#7C97AA;line-height:1.6">
+  <a href="{SITE}" style="color:#0B57C4">SLED JOBS</a> — every open role at
   {len(board.get('organizations', []))} state and local govtech companies.<br>
-  <a href="{SITE}/alerts?t={esc(sub.get('token',''))}" style="color:#969086">
+  <a href="{SITE}/alerts?t={esc(sub.get('token',''))}" style="color:#7C97AA">
   Change what you get</a> ·
-  <a href="{SITE}/alerts?t={esc(sub.get('token',''))}&amp;stop=1" style="color:#969086">
+  <a href="{SITE}/alerts?t={esc(sub.get('token',''))}&amp;stop=1" style="color:#7C97AA">
   Stop these emails</a>
 </td></tr></table></td></tr></table></body></html>"""
     return subject, text, html
