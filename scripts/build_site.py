@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import pathlib
 import re
 import shutil
@@ -33,17 +34,50 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SHIP = ["index.html", "alerts.html"]
 
 
+# Queue-row fields the admin page never reads. "why" and "evidence" are the
+# reviewer's own prose about a company - 477 internal notes that were being
+# published to make a page that does not render them. Dropping them costs
+# nothing and removes the largest and most sensitive part of the payload.
+#
+# source_event, game and floors are NOT dropped: the page does render them
+# (the conference a company was mined from is a feature the owner asked for,
+# and the counters are the point of the landing screen). They stay behind the
+# SHIP_ADMIN gate rather than being stripped into uselessness.
+DROP_QUEUE = {"why", "evidence", "ats_note", "notes"}
+
+
+def _public_row(row: dict) -> dict:
+    return {k: v for k, v in row.items() if k not in DROP_QUEUE}
+
+
 def build_admin_bundle(out: "pathlib.Path") -> None:
     """The web admin: the judgment queues, precomputed at build time.
 
-    Served under /admin, which the Cloudflare Access application must cover
-    BEFORE the ruling token is configured - the function refuses to write
-    without Access headers, so the misconfigured state fails closed. The
-    page shows company names and public postings data only, the same facts
-    the public board already serves; the rulings it records go through
-    functions/admin/api/rule.js into the repo, and the daily run applies
-    them with validation.
+    NOT SHIPPED UNLESS SHIP_ADMIN=1 IS SET IN THE BUILD ENVIRONMENT.
+
+    That default is the correction to a real leak. The reasoning used to be
+    that /admin is safe to publish because the Cloudflare Access application
+    covers it - but Access was never created, so for as long as this shipped,
+    https://solesourcejobs.com/admin/data.json returned 245KB to anyone who
+    asked: 243 internal review notes, 234 pieces of unmade-ruling reasoning,
+    which conference exhibitor lists are being mined and how far along each
+    is, and the owner's personal work record.
+
+    The old docstring claimed the page "shows company names and public
+    postings data only, the same facts the public board already serves".
+    That was wrong, and being written down made it harder to notice.
+
+    Two changes, and the ORDER matters. The gate below means a build with no
+    Access application publishes no admin at all - misconfiguration now means
+    "nothing is there", which is what the ruling endpoint already assumed.
+    And the payload is stripped of internal reasoning either way, so that if
+    Access is ever misconfigured the blast radius is queue contents rather
+    than a research file.
     """
+    if os.environ.get("SHIP_ADMIN") != "1":
+        print("  admin bundle: NOT shipped (set SHIP_ADMIN=1 once the "
+              "Cloudflare Access application covers /admin)")
+        return
     import sys as _sys
     _sys.path.insert(0, str(ROOT / "scripts"))
     import admin as _admin
@@ -62,8 +96,9 @@ def build_admin_bundle(out: "pathlib.Path") -> None:
         "schema": {x["name"]: [c for c in x["categories"]
                                if c != "Suppliers & Services"]
                    for x in schema["sectors"]},
-        "vendors": _admin.q_vendor_scope(companies, board),
-        "miscategorized": _admin.q_miscategorized(companies, board),
+        "vendors": [_public_row(v) for v in _admin.q_vendor_scope(companies, board)],
+        "miscategorized": [_public_row(v)
+                           for v in _admin.q_miscategorized(companies, board)],
     }
     admin_dir = out / "admin"
     admin_dir.mkdir(parents=True, exist_ok=True)
