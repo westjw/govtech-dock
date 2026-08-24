@@ -56,6 +56,18 @@ def looks_like_image(blob: bytes) -> str | None:
     return None
 
 
+OG_RE = re.compile(
+    r'<meta[^>]+(?:property|name)=["\'](?:og:image|twitter:image)[^"\']*["\'][^>]*>', re.I)
+CONTENT_RE = re.compile(r'content=["\']([^"\']+)["\']', re.I)
+# Paths a site serves an icon from even when it declares none. Cheap to try
+# and they account for most of the "no readable icon" pile: a site with no
+# <link rel=icon> very often still answers on the conventional filename.
+BLIND_PATHS = ["/apple-touch-icon.png", "/apple-touch-icon-precomposed.png",
+               "/favicon.ico", "/favicon.png", "/static/favicon.ico",
+               "/assets/favicon.ico", "/images/favicon.ico", "/logo.png",
+               "/assets/logo.png", "/images/logo.png", "/static/logo.png"]
+
+
 def candidates(site: str, html: str) -> list[str]:
     """Icon URLs to try, best first."""
     out: list[tuple[int, str]] = []
@@ -70,15 +82,21 @@ def candidates(site: str, html: str) -> list[str]:
         if "apple-touch" in tag.lower():
             size = max(size, 180)
         out.append((size, urllib.parse.urljoin(site, href)))
+    # og:image is the card image a site shows when shared - very often the
+    # logo, and present on sites that declare no icon at all
+    for tag in OG_RE.findall(html or ""):
+        m = CONTENT_RE.search(tag)
+        if m and not m.group(1).startswith("data:"):
+            out.append((60, urllib.parse.urljoin(site, m.group(1).strip())))
     out.sort(reverse=True)
     urls = [u for _, u in out]
-    urls.append(urllib.parse.urljoin(site, "/favicon.ico"))
+    urls += [urllib.parse.urljoin(site, path) for path in BLIND_PATHS]
     seen, uniq = set(), []
     for u in urls:
         if u not in seen:
             seen.add(u)
             uniq.append(u)
-    return uniq[:4]
+    return uniq[:12]
 
 
 def fetch_one(row: tuple[str, str]) -> tuple[str, str | None, str]:
@@ -86,12 +104,21 @@ def fetch_one(row: tuple[str, str]) -> tuple[str, str | None, str]:
     import requests
     sys.path.insert(0, str(ROOT / "scripts"))
     import ats
-    try:
-        r = requests.get(site, headers=ats.UA, timeout=12, allow_redirects=True)
-        html = r.text if r.ok else ""
-        base = r.url or site
-    except Exception as exc:
-        return cid, None, f"site unreachable ({type(exc).__name__})"
+    html, base = "", site
+    for attempt in (site, site.replace("://www.", "://") if "://www." in site
+                    else site.replace("://", "://www.")):
+        try:
+            r = requests.get(attempt, headers=ats.UA, timeout=20,
+                             allow_redirects=True)
+            html = r.text if r.ok else ""
+            base = r.url or attempt
+            break
+        except Exception as exc:
+            # a certificate that fails on www often passes on the apex (and
+            # the other way round); try the sibling before giving up
+            last = f"site unreachable ({type(exc).__name__})"
+    else:
+        return cid, None, last
     for url in candidates(base, html):
         try:
             ir = requests.get(url, headers=ats.UA, timeout=12)
@@ -114,6 +141,9 @@ def main() -> int:
     ap.add_argument("--all", action="store_true",
                     help="every company, not just the ones with open roles")
     ap.add_argument("--stats", action="store_true")
+    ap.add_argument("--retry", action="store_true",
+                    help="re-attempt companies that failed before. A failure "
+                         "is a fact about one attempt, not about the company.")
     a = ap.parse_args()
 
     OUT.mkdir(parents=True, exist_ok=True)
@@ -133,7 +163,8 @@ def main() -> int:
 
     # Companies with open roles first: they are the ones actually on screen.
     todo = [c for c in companies
-            if c.get("website") and c["id"] not in have and c["id"] not in log]
+            if c.get("website") and c["id"] not in have
+            and (a.retry or c["id"] not in log)]
     todo.sort(key=lambda c: -hiring.get(c["id"], 0))
     if not a.all:
         todo = [c for c in todo if hiring.get(c["id"], 0) > 0]
