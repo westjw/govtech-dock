@@ -100,7 +100,8 @@ def candidates(name: str) -> list[str]:
     return out[:10]
 
 
-def identifies(html: str, name: str, base: str | None = None) -> bool:
+def identifies(html: str, name: str, base: str | None = None,
+               aliases: list | None = None) -> bool:
     """Does this page actually claim to be this company?
 
     A live page proves a domain resolves, nothing more. Parked pages, squatters
@@ -109,6 +110,15 @@ def identifies(html: str, name: str, base: str | None = None) -> bool:
     """
     if not html or PARKED.search(html[:4000]):
         return False
+    # A recorded alias is a person's answer to this exact question, so it is
+    # checked as a name in its own right. This is the ONLY thing that loosens
+    # the check, and it only loosens it for a company somebody has looked at:
+    # "EagleView Technologies" fails on a page that says "Eagleview", and goes
+    # on failing until a human says those are the same company.
+    for alt in (aliases or []):
+        if alt and alt.strip().lower() != (name or "").strip().lower():
+            if identifies(html, alt, base):
+                return True
     ident = " ".join(
         html_lib.unescape(re.sub(r"<[^>]+>", " ", m))
         for pat in (TITLE, META, H1)
@@ -275,7 +285,8 @@ def main() -> int:
 if __name__ == "__main__":
     sys.exit(main())
 
-def identity_note(html: str, name: str, base: str | None = None) -> dict:
+def identity_note(html: str, name: str, base: str | None = None,
+                  aliases: list | None = None) -> dict:
     """Explain the identity check, rather than only passing or failing it.
 
     identifies() is deliberately strict and stays that way: it is the only
@@ -303,7 +314,7 @@ def identity_note(html: str, name: str, base: str | None = None) -> dict:
     present = [t for t in tk if norm(t) in ident_n]
     missing = [t for t in tk if norm(t) not in ident_n]
     return {
-        "ok": identifies(html, name, base),
+        "ok": identifies(html, name, base, aliases),
         "present": present,
         "missing": missing,
         "domain_is_lead": bool(base and present and base == "".join(

@@ -16,6 +16,7 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import alert     # noqa: E402
 import classify  # noqa: E402
+import salary    # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -147,6 +148,206 @@ TITLE_TEXT_CASES = [
     # take an exception: a wrong title beats a dropped posting
     ("Engineer \\ Architect", "Engineer \\ Architect"),
 ]
+
+
+# =========================================================================
+# salary.py - pay ranges parsed out of job-description prose
+#
+# Pay-transparency laws put a range in the posting TEXT even when the ATS
+# exposes no compensation field, so a parser is worth having. But this board is
+# almost entirely sales roles, whose descriptions are full of big dollar
+# figures that are not pay - quotas, deal sizes, books of business, ARR
+# targets, funding rounds - and a wrong number here is published as a fact
+# about someone else's company. So the negatives below are the point of this
+# table, not padding: roughly half the cases must return None, and every trap
+# that has ever looked like pay gets one.
+#
+# expected is (min, max, currency, period), or None for "we refuse to say".
+# =========================================================================
+SALARY_CASES = [
+    # --- the plain forms, exactly as they appear in real postings ----------
+    ("The base salary range for this role is $140,000 - $200,000.",
+     (140000, 200000, "USD", "year")),
+    ("Salary: $140K - $200K", (140000, 200000, "USD", "year")),
+    ("Pay range: $140k-$200k per year", (140000, 200000, "USD", "year")),
+    ("Compensation: USD 140,000 to 200,000", (140000, 200000, "USD", "year")),
+    ("Salary range: 140000-200000 USD", (140000, 200000, "USD", "year")),
+    ("We are hiring. Base salary range of $140,000-$200,000.",
+     (140000, 200000, "USD", "year")),
+    ("The expected pay for this role is $140,000 to $200,000 annually.",
+     (140000, 200000, "USD", "year")),
+    ("Base salary: between $140,000 and $200,000",
+     (140000, 200000, "USD", "year")),
+    # all three dashes occur in the wild; so does a section heading two lines up
+    ("Salary: $140,000–$200,000", (140000, 200000, "USD", "year")),
+    ("The base salary range is $140,000 — $200,000 + equity.",
+     (140000, 200000, "USD", "year")),
+    ("Compensation\n\n$140,000 - $200,000 per year",
+     (140000, 200000, "USD", "year")),
+    # --- periods are stored, never converted ------------------------------
+    ("The hourly rate for this position is $67.50 - $85.00/hour.",
+     (67.5, 85, "USD", "hour")),
+    ("The pay scale for this role is $67.50 - $85.00 per hour.",
+     (67.5, 85, "USD", "hour")),
+    ("Pay: $25.00 - $30.00 an hour", (25, 30, "USD", "hour")),
+    ("Wage: $22.50/hr", (22.5, 22.5, "USD", "hour")),
+    ("Base pay: $11,667 per month", (11667, 11667, "USD", "month")),
+    ("The pay range is $140,000-$200,000/yr.", (140000, 200000, "USD", "year")),
+    ("Salary range: $140,000 - $200,000 (annually)",
+     (140000, 200000, "USD", "year")),
+    ("The annual base salary of $140,000 - $200,000 applies.",
+     (140000, 200000, "USD", "year")),
+    # a period word welded to the figure is itself pay evidence, so this one
+    # needs no label. a lone figure never gets that path - see the negatives.
+    ("$67.50 - $85.00/hour", (67.5, 85, "USD", "hour")),
+    # --- one-sided bounds --------------------------------------------------
+    ("Salary: up to $200,000", (None, 200000, "USD", "year")),
+    ("Salary starting at $140,000 per year", (140000, None, "USD", "year")),
+    # --- currencies --------------------------------------------------------
+    ("The salary range is £70,000 - £90,000.", (70000, 90000, "GBP", "year")),
+    ("The salary range is €70,000 - €90,000 per year.",
+     (70000, 90000, "EUR", "year")),
+    ("Compensation for this role: CAD $120,000 - CAD $150,000 per year",
+     (120000, 150000, "CAD", "year")),
+    ("Salary: US$140,000 - US$200,000", (140000, 200000, "USD", "year")),
+    # --- base wins when base and a bonus are both stated -------------------
+    ("Base salary of $140,000 - $200,000 plus an annual bonus of "
+     "$10,000 - $20,000.", (140000, 200000, "USD", "year")),
+    # a whole posting of the kind this board is made of: every trap above in
+    # one blob, and the base range still has to come out clean
+    ("Senior Account Executive, SLED\n"
+     "We have raised $65M across Series A and B. Our customers save $1.2M a "
+     "year, and a typical contract runs $250,000 to $900,000 per year.\n"
+     "- Own a $4M book of business and carry a quota of $1.8M in new ARR\n"
+     "- Close $500K+ deals and build pipeline of $6M-$9M\n"
+     "Benefits: 401(k) match up to 4%, a $1,000 annual learning stipend, "
+     "up to $5,000 in tuition reimbursement, equity of 0.05% - 0.25%.\n"
+     "Compensation: the base salary range for this position is "
+     "$140,000 - $200,000 per year, plus uncapped commission. "
+     "On-target earnings are $280,000 - $400,000.",
+     (140000, 200000, "USD", "year")),
+
+    # --- NEGATIVES: money in a sales JD that is not pay --------------------
+    ("We raised $40M in our Series B round last year.", None),
+    ("You will manage a $2M book of business across the Northeast.", None),
+    ("You will close $500K+ deals with state agencies.", None),
+    ("This role carries a quota of $1.2M in new ARR annually.", None),
+    ("You will own a $5M territory and close $500K deals; salary "
+     "commensurate with experience.", None),
+    ("Our contract with the City of Austin is worth $12M over five years.",
+     None),
+    ("Our platform saves cities $3M a year in fleet costs.", None),
+    # the trailing noun is what disqualifies this one - nothing before it does
+    ("The product saves agencies $50,000 - $200,000 in annual savings.", None),
+    # --- NEGATIVES: benefits and equity are not pay ------------------------
+    ("Benefits include a $500 annual learning stipend.", None),
+    ("401k match up to 4% of salary.", None),
+    ("Equity grant of 0.1% - 0.5% depending on level.", None),
+    ("Tuition reimbursement up to $25,000 per year.", None),
+    ("We offer a signing bonus of $10,000 - $20,000.", None),
+    # --- NEGATIVES: OTE is deliberately not captured -----------------------
+    # the comp shape has no field to mark what kind of number it is, so an OTE
+    # range would ship indistinguishable from a base range. see salary.py.
+    ("Total compensation range: $180,000 - $260,000.", None),
+    ("OTE of $280,000 - $320,000 with uncapped commission.", None),
+    ("On-target earnings $250,000.", None),
+    # --- NEGATIVES: not enough stated to fill the shape --------------------
+    ("Salary range: 140,000 - 200,000", None),          # no currency at all
+    ("Salary range $140,000 - £200,000", None),         # two currencies
+    ("Base salary $8,000", None),                       # no period, too small
+    ("Founded in 2019, we serve 2,000-3,000 agencies.", None),
+    # --- NEGATIVES: implausible as pay -------------------------------------
+    ("Salary: $200,000 - $140,000", None),              # inverted
+    ("Pay: $1,200 - $900,000", None),                   # 750x is two numbers
+    ("Hourly pay: $600 - $900 per hour", None),         # over the hourly cap
+    ("Salary: $3,000,000 - $4,000,000 per year", None), # over the yearly cap
+    # --- NEGATIVES: the posting says two different things ------------------
+    # multi-state tiers. picking one publishes a range that may not apply to
+    # the reader, so we publish nothing.
+    ("The salary range is $140,000-$200,000 in New York and "
+     "$120,000-$170,000 in Texas.", None),
+    ("The base salary range is $140,000 - $200,000. Salary may go up to "
+     "$250,000.", None),
+    # --- NEGATIVES: empty and junk input -----------------------------------
+    ("", None),
+    ("no numbers at all in this description", None),
+
+    # --- found by running the parser over 144 real descriptions ------------
+    # Mark43 buries the range inside a sentence that opens with the phrase we
+    # refuse. Nearest label wins, so the base range still comes out.
+    ("Total compensation for this role is market competitive, including a "
+     "target base annual salary range of $80,000 - $110,000, plus bonus "
+     "opportunity, company stock options, and a full benefits package.",
+     (80000, 110000, "USD", "year")),
+    # same posting family, UK req: a space after the symbol, k on both ends,
+    # and no symbol on the second figure
+    ("a target base annual salary range of £ 30k-80k, plus bonus opportunity",
+     (30000, 80000, "GBP", "year")),
+    # Accela drops the symbol on the upper bound
+    ("The annual base salary range for this full-time position is "
+     "$55,000-65,000 (less applicable taxes).", (55000, 65000, "USD", "year")),
+    # Swiftly: a symbol plus a spelled-out code is CAD, not a currency clash
+    ("Canadian Salary Range: $152,000- $190,000 CAD",
+     (152000, 190000, "CAD", "year")),
+    # ...and Swiftly's OTE marker sits AFTER the figure, where a lookback
+    # cannot see it. This shipped a $74k-$124k OTE as a base range until the
+    # tail check learned the word.
+    ("US Salary Range: $74,000- $124,000 USD OTE", None),
+    # ...and their US/Canada tiers are two different ranges for one job
+    ("US Salary Range: $124,000 - $205,000 USD\n"
+     "Canadian Salary Range: $152,000- $190,000 CAD", None),
+]
+
+# raw is the receipt: a person has to be able to check the number against the
+# posting, so it is pinned separately rather than trusted to be non-empty.
+SALARY_RAW_CASES = [
+    ("The base salary range for this role is $140,000 - $200,000.",
+     "$140,000 - $200,000"),
+    ("Salary: up to $200,000", "up to $200,000"),
+    ("Base salary: between $140,000 and $200,000",
+     "between $140,000 and $200,000"),
+    # a range split across a line break still has to quote as one readable line
+    ("Pay range: $140,000 -\n$200,000 per year", "$140,000 - $200,000 per year"),
+]
+
+
+def check_salary() -> int:
+    errors = 0
+    for text, expected in SALARY_CASES:
+        got = salary.parse(text)
+        label = text[:44].replace("\n", " ")
+        if expected is None:
+            if got is not None:
+                errors += fail(f"salary.parse({label!r}...) should refuse, "
+                               f"got {got['min']}-{got['max']} from {got['raw']!r}")
+            continue
+        if got is None:
+            errors += fail(f"salary.parse({label!r}...) = None, expected {expected}")
+            continue
+        actual = (got["min"], got["max"], got["currency"], got["period"])
+        if actual != expected:
+            errors += fail(f"salary.parse({label!r}...) = {actual}, expected {expected}")
+        if got["source"] != "text":
+            errors += fail(f"salary.parse({label!r}...) source = {got['source']!r}, "
+                           "expected 'text'")
+        if not got["raw"]:
+            errors += fail(f"salary.parse({label!r}...) has no raw quote")
+
+    for text, expected_raw in SALARY_RAW_CASES:
+        got = salary.parse(text)
+        if got is None or got["raw"] != expected_raw:
+            errors += fail(f"salary.parse({text[:36]!r}...) raw = "
+                           f"{None if got is None else got['raw']!r}, "
+                           f"expected {expected_raw!r}")
+
+    # A missed range costs a filter hit; a wrong one is published as a fact
+    # about somebody else's company. Keep the table honest about that: if the
+    # negatives ever thin out, the parser has been tuned for recall.
+    negatives = sum(1 for _, e in SALARY_CASES if e is None)
+    if negatives * 3 < len(SALARY_CASES):
+        errors += fail(f"salary cases: only {negatives} of {len(SALARY_CASES)} are "
+                       "negatives; false positives are the expensive error here")
+    return errors
 
 
 def fail(msg):
@@ -475,6 +676,7 @@ def main() -> int:
         if got != expected:
             errors += fail(f"ats.plain({raw!r}) = {got!r}, expected {expected!r}")
     errors += check_board()
+    errors += check_salary()
 
     hist = sorted((DATA / "hiring_history").glob("*.json"))
     if not hist:

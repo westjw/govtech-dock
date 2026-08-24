@@ -521,6 +521,7 @@ RENDER.websites = c => {
        teaches you to click past the warning - and that warning is the only
        thing between a squatter and the dataset. So name the words. */
     const idn = r.identity || {};
+    const nameGuessName = (idn.present || []).join(' ');
     if (r.identifies) {
       vline.appendChild(el('span', 'ok', 'It names this company, so the address is theirs.'));
     } else if (idn.domain_is_lead && (idn.present || []).length) {
@@ -534,6 +535,41 @@ RENDER.websites = c => {
       vline.appendChild(el('span', 'warn',
         'It never names this company \u2014 it may be the wrong business, or one '
         + 'that renamed. Your call.'));
+    }
+
+    /* Disagreeing with the check used to cost you the disagreement: you hit
+       Save and the reason evaporated. Now it is a fact with somewhere to go -
+       the name the page uses goes into also_known_as, so identifies() passes
+       for this company from here on, and the label makes it possible to say
+       how often this warning is worth heeding. */
+    if (!r.identifies) {
+      const fix = el('div', 'idfix');
+      fix.style.cssText = 'margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;align-items:center';
+      fix.appendChild(el('span', 'kv', 'It does say the name:'));
+      const nameIn = el('input', 'in');
+      nameIn.style.cssText = 'flex:1;min-width:170px';
+      nameIn.placeholder = 'the name the page uses';
+      nameIn.value = (idn.present || []).length
+        ? (nameGuessName || (idn.present || []).join(' ')) : '';
+      const yes = el('button', 'btn primary', 'Yes, that is them');
+      const no = el('button', 'btn', 'No, wrong company');
+      const out = el('div', 'kv');
+      out.style.cssText = 'flex-basis:100%;margin-top:4px';
+      const rule = async (verdict) => {
+        yes.disabled = no.disabled = true;
+        const res = await api('/api/identity-ruling', {
+          id: c.id, verdict, said_name: nameIn.value.trim(),
+          page_says: (r.identity || {}).says || r.title || '', url: r.url});
+        yes.disabled = no.disabled = false;
+        if (res.error) { out.textContent = res.error; out.style.color = 'var(--warn)'; return; }
+        toast(res.message);
+        fix.remove();
+        if (res.recheck) check.click();   // show it going green, not just say so
+      };
+      yes.onclick = () => rule('same');
+      no.onclick = () => rule('different');
+      fix.append(nameIn, yes, no, out);
+      e.appendChild(fix);
     }
     e.appendChild(vline);
 

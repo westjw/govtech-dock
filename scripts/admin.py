@@ -118,6 +118,36 @@ def write_atomic(name: str, payload) -> None:
         raise
 
 
+# --- every companies.json write keeps a before-image ---------------------
+#
+# The journal existed for a day before anything called it, and in that day a
+# rename bug wrote a marketing tagline over a company's name with no way back.
+# So the journal is not an opt-in helper any more: read_companies() remembers
+# what it handed out, and save_companies() diffs against that automatically.
+# An action cannot forget to record, because it never had to remember.
+_LAST_COMPANIES: list | None = None
+
+
+def read_companies() -> list:
+    global _LAST_COMPANIES
+    data = read("companies.json", [])
+    _LAST_COMPANIES = json.loads(json.dumps(data))   # a copy nobody can mutate
+    return data
+
+
+def save_companies(companies: list, action: str, why: str = "",
+                   by: str = "owner", force: bool = False) -> str | None:
+    """Journal, then write. Returns a refusal message, or None on success."""
+    import journal
+    before = _LAST_COMPANIES if _LAST_COMPANIES is not None else companies
+    _eid, refusal = journal.record("companies.json", before, companies,
+                                   action, by, why, force)
+    if refusal:
+        return refusal
+    write_atomic("companies.json", companies)
+    return None
+
+
 def validate(companies: list) -> str | None:
     """The invariants selftest.py enforces, checked before a write lands.
 
@@ -436,7 +466,7 @@ def act_posts_at(body: dict) -> dict:
     bad = _pa.check(where, url)
     if bad:
         return {"error": bad}
-    companies = read("companies.json", [])
+    companies = read_companies()
     c = next((x for x in companies if x["id"] == cid), None)
     if c is None:
         return {"error": "no such company"}
@@ -445,11 +475,65 @@ def act_posts_at(body: dict) -> dict:
     err = validate(companies)
     if err:
         return {"error": err}
-    write_atomic("companies.json", companies)
+    bad = save_companies(companies, "posts-at")
+    if bad:
+        return {"error": bad}
     return {"ok": True,
             "message": f"recorded: {c['name']} advertises on {_pa.label(where)}. "
                        f"Their card now links there instead of saying no board "
                        f"was found."}
+
+
+def act_identity_ruling(body: dict) -> dict:
+    """Record that the identity warning was wrong (or right), and act on it.
+
+    "It literally says the name" is a fact with a structured home. Writing it
+    into also_known_as makes identifies() pass for this company from now on,
+    so the correction pays for itself immediately instead of only becoming a
+    statistic. The label is kept as well, because how often this check is
+    wrong is a number nobody currently has.
+    """
+    import identity_labels
+    cid = (body.get("id") or "").strip()
+    verdict = (body.get("verdict") or "").strip()
+    said = (body.get("said_name") or "").strip()
+    if verdict not in ("same", "different"):
+        return {"error": "verdict must be same or different"}
+    companies = read_companies()
+    c = next((x for x in companies if x["id"] == cid), None)
+    if c is None:
+        return {"error": "no such company"}
+
+    added = None
+    if verdict == "same":
+        if not said:
+            return {"error": "type the name the page uses, so the check can "
+                             "recognise it next time"}
+        if said.lower() == c["name"].lower():
+            return {"error": "that is already the stored name - if the panel "
+                             "still warns, the page may genuinely not say it"}
+        aka = set(c.get("also_known_as") or [])
+        if said not in aka:
+            aka.add(said)
+            c["also_known_as"] = sorted(aka)
+            added = said
+        err = validate(companies)
+        if err:
+            return {"error": err}
+        bad = save_companies(companies, "identity-ruling")
+        if bad:
+            return {"error": bad}
+
+    identity_labels.record(cid, c["name"], body.get("page_says") or "",
+                           body.get("url") or "", verdict, said,
+                           body.get("by") or "owner")
+    if verdict == "different":
+        return {"ok": True, "message": f"noted: that page is not {c['name']}. "
+                                       f"The warning was right, and now we know it."}
+    return {"ok": True, "recheck": True,
+            "message": (f"recorded: {c['name']} also goes by \u201c{added}\u201d. "
+                        f"The check will recognise that from now on.")
+                       if added else "already recorded"}
 
 
 def act_vendor_scope_all(body: dict) -> dict:
@@ -837,7 +921,7 @@ def act_also(body: dict) -> dict:
     cid, sector, category = body.get("id"), body.get("sector"), body.get("category")
     if not cid or not sector or not category:
         return {"error": "need a company, a sector and a category"}
-    companies = read("companies.json", [])
+    companies = read_companies()
     c = next((x for x in companies if x["id"] == cid), None)
     if c is None:
         return {"error": "no such company"}
@@ -854,7 +938,9 @@ def act_also(body: dict) -> dict:
     err = validate(companies)
     if err:
         return {"error": err}
-    write_atomic("companies.json", companies)
+    bad = save_companies(companies, "also")
+    if bad:
+        return {"error": bad}
     verb = "no longer also in" if dropped else "also filed under"
     return {"ok": True, "message": f"{c['name']} {verb} {sector} / {category}",
             "also": c.get("also") or []}
@@ -914,7 +1000,7 @@ def act_save_website(body: dict) -> dict:
     url, why = outward_url(body.get("url"))
     if not cid or not url:
         return {"error": why or "need a company and a URL"}
-    companies = read("companies.json", [])
+    companies = read_companies()
     c = next((x for x in companies if x["id"] == cid), None)
     if c is None:
         return {"error": "no such company"}
@@ -929,7 +1015,9 @@ def act_save_website(body: dict) -> dict:
     err = validate(companies)
     if err:
         return {"error": err}
-    write_atomic("companies.json", companies)
+    bad = save_companies(companies, "save-website")
+    if bad:
+        return {"error": bad}
     steps = [f"website saved{' and renamed to ' + name if name else ''}"]
 
     # 2. the logo, straight away
@@ -952,12 +1040,14 @@ def act_save_website(body: dict) -> dict:
         if ats_block:
             okay, why = add_company.verify(ats_block)
             if okay:
-                companies = read("companies.json", [])
+                companies = read_companies()
                 c2 = next((x for x in companies if x["id"] == cid), None)
                 if c2 is not None:
                     c2["ats"] = ats_block
                     if not validate(companies):
-                        write_atomic("companies.json", companies)
+                        bad = save_companies(companies, "save-website")
+                        if bad:
+                            return {"error": bad}
                         got_board = ats_block["type"]
                         steps.append(f"board found: {got_board}")
             else:
@@ -984,7 +1074,7 @@ def act_retry_board(body: dict) -> dict:
     real fetch confirmed the board reads.
     """
     cid = body.get("id")
-    companies = read("companies.json", [])
+    companies = read_companies()
     c = next((x for x in companies if x["id"] == cid), None)
     if c is None:
         return {"error": "no such company"}
@@ -1006,7 +1096,9 @@ def act_retry_board(body: dict) -> dict:
             err = validate(companies)
             if err:
                 return {"error": err}
-            write_atomic("companies.json", companies)
+            bad = save_companies(companies, "retry-board")
+            if bad:
+                return {"error": bad}
             log[cid] = {"on": dt.date.today().isoformat(), "found": True,
                         "note": f"retry: {'; '.join(notes)[:120]}"}
             write_atomic("discovery_log.json", log)
@@ -1073,7 +1165,7 @@ def act_merge(body: dict) -> dict:
         # UI cannot send this; the API refused nothing. Now it does.
         return {"error": "keep and drop are the same company"}
     keep_id, drop_id = body.get("keep"), body.get("drop")
-    companies = read("companies.json", [])
+    companies = read_companies()
     keep = next((c for c in companies if c["id"] == keep_id), None)
     drop = next((c for c in companies if c["id"] == drop_id), None)
     if not keep or not drop:
@@ -1097,7 +1189,9 @@ def act_merge(body: dict) -> dict:
     err = validate(remaining)
     if err:
         return {"error": err}
-    write_atomic("companies.json", remaining)
+    bad = save_companies(remaining, "merge")
+    if bad:
+        return {"error": bad}
     return {"ok": True, "message": f"merged {drop['name']} into {keep['name']}"
                                    + (f", inherited {', '.join(sorted(set(filled)))}"
                                       if filled else "")}
@@ -1106,7 +1200,7 @@ def act_merge(body: dict) -> dict:
 def act_patch(body: dict) -> dict:
     """Edit one company's fields. Validation runs on the whole file, so a change
     that breaks a sector/category pairing is refused rather than written."""
-    companies = read("companies.json", [])
+    companies = read_companies()
     c = next((x for x in companies if x["id"] == body.get("id")), None)
     if not c:
         return {"error": "company not found"}
@@ -1123,7 +1217,9 @@ def act_patch(body: dict) -> dict:
     err = validate(companies)
     if err:
         return {"error": err}
-    write_atomic("companies.json", companies)
+    bad = save_companies(companies, "patch")
+    if bad:
+        return {"error": bad}
     return {"ok": True, "message": f"updated {c['name']}"}
 
 
@@ -1286,7 +1382,12 @@ def act_verify_website(body: dict) -> dict:
     title = re.sub(r"\s+", " ", title.group(1)).strip()[:140] if title else ""
     parked = bool(find_websites.PARKED.search(html[:4000]))
     base = url.split("//", 1)[1].split("/")[0].replace("www.", "").rsplit(".", 1)[0]
-    note = find_websites.identity_note(html, name, base)
+    aliases = body.get("aliases") or []
+    if not aliases and body.get("id"):
+        c0 = next((x for x in read_companies()
+                   if x["id"] == body["id"]), None)
+        aliases = (c0 or {}).get("also_known_as") or []
+    note = find_websites.identity_note(html, name, base, aliases)
     return {"ok": True, "title": title, "parked": parked,
             "identifies": note["ok"], "identity": note,
             "url": url}
@@ -1299,7 +1400,7 @@ def act_verify_board(body: dict) -> dict:
     url, why = outward_url(body.get("url"))
     if not url:
         return {"error": why if body.get("url") else "enter a careers URL first"}
-    companies = read("companies.json", [])
+    companies = read_companies()
     c = next((x for x in companies if x["id"] == body.get("id")), None)
     try:
         block, note, _ = add_company.find_ats(url)
@@ -1338,7 +1439,7 @@ def act_verify_board(body: dict) -> dict:
 
 
 def act_set_board(body: dict) -> dict:
-    companies = read("companies.json", [])
+    companies = read_companies()
     c = next((x for x in companies if x["id"] == body.get("id")), None)
     if not c:
         return {"error": "company not found"}
@@ -1350,7 +1451,9 @@ def act_set_board(body: dict) -> dict:
     err = validate(companies)
     if err:
         return {"error": err}
-    write_atomic("companies.json", companies)
+    bad = save_companies(companies, "set-board")
+    if bad:
+        return {"error": bad}
     return {"ok": True, "message": f"{c['name']} now points at {block['type']}"}
 
 
@@ -1386,7 +1489,7 @@ def act_capture(body: dict) -> dict:
     line between reading a page you opened and harvesting a site.
     """
     cid = body.get("company_id")
-    companies = read("companies.json", [])
+    companies = read_companies()
     c = next((x for x in companies if x["id"] == cid), None)
     if not c:
         return {"error": "pick a company to attribute these to"}
@@ -1502,7 +1605,7 @@ def act_resolve_submission(body: dict) -> dict:
         item["status"] = "approved"
     else:
         fields = body.get("fields") or {}
-        companies = read("companies.json", [])
+        companies = read_companies()
         # Always derived, never fields["id"]. The reviewer picks the NAME; the
         # id follows from it. Letting the request name the id let a submission
         # carry "../../.." through approval and out of the repo.
@@ -1525,7 +1628,9 @@ def act_resolve_submission(body: dict) -> dict:
         err = validate(companies)
         if err:
             return {"error": err}
-        write_atomic("companies.json", companies)
+        bad = save_companies(companies, "resolve-submission")
+        if bad:
+            return {"error": bad}
         item["status"] = "approved"
         item["company_id"] = cid
     item["resolved_on"] = dt.date.today().isoformat()
@@ -1560,7 +1665,7 @@ def act_search_companies(body: dict) -> dict:
     if len(q) < 2:
         return {"results": []}
     out = []
-    for c in read("companies.json", []):
+    for c in read_companies():
         n = norm(c["name"])
         if q in n:
             out.append({"id": c["id"], "name": c["name"], "sector": c["sector"],
@@ -1581,7 +1686,7 @@ def act_move(body: dict) -> dict:
     sector alone would leave the old category behind, which validate() refuses -
     correctly, since 'Police' is not a category of General Gov.
     """
-    companies = read("companies.json", [])
+    companies = read_companies()
     c = next((x for x in companies if x["id"] == body.get("id")), None)
     if not c:
         return {"error": "company not found"}
@@ -1602,13 +1707,15 @@ def act_move(body: dict) -> dict:
     err = validate(companies)
     if err:
         return {"error": err}
-    write_atomic("companies.json", companies)
+    bad = save_companies(companies, "move")
+    if bad:
+        return {"error": bad}
     return {"ok": True, "message": f"{c['name']}: {was} -> {sec} / {cat}",
             "sector": sec, "category": cat}
 
 
 def sort_companies(sector: str) -> dict:
-    companies = read("companies.json", [])
+    companies = read_companies()
     board = read("board.json", {})
     schema = read("schema.json", {"sectors": []})
     posts = collections.Counter(p["company_id"] for p in board.get("postings", []))
@@ -1658,7 +1765,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "scope": act_scope, "scope-all": act_scope_all,
            "vendor-scope": act_vendor_scope,
            "vendor-scope-all": act_vendor_scope_all,
-           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "place": act_place,
+           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "identity-ruling": act_identity_ruling, "place": act_place,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "dismiss": act_dismiss}
@@ -1863,10 +1970,10 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
     def _api_get(self, path: str):
         if path == "/api/triage":
-            companies, board = read("companies.json", []), read("board.json", {})
+            companies, board = read_companies(), read("board.json", {})
             return self._json(triage(companies, board))
         if path == "/api/queues":
-            companies, board = read("companies.json", []), read("board.json", {})
+            companies, board = read_companies(), read("board.json", {})
             return self._json({"counts": {k: len(f(companies, board))
                                           for k, f in QUEUES.items()},
                                "labels": LABEL,
@@ -1877,7 +1984,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
             name = path.rsplit("/", 1)[-1]
             if name not in QUEUES:
                 return self._json({"error": "no such queue"}, 404)
-            companies, board = read("companies.json", []), read("board.json", {})
+            companies, board = read_companies(), read("board.json", {})
             return self._json({"items": QUEUES[name](companies, board)[:400]})
         if path == "/api/sort/companies":
             qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
@@ -1967,7 +2074,7 @@ def main() -> int:
     ap.add_argument("--port", type=int, default=8787)
     a = ap.parse_args()
 
-    companies, board = read("companies.json", []), read("board.json", {})
+    companies, board = read_companies(), read("board.json", {})
     print("GovTech Dock admin\n")
     for k, f in QUEUES.items():
         print(f"  {len(f(companies, board)):>5}  {LABEL[k]}")

@@ -17650,15 +17650,15 @@
  {
   "id": "eagleview-technologies",
   "name": "EagleView Technologies",
-  "website": null,
+  "website": "https://www.eagleview.com/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
   "description": "Aerial imagery and property analytics - exhibited at NACo 2026",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "html",
+   "ref": "https://www.eagleview.com/careers"
   },
   "hiring": {
    "status": "Unknown",
@@ -17669,7 +17669,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NACo 2026",
-  "researched": false
+  "researched": false,
+  "also_known_as": [
+   "Eagleview"
+  ]
  },
  {
   "id": "economic-impact-catalyst",
