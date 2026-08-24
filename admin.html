@@ -163,9 +163,12 @@ const INTRO = {
   duplicates: 'Two records for one vendor. Merging keeps every field the survivor '
     + 'already has and inherits the ones it is missing, so nothing researched is lost — '
     + 'a discovered job board always beats an unknown one. The old name is kept as an alias.',
-  websites: 'Names too generic to guess a domain from. A website is the key everything '
-    + 'downstream needs: no site means no board, which means the company can never be monitored. '
-    + 'Paste a URL and it is checked against the page before it is written.',
+  websites: 'Names too generic to guess a domain from, and the key to everything '
+    + 'downstream: no site means no logo and no board, so the company can never be '
+    + 'monitored and never looks like itself. A pasted URL is checked against the page '
+    + 'first, then spent immediately - saved, logo fetched, board probed - so one paste '
+    + 'pays three times while you are still looking at it. 102 companies are here, and '
+    + 'each one you close is a company that can start showing real postings.',
   blocked: 'Probed and turned away: a 403, a timeout, an SSL failure. Not evidence of '
     + 'anything except that the fetcher was refused - these re-probe themselves after '
     + 'seven days. Retry now is for when the block looked transient or you just fixed '
@@ -491,17 +494,22 @@ RENDER.websites = c => {
     }
   };
   save.onclick = async () => {
-    const fields = {website: verified.url};
     const ri = document.getElementById('rn-' + c.id);
     const newName = ri && ri.value.trim();
-    if (newName && newName.toLowerCase() !== c.name.toLowerCase()) {
-      fields.name = newName;
-      fields.also_known_as = [...new Set([...(c.also_known_as || []), c.name])];
-    }
-    const r = await api('/api/patch', {id: c.id, fields});
+    save.disabled = true; save.textContent = 'saving, fetching, probing…';
+    // one paste buys three things: the field, the company's mark, and a
+    // shot at their board. The button says so while it works.
+    const r = await api('/api/save-website', {
+      id: c.id, url: verified.url,
+      name: (newName && newName.toLowerCase() !== c.name.toLowerCase()) ? newName : ""});
+    save.disabled = false; save.textContent = 'Save';
     if (r.error) return toast(r.error, true);
-    toast(fields.name ? `${r.message} — renamed to ${fields.name}` : r.message);
-    n.remove(); refreshCounts();
+    toast(r.message);
+    const won = el('div', 'kv');
+    won.innerHTML = (r.logo ? '<span class="chip ok">logo</span>' : '')
+      + (r.board ? `<span class="chip ok">board: ${esc(r.board)}</span>` : '');
+    n.appendChild(won);
+    setTimeout(() => { n.remove(); refreshCounts(); }, r.logo || r.board ? 1400 : 300);
   };
   row.append(inp, check, save, dismissBtn('websites', c.id, 'No site exists'));
   n.appendChild(row);

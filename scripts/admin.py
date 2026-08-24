@@ -839,6 +839,85 @@ def act_place(body: dict) -> dict:
     return res
 
 
+def act_save_website(body: dict) -> dict:
+    """Save a website, then spend it: fetch the logo and probe for a board.
+
+    A website is not the point - it is the key. On its own it changes
+    nothing a visitor sees; what it unlocks is the company's own mark on
+    every card and a shot at finding where they post jobs. Doing all three
+    on one paste means the work pays immediately and visibly, instead of
+    waiting for whenever the next bulk pass happens to run.
+
+    Each step reports its own outcome and none can undo the one before it.
+    The website is written first and stays written even if the logo 404s and
+    the board probe finds nothing, because a confirmed website is worth
+    keeping on its own.
+    """
+    cid, url = body.get("id"), clean_url(body.get("url"))
+    if not cid or not url:
+        return {"error": "need a company and a URL"}
+    companies = read("companies.json", [])
+    c = next((x for x in companies if x["id"] == cid), None)
+    if c is None:
+        return {"error": "no such company"}
+
+    c["website"] = url
+    name = (body.get("name") or "").strip()
+    if name and name.lower() != c["name"].lower():
+        aka = set(c.get("also_known_as") or [])
+        aka.add(c["name"])
+        c["also_known_as"] = sorted(aka)
+        c["name"] = name
+    err = validate(companies)
+    if err:
+        return {"error": err}
+    write_atomic("companies.json", companies)
+    steps = [f"website saved{' and renamed to ' + name if name else ''}"]
+
+    # 2. the logo, straight away
+    got_logo = False
+    try:
+        import fetch_logos
+        _, ext, note = fetch_logos.fetch_one((cid, url))
+        if ext:
+            got_logo = True
+            steps.append("logo found")
+        else:
+            steps.append(f"no logo ({note[:40]})")
+    except Exception as exc:  # noqa: BLE001 - a logo is never worth a 500
+        steps.append(f"logo step failed ({type(exc).__name__})")
+
+    # 3. the board, verified before it is written
+    got_board = None
+    try:
+        ats_block, careers, notes = add_company.find_ats(url, paths=["/careers"])
+        if ats_block:
+            okay, why = discover_ats.verify(ats_block)
+            if okay:
+                companies = read("companies.json", [])
+                c2 = next((x for x in companies if x["id"] == cid), None)
+                if c2 is not None:
+                    c2["ats"] = ats_block
+                    if not validate(companies):
+                        write_atomic("companies.json", companies)
+                        got_board = ats_block["type"]
+                        steps.append(f"board found: {got_board}")
+            else:
+                steps.append(f"board found but unreadable, left unknown")
+        else:
+            steps.append("no board on the site yet")
+    except Exception as exc:  # noqa: BLE001
+        steps.append(f"board step failed ({type(exc).__name__})")
+
+    log = read("discovery_log.json", {})
+    log[cid] = {"on": dt.date.today().isoformat(), "found": bool(got_board),
+                "note": f"after website saved in admin: {steps[-1][:90]}"}
+    write_atomic("discovery_log.json", log)
+
+    return {"ok": True, "message": " \u00b7 ".join(steps),
+            "logo": got_logo, "board": got_board}
+
+
 def act_retry_board(body: dict) -> dict:
     """Re-probe one blocked company right now, instead of waiting a week.
 
@@ -1382,7 +1461,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "scope": act_scope, "scope-all": act_scope_all,
            "vendor-scope": act_vendor_scope,
            "vendor-scope-all": act_vendor_scope_all,
-           "also": act_also, "retry-board": act_retry_board, "place": act_place,
+           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "place": act_place,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "dismiss": act_dismiss}
