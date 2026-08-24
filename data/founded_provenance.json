@@ -600,5 +600,642 @@
   "at": "2026-08-24T09:09:56-04:00",
   "why": "BIS Digital founded 1982 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
   "confirmed": null
+ },
+ "beanstack": {
+  "year": 2013,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization on Beanstack's own homepage; the node is the operating entity (name 'Zoobean, Inc', alternateName 'Beanstack'). | quote: \"\"foundingDate\": \"2013\"\" | source: https://www.beanstack.com/ | confidence: high",
+  "confirmed": null
+ },
+ "blackrainbow-inc": {
+  "year": 2017,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year and names the company. | quote: \"In 2017, BlackRainbow was founded by a core group of time-served subject matter experts\" | source: https://blackrainbow.com/about-us/ | confidence: high",
+  "confirmed": null
+ },
+ "blocksi": {
+  "year": 2011,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year and names the company in the same sentence. | quote: \"Established in 2011 and headquartered in Palo Alto, CA, Blocksi, Inc.\" | source: https://blocksi.net/about-us/ | confidence: high",
+  "confirmed": null
+ },
+ "can-am-technologies": {
+  "year": 2000,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named Can/Am Technologies on its own site (goteller.com is their product site). | quote: \"\"foundingDate\": \"2000\"\" | source: https://www.goteller.com/ | confidence: high",
+  "confirmed": null
+ },
+ "cayenta": {
+  "year": 1983,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page says 'our founding in 1983'; the same page's schema.org node carries foundingDate 1983-01-01. | quote: \"From our founding in 1983 to today\" | source: https://www.cayenta.com/about | confidence: high",
+  "confirmed": null
+ },
+ "chorus-innovations": {
+  "year": 2018,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page reads 'Since Chorus' founding in 2018, the company has grown...' (apostrophe varies, so the quote is clipped before it). | quote: \"Since Chorus\" | source: https://www.joinchorus.com/company/about | confidence: high",
+  "confirmed": null
+ },
+ "coursedog": {
+  "year": 2018,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named Coursedog, same value on three pages of its own site. | quote: \"\"foundingDate\": \"2018\"\" | source: https://www.coursedog.com/ | confidence: high",
+  "confirmed": null
+ },
+ "creatio": {
+  "year": 2002,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named Creatio (legalName CREATIO EMEA LTD) on its own About page; foundingDate 2002-01. | quote: \"\"foundingDate\": \"2002-01\"\" | source: https://www.creatio.com/company/about | confidence: high",
+  "confirmed": null
+ },
+ "csit": {
+  "year": 2011,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Who-we-are page states the founding year and names CSiT as the subject. | quote: \"Founded in 2011 by senior executives from Telecite and ALSTOM, CSiT provides integrated solutions to the transit industry.\" | source: https://csit.co/who-we-are/ | confidence: high",
+  "confirmed": null
+ },
+ "cybernut": {
+  "year": 2024,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named CyberNut on its own About page. | quote: \"\"foundingDate\": \"2024\"\" | source: https://www.cybernut.com/about-us | confidence: high",
+  "confirmed": null
+ },
+ "deledao": {
+  "year": 2018,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named Deledao on its own homepage. | quote: \"\"foundingDate\":\"2018\"\" | source: https://www.deledao.com/ | confidence: high",
+  "confirmed": null
+ },
+ "diversified-computer-services": {
+  "year": 1972,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page distinguishes founding (1972) from incorporation (1999); year_founded takes the founding. | quote: \"Founded in 1972 and incorporated in 1999, our company originated\" | source: https://dcs-dcs.com/about-us/ | confidence: high",
+  "confirmed": null
+ },
+ "economic-impact-catalyst": {
+  "year": 2018,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Our-story page states the launch year and names the company as the subject. | quote: \"Launched in 2018, Economic Impact Catalyst now provides over 100 organizations\" | source: https://www.economicimpactcatalyst.com/our-story | confidence: high",
+  "confirmed": null
+ },
+ "ecourtdate": {
+  "year": 2018,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named eCourtDate on its own homepage. | quote: \"\"foundingDate\":\"2018\"\" | source: https://ecourtdate.com/ | confidence: high",
+  "confirmed": null
+ },
+ "ensoftek-inc": {
+  "year": 2001,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Company page on EnSoftek's own DrCloudEHR site says 'our founding in 2001'. | quote: \"From our founding in 2001 to serving 170+ organizations nationwide\" | source: https://www.drcloudehr.com/company/ | confidence: high",
+  "confirmed": null
+ },
+ "everspot": {
+  "year": 2023,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named Everspot on its own homepage. | quote: \"\"foundingDate\": \"2023\"\" | source: https://everspot.io/ | confidence: high",
+  "confirmed": null
+ },
+ "exevision-inc": {
+  "year": 1994,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year and names ExeVision. (The homepage's 'Since 2005' line is about a customer relationship, not the founding.) | quote: \"Founded in 1994, ExeVision began as a custom software and consulting firm\" | source: https://www.exevision.com/about-1 | confidence: high",
+  "confirmed": null
+ },
+ "farragut": {
+  "year": 1992,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page says 'our founding in 1992' and names the company. | quote: \"from our founding in 1992, FARRAGUT has been dedicated\" | source: https://farragut.com/about-us/ | confidence: high",
+  "confirmed": null
+ },
+ "greencourt-legal-technologies-inc": {
+  "year": 2014,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year for the named legal entity. (The 1998 on the same page belongs to Greenway Health, a director's former employer.) | quote: \"GreenCourt Legal Technologies, LLC was founded in 2014\" | source: https://greencourt.com/about-us/ | confidence: high",
+  "confirmed": null
+ },
+ "greenq": {
+  "year": 2015,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year and names the company. | quote: \"GreenQ, a young innovative company, established in 2015\" | source: https://greenq.co.il/about-us/ | confidence: high",
+  "confirmed": null
+ },
+ "greenspace-health": {
+  "year": 2015,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page opens with the launch year (quote clipped at the abbreviation full stop). | quote: \"Launched in 2015 out of St\" | source: https://greenspacehealth.com/en-us/company/about/ | confidence: high",
+  "confirmed": null
+ },
+ "greymatter": {
+  "year": 2013,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named 'greymatter HigherEd CRM'; foundingDate 2013-12-10, so the year is 2013. | quote: \"\"foundingDate\":\"2013-12-10\"\" | source: https://greymattercrm.com/ | confidence: high",
+  "confirmed": null
+ },
+ "hansen-technologies": {
+  "year": 1971,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year and names Hansen. | quote: \"Founded in 1971, Hansen is a global provider of software and services\" | source: https://www.hansencx.com/about-hansen/ | confidence: high",
+  "confirmed": null
+ },
+ "infor": {
+  "year": 2002,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named Infor (legalName Infor Inc.) on its own site, same value on three pages. | quote: \"\"foundingDate\":\"2002\"\" | source: https://www.infor.com/ | confidence: high",
+  "confirmed": null
+ },
+ "intelligent-video-solutions": {
+  "year": 2001,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named Intelligent Video Solutions; its /company page independently says 'Since 2001, our experts have applied thoughtful functionality to video observation'. | quote: \"\"foundingDate\": \"2001\"\" | source: https://www.ipivs.com/ | confidence: high",
+  "confirmed": null
+ },
+ "intellipay": {
+  "year": 2004,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "A 'Founded' field on IntelliPay's own About page, corroborated on the same page by 'Since 2004, IntelliPay has helped organizations take control of their payment processing costs.' | quote: \"Founded: 2004\" | source: https://intellipay.com/about-us/ | confidence: high",
+  "confirmed": null
+ },
+ "ito-health": {
+  "year": 2024,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states it in prose, repeats it as a 'Founded 2024' fact, and carries foundingDate 2024 in schema.org. | quote: \"We were founded in 2024 by clinicians and healthcare operators in Providence, Rhode Island\" | source: https://itohealth.org/about | confidence: high",
+  "confirmed": null
+ },
+ "karpel-solutions": {
+  "year": 1985,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year and names Karpel; the homepage repeats 'Established in 1985'. | quote: \"Founded in 1985, Karpel provides business solutions\" | source: https://www.karpel.com/about-us/ | confidence: high",
+  "confirmed": null
+ },
+ "leakzon": {
+  "year": 2023,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year and names the company; schema.org on the same site agrees. | quote: \"LeakZon, established 2023, developed an analytical solution\" | source: https://www.leakzon.com/about | confidence: high",
+  "confirmed": null
+ },
+ "learnwise-ai": {
+  "year": 2023,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year in the company's own voice; schema.org foundingDate 2023 on the same site agrees. | quote: \"Born in 2023 at the intersection of rapid digital adoption in education\" | source: https://www.learnwise.ai/about | confidence: high",
+  "confirmed": null
+ },
+ "lexisnexis-risk-solutions": {
+  "year": 2000,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the year this business was formed as a separate company out of LexisNexis Legal & Professional. | quote: \"LexisNexis Risk Solutions was formed in 2000\" | source: https://risk.lexisnexis.com/about-us | confidence: high",
+  "confirmed": null
+ },
+ "library-ideas-llc": {
+  "year": 2008,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year and names the company. | quote: \"Established in 2008, by several publishing executives, Library Ideas\" | source: https://www.libraryideas.com/about | confidence: high",
+  "confirmed": null
+ },
+ "llmc": {
+  "year": 1976,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year and names LLMC. | quote: \"LLMC was founded in 1976 as a nonprofit cooperative of libraries\" | source: https://llmc.com/about/ | confidence: high",
+  "confirmed": null
+ },
+ "lvt": {
+  "year": 2005,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named LiveView Technologies (alternateName LVT), foundingDate 2005-01-01; the same About page also reads 'Headquartered in Utah since 2005'. | quote: \"\"foundingDate\": \"2005-01-01\"\" | source: https://www.lvt.com/about | confidence: high",
+  "confirmed": null
+ },
+ "mirza": {
+  "year": 2019,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named Mirza on its own homepage. | quote: \"\"foundingDate\":\"2019\"\" | source: https://heymirza.com/ | confidence: high",
+  "confirmed": null
+ },
+ "mjm-innovations": {
+  "year": 1998,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year and names the founders. | quote: \"Founded in 1998 by Jeffrey Venick and Michael Stappler\" | source: https://mjminnovations.com/about-mjm/ | confidence: high",
+  "confirmed": null
+ },
+ "modo-labs": {
+  "year": 2010,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year (quote clipped before the typographic apostrophe in 'MIT's'). | quote: \"Founded in 2010 by MIT\" | source: https://modolabs.com/about-us/ | confidence: high",
+  "confirmed": null
+ },
+ "newcom-technologies": {
+  "year": 1995,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year and names NewCom. | quote: \"NewCom was founded in 1995 and is located in Des Moines, Iowa.\" | source: https://cemetery.newcomtech.com/about.htm | confidence: high",
+  "confirmed": null
+ },
+ "nordsense": {
+  "year": 2015,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year for the company itself. | quote: \"The Silicon Valley funded start-up was established in 2015 in Denmark\" | source: https://nordsense.com/about-us/ | confidence: high",
+  "confirmed": null
+ },
+ "nuvei": {
+  "year": 2003,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Corporation node on nuvei.com naming Nuvei / Nuvei Technologies, Inc. | quote: \"\"foundingDate\": \"2003\"\" | source: https://www.nuvei.com/ | confidence: high",
+  "confirmed": null
+ },
+ "omicron-technology-solutions": {
+  "year": 1994,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Company's own site states the founding year and names Omicron. | quote: \"Founded in 1994, Omicron currently has offices in Chicago, Illinois and Shreveport, Louisiana.\" | source: https://www.omicrontech.net/transportation-consulting-services-0 | confidence: high",
+  "confirmed": null
+ },
+ "ovation": {
+  "year": 2016,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the launch year and names the company. | quote: \"Ovation launched in 2016, with our initial focus on VR.\" | source: https://www.ovationvr.com/about | confidence: high",
+  "confirmed": null
+ },
+ "payment-service-network": {
+  "year": 1999,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year; the same sentence continues 'PSN's mission was...', so the subject is the company. | quote: \"Established in 1999 as one of the earliest pioneers in the truly all-electronic payment industry\" | source: https://info.paymentservicenetwork.com/about-us/ | confidence: high",
+  "confirmed": null
+ },
+ "planstreet": {
+  "year": 2017,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization node named PlanStreet on its own homepage. | quote: \"\"foundingDate\": \"2017\"\" | source: https://www.planstreet.com/ | confidence: high",
+  "confirmed": null
+ },
+ "pulse-for-good": {
+  "year": 2017,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named Pulse For Good, same value on homepage and About page. | quote: \"\"foundingDate\": \"2017\"\" | source: https://www.pulseforgood.com/about | confidence: high",
+  "confirmed": null
+ },
+ "puretech-systems-inc": {
+  "year": 2004,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Business-overview page states the founding year for the company itself. | quote: \"is a privately owned company established in 2004\" | source: https://www.puretechsystems.com/business-overview | confidence: high",
+  "confirmed": null
+ },
+ "regrid": {
+  "year": 2009,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Company page states the founding year and names Regrid. | quote: \"Founded in 2009 in Detroit, Michigan, Regrid spent its early years\" | source: https://regrid.com/company | confidence: high",
+  "confirmed": null
+ },
+ "renvizon-qed": {
+  "year": 1974,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "'Founded 1974.' stated on the company's own homepage. | quote: \"Founded 1974\" | source: https://renvizon.com/ | confidence: high",
+  "confirmed": null
+ },
+ "revize-government-websites": {
+  "year": 1995,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year in the company's own voice. | quote: \"since we were founded in 1995\" | source: https://www.revize.com/about/ | confidence: high",
+  "confirmed": null
+ },
+ "robis-elections": {
+  "year": 1991,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Company page states the founding year and the founder's name. | quote: \"Established in 1991 by David Davoust, Robis has built a reputation\" | source: https://robiselections.com/company | confidence: high",
+  "confirmed": null
+ },
+ "sadako-technologies": {
+  "year": 2012,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the incorporation year and names the company. | quote: \"SADAKO TECHNOLOGIES is a Spanish company incorporated in 2012\" | source: https://sadako.es/about-us/ | confidence: high",
+  "confirmed": null
+ },
+ "seats-one": {
+  "year": 2015,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states 'Founded 2015' for SEAtS Software, the company behind SEAtS ONE, and the page's schema.org node carries foundingDate 2015. | quote: \"Founded 2015\" | source: https://seatsone.com/about/ | confidence: high",
+  "confirmed": null
+ },
+ "simple-higher-ed": {
+  "year": 2017,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year and names the company. | quote: \"Founded in 2017 to solve the challenge of simple, effective syllabus publishing, Simple Higher Ed has grown\" | source: https://simplehighered.com/about-us/ | confidence: high",
+  "confirmed": null
+ },
+ "simpledu": {
+  "year": 2020,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Company page states the founding year and names the company as the subject. | quote: \"At simpledu, our journey began in 2020\" | source: https://www.simpledu.com/company/ | confidence: high",
+  "confirmed": null
+ },
+ "simplicity-ils": {
+  "year": 2020,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year in the company's own voice. | quote: \"Founded in 2020, our mission is to bring a user-centered design approach to the library market\" | source: https://www.simplicity-ils.com/about | confidence: high",
+  "confirmed": null
+ },
+ "spider-strategies": {
+  "year": 2003,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named Spider Strategies on its own homepage. | quote: \"\"foundingDate\":\"2003\"\" | source: https://www.spiderstrategies.com/ | confidence: high",
+  "confirmed": null
+ },
+ "steelcloud": {
+  "year": 2002,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named SteelCloud on its own homepage. | quote: \"\"foundingDate\":\"2002\"\" | source: https://www.steelcloud.com/ | confidence: high",
+  "confirmed": null
+ },
+ "systems-software": {
+  "year": 1973,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page names the company and the year; the site's schema.org Organization node also carries foundingDate 1973. | quote: \"Since 1973, Systems & Software has served the utilities and municipalities\" | source: https://ssivt.com/about | confidence: high",
+  "confirmed": null
+ },
+ "the-mobility-house": {
+  "year": 2009,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Company page refers to 'our founding in 2009' in the company's own voice. | quote: \"Since our founding in 2009, we have been able to gain valuable experience\" | source: https://www.mobilityhouse.com/usa_en/our-company | confidence: high",
+  "confirmed": null
+ },
+ "tightrope-media-systems": {
+  "year": 1996,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named Tightrope Media Systems on its own homepage. | quote: \"\"foundingDate\":\"1996\"\" | source: https://www.trms.com/ | confidence: high",
+  "confirmed": null
+ },
+ "trackvia": {
+  "year": 2006,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named TrackVia, Inc.; foundingDate is 2006-02-17, so the year is 2006. | quote: \"\"foundingDate\":\"2006-02-17\"\" | source: https://trackvia.com/about/ | confidence: high",
+  "confirmed": null
+ },
+ "tracwire-inc": {
+  "year": 2019,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named Tracwire (legalName Tracwire, Inc.) on its own homepage. | quote: \"\"foundingDate\": \"2019\"\" | source: https://www.tracwire.com/ | confidence: high",
+  "confirmed": null
+ },
+ "turbopass-corporation": {
+  "year": 2018,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named TurboPass (legalName TurboPass Corporation) on its own homepage. | quote: \"\"foundingDate\": \"2018\"\" | source: https://turbopassusa.com/ | confidence: high",
+  "confirmed": null
+ },
+ "tybera-development-group": {
+  "year": 2001,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page states the founding year in the company's own voice. | quote: \"We are a Utah-based company founded in 2001\" | source: https://www.tybera.com/about/ | confidence: high",
+  "confirmed": null
+ },
+ "valuebase": {
+  "year": 2024,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Organization named Valuebase on its own homepage. | quote: \"\"foundingDate\":\"2024\"\" | source: https://www.valuebase.ai/ | confidence: high",
+  "confirmed": null
+ },
+ "visionations-crimepad": {
+  "year": 2012,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Stated on the company's own homepage and matched by the page's schema.org Organization node named Visionations. | quote: \"Established 2012\" | source: https://visionations.com/ | confidence: high",
+  "confirmed": null
+ },
+ "adventfs": {
+  "year": 2005,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page with the company as subject; phrased as service history rather than founding. | quote: \"Since 2005, adventfs.com has provided unique, online solutions that assist government offices\" | source: https://www.adventfs.com/about | confidence: medium",
+  "confirmed": null
+ },
+ "chronicle": {
+  "year": 2016,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page with the company as subject; phrased as service history rather than founding. | quote: \"Chronicle has been providing transformative solutions to cemeteries since 2016\" | source: https://chronicle.rip/about/ | confidence: medium",
+  "confirmed": null
+ },
+ "cityview": {
+  "year": 1982,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page in the company's own voice; the same page also says 'In 1982, we launched one of the first community development and permitting software platforms in North America.' Neither sentence says 'founded'. | quote: \"Since 1982 we have helped organizations across North America solve their business problems\" | source: https://www.municipalsoftware.com/about/ | confidence: medium",
+  "confirmed": null
+ },
+ "constituo-software": {
+  "year": 2016,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page reads 'Since 2016, we've helped hundreds of colleges and universities streamline operations.' (quote clipped before the typographic apostrophe). | quote: \"Since 2016, we\" | source: https://www.constituo.com/about/ | confidence: medium",
+  "confirmed": null
+ },
+ "courseleaf": {
+  "year": 1994,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "CourseLeaf's own About page, but the year is stated for Leepfrog Technologies, the company that makes CourseLeaf. Right if the record means the company, wrong if it means the product line. | quote: \"Leepfrog Technologies, the creator of CourseLeaf, was launched in 1994 in Iowa City\" | source: https://www.courseleaf.com/about/ | confidence: medium",
+  "confirmed": null
+ },
+ "evidence-grade": {
+  "year": 2009,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page reads 'Evidence Grade (R) has been the source for Evidence Grade (R) media for the Law Enforcement community since 2009.'; service history, not a stated founding. | quote: \"has been the source for Evidence Grade\" | source: https://evidencegrade.com/about-us | confidence: medium",
+  "confirmed": null
+ },
+ "fieldman": {
+  "year": 2019,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page origin story. 'Decided to build' may predate the company itself, so this is the start of the work, not provably the incorporation. | quote: \"It all started in 2019 when Vlad decided to build management software for utility field service projects.\" | source: https://fieldman.co/about | confidence: medium",
+  "confirmed": null
+ },
+ "fire-police-selection": {
+  "year": 1996,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Homepage with FPSI as the subject; phrased as mission history rather than founding. | quote: \"Since 1996, FPSI has been dedicated to one mission\" | source: https://www.fpsi.com/ | confidence: medium",
+  "confirmed": null
+ },
+ "fleetwatch-by-s-a-systems-inc": {
+  "year": 1970,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Company profile page; the subject is S & A Systems, the company named in this record, but the sentence states operating history rather than founding. | quote: \"Since 1970, S&A Systems has developed fleet information technology\" | source: https://fleetwatch.com/company_profile.html | confidence: medium",
+  "confirmed": null
+ },
+ "harmonize": {
+  "year": 2008,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page reads 'Since 2008, we've worked closely with educators...' (quote clipped before the typographic apostrophe). | quote: \"Since 2008, we\" | source: https://harmonizelearning.com/about/ | confidence: medium",
+  "confirmed": null
+ },
+ "icc-innovation": {
+  "year": 1994,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Stated on iccsafe.org for the International Code Council, the organisation whose product line this record names. Not a founding date for a separate 'ICC Innovation' entity. | quote: \"The International Code Council was established in 1994\" | source: https://www.iccsafe.org/about/who-we-are | confidence: medium",
+  "confirmed": null
+ },
+ "innovative": {
+  "year": 1978,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page in the company's own voice; operating history rather than a stated founding. | quote: \"Since 1978, we have routinely introduced new technology to the library industry.\" | source: https://iii.com/about/ | confidence: medium",
+  "confirmed": null
+ },
+ "intangles-usa-inc": {
+  "year": 2014,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "schema.org Corporation node on intangles.ai, but it describes Intangles Lab Private Limited (the group). This record is the US entity, which may have been formed later. | quote: \"\"foundingDate\":\"2014-11-05\"\" | source: https://www.intangles.ai/ | confidence: medium",
+  "confirmed": null
+ },
+ "labrie-group": {
+  "year": 1971,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page with the company as subject; operating history rather than a stated founding. | quote: \"Since 1971, The Labrie Group distributes and services its Labrie\" | source: https://labriegroup.com/about-us | confidence: medium",
+  "confirmed": null
+ },
+ "legacy-mark": {
+  "year": 1987,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Homepage says 'how we've helped thousands of cemetery professionals like you since 1987'; company voice, but service history rather than a founding statement. | quote: \"cemetery professionals like you since 1987\" | source: https://legacymark.com/ | confidence: medium",
+  "confirmed": null
+ },
+ "legalserver": {
+  "year": 2002,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Homepage anchors LegalServer's own delivery history to 2002; not a founding statement. | quote: \"With over 550 implementations since 2002\" | source: https://www.legalserver.org/ | confidence: medium",
+  "confirmed": null
+ },
+ "nuventive": {
+  "year": 2000,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Company-overview page reads 'Since 2000, Nuventive, the data-informed improvement company, has helped leading higher education institutions...'; operating history, not a stated founding. | quote: \"Since 2000, Nuventive\" | source: https://nuventive.com/company-overview/ | confidence: medium",
+  "confirmed": null
+ },
+ "pha-web": {
+  "year": 1968,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "PHA-Web's own company page, but the year is stated for MCS (Management Computer Services), the company behind the PHA-Web product. | quote: \"MCS was founded in 1968 with the goal of providing high quality computer services\" | source: https://www.pha-web.com/public/about/company.aspx | confidence: medium",
+  "confirmed": null
+ },
+ "powerdetails": {
+  "year": 2006,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Homepage with the company as subject; operating history rather than a stated founding. | quote: \"Since 2006, PowerDetails has served as the leading platform for law enforcement\" | source: https://www.powerdetails.com/ | confidence: medium",
+  "confirmed": null
+ },
+ "quipu-group": {
+  "year": 2005,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Our-story page in the company's own voice; operating history rather than a stated founding. | quote: \"Since 2005, we have created custom products for libraries\" | source: https://www.quipugroup.com/our-story | confidence: medium",
+  "confirmed": null
+ },
+ "route4me": {
+  "year": 2009,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Homepage reads 'We've matured our dynamic routing optimization API and platform since 2009...'; company voice, but product history rather than a founding statement. | quote: \"platform since 2009\" | source: https://route4me.io/ | confidence: medium",
+  "confirmed": null
+ },
+ "salamander-technologies": {
+  "year": 2002,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Stated on Salamander's own About page. CAVEAT: the same page also carries an unrelated 'In business since 1960 ... throughout New England' line that does not describe Salamander; a human should confirm which is theirs. | quote: \"In Business Since 2002\" | source: https://salamanderlive.com/index.php/resources/about-us | confidence: medium",
+  "confirmed": null
+ },
+ "salesforce": {
+  "year": 1999,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Our-story page reads 'Since 1999, we've been focused on helping companies connect with customers in new and better ways.' (quote clipped before the typographic apostrophe). | quote: \"Since 1999, we\" | source: https://www.salesforce.com/company/our-story/?bc=OTH | confidence: medium",
+  "confirmed": null
+ },
+ "supercom": {
+  "year": 1988,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "Company page, company is the subject, but it says 'has been a provider since' rather than 'founded in'. | quote: \"Since 1988 SuperCom has been a global leading provider of traditional and digital identity solutions\" | source: https://www.supercom.com/our-company | confidence: medium",
+  "confirmed": null
+ },
+ "watura": {
+  "year": 2010,
+  "by": "agent:founded-research",
+  "at": "2026-08-24T16:03:40-04:00",
+  "why": "About page in the company's own voice; the same page also opens 'It all started in 2010.' Neither says 'founded'. | quote: \"Since 2010, we have specialized in continuing professional education\" | source: https://www.watura.us/about-us | confidence: medium",
+  "confirmed": null
  }
 }
