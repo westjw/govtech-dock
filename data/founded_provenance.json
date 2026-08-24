@@ -1,0 +1,604 @@
+{
+ "arrive": {
+  "year": 2001,
+  "by": "agent:overnight-build",
+  "at": "2026-08-23T23:57:37-04:00",
+  "why": "Arrive founded 2001 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "workday": {
+  "year": 2005,
+  "by": "agent:overnight-build",
+  "at": "2026-08-23T23:58:46-04:00",
+  "why": "Workday founded 2005 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "tanium": {
+  "year": 2007,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:19-04:00",
+  "why": "Tanium founded 2007 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "career-team": {
+  "year": 1996,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:27-04:00",
+  "why": "Career TEAM founded 1996 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "harris": {
+  "year": 1976,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:28-04:00",
+  "why": "Harris founded 1976 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "emburse": {
+  "year": 2015,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:29-04:00",
+  "why": "Emburse founded 2015 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "dailypay": {
+  "year": 2015,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:30-04:00",
+  "why": "DailyPay founded 2015 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "auror": {
+  "year": 2012,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:31-04:00",
+  "why": "Auror founded 2012 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "starrez": {
+  "year": 1992,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:32-04:00",
+  "why": "StarRez founded 1992 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "yuja": {
+  "year": 2013,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:33-04:00",
+  "why": "YuJa founded 2013 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "bibliu": {
+  "year": 2013,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:34-04:00",
+  "why": "BibliU founded 2013 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "glydways": {
+  "year": 2016,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:35-04:00",
+  "why": "Glydways founded 2016 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "hello-heart": {
+  "year": 2013,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:36-04:00",
+  "why": "Hello Heart founded 2013 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "stellic": {
+  "year": 2016,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:37-04:00",
+  "why": "Stellic founded 2016 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "follett-software": {
+  "year": 1873,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:38-04:00",
+  "why": "Follett Software founded 1873 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "kloudgin": {
+  "year": 2014,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:39-04:00",
+  "why": "KloudGin founded 2014 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "monday-com": {
+  "year": 2012,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:40-04:00",
+  "why": "Monday.com founded 2012 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "propel": {
+  "year": 2014,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:41-04:00",
+  "why": "Propel founded 2014 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "xplor-recreation": {
+  "year": 1998,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:42-04:00",
+  "why": "Xplor Recreation founded 1998 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "concourse": {
+  "year": 2023,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:43-04:00",
+  "why": "Concourse founded 2023 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "devnet-inc": {
+  "year": 1997,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:44-04:00",
+  "why": "DEVNET Inc founded 1997 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "gamechanger": {
+  "year": 2009,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:45-04:00",
+  "why": "GameChanger founded 2009 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "ease-health": {
+  "year": 2025,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:46-04:00",
+  "why": "Ease Health founded 2025 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "meadow": {
+  "year": 2021,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:47-04:00",
+  "why": "Meadow founded 2021 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "code-four": {
+  "year": 2007,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:48-04:00",
+  "why": "Code Four founded 2007 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "ivy-computer": {
+  "year": 1986,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:49-04:00",
+  "why": "Ivy Computer (Trash Flow) founded 1986 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "gl-solutions": {
+  "year": 1997,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:50-04:00",
+  "why": "GL Solutions founded 1997 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "k16-solutions": {
+  "year": 2018,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:51-04:00",
+  "why": "K16 Solutions founded 2018 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "longeye": {
+  "year": 2025,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:52-04:00",
+  "why": "Longeye founded 2025 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "radicle-health": {
+  "year": 2021,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:53-04:00",
+  "why": "Radicle Health founded 2021 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "schoolyear": {
+  "year": 2019,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:54-04:00",
+  "why": "Schoolyear founded 2019 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "brickfield-education-labs": {
+  "year": 2019,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:55-04:00",
+  "why": "Brickfield Education Labs founded 2019 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "cemsites": {
+  "year": 2012,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:56-04:00",
+  "why": "CemSites founded 2012 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "machinex": {
+  "year": 1970,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:57-04:00",
+  "why": "Machinex founded 1970 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "mango-languages": {
+  "year": 2007,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:58-04:00",
+  "why": "Mango Languages founded 2007 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "pimloc-inc": {
+  "year": 2016,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:08:59-04:00",
+  "why": "Pimloc, Inc. founded 2016 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "waste-robotics": {
+  "year": 2016,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:00-04:00",
+  "why": "Waste Robotics founded 2016 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "carfax": {
+  "year": 1984,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:01-04:00",
+  "why": "CARFAX founded 1984 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "convey": {
+  "year": 1998,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:02-04:00",
+  "why": "Convey founded 1998 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "echo360": {
+  "year": 2007,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:03-04:00",
+  "why": "Echo360 founded 2007 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "gravyty": {
+  "year": 2016,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:04-04:00",
+  "why": "Gravyty founded 2016 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "mcm-technology-llc": {
+  "year": 2001,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:05-04:00",
+  "why": "MCM Technology LLC founded 2001 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "minga": {
+  "year": 2015,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:06-04:00",
+  "why": "Minga founded 2015 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "revenue-solutions-inc": {
+  "year": 1996,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:07-04:00",
+  "why": "Revenue Solutions, Inc. founded 1996 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "schoolai": {
+  "year": 2023,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:15-04:00",
+  "why": "SchoolAI founded 2023 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "with-community-calendar": {
+  "year": 2019,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:16-04:00",
+  "why": "'with' Community Calendar founded 2019 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "3rd-eye": {
+  "year": 2001,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:17-04:00",
+  "why": "3rd Eye founded 2001 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "911-inform": {
+  "year": 2018,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:18-04:00",
+  "why": "911 Inform founded 2018 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "911-tech-inc": {
+  "year": 2015,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:19-04:00",
+  "why": "911 Tech Inc founded 2015 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "a-m-simpkins-and-associates": {
+  "year": 2015,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:20-04:00",
+  "why": "A.M. Simpkins and Associates founded 2015 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "active": {
+  "year": 1998,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:21-04:00",
+  "why": "ACTIVE founded 1998 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "adp": {
+  "year": 1949,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:22-04:00",
+  "why": "ADP founded 1949 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "asldeafined": {
+  "year": 2008,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:23-04:00",
+  "why": "ASLdeafined founded 2008 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "awe-learning": {
+  "year": 1994,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:24-04:00",
+  "why": "AWE Learning founded 1994 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "aatral-vr-ar-training": {
+  "year": 2018,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:25-04:00",
+  "why": "Aatral VR AR Training founded 2018 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "academia-by-serosoft": {
+  "year": 2008,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:26-04:00",
+  "why": "Academia by Serosoft founded 2008 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "acapela-group": {
+  "year": 2003,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:27-04:00",
+  "why": "Acapela Group founded 2003 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "accufund": {
+  "year": 2001,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:28-04:00",
+  "why": "AccuFund founded 2001 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "activu-corporation": {
+  "year": 1983,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:29-04:00",
+  "why": "Activu Corporation founded 1983 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "adobe": {
+  "year": 1982,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:30-04:00",
+  "why": "Adobe founded 1982 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "ai-rgus": {
+  "year": 2019,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:31-04:00",
+  "why": "Ai-RGUS founded 2019 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "alden-systems": {
+  "year": 1995,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:32-04:00",
+  "why": "Alden Systems founded 1995 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "alertsense": {
+  "year": 1999,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:33-04:00",
+  "why": "AlertSense founded 1999 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "allocore": {
+  "year": 2006,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:34-04:00",
+  "why": "Allocore founded 2006 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "almaviva": {
+  "year": 2005,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:35-04:00",
+  "why": "Almaviva founded 2005 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "amazon-web-services": {
+  "year": 2006,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:36-04:00",
+  "why": "Amazon Web Services (AWS) founded 2006 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "ambient-ai": {
+  "year": 2017,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:37-04:00",
+  "why": "Ambient.ai founded 2017 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "anaplan": {
+  "year": 2006,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:38-04:00",
+  "why": "Anaplan founded 2006 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "apply-government-solutions": {
+  "year": 2002,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:39-04:00",
+  "why": "Apply Government Solutions founded 2002 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "apporto": {
+  "year": 2014,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:40-04:00",
+  "why": "Apporto founded 2014 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "appsanywhere": {
+  "year": 2009,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:41-04:00",
+  "why": "AppsAnywhere founded 2009 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "aquanuity-inc": {
+  "year": 2022,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:42-04:00",
+  "why": "Aquanuity, Inc. founded 2022 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "a-frame-solutions": {
+  "year": 2014,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:43-04:00",
+  "why": "ArcSuite AI founded 2014 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "assetworks-eam": {
+  "year": 1991,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:44-04:00",
+  "why": "AssetWorks EAM founded 1991 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "atozdatabases": {
+  "year": 2010,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:45-04:00",
+  "why": "AtoZdatabases founded 2010 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "atomic-jolt": {
+  "year": 2013,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:46-04:00",
+  "why": "Atomic Jolt founded 2013 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "augintel": {
+  "year": 2018,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:47-04:00",
+  "why": "Augintel founded 2018 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "aurigo-software-technologies-inc": {
+  "year": 2003,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:48-04:00",
+  "why": "Aurigo Software Technologies Inc. founded 2003 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "aurionpro": {
+  "year": 1997,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:49-04:00",
+  "why": "Aurionpro founded 1997 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "aurrigo": {
+  "year": 1993,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:50-04:00",
+  "why": "Aurrigo founded 1993 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "aventiv-technologies": {
+  "year": 2019,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:51-04:00",
+  "why": "Aventiv Technologies founded 2019 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "avenu-insights-analytics": {
+  "year": 1978,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:52-04:00",
+  "why": "Avenu Insights & Analytics founded 1978 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "avolve": {
+  "year": 2006,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:53-04:00",
+  "why": "Avolve founded 2006 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "axiom-cemetery-management-solutions": {
+  "year": 1983,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:54-04:00",
+  "why": "Axiom Cemetery Management Solutions founded 1983 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "azavar": {
+  "year": 1996,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:55-04:00",
+  "why": "Azavar founded 1996 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ },
+ "bis-digital": {
+  "year": 1982,
+  "by": "agent:overnight-build",
+  "at": "2026-08-24T09:09:56-04:00",
+  "why": "BIS Digital founded 1982 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
+  "confirmed": null
+ }
+}

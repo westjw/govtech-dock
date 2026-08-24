@@ -79,6 +79,14 @@
   input.txt,select.sel{font:inherit;font-size:12.5px;padding:6px 9px;border:1px solid var(--line);
     border-radius:0;background:var(--bg);color:var(--ink)}
   input.txt{min-width:270px;flex:1}
+  /* the reason box when a low-confidence ruling was tried without one */
+  input.txt.needed{border-color:var(--warn)}
+  /* the console-code prompt. Docked, not modal: it blocks rulings, not
+     reading, and the queues are worth looking at either way. */
+  .codebar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;
+    gap:8px;align-items:center;flex-wrap:wrap;padding:12px 16px;
+    background:var(--panel);border-top:1px solid var(--warn);
+    color:var(--dim);font-size:12.5px;line-height:1.6}
   .ok{color:var(--accent)} .warn{color:var(--warn)} .bad{color:var(--bad)}
   .empty{color:var(--faint);padding:44px 0;text-align:center;font-size:13px}
   .evi{margin-top:10px;padding:10px 12px;background:var(--chip);border-radius:0;
@@ -324,7 +332,47 @@ let META = null, SCHEMA = null, FAMILIES = null, TAB = null, LAST_ITEMS = null;
 async function api(path, body) {
   const r = await fetch(path, body ? {method:'POST',
       headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)} : {});
-  return r.json();
+  const j = await r.json();
+  /* A ruling needs the code printed on the admin's console, which no route
+     serves and no page carries — that is what stops a script on this machine
+     from ruling 86 companies overnight. If it is missing or stale, say so
+     here rather than letting the queue report a bare 403. */
+  if (j && j.code_required) codeBar(true);
+  return j;
+}
+
+/* THE CODE BAR. Normally never seen: the admin prints its URL with the code
+   already in the fragment, the page pockets it and strips it from the address
+   bar, and the fragment never travels to the server. This is the fallback for
+   opening a bookmark instead, or for a code left over from a previous run —
+   the code dies with the process, on purpose. */
+function codeBar(stale) {
+  let bar = $('#codebar');
+  if (bar) bar.remove();
+  bar = el('div', 'codebar');
+  bar.id = 'codebar';
+  bar.appendChild(el('span', null, stale
+    ? 'That code is not this run’s. Rulings are refused until it matches — '
+      + 'the current one is printed in the terminal running admin.py.'
+    : 'Rulings need the code printed in the terminal running admin.py. '
+      + 'Opening the link it prints does this for you.'));
+  const inp = el('input', 'txt');
+  inp.placeholder = 'six characters';
+  inp.maxLength = 6;
+  inp.style.minWidth = '150px';
+  const save = el('button', 'act go', 'Use it');
+  const go = () => {
+    const v = (inp.value || '').trim();
+    if (!v) return;
+    window.gtdCode.set(v);
+    bar.remove();
+    toast('code accepted for this browser — try that again');
+  };
+  save.onclick = go;
+  inp.onkeydown = e => { if (e.key === 'Enter') go(); };
+  bar.append(inp, save);
+  document.body.appendChild(bar);
+  inp.focus();
 }
 function toast(msg, bad) {
   const t = el('div', 'toast' + (bad ? ' bad' : ''), msg);
@@ -415,6 +463,8 @@ async function boot() {
     b.dataset.key = k; nav.appendChild(b);
   });
   showStart();
+  // said up front rather than at the moment a ruling bounces
+  if (!window.gtdCode || !window.gtdCode.get()) codeBar(false);
 }
 
 async function refreshCounts() {
@@ -493,26 +543,46 @@ async function showStart() {
   /* Labels say what the number is, in words that need no gloss. The first
      drafts - "calls on the table", "visible from the street", "clean paper" -
      were floor slang I invented, and a label you have to explain has already
-     failed. */
+     failed.
+
+     THE THIRD LABEL NAMES ITS OWN DENOMINATOR. It used to read "of your
+     rulings say why" over a percentage taken across the decision files, and
+     sat directly above a sitting counter taken from the journal - two
+     different populations, both called "your rulings", one above the other.
+     A percentage whose denominator is not the one the reader assumes is a
+     wrong number even when the arithmetic is right, so the set is said out
+     loud: the rulings that HAVE somewhere to put a reason. */
   counter.append(
     big(onTable, 'decisions waiting on you'),
     big(visible, 'of them wrong on the public site right now', 'amber'),
     big(g.why_coverage === null || g.why_coverage === undefined
-        ? '—' : g.why_coverage + '%', 'of your rulings say why', 'green'));
+        ? '—' : g.why_coverage + '%',
+      `of your ${g.why_of || 0} rulings that can carry a reason say why`,
+      'green'));
   v.appendChild(counter);
 
   /* Counted in SESSIONS, not calendar days. The rhythm here is bursty - an
      evening of rulings, then nothing for a while - and a daily streak against
      that is a machine for feeling bad about a pattern that is not a problem.
      A session is a run with no gap longer than four hours, so a Sunday
-     evening counts the same as a Tuesday one. */
+     evening counts the same as a Tuesday one.
+
+     And it counts RULINGS. It used to count every write in the journal, which
+     is how an overnight agent's 86 edits to companies.json arrived here as
+     the owner's own personal best of 84. */
   const ss = t.sessions || {};
   const line = el('div', 'yourline');
   line.appendChild(el('span', null,
     ss.this_session
-      ? `${ss.this_session} this sitting · your best sitting is ${ss.best_session}`
+      ? `${ss.this_session} ruling${ss.this_session === 1 ? '' : 's'} this sitting`
+        + ` · your best sitting is ${ss.best_session}`
       : `${ss.rulings || 0} rulings across ${ss.sessions || 0} sittings · best ${ss.best_session || 0}`));
-  if (ss.this_session && ss.this_session >= (ss.best_session || 0) && ss.best_session > 1)
+  /* The badge reads the PACED count, not the raw one. Forty-one rulings in
+     2.6 seconds is a real tally and is shown as one; it is not a personal
+     best, and a screen that called it one would be handing out the trophy
+     this whole pass exists to take back. */
+  if (ss.this_considered && ss.this_considered >= (ss.best_considered || 0)
+      && ss.best_considered > 1)
     line.appendChild(el('span', 'pb', 'personal best'));
   v.appendChild(line);
 
@@ -626,7 +696,8 @@ async function showStart() {
      states we can both observe. Anything not derivable is left out - a
      receipt that rounds is a receipt nobody reads twice. */
   const rc = t.receipt || {};
-  if (rc.open && (rc.stamped || rc.edits || (rc.doors || []).length)) {
+  if (rc.open && (rc.stamped || rc.edits || (rc.doors || []).length
+                  || (rc.by_others || []).length)) {
     v.appendChild(el('div', 'lbl', 'This sitting'));
     v.appendChild(receiptCard(rc));
   }
@@ -653,15 +724,20 @@ async function showStart() {
   v.appendChild(notes);
 }
 
+/* The gate is stated in the units it is actually measured in. The CSV used to
+   say "board health 44 of 55", a threshold on a composite whose biggest term
+   was max(0, 40 - wrong)/40 — a fraction with an invented denominator
+   deciding when a reward opened. It now reads the condition its own
+   description always claimed: no company a visitor can see is filed in a
+   bucket its record contradicts. */
 function unlockCard(u) {
   const n = el('div', 'unlock' + (u.open ? ' open' : ''));
   n.appendChild(el('div', 'uname', u.name));
-  n.appendChild(el('div', 'ugate', u.open
-    ? `open · board health ${u.score} of ${u.at} needed`
-    : `board health ${u.score} of ${u.at} — ${u.gap} to go`));
-  if (!u.open) {
+  n.appendChild(el('div', 'ugate',
+    (u.open ? 'open · ' : '') + (u.gate_says || '')));
+  if (!u.open && u.pct !== null && u.pct !== undefined) {
     const g = el('div', 'ugap'), fill = el('span');
-    fill.style.width = Math.max(2, Math.round(100 * u.score / u.at)) + '%';
+    fill.style.width = Math.max(2, u.pct) + '%';
     g.appendChild(fill);
     n.appendChild(g);
   }
@@ -723,11 +799,24 @@ function receiptCard(rc) {
     r.appendChild(el('span', 'rwhat', what));
     return r;
   };
-  if (rc.stamped) n.appendChild(line(rc.stamped, 'stamped — rulings that carry your name'));
-  if (rc.edits) n.appendChild(line(rc.edits, 'edits to company records'));
+  /* ONE LINE, BECAUSE THEY ARE ONE PILE. This used to print "55 stamped" and
+     "133 edits to company records" as two lines, and every one of the 55 also
+     wrote a journal entry — so the 55 were inside the 133 and the receipt
+     read as 188 things having happened. Both counts were right; stacking them
+     was the lie. */
+  if (rc.edits)
+    n.appendChild(line(rc.edits, rc.stamped
+      ? `edits to company records — ${rc.stamped} of them rulings that carry your name`
+      : 'edits to company records, none of them rulings'));
+  else if (rc.stamped)
+    n.appendChild(line(rc.stamped, 'rulings that carry your name'));
   n.appendChild(line(rc.reversed, rc.reversed
     ? 'reversed — the undo working, not a black mark'
     : 'reversed'));
+  /* Somebody else's writes, kept out of the count above rather than folded
+     into it. An agent's 86 edits are not your evening. */
+  (rc.by_others || []).forEach(o =>
+    n.appendChild(line(o.n, `more by ${o.by} — not counted as yours`)));
   (rc.states || []).forEach(s => {
     const r = el('div', 'rline');
     r.appendChild(el('b', null, s.from + '→' + s.to + '%'));
@@ -855,15 +944,25 @@ function agreeLine(a, total) {
   p.appendChild(document.createTextNode(` proposals — `));
   p.appendChild(el('strong', null, a.pct + '%'));
   p.appendChild(document.createTextNode(' agree-rate.'));
-  if (!a.measured)
-    p.appendChild(document.createTextNode(
-      ` ${a.measured_at - a.ruled} more before that is a measurement `
-      + `rather than an anecdote.`));
+  /* WHY IT IS NOT A MEASUREMENT, IN WORDS — never as a countdown.
+     This used to say "N more before that is a measurement", which is a
+     progress bar for a keystroke count, and a reviewer emptied it in three
+     and a half seconds by holding down A. What replaces it is a sentence
+     about the evidence: the two things missing are that the rulings were made
+     slowly enough to have been read, and that at least some of them
+     disagreed. Neither is shown as a number to chase, because "disagree four
+     more times" is an instruction to file four companies wrongly. */
+  if (a.why_not) {
+    p.appendChild(document.createTextNode(' '));
+    p.appendChild(el('span', 'unmeasured', 'Not a measurement yet: '));
+    p.appendChild(document.createTextNode(a.why_not + '.'));
+  }
   n.appendChild(p);
   if (a.by_confidence.length) {
     const line = el('div', 'conflist');
     a.by_confidence.forEach(c => line.appendChild(el('span', null,
-      `${c.confidence}: ${c.agreed}/${c.ruled} (${c.pct}%)`)));
+      `${c.confidence}: ${c.agreed}/${c.ruled} (${c.pct}%)`
+      + (c.measured ? ' · measured' : ''))));
     n.appendChild(line);
   }
   return n;
@@ -980,17 +1079,18 @@ function renderBelt() {
    refuse. */
 function freshen(card) {
   const a = QINFO && QINFO.agree;
+  const it = BELT.items[BELT.i];
   const at = card.querySelector('.propagree');
   if (at && a) {
-    const seen = (a.by_confidence || []).find(c => c.confidence === at.dataset.conf);
+    const seen = bandOf(at.dataset.conf);
     at.textContent = seen
       ? `you have taken ${seen.agreed} of ${seen.ruled} at this confidence`
       : 'nothing at this confidence has been ruled on yet';
   }
   const arm = card.querySelector('.beltarm');
-  if (arm && !BELT.armed) arm.textContent = armLine();
+  if (arm && !BELT.armed) arm.textContent = armLine(it);
   const enter = card.querySelector('.enterkey');
-  if (enter) enter.textContent = oneKeyOk() ? 'commit' : 'commit the armed call';
+  if (enter) enter.textContent = oneKeyOk(it) ? 'commit' : 'commit the armed call';
 }
 
 function nextIndex(from) {
@@ -1012,13 +1112,45 @@ const CALLS = {
   ],
 };
 
-/* One keystroke commits only once the agree-rate exists. Vendors never get
-   there on purpose: a name ruled out is never asked again and the row simply
-   stops existing, which is the invisible permanent error this whole tool is
-   built around. Two acts is the price of that. */
-function oneKeyOk() {
-  return BELT.queue === 'miscategorized'
-      && QINFO && QINFO.agree && QINFO.agree.measured;
+/* One keystroke commits only once the agree-rate exists FOR THIS CONFIDENCE
+   BAND. Forty medium-confidence rulings say nothing about what "high" is
+   worth, so they must not buy a one-key ruling on a high-confidence card —
+   which is the same complaint the split-by-confidence display exists to
+   answer, applied to the thing it actually gates.
+
+   Vendors never get there on purpose: a name ruled out is never asked again
+   and the row simply stops existing, which is the invisible permanent error
+   this whole tool is built around. Two acts is the price of that. */
+function bandOf(conf) {
+  const a = QINFO && QINFO.agree;
+  if (!a) return null;
+  return (a.by_confidence || []).find(
+    c => c.confidence === (conf || 'unstated')) || null;
+}
+
+function oneKeyOk(it) {
+  if (BELT.queue !== 'miscategorized' || !it) return false;
+  const b = bandOf(it.confidence);
+  return !!(b && b.measured);
+}
+
+/* Accepting a LOW-confidence proposal needs a line of typing. Low confidence
+   is the guesser saying it does not know; taking that placement with nothing
+   written down records a machine's guess as a person's ruling, and the belt
+   hands you the next card in under a second. It costs nothing when somebody
+   is really reading, and it is deliberately NOT asked on a high-confidence
+   row a person simply agrees with — demanding an essay there trains people to
+   type junk, which teaches the next pass worse than silence does.
+   The server refuses these too; this is so the refusal is not a surprise. */
+function needsWhy(it, spec, why) {
+  if (BELT.queue !== 'miscategorized') return false;
+  if ((it.confidence || '').toLowerCase() !== 'low') return false;
+  if ((why || '').trim()) return false;
+  const chose = spec.sector
+    ? `${spec.sector} / ${spec.category}`
+    : (spec.accept ? `${it.proposed_sector} / ${it.proposed_category}` : null);
+  return chose !== null
+      && chose === `${it.proposed_sector} / ${it.proposed_category}`;
 }
 
 function beltCard(idx) {
@@ -1073,7 +1205,13 @@ function beltCard(idx) {
   /* The why. It is the craft stat and the only thing that teaches the next
      pass, so it sits in the loop rather than behind a disclosure. */
   const why = el('input', 'txt');
-  why.placeholder = 'why (this is what teaches the next pass)';
+  /* On a low-confidence row the reason is not optional and the box says so
+     before the button refuses, so the requirement reads as part of the job
+     rather than as the tool being difficult. */
+  why.placeholder = (key === 'miscategorized'
+                     && (it.confidence || '').toLowerCase() === 'low')
+    ? 'why — required here: the guesser says it does not know'
+    : 'why (this is what teaches the next pass)';
   why.value = '';
   const acts = el('div', 'beltacts');
   acts.appendChild(why);
@@ -1102,7 +1240,7 @@ function beltCard(idx) {
   row.appendChild(skip);
   n.appendChild(row);
 
-  n.appendChild(el('div', 'beltarm', armLine()));
+  n.appendChild(el('div', 'beltarm', armLine(it)));
 
   const legend = el('div', 'beltkeys');
   const kv = (k, what, cls) => {
@@ -1115,7 +1253,7 @@ function beltCard(idx) {
     legend.appendChild(kv(spec.k.toUpperCase(), spec.label.replace('…', ''))));
   if (key === 'vendors') legend.appendChild(kv('F', 'settle the family'));
   legend.append(kv('J', 'skip'), kv('W', 'write the why'),
-                kv('⏎', oneKeyOk() ? 'commit' : 'commit the armed call', 'enterkey'),
+                kv('⏎', oneKeyOk(it) ? 'commit' : 'commit the armed call', 'enterkey'),
                 kv('esc', 'disarm'));
   n.appendChild(legend);
 
@@ -1133,21 +1271,28 @@ function beltCard(idx) {
   return n;
 }
 
-function armLine() {
-  if (oneKeyOk())
-    return 'One key rules. The agree-rate is measured now, so the second act '
-         + 'has been earned away.';
-  const a = QINFO && QINFO.agree;
+/* No achievement language and no countdown. This used to congratulate you —
+   "the second act has been earned away" — for a state a fast clicker reached
+   in three and a half seconds, and before that it counted down the rulings
+   left until one-key opened, which is a scoreboard for keystrokes. What it
+   says now is what is true of the evidence, and the only way to change it is
+   to rule slowly enough to have read the card and to disagree when the
+   guesser is wrong. */
+function armLine(it) {
+  if (oneKeyOk(it))
+    return 'One key rules on this confidence band: rulings at this confidence '
+         + 'have been made slowly enough to have been read, and some of them '
+         + 'disagreed. Other bands still take two acts.';
   if (BELT.queue === 'vendors')
     return 'Two acts, always: press a call to arm it, Enter to commit. A '
          + 'vendor ruled out never appears again and nothing errors when it '
          + 'was wrong, so this one does not get a single keystroke.';
-  const left = a && a.ruled != null ? Math.max(0, a.measured_at - a.ruled) : null;
-  return 'Two acts: press a call to arm it, Enter to commit.'
-       + (left !== null
-          ? ` One-key rulings open after ${left} more — those rulings are what `
-            + 'measures the guesser you would be trusting.'
-          : '');
+  const b = it ? bandOf(it.confidence) : null;
+  return 'Two acts: press a call to arm it, Enter to commit. '
+       + (b && b.ruled
+          ? `Nothing at ${b.confidence} confidence has been ruled on carefully `
+            + 'enough yet to say what that label is worth.'
+          : 'This confidence label has never been checked against an outcome.');
 }
 
 function paintArmed(card) {
@@ -1157,12 +1302,12 @@ function paintArmed(card) {
   if (line) line.textContent = BELT.armed
     ? `“${BELT.armed.label.replace('…', '')}” is armed — Enter commits it, `
       + 'Esc puts it back.'
-    : armLine();
+    : armLine(BELT.items[BELT.i]);
 }
 
 function choose(spec, it, why, card, idx) {
   if (spec.edit) return openEdit(it, why, card, idx);
-  if (oneKeyOk()) return commit(spec, it, why, card, idx);
+  if (oneKeyOk(it)) return commit(spec, it, why, card, idx);
   if (BELT.armed && BELT.armed.k === spec.k) return commit(spec, it, why, card, idx);
   BELT.armed = spec;
   paintArmed(card);
@@ -1188,6 +1333,16 @@ function ruleBody(spec, it, why) {
 }
 
 async function commit(spec, it, why, card, idx) {
+  if (needsWhy(it, spec, why.value)) {
+    const line = card.querySelector('.beltarm');
+    if (line) line.textContent = 'The guesser rated this one LOW confidence — '
+      + 'it is telling you it does not know. Taking its answer needs a line '
+      + 'saying what you saw that it did not. Nothing has been written.';
+    why.classList.add('needed');
+    why.focus();
+    BELT.armed = null;
+    return;
+  }
   card.querySelectorAll('button.act').forEach(b => b.disabled = true);
   const [path, body] = ruleBody(spec, it, (why.value || '').trim());
   const r = await api(path, body);
@@ -1379,10 +1534,15 @@ document.addEventListener('keydown', e => {
   if (b && !b.disabled) { e.preventDefault(); b.click(); }
 });
 
+/* The reason sent is the BUTTON'S OWN WORDS, which is a real answer somebody
+   chose ("Cannot find it", "Nothing public anywhere"), or nothing at all.
+   It used to send the literal string "dismissed in admin" on every dismissal,
+   and the why-coverage meter counts any non-empty why — so the one number in
+   this admin that measures care was being topped up by the admin itself. */
 function dismissBtn(queue, key, label) {
   const b = el('button', 'act mute', label || 'Not an issue');
   b.onclick = async () => {
-    const r = await api('/api/dismiss', {queue, key, why: 'dismissed in admin'});
+    const r = await api('/api/dismiss', {queue, key, why: label || ''});
     if (r.error) return toast(r.error, true);
     b.closest('.item').remove(); refreshCounts();
   };
@@ -1857,15 +2017,32 @@ RENDER.boards = c => {
   return n;
 };
 
-/* Founding year. This queue is a typing job and nothing else, so it is built
-   for typing: the year input is focused-ready, Enter submits, and the two
-   pages where the answer actually lives are one click away rather than a
-   search-engine detour. No guess is offered - a year scraped from a copyright
-   footer is wrong about as often as it is right, and a wrong year is
-   indistinguishable from a right one forever after. */
+/* Founding year. Two jobs, one tab.
+   A BLANK year is a typing job and nothing else, so it is built for typing:
+   the year input, Enter submits, and the two pages where the answer actually
+   lives are one click away rather than a search-engine detour. No guess is
+   offered — a year scraped from a copyright footer is wrong about as often as
+   it is right, and a wrong year is indistinguishable from a right one forever
+   after.
+
+   AN UNCONFIRMED year is the other job, and it sits above the blanks because
+   it is already on the public card with nobody's name on it. 86 of these were
+   written by a build agent in one night. They are mostly correct and none of
+   them is being deleted; they are being ASKED. Same links, same evidence, and
+   two buttons: the year stands, or it is corrected — one click each. */
 RENDER.founded = c => {
   const n = el('div', 'item');
   n.appendChild(withLogo(el('h3', null, c.name), c));
+  if (c.kind === 'unconfirmed') {
+    const flag = el('div', 'evi');
+    const t = el('div');
+    t.appendChild(el('b', null, `${c.proposed_by || 'an agent'} proposed ${c.year}`));
+    t.appendChild(document.createTextNode(
+      ' — no person has stood behind this. It is on the public card now, and a '
+      + 'visitor cannot tell a checked year from an unchecked one.'));
+    flag.appendChild(t);
+    n.appendChild(flag);
+  }
   n.appendChild(el('div', 'kv', c.description || ''));
   const links = el('div', 'kv');
   links.style.marginTop = '4px';
@@ -1894,19 +2071,39 @@ RENDER.founded = c => {
   const yr = el('input', 'in');
   yr.placeholder = 'year founded'; yr.inputMode = 'numeric'; yr.maxLength = 4;
   yr.style.maxWidth = '140px';
-  const save = el('button', 'btn primary', 'Save');
+  const save = el('button', 'btn primary',
+                  c.kind === 'unconfirmed' ? 'Correct it' : 'Save');
   const msg = el('div', 'kv');
   msg.style.cssText = 'flex-basis:100%;margin-top:4px';
+  const fail = r => { msg.textContent = r.error;
+                      msg.style.color = 'var(--warn)'; };
   const go = async () => {
     save.disabled = true;
     const r = await api('/api/set-founded', {id: c.id, year: yr.value.trim()});
     save.disabled = false;
-    if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
+    if (r.error) return fail(r);
     toast(r.message);
     n.remove();
   };
   save.onclick = go;
   yr.onkeydown = e => { if (e.key === 'Enter') go(); };
+  if (c.kind === 'unconfirmed') {
+    /* Confirm writes nothing to the company record — the year is already
+       there and does not change. What it writes is a name against it, which
+       is the entire difference between "an agent typed this" and "somebody
+       checked this". */
+    const ok = el('button', 'btn primary', `Confirm ${c.year}`);
+    ok.onclick = async () => {
+      ok.disabled = true;
+      const r = await api('/api/confirm-founded', {id: c.id});
+      ok.disabled = false;
+      if (r.error) return fail(r);
+      toast(r.message);
+      n.remove();
+    };
+    row.appendChild(ok);
+    yr.placeholder = `not ${c.year}? type the right one`;
+  }
   row.append(yr, save,
              dismissBtn('founded', c.id, 'Cannot find it'));
   row.appendChild(msg);

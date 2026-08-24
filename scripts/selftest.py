@@ -712,6 +712,231 @@ def check_admin_game() -> int:
     return bad
 
 
+def _sandbox_admin(files: dict):
+    """Point admin AND journal at a throwaway data directory.
+
+    Every check below writes rulings, and a test that writes a ruling into
+    data/ is exactly the accident this repo spent a night recovering from.
+    journal has its own DATA, so both get moved or the before-images land in
+    the real audit trail.
+    """
+    import contextlib
+    import tempfile
+
+    import admin
+    import journal
+
+    @contextlib.contextmanager
+    def swap():
+        tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-"))
+        for name, payload in files.items():
+            (tmp / name).write_text(json.dumps(payload))
+        keep = (admin.DATA, journal.DATA, journal.LOG)
+        admin.DATA, journal.DATA, journal.LOG = tmp, tmp, tmp / "admin_journal.jsonl"
+        try:
+            yield tmp
+        finally:
+            admin.DATA, journal.DATA, journal.LOG = keep
+    return swap()
+
+
+def check_admin_gates() -> int:
+    """The gates that decide when a reward opens and when a keystroke commits.
+
+    An adversarial review emptied all of them in three and a half seconds - 49
+    accepts down the belt, no card read, no reason typed - and its sharpest
+    observation was not any single number but that NOTHING TESTED THEM: "a
+    refactor could open the CSV gate and nothing would notice". So each gate
+    is asserted here, against the functions and against a real server, in the
+    same spirit as check_admin_http.
+
+    - NO INVENTED DENOMINATOR. board_health's public-correctness part read
+      max(0, 40 - wrong) / 40, and the 40 counted nothing on file. Every part
+      must divide by a number that is a count of records.
+    - AN EMPTY DENOMINATOR IS NOT A ZERO. A queue nobody has been asked about
+      yet must report unknown, not 0%.
+    - THE CSV GATE IS ENFORCED ON THE SERVER, not only on the button, and it
+      is closed while any public row contradicts itself.
+    - A COUNT OF RULINGS IS NOT A MEASUREMENT. A burst cannot make the
+      agree-rate measured, and neither can an unbroken run of agreement.
+    - A REASON NOBODY TYPED IS NOT A REASON, and a low-confidence proposal
+      cannot be accepted in silence.
+    - THE CONSOLE CODE IS IN NOTHING THE SERVER SENDS. That is the whole
+      property that keeps a script off the ruling endpoints; if it ever ships
+      in the page, the gate is decoration.
+    """
+    import datetime as dt
+
+    import admin
+    bad = 0
+
+    # --- board_health: real counts on both sides of every fraction --------
+    companies = json.load(open(DATA / "companies.json"))
+    board = json.load(open(DATA / "board.json"))
+    h = admin.board_health(companies, board)
+    live = {o["id"]: o.get("open_roles", 0) for o in board.get("organizations", [])}
+    visible = sum(1 for c in companies if live.get(c["id"], 0) > 0)
+    if h.get("visible") != visible:
+        bad += fail(f"board_health says {h.get('visible')} public rows, the "
+                    f"board says {visible}")
+    part = next((p for p in h["parts"] if "public" in p["label"].lower()), None)
+    if not part:
+        bad += fail("board_health has no part about the public rows")
+    elif part["of"] != visible:
+        bad += fail(f"the public-correctness part divides by {part['of']}, "
+                    f"which is not the {visible} companies with open roles - "
+                    f"a denominator that counts nothing on file is the bug "
+                    f"this check exists for")
+    for p in h["parts"]:
+        if p["of"] == 0 and p["pct"] is not None:
+            bad += fail(f"{p['label']!r} has an empty denominator and still "
+                        f"reports {p['pct']}% - an unknown scored as a zero")
+
+    # --- the CSV gate, as a function and on the wire ----------------------
+    if admin.csv_gate({"visible": 286, "visible_wrong": 1})["open"]:
+        bad += fail("the CSV export opens with a public row still in the "
+                    "wrong bucket")
+    if not admin.csv_gate({"visible": 286, "visible_wrong": 0})["open"]:
+        bad += fail("the CSV export stays shut with every public row right")
+    if admin.csv_gate({"visible": 0, "visible_wrong": 0})["open"]:
+        bad += fail("the CSV export opened with no board loaded - nothing "
+                    "known is not the same as nothing wrong")
+    if any(u.get("gate") == "score" and u["key"] == "csv"
+           for u in admin.UNLOCKS):
+        bad += fail("the CSV unlock is back on a score threshold")
+
+    # --- what makes an agree-rate a measurement ---------------------------
+    t0 = dt.datetime(2026, 8, 24, 10, 0, 0)
+
+    def ruling(i, secs, agrees=True):
+        return {"sector": "Public Safety",
+                "category": "Fire" if agrees else "Police",
+                "at": (t0 + dt.timedelta(seconds=secs)).isoformat(),
+                "on": "2026-08-24", "by": "owner", "why": None,
+                "saw": {"proposed": "Public Safety / Fire",
+                        "confidence": "high"}}
+
+    n = admin.MEASURED_AT + 20
+    cases = [
+        ("a burst of rulings in one second",
+         {f"c{i}": ruling(i, 0) for i in range(n)}, False),
+        ("an unbroken run of agreement",
+         {f"c{i}": ruling(i, i * (admin.READ_SECONDS + 5)) for i in range(n)},
+         False),
+        ("paced rulings that argued with the guesser",
+         {f"c{i}": ruling(i, i * (admin.READ_SECONDS + 5),
+                          agrees=i >= admin.MIN_DISSENT) for i in range(n)},
+         True),
+    ]
+    for label, recs, want in cases:
+        with _sandbox_admin({"placement_rulings.json": recs}):
+            got = admin.agree_rate()
+        if got["measured"] != want:
+            bad += fail(f"{label}: agree-rate measured={got['measured']}, "
+                        f"expected {want} "
+                        f"(ruled {got['ruled']}, considered {got['considered']},"
+                        f" dissent {got['dissent']})")
+        if not want and not got.get("why_not"):
+            bad += fail(f"{label}: unmeasured with no reason given")
+
+    # --- act_place: no substituted reason, no silent low-confidence accept -
+    # A company that is NOT already where these cases file it. companies[0]
+    # is Seneca, which is Public Safety / Fire already, so "moving" it there
+    # is a no-op, the journal correctly records nothing, and the
+    # counted-once check below reads that as a missing entry.
+    cid = next(c["id"] for c in companies
+               if (c["sector"], c["category"]) != ("Public Safety", "Fire"))
+    shown = {"was": "General Gov / Suppliers & Services",
+             "proposed": "Public Safety / Fire", "confidence": "low"}
+    with _sandbox_admin({"companies.json": companies,
+                         "schema.json": json.load(open(DATA / "schema.json"))}):
+        r = admin.act_place({"id": cid, "sector": "Public Safety",
+                             "category": "Fire", "why": "", **shown})
+        if not r.get("error"):
+            bad += fail("a LOW-confidence proposal was accepted with no reason "
+                        "typed - that is the blind path the belt gate closes")
+        r = admin.act_place({"id": cid, "keep": True, "why": "", **shown})
+        if r.get("error"):
+            bad += fail(f"'bucket is right' was refused: {r['error']}")
+        kept = admin.read("admin_dismissed.json", {}).get(f"miscategorized:{cid}")
+        if (kept or {}).get("why"):
+            bad += fail(f"a dismissal nobody explained stored the reason "
+                        f"{kept['why']!r} - the craft meter counts any "
+                        f"non-empty why, so a stand-in inflates it")
+    with _sandbox_admin({"companies.json": companies,
+                         "schema.json": json.load(open(DATA / "schema.json"))}):
+        # the same ruling, at high confidence, must NOT be asked for an essay
+        r = admin.act_place({"id": cid, "sector": "Public Safety",
+                             "category": "Fire", "why": "",
+                             **{**shown, "confidence": "high"}})
+        if r.get("error"):
+            bad += fail(f"a high-confidence agreement was made to justify "
+                        f"itself: {r['error']} - that trains junk reasons")
+
+    # --- rulings are rulings, and an agent's writes are not yours ---------
+    agent_journal = "\n".join(json.dumps({
+        "id": f"2026-08-24#{i}", "at": (t0 + dt.timedelta(seconds=i)).isoformat(),
+        "file": "companies.json", "action": "set-founded",
+        "by": "agent:overnight-build", "why": "x", "n": 1,
+        "changes": {f"c{i}": {"before": {"year_founded": None},
+                              "after": {"year_founded": 1999}}}})
+        for i in range(30))
+    with _sandbox_admin({}) as tmp:
+        (tmp / "admin_journal.jsonl").write_text(agent_journal + "\n")
+        s = admin.sessions()
+        if s["rulings"]:
+            bad += fail(f"sessions() counted {s['rulings']} rulings out of 30 "
+                        f"journal writes by an agent - a personal best made "
+                        f"of somebody else's typing")
+        rc = admin.receipt()
+        if rc.get("stamped"):
+            bad += fail(f"the receipt stamped {rc['stamped']} of an agent's writes")
+        if not rc.get("by_others"):
+            bad += fail("30 agent writes this sitting and the receipt does "
+                        "not say whose they were")
+
+    # --- one ruling is counted once --------------------------------------
+    #
+    # A wrong-bucket ruling writes BOTH a decision record and a journal entry;
+    # a Sort-board drag writes only a journal entry. They used to journal
+    # under the same name, so any rule that counted journal writes either
+    # doubled every placement or dropped every drag. The names are what keeps
+    # them apart, so the names are asserted.
+    if "place" in admin.JOURNAL_RULINGS:
+        bad += fail("a placement is journalled AND recorded in "
+                    "placement_rulings.json - counting both doubles it")
+    if "move" not in admin.JOURNAL_RULINGS:
+        bad += fail("a Sort-board drag is a ruling with no other record and "
+                    "is not being counted")
+    with _sandbox_admin({"companies.json": companies,
+                         "schema.json": json.load(open(DATA / "schema.json"))}):
+        r = admin.act_place({"id": cid, "sector": "Public Safety",
+                             "category": "Fire", "why": "checked the site",
+                             "was": "General Gov / Suppliers & Services",
+                             "proposed": "Public Safety / Fire",
+                             "confidence": "low"})
+        if r.get("error"):
+            bad += fail(f"a low-confidence accept WITH a reason was refused: "
+                        f"{r['error']}")
+        import journal
+        actions = [e.get("action") for e in journal._entries()]
+        if "place" not in actions:
+            bad += fail(f"act_place journalled as {actions!r}, not 'place' - "
+                        f"the ruling count cannot tell it from a drag")
+        stamps = admin._ruling_stamps()
+        if len(stamps) != 1:
+            bad += fail(f"one ruling was counted {len(stamps)} times")
+
+    # --- the console code never leaves the process ------------------------
+    if not admin.OPEN_ACTIONS <= set(admin.ACTIONS):
+        bad += fail("OPEN_ACTIONS names something that is not an action")
+    for a in ("place", "vendor-scope", "vendor-scope-all", "move", "merge",
+              "patch", "set-founded", "confirm-founded", "dismiss"):
+        if a in admin.OPEN_ACTIONS:
+            bad += fail(f"{a!r} writes a ruling and is exempt from the code")
+    return bad
+
+
 def check_admin_guards() -> int:
     """Two invariants the admin states in comments, said here as tests.
 
@@ -986,6 +1211,73 @@ def check_admin_http() -> int:
                          "POST", b'{"id":"tyler-technologies","name":"owned"}')
         if code != 415:
             bad += fail(f"a text/plain write answered {code}, not 415")
+
+        # THE RULING GATE. A local script can get a token by asking for one -
+        # that route exists for the capture extension and is not the hole.
+        # The hole was that the token was also permission to RULE, and an
+        # agent made 86 rulings with one. A ruling now needs the code printed
+        # on the console, which nothing serves.
+        #
+        # The body is empty on BOTH probes, and that is not laziness. An
+        # earlier draft sent a real ruling here - keep:true on a real company
+        # - and relied on the gate to refuse it. The moment the gate was
+        # broken to check that this test notices, the test itself wrote a
+        # dismissal into the owner's live admin_dismissed.json. A test whose
+        # safety depends on the thing it is testing is the wrong shape: what
+        # is being asserted is the status code, so the body must be one that
+        # writes nothing even if it gets all the way through.
+        authed = {"X-Admin-Token": admin.TOKEN,
+                  "Content-Type": "application/json"}
+        code, _, body = ask("/api/place", authed, "POST", b'{}')
+        if code != 403:
+            bad += fail(f"a ruling with a token and no console code answered "
+                        f"{code}, not 403 - this is the 86-ruling hole")
+        elif b"code_required" not in body:
+            bad += fail("the ruling refusal does not say a code is needed")
+        # And the code, supplied, gets THROUGH the gate: act_place refuses it
+        # on its own terms, which is proof the gate opened and proof nothing
+        # was written.
+        code, _, body = ask("/api/place", {**authed,
+                                           "X-Admin-Code": admin.CONSOLE_CODE},
+                            "POST", b'{}')
+        if code == 403 and b"code_required" in body:
+            bad += fail("the real console code was refused by its own gate")
+        elif b"need a company id" not in body:
+            bad += fail(f"a coded ruling did not reach the action: {body[:90]!r}")
+        # the extension's one write must NOT have been locked out with it
+        if "capture" not in admin.OPEN_ACTIONS:
+            bad += fail("the capture extension can no longer write")
+
+        # THE CODE IS IN NOTHING THE SERVER SENDS. Not in the page, not in the
+        # shim, not on /api/token. If it ever ships, a script reads it out of
+        # curl and the gate is decoration.
+        # /api/schema and /api/agree, not /api/queues: building all thirteen
+        # queues over 2,108 companies is slow AND has a side effect - the
+        # founding-year queue harvests provenance out of the journal and
+        # writes it - and selftest must not write to data/ at all.
+        secret = admin.CONSOLE_CODE.encode()
+        for path, hdrs in (("/", None), ("/api/token", None),
+                           ("/api/schema", {"X-Admin-Token": admin.TOKEN}),
+                           ("/api/agree", {"X-Admin-Token": admin.TOKEN})):
+            _, _, body = ask(path, hdrs)
+            if secret in body:
+                bad += fail(f"{path} hands out the console code - anything "
+                            f"that can fetch it can now rule")
+
+        # THE CSV GATE IS ON THE SERVER, not only on the button. A reward you
+        # can take by typing the URL was never a reward.
+        code, _, body = ask("/api/export.csv", {"X-Admin-Token": admin.TOKEN})
+        companies = json.load(open(DATA / "companies.json"))
+        board = json.load(open(DATA / "board.json"))
+        want_open = admin.csv_gate(admin.board_health(companies, board))["open"]
+        if want_open and code != 200:
+            bad += fail(f"the CSV export is shut ({code}) with the gate open")
+        if not want_open:
+            if code != 403:
+                bad += fail(f"/api/export.csv answered {code} with the gate "
+                            f"shut - the gate is only on the button")
+            elif b"locked" not in body:
+                bad += fail("the CSV refusal does not say it is locked")
     finally:
         srv.shutdown()
         srv.server_close()
@@ -1281,6 +1573,7 @@ def main() -> int:
     errors += check_alert_vocabulary()
     errors += check_brand()
     errors += check_admin_game()
+    errors += check_admin_gates()
     errors += check_admin_guards()
     errors += check_redirect_hop()
     errors += check_admin_http()

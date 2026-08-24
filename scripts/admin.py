@@ -219,8 +219,14 @@ def dismissed() -> dict:
 
 
 def dismiss(queue: str, key: str, why: str) -> None:
+    # `why` is null when nobody typed one, never a stand-in. The why-coverage
+    # meter counts any non-empty why as a reason, so a placeholder here - the
+    # page used to send the literal "dismissed in admin" - reports care that
+    # nobody took, which is the one thing that meter exists to make visible.
     d = dismissed()
-    d.setdefault(queue, {})[key] = {"on": dt.date.today().isoformat(), "why": why}
+    d.setdefault(queue, {})[key] = {"on": dt.date.today().isoformat(),
+                                    "at": now(),
+                                    "why": (why or "").strip() or None}
     write_atomic("admin_dismissed.json", d)
 
 
@@ -590,52 +596,112 @@ def act_identity_ruling(body: dict) -> dict:
                        if added else "already recorded"}
 
 
+def founded_provenance() -> dict:
+    """Which founding years on file were written by something automated.
+
+    On 2026-08-24 a build agent wrote 86 of them into companies.json while
+    testing the belt. The owner's call was keep and requeue, not delete: they
+    are mostly right - Workday 2005, Tanium 2007, DailyPay 2015, Harris 1976
+    and Auror 2012 all check out - and throwing away 86 correct years to
+    punish how they arrived would cost the board more than it gained. But a
+    year nobody confirmed is exactly the "invented reads as checked" case this
+    queue's own docstring refuses, so they cannot simply sit there either.
+
+    Provenance is HARVESTED from the journal and then KEPT here, because
+    journal.py is a ring buffer - KEEP=500 - and the day it prunes past these
+    entries, an unconfirmed year would quietly become an unremarkable one. A
+    fact about where data came from must not have a shorter life than the
+    data.
+    """
+    import journal
+    store = read("founded_provenance.json", {})
+    grew = False
+    for r in journal._entries():
+        if r.get("action") not in ("set-founded", "confirm-founded"):
+            continue
+        if _is_person(r.get("by")):
+            continue
+        for cid, ch in (r.get("changes") or {}).items():
+            year = ((ch.get("after") or {}).get("year_founded"))
+            if not year or cid in store:
+                continue
+            store[cid] = {"year": year, "by": r.get("by"), "at": r.get("at"),
+                          "why": r.get("why") or "", "confirmed": None}
+            grew = True
+    if grew:
+        write_atomic("founded_provenance.json", store)
+    return store
+
+
 def q_founded(companies, board) -> list:
-    """Companies with no founding year, hiring ones first.
+    """Founding years that need a person: unconfirmed guesses first, then blanks.
 
-    645 of 2,108 have none. It is the one field on the public card that is
-    simply blank, and unlike a sector or a board it cannot be derived from
-    anything - somebody has to read it off the company's own about page. So
-    this queue is a typing job, and it is built to be typed: the year is the
-    only input, and the two places the answer usually lives are one click away.
+    Two different jobs wear one tab, and the order between them is the whole
+    argument. A BLANK year is honest - the card simply does not say. A year an
+    agent wrote and nobody checked is an assertion on the public card that no
+    person has ever stood behind, and a visitor cannot tell the two apart. So
+    the unconfirmed ones come first: this queue's own rule is that a wrong year
+    is indistinguishable from a right one forever after, and that cuts both
+    ways.
 
-    Hiring first, for the same reason every other queue sorts that way: a blank
-    year on a company with 51 open roles is on screen in front of visitors
-    today; a blank year on a dormant one is seen by nobody.
+    Then the blanks, hiring ones first, for the same reason every other queue
+    sorts that way: a blank year on a company with 51 open roles is on screen
+    in front of visitors today; a blank year on a dormant one is seen by
+    nobody.
 
-    Deliberately NOT guessed. A founding year scraped from a copyright footer
-    is wrong about as often as it is right - "(c) 2019" is when the site was
-    built - and a wrong year is indistinguishable from a right one forever
-    after. Blank is honest; invented is not.
+    Still deliberately NOT guessed. A founding year scraped from a copyright
+    footer is wrong about as often as it is right - "(c) 2019" is when the site
+    was built. Blank is honest; invented is not; and invented-then-confirmed is
+    the only way one of these becomes a fact.
     """
     dismissed = read("admin_dismissed.json", {})
     hiring = {o["id"]: o.get("open_roles", 0)
               for o in board.get("organizations", [])}
-    out = []
-    for c in companies:
-        if c.get("year_founded"):
-            continue
-        if f"founded:{c['id']}" in dismissed \
-                or c["id"] in dismissed.get("founded", {}):
-            continue
-        site = c.get("website") or ""
-        out.append({
-            "id": c["id"], "name": c["name"],
-            "description": c.get("description"),
-            "website": site,
-            "open_roles": hiring.get(c["id"], 0),
+    prov = founded_provenance()
+
+    def links(c, site):
+        return {
             # where the answer actually tends to live, so it is one click
             # rather than a search-engine detour
             "about": (site.rstrip("/") + "/about") if site else "",
             "linkedin": ("https://www.linkedin.com/search/results/companies/?keywords="
                          + urllib.parse.quote(c["name"])),
-        })
-    out.sort(key=lambda r: (-r["open_roles"], r["name"]))
-    return out
+        }
+
+    unconfirmed, blank = [], []
+    for c in companies:
+        if f"founded:{c['id']}" in dismissed \
+                or c["id"] in dismissed.get("founded", {}):
+            continue
+        site = c.get("website") or ""
+        row = {"id": c["id"], "name": c["name"],
+               "description": c.get("description"), "website": site,
+               "open_roles": hiring.get(c["id"], 0), **links(c, site)}
+        p = prov.get(c["id"])
+        if c.get("year_founded"):
+            # a year on file is only queue work while it is an unconfirmed
+            # machine write. Once a person has stood behind it, it is a fact
+            # like any other and this queue has nothing left to ask.
+            if p and not p.get("confirmed") and p.get("year") == c["year_founded"]:
+                unconfirmed.append({**row, "kind": "unconfirmed",
+                                    "year": c["year_founded"],
+                                    "proposed_by": p.get("by"),
+                                    "proposed_at": p.get("at")})
+            continue
+        blank.append({**row, "kind": "blank"})
+    unconfirmed.sort(key=lambda r: (-r["open_roles"], r["name"]))
+    blank.sort(key=lambda r: (-r["open_roles"], r["name"]))
+    return unconfirmed + blank
 
 
 def act_set_founded(body: dict) -> dict:
-    """Write a founding year somebody read off the company's own page."""
+    """Write a founding year somebody read off the company's own page.
+
+    `by` is passed through to the journal rather than defaulting to "owner".
+    The 86 agent writes were journalled as the owner's because nothing here
+    ever asked; they had to be re-attributed by hand afterwards, and a
+    re-attribution is a thing somebody has to remember to do.
+    """
     cid = (body.get("id") or "").strip()
     raw = str(body.get("year") or "").strip()
     if not raw.isdigit():
@@ -651,14 +717,64 @@ def act_set_founded(body: dict) -> dict:
     c = next((x for x in companies if x["id"] == cid), None)
     if c is None:
         return {"error": "no such company"}
+    was = c.get("year_founded")
+    by = (body.get("by") or "owner").strip()
     c["year_founded"] = year
     err = validate(companies)
     if err:
         return {"error": err}
-    bad = save_companies(companies, "set-founded", f"{c['name']} founded {year}")
+    bad = save_companies(companies, "set-founded",
+                         f"{c['name']} founded {year}", by=by)
     if bad:
         return {"error": bad}
-    return {"ok": True, "message": f"{c['name']}: founded {year}"}
+    # Correcting an unconfirmed machine year IS confirming the record: a
+    # person looked, disagreed, and put their name on the answer. Leaving it
+    # marked unconfirmed would ask again forever.
+    if _is_person(by):
+        _record_confirmation(cid, year, by, corrected_from=was)
+    return {"ok": True, "message": f"{c['name']}: founded {year}"
+                                   + (f" (was {was})" if was and was != year else "")}
+
+
+def _record_confirmation(cid: str, year: int, by: str,
+                         corrected_from=None) -> bool:
+    """Put a person's name on a year an agent proposed. Returns False if there
+    was nothing to confirm."""
+    store = founded_provenance()
+    p = store.get(cid)
+    if not p:
+        return False
+    p["confirmed"] = {"by": by, "at": now(), "year": year,
+                      "corrected_from": corrected_from
+                                        if corrected_from != year else None}
+    write_atomic("founded_provenance.json", store)
+    return True
+
+
+def act_confirm_founded(body: dict) -> dict:
+    """Confirm the year an agent proposed, as one click.
+
+    Confirming writes nothing to companies.json - the year is already there
+    and is unchanged - and everything to the provenance file: who stood behind
+    it and when. That is the whole point of the exercise. The record stops
+    saying "an agent typed this" and starts saying "a person checked it", and
+    the only difference between those two states is a name.
+    """
+    cid = (body.get("id") or "").strip()
+    by = (body.get("by") or "owner").strip()
+    if not _is_person(by):
+        return {"error": "an agent cannot confirm an agent"}
+    companies = read("companies.json", [])
+    c = next((x for x in companies if x["id"] == cid), None)
+    if c is None:
+        return {"error": "no such company"}
+    if not c.get("year_founded"):
+        return {"error": "there is no year on that record to confirm"}
+    if not _record_confirmation(cid, c["year_founded"], by):
+        return {"error": "nothing on file says that year came from an agent"}
+    return {"ok": True,
+            "message": f"{c['name']}: {c['year_founded']} confirmed, and the "
+                       f"record now says who by"}
 
 
 def board_health(companies, board) -> dict:
@@ -670,11 +786,30 @@ def board_health(companies, board) -> dict:
     company we have not finished researching, because the first actively
     misleads somebody and the second only fails to help them.
 
-    Nothing here is a target to be gamed. Every part is a real count, and the
-    label says what would move it.
+    Nothing here is a target to be gamed. Every part is a real count on BOTH
+    sides of the fraction, and the label says what would move it.
+
+    That last sentence used to be false. The public-correctness part read
+    `max(0, 40 - visible_wrong) / 40`, and the 40 counted nothing on file - it
+    was a number somebody picked. It scored a board of 2,108 companies against
+    an imaginary forty, and because this score gates the CSV export, an
+    invented denominator decided when a reward opened. The denominator now is
+    the count it was always pretending to be: the companies a visitor can
+    actually see, which is the ones with an open posting.
+
+    And a part with nothing in its denominator is reported as UNKNOWN rather
+    than as zero. `settled + pending_scope or 1` scored an empty scope queue
+    as 0% - "we have not been asked yet" rendered as "you have done none of
+    it", which is the same turn-an-unknown-into-a-negative this repo refuses
+    everywhere else. Those parts drop out of the weighted average instead of
+    dragging it down.
     """
-    n = len(companies) or 1
+    n = len(companies) or 0
     live = {o["id"]: o.get("open_roles", 0) for o in board.get("organizations", [])}
+    # what a visitor sees at all: a company with no open posting is not a row
+    # on the public board, so it can be neither right nor wrong in front of
+    # anybody
+    visible = sum(1 for c in companies if live.get(c["id"], 0) > 0)
     mis = q_miscategorized(companies, board)
     visible_wrong = sum(1 for r in mis if r.get("open_roles"))
     with_site = sum(1 for c in companies if c.get("website"))
@@ -687,25 +822,36 @@ def board_health(companies, board) -> dict:
 
     parts = [
         # (label, got, of, weight, what moves it)
-        ("Right on the public site", max(0, 40 - visible_wrong), 40, 3,
-         f"{visible_wrong} miscategorised companies are hiring, so they are the "
-         f"top rows a visitor sees"),
+        #
+        # "Right bucket" and not "right", because this checks exactly one kind
+        # of wrongness - a record whose own vendor_type contradicts the
+        # category it is filed under. The note has to say so, or the label
+        # claims more than the count does.
+        ("Right bucket, public rows", visible - visible_wrong, visible, 3,
+         f"{visible_wrong} of the {visible} companies with an open posting are "
+         f"filed under a category their own record contradicts. Nothing else "
+         f"about a row is checked here"),
         ("Names reachable", with_site, n, 1,
          f"{n - with_site} companies have no website on file"),
-        ("Scope settled", settled, settled + pending_scope or 1, 2,
+        ("Scope settled", settled, settled + pending_scope, 2,
          f"{pending_scope} vendors are waiting on an in/out call"),
         ("Boards found", structured, n, 1,
          f"{structured} companies are on a board we can read reliably"),
         ("Founding years", with_year, n, 1,
          f"{n - with_year} cards show a blank year"),
     ]
-    total_w = sum(w for *_, w, _ in parts)
-    score = sum((got / of if of else 0) * w for _, got, of, w, _ in parts)
+    scored = [p for p in parts if p[2]]
+    total_w = sum(w for *_, w, _ in scored)
+    score = sum((got / of) * w for _, got, of, w, _ in scored)
     return {
-        "score": round(100 * score / total_w),
+        "score": round(100 * score / total_w) if total_w else None,
+        "visible": visible,
         "visible_wrong": visible_wrong,
-        "parts": [{"label": l, "pct": round(100 * got / of) if of else 0,
-                   "weight": w, "note": note}
+        # pct is None, never 0, when the denominator is empty: no rows to be
+        # right about is not the same fact as being right about none of them
+        "parts": [{"label": l, "pct": round(100 * got / of) if of else None,
+                   "weight": w, "note": note,
+                   "of": of}
                   for l, got, of, w, note in parts],
     }
 
@@ -717,23 +863,45 @@ def sessions(limit: int = 30) -> dict:
     a daily streak against that is a machine for feeling bad. A session is a
     run of rulings with no gap longer than four hours, so an evening of work
     counts once whether it happens on a Tuesday or a Sunday.
+
+    THIS COUNTED THE WRONG THING. The docstring said rulings, the output field
+    said "rulings", and the body counted every write in the journal - so an
+    overnight agent's 86 set-founded writes to companies.json arrived on
+    screen as the owner's 86 rulings and a personal best of 84. It now reads
+    _ruling_stamps(), which is the same definition the receipt and the
+    why-coverage meter use, and which leaves out anything an agent wrote.
     """
-    import journal
-    rows = [r for r in journal._entries() if r.get("action") not in
-            ("undo", "reopen", "cleanup", "restore-name")]
-    stamps = sorted(r["at"] for r in rows if r.get("at"))
+    stamps = [t for t, _ in _ruling_stamps()]
     runs, cur = [], []
     for t in stamps:
-        if cur and (dt.datetime.fromisoformat(t)
-                    - dt.datetime.fromisoformat(cur[-1])).total_seconds() > 4 * 3600:
+        if cur and (t - cur[-1]).total_seconds() > SITTING_GAP:
             runs.append(cur); cur = []
         cur.append(t)
     if cur:
         runs.append(cur)
+
+    # A PERSONAL BEST IS NOT A KEYSTROKE COUNT. "41 this sitting, personal
+    # best" is exactly the achievement a fast clicker earns, and the raw
+    # count is what earns it - forty-one rulings in 2.6 seconds set a record.
+    # So the count is still shown, because it is true and it is the owner's
+    # own tally, and the BADGE reads the paced subset: rulings far enough
+    # apart to have been read. Same READ_SECONDS the agree-rate uses, so
+    # there is one definition of "considered" in this file.
+    def paced(run: list) -> int:
+        n, prev = 0, None
+        for t in run:
+            if prev is None or (t - prev).total_seconds() >= READ_SECONDS:
+                n += 1
+            prev = t
+        return n
+
+    considered = [paced(r) for r in runs]
     return {
         "sessions": len(runs),
         "best_session": max((len(r) for r in runs), default=0),
         "this_session": len(runs[-1]) if runs else 0,
+        "best_considered": max(considered, default=0),
+        "this_considered": considered[-1] if considered else 0,
         "rulings": len(stamps),
     }
 
@@ -752,6 +920,11 @@ def reversals(limit: int = 8) -> list:
     out = []
     for r in reversed(rows):
         if r.get("action") in ("undo", "reopen"):
+            continue
+        # The strip is headed "Last rulings", so it shows the person's. It
+        # was showing an overnight agent's 86 set-founded writes under that
+        # heading, which is the same misattribution the sitting counter had.
+        if not _is_person(r.get("by")):
             continue
         out.append({"id": r["id"], "action": r["action"], "n": r.get("n", 0),
                     "at": r.get("at"), "why": r.get("why", ""),
@@ -787,11 +960,15 @@ def act_vendor_scope_all(body: dict) -> dict:
         k = _vkey(name)
         if k in d:
             continue
+        # why stays null when nobody typed one. It used to be filled in with
+        # "bulk ruling on <theme>", which the why-coverage meter then counted
+        # as a reason - the craft signal writing its own evidence. What the
+        # theme was is already recorded in `saw`, where it belongs: that is
+        # what the person was shown, not what they said about it.
         d[k] = {"call": call, "name": name, "on": dt.date.today().isoformat(),
                 "at": stamp,
                 "by": (body.get("by") or "owner").strip(),
-                "why": (body.get("why") or "").strip()
-                       or f"bulk ruling on {body.get('theme') or 'a group'}",
+                "why": (body.get("why") or "").strip() or None,
                 "bulk": True, "saw": {"theme": body.get("theme")}}
         n += 1
     write_atomic("vendor_scope_decisions.json", d)
@@ -827,16 +1004,44 @@ BELT_QUEUES = ("miscategorized", "vendors")
 # to agree with.
 PROPOSAL_QUEUES = ("miscategorized",)
 
-# How many rulings it takes before the agree-rate is a measurement rather
-# than an anecdote, and therefore before a single keystroke may commit one.
+# WHAT MAKES AN AGREE-RATE A MEASUREMENT.
 #
-# All 238 wrong-bucket rows arrived carrying a proposal from an earlier AI
-# pass and not one has ever been confirmed or overruled, so the guesser's
-# accuracy is not "roughly known" - it is unmeasured. Until it is measured,
-# every ruling takes two deliberate acts: choose, then commit. Compressing
-# that to one key before the number exists would be optimising the speed of
-# an instrument nobody has calibrated.
+# This used to be one number - `ruled >= 40` - and an adversarial review
+# broke it in three and a half seconds: 49 accepts straight down the belt, no
+# card read, no reason typed, and the admin reported a 100% agree-rate at
+# high, medium AND low confidence, declared itself measured, and opened the
+# CSV export. A COUNT CANNOT TELL READING FROM CLICKING. That is not a bug in
+# the threshold, it is the wrong kind of evidence, and raising 40 to 400 would
+# have made the attack take thirty seconds instead of three.
+#
+# So a count is now necessary and nowhere near sufficient. Two more conditions
+# stand beside it, and neither of them is bought with volume:
+#
+# PACE. A ruling is CONSIDERED only if at least READ_SECONDS passed since the
+# previous one. This is measured from the timestamps the server writes itself,
+# not from anything the page reports, so no client can flatter it. A fast
+# ruling is not punished and not deleted - it simply is not evidence that the
+# card was read, which is the honest treatment of it. Forty-nine rulings in
+# 3.5 seconds contribute one considered ruling, not forty-nine.
+#
+# DISSENT. At least MIN_DISSENT of those considered rulings must have OVERRULED
+# the proposal. An unbroken run of agreement is exactly what blind accepting
+# looks like, so it cannot be the evidence that the guesser is good; it is a
+# record of one behaviour that happens to be consistent with two very
+# different explanations. This is a floor on evidence and must never be shown
+# as a target - the UI never counts down to it, because "disagree four more
+# times" is an instruction to file four companies wrongly.
 MEASURED_AT = 40
+
+# Twelve seconds to read a company name, a one-line description, a proposed
+# sector and category, and the evidence line under it, then decide. Chosen to
+# be beatable by an attentive person on an easy row and not by a person
+# holding a key down; it is a floor on plausibility, not a target pace.
+READ_SECONDS = 12
+
+# Five, not one: a single overrule can be a mis-key. Five is somebody who has
+# been arguing with this guesser.
+MIN_DISSENT = 5
 
 
 # What an absent half of a proposal looks like once something has formatted
@@ -877,22 +1082,19 @@ def agree_rate() -> dict:
     testing, or the confidence label is just a word.
 
     Split by the guesser's own confidence, because "72% agreed" hides the
-    only interesting question: whether high confidence means anything.
-    Nothing here is derived from a stored verdict - it is recomputed from
-    what the record says the person saw and what they chose, so a client
-    cannot flatter the number.
-    """
-    ruled = agreed = 0
-    by_conf: dict[str, list] = collections.defaultdict(lambda: [0, 0])
+    only interesting question: whether high confidence means anything. And
+    MEASURED per band rather than in total, for the same reason: forty medium
+    rulings say nothing about what "high" is worth, so they must not be
+    allowed to unlock a one-key ruling on a high-confidence card.
 
-    def tally(prop: str, chose: str, conf: str) -> None:
-        nonlocal ruled, agreed
-        ok = chose == prop
-        ruled += 1
-        agreed += ok
-        row = by_conf[conf or "unstated"]
-        row[0] += 1
-        row[1] += ok
+    Nothing here is derived from a stored verdict - it is recomputed from what
+    the record says the person saw, what they chose, and WHEN the server wrote
+    it down, so a client cannot flatter any of it.
+    """
+    seen = []          # (when|None, confidence, agreed?)
+
+    def tally(prop: str, chose: str, conf: str, at) -> None:
+        seen.append((_ts(at), (conf or "unstated"), chose == prop))
 
     for rec in read("placement_rulings.json", {}).values():
         if not isinstance(rec, dict):
@@ -901,7 +1103,7 @@ def agree_rate() -> dict:
         if not prop:
             continue
         tally(prop, f"{rec.get('sector')} / {rec.get('category')}",
-              (rec.get("saw") or {}).get("confidence"))
+              (rec.get("saw") or {}).get("confidence"), rec.get("at"))
     # "Bucket is right" is an OVERRULE, not an absence of a ruling: the
     # proposal said move it, the person looked and said leave it. Dropping
     # those would measure only the cases where the guesser was already
@@ -915,19 +1117,76 @@ def agree_rate() -> dict:
         was = (rec.get("saw") or {}).get("was")
         if not prop or not isinstance(was, str):
             continue
-        tally(prop, was.strip(), (rec.get("saw") or {}).get("confidence"))
+        tally(prop, was.strip(), (rec.get("saw") or {}).get("confidence"),
+              rec.get("at"))
+
+    # PACE, from the server's own clock. Records written before rulings
+    # carried `at` have no timestamp: they are counted in the rate and are
+    # never counted as considered, because we know they happened and do not
+    # know how fast - and guessing would be the invention this file refuses.
+    #
+    # Walked RECORD by record, not timestamp by timestamp. Marking the
+    # timestamps that follow a long-enough gap and then testing membership
+    # scores every ruling that shares a second with a considered one as
+    # considered too - and `at` has one-second resolution, so 26 rulings
+    # hammered out in the same second all inherit the first one's credit.
+    # Forty-one blind accepts came back with three "considered" that way.
+    ordered = sorted(((t, c, ok) for t, c, ok in seen if t),
+                     key=lambda r: r[0])
+    ruled = agreed = considered = dissent = 0
+    by_conf: dict[str, list] = collections.defaultdict(lambda: [0, 0, 0, 0])
+    for t, conf, ok in seen:
+        ruled += 1
+        agreed += ok
+        row = by_conf[conf]
+        row[0] += 1
+        row[1] += ok
+    prev = None
+    for t, conf, ok in ordered:
+        if prev is None or (t - prev).total_seconds() >= READ_SECONDS:
+            considered += 1
+            row = by_conf[conf]
+            row[2] += 1
+            if not ok:
+                dissent += 1
+                row[3] += 1
+        prev = t
+
+    def band(c: str) -> dict:
+        n, ag, cons, dis = by_conf[c]
+        return {"confidence": c, "ruled": n, "agreed": ag,
+                "pct": round(100 * ag / n), "considered": cons,
+                "dissent": dis,
+                "measured": cons >= MEASURED_AT and dis >= MIN_DISSENT}
+
+    # Why it is not a measurement, in words rather than as a countdown. A
+    # number to chase is a target, and the two things being asked for here -
+    # slow down, disagree when the guesser is wrong - are exactly the two
+    # things nobody should do on purpose to move a bar.
+    if considered >= MEASURED_AT and dissent >= MIN_DISSENT:
+        why_not = None
+    elif not ruled:
+        why_not = ("nothing has been ruled on, so the guesser has never been "
+                   "checked")
+    elif considered < MEASURED_AT:
+        why_not = (f"only {considered} of these {ruled} rulings were made far "
+                   f"enough apart to be evidence that the card was read; the "
+                   f"rest may be right and are not a measurement")
+    else:
+        why_not = ("not one of these rulings disagreed with the guesser, and "
+                   "an unbroken run of agreement is what blind accepting "
+                   "looks like too")
 
     order = ["high", "medium", "low", "unstated"]
     return {
         "ruled": ruled,
         "agreed": agreed,
+        "considered": considered,
+        "dissent": dissent,
         "pct": round(100 * agreed / ruled) if ruled else None,
-        "measured_at": MEASURED_AT,
-        "measured": ruled >= MEASURED_AT,
-        "by_confidence": [{"confidence": c, "ruled": by_conf[c][0],
-                           "agreed": by_conf[c][1],
-                           "pct": round(100 * by_conf[c][1] / by_conf[c][0])}
-                          for c in order if by_conf.get(c, [0])[0]],
+        "measured": why_not is None,
+        "why_not": why_not,
+        "by_confidence": [band(c) for c in order if by_conf.get(c, [0])[0]],
     }
 
 
@@ -974,13 +1233,16 @@ def queue_state(name: str, left: int, done: collections.Counter | None = None
 # paid feature, and putting a gate in front of something somebody already has
 # is a demotion dressed as a reward.
 UNLOCKS = [
-    {"key": "csv", "at": 55, "name": "CSV export of the whole board",
-     "built": True,
+    {"key": "csv", "gate": "public-rows-right",
+     "name": "CSV export of the whole board", "built": True,
      "what": "every company with its sector, status, open-role count and "
              "board, as one file a spreadsheet opens",
      "why": "an export is a copy of the data, so it is worth having exactly "
-            "when the data is right - which is the number this gate reads"},
-    {"key": "api", "at": 70, "name": "A read-only API key", "built": False,
+            "when the data is right. The gate is that sentence taken "
+            "literally: no company a visitor can see is filed under a "
+            "category its own record contradicts"},
+    {"key": "api", "gate": "score", "at": 70, "name": "A read-only API key",
+     "built": False,
      "what": "not built yet. Nothing behind this is faked or hidden: there "
              "is no endpoint, no key, and no waiting list",
      "why": "handing out a URL other people's software depends on is a "
@@ -989,10 +1251,46 @@ UNLOCKS = [
 ]
 
 
+def csv_gate(health: dict) -> dict:
+    """Whether the board is in a state worth exporting, and why not if not.
+
+    This used to be `score >= 55` against a score built on an invented
+    denominator, which is two problems in one number: the threshold was
+    arbitrary AND the scale it read was fiction. Fixing the denominator alone
+    would have silently opened the export, because the honest score is higher
+    than the imaginary one - so the gate is now the condition the unlock's own
+    "why" already claimed, stated as a count.
+
+    It cannot be bought with volume. Ruling a hundred dormant companies moves
+    it by nothing; the only thing that moves it is the rows a visitor can see
+    being filed correctly.
+    """
+    wrong, visible = health.get("visible_wrong"), health.get("visible")
+    if not visible:
+        # no board loaded, so nothing is on the public site to be right or
+        # wrong about. Unknown, and unknown is not "open".
+        return {"open": False, "pct": None, "gate": "no board on file yet, so "
+                "there is nothing public to check"}
+    return {"open": not wrong, "pct": round(100 * (visible - wrong) / visible),
+            "gate": f"{wrong} of {visible} public rows are in a bucket their "
+                    f"own record contradicts" if wrong
+                    else f"all {visible} public rows check out"}
+
+
 def unlocks(health: dict) -> list:
-    score = health.get("score") or 0
-    return [{**u, "open": score >= u["at"], "gap": max(0, u["at"] - score),
-             "score": score} for u in UNLOCKS]
+    score = health.get("score")
+    out = []
+    for u in UNLOCKS:
+        if u["gate"] == "score":
+            at, got = u["at"], score or 0
+            out.append({**u, "open": score is not None and score >= at,
+                        "pct": round(100 * got / at),
+                        "gate_says": f"board health {score if score is not None else '—'} of {at}"})
+        else:
+            g = csv_gate(health)
+            out.append({**u, "open": g["open"], "pct": g["pct"],
+                        "gate_says": g["gate"]})
+    return out
 
 
 # --- the CSV the unlock hands over ---------------------------------------
@@ -1050,7 +1348,42 @@ def _ts(v) -> dt.datetime | None:
         return None
 
 
-def _ruling_stamps() -> list[tuple[dt.datetime, str]]:
+# Journal actions that ARE somebody answering a queue and are recorded in no
+# decision file, so the journal is the only place they can be counted from.
+#
+# "place" is deliberately absent: act_place journals under that name AND
+# writes placement_rulings.json, so counting it here would report every
+# wrong-bucket ruling twice. "move" IS here, because a Sort-board drag is a
+# real ruling with no other record - which is exactly why act_move takes the
+# journal name as an argument. Everything else the journal holds - patch,
+# cleanup, undo, reopen, restore-name, admin - is an edit or housekeeping,
+# not an answer to a question somebody was asked.
+# The value is the queue the ruling answers, because the receipt draws that
+# queue's bar and a ruling filed against the wrong queue would move a bar
+# nothing moved. "also" and "move" answer no single queue tab, so they are
+# named for the work rather than mapped onto one.
+JOURNAL_RULINGS = {
+    "set-founded": "founded", "confirm-founded": "founded",
+    "identity-ruling": "review", "resolve-submission": "submissions",
+    "set-board": "boards", "retry-board": "boards", "posts-at": "boards",
+    "save-website": "websites", "merge": "duplicates",
+    "also": "placement", "move": "placement",
+}
+
+
+def _is_person(by: str | None) -> bool:
+    """Was this written by the person, or by something automated.
+
+    An agent put 86 set-founded writes into the live companies.json in one
+    night, and every screen in this admin counted them as the owner's own
+    work: 92 "rulings", a best sitting of 84. A count of somebody else's
+    typing is not a personal best, and reporting it as one is the same
+    dishonesty as an invented denominator wearing a friendlier face.
+    """
+    return not str(by or "owner").strip().lower().startswith("agent")
+
+
+def _ruling_stamps(mine_only: bool = True) -> list[tuple[dt.datetime, str]]:
     """(when, which queue) for every ruling that recorded a full timestamp.
 
     Rulings have always carried a DATE, which is the right grain for "how
@@ -1059,22 +1392,53 @@ def _ruling_stamps() -> list[tuple[dt.datetime, str]]:
     So rulings now also carry `at`. Records written before that field
     existed have no `at` and are simply not attributed to a sitting, which
     is the honest treatment: we know they happened, we do not know when.
+
+    This is the ONE definition of "a ruling" in this file. sessions(), the
+    receipt and the sitting counter all read it, so they cannot disagree
+    about what they are counting - which they did: the header said "133 this
+    sitting" from the journal while the meter beside it said "23% of your
+    rulings say why" from the decision files, two denominators telling one
+    story.
     """
     out = []
     for fname, queue in (("vendor_scope_decisions.json", "vendors"),
                          ("placement_rulings.json", "miscategorized"),
                          ("scope_decisions.json", "scope")):
         for rec in read(fname, {}).values():
-            t = _ts((rec or {}).get("at")) if isinstance(rec, dict) else None
+            if not isinstance(rec, dict):
+                continue
+            if mine_only and not _is_person(rec.get("by")):
+                continue
+            t = _ts(rec.get("at"))
             if t:
                 out.append((t, queue))
     for key, rec in read("admin_dismissed.json", {}).items():
         if not (isinstance(rec, dict) and isinstance(key, str) and ":" in key):
             continue
+        if mine_only and not _is_person(rec.get("by")):
+            continue
         t = _ts(rec.get("at"))
         if t:
             out.append((t, key.split(":", 1)[0]))
+    for t, queue, _eid in _journal_rulings(mine_only):
+        out.append((t, queue))
     return sorted(out)
+
+
+def _journal_rulings(mine_only: bool = True) -> list[tuple[dt.datetime, str, str]]:
+    """(when, queue, journal id) for the rulings only the journal remembers."""
+    import journal
+    out = []
+    for r in journal._entries():
+        queue = JOURNAL_RULINGS.get(r.get("action"))
+        if not queue:
+            continue
+        if mine_only and not _is_person(r.get("by")):
+            continue
+        t = _ts(r.get("at"))
+        if t:
+            out.append((t, queue, r.get("id")))
+    return out
 
 
 def receipt() -> dict:
@@ -1084,6 +1448,16 @@ def receipt() -> dict:
     two states we can both observe, and a line we cannot derive is left out
     rather than approximated - a receipt that rounds is a receipt nobody
     reads twice.
+
+    Two lines used to add up to more than happened. "55 stamped" and "133
+    edits to company records" stood one above the other as though they were
+    separate piles, but every one of the 55 rulings also wrote a journal
+    entry, so the 55 sat INSIDE the 133 and the receipt read as 188. Both
+    counts are real; what was wrong was the arrangement. The nesting is now
+    stated - `edits` is the total and `stamped` is the part of it that
+    carried somebody's judgment - and anything an agent wrote is counted
+    separately as exactly that, rather than silently added to the owner's
+    evening.
     """
     import journal
     entries = [r for r in journal._entries() if _ts(r.get("at"))]
@@ -1099,7 +1473,10 @@ def receipt() -> dict:
         if (times[i] - times[i - 1]).total_seconds() > SITTING_GAP:
             start = times[i]
 
-    mine = [r for r in entries if _ts(r["at"]) >= start]
+    sitting = [r for r in entries if _ts(r["at"]) >= start]
+    mine = [r for r in sitting if _is_person(r.get("by"))]
+    theirs = collections.Counter(str(r.get("by")) for r in sitting
+                                 if not _is_person(r.get("by")))
     ruled = [(t, q) for t, q in stamps if t >= start]
     by_queue = collections.Counter(q for _, q in ruled)
     reversed_n = sum(1 for r in mine if r.get("action") in ("undo", "reopen"))
@@ -1141,9 +1518,13 @@ def receipt() -> dict:
     return {
         "open": True,
         "since": start.isoformat(timespec="minutes"),
+        # stamped is a SUBSET of edits, and the page says so on one line.
+        # They are not two piles to be added.
         "stamped": len(ruled),
         "reversed": reversed_n,
         "edits": len(mine) - reversed_n,
+        # not the owner's work, and never folded into it again
+        "by_others": [{"by": who, "n": n} for who, n in theirs.most_common()],
         "states": lines,
         "doors": opened,
         "health": board_health(companies, board).get("score"),
@@ -1159,6 +1540,17 @@ def _game(counts: dict) -> dict:
     because the reason on a ruling is what teaches the classifier later, and
     it is a measure of care rather than volume. Volume is deliberately never
     scored on its own: a wrong ruling is invisible and permanent here.
+
+    WHY-COVERAGE HAS ITS OWN DENOMINATOR AND THE PAGE HAS TO SAY SO. It can
+    only be computed where a typed reason has somewhere to live - the decision
+    files - and that is a smaller set than "your rulings", which also includes
+    the ones recorded only in the journal. Rendering "23% of your rulings say
+    why" directly above "133 this sitting" told one story with two
+    denominators. So this returns `why_of` as well as the percentage, and the
+    page names the set it is a percentage of.
+
+    Nothing an agent wrote is in any of these numbers. A personal best is
+    personal.
     """
     per_day = collections.Counter()
     with_why = total = 0
@@ -1171,18 +1563,23 @@ def _game(counts: dict) -> dict:
     done_by_queue = rulings_by_queue()
     for fname, queue in sources:
         for r in read(fname, {}).values():
-            if not isinstance(r, dict):
+            if not isinstance(r, dict) or not _is_person(r.get("by")):
                 continue
             total += 1
-            per_day[r.get("on") or "?"] += 1
             if (r.get("why") or "").strip():
                 with_why += 1
     for key, entry in read("admin_dismissed.json", {}).items():
-        if isinstance(entry, dict) and isinstance(key, str) and ":" in key:
+        if isinstance(entry, dict) and isinstance(key, str) and ":" in key \
+                and _is_person(entry.get("by")):
             total += 1
-            per_day[entry.get("on") or "?"] += 1
             if (entry.get("why") or "").strip():
                 with_why += 1
+
+    # The pace lines read the SAME ruling definition the sitting counter and
+    # the receipt read, out of _ruling_stamps(), so "today" and "this sitting"
+    # cannot disagree about what a ruling is.
+    for t, _q in _ruling_stamps():
+        per_day[t.date().isoformat()] += 1
 
     today = dt.date.today()
     days = [(today - dt.timedelta(days=i)).isoformat() for i in range(30)]
@@ -1194,7 +1591,8 @@ def _game(counts: dict) -> dict:
     for fname, verb in (("vendor_scope_decisions.json", "ruled"),
                         ("placement_rulings.json", "refiled")):
         for r in read(fname, {}).values():
-            if not isinstance(r, dict) or not r.get("on"):
+            if not isinstance(r, dict) or not r.get("on") \
+                    or not _is_person(r.get("by")):
                 continue
             what = r.get("name") or r.get("sector")
             if verb == "refiled":
@@ -1207,6 +1605,8 @@ def _game(counts: dict) -> dict:
               if counts.get(q, 0) or done_by_queue.get(q, 0)]
     return {"today": per_day.get(days[0], 0), "best_30": best,
             "why_coverage": round(100 * with_why / total) if total else None,
+            # the set that percentage is OF, so the page never has to guess
+            "why_of": total,
             "rulings_total": total, "states": states, "tape": tape[:6]}
 
 
@@ -1517,10 +1917,30 @@ def act_place(body: dict) -> dict:
     that validates the whole file. Recording who ruled and what they were
     shown is the same bargain as everywhere else: it costs nothing now and
     cannot be added later.
+
+    Two things this function used to get wrong, both of which made the craft
+    signal report care that nobody had taken:
+
+    A REASON NOBODY TYPED IS NOT A REASON. The "bucket is right" branch wrote
+    the literal string "the bucket is right" whenever the why box was empty,
+    and the why-coverage meter counts any non-empty why. So the one metric in
+    this admin that measures care was being filled in by the admin itself. An
+    untyped reason is now stored as null, exactly as the placement branch has
+    always stored it, and the meter counts what a person actually wrote.
+
+    AND A LOW-CONFIDENCE PROPOSAL CANNOT BE ACCEPTED IN SILENCE. Low
+    confidence is the guesser saying it does not know; taking that placement
+    with nothing typed records the machine's guess as a person's ruling, and
+    the belt will hand you the next card in under a second. The owner's call,
+    and the reason it is scoped this tightly: it costs nothing when somebody
+    is really reading, it stops the blind run completely, and it is NOT asked
+    on a high-confidence row a person simply agrees with - demanding an essay
+    there would train people to type junk, which is worse than no reason.
     """
     cid = body.get("id")
     if not cid:
         return {"error": "need a company id"}
+    why = (body.get("why") or "").strip()
     # What the person was shown, kept identically on both outcomes. "Bucket
     # is right" is not the absence of a ruling, it is the proposal being
     # OVERRULED, and it only counts as evidence about the guesser if the
@@ -1534,20 +1954,30 @@ def act_place(body: dict) -> dict:
         d[f"miscategorized:{cid}"] = {
             "on": dt.date.today().isoformat(), "at": now(),
             "by": (body.get("by") or "owner").strip(),
-            "why": (body.get("why") or "").strip() or "the bucket is right",
+            "why": why or None,
             "saw": saw}
         write_atomic("admin_dismissed.json", d)
         return {"ok": True, "message": "left where it is"}
 
+    # Accepting = taking the proposal exactly as offered. Filing it somewhere
+    # else is an overrule and needs no defence; it already disagrees.
+    proposed = _seen_proposal({"saw": saw})
+    chose = f"{body.get('sector')} / {body.get('category')}"
+    if (body.get("confidence") or "").strip().lower() == "low" \
+            and proposed and chose == proposed and not why:
+        return {"error": "the guesser rated this one LOW confidence, so "
+                         "taking its placement needs a line saying what you "
+                         "saw that it did not. Nothing was written."}
+
     res = act_move({"id": cid, "sector": body.get("sector"),
-                    "category": body.get("category")})
+                    "category": body.get("category")}, action="place")
     if res.get("error"):
         return res
     rulings = read("placement_rulings.json", {})
     rulings[cid] = {"sector": body.get("sector"), "category": body.get("category"),
                     "on": dt.date.today().isoformat(), "at": now(),
                     "by": (body.get("by") or "owner").strip(),
-                    "why": (body.get("why") or "").strip() or None,
+                    "why": why or None,
                     "saw": saw}
     write_atomic("placement_rulings.json", rulings)
     return res
@@ -2293,12 +2723,20 @@ def act_dismiss(body: dict) -> dict:
     return {"ok": True, "message": "dismissed"}
 
 
-def act_move(body: dict) -> dict:
+def act_move(body: dict, action: str = "move") -> dict:
     """Move a company to a sector and category in one write.
 
     Dragging across sectors needs both fields to change together. Setting the
     sector alone would leave the old category behind, which validate() refuses -
     correctly, since 'Police' is not a category of General Gov.
+
+    `action` is what the journal calls it, and it is not decoration. A drag on
+    the Sort board is a ruling recorded NOWHERE ELSE; a wrong-bucket ruling
+    goes through here too but is also written to placement_rulings.json.
+    Counting both journal entries the same way either double-counts every
+    placement or drops every drag, and both of those are the kind of quiet
+    miscount this whole pass is about. So a placement journals as "place" and
+    a drag journals as "move", and the ruling count can tell them apart.
     """
     companies = read_companies()
     c = next((x for x in companies if x["id"] == body.get("id")), None)
@@ -2321,7 +2759,7 @@ def act_move(body: dict) -> dict:
     err = validate(companies)
     if err:
         return {"error": err}
-    bad = save_companies(companies, "move")
+    bad = save_companies(companies, action)
     if bad:
         return {"error": bad}
     return {"ok": True, "message": f"{c['name']}: {was} -> {sec} / {cat}",
@@ -2382,7 +2820,61 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "set-founded": act_set_founded, "identity-ruling": act_identity_ruling, "place": act_place,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
+           "confirm-founded": act_confirm_founded,
            "dismiss": act_dismiss}
+
+
+# --- who may write a ruling ----------------------------------------------
+#
+# THE HOLE THIS CLOSES. On 2026-08-24 an agent made 86 real rulings against
+# the owner's running admin. It could not edit a file in the repository, and
+# it did not need to: it asked /api/token for a token, attached it, and
+# posted. The token was never the wrong idea - it is what keeps a website the
+# owner happens to be visiting from driving this server, and it still does -
+# but it was doing a second job it cannot do. ANYTHING A LOCAL CALLER CAN ASK
+# FOR IS A THING A LOCAL CALLER CAN HAVE. Reading /api/token gets you one;
+# so does curling / and grepping the shim out of the page.
+#
+# So the two jobs are split. The TOKEN says "you are not a web page" and is
+# handed out on request, because the capture extension genuinely needs it.
+# The CODE says "you are the person sitting at the terminal that started
+# this", and the only way to learn it is to look at that terminal: it is
+# minted per process, printed once on stdout, and served by no route, in no
+# header, and in no page. A caller that can only speak HTTP cannot obtain it,
+# which is the whole property being bought.
+#
+# The owner pays nothing for it in the normal case. main() prints the admin's
+# URL with the code already in the fragment, the fragment never travels to
+# the server, and the page keeps it. Opening a bookmark instead costs one
+# paste. See the report: this is a speed bump for an agent on this machine,
+# not a security boundary against one - anything with a shell can read a
+# browser profile if it tries hard enough. It stops the accident that
+# actually happened.
+CODE_HEADER = "X-Admin-Code"
+
+# Actions the code does NOT gate, and why each one is here.
+#
+# The capture extension is not same-origin, cannot be handed the page's
+# fragment, and the owner uses it constantly - so the two calls it makes stay
+# open. Both land in reviewed surfaces rather than in companies.json:
+# `capture` writes data/manual.json and `submit` writes data/submissions.json,
+# which the admin's own docs already call "a claim, not a fact". The other
+# three write nothing at all; they fetch a URL and report what they saw.
+OPEN_ACTIONS = {"capture", "search-companies", "submit",
+                "inspect-submission", "verify-website", "verify-board"}
+
+
+def _mint_code() -> str:
+    """Six characters a person can read off a terminal and retype.
+
+    No 0/O/1/I/L: this gets copied by eye at 1am, and a code that is
+    ambiguous to read is a code somebody disables.
+    """
+    return "".join(secrets.choice("ABCDEFGHJKMNPQRSTUVWXYZ23456789")
+                   for _ in range(6))
+
+
+CONSOLE_CODE = _mint_code()
 
 
 # ---------------------------------------------------------------- server
@@ -2480,9 +2972,50 @@ CAPTURE_JS = pathlib.Path(__file__).resolve().parent / "capture.js"
 TOKEN_SHIM = """<script>
 /* Added by scripts/admin.py while serving this page. Every /api/ call needs a
    header a cross-origin caller cannot attach; this attaches it, so the page's
-   own fetch() calls stay exactly as they were. */
+   own fetch() calls stay exactly as they were.
+
+   It also carries the CONSOLE CODE, and the difference between the two is the
+   point. The token is in this script because the server put it here, so
+   anything that can fetch this page can read it. The code is NOT here and the
+   server never sends it anywhere: it arrives in the URL fragment the admin
+   printed on its own console, and a fragment is the one part of a URL a
+   browser does not transmit. window.gtdCode is where the page reads and
+   writes it; nothing else in this file knows it exists. */
 (function () {
-  var T = "__TOKEN__", H = "__HEADER__", F = window.fetch;
+  var T = "__TOKEN__", H = "__HEADER__", CH = "__CODEHEADER__";
+  var KEY = "gtd-admin-code", F = window.fetch;
+
+  /* Out of the fragment on arrival, then out of the address bar - so it does
+     not sit in a screenshot, a shared link or the browser's history.
+
+     Also on hashchange, because pasting the printed URL into a tab ALREADY on
+     this origin changes only the fragment, and a same-document navigation
+     does not re-run this script. Without the listener that paste looks like
+     it did nothing, which is the worst kind of nothing. */
+  function pocket() {
+    var m = /(?:^|[#&])k=([A-Za-z0-9]{4,16})\\b/.exec(location.hash || "");
+    if (!m) return false;
+    try { localStorage.setItem(KEY, m[1].toUpperCase()); } catch (e) {}
+    history.replaceState(null, "", location.pathname + location.search);
+    return true;
+  }
+  pocket();
+  window.addEventListener("hashchange", function () {
+    if (pocket()) {
+      var bar = document.getElementById("codebar");
+      if (bar) bar.remove();
+    }
+  });
+  window.gtdCode = {
+    get: function () {
+      try { return localStorage.getItem(KEY) || ""; } catch (e) { return ""; }
+    },
+    set: function (v) {
+      try { localStorage.setItem(KEY, (v || "").trim().toUpperCase()); }
+      catch (e) {}
+    }
+  };
+
   window.fetch = function (input, init) {
     var u = typeof input === "string" ? input : (input && input.url) || "";
     var mine = false;
@@ -2496,6 +3029,8 @@ TOKEN_SHIM = """<script>
         init.headers ||
         (typeof input === "object" && input && input.headers) || {});
       init.headers.set(H, T);
+      var c = window.gtdCode.get();
+      if (c) init.headers.set(CH, c);
     }
     return F.call(window, input, init);
   };
@@ -2547,6 +3082,18 @@ class Handler(http.server.BaseHTTPRequestHandler):
         # Bytes compare fine and keep the same constant-time property.
         got = (self.headers.get(TOKEN_HEADER) or "").encode("latin-1", "replace")
         return secrets.compare_digest(got, TOKEN.encode("ascii"))
+
+    def _coded(self) -> bool:
+        """Does this caller know what is printed on the admin's own console.
+
+        Same bytes comparison as _authed and for the same reason: a header
+        value with a byte over 0x7f arrives as a non-ASCII str and
+        compare_digest raises TypeError on one, which drops the connection
+        and reads as "the admin is down" rather than "wrong code".
+        """
+        got = (self.headers.get(CODE_HEADER) or "").strip().upper()
+        return secrets.compare_digest(got.encode("latin-1", "replace"),
+                                      CONSOLE_CODE.encode("ascii"))
 
     def _web_origin(self) -> bool:
         """Is this request coming from a page on some website.
@@ -2688,13 +3235,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
             # was never a reward.
             companies, board = read_companies(), read("board.json", {})
             health = board_health(companies, board)
-            gate = next(u for u in UNLOCKS if u["key"] == "csv")
-            if (health.get("score") or 0) < gate["at"]:
+            gate = csv_gate(health)
+            if not gate["open"]:
                 return self._json(
-                    {"error": f"board health is {health.get('score')}; the "
-                              f"export opens at {gate['at']}",
-                     "locked": True, "at": gate["at"],
-                     "score": health.get("score")}, 403)
+                    {"error": f"the export opens when the public rows are "
+                              f"right, and {gate['gate']}",
+                     "locked": True, "pct": gate["pct"]}, 403)
             return self._send(board_csv(companies, board).encode(),
                               "text/csv; charset=utf-8")
         if path == "/api/queues":
@@ -2744,8 +3290,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
             html = ADMIN_HTML.read_text()
         except OSError:
             return self._json({"error": "admin.html is missing"}, 404)
+        # The token goes into the page; the console code deliberately does
+        # not. If it were substituted here, curl-ing this page would hand it
+        # over and the gate would be worth nothing.
         shim = TOKEN_SHIM.replace("__TOKEN__", TOKEN) \
-                         .replace("__HEADER__", TOKEN_HEADER)
+                         .replace("__HEADER__", TOKEN_HEADER) \
+                         .replace("__CODEHEADER__", CODE_HEADER)
         # After the charset declaration, which a browser only honours in the
         # first 1024 bytes of the document - a kilobyte of script ahead of it
         # would push it out of range. Still inside <head> and still well ahead
@@ -2793,6 +3343,15 @@ class Handler(http.server.BaseHTTPRequestHandler):
         action = path.rsplit("/", 1)[-1]
         if action not in ACTIONS:
             return self._json({"error": f"unknown action {action}"}, 404)
+        # The token got you through the door. Writing a ruling needs the code
+        # off the console, which no route hands out - see OPEN_ACTIONS above
+        # for the six that do not need it and why.
+        if action not in OPEN_ACTIONS and not self._coded():
+            return self._json(
+                {"error": "this writes a ruling, and a ruling needs the code "
+                          "printed on the console where the admin was "
+                          "started. Nothing was written.",
+                 "code_required": True}, 403)
         try:
             n = int(self.headers.get("Content-Length") or 0)
             body = json.loads(self.rfile.read(n) or b"{}")
@@ -2827,7 +3386,17 @@ def main() -> int:
     # driving it.
     socketserver.TCPServer.allow_reuse_address = True
     with socketserver.TCPServer(("127.0.0.1", a.port), Handler) as srv:
-        print(f"\nhttp://127.0.0.1:{a.port}   (loopback only; ctrl-c to stop)")
+        # The code rides in the FRAGMENT, which browsers do not send to the
+        # server - so opening this URL hands the page its code without the
+        # code ever crossing the wire in either direction. Open the link and
+        # there is nothing else to do; open a bookmark instead and the page
+        # asks for these six characters once.
+        print(f"\nhttp://127.0.0.1:{a.port}/#k={CONSOLE_CODE}"
+              f"   (loopback only; ctrl-c to stop)")
+        print(f"\n  code for this run: {CONSOLE_CODE}")
+        print("  Rulings need it. It is printed here and nowhere else - no\n"
+              "  route serves it and it is not in the page - so a script that\n"
+              "  can only talk HTTP to this port cannot make a ruling.\n")
         try:
             srv.serve_forever()
         except KeyboardInterrupt:

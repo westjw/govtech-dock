@@ -1,7 +1,13 @@
-# Putting SoleSource live — the owner's 15 minutes
+# Putting SLED JOBS live — the owner's 15 minutes
 
 Everything below needs your accounts and your card, which is why it is yours.
 Everything after it is already automated.
+
+The product is **SLED JOBS**; the domain is still `solesourcejobs.com` until
+you buy the new one. `data/brand.json` is where both are written down, and
+`functions/_brand.js` restates the four values a Cloudflare Function needs —
+change the domain in both or `scripts/selftest.py` fails the build. The GitHub
+repo stays `westjw/govtech-dock`; renaming it would break every URL below.
 
 ## 1. Cloudflare account and domain (~10 min)
 1. <https://dash.cloudflare.com> → sign up (free plan is fine).
@@ -52,7 +58,20 @@ Do these in order. The first one matters most.
    history, no `.env` ever committed, no per-company prospecting notes, no
    personal email in the data. What becomes readable is company facts, public
    job postings, and the conference catalog.
-3. **Zero Trust → Access → Applications → delete the SoleSource application.**
+
+   **Re-check three files that did not exist when that audit ran.** All three
+   are committed, so making the repo public publishes them and their history:
+   `data/admin_journal.jsonl` (a before-image plus a free-text `why` for every
+   admin write), `data/identity_labels.jsonl` (what you said when the website
+   check was wrong), and the `notes` field on companies in
+   `data/companies.json` (free text you type while ruling). They are clean as
+   of 2026-08-24 — no notes recorded at all, and the journal `why` lines are
+   plain facts — but they are the three places a private thought would land
+   from now on. Skim them before you flip, and again before any later flip.
+   None of the three reach the website: `build_site.py` ships `board.json`,
+   `sectors.json` and `brand.json` and nothing else.
+3. **Zero Trust → Access → Applications → delete the Access application you
+   made in §3 (Password protection).**
    That takes the login gate off the domain. Do it last, after 1 and 2.
 
 Making the repo public is also what switches ON public submissions: the

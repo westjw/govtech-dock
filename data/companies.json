@@ -11622,7 +11622,7 @@
   "year_founded": 2022,
   "sector": "General Gov",
   "category": "Procurement & Payments",
-  "description": "AI-native ConcourseOS: procurement, permitting, courts, and billing across 450+ agencies (Bessemer-backed)",
+  "description": "AI-native ConcourseOS: procurement, permitting, courts, and billing across 450+ agencies (Bessemer-backed) - exhibited at NIGP 2026",
   "ats": {
    "type": "html",
    "ref": "https://concoursetech.com/careers"
@@ -11636,7 +11636,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "also_known_as": [
+   "Concourse"
+  ]
  },
  {
   "id": "smartdocs",
@@ -17124,7 +17127,12 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NIGP 2026",
-  "researched": false
+  "researched": false,
+  "out_of_scope": {
+   "on": "2026-08-24",
+   "by": "owner",
+   "why": "concourse.ai is 'Concourse | AI transformation for finance' - 0 mentions of government, 77 of finance. Not govtech. The NIGP 2026 exhibitor of this name is concoursetech.com, now recorded on concourse-tech. This record was an exhibitor name matched to the wrong company's website and job board."
+  }
  },
  {
   "id": "conduent-transportation",

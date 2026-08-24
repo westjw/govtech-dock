@@ -136,11 +136,13 @@ unclassified roles, acquisitions, website review.
 It is where the residue of every automated pass goes — the parts that need
 judgment rather than a better regex.
 
-### What guards it (this section used to say "no auth in front of it"; that is false)
+### What guards it
 
-Loopback binding is not the protection people assume, because a browser can
-reach loopback even when the network cannot: any site the owner happened to
-visit could once have driven this server. CORS was never the answer either — a
+This section used to say the admin writes companies.json "with no auth in front
+of it". That has been false since the token landed. Loopback binding is not the
+protection people assume, because a browser can reach loopback even when the
+network cannot: any site the owner happened to visit could once have driven
+this server. CORS was never the answer either — a
 POST with `Content-Type: text/plain` is a *simple* request, so the browser
 sends it with no preflight at all and the write lands whether or not the reply
 can be read. What is actually there now:
@@ -336,24 +338,20 @@ snapshot somebody has to re-take by hand; finding the board behind it is
 permanent and `refresh.py` keeps it current. When a read turns up an ATS host,
 *that* is the finding, and it belongs to the `board` agent.
 
-Two traps beyond the usual nav chrome, both of which produce strings shaped
-exactly like job titles: **testimonial bylines** ("Kylie Hughes / DIRECTOR
-COMMERCIAL IMPLEMENTATION" is a happy employee) and **filter chips** ("Remote /
-Freelance / Full Time / Internship / Part Time" above a search box that then
-finds nothing). And one scope trap: Nedap's group careers page lists 34 reqs
-across five business units, and only 9 belong to the company on file — filing
-the other 25 would report a parent's postings as the subsidiary's, which is the
-mistake this repo already refuses elsewhere.
-
-The boundary the bookmarklet holds, the agent holds too: read the page you were
-pointed at, once. No crawling, no pagination, no following links, no signing in.
+Read `brief_read`'s docstring before running one — it carries the traps that
+produce strings shaped exactly like job titles (testimonial bylines, filter
+chips) and the method notes in full. And the group-careers trap is live here:
+Nedap's page lists 34 reqs across five business units and only 9 belong to the
+company on file. The boundary the bookmarklet holds, the agent holds too: read
+the page you were pointed at, once.
 
 ## Capture: the bookmarklet and the extension
 
 `scripts/capture.js`, installed from <http://127.0.0.1:8787/capture>, plus a
 Chrome extension in `extension/`.
 
-**806 companies have a careers page on file that produces nothing** — a person
+**806 companies have a careers page on file that produces nothing** (counted
+2026-08-24; `coverage.py` prints the live figure) — a person
 looking at the page sees the jobs anyway. That is the worklist both of these
 serve, and it is the single biggest hole on the board.
 
@@ -373,16 +371,14 @@ Three things about capture are load-bearing:
   itself (it is not same-origin, so it does not get the shim), retries once on
   a 403 because a token dies with the admin process, and stores nothing.
 
-**A correction on the browser claim.** This file used to state as settled fact
-that "Chrome blocks a page on https from reaching `http://127.0.0.1` — both
-`fetch` and a `<script>` tag, even with `Access-Control-Allow-Private-Network`
-set. Verified, not assumed." The observation in Chrome was real. The
-generalisation was not: **Private Network Access is a Chrome behaviour, and
-Firefox and Safari have not implemented it.** So do not repeat it as a fact
-about browsers, and do not design around it as one. What is true and what the
-design rests on: Chrome is the browser this runs in, the extension's host
-permission is precisely the exemption being relied on there, and the clipboard
-path works everywhere and needs no permission at all.
+**A correction on the browser claim.** This file used to assert, as settled
+fact, that a page on https cannot reach `http://127.0.0.1`. The observation in
+Chrome was real; the generalisation was not. **Private Network Access is a
+Chrome behaviour and Firefox and Safari have not implemented it**, so do not
+repeat it as a fact about browsers or design around it as one. What the design
+actually rests on: Chrome is the browser this runs in, the extension's host
+permission is the exemption being relied on there, and the clipboard path works
+everywhere and needs no permission at all.
 
 Two rules the harvester learned the hard way, both worth keeping:
 
@@ -471,10 +467,15 @@ recognition (#8 — sparingly, or it reads as spam).
 - **Keep the confident cases out of the queue.** Padding it with items a
   rule could settle is what makes admin work feel like a chore.
 - **Never let a score reward volume over correctness.** `check_admin_game`
-  in selftest enforces the three ways this has already been broken:
-  an agree-rate is unmeasured until somebody rules against a visible
-  proposal, the belt only runs where the answer is on the card, and an
-  unknown is never rendered as a number.
+  in selftest enforces the three ways this has already been broken, and all
+  three are the same rule: absence of evidence is reported as absence of
+  evidence. The agree-rate is unmeasured until somebody rules against a
+  proposal that was actually on screen. The belt only runs where the answer
+  is on the card — Acquisitions is excluded, because deciding whether a slug
+  belongs to a parent needs slow reading and a counter beside it would buy
+  speed with accuracy. And the CSV export copies stored facts only, with
+  anything a spreadsheet could read as a formula neutralised, because
+  company names arrive here from outside submissions.
 
 ## Alerts and saved-role sync
 
@@ -551,22 +552,27 @@ all** as a gap to be closed. The honest split, re-derived 2026-08-24 across
 2,108 companies:
 
 ```
-structured   271  12.9%  a real API. Titles, locations, links. THIS is the number to move.
+structured   270  12.8%  a real API. Titles, locations, links. THIS is the number to move.
 page only    888  42.1%  a page a person can read and a fetcher mostly cannot.
 blocked      240  11.4%  a bot wall or transport error. We learned nothing. NOT a zero.
 absent       568  26.9%  checked, no public board exists. A finished state, not a gap.
-unchecked    141   6.7%  never probed, or probed before the current rules existed.
+unchecked    142   6.7%  never probed, or probed before the current rules existed.
 ```
 
 286 companies currently show at least one open posting.
 
+**Run the script; do not quote this block.** These moved by one while this
+section was being written, because a discovery pass was running in another
+session. A number copied out of a document is how the old "839 of 1,722" got
+believed for months.
+
 The two ratios the script prints mean different things and neither is
 "coverage":
 
-- **1,159/2,108 = 55%** — we have *some* board on file, against every company.
-- **1,159/1,540 = 75%** — the same numerator against companies that have a
+- **1,158/2,108 = 55%** — we have *some* board on file, against every company.
+- **1,158/1,540 = 75%** — the same numerator against companies that have a
   board to find (total minus `absent`). This is the denominator that can be
-  worked. It is **not** 75% readable: 888 of that 1,159 is the `page only`
+  worked. It is **not** 75% readable: 888 of that 1,158 is the `page only`
   pile, which is mostly not enumerable at all.
 
 A 15-agent field audit (n=90 random re-probe, plus 24 investigated by hand)
@@ -593,8 +599,11 @@ outranks anything that makes his own search easier.
 Practical reading of that when choosing what to do next:
 
 - A gap a visitor would notice beats a gap only the owner would notice.
-- Data completeness beats new features: 4,733 catalogued suppliers and 670
-  researched candidates are worth more than another filter.
+- Data completeness beats new features: `data/suppliers.json` holds 4,745
+  catalogued suppliers and `data/conference_intake/govtech_candidates.json`
+  holds 670 researched candidates, none of them on the board yet. That is
+  worth more than another filter. (Counted 2026-08-24 — re-derive, don't
+  quote.)
 - Admin work is product work here, because the queues are what keep the data
   honest, and one day they are meant to be playable.
 

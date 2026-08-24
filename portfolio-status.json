@@ -1,22 +1,27 @@
 {
   "project_id": "govtech_dock",
   "repo": "westjw/govtech-dock",
-  "last_updated": "2026-08-23T20:54:40-04:00",
+  "last_updated": "2026-08-24T09:45:00-04:00",
   "status": "Active Build",
-  "progress_pct": 72,
-  "progress_note": "front-end list closed: alerts (cadence + role bar + volume floor) and cross-device saved-role sync shipped",
-  "next_move": "Owner: create the ALERTS KV namespace + bind it, add RESEND_KEY to Pages, add the four repo secrets. Until then alerts report 'not configured' and send nothing.",
-  "session_summary": "Closed the last two front-end gaps as one feature. Alerts run off the board's own first_seen history, so a role appears in exactly one email; threshold is built as both a role bar and a volume floor. Identity is a mailed token, no accounts or passwords, and it carries saved-role sync with tombstones so a stale device cannot resurrect an unsaved role. Saved roles stay local by default - an unlinked visitor makes zero API calls.",
+  "progress_pct": 42,
+  "progress_note": "42% of the WHOLE scope, reframed - the free board is ~80% done, the paid product is 0%. The previous 72% was the free board only, reported as if it were the project.",
+  "next_move": "Owner, in this order: create the ALERTS KV namespace + bind it, add RESEND_KEY to Pages, add the four repo secrets, then work DEPLOY.md end to end. Until then alerts report 'not configured', nothing sends, and the board is not public.",
+  "session_summary": "No product code this session - CLAUDE.md was rewritten against what the code actually does, because it is the file every future session reads first and three of its claims were false. Corrected: the admin has a token, a Host check and a route allowlist rather than 'no auth'; a headless render of 25 page-only boards recovered 8, not zero; and the product is SLED JOBS with data/brand.json as the single source for name, domain and palette. Added the systems built since it was last touched - journal/undo, notes, posts_at, identity_labels, salary, the agent spine, the posting-vs-opening ids - and re-derived the coverage numbers.",
   "recent_work": [
-    "scripts/digest.py - what one subscription would receive, testable with no mail account",
-    "functions/api/alerts.js - subscribe/confirm/update/sync/stop on Cloudflare KV",
-    "alerts.html - signup and passwordless settings page, token stripped from the URL",
-    "scripts/send_digests.py - CI sender; dry run by default, skips unconfirmed always",
-    "selftest guard against alerts.js drifting from roles.py's job families",
-    "build_site ships data/sectors.json so the settings page stops pulling 4.7MB"
+    "CLAUDE.md: admin security section rewritten - token, Host check, six-route allowlist, /api/token refused to web origins, frame refusal, all asserted by selftest::check_admin_http",
+    "CLAUDE.md: the 'headless Chromium recovered ZERO' claim replaced with the measured trial - 8 of 25 pages gave up 26 rows, 17 recorded as 'read produced nothing', all 25 still pending and none accepted",
+    "CLAUDE.md: the Chrome private-network claim demoted from settled fact - PNA is Chrome-only, Firefox and Safari have not implemented it",
+    "CLAUDE.md: SLED JOBS naming, brand.json as single source, the _brand.js drift guard, the design system stated so nobody re-approximates it",
+    "CLAUDE.md: new sections for journal.py/admin_undo.py, notes.py, posts_at.py, identity_labels.py, salary.py, agents.py, and opening_id vs posting_id (479 openings vs 617 quota rows)",
+    "CLAUDE.md: coverage re-derived (270 structured / 888 page only / 240 blocked / 568 absent / 142 unchecked) with what the 55% and 75% ratios actually mean",
+    "CLAUDE.md: 'do not write to the owner's live admin' added as a house rule, with the 86 agent writes of 2026-08-24 as the incident",
+    "CLAUDE.md: the Roadmap section cut - three of its five items are built and the rest live in the coverage worklist and the agent spine",
+    "DEPLOY.md: retitled to SLED JOBS, and the going-public audit flagged as predating admin_journal.jsonl, identity_labels.jsonl and company notes"
   ],
   "blockers": [
+    "PAID HALF NOT STARTED: no pricing, no billing, no accounts, no employer-side posting. The only paid intent on record is 'alerts, paid eventually' in the owner's 2026-08-23 spec. Any progress number that ignores this is the free board wearing the project's name.",
     "Repo visibility flip to public is the owner's click; it also switches on public submissions",
-    "ATS discovery for the new cards is a later pass, so they land unmonitored"
+    "Alerts send nothing until the owner creates the KV namespace and the four secrets",
+    "888 companies (42% of the map) are page-only boards no fetcher can enumerate; the read agent has 25 pending proposals against that pile and a person has accepted none of them"
   ]
 }
