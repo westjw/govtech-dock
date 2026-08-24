@@ -1286,8 +1286,9 @@ def act_verify_website(body: dict) -> dict:
     title = re.sub(r"\s+", " ", title.group(1)).strip()[:140] if title else ""
     parked = bool(find_websites.PARKED.search(html[:4000]))
     base = url.split("//", 1)[1].split("/")[0].replace("www.", "").rsplit(".", 1)[0]
+    note = find_websites.identity_note(html, name, base)
     return {"ok": True, "title": title, "parked": parked,
-            "identifies": find_websites.identifies(html, name, base),
+            "identifies": note["ok"], "identity": note,
             "url": url}
 
 

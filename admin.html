@@ -515,10 +515,26 @@ RENDER.websites = c => {
                           + 'up for sale, so it is not their site.')
       : el('span', 'ok', 'A real page, not a parked domain.'));
     vline.appendChild(document.createTextNode(' '));
-    vline.appendChild(r.identifies
-      ? el('span', 'ok', 'It names this company, so the address is theirs.')
-      : el('span', 'warn', 'It never names this company \u2014 it may be the wrong '
-                           + 'business, or one that renamed. Your call.'));
+    /* "It never names this company" was being said about eagleview.com, which
+       has the company's logo on it. The page said "Eagleview"; the record says
+       "EagleView Technologies". Crying wolf on a page that is obviously right
+       teaches you to click past the warning - and that warning is the only
+       thing between a squatter and the dataset. So name the words. */
+    const idn = r.identity || {};
+    if (r.identifies) {
+      vline.appendChild(el('span', 'ok', 'It names this company, so the address is theirs.'));
+    } else if (idn.domain_is_lead && (idn.present || []).length) {
+      vline.appendChild(el('span', 'warn',
+        'The page says \u201c' + idn.present.join(' ') + '\u201d but never \u201c'
+        + (idn.missing || []).join(' ') + '\u201d, and the domain matches the part '
+        + 'it does say. Usually that is the same company under a shorter name \u2014 '
+        + 'but it is also what a different business on the obvious domain looks like. '
+        + 'Your call.'));
+    } else {
+      vline.appendChild(el('span', 'warn',
+        'It never names this company \u2014 it may be the wrong business, or one '
+        + 'that renamed. Your call.'));
+    }
     e.appendChild(vline);
 
     /* A deep path is how an acquisition and a product page both sneak in.
@@ -546,14 +562,62 @@ RENDER.websites = c => {
        because a <title> is marketing copy and the person decides. The old
        name is kept as an alias, same as a merge. */
     n.querySelectorAll('.renamer').forEach(x => x.remove());
-    const canonical = (r.title || '').split(/\s+[—|·–]\s+|\s+-\s+/)[0].trim();
+    /* Taking the FIRST segment assumes every title is "Company | tagline".
+       Plenty are the other way round: eagleview.com is titled "Geospatial
+       Intelligence, Aerial Imagery and Data | Eagleview", and taking [0]
+       offered to rename EagleView Technologies to a marketing sentence and
+       keep the real name as an alias. So: pick the segment that CORROBORATES
+       THE DOMAIN, and if none does, offer no rename at all. A silent no is
+       cheap; a wrong rename is visible on the public site. */
+    /* Choosing which part of a <title> is the company name.
+
+       Taking the FIRST segment assumes every title is "Company | tagline".
+       Plenty are the other way round: eagleview.com is titled "Geospatial
+       Intelligence, Aerial Imagery and Data | Eagleview", and taking [0]
+       offered to rename EagleView Technologies to a marketing sentence.
+
+       But refusing everything the domain does not corroborate is worse in the
+       other direction: aframesolutions.com now titles itself "ArcSuite AI",
+       which is a genuine rebrand and exactly what this feature is for.
+
+       So: prefer a segment the domain backs up, fall back to one that at
+       least LOOKS like a name, and say which of the two happened. The person
+       decides; the box just stops proposing sentences. */
+    const nameGuess = (() => {
+      const segs = (r.title || '').split(/\s*[—|·–]\s*|\s+-\s+/)
+        .map(x => x.trim()).filter(Boolean);
+      if (!segs.length) return null;
+      let host = '';
+      try { host = new URL(r.url).hostname.replace(/^www\./, '').split('.')[0]; }
+      catch (_) {}
+      const squash = x => x.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const GENERIC = /^(home|welcome|careers?|jobs?|about|contact|index|untitled|homepage)$/i;
+      // a company name is a few words, not a sentence, and does not trail a comma
+      const nameish = x => x.split(/\s+/).length <= 4 && !/[,.;:]$/.test(x)
+                           && !GENERIC.test(x.replace(/\s+/g, ''))
+                           && x.length >= 2 && x.length <= 60;
+      if (host) {
+        const hit = segs.find(x => squash(x) && squash(x).includes(host));
+        if (hit && nameish(hit)) return {name: hit, sure: true};
+      }
+      const first = segs.find(nameish);
+      return first ? {name: first, sure: false} : null;
+    })();
+    const canonical = nameGuess ? nameGuess.name : '';
     if (canonical && canonical.toLowerCase() !== c.name.toLowerCase()
         && canonical.length >= 2 && canonical.length <= 60) {
       const wrapR = el('div', 'renamer kv');
       wrapR.appendChild(document.createTextNode('rename to '));
+      /* whether the domain corroborates the new name is the difference between
+         "they rebranded" and "I grabbed a tagline", so it is said out loud */
       const ri = el('input'); ri.value = canonical; ri.id = 'rn-' + c.id;
       wrapR.appendChild(ri);
       wrapR.appendChild(document.createTextNode(` (was “${c.name}”, kept as an alias)`));
+      wrapR.appendChild(el('span', nameGuess.sure ? 'ok' : 'warn',
+        nameGuess.sure
+          ? ' — the domain matches this name'
+          : ' — the domain does not mention this name, so it may be a tagline rather '
+            + 'than a rebrand. Check before saving.'));
       n.insertBefore(wrapR, row.nextSibling);
     }
   };

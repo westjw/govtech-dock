@@ -274,3 +274,39 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
+def identity_note(html: str, name: str, base: str | None = None) -> dict:
+    """Explain the identity check, rather than only passing or failing it.
+
+    identifies() is deliberately strict and stays that way: it is the only
+    thing between a squatter and the dataset, and a false yes is far worse
+    than a false no. But its "no" covers two very different situations, and
+    telling them apart is a person's job, not a regex's:
+
+      EagleView Technologies / eagleview.com, titled
+        "Geospatial Intelligence, Aerial Imagery and Data | Eagleview"
+      Acme Software Systems / acme.com, titled
+        "Acme Plumbing - Boston"
+
+    Both are "the page says our first word and not the rest". The first is a
+    company using a shorter brand name; the second is a different business
+    that got the obvious domain. Nothing in the page distinguishes them, so
+    the honest move is to hand over what matched and what did not, and say
+    which words are missing.
+    """
+    tk = tokens(name)
+    ident = " ".join(
+        html_lib.unescape(re.sub(r"<[^>]+>", " ", m))
+        for pat in (TITLE, META, H1)
+        for m in pat.findall(html or "")[:3])
+    ident_n = norm(ident)
+    present = [t for t in tk if norm(t) in ident_n]
+    missing = [t for t in tk if norm(t) not in ident_n]
+    return {
+        "ok": identifies(html, name, base),
+        "present": present,
+        "missing": missing,
+        "domain_is_lead": bool(base and present and base == "".join(
+            tk[:len(present)]) and tk[:len(present)] == present),
+        "says": ident.strip()[:120],
+    }
