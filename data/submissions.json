@@ -1,3 +1,13 @@
 {
- "items": []
+ "items": [
+  {
+   "id": "sub-2026-08-23-civira",
+   "kind": "company",
+   "url": "https://civira.com",
+   "at": "2026-08-23T23:35:20-04:00",
+   "by": "owner",
+   "context": "Owner asked for this one directly. Flagging what the site says rather than deciding it: civira.com calls itself a 'Digital Solutions Partner' and a 'Digital Studio' - 'we help you figure out the technical stuff'. It never mentions government, cities, schools or the public sector anywhere on the homepage, and there is no careers link. That is the Vendor scope question, so it is the owner's call, not a regex's and not mine.",
+   "status": "pending"
+  }
+ ]
 }

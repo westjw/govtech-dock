@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="596" viewBox="0 0 210 298" fill="none">
+  <path d="M64 276 L44 288 L74 290 Z" fill="#F5A623"/><path d="M132 276 L162 290 L124 290 Z" fill="#F5A623"/>
+  <path d="M100 88 C144 88 164 136 164 194 C164 246 138 278 100 278 C62 278 36 246 36 194 C36 136 56 88 100 88 Z" fill="#1F2536"/>
+  <path d="M100 112 C132 112 146 152 146 198 C146 240 128 262 100 262 C72 262 54 240 54 198 C54 152 68 112 100 112 Z" fill="#FAF7F0"/>
+  <path d="M86 112 L114 112 L106 132 L94 132 Z" fill="#C1341F"/><path d="M94 132 L106 132 L110 178 L100 190 L90 178 Z" fill="#C1341F"/>
+  <path d="M76 106 L100 130 L124 106" stroke="#0B57C4" stroke-width="5" fill="none"/>
+  <rect x="82" y="130" width="44" height="32" rx="4" fill="#FFF" stroke="#161B29" stroke-width="3" transform="rotate(-4 104 146)"/>
+  <rect x="82" y="130" width="44" height="10" fill="#0B57C4" transform="rotate(-4 104 146)"/>
+  <path d="M38 168 C22 190 20 214 30 232 C44 222 52 202 52 182 Z" fill="#161B29"/>
+  <path d="M162 168 C178 190 180 214 170 232 C156 222 148 202 148 182 Z" fill="#161B29"/>
+  <g transform="rotate(-6 178 246)">
+    <rect x="148" y="226" width="60" height="44" rx="6" fill="#8A5A2B"/>
+    <rect x="148" y="242" width="60" height="6" fill="#6B441F"/>
+    <path d="M164 226 C164 214 192 214 192 226" stroke="#6B441F" stroke-width="6" fill="none"/>
+  </g>
+  <circle cx="100" cy="64" r="44" fill="#1F2536"/>
+  <path d="M100 88 C113 88 123 96 125 106 C111 111 89 111 75 106 C77 96 87 88 100 88 Z" fill="#FAF7F0"/>
+  <ellipse cx="87" cy="62" rx="13" ry="15.5" fill="#FFFFFF"/>
+  <ellipse cx="113" cy="62" rx="13" ry="15.5" fill="#FFFFFF"/>
+  <ellipse cx="89" cy="65" rx="6" ry="7.5" fill="#161B29"/>
+  <ellipse cx="115" cy="65" rx="6" ry="7.5" fill="#161B29"/>
+  <circle cx="85" cy="60" r="2.7" fill="#FFFFFF"/><circle cx="111" cy="60" r="2.7" fill="#FFFFFF"/>
+  <path d="M73 48 L101 56 L101 44 L73 40 Z" fill="#1F2536"/>
+  <path d="M127 48 L103 56 L103 44 L127 40 Z" fill="#1F2536"/>
+  <path d="M60 44 C60 18 140 18 140 44 L140 50 L60 50 Z" fill="#C1341F"/>
+  <rect x="56" y="44" width="88" height="13" rx="6" fill="#EFEAE0"/>
+  <circle cx="100" cy="15" r="10" fill="#EFEAE0"/>
+  <path d="M88 78 C88 73 112 73 112 78 C112 84 100 89 100 89 C100 89 88 84 88 78 Z" fill="#F5A623"/>
+</svg>

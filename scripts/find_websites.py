@@ -321,3 +321,85 @@ def identity_note(html: str, name: str, base: str | None = None,
             tk[:len(present)]) and tk[:len(present)] == present),
         "says": ident.strip()[:120],
     }
+
+# A company name is a few words. Everything below refuses anything that is not
+# shaped like one, because the alias it produces is written into the dataset and
+# then used to match pages forever after. A 286-character marketing paragraph
+# got recorded as a company alias once; these are the guards that stop it.
+NAME_MAX_CHARS = 60
+NAME_MAX_WORDS = 6
+_GENERIC_NAME = re.compile(
+    r"^(home|welcome|about|contact|careers?|jobs?|index|untitled|homepage|"
+    r"our (website|company)|menu|loading)$", re.I)
+
+
+def plausible_name(s: str) -> bool:
+    s = (s or "").strip()
+    if not (2 <= len(s) <= NAME_MAX_CHARS):
+        return False
+    if len(s.split()) > NAME_MAX_WORDS:
+        return False
+    if _GENERIC_NAME.match(s.replace(".", "")):
+        return False
+    # a sentence, not a name
+    if re.search(r"[.!?]\s+\S", s) or s.endswith((",", ".", ":", ";")):
+        return False
+    # marketing prose gives itself away with these
+    if re.search(r"\b(we|our|your|is|are|helps?|ensures?|provides?)\b", s, re.I):
+        return False
+    return True
+
+
+_SIGNALS = [
+    # (regex, source label, how much to trust it)
+    (r'<meta[^>]+property=["\']og:site_name["\'][^>]+content=["\']([^"\']+)',
+     "the site's own og:site_name", 100),
+    (r'<meta[^>]+name=["\']application-name["\'][^>]+content=["\']([^"\']+)',
+     "the site's application-name", 90),
+    (r'<meta[^>]+name=["\']apple-mobile-web-app-title["\'][^>]+content=["\']([^"\']+)',
+     "the name it uses on a phone home screen", 85),
+    (r'"@type"\s*:\s*"Organization".{0,400}?"name"\s*:\s*"([^"]{2,60})"',
+     "its schema.org Organization name", 95),
+    (r'<img[^>]+(?:logo|brand)[^>]*\salt=["\']([^"\']{2,60})["\']',
+     "the alt text on its logo", 60),
+]
+
+
+def name_candidates(html: str, base: str | None = None) -> list[dict]:
+    """What this page calls itself, ranked, so nobody has to retype it.
+
+    Asking a person to transcribe the name off a page they are already looking
+    at is busywork, and busywork is where a marketing sentence ends up in a
+    name field. The page nearly always states its own name in a machine
+    readable place - og:site_name exists precisely to answer "what is this
+    site called" - so read it, and only ask when the page genuinely does not
+    say.
+    """
+    if not html:
+        return []
+    out, seen = [], set()
+
+    def add(value, why, score):
+        v = html_lib.unescape(re.sub(r"\s+", " ", value or "")).strip(" -|·—")
+        if not plausible_name(v) or v.lower() in seen:
+            return
+        seen.add(v.lower())
+        out.append({"name": v, "why": why, "score": score})
+
+    for pat, why, score in _SIGNALS:
+        for m in re.findall(pat, html, re.I | re.S)[:2]:
+            add(m, why, score)
+
+    # title segments, preferring the one the domain corroborates
+    m = TITLE.search(html)
+    if m:
+        title = html_lib.unescape(re.sub(r"<[^>]+>", " ", m.group(1)))
+        for seg in re.split(r"\s*[|·—–]\s*|\s+-\s+", title):
+            seg = seg.strip()
+            squashed = re.sub(r"[^a-z0-9]", "", seg.lower())
+            backed = bool(base and squashed and base in squashed)
+            add(seg, "the part of the page title the domain backs up" if backed
+                     else "a piece of the page title", 80 if backed else 40)
+
+    out.sort(key=lambda c: -c["score"])
+    return out[:5]

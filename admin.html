@@ -527,6 +527,17 @@ RENDER.websites = c => {
     if (r.error) return toast(r.error, true);
     verified = r;
     const e = el('div', 'evi');
+    /* A page we could not read is not a page that said nothing. Rendering the
+       normal panel here invented two negative facts about a company out of a
+       failed fetch. */
+    if (r.unreadable) {
+      const u = el('div');
+      u.appendChild(el('span', 'warn', r.message));
+      e.appendChild(u);
+      n.appendChild(e);
+      save.disabled = false;
+      return;
+    }
     /* The title is whatever the pasted site chose to send back, so it is written
        as text and never as markup: a <title> that was an img tag with an onerror
        came back byte for byte and ran when this was one innerHTML template. */
@@ -593,23 +604,40 @@ RENDER.websites = c => {
     if (!r.identifies) {
       const fix = el('div', 'idfix');
       fix.style.cssText = 'margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;align-items:center';
-      fix.appendChild(el('span', 'kv', 'It does say the name:'));
+      fix.appendChild(el('span', 'kv', 'It does say the name \u2014 read it off the page:'));
       const nameIn = el('input', 'in');
       nameIn.style.cssText = 'flex:1;min-width:170px';
-      nameIn.placeholder = 'the name the page uses';
+      nameIn.placeholder = 'leave blank and it will read the page';
       nameIn.value = (idn.present || []).length
         ? (nameGuessName || (idn.present || []).join(' ')) : '';
       const yes = el('button', 'btn primary', 'Yes, that is them');
       const no = el('button', 'btn', 'No, wrong company');
       const out = el('div', 'kv');
       out.style.cssText = 'flex-basis:100%;margin-top:4px';
-      const rule = async (verdict) => {
+      const rule = async (verdict, forced) => {
         yes.disabled = no.disabled = true;
         const res = await api('/api/identity-ruling', {
-          id: c.id, verdict, said_name: nameIn.value.trim(),
+          id: c.id, verdict,
+          // deliberately blank unless you picked or typed one: the server
+          // reads the page and works the name out, which is one click instead
+          // of transcribing something already on screen
+          said_name: forced || nameIn.value.trim(),
           page_says: (r.identity || {}).says || r.title || '', url: r.url});
         yes.disabled = no.disabled = false;
         if (res.error) { out.textContent = res.error; out.style.color = 'var(--warn)'; return; }
+        if (res.ask) {
+          // it read the page and found more than one plausible answer
+          out.textContent = '';
+          out.appendChild(document.createTextNode(res.message + ' '));
+          (res.candidates || []).forEach(cand => {
+            const b = el('button', 'btn', cand.name);
+            b.title = cand.why;
+            b.style.margin = '0 4px 4px 0';
+            b.onclick = () => rule('same', cand.name);
+            out.appendChild(b);
+          });
+          return;
+        }
         toast(res.message);
         fix.remove();
         if (res.recheck) check.click();   // show it going green, not just say so

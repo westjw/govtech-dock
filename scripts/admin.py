@@ -506,9 +506,41 @@ def act_identity_ruling(body: dict) -> dict:
 
     added = None
     if verdict == "same":
+        # "It is them" should not cost you a transcription. Read the page and
+        # work out what it calls itself; only ask when it genuinely does not
+        # say, and then offer what was found rather than an empty box.
         if not said:
-            return {"error": "type the name the page uses, so the check can "
-                             "recognise it next time"}
+            try:
+                r = add_company.fetch(body.get("url") or c.get("website") or "")
+                html = r[0] if isinstance(r, tuple) else r
+            except Exception:
+                html = ""
+            base = ""
+            try:
+                base = (body.get("url") or "").split("//", 1)[1].split("/")[0] \
+                    .replace("www.", "").rsplit(".", 1)[0]
+            except (IndexError, AttributeError):
+                pass
+            cands = find_websites.name_candidates(html, base)
+            fresh = [x for x in cands
+                     if x["name"].lower() != c["name"].lower()]
+            if fresh and fresh[0]["score"] >= 80:
+                said = fresh[0]["name"]
+            elif fresh:
+                return {"ok": True, "ask": True, "candidates": fresh[:4],
+                        "message": "Which name does it use?"}
+            elif cands:
+                return {"ok": True, "already": True,
+                        "message": (f"The page calls itself \u201c{cands[0]['name']}\u201d, "
+                                    f"which is already the name on file. Nothing "
+                                    f"to add - if the check still warns, the page "
+                                    f"may genuinely not say it in a place we read.")}
+            else:
+                return {"error": "The page does not state a name we can read. "
+                                 "Type the one it uses."}
+        if not find_websites.plausible_name(said):
+            return {"error": f"{said[:40]!r} is not a company name - a name is a "
+                             f"few words. Paste the name, not the sentence."}
         if said.lower() == c["name"].lower():
             return {"error": "that is already the stored name - if the panel "
                              "still warns, the page may genuinely not say it"}
@@ -1449,6 +1481,19 @@ def act_verify_website(body: dict) -> dict:
         html = r[0] if isinstance(r, tuple) else r
     except Exception as exc:
         return {"error": f"could not fetch: {type(exc).__name__}"}
+    # Zero bytes back is not "this page says nothing about itself". It is "we
+    # learned nothing". airgus.com answers our fetcher with HTTP 202 and an
+    # empty body, and the panel duly reported that the page had no title and
+    # never named the company - two negative facts invented out of a failed
+    # read. That is the asymmetric error the whole repo is built around, so
+    # the unreadable case now says so and offers no ruling at all.
+    if not (html or "").strip():
+        return {"ok": True, "unreadable": True, "url": url,
+                "message": ("Their server answered but sent nothing back - most "
+                            "likely a bot wall. We have learned nothing about "
+                            "this address, which is different from learning it "
+                            "is wrong. Open it yourself and use Save if it is "
+                            "them.")}
     title = re.search(r"<title[^>]*>(.*?)</title>", html, re.S | re.I)
     title = re.sub(r"\s+", " ", title.group(1)).strip()[:140] if title else ""
     parked = bool(find_websites.PARKED.search(html[:4000]))
