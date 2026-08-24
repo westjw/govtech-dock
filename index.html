@@ -28,6 +28,18 @@
     background:var(--accent);color:var(--bg);cursor:pointer;text-decoration:none;
     display:inline-block;white-space:nowrap}
   .addbtn:hover{filter:brightness(1.07)}
+  .hacts{margin-left:auto;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+  .hacts .addbtn{margin-left:0}
+  /* Secondary to "add a company": a visitor contributing to the map helps
+     everyone, whereas an alert helps one person. Same shape, no fill. */
+  .altbtn{font-size:13.5px;font-weight:600;padding:9px 18px;border-radius:20px;
+    border:1px solid var(--line);color:var(--ink);background:var(--panel);
+    text-decoration:none;white-space:nowrap;display:inline-block}
+  .altbtn:hover{border-color:var(--accent);color:var(--accent)}
+  .syncbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+    font-size:12.5px;color:var(--dim);background:var(--chip);
+    border-radius:8px;padding:9px 12px;margin-bottom:12px}
+  .syncbar a{font-weight:600}
   nav{display:flex;gap:3px;margin:16px 0 0;flex-wrap:wrap}
   nav button{background:none;border:0;padding:8px 14px;border-radius:7px 7px 0 0;font:inherit;
     font-size:13px;color:var(--dim);cursor:pointer;border-bottom:2px solid transparent}
@@ -185,7 +197,12 @@
     main{padding:0 14px 48px}
     h1{font-size:18px}
     /* wrapped to its own line, a right-aligned pill reads as stranded */
-    .addbtn{margin-left:0;width:100%;text-align:center;margin-top:12px}
+    .hacts{margin-left:0;width:100%;margin-top:12px}
+    /* Two buttons sharing a phone-width row land at 41px tall, just under the
+       44px a thumb needs. */
+    .hacts>*{flex:1;text-align:center;min-height:44px;display:flex;
+      align-items:center;justify-content:center}
+    .addbtn{margin-left:0;text-align:center}
     .panel{padding:14px;border-radius:0 10px 10px 10px}
 
     /* the filter row is ten selects; on a phone it hides behind a toggle */
@@ -227,9 +244,12 @@
       <h1>GovTech Dock</h1>
       <div class="sub" id="sub">loading</div>
     </div>
-    <a class="addbtn"
-       href="https://github.com/westjw/govtech-dock/issues/new?template=add-company.yml"
-       id="addco" onclick="openAdd(event)">+ Add a company</a>
+    <div class="hacts">
+      <a class="altbtn" href="/alerts">Get alerts</a>
+      <a class="addbtn"
+         href="https://github.com/westjw/govtech-dock/issues/new?template=add-company.yml"
+         id="addco" onclick="openAdd(event)">+ Add a company</a>
+    </div>
   </div>
   <div class="sub" style="margin-top:6px;color:var(--faint)">
     Missing a company? Submit a link: a bot works out the sector and board, then a
@@ -839,19 +859,90 @@ function savedAll(){
   try{return JSON.parse(localStorage.getItem(SAVED_KEY)||"{}")}catch{return {}}
 }
 function isSaved(id){return !!savedAll()[id]}
+function writeSaved(all){try{localStorage.setItem(SAVED_KEY,JSON.stringify(all))}catch{}}
 function toggleSave(p,btn){
   const all=savedAll();
-  if(all[p.id]){delete all[p.id]}
+  if(all[p.id]){delete all[p.id];tombstone(p.id)}
   else{
+    untombstone(p.id);
     all[p.id]={id:p.id,title:p.title,company:p.company,company_id:p.company_id,
       url:p.url,sector:p.sector,category:p.category,family:p.family,
       quota_carrying:p.quota_carrying,seniority:p.seniority,
       territory:p.territory,office:p.office,work_mode:p.work_mode,
-      saved_on:new Date().toISOString().slice(0,10)};
+      saved_on:new Date().toISOString().slice(0,10),
+      saved_at:new Date().toISOString()};
   }
-  try{localStorage.setItem(SAVED_KEY,JSON.stringify(all))}catch{}
+  writeSaved(all);
   if(btn)paintSave(btn,isSaved(p.id));
   const c=$("#savedcount"); if(c)c.textContent=Object.keys(savedAll()).length||"";
+  syncSoon();
+}
+
+/* --- optional sync across devices ---------------------------------------
+   Saved roles are LOCAL by default and that stays the default: no account,
+   nothing about what you are looking for leaving the machine. Sync only turns
+   on if you already gave us an email for alerts, because then there is
+   already somewhere for it to live and nothing new is being asked of you.
+
+   Removals need tombstones. A union merge would mean unsaving a role on the
+   laptop and having the phone - which still holds it - put it back on the
+   next sync, permanently. */
+const SYNC_KEY="solesource.synctoken.v1";
+const TOMB_KEY="solesource.unsaved.v1";
+function syncToken(){try{return localStorage.getItem(SYNC_KEY)||""}catch{return ""}}
+function tombs(){try{return JSON.parse(localStorage.getItem(TOMB_KEY)||"{}")}catch{return {}}}
+function tombstone(id){const t=tombs();t[id]=new Date().toISOString();
+  try{localStorage.setItem(TOMB_KEY,JSON.stringify(t))}catch{}}
+function untombstone(id){const t=tombs();delete t[id];
+  try{localStorage.setItem(TOMB_KEY,JSON.stringify(t))}catch{}}
+
+let SYNC_TIMER=null, SYNC_STATE="off";
+function syncSoon(){
+  if(!syncToken())return;
+  clearTimeout(SYNC_TIMER);
+  // Debounced: clicking through five roles is one write, not five.
+  SYNC_TIMER=setTimeout(()=>pushSync(),1500);
+}
+async function pushSync(){
+  const t=syncToken(); if(!t)return;
+  try{
+    const r=await fetch("/api/alerts",{method:"POST",
+      headers:{"content-type":"application/json"},
+      body:JSON.stringify({action:"sync",token:t,
+        saved:Object.values(savedAll()),removed:tombs()})});
+    SYNC_STATE=r.ok?"on":"error";
+  }catch{SYNC_STATE="error"}
+  if(tab==="saved")render();
+}
+async function pullSync(){
+  const t=syncToken(); if(!t)return;
+  try{
+    const r=await fetch("/api/alerts?t="+encodeURIComponent(t));
+    if(r.status===404){                // subscription deleted elsewhere
+      try{localStorage.removeItem(SYNC_KEY)}catch{}
+      SYNC_STATE="off"; return;
+    }
+    const d=await r.json();
+    if(!d.ok){SYNC_STATE="error";return}
+    const local=savedAll(), gone={...tombs(),...(d.removed||{})};
+    (d.saved||[]).forEach(s=>{
+      if(!s||!s.id)return;
+      const when=s.saved_at||s.saved_on||"";
+      // A role comes back only if it was saved AFTER it was last unsaved.
+      if(gone[s.id]&&!(when>gone[s.id]))return;
+      if(!local[s.id])local[s.id]=s;
+    });
+    Object.keys(gone).forEach(id=>{
+      const mine=local[id];
+      if(mine&&!((mine.saved_at||mine.saved_on||"")>gone[id]))delete local[id];
+    });
+    writeSaved(local);
+    try{localStorage.setItem(TOMB_KEY,JSON.stringify(gone))}catch{}
+    SYNC_STATE="on";
+    const c=$("#savedcount"); if(c)c.textContent=Object.keys(local).length||"";
+    pushSync();                        // hand this device's additions back
+  }catch{SYNC_STATE="error"}
+  if(tab==="saved")render();
 }
 function paintSave(btn,on){
   btn.setAttribute("aria-pressed",on?"true":"false");
@@ -871,8 +962,21 @@ function savedView(){
   const all=Object.values(savedAll())
     .sort((a,b)=>(b.saved_on||"").localeCompare(a.saved_on||""));
   const live=new Set(D.postings.map(p=>p.id));
+  const linked=!!syncToken();
+  const bar=linked
+    ? `<div class="syncbar">${
+        SYNC_STATE==="error"
+          ? `<span class="warn">Syncing is not reaching the server right now.
+             Everything is still saved on this device.</span>`
+          : `<span>Syncing with your alert subscription, so these follow you to
+             your phone.</span>`}
+        <a href="/alerts" style="margin-left:auto">Manage</a></div>`
+    : `<div class="syncbar"><span>Kept on this browser only — clearing site data
+        loses them.</span>
+        <a href="/alerts" style="margin-left:auto">Sync across devices</a></div>`;
   $("#view").innerHTML=`<div class="sechead"><h3>Saved roles</h3>
-      <div class="n">${all.length} kept on this device</div></div>`
+      <div class="n">${all.length} ${linked?"kept with your subscription":"kept on this device"}</div></div>`
+    + bar
     + (all.length?`<div class="list" id="s-list"></div>`
        :`<div class="empty">Nothing saved yet. Use the bookmark on any role and it
           waits here — on this browser, without an account.</div>`);
@@ -1276,6 +1380,9 @@ fetch("data/board.json").then(r=>r.json()).then(d=>{
   if(PENDING_URL&&PENDING_URL.get("tab"))tab=PENDING_URL.get("tab");
   if(PENDING_URL&&PENDING_URL.get("role")){ROLE=PENDING_URL.get("role");tab="jobs"}
   render();
+  // Sync runs after the first paint and never blocks it: the board must work
+  // with the network gone, and a saved list is the last thing worth waiting on.
+  pullSync();
   // the back button should undo a search, not leave the page
   window.addEventListener("popstate",()=>{
     PENDING_URL=readUrl();

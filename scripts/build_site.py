@@ -30,7 +30,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 # Everything the public site is allowed to serve. Adding a file here is a
 # deliberate act; nothing is included by walking a directory.
-SHIP = ["index.html"]
+SHIP = ["index.html", "alerts.html"]
 
 
 def build_admin_bundle(out: "pathlib.Path") -> None:
@@ -228,6 +228,12 @@ def main() -> int:
     # 300KB the browser has to parse.
     (out / "data" / "board.json").write_text(
         json.dumps(board, separators=(",", ":")))
+
+    # The alerts page needs the sector names and nothing else. Without this it
+    # would pull board.json - 4.7MB - to fill one dropdown on a settings page.
+    schema = json.loads((ROOT / "data" / "schema.json").read_text())
+    (out / "data" / "sectors.json").write_text(
+        json.dumps([x["name"] for x in schema["sectors"]], separators=(",", ":")))
 
     size = sum(f.stat().st_size for f in out.rglob("*") if f.is_file())
     print(f"wrote {a.out}/: {len(SHIP)} page(s) + data/board.json")

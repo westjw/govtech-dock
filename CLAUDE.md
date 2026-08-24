@@ -192,6 +192,68 @@ recognition (#8 - sparingly, or it reads as spam).
   rule could settle is what makes admin work feel like a chore.
 - **Never let a score reward volume over correctness.**
 
+## Alerts and saved-role sync
+
+`functions/api/alerts.js` (the endpoint), `alerts.html` (signup + settings),
+`scripts/digest.py` (what an email would contain), `scripts/send_digests.py`
+(the CI sender). Subscribers live in a **Cloudflare KV namespace bound as
+ALERTS** - never in this repository, which is public.
+
+Owner's spec (2026-08-23): both audiences, cadence of every weekday morning /
+Tuesday+Thursday / Wednesday weekly, delivered by email, paid eventually, with
+"two customizations: cadence and threshold".
+
+**Threshold is two things and both are built**, because they answer different
+questions and only having one makes the feature worse:
+
+- a **role bar** - which roles are worth telling you about (quota, family,
+  seniority, sector, work mode, states), and
+- a **volume floor** - don't email at all under N new roles. A daily alert
+  that arrives saying "1 new role" is how a person learns to filter it. Roles
+  under the floor are not dropped; they ride into the next email that clears
+  it.
+
+Rules that hold here:
+
+- **No accounts, no passwords.** A subscription IS the identity: one long
+  random token, mailed to the address, which also carries the saved-role sync.
+  Nothing in this project should ever grow a password store.
+- **Double opt-in, no override.** `send_digests.py` skips unconfirmed
+  addresses and has no flag to stop skipping them.
+- **Nothing sends without `--send`.** The dry run is the default.
+- **`last_sent` advances only after a successful send**, so a mail outage
+  delays roles rather than swallowing the window they were in.
+- **Subscribe answers identically** whether the address is new, pending or
+  already subscribed. Varying it makes the endpoint an oracle for "does this
+  person have an account on a job board", which is exactly the question this
+  site must never answer about somebody.
+- **Unsubscribe deletes.** No suppression list - that is still a record of who
+  wanted out of their job.
+- **Saved roles stay local by default.** Sync is off until someone turns it on
+  for one browser, and an unlinked visitor makes zero API calls. Sync carries
+  **tombstones**: a union merge would let a stale phone resurrect a role you
+  unsaved, forever. Tombstones compare against `saved_at` (a timestamp), not
+  `saved_on` (a date), or re-saving something the same day loses to its own
+  tombstone.
+- **The vocabulary is duplicated and therefore guarded.** `alerts.js` restates
+  roles.py's FAMILIES/SENIORITY/MODES because a Worker cannot import Python.
+  `selftest.py::check_alert_vocabulary` fails if they drift - drift here is
+  silent and total: the subscriber picks a value the endpoint happily stores,
+  no posting ever carries it, and their alert simply never arrives.
+
+Setup the owner does once, in this order: create the KV namespace and bind it
+as `ALERTS`; add `RESEND_KEY` to the Pages project; add `CF_ACCOUNT_ID`,
+`CF_KV_NAMESPACE_ID`, `CF_API_TOKEN` and `RESEND_KEY` as repository secrets.
+Every one is optional - with none set, the endpoint reports "not configured"
+and the CI step prints that and exits 0. A refresh must never fail because
+nobody set up email.
+
+To see what an email would say, without any of that:
+
+```
+python scripts/digest.py --preview --quota --since 2026-08-22 --today 2026-08-24
+```
+
 ## Coverage: read `scripts/coverage.py`, not the raw fraction
 
 `python scripts/coverage.py [--by-sector]`

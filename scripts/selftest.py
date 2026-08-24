@@ -132,6 +132,32 @@ def fail(msg):
     return 1
 
 
+def check_alert_vocabulary() -> int:
+    """functions/api/alerts.js must accept exactly what roles.py can assign."""
+    js = (ROOT / "functions" / "api" / "alerts.js")
+    if not js.exists():
+        return 0
+    text = js.read_text()
+    bad = 0
+    import roles
+    expected = {
+        "FAMILIES": set(roles.FAMILIES),
+        "SENIORITY": {"junior", "mid", "senior", "leadership"},
+        "MODES": {"remote", "hybrid", "onsite"},
+    }
+    for name, want in expected.items():
+        m = re.search(rf"const {name} = new Set\(\[(.*?)\]\)", text, re.S)
+        if not m:
+            bad += fail(f"alerts.js: no {name} set found")
+            continue
+        got = set(re.findall(r'"([^"]+)"', m.group(1)))
+        if got != want:
+            bad += fail(f"alerts.js {name} drifted from roles.py: "
+                        f"only in js {sorted(got - want)}, "
+                        f"only in python {sorted(want - got)}")
+    return bad
+
+
 def main() -> int:
     errors = 0
 
@@ -339,6 +365,12 @@ def main() -> int:
         errors += fail(f"alert: expected new-Yes ['a','b'], got {hits}")
     if alert.new_ae_openings({"previous": None, "changes": changes}):
         errors += fail("alert: first snapshot should never alert")
+
+    # The alerts Worker re-states roles.py's vocabulary because a Worker cannot
+    # import Python. If the two drift, a subscriber picks a value the Worker
+    # happily stores, no posting ever carries it, and their alert silently
+    # never arrives - no error anywhere. So the duplication is checked here.
+    errors += check_alert_vocabulary()
 
     hist = sorted((DATA / "hiring_history").glob("*.json"))
     if not hist:

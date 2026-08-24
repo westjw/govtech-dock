@@ -114,6 +114,28 @@ jobs:
             echo "No new AE openings this run."
           fi
 
+      # Digests go out AFTER the board is committed, so an email never links
+      # to a role the site has not published yet. It runs on the refreshed data
+      # in this checkout - the same JSON the site will serve - rather than
+      # re-fetching anything.
+      #
+      # Every one of these secrets is optional. With none of them set the step
+      # prints that alerts are not configured and exits 0: a job board whose
+      # daily refresh fails because nobody set up email would be a worse
+      # trade than one that quietly sends no email.
+      - name: Send alert digests
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_KV_NAMESPACE_ID: ${{ secrets.CF_KV_NAMESPACE_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          RESEND_KEY: ${{ secrets.RESEND_KEY }}
+        run: |
+          if [ -n "$CF_API_TOKEN" ] && [ -n "$RESEND_KEY" ]; then
+            python scripts/send_digests.py --send
+          else
+            python scripts/send_digests.py
+          fi
+
       # ------------------------------------------------------------- deploy
       # There is no deploy step here on purpose. Cloudflare Pages is connected
       # to this repository and builds on every push to main, running

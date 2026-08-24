@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The settings token travels in the URL, so no request from this page may
+     carry a Referer that contains it. This is the whole reason the page is
+     separate from index.html. -->
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Alerts · SoleSource</title>
+<style>
+  :root{ --bg:#fbfaf8; --panel:#fff; --line:#e5e1db; --ink:#1a1815; --dim:#6a655d;
+         --faint:#969086; --accent:#2f6f4f; --warn:#a8620f; --bad:#a3342a; --chip:#f1eeea; }
+  @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+    --bg:#121110; --panel:#1a1918; --line:#2f2c28; --ink:#eae6e0; --dim:#a09a90;
+    --faint:#726c63; --accent:#6fb98a; --warn:#d9973f; --bad:#e0705f; --chip:#232120; }}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:15px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
+  a{color:var(--accent);text-underline-offset:2px}
+  .wrap{max-width:620px;margin:0 auto;padding:34px 22px 70px}
+  h1{font-size:22px;margin:0 0 4px;letter-spacing:-.015em}
+  .sub{color:var(--dim);font-size:13.5px;margin:0 0 26px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:11px;
+    padding:20px 22px;margin-bottom:16px}
+  h2{font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);
+     margin:0 0 4px;font-weight:600}
+  .note{color:var(--dim);font-size:13px;margin:0 0 14px}
+  label{display:block;font-size:13.5px;margin:0 0 6px}
+  input[type=email],select,input[type=text]{font:inherit;font-size:14px;padding:9px 11px;
+    border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);
+    width:100%}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .row>div{flex:1;min-width:150px}
+  .opts{display:flex;flex-direction:column;gap:9px;margin:2px 0 14px}
+  .opt{display:flex;gap:10px;align-items:flex-start;font-size:14px;cursor:pointer;
+    padding:10px 12px;border:1px solid var(--line);border-radius:9px}
+  .opt:has(input:checked){border-color:var(--accent);background:var(--chip)}
+  .opt input{margin:2px 0 0;flex:none;accent-color:var(--accent)}
+  .opt small{display:block;color:var(--dim);font-size:12.5px;margin-top:1px}
+  button{font:inherit;font-size:14px;font-weight:600;padding:10px 20px;border-radius:9px;
+    border:1px solid var(--accent);background:var(--accent);color:var(--bg);cursor:pointer}
+  button:hover{filter:brightness(1.07)}
+  button:disabled{opacity:.5;cursor:default}
+  button.ghost{background:none;color:var(--dim);border-color:var(--line);font-weight:500}
+  button.danger{background:none;color:var(--bad);border-color:var(--line);font-weight:500}
+  .msg{font-size:13.5px;padding:11px 14px;border-radius:9px;margin:14px 0 0}
+  .msg.ok{background:var(--chip);color:var(--accent)}
+  .msg.err{background:var(--chip);color:var(--bad)}
+  .foot{color:var(--faint);font-size:12.5px;margin-top:22px;line-height:1.6}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .saved li{font-size:13.5px;margin-bottom:5px}
+  .saved{padding-left:18px;margin:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Role alerts</h1>
+  <p class="sub"><a href="/">SoleSource</a> — every open sales role at state &amp;
+    local govtech companies.</p>
+  <div id="view"></div>
+  <p class="foot">
+    We store your email address, these settings, and any roles you saved. Nothing
+    else: no name, no password, no tracking. Unsubscribing deletes the record
+    rather than filing it away. Nothing is ever sent to an address that has not
+    confirmed it wants mail.
+  </p>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* The token comes out of the URL once and is then removed from the address
+   bar. It stays in memory for this page's requests. A settings URL sitting in
+   a browser history, a shared screen or a pasted "look at this" is the most
+   likely way one leaks, and there is no reason to leave it on display after
+   the page has read it. */
+const q=new URLSearchParams(location.search);
+const TOKEN=q.get("t");
+const WANT_CONFIRM=q.get("confirm")==="1";
+const WANT_STOP=q.get("stop")==="1";
+if(TOKEN)history.replaceState(null,"","/alerts");
+
+const CADENCE=[
+  ["daily","Every weekday morning","Most roles land on weekday mornings, so this is the fastest you can hear."],
+  ["twice","Tuesday and Thursday mornings","Twice a week. Enough to be early without being a daily habit."],
+  ["weekly","Wednesday mornings","One email a week, mid-week. The quietest option."]];
+
+let PREFS=null, SAVED=[], SECTORS=[];
+/* Kept in step with the same list in functions/api/alerts.js. */
+const STATES=new Set(("AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA "
+ +"ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX "
+ +"UT VT VA WA WV WI WY PR VI GU AS MP").split(" "));
+
+/* Just the sector names, written by the build. Pulling board.json here would
+   mean a settings page downloading every posting on the site to fill one
+   dropdown. If it fails, the dropdown still says "Any sector" and every other
+   setting works - a sector filter is the one thing here that is optional. */
+fetch("data/sectors.json").then(r=>r.json()).then(list=>{
+  SECTORS=(Array.isArray(list)?list:[]).sort();
+  fillSectors();
+}).catch(()=>{});
+
+function fillSectors(){
+  const s=$("#sector"); if(!s)return;
+  const chosen=s.value||(PREFS&&PREFS.sector)||"";
+  s.innerHTML='<option value="">Any sector</option>'
+    +SECTORS.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("");
+  if(chosen)s.value=chosen;
+}
+
+/* ---------- shared form ------------------------------------------------- */
+
+function formHTML(p){
+  p=p||{cadence:"weekly",min_count:1};
+  const sel=(v,x)=>v===x?" selected":"";
+  return `
+  <h2>How often</h2>
+  <div class="opts">${CADENCE.map(([v,t,d])=>`
+    <label class="opt"><input type="radio" name="cadence" value="${v}"
+      ${p.cadence===v?"checked":""}><span><strong>${t}</strong><small>${d}</small></span></label>`).join("")}
+  </div>
+
+  <h2>Which roles</h2>
+  <p class="note">Leave these alone and you get everything new. Narrow them and
+    the alert only carries roles that clear the bar.</p>
+  <label class="opt" style="margin-bottom:12px">
+    <input type="checkbox" id="quota" ${p.quota_only?"checked":""}>
+    <span><strong>Only roles that carry a number</strong>
+      <small>Quota-carrying sales roles. Filters out support, ops and marketing.</small></span></label>
+  <div class="row">
+    <div><label for="family">Job family</label>
+      <select id="family">
+        <option value="">Any</option>
+        <option value="gtm"${sel(p.family,"gtm")}>GTM (sales, marketing, BD)</option>
+        <option value="cs"${sel(p.family,"cs")}>Customer Success and Support</option>
+        <option value="field"${sel(p.family,"field")}>Field and implementation</option>
+        <option value="ops"${sel(p.family,"ops")}>Operations and RevOps</option>
+        <option value="exec"${sel(p.family,"exec")}>Executive</option>
+        <option value="product"${sel(p.family,"product")}>Product and Design</option>
+        <option value="engineering"${sel(p.family,"engineering")}>Engineering</option>
+        <option value="data"${sel(p.family,"data")}>Data, Analytics and Research</option>
+        <option value="policy"${sel(p.family,"policy")}>Policy and Government Affairs</option>
+        <option value="ga"${sel(p.family,"ga")}>G&amp;A (finance, legal, people)</option>
+      </select></div>
+    <div><label for="seniority">Seniority</label>
+      <select id="seniority">
+        <option value="">Any</option>
+        <option value="junior"${sel(p.seniority,"junior")}>Junior</option>
+        <option value="mid"${sel(p.seniority,"mid")}>Mid</option>
+        <option value="senior"${sel(p.seniority,"senior")}>Senior</option>
+        <option value="leadership"${sel(p.seniority,"leadership")}>Leadership</option>
+      </select></div>
+  </div>
+  <div class="row">
+    <div><label for="sector">Sector</label><select id="sector"></select></div>
+    <div><label for="mode">Where you would sit</label>
+      <select id="mode">
+        <option value="">Anywhere</option>
+        <option value="remote"${sel(p.work_mode,"remote")}>Remote only</option>
+        <option value="hybrid"${sel(p.work_mode,"hybrid")}>Hybrid</option>
+        <option value="onsite"${sel(p.work_mode,"onsite")}>In an office</option>
+      </select></div>
+  </div>
+  <div class="row"><div>
+    <label for="states">States (optional, e.g. NY, NJ, CT)</label>
+    <input type="text" id="states" value="${esc((p.states||[]).join(", "))}"
+      placeholder="any state">
+  </div></div>
+
+  <h2>When not to email you</h2>
+  <p class="note">A quiet week that sends "1 new role" is how an alert teaches
+    you to ignore it. Set a floor and we stay silent below it — those roles
+    still arrive in the next email that clears it, so nothing is lost.</p>
+  <div class="row"><div>
+    <label for="floor">Do not email unless there are at least</label>
+    <select id="floor">
+      ${[1,3,5,10,20].map(n=>`<option value="${n}"${p.min_count==n?" selected":""}>
+        ${n===1?"1 new role (always email)":n+" new roles"}</option>`).join("")}
+    </select>
+  </div></div>`;
+}
+
+let DROPPED=[];
+function readForm(){
+  const r=document.querySelector('input[name=cadence]:checked');
+  const typed=$("#states").value.split(/[,\s]+/).map(x=>x.trim().toUpperCase())
+    .filter(Boolean);
+  DROPPED=typed.filter(x=>!STATES.has(x));
+  return {
+    cadence:r?r.value:"weekly",
+    quota_only:$("#quota").checked,
+    family:$("#family").value||null,
+    seniority:$("#seniority").value||null,
+    sector:$("#sector").value||null,
+    work_mode:$("#mode").value||null,
+    states:typed.filter(x=>STATES.has(x)),
+    min_count:parseInt($("#floor").value,10)||1
+  };
+}
+
+function say(kind,text){
+  const m=$("#msg"); if(!m)return;
+  m.className="msg "+kind; m.textContent=text; m.hidden=false;
+}
+
+async function api(body){
+  const r=await fetch("/api/alerts",{method:"POST",
+    headers:{"content-type":"application/json"},body:JSON.stringify(body)});
+  let j={}; try{j=await r.json()}catch{}
+  return {ok:r.ok,status:r.status,...j};
+}
+
+/* ---------- signup (no token) ------------------------------------------- */
+
+function signupView(){
+  $("#view").innerHTML=`<div class="panel">
+    <h2>Get told when a role opens</h2>
+    <p class="note">We check every company on the board daily. When something new
+      matches what you asked for, you get one email — never a re-send of a role
+      you have already been told about.</p>
+    <label for="email">Your email</label>
+    <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
+    <div class="hp" aria-hidden="true">
+      <label>Fax<input type="text" id="fax" tabindex="-1" autocomplete="off"></label></div>
+    <div style="height:16px"></div>
+    ${formHTML(null)}
+    <button id="go">Send me the confirmation</button>
+    <div id="msg" class="msg" hidden></div>
+  </div>`;
+  fillSectors();
+  $("#go").onclick=async()=>{
+    const email=$("#email").value.trim();
+    if(!email){say("err","Add your email first.");return}
+    $("#go").disabled=true;
+    const r=await api({action:"subscribe",email,prefs:readForm(),
+                       company_fax:$("#fax").value});
+    $("#go").disabled=false;
+    if(r.error==="not_configured"){
+      say("err","Alerts are not switched on yet. Nothing was sent and no address was stored.");
+    }else if(r.ok){
+      // Deliberately the same words whether or not this address was already
+      // subscribed. The page must not become a way to test whether someone
+      // has an account here.
+      say("ok","Check your email and click the link to confirm. Until you do, nothing is sent.");
+      $("#go").disabled=true;
+    }else{
+      say("err",r.error||"That did not go through. Try again shortly.");
+    }
+  };
+}
+
+/* ---------- settings (token) -------------------------------------------- */
+
+/* Saved roles are local-first on the board and that stays the default. Turning
+   sync on is a deliberate act on one browser at a time, so a shared or
+   borrowed machine never quietly starts carrying somebody's shortlist. */
+const SYNC_KEY="solesource.synctoken.v1";
+function paintSync(){
+  let on=false;
+  try{on=localStorage.getItem(SYNC_KEY)===TOKEN}catch{}
+  const n=$("#syncnote"), b=$("#synctoggle");
+  if(!n||!b)return;
+  n.textContent=on
+    ? "This browser is syncing its saved roles with your subscription, so they follow you to your other devices."
+    : "Roles you save on the board are kept in this browser alone. Turn sync on here and they travel with your subscription instead.";
+  b.textContent=on?"Stop syncing on this browser":"Sync saved roles on this browser";
+}
+
+function settingsView(data){
+  PREFS=data.prefs; SAVED=data.saved||[];
+  const live=SAVED.length;
+  $("#view").innerHTML=`<div class="panel">
+    <h2>Settings for ${esc(data.email)}</h2>
+    <p class="note">${data.confirmed
+      ? (data.last_sent?`Last digest sent ${esc(data.last_sent)}.`
+                       :"Confirmed. Your first digest goes out on the next matching morning.")
+      : "This address has not been confirmed yet, so nothing is being sent. Use the link in your confirmation email."}</p>
+    ${formHTML(PREFS)}
+    <button id="save">Save changes</button>
+    <button class="ghost" id="test">See these filters on the board</button>
+    <div id="msg" class="msg" hidden></div>
+  </div>
+  <div class="panel"><h2>Saved roles on this browser</h2>
+    <p class="note" id="syncnote"></p>
+    <button class="ghost" id="synctoggle"></button>
+  </div>
+  ${live?`<div class="panel"><h2>Saved roles</h2>
+    <p class="note">${live} role${live===1?"":"s"} kept with this subscription, so
+      they follow you between your laptop and your phone.</p>
+    <ul class="saved">${SAVED.slice(0,40).map(s=>
+      `<li>${s.url?`<a href="${esc(s.url)}" rel="noopener noreferrer">${esc(s.title)}</a>`
+              :esc(s.title)} — ${esc(s.company)}</li>`).join("")}</ul>
+    ${live>40?`<p class="note" style="margin-top:8px">and ${live-40} more</p>`:""}
+    <p class="note" style="margin-top:10px"><a href="/?tab=saved">Open them on the board</a></p>
+  </div>`:""}
+  <div class="panel">
+    <h2>Stop</h2>
+    <p class="note">This deletes the subscription, the settings and the saved roles
+      above. There is no suppression list and no record kept that you were here.</p>
+    <button class="danger" id="stop">Stop these emails and delete my data</button>
+  </div>`;
+  fillSectors();
+  paintSync();
+  $("#synctoggle").onclick=()=>{
+    // The board and this page share an origin, so the token is handed over
+    // through storage rather than through a URL. A settings token in the
+    // board's address bar would ride along in the Referer of every outbound
+    // job link a person clicks.
+    if(localStorage.getItem(SYNC_KEY)===TOKEN)localStorage.removeItem(SYNC_KEY);
+    else localStorage.setItem(SYNC_KEY,TOKEN);
+    paintSync();
+  };
+  $("#save").onclick=async()=>{
+    $("#save").disabled=true;
+    const r=await api({action:"update",token:TOKEN,prefs:readForm()});
+    $("#save").disabled=false;
+    const dropped=DROPPED.length
+      ? ` Ignored ${DROPPED.join(", ")} — not a state code, so it was left out
+          rather than filtering your alert down to nothing.` : "";
+    say(r.ok?"ok":"err",r.ok?("Saved."+dropped):(r.error||"That did not save."));
+  };
+  $("#test").onclick=()=>{
+    // Not a mock of the email - the board itself, carrying exactly these
+    // filters, newest first. A preview that can disagree with the real thing
+    // is worse than no preview, so this reuses the board's own URL keys
+    // rather than re-implementing the matching here.
+    const p=readForm(), u=new URLSearchParams();
+    if(!p.quota_only)u.set("any","1");   // the board filters to quota by default
+    if(p.family)u.set("fam",p.family);
+    if(p.seniority)u.set("sen",p.seniority);
+    if(p.sector)u.set("sec",p.sector);
+    if(p.work_mode)u.set("mode",p.work_mode);
+    if(p.states.length)u.set("st",p.states[0]);
+    location.href="/?"+u.toString();
+  };
+  $("#stop").onclick=async()=>{
+    if(!confirm("Delete this subscription and everything stored with it?"))return;
+    const r=await api({action:"stop",token:TOKEN});
+    if(r.ok){
+      $("#view").innerHTML=`<div class="panel"><h2>Done</h2>
+        <p class="note">The subscription is deleted and no more email will be sent.
+          If you want them again later, <a href="/alerts">sign up</a> — it starts
+          from scratch, which is the point.</p></div>`;
+    }else say("err",r.error||"That did not go through.");
+  };
+}
+
+/* ---------- boot --------------------------------------------------------- */
+
+(async function(){
+  if(!TOKEN){signupView();return}
+  $("#view").innerHTML='<div class="panel"><p class="note">Loading your settings…</p></div>';
+  if(WANT_CONFIRM)await api({action:"confirm",token:TOKEN});
+  if(WANT_STOP){
+    const r=await api({action:"stop",token:TOKEN});
+    $("#view").innerHTML=`<div class="panel"><h2>${r.ok?"Unsubscribed":"Already gone"}</h2>
+      <p class="note">${r.ok?"The subscription and everything stored with it is deleted."
+        :"That link no longer matches a subscription, so there is nothing to delete."}</p></div>`;
+    return;
+  }
+  const r=await fetch("/api/alerts?t="+encodeURIComponent(TOKEN));
+  let d={}; try{d=await r.json()}catch{}
+  if(d.ok){
+    settingsView(d);
+    if(WANT_CONFIRM)say("ok","Confirmed. You will get your first digest on the next matching morning.");
+  }else if(d.error==="not_configured"){
+    $("#view").innerHTML='<div class="panel"><h2>Not switched on</h2>'
+      +'<p class="note">Alerts are not configured on this site yet.</p></div>';
+  }else{
+    $("#view").innerHTML=`<div class="panel"><h2>That link did not work</h2>
+      <p class="note">It may have already been used to unsubscribe, or it may be
+        incomplete — mail clients sometimes break long links across lines.
+        You can <a href="/alerts">sign up again</a>.</p></div>`;
+  }
+})();
+</script>
+</body>
+</html>
