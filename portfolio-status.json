@@ -1,23 +1,22 @@
 {
- "project_id": "govtech_dock",
- "repo": "westjw/govtech-dock",
- "last_updated": "2026-08-23T00:00:00Z",
- "status": "Active Build",
- "progress_pct": 72,
- "progress_note": "~72% of the free board; the paid product is undefined so that half is not scored",
- "next_move": "Land the 670 researched cards, then rule the horizontal vendors in the new Vendor scope queue",
- "session_summary": "Site went public: Access gate removed and both whole-repo deployments deleted first. Public add-a-company form and header button shipped. The conference sweep completed its readable half (27 of 28 clean, NAFA partial): 1,956 suppliers, 670 govtech candidates, 41 conferences represented. Territory, office and work mode became three separate filterable facts. The 6am refresh crash was fixed and data now commits before the spreadsheet.",
- "recent_work": [
-  "solesourcejobs.com is public - Access application deleted, stale whole-repo deployments removed",
-  "Public submission form + Cloudflare Function, 15 tests, degrades to the GitHub issue form",
-  "Conference sweep: 28 readable directories sept, 1,956 suppliers, 670 candidates staged",
-  "Event tags issued by the catalog, not by scraping agents (three APPAs collided)",
-  "Vendor scope admin queue for horizontal vendors, rulings record author, reason and inputs",
-  "promote_candidates.py: validated door from candidate to company card",
-  "Territory vs office vs work mode split into separate filters on the board"
- ],
- "blockers": [
-  "Repo visibility flip to public is the owner's click; it also switches on public submissions",
-  "ATS discovery for the new cards is a later pass, so they land unmonitored"
- ]
+  "project_id": "govtech_dock",
+  "repo": "westjw/govtech-dock",
+  "last_updated": "2026-08-23T20:54:40-04:00",
+  "status": "Active Build",
+  "progress_pct": 72,
+  "progress_note": "front-end list closed: alerts (cadence + role bar + volume floor) and cross-device saved-role sync shipped",
+  "next_move": "Owner: create the ALERTS KV namespace + bind it, add RESEND_KEY to Pages, add the four repo secrets. Until then alerts report 'not configured' and send nothing.",
+  "session_summary": "Closed the last two front-end gaps as one feature. Alerts run off the board's own first_seen history, so a role appears in exactly one email; threshold is built as both a role bar and a volume floor. Identity is a mailed token, no accounts or passwords, and it carries saved-role sync with tombstones so a stale device cannot resurrect an unsaved role. Saved roles stay local by default - an unlinked visitor makes zero API calls.",
+  "recent_work": [
+    "scripts/digest.py - what one subscription would receive, testable with no mail account",
+    "functions/api/alerts.js - subscribe/confirm/update/sync/stop on Cloudflare KV",
+    "alerts.html - signup and passwordless settings page, token stripped from the URL",
+    "scripts/send_digests.py - CI sender; dry run by default, skips unconfirmed always",
+    "selftest guard against alerts.js drifting from roles.py's job families",
+    "build_site ships data/sectors.json so the settings page stops pulling 4.7MB"
+  ],
+  "blockers": [
+    "Repo visibility flip to public is the owner's click; it also switches on public submissions",
+    "ATS discovery for the new cards is a later pass, so they land unmonitored"
+  ]
 }
