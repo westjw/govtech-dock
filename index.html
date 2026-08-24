@@ -225,6 +225,9 @@
   /* the one click that puts the set-aside postings back */
   .payall,.payoff{color:var(--accent);cursor:pointer;font-weight:600}
   .colink{color:var(--accent);cursor:pointer;font-weight:600;white-space:nowrap}
+  /* the two set-aside offers in the why-line are sentences, not labels, so
+     they wrap - colink's nowrap would push the note past 375px */
+  .cotext,.cowide{white-space:normal}
 
   /* ------------------------------------------------------------ pagination
      In the URL, not a scroll trap: page 2 is an address you can send. */
@@ -1167,6 +1170,38 @@ function ageOptions(rows,gen){
   return out;
 }
 
+/* Source options, computed for exactly the reason ageOptions is.
+
+   The select used to be written down: "From a job board" and "Checked by
+   hand". On today's board that is both failures at once - ats matched 4,360
+   of 4,360 and manual matched 0. A control that matches everything and a
+   control that matches nothing are the same dead control, and a row of them
+   teaches a reader that none of the filters do anything.
+
+   Deleting the pair would have been the smaller fix and the wrong one:
+   data/manual.json fills up again the moment somebody uses the capture
+   bookmarklet, and a filter that has to be remembered and re-added is a
+   filter that will not be. So the options come off the board. Each source
+   appears only while it genuinely splits it (0 < n < total), which means the
+   whole select disappears today and returns by itself the day hand-checked
+   postings do.
+
+   Counted in a Map, not an object literal. `n[p.source]` on a literal is a
+   prototype lookup: a posting whose source read "constructor" would count
+   against a function, `(fn||0)+1` is NaN, and the option would silently never
+   appear. Same class of bug as the one ?tab=constructor found in render().
+   source is a field in a generated file, but the file is generated from
+   third-party text, so the safe structure is the free one. */
+const SRC_LABEL=Object.assign(Object.create(null),
+  {ats:"From a job board",manual:"Checked by hand"});
+function srcOptions(rows){
+  const n=new Map();
+  rows.forEach(p=>{const s=p.source||"ats";n.set(s,(n.get(s)||0)+1)});
+  return [...n.keys()].sort()
+    .filter(s=>n.get(s)>0&&n.get(s)<rows.length)
+    .map(s=>({v:s,label:SRC_LABEL[s]||s,n:n.get(s)}));
+}
+
 /* ------------------------------------------------------------------- pay
    Three states, and never two.
 
@@ -1286,6 +1321,7 @@ function jobs(){
      filter that sets aside every posting is worse than no filter. */
   const payOn=D.postings.some(hasPay);
   const ages=ageOptions(D.postings,D.generated);
+  const srcs=srcOptions(D.postings);
   const fresh=D.postings.filter(p=>p.first_seen===D.generated);
   const freshQ=fresh.filter(p=>p.quota_carrying);
   /* The strongest TRUE story in the shape the deck wanted: a company whose
@@ -1380,7 +1416,10 @@ function jobs(){
 
     <!-- Every filter is kept. Territory, state, region, sector, seniority and
          source are the ones a seller opens with after the first four, so they
-         live one click away rather than being cut. -->
+         live one click away rather than being cut.
+         Source is the exception and prints nothing today: srcOptions() only
+         offers a source that actually splits the board, and every posting on
+         this build came from an ATS. It comes back on its own. -->
     <div class="bar" id="j-bar" style="display:none">
       <select id="j-fam"><option value="">All role families</option>
         ${fams.map(f=>`<option value="${esc(f)}">${esc(FAM[f]||f)}</option>`).join("")}</select>
@@ -1407,9 +1446,11 @@ function jobs(){
         <option value="remote">Remote</option><option value="hybrid">Hybrid</option>
         <option value="onsite">Onsite</option>
         <option value="not stated">Work mode not stated</option></select>
-      <select id="j-src"><option value="">Any source</option>
-        <option value="ats">From a job board</option>
-        <option value="manual">Checked by hand</option></select>
+      ${srcs.length?`
+      <select id="j-src" aria-label="Where this listing came from">
+        <option value="">Any source</option>
+        ${srcs.map(o=>`<option value="${esc(o.v)}">${esc(o.label)}</option>`).join("")}
+      </select>`:""}
     </div>
 
     <!-- The query string is on screen on purpose. A filtered view is a
@@ -1434,7 +1475,13 @@ function jobs(){
     ${debutCos.length?`<span class="debut">First seller req we have ever recorded at
       ${esc(debutCos.slice(0,3).join(", "))}${debutCos.length>3
         ?` and ${debutCos.length-3} other${debutCos.length-3===1?"":"s"}`:""}.</span>`:""}
-    ${ages.some(o=>o.v==="0")?`<a href="#" id="j-newlink">Show just these &rarr;</a>`:""}
+    ${/* The offer is EMPTY here and filled by drawJobs, because it has to
+          carry the number it will actually deliver and only drawJobs knows
+          what the filters are. It used to read "Show just these" next to
+          fresh.length and hand back the quota-carrying subset - 56 offered,
+          8 shown. Rendered only when j-since actually has a "0" option to
+          set: without one the link could not do what it says. */""}
+    ${ages.some(o=>o.v==="0")?`<span id="j-newoffer"></span>`:""}
   </div>`:""}
 
   <div class="fchips" id="j-chips"></div>
@@ -1471,9 +1518,6 @@ function jobs(){
         if(el.tagName==="SELECT")PUSH_NEXT=true;
         refilter();
       });});
-  const nl=$("#j-newlink");
-  if(nl)nl.onclick=e=>{e.preventDefault();
-    const s=$("#j-since"); if(s){s.value="0";PUSH_NEXT=true;refilter();}};
   const hw=$("#j-how");
   if(hw)hw.onclick=e=>{e.preventDefault();tab="how";ROLE=null;render();window.scrollTo(0,0)};
   applyUrl(PENDING_URL); PENDING_URL=null;
@@ -1721,8 +1765,16 @@ function applyUrl(u){
   PAY_KEEP=u.has("paynone");
   PAGE=Math.max(1,parseInt(u.get("p")||"1",10)||1);
   Object.entries(URLKEYS).forEach(([k,id])=>{
-    const el=$("#"+id); if(!el||!u.has(k))return;
+    if(!u.has(k))return;
     const want=u.get(k);
+    const el=$("#"+id);
+    /* A control that was never RENDERED is the same failure as a <select>
+       with no matching option, and until source became computed it could not
+       happen so it was not handled. ?src=manual now arrives at a board with
+       no source select at all; swallowing it would show a wider result under
+       the same address without a word, which is the whole reason
+       DROPPED_FILTERS exists. */
+    if(!el){if(want!=="")DROPPED_FILTERS.push({key:k,want});return;}
     el.value=want;
     if(el.tagName==="SELECT"&&el.value!==want&&want!=="")
       DROPPED_FILTERS.push({key:k,want});
@@ -1934,7 +1986,12 @@ function drawJobs(){
     relaxed=FAM[WANT.family]||WANT.family;
   }
   const sinceDays=/^\d+$/.test(since)?+since:null;
-  const base=D.postings.filter(p=>{
+  /* One predicate, with the age horizon as an ARGUMENT rather than a closure
+     read. Everything else about the view is fixed by the time we get here, but
+     the "new this run" strip has to answer a second question - how many rows
+     would appear if the horizon were 0 - and answering it by eye is how that
+     strip came to offer 56 and deliver 8. */
+  const pass=(p,sinceDays)=>{
     // The searchable text includes the office and territory the classifier
     // extracted - as codes AND full names, so "account executive kansas"
     // finds a territory stored as KS.
@@ -1988,7 +2045,8 @@ function drawJobs(){
     if(sinceDays!==null&&!(p.first_seen&&dayGap(p.first_seen,D.generated)<=sinceDays))
       return false;
     return true;
-  });
+  };
+  const base=D.postings.filter(p=>pass(p,sinceDays));
 
   /* Pay is applied LAST and separately, because what it removes has to be
      countable. Three quarters of this board states no pay; a floor written
@@ -2002,19 +2060,29 @@ function drawJobs(){
      the job pays under your floor. Only a stated yearly minimum under the
      floor is, and that is the one case that leaves without being reported. */
   const payFloor=/^\d+$/.test(pay)?+pay:null;
-  let rows=base, aside=[];
-  if(pay==="stated")rows=base.filter(p=>!!p.comp);
-  else if(pay==="none")rows=base.filter(p=>hasPay(p)&&!p.comp&&!!p.jd_seen);
-  else if(pay==="unread")rows=base.filter(p=>hasPay(p)&&!p.comp&&!p.jd_seen);
-  else if(payFloor!==null){
-    const keep=[];
-    base.forEach(p=>{
-      const fl=payFloorOf(p);
-      if(fl===null)aside.push(p);
-      else if(fl>=payFloor)keep.push(p);
-    });
-    rows=PAY_KEEP?keep.concat(aside):keep;
-  }
+  /* A function rather than a block, for the same reason pass() is one: the
+     new-this-run offer has to run the WHOLE pipeline to state a number it can
+     keep, and a pay floor is exactly the filter that would otherwise make the
+     offer wrong by hundreds. It allocates its own arrays and reads no state it
+     does not own, so calling it twice cannot disturb the first answer. */
+  const payPass=list=>{
+    if(pay==="stated")return{rows:list.filter(p=>!!p.comp),aside:[]};
+    if(pay==="none")return{rows:list.filter(p=>hasPay(p)&&!p.comp&&!!p.jd_seen),aside:[]};
+    if(pay==="unread")return{rows:list.filter(p=>hasPay(p)&&!p.comp&&!p.jd_seen),aside:[]};
+    if(payFloor!==null){
+      const keep=[],set=[];
+      list.forEach(p=>{
+        const fl=payFloorOf(p);
+        if(fl===null)set.push(p);
+        else if(fl>=payFloor)keep.push(p);
+      });
+      return{rows:PAY_KEEP?keep.concat(set):keep,aside:set};
+    }
+    return{rows:list,aside:[]};
+  };
+  const cut=payPass(base);
+  let rows=cut.rows;
+  const aside=cut.aside;
   /* Newest first is the default and the deck's default, because on a job
      board the freshest row is the one worth the click. The other two orders
      exist because they discriminate: a salary sort does not, with three
@@ -2060,6 +2128,42 @@ function drawJobs(){
       : ` · ${setAside.total.toLocaleString()} set aside: ${paySetAsideText(setAside)}
           · <span class="payall">include them</span>`):"");
 
+  /* THE NEW-THIS-RUN OFFER, and the rule it exists to obey is drawCos's:
+     "a number offered is the number that actually appears when it is
+     clicked. Offering 188 more and then showing 12 is its own small lie."
+
+     The strip said "56 postings first seen on 2026-08-24" and its link said
+     "Show just these", and the click produced 8 - because the board opens on
+     quota-carrying roles and the strip counts every posting. Both numbers
+     were true; the OFFER was not. So it is computed here, through the same
+     pass() and payPass() the list itself went through, with the only
+     difference being the horizon it is offering to set.
+
+     When the current filters leave none of them it stops being a link. A
+     control that cannot change anything is the same defect as a filter option
+     matching nothing, one element to the left. */
+  const offer=$("#j-newoffer");
+  if(offer){
+    const n=sinceDays===0?rows.length:payPass(D.postings.filter(p=>pass(p,0))).rows.length;
+    offer.textContent="";
+    if(n===0){
+      offer.textContent="None of them clear the filters you have set.";
+    }else if(sinceDays===0){
+      offer.textContent=`Showing ${n.toLocaleString()} of them.`;
+    }else{
+      const a=document.createElement("a");
+      a.href="#";
+      // the count is what this view will show, which is not always the count
+      // to its left - the title says why rather than leaving a reader to
+      // wonder whether one of the two numbers is wrong
+      a.title="the roles first seen this run that also clear the filters you have set";
+      a.textContent=`Show these ${n.toLocaleString()} →`;
+      a.onclick=e=>{e.preventDefault();
+        const s=$("#j-since"); if(s){s.value="0";PUSH_NEXT=true;refilter();}};
+      offer.appendChild(a);
+    }
+  }
+
   const host=$("#j-list");
   host.textContent="";
 
@@ -2071,8 +2175,9 @@ function drawJobs(){
     n.innerHTML=`This link asked for ${DROPPED_FILTERS.map(d=>
       `<strong>${esc(d.key)}=${esc(d.want)}</strong>`).join(", ")}, which this board has
       nothing to match right now — a sector that has been renamed, a state with nothing
-      open today, or an age this board&rsquo;s history is not deep enough for. It was left
-      off rather than filtering the list down to nothing.`;
+      open today, a source no posting on this build carries, or an age this board&rsquo;s
+      history is not deep enough for. It was left off rather than filtering the list down
+      to nothing.`;
     host.appendChild(n);
   }
 
@@ -2340,23 +2445,136 @@ let CSHOWN=60;
    reset when the query changes, because carrying "yes also show me the ones
    that only mention it" onto a different question is a silent widening. */
 let CO_WIDE=false,CO_TEXT=false,CO_LASTQ=null;
+/* Whether the pill is off because the SEARCH turned it off, as opposed to
+   because the person did. The two have to be told apart: an automatic release
+   answers one query and must not survive into the next one. It did survive,
+   and the result was that searching "Rain" (which releases, correctly) and
+   then searching "permitting" returned 43 companies where a fresh search
+   returns 8 - silently, because `relaxed` is null on that second query so
+   nothing on screen explained the wider list. That is the same silent widening
+   the two toggles below already reset for, arriving by a different door. */
+let CO_AUTO_OFF=false;
 function coWiden(on){CO_WIDE=on;CSHOWN=60;drawCos();}
 function coText(on){CO_TEXT=on;CSHOWN=60;drawCos();}
-function toggleHiring(btn){
-  const on=btn.getAttribute("aria-pressed")!=="true";
-  btn.setAttribute("aria-pressed",on);
+function setHiringPill(on){
+  const btn=$("#c-hire-pill");
+  if(btn)btn.setAttribute("aria-pressed",on?"true":"false");
   const v=$("#c-hire-v");
-  v.textContent=on?"Hiring now":"Everyone we track";
-  v.className="v"+(on?" on":"");
+  if(v){v.textContent=on?"Hiring now":"Everyone we track";v.className="v"+(on?" on":"");}
+}
+function toggleHiring(btn){
+  setHiringPill(btn.getAttribute("aria-pressed")!=="true");
+  // a deliberate click owns the pill from here: never overrule the person
+  CO_AUTO_OFF=false;
   CSHOWN=60;drawCos();
 }
 function toggleMoreCo(btn){setBarOpen($("#c-bar"),btn,$("#c-bar").style.display==="none")}
 function showMoreCo(){CSHOWN+=60;drawCos();}
 
+/* ------------------------------------------------------ saying WHY on screen
+   A bounded concept map is only worth having over substring matching if a
+   person can see which bucket it chose and disagree with it. So this sentence
+   is not decoration, it is the audit trail: it names the phrase that fired,
+   the bucket it resolved to, and - the part that matters most - every company
+   the map set aside, with the one click that puts them back.
+
+   Every count here is computed in drawCos against the SAME filters the list is
+   under, so a number offered is the number that actually appears when it is
+   clicked. Offering "188 more" and then showing 12 is its own small lie.
+
+   The two offers are spans wired here rather than by a page-wide
+   querySelectorAll, which is how .payall/.payoff are bound. That pass grabs
+   every matching element on the page, so a shared class name would have
+   silently pointed these at the pay filter. */
+function coWhy(q,W,c){
+  const host=$("#c-why");
+  if(!host)return;
+  host.textContent="";
+  if(!q)return;
+
+  /* A control that changes state on its own must never be something a person
+     discovers later, so the release gets the flag rule and its own line
+     rather than being appended to the reasoning. */
+  if(c.relaxed){
+    const f=document.createElement("div");
+    f.className="note flag";
+    f.innerHTML=`Showing <strong>everyone we track</strong> &mdash; ${c.relaxed}.`;
+    host.appendChild(f);
+  }
+
+  const bits=[];
+  if(W.go.length){
+    const label=W.go.map(t=>`<strong>${esc(coGoLabel(t))}</strong>`).join(" + ");
+    // the phrases that fired, capped: a query can hit several and the point is
+    // to let someone check the reading, not to print the whole map back at them
+    const said=W.said.slice(0,3).map(s=>`&ldquo;${esc(s)}&rdquo;`).join(", ")
+      +(W.said.length>3?` and ${W.said.length-3} more`:"");
+    bits.push(`Reading &ldquo;${esc(q)}&rdquo; as ${label}`
+      +(W.said.length?`, on ${said}`:""));
+    if(W.terms.length)
+      bits.push(`also matching the text on ${W.terms.map(t=>
+        `&ldquo;${esc(t)}&rdquo;`).join(" and ")}`);
+    /* An empty bucket is a real, honest state and it has to read as one. The
+       shelf exists, this board has nothing on it today, and that is not the
+       same sentence as "no such company exists" - which is the claim this
+       whole repo refuses to make. */
+    /* Just the bucket size. It was briefly "N filed there, M shown", which
+       reads as a subset and is not one - a name match from another bucket
+       makes M larger than N, and the line said "40 filed there, 41 shown". */
+    if(!c.bucket)
+      bits.push(`this board has that shelf and <strong>nothing filed on it
+        today</strong> &mdash; an empty shelf, not evidence that no such company
+        exists`);
+    else
+      bits.push(`${c.bucket.toLocaleString()} companies are filed there`);
+  }else{
+    /* No concept fired. Say so plainly: the map only knows words somebody
+       wrote down, and the fallback is the old behaviour, not a failure. */
+    bits.push(`No concept in this map matched &ldquo;${esc(q)}&rdquo;, so this is a
+      plain text search over name, description, location and bucket`);
+    bits.push(`a company name always finds the company, whatever else is filtered`);
+  }
+
+  /* Said before the set-aside offers, because it explains rows the person can
+     already see: a company with nothing open, in a list headed "Hiring now". */
+  if(c.namedIdle)
+    bits.push(`${c.namedIdle===1?"one company this search names is"
+      :c.namedIdle.toLocaleString()+" companies this search names are"} on the board
+      with <strong>nothing open</strong>, and shown anyway &mdash; a name always finds
+      the company`);
+
+  /* What the map set aside, never dropped. Both directions offered, because a
+     person who widened has to be able to get back to the narrow answer. */
+  if(c.outN)
+    bits.push(`${c.outN.toLocaleString()} more mention the words and are filed
+      elsewhere &mdash; <span class="colink cotext" data-on="1">include them</span>`);
+  if(c.inN)
+    bits.push(`including ${c.inN.toLocaleString()} that only mention the words
+      &mdash; <span class="colink cotext" data-on="">set them aside</span>`);
+  if(c.wideN)
+    bits.push(`${c.wideN.toLocaleString()} more sit in ${esc(c.secs.join(", "))}
+      outside those categories &mdash; <span class="colink cowide" data-on="1">widen to
+      the whole sector</span>`);
+  else if(CO_WIDE&&c.secs.length)
+    bits.push(`widened to all of ${esc(c.secs.join(", "))} &mdash;
+      <span class="colink cowide" data-on="">narrow back</span>`);
+
+  const w=document.createElement("div");
+  w.className="note";
+  w.innerHTML=bits.join(" &middot; ")+".";
+  host.appendChild(w);
+  w.querySelectorAll(".cotext").forEach(el=>el.onclick=()=>coText(!!el.dataset.on));
+  w.querySelectorAll(".cowide").forEach(el=>el.onclick=()=>coWiden(!!el.dataset.on));
+}
+
 function drawCos(){
   const g=i=>{const el=$("#"+i);return el?el.value:"";};
   const q=(g("c-q")||"").trim().toLowerCase();
-  if(q!==CO_LASTQ){CO_LASTQ=q;CO_WIDE=false;CO_TEXT=false;}
+  if(q!==CO_LASTQ){
+    CO_LASTQ=q;CO_WIDE=false;CO_TEXT=false;
+    // a release belonged to the query that caused it, so hand the pill back
+    if(CO_AUTO_OFF){CO_AUTO_OFF=false;setHiringPill(true);}
+  }
   let hiringOnly=$("#c-hire-pill")?.getAttribute("aria-pressed")==="true";
   const s=g("c-sec"),ph=g("c-phase"),rd=g("c-reads");
 
@@ -2397,37 +2615,34 @@ function drawCos(){
      tab's quota-pill idiom, deliberately reused rather than reinvented: the
      pill releases ITSELF, visibly, and the reason is printed with the count.
 
-     Two ways the contradiction happens here, and the first is the one that
-     matters. "Hiring now" ran BEFORE the search did, so typing the name of a
-     company we track and that is not hiring - Rain, say - returned "No
-     companies match". That is the board deleting a company it has on file and
-     telling the person it does not exist, which is the exact failure this
-     whole repo is built to refuse. A NAME ALWAYS FINDS THE COMPANY. */
+     "Hiring now" ran BEFORE the search did, so typing the name of a company we
+     track and that is not hiring - Rain, say - returned "No companies match".
+     That is the board deleting a company it has on file and telling the person
+     it does not exist, which is the exact failure this whole repo is built to
+     refuse. A NAME ALWAYS FINDS THE COMPANY.
+
+     The rule is kept the NARROW way: a name match walks through the hiring
+     filter and nothing else does. Releasing the entire filter whenever a named
+     company was idle - which is what this did first - is a far bigger claim
+     than the rule needs, and it was measurably wrong. On "recreation software"
+     two vendors are literally called Recreation Software and neither is
+     hiring, so the release fired and answered a nine-company question with
+     forty-one companies, most of them not hiring and none of them asked for.
+     The filter is dropped outright only when NOTHING found is hiring, because
+     then the filter is the sole reason the page would be empty. */
   let relaxed=null;
-  if(hiringOnly&&q&&found.length){
-    const byName=found.filter(named);
-    if(byName.length&&!byName.some(o=>o.open_roles>0))
-      relaxed=byName.length===1
-        ?`<strong>${esc(byName[0].name)}</strong> is on this board with nothing open,
-           so the &ldquo;hiring now&rdquo; filter has released itself`
-        :`${byName.length} companies this search names by name have nothing open,
-           so the &ldquo;hiring now&rdquo; filter has released itself`;
-    else if(!found.some(o=>o.open_roles>0))
-      relaxed=`nothing this search found is hiring right now, so the &ldquo;hiring
-        now&rdquo; filter has released itself rather than show you an empty page a
-        filter caused`;
-  }
+  if(hiringOnly&&q&&found.length&&!found.some(o=>o.open_roles>0))
+    relaxed=`nothing this search found is hiring right now, so the &ldquo;hiring
+      now&rdquo; filter has released itself rather than show you an empty page a
+      filter caused`;
   if(relaxed){
-    const pill=$("#c-hire-pill");
-    if(pill){
-      pill.setAttribute("aria-pressed","false");
-      const vv=$("#c-hire-v");
-      if(vv){vv.textContent="Everyone we track";vv.className="v";}
-    }
+    setHiringPill(false);
+    CO_AUTO_OFF=true;
     hiringOnly=false;
   }
 
-  const open=o=>!hiringOnly||o.open_roles>0;
+  /* The one exception to the hiring filter, and it is the whole rule above. */
+  const open=o=>!hiringOnly||o.open_roles>0||named(o);
   const rank=new Map();
   found.forEach(o=>rank.set(o.id,coNameRank(o,q)));
   const rows=found.filter(open).sort((a,b)=>
@@ -2447,8 +2662,13 @@ function drawCos(){
     wideN=D.organizations.filter(o=>rest(o)&&open(o)&&!hits(o)
       &&coInGo(o,wgo)&&terms(o)).length;
   }
+  /* Companies riding through the hiring filter on their name alone. Counted
+     rather than assumed, and printed, because a row with nothing open sitting
+     in a list headed "Hiring now" has to explain itself on the spot. */
+  const namedIdle=hiringOnly?rows.filter(o=>!(o.open_roles>0)).length:0;
   coWhy(q,W,{outN:outN,inN:inN,wideN:wideN,secs:secs,relaxed:relaxed,
-             shown:rows.length,bucket:D.organizations.filter(o=>coInGo(o,W.go)).length});
+             namedIdle:namedIdle,shown:rows.length,
+             bucket:D.organizations.filter(o=>coInGo(o,W.go)).length});
 
   const extra=["c-sec","c-phase","c-reads"].filter(i=>g(i)).length;
   const mv=$("#c-more-v");
@@ -2776,15 +2996,68 @@ function how(){
     itself; it is generated from the same file the job list is.</p>`;
 }
 
-const VIEWS={jobs,companies,saved:savedView,intel,how};
+/* A NULL-PROTOTYPE map, and the null prototype is the fix.
+
+   This was an object literal behind `if(!VIEWS[tab])tab="jobs"`, which is a
+   truthiness test, not a membership test - so every key Object.prototype
+   carries passed it. ?tab=constructor and ?tab=valueOf found a function,
+   called it, got a value nobody looked at, and left the board EMPTY with no
+   tab selected and no error: a page that reads as "the data is missing" when
+   the data is fine. ?tab=__proto__ found Object.prototype itself, called it,
+   threw TypeError, and the boot chain below reported the file as unloadable.
+
+   Two changes, either of which would have been enough and both of which are
+   cheap: nothing to inherit, and the test asks the question it means. */
+const VIEWS=Object.assign(Object.create(null),
+  {jobs,companies,saved:savedView,intel,how});
 /* ?tab= comes off a url a stranger can edit, so an unknown value falls back to
    the board rather than throwing and leaving a blank page behind. */
 function render(){
-  if(!VIEWS[tab])tab="jobs";
-  VIEWS[tab]();
+  if(typeof VIEWS[tab]!=="function")tab="jobs";
+  /* A view that throws reports a VIEW failure. It used to reach the boot
+     catch and be reported as "could not load data/board.json" - blaming the
+     data for a bug in the page, with the real error swallowed. The board
+     never gets to claim its own data is broken when it is not; that is the
+     same lie as reporting "no jobs here" when we simply could not look.
+     The tab strip is repainted either way, so the way out is a tab rather
+     than the address bar. */
+  try{ VIEWS[tab](); }catch(e){ renderError(e); }
   [...$("#tabs").children].forEach(b=>b.setAttribute("aria-selected",b.dataset.t===tab));
 }
-fetch("data/board.json").then(r=>r.json()).then(d=>{
+/* The two failures this page can have at boot, kept apart on purpose. */
+function loadError(e){
+  const why=e&&e.message?String(e.message):String(e||"");
+  $("#view").innerHTML=`<div class="empty">${GHOST}Could not load
+    <code>data/board.json</code>.<br>
+    <span class="sub">${esc(why)}<br>
+    Run <code>python3 scripts/build_board.py</code>, then serve this folder over http
+    &mdash; opening index.html as a file will fail here too.</span></div>`;
+}
+function renderError(e){
+  // the stack goes to the console, where a person debugging can read it; the
+  // page says what happened in a sentence and does not guess at a cause
+  console.error("render failed",e);
+  const why=e&&e.message?String(e.message):String(e||"");
+  $("#view").innerHTML=`<div class="empty">${GHOST}This view failed to draw.<br>
+    <span class="sub">${esc(why)}<br>
+    <strong>data/board.json loaded fine</strong> &mdash; this is a bug in the page, not
+    a problem with the data. Pick another tab, or reload without the query string.</span>
+    </div>`;
+}
+/* Load, THEN boot: two try blocks, because they are two different sentences.
+   Anything thrown after the file has parsed is a page bug and says so. */
+(async function boot(){
+  let d;
+  try{
+    const r=await fetch("data/board.json");
+    // a 404 that returns an html error page parses as JSON on some servers
+    // and as garbage on others; check the status rather than find out
+    if(!r.ok)throw new Error("HTTP "+r.status+(r.statusText?" "+r.statusText:""));
+    d=await r.json();
+  }catch(e){ loadError(e); return; }
+  try{ start(d); }catch(e){ renderError(e); }
+})();
+function start(d){
   D=d;
   $("#tabs").innerHTML=TABS.map(([t,l])=>`<button data-t="${t}">${l}${t==="saved"?' <span id="savedcount" class="tabn"></span>':""}</button>`).join("");
   { const c=$("#savedcount"); if(c)c.textContent=Object.keys(savedAll()).length||""; }
@@ -2799,7 +3072,9 @@ fetch("data/board.json").then(r=>r.json()).then(d=>{
   render();
   // Sync runs after the first paint and never blocks it: the board must work
   // with the network gone, and a saved list is the last thing worth waiting on.
-  pullSync();
+  // Its own try for the same reason: a sync that throws must not replace a
+  // board that drew correctly with an error about the board.
+  try{ pullSync(); }catch(e){ console.error("saved-role sync failed",e); }
   // the back button should undo a search, not leave the page. it only ever
   // reaches this listener because openRole and a settled filter change push
   // real entries now; with everything on replaceState there was one entry and
@@ -2812,8 +3087,7 @@ fetch("data/board.json").then(r=>r.json()).then(d=>{
     tab=(PENDING_URL&&PENDING_URL.get("tab"))||"jobs";
     render();
   });
-}).catch(()=>{$("#view").innerHTML=`<div class="empty">Could not load data/board.json.
-  Run <code>python3 scripts/build_board.py</code>, then serve this folder.</div>`;});
+}
 </script>
 </body>
 </html>

@@ -718,7 +718,13 @@ def _extract(text: str, begin: str, end: str) -> Any:
 
 # ---------------------------------------------------------------- the checks
 
-def check() -> int:
+def check(quiet: bool = False) -> int:
+    """returns the number of problems; 0 is a pass.
+
+    `quiet` suppresses the notes and the ok line so selftest.py can call this
+    and report through its own fail(). The notes are honest-empty reporting,
+    not failures, and they have no place in another script's output.
+    """
     problems: list[str] = []
     notes: list[str] = []
     schema = json.loads(SCHEMA_PATH.read_text())
@@ -795,15 +801,17 @@ def check() -> int:
             if key[1] is not None and key not in filled:
                 notes.append(f"{key[0]} / {key[1]} holds no companies today")
 
-    for n in notes:
-        print("note: " + n)
+    if not quiet:
+        for n in notes:
+            print("note: " + n)
     for p in problems:
         print("FAIL: " + p)
     if problems:
-        return 1
-    n_phrases = sum(len(c["say"]) for c in CONCEPTS)
-    print(f"concept map ok: {len(CONCEPTS)} concepts, {n_phrases} phrases, "
-          f"{len([k for k in valid if k[1] is not None])} categories all reachable")
+        return len(problems)
+    if not quiet:
+        n_phrases = sum(len(c["say"]) for c in CONCEPTS)
+        print(f"concept map ok: {len(CONCEPTS)} concepts, {n_phrases} phrases, "
+              f"{len([k for k in valid if k[1] is not None])} categories all reachable")
     return 0
 
 
@@ -865,7 +873,9 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if a.query is not None:
         return run_query(a.query, a.hiring)
-    return check()
+    # clamped: check() returns a COUNT now, and an exit status is a byte -
+    # 256 problems would exit 0 and read as a pass
+    return 1 if check() else 0
 
 
 if __name__ == "__main__":

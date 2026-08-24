@@ -1,63 +1,195 @@
-# GovTech Dock — project guide for Claude Code
+# SLED JOBS — project guide for Claude Code
 
 ## What this is
 
-A tracker of state & local govtech companies with live "who's hiring AEs"
-status. The owner is a SLED sales professional using it to map employers and
-prospect timing. It began as a Cowork spreadsheet; this repo is the app
-version. Three parts:
+A public job board for sales roles at state & local government technology
+companies, and the map of companies behind it. The owner is a SLED sales
+professional; it began as a Cowork spreadsheet, and the board is now the
+product being launched. Three parts:
 
-1. **Data** — `data/companies.json` (the database), `data/schema.json`
-   (sectors/categories), `data/hiring_history/*.json` (append-only snapshots),
-   `data/meta.json` + `data/latest_diff.json` (run state).
+1. **Data** — `data/companies.json` (the company map), `data/board.json` (what
+   the site actually reads), `data/schema.json` (sectors/categories),
+   `data/hiring_history/*.json` (append-only snapshots), `data/meta.json` +
+   `data/latest_diff.json` (run state).
 2. **Engine** — `scripts/refresh.py` (deterministic ATS checks; no AI),
    `scripts/ats.py` (per-ATS fetchers), `scripts/classify.py` (title rules),
-   `scripts/export_xlsx.py` (spreadsheet), `scripts/selftest.py` (offline QA).
-3. **Site** — `index.html`, a single-file static app reading `data/` at runtime.
+   `scripts/roles.py` (family / seniority / work mode), `scripts/salary.py`
+   (pay out of prose), `scripts/build_board.py` (postings → board.json),
+   `scripts/build_site.py` (what ships to `public/`),
+   `scripts/export_xlsx.py`, `scripts/selftest.py` (offline QA).
+3. **Site** — `index.html`, a single-file static app reading `data/` at
+   runtime, plus `alerts.html` and a few Cloudflare Pages Functions under
+   `functions/`.
+
+**The product is called SLED JOBS.** It was GovTech Dock. The git remote is
+still `westjw/govtech-dock` and the portfolio `project_id` is still
+`govtech_dock` — those are identifiers, leave them. Anywhere else the old name
+appears in prose or UI, it is stale.
+
+## The name, the palette, and the one place they live
+
+`data/brand.json` is the single source for the name, the tagline, the domain
+and the eight-colour palette. Nothing may hardcode any of them.
+
+- **The domain is `solesourcejobs.com`** and changes when the owner buys the
+  new one. Editing that string and pointing the Pages custom domain at the new
+  name is the whole move: alert links, digest footers, the confirmation email
+  and the submission form all read it from brand.json.
+- **`functions/_brand.js` restates four values** (`SITE`, `DOMAIN`, `NAME`,
+  `FROM`) because a Pages Function cannot read a repo file at runtime. That
+  duplication is the thing that will rot, so `selftest.py::check_brand` fails
+  the build if the two disagree. Change the domain in both files or selftest
+  will tell you which one you forgot. Same pattern, same reason, as the alerts
+  vocabulary guard.
+- **The palette is CSS tokens, never a hex literal in a rule.** Ice `--bg` is
+  the ground and the only white, Belly `--panel` is cards, Frost `--line` is
+  rules. Fog `--faint` is 2.7:1 and is for tiny uppercase labels only; `--dim`
+  is Fog's own hue darkened to 4.6:1 and is the readable secondary tone; Beak
+  `--beak` is a highlight and is never text. The two derived tokens are marked
+  as derived in brand.json so nobody later mistakes them for the kit.
+- **The rest of the system is asserted once**, at the top of `index.html`:
+  Archivo, headings 800, a 4px spacing scale, `--radius:0` applied to every
+  control in one rule, `tabular-nums` on every column of figures. A single
+  rounded corner anywhere is what breaks it. Match the system; do not
+  re-approximate it from a screenshot.
+- The mascot is in `assets/mascot/svg/`: `head-ghosted` for an empty state,
+  `head-offer-in` for success, `head-competitive-pay` for a refusal.
 
 ## House rules
 
+- **A page scan never proves absence.** `scan_pagetext` may return
+  `unreadable` → status `Unknown`. Don't "simplify" that back into
+  `None found`: a false `None found` silently deletes a warm door, which is the
+  one failure this tool cannot afford. Assert a status only on concrete
+  evidence in the text.
+- **Never invent a fact to fill a field.** No estimated salary, no guessed
+  founding year, no magic constant standing in for a count. If we do not know,
+  the UI says we do not know. Every module here is tuned toward silence for
+  the same reason (`salary.py` documents the trade-off at length).
 - **Never hand-edit `data/hiring_history/*.json`** — snapshots are the audit
   trail. Hiring state changes only through `refresh.py`.
 - **`data/schema.json` is the source of truth** for sector/category names and
   xlsx tab colors. To add a sector/category: edit schema.json, then move/add
-  companies, then run `python scripts/selftest.py` (it enforces consistency).
+  companies, then run `python3 scripts/selftest.py` (it enforces consistency).
 - Keep `refresh.py` deterministic. AI-judgment work (finding a new company's
-  ATS, deciding whether an odd title is an AE req) happens interactively in
-  Claude Code sessions, and its *conclusions* get written into
-  `data/companies.json` (an `ats` entry, a classifier rule) — not into the run.
-- New classifier edge cases go into `classify.py` **with a matching case in
-  `selftest.py`'s CLASSIFIER_CASES** (title rules) or **PAGESCAN_CASES**
-  (`html` page-text rules).
-- **A page scan never proves absence.** `scan_pagetext` may return `unreadable`
-  → status `Unknown`. Don't "simplify" that back into `None found`: a false
-  `None found` silently deletes a warm door, which is the one failure this
-  tool cannot afford. Assert a status only on concrete evidence in the text.
-- After any data or script change: `python scripts/selftest.py` must pass.
-- The site is deliberately dependency-free (no build step, no framework). Keep
+  ATS, deciding whether an odd title is an AE req) happens interactively, and
+  its *conclusions* get written into `data/companies.json` (an `ats` entry, a
+  classifier rule) — not into the run.
+- New classifier edge cases go into `classify.py`/`roles.py` **with a matching
+  case in `selftest.py`**: `CLASSIFIER_CASES` (title rules), `PAGESCAN_CASES`
+  (`html` page-text rules), `TITLE_TEXT_CASES`, `FAMILY_CASES`,
+  `SALARY_CASES`. A new invariant means a new case there.
+- After any data or script change: `python3 scripts/selftest.py` must print
+  **all checks passed**.
+- **Never let a score reward volume over correctness.** The owner's rule, and
+  the admin's scoring layer has broken it before. `check_admin_game` in
+  selftest is what holds the line.
+- Python: stdlib + `requests` + `openpyxl`. **No new dependencies, ever.**
+  The one exception is `discover_js.py`, which is a separate script precisely
+  so Playwright never enters the run path.
+- The site is deliberately dependency-free — no build step, no framework. Keep
   it a single `index.html` unless the owner asks to graduate it.
 - Statuses are exactly: `Yes`, `Sales (non-AE)`, `None found`, `Unknown` —
   renderer, exporter, and selftest all assume this set.
+- **Do not write to the owner's live admin.** If you need admin state to test
+  against, run your own instance on a port above 8700 pointed at a *copy* of
+  `data/` under `/tmp`. On 2026-08-24 a build agent testing the scoring belt
+  put 86 `set-founded` writes into the real `companies.json`. They are still
+  there. They survive only because `journal.py` kept a before-image of each
+  one, and they are now attributed in `data/admin_journal.jsonl` to
+  `agent:overnight-build` with a `why` that says they are not human rulings —
+  so `admin_undo.py` can take any of them back. That recovery is the safety
+  net working, not permission to use it.
+
+## Rows, openings, and the ids that hold them together
+
+`build_board.py` gives every posting two ids, and the difference between them
+is the difference between an honest headline and a flattering one.
+
+- `opening_id` = `company::title`. One advertisement, however many places it
+  was posted to.
+- `posting_id` = `company::title::hash(url + location)`. One row as the board
+  handed it to us.
+
+Both must stay stable across runs. The hash is taken from the posting's own
+content, never from its position in a list, because an id that churns when a
+board reorders breaks every saved role and every shared link on every refresh
+and turns the daily diff into noise. `opening_id` stays the prefix because it
+*was* the id every shared link carried before disambiguation existed.
+
+**The headline counts openings, not rows.** Xplor advertised one Account
+Executive requisition in 93 cities; counting rows put a single advertisement
+third on a leaderboard of the biggest go-to-market pushes in the market.
+Today's numbers, from `data/board.json` totals: **617 quota-carrying rows
+against 479 distinct openings** (4,360 rows, 3,711 openings overall). Re-derive
+rather than quoting these — they move every refresh. Say it the way a reader
+can check: "479 sellers wanted, advertised in 617 postings." The per-location
+rows all stay; only the counting changes.
 
 ## The admin backend
 
-`python scripts/admin.py` then <http://127.0.0.1:8787>. Loopback only, on
-purpose: it writes `companies.json` with no auth in front of it.
+`python3 scripts/admin.py`, then <http://127.0.0.1:8787>. Thirteen queues:
+founding year, wrong bucket, vendor scope, scope review, submissions,
+duplicates, missing websites, no board found, blocked boards, wrong placement,
+unclassified roles, acquisitions, website review.
 
-It is where the residue of every automated pass goes - the parts that need
-judgment rather than a better regex. Seven queues: duplicates, missing
-websites, missing boards, wrong placement, unclassified roles, acquisitions,
-website review. Rules that hold there:
+It is where the residue of every automated pass goes — the parts that need
+judgment rather than a better regex.
+
+### What guards it (this section used to say "no auth in front of it"; that is false)
+
+Loopback binding is not the protection people assume, because a browser can
+reach loopback even when the network cannot: any site the owner happened to
+visit could once have driven this server. CORS was never the answer either — a
+POST with `Content-Type: text/plain` is a *simple* request, so the browser
+sends it with no preflight at all and the write lands whether or not the reply
+can be read. What is actually there now:
+
+- **A per-process token.** Minted at startup, never written to a file, echoed
+  in an `X-Admin-Token` header on every `/api/` call. A cross-origin page
+  cannot attach a custom header without a preflight, and this server answers
+  none. `admin.py` injects a shim into `admin.html` on the way out, so the
+  page's own `fetch` calls did not have to change.
+- **A `Host` check.** DNS rebinding beats every same-origin protection —
+  evil.example can resolve to 127.0.0.1 — but the browser fills `Host` in from
+  the address bar, so it still reads evil.example. Anything not addressed to
+  `127.0.0.1` / `localhost` / `::1` on our own port gets 421.
+- **A static route allowlist.** This is not `SimpleHTTPRequestHandler` any
+  more. That served the repository root, so `/.git/config`, `/scripts/admin.py`
+  and `/data/companies.json` all answered 200 to anything that asked. Six
+  routes are served — `/`, `/admin.html`, `/capture`, `/capture.js`,
+  `/assets/logos/*`, `/assets/mascot/*` — and everything else is 404 by
+  construction rather than by check.
+- **`/api/token` is refused to any web origin.** It needs no token of its own
+  (it is where the capture extension gets one), so the `Origin` header a
+  browser attaches and a page cannot drop is what keeps it to the extension,
+  curl, and nothing a website can arrange.
+- **It refuses to be framed** — `frame-ancestors 'none'` and
+  `X-Frame-Options: DENY`. A token is no defence against a click on our own
+  UI: a framed admin document is on the admin's own origin and carries the
+  shim.
+- **POST demands `application/json`**, which takes the request out of the
+  simple class entirely.
+
+`selftest.py::check_admin_http` asserts all of that against a real server on
+loopback, because three of these were once true in a comment and false in the
+code, which is the pattern that file exists to break.
+
+### Rules that hold inside it
 
 - **Every write is validated against the same invariants `selftest.py`
   enforces**, on the whole file, then lands atomically. A bad edit is refused,
   never half-applied.
+- **Every write goes through `read_companies()` / `save_companies()`.** Never
+  `write_atomic("companies.json", ...)` directly. `save_companies` journals
+  the before-image and then writes, so an action *cannot forget* to record
+  itself — which is the only reason the 86 agent writes above are recoverable.
 - **A merge never loses research.** The survivor keeps what it has and inherits
   what it lacks; a discovered ATS always beats an `unknown` one; the dropped
   name is kept in `also_known_as`.
 - **Evidence before the write.** Pasting a URL shows the page title, whether it
   is parked, whether it identifies the company, which ATS is behind it and
-  whether the slug matches - then a person decides. A slug mismatch says so in
+  whether the slug matches — then a person decides. A slug mismatch says so in
   red, because saving it would record a parent's postings as the subsidiary's.
 - **An empty page scan is not a board.** Reading zero titles means the page is
   unreadable, not that the board is empty; the UI says so and relabels the
@@ -77,37 +209,185 @@ is to see the bucket. Companies mode gives category columns for one sector plus
 a rail of every other sector as a drop target; job-families mode drags
 unclassified titles into a family. Cards carry their open-posting count, because
 a company with a live board is the one worth getting right. Dropping onto the
-rail sets sector *and* category together - setting the sector alone would strand
+rail sets sector *and* category together — setting the sector alone would strand
 the old category and `validate()` would refuse the write, correctly.
 
-## Capture, and why it is a bookmarklet
+**The web admin** (`admin-web.html`, `functions/admin/api/rule.js`,
+`scripts/apply_web_rulings.py`) is the judgment half — vendor scope and wrong
+bucket — workable from a phone. The division of labour is the design: the
+Worker only *appends an opinion* to a ruling file; the daily run applies it to
+`companies.json` in Python, where `validate()` lives. A bug in the web half can
+mis-record an opinion and cannot corrupt the map. Auth is Cloudflare Access,
+and the endpoint refuses to write when the Access headers are absent, so the
+failure mode of misconfiguration is "nothing works", never "everyone can write".
 
-`scripts/capture.js`, installed from <http://127.0.0.1:8787/capture>.
+## Every admin write is reversible
 
-537 careers pages on file have a board recorded and produce nothing. They are
-not JS shells hiding a list - rendering a sample of 25 in headless Chromium
-recovered **zero**. They are third-party widgets in iframes, session-gated
-boards, and pages that only draw a list after an interaction. No fetcher we
-write will read them. A person looking at the page sees the jobs anyway.
+`scripts/journal.py` (the before-images) and `scripts/admin_undo.py` (the tool).
 
-So capture reads what is already on screen and hands it over. Three things
-about it are load-bearing:
+`write_atomic()` already guarantees a write is never *partial* and `validate()`
+guarantees the file is never *structurally invalid*. Neither is the failure
+this repo fears. The failure is a write that is complete, valid, and wrong —
+one click on "All out" writes a ruling for 108 companies and all 108 pass every
+check we have. A wrong "out of scope" is invisible: the company stops
+appearing, nothing errors, no count looks odd, and nothing ever contradicts it.
 
-- **The handoff is the clipboard, not a request.** Chrome blocks a page on
-  https from reaching `http://127.0.0.1` - both `fetch` and a `<script>` tag,
-  even with CORS and `Access-Control-Allow-Private-Network` set. Verified, not
-  assumed. Copy-and-paste is the only channel that works on every site.
-- **The bookmarklet is self-contained** for the same reason, so editing
-  `capture.js` means dragging the button again.
+So: a diff of exactly the records an action touched, with who, when and why;
+a bulk action recorded as **one** entry so undoing restores all of it or none;
+a refusal above `BLAST` records unless the caller passes `force=True` having
+shown a person the count; and a refusal to undo a record something else has
+changed since, naming the conflict rather than saying "no".
+
+```
+python3 scripts/admin_undo.py                    what changed recently
+python3 scripts/admin_undo.py --show 2026-08-24#4
+python3 scripts/admin_undo.py --undo 2026-08-24#4
+python3 scripts/admin_undo.py --reopen 2026-08-24#4
+```
+
+`--reopen` is the one that matters for scope rulings. A ruling is never
+re-asked, which is right for a correct answer and permanent for a wrong one.
+Reopening deletes the ruling instead of reversing it, so the company returns to
+the queue with fresh eyes. Use it when you are not sure you were right, which
+is a different thing from being sure you were wrong.
+
+## Facts that no dropdown could hold
+
+Four small modules exist because forcing a messy truth into a menu produced a
+confident falsehood. All four store what a person actually saw.
+
+- **`scripts/notes.py`** — free text on a company, plus detectors that *suggest*
+  a structured home for what the sentence hints at. The case that prompted it:
+  "madison ai advertises on linkedin but used a job service that is on a board
+  with multiple sites." Every dropdown gets that wrong, and "paste the board
+  address" would file a **multi-tenant** board against one company, reporting
+  every other tenant's postings as theirs. Detectors only suggest, and show the
+  words that triggered them, because a note is a submission from your past self.
+- **`scripts/posts_at.py`** — where a company posts when we cannot read a board.
+  "Advertises every opening on LinkedIn" and "hires by word of mouth" used to be
+  recorded identically, as a dismissal. They are opposite facts. This is its own
+  field, not an `ats` type: `ats` means *monitored*, and filing LinkedIn there
+  would make refresh try, fail, and record a zero. The card says "they post here
+  and we are not counting it", links out, and never claims a number.
+- **`scripts/identity_labels.py`** — what a person said when the website
+  identity check got it wrong. Immediately it fixes the company (the correction
+  lands in `also_known_as`, `identifies()` reads it, the panel goes green). Over
+  time the labels *measure the check* — stored name, what the page said, the
+  verdict — which is the "store the input alongside the answer" rule made real.
+  It never loosens `identifies()` on its own: that rule is the only thing
+  standing between a squatter and the dataset.
+- **`scripts/salary.py`** — a stated range pulled out of description prose,
+  which is worth doing only because pay-transparency laws oblige employers to
+  publish one. A missed salary costs a filter hit. A wrong salary is published
+  on a public board as a fact about somebody else's company. So it is tuned hard
+  toward silence: no OTE, no M/B multipliers, no figure without a currency
+  marker, no posting with two different ranges, sanity bounds per period, and
+  periods stored rather than converted. If you are here because "it missed one",
+  the fix is a new *anchored* form with a test case — never a loosened anchor.
+
+## Pipeline agents: briefs out, proposals in
+
+`scripts/agents.py`. An agent is a stranger who types faster, so it gets the
+same deal a submission gets: **it never edits the dataset.** It reads a brief
+assembled here, deterministically, and returns a proposal into
+`data/agent_proposals.json`, which appears in the admin queue next to the
+evidence. A person accepts or rejects. That keeps refresh and CI deterministic,
+makes a bad model run cost a queue full of rejects rather than a corrupted map,
+and turns each accept/reject into labelled training data.
+
+Briefs are built here rather than by the agent because an agent that gathers
+its own context gathers different context every run, and two proposals that
+disagree then cannot be compared. Every agent must be able to answer *unsure*,
+and intake refuses a proposal claiming high confidence without evidence,
+because that is the shape a guess takes when a model is trying to be helpful.
+
+Four agents on one spine: `bucket` and `read` are built; `card` (research a new
+company) and `board` (find the ATS behind a page) are next.
+
+### The read trial, measured 2026-08-24, n=25
+
+**This corrects what this file used to say.** The old text asserted that
+rendering a sample of 25 page-only boards in headless Chromium "recovered
+zero". That is not what happens. On a fresh sample of 25 drawn at random from
+the read worklist, a render recovered postings from **8 of the 25**, 26 rows in
+total; 17 came back empty and are recorded as *"read produced nothing"*, never
+as "not hiring". Three things separate that from the earlier zero, and all
+three are about the reader, not the browser:
+
+- **Read the child frames.** The finding that these are widgets in iframes is
+  correct — which is exactly why reading only the top document comes back empty
+  from a page visibly full of jobs.
+- **The title decides, not the link.** Requiring the job-link shape before
+  looking at a row is right on a job board and wrong here, where rows are divs
+  with an `onclick`. It threw away 10 real reqs on Nearmap and 34 on Nedap.
+- **Wait.** `networkidle` plus a few seconds; these lists draw late.
+
+**A small sample is a small sample.** 25 of 806 is 3%, drawn once, and every
+one of those 25 proposals is still `pending` — nobody has accepted any of them,
+so none of it has reached the dataset. Do not extrapolate 32% recovery across
+the worklist from this; re-measure on a bigger sample before anyone plans
+around it.
+
+The finding worth more than the rows: some of these pages have an **enumerable
+ATS one link away**. Three of the 25 named one outright — Autura's iframe URL
+hands over a Greenhouse slug, Nallian's page exposes a Workable address,
+Dominion's careers link is already a Paylocity board. Reading a page is a
+snapshot somebody has to re-take by hand; finding the board behind it is
+permanent and `refresh.py` keeps it current. When a read turns up an ATS host,
+*that* is the finding, and it belongs to the `board` agent.
+
+Two traps beyond the usual nav chrome, both of which produce strings shaped
+exactly like job titles: **testimonial bylines** ("Kylie Hughes / DIRECTOR
+COMMERCIAL IMPLEMENTATION" is a happy employee) and **filter chips** ("Remote /
+Freelance / Full Time / Internship / Part Time" above a search box that then
+finds nothing). And one scope trap: Nedap's group careers page lists 34 reqs
+across five business units, and only 9 belong to the company on file — filing
+the other 25 would report a parent's postings as the subsidiary's, which is the
+mistake this repo already refuses elsewhere.
+
+The boundary the bookmarklet holds, the agent holds too: read the page you were
+pointed at, once. No crawling, no pagination, no following links, no signing in.
+
+## Capture: the bookmarklet and the extension
+
+`scripts/capture.js`, installed from <http://127.0.0.1:8787/capture>, plus a
+Chrome extension in `extension/`.
+
+**806 companies have a careers page on file that produces nothing** — a person
+looking at the page sees the jobs anyway. That is the worklist both of these
+serve, and it is the single biggest hole on the board.
+
+Three things about capture are load-bearing:
+
 - **It runs once, on click, over the current document.** It does not scroll,
   paginate, follow links, log in, or run on a timer. That is the line between
-  reading a page you opened and harvesting a site, and it is why this is
-  usable on LinkedIn when server-side scraping is not.
+  reading a page you opened and harvesting a site, and it is why this is usable
+  on LinkedIn when server-side scraping is not. The extension holds the same
+  line by construction: `activeTab` + on-click injection means it can read
+  nothing until you click it, and then only that tab.
+- **The bookmarklet hands its result over on the clipboard**, and is
+  self-contained for the same reason, which is why editing `capture.js` means
+  dragging the button again.
+- **The extension exists because a service worker with a host permission can
+  reach the admin directly**, where a page cannot. It fetches `/api/token`
+  itself (it is not same-origin, so it does not get the shim), retries once on
+  a 403 because a token dies with the admin process, and stores nothing.
+
+**A correction on the browser claim.** This file used to state as settled fact
+that "Chrome blocks a page on https from reaching `http://127.0.0.1` — both
+`fetch` and a `<script>` tag, even with `Access-Control-Allow-Private-Network`
+set. Verified, not assumed." The observation in Chrome was real. The
+generalisation was not: **Private Network Access is a Chrome behaviour, and
+Firefox and Safari have not implemented it.** So do not repeat it as a fact
+about browsers, and do not design around it as one. What is true and what the
+design rests on: Chrome is the browser this runs in, the extension's host
+permission is precisely the exemption being relied on there, and the clipboard
+path works everywhere and needs no permission at all.
 
 Two rules the harvester learned the hard way, both worth keeping:
 
 - A job link is the job **segment plus something after it**. Matching `/careers`
-  alone returned CHALLENGES, SOLUTIONS and Cookie Preferences - the same nav
+  alone returned CHALLENGES, SOLUTIONS and Cookie Preferences — the same nav
   chrome that fools page scans.
 - **Position first, pattern second.** Take the first non-chip line as the title,
   then look for a location among the lines *after* it. Testing the location
@@ -116,7 +396,7 @@ Two rules the harvester learned the hard way, both worth keeping:
   Manchester as the job.
 
 Captured postings live in `data/manual.json` and an automated run never deletes
-them - absence from a refresh means the fetcher still cannot see that company.
+them — absence from a refresh means the fetcher still cannot see that company.
 
 ## Submissions
 
@@ -139,8 +419,8 @@ else were to do it." The game is for him and possibly one employee.
 
 ### The mechanics, chosen against a 10-mechanic framework (owner, 2026-08-23)
 
-The owner supplied a framework of ten gamification mechanics - eight safe,
-two aggressive - and the product decides which fit. This product is a
+The owner supplied a framework of ten gamification mechanics — eight safe,
+two aggressive — and the product decides which fit. This product is a
 two-person, correctness-critical review tool where every ruling becomes
 training data and the asymmetric error rule holds: a wrong "not govtech" is
 invisible and permanent, so care must always pay better than speed.
@@ -155,17 +435,17 @@ invisible and permanent, so care must always pay better than speed.
    rulings. Zero social risk, works for one person, never demotivates.
 3. *Visible craft signals* (#6). The why-coverage meter: what fraction of
    rulings carry a reason. The why is what teaches the classifier later,
-   so its absence is the sloppiness worth making visible - and it is a
+   so its absence is the sloppiness worth making visible — and it is a
    CARE metric, which volume metrics are not.
 4. *Named end states* (#1, as framing). Queues do not go to zero, they
    reach a state with a title: Wrong bucket -> "Clean shelves", Vendor
    scope -> "Scope settled". People finish things that have a name.
 
 **Deferred until there are two players:** streaks on the smallest real
-action (#2 - and the action is RULING, never opening the app), team-level
-cooperative goals (#7 - one shared board-health bar, no individual
-ranking), unlockable depth (#3 - only meaningful for strangers), surprise
-recognition (#8 - sparingly, or it reads as spam).
+action (#2 — and the action is RULING, never opening the app), team-level
+cooperative goals (#7 — one shared board-health bar, no individual
+ranking), unlockable depth (#3 — only meaningful for strangers), surprise
+recognition (#8 — sparingly, or it reads as spam).
 
 **Rejected, with the framework's own caveats as the reason:**
 
@@ -190,14 +470,18 @@ recognition (#8 - sparingly, or it reads as spam).
   their answer, or the label is useless for teaching the classifier later.
 - **Keep the confident cases out of the queue.** Padding it with items a
   rule could settle is what makes admin work feel like a chore.
-- **Never let a score reward volume over correctness.**
+- **Never let a score reward volume over correctness.** `check_admin_game`
+  in selftest enforces the three ways this has already been broken:
+  an agree-rate is unmeasured until somebody rules against a visible
+  proposal, the belt only runs where the answer is on the card, and an
+  unknown is never rendered as a number.
 
 ## Alerts and saved-role sync
 
 `functions/api/alerts.js` (the endpoint), `alerts.html` (signup + settings),
 `scripts/digest.py` (what an email would contain), `scripts/send_digests.py`
 (the CI sender). Subscribers live in a **Cloudflare KV namespace bound as
-ALERTS** - never in this repository, which is public.
+ALERTS** — never in this repository, which is going public.
 
 Owner's spec (2026-08-23): both audiences, cadence of every weekday morning /
 Tuesday+Thursday / Wednesday weekly, delivered by email, paid eventually, with
@@ -206,9 +490,9 @@ Tuesday+Thursday / Wednesday weekly, delivered by email, paid eventually, with
 **Threshold is two things and both are built**, because they answer different
 questions and only having one makes the feature worse:
 
-- a **role bar** - which roles are worth telling you about (quota, family,
+- a **role bar** — which roles are worth telling you about (quota, family,
   seniority, sector, work mode, states), and
-- a **volume floor** - don't email at all under N new roles. A daily alert
+- a **volume floor** — don't email at all under N new roles. A daily alert
   that arrives saying "1 new role" is how a person learns to filter it. Roles
   under the floor are not dropped; they ride into the next email that clears
   it.
@@ -227,7 +511,7 @@ Rules that hold here:
   already subscribed. Varying it makes the endpoint an oracle for "does this
   person have an account on a job board", which is exactly the question this
   site must never answer about somebody.
-- **Unsubscribe deletes.** No suppression list - that is still a record of who
+- **Unsubscribe deletes.** No suppression list — that is still a record of who
   wanted out of their job.
 - **Saved roles stay local by default.** Sync is off until someone turns it on
   for one browser, and an unlinked visitor makes zero API calls. Sync carries
@@ -237,51 +521,67 @@ Rules that hold here:
   tombstone.
 - **The vocabulary is duplicated and therefore guarded.** `alerts.js` restates
   roles.py's FAMILIES/SENIORITY/MODES because a Worker cannot import Python.
-  `selftest.py::check_alert_vocabulary` fails if they drift - drift here is
+  `selftest.py::check_alert_vocabulary` fails if they drift — drift here is
   silent and total: the subscriber picks a value the endpoint happily stores,
   no posting ever carries it, and their alert simply never arrives.
 
 Setup the owner does once, in this order: create the KV namespace and bind it
 as `ALERTS`; add `RESEND_KEY` to the Pages project; add `CF_ACCOUNT_ID`,
 `CF_KV_NAMESPACE_ID`, `CF_API_TOKEN` and `RESEND_KEY` as repository secrets.
-Every one is optional - with none set, the endpoint reports "not configured"
+Every one is optional — with none set, the endpoint reports "not configured"
 and the CI step prints that and exits 0. A refresh must never fail because
 nobody set up email.
 
 To see what an email would say, without any of that:
 
 ```
-python scripts/digest.py --preview --quota --since 2026-08-22 --today 2026-08-24
+python3 scripts/digest.py --preview --quota --since 2026-08-22 --today 2026-08-24
 ```
 
 ## Coverage: read `scripts/coverage.py`, not the raw fraction
 
-`python scripts/coverage.py [--by-sector]`
+```
+python3 scripts/coverage.py [--by-sector]
+```
 
 "839 of 1,722 monitored" was wrong in both directions and it drove bad
 decisions for a while. It counted a careers page nothing can enumerate the
 same as a Greenhouse API, and it counted companies that have **no job board at
-all** as a gap to be closed. The real split:
+all** as a gap to be closed. The honest split, re-derived 2026-08-24 across
+2,108 companies:
 
 ```
-structured   213   a real API. Titles, locations, links. THIS is the number to move.
-page only    629   a page a person can read and a fetcher mostly cannot.
-blocked       98   a bot wall or transport error. We learned nothing. NOT a zero.
-absent       652   checked, no public board exists. A finished state, not a gap.
-unchecked    130
+structured   271  12.9%  a real API. Titles, locations, links. THIS is the number to move.
+page only    888  42.1%  a page a person can read and a fetcher mostly cannot.
+blocked      240  11.4%  a bot wall or transport error. We learned nothing. NOT a zero.
+absent       568  26.9%  checked, no public board exists. A finished state, not a gap.
+unchecked    141   6.7%  never probed, or probed before the current rules existed.
 ```
+
+286 companies currently show at least one open posting.
+
+The two ratios the script prints mean different things and neither is
+"coverage":
+
+- **1,159/2,108 = 55%** — we have *some* board on file, against every company.
+- **1,159/1,540 = 75%** — the same numerator against companies that have a
+  board to find (total minus `absent`). This is the denominator that can be
+  worked. It is **not** 75% readable: 888 of that 1,159 is the `page only`
+  pile, which is mostly not enumerable at all.
 
 A 15-agent field audit (n=90 random re-probe, plus 24 investigated by hand)
-found **55-63% of the "no board found" pile is genuinely boardless** - small
+found **55-63% of the "no board found" pile is genuinely boardless** — small
 SLED vendors hiring on LinkedIn or by email. Rebuilding discovery on that
 audit's findings and A/B-ing it on a fresh 70-company sample recovered
 **1-2 structured boards per 70**, against a projection of ~10. Measure, then
 report the measurement; the projections in that audit were drawn from a sample
 selected for being interesting.
 
-So: **`page only` is a worklist for the capture bookmarklet, not coverage.**
-Converting those to `structured` is mostly impossible - there is no ATS behind
-them to find. Do not add the two together in a status report.
+So: **`page only` is a worklist for capture and the `read` agent, not
+coverage.** Converting those to `structured` is mostly impossible — there is
+often no ATS behind them to find. Do not add the two together in a status
+report. And `blocked` is not a zero: those probes learned nothing and requeue
+in 7 days.
 
 ## Build order (owner, 2026-08-23)
 
@@ -304,7 +604,7 @@ This project is tracked in a personal portfolio dashboard. Maintain
 `portfolio-status.json` in the project root throughout every session.
 
 **Project ID:** govtech_dock
-**Repo:** westjw/govtech-dock (private)
+**Repo:** westjw/govtech-dock (private until the owner flips it — see DEPLOY.md)
 
 ### Rules
 - READ portfolio-status.json at the start of every session
@@ -337,28 +637,34 @@ after every session.
 **On progress_pct honestly.** The scope the owner set is "free as a board,
 paid as a product". Report against BOTH halves, not just the half that is
 nearly done, and say which frame the number uses. The free board being
-shippable is not the project being 90% finished.
+shippable is not the project being 90% finished — the paid half currently has
+no pricing, no billing, no accounts and no employer side, and the only paid
+intent on record is "alerts, paid eventually" in the owner's spec. A number
+that quietly means "the free board" is the kind of stale fact this file exists
+to prevent.
 
 ## Conventions
 
 - Company `id` = kebab-case name (parenthetical suffixes dropped).
 - `ats.type` ∈ ashby | greenhouse | lever | workable | recruitee | breezy |
-  smartrecruiters | bamboohr | workday | rippling | jazzhr | icims | html |
-  unknown.
+  smartrecruiters | bamboohr | workday | rippling | jazzhr | icims | paylocity
+  | oracle | html | unknown.
   Prefer structured API types; `html` is a last resort; `unknown` means
-  "needs discovery" and is skipped by refresh.
+  "needs discovery" and is skipped by refresh. `coverage.py::STRUCTURED` is the
+  list that decides what counts as a real API — add a new type in both places.
 - **Never point a company at its parent's job board.** Several here were
   acquired (Rave → Motorola Solutions, RoadBotics → Michelin) and their
   careers pages redirect to the parent's Workday. Wiring that up would report
   a parent-company AE req as the subsidiary's, which is a false "Yes". Leave
-  them `unknown` unless the board can be scoped to the product line.
+  them `unknown` unless the board can be scoped to the product line. The same
+  rule catches group careers pages (Nedap) and multi-tenant boards.
 - Descriptions: one line, what they sell + to whom, no marketing fluff.
 - Python: stdlib + requests + openpyxl only. Match existing style (typed,
-  small functions, no classes where a function does).
+  small functions, no classes where a function does). Comments explain WHY.
 
 ## Common tasks
 
-- **Refresh everything:** `python scripts/refresh.py` (add `--dry-run` to
+- **Refresh everything:** `python3 scripts/refresh.py` (add `--dry-run` to
   preview, `--company <id>` for one). Summarize the diff for the owner
   afterward — new "Yes" companies are the headline, in prospecting terms.
 - **Add a company:** research name/HQ/founding year/what they do (verify on
@@ -366,7 +672,7 @@ shippable is not the project being 90% finished.
   from schema.json, find their ATS (try the API URL patterns in
   `scripts/ats.py` docstrings), append to companies.json, run selftest, run
   `refresh.py --company <id>`, then `export_xlsx.py`.
-- **Discover an ATS (JS-walled board):** `python scripts/discover_js.py noats`
+- **Discover an ATS (JS-walled board):** `python3 scripts/discover_js.py noats`
   renders each Unknown in headless Chromium and prints the ATS endpoint its
   board actually calls. Needs `pip install playwright` + `python -m playwright
   install chromium`, which is **why it's a separate script**: the browser is a
@@ -377,14 +683,13 @@ shippable is not the project being 90% finished.
 - **Discover an ATS (plain):** careers page source usually reveals it — look for
   greenhouse.io / lever.co / ashbyhq.com / myworkdayjobs.com / workable.com
   URLs in the HTML, or try `https://boards-api.greenhouse.io/v1/boards/<slug>/jobs`
-  style probes with obvious slugs.
+  style probes with obvious slugs. **Read the child frames** — the board is
+  often in an iframe and the frame URL carries the slug.
 - **The owner says "run":** that means refresh + summarize changes + regenerate
   the xlsx. Same contract as the original Cowork workflow.
-
-## Roadmap ideas the owner has floated or would plausibly want
-
-- Close out the ~11 JS-walled Unknowns (Playwright fallback fetcher, or manual)
-- Columns for funding/stage and careers-page links
-- New sectors: Courts & Justice, Utilities & Energy
-- Alerting: open a GitHub issue (or email) when a watched company flips to Yes
-- Per-company notes field for outreach tracking (who he contacted, when)
+- **Verify a UI change in a browser with measurements.** Build to `/tmp/<name>`,
+  serve above port 8700, and confirm `innerWidth` is not 0 and is what you
+  expect before trusting any pixel number — a collapsed grid reports numbers
+  that look real. One session reported a 923px hero and four screens of
+  scrolling; measured properly it was 993px to the first job. Kill every server
+  you start.

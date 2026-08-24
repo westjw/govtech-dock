@@ -805,6 +805,241 @@ def check_admin_guards() -> int:
     return bad
 
 
+def check_redirect_hop() -> int:
+    """The guard has to see the SECOND hop, not only the url someone typed.
+
+    This is the whole reason only_public_hosts() patches the resolver instead
+    of checking the string: the fetchers follow redirects, so the person who
+    chose the first hop did not choose the second, and the second is where a
+    redirect into this network goes. That argument was written down and never
+    tested, and it is the half a url-shaped check cannot do at all.
+
+    Nothing leaves this machine. One thing is staged, and it has to be: hop 1
+    has to live on loopback, because loopback is the only address this machine
+    can serve - and loopback is exactly what the guard refuses. So _public is
+    wrapped to answer True for 127.0.0.1 and to hand every other address to
+    the real rule. The refusal below therefore comes from the real rule,
+    firing on a redirect target nobody typed.
+    """
+    import http.server
+    import threading
+
+    import requests
+
+    import admin
+
+    target = "http://169.254.169.254/latest/meta-data/"   # cloud metadata
+
+    class Redirect(http.server.BaseHTTPRequestHandler):
+        def do_GET(self):
+            self.send_response(302)
+            self.send_header("Location", target)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+
+        def log_message(self, *a):
+            pass
+
+    # port 0: the OS picks a free one, so two runs at once cannot collide
+    srv = http.server.HTTPServer(("127.0.0.1", 0), Redirect)
+    port = srv.server_address[1]
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+
+    real_public, asked = admin._public, []
+
+    def hop_one_is_public(ip):
+        asked.append(str(ip))
+        return True if str(ip) == "127.0.0.1" else real_public(ip)
+
+    session = requests.Session()
+    # an http_proxy in the environment would resolve the second hop for us and
+    # this would pass without the guard doing anything, which is the one way
+    # this test could lie
+    session.trust_env = False
+
+    admin._public = hop_one_is_public
+    bad = 0
+    try:
+        with admin.only_public_hosts():
+            r = session.get(f"http://127.0.0.1:{port}/careers", timeout=5)
+        bad += fail(f"the guard followed a redirect all the way to {r.url}")
+    except requests.exceptions.ConnectionError as exc:
+        if "169.254.169.254" not in str(exc):
+            bad += fail(f"the redirect died, but not on the guard: {exc}")
+    except Exception as exc:                       # noqa: BLE001 - report it
+        bad += fail(f"the redirect check broke: {type(exc).__name__}: {exc}")
+    finally:
+        admin._public = real_public
+        session.close()
+        srv.shutdown()
+        srv.server_close()
+
+    # and it was genuinely asked, rather than the fetch failing for its own
+    # reasons somewhere before the second hop
+    if "169.254.169.254" not in asked:
+        bad += fail("the guard was never asked about the redirect target - it "
+                    f"only ever saw {asked}")
+    return bad
+
+
+def check_admin_http() -> int:
+    """What the admin says on the wire, asked of a real server on loopback.
+
+    Three of these were true in a comment and false in the code, which is the
+    pattern this whole file exists to break. They are checked here rather than
+    by reading admin.py for a string, because the thing that matters is the
+    reply a browser gets, and a header can be set on a path nothing takes.
+
+    - A WRITE NEEDS THE TOKEN. That secret is the entire answer to "any site
+      the owner visits could drive the admin": a cross-origin page can send a
+      request but cannot attach a custom header without a preflight, and this
+      server answers none.
+    - A NON-ASCII TOKEN IS AN ANSWER, NOT A DROPPED CONNECTION. compare_digest
+      raises TypeError on a str with a byte over 0x7f, and http.server decodes
+      headers as latin-1, so `X-Admin-Token: cafe\\xe9` used to kill the
+      request mid-flight and read as "the admin is down".
+    - IT REFUSES TO BE FRAMED. The token does not help against a click on our
+      own UI: a framed admin document is on the admin's own origin and carries
+      the token itself. Refusing the frame is the only thing that does.
+    - AND THE TOKEN IS NOT HANDED TO A WEB PAGE. /api/token needs no token of
+      its own, so the Origin a browser attaches and cannot drop is what keeps
+      it to the capture extension and off every website.
+
+    Loopback and nothing else - no network, no data written, no port picked by
+    hand.
+    """
+    import http.client
+    import http.server
+    import threading
+    import urllib.error
+    import urllib.request
+
+    import admin
+
+    class Quiet(admin.Handler):
+        def log_message(self, *a):                 # keep selftest output clean
+            pass
+
+    srv = http.server.HTTPServer(("127.0.0.1", 0), Quiet)
+    base = f"http://127.0.0.1:{srv.server_address[1]}"
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    bad = 0
+
+    def ask(path, headers=None, method="GET", body=None):
+        """(status, headers, body), with status None for no reply at all.
+
+        The dropped connection is a result here rather than an exception on
+        purpose: it is the exact symptom of the non-ASCII bug below, and a
+        traceback out of selftest would report it as "selftest is broken"
+        instead of "the admin drops the request".
+        """
+        req = urllib.request.Request(base + path, data=body, method=method,
+                                     headers=headers or {})
+        try:
+            with urllib.request.urlopen(req, timeout=5) as r:
+                return r.status, dict(r.headers), r.read()
+        except urllib.error.HTTPError as e:
+            return e.code, dict(e.headers), e.read()
+        except (urllib.error.URLError, http.client.HTTPException, OSError) as e:
+            return None, {}, f"no reply: {type(e).__name__}: {e}".encode()
+
+    try:
+        code, _, _ = ask("/api/queues")
+        if code != 403:
+            bad += fail(f"a /api/ read with no token answered {code}, not 403")
+
+        # the byte over 0x7f is the whole case, and a dropped connection is
+        # the failure being watched for, not a 200
+        code, _, body = ask("/api/queues", {"X-Admin-Token": "café"})
+        if code is None:
+            bad += fail(f"a non-ASCII token killed the request: {body.decode()}")
+        elif code != 403:
+            bad += fail(f"a non-ASCII token answered {code}, not 403")
+        elif b"token" not in body:
+            bad += fail(f"a non-ASCII token got no reason back: {body[:80]!r}")
+
+        # deliberately the cheapest authed route rather than /api/queues:
+        # building all seven queues over 2,108 companies took two seconds and
+        # this is testing the lock, not what is behind it
+        code, _, _ = ask("/api/agree", {"X-Admin-Token": admin.TOKEN})
+        if code != 200:
+            bad += fail(f"the real token was refused: {code}")
+
+        for path in ("/", "/api/queues"):
+            _, head, _ = ask(path)
+            if head.get("X-Frame-Options") != "DENY":
+                bad += fail(f"{path} can be framed: X-Frame-Options "
+                            f"{head.get('X-Frame-Options')!r}")
+            if "frame-ancestors 'none'" not in (head.get("Content-Security-Policy") or ""):
+                bad += fail(f"{path} has no frame-ancestors rule")
+
+        code, _, _ = ask("/api/token")
+        if code != 200:
+            bad += fail(f"the capture extension cannot get a token: {code}")
+        # a browser attaches this itself and a page cannot drop it
+        code, _, _ = ask("/api/token", {"Origin": "https://evil.example"})
+        if code != 403:
+            bad += fail(f"/api/token answered a web page with {code}, not 403")
+
+        # a write, in the shape a page can send with no preflight at all
+        code, _, _ = ask("/api/patch", {"Content-Type": "text/plain"},
+                         "POST", b'{"id":"tyler-technologies","name":"owned"}')
+        if code != 415:
+            bad += fail(f"a text/plain write answered {code}, not 415")
+    finally:
+        srv.shutdown()
+        srv.server_close()
+    return bad
+
+
+def check_url_sinks() -> int:
+    """Every href built from data goes through safeUrl, on both shipped pages.
+
+    esc() cannot save an href. "javascript:alert(1)" contains not one character
+    esc() touches - the scheme IS the payload - and the link runs on our own
+    origin the moment somebody clicks it. Only an allowlist of schemes closes
+    it, which is what safeUrl is.
+
+    This was live on alerts.html, and that is the worst page to have it on: a
+    saved role's url starts on somebody else's ATS, goes up into a subscription
+    record and comes back down into a link, on the one page that holds the
+    settings token in memory. The token is the whole identity there, so one
+    click would have handed over the subscription.
+
+    Checked as a shape rather than by running the page, because there is no
+    JS engine here and the shape is the part that regresses: someone adds a
+    link, reaches for esc() because every other interpolation uses it, and the
+    hole is back with no visible difference.
+    """
+    bad = 0
+    for name in ("index.html", "alerts.html"):
+        src = (ROOT / name).read_text()
+        if "function safeUrl(" not in src:
+            bad += fail(f"{name} has no safeUrl(), so nothing filters a scheme")
+            continue
+        # an allowlist of two, never a blocklist of schemes: a blocklist has to
+        # know about javascript:, data:, vbscript:, blob: and whatever is next
+        if ('p.protocol==="http:"' not in src
+                or 'p.protocol==="https:"' not in src):
+            bad += fail(f"{name}'s safeUrl no longer allowlists http and https")
+        # names that hold an already-filtered url, so `href="${esc(purl)}"`
+        # counts as safe without repeating the call at the sink
+        safe = set(re.findall(r"(?:const|let|var)\s+(\w+)\s*=\s*safeUrl\(", src))
+        sinks = re.findall(r'href="\$\{([^}]*)\}', src)
+        if not sinks:
+            bad += fail(f"{name} builds no href from data any more - if that is "
+                        f"deliberate, this check has outlived the page")
+        for expr in sinks:
+            if "safeUrl(" in expr:
+                continue
+            m = re.fullmatch(r"esc\((\w+)\)", expr.strip())
+            if m and m.group(1) in safe:
+                continue
+            bad += fail(f"{name} builds an href from {expr!r} with no safeUrl "
+                        f"behind it - esc() does not stop a javascript: scheme")
+    return bad
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -1047,6 +1282,9 @@ def main() -> int:
     errors += check_brand()
     errors += check_admin_game()
     errors += check_admin_guards()
+    errors += check_redirect_hop()
+    errors += check_admin_http()
+    errors += check_url_sinks()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)
