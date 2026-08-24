@@ -42,7 +42,10 @@ def main() -> int:
         print("nothing pending")
         return 0
 
-    companies = json.loads((DATA / "companies.json").read_text())
+    # through read_companies so save_companies has a real before-image to
+    # diff against - reading the file directly leaves the journal comparing
+    # against whatever the last caller happened to load
+    companies = admin.read_companies()
     by_id = {c["id"]: c for c in companies}
     moved, failed = [], []
     for cid, r in pending.items():
@@ -68,7 +71,21 @@ def main() -> int:
         print(f"  PENDING {cid}: {why}")
     if a.dry_run:
         return 0
-    admin.write_atomic("companies.json", companies)
+    # THROUGH save_companies, NOT write_atomic. This is the daily run that
+    # applies every ruling the owner makes from his phone, and it was writing
+    # companies.json directly - so those writes had no before-image and no
+    # undo, while CLAUDE.md promised every admin write was reversible. A
+    # review caught it. The rulings arriving here are exactly the ones a
+    # person is most likely to want back: they were made on a small screen,
+    # away from the evidence, and applied hours later by a cron job nobody
+    # watches.
+    bad = admin.save_companies(
+        companies, "apply-web-rulings",
+        f"{len(moved)} placement ruling(s) from the web admin", by="owner")
+    if bad:
+        print(f"refused: {bad}")
+        print("no rulings were applied; they stay pending for the next run")
+        return 1
     admin.write_atomic("placement_rulings.json", rulings)
     return 0
 

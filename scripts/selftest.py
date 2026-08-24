@@ -359,7 +359,13 @@ def fail(msg):
 
 # Keys that hold a job description, under every name a fetcher or an ATS has
 # used for one. None of them may appear on a posting in board.json.
-PROSE_KEYS = {"jd", "description", "descriptionPlain", "descriptionHtml",
+# `jd_text` is the capture extension's name for one, and it was missing from
+# this set while build_board popped only `jd` - so a single captured posting
+# would have shipped 20,000 characters of another company's job ad into the
+# public file. It had never fired only because no single-posting capture had
+# run yet.
+PROSE_KEYS = {"jd", "jd_text", "description", "descriptionPlain",
+              "descriptionHtml",
               "content", "requirements", "jobDescription", "jobAd", "body",
               "text", "_pagetext", "_jd_is_teaser", "_detail_url"}
 
@@ -508,6 +514,24 @@ def check_derived() -> int:
         # and the posting never read are independent facts, not a sequence.
         ({"jd": "", "comp": year},
          {"jd_seen": False, "comp": year, "comp_floor": 140000}),
+        # A CAPTURED row: the description arrives under jd_text, and nothing
+        # upstream has parsed it, because it never went through ats.py. These
+        # are the postings with the most riding on it - a row is captured by
+        # hand precisely because no fetcher can enumerate that company, so this
+        # text holds the only pay range anybody will ever get for it.
+        ({"jd_text": "The base salary range for this role is "
+                     "$140,000 - $200,000 per year.", "comp": None},
+         {"jd_seen": True, "comp_floor": 140000, "comp_period": "year"}),
+        # and it counts as having read the posting, which "" for `jd` does not
+        ({"jd_text": "We are hiring a seller.", "comp": None},
+         {"jd_seen": True, "comp": None}),
+        # a comp already on the row wins: the board's own field is a stronger
+        # claim than anything parsed out of prose, and must not be overwritten
+        ({"jd_text": "Base salary range: $10 - $20 per hour", "comp": year},
+         {"jd_seen": True, "comp": year, "comp_floor": 140000}),
+        # whitespace is not a description under this key either
+        ({"jd_text": "  \n ", "comp": None},
+         {"jd_seen": False, "comp": None}),
         # a fetcher handing back something malformed costs the pay range, not
         # the board: this whole script is one process writing one file.
         ({"jd": "text", "comp": "$140k"}, {"jd_seen": True, "comp": None}),

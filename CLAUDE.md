@@ -128,10 +128,18 @@ rows all stay; only the counting changes.
 
 ## The admin backend
 
-`python3 scripts/admin.py`, then <http://127.0.0.1:8787>. Thirteen queues:
-founding year, wrong bucket, vendor scope, scope review, submissions,
-duplicates, missing websites, no board found, blocked boards, wrong placement,
-unclassified roles, acquisitions, website review.
+`python3 scripts/admin.py`, then <http://127.0.0.1:8787>. Fourteen queues:
+boards we found, founding year, wrong bucket, vendor scope, scope review,
+submissions, duplicates, missing websites, no board found, blocked boards,
+wrong placement, unclassified roles, acquisitions, website review.
+
+The two newest are both about boards that may not belong to the company they
+are filed under, and they are different questions. **Boards we found** holds a
+board discovered INSIDE a careers page - the page named its own widget - and
+asks whether to wire it up. **Acquisitions** holds a board already wired that
+looks like it belongs to a parent, and asks whether to keep it, label it, or
+unwire it. Both refuse to write on their own; both keep the refusals so the
+next sweep stops proposing what somebody already said no to.
 
 It is where the residue of every automated pass goes — the parts that need
 judgment rather than a better regex.
@@ -350,7 +358,7 @@ the page you were pointed at, once.
 `scripts/capture.js`, installed from <http://127.0.0.1:8787/capture>, plus a
 Chrome extension in `extension/`.
 
-**806 companies have a careers page on file that produces nothing** (counted
+**887 companies have a careers page on file that produces nothing** (counted
 2026-08-24; `coverage.py` prints the live figure) — a person
 looking at the page sees the jobs anyway. That is the worklist both of these
 serve, and it is the single biggest hole on the board.
@@ -549,17 +557,17 @@ python3 scripts/coverage.py [--by-sector]
 decisions for a while. It counted a careers page nothing can enumerate the
 same as a Greenhouse API, and it counted companies that have **no job board at
 all** as a gap to be closed. The honest split, re-derived 2026-08-24 across
-2,108 companies:
+2,103 companies:
 
 ```
-structured   270  12.8%  a real API. Titles, locations, links. THIS is the number to move.
-page only    888  42.1%  a page a person can read and a fetcher mostly cannot.
-blocked      240  11.4%  a bot wall or transport error. We learned nothing. NOT a zero.
-absent       568  26.9%  checked, no public board exists. A finished state, not a gap.
-unchecked    142   6.7%  never probed, or probed before the current rules existed.
+structured   269  12.8%  a real API. Titles, locations, links. THIS is the number to move.
+page only    887  42.2%  a page a person can read and a fetcher mostly cannot.
+blocked      238  11.3%  a bot wall or transport error. We learned nothing. NOT a zero.
+absent       568  27.0%  checked, no public board exists. A finished state, not a gap.
+unchecked    141   6.7%  never probed, or probed before the current rules existed.
 ```
 
-286 companies currently show at least one open posting.
+285 companies currently show at least one open posting.
 
 **Run the script; do not quote this block.** These moved by one while this
 section was being written, because a discovery pass was running in another
@@ -569,10 +577,10 @@ believed for months.
 The two ratios the script prints mean different things and neither is
 "coverage":
 
-- **1,158/2,108 = 55%** — we have *some* board on file, against every company.
-- **1,158/1,540 = 75%** — the same numerator against companies that have a
+- **1,156/2,103 = 55%** — we have *some* board on file, against every company.
+- **1,156/1,535 = 75%** — the same numerator against companies that have a
   board to find (total minus `absent`). This is the denominator that can be
-  worked. It is **not** 75% readable: 888 of that 1,158 is the `page only`
+  worked. It is **not** 75% readable: 887 of that 1,156 is the `page only`
   pile, which is mostly not enumerable at all.
 
 A 15-agent field audit (n=90 random re-probe, plus 24 investigated by hand)

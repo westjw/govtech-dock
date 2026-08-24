@@ -44,6 +44,7 @@ import time
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import ats            # noqa: E402
 import roles          # noqa: E402
+import salary         # noqa: E402
 
 try:
     import render_fetch                            # noqa: E402  optional
@@ -224,7 +225,29 @@ def derived(row: dict) -> dict:
     if not isinstance(comp, dict):
         comp = None
     jd = row.get("jd")
-    out = {"jd_seen": bool(jd.strip()) if isinstance(jd, str) else False,
+    # A CAPTURED row carries its description under `jd_text`, not `jd`, and
+    # nothing has ever read it. ats.py parses pay out of a description for
+    # rows it fetched; a captured row never went through ats.py, so its text
+    # sat in manual.json unparsed while the row published with no pay at all.
+    # These are the postings that most need it - a captured row exists exactly
+    # because no fetcher can enumerate that company's board, so the pay range
+    # in that text is the only one anybody will ever get for it. Measured on
+    # 279 real descriptions, salary.py finds a stated range in 216 of them.
+    #
+    # Parsed HERE rather than at capture time on purpose: salary.py is tuned
+    # toward silence and gets loosened only by adding anchored forms, so a
+    # description parsed once at capture is frozen at whatever the parser knew
+    # that day, while one parsed at build time picks up every later fix.
+    cap = row.get("jd_text")
+    cap = cap if isinstance(cap, str) and cap.strip() else None
+    if cap and comp is None:
+        try:
+            comp = salary.parse(cap)
+        except Exception:
+            # same reason as the type checks above: a malformed description
+            # costs its own pay range, never the whole board
+            comp = None
+    out = {"jd_seen": bool(jd.strip()) if isinstance(jd, str) else bool(cap),
            "comp": comp}
     if comp:
         out["comp_floor"] = comp.get("min")
@@ -542,6 +565,17 @@ def main() -> int:
             "tier": TIER.get(c["sector"]),
             "vendor_type": c.get("vendor_type"), "govtech": c.get("govtech"),
             "parent": c.get("parent"), "ats_note": c.get("ats_note"),
+            # The sub-companies folded into this record by a family merge:
+            # each keeps its own name, its own website and the research written
+            # about it. Carried through in full because it is the ONLY place a
+            # brand with no record of its own still exists - drop it here and
+            # the site can never say that PerfectMind is Xplor Recreation, and
+            # a visitor typing that name gets an empty page about a company we
+            # actually track. `also_known_as` rides along for the same reason:
+            # it is where every dropped name went, and a name has to find the
+            # company.
+            "brands": c.get("brands") or None,
+            "also_known_as": c.get("also_known_as") or None,
             # Filled in by count_openings() once every posting exists. Counting
             # here counted rows, missed the manual merge below, and rescanned
             # the whole posting list once per company.
@@ -588,7 +622,16 @@ def main() -> int:
             # could ever ride into the public file - derived() rebuilds the
             # pay fields from scratch and the pop removes the text itself.
             row = {**mp, "source": "manual", **derived(mp)}
+            # BOTH text keys. The pop used to name `jd` alone, which was the
+            # only description key that existed when it was written - and the
+            # capture extension then started storing its own under `jd_text`,
+            # up to 20,000 characters of somebody else's job-ad copy, with
+            # nothing stripping it. Nothing has leaked yet only because no
+            # single-posting capture has run since; the first one would have
+            # published the lot. derived() has already taken the two facts
+            # worth keeping off it.
             row.pop("jd", None)
+            row.pop("jd_text", None)
             row["title"] = ats.plain(mp.get("title") or "")
             row["opening_id"] = opening_id(mp["company_id"], row["title"])
             row["id"] = posting_id(mp["company_id"], row["title"],
