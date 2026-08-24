@@ -79,7 +79,9 @@
 <div class="toast" id="toast"></div>
 <script>
 const $=s=>document.querySelector(s);
-const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+// nothing calls this now; kept correct, and with the apostrophe in the class,
+// for whoever writes the next line that builds markup as a string
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const el=(t,c,txt)=>{const n=document.createElement(t);if(c)n.className=c;
   if(txt!==undefined)n.textContent=txt;return n};
 let TOAST_T=null;
@@ -245,7 +247,10 @@ function drawBucket(v){
     v.appendChild(n);
   });
 }
-boot().catch(e=>{$("#view").innerHTML='<div class="empty">could not load - '+esc(e)+'</div>'});
+boot().catch(e=>{const v=$("#view");v.innerHTML="";
+  // a JSON.parse failure quotes the bytes it choked on, and those bytes came
+  // off the network, so the message is built as text like everything else
+  v.appendChild(el("div","empty","could not load - "+e))});
 </script>
 </body>
 </html>

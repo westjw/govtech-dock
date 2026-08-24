@@ -99,6 +99,21 @@ def candidates(site: str, html: str) -> list[str]:
     return uniq[:12]
 
 
+def logo_path(cid: str, ext: str) -> pathlib.Path:
+    """Where this logo is allowed to land, or nowhere.
+
+    OUT / f"{cid}.{ext}" only lands in assets/logos when cid is a bare slug,
+    and an id reaches here from wherever companies.json got it - including an
+    outside submission. Resolving the joined path and insisting the parent is
+    still OUT is the layer that holds without trusting anything upstream,
+    which is the point of having it as well as the checks upstream.
+    """
+    dest = (OUT / f"{cid}.{ext}").resolve()
+    if dest.parent != OUT.resolve():
+        raise ValueError(f"{cid!r} is not a company id, it is a path")
+    return dest
+
+
 def fetch_one(row: tuple[str, str]) -> tuple[str, str | None, str]:
     cid, site = row
     import requests
@@ -127,7 +142,11 @@ def fetch_one(row: tuple[str, str]) -> tuple[str, str | None, str]:
             ext = looks_like_image(ir.content)
             if not ext:
                 continue
-            (OUT / f"{cid}.{ext}").write_bytes(ir.content)
+            try:
+                dest = logo_path(cid, ext)
+            except ValueError as exc:
+                return cid, None, str(exc)
+            dest.write_bytes(ir.content)
             return cid, ext, url
         except Exception:
             continue

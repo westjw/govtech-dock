@@ -15,6 +15,11 @@ The market-intelligence signal is the family mix. A company hiring twelve
 engineers and no sellers is in a different phase than one hiring eight AEs, and
 that difference is invisible if you only ever counted AEs.
 
+Two units, kept apart everywhere: a POSTING is one advertisement and a row on
+the site, an OPENING is one company advertising one title and what every count
+here reports. Xplor's single Account Executive opening is 93 postings. See
+opening_id() for why the counts use the second one.
+
   python scripts/build_board.py [--limit N] [--company id] [--dry-run]
 """
 from __future__ import annotations
@@ -23,6 +28,7 @@ import argparse
 import collections
 import concurrent.futures as cf
 import datetime as dt
+import hashlib
 import json
 import pathlib
 import re
@@ -119,6 +125,50 @@ NOT_OUR_GOV = re.compile(
     r"Brazil|Mexico|Dubai|\bUAE\b|Israel", re.I)
 
 
+def opening_id(company_id: str, title: str) -> str:
+    """The unit the board COUNTS: one company advertising one job title.
+
+    Xplor Recreation posts "Account Executive" to 93 service areas across 15
+    states while its whole board holds 7 other roles. Those are 93 real
+    SmartRecruiters requisitions and they are not 93 jobs, and reporting them
+    as 93 put a single advertisement third on a leaderboard of the biggest
+    go-to-market pushes in the market. Civica goes further and lists ONE
+    Workable requisition - same url - under six Australian cities.
+
+    So a headline number counts openings and carries the spread next to it:
+    "470 sellers wanted, advertised in 607 postings" is a sentence someone can
+    check by hand. The per-location rows all stay - a reader who wants the
+    Tucson requisition still gets exactly it - only the counting changes.
+
+    This is also the id every shared link and saved role carried before
+    posting_id() below started disambiguating them, which is why it stays the
+    prefix of the new one.
+    """
+    return f"{company_id}::{title}"
+
+
+def posting_id(company_id: str, title: str, url: str | None, location: str) -> str:
+    """One id per requisition, stable across runs.
+
+    company::title alone was the id and it is not unique: the 93 Xplor rows
+    shared one, and the site resolves a role by `find(x => x.id === id)`, so
+    92 of 93 readers who clicked a city opened a different city's job, and
+    saving Goodyear and reopening it showed Tucson.
+
+    url plus location is what actually separates two rows the board gave us.
+    url alone does not: Workable answers six cities with one requisition url.
+
+    Hashed rather than spliced in whole so the id stays short and there is no
+    per-ATS requisition-id parsing to get wrong. Hashed from the posting's own
+    content rather than from its position in the list, because an id that
+    churns when a board reorders breaks every saved role and every shared link
+    on every refresh, and turns the daily history diff into noise.
+    """
+    key = f"{url or ''}\n{location or ''}"
+    disc = hashlib.blake2s(key.encode("utf-8"), digest_size=4).hexdigest()
+    return f"{opening_id(company_id, title)}::{disc}"
+
+
 def phase(families: dict) -> str:
     """What the family mix says about where a company is."""
     total = sum(families.values())
@@ -135,6 +185,59 @@ def phase(families: dict) -> str:
     if absorb > gtm:
         return "absorbing: delivery and support for customers already won"
     return "mixed: building and selling at once"
+
+
+def count_openings(postings: list[dict], orgs: list[dict]) -> dict[str, list[dict]]:
+    """Group rows into openings, stamp the spread on each row, count the orgs.
+
+    Runs once, after dedup and the manual merge, over the final posting list -
+    which is the only place all three sources are present at the same time.
+
+    Returns opening_id -> its rows, so the caller can build totals from the
+    same grouping the per-company numbers came from and the two cannot drift.
+    """
+    groups: dict[str, list[dict]] = collections.defaultdict(list)
+    for p in postings:
+        groups[p["opening_id"]].append(p)
+
+    for rows in groups.values():
+        # How widely this one opening is advertised. The site renders it as
+        # "also in 92 other locations" next to a row, so a reader can see that
+        # the Tucson requisition is one of 93 and not miss the other 92.
+        # Both numbers, because a board that states no location at all gives
+        # rows a spread with zero distinct locations in it.
+        locations = len({(p.get("location") or "").strip() for p in rows
+                         if (p.get("location") or "").strip()})
+        for p in rows:
+            p["opening_postings"] = len(rows)
+            p["opening_locations"] = locations
+
+    per_org: dict[str, dict] = {}
+    for rows in groups.values():
+        e = per_org.setdefault(rows[0]["company_id"],
+                               {"open": 0, "postings": 0, "quota": 0,
+                                "quota_postings": 0,
+                                "families": collections.Counter()})
+        e["open"] += 1
+        e["postings"] += len(rows)
+        # family and quota are read off the title, and an opening is one title,
+        # so every row of a group agrees and the first row speaks for all.
+        e["families"][rows[0].get("family") or "other"] += 1
+        if rows[0].get("quota_carrying"):
+            e["quota"] += 1
+            e["quota_postings"] += len(rows)
+
+    for o in orgs:
+        e = per_org.get(o["id"])
+        if e is None:                 # a company with nothing open right now
+            continue
+        o["open_roles"] = e["open"]
+        o["open_postings"] = e["postings"]
+        o["quota_roles"] = e["quota"]
+        o["quota_postings"] = e["quota_postings"]
+        o["families"] = dict(e["families"])
+        o["phase"] = phase(e["families"])
+    return groups
 
 
 def main() -> int:
@@ -263,7 +366,10 @@ def main() -> int:
                 and render_fetch.available() \
                 and time.monotonic() - render_started < a.render_budget:
             try:
-                jobs, err = render_fetch.fetch_rendered(ref), None
+                # render_fetch reads the rendered DOM, not ats.fetch(), so its
+                # titles have not been through plain() yet.
+                jobs = ats.plain_rows(render_fetch.fetch_rendered(ref))
+                err = None
                 rendered += 1
             except Exception:
                 jobs = []
@@ -279,8 +385,6 @@ def main() -> int:
         if not jobs and kind == "html" and not err:
             enumerable = False
 
-        fams = collections.Counter()
-        kept = 0
         sled_only = bool(c.get("sled_only"))
         dropped_offtopic = 0
         pending = 0
@@ -288,8 +392,18 @@ def main() -> int:
             title = (j.get("title") or "").strip()
             if roles.is_junk(title) or roles.is_evergreen(title):
                 continue
-            pid = f"{c['id']}::{title}"
-            ruling = scope.get(pid)
+            loc = j.get("location") or ""
+            url = j.get("url") or board_url(c)
+            oid = opening_id(c["id"], title)
+            rid = posting_id(c["id"], title, url, loc)
+            # Scope rulings are looked up by both ids, most specific first.
+            # admin.py keys a new ruling by the posting id it saw on the board,
+            # which is now per-requisition; every ruling made before that is
+            # keyed company::title and is a judgement about the ROLE, so it
+            # still applies to all 93 rows and nobody is asked 93 times.
+            ruling = scope.get(rid)
+            if ruling is None:
+                ruling = scope.get(oid)
             scope_pending = False
             if sled_only or ruling:
                 if ruling is not None:
@@ -308,14 +422,15 @@ def main() -> int:
                     # of those this board is about.
                     pending += 1
                     scope_pending = True
-            loc = j.get("location") or ""
             fam = roles.family(title)
             geo = roles.geography(loc, title)
-            fams[fam] += 1
-            kept += 1
             postings.append({
                 "scope_pending": scope_pending or None,
-                "id": f"{c['id']}::{title}",
+                "id": rid,
+                # what this row is one advertisement OF. Rows sharing it are
+                # one opening; the site groups on this to count and to say
+                # "also advertised in N other locations".
+                "opening_id": oid,
                 "company": c["name"], "company_id": c["id"],
                 "title": title, "family": fam,
                 "quota_carrying": roles.is_quota_carrying(title),
@@ -328,7 +443,7 @@ def main() -> int:
                 "region": geo["territory"]["region"],
                 "work_mode": geo["work_mode"],
                 "location": loc, "is_us": roles.is_us(loc, title),
-                "url": j.get("url") or board_url(c),
+                "url": url,
                 "sector": c["sector"], "category": c["category"],
                 # extra departments this vendor also sells into, so a
                 # filter on Courts finds Tyler even though its primary
@@ -347,9 +462,12 @@ def main() -> int:
             "tier": TIER.get(c["sector"]),
             "vendor_type": c.get("vendor_type"), "govtech": c.get("govtech"),
             "parent": c.get("parent"), "ats_note": c.get("ats_note"),
-            "open_roles": kept, "families": dict(fams), "phase": phase(fams),
-            "quota_roles": sum(1 for p in postings
-                               if p["company_id"] == c["id"] and p["quota_carrying"]),
+            # Filled in by count_openings() once every posting exists. Counting
+            # here counted rows, missed the manual merge below, and rescanned
+            # the whole posting list once per company.
+            "open_roles": 0, "open_postings": 0,
+            "quota_roles": 0, "quota_postings": 0,
+            "families": {}, "phase": phase({}),
             "unreadable": err,
             "sled_only": sled_only or None,
             "offtopic_dropped": dropped_offtopic or None,
@@ -371,17 +489,19 @@ def main() -> int:
     if manual_path.exists():
         man = json.loads(manual_path.read_text())
         checks = man.get("checks", {})
-        by_id = {o["id"]: o for o in orgs}
         for mp in man.get("postings", []):
-            postings.append({**mp, "source": "manual"})
+            # manual.py keys a hand-captured row company::title, which names
+            # the opening rather than the requisition. Re-key it the same way
+            # a fetched row is keyed, so "one id, one row" holds across both
+            # sources. No org counting here: count_openings() below sees these
+            # rows too, and doing it twice double-counted them.
+            row = {**mp, "source": "manual"}
+            row["title"] = ats.plain(mp.get("title") or "")
+            row["opening_id"] = opening_id(mp["company_id"], row["title"])
+            row["id"] = posting_id(mp["company_id"], row["title"],
+                                   mp.get("url"), mp.get("location") or "")
+            postings.append(row)
             manual_count += 1
-            o = by_id.get(mp["company_id"])
-            if o is not None:
-                o["open_roles"] += 1
-                o["families"][mp["family"]] = o["families"].get(mp["family"], 0) + 1
-                if mp.get("quota_carrying"):
-                    o["quota_roles"] += 1
-                o["phase"] = phase(o["families"])
         for org in orgs:
             chk = checks.get(org["id"])
             if chk:
@@ -390,10 +510,28 @@ def main() -> int:
     # carry first_seen forward so a posting keeps its original date
     prev_path = DATA / "board.json"
     if prev_path.exists():
-        prev = {p["id"]: p for p in json.loads(prev_path.read_text()).get("postings", [])}
+        prev, legacy = {}, {}
+        for p in json.loads(prev_path.read_text()).get("postings", []):
+            seen = p.get("first_seen")
+            if not seen:
+                continue
+            if p["id"] not in prev or seen < prev[p["id"]]:
+                prev[p["id"]] = seen
+            # Rows written before ids carried a requisition discriminator have
+            # id == company::title exactly. Without this fallback the very
+            # first run under the new scheme matches nothing, resets every
+            # first_seen to today, and the site reports 4,242 roles as posted
+            # this morning. It retires itself: once a board has been written
+            # with discriminated ids, no row takes this branch again.
+            # The oldest date wins: the old id was shared by up to 93 rows, and
+            # the opening has been open since the earliest of them appeared.
+            if p["id"] == opening_id(p.get("company_id"), p.get("title")):
+                if p["id"] not in legacy or seen < legacy[p["id"]]:
+                    legacy[p["id"]] = seen
         for p in postings:
-            if p["id"] in prev:
-                p["first_seen"] = prev[p["id"]]["first_seen"]
+            was = prev.get(p["id"]) or legacy.get(p.get("opening_id"))
+            if was:
+                p["first_seen"] = was
 
     for mp in postings:
         if "territory" not in mp:            # manual entries predate these fields
@@ -404,8 +542,10 @@ def main() -> int:
                       region=g["territory"]["region"], work_mode=g["work_mode"])
 
     # Byte-identical duplicate rows are a fetcher stutter, not two jobs.
-    # (Same-id rows that DIFFER - one title across 93 locations - are real
-    # and stay; the id scheme owes them a rethink, recorded in the backlog.)
+    # Rows that DIFFER - one title across 93 locations - are real and stay;
+    # each now carries its own id, and posting_id() is derived from the url and
+    # location, so two rows that would collide on an id are identical in every
+    # other field too and one of them is dropped right here.
     unique, seen_rows = [], set()
     for mp in postings:
         key = json.dumps(mp, sort_keys=True)
@@ -417,8 +557,15 @@ def main() -> int:
         print(f"  dropped {len(postings) - len(unique)} byte-identical duplicate posting rows")
     postings = unique
 
-    fam_totals = collections.Counter(p["family"] for p in postings)
-    sector_totals = collections.Counter(p["sector"] for p in postings)
+    groups = count_openings(postings, orgs)
+
+    # Everything below counts OPENINGS - see opening_id(). The row counts are
+    # still here, named *_postings, because "advertised in 607 postings" is the
+    # sentence that makes 470 checkable.
+    fam_totals = collections.Counter(rows[0].get("family") or "other"
+                                     for rows in groups.values())
+    sector_totals = collections.Counter(rows[0].get("sector")
+                                        for rows in groups.values())
     # which companies have a logo on file, and in what format. The page
     # needs the extension to build the src, and a manifest is cheaper than
     # 2,100 speculative requests that mostly 404.
@@ -436,10 +583,19 @@ def main() -> int:
         "no_board_on_file": sum(1 for o in orgs if o.get("no_board_on_file")),
         "manual_postings": manual_count,
         "totals": {
+            # rows: one per advertisement, which is what the board lists
             "postings": len(postings),
-            "quota_carrying": sum(1 for p in postings if p["quota_carrying"]),
-            "us": sum(1 for p in postings if p["is_us"] is True),
-            "non_us": sum(1 for p in postings if p["is_us"] is False),
+            "quota_carrying_postings": sum(1 for p in postings if p["quota_carrying"]),
+            # openings: one per (company, title), which is what it counts.
+            # us/non_us count an opening if ANY of its rows says so, so an
+            # opening advertised on both sides of a border appears in both.
+            "openings": len(groups),
+            "quota_carrying": sum(1 for rows in groups.values()
+                                  if any(p["quota_carrying"] for p in rows)),
+            "us": sum(1 for rows in groups.values()
+                      if any(p["is_us"] is True for p in rows)),
+            "non_us": sum(1 for rows in groups.values()
+                          if any(p["is_us"] is False for p in rows)),
             "families": dict(fam_totals), "sectors": dict(sector_totals),
         },
         "organizations": orgs,
@@ -466,15 +622,19 @@ def main() -> int:
         print(f"{tot} off-topic posting(s) dropped from {len(filtered)} horizontal "
               f"vendor(s) marked sled_only:")
         for o in sorted(filtered, key=lambda x: -x["offtopic_dropped"])[:6]:
-            print(f"   {o['name'][:26]:<26} kept {o['open_roles']:>3}, "
+            # rows against rows: offtopic_dropped counts postings thrown away,
+            # so the kept side has to be postings too or the pair reads wrong.
+            print(f"   {o['name'][:26]:<26} kept {o['open_postings']:>3}, "
                   f"dropped {o['offtopic_dropped']}")
 
     no_board = sum(1 for o in orgs if o.get("no_board_on_file"))
     print(f"{len(companies)} companies: {len(companies) - no_board} with a board on "
           f"file, {no_board} awaiting discovery")
     print(f"  {unreadable} boards unreadable, {rendered} recovered by rendering")
-    print(f"{len(postings)} open postings, "
-          f"{payload['totals']['quota_carrying']} quota-carrying")
+    t = payload["totals"]
+    print(f"{t['openings']} open roles, advertised in {t['postings']} postings")
+    print(f"  {t['quota_carrying']} quota-carrying, "
+          f"advertised in {t['quota_carrying_postings']} postings")
     for f, n in fam_totals.most_common():
         print(f"  {n:>4}  {roles.LABEL.get(f, f)}")
     if a.dry_run:

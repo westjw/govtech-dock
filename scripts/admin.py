@@ -24,12 +24,16 @@ from __future__ import annotations
 
 import argparse
 import collections
+import contextlib
 import datetime as dt
 import http.server
+import ipaddress
 import json
 import os
 import pathlib
 import re
+import secrets
+import socket
 import socketserver
 import sys
 import tempfile
@@ -52,6 +56,14 @@ DATA = ROOT / "data"
 # means nothing has looked yet.
 ATS_TYPES = set(ats.FETCHERS) | {"unknown"}
 STATUSES = {"Yes", "Sales (non-AE)", "None found", "Unknown"}
+
+# A company id is a filename in every direction it travels: assets/logos/<id>.png
+# is written from it, and the site, the exporter and the logo fetcher all build
+# paths out of it. So a path is a legal string but not a legal id, and the file
+# is where that has to be said, because an id can enter it from intake, from a
+# merge, from a ruling, or from an outside submission. All 2,108 ids on file
+# already match; this refuses the ones nobody meant to allow.
+ID_OK = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 
 # Words that carry no identity, so two records differing only by these are the
 # same company: "Miovision" and "Miovision Technologies Inc." are one vendor.
@@ -120,6 +132,8 @@ def validate(companies: list) -> str | None:
         for f in ("id", "name", "sector", "category", "ats", "hiring"):
             if c.get(f) in (None, ""):
                 return f"{who}: missing {f}"
+        if not isinstance(c["id"], str) or not ID_OK.match(c["id"]):
+            return f"{who}: id {c['id']!r} is not a slug"
         if c["id"] in seen:
             return f"duplicate id {c['id']}"
         seen.add(c["id"])
@@ -403,6 +417,39 @@ def act_scope_all(body: dict) -> dict:
     write_atomic("scope_decisions.json", d)
     return {"ok": True, "message": f"{n} posting(s) ruled "
                                    f"{'in' if keep else 'out of'} scope"}
+
+
+def act_posts_at(body: dict) -> dict:
+    """Record that a company advertises somewhere we cannot enumerate.
+
+    The no-board queue had two outcomes - paste an ATS address, or dismiss -
+    so a company advertising every opening on LinkedIn was recorded exactly
+    like one that hires by word of mouth. Those are opposite facts, and
+    collapsing them makes the public card imply nobody is hiring at a company
+    that is advertising openly. Nothing ever contradicts it, because "we found
+    nothing" is indistinguishable from "we did not look in the right place".
+    """
+    import posts_at as _pa
+    cid = (body.get("id") or "").strip()
+    where = (body.get("where") or "").strip()
+    url = (body.get("url") or "").strip()
+    bad = _pa.check(where, url)
+    if bad:
+        return {"error": bad}
+    companies = read("companies.json", [])
+    c = next((x for x in companies if x["id"] == cid), None)
+    if c is None:
+        return {"error": "no such company"}
+    c["posts_at"] = _pa.build(where, url, body.get("by") or "owner",
+                              body.get("note") or "")
+    err = validate(companies)
+    if err:
+        return {"error": err}
+    write_atomic("companies.json", companies)
+    return {"ok": True,
+            "message": f"recorded: {c['name']} advertises on {_pa.label(where)}. "
+                       f"Their card now links there instead of saying no board "
+                       f"was found."}
 
 
 def act_vendor_scope_all(body: dict) -> dict:
@@ -766,8 +813,18 @@ def q_vendor_scope(companies, board) -> list:
     return out
 
 
-def _vkey(name: str) -> str:
+def slug(name: str) -> str:
+    """The one way an id is made here, and never a value taken from a request.
+
+    An id becomes a filename downstream, so a caller-chosen id is a
+    caller-chosen path - which is exactly how attacker bytes once landed
+    outside assets/logos.
+    """
     return re.sub(r"[^a-z0-9]+", "-", (name or "").lower()).strip("-")
+
+
+def _vkey(name: str) -> str:
+    return slug(name)
 
 
 def act_also(body: dict) -> dict:
@@ -853,9 +910,10 @@ def act_save_website(body: dict) -> dict:
     the board probe finds nothing, because a confirmed website is worth
     keeping on its own.
     """
-    cid, url = body.get("id"), clean_url(body.get("url"))
+    cid = body.get("id")
+    url, why = outward_url(body.get("url"))
     if not cid or not url:
-        return {"error": "need a company and a URL"}
+        return {"error": why or "need a company and a URL"}
     companies = read("companies.json", [])
     c = next((x for x in companies if x["id"] == cid), None)
     if c is None:
@@ -883,16 +941,16 @@ def act_save_website(body: dict) -> dict:
             got_logo = True
             steps.append("logo found")
         else:
-            steps.append(f"no logo ({note[:40]})")
+            steps.append("no logo on the site")
     except Exception as exc:  # noqa: BLE001 - a logo is never worth a 500
-        steps.append(f"logo step failed ({type(exc).__name__})")
+        steps.append("could not reach the site for a logo")
 
     # 3. the board, verified before it is written
     got_board = None
     try:
         ats_block, careers, notes = add_company.find_ats(url, paths=["/careers"])
         if ats_block:
-            okay, why = discover_ats.verify(ats_block)
+            okay, why = add_company.verify(ats_block)
             if okay:
                 companies = read("companies.json", [])
                 c2 = next((x for x in companies if x["id"] == cid), None)
@@ -907,7 +965,7 @@ def act_save_website(body: dict) -> dict:
         else:
             steps.append("no board on the site yet")
     except Exception as exc:  # noqa: BLE001
-        steps.append(f"board step failed ({type(exc).__name__})")
+        steps.append("could not check for a job board just now")
 
     log = read("discovery_log.json", {})
     log[cid] = {"on": dt.date.today().isoformat(), "found": bool(got_board),
@@ -932,13 +990,17 @@ def act_retry_board(body: dict) -> dict:
         return {"error": "no such company"}
     if not c.get("website"):
         return {"error": "no website on file - add one first"}
+    # the website came off the record rather than out of this request, and a
+    # record can be older than any rule about what may go in it
+    url, bad = outward_url(c["website"])
+    if not url:
+        return {"error": f"the website on file is not fetchable: {bad}"}
     # two paths only: this runs inside a single-threaded server, and a
     # deliberate button press may wait seconds, not minutes
-    ats_block, careers, notes = add_company.find_ats(c["website"],
-                                                     paths=["/careers"])
+    ats_block, careers, notes = add_company.find_ats(url, paths=["/careers"])
     log = read("discovery_log.json", {})
     if ats_block:
-        okay, why = discover_ats.verify(ats_block)
+        okay, why = add_company.verify(ats_block)
         if okay:
             c["ats"] = ats_block
             err = validate(companies)
@@ -1065,26 +1127,156 @@ def act_patch(body: dict) -> dict:
     return {"ok": True, "message": f"updated {c['name']}"}
 
 
+# --------------------------------------------------------- reaching outward
+#
+# Every fetch this server makes is aimed by whoever is talking to it, and the
+# reply comes back to them: a page title, a list of anchors. So the target is
+# not a detail, it is the whole question, and the answer has two halves.
+#
+# The first half already exists in this repo. functions/api/submit.js::validUrl
+# refuses anything that is not http(s), anything with credentials in it, and
+# anything without a dotted host. clean_url() below is that rule, plus the half
+# a Cloudflare Worker does not need: a name is free to point at 169.254.169.254,
+# so someone has to look at where it actually lands.
+
+
+# Captured before anything can patch it, so only_public_hosts() has something
+# honest to restore and outward_url() has a resolver that answers rather than
+# raises.
+_real_getaddrinfo = socket.getaddrinfo
+
+
+def _public(ip: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
+    """Is this address out on the internet, rather than in here with us."""
+    return not (ip.is_private or ip.is_loopback or ip.is_link_local
+                or ip.is_reserved or ip.is_multicast or ip.is_unspecified)
+
+
 def clean_url(raw: str) -> str | None:
-    """A URL with no host is not a URL. An empty box used to become 'https://',
-    which fetched, returned nothing, and offered to save a page-scan board whose
-    ref was literally 'https://'."""
+    """Shape only: is this a link, and is it aimed outward on its face.
+
+    A URL with no host is not a URL. An empty box used to become 'https://',
+    which fetched, returned nothing, and offered to save a page-scan board
+    whose ref was literally 'https://'.
+
+    Credentials are refused because 'http://user:pass@evil.com@127.0.0.1/'
+    reads as evil.com to a person and resolves to 127.0.0.1 to a fetcher -
+    the disagreement IS the trick. A literal private address is refused here
+    too, since that needs no lookup to see.
+
+    Deliberately does not resolve the name. This also runs on paths that only
+    STORE a url - a submission, a website field - and a company whose DNS is
+    down, or a laptop on a plane, must not make a real address unsaveable.
+    Resolution belongs to the fetch gate, below.
+    """
     u = (raw or "").strip()
-    if not u:
+    # a newline in the middle would let a caller write a second request line
+    # into anything downstream that builds a request by hand
+    if not u or re.search(r"[\s\x00-\x1f\x7f]", u):
         return None
-    if not u.startswith(("http://", "https://")):
+    if not re.match(r"^[a-z][a-z0-9+.-]*://", u, re.I):
         u = "https://" + u
-    host = u.split("//", 1)[1].split("/")[0]
-    return u if "." in host and len(host) > 3 else None
+    try:
+        parts = urllib.parse.urlsplit(u)
+        host = parts.hostname
+        creds = parts.username or parts.password
+    except ValueError:                    # a malformed ipv6 literal, mostly
+        return None
+    if parts.scheme not in ("http", "https") or creds or not host:
+        return None
+    if "." not in host or len(host) < 4:
+        return None
+    try:
+        if not _public(ipaddress.ip_address(host)):
+            return None
+    except ValueError:
+        pass                              # a name, not a literal. see below.
+    return u
+
+
+def outward_url(raw: str) -> tuple[str | None, str | None]:
+    """(url, error) for the actions that fetch whatever they are handed.
+
+    Answers in a sentence instead of a stalled connection, which is the only
+    reason it looks the name up itself. It is not the enforcement - a name
+    can resolve differently here than it does at the socket a moment later -
+    and only_public_hosts() is.
+    """
+    url = clean_url(raw)
+    if not url:
+        return None, "that does not look like a company website"
+    host = urllib.parse.urlsplit(url).hostname or ""
+    try:
+        # the real resolver on purpose: inside only_public_hosts() the patched
+        # one raises, and this exists to produce a readable message
+        infos = _real_getaddrinfo(host, None, proto=socket.IPPROTO_TCP)
+    except socket.gaierror:
+        return None, f"{host} does not resolve"
+    for info in infos:
+        ip = ipaddress.ip_address(info[4][0].split("%", 1)[0])
+        if not _public(ip):
+            return None, (f"{host} points at {ip}, which is inside this "
+                          f"network - this fetches on your behalf, so it "
+                          f"will not go there")
+    return url, None
+
+
+class PrivateAddress(OSError):
+    """Raised in place of opening a connection to an address in here."""
+
+
+def _guarded_getaddrinfo(host, port, *a, **kw):
+    infos = _real_getaddrinfo(host, port, *a, **kw)
+    for info in infos:
+        if info[0] not in (socket.AF_INET, socket.AF_INET6):
+            raise PrivateAddress(f"refusing a non-IP connection to {host}")
+        ip = ipaddress.ip_address(info[4][0].split("%", 1)[0])
+        if not _public(ip):
+            raise PrivateAddress(f"{host} resolves to {ip}, which is not public")
+    return infos
+
+
+@contextlib.contextmanager
+def only_public_hosts():
+    """Refuse, at connect time, any hop that lands inside this network.
+
+    Checking the url a person pasted is not enough on its own, because the
+    fetchers follow redirects and then read the target's own hrefs - so the
+    person who chose the first hop does not choose the second, and the second
+    is where a redirect to 127.0.0.1 goes. Patching the resolver for the
+    length of one action puts the check in the only place that sees every
+    hop, including the ones inside requests and inside fetch_logos.
+
+    It also closes the gap the pre-check cannot: this is the address the
+    socket will actually use, so a name that answers public once and loopback
+    a second later is caught on the answer that matters.
+
+    Process-wide, and safe here because the server handles one request at a
+    time and no admin action has any business dialling a private address.
+
+    What it does not close, said plainly: it only sees resolution that goes
+    through socket.getaddrinfo, so anything reaching the network another way -
+    a C-level resolver, an HTTP proxy that resolves for us - is outside it. It
+    is installed for the length of a POST action and nothing else; a GET route
+    that grew a fetch would need its own. And it refuses a host only when the
+    addresses it hands back are private, so a name that answers public here
+    and private to somebody else's resolver is somebody else's problem.
+    """
+    socket.getaddrinfo = _guarded_getaddrinfo
+    try:
+        yield
+    finally:
+        socket.getaddrinfo = _real_getaddrinfo
 
 
 def act_verify_website(body: dict) -> dict:
     """Check a URL before writing it. A live page is not evidence - parked
     domains and unrelated businesses all answer on the obvious name - so this
     reports what the page says about itself and lets a person decide."""
-    url, name = clean_url(body.get("url")), body.get("name") or ""
+    url, why = outward_url(body.get("url"))
+    name = body.get("name") or ""
     if not url:
-        return {"error": "enter a URL first"}
+        return {"error": why if body.get("url") else "enter a URL first"}
     try:
         r = add_company.fetch(url)
         html = r[0] if isinstance(r, tuple) else r
@@ -1103,9 +1295,9 @@ def act_verify_board(body: dict) -> dict:
     """Detect the ATS behind a careers URL and prove it returns this company's
     jobs. slug_matches is what keeps an off-site careers link from wiring a
     company to somebody else's board, which is how acquisitions surface."""
-    url = clean_url(body.get("url"))
+    url, why = outward_url(body.get("url"))
     if not url:
-        return {"error": "enter a careers URL first"}
+        return {"error": why if body.get("url") else "enter a careers URL first"}
     companies = read("companies.json", [])
     c = next((x for x in companies if x["id"] == body.get("id")), None)
     try:
@@ -1310,8 +1502,12 @@ def act_resolve_submission(body: dict) -> dict:
     else:
         fields = body.get("fields") or {}
         companies = read("companies.json", [])
-        cid = fields.get("id") or re.sub(r"[^a-z0-9]+", "-",
-                                         (fields.get("name") or item["name"]).lower()).strip("-")
+        # Always derived, never fields["id"]. The reviewer picks the NAME; the
+        # id follows from it. Letting the request name the id let a submission
+        # carry "../../.." through approval and out of the repo.
+        cid = slug(fields.get("name") or item["name"])
+        if not cid:
+            return {"error": "that submission has no name to build an id from"}
         if any(c["id"] == cid for c in companies):
             return {"error": f"{cid} is already tracked"}
         companies.append({
@@ -1343,9 +1539,9 @@ def act_inspect_submission(body: dict) -> dict:
     that cannot be placed confidently should be placed by hand, not filed
     wherever one incidental keyword pointed.
     """
-    url = clean_url(body.get("url"))
+    url, why = outward_url(body.get("url"))
     if not url:
-        return {"error": "no URL on that submission"}
+        return {"error": why if body.get("url") else "no URL on that submission"}
     try:
         r = add_company.fetch(url)
         html = r[0] if isinstance(r, tuple) else r
@@ -1461,7 +1657,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "scope": act_scope, "scope-all": act_scope_all,
            "vendor-scope": act_vendor_scope,
            "vendor-scope-all": act_vendor_scope_all,
-           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "place": act_place,
+           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "place": act_place,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "dismiss": act_dismiss}
@@ -1540,43 +1736,131 @@ loopback server. Editing the script means dragging the button again.
 </main>"""
 
 
-class Handler(http.server.SimpleHTTPRequestHandler):
-    def __init__(self, *a, **kw):
-        super().__init__(*a, directory=str(ROOT), **kw)
+# Minted per process and never written down. Any /api/ call has to echo it in
+# a header, and a custom header is precisely what a cross-origin caller cannot
+# attach without a preflight - which nothing here answers.
+#
+# That header is the whole fix for the finding that any website the owner
+# visited could rewrite companies.json. CORS was never the protection people
+# assume: a POST with Content-Type text/plain is a SIMPLE request, so the
+# browser sends it with no preflight at all and the write lands whether or not
+# the reply can be read. Blocking preflights would have changed nothing. A
+# secret the attacker cannot guess does.
+TOKEN = secrets.token_urlsafe(32)
+TOKEN_HEADER = "X-Admin-Token"
+
+ADMIN_HTML = ROOT / "admin.html"
+CAPTURE_JS = pathlib.Path(__file__).resolve().parent / "capture.js"
+
+# Attached to admin.html on the way out rather than written into it, so the
+# token lives for one process and never sits in a file - and so the page needs
+# no change to cooperate.
+TOKEN_SHIM = """<script>
+/* Added by scripts/admin.py while serving this page. Every /api/ call needs a
+   header a cross-origin caller cannot attach; this attaches it, so the page's
+   own fetch() calls stay exactly as they were. */
+(function () {
+  var T = "__TOKEN__", H = "__HEADER__", F = window.fetch;
+  window.fetch = function (input, init) {
+    var u = typeof input === "string" ? input : (input && input.url) || "";
+    var mine = false;
+    try {
+      var p = new URL(u, location.href);
+      mine = p.origin === location.origin && p.pathname.indexOf("/api/") === 0;
+    } catch (e) {}
+    if (mine) {
+      init = Object.assign({}, init || {});
+      init.headers = new Headers(
+        init.headers ||
+        (typeof input === "object" && input && input.headers) || {});
+      init.headers.set(H, T);
+    }
+    return F.call(window, input, init);
+  };
+})();
+</script>"""
+
+
+class Handler(http.server.BaseHTTPRequestHandler):
+    """Loopback, and now also same-origin only.
+
+    Not SimpleHTTPRequestHandler any more. That served the whole repository
+    root, so /.git/config, /scripts/admin.py and /data/companies.json all
+    answered 200 to anything that asked. ../ traversal was blocked correctly
+    the whole time - the directory itself was the exposure - and the fix is to
+    stop having a directory. Three routes are served, listed below, and
+    everything else is 404 by construction rather than by check.
+    """
 
     def log_message(self, fmt, *args):        # keep the console readable
         if "/api/" in (self.path or ""):
             sys.stderr.write(f"  {self.command} {self.path}\n")
 
-    def _cors(self):
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
-        self.send_header("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
-        # Chrome's Private Network Access blocks a public page from reaching a
-        # loopback server unless the server opts in. Without this the capture
-        # bookmarklet fails with a bare "Failed to fetch" on every https site.
-        self.send_header("Access-Control-Allow-Private-Network", "true")
+    # ------------------------------------------------------------ guards
 
-    def do_OPTIONS(self):
-        self.send_response(204)
-        self._cors()
-        self.send_header("Content-Length", "0")
-        self.end_headers()
+    def _local_host(self) -> bool:
+        """Is this request addressed to us by name, or only routed to us.
 
-    def _json(self, payload, code=200):
-        body = json.dumps(payload).encode()
+        A browser fills Host in from the address bar, so this is the one thing
+        that still disagrees with a DNS rebinding attack: evil.example can
+        resolve to 127.0.0.1, at which point every same-origin protection sides
+        with the attacker, but the Host header still reads evil.example.
+        """
+        try:
+            parts = urllib.parse.urlsplit("//" + (self.headers.get("Host") or ""))
+            host, port = parts.hostname, parts.port
+        except ValueError:
+            return False
+        if host not in ("127.0.0.1", "localhost", "::1"):
+            return False
+        return port in (None, self.server.server_address[1])
+
+    def _authed(self) -> bool:
+        return secrets.compare_digest(self.headers.get(TOKEN_HEADER) or "", TOKEN)
+
+    # ------------------------------------------------------------ writing
+
+    def _send(self, body: bytes, ctype: str, code: int = 200):
         self.send_response(code)
-        self._cors()
-        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(body)))
+        # nothing here is cacheable and nothing here should ever be sniffed
+        # into a script tag by another page
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("X-Content-Type-Options", "nosniff")
         self.end_headers()
         self.wfile.write(body)
 
+    def _json(self, payload, code=200):
+        self._send(json.dumps(payload).encode(), "application/json", code)
+
+    # -------------------------------------------------------------- GET
+
     def do_GET(self):
+        if not self._local_host():
+            return self._json({"error": "not served on that host"}, 421)
         path = urllib.parse.urlparse(self.path).path
-        if path == "/":
-            self.path = "/admin.html"
-            return super().do_GET()
+        if path.startswith("/api/"):
+            if path == "/api/token":
+                # The one route that hands the token out, and it needs no
+                # token itself. The admin page is same-origin so it can read
+                # this; the capture extension holds a host permission for this
+                # server so it can too; a page on any other origin can send the
+                # request but cannot read the reply, because no response here
+                # carries a CORS header any more.
+                return self._json({"token": TOKEN, "header": TOKEN_HEADER})
+            if not self._authed():
+                return self._json({"error": "missing or wrong admin token"}, 403)
+            return self._api_get(path)
+        if path in ("/", "/admin.html"):
+            return self._admin_page()
+        if path == "/capture":
+            return self._capture_page()
+        if path == "/capture.js":
+            return self._send(CAPTURE_JS.read_bytes(), "application/javascript")
+        return self._json({"error": "not found"}, 404)
+
+    def _api_get(self, path: str):
         if path == "/api/triage":
             companies, board = read("companies.json", []), read("board.json", {})
             return self._json(triage(companies, board))
@@ -1594,16 +1878,6 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 return self._json({"error": "no such queue"}, 404)
             companies, board = read("companies.json", []), read("board.json", {})
             return self._json({"items": QUEUES[name](companies, board)[:400]})
-        if path == "/capture":
-            return self._capture_page()
-        if path == "/capture.js":
-            js = (pathlib.Path(__file__).parent / "capture.js").read_bytes()
-            self.send_response(200)
-            self._cors()
-            self.send_header("Content-Type", "application/javascript")
-            self.send_header("Content-Length", str(len(js)))
-            self.end_headers()
-            return self.wfile.write(js)
         if path == "/api/sort/companies":
             qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
             return self._json(sort_companies((qs.get("sector") or [""])[0]))
@@ -1613,33 +1887,59 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return self._json(read("schema.json", {}))
         if path == "/api/families":
             return self._json(roles.LABEL)
-        return super().do_GET()
+        return self._json({"error": "not found"}, 404)
+
+    def _admin_page(self):
+        try:
+            html = ADMIN_HTML.read_text()
+        except OSError:
+            return self._json({"error": "admin.html is missing"}, 404)
+        shim = TOKEN_SHIM.replace("__TOKEN__", TOKEN) \
+                         .replace("__HEADER__", TOKEN_HEADER)
+        # After the charset declaration, which a browser only honours in the
+        # first 1024 bytes of the document - a kilobyte of script ahead of it
+        # would push it out of range. Still inside <head> and still well ahead
+        # of the page's own script, which is all this needs to be.
+        m = re.search(r"<meta[^>]+charset[^>]*>", html, re.I)
+        if m:
+            html = html[:m.end()] + shim + html[m.end():]
+        elif "<head>" in html:
+            html = html.replace("<head>", "<head>" + shim, 1)
+        else:
+            html = shim + html
+        self._send(html.encode(), "text/html; charset=utf-8")
 
     def _capture_page(self):
-        js = (pathlib.Path(__file__).parent / "capture.js").read_text()
-        # A bookmarklet has to be one URI-encoded line. Loading the real file
-        # from the local server instead of inlining it means editing capture.js
-        # takes effect on the next click, with no reinstall.
+        js = CAPTURE_JS.read_text()
         # Self-contained on purpose. Chrome blocks a page on https from loading
         # anything off http://127.0.0.1 - fetch and script tag alike - so a
         # loader bookmarklet would fail on every real careers site. The whole
         # script rides in the URL instead, which is why editing capture.js means
-        # dragging the button again.
+        # dragging the button again. It hands its result over on the clipboard
+        # and never calls this server, which is why nothing here needs a token.
         loader = "javascript:" + urllib.parse.quote(js, safe="")
         html = CAPTURE_PAGE.replace("__LOADER__", loader.replace('"', "&quot;")) \
                            .replace("__LINES__", str(len(js.splitlines()))) \
                            .replace("__SIZE__", f"{len(loader) // 1024} KB")
-        body = html.encode()
-        self.send_response(200)
-        self.send_header("Content-Type", "text/html; charset=utf-8")
-        self.send_header("Content-Length", str(len(body)))
-        self.end_headers()
-        self.wfile.write(body)
+        self._send(html.encode(), "text/html; charset=utf-8")
+
+    # ------------------------------------------------------------- POST
 
     def do_POST(self):
+        if not self._local_host():
+            return self._json({"error": "not served on that host"}, 421)
         path = urllib.parse.urlparse(self.path).path
         if not path.startswith("/api/"):
             return self._json({"error": "not found"}, 404)
+        # A JSON content type is not a permission, but demanding it takes the
+        # request out of the "simple" class the browser will send cross-origin
+        # without asking first. The token is the actual guard; this makes the
+        # attempt fail one step earlier.
+        ctype = (self.headers.get("Content-Type") or "").split(";")[0].strip()
+        if ctype != "application/json":
+            return self._json({"error": "send application/json"}, 415)
+        if not self._authed():
+            return self._json({"error": "missing or wrong admin token"}, 403)
         action = path.rsplit("/", 1)[-1]
         if action not in ACTIONS:
             return self._json({"error": f"unknown action {action}"}, 404)
@@ -1648,8 +1948,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             body = json.loads(self.rfile.read(n) or b"{}")
         except (ValueError, json.JSONDecodeError):
             return self._json({"error": "bad request body"}, 400)
+        if not isinstance(body, dict):
+            return self._json({"error": "bad request body"}, 400)
         try:
-            out = ACTIONS[action](body)
+            # Every action, not only the ones that obviously fetch: an action
+            # that grows a fetch later inherits the guard instead of having to
+            # remember it.
+            with only_public_hosts():
+                out = ACTIONS[action](body)
         except Exception as exc:
             return self._json({"error": f"{type(exc).__name__}: {exc}"}, 500)
         return self._json(out, 400 if out.get("error") else 200)
@@ -1665,7 +1971,10 @@ def main() -> int:
     for k, f in QUEUES.items():
         print(f"  {len(f(companies, board)):>5}  {LABEL[k]}")
     # Loopback only, on purpose. This writes to companies.json with no auth in
-    # front of it, so it must not be reachable from the network.
+    # front of it, so it must not be reachable from the network - and because
+    # the browser can reach loopback even when the network cannot, the /api/
+    # token above is what keeps a page the owner happens to be visiting from
+    # driving it.
     socketserver.TCPServer.allow_reuse_address = True
     with socketserver.TCPServer(("127.0.0.1", a.port), Handler) as srv:
         print(f"\nhttp://127.0.0.1:{a.port}   (loopback only; ctrl-c to stop)")

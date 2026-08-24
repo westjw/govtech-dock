@@ -145,7 +145,16 @@
 const $ = (s, r=document) => r.querySelector(s);
 const el = (t, cls, txt) => { const n = document.createElement(t);
   if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; };
-const esc = s => (s ?? '').toString();
+/* This used to be a no-op that only stringified, which handed every page title,
+   job title and meta description a remote site sent us straight to innerHTML as
+   live markup. Nothing calls it now - every value goes through el() or
+   textContent instead - and it is kept correct for whoever writes the next line
+   that does build markup as a string. The apostrophe is in the class because a
+   value can land inside a single-quoted attribute. Anything built with el() or
+   textContent must NOT be run through this: those escape on their own, and a
+   second pass prints "&amp;" in a sector name that has an ampersand. */
+const esc = s => String(s ?? '').replace(/[&<>"']/g,
+  c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 let META = null, SCHEMA = null, FAMILIES = null, TAB = null, LAST_ITEMS = null;
 
@@ -470,11 +479,66 @@ RENDER.websites = c => {
     if (r.error) return toast(r.error, true);
     verified = r;
     const e = el('div', 'evi');
-    e.innerHTML = `<div><b>Page title:</b> ${esc(r.title) || '<i>none</i>'}</div>`
-      + `<div>${r.parked ? '<span class="bad">Parked or listed for sale</span>'
-                         : '<span class="ok">Not a parked page</span>'} · `
-      + `${r.identifies ? '<span class="ok">page identifies the company</span>'
-                        : '<span class="warn">page does not name this company — your call</span>'}</div>`;
+    /* The title is whatever the pasted site chose to send back, so it is written
+       as text and never as markup: a <title> that was an img tag with an onerror
+       came back byte for byte and ran when this was one innerHTML template. */
+    /* Say what was DONE and what it MEANS, not what the fields are called.
+       "Page title: ..." names a field at somebody; what they need to know is
+       that we went and looked, what the page called itself, and whether that
+       is reason to trust the address. Same facts, told as what happened. */
+    let host = r.url, deep = false;
+    try { const u = new URL(r.url);
+          host = u.hostname.replace(/^www\./, '');
+          deep = u.pathname.replace(/\/$/, '') !== ''; } catch (_) {}
+
+    const tline = el('div');
+    tline.appendChild(document.createTextNode('We opened '));
+    tline.appendChild(el('b', null, host));
+    tline.appendChild(document.createTextNode(' and read it.'));
+    e.appendChild(tline);
+
+    const said = el('div');
+    said.style.marginTop = '4px';
+    if (r.title) {
+      said.appendChild(document.createTextNode('The page calls itself \u201c'));
+      said.appendChild(document.createTextNode(r.title));
+      said.appendChild(document.createTextNode('\u201d.'));
+    } else {
+      said.appendChild(document.createTextNode('The page has no title at all.'));
+    }
+    e.appendChild(said);
+
+    const vline = el('div');
+    vline.style.marginTop = '4px';
+    vline.appendChild(r.parked
+      ? el('span', 'bad', 'This is a holding page \u2014 the domain is parked or '
+                          + 'up for sale, so it is not their site.')
+      : el('span', 'ok', 'A real page, not a parked domain.'));
+    vline.appendChild(document.createTextNode(' '));
+    vline.appendChild(r.identifies
+      ? el('span', 'ok', 'It names this company, so the address is theirs.')
+      : el('span', 'warn', 'It never names this company \u2014 it may be the wrong '
+                           + 'business, or one that renamed. Your call.'));
+    e.appendChild(vline);
+
+    /* A deep path is how an acquisition and a product page both sneak in.
+       aws.amazon.com/govcloud-us/ looks convincing and is neither the company
+       nor the front door the logo and board steps work from. */
+    if (deep) {
+      const d = el('div');
+      d.style.marginTop = '4px';
+      d.appendChild(el('span', 'warn',
+        'This is a page inside the site, not the front door. Saving it is fine, '
+        + 'but the logo and job-board steps work from the homepage \u2014 '
+        + host + ' may be the better address.'));
+      e.appendChild(d);
+    }
+
+    const nxt = el('div', 'kv');
+    nxt.style.marginTop = '6px';
+    nxt.textContent = 'Save writes this address to the card, fetches their logo, '
+                    + 'and looks for a job board. Nothing else changes.';
+    e.appendChild(nxt);
     n.appendChild(e);
     save.disabled = r.parked;
     /* The page just told us what the company calls itself. When that differs
@@ -506,8 +570,9 @@ RENDER.websites = c => {
     if (r.error) return toast(r.error, true);
     toast(r.message);
     const won = el('div', 'kv');
-    won.innerHTML = (r.logo ? '<span class="chip ok">logo</span>' : '')
-      + (r.board ? `<span class="chip ok">board: ${esc(r.board)}</span>` : '');
+    if (r.logo) won.appendChild(el('span', 'chip ok', 'logo'));
+    // the board ref was just read off the company's own site
+    if (r.board) won.appendChild(el('span', 'chip ok', 'board: ' + r.board));
     n.appendChild(won);
     setTimeout(() => { n.remove(); refreshCounts(); }, r.logo || r.board ? 1400 : 300);
   };
@@ -576,16 +641,32 @@ RENDER.boards = c => {
     n.querySelectorAll('.evi').forEach(e => e.remove());
     if (r.error) return toast(r.error, true);
     found = r;
-    const slug = r.slug_ok === null ? '<span class="chip">slug not checked</span>'
-      : r.slug_ok ? '<span class="ok">slug matches the company</span>'
-      : '<span class="bad">slug does not match — likely a parent or another company</span>';
+    const slug = r.slug_ok === null ? el('span', 'chip', 'slug not checked')
+      : r.slug_ok ? el('span', 'ok', 'slug matches the company')
+      : el('span', 'bad', 'slug does not match — likely a parent or another company');
     const e = el('div', 'evi');
-    e.innerHTML = `<div><b>${esc(r.ats.type)}</b> <code>${esc(r.ats.ref)}</code></div>`
-      + `<div>${slug} · ${r.jobs} title${r.jobs === 1 ? '' : 's'} read</div>`
-      + (r.titles && r.titles.length
-          ? `<div style="margin-top:6px;color:var(--dim)">${r.titles.map(esc).join(' · ')}</div>`
-          : '')
-      + (r.note ? `<div style="margin-top:6px;color:var(--faint)">${esc(r.note)}</div>` : '');
+    /* Every field here came out of the careers page that was just fetched - the
+       ats ref, the note, and each job title - so all of it is built as nodes. A
+       posting called "<img onerror=...>" is then a posting with a silly name. */
+    const idline = el('div');
+    idline.appendChild(el('b', null, r.ats.type));
+    idline.appendChild(document.createTextNode(' '));
+    idline.appendChild(el('code', null, r.ats.ref));
+    e.appendChild(idline);
+    const sline = el('div');
+    sline.append(slug, document.createTextNode(
+      ` · ${r.jobs} title${r.jobs === 1 ? '' : 's'} read`));
+    e.appendChild(sline);
+    if (r.titles && r.titles.length) {
+      const tl = el('div', null, r.titles.map(t => t || '').join(' · '));
+      tl.style.cssText = 'margin-top:6px;color:var(--dim)';
+      e.appendChild(tl);
+    }
+    if (r.note) {
+      const nt = el('div', null, r.note);
+      nt.style.cssText = 'margin-top:6px;color:var(--faint)';
+      e.appendChild(nt);
+    }
     n.appendChild(e);
     if (r.empty_scan) {
       const warn = el('div', 'kv warn');
@@ -609,7 +690,46 @@ RENDER.boards = c => {
     if (r.error) return toast(r.error, true);
     toast(r.message); n.remove(); refreshCounts();
   };
-  row.append(inp, check, save, dismissBtn('boards', c.id, 'No public board'));
+  /* The third outcome. "Paste an ATS" and "no public board" recorded a company
+     advertising every opening on LinkedIn exactly like one that hires by word
+     of mouth - opposite facts, so the card ended up implying nobody was hiring
+     at a company that was advertising openly. */
+  const elsewhere = el('button', 'btn', 'Posts elsewhere');
+  elsewhere.onclick = () => {
+    const open = row.querySelector('.pa');
+    if (open) { open.remove(); return; }
+    const pa = el('div', 'pa');
+    pa.style.cssText = 'flex-basis:100%;display:flex;gap:6px;margin-top:8px;flex-wrap:wrap';
+    const sel = el('select', 'sel');
+    [['linkedin', 'LinkedIn'], ['indeed', 'Indeed'], ['glassdoor', 'Glassdoor'],
+     ['ziprecruiter', 'ZipRecruiter'], ['builtin', 'Built In'],
+     ['govportal', 'a government jobs portal'], ['recruiter', 'an outside recruiter'],
+     ['email', 'by email only'], ['other', 'somewhere else']]
+      .forEach(([v, t]) => { const o = el('option', null, t); o.value = v; sel.appendChild(o); });
+    const link = el('input', 'in');
+    link.placeholder = 'link to their listings (the jobs page, not the profile)';
+    link.style.flex = '1';
+    const go = el('button', 'btn primary', 'Record');
+    const msg = el('div', 'kv');
+    msg.style.cssText = 'flex-basis:100%;margin-top:4px';
+    sel.onchange = () => {
+      link.style.display = ['email', 'recruiter'].includes(sel.value) ? 'none' : '';
+    };
+    go.onclick = async () => {
+      go.disabled = true;
+      const r = await api('/api/posts-at',
+                          {id: c.id, where: sel.value, url: link.value.trim()});
+      go.disabled = false;
+      if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
+      toast(r.message);
+      n.remove();
+    };
+    pa.append(sel, link, go, msg);
+    row.appendChild(pa);
+    link.focus();
+  };
+  row.append(inp, check, save, elsewhere,
+             dismissBtn('boards', c.id, 'Nothing public anywhere'));
   n.appendChild(row);
   return n;
 };
@@ -619,10 +739,22 @@ RENDER.placement = c => {
   n.appendChild(el('h3', null, c.name));
   n.appendChild(el('div', 'kv', c.description || ''));
   const e = el('div', 'evi');
-  e.innerHTML = `<div><b>Filed under:</b> ${esc(c.current.sector)} → ${esc(c.current.category)}</div>`
-    + `<div><b>Description suggests:</b> ${esc(c.suggested.sector)} → ${esc(c.suggested.category)}</div>`
-    + (c.why && c.why.length ? `<div style="margin-top:5px;color:var(--faint)">matched: `
-        + (Array.isArray(c.why) ? c.why.map(esc).join(', ') : esc(c.why)) + '</div>' : '');
+  const filing = (label, sec, cat) => {
+    const d = el('div');
+    d.appendChild(el('b', null, label));
+    d.appendChild(document.createTextNode(` ${sec || ''} → ${cat || ''}`));
+    return d;
+  };
+  e.appendChild(filing('Filed under:', c.current.sector, c.current.category));
+  e.appendChild(filing('Description suggests:',
+                       c.suggested.sector, c.suggested.category));
+  if (c.why && c.why.length) {
+    // the matched words are lifted out of the company's own description
+    const w = el('div', null, 'matched: '
+      + (Array.isArray(c.why) ? c.why.join(', ') : c.why));
+    w.style.cssText = 'margin-top:5px;color:var(--faint)';
+    e.appendChild(w);
+  }
   n.appendChild(e);
   const row = el('div', 'row');
   const secSel = el('select', 'sel'), catSel = el('select', 'sel');
@@ -678,9 +810,12 @@ RENDER.acquisitions = s => {
   n.appendChild(el('h3', null, s.name || s.id));
   n.appendChild(el('div', 'kv', s.note || s.why || ''));
   const e = el('div', 'evi');
-  e.innerHTML = `<code>${esc(s.type || s.ats)}:${esc(s.ref || s.slug)}</code> reads, `
+  // the ats ref is a slug taken off a careers page, not something we minted
+  e.appendChild(el('code', null,
+    `${s.type || s.ats || ''}:${s.ref || s.slug || ''}`));
+  e.appendChild(document.createTextNode(' reads, '
     + 'but the slug does not match this company. Confirm only if you know this is the '
-    + 'same product line — never point a company at its parent’s board.';
+    + 'same product line — never point a company at its parent’s board.'));
   n.appendChild(e);
   const row = el('div', 'row');
   const yes = el('button', 'act go', 'Confirm — wire it up');
@@ -702,7 +837,7 @@ RENDER.miscategorized = c => {
   n.appendChild(el('h3', null, c.name));
   const kv = el('div', 'kv');
   if (c.open_roles) kv.appendChild(el('span', 'chip', c.open_roles + ' open'));
-  kv.appendChild(el('span', 'chip', `now: ${esc(c.sector)} / ${esc(c.category)}`));
+  kv.appendChild(el('span', 'chip', `now: ${c.sector || ''} / ${c.category || ''}`));
   n.appendChild(kv);
   if (c.description) n.appendChild(el('div', 'kv', c.description));
   if (c.website) {
@@ -852,7 +987,7 @@ RENDER.scope = p => {
   n.appendChild(el('h3', null, p.title));
   const kv = el('div', 'kv');
   kv.append(el('span', 'chip', p.company),
-            el('span', 'chip', `${esc(p.sector || '')} / ${esc(p.category || '')}`));
+            el('span', 'chip', `${p.sector || ''} / ${p.category || ''}`));
   if (p.quota) kv.appendChild(el('span', 'chip', 'carries a number'));
   if (p.location) kv.appendChild(document.createTextNode(p.location));
   n.appendChild(kv);
@@ -937,15 +1072,30 @@ RENDER.submissions = s => {
       if (r.error) return toast(r.error, true);
       fields = r;
       const e = el('div', 'evi');
-      e.innerHTML = `<div><b>${esc(r.name)}</b></div>`
-        + `<div style="color:var(--dim)">${esc(r.description || '')}</div>`
-        + `<div style="margin-top:6px">reads as <b>${esc(r.sector || '—')}</b> / `
-        + `${esc(r.category || '—')} · confidence `
-        + `<span class="${r.confidence === 'high' ? 'ok' : 'warn'}">`
-        + `${esc(r.confidence)}</span></div>`
-        + (r.confidence !== 'high'
-            ? '<div class="kv warn">Not confident. Place this one yourself rather '
-              + 'than letting one incidental keyword decide.</div>' : '');
+      /* The most hostile strings this admin ever holds: name and description are
+         og:site_name and the meta description off a URL a stranger submitted,
+         and the extractor html-unescapes them on the way back, so a quote-free
+         payload arrives intact. One "Read the page" click was the whole attack
+         when this was innerHTML, so none of it goes near innerHTML now. */
+      const nameLine = el('div');
+      nameLine.appendChild(el('b', null, r.name));
+      e.appendChild(nameLine);
+      const dline = el('div', null, r.description || '');
+      dline.style.cssText = 'color:var(--dim)';
+      e.appendChild(dline);
+      const reads = el('div');
+      reads.style.cssText = 'margin-top:6px';
+      reads.appendChild(document.createTextNode('reads as '));
+      reads.appendChild(el('b', null, r.sector || '—'));
+      reads.appendChild(document.createTextNode(
+        ` / ${r.category || '—'} · confidence `));
+      reads.appendChild(el('span', r.confidence === 'high' ? 'ok' : 'warn',
+                           r.confidence || ''));
+      e.appendChild(reads);
+      if (r.confidence !== 'high')
+        e.appendChild(el('div', 'kv warn',
+          'Not confident. Place this one yourself rather '
+          + 'than letting one incidental keyword decide.'));
       n.insertBefore(e, row);
       if (r.sector) { secSel.value = r.sector; fillCats(); }
       if (r.category) catSel.value = r.category;
@@ -1043,11 +1193,20 @@ async function showCapture() {
     }
     const jobs = parsed.jobs || [];
     const e = el('div', 'evi');
-    e.innerHTML = `<div><b>${jobs.length} posting${jobs.length === 1 ? '' : 's'}</b>`
-      + (parsed.page_title ? ' from ' + esc(parsed.page_title) : '') + '</div>'
-      + '<div style="margin-top:6px;color:var(--dim)">'
-      + jobs.slice(0, 8).map(j => esc(j.title)).join(' · ')
-      + (jobs.length > 8 ? ` … and ${jobs.length - 8} more` : '') + '</div>';
+    /* The paste is a careers page quoting itself: the bookmarklet ran on a site
+       we do not control, so the page title and every job title in it are remote
+       strings that happen to have travelled via the clipboard. */
+    const head = el('div');
+    head.appendChild(el('b', null,
+      `${jobs.length} posting${jobs.length === 1 ? '' : 's'}`));
+    if (parsed.page_title)
+      head.appendChild(document.createTextNode(' from ' + parsed.page_title));
+    e.appendChild(head);
+    const list = el('div', null,
+      jobs.slice(0, 8).map(j => j.title || '').join(' · ')
+      + (jobs.length > 8 ? ` … and ${jobs.length - 8} more` : ''));
+    list.style.cssText = 'margin-top:6px;color:var(--dim)';
+    e.appendChild(list);
     n.insertBefore(e, row);
     go.disabled = !company;
   };
@@ -1064,8 +1223,10 @@ async function showCapture() {
         const d = el('div', null, '');
         d.style.cssText = 'padding:5px 8px;border-radius:6px;cursor:pointer;'
           + 'font-size:12.5px';
-        d.innerHTML = `${esc(c.name)} <span style="color:var(--faint)">`
-          + `${esc(c.sector)}</span>`;
+        d.appendChild(document.createTextNode((c.name || '') + ' '));
+        const sec = el('span', null, c.sector || '');
+        sec.style.cssText = 'color:var(--faint)';
+        d.appendChild(sec);
         d.onmouseenter = () => d.style.background = 'var(--chip)';
         d.onmouseleave = () => d.style.background = '';
         d.onclick = () => {
@@ -1136,10 +1297,13 @@ function showSort() {
   (SORT_MODE === 'companies' ? drawCompanies : drawRoles)(host, bar);
 }
 
-function card(inner, payload) {
+/* Takes nodes rather than a markup string. The cards carry company names, ats
+   refs and job titles that were read off other people's sites, and any one of
+   them spelled as a tag used to become live markup on this board. */
+function card(nodes, payload) {
   const c = el('div', 'cd');
   c.draggable = true;
-  c.innerHTML = inner;
+  nodes.forEach(x => c.appendChild(x));
   c.addEventListener('dragstart', e => {
     e.dataTransfer.setData('text/plain', JSON.stringify(payload));
     e.dataTransfer.effectAllowed = 'move';
@@ -1205,11 +1369,13 @@ async function drawCompanies(host, bar) {
   host.appendChild(rail);
 
   const make = c => {
-    const sug = c.suggested && c.suggested.sector !== d.sector
-      ? `<div class="sug">looks like ${esc(c.suggested.sector)}</div>` : '';
-    const cd = card(`<div>${esc(c.name)}</div><div class="m">`
-      + (c.postings ? `${c.postings} posting${c.postings === 1 ? '' : 's'} · ` : '')
-      + `${esc(c.ats || 'no board')}</div>` + sug, {id: c.id, name: c.name});
+    const rows = [el('div', null, c.name),
+      el('div', 'm',
+        (c.postings ? `${c.postings} posting${c.postings === 1 ? '' : 's'} · ` : '')
+        + (c.ats || 'no board'))];
+    if (c.suggested && c.suggested.sector !== d.sector)
+      rows.push(el('div', 'sug', 'looks like ' + c.suggested.sector));
+    const cd = card(rows, {id: c.id, name: c.name});
     /* Click for the blurb: sorting a company you cannot remember is a
        guess, and a guess filed with confidence is worse than a queue.
        Everything shown is on file already - nothing is fetched. */
@@ -1263,8 +1429,9 @@ async function drawRoles(host, bar) {
   const h = el('h4', null, 'Unclassified ');
   h.appendChild(el('span', 'n', String(d.titles.length)));
   src.appendChild(h);
-  const make = t => card(`<div>${esc(t.title)}</div><div class="m">${esc(t.company)}`
-    + (t.count > 1 ? ` · ${t.count} postings` : '') + '</div>',
+  const make = t => card([el('div', null, t.title),
+    el('div', 'm', (t.company || '')
+      + (t.count > 1 ? ` · ${t.count} postings` : ''))],
     {title: t.title});
   fill(src, 'roles', d.titles, make);
   host.appendChild(src);

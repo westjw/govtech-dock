@@ -62,6 +62,19 @@
   .clk{cursor:pointer}
   .chip{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--chip);
     color:var(--dim);white-space:nowrap;display:inline-block}
+  /* What is currently filtering the list, and how to stop it. Same chip
+     vocabulary as everywhere else, one shade quieter than the result count,
+     because this is chrome that should disappear the moment it is empty. */
+  .fchips{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:10px 0 2px}
+  .fchips:empty{display:none}
+  .fchip{display:inline-flex;align-items:center;gap:2px;font-size:11px;
+    border-radius:20px;background:var(--chip);color:var(--dim);padding-left:10px}
+  .fchip button{font:inherit;font-size:14px;line-height:1;background:none;border:0;
+    color:var(--faint);cursor:pointer;padding:0 8px;height:24px;border-radius:0 20px 20px 0}
+  .fchip button:hover{color:var(--bad)}
+  .fclear{font:inherit;font-size:11px;background:none;border:0;color:var(--dim);
+    cursor:pointer;text-decoration:underline;text-underline-offset:2px;padding:4px 2px}
+  .fclear:hover{color:var(--ink)}
   .ok{color:var(--accent)} .warn{color:var(--warn)} .bad{color:var(--bad)}
   .num{text-align:right;font-variant-numeric:tabular-nums}
   .kv{color:var(--dim);font-size:12.5px;margin:3px 0 0}
@@ -191,7 +204,6 @@
 
      Done in CSS rather than a second render path, so there is one source of
      truth for what a row contains. */
-  .fbar{display:none}
   @media (max-width:768px){
     header{padding:16px 14px 0}
     main{padding:0 14px 48px}
@@ -205,15 +217,16 @@
     .addbtn{margin-left:0;text-align:center}
     .panel{padding:14px;border-radius:0 10px 10px 10px}
 
-    /* the filter row is ten selects; on a phone it hides behind a toggle */
-    .fbar{display:flex;gap:7px;align-items:center;margin-bottom:11px}
-    .fbar button{font:inherit;font-size:13px;padding:9px 13px;border:1px solid var(--line);
-      border-radius:7px;background:var(--bg);color:var(--ink);cursor:pointer;min-height:40px}
+    /* the filter row is ten selects; on a phone it hides behind the More
+       filters pill, which adds .open - see setBarOpen() */
     .bar{flex-direction:column;align-items:stretch;gap:7px}
     .bar:not(.open) select{display:none}
     .bar input[type=search]{min-width:0;width:100%;padding:10px 11px;min-height:40px}
     .bar select{width:100%;padding:10px 11px;min-height:40px}
     .count{margin-left:0;order:99}
+    .fchip{font-size:12px}
+    .fchip button{height:32px;padding:0 11px;font-size:15px}
+    .fclear{font-size:12px;padding:8px 4px}
 
     .wrap{overflow-x:visible}
     table,thead,tbody,tr,td{display:block;width:auto}
@@ -341,13 +354,34 @@ async function sendAdd(){
   msg.innerHTML=(j&&j.error&&j.error!=="not_configured"
       ? esc(j.error)+" "
       : "The form is not wired up on this deployment yet. ")
-    +`<a href="${link}" target="_blank" rel="noopener">Submit it on GitHub instead &rarr;</a>`;
+    +`<a href="${esc(safeUrl(link)||document.getElementById("addco").href)}" target="_blank"
+        rel="noopener">Submit it on GitHub instead &rarr;</a>`;
 }
 </script>
 
 <script>
 const $=(s,r=document)=>r.querySelector(s);
-const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+/* ' and \ are in here even though nothing below puts data inside a JS string
+   literal any more. They used to be missing, and the gap was not obvious:
+   escaping " stops an attribute breakout and does nothing about a string
+   breakout, so `onclick="f('${esc(x)}')"` looked escaped and was not. Titles
+   come verbatim from company job boards, and the board already carries ids with
+   an apostrophe ("Don't see what you're looking for?") and with a backslash.
+   The renderers are the real fix; this is so a future caller does not inherit
+   the hole. */
+const esc=s=>String(s??"").replace(/[&<>"'\\]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
+  '"':"&quot;","'":"&#39;","\\":"&#92;"}[c]));
+/* A url out of an ATS is a url out of a stranger. http(s) and nothing else:
+   "javascript:..." in an href runs on this origin the moment somebody clicks
+   the posting, and no amount of entity-escaping stops it because the scheme is
+   the payload. An unusable url is dropped rather than guessed at. */
+function safeUrl(u){
+  const s=String(u??"").trim();
+  if(!s)return "";
+  try{const p=new URL(s,location.href);
+      return (p.protocol==="http:"||p.protocol==="https:")?p.href:"";}
+  catch{return ""}
+}
 let D=null, tab="jobs", PENDING_URL=null, ROLE=null;
 const TABS=[["jobs","Job board"],["companies","Companies"],["saved","Saved"],["intel","Market intel"]];
 const FAM={gtm:"GTM",cs:"Customer Success",ops:"Ops / RevOps",engineering:"Engineering",
@@ -442,23 +476,6 @@ const ATSNOTE={hard:"Ranking engine likely. Seed exact keywords once.",
   soft:"Searchable board, rarely auto-rejecting.",
   none:"A person opens this list. Keyword tuning buys little."};
 
-function filters(id,extra){return `<div class="fbar">
-    <button type="button" onclick="toggleFilters(this)" aria-expanded="false">Filters</button>
-    <span class="count" id="${id}-nm"></span>
-  </div>
-  <div class="bar" id="${id}-bar">
-  <input type="search" id="${id}-q" placeholder="Search roles, companies, locations...">
-  ${extra||""}<span class="count" id="${id}-n"></span></div>`;}
-
-/* The phone filter toggle. The desktop bar is always open; .open only means
-   anything inside the max-width:768px block. */
-function toggleFilters(btn){
-  const bar=btn.closest(".fbar").nextElementSibling;
-  const open=bar.classList.toggle("open");
-  btn.setAttribute("aria-expanded",open);
-  btn.textContent=open?"Hide filters":"Filters";
-}
-
 // ------------------------------------------------------------------- job board
 /* Deterministic tile colour from the company name. The design used per-company
    brand colours; we have no logos and no palette on file, so inventing one per
@@ -484,22 +501,43 @@ const TILE=[["var(--chip)","var(--dim)"],["#eef3ef","var(--accent)"],["#f4efe6",
    how their board treats an application, how long this has been up, and what
    else is open there. A seller deciding whether to spend an evening on an
    application can answer "is this worth it" from this page. */
+/* Every role page carries this, including the one that says the role is gone.
+   Without it a stale link was a dead end for the whole session: the message
+   rendered, ROLE stayed set, and jobs() re-rendered the same message on every
+   tab click. Only the address bar got you out. */
+const BACK_HTML=`<p><button id="r-back" style="background:none;border:0;
+  color:var(--dim);cursor:pointer;font:inherit;padding:0">&larr; back to the board</button></p>`;
 function roleView(id){
-  const p=D.postings.find(x=>x.id===id);
-  if(!p){$("#view").innerHTML=`<div class="empty">That role is no longer on the board.
-    It may have been filled, or the company&rsquo;s board stopped listing it.</div>`;return}
+  let p=D.postings.find(x=>x.id===id), older=0;
+  if(!p){
+    /* Posting ids grew a discriminator, so every link shared and every role
+       saved before that change now asks for a PREFIX of the id it wants.
+       Match "<asked>::<anything>" and nothing looser: a bare startsWith would
+       answer a request for "acme::Account Executive" with "acme::Account
+       Executive Assistant", which is a different job at the same company and
+       would be indistinguishable from a correct answer. */
+    const near=D.postings.filter(x=>x.id.startsWith(id+"::"));
+    if(near.length){p=near[0];older=near.length}
+  }
+  if(!p){
+    $("#view").innerHTML=BACK_HTML+`<div class="empty">That role is no longer on the board.
+      It may have been filled, or the company&rsquo;s board stopped listing it.</div>`;
+    wireBack();return;
+  }
   const o=D.organizations.find(x=>x.id===p.company_id)||{};
   const siblings=D.postings.filter(x=>x.company_id===p.company_id&&x.id!==p.id);
   const age=when(p.first_seen,D.generated);
   const ats=ATSNOTE[o.ats_ranks]||"";
-  $("#view").innerHTML=`
-    <p><button onclick="ROLE=null;tab='jobs';render()" style="background:none;border:0;
-      color:var(--dim);cursor:pointer;font:inherit;padding:0">&larr; back to the board</button></p>
+  const purl=safeUrl(p.url);
+  $("#view").innerHTML=BACK_HTML+`
+    ${older?`<div class="kv"><span class="chip warn">that link was made before this
+      posting&rsquo;s id changed${older>1?`, and ${older} postings now match it`:""}, so this
+      may not be the exact role you saved</span></div>`:""}
     <div class="cohead">
       ${tileHTML(p.company,p.company_id,"cotile")}
       <div>
         <h2 style="margin:0 0 2px;font-size:21px;letter-spacing:-.015em">${esc(p.title)}</h2>
-        <div class="sub"><a href="#" onclick="ROLE=null;co('${encodeURIComponent(p.company_id)}');return false">${esc(p.company)}</a>
+        <div class="sub"><a href="#" id="r-co">${esc(p.company)}</a>
           &middot; ${esc(p.sector)} / ${esc(p.category)}</div>
       </div>
       <span class="savehost" style="margin-left:auto"></span>
@@ -507,7 +545,7 @@ function roleView(id){
     <div class="kv" style="margin-top:12px">${geoBits(p).map(esc).join(" &middot; ")}
       ${p.seniority?` &middot; ${esc(p.seniority)}, from the title`:""}
       ${p.quota_carrying?' &middot; <span class="chip ok">carries a number</span>':""}</div>
-    ${p.url?`<p class="colinks"><a class="golink" href="${esc(p.url)}" target="_blank"
+    ${purl?`<p class="colinks"><a class="golink" href="${esc(purl)}" target="_blank"
       rel="noopener">Open the posting &rarr;</a>
       <span class="chip">${age.txt==="new today"?"first seen today":"on the board "+esc(age.txt)}</span>
       ${p.source==="manual"?'<span class="chip">found by hand</span>':""}</p>`:""}
@@ -526,6 +564,9 @@ function roleView(id){
 
     ${siblings.length?`<h3 style="font-size:13px;margin-top:22px">Also open at ${esc(p.company)}</h3>
       <div class="list" id="r-sibs"></div>`:""}`;
+  wireBack();
+  const link=$("#r-co");
+  if(link)link.onclick=e=>{e.preventDefault();ROLE=null;co(p.company_id)};
   const host=$(".savehost"); if(host)host.replaceWith(saveButton(p));
   if(siblings.length){
     const h=$("#r-sibs");
@@ -539,14 +580,44 @@ function roleView(id){
         <span style="color:var(--line);font-size:15px">&rsaquo;</span>`;
       h.appendChild(row);
     });
-    if(siblings.length>12)
-      h.innerHTML+=`<div class="more" onclick="ROLE=null;co('${encodeURIComponent(p.company_id)}')">
-        See all ${siblings.length} at this company</div>`;
+    if(siblings.length>12){
+      const more=document.createElement("div");
+      more.className="more";
+      more.textContent=`See all ${siblings.length} at this company`;
+      more.onclick=()=>{ROLE=null;co(p.company_id)};
+      h.appendChild(more);
+    }
   }
 }
-function openRole(id){ROLE=id;tab="jobs";render();
-  history.replaceState(null,"",location.pathname+"?role="+encodeURIComponent(id));
-  window.scrollTo(0,0)}
+function wireBack(){const b=$("#r-back"); if(b)b.onclick=backToBoard;}
+/* Where the board was when this role was opened. Held here rather than folded
+   into the role url on purpose: a role link somebody shares should not carry a
+   stranger's search terms and filters with it. The cost is that "back to the
+   board" after opening a shared role link lands on the plain board - which is
+   correct, because there was no board state before it. */
+let LAST_BOARD_QS="", BOARD_SCROLL=0;
+function openRole(id){
+  LAST_BOARD_QS=ROLE?LAST_BOARD_QS:location.search;
+  if(!ROLE)BOARD_SCROLL=window.scrollY;
+  ROLE=id;tab="jobs";
+  // pushState, not replaceState: the app used to own a single history entry and
+  // overwrite it, so Back left the page or landed on whatever that one entry had
+  // most recently been rewritten to.
+  history.pushState({role:id,qs:LAST_BOARD_QS},"",
+    location.pathname+"?role="+encodeURIComponent(id));
+  render();
+  window.scrollTo(0,0);
+}
+function backToBoard(){
+  ROLE=null;
+  history.pushState({qs:LAST_BOARD_QS},"",location.pathname+LAST_BOARD_QS);
+  PENDING_URL=readUrl();
+  // the tab comes back from the url too, so a role opened out of Saved returns
+  // to Saved rather than dumping you on the job board
+  tab=(PENDING_URL&&PENDING_URL.get("tab"))||"jobs";
+  render();
+  window.scrollTo(0,BOARD_SCROLL);
+}
 function whereSummary(mine){
   const terr={}, off={}; let remote=0, silent=0;
   mine.forEach(p=>{
@@ -569,8 +640,16 @@ function whereSummary(mine){
 function tileHTML(name, cid, cls){
   const [bg,fg]=tile(name);
   const src=(D.logos&&D.logos[cid])?`assets/logos/${cid}.${D.logos[cid]}`:null;
+  /* Deliberately NOT loading="lazy". These tiles are absolutely positioned
+     inside the initials square, and Chrome never fires the lazy load for them:
+     measured on the live site, 62 of 62 logo images sat at complete=false with
+     naturalWidth 0 even after scrolling the whole page, so every visitor saw
+     initials and never a logo. Setting one to eager loaded it instantly at
+     256px, which is what identified the cause.
+     Laziness was buying almost nothing anyway - about 60 render per page view,
+     each a 42px square from our own origin over one connection. */
   return `<div class="${cls}" style="background:${bg};color:${fg}">${esc(initials(name))}`
-    + (src?`<img src="${esc(src)}" alt="" loading="lazy" decoding="async"
+    + (src?`<img src="${esc(src)}" alt="" decoding="async"
         onerror="this.remove()">`:"")
     + `</div>`;
 }
@@ -675,13 +754,11 @@ function jobs(){
   ${fresh.length?`
   <div class="sechead"><h3>New this run</h3>
     <div class="n">${freshQ.length} quota-carrying of ${fresh.length} new postings</div></div>
-  <div class="shelf">
-    ${feature?featureCard(feature,debut.length>0):""}
-    ${others.map(p=>newCard(p)).join("")}
-  </div>`:""}
+  <div class="shelf" id="j-shelf"></div>`:""}
 
   <div class="sechead"><h3 id="j-h">All quota-carrying roles</h3>
     <div class="n" id="j-n"></div></div>
+  <div class="fchips" id="j-chips"></div>
   <div class="list" id="j-list"></div>
   <p class="foot">Level is inferred from the title: the years a role actually asks for live in the
     description, which is not fetched. &ldquo;Not stated&rdquo; means the posting did not say where,
@@ -691,16 +768,35 @@ function jobs(){
 
   ["j-q","j-fam","j-sec","j-us","j-state","j-region","j-office","j-mode","j-sen","j-src"]
     .forEach(i=>{const el=$("#"+i);if(el)el.addEventListener("input",drawJobs);});
+  const shelf=$("#j-shelf");
+  if(shelf){
+    if(feature)shelf.appendChild(featureCard(feature,debut.length>0));
+    others.forEach(p=>shelf.appendChild(newCard(p)));
+  }
   applyUrl(PENDING_URL); PENDING_URL=null;
   drawJobs();
 }
 
+/* These two return elements, not markup, and the url they open lives in a
+   closure. Written as a string, the handler was
+   onclick="window.open('${esc(url)}','_blank')" - and esc() leaves ' alone, so
+   one apostrophe anywhere in a url an ATS handed us closed the string and the
+   rest of it ran as JavaScript on this origin. */
+function openCard(el,p){
+  const u=safeUrl(p.url);
+  if(!u)return el;                 // no url is not a reason to make a dead card clickable
+  el.classList.add("clk");
+  el.onclick=()=>window.open(u,"_blank","noopener");
+  return el;
+}
 function featureCard(p,isDebut){
   const w=when(p.first_seen,D.generated);
-  return `<div class="feature clk" onclick="window.open('${esc(p.url||"#")}','_blank')">
+  const el=document.createElement("div");
+  el.className="feature";
+  el.innerHTML=`
     <span style="align-self:flex-start;font-size:11px;padding:4px 11px;border-radius:20px;
       background:rgba(47,111,79,.14);color:var(--inv-accent);font-weight:600">
-      ${isDebut?"first seller req we have seen here":"new "+w.txt}</span>
+      ${isDebut?"first seller req we have seen here":"new "+esc(w.txt)}</span>
     <div style="font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.2;
       margin-top:44px;text-wrap:balance">${esc(p.title)}</div>
     <div style="font-size:13.5px;color:var(--inv-dim);margin-top:6px">${esc(p.company)} &middot;
@@ -709,8 +805,8 @@ function featureCard(p,isDebut){
       ? "No posting from this company was on the board before this run. Nobody has worked this door yet."
       : "New on the board this run."}</div>
     <div style="display:flex;align-items:center;gap:8px;margin-top:16px;font-size:13px;
-      font-weight:600;color:var(--inv-accent)">Open the posting <span>&rarr;</span></div>
-  </div>`;
+      font-weight:600;color:var(--inv-accent)">Open the posting <span>&rarr;</span></div>`;
+  return openCard(el,p);
 }
 
 /* Territory (what the role covers), office (where the job sits) and work
@@ -735,16 +831,16 @@ function geoBits(p){
 }
 
 function newCard(p){
-  const [bg,fg]=tile(p.company);
-  return `<div class="ncard clk" onclick="window.open('${esc(p.url||"#")}','_blank')">
-    ${tileHTML(p.company,p.company_id,"mono-tile")}
+  const el=document.createElement("div");
+  el.className="ncard";
+  el.innerHTML=`${tileHTML(p.company,p.company_id,"mono-tile")}
     <div style="font-size:17px;font-weight:650;letter-spacing:-.015em;margin-top:16px">
       ${esc(p.title)}</div>
     <div style="font-size:13px;color:var(--dim);margin-top:3px">${esc(p.company)} &middot;
       ${esc(p.category)}</div>
     <div style="font-size:12.5px;color:var(--faint);margin-top:auto;padding-top:18px">
-      ${geoBits(p).map(esc).join(" &middot; ")}</div>
-  </div>`;
+      ${geoBits(p).map(esc).join(" &middot; ")}</div>`;
+  return openCard(el,p);
 }
 
 /* filter chrome ------------------------------------------------------------ */
@@ -768,12 +864,19 @@ function famPill(){
   if($("#j-fam")) $("#j-fam").value=v;
   SHOWN=60; drawJobs();
 }
-function toggleMore(btn){
-  const bar=$("#j-bar");
-  const open=bar.style.display==="none";
+/* Two things have to move, and only one of them used to.
+   Below 768px `.bar:not(.open) select{display:none}` hides every select in the
+   bar, so flipping the container's own display opened an empty box on a phone:
+   aria-expanded said true, nine filters stayed invisible, and three of the
+   board's twelve filters were all a phone had. The class is what reveals them;
+   the display flip is what the desktop layout needs. */
+function setBarOpen(bar,btn,open){
+  if(!bar)return;
   bar.style.display=open?"flex":"none";
-  btn.setAttribute("aria-expanded",open);
+  bar.classList.toggle("open",open);
+  if(btn)btn.setAttribute("aria-expanded",open);
 }
+function toggleMore(btn){setBarOpen($("#j-bar"),btn,$("#j-bar").style.display==="none")}
 function showMore(){SHOWN+=60;drawJobs();}
 
 /* An empty result should say why it is empty. Picking "Engineering" while
@@ -785,8 +888,7 @@ function emptyJobs(quotaOnly,fam,where){
   if(quotaOnly&&fam&&fam!=="gtm"&&others)
     return `<div class="empty">No <strong>${esc(FAM[fam]||fam)}</strong> roles carry a
       quota, which is expected: quota-carrying means a sales number.<br>
-      <span style="color:var(--accent);cursor:pointer;font-weight:600"
-        onclick="toggleQuota(document.getElementById('j-quota-pill'))">
+      <span id="j-relax" style="color:var(--accent);cursor:pointer;font-weight:600">
         Show all ${others.toLocaleString()} ${esc(FAM[fam]||fam)} roles instead &rarr;</span></div>`;
   if(where&&others)
     return `<div class="empty">Nothing matches that work mode. ${others.toLocaleString()}
@@ -801,6 +903,16 @@ function emptyJobs(quotaOnly,fam,where){
 const URLKEYS={q:"j-q",fam:"j-fam",sec:"j-sec",st:"j-state",off:"j-office",
   reg:"j-region",sen:"j-sen",us:"j-us",mode:"j-mode",src:"j-src"};
 let URL_LOADING=false;
+/* Leading-edge debounce over history. Every filter change used to replaceState,
+   which meant the app owned exactly ONE history entry and kept overwriting it:
+   Back left the site, or landed on whatever that single entry had last been
+   rewritten to - observed as an unrelated role from an earlier page load, with
+   the search gone.
+   So the FIRST change after things have settled pushes a new entry, and every
+   change within the next 600ms rewrites that same entry. A typed query is one
+   entry rather than one per keystroke; picking a filter is its own entry, so
+   Back undoes it. */
+let BURST_T=null;
 function writeUrl(){
   if(URL_LOADING||ROLE)return;
   const u=new URLSearchParams();
@@ -814,8 +926,11 @@ function writeUrl(){
   if(where&&where.dataset.v)u.set("where",where.dataset.v);
   const qs=u.toString();
   const next=location.pathname+(qs?"?"+qs:"");
-  if(next!==location.pathname+location.search)
-    history.replaceState(null,"",next);
+  if(next===location.pathname+location.search)return;
+  if(BURST_T===null)history.pushState({qs:qs?"?"+qs:""},"",next);
+  else history.replaceState({qs:qs?"?"+qs:""},"",next);
+  clearTimeout(BURST_T);
+  BURST_T=setTimeout(()=>{BURST_T=null},600);
 }
 function readUrl(){
   const u=new URLSearchParams(location.search);
@@ -840,10 +955,8 @@ function applyUrl(u){
   }
   // an incoming link with overflow filters set should show them, not hide them
   const extras=["fam","sec","st","off","reg","sen","us","mode","src"];
-  if(extras.some(k=>u.has(k))){
-    const bar=$("#j-bar"), btn=document.querySelector('[onclick*="toggleMore"]');
-    if(bar){bar.style.display="flex"; if(btn)btn.setAttribute("aria-expanded","true");}
-  }
+  if(extras.some(k=>u.has(k)))
+    setBarOpen($("#j-bar"),document.querySelector('[onclick*="toggleMore"]'),true);
   const fp=$("#j-fam-pill"), f=$("#j-fam");
   if(fp&&f)fp.value=f.value;
   URL_LOADING=false;
@@ -987,7 +1100,8 @@ function savedView(){
     const gone=!live.has(p.id);
     const row=document.createElement("div");
     row.className="row clk";
-    row.onclick=()=>{live.has(p.id)?openRole(p.id):(p.url&&window.open(p.url,"_blank"))};
+    const surl=safeUrl(p.url);
+    row.onclick=()=>{live.has(p.id)?openRole(p.id):(surl&&window.open(surl,"_blank","noopener"))};
     row.innerHTML=`${tileHTML(p.company,p.company_id,"tile")}
       <div class="main"><div class="t">${esc(p.title)}</div>
         <div class="m">${esc(p.company)} &middot; ${esc(p.sector||"")}${
@@ -1085,14 +1199,31 @@ function drawJobs(){
   const mv=$("#j-more-v");if(mv)mv.textContent=extra?`${extra} on`:"";
   if(mv)mv.className="v"+(extra?" on":"");
   writeUrl();
+  drawChips();
   $("#j-h").textContent=quotaOnly?"All quota-carrying roles":"All roles";
   $("#j-n").textContent=rows.length.toLocaleString()
     +(relaxed?` \u00b7 showing all roles: ${relaxed} work does not carry a quota`:"");
 
-  $("#j-list").innerHTML=rows.slice(0,SHOWN).map(p=>{
-    const [bg,fg]=tile(p.company),w=when(p.first_seen,D.generated);
-    return `<div class="row clk" onclick="openRole('${esc(p.id).replace(/'/g,"\\'")}')">
-      ${tileHTML(p.company,p.company_id,"tile")}
+  /* Built, not stringified. This row used to carry
+     onclick="openRole('${esc(p.id).replace(/'/g,"\\'")}')", and both halves of
+     that were wrong. The hand-rolled backslash escape is undone by a backslash
+     in the data - a trailing \ eats the escaping \ and the next ' ends the
+     string - and p.id is company_id plus a job title taken verbatim from the
+     company's ATS, refreshed daily with nobody reading the titles. And an id
+     that merely CONTAINS an entity ("...Engagement & Education", which is
+     on the board today) came back through the HTML parser as a different
+     string, so the row looked fine and openRole found nothing.
+     Holding p.id in a closure has neither problem: the value never becomes
+     text, so there is nothing to escape and nothing to decode. */
+  const list=$("#j-list");
+  list.textContent="";
+  if(!rows.length)list.innerHTML=emptyJobs(quotaOnly,f,where);
+  rows.slice(0,SHOWN).forEach(p=>{
+    const w=when(p.first_seen,D.generated);
+    const row=document.createElement("div");
+    row.className="row clk";
+    row.onclick=()=>openRole(p.id);
+    row.innerHTML=`${tileHTML(p.company,p.company_id,"tile")}
       <div class="main">
         <div class="t">${esc(p.title)}</div>
         <div class="m">${esc(p.company)} &middot; ${esc(p.sector)} / ${esc(p.category)}
@@ -1101,17 +1232,76 @@ function drawJobs(){
             p.seniority?" &middot; "+esc(p.seniority)+", from the title":""}${
             p.source==="manual"?" &middot; checked by hand":""}</span></div>
       </div>
-      <div class="when ${w.cls}">${w.txt}</div>
-      <span class="savehost"></span>
-    </div>`;}).join("")
-    ||emptyJobs(quotaOnly,f,where);
-  if(rows.length>SHOWN)
-    $("#j-list").innerHTML+=`<div class="more" onclick="showMore()">Show ${
-      Math.min(60,rows.length-SHOWN)} more of ${(rows.length-SHOWN).toLocaleString()}</div>`;
-  // the bookmark carries a handler, so it is built rather than stringified
-  [...$("#j-list").querySelectorAll(".savehost")].forEach((host,i)=>{
-    const p=rows[i]; if(p)host.replaceWith(saveButton(p));
+      <div class="when ${esc(w.cls)}">${esc(w.txt)}</div>`;
+    // the bookmark carries a handler, so it is built rather than stringified
+    row.appendChild(saveButton(p));
+    list.appendChild(row);
   });
+  if(rows.length>SHOWN){
+    const more=document.createElement("div");
+    more.className="more";
+    more.textContent=`Show ${Math.min(60,rows.length-SHOWN)} more of ${
+      (rows.length-SHOWN).toLocaleString()}`;
+    more.onclick=showMore;
+    list.appendChild(more);
+  }
+  const relax=$("#j-relax");
+  if(relax)relax.onclick=()=>toggleQuota($("#j-quota-pill"));
+}
+
+/* Finding: /?sec=Public%20Safety&sen=senior on a phone cut 607 roles to 51,
+   said "More filters 2 on", and gave a visitor no way to see WHICH two or to
+   turn them off - the page had no clear-filters control at any width. So every
+   filter that is off its default gets a chip here, at both breakpoints.
+   The chip's label is read off the control itself rather than restated from a
+   table, so the two can never drift apart and say different things about the
+   same filter. */
+function chipDefs(){
+  const out=[];
+  const q=$("#j-q");
+  if(q&&q.value.trim())out.push({label:`&ldquo;${esc(q.value.trim())}&rdquo;`,
+    clear:()=>{q.value=""}});
+  Object.entries(URLKEYS).forEach(([k,id])=>{
+    if(id==="j-q")return;
+    const el=$("#"+id);
+    if(!el||!el.value)return;
+    const opt=el.options[el.selectedIndex];
+    out.push({label:esc(opt?opt.textContent.trim():el.value),clear:()=>{
+      el.value="";
+      // the family select and the family pill are one filter in two places
+      if(id==="j-fam"&&$("#j-fam-pill"))$("#j-fam-pill").value="";
+    }});
+  });
+  const pill=$("#j-quota-pill");
+  if(pill&&pill.getAttribute("aria-pressed")!=="true")
+    out.push({label:"Any role type",clear:()=>toggleQuota(pill)});
+  const seg=$("#j-where"), on=seg&&seg.querySelector('[aria-pressed="true"]');
+  if(on&&on.dataset.v)
+    out.push({label:esc(on.textContent.trim()),clear:()=>setWhere(seg.children[0])});
+  return out;
+}
+function drawChips(){
+  const host=$("#j-chips"); if(!host)return;
+  const defs=chipDefs();
+  host.textContent="";
+  if(!defs.length)return;
+  defs.forEach(d=>{
+    const c=document.createElement("span");
+    c.className="fchip";
+    c.innerHTML=`<span>${d.label}</span><button type="button"
+      aria-label="remove this filter">&times;</button>`;
+    // toggleQuota and setWhere redraw on their own; a select does not
+    c.querySelector("button").onclick=()=>{d.clear();SHOWN=60;drawJobs()};
+    host.appendChild(c);
+  });
+  const all=document.createElement("button");
+  all.type="button"; all.className="fclear"; all.textContent="Clear all";
+  all.onclick=()=>{
+    // clear() may itself redraw, so collect first and draw once at the end
+    chipDefs().forEach(d=>d.clear());
+    SHOWN=60;drawJobs();
+  };
+  host.appendChild(all);
 }
 
 // ------------------------------------------------------------------- companies
@@ -1167,11 +1357,7 @@ function toggleHiring(btn){
   v.className="v"+(on?" on":"");
   CSHOWN=60;drawCos();
 }
-function toggleMoreCo(btn){
-  const bar=$("#c-bar"),open=bar.style.display==="none";
-  bar.style.display=open?"flex":"none";
-  btn.setAttribute("aria-expanded",open);
-}
+function toggleMoreCo(btn){setBarOpen($("#c-bar"),btn,$("#c-bar").style.display==="none")}
 function showMoreCo(){CSHOWN+=60;drawCos();}
 
 function drawCos(){
@@ -1198,15 +1384,21 @@ function drawCos(){
   $("#c-h").textContent=hiringOnly?"Hiring now":"Everyone we track";
   $("#c-n").textContent=rows.length.toLocaleString();
 
-  $("#c-list").innerHTML=rows.slice(0,CSHOWN).map(o=>{
-    const [bg,fg]=tile(o.name);
+  const clist=$("#c-list");
+  clist.textContent="";
+  if(!rows.length)clist.innerHTML=`<div class="empty">No companies match.</div>`;
+  rows.slice(0,CSHOWN).forEach(o=>{
     /* The count is the point of this row, so it gets the position and the
        weight. A company with quota seats reads as accent; one that is hiring
        but not selling reads plain; one we cannot read says so instead of
        showing a zero, because a zero here would be a claim we cannot make. */
     const unreadable=o.enumerable===false||o.unreadable;
-    return `<div class="row clk" onclick="co('${encodeURIComponent(o.id)}')">
-      ${tileHTML(o.name,o.id,"tile")}
+    const row=document.createElement("div");
+    row.className="row clk";
+    // same reason as the job row: the id stays a value, so encodeURIComponent
+    // (which leaves ' alone) is not being asked to be an escaping function
+    row.onclick=()=>co(o.id);
+    row.innerHTML=`${tileHTML(o.name,o.id,"tile")}
       <div class="main">
         <div class="t">${esc(o.name)}</div>
         <div class="m">${esc(o.sector)} / ${esc(o.category)}${
@@ -1227,17 +1419,26 @@ function drawCos(){
                   font-variant-numeric:tabular-nums">${o.open_roles}</div>
                 <div style="font-size:11px;color:var(--faint)">open</div></div>`
             :`<div class="when">nothing open</div>`}
-      <span style="color:var(--line);font-size:15px">&rsaquo;</span>
-    </div>`;}).join("")
-    ||`<div class="empty">No companies match.</div>`;
-  if(rows.length>CSHOWN)
-    $("#c-list").innerHTML+=`<div class="more" onclick="showMoreCo()">Show ${
-      Math.min(60,rows.length-CSHOWN)} more of ${(rows.length-CSHOWN).toLocaleString()}</div>`;
+      <span style="color:var(--line);font-size:15px">&rsaquo;</span>`;
+    clist.appendChild(row);
+  });
+  if(rows.length>CSHOWN){
+    const more=document.createElement("div");
+    more.className="more";
+    more.textContent=`Show ${Math.min(60,rows.length-CSHOWN)} more of ${
+      (rows.length-CSHOWN).toLocaleString()}`;
+    more.onclick=showMoreCo;
+    clist.appendChild(more);
+  }
 }
 
 // --------------------------------------------------------------- company card
-function co(encId){
-  const id=decodeURIComponent(encId), o=D.organizations.find(x=>x.id===id);
+/* Takes the id itself. It used to take a percent-encoded one because every
+   caller was stringifying it into an onclick attribute; now that nothing does,
+   an encode/decode round trip is one more thing that can quietly fail to be
+   its own inverse. */
+function co(id){
+  const o=D.organizations.find(x=>x.id===id);
   if(!o) return;
   const mine=D.postings.filter(p=>p.company_id===id);
   const fam=Object.entries(o.families||{}).sort((a,b)=>b[1]-a[1]);
@@ -1265,11 +1466,11 @@ function co(encId){
         <div class="lbl">${esc(ATSNOTE[o.ats_ranks]||"")}</div></div>
     </div>
     <p class="colinks">
-      ${o.website?`<a class="golink" href="${esc(o.website)}" target="_blank" rel="noopener">
+      ${safeUrl(o.website)?`<a class="golink" href="${esc(safeUrl(o.website))}" target="_blank" rel="noopener">
         Visit ${esc(o.website.replace(/^https?:\/\//,"").replace(/\/$/,""))} &rarr;</a>`:""}
       ${(o.also||[]).map(a=>`<span class="chip">also ${esc(a.sector)} / ${esc(a.category)}</span>`).join("")}
     </p>
-    ${o.board_url?`<p><a href="${esc(o.board_url)}" target="_blank" rel="noopener">Open their hiring board &rarr;</a>
+    ${safeUrl(o.board_url)?`<p><a href="${esc(safeUrl(o.board_url))}" target="_blank" rel="noopener">Open their hiring board &rarr;</a>
       ${o.unreadable?` <span class="chip warn">board could not be read: ${esc(o.unreadable)}</span>`:""}
       ${o.enumerable===false?` <span class="chip warn">their board is live but its roles cannot be read automatically, so this list may be incomplete</span>`:""}
       ${o.checked_by_hand?` <span class="chip">checked by hand ${esc(o.checked_by_hand)}</span>`:""}</p>`
@@ -1317,7 +1518,7 @@ function co(encId){
       ${esc(FAM[f]||f)}</div>`).join(""):'<div class="kv">No open roles on file.</div>'}
     <h3 style="font-size:13px;margin-top:20px">Open roles</h3>
     <div class="wrap"><table><thead><tr><th>Role</th><th>Family</th><th>Location</th></tr></thead><tbody>
-      ${mine.map(p=>`<tr><td>${p.url?`<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a>`:esc(p.title)}
+      ${mine.map(p=>`<tr><td>${safeUrl(p.url)?`<a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(p.title)}</a>`:esc(p.title)}
         ${p.quota_carrying?'<span class="chip ok">quota</span>':""}</td>
         <td class="kv">${esc(FAM[p.family]||p.family)}</td>
         <td class="kv">${esc(p.location||"not stated")}</td></tr>`).join("")
@@ -1355,16 +1556,27 @@ function intel(){
       `<div class="kv"><strong>${n}</strong> ${esc(k)}</div>`).join("")}
     <div style="display:flex;gap:34px;flex-wrap:wrap;margin-top:20px">
       <div><h3 style="font-size:13px">Biggest GTM pushes</h3>
-        ${topGtm.filter(o=>o.families?.gtm).map(o=>`<div class="kv clk"
-          onclick="co('${encodeURIComponent(o.id)}')"><strong>${o.families.gtm}</strong> ${esc(o.name)}</div>`).join("")}</div>
+        <div id="i-gtm"></div></div>
       <div><h3 style="font-size:13px">Biggest engineering builds</h3>
-        ${topEng.filter(o=>o.families?.engineering).map(o=>`<div class="kv clk"
-          onclick="co('${encodeURIComponent(o.id)}')"><strong>${o.families.engineering}</strong> ${esc(o.name)}</div>`).join("")}</div>
+        <div id="i-eng"></div></div>
     </div>
     <p class="hint">Hiring composition is the signal. A company hiring mostly engineers is
     building; one hiring mostly sellers is pushing go to market; one hiring mostly delivery
     and support is absorbing customers it already won. ${D.unreadable} boards could not be
     read this run, so those companies show zero openings rather than none existing.</p>`;
+  // built rather than stringified, for the same reason as every other row here
+  const leaders=(hostId,list,key)=>{
+    const host=$("#"+hostId); if(!host)return;
+    list.filter(o=>o.families&&o.families[key]).forEach(o=>{
+      const d=document.createElement("div");
+      d.className="kv clk";
+      d.innerHTML=`<strong>${o.families[key]}</strong> ${esc(o.name)}`;
+      d.onclick=()=>co(o.id);
+      host.appendChild(d);
+    });
+  };
+  leaders("i-gtm",topGtm,"gtm");
+  leaders("i-eng",topEng,"engineering");
 }
 
 const VIEWS={jobs,companies,saved:savedView,intel};
@@ -1375,7 +1587,11 @@ fetch("data/board.json").then(r=>r.json()).then(d=>{
     +`state and local govtech companies · ${d.totals.quota_carrying} quota-carrying · refreshed ${d.generated}`;
   $("#tabs").innerHTML=TABS.map(([t,l])=>`<button data-t="${t}">${l}${t==="saved"?' <span id="savedcount" class="tabn"></span>':""}</button>`).join("");
   { const c=$("#savedcount"); if(c)c.textContent=Object.keys(savedAll()).length||""; }
-  [...$("#tabs").children].forEach(b=>b.onclick=()=>{tab=b.dataset.t;render();});
+  // ROLE has to be cleared here. jobs() opens with `if(ROLE){roleView(ROLE);return}`,
+  // so a role that has come off the board used to re-render its own "no longer on
+  // the board" message on every click of the Job board tab, for the rest of the
+  // session - the only way out was the address bar.
+  [...$("#tabs").children].forEach(b=>b.onclick=()=>{tab=b.dataset.t;ROLE=null;render();});
   PENDING_URL=readUrl();
   if(PENDING_URL&&PENDING_URL.get("tab"))tab=PENDING_URL.get("tab");
   if(PENDING_URL&&PENDING_URL.get("role")){ROLE=PENDING_URL.get("role");tab="jobs"}
@@ -1383,11 +1599,16 @@ fetch("data/board.json").then(r=>r.json()).then(d=>{
   // Sync runs after the first paint and never blocks it: the board must work
   // with the network gone, and a saved list is the last thing worth waiting on.
   pullSync();
-  // the back button should undo a search, not leave the page
+  // the back button should undo a search, not leave the page. it only ever
+  // reaches this listener because openRole and a settled filter change push
+  // real entries now; with everything on replaceState there was one entry and
+  // nothing to pop back to.
   window.addEventListener("popstate",()=>{
     PENDING_URL=readUrl();
     ROLE=PENDING_URL?PENDING_URL.get("role"):null;
-    if(PENDING_URL&&PENDING_URL.get("tab"))tab=PENDING_URL.get("tab");
+    // read the tab off the url every time, or going back from the Saved tab to
+    // a board entry leaves tab stuck on "saved"
+    tab=(PENDING_URL&&PENDING_URL.get("tab"))||"jobs";
     render();
   });
 }).catch(()=>{$("#view").innerHTML=`<div class="empty">Could not load data/board.json.

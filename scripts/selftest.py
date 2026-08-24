@@ -6,6 +6,8 @@ touching the network. Run after any edit to data/ or scripts/.
 """
 from __future__ import annotations
 
+import collections
+import html
 import json
 import re
 import pathlib
@@ -127,9 +129,105 @@ FAMILY_CASES = [
 ]
 
 
+# A title is not just displayed. It is half the posting id, the key a scope
+# ruling is filed under, and what an alert matches on, so an escape that
+# survives the fetch spreads. Each of these arrived from a real board.
+TITLE_TEXT_CASES = [
+    # routeware, via rippling: the page's embedded JSON escapes the ampersand,
+    # and the regex fetcher hands back the escape rather than the character
+    ("Product Manager \\u0026 Education", "Product Manager & Education"),
+    # ...and the same page's anchor text escapes it the other way
+    ("Sales &amp; Marketing Lead", "Sales & Marketing Lead"),
+    ("Director, People &#39;Ops&#39;", "Director, People 'Ops'"),
+    ("A &quot;Named&quot; Account Executive", 'A "Named" Account Executive'),
+    ("Account&nbsp;Executive", "Account Executive"),          # entity -> U+00A0
+    ("Field \\u0026amp; Ops", "Field & Ops"),                 # escaped twice
+    ("Staff  System Software Engineer", "Staff System Software Engineer"),
+    # a backslash that is not an escape must leave the title alone rather than
+    # take an exception: a wrong title beats a dropped posting
+    ("Engineer \\ Architect", "Engineer \\ Architect"),
+]
+
+
 def fail(msg):
     print(f"FAIL: {msg}")
     return 1
+
+
+def check_board() -> int:
+    """Invariants on the built board that a person cannot eyeball at 4,242 rows.
+
+    The site resolves a role with `D.postings.find(x => x.id === id)`, so a
+    repeated id is not a cosmetic problem: every row after the first opens
+    somebody else's job, and a saved role reopens as a different city.
+    """
+    path = DATA / "board.json"
+    if not path.exists():
+        print("note: no data/board.json yet, skipping board checks")
+        return 0
+    board = json.load(open(path))
+    postings = board.get("postings", [])
+    bad = 0
+
+    dupes = [i for i, n in collections.Counter(p["id"] for p in postings).items()
+             if n > 1]
+    if dupes:
+        bad += fail(f"{len(dupes)} posting id(s) are used by more than one row, "
+                    f"e.g. {sorted(dupes)[:3]}")
+
+    for p in postings:
+        want = f"{p['company_id']}::{p['title']}"
+        if p.get("opening_id") != want:
+            bad += fail(f"opening_id {p.get('opening_id')!r} is not "
+                        f"company::title for {p['id']!r}")
+            break
+        # Old shared links and saved roles carry the pre-discriminator id, and
+        # index.html resolves them by prefix-matching `oldid::`. That fallback
+        # only works while the opening id stays the head of the posting id.
+        if not p["id"].startswith(p["opening_id"] + "::"):
+            bad += fail(f"posting id {p['id']!r} does not start with its "
+                        f"opening_id, breaking stale-link recovery")
+            break
+
+    for p in postings:
+        title = p.get("title") or ""
+        if html.unescape(title) != title or re.search(r"\\u[0-9a-fA-F]{4}", title):
+            bad += fail(f"title still carries an escape: {title!r} "
+                        f"({p['company_id']}) - see ats.plain()")
+            break
+
+    # Openings, not rows. Recomputed here from the postings themselves so a
+    # headline number can never drift from the rows it claims to summarise.
+    groups = collections.defaultdict(list)
+    for p in postings:
+        groups[p["opening_id"]].append(p)
+    t = board.get("totals", {})
+    for name, got, want in [
+        ("postings", t.get("postings"), len(postings)),
+        ("openings", t.get("openings"), len(groups)),
+        ("quota_carrying", t.get("quota_carrying"),
+         sum(1 for rows in groups.values()
+             if any(r.get("quota_carrying") for r in rows))),
+        ("quota_carrying_postings", t.get("quota_carrying_postings"),
+         sum(1 for p in postings if p.get("quota_carrying"))),
+    ]:
+        if got != want:
+            bad += fail(f"totals.{name} = {got}, but the postings say {want}")
+
+    for rows in groups.values():
+        if rows[0].get("opening_postings") != len(rows):
+            bad += fail(f"{rows[0]['opening_id']!r} says it is advertised "
+                        f"{rows[0].get('opening_postings')} times, but "
+                        f"{len(rows)} rows carry it")
+            break
+
+    per_co = collections.Counter(rows[0]["company_id"] for rows in groups.values())
+    for o in board.get("organizations", []):
+        if o.get("open_roles", 0) != per_co.get(o["id"], 0):
+            bad += fail(f"{o['name']}: open_roles = {o.get('open_roles')}, but "
+                        f"{per_co.get(o['id'], 0)} openings are filed under it")
+            break
+    return bad
 
 
 def check_alert_vocabulary() -> int:
@@ -372,6 +470,12 @@ def main() -> int:
     # never arrives - no error anywhere. So the duplication is checked here.
     errors += check_alert_vocabulary()
 
+    for raw, expected in TITLE_TEXT_CASES:
+        got = ats.plain(raw)
+        if got != expected:
+            errors += fail(f"ats.plain({raw!r}) = {got!r}, expected {expected!r}")
+    errors += check_board()
+
     hist = sorted((DATA / "hiring_history").glob("*.json"))
     if not hist:
         errors += fail("no hiring_history snapshots")
@@ -383,7 +487,7 @@ def main() -> int:
               f"(location or founding year)")
     print(f"{len(companies)} companies | {n_api} on structured ATS APIs | "
           f"{len(hist)} snapshot(s) | classifier cases: {len(CLASSIFIER_CASES)} title, "
-          f"{len(PAGESCAN_CASES)} page-scan")
+          f"{len(PAGESCAN_CASES)} page-scan, {len(TITLE_TEXT_CASES)} title-text")
     if errors:
         print(f"\n{errors} problem(s) found")
         return 1

@@ -35,6 +35,49 @@ class AtsError(Exception):
     pass
 
 
+def plain(s: str) -> str:
+    """The text a person reads, from whatever the board encoded it as.
+
+    A board's markup carries a job title in one of two escaped forms, and the
+    fetchers here cut both out with a regex, which - unlike a JSON or HTML
+    parser - hands back the escape rather than the character. Routeware's
+    "Product Manager - Customer Engagement & Education" arrived as
+    "... Customer Engagement \\u0026 Education" from the page's embedded JSON,
+    and reads "... &amp; Education" in the same page's anchor text.
+
+    Neither is what the job is called, and a title is not just displayed: it is
+    part of the posting id, the scope-ruling key and the alert match. So the
+    escapes are undone once, here at the edge, instead of in every consumer.
+
+    JSON first, then HTML: a title double-encoded as \\u0026amp; has to come
+    apart in the order it was put together.
+    """
+    if "\\" in s:
+        # The regex took a JSON string value out of the page without parsing
+        # it, so \\u0026, \\/ and friends are still literal text. Re-parse just
+        # that value. A lone backslash that is not an escape raises and leaves
+        # the title exactly as found - a wrong title beats a dropped posting.
+        try:
+            s = json.loads(f'"{s}"')
+        except ValueError:
+            pass
+    # unescape also turns &nbsp; into U+00A0, which the whitespace collapse
+    # below folds into an ordinary space so two titles that look identical are.
+    return re.sub(r"\s+", " ", html_lib.unescape(s)).strip()
+
+
+def plain_rows(rows: list[dict]) -> list[dict]:
+    """Apply plain() to every title and location a fetcher returns.
+
+    Public because build_board.py has one more source of rows - the Playwright
+    fallback in render_fetch.py - that does not come through fetch().
+    """
+    for r in rows:
+        r["title"] = plain(r.get("title") or "")
+        r["location"] = plain(r.get("location") or "")
+    return rows
+
+
 def _get(url: str, **kw) -> requests.Response:
     try:
         resp = requests.get(url, headers=UA, timeout=TIMEOUT, **kw)
@@ -357,7 +400,7 @@ def fetch_html_titles(url: str) -> list[dict]:
                     "url": urllib.parse.urljoin(url, html_lib.unescape(href))})
     if len(out) < 2:
         raise AtsError("no enumerable job links on the page")
-    return out
+    return plain_rows(out)
 
 
 def fetch_html(url: str) -> list[dict]:
@@ -396,4 +439,6 @@ def fetch(ats: dict) -> list[dict]:
     fn = FETCHERS.get(kind)
     if fn is None:
         raise AtsError(f"unsupported ats type: {kind}")
-    return fn(ref)
+    # One normalisation point for fifteen fetchers. Doing it per fetcher means
+    # the next one added quietly skips it, and the escape reaches the id.
+    return plain_rows(fn(ref))
