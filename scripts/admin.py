@@ -536,6 +536,77 @@ def act_identity_ruling(body: dict) -> dict:
                        if added else "already recorded"}
 
 
+def q_founded(companies, board) -> list:
+    """Companies with no founding year, hiring ones first.
+
+    645 of 2,108 have none. It is the one field on the public card that is
+    simply blank, and unlike a sector or a board it cannot be derived from
+    anything - somebody has to read it off the company's own about page. So
+    this queue is a typing job, and it is built to be typed: the year is the
+    only input, and the two places the answer usually lives are one click away.
+
+    Hiring first, for the same reason every other queue sorts that way: a blank
+    year on a company with 51 open roles is on screen in front of visitors
+    today; a blank year on a dormant one is seen by nobody.
+
+    Deliberately NOT guessed. A founding year scraped from a copyright footer
+    is wrong about as often as it is right - "(c) 2019" is when the site was
+    built - and a wrong year is indistinguishable from a right one forever
+    after. Blank is honest; invented is not.
+    """
+    dismissed = read("admin_dismissed.json", {})
+    hiring = {o["id"]: o.get("open_roles", 0)
+              for o in board.get("organizations", [])}
+    out = []
+    for c in companies:
+        if c.get("year_founded"):
+            continue
+        if f"founded:{c['id']}" in dismissed \
+                or c["id"] in dismissed.get("founded", {}):
+            continue
+        site = c.get("website") or ""
+        out.append({
+            "id": c["id"], "name": c["name"],
+            "description": c.get("description"),
+            "website": site,
+            "open_roles": hiring.get(c["id"], 0),
+            # where the answer actually tends to live, so it is one click
+            # rather than a search-engine detour
+            "about": (site.rstrip("/") + "/about") if site else "",
+            "linkedin": ("https://www.linkedin.com/search/results/companies/?keywords="
+                         + urllib.parse.quote(c["name"])),
+        })
+    out.sort(key=lambda r: (-r["open_roles"], r["name"]))
+    return out
+
+
+def act_set_founded(body: dict) -> dict:
+    """Write a founding year somebody read off the company's own page."""
+    cid = (body.get("id") or "").strip()
+    raw = str(body.get("year") or "").strip()
+    if not raw.isdigit():
+        return {"error": "a four-digit year, or use Not stated"}
+    year = int(raw)
+    this_year = dt.date.today().year
+    # 1800 rather than something tighter: municipal suppliers are genuinely
+    # old. Sanborn was founded in 1866 and is on this board.
+    if not (1800 <= year <= this_year):
+        return {"error": f"{year} is not a plausible founding year "
+                         f"(1800-{this_year})"}
+    companies = read_companies()
+    c = next((x for x in companies if x["id"] == cid), None)
+    if c is None:
+        return {"error": "no such company"}
+    c["year_founded"] = year
+    err = validate(companies)
+    if err:
+        return {"error": err}
+    bad = save_companies(companies, "set-founded", f"{c['name']} founded {year}")
+    if bad:
+        return {"error": bad}
+    return {"ok": True, "message": f"{c['name']}: founded {year}"}
+
+
 def act_vendor_scope_all(body: dict) -> dict:
     """Rule a family of horizontal vendors in one go.
 
@@ -1144,11 +1215,11 @@ def q_submissions(companies, board) -> list:
             for i in subs["items"] if i.get("status") == "pending"]
 
 
-QUEUES = {"miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
+QUEUES = {"founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
           "placement": q_placement, "unclassified": q_unclassified,
           "acquisitions": q_acquisitions, "review": q_review}
 
-LABEL = {"miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
+LABEL = {"founded": "Founding year", "miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
          "boards": "No board found", "blocked": "Blocked boards", "placement": "Wrong placement",
          "unclassified": "Unclassified roles", "acquisitions": "Acquisitions",
          "review": "Website review"}
@@ -1765,7 +1836,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "scope": act_scope, "scope-all": act_scope_all,
            "vendor-scope": act_vendor_scope,
            "vendor-scope-all": act_vendor_scope_all,
-           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "identity-ruling": act_identity_ruling, "place": act_place,
+           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "set-founded": act_set_founded, "identity-ruling": act_identity_ruling, "place": act_place,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "dismiss": act_dismiss}

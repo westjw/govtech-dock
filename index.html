@@ -773,7 +773,12 @@ function jobs(){
     existing.</p>`;
 
   ["j-q","j-fam","j-sec","j-us","j-state","j-region","j-office","j-mode","j-sen","j-src"]
-    .forEach(i=>{const el=$("#"+i);if(el)el.addEventListener("input",drawJobs);});
+    .forEach(i=>{const el=$("#"+i);if(!el)return;
+      el.addEventListener("input",()=>{
+        // a dropdown is a decision worth a Back; a keystroke is not
+        if(el.tagName==="SELECT")PUSH_NEXT=true;
+        drawJobs();
+      });});
   const shelf=$("#j-shelf");
   if(shelf){
     if(feature)shelf.appendChild(featureCard(feature,debut.length>0));
@@ -852,6 +857,7 @@ function newCard(p){
 /* filter chrome ------------------------------------------------------------ */
 let SHOWN=60;
 function toggleQuota(btn){
+  PUSH_NEXT=true;   // a deliberate choice, so Back should undo it
   const on=btn.getAttribute("aria-pressed")!=="true";
   btn.setAttribute("aria-pressed",on);
   const v=$("#j-quota-v");
@@ -860,12 +866,14 @@ function toggleQuota(btn){
   SHOWN=60;drawJobs();
 }
 function setWhere(btn){
+  PUSH_NEXT=true;   // a deliberate choice, so Back should undo it
   [...btn.parentElement.children].forEach(b=>b.setAttribute("aria-pressed",b===btn));
   SHOWN=60;drawJobs();
 }
 /* One family control, two places. The pill is the primary; the select in More
    filters is the same value, kept in step so they can never disagree. */
 function famPill(){
+  PUSH_NEXT=true;   // a deliberate choice, so Back should undo it
   const v=$("#j-fam-pill").value;
   if($("#j-fam")) $("#j-fam").value=v;
   SHOWN=60; drawJobs();
@@ -882,7 +890,8 @@ function setBarOpen(bar,btn,open){
   bar.classList.toggle("open",open);
   if(btn)btn.setAttribute("aria-expanded",open);
 }
-function toggleMore(btn){setBarOpen($("#j-bar"),btn,$("#j-bar").style.display==="none")}
+function toggleMore(btn){
+setBarOpen($("#j-bar"),btn,$("#j-bar").style.display==="none")}
 function showMore(){SHOWN+=60;drawJobs();}
 
 /* An empty result should say why it is empty. Picking "Engineering" while
@@ -918,10 +927,30 @@ let URL_LOADING=false;
    change within the next 600ms rewrites that same entry. A typed query is one
    entry rather than one per keystroke; picking a filter is its own entry, so
    Back undoes it. */
-let BURST_T=null;
-function writeUrl(){
+/* Set by a deliberate control - a select, the quota pill, the where segment -
+   just before it redraws, and consumed by writeUrl. Typing does not set it, so
+   a search refines the entry you are on instead of stacking one per letter. */
+let PUSH_NEXT=false;
+/* Two things went wrong here and both trapped the back button.
+
+   The URL was rebuilt from ONLY the filters this page knows about, so a link
+   carrying anything else - ?utm_source=newsletter, ?fbclid=..., the things
+   every shared link picks up - never matched what we would write. writeUrl
+   therefore thought the URL had changed, pushed a new entry, and did it again
+   on every popstate. Back could never leave the page: five presses, same URL.
+   So unknown parameters are now PRESERVED rather than dropped, which fixes the
+   loop and incidentally stops us destroying somebody's campaign tracking.
+
+   And a push per change meant a push per keystroke for anyone typing slower
+   than the 600ms window - measured at 6 history entries for "permit". Typing
+   now REFINES the current entry and only a deliberate control - a filter, a
+   tab, the quota pill - creates a new one. That matches what people expect
+   Back to undo: your last decision, not your last letter. */
+function writeUrl(push){
   if(URL_LOADING||ROLE)return;
-  const u=new URLSearchParams();
+  const u=new URLSearchParams(location.search);
+  Object.keys(URLKEYS).forEach(k=>u.delete(k));
+  ["tab","any","where"].forEach(k=>u.delete(k));
   if(tab!=="jobs")u.set("tab",tab);
   Object.entries(URLKEYS).forEach(([k,id])=>{
     const el=$("#"+id); if(el&&el.value)u.set(k,el.value);
@@ -933,10 +962,11 @@ function writeUrl(){
   const qs=u.toString();
   const next=location.pathname+(qs?"?"+qs:"");
   if(next===location.pathname+location.search)return;
-  if(BURST_T===null)history.pushState({qs:qs?"?"+qs:""},"",next);
-  else history.replaceState({qs:qs?"?"+qs:""},"",next);
-  clearTimeout(BURST_T);
-  BURST_T=setTimeout(()=>{BURST_T=null},600);
+  const st={qs:qs?"?"+qs:""};
+  if(push===undefined)push=PUSH_NEXT;
+  PUSH_NEXT=false;
+  if(push)history.pushState(st,"",next);
+  else history.replaceState(st,"",next);
 }
 function readUrl(){
   const u=new URLSearchParams(location.search);

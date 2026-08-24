@@ -873,6 +873,63 @@ RENDER.boards = c => {
   return n;
 };
 
+/* Founding year. This queue is a typing job and nothing else, so it is built
+   for typing: the year input is focused-ready, Enter submits, and the two
+   pages where the answer actually lives are one click away rather than a
+   search-engine detour. No guess is offered - a year scraped from a copyright
+   footer is wrong about as often as it is right, and a wrong year is
+   indistinguishable from a right one forever after. */
+RENDER.founded = c => {
+  const n = el('div', 'item');
+  n.appendChild(withLogo(el('h3', null, c.name), c));
+  n.appendChild(el('div', 'kv', c.description || ''));
+  const links = el('div', 'kv');
+  links.style.marginTop = '4px';
+  if (c.website) {
+    [['their site', c.website], ['about page', c.about],
+     ['LinkedIn', c.linkedin]].forEach(([label, href], i) => {
+      if (!href) return;
+      if (i) links.appendChild(document.createTextNode(' · '));
+      const a = el('a', null, label);
+      a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      links.appendChild(a);
+    });
+  } else {
+    links.appendChild(document.createTextNode('no website on file — '));
+    const a = el('a', null, 'search LinkedIn');
+    a.href = c.linkedin; a.target = '_blank'; a.rel = 'noopener noreferrer';
+    links.appendChild(a);
+  }
+  if (c.open_roles) {
+    links.appendChild(document.createTextNode(' · '));
+    links.appendChild(el('span', 'chip', c.open_roles + ' open roles'));
+  }
+  n.appendChild(links);
+
+  const row = el('div', 'row');
+  const yr = el('input', 'in');
+  yr.placeholder = 'year founded'; yr.inputMode = 'numeric'; yr.maxLength = 4;
+  yr.style.maxWidth = '140px';
+  const save = el('button', 'btn primary', 'Save');
+  const msg = el('div', 'kv');
+  msg.style.cssText = 'flex-basis:100%;margin-top:4px';
+  const go = async () => {
+    save.disabled = true;
+    const r = await api('/api/set-founded', {id: c.id, year: yr.value.trim()});
+    save.disabled = false;
+    if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
+    toast(r.message);
+    n.remove();
+  };
+  save.onclick = go;
+  yr.onkeydown = e => { if (e.key === 'Enter') go(); };
+  row.append(yr, save,
+             dismissBtn('founded', c.id, 'Cannot find it'));
+  row.appendChild(msg);
+  n.appendChild(row);
+  return n;
+};
+
 RENDER.placement = c => {
   const n = el('div', 'item');
   n.appendChild(withLogo(el('h3', null, c.name), c));
