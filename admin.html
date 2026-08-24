@@ -2270,29 +2270,70 @@ RENDER.unclassified = p => {
   return n;
 };
 
+/* THIS QUEUE WAS READ-ONLY. It showed 74 rows and offered "Confirm - wire it
+   up" or "Reject", which are not the decisions in front of you. The real ones
+   are three, they are genuinely different, and scripts/acquisitions.py has
+   held a rule() for all three that nothing ever called - so
+   acquisition_rulings.json was never written once and every sweep re-proposed
+   what you had already looked at. */
 RENDER.acquisitions = s => {
   const n = el('div', 'item');
   n.appendChild(el('h3', null, s.name || s.id));
-  n.appendChild(el('div', 'kv', s.note || s.why || ''));
+
+  /* Lead with HOW SURE we are, in words. "the board calls itself Versaterm"
+     and "the slug is not the name" are different qualities of fact and sorting
+     by a hidden number would hide which one you are looking at. */
+  const strength = s.strength || 'slug';
+  const head = {named: 'Their own board names somebody else',
+                redirect: 'Their page ends up somewhere else',
+                slug: 'Only the slug looks odd — weakest, most of these are nothing'}[strength];
+  const band = el('div', 'kv', head);
+  band.style.fontWeight = '700';
+  n.appendChild(band);
+
   const e = el('div', 'evi');
-  // the ats ref is a slug taken off a careers page, not something we minted
-  e.appendChild(el('code', null,
-    `${s.type || s.ats || ''}:${s.ref || s.slug || ''}`));
-  e.appendChild(document.createTextNode(' reads, '
-    + 'but the slug does not match this company. Confirm only if you know this is the '
-    + 'same product line — never point a company at its parent’s board.'));
+  e.appendChild(document.createTextNode(s.says || ''));
+  if (s.postings_on_that_board)
+    e.appendChild(el('div', 'kv',
+      s.postings_on_that_board + ' postings sit on that board' +
+      (s.open_roles ? ', and ' + s.open_roles + ' roles are on ours under this name' : '')));
+  if (s.titles && s.titles.length)
+    e.appendChild(el('div', 'kv', 'e.g. ' + s.titles.slice(0, 3).join(' · ')));
   n.appendChild(e);
-  const row = el('div', 'row');
-  const yes = el('button', 'act go', 'Confirm — wire it up');
-  yes.onclick = async () => {
-    const r = await api('/api/set-board', {id: s.id,
-      ats: {type: s.type || s.ats, ref: s.ref || s.slug},
-      note: 'acquisition confirmed by hand in admin'});
+
+  /* A ruling that says "somebody else" cannot be checked by anyone later, so
+     the name is required for the two outcomes that claim ownership. */
+  const who = el('input');
+  who.type = 'text';
+  who.placeholder = 'Whose board is it? e.g. Axon';
+  who.value = s.board_calls_itself || s.parent || s.board_owner || '';
+  who.style.cssText = 'width:100%;margin:6px 0';
+  n.appendChild(who);
+
+  const rule = async (outcome, label) => {
+    const r = await api('/api/acquisition-ruling',
+      {id: s.id, outcome, parent: who.value.trim(), why: label});
     if (r.error) return toast(r.error, true);
     toast(r.message); n.remove(); refreshCounts();
   };
-  row.append(yes, dismissBtn('acquisitions', s.id, 'Reject — different company'));
+
+  const row = el('div', 'row');
+  const unwire = el('button', 'act go',
+    'Unwire — the board is all theirs, none of it is ours');
+  unwire.onclick = () => rule('unwire', 'the board belongs entirely to the parent');
+  const keep = el('button', 'act',
+    'Keep & label — our roles are on it too');
+  keep.onclick = () => rule('keep', 'the board carries this company among others');
+  const no = el('button', 'act mute',
+    'Not an acquisition — that is just their slug');
+  no.onclick = () => rule('not_acquired', 'the slug is the company\'s own shorthand');
+  row.append(unwire, keep, no);
   n.appendChild(row);
+
+  n.appendChild(el('div', 'kv',
+    'Unwiring puts them back to no board on file, which is honest — it stops '
+    + 'refresh reporting a parent\'s requisitions as theirs. Keeping records '
+    + 'who owns it so the card can say so.'));
   return n;
 };
 

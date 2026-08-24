@@ -1008,6 +1008,94 @@ def act_board_proposal(body: dict) -> dict:
                                    f"{block['type']} \u2014 {detail}."}
 
 
+def act_acquisition_ruling(body: dict) -> dict:
+    """Rule on a board that looks like it belongs to a parent company.
+
+    The Acquisitions queue has been READ-ONLY since it was built: 74 rows
+    carrying real evidence, scripts/acquisitions.py holding a rule() nothing
+    called, and acquisition_rulings.json never once written. A queue you can
+    read and not answer only grows, and every sweep re-proposes what you
+    already looked at - which is how somebody learns to stop opening a tab.
+
+    Three outcomes, and they are genuinely different decisions, not three
+    words for "handled":
+
+      UNWIRE - the board is entirely the parent's and none of it is theirs.
+      Prepared's greenhouse board is Axon's: 502 postings, every one stamped
+      company_name "Axon". The company goes back to having no board, which is
+      honest, and refresh stops reporting a parent's requisitions as theirs.
+
+      KEEP AND LABEL - the board really does carry this company's roles among
+      others. Nothing is unwired; board_owner is recorded so the card can say
+      "these roles are posted on Axon's board, who acquired them, and some may
+      not be Prepared roles". True, and more useful than either silence or
+      deletion.
+
+      NOT AN ACQUISITION - the slug is just odd. Vision Government Solutions
+      uses "vgsi"; that is their own shorthand and nothing is wrong.
+
+    Recording which one it is stops the next sweep asking, because
+    find_embedded_ats and the audit both read the refusals back.
+    """
+    import acquisitions
+    cid = (body.get("id") or "").strip()
+    outcome = (body.get("outcome") or "").strip()
+    parent = (body.get("parent") or "").strip()
+    why = (body.get("why") or "").strip()
+    by = (body.get("by") or "owner").strip()
+    if outcome not in ("keep", "unwire", "not_acquired"):
+        return {"error": "outcome must be keep, unwire or not_acquired"}
+    companies = read_companies()
+    c = next((x for x in companies if x["id"] == cid), None)
+    if c is None:
+        return {"error": "no such company"}
+
+    # UNWIRE and KEEP both make a claim about who owns the board, and a claim
+    # about ownership with no name attached cannot be checked by anybody later.
+    if outcome in ("keep", "unwire") and not parent:
+        return {"error": "name the company whose board this is - a ruling that "
+                         "says 'someone else' cannot be checked later"}
+
+    msg = ""
+    if outcome == "unwire":
+        was = c.get("ats") or {}
+        c["ats"] = {"type": "unknown", "ref": None}
+        c["ats_note"] = (f"unwired {dt.date.today().isoformat()}: the "
+                         f"{was.get('type')} board {was.get('ref')!r} is "
+                         f"{parent}'s, not {c['name']}'s"
+                         + (f" - {why}" if why else ""))
+        c["board_owner"] = parent
+        err = validate(companies)
+        if err:
+            return {"error": err}
+        bad = save_companies(companies, "acquisition-unwire",
+                             why or f"{c['name']}'s board is {parent}'s",
+                             by=by)
+        if bad:
+            return {"error": bad}
+        msg = (f"{c['name']} no longer reads from {parent}'s board. It has no "
+               f"board on file again, which is the honest state.")
+    elif outcome == "keep":
+        c["board_owner"] = parent
+        if not (c.get("parent") or "").strip():
+            c["parent"] = parent
+        err = validate(companies)
+        if err:
+            return {"error": err}
+        bad = save_companies(companies, "acquisition-keep",
+                             why or f"{c['name']}'s roles are on {parent}'s "
+                                    f"board among others", by=by)
+        if bad:
+            return {"error": bad}
+        msg = (f"kept. {c['name']}'s card will say its roles are posted on "
+               f"{parent}'s board and that some may not be theirs.")
+    else:
+        msg = f"noted: {c['name']}'s slug is just their own shorthand."
+
+    acquisitions.rule(cid, outcome, parent, why, by)
+    return {"ok": True, "message": msg}
+
+
 def act_vendor_scope_all(body: dict) -> dict:
     """Rule a family of horizontal vendors in one go.
 
@@ -2948,7 +3036,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "scope": act_scope, "scope-all": act_scope_all,
            "vendor-scope": act_vendor_scope,
            "vendor-scope-all": act_vendor_scope_all,
-           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "board-proposal": act_board_proposal, "set-founded": act_set_founded, "identity-ruling": act_identity_ruling, "place": act_place,
+           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "board-proposal": act_board_proposal, "acquisition-ruling": act_acquisition_ruling, "set-founded": act_set_founded, "identity-ruling": act_identity_ruling, "place": act_place,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "confirm-founded": act_confirm_founded,
