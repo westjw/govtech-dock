@@ -717,9 +717,29 @@ def main() -> int:
         for f in ldir.glob("*.*"):
             logos[f.stem] = f.suffix.lstrip(".")
 
+    # Coordinates for the cities the board names, so "within 50 miles" can be
+    # answered in the page. Shipped INSIDE board.json rather than as a second
+    # file: the site is one fetch by design, and a filter that depends on a
+    # request that might not land is a filter that silently returns nothing.
+    #
+    # Only cities that RESOLVED are emitted. geocode_cities.py stores a failure
+    # as lat null, and a null must never reach the page: a city at no
+    # coordinate is not a city at 0,0, and the distance filter has to be able
+    # to tell "far away" from "we do not know where this is".
+    cities = {}
+    cpath = DATA / "cities.json"
+    if cpath.exists():
+        try:
+            for key, v in json.loads(cpath.read_text()).items():
+                if v.get("lat") is not None and v.get("lon") is not None:
+                    cities[key] = [v["lat"], v["lon"]]
+        except (json.JSONDecodeError, OSError, TypeError):
+            cities = {}
+
     payload = {
         "generated": today,
         "logos": logos,
+        "cities": cities,
         "companies_read": len(companies), "unreadable": unreadable,
         "rendered": rendered,
         "no_board_on_file": sum(1 for o in orgs if o.get("no_board_on_file")),

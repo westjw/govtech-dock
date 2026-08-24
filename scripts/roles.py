@@ -343,6 +343,14 @@ _CITY_STATENAME = re.compile(
              if n not in AMBIGUOUS_STATE_NAMES) +
     r")\b", re.I)
 
+# The two-letter group above matches ANY two capitals, which is not the same
+# thing as a US state. "London, UK" was being filed as a US office in a state
+# called UK, and so were Cambridge UK, Montreal QB, Noida UP, Pune MH and
+# "California, US" - 24 postings at 16 places that do not exist, every one of
+# which would have turned up in a search for desks near a US city. A code is a
+# state only if it is one.
+US_CODES = frozenset(STATE_NAMES.values())
+
 # "Washington, D.C." and "Washington DC" - the seat of a great many govtech
 # roles, spelled a way neither pattern above catches because D.C. is not two
 # bare letters and is not in STATE_NAMES.
@@ -361,7 +369,7 @@ def _office_from(loc: str):
     if _DC.search(loc):
         return {"city": "Washington", "state": "DC"}
     m = _CITY_ST.search(loc)
-    if m:
+    if m and m.group(2) in US_CODES:
         c = _clean_city(m.group(1).strip())
         return {"city": _title(c), "state": m.group(2)} if c else None
     m = _CITY_STATENAME.search(loc)

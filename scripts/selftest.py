@@ -1779,6 +1779,31 @@ def main() -> int:
         # and a real three-word city must survive the same trimming
         ("Salt Lake City, UT", "Salt Lake City"),
     ]
+    # TWO CAPITALS ARE NOT A US STATE. The office pattern matched any [A-Z]{2},
+    # so London UK, Cambridge UK, Montreal QB, Noida UP, Pune MH and even
+    # "California, US" were filed as US desks - 24 postings at 16 places that
+    # do not exist, each of which would have answered a search for offices near
+    # a US city. None of these may produce an office.
+    #
+    # "Berlin, DE" is NOT in this list, though it was. DE is Delaware, and the
+    # board carries Dover, Newark and Wilmington under it - refusing DE to
+    # catch a German city nobody has posted would drop three real US ones. The
+    # data decided it: "Berlin, DE" appears nowhere, and the three spellings
+    # that do appear are "Berlin", "Berlin, Germany" and "Berlin, Berlin,
+    # Deutschland", none of which this pattern touches.
+    for loc in ("London, UK", "Cambridge, UK", "Montreal, QB", "Noida, UP",
+                "Pune, MH", "Toronto, ON"):
+        got = _roles.geography(loc, "Account Executive")["office"]
+        if got:
+            errors += fail(f"geography({loc!r}) claimed a US office {got} - "
+                           f"{loc.split(',')[-1].strip()} is not a US state")
+    # "California, US" is a state with no city, which is a different and
+    # correct answer: a bare state still pins the seat to a state, and the
+    # city must be None rather than the word "California".
+    ca = _roles.geography("California, US", "Account Executive")["office"]
+    if not ca or ca.get("state") != "CA" or ca.get("city") is not None:
+        errors += fail(f"geography('California, US') office = {ca}, expected "
+                       f"state CA with no city")
     for loc, want_city in CITY_CASES:
         got = _roles.geography(loc, "Account Executive")["office"]
         got_city = got["city"] if got else None

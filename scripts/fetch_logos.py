@@ -14,20 +14,30 @@ calls a logo, og:image, then a short list of conventional paths. Nothing is
 invented - a company with no reachable icon simply keeps its initials tile,
 which is a fine fallback and is already what the board draws.
 
-  python scripts/fetch_logos.py [--limit 400] [--all] [--stats]
+  python scripts/fetch_logos.py [--limit 400] [--all] [--retry] [--stats]
+  python scripts/fetch_logos.py --audit      # offline: logos that may be
+                                             # somebody else's brand
+  python scripts/fetch_logos.py --proposed   # websites nobody has accepted
+                                             # yet; parks them in pending/
 
-Two rules this file exists to hold:
+Three rules this file exists to hold:
 
 - **Only bytes that really are an image land on disk.** An error page saved
   as company.png renders as a broken square forever, and nobody goes back to
   check. `sniff()` reads magic bytes and refuses anything served as HTML.
 - **Only the company's own origin.** Not a logo API, and not a picture of
   someone else's brand scraped off a customer wall - see `markup_logos`.
+- **Only this company's brand.** The two ways a real, correctly fetched image
+  turns out to be the wrong one are a redirect to an acquirer (`same_brand`)
+  and a hosting platform's default favicon (`GENERIC_HASHES`). Both look
+  entirely right on the page, which is why they are checked here and not left
+  to be noticed later.
 """
 from __future__ import annotations
 
 import argparse
 import concurrent.futures as cf
+import hashlib
 import html as htmllib
 import json
 import pathlib
@@ -134,6 +144,37 @@ NOT_OURS = ("client", "customer", "partner", "sponsor", "award", "badge",
             "logo-carousel", "logo-slider", "trusted-by", "trustedby",
             "integration", "certification", "soc2", "hipaa", "sprite",
             "microsoft", "salesforce", "aws", "azure", "google-cloud")
+
+# Platform default favicons. A site that ships none gets its host's, and the
+# host's mark is a real image from the company's own origin - so every guard
+# in this file passes it and the board then shows the WordPress W as an
+# electric-bus company's brand. These were found by hashing the logos on file
+# and looking at what several unrelated companies had in common; that check is
+# `--audit`. Refusing them by URL is what stops the next pass re-fetching them.
+GENERIC_ICONS = (
+    "static.parastorage.com/client/pfavico",          # Wix default
+    "cdn.prod.website-files.com/img/webclip",         # Webflow default
+    "s0.wp.com/i/webclip",                            # WordPress.com default
+    "reseller-storefront-bin.dreamscape.cloud",       # reseller storefront default
+)
+# The same defence by content, which is the one that actually holds: some
+# platforms serve their default from the site's OWN /favicon.ico, so the URL
+# is the company's own domain and only the bytes give it away. EasyPark,
+# ImageSource and SotaOG - a parking firm, a document-imaging firm and an
+# oil-and-gas analytics firm - were all showing the same hosting-platform
+# triangle, each fetched from its own domain.
+GENERIC_HASHES = {
+    "9c477d8ee0088439c54a06ce9cad306b6729298a73d796b49c1d7bcd2cc6429d":
+        "hosting-platform default (black circle, white triangle)",
+    "33c1436f8c40ca2582d091c449fccc34ed9bf73f02526c5fdef44f4f06c6321b":
+        "Wix default favicon",
+    "c305e6b8ea9916705eec8eb8c281561d907fdaa0c84f3dbe7b65dac9e2ddf993":
+        "Webflow default webclip",
+    "cdae9c68044f1b74aa02ac5e04a403998f1fa9e5fef51002492617a93d8f2915":
+        "WordPress default webclip",
+    "69d66bc4b270591004ca4f2fa47036daa64ae0f94e7500777563177e95191d52":
+        "reseller storefront default globe",
+}
 
 WORD_RE = re.compile(r"[a-z0-9]+")
 
@@ -414,10 +455,17 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
         tried += 1
         if tried > 16:
             break
+        if any(g in url for g in GENERIC_ICONS):
+            continue            # the host's own mark, not this company's
         try:
             ir = sess.get(url, headers=ats.UA, timeout=12)
             time.sleep(0.25)
             if not ir.ok:
+                continue
+            generic = GENERIC_HASHES.get(
+                hashlib.sha256(ir.content).hexdigest())
+            if generic:
+                last = f"only icon is the {generic}"
                 continue
             ext, why = sniff(ir.content, ir.headers.get("content-type", ""))
             if not ext:
@@ -425,7 +473,8 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
                     # Worth saying out loud. This is a real logo we chose not
                     # to keep, which is a different fact from a site that has
                     # no icon - and the only one of the two a human can act on.
-                    oversize = f"logo found but {why[8:-1]}, over the cap"
+                    oversize = (f"logo found but {len(ir.content) // 1024}KB, "
+                                f"over the {MAX_BYTES // 1024}KB cap")
                 continue
             try:
                 dest = logo_path(cid, ext, out_dir)
@@ -471,6 +520,71 @@ def classify_source(url: str, base: str, page: str) -> str:
     return "blind-path"
 
 
+# Hosts that legitimately serve a company's own icon on its behalf. A logo
+# coming from one of these is not evidence of anything either way, so the
+# audit stays quiet about it rather than crying wolf 200 times.
+CDNS = ("cloudfront", "amazonaws", "akamai", "cdn", "prismic", "imgix",
+        "wixstatic", "squarespace", "shopify", "hubspot", "webflow",
+        "googleusercontent", "cloudinary", "ctfassets", "hs-sites", "sanity",
+        "contentful", "strapi", "vercel", "netlify", "azureedge", "fastly",
+        "optimole", "exactdn", "shortpixel", "storyblok", "nitrocdn",
+        "framerusercontent", "i0.wp.com", "wpenginepowered", "nxedge",
+        "assetcdn", "imagekit", "zyrosite", "wsimg", "parastorage",
+        "storage.googleapis", "supabase", "libnet", "myocv", "simpleview")
+
+
+def audit() -> int:
+    """Offline: which logos on file may not belong to the company they sit on.
+
+    Two questions, both answerable without touching the network, and both
+    about the one failure that is invisible once it lands - a logo that is a
+    real image, correctly fetched, of somebody else's brand.
+
+    1. Which images are byte-identical across companies. A shared file is
+       either a duplicate company record, a parent whose child inherited its
+       mark, or a hosting platform's default.
+    2. Which were fetched from a host that is not the company's and not a CDN.
+       Very often that is an acquisition the dataset has not caught up with.
+
+    This reports. It does not delete: which of those three a shared image is
+    a question about the companies, and that is the owner's to answer.
+    """
+    comps = {c["id"]: c for c in json.loads((DATA / "companies.json").read_text())}
+    log = json.loads(LOG.read_text()) if LOG.exists() else {}
+    by_hash: dict[str, list[str]] = {}
+    for f in OUT.glob("*.*"):
+        by_hash.setdefault(hashlib.sha256(f.read_bytes()).hexdigest(),
+                           []).append(f.stem)
+
+    def url_of(cid):
+        e = log.get(cid) or {}
+        u = e.get("url") or e.get("note") or ""
+        return u if u.startswith("http") else ""
+
+    shared = {h: v for h, v in by_hash.items() if len(v) > 1}
+    print(f"{len(shared)} image(s) are on file for more than one company:")
+    for h, ids in sorted(shared.items(), key=lambda kv: -len(kv[1])):
+        print(f"  x{len(ids)} {', '.join(sorted(ids))}")
+        print(f"       {url_of(sorted(ids)[0])[:110]}")
+
+    print()
+    odd = []
+    for cid in sorted(by_hash and {i for v in by_hash.values() for i in v}):
+        url, c = url_of(cid), comps.get(cid)
+        if not url or not c:
+            continue
+        host = (urllib.parse.urlsplit(url).hostname or "").lower()
+        if any(k in host for k in CDNS):
+            continue
+        if not same_brand(c.get("website") or "", url, cid, c.get("name") or cid):
+            odd.append((cid, c.get("website") or "", url))
+    print(f"{len(odd)} logo(s) came from a host that is neither the company's "
+          f"own domain nor a CDN - check for an acquisition:")
+    for cid, site, url in odd:
+        print(f"  {cid:38s} {site}\n      -> {url[:110]}")
+    return 0
+
+
 def load_proposed() -> dict[str, str]:
     """Websites another pass has PROPOSED but nobody has accepted.
 
@@ -506,6 +620,8 @@ def main() -> int:
     ap.add_argument("--all", action="store_true",
                     help="every company, not just the ones with open roles")
     ap.add_argument("--stats", action="store_true")
+    ap.add_argument("--audit", action="store_true",
+                    help="offline: logos that may belong to another brand")
     ap.add_argument("--retry", action="store_true",
                     help="re-attempt companies that failed before. A failure "
                          "is a fact about one attempt, not about the company.")
@@ -518,6 +634,8 @@ def main() -> int:
     a = ap.parse_args()
 
     OUT.mkdir(parents=True, exist_ok=True)
+    if a.audit:
+        return audit()
     companies = json.loads((DATA / "companies.json").read_text())
     board = json.loads((DATA / "board.json").read_text())
     hiring = {o["id"]: o.get("open_roles", 0)

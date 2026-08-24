@@ -134,6 +134,25 @@
   .acct a.row{display:block;font-size:13.5px;font-weight:600;color:var(--accent);
     text-decoration:none;padding:var(--space-2) 0;border-top:1px solid var(--line)}
   .acct a.row:hover{color:var(--ink)}
+  /* The company, on a role card: enough to place them, then the rest on ask. */
+  .costory p{font-size:14px;line-height:1.6;color:var(--dim);margin:0 0 var(--space-3)}
+  .costory .more p:last-child{margin-bottom:0}
+  .blowup{font:inherit;font-size:13px;font-weight:600;color:var(--accent);
+    background:none;border:0;padding:var(--space-1) 0;cursor:pointer;
+    border-bottom:1px solid transparent}
+  .blowup:hover{border-bottom-color:var(--accent)}
+
+  .near{display:inline-flex;gap:var(--space-1);align-items:center}
+  .near input{width:170px;padding:var(--space-2) var(--space-3);font:inherit;
+    font-size:13px;border:1px solid var(--line);background:var(--panel);
+    color:var(--ink)}
+  .near input:focus{outline:2px solid var(--accent);outline-offset:-2px}
+  .near.off{display:none}
+  /* Said out loud rather than silently dropped: a distance search that hides
+     desks it could not place is a false "nothing near you", which is the same
+     failure as a page scan reporting "no jobs" when it could not read. */
+  .unplaced{font-size:13px;color:var(--dim);margin-top:var(--space-2)}
+
   main{max-width:1180px;margin:0 auto;padding:0 var(--space-6) var(--space-8)}
 
   /* ----------------------------------------------------------- home banner
@@ -1290,13 +1309,38 @@ function roleView(id){
       :"We could not tell what runs their board, so assume a person reads it and write plainly."}</div>
     ${o.phase?`<div class="kv">The company overall is <strong>${esc(o.phase)}</strong>${
       o.open_roles?` — ${o.open_roles} role${o.open_roles===1?"":"s"} open, ${o.quota_roles||0} carrying a number`:""}.</div>`:""}
-    ${o.description?`<div class="kv" style="max-width:74ch">${esc(o.description)}</div>`:""}
+    ${/* BRIEFER HERE THAN ON THE COMPANY CARD, and expandable. A role card is
+          read to answer "is this job worth my afternoon", and five paragraphs
+          about the employer buries the role under its company. So: the two
+          paragraphs that place the company, then the rest behind one control.
+          Nothing is written for this - it is the same companyStory() the
+          company card builds, cut at two. */""}
+    ${(()=>{
+      const story=companyStory(o,D.postings.filter(x=>x.company_id===o.id));
+      if(!story.length)return o.description
+        ?`<div class="kv" style="max-width:74ch">${esc(o.description)}</div>`:"";
+      const lead=story.slice(0,2), rest=story.slice(2);
+      return `<div class="costory" style="max-width:74ch">
+        ${lead.map(t=>`<p>${esc(t)}</p>`).join("")}
+        ${rest.length?`<div id="r-more" class="more" hidden>
+            ${rest.map(t=>`<p>${esc(t)}</p>`).join("")}</div>
+          <button type="button" class="blowup" id="r-blow"
+            aria-expanded="false" aria-controls="r-more">More about ${esc(o.name||p.company)}</button>`:""}
+      </div>`;
+    })()}
     ${o.unreadable?`<div class="kv"><span class="chip warn">their board could not be read
       automatically this run, so this list may be incomplete</span></div>`:""}
 
     ${siblings.length?`<h3 style="font-size:13px;margin-top:22px">Also open at ${esc(p.company)}</h3>
       <div class="list" id="r-sibs"></div>`:""}`;
   wireBack();
+  const blow=$("#r-blow"), more=$("#r-more");
+  if(blow&&more)blow.onclick=()=>{
+    const open=more.hasAttribute("hidden");
+    if(open)more.removeAttribute("hidden"); else more.setAttribute("hidden","");
+    blow.setAttribute("aria-expanded",String(open));
+    blow.textContent=open?"Less":`More about ${o.name||p.company}`;
+  };
   const link=$("#r-co");
   if(link)link.onclick=e=>{e.preventDefault();ROLE=null;co(p.company_id)};
   const host=$(".savehost"); if(host)host.replaceWith(saveButton(p));
@@ -1645,6 +1689,27 @@ function jobs(){
         <button type="button" data-v="hybrid" aria-pressed="false" onclick="setWhere(this)">Hybrid</button>
         <button type="button" data-v="onsite" aria-pressed="false" onclick="setWhere(this)">Onsite</button>
       </div>
+      <!-- NEAR A CITY. Only meaningful for a job that has a place, so it hides
+           itself when Remote is selected - a remote role is not near anything
+           and is not far from anything either, and it has its own button.
+
+           Deliberately NOT gated on work_mode being literally hybrid/onsite:
+           that is stated on 139 postings out of 4,353, because most boards
+           never say it, while 917 more name a real city anyway. Those are
+           desks. Gating on the word would have made this filter reach 44
+           postings instead of 1,445. -->
+      <span class="near" id="j-near-wrap">
+        <input id="j-near" list="j-cities" placeholder="Near a city"
+               autocomplete="off" aria-label="Near a city"
+               oninput="nearChanged()">
+        <select id="j-miles" aria-label="How far" onchange="milesChanged()">
+          <option value="25">25 miles</option>
+          <option value="50" selected>50 miles</option>
+          <option value="100">100 miles</option>
+          <option value="250">250 miles</option>
+        </select>
+        <datalist id="j-cities"></datalist>
+      </span>
       <select id="j-fam-pill" onchange="famPill()" aria-label="Kind of role">
         <option value="">Any kind of role</option>
         ${fams.map(f=>`<option value="${esc(f)}">${esc(FAM[f]||f)}</option>`).join("")}
@@ -1859,6 +1924,9 @@ function toggleQuota(btn){
 function setWhere(btn){
   PUSH_NEXT=true;   // a deliberate choice, so Back should undo it
   [...btn.parentElement.children].forEach(b=>b.setAttribute("aria-pressed",b===btn));
+  // "Near a city" is meaningless for a remote role, so it goes away on the
+  // click rather than a beat later when the redraw lands.
+  paintNear();
   refilter();
 }
 /* One family control, two places. The pill is the primary; the select in More
@@ -2242,6 +2310,7 @@ function drawJobs(){
         rg=g("j-region"),md=g("j-mode"),sen=g("j-sen"),src=g("j-src"),
         off=g("j-office"),pay=g("j-pay"),since=g("j-since"),sort=g("j-sort");
 
+  const NEAR=nearState();
   const WANT=parseQuery(q);
   /* A search can contradict a filter, and when it does the words the person
      just typed win over a toggle they may not have noticed. "customer
@@ -2316,6 +2385,20 @@ function drawJobs(){
     if(where==="hybrid"&&p.work_mode!=="hybrid")return false;
     if(where==="onsite"&&!(p.work_mode==="onsite"
       ||(p.office&&p.work_mode!=="remote"&&p.work_mode!=="hybrid")))return false;
+    /* NEAR A CITY. Only ever narrows roles that have a place: a remote role
+       has no desk to measure from and is excluded outright rather than being
+       counted as infinitely far, which would file it under "too far" and read
+       as a fact about the job.
+
+       A desk we could not put on a map is NOT dropped quietly - it fails this
+       test, and drawJobs says how many did and why. */
+    if(NEAR&&NEAR.at){
+      if(p.work_mode==="remote")return false;
+      const k=cityKey(p);
+      const c=k?coordsOf(k):null;
+      if(!c)return false;
+      if(milesBetween(NEAR.at,c)>NEAR.miles)return false;
+    }
     if(f&&p.family!==f)return false;
     // a vendor can sell into several departments; a filter on any one
     // of them should find it
@@ -2406,6 +2489,8 @@ function drawJobs(){
   writeUrl();
   paintUrl();
   drawChips();
+  fillCities();
+  paintNear();
   $("#j-h").textContent=quotaOnly?"All quota-carrying roles":"All roles";
   /* The count says what the filter did to the board, not just what survived
      it. Same idiom as the quota release one line up: the number, then a plain
@@ -2418,7 +2503,8 @@ function drawJobs(){
       ? ` · including ${setAside.total.toLocaleString()} with no comparable salary
           (${paySetAsideText(setAside)}) · <span class="payoff">set them aside</span>`
       : ` · ${setAside.total.toLocaleString()} set aside: ${paySetAsideText(setAside)}
-          · <span class="payall">include them</span>`):"");
+          · <span class="payall">include them</span>`):"")
+    +nearNote(NEAR);
 
   /* THE NEW-THIS-RUN OFFER, and the rule it exists to obey is drawCos's:
      "a number offered is the number that actually appears when it is
@@ -3603,6 +3689,125 @@ function startBanner(slides){
   BTIMER=setInterval(()=>showSlide(BSLIDE+1,slides),6000);
 }
 
+
+/* ------------------------------------------------------------ near a city
+   "Roles within 50 miles of Denver" needs a coordinate for Denver and one for
+   every posting's office. Both come from data/cities.json, geocoded once
+   against OpenStreetMap and shipped inside board.json - a city with no
+   coordinate is simply absent from D.cities, never present at 0,0.
+
+   That absence is the whole reason this code counts what it could NOT place.
+   A distance filter that quietly drops a desk it cannot find on a map answers
+   "nothing near you" while the job sits there, which is the same failure as a
+   page scan reporting "no listings" when it could not read the page. So the
+   unplaced are counted and said out loud under the result. */
+function cityKey(p){
+  const o=p&&p.office;
+  return (o&&o.city&&o.state)?`${o.city}|${o.state}`:null;
+}
+function coordsOf(key){
+  const c=D.cities&&D.cities[key];
+  return (c&&c.length===2)?c:null;
+}
+/* Great-circle distance in miles. 3958.8 is the earth's mean radius; the
+   formula is haversine, which stays accurate at short distances where the
+   naive spherical law of cosines loses precision. */
+function milesBetween(a,b){
+  const R=3958.8, rad=d=>d*Math.PI/180;
+  const dLat=rad(b[0]-a[0]), dLon=rad(b[1]-a[1]);
+  const s=Math.sin(dLat/2)**2
+    +Math.cos(rad(a[0]))*Math.cos(rad(b[0]))*Math.sin(dLon/2)**2;
+  return 2*R*Math.asin(Math.min(1,Math.sqrt(s)));
+}
+/* What the person typed, resolved to a city we hold. Accepts "Denver",
+   "Denver, CO" and "denver co". Returns null rather than a guess: if two
+   cities match equally well we do not pick one, because a search around the
+   wrong Springfield is worse than a search that says it did not understand. */
+function resolveNear(text){
+  const t=(text||"").trim().toLowerCase().replace(/\s+/g," ");
+  if(t.length<2||!D.cities)return null;
+  const keys=Object.keys(D.cities);
+  const norm=k=>k.toLowerCase().replace("|",", ");
+  let exact=keys.filter(k=>norm(k)===t);
+  if(exact.length===1)return exact[0];
+  // "denver co" without the comma
+  exact=keys.filter(k=>k.toLowerCase().replace("|"," ")===t);
+  if(exact.length===1)return exact[0];
+  // bare city name, only when exactly one state has it
+  const bare=keys.filter(k=>k.split("|")[0].toLowerCase()===t);
+  if(bare.length===1)return bare[0];
+  if(bare.length>1)return {ambiguous:bare};
+  return null;
+}
+function nearState(){
+  const el=$("#j-near");
+  if(!el||!el.value.trim())return null;
+  const r=resolveNear(el.value);
+  if(!r)return {unknown:el.value.trim()};
+  if(r.ambiguous)return r;
+  return {key:r, at:coordsOf(r), miles:+($("#j-miles")||{value:50}).value};
+}
+/* Typing is debounced; the distance select is not. A keystroke should not
+   re-filter 4,369 postings, and a select only changes when the person has
+   already decided. */
+let NEAR_T=null;
+function nearChanged(){
+  clearTimeout(NEAR_T);
+  NEAR_T=setTimeout(()=>{PUSH_NEXT=false;refilter();},250);
+}
+function milesChanged(){ PUSH_NEXT=true; refilter(); }
+/* The control is meaningless for a remote role and says so by not being
+   there. */
+function paintNear(){
+  const wrap=$("#j-near-wrap");
+  if(!wrap)return;
+  const btn=$("#j-where")?.querySelector('[aria-pressed="true"]');
+  wrap.classList.toggle("off",(btn&&btn.dataset.v)==="remote");
+}
+function fillCities(){
+  const dl=$("#j-cities");
+  if(!dl||!D.cities)return;
+  dl.innerHTML=Object.keys(D.cities).sort()
+    .map(k=>`<option value="${esc(k.replace("|",", "))}">`).join("");
+}
+
+/* What a "near a city" search could NOT answer, said next to the count.
+   Three different silences, and they are not the same fact:
+
+     the city is not one we hold  - we cannot search around it at all, and
+       saying "0 roles" would read as "nobody is hiring in Boise" when what
+       happened is that no posting on this board names Boise.
+     the name is in several states - Springfield is in thirty-odd, and
+       picking the biggest is how a job in Massachusetts turns up in a
+       search around Illinois.
+     desks we could not place    - the posting names a place and the
+       geocoder could not resolve it. It has a real office; we just cannot
+       measure to it, and dropping it silently is a false "nothing near you".
+
+   The last one is the reason this function exists. It is the same rule the
+   whole board runs on: absence of evidence reported as absence of evidence. */
+function nearNote(NEAR){
+  if(!NEAR)return "";
+  if(NEAR.unknown)
+    return ` · <span class="unplaced">no city on this board matches
+      &ldquo;${esc(NEAR.unknown)}&rdquo;, so distance is not being applied</span>`;
+  if(NEAR.ambiguous)
+    return ` · <span class="unplaced">${esc(NEAR.ambiguous[0].split("|")[0])} is in
+      ${NEAR.ambiguous.length} states here &mdash; add the state, e.g.
+      ${esc(NEAR.ambiguous[0].replace("|",", "))}</span>`;
+  if(!NEAR.at)return "";
+  // desks that exist and could not be measured to
+  let n=0;
+  for(const p of D.postings){
+    if(p.work_mode==="remote")continue;
+    if(!p.office||!p.office.city)continue;
+    if(!coordsOf(cityKey(p)))n++;
+  }
+  if(!n)return "";
+  return ` · <span class="unplaced">${n.toLocaleString()} role${n===1?"":"s"}
+    name a place we could not put on a map, so ${n===1?"it is":"they are"} not
+    in this count</span>`;
+}
 function home(){
   const slides=buildSlides();
   const orgs=D.organizations||[];
