@@ -3,16 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GovTech Dock</title>
+<link rel="icon" href="assets/mascot/svg/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/mascot/favicon/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/mascot/favicon/favicon-180.png">
+<meta name="theme-color" content="#E8F1F7">
+<title>SLED JOBS — govtech sales roles</title>
 <style>
-  :root{ --bg:#fbfaf8; --panel:#fff; --line:#e5e1db; --ink:#1a1815; --dim:#6a655d;
-         --faint:#969086; --accent:#2f6f4f; --warn:#a8620f; --bad:#a3342a; --chip:#f1eeea;
-         /* on the inverted feature card, which is dark in light mode */
-         --inv-accent:#6fb98a; --inv-dim:#a09a90; }
+  /* SLED JOBS palette (data/brand.json). Ice is the ground and the only white,
+     cards sit on Belly, rules are Frost. Two tokens are DERIVED and brand.json
+     says why: --dim is Fog's own hue darkened to 4.6:1, because Fog itself is
+     2.7:1 and the kit is explicit that it is for tiny uppercase labels and
+     never reading copy - and this board renders a lot of readable secondary
+     text. --faint IS Fog, labels only. Beak is a highlight and never text. */
+  :root{ --bg:#E8F1F7; --panel:#FAF7F0; --line:#C9DCE8; --ink:#1F2536; --dim:#556F82;
+         --faint:#7C97AA; --accent:#0B57C4; --warn:#C1341F; --bad:#C1341F;
+         --beak:#F5A623; --chip:#DCE9F1;
+         /* the feature card inverts to Penguin, so its accents are the
+            lightened pair that clear AA on it */
+         --inv-accent:#478EF5; --inv-dim:#A8BCCA; }
   @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
-    --bg:#121110; --panel:#1a1918; --line:#2f2c28; --ink:#eae6e0; --dim:#a09a90;
-    --faint:#726c63; --accent:#6fb98a; --warn:#d9973f; --bad:#e0705f; --chip:#232120;
-    --inv-accent:#2f6f4f; --inv-dim:#6a655d; }}
+    /* ground becomes Penguin. Badge falls to 2.3:1 there, so both accents
+       lighten along their own hue until they clear AA again. */
+    --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7; --dim:#A8BCCA;
+    --faint:#7C97AA; --accent:#478EF5; --warn:#E46855; --bad:#E46855;
+    --beak:#F5A623; --chip:#2E3852;
+    --inv-accent:#0B57C4; --inv-dim:#556F82; }}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
        font:15px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -263,7 +278,7 @@
 <header>
   <div class="htop">
     <div>
-      <h1>GovTech Dock</h1>
+      <h1>SLED JOBS</h1>
       <div class="sub" id="sub">loading</div>
     </div>
     <div class="hacts">
@@ -491,7 +506,7 @@ const ATSNOTE={hard:"Ranking engine likely. Seed exact keywords once.",
    company would be decoration pretending to be data. Instead: three tints from
    the existing token set, picked by a hash, so a company always looks the same
    without implying the colour means anything. */
-const TILE=[["var(--chip)","var(--dim)"],["#eef3ef","var(--accent)"],["#f4efe6","var(--warn)"]];
+const TILE=[["var(--chip)","var(--dim)"],["var(--chip)","var(--accent)"],["var(--chip)","var(--warn)"]];
 /* A logo where we have one, initials where we do not. The <img> sits ON the
    initials tile rather than replacing it, so a logo that 404s or is slow
    leaves the tile it was covering - there is no empty square at any point,

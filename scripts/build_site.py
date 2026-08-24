@@ -250,6 +250,11 @@ def main() -> int:
     for name in SHIP:
         shutil.copy2(ROOT / name, out / name)
 
+    # the mascot: favicon, hero and the four expression heads
+    mascot = ROOT / "assets" / "mascot"
+    if mascot.exists():
+        shutil.copytree(mascot, out / "assets" / "mascot")
+
     # logos are public by nature - they are the companies' own marks, served
     # from our origin so no visitor is reported to a logo service
     logos = ROOT / "assets" / "logos"
