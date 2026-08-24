@@ -9,6 +9,26 @@
 <meta name="theme-color" content="#E8F1F7">
 <title>SLED JOBS — govtech sales roles</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap');
+
+  /* ── The Modernist system from the deck, on the SLED palette ──
+     Taken from admin.html rather than approximated, so the public board and
+     the admin read as one product: Archivo at weight 800 for headings, a
+     STRICT 4px spacing scale, the 42/32/25/20/16/13 type ramp, and radius 0
+     on everything.
+
+     The zero radius is the character of the whole thing. This is a modernist
+     grid - hairline rules, tabular figures, square corners - and the rounded
+     cards this page used to carry read as a different product entirely.
+     Borders only where two systems meet; whitespace does the rest of the
+     grouping. */
+  :root{
+    --font-heading:"Archivo",system-ui,sans-serif;
+    --font-body:"Archivo",system-ui,sans-serif;
+    --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+    --space-6:24px; --space-8:32px;
+    --radius:0px;
+  }
   /* SLED JOBS palette (data/brand.json). Ice is the ground and the only white,
      cards sit on Belly, rules are Frost. Two tokens are DERIVED and brand.json
      says why: --dim is Fog's own hue darkened to 4.6:1, because Fog itself is
@@ -17,287 +37,394 @@
      text. --faint IS Fog, labels only. Beak is a highlight and never text. */
   :root{ --bg:#E8F1F7; --panel:#FAF7F0; --line:#C9DCE8; --ink:#1F2536; --dim:#556F82;
          --faint:#7C97AA; --accent:#0B57C4; --warn:#C1341F; --bad:#C1341F;
-         --beak:#F5A623; --chip:#DCE9F1;
-         /* the feature card inverts to Penguin, so its accents are the
-            lightened pair that clear AA on it */
-         --inv-accent:#478EF5; --inv-dim:#A8BCCA; }
+         --beak:#F5A623; --chip:#DCE9F1; }
   @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
     /* ground becomes Penguin. Badge falls to 2.3:1 there, so both accents
        lighten along their own hue until they clear AA again. */
     --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7; --dim:#A8BCCA;
     --faint:#7C97AA; --accent:#478EF5; --warn:#E46855; --bad:#E46855;
-    --beak:#F5A623; --chip:#2E3852;
-    --inv-accent:#0B57C4; --inv-dim:#556F82; }}
+    --beak:#F5A623; --chip:#2E3852; }}
   *{box-sizing:border-box}
+  /* Asserted once, here, rather than remembered on forty rules. A single
+     rounded corner anywhere on the page is the thing that breaks the system. */
+  button,input,select,textarea,dialog,img,code{border-radius:var(--radius)}
   body{margin:0;background:var(--bg);color:var(--ink);
-       font:15px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
+       font:16px/1.5 var(--font-body)}
+  h1,h2,h3,h4{font-family:var(--font-heading);font-weight:800;
+    letter-spacing:-.02em;line-height:1.12;margin:0}
   a{color:var(--accent);text-underline-offset:2px}
-  header{max-width:1340px;margin:0 auto;padding:22px 22px 0}
-  .htop{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
-  h1{font-size:20px;margin:0 0 3px;letter-spacing:-.015em}
-  .sub{color:var(--dim);font-size:13px}
-  /* The one thing a visitor can contribute, so it reads as an action rather
-     than a footnote: top of the page, always in view, its own colour. */
-  .addbtn{margin-left:auto;flex:none;font:inherit;font-size:13.5px;font-weight:600;
-    padding:9px 18px;border-radius:20px;border:1px solid var(--accent);
-    background:var(--accent);color:var(--bg);cursor:pointer;text-decoration:none;
-    display:inline-block;white-space:nowrap}
+  /* every column of numbers lines up, which is half of why the deck's tables
+     look the way they do */
+  td,th,.bignum,.tabn,.pline,.pos,.urlbar code,.when,.pay,.cta .n,
+  .newstrip{font-variant-numeric:tabular-nums}
+
+  /* ------------------------------------------------------------- header
+     One line: the wordmark, where you can go, and the one promise that
+     changes whether a stranger keeps reading. */
+  header{max-width:1180px;margin:0 auto;padding:var(--space-3) var(--space-6) 0}
+  .htop{display:flex;gap:var(--space-6);align-items:center;flex-wrap:wrap}
+  h1{font-size:20px;letter-spacing:.04em}
+  nav{display:flex;gap:var(--space-4);flex-wrap:wrap}
+  nav button{background:none;border:0;padding:var(--space-2) 0;font:inherit;
+    font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+    color:var(--dim);cursor:pointer;border-bottom:2px solid transparent}
+  nav button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent)}
+  .tabn{font-variant-numeric:tabular-nums;color:var(--accent);font-size:13px}
+  .hacts{display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap}
+  /* Not a feature, a fact about the deal: nothing on this board asks who you
+     are. It sits in the header because it is the objection a job seeker
+     arrives with. It is a SIBLING of .hacts rather than inside it, so a phone
+     can put it on the wordmark's line instead of spending 24px on a line of
+     its own. */
+  .noacct{margin-left:auto;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--faint);white-space:nowrap}
+  .addbtn{font:inherit;font-size:13px;font-weight:600;padding:var(--space-2) var(--space-4);
+    border:1px solid var(--accent);background:var(--accent);color:var(--bg);cursor:pointer;
+    text-decoration:none;display:inline-block;white-space:nowrap}
   .addbtn:hover{filter:brightness(1.07)}
-  .hacts{margin-left:auto;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
-  .hacts .addbtn{margin-left:0}
-  /* Secondary to "add a company": a visitor contributing to the map helps
-     everyone, whereas an alert helps one person. Same shape, no fill. */
-  .altbtn{font-size:13.5px;font-weight:600;padding:9px 18px;border-radius:20px;
+  .altbtn{font-size:13px;font-weight:600;padding:var(--space-2) var(--space-4);
     border:1px solid var(--line);color:var(--ink);background:var(--panel);
     text-decoration:none;white-space:nowrap;display:inline-block}
   .altbtn:hover{border-color:var(--accent);color:var(--accent)}
-  .syncbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
-    font-size:12.5px;color:var(--dim);background:var(--chip);
-    border-radius:8px;padding:9px 12px;margin-bottom:12px}
-  .syncbar a{font-weight:600}
-  nav{display:flex;gap:3px;margin:16px 0 0;flex-wrap:wrap}
-  nav button{background:none;border:0;padding:8px 14px;border-radius:7px 7px 0 0;font:inherit;
-    font-size:13px;color:var(--dim);cursor:pointer;border-bottom:2px solid transparent}
-  .tabn{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:600;font-size:11.5px}
-  nav button[aria-selected=true]{color:var(--ink);background:var(--panel);
-    border-bottom-color:var(--accent);font-weight:600}
-  main{max-width:1340px;margin:0 auto;padding:0 22px 60px}
-  .panel{background:var(--panel);border:1px solid var(--line);border-radius:0 10px 10px 10px;
-    padding:18px}
-  .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
-  input[type=search],select{font:inherit;font-size:13px;padding:7px 10px;
-    border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink)}
-  input[type=search]{min-width:220px;flex:1}
-  .count{color:var(--faint);font-size:12px;margin-left:auto}
-  table{width:100%;border-collapse:collapse;font-size:13.5px}
-  th{text-align:left;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
-     color:var(--faint);font-weight:600;padding:7px 10px;border-bottom:1px solid var(--line)}
-  td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-  tbody tr:hover{background:var(--chip)}
-  .clk{cursor:pointer}
-  .chip{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--chip);
-    color:var(--dim);white-space:nowrap;display:inline-block}
-  /* What is currently filtering the list, and how to stop it. Same chip
-     vocabulary as everywhere else, one shade quieter than the result count,
-     because this is chrome that should disappear the moment it is empty. */
-  .fchips{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:10px 0 2px}
+  main{max-width:1180px;margin:0 auto;padding:0 var(--space-6) var(--space-8)}
+
+  /* ------------------------------------------------- the head of the page
+     Three questions in one line and one number: what this is, how big it is,
+     how fresh it is. The freshness is the credibility line and it says only
+     what the build date supports - never an hour count nobody recorded. */
+  /* Measured, not guessed. With a 24px pad and a two-line title this head
+     pushed the first job row to 684px and put ONE row above the fold on a
+     900px screen - which is the same failure as the hero it replaced, just
+     tidier. Every number below is on the 4px scale and was chosen against a
+     measurement. */
+  .phead{border-top:1px solid var(--line);padding-top:var(--space-4);margin-top:var(--space-3)}
+  /* No max-width: the title fits one line at 42px inside the 1180px column,
+     and wrapping it cost 43px of the fold to buy nothing. */
+  .ptitle{font-size:42px;line-height:1.02}
+  .pline{margin:var(--space-3) 0 0;font-size:16px;color:var(--dim)}
+  .pline strong{color:var(--ink);font-weight:600}
+
+  .search{display:flex;margin-top:var(--space-4);max-width:720px}
+  .search input{flex:1;min-width:0;font:inherit;font-size:16px;padding:var(--space-3) var(--space-4);
+    border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+  .search input:focus{outline:2px solid var(--accent);outline-offset:-2px}
+  .search button{font:inherit;font-size:16px;font-weight:600;
+    padding:var(--space-3) var(--space-6);border:1px solid var(--ink);border-left:0;
+    background:var(--ink);color:var(--bg);cursor:pointer;white-space:nowrap}
+
+  .filters{display:flex;gap:var(--space-1);flex-wrap:wrap;align-items:stretch;
+    margin-top:var(--space-3)}
+  .filters select,.pill{font:inherit;font-size:13px;padding:var(--space-2) var(--space-3);
+    border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+  /* A <select> sizes itself to its WIDEST option, so "Postings we could not
+     read" was setting the width of a control whose closed state says "Any
+     pay". Capped, because the row wrapping to two lines costs 44px of the
+     fold - measured - and the open list is unaffected. */
+  .filters select{max-width:160px}
+  .filters select:focus,.pill:focus{outline:2px solid var(--accent);outline-offset:-2px}
+  .pill[aria-pressed=true]{border-color:var(--ink)}
+  .pill .v{color:var(--faint)}
+  .pill .v.on{color:var(--accent);font-weight:600}
+  .seg{display:inline-flex;border:1px solid var(--line);background:var(--panel)}
+  .seg button{font:inherit;font-size:13px;padding:var(--space-2) var(--space-3);border:0;
+    background:none;color:var(--dim);cursor:pointer}
+  .seg button+button{border-left:1px solid var(--line)}
+  .seg button[aria-pressed=true]{background:var(--ink);color:var(--bg);font-weight:600}
+  /* the overflow filters. Same controls, one click away. */
+  .bar{display:flex;gap:var(--space-2);flex-wrap:wrap;align-items:center;
+    margin-top:var(--space-2);padding:var(--space-3);border:1px solid var(--line);
+    background:var(--panel)}
+  .bar select{font:inherit;font-size:13px;padding:var(--space-2) var(--space-3);
+    border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+
+  /* ------------------------------------------------------------ the url
+     Shown on purpose. A filtered view is a shareable object, which is also
+     the cheapest distribution this board has - and it is the LIVE address,
+     never a decorative one, because a query string that does not work is a
+     lie in the shape of a feature. */
+  .urlbar{display:flex;gap:var(--space-3);align-items:center;margin-top:var(--space-3);
+    border:1px solid var(--line);background:var(--panel);padding:var(--space-2) var(--space-3)}
+  /* the caption rides inside the bar rather than under it: as its own line it
+     was 24px of fold for four words */
+  .urlbar .lead{font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--faint);font-weight:600;white-space:nowrap;flex:none}
+  .urlwrap{flex:1;min-width:0;overflow-x:auto}
+  .urlbar code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);
+    white-space:nowrap}
+  .urlbar button{font:inherit;font-size:13px;font-weight:600;padding:var(--space-1) var(--space-3);
+    border:1px solid var(--line);background:var(--bg);color:var(--accent);cursor:pointer;
+    white-space:nowrap;flex:none}
+  .urlcap{font-size:13px;color:var(--faint);margin:var(--space-1) 0 0}
+
+  /* "New this run" is worth leading with and is not worth a screen. A strip,
+     not three posters. Beak is a rule here, which is the one thing it is
+     allowed to be. */
+  .newstrip{display:flex;gap:var(--space-3);align-items:baseline;flex-wrap:wrap;
+    border-left:3px solid var(--beak);background:var(--panel);
+    padding:var(--space-2) var(--space-3);margin-top:var(--space-3);font-size:13px;
+    color:var(--dim)}
+  .newstrip strong{color:var(--ink)}
+  .newstrip a{font-weight:600}
+  .newstrip .lead{color:var(--faint);letter-spacing:.08em;text-transform:uppercase;
+    font-weight:600}
+
+  /* --------------------------------------------------------- filter chips */
+  .fchips{display:flex;gap:var(--space-2);flex-wrap:wrap;align-items:center;
+    margin:var(--space-3) 0 0}
   .fchips:empty{display:none}
-  .fchip{display:inline-flex;align-items:center;gap:2px;font-size:11px;
-    border-radius:20px;background:var(--chip);color:var(--dim);padding-left:10px}
+  .fchip{display:inline-flex;align-items:center;font-size:13px;background:var(--chip);
+    color:var(--dim);padding-left:var(--space-3)}
   .fchip button{font:inherit;font-size:14px;line-height:1;background:none;border:0;
-    color:var(--faint);cursor:pointer;padding:0 8px;height:24px;border-radius:0 20px 20px 0}
+    color:var(--faint);cursor:pointer;padding:0 var(--space-2);height:26px}
   .fchip button:hover{color:var(--bad)}
-  .fclear{font:inherit;font-size:11px;background:none;border:0;color:var(--dim);
-    cursor:pointer;text-decoration:underline;text-underline-offset:2px;padding:4px 2px}
+  .fclear{font:inherit;font-size:13px;background:none;border:0;color:var(--dim);
+    cursor:pointer;text-decoration:underline;text-underline-offset:2px;padding:var(--space-1)}
   .fclear:hover{color:var(--ink)}
+
+  /* -------------------------------------------------------- the list itself
+     THE LIST IS THE PRODUCT. Dense rows, newest first, and the count says
+     what the filter did to the board rather than only what survived it. */
+  .rhead{display:flex;gap:var(--space-3);align-items:baseline;flex-wrap:wrap;
+    margin-top:var(--space-4);padding-bottom:var(--space-2)}
+  .rhead h3{font-size:20px}
+  .rhead .n{font-size:13px;color:var(--dim)}
+  .jt{width:100%;border-collapse:collapse;table-layout:auto}
+  .jt th{text-align:left;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--faint);font-weight:600;padding:var(--space-2) var(--space-3);
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--line);white-space:nowrap}
+  .jt td{padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--line);
+    vertical-align:top;font-size:13px;color:var(--dim)}
+  .jt tbody tr{cursor:pointer}
+  .jt tbody tr:hover{background:var(--panel)}
+  .jt td.role{font-size:16px;color:var(--ink);font-weight:600;line-height:1.25;
+    letter-spacing:-.01em}
+  .jt td.co{color:var(--ink)}
+  .jt .cowrap{display:flex;gap:var(--space-2);align-items:center}
+  .jt .tile{width:22px;height:22px;flex:none;display:flex;align-items:center;
+    justify-content:center;font-size:11px;font-weight:700}
+  .jt td.right{text-align:right;white-space:nowrap}
+  .jt th.right{text-align:right}
+  .jt td.act{width:36px;padding-left:0;padding-right:var(--space-2);text-align:right}
+  .jt .qm{color:var(--accent);font-weight:600;font-size:13px}
+  .jt .when.new{color:var(--accent);font-weight:600}
+  /* NO .dead RULE HERE, DELIBERATELY. The deck asks for a posting that has
+     come off the board to be struck through for a day rather than silently
+     vanishing. We do not know which postings those are: the site is served
+     data/board.json and nothing else, and board.json is today's live list.
+     The previous snapshots that would answer it (data/history/*.json) are not
+     shipped by build_site.py. Styling a state we cannot detect is how a
+     feature gets believed in, so there is no style for it and no renderer -
+     see the report, which names the one field that would light it up. */
+
   /* Pay. A figure we actually have gets the accent, because it is the fact a
-     reader is scanning for. Silence gets --faint, the same colour every other
-     "not stated" on this board already uses - it is a state, not a warning,
-     and it must never look like a zero. */
+     reader is scanning for. Silence is an em dash in --faint, the same colour
+     every other "not stated" on this board already uses - it is a state, not
+     a warning, and it must never look like a zero. */
   .pay{color:var(--accent);font-weight:600;white-space:nowrap}
   .paynone{color:var(--faint)}
-  /* the one click that puts the set-aside postings back. Reads as the link it
-     is, and matches #j-relax, which is the same idea for the quota pill. */
+  /* the one click that puts the set-aside postings back */
   .payall,.payoff{color:var(--accent);cursor:pointer;font-weight:600}
+  .colink{color:var(--accent);cursor:pointer;font-weight:600;white-space:nowrap}
+
+  /* ------------------------------------------------------------ pagination
+     In the URL, not a scroll trap: page 2 is an address you can send. */
+  .pager{display:flex;gap:var(--space-4);align-items:center;flex-wrap:wrap;
+    padding:var(--space-4) 0;border-bottom:1px solid var(--line)}
+  .pager button{font:inherit;font-size:13px;font-weight:600;
+    padding:var(--space-2) var(--space-4);border:1px solid var(--line);
+    background:var(--panel);color:var(--accent);cursor:pointer}
+  .pager button:disabled{color:var(--faint);cursor:default}
+  .pager .pos{font-size:13px;color:var(--dim)}
+  .pager .cap{font-size:13px;color:var(--faint);margin-left:auto}
+
+  /* One primary action on the whole page, and it is the digest - not a signup
+     wall. Every apply link goes straight out to the employer's own board. */
+  .cta{display:flex;gap:var(--space-4);align-items:center;flex-wrap:wrap;
+    border:1px solid var(--line);background:var(--panel);padding:var(--space-4);
+    margin-top:var(--space-6)}
+  .cta .n{font-family:var(--font-heading);font-size:25px;font-weight:800;line-height:1.1}
+  .cta .t{font-size:13px;color:var(--dim);max-width:52ch}
+  .cta .go{font-size:16px;font-weight:600;padding:var(--space-3) var(--space-4);
+    background:var(--accent);color:var(--bg);text-decoration:none;white-space:nowrap;
+    margin-left:auto}
+
+  /* ------------------------------------------------------------- fragments */
+  .sub{color:var(--dim);font-size:13px}
+  .kv{color:var(--dim);font-size:13px;margin:var(--space-1) 0 0}
+  .chip{font-size:13px;padding:2px var(--space-2);background:var(--chip);
+    color:var(--dim);white-space:nowrap;display:inline-block}
   .ok{color:var(--accent)} .warn{color:var(--warn)} .bad{color:var(--bad)}
-  .num{text-align:right;font-variant-numeric:tabular-nums}
-  .kv{color:var(--dim);font-size:12.5px;margin:3px 0 0}
   .wrap{overflow-x:auto}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;
-    margin-bottom:16px}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:12px 14px}
-  .bignum{font-size:25px;font-weight:600;letter-spacing:-.02em}
-  .lbl{font-size:11.5px;color:var(--dim);margin-top:2px}
-  .hint{font-size:12px;color:var(--faint);margin-top:12px;line-height:1.65}
-  .barfill{display:inline-block;height:8px;border-radius:4px;background:var(--accent);
-    vertical-align:middle;margin:0 8px}
-  .empty{color:var(--faint);padding:26px 0;text-align:center;font-size:13px}
+  .hint{font-size:13px;color:var(--dim);margin-top:var(--space-3);line-height:1.6}
+  .barfill{display:inline-block;height:8px;background:var(--accent);
+    vertical-align:middle;margin:0 var(--space-2)}
+  .foot{font-size:13px;color:var(--dim);margin:var(--space-6) 0 0;line-height:1.7;
+    max-width:80ch;border-top:1px solid var(--line);padding-top:var(--space-4)}
+  /* What we do not know, said where it is relevant rather than in a footnote.
+     Belly on Ice with one hairline; no shouting, no icon. */
+  .note{border:1px solid var(--line);background:var(--panel);
+    padding:var(--space-3) var(--space-4);margin-top:var(--space-4);font-size:16px;
+    color:var(--dim);max-width:76ch;line-height:1.5}
+  .note strong{color:var(--ink)}
+  .note.flag{border-left:3px solid var(--beak)}
+
+  /* An empty result gets the ghosted penguin, which is what it is for. */
+  .empty{color:var(--dim);padding:var(--space-8) 0;text-align:center;font-size:16px;
+    line-height:1.6}
+  .empty img{width:88px;height:88px;display:block;margin:0 auto var(--space-4)}
+
+  .syncbar{display:flex;gap:var(--space-3);align-items:center;flex-wrap:wrap;
+    font-size:13px;color:var(--dim);background:var(--chip);padding:var(--space-2) var(--space-3);
+    margin-bottom:var(--space-3)}
+  .syncbar a{font-weight:600}
+
   /* the company's own site sits beside its board: you read the company
      before you read its jobs */
-  .cohead{display:flex;gap:14px;align-items:center;margin:6px 0 2px}
-  .cotile{width:56px;height:56px;border-radius:15px;display:flex;align-items:center;
-    justify-content:center;font-size:17px;font-weight:700;flex:none}
-  .colinks{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0 0}
-  .golink{font-size:13.5px;font-weight:600}
+  .cohead{display:flex;gap:var(--space-4);align-items:center;margin:var(--space-2) 0 0}
+  .cotile{width:56px;height:56px;display:flex;align-items:center;
+    justify-content:center;font-size:20px;font-weight:800;flex:none}
+  .colinks{display:flex;gap:var(--space-3);align-items:center;flex-wrap:wrap;
+    margin:var(--space-3) 0 0}
+  .golink{font-size:16px;font-weight:600}
 
-  /* ------------------------------------------------ the store treatment
-     From the Claude Design pass (option 4a, "quiet chrome, loud content").
-     Translated to tokens rather than the design's hardcoded hexes, because
-     the app has a dark theme and the design was drawn light-only. */
-  /* The hero was 923px tall and the first job started 3,733px down the page -
-     four screens of scrolling before a job board showed a job. On a board,
-     THE LIST IS THE PRODUCT; the hero's whole job is to say what this is and
-     hand over the search box, then get out of the way. It is now a band, not
-     a screen, and the penguin carries the identity so the type does not have
-     to shout it. */
-  .hero{max-width:1180px;margin:0 auto;padding:20px 0 0;display:flex;
-    align-items:center;gap:26px;text-align:left}
-  .hero .hpeng{width:132px;flex:none}
-  .herotext{flex:1;min-width:0}
-  .hero h2{margin:0;font-size:27px;line-height:1.12;letter-spacing:-.022em;
-    font-weight:700;text-wrap:balance}
-  .hero p{margin:5px 0 0;font-size:14px;color:var(--dim);max-width:62ch;
-    text-wrap:pretty;line-height:1.5}
-  .hsearch{max-width:660px;margin:14px 0 0;position:relative}
-  .hsearch input{font:inherit;font-size:16px;padding:17px 24px;border:1px solid var(--line);
-    border-radius:30px;background:var(--panel);color:var(--ink);width:100%;
-    box-shadow:0 1px 2px rgba(26,24,21,.06),0 14px 44px rgba(26,24,21,.09)}
-  .hsearch button{position:absolute;right:7px;top:7px;bottom:7px;padding:0 22px;
-    border-radius:24px;border:0;background:var(--accent);color:#fff;font:inherit;
-    font-size:13.5px;font-weight:600;cursor:pointer}
-  .pills{justify-content:flex-start;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}
-  .pill{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;
-    border-radius:22px;border:1px solid var(--line);background:var(--panel);color:var(--ink);
-    font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;white-space:nowrap}
-  .pill:hover{border-color:var(--ink)}
-  .pill[aria-pressed=true]{border-color:var(--ink)}
-  .pill .v{color:var(--faint);font-weight:400}
-  .pill .v.on{color:var(--accent);font-weight:600}
-  .seg{display:inline-flex;align-items:center;height:44px;padding:4px;border-radius:22px;
-    border:1px solid var(--line);background:var(--panel)}
-  .seg button{height:36px;padding:0 16px;border-radius:18px;border:0;background:none;
-    color:var(--dim);font:inherit;font-size:13px;cursor:pointer}
-  .seg button[aria-pressed=true]{background:var(--ink);color:var(--bg);font-weight:600}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:var(--space-3);margin-bottom:var(--space-4)}
+  .card{background:var(--panel);border:1px solid var(--line);padding:var(--space-3) var(--space-4)}
+  .bignum{font-size:25px;font-weight:800;font-family:var(--font-heading);letter-spacing:-.02em}
+  .lbl{font-size:13px;color:var(--faint);margin-top:var(--space-1);
+    letter-spacing:.08em;text-transform:uppercase}
+  /* The 13px slot is "uppercase, letterspaced" in the ramp, and that is right
+     for two or three words. Set on a whole sentence it becomes unreadable, so
+     the one card that carries a sentence opts out. */
+  .lbl.sentence{text-transform:none;letter-spacing:0;color:var(--dim)}
 
-  /* "New this run" is a good idea that was taking 1,266px - most of a screen,
-     on a page where the first job did not appear until 3,733px down. It keeps
-     its place at the top because freshness is worth leading with; it just
-     stops behaving like a landing page. Three tight cards, not three posters. */
-  .shelf{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:12px;margin-top:12px}
-  .feature{background:var(--ink);color:var(--bg);border-radius:14px;padding:16px 18px;
-    display:flex;flex-direction:column;box-shadow:0 10px 26px rgba(31,37,54,.14)}
-  .feature .why{font-size:12px;color:var(--inv-dim);margin-top:8px;line-height:1.5;
-    text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;
-    overflow:hidden}
-  .ncard{background:var(--panel);border:1px solid var(--line);border-radius:14px;
-    padding:16px 18px;display:flex;flex-direction:column;
-    box-shadow:0 6px 18px rgba(31,37,54,.05)}
-  .mono-tile{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;
-    justify-content:center;font-size:14px;font-weight:700}
-  .sechead{display:flex;align-items:baseline;gap:12px;margin-top:26px}
-  .sechead h3{margin:0;font-size:22px;letter-spacing:-.02em;font-weight:700}
-  .sechead .n{font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums}
-
-  .list{background:var(--panel);border:1px solid var(--line);border-radius:22px;margin-top:18px;
-    box-shadow:0 10px 30px rgba(26,24,21,.06);overflow:hidden}
-  .row{display:flex;gap:16px;align-items:center;padding:17px 24px}
+  /* the row list, still used by Companies, Saved and "also open here" */
+  .list{background:var(--panel);border:1px solid var(--line);margin-top:var(--space-3)}
+  .row{display:flex;gap:var(--space-3);align-items:center;padding:var(--space-3) var(--space-4)}
   .row:hover{background:var(--bg)}
-  .row + .row{border-top:1px solid var(--chip)}
+  .row + .row{border-top:1px solid var(--line)}
   /* every tile that can hold a logo must contain it: the image is absolutely
      positioned, so a tile without position:relative lets it size against the
      page - which is exactly what a new .cotile did, at full viewport width */
-  .tile,.mono-tile,.cotile{position:relative;overflow:hidden}
-  .tile img,.mono-tile img,.cotile img{position:absolute;inset:0;width:100%;
-    height:100%;object-fit:contain;background:#fff;padding:5px}
-  .row .tile{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;
-    justify-content:center;font-size:14px;font-weight:700;flex:none}
+  .tile,.cotile{position:relative;overflow:hidden}
+  .tile img,.cotile img{position:absolute;inset:0;width:100%;height:100%;
+    object-fit:contain;background:#fff;padding:3px}
+  .row .tile{width:36px;height:36px;display:flex;align-items:center;
+    justify-content:center;font-size:13px;font-weight:700;flex:none}
   .row .main{flex:1;min-width:0}
-  .row .t{font-size:15.5px;font-weight:650;letter-spacing:-.01em}
+  .row .t{font-size:16px;font-weight:600;letter-spacing:-.01em}
   .row .m{font-size:13px;color:var(--dim);margin-top:2px}
-  .row .when{font-size:12.5px;white-space:nowrap;color:var(--faint)}
-  .row .when.new{color:var(--accent);font-weight:600}
-  .savebtn{flex:none;background:none;border:0;padding:6px;border-radius:8px;cursor:pointer;
+  .row .when{font-size:13px;white-space:nowrap;color:var(--faint)}
+  .clk{cursor:pointer}
+  .savebtn{flex:none;background:none;border:0;padding:var(--space-1);cursor:pointer;
     color:var(--faint);line-height:0}
   .savebtn:hover{color:var(--ink);background:var(--chip)}
   .savebtn[aria-pressed=true]{color:var(--accent)}
-  .more{padding:14px 24px;border-top:1px solid var(--chip);text-align:center;font-size:13px;
-    font-weight:600;color:var(--accent);cursor:pointer}
+  .more{padding:var(--space-3) var(--space-4);border-top:1px solid var(--line);
+    text-align:center;font-size:13px;font-weight:600;color:var(--accent);cursor:pointer}
   .more:hover{background:var(--bg)}
-  .foot{font-size:12px;color:var(--faint);margin:22px auto 0;line-height:1.7;max-width:76ch;
-    text-align:center;text-wrap:pretty}
+  .sechead{display:flex;align-items:baseline;gap:var(--space-3);margin-top:var(--space-6)}
+  .sechead h3{font-size:20px}
+  .sechead .n{font-size:13px;color:var(--faint)}
 
-  @media (max-width:900px){ .shelf{grid-template-columns:1fr} }
-  @media (max-width:768px){
-    .hero{padding:26px 0 0}
-    /* 44px is a desktop display size; on a 390px screen it pushed the search,
-       the filters and every posting below the fold. */
-    .hero{flex-direction:column;align-items:flex-start;gap:10px;padding-top:14px}
-    .hero .hpeng{width:88px}
-    .hero h2{font-size:22px;line-height:1.15;letter-spacing:-.018em}
-    .hero p{font-size:13.5px;margin-top:6px}
-    .hsearch{margin-top:12px}
-    /* right padding clears the Search button, which was overlapping the
-       placeholder text */
-    .hsearch input{font-size:15px;padding:14px 108px 14px 18px}
-    .hsearch button{padding:0 18px;font-size:13px}
-    .pills{gap:7px;margin-top:14px}
-    .pill,.seg{height:40px}
-    .seg button{height:32px;padding:0 13px}
-    .sechead{margin-top:32px;flex-wrap:wrap;gap:6px}
-    .sechead h3{font-size:19px}
-    .feature,.ncard{border-radius:16px;padding:20px}
-    .feature > div:nth-child(2){margin-top:22px!important;font-size:19px!important}
-    .list{border-radius:16px}
-    .row{padding:14px 15px;gap:12px}
-    .row .tile{width:38px;height:38px;border-radius:11px;font-size:12.5px}
-    .row .t{font-size:14.5px}
-    .row .m{font-size:12.5px}
-    .row .when{display:none}          /* the date is the first thing to go */
-    #j-bar{flex-direction:column}
-    #j-bar select{width:100%}
+  /* the company card's own table, and anything else that is a plain table */
+  table:not(.jt){width:100%;border-collapse:collapse;font-size:13px}
+  table:not(.jt) th{text-align:left;font-size:13px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--faint);font-weight:600;
+    padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--line)}
+  table:not(.jt) td{padding:var(--space-2) var(--space-3);
+    border-bottom:1px solid var(--line);vertical-align:top}
+
+  /* -------------------------------------------------------------- tablet */
+  @media (max-width:1000px){
+    .ptitle{font-size:32px}
   }
 
-  /* ---------------------------------------------------------------- phones
-     Below 768px the table becomes a card list. Six columns cannot survive a
-     375px screen and a horizontal scroll is not an answer: on a phone the
-     three facts that matter are the role, who it is with, and whether it
-     carries a number. Everything else drops to a chip row.
-
-     Done in CSS rather than a second render path, so there is one source of
-     truth for what a row contains. */
+  /* -------------------------------------------------------------- phones
+     Below 768px the job table becomes a card list. Five columns cannot
+     survive a 375px screen and a horizontal scroll is not an answer: on a
+     phone the facts that matter are the role, who it is with, and whether it
+     carries a number. Done in CSS rather than a second render path, so there
+     is one source of truth for what a row contains. */
   @media (max-width:768px){
-    header{padding:16px 14px 0}
-    main{padding:0 14px 48px}
+    header{padding:var(--space-3) var(--space-4) 0}
+    main{padding:0 var(--space-4) var(--space-8)}
+    /* Measured: stacked, this header took 241px and the filter column took
+       218 more, and the first job row landed at 992px - nothing above the
+       fold at all, which is the hero problem again in a narrower window.
+       Three lines: wordmark and the promise, then the nav, then the two
+       actions. The nav and the filter row scroll sideways INSIDE themselves;
+       the page still does not. */
+    .htop{gap:var(--space-2)}
     h1{font-size:18px}
-    /* wrapped to its own line, a right-aligned pill reads as stranded */
-    .hacts{margin-left:0;width:100%;margin-top:12px}
-    /* Two buttons sharing a phone-width row land at 41px tall, just under the
-       44px a thumb needs. */
-    .hacts>*{flex:1;text-align:center;min-height:44px;display:flex;
+    .noacct{order:2;font-size:11px}
+    nav{order:3;gap:var(--space-3);width:100%;overflow-x:auto;flex-wrap:nowrap;
+      -webkit-overflow-scrolling:touch;scrollbar-width:none}
+    nav::-webkit-scrollbar{display:none}
+    nav button{white-space:nowrap;padding:var(--space-1) 0}
+    .hacts{order:4;margin-left:0;width:100%}
+    .hacts>*{flex:1;text-align:center;min-height:40px;display:flex;
       align-items:center;justify-content:center}
-    .addbtn{margin-left:0;text-align:center}
-    .panel{padding:14px;border-radius:0 10px 10px 10px}
+    .phead{padding-top:var(--space-3)}
+    .ptitle{font-size:25px}
+    .pline{font-size:13px}
+    .search{margin-top:var(--space-3)}
+    .search input{font-size:16px;padding:var(--space-3)}
+    .search button{padding:var(--space-3) var(--space-4)}
+    /* one swipeable row rather than a column of six */
+    .filters{gap:var(--space-2);flex-wrap:nowrap;overflow-x:auto;
+      -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+    .filters::-webkit-scrollbar{display:none}
+    .filters>*{flex:none}
+    .filters select,.pill,.seg button{min-height:40px}
+    .bar{flex-direction:column;align-items:stretch}
+    .bar select{width:100%;min-height:40px;max-width:none}
+    /* the caption is the one thing that goes: the Copy button says what the
+       bar is for, and four words of label cost 79px of fold here */
+    .urlbar .lead{display:none}
+    /* the debut sentence is a nicety and was four lines of it. The counts and
+       the link are the part a thumb acts on. And as a wrapping flex row each
+       fragment claimed a line of its own; as running text it is three. */
+    .newstrip .debut{display:none}
+    .newstrip{display:block}
+    .newstrip .lead{margin-right:var(--space-2)}
+    .newstrip a{margin-left:var(--space-1)}
+    .urlbar{flex-wrap:nowrap}
+    .cta .go{margin-left:0;width:100%;text-align:center}
 
-    /* the filter row is ten selects; on a phone it hides behind the More
-       filters pill, which adds .open - see setBarOpen() */
-    .bar{flex-direction:column;align-items:stretch;gap:7px}
-    .bar:not(.open) select{display:none}
-    .bar input[type=search]{min-width:0;width:100%;padding:10px 11px;min-height:40px}
-    .bar select{width:100%;padding:10px 11px;min-height:40px}
-    .count{margin-left:0;order:99}
-    .fchip{font-size:12px}
-    .fchip button{height:32px;padding:0 11px;font-size:15px}
-    .fclear{font-size:12px;padding:8px 4px}
-
-    .wrap{overflow-x:visible}
-    table,thead,tbody,tr,td{display:block;width:auto}
-    thead{position:absolute;left:-9999px}          /* keep it for screen readers */
-    table{border-collapse:separate}
-    tbody tr{border:1px solid var(--line);border-radius:9px;padding:12px 13px;
-      margin-bottom:9px;background:var(--panel)}
-    tbody tr:hover{background:var(--panel)}
-    td{border:0;padding:0}
-
-    /* role is the heading, company sits under it, the rest becomes chips */
-    td:nth-child(1){font-size:14.5px;font-weight:600;line-height:1.35}
-    td:nth-child(2){font-size:13.5px;margin-top:4px}
-    td:nth-child(3),td:nth-child(4),td:nth-child(5){display:inline-block;font-size:12px;
-      margin:6px 6px 0 0}
-    td:nth-child(4)::before{content:"· "}
-    td:nth-child(5):not(:empty)::before{content:"· "}
-    td:nth-child(6){display:block;margin-top:7px;font-size:12.5px}
-    td .chip{margin:3px 4px 0 0}
-    td a{display:inline-block;min-height:24px}
+    .jt,.jt thead,.jt tbody,.jt tr,.jt td{display:block;width:auto}
+    .jt thead{position:absolute;left:-9999px}   /* kept for screen readers */
+    .jt tbody tr{border:1px solid var(--line);background:var(--panel);
+      padding:var(--space-3);margin-bottom:var(--space-2);position:relative}
+    .jt tbody tr:hover{background:var(--panel)}
+    .jt td{border:0;padding:0}
+    .jt td.role{font-size:16px;line-height:1.25;padding-right:32px}
+    .jt td.co{margin-top:var(--space-1)}
+    .jt td.loc,.jt td.sal,.jt td.age{display:inline-block;font-size:13px;
+      margin:var(--space-1) var(--space-2) 0 0;text-align:left}
+    .jt td.sal::before{content:"pay "}
+    /* the bookmark rides in the corner instead of taking a line of its own */
+    .jt td.act{position:absolute;top:var(--space-2);right:var(--space-2);
+      width:auto;margin:0;padding:0}
+    .pager{gap:var(--space-2)}
+    .pager .cap{margin-left:0;flex-basis:100%}
+    .row{padding:var(--space-3)}
+    .row .when{display:none}          /* the date is the first thing to go */
+    table:not(.jt) td,table:not(.jt) th{padding:var(--space-2)}
   }
 </style>
 </head>
 <body>
+<!-- The wordmark, where you can go, and the promise that decides whether a
+     stranger keeps reading. The totals used to sit here as a second line and
+     have moved into the page head, next to the title they belong to - saying
+     the same numbers twice on one screen is how a reader learns to skip a
+     line. -->
 <header>
   <div class="htop">
-    <div>
-      <h1>SLED JOBS</h1>
-      <div class="sub" id="sub">loading</div>
-    </div>
+    <h1>SLED JOBS</h1>
+    <nav id="tabs"></nav>
+    <span class="noacct">no account needed</span>
     <div class="hacts">
       <a class="altbtn" href="/alerts">Get alerts</a>
       <a class="addbtn"
@@ -305,11 +432,6 @@
          id="addco" onclick="openAdd(event)">+ Add a company</a>
     </div>
   </div>
-  <div class="sub" style="margin-top:6px;color:var(--faint)">
-    Missing a company? Submit a link: a bot works out the sector and board, then a
-    person reviews it.
-  </div>
-  <nav id="tabs"></nav>
 </header>
 <main><div class="panel" id="view"></div></main>
 
@@ -424,7 +546,11 @@ function safeUrl(u){
   catch{return ""}
 }
 let D=null, tab="jobs", PENDING_URL=null, ROLE=null;
-const TABS=[["jobs","Job board"],["companies","Companies"],["saved","Saved"],["intel","Market intel"]];
+/* "How listings get here" is in the deck's header for a reason: this board's
+   whole claim is that it says where a number came from, and a stranger has
+   nowhere to check that unless it is one click from the top of every page. */
+const TABS=[["jobs","Jobs"],["companies","Companies"],["saved","Saved"],
+  ["intel","Market intel"],["how","How listings get here"]];
 const FAM={gtm:"GTM",cs:"Customer Success",ops:"Ops / RevOps",engineering:"Engineering",
   product:"Product & Design",data:"Data & Research",policy:"Policy & Gov Affairs",
   ga:"G&A",exec:"Executive",field:"Field & implementation",other:"Unclassified"};
@@ -503,6 +629,204 @@ function parseQuery(q){
 }
 const inSector=(r,s)=>r.sector===s||(r.also||[]).some(a=>a.sector===s);
 const inCategory=(r,c)=>r.category===c||(r.also||[]).some(a=>a.category===c);
+
+/* ------------------------------------------ searching COMPANIES by MEANING
+   The jobs tab reads a query as facts the pipeline already derived. A company
+   has no such facts - what it has is a BUCKET: one of 12 sectors and one of
+   ~50 categories in data/schema.json, put there by hand and by the sort
+   board. So: the same idea pointed at that vocabulary. "recreation" is not a
+   string to go find inside a description, it is the name of a bucket, and the
+   answer is the companies filed in it.
+
+   That is the whole difference between this and what was here before. The old
+   search asked "does this string appear anywhere in the row", which returned
+   companies whose description happens to say "recreation" and missed the ones
+   that say "activity registration" - the words a person types and the words a
+   vendor writes about itself are simply not the same words.
+
+   TWO THINGS THIS IS NOT, said plainly, because a search nobody can audit is
+   a search nobody should trust:
+
+   - It is not an embedding model. It is a written-down map of phrases onto
+     buckets, canonical in scripts/semantic.py. That is a real limitation - it
+     knows only words somebody wrote down - and it buys two things a model
+     does not hand you: the same query returns the same companies forever, and
+     it can say WHY on screen, which is the sentence printed above the list.
+   - It is not a replacement for plain text. A word the map does not know
+     still matches text, so nothing got worse. And when the map DOES resolve,
+     the companies the words landed on OUTSIDE the bucket are counted and
+     offered rather than dropped - "showing 46" while quietly discarding 188
+     is the same lie as "no companies match", told with a bigger number.
+
+   DUPLICATED FROM scripts/semantic.py AND THEREFORE IT WILL ROT. The site has
+   no build step, so the map has to be a literal here. `python3
+   scripts/semantic.py --check` fails when these two blocks drift from the
+   Python; `--emit` prints the replacement to paste back. Same arrangement,
+   and the same reason, as alerts.js restating roles.py's vocabulary: drift is
+   silent here - a phrase quietly stops resolving, the tab returns fewer
+   companies, and it looks exactly like an honest empty. */
+const CO_STOP=/* CO-STOP */["software","platform","platforms","solution","solutions","tech","technology","technologies","saas","app","apps","product","products","tool","tools","vendor","vendors","company","companies","provider","providers","system","systems","govtech","gov","government","municipal","municipality","public sector","sector","space","industry"]/* /CO-STOP */;
+const COCONCEPTS=/* CONCEPT-MAP */[
+ {"say":["public safety","first responder","first responders"],"go":[["Public Safety",null]]},
+ {"say":["911","9-1-1","911 dispatch","911 call taking","dispatch","dispatching","cad","computer aided dispatch","computer-aided dispatch","emergency dispatch","psap","next generation 911","ng911","call taking","emergency call"],"go":[["Public Safety","Police"],["Public Safety","Fire"],["Public Safety","EMS"],["Public Safety","Emergency Mgmt"]]},
+ {"say":["police","policing","law enforcement","sheriff","cops","body camera","body cameras","bodycam","body-worn camera","records management","police records","evidence management","digital evidence","alpr","license plate reader","gunshot detection","real time crime center","investigations","crime","crime analytics","citation","citations"],"go":[["Public Safety","Police"]]},
+ {"say":["fire","fire department","fire service","firefighting","firefighter","firefighters","wildfire","wildfires","station alerting","fire inspection","fire records"],"go":[["Public Safety","Fire"]]},
+ {"say":["ems","emergency medical","ambulance","paramedic","paramedics","epcr","patient care reporting","medic"],"go":[["Public Safety","EMS"]]},
+ {"say":["emergency management","emergency mgmt","emergency operations","mass notification","alerting","disaster","disasters","disaster recovery","eoc","preparedness","continuity","incident management","resilience"],"go":[["Public Safety","Emergency Mgmt"]]},
+ {"say":["corrections","correctional","jail","jails","prison","prisons","inmate","inmates","detention","offender","offenders","booking"],"go":[["Public Safety","Corrections"]]},
+ {"say":["public works","dpw"],"go":[["Public Works",null]]},
+ {"say":["waste","solid waste","trash","garbage","refuse","recycling","landfill","landfills","sanitation","curbside","hauling","haulers","organics","compost"],"go":[["Public Works","Waste & Recycling"]]},
+ {"say":["streets","street","roads","road","roadway","pavement","paving","pothole","potholes","sidewalk","sidewalks","right of way","snow","snow plow","plowing","plow","striping","work zone","traffic signal","traffic signals","traffic","road maintenance","street maintenance"],"go":[["Public Works","Streets"]]},
+ {"say":["water","drinking water","wastewater","sewer","sewers","stormwater","storm water","hydrant","hydrants","leak detection","water quality","water main","water mains","treatment plant","backflow"],"go":[["Public Works","Water"]]},
+ {"say":["water utility","water utilities","water district","water meter","water meters"],"go":[["Public Works","Water"],["Utilities & Energy","Billing & Customer Systems"]]},
+ {"say":["fleet","fleet management","fleet maintenance","vehicles","asset management","asset inventory","work order","work orders","cmms","telematics","gis","geospatial","mapping","infrastructure inspection","maintenance management"],"go":[["Public Works","Fleet & Asset Mgmt"]]},
+ {"say":["general gov","general government","city hall","administration","clerk","city clerk","records","agenda","agendas","meeting management","minutes","public records","foia"],"go":[["General Gov",null]]},
+ {"say":["citizen services","311","constituent","constituents","resident services","residents","citizen engagement","service request","service requests","self service","digital services","customer service"],"go":[["General Gov","Citizen Services"]]},
+ {"say":["permitting","permit","permits","licensing","license","licenses","land management","code enforcement","inspections","inspection","plan review","building department","building","business license","business licensing","occupancy"],"go":[["General Gov","Permitting & Licensing"]]},
+ {"say":["zoning","land use"],"go":[["General Gov","Permitting & Licensing"],["Housing & Community Dev","Planning & Economic Development"]]},
+ {"say":["finance","erp","accounting","budget","budgeting","general ledger","financial management","audit","auditing","fund accounting","treasury"],"go":[["General Gov","Finance & ERP"]]},
+ {"say":["procurement","purchasing","bids","bidding","bid","rfp","rfps","sourcing","contract management","contracts","e-procurement","eprocurement","supplier management","payments","payment processing","billing","cashiering","revenue collection","collections"],"go":[["General Gov","Procurement & Payments"]]},
+ {"say":["grants","grant management","grant"],"go":[["General Gov","Procurement & Payments"],["Higher Education","Business & Finance"]]},
+ {"say":["hr","human resources","applicant tracking","employee scheduling","timekeeping","time and attendance","civil service","onboarding","personnel","employee"],"go":[["General Gov","HR & Workforce"]]},
+ {"say":["payroll"],"go":[["General Gov","HR & Workforce"],["General Gov","Finance & ERP"]]},
+ {"say":["workforce"],"go":[["General Gov","HR & Workforce"],["Health & Human Services","Workforce & Labor"]]},
+ {"say":["cemetery","cemeteries","burial","burials","funeral","interment","gravesite","graves"],"go":[["General Gov","Cemetery Management"]]},
+ {"say":["ai","artificial intelligence","machine learning","information technology","data platform","data management","cloud","cybersecurity","cyber security","cyber","infosec","information security","identity","chatbot","llm","genai","automation","digital government","low code","low-code","integration","middleware","api"],"go":[["General Gov","IT & AI Platforms"]]},
+ {"say":["strategy","performance management","performance","open data","dashboards","dashboard","transparency","analytics","community engagement","public engagement","surveys","benchmarking","reporting"],"go":[["General Gov","Strategy & Performance"]]},
+ {"say":["elections","election","voting","vote","ballot","ballots","voter","voters","voter registration","poll worker","poll workers","polling place","vote by mail","redistricting"],"go":[["General Gov","Elections"],["General Gov","Elections & Voting"]]},
+ {"say":["libraries","library","librarian","librarians","ils","integrated library system","ebooks","e-books","circulation","makerspace","cataloging","interlibrary loan"],"go":[["General Gov","Libraries"]]},
+ {"say":["animal services","animal control","animal shelter","animal","animals","pet licensing","pets","dog license","stray","strays"],"go":[["General Gov","Animal Services"]]},
+ {"say":["parks","park","parks and rec","parks & rec","parks and recreation","parks department","open space","green space"],"go":[["Parks & Rec",null]]},
+ {"say":["recreation","rec","recreation management","rec management","rec department","activity registration","program registration","class registration","registration","facility booking","facility reservation","facility reservations","reservations","reservation","rec center","community center","memberships","membership","camp","camps","campground","campgrounds","camping","campsite","campsites","ymca","aquatics","pool","pools"],"go":[["Parks & Rec","Recreation Management"]]},
+ {"say":["youth sports","leagues","league","sports league","little league","team sports","athletics","athletic","tournament","tournaments","coaches","scheduling sports","officials","referees"],"go":[["Parks & Rec","Youth Sports & Leagues"]]},
+ {"say":["trails","trail","playground","playgrounds","park operations","park maintenance","irrigation","turf","splash pad","ranger","rangers","grounds","landscaping","tree inventory","urban forestry"],"go":[["Parks & Rec","Park Ops & Safety Tech"]]},
+ {"say":["events","event","tourism","destination","destinations","visitor","visitors","convention","conventions","festival","festivals","venue","venues","dmo","attractions"],"go":[["Parks & Rec","Events & Tourism"]]},
+ {"say":["ticketing","tickets"],"go":[["Parks & Rec","Events & Tourism"],["Transit & Parking","Fare & Payments"]]},
+ {"say":["k-12","k12","schools","school","school district","school districts","districts","district","edtech","students","student","classroom","teachers","teacher"],"go":[["K-12 Schools",null]]},
+ {"say":["education","educational"],"go":[["K-12 Schools",null],["Higher Education",null]]},
+ {"say":["school safety","school security","visitor management","anonymous tipline","tip line","tipline","threat assessment","emergency drills","panic button","weapons detection","bullying","student safety","access control"],"go":[["K-12 Schools","School Safety"]]},
+ {"say":["school bus","school buses","school transportation","student transportation","bus routing","route planning","routing","bell times"],"go":[["K-12 Schools","Transportation"]]},
+ {"say":["bus","buses"],"go":[["K-12 Schools","Transportation"],["Transit & Parking","Fleet & Operations"]]},
+ {"say":["sis","student information system","gradebook","lms","learning management","attendance","enrollment","school operations","food service","cafeteria","nutrition","substitute","special education","iep","assessment","curriculum","tutoring"],"go":[["K-12 Schools","Operations & SIS"]]},
+ {"say":["transit","public transit","transportation","rail","light rail","subway","metro","mobility","commute","commuting"],"go":[["Transit & Parking",null]]},
+ {"say":["fare","fares","fare collection","fare payment","transit payments","tap to pay","farebox","smart card"],"go":[["Transit & Parking","Fare & Payments"]]},
+ {"say":["transit operations","cad avl","avl","run cutting","runcutting","vehicle health","operator","operators","depot","yard management"],"go":[["Transit & Parking","Fleet & Operations"]]},
+ {"say":["rider","riders","rider experience","passenger information","trip planning","trip planner","real time arrivals","gtfs","wayfinding transit"],"go":[["Transit & Parking","Rider Experience"]]},
+ {"say":["microtransit","micro transit","demand response","demand-response","on demand transit","paratransit","dial a ride","dial-a-ride","autonomous","autonomous vehicles","self driving","shuttle","shuttles","nemt"],"go":[["Transit & Parking","Demand-Response & AV"]]},
+ {"say":["parking"],"go":[["Transit & Parking","Parking & Curb"],["Airports & Aviation","Parking & Ground Transport"]]},
+ {"say":["curb","curb management","parking meters","parking meter","parking enforcement","parking ticket","parking tickets","permit parking","garage","garages","valet","loading zone","kerb"],"go":[["Transit & Parking","Parking & Curb"]]},
+ {"say":["utilities","utility","energy","power","electric","electricity"],"go":[["Utilities & Energy",null]]},
+ {"say":["street lighting","streetlight","streetlights","street lights","street light","lighting","poles","pole","pole attachment","smart poles","luminaire","smart city"],"go":[["Utilities & Energy","Street Lighting & Poles"]]},
+ {"say":["grid","electric grid","der","distributed energy","solar","microgrid","ev charging","ev","electric vehicle","substation","outage","outage management","ami","advanced metering","smart meter","smart meters","demand response energy","decarbonization","renewables"],"go":[["Utilities & Energy","Grid & Energy"]]},
+ {"say":["utility billing","customer information system","cis","customer billing","meter to cash","rate design"],"go":[["Utilities & Energy","Billing & Customer Systems"],["General Gov","Finance & ERP"]]},
+ {"say":["broadband","fiber","connectivity","internet","wifi","wi-fi","digital divide","rural broadband","5g","small cell","small cells","network","telecom"],"go":[["Utilities & Energy","Broadband & Connectivity"]]},
+ {"say":["airport","airports","aviation","faa","airline","airlines","flight","flights"],"go":[["Airports & Aviation",null]]},
+ {"say":["airfield","runway","runways","taxiway","taxiways","ramp","apron","ground handling","noise monitoring","wildlife hazard","deicing","de-icing","airside"],"go":[["Airports & Aviation","Airfield & Operations"]]},
+ {"say":["terminal","terminals","gate","gates","concessions","baggage","baggage handling","passenger experience","flight information","fids","common use","wayfinding","landside"],"go":[["Airports & Aviation","Terminal & Passenger Experience"]]},
+ {"say":["screening","tsa","checkpoint","credentialing","badging","perimeter security","biometrics","biometric","security screening"],"go":[["Airports & Aviation","Security & Screening"]]},
+ {"say":["ground transport","airport parking","rideshare","tnc","curbside airport"],"go":[["Airports & Aviation","Parking & Ground Transport"]]},
+ {"say":["justice","criminal justice","judiciary","legal"],"go":[["Courts & Justice",null],["General Gov","Courts & Justice"]]},
+ {"say":["courts","court","e-filing","efiling","electronic filing","docket","dockets","jury","juror","jurors","court records","case management","traffic court"],"go":[["Courts & Justice","Courts & Case Management"],["General Gov","Courts & Justice"]]},
+ {"say":["prosecutor","prosecutors","prosecution","district attorney","public defender","defender","evidence sharing","discovery"],"go":[["Courts & Justice","Prosecution & Defense"]]},
+ {"say":["probation","parole","supervision","pretrial","pre-trial","reentry","re-entry","diversion","electronic monitoring","ankle monitor","community supervision"],"go":[["Courts & Justice","Probation & Supervision"]]},
+ {"say":["health and human services","human services","hhs","social services","health","healthcare","case worker","caseworker"],"go":[["Health & Human Services",null],["General Gov","Health & Human Services"]]},
+ {"say":["public health","epidemiology","immunization","immunizations","vital records","disease surveillance","contact tracing","wic","environmental health","food safety"],"go":[["Health & Human Services","Public Health"]]},
+ {"say":["benefits","medicaid","snap","eligibility","tanf","entitlement","safety net","assistance programs"],"go":[["Health & Human Services","Benefits & Medicaid Systems"]]},
+ {"say":["child welfare","child and family","foster care","foster","cps","child support","early childhood","childcare","child care","children","families"],"go":[["Health & Human Services","Child & Family Services"]]},
+ {"say":["behavioral health","mental health","substance use","addiction","crisis","988","opioid","counseling","treatment","telehealth"],"go":[["Health & Human Services","Behavioral Health"]]},
+ {"say":["aging","seniors","senior services","older adults","veterans","veteran","meals on wheels","adult protective","long term care","elder"],"go":[["Health & Human Services","Aging & Veterans"]]},
+ {"say":["workforce development","labor","unemployment","job training","workforce boards","wioa","reemployment"],"go":[["Health & Human Services","Workforce & Labor"],["General Gov","HR & Workforce"]]},
+ {"say":["higher education","higher ed","university","universities","college","colleges","campus","campuses","student affairs","faculty"],"go":[["Higher Education",null]]},
+ {"say":["campus safety","campus police","title ix","clery"],"go":[["Higher Education","Campus Safety"]]},
+ {"say":["bursar","registrar","admissions","advancement","alumni","research administration","endowment","tuition","financial aid"],"go":[["Higher Education","Business & Finance"]]},
+ {"say":["campus it","student portal","sso","course scheduling","space management","classroom technology"],"go":[["Higher Education","IT & Administration"]]},
+ {"say":["housing","affordable housing","public housing","section 8","housing authority","homelessness","homeless","rental assistance","hmis","eviction","tenant","tenants","landlord","short term rental","str"],"go":[["Housing & Community Dev","Housing & Assistance"]]},
+ {"say":["planning","economic development","community development","comprehensive plan","redevelopment","business attraction","site selection","downtown"],"go":[["Housing & Community Dev","Planning & Economic Development"]]},
+ {"say":["suppliers & services","suppliers and services","supplier","suppliers","consulting","consultant","consultants","integrator","system integrator","systems integrator","reseller","resellers","staffing","professional services"],"go":[["Public Safety","Suppliers & Services"],["Public Works","Suppliers & Services"],["General Gov","Suppliers & Services"],["Parks & Rec","Suppliers & Services"],["K-12 Schools","Suppliers & Services"],["Transit & Parking","Suppliers & Services"],["Utilities & Energy","Suppliers & Services"],["Airports & Aviation","Suppliers & Services"],["Courts & Justice","Suppliers & Services"],["Health & Human Services","Suppliers & Services"],["Higher Education","Suppliers & Services"],["Housing & Community Dev","Suppliers & Services"]]}
+]/* /CONCEPT-MAP */;
+/* longest phrase first, built once: so "school buses" is never read as "bus",
+   and "water utility" is never read as "water" plus "utility" */
+const COPHRASES=COCONCEPTS.flatMap(c=>c.say.map(s=>[s,c.go]))
+  .sort((a,b)=>b[0].length-a[0].length||(a[0]<b[0]?-1:1));
+const CO_STOP1=new Set(CO_STOP.filter(s=>!s.includes(" ")));
+const CO_STOPN=CO_STOP.filter(s=>s.includes(" "));
+const coEsc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+const coSquash=s=>(s||"").toLowerCase().replace(/[^a-z0-9]/g,"");
+/* Offsets a person could plausibly start typing a name from: the start, after
+   any separator, and the capital in a camelCase name. This dataset is full of
+   HopSkipDrive, RecDesk, SewerAI and MyRec, and "rec desk" has to find
+   RecDesk or the promise that a name always finds the company is not kept. */
+function coStarts(n){
+  const out=[0];
+  for(let i=1;i<n.length;i++){
+    const p=n[i-1],c=n[i];
+    if(!/[a-z0-9]/i.test(p))out.push(i);
+    else if(c>="A"&&c<="Z"&&p>="a"&&p<="z")out.push(i);
+  }
+  return out;
+}
+/* THE RULE WITH NO EXCEPTION: a company name finds the company. Anchored at a
+   word start rather than free substring - free substring is what made "Rain"
+   return Instructure, because the word "training" contains the letters
+   r-a-i-n. 52 results where 3 are meant is the same failure as zero results,
+   wearing a bigger number. */
+function coNameHit(o,raw){
+  const q=coSquash(raw);
+  if(!q)return false;
+  const n=o.name||"";
+  return coStarts(n).some(i=>coSquash(n.slice(i)).startsWith(q));
+}
+/* and how squarely, for ranking: 0 the whole name, 1 starts it, 2 starts a
+   word inside it, 9 not a name match at all */
+function coNameRank(o,raw){
+  const q=coSquash(raw);
+  if(!q)return 9;
+  const n=coSquash(o.name);
+  if(n===q)return 0;
+  if(n.startsWith(q))return 1;
+  return coNameHit(o,raw)?2:9;
+}
+/* a term matches at a word start, as a prefix: "permit" finds "permitting",
+   "rain" does not find "training" */
+const coTerm=(t,hay)=>new RegExp("(?:^|[^a-z0-9])"+coEsc(t)).test(hay);
+/* built once per company and kept - this runs on every keystroke */
+const COHAY=new Map();
+function coHay(o){
+  let v=COHAY.get(o.id);
+  if(v===undefined){
+    v=`${o.name||""} ${o.description||""} ${o.location||""} ${o.sector||""} ${
+      o.category||""} ${(o.also||[]).map(a=>a.sector+" "+a.category).join(" ")}`
+      .toLowerCase();
+    COHAY.set(o.id,v);
+  }
+  return v;
+}
+const coInGo=(o,go)=>go.some(t=>t[1]===null?inSector(o,t[0])
+  :(o.sector===t[0]&&o.category===t[1])
+  ||(o.also||[]).some(a=>a.sector===t[0]&&a.category===t[1]));
+const coGoLabel=t=>t[1]===null?t[0]+" (every category)":t[0]+" / "+t[1];
+function parseCoQuery(q){
+  let t=" "+(q||"").toLowerCase().replace(/[.,]/g," ")+" ";
+  const go=[],said=[];
+  COPHRASES.forEach(p=>{
+    const re=new RegExp("(?:^|\\s)"+coEsc(p[0])+"(?=\\s|$)","g");
+    if(re.test(t)){
+      t=t.replace(re," ");
+      said.push(p[0]);
+      p[1].forEach(x=>{if(!go.some(y=>y[0]===x[0]&&y[1]===x[1]))go.push(x)});
+    }
+  });
+  const strip=s=>{
+    CO_STOPN.forEach(w=>{s=s.split(" "+w+" ").join(" ")});
+    return s.split(/\s+/).filter(w=>w&&!CO_STOP1.has(w));
+  };
+  /* The same query with nothing consumed by a concept - which is exactly what
+     the old substring search looked for. It does not filter anything; it
+     COUNTS what the map set aside, so the tab can say "188 more mention this
+     and are filed elsewhere" instead of implying the bucket is the world. */
+  const literal=strip(" "+(q||"").toLowerCase().replace(/[.,]/g," ")+" ");
+  return {go:go,terms:strip(t),said:said,literal:literal};
+}
 const STATE_FULL={AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",
   CO:"Colorado",CT:"Connecticut",DE:"Delaware",FL:"Florida",GA:"Georgia",HI:"Hawaii",
   ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",
@@ -516,6 +840,82 @@ const STATE_FULL={AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"Califo
 const ATSNOTE={hard:"Ranking engine likely. Seed exact keywords once.",
   soft:"Searchable board, rarely auto-rejecting.",
   none:"A person opens this list. Keyword tuning buys little."};
+
+/* ------------------------------------------------------- no board on file
+   950 companies here show no roles because no public board was found. The
+   card used to say "nothing open", which is a claim, and the wrong one: what
+   happened is that we probed and learned nothing. Those are opposite facts
+   and collapsing them is the asymmetric error this whole repo is built
+   around, wearing a different hat - the page ends up implying a company is
+   not hiring when it may be advertising openly, and nothing ever contradicts
+   it, because "we found nothing" is indistinguishable from "we did not look
+   in the right place".
+
+   Two cases, and only one of them is a dead end:
+
+   1. posts_at - they DO advertise publicly, on LinkedIn or Indeed or a
+      government portal, and we simply cannot enumerate it. That is the useful
+      case: say so and link out. The wording below is scripts/posts_at.py's
+      own sentence(), restated because a browser cannot import Python. IT IS
+      DUPLICATED AND THEREFORE IT WILL ROT - see the report for the selftest
+      case that should guard it, the same way check_alert_vocabulary guards
+      alerts.js.
+   2. no posts_at - we checked and found nothing. Say WHEN, if the build gave
+      us a date, and say plainly that it is not evidence they are not hiring.
+
+   NOTE ON THE DATE: data/discovery_log.json holds a real {"on": ..., "found":
+   false} for 868 of these companies, and it is NOT shipped to the public site
+   - build_site.py serves an allowlist of board.json and brand.json, on
+   purpose, because that log carries per-company failure notes. So this reads
+   a date off the ORGANISATION and prints the dateless sentence when there is
+   none. The day build_board.py copies discovery_log's date onto the org, the
+   date appears here with no further change. */
+const POSTS_AT_LABEL={linkedin:"LinkedIn",indeed:"Indeed",glassdoor:"Glassdoor",
+  ziprecruiter:"ZipRecruiter",builtin:"Built In",
+  govportal:"a government jobs portal",recruiter:"an outside recruiter",
+  email:"by email only",other:"somewhere else"};
+function postsAtSentence(rec){
+  if(!rec)return "";
+  if(rec.where==="email")
+    return "They do not run a public job board — openings go out by email. "
+      +"There may well be roles open that this page cannot show.";
+  if(rec.where==="recruiter")
+    return "They hire through an outside recruiter rather than a public board, "
+      +"so their openings are not listed here.";
+  const label=rec.label||POSTS_AT_LABEL[rec.where]||"another site";
+  return `They advertise their openings on ${label} rather than a job board we can read, `
+    +"so the roles are not counted here — the link goes straight to their listings.";
+}
+/* Whichever date the build gave us for "we looked". Deliberately a list of
+   names rather than one: the field does not exist yet, and guessing a single
+   name would mean the feature silently stays dark when it lands under another. */
+const boardCheckedOn=o=>o.board_checked_on||o.discovery_on
+  ||(o.discovery&&o.discovery.on)||null;
+/* The whole no-board statement, as {html} or null when the company has a
+   board and this does not apply. */
+function noBoardNote(o){
+  if(!o||!o.no_board_on_file)return null;
+  const pa=o.posts_at;
+  if(pa){
+    const url=safeUrl(pa.url);
+    /* The lead only fits the cases where they really are advertising in
+       public. "They post, we just cannot count it" over "openings go out by
+       email" would be the page contradicting its own next sentence. */
+    const lead=(pa.where==="email"||pa.where==="recruiter")
+      ? "" : "<strong>They post, we just cannot count it.</strong> ";
+    return lead+`${esc(postsAtSentence(pa))}${url?` <a class="golink" href="${esc(url)}"
+      target="_blank" rel="noopener">See their listings &rarr;</a>`:""}`;
+  }
+  const on=boardCheckedOn(o);
+  return on
+    ? `<strong>We checked on ${esc(on)} and could not find a public job board.</strong>
+       That does not mean they are not hiring — it means we have not found where they
+       post. Their own site is the place to look.`
+    : `<strong>We looked for a public job board and could not find one.</strong>
+       That does not mean they are not hiring — it means we have not found where they
+       post, and this page will keep saying so rather than showing you a zero. Their
+       own site is the place to look.`;
+}
 
 // ------------------------------------------------------------------- job board
 /* Deterministic tile colour from the company name. The design used per-company
@@ -727,6 +1127,45 @@ function when(seen,gen){
   if(d<=1)return{txt:"yesterday",cls:""};
   return{txt:`${Math.round(d)} days ago`,cls:""};
 }
+/* Whole days between two YYYY-MM-DD strings, both read as UTC midnight so a
+   timezone cannot make a board built this morning look a day old. */
+const dayGap=(a,b)=>Math.round((Date.parse(b+"T00:00:00Z")-Date.parse(a+"T00:00:00Z"))/864e5);
+function todayISO(){const d=new Date();
+  return new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);}
+/* The credibility line's third fact, and the one most easily faked. The deck
+   asks for "links checked 6 hours ago". We do not have an hour: what is
+   recorded is the DATE the run built this file, so this says exactly what
+   that date supports and not one word more. The day a build starts stamping
+   a time, this is the only function that has to change. */
+function freshness(gen){
+  if(!gen)return "we have no record of when these links were last checked";
+  const d=dayGap(gen,todayISO());
+  const on=` (${gen})`;
+  if(d<=0)return "links checked today"+on;
+  if(d===1)return "links checked yesterday"+on;
+  return `links checked ${d} days ago`+on;
+}
+/* Age options built from the board rather than written down.
+
+   The deck asks for "Posted < 14 days". Two things are wrong with shipping
+   that literally. We do not know when anything was POSTED - only when this
+   board first read it, which for a board whose history starts on 2026-08-18
+   is a much smaller claim. And every posting on file today is inside 7 days,
+   so a "< 14 days" option would match 4,355 of 4,355: a control that cannot
+   discriminate, which is the same sin as a filter with no data behind it.
+
+   So the options are computed. A horizon appears only when it actually
+   splits the board, which means the list grows on its own as the history
+   deepens instead of needing a person to remember. */
+function ageOptions(rows,gen){
+  const out=[];
+  [[0,"First seen today"],[3,"Seen in the last 3 days"],[7,"Seen in the last 7 days"],
+   [14,"Seen in the last 14 days"],[30,"Seen in the last 30 days"]].forEach(([d,label])=>{
+    const n=rows.filter(p=>p.first_seen&&dayGap(p.first_seen,gen)<=d).length;
+    if(n>0&&n<rows.length)out.push({v:String(d),label,n});
+  });
+  return out;
+}
 
 /* ------------------------------------------------------------------- pay
    Three states, and never two.
@@ -843,58 +1282,68 @@ function jobs(){
   const states=[...new Set(D.postings.flatMap(p=>p.states||[]))].sort();
   const regions=[...new Set(D.postings.map(p=>p.region).filter(Boolean))].sort();
   const offStates=[...new Set(D.postings.map(p=>p.office&&p.office.state).filter(Boolean))].sort();
-  /* Distinct OPENINGS, not rows. Counting rows says 614 while the line
-     directly above it says 477 - two numbers for the same fact, on the same
-     screen. 614 counts Xplor's single Account Executive ad once per city it
-     was posted to, 93 times over. The board's own totals block already
-     computes the honest one; the hero was the last thing still counting
-     rows. */
-  const quota=D.totals.quota_carrying;
   /* No pay control at all on a board built before pay was recorded. An empty
      filter that sets aside every posting is worse than no filter. */
   const payOn=D.postings.some(hasPay);
+  const ages=ageOptions(D.postings,D.generated);
   const fresh=D.postings.filter(p=>p.first_seen===D.generated);
   const freshQ=fresh.filter(p=>p.quota_carrying);
-
-  /* The design's feature card told a "board came back today" story. We do not
-     store per-run readability history, so that specific claim is not ours to
-     make. The strongest TRUE story in the same shape: a company whose first
-     quota-carrying posting we have ever recorded appeared in this run. */
+  /* The strongest TRUE story in the shape the deck wanted: a company whose
+     first quota-carrying posting we have ever recorded turned up in this run.
+     We do not store per-run readability history, so "their board came back
+     today" is not ours to tell. */
   const seenBefore=new Set(D.postings.filter(p=>p.first_seen!==D.generated).map(p=>p.company_id));
-  /* US first. The first pick landed on a Manchester role, which is a poor lead
-     for a board whose readers sell to American cities and counties. Tier 1
-     sectors next, since a municipal-SaaS door is worth more than an adjacent
-     one. Falls back rather than showing nothing. */
-  const T1=["General Gov","Public Works","Parks & Rec"];
-  const rank=p=>(p.is_us===true?0:2)+(T1.includes(p.sector)?0:1);
-  const debut=freshQ.filter(p=>!seenBefore.has(p.company_id)).sort((a,b)=>rank(a)-rank(b));
-  const feature=debut[0]||freshQ.filter(p=>p.is_us===true)[0]||freshQ[0]||fresh[0];
-  const others=(debut.length?debut.slice(1):freshQ.slice(1)).slice(0,2);
+  const debut=freshQ.filter(p=>!seenBefore.has(p.company_id));
+  const debutCos=[...new Set(debut.map(p=>p.company))];
 
   $("#view").innerHTML=`
-  <div class="hero">
-    <img class="hpeng" src="assets/mascot/svg/mascot-slide.svg" alt="">
-    <div class="herotext">
-    <h2>${quota.toLocaleString()} sellers wanted, across all of govtech.</h2>
-    <p>Every open role at ${D.organizations.length.toLocaleString()} state and local government
-       technology companies. ${D.postings.length.toLocaleString()} postings, read from the boards
-       themselves. It&rsquo;s tough SLEDing out there.</p>
-    <div class="hsearch">
-      <input type="search" id="j-q" placeholder="Try &ldquo;senior AE remote&rdquo; or &ldquo;account executive in nyc&rdquo;">
+  <div class="phead">
+    <h2 class="ptitle">Job board for govtech companies</h2>
+    <!-- Three questions answered in one line and one number: what it is, how
+         big it is, how fresh it is. The third is the credibility line, and it
+         is derived from the build date rather than a figure nobody recorded -
+         see freshness(). -->
+    <p class="pline"><strong>${D.postings.length.toLocaleString()}</strong> open roles
+      &middot; <strong>${D.organizations.length.toLocaleString()}</strong> companies tracked
+      &middot; ${esc(freshness(D.generated))}</p>
+
+    <div class="search">
+      <input type="search" id="j-q" placeholder="Role, skill, or company"
+        aria-label="Search by role, skill or company">
       <button type="button" onclick="drawJobs()">Search</button>
     </div>
-    <div class="pills">
+
+    <!-- Two filters the deck asked for are NOT here, and their absence is the
+         decision rather than an oversight.
+
+         "SLED / Federal / Vendor" cannot discriminate: every one of the 2,108
+         companies on this board is a state-and-local vendor, so the segment
+         would match everything, every time. A control that never changes the
+         result teaches a reader that the controls do nothing.
+
+         "Clearance" has one posting behind it out of 4,355 - a single title
+         mentioning TS/SCI. A dropdown whose only useful setting returns one
+         row is a promise the data cannot keep; the search box finds that
+         posting by typing the word, which is the honest route to it. -->
+    <div class="filters">
       <button class="pill" type="button" id="j-quota-pill" aria-pressed="true"
-        onclick="toggleQuota(this)">Job type <span class="v on" id="j-quota-v">Quota-carrying</span></button>
+        onclick="toggleQuota(this)"
+        title="only roles that carry a sales number"><span class="v on"
+        id="j-quota-v">Quota-carrying</span></button>
+      <!-- Remote / Hybrid / Onsite are DISJOINT here. "In person" used to
+           include hybrid, which was fine while hybrid had no button of its
+           own; with one, two overlapping segments would report different
+           counts for the same roles. Onsite now means the job demonstrably
+           sits somewhere and is neither remote nor hybrid. -->
       <div class="seg" id="j-where">
         <button type="button" data-v="" aria-pressed="true" onclick="setWhere(this)">Anywhere</button>
         <button type="button" data-v="remote" aria-pressed="false" onclick="setWhere(this)">Remote</button>
-        <button type="button" data-v="onsite" aria-pressed="false" onclick="setWhere(this)">In person</button>
+        <button type="button" data-v="hybrid" aria-pressed="false" onclick="setWhere(this)">Hybrid</button>
+        <button type="button" data-v="onsite" aria-pressed="false" onclick="setWhere(this)">Onsite</button>
       </div>
-      <select class="pill" id="j-fam-pill" onchange="famPill()"
-        style="appearance:none;padding-right:36px;background-image:none">
+      <select id="j-fam-pill" onchange="famPill()" aria-label="Kind of role">
         <option value="">Any kind of role</option>
-        ${fams.map(f=>`<option value="${f}">${esc(FAM[f]||f)}</option>`).join("")}
+        ${fams.map(f=>`<option value="${esc(f)}">${esc(FAM[f]||f)}</option>`).join("")}
       </select>
       ${payOn?`
       <!-- Pay is in the primary row, not More filters, because it is the
@@ -903,41 +1352,49 @@ function jobs(){
            SELECT, so it can never be only a thing that happens to you, and a
            posting we never read gets its own option rather than being filed
            under "stated nothing". -->
-      <select class="pill" id="j-pay" onchange="payPill()"
-        style="appearance:none;padding-right:36px;background-image:none">
+      <select id="j-pay" onchange="payPill()" aria-label="Pay">
         <option value="">Any pay</option>
         <option value="stated">Shows a salary</option>
         <option value="80000">$80k+ a year</option>
         <option value="100000">$100k+ a year</option>
         <option value="120000">$120k+ a year</option>
+        <option value="140000">$140k+ a year</option>
         <option value="150000">$150k+ a year</option>
         <option value="200000">$200k+ a year</option>
         <option value="none">No salary stated</option>
         <option value="unread">Postings we could not read</option>
       </select>`:""}
+      ${ages.length?`
+      <select id="j-since" aria-label="How recently this board first saw the role">
+        <option value="">Any age</option>
+        ${ages.map(o=>`<option value="${esc(o.v)}">${esc(o.label)}</option>`).join("")}
+      </select>`:""}
+      <select id="j-sort" aria-label="Sort order">
+        <option value="">Newest first</option>
+        <option value="old">Oldest first</option>
+        <option value="co">Company A&ndash;Z</option>
+      </select>
       <button class="pill" type="button" aria-expanded="false"
         onclick="toggleMore(this)">More filters <span class="v" id="j-more-v"></span></button>
     </div>
 
-    <!-- Every filter is kept. The design showed three pills; territory, state,
-         region, family and seniority are the ones a seller actually opens with,
-         so they live one click away rather than being cut. -->
-    <div class="bar" id="j-bar" style="display:none;justify-content:center;margin-top:16px">
+    <!-- Every filter is kept. Territory, state, region, sector, seniority and
+         source are the ones a seller opens with after the first four, so they
+         live one click away rather than being cut. -->
+    <div class="bar" id="j-bar" style="display:none">
       <select id="j-fam"><option value="">All role families</option>
-        ${fams.map(f=>`<option value="${f}">${esc(FAM[f]||f)}</option>`).join("")}</select>
+        ${fams.map(f=>`<option value="${esc(f)}">${esc(FAM[f]||f)}</option>`).join("")}</select>
       <select id="j-sec"><option value="">All sectors</option>
-        ${secs.map(x=>`<option>${esc(x)}</option>`).join("")}</select>
-      <!-- esc() on both the value AND the text, on every option below. The
-           two state dropdowns were the only interpolations in this function
-           without it, while their siblings six lines up had it - which is what
-           an oversight looks like rather than a decision. A state comes from
-           roles.geography() parsing a location string an ATS gave us, so it is
-           third-party text arriving daily with nobody reading it. -->
+        ${secs.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}</select>
+      <!-- esc() on both the value AND the text, on every option below. A
+           state comes from roles.geography() parsing a location string an ATS
+           gave us, so it is third-party text arriving daily with nobody
+           reading it. -->
       <select id="j-state"><option value="">Territory: any</option>
         <option value="__none">No stated territory</option>
         ${states.map(x=>`<option value="${esc(x)}">Territory: ${esc(x)}</option>`).join("")}</select>
       <select id="j-region"><option value="">Territory region: any</option>
-        ${regions.map(x=>`<option>${esc(x)}</option>`).join("")}</select>
+        ${regions.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}</select>
       <select id="j-office"><option value="">Office: anywhere</option>
         <option value="__none">Office not stated</option>
         ${offStates.map(x=>`<option value="${esc(x)}">Office in ${esc(x)}</option>`).join("")}</select>
@@ -954,74 +1411,98 @@ function jobs(){
         <option value="ats">From a job board</option>
         <option value="manual">Checked by hand</option></select>
     </div>
+
+    <!-- The query string is on screen on purpose. A filtered view is a
+         shareable object, and that is the cheapest distribution this board
+         has. It is the LIVE address, read back off location, because a
+         decorative query string that does not actually work would be a lie in
+         the shape of a feature. -->
+    <div class="urlbar">
+      <span class="lead" title="every filter and the page number are in the address">
+        this view is a link</span>
+      <div class="urlwrap"><code id="j-url"></code></div>
+      <button type="button" id="j-copy" onclick="copyUrl(this)">Copy link</button>
     </div>
   </div>
 
   ${fresh.length?`
-  <div class="sechead"><h3>New this run</h3>
-    <div class="n">${freshQ.length} quota-carrying of ${fresh.length} new postings</div></div>
-  <div class="shelf" id="j-shelf"></div>`:""}
+  <div class="newstrip">
+    <span class="lead">New this run</span>
+    <span><strong>${fresh.length.toLocaleString()}</strong> postings first seen on
+      ${esc(D.generated)}, <strong>${freshQ.length.toLocaleString()}</strong> carrying a
+      number.</span>
+    ${debutCos.length?`<span class="debut">First seller req we have ever recorded at
+      ${esc(debutCos.slice(0,3).join(", "))}${debutCos.length>3
+        ?` and ${debutCos.length-3} other${debutCos.length-3===1?"":"s"}`:""}.</span>`:""}
+    ${ages.some(o=>o.v==="0")?`<a href="#" id="j-newlink">Show just these &rarr;</a>`:""}
+  </div>`:""}
 
-  <div class="sechead"><h3 id="j-h">All quota-carrying roles</h3>
-    <div class="n" id="j-n"></div></div>
   <div class="fchips" id="j-chips"></div>
-  <div class="list" id="j-list"></div>
-  <p class="foot">Level is inferred from the title: the years a role actually asks for live in the
-    description, which is not fetched. &ldquo;Not stated&rdquo; means the posting did not say where,
-    not that it is remote. ${payOn?`Pay is shown where the posting states it, which most do not —
-    a posting saying nothing is not a posting paying nothing, and a pay filter here sets those
-    aside in the open rather than deleting them. `:""}${
-    D.organizations.filter(o=>o.no_board_on_file||o.unreadable).length}
-    companies produced no readable board this run, so they show no roles rather than none
-    existing.</p>`;
+  <div class="rhead"><h3 id="j-h">All quota-carrying roles</h3>
+    <div class="n" id="j-n"></div></div>
+  <div id="j-list"></div>
+  <div id="j-cta"></div>
 
-  // j-pay is not here: it has payPill(), which also resets the page window
-  ["j-q","j-fam","j-sec","j-us","j-state","j-region","j-office","j-mode","j-sen","j-src"]
+  <p class="foot">Level is inferred from the title: the years a role actually asks for
+    live in the description, which is not fetched. &ldquo;Not stated&rdquo; means the
+    posting did not say where, not that it is remote.
+    <strong>First seen is when this board first read the posting, not when the employer
+    posted it</strong>${D.postings.length?` &mdash; this board&rsquo;s own history starts
+    ${esc(D.postings.reduce((m,p)=>p.first_seen&&(!m||p.first_seen<m)?p.first_seen:m,""))},
+    so nothing here can read as older than that`:""}.
+    ${payOn?`Pay is shown where the posting states it, which most do not &mdash; a posting
+    saying nothing is not a posting paying nothing, and a pay filter here sets those aside
+    in the open rather than deleting them. `
+    :`<strong>Every salary cell is a dash in this build</strong>, because this run of the
+    board recorded no pay at all. That is a fact about us, not about the jobs: the next
+    refresh carries pay where a posting states it. `}${
+    D.organizations.filter(o=>o.no_board_on_file||o.unreadable).length.toLocaleString()}
+    companies produced no readable board this run, so they show no roles rather than none
+    existing. <a href="#" id="j-how">How listings get here &rarr;</a></p>`;
+
+  /* j-pay has payPill() and j-since/j-sort go through refilter(), because all
+     three have to reset the page window: silently leaving somebody on page 12
+     of a three-page result is the pagination version of a false empty. */
+  ["j-q","j-fam","j-sec","j-us","j-state","j-region","j-office","j-mode","j-sen",
+   "j-src","j-since","j-sort"]
     .forEach(i=>{const el=$("#"+i);if(!el)return;
       el.addEventListener("input",()=>{
         // a dropdown is a decision worth a Back; a keystroke is not
         if(el.tagName==="SELECT")PUSH_NEXT=true;
-        drawJobs();
+        refilter();
       });});
-  const shelf=$("#j-shelf");
-  if(shelf){
-    if(feature)shelf.appendChild(featureCard(feature,debut.length>0));
-    others.forEach(p=>shelf.appendChild(newCard(p)));
-  }
+  const nl=$("#j-newlink");
+  if(nl)nl.onclick=e=>{e.preventDefault();
+    const s=$("#j-since"); if(s){s.value="0";PUSH_NEXT=true;refilter();}};
+  const hw=$("#j-how");
+  if(hw)hw.onclick=e=>{e.preventDefault();tab="how";ROLE=null;render();window.scrollTo(0,0)};
   applyUrl(PENDING_URL); PENDING_URL=null;
   drawJobs();
 }
 
-/* These two return elements, not markup, and the url they open lives in a
-   closure. Written as a string, the handler was
-   onclick="window.open('${esc(url)}','_blank')" - and esc() leaves ' alone, so
-   one apostrophe anywhere in a url an ATS handed us closed the string and the
-   rest of it ran as JavaScript on this origin. */
-function openCard(el,p){
-  const u=safeUrl(p.url);
-  if(!u)return el;                 // no url is not a reason to make a dead card clickable
-  el.classList.add("clk");
-  el.onclick=()=>window.open(u,"_blank","noopener");
-  return el;
+/* The address bar, on the page. Reads location rather than rebuilding a
+   string, so what is shown and what a Copy button hands over are the same
+   thing by construction and cannot drift. */
+function paintUrl(){
+  const el=$("#j-url"); if(!el)return;
+  el.textContent=location.host+location.pathname+location.search;
 }
-function featureCard(p,isDebut){
-  const w=when(p.first_seen,D.generated);
-  const el=document.createElement("div");
-  el.className="feature";
-  el.innerHTML=`
-    <span style="align-self:flex-start;font-size:11px;padding:4px 11px;border-radius:20px;
-      background:rgba(47,111,79,.14);color:var(--inv-accent);font-weight:600">
-      ${isDebut?"first seller req we have seen here":"new "+esc(w.txt)}</span>
-    <div style="font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.2;
-      margin-top:44px;text-wrap:balance">${esc(p.title)}</div>
-    <div style="font-size:13.5px;color:var(--inv-dim);margin-top:6px">${esc(p.company)} &middot;
-      ${esc(p.sector)} / ${esc(p.category)}</div>
-    <div class="why">${isDebut
-      ? "No posting from this company was on the board before this run. Nobody has worked this door yet."
-      : "New on the board this run."}</div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:16px;font-size:13px;
-      font-weight:600;color:var(--inv-accent)">Open the posting <span>&rarr;</span></div>`;
-  return openCard(el,p);
+function copyUrl(btn){
+  const say=t=>{btn.textContent=t;setTimeout(()=>{btn.textContent="Copy link"},1600)};
+  const url=location.href;
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(()=>say("Copied"),()=>selectUrl(say));
+    return;
+  }
+  selectUrl(say);
+}
+/* No clipboard permission, or an insecure origin: select the text so the
+   keyboard shortcut works, and say so rather than pretending it copied. */
+function selectUrl(say){
+  const el=$("#j-url"); if(!el){say("Copy failed");return}
+  const r=document.createRange(); r.selectNodeContents(el);
+  const s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  say("Selected — press ⌘C");
 }
 
 /* Territory (what the role covers), office (where the job sits) and work
@@ -1045,21 +1526,15 @@ function geoBits(p){
   return bits;
 }
 
-function newCard(p){
-  const el=document.createElement("div");
-  el.className="ncard";
-  el.innerHTML=`${tileHTML(p.company,p.company_id,"mono-tile")}
-    <div style="font-size:17px;font-weight:650;letter-spacing:-.015em;margin-top:16px">
-      ${esc(p.title)}</div>
-    <div style="font-size:13px;color:var(--dim);margin-top:3px">${esc(p.company)} &middot;
-      ${esc(p.category)}</div>
-    <div style="font-size:12.5px;color:var(--faint);margin-top:auto;padding-top:18px">
-      ${geoBits(p).map(esc).join(" &middot; ")}</div>`;
-  return openCard(el,p);
-}
-
 /* filter chrome ------------------------------------------------------------ */
-let SHOWN=60;
+/* The page window, 1-based, and it lives in the url. Every control that
+   narrows the result has to send it back to 1: leaving somebody on page 12 of
+   a three-page result and showing them an empty list is the pagination
+   version of a false "no jobs here". refilter() is that single door, so a new
+   control cannot forget. */
+const PAGE_SIZE=25;
+let PAGE=1;
+function refilter(){PAGE=1;drawJobs();}
 function toggleQuota(btn){
   PUSH_NEXT=true;   // a deliberate choice, so Back should undo it
   const on=btn.getAttribute("aria-pressed")!=="true";
@@ -1067,12 +1542,12 @@ function toggleQuota(btn){
   const v=$("#j-quota-v");
   v.textContent=on?"Quota-carrying":"Any role";
   v.className="v"+(on?" on":"");
-  SHOWN=60;drawJobs();
+  refilter();
 }
 function setWhere(btn){
   PUSH_NEXT=true;   // a deliberate choice, so Back should undo it
   [...btn.parentElement.children].forEach(b=>b.setAttribute("aria-pressed",b===btn));
-  SHOWN=60;drawJobs();
+  refilter();
 }
 /* One family control, two places. The pill is the primary; the select in More
    filters is the same value, kept in step so they can never disagree. */
@@ -1080,7 +1555,7 @@ function famPill(){
   PUSH_NEXT=true;   // a deliberate choice, so Back should undo it
   const v=$("#j-fam-pill").value;
   if($("#j-fam")) $("#j-fam").value=v;
-  SHOWN=60; drawJobs();
+  refilter();
 }
 /* Whether postings that cannot be compared to the pay floor are being SHOWN.
    Off by default, which is why the count line has to say how many that is and
@@ -1091,19 +1566,17 @@ function famPill(){
 let PAY_KEEP=false;
 function payPill(){
   PUSH_NEXT=true;   // a deliberate choice, so Back should undo it
-  SHOWN=60; drawJobs();
+  refilter();
 }
 function payKeep(on){
   PUSH_NEXT=true;
   PAY_KEEP=on;
-  SHOWN=60; drawJobs();
+  refilter();
 }
-/* Two things have to move, and only one of them used to.
-   Below 768px `.bar:not(.open) select{display:none}` hides every select in the
-   bar, so flipping the container's own display opened an empty box on a phone:
-   aria-expanded said true, nine filters stayed invisible, and three of the
-   board's twelve filters were all a phone had. The class is what reveals them;
-   the display flip is what the desktop layout needs. */
+/* Two things have to move, and only one of them used to. On a phone the
+   overflow bar is a column; flipping only the container's display used to
+   open an empty box. The class is what the phone layout reads; the display
+   flip is what the desktop layout needs. */
 function setBarOpen(bar,btn,open){
   if(!bar)return;
   bar.style.display=open?"flex":"none";
@@ -1112,31 +1585,52 @@ function setBarOpen(bar,btn,open){
 }
 function toggleMore(btn){
 setBarOpen($("#j-bar"),btn,$("#j-bar").style.display==="none")}
-function showMore(){SHOWN+=60;drawJobs();}
+/* Page 2 is an address, not a scroll position. It goes in the history so Back
+   walks pages, and the list is scrolled to rather than the top of the page -
+   landing on the hero after clicking Next is the thing that makes people
+   scroll the same header four times. */
+function goPage(n){
+  PUSH_NEXT=true;
+  PAGE=Math.max(1,n);
+  drawJobs();
+  const h=$("#j-list");
+  if(h)window.scrollTo({top:Math.max(0,h.getBoundingClientRect().top+window.scrollY-90)});
+}
 
 /* An empty result should say why it is empty. Picking "Engineering" while
    Quota-carrying is on returns nothing, because engineers do not carry a
    number - and a blank panel makes that look like the board has no engineers.
-   Same principle as everywhere else here: absence needs a reason attached. */
+   Same principle as everywhere else here: absence needs a reason attached.
+
+   The ghosted penguin heads every one of these, because an empty search is
+   exactly what he is for - and a face makes a dead end read as a state the
+   board is in rather than as the board being broken. */
+const GHOST=`<img src="assets/mascot/svg/head-ghosted.svg" alt="" width="88" height="88">`;
 function emptyJobs(quotaOnly,fam,where,setAside){
   const others=D.postings.filter(p=>!fam||p.family===fam).length;
   /* First, because it is the emptiness most likely to be a lie about the
      market: nothing cleared the floor, but postings that never stated pay are
      sitting right there and one of them may pay double it. */
   if(setAside&&setAside.total)
-    return `<div class="empty">No posting that states a salary clears that floor.<br>
+    return `<div class="empty">${GHOST}No posting that states a salary clears that floor.<br>
       ${setAside.total.toLocaleString()} match everything else you set but cannot be
       compared to it — ${paySetAsideText(setAside)}.<br>
       <span class="payall">Show those ${setAside.total.toLocaleString()} anyway &rarr;</span></div>`;
   if(quotaOnly&&fam&&fam!=="gtm"&&others)
-    return `<div class="empty">No <strong>${esc(FAM[fam]||fam)}</strong> roles carry a
+    return `<div class="empty">${GHOST}No <strong>${esc(FAM[fam]||fam)}</strong> roles carry a
       quota, which is expected: quota-carrying means a sales number.<br>
       <span id="j-relax" style="color:var(--accent);cursor:pointer;font-weight:600">
         Show all ${others.toLocaleString()} ${esc(FAM[fam]||fam)} roles instead &rarr;</span></div>`;
   if(where&&others)
-    return `<div class="empty">Nothing matches that work mode. ${others.toLocaleString()}
+    return `<div class="empty">${GHOST}Nothing matches that work mode. ${others.toLocaleString()}
       roles match everything else you have set.</div>`;
-  return `<div class="empty">No postings match.</div>`;
+  /* The last resort still refuses to say "there are no such jobs". This board
+     reads 2,108 boards and 950 of those companies have no board we can read
+     at all, so an empty result here is a fact about what we can see. */
+  return `<div class="empty">${GHOST}Nothing on this board matches that.<br>
+    <span class="sub">That is what we can see, not what exists:
+      ${D.organizations.filter(o=>o.no_board_on_file||o.unreadable).length.toLocaleString()}
+      of the companies we track produced no readable board this run.</span></div>`;
 }
 
 /* A search you cannot send to someone is half a tool. Every filter lives in
@@ -1144,7 +1638,8 @@ function emptyJobs(quotaOnly,fam,where,setAside){
    land where you were. The keys are short because the URL is read by
    people. */
 const URLKEYS={q:"j-q",fam:"j-fam",sec:"j-sec",st:"j-state",off:"j-office",
-  reg:"j-region",sen:"j-sen",us:"j-us",mode:"j-mode",src:"j-src",pay:"j-pay"};
+  reg:"j-region",sen:"j-sen",us:"j-us",mode:"j-mode",src:"j-src",pay:"j-pay",
+  since:"j-since",sort:"j-sort"};
 let URL_LOADING=false;
 /* Leading-edge debounce over history. Every filter change used to replaceState,
    which meant the app owned exactly ONE history entry and kept overwriting it:
@@ -1178,8 +1673,11 @@ function writeUrl(push){
   if(URL_LOADING||ROLE)return;
   const u=new URLSearchParams(location.search);
   Object.keys(URLKEYS).forEach(k=>u.delete(k));
-  ["tab","any","where","paynone"].forEach(k=>u.delete(k));
+  ["tab","any","where","paynone","p"].forEach(k=>u.delete(k));
   if(tab!=="jobs")u.set("tab",tab);
+  // page 1 is the default and stays out of the address, so the plain board
+  // and "the plain board, page 1" are one url rather than two
+  if(PAGE>1)u.set("p",String(PAGE));
   Object.entries(URLKEYS).forEach(([k,id])=>{
     const el=$("#"+id); if(el&&el.value)u.set(k,el.value);
   });
@@ -1204,14 +1702,30 @@ function readUrl(){
   if(!u.toString())return null;
   return u;
 }
+/* What an incoming link asked for that this board cannot offer.
+
+   Setting a <select> to a value it has no option for leaves it on "" - the
+   filter silently does not apply, the url quietly rewrites itself, and the
+   visitor is looking at a different result from the one they were sent
+   without a word about it. That happens for real: a sector that has since
+   been renamed, a state with nothing open today, an age horizon this board's
+   history is not deep enough for. So the drop is COLLECTED and printed. */
+let DROPPED_FILTERS=[];
 function applyUrl(u){
   // a board rendered from no url is a board with nothing set aside
   PAY_KEEP=false;
+  DROPPED_FILTERS=[];
+  PAGE=1;
   if(!u)return;
   URL_LOADING=true;
   PAY_KEEP=u.has("paynone");
+  PAGE=Math.max(1,parseInt(u.get("p")||"1",10)||1);
   Object.entries(URLKEYS).forEach(([k,id])=>{
-    const el=$("#"+id); if(el&&u.has(k))el.value=u.get(k);
+    const el=$("#"+id); if(!el||!u.has(k))return;
+    const want=u.get(k);
+    el.value=want;
+    if(el.tagName==="SELECT"&&el.value!==want&&want!=="")
+      DROPPED_FILTERS.push({key:k,want});
   });
   if(u.has("any")){
     const pill=$("#j-quota-pill");
@@ -1398,7 +1912,7 @@ function drawJobs(){
   const where=whereBtn?whereBtn.dataset.v:"";
   const f=g("j-fam"),s=g("j-sec"),u=g("j-us"),st=g("j-state"),
         rg=g("j-region"),md=g("j-mode"),sen=g("j-sen"),src=g("j-src"),
-        off=g("j-office"),pay=g("j-pay");
+        off=g("j-office"),pay=g("j-pay"),since=g("j-since"),sort=g("j-sort");
 
   const WANT=parseQuery(q);
   /* A search can contradict a filter, and when it does the words the person
@@ -1419,17 +1933,16 @@ function drawJobs(){
     quotaOnly=false;
     relaxed=FAM[WANT.family]||WANT.family;
   }
+  const sinceDays=/^\d+$/.test(since)?+since:null;
   const base=D.postings.filter(p=>{
     // The searchable text includes the office and territory the classifier
-    // extracted - as codes AND full names, so the hero's own suggestion
-    // "account executive kansas" finds a territory stored as KS.
+    // extracted - as codes AND full names, so "account executive kansas"
+    // finds a territory stored as KS.
     const geoCodes=[...(p.states||[]),p.office?p.office.state:null].filter(Boolean);
     const hay=`${p.title} ${p.company} ${p.location||""} ${p.category} ${
       p.office?(p.office.city||"")+" "+p.office.state:""} ${
       (p.states||[]).join(" ")} ${p.region||""} ${
       geoCodes.map(c=>STATE_FULL[c]||"").join(" ")}`.toLowerCase();
-    // Every word must land somewhere, not the phrase as one substring:
-    // "account executive kansas" is a title plus a place, never adjacent.
     // the meaning first, against facts the pipeline already derived
     if(WANT.family&&p.family!==WANT.family)return false;
     if(WANT.seniority&&p.seniority!==WANT.seniority)return false;
@@ -1440,15 +1953,20 @@ function drawJobs(){
       if(WANT.mode==="onsite"&&!(p.work_mode==="onsite"||p.work_mode==="hybrid"
         ||(p.office&&p.work_mode!=="remote")))return false;
     }
-    // then whatever the vocabulary did not recognise, as plain text
+    // then whatever the vocabulary did not recognise, as plain text. Every
+    // word must land somewhere, not the phrase as one substring: "account
+    // executive kansas" is a title plus a place, never adjacent.
     if(WANT.terms.length&&!WANT.terms.every(alts=>alts.some(w=>hay.includes(w))))
       return false;
     if(quotaOnly&&!p.quota_carrying)return false;
+    /* The three work-mode buttons are disjoint. "Onsite" means the job
+       demonstrably sits somewhere - a stated onsite mode, or a named office
+       on a role that is neither remote nor hybrid - and hybrid has its own
+       button now rather than being folded in here. */
     if(where==="remote"&&p.work_mode!=="remote")return false;
-    // "In person": the job demonstrably sits somewhere - a stated onsite or
-    // hybrid mode, or a named office on a role that is not remote.
-    if(where==="onsite"&&!(p.work_mode==="onsite"||p.work_mode==="hybrid"
-      ||(p.office&&p.work_mode!=="remote")))return false;
+    if(where==="hybrid"&&p.work_mode!=="hybrid")return false;
+    if(where==="onsite"&&!(p.work_mode==="onsite"
+      ||(p.office&&p.work_mode!=="remote"&&p.work_mode!=="hybrid")))return false;
     if(f&&p.family!==f)return false;
     // a vendor can sell into several departments; a filter on any one
     // of them should find it
@@ -1463,6 +1981,12 @@ function drawJobs(){
     if(md&&p.work_mode!==md)return false;
     if(sen&&p.seniority!==sen)return false;
     if(src&&(p.source||"ats")!==src)return false;
+    /* Age is measured against the BUILD date, not against today. Against
+       today, a board that has not rebuilt for three days would report
+       everything on it as three days older every morning, and "first seen
+       today" would empty itself without a thing having changed. */
+    if(sinceDays!==null&&!(p.first_seen&&dayGap(p.first_seen,D.generated)<=sinceDays))
+      return false;
     return true;
   });
 
@@ -1491,19 +2015,36 @@ function drawJobs(){
     });
     rows=PAY_KEEP?keep.concat(aside):keep;
   }
-  rows.sort((a,b)=>(b.first_seen||"").localeCompare(a.first_seen||"")
+  /* Newest first is the default and the deck's default, because on a job
+     board the freshest row is the one worth the click. The other two orders
+     exist because they discriminate: a salary sort does not, with three
+     quarters of the board stating no figure it would be a control that files
+     most of the market in an arbitrary tail. */
+  const byNew=(a,b)=>(b.first_seen||"").localeCompare(a.first_seen||"")
     ||(b.quota_carrying?1:0)-(a.quota_carrying?1:0)
-    ||a.company.localeCompare(b.company));
+    ||a.company.localeCompare(b.company);
+  if(sort==="old")rows=rows.slice().sort((a,b)=>
+    (a.first_seen||"").localeCompare(b.first_seen||"")||a.company.localeCompare(b.company));
+  else if(sort==="co")rows=rows.slice().sort((a,b)=>
+    a.company.localeCompare(b.company)||a.title.localeCompare(b.title));
+  else rows=rows.slice().sort(byNew);
   const setAside=aside.length?paySetAside(aside):null;
 
-  // family has its own pill now, so it does not also count as an overflow filter
+  // family has its own control now, so it does not also count as an overflow filter
   const extra=["j-sec","j-state","j-region","j-office","j-sen","j-us","j-mode","j-src"]
     .filter(i=>g(i)).length;
   if($("#j-fam-pill") && $("#j-fam") && $("#j-fam-pill").value!==$("#j-fam").value)
     $("#j-fam-pill").value=$("#j-fam").value;
   const mv=$("#j-more-v");if(mv)mv.textContent=extra?`${extra} on`:"";
   if(mv)mv.className="v"+(extra?" on":"");
+
+  /* Clamp before the url is written, so ?p=99 on a three-page result lands on
+     page 3 AND the address says 3. Leaving it at 99 would hand back a link
+     that shows an empty list - a false "no jobs here" wearing a page number. */
+  const pages=Math.max(1,Math.ceil(rows.length/PAGE_SIZE));
+  if(PAGE>pages)PAGE=pages;
   writeUrl();
+  paintUrl();
   drawChips();
   $("#j-h").textContent=quotaOnly?"All quota-carrying roles":"All roles";
   /* The count says what the filter did to the board, not just what survived
@@ -1511,61 +2052,156 @@ function drawJobs(){
      sentence about what is missing and why, then the one click that undoes
      it. A pay floor is the filter that most needs it - it can set aside more
      postings than it keeps. */
-  $("#j-n").innerHTML=rows.length.toLocaleString()
-    +(relaxed?` \u00b7 showing all roles: ${esc(relaxed)} work does not carry a quota`:"")
+  $("#j-n").innerHTML=rows.length.toLocaleString()+(rows.length===1?" role":" roles")
+    +(relaxed?` · showing all roles: ${esc(relaxed)} work does not carry a quota`:"")
     +(setAside?(PAY_KEEP
-      ? ` \u00b7 including ${setAside.total.toLocaleString()} with no comparable salary
-          (${paySetAsideText(setAside)}) \u00b7 <span class="payoff">set them aside</span>`
-      : ` \u00b7 ${setAside.total.toLocaleString()} set aside: ${paySetAsideText(setAside)}
-          \u00b7 <span class="payall">include them</span>`):"");
+      ? ` · including ${setAside.total.toLocaleString()} with no comparable salary
+          (${paySetAsideText(setAside)}) · <span class="payoff">set them aside</span>`
+      : ` · ${setAside.total.toLocaleString()} set aside: ${paySetAsideText(setAside)}
+          · <span class="payall">include them</span>`):"");
 
-  /* Built, not stringified. This row used to carry
-     onclick="openRole('${esc(p.id).replace(/'/g,"\\'")}')", and both halves of
-     that were wrong. The hand-rolled backslash escape is undone by a backslash
-     in the data - a trailing \ eats the escaping \ and the next ' ends the
-     string - and p.id is company_id plus a job title taken verbatim from the
-     company's ATS, refreshed daily with nobody reading the titles. And an id
-     that merely CONTAINS an entity ("...Engagement & Education", which is
-     on the board today) came back through the HTML parser as a different
-     string, so the row looked fine and openRole found nothing.
-     Holding p.id in a closure has neither problem: the value never becomes
-     text, so there is nothing to escape and nothing to decode. */
-  const list=$("#j-list");
-  list.textContent="";
-  if(!rows.length)list.innerHTML=emptyJobs(quotaOnly,f,where,setAside);
-  rows.slice(0,SHOWN).forEach(p=>{
-    const w=when(p.first_seen,D.generated);
-    const row=document.createElement("div");
-    row.className="row clk";
-    row.onclick=()=>openRole(p.id);
-    row.innerHTML=`${tileHTML(p.company,p.company_id,"tile")}
-      <div class="main">
-        <div class="t">${esc(p.title)}</div>
-        <div class="m">${esc(p.company)} &middot; ${esc(p.sector)} / ${esc(p.category)}
-          &middot; ${geoBits(p).map(esc).join(" &middot; ")}${payHTML(p)}
-          <span style="color:var(--faint)">${p.is_us===false?" &middot; non-US":""}${
-            p.seniority?" &middot; "+esc(p.seniority)+", from the title":""}${
-            p.source==="manual"?" &middot; checked by hand":""}</span></div>
-      </div>
-      <div class="when ${esc(w.cls)}">${esc(w.txt)}</div>`;
-    // the bookmark carries a handler, so it is built rather than stringified
-    row.appendChild(saveButton(p));
-    list.appendChild(row);
-  });
-  if(rows.length>SHOWN){
-    const more=document.createElement("div");
-    more.className="more";
-    more.textContent=`Show ${Math.min(60,rows.length-SHOWN)} more of ${
-      (rows.length-SHOWN).toLocaleString()}`;
-    more.onclick=showMore;
-    list.appendChild(more);
+  const host=$("#j-list");
+  host.textContent="";
+
+  /* A link that asked for something this board cannot offer says so, rather
+     than quietly showing a wider result under the same address. */
+  if(DROPPED_FILTERS.length){
+    const n=document.createElement("div");
+    n.className="note flag";
+    n.innerHTML=`This link asked for ${DROPPED_FILTERS.map(d=>
+      `<strong>${esc(d.key)}=${esc(d.want)}</strong>`).join(", ")}, which this board has
+      nothing to match right now — a sector that has been renamed, a state with nothing
+      open today, or an age this board&rsquo;s history is not deep enough for. It was left
+      off rather than filtering the list down to nothing.`;
+    host.appendChild(n);
   }
+
+  if(!rows.length){
+    host.insertAdjacentHTML("beforeend",emptyJobs(quotaOnly,f,where,setAside));
+  }else{
+    const from=(PAGE-1)*PAGE_SIZE, page=rows.slice(from,from+PAGE_SIZE);
+    /* THE LIST IS THE PRODUCT, so it is a table: five facts per row, in the
+       same five places on every row, at the density a person scans rather
+       than reads. The card grid this replaced fitted three roles on a screen.
+
+       Built, not stringified. A row used to carry
+       onclick="openRole('${esc(p.id)}')", and both halves of that were wrong:
+       esc() leaves ' alone, and p.id is a company id plus a job title taken
+       verbatim from an ATS, refreshed daily with nobody reading the titles.
+       An id that merely CONTAINS an entity ("...Engagement & Education", on
+       the board today) also came back through the HTML parser as a different
+       string. Holding p.id in a closure has neither problem. */
+    const table=document.createElement("table");
+    table.className="jt";
+    table.innerHTML=`<thead><tr>
+      <th scope="col">Role</th><th scope="col">Company</th><th scope="col">Location</th>
+      <th scope="col">Salary</th><th scope="col">First seen</th>
+      <th scope="col"><span class="sub" style="position:absolute;left:-9999px">Save</span></th>
+    </tr></thead><tbody></tbody>`;
+    const body=table.querySelector("tbody");
+    page.forEach(p=>{
+      const w=when(p.first_seen,D.generated);
+      const tr=document.createElement("tr");
+      tr.onclick=()=>openRole(p.id);
+      tr.innerHTML=`
+        <td class="role">${esc(p.title)}${p.quota_carrying
+          ?' <span class="qm" title="carries a sales number">&#9679;</span>':""}</td>
+        <td class="co"><span class="cowrap">${tileHTML(p.company,p.company_id,"tile")}
+          <span>${esc(p.company)}</span></span></td>
+        <td class="loc">${esc(locCell(p))}</td>
+        <td class="sal">${payCell(p)}</td>
+        <td class="age"><span class="when ${esc(w.cls)}">${esc(w.txt)}</span></td>
+        <td class="act"></td>`;
+      // the bookmark carries a handler, so it is built rather than stringified
+      tr.querySelector("td.act").appendChild(saveButton(p));
+      body.appendChild(tr);
+    });
+    host.appendChild(table);
+    host.appendChild(pager(rows.length,pages,from,page.length));
+  }
+
+  /* One primary action on the whole page, and it is the digest rather than a
+     signup wall: every role on this board links straight out to the
+     employer's own board, signed in to nothing. The number is counted off
+     THIS result set, so it is about the search in front of you. */
+  const cta=$("#j-cta");
+  if(cta){
+    const fresh7=rows.filter(p=>p.first_seen&&dayGap(p.first_seen,D.generated)<=7).length;
+    const hist=D.postings.reduce((m,p)=>p.first_seen&&(!m||p.first_seen<m)?p.first_seen:m,"");
+    cta.innerHTML=`<div class="cta">
+      <div style="min-width:0">
+        <div class="n">${fresh7.toLocaleString()}</div>
+        <div class="t">${fresh7===0
+          ? "of these are new in the last 7 days — this search is quiet right now."
+          : fresh7===rows.length&&hist
+            ? `of these — every one — first appeared on this board in the last 7 days,
+               because the board only started reading these job boards on ${esc(hist)}.`
+            : "of these first appeared on this board in the last 7 days."}</div>
+      </div>
+      <a class="go" href="/alerts">Email me new roles</a>
+    </div>
+    <p class="urlcap">An alert is set on the next page by role family, seniority, sector,
+      work mode and state. The words you typed here are not carried across yet.</p>`;
+  }
+
   const relax=$("#j-relax");
   if(relax)relax.onclick=()=>toggleQuota($("#j-quota-pill"));
   /* By class, not by id: the same offer appears in the count line and in the
      empty state, and both have to work. */
   document.querySelectorAll(".payall").forEach(el=>el.onclick=()=>payKeep(true));
   document.querySelectorAll(".payoff").forEach(el=>el.onclick=()=>payKeep(false));
+}
+
+/* Location, as one short cell. Territory is what a role COVERS and office is
+   where it SITS - two different facts, and the role page prints both. A table
+   cell has room for one, so it takes the one a reader is scanning a location
+   column for: where you would be. Silence stays silence. */
+function locCell(p){
+  if(p.work_mode==="remote")return "remote";
+  if(p.office)return (p.office.city?p.office.city+", ":"")+p.office.state
+    +(p.work_mode==="hybrid"?" (hybrid)":"");
+  if(p.territory&&p.territory.stated)
+    return (p.territory.states&&p.territory.states.length
+      ? p.territory.states.slice(0,3).join(", ")+(p.territory.states.length>3
+        ?` +${p.territory.states.length-3}`:"")
+      : p.territory.region)+" (territory)";
+  if(p.location)return p.location;
+  return "not stated";
+}
+/* The salary cell. An em dash for every silence, because a column of
+   sentences is unreadable - but the dash carries WHICH silence as its title,
+   and the role page spells it out, so the distinction is never lost. It must
+   never look like a zero: --faint, the same colour every other "not stated"
+   on this board already uses. */
+function payCell(p){
+  const b=payBit(p);
+  if(b&&b.cls==="pay")return `<span class="pay">${esc(b.txt)}</span>`;
+  const why=b?b.txt:"this build of the board recorded no pay either way";
+  return `<span class="paynone" title="${esc(why)}">&mdash;</span>`;
+}
+/* Pagination, in the url and not a scroll trap. It says which page of how
+   many, because "Next" alone tells a person nothing about whether they are
+   two rows or two thousand from the end. */
+function pager(total,pages,from,shown){
+  const el=document.createElement("div");
+  el.className="pager";
+  const prev=document.createElement("button");
+  prev.type="button"; prev.textContent="← Previous";
+  prev.disabled=PAGE<=1; prev.onclick=()=>goPage(PAGE-1);
+  const next=document.createElement("button");
+  const left=total-(from+shown);
+  next.type="button";
+  next.textContent=left>0?`Next ${Math.min(PAGE_SIZE,left)} →`:"Next →";
+  next.disabled=PAGE>=pages; next.onclick=()=>goPage(PAGE+1);
+  const pos=document.createElement("span");
+  pos.className="pos";
+  pos.textContent=`page ${PAGE} of ${pages.toLocaleString()} · `
+    +`${(from+1).toLocaleString()}–${(from+shown).toLocaleString()} of ${total.toLocaleString()}`;
+  const cap=document.createElement("span");
+  cap.className="cap";
+  cap.textContent="in the URL, not a scroll trap";
+  el.append(prev,next,pos,cap);
+  return el;
 }
 
 /* Finding: /?sec=Public%20Safety&sen=senior on a phone cut 607 roles to 51,
@@ -1617,7 +2253,7 @@ function drawChips(){
     c.innerHTML=`<span>${d.label}</span><button type="button"
       aria-label="remove this filter">&times;</button>`;
     // toggleQuota and setWhere redraw on their own; a select does not
-    c.querySelector("button").onclick=()=>{d.clear();SHOWN=60;drawJobs()};
+    c.querySelector("button").onclick=()=>{d.clear();refilter()};
     host.appendChild(c);
   });
   const all=document.createElement("button");
@@ -1625,7 +2261,7 @@ function drawChips(){
   all.onclick=()=>{
     // clear() may itself redraw, so collect first and draw once at the end
     chipDefs().forEach(d=>d.clear());
-    SHOWN=60;drawJobs();
+    refilter();
   };
   host.appendChild(all);
 }
@@ -1635,24 +2271,29 @@ function companies(){
   const secs=[...new Set(D.organizations.map(o=>o.sector))].sort();
   const hiring=D.organizations.filter(o=>o.open_roles>0).length;
   const withQuota=D.organizations.filter(o=>o.quota_roles>0).length;
+  const noBoard=D.organizations.filter(o=>o.no_board_on_file).length;
   $("#view").innerHTML=`
-  <div class="hero">
-    <h2>${withQuota} govtech companies<br>are hiring sellers.</h2>
-    <p>Every vendor selling software to American cities, counties, schools and agencies:
-       ${D.organizations.length.toLocaleString()} tracked, ${hiring.toLocaleString()} with something open right now.</p>
-    <div class="hsearch">
-      <input type="search" id="c-q" placeholder="Try &ldquo;permitting&rdquo; or &ldquo;Austin&rdquo;">
+  <div class="phead">
+    <h2 class="ptitle">Every govtech company we can find</h2>
+    <p class="pline"><strong>${D.organizations.length.toLocaleString()}</strong> tracked
+      &middot; <strong>${hiring.toLocaleString()}</strong> with something open right now
+      &middot; <strong>${withQuota.toLocaleString()}</strong> hiring sellers
+      &middot; <strong>${noBoard.toLocaleString()}</strong> with no public board we could find</p>
+    <div class="search">
+      <input type="search" id="c-q"
+        placeholder="A company name, or what they sell &mdash; &ldquo;recreation software&rdquo;, &ldquo;911 dispatch&rdquo;"
+        aria-label="Search companies by name or by what they sell">
       <button type="button" onclick="drawCos()">Search</button>
     </div>
-    <div class="pills">
+    <div class="filters">
       <button class="pill" type="button" id="c-hire-pill" aria-pressed="true"
         onclick="toggleHiring(this)">Showing <span class="v on" id="c-hire-v">Hiring now</span></button>
       <button class="pill" type="button" aria-expanded="false"
         onclick="toggleMoreCo(this)">More filters <span class="v" id="c-more-v"></span></button>
     </div>
-    <div class="bar" id="c-bar" style="display:none;justify-content:center;margin-top:16px">
+    <div class="bar" id="c-bar" style="display:none">
       <select id="c-sec"><option value="">All sectors</option>
-        ${secs.map(x=>`<option>${esc(x)}</option>`).join("")}</select>
+        ${secs.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}</select>
       <select id="c-phase"><option value="">Any phase</option>
         <option value="selling">Selling</option><option value="building">Building</option>
         <option value="absorbing">Absorbing</option><option value="mixed">Mixed</option></select>
@@ -1664,17 +2305,43 @@ function companies(){
   </div>
 
   <div class="sechead"><h3 id="c-h">Hiring now</h3><div class="n" id="c-n"></div></div>
+  ${/* The search says out loud how it read the query. That sentence IS the
+       feature: a bounded concept map is only better than substring matching
+       if a person can see which bucket it chose and disagree with it. */""}
+  <div id="c-why"></div>
   <div class="list" id="c-list"></div>
-  <p class="foot">Phase reads the mix of what a company is hiring, not what it says about
+  <p class="foot"><strong>The search reads for meaning, not for characters.</strong>
+    Typing what a company sells &mdash; &ldquo;recreation software&rdquo;, &ldquo;911
+    dispatch&rdquo;, &ldquo;school buses&rdquo; &mdash; resolves to the sector and
+    category this board files companies under, and returns everyone in that bucket
+    rather than everyone whose description happens to contain the word. It is a written
+    map of about 800 phrases onto 12 sectors and 69 categories, not a language model:
+    the same query returns the same companies every time, it can tell you which bucket
+    it chose, and it only knows the words somebody wrote down. Words it does not know
+    are matched as plain text, and when it does resolve, whatever the words landed on
+    outside the bucket is counted above the list and one click from being back.
+    <strong>A company name always finds the company</strong>, even when a filter says
+    otherwise &mdash; the filter releases itself and says so.
+    Phase reads the mix of what a company is hiring, not what it says about
     itself: heavy engineering means building, heavy sales means a go-to-market push, heavy
-    support means absorbing customers it already won. A company with no readable board shows
-    no roles rather than none existing.</p>`;
+    support means absorbing customers it already won.
+    <strong>A company with no board we could find shows no roles rather than none
+    existing</strong> &mdash; ${noBoard.toLocaleString()} of these are in that state, and
+    a field audit of a random sample put roughly 55-63% of them as genuinely boardless,
+    which leaves the rest as boards we have not found yet. Open any one of them to read
+    what we actually checked.</p>`;
   ["c-q","c-sec","c-phase","c-reads"].forEach(i=>{
     const el=$("#"+i);if(el)el.addEventListener("input",drawCos);});
   drawCos();
 }
 
 let CSHOWN=60;
+/* Two set-aside toggles, both answers to the CURRENT query - see coWhy(). They
+   reset when the query changes, because carrying "yes also show me the ones
+   that only mention it" onto a different question is a silent widening. */
+let CO_WIDE=false,CO_TEXT=false,CO_LASTQ=null;
+function coWiden(on){CO_WIDE=on;CSHOWN=60;drawCos();}
+function coText(on){CO_TEXT=on;CSHOWN=60;drawCos();}
 function toggleHiring(btn){
   const on=btn.getAttribute("aria-pressed")!=="true";
   btn.setAttribute("aria-pressed",on);
@@ -1688,21 +2355,100 @@ function showMoreCo(){CSHOWN+=60;drawCos();}
 
 function drawCos(){
   const g=i=>{const el=$("#"+i);return el?el.value:"";};
-  const q=(g("c-q")||"").toLowerCase();
-  const hiringOnly=$("#c-hire-pill")?.getAttribute("aria-pressed")==="true";
+  const q=(g("c-q")||"").trim().toLowerCase();
+  if(q!==CO_LASTQ){CO_LASTQ=q;CO_WIDE=false;CO_TEXT=false;}
+  let hiringOnly=$("#c-hire-pill")?.getAttribute("aria-pressed")==="true";
   const s=g("c-sec"),ph=g("c-phase"),rd=g("c-reads");
-  const rows=D.organizations.filter(o=>{
-    if(q&&!`${o.name} ${o.description||""} ${o.location||""} ${o.category} ${
-      (o.also||[]).map(a=>a.sector+" "+a.category).join(" ")}`.toLowerCase().includes(q))return false;
-    if(hiringOnly&&!o.open_roles)return false;
+
+  /* The query, read as buckets rather than as characters. */
+  const W=parseCoQuery(q);
+  const cats=W.go.filter(t=>t[1]!==null);
+  const secs=[...new Set(cats.map(t=>t[0]))];
+  /* Widening adds the parent sectors of whichever categories the query hit.
+     Offered with its count BEFORE it is taken, so the narrowing is visible
+     while it is happening rather than discovered afterwards. */
+  const go=W.go.concat(CO_WIDE?secs.map(x=>[x,null]):[]);
+
+  const named=o=>coNameHit(o,q);
+  const terms=o=>W.terms.every(t=>coTerm(t,coHay(o)));
+  /* concepts AND the leftover words: "austin permitting" is a bucket plus a
+     place, and both have to hold. With no concept it is the leftover words
+     alone, which is the plain-text fallback and is why an unrecognised word
+     never makes the search worse than it was. */
+  const concept=o=>go.length?coInGo(o,go)&&terms(o):terms(o);
+  /* Filed elsewhere, but the words land on it - what the old substring search
+     would have returned. Never dropped, only set aside and counted. */
+  const mentions=o=>W.go.length>0&&!named(o)&&!concept(o)
+    &&W.literal.every(t=>coTerm(t,coHay(o)));
+  const hits=o=>!q||named(o)||concept(o)||(CO_TEXT&&mentions(o));
+
+  const rest=o=>{
     if(s&&!inSector(o,s))return false;
     if(ph&&!(o.phase||"").startsWith(ph))return false;
     if(rd==="api"&&!(o.open_roles>0))return false;
     if(rd==="x"&&o.enumerable!==false&&!o.unreadable)return false;
     if(rd==="none"&&o.ats&&o.ats!=="unknown")return false;
     return true;
-  }).sort((a,b)=>b.quota_roles-a.quota_roles||b.open_roles-a.open_roles
+  };
+  const found=D.organizations.filter(o=>hits(o)&&rest(o));
+
+  /* A search can contradict a filter, and when it does the words the person
+     just typed beat a toggle they may never have noticed. This is the jobs
+     tab's quota-pill idiom, deliberately reused rather than reinvented: the
+     pill releases ITSELF, visibly, and the reason is printed with the count.
+
+     Two ways the contradiction happens here, and the first is the one that
+     matters. "Hiring now" ran BEFORE the search did, so typing the name of a
+     company we track and that is not hiring - Rain, say - returned "No
+     companies match". That is the board deleting a company it has on file and
+     telling the person it does not exist, which is the exact failure this
+     whole repo is built to refuse. A NAME ALWAYS FINDS THE COMPANY. */
+  let relaxed=null;
+  if(hiringOnly&&q&&found.length){
+    const byName=found.filter(named);
+    if(byName.length&&!byName.some(o=>o.open_roles>0))
+      relaxed=byName.length===1
+        ?`<strong>${esc(byName[0].name)}</strong> is on this board with nothing open,
+           so the &ldquo;hiring now&rdquo; filter has released itself`
+        :`${byName.length} companies this search names by name have nothing open,
+           so the &ldquo;hiring now&rdquo; filter has released itself`;
+    else if(!found.some(o=>o.open_roles>0))
+      relaxed=`nothing this search found is hiring right now, so the &ldquo;hiring
+        now&rdquo; filter has released itself rather than show you an empty page a
+        filter caused`;
+  }
+  if(relaxed){
+    const pill=$("#c-hire-pill");
+    if(pill){
+      pill.setAttribute("aria-pressed","false");
+      const vv=$("#c-hire-v");
+      if(vv){vv.textContent="Everyone we track";vv.className="v";}
+    }
+    hiringOnly=false;
+  }
+
+  const open=o=>!hiringOnly||o.open_roles>0;
+  const rank=new Map();
+  found.forEach(o=>rank.set(o.id,coNameRank(o,q)));
+  const rows=found.filter(open).sort((a,b)=>
+    rank.get(a.id)-rank.get(b.id)
+    ||b.quota_roles-a.quota_roles||b.open_roles-a.open_roles
     ||a.name.localeCompare(b.name));
+
+  /* What the map set aside, counted against the SAME filters the list is
+     under, so the number offered is the number that would actually appear. */
+  let outN=0,inN=0,wideN=0;
+  if(q&&W.go.length){
+    if(CO_TEXT)inN=rows.filter(mentions).length;
+    else outN=D.organizations.filter(o=>mentions(o)&&rest(o)&&open(o)).length;
+  }
+  if(q&&cats.length&&!CO_WIDE){
+    const wgo=go.concat(secs.map(x=>[x,null]));
+    wideN=D.organizations.filter(o=>rest(o)&&open(o)&&!hits(o)
+      &&coInGo(o,wgo)&&terms(o)).length;
+  }
+  coWhy(q,W,{outN:outN,inN:inN,wideN:wideN,secs:secs,relaxed:relaxed,
+             shown:rows.length,bucket:D.organizations.filter(o=>coInGo(o,W.go)).length});
 
   const extra=["c-sec","c-phase","c-reads"].filter(i=>g(i)).length;
   const mv=$("#c-more-v");
@@ -1712,7 +2458,11 @@ function drawCos(){
 
   const clist=$("#c-list");
   clist.textContent="";
-  if(!rows.length)clist.innerHTML=`<div class="empty">No companies match.</div>`;
+  if(!rows.length)clist.innerHTML=`<div class="empty">${q
+    ?`Nothing on this board matches &ldquo;${esc(q)}&rdquo;. That is
+       ${D.organizations.length.toLocaleString()} companies checked and none of them
+       matching &mdash; not a claim that no such company exists.`
+    :"No companies match."}</div>`;
   rows.slice(0,CSHOWN).forEach(o=>{
     /* The count is the point of this row, so it gets the position and the
        weight. A company with quota seats reads as accent; one that is hiring
@@ -1732,7 +2482,14 @@ function drawCos(){
           o.location?" &middot; "+esc(o.location):""}
           <span style="color:var(--faint)">${o.phase?" &middot; "+esc(o.phase):""}</span></div>
       </div>
-      ${unreadable
+      ${/* "nothing open" on a company whose board we never found is a claim
+            we cannot make, and it is the claim that quietly deletes a warm
+            door. The row says which of the three states it is in. */""}
+      ${o.no_board_on_file
+        ?`<div class="when">${o.posts_at
+            ?`posts on ${esc((o.posts_at.label)||POSTS_AT_LABEL[o.posts_at.where]||"another site")}`
+            :"no public board found"}</div>`
+        :unreadable
         ?`<div class="when" style="color:var(--warn)">board not readable</div>`
         :o.quota_roles
           ?`<div style="text-align:right;white-space:nowrap">
@@ -1782,21 +2539,41 @@ function co(id){
     ${o.description?`<p class="kv" style="max-width:72ch">${esc(o.description)}</p>`:""}
     ${o.parent?`<p class="kv"><span class="chip">part of ${esc(o.parent)}</span>
       ${esc(o.ats_note||"")}</p>`:""}
-    <div class="cards" style="margin-top:14px">
-      <div class="card"><div class="bignum">${o.open_roles||0}</div><div class="lbl">open roles</div></div>
-      <div class="card"><div class="bignum">${o.quota_roles||0}</div><div class="lbl">quota-carrying</div></div>
+    ${/* Directly under the description, not in a footnote at the bottom of
+          the page. This is the single most important sentence on the card for
+          950 of the 2,108 companies here, because without it every one of
+          them reads as "not hiring". */
+      (()=>{const n=noBoardNote(o);
+        return n?`<div class="note flag">${n}</div>`:""})()}
+    <div class="cards" style="margin-top:16px">
+      ${/* A count of zero is a claim, and on a company whose board we never
+            found it is a claim we cannot make. So the two counters say
+            "not known" instead, in the same colour as every other silence
+            on this board. */""}
+      <div class="card"><div class="bignum" style="${o.no_board_on_file
+        ?"font-size:20px;color:var(--faint)":""}">${o.no_board_on_file
+        ?"not known":(o.open_roles||0)}</div><div class="lbl">open roles</div></div>
+      <div class="card"><div class="bignum" style="${o.no_board_on_file
+        ?"font-size:20px;color:var(--faint)":""}">${o.no_board_on_file
+        ?"not known":(o.quota_roles||0)}</div><div class="lbl">quota-carrying</div></div>
       <div class="card"><div class="bignum" style="font-size:14px;padding-top:8px">${esc(o.phase||"")}</div>
         <div class="lbl">hiring phase</div></div>
       <div class="card"><div class="bignum" style="font-size:13px;padding-top:9px">
         <span class="chip ${o.ats_ranks==="hard"?"bad":o.ats_ranks==="soft"?"warn":""}">${esc(o.ats||"unknown")}</span></div>
-        <div class="lbl">${esc(ATSNOTE[o.ats_ranks]||"")}</div></div>
+        <div class="lbl sentence">${esc(ATSNOTE[o.ats_ranks]||"")}</div></div>
     </div>
     <p class="colinks">
       ${safeUrl(o.website)?`<a class="golink" href="${esc(safeUrl(o.website))}" target="_blank" rel="noopener">
         Visit ${esc(o.website.replace(/^https?:\/\//,"").replace(/\/$/,""))} &rarr;</a>`:""}
       ${(o.also||[]).map(a=>`<span class="chip">also ${esc(a.sector)} / ${esc(a.category)}</span>`).join("")}
     </p>
-    ${safeUrl(o.board_url)?`<p><a href="${esc(safeUrl(o.board_url))}" target="_blank" rel="noopener">Open their hiring board &rarr;</a>
+    ${/* NOT for a company whose board we never found. board_url falls back to
+          the company's own homepage for those, and a link labelled "open their
+          hiring board" pointing at a marketing site contradicts the sentence
+          three lines above it - and sends somebody looking for a job to a
+          page that has none. The website link is right there and says what it
+          actually is. */""}
+    ${(safeUrl(o.board_url)&&!o.no_board_on_file)?`<p><a href="${esc(safeUrl(o.board_url))}" target="_blank" rel="noopener">Open their hiring board &rarr;</a>
       ${o.unreadable?` <span class="chip warn">board could not be read: ${esc(o.unreadable)}</span>`:""}
       ${o.enumerable===false?` <span class="chip warn">their board is live but its roles cannot be read automatically, so this list may be incomplete</span>`:""}
       ${o.checked_by_hand?` <span class="chip">checked by hand ${esc(o.checked_by_hand)}</span>`:""}</p>`
@@ -1830,9 +2607,9 @@ function co(id){
       if(o.unreadable)
         notes.push(`Their board could not be read on the last run
           (${esc(o.unreadable)}), so these roles may be stale.`);
-      if(o.no_board_on_file)
-        notes.push(`No job board has been found for them yet, so an absence of roles
-          here is not evidence they are not hiring.`);
+      // no_board_on_file is NOT restated here: it is the note directly under
+      // the description, where a reader actually is, rather than a footnote
+      // under three other footnotes.
       return notes.length?`<h3 style="font-size:13px;margin-top:20px">What to know about this list</h3>
         ${notes.map(t=>`<div class="kv" style="max-width:74ch">${t}</div>`).join("")}`:"";
     })()}
@@ -1923,12 +2700,92 @@ function intel(){
   leaders("i-eng",topEng,"engineering");
 }
 
-const VIEWS={jobs,companies,saved:savedView,intel};
-function render(){VIEWS[tab]();[...$("#tabs").children].forEach(b=>b.setAttribute("aria-selected",b.dataset.t===tab));}
+// ---------------------------------------------------------- how it gets here
+/* In the header, one click from every page, because this board's entire claim
+   is that it says where a number came from. Every figure on this page is read
+   off board.json at render time rather than written down, so it cannot end up
+   describing a build that no longer exists. */
+function how(){
+  const bySrc={};
+  D.postings.forEach(p=>{const k=p.source||"ats";bySrc[k]=(bySrc[k]||0)+1});
+  const n=v=>(v||0).toLocaleString();
+  const noBoard=D.organizations.filter(o=>o.no_board_on_file).length;
+  const unread=D.organizations.filter(o=>o.unreadable||o.enumerable===false).length;
+  $("#view").innerHTML=`
+  <div class="phead">
+    <h2 class="ptitle">How listings get here</h2>
+    <p class="pline">Built ${esc(D.generated)} &middot; ${esc(freshness(D.generated))}</p>
+  </div>
+
+  <div class="cards" style="margin-top:24px">
+    <div class="card"><div class="bignum">${n(D.organizations.length)}</div>
+      <div class="lbl">companies tracked</div></div>
+    <div class="card"><div class="bignum">${n(D.companies_read)}</div>
+      <div class="lbl">boards read this run</div></div>
+    <div class="card"><div class="bignum">${n(D.totals.postings)}</div>
+      <div class="lbl">postings on file</div></div>
+    <div class="card"><div class="bignum">${n(noBoard)}</div>
+      <div class="lbl">no board found</div></div>
+  </div>
+
+  <div class="sechead"><h3>Where a row comes from</h3></div>
+  <p class="hint" style="max-width:80ch">Every posting is read from the company&rsquo;s own
+    job board &mdash; a Greenhouse, Lever, Ashby or Workday API where they have one, the
+    careers page itself where they do not. ${n(bySrc.ats)} of the ${n(D.totals.postings)}
+    rows arrived that way${bySrc.manual?`, and ${n(bySrc.manual)} were read by hand off a
+    page no fetcher can enumerate`:""}. Nothing here is scraped from an aggregator and
+    nothing is written by a person guessing. The apply link goes straight out to the
+    employer; this board hosts no application and asks you for no account.</p>
+
+  <div class="sechead"><h3>What we cannot see, and why that is on the page</h3></div>
+  <p class="hint" style="max-width:80ch"><strong>A page scan never proves absence.</strong>
+    ${n(noBoard)} of the companies here have no public job board we could find, and
+    ${n(unread)} have one we could not read this run. Those companies show no roles. That
+    is a fact about what reached us, not about whether they are hiring, and every one of
+    their cards says so in those words rather than showing you a zero. A field audit of a
+    random sample put roughly 55&ndash;63% of the &ldquo;no board found&rdquo; pile as
+    genuinely boardless &mdash; small vendors hiring on LinkedIn or by email &mdash; which
+    leaves the rest as boards nobody has found yet.</p>
+
+  <div class="sechead"><h3>What the columns actually mean</h3></div>
+  <p class="hint" style="max-width:80ch"><strong>First seen</strong> is the day this board
+    first read the posting, not the day the employer posted it &mdash; we are not told
+    that. This board&rsquo;s own history starts
+    ${esc(D.postings.reduce((m,p)=>p.first_seen&&(!m||p.first_seen<m)?p.first_seen:m,""))},
+    so nothing on it can read as older than that.<br>
+    <strong>Quota-carrying</strong> and <strong>level</strong> are inferred from the title
+    by a rule, not read out of a description we never fetched. A title that suggests a
+    number gets one; an odd title goes to a person.<br>
+    <strong>Location</strong> is whatever the posting stated. &ldquo;Not stated&rdquo;
+    means the posting did not say where &mdash; it does not mean remote.<br>
+    <strong>Salary</strong> is shown only where the posting states a figure. A dash is a
+    silence, and there are three different silences behind it: the posting stated nothing,
+    we never got its description, or this build of the board recorded no pay at all. The
+    role page names which one. A dash never means the job pays nothing, and the pay filter
+    sets uncomparable postings aside in the open rather than deleting them.</p>
+
+  <div class="sechead"><h3>How a company gets on the list</h3></div>
+  <p class="hint" style="max-width:80ch">Anyone can send one in with the button at the top
+    of the page. A bot reads the site and proposes a sector and a job board; a person
+    reviews it before it appears. A submission is a claim, not a fact, and nothing reaches
+    this board without somebody agreeing with it.</p>
+
+  <p class="foot">If a row here is wrong &mdash; a filled role still listed, a board
+    pointed at the wrong company, a company we have miscategorised &mdash; the fastest fix
+    is to send it in the same way. This page is the record of what the board knows about
+    itself; it is generated from the same file the job list is.</p>`;
+}
+
+const VIEWS={jobs,companies,saved:savedView,intel,how};
+/* ?tab= comes off a url a stranger can edit, so an unknown value falls back to
+   the board rather than throwing and leaving a blank page behind. */
+function render(){
+  if(!VIEWS[tab])tab="jobs";
+  VIEWS[tab]();
+  [...$("#tabs").children].forEach(b=>b.setAttribute("aria-selected",b.dataset.t===tab));
+}
 fetch("data/board.json").then(r=>r.json()).then(d=>{
   D=d;
-  $("#sub").textContent=`${d.totals.postings} open roles across ${d.organizations.length} `
-    +`state and local govtech companies · ${d.totals.quota_carrying} quota-carrying · refreshed ${d.generated}`;
   $("#tabs").innerHTML=TABS.map(([t,l])=>`<button data-t="${t}">${l}${t==="saved"?' <span id="savedcount" class="tabn"></span>':""}</button>`).join("");
   { const c=$("#savedcount"); if(c)c.textContent=Object.keys(savedAll()).length||""; }
   // ROLE has to be cleared here. jobs() opens with `if(ROLE){roleView(ROLE);return}`,

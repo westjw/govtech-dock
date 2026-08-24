@@ -196,11 +196,103 @@
   .stamp{font-size:11px;padding:3px 9px;border-radius:0;background:var(--chip);
     color:var(--dim);white-space:nowrap}
   .stamp.undone{background:transparent;border:1px dashed var(--warn);color:var(--warn)}
+  /* ── Screen 2: working one queue ───────────────────────────────────────
+     The header a queue wears: the state it is heading for, how far along it
+     is, and the grip you are holding it with. Same 4px scale, same hairline
+     rules, same zero radius as everything else - a belt that looked like a
+     different product would read as a different product. */
+  .qhead{border:1px solid var(--line);background:var(--panel);padding:16px 18px;
+    margin:0 0 16px}
+  .qtop{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .qtop h2{font-size:20px;margin:0}
+  .qtop .qend{font-size:13px;color:var(--dim)}
+  .qtop .seg{margin-left:auto}
+  .qbar{display:flex;align-items:center;gap:12px;margin:12px 0 0}
+  .qleft{font-size:11.5px;color:var(--faint);white-space:nowrap;
+    font-variant-numeric:tabular-nums}
+  .qhead > .qleft{margin-top:8px}
+  /* THE AGREE-RATE. The honest counterweight to a fast loop, so it sits on
+     the header where the loop is, not buried in a stats page. */
+  .agree{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--dim);line-height:1.6}
+  .agree strong{font-variant-numeric:tabular-nums;color:var(--ink)}
+  .agree .unmeasured{color:var(--warn)}
+  .conflist{margin-top:4px;font-size:11.5px;color:var(--faint)}
+  .conflist span{margin-right:12px;font-variant-numeric:tabular-nums}
+
+  /* THE BELT. One item, keyboard-first, the next one already built. */
+  .belt{border:1px solid var(--line);background:var(--panel);padding:24px}
+  .beltpos{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--faint);font-variant-numeric:tabular-nums}
+  .beltname{font-size:32px;font-weight:800;letter-spacing:-.025em;line-height:1.1;
+    margin:8px 0 12px;font-family:var(--font-heading)}
+  .beltdesc{font-size:16px;color:var(--dim);line-height:1.55;max-width:70ch}
+  .beltmeta{margin:12px 0 0;font-size:12.5px;color:var(--dim)}
+  .beltprop{margin:16px 0 0;padding:16px;border:1px solid var(--line);
+    background:var(--bg)}
+  .beltprop .plabel{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--faint)}
+  .beltprop .pval{font-size:20px;font-weight:800;letter-spacing:-.015em;
+    margin-top:4px;font-family:var(--font-heading)}
+  .beltprop .pnone{font-size:14px;color:var(--warn);margin-top:4px}
+  .beltacts{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:16px}
+  /* ARMED, not committed. Beak is the highlight here and never the text -
+     the rule the palette states outright. */
+  button.act.armed{border-color:var(--beak);border-left:3px solid var(--beak);
+    font-weight:600}
+  .beltarm{font-size:12.5px;color:var(--dim);margin-top:12px;line-height:1.6}
+  .beltkeys{margin-top:16px;padding-top:12px;border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--faint);display:flex;gap:16px;flex-wrap:wrap}
+  .kbd{display:inline-block;min-width:18px;text-align:center;border:1px solid var(--line);
+    padding:1px 5px;font:inherit;font-size:11px;color:var(--dim);margin-right:5px;
+    font-variant-numeric:tabular-nums}
+  /* on a filled button the key rides the button's own colour: a Frost border
+     and Fog text on Badge blue is 1.4:1, which is a key cap you cannot read */
+  button.act .kbd{color:inherit;border-color:currentColor;opacity:.6;
+    margin:0 0 0 6px}
+  .beltnext{margin-top:12px;font-size:12px;color:var(--faint)}
+  .beltnext b{font-weight:600;color:var(--dim)}
+  /* end of the belt, and refusals: the penguin does the work here */
+  .beltend,.refusal{display:flex;gap:16px;align-items:center;border:1px solid var(--line);
+    background:var(--panel);padding:20px}
+  .beltend img,.refusal img{width:92px;flex:none}
+  .beltend h3,.refusal h3{margin:0 0 4px;font-size:20px}
+  .refusal{border-left:3px solid var(--warn)}
+  .unbelted{margin-top:16px;font-size:12px;color:var(--faint);line-height:1.65;
+    max-width:78ch}
+
+  /* THE UNLOCKS. Gated on board health, never on volume. */
+  .unlocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+  .unlock{border:1px solid var(--line);background:var(--panel);padding:16px 18px}
+  .unlock.open{border-left:3px solid var(--accent)}
+  .unlock .uname{font-size:16px;font-weight:800;font-family:var(--font-heading);
+    letter-spacing:-.015em}
+  .unlock .ugate{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--faint);margin-top:4px;font-variant-numeric:tabular-nums}
+  .unlock .uwhat{font-size:12.5px;color:var(--dim);margin-top:8px;line-height:1.6}
+  .unlock .uwhy{font-size:11.5px;color:var(--faint);margin-top:8px;line-height:1.6}
+  .ugap{height:5px;background:var(--chip);margin-top:10px;overflow:hidden}
+  .ugap span{display:block;height:100%;background:var(--accent)}
+
+  /* THE RECEIPT. What a sitting actually changed, and nothing it did not. */
+  .receipt{border:1px solid var(--line);background:var(--panel);padding:16px 18px}
+  .rline{display:flex;gap:10px;align-items:baseline;padding:6px 0;font-size:13px}
+  .rline + .rline{border-top:1px solid var(--chip)}
+  .rline b{font-size:20px;font-weight:800;font-family:var(--font-heading);
+    font-variant-numeric:tabular-nums;letter-spacing:-.02em;min-width:44px}
+  .rline .rwhat{color:var(--dim)}
+  .rsince{font-size:11.5px;color:var(--faint);margin-top:10px}
   @media (max-width:700px){
     .hero{flex-direction:column;align-items:flex-start;gap:10px}
     .hero .peng{width:130px}
     .part .pl{width:120px}
     .pnote{margin-left:0}
+    .qtop .seg{margin-left:0}
+    .belt{padding:16px}
+    .beltname{font-size:25px}
+    .beltdesc{font-size:15px}
+    .beltend,.refusal{flex-direction:column;align-items:flex-start}
+    .beltend img,.refusal img{width:72px}
   }
 </style>
 </head>
@@ -338,6 +430,7 @@ async function refreshCounts() {
    which handful of them changes anything today, and what is already done. */
 async function showStart() {
   TAB = '__start';
+  beltOff();
   document.querySelectorAll('nav button').forEach(b =>
     b.setAttribute('aria-selected', b.dataset.key === '__start'));
   const v = $('#view'); v.innerHTML = '';
@@ -517,6 +610,27 @@ async function showStart() {
       + 'itself, with the capture extension.'));
   }
 
+  /* THE UNLOCKS. Gated on board health and nothing else - the thing being
+     bought is a board worth copying, so the price is the board being right.
+     Volume never opens anything. The weekly digest is deliberately not here:
+     it is already built and already his, and putting a gate in front of
+     something somebody already has is a demotion wearing a reward's clothes. */
+  if ((t.unlocks || []).length) {
+    v.appendChild(el('div', 'lbl', 'Unlocks'));
+    const grid = el('div', 'unlocks');
+    (t.unlocks || []).forEach(u => grid.appendChild(unlockCard(u)));
+    v.appendChild(grid);
+  }
+
+  /* THE RECEIPT. What this sitting changed, in differences between two
+     states we can both observe. Anything not derivable is left out - a
+     receipt that rounds is a receipt nobody reads twice. */
+  const rc = t.receipt || {};
+  if (rc.open && (rc.stamped || rc.edits || (rc.doors || []).length)) {
+    v.appendChild(el('div', 'lbl', 'This sitting'));
+    v.appendChild(receiptCard(rc));
+  }
+
   /* THE TAPE. Not a score: a record that the work caused something. */
   if ((g.tape || []).length) {
     v.appendChild(el('div', 'lbl', 'The tape'));
@@ -539,20 +653,731 @@ async function showStart() {
   v.appendChild(notes);
 }
 
+function unlockCard(u) {
+  const n = el('div', 'unlock' + (u.open ? ' open' : ''));
+  n.appendChild(el('div', 'uname', u.name));
+  n.appendChild(el('div', 'ugate', u.open
+    ? `open · board health ${u.score} of ${u.at} needed`
+    : `board health ${u.score} of ${u.at} — ${u.gap} to go`));
+  if (!u.open) {
+    const g = el('div', 'ugap'), fill = el('span');
+    fill.style.width = Math.max(2, Math.round(100 * u.score / u.at)) + '%';
+    g.appendChild(fill);
+    n.appendChild(g);
+  }
+  n.appendChild(el('div', 'uwhat', u.what));
+  n.appendChild(el('div', 'uwhy', u.why));
+  if (u.key === 'csv') {
+    const row = el('div', 'row');
+    const b = el('button', 'act' + (u.open ? ' go' : ''), 'Download the CSV');
+    /* Left clickable while locked on purpose. The gate is enforced on the
+       server, so pressing it shows the actual refusal rather than a greyed
+       button that could be hiding anything. */
+    b.onclick = () => downloadCsv(n, b);
+    row.appendChild(b);
+    n.appendChild(row);
+  } else if (!u.built) {
+    n.appendChild(el('div', 'uwhy',
+      'Nothing sits behind this yet — no endpoint, no key, no waiting list. '
+      + 'It is listed as not built rather than shown as a button that '
+      + 'apologises.'));
+  }
+  return n;
+}
+
+async function downloadCsv(card, btn) {
+  btn.disabled = true;
+  const r = await fetch('/api/export.csv');
+  btn.disabled = false;
+  if (!r.ok) {
+    const j = await r.json().catch(() => ({}));
+    const box = el('div', 'refusal');
+    box.appendChild(penguin('skeptic'));
+    const t = el('div');
+    t.appendChild(el('h3', null, 'Not yet'));
+    t.appendChild(el('div', 'kv', j.error
+      || 'the export is not open at this board health'));
+    box.appendChild(t);
+    const old = card.querySelector('.refusal');
+    if (old) old.remove();
+    card.appendChild(box);
+    return;
+  }
+  const text = await r.text();
+  const url = URL.createObjectURL(new Blob([text], {type: 'text/csv'}));
+  const a = el('a');
+  a.href = url;
+  a.download = 'sled-jobs-board.csv';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+  toast(`${text.split('\n').length - 2} rows downloaded`);
+}
+
+function receiptCard(rc) {
+  const n = el('div', 'receipt');
+  const line = (num, what) => {
+    const r = el('div', 'rline');
+    r.appendChild(el('b', null, String(num)));
+    r.appendChild(el('span', 'rwhat', what));
+    return r;
+  };
+  if (rc.stamped) n.appendChild(line(rc.stamped, 'stamped — rulings that carry your name'));
+  if (rc.edits) n.appendChild(line(rc.edits, 'edits to company records'));
+  n.appendChild(line(rc.reversed, rc.reversed
+    ? 'reversed — the undo working, not a black mark'
+    : 'reversed'));
+  (rc.states || []).forEach(s => {
+    const r = el('div', 'rline');
+    r.appendChild(el('b', null, s.from + '→' + s.to + '%'));
+    r.appendChild(el('span', 'rwhat',
+      `toward “${s.name}” · ${s.n} ruled this sitting, ${s.left} still to go`));
+    n.appendChild(r);
+  });
+  if ((rc.doors || []).length)
+    n.appendChild(line(rc.doors.length,
+      'companies now have a board we can read that had none before'));
+  n.appendChild(el('div', 'rsince',
+    'since ' + (rc.since || '').replace('T', ' ').slice(0, 16)
+    + ' · board health is ' + rc.health
+    + '. Nothing here is estimated: every line is a difference between two '
+    + 'states on file.'));
+  return n;
+}
+
+/* ─────────────────────────────────────────────── Screen 2: working a queue
+   A queue arrives wearing three things: the state it is heading for, how
+   often the machine's proposals have actually been taken, and the grip you
+   want on it. The list is the old grip and stays. The belt is the new one:
+   work arrives at you, one item at a time, and you never choose what to
+   open - which is the fastest loop there is, and for that reason is only
+   allowed on the queues where the answer is on the card. */
+
+const MASCOT = {
+  hunt:    '/assets/mascot/svg/head-on-the-hunt.svg',
+  offer:   '/assets/mascot/svg/head-offer-in.svg',
+  ghosted: '/assets/mascot/svg/head-ghosted.svg',
+  skeptic: '/assets/mascot/svg/head-competitive-pay.svg',
+};
+function penguin(which, alt) {
+  const i = el('img'); i.src = MASCOT[which]; i.alt = alt || ''; return i;
+}
+
+let QINFO = null;          // the queue payload on screen: state, agree, total
+const MODE = {};           // queue -> 'belt' | 'list', remembered while open
+
 async function show(key) {
   TAB = key;
+  beltOff();
   document.querySelectorAll('nav button').forEach(b =>
     b.setAttribute('aria-selected', b.dataset.key === key));
   const v = $('#view'); v.innerHTML = '';
-  v.appendChild(el('p', 'intro', INTRO[key] || ''));
   const load = el('div', 'empty', 'loading…'); v.appendChild(load);
-  const { items } = await api('/api/queue/' + key);
+  const res = await api('/api/queue/' + key);
   load.remove();
-  if (!items.length) { v.appendChild(el('div', 'empty', 'Nothing in this queue.')); return; }
+  QINFO = res;
+  const items = res.items || [];
   // the whole set, so a renderer can offer to act on a group it belongs to
   LAST_ITEMS = items; VTHEME = null;
-  items.forEach(it => v.appendChild(RENDER[key](it)));
+  const body = el('div'); body.id = 'qbody';
+  if (res.state || res.belt) v.appendChild(queueHead(key, res, body));
+  v.appendChild(el('p', 'intro', INTRO[key] || ''));
+  v.appendChild(body);
+  drawQueue(key, items, body);
 }
+
+/* The named end state, on the header where it can be seen. A bar that fills
+   toward "Clean shelves" finishes; a percentage does not. */
+function queueHead(key, res, body) {
+  const h = el('div', 'qhead');
+  const top = el('div', 'qtop');
+  top.appendChild(el('h2', null, META.labels[key]));
+  if (res.state)
+    top.appendChild(el('span', 'qend', '→ “' + res.state.name + '”'));
+  if (res.belt && (res.items || []).length) {
+    const seg = el('div', 'seg');
+    const mk = (m, label) => {
+      const b = el('button', null, label);
+      b.setAttribute('aria-pressed', String(modeOf(key) === m));
+      b.onclick = () => {
+        MODE[key] = m;
+        seg.querySelectorAll('button').forEach(x =>
+          x.setAttribute('aria-pressed', String(x === b)));
+        drawQueue(key, res.items, body);
+      };
+      return b;
+    };
+    seg.append(mk('belt', 'Belt'), mk('list', 'List'));
+    top.appendChild(seg);
+  }
+  h.appendChild(top);
+  if (res.state) {
+    const bar = el('div', 'qbar');
+    const e = el('div', 'endbar'), f = el('div', 'endfill');
+    f.style.width = Math.max(2, res.state.pct) + '%';
+    e.appendChild(f);
+    bar.append(e, el('span', 'qleft',
+      `${res.state.done} ruled · ${res.state.left} to go`));
+    h.appendChild(bar);
+  }
+  /* The page is served 400 rows at most. Saying so is the same rule as
+     everywhere else here: what is on screen is never quietly presented as
+     what exists. */
+  if (res.total > (res.items || []).length)
+    h.appendChild(el('div', 'qleft',
+      `showing the first ${(res.items || []).length} of ${res.total}`));
+  if (res.agree) h.appendChild(agreeLine(res.agree, res.total || 0));
+  return h;
+}
+
+/* THE AGREE-RATE, shown from the very first ruling.
+   Every wrong-bucket row arrived carrying a proposal from an earlier AI pass
+   and not one has ever been confirmed or overruled, so "confidence: high" is
+   currently a word with no evidence behind it. This is that evidence being
+   collected in the open, next to the label it is testing. */
+function agreeLine(a, total) {
+  const n = el('div', 'agree');
+  if (!a.ruled) {
+    const p = el('p');
+    p.style.margin = '0';
+    p.appendChild(el('span', 'unmeasured', 'The guesser has never been checked. '));
+    p.appendChild(document.createTextNode(
+      `All ${total} of these carry a proposal and not one has ever been `
+      + `confirmed or overruled, so its confidence labels mean nothing yet. `
+      + `Your rulings are the measurement.`));
+    n.appendChild(p);
+    return n;
+  }
+  const p = el('p'); p.style.margin = '0';
+  p.appendChild(document.createTextNode('You have taken '));
+  p.appendChild(el('strong', null, `${a.agreed} of ${a.ruled}`));
+  p.appendChild(document.createTextNode(` proposals — `));
+  p.appendChild(el('strong', null, a.pct + '%'));
+  p.appendChild(document.createTextNode(' agree-rate.'));
+  if (!a.measured)
+    p.appendChild(document.createTextNode(
+      ` ${a.measured_at - a.ruled} more before that is a measurement `
+      + `rather than an anecdote.`));
+  n.appendChild(p);
+  if (a.by_confidence.length) {
+    const line = el('div', 'conflist');
+    a.by_confidence.forEach(c => line.appendChild(el('span', null,
+      `${c.confidence}: ${c.agreed}/${c.ruled} (${c.pct}%)`)));
+    n.appendChild(line);
+  }
+  return n;
+}
+
+function modeOf(key) {
+  if (MODE[key]) return MODE[key];
+  return (QINFO && QINFO.belt) ? 'belt' : 'list';
+}
+
+function drawQueue(key, items, body) {
+  beltOff();
+  body.innerHTML = '';
+  if (!items.length) {
+    /* Two different empty states, and they are not the same fact. A queue
+       somebody emptied has reached its named end state and gets the offer
+       penguin; a queue that was never asking anything gets the ghosted one.
+       Collapsing them would congratulate you for work you did not do. */
+    const st = QINFO && QINFO.state;
+    const finished = st && st.done;
+    const e = el('div', 'beltend');
+    e.appendChild(penguin(finished ? 'offer' : 'ghosted'));
+    const t = el('div');
+    t.appendChild(el('h3', null, finished ? st.name : 'Nothing in this queue.'));
+    t.appendChild(el('div', 'kv', finished
+      ? `Nothing left to rule here. ${st.done} ruled in all.`
+      : 'Nothing here is waiting on a person.'));
+    e.appendChild(t);
+    body.appendChild(e);
+    return;
+  }
+  if (QINFO && QINFO.belt && modeOf(key) === 'belt') return startBelt(key, items, body);
+  items.forEach(it => body.appendChild(RENDER[key](it)));
+}
+
+/* ── THE BELT ──────────────────────────────────────────────────────────────
+   One item, keyboard-first, the next one already built and waiting. The
+   whole idea is that you never choose what to open, so the cost of a ruling
+   is the ruling and nothing else.
+
+   Two limits are deliberate and neither is a performance problem:
+
+   The belt only runs on the judgment queues, and inside them only on the
+   rows that carry something to judge. A wrong-bucket row the guesser could
+   not read has nothing on the card to check, so it needs the description
+   read slowly and it stays in the list. Acquisitions never belts at all -
+   deciding whether a slug belongs to a parent company is exactly the work a
+   counter would rush.
+
+   And a ruling takes two acts, not one, until the agree-rate is a real
+   number. The first ~40 rulings are what measures a guesser nothing has
+   ever checked; optimising the keystroke count of an uncalibrated
+   instrument is optimising the wrong thing. */
+
+const BELT = {queue: null, items: [], i: 0, armed: null, ruled: 0,
+              skipped: 0, done: null, next: null, nextFor: -1,
+              host: null, why: ''};
+
+/* What may ride the belt, and what may not. */
+function beltable(key, items) {
+  if (key === 'miscategorized')
+    return items.filter(c => c.proposed_sector && c.confidence !== 'none');
+  if (key === 'vendors')
+    return items.filter(v => (v.description || '').trim());
+  return items;
+}
+
+function beltOff() { BELT.queue = null; BELT.host = null; BELT.armed = null; }
+
+function startBelt(key, items, body) {
+  const rideable = beltable(key, items);
+  Object.assign(BELT, {queue: key, items: rideable, i: 0, armed: null,
+                       ruled: 0, skipped: 0, done: new Set(), next: null,
+                       nextFor: -1, host: body, why: ''});
+  const held = items.length - rideable.length;
+  renderBelt();
+  if (held) {
+    const note = el('div', 'unbelted');
+    note.textContent = held === 1
+      ? '1 row has nothing for the guesser to go on and is not on the belt. '
+        + 'It needs its description read, and a counter beside it would buy '
+        + 'speed with accuracy. Switch to List to reach it.'
+      : `${held} rows have nothing for the guesser to go on and are not on `
+        + 'the belt. They need their descriptions read, and a counter beside '
+        + 'them would buy speed with accuracy. Switch to List to reach them.';
+    body.appendChild(note);
+  }
+}
+
+function renderBelt() {
+  const host = BELT.host;
+  if (!host) return;
+  // keep anything appended under the belt (the unbelted note)
+  const first = host.firstChild;
+  const fresh = BELT.i >= BELT.items.length
+    ? beltEnd()
+    : (BELT.nextFor === BELT.i && BELT.next ? BELT.next : beltCard(BELT.i));
+  freshen(fresh);
+  if (first) host.replaceChild(fresh, first); else host.appendChild(fresh);
+  /* Build the NEXT card now, off-document. It is a real element with a real
+     logo request already in flight, so advancing is a swap rather than a
+     build - which is the entire claim the belt makes. */
+  BELT.next = null; BELT.nextFor = -1;
+  const nxt = nextIndex(BELT.i);
+  if (nxt !== null && nxt < BELT.items.length) {
+    BELT.next = beltCard(nxt); BELT.nextFor = nxt;
+  }
+}
+
+/* A prepared card was built one ruling ago, so the two numbers on it that
+   move every ruling are re-read the moment it is shown. Preparing the card
+   is what makes the loop fast; letting it show yesterday's agree-rate would
+   make the fast loop dishonest, which is the trade this screen exists to
+   refuse. */
+function freshen(card) {
+  const a = QINFO && QINFO.agree;
+  const at = card.querySelector('.propagree');
+  if (at && a) {
+    const seen = (a.by_confidence || []).find(c => c.confidence === at.dataset.conf);
+    at.textContent = seen
+      ? `you have taken ${seen.agreed} of ${seen.ruled} at this confidence`
+      : 'nothing at this confidence has been ruled on yet';
+  }
+  const arm = card.querySelector('.beltarm');
+  if (arm && !BELT.armed) arm.textContent = armLine();
+  const enter = card.querySelector('.enterkey');
+  if (enter) enter.textContent = oneKeyOk() ? 'commit' : 'commit the armed call';
+}
+
+function nextIndex(from) {
+  for (let j = from + 1; j < BELT.items.length; j++)
+    if (!BELT.done.has(j)) return j;
+  return BELT.items.length;
+}
+
+const CALLS = {
+  vendors: [
+    {k: 'i', label: 'In: full company', cls: 'go', call: 'in'},
+    {k: 's', label: 'SLED-only roles', cls: '', call: 'sled'},
+    {k: 'o', label: 'Not this board', cls: 'mute', call: 'out'},
+  ],
+  miscategorized: [
+    {k: 'a', label: 'File it as proposed', cls: 'go', accept: true},
+    {k: 'k', label: 'Bucket is right', cls: '', keep: true},
+    {k: 'e', label: 'Somewhere else…', cls: 'mute', edit: true},
+  ],
+};
+
+/* One keystroke commits only once the agree-rate exists. Vendors never get
+   there on purpose: a name ruled out is never asked again and the row simply
+   stops existing, which is the invisible permanent error this whole tool is
+   built around. Two acts is the price of that. */
+function oneKeyOk() {
+  return BELT.queue === 'miscategorized'
+      && QINFO && QINFO.agree && QINFO.agree.measured;
+}
+
+function beltCard(idx) {
+  const key = BELT.queue, it = BELT.items[idx];
+  const n = el('div', 'belt');
+  n.appendChild(el('div', 'beltpos',
+    `${idx + 1} of ${BELT.items.length} on the belt`));
+  const name = el('div', 'beltname');
+  name.textContent = it.name;
+  if (key === 'miscategorized' && it.id) {
+    name.classList.add('hasLogo');
+    name.style.display = 'flex';
+    name.style.alignItems = 'center';
+    name.insertBefore(logoTile(it.name, it.id), name.firstChild);
+  }
+  n.appendChild(name);
+  if (it.description) n.appendChild(el('div', 'beltdesc', it.description));
+
+  const meta = el('div', 'beltmeta');
+  if (it.open_roles) meta.appendChild(el('span', 'chip', it.open_roles + ' open'));
+  if (key === 'miscategorized')
+    meta.appendChild(el('span', 'chip', `now: ${it.sector} / ${it.category}`));
+  if (it.theme) meta.appendChild(el('span', 'chip', it.theme));
+  if (it.source_event) meta.appendChild(el('span', 'chip', it.source_event));
+  if (it.website) {
+    const a = el('a', null, it.website.replace(/^https?:\/\//, ''));
+    a.href = it.website; a.target = '_blank'; a.rel = 'noopener';
+    meta.appendChild(a);
+  }
+  n.appendChild(meta);
+  if (key === 'vendors' && it.why) n.appendChild(el('div', 'kv', it.why));
+
+  /* The proposal, with its confidence AND what that confidence has been
+     worth so far. A confidence label with no agree-rate beside it is a
+     number the machine gave itself. */
+  if (key === 'miscategorized') {
+    const p = el('div', 'beltprop');
+    p.appendChild(el('div', 'plabel', 'proposed placement'));
+    p.appendChild(el('div', 'pval',
+      `${it.proposed_sector} / ${it.proposed_category}`));
+    const line = el('div', 'kv');
+    line.appendChild(el('span', 'chip', 'confidence: ' + (it.confidence || 'unstated')));
+    const at = el('span', 'propagree');
+    at.dataset.conf = it.confidence || 'unstated';
+    line.appendChild(at);
+    p.appendChild(line);
+    if (it.evidence && it.evidence.length)
+      p.appendChild(el('div', 'pnote', it.evidence.join(' · ')));
+    n.appendChild(p);
+  }
+
+  /* The why. It is the craft stat and the only thing that teaches the next
+     pass, so it sits in the loop rather than behind a disclosure. */
+  const why = el('input', 'txt');
+  why.placeholder = 'why (this is what teaches the next pass)';
+  why.value = '';
+  const acts = el('div', 'beltacts');
+  acts.appendChild(why);
+  n.appendChild(acts);
+
+  const row = el('div', 'beltacts');
+  (CALLS[key] || []).forEach(spec => {
+    const b = el('button', 'act ' + (spec.cls || ''), spec.label);
+    b.dataset.k = spec.k;
+    b.appendChild(el('span', 'kbd', spec.k.toUpperCase()));
+    b.onclick = () => choose(spec, it, why, n, idx);
+    row.appendChild(b);
+  });
+  if (key === 'vendors' && it.theme && it.theme !== 'Everything else') {
+    const peers = BELT.items.filter((x, j) => x.theme === it.theme && !BELT.done.has(j));
+    const b = el('button', 'act mute', `Settle all ${peers.length} in ${it.theme}`);
+    b.dataset.k = 'f';
+    b.appendChild(el('span', 'kbd', 'F'));
+    b.onclick = () => settleFamily(it, why, n, idx);
+    row.appendChild(b);
+  }
+  const skip = el('button', 'act mute', 'Skip — decide later');
+  skip.dataset.k = 'j';
+  skip.appendChild(el('span', 'kbd', 'J'));
+  skip.onclick = () => { BELT.skipped++; BELT.armed = null; advance(); };
+  row.appendChild(skip);
+  n.appendChild(row);
+
+  n.appendChild(el('div', 'beltarm', armLine()));
+
+  const legend = el('div', 'beltkeys');
+  const kv = (k, what, cls) => {
+    const s = el('span');
+    s.appendChild(el('span', 'kbd', k));
+    s.appendChild(el('span', cls, what));
+    return s;
+  };
+  (CALLS[key] || []).forEach(spec =>
+    legend.appendChild(kv(spec.k.toUpperCase(), spec.label.replace('…', ''))));
+  if (key === 'vendors') legend.appendChild(kv('F', 'settle the family'));
+  legend.append(kv('J', 'skip'), kv('W', 'write the why'),
+                kv('⏎', oneKeyOk() ? 'commit' : 'commit the armed call', 'enterkey'),
+                kv('esc', 'disarm'));
+  n.appendChild(legend);
+
+  const nxt = nextIndex(idx);
+  const after = BELT.items[nxt];
+  const line = el('div', 'beltnext');
+  if (after) {
+    line.appendChild(document.createTextNode('next up: '));
+    line.appendChild(el('b', null, after.name));
+    line.appendChild(document.createTextNode(' — already loaded'));
+  } else {
+    line.textContent = 'last one on the belt';
+  }
+  n.appendChild(line);
+  return n;
+}
+
+function armLine() {
+  if (oneKeyOk())
+    return 'One key rules. The agree-rate is measured now, so the second act '
+         + 'has been earned away.';
+  const a = QINFO && QINFO.agree;
+  if (BELT.queue === 'vendors')
+    return 'Two acts, always: press a call to arm it, Enter to commit. A '
+         + 'vendor ruled out never appears again and nothing errors when it '
+         + 'was wrong, so this one does not get a single keystroke.';
+  const left = a && a.ruled != null ? Math.max(0, a.measured_at - a.ruled) : null;
+  return 'Two acts: press a call to arm it, Enter to commit.'
+       + (left !== null
+          ? ` One-key rulings open after ${left} more — those rulings are what `
+            + 'measures the guesser you would be trusting.'
+          : '');
+}
+
+function paintArmed(card) {
+  card.querySelectorAll('button.act').forEach(b =>
+    b.classList.toggle('armed', !!BELT.armed && b.dataset.k === BELT.armed.k));
+  const line = card.querySelector('.beltarm');
+  if (line) line.textContent = BELT.armed
+    ? `“${BELT.armed.label.replace('…', '')}” is armed — Enter commits it, `
+      + 'Esc puts it back.'
+    : armLine();
+}
+
+function choose(spec, it, why, card, idx) {
+  if (spec.edit) return openEdit(it, why, card, idx);
+  if (oneKeyOk()) return commit(spec, it, why, card, idx);
+  if (BELT.armed && BELT.armed.k === spec.k) return commit(spec, it, why, card, idx);
+  BELT.armed = spec;
+  paintArmed(card);
+}
+
+function ruleBody(spec, it, why) {
+  if (BELT.queue === 'vendors')
+    return ['/api/vendor-scope', {name: it.name, call: spec.call, why,
+      description: it.description, website: it.website,
+      source_event: it.source_event}];
+  if (spec.keep)
+    return ['/api/place', {id: it.id, keep: true, why,
+      was: `${it.sector} / ${it.category}`,
+      proposed: it.proposed_sector
+        ? `${it.proposed_sector} / ${it.proposed_category}` : null,
+      confidence: it.confidence, description: it.description}];
+  return ['/api/place', {id: it.id, sector: spec.sector || it.proposed_sector,
+    category: spec.category || it.proposed_category, why,
+    was: `${it.sector} / ${it.category}`,
+    proposed: it.proposed_sector
+      ? `${it.proposed_sector} / ${it.proposed_category}` : null,
+    confidence: it.confidence, description: it.description}];
+}
+
+async function commit(spec, it, why, card, idx) {
+  card.querySelectorAll('button.act').forEach(b => b.disabled = true);
+  const [path, body] = ruleBody(spec, it, (why.value || '').trim());
+  const r = await api(path, body);
+  if (r.error) return refuse(r.error, card);
+  toast(r.message);
+  BELT.armed = null;
+  BELT.ruled++;
+  BELT.done.add(idx);
+  await afterRuling(1);
+  advance();
+}
+
+/* Families settle in one ruling, literally: one decision writes N records,
+   each carrying the same reason, and every one of those names is never asked
+   again. The names are listed before the write because a bulk ruling that
+   nobody counted out loud is the failure the journal exists to make
+   survivable. */
+async function settleFamily(it, why, card, idx) {
+  if (!BELT.armed || !BELT.armed.call) {
+    BELT.armed = null;
+    paintArmed(card);
+    const line = card.querySelector('.beltarm');
+    if (line) line.textContent = 'Arm a call first — I, S or O — then F applies '
+      + 'that same call to the whole family.';
+    return;
+  }
+  const peers = [];
+  BELT.items.forEach((x, j) => {
+    if (x.theme === it.theme && !BELT.done.has(j)) peers.push({x, j});
+  });
+  const names = peers.map(p => p.x.name);
+  if (!confirm(`“${BELT.armed.label}” for all ${names.length} in ${it.theme}?\n\n`
+      + names.slice(0, 12).join(', ')
+      + (names.length > 12 ? `, and ${names.length - 12} more` : ''))) return;
+  card.querySelectorAll('button.act').forEach(b => b.disabled = true);
+  const r = await api('/api/vendor-scope-all', {names, call: BELT.armed.call,
+    theme: it.theme, why: (why.value || '').trim()});
+  if (r.error) return refuse(r.error, card);
+  toast(r.message);
+  BELT.armed = null;
+  BELT.ruled += names.length;
+  peers.forEach(p => BELT.done.add(p.j));
+  await afterRuling(names.length);
+  advance();
+}
+
+/* A refusal is the system working, so it gets the skeptical penguin and the
+   server's own words - never a swallowed error and never a retry loop. */
+function refuse(message, card) {
+  const n = el('div', 'refusal');
+  n.appendChild(penguin('skeptic'));
+  const t = el('div');
+  t.appendChild(el('h3', null, 'Refused — nothing was written'));
+  t.appendChild(el('div', 'kv', message));
+  const row = el('div', 'row');
+  const again = el('button', 'act', 'Back to the item');
+  again.onclick = () => renderBelt();
+  row.appendChild(again);
+  t.appendChild(row);
+  n.appendChild(t);
+  card.replaceWith(n);
+  toast(message, true);
+}
+
+/* Forward past anything already ruled. A bulk family ruling settles rows
+   further down the belt, and being handed one of those again would ask a
+   question that has an answer. */
+function advance() {
+  BELT.i = nextIndex(BELT.i);
+  renderBelt();
+}
+
+/* The header numbers move on every ruling, because a bar that only updates
+   on reload is a bar you stop believing. The state is stepped locally (a
+   ruling moves exactly one row from left to done) and the agree-rate is
+   refetched, since only the server can recompute it from the records. */
+async function afterRuling(n) {
+  refreshCounts();
+  if (QINFO && QINFO.state) {
+    QINFO.state.done += n;
+    QINFO.state.left = Math.max(0, QINFO.state.left - n);
+    const tot = QINFO.state.done + QINFO.state.left;
+    QINFO.state.pct = tot ? Math.round(100 * QINFO.state.done / tot) : 100;
+  }
+  if (QINFO && QINFO.agree) QINFO.agree = await api('/api/agree');
+  repaintHead();
+}
+
+function repaintHead() {
+  const old = $('.qhead');
+  const body = $('#qbody');
+  if (!old || !body || !QINFO) return;
+  old.replaceWith(queueHead(TAB, QINFO, body));
+}
+
+function beltEnd() {
+  const n = el('div', 'beltend');
+  const st = QINFO && QINFO.state;
+  const cleared = st && !st.left;
+  n.appendChild(penguin(cleared ? 'offer' : 'hunt'));
+  const t = el('div');
+  t.appendChild(el('h3', null, cleared && st ? st.name
+    : 'Belt empty — that is this run finished'));
+  const bits = [];
+  if (BELT.ruled) bits.push(`${BELT.ruled} ruled`);
+  if (BELT.skipped) bits.push(`${BELT.skipped} skipped and still waiting`);
+  if (st) bits.push(`${st.left} left in the queue`);
+  t.appendChild(el('div', 'kv', bits.join(' · ') || 'nothing ruled this run'));
+  if (st && st.left)
+    t.appendChild(el('div', 'kv',
+      `“${st.name}” is what this queue is heading for. Not there yet.`));
+  const row = el('div', 'row');
+  const again = el('button', 'act go', 'Load the belt again');
+  again.onclick = () => show(TAB);
+  const start = el('button', 'act', 'Back to Start here');
+  start.onclick = () => showStart();
+  row.append(again, start);
+  t.appendChild(row);
+  n.appendChild(t);
+  return n;
+}
+
+/* Somewhere else: the proposal is wrong but the row still needs filing. The
+   selects are the same two the list renderer uses, opened in place. */
+function openEdit(it, why, card, idx) {
+  if (card.querySelector('.beltedit')) {
+    card.querySelector('.beltedit select').focus();
+    return;
+  }
+  const box = el('div', 'beltprop beltedit');
+  box.appendChild(el('div', 'plabel', 'file it under'));
+  const cats = {};
+  (SCHEMA.sectors || []).forEach(s => { cats[s.name] = s.categories; });
+  const secSel = el('select', 'sel'), catSel = el('select', 'sel');
+  const fill = () => {
+    catSel.innerHTML = '';
+    (cats[secSel.value] || []).forEach(x => {
+      const o = el('option', null, x); o.value = x; catSel.appendChild(o);
+    });
+  };
+  Object.keys(cats).forEach(x => {
+    const o = el('option', null, x); o.value = x; secSel.appendChild(o);
+  });
+  secSel.value = cats[it.proposed_sector] ? it.proposed_sector : it.sector;
+  fill();
+  if (it.proposed_category && (cats[secSel.value] || []).includes(it.proposed_category))
+    catSel.value = it.proposed_category;
+  secSel.onchange = fill;
+  const row = el('div', 'beltacts');
+  const go = el('button', 'act go', 'File it here');
+  go.onclick = () => commit({sector: secSel.value, category: catSel.value},
+                            it, why, card, idx);
+  row.append(secSel, catSel, go);
+  box.appendChild(row);
+  card.querySelector('.beltacts').before(box);
+  secSel.focus();
+}
+
+/* One listener for the whole belt. Typing in the why box is typing, not
+   ruling - the guard is focus, not a mode. */
+document.addEventListener('keydown', e => {
+  if (!BELT.queue || TAB !== BELT.queue || !BELT.host) return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const card = BELT.host.querySelector('.belt');
+  const t = e.target;
+  const typing = t && (t.tagName === 'INPUT' || t.tagName === 'SELECT'
+                    || t.tagName === 'TEXTAREA');
+  if (typing) {
+    if (e.key === 'Escape') { t.blur(); e.preventDefault(); }
+    return;
+  }
+  if (!card) return;
+  const hit = k => card.querySelector('button.act[data-k="' + k + '"]');
+  if (e.key === 'Escape') {
+    BELT.armed = null; paintArmed(card); e.preventDefault(); return;
+  }
+  if (e.key === 'Enter') {
+    if (!BELT.armed) return;
+    const b = hit(BELT.armed.k);
+    if (b && !b.disabled) { e.preventDefault(); b.click(); }
+    return;
+  }
+  if (e.key === 'w') {
+    const w = card.querySelector('input.txt');
+    if (w) { w.focus(); e.preventDefault(); }
+    return;
+  }
+  const b = hit((e.key || '').toLowerCase());
+  if (b && !b.disabled) { e.preventDefault(); b.click(); }
+});
 
 function dismissBtn(queue, key, label) {
   const b = el('button', 'act mute', label || 'Not an issue');
@@ -1248,14 +2073,23 @@ RENDER.miscategorized = c => {
     const r = await api('/api/place', {
       id: c.id, sector: secSel.value, category: catSel.value, why: why.value,
       was: `${c.sector} / ${c.category}`,
-      proposed: `${c.proposed_sector} / ${c.proposed_category}`,
-      description: c.description});
+      proposed: c.proposed_sector
+        ? `${c.proposed_sector} / ${c.proposed_category}` : null,
+      confidence: c.confidence, description: c.description});
     if (r.error) return toast(r.error, true);
     toast(r.message); n.remove(); refreshCounts();
   };
   const keep = el('button', 'act', 'Bucket is right');
   keep.onclick = async () => {
-    const r = await api('/api/place', {id: c.id, keep: true, why: why.value});
+    /* The same evidence the belt sends. "Bucket is right" is the proposal
+       being OVERRULED, and it only counts toward the agree-rate if the
+       record says what was proposed - so the measurement must not depend on
+       which grip the person happened to be holding. */
+    const r = await api('/api/place', {id: c.id, keep: true, why: why.value,
+      was: `${c.sector} / ${c.category}`,
+      proposed: c.proposed_sector
+        ? `${c.proposed_sector} / ${c.proposed_category}` : null,
+      confidence: c.confidence, description: c.description});
     if (r.error) return toast(r.error, true);
     toast(r.message); n.remove(); refreshCounts();
   };

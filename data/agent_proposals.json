@@ -1,0 +1,701 @@
+{
+ "read:aesys": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.aesys.com/careers",
+  "id": "aesys",
+  "kind": "read",
+  "name": "Aesys",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "careers navigation only",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.aesys.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the only req-shaped strings are the careers section's own navigation (Values and Life at Aesys, Training and Academy, Grow with Aesys, Join our team). no list."
+ },
+ "read:airbadge": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://airbadge.us/careers",
+  "id": "airbadge",
+  "kind": "read",
+  "name": "AirBadge",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "West Coast",
+    "posted": "Apr 24, 2026",
+    "title": "AirBadge Application Specialist",
+    "url": "https://airbadge.us/experienced-trusted-agent-or-credentialing-office-professional/"
+   },
+   {
+    "location": "Remote",
+    "posted": "Jan 30, 2024",
+    "title": "Work from Home Opportunity for Experienced Web Application Developer",
+    "url": "https://airbadge.us/web-application-developer/"
+   }
+  ],
+  "saw": {
+   "method": "one page load, no clicks, no pagination, no login",
+   "note": "986 chars of page text total",
+   "read_by": "browser, main frame",
+   "url_read": "https://airbadge.us/careers",
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "two postings written as page entries with a posted date. the second is dated Jan 2024 and may be stale - the date is carried here rather than judged."
+ },
+ "read:autura": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.autura.com/careers",
+  "id": "autura",
+  "kind": "read",
+  "name": "Autura",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Dallas, Texas",
+    "title": "Revenue & Billing Operations Manager",
+    "url": "https://autura.com/careers?gh_jid=5310806008"
+   },
+   {
+    "location": "Remote",
+    "title": "Manager, Financial Planning & Analysis (FP&A)",
+    "url": "https://autura.com/careers?gh_jid=5388977008"
+   },
+   {
+    "location": "Remote",
+    "title": "Vice President, Government Affairs, Partnerships & Business Development",
+    "url": "https://autura.com/careers?gh_jid=5393507008"
+   }
+  ],
+  "saw": {
+   "ats_discovered": "greenhouse / autura",
+   "board_says": "4 jobs",
+   "frame": "job-boards.greenhouse.io/embed/job_board?for=autura",
+   "method": "one page load, no clicks, no pagination, no login",
+   "not_filed": "'Autura Sales Talent Network' - an evergreen talent pool, not a req",
+   "read_by": "browser, child frame",
+   "url_read": "https://www.autura.com/careers",
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the board is a Greenhouse job_board EMBEDDED IN AN IFRAME. the cheap fetch saw only the frame tag; reading the child frame returned the list. the frame url also hands over the ATS slug 'autura', which is worth more than these three rows."
+ },
+ "read:bounce-imaging": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://bounceimaging.com/careers",
+  "id": "bounce-imaging",
+  "kind": "read",
+  "name": "Bounce Imaging",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "heading with an empty list",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://bounceimaging.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the page renders a heading 'OPEN POSITIONS:' and then nothing follows it. no widget, no frame, no list. an empty heading is not an empty company."
+ },
+ "read:crediblemind": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://crediblemind.com/careers/",
+  "id": "crediblemind",
+  "kind": "read",
+  "name": "CredibleMind",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "page states no openings",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://crediblemind.com/careers/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "rendered, and states 'There are no open positions available. Please check again soon!'"
+ },
+ "read:dacratech": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.dacratech.com/careers",
+  "id": "dacratech",
+  "kind": "read",
+  "name": "DacraTech",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "no list; open application form",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.dacratech.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "no list at all - the careers page is an open-application FORM with a free-text Position field."
+ },
+ "read:dominion-voting-systems": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://recruiting.paylocity.com/recruiting/jobs/All/d26bc2af-65c9-44bc-8038-5ec10cc05f98/Liberty-Vote-USA-Inc",
+  "id": "dominion-voting-systems",
+  "kind": "read",
+  "name": "Dominion Voting Systems",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Remote - IL",
+    "posted": "07/23/2026",
+    "title": "Technical Lead (Illinois)",
+    "url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4359657"
+   }
+  ],
+  "saw": {
+   "ats_visible": "paylocity",
+   "board_says": "1 of 1 Job Opportunity",
+   "method": "one page load, no clicks, no pagination, no login",
+   "read_by": "browser, main frame",
+   "url_read": "https://recruiting.paylocity.com/recruiting/jobs/All/d26bc2af-65c9-44bc-8038-5ec10cc05f98/Liberty-Vote-USA-Inc",
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the careers link on file is a Paylocity board and it renders. note the board is titled 'Liberty Vote USA Inc' - a rename or a related entity, worth a look before this is published."
+ },
+ "read:fieldware": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://fieldware.com/careers",
+  "id": "fieldware",
+  "kind": "read",
+  "name": "FieldWare",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "no list; apply by emailed form",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://fieldware.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "no list at all - applicants download a PDF application form and email it to careers@fieldware.com."
+ },
+ "read:greenspace-health": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://greenspacehealth.com/en-us/company/careers/",
+  "id": "greenspace-health",
+  "kind": "read",
+  "name": "Greenspace Health",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Toronto | Hybrid",
+    "title": "Support Specialist",
+    "url": "https://wellfound.com/jobs/4612623-support-specialist"
+   }
+  ],
+  "saw": {
+   "method": "one page load, no clicks, no pagination, no login",
+   "posted": "20 AUG",
+   "read_by": "browser, main frame",
+   "url_read": "https://greenspacehealth.com/en-us/company/careers/",
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "one req in a card whose second line carries department, city and work mode; the apply link goes off to wellfound."
+ },
+ "read:hhaexchange": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.hhaexchange.com/careers",
+  "id": "hhaexchange",
+  "kind": "read",
+  "name": "HHAeXchange",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "link": "https://www.hhaexchange.com/careers/career-opportunities",
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "list is on a second page",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "trap": "testimonial bylines read as job titles",
+   "url_read": "https://www.hhaexchange.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the page on file is a culture page; its 'View Open Positions' button goes to /careers/career-opportunities, which is where the list must be. we do not follow it. NOTE: five strings on this page look exactly like reqs and are employee TESTIMONIAL bylines - 'Kylie Hughes / DIRECTOR COMMERCIAL IMPLEMENTATION'."
+ },
+ "read:leagueapps": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://leagueapps.com/careers/",
+  "id": "leagueapps",
+  "kind": "read",
+  "name": "LeagueApps",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "http": 404,
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "dead careers url",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://leagueapps.com/careers/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the careers url on file returns HTTP 404. this is a stale link, not a company without jobs."
+ },
+ "read:miller-mendel": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.millermendel.com/career",
+  "id": "miller-mendel",
+  "kind": "read",
+  "name": "Miller Mendel",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "acquisition": "NEOGOV acquired Miller Mendel",
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "page states no openings",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.millermendel.com/career"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "rendered a positions TABLE with headers and the row 'There are no open positions at this time.' also carries a banner: NEOGOV has acquired eSOPH through the acquisition of Miller Mendel - worth the acquisitions queue."
+ },
+ "read:millerbernd-manufacturing": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.millerbernd.com/careers",
+  "id": "millerbernd-manufacturing",
+  "kind": "read",
+  "name": "Millerbernd Manufacturing",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "board": "adp workforcenow",
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "board one click away",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.millerbernd.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "no list on the page; every 'Open Positions' button goes to ADP WorkForceNow. the 'Internship Opportunities' heading is a programme blurb, not a req."
+ },
+ "read:nallian": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.nallian.com/careers",
+  "id": "nallian",
+  "kind": "read",
+  "name": "Nallian",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "ats_hint": "workable",
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "no vacancies listed",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.nallian.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "rendered fully and says 'If there are open vacancies, they will be listed below.' none were. the page also gives nallian@jobs.workablemail.com, so there is a WORKABLE account behind this company worth discovering."
+ },
+ "read:nearmap": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.nearmap.com/careers",
+  "id": "nearmap",
+  "kind": "read",
+  "name": "Nearmap",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Barangaroo, NSW",
+    "title": "Director, Commercial Sales - ANZ"
+   },
+   {
+    "location": "Lehi, UT",
+    "title": "Senior Campaign Manager"
+   },
+   {
+    "location": "Lehi, UT",
+    "title": "Enterprise Account Executive, Insurance"
+   },
+   {
+    "location": "Lehi, Utah",
+    "title": "Business Development Representative"
+   },
+   {
+    "location": "Arlington, VA",
+    "title": "Aerial Systems Engineer"
+   },
+   {
+    "location": "Lehi, UT",
+    "title": "Marketing Automation Manager"
+   },
+   {
+    "location": "Barangaroo, NSW",
+    "title": "Marketing Automation Platform Manager (6Sense / Marketo) - REMOTE - East Coast Australia"
+   },
+   {
+    "location": "Lehi, UT",
+    "title": "Regional Growth Marketing Manager"
+   }
+  ],
+  "saw": {
+   "dropped_by_duplicate_title_guard": [
+    "Senior Campaign Manager (Barangaroo, NSW)",
+    "Business Development Representative (Barangaroo, NSW)"
+   ],
+   "method": "one page load, no clicks, no pagination, no login",
+   "pagination": "1 2 3 4 - not followed",
+   "read_by": "browser, main frame",
+   "rows_on_page": 10,
+   "unique_titles": 8,
+   "url_read": "https://www.nearmap.com/careers",
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the list renders in the main document as tab-separated rows (title / type / department / location). page 1 of 4 - the read does not paginate, so this is a floor, not the total."
+ },
+ "read:nedap-identification-systems": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "low",
+  "evidence": "https://www.nedap.com/en/careers/vacancies",
+  "id": "nedap-identification-systems",
+  "kind": "read",
+  "name": "Nedap Identification Systems",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "London",
+    "title": "Channel Partner Manager UK & Ireland",
+    "url": "https://www.nedap.com/en/careers/vacancies/channel-partner-manager-uk-ireland-a0tsl00000dgcraiag"
+   },
+   {
+    "location": "Groenlo",
+    "title": "Junior Technical Support Engineer",
+    "url": "https://www.nedap.com/en/careers/vacancies/junior-technical-support-engineer-a0tsl00000aeqbciac"
+   },
+   {
+    "location": "Groenlo",
+    "title": "Interim Program Manager - Access Control",
+    "url": "https://www.nedap.com/en/careers/vacancies/interim-program-manager-access-control-a0tsl00000c5anmiau"
+   },
+   {
+    "location": "Groenlo",
+    "title": "Senior Backend Developer (Go)",
+    "url": "https://www.nedap.com/en/careers/vacancies/senior-backend-developer-go-a0tsl00000wqcbviar"
+   },
+   {
+    "location": "Groenlo",
+    "title": "Enterprise Trust Lead",
+    "url": "https://www.nedap.com/en/careers/vacancies/enterprise-trust-lead-a0tsl00000c1sy9iaa"
+   },
+   {
+    "location": "Vilvoorde",
+    "title": "Account Executive Belux",
+    "url": "https://www.nedap.com/en/careers/vacancies/account-executive-belux-a0tsl00000n2nuuian"
+   },
+   {
+    "location": "Groenlo",
+    "title": "DevOps Engineer",
+    "url": "https://www.nedap.com/en/careers/vacancies/devops-engineer-a0tsl00000c8mokiae"
+   },
+   {
+    "location": "Groenlo",
+    "title": "Head of Marketing",
+    "url": "https://www.nedap.com/en/careers/vacancies/head-of-marketing-a0tsl00000q8ziyiar"
+   },
+   {
+    "location": "Stockholm",
+    "title": "Channel Manager - Reader portfolio",
+    "url": "https://www.nedap.com/en/careers/vacancies/channel-manager-reader-portfolio-a0tsl00000zbqdvian"
+   }
+  ],
+  "saw": {
+   "filed": "Security only",
+   "method": "one page load, no clicks, no pagination, no login",
+   "read_by": "browser, main frame",
+   "rows_on_page": 34,
+   "units_on_page": {
+    "Foundry": 2,
+    "General": 2,
+    "General (Inc.)": 1,
+    "Healthcare": 12,
+    "Livestock": 4,
+    "Nedap Inc.": 1,
+    "Retail": 2,
+    "Retail (Inc.)": 1,
+    "Security": 9
+   },
+   "url_read": "https://www.nedap.com/en/careers/vacancies",
+   "us_roles_in_security_unit": 0,
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "SCOPE WARNING - nedap.com is the GROUP careers page and shows 34 reqs across Healthcare, Livestock, Retail, Foundry and Security. only the 9 filed here carry the Security unit, which is the identification business. filing the other 25 under this company would report a parent's postings as the subsidiary's. the page carries the unit on each row, so the scoping is read off the page, not guessed."
+ },
+ "read:nimble": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.hirenimble.com/careers",
+  "id": "nimble",
+  "kind": "read",
+  "name": "Nimble",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "",
+    "title": "District Partnerships Manager (Sales)",
+    "url": "https://www.hirenimble.com/roles/nimble-district-partnerships-manager"
+   }
+  ],
+  "saw": {
+   "method": "one page load, no clicks, no pagination, no login",
+   "read_by": "cheap fetch AND browser",
+   "url_read": "https://www.hirenimble.com/careers",
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "one req linked from the careers page to its own role page. this is the ONLY one of the 25 the cheap fetch could read."
+ },
+ "read:noggin": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.motorolasolutions.com/en_us/about/careers.html",
+  "id": "noggin",
+  "kind": "read",
+  "name": "Noggin",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "parent page",
+   "parent": "Motorola Solutions",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.motorolasolutions.com/en_us/about/careers.html"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the careers url on file is motorolasolutions.com - the parent that acquired Noggin. the only req-shaped strings on it are Motorola's global internship programs."
+ },
+ "read:omnitracs": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.solera.com/careers",
+  "id": "omnitracs",
+  "kind": "read",
+  "name": "Omnitracs",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "board": "workday / solera Global_Career_Site",
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "parent page; board one click away",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.solera.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the careers url on file is solera.com - the parent. its 'See Open Positions' goes to solera.wd5.myworkdayjobs.com. same parent-board hazard."
+ },
+ "read:pulsara": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.pulsara.com/careers",
+  "id": "pulsara",
+  "kind": "read",
+  "name": "Pulsara",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "board": "hubspot cta redirect",
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "board one click away",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.pulsara.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "no list on the page; 'See Open Positions' is a HubSpot CTA redirect. we do not follow it."
+ },
+ "read:recycle-coach": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.recyclecoach.com/solutions/careers",
+  "id": "recycle-coach",
+  "kind": "read",
+  "name": "Recycle Coach",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Remote | New Jersey or Illinois preferred",
+    "title": "Executive Assistant & Events Coordinator"
+   }
+  ],
+  "saw": {
+   "method": "one page load, no clicks, no pagination, no login",
+   "read_by": "browser, main frame",
+   "url_read": "https://www.recyclecoach.com/solutions/careers",
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "one req under an 'Open opportunities' heading, with its location on the line after the title."
+ },
+ "read:rezcomm": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://rezcomm.com/careers",
+  "id": "rezcomm",
+  "kind": "read",
+  "name": "Rezcomm",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "no list; hiring off-site",
+   "off_site": "indeed",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://rezcomm.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "no list on the page. it says 'Follow us on Indeed to be the first to know about new roles' - the hiring happens off-site."
+ },
+ "read:subitup": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.subitup.com/careers",
+  "id": "subitup",
+  "kind": "read",
+  "name": "SubItUp",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "page states no openings",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.subitup.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the page rendered an Open Positions section and states 'There are no open positions right now'. that is the page saying so, which is not the same as the company not hiring."
+ },
+ "read:the-library-corporation": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://tlcdelivers.com/career-opportunities/",
+  "id": "the-library-corporation",
+  "kind": "read",
+  "name": "The Library Corporation",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "page states no listings",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "trap": "filter chips read as job titles",
+   "url_read": "https://tlcdelivers.com/career-opportunities/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "rendered a job search with filter chips (Remote / Freelance / Full Time / Internship / Part Time / Temporary) and the result 'There are no listings matching your search.' the FILTER CHIPS look like job titles - a second shape of the navigation trap."
+ },
+ "read:watersmart-software": {
+  "at": "2026-08-24T00:33:43-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=25)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.watersmart.com/careers",
+  "id": "watersmart-software",
+  "kind": "read",
+  "name": "WaterSmart Software (VertexOne)",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "board": "dayforce / vertexone",
+   "method": "one page load, no clicks, no pagination, no login",
+   "mode": "parent/acquirer page; board one click away",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "redirect": "https://www.vertexone.ai/careers",
+   "url_read": "https://www.watersmart.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the careers url redirects to vertexone.ai - the acquirer. its 'See Our Open Positions' goes to a Dayforce candidate portal. reading that would report VertexOne's reqs as WaterSmart's."
+ }
+}

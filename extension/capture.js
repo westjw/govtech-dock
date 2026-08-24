@@ -21,6 +21,14 @@
   const api = (path, body) => new Promise((res) =>
     chrome.runtime.sendMessage({ kind: "api", path, body }, res));
 
+  /* Three different failures used to read as one sentence. "The admin is not
+     running" and "the admin refused that" are not the same problem, and only
+     the first is fixed by starting the admin - so the reply's own words win
+     when it has any. An undefined r is the worker dying before it answered. */
+  const trouble = (r) =>
+    (r && (r.error || (r.data && r.data.error)))
+    || "The admin did not answer. Is it running?  python3 scripts/admin.py";
+
   /* ---- harvest: list pages -------------------------------------------- */
   const HREF_RE = new RegExp(
     "/(jobs?|careers?|positions?|openings?|vacanc(y|ies)|opportunit(y|ies)"
@@ -160,8 +168,10 @@
       hits.innerHTML = ""; company = null;
       if (q.value.trim().length < 2) return;
       const r = await api("/api/search-companies", { q: q.value });
-      if (!r.ok) { msg.innerHTML = `<span style="color:#a3342a">Cannot reach the admin —
-        is it running? python3 scripts/admin.py</span>`; return; }
+      if (!r || !r.ok) {
+        msg.innerHTML = `<span style="color:#a3342a">${esc(trouble(r))}</span>`;
+        return;
+      }
       (r.data.results || []).forEach((c) => {
         const d = document.createElement("div");
         d.style.cssText = "padding:5px 8px;border-radius:6px;cursor:pointer";
@@ -182,10 +192,11 @@
     msg.textContent = "sending…";
     const r = await api("/api/capture",
       { company_id: company.id, jobs: chosen, page_url: location.href });
-    msg.innerHTML = r.ok && !r.data.error
+    const sent = r && r.ok && !r.data.error;
+    msg.innerHTML = sent
       ? `<b style="color:#2f6f4f">${esc(r.data.message)}</b>`
-      : `<span style="color:#a3342a">${esc(r.data?.error || r.error)}</span>`;
-    if (r.ok && !r.data.error) setTimeout(() => box.remove(), 2400);
+      : `<span style="color:#a3342a">${esc(trouble(r))}</span>`;
+    if (sent) setTimeout(() => box.remove(), 2400);
   };
 
   document.body.appendChild(box);

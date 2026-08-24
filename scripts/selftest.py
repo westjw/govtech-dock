@@ -7,7 +7,9 @@ touching the network. Run after any edit to data/ or scripts/.
 from __future__ import annotations
 
 import collections
+import csv
 import html
+import io
 import json
 import re
 import pathlib
@@ -644,6 +646,165 @@ def check_brand() -> int:
     return bad
 
 
+def check_admin_game() -> int:
+    """The admin's scoring layer must never turn an unknown into a number.
+
+    Three invariants, and all three are the same rule wearing different
+    clothes - absence of evidence is reported as absence of evidence:
+
+    - The AGREE-RATE is unmeasured until somebody rules. A ruling made with
+      no proposal on screen says nothing about the guesser in either
+      direction, so counting it would manufacture an accuracy figure out of
+      records that never tested one.
+    - The BELT only runs where the answer is on the card. Acquisitions is
+      explicitly excluded: deciding whether a slug belongs to a parent
+      company needs slow reading, and a counter beside it would buy speed
+      with accuracy.
+    - The CSV export is a copy of stored facts and nothing else. Every
+      column must exist on the records, and a cell that could be read as a
+      spreadsheet FORMULA has to be neutralised, because company names
+      arrive here from outside submissions.
+    """
+    import admin
+    bad = 0
+
+    if admin.agree_rate.__module__ != "admin":
+        return fail("admin.agree_rate went missing")
+    empty = {"saw": {"proposed": None}}
+    if admin._seen_proposal(empty) is not None:
+        bad += fail("agree_rate would score a ruling that saw no proposal")
+    # "null / null" is what a browser writes when there was no proposal, and
+    # it has a slash in it, so a naive check scores it as a real one
+    for shape in ({}, {"saw": {}}, {"saw": {"proposed": "None / None"}},
+                  {"saw": {"proposed": "null / null"}},
+                  {"saw": {"proposed": "undefined / undefined"}},
+                  {"saw": {"proposed": " / Fire"}},
+                  {"saw": {"proposed": "not a pair"}}):
+        if admin._seen_proposal(shape) is not None:
+            bad += fail(f"_seen_proposal({shape}) invented a proposal")
+    if admin._seen_proposal({"saw": {"proposed": "Public Safety / Fire"}}) \
+            != "Public Safety / Fire":
+        bad += fail("_seen_proposal dropped a real proposal")
+
+    for q in admin.BELT_QUEUES + admin.PROPOSAL_QUEUES:
+        if q not in admin.QUEUES:
+            bad += fail(f"belt/proposal queue {q!r} is not a queue")
+    if "acquisitions" in admin.BELT_QUEUES:
+        bad += fail("acquisitions must never ride the belt - it needs slow "
+                    "reading, and a counter there trades accuracy for speed")
+    for q in admin.END_STATE:
+        if q not in admin.QUEUES:
+            bad += fail(f"END_STATE names {q!r}, which is not a queue")
+
+    # a formula-shaped cell must be neutralised, and an ordinary one left alone
+    for raw in ("=1+1", "+cmd", "-2", "@x"):
+        if not admin._cell(raw).startswith("'"):
+            bad += fail(f"CSV cell {raw!r} would run as a spreadsheet formula")
+    if admin._cell("Tyler Technologies") != "Tyler Technologies":
+        bad += fail("CSV cell mangled an ordinary value")
+    companies = json.load(open(DATA / "companies.json"))
+    rows = list(csv.DictReader(io.StringIO(
+        admin.board_csv(companies, json.load(open(DATA / "board.json"))))))
+    if len(rows) != len(companies):
+        bad += fail(f"CSV has {len(rows)} rows for {len(companies)} companies")
+    elif {r["id"] for r in rows} != {c["id"] for c in companies}:
+        bad += fail("CSV rows do not cover exactly the companies on file")
+    return bad
+
+
+def check_admin_guards() -> int:
+    """Two invariants the admin states in comments, said here as tests.
+
+    Both were true of the words and not of the code, which is the only reason
+    this function exists: an invariant nothing checks is a comment.
+
+    - WHAT COUNTS AS INSIDE. The admin fetches whatever a person pastes and
+      hands the answer back, so the address is the whole question. The four
+      shapes at the bottom of INSIDE are the ones a hand-written list of
+      private ranges misses - carrier NAT is not private by any flag, and a
+      6to4 address is a global address with a loopback passenger - and all
+      four were fetched. They are here rather than in the guard's comment
+      because the next person to simplify _public() will run this.
+
+    - WHAT COUNTS AS AN ID. A company id is a filename everywhere it travels.
+      The pattern ended in $, which also matches before a trailing newline, so
+      "tyler-tech\\n" was a legal id as far as validate() could tell.
+    """
+    import socket
+    import ipaddress
+    import admin
+    bad = 0
+
+    INSIDE = [
+        ("127.0.0.1", "loopback"),
+        ("10.0.0.1", "private"),
+        ("192.168.1.1", "private"),
+        ("172.16.0.1", "private"),
+        ("169.254.169.254", "the cloud metadata address, over link-local"),
+        ("0.0.0.0", "unspecified"),
+        ("::1", "loopback"),
+        ("fd00::1", "unique local"),
+        ("fe80::1", "link local"),
+        ("::ffff:127.0.0.1", "v4-mapped loopback"),
+        # the four that got through
+        ("100.64.1.1", "RFC 6598 carrier NAT"),
+        ("100.127.255.254", "RFC 6598 carrier NAT, far end"),
+        ("2002:7f00:1::", "6to4-encoded 127.0.0.1"),
+        ("2002:a00:1::", "6to4-encoded 10.0.0.1"),
+    ]
+    # the other half of the rule: this is a guard, not a ban on the internet
+    OUTSIDE = [
+        ("8.8.8.8", "an ordinary public address"),
+        ("2606:4700::1111", "an ordinary public v6 address"),
+        ("2002:808:808::", "6to4 wrapping public 8.8.8.8, which is a real tunnel"),
+    ]
+    for text, why in INSIDE:
+        if admin._public(ipaddress.ip_address(text)):
+            bad += fail(f"admin would fetch {text} - {why}")
+    for text, why in OUTSIDE:
+        if not admin._public(ipaddress.ip_address(text)):
+            bad += fail(f"admin refuses {text} - {why}, and it is on the internet")
+
+    # A predicate nothing calls is not a guard, so both gates that use it get
+    # asked directly. Every host here is a literal, so nothing resolves and
+    # this stays offline.
+    for text, why in INSIDE:
+        if ":" in text:
+            # clean_url wants a dotted host and a bare v6 literal has no dot,
+            # which is why the original report spelled 6to4 with a trailing
+            # 0.0.0.0. Use that spelling, so the dotted-host rule is not what
+            # does the work here and _public is genuinely the gate under test.
+            host = text + "0.0.0.0" if text.endswith("::") else text
+            url = f"http://[{host}]/"
+        else:
+            url = f"http://{text}/"
+        if admin.clean_url(url) is not None:
+            bad += fail(f"clean_url accepted {url} - {why}")
+        try:
+            with admin.only_public_hosts():
+                socket.getaddrinfo(text, 80, proto=socket.IPPROTO_TCP)
+            bad += fail(f"the connect gate would dial {text} - {why}")
+        except admin.PrivateAddress:
+            pass
+        except socket.gaierror:
+            bad += fail(f"the connect gate could not read {text} as an address")
+
+    for good in ("tyler-tech", "3di", "a", "motorola-solutions"):
+        if not admin.ID_OK.match(good):
+            bad += fail(f"ID_OK refuses {good!r}, which is an ordinary id")
+    for evil in ("abc\n", "abc\n\n", "abc\r", "-abc", "ABC", "a b", "a/b",
+                 "../etc", "a.b", "", "abc\nx"):
+        if admin.ID_OK.match(evil):
+            bad += fail(f"ID_OK accepts {evil!r} as a company id")
+    # and the pattern still has to admit every id actually on file, or the
+    # next write to any of them is refused
+    for c in json.load(open(DATA / "companies.json")):
+        if not admin.ID_OK.match(c["id"]):
+            bad += fail(f"ID_OK refuses {c['id']!r}, which is on file")
+            break
+    return bad
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -884,6 +1045,8 @@ def main() -> int:
     # never arrives - no error anywhere. So the duplication is checked here.
     errors += check_alert_vocabulary()
     errors += check_brand()
+    errors += check_admin_game()
+    errors += check_admin_guards()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

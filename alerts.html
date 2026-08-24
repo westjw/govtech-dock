@@ -83,6 +83,23 @@ const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>
   ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
+/* index.html's safeUrl, and it has to be here too rather than only there.
+   A saved role's url started life on somebody else's ATS, went up into a
+   subscription record and comes back down into an href on this page — and
+   esc() does nothing to "javascript:...", because the scheme IS the payload,
+   not the characters in it. It would run on this origin, and this is the page
+   that holds the settings token in memory: the token is the whole identity
+   here, so a click on a saved role would hand over the subscription.
+   http(s) or it is not a link, and an unusable url is dropped rather than
+   guessed at. */
+function safeUrl(u){
+  const s=String(u==null?"":u).trim();
+  if(!s)return "";
+  try{const p=new URL(s,location.href);
+      return (p.protocol==="http:"||p.protocol==="https:")?p.href:"";}
+  catch{return ""}
+}
+
 /* The token comes out of the URL once and is then removed from the address
    bar. It stays in memory for this page's requests. A settings URL sitting in
    a browser history, a shared screen or a pasted "look at this" is the most
@@ -301,9 +318,10 @@ function settingsView(data){
   ${live?`<div class="panel"><h2>Saved roles</h2>
     <p class="note">${live} role${live===1?"":"s"} kept with this subscription, so
       they follow you between your laptop and your phone.</p>
-    <ul class="saved">${SAVED.slice(0,40).map(s=>
-      `<li>${s.url?`<a href="${esc(s.url)}" rel="noopener noreferrer">${esc(s.title)}</a>`
-              :esc(s.title)} — ${esc(s.company)}</li>`).join("")}</ul>
+    <ul class="saved">${SAVED.slice(0,40).map(s=>{
+      const u=safeUrl(s.url);
+      return `<li>${u?`<a href="${esc(u)}" rel="noopener noreferrer">${esc(s.title)}</a>`
+              :esc(s.title)} — ${esc(s.company)}</li>`}).join("")}</ul>
     ${live>40?`<p class="note" style="margin-top:8px">and ${live-40} more</p>`:""}
     <p class="note" style="margin-top:10px"><a href="/?tab=saved">Open them on the board</a></p>
   </div>`:""}

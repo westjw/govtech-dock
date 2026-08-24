@@ -25,8 +25,10 @@ from __future__ import annotations
 import argparse
 import collections
 import contextlib
+import csv
 import datetime as dt
 import http.server
+import io
 import ipaddress
 import json
 import os
@@ -63,7 +65,13 @@ STATUSES = {"Yes", "Sales (non-AE)", "None found", "Unknown"}
 # is where that has to be said, because an id can enter it from intake, from a
 # merge, from a ruling, or from an outside submission. All 2,108 ids on file
 # already match; this refuses the ones nobody meant to allow.
-ID_OK = re.compile(r"^[a-z0-9][a-z0-9-]*$")
+#
+# \Z rather than $, and the difference is the whole point of the comment above:
+# $ also matches immediately before a trailing newline, so "tyler-tech\n" was a
+# legal id as far as this said. Nothing reaches it with one today - every
+# writer strips - but the invariant is "an id is a safe filename", and a
+# trailing newline is not, so the pattern has to actually say it.
+ID_OK = re.compile(r"^[a-z0-9][a-z0-9-]*\Z")
 
 # Words that carry no identity, so two records differing only by these are the
 # same company: "Miovision" and "Miovision Technologies Inc." are one vendor.
@@ -77,6 +85,18 @@ def norm(s: str) -> str:
 
 def ident(name: str) -> str:
     return norm(LEGAL.sub("", name or ""))
+
+
+def now() -> str:
+    """The stamp every ruling carries, alongside its date.
+
+    A date answers "how many this month" and cannot answer "what did this
+    sitting change" - a sitting is not a day, and two of them share one
+    often. The date stays because everything already reads it; this is the
+    grain the end-of-shift receipt needs, and it can only be recorded at the
+    moment of the ruling, never reconstructed afterwards.
+    """
+    return dt.datetime.now().astimezone().isoformat(timespec="seconds")
 
 
 def read(name: str, default):
@@ -419,6 +439,7 @@ def act_scope(body: dict) -> dict:
         return {"error": "need a posting id and a decision"}
     d = read("scope_decisions.json", {})
     d[pid] = {"in_scope": bool(keep), "on": dt.date.today().isoformat(),
+              "at": now(),
               "why": (body.get("why") or "").strip() or None}
     write_atomic("scope_decisions.json", d)
     return {"ok": True,
@@ -442,6 +463,7 @@ def act_scope_all(body: dict) -> dict:
         if p.get("scope_pending") and p["id"] not in d \
                 and re.search(re.escape(pat), p["title"], re.I):
             d[p["id"]] = {"in_scope": bool(keep), "on": dt.date.today().isoformat(),
+                          "at": now(),
                           "why": f"bulk ruling on {pat!r}"}
             n += 1
     write_atomic("scope_decisions.json", d)
@@ -756,12 +778,17 @@ def act_vendor_scope_all(body: dict) -> dict:
     if not names or call not in ("in", "sled", "out"):
         return {"error": "need names and a call of in, sled or out"}
     d = read("vendor_scope_decisions.json", {})
+    # one stamp for the whole bulk, because it WAS one decision - stamping
+    # each row at its own microsecond would let a sitting boundary fall in
+    # the middle of a single click
+    stamp = now()
     n = 0
     for name in names:
         k = _vkey(name)
         if k in d:
             continue
         d[k] = {"call": call, "name": name, "on": dt.date.today().isoformat(),
+                "at": stamp,
                 "by": (body.get("by") or "owner").strip(),
                 "why": (body.get("why") or "").strip()
                        or f"bulk ruling on {body.get('theme') or 'a group'}",
@@ -783,6 +810,345 @@ END_STATE = {
     "blocked": "Every wall retried",
 }
 
+# The queues a belt is allowed to run. Deliberately short.
+#
+# A belt hands you one item at a time and prepares the next, which is the
+# right grip for a question you can answer from what is on the card. It is
+# the WRONG grip for the acquisitions queue - where the whole job is deciding
+# whether a slug belongs to a parent company, and being handed the next one
+# is pressure to stop reading - and for the rows where the guesser has
+# nothing to propose, which need the description read rather than a proposal
+# checked. Those stay a list, on purpose. A counter there would buy speed
+# with accuracy, and accuracy is the only thing this tool sells.
+BELT_QUEUES = ("miscategorized", "vendors")
+
+# Queues where the person is shown a machine PROPOSAL rather than a blank
+# form. Only these can have an agree-rate, because only these have something
+# to agree with.
+PROPOSAL_QUEUES = ("miscategorized",)
+
+# How many rulings it takes before the agree-rate is a measurement rather
+# than an anecdote, and therefore before a single keystroke may commit one.
+#
+# All 238 wrong-bucket rows arrived carrying a proposal from an earlier AI
+# pass and not one has ever been confirmed or overruled, so the guesser's
+# accuracy is not "roughly known" - it is unmeasured. Until it is measured,
+# every ruling takes two deliberate acts: choose, then commit. Compressing
+# that to one key before the number exists would be optimising the speed of
+# an instrument nobody has calibrated.
+MEASURED_AT = 40
+
+
+# What an absent half of a proposal looks like once something has formatted
+# it into a string. Python writes None, JavaScript writes null or undefined,
+# and both arrive here as "null / null" - a pair that would otherwise pass a
+# naive "/ is present" test and be scored as a proposal the guesser never
+# made. This is the same rule as everywhere else in the repo: an unknown is
+# reported as an unknown, never converted into a verdict.
+_NULLISH = {"", "none", "null", "undefined", "nan"}
+
+
+def _seen_proposal(rec: dict) -> str | None:
+    """The proposal a ruling record says the person was actually shown.
+
+    Returns None for anything that is not a real "Sector / Category" pair.
+    A ruling made with no proposal on screen is not evidence about the
+    guesser in either direction, and counting it as a disagreement would
+    read as the guesser being wrong when it never spoke.
+    """
+    saw = (rec or {}).get("saw") or {}
+    p = saw.get("proposed")
+    if not isinstance(p, str) or "/" not in p:
+        return None
+    left, _, right = p.partition("/")
+    if left.strip().lower() in _NULLISH or right.strip().lower() in _NULLISH:
+        return None
+    return p.strip()
+
+
+def agree_rate() -> dict:
+    """How often the person takes the placement the machine proposed.
+
+    This number does not exist yet, and that is the point. Every wrong-bucket
+    row carries a proposal from an earlier AI pass; zero have ever been ruled
+    on. So the queue is not "review the AI's work", it is the measurement
+    that tells us whether the AI's work was worth reviewing - and it has to
+    be visible from the FIRST ruling, next to the confidence label it is
+    testing, or the confidence label is just a word.
+
+    Split by the guesser's own confidence, because "72% agreed" hides the
+    only interesting question: whether high confidence means anything.
+    Nothing here is derived from a stored verdict - it is recomputed from
+    what the record says the person saw and what they chose, so a client
+    cannot flatter the number.
+    """
+    ruled = agreed = 0
+    by_conf: dict[str, list] = collections.defaultdict(lambda: [0, 0])
+
+    def tally(prop: str, chose: str, conf: str) -> None:
+        nonlocal ruled, agreed
+        ok = chose == prop
+        ruled += 1
+        agreed += ok
+        row = by_conf[conf or "unstated"]
+        row[0] += 1
+        row[1] += ok
+
+    for rec in read("placement_rulings.json", {}).values():
+        if not isinstance(rec, dict):
+            continue
+        prop = _seen_proposal(rec)
+        if not prop:
+            continue
+        tally(prop, f"{rec.get('sector')} / {rec.get('category')}",
+              (rec.get("saw") or {}).get("confidence"))
+    # "Bucket is right" is an OVERRULE, not an absence of a ruling: the
+    # proposal said move it, the person looked and said leave it. Dropping
+    # those would measure only the cases where the guesser was already
+    # trusted, which is how a model grades itself.
+    for key, rec in read("admin_dismissed.json", {}).items():
+        if not (isinstance(key, str) and key.startswith("miscategorized:")):
+            continue
+        if not isinstance(rec, dict):
+            continue
+        prop = _seen_proposal(rec)
+        was = (rec.get("saw") or {}).get("was")
+        if not prop or not isinstance(was, str):
+            continue
+        tally(prop, was.strip(), (rec.get("saw") or {}).get("confidence"))
+
+    order = ["high", "medium", "low", "unstated"]
+    return {
+        "ruled": ruled,
+        "agreed": agreed,
+        "pct": round(100 * agreed / ruled) if ruled else None,
+        "measured_at": MEASURED_AT,
+        "measured": ruled >= MEASURED_AT,
+        "by_confidence": [{"confidence": c, "ruled": by_conf[c][0],
+                           "agreed": by_conf[c][1],
+                           "pct": round(100 * by_conf[c][1] / by_conf[c][0])}
+                          for c in order if by_conf.get(c, [0])[0]],
+    }
+
+
+def rulings_by_queue() -> collections.Counter:
+    """How many items each queue has already had a person's answer on.
+
+    The counterpart to a queue's remaining length: a bar that fills toward a
+    named end state needs both halves, and the done half only exists in the
+    decision files.
+    """
+    done = collections.Counter()
+    for fname, queue in (("vendor_scope_decisions.json", "vendors"),
+                         ("placement_rulings.json", "miscategorized"),
+                         ("scope_decisions.json", "scope")):
+        done[queue] += sum(1 for r in read(fname, {}).values()
+                           if isinstance(r, dict))
+    for key, rec in read("admin_dismissed.json", {}).items():
+        if isinstance(rec, dict) and isinstance(key, str) and ":" in key:
+            done[key.split(":", 1)[0]] += 1
+    return done
+
+
+def queue_state(name: str, left: int, done: collections.Counter | None = None
+                ) -> dict | None:
+    """The named end state a queue is heading for, and how far along it is.
+
+    Queues do not go to zero, they reach a state with a title. "Clean
+    shelves" is a thing a person finishes; "0 remaining" is a thing that
+    merely stops.
+    """
+    label = END_STATE.get(name)
+    if not label:
+        return None
+    d = (done if done is not None else rulings_by_queue()).get(name, 0)
+    return {"queue": name, "name": label, "done": d, "left": left,
+            "pct": round(100 * d / (d + left)) if (d + left) else 100}
+
+
+# --- unlocks -------------------------------------------------------------
+#
+# Gates on BOARD HEALTH, never on volume: the thing being bought is a board
+# worth exporting, so the price is the board being right. The weekly digest
+# is deliberately NOT here - it is already built and is the owner's intended
+# paid feature, and putting a gate in front of something somebody already has
+# is a demotion dressed as a reward.
+UNLOCKS = [
+    {"key": "csv", "at": 55, "name": "CSV export of the whole board",
+     "built": True,
+     "what": "every company with its sector, status, open-role count and "
+             "board, as one file a spreadsheet opens",
+     "why": "an export is a copy of the data, so it is worth having exactly "
+            "when the data is right - which is the number this gate reads"},
+    {"key": "api", "at": 70, "name": "A read-only API key", "built": False,
+     "what": "not built yet. Nothing behind this is faked or hidden: there "
+             "is no endpoint, no key, and no waiting list",
+     "why": "handing out a URL other people's software depends on is a "
+            "promise about the data underneath it, and 70 is where that "
+            "promise is one we can keep"},
+]
+
+
+def unlocks(health: dict) -> list:
+    score = health.get("score") or 0
+    return [{**u, "open": score >= u["at"], "gap": max(0, u["at"] - score),
+             "score": score} for u in UNLOCKS]
+
+
+# --- the CSV the unlock hands over ---------------------------------------
+
+# A leading =, +, - or @ makes a spreadsheet treat a cell as a FORMULA, and a
+# company name arrives here from an outside submission. Prefixing an
+# apostrophe is the one fix that survives a round trip through Excel and
+# Sheets both; quoting alone does not.
+_FORMULA = re.compile(r"^[=+\-@\t\r]")
+
+CSV_COLUMNS = ["id", "name", "sector", "category", "also", "website",
+               "hiring_status", "open_roles", "ats_type", "ats_ref",
+               "year_founded", "location", "vendor_type", "checked"]
+
+
+def _cell(v) -> str:
+    s = "" if v is None else str(v)
+    return "'" + s if _FORMULA.match(s) else s
+
+
+def board_csv(companies, board) -> str:
+    """The board as a spreadsheet, out of the same records the site reads.
+
+    Every column is a stored fact. Nothing is estimated, inferred or filled
+    in: an unknown founding year is an empty cell, not a guess, because a
+    blank reads as "we do not know" and a number reads as "we checked".
+    """
+    live = {o["id"]: o.get("open_roles", 0)
+            for o in board.get("organizations", [])}
+    buf = io.StringIO()
+    w = csv.writer(buf, lineterminator="\n")
+    w.writerow(CSV_COLUMNS)
+    for c in sorted(companies, key=lambda x: (x.get("name") or "").lower()):
+        h = c.get("hiring") or {}
+        a = c.get("ats") or {}
+        also = "; ".join(f"{x.get('sector')} / {x.get('category')}"
+                         for x in (c.get("also") or []))
+        w.writerow([_cell(x) for x in (
+            c.get("id"), c.get("name"), c.get("sector"), c.get("category"),
+            also, c.get("website"), h.get("status"), live.get(c.get("id"), 0),
+            a.get("type"), a.get("ref"), c.get("year_founded"),
+            c.get("location"), c.get("vendor_type"), h.get("checked"))])
+    return buf.getvalue()
+
+
+# --- the end-of-shift receipt --------------------------------------------
+
+SITTING_GAP = 4 * 3600      # same four hours sessions() uses
+
+
+def _ts(v) -> dt.datetime | None:
+    try:
+        return dt.datetime.fromisoformat(str(v))
+    except (TypeError, ValueError):
+        return None
+
+
+def _ruling_stamps() -> list[tuple[dt.datetime, str]]:
+    """(when, which queue) for every ruling that recorded a full timestamp.
+
+    Rulings have always carried a DATE, which is the right grain for "how
+    many did you do this month" and the wrong grain for "what did this
+    sitting change" - a sitting is not a day and two sittings can share one.
+    So rulings now also carry `at`. Records written before that field
+    existed have no `at` and are simply not attributed to a sitting, which
+    is the honest treatment: we know they happened, we do not know when.
+    """
+    out = []
+    for fname, queue in (("vendor_scope_decisions.json", "vendors"),
+                         ("placement_rulings.json", "miscategorized"),
+                         ("scope_decisions.json", "scope")):
+        for rec in read(fname, {}).values():
+            t = _ts((rec or {}).get("at")) if isinstance(rec, dict) else None
+            if t:
+                out.append((t, queue))
+    for key, rec in read("admin_dismissed.json", {}).items():
+        if not (isinstance(rec, dict) and isinstance(key, str) and ":" in key):
+            continue
+        t = _ts(rec.get("at"))
+        if t:
+            out.append((t, key.split(":", 1)[0]))
+    return sorted(out)
+
+
+def receipt() -> dict:
+    """What this sitting actually changed, in the units the work was done in.
+
+    Not a score and not a congratulation. Every line is a difference between
+    two states we can both observe, and a line we cannot derive is left out
+    rather than approximated - a receipt that rounds is a receipt nobody
+    reads twice.
+    """
+    import journal
+    entries = [r for r in journal._entries() if _ts(r.get("at"))]
+    stamps = _ruling_stamps()
+    times = sorted([_ts(r["at"]) for r in entries] + [t for t, _ in stamps])
+    if not times:
+        return {"open": False}
+    # the last run of activity with no gap longer than four hours. Same
+    # boundary sessions() uses, over a wider set of events: a sitting spent
+    # ruling vendors leaves nothing in the journal at all.
+    start = times[0]
+    for i in range(1, len(times)):
+        if (times[i] - times[i - 1]).total_seconds() > SITTING_GAP:
+            start = times[i]
+
+    mine = [r for r in entries if _ts(r["at"]) >= start]
+    ruled = [(t, q) for t, q in stamps if t >= start]
+    by_queue = collections.Counter(q for _, q in ruled)
+    reversed_n = sum(1 for r in mine if r.get("action") in ("undo", "reopen"))
+
+    # Boards that went from "nothing we can read" to a real one, taken from
+    # the journal's own before/after images rather than from a count of
+    # button presses: a retry that found nothing is not a door.
+    opened = []
+    for r in mine:
+        if r.get("file") != "companies.json":
+            continue
+        for cid, ch in (r.get("changes") or {}).items():
+            b4 = ((ch.get("before") or {}).get("ats") or {}).get("type")
+            af = ((ch.get("after") or {}).get("ats") or {}).get("type")
+            if af and af != "unknown" and b4 in (None, "unknown") \
+                    and cid not in opened:
+                opened.append(cid)
+
+    # read(), not read_companies(): read_companies remembers what it handed
+    # out so the next write can diff against it, and a read-only report has
+    # no business moving that before-image
+    companies, board = read("companies.json", []), read("board.json", {})
+    done_now = rulings_by_queue()
+    lines = []
+    for q in ("miscategorized", "vendors"):
+        n = by_queue.get(q, 0)
+        if not n:
+            continue
+        left_now = len(QUEUES[q](companies, board))
+        now = queue_state(q, left_now, done_now)
+        # a ruling moves exactly one row from left to done, so the state at
+        # the start of the sitting is this one wound back by n
+        before = queue_state(q, left_now + n,
+                             collections.Counter({q: done_now.get(q, 0) - n}))
+        lines.append({"queue": q, "name": now["name"], "n": n,
+                      "from": before["pct"], "to": now["pct"],
+                      "left": now["left"]})
+
+    return {
+        "open": True,
+        "since": start.isoformat(timespec="minutes"),
+        "stamped": len(ruled),
+        "reversed": reversed_n,
+        "edits": len(mine) - reversed_n,
+        "states": lines,
+        "doors": opened,
+        "health": board_health(companies, board).get("score"),
+    }
+
 
 def _game(counts: dict) -> dict:
     """The gamification layer, built strictly from ruling records.
@@ -799,20 +1165,21 @@ def _game(counts: dict) -> dict:
     sources = [("vendor_scope_decisions.json", "vendors"),
                ("placement_rulings.json", "miscategorized"),
                ("scope_decisions.json", "scope")]
-    done_by_queue = collections.Counter()
+    # the done-per-queue tally lives in one place, because the sorties, the
+    # queue headers and the receipt all draw the same bar and two of them
+    # disagreeing would be invisible
+    done_by_queue = rulings_by_queue()
     for fname, queue in sources:
         for r in read(fname, {}).values():
             if not isinstance(r, dict):
                 continue
             total += 1
-            done_by_queue[queue] += 1
             per_day[r.get("on") or "?"] += 1
             if (r.get("why") or "").strip():
                 with_why += 1
     for key, entry in read("admin_dismissed.json", {}).items():
         if isinstance(entry, dict) and isinstance(key, str) and ":" in key:
             total += 1
-            done_by_queue[key.split(":", 1)[0]] += 1
             per_day[entry.get("on") or "?"] += 1
             if (entry.get("why") or "").strip():
                 with_why += 1
@@ -835,15 +1202,9 @@ def _game(counts: dict) -> dict:
             tape.append({"on": r["on"], "verb": verb, "what": what,
                          "call": r.get("call"), "why": r.get("why")})
     tape.sort(key=lambda t: t["on"], reverse=True)
-    states = []
-    for q, name in END_STATE.items():
-        left = counts.get(q, 0)
-        done = done_by_queue.get(q, 0)
-        if left or done:
-            states.append({"queue": q, "name": name, "done": done,
-                           "left": left,
-                           "pct": round(100 * done / (done + left))
-                                  if (done + left) else 100})
+    states = [queue_state(q, counts.get(q, 0), done_by_queue)
+              for q in END_STATE
+              if counts.get(q, 0) or done_by_queue.get(q, 0)]
     return {"today": per_day.get(days[0], 0), "best_30": best,
             "why_coverage": round(100 * with_why / total) if total else None,
             "rulings_total": total, "states": states, "tape": tape[:6]}
@@ -1160,12 +1521,21 @@ def act_place(body: dict) -> dict:
     cid = body.get("id")
     if not cid:
         return {"error": "need a company id"}
+    # What the person was shown, kept identically on both outcomes. "Bucket
+    # is right" is not the absence of a ruling, it is the proposal being
+    # OVERRULED, and it only counts as evidence about the guesser if the
+    # record says what the guesser had proposed at the time.
+    saw = {"was": body.get("was"),
+           "proposed": body.get("proposed"),
+           "confidence": body.get("confidence"),
+           "description": body.get("description")}
     if body.get("keep"):
         d = read("admin_dismissed.json", {})
         d[f"miscategorized:{cid}"] = {
-            "on": dt.date.today().isoformat(),
+            "on": dt.date.today().isoformat(), "at": now(),
             "by": (body.get("by") or "owner").strip(),
-            "why": (body.get("why") or "").strip() or "the bucket is right"}
+            "why": (body.get("why") or "").strip() or "the bucket is right",
+            "saw": saw}
         write_atomic("admin_dismissed.json", d)
         return {"ok": True, "message": "left where it is"}
 
@@ -1175,12 +1545,10 @@ def act_place(body: dict) -> dict:
         return res
     rulings = read("placement_rulings.json", {})
     rulings[cid] = {"sector": body.get("sector"), "category": body.get("category"),
-                    "on": dt.date.today().isoformat(),
+                    "on": dt.date.today().isoformat(), "at": now(),
                     "by": (body.get("by") or "owner").strip(),
                     "why": (body.get("why") or "").strip() or None,
-                    "saw": {"was": body.get("was"),
-                            "proposed": body.get("proposed"),
-                            "description": body.get("description")}}
+                    "saw": saw}
     write_atomic("placement_rulings.json", rulings)
     return res
 
@@ -1327,7 +1695,7 @@ def act_vendor_scope(body: dict) -> dict:
         return {"error": "need a name and a call of in, sled or out"}
     d = read("vendor_scope_decisions.json", {})
     d[_vkey(name)] = {"call": call, "name": name,
-                      "on": dt.date.today().isoformat(),
+                      "on": dt.date.today().isoformat(), "at": now(),
                       "by": (body.get("by") or "owner").strip(),
                       "why": (body.get("why") or "").strip() or None,
                       "saw": {"description": body.get("description"),
@@ -1446,9 +1814,39 @@ _real_getaddrinfo = socket.getaddrinfo
 
 
 def _public(ip: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
-    """Is this address out on the internet, rather than in here with us."""
-    return not (ip.is_private or ip.is_loopback or ip.is_link_local
-                or ip.is_reserved or ip.is_multicast or ip.is_unspecified)
+    """Is this address out on the internet, rather than in here with us.
+
+    is_global leads, and the library owns the answer, because a hand-kept list
+    of "the private ranges" is precisely what let 100.64.0.0/10 through. RFC
+    6598 carrier-NAT space is not private, not loopback, not link-local and not
+    reserved by any flag below - and it routes straight at an ISP's own
+    equipment. Python already knows: ip_address("100.64.1.1").is_global is
+    False. Ask it instead of extending the list, or the next range nobody has
+    heard of gets through the same way.
+
+    The named flags stay underneath it. They are not redundant across versions,
+    and quietly losing loopback here would be a different order of mistake than
+    being slightly over-strict.
+
+    Then the tunnels, which are the other half of the same lesson. An IPv6
+    address can carry an IPv4 address as its passenger and answer every
+    question above as an ordinary global address: 2002:7f00:1:: IS 127.0.0.1
+    once a 6to4 relay unwraps it, and nothing about the outer address says so.
+    The library hands the passenger over - .sixtofour, .ipv4_mapped, .teredo -
+    so each one is asked the same question as itself. A 6to4 address wrapping a
+    real public host still passes, because its passenger does.
+    """
+    if not ip.is_global:
+        return False
+    if (ip.is_private or ip.is_loopback or ip.is_link_local
+            or ip.is_reserved or ip.is_multicast or ip.is_unspecified):
+        return False
+    if isinstance(ip, ipaddress.IPv6Address):
+        # each of these is an IPv4Address or None, so the recursion is one deep
+        inner = [ip.ipv4_mapped, ip.sixtofour, *(ip.teredo or ())]
+        if any(p is not None and not _public(p) for p in inner):
+            return False
+    return True
 
 
 def clean_url(raw: str) -> str | None:
@@ -2140,10 +2538,37 @@ class Handler(http.server.BaseHTTPRequestHandler):
         return port in (None, self.server.server_address[1])
 
     def _authed(self) -> bool:
-        return secrets.compare_digest(self.headers.get(TOKEN_HEADER) or "", TOKEN)
+        # Compared as bytes, because http.server decodes header values as
+        # latin-1: one byte over 0x7f arrives here as a non-ASCII character,
+        # and secrets.compare_digest raises TypeError on a str like that. It
+        # did - `X-Admin-Token: café` reached the except-nothing handler, the
+        # connection was dropped mid-request and the caller got no reply at
+        # all, which reads as "the admin is down" rather than "wrong token".
+        # Bytes compare fine and keep the same constant-time property.
+        got = (self.headers.get(TOKEN_HEADER) or "").encode("latin-1", "replace")
+        return secrets.compare_digest(got, TOKEN.encode("ascii"))
+
+    def _web_origin(self) -> bool:
+        """Is this request coming from a page on some website.
+
+        A browser attaches Origin itself and a page cannot forge or drop it,
+        so this is the one thing that separates "an ordinary web page is
+        asking" from "a tool, or an extension, is asking". Only http(s) counts
+        as a web origin: chrome-extension:// is the capture extension, and no
+        Origin at all is a plain client or a top-level navigation. Neither of
+        those two can be a page reading a reply it should not have.
+        """
+        origin = (self.headers.get("Origin") or "").strip().lower()
+        return origin.startswith("http://") or origin.startswith("https://")
 
     # ------------------------------------------------------------ writing
 
+    # A page the owner is visiting cannot attach the token header, so its own
+    # requests bounce off _authed - but it can put the admin in an iframe,
+    # where the framed document is on the admin's own origin, carries the
+    # token shim itself, and every button works. Then it only has to be made
+    # to look like something else and clicked once. A custom header is no
+    # defence against a click on our own UI; refusing to be framed is.
     def _send(self, body: bytes, ctype: str, code: int = 200):
         self.send_response(code)
         self.send_header("Content-Type", ctype)
@@ -2152,6 +2577,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
         # into a script tag by another page
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
+        # both, on purpose: frame-ancestors is the rule browsers still honour,
+        # X-Frame-Options is what an older one reads. Nothing here is ever
+        # meant to be embedded, so the answer is none rather than sameorigin.
+        self.send_header("Content-Security-Policy", "frame-ancestors 'none'")
+        self.send_header("X-Frame-Options", "DENY")
         self.end_headers()
         self.wfile.write(body)
 
@@ -2167,11 +2597,23 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if path.startswith("/api/"):
             if path == "/api/token":
                 # The one route that hands the token out, and it needs no
-                # token itself. The admin page is same-origin so it can read
-                # this; the capture extension holds a host permission for this
-                # server so it can too; a page on any other origin can send the
-                # request but cannot read the reply, because no response here
-                # carries a CORS header any more.
+                # token itself - it is where the capture extension gets one,
+                # since an extension is not same-origin and cannot be handed
+                # the shim the admin page gets.
+                #
+                # Two things keep that from being the hole the token closed.
+                # First, a page on any other origin can SEND this request but
+                # can read nothing back: no response here carries a CORS
+                # header, so the reply is opaque to it, and the JSON content
+                # type plus nosniff stops it being pulled in as a script
+                # instead. Second, and stricter, a web page's fetch always
+                # carries its own Origin and cannot drop it, so a page does not
+                # even receive the bytes - only a caller with no web origin at
+                # all does, which is the extension, curl, and nothing a website
+                # can arrange.
+                if self._web_origin():
+                    return self._json(
+                        {"error": "the token is not handed to a web page"}, 403)
                 return self._json({"token": TOKEN, "header": TOKEN_HEADER})
             if not self._authed():
                 return self._json({"error": "missing or wrong admin token"}, 403)
@@ -2229,7 +2671,32 @@ class Handler(http.server.BaseHTTPRequestHandler):
             t["health"] = board_health(companies, board)
             t["sessions"] = sessions()
             t["reversals"] = reversals()
+            t["unlocks"] = unlocks(t["health"])
+            t["agree"] = agree_rate()
+            t["receipt"] = receipt()
             return self._json(t)
+        if path == "/api/receipt":
+            return self._json(receipt())
+        if path == "/api/agree":
+            # its own route, and cheap: the belt refetches this after every
+            # ruling, and rebuilding the whole queue to move one number
+            # would make the honest counterweight the slow part of the loop
+            return self._json(agree_rate())
+        if path == "/api/export.csv":
+            # The gate is the whole point of the unlock, so it lives HERE and
+            # not only on the button. A reward you can take by typing the URL
+            # was never a reward.
+            companies, board = read_companies(), read("board.json", {})
+            health = board_health(companies, board)
+            gate = next(u for u in UNLOCKS if u["key"] == "csv")
+            if (health.get("score") or 0) < gate["at"]:
+                return self._json(
+                    {"error": f"board health is {health.get('score')}; the "
+                              f"export opens at {gate['at']}",
+                     "locked": True, "at": gate["at"],
+                     "score": health.get("score")}, 403)
+            return self._send(board_csv(companies, board).encode(),
+                              "text/csv; charset=utf-8")
         if path == "/api/queues":
             companies, board = read_companies(), read("board.json", {})
             return self._json({"counts": {k: len(f(companies, board))
@@ -2248,7 +2715,19 @@ class Handler(http.server.BaseHTTPRequestHandler):
             if name not in QUEUES:
                 return self._json({"error": "no such queue"}, 404)
             companies, board = read_companies(), read("board.json", {})
-            return self._json({"items": QUEUES[name](companies, board)[:400]})
+            items = QUEUES[name](companies, board)
+            return self._json({
+                "items": items[:400],
+                # the page shows 400 at most, and must never round that up
+                # into "this is the whole queue"
+                "total": len(items),
+                "state": queue_state(name, len(items)),
+                "belt": name in BELT_QUEUES,
+                # only where a machine actually proposed something. A queue
+                # with no proposal reporting a 0% agree-rate would read as
+                # the guesser being wrong when it never spoke.
+                "agree": agree_rate() if name in PROPOSAL_QUEUES else None,
+            })
         if path == "/api/sort/companies":
             qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
             return self._json(sort_companies((qs.get("sector") or [""])[0]))

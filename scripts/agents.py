@@ -115,12 +115,43 @@ def brief_read(limit: int | None = None) -> list[dict]:
     """One brief per careers page a person can read and a fetcher cannot.
 
     886 companies - 42% of the map - are in this state, and it is the single
-    biggest hole on the board. They are not JS shells hiding a list: rendering
-    a sample of 25 in headless Chromium recovered ZERO. They are third-party
-    widgets in iframes, session-gated boards, and pages that only draw a list
-    after somebody clicks something. No fetcher we write will read them, which
-    is exactly why the capture bookmarklet exists - a person looking at the
-    page sees the jobs anyway.
+    biggest hole on the board. They are third-party widgets in iframes,
+    session-gated boards, and pages that only draw a list after somebody
+    clicks something, which is exactly why the capture bookmarklet exists - a
+    person looking at the page sees the jobs anyway.
+
+    MEASURED 2026-08-24, n=25 drawn at random from this worklist. The older
+    note here - and in CLAUDE.md - said rendering a sample of 25 in headless
+    Chromium recovered ZERO. That is not what happens. A render recovered
+    postings from 8 of 25. Three things separate the two results, and all
+    three are about the reader, not the browser:
+
+      - READ THE CHILD FRAMES. The finding that these are widgets in iframes
+        is correct, and reading only the top document is why a render comes
+        back empty from a page that is visibly full of jobs. Autura's board is
+        a Greenhouse job_board in an iframe; the frame had the list in it.
+      - THE TITLE DECIDES, NOT THE LINK. Requiring the job-link shape before
+        looking at a row is right on a job board and wrong here, where rows
+        are divs with an onclick or links to /roles/x. It threw away 10 real
+        reqs on Nearmap and 34 on Nedap, both rendered in plain sight.
+      - WAIT. networkidle plus a few seconds; these lists draw late.
+
+    Two traps beyond the nav chrome, both of which produce strings that have
+    the exact shape of a job title and are not reqs. NAV_CHROME below does not
+    catch either, and a reader here must:
+
+      - TESTIMONIAL BYLINES. "Kylie Hughes / DIRECTOR COMMERCIAL IMPLEMENTATION"
+        is a happy employee, not an opening.
+      - FILTER CHIPS. "Remote / Freelance / Full Time / Internship / Part Time"
+        above a search box that then says it found nothing.
+
+    And the thing worth more than the read: 5 of those 25 pages had a real,
+    enumerable ATS one link away, and Nearmap's careers page - which gave up
+    10 rows, of which 8 survived the duplicate-title guard - sits in front of
+    a SmartRecruiters board carrying 31. Reading a page is a snapshot that has
+    to be re-taken by hand; finding the board behind it is permanent and
+    refresh.py keeps it current. When a read turns up an ATS host, that is the
+    finding, and it belongs to the `board` agent.
 
     So this agent does what the bookmarklet does: opens the page, reads what is
     actually on screen, and hands the rows over. Two rules the harvester
