@@ -1,4 +1,4 @@
-/* SoleSource capture — the content script.
+/* SLED JOBS capture — the content script.
  *
  * Same harvester the bookmarklet proved out (position first, pattern second;
  * job segment plus something after it), with the two things a bookmarklet
@@ -115,31 +115,31 @@
   const box = document.createElement("div");
   box.id = "sscap";
   box.style.cssText = "position:fixed;top:16px;right:16px;z-index:2147483647;"
-    + "width:400px;max-height:86vh;overflow:auto;background:#fff;color:#1a1815;"
-    + "border:1px solid #d9d4cd;border-radius:11px;padding:14px 16px;"
+    + "width:400px;max-height:86vh;overflow:auto;background:#FAF7F0;color:#1F2536;"
+    + "border:1px solid #C9DCE8;border-radius:0;padding:14px 16px;"
     + "box-shadow:0 10px 40px rgba(0,0,0,.28);"
     + "font:13px/1.5 ui-sans-serif,-apple-system,'Segoe UI',Roboto,sans-serif";
 
   const head = single
     ? `Looks like one posting: <b>${esc(single.title)}</b>`
-      + `<div style="color:#969086;font-size:11.5px;margin-top:2px">read from ${esc(single.via)}`
+      + `<div style="color:#7C97AA;font-size:11.5px;margin-top:2px">read from ${esc(single.via)}`
       + `${single.jd_text ? ` · ${single.jd_text.length.toLocaleString()} chars of JD captured` : ""}</div>`
     : `${jobs.length} job links on this page. Uncheck anything that is not a posting.`;
 
   box.innerHTML =
     `<div style="display:flex;align-items:center;gap:8px;margin-bottom:9px">
-       <b style="font-size:13.5px">SoleSource capture</b>
-       <span id="ss-x" style="margin-left:auto;cursor:pointer;color:#969086">close</span></div>
-     <div style="color:#6a655d;margin-bottom:9px">${head}</div>
+       <b style="font-size:13.5px">SLED JOBS capture</b>
+       <span id="ss-x" style="margin-left:auto;cursor:pointer;color:#7C97AA">close</span></div>
+     <div style="color:#556F82;margin-bottom:9px">${head}</div>
      <div id="ss-list" style="margin:0 0 10px;max-height:38vh;overflow:auto"></div>
      <input id="ss-q" placeholder="which company? type a name"
-       style="width:100%;padding:8px 10px;border:1px solid #d9d4cd;border-radius:7px;
+       style="width:100%;padding:8px 10px;border:1px solid #C9DCE8;border-radius:0;
               font:inherit;margin-bottom:5px;box-sizing:border-box">
      <div id="ss-hits"></div>
-     <button id="ss-go" style="width:100%;padding:9px;border:0;border-radius:8px;margin-top:6px;
-       background:#2f6f4f;color:#fff;font:inherit;font-weight:600;cursor:pointer">
-       Send to SoleSource</button>
-     <div id="ss-msg" style="margin-top:8px;color:#6a655d"></div>`;
+     <button id="ss-go" style="width:100%;padding:9px;border:0;border-radius:0;margin-top:6px;
+       background:#0B57C4;color:#FAF7F0;font:inherit;font-weight:600;cursor:pointer">
+       Send to SLED JOBS</button>
+     <div id="ss-msg" style="margin-top:8px;color:#556F82"></div>`;
 
   const list = box.querySelector("#ss-list");
   const picked = single ? [single] : jobs;
@@ -149,7 +149,7 @@
       row.style.cssText = "display:flex;gap:7px;align-items:flex-start;padding:4px 0";
       row.innerHTML = `<input type="checkbox" data-i="${i}" checked style="margin-top:3px">
         <span><span style="font-weight:500">${esc(j.title)}</span>${
-          j.location ? `<span style="color:#969086"> — ${esc(j.location)}</span>` : ""}</span>`;
+          j.location ? `<span style="color:#7C97AA"> — ${esc(j.location)}</span>` : ""}</span>`;
       list.appendChild(row);
     });
     if (!jobs.length)
@@ -175,7 +175,7 @@
       (r.data.results || []).forEach((c) => {
         const d = document.createElement("div");
         d.style.cssText = "padding:5px 8px;border-radius:6px;cursor:pointer";
-        d.innerHTML = `${esc(c.name)} <span style="color:#969086">${esc(c.sector)}</span>`;
+        d.innerHTML = `${esc(c.name)} <span style="color:#7C97AA">${esc(c.sector)}</span>`;
         d.onmouseenter = () => (d.style.background = "#f1eeea");
         d.onmouseleave = () => (d.style.background = "");
         d.onclick = () => { company = c; q.value = c.name; hits.innerHTML = ""; };
@@ -194,7 +194,7 @@
       { company_id: company.id, jobs: chosen, page_url: location.href });
     const sent = r && r.ok && !r.data.error;
     msg.innerHTML = sent
-      ? `<b style="color:#2f6f4f">${esc(r.data.message)}</b>`
+      ? `<b style="color:#0B57C4">${esc(r.data.message)}</b>`
       : `<span style="color:#a3342a">${esc(trouble(r))}</span>`;
     if (sent) setTimeout(() => box.remove(), 2400);
   };

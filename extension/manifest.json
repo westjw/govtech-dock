@@ -1,10 +1,19 @@
 {
   "manifest_version": 3,
-  "name": "SoleSource Capture",
+  "name": "SLED JOBS Capture",
   "version": "1.1",
-  "description": "Capture job postings from the page you are viewing into the local SoleSource admin. Runs only when clicked.",
-  "action": { "default_title": "Capture jobs on this page" },
-  "permissions": ["activeTab", "scripting"],
-  "host_permissions": ["http://127.0.0.1:8787/*"],
-  "background": { "service_worker": "background.js" }
+  "description": "Capture a job board, or a single posting and its full description, from the page you are viewing into your local SLED JOBS admin. Runs only when clicked.",
+  "action": {
+    "default_title": "Capture jobs on this page"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:8787/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
 }

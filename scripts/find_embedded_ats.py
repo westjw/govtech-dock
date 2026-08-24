@@ -146,8 +146,22 @@ def main() -> int:
     companies = json.loads((DATA / "companies.json").read_text())
     kinds = ({"unknown"} if a.only_unknown
              else {"html"} | ({"unknown"} if a.include_unknown else set()))
+    # A board somebody has already refused must not come back every run.
+    # Concourse's ashby board was unwired by hand after seven of a
+    # corporate-finance company's postings reached the public site, and the
+    # next sweep proposed it straight back - which is how a queue teaches
+    # somebody to stop reading it.
+    try:
+        import board_proposals
+        refused = {k for k, v in board_proposals._read(
+            board_proposals.RULED, {}).items() if not v.get("accept")}
+    except Exception:
+        refused = set()
     todo = [c for c in companies
-            if (c.get("ats") or {}).get("type") in kinds and c.get("website")]
+            if (c.get("ats") or {}).get("type") in kinds and c.get("website")
+            and c["id"] not in refused]
+    if refused:
+        print(f"skipping {len(refused)} already refused")
     if not a.all:
         todo = todo[:a.limit]
 
