@@ -75,6 +75,15 @@
   .fclear{font:inherit;font-size:11px;background:none;border:0;color:var(--dim);
     cursor:pointer;text-decoration:underline;text-underline-offset:2px;padding:4px 2px}
   .fclear:hover{color:var(--ink)}
+  /* Pay. A figure we actually have gets the accent, because it is the fact a
+     reader is scanning for. Silence gets --faint, the same colour every other
+     "not stated" on this board already uses - it is a state, not a warning,
+     and it must never look like a zero. */
+  .pay{color:var(--accent);font-weight:600;white-space:nowrap}
+  .paynone{color:var(--faint)}
+  /* the one click that puts the set-aside postings back. Reads as the link it
+     is, and matches #j-relax, which is the same idea for the quota pill. */
+  .payall,.payoff{color:var(--accent);cursor:pointer;font-weight:600}
   .ok{color:var(--accent)} .warn{color:var(--warn)} .bad{color:var(--bad)}
   .num{text-align:right;font-variant-numeric:tabular-nums}
   .kv{color:var(--dim);font-size:12.5px;margin:3px 0 0}
@@ -545,6 +554,24 @@ function roleView(id){
     <div class="kv" style="margin-top:12px">${geoBits(p).map(esc).join(" &middot; ")}
       ${p.seniority?` &middot; ${esc(p.seniority)}, from the title`:""}
       ${p.quota_carrying?' &middot; <span class="chip ok">carries a number</span>':""}</div>
+    ${(()=>{
+      /* Pay, with its receipt. The raw quote is shown rather than kept in a
+         tooltip so a reader can check our reading against the posting, and
+         the source says how settled the claim is: their job board published a
+         structured range, or salary.py found a figure in the description.
+         The two silences are different sentences on purpose - one is a fact
+         about the posting, the other is a fact about us. */
+      if(!hasPay(p))return "";
+      if(p.comp)return `<div class="kv" style="margin-top:8px">
+        <span class="pay" style="font-size:15.5px">${esc(payText(p.comp))}</span>
+        <span class="chip">${p.comp.source==="ats"
+          ? "published by their job board"
+          : "read out of the description"}</span>
+        ${p.comp.raw?`<div style="margin-top:3px">as posted: &ldquo;${esc(p.comp.raw)}&rdquo;</div>`:""}</div>`;
+      return `<div class="kv" style="margin-top:8px;max-width:74ch">${p.jd_seen
+        ? "<strong>No salary stated.</strong> We read this posting and it gave no figure — which is not a statement about what it pays."
+        : "<strong>We could not read this posting.</strong> Its description never reached us, so it may state pay we have not seen."}</div>`;
+    })()}
     ${purl?`<p class="colinks"><a class="golink" href="${esc(purl)}" target="_blank"
       rel="noopener">Open the posting &rarr;</a>
       <span class="chip">${age.txt==="new today"?"first seen today":"on the board "+esc(age.txt)}</span>
@@ -576,7 +603,7 @@ function roleView(id){
       row.onclick=()=>openRole(x.id);
       row.innerHTML=`${tileHTML(x.company,x.company_id,"tile")}
         <div class="main"><div class="t">${esc(x.title)}</div>
-        <div class="m">${geoBits(x).map(esc).join(" &middot; ")}</div></div>
+        <div class="m">${geoBits(x).map(esc).join(" &middot; ")}${payHTML(x)}</div></div>
         <span style="color:var(--line);font-size:15px">&rsaquo;</span>`;
       h.appendChild(row);
     });
@@ -667,6 +694,104 @@ function when(seen,gen){
   return{txt:`${Math.round(d)} days ago`,cls:""};
 }
 
+/* ------------------------------------------------------------------- pay
+   Three states, and never two.
+
+   A posting can state pay, state none, or be one whose description we never
+   read. The third is NOT the second, and merging them is how a board ends up
+   telling somebody a job pays nothing when nobody ever looked at it. So every
+   reader below asks p.comp and p.jd_seen separately, and every label says
+   which of the three it is.
+
+   And there is a fourth thing. A board.json built before pay existed carries
+   no `comp` key at all - that is "this build did not record it", which is not
+   a posting that stated nothing either. Hence hasPay(): with an old file the
+   whole feature disappears rather than rendering 4,355 rows claiming we could
+   not read them. */
+const hasPay=p=>!!p&&Object.prototype.hasOwnProperty.call(p,"comp");
+/* Yearly is the unmarked case, so it is not restated on every row; anything
+   else has to say so or "$67.50" reads as a salary. */
+const PERIOD={year:"",month:"a month",week:"a week",day:"a day",hour:"an hour"};
+/* $140k, $142,500, $67.50 - how a person writes it, and never a number the
+   posting did not state. k only where the figure is an exact multiple of
+   1,000 and the period is yearly: "$142.3k" for 142,340 would be a rounded
+   claim, and "$2k an hour" is nobody's idea of an hourly rate.
+   A currency we were not told is left unmarked rather than assumed to be
+   dollars - this board carries UK and Canadian postings. */
+function money(n,cur,cents,useK){
+  const s=cents?n.toFixed(2)
+    :(useK&&n>=1000&&n%1000===0)?(n/1000)+"k"
+    :Math.round(n).toLocaleString();
+  // A dollar sign rides both bounds the way people write it; a currency code
+  // does not - "GBP 9,000 - GBP 11,000" is nobody's handwriting - so the code
+  // is put in front of the whole figure once, by the caller.
+  return cur==="USD"?"$"+s:s;
+}
+function payText(c){
+  if(!c)return "";
+  const lo=typeof c.min==="number"?c.min:null,
+        hi=typeof c.max==="number"?c.max:null;
+  if(lo===null&&hi===null)return "";
+  // if either bound carries cents, both show them, or "$67.50 - $85" looks
+  // like two different kinds of number
+  const cents=[lo,hi].some(v=>v!==null&&Math.round(v)!==v);
+  const useK=c.period==="year"||!c.period;
+  const code=c.currency&&c.currency!=="USD"?c.currency+" ":"";
+  const f=v=>money(v,c.currency,cents,useK);
+  const per=PERIOD[c.period]||"";
+  /* "up to $200k" is a ceiling and is printed as one. Publishing it as
+     "$200k" would advertise a minimum nobody offered - the same reason
+     build_board's comp_floor is min and never max. */
+  const core=lo!==null&&hi!==null&&lo!==hi ? code+f(lo)+" – "+f(hi)
+    : lo!==null&&hi!==null ? code+f(lo)
+    : lo!==null ? "from "+code+f(lo)
+    : "up to "+code+f(hi);
+  return core+(per?" "+per:"");
+}
+/* What a row says about pay, as {cls,txt}, or null when this build recorded
+   nothing either way. The two silences are worded differently on purpose. */
+function payBit(p){
+  if(!hasPay(p))return null;
+  const t=payText(p.comp);
+  if(t)return{cls:"pay",txt:t};
+  return{cls:"paynone",txt:p.jd_seen?"no salary stated":"we could not read this posting"};
+}
+function payHTML(p){
+  const b=payBit(p);
+  return b?` &middot; <span class="${b.cls}">${esc(b.txt)}</span>`:"";
+}
+/* Whether a row can be compared to a YEARLY floor at all, or null when it
+   cannot. Nothing here converts between periods: an hourly rate becomes a
+   salary only by assuming how many hours a year somebody works, and that
+   assumption is a number the posting never stated. An incomparable row is
+   set aside and counted, never quietly dropped. */
+function payFloorOf(p){
+  return p.comp_period==="year"&&typeof p.comp_floor==="number"?p.comp_floor:null;
+}
+/* Why each set-aside row could not be compared. Kept as separate counts
+   because they are separate facts, and one grey "1,204 hidden" would hide
+   exactly the distinction this feature exists to keep. */
+function paySetAside(rows){
+  const t={none:0,unread:0,period:0,maxonly:0,unrecorded:0,total:rows.length};
+  rows.forEach(p=>{
+    if(!hasPay(p))t.unrecorded++;
+    else if(!p.comp)p.jd_seen?t.none++:t.unread++;
+    else if(p.comp_period!=="year")t.period++;
+    else t.maxonly++;
+  });
+  return t;
+}
+function paySetAsideText(t){
+  const n=v=>v.toLocaleString();
+  const parts=[];
+  if(t.none)parts.push(`${n(t.none)} state no salary`);
+  if(t.unread)parts.push(`${n(t.unread)} we could not read`);
+  if(t.period)parts.push(`${n(t.period)} state an hourly or monthly rate, which a yearly floor cannot compare`);
+  if(t.maxonly)parts.push(`${n(t.maxonly)} state only a maximum`);
+  if(t.unrecorded)parts.push(`${n(t.unrecorded)} came from a source that records no pay`);
+  return parts.join(", ");
+}
+
 function jobs(){
   if(ROLE){roleView(ROLE);return}
   const fams=[...new Set(D.postings.map(p=>p.family))].sort((a,b)=>(FAM[a]||a).localeCompare(FAM[b]||b));
@@ -675,6 +800,9 @@ function jobs(){
   const regions=[...new Set(D.postings.map(p=>p.region).filter(Boolean))].sort();
   const offStates=[...new Set(D.postings.map(p=>p.office&&p.office.state).filter(Boolean))].sort();
   const quota=D.postings.filter(p=>p.quota_carrying).length;
+  /* No pay control at all on a board built before pay was recorded. An empty
+     filter that sets aside every posting is worse than no filter. */
+  const payOn=D.postings.some(hasPay);
   const fresh=D.postings.filter(p=>p.first_seen===D.generated);
   const freshQ=fresh.filter(p=>p.quota_carrying);
 
@@ -716,6 +844,25 @@ function jobs(){
         <option value="">Any kind of role</option>
         ${fams.map(f=>`<option value="${f}">${esc(FAM[f]||f)}</option>`).join("")}
       </select>
+      ${payOn?`
+      <!-- Pay is in the primary row, not More filters, because it is the
+           second question a seller asks after "what is it". The three
+           non-numeric options are the point: "not stated" is a state you can
+           SELECT, so it can never be only a thing that happens to you, and a
+           posting we never read gets its own option rather than being filed
+           under "stated nothing". -->
+      <select class="pill" id="j-pay" onchange="payPill()"
+        style="appearance:none;padding-right:36px;background-image:none">
+        <option value="">Any pay</option>
+        <option value="stated">Shows a salary</option>
+        <option value="80000">$80k+ a year</option>
+        <option value="100000">$100k+ a year</option>
+        <option value="120000">$120k+ a year</option>
+        <option value="150000">$150k+ a year</option>
+        <option value="200000">$200k+ a year</option>
+        <option value="none">No salary stated</option>
+        <option value="unread">Postings we could not read</option>
+      </select>`:""}
       <button class="pill" type="button" aria-expanded="false"
         onclick="toggleMore(this)">More filters <span class="v" id="j-more-v"></span></button>
     </div>
@@ -768,10 +915,14 @@ function jobs(){
   <div class="list" id="j-list"></div>
   <p class="foot">Level is inferred from the title: the years a role actually asks for live in the
     description, which is not fetched. &ldquo;Not stated&rdquo; means the posting did not say where,
-    not that it is remote. ${D.organizations.filter(o=>o.no_board_on_file||o.unreadable).length}
+    not that it is remote. ${payOn?`Pay is shown where the posting states it, which most do not —
+    a posting saying nothing is not a posting paying nothing, and a pay filter here sets those
+    aside in the open rather than deleting them. `:""}${
+    D.organizations.filter(o=>o.no_board_on_file||o.unreadable).length}
     companies produced no readable board this run, so they show no roles rather than none
     existing.</p>`;
 
+  // j-pay is not here: it has payPill(), which also resets the page window
   ["j-q","j-fam","j-sec","j-us","j-state","j-region","j-office","j-mode","j-sen","j-src"]
     .forEach(i=>{const el=$("#"+i);if(!el)return;
       el.addEventListener("input",()=>{
@@ -878,6 +1029,22 @@ function famPill(){
   if($("#j-fam")) $("#j-fam").value=v;
   SHOWN=60; drawJobs();
 }
+/* Whether postings that cannot be compared to the pay floor are being SHOWN.
+   Off by default, which is why the count line has to say how many that is and
+   offer the one click - a filter that quietly removes three quarters of the
+   board is the same failure as a false "no jobs here". Lives here rather than
+   on a control because it is a property of the result, not a fourth filter,
+   and it only means anything while a floor is set. */
+let PAY_KEEP=false;
+function payPill(){
+  PUSH_NEXT=true;   // a deliberate choice, so Back should undo it
+  SHOWN=60; drawJobs();
+}
+function payKeep(on){
+  PUSH_NEXT=true;
+  PAY_KEEP=on;
+  SHOWN=60; drawJobs();
+}
 /* Two things have to move, and only one of them used to.
    Below 768px `.bar:not(.open) select{display:none}` hides every select in the
    bar, so flipping the container's own display opened an empty box on a phone:
@@ -898,8 +1065,16 @@ function showMore(){SHOWN+=60;drawJobs();}
    Quota-carrying is on returns nothing, because engineers do not carry a
    number - and a blank panel makes that look like the board has no engineers.
    Same principle as everywhere else here: absence needs a reason attached. */
-function emptyJobs(quotaOnly,fam,where){
+function emptyJobs(quotaOnly,fam,where,setAside){
   const others=D.postings.filter(p=>!fam||p.family===fam).length;
+  /* First, because it is the emptiness most likely to be a lie about the
+     market: nothing cleared the floor, but postings that never stated pay are
+     sitting right there and one of them may pay double it. */
+  if(setAside&&setAside.total)
+    return `<div class="empty">No posting that states a salary clears that floor.<br>
+      ${setAside.total.toLocaleString()} match everything else you set but cannot be
+      compared to it — ${paySetAsideText(setAside)}.<br>
+      <span class="payall">Show those ${setAside.total.toLocaleString()} anyway &rarr;</span></div>`;
   if(quotaOnly&&fam&&fam!=="gtm"&&others)
     return `<div class="empty">No <strong>${esc(FAM[fam]||fam)}</strong> roles carry a
       quota, which is expected: quota-carrying means a sales number.<br>
@@ -916,7 +1091,7 @@ function emptyJobs(quotaOnly,fam,where){
    land where you were. The keys are short because the URL is read by
    people. */
 const URLKEYS={q:"j-q",fam:"j-fam",sec:"j-sec",st:"j-state",off:"j-office",
-  reg:"j-region",sen:"j-sen",us:"j-us",mode:"j-mode",src:"j-src"};
+  reg:"j-region",sen:"j-sen",us:"j-us",mode:"j-mode",src:"j-src",pay:"j-pay"};
 let URL_LOADING=false;
 /* Leading-edge debounce over history. Every filter change used to replaceState,
    which meant the app owned exactly ONE history entry and kept overwriting it:
@@ -950,7 +1125,7 @@ function writeUrl(push){
   if(URL_LOADING||ROLE)return;
   const u=new URLSearchParams(location.search);
   Object.keys(URLKEYS).forEach(k=>u.delete(k));
-  ["tab","any","where"].forEach(k=>u.delete(k));
+  ["tab","any","where","paynone"].forEach(k=>u.delete(k));
   if(tab!=="jobs")u.set("tab",tab);
   Object.entries(URLKEYS).forEach(([k,id])=>{
     const el=$("#"+id); if(el&&el.value)u.set(k,el.value);
@@ -959,6 +1134,9 @@ function writeUrl(push){
   if(quota&&quota.getAttribute("aria-pressed")!=="true")u.set("any","1");
   const where=$("#j-where")?.querySelector('[aria-pressed="true"]');
   if(where&&where.dataset.v)u.set("where",where.dataset.v);
+  // only while a floor is actually set, or the url would carry a word that
+  // changes nothing about what the link shows
+  if(PAY_KEEP&&/^\d+$/.test($("#j-pay")?.value||""))u.set("paynone","1");
   const qs=u.toString();
   const next=location.pathname+(qs?"?"+qs:"");
   if(next===location.pathname+location.search)return;
@@ -974,8 +1152,11 @@ function readUrl(){
   return u;
 }
 function applyUrl(u){
+  // a board rendered from no url is a board with nothing set aside
+  PAY_KEEP=false;
   if(!u)return;
   URL_LOADING=true;
+  PAY_KEEP=u.has("paynone");
   Object.entries(URLKEYS).forEach(([k,id])=>{
     const el=$("#"+id); if(el&&u.has(k))el.value=u.get(k);
   });
@@ -1110,7 +1291,13 @@ function saveButton(p){
 function savedView(){
   const all=Object.values(savedAll())
     .sort((a,b)=>(b.saved_on||"").localeCompare(a.saved_on||""));
-  const live=new Set(D.postings.map(p=>p.id));
+  /* A Map, not a Set: pay is read off the LIVE posting rather than the saved
+     snapshot. The snapshot is a fixed list of fields the sync endpoint
+     accepts, and comp is not one of them - a role saved here and opened on
+     the phone would show a salary on one device and not the other. Reading
+     the live row instead means the figure is whatever the board says today,
+     and a role that has come down simply has none. */
+  const live=new Map(D.postings.map(p=>[p.id,p]));
   const linked=!!syncToken();
   const bar=linked
     ? `<div class="syncbar">${
@@ -1141,7 +1328,8 @@ function savedView(){
     row.innerHTML=`${tileHTML(p.company,p.company_id,"tile")}
       <div class="main"><div class="t">${esc(p.title)}</div>
         <div class="m">${esc(p.company)} &middot; ${esc(p.sector||"")}${
-          p.category?" / "+esc(p.category):""} &middot; ${geoBits(p).map(esc).join(" &middot; ")}
+          p.category?" / "+esc(p.category):""} &middot; ${geoBits(p).map(esc).join(" &middot; ")}${
+          payHTML(live.get(p.id))}
           ${gone?'<span class="chip warn">no longer on the board — it may have been filled or the board stopped listing it</span>':""}
         </div></div>
       <div class="when">saved ${esc(p.saved_on||"")}</div>`;
@@ -1157,7 +1345,7 @@ function drawJobs(){
   const where=whereBtn?whereBtn.dataset.v:"";
   const f=g("j-fam"),s=g("j-sec"),u=g("j-us"),st=g("j-state"),
         rg=g("j-region"),md=g("j-mode"),sen=g("j-sen"),src=g("j-src"),
-        off=g("j-office");
+        off=g("j-office"),pay=g("j-pay");
 
   const WANT=parseQuery(q);
   /* A search can contradict a filter, and when it does the words the person
@@ -1178,7 +1366,7 @@ function drawJobs(){
     quotaOnly=false;
     relaxed=FAM[WANT.family]||WANT.family;
   }
-  const rows=D.postings.filter(p=>{
+  const base=D.postings.filter(p=>{
     // The searchable text includes the office and territory the classifier
     // extracted - as codes AND full names, so the hero's own suggestion
     // "account executive kansas" finds a territory stored as KS.
@@ -1223,9 +1411,37 @@ function drawJobs(){
     if(sen&&p.seniority!==sen)return false;
     if(src&&(p.source||"ats")!==src)return false;
     return true;
-  }).sort((a,b)=>(b.first_seen||"").localeCompare(a.first_seen||"")
+  });
+
+  /* Pay is applied LAST and separately, because what it removes has to be
+     countable. Three quarters of this board states no pay; a floor written
+     into the predicate above would silently delete them and hand a seeker a
+     short list that looks like the whole market. So a floor PARTITIONS: rows
+     that clear it, and rows we cannot compare - which are counted, named, and
+     one click from being back in the list.
+
+     "Cannot compare" is never "below". A posting stating nothing, a posting
+     we never read, an hourly rate, a lone maximum: none of them is evidence
+     the job pays under your floor. Only a stated yearly minimum under the
+     floor is, and that is the one case that leaves without being reported. */
+  const payFloor=/^\d+$/.test(pay)?+pay:null;
+  let rows=base, aside=[];
+  if(pay==="stated")rows=base.filter(p=>!!p.comp);
+  else if(pay==="none")rows=base.filter(p=>hasPay(p)&&!p.comp&&!!p.jd_seen);
+  else if(pay==="unread")rows=base.filter(p=>hasPay(p)&&!p.comp&&!p.jd_seen);
+  else if(payFloor!==null){
+    const keep=[];
+    base.forEach(p=>{
+      const fl=payFloorOf(p);
+      if(fl===null)aside.push(p);
+      else if(fl>=payFloor)keep.push(p);
+    });
+    rows=PAY_KEEP?keep.concat(aside):keep;
+  }
+  rows.sort((a,b)=>(b.first_seen||"").localeCompare(a.first_seen||"")
     ||(b.quota_carrying?1:0)-(a.quota_carrying?1:0)
     ||a.company.localeCompare(b.company));
+  const setAside=aside.length?paySetAside(aside):null;
 
   // family has its own pill now, so it does not also count as an overflow filter
   const extra=["j-sec","j-state","j-region","j-office","j-sen","j-us","j-mode","j-src"]
@@ -1237,8 +1453,18 @@ function drawJobs(){
   writeUrl();
   drawChips();
   $("#j-h").textContent=quotaOnly?"All quota-carrying roles":"All roles";
-  $("#j-n").textContent=rows.length.toLocaleString()
-    +(relaxed?` \u00b7 showing all roles: ${relaxed} work does not carry a quota`:"");
+  /* The count says what the filter did to the board, not just what survived
+     it. Same idiom as the quota release one line up: the number, then a plain
+     sentence about what is missing and why, then the one click that undoes
+     it. A pay floor is the filter that most needs it - it can set aside more
+     postings than it keeps. */
+  $("#j-n").innerHTML=rows.length.toLocaleString()
+    +(relaxed?` \u00b7 showing all roles: ${esc(relaxed)} work does not carry a quota`:"")
+    +(setAside?(PAY_KEEP
+      ? ` \u00b7 including ${setAside.total.toLocaleString()} with no comparable salary
+          (${paySetAsideText(setAside)}) \u00b7 <span class="payoff">set them aside</span>`
+      : ` \u00b7 ${setAside.total.toLocaleString()} set aside: ${paySetAsideText(setAside)}
+          \u00b7 <span class="payall">include them</span>`):"");
 
   /* Built, not stringified. This row used to carry
      onclick="openRole('${esc(p.id).replace(/'/g,"\\'")}')", and both halves of
@@ -1253,7 +1479,7 @@ function drawJobs(){
      text, so there is nothing to escape and nothing to decode. */
   const list=$("#j-list");
   list.textContent="";
-  if(!rows.length)list.innerHTML=emptyJobs(quotaOnly,f,where);
+  if(!rows.length)list.innerHTML=emptyJobs(quotaOnly,f,where,setAside);
   rows.slice(0,SHOWN).forEach(p=>{
     const w=when(p.first_seen,D.generated);
     const row=document.createElement("div");
@@ -1263,7 +1489,7 @@ function drawJobs(){
       <div class="main">
         <div class="t">${esc(p.title)}</div>
         <div class="m">${esc(p.company)} &middot; ${esc(p.sector)} / ${esc(p.category)}
-          &middot; ${geoBits(p).map(esc).join(" &middot; ")}
+          &middot; ${geoBits(p).map(esc).join(" &middot; ")}${payHTML(p)}
           <span style="color:var(--faint)">${p.is_us===false?" &middot; non-US":""}${
             p.seniority?" &middot; "+esc(p.seniority)+", from the title":""}${
             p.source==="manual"?" &middot; checked by hand":""}</span></div>
@@ -1283,6 +1509,10 @@ function drawJobs(){
   }
   const relax=$("#j-relax");
   if(relax)relax.onclick=()=>toggleQuota($("#j-quota-pill"));
+  /* By class, not by id: the same offer appears in the count line and in the
+     empty state, and both have to work. */
+  document.querySelectorAll(".payall").forEach(el=>el.onclick=()=>payKeep(true));
+  document.querySelectorAll(".payoff").forEach(el=>el.onclick=()=>payKeep(false));
 }
 
 /* Finding: /?sec=Public%20Safety&sen=senior on a phone cut 607 roles to 51,
@@ -1311,6 +1541,13 @@ function chipDefs(){
   const pill=$("#j-quota-pill");
   if(pill&&pill.getAttribute("aria-pressed")!=="true")
     out.push({label:"Any role type",clear:()=>toggleQuota(pill)});
+  /* Only while a floor is set, because that is the only time it changes what
+     you are looking at. It earns a chip for the same reason "Any role type"
+     does: it is a relaxation you chose, it is in the url, and a shared link
+     should show the person who opens it why the count is what it is. */
+  if(PAY_KEEP&&/^\d+$/.test($("#j-pay")?.value||""))
+    out.push({label:"Including postings with no comparable salary",
+      clear:()=>{PAY_KEEP=false}});
   const seg=$("#j-where"), on=seg&&seg.querySelector('[aria-pressed="true"]');
   if(on&&on.dataset.v)
     out.push({label:esc(on.textContent.trim()),clear:()=>setWhere(seg.children[0])});
@@ -1555,7 +1792,11 @@ function co(id){
     <h3 style="font-size:13px;margin-top:20px">Open roles</h3>
     <div class="wrap"><table><thead><tr><th>Role</th><th>Family</th><th>Location</th></tr></thead><tbody>
       ${mine.map(p=>`<tr><td>${safeUrl(p.url)?`<a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(p.title)}</a>`:esc(p.title)}
-        ${p.quota_carrying?'<span class="chip ok">quota</span>':""}</td>
+        ${p.quota_carrying?'<span class="chip ok">quota</span>':""}
+        ${/* only where there is a figure: a column of "not stated" down a
+              company's whole board is noise, and the role page says which
+              silence it is for any one of them */
+          p.comp?`<span class="pay">${esc(payText(p.comp))}</span>`:""}</td>
         <td class="kv">${esc(FAM[p.family]||p.family)}</td>
         <td class="kv">${esc(p.location||"not stated")}</td></tr>`).join("")
         ||'<tr><td colspan="3" class="empty">No open roles.</td></tr>'}
@@ -1587,6 +1828,20 @@ function intel(){
     ${secs.map(([s,n])=>`<div class="kv"><span style="display:inline-block;width:34px;text-align:right">${n}</span>
       <span class="barfill" style="width:${Math.max(6,Math.round(n/secs[0][1]*300))}px"></span>
       ${esc(s)}</div>`).join("")}
+    ${t.pay_stated_postings===undefined?"":`
+    <h3 style="font-size:13px;margin-top:20px">What we know about pay</h3>
+    <div class="kv"><strong>${t.pay_stated_postings.toLocaleString()}</strong> of
+      ${t.postings.toLocaleString()} postings state a figure${
+      t.pay_source?` (${Object.entries(t.pay_source).map(([k,n])=>
+        `${n.toLocaleString()} ${k==="ats"?"published by the job board"
+          :"read out of the description"}`).join(", ")})`:""}.</div>
+    ${t.jd_read_postings===undefined?"":`<div class="kv"><strong>${
+      t.jd_read_postings.toLocaleString()}</strong> descriptions read,
+      ${t.jd_unread_postings.toLocaleString()} postings not read.</div>`}
+    <p class="hint" style="max-width:74ch">Two separate facts, and they do not partition the
+      board: a posting we never read may state pay we have not seen, and a posting that states
+      nothing is not a posting that pays nothing. Neither number supports &ldquo;the rest pay
+      less&rdquo;.</p>`}
     <h3 style="font-size:13px;margin-top:20px">Company phase</h3>
     ${Object.entries(byPhase).sort((a,b)=>b[1]-a[1]).map(([k,n])=>
       `<div class="kv"><strong>${n}</strong> ${esc(k)}</div>`).join("")}

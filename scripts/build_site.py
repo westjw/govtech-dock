@@ -266,6 +266,9 @@ def main() -> int:
 
     # The alerts page needs the sector names and nothing else. Without this it
     # would pull board.json - 4.7MB - to fill one dropdown on a settings page.
+    # the name, tagline and palette, so a page never hardcodes them either
+    shutil.copy2(ROOT / "data" / "brand.json", out / "data" / "brand.json")
+
     schema = json.loads((ROOT / "data" / "schema.json").read_text())
     (out / "data" / "sectors.json").write_text(
         json.dumps([x["name"] for x in schema["sectors"]], separators=(",", ":")))

@@ -1,0 +1,31 @@
+{
+  "_comment": "One place the name, the domain and the palette are written down. Everything else reads them from here, so a rebrand is an edit to this file rather than a hunt through five languages. scripts/selftest.py fails if functions/_brand.js drifts from it, because a Worker cannot read this file at runtime and the duplication is therefore the thing that will rot.",
+
+  "name": "SLED JOBS",
+  "tagline": "Find the right fit",
+  "line": "It's tough SLEDing out there.",
+  "what": "Every open sales role at state and local government technology companies.",
+
+  "_domain_comment": "Still the old domain until the new one is bought and pointed at Cloudflare Pages. Changing this string and the Pages custom domain is the whole move: alert links, digest footers, the confirmation email and the submission form all read it from here.",
+  "domain": "solesourcejobs.com",
+  "site": "https://solesourcejobs.com",
+  "from_email": "alerts@solesourcejobs.com",
+
+  "palette": {
+    "ice":     {"hex": "#E8F1F7", "use": "ground, the only white"},
+    "penguin": {"hex": "#1F2536", "use": "ink, headlines, body"},
+    "beanie":  {"hex": "#C1341F", "use": "hat, tie, accents"},
+    "badge":   {"hex": "#0B57C4", "use": "links, buttons, lanyard"},
+    "beak":    {"hex": "#F5A623", "use": "highlights, badges. never text"},
+    "belly":   {"hex": "#FAF7F0", "use": "cards on ice"},
+    "fog":     {"hex": "#7C97AA", "use": "labels and captions only. 2.7:1, never reading copy"},
+    "frost":   {"hex": "#C9DCE8", "use": "rules, borders"}
+  },
+
+  "_contrast_comment": "Measured on Ice by the kit: Penguin 13.3:1, Badge 5.8:1, Beanie 4.9:1 - all AA for text. Fog is 2.7:1 and is for tiny uppercase labels only. Beak is never text. Eight colours and no pure white; everything is the mascot's own plumage.",
+
+  "voice": {
+    "expressions": ["on the hunt", "offer in", "ghosted", "competitive pay"],
+    "poses": ["booth duty", "sending it"]
+  }
+}

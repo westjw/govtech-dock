@@ -15,12 +15,18 @@ The market-intelligence signal is the family mix. A company hiring twelve
 engineers and no sellers is in a different phase than one hiring eight AEs, and
 that difference is invisible if you only ever counted AEs.
 
+The fetchers also hand back each posting's description text and, where a board
+publishes one, a pay range. The pay range is kept. **The description text is
+not**: see derived() for the two facts that survive it and why the prose itself
+never reaches data/board.json.
+
 Two units, kept apart everywhere: a POSTING is one advertisement and a row on
 the site, an OPENING is one company advertising one title and what every count
 here reports. Xplor's single Account Executive opening is 93 postings. See
 opening_id() for why the counts use the second one.
 
   python scripts/build_board.py [--limit N] [--company id] [--dry-run]
+                               [--details]
 """
 from __future__ import annotations
 
@@ -169,6 +175,63 @@ def posting_id(company_id: str, title: str, url: str | None, location: str) -> s
     return f"{opening_id(company_id, title)}::{disc}"
 
 
+def derived(row: dict) -> dict:
+    """The facts we keep off a fetched row's description, and the text we drop.
+
+    ats.py hands every row a `jd` (the description as plain text) and a `comp`
+    (a pay range, from the board's own field or parsed out of that text). The
+    jd is the input to this function and goes no further: 4,355 descriptions
+    average ~6,000 characters, so shipping them would put roughly 25MB into a
+    5.7MB file, and it would republish other companies' job-ad copy wholesale,
+    which is not this project's to do. Facts out, prose in the bin.
+
+    Two facts come back, in four keys.
+
+    **comp** is the contract block verbatim - min, max, currency, period,
+    source, raw. `raw` is the quote the figures came from and is what makes the
+    number checkable by a person, so it is never dropped or rewritten.
+
+    **comp_floor / comp_period** are the cheap filter, and they travel
+    together on purpose. The tempting field is one annualised number so the
+    site can sort every posting against every other, and it cannot be built
+    honestly: turning $67.50/hour into a yearly figure means choosing hours per
+    week and weeks per year, and the board would then be publishing a salary
+    the employer never stated. So the number keeps the units it was stated in,
+    and two rows only compare when their comp_period matches.
+
+    comp_floor is `min` and never `max`. "Up to $200,000" states a ceiling and
+    says nothing at all about the floor; reading 200000 as the floor would
+    advertise a minimum nobody offered. A posting that stated only an upper
+    bound therefore has a comp and a null comp_floor - which is the point of
+    deriving this once here rather than letting each consumer re-derive it and
+    get that case wrong.
+
+    **jd_seen** is whether a description was actually read. "This employer did
+    not state pay" and "we never read this posting" are different facts and a
+    reader has to be able to tell them apart; without this field they look
+    identical, and a board that silently reported the second as the first would
+    be doing exactly what a false "None found" does to a warm door. The two are
+    independent, not a sequence: Breezy publishes a pay range in the list
+    response and no description at all, so polco's row is jd_seen false with a
+    real comp on it.
+    """
+    # Both fields are type-checked rather than trusted. A fetcher bug must not
+    # cost the whole board: everything below the fetch is one process building
+    # one file, so an AttributeError on a malformed comp or jd would end the run
+    # with no board written at all - which the site reads as nobody hiring
+    # anywhere. A bad row costs its own pay range and nothing else.
+    comp = row.get("comp")
+    if not isinstance(comp, dict):
+        comp = None
+    jd = row.get("jd")
+    out = {"jd_seen": bool(jd.strip()) if isinstance(jd, str) else False,
+           "comp": comp}
+    if comp:
+        out["comp_floor"] = comp.get("min")
+        out["comp_period"] = comp.get("period")
+    return out
+
+
 def phase(families: dict) -> str:
     """What the family mix says about where a company is."""
     total = sum(families.values())
@@ -247,6 +310,13 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--no-render", action="store_true",
                     help="skip the browser fallback even if Playwright is installed")
+    ap.add_argument("--details", action="store_true",
+                    help="read the posting page on the seven boards that only "
+                         "publish the description there (~971 extra requests at "
+                         "today's counts). Off by default: the daily run must "
+                         "not get slower, and the boards that hand the "
+                         "description over in the list response are read either "
+                         "way. GOVTECH_DOCK_JD_DETAILS=1 does the same thing.")
     ap.add_argument("--write-partial", action="store_true",
                     help="allow a --limit/--company run to overwrite the full board")
     ap.add_argument("--delay", type=float, default=0.4)
@@ -257,6 +327,13 @@ def main() -> int:
                          "longer than the entire parallel fetch.")
     ap.add_argument("--workers", type=int, default=10)
     a = ap.parse_args()
+
+    # Only ever turned ON here. ats.py reads GOVTECH_DOCK_JD_DETAILS at import,
+    # so writing False on the no-flag path would quietly override the env var
+    # the owner set, and the flag he passed last would lose to the flag he
+    # did not pass.
+    if a.details:
+        ats.FETCH_DETAILS = True
 
     companies = json.loads((DATA / "companies.json").read_text())
     # A person's rulings on whether a posting belongs on this board at all.
@@ -443,6 +520,9 @@ def main() -> int:
                 "region": geo["territory"]["region"],
                 "work_mode": geo["work_mode"],
                 "location": loc, "is_us": roles.is_us(loc, title),
+                # pay and jd_seen, derived off j["jd"]. The text itself is not
+                # copied into this dict and does not leave this loop.
+                **derived(j),
                 "url": url,
                 "sector": c["sector"], "category": c["category"],
                 # extra departments this vendor also sells into, so a
@@ -495,7 +575,14 @@ def main() -> int:
             # a fetched row is keyed, so "one id, one row" holds across both
             # sources. No org counting here: count_openings() below sees these
             # rows too, and doing it twice double-counted them.
-            row = {**mp, "source": "manual"}
+            # A captured row is a title read off a page a fetcher cannot
+            # enumerate, so there is no description behind it and derived()
+            # reads that correctly as jd_seen false. The dict is copied whole
+            # from manual.json, so it is also the one path by which a `jd` key
+            # could ever ride into the public file - derived() rebuilds the
+            # pay fields from scratch and the pop removes the text itself.
+            row = {**mp, "source": "manual", **derived(mp)}
+            row.pop("jd", None)
             row["title"] = ats.plain(mp.get("title") or "")
             row["opening_id"] = opening_id(mp["company_id"], row["title"])
             row["id"] = posting_id(mp["company_id"], row["title"],
@@ -566,6 +653,12 @@ def main() -> int:
                                      for rows in groups.values())
     sector_totals = collections.Counter(rows[0].get("sector")
                                         for rows in groups.values())
+    # Where the pay numbers came from. "ats" is the board's own field, "text" is
+    # salary.py reading it out of the description - a weaker claim, and the site
+    # should be able to say which it is showing rather than presenting both as
+    # equally settled.
+    pay_source = collections.Counter(p["comp"]["source"] for p in postings
+                                     if p.get("comp"))
     # which companies have a logo on file, and in what format. The page
     # needs the extension to build the src, and a manifest is cheaper than
     # 2,100 speculative requests that mostly 404.
@@ -597,6 +690,21 @@ def main() -> int:
             "non_us": sum(1 for rows in groups.values()
                           if any(p["is_us"] is False for p in rows)),
             "families": dict(fam_totals), "sectors": dict(sector_totals),
+            # What the site can honestly say on screen about pay coverage.
+            #
+            # These four do NOT partition the board and must not be presented as
+            # if they do. A posting can state pay without our ever having read a
+            # description (Breezy publishes the range in the list response and no
+            # description at all), and a posting we read in full very often
+            # states no pay. The only safe readings are the direct ones: this
+            # many rows carry a figure, this many rows we never read. Everything
+            # else - above all "the rest pay nothing" - is invented.
+            "pay_stated": sum(1 for rows in groups.values()
+                              if any(p.get("comp") for p in rows)),
+            "pay_stated_postings": sum(1 for p in postings if p.get("comp")),
+            "pay_source": dict(pay_source),
+            "jd_read_postings": sum(1 for p in postings if p.get("jd_seen")),
+            "jd_unread_postings": sum(1 for p in postings if not p.get("jd_seen")),
         },
         "organizations": orgs,
         "postings": postings,
@@ -635,6 +743,13 @@ def main() -> int:
     print(f"{t['openings']} open roles, advertised in {t['postings']} postings")
     print(f"  {t['quota_carrying']} quota-carrying, "
           f"advertised in {t['quota_carrying_postings']} postings")
+    src = ", ".join(f"{n} {k}" for k, n in sorted(pay_source.items())) or "none"
+    print(f"  {t['pay_stated']} state pay ({t['pay_stated_postings']} postings: {src})")
+    # Said as two separate facts on purpose. Reading these as one number - "the
+    # rest pay nothing" - is the failure this field exists to prevent.
+    print(f"  {t['jd_read_postings']} descriptions read, "
+          f"{t['jd_unread_postings']} postings not read"
+          f"{'' if ats.FETCH_DETAILS else ' (--details reads ~971 more)'}")
     for f, n in fam_totals.most_common():
         print(f"  {n:>4}  {roles.LABEL.get(f, f)}")
     if a.dry_run:

@@ -35,11 +35,12 @@ import time
 import requests
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import brand   # noqa: E402
 import digest  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CF = "https://api.cloudflare.com/client/v4"
-FROM = "SoleSource <alerts@solesourcejobs.com>"
+FROM = brand.FROM
 
 
 def mask(email: str) -> str:

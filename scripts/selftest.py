@@ -355,6 +355,183 @@ def fail(msg):
     return 1
 
 
+# Keys that hold a job description, under every name a fetcher or an ATS has
+# used for one. None of them may appear on a posting in board.json.
+PROSE_KEYS = {"jd", "description", "descriptionPlain", "descriptionHtml",
+              "content", "requirements", "jobDescription", "jobAd", "body",
+              "text", "_pagetext", "_jd_is_teaser", "_detail_url"}
+
+# Nothing on a posting is prose, so nothing on a posting is long. The longest
+# legitimate string on the board today is a 283-character Workday url; a
+# description averages ~6,000 characters. Anything past this is text that
+# should have been thrown away, whatever key it arrived under.
+PROSE_CHARS = 500
+
+# The periods ats.py and salary.py are allowed to state. A period the site does
+# not know about is a comparison it cannot make, and comp_floor is meaningless
+# without one.
+COMP_PERIODS = {"year", "month", "week", "day", "hour"}
+
+
+def _strings(value, path="") -> list[tuple[str, str]]:
+    """Every string anywhere inside a posting, with the key path that holds it."""
+    if isinstance(value, dict):
+        out = []
+        for k, v in value.items():
+            out += _strings(v, f"{path}.{k}" if path else str(k))
+        return out
+    if isinstance(value, list):
+        out = []
+        for i, v in enumerate(value):
+            out += _strings(v, f"{path}[{i}]")
+        return out
+    return [(path, value)] if isinstance(value, str) else []
+
+
+def check_no_jd_text(postings: list[dict]) -> int:
+    """The description text must never reach data/board.json.
+
+    build_board.derived() reads each posting's description, keeps the pay range
+    and whether it was read at all, and drops the prose. Two reasons that is not
+    an optimisation to relax later:
+
+    - size. 4,355 descriptions at ~6,000 characters each is roughly 25MB on top
+      of a 5.7MB file, downloaded by every visitor before the board draws.
+    - it is not ours. Republishing other companies' job-ad copy wholesale is a
+      different product from listing that the job exists and linking to it.
+
+    A leak would not look like an error anywhere - the file would simply get
+    large and stay large - so it is checked rather than remembered.
+    """
+    bad = 0
+    for p in postings:
+        stray = sorted(PROSE_KEYS & set(p))
+        if stray:
+            bad += fail(f"posting {p.get('id')!r} carries description key(s) "
+                        f"{stray} - board.json must ship derived facts only, "
+                        "never the job-ad text (see build_board.derived)")
+            break
+    for p in postings:
+        long_ = [(k, len(v)) for k, v in _strings(p) if len(v) > PROSE_CHARS]
+        if long_:
+            k, n = long_[0]
+            bad += fail(f"posting {p.get('id')!r} field {k!r} is {n} characters; "
+                        f"nothing on a posting is prose, so nothing should pass "
+                        f"{PROSE_CHARS} (see build_board.derived)")
+            break
+    return bad
+
+
+def check_comp(postings: list[dict]) -> int:
+    """Pay fields, where a board built by the current builder carries them.
+
+    Skipped per-posting rather than demanded, because data/board.json is
+    rebuilt by a long network run and a stale file must not fail the build. It
+    retires itself the first time the board is rebuilt.
+
+    build_board.derived() is pinned directly in check_derived() below, which is
+    what actually holds the rules; this is the same rules re-checked against
+    whatever is on disk, so a hand-edit or a half-finished run cannot slip past.
+    """
+    bad = 0
+    for p in postings:
+        comp = p.get("comp")
+        if comp is None:
+            # Not stated, or never read. Never zero, and never a reason to drop
+            # the posting - which is why there is nothing to check here.
+            if p.get("comp_floor") is not None or p.get("comp_period") is not None:
+                bad += fail(f"posting {p['id']!r} has no comp but carries "
+                            "comp_floor/comp_period")
+                break
+            continue
+        lo, hi = comp.get("min"), comp.get("max")
+        if lo is None and hi is None:
+            bad += fail(f"posting {p['id']!r} has a comp block with no figure in "
+                        "it - that is 'not stated', which is comp: null")
+            break
+        if lo is not None and hi is not None and lo > hi:
+            bad += fail(f"posting {p['id']!r} comp min {lo} > max {hi}")
+            break
+        if comp.get("period") not in COMP_PERIODS:
+            bad += fail(f"posting {p['id']!r} comp period "
+                        f"{comp.get('period')!r} is not one of "
+                        f"{sorted(COMP_PERIODS)}")
+            break
+        if not comp.get("raw"):
+            bad += fail(f"posting {p['id']!r} comp has no raw quote - the quote "
+                        "is how a person checks the number against the posting")
+            break
+        # comp_floor is the low bound and never the high one: "up to $200,000"
+        # states a ceiling, and publishing it as a floor advertises a minimum
+        # nobody offered.
+        if p.get("comp_floor") != lo or p.get("comp_period") != comp.get("period"):
+            bad += fail(f"posting {p['id']!r} comp_floor/comp_period "
+                        f"({p.get('comp_floor')}, {p.get('comp_period')!r}) "
+                        f"drifted from comp ({lo}, {comp.get('period')!r})")
+            break
+    return bad
+
+
+def check_derived() -> int:
+    """build_board.derived(): what survives a description, and what does not."""
+    import build_board
+    bad = 0
+    year = {"min": 140000, "max": 200000, "currency": "USD", "period": "year",
+            "source": "text", "raw": "$140,000 - $200,000"}
+    hour = {"min": 67.5, "max": 85, "currency": "USD", "period": "hour",
+            "source": "text", "raw": "$67.50 - $85.00/hour"}
+    cap = {"min": None, "max": 200000, "currency": "USD", "period": "year",
+           "source": "text", "raw": "up to $200,000"}
+
+    cases = [
+        # (row, expected subset of the derived fields)
+        # read the posting, no pay stated. NOT a posting that pays nothing.
+        ({"jd": "We are hiring a seller.", "comp": None},
+         {"jd_seen": True, "comp": None}),
+        # never read it. Looks nothing like the row above, and must not.
+        ({"jd": "", "comp": None}, {"jd_seen": False, "comp": None}),
+        # whitespace is not a description
+        ({"jd": "   \n ", "comp": None}, {"jd_seen": False, "comp": None}),
+        # read it, and it stated a yearly range
+        ({"jd": "Base salary range: $140,000 - $200,000", "comp": year},
+         {"jd_seen": True, "comp": year, "comp_floor": 140000,
+          "comp_period": "year"}),
+        # hourly stays hourly. Annualising it would mean inventing hours.
+        ({"jd": "text", "comp": hour},
+         {"jd_seen": True, "comp_floor": 67.5, "comp_period": "hour"}),
+        # a stated ceiling is not a floor
+        ({"jd": "text", "comp": cap},
+         {"jd_seen": True, "comp_floor": None, "comp_period": "year"}),
+        # Breezy: pay in the list response, no description anywhere. Pay stated
+        # and the posting never read are independent facts, not a sequence.
+        ({"jd": "", "comp": year},
+         {"jd_seen": False, "comp": year, "comp_floor": 140000}),
+        # a fetcher handing back something malformed costs the pay range, not
+        # the board: this whole script is one process writing one file.
+        ({"jd": "text", "comp": "$140k"}, {"jd_seen": True, "comp": None}),
+        ({"jd": {"html": "..."}, "comp": None}, {"jd_seen": False, "comp": None}),
+        ({}, {"jd_seen": False, "comp": None}),
+    ]
+    for row, want in cases:
+        got = build_board.derived(dict(row))
+        for k, v in want.items():
+            if got.get(k) != v:
+                bad += fail(f"derived({row!r})[{k!r}] = {got.get(k)!r}, "
+                            f"expected {v!r}")
+        # the whole point: the text is the input and never the output
+        for k in got:
+            if k in PROSE_KEYS:
+                bad += fail(f"derived({row!r}) returned {k!r} - the description "
+                            "text must not survive into a posting")
+    # a row with a comp must never lose it, and a row without one must not
+    # invent the keys that would make it filterable as a low payer
+    plain = build_board.derived({"jd": "x", "comp": None})
+    if "comp_floor" in plain or "comp_period" in plain:
+        bad += fail("derived() gave a pay-less posting comp_floor/comp_period; "
+                    "a posting with no stated pay is not a posting paying zero")
+    return bad
+
+
 def check_board() -> int:
     """Invariants on the built board that a person cannot eyeball at 4,242 rows.
 
@@ -428,6 +605,42 @@ def check_board() -> int:
             bad += fail(f"{o['name']}: open_roles = {o.get('open_roles')}, but "
                         f"{per_co.get(o['id'], 0)} openings are filed under it")
             break
+
+    bad += check_no_jd_text(postings)
+    bad += check_comp(postings)
+    if postings and not any("jd_seen" in p for p in postings):
+        print("note: data/board.json predates the pay fields; rebuild it with "
+              "build_board.py to get comp/jd_seen coverage")
+    else:
+        stated = sum(1 for p in postings if p.get("comp"))
+        unread = sum(1 for p in postings if not p.get("jd_seen"))
+        print(f"note: {stated} posting(s) state pay, {unread} were never read "
+              "(the two are separate facts, not a partition)")
+    return bad
+
+
+def check_brand() -> int:
+    """functions/_brand.js must say the same thing as data/brand.json.
+
+    A Worker cannot read the JSON at runtime, so the domain is written down
+    twice. The day the domain changes, missing one of the two means alert links
+    and confirmation emails point at a name that no longer resolves - and
+    nothing would report it, because both files are individually valid.
+    """
+    js = ROOT / "functions" / "_brand.js"
+    if not js.exists():
+        return 0
+    import brand
+    text = js.read_text()
+    bad = 0
+    for const, want in (("SITE", brand.SITE), ("DOMAIN", brand.DOMAIN),
+                        ("NAME", brand.NAME), ("FROM", brand.FROM)):
+        m = re.search(rf'export const {const} = "([^"]*)"', text)
+        if not m:
+            bad += fail(f"_brand.js: no {const}")
+        elif m.group(1) != want:
+            bad += fail(f"_brand.js {const} is {m.group(1)!r}, "
+                        f"data/brand.json says {want!r}")
     return bad
 
 
@@ -670,6 +883,7 @@ def main() -> int:
     # happily stores, no posting ever carries it, and their alert silently
     # never arrives - no error anywhere. So the duplication is checked here.
     errors += check_alert_vocabulary()
+    errors += check_brand()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)
@@ -677,6 +891,10 @@ def main() -> int:
             errors += fail(f"ats.plain({raw!r}) = {got!r}, expected {expected!r}")
     errors += check_board()
     errors += check_salary()
+    # What survives a job description, and what must not. Checked against the
+    # function rather than the file, so the rule holds even when board.json on
+    # disk was written before it existed.
+    errors += check_derived()
 
     hist = sorted((DATA / "hiring_history").glob("*.json"))
     if not hist:

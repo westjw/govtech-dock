@@ -31,11 +31,15 @@ import argparse
 import datetime as dt
 import json
 import pathlib
+import sys
 import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
-SITE = "https://solesourcejobs.com"
+sys.path.insert(0, str(ROOT / "scripts"))
+import brand  # noqa: E402
+
+SITE = brand.SITE
 
 CADENCE_DAYS = {
     # weekday numbers as date.weekday(): Monday is 0

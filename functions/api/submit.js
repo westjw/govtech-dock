@@ -16,6 +16,8 @@
  * endpoint reports that it is not configured and the site falls back to the
  * GitHub issue form, so the feature works either way.
  */
+import { DOMAIN } from "../_brand.js";
+
 const REPO = "westjw/govtech-dock";
 const MAX_CONTEXT = 1200;
 
@@ -72,7 +74,7 @@ export async function onRequestPost({ request, env }) {
   const issueBody =
     `${url.href}\n\n` +
     (context ? `**Anything the bot will get wrong**\n\n${context}\n\n` : "") +
-    `---\nSubmitted from the public form on solesourcejobs.com. ` +
+    `---\nSubmitted from the public form on ${DOMAIN}. ` +
     `Nothing here is trusted: the bot derives every field from the site itself, ` +
     `and a person reviews the pull request.`;
 
