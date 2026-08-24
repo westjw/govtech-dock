@@ -1,0 +1,198 @@
+[
+ {
+  "id": "recycle-track-systems",
+  "name": "Recycle Track Systems (RTS)",
+  "type": "rippling",
+  "ref": "rts-careers",
+  "slug_tell": {
+   "slug": "rts-careers",
+   "why": "the board slug is \"rts-careers\", which shares nothing with \"Recycle Track Systems (RTS)\""
+  },
+  "identity": "unknown",
+  "identity_why": "no identity probe written for rippling",
+  "postings": 0
+ },
+ {
+  "id": "recdesk",
+  "name": "RecDesk",
+  "type": "rippling",
+  "ref": "clubessential-holdings-cjb",
+  "slug_tell": {
+   "slug": "clubessential-holdings-cjb",
+   "why": "the board slug is \"clubessential-holdings-cjb\", which shares nothing with \"RecDesk\""
+  },
+  "identity": "unknown",
+  "identity_why": "no identity probe written for rippling",
+  "postings": 0
+ },
+ {
+  "id": "vermont-systems",
+  "name": "Vermont Systems",
+  "type": "rippling",
+  "ref": "clubessential-holdings-cjb",
+  "slug_tell": {
+   "slug": "clubessential-holdings-cjb",
+   "why": "the board slug is \"clubessential-holdings-cjb\", which shares nothing with \"Vermont Systems\""
+  },
+  "identity": "unknown",
+  "identity_why": "no identity probe written for rippling",
+  "postings": 0
+ },
+ {
+  "id": "swiftly",
+  "name": "Swiftly",
+  "type": "lever",
+  "ref": "goswift",
+  "slug_tell": {
+   "slug": "goswift",
+   "why": "the board slug is \"goswift\", which shares nothing with \"Swiftly\""
+  },
+  "identity": "unknown",
+  "identity_why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 10
+ },
+ {
+  "id": "social-news-desk",
+  "name": "Social News Desk",
+  "type": "ashby",
+  "ref": "snd",
+  "slug_tell": {
+   "slug": "snd",
+   "why": "the board slug is \"snd\", which shares nothing with \"Social News Desk\""
+  },
+  "identity": "unknown",
+  "identity_why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 2
+ },
+ {
+  "id": "govpilot",
+  "name": "GovPilot",
+  "type": "rippling",
+  "ref": "sdl",
+  "slug_tell": {
+   "slug": "sdl",
+   "why": "the board slug is \"sdl\", which shares nothing with \"GovPilot\""
+  },
+  "identity": "unknown",
+  "identity_why": "no identity probe written for rippling",
+  "postings": 0
+ },
+ {
+  "id": "tso-mobile",
+  "name": "TSO Mobile",
+  "type": "jazzhr",
+  "ref": "zonar",
+  "slug_tell": {
+   "slug": "zonar",
+   "why": "the board slug is \"zonar\", which shares nothing with \"TSO Mobile\""
+  },
+  "identity": "unknown",
+  "identity_why": "no identity probe written for jazzhr",
+  "postings": 0
+ },
+ {
+  "id": "idemia-public-security",
+  "name": "IDEMIA Public Security",
+  "type": "icims",
+  "ref": "uscareers-idemia",
+  "slug_tell": {
+   "slug": "uscareers-idemia",
+   "why": "the board slug is \"uscareers-idemia\", which shares nothing with \"IDEMIA Public Security\""
+  },
+  "identity": "unknown",
+  "identity_why": "no identity probe written for icims",
+  "postings": 0
+ },
+ {
+  "id": "ecopia-ai",
+  "name": "Ecopia AI",
+  "type": "bamboohr",
+  "ref": "ecopiatech",
+  "slug_tell": {
+   "slug": "ecopiatech",
+   "why": "the board slug is \"ecopiatech\", which shares nothing with \"Ecopia AI\""
+  },
+  "identity": "unknown",
+  "identity_why": "no identity probe written for bamboohr",
+  "postings": 0
+ },
+ {
+  "id": "simpleview",
+  "name": "Simpleview (Granicus)",
+  "type": "icims",
+  "ref": "careers-granicus",
+  "slug_tell": {
+   "slug": "careers-granicus",
+   "why": "the board slug is \"careers-granicus\", which shares nothing with \"Simpleview (Granicus)\""
+  },
+  "identity": "unknown",
+  "identity_why": "no identity probe written for icims",
+  "postings": 0,
+  "redirect": {
+   "from": "https://www.simpleviewinc.com/careers",
+   "to": "granicus.com",
+   "why": "their careers page ends up on granicus.com, which is neither their domain nor an ATS"
+  }
+ },
+ {
+  "id": "unison",
+  "name": "Unison (Unison Global)",
+  "type": "icims",
+  "ref": "careers-unisonglobal",
+  "slug_tell": {
+   "slug": "careers-unisonglobal",
+   "why": "the board slug is \"careers-unisonglobal\", which shares nothing with \"Unison (Unison Global)\""
+  },
+  "identity": "unknown",
+  "identity_why": "no identity probe written for icims",
+  "postings": 0
+ },
+ {
+  "id": "bruker-detection",
+  "name": "Bruker Detection",
+  "type": "icims",
+  "ref": "worldwidecareers-bruker",
+  "slug_tell": {
+   "slug": "worldwidecareers-bruker",
+   "why": "the board slug is \"worldwidecareers-bruker\", which shares nothing with \"Bruker Detection\""
+  },
+  "identity": "unknown",
+  "identity_why": "no identity probe written for icims",
+  "postings": 0
+ },
+ {
+  "id": "clear",
+  "name": "CLEAR (Alclear)",
+  "type": "greenhouse",
+  "ref": "clear",
+  "identity": "MISMATCH",
+  "identity_why": "board calls itself \"CLEAR - Corporate\", we have it as \"CLEAR (Alclear)\"",
+  "postings": 36
+ },
+ {
+  "id": "highland-electric-fleets",
+  "name": "Highland Electric Fleets",
+  "type": "lever",
+  "ref": "highlandfleets-2",
+  "slug_tell": {
+   "slug": "highlandfleets-2",
+   "why": "the board slug is \"highlandfleets-2\", which shares nothing with \"Highland Electric Fleets\""
+  },
+  "identity": "unknown",
+  "identity_why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 9
+ },
+ {
+  "id": "vision-government-solutions",
+  "name": "Vision Government Solutions",
+  "type": "jazzhr",
+  "ref": "vgsi",
+  "slug_tell": {
+   "slug": "vgsi",
+   "why": "the board slug is \"vgsi\", which shares nothing with \"Vision Government Solutions\""
+  },
+  "identity": "unknown",
+  "identity_why": "no identity probe written for jazzhr",
+  "postings": 0
+ }
+]

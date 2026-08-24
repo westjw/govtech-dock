@@ -2995,7 +2995,16 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "parent": "Xplor Recreation",
+  "board_owner": "Xplor Recreation",
+  "notes": [
+   {
+    "text": "Part of Xplor Recreation. Evidenced, not inferred: the rippling board they share, clubessential-holdings-cjb, carries a posting titled Xplor_Logo_withTag_Color.png, and nextrec.com closes with '(c) Copyright 2026 Xplor Technologies' and links to linkedin.com/company/xplor-technologies.",
+    "by": "claude",
+    "on": "2026-08-24T11:01:34-04:00"
+   }
+  ]
  },
  {
   "id": "myrec-com",
@@ -3043,7 +3052,16 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "parent": "Xplor Recreation",
+  "board_owner": "Xplor Recreation",
+  "notes": [
+   {
+    "text": "Part of Xplor Recreation. Evidenced, not inferred: the rippling board they share, clubessential-holdings-cjb, carries a posting titled Xplor_Logo_withTag_Color.png, and nextrec.com closes with '(c) Copyright 2026 Xplor Technologies' and links to linkedin.com/company/xplor-technologies.",
+    "by": "claude",
+    "on": "2026-08-24T11:01:34-04:00"
+   }
+  ]
  },
  {
   "id": "active-network",
@@ -3581,7 +3599,16 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "parent": "Xplor Recreation",
+  "board_owner": "Xplor Recreation",
+  "notes": [
+   {
+    "text": "Part of Xplor Recreation. Evidenced, not inferred: the rippling board they share, clubessential-holdings-cjb, carries a posting titled Xplor_Logo_withTag_Color.png, and nextrec.com closes with '(c) Copyright 2026 Xplor Technologies' and links to linkedin.com/company/xplor-technologies.",
+    "by": "claude",
+    "on": "2026-08-24T11:01:34-04:00"
+   }
+  ]
  },
  {
   "id": "daxko",
@@ -11211,7 +11238,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "parent": "Xplor Recreation",
+  "notes": [
+   {
+    "text": "Part of Xplor Recreation. Evidenced, not inferred: the rippling board they share, clubessential-holdings-cjb, carries a posting titled Xplor_Logo_withTag_Color.png, and nextrec.com closes with '(c) Copyright 2026 Xplor Technologies' and links to linkedin.com/company/xplor-technologies.",
+    "by": "claude",
+    "on": "2026-08-24T11:01:34-04:00"
+   }
+  ]
  },
  {
   "id": "perry-weather",
@@ -25898,7 +25933,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "parent": "Xplor Recreation",
+  "notes": [
+   {
+    "text": "Part of Xplor Recreation. Evidenced, not inferred: the rippling board they share, clubessential-holdings-cjb, carries a posting titled Xplor_Logo_withTag_Color.png, and nextrec.com closes with '(c) Copyright 2026 Xplor Technologies' and links to linkedin.com/company/xplor-technologies.",
+    "by": "claude",
+    "on": "2026-08-24T11:01:34-04:00"
+   }
+  ]
  },
  {
   "id": "sterling-volunteers",

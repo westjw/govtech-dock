@@ -2903,7 +2903,13 @@ function co(id){
           three lines above it - and sends somebody looking for a job to a
           page that has none. The website link is right there and says what it
           actually is. */""}
-    ${(safeUrl(o.board_url)&&!o.no_board_on_file)?`<p><a href="${esc(safeUrl(o.board_url))}" target="_blank" rel="noopener">Open their hiring board &rarr;</a>
+    ${/* Whose board this actually is, said at the link rather than in a
+          footnote. An acquired company's careers page often hands you to the
+          parent - Prepared's links to Axon's, 500 postings, every one stamped
+          Axon - and a visitor who clicks "their hiring board" and lands
+          somewhere else has been misled by us, not by them. Where we know the
+          board belongs to a parent, the link says so before it is clicked. */""}
+    ${(safeUrl(o.board_url)&&!o.no_board_on_file)?`<p><a href="${esc(safeUrl(o.board_url))}" target="_blank" rel="noopener">Open ${o.board_owner&&o.board_owner!==o.name?esc(o.board_owner)+"&rsquo;s":"their"} hiring board &rarr;</a>${o.board_owner&&o.board_owner!==o.name?` <span class="chip warn">these roles are posted on ${esc(o.board_owner)}&rsquo;s board${o.parent?", who acquired them":""} &mdash; some may not be ${esc(o.name)} roles</span>`:""}
       ${o.unreadable?` <span class="chip warn">board could not be read: ${esc(o.unreadable)}</span>`:""}
       ${o.enumerable===false?` <span class="chip warn">their board is live but its roles cannot be read automatically, so this list may be incomplete</span>`:""}
       ${o.checked_by_hand?` <span class="chip">checked by hand ${esc(o.checked_by_hand)}</span>`:""}</p>`

@@ -556,6 +556,12 @@ def main() -> int:
             # A company with nothing on file has not failed; it has never been
             # tried. Counting 4,137 of those as "unreadable" made a discovery
             # backlog look like a systemic fetch failure.
+            # whose board this actually is, when it is not theirs. An
+            # acquired company often points at the parent, and a visitor
+            # told "their hiring board" should not land on somebody
+            # else's without being warned first.
+            "board_owner": (c.get("acquired_by") or {}).get("board_owner")
+                            or (c.get("board_owner") or None),
             "no_board_on_file": no_board,
             "enumerable": enumerable,
         })

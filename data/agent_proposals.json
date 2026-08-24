@@ -1,4 +1,27 @@
 {
+ "read:120water": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://120water.com/careers",
+  "id": "120water",
+  "kind": "read",
+  "name": "120Water",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "'Sample Manager' (a product), 'Head of Product Readiness' (testimonial byline)",
+   "url_read": "https://120water.com/careers",
+   "widget": "synerg.adp.com config loaded, no rows drawn"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the only req-shaped strings are a product name ('Sample Manager', sitting between 'Public Water System Platform' and 'Facilities Platform') and a testimonial byline ('Courtney Arnott / Head of Product Readiness'). the page loads an ADP recruitment widget that drew no list in the browser either."
+ },
  "read:aesys": {
   "at": "2026-08-24T00:33:43-04:00",
   "by": "claude-opus-5 (read-agent measurement, n=25)",
@@ -19,6 +42,49 @@
   "sector": null,
   "status": "pending",
   "why": "the only req-shaped strings are the careers section's own navigation (Values and Life at Aesys, Training and Academy, Grow with Aesys, Join our team). no list."
+ },
+ "read:affordablehousing-com": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.affordablehousing.com/join-us/",
+  "id": "affordablehousing-com",
+  "kind": "read",
+  "name": "AffordableHousing.com",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "note": "the careers_url on file is not a jobs page",
+   "read_by": "browser, main frame + 13 child frames",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.affordablehousing.com/join-us/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the /join-us/ page on file is a landlord sign-up page, not a careers page - it asks you to 'Join our program and request your badge today'. fourteen frames rendered, all ad or map frames. no openings section exists on it at all."
+ },
+ "read:agents-of-discovery": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://agentsofdiscovery.com/careers/",
+  "id": "agents-of-discovery",
+  "kind": "read",
+  "name": "Agents of Discovery",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://agentsofdiscovery.com/careers/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the careers page renders 41 lines and contains no openings section and no list."
  },
  "read:airbadge": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -54,6 +120,161 @@
   "sector": null,
   "status": "pending",
   "why": "two postings written as page entries with a posted date. the second is dated Jan 2024 and may be stale - the date is carried here rather than judged."
+ },
+ "read:aladtec": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://tcpsoftware.com/careers",
+  "id": "aladtec",
+  "kind": "read",
+  "name": "Aladtec (TCP Software)",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "United States",
+    "title": "Enterprise Account Executive - Remote"
+   },
+   {
+    "location": "United States",
+    "title": "Enterprise Growth Account Executive"
+   },
+   {
+    "location": "United States",
+    "title": "Mid-Market Account Executive"
+   },
+   {
+    "location": "Plano, Texas, United States",
+    "title": "Growth Account Executive"
+   },
+   {
+    "location": "Lahore, Punjab, Pakistan",
+    "title": "SMB Sales Executive"
+   },
+   {
+    "location": "San Angelo, Texas, United States",
+    "title": "Business Development Representative"
+   },
+   {
+    "location": "Lahore, Punjab, Pakistan",
+    "title": "SMB Sales Executive - Inbound"
+   },
+   {
+    "location": "Lahore, Punjab, Pakistan",
+    "title": "Revenue Operations Analyst I"
+   },
+   {
+    "location": "United States",
+    "title": "Partner & Alliance Manager"
+   },
+   {
+    "location": "Plano, Texas, United States",
+    "title": "Mid-Market Sales Manager"
+   },
+   {
+    "location": "Plano, Texas, United States",
+    "title": "Sales Development Representative"
+   },
+   {
+    "location": "United States",
+    "title": "Enterprise Account Executive - SLED"
+   },
+   {
+    "location": "United States",
+    "title": "Enterprise Sales Value Consultant"
+   },
+   {
+    "location": "Lahore, Punjab, Pakistan",
+    "title": "Associate Growth Account Executive"
+   },
+   {
+    "location": "Lahore, Punjab, Pakistan",
+    "title": "Manager, SMB Customer Growth & Expansion"
+   },
+   {
+    "location": "Lahore, Punjab, Pakistan",
+    "title": "Product Owner"
+   },
+   {
+    "location": "United States",
+    "title": "Product Designer"
+   },
+   {
+    "location": "Lahore, Punjab, Pakistan",
+    "title": "DevOps Engineer III"
+   },
+   {
+    "location": "Lahore, Punjab, Pakistan",
+    "title": "Software Engineer in Test - Lead"
+   },
+   {
+    "location": "Plano, Texas, United States",
+    "title": "IT Help Desk Support II"
+   },
+   {
+    "location": "United States",
+    "title": "Test Engineer II (Manual QA)"
+   },
+   {
+    "location": "United States",
+    "title": "Agentic AI Software Engineer"
+   },
+   {
+    "location": "Lahore, Punjab, Pakistan",
+    "title": "Recruiting Manager"
+   },
+   {
+    "location": "Lahore, Pakistan",
+    "title": "Customer Success Manager"
+   },
+   {
+    "location": "San Angelo, Texas, United States",
+    "title": "Implementation Specialist I"
+   },
+   {
+    "location": "San Angelo, Texas, United States",
+    "title": "Facilities Technician I"
+   },
+   {
+    "location": "San Angelo, Texas, United States",
+    "title": "Facilities & Fulfillment Assistant"
+   },
+   {
+    "location": "Lahore, Punjab, Pakistan",
+    "title": "Partner Implementation Specialist I"
+   },
+   {
+    "location": "Lahore, Punjab, Pakistan",
+    "title": "Staff Accountant"
+   },
+   {
+    "location": "Lahore, Punjab, Pakistan",
+    "title": "Data Analyst"
+   },
+   {
+    "location": "Plano, Texas, United States",
+    "title": "Senior Manager, Events & Field Marketing"
+   },
+   {
+    "location": "Plano, Texas, United States",
+    "title": "Senior Product Marketing Manager"
+   }
+  ],
+  "saw": {
+   "departments": "Sales / Engineering, Product, IT and InfoSec / G&A:HR / Operations / Accounting and Finance / Marketing - carried as headings, not as reqs",
+   "dropped": "5 same-title rows in a second location (Growth AE x3, Mid-Market AE x2, BDR x2, Mid-Market Sales Manager x2) - the duplicate-title guard is right here",
+   "group_board": "tcpsoftware.com is the parent; Lahore and San Angelo reqs are TCP's",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "plain GET, served HTML",
+   "rows_on_page": 37,
+   "unique_titles": 32,
+   "url_read": "https://tcpsoftware.com/careers",
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the whole list is in the served HTML, no browser needed. 37 rows under six department headings; 32 unique titles - five titles are advertised in two locations each, and only the 32 are carried because the board's own opening_id is company::title. this is TCP Software's group board and Aladtec is the TCP brand on file, so a person should confirm the group is the right entity before accepting. one row is 'Enterprise Account Executive - SLED'."
  },
  "read:autura": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -96,6 +317,72 @@
   "status": "pending",
   "why": "the board is a Greenhouse job_board EMBEDDED IN AN IFRAME. the cheap fetch saw only the frame tag; reading the child frame returned the list. the frame url also hands over the ATS slug 'autura', which is worth more than these three rows."
  },
+ "read:avail-technologies": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://availtec.com/careers",
+  "id": "avail-technologies",
+  "kind": "read",
+  "name": "Avail Technologies",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "http_status": 404,
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "plain GET then browser",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://availtec.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the careers URL on file returns 404. that is a broken link, not an answer about hiring."
+ },
+ "read:bentek": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.mybentek.com/about/careers",
+  "id": "bentek",
+  "kind": "read",
+  "name": "Bentek",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "'Client Support Specialist | 12 Years' and three more testimonial bylines",
+   "url_read": "https://www.mybentek.com/about/careers",
+   "widget": "app.jazz.co/widgets/basic/create/bentek - drew nothing"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the page has an 'Open Positions' heading and a paragraph inviting you to 'explore our open positions below', and then nothing below it. the four role-shaped strings are staff testimonials with tenure attached ('Client Support Specialist | 12 Years'). a JazzHR widget loads and draws no rows."
+ },
+ "read:black-creek-integrated-systems": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.blackcreekisc.com/careers",
+  "id": "black-creek-integrated-systems",
+  "kind": "read",
+  "name": "Black Creek Integrated Systems",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.blackcreekisc.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "33 lines rendered, product and support navigation only. no openings section."
+ },
  "read:bounce-imaging": {
   "at": "2026-08-24T00:33:43-04:00",
   "by": "claude-opus-5 (read-agent measurement, n=25)",
@@ -116,6 +403,123 @@
   "sector": null,
   "status": "pending",
   "why": "the page renders a heading 'OPEN POSITIONS:' and then nothing follows it. no widget, no frame, no list. an empty heading is not an empty company."
+ },
+ "read:brightly": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.siemens.com/en-us/company/jobs/",
+  "id": "brightly",
+  "kind": "read",
+  "name": "Brightly",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "note": "careers_url on file belongs to Siemens, the parent",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.siemens.com/en-us/company/jobs/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the URL on file is siemens.com/en-us/company/jobs/ - the PARENT's careers hub, not Brightly's board. it rendered culture copy and a graduate-programme blurb and no list. nothing on it could be attributed to Brightly even if a list had drawn."
+ },
+ "read:chevin-fleet-solutions": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.chevinfleet.com/careers",
+  "id": "chevin-fleet-solutions",
+  "kind": "read",
+  "name": "Chevin Fleet Solutions",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "ats_lead": "a workday host appears in the page source",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "nine 'Staff Testimonials' bylines",
+   "url_read": "https://www.chevinfleet.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the role-shaped strings are all from a 'Staff Testimonials' block ('Will Wycks - Senior VP Product & Marketing', and eight more, including 'Archie - our Chief Morale Boosting Officer'). no openings section. a Workday host appears in the source and is a lead for the board agent."
+ },
+ "read:courtreserve": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://courtreserve.com/about",
+  "id": "courtreserve",
+  "kind": "read",
+  "name": "CourtReserve",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Remote",
+    "title": "BDR Manager"
+   },
+   {
+    "location": "Remote",
+    "title": "Business Development Representative - Remote"
+   },
+   {
+    "location": "Remote",
+    "title": "Accounting & Finance Manager"
+   }
+  ],
+  "saw": {
+   "ats_discovered": "paylocity feed 7ba28d97-b164-41e3-a36e-f726cbe28655",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "page_states_pay": "BDR - Remote: '$70,000 OTE at 100% of Plan'; other two 'Salary: Not specified'",
+   "read_by": "browser, main frame",
+   "rows_on_page": 3,
+   "url_read": "https://courtreserve.com/about",
+   "verified": "each row checked by hand against the saved frame text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the served HTML has an empty 'Open Positions' section; rendering filled it. three rows, each with Location / Salary / Job Type. the BDR row prints '$70,000 OTE at 100% of Plan' - carried in saw as the page's words only, because an OTE figure is exactly what salary.py refuses. THE FINDING WORTH MORE: the page pulls from a Paylocity jobs feed, which is enumerable."
+ },
+ "read:courtsmart": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.courtsmart.com/employment/",
+  "id": "courtsmart",
+  "kind": "read",
+  "name": "CourtSmart",
+  "none_found": false,
+  "postings": [
+   {
+    "title": "Audio/Video Technician",
+    "url": "https://www.courtsmart.com/employment/av-tech/"
+   },
+   {
+    "title": "Software Developer",
+    "url": "https://www.courtsmart.com/employment/software-developer/"
+   },
+   {
+    "title": "Sales Executive",
+    "url": "https://www.courtsmart.com/employment/sales-executive/"
+   }
+  ],
+  "saw": {
+   "heading": "Current Employment Opportunities:",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "plain GET, served HTML",
+   "url_read": "https://www.courtsmart.com/employment/",
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "three rows under the page's own heading 'Current Employment Opportunities:', each with its own /employment/<slug>/ page. no locations given on the index; not invented."
  },
  "read:crediblemind": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -138,6 +542,27 @@
   "status": "pending",
   "why": "rendered, and states 'There are no open positions available. Please check again soon!'"
  },
+ "read:cyberlock-inc": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://cyberlock.com/contact-us/careers/",
+  "id": "cyberlock-inc",
+  "kind": "read",
+  "name": "CyberLock, Inc.",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://cyberlock.com/contact-us/careers/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the careers page is an application form - name, technical qualifications, upload - with no list of what is open."
+ },
  "read:dacratech": {
   "at": "2026-08-24T00:33:43-04:00",
   "by": "claude-opus-5 (read-agent measurement, n=25)",
@@ -158,6 +583,120 @@
   "sector": null,
   "status": "pending",
   "why": "no list at all - the careers page is an open-application FORM with a free-text Position field."
+ },
+ "read:debtbook": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.debtbook.com/current-openings",
+  "id": "debtbook",
+  "kind": "read",
+  "name": "DebtBook",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Charlotte, NC",
+    "title": "Senior Customer Success Manager - Treasury Accounts"
+   },
+   {
+    "location": "Charlotte, NC",
+    "title": "Senior Debt Specialist"
+   },
+   {
+    "location": "Charlotte, NC",
+    "title": "Senior Software Engineer"
+   },
+   {
+    "location": "Charlotte, NC",
+    "title": "Software Engineer"
+   },
+   {
+    "location": "Charlotte, NC",
+    "title": "Software Engineering Manager"
+   },
+   {
+    "location": "Charlotte, NC",
+    "title": "Senior Field Marketing Manager"
+   },
+   {
+    "location": "Charlotte, NC",
+    "title": "Associate Product Manager"
+   },
+   {
+    "location": "Charlotte, NC",
+    "title": "Senior Product Manager"
+   },
+   {
+    "location": "Charlotte, NC",
+    "title": "Enterprise Account Manager"
+   },
+   {
+    "location": "Charlotte, NC",
+    "title": "Mid-Market Account Manager"
+   },
+   {
+    "location": "Charlotte, NC",
+    "title": "Enterprise Account Executive"
+   },
+   {
+    "location": "Charlotte, NC",
+    "title": "Mid-Market Account Executive"
+   },
+   {
+    "location": "Charlotte, NC",
+    "title": "Sales Development Representative"
+   },
+   {
+    "location": "Charlotte, NC",
+    "title": "Customer Support Associate"
+   }
+  ],
+  "saw": {
+   "ats_discovered": "greenhouse / debtbook",
+   "board_says": "14 jobs",
+   "frame": "boards.greenhouse.io/embed/job_board",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "not_filed": "'Create a Job Alert', 'Featured Jobs', department headings",
+   "read_by": "browser, child frame",
+   "rows_read": 14,
+   "url_read": "https://www.debtbook.com/current-openings",
+   "verified": "each row checked by hand against the saved frame text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the cheap fetch saw an empty 'Current Openings' section. the board is a Greenhouse job_board in a CHILD FRAME - reading only the top document returns nothing from a page that is full of jobs. the frame states '14 jobs' and fourteen rows were read, which agrees. 'Software Engineering Manager' also appears in a Featured Jobs strip above the list and is counted once. THE FINDING WORTH MORE: greenhouse / debtbook is enumerable and refresh.py could keep it current."
+ },
+ "read:dimonoff": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.dimonoff.com/careers",
+  "id": "dimonoff",
+  "kind": "read",
+  "name": "Dimonoff",
+  "none_found": false,
+  "postings": [
+   {
+    "title": "Concepteur(trice) \u00e9lectronique",
+    "url": "https://jobs.smartrecruiters.com/Dimonoff/744000134325589-concepteur-trice-electronique-"
+   },
+   {
+    "title": "Concepteur(trice) logiciel Full Stack senior - Lead Technique",
+    "url": "https://jobs.smartrecruiters.com/Dimonoff/744000134321970-concepteur-trice-logiciel-full-stack-senior-lead-technique"
+   }
+  ],
+  "saw": {
+   "ats_discovered": "smartrecruiters / Dimonoff",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "plain GET, served HTML",
+   "url_read": "https://www.dimonoff.com/careers",
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "two rows under 'Open Positions', both linking straight out to SmartRecruiters. titles are in French as published and are left in French rather than translated. THE FINDING WORTH MORE: the links hand over the ATS slug - SmartRecruiters / Dimonoff - which is enumerable and permanent, and belongs to the board agent."
  },
  "read:dominion-voting-systems": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -189,6 +728,94 @@
   "status": "pending",
   "why": "the careers link on file is a Paylocity board and it renders. note the board is titled 'Liberty Vote USA Inc' - a rename or a related entity, worth a look before this is published."
  },
+ "read:eab": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://eab.com/careers/",
+  "id": "eab",
+  "kind": "read",
+  "name": "EAB",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "solutions-menu entries",
+   "url_read": "https://eab.com/careers/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "an 'Open Positions' heading over a paragraph that says to 'explore opportunities and apply today', and no list. everything else role-shaped is a solutions-menu entry (Student Success and Retention, Graduate Marketing and Enrollment)."
+ },
+ "read:eagle-eye-networks": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://een.com/careers",
+  "id": "eagle-eye-networks",
+  "kind": "read",
+  "name": "Eagle Eye Networks",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "ats_lead": "app.pinpointhq.com",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame + 2 child frames",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://een.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the served HTML holds 17 lines. rendered it reaches 35, still with no list; the Pinpoint board it uses served only image assets. nothing was read."
+ },
+ "read:edovo": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.edovo.org/about/careers",
+  "id": "edovo",
+  "kind": "read",
+  "name": "Edovo",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame + 3 child frames",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.edovo.org/about/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "an 'Open roles' heading followed by culture cards - 'Mission-Driven', 'Based: Remote', 'Heart First' - and no rows. three child frames, all under ten lines."
+ },
+ "read:eptura": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://eptura.com/careers",
+  "id": "eptura",
+  "kind": "read",
+  "name": "Eptura",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "ats_lead": "a pinpointhq host appears in the page source",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "'CAROL HOWARD - CHIEF HUMAN RESOURCES OFFICER'",
+   "url_read": "https://eptura.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "two 'Open positions' headings in the served HTML, both empty. rendered, the main frame collapses to 26 lines and the only role-shaped string is 'CAROL HOWARD - CHIEF HUMAN RESOURCES OFFICER', a leadership byline. a Pinpoint host appears in the source."
+ },
  "read:fieldware": {
   "at": "2026-08-24T00:33:43-04:00",
   "by": "claude-opus-5 (read-agent measurement, n=25)",
@@ -209,6 +836,129 @@
   "sector": null,
   "status": "pending",
   "why": "no list at all - applicants download a PDF application form and email it to careers@fieldware.com."
+ },
+ "read:fiix": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://fiixsoftware.com/careers",
+  "id": "fiix",
+  "kind": "read",
+  "name": "Fiix (Rockwell Automation)",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "ats_lead": "a workday host appears in the page source",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame + 3 child frames",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://fiixsoftware.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "benefits and culture copy for a Rockwell Automation brand; no openings section and no list. a Workday host appears in the source."
+ },
+ "read:focus-school-software": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://focusschoolsoftware.com/careers",
+  "id": "focus-school-software",
+  "kind": "read",
+  "name": "Focus School Software",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "page_states": "No current openings-check back soon for new opportunities. (x3)",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://focusschoolsoftware.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the page has a 'Current Positions' section and prints 'No current openings-check back soon for new opportunities.' three times, once per department tab. THAT SENTENCE IS THE PAGE'S CLAIM, carried here as the page's words - it is recorded as read produced nothing, not as not hiring."
+ },
+ "read:fotokite": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://fotokite.bamboohr.com/careers",
+  "id": "fotokite",
+  "kind": "read",
+  "name": "Fotokite",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Boulder, Colorado",
+    "title": "UAS Support Technician"
+   }
+  ],
+  "saw": {
+   "ats_discovered": "bamboohr / fotokite",
+   "cheap_fetch": "8 characters of text - JS-only",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "rows_on_page": 1,
+   "url_read": "https://fotokite.bamboohr.com/careers",
+   "verified": "checked by hand against the saved frame text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the served HTML is 8 characters - the page is entirely JS. rendered, it is a BambooHR careers board with one row under 'Current Openings'. THE FINDING WORTH MORE: fotokite.bamboohr.com is an enumerable ATS, already the URL on file, so this company should stop needing a read at all."
+ },
+ "read:greehill": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.greehill.com/careers/",
+  "id": "greehill",
+  "kind": "read",
+  "name": "greehill",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Engineering (Software Development) - Budapest",
+    "title": "Senior System Architect"
+   },
+   {
+    "location": "Technology (Software Development) - Budapest",
+    "title": "Senior Machine Learning Engineer"
+   },
+   {
+    "location": "Engineering (Software Development) - Budapest",
+    "title": "Senior Fullstack Engineer"
+   },
+   {
+    "location": "Production (GIS) - Budapest",
+    "title": "GIS Operator"
+   },
+   {
+    "location": "Field Crew (Business Operation) - Budapest",
+    "title": "Fixed-term Navigator (TLS, MLS) Europe"
+   },
+   {
+    "location": "Field Crew (Business Operation) - Budapest",
+    "title": "Field Scanning Driver Trainee (Fixed-term)"
+   }
+  ],
+  "saw": {
+   "ats_discovered": "teamtailor (api.teamtailor.com/v1/jobs)",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "more_behind": "a 'Show More' button, not clicked",
+   "read_by": "browser, main frame",
+   "rejected": "nine 'Teams' department blurbs",
+   "rows_visible": 6,
+   "url_read": "https://www.greehill.com/careers/",
+   "verified": "each row checked by hand"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "six rows drawn late by a Teamtailor widget. THE COUNT IS A FLOOR, NOT A TOTAL: the list ends in a 'Show More' button that was not clicked, so there may be more. the nine 'Teams' blocks above (Machine Learning, App Development, Backend, QC, ...) are department blurbs and are not carried."
  },
  "read:greenspace-health": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -238,6 +988,28 @@
   "status": "pending",
   "why": "one req in a card whose second line carries department, city and work mode; the apply link goes off to wellfound."
  },
+ "read:heil-environmental": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.heil.com/careers",
+  "id": "heil-environmental",
+  "kind": "read",
+  "name": "Heil Environmental",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "ats_lead": "a workday host appears in the page source",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame + 1 child frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.heil.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "three 'Join Our Team' headings and no list, in the fetch and in the browser. a Workday host appears in the source."
+ },
  "read:hhaexchange": {
   "at": "2026-08-24T00:33:43-04:00",
   "by": "claude-opus-5 (read-agent measurement, n=25)",
@@ -261,6 +1033,163 @@
   "status": "pending",
   "why": "the page on file is a culture page; its 'View Open Positions' button goes to /careers/career-opportunities, which is where the list must be. we do not follow it. NOTE: five strings on this page look exactly like reqs and are employee TESTIMONIAL bylines - 'Kylie Hughes / DIRECTOR COMMERCIAL IMPLEMENTATION'."
  },
+ "read:hiboop": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://hiboop.com/careers/open-positions",
+  "id": "hiboop",
+  "kind": "read",
+  "name": "HiBoop",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://hiboop.com/careers/open-positions"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the URL on file ends /careers/open-positions and renders 31 lines of product navigation with no positions on it."
+ },
+ "read:hitachi-energy": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.hitachienergy.com/careers/",
+  "id": "hitachi-energy",
+  "kind": "read",
+  "name": "Hitachi Energy",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "ats_lead": "a workday host appears in the page source",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.hitachienergy.com/careers/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "a global corporate careers hub. rendered to 91 lines of solutions navigation with no list; the only role-shaped strings are menu entries. a Workday host appears in the source."
+ },
+ "read:justice-systems-by-long": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://longbuildingtechcareers.ttcportals.com",
+  "id": "justice-systems-by-long",
+  "kind": "read",
+  "name": "Justice Systems by LONG",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "attributable_to_company_on_file": 0,
+   "board_belongs_to": "LONG Building Technologies, Inc. (ttcportals + jobvite)",
+   "board_says": "Showing 1-25 of 80 results, page 1 of 4 - not paginated",
+   "http_status_cheap": 403,
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "sample_rows": [
+    "Apprentice HVAC Controls Technician - Silverdale, WA",
+    "Sales Engineer - Data Center Mechanical Systems - Littleton, CO",
+    "Account Executive - HVAC Service and Projects - Portland, OR",
+    "Fire Alarm - Technician I - Billings, MT",
+    "Junior Project Manager - Littleton, CO"
+   ],
+   "url_read": "https://longbuildingtechcareers.ttcportals.com"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "THE READ SUCCEEDED AND STILL YIELDS NOTHING FOR THIS COMPANY, which is a different answer from an empty page. the cheap fetch was refused with 403; rendered, the page is LONG Building Technologies' whole-company board - 'Showing 1-25 of 80 results', pages 1 of 4. every visible row is HVAC, building-automation, fire-alarm or security work (Apprentice HVAC Controls Technician, BAS Service Technician III, Account Executive - HVAC Service and Projects). NOT ONE names Justice Systems, courts or detention. this is the group-careers trap, and filing 80 HVAC reqs under a justice-software company would put a false number on the board. the rows are kept in saw so nothing is lost."
+ },
+ "read:labrie-group": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.labriegroup.com/careers",
+  "id": "labrie-group",
+  "kind": "read",
+  "name": "Labrie Group",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Plant - Lafayette, Georgia, US",
+    "title": "Manufacturing Engineer \u2013 Continuous Improvement",
+    "url": "https://labriegroup.com/careers/manufacturing-engineer-continuous-improvement"
+   },
+   {
+    "location": "Shop, Barrie - Ontario",
+    "title": "310T Technician (Heavy Truck Mechanic) \u2013 Labrie Group Solutions",
+    "url": "https://labriegroup.com/careers/service-technician-labrie-group-solutions"
+   },
+   {
+    "location": "Office - Barrie, On",
+    "title": "Accounting Technician \u2013 Labrie Group Solutions",
+    "url": "https://labriegroup.com/careers/accounting-technician-labrie-group-solutions"
+   },
+   {
+    "location": "Shop - Lafayette, Georgia, US",
+    "title": "Welder",
+    "url": "https://labriegroup.com/careers/welder"
+   },
+   {
+    "location": "Shop - Lafayette, Georgia, US",
+    "title": "Warehouse Order Picker for Work Orders",
+    "url": "https://labriegroup.com/careers/warehouse-order-picker-for-work-orders"
+   },
+   {
+    "location": "Shop - Lafayette, Georgia, US",
+    "title": "Assembler",
+    "url": "https://labriegroup.com/careers/assembler"
+   },
+   {
+    "location": "Shop - Lafayette, Georgia, US",
+    "title": "Paint Prep",
+    "url": "https://labriegroup.com/careers/paint-prep"
+   }
+  ],
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "plain GET, served HTML",
+   "rows_on_page": 7,
+   "unclicked_filters": "Workplace: Lafayette, Ontario, St-Romuald, Levis, St-Ubalde, San Luis",
+   "url_read": "https://www.labriegroup.com/careers",
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "seven rows in the served HTML under 'Job Offers', each with a location and its own URL, mapped to titles in document order. two are badged 'Labrie Group Solutions', the service arm - carried as written. the Workplace filter also lists St-Romuald, Levis, St-Ubalde and San Luis, which suggests more behind a filter; the filter was NOT clicked, so seven is what the page showed."
+ },
+ "read:leadsonline": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://leadsonline.com/careers.html",
+  "id": "leadsonline",
+  "kind": "read",
+  "name": "LeadsOnline",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "ldjson_present_but_not_a_req": "title 'Multiple Positions | See Open Roles'",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "four testimonial bylines",
+   "url_read": "https://leadsonline.com/careers.html"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "a trap worth recording. the page carries an ld+json JobPosting - the one machine-readable posting in all 60 pages - and it is NOT A JOB: its title is 'Multiple Positions | See Open Roles' and its description is recruitment marketing. an extractor that trusted ld+json would file that as a req. the four role-shaped strings on the page are all employee testimonials (John Alexander / Senior Software Engineer, Nicole Blood / Account Executive, and two more). no list."
+ },
  "read:leagueapps": {
   "at": "2026-08-24T00:33:43-04:00",
   "by": "claude-opus-5 (read-agent measurement, n=25)",
@@ -282,6 +1211,71 @@
   "sector": null,
   "status": "pending",
   "why": "the careers url on file returns HTTP 404. this is a stale link, not a company without jobs."
+ },
+ "read:lucy-zodion": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://hdga.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Lucyzodion",
+  "id": "lucy-zodion",
+  "kind": "read",
+  "name": "Lucy Zodion",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "ats_lead": "hdga.fa.em3.oraclecloud.com CandidateExperience site CX_16",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "page_states": "ALL JOBS (1) / EXECUTIVE MANAGEMENT (1) - a count with no title rendered",
+   "read_by": "browser, main frame + 1 child frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://hdga.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Lucyzodion"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the closest thing to a near miss in the sample. the Oracle candidate site rendered and states 'ALL JOBS (1)' and 'EXECUTIVE MANAGEMENT (1)' - so there is one req and the page will tell you its category and not its title. NO TITLE WAS DRAWN, so none is proposed. a count is not a posting."
+ },
+ "read:lvt": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.lvt.com/careers",
+  "id": "lvt",
+  "kind": "read",
+  "name": "LVT",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.lvt.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "culture, benefits and stock-programme copy; the role-shaped strings are section labels ('Executive', 'Marketing & Sales', 'SALES') and mailto addresses. no openings section."
+ },
+ "read:lyssn": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.lyssn.io/about-us/careers/",
+  "id": "lyssn",
+  "kind": "read",
+  "name": "Lyssn",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.lyssn.io/about-us/careers/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the served HTML has a heading 'Current opportunities at Lyssn' with nothing under it; rendered, the main frame shrinks to 34 lines and still has no list."
  },
  "read:miller-mendel": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -326,6 +1320,80 @@
   "sector": null,
   "status": "pending",
   "why": "no list on the page; every 'Open Positions' button goes to ADP WorkForceNow. the 'Internship Opportunities' heading is a programme blurb, not a req."
+ },
+ "read:moodle-us": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://moodle.com/us/careers/",
+  "id": "moodle-us",
+  "kind": "read",
+  "name": "Moodle US",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "ats_lead": "workable account 280497",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://moodle.com/us/careers/",
+   "widget": "apply.workable.com/api/v1/widget/accounts/280497 - drew nothing"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "a Workable widget loads (account 280497) and draws no rows. 81 lines rendered, none of them a posting."
+ },
+ "read:municibid": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://municibid.com/careers",
+  "id": "municibid",
+  "kind": "read",
+  "name": "Municibid",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Remote",
+    "title": "Sales Development Representative",
+    "url": "https://info.municibid.com/careers"
+   }
+  ],
+  "saw": {
+   "employment_type": "Full Time",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "plain GET, served HTML",
+   "rejected": "'Director of Customer Success' - a staff anniversary note, not a req",
+   "url_read": "https://municibid.com/careers",
+   "verified": "checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "one row under 'Municibid Careers', tagged Full Time / Remote with a paragraph of body copy. the only other role-shaped string on the page is 'Jackie Blaskovich, Director of Customer Success', an anniversary note about a current employee, and it is not carried."
+ },
+ "read:myrec-com": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.myrec.com/careers/",
+  "id": "myrec-com",
+  "kind": "read",
+  "name": "MyRec.com",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "page_states": "Check Back Soon",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.myrec.com/careers/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the page prints 'Check Back Soon' and nothing else job-shaped. carried as the page's words."
  },
  "read:nallian": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -540,6 +1608,144 @@
   "status": "pending",
   "why": "the careers url on file is motorolasolutions.com - the parent that acquired Noggin. the only req-shaped strings on it are Motorola's global internship programs."
  },
+ "read:norix-group": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://norix.com/about-us/careers/",
+  "id": "norix-group",
+  "kind": "read",
+  "name": "Norix Group",
+  "none_found": false,
+  "postings": [
+   {
+    "title": "Product Manager"
+   }
+  ],
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "rows_on_page": 1,
+   "url_read": "https://norix.com/about-us/careers/",
+   "verified": "checked by hand against the saved frame text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "one posting under 'Job Opportunities', with a real description - reports to the Director of Marketing, owns product development idea-to-launch - and a 'Click here for more information' link. no location is printed on the page and none is invented. the EEO and E-Verify blocks around it are boilerplate, not reqs."
+ },
+ "read:nutanix": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://careers.nutanix.com/en/",
+  "id": "nutanix",
+  "kind": "read",
+  "name": "Nutanix",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Bangalore, India",
+    "title": "Member of Technical Staff 4/3 (C++ + Linux + Sustenance+Development )4-10yrs"
+   },
+   {
+    "location": "Bangalore, India",
+    "title": "Engineering Manager / Lead [10-14 yrs experience]"
+   },
+   {
+    "location": "San Jose, United States",
+    "title": "Senior Staff Engineer - Nutanix Kubernetes Platform (NKP)"
+   },
+   {
+    "location": "San Jose, United States",
+    "title": "Software Engineer (Linux, Virtualization, Hypervisor)"
+   },
+   {
+    "location": "San Jose, United States",
+    "title": "Senior Member of Technical Staff - Kernel Development"
+   }
+  ],
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "page_control": "'Search all jobs' - the full board is elsewhere and was not followed",
+   "read_by": "browser, main frame",
+   "rejected": "six department cards (Sales, Customer Support, Product Management, Marketing, UX, Customer Success & Innovation) and their blurbs",
+   "req_ids_on_page": "32411, 32409, 32399, 32395, 32394",
+   "rows_visible": 5,
+   "url_read": "https://careers.nutanix.com/en/",
+   "verified": "each row checked by hand against the saved frame text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "five rows with visible requisition numbers (32411, 32409, 32399, 32395, 32394) rendered late on the careers home. THIS IS A SAMPLE STRIP, NOT THE BOARD: the page's own control is 'Search all jobs', so the real total is much larger and unknown from this read. accepting these as Nutanix's open roles would understate the company badly - the honest use of this row set is as proof the page reads, not as a count."
+ },
+ "read:nutri-link-technologies": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://nutrilinktechnologies.com/careers/",
+  "id": "nutri-link-technologies",
+  "kind": "read",
+  "name": "Nutri-Link Technologies",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://nutrilinktechnologies.com/careers/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "39 lines rendered, solutions navigation only, no openings section."
+ },
+ "read:omnigo-software": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.omnigo.com/careers",
+  "id": "omnigo-software",
+  "kind": "read",
+  "name": "Omnigo Software",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "ats_lead": "an ADP workforcenow host appears in the page source",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "'Omnigo Senior Sales Engineer' (testimonial byline)",
+   "url_read": "https://www.omnigo.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "two 'Open Positions' headings with nothing under either. the one role-shaped string is a testimonial byline - 'Brine Hamilton / Omnigo Senior Sales Engineer'. an ADP recruitment host appears in the source."
+ },
+ "read:omnilert": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://omnilert.com/about/careers",
+  "id": "omnilert",
+  "kind": "read",
+  "name": "Omnilert",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "page_states": "Check back soon to see our available positions.",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://omnilert.com/about/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the page prints 'Check back soon to see our available positions.' carried as the page's words."
+ },
  "read:omnitracs": {
   "at": "2026-08-24T00:33:43-04:00",
   "by": "claude-opus-5 (read-agent measurement, n=25)",
@@ -562,6 +1768,144 @@
   "status": "pending",
   "why": "the careers url on file is solera.com - the parent. its 'See Open Positions' goes to solera.wd5.myworkdayjobs.com. same parent-board hazard."
  },
+ "read:onsolve": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.onsolve.com/careers",
+  "id": "onsolve",
+  "kind": "read",
+  "name": "OnSolve (CodeRED)",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "a rotating leadership carousel, two different rotations seen",
+   "url_read": "https://www.onsolve.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "every role-shaped string belongs to a leadership carousel, and the carousel proves it: the cheap fetch caught 'Vincent Feys / Vice President, Crisis & Security Consulting' and 'Brian Moser / Intelligence Analyst II', and the render caught a different rotation - 'JADE SMITH / Intelligence Analyst, Health', 'Director, Global Intelligence', 'President'. the names move; there is no list."
+ },
+ "read:orlo": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://orlo.tech/careers/",
+  "id": "orlo",
+  "kind": "read",
+  "name": "Orlo",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Marketing Team",
+    "title": "Digital Marketing Undergraduate Work Experience"
+   }
+  ],
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "rejected": "'Interested in Sales?' - a demo call-to-action",
+   "rows_on_page": 1,
+   "url_read": "https://orlo.tech/careers/",
+   "verified": "checked by hand against the saved frame text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "one row under the page's own heading 'Current Vacancies', filed under 'Marketing Team', with a 'Learn more' link. it is an undergraduate work-experience placement rather than a permanent role - carried as written so a person can decide whether it belongs on the board. 'Interested in Sales?' further down is a demo CTA, not a req, and is not carried."
+ },
+ "read:pairin": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.pairin.com/about/careers/",
+  "id": "pairin",
+  "kind": "read",
+  "name": "PAIRIN",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "page_states": "Check back soon to apply to join our team!",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.pairin.com/about/careers/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the page prints 'Check back soon to apply to join our team!' carried as the page's words."
+ },
+ "read:park-assist": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://tkhsecurity.com/us/careers/",
+  "id": "park-assist",
+  "kind": "read",
+  "name": "Park Assist",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame + 1 child frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://tkhsecurity.com/us/careers/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the URL on file is tkhsecurity.com/us/careers/ - the parent group's page. 53 lines rendered, product news and a project enquiry form, no list."
+ },
+ "read:penlink": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://penlink.com/careers",
+  "id": "penlink",
+  "kind": "read",
+  "name": "Penlink",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://penlink.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "two 'Open Positions' headings in the served HTML, both empty, and the render adds no rows."
+ },
+ "read:planet-labs": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.planet.com/company/careers/",
+  "id": "planet-labs",
+  "kind": "read",
+  "name": "Planet Labs",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "ats_discovered": "greenhouse / planetlabs",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "network": "api.greenhouse.io/v1/boards/planetlabs/departments and /offices",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "office and region filter chips",
+   "url_read": "https://www.planet.com/company/careers/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the closest a widget came to working without working. the page calls Greenhouse and gets back DEPARTMENTS AND OFFICES ONLY - the rendered text is a set of office and region chips (All Offices, Berlin Office, APAC Remote, ...) with no job rows under them, because the list draws after you pick one and nothing was clicked. greenhouse / planetlabs is the board agent's finding."
+ },
  "read:pulsara": {
   "at": "2026-08-24T00:33:43-04:00",
   "by": "claude-opus-5 (read-agent measurement, n=25)",
@@ -583,6 +1927,28 @@
   "sector": null,
   "status": "pending",
   "why": "no list on the page; 'See Open Positions' is a HubSpot CTA redirect. we do not follow it."
+ },
+ "read:rain-bird": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.rainbird.com/corporate/careers-home",
+  "id": "rain-bird",
+  "kind": "read",
+  "name": "Rain Bird",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame + 3 child frames",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "department landing links, a YouTube playlist, a Facebook feed",
+   "url_read": "https://www.rainbird.com/corporate/careers-home"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the corporate careers-home page. four frames rendered and three are a YouTube playlist and a Facebook feed; the main frame is navigation. the role-shaped strings are department landing links ('Sales - All', 'Customer Relations/Training - All'), not reqs."
  },
  "read:recycle-coach": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -610,6 +1976,65 @@
   "status": "pending",
   "why": "one req under an 'Open opportunities' heading, with its location on the line after the title."
  },
+ "read:regrid": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://regrid.com/careers",
+  "id": "regrid",
+  "kind": "read",
+  "name": "Regrid",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://regrid.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "59 lines rendered, support and marketing navigation, no openings section."
+ },
+ "read:renvizon-qed": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://renvizon.com/careers",
+  "id": "renvizon-qed",
+  "kind": "read",
+  "name": "Renvizon/ QED",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Brooklyn, NY, US",
+    "title": "Deputy Principal Construction manager"
+   },
+   {
+    "location": "Brooklyn, NY, US",
+    "title": "Senior Programme Manager"
+   },
+   {
+    "location": "Brooklyn, NY, US",
+    "title": "Senior Industrial Planner"
+   }
+  ],
+  "saw": {
+   "department_on_every_row": "Project Management",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "posted_date_on_every_row": "September 19th, 2016",
+   "read_by": "plain GET, served HTML",
+   "rows_on_page": 4,
+   "unique_titles": 3,
+   "url_read": "https://renvizon.com/careers",
+   "verified": "checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "a real table with its own headers - JOB POSTING TITLE / LOCATION / DEPARTMENT / DATE - so these are postings, not chrome. BUT EVERY ROW IS DATED September 19th, 2016. the date is carried and not judged, and nobody should treat these as live without checking. the page also repeats 'Deputy Principal Construction Manager' in a second casing; that fourth row is dropped as the page repeating itself."
+ },
  "read:rezcomm": {
   "at": "2026-08-24T00:33:43-04:00",
   "by": "claude-opus-5 (read-agent measurement, n=25)",
@@ -632,6 +2057,93 @@
   "status": "pending",
   "why": "no list on the page. it says 'Follow us on Indeed to be the first to know about new roles' - the hiring happens off-site."
  },
+ "read:s-c-electric": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.sandc.com/careers",
+  "id": "s-c-electric",
+  "kind": "read",
+  "name": "S&C Electric",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "ats_lead": "an oraclecloud host appears in the page source",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame + 4 child frames",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.sandc.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "75 lines rendered plus four identical five-line child frames; no list. an Oracle Cloud host appears in the source and is a lead for the board agent."
+ },
+ "read:safety-vision": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.safetyvision.com/careers",
+  "id": "safety-vision",
+  "kind": "read",
+  "name": "Safety Vision",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "page_title": "Job Openings | Safety Vision",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://www.safetyvision.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the page's own title is 'Job Openings | Safety Vision' and the body is a cookie banner and navigation. the title says a list should be there; nothing drew. that is a widget failure, not an absence of jobs."
+ },
+ "read:shadowdragon": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://shadowdragon.io/careers/",
+  "id": "shadowdragon",
+  "kind": "read",
+  "name": "ShadowDragon",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://shadowdragon.io/careers/"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "a 'Current opportunities' heading in the served HTML with nothing under it; the render drops to 52 lines of values copy and still no list."
+ },
+ "read:southern-folger-detention-equipment": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.southernfolger.com/Careers",
+  "id": "southern-folger-detention-equipment",
+  "kind": "read",
+  "name": "Southern Folger Detention Equipment",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "a department dropdown: Sales / Operations / Accounting / Construction",
+   "url_read": "https://www.southernfolger.com/Careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the careers page is an application form addressed to 'Attn: Latatsha White, HR Manager' with a department dropdown - Sales, Operations, Accounting, Construction. those are dropdown options, not openings, and no list of reqs exists on the page."
+ },
  "read:subitup": {
   "at": "2026-08-24T00:33:43-04:00",
   "by": "claude-opus-5 (read-agent measurement, n=25)",
@@ -652,6 +2164,99 @@
   "sector": null,
   "status": "pending",
   "why": "the page rendered an Open Positions section and states 'There are no open positions right now'. that is the page saying so, which is not the same as the company not hiring."
+ },
+ "read:surepassid": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://surepassid.com/careers",
+  "id": "surepassid",
+  "kind": "read",
+  "name": "SurePassID",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "http_status": 404,
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "plain GET then browser",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "url_read": "https://surepassid.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the careers URL on file returns 404; the render lands on marketing and blog content instead. a broken link, not an answer about hiring."
+ },
+ "read:tagmaster": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://tagmasterna.com/careers",
+  "id": "tagmaster",
+  "kind": "read",
+  "name": "TagMaster",
+  "none_found": false,
+  "postings": [
+   {
+    "title": "Support Engineer",
+    "url": "https://tagmasterna.com/about-tagmaster-north-america/careers/support-engineer/"
+   },
+   {
+    "title": "Technical Support Specialist",
+    "url": "https://tagmasterna.com/about-tagmaster-north-america/careers/technical-support-specialist/"
+   },
+   {
+    "title": "Sales Coordinator",
+    "url": "https://tagmasterna.com/about-tagmaster-north-america/careers/sales-coordinator/"
+   },
+   {
+    "title": "Sales Representative \u2013 Eastern Region",
+    "url": "https://tagmasterna.com/about-tagmaster-north-america/careers/sales-representative-us-central-region/"
+   },
+   {
+    "title": "Sales Representative \u2013 Western Region",
+    "url": "https://tagmasterna.com/about-tagmaster-north-america/careers/sales-representative-us-western-region/"
+   },
+   {
+    "title": "Software Developer",
+    "url": "https://tagmasterna.com/about-tagmaster-north-america/careers/software-developer/"
+   }
+  ],
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "plain GET, served HTML",
+   "rejected_chips": "All / Support / Sales / Developer / Marketing",
+   "rows_on_page": 6,
+   "title_slug_mismatch": "'Eastern Region' row -> .../sales-representative-us-central-region/",
+   "url_read": "https://tagmasterna.com/careers",
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "six rows under \"We're Hiring\", each with its own careers/<slug>/ page; titles and hrefs mapped in document order. the chips above the list - All / Support / Sales / Developer / Marketing - are filters and are not carried. one mismatch worth a person's eye: the row displayed as 'Sales Representative - Eastern Region' has the slug sales-representative-us-central-region, so either the title or the slug is stale."
+ },
+ "read:tenex-software-solutions": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.tenexsolutions.com/tenex-careers.html",
+  "id": "tenex-software-solutions",
+  "kind": "read",
+  "name": "Tenex Software Solutions",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "department blurbs",
+   "url_read": "https://www.tenexsolutions.com/tenex-careers.html"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the page describes departments - 'Technical Writers', 'Support Staff', 'Sales & Marketing' - each with a sentence about what that team does. those are team blurbs, not reqs, and there is no list."
  },
  "read:the-library-corporation": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -675,6 +2280,112 @@
   "status": "pending",
   "why": "rendered a job search with filter chips (Remote / Freelance / Full Time / Internship / Part Time / Temporary) and the result 'There are no listings matching your search.' the FILTER CHIPS look like job titles - a second shape of the navigation trap."
  },
+ "read:tip411": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://home.tip411.com/tip411jobs",
+  "id": "tip411",
+  "kind": "read",
+  "name": "tip411",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "St Paul, MN",
+    "title": "Account Executive \u2013 SaaS Sales",
+    "url": "https://home.tip411.com/tip411jobs"
+   }
+  ],
+  "saw": {
+   "apply_by": "email to jobs@tip411.com",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "plain GET, served HTML",
+   "url_read": "https://home.tip411.com/tip411jobs",
+   "verified": "checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "one row under 'Current job openings. Email us at jobs@tip411.com to apply.', followed by a full responsibilities block. sold as CitizenObserver/tip411 to local, state and county law enforcement - an AE req squarely in this board's scope. no separate posting URL exists; the careers page itself is the posting."
+ },
+ "read:tripspark-technologies": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.tripspark.com/careers",
+  "id": "tripspark-technologies",
+  "kind": "read",
+  "name": "TripSpark Technologies",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "roughly a dozen testimonial bylines",
+   "url_read": "https://www.tripspark.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "a careers page built entirely out of employee testimonials, each with a byline that has the exact shape of a job title - 'Brendan Samis / Sales Manager, Business Development', 'Manager, Customer Care', 'Marketing Communications Manager', and more. rendered, the main frame reduces to eight department labels. no list."
+ },
+ "read:tybera-development-group": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.tybera.com/careers/",
+  "id": "tybera-development-group",
+  "kind": "read",
+  "name": "Tybera Development Group",
+  "none_found": false,
+  "postings": [
+   {
+    "location": "Orem, Utah",
+    "title": "Software Engineer"
+   },
+   {
+    "location": "Orem, Utah",
+    "title": "Part-time Technical Support Specialist"
+   }
+  ],
+  "saw": {
+   "apply_by": "email to rrollins@tybera.com",
+   "caution": "PERM notice-of-filing form - a person must decide if it is a live opening",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "page_states": "Starting wage: $75, 691 (on the Software Engineer entry, as printed)",
+   "read_by": "plain GET, served HTML",
+   "url_read": "https://www.tybera.com/careers/",
+   "verified": "each row checked by hand against the saved page text"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "two rows, both with full DUTIES/REQUIREMENTS blocks. READ THE FIRST ONE CAREFULLY BEFORE ACCEPTING: it is written in the shape of a DOL PERM notice of filing - fixed 'Starting wage: $75,691', 40 hours/week, foreign-equivalent-degree language - and the page carries the heading 'Notice of Filing of Application Under the U.S. Department of Labor's Permanent Labor Certification Program'. that is a compliance posting and may not be an open req. the wage is carried here as the page's own words and is NOT proposed as a salary field."
+ },
+ "read:urbint": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.urbint.com/careers",
+  "id": "urbint",
+  "kind": "read",
+  "name": "Urbint",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "note": "urbint.com/careers lands on Itron content",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "'Lewis T. / Information Security Associate' (employee story byline)",
+   "url_read": "https://www.urbint.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the URL on file redirects onto Itron's careers site. the one role-shaped string is 'Lewis T. / Information Security Associate / READ HIS STORY' - an employee story byline on the parent's page. no list drew, and nothing there would be attributable to Urbint if one had."
+ },
  "read:watersmart-software": {
   "at": "2026-08-24T00:33:43-04:00",
   "by": "claude-opus-5 (read-agent measurement, n=25)",
@@ -697,5 +2408,28 @@
   "sector": null,
   "status": "pending",
   "why": "the careers url redirects to vertexone.ai - the acquirer. its 'See Our Open Positions' goes to a Dayforce candidate portal. reading that would report VertexOne's reqs as WaterSmart's."
+ },
+ "read:way-com": {
+  "at": "2026-08-24T10:57:24-04:00",
+  "by": "claude-opus-5 (read-agent measurement, n=60)",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.way.com/careers",
+  "id": "way-com",
+  "kind": "read",
+  "name": "Way.com",
+  "none_found": true,
+  "postings": null,
+  "saw": {
+   "list_one_click_away": "each department card's 'View Jobs' control was not clicked",
+   "method": "one page load, no clicks, no scrolling, no pagination, no login",
+   "read_by": "browser, main frame",
+   "recorded_as": "read produced nothing - NOT 'not hiring'",
+   "rejected": "two rows of filter chips, four 'View Jobs' department cards, a testimonials block and a leadership team",
+   "url_read": "https://www.way.com/careers"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "both documented traps on one page and no reqs. above the fold: two rows of filter chips ('Filter by department: All, Marketing, Customer Support, Engineering, ...' and 'Filter by location: All, Trivandrum Kerala, Fremont California, Bengaluru Karnataka'). in the middle: four department cards whose only control is 'View Jobs', so the list is one click away and the click was not made. below: a Testimonials block and a leadership team, which is where every VP title on the page comes from."
  }
 }

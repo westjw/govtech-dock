@@ -633,6 +633,11 @@ def founded_provenance() -> dict:
     return store
 
 
+def _q_board_proposals(companies, board) -> list:
+    import board_proposals
+    return board_proposals.q_board_proposals(companies, board)
+
+
 def q_founded(companies, board) -> list:
     """Founding years that need a person: unconfirmed guesses first, then blanks.
 
@@ -932,6 +937,60 @@ def reversals(limit: int = 8) -> list:
         if len(out) >= limit:
             break
     return out
+
+
+def act_board_proposal(body: dict) -> dict:
+    """Accept or refuse a board that was found inside a careers page.
+
+    Accepting WRITES THE ATS, which is the whole point - these are the boards
+    that turn a company producing nothing into one producing postings. So it
+    goes through the same gate everything else does: the reference is verified
+    with a real fetch first, and the board is asked whose it is, because the
+    two failures already met in this data are an acquired company pointing at
+    its parent (Prepared at Axon's, 500 postings) and an operating entity
+    under another name (Circuit's says TFR Transit Inc).
+    """
+    import board_proposals, add_company, verify_boards
+    cid = (body.get("id") or "").strip()
+    accept = bool(body.get("accept"))
+    why = (body.get("why") or "").strip()
+    companies = read_companies()
+    c = next((x for x in companies if x["id"] == cid), None)
+    if c is None:
+        return {"error": "no such company"}
+
+    if not accept:
+        board_proposals.rule(cid, False, why, body.get("by") or "owner")
+        return {"ok": True, "message": f"noted: that board is not {c['name']}'s."}
+
+    found = next((f for f in board_proposals._read(board_proposals.FOUND, [])
+                  if f["id"] == cid), None)
+    if not found:
+        return {"error": "that proposal is no longer on file"}
+    block = found["found"]
+    ok, detail = add_company.verify(block)
+    if not ok:
+        return {"error": f"the board no longer reads: {detail}"}
+    said = verify_boards.board_says(block["type"], block["ref"])
+    who = verify_boards.judge(c, said)
+    if who["verdict"] == "MISMATCH" and not body.get("force"):
+        return {"error": f"{who['why']}. If they were acquired, record the "
+                         f"parent first - otherwise this reports somebody "
+                         f"else's requisitions as {c['name']}'s."}
+    c["ats"] = {"type": block["type"], "ref": block["ref"]}
+    if said.get("name") and said["name"].lower() != c["name"].lower():
+        c["board_owner"] = said["name"]
+    err = validate(companies)
+    if err:
+        return {"error": err}
+    bad = save_companies(companies, "board-proposal",
+                         why or f"accepted the {block['type']} board found in "
+                                f"{c['name']}'s careers page")
+    if bad:
+        return {"error": bad}
+    board_proposals.rule(cid, True, why, body.get("by") or "owner")
+    return {"ok": True, "message": f"{c['name']} now reads from "
+                                   f"{block['type']} \u2014 {detail}."}
 
 
 def act_vendor_scope_all(body: dict) -> dict:
@@ -2145,11 +2204,11 @@ def q_submissions(companies, board) -> list:
             for i in subs["items"] if i.get("status") == "pending"]
 
 
-QUEUES = {"founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
+QUEUES = {"boardfound": _q_board_proposals, "founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
           "placement": q_placement, "unclassified": q_unclassified,
           "acquisitions": q_acquisitions, "review": q_review}
 
-LABEL = {"founded": "Founding year", "miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
+LABEL = {"boardfound": "Boards we found", "founded": "Founding year", "miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
          "boards": "No board found", "blocked": "Blocked boards", "placement": "Wrong placement",
          "unclassified": "Unclassified roles", "acquisitions": "Acquisitions",
          "review": "Website review"}
@@ -2817,7 +2876,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "scope": act_scope, "scope-all": act_scope_all,
            "vendor-scope": act_vendor_scope,
            "vendor-scope-all": act_vendor_scope_all,
-           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "set-founded": act_set_founded, "identity-ruling": act_identity_ruling, "place": act_place,
+           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "board-proposal": act_board_proposal, "set-founded": act_set_founded, "identity-ruling": act_identity_ruling, "place": act_place,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "confirm-founded": act_confirm_founded,

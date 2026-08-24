@@ -210,6 +210,71 @@ def vocabulary(kind: str, ref) -> dict | None:
             "per1k": round(1000 * hits / len(blob), 2)}
 
 
+
+def redirect_tell(c: dict) -> dict | None:
+    """Does this company's own careers page hand you to somebody else?
+
+    The universal acquisition signal, and the only one that works on the 187
+    boards where the ATS states no owner. An acquired company's careers page
+    stops being theirs: Prepared's links to Axon's greenhouse board, and the
+    pattern this repo already records - Rave to Motorola, RoadBotics to
+    Michelin - looks the same from outside.
+
+    Compares the FINAL host after redirects against the company's own domain.
+    An ATS host is not a tell, because everybody's board is on somebody else's
+    domain; a DIFFERENT COMPANY'S domain is.
+    """
+    site = (c.get("website") or "").rstrip("/")
+    if not site:
+        return None
+    own = host_of(site).replace("www.", "").split(".")[0].lower()
+    for path in ("/careers", "/jobs", "/company/careers"):
+        try:
+            r = ats._get(site + path)
+        except Exception:
+            continue
+        final = host_of(getattr(r, "url", "") or "")
+        if not final:
+            continue
+        bare = final.replace("www.", "").split(".")[0].lower()
+        if bare == own or ATS_HOST.search(final):
+            return None                      # their own site, or any ATS
+        return {"from": site + path, "to": final,
+                "why": f"their careers page ends up on {final}, which is "
+                       f"neither their domain nor an ATS"}
+    return None
+
+
+ATS_HOST = re.compile(
+    r"(greenhouse|lever|ashbyhq|workable|bamboohr|myworkday|recruitee|breezy|"
+    r"smartrecruiters|applytojob|paylocity|rippling|icims|jobvite|teamtailor|"
+    r"workday|oraclecloud|taleo|successfactors|jazzhr)", re.I)
+
+
+def slug_tell(c: dict) -> dict | None:
+    """Is the board's slug somebody else's name?
+
+    Prepared's careers page names the greenhouse slug "axon". A slug that
+    shares nothing with the company's name is not proof of anything - plenty
+    are legitimately odd - but combined with the redirect it is the shape of
+    an acquisition, and on its own it is worth one look.
+    """
+    ref = (c.get("ats") or {}).get("ref")
+    if not isinstance(ref, str) or ref.startswith("http") or len(ref) < 3:
+        return None
+    ours = core(c.get("name", ""))
+    theirs = squash(ref)
+    if not ours or not theirs:
+        return None
+    if theirs in ours or ours in theirs:
+        return None
+    for a in (c.get("also_known_as") or []):
+        if theirs in core(a) or core(a) in theirs:
+            return None
+    return {"slug": ref, "why": f'the board slug is "{ref}", which shares '
+                                f'nothing with "{c.get("name")}"'}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=40)

@@ -36,12 +36,13 @@ model is trying to be helpful.
 Agents planned on this spine, all the same shape:
   bucket   - a product company filed under Suppliers & Services: where does it
              really belong                                      (built)
-  read     - 886 careers pages a person can read and no fetcher can: open one
+  read     - the careers pages a person can read and no fetcher can: open one
              and read the jobs off it                           (built)
   card     - a new company arrives from a submission or a conference list:
              research the card                                  (next)
   board    - find the ATS behind a page, so `read` never has to run on it
-             again                                              (next)
+             again  - and the n=60 trial says this one is worth
+             more than `read` is                                (next)
 """
 from __future__ import annotations
 
@@ -114,17 +115,23 @@ def brief_bucket(limit: int | None = None) -> list[dict]:
 def brief_read(limit: int | None = None) -> list[dict]:
     """One brief per careers page a person can read and a fetcher cannot.
 
-    886 companies - 42% of the map - are in this state, and it is the single
-    biggest hole on the board. They are third-party widgets in iframes,
-    session-gated boards, and pages that only draw a list after somebody
-    clicks something, which is exactly why the capture bookmarklet exists - a
-    person looking at the page sees the jobs anyway.
+    806 companies - 42% of the map - are in this state (run coverage.py for
+    the live figure; do not quote this one), and it is the single biggest hole
+    on the board. They are third-party widgets in iframes, session-gated
+    boards, and pages that only draw a list after somebody clicks something,
+    which is exactly why the capture bookmarklet exists - a person looking at
+    the page sees the jobs anyway.
 
-    MEASURED 2026-08-24, n=25 drawn at random from this worklist. The older
-    note here - and in CLAUDE.md - said rendering a sample of 25 in headless
-    Chromium recovered ZERO. That is not what happens. A render recovered
-    postings from 8 of 25. Three things separate the two results, and all
-    three are about the reader, not the browser:
+    MEASURED TWICE. n=25 on 2026-08-24 (8 yielded), then n=60 drawn at random
+    from this worklist with seed 20260824 (16 yielded, 88 rows). Pooled that
+    is 24 of 85 = 28% [95% CI 20-39%]. The numbers that decide whether to run
+    this at scale are in the n=60 block below; read it before quoting 28% at
+    anybody, because the hit rate is not the number that matters.
+
+    The older note here - and in CLAUDE.md - said rendering a sample of 25 in
+    headless Chromium recovered ZERO. That is not what happens. Three things
+    separate the two results, and all three are about the reader, not the
+    browser:
 
       - READ THE CHILD FRAMES. The finding that these are widgets in iframes
         is correct, and reading only the top document is why a render comes
@@ -136,22 +143,50 @@ def brief_read(limit: int | None = None) -> list[dict]:
         reqs on Nearmap and 34 on Nedap, both rendered in plain sight.
       - WAIT. networkidle plus a few seconds; these lists draw late.
 
-    Two traps beyond the nav chrome, both of which produce strings that have
-    the exact shape of a job title and are not reqs. NAV_CHROME below does not
-    catch either, and a reader here must:
+    THE n=60 RESULT, AND WHY THE HIT RATE IS THE WRONG NUMBER. 16 of 60
+    yielded 88 rows. But run classify.py over those 88 and only 14 are `ae`
+    and 14 `sales_other`; 60 are neither. Per company that is 5 of 60 gaining
+    an AE row [CI 4-18%] and 2 more gaining Sales (non-AE). So the honest
+    headline is not "27% of pages read" - it is THIS TOOL'S OWN STATUS CHANGES
+    ON 7 COMPANIES IN 60, and the other 9 yields are welders, GIS operators
+    and kernel engineers that this board does not rank on. Extrapolating the
+    AE-row count to 806 gives ~188 rows with a bootstrap 95% interval of
+    27-403, which is another way of saying the sample cannot size this.
 
-      - TESTIMONIAL BYLINES. "Kylie Hughes / DIRECTOR COMMERCIAL IMPLEMENTATION"
-        is a happy employee, not an opening.
-      - FILTER CHIPS. "Remote / Freelance / Full Time / Internship / Part Time"
-        above a search box that then says it found nothing.
+    THE CHEAP PATH DID MOST OF THE WORK. 9 of the 16 yields, and 57 of the 88
+    rows, came from a plain stdlib-shaped GET with no browser at all - the
+    list was in the served HTML and the earlier trials never looked. Rendering
+    the other 51 pages cost 12.9s each against 1.2s, needed Playwright, and
+    bought 7 more companies. Try the fetch first, always.
 
-    And the thing worth more than the read: 5 of those 25 pages had a real,
-    enumerable ATS one link away, and Nearmap's careers page - which gave up
-    10 rows, of which 8 survived the duplicate-title guard - sits in front of
-    a SmartRecruiters board carrying 31. Reading a page is a snapshot that has
-    to be re-taken by hand; finding the board behind it is permanent and
-    refresh.py keeps it current. When a read turns up an ATS host, that is the
-    finding, and it belongs to the `board` agent.
+    Traps beyond the nav chrome, all of which produce strings with the exact
+    shape of a job title and are not reqs. NAV_CHROME below catches none of
+    them, and a reader here must:
+
+      - TESTIMONIAL AND LEADERSHIP BYLINES, far and away the commonest false
+        positive - it accounted for role-shaped strings on 9 of the 60. A name
+        above a title is an employee, not an opening. OnSolve's is a rotating
+        carousel, so two reads of the same page return different "jobs".
+      - FILTER CHIPS. "All / Support / Sales / Developer / Marketing" above a
+        list, or "Filter by department" above nothing at all.
+      - A GROUP BOARD UNDER ONE BRAND'S NAME. Justice Systems by LONG's URL
+        renders 80 reqs and not one is Justice Systems' - they are the
+        parent's HVAC technicians. Filing those would put a false number on
+        the board. 7 of 60 careers URLs pointed at a parent's hub.
+      - AN ld+json JobPosting THAT IS NOT A JOB. Exactly one of the 60 pages
+        carried machine-readable ld+json, and its title was "Multiple
+        Positions | See Open Roles" - recruitment marketing shaped as schema.
+        Do not build an extractor that trusts ld+json on these pages.
+      - A COUNT WITHOUT A TITLE. Lucy Zodion's site says ALL JOBS (1) and
+        renders no row. A count is not a posting; propose nothing.
+
+    And the thing worth more than the read, now measured: 21 of the 60 pages
+    exposed an ATS vendor host - in the served HTML, or in what the page
+    called at render time - against 16 that gave up any rows at all. FINDING
+    THE BOARD BEHIND THE PAGE HITS MORE OFTEN THAN READING THE PAGE, and it is
+    permanent where a read is a snapshot somebody must re-take by hand. When a
+    read turns up an ATS host that is the finding, and it belongs to the
+    `board` agent. Verify any slug with a real fetch before writing it.
 
     So this agent does what the bookmarklet does: opens the page, reads what is
     actually on screen, and hands the rows over. Two rules the harvester

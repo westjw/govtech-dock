@@ -2111,6 +2111,94 @@ RENDER.founded = c => {
   return n;
 };
 
+/* Boards found hiding inside a careers page. Each row is a claim with its
+   evidence: what the page named, how many times, what the board calls itself
+   and how many postings it holds. Two warnings are loud on purpose, because
+   both have already happened in this data - a board that names a different
+   company is usually a parent (Prepared's careers page links to Axon's, 500
+   postings), and a count wildly out of scale is the same thing wearing a
+   disguise. */
+RENDER.boardfound = c => {
+  const n = el('div', 'item');
+  n.appendChild(withLogo(el('h3', null, c.name), c));
+  n.appendChild(el('div', 'kv',
+    [c.sector && c.category ? c.sector + ' / ' + c.category : '', c.description]
+      .filter(Boolean).join(' \u00b7 ')));
+
+  const e = el('div', 'evi');
+  const line = (label, val) => {
+    const d = el('div');
+    d.appendChild(el('b', null, label + ' '));
+    d.appendChild(document.createTextNode(val));
+    return d;
+  };
+  e.appendChild(line('Found in their careers page:',
+    c.found.type + ' \u00b7 ' + String(c.found.ref).slice(0, 70)
+    + (c.times > 1 ? '  (mentioned ' + c.times + ' times)' : '')));
+  e.appendChild(line('It reads:', c.verified || (c.postings + ' postings')));
+  if (c.board_calls_itself)
+    e.appendChild(line('The board calls itself:', c.board_calls_itself));
+
+  if (c.warn_parent) {
+    const w = el('div');
+    w.style.marginTop = '6px';
+    w.appendChild(el('span', 'bad',
+      c.identity_why + ' \u2014 an acquired company\u2019s careers page often '
+      + 'points at the parent, and wiring that up would report their '
+      + 'requisitions as ' + c.name + '\u2019s.'));
+    e.appendChild(w);
+  } else if (c.warn_scale) {
+    const w = el('div');
+    w.style.marginTop = '6px';
+    w.appendChild(el('span', 'warn',
+      c.postings + ' postings is a lot for one company this size \u2014 worth '
+      + 'opening the board before you accept it.'));
+    e.appendChild(w);
+  }
+  n.appendChild(e);
+
+  const row = el('div', 'row');
+  const open = el('a', 'btn');
+  open.textContent = 'Open the board';
+  open.href = typeof c.found.ref === 'string' && c.found.ref.startsWith('http')
+    ? c.found.ref : boardUrlFor(c.found);
+  open.target = '_blank'; open.rel = 'noopener noreferrer';
+  const why = el('input', 'in');
+  why.placeholder = 'why (recorded either way)';
+  why.style.flex = '1';
+  const yes = el('button', 'btn primary', 'Yes, this is theirs');
+  const no = el('button', 'btn', 'Not theirs');
+  const msg = el('div', 'kv');
+  msg.style.cssText = 'flex-basis:100%;margin-top:4px';
+  const send = async (accept, force) => {
+    yes.disabled = no.disabled = true;
+    const r = await api('/api/board-proposal',
+      {id: c.id, accept, force: !!force, why: why.value.trim()});
+    yes.disabled = no.disabled = false;
+    if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
+    toast(r.message); n.remove();
+  };
+  yes.onclick = () => send(true, c.warn_parent);
+  no.onclick = () => send(false);
+  row.append(open, why, yes, no, msg);
+  n.appendChild(row);
+  return n;
+};
+
+function boardUrlFor(f){
+  const r = f.ref;
+  return ({greenhouse:'https://job-boards.greenhouse.io/'+r,
+           lever:'https://jobs.lever.co/'+r,
+           ashby:'https://jobs.ashbyhq.com/'+r,
+           workable:'https://apply.workable.com/'+r,
+           recruitee:'https://'+r+'.recruitee.com',
+           breezy:'https://'+r+'.breezy.hr',
+           bamboohr:'https://'+r+'.bamboohr.com/careers',
+           jazzhr:'https://'+r+'.applytojob.com',
+           rippling:'https://ats.rippling.com/'+r+'/jobs',
+           icims:'https://'+r+'.icims.com'})[f.type] || '#';
+}
+
 RENDER.placement = c => {
   const n = el('div', 'item');
   n.appendChild(withLogo(el('h3', null, c.name), c));
