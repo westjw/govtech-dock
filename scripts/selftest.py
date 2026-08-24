@@ -1724,7 +1724,68 @@ def main() -> int:
          ([], False, None, "not stated")),
         (("Manchester, United Kingdom", "Account Executive"),
          ([], False, None, "not stated")),       # no US state = no office claim
+        # A CITY SPELLED THE LONG WAY IS STILL A CITY. The office parser read
+        # only "City, ST", so 507 postings naming a real place resolved to no
+        # desk at all - and a distance filter built on that would have
+        # answered "nothing near you" across most of the board.
+        (("San Francisco, California", "Account Executive"),
+         ([], False, "CA", "not stated")),
+        (("BOSTON, MASSACHUSETTS, UNITED STATES", "Account Executive"),
+         ([], False, "MA", "not stated")),
+        (("New York, New York, United States", "Account Executive"),
+         ([], False, "NY", "not stated")),
+        (("San Mateo, CA United States", "Account Executive"),
+         ([], False, "CA", "not stated")),
+        # Washington DC is the seat of a great many of these roles and is
+        # spelled a way neither pattern catches: not two bare letters, and not
+        # in STATE_NAMES.
+        (("Washington, D.C.", "Account Executive"),
+         ([], False, "DC", "not stated")),
+        # Georgia is also a country. Reading this as an Atlanta desk is the
+        # trap AMBIGUOUS_STATE_NAMES exists for, and the long-form pattern
+        # must honour it too.
+        (("Tbilisi, Georgia", "Account Executive"),
+         ([], False, None, "not stated")),
+        # Remote still wins over an address: "Remote - San Francisco,
+        # California" is eligibility, not a desk.
+        (("Remote - San Francisco, California", "Account Executive"),
+         ([], False, None, "remote")),
     ]
+    # The CITY STRING, not just its state. Boards shout, and "BOSTON" and
+    # "Boston" are one desk - if they survive as two, they are two rows in a
+    # city picker, two cities to geocode, and two distances from the same
+    # place. Title-casing must not flatten a name somebody capitalised on
+    # purpose, which is why McLean is here.
+    #
+    # "boston, ma" in lower case is NOT here. It was, and it failed, and the
+    # fix was to delete the case rather than loosen the pattern: nothing in
+    # the data is spelled that way (checked - zero all-lowercase location
+    # strings across 4,353 postings), and widening a guard to satisfy an
+    # invented input is how a pattern starts matching prose.
+    CITY_CASES = [
+        ("BOSTON, MASSACHUSETTS, UNITED STATES", "Boston"),
+        ("Boston, MA", "Boston"),
+        ("McLean, VA", "McLean"),
+        ("DeKalb, IL", "DeKalb"),
+        ("Washington, D.C.", "Washington"),
+        # A LOCATION FIELD THAT SAYS MORE THAN AN ADDRESS. The city group
+        # starts at the first capital before the comma, so these produced
+        # cities called "in-office preferred in San Mateo" and "United States
+        # - San Francisco" - five of them on the board, each becoming its own
+        # row in a city list and its own geocoder lookup.
+        ("in-office preferred in San Mateo, CA", "San Mateo"),
+        ("Production AMP - Commerce City, CO", "Commerce City"),
+        ("United States - San Francisco, CA", "San Francisco"),
+        # and a real three-word city must survive the same trimming
+        ("Salt Lake City, UT", "Salt Lake City"),
+    ]
+    for loc, want_city in CITY_CASES:
+        got = _roles.geography(loc, "Account Executive")["office"]
+        got_city = got["city"] if got else None
+        if got_city != want_city:
+            errors += fail(f"geography({loc!r}) city = {got_city!r}, "
+                           f"expected {want_city!r}")
+
     for (loc, title), (t_states, t_stated, o_state, mode) in GEOGRAPHY_CASES:
         g = _roles.geography(loc, title)
         got = (g["territory"]["states"], g["territory"]["stated"],

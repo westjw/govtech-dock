@@ -325,6 +325,98 @@ def _codes_in(text: str) -> set:
 # excludes digits so "9-5, TX" style noise cannot match.
 _CITY_ST = re.compile(r"([A-Z][A-Za-z .'-]{1,40}?),\s*([A-Z]{2})\b")
 
+# "City, Full State Name", with an optional country after it. This is the same
+# fact in a different dress and the office parser used to see only the first
+# form, which is why 917 postings naming a real city resolved to no desk at
+# all: "San Francisco, California", "New York, New York, United States" and
+# "BOSTON, MASSACHUSETTS, UNITED STATES" are every bit as much an address as
+# "San Mateo, CA". Measured before this existed: 961 of 4,353 postings had a
+# city. A distance filter built on that would have been answering "nothing
+# near you" for most of the board.
+#
+# Georgia stays out via AMBIGUOUS_STATE_NAMES for the same reason it is
+# excluded everywhere else here - it is also a country, and "Tbilisi, Georgia"
+# is not an office in Atlanta.
+_CITY_STATENAME = re.compile(
+    r"([A-Z][A-Za-z .'-]{1,40}?),\s*(" +
+    "|".join(re.escape(n) for n in sorted(STATE_NAMES, key=len, reverse=True)
+             if n not in AMBIGUOUS_STATE_NAMES) +
+    r")\b", re.I)
+
+# "Washington, D.C." and "Washington DC" - the seat of a great many govtech
+# roles, spelled a way neither pattern above catches because D.C. is not two
+# bare letters and is not in STATE_NAMES.
+_DC = re.compile(r"\bwashington,?\s*d\.?\s*c\.?", re.I)
+
+
+def _office_from(loc: str):
+    """A city and state out of a location field, or None.
+
+    Tries the strictest reading first. Returns the city in Title Case because
+    boards shout: "BOSTON, MASSACHUSETTS, UNITED STATES" is the same desk as
+    "Boston, MA" and must not sort or de-duplicate as a different one.
+    """
+    if not loc:
+        return None
+    if _DC.search(loc):
+        return {"city": "Washington", "state": "DC"}
+    m = _CITY_ST.search(loc)
+    if m:
+        c = _clean_city(m.group(1).strip())
+        return {"city": _title(c), "state": m.group(2)} if c else None
+    m = _CITY_STATENAME.search(loc)
+    if m:
+        c = _clean_city(m.group(1).strip())
+        return ({"city": _title(c), "state": STATE_NAMES[m.group(2).lower()]}
+                if c else None)
+    return None
+
+
+def _clean_city(raw: str) -> str | None:
+    """The city out of a phrase that merely ends in one.
+
+    The pattern's city group starts at the first capital before the comma, so
+    a location field that says more than an address hands back the whole
+    sentence: "in-office preferred in San Mateo, CA" produced a city called
+    "in-office preferred in San Mateo", which then became its own row in a
+    city list and its own geocoder lookup. Five of those were on the board.
+
+    A city is the TRAILING run of capitalised words, so this walks back from
+    the end and stops at the first word that is not part of a name - the
+    lowercase connector in "preferred in San Mateo", the dash in "Production
+    AMP - Commerce City", the country in "United States - San Francisco".
+    Capped at four words: "Salt Lake City" is three and nothing real is more.
+
+    Returns None rather than a guess when nothing survives.
+    """
+    words = raw.replace("\u2013", "-").split()
+    out = []
+    for w in reversed(words):
+        if len(out) == 4:
+            break
+        # a name word starts with a capital; a particle is only kept between
+        # two of them, never as the first word of the result
+        if w[:1].isupper() and w not in ("-",):
+            out.append(w)
+        elif out and w.lower() in ("of", "de", "la", "le", "el") :
+            out.append(w)
+        else:
+            break
+    if not out:
+        return None
+    return " ".join(reversed(out)).strip(" -,")
+
+
+def _title(city: str) -> str:
+    """Title Case that leaves already-mixed names alone.
+
+    "BOSTON" -> "Boston", but "McLean" and "DeKalb" are not "Mclean" and
+    "Dekalb": a name a person capitalised deliberately is not ours to flatten.
+    """
+    if city.isupper() or city.islower():
+        return " ".join(w[:1].upper() + w[1:].lower() for w in city.split())
+    return city
+
 
 def geography(location_text: str, title: str = "") -> dict:
     """Three separate facts about a posting, each honest about absence.
@@ -360,9 +452,9 @@ def geography(location_text: str, title: str = "") -> dict:
 
     # ---- office: one nameable place in the location field, or nothing
     office = None
-    m = _CITY_ST.search(loc)
-    if m and len(loc_codes) <= 1:
-        office = {"city": m.group(1).strip(), "state": m.group(2)}
+    found = _office_from(loc)
+    if found and len(loc_codes) <= 1:
+        office = found
     elif len(loc_codes) == 1 and not REMOTE_RE.search(loc):
         # a bare "Texas" or "TX" with no city still pins the seat to a state
         office = {"city": None, "state": next(iter(loc_codes))}

@@ -1,0 +1,23 @@
+{
+ "New York|NY": {
+  "lat": 40.7127,
+  "lon": -74.006,
+  "matched": "New York, United States",
+  "query": "New York, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "San Mateo|CA": {
+  "lat": 37.4969,
+  "lon": -122.3331,
+  "matched": "San Mateo County, California, United States",
+  "query": "San Mateo, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Washington|DC": {
+  "lat": 38.8951,
+  "lon": -77.0364,
+  "matched": "Washington, District of Columbia, United States",
+  "query": "Washington, DC, United States",
+  "source": "nominatim.openstreetmap.org"
+ }
+}
