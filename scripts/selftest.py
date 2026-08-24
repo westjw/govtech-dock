@@ -1354,6 +1354,67 @@ def check_url_sinks() -> int:
     return bad
 
 
+def check_merged_names_stay_merged() -> int:
+    """A record a merge deleted must not be live again.
+
+    A merge folds one company into another and deletes the dropped id. The
+    journal records that as a change with a `before` and a null `after`, which
+    makes "every id a merge has ever removed" an exact set - not a guess.
+
+    This exists because one came back. merge_families folded the NRPA 2026
+    booth row "Xplor Recreation I Vermont Systems - RecDesk - NextRec - ePACT"
+    into Xplor Recreation at 11:35 - correctly, it is four brands in one
+    exhibitor cell rather than a company - and within the hour an intake path
+    had re-created it from the conference source as a fresh unresearched
+    record. Nothing errored. The journal held one entry for the merge and none
+    for the resurrection, because seven pipeline scripts write companies.json
+    directly instead of through save_companies, and only admin.py was ever
+    covered by the rule that every write keeps a before-image.
+
+    Repairing those seven is the real fix and this is not it. This is the
+    backstop that makes the failure LOUD wherever it comes from, so a restored
+    duplicate fails the next build instead of surviving because the only person
+    who would recognise it is the one who did the merge.
+
+    Keyed on the ID a merge deleted, NOT on `also_known_as`. The first version
+    of this check used the alias list and flagged EagleView and Concourse,
+    which are not resurrections: two live records that legitimately carry each
+    other's name while somebody decides whether they are one company. That is
+    the Duplicates queue's job, and a build failure is the wrong severity for
+    a question nobody has answered yet.
+    """
+    errors = 0
+    companies = json.load(open(DATA / "companies.json"))
+    live = {c["id"] for c in companies}
+    jpath = DATA / "admin_journal.jsonl"
+    if not jpath.exists():
+        return 0
+    dropped = {}
+    for line in jpath.read_text().splitlines():
+        if not line.strip():
+            continue
+        try:
+            d = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        for cid, ch in (d.get("changes") or {}).items():
+            if not isinstance(ch, dict):
+                continue
+            if "after" in ch and ch["after"] is None and ch.get("before"):
+                dropped[cid] = d          # last word wins: a later re-add
+            elif cid in dropped and ch.get("after"):
+                dropped.pop(cid, None)    # deliberately restored, journalled
+    for cid, entry in sorted(dropped.items()):
+        if cid in live:
+            errors += fail(
+                f"merge: {cid!r} was deleted by a {entry.get('action')} on "
+                f"{entry.get('at', '')[:10]} ({entry.get('by')}) and is live "
+                f"again with nothing in the journal restoring it. Something "
+                f"wrote companies.json outside save_companies. Merge it again, "
+                f"then find the writer.")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -1593,6 +1654,7 @@ def main() -> int:
     # happily stores, no posting ever carries it, and their alert silently
     # never arrives - no error anywhere. So the duplication is checked here.
     errors += check_alert_vocabulary()
+    errors += check_merged_names_stay_merged()
     errors += check_brand()
     errors += check_admin_game()
     errors += check_admin_gates()

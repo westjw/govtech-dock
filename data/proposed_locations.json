@@ -1,0 +1,1248 @@
+[
+ {
+  "id": "active",
+  "name": "ACTIVE",
+  "location": "Atlanta, GA",
+  "source_url": "https://www.activenetwork.com/contact-us",
+  "quote": "HQ / ACTIVE Network, LLC / Three Alliance Center, 29th Fl. / 3550 Lenox Rd. #3000 / Atlanta, GA 30326",
+  "confidence": "high",
+  "offices": [
+   "Atlanta, GA (labelled HQ)",
+   "Vancouver, BC, Canada",
+   "Toronto, ON, Canada",
+   "Xi'an, China",
+   "Chengdu, China",
+   "Shanghai, China"
+  ],
+  "why": "The contact page labels the Atlanta address 'HQ' twice - once beside the address block and again as 'Atlanta (HQ)' in the worldwide office list. Read on activenetwork.com rather than the active.com URL in companies.json; active.com's own footer reads '(c) 2026 Active Network, LLC', so it is the same company's corporate site, not a third party."
+ },
+ {
+  "id": "card-integrity",
+  "name": "Card Integrity",
+  "location": "Oakbrook Terrace, IL",
+  "source_url": "https://cardintegrity.com/about-us/",
+  "quote": "Headquartered in the Chicagoland area, we serve clients in the United States and in more than 50 countries around the world. ... Address: 2 Trans Am Plaza, Suite 530, Oakbrook Terrace, IL 60181",
+  "confidence": "high",
+  "offices": [],
+  "why": "One address, in the site-wide footer on every page, and the About page independently says 'Headquartered in the Chicagoland area' - Oakbrook Terrace is in that area, so the two agree. No other office is listed anywhere."
+ },
+ {
+  "id": "dailypay",
+  "name": "DailyPay",
+  "location": "New York, NY",
+  "source_url": "https://www.dailypay.com/contact/",
+  "quote": "Our Location / DailyPay HQ / 55 Water Street / New York, NY 10041",
+  "confidence": "high",
+  "offices": [],
+  "why": "Labelled 'DailyPay HQ' on the contact page, repeated in the site-wide footer, and matched by a schema.org Organization/PostalAddress block on the home page giving addressLocality 'New York', addressRegion 'NY'. Three independent statements on their own site, no conflict."
+ },
+ {
+  "id": "eagleview-technologies",
+  "name": "EagleView Technologies",
+  "location": "Rochester, NY",
+  "source_url": "https://www.eagleview.com/contact-us/",
+  "quote": "Corporate Headquarters / Rochester, NY / 25 Methodist Hill Drive / Rochester, NY 14623",
+  "confidence": "high",
+  "offices": [
+   "Rochester, NY (Corporate Headquarters)",
+   "Bangalore, India",
+   "South Perth, Australia"
+  ],
+  "why": "The contact page uses the words 'Corporate Headquarters' over the Rochester address and lists the other two as ordinary offices under it. Nothing to weigh up."
+ },
+ {
+  "id": "leosight",
+  "name": "LeoSight",
+  "location": "Dallas, TX",
+  "source_url": "https://www.leosight.com/contact-us",
+  "quote": "Contact Info / 8350 N. Central Expressway / Suite 1900 / Dallas, TX 75206 / 888.813.4551",
+  "confidence": "high",
+  "offices": [],
+  "why": "The only address on the site, in the footer of the home, contact and about pages alike. Not labelled 'headquarters' in so many words, but it is the single office a single-location company gives."
+ },
+ {
+  "id": "longeye",
+  "name": "Longeye",
+  "location": "San Francisco, CA",
+  "source_url": "https://www.longeye.com/contact",
+  "quote": "Headquarters / San Francisco, California",
+  "confidence": "high",
+  "offices": [],
+  "why": "The contact page says 'Headquarters' and then the city. No street address given, which is normal for a 2025-founded seed-stage company, but the word headquarters is theirs, not mine."
+ },
+ {
+  "id": "netchex",
+  "name": "Netchex",
+  "location": "Covington, LA",
+  "source_url": "https://netchex.com/",
+  "quote": "Headquarter / 1155 Hwy 190 E Service Rd #2 / Covington, LA 70433 / (985) 220-1410",
+  "confidence": "high",
+  "offices": [],
+  "why": "Footer of the home page labels it 'Headquarter' (their spelling). One address, no others on the site."
+ },
+ {
+  "id": "nuvei",
+  "name": "Nuvei",
+  "location": "Montreal, Canada",
+  "source_url": "https://www.nuvei.com/corporate-information",
+  "quote": "Corporate Headquarters (Canada) / 1100 Rene-Levesque, 9th Floor, Montreal, QC, Canada, H3B 4N4",
+  "confidence": "high",
+  "offices": [
+   "Montreal, Canada (Corporate Headquarters)",
+   "Amsterdam",
+   "Bogota",
+   "Buenos Aires",
+   "Hoffman Estates, IL",
+   "Dubai",
+   "Hong Kong",
+   "Iasi, Romania",
+   "London",
+   "Milan",
+   "Nicosia",
+   "St. Catharines, ON, Canada",
+   "Sao Paulo",
+   "Scottsdale, AZ",
+   "Shanghai",
+   "Singapore",
+   "Sofia",
+   "Sydney",
+   "Tel Aviv",
+   "Tokyo"
+  ],
+  "why": "Their /contact page lists ~20 offices alphabetically with no head one named - that alone would have been ambiguous. The Corporate information page (linked from the footer) is where they name it: 'Corporate Headquarters (Canada)'. The '(Canada)' qualifier is the only wobble; it appears once on the site, with no second 'Corporate Headquarters' anywhere for another country. Their /who-we-are timeline separately calls the 2025 Tokyo office a 'Tokyo headquarters' for APAC, so they do use the word regionally - worth an owner's glance."
+ },
+ {
+  "id": "palo-alto-networks",
+  "name": "Palo Alto Networks",
+  "location": "Santa Clara, CA",
+  "source_url": "https://www.paloaltonetworks.com/about-us/locations",
+  "quote": "CORPORATE HEADQUARTERS / Palo Alto Networks / 3000 Tannery Way / Santa Clara, CA 95054",
+  "confidence": "high",
+  "offices": [
+   "Santa Clara, CA (Corporate Headquarters)",
+   "Singapore (APAC headquarters)",
+   "Amsterdam",
+   "Israel"
+  ],
+  "why": "'CORPORATE HEADQUARTERS' at the top of their own locations page, and the same page describes the Santa Clara campus as 'Palo Alto Networks new headquarters'. Singapore is explicitly the APAC headquarters, which is a regional one, not the company's."
+ },
+ {
+  "id": "prophoenix-corporation",
+  "name": "ProPhoenix Corporation",
+  "location": "Moorestown, NJ",
+  "source_url": "https://prophoenix.com/contact-us/",
+  "quote": "Headquarters: / 502 Pleasant Valley Avenue, Moorestown, NJ 08057",
+  "confidence": "high",
+  "offices": [
+   "Moorestown, NJ (Headquarters)"
+  ],
+  "why": "Labelled 'Headquarters' on the contact page and again in the footer of every page. The contact page also lists regional sales contacts by name (Northeast etc.) - those are people, not offices."
+ },
+ {
+  "id": "salesforce",
+  "name": "Salesforce",
+  "location": "San Francisco, CA",
+  "source_url": "https://www.salesforce.com/company/locations/",
+  "quote": "Worldwide Corporate Headquarters / Salesforce, Inc. / Salesforce Tower / 415 Mission Street, 3rd Floor / San Francisco, CA 94105",
+  "confidence": "high",
+  "offices": [
+   "San Francisco, CA (Worldwide Corporate Headquarters)",
+   "Singapore (APAC Regional Headquarters)",
+   "and ~110 offices worldwide"
+  ],
+  "why": "The locations page says 'Worldwide Corporate Headquarters' - the strongest wording of any site in this batch, and it distinguishes itself from the regional headquarters listed further down (Singapore for APAC)."
+ },
+ {
+  "id": "trackvia",
+  "name": "TrackVia",
+  "location": "Denver, CO",
+  "source_url": "https://trackvia.com/contact/",
+  "quote": "Contact TrackVia / Customer Support & Sales / 800-673-3302 / 950 17TH STREET / DENVER, COLORADO 80202",
+  "confidence": "high",
+  "offices": [],
+  "why": "The only postal address anywhere on the site, on the Contact page. Not the word 'headquarters', but a single-address company with a single office given."
+ },
+ {
+  "id": "workday",
+  "name": "Workday",
+  "location": "Pleasanton, CA",
+  "source_url": "https://www.workday.com/en-us/company/about-workday/contact-us.html",
+  "quote": "United States / Headquarters / 6110 Stoneridge Mall Road / Pleasanton, CA 94588 / (925) 951-9000",
+  "confidence": "high",
+  "offices": [
+   "Pleasanton, CA (Headquarters)",
+   "Atlanta, GA",
+   "Austin, TX",
+   "Beaverton, OR",
+   "Boston, MA",
+   "Boulder, CO",
+   "Chicago, IL",
+   "Mason, OH",
+   "Frisco, TX",
+   "Denver, CO",
+   "Minneapolis, MN",
+   "New York, NY",
+   "Reston, VA",
+   "and offices across EMEA and APAC"
+  ],
+  "why": "Their office directory lists ~40 offices; exactly one is labelled 'Headquarters', and it sits at the top of the United States list. The rest are plain city names."
+ },
+ {
+  "id": "courtsmart",
+  "name": "CourtSmart",
+  "location": "North Chelmsford, MA",
+  "source_url": "https://www.courtsmart.com/contact/",
+  "quote": "CourtSmart Digital Systems / 51 Middlesex Street / N. Chelmsford, MA 01863 / tel: (800) 235-8690",
+  "confidence": "high",
+  "offices": [],
+  "why": "The only address on the site, on the Contact page and repeated in the footer. I expanded their 'N.' to 'North' to match how city names are spelled elsewhere in companies.json - note the file already carries a 'Chelmsford, MA' for a different company, and North Chelmsford is a village inside the town of Chelmsford, so the owner may prefer to collapse the two."
+ },
+ {
+  "id": "baseform",
+  "name": "Baseform",
+  "location": "Lisbon, Portugal",
+  "source_url": "https://baseform.com/np4/contact.html",
+  "quote": "Headquarters (Lisboa, Portugal)",
+  "confidence": "high",
+  "offices": [
+   "Lisbon, Portugal (Headquarters)",
+   "USA/Canada (email contact only, no address given)"
+  ],
+  "why": "The contact page heads its first contact block 'Headquarters (Lisboa, Portugal)'. Anglicised Lisboa to Lisbon because companies.json already carries a 'Lisbon, Portugal'. The 'USA/Canada' block beside it is an email address with no city, so it is a contact route, not an office I can name."
+ },
+ {
+  "id": "arrive",
+  "name": "Arrive",
+  "location": "Stockholm, Sweden",
+  "source_url": "https://arrive.com/en/contact",
+  "quote": "Arrive 2025 | Birger Jarlsgatan 57B, 113 56 Stockholm",
+  "confidence": "medium",
+  "offices": [],
+  "why": "Site-wide footer address, the same on the home, contact and about pages, and the only address on the site. Medium rather than high because it is a footer address without the word headquarters, and because Arrive is the parking brand of the EasyPark group - Birger Jarlsgatan is the group's Stockholm address. Supporting but non-probative: the 11 open roles are Berlin, Prague, Oslo, Paris, Brussels, Athens, Madrid and Atlanta, which is a European company's shape, not a US one. If the owner cares about the US operation specifically (the old ParkWhiz/Arrive business), that is a different question from where the company is headquartered."
+ },
+ {
+  "id": "monday-com",
+  "name": "Monday.com",
+  "location": "Tel Aviv, Israel",
+  "source_url": "https://monday.com/l/legal/tos/",
+  "quote": "These Terms are between monday.com Ltd. (6 Yitzhak Sadeh St., Tel-Aviv 6777506, Israel) ... and you",
+  "confidence": "medium",
+  "offices": [
+   "Tel Aviv, Israel (monday.com Ltd.)",
+   "New York, NY (monday.com Inc., North America HQ)",
+   "London (EMEA HQ)",
+   "Sydney (APJ HQ)",
+   "Chicago",
+   "Miami",
+   "Munich",
+   "Paris",
+   "Tokyo"
+  ],
+  "why": "The terms of service name monday.com Ltd. - the contracting parent - at a Tel Aviv address, and name monday.com Inc. in New York as an affiliate. Medium, not high: a terms-of-service address is a legal address, not the word 'headquarters'. What supports it is their own About timeline, which calls New York, London and Sydney *regional* HQs ('all four of our regional HQs'), leaving Israel as the fourth and the company's origin ('monday.com officially launched from a tiny office ... in Tel Aviv'). Also worth flagging separately: the website in companies.json for this company is a French-language partner deep link with utm parameters, which is almost certainly wrong."
+ },
+ {
+  "id": "harris",
+  "name": "Harris",
+  "location": "Ottawa, Canada",
+  "source_url": "https://www.harriscomputer.com/privacy-policy",
+  "quote": "By Mail or in Person : 1 Antares Drive, Suite 100, Ottawa ON, K2E 8C4",
+  "confidence": "medium",
+  "offices": [],
+  "why": "Their contact page carries forms and no address at all; the privacy policy gives the one postal address on the site, offered as somewhere you can turn up in person, which a registered-agent address would not be. Medium because no page calls it a headquarters, and because Harris is a portfolio of dozens of acquired business units under Constellation Software - the operating units are all over North America and this is the corporate address."
+ },
+ {
+  "id": "itopia",
+  "name": "itopia",
+  "location": "Miami, FL",
+  "source_url": "https://itopia.com/general-terms-of-service/",
+  "quote": "If to itopia: / itopia / 82 NE 26th Street, #106 / Miami, FL 33137 / Attn: Legal Department",
+  "confidence": "medium",
+  "offices": [],
+  "why": "The notices clause of their own terms of service, addressed to itopia's own Legal Department rather than to an agent for service. The marketing site publishes no address at all and /contact/ is a 404, so this is the only thing the company states. Medium because a notices address is a legal address, not a stated headquarters."
+ },
+ {
+  "id": "yuja",
+  "name": "YuJa",
+  "location": "San Jose, CA",
+  "source_url": "https://www.yuja.com/contact-us/",
+  "quote": "California Office / YuJa Inc. / 84 W. Santa Clara St. / Suite 400 / San Jose, CA 95113",
+  "confidence": "medium",
+  "offices": [
+   "San Jose, CA",
+   "Toronto, ON, Canada"
+  ],
+  "why": "Careful here: the only place YuJa uses the word 'headquarters' is about incorporation - 'We have legal headquarters in Delaware with primary U.S. offices in Silicon Valley, California and Canadian offices in Toronto' (https://www.yuja.com/about-us/). A Delaware legal headquarters is where a company is registered, not where it is. Their own phrase 'primary U.S. offices in Silicon Valley' points at the San Jose address on the contact page, which is the one they list first and under YuJa Inc. Medium because I am reading two statements together rather than quoting one."
+ },
+ {
+  "id": "pimloc-inc",
+  "name": "Pimloc, Inc.",
+  "location": "London, United Kingdom",
+  "source_url": "https://www.pimloc.com/about-1",
+  "quote": "Pimloc Ltd. New Wing, Somerset House, The Strand, London, WC2R 1LA ... Pimloc Inc. 77 Van Ness Ave, STE 101, PMB 1815, San Francisco, CA 94102",
+  "confidence": "medium",
+  "offices": [
+   "London, United Kingdom (Pimloc Ltd.)",
+   "San Francisco, CA (Pimloc Inc. - a PMB mailbox, not an office)"
+  ],
+  "why": "The footer carries two entities. The San Francisco one is 'STE 101, PMB 1815' - PMB is a private mailbox, i.e. a mail-forwarding address of the kind a registered agent provides, which is exactly the thing that is not a headquarters. The London one is a real office at Somerset House, and the team page is a UK team (UCL, Imperial, Bristol, Oxford Brookes, Queen Mary). Flagging it as medium because the record in companies.json is named 'Pimloc, Inc.' - the US entity - so the owner may want the company row to say London while remembering the US arm exists."
+ },
+ {
+  "id": "auror",
+  "name": "Auror",
+  "location": null,
+  "source_url": "https://www.auror.co/company-careers",
+  "quote": "Auckland, New Zealand / Melbourne, Australia / Denver, USA / London, UK",
+  "confidence": "ambiguous",
+  "offices": [
+   "Auckland, New Zealand",
+   "Melbourne, Australia",
+   "Denver, CO",
+   "London, United Kingdom"
+  ],
+  "why": "Four cities on the careers page, in that order, none marked as the head office. The contact page routes by enquiry type and gives no address; the our-story page gives none either; the ld+json is a SoftwareApplication block with no PostalAddress. Auckland is listed first and the copyright reads 'Auror Limited', which is a New Zealand company form - but first-in-a-list and a company suffix are both guesses, so I am not making one."
+ },
+ {
+  "id": "emburse",
+  "name": "Emburse",
+  "location": null,
+  "source_url": "https://www.emburse.com/contact-us",
+  "quote": "Locations / North America / Texas, U.S. / 15851 Dallas Pkwy / Suite #700 / Addison, TX 75001 ... Ontario, Canada ... EMEA ... APAC",
+  "confidence": "ambiguous",
+  "offices": [
+   "Addison, TX",
+   "Toronto, ON, Canada",
+   "Barcelona, Spain",
+   "Madrid, Spain",
+   "Tortosa, Spain",
+   "London, United Kingdom",
+   "Delft, Netherlands",
+   "Sydney, Australia",
+   "Hyderabad, India"
+  ],
+  "why": "Nine offices grouped by region (North America, EMEA, APAC) with no head office named anywhere on the contact page, the about page or the ld+json Organization block. Addison is listed first, which is not evidence. Emburse is the merged Certify/Chrome River/Captio business, so several of these are former head offices in their own right - a good reason not to guess."
+ },
+ {
+  "id": "ninjaone",
+  "name": "NinjaOne",
+  "location": null,
+  "source_url": "https://www.ninjaone.com/contactusform/",
+  "quote": "Our Offices / Austin / NinjaOne LLC / 301 Congress Ave, 4th Floor / Austin, TX 78701 / Berlin ... / Tampa Bay ... / Sydney ...",
+  "confidence": "ambiguous",
+  "offices": [
+   "Austin, TX",
+   "Berlin, Germany",
+   "Tampa, FL",
+   "North Sydney, Australia"
+  ],
+  "why": "Four offices, none labelled head office, and the site actively muddies it: the privacy notice gives a fifth, different US address as the company's contact point - 'NinjaOne, LLC / 3687 Tampa Road, Suite 200 / Oldsmar, FL 34677' (https://www.ninjaone.com/privacy-notice/) - which is neither the Austin nor the Tampa office in the list. The about page names no city at all. With the site pointing two ways, picking one would be inventing a ruling."
+ },
+ {
+  "id": "starrez",
+  "name": "StarRez",
+  "location": null,
+  "source_url": "https://www.starrez.com/company/contact-us",
+  "quote": "Our Offices / Americas / 6100 Greenwood Plaza Blvd. / Greenwood Village, Colorado 80111 / United States / APAC / 660 Spencer Street / West Melbourne, Victoria / EMEA / London EC3V 9DU / Hyderabad",
+  "confidence": "ambiguous",
+  "offices": [
+   "Greenwood Village, CO",
+   "West Melbourne, Australia",
+   "London, United Kingdom",
+   "Hyderabad, India"
+  ],
+  "why": "Offices labelled by region only - Americas, APAC, EMEA, Hyderabad - with no head office named on the contact page or the about page. The one lean: their privacy policy puts the internal Data Protection Officer at the Greenwood Village address (https://www.starrez.com/privacy-policy). That is where a named officer sits, not a statement of headquarters, and StarRez began in Melbourne, so the two plausible answers are exactly the two I cannot separate. Leaving it for a person."
+ },
+ {
+  "id": "concourse",
+  "name": "Concourse",
+  "location": null,
+  "source_url": "https://www.concourse.ai/about-us",
+  "quote": null,
+  "confidence": "none",
+  "offices": [],
+  "why": "Read the home page and the about page. No address, no city, no office list; the ld+json Organization block carries name, url, logo, description and a LinkedIn link and no PostalAddress. /careers returned a page with no readable text (client-rendered), which is unreadable, not empty. Nothing stated - not remote-first either, they simply do not say."
+ },
+ {
+  "id": "thomson-reuters",
+  "name": "Thomson Reuters",
+  "location": null,
+  "source_url": "https://www.thomsonreuters.com/en/locations",
+  "quote": null,
+  "confidence": "none",
+  "offices": [],
+  "why": "Their office directory is a client-side search widget - the page ships no addresses in its HTML, so a plain fetch reads none. The about-us and contact-us pages state no headquarters either. This is a page I could not read, not a company without a headquarters; a browser session or their investor-relations filings would settle it in a minute."
+ },
+ {
+  "id": "brisk-teaching",
+  "name": "Brisk Teaching",
+  "location": null,
+  "source_url": "https://www.briskteaching.com/about",
+  "quote": null,
+  "confidence": "none",
+  "offices": [],
+  "why": "Home and about pages read in full. The about page is founder biography and mission with no company address; the footer is an email address and a copyright line for 'Brisk Labs Co.' Nothing to quote. They do not claim to be remote-first either."
+ },
+ {
+  "id": "sharestream",
+  "name": "ShareStream",
+  "location": null,
+  "source_url": "https://www.sharestream.com/about-us/contact/",
+  "quote": null,
+  "confidence": "none",
+  "offices": [],
+  "why": "The contact page gives an email, a phone number and a fax number and no postal address; the company page gives none either. The 301 fax area code is Maryland, which is a guess about where a phone line was provisioned, not a headquarters, so it stays out."
+ },
+ {
+  "id": "anaplan",
+  "name": "Anaplan",
+  "location": "Miami, FL",
+  "source_url": "https://www.anaplan.com/contact/",
+  "quote": "Miami (Global Headquarters) / 1450 Brickell Avenue / Suite 3040 / Miami, FL 33131",
+  "confidence": "high",
+  "offices": [
+   "Miami, FL (Global Headquarters)",
+   "Minneapolis, MN",
+   "New York, NY",
+   "Ottawa, ON, Canada",
+   "San Francisco, CA",
+   "San Ramon, CA",
+   "Frankfurt, Germany",
+   "London, United Kingdom",
+   "Manchester, United Kingdom",
+   "Milan, Italy"
+  ],
+  "why": "Labelled 'Global Headquarters' at the head of their own office list. Worth reading twice, because this is the entry that proves the schema block is not safe on its own: the ld+json Organization address on anaplan.com's HOME page still reads '50 Hawthorne St, San Francisco, CA 94105', which is the headquarters they moved out of. The privacy statement lists that same San Francisco address only as the 'Americas Privacy Office'. Had I stopped at the home page I would have written San Francisco with a straight face."
+ },
+ {
+  "id": "procore",
+  "name": "Procore",
+  "location": "Carpinteria, CA",
+  "source_url": "https://www.procore.com/company",
+  "quote": "Headquarters / 6309 Carpinteria Avenue Carpinteria, CA 93013 / United states",
+  "confidence": "high",
+  "offices": [
+   "Carpinteria, CA (Headquarters)",
+   "Austin, TX",
+   "Tampa, FL",
+   "New Orleans, LA",
+   "London, United Kingdom",
+   "Sydney, Australia",
+   "Toronto, ON, Canada",
+   "Edmonton, AB, Canada",
+   "Dublin, Ireland",
+   "Dubai, United Arab Emirates",
+   "Bangalore, India",
+   "Cairo, Egypt"
+  ],
+  "why": "Two independent statements on their own sites agree. The office list on procore.com/company puts 'Headquarters' above the Carpinteria address, and careers.procore.com/locations says 'Our head office is located in Carpinteria'. Their marketing pages only ever say 'our stunning headquarters overlooking the Pacific Ocean in California' - a state, not a city, which would not have been enough on its own."
+ },
+ {
+  "id": "activu-corporation",
+  "name": "Activu Corporation",
+  "location": "Rockaway, NJ",
+  "source_url": "https://www.activu.com/contact-info/",
+  "quote": "Global Headquarters / 301 Round Hill Drive / Rockaway, NJ 07866",
+  "confidence": "high",
+  "offices": [
+   "Rockaway, NJ (Global Headquarters)",
+   "Arlington, VA (Federal Solutions Technology Demonstration Center)"
+  ],
+  "why": "Labelled 'Global Headquarters'. The second US address on the page is labelled a demonstration center rather than an office, so there is no competing claim."
+ },
+ {
+  "id": "the-mobility-house",
+  "name": "The Mobility House",
+  "location": "Munich, Germany",
+  "source_url": "https://www.mobilityhouse.com/usa_en/contact",
+  "quote": "Germany (HQ) The Mobility House GmbH / St.-Cajetan-Str. 43 / 81669 Munich",
+  "confidence": "high",
+  "offices": [
+   "Munich, Germany (HQ)",
+   "Belmont, CA (The Mobility House LLC)"
+  ],
+  "why": "The contact page marks Germany '(HQ)' outright, and this was read on their US locale page, so it is the US site itself pointing at Munich rather than a German page being read in isolation. Flagging separately: the website in companies.json is the /usa_en locale and the US entity is a different legal person (The Mobility House LLC, Belmont, CA). If this row is meant to be the US operation, that is a scope question, not a location question."
+ },
+ {
+  "id": "epermithub",
+  "name": "ePermitHub",
+  "location": "Miami, FL",
+  "source_url": "https://www.epermithub.com/contact/",
+  "quote": "Headquarters / Miami, Florida / Phone / 786-250-6336",
+  "confidence": "high",
+  "offices": [],
+  "why": "The word Headquarters on their own contact page. City and state only, no street address, which is all the 'City, ST' format needs."
+ },
+ {
+  "id": "prodata-ptexcellence",
+  "name": "Prodata PTexcellence",
+  "location": "Zaventem, Belgium",
+  "source_url": "https://www.pptexcellence.com/",
+  "quote": "Head office / Prodata PTexcellence NV / Leuvensesteenweg 540 / 1930 Zaventem",
+  "confidence": "high",
+  "offices": [],
+  "why": "'Head office' in as many words, on the home page, above the company's own legal name and a Belgian address."
+ },
+ {
+  "id": "policeapp-com",
+  "name": "PoliceApp.com",
+  "location": "Wallingford, CT",
+  "source_url": "https://www.policeapp.com/",
+  "quote": "Contact / 5 Brookside Dr / Wallingford, CT 06492 / 855-720-2777",
+  "confidence": "high",
+  "offices": [],
+  "why": "The single address on the site, in its own contact block. Nothing competes with it and nothing calls it a headquarters either - for a company this size those are usually the same thing, but the label is what would have made it certain."
+ },
+ {
+  "id": "saltus-technologies",
+  "name": "Saltus Technologies",
+  "location": "Tulsa, OK",
+  "source_url": "https://saltustechnologies.com/",
+  "quote": "Saltus Technologies, LLC / 110 S Hartford Ave / Suite 1001 / Tulsa, OK 74120",
+  "confidence": "high",
+  "offices": [],
+  "why": "The only address on the site, in the footer, under the company's full legal name."
+ },
+ {
+  "id": "andrews-technology",
+  "name": "Andrews Technology",
+  "location": "Wilmington, NC",
+  "source_url": "https://andrewstechnology.com/",
+  "quote": "Email: sales@andrewstechnology.com / 1213 Culbreth Dr. / Suite 126 / Wilmington, NC 28405",
+  "confidence": "high",
+  "offices": [],
+  "why": "The only address on the site, in the footer beside the sales address."
+ },
+ {
+  "id": "zabble",
+  "name": "Zabble",
+  "location": "Walnut Creek, CA",
+  "source_url": "https://www.zabbleinc.com/",
+  "quote": "ADDRESS / 1966 Tice Valley Blvd, #105, / Walnut Creek, CA 94595 / CONTACT / Tel.: 925-289-9345",
+  "confidence": "high",
+  "offices": [],
+  "why": "Labelled ADDRESS in the site's own contact block and the only one on the site. The '#105' is a suite number rather than the 'PMB nnnnn' shape that marks a private mailbox, so I am reading it as an office."
+ },
+ {
+  "id": "911-tech-inc",
+  "name": "911 Tech Inc",
+  "location": "Arlington Heights, IL",
+  "source_url": "https://www.911tech.com/",
+  "quote": "Copyright 2026 911 Tech, Inc. / Terms / Privacy / Trust Center / 4256 N Arlington Heights Rd Ste 105, Arlington Heights, IL 60004",
+  "confidence": "high",
+  "offices": [],
+  "why": "Footer address, the only one on the site. It sits on the same line as the copyright notice, which is worth saying out loud: the copyright YEAR next to it is the thing that is not evidence of anything, and I have not used it. The address itself is a footer address, which for a company's own location is normally reliable."
+ },
+ {
+  "id": "tanium",
+  "name": "Tanium",
+  "location": "Emeryville, CA",
+  "source_url": "https://www.tanium.com/privacy-policy",
+  "quote": "Tanium Inc., 2100 Powell Street, Suite 1600, Emeryville, CA 94608, USA",
+  "confidence": "medium",
+  "offices": [],
+  "why": "Read this one before accepting it. It is the ONLY address Tanium publishes on any page I could read - the home page carries none, /contact-us carries none, and /about-tanium/ is a 404 - and it appears as the data controller's address in the privacy policy. That is a corporate legal address. No page on the site uses the word headquarters, so if the owner has any independent sense of where Tanium sits, his beats this."
+ },
+ {
+  "id": "stellic",
+  "name": "Stellic",
+  "location": "San Mateo, CA",
+  "source_url": "https://www.stellic.com/privacy-policy",
+  "quote": "Stellic, Inc. / 204 E 2nd Ave #603 / San Mateo, CA 94401 / Email: support@stellic.com",
+  "confidence": "medium",
+  "offices": [],
+  "why": "The only address the site publishes; the home page, /about and /request-a-demo carry none. A privacy-policy contact address is a legal address rather than a stated headquarters, hence medium."
+ },
+ {
+  "id": "secure-schools",
+  "name": "Secure Schools",
+  "location": "Newmarket, United Kingdom",
+  "source_url": "https://www.secureschools.com/en-gb/contact",
+  "quote": "UK head office / Newmarket / Furlong House / 2 King's Court / Newmarket / Suffolk CB8 7SG / Tel: +44 (0)1638 438186",
+  "confidence": "medium",
+  "offices": [
+   "Newmarket, United Kingdom (UK head office)"
+  ],
+  "why": "'UK head office' is a head office qualified by a country, which leaves open whether some other country has one - and the site is served under an /en-gb/ locale path, which is the kind of site that usually has siblings. No other office appears anywhere I read. Medium for that reason and no other."
+ },
+ {
+  "id": "code-four",
+  "name": "Code Four",
+  "location": "Huntington Beach, CA",
+  "source_url": "https://www.codefour.com/contact",
+  "quote": "Code Four / 5252 Bolsa Avenue / Huntington Beach, CA 92649 / info@codefour.com ... Code Four United States / 5252 Bolsa Avenue / Huntington Beach, CA 92649 ... Code Four Australia / 1/28 Expo Court / Ashmore, QLD 4214",
+  "confidence": "medium",
+  "offices": [
+   "Huntington Beach, CA (Code Four United States)",
+   "Ashmore, QLD, Australia (Code Four Australia)"
+  ],
+  "why": "The contact page leads with an unqualified 'Code Four' block at the Huntington Beach address and then lists the two country entities beneath it. Leading the page is weaker than a label, so medium: if this row is meant to be the group rather than the US arm, the Australian entity is the other candidate and nothing on the site says which came first."
+ },
+ {
+  "id": "simplyanalytics",
+  "name": "SimplyAnalytics",
+  "location": "New York, NY",
+  "source_url": "https://www.simplyanalytics.com/contactus",
+  "quote": "Our Address / 244 5th Ave, Suite 2316, New York, NY 10001",
+  "confidence": "medium",
+  "offices": [],
+  "why": "Labelled 'Our Address' and the only address on the site - /about/, /privacy/ and /terms/ are all 404, so there is nothing to corroborate it against. Medium because a four-digit 'Suite' at 244 5th Avenue has the shape of a mailbox suite rather than a floor, and the site gives nothing that would tell those apart."
+ },
+ {
+  "id": "gamechanger",
+  "name": "GameChanger",
+  "location": "New York, NY",
+  "source_url": "https://gc.com/",
+  "quote": "124 East 14th Street / 17th Floor / New York, NY 10003 / GameChanger is a proud member of the DICK'S Sporting Goods Family.",
+  "confidence": "medium",
+  "offices": [],
+  "why": "The only address on the site, in the footer, with a floor number - so an office, not a mailbox. Medium because the same footer says GameChanger is part of the DICK'S Sporting Goods family, which makes this a subsidiary's own office rather than a corporate headquarters. For a job board that is the useful answer anyway; flagging it so nobody is surprised later."
+ },
+ {
+  "id": "aurigo-software-technologies-inc",
+  "name": "Aurigo Software Technologies Inc.",
+  "location": "Austin, TX",
+  "source_url": "https://www.aurigo.com/",
+  "quote": "8310-2 N Capital of Texas Highway / Prominent Pointe II, Suite 100 / Austin, TX 78731 / sales@aurigo.com",
+  "confidence": "medium",
+  "offices": [],
+  "why": "The only address in the site footer. Medium because no page calls it a headquarters and I did not find an office list - a company with an engineering operation somewhere else would look exactly like this from the pages I read."
+ },
+ {
+  "id": "box",
+  "name": "Box",
+  "location": "Redwood City, CA",
+  "source_url": "https://www.box.com/",
+  "quote": "schema.org Organization, name 'Box, Inc.', address: {streetAddress '900 Jefferson Ave', addressLocality 'Redwood City', addressRegion 'CA', postalCode '94063'}",
+  "confidence": "medium",
+  "offices": [],
+  "why": "A schema.org Organization/PostalAddress under the legal name Box, Inc. Medium rather than high on a rule I adopted partway through this pass: a schema block with nothing visible on the page to corroborate it is one notch softer than an address a human can see, because this same sweep caught Anaplan's schema block still serving a headquarters the company had left."
+ },
+ {
+  "id": "hello-heart",
+  "name": "Hello Heart",
+  "location": "Menlo Park, CA",
+  "source_url": "https://www.helloheart.com/",
+  "quote": "schema.org PostalAddress: {streetAddress '545 Middlefield Road, Suite 260', addressLocality 'Menlo Park', addressRegion 'CA', postalCode '94025'}",
+  "confidence": "medium",
+  "offices": [],
+  "why": "Home-page schema.org PostalAddress, the only address on the page. Medium under the same schema-block rule as Box."
+ },
+ {
+  "id": "bea-transit-technologies",
+  "name": "BEA Transit Technologies",
+  "location": "Alameda, CA",
+  "source_url": "https://www.beattusa.com/",
+  "quote": "schema.org PostalAddress: {streetAddress '1516 Oak Street', addressLocality 'Alameda', addressRegion 'CA', postalCode '94501'}",
+  "confidence": "medium",
+  "offices": [],
+  "why": "Home-page schema.org PostalAddress on a home page only 34 lines long, so it is the only thing the site states. One thing for the owner to check rather than me to assume: the recorded domain is beattusa.com, and a domain that carries a country in its name is a reason to ask whether this row is a national arm - it is not evidence of a parent, and I found no page naming one."
+ },
+ {
+  "id": "aatral-vr-ar-training",
+  "name": "Aatral VR AR Training",
+  "location": "Chennai, India",
+  "source_url": "https://aatral.io/",
+  "quote": "schema.org PostalAddress: {addressLocality 'Chennai', addressCountry 'IN'} (three such blocks on the home page)",
+  "confidence": "medium",
+  "offices": [],
+  "why": "Three schema.org PostalAddress blocks on the home page, all Chennai, IN. City and country only - no street address - and nothing on the visible page states it, so medium."
+ },
+ {
+  "id": "a-frame-solutions",
+  "name": "ArcSuite AI",
+  "location": "Washington, DC",
+  "source_url": "https://www.aframesolutions.com/",
+  "quote": "schema.org PostalAddress: {addressLocality 'Washington', addressRegion 'DC', addressCountry 'US'}",
+  "confidence": "medium",
+  "offices": [],
+  "why": "Home-page schema.org PostalAddress with a city and region but no street address, and nothing visible on the page repeats it. Separately worth someone's eye: this record's id is 'a-frame-solutions' but its name is 'ArcSuite AI' - a rename that may want a look in its own right."
+ },
+ {
+  "id": "parkify",
+  "name": "Parkify",
+  "location": "San Francisco, CA",
+  "source_url": "https://parkifyrec.com/",
+  "quote": "schema.org PostalAddress: {streetAddress '5432 Geary Blvd, Unit #550', addressLocality 'San Francisco', addressRegion 'CA', postalCode '94121'}",
+  "confidence": "medium",
+  "offices": [],
+  "why": "Home-page schema.org PostalAddress and the only address on the site. Medium because 'Unit #550' at a street-level Geary Boulevard address has the shape of a mailbox rather than an office suite, and the site offers nothing that would separate the two."
+ },
+ {
+  "id": "evisions",
+  "name": "Evisions",
+  "location": null,
+  "source_url": "https://www.evisions.com/about/",
+  "quote": "Evisions closes Irvine, CA office; becomes fully remote company with employees around the country ... Fully Remote Company ... As a fully remote company, we prioritize flexibility and innovation",
+  "confidence": "remote",
+  "offices": [],
+  "why": "Their own about page says they closed the Irvine office and became fully remote. This one had two separate ways to go wrong. The ld+json Organization block on both the home and contact pages still gives addressLocality 'Irvine', addressRegion 'CA' - and its streetAddress is the literal string '...', which tells you nobody has touched that block in years. And the contact page gives 'Evisions / 1321 Upland Dr. PMB 20169 / Houston, Texas 77043', a PMB, i.e. a private mailbox. Either would have produced a confident, wrong city. The honest answer is that this company has no headquarters."
+ },
+ {
+  "id": "blackrainbow-inc",
+  "name": "BlackRainbow Inc",
+  "location": null,
+  "source_url": "https://blackrainbow.com/about-us/",
+  "quote": "BlackRainbow Inc. / 11921 Freedom Drive / Reston, VA 20190 / P +1 (202) 919-3111 ... The Street, Nacton, / Ipswich, IP10 0EU / P +44 (0) 20 8050 9356",
+  "confidence": "ambiguous",
+  "offices": [
+   "Reston, VA (BlackRainbow Inc.)",
+   "Ipswich, United Kingdom"
+  ],
+  "why": "Two addresses for two entities, neither called a head office, and /contact-us/ is a 404 so there is no third page to break the tie. Reston is listed first and the record is named for the US entity; both are reasons to lean, neither is a statement, so I am not picking."
+ },
+ {
+  "id": "operator-xr",
+  "name": "Operator XR",
+  "location": null,
+  "source_url": "https://operatorxr.com/contact",
+  "quote": "OPERATOR XR LLC / 201 N. Union St. Suite 110 #11286 / Alexandria, VA 22314 / United States ... OPERATOR XR PTY LTD / Unit 4/108 Old Pittwater Rd, / Brookvale, NSW 2100 / Australia",
+  "confidence": "ambiguous",
+  "offices": [
+   "Alexandria, VA (Operator XR LLC)",
+   "Brookvale, NSW, Australia (Operator XR Pty Ltd)"
+  ],
+  "why": "Two entities, neither labelled a head office. The US line reads 'Suite 110 #11286' - a box number behind a suite number, which is the shape of a mail-forwarding address, not an office; the Australian line is a numbered unit at a street address. That leans Australian, and leaning is not a statement. Also for the duplicates queue rather than this one: 'operator-xr' and 'operator-xr-llc' are two rows pointing at the same website."
+ },
+ {
+  "id": "operator-xr-llc",
+  "name": "Operator XR LLC",
+  "location": null,
+  "source_url": "https://operatorxr.com/contact",
+  "quote": "OPERATOR XR LLC / 201 N. Union St. Suite 110 #11286 / Alexandria, VA 22314 / United States ... OPERATOR XR PTY LTD / Unit 4/108 Old Pittwater Rd, / Brookvale, NSW 2100 / Australia",
+  "confidence": "ambiguous",
+  "offices": [
+   "Alexandria, VA (Operator XR LLC)",
+   "Brookvale, NSW, Australia (Operator XR Pty Ltd)"
+  ],
+  "why": "Same site and same finding as 'operator-xr' - these two rows are the same company twice and should probably go to the duplicates queue before either gets a location. See that entry for the reasoning."
+ },
+ {
+  "id": "8a-payments",
+  "name": "8A Payments",
+  "location": null,
+  "source_url": "https://www.8a-payments.com/",
+  "quote": "schema.org PostalAddress: {streetAddress '3343 Peachtree Rd NE, Suite 145 PMB 1029', addressLocality 'Atlanta', addressRegion 'GA', postalCode '30326'}",
+  "confidence": "none",
+  "offices": [],
+  "why": "The only address on the site carries 'PMB 1029' - a private mailbox - inside a suite. A mailbox is not a headquarters. Atlanta would have looked perfectly plausible in the field and would have rested on nothing, so it stays blank."
+ },
+ {
+  "id": "psych-hub",
+  "name": "Psych Hub",
+  "location": null,
+  "source_url": "https://psychhub.com/contact-us",
+  "quote": "Mailing address 501 Union St., Ste 545 PMB 359238 Nashville, TN 37219-1876",
+  "confidence": "none",
+  "offices": [],
+  "why": "The company labels this its mailing address, not its office, and it carries a PMB number. Both halves of that say 'not a headquarters'. Nothing else on the home or contact page states a location."
+ },
+ {
+  "id": "echo360",
+  "name": "Echo360",
+  "location": null,
+  "source_url": "https://echo360.com/privacy/",
+  "quote": "Attn: Privacy Officer/Customer Information / 6000 Mahoning Ave, Suite 254 / Youngstown, OH 44515, United States of America",
+  "confidence": "none",
+  "offices": [],
+  "why": "The only address anywhere on the site is where privacy correspondence should be sent. The home page and /company/ state no location and /contact-us/ is a 404. An 'Attn: Privacy Officer' correspondence address is not a headquarters claim."
+ },
+ {
+  "id": "tso-mobile",
+  "name": "TSO Mobile",
+  "location": null,
+  "source_url": "https://www.zonar.com/acquisitions/tsomobile",
+  "quote": "schema.org PostalAddress: {addressLocality 'Seattle', addressRegion 'WA', addressCountry 'US'}",
+  "confidence": "none",
+  "offices": [],
+  "why": "Stop before the location question. The website recorded for TSO Mobile is a page on zonar.com describing Zonar's acquisition of TSO Mobile, so the schema.org address on it - Seattle, WA - is Zonar's. Accepting it would have written the acquirer's headquarters onto the acquired company's row, and it would have looked entirely normal afterwards. This row needs a website fix or an acquisition ruling first."
+ },
+ {
+  "id": "911-inform",
+  "name": "911 Inform",
+  "location": null,
+  "source_url": "https://911inform.com",
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "The page loaded but shipped almost no text - it renders its content in the browser, so a plain fetch reads an empty shell. Unreadable is not empty: a browser session would probably settle this in a minute. Pages attempted: https://911inform.com/."
+ },
+ {
+  "id": "911-systems",
+  "name": "911 Systems",
+  "location": null,
+  "source_url": "https://www.911systems.com",
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "The page loaded but shipped almost no text - it renders its content in the browser, so a plain fetch reads an empty shell. Unreadable is not empty: a browser session would probably settle this in a minute. Pages attempted: https://www.911systems.com/."
+ },
+ {
+  "id": "acapela-group",
+  "name": "Acapela Group",
+  "location": null,
+  "source_url": "https://www.acapela-group.com/applications-en/transport/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://www.acapela-group.com/applications-en/transport/, https://www.acapela-group.com/contact/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped. Flagging the record rather than the company: the website in companies.json is https://www.acapela-group.com/applications-en/transport/ - a deep link into one product page, not the company's home page. /contact/ was read from there and carries no address. A row pointed at a sub-page is a website-review question first."
+ },
+ {
+  "id": "adobe",
+  "name": "Adobe",
+  "location": null,
+  "source_url": "https://www.adobe.com",
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "Nothing loaded. <home> -> ReadTimeout. A site that will not answer is unreachable, not evidence of anything."
+ },
+ {
+  "id": "adp",
+  "name": "ADP",
+  "location": null,
+  "source_url": "https://www.adp.com",
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "Nothing loaded. <home> -> RuntimeError. A site that will not answer is unreachable, not evidence of anything."
+ },
+ {
+  "id": "ai-rgus",
+  "name": "Ai-RGUS",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "almaviva",
+  "name": "Almaviva",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "alpha-vision",
+  "name": "Alpha Vision",
+  "location": null,
+  "source_url": "https://alphavision.co",
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "The page loaded but shipped almost no text - it renders its content in the browser, so a plain fetch reads an empty shell. Unreadable is not empty: a browser session would probably settle this in a minute. Pages attempted: https://alphavision.co/."
+ },
+ {
+  "id": "amazon-web-services",
+  "name": "Amazon Web Services (AWS)",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "ambient-ai",
+  "name": "Ambient.ai",
+  "location": null,
+  "source_url": "https://www.ambientai.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://www.ambientai.com/, https://www.ambientai.com/contact/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped. The contact page returned only 18 lines of text, which is thin enough that it is probably a client-rendered form rather than a page with nothing on it - closer to unreadable than to empty."
+ },
+ {
+  "id": "assetworks-eam",
+  "name": "AssetWorks EAM",
+  "location": null,
+  "source_url": "https://www.assetworks.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://www.assetworks.com/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "athletify",
+  "name": "Athletify",
+  "location": null,
+  "source_url": "https://www.athletify.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://www.athletify.com/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "aurionpro",
+  "name": "Aurionpro",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "avila-technologies-inc",
+  "name": "Avila Technologies Inc.",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "avolve",
+  "name": "Avolve",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "band",
+  "name": "BAND",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "barkpass-pet-licensing-dog-park-management",
+  "name": "BarkPass | Pet Licensing & Dog Park Management",
+  "location": null,
+  "source_url": "https://www.barkpass.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://www.barkpass.com/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "baseline-telematics",
+  "name": "Baseline Telematics",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "batonroute-school-and-staff-transport-app",
+  "name": "BatOnRoute - School and Staff Transport App",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "bentley-systems",
+  "name": "Bentley Systems",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "biddingo-com",
+  "name": "Biddingo.com",
+  "location": null,
+  "source_url": "https://biddingo.com",
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "The page loaded but shipped almost no text - it renders its content in the browser, so a plain fetch reads an empty shell. Unreadable is not empty: a browser session would probably settle this in a minute. Pages attempted: https://biddingo.com/."
+ },
+ {
+  "id": "black-spirit-software-solutions-llc",
+  "name": "BLACK SPIRIT SOFTWARE SOLUTIONS LLC",
+  "location": null,
+  "source_url": "https://blackspirit.io/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://blackspirit.io/, https://blackspirit.io/contact/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "blitz",
+  "name": "Blitz",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "bltn",
+  "name": "BLTN",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "blue-voice",
+  "name": "Blue Voice",
+  "location": null,
+  "source_url": "https://bluevoice.io/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://bluevoice.io/, https://bluevoice.io/about-us/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "boodlebox",
+  "name": "BoodleBox",
+  "location": null,
+  "source_url": "https://boodlebox.ai/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://boodlebox.ai/, https://boodlebox.ai/get-a-demo. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped. Second pass: /policy/privacy-policy and /our-story both read in full, both state no location."
+ },
+ {
+  "id": "brightly-software",
+  "name": "Brightly Software",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "carfax",
+  "name": "CARFAX",
+  "location": null,
+  "source_url": "https://www.carfax.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://www.carfax.com/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Also tried and could not load: https://www.carfax.com/company/about, https://www.carfax.com/company/sample-carfax-report, https://www.carfax.com/company/partners - those are unread, not empty. Recorded so the next pass knows this was looked at rather than skipped. Second pass: /company/about-us returned 403 and /help/privacy-policy 404, so the pages most likely to carry an address were never read. Treat this as unread rather than empty - carfax.com clearly serves a real site, it just refuses this fetcher."
+ },
+ {
+  "id": "clinically-ai",
+  "name": "Clinically AI",
+  "location": null,
+  "source_url": "https://www.clinicalnotes.ai/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://www.clinicalnotes.ai/, https://www.clinicalnotes.ai/about/company-overview.html. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped. Note the redirect: the recorded website clinicallyai.com lands on clinicalnotes.ai, which is where the pages above were read. /contact.html and /about/contact.html are 404 there. Whether the two names are the same company is worth a look in its own right."
+ },
+ {
+  "id": "clipr-ai",
+  "name": "CLIPr AI",
+  "location": null,
+  "source_url": "https://cliprai.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://cliprai.com/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "cops-training-portal",
+  "name": "COPS Training Portal (Powered by NCPI)",
+  "location": null,
+  "source_url": null,
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "No website is recorded for this company, so there was nothing to read. This is a blank in companies.json, not a finding about the company - it belongs in the missing-websites queue before a location can be asked for."
+ },
+ {
+  "id": "crimewatch-technologies-inc",
+  "name": "CRIMEWATCH",
+  "location": null,
+  "source_url": "https://crimewatch.net/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://crimewatch.net/, https://crimewatch.net/contact-us. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "etrak-recreation-software",
+  "name": "etrak Recreation Software",
+  "location": null,
+  "source_url": "https://etrak.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://etrak.com/, https://etrak.com/customer-support/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "flash-ai",
+  "name": "Flash AI",
+  "location": null,
+  "source_url": "https://www.flashai.us/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://www.flashai.us/, https://www.flashai.us/contact. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "gis-webtech",
+  "name": "GIS WebTech",
+  "location": null,
+  "source_url": "https://giswebtech.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://giswebtech.com/, https://giswebtech.com/contact. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped. Second pass: /about-us/, /about/ and /company/ are all 404, so beyond the home and contact pages there was nothing further to try from the outside."
+ },
+ {
+  "id": "iris-intel",
+  "name": "IRIS Intel",
+  "location": null,
+  "source_url": "https://www.irisintelgroup.com",
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "The page loaded but shipped almost no text - it renders its content in the browser, so a plain fetch reads an empty shell. Unreadable is not empty: a browser session would probably settle this in a minute. Pages attempted: https://www.irisintelgroup.com/."
+ },
+ {
+  "id": "mango-languages",
+  "name": "Mango Languages",
+  "location": null,
+  "source_url": "https://mangolanguages.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://mangolanguages.com/, https://mangolanguages.com/company/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped. Second pass: /legal/privacy-policy/ read in full. The only postal addresses on it belong to GDPREP.ORG, an outside GDPR representative in London and Dublin - a third party's address, which says nothing about where Mango Languages is."
+ },
+ {
+  "id": "mcm-technology-llc",
+  "name": "MCM Technology LLC",
+  "location": null,
+  "source_url": "https://mcmtechnology.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://mcmtechnology.com/, https://mcmtechnology.com/about-us/contact-us/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "minga",
+  "name": "Minga",
+  "location": null,
+  "source_url": "https://minga.io/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://minga.io/, https://support.minga.io/en/collections/15213335-getting-started-for-admins. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped. Second pass: /about/ and /privacy/ both read in full, both state no location."
+ },
+ {
+  "id": "nexsos",
+  "name": "nexSOS",
+  "location": null,
+  "source_url": "https://nexsos.app/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://nexsos.app/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "orange-data",
+  "name": "Orange Data",
+  "location": null,
+  "source_url": "https://www.orangedata.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://www.orangedata.com/, https://www.orangedata.com/contact. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "peach-safety",
+  "name": "Peach Safety",
+  "location": null,
+  "source_url": "https://peachsafety.com",
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "The page loaded but shipped almost no text - it renders its content in the browser, so a plain fetch reads an empty shell. Unreadable is not empty: a browser session would probably settle this in a minute. Pages attempted: https://peachsafety.com/."
+ },
+ {
+  "id": "schoolai",
+  "name": "SchoolAI",
+  "location": null,
+  "source_url": "https://schoolai.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://schoolai.com/, https://schoolai.com/contact. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped. Second pass: /privacy and /about both read in full, both state no location."
+ },
+ {
+  "id": "transify",
+  "name": "Transify",
+  "location": null,
+  "source_url": "https://transify.city",
+  "quote": "",
+  "confidence": "unreachable",
+  "offices": [],
+  "why": "Nothing loaded. <home> -> ConnectionError. A site that will not answer is unreachable, not evidence of anything."
+ },
+ {
+  "id": "transit-systems",
+  "name": "Transit-Systems (TSL)",
+  "location": null,
+  "source_url": "https://www.tsl.tech/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://www.tsl.tech/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "unstackr",
+  "name": "Unstackr",
+  "location": null,
+  "source_url": "https://www.unstackr.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://www.unstackr.com/, https://www.unstackr.com/contact-us. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "verizon-connect",
+  "name": "Verizon Connect",
+  "location": null,
+  "source_url": "https://www.verizonconnect.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://www.verizonconnect.com/, https://www.verizonconnect.com/features/electric-vehicle-fleet/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped. Second pass: /contact-us/, /contact/, /about-us/ and /legal/privacy-policy/ are all 404 on this host, so the home page is the only page I actually read. Note also that the one secondary link the sweep followed was a product page, not a contact page - this site's nav gave nothing better."
+ },
+ {
+  "id": "vitalsense-technologies",
+  "name": "VitalSense Technologies",
+  "location": null,
+  "source_url": "https://vitalsensetechnologies.com/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://vitalsensetechnologies.com/. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ },
+ {
+  "id": "with-community-calendar",
+  "name": "'with' Community Calendar",
+  "location": null,
+  "source_url": "https://bewith.io/",
+  "quote": "",
+  "confidence": "none",
+  "offices": [],
+  "why": "Read https://bewith.io/, https://bewith.io/case-studies/seguin. No address, no city, no office list, no schema.org PostalAddress, and no claim to be remote either - the site simply does not say where the company is. Recorded so the next pass knows this was looked at rather than skipped."
+ }
+]

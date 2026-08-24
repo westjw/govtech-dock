@@ -4,14 +4,32 @@
     {
       "name": "govtech-dock",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8000"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8000"
+      ],
       "port": 8000
     },
     {
       "name": "govtech-dock-admin",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["scripts/admin.py", "--port", "8787"],
+      "runtimeArgs": [
+        "scripts/admin.py",
+        "--port",
+        "8787"
+      ],
       "port": 8787
+    },
+    {
+      "name": "govtech-dock-verify",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8701"
+      ],
+      "port": 8701
     }
   ]
 }

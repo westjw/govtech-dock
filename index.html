@@ -290,6 +290,32 @@
     margin:var(--space-3) 0 0}
   .golink{font-size:16px;font-weight:600}
 
+  /* ---- the sub-companies folded into one record ----
+     Subordinate to the parent's own story by every signal that carries, and
+     by none that shouts: one hairline closes the parent's card, the section
+     label sits in the 13px uppercase slot, and each brand hangs off a single
+     vertical rule at 20px - one step under the parent's 21px name and one
+     over body copy. Deliberately NOT a card: .card is what a peer looks like
+     on this page, and a brand is inside the company, not beside it.
+     Two paragraphs of 400 words need a measure, so the prose is held at 72ch
+     in --dim, which is the readable secondary tone. */
+  .brands{margin-top:var(--space-8);border-top:1px solid var(--line);
+    padding-top:var(--space-4)}
+  .brands>.lbl{margin:0 0 var(--space-2)}
+  .brand{margin-top:var(--space-6);border-left:1px solid var(--line);
+    padding-left:var(--space-4)}
+  .brand h4{font-size:20px;letter-spacing:-.015em}
+  .brand .bmeta{margin-top:var(--space-2);display:flex;gap:var(--space-3);
+    align-items:baseline;flex-wrap:wrap;font-size:13px}
+  .brand p{color:var(--dim);font-size:16px;line-height:1.6;max-width:72ch;
+    margin:var(--space-3) 0 0}
+  /* the roster, high on the card, so a person who arrived by searching a brand
+     name sees that name before three screens of the parent's own hiring */
+  .brandroster{margin:var(--space-4) 0 0;font-size:13px;color:var(--dim)}
+  .brandroster a{font-weight:600;cursor:pointer}
+  /* why THIS row is in a result the reader did not ask for by name */
+  .brandhit{color:var(--ink)}
+
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
     gap:var(--space-3);margin-bottom:var(--space-4)}
   .card{background:var(--panel);border:1px solid var(--line);padding:var(--space-3) var(--space-4)}
@@ -773,21 +799,114 @@ function coStarts(n){
    return Instructure, because the word "training" contains the letters
    r-a-i-n. 52 results where 3 are meant is the same failure as zero results,
    wearing a bigger number. */
-function coNameHit(o,raw){
+/* one name, read the way this search reads any name. Pulled out of coNameHit
+   so a brand name and a former name are matched by the SAME rule as the
+   company's own - three anchorings that drift apart is three bugs. */
+const coNamed=(n,raw)=>{
   const q=coSquash(raw);
-  if(!q)return false;
-  const n=o.name||"";
+  if(!q||!n)return false;
   return coStarts(n).some(i=>coSquash(n.slice(i)).startsWith(q));
+};
+function coNameHit(o,raw){return coNamed(o.name||"",raw);}
+/* An ALIAS is a name recorded inside a field, and it drags English in with it:
+   "NextRec (formerly PerfectMind)". coStarts anchors at every word start, so
+   the word "formerly" became a searchable alias and returned 100 Xplor roles
+   to somebody who typed it - measured, not imagined. A name inside a name
+   begins with a capital, or is the whole string, and that is the rule here.
+
+   Deliberately NOT applied to a company's own `name`, where a lowercase word
+   in the middle is part of the name somebody would type ("Rock Solid", "gov
+   by design"), and where the anchoring above is already proven behaviour. */
+const coAliasNamed=(n,raw)=>{
+  const q=coSquash(raw);
+  if(!q||!n)return false;
+  return coStarts(n).filter(i=>i===0||/[A-Z0-9]/.test(n[i]))
+    .some(i=>coSquash(n.slice(i)).startsWith(q));
+};
+/* THE SECOND HALF OF THE SAME RULE. A merge folds a company into its parent
+   and the folded name stops existing as a record - PerfectMind is Xplor
+   Recreation now, Simpleview is Granicus. Somebody typing the old name is
+   asking about a company we still track, and returning nothing tells them we
+   have never heard of it. So a brand name finds the parent.
+
+   It FINDS, it does not redirect: the row appears as Xplor Recreation and the
+   search says why, because a query that silently rewrites itself leaves a
+   person wondering whether the box is broken.
+
+   Never reported when the company's own name already answers the query -
+   "granicus" matching the brand "Simpleview (Granicus Destinations)" would
+   otherwise print "Simpleview is part of Granicus" at somebody who asked
+   about Granicus. */
+function coBrandsNamed(o,raw){
+  if(!o.brands||coNameHit(o,raw))return [];
+  return o.brands.filter(b=>coAliasNamed(b.name,raw));
 }
+/* Former names and misspellings a person recorded. Same rule, weaker claim:
+   an alias is another name for THIS company, not a company inside it. */
+function coAkaNamed(o,raw){
+  if(!o.also_known_as||coNameHit(o,raw))return [];
+  return o.also_known_as.filter(a=>coAliasNamed(a,raw));
+}
+/* the whole rule in one predicate: own name, brand, or former name */
+const coFinds=(o,raw)=>coNameHit(o,raw)
+  ||coBrandsNamed(o,raw).length>0||coAkaNamed(o,raw).length>0;
+/* every other name a company answers to, by id. Built once in start(): the
+   jobs tab consults it inside a predicate that runs over 4,000 postings on
+   every keystroke, and rebuilding it there is the difference between a search
+   that types and one that stutters. */
+const CO_ALIASES=new Map();
+function buildAliases(){
+  CO_ALIASES.clear();
+  (D.organizations||[]).forEach(o=>{
+    const n=(o.brands||[]).map(b=>b.name)
+      .concat(o.also_known_as||[]).filter(Boolean);
+    if(n.length)CO_ALIASES.set(o.id,n);
+  });
+}
+/* WHY a company a person did not name is in their results, as one sentence
+   per name. `named` is the tab's own reading of the query - the whole string
+   on the Companies tab, one leftover word at a time on the job board - and
+   `has` is whether that company actually put something on screen, because
+   explaining a row that is not there is its own small confusion. */
+function brandSays(named,has){
+  const out=[];
+  (D.organizations||[]).forEach(o=>{
+    // three cheap tests first, in the order that rejects the most: eleven
+    // companies here have another name at all, and this runs on a keystroke
+    if(!CO_ALIASES.has(o.id)||!has(o)||named(o.name||""))return;
+    const bs=(o.brands||[]).filter(b=>named(b.name));
+    if(bs.length){bs.forEach(b=>out.push({co:o.name,was:b.name,part:true}));return;}
+    (o.also_known_as||[]).filter(a=>named(a))
+      .forEach(a=>out.push({co:o.name,was:a,part:false}));
+  });
+  return out;
+}
+/* "PerfectMind is part of Xplor Recreation" - the owner's sentence. A brand is
+   INSIDE the company; a former name IS the company, and saying so the same way
+   would be a different and wrong claim. */
+const brandLine=s=>s.part
+  ?`<strong>${esc(s.was)}</strong> is part of <strong>${esc(s.co)}</strong>`
+  :`<strong>${esc(s.co)}</strong> is also known as <strong>${esc(s.was)}</strong>`;
+/* The tail is the whole point of doing it this way. "Redirected to Xplor" is
+   what the owner asked for and a silent redirect is not what he wants to
+   happen - somebody typing a name and reading a different one has no way to
+   tell a working search from a broken one unless the page says so. */
+const brandWhyHTML=says=>says.slice(0,4).map(brandLine).join(" &middot; ")
+  +(says.length>4?` &middot; and ${says.length-4} more`:"")
+  +` &mdash; found under the name this board files it under, rather than
+     redirected there without saying so.`;
 /* and how squarely, for ranking: 0 the whole name, 1 starts it, 2 starts a
-   word inside it, 9 not a name match at all */
+   word inside it, 3 a brand or a former name, 9 not a name match at all.
+   The brand tier sits BELOW every match on the company's own name so
+   "recdesk" puts RecDesk above the parent that also carries the name. */
 function coNameRank(o,raw){
   const q=coSquash(raw);
   if(!q)return 9;
   const n=coSquash(o.name);
   if(n===q)return 0;
   if(n.startsWith(q))return 1;
-  return coNameHit(o,raw)?2:9;
+  if(coNameHit(o,raw))return 2;
+  return coBrandsNamed(o,raw).length||coAkaNamed(o,raw).length?3:9;
 }
 /* a term matches at a word start, as a prefix: "permit" finds "permitting",
    "rain" does not find "training" */
@@ -2007,6 +2126,21 @@ function drawJobs(){
     relaxed=FAM[WANT.family]||WANT.family;
   }
   const sinceDays=/^\d+$/.test(since)?+since:null;
+  /* A COMPANY ANSWERS TO MORE THAN ONE NAME. PerfectMind was folded into Xplor
+     Recreation and Simpleview into Granicus, so their roles are filed under
+     the parent and a search for the old name found nothing at all - which
+     reads as "no such company", the one claim this board must never make.
+
+     Tested here, against the words the vocabulary did not recognise, rather
+     than appended to `hay`: hay is a free substring test, and dropping
+     "Vermont Systems" into it would put 100 Xplor rows behind the word
+     "vermont" wherever it appeared in a location or a job title. This is the
+     Companies tab's anchoring, on the same names, so both tabs agree about
+     what a name match is. */
+  const brandTerm=(alts,cid)=>{
+    const names=CO_ALIASES.get(cid);
+    return !!names&&alts.some(w=>names.some(n=>coAliasNamed(n,w)));
+  };
   /* One predicate, with the age horizon as an ARGUMENT rather than a closure
      read. Everything else about the view is fixed by the time we get here, but
      the "new this run" strip has to answer a second question - how many rows
@@ -2034,7 +2168,8 @@ function drawJobs(){
     // then whatever the vocabulary did not recognise, as plain text. Every
     // word must land somewhere, not the phrase as one substring: "account
     // executive kansas" is a title plus a place, never adjacent.
-    if(WANT.terms.length&&!WANT.terms.every(alts=>alts.some(w=>hay.includes(w))))
+    if(WANT.terms.length&&!WANT.terms.every(alts=>alts.some(w=>hay.includes(w))
+      ||brandTerm(alts,p.company_id)))
       return false;
     if(quotaOnly&&!p.quota_carrying)return false;
     /* The three work-mode buttons are disjoint. "Onsite" means the job
@@ -2200,6 +2335,23 @@ function drawJobs(){
       history is not deep enough for. It was left off rather than filtering the list down
       to nothing.`;
     host.appendChild(n);
+  }
+
+  /* WHY XPLOR RECREATION IS THE ANSWER TO "PERFECTMIND". Every row below is
+     stamped with the parent's name, because that is whose board the role is
+     on; without this line a person who typed a brand name reads a company
+     they did not ask for and has no way to tell the search from a bug. Said
+     at the top of the list, where they are already looking. */
+  if(WANT.terms.length){
+    const on=new Set(rows.map(p=>p.company_id));
+    const says=brandSays(n=>WANT.terms.some(alts=>alts.some(w=>coAliasNamed(n,w))),
+                         o=>on.has(o.id));
+    if(says.length){
+      const n=document.createElement("div");
+      n.className="note flag";
+      n.innerHTML=brandWhyHTML(says);
+      host.appendChild(n);
+    }
   }
 
   if(!rows.length){
@@ -2523,6 +2675,17 @@ function coWhy(q,W,c){
     host.appendChild(f);
   }
 
+  /* A brand match gets its own line, above the reasoning, because it answers
+     the question a person is about to ask out loud: why is Xplor Recreation
+     the answer to "perfectmind". This is the whole difference between finding
+     and redirecting - the row is the parent, and the row says so. */
+  if(c.says&&c.says.length){
+    const b=document.createElement("div");
+    b.className="note flag";
+    b.innerHTML=brandWhyHTML(c.says);
+    host.appendChild(b);
+  }
+
   const bits=[];
   if(W.go.length){
     const label=W.go.map(t=>`<strong>${esc(coGoLabel(t))}</strong>`).join(" + ");
@@ -2608,7 +2771,12 @@ function drawCos(){
      while it is happening rather than discovered afterwards. */
   const go=W.go.concat(CO_WIDE?secs.map(x=>[x,null]):[]);
 
-  const named=o=>coNameHit(o,q);
+  /* THE NAME RULE, now including the names a company used to have and the
+     brands folded into it. Everything downstream that reads `named` - the
+     ranking, the ride through the hiring filter, what counts as "only
+     mentions the words" - follows from this one line, which is why the brand
+     case is added here rather than bolted on beside it. */
+  const named=o=>coFinds(o,q);
   const terms=o=>W.terms.every(t=>coTerm(t,coHay(o)));
   /* concepts AND the leftover words: "austin permitting" is a bucket plus a
      place, and both have to hold. With no concept it is the leftover words
@@ -2687,8 +2855,12 @@ function drawCos(){
      rather than assumed, and printed, because a row with nothing open sitting
      in a list headed "Hiring now" has to explain itself on the spot. */
   const namedIdle=hiringOnly?rows.filter(o=>!(o.open_roles>0)).length:0;
+  /* Counted off the rows that SURVIVED every filter, not off the match, so
+     the sentence never explains a company the page is not showing. */
+  const onScreen=new Set(rows.map(o=>o.id));
+  const says=q?brandSays(n=>coAliasNamed(n,q),o=>onScreen.has(o.id)):[];
   coWhy(q,W,{outN:outN,inN:inN,wideN:wideN,secs:secs,relaxed:relaxed,
-             namedIdle:namedIdle,shown:rows.length,
+             namedIdle:namedIdle,shown:rows.length,says:says,
              bucket:D.organizations.filter(o=>coInGo(o,W.go)).length});
 
   const extra=["c-sec","c-phase","c-reads"].filter(i=>g(i)).length;
@@ -2710,6 +2882,11 @@ function drawCos(){
        but not selling reads plain; one we cannot read says so instead of
        showing a zero, because a zero here would be a claim we cannot make. */
     const unreadable=o.enumerable===false||o.unreadable;
+    /* And the ROW says why too. The line above names the company; in a list of
+       forty it does not tell you which row it was talking about, and a row
+       carrying a name the reader did not type has to account for itself where
+       the reader's eye already is. */
+    const asName=q?(coBrandsNamed(o,q)[0]||{}).name||coAkaNamed(o,q)[0]||"":"";
     const row=document.createElement("div");
     row.className="row clk";
     // same reason as the job row: the id stays a value, so encodeURIComponent
@@ -2721,7 +2898,8 @@ function drawCos(){
         <div class="m">${esc(o.sector)} / ${esc(o.category)}${
           (o.also||[]).map(a=>" &middot; "+esc(a.sector)+" / "+esc(a.category)).join("")}${
           o.location?" &middot; "+esc(o.location):""}
-          <span style="color:var(--faint)">${o.phase?" &middot; "+esc(o.phase):""}</span></div>
+          <span style="color:var(--faint)">${o.phase?" &middot; "+esc(o.phase):""}</span>${
+          asName?` &middot; <span class="brandhit">found as ${esc(asName)}</span>`:""}</div>
       </div>
       ${/* "nothing open" on a company whose board we never found is a claim
             we cannot make, and it is the claim that quietly deletes a warm
@@ -2818,14 +2996,17 @@ function companyStory(o, mine){
   /* 3. where the work is. Territory and desk are different questions and the
         board keeps them apart, so the sentence does too. */
   if(mine.length){
-    let w=whereSummary?whereSummary(mine):null;
-    if(w){
-      // whereSummary was written for a one-line chip, so its clauses butt up
-      // against each other in a sentence. Space them without touching the
-      // function the rest of the board depends on.
-      w=w.replace(/,(?=[a-z0-9])/gi," \u00b7 ").replace(/\s*\u00b7\s*/g," \u00b7 ");
-      P.push(`Where the roles sit: ${w}.`);
-    }
+    /* whereSummary returns its clauses as an ARRAY - it was written for the
+       one-line chip further down this same card, which does `.map(esc).join`.
+       This called `.replace` on it, and an array has no .replace: it threw a
+       TypeError inside co(), which took the WHOLE company card down for every
+       company with a posting on it. Found by clicking Granicus.
+       (The two replaces it threw from were already no-ops on this data - they
+       were written against an older string form and every comma whereSummary
+       emits is followed by a space, which neither pattern matches. So joining
+       is the whole fix, not a change of intent.) */
+    const w=whereSummary?whereSummary(mine):null;
+    if(w&&w.length)P.push(`Where the roles sit: ${w.join(" \u00b7 ")}.`);
   }
 
   /* 4. what they pay, where they say. Only from postings that state it - a
@@ -2849,6 +3030,64 @@ function companyStory(o, mine){
   return P;
 }
 
+/* ------------------------------------------------------- the brands on a card
+   A family merge folds several companies into one record, and `brands` is the
+   only place the folded ones still exist: their own name, their own website,
+   and the write-up somebody did from their own materials. Show it, or this
+   card claims Xplor Recreation is one company and quietly deletes four.
+
+   Rendered rather than dumped: a heading per brand, the paragraphs the
+   research was actually written in, and the whole block hung off one rule
+   under everything about the parent. Nothing here is composed - every
+   sentence is the stored text, split on the blank lines it already has. */
+const brandParas=t=>(t||"").split(/\n\s*\n/).map(s=>s.trim()).filter(Boolean)
+  .map(s=>`<p>${esc(s)}</p>`).join("");
+const brandList=o=>(o.brands||[]).filter(b=>b&&b.name);
+
+/* The roster, high on the card. Somebody who arrived here by typing
+   "perfectmind" has to see that word before three screens of the parent's own
+   hiring, or the card has not answered the question they asked. */
+function brandRoster(o){
+  const bs=brandList(o);
+  if(!bs.length)return "";
+  const head=bs.length===1?"One brand sits under this name:"
+    :bs.length+" brands sit under this name:";
+  return `<p class="brandroster">${head} ${bs.map((b,i)=>
+      `<a data-brand="${i}">${esc(b.name)}</a>`).join(" &middot; ")}
+    &mdash; each one written up at the foot of this card.</p>`;
+}
+
+function brandSection(o){
+  const bs=brandList(o);
+  if(!bs.length)return "";
+  return `<div class="brands" id="brands">
+    <div class="lbl">${bs.length===1?"The brand under this name"
+      :"The "+bs.length+" brands under this name"}</div>
+    ${bs.map((b,i)=>{
+      /* Two of these were NOT folded - they hold a second live job board of
+         their own and still have a record here. Saying "part of Xplor" and
+         stopping would leave a reader who searched RecDesk unable to reach the
+         five roles filed under it. */
+      const rec=b.record?D.organizations.find(x=>x.id===b.record):null;
+      const site=safeUrl(b.website);
+      return `<div class="brand" id="brand-${i}">
+        <h4>${esc(b.name)}</h4>
+        <div class="bmeta">
+          ${site?`<a href="${esc(site)}" target="_blank" rel="noopener"
+            style="font-weight:600">${esc(b.website.replace(/^https?:\/\//,"")
+            .replace(/\/$/,""))} &rarr;</a>`:""}
+          ${rec?`<a data-co="${esc(rec.id)}" style="cursor:pointer">still tracked
+            here as its own company, with its own board &rarr;</a>`:""}
+        </div>
+        ${b.description?brandParas(b.description)
+          /* A blank is a blank. Padding it with a sentence we cannot source is
+             the one thing this file refuses everywhere else. */
+          :`<p>Nothing is written up for this brand on this board yet.</p>`}
+      </div>`;
+    }).join("")}
+  </div>`;
+}
+
 function co(id){
   const o=D.organizations.find(x=>x.id===id);
   if(!o) return;
@@ -2869,6 +3108,7 @@ function co(id){
         `<p class="kv" style="max-width:72ch;margin:0 0 10px">${esc(par)}</p>`).join("")}
     ${o.parent?`<p class="kv"><span class="chip">part of ${esc(o.parent)}</span>
       ${esc(o.ats_note||"")}</p>`:""}
+    ${brandRoster(o)}
     ${/* Directly under the description, not in a footnote at the bottom of
           the page. This is the single most important sentence on the card for
           950 of the 2,108 companies here, because without it every one of
@@ -2966,7 +3206,25 @@ function co(id){
         <td class="kv">${esc(FAM[p.family]||p.family)}</td>
         <td class="kv">${esc(p.location||"not stated")}</td></tr>`).join("")
         ||'<tr><td colspan="3" class="empty">No open roles.</td></tr>'}
-    </tbody></table></div>`;
+    </tbody></table></div>
+    ${/* Last, because everything above is this company's own story and the
+          roles are what a visitor came for - and the roster twelve lines from
+          the top of the card is what carries a reader down here. */""}
+    ${brandSection(o)}`;
+
+  /* Wired after the write, never stringified into an attribute. A brand name
+     and a company id are both strings this board took verbatim from somebody
+     else's site, and the job row learned what an onclick attribute does to one
+     of those: esc() leaves an apostrophe alone, and an id containing an entity
+     comes back out of the HTML parser as a different string. */
+  const view=$("#view");
+  view.querySelectorAll("[data-brand]").forEach(a=>a.onclick=()=>{
+    const el=$("#brand-"+a.dataset.brand);
+    // no href and no hash: a fragment navigation fires popstate, and this
+    // page re-renders on popstate, which would throw the card away mid-scroll
+    if(el)el.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+  view.querySelectorAll("[data-co]").forEach(a=>a.onclick=()=>co(a.dataset.co));
 }
 
 // ------------------------------------------------------------------ market intel
@@ -3175,6 +3433,7 @@ function renderError(e){
 })();
 function start(d){
   D=d;
+  buildAliases();
   $("#tabs").innerHTML=TABS.map(([t,l])=>`<button data-t="${t}">${l}${t==="saved"?' <span id="savedcount" class="tabn"></span>':""}</button>`).join("");
   { const c=$("#savedcount"); if(c)c.textContent=Object.keys(savedAll()).length||""; }
   // ROLE has to be cleared here. jobs() opens with `if(ROLE){roleView(ROLE);return}`,
