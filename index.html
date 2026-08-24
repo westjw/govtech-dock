@@ -728,14 +728,20 @@ function jobs(){
         ${fams.map(f=>`<option value="${f}">${esc(FAM[f]||f)}</option>`).join("")}</select>
       <select id="j-sec"><option value="">All sectors</option>
         ${secs.map(x=>`<option>${esc(x)}</option>`).join("")}</select>
+      <!-- esc() on both the value AND the text, on every option below. The
+           two state dropdowns were the only interpolations in this function
+           without it, while their siblings six lines up had it - which is what
+           an oversight looks like rather than a decision. A state comes from
+           roles.geography() parsing a location string an ATS gave us, so it is
+           third-party text arriving daily with nobody reading it. -->
       <select id="j-state"><option value="">Territory: any</option>
         <option value="__none">No stated territory</option>
-        ${states.map(x=>`<option value="${x}">Territory: ${x}</option>`).join("")}</select>
+        ${states.map(x=>`<option value="${esc(x)}">Territory: ${esc(x)}</option>`).join("")}</select>
       <select id="j-region"><option value="">Territory region: any</option>
         ${regions.map(x=>`<option>${esc(x)}</option>`).join("")}</select>
       <select id="j-office"><option value="">Office: anywhere</option>
         <option value="__none">Office not stated</option>
-        ${offStates.map(x=>`<option value="${x}">Office in ${x}</option>`).join("")}</select>
+        ${offStates.map(x=>`<option value="${esc(x)}">Office in ${esc(x)}</option>`).join("")}</select>
       <select id="j-sen"><option value="">Any level</option>
         <option value="junior">Junior</option><option value="mid">Mid</option>
         <option value="senior">Senior</option><option value="leadership">Leadership</option></select>

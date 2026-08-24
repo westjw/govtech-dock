@@ -1966,7 +1966,29 @@ class Handler(http.server.BaseHTTPRequestHandler):
             return self._capture_page()
         if path == "/capture.js":
             return self._send(CAPTURE_JS.read_bytes(), "application/javascript")
+        if path.startswith("/assets/logos/"):
+            return self._logo(path[len("/assets/logos/"):])
         return self._json({"error": "not found"}, 404)
+
+    # Logos are the one static directory the admin serves. Serving ROOT is what
+    # handed out /.git/config and /data/companies.json, so this resolves the
+    # file and asserts the logo directory is genuinely its parent rather than
+    # trusting the string - "..%2f" and a symlink both die on the resolve.
+    LOGO_TYPES = {".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp",
+                  ".ico": "image/x-icon", ".svg": "image/svg+xml"}
+
+    def _logo(self, name: str):
+        root = (ROOT / "assets" / "logos").resolve()
+        try:
+            f = (root / name).resolve()
+        except (OSError, ValueError):
+            return self._json({"error": "not found"}, 404)
+        if root not in f.parents or not f.is_file():
+            return self._json({"error": "not found"}, 404)
+        kind = self.LOGO_TYPES.get(f.suffix.lower())
+        if not kind:
+            return self._json({"error": "not found"}, 404)
+        return self._send(f.read_bytes(), kind)
 
     def _api_get(self, path: str):
         if path == "/api/triage":
@@ -1977,6 +1999,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
             return self._json({"counts": {k: len(f(companies, board))
                                           for k, f in QUEUES.items()},
                                "labels": LABEL,
+                               # which companies have a logo, and in what
+                               # format. The page needs this to know whether to
+                               # ask for an image at all - guessing the
+                               # extension would mean 1,800 speculative 404s.
+                               "logos": (read("board.json", {}) or {}).get("logos") or {},
                                "companies": len(companies),
                                "postings": len(board.get("postings", [])),
                                "generated": board.get("generated")})

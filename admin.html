@@ -131,6 +131,13 @@
     font-size:12.5px;line-height:1.55;color:var(--dim);cursor:default}
   .cdinfo a{display:inline-block;margin-top:5px}
   .cdinfo .chip{margin:4px 4px 0 0}
+  .ltile{display:inline-flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border-radius:6px;font:700 10px/1 system-ui;
+    color:#3a352f;margin-right:9px;vertical-align:-6px;position:relative;
+    overflow:hidden;flex:none}
+  .ltile img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+    background:#fff}
+  h3.hasLogo{display:flex;align-items:center}
 </style>
 </head>
 <body>
@@ -427,6 +434,38 @@ function dismissBtn(queue, key, label) {
 }
 
 /* ------------------------------------------------------------------ renderers */
+/* A company's own mark, next to its name in the queues.
+   Same shape the public board uses: the initials tile is the element, and the
+   logo sits ON it rather than replacing it - so a missing or slow logo shows
+   the tile underneath instead of an empty square, and nothing shifts when it
+   arrives. Deliberately NOT loading="lazy": on the public board that attribute
+   silently prevented all 62 logos from ever loading. */
+const TILE_BG = ['#e8e3dc','#dfe6e3','#e6e0ea','#eae4dc','#dde5ea','#eae0e0'];
+function logoTile(name, cid) {
+  const wrap = el('span', 'ltile');
+  let h = 0; for (const ch of name || '') h = (h * 31 + ch.charCodeAt(0)) | 0;
+  wrap.style.background = TILE_BG[Math.abs(h) % TILE_BG.length];
+  const w = (name || '').replace(/[^A-Za-z ]/g, ' ').trim().split(/\s+/);
+  wrap.textContent = ((w[0] || '?')[0] + (w[1] ? w[1][0] : ((w[0] || '?')[1] || '')))
+    .replace(/[^A-Za-z]/g, '').toUpperCase();
+  const ext = (META && META.logos) ? META.logos[cid] : null;
+  if (ext) {
+    const img = el('img');
+    img.src = '/assets/logos/' + encodeURIComponent(cid) + '.' + encodeURIComponent(ext);
+    img.alt = '';
+    img.onerror = () => img.remove();
+    wrap.appendChild(img);
+  }
+  return wrap;
+}
+
+function withLogo(h3, c) {
+  if (!c || !c.id) return h3;
+  h3.insertBefore(logoTile(c.name, c.id), h3.firstChild);
+  h3.classList.add('hasLogo');
+  return h3;
+}
+
 const RENDER = {};
 
 RENDER.duplicates = g => {
@@ -462,7 +501,7 @@ RENDER.duplicates = g => {
 
 RENDER.websites = c => {
   const n = el('div', 'item');
-  n.appendChild(el('h3', null, c.name));
+  n.appendChild(withLogo(el('h3', null, c.name), c));
   n.appendChild(el('div', 'kv', `${c.sector} → ${c.category}`
     + (c.description ? ' · ' + c.description : '')));
   const row = el('div', 'row');
@@ -683,7 +722,7 @@ RENDER.websites = c => {
 
 RENDER.blocked = c => {
   const n = el('div', 'item');
-  n.appendChild(el('h3', null, c.name));
+  n.appendChild(withLogo(el('h3', null, c.name), c));
   const meta = el('div', 'kv');
   meta.append(el('span', 'chip warn', 'blocked'), document.createTextNode(c.sector));
   (c.events || []).forEach(ev => meta.appendChild(el('span', 'chip ok', ev)));
@@ -713,7 +752,7 @@ RENDER.blocked = c => {
 
 RENDER.boards = c => {
   const n = el('div', 'item');
-  n.appendChild(el('h3', null, c.name));
+  n.appendChild(withLogo(el('h3', null, c.name), c));
   const meta = el('div', 'kv');
   meta.append(el('span', 'chip', c.why), el('span', 'chip', 'tier ' + c.tier),
               document.createTextNode(c.sector));
@@ -836,7 +875,7 @@ RENDER.boards = c => {
 
 RENDER.placement = c => {
   const n = el('div', 'item');
-  n.appendChild(el('h3', null, c.name));
+  n.appendChild(withLogo(el('h3', null, c.name), c));
   n.appendChild(el('div', 'kv', c.description || ''));
   const e = el('div', 'evi');
   const filing = (label, sec, cat) => {
@@ -934,7 +973,7 @@ RENDER.acquisitions = s => {
 RENDER.miscategorized = c => {
   const n = document.createElement('div');
   n.className = 'item';
-  n.appendChild(el('h3', null, c.name));
+  n.appendChild(withLogo(el('h3', null, c.name), c));
   const kv = el('div', 'kv');
   if (c.open_roles) kv.appendChild(el('span', 'chip', c.open_roles + ' open'));
   kv.appendChild(el('span', 'chip', `now: ${c.sector || ''} / ${c.category || ''}`));
