@@ -1170,6 +1170,41 @@ function co(encId){
       ${o.enumerable===false?` <span class="chip warn">their board is live but its roles cannot be read automatically, so this list may be incomplete</span>`:""}
       ${o.checked_by_hand?` <span class="chip">checked by hand ${esc(o.checked_by_hand)}</span>`:""}</p>`
       :o.unreadable?`<p><span class="chip warn">board could not be read: ${esc(o.unreadable)}</span></p>`:""}
+    ${(()=>{
+      /* What we are unsure about, said plainly. A board people rely on has to
+         admit where its own numbers come with a caveat - a shared board, an
+         owner we could not confirm, a company whose non-government roles we
+         deliberately hide - because finding that out later costs a reader
+         more than being told now. */
+      const notes=[];
+      if(o.shares_board_with){
+        // the field holds an id; a reader needs the name
+        const other=D.organizations.find(x=>x.id===o.shares_board_with);
+        notes.push(`Their postings come from a board shared with
+          <strong>${esc(other?other.name:o.shares_board_with)}</strong>, so some of
+          these roles may belong to the other company.`);
+      }
+      if(o.board_owner_unverified)
+        notes.push(`We could not confirm this board belongs to them rather than a
+          parent or a sibling brand, so treat the list as indicative.`);
+      if(o.sled_only)
+        notes.push(`They sell to many industries. Only their public-sector roles are
+          shown here${o.offtopic_dropped?` — ${o.offtopic_dropped} other openings are
+          deliberately left off`:""}.`);
+      if(o.parent&&!o.shares_board_with)
+        notes.push(`Part of <strong>${esc(o.parent)}</strong>.`);
+      if(o.enumerable===false)
+        notes.push(`Their board is live but its roles cannot be read automatically,
+          so this list is probably incomplete.`);
+      if(o.unreadable)
+        notes.push(`Their board could not be read on the last run
+          (${esc(o.unreadable)}), so these roles may be stale.`);
+      if(o.no_board_on_file)
+        notes.push(`No job board has been found for them yet, so an absence of roles
+          here is not evidence they are not hiring.`);
+      return notes.length?`<h3 style="font-size:13px;margin-top:20px">What to know about this list</h3>
+        ${notes.map(t=>`<div class="kv" style="max-width:74ch">${t}</div>`).join("")}`:"";
+    })()}
     ${mine.length?`<h3 style="font-size:13px;margin-top:20px">Where the roles are</h3>
       <div class="kv" style="max-width:74ch">${whereSummary(mine).map(esc).join(" &middot; ")}</div>`:""}
     <h3 style="font-size:13px;margin-top:20px">What kind of hiring</h3>
