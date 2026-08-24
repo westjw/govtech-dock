@@ -141,7 +141,7 @@
  },
  "netradyne": {
   "ok": false,
-  "note": "logo found but (218KB, over the cap"
+  "note": "logo found but 218KB, over the 214KB cap"
  },
  "prepared": {
   "ok": true,
@@ -463,7 +463,9 @@
  },
  "highland-electric-fleets": {
   "ok": true,
-  "note": "https://s0.wp.com/i/webclip.png"
+  "note": "https://highlandfleets.com/wp-content/uploads/2023/12/Highland-Logo.png",
+  "via": "markup-logo",
+  "url": "https://highlandfleets.com/wp-content/uploads/2023/12/Highland-Logo.png"
  },
  "pointr": {
   "ok": true,
@@ -1200,8 +1202,10 @@
   "note": "https://www.ecubelabs.com/wp-content/uploads/2021/03/cropped-logo-symbol-192x192.png"
  },
  "rehrig-pacific": {
-  "ok": false,
-  "note": "site unreachable (SSLError)"
+  "ok": true,
+  "note": "http://www.rehrigpacific.com/application/files/8517/2304/9874/RPC-favicon_iphone.png",
+  "via": "declared-icon",
+  "url": "http://www.rehrigpacific.com/application/files/8517/2304/9874/RPC-favicon_iphone.png"
  },
  "econolite": {
   "ok": true,
@@ -1540,8 +1544,8 @@
   "note": "https://www.anythingweather.com/wp-content/themes/anythingweather/assets/images/apple-icon-touch.png"
  },
  "hydroapps": {
-  "ok": true,
-  "note": "https://static.parastorage.com/client/pfavico.ico"
+  "ok": false,
+  "note": "logo found but 5651KB, over the 214KB cap"
  },
  "eventhub": {
   "ok": true,
@@ -2309,7 +2313,9 @@
  },
  "volunteerlocal": {
   "ok": true,
-  "note": "https://cdn.prod.website-files.com/img/webclip.png"
+  "note": "https://cdn.prod.website-files.com/63850e5cb5de5171b2866e65/692dff9aa54bec3b3f3889ee_favicon.png",
+  "via": "declared-icon",
+  "url": "https://cdn.prod.website-files.com/63850e5cb5de5171b2866e65/692dff9aa54bec3b3f3889ee_favicon.png"
  },
  "teamlinkt": {
   "ok": true,
@@ -2360,8 +2366,10 @@
   "note": "https://www.smartdocs.ai/wp-content/uploads/2025/12/fav-icon-300x298.png"
  },
  "sysoft-getall": {
-  "ok": false,
-  "note": "site unreachable (SSLError)"
+  "ok": true,
+  "note": "http://getall.com/images/getall_logo.png",
+  "via": "blind-path",
+  "url": "http://getall.com/images/getall_logo.png"
  },
  "rfp360-ai": {
   "ok": true,
@@ -2414,8 +2422,8 @@
   "note": "https://www.encartele.net/wp-content/uploads/cropped-Web_Photo_Editor__12_-removebg-preview-192x192.png"
  },
  "pay-tel-communications": {
-  "ok": true,
-  "note": "https://static.parastorage.com/client/pfavico.ico"
+  "ok": false,
+  "note": "no readable icon on the site"
  },
  "combined-public-communications": {
   "ok": true,
@@ -2990,8 +2998,8 @@
   "note": "https://www.ontramobility.com/apple-icon.png?7d602c7a51597b4a"
  },
  "rideshark": {
-  "ok": true,
-  "note": "https://static.parastorage.com/client/pfavico.ico"
+  "ok": false,
+  "note": "no readable icon on the site"
  },
  "applied-information": {
   "ok": true,
@@ -3112,8 +3120,8 @@
   "note": "https://cardintegrity.com/wp-content/uploads/2016/02/cropped-DWG-CardIntegrity-icon-192x192.png"
  },
  "coreforce": {
-  "ok": true,
-  "note": "https://static.parastorage.com/client/pfavico.ico"
+  "ok": false,
+  "note": "no readable icon on the site"
  },
  "corveris": {
   "ok": true,
@@ -3185,7 +3193,9 @@
  },
  "imagesource-inc": {
   "ok": true,
-  "note": "https://imagesource.com/favicon.ico"
+  "note": "https://imagesource.com/favicon.ico",
+  "via": "declared-icon",
+  "url": "https://imagesource.com/favicon.ico"
  },
  "imprivata": {
   "ok": true,
@@ -3244,8 +3254,8 @@
   "note": "https://risk.lexisnexis.com/Areas/LNRS/favicon.ico"
  },
  "lux-modus": {
-  "ok": true,
-  "note": "https://static.parastorage.com/client/pfavico.ico"
+  "ok": false,
+  "note": "no readable icon on the site"
  },
  "mcci": {
   "ok": true,
@@ -3407,7 +3417,9 @@
  },
  "sotaog": {
   "ok": true,
-  "note": "https://www.sotaog.com/favicon.ico"
+  "note": "https://www.sotaog.com/images/sotaog_logo.png",
+  "via": "markup-logo",
+  "url": "https://www.sotaog.com/images/sotaog_logo.png"
  },
  "stackbench": {
   "ok": true,
@@ -3415,7 +3427,7 @@
  },
  "status-solutions-network": {
   "ok": false,
-  "note": "logo found but (1097KB, over the cap"
+  "note": "logo found but 1097KB, over the 214KB cap"
  },
  "surety-2000": {
   "ok": true,
@@ -3851,7 +3863,7 @@
  },
  "apex-officer": {
   "ok": false,
-  "note": "site unreachable (SSLError)"
+  "note": "no readable icon on the site"
  },
  "wrap-technologies": {
   "ok": true,
@@ -4035,7 +4047,7 @@
  },
  "ssci": {
   "ok": false,
-  "note": "site unreachable (SSLError)"
+  "note": "site answered 404"
  },
  "praesidium": {
   "ok": true,
@@ -4107,7 +4119,7 @@
  },
  "stresscrete-group": {
   "ok": false,
-  "note": "site unreachable (SSLError)"
+  "note": "redirects to scgrp.com - a different brand, not taken"
  },
  "shakespeare-composite-structures": {
   "ok": false,
@@ -4119,7 +4131,7 @@
  },
  "structural-steel-products": {
   "ok": false,
-  "note": "site unreachable (ConnectTimeout)"
+  "note": "site unreachable (ConnectionError)"
  },
  "tvilight": {
   "ok": true,
@@ -4295,7 +4307,7 @@
  },
  "acendre": {
   "ok": false,
-  "note": "site unreachable (SSLError)"
+  "note": "site answered 404"
  },
  "vidcruiter": {
   "ok": true,
@@ -4455,7 +4467,7 @@
  },
  "platinum-technology-resource": {
   "ok": false,
-  "note": "site unreachable (ConnectTimeout)"
+  "note": "blocked to non-browser clients (403)"
  },
  "oset-institute": {
   "ok": true,
@@ -4653,15 +4665,15 @@
  },
  "genesis-educational-services": {
   "ok": false,
-  "note": "logo found but (476KB, over the cap"
+  "note": "logo found but 476KB, over the 214KB cap"
  },
  "aequitas-solutions": {
   "ok": false,
-  "note": "site unreachable (SSLError)"
+  "note": "no readable icon on the site"
  },
  "escape-technologies": {
   "ok": false,
-  "note": "site unreachable (SSLError)"
+  "note": "redirects to www.frontlineeducation.com - a different brand, not taken"
  },
  "sparkrock": {
   "ok": true,
@@ -4777,7 +4789,9 @@
  },
  "citygrows": {
   "ok": true,
-  "note": "https://cdn.prod.website-files.com/img/webclip.png"
+  "note": "https://cdn.prod.website-files.com/5d84dd633ce9fe6617068f49/62fba2b2857f1e2270e9b48c_favicon-32x32.png",
+  "via": "declared-icon",
+  "url": "https://cdn.prod.website-files.com/5d84dd633ce9fe6617068f49/62fba2b2857f1e2270e9b48c_favicon-32x32.png"
  },
  "reel-scout": {
   "ok": false,
@@ -4936,8 +4950,10 @@
   "note": "https://www.motorolasolutions.com/etc/designs/msi/favicon.ico"
  },
  "geocomm": {
-  "ok": false,
-  "note": "site unreachable (SSLError)"
+  "ok": true,
+  "note": "https://www.geocomm.com/wp-content/uploads/2024/10/cropped-Favicon_v1-192x192.png",
+  "via": "declared-icon",
+  "url": "https://www.geocomm.com/wp-content/uploads/2024/10/cropped-Favicon_v1-192x192.png"
  },
  "comtech": {
   "ok": true,
@@ -5025,7 +5041,7 @@
  },
  "cardinality-ai": {
   "ok": false,
-  "note": "site unreachable (SSLError)"
+  "note": "redirects to cardyai.com - a different brand, not taken"
  },
  "casebook-pbc": {
   "ok": true,
@@ -5085,7 +5101,7 @@
  },
  "pondera-solutions": {
   "ok": false,
-  "note": "site unreachable (ConnectTimeout)"
+  "note": "redirects to legal.thomsonreuters.com - a different brand, not taken"
  },
  "modivcare": {
   "ok": true,
@@ -5177,7 +5193,7 @@
  },
  "citybase": {
   "ok": false,
-  "note": "site unreachable (SSLError)"
+  "note": "redirects to eunasolutions.com - a different brand, not taken"
  },
  "point-pay": {
   "ok": true,
@@ -5212,8 +5228,8 @@
   "note": "https://trapezegroup.com/wp-content/uploads/2023/11/favicon-3.ico"
  },
  "easypark-group": {
-  "ok": true,
-  "note": "https://www.easypark.com/favicon.ico"
+  "ok": false,
+  "note": "site answered 404"
  },
  "emovis": {
   "ok": true,
@@ -5382,8 +5398,10 @@
   "note": "https://www.rapiscan-ase.com/apple-touch-icon.png"
  },
  "marquis-software-solutions": {
-  "ok": false,
-  "note": "site unreachable (ConnectTimeout)"
+  "ok": true,
+  "note": "http://www.marquissoftware.com/favicon.ico",
+  "via": "blind-path",
+  "url": "http://www.marquissoftware.com/favicon.ico"
  },
  "syscon-justice-systems": {
   "ok": true,
@@ -5484,10 +5502,8 @@
   "note": "https://norix.com/wp-content/uploads/2021/02/favicon.ico"
  },
  "vendengine": {
-  "ok": true,
-  "note": "https://www.tylertech.com/Portals/0/NavBar-Logo.png",
-  "via": "markup-logo",
-  "url": "https://www.tylertech.com/Portals/0/NavBar-Logo.png"
+  "ok": false,
+  "note": "redirects to www.tylertech.com - a different brand, not taken"
  },
  "averhealth": {
   "ok": true,
@@ -5495,7 +5511,7 @@
  },
  "union-supply-group": {
   "ok": false,
-  "note": "site unreachable (ConnectionError)"
+  "note": "site answered 404"
  },
  "zoll-data-systems": {
   "ok": true,
@@ -5750,8 +5766,8 @@
   "note": "https://www.diehl.com/favicon.ico"
  },
  "zenner-usa": {
-  "ok": true,
-  "note": "https://static.parastorage.com/client/pfavico.ico"
+  "ok": false,
+  "note": "no readable icon on the site"
  },
  "innovyze": {
   "ok": false,
@@ -5892,8 +5908,8 @@
   "note": "https://www.daifuku.com/favicon.ico"
  },
  "materna-ips": {
-  "ok": true,
-  "note": "https://www.efabre.net/images/betberry-favicon.png"
+  "ok": false,
+  "note": "redirects to www.efabre.net - a different brand, not taken"
  },
  "elenium-automation": {
   "ok": true,
@@ -5905,7 +5921,9 @@
  },
  "synect": {
   "ok": true,
-  "note": "https://reseller-storefront-bin.dreamscape.cloud/production/assets/favicon.ico"
+  "note": "https://www.synect.com/favicon.ico",
+  "via": "declared-icon",
+  "url": "https://www.synect.com/favicon.ico"
  },
  "ink-innovation": {
   "ok": false,
@@ -5964,8 +5982,10 @@
   "note": "https://www.sandc.com/wwwroot/images/favicon.ico"
  },
  "sentient-energy": {
-  "ok": false,
-  "note": "site unreachable (SSLError)"
+  "ok": true,
+  "note": "https://sentientenergy.com/wp-content/uploads/2021/06/cropped-SentientFavicon-192x192.png",
+  "via": "declared-icon",
+  "url": "https://sentientenergy.com/wp-content/uploads/2021/06/cropped-SentientFavicon-192x192.png"
  },
  "camus-energy": {
   "ok": true,
@@ -6075,7 +6095,7 @@
  },
  "axiom-cemetery-management-solutions": {
   "ok": false,
-  "note": "site unreachable (SSLError)"
+  "note": "redirects to jmtconsulting.com - a different brand, not taken"
  },
  "resting-gardens": {
   "ok": true,
@@ -6229,7 +6249,7 @@
  },
  "forterra": {
   "ok": false,
-  "note": "site unreachable (SSLError)"
+  "note": "site answered 409"
  },
  "oxa": {
   "ok": true,
@@ -6340,8 +6360,10 @@
   "note": "https://otto-usa.com/wp-content/uploads/2022/05/cropped-New-OTTO-Logo-192x192.png"
  },
  "sonrai-systems": {
-  "ok": false,
-  "note": "site unreachable (SSLError)"
+  "ok": true,
+  "note": "http://home.sonraisystems.com/Portals/0/favicon (2).ico",
+  "via": "declared-icon",
+  "url": "http://home.sonraisystems.com/Portals/0/favicon (2).ico"
  },
  "greenq": {
   "ok": true,
@@ -6349,7 +6371,7 @@
  },
  "cleanrobotics": {
   "ok": false,
-  "note": "site unreachable (SSLError)"
+  "note": "site answered 409"
  },
  "sadako-technologies": {
   "ok": true,
@@ -6427,7 +6449,7 @@
  },
  "numina": {
   "ok": false,
-  "note": "site unreachable (SSLError)"
+  "note": "site unreachable (ConnectTimeout)"
  },
  "equivant": {
   "ok": true,
@@ -8059,7 +8081,7 @@
  },
  "reader-zone": {
   "ok": false,
-  "note": "logo found but (361KB, over the cap"
+  "note": "logo found but 361KB, over the 214KB cap"
  },
  "a-m-simpkins-and-associates": {
   "ok": true,

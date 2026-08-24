@@ -41,6 +41,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import pathlib
+import re
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
@@ -62,6 +63,24 @@ def evidence_for(cid: str) -> dict:
     only collects them.
     """
     out = {}
+    # THE LOGO FETCHER IS AN ACQUISITION DETECTOR AND NOBODY WAS READING IT.
+    # It refuses a logo when a company's own domain redirects somewhere that
+    # serves a different brand - "redirects to www.tylertech.com - a different
+    # brand, not taken" - because taking that image would put Tyler's mark on
+    # VendEngine's card. That refusal is the same fact this queue exists for,
+    # arrived at from the other direction: a company whose website is now
+    # somebody else's website has usually been bought. Eight were sitting in
+    # logo_log.json unread, including four whose parent is not in the dataset
+    # at all.
+    for lid, e in (_read(DATA / "logo_log.json", {}) or {}).items():
+        if lid != cid or not isinstance(e, dict):
+            continue
+        note = e.get("note") or ""
+        if "different brand" in note:
+            m = re.search(r"redirects to (\S+)", note)
+            if m:
+                out.setdefault("redirect", {"to": m.group(1).rstrip(" -"),
+                                            "from": "their own website"})
     for row in _read(DATA / "board_audit.json", []):
         if row.get("id") == cid:
             out["identity"] = row.get("identity")
@@ -110,8 +129,14 @@ def q_acquisitions(companies, board) -> list:
             strength, says = "named", (
                 f'their board calls itself "{ev["board_calls_itself"]}"')
         elif ev.get("redirect"):
+            # name the page that actually redirected. A careers page pointing
+            # at a parent is ordinary - lots of groups run one board - but the
+            # company's OWN homepage serving somebody else's brand is a much
+            # stronger claim, and calling both "their careers page" would flatten
+            # the difference and mislabel the evidence a person is ruling on.
+            whose = ev["redirect"].get("from") or "their careers page"
             strength, says = "redirect", (
-                f'their careers page ends up on {ev["redirect"]["to"]}')
+                f'{whose} ends up on {ev["redirect"]["to"]}')
         else:
             strength, says = "slug", (
                 f'the board slug is "{(c.get("ats") or {}).get("ref")}", '
@@ -132,6 +157,9 @@ def q_acquisitions(companies, board) -> list:
     for row in _read(DATA / "embedded_ats.json", []):
         if row.get("identity") == "MISMATCH":
             add(row.get("id"), "embedded")
+    for lid, e in (_read(DATA / "logo_log.json", {}) or {}).items():
+        if isinstance(e, dict) and "different brand" in (e.get("note") or ""):
+            add(lid, "website-redirect")
     sus = _read(DATA / "ats_suspects.json", {})
     items = sus.get("suspects", sus) if isinstance(sus, dict) else sus
     if isinstance(items, dict):
@@ -172,7 +200,7 @@ def main() -> int:
             print(f"  {r['name'][:26]:28} {r['says']}"
                   f"   [{r['open_roles']} roles on our board]")
     if red:
-        print(f"\nTHE CAREERS PAGE GOES SOMEWHERE ELSE ({len(red)}):")
+        print(f"\nTHEIR PAGE GOES SOMEWHERE ELSE ({len(red)}) - the line says which page:")
         for r in red:
             print(f"  {r['name'][:26]:28} {r['says']}")
     print(f"\nONLY A STRANGE SLUG ({len(slug)}) — weakest, and most of these "
