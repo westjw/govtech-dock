@@ -1495,6 +1495,50 @@ def check_writes_name_their_author() -> int:
     return bad
 
 
+def check_header_shared() -> int:
+    """index.html and alerts.html must wear the same header.
+
+    There is no build step here on purpose, so the band is restated in each
+    file rather than templated. Restated duplication is the thing that rots:
+    somebody changes the brand colour in one file, the other keeps the old
+    one, and a reader crossing between them sees two different products. It
+    is the same failure the brand.json / _brand.js guard and the alerts
+    vocabulary guard exist for, so it gets the same treatment.
+
+    Checked: the four header tokens hold identical values, and both pages
+    point the mark at the same asset. NOT checked: layout, which is allowed
+    to differ - alerts.html has no tab strip and should not grow one.
+    """
+    errors = 0
+    pages = {}
+    for name in ("index.html", "alerts.html"):
+        src = (ROOT / name).read_text()
+        toks = dict(re.findall(r"(--hdr-[a-z]+):\s*(#[0-9A-Fa-f]{3,8})", src))
+        mark = re.search(r'class="mark"\s+src="([^"]+)"', src)
+        pages[name] = (toks, mark.group(1) if mark else None)
+
+    want = {"--hdr-bg", "--hdr-ink", "--hdr-mute", "--hdr-line"}
+    for name, (toks, mark) in pages.items():
+        missing = want - set(toks)
+        if missing:
+            errors += fail(f"{name}: header tokens missing {sorted(missing)} - "
+                           f"the shared header band is not defined there")
+        if not mark:
+            errors += fail(f"{name}: no <img class=\"mark\"> - the mascot is "
+                           f"the way home from every page")
+
+    a, b = pages["index.html"], pages["alerts.html"]
+    for tok in sorted(want):
+        va, vb = a[0].get(tok), b[0].get(tok)
+        if va and vb and va.lower() != vb.lower():
+            errors += fail(f"header drift: {tok} is {va} in index.html and "
+                           f"{vb} in alerts.html. One header, one value.")
+    if a[1] and b[1] and a[1] != b[1]:
+        errors += fail(f"header drift: the mark is {a[1]} in index.html and "
+                       f"{b[1]} in alerts.html")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -1736,6 +1780,7 @@ def main() -> int:
     errors += check_alert_vocabulary()
     errors += check_merged_names_stay_merged()
     errors += check_writes_name_their_author()
+    errors += check_header_shared()
     errors += check_brand()
     errors += check_admin_game()
     errors += check_admin_gates()
