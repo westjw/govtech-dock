@@ -1,0 +1,1723 @@
+[
+ {
+  "id": "seneca",
+  "name": "Seneca",
+  "type": "ashby",
+  "ref": "seneca",
+  "verdict": "LOOK",
+  "why": "0 government words in 23,540 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 6,
+  "vocab": {
+   "chars": 23540,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "pano-ai",
+  "name": "Pano AI",
+  "type": "ashby",
+  "ref": "pano-ai",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 14,
+  "vocab": {
+   "chars": 104964,
+   "hits": 101,
+   "per1k": 0.96
+  }
+ },
+ {
+  "id": "frontline-wildfire-defense",
+  "name": "Frontline Wildfire Defense",
+  "type": "greenhouse",
+  "ref": "frontlinewildfire",
+  "verdict": "matches",
+  "why": "board calls itself \"Frontline Wildfire Defense\"",
+  "postings": 10
+ },
+ {
+  "id": "flock-safety",
+  "name": "Flock Safety",
+  "type": "ashby",
+  "ref": "flock safety",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 32,
+  "vocab": {
+   "chars": 151208,
+   "hits": 27,
+   "per1k": 0.18
+  }
+ },
+ {
+  "id": "mark43",
+  "name": "Mark43",
+  "type": "greenhouse",
+  "ref": "mark43",
+  "verdict": "matches",
+  "why": "board calls itself \"Mark43\"",
+  "postings": 31
+ },
+ {
+  "id": "peregrine",
+  "name": "Peregrine",
+  "type": "greenhouse",
+  "ref": "peregrinetechnologies",
+  "verdict": "matches",
+  "why": "board calls itself \"Peregrine Technologies\"",
+  "postings": 83
+ },
+ {
+  "id": "eso",
+  "name": "ESO",
+  "type": "greenhouse",
+  "ref": "eso",
+  "verdict": "matches",
+  "why": "board calls itself \"ESO \"",
+  "postings": 11
+ },
+ {
+  "id": "rapidsos",
+  "name": "RapidSOS",
+  "type": "greenhouse",
+  "ref": "rapidsos",
+  "verdict": "matches",
+  "why": "board calls itself \"RapidSOS\"",
+  "postings": 9
+ },
+ {
+  "id": "everbridge",
+  "name": "Everbridge",
+  "type": "lever",
+  "ref": "everbridge",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 21,
+  "vocab": {
+   "chars": 21876,
+   "hits": 15,
+   "per1k": 0.69
+  }
+ },
+ {
+  "id": "juvare",
+  "name": "Juvare",
+  "type": "greenhouse",
+  "ref": "juvare",
+  "verdict": "matches",
+  "why": "board calls itself \"Juvare\"",
+  "postings": 2
+ },
+ {
+  "id": "glacier",
+  "name": "Glacier",
+  "type": "ashby",
+  "ref": "glacier",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 3,
+  "vocab": {
+   "chars": 17777,
+   "hits": 3,
+   "per1k": 0.17
+  }
+ },
+ {
+  "id": "miovision",
+  "name": "Miovision",
+  "type": "ashby",
+  "ref": "miovision",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 9,
+  "vocab": {
+   "chars": 65835,
+   "hits": 25,
+   "per1k": 0.38
+  }
+ },
+ {
+  "id": "notraffic",
+  "name": "NoTraffic",
+  "type": "workable",
+  "ref": "notraffic",
+  "verdict": "matches",
+  "why": "board calls itself \"NoTraffic\"",
+  "postings": 0
+ },
+ {
+  "id": "hayden-ai",
+  "name": "Hayden AI",
+  "type": "ashby",
+  "ref": "HaydenAI",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 16,
+  "vocab": {
+   "chars": 57847,
+   "hits": 41,
+   "per1k": 0.71
+  }
+ },
+ {
+  "id": "obvio",
+  "name": "Obvio",
+  "type": "ashby",
+  "ref": "obvio",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 6,
+  "vocab": {
+   "chars": 27883,
+   "hits": 47,
+   "per1k": 1.69
+  }
+ },
+ {
+  "id": "buspatrol",
+  "name": "BusPatrol",
+  "type": "ashby",
+  "ref": "buspatrol",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 16,
+  "vocab": {
+   "chars": 110429,
+   "hits": 125,
+   "per1k": 1.13
+  }
+ },
+ {
+  "id": "cyvl",
+  "name": "Cyvl",
+  "type": "ashby",
+  "ref": "cyvl",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 6,
+  "vocab": {
+   "chars": 30090,
+   "hits": 25,
+   "per1k": 0.83
+  }
+ },
+ {
+  "id": "sewerai",
+  "name": "SewerAI",
+  "type": "ashby",
+  "ref": "sewer-ai",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 14,
+  "vocab": {
+   "chars": 65975,
+   "hits": 32,
+   "per1k": 0.49
+  }
+ },
+ {
+  "id": "accela",
+  "name": "Accela",
+  "type": "greenhouse",
+  "ref": "accela",
+  "verdict": "matches",
+  "why": "board calls itself \"Accela\"",
+  "postings": 10
+ },
+ {
+  "id": "clariti",
+  "name": "Clariti",
+  "type": "greenhouse",
+  "ref": "clariticloudinc",
+  "verdict": "matches",
+  "why": "board calls itself \"Clariti Cloud Inc.\"",
+  "postings": 9
+ },
+ {
+  "id": "govwell",
+  "name": "GovWell",
+  "type": "ashby",
+  "ref": "govwell",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 17,
+  "vocab": {
+   "chars": 91682,
+   "hits": 220,
+   "per1k": 2.4
+  }
+ },
+ {
+  "id": "payit",
+  "name": "PayIt",
+  "type": "greenhouse",
+  "ref": "payit",
+  "verdict": "matches",
+  "why": "board calls itself \"PayIt\"",
+  "postings": 12
+ },
+ {
+  "id": "invoicecloud",
+  "name": "InvoiceCloud",
+  "type": "greenhouse",
+  "ref": "invoicecloud",
+  "verdict": "matches",
+  "why": "board calls itself \"InvoiceCloud\"",
+  "postings": 23
+ },
+ {
+  "id": "kaizen-labs",
+  "name": "Kaizen Labs",
+  "type": "ashby",
+  "ref": "kaizenlabs",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 15,
+  "vocab": {
+   "chars": 105207,
+   "hits": 266,
+   "per1k": 2.53
+  }
+ },
+ {
+  "id": "rec",
+  "name": "Rec",
+  "type": "ashby",
+  "ref": "rec",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 11,
+  "vocab": {
+   "chars": 49954,
+   "hits": 12,
+   "per1k": 0.24
+  }
+ },
+ {
+  "id": "teamsnap",
+  "name": "TeamSnap",
+  "type": "lever",
+  "ref": "teamsnap",
+  "verdict": "LOOK",
+  "why": "0 government words in 6,095 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 6,
+  "vocab": {
+   "chars": 6095,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "raptor-technologies",
+  "name": "Raptor Technologies",
+  "type": "greenhouse",
+  "ref": "raptortechnologies",
+  "verdict": "matches",
+  "why": "board calls itself \"Raptor Technologies\"",
+  "postings": 2
+ },
+ {
+  "id": "goguardian",
+  "name": "GoGuardian",
+  "type": "greenhouse",
+  "ref": "goguardian",
+  "verdict": "matches",
+  "why": "board calls itself \"GoGuardian\"",
+  "postings": 10
+ },
+ {
+  "id": "securly",
+  "name": "Securly",
+  "type": "greenhouse",
+  "ref": "securly13",
+  "verdict": "matches",
+  "why": "board calls itself \"Securly\"",
+  "postings": 5
+ },
+ {
+  "id": "hopskipdrive",
+  "name": "HopSkipDrive",
+  "type": "greenhouse",
+  "ref": "hopskipdrive",
+  "verdict": "matches",
+  "why": "board calls itself \"HopSkipDrive\"",
+  "postings": 12
+ },
+ {
+  "id": "via",
+  "name": "Via",
+  "type": "greenhouse",
+  "ref": "via",
+  "verdict": "matches",
+  "why": "board calls itself \"Via\"",
+  "postings": 153
+ },
+ {
+  "id": "swiftly",
+  "name": "Swiftly",
+  "type": "lever",
+  "ref": "goswift",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 10,
+  "vocab": {
+   "chars": 47819,
+   "hits": 80,
+   "per1k": 1.67
+  }
+ },
+ {
+  "id": "masabi",
+  "name": "Masabi",
+  "type": "ashby",
+  "ref": "masabi",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 19,
+  "vocab": {
+   "chars": 121062,
+   "hits": 23,
+   "per1k": 0.19
+  }
+ },
+ {
+  "id": "gridware",
+  "name": "Gridware",
+  "type": "lever",
+  "ref": "gridware",
+  "verdict": "LOOK",
+  "why": "0 government words in 29,147 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 21,
+  "vocab": {
+   "chars": 29147,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "social-news-desk",
+  "name": "Social News Desk",
+  "type": "ashby",
+  "ref": "snd",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 2,
+  "vocab": {
+   "chars": 6891,
+   "hits": 1,
+   "per1k": 0.15
+  }
+ },
+ {
+  "id": "wordly",
+  "name": "Wordly",
+  "type": "ashby",
+  "ref": "wordly",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "prophecy-gov",
+  "name": "Prophecy Gov",
+  "type": "ashby",
+  "ref": "prophecy-gov",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "escribe",
+  "name": "eScribe",
+  "type": "greenhouse",
+  "ref": "escribe",
+  "verdict": "unknown",
+  "why": "",
+  "postings": 0
+ },
+ {
+  "id": "esper",
+  "name": "Esper",
+  "type": "lever",
+  "ref": "esper",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 5,
+  "vocab": {
+   "chars": 22286,
+   "hits": 40,
+   "per1k": 1.79
+  }
+ },
+ {
+  "id": "sovra",
+  "name": "SOVRA",
+  "type": "ashby",
+  "ref": "sovra",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 8,
+  "vocab": {
+   "chars": 52775,
+   "hits": 158,
+   "per1k": 2.99
+  }
+ },
+ {
+  "id": "apptegy",
+  "name": "Apptegy",
+  "type": "lever",
+  "ref": "apptegy",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "everlaw",
+  "name": "Everlaw",
+  "type": "greenhouse",
+  "ref": "everlaw",
+  "verdict": "matches",
+  "why": "board calls itself \"Everlaw\"",
+  "postings": 31
+ },
+ {
+  "id": "fleetio",
+  "name": "Fleetio",
+  "type": "greenhouse",
+  "ref": "fleetio",
+  "verdict": "matches",
+  "why": "board calls itself \"Fleetio\"",
+  "postings": 22
+ },
+ {
+  "id": "motive",
+  "name": "Motive",
+  "type": "greenhouse",
+  "ref": "gomotive",
+  "verdict": "matches",
+  "why": "board calls itself \"Motive\"",
+  "postings": 122
+ },
+ {
+  "id": "maintainx",
+  "name": "MaintainX",
+  "type": "greenhouse",
+  "ref": "maintainx",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "forerunner",
+  "name": "Forerunner",
+  "type": "greenhouse",
+  "ref": "forerunner",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "civilgrid",
+  "name": "CivilGrid",
+  "type": "ashby",
+  "ref": "civilgrid",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 6,
+  "vocab": {
+   "chars": 36803,
+   "hits": 78,
+   "per1k": 2.12
+  }
+ },
+ {
+  "id": "routesmart-technologies",
+  "name": "RouteSmart Technologies",
+  "type": "workable",
+  "ref": "routesmart",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "versaterm",
+  "name": "Versaterm",
+  "type": "greenhouse",
+  "ref": "versaterm",
+  "verdict": "matches",
+  "why": "board calls itself \"Versaterm\"",
+  "postings": 34
+ },
+ {
+  "id": "caseguard",
+  "name": "CaseGuard",
+  "type": "greenhouse",
+  "ref": "caseguard",
+  "verdict": "matches",
+  "why": "board calls itself \"CaseGuard\"",
+  "postings": 12
+ },
+ {
+  "id": "magnet-forensics",
+  "name": "Magnet Forensics",
+  "type": "lever",
+  "ref": "magnet-forensics",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "flashpoint",
+  "name": "Flashpoint",
+  "type": "greenhouse",
+  "ref": "flashpoint",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "trm-labs",
+  "name": "TRM Labs",
+  "type": "ashby",
+  "ref": "trm",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "verkada",
+  "name": "Verkada",
+  "type": "greenhouse",
+  "ref": "verkada",
+  "verdict": "matches",
+  "why": "board calls itself \"Verkada\"",
+  "postings": 279
+ },
+ {
+  "id": "skysafe",
+  "name": "SkySafe",
+  "type": "lever",
+  "ref": "skysafe",
+  "verdict": "unknown",
+  "why": "lever apply hosts",
+  "postings": 0
+ },
+ {
+  "id": "echodyne",
+  "name": "Echodyne",
+  "type": "greenhouse",
+  "ref": "echodyne",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "robin-radar-systems",
+  "name": "Robin Radar Systems",
+  "type": "ashby",
+  "ref": "robin-radar",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 30,
+  "vocab": {
+   "chars": 135043,
+   "hits": 26,
+   "per1k": 0.19
+  }
+ },
+ {
+  "id": "forcemetrics",
+  "name": "ForceMetrics",
+  "type": "workable",
+  "ref": "forcemetrics",
+  "verdict": "matches",
+  "why": "board calls itself \"ForceMetrics\"",
+  "postings": 2
+ },
+ {
+  "id": "perry-weather",
+  "name": "Perry Weather",
+  "type": "ashby",
+  "ref": "perryweather",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 10,
+  "vocab": {
+   "chars": 46626,
+   "hits": 7,
+   "per1k": 0.15
+  }
+ },
+ {
+  "id": "civic-marketplace",
+  "name": "Civic Marketplace",
+  "type": "ashby",
+  "ref": "civicmarketplace",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 3,
+  "vocab": {
+   "chars": 18319,
+   "hits": 50,
+   "per1k": 2.73
+  }
+ },
+ {
+  "id": "boostlingo",
+  "name": "Boostlingo",
+  "type": "greenhouse",
+  "ref": "boostlingo",
+  "verdict": "matches",
+  "why": "board calls itself \"Boostlingo\"",
+  "postings": 1
+ },
+ {
+  "id": "brain-co",
+  "name": "Brain Co.",
+  "type": "ashby",
+  "ref": "brain",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "videray-technologies",
+  "name": "Videray Technologies",
+  "type": "workable",
+  "ref": "videray",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "littlepay",
+  "name": "Littlepay",
+  "type": "greenhouse",
+  "ref": "littlepay",
+  "verdict": "matches",
+  "why": "board calls itself \"Littlepay\"",
+  "postings": 1
+ },
+ {
+  "id": "kuba",
+  "name": "Kuba",
+  "type": "workable",
+  "ref": "kubapay",
+  "verdict": "matches",
+  "why": "board calls itself \"Kuba\"",
+  "postings": 0
+ },
+ {
+  "id": "march-networks",
+  "name": "March Networks",
+  "type": "workable",
+  "ref": "marchnetworks",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "spare",
+  "name": "Spare",
+  "type": "ashby",
+  "ref": "spare",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 3,
+  "vocab": {
+   "chars": 19582,
+   "hits": 13,
+   "per1k": 0.66
+  }
+ },
+ {
+  "id": "may-mobility",
+  "name": "May Mobility",
+  "type": "greenhouse",
+  "ref": "maymobility",
+  "verdict": "matches",
+  "why": "board calls itself \"May Mobility\"",
+  "postings": 44
+ },
+ {
+  "id": "starbridge",
+  "name": "Starbridge",
+  "type": "ashby",
+  "ref": "starbridge",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 13,
+  "vocab": {
+   "chars": 55059,
+   "hits": 54,
+   "per1k": 0.98
+  }
+ },
+ {
+  "id": "zoox",
+  "name": "Zoox",
+  "type": "greenhouse",
+  "ref": "zoox",
+  "verdict": "unknown",
+  "why": "could not read the board (AtsError)",
+  "postings": 0
+ },
+ {
+  "id": "arrive",
+  "name": "Arrive",
+  "type": "ashby",
+  "ref": "arrive",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 55,
+  "vocab": {
+   "chars": 273582,
+   "hits": 16,
+   "per1k": 0.06
+  }
+ },
+ {
+  "id": "auror",
+  "name": "Auror",
+  "type": "ashby",
+  "ref": "auror",
+  "verdict": "LOOK",
+  "why": "3 government words in 669,489 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 19,
+  "vocab": {
+   "chars": 669489,
+   "hits": 3,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "dailypay",
+  "name": "DailyPay",
+  "type": "ashby",
+  "ref": "dailypay",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 24,
+  "vocab": {
+   "chars": 148225,
+   "hits": 28,
+   "per1k": 0.19
+  }
+ },
+ {
+  "id": "emburse",
+  "name": "Emburse",
+  "type": "lever",
+  "ref": "emburse",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 37,
+  "vocab": {
+   "chars": 63475,
+   "hits": 4,
+   "per1k": 0.06
+  }
+ },
+ {
+  "id": "gamechanger",
+  "name": "GameChanger",
+  "type": "ashby",
+  "ref": "gamechanger",
+  "verdict": "LOOK",
+  "why": "0 government words in 54,400 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 7,
+  "vocab": {
+   "chars": 54400,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "hello-heart",
+  "name": "Hello Heart",
+  "type": "greenhouse",
+  "ref": "helloheart",
+  "verdict": "matches",
+  "why": "board calls itself \"Hello Heart\"",
+  "postings": 10
+ },
+ {
+  "id": "tanium",
+  "name": "Tanium",
+  "type": "greenhouse",
+  "ref": "tanium",
+  "verdict": "matches",
+  "why": "board calls itself \"Tanium\"",
+  "postings": 45
+ },
+ {
+  "id": "metropolis",
+  "name": "Metropolis",
+  "type": "greenhouse",
+  "ref": "metropolis",
+  "verdict": "matches",
+  "why": "board calls itself \"Metropolis\"",
+  "postings": 79
+ },
+ {
+  "id": "outsight-sa",
+  "name": "Outsight SA",
+  "type": "lever",
+  "ref": "outsight",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 11,
+  "vocab": {
+   "chars": 39972,
+   "hits": 6,
+   "per1k": 0.15
+  }
+ },
+ {
+  "id": "the-weather-company",
+  "name": "The Weather Company",
+  "type": "greenhouse",
+  "ref": "theweathercompany",
+  "verdict": "matches",
+  "why": "board calls itself \"The Weather Company\"",
+  "postings": 14
+ },
+ {
+  "id": "palantir-technologies",
+  "name": "Palantir Technologies",
+  "type": "lever",
+  "ref": "palantir",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 308,
+  "vocab": {
+   "chars": 603493,
+   "hits": 81,
+   "per1k": 0.13
+  }
+ },
+ {
+  "id": "netradyne",
+  "name": "Netradyne",
+  "type": "greenhouse",
+  "ref": "netradyne",
+  "verdict": "matches",
+  "why": "board calls itself \"Netradyne\"",
+  "postings": 28
+ },
+ {
+  "id": "whip-around",
+  "name": "Whip Around",
+  "type": "workable",
+  "ref": "whiparound",
+  "verdict": "matches",
+  "why": "board calls itself \"Whip Around\"",
+  "postings": 2
+ },
+ {
+  "id": "vix-technology",
+  "name": "Vix Technology",
+  "type": "workable",
+  "ref": "vix-technology",
+  "verdict": "matches",
+  "why": "board calls itself \"Vix Technology & Kuba\"",
+  "postings": 24
+ },
+ {
+  "id": "spare-labs",
+  "name": "Spare Labs",
+  "type": "ashby",
+  "ref": "spare",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 3,
+  "vocab": {
+   "chars": 19582,
+   "hits": 13,
+   "per1k": 0.66
+  }
+ },
+ {
+  "id": "authorium",
+  "name": "Authorium",
+  "type": "ashby",
+  "ref": "authorium",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 8,
+  "vocab": {
+   "chars": 38026,
+   "hits": 71,
+   "per1k": 1.87
+  }
+ },
+ {
+  "id": "propelus",
+  "name": "Propelus",
+  "type": "ashby",
+  "ref": "propelus",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 3,
+  "vocab": {
+   "chars": 19739,
+   "hits": 10,
+   "per1k": 0.51
+  }
+ },
+ {
+  "id": "ems-linq",
+  "name": "EMS LINQ",
+  "type": "greenhouse",
+  "ref": "emslinqinc",
+  "verdict": "matches",
+  "why": "board calls itself \"LINQ \"",
+  "postings": 7
+ },
+ {
+  "id": "schoolmint",
+  "name": "SchoolMint",
+  "type": "greenhouse",
+  "ref": "schoolmint",
+  "verdict": "matches",
+  "why": "board calls itself \"SchoolMint\"",
+  "postings": 2
+ },
+ {
+  "id": "schoolstatus",
+  "name": "SchoolStatus",
+  "type": "greenhouse",
+  "ref": "schoolstatus",
+  "verdict": "matches",
+  "why": "board calls itself \"SchoolStatus\"",
+  "postings": 1
+ },
+ {
+  "id": "swing-education",
+  "name": "Swing Education",
+  "type": "greenhouse",
+  "ref": "swingeducation",
+  "verdict": "unknown",
+  "why": "",
+  "postings": 0
+ },
+ {
+  "id": "airdna",
+  "name": "AirDNA",
+  "type": "lever",
+  "ref": "airdna",
+  "verdict": "LOOK",
+  "why": "0 government words in 11,566 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 5,
+  "vocab": {
+   "chars": 11566,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "accesso-technology-group",
+  "name": "accesso Technology Group",
+  "type": "greenhouse",
+  "ref": "accesso",
+  "verdict": "matches",
+  "why": "board calls itself \"accesso\"",
+  "postings": 4
+ },
+ {
+  "id": "initlive",
+  "name": "InitLive (Bloomerang Volunteer)",
+  "type": "greenhouse",
+  "ref": "bloomerang",
+  "verdict": "matches",
+  "why": "board calls itself \" Bloomerang\"",
+  "postings": 8
+ },
+ {
+  "id": "limble",
+  "name": "Limble",
+  "type": "ashby",
+  "ref": "limble",
+  "verdict": "LOOK",
+  "why": "1 government words in 47,708 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 10,
+  "vocab": {
+   "chars": 47708,
+   "hits": 1,
+   "per1k": 0.02
+  }
+ },
+ {
+  "id": "tablet-command",
+  "name": "Tablet Command",
+  "type": "workable",
+  "ref": "tablet-command",
+  "verdict": "matches",
+  "why": "board calls itself \"Tablet Command, Inc.\"",
+  "postings": 1
+ },
+ {
+  "id": "corti",
+  "name": "Corti",
+  "type": "ashby",
+  "ref": "corti",
+  "verdict": "LOOK",
+  "why": "0 government words in 24,330 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 5,
+  "vocab": {
+   "chars": 24330,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "flash",
+  "name": "FLASH",
+  "type": "greenhouse",
+  "ref": "flash",
+  "verdict": "matches",
+  "why": "board calls itself \"Flash\"",
+  "postings": 9
+ },
+ {
+  "id": "airgarage",
+  "name": "AirGarage",
+  "type": "ashby",
+  "ref": "airgarage",
+  "verdict": "LOOK",
+  "why": "0 government words in 56,174 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 5,
+  "vocab": {
+   "chars": 56174,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "foothold-technology",
+  "name": "Foothold Technology",
+  "type": "greenhouse",
+  "ref": "footholdtechnology",
+  "verdict": "unknown",
+  "why": "",
+  "postings": 0
+ },
+ {
+  "id": "bitfocus",
+  "name": "Bitfocus",
+  "type": "greenhouse",
+  "ref": "bitfocus",
+  "verdict": "matches",
+  "why": "board calls itself \"Bitfocus\"",
+  "postings": 1
+ },
+ {
+  "id": "aidkit",
+  "name": "AidKit",
+  "type": "ashby",
+  "ref": "aidkit",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 2,
+  "vocab": {
+   "chars": 9627,
+   "hits": 12,
+   "per1k": 1.25
+  }
+ },
+ {
+  "id": "fortuna-health",
+  "name": "Fortuna Health",
+  "type": "ashby",
+  "ref": "fortuna-health",
+  "verdict": "LOOK",
+  "why": "0 government words in 11,562 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 3,
+  "vocab": {
+   "chars": 11562,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "ivalua",
+  "name": "Ivalua",
+  "type": "greenhouse",
+  "ref": "ivalua",
+  "verdict": "matches",
+  "why": "board calls itself \"Ivalua\"",
+  "postings": 45
+ },
+ {
+  "id": "fluxx",
+  "name": "Fluxx",
+  "type": "greenhouse",
+  "ref": "fluxx",
+  "verdict": "matches",
+  "why": "board calls itself \"Fluxx\"",
+  "postings": 3
+ },
+ {
+  "id": "grant-street-group",
+  "name": "Grant Street Group",
+  "type": "lever",
+  "ref": "grantstreet",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 6,
+  "vocab": {
+   "chars": 11853,
+   "hits": 6,
+   "per1k": 0.51
+  }
+ },
+ {
+  "id": "kubra",
+  "name": "KUBRA",
+  "type": "lever",
+  "ref": "kubra",
+  "verdict": "unknown",
+  "why": "lever apply hosts",
+  "postings": 0
+ },
+ {
+  "id": "paynearme",
+  "name": "PayNearMe",
+  "type": "greenhouse",
+  "ref": "paynearmeinc",
+  "verdict": "matches",
+  "why": "board calls itself \"PayNearMe, Inc.\"",
+  "postings": 8
+ },
+ {
+  "id": "lightspeed-systems",
+  "name": "Lightspeed Systems",
+  "type": "greenhouse",
+  "ref": "lightspeedsystems",
+  "verdict": "matches",
+  "why": "board calls itself \"Lightspeed Systems\"",
+  "postings": 10
+ },
+ {
+  "id": "rhombus-systems",
+  "name": "Rhombus Systems",
+  "type": "lever",
+  "ref": "rhombus-systems",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 11,
+  "vocab": {
+   "chars": 14755,
+   "hits": 3,
+   "per1k": 0.2
+  }
+ },
+ {
+  "id": "alertus-technologies",
+  "name": "Alertus Technologies",
+  "type": "lever",
+  "ref": "alertus",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 21,
+  "vocab": {
+   "chars": 27111,
+   "hits": 2,
+   "per1k": 0.07
+  }
+ },
+ {
+  "id": "clear",
+  "name": "CLEAR (Alclear)",
+  "type": "greenhouse",
+  "ref": "clear",
+  "verdict": "MISMATCH",
+  "why": "board calls itself \"CLEAR - Corporate\", we have it as \"CLEAR (Alclear)\"",
+  "postings": 35
+ },
+ {
+  "id": "identiv",
+  "name": "Identiv",
+  "type": "workable",
+  "ref": "identiv",
+  "verdict": "matches",
+  "why": "board calls itself \"Identiv\"",
+  "postings": 1
+ },
+ {
+  "id": "ameelio",
+  "name": "Ameelio",
+  "type": "greenhouse",
+  "ref": "ameelio",
+  "verdict": "matches",
+  "why": "board calls itself \"Ameelio\"",
+  "postings": 2
+ },
+ {
+  "id": "recidiviz",
+  "name": "Recidiviz",
+  "type": "greenhouse",
+  "ref": "recidiviz",
+  "verdict": "matches",
+  "why": "board calls itself \"Recidiviz\"",
+  "postings": 10
+ },
+ {
+  "id": "highland-electric-fleets",
+  "name": "Highland Electric Fleets",
+  "type": "lever",
+  "ref": "highlandfleets-2",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 9,
+  "vocab": {
+   "chars": 13405,
+   "hits": 10,
+   "per1k": 0.75
+  }
+ },
+ {
+  "id": "campminder",
+  "name": "CampMinder",
+  "type": "greenhouse",
+  "ref": "campminder",
+  "verdict": "matches",
+  "why": "board calls itself \"Campminder\"",
+  "postings": 6
+ },
+ {
+  "id": "roller",
+  "name": "ROLLER",
+  "type": "greenhouse",
+  "ref": "roller",
+  "verdict": "matches",
+  "why": "board calls itself \"ROLLER\"",
+  "postings": 19
+ },
+ {
+  "id": "zensors",
+  "name": "Zensors",
+  "type": "ashby",
+  "ref": "Zensors",
+  "verdict": "LOOK",
+  "why": "0 government words in 16,527 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 5,
+  "vocab": {
+   "chars": 16527,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "aira",
+  "name": "Aira",
+  "type": "workable",
+  "ref": "aira",
+  "verdict": "matches",
+  "why": "board calls itself \"Aira\"",
+  "postings": 0
+ },
+ {
+  "id": "pointr",
+  "name": "Pointr",
+  "type": "ashby",
+  "ref": "pointr",
+  "verdict": "LOOK",
+  "why": "1 government words in 51,463 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 12,
+  "vocab": {
+   "chars": 51463,
+   "hits": 1,
+   "per1k": 0.02
+  }
+ },
+ {
+  "id": "gridunity",
+  "name": "GridUnity",
+  "type": "ashby",
+  "ref": "gridunity",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 6,
+  "vocab": {
+   "chars": 49298,
+   "hits": 6,
+   "per1k": 0.12
+  }
+ },
+ {
+  "id": "bidgely",
+  "name": "Bidgely",
+  "type": "ashby",
+  "ref": "bidgely-inc",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 8,
+  "vocab": {
+   "chars": 45369,
+   "hits": 8,
+   "per1k": 0.18
+  }
+ },
+ {
+  "id": "energyhub",
+  "name": "EnergyHub",
+  "type": "greenhouse",
+  "ref": "energyhub",
+  "verdict": "matches",
+  "why": "board calls itself \"EnergyHub\"",
+  "postings": 16
+ },
+ {
+  "id": "neara",
+  "name": "Neara",
+  "type": "ashby",
+  "ref": "neara",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 40,
+  "vocab": {
+   "chars": 214896,
+   "hits": 17,
+   "per1k": 0.08
+  }
+ },
+ {
+  "id": "objective-corporation",
+  "name": "Objective Corporation",
+  "type": "lever",
+  "ref": "objective",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 11,
+  "vocab": {
+   "chars": 9243,
+   "hits": 11,
+   "per1k": 1.19
+  }
+ },
+ {
+  "id": "civica",
+  "name": "Civica",
+  "type": "workable",
+  "ref": "civica-uk-ltd-1",
+  "verdict": "matches",
+  "why": "board calls itself \"Civica\"",
+  "postings": 90
+ },
+ {
+  "id": "glydways",
+  "name": "Glydways",
+  "type": "greenhouse",
+  "ref": "glydways",
+  "verdict": "matches",
+  "why": "board calls itself \"Glydways\"",
+  "postings": 11
+ },
+ {
+  "id": "weride",
+  "name": "WeRide",
+  "type": "lever",
+  "ref": "weride",
+  "verdict": "LOOK",
+  "why": "0 government words in 17,427 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 30,
+  "vocab": {
+   "chars": 17427,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "ready-net",
+  "name": "Ready.net",
+  "type": "ashby",
+  "ref": "ready",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 7,
+  "vocab": {
+   "chars": 36135,
+   "hits": 6,
+   "per1k": 0.17
+  }
+ },
+ {
+  "id": "anthropic",
+  "name": "Anthropic",
+  "type": "greenhouse",
+  "ref": "anthropic",
+  "verdict": "matches",
+  "why": "board calls itself \"Anthropic\"",
+  "postings": 516
+ },
+ {
+  "id": "openai",
+  "name": "OpenAI",
+  "type": "ashby",
+  "ref": "openai",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 753,
+  "vocab": {
+   "chars": 5159319,
+   "hits": 2143,
+   "per1k": 0.42
+  }
+ },
+ {
+  "id": "propel",
+  "name": "Propel",
+  "type": "ashby",
+  "ref": "propel",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 8,
+  "vocab": {
+   "chars": 65740,
+   "hits": 67,
+   "per1k": 1.02
+  }
+ },
+ {
+  "id": "meadow",
+  "name": "Meadow",
+  "type": "ashby",
+  "ref": "Meadow",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 5,
+  "vocab": {
+   "chars": 24173,
+   "hits": 3,
+   "per1k": 0.12
+  }
+ },
+ {
+  "id": "saraworks",
+  "name": "SaraWorks",
+  "type": "greenhouse",
+  "ref": "saraworks",
+  "verdict": "unknown",
+  "why": "",
+  "postings": 0
+ },
+ {
+  "id": "droplet",
+  "name": "Droplet",
+  "type": "greenhouse",
+  "ref": "droplet",
+  "verdict": "matches",
+  "why": "board calls itself \"Droplet\"",
+  "postings": 3
+ },
+ {
+  "id": "feedbackfruits",
+  "name": "FeedbackFruits",
+  "type": "ashby",
+  "ref": "feedbackfruits",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 5,
+  "vocab": {
+   "chars": 23722,
+   "hits": 4,
+   "per1k": 0.17
+  }
+ },
+ {
+  "id": "linq",
+  "name": "LINQ",
+  "type": "greenhouse",
+  "ref": "emslinqinc",
+  "verdict": "matches",
+  "why": "board calls itself \"LINQ \"",
+  "postings": 7
+ },
+ {
+  "id": "follett-software",
+  "name": "Follett Software",
+  "type": "greenhouse",
+  "ref": "follettsoftware",
+  "verdict": "matches",
+  "why": "board calls itself \"Follett Software, LLC\"",
+  "postings": 9
+ },
+ {
+  "id": "instructure",
+  "name": "Instructure",
+  "type": "ashby",
+  "ref": "instructure",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 45,
+  "vocab": {
+   "chars": 253196,
+   "hits": 28,
+   "per1k": 0.11
+  }
+ },
+ {
+  "id": "radicle-health",
+  "name": "Radicle Health",
+  "type": "greenhouse",
+  "ref": "radiclehealth",
+  "verdict": "matches",
+  "why": "board calls itself \"Radicle Health\"",
+  "postings": 3
+ },
+ {
+  "id": "convey",
+  "name": "Convey",
+  "type": "ashby",
+  "ref": "Convey",
+  "verdict": "LOOK",
+  "why": "0 government words in 4,563 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 2,
+  "vocab": {
+   "chars": 4563,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "career-team",
+  "name": "Career TEAM",
+  "type": "greenhouse",
+  "ref": "careerteam",
+  "verdict": "matches",
+  "why": "board calls itself \"Career Team\"",
+  "postings": 44
+ },
+ {
+  "id": "brisk-teaching",
+  "name": "Brisk Teaching",
+  "type": "ashby",
+  "ref": "brisk-teaching",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 5,
+  "vocab": {
+   "chars": 26266,
+   "hits": 11,
+   "per1k": 0.42
+  }
+ },
+ {
+  "id": "secure-schools",
+  "name": "Secure Schools",
+  "type": "workable",
+  "ref": "secure-schools",
+  "verdict": "matches",
+  "why": "board calls itself \"Secure Schools\"",
+  "postings": 0
+ },
+ {
+  "id": "civitas-learning",
+  "name": "Civitas Learning",
+  "type": "greenhouse",
+  "ref": "civitaslearning",
+  "verdict": "matches",
+  "why": "board calls itself \"Civitas Learning\"",
+  "postings": 2
+ },
+ {
+  "id": "cybernut",
+  "name": "CyberNut",
+  "type": "ashby",
+  "ref": "cybernut",
+  "verdict": "unknown",
+  "why": "ashby apply hosts (this ATS states no employer name)",
+  "postings": 0
+ },
+ {
+  "id": "starrez",
+  "name": "StarRez",
+  "type": "greenhouse",
+  "ref": "starrez",
+  "verdict": "matches",
+  "why": "board calls itself \"StarRez\"",
+  "postings": 19
+ },
+ {
+  "id": "magicschool",
+  "name": "MagicSchool",
+  "type": "ashby",
+  "ref": "magicschool",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 2,
+  "vocab": {
+   "chars": 12542,
+   "hits": 1,
+   "per1k": 0.08
+  }
+ },
+ {
+  "id": "clinically-ai",
+  "name": "Clinically AI",
+  "type": "ashby",
+  "ref": "ClinicallyAI",
+  "verdict": "LOOK",
+  "why": "0 government words in 59,093 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 9,
+  "vocab": {
+   "chars": 59093,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "neighborly-software",
+  "name": "Neighborly Software",
+  "type": "ashby",
+  "ref": "neighborly-software",
+  "verdict": "unknown",
+  "why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+  "postings": 11,
+  "vocab": {
+   "chars": 69714,
+   "hits": 49,
+   "per1k": 0.7
+  }
+ },
+ {
+  "id": "stellic",
+  "name": "Stellic",
+  "type": "ashby",
+  "ref": "stellic",
+  "verdict": "LOOK",
+  "why": "0 government words in 62,633 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 10,
+  "vocab": {
+   "chars": 62633,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "mango-languages",
+  "name": "Mango Languages",
+  "type": "lever",
+  "ref": "mangolanguage",
+  "verdict": "LOOK",
+  "why": "0 government words in 2,069 characters of its own job ads - not proof it is the wrong board, but nothing corroborates it either",
+  "postings": 2,
+  "vocab": {
+   "chars": 2069,
+   "hits": 0,
+   "per1k": 0.0
+  }
+ },
+ {
+  "id": "echo360",
+  "name": "Echo360",
+  "type": "workable",
+  "ref": "echo360-inc",
+  "verdict": "matches",
+  "why": "board calls itself \"Echo360 Inc\"",
+  "postings": 1
+ }
+]

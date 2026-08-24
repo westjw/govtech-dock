@@ -1381,6 +1381,19 @@ function jobs(){
         <option value="">Any kind of role</option>
         ${fams.map(f=>`<option value="${esc(f)}">${esc(FAM[f]||f)}</option>`).join("")}
       </select>
+      <!-- Which government function they sell into, promoted out of More
+           filters into the primary row. Every other job board can tell you
+           "SaaS, sales, remote"; only this one can tell you they sell to
+           police chiefs rather than school superintendents, and for a SLED
+           seller that IS the career question - six years of relationships in
+           public safety is worth a great deal in Public Safety and nothing in
+           Higher Ed. It mirrors #j-sec rather than replacing it, the same way
+           the role-family pill mirrors #j-fam, so an incoming shared link
+           still works whichever one it names. -->
+      <select id="j-sec-pill" onchange="secPill()" aria-label="Industry they sell into">
+        <option value="">Any industry</option>
+        ${secs.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}
+      </select>
       ${payOn?`
       <!-- Pay is in the primary row, not More filters, because it is the
            second question a seller asks after "what is it". The three
@@ -1595,6 +1608,12 @@ function setWhere(btn){
 }
 /* One family control, two places. The pill is the primary; the select in More
    filters is the same value, kept in step so they can never disagree. */
+function secPill(){
+  PUSH_NEXT=true;   // a deliberate choice, so Back should undo it
+  const v=$("#j-sec-pill").value;
+  if($("#j-sec")) $("#j-sec").value=v;
+  SHOWN=60; drawJobs();
+}
 function famPill(){
   PUSH_NEXT=true;   // a deliberate choice, so Back should undo it
   const v=$("#j-fam-pill").value;
@@ -1795,6 +1814,8 @@ function applyUrl(u){
     setBarOpen($("#j-bar"),document.querySelector('[onclick*="toggleMore"]'),true);
   const fp=$("#j-fam-pill"), f=$("#j-fam");
   if(fp&&f)fp.value=f.value;
+  const sp=$("#j-sec-pill"), sc=$("#j-sec");
+  if(sp&&sc)sp.value=sc.value;
   URL_LOADING=false;
 }
 /* Saved roles. A board you cannot come back to is a board you visit once.
@@ -2149,7 +2170,7 @@ function drawJobs(){
     if(n===0){
       offer.textContent="None of them clear the filters you have set.";
     }else if(sinceDays===0){
-      offer.textContent=`Showing ${n.toLocaleString()} of them.`;
+      offer.textContent=n===1?"Showing the one.":`Showing ${n.toLocaleString()} of them.`;
     }else{
       const a=document.createElement("a");
       a.href="#";
@@ -2157,7 +2178,7 @@ function drawJobs(){
       // to its left - the title says why rather than leaving a reader to
       // wonder whether one of the two numbers is wrong
       a.title="the roles first seen this run that also clear the filters you have set";
-      a.textContent=`Show these ${n.toLocaleString()} →`;
+      a.textContent=n===1?"Show the one →":`Show these ${n.toLocaleString()} →`;
       a.onclick=e=>{e.preventDefault();
         const s=$("#j-since"); if(s){s.value="0";PUSH_NEXT=true;refilter();}};
       offer.appendChild(a);
@@ -2740,6 +2761,94 @@ function drawCos(){
    caller was stringifying it into an onclick attribute; now that nothing does,
    an encode/decode round trip is one more thing that can quietly fail to be
    its own inverse. */
+/* The company card, written out rather than listed.
+   The owner asked for several paragraphs instead of a one-line description,
+   and the honest way to get them is to SAY WHAT WE ALREADY KNOW in sentences
+   rather than to write prose we cannot back. Every clause below is a field on
+   the record; nothing is inferred, and anything absent is simply not said
+   rather than filled with a hedge. */
+function companyStory(o, mine){
+  const P=[];
+  const n=x=>x.toLocaleString();
+
+  /* 1. what they sell, and who to. The sector and category are the thing this
+        board knows that no general job board does. */
+  const buyers={
+    "Public Safety":"police departments, fire services and 911 centres",
+    "Public Works":"public works and utilities departments",
+    "K-12 Schools":"school districts",
+    "Higher Education":"colleges and universities",
+    "Transit & Parking":"transit agencies and parking authorities",
+    "Courts & Justice":"courts, prosecutors and probation offices",
+    "Health & Human Services":"health and human services agencies",
+    "Utilities & Energy":"municipal utilities",
+    "Parks & Rec":"parks and recreation departments",
+    "Airports & Aviation":"airports",
+    "Housing & Community Dev":"housing and planning departments",
+    "General Gov":"city and county government"
+  }[o.sector];
+  let a=`${o.name} sells into ${o.sector.toLowerCase()}`;
+  if(buyers)a+=` — ${buyers}`;
+  a+=`, filed under ${o.category}.`;
+  if(o.description)a+=` ${o.description.replace(/\s*-\s*exhibited at.*$/,"")}.`
+    .replace(/\.\.$/,".");
+  if(o.location&&o.year_founded)
+    a+=` Based in ${o.location}, founded ${o.year_founded}.`;
+  else if(o.location)a+=` Based in ${o.location}.`;
+  else if(o.year_founded)a+=` Founded ${o.year_founded}.`;
+  P.push(a);
+
+  /* 2. what the hiring says. Composition is the signal - a company hiring
+        mostly engineers is building, mostly sellers is pushing go-to-market. */
+  if(o.open_roles){
+    const fam=Object.entries(o.families||{}).sort((x,y)=>y[1]-x[1]);
+    let b=`They have ${n(o.open_roles)} role${o.open_roles===1?"":"s"} open`;
+    if(o.quota_roles)b+=`, ${n(o.quota_roles)} of them carrying a number`;
+    b+=`.`;
+    if(fam.length){
+      const top=fam.slice(0,3).map(([k,v])=>`${v} in ${(FAM[k]||k).toLowerCase()}`);
+      b+=` The mix is ${top.join(", ")}`;
+      if(fam.length>3)b+=` and ${fam.length-3} other area${fam.length-3===1?"":"s"}`;
+      b+=`.`;
+    }
+    if(o.phase)b+=` That reads as ${o.phase.replace(/^[a-z]+:\s*/,"")}.`;
+    P.push(b);
+  }
+
+  /* 3. where the work is. Territory and desk are different questions and the
+        board keeps them apart, so the sentence does too. */
+  if(mine.length){
+    let w=whereSummary?whereSummary(mine):null;
+    if(w){
+      // whereSummary was written for a one-line chip, so its clauses butt up
+      // against each other in a sentence. Space them without touching the
+      // function the rest of the board depends on.
+      w=w.replace(/,(?=[a-z0-9])/gi," \u00b7 ").replace(/\s*\u00b7\s*/g," \u00b7 ");
+      P.push(`Where the roles sit: ${w}.`);
+    }
+  }
+
+  /* 4. what they pay, where they say. Only from postings that state it - a
+        range built from four postings is described as four postings. */
+  const paid=mine.filter(p=>p.comp&&(p.comp.min||p.comp.max));
+  if(paid.length){
+    const yearly=paid.filter(p=>p.comp.period==="year");
+    if(yearly.length){
+      const lo=Math.min(...yearly.map(p=>p.comp.min||p.comp.max));
+      const hi=Math.max(...yearly.map(p=>p.comp.max||p.comp.min));
+      const k=v=>"$"+Math.round(v/1000)+"k";
+      P.push(`${yearly.length} of their ${mine.length} postings state pay, `
+        +`between ${k(lo)} and ${k(hi)} a year. The rest state none — that is `
+        +`the posting being silent, not a low number.`);
+    }
+  }
+
+  /* 5. how we came to know about them, when we know. */
+  const ev=(o.description||"").match(/exhibited at (.+)$/);
+  if(ev)P.push(`We first saw them exhibiting at ${ev[1]}.`);
+  return P;
+}
+
 function co(id){
   const o=D.organizations.find(x=>x.id===id);
   if(!o) return;
@@ -2756,7 +2865,8 @@ function co(id){
           ${o.year_founded?" &middot; founded "+o.year_founded:""}${o.tier?" &middot; tier "+o.tier:""}</div>
       </div>
     </div>
-    ${o.description?`<p class="kv" style="max-width:72ch">${esc(o.description)}</p>`:""}
+    ${companyStory(o,mine).map(par=>
+        `<p class="kv" style="max-width:72ch;margin:0 0 10px">${esc(par)}</p>`).join("")}
     ${o.parent?`<p class="kv"><span class="chip">part of ${esc(o.parent)}</span>
       ${esc(o.ats_note||"")}</p>`:""}
     ${/* Directly under the description, not in a footnote at the bottom of
