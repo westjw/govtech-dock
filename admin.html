@@ -147,6 +147,33 @@
   .ltile img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
     background:#fff}
   h3.hasLogo{display:flex;align-items:center}
+  .hero{display:flex;gap:20px;align-items:center;background:var(--panel);
+    border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:14px 0 12px}
+  .hero .peng{width:180px;flex:none}
+  .herobody{flex:1;min-width:0}
+  .heroline{font-size:19px;font-weight:700;letter-spacing:-.015em}
+  .health{margin:6px 0 12px;display:flex;align-items:baseline;gap:7px}
+  .health strong{font-size:34px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .health span{color:var(--dim);font-size:13px}
+  .parts{display:flex;flex-direction:column;gap:7px}
+  .part{display:flex;align-items:center;gap:10px;font-size:12.5px}
+  .part .pl{width:170px;flex:none;color:var(--dim)}
+  .pbar{flex:1;height:6px;background:var(--chip);border-radius:4px;overflow:hidden}
+  .pfill{display:block;height:100%;background:var(--accent)}
+  .pfill.low{background:var(--warn)}
+  .ppct{width:38px;text-align:right;color:var(--faint);
+    font-variant-numeric:tabular-nums}
+  .pnote{font-size:11.5px;color:var(--faint);margin:1px 0 0 180px}
+  .tape{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:16px 0 4px}
+  .stamp{font-size:11px;padding:3px 9px;border-radius:12px;background:var(--chip);
+    color:var(--dim);white-space:nowrap}
+  .stamp.undone{background:transparent;border:1px dashed var(--warn);color:var(--warn)}
+  @media (max-width:700px){
+    .hero{flex-direction:column;align-items:flex-start;gap:10px}
+    .hero .peng{width:130px}
+    .part .pl{width:120px}
+    .pnote{margin-left:0}
+  }
 </style>
 </head>
 <body>
@@ -294,6 +321,44 @@ async function showStart() {
      right now, and whether the paper is clean. Volume is never one of them -
      a wrong ruling here is invisible and permanent, so the craft stat is the
      one that gets the accent colour. */
+  /* THE HERO. The penguin earns its place by carrying the one number that
+     matters, and the line under it is the product's own voice rather than a
+     dashboard caption. Health is shown WITH ITS PARTS: a composite alone
+     hides which input moved, and a score nobody can take apart is a score
+     nobody trusts. */
+  const H = t.health || {};
+  const hero = el('div', 'hero');
+  const peng = el('img', 'peng');
+  peng.src = '/assets/mascot/svg/mascot-slide.svg';
+  peng.alt = '';
+  hero.appendChild(peng);
+  const hbody = el('div', 'herobody');
+  hbody.appendChild(el('div', 'heroline', "It's tough SLEDing out there."));
+  const hs = el('div', 'health');
+  hs.appendChild(el('strong', null, String(H.score ?? '—')));
+  hs.appendChild(el('span', null, '/100 board health'));
+  hbody.appendChild(hs);
+  const parts = el('div', 'parts');
+  (H.parts || []).forEach(pt => {
+    const row = el('div', 'part');
+    row.appendChild(el('span', 'pl', pt.label));
+    const bar = el('span', 'pbar');
+    const fill = el('span', 'pfill');
+    fill.style.width = Math.max(2, pt.pct) + '%';
+    if (pt.pct < 50) fill.classList.add('low');
+    bar.appendChild(fill);
+    row.appendChild(bar);
+    row.appendChild(el('span', 'ppct', pt.pct + '%'));
+    row.title = pt.note;
+    const note = el('div', 'pnote', pt.note);
+    const wrap = el('div');
+    wrap.append(row, note);
+    parts.appendChild(wrap);
+  });
+  hbody.appendChild(parts);
+  hero.appendChild(hbody);
+  v.appendChild(hero);
+
   const onTable = (t.counts.vendors || 0) + (t.counts.miscategorized || 0)
                 + (t.counts.duplicates || 0);
   const visible = (t.recommend.find(r => r.queue === 'miscategorized') || {}).n || 0;
@@ -315,10 +380,18 @@ async function showStart() {
         ? '—' : g.why_coverage + '%', 'of your rulings say why', 'green'));
   v.appendChild(counter);
 
+  /* Counted in SESSIONS, not calendar days. The rhythm here is bursty - an
+     evening of rulings, then nothing for a while - and a daily streak against
+     that is a machine for feeling bad about a pattern that is not a problem.
+     A session is a run with no gap longer than four hours, so a Sunday
+     evening counts the same as a Tuesday one. */
+  const ss = t.sessions || {};
   const line = el('div', 'yourline');
   line.appendChild(el('span', null,
-    `${g.today || 0} today · your best day this month is ${g.best_30 || 0}`));
-  if ((g.today || 0) > (g.best_30 || 0) && (g.best_30 || 0) > 0)
+    ss.this_session
+      ? `${ss.this_session} this sitting · your best sitting is ${ss.best_session}`
+      : `${ss.rulings || 0} rulings across ${ss.sessions || 0} sittings · best ${ss.best_session || 0}`));
+  if (ss.this_session && ss.this_session >= (ss.best_session || 0) && ss.best_session > 1)
     line.appendChild(el('span', 'pb', 'personal best'));
   v.appendChild(line);
 
@@ -327,6 +400,27 @@ async function showStart() {
      a percentage does not. */
   const stateOf = {};
   ((g.states) || []).forEach(st => { stateOf[st.queue] = st; });
+  /* REVERSALS SHOWN, NOT HIDDEN. A screen that only ever displays wins is not
+     telling you how you are doing. An undo is the system working; the count of
+     them is the only honest read on whether the pace is right. */
+  const rv = t.reversals || [];
+  if (rv.length) {
+    const strip = el('div', 'tape');
+    strip.appendChild(el('span', 'lbl', 'Last rulings'));
+    rv.forEach(r => {
+      const chip = el('span', 'stamp' + (r.reversed ? ' undone' : ''));
+      chip.textContent = r.action + (r.n > 1 ? ' \u00d7' + r.n : '');
+      chip.title = (r.why || r.action) + ' \u00b7 ' + (r.at || '').slice(0, 16)
+                 + (r.reversed ? ' \u00b7 you took this one back' : '');
+      strip.appendChild(chip);
+    });
+    const undone = rv.filter(r => r.reversed).length;
+    strip.appendChild(el('span', 'kv',
+      undone ? `${undone} taken back \u2014 that is the undo working, not a black mark`
+             : 'none taken back'));
+    v.appendChild(strip);
+  }
+
   if (t.recommend.length) v.appendChild(el('div', 'lbl', "Today's sorties"));
   t.recommend.forEach(r => {
     const card = el('div', 'sortie');

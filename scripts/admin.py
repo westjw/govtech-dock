@@ -639,6 +639,106 @@ def act_set_founded(body: dict) -> dict:
     return {"ok": True, "message": f"{c['name']}: founded {year}"}
 
 
+def board_health(companies, board) -> dict:
+    """A score, and the parts it is made of, because a composite alone hides
+    which input moved.
+
+    Weighted the way the owner ranked it: public correctness first, coverage
+    second. A row that is wrong in front of visitors today costs more than a
+    company we have not finished researching, because the first actively
+    misleads somebody and the second only fails to help them.
+
+    Nothing here is a target to be gamed. Every part is a real count, and the
+    label says what would move it.
+    """
+    n = len(companies) or 1
+    live = {o["id"]: o.get("open_roles", 0) for o in board.get("organizations", [])}
+    mis = q_miscategorized(companies, board)
+    visible_wrong = sum(1 for r in mis if r.get("open_roles"))
+    with_site = sum(1 for c in companies if c.get("website"))
+    with_year = sum(1 for c in companies if c.get("year_founded"))
+    structured = sum(1 for c in companies
+                     if (c.get("ats") or {}).get("type") not in
+                     ("html", "unknown", None))
+    settled = len(read("vendor_scope_decisions.json", {}))
+    pending_scope = len(q_vendor_scope(companies, board))
+
+    parts = [
+        # (label, got, of, weight, what moves it)
+        ("Right on the public site", max(0, 40 - visible_wrong), 40, 3,
+         f"{visible_wrong} miscategorised companies are hiring, so they are the "
+         f"top rows a visitor sees"),
+        ("Names reachable", with_site, n, 1,
+         f"{n - with_site} companies have no website on file"),
+        ("Scope settled", settled, settled + pending_scope or 1, 2,
+         f"{pending_scope} vendors are waiting on an in/out call"),
+        ("Boards found", structured, n, 1,
+         f"{structured} companies are on a board we can read reliably"),
+        ("Founding years", with_year, n, 1,
+         f"{n - with_year} cards show a blank year"),
+    ]
+    total_w = sum(w for *_, w, _ in parts)
+    score = sum((got / of if of else 0) * w for _, got, of, w, _ in parts)
+    return {
+        "score": round(100 * score / total_w),
+        "visible_wrong": visible_wrong,
+        "parts": [{"label": l, "pct": round(100 * got / of) if of else 0,
+                   "weight": w, "note": note}
+                  for l, got, of, w, note in parts],
+    }
+
+
+def sessions(limit: int = 30) -> dict:
+    """Rulings grouped into SESSIONS, not calendar days.
+
+    The owner's rhythm is bursty - 9 rulings, best day 9, nothing since - and
+    a daily streak against that is a machine for feeling bad. A session is a
+    run of rulings with no gap longer than four hours, so an evening of work
+    counts once whether it happens on a Tuesday or a Sunday.
+    """
+    import journal
+    rows = [r for r in journal._entries() if r.get("action") not in
+            ("undo", "reopen", "cleanup", "restore-name")]
+    stamps = sorted(r["at"] for r in rows if r.get("at"))
+    runs, cur = [], []
+    for t in stamps:
+        if cur and (dt.datetime.fromisoformat(t)
+                    - dt.datetime.fromisoformat(cur[-1])).total_seconds() > 4 * 3600:
+            runs.append(cur); cur = []
+        cur.append(t)
+    if cur:
+        runs.append(cur)
+    return {
+        "sessions": len(runs),
+        "best_session": max((len(r) for r in runs), default=0),
+        "this_session": len(runs[-1]) if runs else 0,
+        "rulings": len(stamps),
+    }
+
+
+def reversals(limit: int = 8) -> list:
+    """The last few rulings and whether any were taken back.
+
+    Shown rather than hidden, because a queue that only ever displays wins is
+    not telling you how you are doing. An undo is not a black mark - it is the
+    system working, and the count of them is the only honest read on whether
+    the pace is right.
+    """
+    import journal
+    rows = journal._entries()[-40:]
+    undone = {r.get("undo_of") for r in rows if r.get("undo_of")}
+    out = []
+    for r in reversed(rows):
+        if r.get("action") in ("undo", "reopen"):
+            continue
+        out.append({"id": r["id"], "action": r["action"], "n": r.get("n", 0),
+                    "at": r.get("at"), "why": r.get("why", ""),
+                    "reversed": r["id"] in undone})
+        if len(out) >= limit:
+            break
+    return out
+
+
 def act_vendor_scope_all(body: dict) -> dict:
     """Rule a family of horizontal vendors in one go.
 
@@ -2084,6 +2184,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
             return self._send(CAPTURE_JS.read_bytes(), "application/javascript")
         if path.startswith("/assets/logos/"):
             return self._logo(path[len("/assets/logos/"):])
+        if path.startswith("/assets/mascot/"):
+            return self._mascot(path[len("/assets/mascot/"):])
         return self._json({"error": "not found"}, 404)
 
     # Logos are the one static directory the admin serves. Serving ROOT is what
@@ -2092,6 +2194,20 @@ class Handler(http.server.BaseHTTPRequestHandler):
     # trusting the string - "..%2f" and a symlink both die on the resolve.
     LOGO_TYPES = {".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp",
                   ".ico": "image/x-icon", ".svg": "image/svg+xml"}
+
+    def _mascot(self, name: str):
+        """The penguin. Same resolve-and-contain check as the logos."""
+        root = (ROOT / "assets" / "mascot").resolve()
+        try:
+            f = (root / name).resolve()
+        except (OSError, ValueError):
+            return self._json({"error": "not found"}, 404)
+        if root not in f.parents or not f.is_file():
+            return self._json({"error": "not found"}, 404)
+        kind = {".svg": "image/svg+xml", ".png": "image/png"}.get(f.suffix.lower())
+        if not kind:
+            return self._json({"error": "not found"}, 404)
+        return self._send(f.read_bytes(), kind)
 
     def _logo(self, name: str):
         root = (ROOT / "assets" / "logos").resolve()
@@ -2109,7 +2225,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def _api_get(self, path: str):
         if path == "/api/triage":
             companies, board = read_companies(), read("board.json", {})
-            return self._json(triage(companies, board))
+            t = triage(companies, board)
+            t["health"] = board_health(companies, board)
+            t["sessions"] = sessions()
+            t["reversals"] = reversals()
+            return self._json(t)
         if path == "/api/queues":
             companies, board = read_companies(), read("board.json", {})
             return self._json({"counts": {k: len(f(companies, board))
