@@ -47,6 +47,7 @@ import urllib.parse
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import ats            # noqa: E402
 import add_company    # noqa: E402
+import verify_boards  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -134,11 +135,17 @@ def main() -> int:
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--include-unknown", action="store_true",
                     help="also sweep the companies with no board on file")
+    ap.add_argument("--only-unknown", action="store_true",
+                    help="sweep ONLY the no-board companies, so a finished "
+                         "page-only run is not repeated")
+    ap.add_argument("--out", help="write somewhere other than the default, so "
+                                  "two runs do not overwrite each other")
     ap.add_argument("--pause", type=float, default=0.3)
     a = ap.parse_args()
 
     companies = json.loads((DATA / "companies.json").read_text())
-    kinds = {"html"} | ({"unknown"} if a.include_unknown else set())
+    kinds = ({"unknown"} if a.only_unknown
+             else {"html"} | ({"unknown"} if a.include_unknown else set()))
     todo = [c for c in companies
             if (c.get("ats") or {}).get("type") in kinds and c.get("website")]
     if not a.all:
@@ -166,9 +173,27 @@ def main() -> int:
             except Exception as exc:
                 ok, detail = False, f"{type(exc).__name__}"
             if ok:
+                # ASK THE BOARD WHOSE IT IS. The likeliest false positive here
+                # is not a junk slug, it is an ACQUIRED company whose careers
+                # page links to the parent. Prepared - assistive AI for 911
+                # centres - links to Axon's greenhouse board: 500 postings,
+                # every one stamped company_name "Axon", because Axon bought
+                # them. Wiring that up would report a parent's requisitions as
+                # the subsidiary's, which is the one thing CLAUDE.md forbids by
+                # name. The board states its own owner for free on greenhouse
+                # and workable; where it does not, the count being wildly out
+                # of scale is the other tell.
+                said = verify_boards.board_says(f["type"], f["ref"])
+                who = verify_boards.judge(c, said)
                 row = {"id": c["id"], "name": c["name"], "was": c["ats"]["type"],
                        "found": block, "saw": f["saw"], "times": f["times"],
-                       "verified": detail}
+                       "verified": detail,
+                       "board_calls_itself": said.get("name"),
+                       "identity": who["verdict"], "identity_why": who["why"],
+                       "postings": said.get("n") or 0}
+                if who["verdict"] == "MISMATCH":
+                    row["refused"] = ("the board says it belongs to somebody "
+                                      "else - most likely a parent company")
                 hits.append(row)
                 print(f"  {c['name'][:28]:30} {f['type']:14} {detail[:40]}", flush=True)
                 break
@@ -176,9 +201,10 @@ def main() -> int:
             print(f"  ... {i}/{len(todo)}, {len(hits)} found", flush=True)
         time.sleep(a.pause)
 
-    OUT.write_text(json.dumps(hits, indent=1) + "\n")
+    out_path = pathlib.Path(a.out) if a.out else OUT
+    out_path.write_text(json.dumps(hits, indent=1) + "\n")
     print(f"\n{len(hits)} verified boards found in {checked} pages")
-    print(f"written to {OUT.relative_to(ROOT)}")
+    print(f"written to {out_path}")
     print("\nNOT written to companies.json. Every one needs a person to confirm "
           "the board belongs to this company - Circuit's says 'TFR Transit Inc', "
           "which is probably its operating entity and is exactly the shape of "
