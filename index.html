@@ -124,19 +124,28 @@
      From the Claude Design pass (option 4a, "quiet chrome, loud content").
      Translated to tokens rather than the design's hardcoded hexes, because
      the app has a dark theme and the design was drawn light-only. */
-  .hero{max-width:980px;margin:0 auto;padding:46px 0 0;text-align:center}
-  .hero h2{margin:0;font-size:44px;line-height:1.08;letter-spacing:-.032em;
+  /* The hero was 923px tall and the first job started 3,733px down the page -
+     four screens of scrolling before a job board showed a job. On a board,
+     THE LIST IS THE PRODUCT; the hero's whole job is to say what this is and
+     hand over the search box, then get out of the way. It is now a band, not
+     a screen, and the penguin carries the identity so the type does not have
+     to shout it. */
+  .hero{max-width:1180px;margin:0 auto;padding:20px 0 0;display:flex;
+    align-items:center;gap:26px;text-align:left}
+  .hero .hpeng{width:132px;flex:none}
+  .herotext{flex:1;min-width:0}
+  .hero h2{margin:0;font-size:27px;line-height:1.12;letter-spacing:-.022em;
     font-weight:700;text-wrap:balance}
-  .hero p{margin:14px auto 0;font-size:16px;color:var(--dim);max-width:52ch;
+  .hero p{margin:5px 0 0;font-size:14px;color:var(--dim);max-width:62ch;
     text-wrap:pretty;line-height:1.5}
-  .hsearch{max-width:660px;margin:30px auto 0;position:relative}
+  .hsearch{max-width:660px;margin:14px 0 0;position:relative}
   .hsearch input{font:inherit;font-size:16px;padding:17px 24px;border:1px solid var(--line);
     border-radius:30px;background:var(--panel);color:var(--ink);width:100%;
     box-shadow:0 1px 2px rgba(26,24,21,.06),0 14px 44px rgba(26,24,21,.09)}
   .hsearch button{position:absolute;right:7px;top:7px;bottom:7px;padding:0 22px;
     border-radius:24px;border:0;background:var(--accent);color:#fff;font:inherit;
     font-size:13.5px;font-weight:600;cursor:pointer}
-  .pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+  .pills{justify-content:flex-start;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}
   .pill{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;
     border-radius:22px;border:1px solid var(--line);background:var(--panel);color:var(--ink);
     font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;white-space:nowrap}
@@ -150,16 +159,22 @@
     color:var(--dim);font:inherit;font-size:13px;cursor:pointer}
   .seg button[aria-pressed=true]{background:var(--ink);color:var(--bg);font-weight:600}
 
-  .shelf{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:14px;margin-top:18px}
-  .feature{background:var(--ink);color:var(--bg);border-radius:22px;padding:26px;
-    display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(26,24,21,.16)}
-  .feature .why{font-size:12.5px;color:var(--inv-dim);margin-top:14px;line-height:1.6;
-    text-wrap:pretty}
-  .ncard{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:24px;
-    display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(26,24,21,.06)}
+  /* "New this run" is a good idea that was taking 1,266px - most of a screen,
+     on a page where the first job did not appear until 3,733px down. It keeps
+     its place at the top because freshness is worth leading with; it just
+     stops behaving like a landing page. Three tight cards, not three posters. */
+  .shelf{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:12px;margin-top:12px}
+  .feature{background:var(--ink);color:var(--bg);border-radius:14px;padding:16px 18px;
+    display:flex;flex-direction:column;box-shadow:0 10px 26px rgba(31,37,54,.14)}
+  .feature .why{font-size:12px;color:var(--inv-dim);margin-top:8px;line-height:1.5;
+    text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;
+    overflow:hidden}
+  .ncard{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;display:flex;flex-direction:column;
+    box-shadow:0 6px 18px rgba(31,37,54,.05)}
   .mono-tile{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;
     justify-content:center;font-size:14px;font-weight:700}
-  .sechead{display:flex;align-items:baseline;gap:12px;margin-top:46px}
+  .sechead{display:flex;align-items:baseline;gap:12px;margin-top:26px}
   .sechead h3{margin:0;font-size:22px;letter-spacing:-.02em;font-weight:700}
   .sechead .n{font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums}
 
@@ -196,9 +211,11 @@
     .hero{padding:26px 0 0}
     /* 44px is a desktop display size; on a 390px screen it pushed the search,
        the filters and every posting below the fold. */
-    .hero h2{font-size:29px;line-height:1.12;letter-spacing:-.022em}
-    .hero p{font-size:14.5px;margin-top:10px}
-    .hsearch{margin-top:20px}
+    .hero{flex-direction:column;align-items:flex-start;gap:10px;padding-top:14px}
+    .hero .hpeng{width:88px}
+    .hero h2{font-size:22px;line-height:1.15;letter-spacing:-.018em}
+    .hero p{font-size:13.5px;margin-top:6px}
+    .hsearch{margin-top:12px}
     /* right padding clears the Search button, which was overlapping the
        placeholder text */
     .hsearch input{font-size:15px;padding:14px 108px 14px 18px}
@@ -826,7 +843,13 @@ function jobs(){
   const states=[...new Set(D.postings.flatMap(p=>p.states||[]))].sort();
   const regions=[...new Set(D.postings.map(p=>p.region).filter(Boolean))].sort();
   const offStates=[...new Set(D.postings.map(p=>p.office&&p.office.state).filter(Boolean))].sort();
-  const quota=D.postings.filter(p=>p.quota_carrying).length;
+  /* Distinct OPENINGS, not rows. Counting rows says 614 while the line
+     directly above it says 477 - two numbers for the same fact, on the same
+     screen. 614 counts Xplor's single Account Executive ad once per city it
+     was posted to, 93 times over. The board's own totals block already
+     computes the honest one; the hero was the last thing still counting
+     rows. */
+  const quota=D.totals.quota_carrying;
   /* No pay control at all on a board built before pay was recorded. An empty
      filter that sets aside every posting is worse than no filter. */
   const payOn=D.postings.some(hasPay);
@@ -850,10 +873,12 @@ function jobs(){
 
   $("#view").innerHTML=`
   <div class="hero">
-    <h2>${quota.toLocaleString()} sellers wanted,<br>across all of govtech.</h2>
+    <img class="hpeng" src="assets/mascot/svg/mascot-slide.svg" alt="">
+    <div class="herotext">
+    <h2>${quota.toLocaleString()} sellers wanted, across all of govtech.</h2>
     <p>Every open role at ${D.organizations.length.toLocaleString()} state and local government
        technology companies. ${D.postings.length.toLocaleString()} postings, read from the boards
-       themselves.</p>
+       themselves. It&rsquo;s tough SLEDing out there.</p>
     <div class="hsearch">
       <input type="search" id="j-q" placeholder="Try &ldquo;senior AE remote&rdquo; or &ldquo;account executive in nyc&rdquo;">
       <button type="button" onclick="drawJobs()">Search</button>
@@ -928,6 +953,7 @@ function jobs(){
       <select id="j-src"><option value="">Any source</option>
         <option value="ats">From a job board</option>
         <option value="manual">Checked by hand</option></select>
+    </div>
     </div>
   </div>
 
