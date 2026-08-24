@@ -793,17 +793,18 @@ def check_admin_gates() -> int:
                         f"reports {p['pct']}% - an unknown scored as a zero")
 
     # --- the CSV gate, as a function and on the wire ----------------------
-    if admin.csv_gate({"visible": 286, "visible_wrong": 1})["open"]:
-        bad += fail("the CSV export opens with a public row still in the "
-                    "wrong bucket")
-    if not admin.csv_gate({"visible": 286, "visible_wrong": 0})["open"]:
-        bad += fail("the CSV export stays shut with every public row right")
-    if admin.csv_gate({"visible": 0, "visible_wrong": 0})["open"]:
-        bad += fail("the CSV export opened with no board loaded - nothing "
-                    "known is not the same as nothing wrong")
-    if any(u.get("gate") == "score" and u["key"] == "csv"
-           for u in admin.UNLOCKS):
-        bad += fail("the CSV unlock is back on a score threshold")
+    # The unlocks are gone and this asserts they stay gone. A review defeated
+    # every gate protecting them fifteen ways, the cheapest being one bulk
+    # call that wrote 240 rulings in zero seconds - so the capabilities are
+    # simply capabilities now. If somebody reintroduces a reward gated on an
+    # activity number, this fails and they have to read why first.
+    if getattr(admin, "UNLOCKS", None):
+        errors += fail("admin.UNLOCKS is back - rewards gated on activity "
+                       "were removed deliberately; see the note above unlocks()")
+    if admin.unlocks({}) != []:
+        errors += fail("unlocks() should hand out nothing")
+    if hasattr(admin, "csv_gate"):
+        errors += fail("csv_gate is back - the export is not gated")
 
     # --- what makes an agree-rate a measurement ---------------------------
     t0 = dt.datetime(2026, 8, 24, 10, 0, 0)
@@ -1264,20 +1265,17 @@ def check_admin_http() -> int:
                 bad += fail(f"{path} hands out the console code - anything "
                             f"that can fetch it can now rule")
 
-        # THE CSV GATE IS ON THE SERVER, not only on the button. A reward you
-        # can take by typing the URL was never a reward.
+        # The CSV is no longer gated on anything but the token. It used to open
+        # at a board-health threshold, and a review took that threshold four
+        # ways - the cheapest being one bulk call writing 240 rulings in zero
+        # seconds. An export of your own data was never a prize worth guarding.
         code, _, body = ask("/api/export.csv", {"X-Admin-Token": admin.TOKEN})
-        companies = json.load(open(DATA / "companies.json"))
-        board = json.load(open(DATA / "board.json"))
-        want_open = admin.csv_gate(admin.board_health(companies, board))["open"]
-        if want_open and code != 200:
-            bad += fail(f"the CSV export is shut ({code}) with the gate open")
-        if not want_open:
-            if code != 403:
-                bad += fail(f"/api/export.csv answered {code} with the gate "
-                            f"shut - the gate is only on the button")
-            elif b"locked" not in body:
-                bad += fail("the CSV refusal does not say it is locked")
+        if code != 200:
+            bad += fail(f"/api/export.csv answered {code} for an authenticated "
+                        f"caller - it is not gated any more")
+        code2, _, _ = ask("/api/export.csv", {})
+        if code2 == 200:
+            bad += fail("/api/export.csv answered an unauthenticated caller")
     finally:
         srv.shutdown()
         srv.server_close()

@@ -1,0 +1,117 @@
+{
+  "xplor-recreation": {
+    "name": "Xplor Recreation",
+    "website": "https://www.nextrec.com",
+    "description": "Xplor Recreation is the name the company uses for itself throughout nextrec.com: the support menu offers \"How you can get in touch with Xplor Recreation\", the demo form states that \"Xplor Recreation uses the information you provide to us to contact you about our relevant content, products, and services\", and xplorrecreation.com serves pages out of the same site. The product behind the name is nextRec, which the homepage describes as \"Frictionless all-in-one parks and recreation management software that lets your clients easily self serve their needs\". The solutions menu sells it to parks and recreation departments, cities, municipalities, community centers, YMCAs and JCCs; universities, colleges and K-12 schools; community, residents' and homeowners' associations; summer, day and specialized camps; martial arts dojos and MMA gyms; and swim schools. The parks and recreation page says the software \"helps municipalities and government organizations of all sizes connect with their community\" and covers \"managing operations, payment processing, membership management, and program coordination\". The named modules are Member Management, Calendar and Bookings, Marketing Automation, POS and Payments, Facility Management, Citywide POS (\"One-stop-shop to consolidate payments\"), Mobile App, Court Booking System, Queue-it (\"A virtual waiting room system to support extreme web traffic events\") and Kiosks. Facility Management covers \"indoor and outdoor facilities, parks, fields, campgrounds, meeting spaces, party venues\", and reporting covers \"financial reporting, facility usage, daily operations\". The site lists existing integrations with payment providers, financial systems, automated lighting systems, GIS, access controls and directory services, plus a RESTful API.\n\nXplor's own corporate site groups four brands under the Xplor Recreation heading: Vermont Systems, RecDesk, NextRec and CampBrain. ePACT is not among them on that page. nextrec.com closes with \"Copyright 2026 Xplor Technologies. All rights reserved.\" and links to linkedin.com/company/xplor-technologies. On scale, nextrec.com states that Xplor Technologies \"serves over 140 markets globally, 75,000 customers daily, and employs over 2,000 Xplorers across the globe\"; the parks and recreation page separately claims 21+ countries, 500,000+ users and 150+ employees, and 24-hour support seven days a week. Named public-sector customers quoted on that page are Andre W. of the City of Pearland, TX, Alex N. of Roanoke County, VA, and Anand P. of the City of Brampton, ON, who says \"We've had 95% of people switch to online. Previously it was predominantly in-person registration.\" The platform is hosted on Amazon Web Services in Australia, the United States and Canada, is described as PCI-DSS Level 1 certified, and carries a 99.95% uptime guarantee. Within the family, this is the brand that carries the all-in-one registration-and-facilities system; the sibling products under the same owner are addressed at different sizes and kinds of agency.",
+    "sources": [
+      "https://www.nextrec.com",
+      "https://www.nextrec.com/solutions/parks-and-recreation-management-software",
+      "https://www.nextrec.com/perfectmind-software",
+      "https://www.xplorrecreation.com/company/overview",
+      "https://xplor.com/industries/xplor-recreation/",
+      "https://ats.rippling.com/clubessential-holdings-cjb/jobs"
+    ],
+    "unread": [],
+    "confidence": "high",
+    "words": 433
+  },
+  "perfectmind": {
+    "name": "PerfectMind",
+    "website": "https://www.nextrec.com",
+    "description": "PerfectMind is the former name of the product now sold as nextRec, and nextrec.com keeps a page for it that opens \"PerfectMind Software is now nextRec\". That page defines the product as \"a frictionless, all-in-one recreation management software designed for government agencies and private recreation facilities\", and says PerfectMind \"serves parks and recreation organizations, martial arts studios, higher-education recreation centers, swim schools, homeowner associations, and facilities offering classes and camps to their community members\". The government function is the registration-and-facilities back office of a parks and recreation department: online and on-site registration for \"courses, private lessons, drop ins\", an \"intelligent conflict manager\" for scheduling community events, one-time and recurring facility rentals with customizable contract templates and digital customer signatures, point of sale for memberships and passes, built-in email marketing so departments do not sync to outside software, and real-time reporting across \"any object or table in your database\". A Citywide POS module is offered to consolidate payments across a municipality. The brand still has live surfaces: the knowledge base and user community on nextrec.com both sit at community.perfectmind.com, and the PCI DSS certificate the site links to is filed as \"PerfectMind PCI DSS Certificate\".\n\nThe page gives the family history plainly. \"PerfectMind was founded in 1998.\" \"PerfectMind's software was acquired by Xplor Technologies in 2020. In 2022, PerfectMind rebranded to become nextRec.\" On what changed: \"The PerfectMind software platform remains built and powered by the same team - aside from changing its name to nextRec the only change is that PerfectMind software is now part of a global ecosystem with powerful backing, integrations, and support.\" That answers the \"why does this one exist\" question differently from its siblings: PerfectMind is not a separate product sitting beside nextRec, it is the same product under its previous name, kept addressable because agencies bought it under that name. The same page says \"Xplor Technologies is the parent company of PerfectMind\" and that Xplor \"serves over 140 markets globally, 75,000 customers daily, and employs over 2,000 Xplorers across the globe\". One conflict is worth recording rather than resolving: nextrec.com says PerfectMind was founded in 1998, while Xplor's corporate site says \"Founded in 1988, NextRec\". Both are the family's own materials and they disagree; neither was treated as settled here.",
+    "sources": [
+      "https://www.nextrec.com/perfectmind-software",
+      "https://www.nextrec.com",
+      "https://www.nextrec.com/solutions/parks-and-recreation-management-software",
+      "https://www.xplorrecreation.com/company/overview",
+      "https://xplor.com/industries/xplor-recreation/"
+    ],
+    "unread": [],
+    "confidence": "high",
+    "words": 375
+  },
+  "recdesk": {
+    "name": "RecDesk",
+    "website": "https://www.recdesk.com",
+    "description": "recdesk.com could not be read. Both the apex and www forms answer a plain fetch with an HTTP 202 and a Sucuri interstitial, and a real browser is served a \"Robot Challenge Screen\" that did not clear on repeated attempts. No attempt was made to defeat it, so nothing below comes from RecDesk's own site. What follows is from Xplor's corporate site, which is the family's own material. Xplor writes: \"Founded in 2005, RecDesk provides scalable, easy-to-use software for parks and recreation departments, aquatic centers, schools, community centers, HOAs, and small municipalities. Its integrations with access control, GIS/address databases, and financial systems help teams streamline facility scheduling, program management, and operational workflows - reducing manual effort and system fragmentation.\" Xplor adds that \"Business and community leaders can run more efficient programs, offer better resident experiences, and make data-driven decisions that strengthen their community services.\"\n\nRecDesk is one of the four brands Xplor lists on its Xplor Recreation page, alongside Vermont Systems, NextRec and CampBrain, and Xplor's \"Visit RecDesk\" link points to recdesk.com. The distinction Xplor's own wording draws between the siblings is the size and type of buyer: RecDesk is described for \"small municipalities\", aquatic centers and HOAs, where Vermont Systems is described for \"municipal, county, state, and federal military recreation organizations\". RecDesk's postings run through the Rippling board shared across this family, clubessential-holdings-cjb, which also carries an asset named Xplor_Logo_withTag_Color.png. Beyond that, this record is deliberately short. Anything further about RecDesk's product, customers or scale would have to be invented, because its site refused to be read.",
+    "sources": [
+      "https://xplor.com/industries/xplor-recreation/",
+      "https://ats.rippling.com/clubessential-holdings-cjb/jobs"
+    ],
+    "unread": [
+      "https://www.recdesk.com",
+      "https://recdesk.com",
+      "https://www.recdesk.com/about",
+      "https://www.recdesk.com/features",
+      "https://www.recdesk.com/sitemap.xml"
+    ],
+    "confidence": "partial",
+    "words": 258
+  },
+  "vermont-systems": {
+    "name": "Vermont Systems",
+    "website": "https://www.vermontsystems.com",
+    "description": "vermontsystems.com could not be read. Both the apex and www forms answer a plain fetch with an HTTP 202 and a Sucuri interstitial, and a real browser is served a \"Robot Challenge Screen\" that did not clear. No attempt was made to defeat it. Everything below comes from other pages inside the same family. Xplor's corporate site says: \"Founded in 1985, Vermont Systems is a leading recreation management platform built for municipal, county, state, and federal military recreation organizations. Its comprehensive operational, payment, and experience-management features help teams simplify daily tasks, modernize processes, and reduce manual work.\" ePACT, a sibling brand, describes it twice on its own site: \"We have partnered with Vermont Systems, a market leader in recreation management software for parks & recreation, schools, and governments\", and, using the company's initials, \"We integrate with VSI, a market leader in recreation management software for parks & recreation, schools, and governments.\" ePACT also names the flagship product, listing RecTrac beside ActiveNet and Daxko as the registration systems it plugs into.\n\nWithin the family, the federal military recreation buyer is the piece no sibling claims: Xplor's description of Vermont Systems is the only one of the four that reaches past local government to \"state, and federal military recreation organizations\", where RecDesk is described for \"small municipalities\" and NextRec for \"sports, leisure, and recreation centers, clubs, communities, and federations\". Vermont Systems is also the one recreation brand Xplor names in its general hiring boilerplate: postings on the shared Rippling board, clubessential-holdings-cjb, open \"Xplor Technologies powers the experiences at the heart of everyday life\" and go on, \"We unite popular brands such as Clubessential, foreUP, myFitApp, Vermont Systems, Momence, Exerp, and many more.\" That same board carries an asset named Xplor_Logo_withTag_Color.png. Nothing about Vermont Systems' customer count, staff or current product line is recorded here, because its own site was unreadable.",
+    "sources": [
+      "https://xplor.com/industries/xplor-recreation/",
+      "https://www.epactnetwork.com/corp/partners/",
+      "https://www.epactnetwork.com/corp/parks-and-rec/",
+      "https://www.epactnetwork.com/",
+      "https://ats.rippling.com/clubessential-holdings-cjb/jobs"
+    ],
+    "unread": [
+      "https://www.vermontsystems.com",
+      "https://vermontsystems.com",
+      "https://www.vermontsystems.com/about-us",
+      "https://www.vermontsystems.com/sitemap.xml"
+    ],
+    "confidence": "partial",
+    "words": 308
+  },
+  "epact": {
+    "name": "ePACT",
+    "website": "https://www.epactnetwork.com",
+    "description": "ePACT Network sells emergency and health forms automation, described on its homepage as \"Emergency and health forms automation that integrates seamlessly with rec management systems\" and on its parks and recreation page as a way for \"rec leaders to collect, manage and access health & emergency information, waivers and consent forms - all in one secure, compliant platform\". The government function is narrow and specific: it is the participant-paperwork layer under a parks and recreation department's programs. The site lists what it collects - \"emergency forms with contact information and instructions, medical forms, waivers, consent forms, and personal health and safety needs\", plus immunization records, medication authorization forms, allergies, dietary restrictions, medical history and signed consent forms. Named capabilities are configurable eForms, online and offline access, multi-channel communications, search, filtering and reporting, API integration, and paperless check-in and check-out with a \"tailorable contact pick up list\" for who may collect a child. Buyers named on the site are parks and recreation departments, YMCAs, camps and JCCs, schools, and sports associations. Public-sector customers quoted by name include the City of Kettering, OH, the San Francisco Recreation & Park Department, CA, the City of Newton Parks & Recreation, MA, the Town of Cary, NC, and the Deerfield Park District, IL. On compliance the site claims SOC II Type 2, HIPAA in the US, and PIPA, PIPEDA and FOIPPA in Canada, hosted on Microsoft Azure. Families use it free, storing a \"Private Personal Emergency Record (PPER)\".\n\nePACT sits differently in the family from the other brands: it is not a system of record for registration, it is the forms layer that attaches to one. Its own site says it integrates \"with your existing registration system, like ActiveNet, Daxko, RecTrac (and more!)\" - RecTrac being the sibling Vermont Systems product, ActiveNet and Daxko being competitors of the family. That is the answer to why it exists alongside three registration platforms: it is sold across all of them, including rivals. Its distribution runs through associations rather than the Xplor brand - it is \"Exclusive Partner of the NRPA\" with member discounts, a \"Preferred vendor of the YMCA of the USA\", and an \"Emergency-supplies partner with the Canadian Red Cross\". The family tie is real but quiet: the site footer reads \"2026 ePACT Network | All Rights Reserved\", with no Xplor copyright, yet it carries an Xplor Recreation logo image linking to cehrecreation.com, and ePACT is not one of the four brands listed on Xplor's own Xplor Recreation page. Its origin is on its about page: ePACT was inspired by a friend, Ayumi, separated from her two daughters during the 2011 earthquake and tsunami in Japan, and unable to learn they were safe for a full day.",
+    "sources": [
+      "https://www.epactnetwork.com/",
+      "https://www.epactnetwork.com/corp/what-is-epact/",
+      "https://www.epactnetwork.com/corp/parks-and-rec/",
+      "https://www.epactnetwork.com/corp/partners/",
+      "https://www.epactnetwork.com/corp/about-us/"
+    ],
+    "unread": [],
+    "confidence": "high",
+    "note": "Same company as the other of epact / epact-network; both ids point at epactnetwork.com. Research duplicated deliberately so a merge in either direction keeps it.",
+    "words": 451
+  },
+  "epact-network": {
+    "name": "ePACT Network",
+    "website": "https://www.epactnetwork.com",
+    "description": "ePACT Network sells emergency and health forms automation, described on its homepage as \"Emergency and health forms automation that integrates seamlessly with rec management systems\" and on its parks and recreation page as a way for \"rec leaders to collect, manage and access health & emergency information, waivers and consent forms - all in one secure, compliant platform\". The government function is narrow and specific: it is the participant-paperwork layer under a parks and recreation department's programs. The site lists what it collects - \"emergency forms with contact information and instructions, medical forms, waivers, consent forms, and personal health and safety needs\", plus immunization records, medication authorization forms, allergies, dietary restrictions, medical history and signed consent forms. Named capabilities are configurable eForms, online and offline access, multi-channel communications, search, filtering and reporting, API integration, and paperless check-in and check-out with a \"tailorable contact pick up list\" for who may collect a child. Buyers named on the site are parks and recreation departments, YMCAs, camps and JCCs, schools, and sports associations. Public-sector customers quoted by name include the City of Kettering, OH, the San Francisco Recreation & Park Department, CA, the City of Newton Parks & Recreation, MA, the Town of Cary, NC, and the Deerfield Park District, IL. On compliance the site claims SOC II Type 2, HIPAA in the US, and PIPA, PIPEDA and FOIPPA in Canada, hosted on Microsoft Azure. Families use it free, storing a \"Private Personal Emergency Record (PPER)\".\n\nePACT sits differently in the family from the other brands: it is not a system of record for registration, it is the forms layer that attaches to one. Its own site says it integrates \"with your existing registration system, like ActiveNet, Daxko, RecTrac (and more!)\" - RecTrac being the sibling Vermont Systems product, ActiveNet and Daxko being competitors of the family. That is the answer to why it exists alongside three registration platforms: it is sold across all of them, including rivals. Its distribution runs through associations rather than the Xplor brand - it is \"Exclusive Partner of the NRPA\" with member discounts, a \"Preferred vendor of the YMCA of the USA\", and an \"Emergency-supplies partner with the Canadian Red Cross\". The family tie is real but quiet: the site footer reads \"2026 ePACT Network | All Rights Reserved\", with no Xplor copyright, yet it carries an Xplor Recreation logo image linking to cehrecreation.com, and ePACT is not one of the four brands listed on Xplor's own Xplor Recreation page. Its origin is on its about page: ePACT was inspired by a friend, Ayumi, separated from her two daughters during the 2011 earthquake and tsunami in Japan, and unable to learn they were safe for a full day.",
+    "sources": [
+      "https://www.epactnetwork.com/",
+      "https://www.epactnetwork.com/corp/what-is-epact/",
+      "https://www.epactnetwork.com/corp/parks-and-rec/",
+      "https://www.epactnetwork.com/corp/partners/",
+      "https://www.epactnetwork.com/corp/about-us/"
+    ],
+    "unread": [],
+    "confidence": "high",
+    "note": "Same company as the other of epact / epact-network; both ids point at epactnetwork.com. Research duplicated deliberately so a merge in either direction keeps it.",
+    "words": 451
+  },
+  "xplor-recreation-i-vermont-systems-recdesk-nextrec-epact": {
+    "name": "Xplor Recreation I Vermont Systems - RecDesk - NextRec – ePACT",
+    "website": null,
+    "description": "This is not a company. It is a conference exhibitor row - a single NRPA 2026 booth listing that names four brands at once, which is why the id reads as a run-on of all of them. The four it names are Xplor Recreation, Vermont Systems, RecDesk, NextRec and ePACT, which are covered as their own records here. There is no website for the row because the row has none: an exhibitor listing shared by several brands points at whichever site the booth staff chose, and no site of its own.\n\nThe row is useful as evidence rather than as a company. It is one of the two independent signals that put these brands in one family, the other being the shared Rippling board clubessential-holdings-cjb, which carries an asset named Xplor_Logo_withTag_Color.png, and nextrec.com's own footer, \"Copyright 2026 Xplor Technologies\". A booth that sells Vermont Systems, RecDesk, NextRec and ePACT together is the family stating its own membership on a trade show floor. Note that the row's own grouping and Xplor's corporate grouping do not match: Xplor's Xplor Recreation page lists Vermont Systems, RecDesk, NextRec and CampBrain and omits ePACT, while this booth lists ePACT and omits CampBrain. Both are the family's own materials. No description of a product is written here, because this record does not describe one.",
+    "sources": [
+      "https://xplor.com/industries/xplor-recreation/",
+      "https://www.nextrec.com",
+      "https://ats.rippling.com/clubessential-holdings-cjb/jobs"
+    ],
+    "unread": [],
+    "confidence": "partial",
+    "note": "Conference exhibitor row naming four brands, not a company. Deliberately short: there is no product here to describe.",
+    "words": 218
+  }
+}

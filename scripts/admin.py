@@ -1284,72 +1284,37 @@ def queue_state(name: str, left: int, done: collections.Counter | None = None
             "pct": round(100 * d / (d + left)) if (d + left) else 100}
 
 
-# --- unlocks -------------------------------------------------------------
+# --- no unlocks, and why --------------------------------------------------
 #
-# Gates on BOARD HEALTH, never on volume: the thing being bought is a board
-# worth exporting, so the price is the board being right. The weekly digest
-# is deliberately NOT here - it is already built and is the owner's intended
-# paid feature, and putting a gate in front of something somebody already has
-# is a demotion dressed as a reward.
-UNLOCKS = [
-    {"key": "csv", "gate": "public-rows-right",
-     "name": "CSV export of the whole board", "built": True,
-     "what": "every company with its sector, status, open-role count and "
-             "board, as one file a spreadsheet opens",
-     "why": "an export is a copy of the data, so it is worth having exactly "
-            "when the data is right. The gate is that sentence taken "
-            "literally: no company a visitor can see is filed under a "
-            "category its own record contradicts"},
-    {"key": "api", "gate": "score", "at": 70, "name": "A read-only API key",
-     "built": False,
-     "what": "not built yet. Nothing behind this is faked or hidden: there "
-             "is no endpoint, no key, and no waiting list",
-     "why": "handing out a URL other people's software depends on is a "
-            "promise about the data underneath it, and 70 is where that "
-            "promise is one we can keep"},
-]
-
-
-def csv_gate(health: dict) -> dict:
-    """Whether the board is in a state worth exporting, and why not if not.
-
-    This used to be `score >= 55` against a score built on an invented
-    denominator, which is two problems in one number: the threshold was
-    arbitrary AND the scale it read was fiction. Fixing the denominator alone
-    would have silently opened the export, because the honest score is higher
-    than the imaginary one - so the gate is now the condition the unlock's own
-    "why" already claimed, stated as a count.
-
-    It cannot be bought with volume. Ruling a hundred dormant companies moves
-    it by nothing; the only thing that moves it is the rows a visitor can see
-    being filed correctly.
-    """
-    wrong, visible = health.get("visible_wrong"), health.get("visible")
-    if not visible:
-        # no board loaded, so nothing is on the public site to be right or
-        # wrong about. Unknown, and unknown is not "open".
-        return {"open": False, "pct": None, "gate": "no board on file yet, so "
-                "there is nothing public to check"}
-    return {"open": not wrong, "pct": round(100 * (visible - wrong) / visible),
-            "gate": f"{wrong} of {visible} public rows are in a bucket their "
-                    f"own record contradicts" if wrong
-                    else f"all {visible} public rows check out"}
-
+# There were two: CSV export and an API key, opened by a board-health
+# threshold. An adversarial review defeated every gate protecting them, in
+# fifteen distinct ways. The cheapest was one call to the bulk vendor path -
+# 243 names, zero seconds, 240 rulings written, health 58 to 83, unlock open.
+# Others needed nothing more than the single character "x" as a reason.
+#
+# The reason they are all defeatable is structural rather than a bug to patch:
+# the server gated on facts THE CLIENT SUPPLIED. confidence, proposed and by
+# are all posted by whoever is calling, so the confidence band that opened the
+# one-key ruling was whatever the caller typed, and excluding agent writes was
+# an honour system anybody could opt out of by omitting a field.
+#
+# That could be fixed - derive every gated fact from the proposal the server
+# itself served, never from the reply. It was not fixed, because on a
+# two-person team the thing being defended against is the owner, and hardening
+# a lock against its own key is an arms race with no winner and a real cost in
+# code nobody can follow.
+#
+# So the unlocks are gone and the capabilities are simply capabilities. What
+# survived the review is the honest half, and it is the half CLAUDE.md argued
+# for in the first place: named end states, personal bests against your own
+# past, and the why-coverage craft signal. None of those hand out a prize, so
+# none of them are worth gaming.
 
 def unlocks(health: dict) -> list:
-    score = health.get("score")
-    out = []
-    for u in UNLOCKS:
-        if u["gate"] == "score":
-            at, got = u["at"], score or 0
-            out.append({**u, "open": score is not None and score >= at,
-                        "pct": round(100 * got / at),
-                        "gate_says": f"board health {score if score is not None else '—'} of {at}"})
-        else:
-            g = csv_gate(health)
-            out.append({**u, "open": g["open"], "pct": g["pct"],
-                        "gate_says": g["gate"]})
-    return out
+    """Nothing is gated. Kept as a function returning [] so callers and the
+    page do not have to change shape, and so the reasoning above stays next to
+    the thing it explains."""
+    return []
 
 
 # --- the CSV the unlock hands over ---------------------------------------
@@ -2216,6 +2181,53 @@ LABEL = {"boardfound": "Boards we found", "founded": "Founding year", "miscatego
 
 # ---------------------------------------------------------------- actions
 
+# Fields that name another company rather than describing this one. They are
+# the only fields where inheriting a value can turn a fact into nonsense.
+SELF_POINTERS = ("parent", "board_owner")
+
+
+def _points_at(value, company: dict) -> bool:
+    """Does this pointer name the company it would be written onto?"""
+    if not isinstance(value, str):
+        return False
+    v = ident(value)
+    return bool(v) and v in {ident(company.get("name") or ""),
+                             ident((company.get("id") or "").replace("-", " "))}
+
+
+def _merge_aliases(keep_aliases, drop_aliases, drop_name: str) -> list:
+    """Every name either side answered to, in a stable order, no duplicates."""
+    out, seen = [], set()
+    for name in list(keep_aliases or []) + list(drop_aliases or []) + [drop_name]:
+        if not isinstance(name, str) or not name.strip():
+            continue
+        key = ident(name) or name.strip().lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(name.strip())
+    return out
+
+
+def _merge_notes(keep_notes, drop_notes) -> list:
+    """Both records' notes, deduplicated by their text.
+
+    The same evidence note was written onto four sibling brands at once, so
+    concatenating without a dedupe would stack four identical paragraphs on
+    the survivor.
+    """
+    out, seen = [], set()
+    for note in list(keep_notes or []) + list(drop_notes or []):
+        if not isinstance(note, dict):
+            continue
+        key = (note.get("text") or "").strip()
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        out.append(note)
+    return out
+
+
 def act_merge(body: dict) -> dict:
     """Fold one record into another. The survivor keeps every field it has and
     inherits the ones it is missing, so a merge never loses research."""
@@ -2234,6 +2246,13 @@ def act_merge(body: dict) -> dict:
     for k, v in drop.items():
         if k in ("id", "name"):
             continue
+        # A child folded into its own parent carries parent/board_owner
+        # pointing AT the survivor. Inheriting one of those makes a company
+        # its own parent, which the site renders as "part of itself" and
+        # which no later reader can tell apart from a real ownership fact.
+        # A pointer at anyone else is still ordinary research and is kept.
+        if k in SELF_POINTERS and _points_at(v, keep):
+            continue
         if keep.get(k) in (None, "", {}, []) and v not in (None, "", {}, []):
             keep[k] = v
             filled.append(k)
@@ -2242,14 +2261,25 @@ def act_merge(body: dict) -> dict:
                 and (v or {}).get("type") not in (None, "unknown"):
             keep["ats"] = v
             filled.append("ats")
-    keep.setdefault("also_known_as", [])
-    if drop["name"] not in keep["also_known_as"]:
-        keep["also_known_as"].append(drop["name"])
+    # Two list fields are UNIONED rather than inherited-if-missing, because
+    # "the survivor already has some" is not a reason to throw the rest away.
+    # also_known_as is the field whose entire job is that a dropped name still
+    # finds the record; merging a third brand into a survivor that already had
+    # one alias silently dropped the second brand's aliases before this.
+    # notes are what a person or an agent actually saw, with a date and an
+    # author - the most expensive thing in the record to re-acquire.
+    keep["also_known_as"] = _merge_aliases(keep.get("also_known_as"),
+                                           drop.get("also_known_as"),
+                                           drop["name"])
+    notes = _merge_notes(keep.get("notes"), drop.get("notes"))
+    if notes:
+        keep["notes"] = notes
     remaining = [c for c in companies if c["id"] != drop_id]
     err = validate(remaining)
     if err:
         return {"error": err}
-    bad = save_companies(remaining, "merge")
+    bad = save_companies(remaining, "merge", why=(body.get("why") or ""),
+                         by=(body.get("by") or "owner"))
     if bad:
         return {"error": bad}
     return {"ok": True, "message": f"merged {drop['name']} into {keep['name']}"
@@ -3289,17 +3319,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
             # would make the honest counterweight the slow part of the loop
             return self._json(agree_rate())
         if path == "/api/export.csv":
-            # The gate is the whole point of the unlock, so it lives HERE and
-            # not only on the button. A reward you can take by typing the URL
-            # was never a reward.
+            # No gate. It used to open at a board-health threshold, and a
+            # review took that threshold four different ways - the cheapest
+            # being one bulk call that wrote 240 rulings in zero seconds. An
+            # export of your own data was never a prize worth defending.
             companies, board = read_companies(), read("board.json", {})
-            health = board_health(companies, board)
-            gate = csv_gate(health)
-            if not gate["open"]:
-                return self._json(
-                    {"error": f"the export opens when the public rows are "
-                              f"right, and {gate['gate']}",
-                     "locked": True, "pct": gate["pct"]}, 403)
             return self._send(board_csv(companies, board).encode(),
                               "text/csv; charset=utf-8")
         if path == "/api/queues":
