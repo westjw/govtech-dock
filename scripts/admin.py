@@ -248,11 +248,43 @@ def is_dismissed(queue: str, key: str) -> bool:
 # ---------------------------------------------------------------- queues
 
 def q_duplicates(companies, board) -> list:
+    """Records that are probably one company.
+
+    Grouped by a normalised name, PLUS a signal that catches what a name
+    cannot: two records whose logo file is byte-identical and was fetched from
+    one of their own domains. That is not a coincidence to be explained away -
+    it means one of these sites served the other's brand asset.
+
+    It found 25 pairs no name test could reach, because the names really are
+    different strings: policeapp / policeapp-com, sagitec / sagitec-solutions,
+    zoll-medical / zoll-data-systems, revize / revize-government-websites.
+    Every one of them is a company counted twice in a total this project
+    quotes at strangers.
+
+    Some of them will turn out to be a parent and its division rather than a
+    duplicate - infor / infor-public-sector, xylem / xylem-vue - which is
+    exactly why they arrive here as a question instead of a merge.
+    """
     g = collections.defaultdict(list)
     for c in companies:
         k = ident(c["name"])
         if k:
             g[k].append(c)
+    by_id = {c["id"]: c for c in companies}
+    try:
+        import acquisitions
+        for cid, f in acquisitions._logo_families().items():
+            if not f.get("same_company"):
+                continue          # a real acquisition, not a duplicate record
+            pair = sorted({cid, f["parent"]})
+            key = "logo:" + "+".join(pair)
+            members = [by_id[i] for i in pair if i in by_id]
+            if len(members) == 2 and not any(
+                    ident(m["name"]) and len(g.get(ident(m["name"]), [])) > 1
+                    for m in members):
+                g[key] = members
+    except Exception:
+        pass          # a signal that fails must not take the queue with it
     out = []
     posts = collections.Counter(p["company_id"] for p in board.get("postings", []))
     for k, v in g.items():

@@ -55,6 +55,96 @@ def _read(p: pathlib.Path, default):
     return json.loads(p.read_text()) if p.exists() else default
 
 
+
+def _logo_families() -> dict:
+    """Companies whose logo file is byte-identical to another company's.
+
+    A shared image is one of three things and only one of them is interesting:
+    a duplicate company record, a hosting platform's default icon, or a PARENT
+    whose brand the subsidiary now serves. The third is an acquisition, and the
+    URL the image came from usually names which company is the parent -
+    AmpliFund's logo was fetched from eunasolutions.com, Adashi Systems' from
+    versaterm.com. That is not an inference about the logo, it is the
+    subsidiary's own site handing over the parent's asset.
+
+    Weaker than "the board calls itself X" and weaker than a redirect, because
+    a favicon CDN or a shared template can produce the same collision. So it
+    is ranked last, and it says what it saw rather than what it concluded.
+
+    Returns {company_id: {"parent": name-ish, "shared_with": [ids], "url": u}}.
+    """
+    import hashlib
+    import re
+    logos = ROOT / "assets" / "logos"
+    if not logos.exists():
+        return {}
+    log = _read(DATA / "logo_log.json", {})
+    by_hash: dict[str, list[str]] = {}
+    for f in logos.glob("*.*"):
+        try:
+            h = hashlib.sha256(f.read_bytes()).hexdigest()
+        except OSError:
+            continue
+        by_hash.setdefault(h, []).append(f.stem)
+
+    out = {}
+    for ids in by_hash.values():
+        if len(ids) < 2:
+            continue
+        e = log.get(sorted(ids)[0]) or {}
+        url = e.get("url") or e.get("note") or ""
+        if not isinstance(url, str) or not url.startswith("http"):
+            continue
+        host = re.sub(r"^www\.", "",
+                      (re.match(r"https?://([^/]+)", url) or ["", ""])[1])
+        stem = host.split(".")[0].lower()
+        # which of the sharers OWNS that domain - that is the parent, and if
+        # none of them do, this is a CDN or a template and not a family
+        owner = next((i for i in ids
+                      if stem and stem == i.replace("-", "").lower()[:len(stem)]
+                      and len(stem) > 3), None)
+        if not owner:
+            continue
+        for cid in ids:
+            if cid == owner:
+                continue
+            out[cid] = {"parent": owner, "shared_with": sorted(ids),
+                        "url": url, "host": host,
+                        "same_company": _same_company(cid, owner)}
+    return out
+
+
+# Corporate suffixes and product qualifiers that do not distinguish one
+# company from another. "zoll-data-systems" and "zoll-medical" are one firm
+# recorded twice; "cartegraph" and "opengov" are two firms, one of which
+# bought the other.
+_NOISE = ("com", "inc", "llc", "ltd", "corp", "group", "holding", "holdings",
+          "technologies", "technology", "tech", "systems", "system",
+          "solutions", "software", "medical", "data", "public", "security",
+          "sector", "by", "the")
+
+
+def _same_company(a: str, b: str) -> bool:
+    """Are these two ids the same firm under two spellings?
+
+    The logo test finds acquisitions AND duplicate records, and they are
+    different problems for different queues: an acquisition needs a ruling
+    about whose board it is, a duplicate needs a merge. Filing a duplicate as
+    an acquisition asks a person the wrong question and leaves the extra
+    record in the company count either way.
+
+    Same firm if, once corporate noise is dropped, one name's words are a
+    subset of the other's: zoll-medical / zoll-data-systems -> {zoll} both
+    ways. Not the same if each keeps a distinct word: cartegraph / opengov.
+    """
+    def core(x):
+        return {w for w in x.split("-") if w and w not in _NOISE}
+    ca, cb = core(a), core(b)
+    if not ca or not cb:
+        return False
+    return ca <= cb or cb <= ca
+
+
 def evidence_for(cid: str) -> dict:
     """Everything already gathered about this company's board, in one place.
 
@@ -81,6 +171,9 @@ def evidence_for(cid: str) -> dict:
             if m:
                 out.setdefault("redirect", {"to": m.group(1).rstrip(" -"),
                                             "from": "their own website"})
+    fam = _logo_families().get(cid)
+    if fam:
+        out["logo_family"] = fam
     for row in _read(DATA / "board_audit.json", []):
         if row.get("id") == cid:
             out["identity"] = row.get("identity")
@@ -137,6 +230,12 @@ def q_acquisitions(companies, board) -> list:
             whose = ev["redirect"].get("from") or "their careers page"
             strength, says = "redirect", (
                 f'{whose} ends up on {ev["redirect"]["to"]}')
+        elif ev.get("logo_family"):
+            f = ev["logo_family"]
+            others = [x for x in f["shared_with"] if x != cid]
+            strength, says = "logo", (
+                f'their logo is the same file as {", ".join(others)}, '
+                f'and it was fetched from {f["host"]}')
         else:
             strength, says = "slug", (
                 f'the board slug is "{(c.get("ats") or {}).get("ref")}", '
@@ -160,6 +259,10 @@ def q_acquisitions(companies, board) -> list:
     for lid, e in (_read(DATA / "logo_log.json", {}) or {}).items():
         if isinstance(e, dict) and "different brand" in (e.get("note") or ""):
             add(lid, "website-redirect")
+    for lid, f in _logo_families().items():
+        # a duplicate record is the Duplicates queue's job, not this one
+        if not f.get("same_company"):
+            add(lid, "logo-family")
     sus = _read(DATA / "ats_suspects.json", {})
     items = sus.get("suspects", sus) if isinstance(sus, dict) else sus
     if isinstance(items, dict):
@@ -167,7 +270,7 @@ def q_acquisitions(companies, board) -> list:
     for i in items or []:
         add(i.get("id"), "slug")
 
-    rank = {"named": 0, "redirect": 1, "slug": 2}
+    rank = {"named": 0, "redirect": 1, "logo": 2, "slug": 3}
     out.sort(key=lambda r: (rank[r["strength"]], -(r["open_roles"] or 0)))
     return out
 
@@ -191,6 +294,7 @@ def main() -> int:
     rows = q_acquisitions(companies, board)
     named = [r for r in rows if r["strength"] == "named"]
     red = [r for r in rows if r["strength"] == "redirect"]
+    logo = [r for r in rows if r["strength"] == "logo"]
     slug = [r for r in rows if r["strength"] == "slug"]
     print(f"{len(rows)} boards that may belong to a parent\n")
     if named:
@@ -203,6 +307,11 @@ def main() -> int:
         print(f"\nTHEIR PAGE GOES SOMEWHERE ELSE ({len(red)}) - the line says which page:")
         for r in red:
             print(f"  {r['name'][:26]:28} {r['says']}")
+    if logo:
+        print(f"\nTHEY WEAR SOMEBODY ELSE'S LOGO ({len(logo)}) — the same image "
+              f"file, fetched from that company's domain:")
+        for r in logo:
+            print(f"  {r['name'][:26]:28} {r['says'][:74]}")
     print(f"\nONLY A STRANGE SLUG ({len(slug)}) — weakest, and most of these "
           f"will be nothing:")
     for r in slug[:12]:
