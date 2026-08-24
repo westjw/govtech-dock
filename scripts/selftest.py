@@ -985,6 +985,46 @@ def check_admin_guards() -> int:
     import admin
     bad = 0
 
+    # A PATCH THAT CHANGES NOTHING MUST SAY SO. act_patch reads body["fields"],
+    # and for a body with no usable fields it fell through the loop and still
+    # returned {"ok": True, "message": "updated <name>"}. So a caller that put
+    # the field at the top level - which is how every other action in this file
+    # takes its arguments - was told the correction landed while the record was
+    # untouched. That is the worst shape a bug can take here: the person moves
+    # on believing a wrong fact is fixed, and nothing ever contradicts them.
+    # A REAL id, or every case below returns "company not found" and the test
+    # passes without ever reaching the logic it claims to pin. None of these
+    # four can write: each is rejected before the loop that assigns fields.
+    real = json.load(open(DATA / "companies.json"))[0]["id"]
+    for body, why in (
+            ({"id": real}, "no fields at all"),
+            ({"id": real, "website": "https://a.example"}, "field at top level"),
+            ({"id": real, "fields": {}}, "empty fields dict"),
+            ({"id": real, "fields": {"govtech": True}}, "only un-patchable keys")):
+        got = admin.act_patch(dict(body))
+        if got.get("ok"):
+            bad += fail(f"act_patch: reported success for {why} - {got}")
+    # NOT satisfied by refusing everything - but proved WITHOUT a write. The
+    # first version of this asserted the positive case by actually patching a
+    # real company, which mutated companies.json on every selftest run and
+    # journalled it as the owner. A test that edits the live dataset to prove
+    # editing works is the same mistake as the build agent that put 86 writes
+    # into companies.json while testing the scoring belt.
+    #
+    # So: assert the refusal came from the FIELDS check rather than from the
+    # id lookup. Only the new path names what is editable, so a regression that
+    # reverts to a silent no-op cannot pass this, and neither can one that
+    # rejects every patch outright.
+    got = admin.act_patch({"id": real, "fields": {}})
+    if "Editable:" not in (got.get("error") or ""):
+        bad += fail("act_patch: an empty patch must be refused by the fields "
+                    f"check and say what is editable - got {got}")
+    missing = admin.act_patch({"id": "no-such-company-here", "fields": {}})
+    if "Editable:" in (missing.get("error") or ""):
+        bad += fail("act_patch: a missing company must fail the id lookup "
+                    "first, or the fields check is being reached with no "
+                    f"record to patch - got {missing}")
+
     INSIDE = [
         ("127.0.0.1", "loopback"),
         ("10.0.0.1", "private"),
@@ -1415,6 +1455,46 @@ def check_merged_names_stay_merged() -> int:
     return errors
 
 
+def check_writes_name_their_author() -> int:
+    """No admin write may fall back to the default author.
+
+    save_companies() defaults `by` to "owner" because most writes are his.
+    That default is a trap for every write that is not: eight actions called
+    it with the action name alone, so an agent's patch, an extension's capture
+    and a script's identity ruling were all journalled as rulings the owner
+    made. It is not a cosmetic mislabel - the journal is what admin_undo reads,
+    what re-attribution works from, and what will one day decide which labels
+    a classifier can trust. 86 agent writes already had to be re-attributed by
+    hand, and re-attribution is a thing somebody has to remember to do.
+
+    Source-level, because the failure is a missing argument: no call runs in a
+    test, so nothing at runtime can catch the one somebody forgets next.
+    """
+    src = (ROOT / "scripts" / "admin.py").read_text()
+    bad = 0
+    # Paren-BALANCED. The first version matched [^)]* and stopped at the first
+    # ")", so every call whose arguments contain parens - which is all of them,
+    # they read (body.get("why") or "") - was truncated before `by=` and
+    # reported as a failure. A check that cries wolf on 12 correct calls is one
+    # somebody turns off.
+    for m in re.finditer(r"\bsave_companies\(", src):
+        i, depth = m.end(), 1
+        while i < len(src) and depth:
+            depth += (src[i] == "(") - (src[i] == ")")
+            i += 1
+        args = src[m.end():i - 1]
+        if "by=" in args or args.lstrip().startswith("companies: list"):
+            continue        # the definition itself is not a call
+        if not args.strip():
+            continue        # "save_companies()" written in prose, not called
+        line = src[:m.start()].count("\n") + 1
+        snippet = " ".join(args.split())[:70]
+        bad += fail(f"admin.py:{line}: save_companies({snippet}) does not pass "
+                    f"`by`, so this write will be journalled as the owner's "
+                    f"whoever actually made it")
+    return bad
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -1655,6 +1735,7 @@ def main() -> int:
     # never arrives - no error anywhere. So the duplication is checked here.
     errors += check_alert_vocabulary()
     errors += check_merged_names_stay_merged()
+    errors += check_writes_name_their_author()
     errors += check_brand()
     errors += check_admin_game()
     errors += check_admin_gates()

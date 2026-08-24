@@ -157,7 +157,18 @@ def read_companies() -> list:
 
 def save_companies(companies: list, action: str, why: str = "",
                    by: str = "owner", force: bool = False) -> str | None:
-    """Journal, then write. Returns a refusal message, or None on success."""
+    """Journal, then write. Returns a refusal message, or None on success.
+
+    PASS `by`. It defaults to "owner" because most writes are his, and that
+    default is a trap for every write that is not: eight actions here called
+    this with the action name alone, so an agent's patch, an extension's
+    capture and a script's identity ruling were all recorded as rulings the
+    owner made. That is not a cosmetic mislabel - the journal is what
+    admin_undo reads, what re-attribution works from, and what will one day
+    say which labels a classifier can trust. The 86 agent writes in
+    companies.json had to be re-attributed by hand for exactly this reason,
+    and re-attribution is a thing somebody has to remember to do.
+    """
     import journal
     before = _LAST_COMPANIES if _LAST_COMPANIES is not None else companies
     _eid, refusal = journal.record("companies.json", before, companies,
@@ -503,7 +514,8 @@ def act_posts_at(body: dict) -> dict:
     err = validate(companies)
     if err:
         return {"error": err}
-    bad = save_companies(companies, "posts-at")
+    bad = save_companies(companies, "posts-at", why=(body.get("why") or ""),
+                         by=(body.get("by") or "owner"))
     if bad:
         return {"error": bad}
     return {"ok": True,
@@ -580,7 +592,9 @@ def act_identity_ruling(body: dict) -> dict:
         err = validate(companies)
         if err:
             return {"error": err}
-        bad = save_companies(companies, "identity-ruling")
+        bad = save_companies(companies, "identity-ruling",
+                             why=(body.get("why") or ""),
+                             by=(body.get("by") or "owner"))
         if bad:
             return {"error": bad}
 
@@ -985,7 +999,8 @@ def act_board_proposal(body: dict) -> dict:
         return {"error": err}
     bad = save_companies(companies, "board-proposal",
                          why or f"accepted the {block['type']} board found in "
-                                f"{c['name']}'s careers page")
+                                f"{c['name']}'s careers page",
+                         by=(body.get("by") or "owner"))
     if bad:
         return {"error": bad}
     board_proposals.rule(cid, True, why, body.get("by") or "owner")
@@ -1926,7 +1941,8 @@ def act_also(body: dict) -> dict:
     err = validate(companies)
     if err:
         return {"error": err}
-    bad = save_companies(companies, "also")
+    bad = save_companies(companies, "also", why=(body.get("why") or ""),
+                         by=(body.get("by") or "owner"))
     if bad:
         return {"error": bad}
     verb = "no longer also in" if dropped else "also filed under"
@@ -2040,7 +2056,9 @@ def act_save_website(body: dict) -> dict:
     err = validate(companies)
     if err:
         return {"error": err}
-    bad = save_companies(companies, "save-website")
+    bad = save_companies(companies, "save-website",
+                                 why=(body.get("why") or ""),
+                                 by=(body.get("by") or "owner"))
     if bad:
         return {"error": bad}
     steps = [f"website saved{' and renamed to ' + name if name else ''}"]
@@ -2070,7 +2088,9 @@ def act_save_website(body: dict) -> dict:
                 if c2 is not None:
                     c2["ats"] = ats_block
                     if not validate(companies):
-                        bad = save_companies(companies, "save-website")
+                        bad = save_companies(companies, "save-website",
+                                 why=(body.get("why") or ""),
+                                 by=(body.get("by") or "owner"))
                         if bad:
                             return {"error": bad}
                         got_board = ats_block["type"]
@@ -2121,7 +2141,9 @@ def act_retry_board(body: dict) -> dict:
             err = validate(companies)
             if err:
                 return {"error": err}
-            bad = save_companies(companies, "retry-board")
+            bad = save_companies(companies, "retry-board",
+                         why=(body.get("why") or ""),
+                         by=(body.get("by") or "owner"))
             if bad:
                 return {"error": bad}
             log[cid] = {"on": dt.date.today().isoformat(), "found": True,
@@ -2299,15 +2321,29 @@ def act_patch(body: dict) -> dict:
     allowed = {"name", "sector", "category", "website", "description",
                "location", "year_founded", "vendor_type", "parent", "ats_note",
                "also_known_as"}
-    for k, v in (body.get("fields") or {}).items():
-        if k in allowed:
-            c[k] = v
+    fields = body.get("fields") or {}
+    # A patch that changes nothing must not report that it changed something.
+    # This returned {"ok": True, "message": "updated <name>"} for a body whose
+    # fields dict was empty or held only keys outside `allowed` - so a caller
+    # that put a field at the top level instead of inside `fields` was told the
+    # write landed, and the record was untouched. Silent no-ops are how a
+    # correction gets believed and never made.
+    touched = [k for k in fields if k in allowed]
+    if not touched:
+        rejected = sorted(set(fields) - set(allowed))
+        return {"error": ("nothing to change - "
+                          + (f"{', '.join(rejected)} cannot be patched here"
+                             if rejected else "no fields were given")
+                          + f". Editable: {', '.join(sorted(allowed))}")}
+    for k in touched:
+        c[k] = fields[k]
     if "ats" in (body.get("fields") or {}):
         c["ats"] = body["fields"]["ats"]
     err = validate(companies)
     if err:
         return {"error": err}
-    bad = save_companies(companies, "patch")
+    bad = save_companies(companies, "patch", why=(body.get("why") or ""),
+                         by=(body.get("by") or "owner"))
     if bad:
         return {"error": bad}
     return {"ok": True, "message": f"updated {c['name']}"}
@@ -2584,7 +2620,9 @@ def act_set_board(body: dict) -> dict:
     err = validate(companies)
     if err:
         return {"error": err}
-    bad = save_companies(companies, "set-board")
+    bad = save_companies(companies, "set-board",
+                         why=(body.get("why") or ""),
+                         by=(body.get("by") or "owner"))
     if bad:
         return {"error": bad}
     return {"ok": True, "message": f"{c['name']} now points at {block['type']}"}
@@ -2761,7 +2799,9 @@ def act_resolve_submission(body: dict) -> dict:
         err = validate(companies)
         if err:
             return {"error": err}
-        bad = save_companies(companies, "resolve-submission")
+        bad = save_companies(companies, "resolve-submission",
+                             why=(body.get("why") or ""),
+                             by=(body.get("by") or "owner"))
         if bad:
             return {"error": bad}
         item["status"] = "approved"
@@ -2848,7 +2888,9 @@ def act_move(body: dict, action: str = "move") -> dict:
     err = validate(companies)
     if err:
         return {"error": err}
-    bad = save_companies(companies, action)
+    bad = save_companies(companies, action,
+                         why=(body.get("why") or ""),
+                         by=(body.get("by") or "owner"))
     if bad:
         return {"error": bad}
     return {"ok": True, "message": f"{c['name']}: {was} -> {sec} / {cat}",

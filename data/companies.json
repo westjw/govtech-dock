@@ -21,7 +21,8 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "ats_note": null
  },
  {
   "id": "rain",
@@ -21233,7 +21234,7 @@
  {
   "id": "vocalis",
   "name": "Vocalis",
-  "website": "https://vocalis.net",
+  "website": null,
   "location": null,
   "year_founded": null,
   "sector": "Public Safety",
@@ -21252,7 +21253,8 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "ats_note": "website cleared 2026-08-24: vocalis.net is 'Vocalis - Telecommunication wholesale services', a dead HTTrack mirror of voip.hr from 2019, and belongs to a different company. Real URL not yet found."
  },
  {
   "id": "wavepoint-solutions-llc",
