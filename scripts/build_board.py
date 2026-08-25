@@ -816,6 +816,14 @@ def main() -> int:
             tag = (row.get("event_tag") or "").strip()
             if not tag:
                 continue
+            # An event ruled out of scope stays in the catalogue file so a
+            # later sweep does not rediscover it and propose it back, but it
+            # is not a govcon event and does not belong in a govcon
+            # catalogue. The companies found there are a separate question
+            # and keep their place: where a company was found is not what a
+            # company sells.
+            if row.get("sled") is False:
+                continue
             ids = by_tag.get(tag, [])
             hiring = [i for i in ids if open_by_co.get(i, 0) > 0]
             conf_rows.append({
