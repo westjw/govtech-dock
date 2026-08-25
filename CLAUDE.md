@@ -810,6 +810,20 @@ to prevent.
   a parent-company AE req as the subsidiary's, which is a false "Yes". Leave
   them `unknown` unless the board can be scoped to the product line. The same
   rule catches group careers pages (Nedap) and multi-tenant boards.
+- **A sector is never also a category (owner, 2026-08-25).** The dataset filed
+  Health & Human Services twice: as a category inside General Gov holding 38
+  companies, and as its own sector holding 70. Owner ruled HHS gets its own
+  tab and General Gov "should be pretty general stuff". The 38 moved, the
+  duplicate category is gone, and HHS is 108. A word that names a sector must
+  not also name a category under a different sector - it splits one industry
+  across two tabs, and a reader who picks the wrong tab sees a short list and
+  believes it. `selftest.check_search_routes_are_live` now refuses any search
+  phrase pointing at a sector/category pair the schema does not hold, in
+  semantic.py AND in the copy of the map inside index.html.
+  **Still outstanding: General Gov / Courts & Justice holds 21 while the
+  Courts & Justice sector holds 14.** Same defect, same ruling would fix it,
+  not yet made. General Gov also still holds Libraries (53), Cemetery
+  Management (23) and Animal Services (2), which are specific, not general.
 - Descriptions: one line, what they sell + to whom, no marketing fluff.
 - Python: stdlib + requests + openpyxl only. Match existing style (typed,
   small functions, no classes where a function does). Comments explain WHY.

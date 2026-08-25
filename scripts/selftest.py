@@ -1844,6 +1844,170 @@ def check_unreachable_names_the_failure() -> int:
     return errors
 
 
+def check_search_routes_are_live() -> int:
+    """Every search phrase must land on a sector and category that exist.
+
+    "hhs" used to route to two places: the Health & Human Services sector and
+    a Health & Human Services category inside General Gov, because the dataset
+    filed the same thing twice. When the 38 companies moved out and the
+    duplicate category was deleted, that second route still sat in
+    semantic.py and in the copy of it inside index.html.
+
+    A dead route is the quietest kind of wrong. It throws nothing and shows
+    nothing - a reader types the word, the filter matches no company, and the
+    board says there is no work here. That is the asymmetric error this
+    project is built to refuse, arriving through the search box instead of
+    the crawler.
+
+    So the routes are checked against schema.json, both copies, every run.
+    """
+    import json
+    schema = json.loads((ROOT / "data" / "schema.json").read_text())
+    cats = {s["name"]: set(s["categories"]) for s in schema["sectors"]}
+    errors = 0
+
+    import semantic
+    routes = [(e["say"][0], s, c)
+              for e in semantic.CONCEPTS for s, c in e["go"]]
+    if not routes:
+        return fail("semantic.CONCEPTS is empty; the search map did not load")
+
+    for phrase, sector, category in routes:
+        if sector not in cats:
+            errors += fail(f"search {phrase!r} routes to sector {sector!r}, "
+                           f"which is not in schema.json")
+        elif category is not None and category not in cats[sector]:
+            errors += fail(f"search {phrase!r} routes to {sector} / "
+                           f"{category!r}, a category that sector does not "
+                           f"have. A reader typing that word sees an empty "
+                           f"board and reads it as no jobs")
+
+    # index.html carries its own copy of the map; a fix in one is not a fix
+    html = (ROOT / "index.html").read_text()
+    for _, sector, category in routes:
+        pair = f'["{sector}","{category}"]' if category else f'["{sector}",null]'
+        if pair not in html.replace(", ", ","):
+            errors += fail(f"index.html is missing the search route "
+                           f"{sector} / {category} that semantic.py defines. "
+                           f"The two copies of the map have drifted")
+            break
+    if '["General Gov","Health & Human Services"]' in html.replace(", ", ","):
+        errors += fail("index.html still routes searches to the deleted "
+                       "General Gov / Health & Human Services category")
+    return errors
+
+
+
+def check_calendar_dates_survive_the_round_trip() -> int:
+    """The .ics a reader downloads must hold the week the conference runs.
+
+    This one is executed, not read. A text assertion would have passed every
+    version of the bug that matters: DTEND on an all-day VEVENT is EXCLUSIVE,
+    so a conference ending the 21st needs DTEND 22 or every calendar app
+    silently drops the last day. Nothing about the source looks wrong when it
+    is wrong.
+
+    The parser's job is also to REFUSE. "Conference: November 17-19, 2026;
+    Expo: November 18-19, 2026" is two ranges in one field and there is no
+    honest way to pick one, so that row gets no button at all. That is the
+    same asymmetry the crawler runs on: a missing button is visible, a
+    plausible wrong week is not.
+
+    node is not a project dependency. If it is absent the check says so and
+    passes - a missing tool is not a broken board.
+    """
+    import shutil, subprocess, json as _json
+    if not shutil.which("node"):
+        note("node not installed; the .ics parser was not executed this run")
+        return 0
+
+    html = (ROOT / "index.html").read_text()
+    a = html.find("const CAL_MONTHS=")
+    b = html.find("function downloadIcs(")     # needs a DOM, stays out
+    if a < 0 or b < 0 or b <= a:
+        return fail("index.html: could not find the .ics parser to test it")
+
+    cases = [
+        # dates,                                    start,      end (exclusive)
+        ["October 17-21, 2026",                    "20261017", "20261022"],
+        ["September 30 - October 3, 2026",         "20260930", "20261004"],
+        ["June 26 - July 1, 2027",                 "20270626", "20270702"],
+        ["August 7 - 11, 2027",                    "20270807", "20270812"],
+        ["March 1-4, 2027",                        "20270301", "20270305"],
+        ["December 8-10, 2026",                    "20261208", "20261211"],
+    ]
+    refuse = [
+        "Conference: November 17-19, 2026; Expo: November 18-19, 2026",
+        "February 30, 2026",          # Date() would roll this to March 2
+        "October 21-17, 2026",        # runs backwards
+        "December 30 - January 2, 2027",   # year rollover is ambiguous
+        "Spring 2027",
+        "",
+    ]
+    script = html[a:b] + """
+const CASES = %s, REFUSE = %s;
+const out = {ranges: [], refused: [], loc: null};
+for (const [s] of CASES) {
+  const ics = icsFor({name: "T", dates: s, city: "Washington, DC",
+                      url: "https://x.test/", tag: "t"});
+  const g = t => { const m = ics && ics.match(new RegExp(t + ":(\\\\d{8})")); return m ? m[1] : null; };
+  out.ranges.push([g("DTSTART;VALUE=DATE"), g("DTEND;VALUE=DATE")]);
+}
+for (const s of REFUSE) out.refused.push(calRange(s) === null);
+const one = icsFor({name: "A, B; C", dates: "March 1-4, 2027",
+                    city: "Washington, DC", tag: "t"});
+out.loc = /LOCATION:Washington\\\\, DC/.test(one) && /SUMMARY:A\\\\, B\\\\; C/.test(one);
+out.crlf = one.includes("\\r\\n") && !/[^\\r]\\n/.test(one);
+console.log(JSON.stringify(out));
+""" % (_json.dumps(cases), _json.dumps(refuse))
+
+    try:
+        r = subprocess.run(["node", "--input-type=module", "-e", script],
+                           capture_output=True, text=True, timeout=30)
+    except Exception as exc:
+        return fail(f".ics parser could not be executed: {exc}")
+    if r.returncode != 0:
+        return fail(f".ics parser threw: {r.stderr.strip()[:200]}")
+    got = _json.loads(r.stdout)
+
+    errors = 0
+    for (dates, want_s, want_e), (gs, ge) in zip(cases, got["ranges"]):
+        if gs != want_s:
+            errors += fail(f"ics {dates!r}: DTSTART {gs}, expected {want_s}")
+        if ge != want_e:
+            errors += fail(f"ics {dates!r}: DTEND {ge}, expected {want_e}. "
+                           f"DTEND is exclusive - a calendar shows one day "
+                           f"less than the conference actually runs")
+    for s, refused in zip(refuse, got["refused"]):
+        if not refused:
+            errors += fail(f"ics: {s!r} was parsed into a date. It is not "
+                           f"unambiguous, and a wrong week in somebody's "
+                           f"calendar is the error nobody notices")
+    if not got["loc"]:
+        errors += fail("ics: a comma or semicolon in a city or event name is "
+                       "not escaped, so the field splits into two")
+    if not got.get("crlf"):
+        errors += fail("ics: lines must end CRLF per RFC 5545")
+
+    # Anything in the live catalogue that the parser refuses must be a row we
+    # know about, not a shape that quietly lost its button.
+    known_unparseable = {"Conference: November 17-19, 2026; Expo: November 18-19, 2026"}
+    cat = _json.loads((ROOT / "data" / "conferences.json").read_text())["conferences"]
+    dated = [c for c in cat if c.get("dates")]
+    probe = html[a:b] + (
+        "\nconsole.log(JSON.stringify(%s.map(d => calRange(d) !== null)));"
+        % _json.dumps([c["dates"] for c in dated]))
+    r2 = subprocess.run(["node", "--input-type=module", "-e", probe],
+                        capture_output=True, text=True, timeout=30)
+    if r2.returncode == 0:
+        for c, okd in zip(dated, _json.loads(r2.stdout)):
+            if not okd and c["dates"] not in known_unparseable:
+                errors += fail(f"{c.get('conference')}: dates "
+                               f"{c['dates']!r} get no calendar button and "
+                               f"are not a known-ambiguous shape")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -2175,6 +2339,8 @@ def main() -> int:
     errors += check_header_shared()
     errors += check_identity_guard()
     errors += check_unreachable_names_the_failure()
+    errors += check_search_routes_are_live()
+    errors += check_calendar_dates_survive_the_round_trip()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()
     errors += check_every_company_says_what_it_sells()

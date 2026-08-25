@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+	<html class="no-js" lang=""> <!--<![endif]-->
+	<head>
+					<base href='//healthcareitconnect.com'>
+		
+		<title>Healthcare IT Connect - Home Page</title>
+
+		
+        <meta charset="UTF-8">
+
+		<meta name='keywords' content='starchapter'>        <link rel="stylesheet" href="/vite/dist/vendor/fontawesome/css/all.min.css">
+					<meta name="viewport" content="width=device-width, initial-scale=1">
+
+			<!-- ============================================
+		    ================= Stylesheets ===================
+		    ============================================= -->
+            		        <link rel="stylesheet" href="/custom/assets/css/bootstrap.min.css" type="text/css" />
+            		    <link rel="stylesheet" href="/custom/assets/css/animate.css" type="text/css" />
+		    <link rel="stylesheet" href="/custom/assets/js/vendor/flexslider/flexslider.css" type="text/css" />
+		    <link rel="stylesheet" href="/custom/assets/js/vendor/owl/owl.carousel.css" type="text/css" />
+    		<link rel="stylesheet" href="/custom/assets/js/vendor/owl/owl.theme.css" type="text/css" />
+    		<link rel="stylesheet" href="/custom/assets/js/vendor/animsition/css/animsition.min.css">
+
+    		<link rel="stylesheet" href="/js/css/lightbox.css">
+
+    		<!-- jQuery -->
+	        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+	        <script src="/custom/assets/js/vendor/jquery-migrate-3.4.1.js"></script>
+
+    		<script
+  src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+  integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
+  crossorigin="anonymous"></script>
+
+			<script language='javascript'>
+		        var $jq = jQuery.noConflict();
+		        //alert(navigator.userAgent);
+		    </script>
+
+    		<link rel="stylesheet" href="/custom/assets/css/minovate_default.css" type="text/css" />
+
+		
+			    										<link href="/custom/css/default_css3.php?ver=20260825" rel="stylesheet" media="screen">
+				
+								    <!--jquery css -->
+					<link href="/custom/css/jqueryui.css" rel="stylesheet" media="screen">
+			    
+									<script>
+												document.domain = window.location.hostname;
+					</script>
+									<style type="text/css">@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/hebrew/400/normal.woff2);unicode-range:U+0307-0308,U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/math/400/normal.woff2);unicode-range:U+0302-0303,U+0305,U+0307-0308,U+0310,U+0312,U+0315,U+031A,U+0326-0327,U+032C,U+032F-0330,U+0332-0333,U+0338,U+033A,U+0346,U+034D,U+0391-03A1,U+03A3-03A9,U+03B1-03C9,U+03D1,U+03D5-03D6,U+03F0-03F1,U+03F4-03F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-208E,U+2090-209C,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231C-2321,U+2336-237A,U+237C,U+2395,U+239B-23B7,U+23D0,U+23DC-23E1,U+2474-2475,U+25AF,U+25B3,U+25B7,U+25BD,U+25C1,U+25CA,U+25CC,U+25FB,U+266D-266F,U+27C0-27FF,U+2900-2AFF,U+2B0E-2B11,U+2B30-2B4C,U+2BFE,U+3030,U+FF5B,U+FF5D,U+1D400-1D7FF,U+1EE00-1EEFF;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/symbols/400/normal.woff2);unicode-range:U+0001-000C,U+000E-001F,U+007F-009F,U+20DD-20E0,U+20E2-20E4,U+2150-218F,U+2190,U+2192,U+2194-2199,U+21AF,U+21E6-21F0,U+21F3,U+2218-2219,U+2299,U+22C4-22C6,U+2300-243F,U+2440-244A,U+2460-24FF,U+25A0-27BF,U+2800-28FF,U+2921-2922,U+2981,U+29BF,U+29EB,U+2B00-2BFF,U+4DC0-4DFF,U+FFF9-FFFB,U+10140-1018E,U+10190-1019C,U+101A0,U+101D0-101FD,U+102E0-102FB,U+10E60-10E7E,U+1D2C0-1D2D3,U+1D2E0-1D37F,U+1F000-1F0FF,U+1F100-1F1AD,U+1F1E6-1F1FF,U+1F30D-1F30F,U+1F315,U+1F31C,U+1F31E,U+1F320-1F32C,U+1F336,U+1F378,U+1F37D,U+1F382,U+1F393-1F39F,U+1F3A7-1F3A8,U+1F3AC-1F3AF,U+1F3C2,U+1F3C4-1F3C6,U+1F3CA-1F3CE,U+1F3D4-1F3E0,U+1F3ED,U+1F3F1-1F3F3,U+1F3F5-1F3F7,U+1F408,U+1F415,U+1F41F,U+1F426,U+1F43F,U+1F441-1F442,U+1F444,U+1F446-1F449,U+1F44C-1F44E,U+1F453,U+1F46A,U+1F47D,U+1F4A3,U+1F4B0,U+1F4B3,U+1F4B9,U+1F4BB,U+1F4BF,U+1F4C8-1F4CB,U+1F4D6,U+1F4DA,U+1F4DF,U+1F4E3-1F4E6,U+1F4EA-1F4ED,U+1F4F7,U+1F4F9-1F4FB,U+1F4FD-1F4FE,U+1F503,U+1F507-1F50B,U+1F50D,U+1F512-1F513,U+1F53E-1F54A,U+1F54F-1F5FA,U+1F610,U+1F650-1F67F,U+1F687,U+1F68D,U+1F691,U+1F694,U+1F698,U+1F6AD,U+1F6B2,U+1F6B9-1F6BA,U+1F6BC,U+1F6C6-1F6CF,U+1F6D3-1F6D7,U+1F6E0-1F6EA,U+1F6F0-1F6F3,U+1F6F7-1F6FC,U+1F700-1F7FF,U+1F800-1F80B,U+1F810-1F847,U+1F850-1F859,U+1F860-1F887,U+1F890-1F8AD,U+1F8B0-1F8BB,U+1F8C0-1F8C1,U+1F900-1F90B,U+1F93B,U+1F946,U+1F984,U+1F996,U+1F9E9,U+1FA00-1FA6F,U+1FA70-1FA7C,U+1FA80-1FA89,U+1FA8F-1FAC6,U+1FACE-1FADC,U+1FADF-1FAE9,U+1FAF0-1FAF8,U+1FB00-1FBFF;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/greek/400/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}</style>
+									<style type="text/css">@font-face {font-family:'Roboto Slab';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-slab/5.2.8/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Roboto Slab';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-slab/5.2.8/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Roboto Slab';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-slab/5.2.8/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Roboto Slab';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-slab/5.2.8/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Roboto Slab';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-slab/5.2.8/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Roboto Slab';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-slab/5.2.8/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Roboto Slab';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-slab/5.2.8/greek/400/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}</style>
+									<style type="text/css">@font-face {font-family:'Cabin';font-style:normal;font-weight:400;src:url(/cf-fonts/s/cabin/5.2.8/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Cabin';font-style:normal;font-weight:400;src:url(/cf-fonts/s/cabin/5.2.8/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Cabin';font-style:normal;font-weight:400;src:url(/cf-fonts/s/cabin/5.2.8/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}</style>
+									<style type="text/css">@font-face {font-family:'Oswald';font-style:normal;font-weight:400;src:url(/cf-fonts/s/oswald/5.2.8/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Oswald';font-style:normal;font-weight:400;src:url(/cf-fonts/s/oswald/5.2.8/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Oswald';font-style:normal;font-weight:400;src:url(/cf-fonts/s/oswald/5.2.8/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Oswald';font-style:normal;font-weight:400;src:url(/cf-fonts/s/oswald/5.2.8/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Oswald';font-style:normal;font-weight:400;src:url(/cf-fonts/s/oswald/5.2.8/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}</style>
+									<style type="text/css">@font-face {font-family:'EB Garamond';font-style:normal;font-weight:400;src:url(/cf-fonts/s/eb-garamond/5.2.7/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'EB Garamond';font-style:normal;font-weight:400;src:url(/cf-fonts/s/eb-garamond/5.2.7/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'EB Garamond';font-style:normal;font-weight:400;src:url(/cf-fonts/s/eb-garamond/5.2.7/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'EB Garamond';font-style:normal;font-weight:400;src:url(/cf-fonts/s/eb-garamond/5.2.7/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'EB Garamond';font-style:normal;font-weight:400;src:url(/cf-fonts/s/eb-garamond/5.2.7/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'EB Garamond';font-style:normal;font-weight:400;src:url(/cf-fonts/s/eb-garamond/5.2.7/greek/400/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'EB Garamond';font-style:normal;font-weight:400;src:url(/cf-fonts/s/eb-garamond/5.2.7/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}</style>
+									<style type="text/css">@font-face {font-family:'Noto Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/noto-sans/5.2.10/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Noto Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/noto-sans/5.2.10/devanagari/400/normal.woff2);unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;font-display:swap;}@font-face {font-family:'Noto Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/noto-sans/5.2.10/greek/400/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Noto Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/noto-sans/5.2.10/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Noto Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/noto-sans/5.2.10/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Noto Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/noto-sans/5.2.10/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Noto Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/noto-sans/5.2.10/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Noto Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/noto-sans/5.2.10/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}</style>
+									<style type="text/css">@font-face {font-family:'Lato';font-style:normal;font-weight:400;src:url(/cf-fonts/s/lato/5.2.7/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Lato';font-style:normal;font-weight:400;src:url(/cf-fonts/s/lato/5.2.7/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}</style>
+									<style type="text/css">@font-face {font-family:'Roboto';font-style:normal;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/symbols/wght/normal.woff2);unicode-range:U+0001-000C,U+000E-001F,U+007F-009F,U+20DD-20E0,U+20E2-20E4,U+2150-218F,U+2190,U+2192,U+2194-2199,U+21AF,U+21E6-21F0,U+21F3,U+2218-2219,U+2299,U+22C4-22C6,U+2300-243F,U+2440-244A,U+2460-24FF,U+25A0-27BF,U+2800-28FF,U+2921-2922,U+2981,U+29BF,U+29EB,U+2B00-2BFF,U+4DC0-4DFF,U+FFF9-FFFB,U+10140-1018E,U+10190-1019C,U+101A0,U+101D0-101FD,U+102E0-102FB,U+10E60-10E7E,U+1D2C0-1D2D3,U+1D2E0-1D37F,U+1F000-1F0FF,U+1F100-1F1AD,U+1F1E6-1F1FF,U+1F30D-1F30F,U+1F315,U+1F31C,U+1F31E,U+1F320-1F32C,U+1F336,U+1F378,U+1F37D,U+1F382,U+1F393-1F39F,U+1F3A7-1F3A8,U+1F3AC-1F3AF,U+1F3C2,U+1F3C4-1F3C6,U+1F3CA-1F3CE,U+1F3D4-1F3E0,U+1F3ED,U+1F3F1-1F3F3,U+1F3F5-1F3F7,U+1F408,U+1F415,U+1F41F,U+1F426,U+1F43F,U+1F441-1F442,U+1F444,U+1F446-1F449,U+1F44C-1F44E,U+1F453,U+1F46A,U+1F47D,U+1F4A3,U+1F4B0,U+1F4B3,U+1F4B9,U+1F4BB,U+1F4BF,U+1F4C8-1F4CB,U+1F4D6,U+1F4DA,U+1F4DF,U+1F4E3-1F4E6,U+1F4EA-1F4ED,U+1F4F7,U+1F4F9-1F4FB,U+1F4FD-1F4FE,U+1F503,U+1F507-1F50B,U+1F50D,U+1F512-1F513,U+1F53E-1F54A,U+1F54F-1F5FA,U+1F610,U+1F650-1F67F,U+1F687,U+1F68D,U+1F691,U+1F694,U+1F698,U+1F6AD,U+1F6B2,U+1F6B9-1F6BA,U+1F6BC,U+1F6C6-1F6CF,U+1F6D3-1F6D7,U+1F6E0-1F6EA,U+1F6F0-1F6F3,U+1F6F7-1F6FC,U+1F700-1F7FF,U+1F800-1F80B,U+1F810-1F847,U+1F850-1F859,U+1F860-1F887,U+1F890-1F8AD,U+1F8B0-1F8BB,U+1F8C0-1F8C1,U+1F900-1F90B,U+1F93B,U+1F946,U+1F984,U+1F996,U+1F9E9,U+1FA00-1FA6F,U+1FA70-1FA7C,U+1FA80-1FA89,U+1FA8F-1FAC6,U+1FACE-1FADC,U+1FADF-1FAE9,U+1FAF0-1FAF8,U+1FB00-1FBFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/math/wght/normal.woff2);unicode-range:U+0302-0303,U+0305,U+0307-0308,U+0310,U+0312,U+0315,U+031A,U+0326-0327,U+032C,U+032F-0330,U+0332-0333,U+0338,U+033A,U+0346,U+034D,U+0391-03A1,U+03A3-03A9,U+03B1-03C9,U+03D1,U+03D5-03D6,U+03F0-03F1,U+03F4-03F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-208E,U+2090-209C,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231C-2321,U+2336-237A,U+237C,U+2395,U+239B-23B7,U+23D0,U+23DC-23E1,U+2474-2475,U+25AF,U+25B3,U+25B7,U+25BD,U+25C1,U+25CA,U+25CC,U+25FB,U+266D-266F,U+27C0-27FF,U+2900-2AFF,U+2B0E-2B11,U+2B30-2B4C,U+2BFE,U+3030,U+FF5B,U+FF5D,U+1D400-1D7FF,U+1EE00-1EEFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/greek/wght/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/math/wght/normal.woff2);unicode-range:U+0302-0303,U+0305,U+0307-0308,U+0310,U+0312,U+0315,U+031A,U+0326-0327,U+032C,U+032F-0330,U+0332-0333,U+0338,U+033A,U+0346,U+034D,U+0391-03A1,U+03A3-03A9,U+03B1-03C9,U+03D1,U+03D5-03D6,U+03F0-03F1,U+03F4-03F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-208E,U+2090-209C,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231C-2321,U+2336-237A,U+237C,U+2395,U+239B-23B7,U+23D0,U+23DC-23E1,U+2474-2475,U+25AF,U+25B3,U+25B7,U+25BD,U+25C1,U+25CA,U+25CC,U+25FB,U+266D-266F,U+27C0-27FF,U+2900-2AFF,U+2B0E-2B11,U+2B30-2B4C,U+2BFE,U+3030,U+FF5B,U+FF5D,U+1D400-1D7FF,U+1EE00-1EEFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/symbols/wght/normal.woff2);unicode-range:U+0001-000C,U+000E-001F,U+007F-009F,U+20DD-20E0,U+20E2-20E4,U+2150-218F,U+2190,U+2192,U+2194-2199,U+21AF,U+21E6-21F0,U+21F3,U+2218-2219,U+2299,U+22C4-22C6,U+2300-243F,U+2440-244A,U+2460-24FF,U+25A0-27BF,U+2800-28FF,U+2921-2922,U+2981,U+29BF,U+29EB,U+2B00-2BFF,U+4DC0-4DFF,U+FFF9-FFFB,U+10140-1018E,U+10190-1019C,U+101A0,U+101D0-101FD,U+102E0-102FB,U+10E60-10E7E,U+1D2C0-1D2D3,U+1D2E0-1D37F,U+1F000-1F0FF,U+1F100-1F1AD,U+1F1E6-1F1FF,U+1F30D-1F30F,U+1F315,U+1F31C,U+1F31E,U+1F320-1F32C,U+1F336,U+1F378,U+1F37D,U+1F382,U+1F393-1F39F,U+1F3A7-1F3A8,U+1F3AC-1F3AF,U+1F3C2,U+1F3C4-1F3C6,U+1F3CA-1F3CE,U+1F3D4-1F3E0,U+1F3ED,U+1F3F1-1F3F3,U+1F3F5-1F3F7,U+1F408,U+1F415,U+1F41F,U+1F426,U+1F43F,U+1F441-1F442,U+1F444,U+1F446-1F449,U+1F44C-1F44E,U+1F453,U+1F46A,U+1F47D,U+1F4A3,U+1F4B0,U+1F4B3,U+1F4B9,U+1F4BB,U+1F4BF,U+1F4C8-1F4CB,U+1F4D6,U+1F4DA,U+1F4DF,U+1F4E3-1F4E6,U+1F4EA-1F4ED,U+1F4F7,U+1F4F9-1F4FB,U+1F4FD-1F4FE,U+1F503,U+1F507-1F50B,U+1F50D,U+1F512-1F513,U+1F53E-1F54A,U+1F54F-1F5FA,U+1F610,U+1F650-1F67F,U+1F687,U+1F68D,U+1F691,U+1F694,U+1F698,U+1F6AD,U+1F6B2,U+1F6B9-1F6BA,U+1F6BC,U+1F6C6-1F6CF,U+1F6D3-1F6D7,U+1F6E0-1F6EA,U+1F6F0-1F6F3,U+1F6F7-1F6FC,U+1F700-1F7FF,U+1F800-1F80B,U+1F810-1F847,U+1F850-1F859,U+1F860-1F887,U+1F890-1F8AD,U+1F8B0-1F8BB,U+1F8C0-1F8C1,U+1F900-1F90B,U+1F93B,U+1F946,U+1F984,U+1F996,U+1F9E9,U+1FA00-1FA6F,U+1FA70-1FA7C,U+1FA80-1FA89,U+1FA8F-1FAC6,U+1FACE-1FADC,U+1FADF-1FAE9,U+1FAF0-1FAF8,U+1FB00-1FBFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/greek/wght/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/greek/wght/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/symbols/wght/normal.woff2);unicode-range:U+0001-000C,U+000E-001F,U+007F-009F,U+20DD-20E0,U+20E2-20E4,U+2150-218F,U+2190,U+2192,U+2194-2199,U+21AF,U+21E6-21F0,U+21F3,U+2218-2219,U+2299,U+22C4-22C6,U+2300-243F,U+2440-244A,U+2460-24FF,U+25A0-27BF,U+2800-28FF,U+2921-2922,U+2981,U+29BF,U+29EB,U+2B00-2BFF,U+4DC0-4DFF,U+FFF9-FFFB,U+10140-1018E,U+10190-1019C,U+101A0,U+101D0-101FD,U+102E0-102FB,U+10E60-10E7E,U+1D2C0-1D2D3,U+1D2E0-1D37F,U+1F000-1F0FF,U+1F100-1F1AD,U+1F1E6-1F1FF,U+1F30D-1F30F,U+1F315,U+1F31C,U+1F31E,U+1F320-1F32C,U+1F336,U+1F378,U+1F37D,U+1F382,U+1F393-1F39F,U+1F3A7-1F3A8,U+1F3AC-1F3AF,U+1F3C2,U+1F3C4-1F3C6,U+1F3CA-1F3CE,U+1F3D4-1F3E0,U+1F3ED,U+1F3F1-1F3F3,U+1F3F5-1F3F7,U+1F408,U+1F415,U+1F41F,U+1F426,U+1F43F,U+1F441-1F442,U+1F444,U+1F446-1F449,U+1F44C-1F44E,U+1F453,U+1F46A,U+1F47D,U+1F4A3,U+1F4B0,U+1F4B3,U+1F4B9,U+1F4BB,U+1F4BF,U+1F4C8-1F4CB,U+1F4D6,U+1F4DA,U+1F4DF,U+1F4E3-1F4E6,U+1F4EA-1F4ED,U+1F4F7,U+1F4F9-1F4FB,U+1F4FD-1F4FE,U+1F503,U+1F507-1F50B,U+1F50D,U+1F512-1F513,U+1F53E-1F54A,U+1F54F-1F5FA,U+1F610,U+1F650-1F67F,U+1F687,U+1F68D,U+1F691,U+1F694,U+1F698,U+1F6AD,U+1F6B2,U+1F6B9-1F6BA,U+1F6BC,U+1F6C6-1F6CF,U+1F6D3-1F6D7,U+1F6E0-1F6EA,U+1F6F0-1F6F3,U+1F6F7-1F6FC,U+1F700-1F7FF,U+1F800-1F80B,U+1F810-1F847,U+1F850-1F859,U+1F860-1F887,U+1F890-1F8AD,U+1F8B0-1F8BB,U+1F8C0-1F8C1,U+1F900-1F90B,U+1F93B,U+1F946,U+1F984,U+1F996,U+1F9E9,U+1FA00-1FA6F,U+1FA70-1FA7C,U+1FA80-1FA89,U+1FA8F-1FAC6,U+1FACE-1FADC,U+1FADF-1FAE9,U+1FAF0-1FAF8,U+1FB00-1FBFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/math/wght/normal.woff2);unicode-range:U+0302-0303,U+0305,U+0307-0308,U+0310,U+0312,U+0315,U+031A,U+0326-0327,U+032C,U+032F-0330,U+0332-0333,U+0338,U+033A,U+0346,U+034D,U+0391-03A1,U+03A3-03A9,U+03B1-03C9,U+03D1,U+03D5-03D6,U+03F0-03F1,U+03F4-03F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-208E,U+2090-209C,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231C-2321,U+2336-237A,U+237C,U+2395,U+239B-23B7,U+23D0,U+23DC-23E1,U+2474-2475,U+25AF,U+25B3,U+25B7,U+25BD,U+25C1,U+25CA,U+25CC,U+25FB,U+266D-266F,U+27C0-27FF,U+2900-2AFF,U+2B0E-2B11,U+2B30-2B4C,U+2BFE,U+3030,U+FF5B,U+FF5D,U+1D400-1D7FF,U+1EE00-1EEFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/math/wght/normal.woff2);unicode-range:U+0302-0303,U+0305,U+0307-0308,U+0310,U+0312,U+0315,U+031A,U+0326-0327,U+032C,U+032F-0330,U+0332-0333,U+0338,U+033A,U+0346,U+034D,U+0391-03A1,U+03A3-03A9,U+03B1-03C9,U+03D1,U+03D5-03D6,U+03F0-03F1,U+03F4-03F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-208E,U+2090-209C,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231C-2321,U+2336-237A,U+237C,U+2395,U+239B-23B7,U+23D0,U+23DC-23E1,U+2474-2475,U+25AF,U+25B3,U+25B7,U+25BD,U+25C1,U+25CA,U+25CC,U+25FB,U+266D-266F,U+27C0-27FF,U+2900-2AFF,U+2B0E-2B11,U+2B30-2B4C,U+2BFE,U+3030,U+FF5B,U+FF5D,U+1D400-1D7FF,U+1EE00-1EEFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/greek/wght/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/symbols/wght/normal.woff2);unicode-range:U+0001-000C,U+000E-001F,U+007F-009F,U+20DD-20E0,U+20E2-20E4,U+2150-218F,U+2190,U+2192,U+2194-2199,U+21AF,U+21E6-21F0,U+21F3,U+2218-2219,U+2299,U+22C4-22C6,U+2300-243F,U+2440-244A,U+2460-24FF,U+25A0-27BF,U+2800-28FF,U+2921-2922,U+2981,U+29BF,U+29EB,U+2B00-2BFF,U+4DC0-4DFF,U+FFF9-FFFB,U+10140-1018E,U+10190-1019C,U+101A0,U+101D0-101FD,U+102E0-102FB,U+10E60-10E7E,U+1D2C0-1D2D3,U+1D2E0-1D37F,U+1F000-1F0FF,U+1F100-1F1AD,U+1F1E6-1F1FF,U+1F30D-1F30F,U+1F315,U+1F31C,U+1F31E,U+1F320-1F32C,U+1F336,U+1F378,U+1F37D,U+1F382,U+1F393-1F39F,U+1F3A7-1F3A8,U+1F3AC-1F3AF,U+1F3C2,U+1F3C4-1F3C6,U+1F3CA-1F3CE,U+1F3D4-1F3E0,U+1F3ED,U+1F3F1-1F3F3,U+1F3F5-1F3F7,U+1F408,U+1F415,U+1F41F,U+1F426,U+1F43F,U+1F441-1F442,U+1F444,U+1F446-1F449,U+1F44C-1F44E,U+1F453,U+1F46A,U+1F47D,U+1F4A3,U+1F4B0,U+1F4B3,U+1F4B9,U+1F4BB,U+1F4BF,U+1F4C8-1F4CB,U+1F4D6,U+1F4DA,U+1F4DF,U+1F4E3-1F4E6,U+1F4EA-1F4ED,U+1F4F7,U+1F4F9-1F4FB,U+1F4FD-1F4FE,U+1F503,U+1F507-1F50B,U+1F50D,U+1F512-1F513,U+1F53E-1F54A,U+1F54F-1F5FA,U+1F610,U+1F650-1F67F,U+1F687,U+1F68D,U+1F691,U+1F694,U+1F698,U+1F6AD,U+1F6B2,U+1F6B9-1F6BA,U+1F6BC,U+1F6C6-1F6CF,U+1F6D3-1F6D7,U+1F6E0-1F6EA,U+1F6F0-1F6F3,U+1F6F7-1F6FC,U+1F700-1F7FF,U+1F800-1F80B,U+1F810-1F847,U+1F850-1F859,U+1F860-1F887,U+1F890-1F8AD,U+1F8B0-1F8BB,U+1F8C0-1F8C1,U+1F900-1F90B,U+1F93B,U+1F946,U+1F984,U+1F996,U+1F9E9,U+1FA00-1FA6F,U+1FA70-1FA7C,U+1FA80-1FA89,U+1FA8F-1FAC6,U+1FACE-1FADC,U+1FADF-1FAE9,U+1FAF0-1FAF8,U+1FB00-1FBFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Roboto';font-style:normal;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/greek-ext/wght/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/symbols/wght/italic.woff2);unicode-range:U+0001-000C,U+000E-001F,U+007F-009F,U+20DD-20E0,U+20E2-20E4,U+2150-218F,U+2190,U+2192,U+2194-2199,U+21AF,U+21E6-21F0,U+21F3,U+2218-2219,U+2299,U+22C4-22C6,U+2300-243F,U+2440-244A,U+2460-24FF,U+25A0-27BF,U+2800-28FF,U+2921-2922,U+2981,U+29BF,U+29EB,U+2B00-2BFF,U+4DC0-4DFF,U+FFF9-FFFB,U+10140-1018E,U+10190-1019C,U+101A0,U+101D0-101FD,U+102E0-102FB,U+10E60-10E7E,U+1D2C0-1D2D3,U+1D2E0-1D37F,U+1F000-1F0FF,U+1F100-1F1AD,U+1F1E6-1F1FF,U+1F30D-1F30F,U+1F315,U+1F31C,U+1F31E,U+1F320-1F32C,U+1F336,U+1F378,U+1F37D,U+1F382,U+1F393-1F39F,U+1F3A7-1F3A8,U+1F3AC-1F3AF,U+1F3C2,U+1F3C4-1F3C6,U+1F3CA-1F3CE,U+1F3D4-1F3E0,U+1F3ED,U+1F3F1-1F3F3,U+1F3F5-1F3F7,U+1F408,U+1F415,U+1F41F,U+1F426,U+1F43F,U+1F441-1F442,U+1F444,U+1F446-1F449,U+1F44C-1F44E,U+1F453,U+1F46A,U+1F47D,U+1F4A3,U+1F4B0,U+1F4B3,U+1F4B9,U+1F4BB,U+1F4BF,U+1F4C8-1F4CB,U+1F4D6,U+1F4DA,U+1F4DF,U+1F4E3-1F4E6,U+1F4EA-1F4ED,U+1F4F7,U+1F4F9-1F4FB,U+1F4FD-1F4FE,U+1F503,U+1F507-1F50B,U+1F50D,U+1F512-1F513,U+1F53E-1F54A,U+1F54F-1F5FA,U+1F610,U+1F650-1F67F,U+1F687,U+1F68D,U+1F691,U+1F694,U+1F698,U+1F6AD,U+1F6B2,U+1F6B9-1F6BA,U+1F6BC,U+1F6C6-1F6CF,U+1F6D3-1F6D7,U+1F6E0-1F6EA,U+1F6F0-1F6F3,U+1F6F7-1F6FC,U+1F700-1F7FF,U+1F800-1F80B,U+1F810-1F847,U+1F850-1F859,U+1F860-1F887,U+1F890-1F8AD,U+1F8B0-1F8BB,U+1F8C0-1F8C1,U+1F900-1F90B,U+1F93B,U+1F946,U+1F984,U+1F996,U+1F9E9,U+1FA00-1FA6F,U+1FA70-1FA7C,U+1FA80-1FA89,U+1FA8F-1FAC6,U+1FACE-1FADC,U+1FADF-1FAE9,U+1FAF0-1FAF8,U+1FB00-1FBFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/math/wght/italic.woff2);unicode-range:U+0302-0303,U+0305,U+0307-0308,U+0310,U+0312,U+0315,U+031A,U+0326-0327,U+032C,U+032F-0330,U+0332-0333,U+0338,U+033A,U+0346,U+034D,U+0391-03A1,U+03A3-03A9,U+03B1-03C9,U+03D1,U+03D5-03D6,U+03F0-03F1,U+03F4-03F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-208E,U+2090-209C,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231C-2321,U+2336-237A,U+237C,U+2395,U+239B-23B7,U+23D0,U+23DC-23E1,U+2474-2475,U+25AF,U+25B3,U+25B7,U+25BD,U+25C1,U+25CA,U+25CC,U+25FB,U+266D-266F,U+27C0-27FF,U+2900-2AFF,U+2B0E-2B11,U+2B30-2B4C,U+2BFE,U+3030,U+FF5B,U+FF5D,U+1D400-1D7FF,U+1EE00-1EEFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/latin-ext/wght/italic.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/vietnamese/wght/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/greek/wght/italic.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic/wght/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic-ext/wght/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:300;src:url(/cf-fonts/v/roboto/5.2.10/latin/wght/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic-ext/wght/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic/wght/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/math/wght/italic.woff2);unicode-range:U+0302-0303,U+0305,U+0307-0308,U+0310,U+0312,U+0315,U+031A,U+0326-0327,U+032C,U+032F-0330,U+0332-0333,U+0338,U+033A,U+0346,U+034D,U+0391-03A1,U+03A3-03A9,U+03B1-03C9,U+03D1,U+03D5-03D6,U+03F0-03F1,U+03F4-03F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-208E,U+2090-209C,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231C-2321,U+2336-237A,U+237C,U+2395,U+239B-23B7,U+23D0,U+23DC-23E1,U+2474-2475,U+25AF,U+25B3,U+25B7,U+25BD,U+25C1,U+25CA,U+25CC,U+25FB,U+266D-266F,U+27C0-27FF,U+2900-2AFF,U+2B0E-2B11,U+2B30-2B4C,U+2BFE,U+3030,U+FF5B,U+FF5D,U+1D400-1D7FF,U+1EE00-1EEFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/latin/wght/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/vietnamese/wght/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/greek-ext/wght/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/symbols/wght/italic.woff2);unicode-range:U+0001-000C,U+000E-001F,U+007F-009F,U+20DD-20E0,U+20E2-20E4,U+2150-218F,U+2190,U+2192,U+2194-2199,U+21AF,U+21E6-21F0,U+21F3,U+2218-2219,U+2299,U+22C4-22C6,U+2300-243F,U+2440-244A,U+2460-24FF,U+25A0-27BF,U+2800-28FF,U+2921-2922,U+2981,U+29BF,U+29EB,U+2B00-2BFF,U+4DC0-4DFF,U+FFF9-FFFB,U+10140-1018E,U+10190-1019C,U+101A0,U+101D0-101FD,U+102E0-102FB,U+10E60-10E7E,U+1D2C0-1D2D3,U+1D2E0-1D37F,U+1F000-1F0FF,U+1F100-1F1AD,U+1F1E6-1F1FF,U+1F30D-1F30F,U+1F315,U+1F31C,U+1F31E,U+1F320-1F32C,U+1F336,U+1F378,U+1F37D,U+1F382,U+1F393-1F39F,U+1F3A7-1F3A8,U+1F3AC-1F3AF,U+1F3C2,U+1F3C4-1F3C6,U+1F3CA-1F3CE,U+1F3D4-1F3E0,U+1F3ED,U+1F3F1-1F3F3,U+1F3F5-1F3F7,U+1F408,U+1F415,U+1F41F,U+1F426,U+1F43F,U+1F441-1F442,U+1F444,U+1F446-1F449,U+1F44C-1F44E,U+1F453,U+1F46A,U+1F47D,U+1F4A3,U+1F4B0,U+1F4B3,U+1F4B9,U+1F4BB,U+1F4BF,U+1F4C8-1F4CB,U+1F4D6,U+1F4DA,U+1F4DF,U+1F4E3-1F4E6,U+1F4EA-1F4ED,U+1F4F7,U+1F4F9-1F4FB,U+1F4FD-1F4FE,U+1F503,U+1F507-1F50B,U+1F50D,U+1F512-1F513,U+1F53E-1F54A,U+1F54F-1F5FA,U+1F610,U+1F650-1F67F,U+1F687,U+1F68D,U+1F691,U+1F694,U+1F698,U+1F6AD,U+1F6B2,U+1F6B9-1F6BA,U+1F6BC,U+1F6C6-1F6CF,U+1F6D3-1F6D7,U+1F6E0-1F6EA,U+1F6F0-1F6F3,U+1F6F7-1F6FC,U+1F700-1F7FF,U+1F800-1F80B,U+1F810-1F847,U+1F850-1F859,U+1F860-1F887,U+1F890-1F8AD,U+1F8B0-1F8BB,U+1F8C0-1F8C1,U+1F900-1F90B,U+1F93B,U+1F946,U+1F984,U+1F996,U+1F9E9,U+1FA00-1FA6F,U+1FA70-1FA7C,U+1FA80-1FA89,U+1FA8F-1FAC6,U+1FACE-1FADC,U+1FADF-1FAE9,U+1FAF0-1FAF8,U+1FB00-1FBFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/greek/wght/italic.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:400;src:url(/cf-fonts/v/roboto/5.2.10/latin-ext/wght/italic.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/latin-ext/wght/italic.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/greek-ext/wght/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/math/wght/italic.woff2);unicode-range:U+0302-0303,U+0305,U+0307-0308,U+0310,U+0312,U+0315,U+031A,U+0326-0327,U+032C,U+032F-0330,U+0332-0333,U+0338,U+033A,U+0346,U+034D,U+0391-03A1,U+03A3-03A9,U+03B1-03C9,U+03D1,U+03D5-03D6,U+03F0-03F1,U+03F4-03F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-208E,U+2090-209C,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231C-2321,U+2336-237A,U+237C,U+2395,U+239B-23B7,U+23D0,U+23DC-23E1,U+2474-2475,U+25AF,U+25B3,U+25B7,U+25BD,U+25C1,U+25CA,U+25CC,U+25FB,U+266D-266F,U+27C0-27FF,U+2900-2AFF,U+2B0E-2B11,U+2B30-2B4C,U+2BFE,U+3030,U+FF5B,U+FF5D,U+1D400-1D7FF,U+1EE00-1EEFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic-ext/wght/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic/wght/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/latin/wght/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/vietnamese/wght/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/symbols/wght/italic.woff2);unicode-range:U+0001-000C,U+000E-001F,U+007F-009F,U+20DD-20E0,U+20E2-20E4,U+2150-218F,U+2190,U+2192,U+2194-2199,U+21AF,U+21E6-21F0,U+21F3,U+2218-2219,U+2299,U+22C4-22C6,U+2300-243F,U+2440-244A,U+2460-24FF,U+25A0-27BF,U+2800-28FF,U+2921-2922,U+2981,U+29BF,U+29EB,U+2B00-2BFF,U+4DC0-4DFF,U+FFF9-FFFB,U+10140-1018E,U+10190-1019C,U+101A0,U+101D0-101FD,U+102E0-102FB,U+10E60-10E7E,U+1D2C0-1D2D3,U+1D2E0-1D37F,U+1F000-1F0FF,U+1F100-1F1AD,U+1F1E6-1F1FF,U+1F30D-1F30F,U+1F315,U+1F31C,U+1F31E,U+1F320-1F32C,U+1F336,U+1F378,U+1F37D,U+1F382,U+1F393-1F39F,U+1F3A7-1F3A8,U+1F3AC-1F3AF,U+1F3C2,U+1F3C4-1F3C6,U+1F3CA-1F3CE,U+1F3D4-1F3E0,U+1F3ED,U+1F3F1-1F3F3,U+1F3F5-1F3F7,U+1F408,U+1F415,U+1F41F,U+1F426,U+1F43F,U+1F441-1F442,U+1F444,U+1F446-1F449,U+1F44C-1F44E,U+1F453,U+1F46A,U+1F47D,U+1F4A3,U+1F4B0,U+1F4B3,U+1F4B9,U+1F4BB,U+1F4BF,U+1F4C8-1F4CB,U+1F4D6,U+1F4DA,U+1F4DF,U+1F4E3-1F4E6,U+1F4EA-1F4ED,U+1F4F7,U+1F4F9-1F4FB,U+1F4FD-1F4FE,U+1F503,U+1F507-1F50B,U+1F50D,U+1F512-1F513,U+1F53E-1F54A,U+1F54F-1F5FA,U+1F610,U+1F650-1F67F,U+1F687,U+1F68D,U+1F691,U+1F694,U+1F698,U+1F6AD,U+1F6B2,U+1F6B9-1F6BA,U+1F6BC,U+1F6C6-1F6CF,U+1F6D3-1F6D7,U+1F6E0-1F6EA,U+1F6F0-1F6F3,U+1F6F7-1F6FC,U+1F700-1F7FF,U+1F800-1F80B,U+1F810-1F847,U+1F850-1F859,U+1F860-1F887,U+1F890-1F8AD,U+1F8B0-1F8BB,U+1F8C0-1F8C1,U+1F900-1F90B,U+1F93B,U+1F946,U+1F984,U+1F996,U+1F9E9,U+1FA00-1FA6F,U+1FA70-1FA7C,U+1FA80-1FA89,U+1FA8F-1FAC6,U+1FACE-1FADC,U+1FADF-1FAE9,U+1FAF0-1FAF8,U+1FB00-1FBFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:500;src:url(/cf-fonts/v/roboto/5.2.10/greek/wght/italic.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/math/wght/italic.woff2);unicode-range:U+0302-0303,U+0305,U+0307-0308,U+0310,U+0312,U+0315,U+031A,U+0326-0327,U+032C,U+032F-0330,U+0332-0333,U+0338,U+033A,U+0346,U+034D,U+0391-03A1,U+03A3-03A9,U+03B1-03C9,U+03D1,U+03D5-03D6,U+03F0-03F1,U+03F4-03F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-208E,U+2090-209C,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231C-2321,U+2336-237A,U+237C,U+2395,U+239B-23B7,U+23D0,U+23DC-23E1,U+2474-2475,U+25AF,U+25B3,U+25B7,U+25BD,U+25C1,U+25CA,U+25CC,U+25FB,U+266D-266F,U+27C0-27FF,U+2900-2AFF,U+2B0E-2B11,U+2B30-2B4C,U+2BFE,U+3030,U+FF5B,U+FF5D,U+1D400-1D7FF,U+1EE00-1EEFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic-ext/wght/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/greek/wght/italic.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/greek-ext/wght/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/vietnamese/wght/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/latin/wght/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/symbols/wght/italic.woff2);unicode-range:U+0001-000C,U+000E-001F,U+007F-009F,U+20DD-20E0,U+20E2-20E4,U+2150-218F,U+2190,U+2192,U+2194-2199,U+21AF,U+21E6-21F0,U+21F3,U+2218-2219,U+2299,U+22C4-22C6,U+2300-243F,U+2440-244A,U+2460-24FF,U+25A0-27BF,U+2800-28FF,U+2921-2922,U+2981,U+29BF,U+29EB,U+2B00-2BFF,U+4DC0-4DFF,U+FFF9-FFFB,U+10140-1018E,U+10190-1019C,U+101A0,U+101D0-101FD,U+102E0-102FB,U+10E60-10E7E,U+1D2C0-1D2D3,U+1D2E0-1D37F,U+1F000-1F0FF,U+1F100-1F1AD,U+1F1E6-1F1FF,U+1F30D-1F30F,U+1F315,U+1F31C,U+1F31E,U+1F320-1F32C,U+1F336,U+1F378,U+1F37D,U+1F382,U+1F393-1F39F,U+1F3A7-1F3A8,U+1F3AC-1F3AF,U+1F3C2,U+1F3C4-1F3C6,U+1F3CA-1F3CE,U+1F3D4-1F3E0,U+1F3ED,U+1F3F1-1F3F3,U+1F3F5-1F3F7,U+1F408,U+1F415,U+1F41F,U+1F426,U+1F43F,U+1F441-1F442,U+1F444,U+1F446-1F449,U+1F44C-1F44E,U+1F453,U+1F46A,U+1F47D,U+1F4A3,U+1F4B0,U+1F4B3,U+1F4B9,U+1F4BB,U+1F4BF,U+1F4C8-1F4CB,U+1F4D6,U+1F4DA,U+1F4DF,U+1F4E3-1F4E6,U+1F4EA-1F4ED,U+1F4F7,U+1F4F9-1F4FB,U+1F4FD-1F4FE,U+1F503,U+1F507-1F50B,U+1F50D,U+1F512-1F513,U+1F53E-1F54A,U+1F54F-1F5FA,U+1F610,U+1F650-1F67F,U+1F687,U+1F68D,U+1F691,U+1F694,U+1F698,U+1F6AD,U+1F6B2,U+1F6B9-1F6BA,U+1F6BC,U+1F6C6-1F6CF,U+1F6D3-1F6D7,U+1F6E0-1F6EA,U+1F6F0-1F6F3,U+1F6F7-1F6FC,U+1F700-1F7FF,U+1F800-1F80B,U+1F810-1F847,U+1F850-1F859,U+1F860-1F887,U+1F890-1F8AD,U+1F8B0-1F8BB,U+1F8C0-1F8C1,U+1F900-1F90B,U+1F93B,U+1F946,U+1F984,U+1F996,U+1F9E9,U+1FA00-1FA6F,U+1FA70-1FA7C,U+1FA80-1FA89,U+1FA8F-1FAC6,U+1FACE-1FADC,U+1FADF-1FAE9,U+1FAF0-1FAF8,U+1FB00-1FBFF;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/cyrillic/wght/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Roboto';font-style:italic;font-weight:700;src:url(/cf-fonts/v/roboto/5.2.10/latin-ext/wght/italic.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}</style>
+									<style type="text/css">@font-face {font-family:'Roboto Condensed';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-condensed/5.2.8/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Roboto Condensed';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-condensed/5.2.8/greek/400/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Roboto Condensed';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-condensed/5.2.8/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Roboto Condensed';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-condensed/5.2.8/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Roboto Condensed';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-condensed/5.2.8/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Roboto Condensed';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-condensed/5.2.8/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Roboto Condensed';font-style:normal;font-weight:400;src:url(/cf-fonts/s/roboto-condensed/5.2.8/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}</style>
+									<style type="text/css">@font-face {font-family:'Montserrat';font-style:normal;font-weight:400;src:url(/cf-fonts/s/montserrat/5.2.8/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Montserrat';font-style:normal;font-weight:400;src:url(/cf-fonts/s/montserrat/5.2.8/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Montserrat';font-style:normal;font-weight:400;src:url(/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Montserrat';font-style:normal;font-weight:400;src:url(/cf-fonts/s/montserrat/5.2.8/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Montserrat';font-style:normal;font-weight:400;src:url(/cf-fonts/s/montserrat/5.2.8/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}</style>
+									<style type="text/css">@font-face {font-family:'IBM Plex Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/v/ibm-plex-sans/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'IBM Plex Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/v/ibm-plex-sans/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'IBM Plex Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/v/ibm-plex-sans/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'IBM Plex Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/v/ibm-plex-sans/5.2.8/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'IBM Plex Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/v/ibm-plex-sans/5.2.8/greek/wght/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'IBM Plex Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/v/ibm-plex-sans/5.2.8/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'IBM Plex Sans';font-style:normal;font-weight:700;src:url(/cf-fonts/v/ibm-plex-sans/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'IBM Plex Sans';font-style:normal;font-weight:700;src:url(/cf-fonts/v/ibm-plex-sans/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'IBM Plex Sans';font-style:normal;font-weight:700;src:url(/cf-fonts/v/ibm-plex-sans/5.2.8/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'IBM Plex Sans';font-style:normal;font-weight:700;src:url(/cf-fonts/v/ibm-plex-sans/5.2.8/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'IBM Plex Sans';font-style:normal;font-weight:700;src:url(/cf-fonts/v/ibm-plex-sans/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'IBM Plex Sans';font-style:normal;font-weight:700;src:url(/cf-fonts/v/ibm-plex-sans/5.2.8/greek/wght/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}</style>
+									<link href="https://fonts.google.com/specimen/Roboto?vfquery=Roboto" rel="stylesheet" media="screen">
+									<style type="text/css">@font-face {font-family:'Pathway Extreme';font-style:normal;font-weight:100;src:url(/cf-fonts/v/pathway-extreme/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Pathway Extreme';font-style:normal;font-weight:100;src:url(/cf-fonts/v/pathway-extreme/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Pathway Extreme';font-style:normal;font-weight:100;src:url(/cf-fonts/v/pathway-extreme/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Pathway Extreme';font-style:normal;font-weight:400;src:url(/cf-fonts/v/pathway-extreme/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Pathway Extreme';font-style:normal;font-weight:400;src:url(/cf-fonts/v/pathway-extreme/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Pathway Extreme';font-style:normal;font-weight:400;src:url(/cf-fonts/v/pathway-extreme/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Pathway Extreme';font-style:normal;font-weight:500;src:url(/cf-fonts/v/pathway-extreme/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Pathway Extreme';font-style:normal;font-weight:500;src:url(/cf-fonts/v/pathway-extreme/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Pathway Extreme';font-style:normal;font-weight:500;src:url(/cf-fonts/v/pathway-extreme/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Pathway Extreme';font-style:normal;font-weight:600;src:url(/cf-fonts/v/pathway-extreme/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Pathway Extreme';font-style:normal;font-weight:600;src:url(/cf-fonts/v/pathway-extreme/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Pathway Extreme';font-style:normal;font-weight:600;src:url(/cf-fonts/v/pathway-extreme/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}</style>
+					    	
+	        <!-- Bootstrap Stylesheet for MDE-->
+	        		
+		<link href="/custom/print.css" rel="stylesheet" media="print">
+
+				   <link rel="SHORTCUT ICON" href="images/Favicon.ico">
+				           			<script language="JavaScript" src="/js/prototype1.7/prototype.js"></script>
+					    <script type="text/javascript">
+		        (function($){ //create closure so we can safely use $ as alias for jQuery
+		            $(document).ready(function(){
+													var pathname = window.location.href;
+							if(pathname.search(/#/)!=-1) pathname=pathname.slice(0,pathname.search(/#/));
+							$('a').each(function () {
+							   var link = $(this).attr('href');
+							   if(typeof(link)!='undefined'){
+								   if (link.substr(0,1) == "#" ) {
+									   $(this).attr('href', pathname + link);
+								   }
+							   }
+							});
+						
+		            });
+		        })(jQuery);
+		    </script>
+		
+		
+		
+		
+		<script type ="text/javascript">
+	var mobile_hamburger_enabled = true;
+	var tablet_hamburger_enabled = true;
+	var main_navbar_selector = '#main-navbar .sf-menu.sf-js-enabled';
+	var window_width = jQuery(window).width(), window_height = jQuery(window).height();
+
+	function hamburgerServiceTrigger() {
+	    var size = window.getComputedStyle(document.body,':after').content.replace(/"|'/g, '');
+
+	    if (size == 'mobile' && !mobile_hamburger_enabled) {
+	        jQuery(main_navbar_selector).addClass('show');
+	    } else if (size == 'tablet' && !tablet_hamburger_enabled) {
+	        jQuery(main_navbar_selector).addClass('show');
+	    } else {
+	    	jQuery(main_navbar_selector).removeClass('show');
+	    }
+	}
+
+	jQuery(window).on('resize', function(){
+		if(jQuery(window).width() != window_width || jQuery(window).height() != window_height){
+			hamburgerServiceTrigger();
+		}
+	});
+
+	jQuery(main_navbar_selector).ready(function(){
+		setTimeout(function(){
+			hamburgerServiceTrigger();
+		}, 500);	
+	});
+</script>
+					
+					
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	</head>
+		<body  class="indexphp">
+		
+		<div class='container' id="designModeMsg" style="display:none;">
+			<div class="error" style='margin-top:10px;font-family:arial,sans-serif'>
+				You are viewing this design in preview mode. The design MUST be published to be live on your website.
+			</div>
+		</div>
+<link rel="modulepreload" href="/vite/dist/assets/progressive-enhancement-CULocRVH.js" />
+<link rel="modulepreload" href="/vite/dist/assets/preload-helper-wuiCFwmZ.js" />
+	<div id="wrapper" class="clearfix ">
+
+			<!-- ================================================
+================= Search Container ==================
+================================================= -->
+
+<div id="search-container" class="search-box-wrapper">
+    <div class="search-elements">
+        <div class="container">
+            <i class="fa fa-search"></i>
+            <div class="search-box">
+                <form action="search.php" class="search-form" role="search" method="GET" enctype="application/x-www-form-urlencoded">
+                    <input type="hidden" name="search" value="1">
+                    <input type="search" name="query" value="" title="Press Enter to submit your search" placeholder="Search…" class="search-field">
+                    <input type="submit" value="Search" class="search-submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div><!--/ #search-container -->    
+	<header id="header" class="">
+	<div id="header-wrap">
+        	<div class="clearfix">
+             		<div id="main-navbar-toggle"><div id="botnavbtn"><i class="fa fa-bars"></i></div></div>
+
+            		<!-- ============== Logo Brand Start ================ -->
+            		<div id="logo"><a href="https://healthcareitconnect.starchapter.com/"><img src="images/downloads/hitc_logo_revised_xlarge.png"></a></div>
+            		<!-- ============= Logo Brand End ============ -->
+            
+            		<!-- ============ Main Nav Start =============== -->
+			<div id="botnav">
+                		<nav id="main-navbar">
+                    			<ul id="nav" class=" sf-menu" style="touch-action: pan-y;">
+                        		<li class="toplevel nav1" ><a href="https://healthcareitconnect.com/index.php" class="active">Home</a></li><li class="toplevel nav2" ><a >About Us</a><ul class='sf-menu' style='display: none;'><li class="sublevel1"><a href="https://healthcareitconnect.com/Our_Story" >Our Story</a></li><li class="sublevel1"><a href="https://healthcareitconnect.com/FAQ" >FAQ</a></li></ul></li><li class="toplevel nav3" ><a >Events</a><ul class='sf-menu' style='display: none;'><li class="sublevel1"><a href="https://app.healthcareitconnect.com/event/2026-state-healthcare-it-connect-summit-or-event-portal" target="_blank" >2026 ANNUAL SUMMIT</a></li><li class="sublevel1"><a href="https://statehitconnect.app.swapcard.com/event/2025-state-hit-connect-community?trck=" target="_blank" >2025 ANNUAL SUMMIT</a></li><li class="sublevel1"><a href="https://statehitconnect.app.swapcard.com/event/aibootcamp?trck=" target="_blank" >2025 AI BOOTCAMP</a></li><li class="sublevel1"><a href="https://healthcareitconnect.com/2024_Summit" >2024 Annual Summit</a></li><li class="sublevel1"><a href="https://healthcareitconnect.com/AI_Bootcamp" >2024 AI Bootcamp</a></li><li class="sublevel1"><a href="https://app.healthcareitconnect.com/event/h-r-1-community-engagement-day" target="_blank" >Feb 23, 2026: H.R.1., Community Engagement Day</a></li></ul></li><li class="toplevel nav4" ><a >Resources</a><ul class='sf-menu' style='display: none;'><li class="sublevel1"><a href="https://healthcareitconnect.com/Sales_and_Media_2024_2025" >Sales and Media</a></li><li class="sublevel1"><a href="https://app.healthcareitconnect.com/event/2026-state-healthcare-it-connect-summit-or-event-portal/exhibitors/RXZlbnRWaWV3XzEyMDk5MDE=" target="_blank" >Community Sponsors</a></li><li class="sublevel1"><a href="https://healthcareitconnect.com/articles/" >On Demand Content (Archives)</a></li></ul></li><li class="toplevel nav5" ><a >Membership</a><ul class='sf-menu' style='display: none;'><li class="sublevel1"><a href="https://healthcareitconnect.com/directory.php" >Membership Directory</a></li><li class="sublevel1"><a href="https://healthcareitconnect.com/Join_Us" >Join Us</a></li></ul></li><li class="toplevel nav6" ><a href="https://healthcareitconnect.com/members.php" >Login/Member Area</a></li>
+
+           				<!-- =========== Icons Start ================ -->
+                        			<li class="hidden-xs hidden-sm hidden-md"><a class="no-hover">|</a></li>
+                        			<li id="search-toggle"><a href="#"><i class="fa fa-search"></i></a></li>
+                        			<li><a href="/members.php" id=""><i class="fa fa-lock"></i></a></li>
+           				<!-- =========== Icons End ================ -->
+                    			</ul>
+                		</nav>            	
+           		</div>
+			<!-- ============ Main Nav End =============== -->
+		</div>
+    	</div>
+</header>            <div class="subnav header-btm">
+            <div class='container'>
+                
+            <div class="content-container col_1col100 one last  containerLevel _1" id="middle-col-10">
+               <div class="inner-content" id="middle_column_td_10"><div><script src="js/jquery.flexslider-min.js"></script>
+<script type="text/javascript">
+	//jQuery(window).on('load', function() {
+	jQuery(document).ready(function() {
+	  jQuery('.flexslider').flexslider({
+		animation: "slide",
+		start: function(slider) {
+			jQuery('.flexslider').on('touchmove', function(el) {
+				slider.pause();
+	        	slider.play();
+			});
+		},
+		after: function(slider) {
+	        slider.pause();
+	        slider.play();
+	    }
+	  });
+	});
+</script>
+
+<div class="slider"  >
+    <div class="flexslider slider">
+      <ul class="slides">
+      		<!-- Image Only-->
+        <li>
+        	            <div class='content-area'>
+            	<div class="content-area" style="font-size: 1.3em;">
+<div class="leftcaption">
+<h2 style="margin: 0 0 20px 0; font-weight: 400;">Pre Confrence</h2>
+<h1 style="margin: 0 0 20px 0; font-weight: 600; line-height: 1.1em; font-size: 28px;">H.R.1, Community Engagement Day</h1>
+<p style="margin: 20px 0 25px; line-height: 30px;">Hyatt Regency New Orleans <br>February 23, 2026</p>
+<p><a class="sec-btn" href="https://app.healthcareitconnect.com/event/2026-state-healthcare-it-connect-summit-or-event-portal" target="_blank" rel="noopener" style="font-size: 0.8em; border-radius: 0; line-height: 32px; padding: 10px 25px;">View in archive | On Demand</a></p>
+</div>
+</div>            </div>
+                            	    <a href='#'><img src="images/gallery/Home_Page_2_0/Slider_1.png" /></a>
+                	</li>		<!-- Image Only-->
+        <li>
+        	            <div class='content-area'>
+            	<div class="content-area" style="font-size: 1.3em;">
+<div class="leftcaption">
+<h2 style="margin: 0 0 20px 0; font-weight: 400;">| 2026 State HIT Connect Summit</h2>
+<h2 style="font-weight: 400;">Track 1</h2>
+<h1 style="margin: 0 0 20px 0; font-weight: 600; line-height: 1.1em; font-size: 28px;">MES Procurement & Value-Based Systems Transformation</h1>
+<p style="margin: 20px 0 25px; line-height: 30px;">Balancing innovation, compliance, and readiness in Medicaid Enterprise Systems modernization</p>
+<p><a class="sec-btn" href="https://app.healthcareitconnect.com/event/2026-state-healthcare-it-connect-summit-or-event-portal" target="_blank" rel="noopener" style="font-size: 0.8em; border-radius: 0; line-height: 32px; padding: 10px 25px;">View in archive | On Demand</a></p>
+</div>
+</div>            </div>
+                            	    <a href='#'><img src="images/gallery/Home_Page_2_0/Track1_BG_Slider.jpg" /></a>
+                	</li>		<!-- Image Only-->
+        <li>
+        	            <div class='content-area'>
+            	<div class="content-area" style="font-size: 1.3em;">
+<div class="leftcaption">
+<h2 style="margin: 0 0 20px 0; font-weight: 400;">| 2026 State HIT Connect Summit</h2>
+<h2 style="font-weight: 400;">Track 2</h2>
+<h1 style="margin: 0 0 20px 0; font-weight: 600; line-height: 1.1em; font-size: 28px;">State Readiness for CMS Health Tech Ecosystem Implementation</h1>
+<p style="margin: 20px 0 25px; line-height: 30px;">Building the Infrastructure, Partnerships, and Governance to Operationalize a Connected HHS Ecosystem</p>
+<p><a class="sec-btn" href="https://app.healthcareitconnect.com/event/2026-state-healthcare-it-connect-summit-or-event-portal" target="_blank" rel="noopener" style="font-size: 0.8em; border-radius: 0; line-height: 32px; padding: 10px 25px;">View in archive | On Demand</a></p>
+</div>
+</div>            </div>
+                            	    <a href='#'><img src="images/gallery/Home_Page_2_0/Track2_BG_Slider.jpg" /></a>
+                	</li>		<!-- Image Only-->
+        <li>
+        	            <div class='content-area'>
+            	<div class="content-area" style="font-size: 1.3em;">
+<div class="leftcaption">
+<h2 style="margin: 0 0 20px 0; font-weight: 400;">| 2026 State HIT Connect Summit</h2>
+<h2 style="font-weight: 400;">Track 3</h2>
+<h1 style="margin: 0 0 20px 0; font-weight: 600; line-height: 1.1em; font-size: 28px;">Person-Centered Intelligence & Enterprise Data Enablement</h1>
+<p style="margin: 20px 0 25px; line-height: 30px;">Activating integrated data to support whole-person care and accountability</p>
+<p><a class="sec-btn" href="https://app.healthcareitconnect.com/event/2026-state-healthcare-it-connect-summit-or-event-portal" target="_blank" rel="noopener" style="font-size: 0.8em; border-radius: 0; line-height: 32px; padding: 10px 25px;">View in archive | On Demand </a></p>
+</div>
+</div>            </div>
+                            	    <a href='#'><img src="images/gallery/Home_Page_2_0/Track3_BG_Slider.jpg" /></a>
+                	</li>		<!-- Image Only-->
+        <li>
+        	            <div class='content-area'>
+            	<div class="content-area" style="font-size: 1.3em;">
+<div class="leftcaption">
+<h2 style="margin: 0 0 20px 0; font-weight: 400;">| 2026 State HIT Connect Summit</h2>
+<h2 style="font-weight: 400;">Track 4</h2>
+<h1 style="margin: 0 0 20px 0; font-weight: 600; line-height: 1.1em; font-size: 28px;">Trust, Program Integrity & Responsible Data Use</h1>
+<p style="margin: 20px 0 25px; line-height: 30px;">Building resilient systems through transparency, safeguards, and shared accountability</p>
+<p><a class="sec-btn" href="https://app.healthcareitconnect.com/event/2026-state-healthcare-it-connect-summit-or-event-portal" target="_blank" rel="noopener" style="font-size: 0.8em; border-radius: 0; line-height: 32px; padding: 10px 25px;">View in archive | On Demand</a></p>
+</div>
+</div>            </div>
+                            	    <a href='#'><img src="images/gallery/Home_Page_2_0/Track4-Slider.jpg" /></a>
+                	</li>		<!-- Image Only-->
+        <li>
+        	            <div class='content-area'>
+            	<div class="content-area" style="font-size: 1.3em;">
+<div class="leftcaption">
+<h2 style="margin: 0 0 20px 0; font-weight: 400;">| 2026 State HIT Connect Summit</h2>
+<h2 style="font-weight: 400;">Track 5</h2>
+<h1 style="margin: 0 0 20px 0; font-weight: 600; line-height: 1.1em; font-size: 28px;">Modernizing Marketplaces, Managed Care &amp; Benefit Portability</h1>
+<p style="margin: 20px 0 25px; line-height: 30px;">Designing integrated coverage systems that prioritize continuity and choice</p>
+<p><a class="sec-btn" href="https://app.healthcareitconnect.com/event/2026-state-healthcare-it-connect-summit-or-event-portal" target="_blank" rel="noopener" style="font-size: 0.8em; border-radius: 0; line-height: 32px; padding: 10px 25px;">Register to Attend</a></p>
+</div>
+</div>            </div>
+                            	    <a href='#'><img src="images/gallery/Home_Page_2_0/Track5_BG_Slider.jpg" /></a>
+                	</li>      </ul>
+    </div>
+  </div>
+ </div>
+
+               </div>
+            </div>
+            <div class="clear"></div>
+            <div class="content-container col_1col100 one last  containerLevel _1" id="middle-col-2993">
+               <div class="inner-content" id="middle_column_td_2993"><div class="col-md-6 pl-0 pr-0">
+<h2 style="margin-bottom: .5em;">Welcome to the State Healthcare IT Connect Community</h2>
+<p><a class="sec-btn" style="width: 100%; text-align: center;" href="/members.php">Sign In</a></p>
+<p><a href="https://healthcareitconnect.starchapter.com/Join_Us___Wire_Frame_03">Not yet a member? Join now.</a></p>
+</div>
+
+               </div>
+            </div>
+            <div class="clear"></div>            </div>
+        </div>
+        <div class='content'>
+        <div class='container'>
+            
+            <div class="content-container col_1col100 one last  containerLevel _1" id="middle-col-27550">
+               <div class="inner-content" id="middle_column_td_27550">
+            <div class="content-container col_2col50 one containerLevel _2" id="left-col-23047">
+               <div class="inner-content" id="left_column_td_23047"><h4><span style="font-weight: 400;">16th Annual</span> <br>2026 State HIT Connect Summit</h4>
+<h1 style="margin-bottom: 0; font-size: 2em; margin: 0 0 10px 0;"><span style="font-weight: 400;">HHS Ecosystem Transformation: </span><br><span>Interoperable. <br>Accountable. <br>Ready.</span></h1>
+<p style="font-size: 1.3em;">February 23-26 | Hyatt Regency, New Orleans</p>
+<p><a class="sec-btn" href="https://app.healthcareitconnect.com/event/2026-state-healthcare-it-connect-summit-or-event-portal" target="_blank" rel="noopener">View in archive | On Demand </a></p>
+<p><a class="sec-btn" href="https://www.hyatt.com/en-US/group-booking/MSYRN/G-HT01" target="_blank" rel="noopener">Hyatt Regency NOLA | Become a Member </a></p>
+
+               </div>
+            </div>
+            
+            <div class="content-container col_2col50 two last  containerLevel _2" id="right-col-23047">
+               <div class="inner-content" id="right_column_td_23047"><p><img src="images/summi-right-imgt.png" width="432" height="432" alt=""></p>
+
+               </div>
+            </div>
+            <div class="clear"></div>
+               </div>
+            </div>
+            <div class="clear"></div><div class="alt-container"><div class="container">
+            <div class="content-container col_1col100 one last  containerLevel _1" id="middle-col-21297">
+               <div class="inner-content" id="middle_column_td_21297">
+            <div class="content-container col_1col100 one last  containerLevel _2" id="middle-col-24575">
+               <div class="inner-content" id="middle_column_td_24575"><p style="width: 500px; max-width: 100%;">Now in its 16th year, the State HIT Connect Conference remains a trusted national platform for state and federal leaders, technologists, policymakers, and innovators to share progress, examine lessons learned, and align strategies that deliver smarter, more equitable health and human services.</p>
+<h3>2026 Tracks Include</h3>
+
+               </div>
+            </div>
+            <div class="clear"></div>
+            <div class="content-container col_3col33 one containerLevel _2" id="left-col-22891">
+               <div class="inner-content" id="left_column_td_22891"><h2 style="font-size: 1.5em;"><strong>Track 1</strong></h2>
+<p><strong>MES Procurement &amp; Value-Based Systems Transformation</strong></p>
+<p>Balancing innovation, compliance, and readiness in Medicaid Enterprise Systems modernization</p>
+
+               </div>
+            </div>
+            
+            <div class="content-container col_3col33 two containerLevel _2" id="middle-col-22891">
+               <div class="inner-content" id="middle_column_td_22891"><h2 style="font-size: 1.5em;"><strong>Track 2</strong></h2>
+<p><strong>State Readiness for CMS Health Tech Ecosystem Implementation</strong></p>
+<p>Building the Infrastructure, Partnerships, and Governance to Operationalize a Connected HHS Ecosystem</p>
+
+               </div>
+            </div>
+            
+            <div class="content-container col_3col33 three last  containerLevel _2" id="right-col-22891">
+               <div class="inner-content" id="right_column_td_22891"><h2 style="font-size: 1.5em;"><strong>Track 3</strong></h2>
+<p><strong>Person-Centered Intelligence &amp; Enterprise Data Enablement</strong></p>
+<p>Activating integrated data to support whole-person care and accountability</p>
+
+               </div>
+            </div>
+            <div class="clear"></div>
+            <div class="content-container col_3col33 one containerLevel _2" id="left-col-22892">
+               <div class="inner-content" id="left_column_td_22892"><h2 style="font-size: 1.5em;"><strong>Track 4</strong></h2>
+<p><strong>Trust, Program Integrity &amp; Responsible Data Use</strong></p>
+<p>Building resilient systems through transparency, safeguards, and shared accountability</p>
+
+               </div>
+            </div>
+            
+            <div class="content-container col_3col33 two containerLevel _2" id="middle-col-22892">
+               <div class="inner-content" id="middle_column_td_22892"><h2 style="font-size: 1.5em;"><strong>Track 5</strong></h2>
+<p><strong>Modernizing Marketplaces, Managed Care &amp; Benefit Portability</strong></p>
+<p>Designing integrated coverage systems that prioritize continuity and choice</p>
+
+               </div>
+            </div>
+            
+            <div class="content-container col_3col33 three last  containerLevel _2" id="right-col-22892">
+               <div class="inner-content" id="right_column_td_22892"><h2 style="font-size: 1.5em;"><strong>Track 6</strong></h2>
+<p><strong>AI-Powered Transformation &amp; Intelligent Automation</strong></p>
+<p>Operationalizing AI and automation to enhance capacity and reduce burden</p>
+
+               </div>
+            </div>
+            <div class="clear"></div><div></div>
+
+               </div>
+            </div>
+            </div></div><div class="clear"></div>
+            <div class="content-container col_2col50 one containerLevel _1" id="left-col-28520">
+               <div class="inner-content" id="left_column_td_28520"><h1 style="font-size: 3.5em; font-weight: 400; margin: 30px 0 30px 0;">H.R.1, Community Engagement Day</h1>
+<p style="font-size: 1.5em;">February 23rd | Hyatt Regency New Orleans</p>
+<p style="font-size: 1.8em;">This immersive, in-person&#8211;only convening brings together the nation&#8217;s HHS modernization community for a full day of demonstrations, CMS roundtables, peer collaboration, and solution-focused sessions designed to help agencies accelerate readiness, strengthen cross-sector coordination, and prepare for community engagement go-live.</p>
+
+               </div>
+            </div>
+            
+            <div class="content-container col_2col50 two last  containerLevel _1" id="right-col-28520">
+               <div class="inner-content" id="right_column_td_28520"><p><img src="images/hri02.png" width="560" height="" alt=""></p>
+<p style="font-size: 1.4em;">State HIT Connect is proud to announce the 2026 pre-conference program, H.R. 1 Community Engagement Day, convening federal and state leaders, Medicaid directors, workforce and human services agencies, and technology partners to explore the operational and systems readiness of implementing new community engagement requirements introduced under H.R. 1 (One Big Beautiful Bill Act).</p>
+<p style="display: flex; gap: 20px;"><a class="sec-btn" href="https://app.healthcareitconnect.com/event/h-r-1-community-engagement-day" target="_blank" rel="noopener">Learn More</a> <a class="sec-btn" href="https://app.healthcareitconnect.com/event/2026-state-healthcare-it-connect-summit-or-event-portal" target="_blank" rel="noopener">View in archive | On Demand</a></p>
+
+               </div>
+            </div>
+            <div class="clear"></div>
+            <div class="content-container col_1col100 one last  containerLevel _1" id="middle-col-27871">
+               <div class="inner-content" id="middle_column_td_27871"><h2 style="text-align: center;"><span style="color: #7e8c8d;">2026 State HIT Connect Community Platinum Sponsors</span></h2>
+<p><div id='sponsorTicker_1'><ul class="marquee">
+<li><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a></li>
+</ul></div><script>
+    function replaceSponsorImageTickerElements1() {
+            var id_img_array = ['Deloitte_3.jpg','equifax.png'];
+            var id_link_array = ['ad-click.php?id=11&source=rotator','ad-click.php?id=13&source=rotator'];
+            var id_target_array = ['_self','_self'];
+
+            for (let i = id_img_array.length - 1; i >= 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [id_img_array[i], id_img_array[j]] = [id_img_array[j], id_img_array[i]];
+                [id_link_array[i], id_link_array[j]] = [id_link_array[j], id_link_array[i]];
+                [id_target_array[i], id_target_array[j]] = [id_target_array[j], id_target_array[i]];
+            }
+
+
+            var container = document.getElementById("sponsorTicker_1");
+            if (!container) return;
+            var links = container.querySelectorAll("a");
+            links.forEach(function(link, index) {
+                var img = link.querySelector("img");
+                if (img) {
+                    img.src = 'https://healthcareitconnect.starchapter.com/images/sponsors/' + id_img_array[index];
+                    link.href = id_link_array[index];
+                    link.target = id_target_array[index];
+                }
+            });
+    }
+    jQuery(document).ready(function(){
+        replaceSponsorImageTickerElements1();
+    });
+
+</script>
+<style>
+    .marquee {
+        white-space:nowrap;
+        overflow:hidden;
+        list-style-type:none;
+
+        /*	width:50%;
+            margin:0 auto;*/
+    }
+    .marquee > li {
+        white-space:nowrap;
+        display:inline;
+        width:auto;
+    }
+    .marquee a {
+        text-decoration:none;
+    }
+    /*.marquee img {*/
+    /*    margin-right:10px;*/
+    /*}*/
+</style>
+
+</p>
+
+               </div>
+            </div>
+            <div class="clear"></div>
+            <div class="content-container col_1col100 one last  containerLevel _1" id="middle-col-27909">
+               <div class="inner-content" id="middle_column_td_27909"><h2 style="text-align: center;"><span style="color: #7e8c8d;">2026 State HIT Connect Community Gold Sponsors</span></h2>
+<p><div id='sponsorTicker_2'><ul class="marquee">
+<li><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a></li>
+</ul></div><script>
+    function replaceSponsorImageTickerElements2() {
+            var id_img_array = ['optum.png','leidos.png','progress.png','ey_logo.jpg','accenture.png','socure_logo.png','Acentra_Health_RGB_Kelly_Green_and_Oxford_Green_2.png','exhibitor_logo.png','CITZ3N_logo.png','gainwell_2.jpg','google.png','salesforce_2.png','conduent.jpg'];
+            var id_link_array = ['ad-click.php?id=4&source=rotator','ad-click.php?id=81&source=rotator','ad-click.php?id=5&source=rotator','ad-click.php?id=101&source=rotator','ad-click.php?id=8&source=rotator','ad-click.php?id=105&source=rotator','ad-click.php?id=25&source=rotator','ad-click.php?id=106&source=rotator','ad-click.php?id=107&source=rotator','ad-click.php?id=48&source=rotator','ad-click.php?id=116&source=rotator','ad-click.php?id=70&source=rotator','ad-click.php?id=51&source=rotator'];
+            var id_target_array = ['_self','_self','_self','_self','_self','_self','_self','_self','_self','_self','_self','_self','_self'];
+
+            for (let i = id_img_array.length - 1; i >= 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [id_img_array[i], id_img_array[j]] = [id_img_array[j], id_img_array[i]];
+                [id_link_array[i], id_link_array[j]] = [id_link_array[j], id_link_array[i]];
+                [id_target_array[i], id_target_array[j]] = [id_target_array[j], id_target_array[i]];
+            }
+
+
+            var container = document.getElementById("sponsorTicker_2");
+            if (!container) return;
+            var links = container.querySelectorAll("a");
+            links.forEach(function(link, index) {
+                var img = link.querySelector("img");
+                if (img) {
+                    img.src = 'https://healthcareitconnect.starchapter.com/images/sponsors/' + id_img_array[index];
+                    link.href = id_link_array[index];
+                    link.target = id_target_array[index];
+                }
+            });
+    }
+    jQuery(document).ready(function(){
+        replaceSponsorImageTickerElements2();
+    });
+
+</script>
+<style>
+    .marquee {
+        white-space:nowrap;
+        overflow:hidden;
+        list-style-type:none;
+
+        /*	width:50%;
+            margin:0 auto;*/
+    }
+    .marquee > li {
+        white-space:nowrap;
+        display:inline;
+        width:auto;
+    }
+    .marquee a {
+        text-decoration:none;
+    }
+    /*.marquee img {*/
+    /*    margin-right:10px;*/
+    /*}*/
+</style>
+
+</p>
+
+               </div>
+            </div>
+            <div class="clear"></div>
+            <div class="content-container col_1col100 one last  containerLevel _1" id="middle-col-27910">
+               <div class="inner-content" id="middle_column_td_27910"><h2 style="text-align: center;"><span style="color: #7e8c8d;">2026 State HIT Connect Community Silver Sponsors.</span></h2>
+<p><div id='sponsorTicker_3'><ul class="marquee">
+<li><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a></li>
+</ul></div><script>
+    function replaceSponsorImageTickerElements3() {
+            var id_img_array = ['gdit_sht_lg_rgb_gry.jpg','northhighland.png','edifecslogo.png','csg.png','innovaccer.png','GlobalLogo_NTTDATA_RGB_Future_Blue_1_.png','Genesys.jpg','Infor_logo.png','steadyiq.png','truv.jpg','configure-tek.jpg'];
+            var id_link_array = ['ad-click.php?id=7&source=rotator','ad-click.php?id=28&source=rotator','ad-click.php?id=23&source=rotator','ad-click.php?id=22&source=rotator','ad-click.php?id=63&source=rotator','ad-click.php?id=57&source=rotator','ad-click.php?id=125&source=rotator','ad-click.php?id=111&source=rotator','ad-click.php?id=79&source=rotator','ad-click.php?id=126&source=rotator','ad-click.php?id=127&source=rotator'];
+            var id_target_array = ['_self','_self','_self','_self','_self','_self','_self','_self','_self','_self','_self'];
+
+            for (let i = id_img_array.length - 1; i >= 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [id_img_array[i], id_img_array[j]] = [id_img_array[j], id_img_array[i]];
+                [id_link_array[i], id_link_array[j]] = [id_link_array[j], id_link_array[i]];
+                [id_target_array[i], id_target_array[j]] = [id_target_array[j], id_target_array[i]];
+            }
+
+
+            var container = document.getElementById("sponsorTicker_3");
+            if (!container) return;
+            var links = container.querySelectorAll("a");
+            links.forEach(function(link, index) {
+                var img = link.querySelector("img");
+                if (img) {
+                    img.src = 'https://healthcareitconnect.starchapter.com/images/sponsors/' + id_img_array[index];
+                    link.href = id_link_array[index];
+                    link.target = id_target_array[index];
+                }
+            });
+    }
+    jQuery(document).ready(function(){
+        replaceSponsorImageTickerElements3();
+    });
+
+</script>
+<style>
+    .marquee {
+        white-space:nowrap;
+        overflow:hidden;
+        list-style-type:none;
+
+        /*	width:50%;
+            margin:0 auto;*/
+    }
+    .marquee > li {
+        white-space:nowrap;
+        display:inline;
+        width:auto;
+    }
+    .marquee a {
+        text-decoration:none;
+    }
+    /*.marquee img {*/
+    /*    margin-right:10px;*/
+    /*}*/
+</style>
+
+</p>
+
+               </div>
+            </div>
+            <div class="clear"></div>
+            <div class="content-container col_1col100 one last  containerLevel _1" id="middle-col-27911">
+               <div class="inner-content" id="middle_column_td_27911"><h2 style="text-align: center;"><span style="color: #7e8c8d;">2026 State HIT Connect Community Bronze Sponsors</span></h2>
+<p><div id='sponsorTicker_4'><ul class="marquee">
+<li><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a></li>
+</ul></div><script>
+    function replaceSponsorImageTickerElements4() {
+            var id_img_array = ['aws.jpg','public_knowledeg_2.jpg','Elyon_Enterprise_logo.png','veratologo.png','Healthy_Together_logo.jpg','HSITAG_logo.png','adobe.png','berry-dunn.png','celonis.png','find-help.png','TEKsystems_logo_new_tag_CMYK.jpg','imo-health.png','simpligov.png','intersystems.png','argyle.png','curam.jpg'];
+            var id_link_array = ['ad-click.php?id=56&source=rotator','ad-click.php?id=35&source=rotator','ad-click.php?id=109&source=rotator','ad-click.php?id=86&source=rotator','ad-click.php?id=77&source=rotator','ad-click.php?id=115&source=rotator','ad-click.php?id=117&source=rotator','ad-click.php?id=118&source=rotator','ad-click.php?id=119&source=rotator','ad-click.php?id=120&source=rotator','ad-click.php?id=72&source=rotator','ad-click.php?id=121&source=rotator','ad-click.php?id=122&source=rotator','ad-click.php?id=123&source=rotator','ad-click.php?id=124&source=rotator','ad-click.php?id=128&source=rotator'];
+            var id_target_array = ['_self','_self','_self','_self','_self','_self','_self','_self','_self','_self','_self','_self','_self','_self','_self','_self'];
+
+            for (let i = id_img_array.length - 1; i >= 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [id_img_array[i], id_img_array[j]] = [id_img_array[j], id_img_array[i]];
+                [id_link_array[i], id_link_array[j]] = [id_link_array[j], id_link_array[i]];
+                [id_target_array[i], id_target_array[j]] = [id_target_array[j], id_target_array[i]];
+            }
+
+
+            var container = document.getElementById("sponsorTicker_4");
+            if (!container) return;
+            var links = container.querySelectorAll("a");
+            links.forEach(function(link, index) {
+                var img = link.querySelector("img");
+                if (img) {
+                    img.src = 'https://healthcareitconnect.starchapter.com/images/sponsors/' + id_img_array[index];
+                    link.href = id_link_array[index];
+                    link.target = id_target_array[index];
+                }
+            });
+    }
+    jQuery(document).ready(function(){
+        replaceSponsorImageTickerElements4();
+    });
+
+</script>
+<style>
+    .marquee {
+        white-space:nowrap;
+        overflow:hidden;
+        list-style-type:none;
+
+        /*	width:50%;
+            margin:0 auto;*/
+    }
+    .marquee > li {
+        white-space:nowrap;
+        display:inline;
+        width:auto;
+    }
+    .marquee a {
+        text-decoration:none;
+    }
+    /*.marquee img {*/
+    /*    margin-right:10px;*/
+    /*}*/
+</style>
+
+</p>
+
+               </div>
+            </div>
+            <div class="clear"></div>
+            <div class="content-container col_1col100 one last  containerLevel _1" id="middle-col-27912">
+               <div class="inner-content" id="middle_column_td_27912"><h2 style="text-align: center;"><span style="color: #7e8c8d;">2026 State HIT Corporate Community Sponsors</span></h2>
+<p><div id='sponsorTicker_5'><ul class="marquee">
+<li><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a><a href="#" target="_blank"><img src="images/sponsors/" alt="" border="0" /></a></li>
+</ul></div><script>
+    function replaceSponsorImageTickerElements5() {
+            var id_img_array = ['MedImpact_Gray_Logo_Web_S.png','beam.jpg','kpmg.jpg','kla.png','mirza.jpg','smarty.jpg','sol.jpg','stackai.png'];
+            var id_link_array = ['ad-click.php?id=85&source=rotator','ad-click.php?id=129&source=rotator','ad-click.php?id=46&source=rotator','ad-click.php?id=83&source=rotator','ad-click.php?id=130&source=rotator','ad-click.php?id=131&source=rotator','ad-click.php?id=132&source=rotator','ad-click.php?id=133&source=rotator'];
+            var id_target_array = ['_self','_self','_self','_self','_self','_self','_self','_self'];
+
+            for (let i = id_img_array.length - 1; i >= 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [id_img_array[i], id_img_array[j]] = [id_img_array[j], id_img_array[i]];
+                [id_link_array[i], id_link_array[j]] = [id_link_array[j], id_link_array[i]];
+                [id_target_array[i], id_target_array[j]] = [id_target_array[j], id_target_array[i]];
+            }
+
+
+            var container = document.getElementById("sponsorTicker_5");
+            if (!container) return;
+            var links = container.querySelectorAll("a");
+            links.forEach(function(link, index) {
+                var img = link.querySelector("img");
+                if (img) {
+                    img.src = 'https://healthcareitconnect.starchapter.com/images/sponsors/' + id_img_array[index];
+                    link.href = id_link_array[index];
+                    link.target = id_target_array[index];
+                }
+            });
+    }
+    jQuery(document).ready(function(){
+        replaceSponsorImageTickerElements5();
+    });
+
+</script>
+<style>
+    .marquee {
+        white-space:nowrap;
+        overflow:hidden;
+        list-style-type:none;
+
+        /*	width:50%;
+            margin:0 auto;*/
+    }
+    .marquee > li {
+        white-space:nowrap;
+        display:inline;
+        width:auto;
+    }
+    .marquee a {
+        text-decoration:none;
+    }
+    /*.marquee img {*/
+    /*    margin-right:10px;*/
+    /*}*/
+</style>
+
+</p>
+
+               </div>
+            </div>
+            <div class="clear"></div><div class="alt-container"><div class="container">
+            <div class="content-container col_2col50 one containerLevel _1" id="left-col-20782">
+               <div class="inner-content" id="left_column_td_20782"><p style="margin: 0 0 0 -8px;"><img src="images/Blue.png" alt="" width="35" height="70"></p>
+<p>State Healthcare IT Connect Community <br>Membership</p>
+<h2 style="text-transform: none;">Join the State Healthcare IT Connect Community and gain access to expertise and information focused on helping your state, and all of the nation's stakeholders, succeed.</h2>
+<p><a class="sec-btn-community" href="https://healthcareitconnect.com/Join_Us">Learn More</a></p>
+
+               </div>
+            </div>
+            
+            <div class="content-container col_2col50 two last  containerLevel _1" id="right-col-20782">
+               <div class="inner-content" id="right_column_td_20782"><p><img src="images/member-ship2025.png" width="528" height="527" alt=""></p>
+
+               </div>
+            </div>
+            </div></div><div class="clear"></div>
+            <div class="content-container col_1col100 one last  containerLevel _1" id="middle-col-7661">
+               <div class="inner-content" id="middle_column_td_7661">
+               </div>
+            </div>
+            <div class="clear"></div>
+            <div class='clear'></div>
+        </div>
+    </div>
+
+    <div class="footer">
+            <div class='subnav footer-top'>
+            <div class='container'>
+                
+            <div class="content-container col_2col50 one containerLevel _1" id="left-col-2007">
+               <div class="inner-content" id="left_column_td_2007">
+            <div class="content-container col_3col33 one containerLevel _2" id="left-col-2013">
+               <div class="inner-content" id="left_column_td_2013"><h3>Content</h3>
+<p><a href="https://healthcareitconnect.com/Events">Event Schedule</a> <br><a href="https://healthcareitconnect.com/articles/">Event Archives</a></p>
+
+               </div>
+            </div>
+            
+            <div class="content-container col_3col33 two containerLevel _2" id="middle-col-2013">
+               <div class="inner-content" id="middle_column_td_2013"><h3>Information</h3>
+<p><a href="https://healthcareitconnect.com/Join_Us">Membership</a></p>
+
+               </div>
+            </div>
+            
+            <div class="content-container col_3col33 three last  containerLevel _2" id="right-col-2013">
+               <div class="inner-content" id="right_column_td_2013">
+               </div>
+            </div>
+            <div class="clear"></div>
+               </div>
+            </div>
+            
+            <div class="content-container col_2col50 two last  containerLevel _1" id="right-col-2007">
+               <div class="inner-content" id="right_column_td_2007">
+            <div class="content-container col_3col33 one containerLevel _2" id="left-col-2442">
+               <div class="inner-content" id="left_column_td_2442"><h3>Services</h3>
+<p><a href="https://healthcareitconnect.starchapter.com/content.php?page=Partner_Resources">Community Partners</a><br><a href="https://healthcareitconnect.starchapter.com/members.php">Manage My Account</a></p>
+
+               </div>
+            </div>
+            
+            <div class="content-container col_3col33 two containerLevel _2" id="middle-col-2442">
+               <div class="inner-content" id="middle_column_td_2442"><h3>About</h3>
+<p><a href="https://healthcareitconnect.starchapter.com/content.php?page=terms">Terms of Use</a><br><a href="https://healthcareitconnect.starchapter.com/content.php?page=privacy">Privacy Policy</a><br><a href="https://healthcareitconnect.starchapter.com/form.php?form_id=13">Contact Us</a></p>
+
+               </div>
+            </div>
+            
+            <div class="content-container col_3col33 three last  containerLevel _2" id="right-col-2442">
+               <div class="inner-content" id="right_column_td_2442"><p><a href="https://www.linkedin.com/company/healthcare-it-connect/mycompany/"><img src="images/linkedin_blue.jpg" alt="" width="50" height="51"></a>&#160;<a href="https://twitter.com/HealthITCONNECT"><img src="images/unnamed_2.png" alt="" width="50" height="51"></a></p>
+<p>&#160;</p>
+
+               </div>
+            </div>
+            <div class="clear"></div>
+               </div>
+            </div>
+            <div class="clear"></div>
+            <div class="content-container col_1col100 one last  containerLevel _1" id="middle-col-1917">
+               <div class="inner-content" id="middle_column_td_1917">
+               </div>
+            </div>
+            <div class="clear"></div>            </div>
+        </div>
+    
+<div id="footer">
+<div class="container">
+<div class="content-container col_2col50">
+<div id="footer_cprt">
+<p>&copy; 2026 Healthcare IT Connect All rights reserved.</p>
+</div>
+</div>
+<div class="content-container col_2col50 last">
+<ul id="footer_nav"><li><a href="https://healthcareitconnect.com/adminarea/index.php" class="footnav">Admin</a></li></ul>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div class="content-container col_1col100">
+<div class="credit"></div>
+</div>
+</div>
+</div>
+			<form action='index.php' name='csform'  method='post'>
+			 	<input type='hidden' name='p' value='' />
+			</form>
+		</div>
+
+	
+	<!-- ============================================
+    ============== Vendor JavaScripts ===============
+    ============================================= -->
+
+    <script type="text/javascript" src="custom/assets/js/vendor/bootstrap.min.js"></script>
+    <script type="text/javascript" src="custom/assets/js/vendor/superfish/js/superfish.min.js"></script>    <script type="text/javascript" src="custom/assets/js/vendor/jRespond/jRespond.min.js"></script>
+<!--    <script type="text/javascript" src="custom/assets/js/vendor/smoothscroll/SmoothScroll.js"></script>-->
+    <script type="text/javascript" src="custom/assets/js/vendor/appear/jquery.appear.js"></script>
+    <script type="text/javascript" src="custom/assets/js/vendor/stellar/jquery.stellar.min.js"></script>
+<!--    <script type="text/javascript" src="custom/assets/js/vendor/flexslider/jquery.flexslider-min.js"></script>-->
+    <script type="text/javascript" src="custom/assets/js/vendor/magnific/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="custom/assets/js/vendor/owl/owl.carousel.min.js"></script>
+    <!--<script type="text/javascript" src="custom/assets/js/vendor/jflickrfeed/jflickrfeed.min.js"></script>-->
+    <!--<script type="text/javascript" src="custom/assets/js/vendor/tweet-js/jquery.tweet.min.js"></script>-->
+    <script type="text/javascript" src="custom/assets/js/vendor/countTo/jquery.countTo.js"></script>
+    <script type="text/javascript" src="custom/assets/js/vendor/morrisjs/raphael-min.js"></script>
+    <script type="text/javascript" src="custom/assets/js/vendor/morrisjs/morris.min.js"></script>
+    <script type="text/javascript" src="js/jqfunctions.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript" src="js/jquery.tipsy.js"></script>
+
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+    <!--<script type="text/javascript" src="custom/assets/js/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>-->
+    <!--<script type="text/javascript" src="custom/assets/js/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>-->
+
+    <!-- animsition js -->
+    <script src="custom/assets/js/vendor/animsition/js/jquery.animsition.min.js"></script>
+
+    	<!-- Minovate Global js -->
+    <script type="text/javascript" src="custom/assets/js/global.js"></script>
+
+
+    	    <script language="JavaScript" src="js/v2/prototype.1.7.2.js"></script>
+	    <!--<script language="JavaScript" src="js/v2/prototype.1.7.2.min.js"></script>-->
+    
+    
+        	    	<script type="text/javascript">
+			(function($){
+				$(document).ready(function(){
+					$("#member_login").attr("href", "").attr("data-toggle", "modal").attr("data-target", "#MemberLoginModal");
+		        });
+		    })(jQuery);
+		</script>
+
+	    <div class="modal fade" id="MemberLoginModal" tabindex="-1" role="dialog" aria-labelledby="MemberLoginModalLabel">
+			<div class="modal-dialog" role="document">
+	    		<div class="modal-content">
+	      			<div class="modal-header">
+	        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        			<h4 class="modal-title" id="MemberLoginModalLabel">Member Login</h4>
+	      			</div>
+	      			<div class="modal-body">
+	        			<div class='login-box new-form'>
+			<form name='login' action='/index.php' method='post'>
+			<input type='hidden' name='formAction' value='login'>
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td colspan='2'><h3><p>Members Log In</p></h3></td>
+				</tr>
+				<tr>
+					<td colspan='2'>
+						<label>Healthcare IT Connect ID:</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan='2'><input autocomplete="off" type="text" name="username" class='formfield text-input'></td>
+				</tr>
+				<tr>
+					<td colspan='2'><label>Password:</label></td>
+				</tr>
+				<tr>
+					<td colspan='2'><input autocomplete="off" type="password" name="password" autocomplete="off" class='formfield text-input'></td>
+				</tr>
+				<tr>
+					<td>
+						<div class='btn-shadow'>
+							<input type='button' class='prime-btn' value='Login' onclick='
+								if(verifyLogin(this.form)){
+									this.form.submit();
+								}'>
+						</div>
+					</td>
+					<td align='right'>
+						<em class='gray'><a href="forgot.php">Forgot Username/Password?</a></em>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+<script>
+	function verifyLogin(which) {
+		with(which) {
+			if(username.value == '' || password.value == ''){
+				alert("Please enter your username and password to login");
+				return false;
+			} else {
+				return true;
+			}
+		}
+	}
+</script>
+	      			</div>
+	    		</div><!-- /.modal-content -->
+	  		</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	
+    <script src="/js/jquery.marquee.min.js" type="text/javascript"></script>
+    <script>
+
+    	// jQuery(document).ready(function() {
+	    //         jQuery('.marquee').marquee({
+	    //             duration: 10000,
+	    //             delayBeforeStart: 0,
+	    //             direction: 'left',
+	    //             duplicated: false
+	    //         });
+	    // });
+        window.onload = function () {
+            jQuery('.marquee').marquee({
+                duration: 10000,
+                delayBeforeStart: 0,
+                direction: 'left',
+                duplicated: false
+            });
+        };
+
+    </script>
+            <script>
+            // Navigation to open on click for the M2 series layout
+            var isTouchStartDetected = false;
+
+            (function($){
+                window.onorientationchange = function() {
+                    var orientation = window.orientation;
+
+                    switch(orientation) {
+                        case 0:
+                        case 90:
+                        case -90: window.location.reload();
+                            break;
+                    }
+                };
+
+                $(document).ready(function(){
+                    $('.sf-with-ul').ready(function(){
+                        $('.sf-with-ul, .sf-menu').on('mouseenter mouseout', function (e) { e.stopPropagation(); });
+
+                        
+                        $('.sf-with-ul').on('click touchend', function (e) {
+                            if(e.type == 'touchend') {
+                                isTouchStartDetected = true;
+                            }
+
+                            if(e.type == 'click' && isTouchStartDetected) {
+                                return false;
+                            }
+
+                            //alert(e.type)
+                            //$(this).parent().siblings().removeClass('sfHover');
+                            //$(this).parent().siblings().children('.sf-menu').css({display: 'none'});
+                            //$(this).parent().toggleClass('sfHover');
+
+                            if($(this).parent().hasClass('sfHover')) {
+                                $(this).siblings('.sf-menu').css({display: 'block'});
+                                $(this).parent().toggleClass('sfHover');
+                            } else {
+                                $(this).siblings('.sf-menu').css({display: 'none'});
+                            }
+                        })
+                    });
+                });
+            })(jQuery);
+        </script>
+    
+<!-- sc_monitor_trace_9j4kn310uy -->
+        <script>
+            /** @var {AppConfig} */
+            window.app_config = {
+    "application": {
+        "debug": false
+    },
+    "design": {
+        "config": {
+            "fixed_navigation": "normal"
+        }
+    }
+};
+        </script>
+        <script src="/public/assets/js/app.js" type="module"></script>
+<script type="module" src="/vite/dist/assets/progressive-enhancement-CULocRVH.js"></script>	<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30d3165faae5ea9',t:'MTc4NzY4ODEzMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

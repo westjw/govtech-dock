@@ -227,6 +227,16 @@
   .cfstars button:disabled{cursor:default;opacity:.55}
   .cfmine{font-size:12.5px;color:var(--dim);white-space:nowrap}
 
+  /* ── add to calendar ───────────────────────────────────────────────────
+     Only rendered when the date string parsed cleanly. A conference whose
+     dates we hold as prose we cannot resolve gets NO button rather than a
+     button that puts the wrong week in somebody's calendar - the same
+     asymmetry the rest of this board is built on. */
+  .cfcal{color:var(--dim);text-decoration:none;font:inherit;font-size:12.5px;
+    border:1px solid var(--line);padding:2px 7px;white-space:nowrap;
+    background:var(--panel);cursor:pointer}
+  .cfcal:hover,.cfcal:focus-visible{border-color:var(--accent);
+    color:var(--accent)}
   .cfmeta{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums}
   .cfcount{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums;
     margin-left:auto;white-space:nowrap}
@@ -669,6 +679,7 @@
        thing you aim at and miss. */
     .cfstars{margin-left:0;width:100%;gap:4px}
     .cfstars button{width:34px;height:38px;font-size:13px}
+    .cfcal{min-height:38px;padding:2px 12px}
     .cfrate{flex-wrap:wrap}
     .phead{padding-top:var(--space-3)}
     .ptitle{font-size:25px}
@@ -1071,7 +1082,7 @@ const COCONCEPTS=/* CONCEPT-MAP */[
  {"say":["courts","court","e-filing","efiling","electronic filing","docket","dockets","jury","juror","jurors","court records","case management","traffic court"],"go":[["Courts & Justice","Courts & Case Management"],["General Gov","Courts & Justice"]]},
  {"say":["prosecutor","prosecutors","prosecution","district attorney","public defender","defender","evidence sharing","discovery"],"go":[["Courts & Justice","Prosecution & Defense"]]},
  {"say":["probation","parole","supervision","pretrial","pre-trial","reentry","re-entry","diversion","electronic monitoring","ankle monitor","community supervision"],"go":[["Courts & Justice","Probation & Supervision"]]},
- {"say":["health and human services","human services","hhs","social services","health","healthcare","case worker","caseworker"],"go":[["Health & Human Services",null],["General Gov","Health & Human Services"]]},
+ {"say":["health and human services","human services","hhs","social services","health","healthcare","case worker","caseworker"],"go":[["Health & Human Services",null]]},
  {"say":["public health","epidemiology","immunization","immunizations","vital records","disease surveillance","contact tracing","wic","environmental health","food safety"],"go":[["Health & Human Services","Public Health"]]},
  {"say":["benefits","medicaid","snap","eligibility","tanf","entitlement","safety net","assistance programs"],"go":[["Health & Human Services","Benefits & Medicaid Systems"]]},
  {"say":["child welfare","child and family","foster care","foster","cps","child support","early childhood","childcare","child care","children","families"],"go":[["Health & Human Services","Child & Family Services"]]},
@@ -4269,6 +4280,9 @@ function cfRowHTML(r){
         <div class="cfrate" data-rate="${esc(r.tag)}">
           <span class="cfscore" data-score>&mdash;</span>
           <span class="cfvotes" data-votes>&nbsp;</span>
+          ${calRange(r.dates)?`<button type="button" class="cfcal"
+             data-cal="${esc(r.tag)}"
+             title="Download an .ics for ${esc(r.name)}">+ calendar</button>`:""}
           <span class="cfstars" data-stars></span>
         </div>`;
 }
@@ -4355,7 +4369,128 @@ async function loadRatings(){
   }catch{ /* offline: the placeholders already say "no ratings yet" */ }
 }
 
+/* ---------------------------------------------------------- add to calendar
+   The catalogue holds dates as the prose a human published: "October 17-21,
+   2026", "September 30 - October 3, 2026". 111 of the 112 dated events sit in
+   those two shapes. The 112th is "Conference: November 17-19, 2026; Expo:
+   November 18-19, 2026" - two ranges in one field, and there is no honest way
+   to pick one for somebody. That row gets no button.
+
+   A parser that guesses is worse than no parser here. Every branch below
+   either resolves to a real calendar day or returns null. */
+const CAL_MONTHS={january:0,february:1,march:2,april:3,may:4,june:5,july:6,
+  august:7,september:8,october:9,november:10,december:11};
+
+function calRange(s){
+  if(!s||typeof s!=="string")return null;
+  const txt=s.trim();
+  /* Two ranges in one string, or any prose we did not author. Refuse. */
+  if(/[;:]/.test(txt))return null;
+  const M="([A-Za-z]+)", D="(\\d{1,2})", Y="(\\d{4})", DASH="\\s*[-\u2013\u2014]\\s*";
+  let m;
+  /* September 30 - October 3, 2026 */
+  if((m=txt.match(new RegExp(`^${M}\\s+${D}${DASH}${M}\\s+${D},\\s*${Y}$`)))){
+    const a=CAL_MONTHS[m[1].toLowerCase()], b=CAL_MONTHS[m[3].toLowerCase()];
+    if(a==null||b==null)return null;
+    /* A range that runs backwards through the months means the year rolls
+       over, and the trailing year could mean either end of it. Nothing in the
+       catalogue does this today; when something does, it gets a person, not a
+       guess. */
+    if(b<a)return null;
+    return mkRange(+m[5],a,+m[2],+m[5],b,+m[4]);
+  }
+  /* October 17-21, 2026 */
+  if((m=txt.match(new RegExp(`^${M}\\s+${D}${DASH}${D},\\s*${Y}$`)))){
+    const a=CAL_MONTHS[m[1].toLowerCase()];
+    if(a==null)return null;
+    if(+m[3]<+m[2])return null;
+    return mkRange(+m[4],a,+m[2],+m[4],a,+m[3]);
+  }
+  /* October 17, 2026 - a single day */
+  if((m=txt.match(new RegExp(`^${M}\\s+${D},\\s*${Y}$`)))){
+    const a=CAL_MONTHS[m[1].toLowerCase()];
+    if(a==null)return null;
+    return mkRange(+m[3],a,+m[2],+m[3],a,+m[2]);
+  }
+  return null;
+}
+
+/* Date rejects nothing - new Date(2026,1,30) silently becomes March 2. Every
+   parsed day is read back off the Date it produced, so February 30 fails here
+   instead of moving somebody's trip. */
+function mkRange(y1,m1,d1,y2,m2,d2){
+  const s=new Date(y1,m1,d1), e=new Date(y2,m2,d2);
+  if(s.getFullYear()!==y1||s.getMonth()!==m1||s.getDate()!==d1)return null;
+  if(e.getFullYear()!==y2||e.getMonth()!==m2||e.getDate()!==d2)return null;
+  if(e<s)return null;
+  return {start:s,end:e};
+}
+
+const ymd=d=>`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`;
+
+/* RFC 5545: commas, semicolons and backslashes carry meaning inside a value,
+   so a city like "Washington, DC" splits the LOCATION into two fields unless
+   it is escaped. */
+const icsEsc=v=>String(v||"").replace(/\\/g,"\\\\").replace(/;/g,"\\;")
+  .replace(/,/g,"\\,").replace(/\r?\n/g,"\\n");
+
+/* Content lines are capped at 75 octets and continue with a leading space.
+   Long conference names cross that on their own. */
+function icsFold(line){
+  const b=[...line], out=[]; let cur="", n=0;
+  for(const ch of b){
+    const w=new TextEncoder().encode(ch).length;
+    if(n+w>73){ out.push(cur); cur=" "+ch; n=1+w; }
+    else { cur+=ch; n+=w; }
+  }
+  out.push(cur);
+  return out.join("\r\n");
+}
+
+function icsFor(r){
+  const rg=calRange(r.dates);
+  if(!rg)return null;
+  /* DTEND on an all-day event is EXCLUSIVE. A conference ending the 21st
+     needs DTEND 22 or the calendar drops the last day. */
+  const endEx=new Date(rg.end); endEx.setDate(endEx.getDate()+1);
+  const stamp=new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");
+  const uid=`${String(r.tag||r.name||"event").toLowerCase().replace(/[^a-z0-9]+/g,"-")}@solesourcejobs.com`;
+  const desc=[r.companies?`${r.companies} govtech exhibitors on file`:null,
+              r.hiring?`${r.hiring} of them hiring`:null,
+              "via SLED JOBS - solesourcejobs.com"].filter(Boolean).join(". ");
+  const lines=["BEGIN:VCALENDAR","VERSION:2.0",
+    "PRODID:-//SLED JOBS//Conference catalogue//EN","CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH","BEGIN:VEVENT",
+    `UID:${uid}`,`DTSTAMP:${stamp}`,
+    `DTSTART;VALUE=DATE:${ymd(rg.start)}`,`DTEND;VALUE=DATE:${ymd(endEx)}`,
+    `SUMMARY:${icsEsc(r.name)}`];
+  if(r.city)lines.push(`LOCATION:${icsEsc(r.city)}`);
+  if(r.url&&/^https?:\/\//i.test(r.url))lines.push(`URL:${icsEsc(r.url)}`);
+  lines.push(`DESCRIPTION:${icsEsc(desc)}`,"TRANSP:TRANSPARENT",
+    "END:VEVENT","END:VCALENDAR");
+  return lines.map(icsFold).join("\r\n")+"\r\n";
+}
+
+function downloadIcs(r){
+  const text=icsFor(r);
+  if(!text)return;
+  const blob=new Blob([text],{type:"text/calendar;charset=utf-8"});
+  const u=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=u;
+  a.download=`${String(r.tag||r.name).replace(/[^A-Za-z0-9]+/g,"-")}.ics`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(u),1000);
+}
+
 function wireCfRows(){
+  document.querySelectorAll("[data-cal]").forEach(b=>{
+    b.onclick=e=>{
+      e.stopPropagation();
+      const r=(D.conferences||[]).find(x=>x.tag===b.dataset.cal);
+      if(r)downloadIcs(r);
+    };
+  });
   document.querySelectorAll(".cfrow").forEach(b=>{
     if(b.getAttribute("aria-disabled")==="true"){
       b.style.cursor="default";
