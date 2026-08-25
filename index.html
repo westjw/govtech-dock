@@ -256,10 +256,40 @@
      saying zero, and if no slide can be built the banner does not render at
      all. A rotating banner that invents something to rotate is how a live
      number becomes decoration. */
+  /* THE FIRST SLIDE IS THE ONLY ONE THAT IS NOT A NUMBER. Every other slide
+     is derived from the board and changes when the data does; this one says
+     what the place IS, which a stranger needs before any figure means
+     anything. It carries the expo hall behind it because that is the room
+     these companies are actually in - the catalogue is 125 of those rooms. */
+  .bhero{position:absolute;inset:0;overflow:hidden;pointer-events:none;
+    opacity:0;transition:opacity .4s ease}
+  .bhero.show{opacity:1}
+  .bhero .hall{position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:center bottom;opacity:.85}
+  /* max-height as well as width: at 420px wide the slide is 260px tall and
+     the banner is 248, so the penguin's hat was being clipped. Height wins
+     and the width follows it. */
+  .bhero .pen{position:absolute;right:2%;bottom:0;width:min(38%,420px);
+    max-height:88%;height:auto;object-fit:contain;object-position:bottom right;
+    opacity:.95}
+  .slide.hero h2{font-size:clamp(38px,6.4vw,64px);letter-spacing:-.03em}
+  .slide.hero .tag{font-size:17px;color:var(--hdr-ink);opacity:.92;
+    margin:0 0 var(--space-2);font-weight:600}
+  .slide.hero .how{display:block;width:fit-content;margin-top:var(--space-4);
+    font-size:13.5px;font-weight:600;letter-spacing:.04em;
+    color:var(--hdr-ink);text-decoration:none;
+    border-bottom:1px solid var(--beak);padding-bottom:2px;cursor:pointer}
+  .slide.hero .how:hover{color:var(--beak)}
+  @media (max-width:768px){
+    /* the penguin would sit under the headline at this width */
+    .bhero .pen{display:none}
+    .bhero .hall{opacity:.55}
+  }
+
   .banner{position:relative;background:var(--hdr-bg);color:var(--hdr-ink);
     padding:var(--space-8) var(--space-6);margin-bottom:var(--space-6);
     overflow:hidden;min-height:196px;display:flex;align-items:center}
-  .banner .slides{width:100%;max-width:820px}
+  .banner .slides{width:100%;max-width:820px;position:relative;z-index:1}
   .slide{display:none}
   .slide.on{display:block;animation:bfade .45s ease}
   @keyframes bfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -279,7 +309,10 @@
      hover-revealed: a control you cannot see is one a touch device never
      gets, and this rotates on its own so a reader needs a way to stop it. */
   .bnav{position:absolute;right:var(--space-6);bottom:var(--space-6);
-    display:flex;gap:var(--space-2);align-items:center}
+    display:flex;gap:var(--space-2);align-items:center;
+    padding:6px 10px;border-radius:999px;
+    background:color-mix(in srgb, #1F2536 72%, transparent);
+    backdrop-filter:blur(2px)}
   .bnav button{width:34px;height:34px;border-radius:50%;
     border:1px solid var(--hdr-line);background:transparent;color:var(--hdr-ink);
     cursor:pointer;display:grid;place-items:center;padding:0;font:inherit}
@@ -3745,6 +3778,18 @@ function how(){
    there is not a number to display. */
 function buildSlides(){
   const out=[], gen=D.generated;
+
+  /* THE FRONT DOOR SLIDE, and the only one not built from a number. It says
+     what this is and offers the one link that explains how a row got here -
+     which is where "How listings get here" now lives, out of the nav and in
+     front of the person who has not yet wondered. */
+  out.push({kick:"Find the right fit", hero:true,
+    h:"SLED JOBS",
+    p:"It&rsquo;s tough SLEDing out there. Here&rsquo;s how SLED JOBS helps "
+      +"you find the right fit.",
+    cta:"Open the board", go:()=>{tab="jobs";ROLE=null;render()},
+    how:true});
+
   const fresh=D.postings.filter(p=>p.first_seen===gen);
   const freshQ=fresh.filter(p=>p.quota_carrying);
 
@@ -3806,6 +3851,11 @@ function showSlide(i,slides){
   if(!els.length)return;
   BSLIDE=(i+els.length)%els.length;
   els.forEach((e,n)=>e.classList.toggle("on",n===BSLIDE));
+  /* The art belongs to the hero slide, not the banner, so it leaves when the
+     hero does - otherwise an expo hall sits behind a posting count and reads
+     as decoration rather than as the room those companies are in. */
+  const art=document.getElementById("bhero");
+  if(art)art.classList.toggle("show",els[BSLIDE]&&els[BSLIDE].classList.contains("hero"));
   [...document.querySelectorAll(".bdots i")].forEach((d,n)=>
     d.classList.toggle("on",n===BSLIDE));
 }
@@ -3942,12 +3992,17 @@ function home(){
   const q=D.postings.filter(p=>p.quota_carrying);
   const banner=slides.length?`
   <div class="banner" id="banner">
+    ${slides.some(s=>s.hero)?`<div class="bhero" id="bhero" aria-hidden="true">
+      <img class="hall" src="assets/mascot/svg/expo-hall.svg" alt="">
+      <img class="pen" src="assets/mascot/svg/mascot-slide.svg" alt="">
+    </div>`:""}
     <div class="slides">
-      ${slides.map((s,i)=>`<div class="slide${i===0?" on":""}">
+      ${slides.map((s,i)=>`<div class="slide${i===0?" on":""}${s.hero?" hero":""}">
         <div class="kicker">${esc(s.kick)}</div>
         <h2>${s.h}</h2>
         <p>${s.p}</p>
         <a class="go" data-go="${i}" role="button" tabindex="0">${esc(s.cta)}</a>
+        ${s.how?`<a class="how" data-how role="button" tabindex="0">How a listing gets here &rarr;</a>`:""}
       </div>`).join("")}
     </div>
     ${slides.length>1?`<div class="bnav">
@@ -4069,6 +4124,11 @@ function home(){
     const b=document.querySelector(`.go[data-go="${i}"]`);
     if(b){ b.onclick=()=>{stopBanner();s.go()};
            b.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();stopBanner();s.go()}}; }
+  });
+  document.querySelectorAll("[data-how]").forEach(a=>{
+    const go=()=>{stopBanner();ROLE=null;tab="how";render();window.scrollTo(0,0)};
+    a.onclick=go;
+    a.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}};
   });
   const prev=$("#bprev"), next=$("#bnext"), bn=$("#banner");
   if(prev)prev.onclick=()=>{stopBanner();showSlide(BSLIDE-1,slides)};

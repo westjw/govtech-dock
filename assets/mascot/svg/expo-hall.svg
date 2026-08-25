@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The inside of an expo hall: two rows of booths back to back down one aisle,
+     in a room too big for them. One-point perspective, vanishing point at the
+     centre of the floor line.
+
+     Built to sit BEHIND a headline, so everything is a step darker than the
+     banner ground and nothing crosses the upper left where the type sits. The
+     palette is the kit's: Penguin for the room, Frost for the far haze, Beak
+     only on the aisle carpet and a few booth headers, because Beak is a
+     highlight and never text. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" fill="none"
+     preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="deep" x1="600" y1="120" x2="600" y2="300"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2A3247"/>
+      <stop offset="1" stop-color="#1F2536"/>
+    </linearGradient>
+    <linearGradient id="aisle" x1="600" y1="248" x2="600" y2="420"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F5A623" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#F5A623" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="1200" y2="0"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1F2536" stop-opacity="0.96"/>
+      <stop offset="0.42" stop-color="#1F2536" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#1F2536" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="420" fill="#1F2536"/>
+  <!-- the far wall, lighter so the room reads as deep -->
+  <rect x="0" y="120" width="1200" height="130" fill="url(#deep)"/>
+
+  <!-- roof trusses. Straight lines converging: the cheapest way to say
+       "cavernous" without drawing a ceiling. -->
+  <g stroke="#39435C" stroke-width="1.5" opacity="0.55">
+    <path d="M0 8 L600 176"/><path d="M1200 8 L600 176"/>
+    <path d="M0 52 L600 186"/><path d="M1200 52 L600 186"/>
+    <path d="M0 96 L600 196"/><path d="M1200 96 L600 196"/>
+    <path d="M150 0 L150 96"/><path d="M400 0 L400 148"/>
+    <path d="M800 0 L800 148"/><path d="M1050 0 L1050 96"/>
+  </g>
+
+  <!-- floor -->
+  <rect x="0" y="248" width="1200" height="172" fill="#191E2D"/>
+  <!-- the aisle, running to the vanishing point -->
+  <path d="M600 248 L1010 420 L190 420 Z" fill="url(#aisle)"/>
+  <path d="M600 248 L1010 420 M600 248 L190 420"
+        stroke="#F5A623" stroke-width="1.5" opacity="0.22"/>
+
+  <!-- BOOTHS. Two rows facing the aisle, each smaller and higher as it
+       recedes. A booth is a back wall, a header band and a table - three
+       rectangles, which is all a booth is when you are far enough away. -->
+  <g>
+    <!-- left row, near to far -->
+    <g>
+      <rect x="8" y="176" width="176" height="96" fill="#242B3E"/>
+      <rect x="8" y="176" width="176" height="15" fill="#F5A623" opacity="0.5"/>
+      <rect x="26" y="242" width="140" height="30" fill="#2E3852"/>
+      <rect x="196" y="190" width="140" height="80" fill="#222939"/>
+      <rect x="196" y="190" width="140" height="12" fill="#C9DCE8" opacity="0.28"/>
+      <rect x="212" y="246" width="108" height="24" fill="#2B3449"/>
+      <rect x="348" y="201" width="110" height="68" fill="#212836"/>
+      <rect x="348" y="201" width="110" height="10" fill="#F5A623" opacity="0.32"/>
+      <rect x="360" y="249" width="86" height="20" fill="#293144"/>
+      <rect x="470" y="210" width="84" height="58" fill="#202734"/>
+      <rect x="470" y="210" width="84" height="8" fill="#C9DCE8" opacity="0.2"/>
+    </g>
+    <!-- right row, mirrored -->
+    <g>
+      <rect x="1016" y="176" width="176" height="96" fill="#242B3E"/>
+      <rect x="1016" y="176" width="176" height="15" fill="#C9DCE8" opacity="0.3"/>
+      <rect x="1034" y="242" width="140" height="30" fill="#2E3852"/>
+      <rect x="864" y="190" width="140" height="80" fill="#222939"/>
+      <rect x="864" y="190" width="140" height="12" fill="#F5A623" opacity="0.45"/>
+      <rect x="880" y="246" width="108" height="24" fill="#2B3449"/>
+      <rect x="742" y="201" width="110" height="68" fill="#212836"/>
+      <rect x="742" y="201" width="110" height="10" fill="#C9DCE8" opacity="0.26"/>
+      <rect x="754" y="249" width="86" height="20" fill="#293144"/>
+      <rect x="646" y="210" width="84" height="58" fill="#202734"/>
+      <rect x="646" y="210" width="84" height="8" fill="#F5A623" opacity="0.3"/>
+    </g>
+    <!-- the far pair, almost at the vanishing point -->
+    <rect x="566" y="220" width="30" height="46" fill="#1E2531"/>
+    <rect x="604" y="220" width="30" height="46" fill="#1E2531"/>
+  </g>
+
+  <!-- a few figures on the floor, at booth scale. Silhouettes only: a person
+       drawn in any more detail than this becomes somebody in particular. -->
+  <g fill="#151A26" opacity="0.85">
+    <circle cx="286" cy="286" r="7"/><rect x="278" y="295" width="16" height="30" rx="6"/>
+    <circle cx="322" cy="292" r="6"/><rect x="315" y="300" width="14" height="27" rx="5"/>
+    <circle cx="905" cy="288" r="7"/><rect x="897" y="297" width="16" height="30" rx="6"/>
+    <circle cx="700" cy="278" r="5"/><rect x="694" y="285" width="12" height="23" rx="4"/>
+  </g>
+
+  <!-- the left fade, so a headline over this never fights a booth edge -->
+  <rect width="1200" height="420" fill="url(#fade)"/>
+</svg>
