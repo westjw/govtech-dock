@@ -844,7 +844,19 @@ let D=null, tab="home", PENDING_URL=null, ROLE=null;
    whole claim is that it says where a number came from, and a stranger has
    nowhere to check that unless it is one click from the top of every page. */
 const TABS=[["home","Home"],["jobs","Jobs"],["companies","Companies"],["conferences","Conferences"],["saved","Saved"],
-  ["intel","Market intel"],["how","How listings get here"]];
+  ["intel","Market intel"]];
+/* "How listings get here" is NOT in the nav any more - the owner asked for it
+   out, it was the seventh item and the longest label in a row that has to fit
+   on a phone.
+
+   The VIEW is deliberately still registered, and ?tab=how still opens it. It
+   is where this board says what it CANNOT see - 947 companies with no board
+   we could find, 822 whose board we could not read this run, and why those
+   show no roles rather than none existing. That is the asymmetric error rule
+   made visible to a stranger, and deleting it would remove the one page that
+   admits the board is incomplete. It stays one link away, from the sentence
+   on the jobs page that raises the question, rather than one tab away from
+   everybody. */
 const FAM={gtm:"GTM",cs:"Customer Success",ops:"Ops / RevOps",engineering:"Engineering",
   product:"Product & Design",data:"Data & Research",policy:"Policy & Gov Affairs",
   ga:"G&A",exec:"Executive",field:"Field & implementation",other:"Unclassified"};
