@@ -612,6 +612,14 @@ def main() -> int:
             # company.
             "brands": c.get("brands") or None,
             "also_known_as": c.get("also_known_as") or None,
+            # WHICH EVENT THIS COMPANY CAME OFF, so the Conferences tab can
+            # actually open one. The tag alone, not the whole `source` string:
+            # sweeps write "conference sweep: PLA 2026" and intake writes
+            # "PLA 2026", and two spellings of one event would list as two
+            # events. Null for anything not found at a conference.
+            "conference": ((c.get("source") or "").split(":")[-1].strip()
+                           if any(ch.isdigit() for ch in (c.get("source") or ""))
+                           else None),
             # Filled in by count_openings() once every posting exists. Counting
             # here counted rows, missed the manual merge below, and rescanned
             # the whole posting list once per company.
@@ -772,10 +780,70 @@ def main() -> int:
         except (json.JSONDecodeError, OSError, TypeError):
             cities = {}
 
+    # WHERE THESE COMPANIES WERE FOUND. 1,129 of them carry a conference
+    # source tag - over half the map came off exhibitor lists - and until now
+    # that was only visible as "exhibited at IACP 2026" buried in a
+    # description. For a seller it is the more useful cut: which event puts
+    # the most hiring govtech vendors in one room is a travel-budget question
+    # with a real answer.
+    #
+    # EVERY conference in the catalogue ships, not only the ones a sweep has
+    # touched. This filtered to swept-or-found and showed 36 of 118, which
+    # turns a catalogue into a progress report on our own sweeping. The point
+    # of the tab is to be the list of govcon events that does not otherwise
+    # exist in one place; an event we have not mined yet is still an event,
+    # and "0 companies found" is a fact about US, not about the conference.
+    #
+    # Counts come from the company records, never from the catalogue's own
+    # claims: a swept event that yielded nothing shows zero rather than
+    # inheriting a number from somewhere else.
+    conf_rows = []
+    cpath = DATA / "conferences.json"
+    if cpath.exists():
+        try:
+            cat = json.loads(cpath.read_text()).get("conferences", [])
+        except (json.JSONDecodeError, OSError):
+            cat = []
+        open_by_co = {o["id"]: o.get("open_roles", 0) for o in orgs}
+        by_tag = collections.defaultdict(list)
+        for c in companies:
+            src = (c.get("source") or "").strip()
+            if not src:
+                continue
+            # sweeps write "conference sweep: PLA 2026"; intake writes the tag
+            by_tag[src.split(":")[-1].strip()].append(c["id"])
+        for row in cat:
+            tag = (row.get("event_tag") or "").strip()
+            if not tag:
+                continue
+            ids = by_tag.get(tag, [])
+            hiring = [i for i in ids if open_by_co.get(i, 0) > 0]
+            conf_rows.append({
+                "tag": tag,
+                "name": row.get("conference") or tag,
+                "block": row.get("block"),
+                "department": row.get("department"),
+                "flagship": bool(row.get("flagship")),
+                "swept": bool(row.get("swept")),
+                "url": row.get("url") or None,
+                "dates": row.get("dates") or None,
+                "city": row.get("city") or None,
+                "approx_count": row.get("approx_count") or None,
+                "companies": len(ids),
+                "hiring": len(hiring),
+                "open_roles": sum(open_by_co.get(i, 0) for i in ids),
+            })
+        # By DEPARTMENT, then name. Sorting by how many companies we happen to
+        # have found makes this a report on our own sweeping progress; a
+        # catalogue is ordered so somebody can find the event they came for.
+        conf_rows.sort(key=lambda r: ((r.get("department") or "zz").lower(),
+                                      r["name"].lower()))
+
     payload = {
         "generated": today,
         "logos": logos,
         "cities": cities,
+        "conferences": conf_rows,
         "companies_read": len(companies), "unreadable": unreadable,
         "rendered": rendered,
         "no_board_on_file": sum(1 for o in orgs if o.get("no_board_on_file")),

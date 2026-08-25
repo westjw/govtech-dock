@@ -80,10 +80,16 @@
      visitor already has and the site did not honour. */
   .brand{display:flex;align-items:center;gap:var(--space-3);text-decoration:none;
     color:var(--hdr-ink);cursor:pointer;background:none;border:0;padding:0;font:inherit}
-  .brand .mark{width:46px;height:46px;display:block;background:var(--panel);
-    /* The one round thing in a --radius:0 system, and it is round because the
-       mascot's head is. A square crop of a circular face reads as a mistake. */
-    border-radius:50%;padding:3px;flex:none}
+  /* THE WHOLE PENGUIN, not a head crop, and therefore bigger. The mark was a
+     46px circle holding head-on-the-hunt because a full body at that size is
+     a smudge - the briefcase, the badge and the tie all disappear. So the
+     figure sets the header height rather than fitting inside it: 210x298
+     means 64px tall reads as a character, and the details survive.
+
+     No circle and no padding here. A tall figure centred in a round plate
+     either crops its feet or floats in empty space, and both look like a
+     mistake somebody made rather than a decision. */
+  .brand .mark{height:64px;width:auto;display:block;flex:none}
   .brand .word{font-family:var(--font-heading);font-weight:800;font-size:25px;
     letter-spacing:.02em;line-height:1;white-space:nowrap}
   .brand:hover .word{text-decoration:underline;text-underline-offset:4px}
@@ -173,6 +179,33 @@
     cursor:pointer}
   .hsecs button:hover{border-color:var(--accent);color:var(--accent)}
   .hsecs b{font-variant-numeric:tabular-nums;color:var(--dim);font-weight:600}
+
+  /* ------------------------------------------------------------ conferences
+     Over half this map came off exhibitor lists, and that was only ever
+     visible as "exhibited at IACP 2026" inside a description. For a seller it
+     is the more useful cut: which event puts the most HIRING govtech vendors
+     in one room is a travel-budget question with a real answer. */
+  .cfblock{margin-bottom:var(--space-8)}
+  .cfblock h3{font-family:var(--font-heading);font-weight:800;font-size:16px;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--dim);
+    margin:0 0 var(--space-3);padding-bottom:var(--space-2);
+    border-bottom:1px solid var(--line)}
+  .cfrow{display:flex;gap:var(--space-3);align-items:baseline;
+    padding:var(--space-3) 0;border-bottom:1px solid var(--line);
+    cursor:pointer;background:none;border-left:0;border-right:0;border-top:0;
+    width:100%;text-align:left;font:inherit;color:inherit}
+  .cfrow:hover .cfname{color:var(--accent)}
+  .cfname{font-weight:600;font-size:15px}
+  .cfflag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    font-weight:700;color:var(--bg);background:var(--dim);padding:1px 5px}
+  .cfnums{margin-left:auto;display:flex;gap:var(--space-6);
+    font-variant-numeric:tabular-nums;font-size:13.5px;white-space:nowrap}
+  .cfnums b{font-weight:700}
+  .cfnums .q{color:var(--dim)}
+  .cfzero{color:var(--faint)}
+  .cfmeta{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums}
+  .cfrow[aria-disabled="true"]{cursor:default}
+  .cfrow[aria-disabled="true"]:hover .cfname{color:inherit}
 
   .near{display:inline-flex;gap:var(--space-1);align-items:center}
   .near input{width:170px;padding:var(--space-2) var(--space-3);font:inherit;
@@ -552,7 +585,7 @@
        recognises as the same control they saw on desktop. */
     .htop{gap:var(--space-2)}
     h1{font-size:18px}
-    .brand .mark{width:38px;height:38px}
+    .brand .mark{height:48px}
     .brand .word{font-size:20px}
     nav{order:3;gap:var(--space-3);width:100%;overflow-x:auto;flex-wrap:nowrap;
       -webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -630,7 +663,7 @@
     <!-- The mark goes home. That is the convention every visitor already has,
          and this site did not honour it because there was nowhere to go. -->
     <button class="brand" id="brandhome" aria-label="SLED JOBS — home">
-      <img class="mark" src="assets/mascot/svg/head-on-the-hunt.svg" alt="">
+      <img class="mark" src="assets/mascot/svg/mascot-stand.svg" alt="">
       <span class="word">SLED JOBS</span>
     </button>
     <nav id="tabs"></nav>
@@ -778,7 +811,7 @@ let D=null, tab="home", PENDING_URL=null, ROLE=null;
 /* "How listings get here" is in the deck's header for a reason: this board's
    whole claim is that it says where a number came from, and a stranger has
    nowhere to check that unless it is one click from the top of every page. */
-const TABS=[["home","Home"],["jobs","Jobs"],["companies","Companies"],["saved","Saved"],
+const TABS=[["home","Home"],["jobs","Jobs"],["companies","Companies"],["conferences","Conferences"],["saved","Saved"],
   ["intel","Market intel"],["how","How listings get here"]];
 const FAM={gtm:"GTM",cs:"Customer Success",ops:"Ops / RevOps",engineering:"Engineering",
   product:"Product & Design",data:"Data & Research",policy:"Policy & Gov Affairs",
@@ -3016,6 +3049,8 @@ function drawCos(){
   let hiringOnly=$("#c-hire-pill")?.getAttribute("aria-pressed")==="true";
   const s=g("c-sec"),ph=g("c-phase"),rd=g("c-reads");
 
+
+
   /* The query, read as buckets rather than as characters. */
   const W=parseCoQuery(q);
   const cats=W.go.filter(t=>t[1]!==null);
@@ -3051,7 +3086,8 @@ function drawCos(){
     if(rd==="none"&&o.ats&&o.ats!=="unknown")return false;
     return true;
   };
-  const found=D.organizations.filter(o=>hits(o)&&rest(o));
+  // `let`, because the conf: prefix below replaces the whole set
+  let found=D.organizations.filter(o=>hits(o)&&rest(o));
 
   /* A search can contradict a filter, and when it does the words the person
      just typed beat a toggle they may never have noticed. This is the jobs
@@ -3082,6 +3118,22 @@ function drawCos(){
     setHiringPill(false);
     CO_AUTO_OFF=true;
     hiringOnly=false;
+  }
+
+  /* "conf:IACP 2026" — one exhibitor list, opened from the Conferences tab.
+     A visible prefix rather than a hidden mode, so it survives being copied
+     out of the address bar and pasted to somebody else, and so a reader can
+     see WHY the list is what it is instead of wondering what filtered it.
+
+     It also RELEASES the hiring pill. A room holds the companies it holds;
+     hiding the ones not advertising today answers a different question from
+     the one the Conferences tab asked, and would show a 133-company event as
+     a 23-company one. */
+  const confM=/^conf:(.+)$/i.exec((g("c-q")||"").trim());
+  if(confM){
+    const tag=confM[1].trim().toLowerCase();
+    found=(D.organizations||[]).filter(o=>(o.conference||"").toLowerCase()===tag);
+    if(hiringOnly){ setHiringPill(false); CO_AUTO_OFF=true; hiringOnly=false; }
   }
 
   /* The one exception to the hiring filter, and it is the whole rule above. */
@@ -3988,8 +4040,83 @@ function home(){
   startBanner(slides);
 }
 
+
+/* -------------------------------------------------------- conferences
+   Where these companies were found. 1,129 carry an event tag - over half
+   the map - and it was buried in a description until now.
+
+   Counted from the COMPANY RECORDS, never from the catalog's own claims: a
+   conference that was swept and yielded nothing shows a zero rather than
+   quietly vanishing, because "we looked there and found none" and "we have
+   not looked" are different facts and this board does not conflate them. */
+function conferences(){
+  const rows=(D.conferences||[]);
+  if(!rows.length){
+    $("#view").innerHTML=`<div class="empty">${GHOST}No conference data on this
+      build.<br><span class="sub">data/conferences.json is the catalogue and
+      build_board.py counts against it.</span></div>`;
+    return;
+  }
+  /* A CATALOGUE, ordered so somebody can find the event they came for.
+     Grouped by the department that attends, alphabetical inside it - not
+     ranked by how many companies we happen to have mined, which would make
+     this a progress report on our own sweeping rather than a reference. */
+  const blocks={};
+  rows.forEach(r=>{(blocks[r.block||"Other"]=blocks[r.block||"Other"]||[]).push(r)});
+  const order=Object.keys(blocks).sort();
+  const swept=rows.filter(r=>r.swept).length;
+  const tot=rows.reduce((n,r)=>n+r.companies,0);
+
+  $("#view").innerHTML=`
+  <div class="phead">
+    <h2 class="ptitle">Every govtech conference we know of</h2>
+    <p class="pline"><strong>${rows.length}</strong> events across
+      ${order.length} government departments.
+      ${swept?`We have mined exhibitor lists from <strong>${swept}</strong> of
+      them so far, which is where ${tot.toLocaleString()} of the companies on
+      this board came from.`:""}
+      An event with no companies beside it is one we have not mined yet &mdash;
+      that is a fact about us, not about the conference.</p>
+  </div>
+  ${order.map(b=>`
+    <div class="cfblock">
+      <h3>${esc(b)}</h3>
+      ${blocks[b].map(r=>`
+        <button type="button" class="cfrow" data-tag="${esc(r.tag)}"
+                ${r.companies?"":'aria-disabled="true"'}>
+          <span class="cfname">${esc(r.name)}</span>
+          ${r.flagship?`<span class="cfflag">flagship</span>`:""}
+          ${r.dates?`<span class="cfmeta">${esc(r.dates)}</span>`:""}
+          ${r.city?`<span class="cfmeta">${esc(r.city)}</span>`:""}
+          <span class="cfnums">
+            ${r.companies
+              ? `<span><b>${r.companies}</b> exhibitors here</span>
+                 <span class="${r.hiring?"":"cfzero"}"><b>${r.hiring}</b> hiring</span>`
+              : `<span class="cfzero">not mined yet</span>`}
+          </span>
+        </button>`).join("")}
+    </div>`).join("")}`;
+
+  document.querySelectorAll(".cfrow").forEach(b=>{
+    if(b.getAttribute("aria-disabled")==="true"){
+      // nothing to open. A row that looks clickable and does nothing is worse
+      // than one that plainly says there is nothing behind it yet.
+      b.style.cursor="default";
+      return;
+    }
+    b.onclick=()=>{
+      ROLE=null; tab="companies"; render();
+      /* Hand the tag to the companies view rather than filtering here, so
+         what you land on is a real board state you can narrow and share. */
+      const box=$("#c-q");
+      if(box){ box.value="conf:"+b.dataset.tag;
+               box.dispatchEvent(new Event("input",{bubbles:true})); }
+    };
+  });
+}
+
 const VIEWS=Object.assign(Object.create(null),
-  {home,jobs,companies,saved:savedView,intel,how});
+  {home,jobs,companies,conferences,saved:savedView,intel,how});
 /* ?tab= comes off a url a stranger can edit, so an unknown value falls back to
    the board rather than throwing and leaving a blank page behind. */
 function render(){
