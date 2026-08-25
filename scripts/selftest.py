@@ -1670,6 +1670,63 @@ def check_beak_is_never_text() -> int:
     return errors
 
 
+def check_journal_matches_reality() -> int:
+    """What the journal last recorded is what the file should still say.
+
+    check_merged_names_stay_merged catches a DELETED RECORD coming back. It
+    does not catch a FIELD being reverted, and the same unjournalled write did
+    both: merge_families gave Xplor Recreation four researched brands at
+    2026-08-24#93, and by #97 they were gone with nothing in between. One
+    stale snapshot of companies.json, two symptoms, and only the resurrected
+    record was noticed at the time. The brands were recoverable only because
+    the journal still held #93's after-image.
+
+    So: replay the journal, take the last after-image per company, and compare
+    the fields ADMIN OWNS. Anything that differs was changed by something that
+    did not journal itself - which is seven pipeline scripts writing
+    companies.json directly, the hole CLAUDE.md now names.
+
+    Deliberately NOT every field. `hiring` is refresh.py's and changes every
+    run by design; flagging it would bury the real signal in noise, and a
+    check that cries wolf is one somebody turns off.
+    """
+    OWNED = ("brands", "also_known_as", "parent", "board_owner", "year_founded",
+             "location", "website", "sector", "category", "description")
+    jpath = DATA / "admin_journal.jsonl"
+    if not jpath.exists():
+        return 0
+    last = {}
+    for line in jpath.read_text().splitlines():
+        if not line.strip():
+            continue
+        try:
+            d = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        for cid, ch in (d.get("changes") or {}).items():
+            if isinstance(ch, dict) and ch.get("after"):
+                last[cid] = (d["id"], ch["after"])
+
+    live = {c["id"]: c for c in json.load(open(DATA / "companies.json"))}
+    errors = 0
+    for cid, (eid, after) in sorted(last.items()):
+        cur = live.get(cid)
+        if cur is None:
+            continue          # deletion is the other check's job
+        for f in OWNED:
+            if f not in after:
+                continue
+            if after[f] != cur.get(f):
+                was = "set" if after[f] else "empty"
+                now = "set" if cur.get(f) else "EMPTY"
+                errors += fail(
+                    f"journal: {cid}.{f} was {was} by {eid} and is {now} now, "
+                    f"with nothing in the journal changing it. Something wrote "
+                    f"companies.json outside save_companies. Recover the value "
+                    f"from {eid}'s after-image.")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -1996,6 +2053,7 @@ def main() -> int:
     # never arrives - no error anywhere. So the duplication is checked here.
     errors += check_alert_vocabulary()
     errors += check_merged_names_stay_merged()
+    errors += check_journal_matches_reality()
     errors += check_writes_name_their_author()
     errors += check_header_shared()
     errors += check_identity_guard()
