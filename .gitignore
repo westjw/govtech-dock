@@ -2,3 +2,13 @@ __pycache__/
 *.pyc
 .DS_Store
 public/
+
+# Debris from research runs. A scraped copy of healthcareitconnect.com got
+# committed as a file literally called `text` on 2026-08-25, swept up by
+# `git add -A` from a redirect that lost its filename. These are the shapes
+# that keep happening.
+/text
+/out
+/tmp
+*.tmp
+*.orig
