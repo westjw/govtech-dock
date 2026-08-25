@@ -1487,9 +1487,12 @@
     "https://www.nescso.org/mesc"
    ],
    "url": "https://mesconference.org/",
-   "dates_source": null,
-   "dates_confidence": "unannounced",
-   "dates_note": "2027 dates not yet announced. MESC 2026 ran August 17-20, 2026 at the Oregon Convention Center, Portland, OR and finished five days ago. I queried the conference site's own WordPress events API (mesconference.org/wp-json/tribe/events/v1/events) for 2026-01-01 through 2029-12-31: 26 events come back and the last is 'Medicaid Enterprise Systems Conference - 2026', Aug 17-20, Oregon Convention Center. Nothing for 2027 exists on the official calendar, there is no future-conferences page, and the homepage is still running a 'MESC 2026 Starts In...' countdown for a conference that already ended, alongside an announcement that 2026 registration has closed. The site is live; NESCSO has just not posted 2027."
+   "dates_source": "supplied by the owner 2026-08-25",
+   "dates_confidence": "owner",
+   "dates_note": "2027 dates not yet announced. MESC 2026 ran August 17-20, 2026 at the Oregon Convention Center, Portland, OR and finished five days ago. I queried the conference site's own WordPress events API (mesconference.org/wp-json/tribe/events/v1/events) for 2026-01-01 through 2029-12-31: 26 events come back and the last is 'Medicaid Enterprise Systems Conference - 2026', Aug 17-20, Oregon Convention Center. Nothing for 2027 exists on the official calendar, there is no future-conferences page, and the homepage is still running a 'MESC 2026 Starts In...' countdown for a conference that already ended, alongside an announcement that 2026 registration has closed. The site is live; NESCSO has just not posted 2027.",
+   "dates": "August 17-20, 2026",
+   "city": "Portland, OR",
+   "note": "dates supplied by the owner 2026-08-25. The research pass recorded MESC as unannounced because the site had not posted them; the owner had them. PAST as of that date."
   },
   {
    "block": "Health and human services",
@@ -2199,6 +2202,96 @@
    "fetchability": null,
    "event_tag": "Broadband Communities Summit 2026",
    "note": "split out of the Broadband Nation row 2026-08-25. Terrapinn's event, Houston, George R. Brown - not Questex's New Orleans show. Never mined; the exhibitors on the other row are not these."
+  },
+  {
+   "block": "Health and human services",
+   "department": "Medicaid integrity",
+   "conference": "NAMPI Annual",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null,
+   "event_tag": "NAMPI 2026",
+   "dates": "August 23-26, 2026",
+   "city": "Portland, OR",
+   "dates_confidence": "owner",
+   "dates_source": "supplied by the owner 2026-08-25",
+   "note": "added 2026-08-25 at the owner's request. Run by National Association for Medicaid Program Integrity. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding."
+  },
+  {
+   "block": "Finance, procurement, HR, IT",
+   "department": "Employee benefits",
+   "conference": "SALGBA Annual",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null,
+   "event_tag": "SALGBA 2026",
+   "dates": "May 4-7, 2026",
+   "city": "Providence, RI",
+   "dates_confidence": "owner",
+   "dates_source": "supplied by the owner 2026-08-25",
+   "note": "added 2026-08-25 at the owner's request. Run by State and Local Government Benefits Association. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding."
+  },
+  {
+   "block": "Health and human services",
+   "department": "Public health data",
+   "conference": "AIRA National Meeting",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null,
+   "event_tag": "AIRA 2026",
+   "dates": "April 28-30, 2026",
+   "city": "Pittsburgh, PA",
+   "dates_confidence": "owner",
+   "dates_source": "supplied by the owner 2026-08-25",
+   "note": "added 2026-08-25 at the owner's request. Run by American Immunization Registry Association. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding."
+  },
+  {
+   "block": "Health and human services",
+   "department": "Health IT",
+   "conference": "State Healthcare IT Connect Summit",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null,
+   "event_tag": "Healthcare IT Connect 2026",
+   "dates": "February 23-26, 2026",
+   "city": "New Orleans, LA",
+   "dates_confidence": "owner",
+   "dates_source": "supplied by the owner 2026-08-25",
+   "note": "added 2026-08-25 at the owner's request. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding."
+  },
+  {
+   "block": "Health and human services",
+   "department": "Medicaid leadership",
+   "conference": "NAMD Fall Conference",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null,
+   "event_tag": "NAMD 2025",
+   "dates": "November 19-21, 2025",
+   "city": "National Harbor, MD",
+   "dates_confidence": "owner",
+   "dates_source": "supplied by the owner 2026-08-25",
+   "note": "added 2026-08-25 at the owner's request. Run by National Association of Medicaid Directors. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding."
+  },
+  {
+   "block": "Health and human services",
+   "department": "Health care fraud",
+   "conference": "NHCAA Annual Training Conference",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null,
+   "event_tag": "NHCAA 2025",
+   "dates": "November 18-21, 2025",
+   "city": "Nashville, TN",
+   "dates_confidence": "owner",
+   "dates_source": "supplied by the owner 2026-08-25",
+   "note": "added 2026-08-25 at the owner's request. Run by National Health Care Anti-Fraud Association. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding."
   }
  ]
 }

@@ -1,0 +1,106 @@
+{
+  "event_tag": "NHCAA 2025",
+  "conference": "NHCAA Annual Training Conference (National Health Care Anti-Fraud Association)",
+  "found": true,
+  "source_url": "https://www.nhcaa.org/2025-atc-visibility-sponsors/",
+  "source_note": "PARTIAL LIST - read this note before intake. NHCAA never published a full public exhibitor list for the 2025 edition (November 18-21, 2025, Gaylord Opryland, Nashville). The complete Anti-Fraud Expo directory existed ONLY inside the conference's Map Your Show event app and web program at https://atc2025.mapyourshow.com, named as the online directory in NHCAA's own app FAQ (https://www.nhcaa.org/wp-content/uploads/2025/11/ATC_App_FAQ2025.pdf: 'please visit the web browser link - https://atc2025.mapyourshow.com'). That site has been taken down: every path under atc2025.mapyourshow.com now answers 302 to https://www.nhcaa.org/events/annual-training-conference/, and the Wayback Machine holds ZERO captures of the host (CDX query for atc2025.mapyourshow.com returns nothing; archive.org/wayback/available returns no snapshots; archive.today has none either). Booth numbers below run from 512 to 816, so the real hall was on the order of 50-70 exhibitors; the 16 recorded here are the ones with a nameable public source. The 2023 edition DID get a full list (https://www.nhcaa.org/download/29227/ , 'ATC23 Exhibitors Sponsors', 55 companies with booths) - no 2025 equivalent exists anywhere in NHCAA's WordPress media library or Download Monitor library (checked every upload and every download post dated Sep 2025 - Feb 2026).\n\nTHREE SOURCES, all named per company in the 'tier' field:\n(1) source_url above - NHCAA's own 'Thank you to our Visibility Sponsors' page for this edition, the only edition-specific sponsor page on nhcaa.org. Three companies, each a logo tile with a booth number and a typed blurb. CAVEAT: the tiles are LOGOS with empty alt text, so no company name is typed on the page except inside the blurbs; names here are read off the logo image filenames (cotiviti_web.png, HCFSLogo_FullColor-1.png, HMS_Logo_RGB.png) cross-checked against the 'Visit Us' download targets (/download/36988/ Cotiviti-sponsor2025, /download/36968/ HCFS-Sponsor2025, /download/36965/ HMS-Sponsor2025). The booth-804 tile carries an HMS logo but a Gainwell Technologies blurb - HMS is a Gainwell company and NHCAA's agenda types it 'HMS, a Gainwell Company'.\n(2) The official ATC 2025 agenda PDF, 'AGENDA AS OF NOVEMBER 14, 2025 @ 8:39 AM', at https://www.nhcaa.org/download/36636/ . It names three event-function sponsors ('Sponsored by Cotiviti, Healthcare Fraud Shield and HMS' - Welcome Reception; 'Sponsored by SecureCare' - Coffee Break; 'Sponsored by Morgan & Morgan' - Expo Hall Reception) and twelve vendors who each bought a session slot, printed as 'Presented by X, an NHCAA Platinum Supporting Member'. A paid session at ATC is a supporter placement for this edition, which is why they are recorded here; it is NOT proof of a booth unless a booth number is also given.\n(3) Each company's OWN page about this conference, fetched and read in full - these are the only places booth numbers for the non-visibility exhibitors are published. Each URL is in the company's 'tier' string.\n\nDELIBERATELY EXCLUDED, so nobody re-adds them from a search snippet: CGI - search results quote 'Booth 217' from https://www.cgi.com/us/en-us/federal/nhcaa-atc, but that URL is a perennial page CGI reuses for every edition and it answers 403 (a real block page, title 'Access denied | CGI United States') to every fetch, so the booth could belong to 2026; unverified, left out. Commence - https://commence.ai/commence-at-nhcaa-2025/ now redirects to the commence.ai homepage, whose banner reads 'Meet Commence at NAMPI 2026. Live demos at Booth #9' - that is a different conference, and no NHCAA 2025 content survives on the page. Also excluded: the NHCAA Supporting Members and NHCAA Partner Directory rosters, which are membership lists, not lists of who was in the Nashville hall.\n\nFetched 2026-08-25.",
+  "exhibitors": [
+    {
+      "name": "Cotiviti",
+      "website": null,
+      "tier": "Visibility Sponsor, Booth 816; also Welcome Reception co-sponsor and a Platinum Supporting Member session sponsor (source 1 + source 2)",
+      "sells": "Payment integrity across the claim payment life cycle - prospective payment policy management, clinical coding review, pre- and postpay chart review, and detection of wasteful, abusive or fraudulent billing patterns."
+    },
+    {
+      "name": "Healthcare Fraud Shield",
+      "website": null,
+      "tier": "Visibility Sponsor, Booth 805; also Welcome Reception co-sponsor and a Platinum Supporting Member session sponsor (source 1 + source 2). The sponsor page's blurb types the abbreviation 'HCFS'; the logo and the ATC 2025 agenda both type 'Healthcare Fraud Shield'.",
+      "sells": "Fraud, waste, abuse and error / payment integrity software for health insurers, combining AI and targeted analytics with SIU/PI services."
+    },
+    {
+      "name": "HMS",
+      "website": "https://www.gainwelltechnologies.com",
+      "tier": "Visibility Sponsor, Booth 804; also Welcome Reception co-sponsor and a Platinum Supporting Member session sponsor (source 1 + source 2). Recorded as the logo prints it; NHCAA's agenda types 'HMS, a Gainwell Company' and Gainwell's own event page (https://www.gainwelltechnologies.com/resources/events/national-health-care-anti-fraud-association-nhcaa-annual-training-conference-2025/) says 'Visit the us at the HMS booth' and calls HMS 'a key sponsor of the event'.",
+      "sells": "Digital and cloud-enabled solutions across the human services and public health ecosystem in all 50 states and US territories; FraudCapture is the fraud product named in the ATC 2025 agenda."
+    },
+    {
+      "name": "SecureCare",
+      "website": null,
+      "tier": "Coffee Break sponsor, Wednesday November 19 - 'Coffee Break in the Anti-Fraud Expo Hall ... Sponsored by SecureCare' (source 2, https://www.nhcaa.org/download/36636/)",
+      "sells": null
+    },
+    {
+      "name": "Morgan & Morgan",
+      "website": null,
+      "tier": "Expo Hall Reception sponsor, Wednesday November 19 - 'Reception in the Anti-Fraud Expo Hall ... Sponsored by Morgan & Morgan' (source 2, https://www.nhcaa.org/download/36636/)",
+      "sells": null
+    },
+    {
+      "name": "Claritev",
+      "website": null,
+      "tier": "NHCAA Platinum Supporting Member; bought the session 'Uncovering Waste and Abuse within Hospital Billing: Itemized Bill Review' (source 2, https://www.nhcaa.org/download/36636/). No booth number published.",
+      "sells": null
+    },
+    {
+      "name": "Alivia Analytics",
+      "website": null,
+      "tier": "NHCAA Platinum Supporting Member; bought the session 'Enhanced Detection: Uncovering Payment Integrity Opportunities That Fly Under the Radar' (source 2, https://www.nhcaa.org/download/36636/). No booth number published.",
+      "sells": null
+    },
+    {
+      "name": "LexisNexis",
+      "website": null,
+      "tier": "NHCAA Platinum Supporting Member; bought the session 'Uncovering Nonobvious Relationships to Enhance Program Integrity' (source 2, https://www.nhcaa.org/download/36636/). The agenda types the sponsor line as 'LexisNexis' and the speaker affiliations as 'LexisNexis Risk Solutions'. No booth number published.",
+      "sells": null
+    },
+    {
+      "name": "Deloitte",
+      "website": null,
+      "tier": "NHCAA Platinum Supporting Member; bought the session 'Collaborating Across Federal Health Programs: Perspectives from CMS, VHA, and DHA' (source 2, https://www.nhcaa.org/download/36636/). No booth number published.",
+      "sells": null
+    },
+    {
+      "name": "Shift Technology",
+      "website": "https://www.shift-technology.com",
+      "tier": "Booth 812; NHCAA Platinum Supporting Member who bought the session 'AI That Works Because You Do: Expertise at the Core of Smarter Payment Integrity' (source 2 + source 3, https://www.shift-technology.com/resources/events/nhcaa-annual-training-conference-1, which reads 'Event | November 18-21, 2025 | Nashville, TN ... Visit Us at Booth #812')",
+      "sells": "AI-powered payment integrity platform for health plans; fraud, waste and abuse detection for investigators, analysts, coders and SIU teams."
+    },
+    {
+      "name": "4LData",
+      "website": "https://4ldata.com",
+      "tier": "Booth 704; NHCAA Platinum Supporting Member who bought the session 'How Provider Intelligence & AI Agents Transform SIU Performance' (source 2 + source 3, https://4ldata.com/2025/11/06/4l-data-intelligence-at-nhcaa-atc-2025/, which reads 'Visit us at Booth #704 to see the 4L SIU Hub in action'). Recorded as the NHCAA agenda prints it ('4LData'); the company's own page uses the full name '4L Data Intelligence'.",
+      "sells": "Provider-centric fraud, waste and abuse prevention; the 4L SIU Hub for special investigations units."
+    },
+    {
+      "name": "EXL Health",
+      "website": null,
+      "tier": "NHCAA Platinum Supporting Member; bought the session 'The Fraud Hunters Toolkit: Finding the Cases Others Miss' (source 2, https://www.nhcaa.org/download/36636/). No booth number published.",
+      "sells": null
+    },
+    {
+      "name": "Codoxo",
+      "website": "https://www.codoxo.com",
+      "tier": "Booth 605; NHCAA Platinum Supporting Member who bought the session 'Exposing Hidden Schemes: How AI Transformed Oversight and Recoveries in Physical Therapy' (source 2 + source 3, https://www.codoxo.com/nchaa-conference-2025/, which reads 'Visit Us at Booth #605 ... ready to demonstrate how Codoxo's solutions can revolutionize your approach to fraud detection, compliance and program integrity')",
+      "sells": "Patented AI platform for fraud detection, compliance and program integrity."
+    },
+    {
+      "name": "MedReview",
+      "website": "https://www.medreview.us",
+      "tier": "Booth 522/524; NHCAA Platinum Supporting Member who bought the session 'The Payment Integrity Shake-Up: AI and the Human in the Loop' (source 2 + source 3, https://www.medreview.us/noteworthy/2025/11/14/national-health-care-anti-fraud-association-nhcaa-2025-annual-training-conference-2/, dated 11/14/2025: 'Join MedReview in Nashville Nov. 18-21 ... Visit us at booth #522/524')",
+      "sells": "Physician-focused prepay and postpay payment integrity solutions for payers."
+    },
+    {
+      "name": "Qlarant",
+      "website": "https://www.qlarant.com",
+      "tier": "Booth 512 (source 3 only, https://www.qlarant.com/knowledge/events/nhcaa-2025-annual-training-conference/, posted November 7, 2025: 'Visit Us at Booth 512! Qlarant specialists will be on hand at Booth 512'). Not named in any NHCAA document found.",
+      "sells": "Program integrity and fraud, waste and abuse solutions; the page names TENEX and ClaimsVue Health, a platform covering common and trending health care fraud schemes."
+    },
+    {
+      "name": "HealthEdge",
+      "website": "https://healthedge.com",
+      "tier": "Booth 810 (source 3 only, https://healthedge.com/resources/events/nhcaa-2025, which lists 'Dates: November 18th-21st', Gaylord Opryland Nashville, and 'Booth: 810'). Not named in any NHCAA document found.",
+      "sells": null
+    }
+  ],
+  "why": null
+}

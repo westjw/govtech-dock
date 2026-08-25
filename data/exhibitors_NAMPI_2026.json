@@ -1,0 +1,178 @@
+{
+  "event_tag": "NAMPI 2026",
+  "conference": "NAMPI Annual (National Association for Medicaid Program Integrity)",
+  "found": true,
+  "source_url": "https://nampi2026.vfairs.com/en/nampi-2026-annual-conference-sponsors",
+  "source_note": "Sponsor page of the official NAMPI 2026 event site (the conference runs on vFairs at nampi2026.vfairs.com; nampi.net is the association site and links to it). The page groups sponsors under tier headings and carries 23 companies, each with a logo tile that opens a modal holding the company name, its own blurb and a Website link - all four fields here come out of those tiles. The event home page at https://nampi2026.vfairs.com/ carries the same tiles in one untiered 'Event Sponsors' block and has 5 MORE companies than the tiered page: Splunk/Cisco, NCCI, Integrity Advantage, Dun & Bradstreet, Inc., Commence. Those 5 are recorded with tier null; they are on the home page and in the event app but appear under no tier heading. The event-app page https://nampi2026.vfairs.com/en/nampi-2026-app carries the identical 28 tiles, which is the cross-check. CAVEATS: (1) the 'Alivia Analyics' tile is misspelled at the source - the company's own blurb and the agenda both read 'Alivia Analytics' - the name is recorded as the list prints it and should be corrected on intake; (2) that tile is the only one of the 28 with no Website link, so its website is null; (3) two tiles have typographically broken URLs, IBM (trailing period) and BerryDunn (space after 'https://'), recorded here in working form; (4) the Health Management Systems, Inc. (HMS) tile's Website link points at gainwelltechnologies.com, which is what the list gives. No booth numbers are published anywhere on the site - the exhibit hall appears only as agenda entries - so every tier value is a sponsor level, never a booth. Event is PAST: it ran August 23-26, 2026 in Portland, OR, and in-person tickets sold out. Fetched 2026-08-25 from the live site; no archive needed.",
+  "exhibitors": [
+    {
+      "name": "Deloitte",
+      "website": "https://www.deloitte.com/us/en/Industries/government-public/about/program-integrity-services.html",
+      "tier": "Presenting",
+      "sells": "Government and Public Services program integrity solutions - monitoring, detection and investigation of fraud, waste and abuse."
+    },
+    {
+      "name": "Health Management Systems, Inc. (HMS)",
+      "website": "https://www.gainwelltechnologies.com",
+      "tier": "Diamond",
+      "sells": "Payment accuracy solutions for healthcare payers."
+    },
+    {
+      "name": "Alivia Analyics",
+      "website": null,
+      "tier": "Hospitality",
+      "sells": "AI-powered claims analytics and services for health plans and government agencies to cut improper payments; Alivia 360 platform, payment integrity and RAC support for state Medicaid agencies."
+    },
+    {
+      "name": "Public Consulting Group",
+      "website": "https://publicconsultinggroup.com",
+      "tier": "Networking Lunch",
+      "sells": "Public sector solutions implementation and operations improvement for health, education and human services agencies - regulatory compliance, reimbursement and program revenue."
+    },
+    {
+      "name": "PwC",
+      "website": "https://www.pwc.com/us/en.html",
+      "tier": "Networking Breakfast",
+      "sells": "Health Industries consulting for payers, providers, pharma and life sciences and medical device organizations, plus health policy data and insights."
+    },
+    {
+      "name": "Peraton",
+      "website": "https://www.peraton.com",
+      "tier": "Keynote Address",
+      "sells": "National security mission integration and enterprise IT for the armed forces and government agencies."
+    },
+    {
+      "name": "Codoxo",
+      "website": "https://www.codoxo.com/",
+      "tier": "Interactive Sponsor",
+      "sells": "Generative-AI cost containment platform for payers - pre-claim, prepay and postpay payment integrity and FWA detection, audit workflow and case management."
+    },
+    {
+      "name": "SmartLight Analytics",
+      "website": "https://www.smartlightanalytics.com",
+      "tier": "Platinum",
+      "sells": "Claims analysis for self-funded plans - AI plus clinical review to uncover waste, errors and overpayments in medical, pharmacy and dental billing."
+    },
+    {
+      "name": "Qlarant",
+      "website": "https://www.qlarant.com",
+      "tier": "Platinum",
+      "sells": "Fraud, waste and abuse detection for government and commercial clients - predictive modeling and analytics, investigations, audits, claims review, enrollment monitoring."
+    },
+    {
+      "name": "Pulselight",
+      "website": "https://www.pulselight.com/",
+      "tier": "Platinum",
+      "sells": "Data analytics, AI and integrated case management to detect and prevent fraud, waste and abuse across Medicaid programs."
+    },
+    {
+      "name": "Performant, a Machinify company",
+      "website": "https://www.machinify.com",
+      "tier": "Platinum",
+      "sells": "Healthcare claims platform using AI to give payers higher claim accuracy and consistency."
+    },
+    {
+      "name": "Optum",
+      "website": "https://Optum.com/stategov",
+      "tier": "Platinum",
+      "sells": "Services for government health programs, sold to states."
+    },
+    {
+      "name": "Myers & Stauffer",
+      "website": "https://myersandstauffer.com/",
+      "tier": "Platinum",
+      "sells": "Medicaid payment integrity work - eligibility reviews, claims audits and testing, estate recovery, provider cost audits, managed care audits and compliance."
+    },
+    {
+      "name": "InComm Healthcare",
+      "website": "https://www.incomm.com/healthcare/",
+      "tier": "Platinum",
+      "sells": "Rewards and incentive platform for Medicaid health plans - digital and physical member rewards, configurable benefit design, spend controls and reporting."
+    },
+    {
+      "name": "IBM",
+      "website": "https://www.ibm.com/consulting/state-local-government",
+      "tier": "Platinum",
+      "sells": "IBM Consulting services, including state and local government consulting, on an AI-powered delivery platform."
+    },
+    {
+      "name": "Healthcare Fraud Shield",
+      "website": "https://www.hcfraudshield.com",
+      "tier": "Platinum",
+      "sells": "Automated fraud, waste, abuse and error detection solutions and investigative expertise for healthcare payers."
+    },
+    {
+      "name": "Alliant Health Solutions",
+      "website": "https://www.allianthealth.org",
+      "tier": "Platinum",
+      "sells": "Non-profit administering public and private health care programs - care management, program integrity/compliance, quality management and improvement."
+    },
+    {
+      "name": "CITIZ3N",
+      "website": "https://www.citiz3n.com",
+      "tier": "Platinum",
+      "sells": "Integrated modular platforms for government agencies running ACA Marketplaces, Medicaid, Health and Human Services and government employee health benefits."
+    },
+    {
+      "name": "Federal Hearings and Appeals Services",
+      "website": "https://www.fhas.com",
+      "tier": "Gold",
+      "sells": "Independent medical review, utilization management, legal adjudication and dispute resolution for federal and state agencies and health plans."
+    },
+    {
+      "name": "America's Health Insurance Plans",
+      "website": "https://www.ahip.org/courses",
+      "tier": "Gold",
+      "sells": "Health insurance trade association selling online courses, designations and webinars on Medicaid, Medicare, dual eligibles, long-term care and fraud detection."
+    },
+    {
+      "name": "Acentra Health",
+      "website": "https://acentra.com/",
+      "tier": "Gold",
+      "sells": "Technology-enabled solutions for state Medicaid agencies - modular Medicaid Enterprise Systems, provider screening and enrollment, utilization management, care management, claims processing with pre- and post-payment review."
+    },
+    {
+      "name": "4L Data Intelligence",
+      "website": "https://4LData.com",
+      "tier": "Gold",
+      "sells": "Integr8 AI platform for health plans, self-insured companies, TPAs, workers comp plans and government health programs - operations, compliance, care management and payment performance."
+    },
+    {
+      "name": "BerryDunn",
+      "website": "https://berrydunn.com/medicaid",
+      "tier": "Gold",
+      "sells": "Medicaid consulting and assurance - MES certification and modernization, PMO and system implementation, program integrity and PERM support, eligibility verification assessments."
+    },
+    {
+      "name": "Splunk/Cisco",
+      "website": "https://www.splunk.com/en_us/solutions/industries/public-sector/sled.html",
+      "tier": null,
+      "sells": "Data platform for security and observability - enterprise observability, unified security and custom applications."
+    },
+    {
+      "name": "NCCI",
+      "website": "https://www.ncciservices.com",
+      "tier": null,
+      "sells": "Unannounced pre-enrollment and post-enrollment site visits and field inspections for moderate- and high-risk Medicaid providers."
+    },
+    {
+      "name": "Integrity Advantage",
+      "website": "https://www.integrityadvantage.com/",
+      "tier": null,
+      "sells": "Professional services for health payers - FWA program assessments, Special Investigations Unit outsourcing, investigations, medical record reviews and training."
+    },
+    {
+      "name": "Dun & Bradstreet, Inc.",
+      "website": "https://www.dnb.com/SLED",
+      "tier": null,
+      "sells": "Business data and analytics for the public sector - validating, monitoring and understanding businesses and providers across the enrollment and oversight lifecycle."
+    },
+    {
+      "name": "Commence",
+      "website": "https://commence.ai/",
+      "tier": null,
+      "sells": "Healthcare solutions combining clinical expertise, AI-powered strategy and scalable technology."
+    }
+  ],
+  "why": null
+}

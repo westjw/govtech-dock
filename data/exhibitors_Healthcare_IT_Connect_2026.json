@@ -1,0 +1,310 @@
+{
+ "event_tag": "Healthcare IT Connect 2026",
+ "conference": "State Healthcare IT Connect Summit (16th Annual, 2026 State HIT Connect Summit)",
+ "found": true,
+ "source_url": "https://healthcareitconnect.com/",
+ "source_note": "The five sponsor blocks on the conference's own home page, headed '2026 State HIT Connect Community Platinum Sponsors', '... Gold Sponsors', '... Silver Sponsors.', '... Bronze Sponsors' and '2026 State HIT Corporate Community Sponsors'. Each block is a logo ticker (div id='sponsorTicker_1'..'_5') whose companies live in a JavaScript array of image filenames plus a parallel array of ad-click links, so the tier of every company is unambiguous and so is the count: 2 Platinum, 13 Gold, 11 Silver, 16 Bronze, 8 Corporate = 50. HOW THE NAMES WERE READ, because this matters: the tickers print LOGOS with empty alt text and no typed company names anywhere in the markup, and the site has no text sponsor listing - each logo's link goes to ad-click.php?id=N, which 302s to sponsors.php?id=N, and every one of those pages is an EMPTY StarChapter stub whose only content is '<h1></h1>' (17 of them were fetched and checked). So each of the 50 logo images was downloaded from https://healthcareitconnect.starchapter.com/images/sponsors/<file> and the company name was read off the artwork itself. Names are recorded in the capitalisation the wordmark uses ('leidos', 'aws', 'CONDUENT'), which is the closest thing to 'as the list prints it' that a logo-only list has; normalise on intake. CROSS-CHECK: the same site's /Sponsors page (https://healthcareitconnect.com/Sponsors) reprints these identical 50 logo files under headings 'Platinum Sponsors 2025', 'Gold Sponsors 2025', 'Silver Sponsors 2025', 'Bronze Sponsors 2025' and 'Corporate Community Sponsors' - same files, same tiers, same counts, only the year label differs (the community's programme year runs October 1 - September 30, which is the likeliest explanation). That page DOES carry outbound company links on some tiles, and the 17 websites recorded here are taken from it by matching the identical logo filename; the other 33 tiles link to '#' or to an internal page, so their website is null. Equifax's link is recorded without its utm query. KPMG's tile links to an internal page (healthcareitconnect.com/KPMG_Silver_Community_Sponsor), not to kpmg.com, so it is null. FOUR CAVEATS ON SPECIFIC ROWS. (1) 'exhibitor_logo.png' (Gold) is a cropped image file - the artwork is cut off mid-word and reads '+HAeXcha' - and is recorded as HHAeXchange, which is the logo it is (orange HHA, blue eXchange). It is the one name here resolved rather than simply read, and no page on the site or in search results confirms it by name; treat it as the row to verify first. (2) 'Elyon' is printed with no suffix; the same site's older roster carried a different file, Elyon-Strategies-Logo-Tagline.jpg, linked to elyonstrategies.com, but this is a different file (Elyon_Enterprise_logo.png), so no website is claimed. (3) CITIZ3N's lockup also reads 'A SOFTHEON Brand', and an older CITIZ3N logo on /Sponsors linked to softheon.com. (4) 'beam', 'mirza', 'smarty', 'argyle', 'truv' and 'school of lunch' are printed exactly that way, lowercase and unqualified - several are common words and will need disambiguation on intake. NO BOOTH NUMBERS AND NO DESCRIPTIONS: the tickers carry neither, so every 'sells' is null except two logos whose second line states the business. Booth numbers do exist for this edition - Conduent's and Acentra's own press pages name booths 13 and 21 - but they live in the event app, not in any public list. WHAT WAS TRIED AND FAILED: the event portal at app.healthcareitconnect.com/event/2026-state-healthcare-it-connect-summit-or-event-portal/exhibitors/RXZlbnRWaWV3XzEyMDk5MDE= is Swapcard and renders nothing without an account; its GraphQL API (api.swapcard.com/graphql, query Core_eventExhibitorListView, taken from the app's own JS bundle) answers an anonymous request with 'The event is not live yet' / EVENT_NOT_LIVE, and so does the 2025 edition, so this is the app being closed to strangers rather than a fact about the event. The Wayback Machine holds no capture of any exhibitor page on app.healthcareitconnect.com and no capture of sponsors.php. The /Community_Sponsors page is a 2023/2024 roster and was not used. Fetched 2026-08-25 from the live site. The site rate-limits hard: 50 quick requests earned a site-wide Cloudflare 429 that took about 15 minutes to clear, so the logo pull was paced at one request every 9 seconds. SCOPE CAVEAT: this is the community sponsor roster for the 2026 programme year, which is the sponsor list the conference publishes for this edition - it is not a booth-by-booth exhibit hall list, and no public exhibit hall list exists for this edition.",
+ "exhibitors": [
+  {
+   "name": "Deloitte",
+   "website": null,
+   "tier": "Platinum Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "EQUIFAX",
+   "website": "https://theworknumber.com/solutions/industries/government-verification",
+   "tier": "Platinum Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "Optum",
+   "website": null,
+   "tier": "Gold Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "leidos",
+   "website": "https://www.leidos.com",
+   "tier": "Gold Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "Progress",
+   "website": null,
+   "tier": "Gold Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "EY",
+   "website": null,
+   "tier": "Gold Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "accenture",
+   "website": null,
+   "tier": "Gold Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "Socure",
+   "website": null,
+   "tier": "Gold Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "Acentra Health",
+   "website": "https://www.acentra.com",
+   "tier": "Gold Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "HHAeXchange",
+   "website": null,
+   "tier": "Gold Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "CITIZ3N Government Solutions",
+   "website": null,
+   "tier": "Gold Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "gainwell",
+   "website": "http://gainwelltechnologies.com",
+   "tier": "Gold Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "Google",
+   "website": null,
+   "tier": "Gold Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "salesforce",
+   "website": "https://www.salesforce.com/government",
+   "tier": "Gold Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "CONDUENT",
+   "website": null,
+   "tier": "Gold Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "GDIT",
+   "website": "https://www.gdit.com/",
+   "tier": "Silver Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "NORTH HIGHLAND",
+   "website": "https://www.northhighland.com/industry-expertise/healthcare",
+   "tier": "Silver Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "edifecs",
+   "website": null,
+   "tier": "Silver Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "CSG Government Solutions",
+   "website": "https://csgdelivers.com/",
+   "tier": "Silver Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "innovaccer",
+   "website": "https://innovaccer.com/",
+   "tier": "Silver Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "NTT DATA",
+   "website": "https://us.nttdata.com/en/industries/public-sector/government-consulting-and-advisory",
+   "tier": "Silver Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "GENESYS",
+   "website": null,
+   "tier": "Silver Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "infor",
+   "website": null,
+   "tier": "Silver Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "SteadyIQ",
+   "website": "https://www.steadyiq.com/",
+   "tier": "Silver Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "truv",
+   "website": null,
+   "tier": "Silver Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "ConfigureTek",
+   "website": null,
+   "tier": "Silver Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "aws",
+   "website": "https://aws.amazon.com/stateandlocal/health-and-human-services/cloud-resources/#medicaid",
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "PUBLIC KNOWLEDGE",
+   "website": "https://pubknow.com/",
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "Elyon",
+   "website": null,
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "verato",
+   "website": "https://www.verato.com",
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "Healthy Together",
+   "website": "https://www.healthytogether.co/",
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "HSITAG",
+   "website": null,
+   "tier": "Bronze Community Sponsor",
+   "sells": "Human Services IT Advisory Group (the expansion printed under the HSITAG mark)"
+  },
+  {
+   "name": "Adobe",
+   "website": null,
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "Berry Dunn",
+   "website": null,
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "celonis",
+   "website": null,
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "findhelp",
+   "website": null,
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "TEKsystems",
+   "website": "https://www.teksystems.com/en/industries/healthcare-technology-solutions",
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "IMO Health",
+   "website": null,
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "SIMPLIGOV",
+   "website": null,
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "InterSystems",
+   "website": null,
+   "tier": "Bronze Community Sponsor",
+   "sells": "Creative data technology (the line printed under the InterSystems mark)"
+  },
+  {
+   "name": "argyle",
+   "website": null,
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "Cúram by Merative",
+   "website": null,
+   "tier": "Bronze Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "MedImpact",
+   "website": null,
+   "tier": "Corporate Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "beam",
+   "website": null,
+   "tier": "Corporate Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "KPMG",
+   "website": null,
+   "tier": "Corporate Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "KL&A",
+   "website": "https://kunzleigh.com/",
+   "tier": "Corporate Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "mirza",
+   "website": null,
+   "tier": "Corporate Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "smarty",
+   "website": null,
+   "tier": "Corporate Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "school of lunch",
+   "website": null,
+   "tier": "Corporate Community Sponsor",
+   "sells": null
+  },
+  {
+   "name": "StackAI",
+   "website": null,
+   "tier": "Corporate Community Sponsor",
+   "sells": null
+  }
+ ],
+ "why": null
+}

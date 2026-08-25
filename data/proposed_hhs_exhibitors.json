@@ -1,0 +1,2557 @@
+[
+ {
+  "name": "4L Data Intelligence",
+  "website": "https://4LData.com",
+  "events": [
+   "NAMPI 2026",
+   "NHCAA 2025"
+  ],
+  "sells": "Integr8 AI platform for health plans, self-insured companies, TPAs, workers comp plans and government health programs - operations, compliance, care management and payment performance.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "9amHealth",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Abacus Health Solutions",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Chronic condition cost reduction for diabetes, hypertension and obesity via the Good Health Gateway platform, sold through employers.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Accenture",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Acentra Health",
+  "website": "https://www.acentra.com",
+  "events": [
+   "Healthcare IT Connect 2026",
+   "NAMPI 2026"
+  ],
+  "sells": "Technology-enabled solutions for state Medicaid agencies - modular Medicaid Enterprise Systems, provider screening and enrollment, utilization management, care management, claims processing with pre- and post-payment review.",
+  "already_on_board": true,
+  "company_id": "acentra-health",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "Adobe",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026",
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "adobe",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "Aetna",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Traditional, voluntary and consumer-directed health insurance - medical, pharmacy, dental and behavioral health plans, medical management, Medicaid health care management and workers' compensation administrative services.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "AHIP (America\u2019s Health Insurance Plans)",
+  "website": "https://www.ahip.org/courses",
+  "events": [
+   "NAMPI 2026",
+   "SALGBA 2026"
+  ],
+  "sells": "Health insurance trade association selling online courses, designations and webinars on Medicaid, Medicare, dual eligibles, long-term care and fraud detection.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Alight Solutions",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Cloud-based human capital technology; the Alight Worklife platform for benefits management and data-driven insights for public sector employees.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Alivia Analytics",
+  "website": null,
+  "events": [
+   "MESC 2026",
+   "NAMPI 2026",
+   "NHCAA 2025"
+  ],
+  "sells": "AI-powered claims analytics and services for health plans and government agencies to cut improper payments; Alivia 360 platform, payment integrity and RAC support for state Medicaid agencies.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Alliant Health Solutions",
+  "website": "https://www.allianthealth.org",
+  "events": [
+   "NAMPI 2026"
+  ],
+  "sells": "Non-profit administering public and private health care programs - care management, program integrity/compliance, quality management and improvement.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Amazon Web Services (AWS)",
+  "website": "https://aws.amazon.com/stateandlocal/health-and-human-services/cloud-resources/",
+  "events": [
+   "AIRA 2026",
+   "Healthcare IT Connect 2026",
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "amazon-web-services",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "Ameriflex",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Anthem BCBS",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Health benefits for 7M+ public sector members across 16 markets - commercial plans for government employees and Medicare Advantage for retirees; a subsidiary of Elevance Health.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Aon",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Public Sector Health and Benefits consulting and actuarial services for states, cities, counties, towns, K-12 districts, benefits pools and federal agencies.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Aptia",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Argyle",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "ArrayRX",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "athenahealth",
+  "website": "https://www.athenahealth.com/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Atlantic Management Center, Inc.",
+  "website": "https://www.syntropisolutions.com/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": "Syntropi, software that automates provider lifecycle management alongside an existing IIS, per AIRA's Corporate Partner Product Directory (listed there as \"AMCI\")",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Audacious Inquiry",
+  "website": "https://ainq.com/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Beam",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Benecard PBF",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Benefitfocus",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Benefits administration technology; a Voya Financial business.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "BenefitsMe",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Bentek",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "bentek",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "BerryDunn",
+  "website": "https://berrydunn.com/medicaid",
+  "events": [
+   "Healthcare IT Connect 2026",
+   "NAMPI 2026"
+  ],
+  "sells": "Medicaid consulting and assurance - MES certification and modernization, PMO and system implementation, program integrity and PERM support, eligibility verification assessments.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Blue Cross Blue Shield Association- Blue365",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Businessolver",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "CancerNavigator",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Candesa Pharmacy Solution",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Pharmacy benefit management; the brand is operated by Lifetime Benefit Solutions, Inc., part of The Lifetime Healthcare Companies.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Carahsoft Technology Corp",
+  "website": "https://www.carahsoft.com",
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": "Government IT solutions aggregator and reseller for the healthcare industry - healthcare technology, cybersecurity, multicloud, DevSecOps, artificial intelligence, customer experience and open source, sold to Federal, State and Local government, education and healthcare through contract vehicles.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "CareATC",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Carrot",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Carrum Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Value-based Centers of Excellence specialty care solution with bundled pricing and care navigation for self-insured employers and plan sponsors.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Celonis",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "CITIZ3N",
+  "website": "https://www.citiz3n.com",
+  "events": [
+   "Healthcare IT Connect 2026",
+   "NAMPI 2026"
+  ],
+  "sells": "Integrated modular platforms for government agencies running ACA Marketplaces, Medicaid, Health and Human Services and government employee health benefits.",
+  "already_on_board": true,
+  "company_id": "citiz3n",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "Claritev",
+  "website": null,
+  "events": [
+   "NHCAA 2025"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Cloudera",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Codoxo",
+  "website": "https://www.codoxo.com/",
+  "events": [
+   "NAMPI 2026",
+   "NHCAA 2025"
+  ],
+  "sells": "Generative-AI cost containment platform for payers - pre-claim, prepay and postpay payment integrity and FWA detection, audit workflow and case management.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Color Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Cancer care platform - oncologist-led risk identification, earlier detection, treatment management and survivorship.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Commence",
+  "website": "https://commence.ai/",
+  "events": [
+   "NAMPI 2026"
+  ],
+  "sells": "Healthcare solutions combining clinical expertise, AI-powered strategy and scalable technology.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Conduent",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "conduent",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "ConfigureTek",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Cotiviti",
+  "website": null,
+  "events": [
+   "NHCAA 2025"
+  ],
+  "sells": "Payment integrity across the claim payment life cycle - prospective payment policy management, clinical coding review, pre- and postpay chart review, and detection of wasteful, abusive or fraudulent billing patterns.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "CSG Government Solutions",
+  "website": "https://csgdelivers.com/",
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "CTI Audit Solutions",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Curam (Merative)",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026",
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "c-ram-by-merative",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "CVS Caremark",
+  "website": "https://business.caremark.com",
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Pharmacy benefit management for employer and health plan clients - real-time data to analyze trends and optimize pharmacy benefit spend.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "CVS Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "CVS Healthspire",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Population health solutions that complement existing benefits - clinical program design and member engagement.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Databricks",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Datadog",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Deloitte",
+  "website": "https://www.deloitte.com/us/en/Industries/government-public/about/program-integrity-services.html",
+  "events": [
+   "Healthcare IT Connect 2026",
+   "NAMPI 2026",
+   "NHCAA 2025"
+  ],
+  "sells": "Government and Public Services program integrity solutions - monitoring, detection and investigation of fraud, waste and abuse.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Docket",
+  "website": "https://dockethealth.com",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": "IIS-agnostic consumer immunization-record access and reminder/recall app (iOS, Android, web), per AIRA's Corporate Partner Product Directory",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Dun & Bradstreet, Inc.",
+  "website": "https://www.dnb.com/SLED",
+  "events": [
+   "NAMPI 2026"
+  ],
+  "sells": "Business data and analytics for the public sector - validating, monitoring and understanding businesses and providers across the enrollment and oversight lifecycle.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Dynavax",
+  "website": "https://www.dynavax.com/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "drug_maker",
+  "intake_note": "underwrites the conference, sells no software."
+ },
+ {
+  "name": "Edifecs",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Eli Lilly and Company",
+  "website": "https://Lilly.com",
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Pharmaceuticals - medicines reaching more than 51 million people worldwide.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Elyon",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Employers Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Empyrean",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Benefits administration SaaS platform and services for employers, serving over 6.5 million people.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Envision Technology Partners, Inc.",
+  "website": "https://www.inductivehealth.com/webiz/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": "WebIZ immunization information system platform for state and local health agencies; AIRA's Product Directory lists it as \"InductiveHealth | Envision Technology Partners\" after InductiveHealth acquired Envision in 2025",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Epic",
+  "website": "https://www.epic.com/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Equifax",
+  "website": "https://theworknumber.com/solutions/industries/government-verification",
+  "events": [
+   "Healthcare IT Connect 2026",
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Evernorth Health Services",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Integrated prescription benefit offerings through Express Scripts Pharmacy Benefit Services for health plans, employers, labor unions and government agencies.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "EXL Health",
+  "website": null,
+  "events": [
+   "NHCAA 2025"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "EY",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "EyeMed",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Federal Hearings and Appeals Services",
+  "website": "https://www.fhas.com",
+  "events": [
+   "NAMPI 2026"
+  ],
+  "sells": "Independent medical review, utilization management, legal adjudication and dispute resolution for federal and state agencies and health plans.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "findhelp",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "findhelp",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "finHealth",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Form Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Virtual obesity and cardiometabolic care led by board-certified obesity medicine physicians, sold to employers as a benefit.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Gainwell Technologies",
+  "website": "https://www.gainwelltechnologies.com/",
+  "events": [
+   "AIRA 2026",
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "gainwell-technologies",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "Galileo",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Galleri",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Multi-cancer early detection screening using DNA sequencing (GRAIL).",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Garner Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "GDIT",
+  "website": "https://www.gdit.com/",
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Genesys",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026",
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "GlaxoSmithKline",
+  "website": "http://www.gsk.com",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "drug_maker",
+  "intake_note": "underwrites the conference, sells no software."
+ },
+ {
+  "name": "Google",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Green Imaging",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Harmony Healthcare IT",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Health Advocate",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Healthcare navigation and advocacy - expert guidance plus AI-powered technology for personalized whole-person care.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Healthcare Fraud Shield",
+  "website": "https://www.hcfraudshield.com",
+  "events": [
+   "NAMPI 2026",
+   "NHCAA 2025"
+  ],
+  "sells": "Fraud, waste, abuse and error / payment integrity software for health insurers, combining AI and targeted analytics with SIU/PI services.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "HealthEdge",
+  "website": "https://healthedge.com",
+  "events": [
+   "NHCAA 2025"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Healthee",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "HealthTech Solutions",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Healthy Together",
+  "website": "https://www.healthytogether.co/",
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "healthy-together",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "Hello Heart",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Connected blood-pressure monitor, pill box and app for heart health, sold to employers, health plans and labor organizations.",
+  "already_on_board": true,
+  "company_id": "hello-heart",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "HHAeXchange",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "hhaexchange",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "Hinge Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Unified musculoskeletal (MSK) solution for employers and health plans - AI-powered care model with a multidisciplinary care team.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "HLN Consulting",
+  "website": "https://www.hln.com/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": "Immunization Calculation Engine (ICE) open-source evaluation/forecasting software plus IIS consulting and vendor-specific support, per AIRA's Corporate Partner Product Directory",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "HMS (Health Management Systems)",
+  "website": "https://www.gainwelltechnologies.com",
+  "events": [
+   "NAMPI 2026",
+   "NHCAA 2025",
+   "SALGBA 2026"
+  ],
+  "sells": "Digital and cloud-enabled solutions across the human services and public health ecosystem in all 50 states and US territories; FraudCapture is the fraud product named in the ATC 2025 agenda.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "HSITAG",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": "Human Services IT Advisory Group (the expansion printed under the HSITAG mark)",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Humana",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Humana insurance services and CenterWell healthcare services for Medicare, Medicaid, families, individuals and military service personnel.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "IBM",
+  "website": "https://www.ibm.com/consulting/government",
+  "events": [
+   "AIRA 2026",
+   "MESC 2026",
+   "NAMPI 2026"
+  ],
+  "sells": "IBM Consulting services, including state and local government consulting, on an AI-powered delivery platform.",
+  "already_on_board": true,
+  "company_id": "ibm",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "ID.me",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "id-me",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "IMA",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "IMO Health",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Included Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "InComm Healthcare",
+  "website": "https://www.incomm.com/healthcare/",
+  "events": [
+   "NAMPI 2026"
+  ],
+  "sells": "Rewards and incentive platform for Medicaid health plans - digital and physical member rewards, configurable benefit design, spend controls and reporting.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Infor",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "infor",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "Infosys Public Services",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Innovaccer",
+  "website": "https://innovaccer.com/",
+  "events": [
+   "Healthcare IT Connect 2026",
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Integrity Advantage",
+  "website": "https://www.integrityadvantage.com/",
+  "events": [
+   "NAMPI 2026"
+  ],
+  "sells": "Professional services for health payers - FWA program assessments, Special Investigations Unit outsourcing, investigations, medical record reviews and training.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "InterSystems",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": "Creative data technology (the line printed under the InterSystems mark)",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "IronBridge",
+  "website": "http://www.ironbridgecorp.com/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "J. Michael Consulting",
+  "website": "https://www.jmichael-consulting.com/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Jama Software",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "KPMG",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026",
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Kunz, Leigh & Associates (KL&A)",
+  "website": "https://kunzleigh.com/",
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Lantern",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Specialty care platform with a curated Network of Excellence for surgery, cancer care and infusions, plus dedicated care teams.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Leidos",
+  "website": "https://www.leidos.com",
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "LexisNexis Risk Solutions",
+  "website": "http://www.risk.lexisnexis.com/government",
+  "events": [
+   "AIRA 2026",
+   "MESC 2026",
+   "NHCAA 2025"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "lexisnexis-risk-solutions",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "Linea Solutions",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Lucid Diagnostics",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Lyra Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Maven Clinic",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "McGriff, A Marsh & McLennan Agency",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Employee health and benefit brokerage and consulting for public employers nationwide.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Medefy",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "MedImpact",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026",
+   "SALGBA 2026"
+  ],
+  "sells": "Independent pharmacy benefit management for commercial health plans, government programs and self-insured/employer groups.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "MedReview",
+  "website": "https://www.medreview.us",
+  "events": [
+   "NHCAA 2025"
+  ],
+  "sells": "Physician-focused prepay and postpay payment integrity solutions for payers.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Merck",
+  "website": "http://merck.com/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "drug_maker",
+  "intake_note": "underwrites the conference, sells no software."
+ },
+ {
+  "name": "MetLife",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Mirza",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "mirza",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "Moderna",
+  "website": "https://www.modernatx.com/en-US",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "drug_maker",
+  "intake_note": "underwrites the conference, sells no software."
+ },
+ {
+  "name": "Morgan & Morgan",
+  "website": null,
+  "events": [
+   "NHCAA 2025"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Myers & Stauffer",
+  "website": "https://myersandstauffer.com/",
+  "events": [
+   "NAMPI 2026"
+  ],
+  "sells": "Medicaid payment integrity work - eligibility reviews, claims audits and testing, estate recovery, provider cost audits, managed care audits and compliance.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Navigate Wellbeing Solutions",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Wellbeing platform - member engagement, point-of-care solution integration, pharmacist-led health coaching and virtual care.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Navitus Health Solutions",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Transparent pass-through pharmacy benefit management serving 18 million members; brands include Navitus, Lumicera and Archimedes. Owned by SSM Health and Costco Wholesale.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "NCCI",
+  "website": "https://www.ncciservices.com",
+  "events": [
+   "NAMPI 2026"
+  ],
+  "sells": "Unannounced pre-enrollment and post-enrollment site visits and field inspections for moderate- and high-risk Medicaid providers.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "North Highland",
+  "website": "https://www.northhighland.com/industry-expertise/healthcare",
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Novo Nordisk",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Pharmaceuticals for diabetes, obesity, rare blood and endocrine disorders.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Nox Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "NTT DATA",
+  "website": "https://us.nttdata.com/en/industries/public-sector/government-consulting-and-advisory",
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Nutanix",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "nutanix",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "Omada Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Virtual care for cardiometabolic and musculoskeletal conditions - connected devices, app and human coaching; a HIPAA-covered healthcare provider.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Opioid Free America",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Optimoz",
+  "website": "https://optimoz.com/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": "OpenHIT IIS immunization information system platform for public health agencies, per AIRA's Corporate Partner Product Directory",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Optum",
+  "website": "https://Optum.com/stategov",
+  "events": [
+   "Healthcare IT Connect 2026",
+   "NAMPI 2026"
+  ],
+  "sells": "Services for government health programs, sold to states.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Optum Rx",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Oracle Health",
+  "website": "https://www.oracle.com/health/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Oshi Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Partnership Health Centers",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Pelago",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Peraton",
+  "website": "https://www.peraton.com",
+  "events": [
+   "NAMPI 2026"
+  ],
+  "sells": "National security mission integration and enterprise IT for the armed forces and government agencies.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Performant, a Machinify company",
+  "website": "https://www.machinify.com",
+  "events": [
+   "NAMPI 2026"
+  ],
+  "sells": "Healthcare claims platform using AI to give payers higher claim accuracy and consistency.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Personify Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Third-party administration, wellbeing and care navigation combined in one personalized health platform.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Pfizer",
+  "website": "https://www.pfizer.com/science/focus-areas/vaccines",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "drug_maker",
+  "intake_note": "underwrites the conference, sells no software."
+ },
+ {
+  "name": "Pomelo Care",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Virtual care across women's health - preconception, pregnancy, pediatric care and hormonal health (peri/menopause) for 25M covered lives.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Progress Software",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026",
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Progyny",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Public Consulting Group",
+  "website": "https://publicconsultinggroup.com",
+  "events": [
+   "NAMPI 2026"
+  ],
+  "sells": "Public sector solutions implementation and operations improvement for health, education and human services agencies - regulatory compliance, reimbursement and program revenue.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Public Knowledge",
+  "website": "https://pubknow.com/",
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Pulselight",
+  "website": "https://www.pulselight.com/",
+  "events": [
+   "NAMPI 2026"
+  ],
+  "sells": "Data analytics, AI and integrated case management to detect and prevent fraud, waste and abuse across Medicaid programs.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "PwC",
+  "website": "https://www.pwc.com/us/en.html",
+  "events": [
+   "NAMPI 2026"
+  ],
+  "sells": "Health Industries consulting for payers, providers, pharma and life sciences and medical device organizations, plus health policy data and insights.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Qlarant",
+  "website": "https://www.qlarant.com",
+  "events": [
+   "NAMPI 2026",
+   "NHCAA 2025"
+  ],
+  "sells": "Fraud, waste and abuse detection for government and commercial clients - predictive modeling and analytics, investigations, audits, claims review, enrollment monitoring.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Quantum Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Healthcare navigation for 8M+ members - single point of contact, clinical expertise and predictive AI; acquired Embold Health in 2025.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Quizzify",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "RazorMetrics",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Retiree First",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "End-to-end retiree benefits management - designs, implements, manages and administers Medicare benefits for plan sponsors, brokers and consultants.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Rightway",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Rubrik",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Salesforce",
+  "website": "https://www.salesforce.com/government",
+  "events": [
+   "Healthcare IT Connect 2026",
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "salesforce",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "Sanofi",
+  "website": "https://www.sanofi.us/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "drug_maker",
+  "intake_note": "underwrites the conference, sells no software."
+ },
+ {
+  "name": "SAS",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "School of Lunch",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "SecureCare",
+  "website": null,
+  "events": [
+   "NHCAA 2025"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Segal",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Consulting to plan sponsors on health care, retirement, compensation and human resources programs; founded 1939, focused on public sector plan sponsors.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "ServiceNow",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Sharecare",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Shift Technology",
+  "website": "https://www.shift-technology.com",
+  "events": [
+   "NHCAA 2025"
+  ],
+  "sells": "AI-powered payment integrity platform for health plans; fraud, waste and abuse detection for investigators, analysts, coders and SIU teams.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "SimpliGov",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "simpligov",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "SlateRx",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "SmartLight Analytics",
+  "website": "https://www.smartlightanalytics.com",
+  "events": [
+   "NAMPI 2026",
+   "SALGBA 2026"
+  ],
+  "sells": "Claims analysis for self-funded plans - proprietary AI plus clinical review to find waste, errors and overpayments in medical, pharmacy and dental billing.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Smarty",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Snowflake",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Socure",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Solera Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Sourcewell",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Speridian",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Splunk (Cisco)",
+  "website": "https://www.splunk.com/en_us/solutions/industries/public-sector/sled.html",
+  "events": [
+   "MESC 2026",
+   "NAMPI 2026"
+  ],
+  "sells": "Data platform for security and observability - enterprise observability, unified security and custom applications.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Spring Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "StackAI",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "STChealth",
+  "website": "http://www.stchealth.com",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": "STC|ONE IIS, a SaaS immunization information system for public health immunization programs, per AIRA's Corporate Partner Product Directory",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "SteadyIQ",
+  "website": "https://www.steadyiq.com/",
+  "events": [
+   "Healthcare IT Connect 2026",
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "steadyiq",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "Strategic Solutions Group",
+  "website": "https://www.ssg-llc.com/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": "Casetivity-IIS, a modular web-based immunization information system, per AIRA's Corporate Partner Product Directory",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Sword Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "TEKsystems",
+  "website": "https://www.teksystems.com/en/industries/healthcare-technology-solutions",
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Telligen",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "TELUS Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Benefits and pension administration technology and outsourcing for public sector organizations; SaaS, co-sourcing or full outsourcing for 10M+ participants.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "The Hartford",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "The Phia Group",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "TransUnion",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Truv",
+  "website": null,
+  "events": [
+   "Healthcare IT Connect 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Truven by Merative",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Twin Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "AI Digital Twin metabolic care with clinical support, sold to employers and health plans.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Unite Us",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": true,
+  "company_id": "unite-us",
+  "intake_bucket": "already_tracked",
+  "intake_note": "already in companies.json."
+ },
+ {
+  "name": "UnitedHealthCare Retiree Solutions",
+  "website": "https://uhc.com/retiree",
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Group-sponsored retiree coverage for 1.7M+ retirees; customizable Medicare Advantage plans with or without prescription drug coverage.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Vault Technologies, Inc.",
+  "website": "https://www.vaulttechinc.com/",
+  "events": [
+   "AIRA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Vera Whole Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Verato",
+  "website": "https://www.verato.com",
+  "events": [
+   "Healthcare IT Connect 2026",
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Via Benefits",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Individual marketplace health insurance and spending account administration for employers, plan sponsors, employees and retirees.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Virta Health",
+  "website": "https://www.virtahealth.com",
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "AI-powered individualized nutrition therapy to reverse metabolic disease, sold to employers, payers and pharmacy benefit managers.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "WebMD Health Services",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Employee wellbeing programs and engagement platform for 3,500+ organizations.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Wellworks For You",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "WEX",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ },
+ {
+  "name": "Wiz",
+  "website": null,
+  "events": [
+   "MESC 2026"
+  ],
+  "sells": null,
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "core",
+  "intake_note": "sells to a state or local agency. The bucket worth intaking."
+ },
+ {
+  "name": "Wondr Health",
+  "website": null,
+  "events": [
+   "SALGBA 2026"
+  ],
+  "sells": "Preventive weight and GLP-1 management - digital behavioral program with configurable GLP-1 coverage strategies, coaching and connected devices.",
+  "already_on_board": false,
+  "company_id": null,
+  "intake_bucket": "employer_benefits",
+  "intake_note": "SALGBA only. Government-as-EMPLOYER - an HR department buying coverage for its own staff - not an agency buying software for citizens. A different buyer from the one this board tracks."
+ }
+]
