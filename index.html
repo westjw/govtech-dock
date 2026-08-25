@@ -204,6 +204,8 @@
   .cfnums .q{color:var(--dim)}
   .cfzero{color:var(--faint)}
   .cfmeta{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums}
+  .cfcount{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums;
+    margin-left:auto;white-space:nowrap}
   .cfrow[aria-disabled="true"]{cursor:default}
   .cfrow[aria-disabled="true"]:hover .cfname{color:inherit}
 
@@ -4067,6 +4069,8 @@ function conferences(){
   const swept=rows.filter(r=>r.swept).length;
   const tot=rows.reduce((n,r)=>n+r.companies,0);
 
+  const depts=[...new Set(rows.map(r=>r.block).filter(Boolean))].sort();
+
   $("#view").innerHTML=`
   <div class="phead">
     <h2 class="ptitle">Every govtech conference we know of</h2>
@@ -4078,10 +4082,71 @@ function conferences(){
       An event with no companies beside it is one we have not mined yet &mdash;
       that is a fact about us, not about the conference.</p>
   </div>
-  ${order.map(b=>`
-    <div class="cfblock">
-      <h3>${esc(b)}</h3>
-      ${blocks[b].map(r=>`
+
+  <!-- A 118-row catalogue needs a way in. The department dropdown is the cut
+       a person actually thinks in - "I sell to public safety" - and the box
+       is for when they already know the name. -->
+  <div class="filters" id="cf-bar">
+    <input type="search" id="cf-q" placeholder="Conference name"
+           aria-label="Search conferences" style="min-width:220px">
+    <select id="cf-dept" aria-label="Department">
+      <option value="">Every department</option>
+      ${depts.map(d=>`<option value="${esc(d)}">${esc(d)}</option>`).join("")}
+    </select>
+    <select id="cf-mined" aria-label="Whether we have mined it">
+      <option value="">Mined or not</option>
+      <option value="1">Exhibitors on file</option>
+      <option value="0">Not mined yet</option>
+    </select>
+    <select id="cf-flag" aria-label="Flagship only">
+      <option value="">Any size</option>
+      <option value="1">Flagship events only</option>
+    </select>
+    <span class="cfcount" id="cf-n"></span>
+  </div>
+  <div id="cf-list"></div>`;
+
+  const paint=()=>{
+    const q=($("#cf-q").value||"").trim().toLowerCase();
+    const dept=$("#cf-dept").value, mined=$("#cf-mined").value,
+          flag=$("#cf-flag").value;
+    const keep=r=>
+      (!q||(r.name||"").toLowerCase().includes(q)
+         ||(r.tag||"").toLowerCase().includes(q)
+         ||(r.department||"").toLowerCase().includes(q))
+      &&(!dept||r.block===dept)
+      &&(!mined||(mined==="1"?r.companies>0:r.companies===0))
+      &&(!flag||r.flagship);
+    const shown=rows.filter(keep);
+    /* The count says what is on screen AND what it is out of, because "12
+       events" alone reads as the whole catalogue to somebody who did not
+       notice a filter was on. */
+    $("#cf-n").textContent=shown.length===rows.length
+      ? `${rows.length} events`
+      : `${shown.length} of ${rows.length} events`;
+    const g={};
+    shown.forEach(r=>{(g[r.block||"Other"]=g[r.block||"Other"]||[]).push(r)});
+    const keys=Object.keys(g).sort();
+    $("#cf-list").innerHTML=keys.length?keys.map(b=>cfBlockHTML(b,g[b])).join(""):
+      `<div class="empty">${GHOST}No conference matches that.<br>
+        <span class="sub">That is ${rows.length} events checked, not a claim
+        that no such conference exists.</span></div>`;
+    wireCfRows();
+  };
+  ["cf-q","cf-dept","cf-mined","cf-flag"].forEach(id=>{
+    const el=$("#"+id); if(!el)return;
+    el.addEventListener(el.tagName==="SELECT"?"change":"input",paint);
+  });
+  paint();
+  return;
+}
+
+function cfBlockHTML(b,list){
+  return `<div class="cfblock"><h3>${esc(b)}</h3>${list.map(r=>cfRowHTML(r)).join("")}</div>`;
+}
+
+function cfRowHTML(r){
+  return `
         <button type="button" class="cfrow" data-tag="${esc(r.tag)}"
                 ${r.companies?"":'aria-disabled="true"'}>
           <span class="cfname">${esc(r.name)}</span>
@@ -4094,26 +4159,24 @@ function conferences(){
                  <span class="${r.hiring?"":"cfzero"}"><b>${r.hiring}</b> hiring</span>`
               : `<span class="cfzero">not mined yet</span>`}
           </span>
-        </button>`).join("")}
-    </div>`).join("")}`;
+        </button>`;
+}
 
+function wireCfRows(){
   document.querySelectorAll(".cfrow").forEach(b=>{
     if(b.getAttribute("aria-disabled")==="true"){
-      // nothing to open. A row that looks clickable and does nothing is worse
-      // than one that plainly says there is nothing behind it yet.
       b.style.cursor="default";
       return;
     }
     b.onclick=()=>{
       ROLE=null; tab="companies"; render();
-      /* Hand the tag to the companies view rather than filtering here, so
-         what you land on is a real board state you can narrow and share. */
       const box=$("#c-q");
       if(box){ box.value="conf:"+b.dataset.tag;
                box.dispatchEvent(new Event("input",{bubbles:true})); }
     };
   });
 }
+
 
 const VIEWS=Object.assign(Object.create(null),
   {home,jobs,companies,conferences,saved:savedView,intel,how});
