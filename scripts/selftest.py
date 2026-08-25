@@ -1601,6 +1601,35 @@ def check_identity_guard() -> int:
     return errors
 
 
+def check_beak_is_never_text() -> int:
+    """Beak may colour a border or a background. Never text.
+
+    data/brand.json says it in one line - "Beak is never text" - and CLAUDE.md
+    restates it. A header rebuild broke it in seven places at once, because
+    Beak is the obvious colour to reach for on a Penguin band and the contrast
+    ratio it produces (7.5:1) passes every automated check there is.
+
+    That is exactly why this exists. The rule is not "keep it readable", it is
+    a decision the kit already made about what this colour is FOR, and a
+    passing contrast ratio is not permission to overrule it. Nothing at
+    runtime can catch a colour that looks fine.
+    """
+    import re
+    errors = 0
+    # `color:` but not `border-color:` / `background-color:` / `outline-color:`
+    bad = re.compile(r"(?<![-\w])color\s*:\s*var\(\s*--beak\s*\)", re.I)
+    for name in ("index.html", "alerts.html"):
+        src = (ROOT / name).read_text()
+        for m in bad.finditer(src):
+            line = src[:m.start()].count("\n") + 1
+            ctx = src[max(0, m.start() - 60):m.start()].splitlines()[-1:]
+            errors += fail(f"{name}:{line}: --beak used as a TEXT colour"
+                           f"{' in ' + ctx[0].strip() if ctx else ''} - "
+                           f"brand.json says Beak is never text. Use it on a "
+                           f"border or a background instead.")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -1930,6 +1959,7 @@ def main() -> int:
     errors += check_writes_name_their_author()
     errors += check_header_shared()
     errors += check_identity_guard()
+    errors += check_beak_is_never_text()
     errors += check_brand()
     errors += check_admin_game()
     errors += check_admin_gates()

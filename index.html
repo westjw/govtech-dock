@@ -86,7 +86,7 @@
     border-radius:50%;padding:3px;flex:none}
   .brand .word{font-family:var(--font-heading);font-weight:800;font-size:25px;
     letter-spacing:.02em;line-height:1;white-space:nowrap}
-  .brand:hover .word{color:var(--beak)}
+  .brand:hover .word{text-decoration:underline;text-underline-offset:4px}
   h1{font-size:20px;letter-spacing:.04em}
 
   nav{display:flex;gap:var(--space-4);flex-wrap:wrap}
@@ -95,7 +95,7 @@
     color:var(--hdr-mute);cursor:pointer;border-bottom:2px solid transparent}
   nav button:hover{color:var(--hdr-ink)}
   nav button[aria-selected=true]{color:var(--hdr-ink);border-bottom-color:var(--beak)}
-  .tabn{font-variant-numeric:tabular-nums;color:var(--beak);font-size:13px}
+  .tabn{font-variant-numeric:tabular-nums;color:var(--hdr-ink);font-size:13px}
 
   /* Circular actions, top right. Round is a deliberate exception to the
      --radius:0 rule asserted at the top of this file: these are the only
@@ -108,7 +108,8 @@
     place-items:center;padding:0;font:inherit;position:relative}
   .cbtn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;
     stroke-linecap:round;stroke-linejoin:round}
-  .cbtn:hover{border-color:var(--beak);color:var(--beak)}
+  .cbtn:hover{border-color:var(--beak);color:var(--hdr-ink);
+    background:rgba(245,166,35,.12)}
   .cbtn.primary{background:var(--beak);border-color:var(--beak);color:#1F2536}
   .cbtn.primary:hover{filter:brightness(1.08);color:#1F2536}
   /* A saved-count pip, because the whole point of an account here is that the
@@ -204,7 +205,7 @@
   .slide.on{display:block;animation:bfade .45s ease}
   @keyframes bfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
   .slide .kicker{font-size:13px;letter-spacing:.1em;text-transform:uppercase;
-    font-weight:700;color:var(--beak);margin-bottom:var(--space-2)}
+    font-weight:700;color:var(--hdr-mute);margin-bottom:var(--space-2)}
   .slide h2{font-family:var(--font-heading);font-weight:800;font-size:42px;
     line-height:1.05;letter-spacing:-.02em;margin:0 0 var(--space-3)}
   .slide h2 .num{font-variant-numeric:tabular-nums}
@@ -223,7 +224,7 @@
   .bnav button{width:34px;height:34px;border-radius:50%;
     border:1px solid var(--hdr-line);background:transparent;color:var(--hdr-ink);
     cursor:pointer;display:grid;place-items:center;padding:0;font:inherit}
-  .bnav button:hover{border-color:var(--beak);color:var(--beak)}
+  .bnav button:hover{border-color:var(--beak);color:var(--hdr-ink)}
   .bnav svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;
     stroke-linecap:round;stroke-linejoin:round}
   .bdots{display:flex;gap:6px;margin-right:var(--space-2)}
