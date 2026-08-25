@@ -142,6 +142,37 @@
     border-bottom:1px solid transparent}
   .blowup:hover{border-bottom-color:var(--accent)}
 
+  /* ------------------------------------------------------- home, below the fold
+     A job board whose front door carried no jobs and no search box. The banner
+     says what this is; these say what is in it, and let somebody act without
+     first working out which tab to press. */
+  .hsearch{display:flex;gap:var(--space-2);margin-bottom:var(--space-8)}
+  .hsearch input{flex:1;padding:var(--space-4);font:inherit;font-size:16px;
+    border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+  .hsearch input:focus{outline:2px solid var(--accent);outline-offset:-2px}
+  .hsearch button{font:inherit;font-size:15px;font-weight:700;padding:0 var(--space-6);
+    border:0;background:var(--ink);color:var(--bg);cursor:pointer;white-space:nowrap}
+  .hsearch button:hover{background:var(--accent)}
+  .hsec{display:flex;align-items:baseline;gap:var(--space-3);
+    margin:0 0 var(--space-4)}
+  .hsec h3{font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0}
+  .hsec a{font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;
+    margin-left:auto;cursor:pointer}
+  .hsec a:hover{text-decoration:underline}
+  .hrole{display:flex;gap:var(--space-3);align-items:center;padding:var(--space-3) 0;
+    border-top:1px solid var(--line);cursor:pointer;text-decoration:none;color:inherit}
+  .hrole:hover .ht{color:var(--accent)}
+  .hrole .ht{font-weight:600;font-size:15px;line-height:1.3}
+  .hrole .hm{font-size:13px;color:var(--dim);margin-top:2px}
+  .hrole .hp{margin-left:auto;font-size:13.5px;font-weight:600;white-space:nowrap;
+    font-variant-numeric:tabular-nums}
+  .hsecs{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-8)}
+  .hsecs button{font:inherit;font-size:13.5px;padding:var(--space-2) var(--space-4);
+    border:1px solid var(--line);background:var(--panel);color:var(--ink);
+    cursor:pointer}
+  .hsecs button:hover{border-color:var(--accent);color:var(--accent)}
+  .hsecs b{font-variant-numeric:tabular-nums;color:var(--dim);font-weight:600}
+
   .near{display:inline-flex;gap:var(--space-1);align-items:center}
   .near input{width:170px;padding:var(--space-2) var(--space-3);font:inherit;
     font-size:13px;border:1px solid var(--line);background:var(--panel);
@@ -3829,7 +3860,71 @@ function home(){
     </div>`:""}
   </div>`:"";
 
+  /* THE NEWEST QUOTA ROLES, as real rows you can click. A job board whose
+     front page carried no jobs made a visitor work out which tab to press
+     before they could see a single thing they came for.
+
+     Sorted by first_seen, and only ever roles this board can actually open -
+     no teaser, no "sign up to see". Six, because the point is to prove there
+     is something here and then get out of the way. */
+  const newest=[...q].sort((a,b)=>
+    String(b.first_seen||"").localeCompare(String(a.first_seen||""))).slice(0,6);
+
+  /* WHAT THEY SELL INTO. The sector vocabulary is the thing this board knows
+     that a general job board does not, and it was reachable only by opening a
+     dropdown inside another tab.
+
+     Counted in ROWS, not openings, and that is deliberate against this file's
+     usual habit. Everywhere else the headline counts openings, because one
+     requisition posted to 93 cities is one job. But a NUMBER ON A BUTTON is a
+     promise about what pressing it will show, and the board's own count is
+     rows: offering "Public Safety 143" and then landing on "161 roles" is the
+     small lie drawCos already has a rule against. The number that appears
+     wins.
+     Counted with inSector(), the SAME predicate the board filters by, not by
+     reading p.sector. A vendor can sell into several departments and the
+     filter finds it under any of them, so counting the primary alone
+     promised Parks & Rec 109 and delivered 119. The only way a promise and a
+     result cannot drift is to compute both the same way. */
+  // the same list the sector dropdown is built from, one line up in jobs()
+  const ALL_SECTORS=[...new Set(D.postings.map(x=>x.sector).filter(Boolean))];
+  const bySec={};
+  q.forEach(p=>{
+    ALL_SECTORS.forEach(name=>{ if(inSector(p,name))
+      bySec[name]=(bySec[name]||0)+1 });
+  });
+  const secs=Object.entries(bySec).sort((a,b)=>b[1]-a[1]).slice(0,8);
+
   $("#view").innerHTML=banner+`
+  <div class="hsearch">
+    <input id="h-q" type="search" placeholder="Role, skill, or company"
+           aria-label="Search roles">
+    <button id="h-go" type="button">Search</button>
+  </div>
+
+  ${newest.length?`
+  <div class="hsec"><h3>Newest sales roles</h3>
+    <a id="h-all" role="button" tabindex="0">All ${q.length.toLocaleString()} &rarr;</a></div>
+  <div style="margin-bottom:var(--space-8)">
+    ${newest.map(r=>{
+      const age=when(r.first_seen,D.generated);
+      const pay=payText(r.comp);
+      return `<a class="hrole" data-role="${esc(r.id)}" role="button" tabindex="0">
+        ${tileHTML(r.company,r.company_id,"tile")}
+        <span><span class="ht">${esc(r.title)}</span>
+          <span class="hm">${esc(r.company)}${r.location?" &middot; "+esc(r.location):""}${
+            age.txt?" &middot; "+esc(age.txt):""}</span></span>
+        ${pay?`<span class="hp">${esc(pay)}</span>`:""}
+      </a>`;}).join("")}
+  </div>`:""}
+
+  ${secs.length?`
+  <div class="hsec"><h3>By what they sell into</h3></div>
+  <div class="hsecs">
+    ${secs.map(([name,n])=>`<button type="button" data-sec="${esc(name)}">
+      ${esc(name)} <b>${n}</b></button>`).join("")}
+  </div>`:""}
+
   <div class="hcards">
     <a class="hcard" id="h-jobs" href="#">
       <span class="big">${q.length.toLocaleString()}</span>
@@ -3844,6 +3939,34 @@ function home(){
          their board is — or that they have none we could find.</p>
     </a>
   </div>`;
+
+  /* Hand the query to the board rather than filtering here: one search
+     implementation, and the result is a real board state somebody can then
+     narrow, share and come back to. */
+  const goSearch=()=>{
+    const v=($("#h-q")||{}).value||"";
+    stopBanner(); ROLE=null; tab="jobs"; render();
+    const box=$("#j-q");
+    if(box&&v.trim()){ box.value=v; box.dispatchEvent(new Event("input",{bubbles:true})); }
+  };
+  const hq=$("#h-q"), hgo=$("#h-go");
+  if(hgo)hgo.onclick=goSearch;
+  if(hq)hq.onkeydown=e=>{ if(e.key==="Enter"){e.preventDefault();goSearch()} };
+  const all=$("#h-all");
+  if(all){ all.onclick=()=>{stopBanner();ROLE=null;tab="jobs";render()};
+           all.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();all.click()}}; }
+  document.querySelectorAll(".hrole").forEach(a=>{
+    const go=()=>{stopBanner();openRole(a.dataset.role)};
+    a.onclick=go;
+    a.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}};
+  });
+  document.querySelectorAll(".hsecs button").forEach(b=>{
+    b.onclick=()=>{
+      stopBanner(); ROLE=null; tab="jobs"; render();
+      const sel=$("#j-sec-pill");
+      if(sel){ sel.value=b.dataset.sec; sel.dispatchEvent(new Event("change",{bubbles:true})); }
+    };
+  });
 
   slides.forEach((s,i)=>{
     const b=document.querySelector(`.go[data-go="${i}"]`);
