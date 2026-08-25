@@ -123,10 +123,26 @@ async function boot(){
   const stat=(n,l,cls)=>{const d=el("div","stat"+(cls?" "+cls:""));
     d.appendChild(el("strong",null,String(n)));
     d.appendChild(el("span",null,l));strip.appendChild(d)};
-  stat(remaining("vendors")+remaining("miscategorized"),"decisions waiting on you");
+  /* "decisions waiting on you" counted only the two queues THIS page carries
+     and said it like it was all of them: 480 against a real 2,770 across
+     fourteen queues, a 5.8x undercount in the flattering direction. The
+     phone admin is deliberately a two-queue tool - vendor scope and wrong
+     bucket are the judgement calls that work on a small screen - so the
+     honest label names its own scope rather than implying it is the whole
+     backlog. */
+  stat(remaining("vendors")+remaining("miscategorized"),"waiting in these two queues");
   stat(D.visible_now||0,"wrong on the public site now","amber");
-  if(g.why_coverage!==null&&g.why_coverage!==undefined)
-    stat(g.why_coverage+"%","of your rulings say why","green");
+  /* A PERCENTAGE WITHOUT ITS DENOMINATOR IS A BADGE, NOT A MEASUREMENT.
+     This read "100% of your rulings say why" off nine rulings. That is not a
+     craft signal, it is an achievement, and the whole point of why-coverage
+     is that it stays honest while the number of rulings is small. The count
+     was already in the payload as why_of; it just was not shown. */
+  if(g.why_coverage!==null&&g.why_coverage!==undefined){
+    const n=g.rulings_total;
+    stat(g.why_coverage+"%",
+         n?`of your ${n} ruling${n===1?"":"s"} say why`:"of your rulings say why",
+         "green");
+  }
   const yl=el("div","yourline");
   yl.appendChild(el("span",null,
     `${g.today||0} today · best day this month ${g.best_30||0}`));
