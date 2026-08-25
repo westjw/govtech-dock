@@ -271,6 +271,33 @@ def q_duplicates(companies, board) -> list:
         if k:
             g[k].append(c)
     by_id = {c["id"]: c for c in companies}
+
+    # THE SAME WEBSITE. Two records pointing at one domain are one company
+    # under two spellings, or a parent and a division - either way somebody
+    # has to say which, and neither the name test nor the logo test finds
+    # them all. 39 domains on file are shared: revize / revize-government-
+    # websites, eagleview / eagleview-technologies, aurigo-software /
+    # aurigo-software-technologies-inc. Free to compute and independent of
+    # both other signals, which is what makes it worth having.
+    dom = collections.defaultdict(list)
+    for c in companies:
+        w = (c.get("website") or "").strip()
+        if not w:
+            continue
+        d = re.sub(r"^https?://(www\.)?", "", w).rstrip("/").split("/")[0].lower()
+        # a shared HOST is only a duplicate signal when it is the company's own
+        # site; two firms on one platform are not one firm
+        if d and d not in ("sites.google.com", "wixsite.com", "squarespace.com",
+                           "godaddysites.com", "linkedin.com", "facebook.com"):
+            dom[d].append(c)
+    for d, v in dom.items():
+        if len(v) < 2:
+            continue
+        key = "site:" + d
+        if not any(ident(m["name"]) and len(g.get(ident(m["name"]), [])) > 1
+                   for m in v):
+            g[key] = v
+
     try:
         import acquisitions
         for cid, f in acquisitions._logo_families().items():
