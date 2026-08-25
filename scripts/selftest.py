@@ -1954,6 +1954,15 @@ for (const [s] of CASES) {
   out.ranges.push([g("DTSTART;VALUE=DATE"), g("DTEND;VALUE=DATE")]);
 }
 for (const s of REFUSE) out.refused.push(calRange(s) === null);
+/* isPast decides whether a row is labelled a past edition. Anchored to fixed
+   dates either side of a known point rather than to "now", so the check does
+   not start failing on its own the day the catalogue rolls over. */
+out.past = {
+  clearlyOver:   isPast("November 19-21, 2025"),
+  clearlyAhead:  isPast("July 25-28, 2099"),
+  unparseable:   isPast("Conference: November 17-19, 2026; Expo: November 18-19, 2026"),
+  noDates:       isPast(""),
+};
 const one = icsFor({name: "A, B; C", dates: "March 1-4, 2027",
                     city: "Washington, DC", tag: "t"});
 out.loc = /LOCATION:Washington\\\\, DC/.test(one) && /SUMMARY:A\\\\, B\\\\; C/.test(one);
@@ -1988,6 +1997,22 @@ console.log(JSON.stringify(out));
                        "not escaped, so the field splits into two")
     if not got.get("crlf"):
         errors += fail("ics: lines must end CRLF per RFC 5545")
+
+    # The past-edition marker. Five of these rows exist deliberately - they
+    # were added to be mined for exhibitor lists - so the date is correct and
+    # the row was still misleading until it said which edition it is.
+    past = got.get("past") or {}
+    if not past.get("clearlyOver"):
+        errors += fail("a conference that ended in 2025 is not marked a past "
+                       "edition, so it reads as one you can still fly to")
+    if past.get("clearlyAhead"):
+        errors += fail("an upcoming conference is marked as a past edition")
+    for key, why in (("unparseable", "dates we cannot read"),
+                     ("noDates", "a row with no dates")):
+        if past.get(key):
+            errors += fail(f"{why} must not be called a past edition - we do "
+                           f"not know when it is, and a guess either way is "
+                           f"a claim we cannot support")
 
     # Anything in the live catalogue that the parser refuses must be a row we
     # know about, not a shape that quietly lost its button.

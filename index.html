@@ -232,6 +232,14 @@
      dates we hold as prose we cannot resolve gets NO button rather than a
      button that puts the wrong week in somebody's calendar - the same
      asymmetry the rest of this board is built on. */
+  /* An edition that has already happened. The catalogue records these
+     deliberately - five were added to be mined for their exhibitor lists, and
+     their notes say so - but a row reading "November 19-21, 2025" beside every
+     upcoming event reads as an event you can still fly to. The date is true and
+     the row was still lying by omission. */
+  .cfpast{font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    font-weight:700;color:var(--panel);background:var(--dim);padding:1px 5px;
+    white-space:nowrap}
   .cfcal{color:var(--dim);text-decoration:none;font:inherit;font-size:12.5px;
     border:1px solid var(--line);padding:2px 7px;white-space:nowrap;
     background:var(--panel);cursor:pointer}
@@ -4269,6 +4277,8 @@ function cfRowHTML(r){
           <span class="cfname">${esc(r.name)}</span>
           ${r.flagship?`<span class="cfflag">flagship</span>`:""}
           ${r.dates?`<span class="cfmeta">${esc(r.dates)}</span>`:""}
+          ${isPast(r.dates)?`<span class="cfpast"
+             title="This edition has already happened">past edition</span>`:""}
           ${r.city?`<span class="cfmeta">${esc(r.city)}</span>`:""}
           <span class="cfnums">
             ${r.companies
@@ -4424,6 +4434,16 @@ function mkRange(y1,m1,d1,y2,m2,d2){
   if(e.getFullYear()!==y2||e.getMonth()!==m2||e.getDate()!==d2)return null;
   if(e<s)return null;
   return {start:s,end:e};
+}
+
+/* Compared against the day the page is opened, not the day the board was
+   built: a board rebuilt nightly would still call yesterday's event upcoming
+   for a reader who left the tab open. */
+function isPast(dates){
+  const r=calRange(dates);
+  if(!r)return false;
+  const t=new Date(); t.setHours(0,0,0,0);
+  return r.end<t;
 }
 
 const ymd=d=>`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`;
