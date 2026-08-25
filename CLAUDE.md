@@ -836,6 +836,31 @@ to prevent.
 - Python: stdlib + requests + openpyxl only. Match existing style (typed,
   small functions, no classes where a function does). Comments explain WHY.
 
+## build_board.py is the crawler, not a formatter (noted 2026-08-25)
+
+`python3 scripts/build_board.py` re-fetches every job board it has a ref for.
+It is the refresh job wearing a build job's name, and it takes 13-20 minutes.
+
+That matters because a change touching NO postings - moving a sector, filling
+in conference dates, adding a field to the conference rows - still costs a
+full crawl of a few hundred third-party boards before the site shows it. Four
+such rebuilds ran on 2026-08-25 for metadata-only edits, which is a lot of
+traffic aimed at other people's servers to redraw a tab.
+
+There is no offline mode. `--limit` and `--company` skip work but refuse to
+write the full board (correctly - a partial run overwriting the full board
+destroyed the dataset once). What is missing is a `--reuse-postings` that
+takes the postings out of the existing board.json, skips fetching entirely,
+and re-derives orgs, sectors, conferences, cities and totals from them.
+
+NOT built, deliberately: the postings flow through the fetch loop that also
+builds `orgs`, so reusing them is not a one-line substitution, and a bug in
+this script corrupts the file the public site reads. It needs a careful pass
+with the owner, not a quick one. If it is built, the payload MUST record that
+its postings were reused and when they were actually crawled - a board that
+reports a fresh `generated` date over week-old postings is the same lie as
+reporting "no jobs here" when nobody looked.
+
 ## Common tasks
 
 - **Refresh everything:** `python3 scripts/refresh.py` (add `--dry-run` to
