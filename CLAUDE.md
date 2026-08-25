@@ -21,6 +21,26 @@ product being launched. Three parts:
    runtime, plus `alerts.html` and a few Cloudflare Pages Functions under
    `functions/`.
 
+**Every page wears the same header**, and it is a BAND, not a line of text:
+Penguin ground, the mascot's face at 46px in a Belly circle, a Beak rule
+underneath, three round buttons at the right. The four `--hdr-*` tokens are
+deliberately NOT theme-swapped — everything else flips with
+`prefers-color-scheme` and the header stays Penguin in both, so it is the one
+fixed thing across every page and either theme. The mark goes home from
+anywhere, which is the habit every visitor already has.
+
+There is no build step, so `alerts.html` restates the band rather than
+templating it, and `selftest::check_header_shared` fails the build if the
+tokens or the mark drift. Same pattern, same reason, as the brand.json guard.
+
+**`home` is the first tab and the default.** It used to be `tab="jobs"` — the
+site opened into a filtered list, which is right for somebody who already
+knows what this is and tells a stranger nothing. The home banner's slides are
+BUILT FROM THE BOARD by `buildSlides()`, never written: a quiet run drops the
+"new this run" slide rather than printing a zero, and if no slide can be built
+there is no banner. It auto-advances every 6s, pauses on hover, and never
+starts at all for a reader whose OS asks for reduced motion.
+
 **The product is called SLED JOBS.** It was GovTech Dock. The git remote is
 still `westjw/govtech-dock` and the portfolio `project_id` is still
 `govtech_dock` — those are identifiers, leave them. Anywhere else the old name
@@ -54,6 +74,43 @@ and the eight-colour palette. Nothing may hardcode any of them.
   re-approximate it from a screenshot.
 - The mascot is in `assets/mascot/svg/`: `head-ghosted` for an empty state,
   `head-offer-in` for success, `head-competitive-pay` for a refusal.
+
+## Where a job is, and the three ways we can fail to say
+
+`roles.geography()` returns three separate facts and each is honest about
+absence: **territory** (what the role covers, read from the title),
+**office** (where the job sits, read from the location field), **work_mode**
+(remote/hybrid/onsite exactly as stated, else `not stated`).
+
+`work_mode` is **`not stated` on 79% of postings**, because most boards never
+say it. So anything gated on the words "hybrid" or "onsite" reaches 139
+postings out of 4,369. The field that means "this job has a place" is
+**`office`**, not `work_mode` — a bare city is an office, not proof of onsite,
+and 917 postings that never said a mode still name a real city.
+
+Two traps the office parser has already fallen into, both now pinned by cases
+in `selftest.py::CITY_CASES`:
+
+- **Two capitals are not a US state.** `[A-Z]{2}` matched `London, UK`,
+  `Montreal, QB`, `Noida, UP` and `California, US` — 24 postings filed at
+  places that do not exist. A code is a state only if it is in `US_CODES`.
+  Delaware stays valid: the board carries Dover, Newark and Wilmington.
+- **A city is the trailing run of capitalised words.** The pattern starts at
+  the first capital before the comma, so `in-office preferred in San Mateo, CA`
+  produced a city named "in-office preferred in San Mateo".
+
+**Coordinates are asked for, never derived.** `scripts/geocode_cities.py`
+queries Nominatim at one request a second with an identifying User-Agent (that
+is their usage policy — run it less often rather than faster) and writes
+`data/cities.json` with the query and what it matched, so every coordinate is
+auditable. A city it cannot resolve is stored with `lat: null` and is **left
+out of `board.json` entirely**: a city at no coordinate is not a city at 0,0.
+
+The "near a city" filter therefore has three different silences and says all
+three out loud rather than returning zero — a city we do not hold, a name in
+several states, and desks we could not place. A distance search that quietly
+drops what it cannot map is a false "nothing near you", which is the same
+failure as a page scan reporting "no listings" when it could not read.
 
 ## House rules
 
@@ -141,6 +198,20 @@ looks like it belongs to a parent, and asks whether to keep it, label it, or
 unwire it. Both refuse to write on their own; both keep the refusals so the
 next sweep stops proposing what somebody already said no to.
 
+Acquisitions was READ-ONLY until 2026-08-24 — 74 rows, a `rule()` in
+`scripts/acquisitions.py` that nothing called, and `acquisition_rulings.json`
+never written once. It now takes the three outcomes that file describes
+(**unwire** / **keep and label** / **not an acquisition**), and both ownership
+outcomes refuse without a named parent, because a ruling that says "somebody
+else" cannot be checked later.
+
+Its evidence now arrives from four directions, ranked by how much they claim:
+the board naming somebody else, a page that redirects, **a logo file shared
+byte-for-byte with another company and fetched from that company's domain**,
+and a slug that is merely odd. The logo signal finds acquisitions AND
+duplicate records, which are different problems — `_same_company()` decides
+which, and duplicates go to the Duplicates queue where a merge is the answer.
+
 It is where the residue of every automated pass goes — the parts that need
 judgment rather than a better regex.
 
@@ -194,6 +265,27 @@ code, which is the pattern that file exists to break.
   `write_atomic("companies.json", ...)` directly. `save_companies` journals
   the before-image and then writes, so an action *cannot forget* to record
   itself — which is the only reason the 86 agent writes above are recoverable.
+- **PASS `by`.** It defaults to `"owner"` because most writes are his, and
+  that default is a trap for every write that is not: nine actions once called
+  `save_companies` with the action name alone, so an agent's patch, an
+  extension's capture and a script's ruling were all journalled as the owner's
+  rulings. `selftest::check_writes_name_their_author` is a SOURCE-level guard,
+  because the failure is a missing argument and no call runs in a test.
+- **A write that changes nothing must say so.** `act_patch` reads
+  `body["fields"]` and used to return `{"ok": True, "message": "updated X"}`
+  for a body with no usable fields — so a caller passing the field at the top
+  level, which is how every other action here takes its arguments, was told the
+  correction landed while the record was untouched.
+- **THE RULE ONLY EVER COVERED `admin.py`.** Seven pipeline scripts write
+  `companies.json` directly — `add_company`, `discover_ats`,
+  `conference_intake`, `find_websites`, `refresh`, `merge_companies`,
+  `promote_candidates`. That is how a merged-away record came back an hour
+  after `merge_families` folded it, with one journal entry for the merge and
+  none for the resurrection. `selftest::check_merged_names_stay_merged` is the
+  backstop, keyed on the ids a merge actually deleted rather than on
+  `also_known_as` — the alias version flagged EagleView and Concourse, which
+  are two live records legitimately carrying each other's name while somebody
+  decides whether they are one company.
 - **A merge never loses research.** The survivor keeps what it has and inherits
   what it lacks; a discovered ATS always beats an `unknown` one; the dropped
   name is kept in `also_known_as`.
