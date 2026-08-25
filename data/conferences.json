@@ -113,9 +113,11 @@
    "fetchability": null,
    "event_tag": "NGA Summer/Winter 2026",
    "url": "https://www.nga.org/about/meetings/",
-   "dates_source": null,
-   "dates_confidence": "unannounced",
-   "dates_note": "nga.org is live and answers normally. The 2026 Summer Meeting (Oklahoma City, July 30-Aug. 1) and 2026 Winter Meeting (Washington, D.C., February 19-21) are both listed as past, in the 'NGA Summer/Winter Meetings Archives'. No 2027 meeting is posted anywhere I could read: https://www.nga.org/annual-winter-meetings/nga-2027-winter-meeting/ returns a 'Page not found' page (the 2026 and 2025 equivalents exist), the /about/meetings/ page lists nothing after Summer 2026, and NGA's own site search for '2027 Winter Meeting' returns no result rows. A web search summary asserted 'February 18-20, 2027, in Washington, D.C.', but that appears on no nga.org page I could fetch, so it is not recorded here."
+   "dates_source": "https://www.nga.org/news/press-releases/highlights-from-the-2026-nga-summer-meeting/",
+   "dates_confidence": "high",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://www.nga.org/news/press-releases/highlights-from-the-2026-nga-summer-meeting/",
+   "dates": "February 18-20, 2027",
+   "city": "Washington, DC"
   },
   {
    "block": "Executive / administration",
@@ -234,10 +236,12 @@
     "https://www.electioncenter.org/annual-conference.html",
     "https://portal.electioncenter.org (member login; vendor list is behind it)"
    ],
-   "url": "https://www.electioncenter.org/",
-   "dates_source": null,
-   "dates_confidence": "unannounced",
-   "dates_note": "The 41st Annual National Conference ran August 19-21, 2026 in Kansas City - read on Election Center's own portal at portal.electioncenter.org (event key EVNT0826: \u201cConference Dates: Wednesday, August 19 to Friday, August 21\u201d), so it is already past. Nothing on electioncenter.org or portal.electioncenter.org/EventList announces a 42nd conference: the homepage has no conference page at all and the portal event list holds only CERA course sessions through December 2026."
+   "url": "https://electioncenter.org/",
+   "dates_source": "https://electionline.org/events/",
+   "dates_confidence": "high",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://electionline.org/events/",
+   "dates": "August 25-27, 2027",
+   "city": "Dallas, TX"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -428,9 +432,11 @@
    "fetchability": null,
    "event_tag": "NSAA 2026",
    "url": "https://www.nasact.org/nsaa",
-   "dates_source": null,
-   "dates_confidence": "unannounced",
-   "dates_note": "nasact.org (NSAA's parent, NASACT) is live. The 48th NSAA Annual Conference was held June 10-12, 2026 in Tacoma, WA and is past, per NASACT's own article 'State Auditors Meet in Tacoma for 48th Annual Conference'. The 49th has not been posted: https://www.nasact.org/nsaa is a content-free shell, and NASACT's full event calendar (calendar_list.asp), queried for 1 Jan - 31 Dec 2027, returns exactly one entry for all of 2027 \u2014 a January 26 webinar \u2014 with no NSAA Annual Conference. The 2026 calendar still lists the 2026 NASACT Annual (Aug 25-28) and 2026 NSAA IT Conference (Sept 29 - Oct 2), so the calendar is maintained; 2027 simply is not filled in yet."
+   "dates_source": "https://www.nasact.org/nsaa",
+   "dates_confidence": "high",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://www.nasact.org/nsaa",
+   "dates": "June 14-17, 2027",
+   "city": "Greenville, SC"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -442,9 +448,11 @@
    "fetchability": null,
    "event_tag": "AGA PDT 2026",
    "url": "https://pdt.agacgfm.org/",
-   "dates_source": null,
-   "dates_confidence": "unannounced",
-   "dates_note": "The PDT site is live and still shows the 2026 edition, which has already happened: 'PDT 2026. July 21-23, 2026 in Washington, D.C. and Virtually' and 'PDT 2026 will bring together over 2,000 financial professionals in Washington, D.C., on July 21-23, 2026'. The string '2027' does not appear anywhere on pdt.agacgfm.org. AGA's own National Events calendar (https://www.agacgfm.org/events-training/national-events/) lists only four upcoming national events - Internal Control & Fraud Prevention Training (Sep 22, 2026), National Leadership Training (Feb 17, 2027, Washington, DC), Technology & Transformation Summit (Mar 30, 2027, Washington, D.C.), Performance Counts (May 4, 2027) - and PDT is not among them. Both agacgfm.org and pdt.agacgfm.org sit behind a Cloudflare 'Just a moment...' challenge that returns HTTP 403 to plain fetches and to WebFetch; read in a real browser."
+   "dates_source": "https://pdt.agacgfm.org/about/future-events/",
+   "dates_confidence": "high",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://pdt.agacgfm.org/about/future-events/",
+   "dates": "July 18-21, 2027",
+   "city": "Chicago, IL"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -588,9 +596,10 @@
    "event_tag": "PRIMA 2026",
    "url": "https://conference.primacentral.org/2027/",
    "city": "New Orleans, LA",
-   "dates_source": "https://conference.primacentral.org/2027/",
-   "dates_confidence": "unannounced",
-   "dates_note": "PRIMA26 ran June 7-10, 2026 at the Broward County Convention Center, Fort Lauderdale (read on conference.primacentral.org/generalinformation.cfm), so it is past. PRIMA has stood up conference.primacentral.org/2027/ and it names the host city - New Orleans, LA - but posts no dates, and its call for proposals is already closed. primacentral.org's own \u201cAnnual Conference\u201d nav item points at that same 2027 page. City recorded, dates left empty rather than guessed."
+   "dates_source": "https://conference.primacentral.org/2027/callforpropsals.cfm",
+   "dates_confidence": "high",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://conference.primacentral.org/2027/callforpropsals.cfm",
+   "dates": "June 13-16, 2027"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -1695,10 +1704,12 @@
    "exhibitor_url": null,
    "fetchability": null,
    "event_tag": "AACE 2026",
-   "url": "https://www.aace1.org/",
-   "dates_source": null,
-   "dates_confidence": "unreachable",
-   "dates_note": "aace1.org answers every request with a Cloudflare interstitial ('Just a moment...', HTTP 403) instead of a page. Tried the scripts/add_company.fetch client, curl with a desktop-Chrome User-Agent, and WebFetch, against https://www.aace1.org/, https://www.aace1.org/page/aaceconference, https://www.aace1.org/events/event_list.asp, https://www.aace1.org/page/2026AACEconference, /robots.txt and /sitemap.xml - all the same challenge. The ymaws CDN path used by sibling sites (cdn.ymaws.com/aace1.org/resource/resmgr/) returned 403 as well. Bot-detection is not something to work around, so no dates or city are recorded. Third-party pages carry a claim about the 36th Annual AACE Conference, but nothing from AACE's own site was ever read, so nothing is asserted."
+   "url": "https://www.aace1.org/page/2026AACEconference",
+   "dates_source": "https://www.aace1.org/events/EventDetails.aspx?id=2046604&group=",
+   "dates_confidence": "high",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://www.aace1.org/events/EventDetails.aspx?id=2046604&group=",
+   "dates": "September 28 - October 1, 2026",
+   "city": "Orlando, FL"
   },
   {
    "block": "Community development",
@@ -2043,10 +2054,11 @@
    "exhibitor_url": null,
    "fetchability": null,
    "event_tag": "NASRO 2026",
-   "url": "https://www.nasro.org/",
-   "dates_source": null,
-   "dates_confidence": "unreachable",
-   "dates_note": "nasro.org answers HTTP 200 but every path serves the same page: \u201cSite is undergoing maintenance. Site will be available soon.\u201d I tried the root, /conference/ and /conference/future-nasro-conferences/, over https and http, and loaded it in a real browser - all the maintenance placeholder. There is no NASRO conference page to read right now, so no date can be recorded from the organisation's own site. Worth retrying once the site is back up."
+   "url": "https://www.nasro.org/conference/future-nasro-conferences/",
+   "dates_source": "https://web.archive.org/web/20260702182047if_/https://www.nasro.org/clientuploads/directory/homepage_slideshow/NASHVILLE.png",
+   "dates_confidence": "unannounced",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://web.archive.org/web/20260702182047if_/https://www.nasro.org/clientuploads/directory/homepage_slideshow/NASHVILLE.png",
+   "city": "Nashville, TN"
   },
   {
    "block": "K-12 education",
@@ -2201,7 +2213,13 @@
    "exhibitor_url": null,
    "fetchability": null,
    "event_tag": "Broadband Communities Summit 2026",
-   "note": "split out of the Broadband Nation row 2026-08-25. Terrapinn's event, Houston, George R. Brown - not Questex's New Orleans show. Never mined; the exhibitors on the other row are not these."
+   "note": "split out of the Broadband Nation row 2026-08-25. Terrapinn's event, Houston, George R. Brown - not Questex's New Orleans show. Never mined; the exhibitors on the other row are not these.",
+   "dates": "July 20-22, 2027",
+   "city": "Houston, TX",
+   "url": "https://www.terrapinn.com/conference/broadband-communities-summit/",
+   "dates_confidence": "high",
+   "dates_source": "https://bbcmag.com/total-telecom-unites-2-events-for-powerhouse-2027-co-location/",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://bbcmag.com/total-telecom-unites-2-events-for-powerhouse-2027-co-location/"
   },
   {
    "block": "Health and human services",
@@ -2215,8 +2233,10 @@
    "dates": "August 23-26, 2026",
    "city": "Portland, OR",
    "dates_confidence": "owner",
-   "dates_source": "supplied by the owner 2026-08-25",
-   "note": "added 2026-08-25 at the owner's request. Run by National Association for Medicaid Program Integrity. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding."
+   "dates_source": "https://nampi2026.vfairs.com/",
+   "note": "added 2026-08-25 at the owner's request. Run by National Association for Medicaid Program Integrity. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding.",
+   "url": "https://nampi.net/",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://nampi2026.vfairs.com/"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -2227,11 +2247,13 @@
    "exhibitor_url": null,
    "fetchability": null,
    "event_tag": "SALGBA 2026",
-   "dates": "May 4-7, 2026",
-   "city": "Providence, RI",
-   "dates_confidence": "owner",
-   "dates_source": "supplied by the owner 2026-08-25",
-   "note": "added 2026-08-25 at the owner's request. Run by State and Local Government Benefits Association. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding."
+   "dates": "April 26-29, 2027",
+   "city": "Madison, WI",
+   "dates_confidence": "high",
+   "dates_source": "https://salgba.org/events/",
+   "note": "added 2026-08-25 at the owner's request. Run by State and Local Government Benefits Association. Exhibitors on file were mined from the May 4-7, 2026 edition in Providence, RI; the dates and city above now describe the NEXT edition, verified 2026-08-25. event_tag still names the mined edition, which is what ties a company to where it was found.",
+   "url": "https://salgba.org/events/",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://salgba.org/events/"
   },
   {
    "block": "Health and human services",
@@ -2242,11 +2264,13 @@
    "exhibitor_url": null,
    "fetchability": null,
    "event_tag": "AIRA 2026",
-   "dates": "April 28-30, 2026",
-   "city": "Pittsburgh, PA",
-   "dates_confidence": "owner",
-   "dates_source": "supplied by the owner 2026-08-25",
-   "note": "added 2026-08-25 at the owner's request. Run by American Immunization Registry Association. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding."
+   "dates": "May 25-27, 2027",
+   "city": "Louisville, KY",
+   "dates_confidence": "high",
+   "dates_source": "https://www.immregistries.org/national-meeting",
+   "note": "added 2026-08-25 at the owner's request. Run by American Immunization Registry Association. Exhibitors on file were mined from the April 28-30, 2026 edition in Pittsburgh, PA; the dates and city above now describe the NEXT edition, verified 2026-08-25. event_tag still names the mined edition, which is what ties a company to where it was found.",
+   "url": "https://www.immregistries.org/national-meeting",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://www.immregistries.org/national-meeting"
   },
   {
    "block": "Health and human services",
@@ -2260,8 +2284,10 @@
    "dates": "February 23-26, 2026",
    "city": "New Orleans, LA",
    "dates_confidence": "owner",
-   "dates_source": "supplied by the owner 2026-08-25",
-   "note": "added 2026-08-25 at the owner's request. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding."
+   "dates_source": "https://healthcareitconnect.com/",
+   "note": "added 2026-08-25 at the owner's request. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding.",
+   "url": "https://healthcareitconnect.com/",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://healthcareitconnect.com/"
   },
   {
    "block": "Health and human services",
@@ -2272,11 +2298,13 @@
    "exhibitor_url": null,
    "fetchability": null,
    "event_tag": "NAMD 2025",
-   "dates": "November 19-21, 2025",
+   "dates": "October 21-23, 2026",
    "city": "National Harbor, MD",
-   "dates_confidence": "owner",
-   "dates_source": "supplied by the owner 2026-08-25",
-   "note": "added 2026-08-25 at the owner's request. Run by National Association of Medicaid Directors. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding."
+   "dates_confidence": "high",
+   "dates_source": "https://medicaiddirectors.org/events/",
+   "note": "added 2026-08-25 at the owner's request. Run by National Association of Medicaid Directors. Exhibitors on file were mined from the November 19-21, 2025 edition in National Harbor, MD; the dates and city above now describe the NEXT edition, verified 2026-08-25. event_tag still names the mined edition, which is what ties a company to where it was found.",
+   "url": "https://medicaiddirectors.org/events/",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://medicaiddirectors.org/events/"
   },
   {
    "block": "Health and human services",
@@ -2287,11 +2315,32 @@
    "exhibitor_url": null,
    "fetchability": null,
    "event_tag": "NHCAA 2025",
-   "dates": "November 18-21, 2025",
-   "city": "Nashville, TN",
-   "dates_confidence": "owner",
-   "dates_source": "supplied by the owner 2026-08-25",
-   "note": "added 2026-08-25 at the owner's request. Run by National Health Care Anti-Fraud Association. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding."
+   "dates": "November 3-6, 2026",
+   "city": "San Diego, CA",
+   "dates_confidence": "high",
+   "dates_source": "https://www.nhcaa.org/learn/annual-training-conference-2026/",
+   "note": "added 2026-08-25 at the owner's request. Run by National Health Care Anti-Fraud Association. Exhibitors on file were mined from the November 18-21, 2025 edition in Nashville, TN; the dates and city above now describe the NEXT edition, verified 2026-08-25. event_tag still names the mined edition, which is what ties a company to where it was found.",
+   "url": "https://www.nhcaa.org/learn/annual-training-conference-2026/",
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://www.nhcaa.org/learn/annual-training-conference-2026/"
+  },
+  {
+   "block": "Health and human services",
+   "department": "Child support",
+   "conference": "NCSEA Policy Forum",
+   "flagship": true,
+   "swept": false,
+   "exhibitor_url": "https://www.ncsea.org/ncsea-corporate-partners-2/",
+   "fetchability": "readable",
+   "platform": "custom HTML (WordPress on ncsea.org)",
+   "event_year": "2027",
+   "approx_count": null,
+   "event_tag": "NCSEA Policy Forum 2027",
+   "url": "https://www.ncsea.org/ncsea-policy-forum/",
+   "dates": "February 2-5, 2027",
+   "city": "Washington, DC",
+   "dates_confidence": "high",
+   "dates_source": "https://www.ncsea.org/ncsea-policy-forum/",
+   "note": "added 2026-08-25. FOUND BY BEING WRONG ABOUT SOMETHING ELSE: a verifier checking why the NCSEA Leadership Symposium had no 2027 dates discovered NCSEA runs TWO annual conferences, and only the Policy Forum has announced its next edition. The Symposium row was correct to stay blank; this is the other conference, not a fix to it. Read verbatim off ncsea.org/ncsea-policy-forum/, where the 2027 entry sits ABOVE the 'Past Events' heading. Never swept - the exhibitor_url is NCSEA's year-round Corporate Partners roster, the same page the Symposium row uses, so sweeping it would re-import the same 15 partners rather than a Policy Forum floor."
   }
  ]
 }
