@@ -176,6 +176,42 @@ def posting_id(company_id: str, title: str, url: str | None, location: str) -> s
     return f"{opening_id(company_id, title)}::{disc}"
 
 
+def safe_url(u: str) -> str:
+    """A url a browser can actually open.
+
+    Two postings on the board carried a LITERAL SPACE in their href -
+    PowerSchool's carried it in a query value ("location=CA--Remote - CAN")
+    and Survalent's in a filename ("Job_Posting_Account Development Rep").
+    A space is not legal in a url and a browser will not follow it, so both
+    were dead links on a job board whose entire value is that the link works.
+    Two out of 4,369, which is exactly the kind of defect that never shows up
+    in a summary and always shows up to the one person who clicks it.
+
+    Encodes only what is unsafe and leaves existing %XX escapes alone, so
+    running this twice cannot turn %20 into %2520.
+    """
+    if not isinstance(u, str) or not u:
+        return u
+    out = []
+    i = 0
+    while i < len(u):
+        ch = u[i]
+        # an escape that is already an escape stays one
+        if ch == "%" and i + 2 < len(u) and all(
+                c in "0123456789abcdefABCDEF" for c in u[i + 1:i + 3]):
+            out.append(u[i:i + 3])
+            i += 3
+            continue
+        if ch == " ":
+            out.append("%20")
+        elif ch in "<>\"{}|\\^`" or ord(ch) < 0x21:
+            out.append("%%%02X" % ord(ch))
+        else:
+            out.append(ch)
+        i += 1
+    return "".join(out)
+
+
 def derived(row: dict) -> dict:
     """The facts we keep off a fetched row's description, and the text we drop.
 
@@ -546,7 +582,7 @@ def main() -> int:
                 # pay and jd_seen, derived off j["jd"]. The text itself is not
                 # copied into this dict and does not leave this loop.
                 **derived(j),
-                "url": url,
+                "url": safe_url(url),
                 "sector": c["sector"], "category": c["category"],
                 # extra departments this vendor also sells into, so a
                 # filter on Courts finds Tyler even though its primary

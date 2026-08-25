@@ -480,6 +480,46 @@ def check_comp(postings: list[dict]) -> int:
     return bad
 
 
+def check_safe_url() -> int:
+    """Every posting url must be one a browser will follow.
+
+    Two on the board carried a literal space - PowerSchool's in a query value
+    ("location=CA--Remote - CAN"), Survalent's in a filename. A space is not
+    legal in a url and a browser will not follow it, so both were dead links
+    on a board whose whole value is that the link works. Two out of 4,369:
+    invisible in any summary, and the only person who ever sees it is the one
+    who clicks it.
+    """
+    import build_board
+    errors = 0
+    CASES = [
+        ("https://x.com/job?location=CA--Remote - CAN",
+         "https://x.com/job?location=CA--Remote%20-%20CAN"),
+        ("https://x.com/Job_Posting_Account Development Rep.pdf",
+         "https://x.com/Job_Posting_Account%20Development%20Rep.pdf"),
+        # an escape that is already an escape stays one - running this twice
+        # must not turn %20 into %2520
+        ("https://x.com/already%20encoded", "https://x.com/already%20encoded"),
+        ("https://job-boards.greenhouse.io/metropolis/jobs/7810050003",
+         "https://job-boards.greenhouse.io/metropolis/jobs/7810050003"),
+    ]
+    for raw, want in CASES:
+        got = build_board.safe_url(raw)
+        if got != want:
+            errors += fail(f"safe_url({raw!r}) = {got!r}, expected {want!r}")
+        if build_board.safe_url(got) != got:
+            errors += fail(f"safe_url is not idempotent on {raw!r}")
+
+    # and nothing already shipped may carry one
+    board = json.load(open(DATA / "board.json"))
+    bad = [p for p in board.get("postings", [])
+           if isinstance(p.get("url"), str) and " " in p["url"]]
+    for p in bad[:5]:
+        errors += fail(f"board.json: {p['company']} has a space in its url - "
+                       f"a browser will not follow {p['url'][:70]!r}")
+    return errors
+
+
 def check_derived() -> int:
     """build_board.derived(): what survives a description, and what does not."""
     import build_board
@@ -1978,6 +2018,7 @@ def main() -> int:
     # function rather than the file, so the rule holds even when board.json on
     # disk was written before it existed.
     errors += check_derived()
+    errors += check_safe_url()
 
     hist = sorted((DATA / "hiring_history").glob("*.json"))
     if not hist:
