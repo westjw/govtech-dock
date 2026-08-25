@@ -692,10 +692,10 @@
   {
    "block": "Public works and infrastructure",
    "department": "Broadband",
-   "conference": "Broadband Communities Summit",
+   "conference": "Broadband Nation Expo",
    "flagship": false,
    "swept": true,
-   "note": "landed as Broadband Nation 2026",
+   "note": "renamed 2026-08-25: this row was titled 'Broadband Communities Summit' but its tag and its 6 swept exhibitors are Broadband Nation Expo - a different show, different organiser (Questex vs Terrapinn), different month and different city. Somebody planning Summit travel off this row would have missed it.",
    "exhibitor_url": null,
    "fetchability": null,
    "event_tag": "Broadband Nation 2026",
@@ -815,7 +815,7 @@
    "platform": "CadmiumCD eventScribe / Conference Harvester",
    "event_year": "2026",
    "approx_count": 250,
-   "discovery_notes": "APCO 2026, San Antonio, Aug 2-5 2026 (just held). Official 'Exhibitor List / Floor Plan' link from https://apco2026.org/expo/ goes to the eventScribe floor plan (same data at https://www.conferenceharvester.com/floorplan/v2/index.asp?EventKey=JBBFWNZS); both are JS-rendered with no names in HTML. However, the /expo/ page itself is readable and lists sponsors by name (FirstNet, Axon, L3Harris, Motorola, RapidSOS, Comcast, General Motors, Eventide) — a person opening the floor plan will get the full 250+ exhibitor list.",
+   "discovery_notes": "APCO 2026, San Antonio, Aug 2-5 2026 (just held). Official 'Exhibitor List / Floor Plan' link from https://apco2026.org/expo/ goes to the eventScribe floor plan (same data at https://www.conferenceharvester.com/floorplan/v2/index.asp?EventKey=JBBFWNZS); both are JS-rendered with no names in HTML. However, the /expo/ page itself is readable and lists sponsors by name (FirstNet, Axon, L3Harris, Motorola, RapidSOS, Comcast, General Motors, Eventide) \u2014 a person opening the floor plan will get the full 250+ exhibitor list.",
    "event_tag": "APCO 2026"
   },
   {
@@ -1058,7 +1058,7 @@
    "platform": "custom HTML (WordPress on ncsea.org)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "No event-specific exhibitor directory found for the 2026 Leadership Symposium (Aug 10-13, Galt House, Louisville KY) — the symposium page has no sponsor/exhibitor section. Recorded instead NCSEA's current Corporate Partners page (Platinum: CGI, Conduent, Deloitte, SMI; Gold: Adobe, FAST, GreenCourt, Protech, Stellarware; Silver: Courtland, CSG, Maximus, KPMG, Veritas HHS, YoungWilliams), which is the de facto symposium sponsor roster. ~15 companies listed.",
+   "discovery_notes": "No event-specific exhibitor directory found for the 2026 Leadership Symposium (Aug 10-13, Galt House, Louisville KY) \u2014 the symposium page has no sponsor/exhibitor section. Recorded instead NCSEA's current Corporate Partners page (Platinum: CGI, Conduent, Deloitte, SMI; Gold: Adobe, FAST, GreenCourt, Protech, Stellarware; Silver: Courtland, CSG, Maximus, KPMG, Veritas HHS, YoungWilliams), which is the de facto symposium sponsor roster. ~15 companies listed.",
    "event_tag": "NCSEA 2026",
    "sweep": {
     "captured": 15,
@@ -1504,6 +1504,17 @@
    "exhibitor_url": null,
    "fetchability": null,
    "note": "swept before this catalog existed; listed so its tag is issued"
+  },
+  {
+   "block": "Public works and infrastructure",
+   "department": "Broadband",
+   "conference": "Broadband Communities Summit",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": null,
+   "fetchability": null,
+   "event_tag": "Broadband Communities Summit 2026",
+   "note": "split out of the Broadband Nation row 2026-08-25. Terrapinn's event, Houston, George R. Brown - not Questex's New Orleans show. Never mined; the exhibitors on the other row are not these."
   }
  ]
 }

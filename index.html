@@ -203,6 +203,30 @@
   .cfnums b{font-weight:700}
   .cfnums .q{color:var(--dim)}
   .cfzero{color:var(--faint)}
+  /* ── conference ratings ────────────────────────────────────────────────
+     Anonymous, because the owner chose that knowingly: a rating gated behind
+     a subscription is a rating nobody leaves. The cost is that it can be
+     gamed, so the display carries the defence - no average until MIN_SHOWN
+     ratings exist, and the count always sits beside the score. One rating
+     shown as "9.0" is a badge, not a measurement. */
+  .cfrate{display:flex;align-items:center;gap:var(--space-2);
+    padding:var(--space-2) 0 var(--space-3);border-bottom:1px solid var(--line)}
+  .cfscore{font-family:var(--font-heading);font-weight:800;font-size:19px;
+    font-variant-numeric:tabular-nums;min-width:52px}
+  .cfscore small{font-weight:600;font-size:12px;color:var(--dim)}
+  .cfvotes{font-size:12.5px;color:var(--dim);font-variant-numeric:tabular-nums}
+  .cfthin{font-size:12.5px;color:var(--faint)}
+  .cfstars{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+  .cfstars button{width:26px;height:26px;padding:0;font:inherit;font-size:12px;
+    font-weight:700;font-variant-numeric:tabular-nums;cursor:pointer;
+    border:1px solid var(--line);background:var(--panel);color:var(--dim)}
+  .cfstars button:hover:not(:disabled),
+  .cfstars button:focus-visible{border-color:var(--accent);color:var(--accent)}
+  .cfstars button[aria-pressed="true"]{background:var(--accent);
+    border-color:var(--accent);color:var(--bg)}
+  .cfstars button:disabled{cursor:default;opacity:.55}
+  .cfmine{font-size:12.5px;color:var(--dim);white-space:nowrap}
+
   .cfmeta{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums}
   .cfcount{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums;
     margin-left:auto;white-space:nowrap}
@@ -604,6 +628,12 @@
     .slide p{font-size:15px}
     /* the arrows would sit on top of the copy at this width */
     .bnav{position:static;margin-top:var(--space-4);justify-content:flex-end}
+    /* 26px is not a tap target. The rating buttons wrap to two rows here
+       anyway, so there is room to make each one hittable rather than a
+       thing you aim at and miss. */
+    .cfstars{margin-left:0;width:100%;gap:4px}
+    .cfstars button{width:34px;height:38px;font-size:13px}
+    .cfrate{flex-wrap:wrap}
     .phead{padding-top:var(--space-3)}
     .ptitle{font-size:25px}
     .pline{font-size:13px}
@@ -4132,6 +4162,7 @@ function conferences(){
         <span class="sub">That is ${rows.length} events checked, not a claim
         that no such conference exists.</span></div>`;
     wireCfRows();
+    loadRatings();
   };
   ["cf-q","cf-dept","cf-mined","cf-flag"].forEach(id=>{
     const el=$("#"+id); if(!el)return;
@@ -4159,7 +4190,94 @@ function cfRowHTML(r){
                  <span class="${r.hiring?"":"cfzero"}"><b>${r.hiring}</b> hiring</span>`
               : `<span class="cfzero">not mined yet</span>`}
           </span>
-        </button>`;
+        </button>
+        <div class="cfrate" data-rate="${esc(r.tag)}">
+          <span class="cfscore" data-score>&mdash;</span>
+          <span class="cfvotes" data-votes>&nbsp;</span>
+          <span class="cfstars" data-stars></span>
+        </div>`;
+}
+
+/* Ratings are fetched at RUNTIME, not baked into board.json: the board is
+   rebuilt once a day and a rating left this morning would not appear until
+   tomorrow, which reads as the vote not registering. One call carries every
+   tag on screen. */
+const RATED_KEY="sled-rated";
+function myRatings(){
+  try{ return JSON.parse(localStorage.getItem(RATED_KEY)||"{}") }catch{ return {} }
+}
+function rememberRating(tag,score){
+  try{ const all=myRatings(); all[tag]=score;
+       localStorage.setItem(RATED_KEY,JSON.stringify(all)); }catch{}
+}
+
+function paintRating(box,d){
+  const mine=myRatings()[box.dataset.rate];
+  const score=box.querySelector("[data-score]");
+  const votes=box.querySelector("[data-votes]");
+  const stars=box.querySelector("[data-stars]");
+  if(d&&d.average!=null){
+    score.innerHTML=`${d.average}<small>/10</small>`;
+    votes.textContent=`from ${d.n} ${d.n===1?"rating":"ratings"}`;
+    votes.className="cfvotes";
+  }else{
+    /* No average yet, and the page says WHY rather than showing a zero or an
+       empty space a reader has to interpret. */
+    score.innerHTML=`&mdash;`;
+    const n=d?d.n:0, need=d?(d.needs||0):3;
+    votes.textContent=n
+      ? `${n} so far \u2014 ${need} more before an average shows`
+      : "no ratings yet";
+    votes.className="cfthin";
+  }
+  stars.innerHTML=Array.from({length:10},(_,i)=>{
+    const v=i+1;
+    return `<button type="button" data-v="${v}"
+      aria-pressed="${mine===v?"true":"false"}"
+      ${mine?"disabled":""}
+      aria-label="Rate ${v} out of 10"
+      title="${mine?`You rated this ${mine}`:`Rate ${v} out of 10`}">${v}</button>`;
+  }).join("")+(mine?`<span class="cfmine">your ${mine}</span>`:"");
+  if(!mine) stars.querySelectorAll("button").forEach(b=>{
+    b.onclick=async e=>{
+      e.stopPropagation();
+      const v=+b.dataset.v;
+      stars.querySelectorAll("button").forEach(x=>x.disabled=true);
+      try{
+        const r=await fetch("/api/rate",{method:"POST",
+          headers:{"content-type":"application/json"},
+          body:JSON.stringify({tag:box.dataset.rate,score:v})});
+        const j=await r.json();
+        if(j&&j.ok){ rememberRating(box.dataset.rate,v); paintRating(box,j); }
+        else{
+          /* Say what went wrong in the row itself. A silent failure here
+             reads as "my vote counted" and it did not. */
+          votes.textContent=(j&&j.message)||"That did not save. Try again later.";
+          votes.className="cfthin";
+          stars.querySelectorAll("button").forEach(x=>x.disabled=false);
+        }
+      }catch{
+        votes.textContent="No connection \u2014 your rating was not saved.";
+        votes.className="cfthin";
+        stars.querySelectorAll("button").forEach(x=>x.disabled=false);
+      }
+    };
+  });
+}
+
+async function loadRatings(){
+  const boxes=[...document.querySelectorAll("[data-rate]")];
+  if(!boxes.length)return;
+  boxes.forEach(b=>paintRating(b,null));
+  const tags=[...new Set(boxes.map(b=>b.dataset.rate))];
+  try{
+    const r=await fetch("/api/rate?tags="+encodeURIComponent(tags.join(",")));
+    if(!r.ok)return;                    // 501 before KV is bound; leave the
+    const j=await r.json();             // placeholders rather than an error
+    if(!j||!j.ratings)return;
+    const by={}; j.ratings.forEach(x=>by[x.tag]=x);
+    boxes.forEach(b=>{ if(by[b.dataset.rate])paintRating(b,by[b.dataset.rate]) });
+  }catch{ /* offline: the placeholders already say "no ratings yet" */ }
 }
 
 function wireCfRows(){

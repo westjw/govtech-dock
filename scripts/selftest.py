@@ -1727,6 +1727,55 @@ def check_journal_matches_reality() -> int:
     return errors
 
 
+def check_rating_scale() -> int:
+    """index.html and functions/api/rate.js must agree on the scale.
+
+    The page draws the buttons and the Worker validates the score, and they
+    are different files in different languages - the same shape as the alerts
+    vocabulary, which is guarded here for the same reason. Drift is silent and
+    total: the page offers a 1-10 button, the endpoint rejects anything over
+    5, and every vote past halfway fails with an error nobody sees coming.
+
+    Also pins MIN_SHOWN, because it is a promise about honesty rather than a
+    preference. Below it the API returns no average, and the page says how
+    many more it needs. Somebody lowering it to 1 turns a single anonymous
+    rating into a published "9.0/10", which is the first thing astroturf
+    reaches for.
+    """
+    import re
+    errors = 0
+    api = (ROOT / "functions" / "api" / "rate.js").read_text()
+    page = (ROOT / "index.html").read_text()
+
+    def const(name, src):
+        m = re.search(rf"^const {name}\s*=\s*(\d+);", src, re.M)
+        return int(m.group(1)) if m else None
+
+    lo, hi, floor = const("MIN", api), const("MAX", api), const("MIN_SHOWN", api)
+    if lo is None or hi is None or floor is None:
+        errors += fail("rate.js: MIN / MAX / MIN_SHOWN must each be a plain "
+                       "`const NAME = <int>;` so this guard can read them")
+        return errors
+
+    # the page builds exactly `hi` buttons and labels the scale `/hi`
+    n = re.search(r"Array\.from\(\{length:(\d+)\}", page)
+    if not n or int(n.group(1)) != hi:
+        errors += fail(f"rating scale: rate.js accepts {lo}-{hi} but index.html "
+                       f"draws {n.group(1) if n else 'an unknown number of'} "
+                       f"buttons. A vote the page offers and the endpoint "
+                       f"refuses fails with an error nobody sees coming.")
+    if f"/{hi}</small>" not in page:
+        errors += fail(f"rating scale: index.html does not print '/{hi}' beside "
+                       f"the average, so the page and the endpoint disagree "
+                       f"about what the number means")
+    if floor < 3:
+        errors += fail(f"rating floor: MIN_SHOWN is {floor}. Under 3, one "
+                       f"anonymous rating publishes as an average - a badge, "
+                       f"not a measurement, and the shape astroturf takes "
+                       f"first.")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -2058,6 +2107,7 @@ def main() -> int:
     errors += check_header_shared()
     errors += check_identity_guard()
     errors += check_beak_is_never_text()
+    errors += check_rating_scale()
     errors += check_brand()
     errors += check_admin_game()
     errors += check_admin_gates()
