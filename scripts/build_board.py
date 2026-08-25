@@ -835,6 +835,13 @@ def main() -> int:
                 "swept": bool(row.get("swept")),
                 "url": row.get("url") or None,
                 "dates": row.get("dates") or None,
+                # WHY the dates are missing, carried through to the page. The
+                # catalogue is careful about this - "unannounced" means the
+                # organiser has not published the next edition, "unreachable"
+                # means their site would not answer us - and a blank on the
+                # board flattened the two into "we did not bother". Absence of
+                # evidence has to arrive as absence of evidence.
+                "dates_confidence": row.get("dates_confidence") or None,
                 "city": row.get("city") or None,
                 "approx_count": row.get("approx_count") or None,
                 "companies": len(ids),

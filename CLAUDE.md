@@ -820,10 +820,18 @@ to prevent.
   believes it. `selftest.check_search_routes_are_live` now refuses any search
   phrase pointing at a sector/category pair the schema does not hold, in
   semantic.py AND in the copy of the map inside index.html.
-  **Still outstanding: General Gov / Courts & Justice holds 21 while the
-  Courts & Justice sector holds 14.** Same defect, same ruling would fix it,
-  not yet made. General Gov also still holds Libraries (53), Cemetery
-  Management (23) and Animal Services (2), which are specific, not general.
+  **Courts & Justice had the same defect and was fixed the same day**: the
+  category held 21 while the sector it duplicated held 14. Those 21 moved
+  (16 to Courts & Case Management, 5 to Prosecution & Defense, following
+  LegalEdge as the precedent for prosecutor and defender tooling), the
+  category is gone, and Tyler's secondary `also` placement was repointed
+  rather than dropped - Tyler does sell court systems, so the placement was
+  right and only its address was stale. **Check `also` after any category
+  deletion**; validate() reads it and nothing else would have caught it.
+  General Gov still holds Libraries (53), Cemetery Management (23) and
+  Animal Services (2). Those are specific rather than general, but none of
+  them is ALSO a sector, so they are not this defect - leave them unless the
+  owner says otherwise.
 - Descriptions: one line, what they sell + to whom, no marketing fluff.
 - Python: stdlib + requests + openpyxl only. Match existing style (typed,
   small functions, no classes where a function does). Comments explain WHY.

@@ -2033,6 +2033,57 @@ console.log(JSON.stringify(out));
     return errors
 
 
+def check_acquired_names_still_match_themselves() -> int:
+    """"X, An Acme Company" and "X" are one company filed twice.
+
+    That is how an acquired product gets renamed on its new owner's site, and
+    the board carries both spellings for Novotx and TouchNet. The tail survives
+    the legal-suffix strip, so the two names stay different strings and the
+    pair never reaches the duplicates queue - a company counted twice in a
+    total this project quotes at strangers, and no signal able to say so.
+
+    The opposite mistake is worse and cheaper to make: a rule hungry enough to
+    eat "The Active Network" or to collapse two unrelated firms would merge
+    companies that are not the same. So the negatives are pinned here as hard
+    as the positives.
+
+    Known and deliberately not fixed: LEGAL strips its words anywhere in a
+    name, not only at the end, so a company literally called "Company Nurse"
+    would collapse into "Nurse". Nothing on the board is affected, and
+    narrowing LEGAL to a suffix rule would re-key every existing merge - a
+    change with a blast radius nothing currently needs. Left here so the next
+    person meets it as a note rather than as a surprise.
+    """
+    import admin
+    errors = 0
+    same = [
+        ("Novotx, An Accela Company", "Novotx"),
+        ("TouchNet, A Global Payments Company", "TouchNet"),
+        ("Collins Aerospace, An RTX Business", "Collins Aerospace"),
+        ("Foo, a Bar Holdings Company", "Foo"),
+    ]
+    for a, b in same:
+        if admin.ident(a) != admin.ident(b):
+            errors += fail(f"{a!r} and {b!r} do not resolve to one identity, "
+                           f"so the pair never reaches the duplicates queue")
+    differ = [
+        # a real name that merely contains the trigger words
+        ("The Active Network", "Active"),
+        ("American Water Works Company", "American"),
+        # the tail names the PARENT; stripping it must not leave the parent
+        ("Novotx, An Accela Company", "Accela"),
+        # two different firms must never collapse into each other
+        ("Motorola Solutions", "Tyler Technologies"),
+        ("Accela", "Novotx"),
+    ]
+    for a, b in differ:
+        if admin.ident(a) == admin.ident(b):
+            errors += fail(f"{a!r} and {b!r} now resolve to the SAME identity. "
+                           f"A name rule that over-reaches merges companies "
+                           f"that are not the same company")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -2366,6 +2417,7 @@ def main() -> int:
     errors += check_unreachable_names_the_failure()
     errors += check_search_routes_are_live()
     errors += check_calendar_dates_survive_the_round_trip()
+    errors += check_acquired_names_still_match_themselves()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()
     errors += check_every_company_says_what_it_sells()

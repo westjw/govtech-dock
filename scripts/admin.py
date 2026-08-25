@@ -83,8 +83,19 @@ def norm(s: str) -> str:
     return re.sub(r"[^a-z0-9]", "", (s or "").lower())
 
 
+# "Novotx, An Accela Company" and "TouchNet, A Global Payments Company" are how
+# an acquired product gets renamed on its new owner's site. Both are on the
+# board twice - once under the plain name, once with the tail - and neither
+# pair could reach the duplicates queue, because the tail survives LEGAL and
+# makes the two names different strings. The parent's name inside the tail is
+# not part of this company's identity; it is a sentence about who owns it.
+ACQUIRED_BY = re.compile(
+    r",?\s+(?:an?|the)\s+[A-Za-z0-9&.\'-]+(?:\s+[A-Za-z0-9&.\'-]+){0,3}"
+    r"\s+(?:company|business|brand)\b.*$", re.I)
+
+
 def ident(name: str) -> str:
-    return norm(LEGAL.sub("", name or ""))
+    return norm(LEGAL.sub("", ACQUIRED_BY.sub("", name or "")))
 
 
 def now() -> str:

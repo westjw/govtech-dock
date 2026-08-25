@@ -459,12 +459,11 @@ CONCEPTS: list[dict[str, Any]] = [
 
     # ------------------------------------------------------ Courts & Justice
     {"say": ["justice", "criminal justice", "judiciary", "legal"],
-     "go": [["Courts & Justice", None], ["General Gov", "Courts & Justice"]]},
+     "go": [["Courts & Justice", None]]},
     {"say": ["courts", "court", "e-filing", "efiling", "electronic filing",
              "docket", "dockets", "jury", "juror", "jurors", "court records",
              "case management", "traffic court"],
-     "go": [["Courts & Justice", "Courts & Case Management"],
-            ["General Gov", "Courts & Justice"]]},
+     "go": [["Courts & Justice", "Courts & Case Management"]]},
     {"say": ["prosecutor", "prosecutors", "prosecution",
              "district attorney", "public defender", "defender",
              "evidence sharing", "discovery"],

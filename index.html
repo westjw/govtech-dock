@@ -237,6 +237,7 @@
      their notes say so - but a row reading "November 19-21, 2025" beside every
      upcoming event reads as an event you can still fly to. The date is true and
      the row was still lying by omission. */
+  .cfwhy{font-size:12.5px;color:var(--faint);font-style:italic}
   .cfpast{font-size:11px;letter-spacing:.06em;text-transform:uppercase;
     font-weight:700;color:var(--panel);background:var(--dim);padding:1px 5px;
     white-space:nowrap}
@@ -1086,8 +1087,8 @@ const COCONCEPTS=/* CONCEPT-MAP */[
  {"say":["terminal","terminals","gate","gates","concessions","baggage","baggage handling","passenger experience","flight information","fids","common use","wayfinding","landside"],"go":[["Airports & Aviation","Terminal & Passenger Experience"]]},
  {"say":["screening","tsa","checkpoint","credentialing","badging","perimeter security","biometrics","biometric","security screening"],"go":[["Airports & Aviation","Security & Screening"]]},
  {"say":["ground transport","airport parking","rideshare","tnc","curbside airport"],"go":[["Airports & Aviation","Parking & Ground Transport"]]},
- {"say":["justice","criminal justice","judiciary","legal"],"go":[["Courts & Justice",null],["General Gov","Courts & Justice"]]},
- {"say":["courts","court","e-filing","efiling","electronic filing","docket","dockets","jury","juror","jurors","court records","case management","traffic court"],"go":[["Courts & Justice","Courts & Case Management"],["General Gov","Courts & Justice"]]},
+ {"say":["justice","criminal justice","judiciary","legal"],"go":[["Courts & Justice",null]]},
+ {"say":["courts","court","e-filing","efiling","electronic filing","docket","dockets","jury","juror","jurors","court records","case management","traffic court"],"go":[["Courts & Justice","Courts & Case Management"]]},
  {"say":["prosecutor","prosecutors","prosecution","district attorney","public defender","defender","evidence sharing","discovery"],"go":[["Courts & Justice","Prosecution & Defense"]]},
  {"say":["probation","parole","supervision","pretrial","pre-trial","reentry","re-entry","diversion","electronic monitoring","ankle monitor","community supervision"],"go":[["Courts & Justice","Probation & Supervision"]]},
  {"say":["health and human services","human services","hhs","social services","health","healthcare","case worker","caseworker"],"go":[["Health & Human Services",null]]},
@@ -4250,6 +4251,7 @@ function conferences(){
       : `${shown.length} of ${rows.length} events`;
     const g={};
     shown.forEach(r=>{(g[r.block||"Other"]=g[r.block||"Other"]||[]).push(r)});
+    Object.values(g).forEach(v=>v.sort(cfOrder));
     const keys=Object.keys(g).sort();
     $("#cf-list").innerHTML=keys.length?keys.map(b=>cfBlockHTML(b,g[b])).join(""):
       `<div class="empty">${GHOST}No conference matches that.<br>
@@ -4266,6 +4268,44 @@ function conferences(){
   return;
 }
 
+/* Within a department the catalogue's own order is arbitrary - September
+   before May before February - which is fine for a list you read and useless
+   for the question this tab exists to answer, which is "where should I be, and
+   when". Three tiers, because they are three different things to a person
+   planning travel: what is still ahead, soonest first; what has already
+   happened, most recent first; and the rows whose dates we do not know, which
+   cannot be placed on a calendar at all and so go last rather than being
+   guessed into a position. */
+function cfOrder(a,b){
+  const rank=r=>{
+    const g=calRange(r.dates);
+    if(!g)return 2;
+    return isPast(r.dates)?1:0;
+  };
+  const ra=rank(a), rb=rank(b);
+  if(ra!==rb)return ra-rb;
+  if(ra===2)return (a.name||"").localeCompare(b.name||"");
+  const ga=calRange(a.dates).start, gb=calRange(b.dates).start;
+  /* past editions read backwards: the one that just finished is the one a
+     reader is most likely to be looking for. */
+  return ra===1 ? gb-ga : ga-gb;
+}
+
+/* Thirteen events carry no dates, and the reason differs. Nine organisers
+   have not published the next edition yet. Three of the sites would not answer
+   us at all - NATaT returns a WordPress fatal error on every path, AACE serves
+   a Cloudflare interstitial, NASRO a maintenance page - and a site that will
+   not load is not a conference that stopped existing. Saying "not announced"
+   about those three would be inventing a fact about the organiser out of a
+   failure on our side. */
+function cfNoDates(r){
+  switch(r.dates_confidence){
+    case "unannounced": return "next edition not announced yet";
+    case "unreachable": return "dates unconfirmed \u2014 their site would not load";
+    default:            return "dates not confirmed";
+  }
+}
+
 function cfBlockHTML(b,list){
   return `<div class="cfblock"><h3>${esc(b)}</h3>${list.map(r=>cfRowHTML(r)).join("")}</div>`;
 }
@@ -4276,7 +4316,8 @@ function cfRowHTML(r){
                 ${r.companies?"":'aria-disabled="true"'}>
           <span class="cfname">${esc(r.name)}</span>
           ${r.flagship?`<span class="cfflag">flagship</span>`:""}
-          ${r.dates?`<span class="cfmeta">${esc(r.dates)}</span>`:""}
+          ${r.dates?`<span class="cfmeta">${esc(r.dates)}</span>`
+                    :`<span class="cfwhy">${esc(cfNoDates(r))}</span>`}
           ${isPast(r.dates)?`<span class="cfpast"
              title="This edition has already happened">past edition</span>`:""}
           ${r.city?`<span class="cfmeta">${esc(r.city)}</span>`:""}
