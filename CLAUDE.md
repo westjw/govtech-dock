@@ -707,18 +707,48 @@ Practical reading of that when choosing what to do next:
 - Admin work is product work here, because the queues are what keep the data
   honest, and one day they are meant to be playable.
 
-## Queued, deliberately not started
+## Queued: an iOS app, and it is an ADMIN app
 
-**An iOS app, Expo / React Native** (owner, 2026-08-25). Chosen over a PWA and
-over native Swift for one reason: push notifications when a new role lands,
-which iOS does not give a PWA reliably. It reads the same `board.json` the
-site does - one source of truth, never a second copy of the map.
+**Expo / React Native** (owner, 2026-08-25), chosen over a PWA and over native
+Swift for push notifications, which iOS does not give a PWA reliably.
 
-The owner said **make that last**, so it is last. The cost it carries is a
-second codebase to keep in sync, an Apple developer account and review cycles,
-and that cost is worth paying only once the queues are worked and the board is
-correct. A phone app over a map with 2,769 unmade rulings ships the same
-mistakes to a smaller screen.
+**It is for RULING, not for browsing**, and that was the owner's correction to
+a worse plan. The first version of this note argued the app should wait
+because "a phone app over a map with 2,769 unmade rulings ships the same
+mistakes to a smaller screen." That argument dies the moment the app is the
+thing that REDUCES the 2,769. It also has the better justification on its own
+terms: the public board already works on a phone (verified at 375px), so a
+reader app duplicates something that is not broken, while the ruling half is
+where the actual bottleneck is.
+
+The web admin already does two queues from a phone, behind Cloudflare Access.
+What a native app adds over that, and the only reasons worth a second
+codebase:
+
+- **Rule offline.** A subway, a plane, a conference floor. Decisions queue
+  locally and sync when there is signal. The web admin needs a live Worker
+  for every single ruling.
+- **A gesture instead of a tap.** Vendor scope and wrong bucket are one
+  question with three answers; a swipe rules faster than a button, and the
+  queue is 480 items deep.
+- **Push when something is wrong on the public site**, which is the one
+  notification that has ever mattered here: 16 miscategorised companies are
+  visible to strangers right now.
+
+**Which queues belong on a phone, and which must not:**
+
+| Queue | Phone | Why |
+| --- | --- | --- |
+| Wrong bucket (237) | yes | The answer is on the card |
+| Vendor scope (243) | yes | Same |
+| Founding year confirms (177) | yes | One tap, the year is already there |
+| Duplicates (69) | maybe | Two records side by side needs width |
+| Board proposals (82) | maybe | Wants the board opened in a tab |
+| **Acquisitions (59)** | **NO** | CLAUDE.md already excludes it from the belt for the same reason: deciding whether a slug belongs to a parent needs slow reading, and a fast grip buys speed with accuracy |
+
+Everything the Worker rule holds still holds: the app **appends an opinion**,
+and `apply_web_rulings.py` applies it in Python behind `validate()`. A bug in
+a phone app must not be able to corrupt the map.
 
 ## Portfolio Dashboard Sync
 
