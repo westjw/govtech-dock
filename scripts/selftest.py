@@ -1776,6 +1776,74 @@ def check_rating_scale() -> int:
     return errors
 
 
+def check_every_company_says_what_it_sells() -> int:
+    """A company on the public map must say what it sells.
+
+    validate() has never required a description, and every one of the 2,103
+    companies has one anyway - the convention is 100% honoured and 0% enforced,
+    which is the state a rule is in right before it breaks.
+
+    It nearly did. A conference sweep produced 95 companies worth intaking and
+    only 39 carried a line about what they sell; the other 56 would have
+    entered as structurally valid records that render on the public Companies
+    tab as a name and nothing else. Nothing would have errored.
+
+    CLAUDE.md's rule is one line, what they sell and to whom. This does not
+    police the prose - it only refuses the empty.
+    """
+    errors = 0
+    companies = json.load(open(DATA / "companies.json"))
+    blank = [c["id"] for c in companies if not (c.get("description") or "").strip()]
+    for cid in blank[:12]:
+        errors += fail(f"company {cid!r} has no description. It would render on "
+                       f"the public Companies tab as a name and nothing else.")
+    if len(blank) > 12:
+        errors += fail(f"... and {len(blank) - 12} more companies with no "
+                       f"description")
+    return errors
+
+
+def check_unreachable_names_the_failure() -> int:
+    """A broken certificate chain must not be recorded as a dead site.
+
+    kunzleigh.com sells state WIC management systems and Medicaid
+    third-party-liability modules - exactly what this board exists to find.
+    add_company.fetch() returned 0 bytes on https, on www and on http, and
+    curl gets HTTP 200 with 275KB. Their server sends the leaf certificate and
+    omits the intermediate; curl fetches the missing link itself over AIA and
+    `requests` does not.
+
+    The note said "unreachable: SSLError", the honest-failure path filed it as
+    no website found, and a live company disappeared. That is the "blocked is
+    not a zero" rule in a new place: a transport failure that LOOKS like
+    absence, and the one shape of it that a person can fix in a minute.
+
+    So the four failures are named separately. A DNS miss means the host does
+    not exist. A timeout means it did not answer. A broken chain means it
+    answered perfectly and we refused to trust it.
+    """
+    import add_company
+    import ssl
+    errors = 0
+    cases = [
+        (ssl.SSLCertVerificationError(
+            "certificate verify failed: unable to get local issuer certificate"),
+         "tls_chain", "an incomplete chain is recoverable and must say so"),
+        (TimeoutError("connection timed out"), "timeout",
+         "a host that did not answer is not a host that does not exist"),
+        (Exception("Name or service not known"), "dns",
+         "a host that does not resolve is a different fact"),
+        (ValueError("something else entirely"), "unreachable",
+         "anything unrecognised keeps the old, honest label"),
+    ]
+    for exc, want, why in cases:
+        got = add_company._why_unreachable(exc)
+        if not got.startswith(want):
+            errors += fail(f"fetch: {type(exc).__name__} -> {got[:40]!r}, "
+                           f"expected it to start {want!r}. {why}")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -2106,8 +2174,10 @@ def main() -> int:
     errors += check_writes_name_their_author()
     errors += check_header_shared()
     errors += check_identity_guard()
+    errors += check_unreachable_names_the_failure()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()
+    errors += check_every_company_says_what_it_sells()
     errors += check_brand()
     errors += check_admin_game()
     errors += check_admin_gates()

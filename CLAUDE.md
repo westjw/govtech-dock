@@ -707,6 +707,19 @@ Practical reading of that when choosing what to do next:
 - Admin work is product work here, because the queues are what keep the data
   honest, and one day they are meant to be playable.
 
+## Queued, deliberately not started
+
+**An iOS app, Expo / React Native** (owner, 2026-08-25). Chosen over a PWA and
+over native Swift for one reason: push notifications when a new role lands,
+which iOS does not give a PWA reliably. It reads the same `board.json` the
+site does - one source of truth, never a second copy of the map.
+
+The owner said **make that last**, so it is last. The cost it carries is a
+second codebase to keep in sync, an Apple developer account and review cycles,
+and that cost is worth paying only once the queues are worked and the board is
+correct. A phone app over a map with 2,769 unmade rulings ships the same
+mistakes to a smaller screen.
+
 ## Portfolio Dashboard Sync
 
 This project is tracked in a personal portfolio dashboard. Maintain

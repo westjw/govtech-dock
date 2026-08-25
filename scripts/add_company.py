@@ -103,6 +103,31 @@ def clean(s: str) -> str:
     return re.sub(r"\s+", " ", html_lib.unescape(s or "")).strip()
 
 
+def _why_unreachable(exc: Exception) -> str:
+    """Name the failure, because they are not the same failure.
+
+    A DNS miss means the host does not exist. A timeout means it did not
+    answer. A broken certificate chain means it answered perfectly well and we
+    refused to trust it - and that one is RECOVERABLE, by a person who looks.
+    Recording all three as "unreachable" throws away the difference and files
+    a live company as a dead one.
+    """
+    name = type(exc).__name__
+    text = str(exc).lower()
+    if "certificate verify failed" in text or "unable to get local issuer" in text:
+        # the specific, common, fixable case: server omitted its intermediate
+        return ("tls_chain: the site answered but sent an incomplete "
+                "certificate chain, so the connection was refused. It is very "
+                "likely alive - check it by hand before recording no board")
+    if "sslerror" in name.lower() or "ssl" in text:
+        return f"tls: {name}. The site answered; the TLS handshake failed"
+    if "nameresolution" in name.lower() or "name or service not known" in text:
+        return f"dns: {name}. That host does not resolve"
+    if "timeout" in name.lower() or "timed out" in text:
+        return f"timeout: {name}. The host did not answer in time"
+    return f"unreachable: {name}"
+
+
 def fetch(url: str) -> tuple[str, str]:
     """Return (html, note). Discovery is not monitoring: a WAF that answers 403
     while still sending the whole page is readable for identification purposes,
@@ -113,7 +138,26 @@ def fetch(url: str) -> tuple[str, str]:
         r = requests.get(url, headers=ats.UA, timeout=ats.TIMEOUT,
                          allow_redirects=True)
     except Exception as exc:
-        return "", f"unreachable: {type(exc).__name__}"
+        # A BROKEN CERTIFICATE CHAIN IS NOT A DEAD SITE, and until now it was
+        # recorded as one. kunzleigh.com - state WIC systems, Medicaid
+        # third-party-liability, exactly what this board exists to find -
+        # returns 0 bytes here on https, on www and on http, and HTTP 200 with
+        # 275KB to curl. Their server sends the leaf certificate and omits the
+        # intermediate; curl fetches the missing link itself over AIA and
+        # `requests` does not, so the trust path cannot be built and the fetch
+        # dies before a byte is read.
+        #
+        # The old note said "unreachable: SSLError", the honest-failure path
+        # filed it "no website found", and the company vanished. That is the
+        # "blocked is not a zero" rule in a new place: a transport failure that
+        # LOOKS like absence.
+        #
+        # This does NOT disable verification to get around it. A board that
+        # accepts any certificate is a board an attacker can write to, and the
+        # fix for a site with a broken chain is that somebody notices it -
+        # which is what the distinct note is for.
+        note = _why_unreachable(exc)
+        return "", note
     if r.status_code == 200:
         return r.text, ""
     # A block page can be large: zencity.io answers 403 with 75KB whose title is
