@@ -279,7 +279,10 @@
     font-size:13.5px;font-weight:600;letter-spacing:.04em;
     color:var(--hdr-ink);text-decoration:none;
     border-bottom:1px solid var(--beak);padding-bottom:2px;cursor:pointer}
-  .slide.hero .how:hover{color:var(--beak)}
+  /* Beak on the RULE, not the words. check_beak_is_never_text caught this
+     one within a minute of it being written, which is the guard doing exactly
+     what it was added for this morning. */
+  .slide.hero .how:hover{border-bottom-width:2px;padding-bottom:1px}
   @media (max-width:768px){
     /* the penguin would sit under the headline at this width */
     .bhero .pen{display:none}
