@@ -85,8 +85,22 @@ def build_admin_bundle(out: "pathlib.Path") -> None:
     board = json.loads((ROOT / "data" / "board.json").read_text())
     schema = json.loads((ROOT / "data" / "schema.json").read_text())
     tri = _admin.triage(companies, board)
+    # The company's own mark, so a row on a phone is recognisable before it is
+    # read. The owner asked for logos on the admin pages; the desktop admin got
+    # them and this one did not, which is the kind of gap that survives because
+    # nobody looks at the same screen twice.
+    #
+    # A MANIFEST, not the images: {id: extension}. The page builds the src from
+    # it, which is 2 KB instead of 2,103 speculative requests that mostly 404.
+    logo_manifest = {}
+    _ldir = ROOT / "assets" / "logos"
+    if _ldir.exists():
+        for f in _ldir.glob("*.*"):
+            logo_manifest[f.stem] = f.suffix.lstrip(".")
+
     payload = {
         "generated": board.get("generated"),
+        "logos": logo_manifest,
         "companies": len(companies),
         "postings": len(board.get("postings", [])),
         "game": tri.get("game"),
@@ -96,6 +110,10 @@ def build_admin_bundle(out: "pathlib.Path") -> None:
         "schema": {x["name"]: [c for c in x["categories"]
                                if c != "Suppliers & Services"]
                    for x in schema["sectors"]},
+        # `id` rides along so the page can build a logo src. It is the
+        # company's own kebab id, already public on the board, and the row
+        # carried only `key` before - a hash of the name, which no asset is
+        # filed under.
         "vendors": [_public_row(v) for v in _admin.q_vendor_scope(companies, board)],
         "miscategorized": [_public_row(v)
                            for v in _admin.q_miscategorized(companies, board)],
