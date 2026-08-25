@@ -1539,6 +1539,68 @@ def check_header_shared() -> int:
     return errors
 
 
+def check_identity_guard() -> int:
+    """identifies() is what stands between a squatter and the dataset.
+
+    Both of its failures are here because both were real, and they fail in
+    opposite directions:
+
+    A FALSE PARKED VERDICT on a real page. `sedo` sat in PARKED as a bare
+    unanchored alternative, so it matched inside "onmou-SEDO-wn" - and a
+    WordPress lazy-load listener puts "mousedown" in the first 4KB of a great
+    many company homepages. bentley.com and soilflo.com were both rejected on
+    that basis. It fails in the honest direction, reporting "no website
+    found", and it is still wrong: the page is real and names the company in
+    its own title.
+
+    A FALSE PASS on a squatter. identifies() read only html[:4000], and a
+    DomainMarket listing for vocaltechnologies.com carries "Technology Domains
+    for Sale" IN ITS TITLE - pushed to byte 4162 by inline tracking script. It
+    missed by 162 bytes, and then satisfied the identity check outright,
+    because a for-sale headline containing both of the company's name tokens
+    is the entire business model of a domain squatter.
+    """
+    import find_websites as fw
+    errors = 0
+
+    REAL = [
+        # (html, name, base) - a real page that must NOT read as parked
+        ('<title>Bentley Systems | Infrastructure Engineering Software</title>'
+         '<script>el.addEventListener("mousedown",f)</script>',
+         "Bentley Systems", "bentley"),
+        ('<title>SoilFLO | Soil Tracking Software</title>'
+         '<script>window.onmousedown=null</script>', "SoilFLO", "soilflo"),
+        # ordinary words that contain a vendor name as a substring
+        ('<title>Acme Closedown Services</title><p>used online by cities</p>',
+         "Acme Closedown Services", "acmeclosedown"),
+    ]
+    for html, name, base in REAL:
+        if fw._parked(html):
+            errors += fail(f"identity: {name!r} page read as PARKED - a real "
+                           f"page rejected because a guard matched inside an "
+                           f"ordinary word")
+        if not fw.identifies(html, name, base):
+            errors += fail(f"identity: {name!r} not identified on its own page")
+
+    PARKED_PAGES = [
+        # the tell is past the 4KB window but sits in the title
+        ("<script>" + "x" * 4200 + "</script><title>VocalTechnologies.com - "
+         "Technology Domains for Sale - Buy Premium Tech Domain Names</title>",
+         "VOCAL Technologies Inc.", "vocaltechnologies"),
+        ("<title>This domain is listed at Sedo</title>", "Anything", "anything"),
+        ("<title>HugeDomains.com - Shop for over 300,000 Premium Domains</title>",
+         "Liberty Mobility Now", "libertymobilitynow"),
+    ]
+    for html, name, base in PARKED_PAGES:
+        if not fw._parked(html):
+            errors += fail(f"identity: a for-sale page for {name!r} was not "
+                           f"recognised as parked")
+        if fw.identifies(html, name, base):
+            errors += fail(f"identity: identifies() PASSED a squatter page for "
+                           f"{name!r} - this is the one thing it exists to stop")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -1867,6 +1929,7 @@ def main() -> int:
     errors += check_merged_names_stay_merged()
     errors += check_writes_name_their_author()
     errors += check_header_shared()
+    errors += check_identity_guard()
     errors += check_brand()
     errors += check_admin_game()
     errors += check_admin_gates()

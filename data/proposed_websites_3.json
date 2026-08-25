@@ -1,0 +1,167 @@
+[
+ {
+  "id": "aurionpro",
+  "name": "Aurionpro",
+  "website": null,
+  "confidence": "unreachable",
+  "why": "aurionpro.com answers but cannot be read. TLS presents a valid Sectigo cert whose CN is literally *.aurionpro.com, but the server omits the intermediate, so verification fails with 'unable to get local issuer certificate'. add_company.fetch() returns 'unreachable: SSLError' on https://aurionpro.com and https://www.aurionpro.com; plain http 301s to https://...:443/ so there is no readable path. An independent fetcher refused it too ('unable to verify the first certificate'). The transit arm's own domain, aurotransit.com, ConnectTimeouts on every attempt. The APTA TRANSform 2026 exhibitor list does carry 'Aurionpro' (booth 3600), so the company is real and the domain is very likely theirs, but a DV cert proves only domain control, not that the page sells transit fare collection. Never read the page, so no website written. Worth a human retry: this is a misconfigured chain, not a dead site, and browsers with AIA fetching will show it fine."
+ },
+ {
+  "id": "batonroute-school-and-staff-transport-app",
+  "name": "BatOnRoute - School and Staff Transport App",
+  "website": "https://batonroute.com",
+  "confidence": "high",
+  "quote": "Revoluciona la gesti\u00f3n de rutas y usuarios con Bus Tracker de BatOnRoute ... BatOnRoute centraliza en una \u00fanica herramienta la gesti\u00f3n, planificaci\u00f3n y seguimiento en tiempo real de tus rutas.",
+  "identity_why": "identity_note: present ['batonroute'], domain_is_lead true, says 'Real-Time Bus Tracker | BatOnRoute'. name_candidates puts 'BatOnRoute' first at score 100 as the site's own og:site_name. identifies() returns false only because our stored name carries the exhibitor-listing descriptor '- School and Staff Transport App', whose words school/staff/transport/app are not in the title, meta or h1 - the EagleView case, not a squatter case. The distinctive token is the whole brand and it is also the domain. Quote note: the proposed root serves Spanish ('Bus Tracker - Gestion de Rutas de Viajeros | BatOnRoute'), so the quote above is the root's own text; the English equivalent at /en/ reads 'BatOnRoute brings everything together in one app, enabling you to easily manage, plan, and track your buses in real time.' The root also discloses ownership - 'Batonroute es una solucion del Grupo Nunsys' - which is a fact worth carrying onto the card: the parent is the Spanish IT group Nunsys, not a US vendor.",
+  "sells_why": "The /en/ nav lists 'School Transport' and 'Employee transport' as named solutions, and 'Schools' and 'Corporations' as named audiences - which is our description's 'school and staff transport' verbatim. 'school' x12, 'transport' x23, 'bus' x16 in the page text. The root serves the same site in Spanish ('Transporte escolar', 'Transporte de empleados')."
+ },
+ {
+  "id": "cityreporter-by-noratek-solutions-inc",
+  "name": "CityReporter by Noratek Solutions Inc.",
+  "website": "https://www.cityreportersoftware.com",
+  "confidence": "high",
+  "quote": "Click the link below to see which municipalities are using CityReporter for efficient, paperless inspections.",
+  "identity_why": "identity_note: present ['cityreporter', 'by'], missing ['noratek'], says 'CityReporter Software - Home Page / Maximize efficiency and reduce inspection time by over 40%...'. name_candidates returns 'CityReporter Software' from the logo alt text. identifies() is false only because 'noratek' is absent from title/meta/h1 - but Noratek IS named in the page body, in a customer testimonial ('...Noratek has provided us with excellent customer support'), which ties the product name to the vendor name our record uses.",
+  "sells_why": "Municipal inspection and reporting software, matching our description exactly: solution menu is Asset Management, Inspection & Maintenance Management, GIS Mapping, E-Permitting, Work Order Management; industries are Planning & Development, Fire Prevention & Code Enforcement, Parks, Public Works. 'With our customizable and mobile-friendly software, local governments can: Streamline workflow...'. Caution for whoever files this: noratek.com is NOT this business any more - it now serves 'Noratek IT Services Inc', a managed-IT shop with zero inspection or municipal content. The product site is the right site."
+ },
+ {
+  "id": "cops-training-portal",
+  "name": "COPS Training Portal (Powered by NCPI)",
+  "website": "https://copstrainingportal.org",
+  "confidence": "high",
+  "quote": "The Portal is powered by the National Center for Policing Innovation (NCPI) and is supported by cooperative agreement awarded by the Office of Community Oriented Policing Services (COPS Office).",
+  "identity_why": "identity_note: present ['cops', 'training', 'portal'], missing ['powered', 'by', 'ncpi'], domain_is_lead true, says 'The Office of Community Policing Services (COPS) Training Portal'. name_candidates returns 'COPS Training Portal - Production' as the site's own og:site_name, score 100. identifies() is false only on the parenthetical qualifier in our stored name - and the page expands that qualifier itself: the h2 reads 'Welcome to the COPS Training Portal Powered by the National Center for Policing Innovation', which is our stored name spelled out in full.",
+  "sells_why": "Online police training and certification, as our description says: 'The COPS Training Portal provides a no-cost means for entire law enforcement organizations, training academies, and individual officers to access high-quality and engaging materials'. Nav carries E-Learning, Enhanced Training, In-Person Training, Learning Partners. NCPI's own site (ncpi.us) independently confirms the relationship, with schema.org Organization name 'National Center for Policing Innovation'."
+ },
+ {
+  "id": "ebridge-procurement",
+  "name": "eBridge Procurement",
+  "website": "https://www.ebridgeprocurement.com",
+  "confidence": "medium",
+  "quote": "Results Demo Privacy Policy sales@ebridgeprocurement.com 1-877-245-8880 (c) 2026 eBridge Global",
+  "identity_why": "identity_note: present ['ebridge'], missing ['procurement'], says 'eBridge Reverse Auctions / eBridge Full-Service Reverse Auctions'. identifies() is false because 'procurement' never appears in title/meta/h1. What ties the company to the domain is the footer: the sales address is sales@ebridgeprocurement.com, so the page itself asserts ebridgeprocurement.com as its own address. ebridgeglobal.com serves the byte-identical page (both 40,678 bytes), so it is one site under two names.",
+  "sells_why": "Medium, not high, because the page is narrower than our description. We say 'E-procurement bid posting and management platform'; the page sells full-service reverse auctions - 'Average eBridge Results: 120 Lowering Bids, 6 Participating Vendors' - which is competitive bidding for procurement but not bid posting. Government is the first of four named verticals (Government, Healthcare, Education, Private Sector), and the NIGP 2026 exhibitor listing for 'eBridge Procurement' corroborates the public-procurement buyer. Somebody should decide whether our description or the page is the thing to correct."
+ },
+ {
+  "id": "faster-by-transit-technologies",
+  "name": "FASTER by Transit Technologies",
+  "website": "https://fasterasset.com",
+  "confidence": "high",
+  "quote": "Trusted by Fleet Professionals Nationwide FASTER is a proven solution trusted by organizations to manage everything from rolling stock to critical equipment - keeping fleets mission-ready, compliant, and running at peak performance.",
+  "identity_why": "identity_note on both / and /about: ok TRUE, present ['faster', 'by', 'transit'], missing []. name_candidates gives 'FASTER' as the schema.org Organization name, score 95. This is the only one of my sixteen where identifies() passes AND the 'by <parent>' half of our stored name is confirmed in prose rather than by coincidence - the /about page states the parent relationship in a single sentence.",
+  "sells_why": "Fleet maintenance management software, our description word for word: 'Fleet Maintenance ... Automate preventive maintenance schedules, streamline work orders, track parts in real time'. Public sector is named as the target - 'Tailored for the Public Sector: Built for municipalities, school systems, transit, and utilities' - which is why it belongs on a SLED board. The root also carries a direct SLED procurement signal: 'FASTER Is Now on the FSA Contract - Procurement Made Simple. Public agencies can now purchase FASTER's full suite of fleet maintenance software via the Florida Sheriffs Association purchasing program.' The parent-company sentence quoted in identity_why is on /about, not on the root I propose."
+ },
+ {
+  "id": "govshield-inc",
+  "name": "GovShield, Inc.",
+  "website": "https://govshieldgpt.com",
+  "confidence": "high",
+  "quote": "GovShield GPT is a CJIS-aligned, agency-controlled AI platform designed for law enforcement.",
+  "identity_why": "identity_note: present [], missing ['govshield'], says 'Home / AI-powered SaaS delivers secure, containerized solutions in government clouds to help law enforcement agencies...'. identifies() is false purely because the title is the word 'Home' and the og:description leads with the category rather than the name. name_candidates still recovers it twice from logo alt text ('GovShield Logo_Corp Horizontal Full Color', 'GovShield Logo_GPT Stacked White'), the body says GovShield x8, and the page carries 'Contact GovShield Inc.' - our stored legal name including the Inc.",
+  "sells_why": "CJIS-aligned agentic AI for agencies, matching our description on every term: 'CJIS' x7, 'law enforcement' x4, 'agency' x11. Features are Report Review, Auto Redaction ('Our AI agent can automatically redact license plates, names, and addresses'), Crime Trends, Briefings, Court Preparation. The 'agentic' framing in our description is corroborated by the page's own 'AI agent' language and by the March 2026 launch announcement."
+ },
+ {
+  "id": "imagry-autonomous-buses-shuttles",
+  "name": "Imagry Autonomous Buses & Shuttles",
+  "website": "https://www.imagry.co",
+  "confidence": "high",
+  "quote": "Unlike robotaxis, our solutions serve the commercial transit market: autonomous buses and shuttles on public roads and in operational zones.",
+  "identity_why": "identity_note: present ['imagry', 'autonomous', 'buses'], missing ['shuttles'], says 'AI-Based Autonomous Driving Solution for Public Transit | Imagry'. name_candidates gives 'Imagry' as the schema.org Organization name, score 95. identifies() misses by exactly one word - 'shuttles' is in the body and the nav ('AI Driving Shuttles') but not in title/meta/h1. Three of our four name tokens are in the identity fields; the fourth is one heading below.",
+  "sells_why": "Mapless autonomous driving software for buses, our description exactly: nav carries 'HD Mapless Explained', 'mapless' x6, and 'Imagry is the only open, scalable, Autonomous Driving solution for public transit: M1, M2, and M3 category vehicles.' Note imagry.ai returns a 114-byte empty body and imagry.com ConnectTimeouts - .co is the live one."
+ },
+ {
+  "id": "justiceone",
+  "name": "JusticeONE",
+  "website": "https://justice-one.com",
+  "confidence": "high",
+  "quote": "JusticeONE built the first Public Safety & Justice Platform in the GovTech industry.",
+  "identity_why": "identity_note: ok TRUE, present ['justiceone'], missing []. name_candidates returns 'JusticeONE Corporate Website' as the site's own og:site_name, score 100, and 'JusticeONE' from the title. The hyphen in the domain is why the guesser never found it: find_websites.candidates('JusticeONE') proposes justiceone.com (a 114-byte empty body) and justiceone.net (a HugeDomains listing at $595) and never reaches justice-one.com. Quote note: the sentence above is on the proposed root; the 29-years sentence quoted in sells_why is on /About.",
+  "sells_why": "Justice and public safety records software, our description exactly: 'JusticeONE built the first Public Safety & Justice Platform in the GovTech industry', product suite is NCIC, Dispatch, Mobile RMS, e-Citation, RMS, Municipal Court, Payments. This also settles the batch-3 placement note that hedged 'could be court case management' - it is both, law enforcement RMS and municipal court, under one platform. The /About page adds the company sentence: 'With a proud history spanning over 29 years, JusticeONE is a trusted and established company specializing in the development of cutting-edge law enforcement and municipal court software.'"
+ },
+ {
+  "id": "lexisnexis-risk-solutions-government",
+  "name": "LexisNexis Risk Solutions Government",
+  "website": "https://risk.lexisnexis.com/government",
+  "confidence": "high",
+  "quote": "[meta description] LexisNexis government solutions provide agencies with access to critical information, advanced analytics and linking technology to make data-driven decisions.",
+  "identity_why": "identity_note: ok TRUE, present ['lexisnexis', 'risk', 'government'], missing []. name_candidates returns 'LexisNexis Risk Solutions' as the site's own og:site_name, score 100. I am proposing the /government path rather than the host root deliberately: risk.lexisnexis.com on its own FAILS identifies() (present ['lexisnexis','risk'], missing ['government']), because our record is the government segment, not the whole risk business. The deep URL is the one that identifies the entity we actually have on file. Quote note: this page's visible body text names the company only in the copyright line, so the quote above is taken from the page's own meta description tag - verified present in the raw HTML of the proposed URL, and one of the three fields identifies() itself reads.",
+  "sells_why": "Investigative data and analytics for government, our description exactly. Page title is 'Government Data, Analytics & Linking Technology', 'government' x25, 'law enforcement' x13, 'investigat' x12, and the product sign-in list carries Accurint for Government and Accurint for Law Enforcement by name."
+ },
+ {
+  "id": "mygovernmentonline-scpdc",
+  "name": "MyGovernmentOnline(MGO)-SCPDC",
+  "website": "https://www.mygovernmentonline.org",
+  "confidence": "high",
+  "quote": "Unified permitting, planning, licensing, code enforcement, and EAM public works software for local government - trusted nationwide with no upfront cost.",
+  "identity_why": "identity_note: present ['mygovernmentonline', 'mgo'], missing ['scpdc'], says 'MyGovernmentOnline (MGO) - Permitting, Code Enforcement & Public Works'. name_candidates returns exactly one result, 'MyGovernmentOnline (MGO)', as the site's own og:site_name at score 100 - our stored name minus the operator suffix. Honest caveat: SCPDC is nowhere on this page. That South Central Planning & Development Commission created and operates MGO is corroborated only off-page (scpdc.org/departments/technology, and the partnership contact partnership@mygovernmentonline.org). scpdc.org itself answered HTTP 202 with no body and could not be read.",
+  "sells_why": "Permitting and licensing software for local government, matching our description on permitting and licensing; the page's own list is 'permitting, planning, licensing, code enforcement, and EAM public works'. Our description's third term, 'inspections', is not on this page - it is a thin 10KB landing page, so absence here is not absence from the product. Note the .com is not them: mygovernmentonline.com fails with SSLError."
+ },
+ {
+  "id": "omen-ai",
+  "name": "Omen AI",
+  "website": null,
+  "confidence": "ambiguous",
+  "why": "omen.ai is live and identifies as 'Omen' (og:site_name, score 100), but it is a fluid-sensor asset-intelligence company - 'Omen uses continuous fluid analysis to read the health of your equipment in real time' - selling to data centres and industrial machine operators. 'public works' x0, 'municipal' x0, 'government' x0 in the page text. Our record says PWX 2026, sector Public Works. Its one adjacent signal is heavy equipment ('Your cranes, forklifts, and heavy equipment...'), which could touch a public works fleet, but nothing on the page connects it to APWA or a government buyer, and I could not reach a PWX 2026 exhibitor directory to confirm which Omen exhibited (the a2z and expocad paths 404, apwa.org 403s, and the aggregator listing carries no name containing 'Omen'). Note identity_note returns present ['omen'], missing ['ai'] - so identifies() would reject it anyway. This is the Vocalis shape: right name, unproven business. An earlier pass reached the same wall from the other side - data/conference_intake/placements/batch-4.json files omen-ai with confidence 'low' and the reason 'Description too generic; any placement would be a guess.' The description is the thing to fix first; the website follows it."
+ },
+ {
+  "id": "partake",
+  "name": "Partake",
+  "website": "https://www.we-partake.com",
+  "confidence": "high",
+  "quote": "Try the App Partake for Cities Empower citizens to share, save, and connect with a fully supported, turnkey sharing solution for your community.",
+  "identity_why": "identity_note: ok TRUE, present ['partake'], missing []. Title 'Home | Partake'; the /city-solution/why-partake page is titled 'Why Partake for Cities ? | Partake'. Both we-partake.com and we-partake.com without www resolve to the same /en-us/home-page. partage.club is the same company's Canadian brand ('Home | Partage Club', /en-ca/) - I chose the .com because our record is the US exhibitor name 'Partake'. Quote note: the sentence above is on the proposed root; the 'flexible licensing' sentence is on /en-us/city-solution/why-partake.",
+  "sells_why": "Read the caveat before filing this. Our description says 'Digital community engagement platform for cities'. What Partake actually sells is a peer-to-peer object-sharing app - their own ICMA 2025 exhibitor profile says 'Partake is a technology company specializing in circular economy, more specifically in mutualization... a mobile application that allows citizens to share everyday objects with their neighbors'. The site does sell to municipalities and does use our exact words - 'Strengthen community engagement: Sharing creates real connections between neighbors' - and 'Cities & Municipalities' is one of three named buyer paths. So the website is right and the sector is right, but 'community engagement platform' will mislead anyone who reads the card expecting PublicInput or Zencity."
+ },
+ {
+  "id": "police-narratives-ai",
+  "name": "Police Narratives AI",
+  "website": "https://policenarratives.ai",
+  "confidence": "high",
+  "quote": "[og:description] Police Narratives AI transforms voice recordings into professional police reports in minutes.",
+  "identity_why": "identity_note: ok TRUE, present ['police', 'narratives', 'ai'], missing []. name_candidates returns 'Police Narratives AI' at score 80 as 'the part of the page title the domain backs up' - name and domain corroborate each other. 'Police Narratives' x9 in the body. Quote note: the sentence above is the page's og:description, verified present in the raw HTML of the proposed URL. A visible-body alternative is 'With Police Narratives AI, you define the rules.'",
+  "sells_why": "AI-assisted police report writing, our description exactly: 'Transform voice recordings, bodycam footage, and interviews into professional reports written in your style in minutes, not hours', over the compliance line 'CJIS Compliant - AWS GovCloud - CA SB 524 & UT SB 180 Compliant'. Named agency testimonials from Anchorage PD, Greeley PD and Manchester PD put real government buyers on the page."
+ },
+ {
+  "id": "pulse-transit-software",
+  "name": "Pulse Transit Software",
+  "website": null,
+  "confidence": "ambiguous",
+  "why": "The exhibitor is real - the APTA TRANSform 2026 list carries 'Pulse Transit Software' with its own goeshow profile id C1EBBC7F-457A-F111-810C-878210A2B90C - but the profile is a JavaScript app that returns 1,996 bytes reading 'You need to enable JavaScript to run this app', so the directory holds no website I can read. The obvious domain, pulsetransit.com, answers 82,926 bytes of cPGuard bot wall ('HUMAN VERIFICATION FAILED! You are here because the url you are trying to access is protected'), and independent search says that domain belongs to Pulse Transit LLC, a freight and contract logistics firm - a different business from transit operations software for agencies. pulsetransitsoftware.com, pulsetransit.io and pulsetransit.net do not resolve. Every other 'Pulse' in transit is somebody else's product: Vix Pulse is Vix Technology's fare collection platform, bp pulse is charge management, Pulse Software (Sydney) was acquired by Springbrook. Name matched, business unconfirmed, so no URL written."
+ },
+ {
+  "id": "rfxpremier",
+  "name": "RFXPremier",
+  "website": "https://www.rfxpremier.org",
+  "confidence": "high",
+  "quote": "Buyer Supplier The RFxPremier Advantage COOPERATIVE FOR ALL With our extensive catalog of cooperative contracts, RFxPremier strives to fulfill the needs of purchasing entities across multiple industries and public organizations.",
+  "identity_why": "identity_note: ok TRUE, present ['rfxpremier'], missing [], domain_is_lead true. name_candidates returns 'RFxPremier' as the site's own og:site_name at score 100, plus 'RFx Premier Logo' from the logo alt text. The reason the guesser missed it is the TLD alone: find_websites.candidates tries .com/.io/.net/.co and never .org, and rfxpremier.com does not resolve at all.",
+  "sells_why": "RFP and solicitation management for public procurement, matching our description. The /current-solicitations page is a live board of open RFPs - 'solicitation' x26, 'RFP' x11 - including 'This Request for Proposals (RFP) is being issued by East Texas A&M University (Lead Entity) in collaboration with the State of Florida', with participating entities listed as 'State of Florida, institutes of higher education, K-12, local government agencies'. Solicitation categories include Public Safety and Corrections and Public Works. It runs as a cooperative purchasing program rather than licensed software, which is a shading on our description but the same function."
+ },
+ {
+  "id": "strategic-mapping",
+  "name": "Strategic Mapping",
+  "website": "https://www.mapstrat.com",
+  "confidence": "high",
+  "quote": "Strategic Mapping is a complete end-to-end solution provider, offering hardware design, software application and system integration services to some of North America's leading transit agencies.",
+  "identity_why": "identity_note: ok TRUE, present ['strategic', 'mapping'], missing []. Title is 'Strategic Mapping Inc.', and the h2 'An Industry Leading Provider Of Intelligent Transportation Technologies Strategic Mapping Inc. was born in 2006...' names the company in prose. name_candidates returns nothing at all here - the page has no og:site_name and no schema.org Organization - so this one rests on the title and body, which is why the identity_note matters more than the name list. The domain is an abbreviation ('mapstrat'), so no name-derived guess could have reached it.",
+  "sells_why": "Transit CAD/AVL, APC and passenger information systems, our description item for item. The product menu reads: AUTOMATED STOP ANNOUNCEMENTS, APC AUTOMATIC PASSENGER COUNTING, TOBI TRANSIT ON-BOARD INFOTAINMENT, CAD/AVL COMPUTER AIDED DISPATCH / AUTOMATIC VEHICLE LOCATION, BUSINESS INTELLIGENCE & REPORTING, PASSENGER WI-FI. Corroborated by the APTA TRANSform 2026 exhibitor list, which carries 'Strategic Mapping'."
+ },
+ {
+  "id": "ukg-telestaff",
+  "name": "UKG Telestaff",
+  "website": "https://www.ukg.com/products/ukg-telestaff",
+  "confidence": "high",
+  "quote": "Product Info UKG TeleStaff Cloud for Law Enforcement Discover the best scheduling, deployment, communication solution for law enforcement: UKG TeleStaff Cloud.",
+  "identity_why": "identity_note: ok TRUE, present ['ukg', 'telestaff'], missing []. Title is 'UKG TeleStaff Cloud - Automated Public Safety Scheduling Software | UKG'; name_candidates gives 'UKG' (og:site_name, 100) and 'UKG TeleStaff Cloud' (80, domain-backed). A warning about the two URLs I tried first: ukg.com/solutions/public-sector/telestaff is a 404, but it serves a 274KB page with the full site nav, and add_company.fetch() accepted it with the note 'HTTP 404 but the real page was served anyway'. Only the identity check caught it - present ['ukg'], missing ['telestaff']. The bare ukg.com root fails the same way. This product URL is the one that identifies the record.",
+  "sells_why": "Public safety scheduling and workforce software, our description exactly: 'TeleStaff' x12, 'public safety' x11, 'scheduling' x42, with named solutions for Law Enforcement, Corrections, and Fire-Rescue and EMS, and a customer quote from a captain at Oak Creek Police Department. This also resolves the batch-3 hedge 'shift scheduling for sworn staff; fire is equally common' - the page sells to both."
+ },
+ {
+  "id": "vocal-technologies-inc",
+  "name": "VOCAL Technologies Inc.",
+  "website": "https://www.vocal.com",
+  "confidence": "high",
+  "quote": "520 Lee Entrance, Suite 202 Buffalo, NY 14228 Phone: +1 716-688-4675 Fax: +1 716-639-0713 Email: sales@vocal.com (c) 2026 VOCAL Technologies INC.",
+  "identity_why": "identity_note: ok TRUE, present ['vocal', 'technologies'], missing []. Title is 'Voice and Data Communication Solutions | VOCAL Technologies'; name_candidates gives 'VOCAL Technologies' at score 80 as the domain-backed part of the title. The footer carries the full legal name with the suffix our record uses, plus a street address in Buffalo NY and a sales address at the same domain. Read the surprise note below before trusting vocaltechnologies.com, which is NOT them. THE TRAP, measured: vocaltechnologies.com - the .com the name-guesser reaches for, and the second candidate find_websites.candidates('VOCAL Technologies Inc.') returns - is a DomainMarket.com listing selling the name for $1,888. find_websites.identifies(html, 'VOCAL Technologies Inc.', 'vocaltechnologies') returns TRUE on it. Two guards both miss: the title 'VocalTechnologies.com - Technology Domains for Sale - ...' satisfies the identity check because it contains both name tokens, and the PARKED regex does hold a matching phrase ('domains for sale') but never sees it - identifies() only scans html[:4000], and the first PARKED hit in this 136,851-byte page sits at offset 4162, because the opening 4KB is an inline gclid tracking script. 162 bytes past the window. Nothing about vocal.com being correct depends on this; it is reported because it is a live false-positive in the one check that is supposed to stand between a squatter and the dataset.",
+  "sells_why": "Voice and telephony DSP software, our description exactly. Solutions menu: VoIP, Echo Cancellation, Lawful Interception, Voice Processing, Video, Fax Modem, Data Modem, Radio Communication, Security; 'echo cancellation' x13, 'voice' x36, plus 'We cover voice compression to telephony detection for IP, radio, and mobile communications.' Fair warning on the SLED fit, not the identity: this is an embedded components licensor, and batch-3 already filed it with confidence 'low' and 'no government use case stated'. Lawful Interception and the vIPer Secure Phone are the only public-safety-adjacent lines on the page."
+ }
+]

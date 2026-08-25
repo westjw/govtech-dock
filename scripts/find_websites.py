@@ -50,12 +50,44 @@ H1 = re.compile(r"<h1[^>]*>(.*?)</h1>", re.I | re.S)
 # Spaceship and NamePros write "GetOracle.com for sale", which read as a live
 # page and put ten for-sale listings into the dataset. Requiring a domain-shaped
 # token before "for sale" keeps a real page that happens to list property.
+# WORD BOUNDARIES ON THE BARE VENDOR NAMES. `sedo` was an unanchored
+# alternative, so it matched inside "onmou-SEDO-wn" - and a WordPress
+# lazy-load listener puts "mousedown" in the first 4KB of a great many company
+# homepages. bentley.com and soilflo.com were both judged PARKED and rejected
+# by identifies() for exactly that reason, which fails in the honest direction
+# ("no website found") and is still wrong: the page is real and the company is
+# named right there in the title.
 PARKED = re.compile(r"domain (is )?for sale|buy this domain|parked (free )?(at|by)|"
-                    r"godaddy|namecheap|sedo|hugedomains|this domain may be for sale|"
+                    r"\bgodaddy\b|\bnamecheap\b|\bsedo\b|\bhugedomains\b|"
+                    r"this domain may be for sale|"
                     r"under construction|coming soon|"
                     r"[\w-]+\.(com|net|io|co|us|ai|org)\s+(is\s+)?for sale|"
-                    r"spaceship\.com|namepros|domains for sale|parked domain|"
+                    r"spaceship\.com|\bnamepros\b|domains for sale|parked domain|"
                     r"human verification", re.I)
+
+
+def _parked(html: str) -> bool:
+    """Is this a for-sale or holding page?
+
+    Two windows, because one was not enough in either direction.
+
+    The first 4KB, as before - a parked page says so immediately, and reading
+    a whole 130KB document for this on every candidate is waste.
+
+    AND the <title>, wherever it sits. A DomainMarket listing for
+    vocaltechnologies.com carries "Technology Domains for Sale" IN ITS TITLE
+    and still passed, because 4KB of inline gclid tracking script pushed the
+    title to byte 4162. It missed by 162 bytes, and the page went on to
+    satisfy the identity check outright: the for-sale headline contains both
+    of the company's name tokens, which is the whole business model of a
+    domain squatter.
+    """
+    if not html:
+        return False
+    if PARKED.search(html[:4000]):
+        return True
+    m = re.search(r"<title[^>]*>(.*?)</title>", html[:60000], re.S | re.I)
+    return bool(m and PARKED.search(m.group(1)))
 
 
 def norm(s: str) -> str:
@@ -108,7 +140,7 @@ def identifies(html: str, name: str, base: str | None = None,
     and unrelated businesses all answer on the obvious name, so acceptance
     requires the company's own words in the page's own identity fields.
     """
-    if not html or PARKED.search(html[:4000]):
+    if not html or _parked(html):
         return False
     # A recorded alias is a person's answer to this exact question, so it is
     # checked as a name in its own right. This is the ONLY thing that loosens
