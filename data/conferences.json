@@ -2056,8 +2056,8 @@
    "event_tag": "NASRO 2026",
    "url": "https://www.nasro.org/conference/future-nasro-conferences/",
    "dates_source": "https://web.archive.org/web/20260702182047if_/https://www.nasro.org/clientuploads/directory/homepage_slideshow/NASHVILLE.png",
-   "dates_confidence": "unannounced",
-   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://web.archive.org/web/20260702182047if_/https://www.nasro.org/clientuploads/directory/homepage_slideshow/NASHVILLE.png",
+   "dates_confidence": "unreachable",
+   "dates_note": "2027 dates ARE announced - they sit on NASRO's own Future Conferences page, which a domain-restricted search can see - but nasro.org serves a maintenance page on every path, so we cannot read them. Three mutually inconsistent candidates exist: July 4-9 (the homepage slideshow banner, re-read at full resolution and unambiguous), July 6-7 (the indexed text of the official Future Conferences page, returned across three separate queries including one that primed July 4-9 and was pushed back on), and July 4-6 (that same page's own Sun-Tue pattern for 2028, 2029 and 2030). Picking one would be a guess. Nashville is confirmed. Recorded unreachable rather than unannounced: the organiser HAS announced, we simply cannot read it, and those are different facts about NASRO.",
    "city": "Nashville, TN"
   },
   {

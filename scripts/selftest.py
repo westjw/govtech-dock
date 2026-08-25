@@ -1882,18 +1882,39 @@ def check_search_routes_are_live() -> int:
                            f"have. A reader typing that word sees an empty "
                            f"board and reads it as no jobs")
 
-    # index.html carries its own copy of the map; a fix in one is not a fix
+    # index.html carries its own copy of the map, and both copies get edited by
+    # hand when a sector changes. Substring probing was too weak to prove they
+    # agree - it could only say a route was ABSENT, never that one copy had
+    # gained something the other did not. So the page's map is parsed and
+    # compared entry for entry, in order.
+    import re as _re
     html = (ROOT / "index.html").read_text()
-    for _, sector, category in routes:
-        pair = f'["{sector}","{category}"]' if category else f'["{sector}",null]'
-        if pair not in html.replace(", ", ","):
-            errors += fail(f"index.html is missing the search route "
-                           f"{sector} / {category} that semantic.py defines. "
-                           f"The two copies of the map have drifted")
-            break
-    if '["General Gov","Health & Human Services"]' in html.replace(", ", ","):
-        errors += fail("index.html still routes searches to the deleted "
-                       "General Gov / Health & Human Services category")
+    m = _re.search(r"/\* CONCEPT-MAP \*/(.*?)/\* /CONCEPT-MAP \*/", html, _re.S)
+    if not m:
+        return errors + fail("index.html no longer carries a CONCEPT-MAP block; "
+                             "the search map cannot be checked against "
+                             "semantic.py")
+    try:
+        in_page = json.loads(m.group(1).rstrip().rstrip(";").rstrip())
+    except json.JSONDecodeError as exc:
+        return errors + fail(f"the CONCEPT-MAP inside index.html is not valid "
+                             f"JSON ({exc}); search would break at runtime")
+
+    def shape(e):
+        return (tuple(e["say"]), tuple(tuple(g) for g in e["go"]))
+    py_set = {shape(e) for e in semantic.CONCEPTS}
+    html_set = {shape(e) for e in in_page}
+    for e in semantic.CONCEPTS:
+        if shape(e) not in html_set:
+            errors += fail(f"search phrase {e['say'][0]!r} is in semantic.py "
+                           f"but not in index.html. The two copies of the map "
+                           f"have drifted, and only the page's copy is what a "
+                           f"reader actually searches")
+    for e in in_page:
+        if shape(e) not in py_set:
+            errors += fail(f"search phrase {e['say'][0]!r} is in index.html "
+                           f"but not in semantic.py, so nothing server-side "
+                           f"knows the route exists")
     return errors
 
 
