@@ -889,10 +889,20 @@ The tell is the probe DATE. 40 of the 55 came from one run on 2026-08-20 and
 a 75% false-negative rate between them, and the record then reads as 55
 separate companies with unreachable websites.
 
-**Before trusting a run of "unreachable" notes, group them by `on`.** A cluster
-on one date is a claim about that run, not about those companies. The same
-shape appeared the same day in build_board: 47 boards "network error" in one
-build, and Civica, Career TEAM and BibliU all read perfectly minutes later.
+**Group them by `on`, then RETRY A SAMPLE.** Clustering alone proves nothing -
+it only says they were swept together, which is what a sweep does. The 403s in
+this log cluster on exactly the same two dates as the timeouts, 37 and 22 of
+them, and only 2 of 71 answer on a retry: those sites genuinely refuse
+identified crawlers, and the shared date is just the sweep's date.
+
+The retry is what separates the two. A timeout that answers in 0.8 seconds is
+the run's fault; a 403 that is still a 403 a week later is the site's policy
+and belongs on the manual worklist. Clustering tells you where to look;
+retrying tells you what you found.
+
+The same shape appeared the same day in build_board: 47 boards "network error"
+in one build, and Civica, Career TEAM and BibliU all read perfectly minutes
+later.
 
 ## build_board.py is the crawler, not a formatter (noted 2026-08-25)
 
