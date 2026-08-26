@@ -836,6 +836,42 @@ to prevent.
 - Python: stdlib + requests + openpyxl only. Match existing style (typed,
   small functions, no classes where a function does). Comments explain WHY.
 
+## The supplier backlog is smaller than it looks (checked 2026-08-25)
+
+The audit line "promote 670 candidates + 4,745 suppliers, none on the board"
+reads as 4,745 companies waiting to be let in. Checked, and it is not that.
+
+**2,776 of the 4,745 are already decided** - stamped `govtech: false`. They are
+not a backlog, they are answers. The undecided set is **1,969**, all of which
+carry a description.
+
+Those 1,969 were then filtered three ways to find any govtech PRODUCT vendor
+misfiled as a supplier, which is the thing worth finding: a missed vendor is a
+warm door hidden, the same asymmetric error as a false "no jobs here".
+
+  1,969 -> 156 whose description mentions software or a platform and nothing
+           physical
+    156 -> 10 that also name a government buyer and carry no nonprofit,
+           consumer or campus signal
+
+Those 10 read as correctly-filed suppliers: DLT is a reseller, Kurita sells
+water-treatment hardware, Allied Universal is security guards, and the rest
+are consultancies or course providers. Cross-checked a different way - the 144
+undecided suppliers that came off a CORE govtech floor (GFOA, NASCIO, IACP,
+NACo) are accounting firms, credit-rating agencies, financial advisors and
+trade associations. Not one product company among them.
+
+**So: nobody needs to spend days triaging suppliers.** The classification was
+right; those records simply never got an explicit `false` stamp. They were NOT
+bulk-stamped here, because a filter saying "probably a supplier" is evidence,
+not proof, and 1,969 assertions nobody checked one by one is exactly the kind
+of bulk claim this project does not make.
+
+One name is worth a look if the scope question ever reopens: **Nava PBC**, a
+digital government services firm, currently filed as a supplier because it
+sells services rather than a product. That is consistent with the existing
+rule, not a mistake - just the closest call in the pile.
+
 ## build_board.py is the crawler, not a formatter (noted 2026-08-25)
 
 `python3 scripts/build_board.py` re-fetches every job board it has a ref for.
