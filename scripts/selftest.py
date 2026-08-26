@@ -357,6 +357,18 @@ def fail(msg):
     return 1
 
 
+def note(msg):
+    """Something a run could not test, said out loud rather than passed over.
+
+    Three checks called this before it existed. Every one of them called it
+    only on a SKIP path - node missing, no IPv6, an empty queue - so the
+    NameError could not fire on a machine where the thing being skipped was
+    present. It would have fired on a CI runner and nowhere else, which is the
+    worst place for a latent crash and the hardest to reproduce.
+    """
+    print(f"note: {msg}")
+
+
 # Keys that hold a job description, under every name a fetcher or an ATS has
 # used for one. None of them may appear on a posting in board.json.
 # `jd_text` is the capture extension's name for one, and it was missing from
@@ -1098,6 +1110,7 @@ def check_admin_guards() -> int:
     # A predicate nothing calls is not a guard, so both gates that use it get
     # asked directly. Every host here is a literal, so nothing resolves and
     # this stays offline.
+    v6_unsupported: list[str] = []
     for text, why in INSIDE:
         if ":" in text:
             # clean_url wants a dotted host and a bare v6 literal has no dot,
@@ -1117,7 +1130,30 @@ def check_admin_guards() -> int:
         except admin.PrivateAddress:
             pass
         except socket.gaierror:
-            bad += fail(f"the connect gate could not read {text} as an address")
+            # A host with no IPv6 stack cannot form an IPv6 address at all, and
+            # getaddrinfo says so with the same gaierror a bad hostname gets.
+            # GitHub's ubuntu runners are such a host. Reporting that as "the
+            # connect gate could not read ::1" states a failure of the guard
+            # when the truth is a fact about the machine - the exact confusion
+            # this whole board exists to refuse, in its own test suite.
+            #
+            # The guard is NOT going untested. _public() was asked about this
+            # same address directly a few lines above, with no network
+            # involved, and that is the part that decides. This call only
+            # confirms the gate is wired into getaddrinfo, and on a machine
+            # that cannot express the address there is nothing to wire.
+            if ":" in text:
+                v6_unsupported.append(text)
+            else:
+                bad += fail(f"the connect gate could not read {text} as an "
+                            f"address, and this host can express it")
+
+    if v6_unsupported:
+        note(f"no IPv6 on this host, so {len(v6_unsupported)} address(es) could "
+             f"not be handed to getaddrinfo ({', '.join(v6_unsupported[:3])}"
+             f"{'...' if len(v6_unsupported) > 3 else ''}). _public() was asked "
+             f"about each of them directly and answered; only the getaddrinfo "
+             f"wiring went untested for those.")
 
     for good in ("tyler-tech", "3di", "a", "motorola-solutions"):
         if not admin.ID_OK.match(good):
