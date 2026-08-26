@@ -27738,7 +27738,12 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "notes": [
+   {
+    "text": "Certificate expired. curl reports 'SSL certificate problem: certificate has expired'. Nothing to fix here - it resolves itself when they renew, and re-probes on the 7-day cycle. Diagnosed 2026-08-26."
+   }
+  ]
  },
  {
   "id": "vidcruiter",
@@ -30216,7 +30221,12 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "notes": [
+   {
+    "text": "Certificate expired (curl: 'certificate has expired'). Their problem, self-resolving on renewal. Diagnosed 2026-08-26."
+   }
+  ]
  },
  {
   "id": "sparkrock",
@@ -31786,7 +31796,12 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "notes": [
+   {
+    "text": "Alive, and the failure is not TLS. sedaru.com rejects HTTP/1.1 at the ALPN layer, which surfaces through `requests` as an SSLError; with --http2 it answers 200. It then serves 122 bytes to our identified crawler UA and 27KB to a Chrome string, so it is deliberately refusing named crawlers. ats.py's comment rules on exactly this: no spoofed Chrome string, it goes to the manual worklist. Diagnosed 2026-08-26."
+   }
+  ]
  },
  {
   "id": "e-j-ward",
@@ -32887,7 +32902,12 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "notes": [
+   {
+    "text": "Certificate expired (curl: 'certificate has expired'). Their problem, self-resolving on renewal. Diagnosed 2026-08-26."
+   }
+  ]
  },
  {
   "id": "casebook-pbc",
@@ -36736,7 +36756,12 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "notes": [
+   {
+    "text": "Certificate expired (curl: 'certificate has expired'). Their problem, self-resolving on renewal. Diagnosed 2026-08-26."
+   }
+  ]
  },
  {
   "id": "ladris-technologies",
