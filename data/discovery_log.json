@@ -1939,9 +1939,10 @@
   "retry_soon": true
  },
  "clerkbase": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "gave up after 600s",
+  "retry_soon": true
  },
  "legislaide": {
   "on": "2026-08-20",
@@ -1954,9 +1955,10 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "zoomgrants": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "gave up after 600s",
+  "retry_soon": true
  },
  "avila": {
   "on": "2026-08-20",
@@ -1974,9 +1976,10 @@
   "note": "no board found"
  },
  "elation-systems": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "gave up after 600s",
+  "retry_soon": true
  },
  "public-surplus": {
   "on": "2026-08-20",
@@ -2022,9 +2025,10 @@
   "note": "no board found"
  },
  "bids-tenders": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "gave up after 600s",
+  "retry_soon": true
  },
  "biddingo": {
   "on": "2026-08-20",
@@ -2043,9 +2047,10 @@
   "retry_soon": true
  },
  "rfp360-ai": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "gave up after 600s",
+  "retry_soon": true
  },
  "bid-locker": {
   "on": "2026-08-20",
@@ -2068,14 +2073,14 @@
   "note": "no board found"
  },
  "rep-d": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "unstackr": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "no board found"
  },
  "letzchat": {
   "on": "2026-08-20",
@@ -2306,10 +2311,10 @@
   "note": "no board found"
  },
  "accesse11": {
-  "on": "2026-08-20",
-  "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers/)",
+  "weak": true
  },
  "general-code": {
   "on": "2026-08-20",
@@ -3416,9 +3421,9 @@
   "weak": true
  },
  "aquarius-spectrum": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "no board found"
  },
  "cues": {
   "on": "2026-08-20",
@@ -3798,9 +3803,10 @@
   "note": "no board found"
  },
  "teamgenius": {
-  "on": "2026-08-20",
-  "found": false,
-  "note": "gave up after 75s"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers/)",
+  "weak": true
  },
  "epact-network": {
   "on": "2026-08-20",
@@ -3865,9 +3871,9 @@
   "note": "no board found"
  },
  "swimeye": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "no board found"
  },
  "sightbit": {
   "on": "2026-08-20",
@@ -3875,14 +3881,14 @@
   "note": "no board found"
  },
  "thor-guard": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "no board found"
  },
  "dtn": {
-  "on": "2026-08-20",
-  "found": false,
-  "note": "gave up after 75s"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "workday:['dtn', 'wd1', 'DTN_Careers'], 8 posting(s) readable"
  },
  "weatherstem": {
   "on": "2026-08-20",
@@ -3895,14 +3901,15 @@
   "note": "no board found"
  },
  "aspira": {
-  "on": "2026-08-20",
-  "found": false,
-  "note": "gave up after 75s"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "greenhouse:aspira, 4 posting(s) readable"
  },
  "us-edirect": {
-  "on": "2026-08-20",
-  "found": false,
-  "note": "gave up after 75s"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "novo-solutions": {
   "on": "2026-08-20",
@@ -4173,9 +4180,10 @@
   "retry_soon": true
  },
  "guard1": {
-  "on": "2026-08-20",
-  "found": false,
-  "note": "gave up after 75s"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers/)",
+  "weak": true
  },
  "orijin": {
   "on": "2026-08-20",
@@ -4337,9 +4345,9 @@
   "note": "no board found"
  },
  "ambient-ai": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "black-spirit-software-solutions-llc": {
   "on": "2026-08-20",
@@ -4670,9 +4678,10 @@
   "retry_soon": true
  },
  "traumasoft": {
-  "on": "2026-08-20",
-  "found": false,
-  "note": "gave up after 75s"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "beyond-lucid-technologies": {
   "on": "2026-08-20",
@@ -4685,9 +4694,9 @@
   "note": "careers page at /careers, no ATS marker"
  },
  "digitech": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "tablet-command": {
   "on": "2026-08-20",
@@ -4700,9 +4709,9 @@
   "note": "careers page at /, no ATS marker"
  },
  "us-digital-designs": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "zetron": {
   "on": "2026-08-20",
@@ -4716,9 +4725,9 @@
   "retry_soon": true
  },
  "rapiddeploy": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "intrado-life-safety": {
   "on": "2026-08-19",
@@ -4737,14 +4746,16 @@
   "retry_soon": true
  },
  "3am-innovations": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "gave up after 600s",
+  "retry_soon": true
  },
  "angeltrack": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "gave up after 600s",
+  "retry_soon": true
  },
  "marquis-software-solutions": {
   "on": "2026-08-20",
@@ -4752,9 +4763,10 @@
   "note": "gave up after 75s"
  },
  "syscon-justice-systems": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "could not fetch the site (SSLError)",
+  "retry_soon": true
  },
  "abilis-solutions": {
   "on": "2026-08-20",
@@ -5621,9 +5633,10 @@
   "weak": true
  },
  "impero-software": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "gave up after 600s",
+  "retry_soon": true
  },
  "contentkeeper": {
   "on": "2026-08-20",
@@ -5659,9 +5672,10 @@
   "weak": true
  },
  "anonymous-alerts": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "gave up after 600s",
+  "retry_soon": true
  },
  "stopit-solutions": {
   "on": "2026-08-20",
@@ -5769,9 +5783,9 @@
   "note": "no board found"
  },
  "flashnet": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "no board found"
  },
  "nimble-energy": {
   "on": "2026-08-20",
@@ -5810,9 +5824,9 @@
   "note": "gave up after 75s"
  },
  "cree-lighting": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "no board found"
  },
  "leotek-electronics-usa": {
   "on": "2026-08-20",
@@ -5820,9 +5834,10 @@
   "note": "careers page at /about/careers, no ATS marker"
  },
  "evluma": {
-  "on": "2026-08-20",
-  "found": false,
-  "note": "gave up after 75s"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about/careers)",
+  "weak": true
  },
  "lumca": {
   "on": "2026-08-20",
@@ -7437,9 +7452,9 @@
   "note": "no board found"
  },
  "pcs-revenue-control-systems-inc": {
-  "on": "2026-08-23",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 45s",
+  "note": "could not fetch the site (SSLError)",
   "retry_soon": true
  },
  "jotit": {
@@ -7799,9 +7814,9 @@
   "weak": true
  },
  "academia-by-serosoft": {
-  "on": "2026-08-23",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 45s",
+  "note": "gave up after 600s",
   "retry_soon": true
  },
  "pairin": {
@@ -7871,15 +7886,15 @@
   "weak": true
  },
  "wooclap": {
-  "on": "2026-08-23",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 45s",
+  "note": "gave up after 600s",
   "retry_soon": true
  },
  "evertrue": {
-  "on": "2026-08-23",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 45s",
+  "note": "gave up after 600s",
   "retry_soon": true
  },
  "ensoftek-inc": {
@@ -7888,9 +7903,9 @@
   "note": "no board found"
  },
  "nelnet-campus-commerce": {
-  "on": "2026-08-23",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 45s",
+  "note": "workday:['nelnet', 'wd1', 'MyNelnet'] found but unreadable (network error: HTTPSConnectionPool(h)",
   "retry_soon": true
  },
  "apporto": {
@@ -7905,10 +7920,10 @@
   "retry_soon": true
  },
  "teamdynamix": {
-  "on": "2026-08-23",
-  "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "bibliu": {
   "on": "2026-08-23",
@@ -7916,10 +7931,9 @@
   "note": "bamboohr:bibliu, 46 posting(s) readable"
  },
  "unimarket": {
-  "on": "2026-08-23",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "note": "no board found"
  },
  "givecard": {
   "on": "2026-08-23",
@@ -8273,10 +8287,10 @@
   "note": "greenhouse:starrez, 19 posting(s) readable"
  },
  "nuventive": {
-  "on": "2026-08-23",
-  "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company-overview/)",
+  "weak": true
  },
  "socialbridge-technologies": {
   "on": "2026-08-23",
@@ -8619,10 +8633,10 @@
   "note": "no board found"
  },
  "emphasys-software": {
-  "on": "2026-08-23",
-  "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "ccs-health": {
   "on": "2026-08-23",
@@ -8630,16 +8644,15 @@
   "note": "no board found"
  },
  "continuumcloud": {
-  "on": "2026-08-23",
-  "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "ito-health": {
-  "on": "2026-08-23",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "note": "no board found"
  },
  "simplifyance": {
   "on": "2026-08-23",
@@ -8647,10 +8660,9 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "colaj": {
-  "on": "2026-08-23",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "note": "no board found"
  },
  "echo360": {
   "on": "2026-08-23",
@@ -8658,10 +8670,9 @@
   "note": "workable:echo360-inc, 1 posting(s) readable"
  },
  "a-m-simpkins-and-associates": {
-  "on": "2026-08-23",
+  "on": "2026-08-26",
   "found": false,
-  "note": "gave up after 45s",
-  "retry_soon": true
+  "note": "no board found"
  },
  "studystash": {
   "on": "2026-08-23",

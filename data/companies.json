@@ -20825,8 +20825,12 @@
   "category": "Suppliers & Services",
   "description": "Child support and government payment processing software - exhibited at ICMA 2025",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "workday",
+   "ref": [
+    "smiinc",
+    "wd108",
+    "smicareers"
+   ]
   },
   "hiring": {
    "status": "Unknown",
@@ -29747,8 +29751,12 @@
   "category": "Park Ops & Safety Tech",
   "description": "Weather intelligence and severe weather alerting for public agencies",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "workday",
+   "ref": [
+    "dtn",
+    "wd1",
+    "DTN_Careers"
+   ]
   },
   "hiring": {
    "status": "Unknown",
@@ -29843,8 +29851,8 @@
   "category": "Park Ops & Safety Tech",
   "description": "Campground, park and license reservation systems for state park agencies",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "greenhouse",
+   "ref": "aspira"
   },
   "hiring": {
    "status": "Unknown",
