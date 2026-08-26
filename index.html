@@ -241,6 +241,11 @@
   .cfpast{font-size:11px;letter-spacing:.06em;text-transform:uppercase;
     font-weight:700;color:var(--panel);background:var(--dim);padding:1px 5px;
     white-space:nowrap}
+  .cfsite{color:var(--dim);text-decoration:none;font:inherit;font-size:12.5px;
+    border:1px solid var(--line);padding:2px 7px;white-space:nowrap;
+    background:var(--panel)}
+  .cfsite:hover,.cfsite:focus-visible{border-color:var(--accent);
+    color:var(--accent)}
   .cfcal{color:var(--dim);text-decoration:none;font:inherit;font-size:12.5px;
     border:1px solid var(--line);padding:2px 7px;white-space:nowrap;
     background:var(--panel);cursor:pointer}
@@ -4331,6 +4336,9 @@ function cfRowHTML(r){
         <div class="cfrate" data-rate="${esc(r.tag)}">
           <span class="cfscore" data-score>&mdash;</span>
           <span class="cfvotes" data-votes>&nbsp;</span>
+          ${safeUrl(r.url)?`<a class="cfsite" href="${esc(safeUrl(r.url))}"
+             target="_blank" rel="noopener noreferrer"
+             title="Open the official page for ${esc(r.name)}">event site &nearr;</a>`:""}
           ${calRange(r.dates)?`<button type="button" class="cfcal"
              data-cal="${esc(r.tag)}"
              title="Download an .ics for ${esc(r.name)}">+ calendar</button>`:""}
