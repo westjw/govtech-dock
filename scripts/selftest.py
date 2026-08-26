@@ -2559,6 +2559,46 @@ def check_the_gate_sees_an_unreadable_cliff() -> int:
     return errors
 
 
+
+def check_a_transport_failure_gets_a_second_chance() -> int:
+    """A socket that dropped is not a company with no jobs.
+
+    On 2026-08-26 a build marked 64 boards unreadable against 18 the day
+    before. 47 were "network error" - no answer at all - and Civica (89
+    postings), Career TEAM (64) and BibliU (51) read perfectly when retried by
+    hand minutes later. Without a retry, one dropped socket publishes a company
+    as not hiring for a whole day.
+
+    The other 16 were HTTP 404, and those must NOT be retried. A 404 is the
+    board answering: the slug is gone. Asking twice spends somebody's request
+    to learn the same thing, and it would hide a real finding more slowly.
+
+    Checked as a shape, since running it would mean fetching hundreds of live
+    boards: the retry must exist, must be conditioned on the transport case,
+    and must not fire on everything.
+    """
+    src = (ROOT / "scripts" / "build_board.py").read_text()
+    i = src.find("def read_board(")
+    if i < 0:
+        return fail("build_board.py: read_board is gone")
+    body = src[i:i + 2600]
+    errors = 0
+    if "network error" not in body:
+        errors += fail("read_board does not distinguish a transport failure "
+                       "from an answer, so a dropped socket and a dead board "
+                       "are recorded the same way")
+    if body.count("once()") < 2 and "retry" not in body.lower():
+        errors += fail("read_board never retries. One dropped socket publishes "
+                       "a company as not hiring for a day - it cost 524 "
+                       "postings across 33 companies once")
+    # the retry must be conditional; retrying a 404 is a different bug
+    if "transient" not in body:
+        errors += fail("read_board's retry is not conditioned on the failure "
+                       "being transient. A 404 retried is a request spent to "
+                       "learn the slug is still gone")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -2900,6 +2940,7 @@ def main() -> int:
     errors += check_a_count_is_never_a_job_title()
     errors += check_an_unread_board_is_not_a_zero()
     errors += check_the_gate_sees_an_unreadable_cliff()
+    errors += check_a_transport_failure_gets_a_second_chance()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()
     errors += check_every_company_says_what_it_sells()

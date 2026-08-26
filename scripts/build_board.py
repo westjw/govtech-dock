@@ -417,12 +417,34 @@ def main() -> int:
         ref = (c.get("ats") or {}).get("ref")
         if kind in (None, "unknown") or ref is None:
             return c, [], None, True, False       # nothing on file to read
-        try:
+
+        def once():
             if kind == "html" and isinstance(ref, str):
-                return c, ats.fetch_html_titles(ref), None, True, False
-            return c, ats.fetch(c["ats"]), None, True, False
+                return ats.fetch_html_titles(ref)
+            return ats.fetch(c["ats"])
+
+        # ONE RETRY, AND ONLY FOR A TRANSPORT FAILURE. On 2026-08-26 this run
+        # marked 64 boards unreadable against 18 the day before. 47 of the 64
+        # were "network error" - a socket, not an answer - and Civica (89
+        # postings), Career TEAM (64) and BibliU (51) all read perfectly when
+        # retried by hand minutes later. Every one of them was about to be
+        # published as a company with no jobs.
+        #
+        # A 404 is NOT retried. It is the board answering, and the answer is
+        # that the slug is gone; asking twice wastes somebody's request and
+        # changes nothing. The 16 of those in the same run are a real finding
+        # that a retry would only have hidden more slowly.
+        try:
+            return c, once(), None, True, False
         except Exception as exc:
-            return c, [], str(exc)[:60], True, kind == "html"
+            transient = "network error" in str(exc) or "timed out" in str(exc).lower()
+            if not transient:
+                return c, [], str(exc)[:60], True, kind == "html"
+            time.sleep(1.5)
+            try:
+                return c, once(), None, True, False
+            except Exception as exc2:
+                return c, [], f"twice: {str(exc2)[:52]}", True, kind == "html"
 
     render_started = time.monotonic()
     # Two companies pointing at ONE board is not two boards. It happens after an
