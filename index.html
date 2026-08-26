@@ -1398,6 +1398,18 @@ function noBoardNote(o){
     return lead+`${esc(postsAtSentence(pa))}${url?` <a class="golink" href="${esc(url)}"
       target="_blank" rel="noopener">See their listings &rarr;</a>`:""}`;
   }
+  /* "We could not find a board" and "their site turned us away" are different
+     facts, and until now 181 companies got the first when the truth was the
+     second. One is a statement about them. The other is a statement about us,
+     and saying it the wrong way round is how a company that may well be hiring
+     ends up described as one nobody can find work at. */
+  if(o.probe==="blocked"){
+    const on=boardCheckedOn(o);
+    return `<strong>Their site turned our reader away${on?` on ${esc(on)}`:""}.</strong>
+      A refusal is not an answer — we never got far enough to see whether they have
+      a job board. It is retried automatically after a week. Their own site is the
+      place to look in the meantime.`;
+  }
   const on=boardCheckedOn(o);
   return on
     ? `<strong>We checked on ${esc(on)} and could not find a public job board.</strong>

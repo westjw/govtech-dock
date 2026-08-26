@@ -362,6 +362,29 @@ def count_openings(postings: list[dict], orgs: list[dict]) -> dict[str, list[dic
     return groups
 
 
+# The same markers admin.py uses to tell a refusal from a reading. Kept in
+# step deliberately: if these two ever disagree, the queue and the public card
+# describe the same company differently.
+_BLOCKED_MARKERS = ("blocked at the door", "could not fetch", "gave up after")
+_DISCOVERY_LOG: dict | None = None
+
+
+def _probe_state(cid: str) -> str | None:
+    """"blocked", "none-found", or None when nobody has looked yet."""
+    global _DISCOVERY_LOG
+    if _DISCOVERY_LOG is None:
+        path = DATA / "discovery_log.json"
+        try:
+            _DISCOVERY_LOG = json.loads(path.read_text()) if path.exists() else {}
+        except (json.JSONDecodeError, OSError):
+            _DISCOVERY_LOG = {}
+    entry = _DISCOVERY_LOG.get(cid)
+    if not entry:
+        return None
+    note = entry.get("note") or ""
+    return "blocked" if any(m in note for m in _BLOCKED_MARKERS) else "none-found"
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int)
@@ -663,6 +686,16 @@ def main() -> int:
             "board_owner": (c.get("acquired_by") or {}).get("board_owner")
                             or (c.get("board_owner") or None),
             "no_board_on_file": no_board,
+            # WHY there is no board, when we know. "We could not find a public
+            # job board" and "their site turned our reader away" are different
+            # facts, and the card was telling 181 companies' visitors the first
+            # when the truth was the second. One is a statement about them; the
+            # other is a statement about us.
+            #
+            # The blocked queue has always got this right - "not evidence of
+            # anything except that the fetcher was refused" - but that sentence
+            # lives in the admin, and the public card never saw it.
+            "probe": _probe_state(c["id"]) if no_board else None,
             "enumerable": enumerable,
         })
 

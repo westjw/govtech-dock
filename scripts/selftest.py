@@ -2609,6 +2609,55 @@ def check_a_transport_failure_gets_a_second_chance() -> int:
     return errors
 
 
+
+def check_a_refusal_is_not_a_search() -> int:
+    """"We could not find a board" and "they turned us away" are not the same.
+
+    1,688 companies have been probed for a job board. 1,507 were read and
+    genuinely yielded nothing - for those, "we could not find a public job
+    board" is exactly right. 181 were refused at the door: a 403, a bot wall,
+    a fetch that gave up. We never got far enough to look, and every one of
+    their cards said we had looked and found nothing.
+
+    One of those sentences is a statement about the company. The other is a
+    statement about us, and saying it the wrong way round is how a company that
+    may well be hiring ends up described as one nobody can find work at.
+
+    The admin has always had this right - the blocked queue says "not evidence
+    of anything except that the fetcher was refused" - but that sentence lives
+    behind Access and the public card never saw it.
+
+    Both halves are pinned: build_board must emit the probe state, and the card
+    must branch on it. Either alone is silent.
+    """
+    errors = 0
+    src = (ROOT / "scripts" / "build_board.py").read_text()
+    if '"probe":' not in src:
+        errors += fail("build_board no longer emits a probe state, so the card "
+                       "cannot tell a refusal from a search that came up empty")
+
+    # the two marker lists must agree, or the queue and the card describe the
+    # same company differently
+    import admin
+    import build_board
+    if set(admin.BLOCKED_MARKERS) != set(build_board._BLOCKED_MARKERS):
+        errors += fail(f"admin and build_board disagree about what counts as "
+                       f"blocked: {sorted(set(admin.BLOCKED_MARKERS) ^ set(build_board._BLOCKED_MARKERS))}. "
+                       f"The queue and the public card would describe the same "
+                       f"company differently")
+
+    html = (ROOT / "index.html").read_text()
+    i = html.find("function noBoardNote(")
+    if i < 0:
+        return errors + fail("index.html: noBoardNote is gone")
+    body = html[i:i + 2600]
+    if 'probe==="blocked"' not in body.replace(" ", ""):
+        errors += fail("noBoardNote does not branch on a blocked probe, so a "
+                       "company whose site refused our reader is told to a "
+                       "visitor as a company with no job board")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -2951,6 +3000,7 @@ def main() -> int:
     errors += check_an_unread_board_is_not_a_zero()
     errors += check_the_gate_sees_an_unreadable_cliff()
     errors += check_a_transport_failure_gets_a_second_chance()
+    errors += check_a_refusal_is_not_a_search()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()
     errors += check_every_company_says_what_it_sells()
