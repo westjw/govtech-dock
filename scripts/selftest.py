@@ -1093,12 +1093,21 @@ def check_admin_guards() -> int:
         ("100.127.255.254", "RFC 6598 carrier NAT, far end"),
         ("2002:7f00:1::", "6to4-encoded 127.0.0.1"),
         ("2002:a00:1::", "6to4-encoded 10.0.0.1"),
+        # 6to4 wrapping a genuinely PUBLIC host, and still refused. This one
+        # sat in OUTSIDE until 2026-08-26, asserting that we must be willing to
+        # fetch it - and that assertion broke the daily refresh for two days,
+        # because the answer came from ip.is_global and Python 3.12 disagrees
+        # with 3.11 about whether 2002::/16 is globally reachable. The gate now
+        # decides for itself and decides against: 6to4 was deprecated by RFC
+        # 7526 in 2015, and refusing a real one costs a link nobody was going
+        # to click.
+        ("2002:808:808::", "6to4 wrapping public 8.8.8.8 - deprecated tunnel, "
+                           "and the outer address says nothing about the passenger"),
     ]
     # the other half of the rule: this is a guard, not a ban on the internet
     OUTSIDE = [
         ("8.8.8.8", "an ordinary public address"),
         ("2606:4700::1111", "an ordinary public v6 address"),
-        ("2002:808:808::", "6to4 wrapping public 8.8.8.8, which is a real tunnel"),
     ]
     for text, why in INSIDE:
         if admin._public(ipaddress.ip_address(text)):

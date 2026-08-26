@@ -2620,8 +2620,26 @@ def _public(ip: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
             or ip.is_reserved or ip.is_multicast or ip.is_unspecified):
         return False
     if isinstance(ip, ipaddress.IPv6Address):
-        # each of these is an IPv4Address or None, so the recursion is one deep
-        inner = [ip.ipv4_mapped, ip.sixtofour, *(ip.teredo or ())]
+        # 6to4 IS REFUSED OUTRIGHT, whatever its passenger is. This used to
+        # depend on the passenger, and that made the answer depend on the
+        # PYTHON VERSION: 3.11 says 2002:808:808:: is_global, 3.12 says it is
+        # not, because 3.12 picked up the IANA special-purpose registry's view
+        # of 2002::/16. A security gate that answers differently on two
+        # interpreters is broken in a way no test on one of them can see - and
+        # this one broke the daily refresh for two days, on the runner rather
+        # than here.
+        #
+        # Deciding it ourselves, and deciding it the safe way: 6to4 was
+        # deprecated by RFC 7526 in 2015. A URL aimed at 2002::/16 in 2026 is
+        # far more likely to be someone tunnelling at our loopback than a real
+        # host, and the two mistakes do not cost the same. Refusing a genuine
+        # 6to4 host costs a link nobody was going to click; accepting a forged
+        # one costs the admin.
+        if ip.sixtofour is not None:
+            return False
+        # the rest still hand their passenger over to be asked the same
+        # question: each is an IPv4Address or None, so recursion is one deep
+        inner = [ip.ipv4_mapped, *(ip.teredo or ())]
         if any(p is not None and not _public(p) for p in inner):
             return False
     return True
