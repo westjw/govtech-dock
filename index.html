@@ -1835,7 +1835,17 @@ function jobs(){
          big it is, how fresh it is. The third is the credibility line, and it
          is derived from the build date rather than a figure nobody recorded -
          see freshness(). -->
-    <p class="pline"><strong>${D.postings.length.toLocaleString()}</strong> open roles
+    <!-- OPENINGS, not rows. CLAUDE.md rules on this and the headline was
+         breaking its own rule: it read D.postings.length and called 4,334
+         advertisements "open roles", 641 more than there are roles. Xplor
+         advertised ONE Account Executive requisition in 93 cities; counting
+         rows put a single advertisement third on a leaderboard of the biggest
+         hiring pushes in the market. Both numbers are said here, in the order
+         CLAUDE.md asks for, so a reader can check one against the other
+         instead of trusting whichever is larger. -->
+    <p class="pline"><strong>${(D.totals?.openings ?? D.postings.length).toLocaleString()}</strong> open roles${
+      D.totals && D.totals.postings > D.totals.openings
+        ? `, advertised in ${D.totals.postings.toLocaleString()} postings` : ""}
       &middot; <strong>${D.organizations.length.toLocaleString()}</strong> companies tracked
       &middot; ${esc(freshness(D.generated))}</p>
 

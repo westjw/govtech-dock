@@ -2221,6 +2221,55 @@ def check_websites_queue_names_its_twins() -> int:
     return errors
 
 
+
+def check_headline_counts_openings() -> int:
+    """The number the board quotes at strangers must be roles, not rows.
+
+    CLAUDE.md rules on this outright - "the headline counts openings, not
+    rows" - and the jobs page was breaking it, reading D.postings.length and
+    calling 4,334 advertisements "open roles" when there were 3,693 roles.
+
+    The reason is Xplor. They advertised ONE Account Executive requisition in
+    93 cities. Counting rows put a single advertisement third on a leaderboard
+    of the biggest go-to-market pushes in the market - a claim about the market
+    that was really a claim about one company's posting habits.
+
+    Checked as a shape, because there is no JS engine here: any element
+    labelled "open roles" must be fed from totals.openings, and postings may
+    only appear beside a word that says what it is - "postings", "rows",
+    "advertised in".
+    """
+    raw = (ROOT / "index.html").read_text()
+    # Comments are stripped first. The comment ABOVE the fix quotes the bug it
+    # describes - "called 4,334 advertisements open roles" - and tripped this
+    # check on its own explanation. A checker that cannot tell code from prose
+    # about the code fails the first time somebody writes the prose.
+    html = re.sub(r"<!--.*?-->", "", raw, flags=re.S)
+    html = re.sub(r"/\*.*?\*/", "", html, flags=re.S)
+    errors = 0
+
+    # the jobs headline
+    i = html.find("open roles")
+    while i != -1:
+        line_start = html.rfind("\n", 0, i)
+        window = html[max(0, i - 260):i]
+        if "D.postings.length" in window and "totals" not in window:
+            errors += fail("index.html labels D.postings.length as \"open "
+                           "roles\". That is one row per advertisement, not "
+                           "one per role - CLAUDE.md: the headline counts "
+                           "openings, not rows")
+            break
+        i = html.find("open roles", i + 1)
+
+    # and totals.postings must never be labelled as roles anywhere
+    for m in re.finditer(r"totals\.postings", html):
+        after = html[m.end():m.end() + 90]
+        if re.search(r"\bopen roles\b", after) and not re.search(
+                r"\b(posting|postings|rows|advertised)\b", after):
+            errors += fail("index.html labels totals.postings as open roles")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -2556,6 +2605,7 @@ def main() -> int:
     errors += check_calendar_dates_survive_the_round_trip()
     errors += check_acquired_names_still_match_themselves()
     errors += check_websites_queue_names_its_twins()
+    errors += check_headline_counts_openings()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()
     errors += check_every_company_says_what_it_sells()
