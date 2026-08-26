@@ -883,6 +883,13 @@ full crawl of a few hundred third-party boards before the site shows it. Four
 such rebuilds ran on 2026-08-25 for metadata-only edits, which is a lot of
 traffic aimed at other people's servers to redraw a tab.
 
+**Waiting for it: never `pgrep -f build_board.py`.** A shell running
+`until ! pgrep -f build_board.py; do sleep; done` has that string in its OWN
+command line, so pgrep matches the waiter and it waits for itself forever. On
+2026-08-25 six of those stacked up and reported "still building" for two hours
+while nothing was building. Wait on the PID instead - `while kill -0 <pid>;
+do sleep 15; done` - or bracket the pattern, `pgrep -f "[b]uild_board.py"`.
+
 There is no offline mode. `--limit` and `--company` skip work but refuse to
 write the full board (correctly - a partial run overwriting the full board
 destroyed the dataset once). What is missing is a `--reuse-postings` that
