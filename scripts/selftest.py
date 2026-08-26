@@ -1978,6 +1978,14 @@ for (const s of REFUSE) out.refused.push(calRange(s) === null);
 /* isPast decides whether a row is labelled a past edition. Anchored to fixed
    dates either side of a known point rather than to "now", so the check does
    not start failing on its own the day the catalogue rolls over. */
+/* withinDays backs the "how soon" filter. The case that matters is the one
+   that looks like a no-op: a row we cannot date must be KEPT. */
+out.within = {
+  undatedKept:  withinDays("", 90) && withinDays("Spring 2027", 90),
+  noFilterKeepsAll: withinDays("July 25-28, 2099", 0),
+  farFutureExcluded: !withinDays("July 25-28, 2099", 90),
+  longPastExcluded:  !withinDays("November 19-21, 2025", 90),
+};
 out.past = {
   clearlyOver:   isPast("November 19-21, 2025"),
   clearlyAhead:  isPast("July 25-28, 2099"),
@@ -2022,6 +2030,20 @@ console.log(JSON.stringify(out));
     # The past-edition marker. Five of these rows exist deliberately - they
     # were added to be mined for exhibitor lists - so the date is correct and
     # the row was still misleading until it said which edition it is.
+    within = got.get("within") or {}
+    if not within.get("undatedKept"):
+        errors += fail("a conference we cannot date is dropped by the 'how "
+                       "soon' filter. That answers 'is this happening soon?' "
+                       "with 'no' on evidence we do not have")
+    if not within.get("noFilterKeepsAll"):
+        errors += fail("the 'how soon' filter drops events when it is set to "
+                       "Any time")
+    if not within.get("farFutureExcluded"):
+        errors += fail("'in the next 3 months' is showing an event years away")
+    if not within.get("longPastExcluded"):
+        errors += fail("'in the next 3 months' is showing an event that "
+                       "already happened")
+
     past = got.get("past") or {}
     if not past.get("clearlyOver"):
         errors += fail("a conference that ended in 2025 is not marked a past "

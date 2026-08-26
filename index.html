@@ -4232,6 +4232,12 @@ function conferences(){
       <option value="">Any size</option>
       <option value="1">Flagship events only</option>
     </select>
+    <select id="cf-when" aria-label="How soon">
+      <option value="">Any time</option>
+      <option value="90">In the next 3 months</option>
+      <option value="180">In the next 6 months</option>
+      <option value="365">In the next year</option>
+    </select>
     <span class="cfcount" id="cf-n"></span>
   </div>
   <div id="cf-list"></div>`;
@@ -4239,14 +4245,16 @@ function conferences(){
   const paint=()=>{
     const q=($("#cf-q").value||"").trim().toLowerCase();
     const dept=$("#cf-dept").value, mined=$("#cf-mined").value,
-          flag=$("#cf-flag").value;
+          flag=$("#cf-flag").value, when=$("#cf-when").value;
+    const soon=r=>withinDays(r.dates, when);
     const keep=r=>
       (!q||(r.name||"").toLowerCase().includes(q)
          ||(r.tag||"").toLowerCase().includes(q)
          ||(r.department||"").toLowerCase().includes(q))
       &&(!dept||r.block===dept)
       &&(!mined||(mined==="1"?r.companies>0:r.companies===0))
-      &&(!flag||r.flagship);
+      &&(!flag||r.flagship)
+      &&soon(r);
     const shown=rows.filter(keep);
     /* The count says what is on screen AND what it is out of, because "12
        events" alone reads as the whole catalogue to somebody who did not
@@ -4265,7 +4273,7 @@ function conferences(){
     wireCfRows();
     loadRatings();
   };
-  ["cf-q","cf-dept","cf-mined","cf-flag"].forEach(id=>{
+  ["cf-q","cf-dept","cf-mined","cf-flag","cf-when"].forEach(id=>{
     const el=$("#"+id); if(!el)return;
     el.addEventListener(el.tagName==="SELECT"?"change":"input",paint);
   });
@@ -4493,6 +4501,22 @@ function isPast(dates){
   if(!r)return false;
   const t=new Date(); t.setHours(0,0,0,0);
   return r.end<t;
+}
+
+/* Does this event fall inside the next N days? Hoisted out of the filter so
+   the selftest can run it, because the case that matters is the one that looks
+   like a no-op: a row we CANNOT date is kept, never dropped. Six events have no
+   dates because their organiser has not announced or their site would not load.
+   Excluding those from "in the next 3 months" answers "is this happening soon?"
+   with "no" on evidence we do not have - the same wrong answer as an empty
+   board reading as no jobs. They stay, carrying the line that says why. */
+function withinDays(dates, days){
+  if(!days)return true;
+  const g=calRange(dates);
+  if(!g)return true;
+  const t0=new Date(); t0.setHours(0,0,0,0);
+  const cut=new Date(t0); cut.setDate(cut.getDate()+ +days);
+  return g.start<=cut && g.end>=t0;
 }
 
 const ymd=d=>`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`;
