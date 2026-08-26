@@ -2261,6 +2261,17 @@ def check_headline_counts_openings() -> int:
             break
         i = html.find("open roles", i + 1)
 
+    # The home card had the same bug in a different shape: q.length is a row
+    # count, and it sat under the heading "Sales roles" three elements below a
+    # banner slide that says "we count openings, not rows". Any count fed
+    # straight from a filtered posting list must not be labelled as roles.
+    for m in re.finditer(r"\$\{q\.length[^}]*\}\s*</span>\s*<h3>([^<]*)</h3>", html):
+        if re.search(r"\broles?\b", m.group(1), re.I):
+            errors += fail(f"index.html labels a posting-row count as "
+                           f"{m.group(1)!r}. Rows are advertisements; roles "
+                           f"are openings, and the home banner on the same "
+                           f"screen says so")
+
     # and totals.postings must never be labelled as roles anywhere
     for m in re.finditer(r"totals\.postings", html):
         after = html[m.end():m.end() + 90]

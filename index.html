@@ -4130,11 +4130,17 @@ function home(){
   </div>`:""}
 
   <div class="hcards">
+    <!-- OPENINGS. This card said 609 and called them roles, which is the row
+         count - the same requisition advertised in several cities counted
+         once per city. The banner slide three elements above it says "we
+         count openings, not rows" and then this card did the opposite, on the
+         same screen. -->
     <a class="hcard" id="h-jobs" href="#">
-      <span class="big">${q.length.toLocaleString()}</span>
+      <span class="big">${new Set(q.map(p=>p.opening_id)).size.toLocaleString()}</span>
       <h3>Sales roles</h3>
       <p>Quota-carrying roles at state and local government technology
-         companies. Filter by family, seniority, work mode and pay.</p>
+         companies, advertised in ${q.length.toLocaleString()} postings.
+         Filter by family, seniority, work mode and pay.</p>
     </a>
     <a class="hcard" id="h-cos" href="#">
       <span class="big">${orgs.length.toLocaleString()}</span>
