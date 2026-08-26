@@ -170,6 +170,7 @@ def sanitize(board: dict) -> dict:
 # blocked every real improvement this month (2,273 -> 4,033 -> 4,199).
 MAX_DROP = 0.25          # postings, day over day
 MAX_HIRING_DROP = 0.40   # companies showing at least one opening
+MAX_UNREADABLE_LOSS = 0.05  # postings lost to boards that would not read
 
 
 class StaleData(Exception):
@@ -218,6 +219,47 @@ def sanity_check(board: dict) -> list[str]:
         drop = (1 - postings / prev_n) * 100
         bad.append(f"postings fell {drop:.0f}% since {prev_date} "
                    f"({prev_n} -> {postings}), past the {MAX_DROP:.0%} limit")
+
+    # THE CLIFF THE PERCENTAGE CANNOT SEE. On 2026-08-26 the board fell 13.3%
+    # - 4,334 postings to 3,757 - and this gate published it, because 13.3% is
+    # under the 25% limit. 524 of those postings belonged to 33 companies whose
+    # boards had gone UNREADABLE, and three of the biggest (Civica 89, Career
+    # TEAM 64, BibliU 51) read perfectly when retried by hand minutes later.
+    # A transient fetch failure had zeroed them for the day.
+    #
+    # A whole-board percentage cannot see that: a few hundred postings spread
+    # across thousands is noise at the aggregate and a cliff for the company it
+    # happens to. The discriminator is not "fell to zero" - companies do close
+    # every role, and the history shows 31 doing it in one ordinary day. It is
+    # "fell to zero AND the board would not read". A company that genuinely
+    # emptied its board returns an empty list; a broken fetch returns nothing
+    # at all, and the difference is recorded.
+    unreadable_ids = {o["id"] for o in board.get("organizations", [])
+                      if o.get("unreadable")}
+    if unreadable_ids and prev_n:
+        # The BEST count each company has shown in the last week, not an
+        # average - the same reason previous_snapshot() takes the best rather
+        # than yesterday. An average lets a run that already broke drag the
+        # baseline down and disarm the gate on the next one.
+        snaps = sorted((ROOT / "data" / "history").glob("*.json"))
+        was: dict[str, int] = {}
+        for sp in snaps[-8:-1]:
+            seen: dict[str, int] = {}
+            for pid in json.loads(sp.read_text()).get("ids", []):
+                cid = pid.split("::")[0]
+                seen[cid] = seen.get(cid, 0) + 1
+            for cid, n in seen.items():
+                was[cid] = max(was.get(cid, 0), n)
+        now_by: dict[str, int] = {}
+        for post in board.get("postings", []):
+            now_by[post["company_id"]] = now_by.get(post["company_id"], 0) + 1
+        lost = sum(max(0, was.get(i, 0) - now_by.get(i, 0)) for i in unreadable_ids)
+        if lost > prev_n * MAX_UNREADABLE_LOSS:
+            bad.append(f"{len(unreadable_ids)} board(s) would not read this run "
+                       f"and about {lost} posting(s) went with them, "
+                       f"{lost / prev_n:.0%} of the board. A board that will not "
+                       f"answer is not a company with no jobs - retry before "
+                       f"publishing a zero for each of them")
 
     # A big fall in companies-with-openings usually means a fetcher broke
     # rather than a market that emptied overnight.

@@ -2502,6 +2502,63 @@ def check_an_unread_board_is_not_a_zero() -> int:
     return errors
 
 
+
+def check_the_gate_sees_an_unreadable_cliff() -> int:
+    """A percentage cannot see a few hundred postings fall off a cliff.
+
+    On 2026-08-26 the board fell 13.3% and the publish gate would have shipped
+    it, because the limit is 25%. 524 of the missing postings belonged to 33
+    companies whose boards had gone unreadable - and Civica (89), Career TEAM
+    (64) and BibliU (51) all read perfectly when retried by hand minutes later.
+    A transient fetch failure, published as 33 companies with no jobs.
+
+    The discriminator is not "fell to zero". The history shows 31 companies
+    doing that in one ordinary day; companies really do close every role. It is
+    "fell to zero AND the board would not read" - an emptied board returns an
+    empty list, a broken fetch returns nothing at all, and the run records
+    which happened.
+
+    Pinned in both directions, because a gate that refuses every build is
+    turned off within a week.
+    """
+    import build_site
+    errors = 0
+
+    good = {"postings": [{"company_id": "a"} for _ in range(4000)],
+            "organizations": [{"id": "a", "open_roles": 4000}]}
+    if build_site.sanity_check(good):
+        errors += fail("the publish gate objects to a healthy board; a gate "
+                       "that cries wolf gets forced past and stops working")
+
+    # The synthetic company has to be one HISTORY KNOWS, or the gate has no
+    # baseline for it and correctly says nothing. A made-up id proves only that
+    # the test was made up: the first version of this check used one and failed
+    # against working code.
+    hist = sorted((ROOT / "data" / "history").glob("*.json"))
+    if len(hist) >= 2 and build_site.previous_snapshot():
+        counts: dict[str, int] = {}
+        for pid in json.loads(hist[-2].read_text()).get("ids", []):
+            cid = pid.split("::")[0]
+            counts[cid] = counts.get(cid, 0) + 1
+        big = max(counts, key=counts.get) if counts else None
+        if big and counts[big] >= 10:
+            cliff = {"postings": [{"company_id": "a"} for _ in range(3000)],
+                     "organizations": [{"id": "a", "open_roles": 3000},
+                                       {"id": big, "open_roles": 0,
+                                        "unreadable": "HTTP 404"}]}
+            if not any("would not read" in o
+                       for o in build_site.sanity_check(cliff)):
+                errors += fail(f"the publish gate does not notice postings "
+                               f"disappearing with boards that would not read: "
+                               f"{big!r} held {counts[big]} postings and its "
+                               f"board failing raised no objection. A 13% fall "
+                               f"of exactly that shape passed it once")
+    if build_site.MAX_UNREADABLE_LOSS > 0.15:
+        errors += fail(f"MAX_UNREADABLE_LOSS is {build_site.MAX_UNREADABLE_LOSS:.0%}; "
+                       f"the failure it exists to catch was 13% of the board")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -2842,6 +2899,7 @@ def main() -> int:
     errors += check_queues_do_not_propose_deleted_categories()
     errors += check_a_count_is_never_a_job_title()
     errors += check_an_unread_board_is_not_a_zero()
+    errors += check_the_gate_sees_an_unreadable_cliff()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()
     errors += check_every_company_says_what_it_sells()
