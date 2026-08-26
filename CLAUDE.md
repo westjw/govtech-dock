@@ -872,6 +872,28 @@ digital government services firm, currently filed as a supplier because it
 sells services rather than a product. That is consistent with the existing
 rule, not a mistake - just the closest call in the pile.
 
+## A bad probe run poisons the record for weeks (found 2026-08-26)
+
+`discovery_log.json` remembers why a company has no job board, and the blocked
+queue re-probes on a 7-day cycle. That is fine when the note is true. When a
+whole RUN is degraded, it writes dozens of false notes at once and they all
+persist together.
+
+55 companies carried "gave up after 75s". Retried by hand with a 90s budget,
+**42 of 53 answered - median 0.8 seconds, 41 of them under five.** 3AM
+Innovations, recorded as a site that would not answer in 75 seconds, returns
+525KB in 0.8s. These are not slow sites.
+
+The tell is the probe DATE. 40 of the 55 came from one run on 2026-08-20 and
+14 from 2026-08-23; only one is from any other day. Two degraded runs, roughly
+a 75% false-negative rate between them, and the record then reads as 55
+separate companies with unreachable websites.
+
+**Before trusting a run of "unreachable" notes, group them by `on`.** A cluster
+on one date is a claim about that run, not about those companies. The same
+shape appeared the same day in build_board: 47 boards "network error" in one
+build, and Civica, Career TEAM and BibliU all read perfectly minutes later.
+
 ## build_board.py is the crawler, not a formatter (noted 2026-08-25)
 
 `python3 scripts/build_board.py` re-fetches every job board it has a ref for.
