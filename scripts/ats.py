@@ -1008,6 +1008,20 @@ _NAV = re.compile(r"^(apply|apply now|learn more|read more|view (all|jobs|openin
                   r"previous|home|about|contact|search|filter|all departments?|"
                   r"privacy|terms|cookie)s?$", re.I)
 
+# A COUNT IS NEVER A JOB TITLE. _NAV is anchored, so it catches a link reading
+# "Jobs" and cannot catch "Engineer jobs 555,845 open jobs" - which is what
+# LinkedIn's browse-by-title rail says, and what fourteen of CORE Business
+# Technologies' twenty postings on the public board actually were. They passed
+# every test above: the href is a real /jobs/ URL and the text reads like a
+# title, because it begins with one.
+#
+# The board's claim about itself is the reason this matters more than a
+# cosmetic wrong row: the site tells visitors "nothing here is scraped from an
+# aggregator", and these were LinkedIn's own furniture counted as somebody's
+# openings.
+_JOB_COUNT = re.compile(r"\b\d[\d,]*\s*\+?\s*(open\s+)?(jobs|positions|roles|"
+                        r"openings|vacancies)\b", re.I)
+
 
 def fetch_html_titles(url: str) -> list[dict]:
     """Enumerate job titles from a server-rendered careers page.
@@ -1023,6 +1037,8 @@ def fetch_html_titles(url: str) -> list[dict]:
         text = html_lib.unescape(text)
         if not (6 <= len(text) <= 90) or _NAV.match(text):
             continue
+        if _JOB_COUNT.search(text):
+            continue          # "Engineer jobs 555,845 open jobs" is a rail, not a role
         if not (_JOB_HREF.search(href) and _TITLEISH.search(text)):
             continue
         key = text.lower()

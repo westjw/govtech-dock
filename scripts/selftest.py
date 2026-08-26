@@ -2361,6 +2361,67 @@ def check_queues_do_not_propose_deleted_categories() -> int:
     return errors
 
 
+
+def check_a_count_is_never_a_job_title() -> int:
+    """"Engineer jobs 555,845 open jobs" was a posting on the public board.
+
+    LinkedIn's company jobs page carries a browse-by-title rail, and every link
+    in it passes the html enumerator's tests honestly: the href is a real
+    /jobs/ URL and the text reads like a title, because it starts with one.
+    Fourteen of CORE Business Technologies' twenty postings were that rail.
+    _NAV could not catch them - it is anchored, so it matches a link reading
+    "Jobs" and nothing longer.
+
+    Two of the eighteen were "Business Development Representative jobs 52,084
+    open jobs" and "Sales Technician jobs 78,850 open jobs". Neither reached
+    the quota-carrying count, which is luck rather than design: the family
+    classifier declined them. Three did reach the go-to-market family on the
+    market-intel page.
+
+    The negatives are pinned as hard as the positives, because a rule that
+    ate "Analyst 3 - Data Systems" or a title with a salary in it would delete
+    real jobs silently.
+    """
+    import ats
+    errors = 0
+    reject = [
+        "Engineer jobs 555,845 open jobs",
+        "Business Development Representative jobs 52,084 open jobs",
+        "Manager jobs 1,880,925 open jobs",
+        "See all 12 open positions",
+        "Browse 40+ open roles",
+    ]
+    keep = [
+        "Account Executive",
+        "Sales Account Executive - GovTech ($65K-$85K+)",
+        "Analyst 3 - Data Systems",
+        "Engineer II, Platform",
+        "Director of Accounts",
+        "Senior RF Engineer",
+        "Account Executive, SLED West",
+    ]
+    for s in reject:
+        if not ats._JOB_COUNT.search(s):
+            errors += fail(f"{s!r} is a count, not a job, and would be listed "
+                           f"on the board as somebody's opening")
+    for s in keep:
+        if ats._JOB_COUNT.search(s):
+            errors += fail(f"{s!r} is a real job title and the count filter "
+                           f"would delete it")
+
+    # and nothing currently on the board may trip it except the known rail
+    board = json.loads((ROOT / "data" / "board.json").read_text())
+    hit = [p for p in board.get("postings", [])
+           if ats._JOB_COUNT.search(p.get("title", ""))]
+    stale = [p for p in hit if p.get("company") != "CORE Business Technologies"]
+    if stale:
+        errors += fail(f"{len(stale)} posting(s) on the board look like a count "
+                       f"rather than a job, and are not the known LinkedIn "
+                       f"rail: {stale[0].get('title')!r} at "
+                       f"{stale[0].get('company')!r}")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -2699,6 +2760,7 @@ def main() -> int:
     errors += check_headline_counts_openings()
     errors += check_admin_blurbs_have_no_typed_counts()
     errors += check_queues_do_not_propose_deleted_categories()
+    errors += check_a_count_is_never_a_job_title()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()
     errors += check_every_company_says_what_it_sells()
