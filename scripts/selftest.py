@@ -2581,13 +2581,23 @@ def check_a_transport_failure_gets_a_second_chance() -> int:
     i = src.find("def read_board(")
     if i < 0:
         return fail("build_board.py: read_board is gone")
-    body = src[i:i + 2600]
+    raw = src[i:i + 2600]
+    # Comments are stripped first. The comment explaining the retry contains
+    # the words "retry" and "network error", so deleting the CODE left this
+    # check reading its own explanation and passing. Second time today that
+    # exact trap has fired; a checker that cannot tell code from prose about
+    # the code is testing the prose.
+    body = "\n".join(ln.split("#")[0] for ln in raw.split("\n"))
     errors = 0
     if "network error" not in body:
         errors += fail("read_board does not distinguish a transport failure "
                        "from an answer, so a dropped socket and a dead board "
                        "are recorded the same way")
-    if body.count("once()") < 2 and "retry" not in body.lower():
+    # Count CALLS, not the definition: "def once():" contains the same
+    # substring, so a naive count never falls below 2 and the check passed
+    # against code with the retry deleted.
+    calls = len(re.findall(r"(?<!def )\bonce\(\)", body))
+    if calls < 2:
         errors += fail("read_board never retries. One dropped socket publishes "
                        "a company as not hiring for a day - it cost 524 "
                        "postings across 33 companies once")
