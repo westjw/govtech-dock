@@ -2315,6 +2315,52 @@ def check_admin_blurbs_have_no_typed_counts() -> int:
     return errors
 
 
+
+def check_queues_do_not_propose_deleted_categories() -> int:
+    """A proposal aimed at a category that no longer exists is unacceptable.
+
+    Deleting a category is a normal thing to do - two went on 2026-08-25, when
+    Health & Human Services and Courts & Justice stopped being categories under
+    General Gov and became only sectors. Four separate things reference a
+    category by name, and only three were already guarded:
+
+      companies         validate() refuses an unknown sector/category
+      `also` placements validate() reads those too
+      search routes     check_search_routes_are_live
+      QUEUE PROPOSALS   nothing
+
+    A queue row proposing "move this to General Gov / Courts & Justice" would
+    be offered to the owner, accepted, and then refused by validate() at the
+    write - or worse, silently written by a path that does not validate. The
+    row looks completely normal either way.
+    """
+    import admin
+    schema = json.loads((ROOT / "data" / "schema.json").read_text())
+    cats = {s["name"]: set(s["categories"]) for s in schema["sectors"]}
+    companies = admin.read("companies.json", [])
+    board = admin.read("board.json", {})
+    errors = 0
+    for name, fn in admin.QUEUES.items():
+        try:
+            rows = fn(companies, board)
+        except Exception:
+            continue           # a queue that cannot build is another check's job
+        for r in rows:
+            if not isinstance(r, dict):
+                continue
+            s, c = r.get("proposed_sector"), r.get("proposed_category")
+            if s is None and c is None:
+                continue
+            if s not in cats or c not in cats.get(s, ()):
+                errors += fail(f"the {name!r} queue proposes moving "
+                               f"{r.get('name', r.get('id', '?'))!r} to "
+                               f"{s} / {c}, which is not in schema.json. The "
+                               f"row reads normally and the write would be "
+                               f"refused after the ruling was made")
+                break          # one per queue is enough to say it
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -2652,6 +2698,7 @@ def main() -> int:
     errors += check_websites_queue_names_its_twins()
     errors += check_headline_counts_openings()
     errors += check_admin_blurbs_have_no_typed_counts()
+    errors += check_queues_do_not_propose_deleted_categories()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()
     errors += check_every_company_says_what_it_sells()
