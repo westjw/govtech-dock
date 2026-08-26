@@ -387,8 +387,8 @@ const INTRO = {
     + 'downstream: no site means no logo and no board, so the company can never be '
     + 'monitored and never looks like itself. A pasted URL is checked against the page '
     + 'first, then spent immediately - saved, logo fetched, board probed - so one paste '
-    + 'pays three times while you are still looking at it. 102 companies are here, and '
-    + 'each one you close is a company that can start showing real postings.',
+    + 'pays three times while you are still looking at it. Each one you close is a '
+    + 'company that can start showing real postings.',
   blocked: 'Probed and turned away: a 403, a timeout, an SSL failure. Not evidence of '
     + 'anything except that the fetcher was refused - these re-probe themselves after '
     + 'seven days. Retry now is for when the block looked transient or you just fixed '
@@ -431,7 +431,7 @@ const INTRO = {
     + 'not a fact — nothing here has touched companies.json or the board. Approving '
     + 'a company runs the same intake check as adding one by hand and shows what the '
     + 'page says about itself first.',
-  capture: 'For the boards nothing automated can read. 537 careers pages on file have '
+  capture: 'For the boards nothing automated can read. The careers pages on file have '
     + 'no enumerable job list at all — rendering them in headless Chromium finds '
     + 'nothing either, because they are widgets in iframes and session-gated boards. '
     + 'Your browser runs all of that. Capture the page you are looking at, paste it '
@@ -871,7 +871,18 @@ async function show(key) {
   LAST_ITEMS = items; VTHEME = null;
   const body = el('div'); body.id = 'qbody';
   if (res.state || res.belt) v.appendChild(queueHead(key, res, body));
-  v.appendChild(el('p', 'intro', INTRO[key] || ''));
+  /* The blurb carries a live count rather than a written one. Two of these
+     had numbers typed into the prose - "102 companies are here" when there
+     were 50, "537 careers pages" when there were 887 - and a number in prose
+     is true on the day it is written and silently wrong afterwards. This one
+     comes off the queue that just loaded. */
+  const intro = el('p', 'intro');
+  if (INTRO[key]) {
+    intro.textContent = items.length
+      ? `${items.length.toLocaleString()} waiting. ${INTRO[key]}`
+      : INTRO[key];
+    v.appendChild(intro);
+  }
   v.appendChild(body);
   drawQueue(key, items, body);
 }

@@ -2281,6 +2281,40 @@ def check_headline_counts_openings() -> int:
     return errors
 
 
+
+def check_admin_blurbs_have_no_typed_counts() -> int:
+    """A number written into prose is true the day it is typed and wrong after.
+
+    The admin's queue descriptions carried two: "102 companies are here" when
+    the queue held 50, and "537 careers pages on file" when there were 887.
+    Neither is visible as a bug - the sentence still reads perfectly - and both
+    were telling the owner the size of his own backlog incorrectly, on the page
+    where he decides what to work on.
+
+    HTTP status codes and year-like numbers are allowed: "a 403, a timeout" is
+    naming a thing, not counting one.
+    """
+    html = (ROOT / "admin.html").read_text()
+    i = html.find("const INTRO = {")
+    if i < 0:
+        return fail("admin.html: the queue blurbs (INTRO) are gone")
+    j = html.find("\n};", i)
+    block = html[i:j if j > 0 else len(html)]
+
+    ALLOWED = {"200", "301", "302", "403", "404", "429", "500", "503"}
+    errors = 0
+    for m in re.finditer(r"\b\d[\d,]{1,6}\b", block):
+        n = m.group(0)
+        if n in ALLOWED or re.fullmatch(r"(19|20)\d\d", n):
+            continue
+        line = block[block.rfind("\n", 0, m.start()) + 1:
+                     block.find("\n", m.end())].strip()
+        errors += fail(f"admin.html queue blurb has the count {n!r} typed into "
+                       f"its prose: {line[:70]!r}. Counts go stale silently - "
+                       f"the blurb is given a live one at render time")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -2617,6 +2651,7 @@ def main() -> int:
     errors += check_acquired_names_still_match_themselves()
     errors += check_websites_queue_names_its_twins()
     errors += check_headline_counts_openings()
+    errors += check_admin_blurbs_have_no_typed_counts()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()
     errors += check_every_company_says_what_it_sells()
