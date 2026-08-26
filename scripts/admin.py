@@ -341,14 +341,45 @@ def q_duplicates(companies, board) -> list:
 
 
 def q_websites(companies, board) -> list:
-    return [{"id": c["id"], "name": c["name"], "sector": c["sector"],
-             "category": c["category"], "description": c.get("description"),
-             "also_known_as": c.get("also_known_as") or [],
-             "events": _events(c.get("description")),
-             "tier": 1 if c["sector"] in ("General Gov", "Public Works", "Parks & Rec")
-                     else 2}
-            for c in companies
-            if not c.get("website") and not is_dismissed("websites", c["id"])]
+    """Companies with no website on file, and which of them are unanswerable here.
+
+    Eleven of the fifty in this queue are one half of a duplicate pair whose
+    OTHER half already carries the website: Avolve and Avolve Software, Novotx
+    and "Novotx, An Accela Company", Oracle and Oracle Corporation. Researching
+    a website for those is work with no possible right answer - the answer is a
+    merge, and it lives in a different queue. Left unmarked, this queue quietly
+    spends the owner's attention on eleven questions that cannot be settled by
+    answering them.
+
+    So the twin is named on the row. Nothing is hidden: a pair can turn out to
+    be a parent and its division rather than one company, in which case the
+    website question is real again, and that call is not this function's to
+    make.
+    """
+    by_ident = {}
+    for c in companies:
+        k = ident(c["name"])
+        if k:
+            by_ident.setdefault(k, []).append(c)
+
+    out = []
+    for c in companies:
+        if c.get("website") or is_dismissed("websites", c["id"]):
+            continue
+        twins = [o for o in by_ident.get(ident(c["name"]), [])
+                 if o["id"] != c["id"]]
+        # only worth flagging when the twin HAS what this row is missing
+        has_site = [o for o in twins if (o.get("website") or "").strip()]
+        out.append({"id": c["id"], "name": c["name"], "sector": c["sector"],
+                    "category": c["category"], "description": c.get("description"),
+                    "also_known_as": c.get("also_known_as") or [],
+                    "events": _events(c.get("description")),
+                    "same_name_as": [{"id": o["id"], "name": o["name"],
+                                      "website": o.get("website")}
+                                     for o in (has_site or twins)] or None,
+                    "tier": 1 if c["sector"] in ("General Gov", "Public Works", "Parks & Rec")
+                            else 2})
+    return out
 
 
 BLOCKED_MARKERS = ("blocked at the door", "could not fetch", "gave up after")

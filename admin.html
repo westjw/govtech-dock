@@ -1620,6 +1620,22 @@ RENDER.websites = c => {
   n.appendChild(withLogo(el('h3', null, c.name), c));
   n.appendChild(el('div', 'kv', `${c.sector} → ${c.category}`
     + (c.description ? ' · ' + c.description : '')));
+  /* Eleven of the fifty rows here are one half of a duplicate pair whose other
+     half already carries the website. Answering those is work with no possible
+     right answer - the answer is a merge, and it lives in the duplicates queue.
+     The twin is named rather than the row being hidden, because a pair can turn
+     out to be a parent and its division, and then the website question is real
+     again. That call is the owner's. */
+  if (c.same_name_as && c.same_name_as.length) {
+    const t = c.same_name_as[0];
+    const w = el('div', 'kv');
+    w.appendChild(el('span', 'warn', 'Also on the board as '));
+    w.appendChild(el('strong', null, t.name));
+    w.appendChild(document.createTextNode(t.website
+      ? ` — which already has ${t.website}. If these are one company, this is a merge, not a missing site.`
+      : ' — which has no site either. If these are one company, merge them first.'));
+    n.appendChild(w);
+  }
   const row = el('div', 'row');
   const inp = el('input', 'txt'); inp.type = 'text';
   inp.placeholder = 'https://company.com';

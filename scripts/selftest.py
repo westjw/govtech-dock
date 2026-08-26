@@ -2105,6 +2105,64 @@ def check_acquired_names_still_match_themselves() -> int:
     return errors
 
 
+
+def check_websites_queue_names_its_twins() -> int:
+    """A row that cannot be answered by answering it must say so.
+
+    Eleven of the fifty companies in the missing-websites queue are one half of
+    a duplicate pair whose OTHER half already carries the website - Avolve and
+    Avolve Software, Novotx and "Novotx, An Accela Company", Oracle and Oracle
+    Corporation. Researching a website for those is attention spent on a
+    question with no right answer; the answer is a merge, in a different queue.
+
+    The row is marked rather than hidden, because a pair can turn out to be a
+    parent and its division, and then the website question is real again.
+
+    Pinned in both halves: admin.py emits `same_name_as`, admin.html reads it.
+    A rename on one side alone silently drops the warning, and the queue goes
+    back to quietly wasting eleven decisions.
+    """
+    import admin
+    errors = 0
+    companies = admin.read("companies.json", [])
+    rows = admin.q_websites(companies, admin.read("board.json", {}))
+    if not rows:
+        note("no companies are missing a website; nothing to check here")
+        return 0
+
+    flagged = [r for r in rows if r.get("same_name_as")]
+    for r in flagged:
+        for twin in r["same_name_as"]:
+            if twin["id"] == r["id"]:
+                errors += fail(f"{r['name']}: listed as its own twin")
+    # a row whose name matches another company's must be flagged
+    idents = {}
+    for c in companies:
+        k = admin.ident(c["name"])
+        if k:
+            idents.setdefault(k, []).append(c["id"])
+    for r in rows:
+        k = admin.ident(r["name"])
+        if len(idents.get(k, [])) > 1 and not r.get("same_name_as"):
+            errors += fail(f"{r['name']} shares a name with another record but "
+                           f"the websites queue does not say so, so it reads "
+                           f"as a research job when it is a merge")
+
+    # The UI half is a text check and cannot prove the branch runs. It counts
+    # occurrences rather than testing for one, because the guard and the use are
+    # separate lines: disabling the guard drops the count even though the string
+    # survives further down. That catches the realistic failure - someone edits
+    # the condition - without pretending to be an execution test.
+    html = (ROOT / "admin.html").read_text()
+    seen = html.count("same_name_as")
+    if seen < 2:
+        errors += fail(f"admin.html references same_name_as {seen} time(s); the "
+                       f"websites queue computes the duplicate warning and then "
+                       f"throws it away, so eleven rows read as research jobs "
+                       f"when they are merges")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -2439,6 +2497,7 @@ def main() -> int:
     errors += check_search_routes_are_live()
     errors += check_calendar_dates_survive_the_round_trip()
     errors += check_acquired_names_still_match_themselves()
+    errors += check_websites_queue_names_its_twins()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()
     errors += check_every_company_says_what_it_sells()
