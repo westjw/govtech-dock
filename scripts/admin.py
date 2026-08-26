@@ -340,6 +340,40 @@ def q_duplicates(companies, board) -> list:
     return out
 
 
+def _unblocks(name: str, companies, board) -> int | None:
+    """Decisions in OTHER queues that resolving this one could make moot.
+
+    Only the duplicates queue has this property today: every other queue asks
+    about a record on its own terms, but a duplicate pair asks whether one of
+    the two records should stop existing, and everything queued against the
+    loser is then work nobody needed to do.
+
+    Returns None rather than 0 for queues where the question does not apply,
+    so the page can say nothing rather than say "unblocks 0", which reads as
+    a claim that this queue holds nothing up.
+    """
+    if name != "duplicates":
+        return None
+    try:
+        dup = {m["id"] for r in q_duplicates(companies, board)
+               for m in r.get("members", [])}
+        if not dup:
+            return 0
+        n = 0
+        for other, fn in QUEUES.items():
+            if other == "duplicates":
+                continue
+            try:
+                rows = fn(companies, board)
+            except Exception:
+                continue
+            n += sum(1 for r in rows
+                     if isinstance(r, dict) and r.get("id") in dup)
+        return n
+    except Exception:
+        return None          # a nicety must never take the queue with it
+
+
 def q_websites(companies, board) -> list:
     """Companies with no website on file, and which of them are unanswerable here.
 
@@ -3587,6 +3621,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 # with no proposal reporting a 0% agree-rate would read as
                 # the guesser being wrong when it never spoke.
                 "agree": agree_rate() if name in PROPOSAL_QUEUES else None,
+                # How much OTHER work this queue is holding up. 137 decisions
+                # across eight queues sit on records that are one half of a
+                # duplicate pair; if the pair merges, that research was spent
+                # on a record that stops existing. Ordering is the cheapest
+                # lever there is, and it is invisible unless somebody counts.
+                "unblocks": _unblocks(name, companies, board),
             })
         if path == "/api/sort/companies":
             qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)

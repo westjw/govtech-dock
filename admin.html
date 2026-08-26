@@ -883,6 +883,21 @@ async function show(key) {
       : INTRO[key];
     v.appendChild(intro);
   }
+  /* What this queue is holding up. Only duplicates reports a number: every
+     other queue asks about a record on its own terms, but a duplicate pair
+     asks whether one of the two should stop existing, and every decision
+     queued against the loser is work nobody needed to do. 137 of them, across
+     eight queues. Ordering is the cheapest lever there is and it is invisible
+     unless somebody counts. */
+  if (typeof res.unblocks === 'number' && res.unblocks > 0) {
+    const u = el('p', 'intro');
+    u.appendChild(el('strong', null, res.unblocks.toLocaleString()));
+    u.appendChild(document.createTextNode(
+      ' decisions in other queues are waiting on records that are half of a '
+      + 'pair here. Every merge you make may settle several of them at once, '
+      + 'which is why this queue is worth doing first.'));
+    v.appendChild(u);
+  }
   v.appendChild(body);
   drawQueue(key, items, body);
 }
