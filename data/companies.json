@@ -212,7 +212,7 @@
  {
   "id": "perimeter",
   "name": "Perimeter",
-  "website": "https://www.perimeterplatform.com",
+  "website": "https://perimeterplatform.com",
   "location": "San Francisco, CA",
   "year_founded": 2019,
   "sector": "Public Safety",
@@ -231,7 +231,12 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "notes": [
+   {
+    "text": "Website corrected 2026-08-26. The stored address https://www.perimeterplatform.com presented a TLS certificate that does not cover that hostname, so every probe recorded an SSLError and the company sat in the blocked queue unable to have its job board found. The other hostname form answers HTTP 200 and the page identifies as this company. The site was never down; we were asking for the wrong name."
+   }
+  ]
  },
  {
   "id": "genasys",
@@ -26642,7 +26647,7 @@
  {
   "id": "cimcon-lighting",
   "name": "CIMCON Lighting",
-  "website": "https://www.cimconlighting.com",
+  "website": "https://cimconlighting.com",
   "location": "Burlington, MA",
   "year_founded": 1997,
   "sector": "Utilities & Energy",
@@ -26661,7 +26666,12 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "notes": [
+   {
+    "text": "Website corrected 2026-08-26. The stored address https://www.cimconlighting.com presented a TLS certificate that does not cover that hostname, so every probe recorded an SSLError and the company sat in the blocked queue unable to have its job board found. The other hostname form answers HTTP 200 and the page identifies as this company. The site was never down; we were asking for the wrong name."
+   }
+  ]
  },
  {
   "id": "paradox-engineering",
@@ -27404,7 +27414,7 @@
  {
   "id": "iworq-systems",
   "name": "iWorQ Systems",
-  "website": "https://www.iworq.com",
+  "website": "https://iworq.com",
   "location": "Logan, UT",
   "year_founded": 2000,
   "sector": "General Gov",
@@ -27423,7 +27433,12 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "notes": [
+   {
+    "text": "Website corrected 2026-08-26. The stored address https://www.iworq.com presented a TLS certificate that does not cover that hostname, so every probe recorded an SSLError and the company sat in the blocked queue unable to have its job board found. The other hostname form answers HTTP 200 and the page identifies as this company. The site was never down; we were asking for the wrong name."
+   }
+  ]
  },
  {
   "id": "spatial-data-logic",
@@ -54479,7 +54494,7 @@
  {
   "id": "psyrin",
   "name": "Psyrin",
-  "website": "https://psyrin.com",
+  "website": "https://www.psyrin.com",
   "location": null,
   "year_founded": null,
   "sector": "Health & Human Services",
@@ -54498,7 +54513,12 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NatCon 2026",
-  "researched": true
+  "researched": true,
+  "notes": [
+   {
+    "text": "Website corrected 2026-08-26. The stored address https://psyrin.com presented a TLS certificate that does not cover that hostname, so every probe recorded an SSLError and the company sat in the blocked queue unable to have its job board found. The other hostname form answers HTTP 200 and the page identifies as this company. The site was never down; we were asking for the wrong name."
+   }
+  ]
  },
  {
   "id": "simplifyance",
