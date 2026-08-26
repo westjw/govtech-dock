@@ -691,6 +691,14 @@
     /* 26px is not a tap target. The rating buttons wrap to two rows here
        anyway, so there is room to make each one hittable rather than a
        thing you aim at and miss. */
+    /* The row is one non-wrapping flex line: name, dates, city, then the
+       counts pinned right with margin-left:auto and white-space:nowrap. At
+       375px that pushed the counts to 515px and gave the whole PAGE a sideways
+       scroll - the counts were off-screen and the reader had to drag the body
+       to see them. Wrapping is the fix; the counts drop to their own line and
+       stop dragging the document with them. */
+    .cfrow{flex-wrap:wrap;row-gap:2px}
+    .cfnums{margin-left:0;width:100%;gap:var(--space-4)}
     .cfstars{margin-left:0;width:100%;gap:4px}
     .cfstars button{width:34px;height:38px;font-size:13px}
     .cfcal{min-height:38px;padding:2px 12px}
