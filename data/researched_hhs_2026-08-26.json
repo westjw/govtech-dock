@@ -1,0 +1,784 @@
+{
+ "researched": [
+  {
+   "name": "Smarty",
+   "verdict": "scope_review",
+   "website": "https://smarty.com",
+   "description": "USPS and international address verification, autocomplete, geocoding and property-data APIs for developers, with a government line selling cleaner address data to public agencies",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal developer-API company: USPS/international address verification, autocomplete, geocoding and property data sold to any business that has an address field, with government as one vertical line among many. Product company, but the government cut is a segment of a general-purpose data API \u2014 not a system built for agencies. Rule 6 / horizontal shape, queue for a person rather than force it onto a public SLED board."
+  },
+  {
+   "name": "Snowflake",
+   "verdict": "scope_review",
+   "website": "https://www.snowflake.com",
+   "description": "Cloud data platform for storing, processing, analysing and sharing data and building AI applications on it, sold to enterprises and, through a public sector practice, to government agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named in the brief as the archetype: a general-purpose cloud data platform sold to every industry, with a public-sector go-to-market on top. Not a govtech product company, not a supplier either."
+  },
+  {
+   "name": "Socure",
+   "verdict": "scope_review",
+   "website": "https://www.socure.com",
+   "description": "AI identity verification and fraud-prevention platform, FedRAMP-authorized, sold to banks, businesses and government agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal identity-verification and fraud platform whose primary market is banks, fintechs and online businesses; FedRAMP authorization and agency deals make government one buyer among everyone else. Same shape as the listed horizontals \u2014 not earned as govtech."
+  },
+  {
+   "name": "Speridian",
+   "verdict": "govtech",
+   "website": "https://www.speridian.com",
+   "description": "IT consulting and low-code case management (CaseXellence) for public sector agencies, including state health and human services programmes, alongside banking, insurance and retail practices.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named product: CaseXellence. Rule 2 exception survives, but the category does not. Confirmed: Speridian is a global consulting and technology services firm (advisory, implementation, managed services) spanning banking, insurance, retail, manufacturing, healthcare, real estate and government \u2014 a consultancy by identity. It clears the rule 2 exception because it licenses genuinely named products, and CaseXellence is verifiably licensed to public agencies rather than merely marketed: New Mexico Workers' Compensation Administration case management system, New Mexico Public Regulation Commission, New Mexico EPMO, plus a govern",
+   "sector": "General Gov",
+   "category": "IT & AI Platforms"
+  },
+  {
+   "name": "Splunk (Cisco)",
+   "verdict": "scope_review",
+   "website": "https://www.splunk.com",
+   "description": "Data platform for security operations (SIEM, SOAR, UEBA) and IT observability, sold to enterprises and to state and local government and education.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named in the brief as the archetype: horizontal SIEM/observability platform sold to enterprises worldwide, with SLED as one segment. Queue for a person."
+  },
+  {
+   "name": "StackAI",
+   "verdict": "scope_review",
+   "website": "https://stackai.com",
+   "description": "No-code platform for building, governing and deploying enterprise AI agents, sold to IT teams at organisations with regulated and complex operations",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal no-code platform for building and governing enterprise AI agents, sold to IT teams at any regulated or complex organisation. Nothing agency-specific in the product; government would be one customer type among all others."
+  },
+  {
+   "name": "STChealth",
+   "verdict": "govtech",
+   "website": "https://www.stchealth.com",
+   "description": "Immunization information systems (STC|ONE) and vaccine data exchange for state and local public health immunization programs, pharmacies and providers.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named product: STC|ONE. Survives. STC|ONE is the immunization information system that state and jurisdictional public health departments run their immunization registries on \u2014 South Dakota DOH launched its SDIIS on it, and STC has set national IIS standards with CDC since its Arizona Department of Public Health origin. Buyer is a public agency and the product is the programme system, so rule 5's test is passed on the merits, not by healthcare adjacency. Checked for scope_review and rejected it: STChealth also runs a pharmacy and pharma data-exchange channel (54,000+ provider and pharmacy partners, MyIR Mobile, IZ Gat",
+   "sector": "Health & Human Services",
+   "category": "Public Health"
+  },
+  {
+   "name": "Strategic Solutions Group",
+   "verdict": "govtech",
+   "website": "https://www.ssg-llc.com",
+   "description": "Casetivity-based public health software - immunization information systems, electronic disease surveillance, early intervention, lead poisoning prevention and vital records - for state and local public health agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named product: Casetivity. Survives, and it is the cleanest of the four. SSG sells five fit-to-purpose applications on its own Casetivity platform \u2014 Electronic Disease Surveillance, Immunization Information System, Early Intervention Part C, Lead Poisoning Prevention, and Vital Records \u2014 as cloud subscriptions to state and local public health agencies. I tested the consultancy objection: SSG does list IT consulting, systems analysis, design/development and project management alongside the platform, so it is a hybrid. But Casetivity is its own named, licensed platform sold to public agencies, which clears rule 2's except",
+   "sector": "Health & Human Services",
+   "category": "Public Health"
+  },
+  {
+   "name": "TEKsystems",
+   "verdict": "supplier",
+   "website": "https://www.teksystems.com/",
+   "description": "IT services, systems integration and technology staffing, including healthcare IT delivery for payers and providers.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2 and the staffing clause: IT staffing, systems integration and delivery services \u2014 it sells people and hours, plus healthcare IT delivery for payers and providers. No software product of its own. Off the board, into suppliers.json."
+  },
+  {
+   "name": "Telligen",
+   "verdict": "supplier",
+   "website": "https://www.telligen.com",
+   "description": "Utilization management, care management, quality measurement and PASRR services (Qualitrac) for state Medicaid agencies, federal health programmes and health plans.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "A health management services business: utilization management, care management, quality measurement and PASRR reviews performed by its own clinical staff for federal programmes, state Medicaid agencies, employers/self-funded and Taft-Hartley plans, and health plans. Qualitrac is the platform its reviewers work in rather than the thing being bought, and a large share of the book is employer and health-plan work (Rule 4 territory). Torn between govtech and supplier, so per the asymmetry: supplier, reopenable if the state-Medicaid Qualitrac licensing turns out to be a standalone product sale."
+  },
+  {
+   "name": "TransUnion",
+   "verdict": "scope_review",
+   "website": "https://www.transunion.com",
+   "description": "Consumer credit, identity and risk data used for verification, fraud prevention and analytics, sold across industries that include healthcare and the public sector.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "A consumer credit bureau selling identity, risk and analytics data across every industry, with public sector as one of many verticals. Classic horizontal \u2014 not a govtech product company."
+  },
+  {
+   "name": "Truv",
+   "verdict": "scope_review",
+   "website": "https://truv.com",
+   "description": "Consumer-permissioned income, employment and asset verification APIs for mortgage and consumer lenders, tenant and background screeners, and public sector agencies verifying wage-earner and self-employment income",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal fintech API for consumer-permissioned income, employment and asset verification; primary buyers are mortgage and consumer lenders and background/tenant screeners, with public-sector benefits eligibility as one added channel. Government is among everyone else, so it queues rather than lands on the board."
+  },
+  {
+   "name": "Vault Technologies, Inc.",
+   "verdict": "govtech",
+   "website": "https://www.vaulttechinc.com",
+   "description": "Public health clinic and mass-vaccination software - IIS data transfer and interoperability, clinic management, school and community clinic planning, vaccination billing and consumer immunization record portals - for public health agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named product: PrepMod / PMEnterprise / OptimIIS / IISConnex. Survives, and I am supplying the product names the prior reviewer omitted \u2014 a govtech verdict should not rest on an unnamed product. VAULT sells PrepMod and PMEnterprise (mass vaccination), PMCommunity (community immunization), OptimIIS (IIS platform, HL7/FHIR), IISConnex (IIS-to-IIS data transfer), ReadiBilling, and the VAULT Interoperability Accelerator. Buyers are state health departments (PA/PhilaVax, WA IIS, MD, CO, ND, CA, RI, MT) and county health departments (Anoka, Dakota, Polk) \u2014 public agencies running their immunization programmes on the product, satisfying rule 5. I checked rule 4",
+   "sector": "Health & Human Services",
+   "category": "Public Health"
+  },
+  {
+   "name": "Verato",
+   "verdict": "scope_review",
+   "website": "https://www.verato.com",
+   "description": "Identity resolution and master data management software - person matching and provider data - for healthcare organizations and state and local government.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Identity resolution and MDM whose dominant market is healthcare organisations \u2014 health systems, payers, HIEs \u2014 which Rule 5 says is healthcare IT, not govtech, with state and local HHS agencies as an additional segment. A real product company selling to government among everyone else; torn between govtech and not, so it does not get the public card."
+  },
+  {
+   "name": "Wiz",
+   "verdict": "scope_review",
+   "website": "https://www.wiz.io",
+   "description": "Cloud and AI security platform connecting code, cloud and runtime into one risk graph, sold to enterprise security teams.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal cloud and AI security platform sold to enterprise security teams generally; a public-sector/FedRAMP line does not make the product govtech. Same shape as Splunk and Snowflake."
+  },
+  {
+   "name": "Commence",
+   "verdict": "supplier",
+   "website": "https://commence.ai",
+   "description": "Fraud, waste and abuse detection, independent dispute resolution, peer review, patient advocacy and health-data transformation services for federal health agencies, state and local government and commercial payers.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2 (services business, not a product company). Site confirms a managed/professional-services firm \u2014 FWA reviews, independent dispute resolution, peer review, patient advocacy \u2014 delivered on an outcomes/managed-services basis, primarily to federal health buyers (CMS, VA, DHA) plus commercial payers. Technology is delivery infrastructure for its own service lines, not a named product licensed to SLED agencies."
+  },
+  {
+   "name": "ConfigureTek",
+   "verdict": "supplier",
+   "website": "https://configuretek.com",
+   "description": "ServiceNow implementation partner selling CMDB, service-mapping and ITSM accelerators plus managed services to enterprises, healthcare EMR shops and state, local and education buyers.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2 (consultancy/systems integrator). A ServiceNow implementation partner selling deployment work, 'accelerators' and managed services on top of someone else's platform \u2014 people and hours plus another vendor's product, which is also Rule 1 territory. No named software of its own licensed to agencies."
+  },
+  {
+   "name": "Cotiviti",
+   "verdict": "supplier",
+   "website": "https://www.cotiviti.com",
+   "description": "Payment accuracy, risk adjustment and quality analytics for health plans, government healthcare programs and providers.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rules 5 and 2. Payment-accuracy, risk-adjustment and quality analytics sold as an outsourced service, and the buyer is overwhelmingly health plans (commercial, MA, Medicaid MCOs) rather than a public agency. 'Government healthcare programs' here means payers administering those programs, not a system a state agency runs Medicaid on. Healthcare payer services, not govtech."
+  },
+  {
+   "name": "CSG Government Solutions",
+   "verdict": "supplier",
+   "website": "https://csgdelivers.com",
+   "description": "Program modernization consulting - project management, independent verification and validation, quality assurance and organizational change management - for state Medicaid, child welfare, child support, unemployment insurance and motor vehicle programs",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2, textbook case. Program modernization consulting \u2014 project management, IV&V, QA, organizational change management. Sells people and hours to agencies; no licensed software product of its own."
+  },
+  {
+   "name": "Databricks",
+   "verdict": "scope_review",
+   "website": "https://www.databricks.com",
+   "description": "Unified data, analytics and AI platform \u2014 ETL, data warehousing, governance and ML/GenAI application development \u2014 sold to enterprises.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named in the board's own rule as the shape of a horizontal vendor: a general data/AI/analytics platform sold to enterprises across every industry, with government as one segment. Not a call to force \u2014 queues for a person."
+  },
+  {
+   "name": "Datadog",
+   "verdict": "scope_review",
+   "website": "https://www.datadoghq.com",
+   "description": "Cloud observability, application monitoring and security SaaS for engineering and IT teams, offered to public agencies at FedRAMP High",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal observability/monitoring SaaS sold to engineering teams in every industry; FedRAMP High authorization makes it available to public agencies but does not make it a govtech product. Same shape as Splunk. Queues for a person."
+  },
+  {
+   "name": "Deloitte",
+   "verdict": "supplier",
+   "website": "https://www.deloitte.com",
+   "description": "Audit, tax and consulting firm whose Government & Public Services practice sells program integrity services that detect, monitor and investigate fraud, waste and abuse in government health programs.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2 names Deloitte explicitly. Audit/tax/consulting firm; the Government & Public Services practice sells program-integrity and transformation services \u2014 people and hours \u2014 even where it runs state programs. No named licensed product claimed."
+  },
+  {
+   "name": "Docket",
+   "verdict": "govtech",
+   "website": "https://dockethealth.com",
+   "description": "Consumer mobile and web app that pulls official immunization records out of state immunization registries for residents, sold to state and local public health agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named product: Docket (immunization records platform / resident-facing IIS portal and mobile app). Survives challenge. Rule 5 is the one to test here and it passes on the buyer test: the contracting customer is a public health authority, not a hospital or health system. docket.care lists ten agency partners (Alaska DOH, DC Health, Idaho DHW, Maine DHHS, Minnesota DOH, Missouri DHSS, New Jersey DOH, North Dakota DHHS, Utah DHHS, Wyoming DOH), each running a state-branded web app on Docket's platform layered over the state immunization registry. It is a product company, not a consultancy (Rule 2 n/a), not a reseller (Rule 1 n/a), and not employer-benefits (Rule 4 n/a - this is a system the ag",
+   "sector": "Health & Human Services",
+   "category": "Public Health"
+  },
+  {
+   "name": "Dun & Bradstreet, Inc.",
+   "verdict": "scope_review",
+   "website": "https://www.dnb.com/SLED",
+   "description": "Business identity, risk and local-economy data and analytics sold to state and local government agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal commercial data and analytics business \u2014 business identity, credit and risk data sold to every industry \u2014 with a /SLED landing page for its government vertical. Selling the same data assets to agencies among everyone else is the Databricks/Splunk shape, not a purpose-built govtech product. Queues for a person."
+  },
+  {
+   "name": "Edifecs",
+   "verdict": "scope_review",
+   "website": null,
+   "description": "",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 6 on the record as given: no site and no description on file, so nothing in the intake justifies a card. What public material shows is a healthcare interoperability software vendor (EDI, encounter and enrollment management, FHIR) whose core customers are commercial health plans \u2014 reportedly all national plans and most of the top 25 commercial payers \u2014 with state Medicaid agencies as one vertical among them. That is the horizontal-sells-to-government-too shape, and it is now under Cotiviti. Not earned as govtech; a person should confirm whether the state Medicaid module business is the rea"
+  },
+  {
+   "name": "Elyon",
+   "verdict": "supplier",
+   "website": "https://www.elyonstrategies.com",
+   "description": "Public sector modernization consulting plus the CADET AI government-transformation platform, sold to state health and human services, Medicaid and child welfare agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2, and the named-product exception does NOT rescue it. Site checked: Elyon Strategies is a management consulting firm (enterprise architecture, program management, OCM, executive coaching) for state HHS, Medicaid and child welfare clients. CADET is presented as a 'Government Transformation Intelligence' tool used inside their consulting delivery, not a standalone product licensed to agencies. Consulting engagement with an AI tool attached is still people and hours."
+  },
+  {
+   "name": "Envision Technology Partners, Inc.",
+   "verdict": "govtech",
+   "website": "https://www.inductivehealth.com/webiz/",
+   "description": "WebIZ immunization information system for state and local immunization registries, now sold as part of InductiveHealth's public health platform.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named product: WebIZ. Survives challenge. Rule 2 is the real risk - the company self-describes as a 'public health software development and consulting firm' - but this is precisely Rule 2's named-product exception, and the product is the business rather than a side-line to billable hours: WebIZ is a licensed SaaS immunization information system running the registries of 20+ CDC IIS awardee jurisdictions (state, local and tribal public health agencies), listed as a SaaS offer on Microsoft Marketplace, and Envision is the largest data contributor to CDC's IZ Gateway. Rule 5 passes on the buyer test - the customer is ",
+   "sector": "Health & Human Services",
+   "category": "Public Health"
+  },
+  {
+   "name": "Epic",
+   "verdict": "supplier",
+   "website": "https://www.epic.com/",
+   "description": "Electronic health record and healthcare software used by academic medical centers, community hospitals, independent practices and payers.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 5 is written for exactly this case: an EHR sold to academic medical centers, community hospitals, independent practices and payers is healthcare IT, not government technology. The buyer is a health system, not a public agency, even when that health system is publicly affiliated."
+  },
+  {
+   "name": "Equifax",
+   "verdict": "scope_review",
+   "website": "https://www.equifax.com",
+   "description": "Consumer credit bureau whose The Work Number service sells instant income and employment verification to state agencies determining SNAP, Medicaid and TANF eligibility",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "A consumer credit bureau whose core business is horizontal \u2014 credit and employment data sold to lenders, employers and everyone else. The Work Number reaching state SNAP/Medicaid eligibility offices is a government vertical on a horizontal data asset, the same shape as Dun & Bradstreet. Queues for a person rather than a public card."
+  },
+  {
+   "name": "EXL Health",
+   "verdict": "supplier",
+   "website": "https://www.exlservice.com/industries/health-and-life-sciences",
+   "description": "Healthcare data, analytics and operations services \u2014 payment integrity, clinical services and risk-adjustment coding \u2014 for health plans, provider organizations and life sciences companies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rules 2 and 5. Data, analytics and operations services \u2014 payment integrity, clinical services, risk-adjustment coding \u2014 delivered as outsourced operations, and the buyers are health plans and provider organizations, not public agencies. Services business, healthcare payer market."
+  },
+  {
+   "name": "EY",
+   "verdict": "supplier",
+   "website": "https://www.ey.com/en_us",
+   "description": "Audit, tax and consulting firm whose government and public sector practice advises agencies on program transformation and operations",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2, same class as Deloitte and KPMG. Audit, tax and consulting firm; the government and public sector practice advises agencies on program transformation and operations. Sells people and hours, no named licensed product."
+  },
+  {
+   "name": "Oracle Health",
+   "verdict": "scope_review",
+   "website": "https://www.oracle.com/health/",
+   "description": "Oracle's cloud healthcare line - EHR, revenue cycle and health data platforms - sold to providers, payers and public health organizations.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 5 plus the horizontal shape. Oracle Health (Cerner) is a real product company, but its EHR, revenue-cycle and health-data platforms are sold overwhelmingly to hospitals, health systems and payers, with public health agencies as one buyer among many \u2014 healthcare IT, not government technology. That is the Databricks/Google shape: too horizontal to earn a public card, too much of a product company to bury as a supplier. Queue it for a person."
+  },
+  {
+   "name": "Peraton",
+   "verdict": "supplier",
+   "website": "https://www.peraton.com",
+   "description": "Mission technology and IT services \u2014 cyber, cloud, digital, engineering \u2014 for U.S. defense, intelligence, homeland security and federal health agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2, and named in it by name. Peraton sells mission IT services, engineering and staff hours to federal defense, intelligence, homeland security and health agencies. No licensed product, and the buyer is federal rather than SLED besides."
+  },
+  {
+   "name": "Performant, a Machinify company",
+   "verdict": "supplier",
+   "website": "https://www.performantcorp.com",
+   "description": "Technology-enabled healthcare payment integrity - claims audit, eligibility and coordination of benefits, data mining and recovery analytics - for health plans, managed Medicaid plans and government agencies including the CMS RAC program",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2 \u2014 a technology-enabled services business, not a product company. Its own site describes contract audit, eligibility, recovery and data-mining engagements (Audit Advantage, TPL Advantage, Recovery Advantage) rather than software licensed to an agency, and the buyers are commercial and Blues health plans, CMS RAC work, and managed Medicaid plans \u2014 payer-side payment integrity, not a system a state agency runs its programme on."
+  },
+  {
+   "name": "Progress Software",
+   "verdict": "scope_review",
+   "website": "https://www.progress.com",
+   "description": "Application development, data platform (MarkLogic, Semaphore) and infrastructure management software for enterprises, sold to government through a Federal Solutions unit.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal enterprise software \u2014 app dev tooling, MarkLogic/Semaphore data platform, infrastructure management \u2014 sold to every industry, with a federal arm as one channel. Government is a customer segment, not the product's purpose. Queue for a person."
+  },
+  {
+   "name": "Public Consulting Group",
+   "verdict": "supplier",
+   "website": "https://publicconsultinggroup.com",
+   "description": "Public sector management consulting and operations improvement for state health, education and human services agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2, named in it explicitly. PCG sells management consulting and operations-improvement hours to state health, education and human services agencies. Deep public-sector revenue does not make it a product company."
+  },
+  {
+   "name": "Public Knowledge",
+   "verdict": "supplier",
+   "website": "https://pubknow.com",
+   "description": "Management and IT consulting - systems, programs, people and Medicaid IV&V - for government health, human services, child support and child welfare agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2. Management and IT consulting for HHS, child support and child welfare agencies, including Medicaid IV&V \u2014 IV&V is by definition an independent services engagement, not a licensed product. People and hours."
+  },
+  {
+   "name": "Pulselight",
+   "verdict": "govtech",
+   "website": "https://www.pulselight.com/",
+   "description": "AI analytics and case management for fraud, waste and abuse detection and electronic visit verification in Medicaid and other health and human services programs.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named product: Aura, Torch and Trace. Survives the challenge. I pushed on Rule 2 and Rule 5 and it clears both. Rule 2 (consultancy): the reviewer's named products were not in any local intake record \u2014 /Users/wyethwest/govtech-dock/data/proposed_hhs_cards.json and proposed_hhs_cards_4.json contain no 'Aura', 'Torch' or 'Trace' \u2014 so I treated the claim as unsupported and fetched pulselight.com directly. The live site confirms all three as named cloud products of a SaaS company, explicitly not a consulting firm: Aura (HHS analytics and incident management), Torch (fraud, waste and abuse) and Trace (EVV analytics against 'EVV, Medica",
+   "sector": "Health & Human Services",
+   "category": "Benefits & Medicaid Systems"
+  },
+  {
+   "name": "PwC",
+   "verdict": "supplier",
+   "website": "https://www.pwc.com/us/en.html",
+   "description": "Audit, assurance, tax and consulting firm whose Health Industries practice advises healthcare, pharmaceutical, life sciences and medical device organizations",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2, named in it. Audit, tax and advisory hours; the Health Industries practice advises healthcare, pharma and device organizations. No product, and the described buyer is not even a government agency."
+  },
+  {
+   "name": "Qlarant",
+   "verdict": "supplier",
+   "website": "https://www.qlarant.com",
+   "description": "Fraud, waste and abuse investigation, quality improvement and predictive risk analytics (the RIViR suite) for government health, human services, drug pricing and insurance programs.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rules 2 and 3 together. Qlarant, Inc. is a not-for-profit parent (formerly Delmarva Foundation) whose business is program-integrity investigation and quality-improvement engagements for CMS, VA and state agencies through Qlarant Integrity Solutions and Qlarant Quality Solutions. The RIViR suite is real and named, but it is marketed as the analytics platform underpinning those service contracts rather than software an agency licenses and runs itself \u2014 not enough to earn a public card. Reopenable if someone confirms standalone RIViR licensing to states."
+  },
+  {
+   "name": "Rubrik",
+   "verdict": "scope_review",
+   "website": "https://www.rubrik.com",
+   "description": "Backup, data security and cyber-recovery platform for enterprise and government data estates.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal infrastructure \u2014 backup, data security and cyber-recovery for any enterprise data estate, government included. Exactly the Splunk shape. Queue for a person."
+  },
+  {
+   "name": "SAS",
+   "verdict": "scope_review",
+   "website": "https://www.sas.com/en_us/home.html",
+   "description": "Analytics, data management and AI software (SAS Viya), including fraud and compliance applications, sold to public sector, health care and commercial customers.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal analytics and AI software (Viya) sold across commercial, healthcare and public sector alike. The fraud and compliance applications have genuine state-agency traction, but the company is not a govtech product company \u2014 it is a general analytics vendor with a public sector vertical. Queue for a person."
+  },
+  {
+   "name": "School of Lunch",
+   "verdict": "supplier",
+   "website": "https://schooloflunch.com",
+   "description": "Multi-day culinary training academy, school-food consulting and change toolkits helping school lunch programs and families move to scratch-cooked, nutrient-dense meals",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "A services and training business, not a product company. It sells a multi-day culinary training academy, school-food consulting and change toolkits \u2014 hours, curriculum and coaching delivered to district nutrition programs. K-12 buyer, but nothing licensed or operated as software."
+  },
+  {
+   "name": "SecureCare",
+   "verdict": "scope_review",
+   "website": null,
+   "description": "",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 6 \u2014 no site on file, no description, and the name is shared by several unrelated companies (hospice document-management software, a dental benefits carrier, home-care services). I cannot tell what they sell and will not invent it. Needs a human to identify the entity before it can be ruled."
+  },
+  {
+   "name": "ServiceNow",
+   "verdict": "scope_review",
+   "website": "https://www.servicenow.com",
+   "description": "Enterprise workflow and AI platform, including Public Sector Digital Services and IT asset and field service management for government agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal enterprise workflow and AI platform whose core market is the Fortune 500; Public Sector Digital Services is one vertical packaging of the same platform. Government among everyone else \u2014 the textbook scope_review shape. Queue for a person."
+  },
+  {
+   "name": "Shift Technology",
+   "verdict": "supplier",
+   "website": "https://www.shift-technology.com",
+   "description": "AI decisioning agents for insurance claims - fraud and risk, coverage and liability, subrogation - plus healthcare payment integrity, sold to insurers and health plans.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "A product company, but the buyer is wrong: AI decisioning for claims fraud, coverage, liability and subrogation is sold to insurance carriers and health payers, not to state, local or education agencies. Not govtech, and not horizontal-with-government-among-the-buyers either, so it goes to suppliers rather than the review queue."
+  },
+  {
+   "name": "SmartLight Analytics",
+   "verdict": "supplier",
+   "website": "https://www.smartlightanalytics.com",
+   "description": "Continuous claims monitoring and clinical review that finds waste, billing errors and overpayments in medical, pharmacy and dental claims for self-funded plan sponsors.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 4, the employer-benefits cut, almost verbatim. It monitors medical, pharmacy and dental claims for self-funded plan sponsors \u2014 when a city or district buys this, it buys as an employer watching its own health plan spend, not as an agency running a public programme."
+  },
+  {
+   "name": "InterSystems",
+   "verdict": "scope_review",
+   "website": "https://www.intersystems.com",
+   "description": "IRIS data platform and HealthShare health information exchange software for healthcare providers, payers and government agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal data-platform vendor. IRIS is a general-purpose database and interoperability platform sold across healthcare, financial services and industry; HealthShare is sold to providers, payers and some state HIEs/public health agencies alike. Sells to government among everyone else \u2014 the Databricks/Splunk shape. Queue for a person rather than force a call."
+  },
+  {
+   "name": "IronBridge",
+   "verdict": "supplier",
+   "website": "https://www.ironbridgecorp.com",
+   "description": "Healthcare data integration (Pub Hub) connecting EHR vendors, pharmacies, laboratories and hospitals to public health systems for vaccine management and electronic reporting.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 5, buyer test. Pub Hub is a real named product \u2014 a public health clearinghouse connected to every state immunization registry \u2014 but the paying customers are EHR vendors, pharmacies, laboratories, hospitals and long-term care (Epic, PracticeFusion, Azalea Health, PathGroup are cited clients). Providers buy it to meet their own reporting obligations; the public health agency is the destination of the data, not the customer. Health IT sold to private healthcare, not govtech. Worth reopening if they ever sell the registry side to states directly."
+  },
+  {
+   "name": "J. Michael Consulting",
+   "verdict": "supplier",
+   "website": "https://www.jmichael-consulting.com/",
+   "description": "Public health informatics consulting \u2014 laboratory informatics, HL7/FHIR data exchange, epidemiology, data science and project management \u2014 for public health agencies and their laboratories.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2, and the exception does not apply. Sells public health informatics consulting \u2014 laboratory informatics, HL7/FHIR data exchange, epidemiology, data science, project management and training. The only named software on their site is Rhapsody, a third-party integration engine they teach a course about rather than license. Revenue is consulting hours."
+  },
+  {
+   "name": "Jama Software",
+   "verdict": "scope_review",
+   "website": "https://www.jamasoftware.com",
+   "description": "Jama Connect requirements management, traceability and risk software for engineering teams in regulated industries, including government and public service programs",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal product. Jama Connect is requirements management and traceability for engineering teams in regulated industries \u2014 aerospace, medical devices, automotive, semiconductors \u2014 with government and public sector as one vertical among many. A real product company, but not one whose product is sold to SLED agencies as such. Queue for a person."
+  },
+  {
+   "name": "KPMG",
+   "verdict": "supplier",
+   "website": "https://kpmg.com/us/en.html",
+   "description": "Audit, tax and advisory firm with a Government and Public Sector practice advising federal, state and local agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2, named explicitly in the rule. Audit, tax and advisory firm selling people and hours; the Government and Public Sector practice advises agencies but does not license a product to them."
+  },
+  {
+   "name": "Kunz, Leigh & Associates (KL&A)",
+   "verdict": "supplier",
+   "website": "https://kunzleigh.com/",
+   "description": "Custom software for state agencies: WIC management information systems, Medicaid third-party-liability modules, FOIA request management and government mass notification.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2, and the closest call in this batch. They do build systems state agencies run programmes on \u2014 a WIC MIS with a Vendor Management module, Medicaid third-party-liability modules, FOIA request management, and MiCaRS serving 16 State of Michigan agencies. But their own homepage brands them a Custom Software Development Company selling custom software development, mobile app development and professional consulting, and I could not confirm a distinct product brand licensed across multiple states (their WIC page failed TLS verification). A bespoke development shop, not a product company. Torn "
+  },
+  {
+   "name": "Leidos",
+   "verdict": "supplier",
+   "website": "https://www.leidos.com",
+   "description": "Systems integration and IT services across defense, intelligence, homeland, energy infrastructure and health, sold primarily to US federal government customers.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2, same kind as GDIT and Peraton which the rule names. Systems integration and IT services across defense, intelligence, homeland, energy and health, sold primarily to US federal agencies. Sells people and hours, and the buyer is mostly federal rather than SLED."
+  },
+  {
+   "name": "MedImpact",
+   "verdict": "supplier",
+   "website": "https://www.medimpact.com",
+   "description": "Independent pharmacy benefit manager for commercial health plans, government health programs and self-insured employer groups.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 4, the employer-benefits cut. An independent pharmacy benefit manager serving commercial health plans, self-insured employers and government health programs. A PBM administers drug benefits for a plan; it is not a system a government agency runs its programmes on. PBMs are supplier by rule."
+  },
+  {
+   "name": "MedReview",
+   "verdict": "supplier",
+   "website": "https://www.medreview.us",
+   "description": "Physician-led payment integrity - DRG coding and clinical validation review, hospital bill audits, readmission review - plus HEDIS/QARR and Medicaid managed care quality assessments for health plans and government agencies",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Services business. Physician-led payment integrity \u2014 DRG coding and clinical validation review, hospital bill audits, readmission review \u2014 plus HEDIS/QARR reporting. Clinicians reviewing claims on behalf of payers is expert-hours work, not a licensed system, even where a state Medicaid programme is the client."
+  },
+  {
+   "name": "Morgan & Morgan",
+   "verdict": "supplier",
+   "website": null,
+   "description": "",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Law firm. No site or description on file, but the name is the national personal-injury plaintiffs' firm \u2014 nothing about it is a technology product, and law firms are supplier by rule. This is exactly the company that must not land on a public job board for government technology sales roles."
+  },
+  {
+   "name": "Myers & Stauffer",
+   "verdict": "supplier",
+   "website": "https://myersandstauffer.com/",
+   "description": "Medicaid audit and payment-integrity services - provider cost audits, claims and eligibility reviews, estate recovery, managed care audits - for state health and human services agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2 and the accounting/audit-firm clause. A CPA firm selling Medicaid audit and payment-integrity services \u2014 provider cost audits, claims and eligibility reviews, estate recovery, managed care audits \u2014 to state agencies. Sells hours and audit opinions, not software."
+  },
+  {
+   "name": "NCCI",
+   "verdict": "supplier",
+   "website": "https://www.ncciservices.com",
+   "description": "Unannounced pre- and post-enrollment provider site visits and field inspections for state Medicaid agencies and CMS contractors, alongside collateral and occupancy inspections for lenders and insurers.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Services business. Sells unannounced pre- and post-enrollment provider site visits and field inspections to state Medicaid agencies and CMS contractors \u2014 fieldwork performed by people, plus collateral services. A real and relevant government contractor, but the deliverable is labor, not a product agencies license. (Note: this is ncciservices.com, not the workers-comp rating bureau of the same initials.)"
+  },
+  {
+   "name": "North Highland",
+   "verdict": "supplier",
+   "website": "https://www.northhighland.com",
+   "description": "Management and technology consulting - data and systems modernization, transformation management and workforce optimization - for state health and human services agencies and other public sector clients",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2. Management and technology consulting \u2014 data and systems modernization, transformation management, workforce optimization \u2014 for state health and human services and other agencies. Sells consultants and hours; no named licensed product."
+  },
+  {
+   "name": "NTT DATA",
+   "verdict": "supplier",
+   "website": "https://us.nttdata.com/en/industries/public-sector/government-consulting-and-advisory",
+   "description": "IT modernization, cloud, cybersecurity, application and consulting services for federal, state and local government and education agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2. The cited page is their government consulting and advisory practice, and the offering is entirely services: IT modernization, cloud, cybersecurity, application development and consulting for federal, state, local and education. A systems integrator selling people and hours, the GDIT/Accenture shape."
+  },
+  {
+   "name": "Optimoz",
+   "verdict": "scope_review",
+   "website": "https://optimoz.com",
+   "description": "Optimoz AI, an enterprise platform for building, running and governing autonomous AI agents, sold to federal government, healthcare, higher education and enterprise customers.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal product, and thin evidence of a SLED buyer. Optimoz AI is positioned as an Enterprise Agentic AI Operating System for building, running and governing autonomous agents, with the pitch aimed at regulated enterprise deployment (HIPAA, SOC 2, data sovereignty, on-prem) across federal government, healthcare, higher education and commercial. Federal-leaning and sells to everyone; also historically a DevSecOps services firm, so what they now sell is genuinely ambiguous. Queue for a person."
+  },
+  {
+   "name": "Optum",
+   "verdict": "scope_review",
+   "website": "https://www.optum.com/",
+   "description": "Health services, analytics and program administration for government health programs, sold to state government agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal healthcare giant, not a govtech product company. The UnitedHealth Group services arm sells to commercial health plans, employers, providers and government programmes alike, and much of the government-facing work is program administration and analytics services plus OptumRx, a PBM that Rule 4 excludes. There is arguably some agency-programme system work in the mix, which is exactly why this should not be forced either way. Queue for a person."
+  },
+  {
+   "name": "4L Data Intelligence",
+   "verdict": "supplier",
+   "website": "https://4ldata.com",
+   "description": "Integr8 AI payment integrity, provider data accuracy and SIU investigation software for health plans, TPAs, self-insured employers and Medicare and Medicaid plans",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rules 4 and 5. Real product company (Integr8 AI, 4L Provider Intelligence, SIU Hub, Investig8 AI), but its own site names the audience as \"health plans, TPAs, self-insureds, workers comp, Medicare and Medicaid plans\" \u2014 commercial payers, third-party administrators and self-insured employers, plus managed-care plans. The buyer is a payer or an employer, not a public agency running its own program, so it is payer software, not govtech."
+  },
+  {
+   "name": "Accenture",
+   "verdict": "supplier",
+   "website": "https://www.accenture.com/us-en",
+   "description": "Global technology consulting and systems integration, with a public sector practice selling to federal, state and local government agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2, named in the rule itself. Global consulting and systems integration \u2014 sells people and hours to agencies through a public sector practice; no named software product licensed to SLED agencies is claimed."
+  },
+  {
+   "name": "AHIP (America\u2019s Health Insurance Plans)",
+   "verdict": "supplier",
+   "website": "https://www.ahip.org",
+   "description": "Trade association for health insurance providers that sells online self-study courses, professional designations and continuing education - including Medicare fraud, waste and abuse training - to health plan and agency staff.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 3. A trade association for health insurers selling courses, designations and continuing education. Not a vendor of anything a government agency runs on."
+  },
+  {
+   "name": "Alivia Analytics",
+   "verdict": "govtech",
+   "website": "https://www.aliviaanalytics.com",
+   "description": "AI-driven fraud, waste and abuse detection and payment integrity (Alivia 360) for state Medicaid agencies and commercial health plans.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named product: Alivia 360 (FWA Claims Manager, FWA Finder, Alivia Case Manager). Survives the challenge on rule 4's stated exception, and now on verified contracts rather than positioning. State Medicaid agencies are the direct contracting buyer: Colorado HCPF contract 24-186512 for BIDM/Program Integrity ($11,139,336.50, SFY2025-2029), a Nebraska DAS solicitation response, Alabama Medicaid RAC effective 2024-10-01, plus Utah OIG, Missouri Medicaid Audit & Compliance and Wyoming DOH; they exhibit at MESC and NAMPI, both Medicaid-agency venues. The product is named licensed software (Alivia 360 with FWA Claims Manager, FWA Finder, Case Manager) run by the agency on its own ",
+   "sector": "Health & Human Services",
+   "category": "Benefits & Medicaid Systems"
+  },
+  {
+   "name": "Alliant Health Solutions",
+   "verdict": "supplier",
+   "website": "https://www.allianthealth.org",
+   "description": "Nonprofit quality improvement, care management and program integrity services for state Medicaid agencies and federal health programs.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rules 2 and 3 together. A nonprofit selling quality improvement, care management and program integrity services \u2014 staff and hours under federal/state health program contracts \u2014 not a licensed software product."
+  },
+  {
+   "name": "Argyle",
+   "verdict": "scope_review",
+   "website": "https://argyle.com",
+   "description": "Consumer-permissioned income, employment and asset verification APIs for mortgage and consumer lenders, tenant and background screeners, and government benefit-eligibility programs",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal vendor, the Databricks/Snowflake shape. Argyle's consumer-permissioned verification platform is sold across six industries \u2014 mortgage, tenant screening, personal lending, background check, gig economy, and government benefits. Government is one segment among many, so it queues for a person rather than being forced onto the board."
+  },
+  {
+   "name": "athenahealth",
+   "verdict": "supplier",
+   "website": "https://www.athenahealth.com/",
+   "description": "Cloud EHR, practice management, medical billing and patient engagement software and services for ambulatory medical practices.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 5. Cloud EHR, practice management and revenue cycle for ambulatory medical practices \u2014 the buyer is a private physician group or health system, not a public agency. Healthcare IT, not government technology."
+  },
+  {
+   "name": "Atlantic Management Center, Inc.",
+   "verdict": "govtech",
+   "website": "https://www.syntropisolutions.com",
+   "description": "Syntropi, modular cloud software that automates immunization provider enrollment and daily workflows alongside a state's immunization information system, sold to state public health departments.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named product: Syntropi. This was the ruling most exposed to rule 2, so I checked the product claim rather than accepting it, and it holds up independently. Syntropi is not a brochure claim: Texas DSHS runs it live at enrolltexasiz.dshs.texas.gov, branded 'Syntropi v6.0 - IDx Management System' with an 'AMCI Health Informatics' copyright footer, handling ImmTrac2 registry access and Texas Vaccines for Children / Adult Safety Net provider enrollment; the same product is deployed at calredie-ecr-registration.com (California) and cophr.com. AIRA's immunization-registry product directory lists Syntropi as 'AMCI's propriet",
+   "sector": "Health & Human Services",
+   "category": "Public Health"
+  },
+  {
+   "name": "Audacious Inquiry",
+   "verdict": "supplier",
+   "website": "https://ainq.com/",
+   "description": "Health IT standards, solution engineering and public health data exchange for federal and state health agencies, now trading as AINQ under PointClickCare.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2. AINQ's own site describes health IT standards work, solution engineering and project-based public health data exchange work for federal and state agencies, and names no proprietary product it licenses to those agencies. It is now a unit of PointClickCare. Services firm, no named product to claim, so no exception applies."
+  },
+  {
+   "name": "Beam",
+   "verdict": "scope_review",
+   "website": null,
+   "description": "",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 6. No site and no description on file, and \"Beam\" is a name shared by several unrelated companies \u2014 a public benefits administration platform, an employer dental benefits carrier, an EV-charging equipment maker. I will not invent a product, and the govtech reading is the one that would put it on the public board, so this goes to a person."
+  },
+  {
+   "name": "BerryDunn",
+   "verdict": "supplier",
+   "website": "https://berrydunn.com",
+   "description": "Accounting and management consulting firm whose Medicaid practice sells MES modernization planning, PMO and system-implementation support, and data and IT governance to state Medicaid agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2, named in the rule itself. An accounting and management consulting firm; its Medicaid practice sells MES modernization planning, PMO and implementation support \u2014 hours, not a licensed product."
+  },
+  {
+   "name": "Carahsoft Technology Corp",
+   "verdict": "supplier",
+   "website": "https://www.carahsoft.com",
+   "description": "Government IT distributor that resells other vendors' software, cloud, cybersecurity and AI products to federal, state and local government, education and healthcare buyers through contract vehicles.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 1, named in the rule itself. A government IT distributor reselling other vendors' software, cloud and cybersecurity products. The reseller is not the product, however much SLED revenue it carries."
+  },
+  {
+   "name": "Celonis",
+   "verdict": "scope_review",
+   "website": "https://www.celonis.com",
+   "description": "Process mining and process intelligence software that shows how business processes actually run, sold to large enterprises and to state government.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named in the prompt as the scope_review shape. Process mining and process intelligence sold to large enterprises generally, with state government as one buyer among many. Queues for a person."
+  },
+  {
+   "name": "Claritev",
+   "verdict": "supplier",
+   "website": "https://www.claritev.com",
+   "description": "Healthcare cost-management data services - reference-based pricing, itemized bill review, claim negotiation and provider networks - for health plans, TPAs, employers and government health networks.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rules 4 and 5. Healthcare cost-management services \u2014 reference-based pricing, itemized bill review, claim negotiation, rented provider networks \u2014 sold to health plans and employers. A services business on the payer/benefits side, not a system an agency runs its programs on."
+  },
+  {
+   "name": "Cloudera",
+   "verdict": "scope_review",
+   "website": "https://www.cloudera.com",
+   "description": "Hybrid data and AI platform \u2014 data lakehouse, streaming, warehousing and machine learning \u2014 sold to enterprises, with public sector as one named industry.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Horizontal data and AI platform (lakehouse, streaming, warehousing, ML) sold to enterprises across all industries, with public sector as one named vertical. Exactly the Databricks/Snowflake shape, so it queues rather than being forced onto the board."
+  },
+  {
+   "name": "Codoxo",
+   "verdict": "govtech",
+   "website": "https://www.codoxo.com",
+   "description": "Generative-AI payment integrity, fraud-waste-and-abuse detection, provider education and audit case management for healthcare payers, PBMs and state and federal agencies",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named product: Fraud Scope, Audit Scope, Provider Scope, Payment Scope, ClaimPilot. Survives on rule 4's exception. Codoxo is a software company, not a consultancy: named SaaS modules (Fraud Scope, Audit Scope, Provider Scope, Payment Scope, ClaimPilot) under a dedicated 'State & Federal Agencies' market segment. The government buyer is direct and documented - their state Medicaid case study describes 'the Program Integrity unit within this fee-for-service state Medicaid agency' implementing the Fraud Scope platform, and Georgia's Department of Community Health, the state Medicaid agency, co-presented with them at NAMPI 2026 on AI in Medicaid fraud investigations. Sold to a s",
+   "sector": "Health & Human Services",
+   "category": "Benefits & Medicaid Systems"
+  },
+  {
+   "name": "Federal Hearings and Appeals Services",
+   "verdict": "supplier",
+   "website": "https://www.fhas.com",
+   "description": "URAC-accredited independent medical review, appeals management, independent dispute resolution and administrative hearings and adjudication for state and federal health agencies, health plans and government contractors.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2 (services business, not a product company). FHAS sells outsourced adjudication labor to state agencies and payers \u2014 URAC-accredited independent medical review, appeals management, IDR and administrative hearing officers. The deliverable is reviewers and hearings, billed as cases/hours; no licensed software product is offered to agencies."
+  },
+  {
+   "name": "GDIT",
+   "verdict": "supplier",
+   "website": "https://www.gdit.com/",
+   "description": "IT services and systems integration for government, including Medicaid claims processing and state health plan marketplace operations for state and local agencies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2 names GDIT explicitly. IT services and systems integration sold to government \u2014 they staff and operate Medicaid claims processing and state marketplace operations under contract, but they sell people and hours, not a licensed product. Running a state's Medicaid program does not convert an SI into a product company."
+  },
+  {
+   "name": "Genesys",
+   "verdict": "scope_review",
+   "website": "https://www.genesys.com",
+   "description": "Cloud contact-center and customer-experience software (Genesys Cloud CX) sold across industries including government and healthcare.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Textbook horizontal vendor \u2014 Genesys Cloud CX is contact-center/CX software sold to banks, retailers, airlines and healthcare, with government as one vertical among many. Same shape as Splunk or Snowflake in the rule text, so it queues for a person rather than getting forced onto the board."
+  },
+  {
+   "name": "Google",
+   "verdict": "scope_review",
+   "website": "https://publicsector.google",
+   "description": "Cloud infrastructure, AI and security sold to government agencies and education institutions through Google Public Sector.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Named in the rule as the shape of a horizontal vendor. Google Public Sector is a go-to-market arm for cloud, AI and security products built for every industry, not a product whose buyer is a SLED agency. Queues for a human."
+  },
+  {
+   "name": "Harmony Healthcare IT",
+   "verdict": "scope_review",
+   "website": "https://www.harmonyhit.com",
+   "description": "Legacy clinical and business data archiving, EHR migration and managed-care oversight workflows for hospitals, health systems and state agency programs.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "A real product company (HealthData Archiver, Convergence, HealthData AR Manager) but the buyer is overwhelmingly hospitals and health systems \u2014 550+ healthcare clients \u2014 which is healthcare IT, not govtech, under rule 5. They do have a genuine state-agency line: Medicaid Legacy Data Management on Convergence, deployed at TennCare, listed through Carahsoft. Sells to government among everyone else, so a person should size that public-sector line rather than me forcing a public card."
+  },
+  {
+   "name": "Healthcare Fraud Shield",
+   "verdict": "supplier",
+   "website": "https://www.hcfraudshield.com",
+   "description": "Pre- and post-payment fraud, waste, abuse and error detection and payment integrity software (the HCFSPlatform) for health insurers' payment integrity and special investigation unit teams.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Product company (HCFSPlatform \u2014 PreShield, PostShield, AIShield, CaseShield, RxShield) but the buyer is health insurers' payment integrity and SIU teams, including Medicaid MCOs \u2014 payers, not agencies. Site markets to 'top commercial payers'; state exposure is only that plans report to states. Payer-side FWA software fails rule 5's buyer test."
+  },
+  {
+   "name": "HealthEdge",
+   "verdict": "supplier",
+   "website": "https://healthedge.com",
+   "description": "SaaS for health plans \u2014 claims administration, prospective payment integrity, provider data management, care management and member engagement.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "SaaS whose customer is the health plan \u2014 claims administration, payment integrity, provider data, care management, member engagement. Plans and MCOs are not state, local or education agencies, so this is payer IT rather than a system an agency runs its own programme on (rules 4 and 5)."
+  },
+  {
+   "name": "HealthTech Solutions",
+   "verdict": "supplier",
+   "website": "https://healthtechsolutions.com",
+   "description": "Medicaid systems modernization and integration, MITA/MECT certification support, program management, data warehouse and grant management consulting for state and federal health and human services agencies",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2 consultancy. Medicaid modernization and integration, MITA/MECT certification support, EPMO and program management, policy and grant consulting \u2014 300+ consultants selling hours to state agencies. No named licensed product surfaced (their site describes an unnamed 'modular cloud-based platform'), and they were acquired in March 2026 by Health Management Associates, itself a consulting firm. The rule 2 exception does not apply because I cannot name a product."
+  },
+  {
+   "name": "HLN Consulting",
+   "verdict": "supplier",
+   "website": "https://www.hln.com",
+   "description": "Public health informatics consulting and the open-source ICE immunization evaluation and forecasting engine for state and local public health agencies and immunization information systems",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Closest call in the batch, and it still lands supplier. The buyer is right \u2014 state and local public health agencies \u2014 and there is a named piece of software, the ICE immunization evaluation and forecasting engine. But ICE is open source, given away rather than licensed for fee, and HLN's revenue is public health informatics consulting and implementation services. Rule 2's exception requires a firm that licenses a named product to agencies; HLN sells the expertise around free software. Worth reopening if someone confirms a paid ICE license or hosted subscription."
+  },
+  {
+   "name": "HMS (Health Management Systems)",
+   "verdict": "scope_review",
+   "website": null,
+   "description": "",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 6 \u2014 no site and no description on file, and the name has an identity problem I should not resolve by inventing one. Health Management Systems was acquired by Gainwell in 2021 and now exists as a Gainwell brand, not a standalone employer, so a card would point at a company that no longer hires under this name. Its historic business (coordination of benefits/third-party liability, program integrity) also mixes contingency-fee recovery services with software and serves commercial payers and MCOs alongside state Medicaid agencies. A person should decide which entity is being proposed before a"
+  },
+  {
+   "name": "HSITAG",
+   "verdict": "supplier",
+   "website": "https://hsitag.org/",
+   "description": "Non-profit 501(c)(6) trade association of human services IT vendors that runs monthly member meetings and educational outreach on human services program delivery in government.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 3, no ambiguity. A 501(c)(6) trade association of human services IT vendors running member meetings and educational outreach. It represents vendors rather than selling anything to agencies."
+  },
+  {
+   "name": "IMO Health",
+   "verdict": "supplier",
+   "website": "https://www.imohealth.com",
+   "description": "Clinical terminology, coding and data-normalization products that turn clinical documentation into structured data, sold to health systems, life sciences and health tech companies.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Clinical terminology, coding and data-normalization products sold to health systems, EHR vendors, payers and life sciences companies. Real product, wrong buyer \u2014 no public agency in the customer set, which is exactly the healthcare-IT-is-not-HHS case in rule 5."
+  },
+  {
+   "name": "InComm Healthcare",
+   "verdict": "supplier",
+   "website": null,
+   "description": "",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "No description on file, but the business is unambiguous from their own site: OTC/healthy-foods supplemental benefit cards and wellness rewards (Dual Network Benefit Card, OTC Network) sold to Medicare Advantage plans and Medicaid MCOs. The customer is a health plan administering member benefits, not an agency running a programme system \u2014 the rule 4 benefits cut, plus a retail payments network rather than govtech."
+  },
+  {
+   "name": "Infosys Public Services",
+   "verdict": "supplier",
+   "website": null,
+   "description": "",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2. No description on file, but this is Infosys's US/Canada public sector subsidiary doing IT consulting, application development and systems integration for state and federal agencies \u2014 the same shape as the Accenture/Deloitte/GDIT list named in the rule. Sells people and hours."
+  },
+  {
+   "name": "Innovaccer",
+   "verdict": "scope_review",
+   "website": "https://innovaccer.com",
+   "description": "Healthcare data and AI platform (Gravity) for providers, payers and life sciences, with a public sector line selling Medicaid analytics, case management and social health information exchange to state agencies",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "A genuine product with a genuine government line \u2014 Innovaccer Gravity for Public Sector at state Medicaid agencies and California county health departments, covering CMS-64/T-MSIS reporting, contact tracing and case management. But the company is a healthcare data and AI platform whose core buyers are providers, payers and life sciences, with public sector as one expansion line. Sells to government among everyone else, so per the asymmetry it queues for a person instead of being forced onto the board."
+  },
+  {
+   "name": "Integrity Advantage",
+   "verdict": "supplier",
+   "website": "https://www.integrityadvantage.com",
+   "description": "FWA program assessments, Special Investigations Unit outsourcing, investigations, medical review and staff training for state, federal and commercial health payers.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "notes": "Rule 2 services business. FWA program assessments, outsourced Special Investigations Unit staffing, investigations, medical review and staff training for state, federal and commercial payers. Investigators, reviewers and trainers \u2014 labor, not a licensed product."
+  }
+ ]
+}
