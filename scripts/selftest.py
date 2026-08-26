@@ -2409,6 +2409,41 @@ def check_a_count_is_never_a_job_title() -> int:
             errors += fail(f"{s!r} is a real job title and the count filter "
                            f"would delete it")
 
+    # The rule must be WIRED IN, not merely present. Deleting the call site in
+    # fetch_html_titles left every assertion above passing, because they
+    # exercise the regex and not the enumerator. So the enumerator is run:
+    # a page carrying the rail must come back without it.
+    page = ("<html><body>"
+            "<a href='/jobs/view/account-executive-123'>Account Executive</a>"
+            "<a href='/jobs/view/engineer-ii-456'>Engineer II, Platform</a>"
+            "<a href='/jobs/engineer-jobs'>Engineer jobs 555,845 open jobs</a>"
+            "<a href='/jobs/bdr-jobs'>Business Development Representative jobs "
+            "52,084 open jobs</a>"
+            "</body></html>")
+
+    class _Resp:
+        text = page
+
+    real_get = ats._get
+    try:
+        ats._get = lambda *a, **k: _Resp()
+        titles = [r["title"] for r in ats.fetch_html_titles("https://x.test/jobs")]
+    except Exception as exc:
+        titles = None
+        errors += fail(f"the html enumerator threw on a normal page: {exc}")
+    finally:
+        ats._get = real_get
+
+    if titles is not None:
+        leaked = [s for s in titles if ats._JOB_COUNT.search(s)]
+        if leaked:
+            errors += fail(f"fetch_html_titles returned {leaked[0]!r}. The count "
+                           f"rule exists but is not applied in the enumerator, "
+                           f"so the rail reaches the board anyway")
+        if "Account Executive" not in titles:
+            errors += fail("fetch_html_titles dropped a real job title while "
+                           "filtering the rail")
+
     # and nothing currently on the board may trip it except the known rail
     board = json.loads((ROOT / "data" / "board.json").read_text())
     hit = [p for p in board.get("postings", [])
