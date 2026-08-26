@@ -3676,7 +3676,20 @@ function co(id){
           p.comp?`<span class="pay">${esc(payText(p.comp))}</span>`:""}</td>
         <td class="kv">${esc(FAM[p.family]||p.family)}</td>
         <td class="kv">${esc(p.location||"not stated")}</td></tr>`).join("")
-        ||'<tr><td colspan="3" class="empty">No open roles.</td></tr>'}
+        ||`<tr><td colspan="3" class="empty">${
+            /* "No open roles" is a measurement. On a company whose board we
+               never found, or could not read this run, it is a measurement
+               nobody took - and it would sit directly under a card that has
+               just said "not known", contradicting it three lines later. */
+            /* Say the RIGHT silence. A board we never found and a board we
+               could not read are different, and the card three lines up
+               already names which one this is - the table contradicting it
+               with the other would be worse than the bare zero it replaced. */
+            o.unreadable
+              ? "No roles to show &mdash; their board would not load this run, so this is not a count of zero."
+              : o.no_board_on_file
+              ? "No roles to show &mdash; we have not found where they post, so this is not a count of zero."
+              : "No open roles."}</td></tr>`}
     </tbody></table></div>
     ${/* Last, because everything above is this company's own story and the
           roles are what a visitor came for - and the roster twelve lines from
