@@ -105,14 +105,15 @@
   "note": "careers page at /careers, no ATS marker"
  },
  "quorum": {
-  "on": "2026-08-19",
+  "on": "2026-08-26",
   "found": true,
-  "note": "careers page at /careers, no ATS marker"
+  "note": "ashby:quorum, 5 posting(s) readable"
  },
  "radicl": {
-  "on": "2026-08-19",
+  "on": "2026-08-26",
   "found": true,
-  "note": "careers page at /careers, no ATS marker"
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "sentinelone": {
   "on": "2026-08-19",
@@ -2103,9 +2104,10 @@
   "weak": true
  },
  "amazon-web-services": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "andrews-technology": {
   "on": "2026-08-20",
@@ -2181,9 +2183,10 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "partake": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/en-us/about/career)",
+  "weak": true
  },
  "procore": {
   "on": "2026-08-20",
@@ -3187,12 +3190,13 @@
   "note": "no board found"
  },
  "eyeride": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "infrahub": {
-  "on": "2026-08-19",
+  "on": "2026-08-26",
   "found": false,
   "note": "no board found"
  },
@@ -4443,9 +4447,10 @@
   "note": "no board found"
  },
  "peerconnect": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  },
  "peerless-vr": {
   "on": "2026-08-20",
@@ -4502,9 +4507,10 @@
   "weak": true
  },
  "vocal-technologies-inc": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/about-us/careers/)",
+  "weak": true
  },
  "vetted-holdings": {
   "on": "2026-08-20",
@@ -4829,9 +4835,10 @@
   "note": "no board found"
  },
  "geosatis": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, says it has no openings (/en/careers/)",
+  "weak": true
  },
  "buddi": {
   "on": "2026-08-20",
@@ -5201,9 +5208,10 @@
   "note": "no board found"
  },
  "almaviva": {
-  "on": "2026-08-19",
-  "found": false,
-  "note": "no board found"
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/it_IT/Career_Day_Convivium_Padova_2026)",
+  "weak": true
  },
  "fleetwatch-by-s-a-systems-inc": {
   "on": "2026-08-20",
@@ -8697,5 +8705,208 @@
   "on": "2026-08-23",
   "found": true,
   "note": "after website saved in admin: board found: html"
+ },
+ "johnson-controls-openblue": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "workday:jci reads (37 posting(s)), but does not match 'Johnson Controls OpenBlue'; likely a parent or another company"
+ },
+ "lexisnexis-vitalchek": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "enkon-information-systems-inc": {
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/career)",
+  "weak": true
+ },
+ "ohpynez": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "systems-methods-inc": {
+  "on": "2026-08-26",
+  "found": true,
+  "note": "workday:['smiinc', 'wd108', 'smicareers'], 0 posting(s) readable"
+ },
+ "rfxpremier": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "landapp-by-landgate": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "baseline-telematics": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "bltn": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "ashby:Multitude found but unreadable (HTTP 404 for https://api.ashbyhq.com)",
+  "retry_soon": true
+ },
+ "sap-concur": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "pronesis": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "focal-forensics-redaction": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "firstnet-built-with-at-t": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "virtual-project-manager": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "govworx": {
+  "on": "2026-08-26",
+  "found": true,
+  "note": "ashby:govworx, 7 posting(s) readable"
+ },
+ "cops-training-portal": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "get-group-north-america": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "bamboohr:resources found but unreadable (HTTP 404 for https://resources.bambo)",
+  "retry_soon": true
+ },
+ "idi": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "blocked at /careers (HTTP 403)",
+  "retry_soon": true
+ },
+ "roadway-management-technologies": {
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, says it has no openings (/careers/)",
+  "weak": true
+ },
+ "govshield-inc": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "kodex": {
+  "on": "2026-08-26",
+  "found": true,
+  "note": "ashby:kodex, 5 posting(s) readable"
+ },
+ "justiceone": {
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "graph-aware-limited": {
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "police-narratives-ai": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "computer-information-systems-inc": {
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "karda-inc": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "power-dms-by-neogov": {
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "powerdms-by-neogov": {
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "sworn-inc": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "issured-mea-digital-evidence-integrity": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "schedule-express-by-safecities": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "v-armed": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "eta": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "batonroute-school-and-staff-transport-app": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "strategic-mapping": {
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers.html)",
+  "weak": true
+ },
+ "redstone-technologies-llc": {
+  "on": "2026-08-26",
+  "found": false,
+  "note": "no board found"
+ },
+ "bentley-systems": {
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/company/careers/)",
+  "weak": true
+ },
+ "onward-health": {
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  }
 }

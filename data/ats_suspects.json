@@ -546,5 +546,17 @@
   },
   "note": "paylocity:Leepfrog-Technologies-Inc reads (2 posting(s)), but does not match 'CourseLeaf'; likely a parent or another company",
   "on": "2026-08-23"
+ },
+ "johnson-controls-openblue": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "jci",
+    "wd5",
+    "JCI"
+   ]
+  },
+  "note": "workday:jci reads (37 posting(s)), but does not match 'Johnson Controls OpenBlue'; likely a parent or another company",
+  "on": "2026-08-26"
  }
 }
