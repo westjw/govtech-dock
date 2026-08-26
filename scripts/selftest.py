@@ -1986,6 +1986,29 @@ out.within = {
   farFutureExcluded: !withinDays("July 25-28, 2099", 90),
   longPastExcluded:  !withinDays("November 19-21, 2025", 90),
 };
+/* isNow marks an event running TODAY. Anchored to a range that always spans
+   the current date rather than to fixed dates, because "today" is the whole
+   point and a hard-coded case would rot the day after it was written. */
+out.now = (() => {
+  const d = new Date(); d.setHours(0,0,0,0);
+  const MON = ["January","February","March","April","May","June","July",
+               "August","September","October","November","December"];
+  const s = new Date(d), e = new Date(d);
+  s.setDate(s.getDate() - 1); e.setDate(e.getDate() + 1);
+  const span = s.getMonth() === e.getMonth()
+    ? `${MON[s.getMonth()]} ${s.getDate()}-${e.getDate()}, ${e.getFullYear()}`
+    : `${MON[s.getMonth()]} ${s.getDate()} - ${MON[e.getMonth()]} ${e.getDate()}, ${e.getFullYear()}`;
+  return {
+    spansToday:   isNow(span),
+    spanUsed:     span,
+    longPast:     isNow("November 19-21, 2025"),
+    farFuture:    isNow("July 25-28, 2099"),
+    undated:      isNow(""),
+    /* an event on today is NOT a past edition - the two markers must never
+       both appear on one row */
+    notAlsoPast:  !isPast(span),
+  };
+})();
 out.past = {
   clearlyOver:   isPast("November 19-21, 2025"),
   clearlyAhead:  isPast("July 25-28, 2099"),
@@ -2043,6 +2066,19 @@ console.log(JSON.stringify(out));
     if not within.get("longPastExcluded"):
         errors += fail("'in the next 3 months' is showing an event that "
                        "already happened")
+
+    now = got.get("now") or {}
+    if not now.get("spansToday"):
+        errors += fail(f"isNow says a conference running today "
+                       f"({now.get('spanUsed')}) is not on now")
+    for key, why in (("longPast", "an event from 2025"),
+                     ("farFuture", "an event in 2099"),
+                     ("undated", "a row with no dates")):
+        if now.get(key):
+            errors += fail(f"isNow marks {why} as running today")
+    if not now.get("notAlsoPast"):
+        errors += fail("a conference running today is ALSO marked a past "
+                       "edition; one row would carry both markers")
 
     past = got.get("past") or {}
     if not past.get("clearlyOver"):

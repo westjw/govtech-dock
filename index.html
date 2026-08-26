@@ -238,6 +238,12 @@
      upcoming event reads as an event you can still fly to. The date is true and
      the row was still lying by omission. */
   .cfwhy{font-size:12.5px;color:var(--faint);font-style:italic}
+  /* Beak, and on the BORDER only: the palette rule is that Beak is never
+     text. This is the one marker on the tab that is about today rather than
+     about the record, so it gets the one colour nothing else uses. */
+  .cfnow{font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    font-weight:700;color:var(--ink);background:transparent;padding:1px 5px;
+    border:2px solid var(--beak);white-space:nowrap}
   .cfpast{font-size:11px;letter-spacing:.06em;text-transform:uppercase;
     font-weight:700;color:var(--panel);background:var(--dim);padding:1px 5px;
     white-space:nowrap}
@@ -4341,6 +4347,8 @@ function cfRowHTML(r){
                     :`<span class="cfwhy">${esc(cfNoDates(r))}</span>`}
           ${isPast(r.dates)?`<span class="cfpast"
              title="This edition has already happened">past edition</span>`:""}
+          ${isNow(r.dates)?`<span class="cfnow"
+             title="This event is running today">on now</span>`:""}
           ${r.city?`<span class="cfmeta">${esc(r.city)}</span>`:""}
           <span class="cfnums">
             ${r.companies
@@ -4518,6 +4526,18 @@ function isPast(dates){
    Excluding those from "in the next 3 months" answers "is this happening soon?"
    with "no" on evidence we do not have - the same wrong answer as an empty
    board reading as no jobs. They stay, carrying the line that says why. */
+/* An event that is ON right now is a different fact from one that is coming
+   up, and the board could not tell them apart. Three were running the morning
+   this was written, two of them ending that day. For a seller the difference
+   is "book a flight" versus "those companies are in a room together today",
+   and the second one expires by tomorrow. */
+function isNow(dates){
+  const r=calRange(dates);
+  if(!r)return false;
+  const t=new Date(); t.setHours(0,0,0,0);
+  return r.start<=t && r.end>=t;
+}
+
 function withinDays(dates, days){
   if(!days)return true;
   const g=calRange(dates);
