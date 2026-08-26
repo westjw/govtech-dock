@@ -2607,15 +2607,20 @@ def _public(ip: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
     being slightly over-strict.
 
     BUT is_global MOVES BETWEEN PYTHON VERSIONS, and that is not a small
-    caveat - it broke the daily refresh for two days. 3.12 picked up the IANA
-    special-purpose registry and now disagrees with 3.11 about 2002::/16, and
-    about 192.31.196.0/24, 192.52.193.0/24 and 192.175.48.0/24 as well. Every
-    one of those moves in the SAFE direction, from global to not, so the gate
-    only ever gets stricter as Python updates. That is why leaning on the
-    library is still right. What is not safe is a TEST that pins the
-    permissive answer: one did, for 6to4, and it passed here and failed on the
-    runner. Anything whose classification is contested gets decided below
-    rather than asserted above.
+    caveat - it broke the daily refresh for two days. Checked against a real
+    3.12 rather than guessed: 2002::/16 is the one that moved. 3.11 calls
+    2002:808:808:: global, 3.12 does not, because 3.12 picked up the IANA
+    special-purpose registry. Every other address this gate is tested on
+    answers the same on both, including 100.64.0.0/10 and the AS112 and AMT
+    ranges, which an earlier version of this comment wrongly listed as having
+    moved.
+
+    The move is in the SAFE direction, from global to not, so the gate only
+    gets stricter as Python updates - which is why leaning on the library is
+    still right. What is not safe is a TEST that pins the permissive answer:
+    one did, for 6to4, and it passed here and failed on the runner. Anything
+    whose classification is contested gets decided below rather than asserted
+    above.
 
     Then the tunnels, which are the other half of the same lesson. An IPv6
     address can carry an IPv4 address as its passenger and answer every
