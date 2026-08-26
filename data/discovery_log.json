@@ -2323,10 +2323,9 @@
   "retry_soon": true
  },
  "iworq-systems": {
-  "on": "2026-08-20",
-  "found": false,
-  "note": "could not fetch the site (SSLError)",
-  "retry_soon": true
+  "on": "2026-08-26",
+  "found": true,
+  "note": "bamboohr:iworq, 8 posting(s) readable"
  },
  "justfoia": {
   "on": "2026-08-20",
@@ -4088,10 +4087,10 @@
   "note": "no board found"
  },
  "perimeter": {
-  "on": "2026-08-20",
-  "found": false,
-  "note": "could not fetch the site (SSLError)",
-  "retry_soon": true
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/frontend-web-developer)",
+  "weak": true
  },
  "priority-dispatch": {
   "on": "2026-08-20",
@@ -5882,10 +5881,9 @@
   "weak": true
  },
  "cimcon-lighting": {
-  "on": "2026-08-20",
+  "on": "2026-08-26",
   "found": false,
-  "note": "could not fetch the site (SSLError)",
-  "retry_soon": true
+  "note": "no board found"
  },
  "paradox-engineering": {
   "on": "2026-08-19",
@@ -8610,10 +8608,10 @@
   "weak": true
  },
  "psyrin": {
-  "on": "2026-08-23",
-  "found": false,
-  "note": "could not fetch the site (SSLError)",
-  "retry_soon": true
+  "on": "2026-08-26",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
  },
  "metrix-learning": {
   "on": "2026-08-23",
