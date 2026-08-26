@@ -2457,6 +2457,51 @@ def check_a_count_is_never_a_job_title() -> int:
     return errors
 
 
+
+def check_an_unread_board_is_not_a_zero() -> int:
+    """A board we could not READ must not render as a company with no jobs.
+
+    The board already refuses to show a zero for a company whose board was
+    never FOUND - noBoardNote says so on the card, and the counters say "not
+    known". A board we HAVE, that failed to fetch this run, is the same fact
+    wearing different clothes, and it said nothing at all: 64 companies on the
+    2026-08-26 build, 524 postings between them, every card reading "0 open
+    roles" with no explanation.
+
+    Market Intel discloses the count - "N boards could not be read this run, so
+    those companies show zero openings rather than none existing" - in one
+    sentence at the bottom of a different tab. That is not where somebody
+    decides whether to apply.
+
+    Checked as a shape: both branches must read o.unreadable, because the
+    obvious regression is someone simplifying the condition back to
+    no_board_on_file alone.
+    """
+    html = (ROOT / "index.html").read_text()
+    errors = 0
+    i = html.find("function noBoardNote(")
+    if i < 0:
+        return fail("index.html: noBoardNote is gone; nothing tells a reader "
+                    "why a company shows no roles")
+    body = html[i:i + 2000]
+    if "o.unreadable" not in body:
+        errors += fail("noBoardNote ignores o.unreadable, so a company whose "
+                       "board failed to fetch shows a bare zero with no "
+                       "explanation - the same silence-as-fact this board "
+                       "refuses everywhere else")
+
+    j = html.find('<div class="lbl">open roles</div>')
+    if j < 0:
+        errors += fail("index.html: the open-roles counter is gone")
+    else:
+        window = html[max(0, j - 700):j]
+        if "unreadable" not in window:
+            errors += fail("the open-roles counter shows a number without "
+                           "checking o.unreadable, so an unread board reports "
+                           "0 open roles as if that were measured")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -2796,6 +2841,7 @@ def main() -> int:
     errors += check_admin_blurbs_have_no_typed_counts()
     errors += check_queues_do_not_propose_deleted_categories()
     errors += check_a_count_is_never_a_job_title()
+    errors += check_an_unread_board_is_not_a_zero()
     errors += check_beak_is_never_text()
     errors += check_rating_scale()
     errors += check_every_company_says_what_it_sells()

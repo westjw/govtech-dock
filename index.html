@@ -1368,7 +1368,25 @@ const boardCheckedOn=o=>o.board_checked_on||o.discovery_on
 /* The whole no-board statement, as {html} or null when the company has a
    board and this does not apply. */
 function noBoardNote(o){
-  if(!o||!o.no_board_on_file)return null;
+  if(!o)return null;
+  /* A board we HAVE and could not read this run is not a board we never found,
+     and until now only the second case said anything. The first showed a bare
+     zero: 64 companies on this build, 524 postings between them, every one of
+     their pages reading "0 open roles" with nothing to say otherwise. Market
+     Intel discloses the count in a sentence at the bottom of a different tab,
+     which is not where somebody decides whether to apply.
+
+     This is the same rule the rest of the board runs on. A page scan never
+     proves absence; neither does a failed fetch. */
+  if(o.unreadable&&!o.no_board_on_file){
+    const url=safeUrl(o.board_url);
+    return `<strong>We could not read their job board on this run.</strong>
+      The board is on file and the fetch failed, so the counts below are what we
+      could see rather than what is there. It is retried on the next refresh.${
+      url?` <a class="golink" href="${esc(url)}" target="_blank"
+      rel="noopener">Open their board &rarr;</a>`:""}`;
+  }
+  if(!o.no_board_on_file)return null;
   const pa=o.posts_at;
   if(pa){
     const url=safeUrl(pa.url);
@@ -3552,15 +3570,21 @@ function co(id){
         return n?`<div class="note flag">${n}</div>`:""})()}
     <div class="cards" style="margin-top:16px">
       ${/* A count of zero is a claim, and on a company whose board we never
-            found it is a claim we cannot make. So the two counters say
+            found - OR whose board we could not read this run - it is a claim we
+            cannot make. So the two counters say
             "not known" instead, in the same colour as every other silence
             on this board. */""}
-      <div class="card"><div class="bignum" style="${o.no_board_on_file
-        ?"font-size:20px;color:var(--faint)":""}">${o.no_board_on_file
-        ?"not known":(o.open_roles||0)}</div><div class="lbl">open roles</div></div>
-      <div class="card"><div class="bignum" style="${o.no_board_on_file
-        ?"font-size:20px;color:var(--faint)":""}">${o.no_board_on_file
-        ?"not known":(o.quota_roles||0)}</div><div class="lbl">quota-carrying</div></div>
+      ${(()=>{
+        /* Unknown for the same reason in two different shapes: a board we never
+           found, and a board we have that would not read this run. Both make a
+           zero a claim we cannot support, so both get the same word. */
+        const unknown=o.no_board_on_file||o.unreadable;
+        const dim=unknown?"font-size:20px;color:var(--faint)":"";
+        return `<div class="card"><div class="bignum" style="${dim}">${
+          unknown?"not known":(o.open_roles||0)}</div><div class="lbl">open roles</div></div>
+      <div class="card"><div class="bignum" style="${dim}">${
+          unknown?"not known":(o.quota_roles||0)}</div><div class="lbl">quota-carrying</div></div>`;
+      })()}
       <div class="card"><div class="bignum" style="font-size:14px;padding-top:8px">${esc(o.phase||"")}</div>
         <div class="lbl">hiring phase</div></div>
       <div class="card"><div class="bignum" style="font-size:13px;padding-top:9px">
