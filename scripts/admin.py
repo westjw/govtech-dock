@@ -181,7 +181,21 @@ def save_companies(companies: list, action: str, why: str = "",
     and re-attribution is a thing somebody has to remember to do.
     """
     import journal
-    before = _LAST_COMPANIES if _LAST_COMPANIES is not None else companies
+    # A SAVE THAT NEVER READ HAS NOTHING TO DIFF AGAINST, and the old fallback
+    # made that failure silent in the worst possible way: `before = companies`
+    # is the AFTER state, so journal.record() sees no change, writes an entry
+    # with an empty diff, and admin_undo.py later restores nothing while
+    # reporting success. The write still lands. You would only find out by
+    # trying to undo something and watching it not come back.
+    #
+    # Every caller today reads first. This is here for the seven pipeline
+    # scripts that still write companies.json directly and will be converted:
+    # the conversion must not be able to half-happen.
+    if _LAST_COMPANIES is None:
+        return ("refused: save_companies() was called without reading first, so "
+                "there is no before-state to journal. Call admin.read_companies() "
+                "and modify what it returns.")
+    before = _LAST_COMPANIES
     _eid, refusal = journal.record("companies.json", before, companies,
                                    action, by, why, force)
     if refusal:

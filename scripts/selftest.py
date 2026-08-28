@@ -1240,6 +1240,50 @@ def check_refresh_render_ration() -> int:
     return errors
 
 
+def check_save_needs_read() -> int:
+    """save_companies() must refuse when nothing was read first.
+
+    The old fallback was `before = _LAST_COMPANIES if ... else companies` -
+    the AFTER state. journal.record() then saw no change, wrote an entry with
+    an empty diff, and admin_undo.py would later restore nothing while
+    reporting success. The write itself still landed. The only way to discover
+    it was to undo something and watch it not come back.
+
+    THIS CHECK CANNOT BE ALLOWED TO WRITE, and the first version of it could.
+    save_companies() does not call validate(), so when the guard was mutated
+    away to confirm this check fires, the probe write went through and
+    replaced all 2,103 companies with a single {"id": "x"} record. Restored
+    from git, but the lesson is the test's, not the guard's: a selftest that
+    is capable of writing WILL write, on exactly the run where the thing it
+    guards is broken - which is the one run where the damage is worst.
+
+    So write_atomic is stubbed for the duration. Now a mutation that defeats
+    the guard is caught twice: the refusal is missing, and the stub records a
+    write that should never have been attempted.
+    """
+    import admin
+    errors = 0
+    saved_last, saved_write = admin._LAST_COMPANIES, admin.write_atomic
+    wrote = []
+    try:
+        admin.write_atomic = lambda name, data: wrote.append(name)
+        admin._LAST_COMPANIES = None
+        r = admin.save_companies([{"id": "x"}], "selftest-probe", by="claude")
+        if not r:
+            errors += fail("save_companies() accepted a write with no prior "
+                           "read - the journal entry would carry an empty diff "
+                           "and undo would silently restore nothing")
+        elif "without reading first" not in r:
+            errors += fail(f"save_companies() refused a read-less write but the "
+                           f"reason does not say why: {r[:60]}")
+        if wrote:
+            errors += fail(f"save_companies() wrote {wrote} despite having no "
+                           f"before-state to journal against")
+    finally:
+        admin._LAST_COMPANIES, admin.write_atomic = saved_last, saved_write
+    return errors
+
+
 def check_admin_guards() -> int:
     """Two invariants the admin states in comments, said here as tests.
 
@@ -3743,6 +3787,7 @@ def main() -> int:
     errors += check_admin_game()
     errors += check_admin_gates()
     errors += check_admin_guards()
+    errors += check_save_needs_read()
     errors += check_role_promotion()
     errors += check_render_rotation()
     errors += check_refresh_render_ration()
