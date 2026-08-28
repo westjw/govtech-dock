@@ -137,8 +137,16 @@ def rollup(jobs: list[dict]) -> tuple[str, str, list[dict]]:
         if "_pagetext" in j:
             verdict = scan_pagetext(j["_pagetext"])
             if verdict == "ae":
+                # NOT A POSTING, AND IT MUST NEVER BECOME ONE. This is a
+                # marker meaning "AE-type words appeared somewhere on this
+                # page" - there is no title, no location, and the url is the
+                # careers page itself. On 2026-08-28 there were 89 of these
+                # sitting behind cards that told a visitor the company was
+                # hiring and gave them nothing to click. `synthetic` is what
+                # lets code downstream tell this apart from a real role
+                # without matching on the title string.
                 ae_roles.append({"title": "AE-type role (page scan)", "location": "",
-                                 "url": j.get("url", "")})
+                                 "url": j.get("url", ""), "synthetic": True})
             elif verdict == "sales_other":
                 sales_other.append(j)
             elif verdict == "unreadable":

@@ -1015,6 +1015,103 @@ def check_admin_gates() -> int:
     return bad
 
 
+def check_role_promotion() -> int:
+    """A stored role may only be published when it is that company's own.
+
+    build_board promotes a role the refresh pass stored when the board itself
+    will not enumerate. That is how Zencity and First Arriving got a posting a
+    visitor can click. It is also one wrong containment test away from
+    republishing every parent-board false Yes this project has removed, so the
+    dangerous direction is asserted here explicitly.
+
+    The rule is asymmetric on purpose. A slug that EXTENDS the company name is
+    theirs - kpaonline for KPA. A slug the name extends is the PARENT - xylem
+    for Xylem Vue, whose sixteen roles are pump sales; zoll for ZOLL Data
+    Systems, whose fifteen include a cardiac device AE.
+    """
+    import build_board as bb
+    errors = 0
+
+    # The slug test itself, in both directions.
+    if not bb._slug_names("kpaonline", ["KPA"]):
+        errors += fail("_slug_names refused 'kpaonline' for KPA - a slug that "
+                       "extends the name is theirs")
+    if not bb._slug_names("d-fendsolutions", ["D-Fend Solutions"]):
+        errors += fail("_slug_names refused 'd-fendsolutions' for D-Fend Solutions")
+    for slug, name in (("xylem", "Xylem Vue"), ("zoll", "ZOLL Data Systems"),
+                       ("merative", "Cúram by Merative"), ("harriscomputer", "Harris")):
+        if slug != "harriscomputer" and bb._slug_names(slug, [name]):
+            errors += fail(f"_slug_names accepted '{slug}' for {name} - the slug is "
+                           f"SHORTER than the name, which means the parent's board")
+
+    # The whole promotion path, on records shaped like the real failures.
+    theirs = {"name": "Zencity", "website": "https://zencity.io",
+              "hiring": {"roles": [{"title": "Enterprise Account Manager",
+                                    "url": "https://zencity.io/careers/x"}]}}
+    if len(bb._stored_roles_as_jobs(theirs)) != 1:
+        errors += fail("a role on the company's OWN domain was not promoted")
+
+    parent = {"name": "Cartegraph", "website": "https://cartegraph.com",
+              "hiring": {"roles": [{"title": "Account Executive",
+                                    "url": "https://opengov.com/careers/x"}]}}
+    if bb._stored_roles_as_jobs(parent):
+        errors += fail("promoted a role read off the PARENT's domain "
+                       "(Cartegraph off opengov.com) - this is the false Yes")
+
+    # A NON-ATS DOMAIN IS REFUSED EVEN WHEN THE PATH NAMES THE COMPANY. The
+    # ATS carve-out exists only because greenhouse.io is a filing cabinet, not
+    # a company. centegix.com IS a company - Ident-A-Kid's acquirer - and a
+    # path segment on it naming Ident-A-Kid does not make the requisition
+    # theirs. Without this case the ATS restriction can be deleted outright
+    # and every other assertion here still passes.
+    acquirer_path = {"name": "Ident-A-Kid", "website": "https://identakid.com",
+                     "hiring": {"roles": [{"title": "Account Executive",
+                                           "url": "https://centegix.com/identakid/jobs/1"}]}}
+    if bb._stored_roles_as_jobs(acquirer_path):
+        errors += fail("promoted a role hosted on the ACQUIRER's own domain "
+                       "(centegix.com) because a path segment named the "
+                       "acquired brand - only ATS hosts get the slug carve-out")
+
+    drawer = {"name": "Xylem Vue", "website": "https://xylem.com/vue",
+              "hiring": {"roles": [{"title": "Rental Sales Representative",
+                                    "url": "https://xylem.wd5.myworkdayjobs.com/en-US/x/job/1"}]}}
+    if bb._stored_roles_as_jobs(drawer):
+        errors += fail("promoted a role from the parent's ATS drawer "
+                       "(Xylem Vue off xylem's Workday)")
+
+    synthetic = {"name": "Skydio", "website": "https://skydio.com",
+                 "hiring": {"roles": [{"title": "AE-type role (page scan)",
+                                       "url": "https://skydio.com/careers",
+                                       "synthetic": True}]}}
+    if bb._stored_roles_as_jobs(synthetic):
+        errors += fail("promoted the page-scan MARKER as a posting - it has no "
+                       "title and no url of its own; publishing it invents a job")
+    # and again for records stored before `synthetic` existed
+    old_synthetic = {"name": "Skydio", "website": "https://skydio.com",
+                     "hiring": {"roles": [{"title": "AE-type role (page scan)",
+                                           "url": "https://skydio.com/careers"}]}}
+    if bb._stored_roles_as_jobs(old_synthetic):
+        errors += fail("promoted a page-scan marker stored before the "
+                       "`synthetic` flag existed")
+
+    evergreen = {"name": "SchoolStatus", "website": "https://schoolstatus.com",
+                 "hiring": {"roles": [{"title": "Account Executive (Future Opportunities)",
+                                       "url": "https://schoolstatus.com/careers/x"}]}}
+    if bb._stored_roles_as_jobs(evergreen):
+        errors += fail("promoted a talent-pool posting as an opening")
+
+    # The classifier must keep flagging its marker, or the guard above loses
+    # its strongest signal and falls back to matching a title string.
+    import classify
+    _, _, ae = classify.rollup([{"_pagetext": "We are hiring an Account Executive",
+                                 "url": "https://example.com/careers"}])
+    if not ae or not ae[0].get("synthetic"):
+        errors += fail("classify.rollup no longer marks its page-scan role "
+                       "`synthetic` - build_board can no longer tell a marker "
+                       "from a real posting")
+    return errors
+
+
 def check_admin_guards() -> int:
     """Two invariants the admin states in comments, said here as tests.
 
@@ -3518,6 +3615,7 @@ def main() -> int:
     errors += check_admin_game()
     errors += check_admin_gates()
     errors += check_admin_guards()
+    errors += check_role_promotion()
     errors += check_redirect_hop()
     errors += check_admin_http()
     errors += check_url_sinks()

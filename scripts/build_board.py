@@ -80,6 +80,142 @@ def ats_tier(kind: str | None) -> str:
     return "hard" if k in RANKS_HARD else "soft" if k in RANKS_SOFT else "none"
 
 
+
+# Job-board hosts. A slug on one of these is a filing-cabinet drawer, not a
+# company, so the question "is this board theirs" becomes "does the slug name
+# them" - a different and much sharper test than for a bare domain.
+_PROMOTE_ATS_HOSTS = (
+    "greenhouse.io", "lever.co", "ashbyhq.com", "workable.com", "bamboohr.com",
+    "myworkdayjobs.com", "workday.com", "recruitee.com", "breezy.hr", "gusto.com",
+    "smartrecruiters.com", "jazzhr.com", "paylocity.com", "icims.com",
+    "rippling.com", "applytojob.com", "taleo.net", "successfactors.com",
+    "jobscore.com", "comeet.com", "teamtailor.com", "trinethire.com",
+    "applicantpro.com", "hirehive.com", "hrmdirect.com", "ttcportals.com",
+    "jobvite.com", "dayforcehcm.com", "adp.com", "gnahiring.com", "trakstar.com",
+    "oraclecloud.com", "paycomonline.net",
+)
+
+_SLUG_GENERIC = {
+    "www", "jobs", "job", "boards", "board", "job-boards", "careers", "career",
+    "apply", "recruiting", "hire", "hiring", "talent", "work", "people", "search",
+    "eu", "us", "emea", "secure", "my", "app", "clients", "external", "en", "en-US",
+}
+
+
+def _domain_root(u: str) -> str:
+    from urllib.parse import urlparse
+    h = (urlparse(u or "").hostname or "").lower().replace("www.", "")
+    parts = h.split(".")
+    return ".".join(parts[-2:]) if len(parts) >= 2 else h
+
+
+def _slug_candidates(url: str) -> list[str]:
+    """Every label in a board url that could be an employer slug."""
+    from urllib.parse import urlparse
+    p = urlparse(url or "")
+    out = []
+    labels = (p.hostname or "").lower().split(".")
+    for lab in labels[:-2]:                       # subdomains only
+        if lab and lab not in _SLUG_GENERIC and not re.fullmatch(r"wd\d+", lab):
+            out.append(lab)
+    for seg in [s for s in p.path.split("/") if s][:3]:
+        if seg.lower() in _SLUG_GENERIC or seg.isdigit():
+            continue
+        if re.fullmatch(r"[0-9a-f-]{16,}", seg):  # uuids
+            continue
+        out.append(seg)
+    return out
+
+
+def _slug_names(slug: str, names: list[str]) -> bool:
+    """Does this slug name one of these companies?
+
+    THE DIRECTION IS THE WHOLE POINT, and getting it wrong is how a parent's
+    board gets adopted. A slug that EXTENDS the name is theirs: `kpaonline`
+    for KPA, `d-fendsolutions` for D-Fend Solutions. A slug the name extends
+    is almost always the PARENT: `xylem` for Xylem Vue, `zoll` for ZOLL Data
+    Systems, `merative` for Curám by Merative. Xylem Vue sells water
+    software; the sixteen roles on xylem's Workday are Rental Sales
+    Representative and Treatment Senior Sales Representative, which is the
+    pump business. ZOLL Data Systems sells EMS software; the fifteen roles on
+    zoll's are Territory Manager Hospital/EMS and Account Executive - TherOx,
+    a cardiac device. Neither set has anything to do with the company whose
+    card it would have appeared on.
+
+    So containment is allowed in one direction only.
+    """
+    t = _norm_slug(slug)
+    if len(t) < 4:
+        return False
+    for n in names:
+        n = _norm_slug(n)
+        if len(n) < 3:
+            continue
+        if t == n:
+            return True
+        if t.startswith(n) and len(t) > len(n):   # slug extends the name: theirs
+            return True
+    return False
+
+
+def _norm_slug(s: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", (s or "").lower())
+
+
+def _stored_roles_as_jobs(c: dict) -> list[dict]:
+    """Roles the refresh pass verified, for a board that will not enumerate.
+
+    On 2026-08-28, 98 cards said a company was hiring and showed nothing to
+    click. Their boards are JavaScript shells the enumerator cannot read, but
+    the refresh pass had already rendered them and stored a real role with a
+    working url. The role existed; only the path from it to the board was
+    missing.
+
+    Two filters stand between that stored role and the public card, and both
+    were written from failures this board has actually had:
+
+    1. NO SYNTHETIC MARKERS. 89 of those 98 held no title at all - just
+       "AE-type role (page scan)", a marker meaning AE-ish words appeared
+       somewhere on a page. Publishing one would invent a posting. They are
+       skipped, and their cards go on saying nothing rather than something
+       false.
+
+    2. THE ROLE MUST BE THEIRS. Own domain, or an ATS slug that names them in
+       the extending direction only. Cartegraph's stored role is on
+       opengov.com and Ident-A-Kid's on centegix.com; publishing those would
+       rebuild the exact false Yes that five cards were fixed for.
+    """
+    h = c.get("hiring") or {}
+    site = _domain_root(c.get("website") or "")
+    names = [c.get("name") or ""] + list(c.get("also_known_as") or [])
+    for b in (c.get("brands") or []):
+        names.append(b.get("name") if isinstance(b, dict) else str(b))
+
+    out = []
+    for r in (h.get("roles") or []):
+        title, url = (r.get("title") or "").strip(), (r.get("url") or "").strip()
+        if not title or not url or r.get("synthetic"):
+            continue
+        if "page scan" in title.lower():          # stored before `synthetic` existed
+            continue
+        # The posting loop drops these anyway, but a promotion count that
+        # includes roles which never reach the board is a number that lies
+        # about its own work. SchoolStatus's stored role is "Account Executive
+        # (Future Opportunities)" - a talent pool, not an opening.
+        if roles.is_junk(title) or roles.is_evergreen(title):
+            continue
+        board = _domain_root(url)
+        if not board:
+            continue
+        if board != site:
+            if board not in _PROMOTE_ATS_HOSTS:
+                continue                          # somebody else's domain
+            if not any(_slug_names(s, names) for s in _slug_candidates(url)):
+                continue                          # somebody else's drawer
+        out.append({"title": title, "location": r.get("location") or "", "url": url})
+    return out
+
+
 def board_url(c: dict) -> str | None:
     """Where a person can go look themselves. Matters most where extraction fails."""
     a = c.get("ats") or {}
@@ -431,6 +567,7 @@ def main() -> int:
     today = dt.date.today().isoformat()
     postings, orgs, unreadable, rendered = [], [], 0, 0
     render_skipped = 0
+    promoted = promoted_cos = 0
 
     # Fetch in parallel. Sequentially, 362 boards plus renders took 71 minutes,
     # which does not fit a daily job. Most of that is waiting on sockets, so
@@ -568,6 +705,24 @@ def main() -> int:
             if rendered and rendered % 10 == 0:
                 print(f"  rendered {rendered} board(s), "
                       f"{time.monotonic() - render_started:.0f}s spent", flush=True)
+        # A BOARD THAT WILL NOT ENUMERATE IS NOT A COMPANY WITHOUT JOBS. The
+        # refresh pass renders these pages and stores what it finds, so when
+        # enumeration comes back empty the role is often already on file with
+        # a working url. Promote it - under the ownership guard, which is the
+        # only thing standing between this and a parent's requisitions.
+        #
+        # Never for a company zeroed just above by the shared-board rule:
+        # those jobs were removed on purpose because one board is one board,
+        # and putting them back under the second name is the double count
+        # that rule exists to prevent.
+        if not jobs and c["id"] not in owns:
+            stored = _stored_roles_as_jobs(c)
+            if stored:
+                jobs = stored
+                promoted += len(stored)
+                promoted_cos += 1
+                err = None
+
         if err and not jobs:
             if kind == "html":
                 enumerable = False
@@ -993,6 +1148,10 @@ def main() -> int:
     print(f"{len(companies)} companies: {len(companies) - no_board} with a board on "
           f"file, {no_board} awaiting discovery")
     print(f"  {unreadable} boards unreadable, {rendered} recovered by rendering")
+    if promoted:
+        print(f"  {promoted} posting(s) at {promoted_cos} company(ies) came from a "
+              f"stored role, not enumeration - their board would not list, but "
+              f"refresh had already read the role")
     if render_skipped:
         print(f"  {render_skipped} board(s) NOT TRIED - the render budget "
               f"({a.render_budget:.0f}s) ran out. These are not zeros; raise "
