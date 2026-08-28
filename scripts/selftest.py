@@ -2931,6 +2931,73 @@ def check_a_card_link_yields_the_title_not_the_whole_card() -> int:
     return errors
 
 
+
+def check_refresh_renders_a_shell_before_saying_unknown() -> int:
+    """The board listed an AE role while the company's own card said Unknown.
+
+    build_board.py has always fallen back to a real browser when a careers page
+    turns out to be a JavaScript shell. refresh.py did not. So the two
+    pipelines disagreed in public: eleven AE roles sat on the board under cards
+    that would not admit the company was hiring - Frontline Education's
+    Strategic Account Executive among them.
+
+    Two things are pinned. The fallback must cover BOTH failure paths: a rollup
+    that comes back Unknown, and an AtsError raised before any rollup happens.
+    The first version of the fix only covered the rollup, and missed "page too
+    small - likely JS-rendered" - the single most render-appropriate failure
+    there is.
+
+    And it must stay OPTIONAL. Playwright is a 150MB browser that selftest, a
+    local run and a fresh clone must not need. With it absent the fallback
+    returns None and the honest Unknown stands.
+    """
+    import refresh
+    errors = 0
+    if not hasattr(refresh, "_try_render"):
+        return fail("refresh.py no longer renders a shell before calling it "
+                    "Unknown; the board and the cards will disagree again")
+
+    # absent Playwright must be a no-op, never a crash
+    import builtins
+    real = builtins.__import__
+
+    def no_playwright(name, *a, **k):
+        if name == "render_fetch":
+            raise ImportError("render_fetch unavailable")
+        return real(name, *a, **k)
+
+    builtins.__import__ = no_playwright
+    try:
+        got = refresh._try_render("html", "https://x.test/careers")
+    except Exception as exc:
+        got = "CRASHED"
+        errors += fail(f"the render fallback crashed when Playwright is "
+                       f"absent: {exc}")
+    finally:
+        builtins.__import__ = real
+    if got not in (None, "CRASHED"):
+        errors += fail(f"with no renderer available the fallback returned "
+                       f"{got!r}; it must return None and leave the Unknown")
+
+    # it must never be reached for a non-html board or a company with no ref
+    if refresh._try_render("greenhouse", "someslug") is not None:
+        errors += fail("the render fallback fired for a structured board, "
+                       "which has a real API and needs no browser")
+    if refresh._try_render("html", None) is not None:
+        errors += fail("the render fallback fired with no url to render")
+
+    # both failure paths must reach it
+    src = (ROOT / "scripts" / "refresh.py").read_text()
+    body = src[src.find("def check_company"):]
+    body = body[:body.find("\ndef ", 1)]
+    if body.count("_try_render") < 2:
+        errors += fail("check_company calls the render fallback on only one "
+                       "failure path. An AtsError returns before the rollup, "
+                       "and 'page too small - likely JS-rendered' arrives that "
+                       "way - the case a browser most obviously fixes")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -3271,6 +3338,7 @@ def main() -> int:
     errors += check_queues_do_not_propose_deleted_categories()
     errors += check_a_count_is_never_a_job_title()
     errors += check_a_card_link_yields_the_title_not_the_whole_card()
+    errors += check_refresh_renders_a_shell_before_saying_unknown()
     errors += check_coming_soon_is_not_a_parked_domain()
     errors += check_a_parent_board_ruling_names_the_parent()
     errors += check_the_owner_can_argue_with_the_logic()

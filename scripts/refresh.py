@@ -60,15 +60,57 @@ def previous_snapshot(today: str):
     return snaps[-1] if snaps else None
 
 
+def _try_render(kind: str, ref) -> dict | None:
+    """Read a JS-shelled careers page with a real browser, or return None.
+
+    build_board.py has done this for a long time and refresh.py did not, so the
+    two pipelines disagreed in public: the board listed a Strategic Account
+    Executive for Frontline Education while that company's own card said
+    Unknown. Eleven AE roles sat on the board under cards that would not admit
+    the company was hiring.
+
+    Optional exactly as it is there - imported lazily, skipped when Playwright
+    is absent, and never able to turn a working run into a failing one. A page
+    that will not render keeps the Unknown it already had, which is the honest
+    answer.
+
+    Returns None rather than an Unknown dict so the caller keeps its own,
+    better-worded failure note: "page too small - likely JS-rendered" says more
+    than "rendered and still nothing".
+    """
+    if kind != "html" or not ref:
+        return None
+    try:
+        import render_fetch
+        if not render_fetch.available():
+            return None
+        jobs = ats.plain_rows(render_fetch.fetch_rendered(ref))
+        status, note, roles = classify.rollup(jobs)
+    except Exception:
+        return None
+    if status == "Unknown":
+        return None
+    return {"status": status, "note": (note + " [rendered]")[:60], "roles": roles}
+
+
 def check_company(comp: dict) -> dict:
     """Return {"status", "note", "roles"} for one company."""
     kind = comp["ats"]["type"]
+    ref = comp["ats"].get("ref")
     if kind == "unknown":
         return {"status": "Unknown", "note": "no ATS on file", "roles": [], "skipped": True}
     try:
         jobs = ats.fetch(comp["ats"])
         status, note, roles = classify.rollup(jobs)
     except ats.AtsError as exc:
+        # "page too small - likely JS-rendered" is the MOST render-appropriate
+        # failure there is, and the first version of this fallback never saw it
+        # because this branch returns before the rollup. Caselle said exactly
+        # that and stayed Unknown while the board carried an Account Manager
+        # for it.
+        rendered = _try_render(kind, ref)
+        if rendered:
+            return rendered
         return {"status": "Unknown", "note": str(exc)[:40], "roles": []}
     except Exception as exc:  # noqa: BLE001 - deliberately everything
         # One malformed job among ~1,150 boards - a null title, a payload
@@ -81,6 +123,22 @@ def check_company(comp: dict) -> dict:
         return {"status": "Unknown",
                 "note": f"fetcher crashed: {type(exc).__name__}"[:40],
                 "roles": []}
+    # A PAGE SCAN THAT READ NOTHING IS A SHELL, AND build_board ALREADY KNOWS
+    # WHAT TO DO ABOUT IT. It falls back to a real browser; this did not, so
+    # the two pipelines disagreed in public: the board listed a Strategic
+    # Account Executive for Frontline Education while the company's own card
+    # said Unknown. Eleven AE roles were on the board under cards that would
+    # not admit the company was hiring.
+    #
+    # Optional exactly as it is there - imported lazily, skipped entirely when
+    # Playwright is absent, and never allowed to turn a working run into a
+    # failing one. A render that raises leaves the Unknown alone, which is the
+    # honest answer it already had.
+    if status == "Unknown":
+        rendered = _try_render(kind, ref)
+        if rendered:
+            status, note, roles = (rendered["status"], rendered["note"],
+                                   rendered["roles"])
     if kind == "html" and status == "Yes":
         note = (note + " [page scan - verify]")[:60]
     return {"status": status, "note": note, "roles": roles}
