@@ -69,8 +69,8 @@
       "roles": []
     },
     "axon": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "motorola-solutions": {
@@ -91,6 +91,11 @@
           "title": "Senior Account Executive - Cybersecurity",
           "location": "Georgia, US Offsite, More...",
           "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Georgia-US-Offsite/Senior-Account-Executive---Cybersecurity_R66805"
+        },
+        {
+          "title": "Senior Account Executive - NGCS",
+          "location": "Texas Remote Work",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Texas-Remote-Work/Senior-Account-Executive---NGCS_R68128"
         },
         {
           "title": "Senior Account Executive - Cybersecurity (North)",
@@ -118,11 +123,6 @@
           "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Richardson-TX-TX141/Sr-Account-Executive---Theatro-Software-Sales_R64276"
         },
         {
-          "title": "Senior Account Executive - Software (Command Center)",
-          "location": "Tennessee, US Offsite",
-          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Tennessee-US-Offsite/Senior-Account-Executive---Software--Command-Center-_R67525"
-        },
-        {
           "title": "Sr. Enterprise Account Executive - Cloud Software Sales",
           "location": "Chicago, IL, More...",
           "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Chicago-IL/Job-Posting-Title-Sr-Enterprise-Account-Executive---Cloud-Software-Sales_R66094"
@@ -143,14 +143,14 @@
           "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/South-Africa-Offsite-ZSA99/Sales-Executive---Fixed-Video-Solutions--Sub-Saharan-Africa-_R66662-1"
         },
         {
-          "title": "Corporate Sales Executive",
-          "location": "Tokyo, Japan",
-          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Tokyo-Japan/Corporate-Sales-Executive_R66327"
-        },
-        {
           "title": "Desk Account Manager",
           "location": "Cork, Ireland, More...",
           "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Cork-Ireland/Desk-Account-Manager_R66990"
+        },
+        {
+          "title": "Corporate Sales Executive",
+          "location": "Tokyo, Japan",
+          "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Tokyo-Japan/Corporate-Sales-Executive_R66327"
         },
         {
           "title": "Regional Sales Manager",
@@ -186,7 +186,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.skydio.com/careers"
+          "url": "https://www.skydio.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -197,7 +198,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://brincdrones.com/careers"
+          "url": "https://brincdrones.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -214,6 +216,11 @@
           "title": "Strategic Account Executive- OH / MI",
           "location": "Ohio, Michigan",
           "url": "https://mark43.com/list-job/8159948?gh_jid=8159948"
+        },
+        {
+          "title": "Technical Account Manager",
+          "location": "Manchester",
+          "url": "https://mark43.com/list-job/8164712?gh_jid=8164712"
         }
       ]
     },
@@ -277,7 +284,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://careers.jobscore.com/careers/imagetrend"
+          "url": "https://careers.jobscore.com/careers/imagetrend",
+          "synthetic": true
         }
       ]
     },
@@ -298,7 +306,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.prepared911.com/careers"
+          "url": "https://www.prepared911.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -367,11 +376,6 @@
           "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Stuttgart-Germany/Territory-Manager-Hospital---BW_R18058"
         },
         {
-          "title": "Territory Manager, EMS",
-          "location": "2 Locations",
-          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Boise-ID/Territory-Manager--EMS_R18265"
-        },
-        {
           "title": "Territory Manager \u00d6sterreich",
           "location": "Vienna, Austria",
           "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Vienna-Austria/Territory-Manager-sterreich_R18427"
@@ -380,6 +384,11 @@
           "title": "Territory Manager- North Carolina",
           "location": "US NC Remote",
           "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/US-NC-Remote/Territory-Manager--North-Carolina_R18399-1"
+        },
+        {
+          "title": "Territory Manager, Delhi and Mumbai",
+          "location": "New Delhi, India",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/New-Delhi-India/Territory-Manager--Delhi-and-Mumbai_R18492"
         }
       ]
     },
@@ -394,8 +403,8 @@
       "roles": []
     },
     "aurelian": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "md-ally": {
@@ -472,7 +481,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://amcsgroup.hirehive.com/"
+          "url": "https://amcsgroup.hirehive.com/",
+          "synthetic": true
         }
       ]
     },
@@ -514,7 +524,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://rehrig.hrmdirect.com/employment/job-openings.php?search=true"
+          "url": "https://rehrig.hrmdirect.com/employment/job-openings.php?search=true",
+          "synthetic": true
         }
       ]
     },
@@ -530,7 +541,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.econolite.com/about/careers/career-opportunities/"
+          "url": "https://www.econolite.com/about/careers/career-opportunities/",
+          "synthetic": true
         }
       ]
     },
@@ -541,7 +553,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://careers.verramobility.com/search-jobs"
+          "url": "https://careers.verramobility.com/search-jobs",
+          "synthetic": true
         }
       ]
     },
@@ -619,8 +632,8 @@
       "roles": []
     },
     "conduent": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "cyvl": {
@@ -800,7 +813,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://careers.voda.ai/jobs"
+          "url": "https://careers.voda.ai/jobs",
+          "synthetic": true
         }
       ]
     },
@@ -847,7 +861,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://redzone.com/company/employment/"
+          "url": "https://redzone.com/company/employment/",
+          "synthetic": true
         }
       ]
     },
@@ -863,7 +878,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.samsara.com/company/careers/roles"
+          "url": "https://www.samsara.com/company/careers/roles",
+          "synthetic": true
         }
       ]
     },
@@ -874,20 +890,15 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://careers.geotab.com/department/sales/"
+          "url": "https://careers.geotab.com/department/sales/",
+          "synthetic": true
         }
       ]
     },
     "cartegraph": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://opengov.com/careers/"
-        }
-      ]
+      "status": "Unknown",
+      "note": "board is another company's - not read",
+      "roles": []
     },
     "brightly": {
       "status": "Unknown",
@@ -1009,7 +1020,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://opengov.com/careers/"
+          "url": "https://opengov.com/careers/",
+          "synthetic": true
         }
       ]
     },
@@ -1041,7 +1053,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://jobs.gusto.com/boards/city-detect-6e1a4cdf-356e-4986-9f1d-55d200b345e9"
+          "url": "https://jobs.gusto.com/boards/city-detect-6e1a4cdf-356e-4986-9f1d-55d200b345e9",
+          "synthetic": true
         }
       ]
     },
@@ -1093,7 +1106,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.paymentus.com/careers"
+          "url": "https://www.paymentus.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -1114,9 +1128,25 @@
       "roles": []
     },
     "ukg": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": []
+      "status": "Yes",
+      "note": "Customer Account Manager 2 United  (Remote) [rendered] [page",
+      "roles": [
+        {
+          "title": "Customer Account Manager 2 United States Sales",
+          "location": "Remote",
+          "url": "https://apply.ukg.com/careers/job/893397433208"
+        },
+        {
+          "title": "Mid-Market Customer Account Manager United States + 3 more Sales",
+          "location": "Remote",
+          "url": "https://apply.ukg.com/careers/job/893395599856"
+        },
+        {
+          "title": "ACCOUNT EXECUTIVE 4 United States Sales",
+          "location": "Remote",
+          "url": "https://apply.ukg.com/careers/job/893397068471"
+        }
+      ]
     },
     "govinvest": {
       "status": "None found",
@@ -1130,7 +1160,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.hollygov.com/careers"
+          "url": "https://www.hollygov.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -1157,7 +1188,7 @@
     },
     "myrec-com": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "vermont-systems": {
@@ -1224,13 +1255,14 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.centegix.com/careers/"
+          "url": "https://www.centegix.com/careers/",
+          "synthetic": true
         }
       ]
     },
     "zeroeyes": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "evolv-technology": {
@@ -1301,9 +1333,20 @@
       "roles": []
     },
     "powerschool": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": []
+      "status": "Yes",
+      "note": "Account Manager (Remote - US 2026-5) [rendered] [page scan -",
+      "roles": [
+        {
+          "title": "Account Manager",
+          "location": "Remote - US 2026-52865 View",
+          "url": "https://www.powerschool.com/company/careers/job/?referencenumber=2026-52865&location=US--Remote"
+        },
+        {
+          "title": "Sr. Strategic Account Manager",
+          "location": "Remote - US 2026-52823 View",
+          "url": "https://www.powerschool.com/company/careers/job/?referencenumber=2026-52823&location=US--Remote"
+        }
+      ]
     },
     "infinite-campus": {
       "status": "Unknown",
@@ -1311,9 +1354,40 @@
       "roles": []
     },
     "frontline-education": {
-      "status": "Unknown",
-      "note": "HTTP 403 for https://careers.frontlineed",
-      "roles": []
+      "status": "Yes",
+      "note": "Strategic Account Executive [rendered]",
+      "roles": [
+        {
+          "title": "Strategic Account Executive",
+          "location": "",
+          "url": "https://careers.frontlineeducation.com/jobs/18008010-strategic-account-executive"
+        },
+        {
+          "title": "Strategic Account Executive - Special Programs",
+          "location": "",
+          "url": "https://careers.frontlineeducation.com/jobs/18172620-strategic-account-executive-special-programs"
+        },
+        {
+          "title": "Strategic Account Executive - ERP",
+          "location": "",
+          "url": "https://careers.frontlineeducation.com/jobs/18164396-strategic-account-executive-erp"
+        },
+        {
+          "title": "Regional Sales Director",
+          "location": "",
+          "url": "https://careers.frontlineeducation.com/jobs/18164395-regional-sales-director"
+        },
+        {
+          "title": "Enterprise Account Executive - Future Opportunity",
+          "location": "",
+          "url": "https://careers.frontlineeducation.com/jobs/18014741-enterprise-account-executive-future-opportunity"
+        },
+        {
+          "title": "Regional Sales Manager",
+          "location": "",
+          "url": "https://careers.frontlineeducation.com/jobs/17914895-regional-sales-manager"
+        }
+      ]
     },
     "parentsquare": {
       "status": "Sales (non-AE)",
@@ -1475,7 +1549,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.aidash.com/careers"
+          "url": "https://www.aidash.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -1616,15 +1691,9 @@
       "roles": []
     },
     "eproval": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://www.eproval.com/careers"
-        }
-      ]
+      "status": "Unknown",
+      "note": "page too small - likely JS-rendered",
+      "roles": []
     },
     "visit-widget": {
       "status": "Unknown",
@@ -1632,8 +1701,8 @@
       "roles": []
     },
     "plotbox": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "cims-cemetery-software": {
@@ -1653,7 +1722,7 @@
     },
     "fmx": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "govdeals": {
@@ -1673,14 +1742,21 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.bsasoftware.com/careers"
+          "url": "https://www.bsasoftware.com/careers",
+          "synthetic": true
         }
       ]
     },
     "caselle": {
-      "status": "Unknown",
-      "note": "page too small - likely JS-rendered",
-      "roles": []
+      "status": "Yes",
+      "note": "Account Manager - Sales [rendered]",
+      "roles": [
+        {
+          "title": "Account Manager - Sales",
+          "location": "",
+          "url": "https://casellejobs.applicantpro.com/jobs/4158979"
+        }
+      ]
     },
     "catalis": {
       "status": "Unknown",
@@ -1708,8 +1784,8 @@
       "roles": []
     },
     "schneider-geospatial": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "aclarian": {
@@ -1734,7 +1810,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://cloudpermit.com/open-positions"
+          "url": "https://cloudpermit.com/open-positions",
+          "synthetic": true
         }
       ]
     },
@@ -1770,9 +1847,15 @@
       "roles": []
     },
     "zencity": {
-      "status": "Unknown",
-      "note": "HTTP 202 for https://zencity.io/careers",
-      "roles": []
+      "status": "Yes",
+      "note": "Enterprise Account Manager (New York, US) [rendered]",
+      "roles": [
+        {
+          "title": "Enterprise Account Manager",
+          "location": "New York, US",
+          "url": "https://zencity.io/careers/co/sales-business-development/CC.C60/enterprise-account-manager/all"
+        }
+      ]
     },
     "citibot": {
       "status": "Unknown",
@@ -1796,7 +1879,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://jobs.govocal.com"
+          "url": "https://jobs.govocal.com",
+          "synthetic": true
         }
       ]
     },
@@ -1857,8 +1941,8 @@
       "roles": []
     },
     "common-sense-ai": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "prophecy-gov": {
@@ -1935,7 +2019,7 @@
     },
     "planetbids": {
       "status": "Unknown",
-      "note": "HTTP 404 for https://planetbids.com/care",
+      "note": "HTTP 405 for https://planetbids.com/care",
       "roles": []
     },
     "zoomgrants": {
@@ -1996,14 +2080,21 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://fonrochelightingamerica.na.teamtailor.com/jobs"
+          "url": "https://fonrochelightingamerica.na.teamtailor.com/jobs",
+          "synthetic": true
         }
       ]
     },
     "psd-citywide": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": []
+      "status": "Yes",
+      "note": "Account Executive [rendered] [page scan - verify]",
+      "roles": [
+        {
+          "title": "Account Executive",
+          "location": "",
+          "url": "https://psd.bamboohr.com/careers/266"
+        }
+      ]
     },
     "cityreporter": {
       "status": "Unknown",
@@ -2022,7 +2113,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://careers.eagleview.com"
+          "url": "https://careers.eagleview.com",
+          "synthetic": true
         }
       ]
     },
@@ -2032,8 +2124,8 @@
       "roles": []
     },
     "three-one": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "govpilot": {
@@ -2104,7 +2196,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://teletownhall.com/careers"
+          "url": "https://teletownhall.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -2134,8 +2227,8 @@
       "roles": []
     },
     "bamboo-health": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "netsmart": {
@@ -2165,13 +2258,14 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.essvote.com/careers"
+          "url": "https://www.essvote.com/careers",
+          "synthetic": true
         }
       ]
     },
     "hart-intercivic": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "knowink": {
@@ -2191,22 +2285,22 @@
     },
     "contentactive": {
       "status": "Unknown",
-      "note": "HTTP 404 for https://contentactive.com/c",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "everlaw": {
       "status": "Yes",
-      "note": "Senior Enterprise Account Executiv (Oakland, Californi)",
+      "note": "Senior Enterprise Account Executiv (New York, New York)",
       "roles": [
-        {
-          "title": "Senior Enterprise Account Executive - Legal",
-          "location": "Oakland, California, United States",
-          "url": "https://job-boards.greenhouse.io/everlaw/jobs/4693438006"
-        },
         {
           "title": "Senior Enterprise Account Executive - Legal",
           "location": "New York, New York, United States",
           "url": "https://job-boards.greenhouse.io/everlaw/jobs/4693451006"
+        },
+        {
+          "title": "Senior Enterprise Account Executive - Legal",
+          "location": "Oakland, California, United States",
+          "url": "https://job-boards.greenhouse.io/everlaw/jobs/4693438006"
         },
         {
           "title": "Strategic Account Executive - Legal",
@@ -2262,7 +2356,7 @@
     },
     "aurigo-software": {
       "status": "Unknown",
-      "note": "HTTP 404 for https://www.aurigo.com/care",
+      "note": "HTTP 403 for https://www.aurigo.com/care",
       "roles": []
     },
     "faster": {
@@ -2288,13 +2382,8 @@
     },
     "motive": {
       "status": "Yes",
-      "note": "Account Executive, CMRL - MX (Mexico - Remote)",
+      "note": "Account Executive, Enterprise - Mo (United States - Re)",
       "roles": [
-        {
-          "title": "Account Executive, CMRL - MX",
-          "location": "Mexico - Remote",
-          "url": "https://job-boards.greenhouse.io/gomotive/jobs/8235635002"
-        },
         {
           "title": "Account Executive, Enterprise - Mountain",
           "location": "United States - Remote",
@@ -2309,6 +2398,11 @@
           "title": "Account Executive, Mid-Market - MX",
           "location": "Mexico City - Hybrid",
           "url": "https://job-boards.greenhouse.io/gomotive/jobs/8622282002"
+        },
+        {
+          "title": "Account Executive, Public Sector",
+          "location": "United States - Remote",
+          "url": "https://job-boards.greenhouse.io/gomotive/jobs/8700097002"
         },
         {
           "title": "Account Executive, SMB New Logo \u2013 Spanish Speaking",
@@ -2361,6 +2455,11 @@
           "url": "https://job-boards.greenhouse.io/gomotive/jobs/6056440002"
         },
         {
+          "title": "Support Account Manager",
+          "location": "Pakistan - Remote",
+          "url": "https://job-boards.greenhouse.io/gomotive/jobs/8742747002"
+        },
+        {
           "title": "Technical Account Manager - Strategy",
           "location": "Pakistan - Remote",
           "url": "https://job-boards.greenhouse.io/gomotive/jobs/8021084002"
@@ -2368,8 +2467,8 @@
       ]
     },
     "powerfleet": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "forward-thinking-systems": {
@@ -2383,13 +2482,19 @@
       "roles": []
     },
     "nexgen-asset-management": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": []
+      "status": "Yes",
+      "note": "SaaS Client Account Manager [rendered] [page scan - verify]",
+      "roles": [
+        {
+          "title": "SaaS Client Account Manager",
+          "location": "",
+          "url": "https://nexgenam.zohorecruit.com/jobs/Careers/785571000001140094/SaaS-Client-Account-Manager?source=CareerSite"
+        }
+      ]
     },
     "maintstar": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "maintainx": {
@@ -2504,7 +2609,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://vapar.co/careers"
+          "url": "https://vapar.co/careers",
+          "synthetic": true
         }
       ]
     },
@@ -2525,8 +2631,8 @@
       "roles": []
     },
     "greehill": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "Sales (non-AE)",
+      "note": "Customer Success & Project Manager only [rendered]",
       "roles": []
     },
     "weathermatic": {
@@ -2541,7 +2647,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://beamforall.com/careers"
+          "url": "https://beamforall.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -2562,7 +2669,7 @@
     },
     "passport-workforce": {
       "status": "Unknown",
-      "note": "HTTP 202 for https://passportworkforce.c",
+      "note": "HTTP 403 for https://passportworkforce.c",
       "roles": []
     },
     "centralsquare-technologies": {
@@ -2608,7 +2715,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.prophoenix.com/careers"
+          "url": "https://www.prophoenix.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -2619,7 +2727,7 @@
     },
     "365labs": {
       "status": "Unknown",
-      "note": "HTTP 202 for https://www.365labs.com/car",
+      "note": "HTTP 403 for https://www.365labs.com/car",
       "roles": []
     },
     "omnigo-software": {
@@ -2669,24 +2777,18 @@
       "roles": []
     },
     "msab": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://www.msab.com/careers"
-        }
-      ]
+      "status": "Unknown",
+      "note": "page too small - likely JS-rendered",
+      "roles": []
     },
     "amped-software": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "cognyte": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "penlink": {
@@ -2716,7 +2818,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://leadsonline.com/careers.html"
+          "url": "https://leadsonline.com/careers.html",
+          "synthetic": true
         }
       ]
     },
@@ -2801,13 +2904,8 @@
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
-          "location": "St. Petersburg, FL United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4134175007"
-        },
-        {
-          "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Boston, MA United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/5161632007"
+          "location": "Austin, TX United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4087046007"
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
@@ -2816,23 +2914,13 @@
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
-          "location": "New York City, NY United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103493007"
-        },
-        {
-          "title": "Account Executive, Territory (Mid-Market)",
           "location": "Philadelphia, PA United States",
           "url": "https://job-boards.greenhouse.io/verkada/jobs/4103490007"
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Tempe, AZ United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4135236007"
-        },
-        {
-          "title": "Account Executive, Territory (Mid-Market)",
-          "location": "Austin, TX United States",
-          "url": "https://job-boards.greenhouse.io/verkada/jobs/4087046007"
+          "location": "New York City, NY United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4103493007"
         },
         {
           "title": "Account Executive, Territory (Mid-Market)",
@@ -2843,6 +2931,21 @@
           "title": "Account Executive, Territory (Mid-Market)",
           "location": "Los Angeles, CA United States",
           "url": "https://job-boards.greenhouse.io/verkada/jobs/5027198007"
+        },
+        {
+          "title": "Account Executive, Territory (Mid-Market)",
+          "location": "Boston, MA United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/5161632007"
+        },
+        {
+          "title": "Account Executive, Territory (Mid-Market)",
+          "location": "St. Petersburg, FL United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4134175007"
+        },
+        {
+          "title": "Account Executive, Territory (Mid-Market)",
+          "location": "Tempe, AZ United States",
+          "url": "https://job-boards.greenhouse.io/verkada/jobs/4135236007"
         },
         {
           "title": "Account Executive, Tokyo",
@@ -3049,7 +3152,7 @@
     },
     "ndi-recognition-systems": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "lenslock": {
@@ -3064,7 +3167,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://home.tip411.com/tip411jobs"
+          "url": "https://home.tip411.com/tip411jobs",
+          "synthetic": true
         }
       ]
     },
@@ -3110,8 +3214,8 @@
       "roles": []
     },
     "starchase": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "Sales (non-AE)",
+      "note": "Product Installation and Support T only [rendered]",
       "roles": []
     },
     "robin-radar-systems": {
@@ -3132,12 +3236,12 @@
     },
     "virtra": {
       "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
+      "note": "Territory Sales Manager- NE Territ [rendered]",
       "roles": [
         {
-          "title": "AE-type role (page scan)",
+          "title": "Territory Sales Manager- NE Territory",
           "location": "",
-          "url": "https://www.virtra.com/careers"
+          "url": "https://www.virtra.com/job/territory-sales-manager-ne-territory/"
         }
       ]
     },
@@ -3153,7 +3257,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.inveristraining.com/jobs"
+          "url": "https://www.inveristraining.com/jobs",
+          "synthetic": true
         }
       ]
     },
@@ -3174,7 +3279,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.benchmarkanalytics.com/careers"
+          "url": "https://www.benchmarkanalytics.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -3190,7 +3296,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://intime.com/careers"
+          "url": "https://intime.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -3236,8 +3343,8 @@
       "roles": []
     },
     "fotokite": {
-      "status": "Unknown",
-      "note": "page too small - likely JS-rendered",
+      "status": "Sales (non-AE)",
+      "note": "Sales Engineer only [rendered]",
       "roles": []
     },
     "active911": {
@@ -3281,15 +3388,9 @@
       "roles": []
     },
     "t2-systems": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://www.t2systems.com/careers"
-        }
-      ]
+      "status": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host=",
+      "roles": []
     },
     "municipal-parking-services": {
       "status": "Unknown",
@@ -3302,8 +3403,8 @@
       "roles": []
     },
     "traction-rec": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "peak-software-systems": {
@@ -3364,7 +3465,7 @@
     },
     "epic-io": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "b2gnow": {
@@ -3384,7 +3485,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.paymentworks.com/careers"
+          "url": "https://www.paymentworks.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -3460,7 +3562,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://colbitech.com/jobs"
+          "url": "https://colbitech.com/jobs",
+          "synthetic": true
         }
       ]
     },
@@ -3525,9 +3628,15 @@
       "roles": []
     },
     "justice-systems-by-long": {
-      "status": "Unknown",
-      "note": "HTTP 403 for https://longbuildingtechcar",
-      "roles": []
+      "status": "Yes",
+      "note": "Account Executive - HVAC Service a [rendered]",
+      "roles": [
+        {
+          "title": "Account Executive - HVAC Service and Projects",
+          "location": "",
+          "url": "https://longbuildingtechcareers.ttcportals.com/jobs/18110242-account-executive-hvac-service-and-projects"
+        }
+      ]
     },
     "offenderwatch": {
       "status": "Unknown",
@@ -3536,7 +3645,7 @@
     },
     "scram-systems": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "HTTP 202 for https://scramsystems.dejobs",
       "roles": []
     },
     "orijin": {
@@ -3545,8 +3654,8 @@
       "roles": []
     },
     "turnkey-corrections": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "tiger-correctional-services": {
@@ -3586,7 +3695,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.tek84.com/careers"
+          "url": "https://www.tek84.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -3606,9 +3716,15 @@
       "roles": []
     },
     "digitaloptometrics": {
-      "status": "Unknown",
-      "note": "page too small - likely JS-rendered",
-      "roles": []
+      "status": "Yes",
+      "note": "Strategic Account Manager, Busines [rendered]",
+      "roles": [
+        {
+          "title": "Strategic Account Manager, Business Development",
+          "location": "",
+          "url": "https://digitaloptometrics.applicantpro.com/jobs/4186572"
+        }
+      ]
     },
     "ecins": {
       "status": "Unknown",
@@ -3632,7 +3748,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://irisid.com/careers"
+          "url": "https://irisid.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -3662,13 +3779,24 @@
       "roles": []
     },
     "d-fend-solutions": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": []
+      "status": "Yes",
+      "note": "Sales Executive - Airports Sector (McLean, Virginia)",
+      "roles": [
+        {
+          "title": "Sales Executive - Airports Sector",
+          "location": "McLean, Virginia",
+          "url": "https://jobs.lever.co/d-fendsolutions/c3cde6e4-566e-4cf9-a19b-01ddad80b464"
+        },
+        {
+          "title": "USAF Sales Executive - DoD",
+          "location": "McLean, Virginia",
+          "url": "https://jobs.lever.co/d-fendsolutions/cef11860-ffca-43b7-baf2-078c703ae075"
+        }
+      ]
     },
     "sentrycs": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "airsight": {
@@ -3697,15 +3825,9 @@
       "roles": []
     },
     "pstrax": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://station-automation-inc.gnahiring.com"
-        }
-      ]
+      "status": "Unknown",
+      "note": "page scan found no listings",
+      "roles": []
     },
     "collective-data": {
       "status": "Sales (non-AE)",
@@ -3789,7 +3911,7 @@
     },
     "etrak-recreation-software": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "parkify": {
@@ -3893,15 +4015,9 @@
       "roles": []
     },
     "o-city": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://www.bpcbt.com/careers"
-        }
-      ]
+      "status": "Unknown",
+      "note": "board is another company's - not read",
+      "roles": []
     },
     "tmoney": {
       "status": "Unknown",
@@ -3915,7 +4031,7 @@
     },
     "modeshift": {
       "status": "Unknown",
-      "note": "HTTP 202 for https://www.modeshift.com/c",
+      "note": "HTTP 403 for https://www.modeshift.com/c",
       "roles": []
     },
     "straffic-america": {
@@ -3935,7 +4051,7 @@
     },
     "prodata-ptexcellence": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "network error: HTTPSConnectionPool(host=",
       "roles": []
     },
     "init": {
@@ -3970,12 +4086,12 @@
     },
     "enghouse-transportation": {
       "status": "Unknown",
-      "note": "HTTP 202 for https://www.enghouse.com/ca",
+      "note": "HTTP 403 for https://www.enghouse.com/ca",
       "roles": []
     },
     "consat": {
       "status": "Unknown",
-      "note": "HTTP 404 for https://www.consat.com/care",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "gmv": {
@@ -3990,7 +4106,7 @@
     },
     "csched": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "transitcheck": {
@@ -4004,15 +4120,9 @@
       "roles": []
     },
     "connixt": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://www.connixt.com/careers"
-        }
-      ]
+      "status": "Unknown",
+      "note": "page too small - likely JS-rendered",
+      "roles": []
     },
     "interloc-solutions": {
       "status": "Unknown",
@@ -4111,7 +4221,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.angeltrax.com/careers"
+          "url": "https://www.angeltrax.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -4132,7 +4243,7 @@
     },
     "gatekeeper-systems": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "march-networks": {
@@ -4182,7 +4293,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.papercast.com/recruitment/were-hiring-design-engineer-development-engineer"
+          "url": "https://www.papercast.com/recruitment/were-hiring-design-engineer-development-engineer",
+          "synthetic": true
         }
       ]
     },
@@ -4197,8 +4309,8 @@
       "roles": []
     },
     "luminator-technology-group": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "aesys": {
@@ -4208,7 +4320,7 @@
     },
     "hanover-displays": {
       "status": "Unknown",
-      "note": "HTTP 202 for https://www.hanoverdisplays",
+      "note": "HTTP 403 for https://www.hanoverdisplays",
       "roles": []
     },
     "signagent": {
@@ -4228,7 +4340,7 @@
     },
     "buspas": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "waysine": {
@@ -4248,7 +4360,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.rideco.com/careers"
+          "url": "https://www.rideco.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -4258,13 +4371,13 @@
       "roles": []
     },
     "uzurv": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "Sales (non-AE)",
+      "note": "Manager of Community Business Deve only [rendered]",
       "roles": []
     },
     "qryde-by-hbss": {
       "status": "Unknown",
-      "note": "HTTP 202 for https://qryde.com/employmen",
+      "note": "HTTP 403 for https://qryde.com/employmen",
       "roles": []
     },
     "it-curves": {
@@ -4294,12 +4407,12 @@
     },
     "imagry": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "silverride": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "ontra-mobility": {
@@ -4354,8 +4467,8 @@
       "roles": []
     },
     "jacobs": {
-      "status": "Unknown",
-      "note": "HTTP 202 for https://careers.jacobs.com",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "with-community-calendar": {
@@ -4389,15 +4502,9 @@
       "roles": []
     },
     "active": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://careers.activenetwork.com"
-        }
-      ]
+      "status": "Unknown",
+      "note": "board is another company's - not read",
+      "roles": []
     },
     "adp": {
       "status": "Unknown",
@@ -4406,7 +4513,7 @@
     },
     "aatral-vr-ar-training": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "acapela-group": {
@@ -4420,8 +4527,8 @@
       "roles": []
     },
     "adobe": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "Sales (non-AE)",
+      "note": "Account Manager, Channel Sales only [rendered]",
       "roles": []
     },
     "ai-rgus": {
@@ -4622,8 +4729,8 @@
       "roles": []
     },
     "blue-voice": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "box": {
@@ -4663,7 +4770,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://cardintegrity.com/jobs"
+          "url": "https://cardintegrity.com/jobs",
+          "synthetic": true
         }
       ]
     },
@@ -4825,7 +4933,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.eagleview.com/careers"
+          "url": "https://www.eagleview.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -4891,9 +5000,15 @@
       "roles": []
     },
     "first-arriving": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": []
+      "status": "Yes",
+      "note": "Sales Account Executive: SaaS \u2013 Pu (Remote Nationwide ) [ren",
+      "roles": [
+        {
+          "title": "Sales Account Executive: SaaS \u2013 Public Safety Richmond, VA or",
+          "location": "Remote Nationwide (Remote) Posted 5 months ago",
+          "url": "https://firstarriving.com/job/sales-account-executive-saas-public-safety-local-government/"
+        }
+      ]
     },
     "firstnet-built-with-at-t": {
       "status": "Unknown",
@@ -5042,9 +5157,15 @@
       "roles": []
     },
     "kpa": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": []
+      "status": "Yes",
+      "note": "Account Executive - Automotive (Atlanta, GA)",
+      "roles": [
+        {
+          "title": "Account Executive - Automotive",
+          "location": "Atlanta, GA",
+          "url": "https://jobs.lever.co/kpaonline/5b8b68c7-3c3a-4e02-99d1-41fdeb997fef"
+        }
+      ]
     },
     "karda-inc": {
       "status": "Unknown",
@@ -5053,7 +5174,7 @@
     },
     "kinotek-inc": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "network error: ('Connection broken: Inco",
       "roles": []
     },
     "knarrtek-inc": {
@@ -5089,7 +5210,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.leosight.com/careers"
+          "url": "https://www.leosight.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -5105,7 +5227,7 @@
     },
     "lexisnexis-risk-solutions": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "HTTP 403 for https://risk.lexisnexis.com",
       "roles": []
     },
     "lexisnexis-risk-solutions-government": {
@@ -5176,7 +5298,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://monday.com/careers"
+          "url": "https://monday.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -5187,7 +5310,7 @@
     },
     "myrec-com-recreation-software": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "myvolunteer-by-crc": {
@@ -5207,7 +5330,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://netchex.com/careers"
+          "url": "https://netchex.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -5228,7 +5352,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.ninjaone.com/careers"
+          "url": "https://www.ninjaone.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -5248,8 +5373,8 @@
       "roles": []
     },
     "nutanix": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "nuvei": {
@@ -5259,7 +5384,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.nuvei.com/partner-with-us"
+          "url": "https://www.nuvei.com/partner-with-us",
+          "synthetic": true
         }
       ]
     },
@@ -5325,7 +5451,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.paloaltonetworks.com/careers"
+          "url": "https://www.paloaltonetworks.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -5366,7 +5493,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://careers.pimloc.com/"
+          "url": "https://careers.pimloc.com/",
+          "synthetic": true
         }
       ]
     },
@@ -5417,7 +5545,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://prophoenix.com/careers"
+          "url": "https://prophoenix.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -5529,7 +5658,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.salesforce.com/company/careers/?bc=HL"
+          "url": "https://www.salesforce.com/company/careers/?bc=HL",
+          "synthetic": true
         }
       ]
     },
@@ -5640,7 +5770,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.thomsonreuters.com/en/careers"
+          "url": "https://www.thomsonreuters.com/en/careers",
+          "synthetic": true
         }
       ]
     },
@@ -5656,7 +5787,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://trackvia.com/careers"
+          "url": "https://trackvia.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -5752,7 +5884,7 @@
     },
     "whooster-inc": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "workday": {
@@ -5858,6 +5990,11 @@
           "title": "Account Executive - Large Enterprise Retail and Hospitality UKI",
           "location": "2 Locations",
           "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/United-Kingdom-London/Join-our-Talent-Community---Account-Executive-Large-Enterprise--UKI_JR-0105894"
+        },
+        {
+          "title": "Principal Partner Sales Executive",
+          "location": "3 Locations",
+          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/India-Mumbai/Principal-Partner-Sales-Executive_JR-0109617"
         },
         {
           "title": "Medium Enterprise Regional Sales Director - Healthcare",
@@ -6304,11 +6441,6 @@
           "title": "Account Executive",
           "location": "Muskegon, MI",
           "url": "https://jobs.smartrecruiters.com/Xplor/744000144303182"
-        },
-        {
-          "title": "Account Executive",
-          "location": "Newark, DE",
-          "url": "https://jobs.smartrecruiters.com/Xplor/744000144303120"
         }
       ]
     },
@@ -6488,8 +6620,8 @@
       "roles": []
     },
     "liberty-defense": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "lost-returns": {
@@ -6533,6 +6665,11 @@
         },
         {
           "title": "Associate Account Executive, Healthcare/GPO",
+          "location": "Chicago, Illinois, United States",
+          "url": "https://job-boards.greenhouse.io/metropolis/jobs/7780314003"
+        },
+        {
+          "title": "Associate Account Executive, Healthcare/GPO",
           "location": "Atlanta, Georgia, United States",
           "url": "https://job-boards.greenhouse.io/metropolis/jobs/7780316003"
         },
@@ -6540,11 +6677,6 @@
           "title": "Associate Account Executive, Healthcare/GPO",
           "location": "Nashville, Tennessee, United States",
           "url": "https://job-boards.greenhouse.io/metropolis/jobs/7780315003"
-        },
-        {
-          "title": "Associate Account Executive, Healthcare/GPO",
-          "location": "Chicago, Illinois, United States",
-          "url": "https://job-boards.greenhouse.io/metropolis/jobs/7780314003"
         },
         {
           "title": "Associate Account Executive (Houston/Dallas)",
@@ -6585,7 +6717,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://pmweb.com/careers"
+          "url": "https://pmweb.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -6626,7 +6759,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.sita.aero/careers"
+          "url": "https://www.sita.aero/careers",
+          "synthetic": true
         }
       ]
     },
@@ -6688,7 +6822,7 @@
     },
     "way-com": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "HTTP 403 for https://www.way.com/careers",
       "roles": []
     },
     "westnet": {
@@ -6847,8 +6981,8 @@
       "roles": []
     },
     "miller-mendel": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "guardian-alliance-technologies": {
@@ -6872,8 +7006,8 @@
       "roles": []
     },
     "fortem-technologies": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "firstwatch": {
@@ -6929,7 +7063,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.dossiersystemsinc.com/careers"
+          "url": "https://www.dossiersystemsinc.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -7066,7 +7201,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://jobs.gusto.com/boards/upper-hand-89518d41-1ea4-4e74-8937-17ff05442a66"
+          "url": "https://jobs.gusto.com/boards/upper-hand-89518d41-1ea4-4e74-8937-17ff05442a66",
+          "synthetic": true
         }
       ]
     },
@@ -7102,7 +7238,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://byga.net/careers"
+          "url": "https://byga.net/careers",
+          "synthetic": true
         }
       ]
     },
@@ -7113,7 +7250,7 @@
     },
     "spond": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "heja": {
@@ -7269,7 +7406,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.hapco.com/employment"
+          "url": "https://www.hapco.com/employment",
+          "synthetic": true
         }
       ]
     },
@@ -7295,7 +7433,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.schreder.com/en/careers"
+          "url": "https://www.schreder.com/en/careers",
+          "synthetic": true
         }
       ]
     },
@@ -7381,7 +7520,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://amerlux.com/careers/"
+          "url": "https://amerlux.com/careers/",
+          "synthetic": true
         }
       ]
     },
@@ -7416,8 +7556,8 @@
       "roles": []
     },
     "proudcity": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "HTTP 403 for https://proudcity.com/caree",
       "roles": []
     },
     "streamline": {
@@ -7437,7 +7577,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.jadu.net/careers"
+          "url": "https://www.jadu.net/careers",
+          "synthetic": true
         }
       ]
     },
@@ -7529,7 +7670,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.sagitec.com/careers"
+          "url": "https://www.sagitec.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -7550,7 +7692,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.tcpsoftware.com/careers"
+          "url": "https://www.tcpsoftware.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -7565,8 +7708,8 @@
       "roles": []
     },
     "vidcruiter": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "board is another company's - not read",
       "roles": []
     },
     "i-o-solutions": {
@@ -7580,8 +7723,8 @@
       "roles": []
     },
     "public-safety-testing": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "fire-police-selection": {
@@ -7622,7 +7765,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.edmundsgovtech.com/careers"
+          "url": "https://www.edmundsgovtech.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -7789,7 +7933,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.fortorangepress.com/careers"
+          "url": "https://www.fortorangepress.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -7839,8 +7984,8 @@
       "roles": []
     },
     "swarco": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "rhythm-engineering": {
@@ -7975,7 +8120,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://banyanwater.com/careers"
+          "url": "https://banyanwater.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -8123,7 +8269,7 @@
     },
     "cybersoft-technologies": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "board is another company's - not read",
       "roles": []
     },
     "heartland-school-solutions": {
@@ -8138,7 +8284,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.transfinder.com/careers"
+          "url": "https://www.transfinder.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -8190,7 +8337,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.redroverk12.com/careers"
+          "url": "https://www.redroverk12.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -8221,7 +8369,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.pikmykid.com/careers"
+          "url": "https://www.pikmykid.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -8237,18 +8386,19 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.classlink.com/careers"
+          "url": "https://www.classlink.com/careers",
+          "synthetic": true
         }
       ]
     },
     "clever": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "tempest": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "bandwango": {
@@ -8263,7 +8413,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://crowdriff.com/careers"
+          "url": "https://crowdriff.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -8289,7 +8440,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://keydatadashboard.com/company/careers"
+          "url": "https://keydatadashboard.com/company/careers",
+          "synthetic": true
         }
       ]
     },
@@ -8341,7 +8493,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://gomomentus.com/careers"
+          "url": "https://gomomentus.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -8447,8 +8600,8 @@
       "roles": []
     },
     "accruent": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "board is another company's - not read",
       "roles": []
     },
     "ifs": {
@@ -8474,7 +8627,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.upkeep.com/careers"
+          "url": "https://www.upkeep.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -8490,7 +8644,7 @@
     },
     "gps-insight": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "roadbotics-by-michelin": {
@@ -8571,15 +8725,9 @@
       "roles": []
     },
     "aladtec": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://tcpsoftware.com/careers"
-        }
-      ]
+      "status": "Unknown",
+      "note": "board is another company's - not read",
+      "roles": []
     },
     "digitech": {
       "status": "Unknown",
@@ -8603,15 +8751,9 @@
       ]
     },
     "locution-systems": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://locution.com/careers"
-        }
-      ]
+      "status": "Unknown",
+      "note": "board is another company's - not read",
+      "roles": []
     },
     "us-digital-designs": {
       "status": "Unknown",
@@ -8619,8 +8761,8 @@
       "roles": []
     },
     "purvis-systems": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "zetron": {
@@ -8645,7 +8787,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://careers.intrado.com"
+          "url": "https://careers.intrado.com",
+          "synthetic": true
         }
       ]
     },
@@ -8676,7 +8819,7 @@
     },
     "i-am-responding": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "angeltrack": {
@@ -8696,7 +8839,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://spothero.com/careers"
+          "url": "https://spothero.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -8721,15 +8865,9 @@
       "roles": []
     },
     "nedap-identification-systems": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://www.nedap.com/en/careers/vacancies"
-        }
-      ]
+      "status": "Unknown",
+      "note": "board is another company's - not read",
+      "roles": []
     },
     "tagmaster": {
       "status": "Yes",
@@ -8738,7 +8876,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://tagmasterna.com/careers"
+          "url": "https://tagmasterna.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -8995,17 +9134,17 @@
     },
     "ivalua": {
       "status": "Yes",
-      "note": "Account Executive (London)",
+      "note": "Account Executive (Singapore, Singapo)",
       "roles": [
-        {
-          "title": "Account Executive",
-          "location": "London",
-          "url": "https://boards.greenhouse.io/ivalua/jobs/8069684?gh_jid=8069684"
-        },
         {
           "title": "Account Executive",
           "location": "Singapore, Singapore",
           "url": "https://boards.greenhouse.io/ivalua/jobs/7908686?gh_jid=7908686"
+        },
+        {
+          "title": "Account Executive",
+          "location": "London",
+          "url": "https://boards.greenhouse.io/ivalua/jobs/8069684?gh_jid=8069684"
         },
         {
           "title": "Account Executive - ANZ",
@@ -9034,13 +9173,13 @@
         },
         {
           "title": "Strategic Account Manager",
-          "location": "New York City, NY - US",
-          "url": "https://boards.greenhouse.io/ivalua/jobs/8142171?gh_jid=8142171"
+          "location": "Pittsburgh, PA - US",
+          "url": "https://boards.greenhouse.io/ivalua/jobs/8141992?gh_jid=8141992"
         },
         {
           "title": "Strategic Account Manager",
-          "location": "Pittsburgh, PA - US",
-          "url": "https://boards.greenhouse.io/ivalua/jobs/8141992?gh_jid=8141992"
+          "location": "New York City, NY - US",
+          "url": "https://boards.greenhouse.io/ivalua/jobs/8142171?gh_jid=8142171"
         }
       ]
     },
@@ -9055,9 +9194,15 @@
       "roles": []
     },
     "agiloft": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": []
+      "status": "Yes",
+      "note": "Enterprise Account Executive \u2013 Hea (United States)",
+      "roles": [
+        {
+          "title": "Enterprise Account Executive \u2013 Healthcare",
+          "location": "United States",
+          "url": "https://jobs.lever.co/agiloft/9fad3021-206f-462b-a6ce-502362981dde"
+        }
+      ]
     },
     "submittable": {
       "status": "Unknown",
@@ -9121,8 +9266,8 @@
       "roles": []
     },
     "core-business-technologies": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "board is another company's - not read",
       "roles": []
     },
     "aci-worldwide": {
@@ -9321,7 +9466,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://athena-security.com/careers"
+          "url": "https://athena-security.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -9352,15 +9498,9 @@
       "roles": []
     },
     "ident-a-kid": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://www.centegix.com/careers"
-        }
-      ]
+      "status": "Unknown",
+      "note": "board is another company's - not read",
+      "roles": []
     },
     "lobbyguard-solutions": {
       "status": "Unknown",
@@ -9368,9 +9508,16 @@
       "roles": []
     },
     "singlewire-software": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": []
+      "status": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]",
+      "roles": [
+        {
+          "title": "AE-type role (page scan)",
+          "location": "",
+          "url": "https://singlewire.com/careers",
+          "synthetic": true
+        }
+      ]
     },
     "alertus-technologies": {
       "status": "Yes",
@@ -9492,7 +9639,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://sita.aero/careers"
+          "url": "https://sita.aero/careers",
+          "synthetic": true
         }
       ]
     },
@@ -9513,8 +9661,8 @@
       ]
     },
     "dedrone-by-axon": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "hidden-level": {
@@ -9539,7 +9687,7 @@
     },
     "metrasens": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "HTTP 403 for https://metrasens.com/caree",
       "roles": []
     },
     "gatekeeper-security": {
@@ -9554,7 +9702,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://uveye.com/careers"
+          "url": "https://uveye.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -9630,12 +9779,12 @@
     },
     "bi-incorporated": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "track-group": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "attenti": {
@@ -9720,7 +9869,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.emergencyreporting.com/careers"
+          "url": "https://www.emergencyreporting.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -9789,11 +9939,6 @@
           "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Stuttgart-Germany/Territory-Manager-Hospital---BW_R18058"
         },
         {
-          "title": "Territory Manager, EMS",
-          "location": "2 Locations",
-          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Boise-ID/Territory-Manager--EMS_R18265"
-        },
-        {
           "title": "Territory Manager \u00d6sterreich",
           "location": "Vienna, Austria",
           "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/Vienna-Austria/Territory-Manager-sterreich_R18427"
@@ -9802,6 +9947,11 @@
           "title": "Territory Manager- North Carolina",
           "location": "US NC Remote",
           "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/US-NC-Remote/Territory-Manager--North-Carolina_R18399-1"
+        },
+        {
+          "title": "Territory Manager, Delhi and Mumbai",
+          "location": "New Delhi, India",
+          "url": "https://zoll.wd5.myworkdayjobs.com/en-US/ZOLLMedicalCorp/job/New-Delhi-India/Territory-Manager--Delhi-and-Mumbai_R18492"
         }
       ]
     },
@@ -9841,9 +9991,15 @@
       "roles": []
     },
     "overstory": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": []
+      "status": "Yes",
+      "note": "Enterprise Account Executive, Cana (Remote, Canada)",
+      "roles": [
+        {
+          "title": "Enterprise Account Executive, Canada",
+          "location": "Remote, Canada",
+          "url": "https://job-boards.eu.greenhouse.io/overstory/jobs/4953405101"
+        }
+      ]
     },
     "alchera-x": {
       "status": "Unknown",
@@ -9887,7 +10043,7 @@
     },
     "e-one": {
       "status": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host=",
+      "note": "page scan found no listings",
       "roles": []
     },
     "ferrara-fire-apparatus": {
@@ -10062,7 +10218,7 @@
     },
     "nuvve-holding": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "kajeet": {
@@ -10087,7 +10243,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.skedda.com/careers"
+          "url": "https://www.skedda.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -10155,7 +10312,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://centeredgesoftware.com/company/careers"
+          "url": "https://centeredgesoftware.com/company/careers",
+          "synthetic": true
         }
       ]
     },
@@ -10171,7 +10329,7 @@
     },
     "neptune-technology-group": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "HTTP 403 for https://www.neptunetg.com/c",
       "roles": []
     },
     "kamstrup": {
@@ -10211,7 +10369,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://in-situ.com/careers"
+          "url": "https://in-situ.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -10231,13 +10390,13 @@
       "roles": []
     },
     "ovarro": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "fido-tech": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "aquarius-spectrum": {
@@ -10247,7 +10406,7 @@
     },
     "syrinix": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "HTTP 403 for https://www.syrinix.com/car",
       "roles": []
     },
     "electro-scan": {
@@ -10262,7 +10421,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://cuesinc.com/pages/careers"
+          "url": "https://cuesinc.com/pages/careers",
+          "synthetic": true
         }
       ]
     },
@@ -10298,7 +10458,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.aquasight.io/careers"
+          "url": "https://www.aquasight.io/careers",
+          "synthetic": true
         }
       ]
     },
@@ -10374,7 +10535,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://adbsafegate.com/about/career"
+          "url": "https://adbsafegate.com/about/career",
+          "synthetic": true
         }
       ]
     },
@@ -10404,19 +10566,13 @@
       "roles": []
     },
     "embross": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://www.embross.com/careers"
-        }
-      ]
+      "status": "Unknown",
+      "note": "page too small - likely JS-rendered",
+      "roles": []
     },
     "elenium-automation": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "network error: HTTPSConnectionPool(host=",
       "roles": []
     },
     "ier": {
@@ -10430,8 +10586,8 @@
       "roles": []
     },
     "airportlabs": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "ink-innovation": {
@@ -10450,8 +10606,8 @@
       "roles": []
     },
     "grab": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "zensors": {
@@ -10492,8 +10648,8 @@
       "roles": []
     },
     "ge-vernova": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "hitachi-energy": {
@@ -10518,7 +10674,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.survalent.com/careers/"
+          "url": "https://www.survalent.com/careers/",
+          "synthetic": true
         }
       ]
     },
@@ -10650,8 +10807,8 @@
       "roles": []
     },
     "heimdall-power": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "neara": {
@@ -10688,12 +10845,12 @@
     },
     "nuvve": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "opusxenta": {
-      "status": "None found",
-      "note": "",
+      "status": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host=",
       "roles": []
     },
     "webcemeteries": {
@@ -10747,8 +10904,8 @@
       "roles": []
     },
     "srs-computing": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "board is another company's - not read",
       "roles": []
     },
     "tribute-technology": {
@@ -10817,8 +10974,8 @@
       "roles": []
     },
     "symbium": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "permitify": {
@@ -10832,8 +10989,8 @@
       "roles": []
     },
     "gl-solutions": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "thentia": {
@@ -10853,7 +11010,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.eplansoft.com/careers"
+          "url": "https://www.eplansoft.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -10895,7 +11053,7 @@
     },
     "archistar": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "HTTP 403 for https://www.archistar.ai/ca",
       "roles": []
     },
     "idox-group": {
@@ -10955,15 +11113,9 @@
       "roles": []
     },
     "pantonium": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://pantonium.com/careers/"
-        }
-      ]
+      "status": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host=",
+      "roles": []
     },
     "blaise-transit": {
       "status": "Unknown",
@@ -11092,12 +11244,12 @@
     },
     "machinex": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "van-dyk-recycling-solutions": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "bulk-handling-systems": {
@@ -11197,12 +11349,12 @@
     },
     "labrie-group": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "new-way-trucks": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "battle-motors": {
@@ -11327,15 +11479,9 @@
       "roles": []
     },
     "opendatasoft": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://www.huwise.com/en/careers/"
-        }
-      ]
+      "status": "Unknown",
+      "note": "board is another company's - not read",
+      "roles": []
     },
     "junar": {
       "status": "Unknown",
@@ -11379,7 +11525,7 @@
     },
     "karpel-solutions": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "board is another company's - not read",
       "roles": []
     },
     "tybera-development-group": {
@@ -11409,7 +11555,7 @@
     },
     "justice-av-solutions": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "for-the-record": {
@@ -11424,7 +11570,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.courtsmart.com/employment/"
+          "url": "https://www.courtsmart.com/employment/",
+          "synthetic": true
         }
       ]
     },
@@ -11499,8 +11646,8 @@
       "roles": []
     },
     "navblue": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "nallian": {
@@ -11550,13 +11697,14 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.sidwellco.com/careers"
+          "url": "https://www.sidwellco.com/careers",
+          "synthetic": true
         }
       ]
     },
     "devnet-inc": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "bondlink": {
@@ -11673,7 +11821,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://jobs.jobvite.com/ookla"
+          "url": "https://jobs.jobvite.com/ookla",
+          "synthetic": true
         }
       ]
     },
@@ -11908,6 +12057,11 @@
           "url": "https://job-boards.greenhouse.io/anthropic/jobs/5237973008"
         },
         {
+          "title": "Enterprise Account Executive - Retail",
+          "location": "London, UK",
+          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5218573008"
+        },
+        {
           "title": "Enterprise Account Executive - Retail/CPG",
           "location": "Seoul, South Korea",
           "url": "https://job-boards.greenhouse.io/anthropic/jobs/5391336008"
@@ -12026,7 +12180,7 @@
     },
     "fairfax-software": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "muni-link": {
@@ -12081,7 +12235,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://njbsoft.com/careers/"
+          "url": "https://njbsoft.com/careers/",
+          "synthetic": true
         }
       ]
     },
@@ -12102,7 +12257,7 @@
     },
     "netacent": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "castus": {
@@ -12172,7 +12327,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.pulseforgood.com/careers"
+          "url": "https://www.pulseforgood.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -12258,8 +12414,8 @@
       ]
     },
     "halda": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "Sales (non-AE)",
+      "note": "Manager, Business Development Sale only [rendered]",
       "roles": []
     },
     "intellicampus": {
@@ -12269,12 +12425,12 @@
     },
     "moodle-us": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "HTTP 403 for https://moodle.com/us/caree",
       "roles": []
     },
     "schoolyear": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "technolutions": {
@@ -12592,7 +12748,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://cusi.com/careers/"
+          "url": "https://cusi.com/careers/",
+          "synthetic": true
         }
       ]
     },
@@ -12709,7 +12866,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.sagitec.com/careers"
+          "url": "https://www.sagitec.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -12785,8 +12943,8 @@
       "roles": []
     },
     "chorus-innovations": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "lyssn": {
@@ -12806,7 +12964,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.planstreet.com/careers"
+          "url": "https://www.planstreet.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -12876,8 +13035,8 @@
       "roles": []
     },
     "d2l": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "Sales (non-AE)",
+      "note": "Sales Sales only [rendered]",
       "roles": []
     },
     "harmonize": {
@@ -12931,8 +13090,8 @@
       "roles": []
     },
     "heliocampus": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "Sales (non-AE)",
+      "note": "VP, Client Success only [rendered]",
       "roles": []
     },
     "niche": {
@@ -12987,15 +13146,9 @@
       "roles": []
     },
     "aquanuity-inc": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://aquanuity.com/about/careers/"
-        }
-      ]
+      "status": "Unknown",
+      "note": "HTTP 403 for https://aquanuity.com/about",
+      "roles": []
     },
     "kahua": {
       "status": "Unknown",
@@ -13004,7 +13157,7 @@
     },
     "professional-computer-solutions-llc": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "spout": {
@@ -13104,8 +13257,8 @@
       "roles": []
     },
     "infobase": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "Sales (non-AE)",
+      "note": "Senior Product Manager, Revenue Sy only [rendered]",
       "roles": []
     },
     "llmc": {
@@ -13155,7 +13308,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.k16solutions.com/about/careers"
+          "url": "https://www.k16solutions.com/about/careers",
+          "synthetic": true
         }
       ]
     },
@@ -13222,13 +13376,14 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://fundviewsoftware.com/careers"
+          "url": "https://fundviewsoftware.com/careers",
+          "synthetic": true
         }
       ]
     },
     "sprypoint": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "None found",
+      "note": " [rendered]",
       "roles": []
     },
     "menulogic-k12": {
@@ -13324,7 +13479,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://hapara.com/careers/"
+          "url": "https://hapara.com/careers/",
+          "synthetic": true
         }
       ]
     },
@@ -13335,7 +13491,7 @@
     },
     "tuapath": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "page too small - likely JS-rendered",
       "roles": []
     },
     "socialbridge-technologies": {
@@ -13435,12 +13591,12 @@
         {
           "title": "Account Executive",
           "location": "US - Remote",
-          "url": "https://job-boards.greenhouse.io/starrez/jobs/5398285008"
+          "url": "https://job-boards.greenhouse.io/starrez/jobs/5166328008"
         },
         {
           "title": "Account Executive",
           "location": "US - Remote",
-          "url": "https://job-boards.greenhouse.io/starrez/jobs/5166328008"
+          "url": "https://job-boards.greenhouse.io/starrez/jobs/5398285008"
         },
         {
           "title": "Account Executive, EMEA",
@@ -13481,7 +13637,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://govsense.com/careers/"
+          "url": "https://govsense.com/careers/",
+          "synthetic": true
         }
       ]
     },
@@ -13536,8 +13693,8 @@
       "roles": []
     },
     "futurefit-ai": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "Sales (non-AE)",
+      "note": "Workforce Sales Lead Growth & Sale only [rendered]",
       "roles": []
     },
     "job-machine": {
@@ -13561,15 +13718,9 @@
       "roles": []
     },
     "sergeant-laboratories": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://www.sgtlabs.com/careers/"
-        }
-      ]
+      "status": "Unknown",
+      "note": "board is another company's - not read",
+      "roles": []
     },
     "jotit": {
       "status": "Unknown",
@@ -13613,7 +13764,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://psychhub.com/careers"
+          "url": "https://psychhub.com/careers",
+          "synthetic": true
         }
       ]
     },
@@ -13628,15 +13780,9 @@
       "roles": []
     },
     "beanstack": {
-      "status": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]",
-      "roles": [
-        {
-          "title": "AE-type role (page scan)",
-          "location": "",
-          "url": "https://joyfulreading.com/who-we-are/careers"
-        }
-      ]
+      "status": "Unknown",
+      "note": "board is another company's - not read",
+      "roles": []
     },
     "envisionware": {
       "status": "Unknown",
@@ -13665,7 +13811,7 @@
     },
     "brickfield-education-labs": {
       "status": "Unknown",
-      "note": "page scan found no listings",
+      "note": "network error: HTTPSConnectionPool(host=",
       "roles": []
     },
     "coursedog": {
@@ -13700,7 +13846,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.sharestream.com/about-us/careers/"
+          "url": "https://www.sharestream.com/about-us/careers/",
+          "synthetic": true
         }
       ]
     },
@@ -13812,7 +13959,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://baseform.com/np4/careers.html"
+          "url": "https://baseform.com/np4/careers.html",
+          "synthetic": true
         }
       ]
     },
@@ -13858,7 +14006,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://itopia.com/careers/"
+          "url": "https://itopia.com/careers/",
+          "synthetic": true
         }
       ]
     },
@@ -13869,7 +14018,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://doorman.school/careers"
+          "url": "https://doorman.school/careers",
+          "synthetic": true
         }
       ]
     },
@@ -13910,8 +14060,8 @@
       "roles": []
     },
     "ease-health": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
+      "status": "Sales (non-AE)",
+      "note": "GTM GTM Engineer only [rendered]",
       "roles": []
     },
     "hiboop": {
@@ -14120,8 +14270,8 @@
       "roles": []
     },
     "identity-automation": {
-      "status": "Sales (non-AE)",
-      "note": "sales roles, none AE",
+      "status": "Unknown",
+      "note": "HTTP 403 for https://www.jamf.com/about/",
       "roles": []
     },
     "eratesync": {
@@ -14141,7 +14291,8 @@
         {
           "title": "AE-type role (page scan)",
           "location": "",
-          "url": "https://www.onflo.com/about/careers"
+          "url": "https://www.onflo.com/about/careers",
+          "synthetic": true
         }
       ]
     },
