@@ -3005,6 +3005,75 @@ def check_refresh_renders_a_shell_before_saying_unknown() -> int:
     return errors
 
 
+
+def check_a_page_scan_of_the_parents_site_is_not_evidence() -> int:
+    """Five cards said "Yes - AE-type role" off somebody else's careers page.
+
+    Cartegraph's board is opengov.com and its own description reads "part of
+    OpenGov". ACTIVE's is activenetwork.com. Aladtec's is tcpsoftware.com.
+    Ident-A-Kid's is centegix.com. SRS Computing's is tributetech.com. Every
+    one of them showed ZERO postings, because build_board already refuses to
+    count a shared board twice - so a visitor saw "Yes, hiring an AE" with
+    nothing to click and no way to check the claim.
+
+    A page scan is the weakest evidence this project accepts: it proves some
+    AE-ish words appeared somewhere on a page. Those words on the PARENT's page
+    say nothing about the subsidiary, and CLAUDE.md rules that reporting a
+    parent's requisition as theirs is a false Yes - the thing this repo exists
+    to refuse, arrived at from the opposite direction to the usual.
+
+    Downgraded to Unknown and NOT to "None found", because we still have not
+    read their board. Saying we found nothing there would be the other false
+    claim.
+
+    An ATS host is not a company. greenhouse.io and bamboohr.com are filing
+    cabinets, and treating them as foreign domains would delete every real
+    board on the site.
+    """
+    import refresh
+    errors = 0
+    OTHER = [
+        ("https://cartegraph.com", "https://opengov.com/careers/", "OpenGov"),
+        ("https://activenetwork.com/x", "https://careers.activenetwork.com", "Active"),
+        ("https://aladtec.com", "https://tcpsoftware.com/careers", "TCP"),
+    ]
+    for site, ref, who in OTHER:
+        if site.split("//")[1].split("/")[0].replace("www.", "") in ref:
+            continue                       # same domain, not a case
+        if not refresh._someone_elses_site(site, ref):
+            errors += fail(f"a board on {who}'s domain is not being treated as "
+                           f"another company's, so a page scan of their careers "
+                           f"page can still produce a Yes for somebody else")
+    SAME_OR_ATS = [
+        ("https://fotokite.com", "https://fotokite.bamboohr.com/careers"),
+        ("https://acme.com", "https://boards.greenhouse.io/acme"),
+        ("https://acme.com", "https://acme.com/careers"),
+        ("https://acme.com", "https://jobs.lever.co/acme"),
+        ("https://acme.com", None),
+        ("https://acme.com", "someslug"),
+    ]
+    for site, ref in SAME_OR_ATS:
+        if refresh._someone_elses_site(site, ref):
+            errors += fail(f"{ref!r} was treated as another company's site. "
+                           f"An ATS host is a filing cabinet, not a rival - "
+                           f"this would delete real boards wholesale")
+    # and the downgrade must be Unknown, never "None found"
+    # Comments stripped first. This tripped on the comment that explains why
+    # the downgrade is NOT "None found" - the second time today a check has
+    # convicted its own prose. A checker that cannot tell code from writing
+    # about the code fails the moment somebody writes the explanation.
+    src = re.sub(r"#[^\n]*", "", inspect.getsource(refresh.check_company))
+    if "_someone_elses_site" not in src:
+        errors += fail("check_company no longer consults _someone_elses_site, "
+                       "so a page scan of a parent's page can be reported as "
+                       "this company hiring")
+    elif '"None found"' in src.split("_someone_elses_site")[1][:400]:
+        errors += fail("a board on another company's domain is being recorded "
+                       "as 'None found'. We have not read THEIR board; saying "
+                       "we found nothing is the opposite false claim")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -3346,6 +3415,7 @@ def main() -> int:
     errors += check_a_count_is_never_a_job_title()
     errors += check_a_card_link_yields_the_title_not_the_whole_card()
     errors += check_refresh_renders_a_shell_before_saying_unknown()
+    errors += check_a_page_scan_of_the_parents_site_is_not_evidence()
     errors += check_coming_soon_is_not_a_parked_domain()
     errors += check_a_parent_board_ruling_names_the_parent()
     errors += check_the_owner_can_argue_with_the_logic()

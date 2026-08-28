@@ -60,6 +60,53 @@ def previous_snapshot(today: str):
     return snaps[-1] if snaps else None
 
 
+# Hosts that run job boards for other people. A board on one of these is not
+# somebody else's company site, it is a vendor doing its job.
+_ATS_HOSTS = (
+    "greenhouse.io", "lever.co", "ashbyhq.com", "workable.com", "bamboohr.com",
+    "myworkdayjobs.com", "workday.com", "recruitee.com", "breezy.hr", "gusto.com",
+    "smartrecruiters.com", "jazzhr.com", "paylocity.com", "icims.com",
+    "rippling.com", "applytojob.com", "taleo.net", "successfactors.com",
+    "jobscore.com", "comeet.com", "teamtailor.com", "trinethire.com",
+    "applicantpro.com", "hirehive.com", "hrmdirect.com", "ttcportals.com",
+    "jobvite.com", "dayforcehcm.com", "adp.com", "ycombinator.com",
+    "gnahiring.com", "trakstar.com", "oraclecloud.com", "paycomonline.net",
+)
+
+
+def _someone_elses_site(website: str, ref) -> bool:
+    """Is this board on a domain belonging to a different COMPANY?
+
+    Five cards said "Yes - AE-type role" on the strength of a page scan of
+    somebody else's careers page. Cartegraph's board is opengov.com, and its
+    own description reads "part of OpenGov". ACTIVE's is activenetwork.com.
+    Aladtec's is tcpsoftware.com. Every one showed zero postings, because
+    build_board already refuses to count a shared board twice - so a visitor
+    saw "Yes, hiring an AE" with nothing to click and no way to check.
+
+    A page scan is the weakest evidence there is: it proves some AE-ish words
+    appeared somewhere on a page. Those words appearing on the PARENT's page
+    say nothing whatever about the subsidiary, and CLAUDE.md is explicit that
+    reporting a parent's requisition as theirs is a false Yes.
+
+    An ATS host does not count. greenhouse.io is not a company whose jobs
+    might be mistaken for this one's; it is the filing cabinet.
+    """
+    from urllib.parse import urlparse
+
+    def root(u):
+        h = (urlparse(u or "").hostname or "").lower().replace("www.", "")
+        parts = h.split(".")
+        return ".".join(parts[-2:]) if len(parts) >= 2 else h
+
+    if not isinstance(ref, str) or not ref.startswith("http"):
+        return False
+    site, board = root(website), root(ref)
+    if not site or not board or site == board:
+        return False
+    return board not in _ATS_HOSTS
+
+
 def _try_render(kind: str, ref) -> dict | None:
     """Read a JS-shelled careers page with a real browser, or return None.
 
@@ -139,6 +186,16 @@ def check_company(comp: dict) -> dict:
         if rendered:
             status, note, roles = (rendered["status"], rendered["note"],
                                    rendered["roles"])
+    # A page-scan verdict read off someone else's careers page is not evidence
+    # about this company - see _someone_elses_site. Downgraded to Unknown with
+    # the reason named, rather than to "None found": we still have not looked
+    # at THEIR board, and saying we found nothing would be the other false
+    # claim.
+    if (kind == "html" and status in ("Yes", "Sales (non-AE)")
+            and _someone_elses_site(comp.get("website"), ref)):
+        return {"status": "Unknown",
+                "note": "board is another company's - not read"[:60],
+                "roles": []}
     if kind == "html" and status == "Yes":
         note = (note + " [page scan - verify]")[:60]
     return {"status": status, "note": note, "roles": roles}
