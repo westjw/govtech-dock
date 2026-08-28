@@ -607,7 +607,8 @@ def main() -> int:
     today = dt.date.today().isoformat()
     postings, orgs, unreadable, rendered = [], [], 0, 0
     render_skipped = 0
-    promoted = promoted_cos = 0
+    promoted = 0
+    promoted_names: list[str] = []
 
     # Fetch in parallel. Sequentially, 362 boards plus renders took 71 minutes,
     # which does not fit a daily job. Most of that is waiting on sockets, so
@@ -796,7 +797,7 @@ def main() -> int:
             if stored:
                 jobs = stored
                 promoted += len(stored)
-                promoted_cos += 1
+                promoted_names.append(f"{c['name']} ({len(stored)})")
                 err = None
 
         if err and not jobs:
@@ -1235,9 +1236,15 @@ def main() -> int:
           f"file, {no_board} awaiting discovery")
     print(f"  {unreadable} boards unreadable, {rendered} recovered by rendering")
     if promoted:
-        print(f"  {promoted} posting(s) at {promoted_cos} company(ies) came from a "
-              f"stored role, not enumeration - their board would not list, but "
-              f"refresh had already read the role")
+        # NAMED, not just counted. This path bypasses enumeration entirely and
+        # publishes a role on the strength of the ownership guard alone, so it
+        # is the one place a parent-board mistake would reach the public board
+        # silently. A count cannot be audited; a list can.
+        print(f"  {promoted} posting(s) at {len(promoted_names)} company(ies) came "
+              f"from a stored role, not enumeration - their board would not "
+              f"list, but refresh had already read the role:")
+        for nm in sorted(promoted_names):
+            print(f"     {nm}")
     if render_skipped:
         print(f"  {render_skipped} board(s) NOT TRIED - the render budget "
               f"({a.render_budget:.0f}s) ran out. These are not zeros; raise "
