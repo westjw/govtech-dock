@@ -2848,12 +2848,17 @@ def act_verify_website(body: dict) -> dict:
     # read. That is the asymmetric error the whole repo is built around, so
     # the unreadable case now says so and offers no ruling at all.
     if not (html or "").strip():
-        return {"ok": True, "unreadable": True, "url": url,
-                "message": ("Their server answered but sent nothing back - most "
-                            "likely a bot wall. We have learned nothing about "
-                            "this address, which is different from learning it "
-                            "is wrong. Open it yourself and use Save if it is "
-                            "them.")}
+        # Said plainly, and NOT as a warning. The first version explained the
+        # epistemics - "we have learned nothing about this address, which is
+        # different from learning it is wrong" - in red, next to a Save button.
+        # True, and it read as "something is wrong here" when the likeliest
+        # thing is that the address is perfectly good and their host dislikes
+        # robots. The honesty is kept; the philosophy lecture is not.
+        return {"ok": True, "unreadable": True, "url": url, "tone": "neutral",
+                "message": ("Their site blocks automated readers, so we could "
+                            "not open it. That is about our reader, not their "
+                            "address \u2014 this link may well be right. Open it "
+                            "in a tab: if it is them, hit Save.")}
     title = re.search(r"<title[^>]*>(.*?)</title>", html, re.S | re.I)
     title = re.sub(r"\s+", " ", title.group(1)).strip()[:140] if title else ""
     parked = bool(find_websites.PARKED.search(html[:4000]))

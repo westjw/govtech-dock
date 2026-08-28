@@ -1740,7 +1740,11 @@ RENDER.websites = c => {
        failed fetch. */
     if (r.unreadable) {
       const u = el('div');
-      u.appendChild(el('span', 'warn', r.message));
+      /* Not 'warn'. A site that blocks robots is not a problem with the
+         address, and colouring it like one told the owner to distrust a link
+         that is probably fine. The tone comes from the server so the two
+         halves cannot drift. */
+      u.appendChild(el('span', r.tone === 'neutral' ? 'kv' : 'warn', r.message));
       e.appendChild(u);
       n.appendChild(e);
       save.disabled = false;
@@ -1868,6 +1872,19 @@ RENDER.websites = c => {
         + 'but the logo and job-board steps work from the homepage \u2014 '
         + host + ' may be the better address.'));
       e.appendChild(d);
+    }
+
+    /* SAY WHEN IT IS FINE. Every branch above had something to caveat, so the
+       panel only ever spoke up to hedge - and a screen that only hedges reads
+       as a screen that always found a problem. When the page is real, names
+       the company, and is the front door, there is nothing to weigh: say so
+       and get out of the way. */
+    if (!r.parked && r.identifies && !deep) {
+      const good = el('div');
+      good.style.marginTop = '6px';
+      good.appendChild(el('span', 'ok', 'Nothing here needs a decision \u2014 '
+                        + 'this address checks out. Hit Save.'));
+      e.appendChild(good);
     }
 
     const nxt = el('div', 'kv');
