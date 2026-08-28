@@ -60,10 +60,27 @@ H1 = re.compile(r"<h1[^>]*>(.*?)</h1>", re.I | re.S)
 PARKED = re.compile(r"domain (is )?for sale|buy this domain|parked (free )?(at|by)|"
                     r"\bgodaddy\b|\bnamecheap\b|\bsedo\b|\bhugedomains\b|"
                     r"this domain may be for sale|"
-                    r"under construction|coming soon|"
                     r"[\w-]+\.(com|net|io|co|us|ai|org)\s+(is\s+)?for sale|"
                     r"spaceship\.com|\bnamepros\b|domains for sale|parked domain|"
                     r"human verification", re.I)
+
+
+# WEAK signals, which is the whole point of keeping them separate. "Coming
+# soon" and "under construction" are what a SQUATTER says and also what a real
+# company that has not launched yet says. wrangler.ai puts
+# "Wrangler.ai - the agentic Chief of Staff for field operations. Coming soon."
+# in its meta description, sets og:site_name to its own name and signs the
+# footer "(c) 2026 Wrangler Technologies, Inc." - a real company, read as a
+# parked domain, on two words.
+#
+# The panel showed both conclusions at once: "the page calls itself
+# Wrangler.ai" one line above "it never names this company". Two code paths
+# disagreeing in front of the owner.
+#
+# So a weak signal only counts when the page ALSO fails to name the company.
+# A squatter's holding page says "coming soon" and names nobody; a pre-launch
+# company says "coming soon" and says who it is.
+PARKED_SOFT = re.compile(r"under construction|coming soon", re.I)
 
 
 def _parked(html: str) -> bool:
@@ -87,7 +104,29 @@ def _parked(html: str) -> bool:
     if PARKED.search(html[:4000]):
         return True
     m = re.search(r"<title[^>]*>(.*?)</title>", html[:60000], re.S | re.I)
-    return bool(m and PARKED.search(m.group(1)))
+    if m and PARKED.search(m.group(1)):
+        return True
+    # A weak signal on its own is not enough - see PARKED_SOFT. It counts only
+    # where the page names nobody, which is what separates a squatter's holding
+    # page from a company that has not launched.
+    if PARKED_SOFT.search(html[:4000]) or (m and PARKED_SOFT.search(m.group(1))):
+        return not _names_someone(html)
+    return False
+
+
+def _names_someone(html: str) -> bool:
+    """Does this page put ANY company name in its own identity fields?
+
+    Deliberately not "is it THIS company" - that is identifies()'s job, and
+    asking it here would be circular, since identifies() calls _parked(). This
+    asks the weaker question a squatter fails: does the page claim to be
+    anything at all. og:site_name and a copyright line are the two a holding
+    page does not bother with.
+    """
+    if re.search(r'og:site_name["\']\s+content=["\'][^"\']{2,}', html[:60000], re.I):
+        return True
+    return bool(re.search(r"(?:\u00a9|&copy;|\(c\))\s*\d{4}\s+[A-Z][\w.&' -]{2,}",
+                          html[:60000]))
 
 
 def norm(s: str) -> str:

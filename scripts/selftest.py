@@ -2703,6 +2703,62 @@ def check_a_refusal_is_not_a_search() -> int:
     return errors
 
 
+
+def check_coming_soon_is_not_a_parked_domain() -> int:
+    """A company that has not launched is not a domain for sale.
+
+    wrangler.ai puts "Wrangler.ai - the agentic Chief of Staff for field
+    operations. Coming soon." in its meta description, sets og:site_name to its
+    own name, and signs its footer "(c) 2026 Wrangler Technologies, Inc." The
+    PARKED pattern listed "coming soon" beside "buy this domain", so a real
+    company was read as a squatter on two words.
+
+    The owner saw both conclusions at once. One line said "the page calls
+    itself Wrangler.ai"; the next said "it never names this company - the
+    domain is parked or up for sale". Two code paths disagreeing in front of
+    the person being asked to rule.
+
+    So the weak signals are separated and corroborated: "coming soon" and
+    "under construction" count only where the page names NOBODY. A squatter's
+    holding page says coming soon and identifies no one; a pre-launch company
+    says coming soon and says who it is. A STRONG signal still wins outright -
+    a page can name itself and still be a for-sale listing, which is precisely
+    the DomainMarket business model.
+    """
+    import find_websites as fw
+    errors = 0
+    named = ('<html><head><meta property="og:site_name" content="Wrangler.ai">'
+             '<meta name="description" content="Coming soon."></head>'
+             '<body>&copy; 2026 Wrangler Technologies, Inc.</body></html>')
+    cases = [
+        ("<title>Coming soon</title><body>Coming soon</body>", True,
+         "a holding page that names nobody"),
+        ("<title>Under Construction</title><body>under construction</body>", True,
+         "the classic holding page"),
+        (named, False,
+         "a pre-launch company that names itself"),
+        ("<title>vocaltechnologies.com - Technology Domains for Sale</title>", True,
+         "a strong signal in the title"),
+        ("<body>buy this domain</body>", True, "a strong signal"),
+        ('<html><head><meta property="og:site_name" content="Squatter Co"></head>'
+         "<body>buy this domain</body></html>", True,
+         "a strong signal beats naming itself"),
+    ]
+    for html, want, what in cases:
+        got = fw._parked(html)
+        if got != want:
+            errors += fail(f"_parked says {got} for {what}; expected {want}")
+    if not fw.identifies(named, "Wrangler.ai"):
+        errors += fail("identifies() rejects a pre-launch company that names "
+                       "itself in og:site_name and its copyright line")
+    # and the weak terms must not have been left in the strong pattern
+    for weak in ("coming soon", "under construction"):
+        if fw.PARKED.search(weak):
+            errors += fail(f"{weak!r} is still in the STRONG parked pattern, so "
+                           f"it convicts a page on its own")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -3042,6 +3098,7 @@ def main() -> int:
     errors += check_admin_blurbs_have_no_typed_counts()
     errors += check_queues_do_not_propose_deleted_categories()
     errors += check_a_count_is_never_a_job_title()
+    errors += check_coming_soon_is_not_a_parked_domain()
     errors += check_an_unread_board_is_not_a_zero()
     errors += check_the_gate_sees_an_unreadable_cliff()
     errors += check_a_transport_failure_gets_a_second_chance()
