@@ -276,8 +276,8 @@
    "ref": "https://www.axon.com/careers/all"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -970,8 +970,8 @@
    "ref": "https://www.ycombinator.com/companies/aurelian/jobs"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -1711,8 +1711,8 @@
    "ref": "https://careers.conduent.com/us/en/search-results"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -3021,9 +3021,25 @@
    "ref": "https://apply.ukg.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
-   "roles": [],
+   "status": "Yes",
+   "note": "Customer Account Manager 2 United  (Remote) [rendered]",
+   "roles": [
+    {
+     "title": "Customer Account Manager 2 United States Sales",
+     "location": "Remote",
+     "url": "https://apply.ukg.com/careers/job/893397433208"
+    },
+    {
+     "title": "Mid-Market Customer Account Manager United States + 3 more Sales",
+     "location": "Remote",
+     "url": "https://apply.ukg.com/careers/job/893395599856"
+    },
+    {
+     "title": "ACCOUNT EXECUTIVE 4 United States Sales",
+     "location": "Remote",
+     "url": "https://apply.ukg.com/careers/job/893397068471"
+    }
+   ],
    "checked": "2026-08-28"
   },
   "govtech": true,
@@ -3477,8 +3493,8 @@
    "ref": "https://zeroeyes.com/careers-portal/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -3720,9 +3736,20 @@
    "ref": "https://www.powerschool.com/company/careers/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
-   "roles": [],
+   "status": "Yes",
+   "note": "Account Manager (Remote - US 2026-5) [rendered]",
+   "roles": [
+    {
+     "title": "Account Manager",
+     "location": "Remote - US 2026-52865 View",
+     "url": "https://www.powerschool.com/company/careers/job/?referencenumber=2026-52865&location=US--Remote"
+    },
+    {
+     "title": "Sr. Strategic Account Manager",
+     "location": "Remote - US 2026-52823 View",
+     "url": "https://www.powerschool.com/company/careers/job/?referencenumber=2026-52823&location=US--Remote"
+    }
+   ],
    "checked": "2026-08-28"
   },
   "govtech": true,
@@ -3768,9 +3795,25 @@
    "ref": "https://careers.frontlineeducation.com/search/sales/jobs"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "HTTP 403 for https://careers.frontlineed",
-   "roles": [],
+   "status": "Yes",
+   "note": "Strategic Account Executive - ERP [rendered]",
+   "roles": [
+    {
+     "title": "Strategic Account Executive - ERP",
+     "location": "",
+     "url": "https://careers.frontlineeducation.com/jobs/18164396-strategic-account-executive-erp"
+    },
+    {
+     "title": "Strategic Account Executive",
+     "location": "",
+     "url": "https://careers.frontlineeducation.com/jobs/18172620-strategic-account-executive"
+    },
+    {
+     "title": "Regional Sales Director",
+     "location": "",
+     "url": "https://careers.frontlineeducation.com/jobs/18164395-regional-sales-director"
+    }
+   ],
    "checked": "2026-08-28"
   },
   "govtech": true,
@@ -5024,8 +5067,8 @@
    "ref": "https://careers.plotbox.io"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -5222,9 +5265,15 @@
    "ref": "https://www.caselle.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page too small - likely JS-rendered",
-   "roles": [],
+   "status": "Yes",
+   "note": "Account Manager - Sales [rendered]",
+   "roles": [
+    {
+     "title": "Account Manager - Sales",
+     "location": "",
+     "url": "https://casellejobs.applicantpro.com/jobs/4158979"
+    }
+   ],
    "checked": "2026-08-28"
   },
   "govtech": true,
@@ -5366,8 +5415,8 @@
    "ref": "https://www.schneidergis.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -5621,9 +5670,15 @@
    "ref": "https://zencity.io/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "HTTP 202 for https://zencity.io/careers",
-   "roles": [],
+   "status": "Yes",
+   "note": "Enterprise Account Manager (New York, US) [rendered]",
+   "roles": [
+    {
+     "title": "Enterprise Account Manager",
+     "location": "New York, US",
+     "url": "https://zencity.io/careers/co/sales-business-development/CC.C60/enterprise-account-manager/all"
+    }
+   ],
    "checked": "2026-08-28"
   },
   "govtech": true,
@@ -5993,8 +6048,8 @@
    "ref": "https://www.commonsensetech.ai/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -6593,9 +6648,15 @@
    "ref": "https://www.psdcitywide.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
-   "roles": [],
+   "status": "Yes",
+   "note": "Account Executive [rendered]",
+   "roles": [
+    {
+     "title": "Account Executive",
+     "location": "",
+     "url": "https://psd.bamboohr.com/careers/266"
+    }
+   ],
    "checked": "2026-08-28"
   },
   "govtech": true,
@@ -6719,8 +6780,8 @@
    "ref": "https://threeplusone.us/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -7163,8 +7224,8 @@
    "ref": "https://bamboohealth.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -7313,8 +7374,8 @@
    "ref": "https://www.hartintercivic.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -7834,8 +7895,8 @@
    "ref": "https://careers.powerfleet.com"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -7906,9 +7967,15 @@
    "ref": "https://nexgenam.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
-   "roles": [],
+   "status": "Yes",
+   "note": "SaaS Client Account Manager [rendered]",
+   "roles": [
+    {
+     "title": "SaaS Client Account Manager",
+     "location": "",
+     "url": "https://nexgenam.zohorecruit.com/jobs/Careers/785571000001140094/SaaS-Client-Account-Manager?source=CareerSite"
+    }
+   ],
    "checked": "2026-08-28"
   },
   "govtech": true,
@@ -8543,8 +8610,8 @@
    "ref": "https://www.greehill.com/careers/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "Sales (non-AE)",
+   "note": "Customer Success & Project Manager only [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -10014,8 +10081,8 @@
    "ref": "https://www.starchase.com/job-listings"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "Sales (non-AE)",
+   "note": "Product Installation and Support T only [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -10463,8 +10530,8 @@
    "ref": "https://fotokite.bamboohr.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page too small - likely JS-rendered",
+   "status": "Sales (non-AE)",
+   "note": "Sales Engineer only [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -10757,8 +10824,8 @@
    "ref": "https://tractionrec.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -11839,8 +11906,8 @@
    "ref": "https://nam11.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecruiting.paylocity.com%2Frecruiting%2Fjobs%2FAll%2F281738b4-8c12-499f-9675-d58fbec1da87%2FTW-VENDING-INC&data=04%7C01%7CKatym%40tkc32m.com%7C474b2a98f0eb4c9a324d08d9e1b4e8df%7C8c76fae6dea14cf3b8975c4b1ee817b7%7C0%7C0%7C637788989378298241%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000&sdata=jncO1CHTozoOvq3u3TsTYkAzoWBT46AVHLqeAeGyL9k%3D&reserved=0"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -12355,9 +12422,20 @@
    "ref": "https://d-fendsolutions.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
-   "roles": [],
+   "status": "Yes",
+   "note": "Sales Executive - Airports Sector [rendered]",
+   "roles": [
+    {
+     "title": "Sales Executive - Airports Sector",
+     "location": "",
+     "url": "https://jobs.lever.co/d-fendsolutions/c3cde6e4-566e-4cf9-a19b-01ddad80b464"
+    },
+    {
+     "title": "USAF Sales Executive - DoD",
+     "location": "",
+     "url": "https://jobs.lever.co/d-fendsolutions/cef11860-ffca-43b7-baf2-078c703ae075"
+    }
+   ],
    "checked": "2026-08-28"
   },
   "govtech": true,
@@ -14821,8 +14899,8 @@
    "ref": "https://luminatortechnologygroup.applytojob.com"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -15091,8 +15169,8 @@
    "ref": "https://uzurv.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "Sales (non-AE)",
+   "note": "Manager of Community Business Deve only [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -15259,8 +15337,8 @@
    "ref": "https://imagry.co/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "Sales (non-AE)",
+   "note": "EU Sales Manager Sales \u00b7 Full-time only [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -15491,8 +15569,8 @@
    "ref": "https://careers.jacobs.com"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "HTTP 202 for https://careers.jacobs.com",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -15788,8 +15866,8 @@
    "ref": "https://careers.adobe.com/us/en/search-results/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "Sales (non-AE)",
+   "note": "Manager, Deal Desk only [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -17561,9 +17639,15 @@
    "ref": "https://firstarriving.com/jobs/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
-   "roles": [],
+   "status": "Yes",
+   "note": "Sales Account Executive: SaaS \u2013 Pu (Remote Nationwide ) [ren",
+   "roles": [
+    {
+     "title": "Sales Account Executive: SaaS \u2013 Public Safety Richmond, VA or",
+     "location": "Remote Nationwide (Remote) Posted 5 months ago",
+     "url": "https://firstarriving.com/job/sales-account-executive-saas-public-safety-local-government/"
+    }
+   ],
    "checked": "2026-08-28"
   },
   "govtech": true,
@@ -18318,9 +18402,15 @@
    "ref": "https://kpa.io/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
-   "roles": [],
+   "status": "Yes",
+   "note": "Account Executive - Automotive [rendered]",
+   "roles": [
+    {
+     "title": "Account Executive - Automotive",
+     "location": "",
+     "url": "https://jobs.lever.co/kpaonline/5b8b68c7-3c3a-4e02-99d1-41fdeb997fef"
+    }
+   ],
    "checked": "2026-08-28"
   },
   "govtech": true,
@@ -23164,8 +23254,8 @@
    "ref": "https://libertydefense.com/company/careers/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -24707,8 +24797,8 @@
    "ref": "https://www.linkedin.com/jobs/search/?currentJobId=2980017271&f_C=10640207&geoId=92000000"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -27767,8 +27857,8 @@
    "ref": "https://www.publicsafetytesting.com/for-candidates/career-opportunities/all"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -28919,8 +29009,8 @@
    "ref": "https://www.swarco.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -30680,8 +30770,8 @@
    "ref": "https://www.clever.com/about/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -30704,8 +30794,8 @@
    "ref": "https://www.tempest.im/company/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -32088,8 +32178,8 @@
    "ref": "https://www.purvis.com/careers/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -33882,9 +33972,15 @@
    "ref": "https://agiloft.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
-   "roles": [],
+   "status": "Yes",
+   "note": "Enterprise Account Executive \u2013 Hea [rendered]",
+   "roles": [
+    {
+     "title": "Enterprise Account Executive \u2013 Healthcare Full-time United States View role",
+     "location": "",
+     "url": "https://jobs.lever.co/agiloft/9fad3021-206f-462b-a6ce-502362981dde"
+    }
+   ],
    "checked": "2026-08-28"
   },
   "govtech": true,
@@ -35543,8 +35639,8 @@
    "ref": "https://www.axon.com/careers/all"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -36797,9 +36893,15 @@
    "ref": "https://www.overstory.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
-   "roles": [],
+   "status": "Yes",
+   "note": "Enterprise Account Executive, Cana [rendered]",
+   "roles": [
+    {
+     "title": "Enterprise Account Executive, Canada",
+     "location": "",
+     "url": "https://job-boards.eu.greenhouse.io/overstory/jobs/4953405101"
+    }
+   ],
    "checked": "2026-08-28"
   },
   "govtech": true,
@@ -38501,8 +38603,8 @@
    "ref": "https://ovarro.com/en/global/about-us/careers/2/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -38525,8 +38627,8 @@
    "ref": "https://fido.tech/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "Sales (non-AE)",
+   "note": "Sales Operations & Enablement Exec only [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -39365,8 +39467,8 @@
    "ref": "https://www.airportlabs.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -39461,8 +39563,8 @@
    "ref": "https://www.grab.careers/en/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -39617,8 +39719,8 @@
    "ref": "https://www.gevernova.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -40178,8 +40280,8 @@
    "ref": "https://careers.heimdallpower.com"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -40934,8 +41036,8 @@
    "ref": "https://symbium.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -41006,8 +41108,8 @@
    "ref": "https://glsolutions.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -42044,8 +42146,8 @@
    "ref": "https://www.machinexrecycling.com/careers/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -42068,8 +42170,8 @@
    "ref": "https://www.vdrs.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -43884,8 +43986,8 @@
    "ref": "https://www.airbus.com/en/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -44130,8 +44232,8 @@
    "ref": "https://www.devnetinc.com/about/jobs/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -46454,8 +46556,8 @@
    "ref": "https://www.halda.ai/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "Sales (non-AE)",
+   "note": "Manager, Business Development Sale only [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -46526,8 +46628,8 @@
    "ref": "https://www.schoolyear.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -48494,8 +48596,8 @@
    "ref": "https://www.joinchorus.com/company/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -48908,8 +49010,8 @@
    "ref": "https://www.d2l.com/careers/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "Sales (non-AE)",
+   "note": "Sales Sales only [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -49172,8 +49274,8 @@
    "ref": "https://www.heliocampus.com/company/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "Sales (non-AE)",
+   "note": "VP, Client Success only [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -49915,8 +50017,8 @@
    "ref": "https://infobase.com/about/careers/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "Sales (non-AE)",
+   "note": "Senior Product Manager, Revenue Sy only [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -50418,8 +50520,8 @@
    "ref": "https://www.sprypoint.com/careers/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -51753,8 +51855,8 @@
    "ref": "https://www.futurefit.ai/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "Sales (non-AE)",
+   "note": "Workforce Sales Lead Growth & Sale only [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -52299,8 +52401,8 @@
    "ref": "https://brickfield.ie/careers/"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "None found",
+   "note": " [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
@@ -53233,8 +53335,8 @@
    "ref": "https://easehealth.com/careers"
   },
   "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
+   "status": "Sales (non-AE)",
+   "note": "GTM GTM Engineer only [rendered]",
    "roles": [],
    "checked": "2026-08-28"
   },
