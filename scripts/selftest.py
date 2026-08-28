@@ -2866,6 +2866,71 @@ def check_the_owner_can_argue_with_the_logic() -> int:
     return errors
 
 
+
+def check_a_card_link_yields_the_title_not_the_whole_card() -> int:
+    """"Supply Chain Analyst Teaneck, NJ Full-time More Details Less Details".
+
+    uveye.com wraps the title, the location, the employment type and a
+    More/Less toggle in ONE anchor, so flattening the link text put all of it
+    in the title field - sixteen postings on the public board reading like
+    that. The title was sitting in its own <h3> the whole time.
+
+    Only when there is exactly one heading in the link. Two headings mean the
+    anchor is a section rather than a card, and picking one is the sort of
+    cleverness that files a location as a job title.
+
+    THE DEDUP MOVED WITH IT, and that is the half worth testing. It keyed on
+    the title, which only worked because the titles were dirty: Samsara's rows
+    carried their locations, so two postings of one role were two strings.
+    Cleaning the titles collapsed 241 rows to 192 - a tidy-up that silently
+    deleted forty-nine advertisements. The url is what distinguishes two
+    postings, CLAUDE.md says the per-location rows all stay, and opening_id
+    already collapses them for the headline.
+    """
+    import ats
+    errors = 0
+    CARD = ("<html><body>"
+            "<a href='/job/supply-chain-analyst'>"
+            "<div><h3>Supply Chain Analyst</h3>"
+            "<div><span>Teaneck, NJ</span><span>Full-time</span></div>"
+            "<div><span>More Details</span><span>Less Details</span></div>"
+            "</div></a>"
+            "<a href='/job/ops-manager-us'><div><h3>Ops Manager</h3>"
+            "<span>Remote - US</span></div></a>"
+            "<a href='/job/ops-manager-ca'><div><h3>Ops Manager</h3>"
+            "<span>Remote - Canada</span></div></a>"
+            "</body></html>")
+
+    class _R:
+        text = CARD
+
+    real = ats._get
+    try:
+        ats._get = lambda *a, **k: _R()
+        rows = ats.fetch_html_titles("https://x.test/careers")
+    except Exception as exc:
+        ats._get = real
+        return fail(f"the enumerator threw on a card-style page: {exc}")
+    finally:
+        ats._get = real
+
+    titles = [r["title"] for r in rows]
+    if "Supply Chain Analyst" not in titles:
+        errors += fail(f"the title was not read out of its heading; got "
+                       f"{titles[:2]!r}")
+    for t_ in titles:
+        for junk in ("More Details", "Full-time", "Teaneck"):
+            if junk in t_:
+                errors += fail(f"the card's {junk!r} ended up in the title "
+                               f"{t_!r}")
+    # two links, same role, different places: BOTH rows survive
+    if sum(1 for t_ in titles if t_ == "Ops Manager") != 2:
+        errors += fail("two postings of one role were deduped into one. The "
+                       "rows are per-advertisement; opening_id does the "
+                       "collapsing for the headline, not the fetcher")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -3205,6 +3270,7 @@ def main() -> int:
     errors += check_admin_blurbs_have_no_typed_counts()
     errors += check_queues_do_not_propose_deleted_categories()
     errors += check_a_count_is_never_a_job_title()
+    errors += check_a_card_link_yields_the_title_not_the_whole_card()
     errors += check_coming_soon_is_not_a_parked_domain()
     errors += check_a_parent_board_ruling_names_the_parent()
     errors += check_the_owner_can_argue_with_the_logic()

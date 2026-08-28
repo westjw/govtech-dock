@@ -1627,6 +1627,24 @@ function whereSummary(mine){
   if(silent)bits.push(`${silent} say nothing about location`);
   return bits;
 }
+/* The site used to assert "nothing here is scraped from an aggregator". It was
+   not true. Two companies use a LinkedIn page as their careers page - because
+   that is genuinely where they post, and their own homepages link there - so
+   their rows are read off it. An absolute a board cannot keep is worse than
+   the exception said plainly, and worse still when the board is built on
+   saying where every number came from. So it is counted at render time rather
+   than asserted once and left to rot. */
+function aggNote(){
+  const AGG=/linkedin\.com|indeed\.com|glassdoor\.|ziprecruiter\.com/i;
+  const hit=(D.organizations||[]).filter(o=>AGG.test(o.board_url||""));
+  if(!hit.length)return "No company here is read off a job aggregator.";
+  const names=hit.map(o=>o.name).join(" and ");
+  return (hit.length===1?"One company":hit.length+" companies")
+    +" &mdash; "+esc(names)+" &mdash; use a LinkedIn page as their careers page, "
+    +"because that is where they actually post; those rows are read from it. "
+    +"Every other row comes off the company&rsquo;s own board.";
+}
+
 function tileHTML(name, cid, cls){
   const [bg,fg]=tile(name);
   const src=(D.logos&&D.logos[cid])?`assets/logos/${cid}.${D.logos[cid]}`:null;
@@ -3811,8 +3829,8 @@ function how(){
     job board &mdash; a Greenhouse, Lever, Ashby or Workday API where they have one, the
     careers page itself where they do not. ${n(bySrc.ats)} of the ${n(D.totals.postings)}
     rows arrived that way${bySrc.manual?`, and ${n(bySrc.manual)} were read by hand off a
-    page no fetcher can enumerate`:""}. Nothing here is scraped from an aggregator and
-    nothing is written by a person guessing. The apply link goes straight out to the
+    page no fetcher can enumerate`:""}. Nothing here is written by a person
+    guessing. ${aggNote()} The apply link goes straight out to the
     employer; this board hosts no application and asks you for no account.</p>
 
   <div class="sechead"><h3>What we cannot see, and why that is on the page</h3></div>

@@ -1003,6 +1003,8 @@ _TITLEISH = re.compile(r"\b(engineer|developer|manager|director|analyst|speciali
                        r"operator|driver|installer|trainer|writer|editor|"
                        r"controller|planner|advisor|agent)\b", re.I)
 # Navigation and marketing links that would otherwise pass as titles.
+_HEADING = re.compile(r"<(h[1-6])\b[^>]*>(.*?)</\1>", re.S | re.I)
+
 _NAV = re.compile(r"^(apply|apply now|learn more|read more|view (all|jobs|openings)|"
                   r"see (all|more)|careers?|jobs?|open (roles|positions)|back|next|"
                   r"previous|home|about|contact|search|filter|all departments?|"
@@ -1033,7 +1035,19 @@ def fetch_html_titles(url: str) -> list[dict]:
     resp = _get(url)
     seen, out = set(), []
     for href, inner in _ANCHOR.findall(resp.text):
-        text = re.sub(r"\s+", " ", _ANYTAG.sub(" ", inner)).strip()
+        # A LINK THAT WRAPS THE WHOLE CARD. uveye.com/careers puts the title,
+        # the location, the employment type and a "More Details / Less Details"
+        # toggle inside one <a>, so flattening it gave sixteen postings titled
+        # "Supply Chain Analyst Teaneck, NJ Full-time More Details Less Details".
+        # The title is right there in its own <h3>; taking it is both more
+        # accurate and less clever than trying to strip the tail off.
+        #
+        # Only when there is EXACTLY ONE heading. Two headings mean the anchor
+        # is a section rather than a card, and guessing which is the title is
+        # the kind of cleverness that puts a location in the title field.
+        heads = _HEADING.findall(inner)
+        picked = heads[0][1] if len(heads) == 1 else inner
+        text = re.sub(r"\s+", " ", _ANYTAG.sub(" ", picked)).strip()
         text = html_lib.unescape(text)
         if not (6 <= len(text) <= 90) or _NAV.match(text):
             continue
@@ -1041,7 +1055,18 @@ def fetch_html_titles(url: str) -> list[dict]:
             continue          # "Engineer jobs 555,845 open jobs" is a rail, not a role
         if not (_JOB_HREF.search(href) and _TITLEISH.search(text)):
             continue
-        key = text.lower()
+        # DEDUP ON THE LINK, NOT THE TITLE. It used to key on the title, which
+        # worked only because the titles were dirty: Samsara's card text
+        # carried the location, so "Product Operations Manager Remote - Canada"
+        # and "... Remote - US" were different strings and both survived.
+        # Cleaning the titles collapsed 241 rows to 192 - forty-nine postings
+        # deleted by a fix meant to tidy them.
+        #
+        # The url is what actually distinguishes two postings; two links are
+        # two advertisements even when the role is the same, and CLAUDE.md is
+        # explicit that the per-location ROWS all stay and only the counting
+        # changes. opening_id already collapses them for the headline.
+        key = urllib.parse.urljoin(url, html_lib.unescape(href))
         if key in seen:
             continue
         seen.add(key)

@@ -1943,6 +1943,34 @@ RENDER.websites = c => {
     const canonical = nameGuess ? nameGuess.name : '';
     if (canonical && canonical.toLowerCase() !== c.name.toLowerCase()
         && canonical.length >= 2 && canonical.length <= 60) {
+      /* IS THE NAME ALREADY TAKEN? conduent.com is titled "Transportation
+         Solutions - Conduent", so this offered to rename Conduent
+         Transportation to "Conduent" - and a company called Conduent was
+         already on the board, on that same domain, with the corporate job
+         board wired. Accepting would have manufactured a duplicate to merge
+         back tomorrow.
+         The check reads the board rather than the page, which is the whole
+         point: everything above this line looks at the site in isolation and
+         cannot see the rest of the map. */
+      (async () => {
+        const squash2 = s => (s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+        const res = await api('/api/search-companies', {q: canonical});
+        const clash = (res.results || []).find(
+          x => x.id !== c.id && squash2(x.name) === squash2(canonical));
+        if (!clash) return;
+        const w = n.querySelector('.renamer');
+        if (w) w.remove();
+        const taken = el('div', 'renamer kv');
+        taken.appendChild(el('span', 'warn',
+          'The page calls itself \u201c' + canonical + '\u201d, and a company '
+          + 'called \u201c' + clash.name + '\u201d is already on the board'
+          + (clash.sector ? ' under ' + clash.sector : '') + '. '));
+        taken.appendChild(document.createTextNode(
+          'No rename is offered: if these are one company that is a MERGE, '
+          + 'which keeps both records\u2019 research. Renaming would leave two '
+          + 'rows with the same name.'));
+        n.insertBefore(taken, row.nextSibling);
+      })();
       const wrapR = el('div', 'renamer kv');
       wrapR.appendChild(document.createTextNode('rename to '));
       /* whether the domain corroborates the new name is the difference between
