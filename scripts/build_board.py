@@ -234,6 +234,28 @@ def _scan_lead(c: dict) -> bool | None:
     return None
 
 
+
+RENDER_ATTEMPTS = ROOT / "data" / "render_attempts.json"
+
+
+def _load_render_attempts() -> dict:
+    """When each board was last handed to the browser, successful or not.
+
+    Recorded on the ATTEMPT, never on the outcome. A board that renders and
+    finds nothing and a board that times out have both had their turn, and
+    the whole point of this file is to rotate turns.
+    """
+    try:
+        return json.loads(RENDER_ATTEMPTS.read_text())
+    except Exception:
+        return {}
+
+
+def _save_render_attempts(d: dict) -> None:
+    RENDER_ATTEMPTS.parent.mkdir(parents=True, exist_ok=True)
+    RENDER_ATTEMPTS.write_text(json.dumps(d, indent=0, sort_keys=True))
+
+
 def board_url(c: dict) -> str | None:
     """Where a person can go look themselves. Matters most where extraction fails."""
     a = c.get("ats") or {}
@@ -625,7 +647,6 @@ def main() -> int:
             except Exception as exc2:
                 return c, [], f"twice: {str(exc2)[:52]}", True, kind == "html"
 
-    render_started = time.monotonic()
     # Two companies pointing at ONE board is not two boards. It happens after an
     # acquisition: both the product and its acquirer end up with the parent's
     # careers URL, and the same postings get counted under both names. Twenty
@@ -690,6 +711,60 @@ def main() -> int:
                 # rebuild looked hung when it was working fine.
                 print(f"  fetched {i}/{len(companies)}...", flush=True)
 
+    # ------------------------------------------------------------------
+    # RENDER PRE-PASS. Two bugs lived in doing this inline, and both made the
+    # board quietly wrong rather than slow.
+    #
+    # THE CLOCK STARTED BEFORE THE FETCH. render_started was set above the
+    # forty-minute parallel fetch, so the "render budget" was mostly spent
+    # fetching. On 2026-08-28 the run printed "rendered 10 board(s), 784s
+    # spent" - of which perhaps eighty seconds was rendering. The budget was
+    # never really a render budget at all. It starts here now.
+    #
+    # THE CUT-OFF LANDED IN THE SAME PLACE EVERY RUN. Rendering happened in
+    # fetch order, so the same boards were rendered every day and the 564 past
+    # the cut-off were never tried ONCE - not a backlog, a permanent blind
+    # spot. Raising the budget only moves the cliff. Least-recently-attempted
+    # first means any budget eventually reaches everything, and a board that
+    # has never been tried goes to the front.
+    # ------------------------------------------------------------------
+    render_started = time.monotonic()
+    rendered_rows: dict[str, list] = {}
+    if not a.no_render and render_fetch is not None and render_fetch.available():
+        attempts = _load_render_attempts()
+        today = dt.date.today().isoformat()
+        wanted = [c for c, jobs, err, enumerable, may_render in fetched
+                  if err and may_render and c["id"] not in owns]
+        # "" sorts before any date, so a board never tried goes first; the id
+        # breaks ties so the order is stable rather than dict-insertion luck.
+        wanted.sort(key=lambda c: (attempts.get(c["id"], ""), c["id"]))
+        if wanted:
+            print(f"  {len(wanted)} board(s) want rendering; oldest attempt "
+                  f"{attempts.get(wanted[0]['id']) or 'never'}", flush=True)
+        for c in wanted:
+            if time.monotonic() - render_started >= a.render_budget:
+                render_skipped += 1
+                continue
+            ref = (c.get("ats") or {}).get("ref")
+            # Stamped BEFORE the attempt. A board that reliably crashes the
+            # renderer would otherwise keep its place at the front of the
+            # queue and block everything behind it, every run, forever.
+            attempts[c["id"]] = today
+            try:
+                rendered_rows[c["id"]] = ats.plain_rows(
+                    render_fetch.fetch_rendered(ref))
+                rendered += 1
+            except Exception:
+                rendered_rows[c["id"]] = []
+            if rendered and rendered % 10 == 0:
+                print(f"  rendered {rendered} board(s), "
+                      f"{time.monotonic() - render_started:.0f}s spent", flush=True)
+        # A dry run reports; it does not move the queue on. Stamping here
+        # would let `--dry-run` silently push boards to the back and hide them
+        # from the next real build.
+        if not a.dry_run:
+            _save_render_attempts(attempts)
+
     for c, jobs, err, enumerable, may_render in fetched:
         if c["id"] in owns:
             # Somebody else's board. Keep the company on the list with its real
@@ -699,30 +774,13 @@ def main() -> int:
         ref = (c.get("ats") or {}).get("ref")
         no_board = kind in (None, "unknown") or ref is None
 
-        # THE BUDGET IS A CAP, AND A CAP THAT DOES NOT SAY SO IS A LIE. On
-        # 2026-08-28 this phase stopped at 13 recovered boards with 784s of a
-        # 900s budget spent, and the run reported "16 boards unreadable, 13
-        # recovered by rendering" - which reads as though the other three were
-        # tried and failed. They were never attempted. NEXGEN Asset Management
-        # and First Arriving both render and enumerate perfectly by hand; both
-        # published as companies with nothing to click, under a card that said
-        # they were hiring. Count what the budget refuses and print it.
-        wants_render = (err and may_render and not a.no_render
-                        and render_fetch is not None and render_fetch.available())
-        if wants_render and time.monotonic() - render_started >= a.render_budget:
-            render_skipped += 1
-        if wants_render and time.monotonic() - render_started < a.render_budget:
-            try:
-                # render_fetch reads the rendered DOM, not ats.fetch(), so its
-                # titles have not been through plain() yet.
-                jobs = ats.plain_rows(render_fetch.fetch_rendered(ref))
+        # What the pre-pass above got, if this board was one of its turns.
+        # render_fetch reads the rendered DOM, not ats.fetch(), so those rows
+        # have already been through plain_rows() there.
+        if c["id"] in rendered_rows:
+            jobs = rendered_rows[c["id"]]
+            if jobs:
                 err = None
-                rendered += 1
-            except Exception:
-                jobs = []
-            if rendered and rendered % 10 == 0:
-                print(f"  rendered {rendered} board(s), "
-                      f"{time.monotonic() - render_started:.0f}s spent", flush=True)
         # A BOARD THAT WILL NOT ENUMERATE IS NOT A COMPANY WITHOUT JOBS. The
         # refresh pass renders these pages and stores what it finds, so when
         # enumeration comes back empty the role is often already on file with

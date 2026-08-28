@@ -1112,6 +1112,67 @@ def check_role_promotion() -> int:
     return errors
 
 
+def check_render_rotation() -> int:
+    """The render queue must rotate, and a dry run must not move it.
+
+    Rendering used to happen inline in fetch order, so the budget cut off at
+    the same place every run: the same boards were rendered daily and the 564
+    past the cut-off were never tried once. That is not a backlog, it is a
+    permanent blind spot, and raising the budget only moves the cliff. Two
+    properties keep it honest, and neither is visible by reading the output.
+    """
+    import build_board as bb
+    import inspect
+    errors = 0
+
+    # A board never tried sorts ahead of every dated one; among dated ones the
+    # oldest goes first. This is the sort the pre-pass runs.
+    attempts = {"b": "2026-08-27", "c": "2026-08-20", "e": "2026-08-28"}
+    cos = [{"id": x} for x in ["a", "b", "c", "d", "e"]]
+    cos.sort(key=lambda c: (attempts.get(c["id"], ""), c["id"]))
+    order = [c["id"] for c in cos]
+    if order[:2] != ["a", "d"]:
+        errors += fail(f"render queue put {order[:2]} first; boards never tried "
+                       f"(a, d) must lead or the tail is never reached")
+    if order[2] != "c":
+        errors += fail(f"render queue took {order[2]} before c, which was tried "
+                       f"longest ago")
+    if order[-1] != "e":
+        errors += fail("render queue did not put today's attempt last")
+
+    src = inspect.getsource(bb)
+
+    # Stamped BEFORE the attempt, or a board that crashes the renderer keeps
+    # its place at the front and blocks everything behind it, every run.
+    i_stamp = src.find('attempts[c["id"]] = today')
+    i_try = src.find("render_fetch.fetch_rendered(ref)", i_stamp if i_stamp > 0 else 0)
+    if i_stamp < 0:
+        errors += fail("build_board no longer records a render attempt - the "
+                       "queue cannot rotate without it")
+    elif i_try < 0 or i_stamp > i_try:
+        errors += fail("the render attempt is stamped AFTER the render, so a "
+                       "board that reliably crashes the browser never yields "
+                       "its place")
+
+    # And the budget clock must start after the fetch, not before it. It used
+    # to be set above a forty-minute parallel fetch, so the render budget was
+    # mostly spent fetching: a run reported "784s spent" having rendered for
+    # about eighty of them.
+    i_clock = src.find("render_started = time.monotonic()")
+    i_fetch = src.find("ThreadPoolExecutor")
+    if i_clock < 0 or i_fetch < 0:
+        errors += fail("cannot locate the render clock or the fetch pool")
+    elif i_clock < i_fetch:
+        errors += fail("the render budget clock starts BEFORE the parallel "
+                       "fetch, so the fetch spends the render budget")
+
+    if "if not a.dry_run:" not in src:
+        errors += fail("a dry run can now write render_attempts.json, which "
+                       "would push boards to the back of the queue and hide "
+                       "them from the next real build")
+    return errors
+
+
 def check_admin_guards() -> int:
     """Two invariants the admin states in comments, said here as tests.
 
@@ -3616,6 +3677,7 @@ def main() -> int:
     errors += check_admin_gates()
     errors += check_admin_guards()
     errors += check_role_promotion()
+    errors += check_render_rotation()
     errors += check_redirect_hop()
     errors += check_admin_http()
     errors += check_url_sinks()
