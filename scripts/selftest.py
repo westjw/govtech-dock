@@ -2490,6 +2490,21 @@ def check_a_count_is_never_a_job_title() -> int:
             errors += fail("fetch_html_titles dropped a real job title while "
                            "filtering the rail")
 
+    # BOTH EXTRACTORS MUST KNOW THE RULE. render_fetch.py has its own NAV
+    # filter and its own loop, and it never learned this one - so Nutanix came
+    # back from the renderer as hiring "102 open vacancies in Sales", the same
+    # shape ats.py has refused since the LinkedIn rail. A rule only one of two
+    # extractors knows is a rule with a hole in it, and the hole is invisible
+    # because each extractor looks correct on its own.
+    rf = (ROOT / "scripts" / "render_fetch.py").read_text()
+    if "_JOB_COUNT" not in rf:
+        errors += fail("render_fetch.py does not apply the count rule, so a "
+                       "rendered page can still report '102 open vacancies in "
+                       "Sales' as somebody's job title")
+    elif "re.compile" in rf.split("_JOB_COUNT")[0][-200:]:
+        errors += fail("render_fetch.py defines its own copy of the count rule "
+                       "instead of importing ats._JOB_COUNT; two copies drift")
+
     # and nothing currently on the board may trip it except the known rail
     board = json.loads((ROOT / "data" / "board.json").read_text())
     hit = [p for p in board.get("postings", [])

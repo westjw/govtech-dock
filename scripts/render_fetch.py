@@ -137,9 +137,19 @@ def fetch_rendered(url: str, *, timeout_ms: int = 25000,
         finally:
             browser.close()
 
+    # THE COUNT RULE LIVES IN ats.py AND IS IMPORTED, NOT COPIED. This
+    # extractor has its own NAV filter and never learned that a count is not a
+    # job title, so Nutanix came back as hiring "102 open vacancies in Sales".
+    # ats.fetch_html_titles has refused that shape since the LinkedIn browse
+    # rail put "Engineer jobs 555,845 open jobs" on the public board - and a
+    # rule that only one of two extractors knows is a rule with a hole in it.
+    from ats import _JOB_COUNT
+
     for href, raw in links:
         raw = re.sub(r"\s+", " ", raw or "").strip()
         if not (6 <= len(raw) <= 160) or NAV.match(raw):
+            continue
+        if _JOB_COUNT.search(raw):
             continue
         if not (JOB_HREF.search(href or "") and TITLEISH.search(raw)):
             continue
