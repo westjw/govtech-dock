@@ -107,7 +107,61 @@ def _someone_elses_site(website: str, ref) -> bool:
     return board not in _ATS_HOSTS
 
 
-def _try_render(kind: str, ref) -> dict | None:
+# ---------------------------------------------------------------------------
+# RENDERING IS RATIONED, AND THE RATION ROTATES.
+#
+# _try_render was added on 2026-08-28 with no bound at all: every html board
+# that failed to read got a browser, every run. 649 boards want one, at
+# roughly 7-27s each, which is one to five hours added to a CI job with a
+# six-hour ceiling - and always the same boards first, so a fixed cut-off
+# would have starved the tail forever. build_board had exactly this pair of
+# bugs and they are fixed the same way here.
+#
+# The ration is a COUNT rather than a wall clock, because refresh runs
+# sequentially through the whole company list and a deadline alone would
+# silently favour whoever sorts early. The deadline is kept as a backstop for
+# a run where pages are unusually slow.
+# ---------------------------------------------------------------------------
+RENDER_ATTEMPTS = ROOT / "data" / "refresh_render_attempts.json"
+_SECONDS_PER_RENDER = 12          # measured: 50s of budget rendered ~7 boards
+
+_RENDER_ALLOW: set[str] = set()   # ids permitted to render this run
+_RENDER_DEADLINE: float | None = None
+_render_attempts: dict = {}
+_render_did = 0
+_render_skipped = 0
+
+
+def _load_render_attempts() -> dict:
+    try:
+        return json.loads(RENDER_ATTEMPTS.read_text())
+    except Exception:
+        return {}
+
+
+def _plan_renders(companies: list, budget: float) -> None:
+    """Choose which boards get a browser this run, oldest attempt first."""
+    global _RENDER_ALLOW, _RENDER_DEADLINE, _render_attempts
+    _render_attempts = _load_render_attempts()
+    _RENDER_DEADLINE = time.monotonic() + budget if budget else None
+    if not budget:
+        _RENDER_ALLOW = set()
+        return
+    html = [c for c in companies if (c.get("ats") or {}).get("type") == "html"]
+    # "" sorts before any date, so a board never tried leads; the id breaks
+    # ties so the order is stable rather than dict-insertion luck.
+    html.sort(key=lambda c: (_render_attempts.get(c["id"], ""), c["id"]))
+    _RENDER_ALLOW = {c["id"] for c in html[:max(1, int(budget // _SECONDS_PER_RENDER))]}
+
+
+def _save_render_attempts() -> None:
+    if not _render_attempts:
+        return
+    RENDER_ATTEMPTS.parent.mkdir(parents=True, exist_ok=True)
+    RENDER_ATTEMPTS.write_text(json.dumps(_render_attempts, indent=0, sort_keys=True))
+
+
+def _try_render(kind: str, ref, cid: str = "") -> dict | None:
     """Read a JS-shelled careers page with a real browser, or return None.
 
     build_board.py has done this for a long time and refresh.py did not, so the
@@ -125,8 +179,21 @@ def _try_render(kind: str, ref) -> dict | None:
     better-worded failure note: "page too small - likely JS-rendered" says more
     than "rendered and still nothing".
     """
+    global _render_did, _render_skipped
     if kind != "html" or not ref:
         return None
+    # Not this board's turn, or the run has spent its ration.
+    if cid and cid not in _RENDER_ALLOW:
+        _render_skipped += 1
+        return None
+    if _RENDER_DEADLINE is not None and time.monotonic() > _RENDER_DEADLINE:
+        _render_skipped += 1
+        return None
+    # Stamped on the ATTEMPT, before it is made: a board that reliably crashes
+    # the browser must yield its place rather than block the queue forever.
+    if cid:
+        _render_attempts[cid] = dt.date.today().isoformat()
+    _render_did += 1
     try:
         import render_fetch
         if not render_fetch.available():
@@ -155,7 +222,7 @@ def check_company(comp: dict) -> dict:
         # because this branch returns before the rollup. Caselle said exactly
         # that and stayed Unknown while the board carried an Account Manager
         # for it.
-        rendered = _try_render(kind, ref)
+        rendered = _try_render(kind, ref, comp["id"])
         if rendered:
             return rendered
         return {"status": "Unknown", "note": str(exc)[:40], "roles": []}
@@ -182,7 +249,7 @@ def check_company(comp: dict) -> dict:
     # failing one. A render that raises leaves the Unknown alone, which is the
     # honest answer it already had.
     if status == "Unknown":
-        rendered = _try_render(kind, ref)
+        rendered = _try_render(kind, ref, comp["id"])
         if rendered:
             status, note, roles = (rendered["status"], rendered["note"],
                                    rendered["roles"])
@@ -207,6 +274,11 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--ci", action="store_true")
     ap.add_argument("--delay", type=float, default=0.5, help="seconds between requests")
+    ap.add_argument("--render-budget", type=float, default=1200,
+                    help="seconds of browser rendering this run may spend. "
+                         "Boards are taken least-recently-rendered first, so "
+                         "a modest budget still reaches every board over a few "
+                         "runs. 0 disables rendering entirely.")
     ap.add_argument("--force", action="store_true",
                     help="overwrite today's snapshot if a run already happened today")
     args = ap.parse_args()
@@ -231,6 +303,12 @@ def main() -> int:
         if not targets:
             print(f"no company matching {args.company!r}", file=sys.stderr)
             return 1
+
+    _plan_renders(targets, args.render_budget)
+    if _RENDER_ALLOW:
+        oldest = min((_render_attempts.get(i, "") for i in _RENDER_ALLOW), default="")
+        print(f"rendering up to {len(_RENDER_ALLOW)} board(s) this run "
+              f"(oldest attempt {oldest or 'never'})")
 
     snapshot, changes, skipped = {}, [], []
     for comp in companies:
@@ -261,12 +339,21 @@ def main() -> int:
           f" | {len(changes)} changed")
     if skipped:
         print(f"needs ATS discovery ({len(skipped)}): " + ", ".join(sorted(skipped)))
+    if _render_did or _render_skipped:
+        print(f"rendered {_render_did} board(s); {_render_skipped} waited their "
+              f"turn (they are NOT zeros - each gets a browser on a later run, "
+              f"oldest first)")
     for ch in changes:
         print(f"  {ch['company']}: {ch['from']} -> {ch['to']}  {ch['note']}")
 
     if args.dry_run:
+        # The queue is deliberately NOT saved here. A dry run reports; if it
+        # stamped attempts it would push boards to the back and hide them from
+        # the next real run.
         print("\n(dry run - nothing written)")
         return 0
+
+    _save_render_attempts()
 
     dump_json(HISTORY / f"{today}.json", {"date": today, "companies": snapshot})
     dump_json(DATA / "companies.json", companies)

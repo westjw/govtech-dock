@@ -1173,6 +1173,73 @@ def check_render_rotation() -> int:
     return errors
 
 
+def check_refresh_render_ration() -> int:
+    """refresh.py renders on a ration, and the ration rotates.
+
+    _try_render was added on 2026-08-28 with no bound at all: every html board
+    that failed to read got a browser, every run. 649 boards want one, at
+    roughly 7-27s each - one to five hours added to a CI job with a six-hour
+    ceiling, and always the same boards first. Same pair of bugs build_board
+    had, fixed the same way.
+
+    Writes nothing: the attempts path is redirected to a temp file, because a
+    selftest that stamped the real queue would push boards to the back of it
+    every time it ran.
+    """
+    import refresh as R
+    import tempfile, pathlib as _pl
+    errors = 0
+    saved_path, saved_attempts = R.RENDER_ATTEMPTS, dict(R._render_attempts)
+    R.RENDER_ATTEMPTS = _pl.Path(tempfile.mkdtemp()) / "attempts.json"
+    try:
+        cos = [{"id": f"c{i:02d}", "ats": {"type": "html"}} for i in range(20)]
+        cos.append({"id": "api1", "ats": {"type": "greenhouse"}})
+
+        R._plan_renders(cos, 120)                      # 120 // 12 = 10
+        run1 = set(R._RENDER_ALLOW)
+        if len(run1) != 10:
+            errors += fail(f"a 120s render budget queued {len(run1)} boards, "
+                           f"expected 10 - the ration is not being applied")
+        if "api1" in run1:
+            errors += fail("a non-html board was queued for rendering; only "
+                           "page-scanned html boards can be helped by a browser")
+
+        R._render_attempts = {i: "2026-08-28" for i in run1}
+        R._save_render_attempts()
+        R._plan_renders(cos, 120)
+        if run1 & set(R._RENDER_ALLOW):
+            errors += fail("refresh render queue does not rotate - the same "
+                           "boards come up every run and the tail is never "
+                           "rendered once")
+
+        R._plan_renders(cos, 0)
+        if R._RENDER_ALLOW:
+            errors += fail("--render-budget 0 did not disable rendering")
+
+        R._plan_renders(cos, 120)
+        R._render_skipped = 0
+        outside = next(c["id"] for c in cos if c["id"] not in R._RENDER_ALLOW)
+        if R._try_render("html", "https://example.com/x", outside) is not None:
+            errors += fail("_try_render rendered a board that was not this "
+                           "run's turn")
+        if R._render_skipped != 1:
+            errors += fail("a board refused for being out of turn was not "
+                           "counted - the run would report it as a zero")
+
+        src = __import__("inspect").getsource(R)
+        i_stamp = src.find("_render_attempts[cid] =")
+        i_try = src.find("render_fetch.fetch_rendered(ref)")
+        if i_stamp < 0:
+            errors += fail("refresh no longer records a render attempt - the "
+                           "queue cannot rotate without it")
+        elif i_try > 0 and i_stamp > i_try:
+            errors += fail("refresh stamps the attempt AFTER the render, so a "
+                           "board that crashes the browser never yields its place")
+    finally:
+        R.RENDER_ATTEMPTS, R._render_attempts = saved_path, saved_attempts
+    return errors
+
+
 def check_admin_guards() -> int:
     """Two invariants the admin states in comments, said here as tests.
 
@@ -3678,6 +3745,7 @@ def main() -> int:
     errors += check_admin_guards()
     errors += check_role_promotion()
     errors += check_render_rotation()
+    errors += check_refresh_render_ration()
     errors += check_redirect_hop()
     errors += check_admin_http()
     errors += check_url_sinks()
