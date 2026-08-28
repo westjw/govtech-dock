@@ -2105,9 +2105,31 @@ RENDER.boards = c => {
       e.appendChild(warn);
     }
     if (r.slug_ok === false) {
+      /* This used to end "send it to the acquisitions queue instead" - a queue
+         written only by the nightly sweep, that no button in this admin can
+         add to. It named a door that does not exist, which is worse than
+         naming none: the owner goes looking. The ruling it wanted now exists
+         on this very row, so point at that. */
       const warn = el('div', 'kv bad');
-      warn.textContent = 'Saving this would record another company’s postings as '
-        + c.name + '’s. Send it to the acquisitions queue instead unless you know better.';
+      warn.appendChild(document.createTextNode(
+        'Saving this would record another company\u2019s postings as '
+        + c.name + '\u2019s. If their roles really do go on a parent\u2019s board, '
+        + 'that is what '));
+      const jump = el('a', null, '\u201cPosts elsewhere \u2192 their parent\u2019s board\u201d');
+      jump.href = '#';
+      /* `elsewhere` is declared further down this function; this callback
+         only runs on a click, by which time it exists. Guarded anyway, because
+         that is timing rather than structure, and a reorder would turn this
+         link into a console error instead of a no-op. */
+      jump.onclick = ev => {
+        ev.preventDefault();
+        try { elsewhere.click(); }
+        catch (_) { toast('use the “Posts elsewhere” button on this row', true); }
+      };
+      warn.appendChild(jump);
+      warn.appendChild(document.createTextNode(
+        ' records \u2014 it names them and warns that most roles there are not '
+        + 'this company\u2019s.'));
       e.appendChild(warn);
     }
     save.disabled = false;
