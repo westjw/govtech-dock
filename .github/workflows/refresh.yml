@@ -15,6 +15,13 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 300
+    # GitHub's default is 360. The run is ~2.5h now that both pipelines render
+    # (fetch ~40m + refresh's render ration ~20m + build_board's ~30m), and it
+    # grows if a budget is raised. Fail at 300 with a clear signal rather than
+    # drifting into the hard limit, where the kill looks like an outage. The
+    # data commit deliberately sits before the slow tail, so a timeout costs
+    # the spreadsheet and the issue, never the day's snapshots.
     # Runners are UTC. Snapshots are keyed by date, so an evening manual run
     # would otherwise be stamped tomorrow and sort ahead of a same-evening
     # local run. Pin to the owner's clock so dates match their calendar.
@@ -51,12 +58,19 @@ jobs:
       - name: Refresh hiring data
         # --force so a manual re-run on the same day still works; the previous
         # snapshot stays recoverable in git history, which is the audit trail here.
-        run: python scripts/refresh.py --ci --force
+        # --render-budget: seconds this run may spend driving a browser at
+        # JS-shelled careers pages. Boards are taken least-recently-rendered
+        # first, so 1200s (~100 boards) still reaches all ~649 within a week
+        # rather than rendering the same hundred every night.
+        run: python scripts/refresh.py --ci --force --render-budget 1200
 
       - name: Build the job board and market intel
         # Keeps every posting, not only AE reqs: the board and the intel both
         # depend on knowing what KIND of hiring a company is doing.
-        run: python scripts/build_board.py
+        # Same rationing, separate queue: refresh renders to learn a STATUS,
+        # this renders to ENUMERATE the postings. 1800s is ~250 boards a night
+        # against a backlog of 564.
+        run: python scripts/build_board.py --render-budget 1800
 
       - name: Commit the refreshed data
         # BEFORE the spreadsheet and everything after it, deliberately: the
