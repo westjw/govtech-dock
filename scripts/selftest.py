@@ -1284,6 +1284,142 @@ def check_save_needs_read() -> int:
     return errors
 
 
+
+def check_review_findings() -> int:
+    """The 2026-08-28 admin review's confirmed findings, held closed.
+
+    Twelve findings survived adversarial verification; these are the ones a
+    test can hold. Every check stubs write_atomic - a selftest that can write
+    WILL write, on exactly the run where the thing it guards is broken.
+    """
+    import admin
+    import build_board as bb
+    errors = 0
+
+    # 1. A refusal is never evidence of absence. discover_ats writes two note
+    # shapes ("blocked at the door", "blocked at /careers (HTTP 403)") and
+    # marks both retry_soon; matching only the first filed twenty mid-crawl
+    # 403s as "probed, nothing found". Forty more "found X but unreadable"
+    # records - a board FOUND and unreadable, reported as nothing found - are
+    # caught by honouring the record's own retry_soon flag.
+    saved_read = admin.read
+    probe_log = {"a": {"note": "blocked at /careers (HTTP 403)", "retry_soon": True},
+                 "b": {"note": "blocked at the door (HTTP 403)", "retry_soon": True},
+                 "c": {"note": "greenhouse:x found but unreadable (HTTP 404)",
+                       "retry_soon": True},
+                 "d": {"note": "no board found", "retry_soon": False}}
+    admin.read = lambda name, default=None: (probe_log if name == "discovery_log.json"
+                                             else saved_read(name, default))
+    try:
+        for cid, want in (("a", "blocked"), ("b", "blocked"),
+                          ("c", "blocked"), ("d", "none-found")):
+            got = admin._probe(cid)["state"]
+            if got != want:
+                errors += fail(f"_probe filed {probe_log[cid]['note']!r} as "
+                               f"{got}, not {want} - a refusal reported as "
+                               f"evidence of absence")
+    finally:
+        admin.read = saved_read
+    bb._DISCOVERY_LOG = probe_log
+    try:
+        if bb._probe_state("a") != "blocked" or bb._probe_state("c") != "blocked":
+            errors += fail("build_board._probe_state files a refusal as "
+                           "none-found - the public card side of the same bug")
+    finally:
+        bb._DISCOVERY_LOG = None
+
+    # 2. act_patch has no ats backdoor. An ats smuggled in beside an allowed
+    # field used to land unverified, bypassing set-board's live verify - the
+    # write that points "prepared" at greenhouse/axon and reports Axon's ~500
+    # requisitions as Prepared's.
+    saved_write = admin.write_atomic
+    admin.write_atomic = lambda name, data: (_ for _ in ()).throw(
+        AssertionError(f"act_patch wrote {name} on a refused ats patch"))
+    # save_companies journals BEFORE it writes, through journal.record's own
+    # io - stubbing write_atomic alone let the mutation run put a phantom
+    # entry in the real admin_journal.jsonl: a journalled change whose write
+    # was intercepted, which the coverage check then reported as corruption.
+    # The journal is stubbed for the same reason the writer is.
+    import journal as _journal
+    saved_record = _journal.record
+    _journal.record = lambda *a, **k: (_ for _ in ()).throw(
+        AssertionError("act_patch journalled on a refused ats patch"))
+    try:
+        r = admin.act_patch({"id": "prepared",
+                             "fields": {"description": "x",
+                                        "ats": {"type": "greenhouse", "ref": "axon"}}})
+        if not (r.get("error") and "set-board" in r["error"]):
+            errors += fail("act_patch accepted ats smuggled beside an allowed "
+                           "field - the backdoor around board verification is "
+                           "open again")
+    except AssertionError as e:
+        errors += fail(str(e))
+    finally:
+        admin.write_atomic = saved_write
+        _journal.record = saved_record
+
+    # 3. A dismissal is a ruling everywhere, not only off its queue. dismiss()
+    # nests {queue: {key: rec}}; every metric consumer read only flat
+    # "queue:key" keys, so every judgment through the generic dismiss buttons
+    # vanished from done-counts, day/sitting counters and the why-coverage
+    # meter.
+    store = {}
+    admin.read = lambda name, default=None: (store.get(name, {})
+                                             if name == "admin_dismissed.json"
+                                             else saved_read(name, default))
+    admin.write_atomic = lambda name, data: store.__setitem__(name, data)
+    try:
+        admin.dismiss("duplicates", "site:x.com", "checked both, not duplicates")
+        if not admin.is_dismissed("duplicates", "site:x.com"):
+            errors += fail("dismiss() no longer registers with is_dismissed")
+        if admin.rulings_by_queue().get("duplicates", 0) < 1:
+            errors += fail("a dismissal does not count in rulings_by_queue - "
+                           "the judgment leaves the queue and every done-meter "
+                           "says nothing happened")
+        if "duplicates" not in [q for _t, q in admin._ruling_stamps()]:
+            errors += fail("a dismissal is missing from _ruling_stamps - the "
+                           "day and sitting counters cannot see it")
+        # and the flat legacy shape still counts
+        store["admin_dismissed.json"]["miscategorized:oldco"] = {
+            "on": "2026-08-01", "at": "2026-08-01T12:00:00", "why": "legacy"}
+        if admin.rulings_by_queue().get("miscategorized", 0) < 1:
+            errors += fail("the flat legacy dismissal shape stopped counting")
+    finally:
+        admin.read, admin.write_atomic = saved_read, saved_write
+
+    # 4. A merge unions `also` and folds in the drop's primary placement. A
+    # duplicate pair is often the same vendor filed on two shelves - that is
+    # why there are two records - and the merge kept only the survivor's.
+    captured = {}
+    admin.write_atomic = lambda name, data: captured.__setitem__(name, data)
+    saved_save = admin.save_companies
+    saved_last = admin._LAST_COMPANIES
+    try:
+        cos = [{"id": "keep1", "name": "Keep", "sector": "Public Safety",
+                "category": "Police",
+                "also": [{"sector": "Courts & Justice",
+                          "category": "Courts & Case Management"}]},
+               {"id": "drop1", "name": "Drop", "sector": "General Gov",
+                "category": "Permitting & Licensing",
+                "also": [{"sector": "Public Works", "category": "Streets"}]}]
+        admin.read_companies = lambda: cos
+        admin.save_companies = lambda *a, **k: None
+        admin.validate = lambda c: None
+        r = admin.act_merge({"keep": "keep1", "drop": "drop1", "why": "test"})
+        keep = cos[0]
+        pairs = {(a["sector"], a["category"]) for a in keep.get("also", [])}
+        if ("Public Works", "Streets") not in pairs:
+            errors += fail("act_merge dropped the drop record's `also` "
+                           "placements when the survivor already had some")
+        if ("General Gov", "Permitting & Licensing") not in pairs:
+            errors += fail("act_merge lost the drop record's PRIMARY placement "
+                           "- the shelf it was actually filed on")
+    finally:
+        import importlib
+        importlib.reload(admin)
+    return errors
+
+
 def check_admin_guards() -> int:
     """Two invariants the admin states in comments, said here as tests.
 
@@ -3791,6 +3927,7 @@ def main() -> int:
     errors += check_role_promotion()
     errors += check_render_rotation()
     errors += check_refresh_render_ration()
+    errors += check_review_findings()
     errors += check_redirect_hop()
     errors += check_admin_http()
     errors += check_url_sinks()

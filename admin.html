@@ -330,9 +330,21 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g,
 let META = null, SCHEMA = null, FAMILIES = null, TAB = null, LAST_ITEMS = null;
 
 async function api(path, body) {
-  const r = await fetch(path, body ? {method:'POST',
-      headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)} : {});
-  const j = await r.json();
+  /* Every failure becomes {error}, because half the callers await this inside
+     a queue loader whose "loading…" placeholder is removed only on success: a
+     server restart or a dropped socket left the queue saying loading… forever,
+     with the truth visible only in devtools. An {error} return flows into the
+     same toast/empty-state path every handler already has. */
+  let r;
+  try {
+    r = await fetch(path, body ? {method:'POST',
+        headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)} : {});
+  } catch (e) {
+    return {error: 'the admin server did not answer - is it still running? (' + e.message + ')'};
+  }
+  let j;
+  try { j = await r.json(); }
+  catch (e) { return {error: `the admin answered ${r.status} with something that is not JSON`}; }
   /* A ruling needs the code printed on the admin's console, which no route
      serves and no page carries — that is what stops a script on this machine
      from ruling 86 companies overnight. If it is missing or stale, say so
@@ -865,6 +877,10 @@ async function show(key) {
   const load = el('div', 'empty', 'loading…'); v.appendChild(load);
   const res = await api('/api/queue/' + key);
   load.remove();
+  if (res.error) {
+    v.appendChild(el('div', 'empty', res.error));
+    return;
+  }
   QINFO = res;
   const items = res.items || [];
   // the whole set, so a renderer can offer to act on a group it belongs to
@@ -878,11 +894,25 @@ async function show(key) {
      comes off the queue that just loaded. */
   const intro = el('p', 'intro');
   if (INTRO[key]) {
-    intro.textContent = items.length
-      ? `${items.length.toLocaleString()} waiting. ${INTRO[key]}`
+    /* res.total, never items.length: the server caps the page at 400 rows and
+       sends the real count beside it. items.length said "400 waiting." on a
+       queue holding 644, which is a number in prose again - live this time,
+       and still wrong. */
+    const n = res.total ?? items.length;
+    intro.textContent = n
+      ? `${n.toLocaleString()} waiting. ${INTRO[key]}`
       : INTRO[key];
     v.appendChild(intro);
   }
+  /* The cap notice for queues that render no queueHead. It lived only inside
+     queueHead, which only queues with a named end state or a belt get - so
+     founded (644) and unclassified (456) served 400 rows with nothing on the
+     page admitting more exist. What is on screen is never quietly presented
+     as what exists, on EVERY queue, not just the six with a progress bar. */
+  if (!(res.state || res.belt) && res.total > items.length)
+    v.appendChild(el('p', 'intro',
+      `showing the first ${items.length.toLocaleString()} of `
+      + `${res.total.toLocaleString()} - the rest load as these are ruled`));
   /* What this queue is holding up. Only duplicates reports a number: every
      other queue asks about a record on its own terms, but a duplicate pair
      asks whether one of the two should stop existing, and every decision
@@ -916,10 +946,15 @@ function queueHead(key, res, body) {
       const b = el('button', null, label);
       b.setAttribute('aria-pressed', String(modeOf(key) === m));
       b.onclick = () => {
+        /* Re-fetch, never re-render the array captured at load. Ruling ten
+           vendors on the belt and then clicking List showed all ten pending
+           again - and a second click on one silently overwrote the ruling
+           made seconds earlier, because act_vendor_scope replaces the keyed
+           decision unconditionally. The queue the server sends after the
+           rulings is the truth; the array in this closure stopped being it
+           at the first commit. */
         MODE[key] = m;
-        seg.querySelectorAll('button').forEach(x =>
-          x.setAttribute('aria-pressed', String(x === b)));
-        drawQueue(key, res.items, body);
+        show(key);
       };
       return b;
     };
@@ -1477,6 +1512,12 @@ async function settleFamily(it, why, card, idx) {
 /* A refusal is the system working, so it gets the skeptical penguin and the
    server's own words - never a swallowed error and never a retry loop. */
 function refuse(message, card) {
+  /* Disarm on refusal, same as success does. Leaving BELT.armed loaded meant
+     the card rebuilt after "Back to the item" showed nothing armed while the
+     old call was still primed - one keypress or a bare Enter committed a
+     ruling the screen said was not armed. A refused write must put the belt
+     back exactly where an unarmed one is. */
+  BELT.armed = null;
   const n = el('div', 'refusal');
   n.appendChild(penguin('skeptic'));
   const t = el('div');
@@ -2565,8 +2606,16 @@ RENDER.miscategorized = c => {
   const also = el('button', 'act', 'Also file here');
   also.title = 'keep its current home and add this one too';
   also.onclick = async () => {
+    /* Disabled while in flight. act_also is an add/remove TOGGLE, so a
+       double-click was two sequential requests: the first added the
+       placement, the second found it present and removed it - the user
+       clicked an add button twice and ended with nothing, and the row looks
+       the same either way so nothing showed it. */
+    if (also.disabled) return;
+    also.disabled = true;
     const r = await api('/api/also',
       {id: c.id, sector: secSel.value, category: catSel.value});
+    also.disabled = false;
     if (r.error) return toast(r.error, true);
     // the primary is still the supplier bucket, so the row still needs its
     // real fix; removing the card here just brought it back on reload
@@ -2713,15 +2762,25 @@ RENDER.scope = p => {
                 'Federal Partners', 'Federal', 'Public Sector']
     .find(t => new RegExp(t, 'i').test(p.title));
   if (stem) {
-    const all = el('button', 'act mute', `Rule every “${stem.trim()}” at once`);
-    all.onclick = async () => {
-      const keep = confirm(`Keep every pending posting matching “${stem.trim()}”?\n\n`
-        + `OK keeps them on the board. Cancel rules them out of scope.`);
+    /* Two buttons, not one confirm(). The single dialog read "OK keeps them,
+       Cancel rules them out" — which spent the universal back-out gesture on a
+       permanent bulk ruling: pressing Escape to leave the dialog ruled every
+       matching posting off the board, and scope rulings are never re-asked.
+       Each button now confirms its own direction, and Cancel/Esc always means
+       "do nothing", everywhere, like it does in every other dialog on Earth. */
+    const bulk = async (keep) => {
+      const verb = keep ? 'KEEP every pending posting matching'
+                        : 'rule OUT OF SCOPE every pending posting matching';
+      if (!confirm(`${verb} “${stem.trim()}”?\n\nCancel does nothing.`)) return;
       const r = await api('/api/scope-all', {match: stem.trim(), in_scope: keep});
       if (r.error) return toast(r.error, true);
       toast(r.message); show('scope'); refreshCounts();
     };
-    row.appendChild(all);
+    const keepAll = el('button', 'act mute', `Keep every “${stem.trim()}”`);
+    keepAll.onclick = () => bulk(true);
+    const dropAll = el('button', 'act mute', `Every “${stem.trim()}” out of scope`);
+    dropAll.onclick = () => bulk(false);
+    row.appendChild(keepAll); row.appendChild(dropAll);
   }
   n.appendChild(row);
   return n;

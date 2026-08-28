@@ -254,15 +254,47 @@ def dismissed() -> dict:
     return read("admin_dismissed.json", {})
 
 
-def dismiss(queue: str, key: str, why: str) -> None:
+def dismissal_records():
+    """(queue, key, record) for every dismissal, whichever shape wrote it.
+
+    Two shapes have written admin_dismissed.json: dismiss() nests
+    {queue: {key: rec}}, and act_place's keep-branch wrote flat
+    "miscategorized:<id>" keys at the top level. Every metric consumer read
+    ONLY the flat shape - so every judgment recorded through the generic
+    dismiss buttons left its queue but never counted as a ruling: absent from
+    rulings_by_queue, absent from the day and sitting counters, and its typed
+    why invisible to the why-coverage meter, directly contradicting dismiss()'s
+    own comment that the meter counts any non-empty why. Care was being taken
+    and reported as not taken.
+
+    This is the one reader. A top-level key with a colon is flat legacy; one
+    without is a queue holding nested records. All writers now nest.
+    """
+    for key, rec in read("admin_dismissed.json", {}).items():
+        if not isinstance(rec, dict):
+            continue
+        if ":" in key:
+            q, k = key.split(":", 1)
+            yield q, k, rec
+        else:
+            for k, r in rec.items():
+                if isinstance(r, dict):
+                    yield key, k, r
+
+
+def dismiss(queue: str, key: str, why: str, by: str = "owner",
+            saw: dict | None = None) -> None:
     # `why` is null when nobody typed one, never a stand-in. The why-coverage
     # meter counts any non-empty why as a reason, so a placeholder here - the
     # page used to send the literal "dismissed in admin" - reports care that
     # nobody took, which is the one thing that meter exists to make visible.
     d = dismissed()
-    d.setdefault(queue, {})[key] = {"on": dt.date.today().isoformat(),
-                                    "at": now(),
-                                    "why": (why or "").strip() or None}
+    rec = {"on": dt.date.today().isoformat(), "at": now(),
+           "by": (by or "owner").strip(),
+           "why": (why or "").strip() or None}
+    if saw is not None:
+        rec["saw"] = saw
+    d.setdefault(queue, {})[key] = rec
     write_atomic("admin_dismissed.json", d)
 
 
@@ -430,7 +462,15 @@ def q_websites(companies, board) -> list:
     return out
 
 
-BLOCKED_MARKERS = ("blocked at the door", "could not fetch", "gave up after")
+# "blocked at" is a PREFIX, not the full literal. discover_ats writes two
+# shapes: "blocked at the door (HTTP 403)" for a homepage refusal and
+# "blocked at /careers (HTTP 403)" for a refusal mid-crawl. Matching only the
+# first filed twenty mid-crawl 403s as "probed, nothing found" - a refusal
+# reported as evidence of absence, which is the one mistake this project's
+# founding rule exists to prevent. The record's own retry_soon flag is the
+# ground truth (discover_ats sets it exactly when the fetch was refused) and
+# _probe honours it first.
+BLOCKED_MARKERS = ("blocked at", "could not fetch", "gave up after")
 
 
 def _events(description: str) -> list:
@@ -451,7 +491,8 @@ def _probe(cid: str) -> dict:
     if not e:
         return {"state": "unprobed", "note": None, "on": None}
     note = e.get("note") or ""
-    state = ("blocked" if any(mk in note for mk in BLOCKED_MARKERS)
+    state = ("blocked" if e.get("retry_soon")
+             or any(mk in note for mk in BLOCKED_MARKERS)
              else "none-found")
     return {"state": state, "note": note, "on": e.get("on")}
 
@@ -1533,10 +1574,8 @@ def agree_rate() -> dict:
     # proposal said move it, the person looked and said leave it. Dropping
     # those would measure only the cases where the guesser was already
     # trusted, which is how a model grades itself.
-    for key, rec in read("admin_dismissed.json", {}).items():
-        if not (isinstance(key, str) and key.startswith("miscategorized:")):
-            continue
-        if not isinstance(rec, dict):
+    for q, _k, rec in dismissal_records():
+        if q != "miscategorized":
             continue
         prop = _seen_proposal(rec)
         was = (rec.get("saw") or {}).get("was")
@@ -1628,9 +1667,19 @@ def rulings_by_queue() -> collections.Counter:
                          ("scope_decisions.json", "scope")):
         done[queue] += sum(1 for r in read(fname, {}).values()
                            if isinstance(r, dict))
-    for key, rec in read("admin_dismissed.json", {}).items():
-        if isinstance(rec, dict) and isinstance(key, str) and ":" in key:
-            done[key.split(":", 1)[0]] += 1
+    for q, _k, _rec in dismissal_records():
+        done[q] += 1
+    # The rulings only the journal remembers. merge, save-website, set-board,
+    # retry-board and their kin write through save_companies(), which journals
+    # and touches no decision file - so the done half of four END_STATE queues
+    # (duplicates, websites, boards, and every blocked retry) sat at zero no
+    # matter how many rulings landed. _ruling_stamps counted those same events
+    # into the day and sitting counters, and the code around _game insists the
+    # two tallies must not be able to disagree; they disagreed from the start.
+    # mine_only=False on purpose: this counter measures decisions made, not
+    # who made them, same as the decision files above, which carry no filter.
+    for _t, q, _eid in _journal_rulings(mine_only=False):
+        done[q] += 1
     return done
 
 
@@ -1802,14 +1851,12 @@ def _ruling_stamps(mine_only: bool = True) -> list[tuple[dt.datetime, str]]:
             t = _ts(rec.get("at"))
             if t:
                 out.append((t, queue))
-    for key, rec in read("admin_dismissed.json", {}).items():
-        if not (isinstance(rec, dict) and isinstance(key, str) and ":" in key):
-            continue
+    for q, _k, rec in dismissal_records():
         if mine_only and not _is_person(rec.get("by")):
             continue
         t = _ts(rec.get("at"))
         if t:
-            out.append((t, key.split(":", 1)[0]))
+            out.append((t, q))
     for t, queue, _eid in _journal_rulings(mine_only):
         out.append((t, queue))
     return sorted(out)
@@ -1958,9 +2005,8 @@ def _game(counts: dict) -> dict:
             total += 1
             if (r.get("why") or "").strip():
                 with_why += 1
-    for key, entry in read("admin_dismissed.json", {}).items():
-        if isinstance(entry, dict) and isinstance(key, str) and ":" in key \
-                and _is_person(entry.get("by")):
+    for _q, _k, entry in dismissal_records():
+        if _is_person(entry.get("by")):
             total += 1
             if (entry.get("why") or "").strip():
                 with_why += 1
@@ -2341,13 +2387,8 @@ def act_place(body: dict) -> dict:
            "confidence": body.get("confidence"),
            "description": body.get("description")}
     if body.get("keep"):
-        d = read("admin_dismissed.json", {})
-        d[f"miscategorized:{cid}"] = {
-            "on": dt.date.today().isoformat(), "at": now(),
-            "by": (body.get("by") or "owner").strip(),
-            "why": why or None,
-            "saw": saw}
-        write_atomic("admin_dismissed.json", d)
+        dismiss("miscategorized", cid, why or "",
+                by=(body.get("by") or "owner"), saw=saw)
         return {"ok": True, "message": "left where it is"}
 
     # Accepting = taking the proposal exactly as offered. Filing it somewhere
@@ -2647,6 +2688,26 @@ def act_merge(body: dict) -> dict:
     notes = _merge_notes(keep.get("notes"), drop.get("notes"))
     if notes:
         keep["notes"] = notes
+    # `also` is the third union field, and it carries the drop's PRIMARY
+    # placement too. A duplicate pair is often the same vendor filed on two
+    # shelves - that is frequently WHY there are two records - and the merge
+    # was keeping only the survivor's shelf: drop's sector/category vanished
+    # whenever keep already had any `also` list, so a filter on that shelf no
+    # longer found the vendor. A placement is research about where a buyer
+    # looks for them; a merge never loses research.
+    merged_also = list(keep.get("also") or [])
+    have = {(a.get("sector"), a.get("category")) for a in merged_also}
+    have.add((keep.get("sector"), keep.get("category")))   # never also-yourself
+    for a in (drop.get("also") or []) + [{"sector": drop.get("sector"),
+                                          "category": drop.get("category")}]:
+        pair = (a.get("sector"), a.get("category"))
+        if pair in have or not all(pair):
+            continue
+        have.add(pair)
+        merged_also.append({"sector": a["sector"], "category": a["category"]})
+        filled.append("also")
+    if merged_also:
+        keep["also"] = merged_also
     remaining = [c for c in companies if c["id"] != drop_id]
     err = validate(remaining)
     if err:
@@ -2686,10 +2747,23 @@ def act_patch(body: dict) -> dict:
                           + (f"{', '.join(rejected)} cannot be patched here"
                              if rejected else "no fields were given")
                           + f". Editable: {', '.join(sorted(allowed))}")}
+    # NO ats BACKDOOR. Two lines here used to write fields["ats"] straight onto
+    # the company after the allowlist had excluded it - so an ats-ONLY patch
+    # was refused with "ats cannot be patched here" while ats smuggled in next
+    # to any allowed field landed unverified. That bypasses every gate a board
+    # change has: act_set_board's explicit-action check and act_board_proposal's
+    # live verify with its MISMATCH refusal. A wrong ref is the worst write
+    # this file can make - point "prepared" at greenhouse/axon and the next
+    # refresh reports Axon's ~500 requisitions as Prepared's, the exact false
+    # Yes the proposal flow exists to refuse. Board changes go through
+    # /api/set-board, which verifies, or they do not happen.
+    if "ats" in fields:
+        return {"error": "ats cannot be patched here, with or without other "
+                         "fields - board changes go through set-board, which "
+                         "verifies the ref against the live board first. "
+                         "Nothing was written."}
     for k in touched:
         c[k] = fields[k]
-    if "ats" in (body.get("fields") or {}):
-        c["ats"] = body["fields"]["ats"]
     err = validate(companies)
     if err:
         return {"error": err}
@@ -3163,6 +3237,20 @@ def act_resolve_submission(body: dict) -> dict:
                                    "location": item.get("location")}]})
         if r.get("error"):
             return r
+        # act_capture returning ok is not the same as act_capture ADDING the
+        # posting: its filter drops junk and evergreen titles ("General
+        # Application") and duplicates, and reports added: 0. Stamping that
+        # "approved" published nothing while telling the submitter and the
+        # queue it had - a silent no-op wearing a success message, the same
+        # species act_patch was cured of. The reviewer gets the reason and the
+        # submission stays pending for a real decision (reject it, or fix the
+        # title and approve again).
+        if not r.get("added"):
+            return {"error": ("approving this added nothing to the board - "
+                              + (r.get("message") or "the title was filtered "
+                                 "as junk, evergreen, or already present")
+                              + ". The submission stays pending; reject it if "
+                              "it should not publish.")}
         item["status"] = "approved"
     else:
         fields = body.get("fields") or {}

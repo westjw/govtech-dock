@@ -541,7 +541,10 @@ def count_openings(postings: list[dict], orgs: list[dict]) -> dict[str, list[dic
 # The same markers admin.py uses to tell a refusal from a reading. Kept in
 # step deliberately: if these two ever disagree, the queue and the public card
 # describe the same company differently.
-_BLOCKED_MARKERS = ("blocked at the door", "could not fetch", "gave up after")
+# "blocked at" is a prefix covering both note shapes discover_ats writes -
+# see BLOCKED_MARKERS in admin.py for the twenty-record misfiling the
+# full-literal version caused. Kept in sync with that tuple by selftest.
+_BLOCKED_MARKERS = ("blocked at", "could not fetch", "gave up after")
 _DISCOVERY_LOG: dict | None = None
 
 
@@ -558,7 +561,8 @@ def _probe_state(cid: str) -> str | None:
     if not entry:
         return None
     note = entry.get("note") or ""
-    return "blocked" if any(m in note for m in _BLOCKED_MARKERS) else "none-found"
+    return ("blocked" if entry.get("retry_soon")
+            or any(m in note for m in _BLOCKED_MARKERS) else "none-found")
 
 
 def main() -> int:
