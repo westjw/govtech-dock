@@ -10,6 +10,7 @@ import collections
 import csv
 import html
 import io
+import inspect
 import json
 import re
 import pathlib
@@ -2979,10 +2980,16 @@ def check_refresh_renders_a_shell_before_saying_unknown() -> int:
         errors += fail(f"with no renderer available the fallback returned "
                        f"{got!r}; it must return None and leave the Unknown")
 
-    # it must never be reached for a non-html board or a company with no ref
-    if refresh._try_render("greenhouse", "someslug") is not None:
-        errors += fail("the render fallback fired for a structured board, "
-                       "which has a real API and needs no browser")
+    # It must never be reached for a structured board. Calling it and checking
+    # the return proves nothing - a greenhouse slug is not a renderable url, so
+    # it comes back None whether the guard is there or not. The guard itself is
+    # the thing, so the guard itself is what is checked, and this is a shape
+    # check rather than a behavioural one on purpose.
+    guard = inspect.getsource(refresh._try_render)
+    if 'kind != "html"' not in guard:
+        errors += fail("the render fallback no longer refuses non-html boards. "
+                       "A greenhouse or workday board has a real API; firing a "
+                       "browser at its slug spends 30 seconds to learn nothing")
     if refresh._try_render("html", None) is not None:
         errors += fail("the render fallback fired with no url to render")
 
