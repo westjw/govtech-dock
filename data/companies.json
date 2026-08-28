@@ -8537,7 +8537,7 @@
   "description": "ArcGIS route optimization for waste/recycling collection and postal/utility fleets (FedEx-owned, 2025) - exhibited at AWWA ACE 2026",
   "ats": {
    "type": "workable",
-   "ref": "routesmart"
+   "ref": "routesmart-technologies-inc"
   },
   "hiring": {
    "status": "Unknown",
@@ -8548,7 +8548,8 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "PWX 2026",
-  "researched": true
+  "researched": true,
+  "ats_note": "confirmed by hand in admin 2026-08-28"
  },
  {
   "id": "greehill",
@@ -16009,7 +16010,7 @@
   "location": "Stockholm, Sweden",
   "year_founded": 2001,
   "sector": "Transit & Parking",
-  "category": "Suppliers & Services",
+  "category": "Parking & Curb",
   "description": "Mobility and curb/parking technology platform - exhibited at APTA 2026",
   "ats": {
    "type": "ashby",
@@ -16161,7 +16162,7 @@
   "location": null,
   "year_founded": 2012,
   "sector": "Public Safety",
-  "category": "Suppliers & Services",
+  "category": "Police",
   "description": "Retail crime intelligence and reporting platform - exhibited at IACP 2026",
   "ats": {
    "type": "ashby",
@@ -16586,7 +16587,7 @@
   "location": null,
   "year_founded": 1984,
   "sector": "Public Safety",
-  "category": "Suppliers & Services",
+  "category": "Police",
   "description": "Vehicle history data tools for police - exhibited at IACP 2026",
   "ats": {
    "type": "bamboohr",
@@ -17072,7 +17073,7 @@
   "location": "New York, NY",
   "year_founded": 2015,
   "sector": "General Gov",
-  "category": "Suppliers & Services",
+  "category": "HR & Workforce",
   "description": "Earned wage access platform for employers - exhibited at NACo 2026",
   "ats": {
    "type": "ashby",
@@ -17368,7 +17369,7 @@
   "location": "Rochester, NY",
   "year_founded": null,
   "sector": "General Gov",
-  "category": "Suppliers & Services",
+  "category": "IT & AI Platforms",
   "description": "Aerial imagery and property analytics - exhibited at NACo 2026",
   "ats": {
    "type": "html",
@@ -17473,7 +17474,7 @@
   "location": null,
   "year_founded": 2015,
   "sector": "General Gov",
-  "category": "Suppliers & Services",
+  "category": "Procurement & Payments",
   "description": "Expense management and payment software - exhibited at NIGP 2026, NACUBO 2026",
   "ats": {
    "type": "lever",
@@ -17706,7 +17707,7 @@
   "location": "New York, NY",
   "year_founded": 2009,
   "sector": "Parks & Rec",
-  "category": "Suppliers & Services",
+  "category": "Youth Sports & Leagues",
   "description": "Youth sports scorekeeping and streaming app - exhibited at NRPA 2026",
   "ats": {
    "type": "ashby",
@@ -17783,7 +17784,7 @@
   "location": null,
   "year_founded": null,
   "sector": "Public Safety",
-  "category": "Suppliers & Services",
+  "category": "Police",
   "description": "Software for first responder agencies - exhibited at IACP 2026",
   "ats": {
    "type": "ashby",
@@ -17865,7 +17866,7 @@
   "location": "Menlo Park, CA",
   "year_founded": 2013,
   "sector": "General Gov",
-  "category": "Suppliers & Services",
+  "category": "HR & Workforce",
   "description": "Digital heart health app and monitoring - exhibited at NACo 2026, PSHRA 2026",
   "ats": {
    "type": "greenhouse",
@@ -18447,7 +18448,7 @@
   "location": null,
   "year_founded": null,
   "sector": "Public Safety",
-  "category": "Suppliers & Services",
+  "category": "Police",
   "description": "Platform for legal data requests to companies - exhibited at IACP 2026",
   "ats": {
    "type": "ashby",
@@ -18684,7 +18685,7 @@
   "location": "San Francisco, CA",
   "year_founded": 2025,
   "sector": "Public Safety",
-  "category": "Suppliers & Services",
+  "category": "Police",
   "description": "AI investigations platform for law enforcement - exhibited at IACP 2026",
   "ats": {
    "type": "rippling",
@@ -18887,7 +18888,7 @@
   "location": "Tel Aviv, Israel",
   "year_founded": 2012,
   "sector": "General Gov",
-  "category": "Suppliers & Services",
+  "category": "IT & AI Platforms",
   "description": "Work management and collaboration software - exhibited at NACo 2026",
   "ats": {
    "type": "html",
@@ -19705,7 +19706,7 @@
   "location": "London, United Kingdom",
   "year_founded": 2016,
   "sector": "Public Safety",
-  "category": "Suppliers & Services",
+  "category": "Police",
   "description": "AI video redaction and privacy software - exhibited at IACP 2026",
   "ats": {
    "type": "html",
@@ -19788,7 +19789,7 @@
   "location": "Wallingford, CT",
   "year_founded": null,
   "sector": "Public Safety",
-  "category": "Suppliers & Services",
+  "category": "Police",
   "description": "Online police hiring and application platform - exhibited at IACP 2026",
   "ats": {
    "type": "html",
@@ -20145,7 +20146,7 @@
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
-  "category": "Suppliers & Services",
+  "category": "Strategy & Performance",
   "description": "Public affairs and legislative tracking software - exhibited at NACo 2026, NLC City Summit 2026",
   "ats": {
    "type": "ashby",
@@ -20903,7 +20904,7 @@
   "location": "Emeryville, CA",
   "year_founded": 2007,
   "sector": "General Gov",
-  "category": "Suppliers & Services",
+  "category": "IT & AI Platforms",
   "description": "Endpoint management and security platform - exhibited at NACo 2026, NASCIO 2026, EDUCAUSE 2026",
   "ats": {
    "type": "greenhouse",
@@ -21554,8 +21555,8 @@
   "website": "https://www.workday.com",
   "location": "Pleasanton, CA",
   "year_founded": 2005,
-  "sector": "Transit & Parking",
-  "category": "Suppliers & Services",
+  "sector": "General Gov",
+  "category": "Finance & ERP",
   "description": "HR, finance and ERP software - exhibited at APTA 2026, ICMA 2025, NACo 2026, NACUBO 2026, GFOA 2026, PSHRA 2026, NASCIO 2026, EDUCAUSE 2026",
   "ats": {
    "type": "workday",
