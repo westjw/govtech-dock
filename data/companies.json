@@ -12418,8 +12418,8 @@
   "category": "Police",
   "description": "EnforceAir RF-cyber drone takeover landing rogue drones safely for LE, prisons, and events (NA HQ McLean VA)",
   "ats": {
-   "type": "html",
-   "ref": "https://d-fendsolutions.com/careers"
+   "type": "lever",
+   "ref": "d-fendsolutions"
   },
   "hiring": {
    "status": "Yes",
@@ -12441,7 +12441,8 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026; AAAE 2026",
-  "researched": true
+  "researched": true,
+  "ats_note": "careers page was a JS shell; the real board is lever, found by rendering it 2026-08-28"
  },
  {
   "id": "sentrycs",
@@ -18398,8 +18399,8 @@
   "category": "Suppliers & Services",
   "description": "EHS compliance software and services - exhibited at ICMA 2025",
   "ats": {
-   "type": "html",
-   "ref": "https://kpa.io/careers"
+   "type": "lever",
+   "ref": "kpaonline"
   },
   "hiring": {
    "status": "Yes",
@@ -18416,7 +18417,8 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025",
-  "researched": false
+  "researched": false,
+  "ats_note": "careers page was a JS shell; the real board is lever, found by rendering it 2026-08-28"
  },
  {
   "id": "karda-inc",
@@ -33968,8 +33970,8 @@
   "category": "Procurement & Payments",
   "description": "Contract lifecycle management with FedRAMP and state/local government customers",
   "ats": {
-   "type": "html",
-   "ref": "https://agiloft.com/careers"
+   "type": "lever",
+   "ref": "agiloft"
   },
   "hiring": {
    "status": "Yes",
@@ -33986,7 +33988,8 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "ats_note": "careers page was a JS shell; the real board is lever, found by rendering it 2026-08-28"
  },
  {
   "id": "submittable",
@@ -36889,8 +36892,8 @@
   "category": "Fire",
   "description": "Satellite vegetation intelligence for wildfire risk at utilities and agencies",
   "ats": {
-   "type": "html",
-   "ref": "https://www.overstory.com/careers"
+   "type": "greenhouse",
+   "ref": "overstory"
   },
   "hiring": {
    "status": "Yes",
@@ -36907,7 +36910,8 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "ats_note": "careers page was a JS shell; the real board is greenhouse, found by rendering it 2026-08-28"
  },
  {
   "id": "alchera-x",

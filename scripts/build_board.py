@@ -402,7 +402,7 @@ def main() -> int:
     ap.add_argument("--write-partial", action="store_true",
                     help="allow a --limit/--company run to overwrite the full board")
     ap.add_argument("--delay", type=float, default=0.4)
-    ap.add_argument("--render-budget", type=float, default=900,
+    ap.add_argument("--render-budget", type=float, default=1800,
                     help="seconds to spend on the browser fallback in total "
                          "(default 900). Rendering is sequential and costs "
                          "~27s a page, so an uncapped render phase can run "
@@ -430,6 +430,7 @@ def main() -> int:
 
     today = dt.date.today().isoformat()
     postings, orgs, unreadable, rendered = [], [], 0, 0
+    render_skipped = 0
 
     # Fetch in parallel. Sequentially, 362 boards plus renders took 71 minutes,
     # which does not fit a daily job. Most of that is waiting on sockets, so
@@ -543,9 +544,19 @@ def main() -> int:
         ref = (c.get("ats") or {}).get("ref")
         no_board = kind in (None, "unknown") or ref is None
 
-        if err and may_render and not a.no_render and render_fetch is not None \
-                and render_fetch.available() \
-                and time.monotonic() - render_started < a.render_budget:
+        # THE BUDGET IS A CAP, AND A CAP THAT DOES NOT SAY SO IS A LIE. On
+        # 2026-08-28 this phase stopped at 13 recovered boards with 784s of a
+        # 900s budget spent, and the run reported "16 boards unreadable, 13
+        # recovered by rendering" - which reads as though the other three were
+        # tried and failed. They were never attempted. NEXGEN Asset Management
+        # and First Arriving both render and enumerate perfectly by hand; both
+        # published as companies with nothing to click, under a card that said
+        # they were hiring. Count what the budget refuses and print it.
+        wants_render = (err and may_render and not a.no_render
+                        and render_fetch is not None and render_fetch.available())
+        if wants_render and time.monotonic() - render_started >= a.render_budget:
+            render_skipped += 1
+        if wants_render and time.monotonic() - render_started < a.render_budget:
             try:
                 # render_fetch reads the rendered DOM, not ats.fetch(), so its
                 # titles have not been through plain() yet.
@@ -982,6 +993,10 @@ def main() -> int:
     print(f"{len(companies)} companies: {len(companies) - no_board} with a board on "
           f"file, {no_board} awaiting discovery")
     print(f"  {unreadable} boards unreadable, {rendered} recovered by rendering")
+    if render_skipped:
+        print(f"  {render_skipped} board(s) NOT TRIED - the render budget "
+              f"({a.render_budget:.0f}s) ran out. These are not zeros; raise "
+              f"--render-budget to reach them.")
     t = payload["totals"]
     print(f"{t['openings']} open roles, advertised in {t['postings']} postings")
     print(f"  {t['quota_carrying']} quota-carrying, "
