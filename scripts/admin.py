@@ -544,11 +544,75 @@ def q_unclassified(companies, board) -> list:
     return out
 
 
+# Hosts that run job boards for other people. A board on one of these belongs
+# to a vendor doing its job, not to a rival whose postings might be mistaken
+# for this company's.
+ATS_HOSTS = (
+    "greenhouse.io", "lever.co", "ashbyhq.com", "workable.com", "bamboohr.com",
+    "myworkdayjobs.com", "workday.com", "recruitee.com", "breezy.hr", "gusto.com",
+    "smartrecruiters.com", "jazzhr.com", "paylocity.com", "icims.com",
+    "rippling.com", "applytojob.com", "taleo.net", "successfactors.com",
+    "jobscore.com", "comeet.com", "teamtailor.com", "trinethire.com",
+    "applicantpro.com", "hirehive.com", "hrmdirect.com", "ttcportals.com",
+    "jobvite.com", "dayforcehcm.com", "adp.com", "ycombinator.com",
+    "gnahiring.com", "trakstar.com", "oraclecloud.com", "paycomonline.net",
+)
+
+
 def q_acquisitions(companies, board) -> list:
+    """Boards that look like they belong to somebody else.
+
+    Two signals now, because one was missing the plainest case there is.
+
+    The sweep's own suspicions, from ats_suspects.json - a slug that reads but
+    does not match the company's name.
+
+    AND: a board hosted on the domain of another company ALREADY ON THIS BOARD.
+    That is not a guess about a slug, it is two records this file already holds
+    pointing at one place. Twenty-two of them: Cartegraph's board is
+    opengov.com, Dedrone's is axon.com, ResourceX's is tylertech.com. Sixteen
+    appeared in no queue at all, so nobody was ever asked - and five of them
+    were meanwhile telling the public site they were hiring an AE, on the
+    strength of a page scan of the parent's careers page.
+
+    An ATS host does not count, or every real board on the site becomes a
+    suspect: greenhouse.io is a filing cabinet, not a rival.
+    """
     sus = read("ats_suspects.json", {})
     items = sus.get("suspects", sus) if isinstance(sus, dict) else sus
     if isinstance(items, dict):
         items = [{"id": k, **v} for k, v in items.items()]
+    items = list(items)
+    seen = {i.get("id") for i in items}
+
+    def _root(u):
+        h = (urllib.parse.urlparse(u or "").hostname or "").lower()
+        h = h.replace("www.", "")
+        parts = h.split(".")
+        return ".".join(parts[-2:]) if len(parts) >= 2 else h
+
+    sites = {}
+    for c in companies:
+        r = _root(c.get("website"))
+        if r:
+            sites.setdefault(r, c["name"])
+    for c in companies:
+        if c["id"] in seen:
+            continue
+        ref = (c.get("ats") or {}).get("ref")
+        if not isinstance(ref, str) or not ref.startswith("http"):
+            continue
+        site, host = _root(c.get("website")), _root(ref)
+        if not site or not host or site == host or host in ATS_HOSTS:
+            continue
+        owner = sites.get(host)
+        if not owner or owner == c["name"]:
+            continue
+        items.append({
+            "id": c["id"], "ats": c.get("ats"),
+            "note": (f"this board is on {host}, which is {owner}'s own domain. "
+                     f"Their postings are not necessarily {c['name']}'s"),
+            "on": dt.date.today().isoformat()})
     return [i for i in items if not is_dismissed("acquisitions", i.get("id", ""))]
 
 

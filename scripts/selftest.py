@@ -3074,6 +3074,78 @@ def check_a_page_scan_of_the_parents_site_is_not_evidence() -> int:
     return errors
 
 
+
+def check_a_board_on_another_members_domain_is_surfaced() -> int:
+    """Twenty-two companies pointed at another company's board and no queue asked.
+
+    Cartegraph's board is opengov.com. Dedrone's is axon.com. ResourceX's is
+    tylertech.com. Sixteen of the twenty-two appeared in NO queue at all, so
+    nobody was ever asked about them - while five were meanwhile telling the
+    public site they were hiring an AE, on the strength of a page scan of the
+    parent's careers page.
+
+    This is not a guess about a slug, which is what the acquisitions queue was
+    built on. It is two records this file already holds pointing at one place,
+    and it costs nothing to notice.
+
+    An ATS host must never count. greenhouse.io is a filing cabinet, and
+    treating it as a rival's domain would put every real board on the site into
+    the acquisitions queue.
+    """
+    import admin
+    errors = 0
+    companies = admin.read("companies.json", [])
+    board = admin.read("board.json", {})
+    rows = admin.QUEUES["acquisitions"](companies, board)
+    ids = {r.get("id") for r in rows}
+
+    by_name = {c["name"]: c for c in companies}
+    for sub, parent in (("Cartegraph", "OpenGov"), ("ResourceX", "Tyler Technologies")):
+        c = by_name.get(sub)
+        if not c:
+            continue
+        ref = (c.get("ats") or {}).get("ref") or ""
+        if not isinstance(ref, str) or not ref.startswith("http"):
+            continue          # somebody re-wired it; the case no longer applies
+        if c["id"] not in ids:
+            errors += fail(f"{sub}'s board is on {parent}'s domain and the "
+                           f"acquisitions queue does not raise it, so nobody is "
+                           f"asked whether those postings are theirs")
+
+    # No company on a normal ATS may be dragged in. This holds today for a
+    # second reason as well as the ATS_HOSTS list: the owner lookup only
+    # matches a company's own WEBSITE, and no company's website is
+    # greenhouse.io. Removing ATS_HOSTS therefore changes nothing right now,
+    # which I found by mutating it and watching this check pass - so the list
+    # is defence in depth rather than the thing doing the work, and saying
+    # otherwise here would overstate what is tested.
+    #
+    # It still earns its place: the day somebody records a recruiting vendor as
+    # a company, ATS_HOSTS is what stops every board on the site becoming an
+    # acquisition suspect.
+    dragged = []
+    for r in rows:
+        if "own domain" not in (r.get("note") or ""):
+            continue
+        ref = ((r.get("ats") or {}).get("ref") or "")
+        if any(h in ref for h in ("greenhouse.io", "lever.co", "bamboohr.com",
+                                  "ashbyhq.com", "myworkdayjobs.com")):
+            dragged.append(r.get("id"))
+    if dragged:
+        errors += fail(f"{len(dragged)} companies on a normal ATS were flagged "
+                       f"as sitting on another company's domain "
+                       f"(e.g. {dragged[0]}). An ATS host is not a rival")
+    missing = [h for h in ("greenhouse.io", "lever.co", "bamboohr.com",
+                           "ashbyhq.com", "myworkdayjobs.com")
+               if h not in admin.ATS_HOSTS]
+    if missing:
+        errors += fail(f"ATS_HOSTS no longer lists {missing}. The day a "
+                       f"recruiting vendor is recorded as a company, that list "
+                       f"is the only thing stopping every board on the site "
+                       f"becoming an acquisition suspect")
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -3416,6 +3488,7 @@ def main() -> int:
     errors += check_a_card_link_yields_the_title_not_the_whole_card()
     errors += check_refresh_renders_a_shell_before_saying_unknown()
     errors += check_a_page_scan_of_the_parents_site_is_not_evidence()
+    errors += check_a_board_on_another_members_domain_is_surfaced()
     errors += check_coming_soon_is_not_a_parked_domain()
     errors += check_a_parent_board_ruling_names_the_parent()
     errors += check_the_owner_can_argue_with_the_logic()
