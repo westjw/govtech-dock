@@ -216,6 +216,24 @@ def _stored_roles_as_jobs(c: dict) -> list[dict]:
     return out
 
 
+
+def _scan_lead(c: dict) -> bool | None:
+    """Did a page scan see a quota title we could not turn into a posting?
+
+    True only when the stored evidence is the SYNTHETIC page-scan marker -
+    "AE-type role (page scan)", which carries no title, no location and the
+    careers page as its url. A real stored role does not come through here;
+    it becomes a posting via _stored_roles_as_jobs().
+    """
+    h = c.get("hiring") or {}
+    if h.get("status") not in ("Yes", "Sales (non-AE)"):
+        return None
+    for r in (h.get("roles") or []):
+        if r.get("synthetic") or "page scan" in (r.get("title") or "").lower():
+            return True
+    return None
+
+
 def board_url(c: dict) -> str | None:
     """Where a person can go look themselves. Matters most where extraction fails."""
     a = c.get("ats") or {}
@@ -863,6 +881,16 @@ def main() -> int:
             # lives in the admin, and the public card never saw it.
             "probe": _probe_state(c["id"]) if no_board else None,
             "enumerable": enumerable,
+            # A LEAD, WHERE WE HAVE ONE AND CANNOT TURN IT INTO A POSTING.
+            # 89 companies are in this state: a page scan found a
+            # quota-carrying title in the text of their careers page, but the
+            # listing itself never loaded for our reader, so there is no
+            # posting to publish and the card would otherwise say nothing at
+            # all. The scan is weak evidence - it proves those words appeared
+            # on that page, and nothing more - which is exactly why it is
+            # offered as a lead to check rather than counted as an opening.
+            # It changes no number on this board.
+            "scan_lead": _scan_lead(c) if not jobs else None,
         })
 
     # Merge hand-checked findings. These come from companies the fetchers cannot

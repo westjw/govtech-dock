@@ -3641,6 +3641,7 @@ function co(id){
     ${(safeUrl(o.board_url)&&!o.no_board_on_file)?`<p><a href="${esc(safeUrl(o.board_url))}" target="_blank" rel="noopener">Open ${o.board_owner&&o.board_owner!==o.name?esc(o.board_owner)+"&rsquo;s":"their"} hiring board &rarr;</a>${o.board_owner&&o.board_owner!==o.name?` <span class="chip warn">these roles are posted on ${esc(o.board_owner)}&rsquo;s board${o.parent?", who acquired them":""} &mdash; some may not be ${esc(o.name)} roles</span>`:""}
       ${o.unreadable?` <span class="chip warn">board could not be read: ${esc(o.unreadable)}</span>`:""}
       ${o.enumerable===false?` <span class="chip warn">their board is live but its roles cannot be read automatically, so this list may be incomplete</span>`:""}
+      ${o.scan_lead?` <span class="chip">a lead, not a listing &mdash; a sales title appears in the text of this page, but no posting ever loaded for our reader, so the link opens the page and not a job</span>`:""}
       ${o.checked_by_hand?` <span class="chip">checked by hand ${esc(o.checked_by_hand)}</span>`:""}</p>`
       :o.unreadable?`<p><span class="chip warn">board could not be read: ${esc(o.unreadable)}</span></p>`:""}
     ${(()=>{
@@ -3669,6 +3670,11 @@ function co(id){
       if(o.enumerable===false)
         notes.push(`Their board is live but its roles cannot be read automatically,
           so this list is probably incomplete.`);
+      if(o.scan_lead)
+        notes.push(`We found a sales title in the text of their careers page but could
+          not read the posting itself, so nothing is listed above. It is a lead worth
+          checking, not an opening we can vouch for &mdash; and it counts towards no
+          number on this site.`);
       if(o.unreadable)
         notes.push(`Their board could not be read on the last run
           (${esc(o.unreadable)}), so these roles may be stale.`);
