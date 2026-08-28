@@ -623,6 +623,50 @@ def act_scope_all(body: dict) -> dict:
                                    f"{'in' if keep else 'out of'} scope"}
 
 
+def act_suggest(body: dict) -> dict:
+    """Record an argument about the LOGIC, attached to the row that provoked it.
+
+    Every queue shows its reasoning to the person ruling - "the domain matches
+    this name", "this is a holding page", "slug does not match". When that
+    reasoning is wrong, the owner is the only one who ever sees it, at the one
+    moment he has the context to say why, and there has never been anywhere to
+    put it. So it goes in a ruling, or it goes nowhere.
+
+    Three of those were wrong in one sitting. The rename panel offered to call
+    Conduent Transportation "Conduent" without noticing the name was taken.
+    The parked detector convicted wrangler.ai on the words "coming soon". The
+    no-board panel said "send it to the acquisitions queue" for a queue no
+    button can add to.
+
+    This writes NOTHING to companies.json and nothing to the public board. It
+    is a note to whoever fixes the logic, carrying what the panel claimed and
+    what the owner says is wrong with it - because "the parked check is too
+    eager" a week later is not the same as it with the page in front of you.
+    """
+    cid = (body.get("id") or "").strip()
+    argument = (body.get("argument") or "").strip()
+    if not argument:
+        return {"error": "nothing to record - say what the logic got wrong"}
+    notes = read("logic_notes.json", {"notes": []})
+    notes["notes"].append({
+        "queue": (body.get("queue") or "").strip() or None,
+        "id": cid or None,
+        "name": (body.get("name") or "").strip() or None,
+        # what the panel actually told him, so the note is readable later
+        # without reconstructing the state that produced it
+        "saw": (body.get("saw") or "").strip()[:600] or None,
+        "argument": argument[:2000],
+        "on": dt.date.today().isoformat(),
+        "at": now(),
+        "by": (body.get("by") or "owner"),
+    })
+    write_atomic("logic_notes.json", notes)
+    n = len(notes["notes"])
+    return {"ok": True,
+            "message": f"noted \u2014 {n} argument{'s' if n != 1 else ''} on file. "
+                       f"Nothing on the board changed."}
+
+
 def act_posts_at(body: dict) -> dict:
     """Record that a company advertises somewhere we cannot enumerate.
 
@@ -637,7 +681,8 @@ def act_posts_at(body: dict) -> dict:
     cid = (body.get("id") or "").strip()
     where = (body.get("where") or "").strip()
     url = (body.get("url") or "").strip()
-    bad = _pa.check(where, url)
+    owner = (body.get("owner") or "").strip()
+    bad = _pa.check(where, url, owner)
     if bad:
         return {"error": bad}
     companies = read_companies()
@@ -645,7 +690,12 @@ def act_posts_at(body: dict) -> dict:
     if c is None:
         return {"error": "no such company"}
     c["posts_at"] = _pa.build(where, url, body.get("by") or "owner",
-                              body.get("note") or "")
+                              body.get("note") or "", owner)
+    # board_owner is the field the public card already reads to warn "some of
+    # these may not be their roles". posts_at records the ruling; this makes
+    # the existing rendering pick it up without a second decision.
+    if where == "parent" and owner:
+        c["board_owner"] = owner
     err = validate(companies)
     if err:
         return {"error": err}
@@ -3205,7 +3255,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "scope": act_scope, "scope-all": act_scope_all,
            "vendor-scope": act_vendor_scope,
            "vendor-scope-all": act_vendor_scope_all,
-           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "board-proposal": act_board_proposal, "acquisition-ruling": act_acquisition_ruling, "set-founded": act_set_founded, "identity-ruling": act_identity_ruling, "place": act_place,
+           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "suggest": act_suggest, "board-proposal": act_board_proposal, "acquisition-ruling": act_acquisition_ruling, "set-founded": act_set_founded, "identity-ruling": act_identity_ruling, "place": act_place,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "confirm-founded": act_confirm_founded,

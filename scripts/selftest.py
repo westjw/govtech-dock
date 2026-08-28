@@ -2759,6 +2759,113 @@ def check_coming_soon_is_not_a_parked_domain() -> int:
     return errors
 
 
+
+def check_a_parent_board_ruling_names_the_parent() -> int:
+    """"Somewhere else" was the only answer for "their parent's board".
+
+    Nine places a company could advertise - LinkedIn, Indeed, Glassdoor,
+    ZipRecruiter, Built In, a gov portal, a recruiter, email, somewhere else -
+    and not one of them was the commonest answer in a consolidated market. SAP
+    Concur's roles are on jobs.sap.com. Conduent Transportation's are on
+    careers.conduent.com. RecDesk's and Vermont Systems' are Xplor
+    Recreation's. Each had to be filed as "somewhere else", which reads like an
+    obscure job site rather than the truth.
+
+    The name is mandatory, and that is the whole point of the option. Sending
+    somebody to a parent's board without saying whose it is is the sharpest
+    form of the mistake this file exists to prevent: they land on four thousand
+    SAP openings and cannot tell which three are Concur's. A card that cannot
+    name the parent cannot warn them.
+    """
+    import posts_at as pa
+    errors = 0
+    if "parent" not in pa.WHERE:
+        return fail("posts_at has no 'parent' option, so a company whose roles "
+                    "are on its parent's board can only be filed as "
+                    "'somewhere else'")
+
+    URL = "https://jobs.sap.com/search/"
+    if not pa.check("parent", URL):
+        errors += fail("a parent ruling was accepted without naming whose "
+                       "board it is; the card cannot warn without the name")
+    if pa.check("parent", URL, "SAP"):
+        errors += fail(f"a parent ruling naming SAP was refused: "
+                       f"{pa.check('parent', URL, 'SAP')}")
+
+    rec = pa.build("parent", URL, "owner", "", "SAP")
+    if rec.get("board_owner") != "SAP":
+        errors += fail("the parent's name is not carried on the record, so "
+                       "nothing downstream can render it")
+    said = pa.sentence(rec)
+    if "SAP" not in said:
+        errors += fail(f"the card does not name the parent: {said[:80]!r}")
+    if "not be theirs" not in said and "not their" not in said:
+        errors += fail(f"the card does not warn that most roles on that board "
+                       f"are somebody else's: {said[:110]!r}")
+
+    # the other places must not have grown a requirement they do not need
+    for w in ("linkedin", "indeed", "govportal"):
+        if pa.check(w, "https://www.linkedin.com/company/x/jobs"
+                    if w == "linkedin" else f"https://{w}.example.com/jobs"):
+            continue        # a wrong-host complaint is fine here
+    if pa.check("email", ""):
+        errors += fail("'by email only' now demands a link it never needed")
+    return errors
+
+
+def check_the_owner_can_argue_with_the_logic() -> int:
+    """Every queue shows its reasoning; there was nowhere to say it is wrong.
+
+    The panels explain themselves while asking for a ruling - "the domain
+    matches this name", "this is a holding page", "slug does not match". Three
+    of those were wrong in a single sitting: a rename offered onto a name
+    already taken, a live company convicted of being a parked domain on the
+    words "coming soon", and "send it to the acquisitions queue" for a queue
+    no button can add to.
+
+    The owner is the only person who ever sees those, at the one moment the
+    context is in front of him. Without somewhere to put it the choice is rule
+    anyway or lose it, and losing it is what had been happening.
+
+    A note must never be able to change the board - it is an argument about
+    the logic, not a ruling on a company.
+    """
+    import admin
+    errors = 0
+    if "suggest" not in admin.ACTIONS:
+        return fail("there is no way to record an argument about the logic")
+    if "suggest" in admin.OPEN_ACTIONS:
+        errors += fail("the suggest action is ungated; it writes a file and "
+                       "should need the console code like every other write")
+
+    # The action WRITES, so the live file is put back exactly as found. A
+    # check that leaves a note behind every run fills the owner's own file
+    # with test data - which is the mistake a probe already made once against
+    # companies.json, and the reason that rule is in CLAUDE.md.
+    notes_path = ROOT / "data" / "logic_notes.json"
+    saved = notes_path.read_text() if notes_path.exists() else None
+    before = json.loads((ROOT / "data" / "companies.json").read_text())
+    try:
+        out = admin.ACTIONS["suggest"]({"queue": "websites", "id": "x",
+                                        "name": "X", "saw": "panel said a thing",
+                                        "argument": "and the thing was wrong"})
+        if not out.get("ok"):
+            errors += fail(f"recording an argument failed: {out}")
+        after = json.loads((ROOT / "data" / "companies.json").read_text())
+        if before != after:
+            errors += fail("recording an argument about the logic CHANGED "
+                           "companies.json. It must never touch the map")
+        if not admin.ACTIONS["suggest"]({"argument": "   "}).get("error"):
+            errors += fail("an empty argument was recorded as if it said "
+                           "something")
+    finally:
+        if saved is None:
+            notes_path.unlink(missing_ok=True)
+        else:
+            notes_path.write_text(saved)
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -3099,6 +3206,8 @@ def main() -> int:
     errors += check_queues_do_not_propose_deleted_categories()
     errors += check_a_count_is_never_a_job_title()
     errors += check_coming_soon_is_not_a_parked_domain()
+    errors += check_a_parent_board_ruling_names_the_parent()
+    errors += check_the_owner_can_argue_with_the_logic()
     errors += check_an_unread_board_is_not_a_zero()
     errors += check_the_gate_sees_an_unreadable_cliff()
     errors += check_a_transport_failure_gets_a_second_chance()

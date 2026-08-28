@@ -999,6 +999,61 @@ function modeOf(key) {
   return (QINFO && QINFO.belt) ? 'belt' : 'list';
 }
 
+/* ARGUE WITH THE LOGIC, from the row that provoked it.
+
+   Every queue shows its reasoning while asking for a ruling - "the domain
+   matches this name", "this is a holding page", "slug does not match - likely
+   a parent". When that reasoning is wrong the owner is the only person who
+   ever sees it, at the one moment he has the context to say why, and until
+   now there was nowhere to put it. The choice was: rule anyway, or lose it.
+
+   Deliberately quiet. It is a small link, not a button competing with the
+   ruling, because it must never be the easy way out of deciding. It sends the
+   panel's own words along with the argument, so the note still makes sense a
+   week later without rebuilding the state that produced it. */
+function attachSuggest(key, item, row) {
+  if (!row || !row.appendChild) return;
+  const bar = el('div', 'kv');
+  bar.style.cssText = 'margin-top:6px;opacity:.55';
+  const a = el('a', null, 'the logic here is wrong \u2192');
+  a.href = '#';
+  a.style.cssText = 'font-size:12px;text-decoration:none';
+  a.onclick = e => {
+    e.preventDefault();
+    if (bar.querySelector('textarea')) { bar.querySelector('.sg').remove(); return; }
+    const box = el('div', 'sg');
+    box.style.cssText = 'display:flex;gap:6px;margin-top:6px;flex-wrap:wrap';
+    const ta = el('textarea');
+    ta.placeholder = 'what did it get wrong, and what should it do instead?';
+    ta.style.cssText = 'flex:1;min-width:280px;min-height:56px;font:inherit;'
+      + 'padding:6px;background:var(--panel);color:var(--ink);'
+      + 'border:1px solid var(--line)';
+    const send = el('button', 'btn', 'Record it');
+    send.onclick = async () => {
+      const v = ta.value.trim();
+      if (!v) return;
+      send.disabled = true;
+      /* The panel's own text, so the note is readable without the row. */
+      const saw = (row.innerText || '').replace(/\s+/g, ' ').slice(0, 600);
+      const r = await api('/api/suggest', {
+        queue: key, id: item && item.id, name: item && item.name,
+        saw: saw, argument: v});
+      send.disabled = false;
+      if (r.error) return toast(r.error, true);
+      toast(r.message);
+      box.remove();
+      a.textContent = 'noted \u2713';
+      a.onclick = e2 => e2.preventDefault();
+    };
+    box.append(ta, send);
+    bar.appendChild(box);
+    ta.focus();
+  };
+  bar.appendChild(a);
+  row.appendChild(bar);
+}
+
+
 function drawQueue(key, items, body) {
   beltOff();
   body.innerHTML = '';
@@ -1021,7 +1076,11 @@ function drawQueue(key, items, body) {
     return;
   }
   if (QINFO && QINFO.belt && modeOf(key) === 'belt') return startBelt(key, items, body);
-  items.forEach(it => body.appendChild(RENDER[key](it)));
+  items.forEach(it => {
+    const row = RENDER[key](it);
+    attachSuggest(key, it, row);
+    body.appendChild(row);
+  });
 }
 
 /* ── THE BELT ──────────────────────────────────────────────────────────────
@@ -2029,27 +2088,37 @@ RENDER.boards = c => {
     [['linkedin', 'LinkedIn'], ['indeed', 'Indeed'], ['glassdoor', 'Glassdoor'],
      ['ziprecruiter', 'ZipRecruiter'], ['builtin', 'Built In'],
      ['govportal', 'a government jobs portal'], ['recruiter', 'an outside recruiter'],
-     ['email', 'by email only'], ['other', 'somewhere else']]
+     ['email', 'by email only'],
+     ['parent', 'their parent company\u2019s board'], ['other', 'somewhere else']]
       .forEach(([v, t]) => { const o = el('option', null, t); o.value = v; sel.appendChild(o); });
     const link = el('input', 'in');
     link.placeholder = 'link to their listings (the jobs page, not the profile)';
     link.style.flex = '1';
+    /* WHOSE board. Without the name the card can only say "a parent company",
+       which cannot warn a reader that most of the roles they are about to see
+       belong to somebody else. Shown only for the parent option. */
+    const owner = el('input', 'in');
+    owner.placeholder = 'whose board? e.g. SAP';
+    owner.style.cssText = 'flex:0 0 190px;display:none';
     const go = el('button', 'btn primary', 'Record');
     const msg = el('div', 'kv');
     msg.style.cssText = 'flex-basis:100%;margin-top:4px';
     sel.onchange = () => {
       link.style.display = ['email', 'recruiter'].includes(sel.value) ? 'none' : '';
+      owner.style.display = sel.value === 'parent' ? '' : 'none';
+      if (sel.value === 'parent') owner.focus();
     };
     go.onclick = async () => {
       go.disabled = true;
       const r = await api('/api/posts-at',
-                          {id: c.id, where: sel.value, url: link.value.trim()});
+                          {id: c.id, where: sel.value, url: link.value.trim(),
+                           owner: owner.value.trim()});
       go.disabled = false;
       if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
       toast(r.message);
       n.remove();
     };
-    pa.append(sel, link, go, msg);
+    pa.append(sel, owner, link, go, msg);
     row.appendChild(pa);
     link.focus();
   };

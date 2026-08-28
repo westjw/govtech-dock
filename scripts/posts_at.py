@@ -47,6 +47,18 @@ WHERE = {
                                               r"\.gov/|usajobs\.gov"),
     "recruiter": ("an outside recruiter", None),
     "email":     ("by email only", None),
+    # THE PARENT'S BOARD. Nine options and none of them was this, which is the
+    # single most common answer in a market this consolidated. SAP Concur's
+    # roles are on jobs.sap.com. Conduent Transportation's are on
+    # careers.conduent.com. RecDesk's and Vermont Systems' are Xplor
+    # Recreation's. Every one of those rows had to be answered "somewhere
+    # else", which reads like an obscure job site rather than the truth.
+    #
+    # It matters more than a label. Sending somebody to a parent's board
+    # WITHOUT saying so is the sharpest version of the mistake this file
+    # exists to prevent: they land on 4,000 SAP openings and cannot tell which
+    # three are Concur's. So this one carries a warning the others do not need.
+    "parent":    ("their parent company's board", None),
     "other":     ("somewhere else", None),
 }
 
@@ -71,10 +83,16 @@ def label(where: str) -> str:
     return WHERE.get(where, WHERE["other"])[0]
 
 
-def check(where: str, url: str) -> str | None:
+def check(where: str, url: str, owner: str = "") -> str | None:
     """Refuse a record that would mislead somebody. Returns a problem or None."""
     if where not in WHERE:
         return f"unknown place {where!r}"
+    if where == "parent" and not (owner or "").strip():
+        # Without the name the card can only say "a parent company", which
+        # tells a reader nothing and cannot warn them whose postings they are
+        # about to be looking at.
+        return ("say WHOSE board it is - the card has to name them, or it "
+                "cannot warn that most of those roles are not this company's")
     if where in ("email", "recruiter"):
         return None                       # no link is expected for these
     if not url:
@@ -91,9 +109,10 @@ def check(where: str, url: str) -> str | None:
     return None
 
 
-def build(where: str, url: str, by: str = "owner", note: str = "") -> dict:
+def build(where: str, url: str, by: str = "owner", note: str = "",
+          owner: str = "") -> dict:
     """The record written onto the company."""
-    return {
+    rec = {
         "where": where,
         "label": label(where),
         "url": (url or "").strip() or None,
@@ -101,6 +120,9 @@ def build(where: str, url: str, by: str = "owner", note: str = "") -> dict:
         "on": dt.date.today().isoformat(),
         "by": by or "owner",
     }
+    if where == "parent":
+        rec["board_owner"] = (owner or "").strip()
+    return rec
 
 
 def sentence(rec: dict) -> str:
@@ -114,6 +136,13 @@ def sentence(rec: dict) -> str:
     if where == "recruiter":
         return ("They hire through an outside recruiter rather than a public "
                 "board, so their openings are not listed here.")
+    if where == "parent":
+        who = (rec.get("board_owner") or "").strip()
+        whose = f"{who}\u2019s" if who else "their parent company\u2019s"
+        return (f"They do not run a board of their own - their openings go on "
+                f"{whose} board, alongside everyone else\u2019s. Most of the "
+                f"roles there will not be theirs, so the link is a starting "
+                f"point rather than a list of their jobs.")
     return (f"They advertise their openings on {rec.get('label') or 'another site'} "
             f"rather than a job board we can read, so the roles are not counted "
             f"here - the link goes straight to their listings.")

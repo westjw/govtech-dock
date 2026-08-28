@@ -1,0 +1,240 @@
+{
+ "arrive": {
+  "sector": "Transit & Parking",
+  "category": "Parking & Curb",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:08:49-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "Transit & Parking / Suppliers & Services",
+   "proposed": "Transit & Parking / Parking & Curb",
+   "confidence": "high",
+   "description": "Mobility and curb/parking technology platform - exhibited at APTA 2026"
+  }
+ },
+ "tanium": {
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:09:41-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "General Gov / Suppliers & Services",
+   "proposed": "General Gov / IT & AI Platforms",
+   "confidence": "high",
+   "description": "Endpoint management and security platform - exhibited at NACo 2026, NASCIO 2026, EDUCAUSE 2026"
+  }
+ },
+ "workday": {
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:09:48-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "Transit & Parking / Suppliers & Services",
+   "proposed": "General Gov / Finance & ERP",
+   "confidence": "high",
+   "description": "HR, finance and ERP software - exhibited at APTA 2026, ICMA 2025, NACo 2026, NACUBO 2026, GFOA 2026, PSHRA 2026, NASCIO 2026, EDUCAUSE 2026"
+  }
+ },
+ "emburse": {
+  "sector": "General Gov",
+  "category": "Procurement & Payments",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:09:59-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "General Gov / Suppliers & Services",
+   "proposed": "General Gov / Procurement & Payments",
+   "confidence": "high",
+   "description": "Expense management and payment software - exhibited at NIGP 2026, NACUBO 2026"
+  }
+ },
+ "dailypay": {
+  "sector": "General Gov",
+  "category": "HR & Workforce",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:10:44-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "General Gov / Suppliers & Services",
+   "proposed": "General Gov / HR & Workforce",
+   "confidence": "high",
+   "description": "Earned wage access platform for employers - exhibited at NACo 2026"
+  }
+ },
+ "auror": {
+  "sector": "Public Safety",
+  "category": "Police",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:10:55-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "Public Safety / Suppliers & Services",
+   "proposed": "Public Safety / Police",
+   "confidence": "medium",
+   "description": "Retail crime intelligence and reporting platform - exhibited at IACP 2026"
+  }
+ },
+ "hello-heart": {
+  "sector": "General Gov",
+  "category": "HR & Workforce",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:12:03-04:00",
+  "by": "owner",
+  "why": "They are like an HR/ benefit for municipal employees",
+  "saw": {
+   "was": "General Gov / Suppliers & Services",
+   "proposed": "General Gov / HR & Workforce",
+   "confidence": "low",
+   "description": "Digital heart health app and monitoring - exhibited at NACo 2026, PSHRA 2026"
+  }
+ },
+ "monday-com": {
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:12:11-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "General Gov / Suppliers & Services",
+   "proposed": "General Gov / IT & AI Platforms",
+   "confidence": "medium",
+   "description": "Work management and collaboration software - exhibited at NACo 2026"
+  }
+ },
+ "gamechanger": {
+  "sector": "Parks & Rec",
+  "category": "Youth Sports & Leagues",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:12:26-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "Parks & Rec / Suppliers & Services",
+   "proposed": "Parks & Rec / Youth Sports & Leagues",
+   "confidence": "high",
+   "description": "Youth sports scorekeeping and streaming app - exhibited at NRPA 2026"
+  }
+ },
+ "govworx": {
+  "sector": "Public Safety",
+  "category": "Police",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:13:08-04:00",
+  "by": "owner",
+  "why": "911 tech",
+  "saw": {
+   "was": "Public Safety / Suppliers & Services",
+   "proposed": "Public Safety / Police",
+   "confidence": "low",
+   "description": "Software for first responder agencies - exhibited at IACP 2026"
+  }
+ },
+ "kodex": {
+  "sector": "Public Safety",
+  "category": "Police",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:13:18-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "Public Safety / Suppliers & Services",
+   "proposed": "Public Safety / Police",
+   "confidence": "medium",
+   "description": "Platform for legal data requests to companies - exhibited at IACP 2026"
+  }
+ },
+ "quorum": {
+  "sector": "General Gov",
+  "category": "Strategy & Performance",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:13:31-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "General Gov / Suppliers & Services",
+   "proposed": "General Gov / Strategy & Performance",
+   "confidence": "medium",
+   "description": "Public affairs and legislative tracking software - exhibited at NACo 2026, NLC City Summit 2026"
+  }
+ },
+ "eagleview-technologies": {
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:18:26-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "General Gov / Suppliers & Services",
+   "proposed": "Housing & Community Dev / Planning & Economic Development",
+   "confidence": "low",
+   "description": "Aerial imagery and property analytics - exhibited at NACo 2026"
+  }
+ },
+ "longeye": {
+  "sector": "Public Safety",
+  "category": "Police",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:18:36-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "Public Safety / Suppliers & Services",
+   "proposed": "Public Safety / Police",
+   "confidence": "high",
+   "description": "AI investigations platform for law enforcement - exhibited at IACP 2026"
+  }
+ },
+ "pimloc-inc": {
+  "sector": "Public Safety",
+  "category": "Police",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:19:13-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "Public Safety / Suppliers & Services",
+   "proposed": "Public Safety / Police",
+   "confidence": "high",
+   "description": "AI video redaction and privacy software - exhibited at IACP 2026"
+  }
+ },
+ "policeapp-com": {
+  "sector": "Public Safety",
+  "category": "Police",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:19:21-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "Public Safety / Suppliers & Services",
+   "proposed": "Public Safety / Police",
+   "confidence": "medium",
+   "description": "Online police hiring and application platform - exhibited at IACP 2026"
+  }
+ },
+ "carfax": {
+  "sector": "Public Safety",
+  "category": "Police",
+  "on": "2026-08-28",
+  "at": "2026-08-28T09:19:30-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "was": "Public Safety / Suppliers & Services",
+   "proposed": "Public Safety / Police",
+   "confidence": "high",
+   "description": "Vehicle history data tools for police - exhibited at IACP 2026"
+  }
+ }
+}
