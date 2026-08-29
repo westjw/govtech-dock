@@ -340,6 +340,216 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
     return {"roles": len(roles), "companies": len(cos)}
 
 
+def _page(title: str, desc: str, canonical: str, body: str, brand: dict,
+          og: str = "home") -> str:
+    """One no-JS page, in the brand's own tokens.
+
+    Deliberately not a copy of index.html: this is what a crawler, a
+    link-unfurler and a reader with JavaScript off actually get, so it carries
+    the facts in the HTML rather than fetching them. It links INTO the app for
+    anyone who wants filters.
+    """
+    p_ = brand["palette"]
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{html.escape(title)}</title>
+<meta name="description" content="{html.escape(desc)}">
+<link rel="canonical" href="{html.escape(canonical)}">
+<link rel="icon" href="/assets/mascot/svg/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{html.escape(title)}">
+<meta property="og:description" content="{html.escape(desc)}">
+<meta property="og:url" content="{html.escape(canonical)}">
+<meta property="og:image" content="{brand['site']}/assets/og/{og}.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
+<style>
+ :root{{--bg:{p_['ice']['hex']};--panel:{p_['belly']['hex']};--ink:{p_['penguin']['hex']};
+   --line:{p_['frost']['hex']};--dim:{brand['derived']['deep_fog']['hex']};
+   --link:{p_['badge']['hex']};--beak:{p_['beak']['hex']}}}
+ @media (prefers-color-scheme:dark){{:root{{--bg:{p_['penguin']['hex']};--panel:#28304a;
+   --ink:{p_['ice']['hex']};--line:#39445e;--dim:#93a9ba;
+   --link:{brand['derived']['dark']['badge']['hex']}}}}}
+ *{{box-sizing:border-box}}
+ body{{margin:0;background:var(--bg);color:var(--ink);
+   font:16px/1.6 Archivo,system-ui,sans-serif}}
+ .band{{background:{p_['penguin']['hex']};color:{p_['ice']['hex']};
+   border-bottom:3px solid var(--beak);padding:14px 22px}}
+ .band a{{color:{p_['ice']['hex']};text-decoration:none;font-weight:800;
+   letter-spacing:.01em}}
+ main{{max-width:74ch;margin:0 auto;padding:28px 22px 70px}}
+ h1{{font-size:30px;font-weight:800;letter-spacing:-.02em;margin:0 0 6px;
+   text-wrap:balance}}
+ h2{{font-size:18px;font-weight:800;margin:30px 0 8px}}
+ .kv{{color:var(--dim);font-size:14px;margin:0 0 18px}}
+ p{{margin:0 0 14px}}
+ ul{{padding-left:0;list-style:none;margin:0}}
+ li{{border-bottom:1px solid var(--line);padding:10px 0}}
+ li:last-child{{border-bottom:0}}
+ .role{{font-weight:600}}
+ .meta{{color:var(--dim);font-size:13.5px}}
+ a{{color:var(--link)}}
+ .note{{background:var(--panel);border:1px solid var(--line);padding:12px 14px;
+   font-size:14px;color:var(--dim);margin:18px 0}}
+ .cta{{display:inline-block;margin-top:8px;font-weight:600}}
+</style></head><body>
+<div class="band"><a href="/">{html.escape(brand['name'])}</a></div>
+<main>{body}</main>
+</body></html>
+"""
+
+
+def write_company_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
+    """A real page per company that is hiring.
+
+    Head tags fix how a link UNFURLS. They do not fix crawling: Bing,
+    LinkedIn's fetcher and most AI crawlers do not run JavaScript, so they saw
+    an empty shell where a company's facts should be. These carry the facts in
+    the HTML.
+
+    Only companies with something open. A page saying "nothing open right now"
+    is true, useful in the app where you arrived deliberately, and worthless as
+    1,810 near-identical documents in an index.
+    """
+    site = brand["site"].rstrip("/")
+    d = out / "c"
+    d.mkdir(parents=True, exist_ok=True)
+    by_co = {}
+    for p_ in board.get("postings", []):
+        by_co.setdefault(p_["company_id"], []).append(p_)
+    n = 0
+    for o in board.get("organizations", []):
+        if not o.get("open_roles"):
+            continue
+        # Sales first, then the rest, then capped. This site is about sales
+        # roles, so a page opening with forty engineering titles buries the
+        # thing somebody came for - and Verkada alone carries 247 openings,
+        # which is 38KB of list nobody reads to the end of. The count above is
+        # the true total either way; what is capped is the listing, and the
+        # page says so rather than letting the two disagree.
+        SALES = {"gtm", "field"}
+        roles = sorted(by_co.get(o["id"], []),
+                       key=lambda r: (r.get("family") not in SALES,
+                                      not r.get("quota_carrying"),
+                                      r.get("title") or ""))
+        shown, hidden = roles[:40], max(0, len(roles) - 40)
+        bits = [x for x in (o.get("sector"), o.get("category")) if x]
+        facts = " &middot; ".join(html.escape(x) for x in (
+            [" / ".join(bits)] if bits else []) + [
+            html.escape(o["location"]) for _ in [1] if o.get("location")] + [
+            "founded " + html.escape(str(o["year_founded"])) for _ in [1] if o.get("year_founded")])
+        items = ""
+        for r in shown:
+            loc = r.get("location") or ""
+            quota = ' <span class="meta">quota-carrying</span>' if r.get("quota_carrying") else ""
+            items += (f'<li><div class="role">{html.escape(r.get("title") or "")}'
+                      f'{quota}</div>'
+                      f'<div class="meta">{html.escape(loc)}</div></li>')
+        desc = (o.get("description") or
+                f"{o['name']} sells into {o.get('sector') or 'state and local government'}.")
+        nq = o.get("quota_roles") or 0
+        line = (f"{o['open_roles']} open role{'s' if o['open_roles'] != 1 else ''}"
+                + (f", {nq} of them quota-carrying" if nq else ""))
+        board_link = ""
+        if o.get("board_url"):
+            board_link = (f'<p><a class="cta" href="{html.escape(o["board_url"])}" '
+                          f'rel="nofollow noopener" target="_blank">'
+                          f'Open their hiring board &rarr;</a></p>')
+        body = (f'<h1>{html.escape(o["name"])}</h1>'
+                f'<p class="kv">{facts}</p>'
+                f'<p>{html.escape(desc)}</p>'
+                + (f'<p class="kv"><a href="{html.escape(o["website"])}" '
+                   f'rel="nofollow noopener">{html.escape(o["website"])}</a></p>'
+                   if o.get("website") else "")
+                + f'<h2>{line}</h2><ul>{items}</ul>'
+                + (f'<p class="kv">Showing the first {len(shown)}, sales roles '
+                   f'first. {hidden} more are on the board.</p>' if hidden else "")
+                + board_link
+                + f'<div class="note">Listed on {html.escape(brand["name"])}, which '
+                  f'tracks sales roles at state and local government technology '
+                  f'companies. <a href="/?co={urllib.parse.quote(o["id"])}">See this '
+                  f'company in the board</a>, where the roles are filterable and '
+                  f'kept current.</div>')
+        (d / f"{o['id']}.html").write_text(_page(
+            f"{o['name']} is hiring &middot; {brand['name']}".replace("&middot;", "·"),
+            f"{desc} {line}.", f"{site}/c/{o['id']}.html", body, brand, "companies"))
+        n += 1
+    return n
+
+
+def write_state_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
+    """One no-JS page per state that has an office posting.
+
+    "Govtech sales jobs in California" is the highest-intent question this
+    dataset can answer and no competitor answers it, but a JavaScript-rendered
+    single page can never rank for any of the forty-two.
+
+    Built from `office`, not `work_mode`: a bare city is an office and 79% of
+    postings never state a mode, so gating on the words "hybrid" or "onsite"
+    would reach a fraction of them. That is the same distinction the near-a-city
+    filter makes, for the same reason.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import roles as role_lib
+    code_to_name = {v: k.title() for k, v in role_lib.STATE_NAMES.items()}
+    site = brand["site"].rstrip("/")
+    d = out / "s"
+    d.mkdir(parents=True, exist_ok=True)
+
+    # SALES ROLES, because that is what the page says it is. The board carries
+    # every posting on purpose - knowing what KIND of hiring a company is doing
+    # is the point of the market view - but a page headed "Govtech sales jobs in
+    # California" that lists Backend Software Engineer and Administrative
+    # Coordinator is promising one thing and delivering another. gtm is sales,
+    # marketing and BD; field is implementation and services, which is the
+    # nearest neighbour a seller actually looks at.
+    SALES = {"gtm", "field"}
+    by_state: dict = {}
+    for p_ in board.get("postings", []):
+        st = (p_.get("office") or {}).get("state")
+        if st and p_.get("family") in SALES:
+            by_state.setdefault(st, []).append(p_)
+    n = 0
+    for st, ps in sorted(by_state.items()):
+        name = code_to_name.get(st, st)
+        cos = {}
+        for p_ in ps:
+            cos.setdefault(p_["company"], []).append(p_)
+        quota = sum(1 for p_ in ps if p_.get("quota_carrying"))
+        items = ""
+        for co, rs in sorted(cos.items(), key=lambda kv: (-len(kv[1]), kv[0])):
+            cid = rs[0]["company_id"]
+            titles = ", ".join(sorted({r.get("title") or "" for r in rs})[:4])
+            more = f" and {len(rs) - 4} more" if len(rs) > 4 else ""
+            items += (f'<li><div class="role"><a href="/c/{urllib.parse.quote(cid)}.html">'
+                      f'{html.escape(co)}</a></div>'
+                      f'<div class="meta">{html.escape(titles)}{more}</div></li>')
+        line = (f"{len(ps)} open role{'s' if len(ps) != 1 else ''} across "
+                f"{len(cos)} compan{'ies' if len(cos) != 1 else 'y'}"
+                + (f", {quota} quota-carrying" if quota else ""))
+        body = (f'<h1>Govtech sales jobs in {html.escape(name)}</h1>'
+                f'<p class="kv">{line}</p>'
+                f'<p>Sales, business development and field roles at companies '
+                f'selling technology to state and local government, with someone '
+                f'sitting in {html.escape(name)}. Roles that never state a '
+                f'location are not counted here, and neither are the engineering '
+                f'and back-office openings these companies also carry, so this is '
+                f'a floor rather than a total.</p>'
+                f'<ul>{items}</ul>'
+                f'<div class="note"><a href="/?tab=jobs&amp;st={urllib.parse.quote(st)}">'
+                f'Filter the live board to {html.escape(name)}</a>, where these are '
+                f'sortable and kept current.</div>')
+        (d / f"{st.lower()}.html").write_text(_page(
+            f"Govtech sales jobs in {name} · {brand['name']}",
+            f"{line}. Sales roles at state and local government technology "
+            f"companies with a desk in {name}.",
+            f"{site}/s/{st.lower()}.html", body, brand, "jobs"))
+        n += 1
+    return n
+
+
 def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
     """robots.txt, sitemap.xml and a real 404, none of which existed.
 
@@ -360,8 +570,16 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
     for tab in ("jobs", "companies", "conferences", "market", "alerts"):
         urls.append((f"{site}/?tab={tab}", "daily", "0.8"))
     hiring = [o for o in board.get("organizations", []) if o.get("open_roles")]
+    # /c/<id>.html, not ?co=. Both addresses show the same company, so one of
+    # them has to be the canonical or they compete with each other; the static
+    # page is the one with the facts in its HTML, which is what a crawler that
+    # never runs JavaScript can actually read.
     for o in sorted(hiring, key=lambda x: -(x.get("open_roles") or 0)):
-        urls.append((f"{site}/?co={urllib.parse.quote(o['id'])}", "weekly", "0.6"))
+        urls.append((f"{site}/c/{urllib.parse.quote(o['id'])}.html", "weekly", "0.6"))
+    for st in sorted({(p_.get("office") or {}).get("state")
+                      for p_ in board.get("postings", [])
+                      if p_.get("family") in ("gtm", "field")} - {None, ""}):
+        urls.append((f"{site}/s/{st.lower()}.html", "weekly", "0.6"))
     for c in board.get("conferences", []) or []:
         tag = c.get("event_tag") or c.get("conference")
         if tag:
@@ -493,6 +711,8 @@ def main() -> int:
     brand = json.loads((ROOT / "data" / "brand.json").read_text())
     crawl = write_crawl_files(out, board, brand)
     meta_idx = write_meta_index(out, board)
+    n_co = write_company_pages(out, board, brand)
+    n_st = write_state_pages(out, board, brand)
 
     size = sum(f.stat().st_size for f in out.rglob("*") if f.is_file())
     print(f"wrote {a.out}/: {len(SHIP)} page(s) + data/board.json")
@@ -501,6 +721,8 @@ def main() -> int:
     print(f"  {stripped} internal error string(s) replaced with the plain fact")
     print(f"  sitemap.xml: {crawl['urls']} urls ({crawl['companies']} companies "
           f"with an opening), robots.txt, 404.html")
+    print(f"  c/: {n_co} prerendered company pages")
+    print(f"  s/: {n_st} state pages")
     print(f"  meta-index.json: {meta_idx['roles']} roles, "
           f"{meta_idx['companies']} companies for the head-tag worker")
     print(f"  {size / 1e6:.2f} MB on disk, roughly {size / 1e6 * 0.1:.2f} MB over the wire")

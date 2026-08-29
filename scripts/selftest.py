@@ -2560,6 +2560,70 @@ def check_share_cards() -> int:
     return errors
 
 
+def check_prerendered_pages() -> int:
+    """The static pages must say what they promise, and only that.
+
+    Head tags fix how a link unfurls; they do not fix crawling. Bing,
+    LinkedIn's fetcher and most AI crawlers never run JavaScript, so they saw
+    an empty shell where 2,113 company records should be.
+
+    The trap these caught in the writing: a page headed "Govtech sales jobs in
+    California" listed Backend Software Engineer and Administrative
+    Coordinator, because the board carries every posting on purpose. A page
+    that promises sales and delivers engineering is the same defect as a
+    filter option matching nothing, and only visible by looking at it.
+    """
+    import build_site, tempfile, shutil
+    import pathlib as _pl
+    errors = 0
+    brand = {"site": "https://example.test", "name": "SLED JOBS",
+             "palette": {k: {"hex": "#000000"} for k in
+                         ("ice", "belly", "penguin", "frost", "badge", "beak")},
+             "derived": {"deep_fog": {"hex": "#556F82"},
+                         "dark": {"badge": {"hex": "#478EF5"}}}}
+    board = {"organizations": [
+                 {"id": "seller", "name": "Seller Co", "open_roles": 2,
+                  "quota_roles": 1, "sector": "General Gov",
+                  "description": "Sells things to cities"},
+                 {"id": "quiet", "name": "Quiet Co", "open_roles": 0}],
+             "postings": [
+                 {"id": "1", "company_id": "seller", "company": "Seller Co",
+                  "title": "Account Executive", "family": "gtm",
+                  "quota_carrying": True, "office": {"state": "CA"}},
+                 {"id": "2", "company_id": "seller", "company": "Seller Co",
+                  "title": "Backend Software Engineer", "family": "engineering",
+                  "office": {"state": "CA"}}]}
+    tmp = _pl.Path(tempfile.mkdtemp())
+    try:
+        n_co = build_site.write_company_pages(tmp, board, brand)
+        if n_co != 1:
+            errors += fail(f"wrote {n_co} company pages for one hiring company - "
+                           f"a company with nothing open must not get a page, or "
+                           f"the index fills with near-identical empty documents")
+        if (tmp / "c" / "quiet.html").exists():
+            errors += fail("a company with nothing open got a prerendered page")
+        co = (tmp / "c" / "seller.html").read_text()
+        if "Account Executive" not in co:
+            errors += fail("a company page does not list the company's roles")
+        if 'canonical" href="https://example.test/c/seller.html"' not in co:
+            errors += fail("a company page is not canonical to itself, so it "
+                           "competes with the app's ?co= view for the same company")
+
+        build_site.write_state_pages(tmp, board, brand)
+        st = (tmp / "s" / "ca.html").read_text()
+        if "Account Executive" not in st:
+            errors += fail("a state page omits a sales role sitting in that state")
+        if "Backend Software Engineer" in st:
+            errors += fail("a page headed 'Govtech sales jobs' lists an "
+                           "engineering role - it promises sales and delivers "
+                           "something else")
+        if "Quiet Co" in st:
+            errors += fail("a state page lists a company with nothing open")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
 def check_crawl_files() -> int:
     """A single-page app cannot be indexed by luck.
 
@@ -2588,8 +2652,13 @@ def check_crawl_files() -> int:
             if not (tmp / f).exists():
                 errors += fail(f"build_site did not write {f}")
         sm = (tmp / "sitemap.xml").read_text()
-        if "?co=hiring-co" not in sm:
-            errors += fail("a company with an opening is missing from the sitemap")
+        # /c/<id>.html, not ?co=. Both show the same company, so one has to be
+        # canonical or they compete; the static page is the one a crawler that
+        # never runs JavaScript can actually read.
+        if "/c/hiring-co.html" not in sm:
+            errors += fail("a company with an opening is missing from the "
+                           "sitemap, or the sitemap still points at the app "
+                           "view rather than the prerendered page")
         if "quiet-co" in sm:
             errors += fail("a company with nothing open is in the sitemap - a "
                            "sitemap full of near-identical empty pages teaches "
@@ -4257,6 +4326,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_prerendered_pages()
     errors += check_share_cards()
     errors += check_semantic_map()
     errors += check_publish_gate_legs()

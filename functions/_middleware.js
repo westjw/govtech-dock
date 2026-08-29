@@ -75,7 +75,12 @@ async function describe(request, env) {
       title: `${c.n} · ${NAME}`,
       desc: (c.d ? c.d.replace(/\s+/g, " ").trim() + "." : `${c.n} sells into ${c.s || "state and local government"}.`)
           + open,
-      canonical: `${SITE}/?co=${encodeURIComponent(co)}`,
+      // A company with an opening has a prerendered page at /c/<id>.html with
+      // the facts in its HTML. That is the canonical one, so the app view and
+      // the static page do not compete for the same company. Companies with
+      // nothing open have no static page, and ?co= is their only address.
+      canonical: c.r ? `${SITE}/c/${encodeURIComponent(co)}.html`
+                     : `${SITE}/?co=${encodeURIComponent(co)}`,
       image: `${SITE}/assets/og/companies.png`,
     };
   }
