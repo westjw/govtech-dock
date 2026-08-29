@@ -2436,6 +2436,77 @@ def check_checks_can_fail() -> int:
     return errors
 
 
+def check_decision_files_are_journalled() -> int:
+    """A ruling in a decision file must be as reversible as one in companies.json.
+
+    journal.py motivates itself with "one click on 'All out' writes a ruling
+    for 108 companies and all 108 pass every check we have" - and that click
+    wrote vendor_scope_decisions.json through write_atomic with no journal
+    entry. The exact scenario the journal exists for was the one it did not
+    cover: no before-image, nothing for --undo, and nothing for --reopen,
+    which matters most here because a scope ruling is never re-asked.
+
+    Runs against a temp DATA dir. Writing to the owner's real files from a
+    test is the thing CLAUDE.md forbids in capitals.
+    """
+    import admin as _a, journal as _j, tempfile, shutil, json as _json
+    import pathlib as _pl
+    errors = 0
+    tmp = _pl.Path(tempfile.mkdtemp())
+    ra, rj, rl = _a.DATA, _j.DATA, _j.LOG
+    _a.DATA, _j.DATA, _j.LOG = tmp, tmp, tmp / "admin_journal.jsonl"
+    try:
+        names = [f"Vendor {i}" for i in range(108)]
+        r = _a.act_vendor_scope_all({"names": names, "call": "out", "by": "wyeth"})
+        if not r.get("error") or "limit of" not in r["error"]:
+            errors += fail("a 108-vendor bulk ruling was not stopped for "
+                           "confirmation - BLAST does not reach the decision "
+                           "files, which is the click journal.py was written for")
+        if (tmp / "vendor_scope_decisions.json").exists():
+            errors += fail("a refused bulk ruling still wrote the file")
+
+        r = _a.act_vendor_scope_all({"names": names, "call": "out", "force": True,
+                                     "by": "wyeth", "why": "not govtech"})
+        if r.get("error"):
+            errors += fail(f"a confirmed bulk ruling was refused: {r['error'][:70]}")
+        log = tmp / "admin_journal.jsonl"
+        if not log.exists():
+            errors += fail("a decision-file ruling wrote nothing to the journal, "
+                           "so --undo and --reopen have nothing to act on")
+        else:
+            e = [_json.loads(l) for l in log.read_text().strip().split("\n")][-1]
+            if e["file"] != "vendor_scope_decisions.json":
+                errors += fail(f"journal entry names {e['file']}, not the "
+                               f"decision file that was written")
+            if len(e["changes"]) != 108:
+                errors += fail(f"the journal recorded {len(e['changes'])} of 108 "
+                               f"records - a bulk ruling must be ONE entry "
+                               f"covering all of it, or undo restores half")
+            if e.get("why") != "not govtech":
+                errors += fail("the ruling's reason did not reach the journal")
+
+        # A pure addition is not a rewrite. The runaway guard measures records
+        # that already existed, or the first bulk ruling into an empty file is
+        # 100% of it and force cannot help - force only lifts BLAST.
+        _c, refusal = _j.check("vendor_scope_decisions.json", {},
+                               {f"v{i}": {} for i in range(108)}, force=True)
+        if refusal:
+            errors += fail(f"the runaway guard refused 108 pure additions to an "
+                           f"empty file: {refusal[:60]}")
+        # and it still refuses a real rewrite
+        b = [{"id": f"c{i}", "s": "A"} for i in range(2113)]
+        a = [{"id": f"c{i}", "s": "B" if i < 800 else "A"} for i in range(2113)]
+        _c, refusal = _j.check("companies.json", b, a, force=True)
+        if not refusal:
+            errors += fail("the runaway guard no longer refuses rewriting 800 of "
+                           "2,113 existing companies - loosening it for additions "
+                           "must not loosen it for destruction")
+    finally:
+        _a.DATA, _j.DATA, _j.LOG = ra, rj, rl
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
 def check_semantic_map() -> int:
     """semantic.py's own full check, which nothing was running.
 
@@ -4071,6 +4142,7 @@ def main() -> int:
     errors += check_unreachable_names_the_failure()
     errors += check_search_routes_are_live()
     errors += check_checks_can_fail()
+    errors += check_decision_files_are_journalled()
     errors += check_semantic_map()
     errors += check_publish_gate_legs()
     errors += check_calendar_dates_survive_the_round_trip()

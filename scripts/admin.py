@@ -204,6 +204,36 @@ def save_companies(companies: list, action: str, why: str = "",
     return None
 
 
+def save_decisions(name: str, after, action: str, why: str = "",
+                   by: str = "owner", force: bool = False) -> str | None:
+    """Journal a decision-file write, then write. Refusal message, or None.
+
+    THE RULE ONLY EVER COVERED companies.json. journal.py motivates itself
+    with "one click on 'All out' writes a ruling for 108 companies and all 108
+    pass every check we have" - and that click wrote vendor_scope_decisions
+    .json through write_atomic with no journal entry at all. So the exact
+    scenario the journal exists for was the one it did not cover: no
+    before-image, nothing for --undo, and --reopen with nothing to reopen,
+    which matters most here because a scope ruling is never re-asked.
+
+    It also brings BLAST and the runaway guard to these files for the first
+    time. A bulk ruling over 25 records now has to be confirmed.
+
+    The before-state is re-read from disk rather than passed in, because every
+    caller mutates the dict it read. The write has not happened yet, so disk
+    still holds the before-state. journal.snapshot already handles the dict
+    shape - "the decision files are already dicts" is its own comment - so
+    nothing about the journal needed changing to cover them.
+    """
+    import journal
+    before = read(name, {})
+    _eid, refusal = journal.record(name, before, after, action, by, why, force)
+    if refusal:
+        return refusal
+    write_atomic(name, after)
+    return None
+
+
 def validate(companies: list) -> str | None:
     """The invariants selftest.py enforces, checked before a write lands.
 
@@ -283,7 +313,7 @@ def dismissal_records():
 
 
 def dismiss(queue: str, key: str, why: str, by: str = "owner",
-            saw: dict | None = None) -> None:
+            saw: dict | None = None) -> str | None:
     # `why` is null when nobody typed one, never a stand-in. The why-coverage
     # meter counts any non-empty why as a reason, so a placeholder here - the
     # page used to send the literal "dismissed in admin" - reports care that
@@ -295,7 +325,10 @@ def dismiss(queue: str, key: str, why: str, by: str = "owner",
     if saw is not None:
         rec["saw"] = saw
     d.setdefault(queue, {})[key] = rec
-    write_atomic("admin_dismissed.json", d)
+    # Journalled like every other ruling. A dismissal removes a row from a
+    # queue and is never re-asked, which is the same permanence a scope
+    # ruling has, so it earns the same before-image and the same undo.
+    return save_decisions("admin_dismissed.json", d, "dismiss", why=why, by=by)
 
 
 def is_dismissed(queue: str, key: str) -> bool:
@@ -712,7 +745,12 @@ def act_scope(body: dict) -> dict:
     d[pid] = {"in_scope": bool(keep), "on": dt.date.today().isoformat(),
               "at": now(),
               "why": (body.get("why") or "").strip() or None}
-    write_atomic("scope_decisions.json", d)
+    bad = save_decisions("scope_decisions.json", d, "scope",
+                         why=(body.get("why") or ""),
+                         by=(body.get("by") or "owner"),
+                         force=bool(body.get("force")))
+    if bad:
+        return {"error": bad}
     return {"ok": True,
             "message": f"{'kept on the board' if keep else 'out of scope'}; "
                        f"takes effect on the next build"}
@@ -737,7 +775,12 @@ def act_scope_all(body: dict) -> dict:
                           "at": now(),
                           "why": f"bulk ruling on {pat!r}"}
             n += 1
-    write_atomic("scope_decisions.json", d)
+    bad = save_decisions("scope_decisions.json", d, "scope-all",
+                         why=(body.get("why") or ""),
+                         by=(body.get("by") or "owner"),
+                         force=bool(body.get("force")))
+    if bad:
+        return {"error": bad}
     return {"ok": True, "message": f"{n} posting(s) ruled "
                                    f"{'in' if keep else 'out of'} scope"}
 
@@ -1437,7 +1480,12 @@ def act_vendor_scope_all(body: dict) -> dict:
                 "why": (body.get("why") or "").strip() or None,
                 "bulk": True, "saw": {"theme": body.get("theme")}}
         n += 1
-    write_atomic("vendor_scope_decisions.json", d)
+    bad = save_decisions("vendor_scope_decisions.json", d, "vendor-scope-all",
+                         why=(body.get("why") or ""),
+                         by=(body.get("by") or "owner"),
+                         force=bool(body.get("force")))
+    if bad:
+        return {"error": bad}
     said = {"in": "added as full companies",
             "sled": "added, public-sector roles only",
             "out": "left off the board"}[call]
@@ -2387,8 +2435,10 @@ def act_place(body: dict) -> dict:
            "confidence": body.get("confidence"),
            "description": body.get("description")}
     if body.get("keep"):
-        dismiss("miscategorized", cid, why or "",
-                by=(body.get("by") or "owner"), saw=saw)
+        bad = dismiss("miscategorized", cid, why or "",
+                      by=(body.get("by") or "owner"), saw=saw)
+        if bad:
+            return {"error": bad}
         return {"ok": True, "message": "left where it is"}
 
     # Accepting = taking the proposal exactly as offered. Filing it somewhere
@@ -2411,7 +2461,11 @@ def act_place(body: dict) -> dict:
                     "by": (body.get("by") or "owner").strip(),
                     "why": why or None,
                     "saw": saw}
-    write_atomic("placement_rulings.json", rulings)
+    bad = save_decisions("placement_rulings.json", rulings, "place-ruling",
+                         why=(body.get("why") or ""),
+                         by=(body.get("by") or "owner"))
+    if bad:
+        return {"error": bad}
     return res
 
 
@@ -2569,7 +2623,11 @@ def act_vendor_scope(body: dict) -> dict:
                       "saw": {"description": body.get("description"),
                               "website": body.get("website"),
                               "source_event": body.get("source_event")}}
-    write_atomic("vendor_scope_decisions.json", d)
+    bad = save_decisions("vendor_scope_decisions.json", d, "vendor-scope",
+                         why=(body.get("why") or ""),
+                         by=(body.get("by") or "owner"))
+    if bad:
+        return {"error": bad}
     msg = {"in": "will be added as a full company",
            "sled": "will be added, public-sector roles only",
            "out": "left off the board"}[call]
@@ -3326,7 +3384,10 @@ def act_search_companies(body: dict) -> dict:
 
 
 def act_dismiss(body: dict) -> dict:
-    dismiss(body.get("queue", ""), body.get("key", ""), body.get("why", ""))
+    bad = dismiss(body.get("queue", ""), body.get("key", ""),
+                  body.get("why", ""), by=(body.get("by") or "owner"))
+    if bad:
+        return {"error": bad}
     return {"ok": True, "message": "dismissed"}
 
 

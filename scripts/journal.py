@@ -130,13 +130,23 @@ def check(name: str, before, after, force: bool = False) -> tuple[dict, str | No
     changes = diff(before, after)
     if not changes:
         return changes, None
-    total = max(len(snapshot(before)), len(snapshot(after)), 1)
-    share = len(changes) / total
+    # REWRITING, NOT APPENDING. The share is taken over records that already
+    # existed and were changed or removed, against the file as it was. A pure
+    # addition is not a rewrite and must not trip this: the first bulk ruling
+    # into an empty decision file is 100% of it by the old arithmetic, so
+    # "All out" on 108 vendors - the exact scenario this journal was written
+    # for - was refused outright, and force could not get past it because
+    # force only lifts BLAST. Volume is BLAST's job; this one is about
+    # destruction.
+    was = snapshot(before)
+    total = max(len(was), 1)
+    rewritten = sum(1 for c in changes.values() if c["before"] is not None)
+    share = rewritten / total
     if total >= RUNAWAY_FLOOR and share > RUNAWAY:
         return changes, (
-            f"refusing: this would change {len(changes)} of {total} records in "
-            f"{name} ({share:.0%}). An admin action that rewrites a third of a "
-            f"file is a bug, not a ruling. Nothing was written.")
+            f"refusing: this would rewrite {rewritten} of {total} existing "
+            f"records in {name} ({share:.0%}). An admin action that rewrites a "
+            f"third of a file is a bug, not a ruling. Nothing was written.")
     if len(changes) > BLAST and not force:
         return changes, (
             f"this would change {len(changes)} records in {name}, over the "
