@@ -954,6 +954,20 @@ def main() -> int:
             # offered as a lead to check rather than counted as an opening.
             # It changes no number on this board.
             "scan_lead": _scan_lead(c) if not jobs else None,
+            # WHEN WE LAST LOOKED. The card has been saying "we could not find
+            # a public job board" with no date on it, which reads as a
+            # permanent fact about the company rather than the result of a
+            # probe on a particular day. The date is in discovery_log.json and
+            # was simply never carried across; index.html has been reading for
+            # three candidate field names since before one existed.
+            "board_checked_on": (_DISCOVERY_LOG or {}).get(c["id"], {}).get("on"),
+            # WHERE THIS RECORD CAME FROM. 1,139 companies were found on a
+            # conference floor and the card never said so, which is the single
+            # most interesting provenance fact this dataset holds: it is the
+            # difference between "some database" and "somebody stood in front
+            # of their booth".
+            "source": c.get("source") or None,
+            "researched": bool(c.get("researched")) or None,
         })
 
     # Merge hand-checked findings. These come from companies the fetchers cannot
@@ -1292,6 +1306,48 @@ def main() -> int:
         # against yesterday alone lets a bad day disarm the gate on the next.
         {"date": today, "ids": sorted(p["id"] for p in postings),
          "hiring": sum(1 for o in orgs if o.get("open_roles"))}, indent=1) + "\n")
+    # THE FIVE-WAY SPLIT, on the board rather than only in a script nobody
+    # runs. "839 of 1,722 monitored" was wrong in both directions for months
+    # because it counted a careers page nothing can enumerate the same as a
+    # Greenhouse API, and counted companies with no board at all as a gap.
+    sys.path.insert(0, str(pathlib.Path(__file__).parent))
+    import coverage as _cov
+    _log = _DISCOVERY_LOG if _DISCOVERY_LOG is not None else {}
+    orgs_by_id = {o["id"]: o for o in orgs}
+    split: dict = {}
+    for c in companies:
+        st = _cov.state(c, _log.get(c["id"]), orgs_by_id.get(c["id"]))
+        split[st] = split.get(st, 0) + 1
+    board["coverage"] = split
+
+    # WHAT CAME OFF. The board could say what arrived and never what left, so
+    # a role a reader saw yesterday simply vanished. A posting leaving is not
+    # a role filled - a board that stops answering looks the same from here -
+    # so this records the fact and refuses the inference.
+    prev_ids: set = set()
+    prev_files = sorted(HISTORY.glob("*.json"))
+    for f in reversed(prev_files):
+        if f.stem == today:
+            continue
+        try:
+            prev_ids = set(json.loads(f.read_text()).get("ids", []))
+        except (OSError, json.JSONDecodeError):
+            continue
+        break
+    now_ids = {p["id"] for p in postings}
+    # Only when the two snapshots are comparable. Across the 2026-08-23 id
+    # change every posting looks removed, which would publish 3,332 phantom
+    # departures.
+    overlap = (len(prev_ids & now_ids) / min(len(prev_ids), len(now_ids))
+               if prev_ids and now_ids else 1.0)
+    gone = sorted(prev_ids - now_ids) if overlap >= 0.2 else []
+    dump_json(DATA / "removed.json",
+              {"date": today, "comparable": overlap >= 0.2,
+               "since": prev_files[-2].stem if len(prev_files) > 1 else None,
+               "ids": gone})
+    print(f"  {len(gone)} posting(s) came off the board since the last run"
+          + ("" if overlap >= 0.2 else " (not comparable, so none recorded)"))
+
     print(f"\nwrote data/board.json and data/history/{today}.json")
     return 0
 

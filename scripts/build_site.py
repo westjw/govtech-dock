@@ -914,6 +914,14 @@ def main() -> int:
     # the name, tagline and palette, so a page never hardcodes them either
     shutil.copy2(ROOT / "data" / "brand.json", out / "data" / "brand.json")
 
+    # What came off the board, and what changed. Both are computed every run
+    # and were never published, so the site could say what arrived and never
+    # what left - a role a reader saw yesterday simply vanished.
+    for name in ("removed.json", "latest_diff.json"):
+        src = ROOT / "data" / name
+        if src.exists():
+            shutil.copy2(src, out / "data" / name)
+
     schema = json.loads((ROOT / "data" / "schema.json").read_text())
     (out / "data" / "sectors.json").write_text(
         json.dumps([x["name"] for x in schema["sectors"]], separators=(",", ":")))

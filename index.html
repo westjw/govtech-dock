@@ -1364,9 +1364,11 @@ function postsAtSentence(rec){
   return `They advertise their openings on ${label} rather than a job board we can read, `
     +"so the roles are not counted here — the link goes straight to their listings.";
 }
-/* Whichever date the build gave us for "we looked". Deliberately a list of
-   names rather than one: the field does not exist yet, and guessing a single
-   name would mean the feature silently stays dark when it lands under another. */
+/* Whichever date the build gave us for "we looked". board_checked_on is the
+   real one as of 2026-08-29 - build_board carries it across from
+   discovery_log.json, which had held the date all along. The alternatives stay
+   because a board.json built before that change has neither, and the sentence
+   should degrade to dateless rather than to a crash. */
 const boardCheckedOn=o=>o.board_checked_on||o.discovery_on
   ||(o.discovery&&o.discovery.on)||null;
 /* The whole no-board statement, as {html} or null when the company has a

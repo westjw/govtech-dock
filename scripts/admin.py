@@ -540,6 +540,13 @@ def _board_rows(companies, board):
             continue
         if is_dismissed("boards", c["id"]):
             continue
+        # A company with a scan lead belongs in Warm leads, not here. Checked
+        # when this was written: the two sets are already disjoint, because a
+        # scan lead has an html careers page on file and this queue wants
+        # companies with no board at all. This is the guard for the day that
+        # stops being true, not a fix for an overlap that existed.
+        if o.get("scan_lead"):
+            continue
         pr = _probe(c["id"])
         yield {"id": c["id"], "name": c["name"], "sector": c["sector"],
                "website": c.get("website"), "ats": kind,
@@ -2641,11 +2648,45 @@ def q_submissions(companies, board) -> list:
             for i in subs["items"] if i.get("status") == "pending"]
 
 
-QUEUES = {"boardfound": _q_board_proposals, "founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
+def q_leads(companies, board) -> list:
+    """No board we can read, but a sales title was seen in the page text.
+
+    Split out of the 707-row No-board-found pile because these are not the
+    same job. A row here has EVIDENCE: govtech-dock's page scan found a
+    quota-carrying title in the text of that careers page and could not
+    enumerate the posting behind it. Somebody opening this page will find a
+    live role most of the time.
+
+    The other 632 are a person guessing where a company might hide a board.
+    Mixing 75 warm doors into 707 cold ones is how the warm ones never get
+    opened, and the public card already tells a visitor these are leads - the
+    admin was the only place that could not see them.
+    """
+    orgs = {o["id"]: o for o in board.get("organizations", [])}
+    out = []
+    for c in companies:
+        if is_dismissed("leads", c["id"]):
+            continue
+        o = orgs.get(c["id"]) or {}
+        if not o.get("scan_lead"):
+            continue
+        h = c.get("hiring") or {}
+        out.append({"id": c["id"], "name": c["name"], "sector": c["sector"],
+                    "website": c.get("website"),
+                    "board": (c.get("ats") or {}).get("ref"),
+                    "note": h.get("note") or "",
+                    "checked": h.get("checked"),
+                    "tier": 1 if c["sector"] in ("General Gov", "Public Safety",
+                                                 "Public Works", "Parks & Rec") else 2})
+    out.sort(key=lambda r: (r["tier"], r["name"].lower()))
+    return out
+
+
+QUEUES = {"leads": q_leads, "boardfound": _q_board_proposals, "founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
           "placement": q_placement, "unclassified": q_unclassified,
           "acquisitions": q_acquisitions, "review": q_review}
 
-LABEL = {"boardfound": "Boards we found", "founded": "Founding year", "miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
+LABEL = {"leads": "Warm leads", "boardfound": "Boards we found", "founded": "Founding year", "miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
          "boards": "No board found", "blocked": "Blocked boards", "placement": "Wrong placement",
          "unclassified": "Unclassified roles", "acquisitions": "Acquisitions",
          "review": "Website review"}

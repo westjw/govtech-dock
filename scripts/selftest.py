@@ -2803,6 +2803,61 @@ def check_weekly_report_is_honest() -> int:
     return errors
 
 
+def check_coverage_and_removed() -> int:
+    """The board must publish what it could not read, and what left.
+
+    "839 of 1,722 monitored" was wrong in both directions for months, because
+    it counted a careers page nothing can enumerate the same as a Greenhouse
+    API and counted companies with no board at all as a gap to be closed. The
+    five-way split is the honest shape and it lived only in a script nobody
+    ran.
+
+    removed.json is the other half of the same honesty: the board could say
+    what arrived and never what left. It must refuse to compute across an id
+    change, where every posting looks removed - that would publish thousands
+    of phantom departures.
+    """
+    import build_board as bb
+    errors = 0
+    src = "\n".join(l.split("#")[0] for l in
+                    pathlib.Path(bb.__file__).read_text().splitlines())
+    for needle, why in (
+        ('board["coverage"]', "the five-way coverage split is not written to "
+                              "board.json, so the site cannot say what it "
+                              "could not read"),
+        ('"removed.json"', "removed.json is not written, so a role a reader "
+                           "saw yesterday just vanishes"),
+        ('"board_checked_on"', "the date we last looked for a board is not "
+                               "carried across, so 'no public board' reads as "
+                               "permanent rather than as of a day"),
+        ('overlap >= 0.2', "removed.json does not check that the two snapshots "
+                           "are comparable - across an id change every posting "
+                           "reads as removed")):
+        if needle not in src:
+            errors += fail(why)
+
+    # the split itself must total the company count and name all five states
+    import coverage as cov, json as _json
+    companies = _json.loads((DATA / "companies.json").read_text())
+    log = _json.loads((DATA / "discovery_log.json").read_text())
+    board = _json.loads((DATA / "board.json").read_text())
+    orgs = {o["id"]: o for o in board.get("organizations", [])}
+    split = {}
+    for c in companies:
+        st = cov.state(c, log.get(c["id"]), orgs.get(c["id"]))
+        split[st] = split.get(st, 0) + 1
+    if sum(split.values()) != len(companies):
+        errors += fail(f"the coverage split totals {sum(split.values())} of "
+                       f"{len(companies)} companies - some company is in no "
+                       f"state at all")
+    missing = {"structured", "page only", "blocked", "absent", "unchecked"} - set(split)
+    if missing:
+        errors += fail(f"the coverage split has no {sorted(missing)} bucket; a "
+                       f"missing state is how 'page only' got added to "
+                       f"'structured' and called coverage")
+    return errors
+
+
 def check_crawl_files() -> int:
     """A single-page app cannot be indexed by luck.
 
@@ -4509,6 +4564,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_coverage_and_removed()
     errors += check_weekly_report_is_honest()
     errors += check_map_says_what_it_omits()
     errors += check_prerendered_pages()
