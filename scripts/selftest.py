@@ -2624,6 +2624,80 @@ def check_prerendered_pages() -> int:
     return errors
 
 
+def check_feeds_and_structured_data() -> int:
+    """Feeds say only what the data supports, and markup only where we read.
+
+    A calendar entry on the wrong day is worse than none, because somebody
+    books travel around it - so an unparseable date omits the event rather
+    than guessing. JobPosting markup is emitted only for the 2,711 postings
+    whose description was actually read, never carries a validThrough we do
+    not know, and never claims a baseSalary: the board holds a stated range
+    for some postings, but a range read out of prose is not the same claim as
+    an employer's structured salary and must not be dressed as one.
+    """
+    import build_site, tempfile, shutil, xml.dom.minidom
+    import pathlib as _pl
+    errors = 0
+    brand = {"site": "https://example.test", "name": "SLED JOBS",
+             "domain": "example.test"}
+    board = {"generated": "2026-08-29",
+             "postings": [
+                 {"id": "a", "company": "A Co", "title": "AE", "family": "gtm",
+                  "quota_carrying": True, "first_seen": "2026-08-29"},
+                 {"id": "b", "company": "B Co", "title": "Old AE", "family": "gtm",
+                  "quota_carrying": True, "first_seen": "2026-08-01"}],
+             "conferences": [
+                 {"name": "Good Conf", "tag": "GOOD 2026", "dates": "July 25-28, 2027",
+                  "city": "Anaheim, CA", "block": "Public safety"},
+                 {"name": "Undated Conf", "tag": "UND 2026", "dates": "TBA",
+                  "block": "Public safety"}]}
+    tmp = _pl.Path(tempfile.mkdtemp())
+    try:
+        out = build_site.write_feeds(tmp, board, brand)
+        rss = (tmp / "feed.xml").read_text()
+        xml.dom.minidom.parseString(rss)
+        if "AE at A Co" not in rss:
+            errors += fail("a role first seen on this run is missing from feed.xml")
+        if "Old AE" in rss:
+            errors += fail("feed.xml carries a role from an earlier run - 'new' "
+                           "must mean new, or the feed repeats itself forever")
+        cal = (tmp / "conferences.ics").read_text()
+        if "DTSTART;VALUE=DATE:20270725" not in cal:
+            errors += fail("the calendar lost a dated conference")
+        if "Undated Conf" in cal:
+            errors += fail("a conference with an unparseable date reached the "
+                           "calendar - a wrong date is worse than no entry, "
+                           "because somebody books travel around it")
+        if " " in [l for l in cal.splitlines() if l.startswith("UID:")][0]:
+            errors += fail("an iCalendar UID contains a space; some clients "
+                           "drop the event")
+        if out["events"] != 1:
+            errors += fail(f"reported {out['events']} dated events, expected 1")
+
+        # the middleware's structured data, source-level. COMMENTS STRIPPED
+        # FIRST: the words this looks for are exactly the words the file uses
+        # to explain why it omits them, and a check that trips on the prose
+        # defending it is the third time that has happened in this repo.
+        import re as _re
+        raw = (ROOT / "functions" / "_middleware.js").read_text()
+        mw = _re.sub(r"/\*.*?\*/", "", raw, flags=_re.S)
+        mw = "\n".join(l.split("//")[0] for l in mw.splitlines())
+        if "validThrough" in mw:
+            errors += fail("the JobPosting markup emits validThrough - we do not "
+                           "know when a posting expires and inventing an expiry "
+                           "is how a board advertises dead roles")
+        if "baseSalary" in mw:
+            errors += fail("the JobPosting markup claims a baseSalary; a range "
+                           "read out of prose is not an employer's structured claim")
+        if "r.ld ?" not in mw:
+            errors += fail("structured data is no longer gated on the description "
+                           "having been read, so it asserts a completeness the "
+                           "board does not have for 1,492 postings")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
 def check_crawl_files() -> int:
     """A single-page app cannot be indexed by luck.
 
@@ -4327,6 +4401,7 @@ def main() -> int:
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
     errors += check_prerendered_pages()
+    errors += check_feeds_and_structured_data()
     errors += check_share_cards()
     errors += check_semantic_map()
     errors += check_publish_gate_legs()

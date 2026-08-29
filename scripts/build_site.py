@@ -321,8 +321,22 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
     for p_ in board.get("postings", []):
         off = p_.get("office") or {}
         where = off.get("city") or off.get("state") or ""
-        roles[p_["id"]] = {"t": p_.get("title") or "", "c": p_.get("company") or "",
-                           "w": where}
+        r = {"t": p_.get("title") or "", "c": p_.get("company") or "", "w": where}
+        # Structured data ONLY where the description was actually read. 2,711
+        # of 4,203 postings were; the rest are a title and a link, and
+        # publishing JobPosting markup for those would assert to Google a
+        # completeness we do not have. city/state ride along separately
+        # because JobPosting wants them apart, and validThrough is never
+        # emitted: we do not know when a posting expires and inventing an
+        # expiry is how a board ends up advertising dead roles.
+        if p_.get("jd_seen"):
+            r["ld"] = 1
+            r["d"] = p_.get("first_seen") or ""
+            if off.get("city"):
+                r["ci"] = off["city"]
+            if off.get("state"):
+                r["st"] = off["state"]
+        roles[p_["id"]] = r
     for o in board.get("organizations", []):
         cos[o["id"]] = {"n": o.get("name") or "", "s": o.get("sector") or "",
                         "d": (o.get("description") or "")[:180],
@@ -550,6 +564,115 @@ def write_state_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
     return n
 
 
+def write_feeds(out: pathlib.Path, board: dict, brand: dict) -> dict:
+    """An RSS feed of the new quota roles, and calendar feeds for the floors.
+
+    A subscribed feed is a foothold in somebody's week that renews itself. A
+    one-off .ics download is forgotten by Friday, and a board with no feed is a
+    board you have to remember to visit.
+
+    The RSS carries roles first seen on THIS build, which is what "new" means
+    here and the only definition the data supports. When a run adds nothing the
+    feed is empty rather than padded with yesterday's - an empty feed is a true
+    statement about a quiet day.
+    """
+    site = brand["site"].rstrip("/")
+    gen = board.get("generated") or dt.date.today().isoformat()
+    fresh = [p_ for p_ in board.get("postings", [])
+             if p_.get("first_seen") == gen and p_.get("quota_carrying")]
+    fresh.sort(key=lambda p_: (p_.get("company") or "", p_.get("title") or ""))
+    items = ""
+    for p_ in fresh[:60]:
+        link = f"{site}/?role={urllib.parse.quote(p_['id'])}"
+        where = (p_.get("location") or "").strip()
+        desc = (f"{p_.get('company','')} is hiring a {p_.get('title','')}"
+                + (f" in {where}" if where else "") + ".")
+        items += (f"  <item>\n"
+                  f"    <title>{html.escape(p_.get('title') or '')} at "
+                  f"{html.escape(p_.get('company') or '')}</title>\n"
+                  f"    <link>{html.escape(link)}</link>\n"
+                  f"    <guid isPermaLink=\"false\">{html.escape(p_['id'])}</guid>\n"
+                  f"    <description>{html.escape(desc)}</description>\n"
+                  f"  </item>\n")
+    (out / "feed.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0"><channel>\n'
+        f"  <title>{html.escape(brand['name'])}: new quota-carrying roles</title>\n"
+        f"  <link>{site}/</link>\n"
+        f"  <description>Sales roles at state and local government technology "
+        f"companies, first seen on the most recent run.</description>\n"
+        f"  <lastBuildDate>{gen}</lastBuildDate>\n"
+        + items + "</channel></rss>\n")
+
+    # Calendars. One for everything, one per department block, so somebody who
+    # only sells into public safety is not subscribed to library conferences.
+    confs = [c for c in (board.get("conferences") or []) if c.get("dates")]
+    def ics(rows, name):
+        lines = ["BEGIN:VCALENDAR", "VERSION:2.0",
+                 f"PRODID:-//{brand['name']}//conferences//EN",
+                 "CALSCALE:GREGORIAN", f"X-WR-CALNAME:{name}"]
+        n = 0
+        for c in rows:
+            start = _ics_date(c.get("dates"))
+            if not start:
+                continue          # a date we could not parse is not invented
+            n += 1
+            lines += ["BEGIN:VEVENT",
+                      # slugified: a UID with a space in it is not a valid
+                      # iCalendar identifier and some clients drop the event
+                      f"UID:{_slugify(c.get('tag') or c.get('name') or 'event')}"
+                      f"@{brand['domain']}",
+                      f"DTSTART;VALUE=DATE:{start}",
+                      f"SUMMARY:{_ics_esc(c.get('name') or '')}",
+                      f"LOCATION:{_ics_esc(c.get('city') or '')}",
+                      f"DESCRIPTION:{_ics_esc(str(c.get('approx_count') or 0))} "
+                      f"exhibitors tracked. {site}/?tab=conferences",
+                      "END:VEVENT"]
+        lines.append("END:VCALENDAR")
+        return "\r\n".join(lines) + "\r\n", n
+
+    cal = out / "cal"
+    cal.mkdir(parents=True, exist_ok=True)
+    body, n_all = ics(confs, f"{brand['name']}: govtech conferences")
+    (out / "conferences.ics").write_text(body)
+    blocks = sorted({c.get("block") for c in confs if c.get("block")})
+    for b in blocks:
+        body, _ = ics([c for c in confs if c.get("block") == b], f"{brand['name']}: {b}")
+        (cal / f"{_slugify(b)}.ics").write_text(body)
+    return {"rss": len(fresh), "events": n_all, "calendars": 1 + len(blocks)}
+
+
+def _slugify(s: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-") or "block"
+
+
+def _ics_esc(s: str) -> str:
+    return str(s).replace("\\", "\\\\").replace(",", "\\,").replace(";", "\\;").replace("\n", " ")
+
+
+def _ics_date(dates: str) -> str | None:
+    """YYYYMMDD from the catalogue's date string, or None.
+
+    Returns None rather than guessing. A calendar entry on the wrong day is
+    worse than no calendar entry, because somebody books travel around it.
+    """
+    m = re.search(r"(\d{4})-(\d{2})-(\d{2})", str(dates or ""))
+    if m:
+        return m.group(1) + m.group(2) + m.group(3)
+    m = re.match(r"\s*([A-Za-z]+)\s+(\d{1,2})", str(dates or ""))
+    if not m:
+        return None
+    months = {mn.lower(): i for i, mn in enumerate(
+        ["January", "February", "March", "April", "May", "June", "July",
+         "August", "September", "October", "November", "December"], 1)}
+    mon = months.get(m.group(1).lower()[:3] and
+                     next((k for k in months if k.startswith(m.group(1).lower()[:3])), ""))
+    yr = re.search(r"(20\d{2})", str(dates or ""))
+    if not mon or not yr:
+        return None
+    return f"{yr.group(1)}{mon:02d}{int(m.group(2)):02d}"
+
+
 def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
     """robots.txt, sitemap.xml and a real 404, none of which existed.
 
@@ -713,6 +836,7 @@ def main() -> int:
     meta_idx = write_meta_index(out, board)
     n_co = write_company_pages(out, board, brand)
     n_st = write_state_pages(out, board, brand)
+    feeds = write_feeds(out, board, brand)
 
     size = sum(f.stat().st_size for f in out.rglob("*") if f.is_file())
     print(f"wrote {a.out}/: {len(SHIP)} page(s) + data/board.json")
@@ -723,6 +847,9 @@ def main() -> int:
           f"with an opening), robots.txt, 404.html")
     print(f"  c/: {n_co} prerendered company pages")
     print(f"  s/: {n_st} state pages")
+    print(f"  feed.xml: {feeds['rss']} new quota role(s) &middot; "
+          f"{feeds['calendars']} calendar(s), {feeds['events']} dated event(s)"
+          .replace("&middot;", "·"))
     print(f"  meta-index.json: {meta_idx['roles']} roles, "
           f"{meta_idx['companies']} companies for the head-tag worker")
     print(f"  {size / 1e6:.2f} MB on disk, roughly {size / 1e6 * 0.1:.2f} MB over the wire")

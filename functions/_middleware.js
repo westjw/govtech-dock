@@ -55,6 +55,7 @@ async function describe(request, env) {
     if (!r) return null;
     const where = r.w ? ` in ${r.w}` : "";
     return {
+      ld: r.ld ? jobLd(role, r, SITE) : null,
       title: `${r.t} at ${r.c} · ${NAME}`,
       desc: `${r.c} is hiring a ${r.t}${where}. Found on ${NAME}, which tracks `
           + `sales roles at state and local government technology companies.`,
@@ -110,6 +111,46 @@ async function describe(request, env) {
   return null;
 }
 
+/* JobPosting structured data, on the roles we actually read.
+ *
+ * Google for Jobs is the one channel that sends high-intent traffic to a board
+ * this size. It is also a channel that punishes a lie, so this is emitted only
+ * for postings whose description was read (r.ld), never carries a validThrough
+ * we do not know, and never claims a salary - the board holds a stated range
+ * for some postings, but a range read out of prose is not the same claim as an
+ * employer's structured baseSalary and should not be dressed as one.
+ */
+function jobLd(id, r, site) {
+  const loc = r.ci || r.st
+    ? { "@type": "Place",
+        address: Object.assign({ "@type": "PostalAddress", addressCountry: "US" },
+          r.ci ? { addressLocality: r.ci } : {},
+          r.st ? { addressRegion: r.st } : {}) }
+    : null;
+  const o = {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    title: r.t,
+    description: `${r.c} is hiring a ${r.t}${r.w ? ` in ${r.w}` : ""}.`,
+    hiringOrganization: { "@type": "Organization", name: r.c },
+    url: `${site}/?role=${encodeURIComponent(id)}`,
+    directApply: false,
+  };
+  if (r.d) o.datePosted = r.d;
+  if (loc) o.jobLocation = loc;
+  return JSON.stringify(o);
+}
+
+class Ld {
+  constructor(json) { this.json = json; this.done = false; }
+  element(el) {
+    if (this.done) return;
+    this.done = true;
+    el.append(`<script type="application/ld+json">${this.json.replace(/</g, "\\u003c")}<\/script>`,
+              { html: true });
+  }
+}
+
 class Head {
   constructor(m) { this.m = m; this.done = false; }
   element(el) {
@@ -149,8 +190,9 @@ export async function onRequest(context) {
   catch { meta = null; }          // a head-tag rewrite must never cost a page
   if (!meta) return res;
 
-  return new HTMLRewriter()
+  let rw = new HTMLRewriter()
     .on("title", new Title(meta))
-    .on("head", new Head(meta))
-    .transform(res);
+    .on("head", new Head(meta));
+  if (meta.ld) rw = rw.on("head", new Ld(meta.ld));
+  return rw.transform(res);
 }
