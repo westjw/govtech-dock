@@ -1374,6 +1374,16 @@ def check_review_findings() -> int:
                                              if name == "admin_dismissed.json"
                                              else saved_read(name, default))
     admin.write_atomic = lambda name, data: store.__setitem__(name, data)
+    # AND THE JOURNAL, for the same reason as check_save_needs_read. dismiss()
+    # goes through save_decisions() now, and journal.record writes through its
+    # own io - so stubbing write_atomic alone let this check append a real
+    # entry to the real admin_journal.jsonl on EVERY run. Six of them landed
+    # before this was caught. A selftest that writes to the thing it is
+    # checking is the failure this file exists to prevent, and it caught me
+    # twice in one day with the same mechanism.
+    import journal as _journal
+    saved_record = _journal.record
+    _journal.record = lambda *a, **k: ("selftest", None)
     try:
         admin.dismiss("duplicates", "site:x.com", "checked both, not duplicates")
         if not admin.is_dismissed("duplicates", "site:x.com"):
@@ -1392,6 +1402,7 @@ def check_review_findings() -> int:
             errors += fail("the flat legacy dismissal shape stopped counting")
     finally:
         admin.read, admin.write_atomic = saved_read, saved_write
+        _journal.record = saved_record
 
     # 4. A merge unions `also` and folds in the drop's primary placement. A
     # duplicate pair is often the same vendor filed on two shelves - that is
@@ -2399,6 +2410,16 @@ def check_publish_gate_legs() -> int:
         build_site.ROOT = real
         shutil.rmtree(tmp, ignore_errors=True)
     return errors
+
+
+def _journal_fingerprint() -> tuple:
+    """(lines, bytes) of the live journal, or (0, 0) if there is none."""
+    p = DATA / "admin_journal.jsonl"
+    try:
+        raw = p.read_bytes()
+    except OSError:
+        return (0, 0)
+    return (raw.count(b"\n"), len(raw))
 
 
 def check_checks_can_fail() -> int:
@@ -3922,6 +3943,13 @@ def check_alert_vocabulary() -> int:
 
 def main() -> int:
     errors = 0
+    # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
+    # to keep their probes off disk, and journal.record writes through its own
+    # io - so both of them appended a real entry to the real journal on every
+    # run. Nineteen landed before anyone noticed, each one a "dismiss" ruling
+    # attributed to the owner that he never made. Stubbing is per-check and
+    # easy to forget; this notices when somebody forgets.
+    _journal_before = _journal_fingerprint()
 
     companies = json.load(open(DATA / "companies.json"))
     schema = json.load(open(DATA / "schema.json"))
@@ -4290,6 +4318,15 @@ def main() -> int:
     print(f"{len(companies)} companies | {n_api} on structured ATS APIs | "
           f"{len(hist)} snapshot(s) | classifier cases: {len(CLASSIFIER_CASES)} title, "
           f"{len(PAGESCAN_CASES)} page-scan, {len(TITLE_TEXT_CASES)} title-text")
+    after = _journal_fingerprint()
+    if after != _journal_before:
+        errors += fail(
+            f"the selftest wrote to data/admin_journal.jsonl "
+            f"({_journal_before[0]} lines -> {after[0]}). A check that stubs "
+            f"write_atomic must stub journal.record too: it writes through its "
+            f"own io, so the probe lands in the real journal as a ruling "
+            f"nobody made. Remove the entries and stub it.")
+
     if errors:
         print(f"\n{errors} problem(s) found")
         return 1
