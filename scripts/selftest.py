@@ -2609,6 +2609,30 @@ def check_prerendered_pages() -> int:
             errors += fail("a company page is not canonical to itself, so it "
                            "competes with the app's ?co= view for the same company")
 
+        # Conference pages: the roster is what WE track, never the show's own
+        # exhibitor list, and every page has to say so. "52 exhibitors" read as
+        # a claim about the floor rather than about us is the quiet kind of
+        # overstatement this project refuses - we hold 35 of 93 tags and swept
+        # eleven floors.
+        board["conferences"] = [{"tag": "GOOD 2026", "name": "Good Conf",
+                                 "dates": "July 25-28, 2027", "city": "Anaheim, CA",
+                                 "department": "Police", "url": "https://good.test"}]
+        board["organizations"][0]["conference"] = "GOOD 2026"
+        board["organizations"][1]["conference"] = "GOOD 2026"
+        n_ev = build_site.write_conference_pages(tmp, board, brand)
+        if n_ev != 1:
+            errors += fail(f"wrote {n_ev} conference pages, expected 1")
+        ev = (tmp / "e" / "good-2026.html").read_text()
+        if "1 of the 2 exhibitors we track here are hiring" not in ev:
+            errors += fail("the conference page does not count hiring exhibitors "
+                           "against the roster we actually hold")
+        if "not the show" not in ev:
+            errors += fail("a conference page presents our partial roster as the "
+                           "show's exhibitor list - a short list must read as us "
+                           "knowing less, never as the floor being small")
+        if "/c/seller.html" not in ev:
+            errors += fail("a hiring exhibitor is not linked to its own page")
+
         build_site.write_state_pages(tmp, board, brand)
         st = (tmp / "s" / "ca.html").read_text()
         if "Account Executive" not in st:
@@ -2737,8 +2761,12 @@ def check_crawl_files() -> int:
             errors += fail("a company with nothing open is in the sitemap - a "
                            "sitemap full of near-identical empty pages teaches "
                            "a crawler to stop believing this one")
-        if "APCO 2026" not in sm.replace("%20", " "):
-            errors += fail("conferences are missing from the sitemap")
+        # /e/<slug>.html, matching the prerendered conference page, not the
+        # tab query it used to point at.
+        if "/e/apco-2026.html" not in sm:
+            errors += fail("conferences are missing from the sitemap, or it "
+                           "still points at the tab query rather than the "
+                           "prerendered conference page")
         rob = (tmp / "robots.txt").read_text()
         if "Sitemap: https://example.test/sitemap.xml" not in rob:
             errors += fail("robots.txt does not name the sitemap")

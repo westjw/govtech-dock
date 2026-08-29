@@ -673,6 +673,77 @@ def _ics_date(dates: str) -> str | None:
     return f"{yr.group(1)}{mon:02d}{int(m.group(2)):02d}"
 
 
+def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
+    """A page per conference, with the exhibitors we track and who is hiring.
+
+    "Which exhibitors at this show are hiring salespeople" is a question no
+    other site on the internet can answer, and it is the most linkable thing
+    this dataset produces. The link already exists in the data: 1,139
+    organizations carry the conference tag they were found at.
+
+    WHAT THE ROSTER IS NOT. It is the exhibitors WE TRACK, never the show's
+    exhibitor list - we hold 35 of the 93 tags in the catalogue and swept only
+    eleven floors. Every page says so, because "52 exhibitors" read as a claim
+    about the show rather than about us is the kind of quiet overstatement this
+    project refuses.
+    """
+    site = brand["site"].rstrip("/")
+    d = out / "e"
+    d.mkdir(parents=True, exist_ok=True)
+    by_tag: dict = {}
+    for o in board.get("organizations", []):
+        if o.get("conference"):
+            by_tag.setdefault(o["conference"], []).append(o)
+
+    n = 0
+    for c in board.get("conferences", []) or []:
+        tag = c.get("tag")
+        if not tag:
+            continue
+        roster = sorted(by_tag.get(tag, []),
+                        key=lambda o: (-(o.get("open_roles") or 0), o.get("name") or ""))
+        if not roster and not c.get("dates"):
+            continue      # nothing to say that the catalogue tab does not say
+        hiring = [o for o in roster if o.get("open_roles")]
+        where = " &middot; ".join(html.escape(x) for x in
+                                 (c.get("dates"), c.get("city"), c.get("department"))
+                                 if x)
+        items = ""
+        for o in roster[:60]:
+            n_open = o.get("open_roles") or 0
+            link = (f'<a href="/c/{urllib.parse.quote(o["id"])}.html">'
+                    f'{html.escape(o["name"])}</a>' if n_open
+                    else html.escape(o["name"]))
+            note = (f'<div class="meta">{n_open} open role'
+                    f'{"s" if n_open != 1 else ""}</div>' if n_open else
+                    '<div class="meta">nothing open that we can see</div>')
+            items += f'<li><div class="role">{link}</div>{note}</li>'
+        more = (f'<p class="kv">Showing {min(len(roster), 60)} of '
+                f'{len(roster)}, the ones hiring first.</p>'
+                if len(roster) > 60 else "")
+        line = (f"{len(hiring)} of the {len(roster)} exhibitors we track here "
+                f"are hiring" if roster else "No exhibitors tracked here yet")
+        body = (f'<h1>{html.escape(c.get("name") or tag)}</h1>'
+                + (f'<p class="kv">{where}</p>' if where else "")
+                + f'<h2>{line}</h2>'
+                + (f'<ul>{items}</ul>{more}' if roster else "")
+                + f'<div class="note">These are the exhibitors <em>we</em> track '
+                  f'from this show, not the show\'s exhibitor list. We hold a '
+                  f'roster for some conferences and not others, so a short list '
+                  f'here means we know less about this floor, never that the '
+                  f'floor was small. '
+                  + (f'<a href="{html.escape(c["url"])}" rel="nofollow noopener">'
+                     f'The event\'s own site</a> has the real one. ' if c.get("url") else "")
+                  + f'<a href="/?tab=conferences">All conferences</a>.</div>')
+        (d / f"{_slugify(tag)}.html").write_text(_page(
+            f"{c.get('name') or tag}: who is hiring · {brand['name']}",
+            f"{line}. " + (f"{c.get('dates')}, {c.get('city')}. " if c.get("dates") else "")
+            + "Sales roles at the govtech companies on this floor.",
+            f"{site}/e/{_slugify(tag)}.html", body, brand, "conferences"))
+        n += 1
+    return n
+
+
 def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
     """robots.txt, sitemap.xml and a real 404, none of which existed.
 
@@ -704,10 +775,9 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
                       if p_.get("family") in ("gtm", "field")} - {None, ""}):
         urls.append((f"{site}/s/{st.lower()}.html", "weekly", "0.6"))
     for c in board.get("conferences", []) or []:
-        tag = c.get("event_tag") or c.get("conference")
+        tag = c.get("tag") or c.get("event_tag") or c.get("conference")
         if tag:
-            urls.append((f"{site}/?tab=conferences&ev={urllib.parse.quote(tag)}",
-                         "monthly", "0.5"))
+            urls.append((f"{site}/e/{_slugify(tag)}.html", "monthly", "0.5"))
     body = "\n".join(
         f'  <url><loc>{html.escape(u)}</loc><lastmod>{today}</lastmod>'
         f'<changefreq>{f}</changefreq><priority>{pr}</priority></url>'
@@ -837,6 +907,7 @@ def main() -> int:
     n_co = write_company_pages(out, board, brand)
     n_st = write_state_pages(out, board, brand)
     feeds = write_feeds(out, board, brand)
+    n_ev = write_conference_pages(out, board, brand)
 
     size = sum(f.stat().st_size for f in out.rglob("*") if f.is_file())
     print(f"wrote {a.out}/: {len(SHIP)} page(s) + data/board.json")
@@ -847,6 +918,7 @@ def main() -> int:
           f"with an opening), robots.txt, 404.html")
     print(f"  c/: {n_co} prerendered company pages")
     print(f"  s/: {n_st} state pages")
+    print(f"  e/: {n_ev} conference pages")
     print(f"  feed.xml: {feeds['rss']} new quota role(s) &middot; "
           f"{feeds['calendars']} calendar(s), {feeds['events']} dated event(s)"
           .replace("&middot;", "·"))
