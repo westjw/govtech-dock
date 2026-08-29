@@ -304,6 +304,42 @@ def sanity_check(board: dict) -> list[str]:
     return bad
 
 
+def write_meta_index(out: pathlib.Path, board: dict) -> dict:
+    """The small file the middleware reads to title a page.
+
+    A Worker cannot parse a 6MB board on every request, so this is the
+    smallest thing that answers "what is at this address": id to title,
+    company, place and count. Roles and companies only, because those are the
+    two addresses that name one specific thing.
+
+    Nothing here is invented. A posting with no office prints no place, and a
+    company with no opening prints no count, because the middleware's job is
+    to describe the page and a description that guesses is worse than a
+    generic one.
+    """
+    roles, cos = {}, {}
+    for p_ in board.get("postings", []):
+        off = p_.get("office") or {}
+        where = off.get("city") or off.get("state") or ""
+        roles[p_["id"]] = {"t": p_.get("title") or "", "c": p_.get("company") or "",
+                           "w": where}
+    for o in board.get("organizations", []):
+        cos[o["id"]] = {"n": o.get("name") or "", "s": o.get("sector") or "",
+                        "d": (o.get("description") or "")[:180],
+                        "r": o.get("open_roles") or 0}
+    # TWO FILES, not one. A role page has no use for 2,113 company records and
+    # a company page has none for 4,475 postings; one combined index made the
+    # Worker pull 923KB to write a single <title>. Split, each request fetches
+    # only the half it can use, and the Worker caches it at the edge so the
+    # cost is one fetch per edge per deploy rather than one per visitor.
+    gen = board.get("generated")
+    (out / "meta-roles.json").write_text(
+        json.dumps({"generated": gen, "roles": roles}, separators=(",", ":")))
+    (out / "meta-companies.json").write_text(
+        json.dumps({"generated": gen, "companies": cos}, separators=(",", ":")))
+    return {"roles": len(roles), "companies": len(cos)}
+
+
 def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
     """robots.txt, sitemap.xml and a real 404, none of which existed.
 
@@ -424,6 +460,13 @@ def main() -> int:
     if mascot.exists():
         shutil.copytree(mascot, out / "assets" / "mascot")
 
+    # the share cards the head-tag middleware points at. Without these the
+    # og:image tags name a 404 and a link unfurls with a broken picture, which
+    # is worse than the naked url it replaced.
+    og = ROOT / "assets" / "og"
+    if og.exists():
+        shutil.copytree(og, out / "assets" / "og")
+
     # logos are public by nature - they are the companies' own marks, served
     # from our origin so no visitor is reported to a logo service
     logos = ROOT / "assets" / "logos"
@@ -449,6 +492,7 @@ def main() -> int:
 
     brand = json.loads((ROOT / "data" / "brand.json").read_text())
     crawl = write_crawl_files(out, board, brand)
+    meta_idx = write_meta_index(out, board)
 
     size = sum(f.stat().st_size for f in out.rglob("*") if f.is_file())
     print(f"wrote {a.out}/: {len(SHIP)} page(s) + data/board.json")
@@ -457,6 +501,8 @@ def main() -> int:
     print(f"  {stripped} internal error string(s) replaced with the plain fact")
     print(f"  sitemap.xml: {crawl['urls']} urls ({crawl['companies']} companies "
           f"with an opening), robots.txt, 404.html")
+    print(f"  meta-index.json: {meta_idx['roles']} roles, "
+          f"{meta_idx['companies']} companies for the head-tag worker")
     print(f"  {size / 1e6:.2f} MB on disk, roughly {size / 1e6 * 0.1:.2f} MB over the wire")
 
     # Say what was deliberately left behind, so the omission is visible rather

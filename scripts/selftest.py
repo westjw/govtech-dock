@@ -2507,6 +2507,38 @@ def check_decision_files_are_journalled() -> int:
     return errors
 
 
+def check_share_cards() -> int:
+    """Every og:image the middleware can name must exist, and ship.
+
+    A link that unfurls with a broken picture is worse than the naked url it
+    replaced, and the two halves live in different languages: the middleware
+    picks a filename, make_og_cards.py writes one, and nothing connected them.
+    Source-level on the middleware because a Worker cannot run here.
+    """
+    import re
+    errors = 0
+    mw = ROOT / "functions" / "_middleware.js"
+    if not mw.exists():
+        return fail("functions/_middleware.js is gone - every url shares one "
+                    "title again and nothing unfurls")
+    src = mw.read_text()
+    named = set(re.findall(r"/assets/og/([a-z]+)\.png", src))
+    named |= {t for t in re.findall(r"^\s+(\w+): \[\"", src, re.M) if t != "saved"}
+    have = {p.stem for p in (ROOT / "assets" / "og").glob("*.png")}
+    for miss in sorted(named - have):
+        errors += fail(f"the middleware points at /assets/og/{miss}.png and no "
+                       f"such card exists - run scripts/make_og_cards.py")
+    ship = (ROOT / "scripts" / "build_site.py").read_text()
+    if '"og"' not in ship:
+        errors += fail("build_site does not copy assets/og into the published "
+                       "tree, so every og:image is a 404 on the live site")
+    # and the middleware must read the brand rather than restating it
+    if 'from "./_brand.js"' not in src:
+        errors += fail("_middleware.js hardcodes the site name or domain "
+                       "instead of importing _brand.js")
+    return errors
+
+
 def check_crawl_files() -> int:
     """A single-page app cannot be indexed by luck.
 
@@ -4197,6 +4229,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_share_cards()
     errors += check_semantic_map()
     errors += check_publish_gate_legs()
     errors += check_calendar_dates_survive_the_round_trip()
