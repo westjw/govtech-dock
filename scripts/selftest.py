@@ -875,13 +875,19 @@ def check_admin_gates() -> int:
     # call that wrote 240 rulings in zero seconds - so the capabilities are
     # simply capabilities now. If somebody reintroduces a reward gated on an
     # activity number, this fails and they have to read why first.
+    # `bad`, not `errors`: this function's accumulator is `bad`, and all three
+    # of these said `errors +=`. Every one of them would have raised NameError
+    # instead of failing - so the explanation they exist to print ("rewards
+    # gated on activity were removed deliberately") never reached anyone, and
+    # every check after this one was skipped. A guard that crashes still stops
+    # the build, which is why it survived; it just stops it uselessly.
     if getattr(admin, "UNLOCKS", None):
-        errors += fail("admin.UNLOCKS is back - rewards gated on activity "
-                       "were removed deliberately; see the note above unlocks()")
+        bad += fail("admin.UNLOCKS is back - rewards gated on activity "
+                    "were removed deliberately; see the note above unlocks()")
     if admin.unlocks({}) != []:
-        errors += fail("unlocks() should hand out nothing")
+        bad += fail("unlocks() should hand out nothing")
     if hasattr(admin, "csv_gate"):
-        errors += fail("csv_gate is back - the export is not gated")
+        bad += fail("csv_gate is back - the export is not gated")
 
     # --- what makes an agree-rate a measurement ---------------------------
     t0 = dt.datetime(2026, 8, 24, 10, 0, 0)
@@ -1768,6 +1774,36 @@ def check_admin_http() -> int:
         if code != 415:
             bad += fail(f"a text/plain write answered {code}, not 415")
 
+        # THE STATIC ROUTE ALLOWLIST. CLAUDE.md credits this function with
+        # asserting it and it did not: serving the repository root is what
+        # handed out /.git/config, /scripts/admin.py and /data/companies.json,
+        # and "everything else is 404 by construction" was a claim in a
+        # docstring with no test under it. Six routes are served; these five
+        # are the ones whose exposure was the original bug.
+        for path in ("/data/companies.json", "/.git/config", "/scripts/admin.py",
+                     "/CLAUDE.md", "/data/admin_journal.jsonl"):
+            code, _h, _b = ask(path, {"X-Admin-Token": admin.TOKEN})
+            if code != 404:
+                bad += fail(f"{path} answered {code}, not 404 - the admin is "
+                            f"serving files off disk again, which is exactly "
+                            f"the exposure the route allowlist replaced")
+        for path in ("/", "/admin.html"):
+            code, _h, _b = ask(path, {"X-Admin-Token": admin.TOKEN})
+            if code != 200:
+                bad += fail(f"{path} answered {code}, not 200 - the admin page "
+                            f"itself stopped being served")
+
+        # THE HOST CHECK, the other thing CLAUDE.md credits here. DNS
+        # rebinding beats every same-origin protection because evil.example
+        # can resolve to 127.0.0.1, but the browser still fills Host in from
+        # the address bar, so a request addressed to anything but us is
+        # refused with 421.
+        code, _h, _b = ask("/api/queues", {"X-Admin-Token": admin.TOKEN,
+                                           "Host": "evil.example"})
+        if code != 421:
+            bad += fail(f"a request addressed to evil.example answered {code}, "
+                        f"not 421 - DNS rebinding is not being refused")
+
         # THE RULING GATE. A local script can get a token by asking for one -
         # that route exists for the capture extension and is not the hole.
         # The hole was that the token was also permission to RULE, and an
@@ -2362,6 +2398,41 @@ def check_publish_gate_legs() -> int:
     finally:
         build_site.ROOT = real
         shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
+def check_checks_can_fail() -> int:
+    """No check may crash where it means to fail.
+
+    check_admin_gates accumulated into `bad` and three of its assertions said
+    `errors +=`. Python raises NameError there, so all three CSV-gate guards
+    would have died mid-suite instead of failing: the explanation they exist
+    to print never reached anyone, and every check after them was skipped. It
+    survived because a crash also stops the build - it just stops it
+    uselessly, and a stack trace is not the sentence somebody needs to read.
+
+    This is the class, not the instance: every check_* function is parsed and
+    any accumulator it augments without ever assigning is reported. Static,
+    because these paths only execute when something else is already broken,
+    which is exactly when nobody wants a second bug.
+    """
+    import ast
+    errors = 0
+    tree = ast.parse(pathlib.Path(__file__).read_text())
+    for fn in tree.body:
+        if not (isinstance(fn, ast.FunctionDef) and fn.name.startswith("check_")):
+            continue
+        augmented = {n.target.id for n in ast.walk(fn)
+                     if isinstance(n, ast.AugAssign) and isinstance(n.target, ast.Name)}
+        assigned = {t.id for n in ast.walk(fn) if isinstance(n, (ast.Assign, ast.For))
+                    for t in ast.walk(n.targets[0] if isinstance(n, ast.Assign) else n.target)
+                    if isinstance(t, ast.Name)}
+        args = {a.arg for a in fn.args.args}
+        undefined = augmented - assigned - args
+        if undefined:
+            errors += fail(f"{fn.name}() augments {sorted(undefined)} without "
+                           f"ever assigning it - that path raises NameError "
+                           f"instead of failing, and skips every check after it")
     return errors
 
 
@@ -3999,6 +4070,7 @@ def main() -> int:
     errors += check_identity_guard()
     errors += check_unreachable_names_the_failure()
     errors += check_search_routes_are_live()
+    errors += check_checks_can_fail()
     errors += check_semantic_map()
     errors += check_publish_gate_legs()
     errors += check_calendar_dates_survive_the_round_trip()

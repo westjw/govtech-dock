@@ -56,7 +56,6 @@
   /* every column of numbers lines up, which is half of why the deck's tables
      look the way they do */
   td,th,.bignum,.tabn,.pline,.pos,.urlbar code,.when,.pay,.cta .n,
-  .newstrip{font-variant-numeric:tabular-nums}
 
   /* ------------------------------------------------------------- header
      A BAND, not a line of text. It was a wordmark and some links sitting on
@@ -446,14 +445,6 @@
   /* "New this run" is worth leading with and is not worth a screen. A strip,
      not three posters. Beak is a rule here, which is the one thing it is
      allowed to be. */
-  .newstrip{display:flex;gap:var(--space-3);align-items:baseline;flex-wrap:wrap;
-    border-left:3px solid var(--beak);background:var(--panel);
-    padding:var(--space-2) var(--space-3);margin-top:var(--space-3);font-size:13px;
-    color:var(--dim)}
-  .newstrip strong{color:var(--ink)}
-  .newstrip a{font-weight:600}
-  .newstrip .lead{color:var(--faint);letter-spacing:.08em;text-transform:uppercase;
-    font-weight:600}
 
   /* --------------------------------------------------------- filter chips */
   .fchips{display:flex;gap:var(--space-2);flex-wrap:wrap;align-items:center;
@@ -729,10 +720,6 @@
     /* the debut sentence is a nicety and was four lines of it. The counts and
        the link are the part a thumb acts on. And as a wrapping flex row each
        fragment claimed a line of its own; as running text it is three. */
-    .newstrip .debut{display:none}
-    .newstrip{display:block}
-    .newstrip .lead{margin-right:var(--space-2)}
-    .newstrip a{margin-left:var(--space-1)}
     .urlbar{flex-wrap:nowrap}
     .cta .go{margin-left:0;width:100%;text-align:center}
 
@@ -1883,15 +1870,11 @@ function jobs(){
   const payOn=D.postings.some(hasPay);
   const ages=ageOptions(D.postings,D.generated);
   const srcs=srcOptions(D.postings);
-  const fresh=D.postings.filter(p=>p.first_seen===D.generated);
-  const freshQ=fresh.filter(p=>p.quota_carrying);
-  /* The strongest TRUE story in the shape the deck wanted: a company whose
-     first quota-carrying posting we have ever recorded turned up in this run.
-     We do not store per-run readability history, so "their board came back
-     today" is not ours to tell. */
-  const seenBefore=new Set(D.postings.filter(p=>p.first_seen!==D.generated).map(p=>p.company_id));
-  const debut=freshQ.filter(p=>!seenBefore.has(p.company_id));
-  const debutCos=[...new Set(debut.map(p=>p.company))];
+  /* fresh / freshQ / seenBefore / debut lived here to feed a "new this run"
+     strip that was moved to the home banner. The strip went; these did not,
+     and neither did the code that wrote into #j-newoffer - an element this
+     file has never rendered. buildSlides() computes its own copies for the
+     banner, which is the live one. */
 
   $("#view").innerHTML=`
   <div class="phead">
@@ -2764,42 +2747,6 @@ function drawJobs(){
       : ` · ${setAside.total.toLocaleString()} set aside: ${paySetAsideText(setAside)}
           · <span class="payall">include them</span>`):"")
     +nearNote(NEAR);
-
-  /* THE NEW-THIS-RUN OFFER, and the rule it exists to obey is drawCos's:
-     "a number offered is the number that actually appears when it is
-     clicked. Offering 188 more and then showing 12 is its own small lie."
-
-     The strip said "56 postings first seen on 2026-08-24" and its link said
-     "Show just these", and the click produced 8 - because the board opens on
-     quota-carrying roles and the strip counts every posting. Both numbers
-     were true; the OFFER was not. So it is computed here, through the same
-     pass() and payPass() the list itself went through, with the only
-     difference being the horizon it is offering to set.
-
-     When the current filters leave none of them it stops being a link. A
-     control that cannot change anything is the same defect as a filter option
-     matching nothing, one element to the left. */
-  const offer=$("#j-newoffer");
-  if(offer){
-    const n=sinceDays===0?rows.length:payPass(D.postings.filter(p=>pass(p,0))).rows.length;
-    offer.textContent="";
-    if(n===0){
-      offer.textContent="None of them clear the filters you have set.";
-    }else if(sinceDays===0){
-      offer.textContent=n===1?"Showing the one.":`Showing ${n.toLocaleString()} of them.`;
-    }else{
-      const a=document.createElement("a");
-      a.href="#";
-      // the count is what this view will show, which is not always the count
-      // to its left - the title says why rather than leaving a reader to
-      // wonder whether one of the two numbers is wrong
-      a.title="the roles first seen this run that also clear the filters you have set";
-      a.textContent=n===1?"Show the one →":`Show these ${n.toLocaleString()} →`;
-      a.onclick=e=>{e.preventDefault();
-        const s=$("#j-since"); if(s){s.value="0";PUSH_NEXT=true;refilter();}};
-      offer.appendChild(a);
-    }
-  }
 
   const host=$("#j-list");
   host.textContent="";

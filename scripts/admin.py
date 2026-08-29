@@ -3654,8 +3654,20 @@ class Handler(http.server.BaseHTTPRequestHandler):
     root, so /.git/config, /scripts/admin.py and /data/companies.json all
     answered 200 to anything that asked. ../ traversal was blocked correctly
     the whole time - the directory itself was the exposure - and the fix is to
-    stop having a directory. Three routes are served, listed below, and
-    everything else is 404 by construction rather than by check.
+    stop having a directory. SIX routes are served and everything else is 404
+    by construction rather than by check:
+
+        /                    the admin page
+        /admin.html          the same page by its own name
+        /capture             the bookmarklet install page
+        /capture.js          the bookmarklet itself
+        /assets/logos/*      company logos
+        /assets/mascot/*     the mascot
+
+    This said "three" while serving six, which is the drift selftest exists to
+    break, so check_admin_http now asserts the list against a real server:
+    /data/companies.json, /.git/config, /scripts/admin.py, /CLAUDE.md and
+    /data/admin_journal.jsonl must all 404, / and /admin.html must 200.
     """
 
     def log_message(self, fmt, *args):        # keep the console readable
