@@ -2753,6 +2753,56 @@ def check_map_says_what_it_omits() -> int:
     return errors
 
 
+def check_weekly_report_is_honest() -> int:
+    """The week's report must not assemble growth out of a schema change.
+
+    On 2026-08-23 posting ids gained a url+location hash, so the 08-22 and
+    08-23 snapshots share not one id out of three thousand. Comparing across
+    that boundary counts every posting as new: the first run of report.py said
+    "580 new quota-carrying roles" and "3,332 came off the board", which is a
+    growth story made entirely of an id change. Real adjacent days overlap by
+    thousands, so a near-empty intersection means the two are not comparable.
+    """
+    import report
+    errors = 0
+    real = report.DATA
+    import tempfile, shutil, json as _json
+    import pathlib as _pl
+    tmp = _pl.Path(tempfile.mkdtemp())
+    (tmp / "history").mkdir()
+    report.DATA = tmp
+    try:
+        # old scheme, then a hard break, then two comparable days
+        (tmp / "history" / "2026-08-01.json").write_text(_json.dumps(
+            {"date": "2026-08-01", "ids": [f"old{i}" for i in range(500)]}))
+        (tmp / "history" / "2026-08-05.json").write_text(_json.dumps(
+            {"date": "2026-08-05", "ids": [f"new{i}" for i in range(500)]}))
+        (tmp / "history" / "2026-08-08.json").write_text(_json.dumps(
+            {"date": "2026-08-08", "ids": [f"new{i}" for i in range(520)]}))
+        (tmp / "board.json").write_text(_json.dumps(
+            {"postings": [{"id": f"new{i}", "quota_carrying": i < 5,
+                           "sector": "General Gov", "company": "C",
+                           "company_id": "c"} for i in range(520)],
+             "organizations": [{"id": "c", "open_roles": 1}]}))
+        r = report.week(None)
+        if r.get("error"):
+            errors += fail(f"the report refused a comparable week: {r['error']}")
+        elif r["from"] != "2026-08-05":
+            errors += fail(f"the report compared against {r['from']}, crossing the "
+                           f"id-scheme break at 2026-08-05 - every posting reads "
+                           f"as new and the post invents a growth story")
+        elif not r.get("note"):
+            errors += fail("the report silently shortened its own span without "
+                           "saying why")
+        elif r["new"] != 20:
+            errors += fail(f"reported {r['new']} new postings across a comparable "
+                           f"pair, expected 20")
+    finally:
+        report.DATA = real
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
 def check_crawl_files() -> int:
     """A single-page app cannot be indexed by luck.
 
@@ -4459,6 +4509,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_weekly_report_is_honest()
     errors += check_map_says_what_it_omits()
     errors += check_prerendered_pages()
     errors += check_feeds_and_structured_data()
