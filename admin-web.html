@@ -42,6 +42,10 @@
   .floor.stamped{border-color:var(--accent)}
   .floor .fname{font-size:11.5px;font-weight:650}
   .floor .fsub{font-size:10px;color:var(--faint);margin-top:3px}
+  .dupes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+  @media (max-width:640px){.dupes{grid-template-columns:1fr}}
+  .dupe{border:1px solid var(--line);padding:10px 12px}
+  .dupe .nm{font-weight:600;margin-bottom:2px}
   nav{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
   nav button{font:inherit;font-size:13px;padding:8px 14px;border-radius:18px;
     border:1px solid var(--line);background:var(--panel);color:var(--dim);cursor:pointer}
@@ -147,16 +151,18 @@ async function rule(payload){
 }
 
 const RAW="https://raw.githubusercontent.com/westjw/govtech-dock/main/";
-let D=null,RULED={vendor:{},place:{}},TAB="vendors";
+let D=null,RULED={vendor:{},place:{},merge:{},founded:{}},TAB="vendors";
 const vkey=n=>String(n||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
 
 async function boot(){
-  const [data,vend,plc]=await Promise.all([
+  const [data,vend,plc,mrg,fnd]=await Promise.all([
     fetch("data.json").then(r=>r.json()),
     fetch(RAW+"data/vendor_scope_decisions.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).catch(()=>({})),
     fetch(RAW+"data/placement_rulings.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).catch(()=>({})),
+    fetch(RAW+"data/web_merge_rulings.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).catch(()=>({})),
+    fetch(RAW+"data/web_founded_rulings.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).catch(()=>({})),
   ]);
-  D=data;RULED.vendor=vend||{};RULED.place=plc||{};
+  D=data;RULED.vendor=vend||{};RULED.place=plc||{};RULED.merge=mrg||{};RULED.founded=fnd||{};
   $("#sub").textContent=`${D.companies.toLocaleString()} companies · `
     +`${D.postings.toLocaleString()} postings · data as of ${D.generated}`;
   const g=D.game||{};
@@ -171,7 +177,8 @@ async function boot(){
      bucket are the judgement calls that work on a small screen - so the
      honest label names its own scope rather than implying it is the whole
      backlog. */
-  stat(remaining("vendors")+remaining("miscategorized"),"waiting in these two queues");
+  stat(remaining("vendors")+remaining("miscategorized")+remaining("duplicates")
+    +remaining("founded"),"waiting in these four queues");
   stat(D.visible_now||0,"wrong on the public site now","amber");
   /* A PERCENTAGE WITHOUT ITS DENOMINATOR IS A BADGE, NOT A MEASUREMENT.
      This read "100% of your rulings say why" off nine rulings. That is not a
@@ -206,20 +213,111 @@ async function boot(){
     yl.parentNode.insertBefore(fl,yl.nextSibling);
   }
   const tabs=$("#tabs");tabs.innerHTML="";
-  [["vendors","Vendor scope"],["miscategorized","Wrong bucket"]].forEach(([k,l])=>{
+  [["vendors","Vendor scope"],["miscategorized","Wrong bucket"],
+   ["duplicates","Duplicates"],["founded","Founding year"]].forEach(([k,l])=>{
     const b=el("button",null,l);b.dataset.k=k;
     b.onclick=()=>{TAB=k;draw()};tabs.appendChild(b)});
   draw();
 }
 function remaining(q){
   if(q==="vendors")return (D.vendors||[]).filter(v=>!(vkey(v.name) in RULED.vendor)).length;
+  if(q==="duplicates")return (D.duplicates||[]).length;
+  if(q==="founded")return (D.founded||[]).filter(c=>!(c.id in (RULED.founded||{}))).length;
   return (D.miscategorized||[]).filter(c=>!(c.id in RULED.place)).length;
 }
 function draw(){
   document.querySelectorAll("nav button").forEach(b=>
     b.setAttribute("aria-selected",b.dataset.k===TAB));
   const v=$("#view");v.innerHTML="";
-  (TAB==="vendors"?drawVendors:drawBucket)(v);
+  ({vendors:drawVendors,miscategorized:drawBucket,
+    duplicates:drawDupes,founded:drawFounded}[TAB]||drawVendors)(v);
+}
+
+/* DUPLICATES, the highest-leverage queue there is: 70 pairs holding up 136
+   rulings in other queues, because every decision queued against the record
+   that loses a merge is work nobody needed to do.
+   It is on the web and not on the phone for one reason - two records side by
+   side needs width. The ruling is WHICH ONE SURVIVES, never "merge these":
+   a merge that picked for you is one nobody can check later. */
+function drawDupes(v){
+  const rows=(D.duplicates||[]).filter(x=>!Object.keys(RULED.merge||{})
+    .some(k=>k.endsWith("<-"+x.members[1].id)||k.startsWith(x.members[0].id+"<-")));
+  if(!rows.length){v.appendChild(el("div","empty","One record per vendor. Nothing left to merge."));return}
+  rows.slice(0,40).forEach(x=>{
+    const n=el("div","card");
+    n.appendChild(el("div","kv",x.signal||"same name"));
+    const grid=el("div","dupes");
+    x.members.forEach(m=>{
+      const c=el("div","dupe");
+      c.appendChild(el("div","nm",m.name));
+      c.appendChild(el("div","kv",`${m.sector||"?"} / ${m.category||"?"}`));
+      c.appendChild(el("div","kv",(m.description||"").slice(0,140)));
+      c.appendChild(el("div","kv",
+        `${m.postings||0} posting${m.postings===1?"":"s"} · board: ${m.ats||"unknown"}`
+        +(m.website?` · ${m.website.replace(/^https?:\/\//,"")}`:" · no website")));
+      const keep=el("button","act good","Keep this one");
+      keep.onclick=async()=>{
+        const other=x.members.find(y=>y.id!==m.id);
+        if(!confirm(`Keep ${m.name}, fold ${other.name} into it?\n\nCancel does nothing.`))return;
+        keep.disabled=true;
+        const r=await rule({kind:"merge",keep:m.id,drop:other.id,why:why.value,
+          keep_name:m.name,drop_name:other.name,signal:x.signal});
+        keep.disabled=false;
+        if(r){RULED.merge[m.id+"<-"+other.id]={};n.remove();boot()}
+      };
+      c.appendChild(keep);
+      grid.appendChild(c);
+    });
+    n.appendChild(grid);
+    const why=el("input","txt");why.placeholder="why (optional, but it teaches the classifier)";
+    n.appendChild(why);
+    const not=el("button","act","Not duplicates");
+    not.onclick=async()=>{
+      not.disabled=true;
+      const r=await rule({kind:"dismiss",queue:"duplicates",key:x.key,why:why.value});
+      not.disabled=false;
+      if(r){n.remove();boot()}
+    };
+    n.appendChild(not);
+    v.appendChild(n);
+  });
+}
+
+/* FOUNDING YEAR: one tap against a year already on the row. The lightest
+   queue in the backlog and the longest, so it is the one worth having on a
+   screen you already have open. */
+function drawFounded(v){
+  const rows=(D.founded||[]).filter(x=>!(x.id in (RULED.founded||{})));
+  if(!rows.length){v.appendChild(el("div","empty","Every year confirmed."));return}
+  rows.slice(0,60).forEach(x=>{
+    const n=el("div","card");
+    n.appendChild(el("div","nm",x.name));
+    n.appendChild(el("div","kv",(x.description||"").slice(0,150)));
+    const row=el("div","row");
+    if(x.about){const a=el("a",null,"their about page");a.href=x.about;a.target="_blank";a.rel="noopener";row.appendChild(a)}
+    if(x.linkedin){const a=el("a",null,"linkedin");a.href=x.linkedin;a.target="_blank";a.rel="noopener";row.appendChild(a)}
+    n.appendChild(row);
+    const yr=el("input","txt");yr.placeholder="year";yr.inputMode="numeric";yr.maxLength=4;
+    yr.style.maxWidth="7ch";
+    const save=el("button","act good","Save the year");
+    save.onclick=async()=>{
+      const y=parseInt(yr.value,10);
+      if(!(y>=1800&&y<=new Date().getFullYear())){toast("that is not a plausible year",true);return}
+      save.disabled=true;
+      const r=await rule({kind:"founded",id:x.id,year:y,name:x.name,source:x.about||x.website});
+      save.disabled=false;
+      if(r){RULED.founded[x.id]={};n.remove();boot()}
+    };
+    const skip=el("button","act","Cannot find it");
+    skip.onclick=async()=>{
+      skip.disabled=true;
+      const r=await rule({kind:"dismiss",queue:"founded",key:x.id,why:"not findable"});
+      skip.disabled=false;
+      if(r){n.remove();boot()}
+    };
+    const r2=el("div","row");r2.append(yr,save,skip);n.appendChild(r2);
+    v.appendChild(n);
+  });
 }
 
 function drawVendors(v){

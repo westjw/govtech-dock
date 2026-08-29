@@ -120,13 +120,30 @@ def build_admin_bundle(out: "pathlib.Path") -> None:
         "vendors": [_public_row(v) for v in _admin.q_vendor_scope(companies, board)],
         "miscategorized": [_public_row(v)
                            for v in _admin.q_miscategorized(companies, board)],
+        # TWO MORE QUEUES, chosen because the answer is on the card and the
+        # cost of being wrong is recoverable. Duplicates first: 70 pairs
+        # holding up 136 rulings in other queues, and a merge keeps every field
+        # the survivor has, so a wrong merge is undoable where a wrong scope
+        # ruling is invisible. Founding year is one tap against a year that is
+        # already on the row.
+        #
+        # Acquisitions is deliberately NOT here, and not on the phone either:
+        # deciding whether a slug belongs to a parent needs slow reading, and a
+        # fast grip buys speed with accuracy. CLAUDE.md excludes it from the
+        # belt for the same reason.
+        "duplicates": [_public_row(v)
+                       for v in _admin.QUEUES["duplicates"](companies, board)],
+        "founded": [_public_row(v)
+                    for v in _admin.QUEUES["founded"](companies, board)][:400],
     }
     admin_dir = out / "admin"
     admin_dir.mkdir(parents=True, exist_ok=True)
     (admin_dir / "index.html").write_text((ROOT / "admin-web.html").read_text())
     (admin_dir / "data.json").write_text(json.dumps(payload))
     print(f"  admin bundle: {len(payload['vendors'])} vendors, "
-          f"{len(payload['miscategorized'])} wrong-bucket")
+          f"{len(payload['miscategorized'])} wrong-bucket, "
+          f"{len(payload['duplicates'])} duplicate pairs, "
+          f"{len(payload['founded'])} founding years")
 
 # Organization fields the site never reads. Dropping them is not security -
 # the data is public job postings - it is not publishing internal bookkeeping

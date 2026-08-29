@@ -19,6 +19,12 @@ const FILES = {
   vendor: "data/vendor_scope_decisions.json",
   place: "data/placement_rulings.json",
   dismiss: "data/admin_dismissed.json",
+  // Two opinion files the daily run applies in Python, behind validate().
+  // A merge and a founding year both WRITE companies.json, which a Worker
+  // must never do: the whole division of labour here is that a bug in the
+  // web half can mis-record an opinion and cannot corrupt the map.
+  merge: "data/web_merge_rulings.json",
+  founded: "data/web_founded_rulings.json",
 };
 
 const json = (obj, status = 200) =>
@@ -45,7 +51,7 @@ export async function onRequestPost({ request, env }) {
   let body;
   try { body = await request.json(); } catch { return json({ error: "send JSON" }, 400); }
   const kind = body.kind;
-  if (!FILES[kind]) return json({ error: "kind must be vendor, place or dismiss" }, 400);
+  if (!FILES[kind]) return json({ error: "kind must be vendor, place, dismiss, merge or founded" }, 400);
 
   // Build the entries exactly the shapes the local admin writes, so the two
   // doors stay interchangeable. Every ruling carries who/when/why/what-they-saw.
@@ -74,6 +80,31 @@ export async function onRequestPost({ request, env }) {
                source_event: body.source_event, theme: body.theme },
       };
     }
+  } else if (kind === "merge") {
+    // keep and drop, never "merge these two" - which record survives is the
+    // ruling, and a merge that picked for you is one nobody can check later.
+    if (!body.keep || !body.drop || body.keep === body.drop)
+      return json({ error: "need keep and drop, and they must differ" }, 400);
+    entries[`${body.keep}<-${body.drop}`] = {
+      keep: body.keep, drop: body.drop, on: today, by: who, via: "web",
+      why: (body.why || "").trim() || null,
+      applied: false,
+      saw: { keep_name: body.keep_name, drop_name: body.drop_name,
+             signal: body.signal },
+    };
+  } else if (kind === "founded") {
+    const yr = parseInt(body.year, 10);
+    // A year outside this range is a typo or a parse of something that was
+    // not a year. Refusing here keeps it out of the opinion file entirely,
+    // rather than leaving Python to reject it tomorrow.
+    if (!body.id || !Number.isInteger(yr) || yr < 1800 || yr > new Date().getFullYear())
+      return json({ error: "need an id and a plausible four-digit year" }, 400);
+    entries[body.id] = {
+      year: yr, on: today, by: who, via: "web",
+      why: (body.why || "").trim() || null,
+      applied: false,
+      saw: { name: body.name, source: body.source },
+    };
   } else if (kind === "place") {
     if (!body.id || !body.sector || !body.category)
       return json({ error: "need id, sector and category" }, 400);
