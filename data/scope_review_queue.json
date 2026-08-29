@@ -1943,6 +1943,150 @@
    "why": "Formerly PrinterLogic; the exhibitor name Vasion Print is the print product line. Horizontal infrastructure software across 14,000 organizations - named customers are Carvana, Yahoo, NASCAR, Chick-fil-A and Nintendo. HQ confirmed on the company page. No founding year published.",
    "source_event": "EDUCAUSE 2026",
    "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Smarty",
+   "website": "https://smarty.com",
+   "description": "USPS and international address verification, autocomplete, geocoding and property-data APIs for developers, with a government line selling cleaner address data to public agencies",
+   "why": "Horizontal developer-API company: USPS/international address verification, autocomplete, geocoding and property data sold to any business that has an address field, with government as one vertical line among many. Product company, but the government cut is a segment of a general-purpose data API — not a system built for agencies. Rule 6 / horizontal shape, queue for a person rather than force it onto a public SLED board.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Splunk (Cisco)",
+   "website": "https://www.splunk.com",
+   "description": "Data platform for security operations (SIEM, SOAR, UEBA) and IT observability, sold to enterprises and to state and local government and education.",
+   "why": "Named in the brief as the archetype: horizontal SIEM/observability platform sold to enterprises worldwide, with SLED as one segment. Queue for a person.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "StackAI",
+   "website": "https://stackai.com",
+   "description": "No-code platform for building, governing and deploying enterprise AI agents, sold to IT teams at organisations with regulated and complex operations",
+   "why": "Horizontal no-code platform for building and governing enterprise AI agents, sold to IT teams at any regulated or complex organisation. Nothing agency-specific in the product; government would be one customer type among all others.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "TransUnion",
+   "website": "https://www.transunion.com",
+   "description": "Consumer credit, identity and risk data used for verification, fraud prevention and analytics, sold across industries that include healthcare and the public sector.",
+   "why": "A consumer credit bureau selling identity, risk and analytics data across every industry, with public sector as one of many verticals. Classic horizontal — not a govtech product company.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Verato",
+   "website": "https://www.verato.com",
+   "description": "Identity resolution and master data management software - person matching and provider data - for healthcare organizations and state and local government.",
+   "why": "Identity resolution and MDM whose dominant market is healthcare organisations — health systems, payers, HIEs — which Rule 5 says is healthcare IT, not govtech, with state and local HHS agencies as an additional segment. A real product company selling to government among everyone else; torn between govtech and not, so it does not get the public card.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Databricks",
+   "website": "https://www.databricks.com",
+   "description": "Unified data, analytics and AI platform — ETL, data warehousing, governance and ML/GenAI application development — sold to enterprises.",
+   "why": "Named in the board's own rule as the shape of a horizontal vendor: a general data/AI/analytics platform sold to enterprises across every industry, with government as one segment. Not a call to force — queues for a person.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Dun & Bradstreet, Inc.",
+   "website": "https://www.dnb.com/SLED",
+   "description": "Business identity, risk and local-economy data and analytics sold to state and local government agencies.",
+   "why": "Horizontal commercial data and analytics business — business identity, credit and risk data sold to every industry — with a /SLED landing page for its government vertical. Selling the same data assets to agencies among everyone else is the Databricks/Splunk shape, not a purpose-built govtech product. Queues for a person.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Edifecs",
+   "website": null,
+   "description": "",
+   "why": "Rule 6 on the record as given: no site and no description on file, so nothing in the intake justifies a card. What public material shows is a healthcare interoperability software vendor (EDI, encounter and enrollment management, FHIR) whose core customers are commercial health plans — reportedly all national plans and most of the top 25 commercial payers — with state Medicaid agencies as one vertical among them. That is the horizontal-sells-to-government-too shape, and it is now under Cotiviti. Not earned as govtech; a person should confirm whether the state Medicaid module business is the rea",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Progress Software",
+   "website": "https://www.progress.com",
+   "description": "Application development, data platform (MarkLogic, Semaphore) and infrastructure management software for enterprises, sold to government through a Federal Solutions unit.",
+   "why": "Horizontal enterprise software — app dev tooling, MarkLogic/Semaphore data platform, infrastructure management — sold to every industry, with a federal arm as one channel. Government is a customer segment, not the product's purpose. Queue for a person.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SAS",
+   "website": "https://www.sas.com/en_us/home.html",
+   "description": "Analytics, data management and AI software (SAS Viya), including fraud and compliance applications, sold to public sector, health care and commercial customers.",
+   "why": "Horizontal analytics and AI software (Viya) sold across commercial, healthcare and public sector alike. The fraud and compliance applications have genuine state-agency traction, but the company is not a govtech product company — it is a general analytics vendor with a public sector vertical. Queue for a person.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "SecureCare",
+   "website": null,
+   "description": "",
+   "why": "Rule 6 — no site on file, no description, and the name is shared by several unrelated companies (hospice document-management software, a dental benefits carrier, home-care services). I cannot tell what they sell and will not invent it. Needs a human to identify the entity before it can be ruled.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "InterSystems",
+   "website": "https://www.intersystems.com",
+   "description": "IRIS data platform and HealthShare health information exchange software for healthcare providers, payers and government agencies.",
+   "why": "Horizontal data-platform vendor. IRIS is a general-purpose database and interoperability platform sold across healthcare, financial services and industry; HealthShare is sold to providers, payers and some state HIEs/public health agencies alike. Sells to government among everyone else — the Databricks/Splunk shape. Queue for a person rather than force a call.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Jama Software",
+   "website": "https://www.jamasoftware.com",
+   "description": "Jama Connect requirements management, traceability and risk software for engineering teams in regulated industries, including government and public service programs",
+   "why": "Horizontal product. Jama Connect is requirements management and traceability for engineering teams in regulated industries — aerospace, medical devices, automotive, semiconductors — with government and public sector as one vertical among many. A real product company, but not one whose product is sold to SLED agencies as such. Queue for a person.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Optimoz",
+   "website": "https://optimoz.com",
+   "description": "Optimoz AI, an enterprise platform for building, running and governing autonomous AI agents, sold to federal government, healthcare, higher education and enterprise customers.",
+   "why": "Horizontal product, and thin evidence of a SLED buyer. Optimoz AI is positioned as an Enterprise Agentic AI Operating System for building, running and governing autonomous agents, with the pitch aimed at regulated enterprise deployment (HIPAA, SOC 2, data sovereignty, on-prem) across federal government, healthcare, higher education and commercial. Federal-leaning and sells to everyone; also historically a DevSecOps services firm, so what they now sell is genuinely ambiguous. Queue for a person.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Celonis",
+   "website": "https://www.celonis.com",
+   "description": "Process mining and process intelligence software that shows how business processes actually run, sold to large enterprises and to state government.",
+   "why": "Named in the prompt as the scope_review shape. Process mining and process intelligence sold to large enterprises generally, with state government as one buyer among many. Queues for a person.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Harmony Healthcare IT",
+   "website": "https://www.harmonyhit.com",
+   "description": "Legacy clinical and business data archiving, EHR migration and managed-care oversight workflows for hospitals, health systems and state agency programs.",
+   "why": "A real product company (HealthData Archiver, Convergence, HealthData AR Manager) but the buyer is overwhelmingly hospitals and health systems — 550+ healthcare clients — which is healthcare IT, not govtech, under rule 5. They do have a genuine state-agency line: Medicaid Legacy Data Management on Convergence, deployed at TennCare, listed through Carahsoft. Sells to government among everyone else, so a person should size that public-sector line rather than me forcing a public card.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "HMS (Health Management Systems)",
+   "website": null,
+   "description": "",
+   "why": "Rule 6 — no site and no description on file, and the name has an identity problem I should not resolve by inventing one. Health Management Systems was acquired by Gainwell in 2021 and now exists as a Gainwell brand, not a standalone employer, so a card would point at a company that no longer hires under this name. Its historic business (coordination of benefits/third-party liability, program integrity) also mixes contingency-fee recovery services with software and serves commercial payers and MCOs alongside state Medicaid agencies. A person should decide which entity is being proposed before a",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
+  },
+  {
+   "name": "Innovaccer",
+   "website": "https://innovaccer.com",
+   "description": "Healthcare data and AI platform (Gravity) for providers, payers and life sciences, with a public sector line selling Medicaid analytics, case management and social health information exchange to state agencies",
+   "why": "A genuine product with a genuine government line — Innovaccer Gravity for Public Sector at state Medicaid agencies and California county health departments, covering CMS-64/T-MSIS reporting, contact tracing and case management. But the company is a healthcare data and AI platform whose core buyers are providers, payers and life sciences, with public sector as one expansion line. Sells to government among everyone else, so per the asymmetry it queues for a person instead of being forced onto the board.",
+   "source_event": "HHS conference exhibitor research 2026-08-25",
+   "queued_on": "2026-08-23"
   }
  ]
 }

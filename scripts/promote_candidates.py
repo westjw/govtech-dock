@@ -41,6 +41,27 @@ SUFFIX = re.compile(r"\b(inc|llc|corp(oration)?|co|company|ltd|lp|group|"
                     r"holdings?|international|intl|usa?)\b\.?", re.I)
 
 
+
+def _issued_event_tags() -> set:
+    """Every event tag data/conferences.json has actually issued.
+
+    Includes prior_tags: an event that renamed still issued the old tag, and
+    the descriptions written under it are not wrong.
+    """
+    import json as _json
+    path = ROOT / "data" / "conferences.json"
+    try:
+        raw = _json.loads(path.read_text())
+    except (OSError, _json.JSONDecodeError):
+        return set()
+    confs = raw if isinstance(raw, list) else raw.get("conferences", [])
+    out = set()
+    for c in confs:
+        if c.get("event_tag"):
+            out.add(c["event_tag"])
+        out.update(c.get("prior_tags") or [])
+    return out
+
 def norm(name: str) -> str:
     # parentheticals go the way kebab() sends them, or "SoundThinking
     # (ShotSpotter)" dedupes differently than it ids and lands twice
@@ -134,13 +155,23 @@ def main() -> int:
             cid = f"{kebab(name)}-{n}"
             n += 1
         taken_ids.add(cid)
+        # "exhibited at X" IS A CLAIM THAT SOMEBODY STOOD ON A FLOOR, and it
+        # must name a real event. source_event is whatever the research pass
+        # called itself, and a pass called "HHS conference exhibitor research
+        # 2026-08-25" is not a conference: writing it here invented an event,
+        # put it on the Conferences tab, and asserted these ten companies
+        # exhibited at something nobody has evidence they attended.
+        # selftest::check refuses any tag the catalog never issued, which is
+        # what caught it. A pass label still gets recorded, in `source`, where
+        # it is provenance rather than a claim about the company.
         ev = r.get("source_event")
+        event = ev if ev in _issued_event_tags() else None
         desc = r["description"].strip().rstrip(".")
         companies.append({
             "id": cid, "name": name, "website": r.get("website"),
             "location": r.get("hq_location"), "year_founded": r.get("year_founded"),
             "sector": sector, "category": cat,
-            "description": f"{desc} - exhibited at {ev}" if ev else desc,
+            "description": f"{desc} - exhibited at {event}" if event else desc,
             # ATS discovery is a later pass. "unknown" is the schema's word
             # for needs-discovery and refresh.py skips it; "Unknown" hiring
             # says nothing has looked, which is true and is not "None found".
@@ -148,7 +179,8 @@ def main() -> int:
             "hiring": {"status": "Unknown", "note": "board not discovered yet",
                        "roles": [], "checked": None},
             "govtech": True, "vendor_type": "GovTech Product",
-            "source": f"conference sweep: {ev}" if ev else "conference sweep",
+            "source": (f"conference sweep: {ev}" if event
+                       else (f"research pass: {ev}" if ev else "research pass")),
             "researched": True})
         known.add(key)
         added.append(name)
