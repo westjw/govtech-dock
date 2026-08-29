@@ -60,7 +60,14 @@ export async function onRequestPost({ request, env }) {
     for (const name of names) {
       entries[vkey(name)] = {
         call: body.call, name, on: today, by: who,
-        why: (body.why || "").trim() || (body.theme ? `bulk ruling on ${body.theme}` : null),
+        // null when nobody typed one, never a stand-in. This used to write
+        // `bulk ruling on ${theme}`, which the why-coverage meter counted as
+        // a reason - reporting care nobody took, which is the one thing that
+        // meter exists to make visible. The local door was cured of exactly
+        // this (admin.py act_vendor_scope_all) and this one was not, so the
+        // two doors had stopped being interchangeable in the way the comment
+        // above still claimed.
+        why: (body.why || "").trim() || null,
         bulk: names.length > 1 || undefined,
         via: "web",
         saw: { description: body.description, website: body.website,
@@ -78,9 +85,22 @@ export async function onRequestPost({ request, env }) {
     };
   } else {
     if (!body.key) return json({ error: "need a dismissal key" }, 400);
-    entries[String(body.key)] = {
-      on: today, by: who, via: "web",
-      why: (body.why || "").trim() || "dismissed from the web admin",
+    // NESTED {queue: {key: rec}}, matching dismiss() in admin.py. The flat
+    // "queue:key" shape here is legacy: dismissal_records() still reads both,
+    // but every local writer nests now, and two shapes for one file is how the
+    // metric consumers came to read only one of them.
+    if (!body.queue || typeof body.queue !== "string")
+      return json({ error: "need the queue this dismissal belongs to" }, 400);
+    entries[body.queue] = {
+      [String(body.key)]: {
+        on: today, at: new Date().toISOString(), by: who, via: "web",
+        why: (body.why || "").trim() || null,
+        // A ruling is training data, so it carries what the person SAW.
+        // Without this the agree-rate cannot count a "bucket is right" as the
+        // overrule it is - and an overrule is the most informative ruling
+        // there is, because it is the one where the guesser was wrong.
+        saw: body.saw || undefined,
+      },
     };
   }
 
@@ -108,8 +128,21 @@ export async function onRequestPost({ request, env }) {
       return json({ error: "could not read the ruling file" }, 502);
     }
     let added = 0;
-    for (const [k, v] of Object.entries(entries)) {
-      if (!(k in data)) { data[k] = v; added++; }
+    if (kind === "dismiss") {
+      // One level deeper, because a dismissal is keyed {queue: {key: rec}}.
+      // The flat "add if absent" below would have compared the QUEUE NAME and
+      // dropped every dismissal after the first one in that queue, reporting
+      // "already ruled - nothing to do" while writing nothing.
+      for (const [q, recs] of Object.entries(entries)) {
+        if (!data[q] || typeof data[q] !== "object" || Array.isArray(data[q])) data[q] = {};
+        for (const [k, v] of Object.entries(recs)) {
+          if (!(k in data[q])) { data[q][k] = v; added++; }
+        }
+      }
+    } else {
+      for (const [k, v] of Object.entries(entries)) {
+        if (!(k in data)) { data[k] = v; added++; }
+      }
     }
     if (!added) return json({ ok: true, message: "already ruled - nothing to do" });
 

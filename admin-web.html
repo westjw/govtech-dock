@@ -308,7 +308,15 @@ function drawBucket(v){
     };
     const keep=el("button","act","Bucket is right");
     keep.onclick=async()=>{
-      const r=await rule({kind:"dismiss",key:`miscategorized:${c.id}`,why:why.value});
+      /* queue and key separately: the endpoint writes {queue:{key:rec}} now,
+         matching dismiss() in admin.py. The flat "miscategorized:<id>" key
+         this used to send was the legacy shape, and two shapes for one file
+         is how the ruling meters came to read only one of them. */
+      const r=await rule({kind:"dismiss",queue:"miscategorized",key:c.id,
+        why:why.value,
+        saw:{was:`${c.sector} / ${c.category}`,
+             proposed:c.proposed_sector?`${c.proposed_sector} / ${c.proposed_category}`:null,
+             confidence:c.confidence,description:c.description}});
       if(r){RULED.place[c.id]={};n.remove();boot()}
     };
     row.append(move,keep);n.appendChild(row);
