@@ -2236,8 +2236,35 @@ function goPage(n){
    exactly what he is for - and a face makes a dead end read as a state the
    board is in rather than as the board being broken. */
 const GHOST=`<img src="assets/mascot/svg/head-ghosted.svg" alt="" width="88" height="88">`;
-function emptyJobs(quotaOnly,fam,where,setAside){
+function emptyJobs(quotaOnly,fam,where,setAside,q){
   const others=D.postings.filter(p=>!fam||p.family===fam).length;
+  /* NAME THE COMPANY THE SEARCH WAS PROBABLY ABOUT. Typing "Tyler" and
+     getting "nothing matches that" reads as "Tyler is not hiring", when the
+     truth is almost always that we hold Tyler and cannot read their board.
+     The generic line below says that in aggregate; this says it about the
+     company the reader actually typed, which is the only version that lands. */
+  const needle=(q||"").trim().toLowerCase();
+  if(needle.length>=3){
+    const hit=D.organizations.filter(o=>
+      (o.name||"").toLowerCase().includes(needle)
+      ||(o.also_known_as||[]).some(a=>(a||"").toLowerCase().includes(needle)));
+    const quiet=hit.filter(o=>!o.open_roles);
+    if(quiet.length){
+      const o=quiet[0];
+      const why=o.no_board_on_file
+        ? "we could not find a public job board for them"
+        : o.unreadable ? `their board would not read on the last run (${esc(o.unreadable)})`
+        : o.enumerable===false ? "their board is live but its roles cannot be read automatically"
+        : o.scan_lead ? "a sales title appears in the text of their careers page, but no posting loaded for our reader"
+        : "they have nothing open that we can see";
+      return `<div class="empty">${GHOST}We track <strong>${esc(o.name)}</strong> and
+        show no roles for them, because ${why}.<br>
+        <span class="sub"><a href="/?co=${encodeURIComponent(o.id)}">Open their card</a>
+        ${quiet.length>1?` — and ${quiet.length-1} other tracked
+        compan${quiet.length===2?"y":"ies"} matched that word too`:""}.
+        This is a fact about what we can read, not about whether they are hiring.</span></div>`;
+    }
+  }
   /* First, because it is the emptiness most likely to be a lie about the
      market: nothing cleared the floor, but postings that never stated pay are
      sitting right there and one of them may pay double it. */
@@ -2792,7 +2819,7 @@ function drawJobs(){
   }
 
   if(!rows.length){
-    host.insertAdjacentHTML("beforeend",emptyJobs(quotaOnly,f,where,setAside));
+    host.insertAdjacentHTML("beforeend",emptyJobs(quotaOnly,f,where,setAside,g("j-q")));
   }else{
     const from=(PAGE-1)*PAGE_SIZE, page=rows.slice(from,from+PAGE_SIZE);
     /* THE LIST IS THE PRODUCT, so it is a table: five facts per row, in the
@@ -3681,6 +3708,23 @@ function co(id,fromUrl){
       // under three other footnotes.
       return notes.length?`<h3 style="font-size:13px;margin-top:20px">What to know about this list</h3>
         ${notes.map(t=>`<div class="kv" style="max-width:74ch">${t}</div>`).join("")}`:"";
+    })()}
+    ${(()=>{
+      /* WHO ELSE SELLS THIS. A reader on a company card is usually deciding
+         whether a market is worth their time, not just that company - and the
+         board holds the answer already. Marked with who is hiring, because a
+         peer with nothing open is context and a peer with three openings is a
+         next click. Capped at eight: this is a sidebar, not a second board. */
+      const peers=D.organizations.filter(x=>x.id!==o.id&&x.sector===o.sector
+        &&x.category===o.category).sort((a,b)=>(b.open_roles||0)-(a.open_roles||0));
+      if(!peers.length)return "";
+      const shown=peers.slice(0,8);
+      return `<h3 style="font-size:13px;margin-top:20px">Others in
+        ${esc(o.category||o.sector)}</h3>
+        <div class="kv" style="max-width:74ch">${shown.map(x=>
+          `<a href="/?co=${encodeURIComponent(x.id)}">${esc(x.name)}</a>${
+            x.open_roles?` <span class="chip">${x.open_roles}</span>`:""}`).join(" &middot; ")}
+        ${peers.length>8?` &middot; and ${peers.length-8} more`:""}</div>`;
     })()}
     ${mine.length?`<h3 style="font-size:13px;margin-top:20px">Where the roles are</h3>
       <div class="kv" style="max-width:74ch">${whereSummary(mine).map(esc).join(" &middot; ")}</div>`:""}
