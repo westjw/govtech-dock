@@ -921,7 +921,7 @@ let D=null, tab="home", PENDING_URL=null, ROLE=null;
 /* "How listings get here" is in the deck's header for a reason: this board's
    whole claim is that it says where a number came from, and a stranger has
    nowhere to check that unless it is one click from the top of every page. */
-const TABS=[["home","Home"],["jobs","Jobs"],["companies","Companies"],["conferences","Conferences"],["saved","Saved"],
+const TABS=[["home","Home"],["jobs","Jobs"],["companies","Companies"],["map","Map"],["conferences","Conferences"],["saved","Saved"],
   ["intel","Market intel"]];
 /* "How listings get here" is NOT in the nav any more - the owner asked for it
    out, it was the seventh item and the longest label in a row that has to fit
@@ -4712,8 +4712,125 @@ function wireCfRows(){
 }
 
 
+/* ------------------------------------------------------------------- map
+   THE PROJECT CALLS ITSELF A MAP AND HAD NO MAP. This is it: every city with
+   a desk in it, sized by how many roles sit there.
+
+   THERE IS NO STATE OUTLINE UNDER THESE DOTS, on purpose. Borrowing a
+   TopoJSON of the United States would mean shipping a dependency and a
+   hundred kilobytes of coastline to decorate 265 points - and the points do
+   not need it. Plot govtech offices and the country draws itself: the
+   northeast corridor, the Texas triangle, the California coast, the Front
+   Range. What you are looking at is the data, not a picture with data on top,
+   and every dot is a place somebody actually sits.
+
+   Canvas rather than 265 SVG nodes, per the house rule about generative
+   graphics, and redrawn on resize so it is not a fixed-width picture. */
+const MAP_SECTOR_ORDER=["Public Safety","General Gov","Public Works","Transit & Parking",
+  "K-12 Schools","Health & Human Services","Parks & Rec","Utilities & Energy"];
+function mapProject(lat,lon,w,h){
+  /* Albers-ish: a plain lat/lon plot stretches the north badly at US
+     latitudes, and the cheapest honest fix is to scale x by cos(mid-lat). */
+  const LAT0=39.5,LON0=-96,K=Math.cos(LAT0*Math.PI/180);
+  const x0=-125,x1=-66,y0=24,y1=50;
+  const nx=((lon-x0)*K)/((x1-x0)*K), ny=(y1-lat)/(y1-y0);
+  return [nx*w, ny*h];
+}
+function mapData(){
+  const cities=D.cities||{};
+  const rows=new Map();
+  D.postings.forEach(p=>{
+    const o=p.office; if(!o||!o.city||!o.state) return;
+    const key=o.city+"|"+o.state; const c=cities[key]; if(!c) return;
+    let r=rows.get(key);
+    if(!r){r={key,city:o.city,state:o.state,lat:c[0],lon:c[1],n:0,q:0,secs:{}};rows.set(key,r)}
+    r.n++; if(p.quota_carrying)r.q++;
+    r.secs[p.sector]=(r.secs[p.sector]||0)+1;
+  });
+  return [...rows.values()].sort((a,b)=>b.n-a.n);
+}
+function mapDraw(cv,rows,hover){
+  const dpr=window.devicePixelRatio||1, w=cv.clientWidth, h=cv.clientHeight;
+  cv.width=w*dpr; cv.height=h*dpr;
+  const g=cv.getContext("2d"); g.setTransform(dpr,0,0,dpr,0,0); g.clearRect(0,0,w,h);
+  const css=getComputedStyle(document.documentElement);
+  const line=css.getPropertyValue("--line").trim()||"#C9DCE8";
+  const ink=css.getPropertyValue("--ink").trim()||"#1F2536";
+  const badge=css.getPropertyValue("--badge").trim()||css.getPropertyValue("--link").trim()||"#0B57C4";
+  const beak=css.getPropertyValue("--beak").trim()||"#F5A623";
+  const max=rows.length?rows[0].n:1;
+  rows.slice().reverse().forEach(r=>{
+    const [x,y]=mapProject(r.lat,r.lon,w,h);
+    const rad=3+Math.sqrt(r.n/max)*22;
+    g.beginPath(); g.arc(x,y,rad,0,Math.PI*2);
+    g.fillStyle=(r===hover?beak:badge); g.globalAlpha=r===hover?0.95:0.42; g.fill();
+    g.globalAlpha=1; g.lineWidth=1; g.strokeStyle=line; g.stroke();
+  });
+  if(hover){
+    const [x,y]=mapProject(hover.lat,hover.lon,w,h);
+    const label=`${hover.city}, ${hover.state} — ${hover.n} role${hover.n===1?"":"s"}`
+      +(hover.q?`, ${hover.q} quota`:"");
+    g.font="600 13px Archivo,system-ui,sans-serif";
+    const tw=g.measureText(label).width+16;
+    const bx=Math.min(Math.max(x-tw/2,4),w-tw-4), by=y-38<6?y+18:y-38;
+    g.fillStyle=ink; g.globalAlpha=.92; g.fillRect(bx,by,tw,26); g.globalAlpha=1;
+    g.fillStyle=css.getPropertyValue("--bg").trim()||"#E8F1F7";
+    g.fillText(label,bx+8,by+17);
+  }
+}
+function mapHit(rows,mx,my,w,h){
+  let best=null,bd=1e9; const max=rows.length?rows[0].n:1;
+  rows.forEach(r=>{
+    const [x,y]=mapProject(r.lat,r.lon,w,h);
+    const rad=3+Math.sqrt(r.n/max)*22, d=Math.hypot(mx-x,my-y);
+    if(d<=rad+3&&d<bd){bd=d;best=r}
+  });
+  return best;
+}
+function mapView(){
+  const rows=mapData();
+  const placed=rows.reduce((n,r)=>n+r.n,0);
+  const withOffice=D.postings.filter(p=>p.office&&p.office.city).length;
+  const unplaced=withOffice-placed;
+  $("#view").innerHTML=`
+  <div class="phead">
+    <h2 class="ptitle">Where the desks are</h2>
+    <p class="pline"><strong>${rows.length.toLocaleString()}</strong> cities
+      &middot; <strong>${placed.toLocaleString()}</strong> roles placed on the map</p>
+  </div>
+  <div style="border:1px solid var(--line);background:var(--panel);padding:10px">
+    <canvas id="mapcv" style="width:100%;height:min(62vh,560px);display:block;
+      cursor:crosshair"></canvas>
+  </div>
+  <p class="hint" style="max-width:80ch;margin-top:10px">
+    Every city a posting names an office in, sized by how many roles sit there.
+    There is no state outline underneath: these are the offices, and the country
+    draws itself out of them. Click a city to open the board filtered to that
+    state.${unplaced>0?` <strong>${unplaced.toLocaleString()}</strong> role${unplaced===1?"":"s"}
+    names a city we could not place, and ${(D.postings.length-withOffice).toLocaleString()}
+    name no city at all - neither is on this map, and neither is a zero.`:""}
+  </p>`;
+  const cv=$("#mapcv"); let hover=null;
+  const redraw=()=>mapDraw(cv,rows,hover);
+  requestAnimationFrame(redraw);
+  addEventListener("resize",redraw,{passive:true});
+  cv.addEventListener("mousemove",e=>{
+    const b=cv.getBoundingClientRect();
+    const h2=mapHit(rows,e.clientX-b.left,e.clientY-b.top,b.width,b.height);
+    if(h2!==hover){hover=h2;cv.style.cursor=h2?"pointer":"crosshair";redraw()}
+  });
+  cv.addEventListener("mouseleave",()=>{if(hover){hover=null;redraw()}});
+  cv.addEventListener("click",e=>{
+    const b=cv.getBoundingClientRect();
+    const h2=mapHit(rows,e.clientX-b.left,e.clientY-b.top,b.width,b.height);
+    if(!h2)return;
+    tab="jobs";PENDING_URL=new URLSearchParams({tab:"jobs",off:h2.state});
+    render();
+  });
+}
+
 const VIEWS=Object.assign(Object.create(null),
-  {home,jobs,companies,conferences,saved:savedView,intel,how});
+  {home,jobs,companies,conferences,map:mapView,saved:savedView,intel,how});
 /* ?tab= comes off a url a stranger can edit, so an unknown value falls back to
    the board rather than throwing and leaving a blank page behind. */
 function render(){

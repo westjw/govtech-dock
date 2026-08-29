@@ -2722,6 +2722,37 @@ def check_feeds_and_structured_data() -> int:
     return errors
 
 
+def check_map_says_what_it_omits() -> int:
+    """The map plots placed desks and must admit the ones it could not place.
+
+    A city we hold no coordinate for is left out of board.json entirely - "a
+    city at no coordinate is not a city at 0,0" - so the map is always a
+    subset. A map that silently drops what it cannot place is a false "nothing
+    near you", the same failure as a page scan reporting no listings when it
+    could not read.
+
+    Source-level on index.html: the drawing needs a canvas and a browser, but
+    the sentence that keeps it honest is text and can be checked here.
+    """
+    errors = 0
+    src = (ROOT / "index.html").read_text()
+    if "function mapView()" not in src:
+        return fail("the map view is gone - the project calls itself a map")
+    i = src.index("function mapView()")
+    body = src[i:i + 4000]
+    for phrase, why in (
+        ("could not place", "the map must say how many cities it could not place"),
+        ("no city at all", "the map must say how many postings name no city"),
+        ("neither is a zero", "the map must say that an unplaced desk is not an "
+                              "absent one, which is this project's whole rule")):
+        if phrase not in body:
+            errors += fail(f"the map view no longer says {phrase!r}: {why}")
+    if "D.cities" not in src:
+        errors += fail("the map is not reading the geocoded cities the board "
+                       "ships, so it is deriving coordinates from something else")
+    return errors
+
+
 def check_crawl_files() -> int:
     """A single-page app cannot be indexed by luck.
 
@@ -4428,6 +4459,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_map_says_what_it_omits()
     errors += check_prerendered_pages()
     errors += check_feeds_and_structured_data()
     errors += check_share_cards()
