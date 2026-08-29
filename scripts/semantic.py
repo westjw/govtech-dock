@@ -463,7 +463,8 @@ CONCEPTS: list[dict[str, Any]] = [
     {"say": ["courts", "court", "e-filing", "efiling", "electronic filing",
              "docket", "dockets", "jury", "juror", "jurors", "court records",
              "case management", "traffic court"],
-     "go": [["Courts & Justice", "Courts & Case Management"]]},
+     "go": [["Courts & Justice", "Courts & Case Management"],
+            ["Health & Human Services", "Case Management & Social Care"]]},
     {"say": ["prosecutor", "prosecutors", "prosecution",
              "district attorney", "public defender", "defender",
              "evidence sharing", "discovery"],
@@ -477,7 +478,8 @@ CONCEPTS: list[dict[str, Any]] = [
     {"say": ["health and human services", "human services", "hhs",
              "social services", "health", "healthcare", "case worker",
              "caseworker"],
-     "go": [["Health & Human Services", None]]},
+     "go": [["Health & Human Services", None],
+            ["Health & Human Services", "Case Management & Social Care"]]},
     {"say": ["public health", "epidemiology", "immunization",
              "immunizations", "vital records", "disease surveillance",
              "contact tracing", "wic", "environmental health",
@@ -494,6 +496,19 @@ CONCEPTS: list[dict[str, Any]] = [
              "addiction", "crisis", "988", "opioid", "counseling",
              "treatment", "telehealth"],
      "go": [["Health & Human Services", "Behavioral Health"]]},
+    # The words only this category owns. "case management", "hmis",
+    # "homelessness" and "human services" are deliberately NOT here: other
+    # concepts already own them and a phrase in two concepts is ambiguous
+    # rather than helpful. Those four instead gained this category as a
+    # SECOND destination on the entry that already holds them, which is what
+    # the map's multi-destination "go" list is for - a person typing "case
+    # management" may mean a court docket or a caseworker's client, and the
+    # honest answer is to offer both rather than pick one silently.
+    {"say": ["social care", "care coordination", "continuum of care",
+             "client tracking", "closed loop", "closed-loop",
+             "referral network", "intake and referral", "wraparound",
+             "whole person care", "coordinated entry"],
+     "go": [["Health & Human Services", "Case Management & Social Care"]]},
     {"say": ["aging", "seniors", "senior services", "older adults",
              "veterans", "veteran", "meals on wheels", "adult protective",
              "long term care", "elder"],
@@ -523,7 +538,8 @@ CONCEPTS: list[dict[str, Any]] = [
              "housing authority", "homelessness", "homeless",
              "rental assistance", "hmis", "eviction", "tenant", "tenants",
              "landlord", "short term rental", "str"],
-     "go": [["Housing & Community Dev", "Housing & Assistance"]]},
+     "go": [["Housing & Community Dev", "Housing & Assistance"],
+            ["Health & Human Services", "Case Management & Social Care"]]},
     {"say": ["planning", "economic development", "community development",
              "comprehensive plan", "redevelopment", "business attraction",
              "site selection", "downtown"],

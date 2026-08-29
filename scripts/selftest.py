@@ -2295,6 +2295,37 @@ def check_unreachable_names_the_failure() -> int:
     return errors
 
 
+def check_semantic_map() -> int:
+    """semantic.py's own full check, which nothing was running.
+
+    check_search_routes_are_live catches a DEAD route: a phrase pointing at a
+    sector/category the schema no longer holds. semantic.check() catches that
+    and the mirror image, which is the one that shipped: a category the schema
+    DOES hold that no phrase can reach. On 2026-08-29 Health & Human Services
+    / Case Management & Social Care was in that state with eight real
+    companies in it - Unite Us, Findhelp, Bitfocus and five more - unfindable
+    by concept search. `semantic.py --check` had been failing for days and
+    nobody ran it.
+
+    An unreachable category is the search box telling a reader there is no
+    work here, which is the same asymmetric error as a crawler reporting no
+    jobs when it could not read the page. It also verifies that index.html's
+    copy of the map has not drifted, and that no phrase sits in two concepts.
+
+    check() takes quiet=True specifically so this could call it. That
+    argument has existed the whole time.
+    """
+    import semantic
+    n = semantic.check(quiet=True)
+    if n:
+        return fail(f"semantic.py --check reports {n} problem(s). Run "
+                    f"`python3 scripts/semantic.py --check` for the list; a "
+                    f"category no phrase reaches is invisible to search, and "
+                    f"a drifted index.html copy is a search box that "
+                    f"disagrees with itself.")
+    return 0
+
+
 def check_search_routes_are_live() -> int:
     """Every search phrase must land on a sector and category that exist.
 
@@ -3898,6 +3929,7 @@ def main() -> int:
     errors += check_identity_guard()
     errors += check_unreachable_names_the_failure()
     errors += check_search_routes_are_live()
+    errors += check_semantic_map()
     errors += check_calendar_dates_survive_the_round_trip()
     errors += check_acquired_names_still_match_themselves()
     errors += check_websites_queue_names_its_twins()
