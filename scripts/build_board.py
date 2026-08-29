@@ -1283,7 +1283,15 @@ def main() -> int:
     prev_path.write_text(json.dumps(payload, indent=1) + "\n")
     # snapshot only the ids: enough for repost detection, small enough to keep
     (HISTORY / f"{today}.json").write_text(json.dumps(
-        {"date": today, "ids": sorted(p["id"] for p in postings)}, indent=1) + "\n")
+        # `hiring` rides along for build_site's sanity gate. Its leg for "a big
+        # fall in companies with an opening" read companies_hiring out of
+        # meta.json, which nothing has ever written - so the leg was dead code
+        # and the gate had been running on one leg. It lives HERE rather than in
+        # meta.json because the gate must compare against the best of the last
+        # week: a broken run writes a collapsed snapshot too, and comparing
+        # against yesterday alone lets a bad day disarm the gate on the next.
+        {"date": today, "ids": sorted(p["id"] for p in postings),
+         "hiring": sum(1 for o in orgs if o.get("open_roles"))}, indent=1) + "\n")
     print(f"\nwrote data/board.json and data/history/{today}.json")
     return 0
 

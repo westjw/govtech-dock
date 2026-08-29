@@ -2295,6 +2295,76 @@ def check_unreachable_names_the_failure() -> int:
     return errors
 
 
+def check_publish_gate_legs() -> int:
+    """Both legs of the publish gate must be able to fire.
+
+    The companies-with-an-opening leg read `companies_hiring` out of
+    meta.json and NOTHING has ever written that key, so `if was and ...` was
+    permanently false: the gate protecting the public site had been running on
+    one leg. A gate with a dead leg is not a gate, and this is the quiet kind
+    of wrong - it throws nothing and publishes.
+
+    The baseline now comes from the history snapshots, best of the last week,
+    for the same reason previous_snapshot() does: a broken run writes a
+    collapsed snapshot too, and comparing against yesterday alone lets one bad
+    day disarm the gate on the next.
+    """
+    import build_site, json as _json, tempfile, shutil
+    import pathlib as _pl
+    errors = 0
+    real = build_site.ROOT
+    tmp = _pl.Path(tempfile.mkdtemp())
+    (tmp / "data" / "history").mkdir(parents=True)
+    build_site.ROOT = tmp
+    try:
+        for d, h in [("2026-08-22", 300), ("2026-08-23", 305), ("2026-08-24", 302),
+                     ("2026-08-25", 310), ("2026-08-26", 308), ("2026-08-27", 301),
+                     ("2026-08-28", 304)]:
+            (tmp / "data" / "history" / f"{d}.json").write_text(_json.dumps(
+                {"date": d, "ids": [f"p{i}" for i in range(4000)], "hiring": h}))
+        if build_site.previous_hiring() != 310:
+            errors += fail(f"previous_hiring() returned "
+                           f"{build_site.previous_hiring()}, not the week's best "
+                           f"(310) - comparing against yesterday lets a broken "
+                           f"run disarm the gate")
+        board = {"postings": [{"id": f"p{i}"} for i in range(4000)],
+                 "organizations": [{"id": f"o{i}", "open_roles": 1} for i in range(150)]}
+        if not any("companies with an opening" in b
+                   for b in build_site.sanity_check(board)):
+            errors += fail("the publish gate did not object to companies-with-an-"
+                           "opening halving (310 to 150) - that leg is dead again "
+                           "and a broken fetcher will publish")
+        board["organizations"] = [{"id": f"o{i}", "open_roles": 1} for i in range(300)]
+        if any("companies with an opening" in b
+               for b in build_site.sanity_check(board)):
+            errors += fail("the publish gate objected to an ordinary 310 to 300 "
+                           "move - a gate that cries wolf gets forced past")
+        # No baseline is not a failure, and must not be treated as a collapse.
+        for d in ("2026-08-22", "2026-08-23"):
+            (tmp / "data" / "history" / f"{d}.json").write_text(
+                _json.dumps({"date": d, "ids": []}))
+        for f_ in sorted((tmp / "data" / "history").glob("*.json"))[2:]:
+            f_.unlink()
+        if build_site.previous_hiring() is not None:
+            errors += fail("previous_hiring() invented a baseline from snapshots "
+                           "that carry no hiring count")
+        # And the writer, because the reader alone cannot tell you the field
+        # stopped being written: the leg would just go quiet again a week
+        # later, which is exactly how it died the first time. Source-level,
+        # since the write happens at the end of a 20-minute crawl.
+        import inspect
+        import build_board as _bb
+        src = "\n".join(l.split("#")[0] for l in inspect.getsource(_bb).splitlines())
+        if '"hiring": sum(' not in src:
+            errors += fail("build_board no longer records `hiring` in the history "
+                           "snapshot, so the publish gate's second leg loses its "
+                           "baseline and goes inert within a week")
+    finally:
+        build_site.ROOT = real
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
 def check_semantic_map() -> int:
     """semantic.py's own full check, which nothing was running.
 
@@ -3930,6 +4000,7 @@ def main() -> int:
     errors += check_unreachable_names_the_failure()
     errors += check_search_routes_are_live()
     errors += check_semantic_map()
+    errors += check_publish_gate_legs()
     errors += check_calendar_dates_survive_the_round_trip()
     errors += check_acquired_names_still_match_themselves()
     errors += check_websites_queue_names_its_twins()

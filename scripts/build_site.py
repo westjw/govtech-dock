@@ -199,6 +199,33 @@ def previous_snapshot() -> tuple[str, int] | None:
     return best
 
 
+def previous_hiring() -> int | None:
+    """Most companies-with-an-opening in the last week, before today.
+
+    Same best-of-week rule as previous_snapshot() and for the same reason: a
+    broken run's collapsed snapshot lands in history too, so comparing against
+    yesterday alone lets one bad day disarm the gate for the next.
+
+    Returns None while no earlier snapshot carries the field. Snapshots written
+    before 2026-08-29 have no `hiring` key, so this leg stays inert for about a
+    week and then arms itself. That is honest: a gate with no baseline cannot
+    tell a collapse from a first run, and inventing a baseline would be the
+    kind of made-up number this project refuses.
+    """
+    snaps = sorted((ROOT / "data" / "history").glob("*.json"))
+    if len(snaps) < 2:
+        return None
+    best = None
+    for sp in snaps[-8:-1]:
+        try:
+            n = json.loads(sp.read_text()).get("hiring")
+        except (json.JSONDecodeError, OSError):
+            continue
+        if isinstance(n, int) and (best is None or n > best):
+            best = n
+    return best
+
+
 def sanity_check(board: dict) -> list[str]:
     """Reasons this board should not be published. Empty means go."""
     bad = []
@@ -262,13 +289,15 @@ def sanity_check(board: dict) -> list[str]:
                        f"publishing a zero for each of them")
 
     # A big fall in companies-with-openings usually means a fetcher broke
-    # rather than a market that emptied overnight.
-    meta = ROOT / "data" / "meta.json"
-    if meta.exists():
-        m = json.loads(meta.read_text())
-        was = m.get("companies_hiring")
-        if was and hiring < was * (1 - MAX_HIRING_DROP):
-            bad.append(f"companies with an opening fell from {was} to {hiring}")
+    # rather than a market that emptied overnight. It is a separate question
+    # from the posting count above: one large board growing can hold the total
+    # up while a fetcher quietly drops fifty companies to zero.
+    was = previous_hiring()
+    if was and hiring < was * (1 - MAX_HIRING_DROP):
+        bad.append(f"companies with an opening fell from {was} to {hiring}, "
+                   f"past the {MAX_HIRING_DROP:.0%} limit. A fetcher breaking "
+                   f"looks exactly like this; a market emptying overnight does "
+                   f"not")
     return bad
 
 

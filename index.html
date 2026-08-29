@@ -858,6 +858,20 @@ function openAdd(e){
   document.getElementById("add-url").focus();
 }
 async function sendAdd(){
+/* THE FALLBACK LINK HAD NO ELEMENT BEHIND IT. Three places read
+   document.getElementById("addco").href and nothing in this file has ever had
+   id="addco", so the failure path threw TypeError instead of running - and it
+   threw INSIDE the catch, so `go.disabled=false` two lines later never ran
+   and the button sat on "Sending..." forever. A visitor trying to hand us a
+   company got a dead button and no explanation, which is the worst place in
+   the whole site to fail silently.
+   The Worker sends this same url as `fallback` when it can answer at all;
+   this is the copy for when it cannot be reached, and it must not be an
+   element lookup. Kept in step with functions/api/submit.js by hand: it is
+   two constants, and the page has no build step to derive one from the other.
+   NOTE: the repo is private today, so this link only works for the owner
+   until it is flipped public. */
+const ADD_FALLBACK="https://github.com/westjw/govtech-dock/issues/new?template=add-company.yml";
   const url=document.getElementById("add-url"),
         msg=document.getElementById("add-msg"),
         go=document.getElementById("add-go");
@@ -871,7 +885,9 @@ async function sendAdd(){
         context:document.getElementById("add-ctx").value,
         company_fax:document.getElementById("add-fax").value})});
     j=await r.json();
-  }catch(err){ j={fallback:document.getElementById("addco").href}; }
+  }catch(err){ j={error:"That did not reach us, which usually means the "
+    +"connection dropped rather than anything being wrong with what you typed.",
+    fallback:ADD_FALLBACK}; }
   go.disabled=false; go.textContent="Submit";
   if(j && j.ok){
     msg.style.color="var(--accent)";
@@ -881,12 +897,12 @@ async function sendAdd(){
     return;
   }
   // Anything else: say what happened and hand over the route that always works.
-  const link=(j&&j.fallback)||document.getElementById("addco").href;
+  const link=(j&&j.fallback)||ADD_FALLBACK;
   msg.style.color="var(--warn,#c9822b)";
   msg.innerHTML=(j&&j.error&&j.error!=="not_configured"
       ? esc(j.error)+" "
       : "The form is not wired up on this deployment yet. ")
-    +`<a href="${esc(safeUrl(link)||document.getElementById("addco").href)}" target="_blank"
+    +`<a href="${esc(safeUrl(link)||ADD_FALLBACK)}" target="_blank"
         rel="noopener">Submit it on GitHub instead &rarr;</a>`;
 }
 </script>
