@@ -2339,6 +2339,13 @@ function readUrl(){
    been renamed, a state with nothing open today, an age horizon this board's
    history is not deep enough for. So the drop is COLLECTED and printed. */
 let DROPPED_FILTERS=[];
+/* the company whose card is open, or null. Beside ROLE and for the same
+   reason: the address bar is the only place a view can be shared from. */
+let CO=null;
+/* a ?co= that names nobody. Said on the companies tab where the reader
+   actually is - DROPPED_FILTERS renders inside jobs() and would have been
+   pushed into the void from here. */
+let CO_MISSING=null;
 function applyUrl(u){
   // a board rendered from no url is a board with nothing set aside
   PAY_KEEP=false;
@@ -2974,6 +2981,7 @@ function drawChips(){
 
 // ------------------------------------------------------------------- companies
 function companies(){
+  const missed=CO_MISSING; CO_MISSING=null;
   const secs=[...new Set(D.organizations.map(o=>o.sector))].sort();
   const hiring=D.organizations.filter(o=>o.open_roles>0).length;
   const withQuota=D.organizations.filter(o=>o.quota_roles>0).length;
@@ -2985,6 +2993,11 @@ function companies(){
       &middot; <strong>${hiring.toLocaleString()}</strong> with something open right now
       &middot; <strong>${withQuota.toLocaleString()}</strong> hiring sellers
       &middot; <strong>${noBoard.toLocaleString()}</strong> with no public board we could find</p>
+    ${missed?`<div class="note flag">That link asked for a company called
+      &ldquo;${esc(missed)}&rdquo;, which is not on this board. It may have been
+      merged into another record under a different name, or renamed. Searching
+      the old name below usually finds it, because a dropped name is kept as an
+      alias.</div>`:""}
     <div class="search">
       <input type="search" id="c-q"
         placeholder="A company name, or what they sell &mdash; &ldquo;recreation software&rdquo;, &ldquo;911 dispatch&rdquo;"
@@ -3535,9 +3548,28 @@ function brandSection(o){
   </div>`;
 }
 
-function co(id){
+function co(id,fromUrl){
   const o=D.organizations.find(x=>x.id===id);
-  if(!o) return;
+  /* A company id that is not on the board any more - a merged-away record, a
+     link shared before a rename - says so rather than silently showing the
+     board under the same address, which is the same rule the dropped-filter
+     notice follows. */
+  if(!o){
+    if(fromUrl){ CO=null; CO_MISSING=id; }
+    return;
+  }
+  /* THE COMPANY GETS AN ADDRESS. 2,113 company records are the largest body
+     of unique writing this project owns and none of them could be linked,
+     shared, indexed or given a share card, because co() never touched the
+     url. Mirrors openRole exactly: pushState so Back undoes it, and the
+     board's own query string is remembered so Back returns to the search you
+     came from rather than a bare board. */
+  CO=id;
+  if(!fromUrl){
+    LAST_BOARD_QS=CO?LAST_BOARD_QS:location.search;
+    history.pushState({co:id,qs:LAST_BOARD_QS},"",
+      location.pathname+"?co="+encodeURIComponent(id));
+  }
   const mine=D.postings.filter(p=>p.company_id===id);
   const fam=Object.entries(o.families||{}).sort((a,b)=>b[1]-a[1]);
   const tot=fam.reduce((n,[,v])=>n+v,0);
@@ -4817,12 +4849,20 @@ function start(d){
   // so a role that has come off the board used to re-render its own "no longer on
   // the board" message on every click of the Job board tab, for the rest of the
   // session - the only way out was the address bar.
-  [...$("#tabs").children].forEach(b=>b.onclick=()=>{tab=b.dataset.t;ROLE=null;render();});
+  [...$("#tabs").children].forEach(b=>b.onclick=()=>{tab=b.dataset.t;ROLE=null;CO=null;render();});
   wireHeader();
   PENDING_URL=readUrl();
   if(PENDING_URL&&PENDING_URL.get("tab"))tab=PENDING_URL.get("tab");
   if(PENDING_URL&&PENDING_URL.get("role")){ROLE=PENDING_URL.get("role");tab="jobs"}
+  if(PENDING_URL&&PENDING_URL.get("co")){tab="companies"}
   render();
+  if(PENDING_URL&&PENDING_URL.get("co")){
+    co(PENDING_URL.get("co"),true);
+    // co() paints the card itself when it finds one. When it does not it only
+    // records the miss, and render() has already run - so the notice needs a
+    // second pass or it is written after the page it belongs on.
+    if(CO_MISSING)render();
+  }
   // Sync runs after the first paint and never blocks it: the board must work
   // with the network gone, and a saved list is the last thing worth waiting on.
   // Its own try for the same reason: a sync that throws must not replace a
@@ -4835,10 +4875,12 @@ function start(d){
   window.addEventListener("popstate",()=>{
     PENDING_URL=readUrl();
     ROLE=PENDING_URL?PENDING_URL.get("role"):null;
+    CO=PENDING_URL?PENDING_URL.get("co"):null;
     // read the tab off the url every time, or going back from the Saved tab to
     // a board entry leaves tab stuck on "saved"
-    tab=(PENDING_URL&&PENDING_URL.get("tab"))||"home";
+    tab=(PENDING_URL&&PENDING_URL.get("tab"))||(CO?"companies":"home");
     render();
+    if(CO){ co(CO,true); if(CO_MISSING)render(); }
   });
 }
 </script>

@@ -20,12 +20,15 @@ the detail in the private repo where it is useful.
 from __future__ import annotations
 
 import argparse
+import datetime as dt
+import html
 import json
 import os
 import pathlib
 import re
 import shutil
 import sys
+import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -301,6 +304,83 @@ def sanity_check(board: dict) -> list[str]:
     return bad
 
 
+def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
+    """robots.txt, sitemap.xml and a real 404, none of which existed.
+
+    /robots.txt and /sitemap.xml both answered with the app's own HTML and a
+    200, so there were no crawl directives at all and every mistyped or stale
+    path was a soft-404 teaching crawlers the whole domain is duplicate
+    content. A single-page app cannot be indexed by luck.
+
+    The sitemap lists only addresses that RESOLVE TO SOMETHING: the six tabs,
+    every company showing an opening, and every conference. A company with
+    nothing open is deliberately left out - it is a real page, but a sitemap
+    is a claim that a url is worth crawling, and 1,800 near-identical
+    no-openings pages is how a site teaches a crawler to stop believing it.
+    """
+    site = brand["site"].rstrip("/")
+    today = dt.date.today().isoformat()
+    urls = [(f"{site}/", "daily", "1.0")]
+    for tab in ("jobs", "companies", "conferences", "market", "alerts"):
+        urls.append((f"{site}/?tab={tab}", "daily", "0.8"))
+    hiring = [o for o in board.get("organizations", []) if o.get("open_roles")]
+    for o in sorted(hiring, key=lambda x: -(x.get("open_roles") or 0)):
+        urls.append((f"{site}/?co={urllib.parse.quote(o['id'])}", "weekly", "0.6"))
+    for c in board.get("conferences", []) or []:
+        tag = c.get("event_tag") or c.get("conference")
+        if tag:
+            urls.append((f"{site}/?tab=conferences&ev={urllib.parse.quote(tag)}",
+                         "monthly", "0.5"))
+    body = "\n".join(
+        f'  <url><loc>{html.escape(u)}</loc><lastmod>{today}</lastmod>'
+        f'<changefreq>{f}</changefreq><priority>{pr}</priority></url>'
+        for u, f, pr in urls)
+    (out / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + body + "\n</urlset>\n")
+
+    (out / "robots.txt").write_text(
+        "# Every page here is public and meant to be found.\n"
+        "User-agent: *\n"
+        "Allow: /\n"
+        "# data/board.json is 6MB of JSON the pages read at runtime. It is not\n"
+        "# secret - it is simply not a page, and crawling it helps nobody.\n"
+        "Disallow: /data/\n"
+        f"\nSitemap: {site}/sitemap.xml\n")
+
+    # A real 404 body. Cloudflare Pages serves /404.html for an unmatched path,
+    # which turns every soft-404 into an honest one.
+    (out / "404.html").write_text(f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Not found &middot; {html.escape(brand['name'])}</title>
+<link rel="icon" href="/assets/mascot/svg/favicon.svg" type="image/svg+xml">
+<style>
+ body{{margin:0;background:#E8F1F7;color:#1F2536;
+   font:16px/1.6 Archivo,system-ui,sans-serif;display:grid;place-items:center;
+   min-height:100vh;padding:24px}}
+ @media (prefers-color-scheme:dark){{body{{background:#161B29;color:#E8F1F7}}}}
+ .b{{max-width:52ch;text-align:center}}
+ img{{width:96px;height:auto;margin:0 0 18px}}
+ h1{{font-size:26px;font-weight:800;margin:0 0 8px;letter-spacing:-.02em}}
+ p{{margin:0 0 18px;color:#556F82}}
+ @media (prefers-color-scheme:dark){{p{{color:#93A9BA}}}}
+ a{{color:#0B57C4;font-weight:600}}
+ @media (prefers-color-scheme:dark){{a{{color:#478EF5}}}}
+</style></head>
+<body><div class="b">
+<img src="/assets/mascot/svg/head-ghosted.svg" alt="">
+<h1>Nothing at this address</h1>
+<p>The page you asked for is not here. A role that has come off the board, or a
+company record that was merged into another, both end up looking like this.</p>
+<p><a href="/">Go to the board</a></p>
+</div></body></html>
+""")
+    return {"urls": len(urls), "companies": len(hiring)}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="public")
@@ -367,11 +447,16 @@ def main() -> int:
     (out / "data" / "sectors.json").write_text(
         json.dumps([x["name"] for x in schema["sectors"]], separators=(",", ":")))
 
+    brand = json.loads((ROOT / "data" / "brand.json").read_text())
+    crawl = write_crawl_files(out, board, brand)
+
     size = sum(f.stat().st_size for f in out.rglob("*") if f.is_file())
     print(f"wrote {a.out}/: {len(SHIP)} page(s) + data/board.json")
     print(f"  {len(board['postings'])} postings, "
           f"{len(board['organizations'])} organizations")
     print(f"  {stripped} internal error string(s) replaced with the plain fact")
+    print(f"  sitemap.xml: {crawl['urls']} urls ({crawl['companies']} companies "
+          f"with an opening), robots.txt, 404.html")
     print(f"  {size / 1e6:.2f} MB on disk, roughly {size / 1e6 * 0.1:.2f} MB over the wire")
 
     # Say what was deliberately left behind, so the omission is visible rather

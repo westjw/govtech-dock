@@ -2507,6 +2507,59 @@ def check_decision_files_are_journalled() -> int:
     return errors
 
 
+def check_crawl_files() -> int:
+    """A single-page app cannot be indexed by luck.
+
+    /robots.txt and /sitemap.xml both answered with the app's own HTML and a
+    200, so there were no crawl directives at all and every mistyped path was
+    a soft-404 teaching crawlers the domain is duplicate content. 2,113
+    company records are the largest body of unique writing here and none of
+    them had an address until ?co= existed.
+
+    The sitemap must list only addresses that resolve to something, and must
+    NOT list companies with nothing open: a sitemap is a claim that a url is
+    worth crawling, and 1,800 near-identical no-openings pages is how a site
+    teaches a crawler to stop believing it.
+    """
+    import build_site, tempfile, shutil, json as _json
+    import pathlib as _pl
+    errors = 0
+    board = {"postings": [], "conferences": [{"event_tag": "APCO 2026"}],
+             "organizations": [{"id": "hiring-co", "open_roles": 3},
+                               {"id": "quiet-co", "open_roles": 0}]}
+    brand = {"site": "https://example.test", "name": "SLED JOBS"}
+    tmp = _pl.Path(tempfile.mkdtemp())
+    try:
+        build_site.write_crawl_files(tmp, board, brand)
+        for f in ("robots.txt", "sitemap.xml", "404.html"):
+            if not (tmp / f).exists():
+                errors += fail(f"build_site did not write {f}")
+        sm = (tmp / "sitemap.xml").read_text()
+        if "?co=hiring-co" not in sm:
+            errors += fail("a company with an opening is missing from the sitemap")
+        if "quiet-co" in sm:
+            errors += fail("a company with nothing open is in the sitemap - a "
+                           "sitemap full of near-identical empty pages teaches "
+                           "a crawler to stop believing this one")
+        if "APCO 2026" not in sm.replace("%20", " "):
+            errors += fail("conferences are missing from the sitemap")
+        rob = (tmp / "robots.txt").read_text()
+        if "Sitemap: https://example.test/sitemap.xml" not in rob:
+            errors += fail("robots.txt does not name the sitemap")
+        if "Disallow: /data/" not in rob:
+            errors += fail("robots.txt invites crawlers into the 6MB data feed")
+        if "example.test" not in rob or "example.test" not in sm:
+            errors += fail("the crawl files hardcode a domain instead of reading "
+                           "brand.json - a rebrand would leave them pointing at "
+                           "the old one")
+        four = (tmp / "404.html").read_text()
+        if "noindex" not in four:
+            errors += fail("404.html is missing noindex")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
 def check_semantic_map() -> int:
     """semantic.py's own full check, which nothing was running.
 
@@ -4143,6 +4196,7 @@ def main() -> int:
     errors += check_search_routes_are_live()
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
+    errors += check_crawl_files()
     errors += check_semantic_map()
     errors += check_publish_gate_legs()
     errors += check_calendar_dates_survive_the_round_trip()
