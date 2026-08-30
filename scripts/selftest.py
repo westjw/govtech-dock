@@ -2858,6 +2858,43 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_shared_board_links_open_the_board() -> int:
+    """A filter link the site itself produces must reopen on the job board.
+
+    writeUrl omits `tab` on the jobs tab - correctly, "?tab=jobs&fam=gtm" says
+    the same thing twice - but boot resolved a missing tab to `home`. So the
+    exact string the address bar shows while somebody filters the board,
+    `?fam=gtm&st=TX`, reopened on the home tab with the filters applied and
+    invisible. Every shared board link, every reload, every history entry.
+
+    It is a shape check for the same reason check_safe_urls is: there is no JS
+    engine here, and the regression is a second copy of the rule appearing at
+    one of the three sites that resolve a tab. So: one resolver, and nobody
+    reads `tab` off the url except it.
+    """
+    bad = 0
+    src = (ROOT / "index.html").read_text()
+    if "function tabFromUrl(" not in src:
+        return fail("index.html has no tabFromUrl() - a url with filters and "
+                    "no ?tab= will resolve to the home tab and the filters "
+                    "will be invisible")
+    # every read of ?tab= must be inside the resolver
+    body = src.split("function tabFromUrl(", 1)[1]
+    body = body[:body.index("\nlet URL_LOADING")] if "\nlet URL_LOADING" in body else body[:600]
+    outside = [m for m in re.findall(r'[^\n]*\bget\("tab"\)[^\n]*', src)
+               if m.strip() not in body]
+    for line in outside:
+        bad += fail(f"index.html reads ?tab= outside tabFromUrl: {line.strip()!r} "
+                    f"- a second copy of this rule is how it came to be wrong "
+                    f"in one place and right in the others")
+    # and the resolver must actually know about the filter keys, or it is a
+    # rename away from being the old behaviour with a new name
+    if "URLKEYS" not in body:
+        bad += fail("tabFromUrl does not consult URLKEYS, so it cannot tell a "
+                    "filtered board url from a bare one")
+    return bad
+
+
 def check_posts_at_vocabulary() -> int:
     """index.html's copy of the posts_at labels must match posts_at.py.
 
@@ -4603,6 +4640,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_shared_board_links_open_the_board()
     errors += check_posts_at_vocabulary()
     errors += check_coverage_and_removed()
     errors += check_weekly_report_is_honest()

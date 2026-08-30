@@ -559,6 +559,16 @@
     margin-bottom:var(--space-3)}
   .syncbar a{font-weight:600}
 
+  /* Square, like every control here - --radius is 0 and one rounded corner is
+     what breaks the system. Quiet until hovered: it sits on every saved row
+     and a row of loud buttons reads as the point of the page, which it is not. */
+  .applybtn{font-size:12px;font-weight:600;letter-spacing:.02em;
+    padding:2px var(--space-2);margin-left:var(--space-2);
+    border:1px solid var(--line);background:transparent;color:var(--dim);
+    cursor:pointer}
+  .applybtn:hover{border-color:var(--ink);color:var(--ink)}
+  .applybtn[aria-pressed="true"]{color:var(--faint);border-color:transparent}
+
   /* the company's own site sits beside its board: you read the company
      before you read its jobs */
   .cohead{display:flex;gap:var(--space-4);align-items:center;margin:var(--space-2) 0 0}
@@ -1620,7 +1630,7 @@ function backToBoard(){
   PENDING_URL=readUrl();
   // the tab comes back from the url too, so a role opened out of Saved returns
   // to Saved rather than dumping you on the job board
-  tab=(PENDING_URL&&PENDING_URL.get("tab"))||"jobs";
+  tab=tabFromUrl(PENDING_URL,"jobs");
   render();
   window.scrollTo(0,BOARD_SCROLL);
 }
@@ -2073,7 +2083,10 @@ function jobs(){
 
   <div class="fchips" id="j-chips"></div>
   <div class="rhead"><h3 id="j-h">All quota-carrying roles</h3>
-    <div class="n" id="j-n"></div></div>
+    <div class="n" id="j-n"></div>
+    <button class="applybtn" type="button" id="j-savesearch"
+      onclick="saveSearch()">save this search</button></div>
+  <div id="j-savednote"></div>
   <div id="j-list"></div>
   <div id="j-cta"></div>
 
@@ -2307,6 +2320,28 @@ function emptyJobs(quotaOnly,fam,where,setAside,q){
 const URLKEYS={q:"j-q",fam:"j-fam",sec:"j-sec",st:"j-state",off:"j-office",
   reg:"j-region",sen:"j-sen",us:"j-us",mode:"j-mode",src:"j-src",pay:"j-pay",
   since:"j-since",sort:"j-sort"};
+/* WHICH TAB AN ADDRESS MEANS, and it is not always written down.
+
+   writeUrl omits `tab` on the job board, because jobs is the tab a filter
+   belongs to and "?tab=jobs&fam=gtm" says the same thing twice. But `home` is
+   what an address with no tab resolves to, so the board's own shareable link -
+   `?fam=gtm&st=TX`, exactly what the address bar shows while you are filtering
+   - reopened on the HOME tab with the filters set and invisible. Every link
+   this site produced for a filtered board was broken the moment somebody
+   pasted it, reloaded, or came back to it from history.
+
+   So: a url carrying a board filter means the board, whether or not it says
+   so. Written once and read by boot, popstate and backToBoard, because three
+   copies of this rule is how it came to be true in one of them. */
+function tabFromUrl(u,fallback){
+  if(!u)return fallback;
+  if(u.get("tab"))return u.get("tab");
+  if(u.get("role"))return "jobs";
+  if(u.get("co"))return "companies";
+  if(Object.keys(URLKEYS).some(k=>u.has(k))
+     ||["any","where","paynone","p"].some(k=>u.has(k)))return "jobs";
+  return fallback;
+}
 let URL_LOADING=false;
 /* Leading-edge debounce over history. Every filter change used to replaceState,
    which meant the app owned exactly ONE history entry and kept overwriting it:
@@ -2459,6 +2494,111 @@ function toggleSave(p,btn){
   syncSoon();
 }
 
+/* --- saved searches -----------------------------------------------------
+   A search here is already a url - writeUrl() puts every filter in the address
+   bar so a board view can be shared - so a saved search is that string, a name,
+   and the date it was saved. Nothing new to serialize and nothing that can
+   drift out of step with the filters, which is the failure a second
+   representation would eventually have.
+
+   THE COUNT IS OF POSTINGS FIRST SEEN SINCE, not of postings matching. "12 new"
+   next to a search is the only reason to come back to one, and a total would
+   say 12 forever. A search whose matches are all older than the day it was
+   saved shows no number at all rather than a zero - the same rule the home
+   banner follows when a run was quiet.
+
+   Local to the browser, like saved roles were before sync existed. Alerts are
+   the thing that emails you; this is the thing that remembers where you were. */
+const SEARCH_KEY="solesource.searches.v1";
+/* A QUERY STRING, VALIDATED ON THE WAY OUT OF STORAGE, not trusted on the way
+   in. localStorage is not a trusted store - anything running on this origin can
+   write it, and a saved entry travels from a previous version of this file - so
+   an entry whose `qs` is not a bare "?a=b" is dropped rather than rendered.
+   That is what keeps `javascript:` out of a link built from it. */
+function okQs(q){return typeof q==="string"&&/^\?[\w=&%.,+~:\/-]*$/.test(q)}
+function searchesAll(){
+  try{const v=JSON.parse(localStorage.getItem(SEARCH_KEY)||"[]");
+      return Array.isArray(v)?v.filter(x=>x&&okQs(x.qs)):[]}catch{return []}
+}
+function writeSearches(v){
+  try{localStorage.setItem(SEARCH_KEY,JSON.stringify(v.slice(0,40)))}catch{}
+}
+/* What the filters currently say, in words, for the default name. A saved
+   search called "?fam=gtm&st=TX" is a saved search nobody clicks. */
+function searchLabel(){
+  const bits=[];
+  const v=id=>($("#"+id)||{}).value||"";
+  const sel=id=>{const el=$("#"+id);
+    return el&&el.value?(el.options[el.selectedIndex]||{}).text||el.value:""};
+  if(v("j-q"))bits.push(`"${v("j-q")}"`);
+  ["j-fam","j-sen","j-sec","j-state","j-region","j-office","j-mode","j-pay"]
+    .forEach(id=>{const t=sel(id); if(t)bits.push(t)});
+  if($("#j-quota-pill")?.getAttribute("aria-pressed")==="true")
+    bits.unshift("quota-carrying");
+  return bits.length?bits.join(" · "):"Everything on the board";
+}
+function saveSearch(){
+  const qs=location.search||"?tab=jobs";
+  const b=$("#j-savesearch");
+  const say=t=>{if(b){b.textContent=t;
+    setTimeout(()=>{if(b)b.textContent="save this search"},1800)}};
+  const all=searchesAll();
+  if(all.some(x=>x.qs===qs)){say("already saved");return}
+  all.unshift({qs,name:searchLabel(),on:new Date().toISOString().slice(0,10)});
+  writeSearches(all);
+  say("saved");
+  /* The tab badge is deliberately NOT touched. It counts kept ROLES and
+     acctText says so in those words; folding searches into it would make a
+     sentence reading "3 roles kept" when one of the three is a search. The
+     button changing to "saved" is the feedback. */
+}
+/* The one place a stored query string becomes an address, and it goes through
+   safeUrl like every other link on this page rather than getting its own
+   exemption. safeUrl resolves against location.href, so "?fam=gtm&st=TX"
+   comes back as an absolute https url on our own origin and a `javascript:`
+   in the store comes back empty. okQs already dropped that entry; this is the
+   second lock, on the one line that actually builds an address. */
+function safeQs(q){return safeUrl(okQs(q)?q:"?tab=jobs")||"?tab=jobs"}
+function dropSearch(qs){writeSearches(searchesAll().filter(x=>x.qs!==qs));savedView()}
+/* THE COUNT IS COMPUTED WHERE THE RESULTS ARE, and that is a correctness
+   decision rather than a layout one. Saying "12 new" beside a saved search on
+   the Saved tab would need a second copy of the filter predicate that runs
+   without the board's controls on screen - and a second copy of a filter is a
+   copy that drifts, quietly, into a number that describes a slightly different
+   search than the one the link opens. Every duplicated vocabulary in this repo
+   is guarded by selftest for exactly that reason, and this one does not need
+   to exist: drawJobs counts the matched rows first seen since that date using
+   the SAME predicate it just filtered with, and the number appears above the
+   results it describes.
+   Matched by url rather than by a flag set on the click, so it also works for
+   the link pasted into a phone, and survives the reload. */
+function currentSavedSearch(){
+  const here=location.search||"?tab=jobs";
+  return searchesAll().find(x=>x.qs===here)||null;
+}
+
+/* --- did you apply -------------------------------------------------------
+   A SEPARATE KEY, not a field on the saved record, and the reason is the sync
+   endpoint. Sync accepts a fixed list of fields and silently drops the rest,
+   so an `applied_on` written onto the saved object would survive on the laptop
+   that set it, vanish on the first round trip, and come back looking like the
+   application never happened. A job hunter reading "not applied" about a job
+   they applied to on Tuesday is worse than a board with no marker at all.
+
+   So it lives here, local to the browser, and says so on the page. When the
+   sync endpoint learns the field this can move; until then it does not
+   pretend to travel. */
+const APPLIED_KEY="solesource.applied.v1";
+function appliedAll(){
+  try{return JSON.parse(localStorage.getItem(APPLIED_KEY)||"{}")}catch{return {}}
+}
+function appliedOn(id){return appliedAll()[id]||""}
+function markApplied(id,on){
+  const all=appliedAll();
+  if(on)all[id]=new Date().toISOString().slice(0,10); else delete all[id];
+  try{localStorage.setItem(APPLIED_KEY,JSON.stringify(all))}catch{}
+}
+
 /* --- optional sync across devices ---------------------------------------
    Saved roles are LOCAL by default and that stays the default: no account,
    nothing about what you are looking for leaving the machine. Sync only turns
@@ -2540,8 +2680,13 @@ function saveButton(p){
   return b;
 }
 function savedView(){
-  const all=Object.values(savedAll())
-    .sort((a,b)=>(b.saved_on||"").localeCompare(a.saved_on||""));
+  /* Applied last. Not hidden - a sent application is still the thing you want
+     to look up when they call - but the ones still to do belong at the top,
+     because that is the only part of this list that is a worklist. */
+  const ap=appliedAll();
+  const all=Object.values(savedAll()).sort((a,b)=>
+    (!!ap[a.id]-!!ap[b.id]) || (b.saved_on||"").localeCompare(a.saved_on||""));
+  const nap=all.filter(p=>!ap[p.id]).length;
   /* A Map, not a Set: pay is read off the LIVE posting rather than the saved
      snapshot. The snapshot is a fixed list of fields the sync endpoint
      accepts, and comp is not one of them - a role saved here and opened on
@@ -2556,17 +2701,38 @@ function savedView(){
           ? `<span class="warn">Syncing is not reaching the server right now.
              Everything is still saved on this device.</span>`
           : `<span>Syncing with your alert subscription, so these follow you to
-             your phone.</span>`}
+             your phone. Which ones you have applied to stays on this
+             browser.</span>`}
         <a href="/alerts" style="margin-left:auto">Manage</a></div>`
     : `<div class="syncbar"><span>Kept on this browser only — clearing site data
         loses them.</span>
         <a href="/alerts" style="margin-left:auto">Sync across devices</a></div>`;
-  $("#view").innerHTML=`<div class="sechead"><h3>Saved roles</h3>
-      <div class="n">${all.length} ${linked?"kept with your subscription":"kept on this device"}</div></div>`
+  /* Searches above roles. A saved search is a thing you come BACK to - it is
+     the reason to open this tab on a Tuesday - where a saved role is a thing
+     you already found. */
+  const srch=searchesAll();
+  const searchHTML=!srch.length?"":`
+    <div class="sechead"><h3>Saved searches</h3>
+      <div class="n">${srch.length} on this device</div></div>
+    <div class="list">${srch.map(x=>`
+      <div class="row">
+        <div class="main"><div class="t"><a href="${safeUrl(safeQs(x.qs))}"
+            >${esc(x.name||"a search")}</a></div>
+          <div class="m">saved ${esc(x.on||"")}</div></div>
+        <button class="applybtn" type="button" data-qs="${esc(x.qs)}"
+          title="Forget this search">forget</button>
+      </div>`).join("")}</div>`;
+
+  $("#view").innerHTML=searchHTML+`<div class="sechead"><h3>Saved roles</h3>
+      <div class="n">${all.length} ${linked?"kept with your subscription":"kept on this device"}${
+        all.length&&nap<all.length?` &middot; ${nap} still to apply to`:""}</div></div>`
     + bar
     + (all.length?`<div class="list" id="s-list"></div>`
        :`<div class="empty">Nothing saved yet. Use the bookmark on any role and it
           waits here — on this browser, without an account.</div>`);
+  $("#view").querySelectorAll(".applybtn[data-qs]").forEach(b=>{
+    b.onclick=()=>dropSearch(b.dataset.qs);
+  });
   if(!all.length)return;
   const host=$("#s-list");
   all.forEach(p=>{
@@ -2583,8 +2749,16 @@ function savedView(){
           payHTML(live.get(p.id))}
           ${gone?'<span class="chip warn">no longer on the board — it may have been filled or the board stopped listing it</span>':""}
         </div></div>
-      <div class="when">saved ${esc(p.saved_on||"")}</div>`;
+      <div class="when">${ap[p.id]
+        ? `<span class="chip ok">applied ${esc(ap[p.id])}</span>`
+        : `saved ${esc(p.saved_on||"")}`}
+        <button class="applybtn" type="button"
+          aria-pressed="${ap[p.id]?"true":"false"}"
+          title="${ap[p.id]?"Mark as not applied":"Mark that you applied"}"
+          >${ap[p.id]?"undo":"applied"}</button></div>`;
     row.appendChild(saveButton(p));
+    const ab=row.querySelector(".applybtn");
+    if(ab)ab.onclick=e=>{e.stopPropagation();markApplied(p.id,!appliedOn(p.id));savedView()};
     host.appendChild(row);
   });
 }
@@ -2793,6 +2967,28 @@ function drawJobs(){
       : ` · ${setAside.total.toLocaleString()} set aside: ${paySetAsideText(setAside)}
           · <span class="payall">include them</span>`):"")
     +nearNote(NEAR);
+
+  /* What is new since you saved this search. Counted off `rows`, which is what
+     the predicate above just returned, so it can never describe a different
+     search from the one on screen. Silent when nothing is new - "0 new" is a
+     number that teaches you to stop looking.
+
+     "FIRST READ HERE", not "posted" and not "appeared". first_seen is the day
+     this board first saw the row, and the board's own history starts in
+     August: a role a company has advertised since spring reads as first seen
+     the day we first crawled that board. Saying "appeared" would file our
+     crawl date as a fact about somebody's hiring, which is the same species of
+     claim as reporting a page we could not read as "no jobs here". */
+  const sv=$("#j-savednote");
+  if(sv){
+    const ss=currentSavedSearch();
+    const fresh=ss?rows.filter(p=>(p.first_seen||"")>ss.on).length:0;
+    sv.innerHTML=!ss?""
+      :`<div class="note">${fresh
+        ? `<strong>${fresh.toLocaleString()} of these</strong> were first read here
+           after you saved this search on ${esc(ss.on)}.`
+        : `Saved search &mdash; nothing new since ${esc(ss.on)}.`}</div>`;
+  }
 
   const host=$("#j-list");
   host.textContent="";
@@ -3881,6 +4077,41 @@ function how(){
     <div class="card"><div class="bignum">${n(noBoard)}</div>
       <div class="lbl">no board found</div></div>
   </div>
+
+  ${(()=>{
+    /* THE FIVE-WAY SPLIT, said out loud. "839 of 1,722 monitored" was wrong in
+       both directions for months because it added a careers page nothing can
+       enumerate to a Greenhouse API and called the total coverage, and counted
+       companies with no public board at all as a gap still to close. Five
+       states, each with its own sentence, because the difference between them
+       is the whole point: `blocked` is not `absent`, and `page only` is a
+       worklist rather than a number to add to `structured`. */
+    const c=D.coverage; if(!c)return "";
+    const rows=[
+      ["structured","a real API — titles, locations and links, re-read every run",
+       "This is the number worth moving."],
+      ["page only","a careers page a person can read and a fetcher mostly cannot",
+       "A worklist, not coverage: there is often no board behind these to find."],
+      ["blocked","a bot wall or a transport failure",
+       "We learned nothing about these. Not a zero, and they requeue."],
+      ["absent","checked, and no public board exists",
+       "A finished state. Small vendors hire on LinkedIn or by email."],
+      ["unchecked","never probed, or probed before the current rules existed",""]];
+    const tot=Object.values(c).reduce((a,b)=>a+b,0)||1;
+    return `<div class="sechead"><h3>What we can actually read</h3></div>
+      <div class="wrap"><table><thead><tr><th>state</th><th class="num">companies</th>
+      <th class="num">share</th><th>what it means</th></tr></thead><tbody>
+      ${rows.filter(([k])=>c[k]!=null).map(([k,what,note])=>
+        `<tr><td><strong>${esc(k)}</strong></td>
+         <td class="num">${n(c[k])}</td>
+         <td class="num">${Math.round(100*c[k]/tot)}%</td>
+         <td class="kv">${esc(what)}${note?` <em>${esc(note)}</em>`:""}</td></tr>`).join("")}
+      </tbody></table></div>
+      <p class="hint" style="max-width:80ch">Do not add the first two together.
+      A careers page nothing can enumerate is not the same asset as an API, and
+      calling their sum &ldquo;coverage&rdquo; is how this project told itself
+      it had 839 of 1,722 boards monitored for months.</p>`;
+  })()}
 
   <div class="sechead"><h3>Where a row comes from</h3></div>
   <p class="hint" style="max-width:80ch">Every posting is read from the company&rsquo;s own
@@ -5025,9 +5256,8 @@ function start(d){
   [...$("#tabs").children].forEach(b=>b.onclick=()=>{tab=b.dataset.t;ROLE=null;CO=null;render();});
   wireHeader();
   PENDING_URL=readUrl();
-  if(PENDING_URL&&PENDING_URL.get("tab"))tab=PENDING_URL.get("tab");
-  if(PENDING_URL&&PENDING_URL.get("role")){ROLE=PENDING_URL.get("role");tab="jobs"}
-  if(PENDING_URL&&PENDING_URL.get("co")){tab="companies"}
+  tab=tabFromUrl(PENDING_URL,"home");
+  if(PENDING_URL&&PENDING_URL.get("role")){ROLE=PENDING_URL.get("role")}
   render();
   if(PENDING_URL&&PENDING_URL.get("co")){
     co(PENDING_URL.get("co"),true);
@@ -5051,7 +5281,7 @@ function start(d){
     CO=PENDING_URL?PENDING_URL.get("co"):null;
     // read the tab off the url every time, or going back from the Saved tab to
     // a board entry leaves tab stuck on "saved"
-    tab=(PENDING_URL&&PENDING_URL.get("tab"))||(CO?"companies":"home");
+    tab=tabFromUrl(PENDING_URL,"home");
     render();
     if(CO){ co(CO,true); if(CO_MISSING)render(); }
   });
