@@ -2972,6 +2972,70 @@ def check_busy_port_does_not_traceback() -> int:
     return bad
 
 
+def check_sitemap_offers_the_job_pages() -> int:
+    """The sitemap must list the role pages, and gone roles must say noindex.
+
+    THESE TWO ARE ONE CHANGE AND HAVE TO STAY TOGETHER.
+
+    functions/_middleware.js emits a JobPosting block on every ?role= whose
+    description was actually read - 3,524 of 4,439 today - and Google for Jobs
+    is the one channel that sends high-intent traffic to a board this size. The
+    sitemap listed 468 addresses and NOT ONE job page. The markup was correct,
+    live, and undiscoverable: the only route in was to crawl a company page and
+    follow a link out of a single-page app.
+
+    Adding them creates the second problem immediately. Postings leave this
+    board by the hundred - 141 in one run last week - and a gone role answers
+    200 with the app's generic title, which is a soft 404. Pointing a crawler
+    at 4,439 of those without a noindex would earn the domain a penalty within
+    days of the first crawl.
+
+    So: roles are in the sitemap, AND the middleware marks a role it cannot
+    find as noindex. Removing either one alone is worse than having neither.
+    """
+    bad = 0
+    src = (ROOT / "scripts" / "build_site.py").read_text()
+    body = src[src.index("def write_crawl_files("):]
+    body = body[:body.index("\ndef ")]
+    code = re.sub(r"#.*$", "", body, flags=re.M)
+    if "?role=" not in code:
+        bad += fail("the sitemap no longer lists role pages - the JobPosting "
+                    "markup on 3,524 postings is live and nothing points a "
+                    "crawler at it")
+    sm = ROOT / "public" / "sitemap.xml"
+    if sm.exists():
+        urls = re.findall(r"<loc>(.*?)</loc>", sm.read_text())
+        roles = sum(1 for u in urls if "?role=" in u)
+        if not roles:
+            bad += fail("public/sitemap.xml carries no role urls")
+        if len(urls) > 50000:
+            bad += fail(f"the sitemap has {len(urls):,} urls, over the 50,000 "
+                        f"limit - it must be split into an index")
+
+    mw = (ROOT / "functions" / "_middleware.js").read_text()
+    mwc = re.sub(r"//.*$", "", mw, flags=re.M)
+    mwc = re.sub(r"/\*.*?\*/", "", mwc, flags=re.S)
+    # THE TAG AND THE FLAG THAT GATES IT, not the word. The first version
+    # looked for "noindex" anywhere in the file, and a mutation setting
+    # `noindex: false` left it passing - the word was still there in the very
+    # line that had been disabled. Fourth time today a check has been written
+    # against a string when it needed to be written against a behaviour.
+    flat = re.sub(r"\s+", "", mwc)
+    if 'content="noindex' not in flat:
+        bad += fail("the middleware emits no robots noindex tag. With 4,439 "
+                    "role urls in the sitemap, every posting that comes off "
+                    "the board becomes a soft 404 a crawler was sent to on "
+                    "purpose")
+    if "m.noindex?" not in flat:
+        bad += fail("the noindex tag is no longer gated on m.noindex, so it is "
+                    "either never emitted or emitted on every page - one of "
+                    "which un-indexes the whole board")
+    if "noindex:true" not in flat:
+        bad += fail("no branch sets noindex:true, so an unknown ?role= is "
+                    "served as an ordinary page and indexed as a soft 404")
+    return bad
+
+
 def check_alerts_page_cannot_be_framed() -> int:
     """The one page here with a token and a delete button must refuse framing.
 
@@ -5458,6 +5522,7 @@ def main() -> int:
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
     errors += check_busy_port_does_not_traceback()
+    errors += check_sitemap_offers_the_job_pages()
     errors += check_alerts_page_cannot_be_framed()
     errors += check_watchdog_is_independent()
     errors += check_queue_history_is_append_only()

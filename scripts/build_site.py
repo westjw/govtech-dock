@@ -836,6 +836,41 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
         tag = c.get("tag") or c.get("event_tag") or c.get("conference")
         if tag:
             urls.append((f"{site}/e/{_slugify(tag)}.html", "monthly", "0.5"))
+
+    # THE ROLE PAGES, WHICH WERE NOT IN HERE AT ALL.
+    #
+    # The sitemap listed 468 addresses - companies, states, conferences, tabs -
+    # and zero job pages. Meanwhile functions/_middleware.js emits a JobPosting
+    # block on every ?role= whose description we actually read, 3,524 of them
+    # today, and Google for Jobs is the one channel that sends high-intent
+    # traffic to a board this size.
+    #
+    # So the structured data was correct, live, and undiscoverable. The only
+    # route to a job page was to crawl a company page and follow a link out of
+    # a single-page app. The markup was doing its job and nothing pointed at
+    # it.
+    #
+    # DAILY, and priced just under the home page, because a job posting is the
+    # most perishable thing here and the most valuable while fresh. The sitemap
+    # is rebuilt from the live board every run, so a role that came off the
+    # board leaves the sitemap without anything having to remember to remove
+    # it.
+    #
+    # THE ONES WE READ COME FIRST. A posting with no description still gets a
+    # page and still belongs here, since somebody may search its exact title,
+    # but the ones carrying a JobPosting block are the ones an aggregator can
+    # act on, so they lead and are priced higher.
+    read, unread = [], []
+    for p_ in board.get("postings", []):
+        pid = p_.get("id")
+        if not pid:
+            continue
+        u = f"{site}/?role={urllib.parse.quote(pid, safe='')}"
+        (read if p_.get("jd_seen") else unread).append(u)
+    for u in read:
+        urls.append((u, "daily", "0.9"))
+    for u in unread:
+        urls.append((u, "daily", "0.7"))
     body = "\n".join(
         f'  <url><loc>{html.escape(u)}</loc><lastmod>{today}</lastmod>'
         f'<changefreq>{f}</changefreq><priority>{pr}</priority></url>'

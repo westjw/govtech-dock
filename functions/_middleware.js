@@ -52,7 +52,31 @@ async function describe(request, env) {
   if (role) {
     const idx = await index(env, request, "roles");
     const r = idx && idx.roles && idx.roles[role];
-    if (!r) return null;
+    // A ROLE THAT IS GONE MUST NOT BE INDEXED, and this only started mattering
+    // when the sitemap grew role pages.
+    //
+    // Until 2026-08-30 the sitemap listed 468 addresses and not one job page,
+    // so nothing sent a crawler at ?role= and a stale id was a page almost
+    // nobody reached. It now lists 4,439 of them, which is the point - the
+    // JobPosting markup was live and undiscoverable - but it also means Google
+    // will fetch every one, and postings come off this board by the hundred:
+    // 141 in a single run last week.
+    //
+    // A gone role answers 200 with the app's generic title. That is a SOFT
+    // 404, the shape search engines penalise a domain for, and it would arrive
+    // at scale within days of the first crawl. `noindex` is the honest answer:
+    // the page still renders and still says the role is no longer listed, it
+    // simply stops claiming to be an indexable job posting.
+    if (!r) {
+      return {
+        noindex: true,
+        title: `That role is no longer listed \u00b7 ${NAME}`,
+        desc: `This posting has come off ${NAME}. It may have been filled, or `
+            + `the company's job board stopped listing it.`,
+        canonical: `${SITE}/`,
+        image: `${SITE}/assets/og/jobs.png`,
+      };
+    }
     const where = r.w ? ` in ${r.w}` : "";
     return {
       ld: r.ld ? jobLd(role, r, SITE) : null,
@@ -158,6 +182,7 @@ class Head {
     this.done = true;
     const m = this.m;
     el.append(
+      (m.noindex ? `<meta name="robots" content="noindex,follow">\n` : "") +
       `<link rel="canonical" href="${esc(m.canonical)}">\n` +
       `<meta name="description" content="${esc(m.desc)}">\n` +
       `<meta property="og:type" content="website">\n` +
