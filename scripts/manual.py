@@ -79,14 +79,37 @@ def days_since(iso: str | None) -> int | None:
 
 def needs_check(org: dict, checks: dict) -> tuple[bool, str]:
     """Only companies the fetchers genuinely cannot read. Everything else is
-    already covered weekly and should not waste a manual slot."""
+    already covered weekly and should not waste a manual slot.
+
+    A PAGE SCAN THAT SAW A SALES TITLE IS THE STRONGEST REASON TO CHECK, and
+    this used to be the one case it excluded.
+
+    116 companies have a careers page that a scan read a quota-carrying title
+    off and could not enumerate. Their status is "Yes" - so `unreadable` was
+    false, `no_board` was false, and every one of them was filtered out as
+    "already covered weekly". They are not covered: what is on the public card
+    is a SYNTHETIC row titled "AE-type role (page scan)" with no location, no
+    link and no company behind it. It is a marker meaning "somebody should
+    look", and nobody was ever sent.
+
+    So the worklist was 966 companies about which we have no evidence at all,
+    with the 116 we have the best evidence about excluded by construction -
+    the manual-checking equivalent of reading everything except the pages that
+    said something.
+
+    A company whose every role is synthetic is unread, whatever its status
+    says.
+    """
     unreadable = bool(org.get("unreadable"))
     no_board = org.get("ats") in (None, "unknown")
-    if not (unreadable or no_board):
+    roles = (org.get("hiring") or {}).get("roles") or []
+    scan_only = bool(roles) and all(r.get("synthetic") for r in roles)
+    if not (unreadable or no_board or scan_only):
         return False, ""
     age = days_since((checks.get(org["id"]) or {}).get("checked_on"))
     if age is None:
-        return True, "never checked"
+        return True, ("a scan saw a role here, nobody has read it"
+                      if scan_only else "never checked")
     if age >= STALE_DAYS:
         return True, f"last checked {age} days ago"
     return False, f"checked {age} days ago"
@@ -98,13 +121,36 @@ def cmd_worklist(a) -> int:
     rows = []
     for c in companies():
         o = orgs.get(c["id"], {})
+        # THE BOARD ORG'S `ats` IS A STRING AND THE COMPANY'S IS A DICT, and
+        # this merge puts the org's on top - so o["ats"] is "html", not
+        # {"type": "html", "ref": ...}. Reading `.get("ref")` off it raises.
+        # The careers URL therefore comes from the company record by name.
         o = {**c, **o}
+        careers = (c.get("ats") or {}).get("ref")
         due, why = needs_check(o, d["checks"])
         if not due:
             continue
-        # Tier 1 municipal SaaS first, then never-checked before stale.
+        # EVIDENCE FIRST, THEN TIER, AND NAME LAST OF ALL.
+        #
+        # This used to sort on (tier, never-checked, NAME), which inside tier 1
+        # is the alphabet wearing a ranking's clothes. The first three it
+        # offered were "'with' Community Calendar", ACI Worldwide and ADP -
+        # a payroll giant whose board is enormous and mostly not govtech
+        # sales - while the companies where a page scan ALREADY SAW a
+        # quota-carrying title sat unreached further down.
+        #
+        # That distinction is the whole difference between a worklist and a
+        # list. 116 of the page-only companies have a scan that read an AE-type
+        # title off the careers page and could not enumerate the board: we know
+        # there is something there and only a person can get it. Those are
+        # worth an evening. A company nobody has any evidence about is worth
+        # one when the evidenced ones run out.
+        h = o.get("hiring") or {}
+        _r = h.get("roles") or []
+        seen = 1 if _r and all(x.get("synthetic") for x in _r) else 2
         tier = o.get("tier") or 3
-        rows.append((tier, 0 if why == "never checked" else 1, o["name"], o, why))
+        rows.append((seen, tier, 0 if why == "never checked" else 1,
+                     o["name"], o, why, careers))
     rows.sort()
     total = len(rows)
     rows = rows[:a.limit]
@@ -114,8 +160,19 @@ def cmd_worklist(a) -> int:
         return 0
     print(f"{total} companies cannot be read automatically; here are {len(rows)} "
           f"worth {len(rows) * 2} minutes:\n")
-    for tier, _, name, o, why in rows:
-        print(f"  {name}  (tier {tier}, {o.get('sector','?')}, {why})")
+    for seen, tier, _, name, o, why, careers in rows:
+        h = o.get("hiring") or {}
+        mark = ("  <- a page scan already read a sales title here"
+                if seen == 1 else "")
+        print(f"  {name}  (tier {tier}, {o.get('sector','?')}, {why}){mark}")
+        if seen == 1 and h.get("note"):
+            print(f"    Scan saw:  {h['note']}")
+        # THE CAREERS PAGE, which is the thing you actually open. It lives in
+        # ats.ref for every one of these - `html` means "a page, not an API" -
+        # and printing only the marketing site made a person hunt for the
+        # careers link before they could start.
+        if isinstance(careers, str) and careers.startswith("http"):
+            print(f"    Careers:   {careers}")
         print(f"    LinkedIn:  {linkedin_url(name)}")
         if o.get("website"):
             print(f"    Site:      {o['website']}")

@@ -2880,6 +2880,65 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_worklist_leads_with_evidence() -> int:
+    """The capture worklist must offer the companies we know something about.
+
+    It sorted on (tier, never-checked, NAME), which inside tier 1 is the
+    alphabet wearing a ranking's clothes - the first three it ever offered were
+    "'with' Community Calendar", ACI Worldwide and ADP.
+
+    Worse, needs_check EXCLUDED the best targets. 116 companies have a careers
+    page a scan read a quota-carrying title off and could not enumerate; their
+    status is "Yes", so they failed both the `unreadable` and `no_board` tests
+    and were filtered out as already covered. They are not covered: the public
+    card carries a SYNTHETIC row titled "AE-type role (page scan)" with no
+    location and no link. It is a marker meaning somebody should look, and the
+    worklist was the one thing that would have sent them.
+
+    So: a company whose every role is synthetic is unread whatever its status
+    says, and it sorts ahead of a company we have no evidence about at all.
+    """
+    bad = 0
+    m = _import_manual()
+    checks: dict = {}
+    scan_only = {"id": "x", "ats": {"type": "html", "ref": "https://x/careers"},
+                 "hiring": {"status": "Yes", "roles": [
+                     {"title": "AE-type role (page scan)", "synthetic": True}]}}
+    due, why = m.needs_check(scan_only, checks)
+    if not due:
+        bad += fail("manual.needs_check skips a company whose only role is a "
+                    "synthetic page-scan marker - those are the 116 we have "
+                    "the best evidence about and the worklist would never "
+                    "send anybody to them")
+    elif "scan" not in why:
+        bad += fail(f"needs_check returns {why!r} for a scan-only company - "
+                    f"the reason is what tells a person this one is worth "
+                    f"opening first")
+    # a company with a REAL posting is covered weekly and must stay out
+    real = {"id": "y", "ats": {"type": "greenhouse", "ref": "https://x"},
+            "hiring": {"status": "Yes", "roles": [
+                {"title": "Account Executive", "url": "https://x/1"}]}}
+    if m.needs_check(real, checks)[0]:
+        bad += fail("manual.needs_check now claims a company with a real "
+                    "fetched posting needs a manual check - that spends a "
+                    "person's evening on a board refresh.py already reads")
+    src = (ROOT / "scripts" / "manual.py").read_text()
+    body = src[src.index("def cmd_worklist("):]
+    if "synthetic" not in body:
+        bad += fail("cmd_worklist no longer ranks on the page-scan signal, so "
+                    "it is back to sorting tier-1 companies alphabetically")
+    if "Careers:" not in body:
+        bad += fail("cmd_worklist no longer prints the careers URL - that is "
+                    "the page a person opens, and without it they hunt for the "
+                    "careers link before they can start")
+    return bad
+
+
+def _import_manual():
+    import manual
+    return manual
+
+
 def check_every_title_extractor_strips_buttons() -> int:
     """Both extractors, not one. The CTA rule was added to one and shipped.
 
@@ -5084,6 +5143,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_worklist_leads_with_evidence()
     errors += check_every_title_extractor_strips_buttons()
     errors += check_queue_rows_carry_what_the_page_renders()
     errors += check_queue_strengths_have_a_band()
