@@ -2972,6 +2972,48 @@ def check_busy_port_does_not_traceback() -> int:
     return bad
 
 
+def check_boards_read_agrees_with_coverage() -> int:
+    """The card must not contradict the table three inches below it.
+
+    "boards read this run" printed len(companies) - every company on file,
+    2,113 - directly above the coverage table that says 950 of them are
+    blocked, absent or never probed, in that table's own words: "We learned
+    nothing about these" and "never probed".
+
+    A company whose board we could not open was being counted as a board we
+    read. That is the "839 of 1,722 monitored" overclaim coverage.py exists to
+    kill, reappearing one card above the split that kills it.
+
+    Checked as arithmetic against the shipped board, because the failure is a
+    number that looks reasonable on its own and is only wrong beside another
+    one.
+    """
+    bad = 0
+    board = json.loads((DATA / "board.json").read_text())
+    cov = board.get("coverage") or {}
+    read = board.get("companies_read")
+    if not cov or read is None:
+        return 0                       # pre-dates the split; next build fixes it
+    orgs = len(board.get("organizations") or [])
+    if read == orgs:
+        bad += fail(f"companies_read is {read:,}, which is every organization "
+                    f"on the board. The coverage split says "
+                    f"{cov.get('blocked',0)+cov.get('absent',0)+cov.get('unchecked',0):,} "
+                    f"of them are blocked, absent or never probed - the card "
+                    f"and the table beneath it cannot both be true")
+    want = cov.get("structured", 0) + cov.get("page only", 0)
+    if read != want:
+        bad += fail(f"companies_read is {read:,} but the coverage split's "
+                    f"structured + page only is {want:,}. They are two ways of "
+                    f"stating one fact and they have drifted, which is exactly "
+                    f"what deriving one from the other was meant to prevent")
+    src = (ROOT / "scripts" / "build_board.py").read_text()
+    if 'payload["companies_read"]' not in src:
+        bad += fail("build_board no longer derives companies_read from the "
+                    "coverage split, so the card can drift from the table again")
+    return bad
+
+
 def check_active_badge_measures_them_not_us() -> int:
     """"Active" must be a fact about the employer, not about our crawler.
 
@@ -3011,10 +3053,29 @@ def check_active_badge_measures_them_not_us() -> int:
             board = json.loads((root / "data" / "board.json").read_text())
 
             def mk(co, n, t):
-                return [f"{co}::Role {t}{i}::h{i}" for i in range(n)]
+                # A TITLE THE CLASSIFIER READS AS QUOTA-CARRYING. "Role a1" is
+                # not one, and momentum now asks roles.is_quota_carrying() of
+                # both snapshots - a fixture of unclassifiable titles would
+                # count zero on both sides and pass whatever the code did.
+                return [f"{co}::Account Executive {t}{i}::h{i}" for i in range(n)]
 
+            # EVERY FIXTURE ID HAD A QUOTA-CARRYING TITLE, which is why this
+            # check could not see the bug it was written beside. `was` counted
+            # ALL postings and `now` counted quota-carrying ones; with every
+            # injected title a seller title, both sides landed on the same
+            # basis and the mismatch was invisible. On the real board it made
+            # `added` negative for 125 companies and the function returned
+            # nobody - an empty output that got reported as honest.
+            #
+            # So the fixture now carries NON-seller titles too. If the two
+            # sides are ever counted differently again, `noise` moves one side
+            # and not the other.
             base["ids"] += mk("smallco", 2, "a")
             now["ids"] += mk("smallco", 5, "a")        # real surge
+            base["ids"] += [f"smallco::Staff Software Engineer {i}::n{i}"
+                            for i in range(9)]
+            now["ids"] += [f"smallco::Staff Software Engineer {i}::n{i}"
+                           for i in range(9)]          # unchanged, non-seller
             base["ids"] += mk("bigco", 200, "b")
             now["ids"] += mk("bigco", 203, "b")        # +3 on 200
             now["ids"] += mk("newlyread", 40, "c")     # we started reading them
@@ -3039,7 +3100,16 @@ def check_active_badge_measures_them_not_us() -> int:
                 for k in ("smallco", "bigco", "newlyread", "oneup", "tinyco")]
             (root / "data" / "board.json").write_text(json.dumps(board))
 
-            got = {c["id"] for c in mom.surge().get("companies", [])}
+            res = mom.surge()
+            got = {c["id"] for c in res.get("companies", [])}
+            row = next((c for c in res.get("companies", []) if c["id"] == "smallco"), None)
+            if row and (row["was"] != 2 or row["now"] != 5):
+                bad += fail(f"momentum counted smallco {row['was']} -> "
+                            f"{row['now']}, not 2 -> 5. Nine non-seller titles "
+                            f"were added to BOTH snapshots and changed the "
+                            f"answer, so the two sides are being counted on "
+                            f"different bases - which on the live board made "
+                            f"`added` negative for 125 companies")
             if "smallco" not in got:
                 bad += fail("momentum does not report a real surge (2 sellers "
                             "to 5) - a badge that never fires is the same as "
@@ -5618,6 +5688,7 @@ def main() -> int:
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
     errors += check_busy_port_does_not_traceback()
+    errors += check_boards_read_agrees_with_coverage()
     errors += check_active_badge_measures_them_not_us()
     errors += check_sitemap_offers_the_job_pages()
     errors += check_alerts_page_cannot_be_framed()

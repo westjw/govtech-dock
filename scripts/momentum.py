@@ -54,6 +54,10 @@ import json
 import pathlib
 import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+
+import roles  # noqa: E402
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
@@ -85,11 +89,36 @@ def snapshots() -> list[tuple[str, set]]:
     return out
 
 
-def per_company(ids: set, keep: set | None = None) -> collections.Counter:
-    """Postings per company id, read straight off the snapshot. See rule 2."""
+def _title_of(pid: str) -> str:
+    """The title out of a posting id.
+
+    `company::title::hash`, and the title itself can contain a colon, so it is
+    everything between the first and last separator rather than field [1].
+    """
+    parts = pid.split("::")
+    return "::".join(parts[1:-1]) if len(parts) >= 3 else (
+        parts[1] if len(parts) == 2 else "")
+
+
+def per_company(ids: set, quota_only: bool = False) -> collections.Counter:
+    """Postings per company id, read straight off the snapshot. See rule 2.
+
+    BOTH SIDES MUST BE COUNTED THE SAME WAY, and the first version of this was
+    not. It took `keep=quota`, a set of TODAY's quota-carrying posting ids, and
+    the caller passed it for `now` and omitted it for `was` - so the comparison
+    was quota-roles-today against all-roles-then. 125 companies came out with a
+    negative `added` and the function returned nobody. That empty output was
+    reported as "the honest empty"; it was arithmetic error wearing honesty's
+    clothes, which is worse than a wrong number because it argues for itself.
+
+    A set of today's ids cannot answer "was this a seller req in August" - the
+    posting may be gone. But the id CONTAINS the title, and classify is the
+    same rule the board uses, so the question can be asked of both snapshots
+    identically. That is the only basis on which a difference means anything.
+    """
     c: collections.Counter = collections.Counter()
     for i in ids:
-        if keep is not None and i not in keep:
+        if quota_only and not roles.is_quota_carrying(_title_of(i)):
             continue
         c[i.split("::")[0]] += 1
     return c
@@ -116,11 +145,10 @@ def surge(window_days: int = 7) -> dict:
     base_date, base_ids = base
 
     board = load(DATA / "board.json") or {}
-    quota = {p["id"] for p in board.get("postings", []) if p.get("quota_carrying")}
     names = {o["id"]: o["name"] for o in board.get("organizations", [])}
 
-    was = per_company(base_ids)
-    now = per_company(now_ids, keep=quota)
+    was = per_company(base_ids, quota_only=True)
+    now = per_company(now_ids, quota_only=True)
 
     rows = []
     for cid, n in now.items():

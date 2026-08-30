@@ -1253,7 +1253,33 @@ def main() -> int:
         "logos": logos,
         "cities": cities,
         "conferences": conf_rows,
-        "companies_read": len(companies), "unreadable": unreadable,
+        # BOARDS WE ACTUALLY READ, not companies we hold.
+        #
+        # This was len(companies) - every company on file - and the public
+        # "How listings get here" page printed it under the label "boards read
+        # this run". It said 2,113, directly above a table stating that 950 of
+        # those companies are blocked, absent or never probed, in the table's
+        # own words: "We learned nothing about these" and "never probed".
+        #
+        # A company whose board we could not open was counted as a board we
+        # read. That is the same overclaim coverage.py exists to kill - "839 of
+        # 1,722 monitored" - reappearing one card above the split that kills it.
+        #
+        # DERIVED FROM THE COVERAGE SPLIT, so the card and the table beneath
+        # it cannot disagree. `structured` plus `page only` is exactly what
+        # coverage.py calls "we have some board on file" - the 55% figure - and
+        # it is the honest reading of "a board we could read". The other three
+        # states are the ones the table itself describes as learning nothing:
+        # blocked, absent, never probed.
+        #
+        # Computed here rather than counted independently because two ways of
+        # arriving at the same number is how they drift, and this card drifting
+        # from that table is the whole defect being fixed.
+        # Set below, where the coverage split is computed - `split` does not
+        # exist yet at this point in the function. Placed here so the key's
+        # order in the payload is stable.
+        "companies_read": None,
+        "unreadable": unreadable,
         "rendered": rendered,
         "no_board_on_file": sum(1 for o in orgs if o.get("no_board_on_file")),
         "manual_postings": manual_count,
@@ -1373,6 +1399,14 @@ def main() -> int:
         st = _cov.state(c, _log.get(c["id"]), orgs_by_id.get(c["id"]))
         split[st] = split.get(st, 0) + 1
     payload["coverage"] = split
+    # THE CARD AND THE TABLE, FROM ONE NUMBER. "boards read this run" printed
+    # len(companies) - 2,113, every company on file - directly above the table
+    # that says 950 of them are blocked, absent or never probed. Two ways of
+    # arriving at the same fact is how they drift, so the card is now the
+    # coverage split's own arithmetic: structured plus page only, which is what
+    # coverage.py calls "we have some board on file".
+    payload["companies_read"] = (split.get("structured", 0)
+                                 + split.get("page only", 0))
 
 
     DATA.mkdir(exist_ok=True)
