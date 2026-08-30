@@ -2880,6 +2880,68 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_pay_band_is_not_an_estimate() -> int:
+    """The comparable-pay block must stay a count, never a valuation.
+
+    Three quarters of the postings here state no salary, and the standing
+    temptation is to fill that with a modelled number. CLAUDE.md's first rule
+    forbids it - no estimated salary, ever - because a guessed range published
+    under somebody else's job is a fact about their company nobody there said.
+
+    So this is a SOURCE check on the four properties that keep the block a
+    report rather than a guess, all of which are one careless edit from being
+    lost, and none of which any runtime test would catch on a page nothing here
+    can render:
+
+      - a floor on the sample. Below five, a median is one or two employers'
+        opinions wearing the authority of a statistic.
+      - no `other`. That family is labelled Unclassified; a band built from it
+        compares a job against our own failure to read its title.
+      - annual, single currency. The board stores periods rather than
+        converting them on purpose: 2,080 x an hourly rate invents a full-time
+        year nobody stated.
+      - the disclaimer sentence, in the page, in words a reader sees.
+    """
+    bad = 0
+    src = (ROOT / "index.html").read_text()
+    if "function payBand(" not in src:
+        return 0                       # the block is optional; lying is not
+    body = src[src.index("function payBand("):]
+    body = body[:body.index("\nfunction ")]
+    # A source scan that trips on its own explanatory comments has happened
+    # four times in this file. Strip them once, up front.
+    nocomments = re.sub(r"/\*.*?\*/", "", body, flags=re.S)
+    nocomments = re.sub(r"^\s*//.*$", "", nocomments, flags=re.M)
+    if "peers.length<5" not in body.replace(" ", ""):
+        bad += fail("payBand no longer requires at least five comparable "
+                    "postings - a median of two is an opinion, not a band")
+    # THE GUARD EXPRESSION, not the word. Checking for '"other"' anywhere in
+    # the body passed on the COMMENT explaining the exclusion, so the check
+    # could not fail - caught by mutating the guard and watching nothing
+    # happen, which is the only way this class of check is ever caught.
+    if 'p.family==="other"' not in re.sub(r"\s+", "", nocomments):
+        bad += fail("payBand no longer excludes the 'other' family, which is "
+                    "labelled Unclassified - it would compare a job against "
+                    "the titles we could not read")
+    if 'period==="year"' not in body.replace(" ", "").replace('period=="year"', 'period==="year"'):
+        bad += fail("payBand no longer restricts to annual pay - mixing an "
+                    "hourly rate into a yearly median invents a full-time "
+                    "year nobody stated")
+    if 'currency==="USD"' not in body.replace(" ", ""):
+        bad += fail("payBand no longer pins the currency - two currencies in "
+                    "one median is not a number")
+    if "x.id!==p.id" not in body.replace(" ", ""):
+        bad += fail("payBand no longer excludes the posting itself, so a role "
+                    "helps set the band it is being compared against")
+    # the sentence is wrapped across source lines in a template literal, so
+    # it is matched against the collapsed text a reader would see
+    if "not an estimate of what this job pays" not in re.sub(r"\s+", " ", body):
+        bad += fail("payBand no longer tells the reader it is a count rather "
+                    "than an estimate - that sentence is the whole licence "
+                    "for showing a number next to a job that stated none")
+    return bad
+
+
 def check_shared_board_links_open_the_board() -> int:
     """A filter link the site itself produces must reopen on the job board.
 
@@ -4662,6 +4724,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_pay_band_is_not_an_estimate()
     errors += check_shared_board_links_open_the_board()
     errors += check_posts_at_vocabulary()
     errors += check_coverage_and_removed()

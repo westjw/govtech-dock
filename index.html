@@ -559,6 +559,13 @@
     margin-bottom:var(--space-3)}
   .syncbar a{font-weight:600}
 
+  /* A quiet panel, deliberately not a "salary card". It sits under a figure
+     the employer actually published and must never out-shout it. */
+  .band{margin-top:var(--space-3);max-width:74ch;padding:var(--space-3);
+    background:var(--chip);border-left:3px solid var(--line)}
+  .bandline{font-size:14px}
+  .bandwhy{font-size:12.5px;color:var(--dim);margin-top:var(--space-2)}
+
   /* the locations button reads as a count first and a control second: it is
      in a data column, and a button-looking thing in a data column reads as
      the row's action rather than as the cell's value */
@@ -1487,6 +1494,68 @@ const TILE=[["var(--chip)","var(--dim)"],["var(--chip)","var(--accent)"],["var(-
    tab click. Only the address bar got you out. */
 const BACK_HTML=`<p><button id="r-back" style="background:none;border:0;
   color:var(--dim);cursor:pointer;font:inherit;padding:0">&larr; back to the board</button></p>`;
+/* WHAT COMPARABLE POSTINGS ON THIS BOARD STATE - and every word of that is
+   load-bearing.
+
+   The single most useful thing a job hunter cannot get anywhere else is a
+   number to put a posting next to, and three quarters of the postings here
+   state no figure at all. The temptation is to fill that silence with an
+   estimate. This project's first rule forbids it: never invent a fact to fill
+   a field, no estimated salary, ever. A guessed range published under somebody
+   else's job is a fact about their company that nobody at that company said.
+
+   So this is not an estimate of what THIS job pays. It is a count and a median
+   over other postings on this board that stated a figure, labelled as exactly
+   that, and it appears identically whether or not the posting in front of you
+   states its own pay - because it is a different claim, not a substitute one.
+
+   THE COMPARISON SET, and why each cut is there:
+   - same family and same seniority. A "Senior" gtm role against every gtm role
+     including the SDRs is a comparison that flatters or insults at random.
+   - annual only. The board stores periods rather than converting them, on
+     purpose - multiplying an hourly rate by 2,080 invents a full-time year
+     nobody stated. So hourly postings are left out and said to be left out.
+   - one currency. Two currencies in one median is not a number.
+   - the posting itself is excluded, so it never helps set its own band.
+   - FIVE AT MINIMUM. Below that a median is one or two employers' opinions
+     wearing the authority of a statistic, and the block simply does not
+     appear. Silence beats a number this board cannot stand behind.
+
+   Median rather than mean: one $600k enterprise req should not move the line
+   a reader is trying to stand next to. */
+function median(xs){
+  const v=xs.slice().sort((a,b)=>a-b), n=v.length;
+  return n%2?v[(n-1)/2]:Math.round((v[n/2-1]+v[n/2])/2);
+}
+function payBand(p){
+  /* NOT "other". That family is literally labelled Unclassified - it is where
+     a title goes when roles.py could not read it - so a band built from it
+     compares a job against our own ignorance and prints the result as a
+     market fact. The set held 80 postings and produced $58k-$66k, a suspiciously
+     tight band across a bucket with nothing in common but being unreadable. */
+  if(!p.family||p.family==="other"||!p.seniority)return "";
+  const peers=D.postings.filter(x=>x.id!==p.id
+    &&x.family===p.family&&x.seniority===p.seniority
+    &&x.comp&&x.comp.period==="year"&&x.comp.currency==="USD"
+    &&typeof x.comp.min==="number");
+  if(peers.length<5)return "";
+  const lo=median(peers.map(x=>x.comp.min));
+  const hi=median(peers.filter(x=>typeof x.comp.max==="number").map(x=>x.comp.max));
+  const k=n=>"$"+Math.round(n/1000)+"k";
+  // NOT lowercased: "gtm" and "g&a" are what lowercasing does to GTM and G&A.
+  const fam=FAM[p.family]||p.family;
+  return `<div class="band">
+    <div class="bandline"><strong>${peers.length}</strong> other
+      ${esc(String(p.seniority))} ${esc(String(fam))} posting${
+        peers.length===1?"":"s"} on this board state a salary. The middle one
+      starts at <strong>${k(lo)}</strong>${hi?` and tops out at
+      <strong>${k(hi)}</strong>`:""}.</div>
+    <div class="bandwhy">That is a count of what other employers published, not
+      an estimate of what this job pays. Annual, US dollars, and only postings
+      that stated a figure &mdash; roughly three in four state none, and this
+      board never fills that silence with a guess.</div>
+  </div>`;
+}
 function roleView(id){
   let p=D.postings.find(x=>x.id===id), older=0;
   if(!p){
@@ -1545,6 +1614,7 @@ function roleView(id){
         ? "<strong>No description to read.</strong> This one was found by hand on a board no fetcher can enumerate, so there is a title and no text behind it. It may state pay we have not seen."
         : "<strong>We could not read this posting.</strong> Its description never reached us, so it may state pay we have not seen."}</div>`;
     })()}
+    ${payBand(p)}
     ${purl?`<p class="colinks"><a class="golink" href="${esc(purl)}" target="_blank"
       rel="noopener">Open the posting &rarr;</a>
       <span class="chip">${age.txt==="new today"?"first seen today":"on the board "+esc(age.txt)}</span>
