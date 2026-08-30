@@ -3420,7 +3420,9 @@ function companies(){
     </div>
   </div>
 
-  <div class="sechead"><h3 id="c-h">Hiring now</h3><div class="n" id="c-n"></div></div>
+  <div class="sechead"><h3 id="c-h">Hiring now</h3><div class="n" id="c-n"></div>
+    <button class="applybtn" type="button" id="c-export"
+      onclick="exportCompanies()">export this list</button></div>
   ${/* The search says out loud how it read the query. That sentence IS the
        feature: a bounded concept map is only better than substring matching
        if a person can see which bucket it chose and disagree with it. */""}
@@ -3589,6 +3591,67 @@ function coWhy(q,W,c){
   w.querySelectorAll(".cowide").forEach(el=>el.onclick=()=>coWiden(!!el.dataset.on));
 }
 
+/* The filtered company list, handed to the export button. A second filter
+   pass to rebuild it would be a second copy of drawCos's logic, and the export
+   would eventually describe a different list than the one on screen. */
+let CO_ROWS=[];
+/* A LEADING =, +, - OR @ MAKES A SPREADSHEET TREAT A CELL AS A FORMULA.
+
+   Company names on this board arrive from outside submissions, and this file
+   is handed to a person who opens it in Excel or Sheets. admin.py has carried
+   this same guard since the queues got a CSV; the public export needs it for
+   the same reason and by the same method - a leading apostrophe, which is the
+   one fix that survives a round trip through both. Quoting alone does not.
+
+   Newlines and quotes are handled by the quoting below; this is only about the
+   first character being read as code. */
+function csvCell(v){
+  const s=v==null?"":String(v);
+  return '"'+(/^[=+\-@\t\r]/.test(s)?"'"+s:s).replace(/"/g,'""')+'"';
+}
+/* WHAT GOES IN IT: stored facts, and the columns a person prospecting into
+   state and local government actually needs. Nothing derived, nothing scored,
+   nothing estimated. An unknown founding year is an EMPTY CELL - a blank reads
+   as "we do not know" and a number reads as "we checked", and this file will
+   outlive any caveat printed next to it.
+
+   `open_roles` is the count on the build named in the filename, which is why
+   the date is in the filename rather than only in a column: a spreadsheet
+   emailed on a Thursday should say which Tuesday it describes. */
+const CSV_COLS=[["name","Company"],["sector","Sector"],["category","Category"],
+  ["website","Website"],["open_roles","Open roles"],["quota_roles","Quota roles"],
+  ["location","HQ"],["year_founded","Founded"],["board","Job board"],
+  ["reachable","What we can read"]];
+function exportCompanies(){
+  const rows=CO_ROWS;
+  const btn=$("#c-export");
+  if(!rows.length){
+    if(btn){btn.textContent="nothing to export";
+      setTimeout(()=>{if(btn)btn.textContent="export this list"},1800)}
+    return;
+  }
+  const line=o=>[o.name,o.sector,o.category,o.website||"",
+    o.open_roles||0,o.quota_roles||0,o.location||"",o.year_founded||"",
+    o.board_url||"",
+    /* NOT a status. This column says what reached US, in the same words the
+       cards use, because a spreadsheet cell reading "0" next to a company
+       whose board we could not open is the exact false zero this whole
+       project exists to refuse. */
+    (o.enumerable===false||o.unreadable)?"their board could not be read"
+      :o.no_board_on_file?"no public job board found"
+      :"read this build"];
+  const csv=[CSV_COLS.map(c=>csvCell(c[1])).join(",")]
+    .concat(rows.map(o=>line(o).map(csvCell).join(","))).join("\r\n");
+  // \ufeff so Excel opens it as UTF-8 rather than mangling every accent
+  const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download=`sled-jobs-companies-${(D.generated||"").slice(0,10)}.csv`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  if(btn){btn.textContent=`${rows.length.toLocaleString()} exported`;
+    setTimeout(()=>{if(btn)btn.textContent="export this list"},2200)}
+}
 function drawCos(){
   const g=i=>{const el=$("#"+i);return el?el.value:"";};
   const q=(g("c-q")||"").trim().toLowerCase();
@@ -3725,6 +3788,8 @@ function drawCos(){
   if(mv){mv.textContent=extra?`${extra} on`:"";mv.className="v"+(extra?" on":"");}
   $("#c-h").textContent=hiringOnly?"Hiring now":"Everyone we track";
   $("#c-n").textContent=rows.length.toLocaleString();
+  // the export takes THIS list, so it has to be the list the button can see
+  CO_ROWS=rows;
 
   const clist=$("#c-list");
   clist.textContent="";

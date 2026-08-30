@@ -2880,6 +2880,42 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_public_csv_neutralises_formulas() -> int:
+    """The public export must not hand somebody a spreadsheet that runs code.
+
+    A leading =, +, - or @ makes Excel and Sheets treat a cell as a FORMULA,
+    and the company names in this file arrive from outside submissions. admin.py
+    has carried this guard since its queues got a CSV; the public export needs
+    it for the same reason and it is one careless edit from being lost - a CSV
+    with the apostrophe missing looks completely correct in every other way.
+
+    Also checked: the export writes what REACHED US rather than a status, so a
+    company whose board we could not open never leaves here as a bare 0 in an
+    "open roles" column. That is the asymmetric error rule in a file that
+    outlives every caveat printed beside it.
+    """
+    bad = 0
+    src = (ROOT / "index.html").read_text()
+    if "function csvCell(" not in src:
+        return 0
+    body = src[src.index("function csvCell("):]
+    body = body[:body.index("\n/* WHAT GOES IN IT")]
+    if "[=+" not in body:
+        bad += fail("index.html's csvCell no longer neutralises a leading "
+                    "formula character - a company name from a submission "
+                    "would run as a formula when somebody opens the export")
+    if '"\'"' not in body and "\"'\"" not in body:
+        bad += fail("index.html's csvCell no longer prefixes an apostrophe, "
+                    "which is the only neutralisation that survives a round "
+                    "trip through both Excel and Sheets")
+    exp = src[src.index("function exportCompanies("):]
+    exp = exp[:exp.index("\nfunction ")]
+    if "could not be read" not in re.sub(r"\s+", " ", exp):
+        bad += fail("the company export no longer says which rows we could not "
+                    "read, so a company behind a bot wall leaves here as a 0")
+    return bad
+
+
 def check_pay_band_is_not_an_estimate() -> int:
     """The comparable-pay block must stay a count, never a valuation.
 
@@ -4724,6 +4760,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_public_csv_neutralises_formulas()
     errors += check_pay_band_is_not_an_estimate()
     errors += check_shared_board_links_open_the_board()
     errors += check_posts_at_vocabulary()
