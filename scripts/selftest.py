@@ -4456,11 +4456,28 @@ def check_the_gate_sees_an_unreadable_cliff() -> int:
     import build_site
     errors = 0
 
-    good = {"postings": [{"company_id": "a"} for _ in range(4000)],
-            "organizations": [{"id": "a", "open_roles": 4000}]}
-    if build_site.sanity_check(good):
-        errors += fail("the publish gate objects to a healthy board; a gate "
-                       "that cries wolf gets forced past and stops working")
+    # THE FIXTURE HAS TO BE HEALTHY ON EVERY LEG, not just the one under test.
+    #
+    # This used to be ONE organization with 4,000 postings, and it passed only
+    # because the gate's other leg - companies with an opening - had a low
+    # enough baseline to tolerate it. The nightly run of 2026-08-30 moved that
+    # baseline to 299 and the fixture started failing: 1 against 299 is a 99.7%
+    # fall, so the gate objected, correctly, to a board that was never meant to
+    # look like that.
+    #
+    # A test that breaks when the real data moves is testing the data. The
+    # organization count is derived from the same baseline the gate compares
+    # against, so this stays a test of "a healthy board passes" rather than a
+    # test of what last night happened to produce.
+    n_orgs = max(1, build_site.previous_hiring() or 1)
+    good = {"postings": [{"company_id": f"c{i % n_orgs}"} for i in range(4000)],
+            "organizations": [{"id": f"c{i}", "open_roles": 4000 // n_orgs + 1}
+                              for i in range(n_orgs)]}
+    objection = build_site.sanity_check(good)
+    if objection:
+        errors += fail(f"the publish gate objects to a healthy board; a gate "
+                       f"that cries wolf gets forced past and stops working. "
+                       f"It said: {objection}")
 
     # The synthetic company has to be one HISTORY KNOWS, or the gate has no
     # baseline for it and correctly says nothing. A made-up id proves only that
