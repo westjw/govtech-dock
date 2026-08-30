@@ -1,52 +1,17 @@
 {
-  "date": "2026-08-29",
-  "previous": "2026-08-28",
+  "date": "2026-08-30",
+  "previous": "2026-08-29",
   "changes": [
     {
-      "company": "Conduent",
-      "id": "conduent",
+      "company": "Axon",
+      "id": "axon",
       "from": "None found",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "UKG",
-      "id": "ukg",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "ZeroEyes",
-      "id": "zeroeyes",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "PowerSchool",
-      "id": "powerschool",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Frontline Education",
-      "id": "frontline-education",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://careers.frontlineed"
-    },
-    {
-      "company": "Eproval",
-      "id": "eproval",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "PlotBox",
-      "id": "plotbox",
+      "company": "Aurelian",
+      "id": "aurelian",
       "from": "None found",
       "to": "Unknown",
       "note": "page scan found no listings"
@@ -54,408 +19,51 @@
     {
       "company": "Caselle",
       "id": "caselle",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page too small - likely JS-rendered"
-    },
-    {
-      "company": "Schneider Geospatial",
-      "id": "schneider-geospatial",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Zencity",
-      "id": "zencity",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 202 for https://zencity.io/careers"
-    },
-    {
-      "company": "Common Sense AI",
-      "id": "common-sense-ai",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "PSD Citywide",
-      "id": "psd-citywide",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "three+one",
-      "id": "three-one",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Hart InterCivic",
-      "id": "hart-intercivic",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Powerfleet",
-      "id": "powerfleet",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "NEXGEN Asset Management",
-      "id": "nexgen-asset-management",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "greehill",
-      "id": "greehill",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "MSAB",
-      "id": "msab",
       "from": "Unknown",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Account Manager - Sales [rendered]"
     },
     {
-      "company": "StarChase",
-      "id": "starchase",
+      "company": "Bamboo Health",
+      "id": "bamboo-health",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Municibid",
+      "id": "municibid",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://municibid.com/caree"
+    },
+    {
+      "company": "Adobe",
+      "id": "adobe",
       "from": "Sales (non-AE)",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "VirTra",
-      "id": "virtra",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://www.virtra.com/care"
-    },
-    {
-      "company": "Fotokite",
-      "id": "fotokite",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page too small - likely JS-rendered"
-    },
-    {
-      "company": "T2 Systems",
-      "id": "t2-systems",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Traction Rec",
-      "id": "traction-rec",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Justice Systems by LONG",
-      "id": "justice-systems-by-long",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://longbuildingtechcar"
-    },
-    {
-      "company": "TurnKey Corrections",
-      "id": "turnkey-corrections",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "DigitalOptometrics",
-      "id": "digitaloptometrics",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page too small - likely JS-rendered"
-    },
-    {
-      "company": "Sentrycs",
-      "id": "sentrycs",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Connixt",
-      "id": "connixt",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Luminator Technology Group",
-      "id": "luminator-technology-group",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "UZURV",
-      "id": "uzurv",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Jacobs",
-      "id": "jacobs",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 202 for https://careers.jacobs.com"
-    },
-    {
-      "company": "Blue Voice",
-      "id": "blue-voice",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "First Arriving",
-      "id": "first-arriving",
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
       "from": "Yes",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "Nutanix",
-      "id": "nutanix",
+      "company": "Intelligent Video Solutions",
+      "id": "intelligent-video-solutions",
       "from": "None found",
       "to": "Unknown",
-      "note": "page scan found no listings"
+      "note": "HTTP 500 for https://recruiting.paylocit"
     },
     {
-      "company": "Liberty Defense",
-      "id": "liberty-defense",
+      "company": "Collabrios Health",
+      "id": "collabrios-health",
       "from": "None found",
       "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Miller Mendel",
-      "id": "miller-mendel",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Fortem Technologies",
-      "id": "fortem-technologies",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Public Safety Testing (Ergometrics)",
-      "id": "public-safety-testing",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "SWARCO",
-      "id": "swarco",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Clever",
-      "id": "clever",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Tempest",
-      "id": "tempest",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "PURVIS Systems",
-      "id": "purvis-systems",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Dedrone by Axon",
-      "id": "dedrone-by-axon",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Ovarro",
-      "id": "ovarro",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Embross",
-      "id": "embross",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "AirportLabs",
-      "id": "airportlabs",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Grab (Servy)",
-      "id": "grab",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://www.grab.careers/en"
-    },
-    {
-      "company": "GE Vernova",
-      "id": "ge-vernova",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Heimdall Power",
-      "id": "heimdall-power",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "OpusXenta",
-      "id": "opusxenta",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Symbium",
-      "id": "symbium",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "GL Solutions",
-      "id": "gl-solutions",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Pantonium",
-      "id": "pantonium",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "NAVBLUE",
-      "id": "navblue",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "DEVNET Inc",
-      "id": "devnet-inc",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Halda",
-      "id": "halda",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Schoolyear",
-      "id": "schoolyear",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Chorus Innovations",
-      "id": "chorus-innovations",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "D2L",
-      "id": "d2l",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "HelioCampus",
-      "id": "heliocampus",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Aquanuity, Inc.",
-      "id": "aquanuity-inc",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Infobase",
-      "id": "infobase",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "SpryPoint",
-      "id": "sprypoint",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "FutureFit AI",
-      "id": "futurefit-ai",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Ease Health",
-      "id": "ease-health",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "note": "network error: HTTPSConnectionPool(host="
     }
   ]
 }
