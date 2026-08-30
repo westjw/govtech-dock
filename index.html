@@ -1351,7 +1351,8 @@ const ATSNOTE={hard:"Ranking engine likely. Seed exact keywords once.",
 const POSTS_AT_LABEL={linkedin:"LinkedIn",indeed:"Indeed",glassdoor:"Glassdoor",
   ziprecruiter:"ZipRecruiter",builtin:"Built In",
   govportal:"a government jobs portal",recruiter:"an outside recruiter",
-  email:"by email only",other:"somewhere else"};
+  email:"by email only",parent:"their parent company's board",
+  other:"somewhere else"};
 function postsAtSentence(rec){
   if(!rec)return "";
   if(rec.where==="email")
@@ -1360,6 +1361,15 @@ function postsAtSentence(rec){
   if(rec.where==="recruiter")
     return "They hire through an outside recruiter rather than a public board, "
       +"so their openings are not listed here.";
+  if(rec.where==="parent")
+    /* NOT the same sentence as the others. Pointing somebody at a parent's
+       board is the one case where following the link is likely to waste their
+       time: most of what they find there belongs to the parent, and reporting
+       a parent's requisition as this company's is the false "Yes" this whole
+       project is built to refuse. */
+    return `They post through ${rec.owner?esc(rec.owner)+"'s":"their parent company's"} board `
+      +"rather than one of their own, so their roles are not counted here. Most of "
+      +"what is on that board will not be theirs.";
   const label=rec.label||POSTS_AT_LABEL[rec.where]||"another site";
   return `They advertise their openings on ${label} rather than a job board we can read, `
     +"so the roles are not counted here — the link goes straight to their listings.";

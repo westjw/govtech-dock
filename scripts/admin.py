@@ -2682,11 +2682,88 @@ def q_leads(companies, board) -> list:
     return out
 
 
-QUEUES = {"leads": q_leads, "boardfound": _q_board_proposals, "founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
+def q_proposals(companies, board) -> list:
+    """What the agents proposed, waiting on a person.
+
+    agents.py has written into data/agent_proposals.json since August and
+    admin.py never imported it, so 85 proposals - 24 of them carrying real
+    postings read off pages no fetcher can enumerate - have sat pending with
+    nowhere to be accepted. The brief-out/proposal-in spine was built and its
+    other end was missing.
+
+    Every row shows what the agent SAW, because that is the rule: store the
+    input alongside the answer or the ruling teaches the classifier nothing.
+    A proposal claiming high confidence with no evidence is not shown as a
+    confident one - intake already refuses those, and this queue would be the
+    place they arrived if it ever stopped.
+    """
+    # A DICT keyed "read:<company-id>", not a list. read() enforces the shape
+    # against its default and would hand back an empty list for a dict file,
+    # silently - which is exactly what it did on the first run of this, and is
+    # the shape contract working rather than failing.
+    raw = read("agent_proposals.json", {})
+    rows = list(raw.values()) if isinstance(raw, dict) else raw
+    by_id = {c["id"]: c for c in companies}
+    out = []
+    for r in rows:
+        if not isinstance(r, dict) or r.get("status") != "pending":
+            continue
+        if is_dismissed("proposals", r.get("id", "")):
+            continue
+        c = by_id.get(r.get("id"))
+        posts = r.get("postings") or []
+        # WHOSE PAGE DID IT READ. The top two proposals in this queue are
+        # Aladtec, read off tcpsoftware.com, and Nedap Identification Systems,
+        # read off nedap.com's group careers page - the two traps CLAUDE.md
+        # names by name. Accepting either would file a parent's requisitions
+        # under a subsidiary, which is the false "Yes" this project exists to
+        # refuse. The agent cannot know; the queue can say.
+        warn = None
+        ev, site = r.get("evidence") or "", (c or {}).get("website") or ""
+        if ev and site:
+            def _root(u):
+                h = (urllib.parse.urlparse(u).hostname or "").lower().replace("www.", "")
+                bits = h.split(".")
+                return ".".join(bits[-2:]) if len(bits) >= 2 else h
+            # An ATS host is not another company. greenhouse.io is the filing
+            # cabinet; reading a company's own Greenhouse is exactly right, and
+            # flagging it would bury the real warnings under noise. Dominion on
+            # Paylocity and Fotokite on BambooHR were both flagged before this
+            # and both are fine; Brightly on siemens.com is the one that is not.
+            # edovo.org against edovo.com is one company with two TLDs, not
+            # two companies. Same second-level name means same outfit.
+            _name = lambda u: _root(u).rsplit(".", 1)[0]
+            if (_root(ev) and _root(site) and _root(ev) != _root(site)
+                    and _name(ev) != _name(site)
+                    and _root(ev) not in ATS_HOSTS):
+                warn = (f"read off {_root(ev)}, which is not {r.get('name')}'s own "
+                        f"domain - check whose requisitions these are before "
+                        f"accepting")
+        out.append({
+            "id": r.get("id"), "name": r.get("name") or (c or {}).get("name"),
+            "warn": warn,
+            "kind": r.get("kind"), "by": r.get("by"), "at": r.get("at"),
+            "confidence": r.get("confidence"),
+            "evidence": r.get("evidence"),
+            "none_found": bool(r.get("none_found")),
+            "n": len(posts),
+            "postings": posts[:8],
+            "saw": r.get("saw"),
+            "sector": (c or {}).get("sector"),
+        })
+    # the ones that found something first: a proposal with postings is a
+    # decision worth making today, and "read produced nothing" is a record
+    # rather than a task.
+    out.sort(key=lambda r: (r["none_found"], not r["warn"], -(r["n"] or 0),
+                           r["name"] or ""))
+    return out
+
+
+QUEUES = {"proposals": q_proposals, "leads": q_leads, "boardfound": _q_board_proposals, "founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
           "placement": q_placement, "unclassified": q_unclassified,
           "acquisitions": q_acquisitions, "review": q_review}
 
-LABEL = {"leads": "Warm leads", "boardfound": "Boards we found", "founded": "Founding year", "miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
+LABEL = {"proposals": "Agent proposals", "leads": "Warm leads", "boardfound": "Boards we found", "founded": "Founding year", "miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
          "boards": "No board found", "blocked": "Blocked boards", "placement": "Wrong placement",
          "unclassified": "Unclassified roles", "acquisitions": "Acquisitions",
          "review": "Website review"}

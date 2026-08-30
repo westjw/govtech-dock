@@ -2822,7 +2822,7 @@ def check_coverage_and_removed() -> int:
     src = "\n".join(l.split("#")[0] for l in
                     pathlib.Path(bb.__file__).read_text().splitlines())
     for needle, why in (
-        ('board["coverage"]', "the five-way coverage split is not written to "
+        ('payload["coverage"]', "the five-way coverage split is not written to "
                               "board.json, so the site cannot say what it "
                               "could not read"),
         ('"removed.json"', "removed.json is not written, so a role a reader "
@@ -2855,6 +2855,45 @@ def check_coverage_and_removed() -> int:
         errors += fail(f"the coverage split has no {sorted(missing)} bucket; a "
                        f"missing state is how 'page only' got added to "
                        f"'structured' and called coverage")
+    return errors
+
+
+def check_posts_at_vocabulary() -> int:
+    """index.html's copy of the posts_at labels must match posts_at.py.
+
+    The page's own comment says it: "IS DUPLICATED AND THEREFORE IT WILL ROT -
+    see the report for the selftest case that should guard it." No such case
+    existed. Drift here is silent and total, exactly like the alerts
+    vocabulary it was modelled on: a ruling stores a `where` the page has no
+    label for, and the card falls back to "another site" forever.
+
+    It also checks that build_board carries the field at all. The renderers,
+    the admin action and the vocabulary were all built in August and the value
+    never crossed into board.json, so the whole feature was invisible.
+    """
+    import re
+    import posts_at
+    errors = 0
+    page = (ROOT / "index.html").read_text()
+    m = re.search(r"const POSTS_AT_LABEL\s*=\s*\{(.*?)\}", page, re.S)
+    if not m:
+        return fail("index.html has no POSTS_AT_LABEL map - the card cannot say "
+                    "where a company posts")
+    in_page = set(re.findall(r"(\w+)\s*:", m.group(1)))
+    in_py = set(posts_at.WHERE)
+    for k in sorted(in_py - in_page):
+        errors += fail(f"posts_at.py can store where={k!r} and index.html has no "
+                       f"label for it - the card would say 'another site' for a "
+                       f"ruling somebody actually made")
+    for k in sorted(in_page - in_py):
+        errors += fail(f"index.html carries a posts_at label {k!r} that "
+                       f"posts_at.py cannot store")
+    src = "\n".join(l.split("#")[0] for l in
+                    (ROOT / "scripts" / "build_board.py").read_text().splitlines())
+    if '"posts_at"' not in src:
+        errors += fail("build_board does not carry posts_at onto the org record, "
+                       "so every ruling made in the admin stays invisible on the "
+                       "public card")
     return errors
 
 
@@ -4564,6 +4603,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_posts_at_vocabulary()
     errors += check_coverage_and_removed()
     errors += check_weekly_report_is_honest()
     errors += check_map_says_what_it_omits()

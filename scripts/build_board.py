@@ -966,6 +966,14 @@ def main() -> int:
             # most interesting provenance fact this dataset holds: it is the
             # difference between "some database" and "somebody stood in front
             # of their booth".
+            # WHERE THEY POST WHEN WE CANNOT READ A BOARD. The renderers for
+            # this have been in index.html the whole time and the admin has
+            # written the ruling since August; the field simply never crossed
+            # into board.json, so the feature was three-quarters built and
+            # entirely invisible. "They advertise on LinkedIn" and "we could
+            # not find a board" are opposite facts and were being shown as the
+            # same one.
+            "posts_at": c.get("posts_at") or None,
             "source": c.get("source") or None,
             "researched": bool(c.get("researched")) or None,
         })
@@ -1292,6 +1300,21 @@ def main() -> int:
               "full board on purpose.")
         return 0
 
+    # THE FIVE-WAY SPLIT, on the board rather than only in a script nobody
+    # runs. "839 of 1,722 monitored" was wrong in both directions for months
+    # because it counted a careers page nothing can enumerate the same as a
+    # Greenhouse API, and counted companies with no board at all as a gap.
+    sys.path.insert(0, str(pathlib.Path(__file__).parent))
+    import coverage as _cov
+    _log = _DISCOVERY_LOG if _DISCOVERY_LOG is not None else {}
+    orgs_by_id = {o["id"]: o for o in orgs}
+    split: dict = {}
+    for c in companies:
+        st = _cov.state(c, _log.get(c["id"]), orgs_by_id.get(c["id"]))
+        split[st] = split.get(st, 0) + 1
+    payload["coverage"] = split
+
+
     DATA.mkdir(exist_ok=True)
     HISTORY.mkdir(exist_ok=True)
     prev_path.write_text(json.dumps(payload, indent=1) + "\n")
@@ -1306,33 +1329,20 @@ def main() -> int:
         # against yesterday alone lets a bad day disarm the gate on the next.
         {"date": today, "ids": sorted(p["id"] for p in postings),
          "hiring": sum(1 for o in orgs if o.get("open_roles"))}, indent=1) + "\n")
-    # THE FIVE-WAY SPLIT, on the board rather than only in a script nobody
-    # runs. "839 of 1,722 monitored" was wrong in both directions for months
-    # because it counted a careers page nothing can enumerate the same as a
-    # Greenhouse API, and counted companies with no board at all as a gap.
-    sys.path.insert(0, str(pathlib.Path(__file__).parent))
-    import coverage as _cov
-    _log = _DISCOVERY_LOG if _DISCOVERY_LOG is not None else {}
-    orgs_by_id = {o["id"]: o for o in orgs}
-    split: dict = {}
-    for c in companies:
-        st = _cov.state(c, _log.get(c["id"]), orgs_by_id.get(c["id"]))
-        split[st] = split.get(st, 0) + 1
-    board["coverage"] = split
-
     # WHAT CAME OFF. The board could say what arrived and never what left, so
     # a role a reader saw yesterday simply vanished. A posting leaving is not
     # a role filled - a board that stops answering looks the same from here -
     # so this records the fact and refuses the inference.
     prev_ids: set = set()
-    prev_files = sorted(HISTORY.glob("*.json"))
-    for f in reversed(prev_files):
+    prev_date = None
+    for f in reversed(sorted(HISTORY.glob("*.json"))):
         if f.stem == today:
             continue
         try:
             prev_ids = set(json.loads(f.read_text()).get("ids", []))
         except (OSError, json.JSONDecodeError):
             continue
+        prev_date = f.stem
         break
     now_ids = {p["id"] for p in postings}
     # Only when the two snapshots are comparable. Across the 2026-08-23 id
@@ -1341,10 +1351,13 @@ def main() -> int:
     overlap = (len(prev_ids & now_ids) / min(len(prev_ids), len(now_ids))
                if prev_ids and now_ids else 1.0)
     gone = sorted(prev_ids - now_ids) if overlap >= 0.2 else []
-    dump_json(DATA / "removed.json",
-              {"date": today, "comparable": overlap >= 0.2,
-               "since": prev_files[-2].stem if len(prev_files) > 1 else None,
-               "ids": gone})
+    (DATA / "removed.json").write_text(json.dumps(
+        {"date": today, "comparable": overlap >= 0.2,
+         # the snapshot actually compared against, not the newest file on
+         # disk - which is today's, written moments ago, and would have this
+         # field claiming the board was compared with itself
+         "since": prev_date,
+         "ids": gone}, indent=1) + "\n")
     print(f"  {len(gone)} posting(s) came off the board since the last run"
           + ("" if overlap >= 0.2 else " (not comparable, so none recorded)"))
 
