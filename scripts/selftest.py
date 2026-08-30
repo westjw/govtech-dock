@@ -3015,6 +3015,33 @@ def check_structured_data_claims_no_posting_date() -> int:
     if re.search(r'r\["d"\]\s*=', blk):
         bad += fail("build_site writes a date onto the structured-data record "
                     "again - the only one available is our crawl date")
+
+    # AND EVERY BLOCK MUST BE ABLE TO SAY WHERE THE JOB IS.
+    #
+    # jobLocation is not optional. 2,083 of 3,524 blocks carried neither a city
+    # nor a state, so 59% of this board's structured data was a claim no
+    # aggregator can accept. 533 of those say `remote` on the posting itself
+    # and get jobLocationType TELECOMMUTE; the rest get no block at all. The
+    # raw location string is NOT an acceptable substitute - CITY_CASES exists
+    # because "Montreal, QB" and "Australia - Remote" would be stamped
+    # addressCountry US.
+    if meta.exists():
+        roles = json.loads(meta.read_text())
+        roles = roles.get("roles", roles)
+        blocks = [v for v in roles.values()
+                  if isinstance(v, dict) and v.get("ld")]
+        placeless = [v for v in blocks
+                     if not v.get("ci") and not v.get("st") and not v.get("tc")]
+        if placeless:
+            bad += fail(f"{len(placeless):,} JobPosting blocks state no city, "
+                        f"no state and no TELECOMMUTE. jobLocation is required "
+                        f"and those blocks are invalid - a job claim we cannot "
+                        f"complete is worse than no claim")
+    mwcode = re.sub(r"//.*$", "", mw, flags=re.M)
+    if "TELECOMMUTE" not in mwcode:
+        bad += fail("the middleware no longer emits jobLocationType for a "
+                    "remote posting, so 533 valid blocks lose the only "
+                    "location statement they can make")
     return bad
 
 

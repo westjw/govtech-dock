@@ -196,6 +196,11 @@ function jobLd(id, r, site) {
   // spec; a wrong one is not. `r.d` is no longer written, so this is belt and
   // braces against a future producer putting it back.
   if (loc) o.jobLocation = loc;
+  // A JobPosting needs a place or an explicit statement that there is none.
+  // `tc` is set only where the posting itself says remote - read verbatim, not
+  // inferred - and build_site drops `ld` entirely for a role we cannot put
+  // anywhere, so this block is never emitted without one of the two.
+  else if (r.tc) o.jobLocationType = "TELECOMMUTE";
   return JSON.stringify(o);
 }
 

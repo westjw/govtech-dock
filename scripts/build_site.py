@@ -369,10 +369,41 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
             # does with validThrough and baseSalary for the same reason.
             # datePosted is optional in Google's JobPosting spec; a wrong one
             # is not.
+            #
+            # AND THE SAME RULE FOR LOCATION, which is NOT optional.
+            #
+            # 2,083 of 3,524 blocks carried neither a city nor a state, because
+            # roles.geography() could not put the posting anywhere. A
+            # JobPosting without jobLocation and without jobLocationType is
+            # invalid, so 59% of this board's structured data was being
+            # published as a claim no aggregator can accept.
+            #
+            # 533 of those are work_mode `remote`, read verbatim off the
+            # posting, and the spec has a field for exactly that. The remaining
+            # 1,550 say nothing we can express: not stated, or hybrid with no
+            # parsed office.
+            #
+            # The tempting fix is to feed the raw `location` string in. It
+            # would be wrong for the reason CLAUDE.md's CITY_CASES exists: the
+            # 1,441 blocks that DO carry a location assert
+            # addressCountry: "US" only where a real US state parsed, and
+            # pushing raw text through would stamp US onto "Montreal",
+            # "Newcastle upon Tyne" and "Australia - Remote". Two capitals are
+            # not a US state.
+            #
+            # So: TELECOMMUTE where the posting says remote, and no structured
+            # block at all for the rest. They keep their title, description and
+            # canonical - a page a person can read and a crawler can index -
+            # and simply stop making a job claim we cannot complete.
             if off.get("city"):
                 r["ci"] = off["city"]
             if off.get("state"):
                 r["st"] = off["state"]
+            if not (r.get("ci") or r.get("st")):
+                if p_.get("work_mode") == "remote":
+                    r["tc"] = 1          # jobLocationType: TELECOMMUTE
+                else:
+                    r.pop("ld", None)    # no location we can state: no block
         roles[p_["id"]] = r
     for o in board.get("organizations", []):
         cos[o["id"]] = {"n": o.get("name") or "", "s": o.get("sector") or "",
