@@ -2534,6 +2534,10 @@ RENDER.acquisitions = s => {
      by a hidden number would hide which one you are looking at. */
   const strength = s.strength || 'slug';
   const head = {named: 'Their own board names somebody else',
+                /* The strongest signal here, and it earned its own band: not a
+                   string that looks odd, but TWO records already in this file
+                   pointing at one domain. 22 of the 82. */
+                domain: 'Their board is on another tracked company’s own domain',
                 redirect: 'Their page ends up somewhere else',
                 slug: 'Only the slug looks odd — weakest, most of these are nothing'}[strength];
   const band = el('div', 'kv', head);

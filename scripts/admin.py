@@ -707,8 +707,43 @@ def q_acquisitions(companies, board) -> list:
             "id": c["id"], "ats": c.get("ats"),
             "note": (f"this board is on {host}, which is {owner}'s own domain. "
                      f"Their postings are not necessarily {c['name']}'s"),
+            # The strongest signal in this queue, and it needs its own name:
+            # `slug` means a string looked odd, this means two records already
+            # in this file point at one domain.
+            "strength": "domain",
             "on": dt.date.today().isoformat()})
-    return [i for i in items if not is_dismissed("acquisitions", i.get("id", ""))]
+    items = [i for i in items if not is_dismissed("acquisitions", i.get("id", ""))]
+    return [_acquisition_row(i, companies) for i in items]
+
+
+# THE QUEUE WAS RENDERING BLANK, AND NOBODY COULD SEE THAT IT WAS.
+#
+# admin.html's RENDER.acquisitions reads `name`, `strength`, `says`,
+# `postings_on_that_board`, `titles` and `board_calls_itself` - the shape
+# scripts/acquisitions.py builds. This function returned `id`, `ats`, `note`
+# and `on`. Nothing mapped one to the other, so every one of the 82 rows drew
+# with a SLUG as its heading, the fixed band "Only the slug looks odd -
+# weakest, most of these are nothing", and an EMPTY evidence line - including
+# the 22 rows whose note says outright whose domain the board is on.
+#
+# A queue that shows a slug and no evidence is a queue nobody can rule, and
+# data/acquisition_rulings.json has never been written once. That is the whole
+# explanation. It is not that the question is hard; it is that the page was not
+# asking it.
+#
+# Mapped here rather than in admin.html because the renderer's shape is the
+# intended one and the other producer already emits it - making the server
+# agree is one direction of change, teaching the page a second shape is two.
+def _acquisition_row(item: dict, companies: list) -> dict:
+    c = next((x for x in companies if x.get("id") == item.get("id")), None)
+    note = item.get("note") or ""
+    return {**item,
+            "name": (c or {}).get("name") or item.get("id"),
+            "website": (c or {}).get("website"),
+            # `says` is what the renderer prints as the evidence line. The note
+            # IS the evidence; it simply had no field to arrive in.
+            "says": item.get("says") or note,
+            "strength": item.get("strength") or "slug"}
 
 
 def q_review(companies, board) -> list:

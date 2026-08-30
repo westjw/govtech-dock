@@ -2880,6 +2880,67 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_queue_rows_carry_what_the_page_renders() -> int:
+    """A queue whose rows are missing the fields its renderer reads draws blank.
+
+    This was live and invisible. admin.html's RENDER.acquisitions reads `name`,
+    `strength` and `says`; admin.q_acquisitions returned `id`, `ats`, `note`
+    and `on`. Nothing mapped one to the other, so all 82 rows drew with a SLUG
+    as the heading, the fixed band "Only the slug looks odd - weakest, most of
+    these are nothing", and an EMPTY evidence line - including the 22 rows
+    whose note names the parent's domain outright.
+
+    Nobody could see it was broken, because a blank evidence line looks exactly
+    like a row with weak evidence. data/acquisition_rulings.json has never been
+    written once, and this is the whole explanation: the page was not asking
+    the question. That is the same species of failure as a zero standing in for
+    a board we could not read.
+
+    Checked as a shape, against the live rows, because there is no JS engine
+    here and the failure is a field that simply is not there.
+    """
+    bad = 0
+    page = (ROOT / "admin.html").read_text()
+    if "RENDER.acquisitions" not in page:
+        return 0
+    body = page[page.index("RENDER.acquisitions"):]
+    body = body[:body.index("\nRENDER.")] if "\nRENDER." in body else body[:3000]
+    reads = set(re.findall(r"\bs\.(\w+)", body))
+    # `id` is the fallback the renderer itself uses, and the optional richer
+    # fields are genuinely optional - these are the three that decide whether
+    # the row says anything at all.
+    required = {"name", "strength", "says"} & reads
+    companies = json.loads((ROOT / "data" / "companies.json").read_text())
+    if isinstance(companies, dict):
+        companies = companies.get("companies", [])
+    board = json.loads((ROOT / "data" / "board.json").read_text())
+    admin = _admin()
+    rows = admin.q_acquisitions(companies, board)
+    if not rows:
+        return 0
+    for field in sorted(required):
+        missing = sum(1 for r in rows if not r.get(field))
+        if missing:
+            bad += fail(f"{missing} of {len(rows)} acquisitions rows carry no "
+                        f"{field!r}, and admin.html reads it - those rows draw "
+                        f"with a blank where their evidence should be, which "
+                        f"looks identical to weak evidence")
+    # and every strength the server emits must have a band, or the row draws
+    # with `undefined` where the headline goes
+    bands = set(re.findall(r"^\s*(\w+): '", body, re.M))
+    for st in sorted({r.get("strength") for r in rows if r.get("strength")}):
+        if st not in bands:
+            bad += fail(f"the server emits strength {st!r} and admin.html has "
+                        f"no band for it - the row's headline renders as "
+                        f"undefined")
+    return bad
+
+
+def _admin():
+    import admin
+    return admin
+
+
 def check_structured_matches_the_fetchers() -> int:
     """coverage.py's STRUCTURED is ats.FETCHERS minus `html`. Keep it so.
 
@@ -4904,6 +4965,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_queue_rows_carry_what_the_page_renders()
     errors += check_structured_matches_the_fetchers()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
