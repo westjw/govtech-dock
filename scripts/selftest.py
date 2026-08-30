@@ -2880,6 +2880,57 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_capture_flags_nav_without_dropping_sellers() -> int:
+    """A pasted capture must name page furniture and must never drop a seller.
+
+    Captures used to arrive only from the bookmarklet, whose href regex filters
+    nav chrome before a person sees it. The paste form takes arbitrary JSON by
+    design, so the server is the only filter left - and roles.is_junk, which was
+    supposed to be it, passes Cookie Preferences, CHALLENGES, SOLUTIONS,
+    Privacy Policy and View all jobs. That is the exact list the harvester's
+    first rule was written about.
+
+    BOTH HALVES ARE THE TEST. Flagging is easy; the trap is fixing it with
+    ats._TITLEISH, which is a word allowlist and rejects Head of Sales,
+    Enterprise Sales, Territory Sales, Business Development, VP Marketing and
+    SDR. Those are not edge cases on this board, they are the roles it exists
+    to find, and dropping them to tidy away some nav is the asymmetric error in
+    a clean shirt.
+
+    So: nav is NAMED and everything is KEPT.
+    """
+    bad = 0
+    admin = _admin()
+    if not hasattr(admin, "_reads_like_nav"):
+        return fail("admin has no _reads_like_nav - a pasted capture can put "
+                    "'Cookie Preferences' on the public board as a job")
+    nav = ["Cookie Preferences", "SOLUTIONS", "CHALLENGES", "Privacy Policy",
+           "View all jobs", "Contact Us", "Our Team"]
+    sellers = ["Head of Sales", "Enterprise Sales", "Territory Sales",
+               "Business Development", "VP Marketing", "SDR", "BDR",
+               "Account Executive", "Regional Sales Manager",
+               "Customer Success Manager", "Director of Partnerships",
+               "Chief Revenue Officer", "Solutions Engineer"]
+    for t in nav:
+        if not admin._reads_like_nav(t):
+            bad += fail(f"a captured row titled {t!r} is not flagged as page "
+                        f"furniture - it reaches the public board as a job")
+    for t in sellers:
+        if admin._reads_like_nav(t):
+            bad += fail(f"{t!r} is flagged as page furniture, and it is a real "
+                        f"seller title - the flag must never be used to drop, "
+                        f"and it must not cry wolf on the roles this board is "
+                        f"for")
+    # and the flag must not have become a filter
+    src = inspect.getsource(admin.act_capture)
+    if "continue" in src.split("_reads_like_nav")[1].split("\n")[1:3][0]:
+        bad += fail("act_capture now SKIPS a row that reads like nav. It must "
+                    "flag and keep: ats._TITLEISH rejects Head of Sales and "
+                    "SDR, so a filter here deletes warm doors to tidy away "
+                    "some chrome")
+    return bad
+
+
 def check_worklist_leads_with_evidence() -> int:
     """The capture worklist must offer the companies we know something about.
 
@@ -5143,6 +5194,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_capture_flags_nav_without_dropping_sellers()
     errors += check_worklist_leads_with_evidence()
     errors += check_every_title_extractor_strips_buttons()
     errors += check_queue_rows_carry_what_the_page_renders()

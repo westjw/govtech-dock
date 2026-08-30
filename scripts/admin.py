@@ -3346,6 +3346,36 @@ def act_set_family(body: dict) -> dict:
     return {"ok": True, "message": f"{title} -> {roles.LABEL[fam]}"}
 
 
+# WHAT DOES NOT READ LIKE A JOB, AND WHY IT IS FLAGGED RATHER THAN DROPPED.
+#
+# A capture used to arrive only from the bookmarklet, whose href regex filters
+# nav chrome on the page before a person ever sees it. The paste form takes
+# arbitrary JSON by design - that is its purpose - so the moment anything else
+# produces that JSON, the server is the only filter left. `roles.is_junk`
+# was supposed to be it and catches none of this: Cookie Preferences,
+# CHALLENGES, SOLUTIONS, Privacy Policy and View all jobs all pass it, which
+# is the exact list the harvester's first rule was written about.
+#
+# BUT NOT DROPPED, and this is the whole design decision. ats._TITLEISH is a
+# word allowlist, and measured against real titles it rejects Head of Sales,
+# Enterprise Sales, Territory Sales, Business Development, VP Marketing and
+# SDR - which are not edge cases here, they are the roles this board exists to
+# find. Filtering on it would silently delete the most valuable captures to
+# avoid a bit of nav chrome, which is the asymmetric error wearing a tidy hat.
+#
+# So: a title that neither reads like a job NOR carries any sales vocabulary is
+# reported back with the count, and the person who pasted it decides. Nothing
+# is removed on a guess.
+_SALESY = re.compile(r"\b(sales|account|business development|territory|revenue|"
+                     r"partnerships?|customer success|sdr|bdr|ae|head of|vp|"
+                     r"vice president|chief|director|principal)\b", re.I)
+
+
+def _reads_like_nav(title: str) -> bool:
+    """True when a captured title looks like page furniture rather than a job."""
+    return not (ats._TITLEISH.search(title) or _SALESY.search(title))
+
+
 def act_capture(body: dict) -> dict:
     """Take job titles a person is looking at in their own browser.
 
@@ -3371,10 +3401,13 @@ def act_capture(body: dict) -> dict:
     today = dt.date.today().isoformat()
     existing = {p["id"] for p in man["postings"]}
     added = 0
+    suspect = []
     for j in raw:
         title = (j.get("title") or "").strip()
         if not title or roles.is_junk(title) or roles.is_evergreen(title):
             continue
+        if _reads_like_nav(title):
+            suspect.append(title)
         pid = f"{cid}::{title}"
         if pid in existing:
             continue
@@ -3403,8 +3436,17 @@ def act_capture(body: dict) -> dict:
     man["checks"][cid] = {"checked_on": today, "by": "capture",
                           "source": body.get("page_url")}
     write_atomic("manual.json", man)
+    # Named, not counted. "2 look like page furniture" tells somebody nothing;
+    # seeing "Cookie Preferences" in the message is what makes them go back and
+    # look at what they pasted.
+    flag = ("" if not suspect else
+            f" - but {len(suspect)} do not read like job titles and were kept "
+            f"anyway: {', '.join(repr(t) for t in suspect[:4])}"
+            + (f" and {len(suspect) - 4} more" if len(suspect) > 4 else "")
+            + ". Nothing was dropped; check them on the company card.")
     return {"ok": True, "added": added, "company": c["name"],
-            "message": f"{added} posting(s) captured for {c['name']}"
+            "suspect": suspect,
+            "message": f"{added} posting(s) captured for {c['name']}{flag}"
                        + (f", {len(raw) - added} skipped as duplicate or junk"
                           if len(raw) - added else "")}
 
