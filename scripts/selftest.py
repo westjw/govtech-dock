@@ -2880,6 +2880,50 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_queue_history_is_append_only() -> int:
+    """A queue count nobody wrote down is gone, and history cannot be backfilled.
+
+    CLAUDE.md picked personal bests - the user against their own last 30 days -
+    as one of the three mechanics the admin grows into, and rejected every
+    leaderboard. A personal best needs a history to be personal about, and a
+    count that was true in August and never recorded cannot be recovered in
+    October. That is why this had to start before the ruling did.
+
+    Two properties, both easy to lose to a well-meaning tidy-up:
+
+    A QUEUE THAT RAISES IS RECORDED AS RAISING, never as zero. A zero would
+    read as "somebody cleared it", which is the flattering version of exactly
+    the failure this project refuses - an absence of information published as
+    an absence of work.
+
+    AND PAST LINES ARE NEVER REWRITTEN. Same rule as data/hiring_history: today
+    may be replaced (a later count on the same day is the truer one), yesterday
+    may not.
+    """
+    bad = 0
+    qs = _import_queue_stats()
+    src = inspect.getsource(qs)
+    if "out[key] = None" not in src:
+        bad += fail("queue_stats no longer records a raising queue as None - "
+                    "if it writes 0 instead, a broken queue reads as a cleared "
+                    "one forever after")
+    # the writer must keep every line whose date is not today
+    w = inspect.getsource(qs.record)
+    if 'r.get("on") != today' not in w:
+        bad += fail("queue_stats.record no longer preserves lines from other "
+                    "days - this file is an audit trail and a rewritten past "
+                    "is not one")
+    if "queue_stats.py" not in (ROOT / ".github/workflows/refresh.yml").read_text():
+        bad += fail("the nightly workflow does not run queue_stats.py, so the "
+                    "history it exists to keep will have holes in it")
+    return bad
+
+
+def _import_queue_stats():
+    import queue_stats
+    return queue_stats
+
+
 def check_capture_flags_nav_without_dropping_sellers() -> int:
     """A pasted capture must name page furniture and must never drop a seller.
 
@@ -5194,6 +5238,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_queue_history_is_append_only()
     errors += check_capture_flags_nav_without_dropping_sellers()
     errors += check_worklist_leads_with_evidence()
     errors += check_every_title_extractor_strips_buttons()

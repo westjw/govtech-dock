@@ -72,6 +72,15 @@ jobs:
         # against a backlog of 564.
         run: python scripts/build_board.py --render-budget 1800
 
+      - name: Record what is in the queues
+        # AFTER the board is rebuilt, because half the queues are derived from
+        # it, and BEFORE the commit so the line ships with the data it counted.
+        # continue-on-error because a counting step must never be able to lose
+        # a day's crawl - the numbers are worth having and they are not worth
+        # that.
+        continue-on-error: true
+        run: python scripts/queue_stats.py
+
       - name: Commit the refreshed data
         # BEFORE the spreadsheet and everything after it, deliberately: the
         # fetch takes ~40 minutes and is the part that cannot be re-created
