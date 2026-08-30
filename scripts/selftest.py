@@ -2906,6 +2906,56 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_alerts_page_cannot_be_framed() -> int:
+    """The one page here with a token and a delete button must refuse framing.
+
+    /alerts holds a subscription token in memory and carries a one-click
+    "Delete this subscription and everything stored with it" behind it. A
+    framed copy is the textbook clickjacking target: the victim is already
+    authenticated by the link in their own email, and one disguised click
+    destroys their subscription.
+
+    This lived in vercel.json for months and applied on nothing. Cloudflare
+    Pages does not read that file, so the three headers it declared were
+    decoration - verified against the live site, where two of them were sent
+    anyway because Cloudflare sets them itself, and frame protection was not
+    sent at all. The file is gone and build_site.py writes public/_headers,
+    which Cloudflare does read.
+
+    SCOPED, NOT SITE-WIDE, and the check enforces that too. The board is
+    public, read-only, sessionless; somebody embedding a job list is a use
+    rather than an attack, and a blanket deny would be cargo cult. More to the
+    point, a Content-Security-Policy over the board would have to permit the
+    inline script and style the single-file app is built from - a policy that
+    allows exactly what it exists to stop.
+    """
+    bad = 0
+    src = (ROOT / "scripts" / "build_site.py").read_text()
+    if "def write_headers(" not in src:
+        return fail("build_site.py no longer writes public/_headers - the "
+                    "alerts page can be framed, and it has a one-click delete "
+                    "behind a token")
+    body = src[src.index("def write_headers("):]
+    body = body[:body.index("\ndef ")]
+    code = re.sub(r'""".*?"""', "", body, flags=re.S)
+    for want in ("X-Frame-Options: DENY", "frame-ancestors"):
+        if want not in code:
+            bad += fail(f"public/_headers no longer sets {want!r} for /alerts")
+    if "/alerts" not in code:
+        bad += fail("the _headers block is not scoped to /alerts any more")
+    # and it must NOT have grown into a site-wide policy that would break the
+    # single-file app
+    if re.search(r"^\s*\"/\\n", code, re.M) or '"/*' in code:
+        bad += fail("public/_headers now applies to the whole site - a CSP over "
+                    "the board would have to permit the inline script and style "
+                    "it is built from, which permits what it is meant to stop")
+    if (ROOT / "vercel.json").exists():
+        bad += fail("vercel.json is back. Cloudflare Pages does not read it, so "
+                    "any header in it applies on no path that exists - it is a "
+                    "second deploy door that does not open")
+    return bad
+
+
 def check_watchdog_is_independent() -> int:
     """The watchdog must not depend on the thing it watches.
 
@@ -5324,6 +5374,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_alerts_page_cannot_be_framed()
     errors += check_watchdog_is_independent()
     errors += check_queue_history_is_append_only()
     errors += check_capture_flags_nav_without_dropping_sellers()
