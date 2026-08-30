@@ -2931,54 +2931,123 @@ def check_every_title_extractor_strips_buttons() -> int:
 
 
 def check_queue_rows_carry_what_the_page_renders() -> int:
-    """A queue whose rows are missing the fields its renderer reads draws blank.
+    """EVERY queue, not the one whose breakage somebody happened to notice.
 
-    This was live and invisible. admin.html's RENDER.acquisitions reads `name`,
-    `strength` and `says`; admin.q_acquisitions returned `id`, `ats`, `note`
-    and `on`. Nothing mapped one to the other, so all 82 rows drew with a SLUG
-    as the heading, the fixed band "Only the slug looks odd - weakest, most of
-    these are nothing", and an EMPTY evidence line - including the 22 rows
-    whose note names the parent's domain outright.
+    admin.html's RENDER.<queue> reads fields off a row; admin.py's q_<queue>
+    builds it. Nothing connects the two, and when they disagree the row draws
+    with a blank exactly where its evidence should be - which looks identical
+    to a row whose evidence is weak, so it survives indefinitely.
 
-    Nobody could see it was broken, because a blank evidence line looks exactly
-    like a row with weak evidence. data/acquisition_rulings.json has never been
-    written once, and this is the whole explanation: the page was not asking
-    the question. That is the same species of failure as a zero standing in for
-    a board we could not read.
+    Two were found the day this check was written, and finding the second is
+    why it sweeps all of them:
 
-    Checked as a shape, against the live rows, because there is no JS engine
-    here and the failure is a field that simply is not there.
+      acquisitions - 82 rows drew with a SLUG for a heading, the fixed band
+        "Only the slug looks odd - weakest, most of these are nothing", and an
+        EMPTY evidence line, including the 22 whose note names the parent's
+        domain outright. data/acquisition_rulings.json has never been written
+        once, and that is the whole explanation.
+      submissions - the card printed "sent undefined", never said who sent it,
+        and swallowed `context`, which on the one pending row is the paragraph
+        explaining why it is a scope call rather than a regex's.
+
+    UNGUARDED READS ONLY. A field the page reads behind `if (s.x)` or
+    `s.x || ...` is optional by construction and degrades correctly - six of
+    the acquisitions fields are exactly that and are not defects. A BARE read
+    is a promise the row is expected to keep, and this fails when it does not.
     """
     bad = 0
     page = (ROOT / "admin.html").read_text()
-    if "RENDER.acquisitions" not in page:
-        return 0
-    body = page[page.index("RENDER.acquisitions"):]
-    body = body[:body.index("\nRENDER.")] if "\nRENDER." in body else body[:3000]
-    reads = set(re.findall(r"\bs\.(\w+)", body))
-    # `id` is the fallback the renderer itself uses, and the optional richer
-    # fields are genuinely optional - these are the three that decide whether
-    # the row says anything at all.
-    required = {"name", "strength", "says"} & reads
+    admin = _admin()
     companies = json.loads((ROOT / "data" / "companies.json").read_text())
     if isinstance(companies, dict):
         companies = companies.get("companies", [])
     board = json.loads((ROOT / "data" / "board.json").read_text())
-    admin = _admin()
-    rows = admin.q_acquisitions(companies, board)
-    if not rows:
+
+    for m in re.finditer(r"RENDER\.(\w+)\s*=\s*s\s*=>\s*\{", page):
+        name = m.group(1)
+        fn = getattr(admin, "QUEUES", {}).get(name)
+        if not fn:
+            continue
+        nxt = page.find("\nRENDER.", m.end())
+        body = page[m.end(): nxt if nxt > 0 else m.end() + 6000]
+        try:
+            rows = fn(companies, board)
+        except Exception as e:                    # noqa: BLE001
+            bad += fail(f"q_{name} raised {type(e).__name__}: {e}")
+            continue
+        if not rows:
+            continue
+
+        # WHICH READS ARE ALLOWED TO MISS, and getting this wrong once made
+        # the check unable to catch its own founding case.
+        #
+        # The first version treated any `s.x || …` as guarded. But the
+        # acquisitions bug WAS `s.says || ''` - a fallback to the empty string,
+        # which is exactly the blank line that started all this. A rule that
+        # excuses it is a rule that would have shipped the bug.
+        #
+        # So the test is not "is there a fallback" but "is the fallback worth
+        # anything":
+        #   if (s.x)              - the element is omitted. Fine.
+        #   s.x && …  /  || s.x   - x is an alternative, not the subject. Fine.
+        #   s.x || s.y  /  || 'a real string'  - degrades to something. Fine.
+        #   s.x || ''   /  s.x || ""           - renders BLANK. A defect.
+        #   bare s.x                            - a defect, unless the line is a
+        #     ternary keyed on a DIFFERENT field, which means the author already
+        #     branched: `s.kind === 'company' ? (s.name || s.url) : s.title`
+        #     legitimately has no title on a company submission.
+        #
+        # SPLIT ON STATEMENTS, NOT LINES. The submissions heading is
+        #     el('h3', null, s.kind === 'company'
+        #       ? (s.name || s.url) : s.title)
+        # and line-by-line the condition and its branches land in different
+        # chunks, so the ternary is invisible and `s.title` reads as bare. A
+        # company submission legitimately has no title.
+        guarded = set()
+        for line in re.split(r";", body):
+            fields = set(re.findall(r"\bs\.(\w+)", line))
+            # a ternary whose condition names another field branches for us
+            cond = re.match(r"[^?]*", line).group(0)
+            branching = "?" in line and any(
+                f in fields and re.search(rf"\bs\.{f}\b", cond) for f in fields)
+            for f in fields:
+                if re.search(rf"if\s*\(\s*s\.{f}\b", line) \
+                        or re.search(rf"s\.{f}\s*&&", line) \
+                        or re.search(rf"\|\|\s*s\.{f}\b", line) \
+                        or branching:
+                    guarded.add(f); continue
+                m = re.search(rf"s\.{f}\s*\|\|\s*(\S+)", line)
+                # a fallback that is an empty literal is not a fallback
+                if m and m.group(1).rstrip(");,") not in ("''", '""', "``"):
+                    guarded.add(f)
+        reads = set(re.findall(r"\bs\.(\w+)", body)) - guarded
+        for f in sorted(reads):
+            if not any(f in r for r in rows):
+                bad += fail(f"admin.html's {name} card reads s.{f} unguarded "
+                            f"and not one of its {len(rows)} rows carries it - "
+                            f"that draws a blank where the evidence goes, which "
+                            f"is indistinguishable from weak evidence")
+    return bad
+
+
+def check_queue_strengths_have_a_band() -> int:
+    """A strength the server emits and the page has no band for renders as
+    `undefined` where the row's headline goes."""
+    page = (ROOT / "admin.html").read_text()
+    if "RENDER.acquisitions" not in page:
         return 0
-    for field in sorted(required):
-        missing = sum(1 for r in rows if not r.get(field))
-        if missing:
-            bad += fail(f"{missing} of {len(rows)} acquisitions rows carry no "
-                        f"{field!r}, and admin.html reads it - those rows draw "
-                        f"with a blank where their evidence should be, which "
-                        f"looks identical to weak evidence")
-    # and every strength the server emits must have a band, or the row draws
-    # with `undefined` where the headline goes
+    i = page.index("RENDER.acquisitions")
+    body = page[i: page.find("\nRENDER.", i)]
     bands = set(re.findall(r"^\s*(\w+): '", body, re.M))
-    for st in sorted({r.get("strength") for r in rows if r.get("strength")}):
+    admin = _admin()
+    companies = json.loads((ROOT / "data" / "companies.json").read_text())
+    if isinstance(companies, dict):
+        companies = companies.get("companies", [])
+    board = json.loads((ROOT / "data" / "board.json").read_text())
+    bad = 0
+    for st in sorted({r.get("strength")
+                      for r in admin.q_acquisitions(companies, board)
+                      if r.get("strength")}):
         if st not in bands:
             bad += fail(f"the server emits strength {st!r} and admin.html has "
                         f"no band for it - the row's headline renders as "
@@ -5017,6 +5086,7 @@ def main() -> int:
     errors += check_crawl_files()
     errors += check_every_title_extractor_strips_buttons()
     errors += check_queue_rows_carry_what_the_page_renders()
+    errors += check_queue_strengths_have_a_band()
     errors += check_structured_matches_the_fetchers()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()

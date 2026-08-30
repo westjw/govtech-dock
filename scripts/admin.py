@@ -2677,10 +2677,35 @@ def act_vendor_scope(body: dict) -> dict:
 
 
 def q_submissions(companies, board) -> list:
+    """Pending submissions, in the shape admin.html actually renders.
+
+    THE SAME MISMATCH THE ACQUISITIONS QUEUE HAD. submissions.json stores `at`,
+    `by` and `context`; RENDER.submissions reads `on`, `submitted_by` and
+    `note`. So the row printed "sent undefined", never said who sent it, and
+    swallowed the context field entirely - which on the one pending submission
+    is a paragraph explaining that civira.com never mentions government
+    anywhere and that this is a scope call rather than a regex's.
+
+    The most useful thing on the card was the thing that did not render.
+
+    Mapped here rather than in the page for the reason the acquisitions fix
+    gives: the renderer's names are the intended ones, so making the producer
+    agree is one direction of change.
+    """
     subs = read("submissions.json", {"items": []})
     names = {c["id"]: c["name"] for c in companies}
-    return [{**i, "company": names.get(i.get("company_id"))}
-            for i in subs["items"] if i.get("status") == "pending"]
+    out = []
+    for i in subs["items"]:
+        if i.get("status") != "pending":
+            continue
+        at = i.get("at") or ""
+        out.append({**i,
+                    "company": names.get(i.get("company_id")),
+                    # a timestamp is not a date, and the card says "sent <x>"
+                    "on": i.get("on") or at[:10],
+                    "submitted_by": i.get("submitted_by") or i.get("by"),
+                    "note": i.get("note") or i.get("context")})
+    return out
 
 
 def q_leads(companies, board) -> list:
