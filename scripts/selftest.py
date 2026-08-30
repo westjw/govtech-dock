@@ -2880,6 +2880,66 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_ats_advice_covers_the_board() -> int:
+    """Every ATS a company here actually uses needs its own "before you apply".
+
+    The section used to print one sentence for every board in the `hard`
+    bucket - a sentence true of eighteen different systems and therefore advice
+    about none of them. It is per-ATS now, which introduces the failure this
+    check exists for: a company moves onto an ATS with no entry, the section
+    silently falls back to the old generic line, and nothing looks wrong.
+
+    Same shape and same reason as check_alert_vocabulary. `html` and `unknown`
+    are excluded on purpose - neither names a product, and falling back is the
+    correct behaviour for both.
+
+    It does NOT check the wording. Whether Workday asks you to retype your
+    resume is a fact about Workday that no test here can verify; what a test
+    can hold is that every board somebody might apply through is covered, and
+    that the entries stay about the SOFTWARE rather than drifting into claims
+    about how a company screens.
+    """
+    bad = 0
+    src = (ROOT / "index.html").read_text()
+    if "const ATSHOW=" not in src:
+        return 0
+    block = src[src.index("const ATSHOW="):]
+    block = block[:block.index("\n};")]
+    have = set(re.findall(r"^\s{2}(\w+):\{", block, re.M))
+    companies = json.loads((ROOT / "data" / "companies.json").read_text())
+    if isinstance(companies, dict):
+        companies = companies.get("companies", [])
+    used: dict[str, int] = {}
+    for c in companies:
+        t = ((c.get("ats") or {}).get("type") or "").lower()
+        if t and t not in ("html", "unknown"):
+            used[t] = used.get(t, 0) + 1
+    for t, n in sorted(used.items(), key=lambda kv: -kv[1]):
+        if t not in have:
+            bad += fail(f"{n} compan{'y' if n == 1 else 'ies'} post on {t!r} and "
+                        f"index.html's ATSHOW has no entry for it - the role "
+                        f"page falls back to the generic sentence and nobody "
+                        f"can tell that it did")
+    # and the entries must stay about the product. A line naming a company is
+    # a claim about that employer's screening, which this board cannot make.
+    # ...and NOT the vendor whose product the entry is about. Workday is on
+    # this board as a company AND is the name of the ATS its entry describes;
+    # so is Oracle. Naming the product is the entry's whole job. Every OTHER
+    # company name in the block would be a claim about that employer.
+    vendors = {v.lower() for v in have} | {"oracle recruiting"}
+    names = {(c.get("name") or "") for c in companies if len(c.get("name") or "") > 6}
+    for nm in sorted(names):
+        if nm.lower() in vendors:
+            continue
+        if re.search(rf"\b{re.escape(nm)}\b", block):
+            bad += fail(f"ATSHOW mentions {nm!r} - these entries describe how "
+                        f"the software behaves, never how a named employer "
+                        f"screens, and this board knows nothing about the "
+                        f"second")
+            break
+    return bad
+
+
 def check_jd_backfill_targets_real_pages() -> int:
     """read_descriptions must only ask boards that have a page to ask for.
 
@@ -4805,6 +4865,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()
     errors += check_pay_band_is_not_an_estimate()

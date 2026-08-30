@@ -559,6 +559,13 @@
     margin-bottom:var(--space-3)}
   .syncbar a{font-weight:600}
 
+  /* Under the banner and above everything else, because it is the one line a
+     returning visitor came back for. Beak on the left edge: the only place on
+     this page that colour is load-bearing rather than decorative. */
+  .since{margin:var(--space-4) 0 0;padding:var(--space-3);background:var(--panel);
+    border-left:3px solid var(--beak);font-size:14.5px;max-width:80ch}
+  .since a{font-weight:600;margin-left:var(--space-2);white-space:nowrap}
+
   /* A quiet panel, deliberately not a "salary card". It sits under a figure
      the employer actually published and must never out-shout it. */
   .band{margin-top:var(--space-3);max-width:74ch;padding:var(--space-3);
@@ -1345,6 +1352,62 @@ const ATSNOTE={hard:"Ranking engine likely. Seed exact keywords once.",
   soft:"Searchable board, rarely auto-rejecting.",
   none:"A person opens this list. Keyword tuning buys little."};
 
+/* WHAT ACTUALLY HAPPENS TO YOUR APPLICATION, per board.
+
+   "Their board ranks applicants automatically" was the same sentence for every
+   company in the `hard` bucket, and a sentence that is true of eighteen
+   different systems is advice about none of them. A job hunter can act on
+   "Workday will ask you to retype the resume you just uploaded, and the typed
+   fields are what gets searched"; they cannot act on "assume a person reads
+   it and write plainly".
+
+   THIS IS ABOUT THE PRODUCT, NOT ABOUT THE EMPLOYER. Every line here is a
+   behaviour of the software, observable by anyone who has applied through it,
+   and none of it is a claim about how a particular company screens. The board
+   knows which ATS a company uses because it reads that board every day; it
+   knows nothing whatever about who reads the other end, and this must never
+   drift into implying it does.
+
+   `ranks` is what this board already records about the system's disposition,
+   kept as the fallback for a board with no entry and for `unknown`, so a new
+   ATS type never leaves the section blank. */
+const ATSHOW={
+  greenhouse:{n:"Greenhouse",
+    what:"A plain form: resume, a few questions, submit. It does not score you.",
+    do:"Your resume is read as you wrote it, so write it for a person."},
+  lever:{n:"Lever",
+    what:"Parses the resume into fields and shows the parse back to you.",
+    do:"Check what it parsed before submitting - a mangled title is the one it keeps."},
+  ashby:{n:"Ashby",
+    what:"A short form, resume plus a handful of questions. No auto-rejection.",
+    do:"The free-text answers are read. They are worth the ten minutes."},
+  workday:{n:"Workday",
+    what:"An account, then it asks you to retype the resume it just parsed.",
+    do:"The typed fields are what gets searched, not the attachment. Fix them."},
+  icims:{n:"iCIMS",
+    what:"Keyword search over structured fields, used by large employers.",
+    do:"Use the posting's own words for your titles and skills, once each."},
+  smartrecruiters:{n:"SmartRecruiters",
+    what:"Parses the resume and lets a recruiter filter on what it extracted.",
+    do:"Plain headings and a normal date format survive the parse; columns do not."},
+  bamboohr:{n:"BambooHR",
+    what:"A small-company board. A person opens the list.",
+    do:"A short covering note is read here more often than anywhere else."},
+  workable:{n:"Workable",
+    what:"Parses the resume and scores it against the posting for the recruiter.",
+    do:"The score is advisory and a person still sees you. Do not keyword-stuff."},
+  recruitee:{n:"Recruitee", what:"A simple form, read by a person.", do:""},
+  breezy:{n:"Breezy", what:"A pipeline board at a small company. A person reads it.",
+    do:""},
+  jazzhr:{n:"JazzHR", what:"A small-business board. A person reads it.", do:""},
+  rippling:{n:"Rippling", what:"A short form. No public ranking behaviour.", do:""},
+  paylocity:{n:"Paylocity",
+    what:"An HR suite's careers module, usually at a smaller employer.", do:""},
+  oracle:{n:"Oracle Recruiting",
+    what:"An enterprise system: an account, long forms, structured fields.",
+    do:"Fill every field it offers. Blank fields are how you fail its filters."},
+};
+
 /* ------------------------------------------------------- no board on file
    950 companies here show no roles because no public board was found. The
    card used to say "nothing open", which is a claim, and the wrong one: what
@@ -1621,11 +1684,22 @@ function roleView(id){
       ${p.source==="manual"?'<span class="chip">found by hand</span>':""}</p>`:""}
 
     <h3 style="font-size:13px;margin-top:22px">Before you apply</h3>
-    <div class="kv" style="max-width:74ch">${ats?esc(ats)+" ":""}${
-      o.ats_ranks==="hard"?"Their board ranks applicants automatically, so the exact words in the posting matter more here than anywhere else."
-      :o.ats_ranks==="soft"?"Their board is searchable but rarely auto-rejects, so a person is likely to read this."
-      :o.ats_ranks==="none"?"A person opens this list. Write for a reader, not a parser."
-      :"We could not tell what runs their board, so assume a person reads it and write plainly."}</div>
+    ${(()=>{
+      const k=ATSHOW[(o.ats||"").toLowerCase()];
+      if(k)return `<div class="kv" style="max-width:74ch">
+        <strong>${esc(k.n)}.</strong> ${esc(k.what)}${k.do?" "+esc(k.do):""}
+        <div class="bandwhy">That is how the software behaves, not how this
+          company screens &mdash; we read their board, we know nothing about who
+          reads the other end.</div></div>`;
+      /* No entry, or an `html` careers page that is not an ATS at all. Fall
+         back to the disposition this board already records, which is what this
+         section said for every company before. */
+      return `<div class="kv" style="max-width:74ch">${ats?esc(ats)+" ":""}${
+        o.ats_ranks==="hard"?"Their board ranks applicants automatically, so the exact words in the posting matter more here than anywhere else."
+        :o.ats_ranks==="soft"?"Their board is searchable but rarely auto-rejects, so a person is likely to read this."
+        :o.ats_ranks==="none"?"A person opens this list. Write for a reader, not a parser."
+        :"We could not tell what runs their board, so assume a person reads it and write plainly."}</div>`;
+    })()}
     ${o.phase?`<div class="kv">The company overall is <strong>${esc(o.phase)}</strong>${
       o.open_roles?` — ${o.open_roles} role${o.open_roles===1?"":"s"} open, ${o.quota_roles||0} carrying a number`:""}.</div>`:""}
     ${/* BRIEFER HERE THAN ON THE COMPANY CARD, and expandable. A role card is
@@ -4621,6 +4695,73 @@ function nearNote(NEAR){
     name a place we could not put on a map, so ${n===1?"it is":"they are"} not
     in this count</span>`;
 }
+/* --- what changed since you were last here -------------------------------
+   The one line a returning visitor wants, and it is the one thing a static
+   board cannot say without remembering them. So it remembers a DATE, in this
+   browser, and nothing else - not what you looked at, not what you searched,
+   not who you are. There is no account here and this does not quietly start
+   one.
+
+   READ ONCE AT BOOT, THEN STAMPED IMMEDIATELY. Both halves matter and I got
+   the shape wrong first: the stamp was on `pagehide`, so it fired on every
+   navigation within a session. Going to the Jobs tab and back wrote today's
+   date, and the line was gone for the rest of that visit and every visit
+   after - which looks exactly like a quiet board rather than like a bug.
+
+   So the date is captured into LAST_VISIT before anything renders and that one
+   value serves the whole session, however much you click around; the stored
+   date moves to today at the same moment, so the NEXT visit compares against
+   the start of this one. A visit is the unit, not a page view.
+
+   Says nothing at all on a first visit, and nothing when nothing is new -
+   "0 new since your last visit" is a sentence that teaches a person to stop
+   coming back. */
+const SEEN_KEY="solesource.lastvisit.v1";
+let LAST_VISIT="";
+function openVisit(){
+  try{
+    const v=localStorage.getItem(SEEN_KEY);
+    LAST_VISIT=/^\d{4}-\d{2}-\d{2}$/.test(v||"")?v:"";
+    localStorage.setItem(SEEN_KEY,new Date().toISOString().slice(0,10));
+  }catch{LAST_VISIT=""}
+}
+function sinceLastVisit(){
+  const on=LAST_VISIT;
+  if(!on)return "";
+  const q=D.postings.filter(p=>p.quota_carrying&&(p.first_seen||"")>on);
+  if(!q.length)return "";
+  const openings=new Set(q.map(p=>p.opening_id)).size;
+  const cos=new Set(q.map(p=>p.company_id)).size;
+  return `<div class="since">
+    <strong>${openings.toLocaleString()} quota-carrying role${openings===1?"":"s"}</strong>
+    at ${cos.toLocaleString()} compan${cos===1?"y":"ies"} first reached this board
+    since you were last here on ${esc(on)}.${(()=>{
+      const h=visitHorizon(on);
+      return h?` <a href="?tab=jobs&amp;since=${esc(h)}">See them &rarr;</a>`:"";
+    })()}</div>`;
+}
+/* THE LINK IS BUILT FROM WHAT THE FILTER ACTUALLY OFFERS, and this took two
+   goes to get right.
+
+   The first version did the arithmetic - eight days since your last visit, so
+   `?since=9` - and produced a link that landed on the unfiltered board under a
+   notice reading "this link asked for since=9, which this board has nothing to
+   match". The age filter's horizons are not a fixed set: ageOptions() derives
+   them from the board's own history, and with eleven days of snapshots on file
+   it offers 0, 3 and 7 and nothing wider.
+
+   So: the SMALLEST offered horizon that still covers the whole span, so the
+   link never clips a day it promised. When nothing offered is wide enough -
+   which is exactly the case for a visitor returning after a fortnight - there
+   is no link at all. The sentence still stands on its own and no promise is
+   made that the board cannot keep. */
+function visitHorizon(on){
+  const ms=Date.parse(D.generated||new Date().toISOString())-Date.parse(on);
+  const need=Math.max(1,Math.ceil(ms/86400000));
+  const offered=ageOptions(D.postings,D.generated)
+    .map(o=>+o.v).filter(d=>d>=need).sort((a,b)=>a-b);
+  return offered.length?String(offered[0]):"";
+}
 function home(){
   const slides=buildSlides();
   const orgs=D.organizations||[];
@@ -4682,7 +4823,7 @@ function home(){
   });
   const secs=Object.entries(bySec).sort((a,b)=>b[1]-a[1]).slice(0,8);
 
-  $("#view").innerHTML=banner+`
+  $("#view").innerHTML=banner+sinceLastVisit()+`
   <div class="hsearch">
     <input id="h-q" type="search" placeholder="Role, skill, or company"
            aria-label="Search roles">
@@ -5482,6 +5623,7 @@ function start(d){
   // session - the only way out was the address bar.
   [...$("#tabs").children].forEach(b=>b.onclick=()=>{tab=b.dataset.t;ROLE=null;CO=null;render();});
   wireHeader();
+  openVisit();                 // before render() - see sinceLastVisit
   PENDING_URL=readUrl();
   tab=tabFromUrl(PENDING_URL,"home");
   if(PENDING_URL&&PENDING_URL.get("role")){ROLE=PENDING_URL.get("role")}
