@@ -4287,6 +4287,39 @@ def main() -> int:
     # token above is what keeps a page the owner happens to be visiting from
     # driving it.
     socketserver.TCPServer.allow_reuse_address = True
+
+    # AN OCCUPIED PORT IS ALMOST ALWAYS AN ADMIN YOU ALREADY HAVE OPEN, and
+    # this used to answer it with a twenty-line socketserver traceback ending
+    # in "OSError: [Errno 48] Address already in use". That is a true statement
+    # and a useless one: the actual situation is "your other terminal tab has
+    # one running", and the actual fix is to go and look at it.
+    #
+    # It matters more here than it would elsewhere, because the ruling code
+    # lives ONLY in the scrollback of the terminal that started the server. A
+    # person who reads that traceback as "it is broken" and kills the process
+    # to fix it has just destroyed the one copy of their own code - which has
+    # happened, twice, and cost a whole session's rulings each time.
+    #
+    # So: check first, and if something is already answering on that port, say
+    # what it is and where to find it.
+    try:
+        probe = socket.create_connection(("127.0.0.1", a.port), timeout=0.4)
+        probe.close()
+    except OSError:
+        pass                                  # nothing there, carry on
+    else:
+        print(f"\nSomething is already listening on port {a.port}.\n")
+        print("  That is almost certainly an admin you started earlier, in\n"
+              "  another terminal tab or window. Go and find it: the link with\n"
+              "  the #k= code is in ITS scrollback, just under the queue\n"
+              "  counts, and that code exists nowhere else.\n")
+        print("  DO NOT kill it to clear the port unless you mean to lose that\n"
+              "  code. Ruling needs it, no route serves it, and it is not in\n"
+              "  the page.\n")
+        print(f"  If you do want a second one, give it another port:\n"
+              f"      python3 scripts/admin.py --port {a.port + 1}\n")
+        return 1
+
     with socketserver.TCPServer(("127.0.0.1", a.port), Handler) as srv:
         # The code rides in the FRAGMENT, which browsers do not send to the
         # server - so opening this URL hands the page its code without the

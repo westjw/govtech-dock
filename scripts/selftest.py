@@ -2906,6 +2906,72 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_busy_port_does_not_traceback() -> int:
+    """Starting a second admin must explain itself, not raise.
+
+    An occupied port is almost always an admin the owner already has open in
+    another terminal tab, and this used to answer with twenty lines of
+    socketserver internals ending in "OSError: [Errno 48] Address already in
+    use". True, and useless: the situation is "your other tab has one" and the
+    fix is to go and look at it.
+
+    It matters more here than it would anywhere else. The ruling code lives
+    ONLY in the scrollback of the terminal that started the server - no route
+    serves it and it is not in the page, deliberately. Somebody who reads that
+    traceback as "it is broken" and kills the process to clear the port has
+    destroyed the one copy of their own code. That has happened twice and cost
+    a session's rulings each time.
+
+    Tested by actually holding a port, because the failure is an exception and
+    a source scan cannot see whether it is raised.
+    """
+    import socket as _s
+    admin = _admin()
+    bad = 0
+    held = _s.socket(_s.AF_INET, _s.SOCK_STREAM)
+    held.setsockopt(_s.SOL_SOCKET, _s.SO_REUSEADDR, 1)
+    held.bind(("127.0.0.1", 0))
+    held.listen(1)
+    port = held.getsockname()[1]
+    # fail() PRINTS, so it must not be inside the redirect. The first version
+    # of this check wrapped the whole thing, the mutation test removed the
+    # guard, admin.main() raised exactly as it should have - and the FAIL line
+    # went into the StringIO instead of to the terminal. A check whose failure
+    # message is captured by the check is a check that cannot report.
+    argv, out = sys.argv, io.StringIO()
+    err = None
+    try:
+        sys.argv = ["admin.py", "--port", str(port)]
+        import contextlib
+        with contextlib.redirect_stdout(out):
+            try:
+                rc = admin.main()
+            except OSError as e:
+                err, rc = e, None
+    finally:
+        sys.argv = argv
+        held.close()
+    if err is not None:
+        bad += fail(f"admin.py raised {err!r} on a busy port instead of "
+                    f"explaining it. The person reading that traceback kills "
+                    f"the admin that holds their ruling code")
+    if rc is not None:
+        said = out.getvalue()
+        if rc == 0:
+            bad += fail("admin.py exited 0 on a busy port - it did not start a "
+                        "server, so it must not report success")
+        for want in ("already listening", "another terminal", "--port"):
+            if want not in said:
+                bad += fail(f"the busy-port message does not mention {want!r}; "
+                            f"it has to say WHERE the running one is and how "
+                            f"to start a second without killing it")
+        if "DO NOT kill it" not in said:
+            bad += fail("the busy-port message no longer warns against killing "
+                        "the running admin - that is the action it exists to "
+                        "prevent, and it costs the console code every time")
+    return bad
+
+
 def check_alerts_page_cannot_be_framed() -> int:
     """The one page here with a token and a delete button must refuse framing.
 
@@ -5391,6 +5457,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_busy_port_does_not_traceback()
     errors += check_alerts_page_cannot_be_framed()
     errors += check_watchdog_is_independent()
     errors += check_queue_history_is_append_only()
