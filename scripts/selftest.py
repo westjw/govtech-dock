@@ -2880,6 +2880,66 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_watchdog_is_independent() -> int:
+    """The watchdog must not depend on the thing it watches.
+
+    A failed refresh sends GitHub's own email. A refresh that SUCCEEDS while
+    doing nothing sends nothing at all - and neither does a cron that quietly
+    stopped firing, a step whose continue-on-error swallowed the reason, or an
+    expired token. All of those leave the site serving yesterday's board with
+    today's confidence, which is a stale claim presented as a current one.
+
+    So the properties that make this worth having, each of which is one edit
+    from being lost:
+
+    ITS OWN WORKFLOW AND ITS OWN CRON. Folded into refresh.yml it would go
+    quiet at exactly the moment it is needed, because the thing that stopped is
+    the thing that would have run it.
+
+    STDLIB ONLY. A watchdog that can fail because pip did not install is a
+    watchdog that reports the machinery as broken when only the watchdog is.
+
+    AND IT MUST STILL BE ABLE TO SPEAK. `gh issue create --label` fails outright
+    when the label does not exist, which would mean silence on the one night
+    there was something to say.
+    """
+    bad = 0
+    wf = ROOT / ".github/workflows/watchdog.yml"
+    if not wf.exists():
+        return fail("no .github/workflows/watchdog.yml - nothing notices when "
+                    "the nightly run stops succeeding quietly")
+    # COMMENTS OFF FIRST. This file has tripped on its own prose five times
+    # now - the last was this very check, failing on the line that explains
+    # why there is no pip install in it.
+    y = re.sub(r"^\s*#.*$", "", wf.read_text(), flags=re.M)
+    if "cron:" not in y:
+        bad += fail("the watchdog has no schedule of its own, so it only runs "
+                    "when somebody remembers to run it")
+    if "pip install" in y:
+        bad += fail("the watchdog installs a dependency - it must be stdlib "
+                    "only, or it can fail for a reason that has nothing to do "
+                    "with the board")
+    if "gh label create" not in y:
+        bad += fail("the watchdog does not ensure its label exists; "
+                    "`gh issue create --label` fails when it does not, and the "
+                    "watchdog goes silent on the night it matters")
+    if "issue comment" not in y or "issue close" not in y:
+        bad += fail("the watchdog does not keep ONE rolling issue - a fresh "
+                    "ticket every night for the same stuck cron is how "
+                    "somebody learns to close them unread")
+    # the refresh workflow must NOT be where this lives
+    r = (ROOT / ".github/workflows/refresh.yml").read_text()
+    if "watchdog.py" in r:
+        bad += fail("refresh.yml runs the watchdog - a check inside the "
+                    "pipeline it watches cannot report that the pipeline did "
+                    "not run")
+    src = (ROOT / "scripts" / "watchdog.py").read_text()
+    for mod in ("requests", "openpyxl", "playwright"):
+        if re.search(rf"^import {mod}\b|^from {mod}\b", src, re.M):
+            bad += fail(f"watchdog.py imports {mod} - stdlib only, see above")
+    return bad
+
+
 def check_queue_history_is_append_only() -> int:
     """A queue count nobody wrote down is gone, and history cannot be backfilled.
 
@@ -5238,6 +5298,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_watchdog_is_independent()
     errors += check_queue_history_is_append_only()
     errors += check_capture_flags_nav_without_dropping_sellers()
     errors += check_worklist_leads_with_evidence()

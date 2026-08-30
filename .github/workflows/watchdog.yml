@@ -1,0 +1,114 @@
+# Does the nightly job still run, and does the board still say true things?
+#
+# ITS OWN WORKFLOW ON ITS OWN CRON, and that is the entire design. A failed
+# refresh sends GitHub's own email. A refresh that SUCCEEDS while doing nothing
+# sends nothing at all, and neither does a cron that silently stopped firing, a
+# step whose continue-on-error swallowed the reason, or an expired token. Every
+# one of those leaves the site serving yesterday's board with today's
+# confidence.
+#
+# A check that lives inside the pipeline it watches goes quiet at exactly the
+# moment it is needed. So this is a second job, five hours after the first, and
+# it does not depend on the first having run - that is the thing it is asking.
+name: Watchdog
+
+on:
+  schedule:
+    # refresh.yml runs at 10:00 UTC and takes about 40 minutes. 15:00 leaves
+    # room for a slow crawl and a re-run without this firing at a job that is
+    # simply still working.
+    - cron: "0 15 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # No pip install. watchdog.py is stdlib only, deliberately: a watchdog
+      # that can fail because a dependency did not install is a watchdog that
+      # reports the machinery as broken when only the watchdog is.
+      - name: Check the board
+        id: check
+        continue-on-error: true
+        run: |
+          set +e
+          python scripts/watchdog.py > /tmp/watchdog.txt 2>&1
+          code=$?
+          cat /tmp/watchdog.txt
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+
+      # ONE ROLLING ISSUE, NOT ONE PER NIGHT. A watchdog that opens a fresh
+      # issue every day for the same stuck cron produces a wall of identical
+      # tickets, and a wall of identical tickets is how somebody learns to
+      # close them unread. Comment on the open one; open a new one only when
+      # there is none.
+      - name: Say so
+        if: steps.check.outputs.code != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          DAY="$(date -u +%Y-%m-%d)"
+          # The label may not exist on a fresh clone of this repo, and
+          # `gh issue create --label` fails outright when it does not - which
+          # would mean the watchdog stays silent on the one night it has
+          # something to say.
+          gh label create watchdog \
+            --description "The nightly board build stopped or went wrong" \
+            --color B60205 2>/dev/null || true
+          NUM="$(gh issue list --label watchdog --state open \
+                   --json number --jq '.[0].number // empty')"
+          {
+            echo "\`scripts/watchdog.py\` failed on ${DAY}."
+            echo
+            echo '```'
+            cat /tmp/watchdog.txt
+            echo '```'
+            echo
+            echo "This job asks the one question the refresh cannot ask about"
+            echo "itself: did it actually run, and does the board it left behind"
+            echo "still say true things? It runs on its own cron five hours"
+            echo "later, so a refresh that stopped firing entirely is still"
+            echo "noticed."
+            echo
+            echo "It closes itself when the nightly run produces a good board"
+            echo "again."
+          } > /tmp/body.md
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --body-file /tmp/body.md
+          else
+            gh issue create --label watchdog \
+              --title "The board is not being built" --body-file /tmp/body.md
+          fi
+
+      # And close it on recovery, so a green watchdog never leaves a stale
+      # ticket claiming the board is broken.
+      - name: Close it when it recovers
+        if: steps.check.outputs.code == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          NUM="$(gh issue list --label watchdog --state open \
+                   --json number --jq '.[0].number // empty' 2>/dev/null || true)"
+          if [ -n "${NUM:-}" ]; then
+            {
+              echo "Recovered on $(date -u +%Y-%m-%d)."
+              echo
+              echo '```'
+              cat /tmp/watchdog.txt
+              echo '```'
+            } > /tmp/body.md
+            gh issue comment "$NUM" --body-file /tmp/body.md
+            gh issue close "$NUM"
+          fi
