@@ -559,6 +559,15 @@
     margin-bottom:var(--space-3)}
   .syncbar a{font-weight:600}
 
+  /* the locations button reads as a count first and a control second: it is
+     in a data column, and a button-looking thing in a data column reads as
+     the row's action rather than as the cell's value */
+  .locmore{font:inherit;color:var(--ink);background:transparent;padding:0;
+    border:0;border-bottom:1px dotted var(--dim);cursor:pointer}
+  .locmore:hover{border-bottom-color:var(--ink)}
+  .jt tr.sub td{color:var(--dim);background:var(--chip)}
+  .jt tr.sub td.loc{padding-left:var(--space-5)}
+
   /* Square, like every control here - --radius is 0 and one rounded corner is
      what breaks the system. Quiet until hovered: it sits on every saved row
      and a row of loud buttons reads as the point of the page, which it is not. */
@@ -2943,10 +2952,45 @@ function drawJobs(){
   const mv=$("#j-more-v");if(mv)mv.textContent=extra?`${extra} on`:"";
   if(mv)mv.className="v"+(extra?" on":"");
 
+  /* ONE ADVERTISEMENT, ONE ROW.
+
+     Xplor Recreation advertises a single Account Executive requisition in 82
+     cities. Uncollapsed, that one job is 13% of every quota-carrying row on
+     this board, and a person scrolling the list meets it 82 times before
+     reaching anything else. CLAUDE.md already forbids counting those rows as
+     82 openings on a leaderboard; the list a job hunter actually reads had the
+     same defect and nobody had said so out loud.
+
+     GROUPED AFTER FILTERING, NEVER BEFORE, and that ordering is the whole
+     correctness of it. Filter first and the group holds only what survived, so
+     "82 locations" narrowed to Texas honestly reads "3 locations" - the three
+     that matched. Group first and the row would advertise 82 places for a
+     search that matched three, which is a false claim about where the job is.
+
+     The location and the salary are the two cells that can disagree across a
+     group. Location becomes the count. Salary shows the figure only when every
+     posting in the group states the same one, and otherwise says it varies -
+     a stated fact - rather than picking whichever row sorted first. */
+  const groups=[];
+  {
+    const at=new Map();
+    rows.forEach(p=>{
+      const k=p.opening_id||p.id;
+      let g=at.get(k);
+      if(!g){g={lead:p,rows:[]};at.set(k,g);groups.push(g)}
+      g.rows.push(p);
+      // the earliest sighting in the group, because that is when this
+      // advertisement first reached us - not when its 40th city did
+      if((p.first_seen||"")&&(!g.lead.first_seen||p.first_seen<g.lead.first_seen))
+        g.lead=p;
+    });
+  }
+  const openings=groups.length;
+
   /* Clamp before the url is written, so ?p=99 on a three-page result lands on
      page 3 AND the address says 3. Leaving it at 99 would hand back a link
      that shows an empty list - a false "no jobs here" wearing a page number. */
-  const pages=Math.max(1,Math.ceil(rows.length/PAGE_SIZE));
+  const pages=Math.max(1,Math.ceil(openings/PAGE_SIZE));
   if(PAGE>pages)PAGE=pages;
   writeUrl();
   paintUrl();
@@ -2959,7 +3003,10 @@ function drawJobs(){
      sentence about what is missing and why, then the one click that undoes
      it. A pay floor is the filter that most needs it - it can set aside more
      postings than it keeps. */
-  $("#j-n").innerHTML=rows.length.toLocaleString()+(rows.length===1?" role":" roles")
+  $("#j-n").innerHTML=openings.toLocaleString()+(openings===1?" role":" roles")
+    +(rows.length>openings
+      ? ` &middot; ${rows.length.toLocaleString()} postings, because some are
+          advertised in more than one place`:"")
     +(relaxed?` · showing all roles: ${esc(relaxed)} work does not carry a quota`:"")
     +(setAside?(PAY_KEEP
       ? ` · including ${setAside.total.toLocaleString()} with no comparable salary
@@ -2982,13 +3029,14 @@ function drawJobs(){
   const sv=$("#j-savednote");
   if(sv){
     const ss=currentSavedSearch();
-    const fresh=ss?rows.filter(p=>(p.first_seen||"")>ss.on).length:0;
+    const fresh=ss?groups.filter(g=>(g.lead.first_seen||"")>ss.on).length:0;
     sv.innerHTML=!ss?""
       :`<div class="note">${fresh
         ? `<strong>${fresh.toLocaleString()} of these</strong> were first read here
            after you saved this search on ${esc(ss.on)}.`
         : `Saved search &mdash; nothing new since ${esc(ss.on)}.`}</div>`;
   }
+
 
   const host=$("#j-list");
   host.textContent="";
@@ -3027,7 +3075,7 @@ function drawJobs(){
   if(!rows.length){
     host.insertAdjacentHTML("beforeend",emptyJobs(quotaOnly,f,where,setAside,g("j-q")));
   }else{
-    const from=(PAGE-1)*PAGE_SIZE, page=rows.slice(from,from+PAGE_SIZE);
+    const from=(PAGE-1)*PAGE_SIZE, page=groups.slice(from,from+PAGE_SIZE);
     /* THE LIST IS THE PRODUCT, so it is a table: five facts per row, in the
        same five places on every row, at the density a person scans rather
        than reads. The card grid this replaced fitted three roles on a screen.
@@ -3047,25 +3095,39 @@ function drawJobs(){
       <th scope="col"><span class="sub" style="position:absolute;left:-9999px">Save</span></th>
     </tr></thead><tbody></tbody>`;
     const body=table.querySelector("tbody");
-    page.forEach(p=>{
+    page.forEach(g=>{
+      const p=g.lead, n=g.rows.length;
       const w=when(p.first_seen,D.generated);
       const tr=document.createElement("tr");
       tr.onclick=()=>openRole(p.id);
+      /* A GROUP'S SALARY IS ONLY THE GROUP'S SALARY WHEN THEY AGREE. Pay
+         legitimately varies by city on a multi-location requisition, and
+         showing one city's band against a row that says "82 locations" would
+         publish a figure about 81 places nobody read it from. */
+      const pays=new Set(g.rows.map(r=>payCell(r)));
+      const sal=n>1&&pays.size>1
+        ? `<span class="paynone" title="the postings in this opening state
+             different figures">varies by location</span>`
+        : payCell(p);
       tr.innerHTML=`
         <td class="role">${esc(p.title)}${p.quota_carrying
           ?' <span class="qm" title="carries a sales number">&#9679;</span>':""}</td>
         <td class="co"><span class="cowrap">${tileHTML(p.company,p.company_id,"tile")}
           <span>${esc(p.company)}</span></span></td>
-        <td class="loc">${esc(locCell(p))}</td>
-        <td class="sal">${payCell(p)}</td>
+        <td class="loc">${n>1
+          ? `<button class="locmore" type="button">${n} locations</button>`
+          : esc(locCell(p))}</td>
+        <td class="sal">${sal}</td>
         <td class="age"><span class="when ${esc(w.cls)}">${esc(w.txt)}</span></td>
         <td class="act"></td>`;
       // the bookmark carries a handler, so it is built rather than stringified
       tr.querySelector("td.act").appendChild(saveButton(p));
       body.appendChild(tr);
+      const more=tr.querySelector(".locmore");
+      if(more)more.onclick=e=>{e.stopPropagation();expandOpening(tr,g,more)};
     });
     host.appendChild(table);
-    host.appendChild(pager(rows.length,pages,from,page.length));
+    host.appendChild(pager(openings,pages,from,page.length));
   }
 
   /* One primary action on the whole page, and it is the digest rather than a
@@ -3126,6 +3188,36 @@ function payCell(p){
   if(b&&b.cls==="pay")return `<span class="pay">${esc(b.txt)}</span>`;
   const why=b?b.txt:"this build of the board recorded no pay either way";
   return `<span class="paynone" title="${esc(why)}">&mdash;</span>`;
+}
+/* Open one advertisement into the places it was posted to.
+
+   Inserted after the row rather than replacing it, and each place keeps its
+   own link out - the 82 Xplor postings are 82 separate requisitions on
+   Greenhouse and applying to the Denver one is not applying to the Tulsa one.
+   Collapsing them is about the list being readable, never about pretending
+   they are one application.
+
+   Toggles rather than accumulating: clicking twice used to be how a list grew
+   a second copy of everything under it. */
+function expandOpening(tr,g,btn){
+  const open=btn.getAttribute("aria-expanded")==="true";
+  let el=tr.nextElementSibling;
+  while(el&&el.classList.contains("sub")){const nx=el.nextElementSibling;el.remove();el=nx}
+  btn.setAttribute("aria-expanded",open?"false":"true");
+  btn.textContent=open?`${g.rows.length} locations`:`${g.rows.length} locations \u2212`;
+  if(open)return;
+  let at=tr;
+  g.rows.forEach(r=>{
+    const row=document.createElement("tr");
+    row.className="sub";
+    row.onclick=()=>openRole(r.id);
+    row.innerHTML=`<td class="role"></td><td class="co"></td>
+      <td class="loc">${esc(locCell(r))}</td>
+      <td class="sal">${payCell(r)}</td>
+      <td class="age"></td><td class="act"></td>`;
+    row.querySelector("td.act").appendChild(saveButton(r));
+    at.after(row); at=row;
+  });
 }
 /* Pagination, in the url and not a scroll trap. It says which page of how
    many, because "Next" alone tells a person nothing about whether they are

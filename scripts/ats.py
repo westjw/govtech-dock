@@ -1025,6 +1025,37 @@ _JOB_COUNT = re.compile(r"\b\d[\d,]*\s*\+?\s*(open\s+)?(jobs|positions|roles|"
                         r"openings|vacancies)\b", re.I)
 
 
+# A CARD'S BUTTON IS NOT PART OF THE JOB'S NAME. Adobe's careers page puts
+# "Apply Now" inside the same anchor as the title and gives the card no
+# heading, so the flattening below produced nine postings called "Apply Now
+# Account Manager, Channel Sales" - a title that is wrong on the public board,
+# wrong in the posting id, wrong as an alert match and wrong as the key a scope
+# ruling is stored under. It is the same defect as uveye's "More Details Less
+# Details" tail and gets the same treatment: take the label off rather than get
+# clever about the rest.
+#
+# ANCHORED AND LEADING ONLY. "Apply" appears legitimately inside real titles -
+# "Application Engineer", "Applied Scientist" - so this matches a whole
+# call-to-action at the very start of the string and nowhere else. The word
+# boundary is what keeps "Applied Scientist" intact.
+_CTA_LEAD = re.compile(
+    r"^(?:apply\s+now|apply\s+today|apply|view\s+job|view\s+details|"
+    r"job\s+details|see\s+details|learn\s+more|read\s+more)\b[\s:\u2013\u2014-]*",
+    re.I)
+
+
+def strip_cta(text: str) -> str:
+    """A leading "Apply Now" off a flattened card, or the text unchanged.
+
+    Refuses to empty the string: a card whose entire text IS the button label
+    is not a job with a blank name, it is a link we should not have taken, and
+    returning "" here would file it as one. Handing the label back unchanged
+    lets the title tests below reject it as they already do.
+    """
+    out = _CTA_LEAD.sub("", text).strip()
+    return out or text
+
+
 def fetch_html_titles(url: str) -> list[dict]:
     """Enumerate job titles from a server-rendered careers page.
 
@@ -1048,7 +1079,7 @@ def fetch_html_titles(url: str) -> list[dict]:
         heads = _HEADING.findall(inner)
         picked = heads[0][1] if len(heads) == 1 else inner
         text = re.sub(r"\s+", " ", _ANYTAG.sub(" ", picked)).strip()
-        text = html_lib.unescape(text)
+        text = strip_cta(html_lib.unescape(text))
         if not (6 <= len(text) <= 90) or _NAV.match(text):
             continue
         if _JOB_COUNT.search(text):

@@ -152,6 +152,28 @@ TITLE_TEXT_CASES = [
     ("Engineer \\ Architect", "Engineer \\ Architect"),
 ]
 
+# A card's button label glued to the front of the title. Adobe's careers page
+# put "Apply Now" inside the anchor and gave the card no heading, so nine
+# postings reached the public board named "Apply Now Account Manager, Channel
+# Sales" - and a wrong title is not only wrong on screen: it is the posting id,
+# the alert match, and the key a scope ruling is filed under.
+#
+# The three that must NOT change are the point of the list. "Apply" starts real
+# words, and a substring rule here would rename "Applied Scientist" to
+# "ed Scientist" - a fix that quietly corrupts more titles than the bug did.
+CTA_CASES = [
+    ("Apply Now Account Manager, Channel Sales", "Account Manager, Channel Sales"),
+    ("Apply now: Account Executive", "Account Executive"),
+    ("View Job Sales Director", "Sales Director"),
+    ("Learn More - Regional Sales Manager", "Regional Sales Manager"),
+    ("Applied Scientist", "Applied Scientist"),
+    ("Application Engineer", "Application Engineer"),
+    ("Senior Apply Engineer", "Senior Apply Engineer"),
+    # the whole text is the button: hand it back rather than return "", or a
+    # link we should never have taken becomes a job with no name
+    ("Apply Now", "Apply Now"),
+]
+
 
 # =========================================================================
 # salary.py - pay ranges parsed out of job-description prose
@@ -4688,6 +4710,10 @@ def main() -> int:
         got = ats.plain(raw)
         if got != expected:
             errors += fail(f"ats.plain({raw!r}) = {got!r}, expected {expected!r}")
+    for raw, expected in CTA_CASES:
+        got = ats.strip_cta(raw)
+        if got != expected:
+            errors += fail(f"ats.strip_cta({raw!r}) = {got!r}, expected {expected!r}")
     errors += check_board()
     errors += check_salary()
     # What survives a job description, and what must not. Checked against the
@@ -4707,7 +4733,8 @@ def main() -> int:
               f"(location or founding year)")
     print(f"{len(companies)} companies | {n_api} on structured ATS APIs | "
           f"{len(hist)} snapshot(s) | classifier cases: {len(CLASSIFIER_CASES)} title, "
-          f"{len(PAGESCAN_CASES)} page-scan, {len(TITLE_TEXT_CASES)} title-text")
+          f"{len(PAGESCAN_CASES)} page-scan, {len(TITLE_TEXT_CASES)} title-text, "
+          f"{len(CTA_CASES)} button-label")
     after = _journal_fingerprint()
     if after != _journal_before:
         errors += fail(
