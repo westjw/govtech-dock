@@ -2972,6 +2972,102 @@ def check_busy_port_does_not_traceback() -> int:
     return bad
 
 
+def check_active_badge_measures_them_not_us() -> int:
+    """"Active" must be a fact about the employer, not about our crawler.
+
+    A click counter measures OUR traffic. This measures THEIR hiring, off the
+    daily snapshots, and no visitor is tracked to produce it. Which makes the
+    failure mode subtle, and it is the one this check is for.
+
+    Granicus reads 0 to 53 quota roles over the last week and Adobe 0 to 9.
+    Neither started hiring last week: we started READING them. Publishing that
+    as their momentum prints our own crawler's history as somebody else's news,
+    which is the same error as reporting a page we could not read as a company
+    with no jobs, pointed the other way. From a snapshot alone "they had none"
+    and "we could not see them" are indistinguishable, so a company with no
+    postings at the baseline is excluded outright.
+
+    Exercised against synthetic snapshots, because the live data currently
+    qualifies NOBODY - a rule that never fires is indistinguishable from a
+    broken one, and the honest empty output is itself worth pinning.
+    """
+    import shutil as _sh
+    import tempfile as _tf
+    mom = _import_momentum()
+    bad = 0
+    with _tf.TemporaryDirectory() as tmp:
+        root = pathlib.Path(tmp)
+        _sh.copytree(ROOT / "data", root / "data")
+        real_data = mom.DATA
+        mom.DATA = root / "data"
+        try:
+            picked = mom.surge().get("since")
+            if not picked:
+                return 0                       # no comparable history to test
+            basef = root / "data" / "history" / f"{picked}.json"
+            nowf = sorted((root / "data" / "history").glob("*.json"))[-1]
+            base = json.loads(basef.read_text())
+            now = json.loads(nowf.read_text())
+            board = json.loads((root / "data" / "board.json").read_text())
+
+            def mk(co, n, t):
+                return [f"{co}::Role {t}{i}::h{i}" for i in range(n)]
+
+            base["ids"] += mk("smallco", 2, "a")
+            now["ids"] += mk("smallco", 5, "a")        # real surge
+            base["ids"] += mk("bigco", 200, "b")
+            now["ids"] += mk("bigco", 203, "b")        # +3 on 200
+            now["ids"] += mk("newlyread", 40, "c")     # we started reading them
+            base["ids"] += mk("oneup", 4, "d")
+            now["ids"] += mk("oneup", 5, "d")          # +1 on 4: fails growth
+            # ISOLATES THE COUNT FLOOR. 1 -> 2 is 100% growth, so MIN_GROWTH
+            # waves it through and only MIN_ADDED stops it. Without this case
+            # the count floor could be deleted and nothing would notice: the
+            # `oneup` company above is 4 -> 5, which the growth rule already
+            # rejects, so it was masking the very rule it looked like it tested.
+            base["ids"] += mk("tinyco", 1, "e")
+            now["ids"] += mk("tinyco", 2, "e")
+            basef.write_text(json.dumps(base))
+            nowf.write_text(json.dumps(now))
+            board["postings"] += [
+                {"id": i, "quota_carrying": True}
+                for i in mk("smallco", 5, "a") + mk("bigco", 203, "b")
+                + mk("newlyread", 40, "c") + mk("oneup", 5, "d")
+                + mk("tinyco", 2, "e")]
+            board["organizations"] += [
+                {"id": k, "name": k}
+                for k in ("smallco", "bigco", "newlyread", "oneup", "tinyco")]
+            (root / "data" / "board.json").write_text(json.dumps(board))
+
+            got = {c["id"] for c in mom.surge().get("companies", [])}
+            if "smallco" not in got:
+                bad += fail("momentum does not report a real surge (2 sellers "
+                            "to 5) - a badge that never fires is the same as "
+                            "no badge, and nobody would notice")
+            if "newlyread" in got:
+                bad += fail("momentum called a company active on the strength "
+                            "of going 0 to 40. A company we could not read "
+                            "before is not a company that was not hiring; that "
+                            "publishes our crawler's history as their news")
+            if "bigco" in got:
+                bad += fail("momentum called +3 roles on a base of 200 a "
+                            "surge - the floor is on the CHANGE relative to "
+                            "the company, or every large employer is permanently"
+                            " 'active'")
+            for one in ("oneup", "tinyco"):
+                if one in got:
+                    bad += fail(f"momentum called a single added role a surge "
+                                f"({one}); every company posts one sometimes")
+        finally:
+            mom.DATA = real_data
+    return bad
+
+
+def _import_momentum():
+    import momentum
+    return momentum
+
+
 def check_sitemap_offers_the_job_pages() -> int:
     """The sitemap must list the role pages, and gone roles must say noindex.
 
@@ -5522,6 +5618,7 @@ def main() -> int:
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
     errors += check_busy_port_does_not_traceback()
+    errors += check_active_badge_measures_them_not_us()
     errors += check_sitemap_offers_the_job_pages()
     errors += check_alerts_page_cannot_be_framed()
     errors += check_watchdog_is_independent()
