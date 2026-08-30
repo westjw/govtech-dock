@@ -2972,6 +2972,97 @@ def check_busy_port_does_not_traceback() -> int:
     return bad
 
 
+def check_structured_data_claims_no_posting_date() -> int:
+    """JobPosting must not carry a datePosted, because we do not have one.
+
+    It emitted `first_seen`, the day THIS BOARD first saw the row. 2,183 of
+    3,524 structured blocks claimed 2026-08-18 or 2026-08-19 - our first two
+    crawls - as the day the employer posted. A role advertised since spring
+    read as posted the morning we started looking.
+
+    index.html already refuses to tell a HUMAN that, in as many words: "Saying
+    'appeared' would file our crawl date as a fact about somebody's hiring,
+    which is the same species of claim as reporting a page we could not read as
+    'no jobs here'." The page told the truth to a reader and told Google the
+    other thing.
+
+    Nothing in this repository reads a posted date from any board, so there is
+    no true value being passed over - the field was manufactured. It is
+    withheld entirely, like validThrough and baseSalary before it. Optional in
+    the spec; a wrong one is not.
+    """
+    bad = 0
+    mw = (ROOT / "functions" / "_middleware.js").read_text()
+    code = re.sub(r"//.*$", "", mw, flags=re.M)
+    code = re.sub(r"/\*.*?\*/", "", code, flags=re.S)
+    if "datePosted" in code:
+        bad += fail("the middleware emits datePosted again. The only date this "
+                    "board holds is when WE first saw a row, and publishing it "
+                    "as the employer's posting date is our crawler's history "
+                    "dressed as their hiring")
+    meta = ROOT / "public" / "meta-roles.json"
+    if meta.exists():
+        roles = json.loads(meta.read_text())
+        roles = roles.get("roles", roles)
+        dated = sum(1 for v in roles.values()
+                    if isinstance(v, dict) and v.get("ld") and v.get("d"))
+        if dated:
+            bad += fail(f"{dated:,} structured roles still carry a date field "
+                        f"for the middleware to publish as datePosted")
+    src = (ROOT / "scripts" / "build_site.py").read_text()
+    blk = src[src.index('r["ld"] = 1'):]
+    blk = blk[:blk.index("roles[p_[")]
+    if re.search(r'r\["d"\]\s*=', blk):
+        bad += fail("build_site writes a date onto the structured-data record "
+                    "again - the only one available is our crawl date")
+    return bad
+
+
+def check_middleware_separates_unreadable_from_gone() -> int:
+    """One failed fetch of our own index must not noindex the whole board.
+
+    index() returns null when /meta-roles.json answers non-200 or unparseable
+    JSON: a deploy mid-flight, a WAF page, a 503. The gone-role branch tests
+    `!r`, and with a null index EVERY role is falsy - so a single bad fetch
+    would serve "That role is no longer listed" with noindex on all 4,439 role
+    pages at once, days after submitting every one to Google.
+
+    That is the asymmetric error at the largest scale available on this site,
+    and the same shape as reporting a page we could not read as a company with
+    no jobs.
+
+    AND THE PROTOTYPE CHAIN. `idx.roles[role]` walks it, so ?role=constructor
+    returns a truthy function, passes the `!r` guard, and renders
+    "undefined at undefined - SLED JOBS" self-canonical with no noindex: an
+    indexable page asserting a company that does not exist, reachable from the
+    address bar.
+
+    Source-checked, because there is no JS engine here and both failures are a
+    missing guard rather than wrong output.
+    """
+    bad = 0
+    mw = (ROOT / "functions" / "_middleware.js").read_text()
+    code = re.sub(r"//.*$", "", mw, flags=re.M)
+    code = re.sub(r"/\*.*?\*/", "", code, flags=re.S)
+    flat = re.sub(r"\s+", "", code)
+
+    if "if(!idx||!idx.roles)returnnull" not in flat:
+        bad += fail("the middleware does not bail out before the gone-role "
+                    "branch when the index is unreadable. A 503 on "
+                    "/meta-roles.json would mark all 4,439 role pages noindex "
+                    "and tell every crawler the jobs no longer exist")
+    if "Object.hasOwn" not in code:
+        bad += fail("the middleware looks roles or companies up without an "
+                    "own-property check, so ?role=constructor and ?co=toString "
+                    "render an indexable page about a company that does not "
+                    "exist")
+    # the own() helper has to actually be used, not merely defined
+    if flat.count("own(") < 2:
+        bad += fail("the own() guard is defined but not used on both the role "
+                    "and company lookups")
+    return bad
+
+
 def check_boards_read_agrees_with_coverage() -> int:
     """The card must not contradict the table three inches below it.
 
@@ -5688,6 +5779,8 @@ def main() -> int:
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
     errors += check_busy_port_does_not_traceback()
+    errors += check_structured_data_claims_no_posting_date()
+    errors += check_middleware_separates_unreadable_from_gone()
     errors += check_boards_read_agrees_with_coverage()
     errors += check_active_badge_measures_them_not_us()
     errors += check_sitemap_offers_the_job_pages()

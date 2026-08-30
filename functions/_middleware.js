@@ -34,9 +34,23 @@ async function index(env, request, which) {
   const res = await fetch(url.toString(), {
     cf: { cacheTtl: 3600, cacheEverything: true },
   });
+  // NULL MEANS "COULD NOT READ IT", and the caller must not confuse that with
+  // "read it, and the thing is not in it". Those are the two facts this whole
+  // repository exists to keep apart, and here the difference is 4,439 pages.
   if (!res.ok) return null;
   try { return await res.json(); } catch { return null; }
 }
+
+/* Own property only.
+ *
+ * `idx.roles[role]` walks the prototype chain, so ?role=constructor,
+ * ?role=toString, ?role=valueOf and ?role=__proto__ all return a truthy
+ * function, sail past the `!r` guard, and render
+ * `<title>undefined at undefined - SLED JOBS</title>` with a self-canonical
+ * and no noindex. An indexable page asserting a company that does not exist,
+ * reachable from the address bar - "never invent a fact to fill a field",
+ * defeated by a URL. */
+const own = (o, k) => (o && Object.hasOwn(o, k)) ? o[k] : undefined;
 
 const esc = (s) =>
   String(s ?? "").replace(/[&<>"]/g, (c) =>
@@ -51,7 +65,22 @@ async function describe(request, env) {
 
   if (role) {
     const idx = await index(env, request, "roles");
-    const r = idx && idx.roles && idx.roles[role];
+    // WE COULD NOT READ THE INDEX IS NOT THE ROLE IS GONE.
+    //
+    // index() returns null when the asset answers non-200 or unparseable JSON:
+    // a deploy mid-flight, a WAF page, a 503. The gone-role branch below tests
+    // `!r`, and with a null index EVERY role is falsy - so one failed fetch of
+    // our own file would serve "That role is no longer listed" with noindex on
+    // all 4,439 role pages at once, days after submitting every one of them to
+    // Google.
+    //
+    // That is the asymmetric error at its largest available scale, and it is
+    // the same shape as reporting a page we could not read as a company with
+    // no jobs. When the index is unreadable we fall through to the site
+    // defaults: no claim about this role either way, and nothing marked
+    // noindex.
+    if (!idx || !idx.roles) return null;
+    const r = own(idx.roles, role);
     // A ROLE THAT IS GONE MUST NOT BE INDEXED, and this only started mattering
     // when the sitemap grew role pages.
     //
@@ -90,7 +119,7 @@ async function describe(request, env) {
 
   if (co) {
     const idx = await index(env, request, "companies");
-    const c = idx && idx.companies && idx.companies[co];
+    const c = own(idx && idx.companies, co);
     if (!c) return null;
     // The count is a fact about today and the card may be cached for longer
     // than today, so it is said only when there is something to say and never
@@ -160,7 +189,12 @@ function jobLd(id, r, site) {
     url: `${site}/?role=${encodeURIComponent(id)}`,
     directApply: false,
   };
-  if (r.d) o.datePosted = r.d;
+  // datePosted is deliberately absent - see write_meta_index() in
+  // build_site.py. The only date this board holds is when WE first saw a row,
+  // and publishing that as the employer's posting date is a fact about our
+  // crawler dressed as a fact about their hiring. The field is optional in the
+  // spec; a wrong one is not. `r.d` is no longer written, so this is belt and
+  // braces against a future producer putting it back.
   if (loc) o.jobLocation = loc;
   return JSON.stringify(o);
 }

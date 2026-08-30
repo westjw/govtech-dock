@@ -348,7 +348,27 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
         # expiry is how a board ends up advertising dead roles.
         if p_.get("jd_seen"):
             r["ld"] = 1
-            r["d"] = p_.get("first_seen") or ""
+            # NO datePosted. IT WAS OUR CRAWL DATE.
+            #
+            # This emitted first_seen, which is the day THIS BOARD first saw
+            # the row. 2,183 of 3,524 structured blocks claimed 2026-08-18 or
+            # 2026-08-19 - the first two crawls - as the day the employer
+            # posted the job. A role advertised since spring read as posted the
+            # morning we started looking.
+            #
+            # index.html already refuses to make this exact claim to a human,
+            # in these words: "first_seen is our crawl date... Saying
+            # 'appeared' would file our crawl date as a fact about somebody's
+            # hiring, which is the same species of claim as reporting a page we
+            # could not read as 'no jobs here'." The page told the truth to a
+            # reader and told Google the other thing.
+            #
+            # Nothing here reads a posted date: grep ats.py for `posted`,
+            # `created_at`, `publishedAt` and there is nothing to read. So the
+            # field is withheld entirely, which is what this module already
+            # does with validThrough and baseSalary for the same reason.
+            # datePosted is optional in Google's JobPosting spec; a wrong one
+            # is not.
             if off.get("city"):
                 r["ci"] = off["city"]
             if off.get("state"):
