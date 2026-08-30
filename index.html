@@ -559,6 +559,13 @@
     margin-bottom:var(--space-3)}
   .syncbar a{font-weight:600}
 
+  /* Beanie, not Beak. Beak is the highlight this page uses for things worth
+     looking at; this is the one place the board tells a reader something about
+     itself is wrong, and it should not read as a feature. */
+  .stalebar{background:var(--panel);border-left:3px solid var(--bad);
+    padding:var(--space-3);margin:0 0 var(--space-4);font-size:14.5px;
+    max-width:80ch}
+
   /* Under the banner and above everything else, because it is the one line a
      returning visitor came back for. Beak on the left edge: the only place on
      this page that colour is load-bearing rather than decorative. */
@@ -822,7 +829,7 @@
    <a class="row" href="#" id="accttheme">Switch theme →</a>
  </div>
 </header>
-<main><div class="panel" id="view"></div></main>
+<main><div id="stale"></div><div class="panel" id="view"></div></main>
 
 <!-- Anyone can propose a company. Nothing here writes to the map: it opens a
      submission, a bot researches it and opens a pull request, a person merges.
@@ -5488,8 +5495,38 @@ const VIEWS=Object.assign(Object.create(null),
   {home,jobs,companies,conferences,map:mapView,saved:savedView,intel,how});
 /* ?tab= comes off a url a stranger can edit, so an unknown value falls back to
    the board rather than throwing and leaving a blank page behind. */
+/* THE BOARD IS OLD AND THE PAGE SHOULD SAY SO WHERE A VISITOR IS LOOKING.
+ *
+ * The freshness line - "links checked 5 days ago" - has always been there and
+ * is the honest thing to print. It is also small, grey, and under the header,
+ * which is to say it is the thing nobody re-reads. A visitor on a five-day-old
+ * board reads the rows as today's jobs, because every other signal on the page
+ * says today: the counts, the "new" chips, the tense.
+ *
+ * scripts/watchdog.py asks the same question from the outside and opens an
+ * issue. This is the same question asked on behalf of the reader, who cannot
+ * see that issue. Same threshold as the watchdog - two nights, because one
+ * missed run is a slow crawl and crying wolf about it teaches people to
+ * discount the banner that matters.
+ *
+ * It says what is and is not still true, because most of it IS: the companies,
+ * the sectors and the map do not go stale in a week. What goes stale is
+ * whether a role is still open, and that is the sentence worth printing. */
+const STALE_AFTER = 2;
+function stalenessBanner(){
+  const host=$("#stale"); if(!host)return;
+  const d=D&&D.generated?dayGap(D.generated,todayISO()):null;
+  if(d===null||d<=STALE_AFTER){host.innerHTML="";return}
+  host.innerHTML=`<div class="stalebar" role="status">
+    <strong>This board was last built ${d} days ago</strong>, on
+    ${esc(D.generated.slice(0,10))}. The companies and the map are still
+    right; what may not be is whether a role is still open. Every listing
+    links straight to the employer&rsquo;s own board, which is the version that
+    is current.</div>`;
+}
 function render(){
   if(typeof VIEWS[tab]!=="function")tab="jobs";
+  stalenessBanner();
   /* A view that throws reports a VIEW failure. It used to reach the boot
      catch and be reported as "could not load data/board.json" - blaming the
      data for a bug in the page, with the real error swallowed. The board

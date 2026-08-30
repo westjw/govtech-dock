@@ -172,6 +172,32 @@ CTA_CASES = [
     # the whole text is the button: hand it back rather than return "", or a
     # link we should never have taken becomes a job with no name
     ("Apply Now", "Apply Now"),
+    ("More Details", "More Details"),
+
+    # AND THE OTHER END, which turned out to be the more common one. Eleven
+    # postings reached the public board reading like these.
+    ("Account Executive, Fire Read More", "Account Executive, Fire"),
+    ("Business Development Manager (Remote) Sales Sydney, Australia Apply now",
+     "Business Development Manager (Remote) Sales Sydney, Australia"),
+    # two labels on one flattened card - the uveye case, by name
+    ("Supply Chain Analyst Teaneck, NJ Full-time More Details Less Details",
+     "Supply Chain Analyst Teaneck, NJ Full-time"),
+    # the tail rule is deliberately stricter than the head: a title can
+    # plausibly END in "details" or "more" and cannot plausibly BEGIN with
+    # "apply now", so only whole phrases are taken off the back
+    ("Director of More Markets", "Director of More Markets"),
+    ("Analyst, Business Details", "Analyst, Business Details"),
+
+    # A KNOWN, ACCEPTED FALSE POSITIVE, recorded rather than hidden. The head
+    # rule takes "Read More" off the front of anything, so a genuine title
+    # beginning with those words loses them. This board carries 53 library
+    # companies and one of them could conceivably post it. It is kept because
+    # the alternative - dropping the head rule - readmits nine Adobe titles
+    # and every flattened card like them, and because a title beginning
+    # "Read More" is vanishingly rarer than a card beginning with the button.
+    # If it ever happens for real, the fix is a stored exception, not a
+    # loosened anchor.
+    ("Read More Books Coordinator", "Books Coordinator"),
 ]
 
 

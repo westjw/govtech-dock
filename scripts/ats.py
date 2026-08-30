@@ -1044,8 +1044,30 @@ _CTA_LEAD = re.compile(
     re.I)
 
 
+# AND THE SAME LABEL ON THE OTHER END, which is where it turned out to be more
+# common. Eleven postings on the board read "Account Executive, Fire Read More"
+# and "Business Development Manager (Remote) Sales Sydney, Australia Apply now"
+# - the second being a whole card flattened into a title, which is the uveye
+# "More Details Less Details" case wearing different words.
+#
+# It matters more than tidiness: stripping the tail is what lets
+# render_fetch.split_location find the location afterwards. With "Apply now"
+# still attached the splitter reads it as the tail and gives up; without it,
+# "Sydney, Australia" comes out as a location and the title shortens to match.
+#
+# CONSERVATIVE ON THIS SIDE. A leading "Apply" is unambiguous; a trailing bare
+# "details" or "more" is not, and a title could plausibly end in either. So the
+# tail rule takes only whole call-to-action PHRASES, and repeats them, because
+# a flattened card can carry two ("More Details Less Details").
+_CTA_TAIL = re.compile(
+    r"[\s:\u2013\u2014-]*\b(?:apply\s+now|apply\s+today|read\s+more|"
+    r"read\s+less|learn\s+more|see\s+more|see\s+details|view\s+job|"
+    r"view\s+details|job\s+details|more\s+details|less\s+details|apply)\s*$",
+    re.I)
+
+
 def strip_cta(text: str) -> str:
-    """A leading "Apply Now" off a flattened card, or the text unchanged.
+    """A button label off either end of a flattened card, or the text unchanged.
 
     Refuses to empty the string: a card whose entire text IS the button label
     is not a job with a blank name, it is a link we should not have taken, and
@@ -1053,6 +1075,12 @@ def strip_cta(text: str) -> str:
     lets the title tests below reject it as they already do.
     """
     out = _CTA_LEAD.sub("", text).strip()
+    # repeat on the tail: "... More Details Less Details" is two labels
+    for _ in range(3):
+        nxt = _CTA_TAIL.sub("", out).strip()
+        if nxt == out:
+            break
+        out = nxt
     return out or text
 
 
