@@ -2880,6 +2880,45 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_structured_matches_the_fetchers() -> int:
+    """coverage.py's STRUCTURED is ats.FETCHERS minus `html`. Keep it so.
+
+    STRUCTURED decides what counts as a real API, which is the numerator of the
+    one number this project says is worth moving. It is hand-listed, and
+    CLAUDE.md's conventions section says a new ATS type must be added in both
+    places - a sentence that has never once stopped anybody from forgetting.
+
+    The drift is silent in the worst direction: add a fetcher and leave
+    STRUCTURED alone, and every company on that new ATS is counted as `page
+    only` forever. The coverage report understates the thing it exists to
+    measure, and nothing looks wrong - the number is simply smaller than the
+    truth, which is exactly the shape "839 of 1,722" had.
+
+    `html` is excluded on purpose and only `html`: it is a page scan, which can
+    prove a role is there and never that one is not.
+    """
+    structured = _import_coverage().STRUCTURED
+    want = set(ats.FETCHERS) - {"html"}
+    missing = sorted(want - structured)
+    extra = sorted(structured - want)
+    bad = 0
+    if missing:
+        bad += fail(f"ats.py fetches {', '.join(missing)} but coverage.py's "
+                    f"STRUCTURED does not list them - every company on those "
+                    f"boards is counted as 'page only' and the one number "
+                    f"worth moving reads lower than it is")
+    if extra:
+        bad += fail(f"coverage.py counts {', '.join(extra)} as a structured API "
+                    f"and ats.py has no fetcher for it - those companies are "
+                    f"counted as monitored and are not being read")
+    return bad
+
+
+def _import_coverage():
+    import coverage
+    return coverage
+
+
 def check_ats_advice_covers_the_board() -> int:
     """Every ATS a company here actually uses needs its own "before you apply".
 
@@ -4865,6 +4904,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_structured_matches_the_fetchers()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()
