@@ -143,7 +143,14 @@ def fetch_rendered(url: str, *, timeout_ms: int = 25000,
     # ats.fetch_html_titles has refused that shape since the LinkedIn browse
     # rail put "Engineer jobs 555,845 open jobs" on the public board - and a
     # rule that only one of two extractors knows is a rule with a hole in it.
-    from ats import _JOB_COUNT
+    #
+    # THAT SENTENCE WAS WRITTEN HERE AND THEN IGNORED, one file over. strip_cta
+    # was added to fetch_html_titles alone to take Adobe's "Apply Now" off the
+    # front of nine job titles, and the very next rebuild published all nine
+    # unchanged - because Adobe's board is JavaScript and comes through THIS
+    # extractor, not that one. The commit message said they would correct on
+    # the next run. They did not.
+    from ats import _JOB_COUNT, strip_cta
 
     for href, raw in links:
         raw = re.sub(r"\s+", " ", raw or "").strip()
@@ -153,6 +160,9 @@ def fetch_rendered(url: str, *, timeout_ms: int = 25000,
             continue
         if not (JOB_HREF.search(href or "") and TITLEISH.search(raw)):
             continue
+        # Before the split, not after: "Apply Now" sits in front of the title
+        # and would otherwise be what split_location reads as the head.
+        raw = strip_cta(raw)
         title, loc = split_location(raw)
         if not TITLEISH.search(title):
             title, loc = raw, ""      # never lose a role to an over-eager split

@@ -2880,6 +2880,56 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_every_title_extractor_strips_buttons() -> int:
+    """Both extractors, not one. The CTA rule was added to one and shipped.
+
+    THIS CHECK EXISTS BECAUSE THE OBVIOUS ONE WAS NOT ENOUGH. CTA_CASES tests
+    ats.strip_cta as a function, it passed, its mutations fired - and the very
+    next rebuild published all nine of Adobe's "Apply Now Account Manager"
+    titles unchanged. strip_cta had been wired into fetch_html_titles alone,
+    and Adobe's board is JavaScript, so it comes through render_fetch.py's
+    separate extractor, which had never heard of the rule.
+
+    A function test proves the rule is CORRECT. It cannot prove the rule is
+    REACHED. render_fetch.py already carries a comment saying "a rule that only
+    one of two extractors knows is a rule with a hole in it" - written there
+    after the same mistake with the job-count rule - and the hole was reopened
+    one file over anyway.
+
+    So this asserts REACHABILITY, at source, for every path that produces a job
+    title. If a third extractor appears it has to be added here, which is the
+    point: the list of extractors is the thing that must not drift.
+    """
+    bad = 0
+    extractors = [
+        ("scripts/ats.py", "fetch_html_titles",
+         "the requests path, for server-rendered careers pages"),
+        ("scripts/render_fetch.py", "fetch_rendered",
+         "the headless-browser path, for JavaScript boards - this is the one "
+         "Adobe comes through"),
+    ]
+    for path, fn, what in extractors:
+        src = (ROOT / path).read_text()
+        if f"def {fn}(" not in src:
+            bad += fail(f"{path} has no {fn}() - this check names the title "
+                        f"extractors and one of them moved; find it and fix "
+                        f"the list, do not delete the entry")
+            continue
+        body = src[src.index(f"def {fn}("):]
+        nxt = body.find("\ndef ", 1)
+        body = body[:nxt] if nxt > 0 else body
+        # comments strip first: this file has tripped on its own prose four
+        # times, and the paragraph above mentions strip_cta repeatedly
+        code = re.sub(r"#.*$", "", body, flags=re.M)
+        code = re.sub(r'""".*?"""', "", code, flags=re.S)
+        if "strip_cta(" not in code:
+            bad += fail(f"{path}::{fn} never calls strip_cta - {what}. A job "
+                        f"title beginning 'Apply Now' reaches the public board "
+                        f"from here, and it is also the posting id, the alert "
+                        f"match and the scope-ruling key")
+    return bad
+
+
 def check_queue_rows_carry_what_the_page_renders() -> int:
     """A queue whose rows are missing the fields its renderer reads draws blank.
 
@@ -4965,6 +5015,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_every_title_extractor_strips_buttons()
     errors += check_queue_rows_carry_what_the_page_renders()
     errors += check_structured_matches_the_fetchers()
     errors += check_ats_advice_covers_the_board()
