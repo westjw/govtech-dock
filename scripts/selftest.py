@@ -2880,6 +2880,51 @@ def check_coverage_and_removed() -> int:
     return errors
 
 
+def check_jd_backfill_targets_real_pages() -> int:
+    """read_descriptions must only ask boards that have a page to ask for.
+
+    A type belongs in DETAIL_TYPES only if its postings have distinct urls.
+    Rippling's do not: 65 postings across 13 urls, because every posting on a
+    Rippling board carries the BOARD's address. Asking it 65 times downloads
+    the same JS shell 65 times, finds no JobPosting block in any of them, and
+    stamps 65 postings as read-and-empty - which the board then publishes as
+    "we read this posting and it gave no figure", 65 times, about postings
+    nobody ever opened. That is a false absence manufactured at scale, which is
+    the one failure this project is built to refuse.
+
+    Re-derived FROM THE BOARD rather than trusting the constant, so a company
+    moving onto a shared-url ATS is caught before its postings are stamped.
+    """
+    bad = 0
+    import read_descriptions as rd
+    board = json.loads((DATA / "board.json").read_text())
+    companies = json.loads((DATA / "companies.json").read_text())
+    if isinstance(companies, dict):
+        companies = companies.get("companies", [])
+    by_id = {c.get("id"): c for c in companies}
+    counts: dict[str, list] = {}
+    for p in board.get("postings", []):
+        if not p.get("url"):
+            continue
+        t = (((by_id.get(p.get("company_id")) or {}).get("ats") or {})
+             .get("type") or "").lower()
+        if t not in rd.DETAIL_TYPES:
+            continue
+        counts.setdefault(t, [0, set()])
+        counts[t][0] += 1
+        counts[t][1].add(p["url"])
+    for t, (n, urls) in sorted(counts.items()):
+        # A handful of genuine duplicate urls is normal - the same requisition
+        # cross-posted. One url standing in for many postings is not.
+        if n >= 10 and len(urls) < n * 0.8:
+            bad += fail(f"read_descriptions would fetch {n} {t} postings across "
+                        f"only {len(urls)} distinct urls - those postings share "
+                        f"a board address, so reading it would stamp them all "
+                        f"as read-and-empty and publish a pay silence nobody "
+                        f"checked. Drop {t!r} from DETAIL_TYPES.")
+    return bad
+
+
 def check_public_csv_neutralises_formulas() -> int:
     """The public export must not hand somebody a spreadsheet that runs code.
 
@@ -4760,6 +4805,7 @@ def main() -> int:
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
+    errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()
     errors += check_pay_band_is_not_an_estimate()
     errors += check_shared_board_links_open_the_board()

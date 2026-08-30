@@ -450,6 +450,27 @@ def derived(row: dict) -> dict:
     # toward silence and gets loosened only by adding anchored forms, so a
     # description parsed once at capture is frozen at whatever the parser knew
     # that day, while one parsed at build time picks up every later fix.
+    # A BACKFILLED DESCRIPTION HAS TO BE PARSED HERE, and this is the whole
+    # reason read_descriptions.py is worth running.
+    #
+    # ats.plain_rows is the one place a fetched row's description is parsed for
+    # pay, and it runs during the FETCH. A description read hours later by
+    # read_descriptions.py and folded in by jd_backfilled() never passes
+    # through it, so without this the backfill would set jd_seen true, publish
+    # "we read this posting and it gave no figure", and be wrong about the one
+    # thing it was run to find out. Measured on the captured rows below,
+    # salary.py finds a stated range in about three descriptions in four that
+    # state one.
+    #
+    # Guarded on `_from_cache` rather than on jd generally, so a row the
+    # fetcher already put through plain_rows is not parsed twice - and an
+    # ats-published `comp` is never overwritten, here or anywhere.
+    if comp is None and row.get("_from_cache"):
+        try:
+            comp = salary.parse(row.get("jd") or "")
+        except Exception:
+            comp = None
+
     cap = row.get("jd_text")
     cap = cap if isinstance(cap, str) and cap.strip() else None
     if cap and comp is None:
@@ -465,6 +486,45 @@ def derived(row: dict) -> dict:
         out["comp_floor"] = comp.get("min")
         out["comp_period"] = comp.get("period")
     return out
+
+
+# --- descriptions read outside the crawl ---------------------------------
+
+# read_descriptions.py reads the ad text for postings whose board publishes it
+# only on the posting page - seven ATS types, one extra request each, which is
+# why the crawl does not do it. Its results land in data/jd_cache.json keyed by
+# the posting url, and are folded in here.
+#
+# A FALLBACK, NEVER AN OVERRIDE. If the board handed us a description in this
+# run's own fetch, that is the fresher reading and it wins; the cache only ever
+# fills a silence. A cached description for a posting that has since been
+# rewritten is stale by definition, and the way that staleness is bounded is
+# that the posting url is the key: a rewritten posting at a new url simply has
+# no cache entry, and one at the same url is re-read by the next rotation.
+_JD_CACHE: dict | None = None
+
+
+def jd_backfilled(row: dict, url: str) -> dict:
+    """`row`, with a cached description filled in if it has none of its own."""
+    global _JD_CACHE
+    if _JD_CACHE is None:
+        try:
+            _JD_CACHE = json.loads((DATA / "jd_cache.json").read_text())
+        except (OSError, json.JSONDecodeError):
+            _JD_CACHE = {}
+        if not isinstance(_JD_CACHE, dict):
+            _JD_CACHE = {}
+    jd = row.get("jd")
+    if isinstance(jd, str) and jd.strip():
+        return row
+    hit = _JD_CACHE.get(url)
+    text = (hit or {}).get("jd") if isinstance(hit, dict) else None
+    if not (isinstance(text, str) and text.strip()):
+        return row
+    # A COPY. Mutating the fetcher's row would put the cached text back into
+    # the object the fetch loop still holds, and the whole discipline in this
+    # file is that ad text never travels further than derived().
+    return {**row, "jd": text, "_from_cache": True}
 
 
 def phase(families: dict) -> str:
@@ -873,7 +933,7 @@ def main() -> int:
                 "location": loc, "is_us": roles.is_us(loc, title),
                 # pay and jd_seen, derived off j["jd"]. The text itself is not
                 # copied into this dict and does not leave this loop.
-                **derived(j),
+                **derived(jd_backfilled(j, url)),
                 "url": safe_url(url),
                 "sector": c["sector"], "category": c["category"],
                 # extra departments this vendor also sells into, so a
