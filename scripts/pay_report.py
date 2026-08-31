@@ -6,9 +6,16 @@
 
 Nobody publishes this. Comp surveys for state-and-local software sales either
 do not exist or cost money and sample nobody you have heard of. This board
-reads 2,113 companies' own job boards every night, and pay-transparency law
-obliges a growing share of them to publish a range, so the numbers are sitting
-in the postings already.
+reads every job board it holds an address for, every night, and
+pay-transparency law obliges a growing share of employers to publish a range,
+so the numbers are sitting in the postings already.
+
+    (That sentence used to say "reads 2,113 companies' own job boards every
+    night". It was len(companies) wearing a "boards read" label - the same
+    overclaim the site's own coverage card made twice - and stale besides:
+    there are 2,058 records, 918 of them carry no board address at all, and
+    the last run actually read 337 boards. `python3 scripts/coverage.py` and
+    board.json's `boards_read` are the live figures.)
 
 THE HEADLINE CAVEAT COMES FIRST, NOT IN A FOOTNOTE. Only a minority of
 quota-carrying postings state a figure at all. Every number below describes
@@ -72,15 +79,29 @@ def load(p: pathlib.Path, default=None):
         return default
 
 
+def _rank(v: list, p: float) -> int:
+    """Nearest-rank percentile: the smallest value at or above p of the set.
+
+    `ceil(p*n) - 1` on a 0-indexed list. Written out because the obvious
+    `v[n // 4]` is an UNDECREMENTED RANK used as an index, and it is right for
+    three n in four - which is why it survived. At n = 28 it read v[7] and
+    v[21] where the quartiles are v[6] and v[20], and the remote band printed
+    a $145k upper quartile against a true $130k. A $15k error on the figure
+    somebody quotes back across a table.
+    """
+    n = len(v)
+    i = -((-int(round(p * n * 1000))) // 1000)       # ceil(p*n), no float slop
+    return v[min(max(i - 1, 0), n - 1)]
+
+
 def _band(vals: list[int]) -> dict:
     """Median and the middle half. A single number hides the spread a reader
     is actually negotiating inside."""
     v = sorted(vals)
-    n = len(v)
-    return {"n": n,
+    return {"n": len(v),
             "median": int(statistics.median(v)),
-            "p25": int(v[n // 4]),
-            "p75": int(v[(3 * n) // 4]) if n >= 4 else int(v[-1])}
+            "p25": int(_rank(v, 0.25)),
+            "p75": int(_rank(v, 0.75))}
 
 
 def report() -> dict:
@@ -91,7 +112,14 @@ def report() -> dict:
     stated, other_period, other_ccy = [], 0, 0
     for p in quota:
         c = p.get("comp") or {}
-        if not isinstance(c.get("min"), int):
+        v = c.get("min")
+        # ANY NUMBER, so the exclusion counters can see what they exclude.
+        # This tested `isinstance(v, int)` FIRST, and an hourly rate is
+        # fractional - so two of the three hourly quota postings were floats,
+        # were dropped before the period test ever ran, and the report said
+        # "1 states an hourly or monthly rate" where three do. A counter
+        # downstream of a filter that eats its own subject counts survivors.
+        if isinstance(v, bool) or not isinstance(v, (int, float)):
             continue
         if c.get("period") != "year":
             other_period += 1
@@ -123,7 +151,7 @@ def report() -> dict:
         for p in stated:
             k = key(p)
             if k:
-                groups[str(k)].append(p["comp"]["min"])
+                groups[str(k)].append(int(p["comp"]["min"]))
         good, thin = {}, {}
         for k, vals in groups.items():
             (good if len(vals) >= MIN_N else thin)[k] = (
@@ -146,7 +174,15 @@ def report() -> dict:
 
     cut("seniority", lambda p: p.get("seniority"))
     cut("sector", lambda p: p.get("sector"))
-    cut("work_mode", lambda p: p.get("work_mode"))
+    # "not stated" IS ROLES.PY'S ABSENCE SENTINEL, not a work mode. It is a
+    # truthy string, so `if k:` filed all 118 of them as classified and the
+    # report printed "146 of 146 postings carry a work mode" - clearing the
+    # 90% threshold that would otherwise have attached a coverage caveat.
+    # CLAUDE.md: work_mode is `not stated` on 79% of postings because most
+    # boards never say it.
+    cut("work_mode",
+        lambda p: (p.get("work_mode")
+                   if p.get("work_mode") != "not stated" else None))
     cut("office_state", lambda p: (p.get("office") or {}).get("state"))
     return out
 

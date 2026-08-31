@@ -3480,6 +3480,69 @@ def check_boards_read_agrees_with_coverage() -> int:
     return bad
 
 
+def check_pay_report_arithmetic() -> int:
+    """The pay report publishes figures somebody negotiates against.
+
+    Three defects, all found by audit rather than here, and all the same
+    shape: a number that is right most of the time, or a sentinel counted as
+    a fact.
+
+    1. _band's percentiles were `v[n // 4]` and `v[(3*n) // 4]` - an
+       undecremented rank used as a 0-indexed index. Correct for three n in
+       four, which is exactly why it survived. At n = 28 the remote band
+       printed a $145k upper quartile where the true one is $130k.
+    2. work_mode's cut counted roles.py's "not stated" sentinel as a
+       classification. It is a truthy string, so the coverage line read
+       "146 of 146 postings carry a work mode" and cleared the 90% threshold
+       that attaches the caveat - while 118 of the 146 state no mode at all,
+       and a phantom "not stated" band was printed as if it were one.
+    3. The exclusion counters sat downstream of `isinstance(min, int)`, and
+       an hourly rate is fractional - so two of three hourly postings were
+       dropped before the period test and the report said 1 where 3 is true.
+
+    Checked as arithmetic against a known answer, not by reading source.
+    """
+    pay = _import_pay_report()
+    bad = 0
+    # NEAREST RANK, against a hand-worked case. 1..28 has its 25th percentile
+    # at the 7th value and its 75th at the 21st.
+    v = list(range(1, 29))
+    b = pay._band(v)
+    if (b["p25"], b["p75"]) != (7, 21):
+        bad += fail(f"_band on 1..28 gives p25={b['p25']} p75={b['p75']}; "
+                    f"nearest-rank quartiles are 7 and 21. An undecremented "
+                    f"rank used as an index is right for three n in four and "
+                    f"wrong on the fourth")
+    for n in range(1, 60):
+        vv = list(range(1, n + 1))
+        bb = pay._band(vv)
+        for label, q, got in (("p25", 0.25, bb["p25"]), ("p75", 0.75, bb["p75"])):
+            want = vv[min(max(-((-int(round(q * n * 1000))) // 1000) - 1, 0), n - 1)]
+            if got != want:
+                bad += fail(f"_band {label} at n={n} is {got}, nearest rank "
+                            f"is {want}")
+                return bad
+    r = pay.report()
+    # NO SENTINEL MAY BE A BAND. "not stated" is an absence; printing it as a
+    # work mode gives a band of 118 postings the authority of a measurement.
+    for cut, bands in (r.get("bands") or {}).items():
+        for name in bands:
+            if name.strip().lower() in ("not stated", "unknown", "none", "n/a", ""):
+                bad += fail(f"pay_report prints a '{name}' band under {cut}. "
+                            f"That is an absence sentinel, and a band built "
+                            f"from it reports 'we do not know' as a category")
+    # AND THE COVERAGE LINE MUST COUNT THE SAME WAY THE BANDS DO.
+    for cut, cvg in (r.get("coverage") or {}).items():
+        got = (sum(b["n"] for b in (r["bands"].get(cut) or {}).values())
+               + (r["not_enough_data"].get(cut) or {}).get("postings", 0))
+        if cvg.get("classified") != got:
+            bad += fail(f"pay_report says {cvg['classified']} postings carry a "
+                        f"{cut} but its bands account for {got} - the coverage "
+                        f"line and the table beneath it are counting "
+                        f"different sets")
+    return bad
+
+
 def check_built_pages_count_openings_not_rows() -> int:
     """A heading that says N must sit over a listing of N things.
 
@@ -6459,6 +6522,7 @@ def main() -> int:
     errors += check_pay_report_states_what_it_omits()
     errors += check_every_check_is_actually_run()
     errors += check_ship_path_attaches_active()
+    errors += check_pay_report_arithmetic()
     errors += check_built_pages_count_openings_not_rows()
     errors += check_momentum_counts_openings_not_rows()
     errors += check_active_badge_is_shipped_honestly()
