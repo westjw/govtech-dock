@@ -1,27 +1,25 @@
 {
   "project_id": "govtech_dock",
   "repo": "westjw/govtech-dock",
-  "last_updated": "2026-08-24T09:45:00-04:00",
+  "last_updated": "2026-08-31T02:40:00-04:00",
   "status": "Active Build",
-  "progress_pct": 42,
-  "progress_note": "42% of the WHOLE scope, reframed - the free board is ~80% done, the paid product is 0%. The previous 72% was the free board only, reported as if it were the project.",
-  "next_move": "Owner, in this order: create the ALERTS KV namespace + bind it, add RESEND_KEY to Pages, add the four repo secrets, then work DEPLOY.md end to end. Until then alerts report 'not configured', nothing sends, and the board is not public.",
-  "session_summary": "No product code this session - CLAUDE.md was rewritten against what the code actually does, because it is the file every future session reads first and three of its claims were false. Corrected: the admin has a token, a Host check and a route allowlist rather than 'no auth'; a headless render of 25 page-only boards recovered 8, not zero; and the product is SLED JOBS with data/brand.json as the single source for name, domain and palette. Added the systems built since it was last touched - journal/undo, notes, posts_at, identity_labels, salary, the agent spine, the posting-vs-opening ids - and re-derived the coverage numbers.",
+  "progress_pct": 46,
+  "progress_note": "46% of the WHOLE scope. The free board is ~88% - it is live, indexed, and its numbers now say what they mean. The paid product is still 0%, so most of the gap to 100% is a half nobody has started.",
+  "next_move": "Owner, in this order: delete the two stale Cloudflare Pages deployments, verify the site in Search Console, then decide the three prices. Everything else on the board is unblocked.",
+  "session_summary": "Two rounds of adversarial review against the night's own work, then the fixes. The structural finding: every new guard read public/, which is gitignored and rebuilt on push, and refresh.yml runs selftest FIRST - so in CI they all took their exists() escape and passed. Six mutations to the night's fixes went green. Five guards now build what they check into a temp dir; the badge guard could not, so build_site.attach_active was extracted and is called directly. That extraction immediately opened a smaller hole (main() could stop calling it) which needed its own source-level guard - and that guard did not run for its first minute, because checks here register by a hand-written call line and I wrote the function without it. check_every_check_is_actually_run now compares every def to every call. Separately, the 'boards read this run' card was retired: it added the two coverage buckets CLAUDE.md forbids adding, and 866 of the 1,163 it reported are pages a fetcher cannot enumerate. It is now counted from the run.",
   "recent_work": [
-    "CLAUDE.md: admin security section rewritten - token, Host check, six-route allowlist, /api/token refused to web origins, frame refusal, all asserted by selftest::check_admin_http",
-    "CLAUDE.md: the 'headless Chromium recovered ZERO' claim replaced with the measured trial - 8 of 25 pages gave up 26 rows, 17 recorded as 'read produced nothing', all 25 still pending and none accepted",
-    "CLAUDE.md: the Chrome private-network claim demoted from settled fact - PNA is Chrome-only, Firefox and Safari have not implemented it",
-    "CLAUDE.md: SLED JOBS naming, brand.json as single source, the _brand.js drift guard, the design system stated so nobody re-approximates it",
-    "CLAUDE.md: new sections for journal.py/admin_undo.py, notes.py, posts_at.py, identity_labels.py, salary.py, agents.py, and opening_id vs posting_id (479 openings vs 617 quota rows)",
-    "CLAUDE.md: coverage re-derived (270 structured / 888 page only / 240 blocked / 568 absent / 142 unchecked) with what the 55% and 75% ratios actually mean",
-    "CLAUDE.md: 'do not write to the owner's live admin' added as a house rule, with the 86 agent writes of 2026-08-24 as the incident",
-    "CLAUDE.md: the Roadmap section cut - three of its five items are built and the rest live in the coverage worklist and the agent spine",
-    "DEPLOY.md: retitled to SLED JOBS, and the going-public audit flagged as predating admin_journal.jsonl, identity_labels.jsonl and company notes"
+    "selftest: five crawl guards repointed from public/ to a built() temp dir - all of them silently skipped in CI, where they are the only thing standing between a bad build and the live site",
+    "check_every_check_is_actually_run: every `def check_*` must be called. Written after a brand-new guard sat inert while the suite printed 'all checks passed'. Found no other orphans",
+    "check_ship_path_attaches_active: source-level, because extracting attach_active() to make it testable moved it out of the path the test was guarding",
+    "boards_read replaces companies_read: counted from the fetch loop's own error state, not derived from structured + page only, which CLAUDE.md forbids adding together",
+    "The how-it-works card renders nothing rather than a zero until a crawl ships the field, and says why. Verified in a browser at 1200x900",
+    "momentum.surge(): removed a window_days parameter that nothing passed and that changed no answer - rule 1 picks the window by comparability",
+    "Eight mutations verified to fail the suite under CI conditions (public/ absent), including four against the new boards_read guard"
   ],
   "blockers": [
-    "PAID HALF NOT STARTED: no pricing, no billing, no accounts, no employer-side posting. The only paid intent on record is 'alerts, paid eventually' in the owner's 2026-08-23 spec. Any progress number that ignores this is the free board wearing the project's name.",
-    "Repo visibility flip to public is the owner's click; it also switches on public submissions",
-    "Alerts send nothing until the owner creates the KV namespace and the four secrets",
-    "888 companies (42% of the map) are page-only boards no fetcher can enumerate; the read agent has 25 pending proposals against that pile and a person has accepted none of them"
+    "PAID HALF NOT STARTED: no pricing, no billing, no accounts, no employer-side posting. The only paid intent on record is 'alerts, paid eventually' in the owner's 2026-08-23 spec.",
+    "Owner's three: delete two stale Cloudflare Pages deployments, verify in Search Console, set the three prices.",
+    "boards_read is absent from the live board until the next nightly crawl writes it; the card is correctly hidden until then.",
+    "866 companies (42% of the map) are page-only boards no fetcher can enumerate; the read agent's proposals against that pile are still all pending and a person has accepted none."
   ]
 }
