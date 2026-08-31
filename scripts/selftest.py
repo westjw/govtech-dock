@@ -3090,6 +3090,66 @@ def check_middleware_separates_unreadable_from_gone() -> int:
     return bad
 
 
+def check_active_badge_is_shipped_honestly() -> int:
+    """The badge on the page must be the momentum rules, not a looser copy.
+
+    A badge saying "hiring hard" is a claim about an employer. It is derived
+    from our own daily snapshots rather than from anybody's clicks, and
+    momentum.py refuses far more than it reports - comparable baseline, same
+    classifier on both sides, and a company with nothing at the baseline
+    excluded because "they had none" and "we could not see them" are
+    indistinguishable from a snapshot.
+
+    The risk in shipping it is that the page grows its own looser version. So:
+    the list on the board must be exactly what momentum returns, an empty list
+    must render no badge, and the tooltip must say what the number is - a badge
+    whose basis nobody can see is a claim nobody can check.
+    """
+    bad = 0
+    # THE SHIPPED COPY, not data/board.json. build_site writes `active` onto
+    # the sanitized board on its way out, so data/board.json never has it - and
+    # the first version of this check read that file, found nothing, and
+    # returned 0. A check pointed at the wrong artifact tests nothing, which is
+    # the tenth time today that shape has turned up and the first time in a
+    # check I wrote while fixing the other nine.
+    shipped = ROOT / "public" / "data" / "board.json"
+    if not shipped.exists():
+        return 0                      # nothing built yet
+    board = json.loads(shipped.read_text())
+    active = board.get("active")
+    if active is None:
+        bad += fail("the shipped board carries no `active` list at all, so "
+                    "build_site is not computing it and the badge can never "
+                    "appear")
+        return bad
+    mom = _import_momentum()
+    want = {c["id"] for c in (mom.surge().get("companies") or [])}
+    got = {a["id"] for a in active}
+    if got != want:
+        bad += fail(f"the shipped active list {sorted(got)} is not what "
+                    f"momentum returns {sorted(want)} - the page has its own "
+                    f"rules for who counts as hiring hard")
+    for a in active:
+        if not (isinstance(a.get("was"), int) and isinstance(a.get("now"), int)):
+            bad += fail(f"active entry {a.get('id')} carries no before/after "
+                        f"counts, so the badge cannot say what it is claiming")
+        elif a["now"] <= a["was"]:
+            bad += fail(f"{a.get('id')} is marked active with {a['was']} -> "
+                        f"{a['now']}, which is not an increase")
+    src = (ROOT / "index.html").read_text()
+    if "hotChip(" not in src:
+        bad += fail("index.html no longer renders the active badge")
+    blk = src[src.index("function hotChip("):]
+    blk = blk[:blk.index("\nfunction ")]
+    if "if(!a) return" not in re.sub(r"\s+", "", blk).replace("if(!a)return", "if(!a) return"):
+        bad += fail("hotChip does not return empty for a company that is not "
+                    "in the list - a badge on everything means nothing")
+    if "title=" not in blk:
+        bad += fail("the active badge carries no tooltip saying what the "
+                    "number is, so the claim cannot be checked by the reader")
+    return bad
+
+
 def check_boards_read_agrees_with_coverage() -> int:
     """The card must not contradict the table three inches below it.
 
@@ -5944,6 +6004,7 @@ def main() -> int:
     errors += check_busy_port_does_not_traceback()
     errors += check_structured_data_claims_no_posting_date()
     errors += check_middleware_separates_unreadable_from_gone()
+    errors += check_active_badge_is_shipped_honestly()
     errors += check_boards_read_agrees_with_coverage()
     errors += check_active_badge_measures_them_not_us()
     errors += check_sitemap_offers_the_job_pages()

@@ -559,6 +559,11 @@
     margin-bottom:var(--space-3)}
   .syncbar a{font-weight:600}
 
+  /* Beak, the one highlight colour on this page, because this is the one row
+     state worth looking at rather than reading. */
+  .hot{background:var(--beak);color:var(--penguin);font-weight:700;
+    font-size:11px;letter-spacing:.04em;padding:1px 6px;text-transform:uppercase}
+
   /* Beanie, not Beak. Beak is the highlight this page uses for things worth
      looking at; this is the one place the board tells a reader something about
      itself is wrong, and it should not read as a feature. */
@@ -3744,7 +3749,37 @@ function exportCompanies(){
   if(btn){btn.textContent=`${rows.length.toLocaleString()} exported`;
     setTimeout(()=>{if(btn)btn.textContent="export this list"},2200)}
 }
+/* WHO IS HIRING HARDER THAN THEY WERE, from our own daily snapshots.
+ *
+ * Wyeth asked for "active" or "hot" rather than a counter, and that turned out
+ * to be the better signal for a reason beyond how it reads: a click count
+ * measures OUR traffic, this measures THEIR hiring. No visitor is tracked to
+ * produce it.
+ *
+ * scripts/momentum.py does the derivation and refuses far more than it
+ * reports: the baseline has to be comparable across the id change, both sides
+ * are counted with the same classifier, and a company with nothing at the
+ * baseline is excluded outright because "they had none" and "we could not see
+ * them" are indistinguishable from a snapshot.
+ *
+ * EMPTY IS THE NORMAL CASE. Three companies qualify this week out of 2,113. A
+ * badge on everything means nothing; a badge on nothing is the honest output
+ * of a quiet week, and the tooltip says what the number is so nobody has to
+ * guess what "active" was measuring. */
+const ACTIVE = new Map();
+function loadActive(){
+  ACTIVE.clear();
+  (D.active || []).forEach(a => ACTIVE.set(a.id, a));
+}
+function hotChip(id){
+  const a = ACTIVE.get(id);
+  if(!a) return "";
+  return ` <span class="hot" title="${a.was} quota-carrying role${a.was===1?"":"s"}`
+       + ` on ${esc(D.active_since||"the last comparable snapshot")}, ${a.now} now">`
+       + `hiring hard</span>`;
+}
 function drawCos(){
+  loadActive();
   const g=i=>{const el=$("#"+i);return el?el.value:"";};
   const q=(g("c-q")||"").trim().toLowerCase();
   if(q!==CO_LASTQ){
@@ -3908,7 +3943,7 @@ function drawCos(){
     row.onclick=()=>co(o.id);
     row.innerHTML=`${tileHTML(o.name,o.id,"tile")}
       <div class="main">
-        <div class="t">${esc(o.name)}</div>
+        <div class="t">${esc(o.name)}${hotChip(o.id)}</div>
         <div class="m">${esc(o.sector)} / ${esc(o.category)}${
           (o.also||[]).map(a=>" &middot; "+esc(a.sector)+" / "+esc(a.category)).join("")}${
           o.location?" &middot; "+esc(o.location):""}

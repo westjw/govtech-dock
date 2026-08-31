@@ -1077,6 +1077,36 @@ def main() -> int:
     build_admin_bundle(out)
 
     board, stripped = sanitize(board_src)
+
+    # WHICH COMPANIES ARE ACTUALLY PUSHING, onto the shipped board so a reader
+    # can see it. scripts/momentum.py derives it from our own daily snapshots -
+    # their hiring, not our traffic - so no visitor is counted to produce it.
+    #
+    # Computed HERE rather than in build_board because it needs the day's
+    # history snapshot, which build_board writes on its way out, and because a
+    # signal this cheap should not cost a twenty-minute crawl to refresh.
+    #
+    # A LIST, NEVER A FLAG PER COMPANY. If nothing qualifies the key is an
+    # empty list and the page renders no badge at all, which is the same rule
+    # the home banner follows when a run was quiet: a badge that appears on
+    # everything means nothing, and one that appears on nothing is the honest
+    # output of a week where nobody surged.
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import momentum as _mom
+        surge = _mom.surge()
+        board["active"] = ([{"id": c["id"], "was": c["was"], "now": c["now"]}
+                            for c in surge.get("companies", [])]
+                           if surge.get("ready") else [])
+        board["active_since"] = surge.get("since")
+        print(f"  active: {len(board['active'])} company(ies) hiring harder "
+              f"since {surge.get('since') or 'n/a'}")
+    except Exception as e:                       # noqa: BLE001
+        # A signal that cannot be computed must not cost the build. An empty
+        # list renders nothing, which is what a reader should see when we do
+        # not know - never a badge on a guess.
+        board["active"], board["active_since"] = [], None
+        print(f"  active: not computed ({type(e).__name__}), no badges shipped")
     # separators: the site is served gzipped, but 300KB of whitespace is still
     # 300KB the browser has to parse.
     (out / "data" / "board.json").write_text(
