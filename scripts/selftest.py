@@ -2634,11 +2634,24 @@ def check_prerendered_pages() -> int:
                   "quota_roles": 1, "sector": "General Gov",
                   "description": "Sells things to cities"},
                  {"id": "quiet", "name": "Quiet Co", "open_roles": 0}],
+             # EVERY POSTING CARRIES BOTH IDS, because every real one does -
+             # 0 of 4,439 on the live board lack opening_id. This fixture
+             # omitted it, and when the company page started grouping by
+             # opening (so a requisition in forty cities stops printing forty
+             # times) this check raised KeyError instead of failing.
+             #
+             # The fix is the fixture, not a .get() fallback in build_site: a
+             # fallback would make a board that somehow lost the field degrade
+             # silently back to counting rows, which is the defect being
+             # closed. A fixture that does not look like the data cannot test
+             # the code that reads the data.
              "postings": [
-                 {"id": "1", "company_id": "seller", "company": "Seller Co",
+                 {"id": "1", "opening_id": "seller::Account Executive",
+                  "company_id": "seller", "company": "Seller Co",
                   "title": "Account Executive", "family": "gtm",
                   "quota_carrying": True, "office": {"state": "CA"}},
-                 {"id": "2", "company_id": "seller", "company": "Seller Co",
+                 {"id": "2", "opening_id": "seller::Backend Software Engineer",
+                  "company_id": "seller", "company": "Seller Co",
                   "title": "Backend Software Engineer", "family": "engineering",
                   "office": {"state": "CA"}}]}
     tmp = _pl.Path(tempfile.mkdtemp())
@@ -3136,6 +3149,13 @@ def built() -> "pathlib.Path | None":
         build_site.write_meta_index(out, board)
         build_site.write_crawl_files(out, board, brand)
         build_site.write_headers(out)
+        # THE PAGES WITH NUMBERS ON THEM. Added after an audit found /s/mi
+        # shipping "12 open roles ... 9 quota-carrying" against 4 openings of
+        # which 1 carried a quota, and /c/xplor-recreation heading a
+        # forty-row list with "17 open roles" and closing "60 more are on the
+        # board". Neither had ever been built by this suite.
+        build_site.write_company_pages(out, board, brand)
+        build_site.write_state_pages(out, board, brand)
         _BUILT["path"] = out
     except Exception as e:                        # noqa: BLE001
         # A build that cannot run must SAY so rather than let five checks
@@ -3460,6 +3480,133 @@ def check_boards_read_agrees_with_coverage() -> int:
     return bad
 
 
+def check_built_pages_count_openings_not_rows() -> int:
+    """A heading that says N must sit over a listing of N things.
+
+    THE XPLOR CASE, ON TWO SHIPPED PAGE TYPES, FOUND BY AUDIT RATHER THAN BY
+    THIS FILE. /c/xplor-recreation.html was headed "17 open roles, 1 of them
+    quota-carrying" over forty identical "Account Executive" rows - one
+    requisition in forty cities - and closed "60 more are on the board", so a
+    reader was told a hundred jobs sat behind a heading that said seventeen.
+    /s/mi.html said "12 open roles across 3 companies, 9 quota-carrying"; the
+    real Michigan figures are 4 openings and 1 quota-carrying, and all nine of
+    those "quota-carrying roles" were the same Xplor req.
+
+    CLAUDE.md states the rule in one line - "The headline counts openings, not
+    rows" - and it held on the home banner and the company card while these
+    two page types quietly counted rows. The state sentence is also the page's
+    meta description, so the inflated number is what a search result renders.
+
+    Checked against the BUILT pages: parse the heading number out and count
+    the list items under it. An arithmetic guard on the source would have to
+    be rewritten every time the sentence is reworded; this one reads what
+    ships.
+    """
+    out = built()
+    if out is None:
+        return fail(f"could not build the site to check it: {_BUILT.get('why')}")
+    bad = 0
+    # WHAT EACH PAGE TYPE LISTS, which is not the same thing on both and is
+    # why the first version of this check failed 40 state pages that were
+    # correct. A company page lists one item per OPENING, so the "N open
+    # roles" heading is the number to match. A state page lists one item per
+    # COMPANY, so the number to match is "across N companies" - its "open
+    # roles" figure is a total across all of them and is checked separately
+    # below, against the openings actually on the page.
+    KINDS = (("c", r"(\d+) open role", "openings"),
+             ("s", r"across (\d+) compan", "companies"))
+    for kind, pat, unit in KINDS:
+        d = out / kind
+        if not d.exists():
+            bad += fail(f"build_site wrote no /{kind}/ pages, so nothing on "
+                        f"this page type is being checked at all")
+            continue
+        for f in sorted(d.glob("*.html")):
+            src = f.read_text()
+            m = re.search(pat, src)
+            if not m:
+                continue
+            said, listed = int(m.group(1)), src.count("<li>")
+            capped = "more are on the board" in src or "more compan" in src
+            if not capped and listed and said != listed:
+                bad += fail(
+                    f"/{kind}/{f.stem} says {said} {unit} over a list of "
+                    f"{listed} items. On this page type the list is one item "
+                    f"per {unit[:-3] if unit.endswith('ies') else unit[:-1]}"
+                    f"y, so the heading is counting posting rows - one "
+                    f"requisition in several cities reads as several jobs")
+                if bad > 4:
+                    return bad          # the shape is established
+
+    # AND THE STATE TOTAL AGAINST THE BOARD ITSELF. /s/mi said "12 open roles
+    # ... 9 quota-carrying" where Michigan holds 4 openings and 1 of them
+    # carries a quota. Re-derived here from the same board the page was built
+    # from, because that sentence is the page's meta description and is what
+    # a search result renders.
+    SALES = {"gtm", "field"}
+    board = json.loads((DATA / "board.json").read_text())
+    per: dict = {}
+    for p_ in board.get("postings") or []:
+        st = (p_.get("office") or {}).get("state")
+        if st and p_.get("family") in SALES:
+            per.setdefault(st, []).append(p_)
+    for st, ps in sorted(per.items()):
+        f = out / "s" / f"{st.lower()}.html"
+        if not f.exists():
+            continue
+        src = f.read_text()
+        m = re.search(r"(\d+) open role", src)
+        if not m:
+            continue
+        want = len({p_["opening_id"] for p_ in ps})
+        if int(m.group(1)) != want:
+            bad += fail(f"/s/{st.lower()} says {m.group(1)} open roles; "
+                        f"{st} holds {want} distinct openings across "
+                        f"{len(ps)} posting rows")
+            return bad
+        mq = re.search(r"(\d+) quota-carrying", src)
+        wantq = len({p_["opening_id"] for p_ in ps if p_.get("quota_carrying")})
+        if mq and int(mq.group(1)) != wantq:
+            bad += fail(f"/s/{st.lower()} says {mq.group(1)} quota-carrying; "
+                        f"{st} holds {wantq} distinct quota-carrying openings")
+            return bad
+    return bad
+
+
+def check_momentum_counts_openings_not_rows() -> int:
+    """One requisition relisted in a second city is not a company hiring harder.
+
+    THIS SHIPPED A FALSE BADGE ON A REAL COMPANY. Mueller Water Products went
+    from 4 quota-carrying posting ROWS to 6 and lit the "hiring hard" chip on
+    the public Companies tab. In openings - which is the unit CLAUDE.md says
+    the headline counts, and the unit the Xplor case exists to defend - it
+    went from 4 to 5. One new requisition, under MIN_ADDED. The sixth row was
+    an existing job posted to another city.
+
+    A badge is a leaderboard with one row on it, so it inherits the leaderboard
+    rule. Exercised behaviourally against a fixture rather than by matching
+    source, because the defect is arithmetic: the same title under two hashes
+    must count once.
+    """
+    mom = _import_momentum()
+    ids = {
+        # one company, ONE opening, advertised in three cities
+        "acme::Account Executive::h1",
+        "acme::Account Executive::h2",
+        "acme::Account Executive::h3",
+        # and a genuinely different seller req
+        "acme::Enterprise Account Executive::h9",
+    }
+    got = mom.per_company(ids, quota_only=True).get("acme")
+    if got != 2:
+        return fail(f"momentum.per_company reports {got} quota-carrying "
+                    f"openings for a company advertising two requisitions, one "
+                    f"of them in three cities. Counting rows is what put a "
+                    f"'hiring hard' badge on Mueller Water Products for "
+                    f"relisting a job it already had open")
+    return 0
+
+
 def check_active_badge_measures_them_not_us() -> int:
     """"Active" must be a fact about the employer, not about our crawler.
 
@@ -3475,9 +3622,16 @@ def check_active_badge_measures_them_not_us() -> int:
     and "we could not see them" are indistinguishable, so a company with no
     postings at the baseline is excluded outright.
 
-    Exercised against synthetic snapshots, because the live data currently
-    qualifies NOBODY - a rule that never fires is indistinguishable from a
-    broken one, and the honest empty output is itself worth pinning.
+    Exercised against synthetic snapshots so the rule can be driven at will,
+    NOT because the live data qualifies nobody. This paragraph used to say it
+    did, and that was false and load-bearing: three companies qualified while
+    it said so, and one of them - Mueller Water Products - was a false
+    positive from counting rows instead of openings. A maintainer reading
+    "the rule currently fires on nobody" has no reason to go and look at what
+    it is firing on, which is how the false badge stayed up.
+
+    Re-derive the live output rather than trusting any sentence here about
+    it: `python3 scripts/momentum.py`.
     """
     import shutil as _sh
     import tempfile as _tf
@@ -6305,6 +6459,8 @@ def main() -> int:
     errors += check_pay_report_states_what_it_omits()
     errors += check_every_check_is_actually_run()
     errors += check_ship_path_attaches_active()
+    errors += check_built_pages_count_openings_not_rows()
+    errors += check_momentum_counts_openings_not_rows()
     errors += check_active_badge_is_shipped_honestly()
     errors += check_boards_read_agrees_with_coverage()
     errors += check_active_badge_measures_them_not_us()

@@ -40,11 +40,21 @@ FOUR RULES, AND EACH ONE EXISTS BECAUSE THE OBVIOUS VERSION IS WRONG.
 4. QUOTA-CARRYING ROLES ONLY. A company opening nine engineering reqs is not
    news to a seller. This board is for people who carry a number.
 
-WHAT IT SAYS TODAY: almost nothing, and that is the correct output. Over the
-current comparable window exactly one company qualifies, by one role. The badge
-stays dark until the history is deep enough to mean something, the same way the
-home banner drops a slide rather than printing a zero. It lights itself as the
-snapshots accumulate; nobody has to come back and switch it on.
+5. COUNT OPENINGS, NOT ROWS. This one shipped wrong and put a false badge on a
+   real company. Mueller Water Products went 4 quota-carrying rows to 6 and
+   lit up - but that is 4 openings to 5, one new requisition, under the floor.
+   The sixth row was an existing job relisted in another city. CLAUDE.md says
+   the headline counts openings not rows, for exactly this reason, and a badge
+   is a leaderboard with one row on it.
+
+WHAT IT SAYS TODAY, re-derived rather than remembered: two companies qualify
+over the comparable window, InitLive and Bruker Detection, each having gone
+from two quota-carrying openings to four. Run it rather than quoting this
+paragraph - the previous version of it said "exactly one company qualifies, by
+one role" and stayed on the page after the code could no longer produce that
+answer at all. MIN_ADDED is 2, so "by one role" describes an outcome this
+module forbids; it also said the badge stays dark while the badge was lit on
+three companies, one of them wrongly.
 """
 from __future__ import annotations
 
@@ -101,7 +111,24 @@ def _title_of(pid: str) -> str:
 
 
 def per_company(ids: set, quota_only: bool = False) -> collections.Counter:
-    """Postings per company id, read straight off the snapshot. See rule 2.
+    """OPENINGS per company id, read straight off the snapshot. See rule 2.
+
+    RULE 5, AND IT IS THE SAME RULE THE HEADLINE HAS FOLLOWED ALL ALONG. This
+    counted posting ROWS, and CLAUDE.md's most-repeated instruction is that
+    the headline counts OPENINGS, not rows, because Xplor advertised one
+    requisition in 93 cities and counting rows put a single advertisement
+    third on a leaderboard of the biggest pushes in the market.
+
+    A badge is a leaderboard with one row. Mueller Water Products went from 4
+    quota-carrying rows to 6 and lit the badge - but 4 rows were 4 openings
+    and 6 rows are 5 openings, so the real change is ONE requisition, under
+    MIN_ADDED, and the badge fired because somebody relisted an existing job
+    in a second city. It shipped that way, on a public page, as a claim about
+    a real company's hiring.
+
+    The posting id is company::title::hash, so the opening is recoverable from
+    the snapshot alone - the same property rule 2 relies on. Counting the set
+    of distinct titles is what "how many jobs do they have open" means.
 
     BOTH SIDES MUST BE COUNTED THE SAME WAY, and the first version of this was
     not. It took `keep=quota`, a set of TODAY's quota-carrying posting ids, and
@@ -116,12 +143,13 @@ def per_company(ids: set, quota_only: bool = False) -> collections.Counter:
     same rule the board uses, so the question can be asked of both snapshots
     identically. That is the only basis on which a difference means anything.
     """
-    c: collections.Counter = collections.Counter()
+    openings: dict[str, set] = collections.defaultdict(set)
     for i in ids:
-        if quota_only and not roles.is_quota_carrying(_title_of(i)):
+        t = _title_of(i)
+        if quota_only and not roles.is_quota_carrying(t):
             continue
-        c[i.split("::")[0]] += 1
-    return c
+        openings[i.split("::")[0]].add(t)
+    return collections.Counter({k: len(v) for k, v in openings.items()})
 
 
 def surge() -> dict:

@@ -508,14 +508,24 @@ def write_company_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
         # Sales first, then the rest, then capped. This site is about sales
         # roles, so a page opening with forty engineering titles buries the
         # thing somebody came for - and Verkada alone carries 247 openings,
-        # which is 38KB of list nobody reads to the end of. The count above is
-        # the true total either way; what is capped is the listing, and the
-        # page says so rather than letting the two disagree.
+        # which is 38KB of list nobody reads to the end of.
+        #
+        # THE LISTING IS ONE ROW PER OPENING, and it was one row per POSTING
+        # while the heading above it counted openings. Xplor's page read "17
+        # open roles, 1 of them quota-carrying", then printed the title
+        # "Account Executive" forty times over - the same requisition in forty
+        # cities - and closed with "60 more are on the board". The reader was
+        # told a hundred jobs sat behind a heading that said seventeen. The
+        # comment that used to be here claimed the page "says so rather than
+        # letting the two disagree"; it was the disagreement.
         SALES = {"gtm", "field"}
-        roles = sorted(by_co.get(o["id"], []),
-                       key=lambda r: (r.get("family") not in SALES,
-                                      not r.get("quota_carrying"),
-                                      r.get("title") or ""))
+        groups: dict = {}
+        for r in sorted(by_co.get(o["id"], []),
+                        key=lambda r: (r.get("family") not in SALES,
+                                       not r.get("quota_carrying"),
+                                       r.get("title") or "")):
+            groups.setdefault(r["opening_id"], []).append(r)
+        roles = list(groups.values())
         shown, hidden = roles[:40], max(0, len(roles) - 40)
         bits = [x for x in (o.get("sector"), o.get("category")) if x]
         facts = " &middot; ".join(html.escape(x) for x in (
@@ -523,8 +533,17 @@ def write_company_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
             html.escape(o["location"]) for _ in [1] if o.get("location")] + [
             "founded " + html.escape(str(o["year_founded"])) for _ in [1] if o.get("year_founded")])
         items = ""
-        for r in shown:
-            loc = r.get("location") or ""
+        for grp in shown:
+            r = grp[0]
+            # WHERE ONE OPENING IS ADVERTISED, said as places rather than as
+            # repeated rows. The count is of distinct location strings: two
+            # rows at the same desk are one place, and a req with no location
+            # on any row says nothing rather than "0 locations".
+            places = sorted({(g.get("location") or "").strip()
+                             for g in grp} - {""})
+            loc = (places[0] if len(places) == 1 else
+                   f"{places[0]} and {len(places) - 1} other location"
+                   f"{'s' if len(places) > 2 else ''}" if places else "")
             quota = ' <span class="meta">quota-carrying</span>' if r.get("quota_carrying") else ""
             items += (f'<li><div class="role">{html.escape(r.get("title") or "")}'
                       f'{quota}</div>'
@@ -599,16 +618,30 @@ def write_state_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
         cos = {}
         for p_ in ps:
             cos.setdefault(p_["company"], []).append(p_)
-        quota = sum(1 for p_ in ps if p_.get("quota_carrying"))
+        # OPENINGS, NOT ROWS, and this page shipped rows for months. One
+        # requisition advertised in nine Michigan cities is nine rows, and
+        # /s/mi said "12 open roles ... 9 quota-carrying" against 4 openings
+        # of which 1 carried a quota - all nine of those rows were the single
+        # Xplor Account Executive req that opening_id was invented for. The
+        # sentence is also this page's <meta description>, so the inflated
+        # number is the one Google renders under the result.
+        opens = {p_["opening_id"] for p_ in ps}
+        quota = len({p_["opening_id"] for p_ in ps if p_.get("quota_carrying")})
         items = ""
-        for co, rs in sorted(cos.items(), key=lambda kv: (-len(kv[1]), kv[0])):
+        for co, rs in sorted(cos.items(),
+                             key=lambda kv: (-len({r["opening_id"] for r in kv[1]}),
+                                             kv[0])):
             cid = rs[0]["company_id"]
-            titles = ", ".join(sorted({r.get("title") or "" for r in rs})[:4])
-            more = f" and {len(rs) - 4} more" if len(rs) > 4 else ""
+            names = sorted({r.get("title") or "" for r in rs})
+            titles = ", ".join(names[:4])
+            # "and N more" sits after a list of TITLES, so N must be titles.
+            # It counted rows, so a company with one job in six cities read
+            # "Account Executive and 5 more".
+            more = f" and {len(names) - 4} more" if len(names) > 4 else ""
             items += (f'<li><div class="role"><a href="/c/{urllib.parse.quote(cid)}.html">'
                       f'{html.escape(co)}</a></div>'
                       f'<div class="meta">{html.escape(titles)}{more}</div></li>')
-        line = (f"{len(ps)} open role{'s' if len(ps) != 1 else ''} across "
+        line = (f"{len(opens)} open role{'s' if len(opens) != 1 else ''} across "
                 f"{len(cos)} compan{'ies' if len(cos) != 1 else 'y'}"
                 + (f", {quota} quota-carrying" if quota else ""))
         body = (f'<h1>Govtech sales jobs in {html.escape(name)}</h1>'
