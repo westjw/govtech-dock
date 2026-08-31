@@ -3488,11 +3488,35 @@ def check_sitemap_offers_the_job_pages() -> int:
                 bad += fail(f"{len(over):,} sitemap urls are escaped more "
                             f"tightly than encodeURIComponent, so they do not "
                             f"match the canonical the page declares")
-            dupes = sum(n for n in sig.values() if n > 1)
-            if dupes:
-                bad += fail(f"{dupes:,} sitemap urls carry a JobPosting block "
-                            f"identical to another submitted url - the same job "
-                            f"offered to Google more than once")
+            # THIS USED TO ASSERT ZERO IDENTICAL RENDERINGS, and that
+            # assertion is what pushed me into a dedupe that deleted 232 real
+            # job pages, 193 of them pointing at a different apply url than the
+            # row that survived. Two Accela Account Executive reqs at $70-85k
+            # and $100-120k, and only the cheaper one reached the sitemap.
+            #
+            # All 29 identical-rendering groups have distinct apply urls: they
+            # are separate requisitions a company posted, not a job we listed
+            # twice. The invariant worth holding is the opposite one - every
+            # posting has a page and every page is reachable. A wrong check is
+            # worse than none, because it argues for the damage.
+            board_j = json.loads((DATA / "board.json").read_text())
+            want = {p["id"] for p in board_j.get("postings", []) if p.get("id")}
+            # UNESCAPE THE XML FIRST. The sitemap runs every loc through
+            # html.escape, so an id containing an apostrophe is written
+            # &#x27; and comes back out of the regex literally. Six French and
+            # possessive titles looked missing when they were present - the
+            # check was wrong, not the sitemap, which is worth pausing on given
+            # what the last wrong check in this function cost.
+            import html as _h
+            import urllib.parse as _up
+            have = {_up.unquote(_h.unescape(u).split("?role=")[1])
+                    for u in urls if "?role=" in u}
+            missing = want - have
+            if missing:
+                bad += fail(f"{len(missing):,} postings have a page a reader "
+                            f"can reach and no url in the sitemap. Each is a "
+                            f"distinct advertisement with its own apply link, "
+                            f"and omitting one is a false absence we made")
 
     mw = (ROOT / "functions" / "_middleware.js").read_text()
     mwc = re.sub(r"//.*$", "", mw, flags=re.M)

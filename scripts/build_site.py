@@ -929,32 +929,31 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
     # page and still belongs here, since somebody may search its exact title,
     # but the ones carrying a JobPosting block are the ones an aggregator can
     # act on, so they lead and are priced higher.
-    # ONE URL PER PAGE A CRAWLER CAN TELL APART.
+    # EVERY POSTING GETS ITS URL. THE DEDUPE HERE WAS A MISTAKE AND IS GONE.
     #
-    # Not one per opening: Xplor Recreation's 82 cities are 82 genuinely
-    # different pages, each with its own location in its own JobPosting block,
-    # and collapsing them would hide 81 real places somebody might search for.
+    # It keyed on (opening_id, city, state, work_mode) to collapse role pages
+    # that "render identically". But `office` parses for only 35% of the board,
+    # so for the other 65% the key was (opening_id, None, None, work_mode) and
+    # every distinct requisition under one title became a single entry. It
+    # dropped 232 postings, 193 of which point at a DIFFERENT APPLY URL than
+    # the one that survived - two separate Accela Account Executive reqs at
+    # $70-85k and $100-120k, and only the cheaper one reached the sitemap.
     #
-    # But 400 role urls render IDENTICALLY - same title, same company, same
-    # place - because the same opening was read twice at one location, or has
-    # no location at all. 62 of those carry a structured block, and Google's
-    # job-posting guidance is explicit about not submitting the same job more
-    # than once. Same principle as the jobs list collapsing to one row per
-    # opening this morning; the sitemap reintroduced it a different way.
+    # The 62 it was aimed at turned out not to be duplicates either: all 29
+    # groups have distinct apply urls. A company posting two identical-looking
+    # requisitions is the employer doing that, not us duplicating anything, and
+    # Google's "do not submit the same job twice" is about the same job.
     #
-    # Keyed on what the page actually shows, so two rows that differ only by a
-    # url hash collapse and two that differ by city do not.
-    read, unread, seen_sig = [], [], set()
+    # CLAUDE.md is explicit that the per-location rows all stay and only the
+    # COUNTING changes. The jobs list collapses by opening because a list is
+    # read; a sitemap enumerates pages, and each posting has its own page with
+    # its own apply link. Dropping one is a page a reader can reach and a
+    # crawler cannot - a false absence, made by us, at scale.
+    read, unread = [], []
     for p_ in board.get("postings", []):
         pid = p_.get("id")
         if not pid:
             continue
-        off = p_.get("office") or {}
-        sig = (p_.get("opening_id") or pid, off.get("city"), off.get("state"),
-               p_.get("work_mode"))
-        if sig in seen_sig:
-            continue
-        seen_sig.add(sig)
         # SAME ENCODING AS THE CANONICAL. urllib.parse.quote escapes ! ' ( )
         # and * ; encodeURIComponent, which _middleware.js uses to build the
         # canonical, does not. 539 posting ids contain one of those, so the

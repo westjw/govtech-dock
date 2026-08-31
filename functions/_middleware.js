@@ -80,7 +80,30 @@ async function describe(request, env) {
     // defaults: no claim about this role either way, and nothing marked
     // noindex.
     if (!idx || !idx.roles) return null;
-    const r = own(idx.roles, role);
+    let r = own(idx.roles, role);
+    // A LINK SHARED BEFORE THE ID CHANGED IS NOT A ROLE THAT IS GONE.
+    //
+    // Posting ids gained a url+location hash on 2026-08-23, so every link
+    // shared, saved or EMAILED before that date asks for a prefix of the id it
+    // wants. index.html has resolved those by prefix since the day the ids
+    // changed; this file did not, and once the gone-role branch existed those
+    // urls started serving "That role is no longer listed" with noindex over a
+    // page whose body was rendering the live role. digest.py built its links
+    // from p["id"], so every alert email sent before 08-23 carries one.
+    //
+    // A neutral head became a false one, which is worse than the soft 404 the
+    // branch was added to prevent.
+    //
+    // "<asked>::<anything>" and nothing looser, exactly as index.html has it: a
+    // bare startsWith would answer a request for "acme::Account Executive"
+    // with "acme::Account Executive Assistant", a different job at the same
+    // company and indistinguishable from a correct answer.
+    if (!r) {
+      const pre = role + "::";
+      for (const k of Object.keys(idx.roles)) {
+        if (k.startsWith(pre)) { r = idx.roles[k]; break; }
+      }
+    }
     // A ROLE THAT IS GONE MUST NOT BE INDEXED, and this only started mattering
     // when the sitemap grew role pages.
     //
