@@ -3363,6 +3363,21 @@ def check_alerts_page_cannot_be_framed() -> int:
         bad += fail("public/_headers now applies to the whole site - a CSP over "
                     "the board would have to permit the inline script and style "
                     "it is built from, which permits what it is meant to stop")
+    # AND THAT IT IS CALLED. The check read write_headers' source and never
+    # that main() invokes it. Commenting out the call left the suite green -
+    # and because public/ is gitignored and Cloudflare rebuilds it from
+    # build_site.py on every push, the deploy would ship NO _headers file at
+    # all. /alerts becomes framable, with its token in memory and its one-click
+    # "delete this subscription and everything stored with it" behind it.
+    if not re.search(r"^\s*write_headers\(", src, re.M):
+        bad += fail("build_site.main never calls write_headers, so no _headers "
+                    "file is written and the deploy ships none. /alerts becomes "
+                    "framable - the clickjacking case this exists for")
+    hdr = ROOT / "public" / "_headers"
+    if hdr.exists():
+        h = hdr.read_text()
+        if "/alerts" not in h or "X-Frame-Options" not in h:
+            bad += fail("public/_headers does not protect /alerts")
     if (ROOT / "vercel.json").exists():
         bad += fail("vercel.json is back. Cloudflare Pages does not read it, so "
                     "any header in it applies on no path that exists - it is a "
@@ -3516,8 +3531,24 @@ def check_capture_flags_nav_without_dropping_sellers() -> int:
                         f"and it must not cry wolf on the roles this board is "
                         f"for")
     # and the flag must not have become a filter
+    # THE WHOLE BLOCK, NOT THE NEXT LINE. This read
+    # `src.split("_reads_like_nav")[1].split("\n")[1:3][0]` - the single line
+    # after the `if`. Putting the drop one line lower:
+    #     if _reads_like_nav(title):
+    #         suspect.append(title)
+    #         continue          <- invisible
+    # left the suite green, and the check's whole stated purpose is that nav is
+    # NAMED and everything is KEPT.
     src = inspect.getsource(admin.act_capture)
-    if "continue" in src.split("_reads_like_nav")[1].split("\n")[1:3][0]:
+    after = src.split("_reads_like_nav")[1]
+    # everything up to the next line at the same indent as the `if`, i.e. the
+    # body of that branch
+    branch = []
+    for line in after.splitlines()[1:]:
+        if line.strip() and not line.startswith(" " * 12):
+            break
+        branch.append(line)
+    if any(w in "\n".join(branch) for w in ("continue", "return")):
         bad += fail("act_capture now SKIPS a row that reads like nav. It must "
                     "flag and keep: ats._TITLEISH rejects Head of Sales and "
                     "SDR, so a filter here deletes warm doors to tidy away "
@@ -3626,6 +3657,14 @@ def check_every_title_extractor_strips_buttons() -> int:
         # times, and the paragraph above mentions strip_cta repeatedly
         code = re.sub(r"#.*$", "", body, flags=re.M)
         code = re.sub(r'""".*?"""', "", code, flags=re.S)
+        # THE RESULT MUST BE USED, not merely computed. `_cta = strip_cta(raw)`
+        # calls it and throws the answer away; so does moving the call after
+        # split_location, which is a natural refactor and re-breaks the tail
+        # rule the comment above it warns about. Both left the suite green.
+        if not re.search(r"\b(text|raw|title)\s*=\s*strip_cta\(", code):
+            bad += fail(f"{path}::{fn} calls strip_cta and discards the "
+                        f"result - the button label is computed and then the "
+                        f"original string is used anyway")
         if "strip_cta(" not in code:
             bad += fail(f"{path}::{fn} never calls strip_cta - {what}. A job "
                         f"title beginning 'Apply Now' reaches the public board "
@@ -3928,6 +3967,35 @@ def check_public_csv_neutralises_formulas() -> int:
         return 0
     body = src[src.index("function csvCell("):]
     body = body[:body.index("\n/* WHAT GOES IN IT")]
+    # AND THAT IT IS APPLIED TO EVERY CELL. The first version asserted the
+    # guard's characters were in csvCell's source, which two mutations walked
+    # straight past: replacing `.map(csvCell)` with `.map(JSON.stringify)` left
+    # the guard intact and never applied to a single value, and wrapping the
+    # test in `false && ...` left both matched strings verbatim. A guard that
+    # is present and unreached is not a guard.
+    exp0 = src[src.index("function exportCompanies("):]
+    exp0 = exp0[:exp0.index("\nfunction ")]
+    flatx = re.sub(r"\s+", "", exp0)
+    # The DATA rows are the security-critical half: company names arrive from
+    # outside submissions, headers are ours. So this pins the row expression
+    # specifically rather than counting occurrences, which the header's
+    # `csvCell(c[1])` form would have satisfied on its own.
+    if "line(o).map(csvCell)" not in flatx:
+        bad += fail("exportCompanies no longer puts every data cell through "
+                    "csvCell - a company name from an outside submission would "
+                    "reach the file unneutralised and run as a formula when "
+                    "somebody opens it in Excel")
+    if "csvCell(c[1])" not in flatx:
+        bad += fail("the export's header row bypasses csvCell")
+    # THE REGEX MUST BE THE CONDITION ITSELF. `(false&&/^[=+\-@\t\r]/.test(s)`
+    # leaves every string this check looks for verbatim while neutralising
+    # nothing - a mutation that disabled the guard in place and stayed green.
+    # Pinning the flattened expression closes it without needing a JS engine.
+    flatc = re.sub(r"\s+", "", body)
+    if '+(/^[=+' not in flatc.replace("'", ""):
+        bad += fail("csvCell's formula test is no longer the condition of its "
+                    "own ternary - something has been put in front of it, and "
+                    "a guard that never evaluates neutralises nothing")
     if "[=+" not in body:
         bad += fail("index.html's csvCell no longer neutralises a leading "
                     "formula character - a company name from a submission "
@@ -4040,6 +4108,18 @@ def check_shared_board_links_open_the_board() -> int:
     if "URLKEYS" not in body:
         bad += fail("tabFromUrl does not consult URLKEYS, so it cannot tell a "
                     "filtered board url from a bare one")
+    # AND WHAT IT RETURNS. The check asserted the resolver existed, that no
+    # ?tab= was read outside it, and that URLKEYS was mentioned - never what
+    # came back. Changing the filter branch's `return "jobs"` to
+    # `return fallback` left the suite green and restored the original bug
+    # verbatim: ?fam=gtm&st=TX, the exact string the address bar shows while
+    # somebody filters, reopening on the home tab with the filters invisible.
+    flatb = re.sub(r"\s+", "", body)
+    if 'some(k=>u.has(k)))return"jobs"' not in flatb:
+        bad += fail("tabFromUrl's filter branch no longer returns \"jobs\". A "
+                    "url carrying board filters and no ?tab= resolves to the "
+                    "home tab again, with the filters applied and invisible - "
+                    "every shared board link, reload and back button")
     return bad
 
 
