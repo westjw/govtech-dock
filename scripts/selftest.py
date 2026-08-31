@@ -3296,6 +3296,38 @@ def check_sitemap_offers_the_job_pages() -> int:
             bad += fail(f"the sitemap has {len(urls):,} urls, over the 50,000 "
                         f"limit - it must be split into an index")
 
+        # NO TWO SUBMITTED URLS MAY RENDER THE SAME PAGE. 400 role urls once
+        # rendered identically - same title, company and place - because one
+        # opening was read twice at a location, or had no location at all. 62
+        # of those carried a structured block, and Google's guidance is
+        # explicit about not submitting the same job twice. This is the same
+        # defect the jobs list fixed by collapsing to one row per opening,
+        # reintroduced by the sitemap in a different shape.
+        #
+        # NOT one url per opening: Xplor's 82 cities are 82 real pages with 82
+        # real locations, and collapsing them would hide places somebody might
+        # search for. Keyed on what the page shows.
+        meta_r = ROOT / "public" / "meta-roles.json"
+        if meta_r.exists():
+            import collections as _c
+            import urllib.parse as _up
+            rr = json.loads(meta_r.read_text())
+            rr = rr.get("roles", rr)
+            sig = _c.Counter()
+            for u in urls:
+                if "?role=" not in u:
+                    continue
+                v = rr.get(_up.unquote(u.split("?role=")[1])) or {}
+                if not v.get("ld"):
+                    continue
+                sig[(v.get("t"), v.get("c"), v.get("w"),
+                     v.get("ci"), v.get("st"))] += 1
+            dupes = sum(n for n in sig.values() if n > 1)
+            if dupes:
+                bad += fail(f"{dupes:,} sitemap urls carry a JobPosting block "
+                            f"identical to another submitted url - the same job "
+                            f"offered to Google more than once")
+
     mw = (ROOT / "functions" / "_middleware.js").read_text()
     mwc = re.sub(r"//.*$", "", mw, flags=re.M)
     mwc = re.sub(r"/\*.*?\*/", "", mwc, flags=re.S)

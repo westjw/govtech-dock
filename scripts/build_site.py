@@ -911,11 +911,32 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
     # page and still belongs here, since somebody may search its exact title,
     # but the ones carrying a JobPosting block are the ones an aggregator can
     # act on, so they lead and are priced higher.
-    read, unread = [], []
+    # ONE URL PER PAGE A CRAWLER CAN TELL APART.
+    #
+    # Not one per opening: Xplor Recreation's 82 cities are 82 genuinely
+    # different pages, each with its own location in its own JobPosting block,
+    # and collapsing them would hide 81 real places somebody might search for.
+    #
+    # But 400 role urls render IDENTICALLY - same title, same company, same
+    # place - because the same opening was read twice at one location, or has
+    # no location at all. 62 of those carry a structured block, and Google's
+    # job-posting guidance is explicit about not submitting the same job more
+    # than once. Same principle as the jobs list collapsing to one row per
+    # opening this morning; the sitemap reintroduced it a different way.
+    #
+    # Keyed on what the page actually shows, so two rows that differ only by a
+    # url hash collapse and two that differ by city do not.
+    read, unread, seen_sig = [], [], set()
     for p_ in board.get("postings", []):
         pid = p_.get("id")
         if not pid:
             continue
+        off = p_.get("office") or {}
+        sig = (p_.get("opening_id") or pid, off.get("city"), off.get("state"),
+               p_.get("work_mode"))
+        if sig in seen_sig:
+            continue
+        seen_sig.add(sig)
         u = f"{site}/?role={urllib.parse.quote(pid, safe='')}"
         (read if p_.get("jd_seen") else unread).append(u)
     for u in read:
