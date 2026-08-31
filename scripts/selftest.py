@@ -3090,6 +3090,92 @@ def check_middleware_separates_unreadable_from_gone() -> int:
     return bad
 
 
+TRIPLE_D = chr(34) * 3
+TRIPLE_S = chr(39) * 3
+
+
+def check_pay_report_states_what_it_omits() -> int:
+    """A pay report is a number somebody negotiates against. It must not lie.
+
+    147 of 618 quota-carrying postings state an annual US-dollar figure. Every
+    band describes those 147, and a reader who takes them for the market rate
+    is misled by an omission rather than an error - so the ratio is printed
+    before anything else, not in a footnote.
+
+    The checks below are the refusals, each of which is a number the report
+    could have printed and does not:
+      - hourly and monthly are counted and EXCLUDED, never multiplied by 2,080
+      - one currency only
+      - no band under MIN_N, and the thin ones are named rather than dropped
+      - every cut says what share of the sample it can speak for: office_state
+        clears the floor on CA and NY while covering half the sample across 21
+        states, and two pins is not a map
+    """
+    bad = 0
+    pr = _import_pay_report()
+    r = pr.report()
+    if not r.get("stated_annual_usd"):
+        return 0
+    # THE FLOOR'S VALUE, not just consistency with itself. Comparing each band
+    # against pr.MIN_N is circular: setting MIN_N = 1 publishes a band of one
+    # posting and passes, because the check moves with the constant. Five is
+    # the point below which a median stops being a summary and starts being a
+    # list of specific employers' offers.
+    if pr.MIN_N < 5:
+        bad += fail(f"pay_report.MIN_N is {pr.MIN_N}. Below five a median is "
+                    f"not a market rate, it is a handful of specific offers "
+                    f"reprinted with a statistic's authority")
+    for name, bands in (r.get("bands") or {}).items():
+        for label, b in bands.items():
+            if not isinstance(b, dict):
+                bad += fail(f"pay_report published a {name} band {label!r} "
+                            f"that is not a band: {b!r}")
+                continue
+            if b["n"] < pr.MIN_N:
+                bad += fail(f"pay_report published a {name} band {label!r} with "
+                            f"n={b['n']}, under its own floor of {pr.MIN_N} - a "
+                            f"median of a handful is two employers' opinions "
+                            f"wearing a statistic's authority")
+            if not (b["p25"] <= b["median"] <= b["p75"]):
+                bad += fail(f"{name}/{label} percentiles are out of order: "
+                            f"{b['p25']} / {b['median']} / {b['p75']}")
+    if r.get("share_stating_pay") is None:
+        bad += fail("pay_report does not state what share of quota postings "
+                    "carry a figure, which is the caveat that governs how every "
+                    "number in it should be read")
+    if not r.get("coverage"):
+        bad += fail("pay_report does not say what share of the sample each cut "
+                    "can speak for - office_state clears the floor on two "
+                    "states and a reader takes that for a national picture")
+    # DOCSTRINGS AND COMMENTS OFF FIRST. The module's own prose explains
+    # why it does NOT multiply by 2,080, and the first version of this
+    # check read that sentence and reported the crime it describes.
+    # Fifth time today a source scan in this file has tripped on its own
+    # explanation.
+    src = inspect.getsource(pr)
+    code = re.sub(re.escape(TRIPLE_D) + r"(?:.|\n)*?" + re.escape(TRIPLE_D),
+                  "", src)
+    code = re.sub(re.escape(TRIPLE_S) + r"(?:.|\n)*?" + re.escape(TRIPLE_S),
+                  "", code)
+    code = re.sub(r"#.*$", "", code, flags=re.M)
+    if re.search(r"2080|2,080|\*\s*52\b", code):
+        bad += fail("pay_report converts an hourly rate into a year. The board "
+                    "stores periods rather than converting them on purpose: "
+                    "2,080 x an hourly rate invents a full-time year nobody "
+                    "stated")
+    if 'c.get("period") != "year"' not in code:
+        bad += fail("pay_report no longer restricts to annual figures")
+    if 'c.get("currency") != "USD"' not in code:
+        bad += fail("pay_report no longer pins the currency; two currencies in "
+                    "one median is not a number")
+    return bad
+
+
+def _import_pay_report():
+    import pay_report
+    return pay_report
+
+
 def check_active_badge_is_shipped_honestly() -> int:
     """The badge on the page must be the momentum rules, not a looser copy.
 
@@ -6004,6 +6090,7 @@ def main() -> int:
     errors += check_busy_port_does_not_traceback()
     errors += check_structured_data_claims_no_posting_date()
     errors += check_middleware_separates_unreadable_from_gone()
+    errors += check_pay_report_states_what_it_omits()
     errors += check_active_badge_is_shipped_honestly()
     errors += check_boards_read_agrees_with_coverage()
     errors += check_active_badge_measures_them_not_us()
