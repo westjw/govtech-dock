@@ -830,6 +830,7 @@ def main() -> int:
         if not a.dry_run:
             _save_render_attempts(attempts)
 
+    boards_read = 0
     for c, jobs, err, enumerable, may_render in fetched:
         if c["id"] in owns:
             # Somebody else's board. Keep the company on the list with its real
@@ -863,6 +864,14 @@ def main() -> int:
                 promoted += len(stored)
                 promoted_names.append(f"{c['name']} ({len(stored)})")
                 err = None
+
+        # WHAT "READ" MEANS, counted here because this is the only place that
+        # knows. We had a ref, we asked for it, and something came back that
+        # was not an error. Not "we have a careers page on file" - that is the
+        # claim the card used to make, and 866 of the pages it counted are the
+        # `page only` pile a fetcher mostly cannot enumerate at all.
+        if not no_board and not err:
+            boards_read += 1
 
         if err and not jobs:
             if kind == "html":
@@ -1278,7 +1287,7 @@ def main() -> int:
         # Set below, where the coverage split is computed - `split` does not
         # exist yet at this point in the function. Placed here so the key's
         # order in the payload is stable.
-        "companies_read": None,
+        "boards_read": None,
         "unreadable": unreadable,
         "rendered": rendered,
         "no_board_on_file": sum(1 for o in orgs if o.get("no_board_on_file")),
@@ -1399,14 +1408,22 @@ def main() -> int:
         st = _cov.state(c, _log.get(c["id"]), orgs_by_id.get(c["id"]))
         split[st] = split.get(st, 0) + 1
     payload["coverage"] = split
-    # THE CARD AND THE TABLE, FROM ONE NUMBER. "boards read this run" printed
-    # len(companies) - 2,113, every company on file - directly above the table
-    # that says 950 of them are blocked, absent or never probed. Two ways of
-    # arriving at the same fact is how they drift, so the card is now the
-    # coverage split's own arithmetic: structured plus page only, which is what
-    # coverage.py calls "we have some board on file".
-    payload["companies_read"] = (split.get("structured", 0)
-                                 + split.get("page only", 0))
+    # "BOARDS READ THIS RUN" IS NOW COUNTED FROM THE RUN, and it took two
+    # wrong answers to get there.
+    #
+    # It first printed len(companies) - 2,113, every company on file - directly
+    # above the table saying 950 of them are blocked, absent or never probed.
+    # Replacing it with the coverage split's structured + page only was better
+    # arithmetic and the same lie: CLAUDE.md says in as many words not to add
+    # those two together, because `page only` is a worklist rather than
+    # coverage. 866 of the 1,163 that sum reported were pages a fetcher mostly
+    # cannot enumerate, and the card called all 1,163 boards we had read.
+    #
+    # The run knows the real answer per company and always did - it holds the
+    # error off every fetch. So the number is now the count of boards we asked
+    # for and got a non-error answer from, which is exactly what the label
+    # claims. It is smaller. That is the point.
+    payload["boards_read"] = boards_read
 
 
     DATA.mkdir(exist_ok=True)

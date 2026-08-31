@@ -124,7 +124,20 @@ def per_company(ids: set, quota_only: bool = False) -> collections.Counter:
     return c
 
 
-def surge(window_days: int = 7) -> dict:
+def surge() -> dict:
+    """The comparable window, whatever length it happens to be.
+
+    THIS TOOK A `window_days: int = 7` PARAMETER AND IGNORED IT. Nothing
+    passed one, and passing 30 would have returned the identical answer,
+    because rule 1 decides the window: walk back to the oldest snapshot that
+    still shares ids with today and stop. A caller reading the signature would
+    have believed they were asking about a week.
+
+    The real window is a fact about our own history, not a setting - it is
+    eight days today because that is how far back the id scheme reaches, and
+    it lengthens on its own. `since` is returned so a reader never has to
+    assume it, and every caller prints it.
+    """
     snaps = snapshots()
     if len(snaps) < 2:
         return {"ready": False,

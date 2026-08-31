@@ -3353,59 +3353,85 @@ def check_active_badge_is_shipped_honestly() -> int:
 
 
 def check_boards_read_agrees_with_coverage() -> int:
-    """The card must not contradict the table three inches below it.
+    """"Boards read this run" must be counted from the run, not from the map.
 
-    "boards read this run" printed len(companies) - every company on file,
-    2,113 - directly above the coverage table that says 950 of them are
-    blocked, absent or never probed, in that table's own words: "We learned
-    nothing about these" and "never probed".
+    THIS CARD HAS BEEN WRONG TWICE, and the second wrong answer was written
+    while fixing the first.
 
-    A company whose board we could not open was being counted as a board we
-    read. That is the "839 of 1,722 monitored" overclaim coverage.py exists to
-    kill, reappearing one card above the split that kills it.
+    It printed len(companies) - every company on file - directly above the
+    coverage table saying most of them are blocked, absent or never probed.
+    The fix derived it from the split instead, as structured + page only, and
+    that is better arithmetic and the same false claim: CLAUDE.md says in as
+    many words not to add those two together, because `page only` is a
+    worklist for capture, not coverage. 866 of the 1,163 it reported are pages
+    a fetcher mostly cannot enumerate. The card called all of them read.
 
-    Checked as arithmetic against the shipped board, because the failure is a
-    number that looks reasonable on its own and is only wrong beside another
-    one.
+    Both versions failed the same way - describing the MAP and labelling it
+    the RUN. So the number is now a counter incremented in build_board's own
+    summary loop, where the error off each fetch is already in hand.
+
+    Guarded at source AND in data, because they catch different things and
+    only one of them is current. data/board.json changes only after a full
+    crawl, and refresh.yml runs this suite BEFORE build_board - so a source
+    regression ships that night and the data check fires the next morning
+    against damage already done. The data half still earns its place: it is
+    the only one that can see the counter drift away from the coverage table
+    it sits above.
     """
     bad = 0
-    board = json.loads((DATA / "board.json").read_text())
-    cov = board.get("coverage") or {}
-    read = board.get("companies_read")
-    if not cov or read is None:
-        return 0                       # pre-dates the split; next build fixes it
-    orgs = len(board.get("organizations") or [])
-    if read == orgs:
-        bad += fail(f"companies_read is {read:,}, which is every organization "
-                    f"on the board. The coverage split says "
-                    f"{cov.get('blocked',0)+cov.get('absent',0)+cov.get('unchecked',0):,} "
-                    f"of them are blocked, absent or never probed - the card "
-                    f"and the table beneath it cannot both be true")
-    want = cov.get("structured", 0) + cov.get("page only", 0)
-    if read != want:
-        bad += fail(f"companies_read is {read:,} but the coverage split's "
-                    f"structured + page only is {want:,}. They are two ways of "
-                    f"stating one fact and they have drifted, which is exactly "
-                    f"what deriving one from the other was meant to prevent")
-    # A SOURCE HALF, because the data half cannot catch this in time.
-    #
-    # The check above reads data/board.json, which only changes after a full
-    # crawl - and refresh.yml runs selftest FIRST, before build_board. So
-    # restoring `= len(companies)` passes the suite, the wrong number ships
-    # that night, and the check fires the next morning against yesterday's
-    # damage. The source is the only half that is current when the suite runs.
     src = (ROOT / "scripts" / "build_board.py").read_text()
     code = re.sub(r"#.*$", "", src, flags=re.M)
     flat = re.sub(r"\s+", "", code)
-    if 'payload["companies_read"]=(split.get("structured",0)+split.get("pageonly",0))' not in flat:
-        bad += fail("build_board no longer derives companies_read as exactly "
-                    "structured + page only from the coverage split. Any other "
-                    "expression can drift from the table printed beneath it, "
-                    "and len(companies) is the drift that shipped")
-    if re.search(r'companies_read"\]?\s*[:=]\s*len\(', code):
-        bad += fail("build_board sets companies_read to a len() again - that is "
+
+    if 'payload["boards_read"]=boards_read' not in flat:
+        bad += fail("build_board no longer ships boards_read as the counter it "
+                    "keeps during the fetch summary. Any expression derived "
+                    "from the coverage split describes the map rather than the "
+                    "run, which is the mistake this card has already made "
+                    "twice")
+    # THE TWO SHAPES THAT WERE WRONG BEFORE, refused by name so neither can
+    # come back as a tidy-looking one-liner.
+    if re.search(r'boards_read"\]?\s*[:=]\s*len\(', code):
+        bad += fail("build_board sets boards_read to a len() again - that is "
                     "the original overclaim: every company on file, printed "
                     "under the label 'boards read this run'")
+    if re.search(r'boards_read"?\]?\s*=\s*\(?\s*split\.get', code):
+        bad += fail("build_board derives boards_read from the coverage split "
+                    "again. structured + page only is what we HAVE AN ADDRESS "
+                    "FOR, not what answered us, and CLAUDE.md forbids adding "
+                    "those two together in a status report")
+    if "boards_read+=1" not in flat:
+        bad += fail("nothing in build_board increments boards_read, so the "
+                    "card would report zero boards read on a run that read "
+                    "hundreds")
+    # AND THE INCREMENT MUST BE CONDITIONAL. A counter bumped once per company
+    # regardless of outcome is len(companies) wearing a loop.
+    if "ifnotno_boardandnoterr:boards_read+=1" not in flat:
+        bad += fail("boards_read is incremented without checking that we had a "
+                    "board to ask and that the fetch did not error - a counter "
+                    "that always increments is the len() overclaim again, one "
+                    "loop further in")
+
+    board = json.loads((DATA / "board.json").read_text())
+    cov = board.get("coverage") or {}
+    read = board.get("boards_read")
+    if not cov or read is None:
+        # PRE-DATES THE COUNTER and cannot be faked. The page renders no card
+        # at all in this state rather than a zero, which is the same rule as
+        # every other absence here.
+        return bad
+    orgs = len(board.get("organizations") or [])
+    if read == orgs:
+        bad += fail(f"boards_read is {read:,}, which is every organization on "
+                    f"the board. The coverage split says "
+                    f"{cov.get('blocked',0)+cov.get('absent',0)+cov.get('unchecked',0):,} "
+                    f"of them are blocked, absent or never probed - the card "
+                    f"and the table beneath it cannot both be true")
+    have = cov.get("structured", 0) + cov.get("page only", 0)
+    if read > have:
+        bad += fail(f"boards_read is {read:,} but only {have:,} companies have "
+                    f"a board on file at all. We cannot have read more boards "
+                    f"than we hold addresses for")
     return bad
 
 

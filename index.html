@@ -4424,13 +4424,26 @@ function how(){
   <div class="cards" style="margin-top:24px">
     <div class="card"><div class="bignum">${n(D.organizations.length)}</div>
       <div class="lbl">companies tracked</div></div>
-    <div class="card"><div class="bignum">${n(D.companies_read)}</div>
-      <div class="lbl">boards read this run</div></div>
+    ${typeof D.boards_read==="number" ? `
+    <div class="card"><div class="bignum">${n(D.boards_read)}</div>
+      <div class="lbl">boards read this run</div></div>` : ``}
     <div class="card"><div class="bignum">${n(D.totals.postings)}</div>
       <div class="lbl">postings on file</div></div>
     <div class="card"><div class="bignum">${n(noBoard)}</div>
       <div class="lbl">no board found</div></div>
   </div>
+
+  ${typeof D.boards_read==="number" ? `
+  <p class="pline" style="margin-top:12px">
+    &ldquo;Read&rdquo; means we asked a board for its openings this run and it
+    answered. It is smaller than the number of companies with a board on file
+    below, and that gap is the honest part: a careers page we hold an address
+    for is not a board we can enumerate.
+  </p>` : `
+  <p class="pline" style="margin-top:12px">
+    This run did not record how many boards it read, so that figure is not
+    shown. It appears again after the next crawl.
+  </p>`}
 
   ${(()=>{
     /* THE FIVE-WAY SPLIT, said out loud. "839 of 1,722 monitored" was wrong in
