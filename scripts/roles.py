@@ -209,11 +209,17 @@ NON_US = re.compile(
     r"Madrid|Barcelona|Spain|Amsterdam|Netherlands|Brussels|Belgium|Zurich|"
     r"Switzerland|Stockholm|Sweden|Oslo|Norway|Copenhagen|Denmark|Helsinki|"
     r"Warsaw|Poland|Prague|Budapest|Hungary|Vienna|Austria|Lisbon|Portugal|"
-    r"Milan|Rome|Italy|Athens|Greece|Istanbul|Turkey|Tel Aviv|Israel|Dubai|"
-    r"Toronto|Vancouver|Montreal|Ottawa|Canada|Mexico|Brazil|S[aã]o Paulo|"
+    # Tel[- ]Aviv, not "Tel Aviv": monday.com's board writes it hyphenated, and
+    # the space-only spelling let "Tel-Aviv, IL" read as a US posting - IL being
+    # Illinois as well as Israel's country code. Hyderabad joins for the same
+    # reason, seven postings deep: the list knew Bangalore and Mumbai but not it.
+    r"Milan|Rome|Italy|Athens|Greece|Istanbul|Turkey|Tel[- ]Aviv|Israel|Dubai|"
+    # (?<!New ) - "Socorro, New Mexico" was reading as a posting outside the
+    # United States, because the country's name is inside the state's.
+    r"Toronto|Vancouver|Montreal|Ottawa|Canada|(?<!New )Mexico|Brazil|S[aã]o Paulo|"
     r"Argentina|Chile|Colombia|Sydney|Melbourne|Australia|Auckland|New Zealand|"
     r"Singapore|Tokyo|Japan|Seoul|Korea|Hong Kong|Shanghai|Beijing|China|"
-    r"Bangalore|Bengaluru|Mumbai|Delhi|India|Manila|Philippines|Jakarta|"
+    r"Bangalore|Bengaluru|Hyderabad|Mumbai|Delhi|India|Manila|Philippines|Jakarta|"
     r"Indonesia|Bangkok|Thailand|Vietnam|Johannesburg|South Africa|Nairobi|"
     r"Kenya|Cairo|Egypt|"
     # Added after four "Pakistan - Remote" AE roles reached a New York
@@ -249,6 +255,26 @@ STATE = re.compile(r",\s*(A[LKZR]|C[AOT]|DE|FL|GA|HI|I[DLNA]|K[SY]|LA|M[EDAINSOT
 
 
 AMBIGUOUS_STATE_NAMES = {"georgia"}      # also a country
+
+# A CITY THAT IS NOT IN THE STATE ITS CODE NAMES. US_CODES below refuses two
+# capitals that are not a state at all - UK, QB, UP, MH - but IL is Illinois and
+# IN is Indiana, so a foreign address written with an ISO COUNTRY code passes
+# every test here and files a desk six thousand miles from the job.
+# "Hyderabad, Telengana, IN" is on the board today as an Indiana office, seven
+# times, and reading Doorman-style card locations out of the html extractor adds
+# "Tel-Aviv, IL" as an Illinois one four more.
+#
+# THE DATA DECIDES WHAT GOES IN HERE, exactly as it does for the "Berlin, DE"
+# case a few paragraphs down: only spellings that actually appear, never a
+# country list. A country list would have to refuse CA, IN, DE, MA and MD to be
+# consistent, and this board carries real desks in every one of them.
+# "Telengana" is the board's own spelling of Telangana and is the one that has
+# to match.
+NON_US_CITIES = {"tel-aviv", "tel aviv", "telengana", "telangana"}
+_NON_US_CITY_RE = re.compile(
+    r"\b(" + "|".join(re.escape(n) for n in sorted(NON_US_CITIES,
+                                                   key=len, reverse=True)) + r")\b",
+    re.I)
 
 
 # ---------------------------------------------------------------- territory
@@ -300,9 +326,31 @@ HYBRID_RE = re.compile(r"\bhybrid\b", re.I)
 ONSITE_RE = re.compile(r"\bon-?site\b|\bin-?office\b|\bin-?person\b", re.I)
 
 
+# A DIRECTION IN FRONT OF A CONTINENT IS NOT A US REGION. "eastern" and
+# "western" are in REGION_WORDS for "Eastern Territory" and "Western Region",
+# and they also match "Eastern Europe" and "Western Canada". Four live
+# quota-carrying postings asserted a US region they do not have: MSAB's
+# "Account Executive Eastern Europe" rendered on the public jobs tab as
+# "Northeast (territory)", and Via, Versaterm and Dataminr did the same. A
+# seller filtering to the Northeast got a job in Poland.
+#
+# Exactly the shape of the [A-Z]{2} trap pinned in CITY_CASES, where
+# "London, UK" and "Montreal, QB" filed postings at US states that do not
+# exist - and of the "Tel-Aviv, IL" case, where a real state code names a
+# foreign country. The obvious fix, dropping the bare direction words from
+# REGION_WORDS, silently breaks every genuine territory title, so the guard
+# is on what FOLLOWS the word rather than on the word itself.
+_FOREIGN_AFTER = re.compile(
+    r"\s*(europe|asia|africa|canada|australia|latin america|south america|"
+    r"central america|emea|apac|latam|anz|middle east|uk|ireland|india|"
+    r"japan|china|germany|france|nordics|benelux)\b", re.I)
+
+
 def _region_of(codes: set, text_low: str) -> str | None:
     for word, reg in REGION_WORDS.items():
-        if re.search(r"\b" + re.escape(word) + r"\b", text_low):
+        for m in re.finditer(r"\b" + re.escape(word) + r"\b", text_low):
+            if _FOREIGN_AFTER.match(text_low, m.end()):
+                continue          # "Eastern Europe" is not the Northeast
             return reg
     if codes:
         for reg, members in REGIONS.items():
@@ -311,14 +359,54 @@ def _region_of(codes: set, text_low: str) -> str | None:
     return None
 
 
+# "Washington, D.C.", "Washington DC" and "Washington, District of Columbia" -
+# the seat of a great many govtech roles, spelled a way neither the two-letter
+# nor the state-name pattern below catches on its own.
+_DC = re.compile(r"\bwashington,?\s*(?:d\.?\s*c\.?|district of columbia)", re.I)
+
+
 def _codes_in(text: str) -> set:
-    codes = {c for c in re.findall(r"\b([A-Z]{2})\b", text or "") if c in STATE_CODES}
-    low = (text or "").lower()
-    for name, code in STATE_NAMES.items():
-        if name not in AMBIGUOUS_STATE_NAMES and \
-                re.search(r"\b" + re.escape(name) + r"\b", low):
-            codes.add(code)
-    return codes
+    """Every US state this text names.
+
+    A STATE NAME INSIDE A CITY'S NAME IS NOT A SECOND STATE, and counting it as
+    one costs a desk. geography() reads two codes as a coverage list and refuses
+    to name an office, which is right for "Ohio, Michigan" and wrong for
+    "Washington, DC": the word Washington there is the city, and the posting was
+    filed with no office at all. Eighteen postings lost a real desk this way -
+    sixteen in DC, on a board about government technology, plus Kansas City.
+
+    Two narrow readings fix it, and neither touches a genuine two-state list:
+
+      "washington" attached to any spelling of D.C. is the city, so the whole
+      phrase comes out before the state names are counted. Bare "Washington"
+      is untouched and still means the state.
+
+      A state name followed by "City" is part of the city's name - Kansas City,
+      Nevada City, Iowa City - so it is not counted as a SECOND state.
+
+    "Ohio, Michigan" and "Indiana, Kentucky, Tennessee" match neither reading
+    and still come back as the multi-state lists they are.
+
+    AND THE "City" READING NEVER EMPTIES THE ANSWER. Taken unconditionally it
+    cost forty postings their state: a location field reading only "New York
+    City" or "Kansas City" has no other state to fall back on, and geography()
+    pins a seat to a bare state when it can get nothing better. Dropping the
+    only code on offer turned a New York pin into no location at all - trading
+    eighteen recovered desks for forty lost ones. So the strict reading applies
+    only while something else survives it, which is precisely the case it was
+    written for.
+    """
+    text = text or ""
+    bare = {c for c in re.findall(r"\b([A-Z]{2})\b", text) if c in STATE_CODES}
+    low = _DC.sub(" ", text.lower())
+
+    def named(strict: bool) -> set:
+        return {code for name, code in STATE_NAMES.items()
+                if name not in AMBIGUOUS_STATE_NAMES
+                and re.search(r"\b" + re.escape(name) + r"\b"
+                              + (r"(?!\s+city\b)" if strict else ""), low)}
+
+    return (bare | named(True)) or named(False)
 
 
 # "City, ST" - the shape a location field uses for an office. The city part
@@ -351,12 +439,6 @@ _CITY_STATENAME = re.compile(
 # state only if it is one.
 US_CODES = frozenset(STATE_NAMES.values())
 
-# "Washington, D.C." and "Washington DC" - the seat of a great many govtech
-# roles, spelled a way neither pattern above catches because D.C. is not two
-# bare letters and is not in STATE_NAMES.
-_DC = re.compile(r"\bwashington,?\s*d\.?\s*c\.?", re.I)
-
-
 def _office_from(loc: str):
     """A city and state out of a location field, or None.
 
@@ -366,6 +448,8 @@ def _office_from(loc: str):
     """
     if not loc:
         return None
+    if _NON_US_CITY_RE.search(loc):
+        return None                       # an ISO country code, not a state
     if _DC.search(loc):
         return {"city": "Washington", "state": "DC"}
     m = _CITY_ST.search(loc)
@@ -463,8 +547,13 @@ def geography(location_text: str, title: str = "") -> dict:
     found = _office_from(loc)
     if found and len(loc_codes) <= 1:
         office = found
-    elif len(loc_codes) == 1 and not REMOTE_RE.search(loc):
-        # a bare "Texas" or "TX" with no city still pins the seat to a state
+    elif len(loc_codes) == 1 and not REMOTE_RE.search(loc) \
+            and not _NON_US_CITY_RE.search(loc):
+        # a bare "Texas" or "TX" with no city still pins the seat to a state.
+        # Not when the code belongs to a foreign address, though: refusing
+        # "Tel-Aviv, IL" a CITY and then handing back a bare Illinois desk moves
+        # the wrong answer rather than removing it, and the state page is where
+        # it would show up either way.
         office = {"city": None, "state": next(iter(loc_codes))}
 
     # ---- work mode: only what the posting says

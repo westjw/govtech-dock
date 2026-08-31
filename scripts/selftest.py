@@ -201,6 +201,146 @@ CTA_CASES = [
 ]
 
 
+# A CARD IS SEVERAL LINES AND THE EXTRACTOR USED TO PUBLISH THEM AS ONE.
+# fetch_html_titles flattened everything inside a job link into a single string,
+# filed it as the title, and hard-coded "location": "" - for all 681 rows it
+# produced, not a subset. So the board carried "Full Stack Engineer New York, NY
+# $120k - 145k" as a job name, with no desk to put on the map and the pay in a
+# field salary.py never reads.
+#
+# Every string below is real. The `flat` column is verbatim from data/board.json
+# as published, and the `lines` column is what the live markup actually renders
+# as, block by block. Invented inputs would let a pattern be tuned to a shape no
+# board uses.
+#
+# THE LAST THREE ARE THE POINT OF THE TABLE. Territory in a title is legitimate
+# and roles.geography() deliberately keeps it separate from the office, so
+# mark43's "(CO, NM, UT)" and peregrine's ", California" must come back exactly
+# as they went in. And ease-health renders a whole card inside one block, where
+# there is no line boundary to read: that one keeps its long flattened title
+# rather than getting a guess. A slightly long title beats a truncated one.
+#
+# WHAT COUNTS AS A LINE, tested on the markup itself rather than on a list
+# somebody typed. CARD_CASES below starts from lines and cannot see this half,
+# so a rule about tags needs its own table or it has no test at all - which is
+# exactly what happened: disabling the span rule left every check passing.
+#
+# Each fragment is copied verbatim out of the live page.
+CARD_LINE_CASES = [
+    # BLOCK TAGS. Doorman's card is three <p>s in three <div>s, which is the
+    # whole reason the title, the city and the pay could be told apart.
+    ('<p class="framer-text framer-styles-preset-1mhwl21" data-styles-preset='
+     '"Hs6m4oJU2"><strong class="framer-text">Full Stack Engineer</strong></p>'
+     '</div><div class="framer-m3527p" data-framer-component-type='
+     '"RichTextContainer" style="--framer-link-text-color:rgb(0, 153, 255);'
+     '--framer-link-text-decoration:underline;opacity:0.7;transform:none">'
+     '<p class="framer-text framer-styles-preset-1mhwl21" data-styles-preset='
+     '"Hs6m4oJU2">New York, NY</p>',
+     ["Full Stack Engineer", "New York, NY"]),
+    # THE MARKUP'S OWN NEWLINES, which is how a formatted page has always come
+    # apart here. Dossier writes its location and employment type as sibling
+    # spans on separate source lines, and they arrive as separate lines.
+    ('<span>Cork, Ireland</span>\n                <span>Full Time</span>',
+     ["Cork, Ireland", "Full Time"]),
+    # THE SAME STACK, MINIFIED. ease-health emits the identical structure with
+    # no newline and no space between the tags, and without the span rule the
+    # three chips arrive as one string - which is how eight postings came to be
+    # called "Engineering Software Engineer Remote, U.S. - Full-time".
+    ('<span class="text-sm uppercase tracking-wide text-ease-forest/70">'
+     'Engineering</span><span class="font-serif text-2xl text-ease-forest '
+     'md:text-3xl">Software Engineer</span><span class="text-base '
+     'text-ease-forest/80">Remote, U.S.<!-- --> \u00b7 <!-- -->Full-time</span>',
+     ["Engineering", "Software Engineer", "Remote, U.S. \u00b7 Full-time"]),
+    # AND A PLAIN SPACE IS STILL A SPACE. No board in the corpus writes a title
+    # this way, so this case is the guard's only evidence and is honest about
+    # that: it is here because splitting "Senior Engineer" into "Senior" and
+    # "Engineer" would rename the job, not because the data has done it.
+    ("<span>Senior</span> <span>Engineer</span>", ["Senior Engineer"]),
+]
+
+
+# (lines, flattened, title, location, pay raw or None)
+CARD_CASES = [
+    (["Full Stack Engineer", "New York, NY", "$120k - 145k", "Apply"],
+     "Full Stack Engineer New York, NY $120k - 145k",
+     "Full Stack Engineer", "New York, NY", "$120k - 145k"),
+    (["Network Engineer, Axon 911", "New York, New York, United States"],
+     "Network Engineer, Axon 911 New York, New York, United States",
+     "Network Engineer, Axon 911", "New York, New York, United States", None),
+    # a DEPARTMENT above the title. Taking line one here would name eleven
+    # Dossier postings "Development & Product Management" - which _TITLEISH
+    # rejects, so the fix would have deleted the roles rather than renamed them.
+    (["Development & Product Management", "Software Architect",
+      "Limerick, Ireland", "Full Time"],
+     "Development & Product Management Software Architect Limerick, Ireland Full Time",
+     "Software Architect", "Limerick, Ireland", None),
+    # "Sales" is a department, "Full Time" is an employment type, "Apply now" is
+    # a button: none of the three may be read as the desk.
+    (["Business Development Manager (Remote)", "Sales", "Sydney, Australia",
+      "Apply now"],
+     "Business Development Manager (Remote) Sales Sydney, Australia",
+     "Business Development Manager (Remote)", "Sydney, Australia", None),
+    # SAMSARA HAD THE TITLE RIGHT AND THE DESK MISSING. Its cards give the title
+    # its own heading, so the old code got the name right and then threw the
+    # next line away - 120 postings whose location field said "Remote - US" and
+    # arrived empty.
+    (["Sr. Manager, Business Operations", "Remote - US"],
+     "Sr. Manager, Business Operations",
+     "Sr. Manager, Business Operations", "Remote - US", None),
+    # SPANS STACKED WITH NO SPACE BETWEEN THEM. ease-health builds its card out
+    # of four touching <span>s rather than blocks, so the department, the title,
+    # the location and the employment type arrived as one name. The department
+    # is skipped for the same reason Dossier's is - "Engineering" carries no job
+    # word, and _TITLEISH would have rejected it as a title anyway.
+    (["Engineering", "Software Development Engineer in Test",
+      "Remote, U.S. \u00b7 Full-time", "View role"],
+     "Engineering Software Development Engineer in Test Remote, U.S. \u00b7 "
+     "Full-time View role",
+     "Software Development Engineer in Test", "Remote, U.S. \u00b7 Full-time", None),
+    # THREE LINES OF FURNITURE AHEAD OF THE TITLE, and the job word is what
+    # walks past all three. "Full-time" and the separator are not places and are
+    # not taken; "Remote" is, and it is the only line above the title that says
+    # anything about where the job sits.
+    (["Full-time", "\u00b7", "Remote", "Enterprise Account Executive",
+      "View role"],
+     "Full-time \u00b7 Remote Enterprise Account Executive View role",
+     "Enterprise Account Executive", "Remote", None),
+    # one block, nothing to split on: unchanged, not guessed at. A slightly long
+    # title beats a truncated one.
+    (["Application Engineer Tokyo, Japan",
+      "Engineering \u00b7 Full-time \u00b7 Entry-level"],
+     "Application Engineer Tokyo, Japan Engineering \u00b7 Full-time \u00b7 Entry-level",
+     "Application Engineer Tokyo, Japan", "", None),
+    # THE PLACE ABOVE THE ROLE. ZeroEyes and Leo Technologies stack the location
+    # chip first, so the lines after the title hold nothing and the field stayed
+    # empty. It is read now - but only after the lines below have come up empty,
+    # and only ever into the location. The title is settled before this runs, by
+    # position and by carrying a job word, so the failure CLAUDE.md records here
+    # cannot recur: what went wrong there was letting the location pattern pick
+    # WHICH LINE THE TITLE WAS, and "Database Administrator, Infrastructure -
+    # UK" came back as a job called Manchester.
+    #
+    # This row keeps its title and gains "Remote / Hybrid / Conshohocken, PA".
+    # Note what geography() then does with it: REMOTE_RE reads the line as
+    # eligibility, so the answer is a remote posting and NOT a desk in
+    # Conshohocken. Recovering the string and claiming an office are two
+    # different things and only the first one happens here.
+    (["Remote / Hybrid / Conshohocken, PA",
+      "Principal Engineer, DevOps & Infrastructure", "Apply"],
+     "Principal Engineer, DevOps & Infrastructure",
+     "Principal Engineer, DevOps & Infrastructure",
+     "Remote / Hybrid / Conshohocken, PA", None),
+
+    # TERRITORY IN A TITLE IS NOT A DEFECT AND MUST NOT BE "FIXED"
+    (["Strategic Account Executive (CO, NM, UT)"],
+     "Strategic Account Executive (CO, NM, UT)",
+     "Strategic Account Executive (CO, NM, UT)", "", None),
+    (["Strategic Growth Account Executive, California"],
+     "Strategic Growth Account Executive, California",
+     "Strategic Growth Account Executive, California", "", None),
+]
+
+
 # =========================================================================
 # salary.py - pay ranges parsed out of job-description prose
 #
@@ -6577,6 +6717,27 @@ def main() -> int:
         ("United States - San Francisco, CA", "San Francisco"),
         # and a real three-word city must survive the same trimming
         ("Salt Lake City, UT", "Salt Lake City"),
+        # THE SEAT OF GOVERNMENT, SPELLED THE WAY BOARDS ACTUALLY SPELL IT.
+        # Only "Washington, D.C." resolved. The bare-DC forms did not, because
+        # the word Washington counted as the STATE as well as the city, and
+        # geography() reads two states as a coverage list and names no office at
+        # all. Sixteen postings in DC, on a board about government technology,
+        # had no desk on the map or the /s/dc page. Kansas City lost two the
+        # same way, its name carrying Kansas alongside the Missouri it sits in.
+        ("Washington, DC", "Washington"),
+        ("Washington DC", "Washington"),
+        ("Washington, DC, United States", "Washington"),
+        ("Washington, District of Columbia, United States", "Washington"),
+        ("Hybrid - Kansas City, MO", "Kansas City"),
+        ("Kansas City, Missouri", "Kansas City"),
+        # DESKS THE HTML EXTRACTOR USED TO SWALLOW. Both of these were inside a
+        # title and nowhere else - "Network Engineer, Axon 911 Scottsdale,
+        # Arizona, United States" and uveye's "Supply Chain Analyst Teaneck, NJ
+        # Full-time More Details Less Details" - so the postings had no office,
+        # appeared on no map and on no /s/<state> page. They are locations now,
+        # and a location is only worth recovering if it resolves.
+        ("Scottsdale, Arizona, United States", "Scottsdale"),
+        ("Teaneck, NJ", "Teaneck"),
     ]
     # TWO CAPITALS ARE NOT A US STATE. The office pattern matched any [A-Z]{2},
     # so London UK, Cambridge UK, Montreal QB, Noida UP, Pune MH and even
@@ -6596,6 +6757,63 @@ def main() -> int:
         if got:
             errors += fail(f"geography({loc!r}) claimed a US office {got} - "
                            f"{loc.split(',')[-1].strip()} is not a US state")
+    # A LIST OF STATES IS STILL A LIST OF STATES. Reading "Washington" out of
+    # "Washington, DC" as the city rather than a second state must not soften
+    # the rule it lives inside: a location naming several places is a coverage
+    # or eligibility list, not a desk, and none of these may produce an office.
+    # Every one is on the board today.
+    for loc in ("Ohio, Michigan", "Indiana, Kentucky, Tennessee", "CO, NM, UT",
+                "San Francisco, CA | Washington, DC",
+                "Addison, TX (Hybrid); Bellevue, WA (Hybrid); Durham, NC "
+                "(Hybrid); Emeryville, CA (Hybrid)"):
+        got = _roles.geography(loc, "Account Executive")["office"]
+        if got:
+            errors += fail(f"geography({loc!r}) named an office {got} - a "
+                           f"location listing several places is not a desk")
+    # ...and a city whose name CONTAINS a state name, with no other state to
+    # fall back on, still pins the seat to that state. Reading "New York City"
+    # as carrying no state at all cost forty postings their only location -
+    # more than the eighteen the DC fix recovered.
+    for loc, want in (("New York City", "NY"), ("Kansas City", "KS"),
+                      ("New York City; San Francisco", "NY")):
+        got = _roles.geography(loc, "Account Executive")["office"]
+        if not got or got.get("state") != want or got.get("city") is not None:
+            errors += fail(f"geography({loc!r}) office = {got}, expected a bare "
+                           f"state {want} - the city-name rule emptied it")
+    # "Socorro, New Mexico" is in the United States. The country's name is
+    # inside the state's, and NON_US matched the wrong one.
+    if _roles.is_us("Socorro, New Mexico", "Assistant Store Manager") is not True:
+        errors += fail("is_us('Socorro, New Mexico') is not True - New Mexico "
+                       "is a state, not the country inside its name")
+
+    # AND A TWO-LETTER CODE THAT *IS* A US STATE, ATTACHED TO A CITY THAT IS
+    # NOT IN IT. The list above works because UK, QB, UP and MH are not states;
+    # IL and IN are, so a foreign address written with an ISO COUNTRY code walks
+    # straight through every test and files a desk six thousand miles from the
+    # job. "Hyderabad, Telengana, IN" was on the board as an Indiana office,
+    # seven times, and reading Doorman-style card locations out of the html
+    # extractor was about to add "Tel-Aviv, IL" as an Illinois one four more.
+    #
+    # NEITHER HALF ALONE IS ENOUGH. Refusing the CITY and then handing back a
+    # bare "state IL" moves the wrong answer rather than removing it: the state
+    # page is where it would show up either way. And is_us has to agree, or the
+    # posting is still counted as American.
+    for loc in ("Tel-Aviv, IL", "Hyderabad, Telengana, IN"):
+        got = _roles.geography(loc, "Account Executive")["office"]
+        if got:
+            errors += fail(f"geography({loc!r}) claimed a US office {got} - the "
+                           f"two letters are a country code, not the state")
+        if _roles.is_us(loc, "Account Executive") is not False:
+            errors += fail(f"is_us({loc!r}) is not False - a foreign address "
+                           f"written with a state-shaped country code")
+    # ...and the states themselves must survive being guarded against. Every one
+    # of these is a real US desk on the board today.
+    for loc, want in (("Chicago, IL", "Chicago"), ("Champaign, IL", "Champaign"),
+                      ("Fort Wayne, IN", "Fort Wayne")):
+        got = _roles.geography(loc, "Account Executive")["office"]
+        if not got or got.get("city") != want or not _roles.is_us(loc):
+            errors += fail(f"geography({loc!r}) office = {got}, expected city "
+                           f"{want!r} - the guard took a real US desk with it")
     # "California, US" is a state with no city, which is a different and
     # correct answer: a bare state still pins the seat to a state, and the
     # city must be None rather than the word "California".
@@ -6609,6 +6827,33 @@ def main() -> int:
         if got_city != want_city:
             errors += fail(f"geography({loc!r}) city = {got_city!r}, "
                            f"expected {want_city!r}")
+
+    # A DIRECTION IN FRONT OF A CONTINENT IS NOT A US REGION. Four live
+    # quota-carrying postings asserted one they do not have - MSAB's "Account
+    # Executive Eastern Europe" rendered on the public jobs tab as "Northeast
+    # (territory)", and Via, Versaterm and Dataminr did the same. The four US
+    # cases are here because the obvious fix - dropping "eastern"/"western"
+    # from REGION_WORDS - silently breaks every real territory title.
+    REGION_CASES = [
+        ("Account Executive Eastern Europe", None),
+        ("Account Executive, Western Europe", None),
+        ("Account Executive, UK & Western Europe", None),
+        ("Account Executive, Public Sector - Central and Eastern Europe", None),
+        ("Sales Manager, Western Canada", None),
+        ("Enterprise Account Executive, EMEA - Northern Europe", None),
+        ("Account Executive, Northeast", "Northeast"),
+        ("Regional Sales Manager - West Coast", "West"),
+        ("Enterprise AE - Eastern Territory", "Northeast"),
+        ("AE - Western Region", "West"),
+    ]
+    for title, want in REGION_CASES:
+        got = _roles.geography("", title)["territory"]["region"]
+        if got != want:
+            errors += fail(
+                f"geography('', {title!r}) region = {got!r}, expected {want!r}"
+                + ("  - a role outside the United States is being filed under "
+                   "a US region" if want is None else
+                   "  - a real US territory title stopped being read"))
 
     for (loc, title), (t_states, t_stated, o_state, mode) in GEOGRAPHY_CASES:
         g = _roles.geography(loc, title)
@@ -6753,6 +6998,18 @@ def main() -> int:
         got = ats.strip_cta(raw)
         if got != expected:
             errors += fail(f"ats.strip_cta({raw!r}) = {got!r}, expected {expected!r}")
+    for inner, want_lines in CARD_LINE_CASES:
+        got_lines = ats._card_lines(inner)
+        if got_lines != want_lines:
+            errors += fail(f"ats._card_lines({inner[:48]!r}...) = {got_lines!r}, "
+                           f"expected {want_lines!r}")
+    for lines, flat, w_title, w_loc, w_pay in CARD_CASES:
+        title, loc, comp = ats.card_fields(lines, flat)
+        pay = (comp or {}).get("raw")
+        if (title, loc, pay) != (w_title, w_loc, w_pay):
+            errors += fail(
+                f"ats.card_fields({lines!r}) = {(title, loc, pay)!r}, "
+                f"expected {(w_title, w_loc, w_pay)!r}")
     errors += check_board()
     errors += check_salary()
     # What survives a job description, and what must not. Checked against the
@@ -6773,7 +7030,8 @@ def main() -> int:
     print(f"{len(companies)} companies | {n_api} on structured ATS APIs | "
           f"{len(hist)} snapshot(s) | classifier cases: {len(CLASSIFIER_CASES)} title, "
           f"{len(PAGESCAN_CASES)} page-scan, {len(TITLE_TEXT_CASES)} title-text, "
-          f"{len(CTA_CASES)} button-label")
+          f"{len(CTA_CASES)} button-label, {len(CARD_CASES)} card-split, "
+          f"{len(CARD_LINE_CASES)} card-line")
     after = _journal_fingerprint()
     if after != _journal_before:
         errors += fail(
