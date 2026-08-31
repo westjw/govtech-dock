@@ -1592,7 +1592,18 @@ const BACK_HTML=`<p><button id="r-back" style="background:none;border:0;
      appear. Silence beats a number this board cannot stand behind.
 
    Median rather than mean: one $600k enterprise req should not move the line
-   a reader is trying to stand next to. */
+   a reader is trying to stand next to.
+
+   AND TWO MEDIANS ARE NOT ONE POSTING. This block said "The middle one starts
+   at $171k and tops out at $230k", which reads as a single job somebody could
+   go and look at. `lo` is the median of the floors and `hi` the median of the
+   ceilings, ordered independently: on 15 of the 20 bands this board renders,
+   no peer states that exact pair. The engineering/senior band described a
+   posting that does not exist, out of 213 that do.
+
+   The arithmetic was right the whole time and the sentence was not, which is
+   the easier half to get wrong and the harder half to notice. Two facts, said
+   as two facts. */
 function median(xs){
   const v=xs.slice().sort((a,b)=>a-b), n=v.length;
   return n%2?v[(n-1)/2]:Math.round((v[n/2-1]+v[n/2])/2);
@@ -1617,9 +1628,9 @@ function payBand(p){
   return `<div class="band">
     <div class="bandline"><strong>${peers.length}</strong> other
       ${esc(String(p.seniority))} ${esc(String(fam))} posting${
-        peers.length===1?"":"s"} on this board state a salary. The middle one
-      starts at <strong>${k(lo)}</strong>${hi?` and tops out at
-      <strong>${k(hi)}</strong>`:""}.</div>
+        peers.length===1?"":"s"} on this board state a salary.
+      Half start at <strong>${k(lo)}</strong> or more${hi?`, and half top
+      out at <strong>${k(hi)}</strong> or less`:""}.</div>
     <div class="bandwhy">That is a count of what other employers published, not
       an estimate of what this job pays. Annual, US dollars, and only postings
       that stated a figure &mdash; roughly three in four state none, and this
