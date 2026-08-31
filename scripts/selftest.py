@@ -3406,11 +3406,36 @@ def check_boards_read_agrees_with_coverage() -> int:
                     "hundreds")
     # AND THE INCREMENT MUST BE CONDITIONAL. A counter bumped once per company
     # regardless of outcome is len(companies) wearing a loop.
-    if "ifnotno_boardandnoterr:boards_read+=1" not in flat:
-        bad += fail("boards_read is incremented without checking that we had a "
-                    "board to ask and that the fetch did not error - a counter "
+    want_cond = ("ifnotno_boardandnotsharedand(notfetch_errorrendered_ok):"
+                 "boards_read+=1")
+    if want_cond not in flat:
+        bad += fail("boards_read's increment is no longer guarded on all three "
+                    "of: we had an address, the board is not somebody else's, "
+                    "and either the fetch or the render answered. A counter "
                     "that always increments is the len() overclaim again, one "
                     "loop further in")
+
+    # IT MUST READ THE WIRE, NOT `err`. This is the defect the first version
+    # shipped with, and it is invisible from the increment alone: three lines
+    # above it set `err = None`, and only the render one means a board
+    # answered. The shared-board rule reports one board as two reads; the
+    # stored-role promotion reports LAST run's roles as a read this run, which
+    # is the same overclaim the card was rewritten to stop making.
+    if "fetch_err=err" not in flat:
+        bad += fail("build_board no longer captures the fetch error before the "
+                    "loop rewrites it, so boards_read counts companies whose "
+                    "`err` was cleared by the shared-board rule or by "
+                    "promoting roles stored on a previous run")
+    # ORDER, NOT JUST PRESENCE. Capturing fetch_err below the shared-board
+    # rule records the rewrite instead of the answer, and the file would still
+    # contain both lines.
+    i_capture = flat.find("fetch_err=err")
+    i_zero = flat.find("jobs,err=[],None")
+    if i_capture == -1 or (i_zero != -1 and i_capture > i_zero):
+        bad += fail("build_board captures fetch_err at or after the point the "
+                    "shared-board rule zeroes err, so the capture records the "
+                    "rewrite rather than the answer and every shared board "
+                    "counts as a board we read")
 
     board = json.loads((DATA / "board.json").read_text())
     cov = board.get("coverage") or {}

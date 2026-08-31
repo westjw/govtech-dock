@@ -832,7 +832,13 @@ def main() -> int:
 
     boards_read = 0
     for c, jobs, err, enumerable, may_render in fetched:
-        if c["id"] in owns:
+        # THE ANSWER OFF THE WIRE, taken before anything below can rewrite it.
+        # Three separate lines in this loop set `err = None`, and only one of
+        # them means the board answered us. See the boards_read count further
+        # down, which is the only thing that reads this.
+        fetch_err = err
+        shared = c["id"] in owns
+        if shared:
             # Somebody else's board. Keep the company on the list with its real
             # state, and no postings: a shared board is one board.
             jobs, err = [], None
@@ -866,11 +872,30 @@ def main() -> int:
                 err = None
 
         # WHAT "READ" MEANS, counted here because this is the only place that
-        # knows. We had a ref, we asked for it, and something came back that
-        # was not an error. Not "we have a careers page on file" - that is the
-        # claim the card used to make, and 866 of the pages it counted are the
-        # `page only` pile a fetcher mostly cannot enumerate at all.
-        if not no_board and not err:
+        # knows. We had an address, we asked for it, and a board answered -
+        # either the fetch or the render pre-pass, which really did open the
+        # page this run. Not "we have a careers page on file": that is the
+        # claim this card used to make, and 866 of the pages it counted are
+        # the `page only` pile a fetcher mostly cannot enumerate at all.
+        #
+        # IT READS `fetch_err`, NOT `err`, AND THAT IS THE WHOLE POINT. By the
+        # time control reaches this line, `err` has been set to None by up to
+        # three lines above, and only the render one means we read anything:
+        #
+        #   - the shared-board rule zeroes a company whose board belongs to
+        #     somebody else. One board is one read, and the holder is counted
+        #     on its own pass, so counting this too reports one board twice.
+        #   - the stored-role promotion zeroes a company whose postings came
+        #     off LAST run's stored roles. Nothing was read this run at all.
+        #     Counting it is reporting old knowledge as a fresh read, which is
+        #     exactly the overclaim this card has already made twice.
+        #
+        # Written the wrong way first, with `not err`, and caught by reading
+        # the loop again while the crawl that would have shipped it was
+        # already running. A counter placed after the code that rewrites its
+        # input measures the rewrite.
+        rendered_ok = bool(rendered_rows.get(c["id"]))
+        if not no_board and not shared and (not fetch_err or rendered_ok):
             boards_read += 1
 
         if err and not jobs:
