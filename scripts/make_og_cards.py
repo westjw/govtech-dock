@@ -31,8 +31,13 @@ OUT = ROOT / "assets" / "og"
 CARDS = {
     "home": ("Every open sales role",
              "at state and local government technology companies"),
+    # {hiring}, NOT {orgs}. This said "across {orgs} companies" and rendered
+    # 2,113 - every company on the map, including the 583 with no public board
+    # and everyone hiring nobody. 152 companies carry a quota-carrying role.
+    # The card is the preview a link renders in Slack and on a timeline, so it
+    # is read by more people than the page it points at.
     "jobs": ("Sales jobs in govtech",
-             "quota-carrying roles across {orgs} companies, refreshed daily"),
+             "quota-carrying roles across {hiring} companies, refreshed daily"),
     "companies": ("The govtech map",
                   "{orgs} companies selling into state and local government"),
     "conferences": ("Where they exhibit",
@@ -91,6 +96,9 @@ def main() -> int:
     brand = json.loads((ROOT / "data" / "brand.json").read_text())
     board = json.loads((ROOT / "data" / "board.json").read_text())
     orgs = f"{len(board.get('organizations', [])):,}"
+    # Companies with at least one quota-carrying OPENING - the population the
+    # jobs card actually describes.
+    hiring = f"{sum(1 for o in board.get('organizations', []) if o.get('quota_roles')):,}"
     mascot = (ROOT / "assets" / "mascot" / "svg" / "mascot-stand.svg")
     if not mascot.exists():
         mascot = ROOT / "assets" / "mascot" / "svg" / "head-on-the-hunt.svg"
@@ -102,7 +110,7 @@ def main() -> int:
         page = br.new_page(viewport={"width": 1200, "height": 630},
                            device_scale_factor=1)
         for name, (title, sub) in CARDS.items():
-            page.set_content(card_html(title, sub.format(orgs=orgs), brand, b64))
+            page.set_content(card_html(title, sub.format(orgs=orgs, hiring=hiring), brand, b64))
             page.wait_for_timeout(650)           # the webfont
             page.screenshot(path=str(OUT / f"{name}.png"))
             print(f"  wrote assets/og/{name}.png")

@@ -2435,8 +2435,7 @@ function goPage(n){
    exactly what he is for - and a face makes a dead end read as a state the
    board is in rather than as the board being broken. */
 const GHOST=`<img src="assets/mascot/svg/head-ghosted.svg" alt="" width="88" height="88">`;
-function emptyJobs(quotaOnly,fam,where,setAside,q){
-  const others=D.postings.filter(p=>!fam||p.family===fam).length;
+function emptyJobs(quotaOnly,fam,where,setAside,q,noQuota,noWhere){
   /* NAME THE COMPANY THE SEARCH WAS PROBABLY ABOUT. Typing "Tyler" and
      getting "nothing matches that" reads as "Tyler is not hiring", when the
      truth is almost always that we hold Tyler and cannot read their board.
@@ -2472,14 +2471,14 @@ function emptyJobs(quotaOnly,fam,where,setAside,q){
       ${setAside.total.toLocaleString()} match everything else you set but cannot be
       compared to it — ${paySetAsideText(setAside)}.<br>
       <span class="payall">Show those ${setAside.total.toLocaleString()} anyway &rarr;</span></div>`;
-  if(quotaOnly&&fam&&fam!=="gtm"&&others)
+  if(quotaOnly&&fam&&fam!=="gtm"&&noQuota)
     return `<div class="empty">${GHOST}No <strong>${esc(FAM[fam]||fam)}</strong> roles carry a
       quota, which is expected: quota-carrying means a sales number.<br>
       <span id="j-relax" style="color:var(--accent);cursor:pointer;font-weight:600">
-        Show all ${others.toLocaleString()} ${esc(FAM[fam]||fam)} roles instead &rarr;</span></div>`;
-  if(where&&others)
-    return `<div class="empty">${GHOST}Nothing matches that work mode. ${others.toLocaleString()}
-      roles match everything else you have set.</div>`;
+        Show all ${noQuota.toLocaleString()} ${esc(FAM[fam]||fam)} roles instead &rarr;</span></div>`;
+  if(where&&noWhere)
+    return `<div class="empty">${GHOST}Nothing matches that work mode. ${noWhere.toLocaleString()}
+      role${noWhere===1?"":"s"} match everything else you have set.</div>`;
   /* The last resort still refuses to say "there are no such jobs". This board
      reads 2,108 boards and 950 of those companies have no board we can read
      at all, so an empty result here is a fact about what we can see. */
@@ -2989,7 +2988,13 @@ function drawJobs(){
      the "new this run" strip has to answer a second question - how many rows
      would appear if the horizon were 0 - and answering it by eye is how that
      strip came to offer 56 and deliver 8. */
-  const pass=(p,sinceDays)=>{
+  /* `skip` names ONE filter to relax, so an empty-state offer can count what
+     the click will actually deliver. The offers used to count
+     D.postings.filter(family) - the family filter and nothing else - and then
+     describe it as "roles match everything else you have set". Sector, state,
+     work mode, pay floor, search terms and the age filter were all ignored by
+     the number and all still in force after the click. */
+  const pass=(p,sinceDays,skip)=>{
     // The searchable text includes the office and territory the classifier
     // extracted - as codes AND full names, so "account executive kansas"
     // finds a territory stored as KS.
@@ -3014,15 +3019,17 @@ function drawJobs(){
     if(WANT.terms.length&&!WANT.terms.every(alts=>alts.some(w=>hay.includes(w))
       ||brandTerm(alts,p.company_id)))
       return false;
-    if(quotaOnly&&!p.quota_carrying)return false;
+    if(skip!=="quota"&&quotaOnly&&!p.quota_carrying)return false;
     /* The three work-mode buttons are disjoint. "Onsite" means the job
        demonstrably sits somewhere - a stated onsite mode, or a named office
        on a role that is neither remote nor hybrid - and hybrid has its own
        button now rather than being folded in here. */
-    if(where==="remote"&&p.work_mode!=="remote")return false;
-    if(where==="hybrid"&&p.work_mode!=="hybrid")return false;
-    if(where==="onsite"&&!(p.work_mode==="onsite"
-      ||(p.office&&p.work_mode!=="remote"&&p.work_mode!=="hybrid")))return false;
+    if(skip!=="where"){
+      if(where==="remote"&&p.work_mode!=="remote")return false;
+      if(where==="hybrid"&&p.work_mode!=="hybrid")return false;
+      if(where==="onsite"&&!(p.work_mode==="onsite"
+        ||(p.office&&p.work_mode!=="remote"&&p.work_mode!=="hybrid")))return false;
+    }
     /* NEAR A CITY. Only ever narrows roles that have a place: a remote role
        has no desk to measure from and is excluded outright rather than being
        counted as infinitely far, which would file it under "too far" and read
@@ -3240,7 +3247,15 @@ function drawJobs(){
   }
 
   if(!rows.length){
-    host.insertAdjacentHTML("beforeend",emptyJobs(quotaOnly,f,where,setAside,g("j-q")));
+    /* WHAT EACH OFFER ACTUALLY DELIVERS, run through the whole pipeline
+       with exactly one filter relaxed, then counted in OPENINGS because that
+       is the unit the list beside it uses. */
+    const relaxed=k=>{
+      const r=payPass(D.postings.filter(p=>pass(p,sinceDays,k))).rows;
+      return new Set(r.map(p=>p.opening_id)).size;
+    };
+    host.insertAdjacentHTML("beforeend",
+      emptyJobs(quotaOnly,f,where,setAside,g("j-q"),relaxed("quota"),relaxed("where")));
   }else{
     const from=(PAGE-1)*PAGE_SIZE, page=groups.slice(from,from+PAGE_SIZE);
     /* THE LIST IS THE PRODUCT, so it is a table: five facts per row, in the
@@ -5464,10 +5479,16 @@ function mapData(){
     const o=p.office; if(!o||!o.city||!o.state) return;
     const key=o.city+"|"+o.state; const c=cities[key]; if(!c) return;
     let r=rows.get(key);
-    if(!r){r={key,city:o.city,state:o.state,lat:c[0],lon:c[1],n:0,q:0,secs:{}};rows.set(key,r)}
-    r.n++; if(p.quota_carrying)r.q++;
+    if(!r){r={key,city:o.city,state:o.state,lat:c[0],lon:c[1],n:0,q:0,secs:{},
+              _o:new Set(),_q:new Set()};rows.set(key,r)}
+    /* OPENINGS PER PIN, not rows. A requisition advertised twice in one city
+       is one job on that desk, and the head used to sum these rows across
+       every city - so "1,398 roles placed on the map" counted one Xplor AE
+       req 82 times. The distinct openings behind those rows are 1,027. */
+    r._o.add(p.opening_id); if(p.quota_carrying)r._q.add(p.opening_id);
     r.secs[p.sector]=(r.secs[p.sector]||0)+1;
   });
+  rows.forEach(r=>{r.n=r._o.size; r.q=r._q.size});
   return [...rows.values()].sort((a,b)=>b.n-a.n);
 }
 function mapDraw(cv,rows,hover){
@@ -5510,9 +5531,20 @@ function mapHit(rows,mx,my,w,h){
 }
 function mapView(){
   const rows=mapData();
-  const placed=rows.reduce((n,r)=>n+r.n,0);
-  const withOffice=D.postings.filter(p=>p.office&&p.office.city).length;
-  const unplaced=withOffice-placed;
+  /* BOTH SIDES IN OPENINGS. `placed` summed per-city rows, and `withOffice`
+     counted rows too, so "unplaced" was a difference between two row counts
+     presented as roles we could not map. An opening placed in one city and
+     unmappable in another is PLACED - it is on the map - so the unplaced set
+     is openings with a city on every row and no geocoded city among them. */
+  const placedIds=new Set(), officeIds=new Set();
+  D.postings.forEach(p=>{
+    if(!p.office||!p.office.city) return;
+    officeIds.add(p.opening_id);
+    const c=(D.cities||{})[p.office.city+"|"+p.office.state];
+    if(c) placedIds.add(p.opening_id);
+  });
+  const placed=placedIds.size;
+  const unplaced=officeIds.size-placedIds.size;
   $("#view").innerHTML=`
   <div class="phead">
     <h2 class="ptitle">Where the desks are</h2>
@@ -5527,8 +5559,8 @@ function mapView(){
     Every city a posting names an office in, sized by how many roles sit there.
     There is no state outline underneath: these are the offices, and the country
     draws itself out of them. Click a city to open the board filtered to that
-    state.${unplaced>0?` <strong>${unplaced.toLocaleString()}</strong> role${unplaced===1?"":"s"}
-    names a city we could not place, and ${(D.postings.length-withOffice).toLocaleString()}
+    state.${unplaced>0?` <strong>${unplaced.toLocaleString()}</strong> role${unplaced===1?" names":"s name"}
+    a city we could not place, and ${(new Set(D.postings.map(p=>p.opening_id)).size-officeIds.size).toLocaleString()}
     name no city at all - neither is on this map, and neither is a zero.`:""}
   </p>`;
   const cv=$("#mapcv"); let hover=null;

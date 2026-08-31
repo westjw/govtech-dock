@@ -1287,31 +1287,25 @@ def main() -> int:
         "logos": logos,
         "cities": cities,
         "conferences": conf_rows,
-        # BOARDS WE ACTUALLY READ, not companies we hold.
+        # BOARDS WE ACTUALLY READ, not companies we hold. Counted in the
+        # summary loop above; see the long note at the increment for what
+        # "read" means and which three lines can lie about it. Declared here
+        # only so the key's order in the payload is stable.
         #
-        # This was len(companies) - every company on file - and the public
-        # "How listings get here" page printed it under the label "boards read
-        # this run". It said 2,113, directly above a table stating that 950 of
-        # those companies are blocked, absent or never probed, in the table's
-        # own words: "We learned nothing about these" and "never probed".
+        # TWO WRONG ANSWERS BEFORE THIS ONE, and the comment that used to
+        # stand here argued at length for the second of them:
         #
-        # A company whose board we could not open was counted as a board we
-        # read. That is the same overclaim coverage.py exists to kill - "839 of
-        # 1,722 monitored" - reappearing one card above the split that kills it.
+        #   len(companies) - every company on file. The public page printed
+        #   2,113 under "boards read this run", directly above a table saying
+        #   950 of those are blocked, absent or never probed.
         #
-        # DERIVED FROM THE COVERAGE SPLIT, so the card and the table beneath
-        # it cannot disagree. `structured` plus `page only` is exactly what
-        # coverage.py calls "we have some board on file" - the 55% figure - and
-        # it is the honest reading of "a board we could read". The other three
-        # states are the ones the table itself describes as learning nothing:
-        # blocked, absent, never probed.
+        #   structured + page only, off the coverage split. Better arithmetic,
+        #   same false claim: CLAUDE.md forbids adding those two by name,
+        #   because `page only` is a worklist for capture rather than
+        #   coverage. 866 of the 1,163 it reported are pages a fetcher mostly
+        #   cannot enumerate.
         #
-        # Computed here rather than counted independently because two ways of
-        # arriving at the same number is how they drift, and this card drifting
-        # from that table is the whole defect being fixed.
-        # Set below, where the coverage split is computed - `split` does not
-        # exist yet at this point in the function. Placed here so the key's
-        # order in the payload is stable.
+        # Both describe the MAP and label it the RUN. The run reads 337.
         "boards_read": None,
         "unreadable": unreadable,
         "rendered": rendered,
