@@ -133,7 +133,10 @@ async function describe(request, env) {
       // the facts in its HTML. That is the canonical one, so the app view and
       // the static page do not compete for the same company. Companies with
       // nothing open have no static page, and ?co= is their only address.
-      canonical: c.r ? `${SITE}/c/${encodeURIComponent(co)}.html`
+      // Extensionless: Cloudflare 308s /c/<id>.html to /c/<id>, so the .html
+      // form was a canonical pointing at a redirect back to the page that
+      // declared it. See write_crawl_files.
+      canonical: c.r ? `${SITE}/c/${encodeURIComponent(co)}`
                      : `${SITE}/?co=${encodeURIComponent(co)}`,
       image: `${SITE}/assets/og/companies.png`,
     };

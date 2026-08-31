@@ -2653,7 +2653,7 @@ def check_prerendered_pages() -> int:
         co = (tmp / "c" / "seller.html").read_text()
         if "Account Executive" not in co:
             errors += fail("a company page does not list the company's roles")
-        if 'canonical" href="https://example.test/c/seller.html"' not in co:
+        if 'canonical" href="https://example.test/c/seller"' not in co:
             errors += fail("a company page is not canonical to itself, so it "
                            "competes with the app's ?co= view for the same company")
 
@@ -3322,6 +3322,26 @@ def check_sitemap_offers_the_job_pages() -> int:
                     continue
                 sig[(v.get("t"), v.get("c"), v.get("w"),
                      v.get("ci"), v.get("st"))] += 1
+            # ONE URL FORM, AND IT MUST BE THE ONE THE SERVER SERVES.
+            # Cloudflare 308s /c/verkada.html to /c/verkada, and the target
+            # then declared the .html form as its canonical - a canonical
+            # pointing at a redirect back to the page declaring it, on all 462
+            # company, state and conference urls.
+            if any(u.endswith(".html") for u in urls):
+                bad += fail("the sitemap submits .html urls, which Cloudflare "
+                            "308s to the extensionless form - every one tells "
+                            "a crawler the address it was sent to is not the "
+                            "real one")
+            # AND THE SAME ESCAPING AS THE CANONICAL. urllib.parse.quote
+            # escapes ! ~ * ' ( ) and encodeURIComponent does not; 539 posting
+            # ids contain one, so the submitted url and the canonical the page
+            # declares were different strings for 12% of the role urls.
+            over = [u for u in urls
+                    if any(e in u for e in ("%28", "%29", "%27", "%21", "%2A", "%7E"))]
+            if over:
+                bad += fail(f"{len(over):,} sitemap urls are escaped more "
+                            f"tightly than encodeURIComponent, so they do not "
+                            f"match the canonical the page declares")
             dupes = sum(n for n in sig.values() if n > 1)
             if dupes:
                 bad += fail(f"{dupes:,} sitemap urls carry a JobPosting block "
@@ -4222,10 +4242,14 @@ def check_crawl_files() -> int:
             if not (tmp / f).exists():
                 errors += fail(f"build_site did not write {f}")
         sm = (tmp / "sitemap.xml").read_text()
-        # /c/<id>.html, not ?co=. Both show the same company, so one has to be
+        # /c/<id>, not ?co=. Both show the same company, so one has to be
         # canonical or they compete; the static page is the one a crawler that
         # never runs JavaScript can actually read.
-        if "/c/hiring-co.html" not in sm:
+        #
+        # EXTENSIONLESS. Cloudflare 308s /c/<id>.html to /c/<id>, so submitting
+        # the .html form pointed every crawler at a redirect, and the target
+        # then named the .html form as its canonical - back at the redirect.
+        if "/c/hiring-co" not in sm:
             errors += fail("a company with an opening is missing from the "
                            "sitemap, or the sitemap still points at the app "
                            "view rather than the prerendered page")
@@ -4235,7 +4259,7 @@ def check_crawl_files() -> int:
                            "a crawler to stop believing this one")
         # /e/<slug>.html, matching the prerendered conference page, not the
         # tab query it used to point at.
-        if "/e/apco-2026.html" not in sm:
+        if "/e/apco-2026" not in sm:
             errors += fail("conferences are missing from the sitemap, or it "
                            "still points at the tab query rather than the "
                            "prerendered conference page")

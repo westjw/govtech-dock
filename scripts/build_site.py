@@ -556,7 +556,7 @@ def write_company_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
                   f'kept current.</div>')
         (d / f"{o['id']}.html").write_text(_page(
             f"{o['name']} is hiring &middot; {brand['name']}".replace("&middot;", "·"),
-            f"{desc} {line}.", f"{site}/c/{o['id']}.html", body, brand, "companies"))
+            f"{desc} {line}.", f"{site}/c/{o['id']}", body, brand, "companies"))
         n += 1
     return n
 
@@ -627,7 +627,7 @@ def write_state_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
             f"Govtech sales jobs in {name} · {brand['name']}",
             f"{line}. Sales roles at state and local government technology "
             f"companies with a desk in {name}.",
-            f"{site}/s/{st.lower()}.html", body, brand, "jobs"))
+            f"{site}/s/{st.lower()}", body, brand, "jobs"))
         n += 1
     return n
 
@@ -807,7 +807,7 @@ def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
             f"{c.get('name') or tag}: who is hiring · {brand['name']}",
             f"{line}. " + (f"{c.get('dates')}, {c.get('city')}. " if c.get("dates") else "")
             + "Sales roles at the govtech companies on this floor.",
-            f"{site}/e/{_slugify(tag)}.html", body, brand, "conferences"))
+            f"{site}/e/{_slugify(tag)}", body, brand, "conferences"))
         n += 1
     return n
 
@@ -853,6 +853,24 @@ def write_headers(out: pathlib.Path) -> None:
     print("  _headers: frame protection on /alerts")
 
 
+# The characters encodeURIComponent leaves alone. urllib.parse.quote
+# escapes ! ~ * ' ( ) and encodeURIComponent does not, so a sitemap built
+# with the default `safe` submits %28Controls%29 while the page it reaches
+# declares (Controls) as canonical. A module constant because an f-string
+# cannot carry these quotes inline before Python 3.12.
+_JS_SAFE = "!~*'()"
+
+
+# CLOUDFLARE SERVES THE EXTENSIONLESS FORM AND 308s THE OTHER.
+#
+# /c/verkada.html answers 308 to /c/verkada, and /c/verkada then declared its
+# canonical as /c/verkada.html - a canonical pointing at a redirect away from
+# the page declaring it. The sitemap submitted the .html form for all 462
+# company, state and conference pages, so every one told a crawler "the URL you
+# were sent to is not the real one, the real one is this URL that bounces you
+# back here".
+#
+# One form everywhere: the one the server actually serves.
 def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
     """robots.txt, sitemap.xml and a real 404, none of which existed.
 
@@ -878,15 +896,15 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
     # page is the one with the facts in its HTML, which is what a crawler that
     # never runs JavaScript can actually read.
     for o in sorted(hiring, key=lambda x: -(x.get("open_roles") or 0)):
-        urls.append((f"{site}/c/{urllib.parse.quote(o['id'])}.html", "weekly", "0.6"))
+        urls.append((f"{site}/c/{urllib.parse.quote(o['id'])}", "weekly", "0.6"))
     for st in sorted({(p_.get("office") or {}).get("state")
                       for p_ in board.get("postings", [])
                       if p_.get("family") in ("gtm", "field")} - {None, ""}):
-        urls.append((f"{site}/s/{st.lower()}.html", "weekly", "0.6"))
+        urls.append((f"{site}/s/{st.lower()}", "weekly", "0.6"))
     for c in board.get("conferences", []) or []:
         tag = c.get("tag") or c.get("event_tag") or c.get("conference")
         if tag:
-            urls.append((f"{site}/e/{_slugify(tag)}.html", "monthly", "0.5"))
+            urls.append((f"{site}/e/{_slugify(tag)}", "monthly", "0.5"))
 
     # THE ROLE PAGES, WHICH WERE NOT IN HERE AT ALL.
     #
@@ -937,7 +955,14 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
         if sig in seen_sig:
             continue
         seen_sig.add(sig)
-        u = f"{site}/?role={urllib.parse.quote(pid, safe='')}"
+        # SAME ENCODING AS THE CANONICAL. urllib.parse.quote escapes ! ' ( )
+        # and * ; encodeURIComponent, which _middleware.js uses to build the
+        # canonical, does not. 539 posting ids contain one of those, so the
+        # sitemap submitted %28Controls%29 while the page it reached declared
+        # (Controls) as canonical - Google files that as "alternate page with
+        # proper canonical tag" and the submitted address is not the indexed
+        # one, for 12% of the role urls.
+        u = f"{site}/?role={urllib.parse.quote(pid, safe=_JS_SAFE)}"
         (read if p_.get("jd_seen") else unread).append(u)
     for u in read:
         urls.append((u, "daily", "0.9"))
