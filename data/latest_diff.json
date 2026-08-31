@@ -1,69 +1,62 @@
 {
-  "date": "2026-08-30",
-  "previous": "2026-08-29",
+  "date": "2026-08-31",
+  "previous": "2026-08-30",
   "changes": [
     {
-      "company": "Axon",
-      "id": "axon",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "company": "Flock Safety",
+      "id": "flock-safety",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Community Safety Account Executive (Boston, MA)"
     },
     {
-      "company": "Aurelian",
-      "id": "aurelian",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "company": "Euna Solutions",
+      "id": "euna-solutions",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Senior Customer Success Manager (P only"
     },
     {
       "company": "Caselle",
       "id": "caselle",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Manager - Sales [rendered]"
-    },
-    {
-      "company": "Bamboo Health",
-      "id": "bamboo-health",
-      "from": "None found",
+      "from": "Yes",
       "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Municibid",
-      "id": "municibid",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "HTTP 404 for https://municibid.com/caree"
-    },
-    {
-      "company": "Adobe",
-      "id": "adobe",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "note": "page too small - likely JS-rendered"
     },
     {
       "company": "Singlewire Software",
       "id": "singlewire-software",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Vanderlande",
+      "id": "vanderlande",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "FeedbackFruits",
+      "id": "feedbackfruits",
       "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "Intelligent Video Solutions",
       "id": "intelligent-video-solutions",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 500 for https://recruiting.paylocit"
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "Collabrios Health",
       "id": "collabrios-health",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     }
   ]
 }
