@@ -1084,6 +1084,150 @@ def strip_cta(text: str) -> str:
     return out or text
 
 
+# A CARD IS SEVERAL LINES, NOT ONE SENTENCE. A board renders a listing as a
+# stack of blocks - department, title, location, employment type, pay - and the
+# flattening below used to run them together into a single string that was then
+# filed as the job's name. Four Doorman postings reached the public board called
+# "Full Stack Engineer New York, NY $120k - 145k", and thirty of Prepared's read
+# "Network Engineer, Axon 911 New York, New York, United States".
+#
+# That is three faults in one string. The title is wrong on the page, in the
+# posting id, in the scope-ruling key and in every alert match. The location
+# field is left EMPTY - fetch_html_titles hard-coded "location": "" and returned
+# it for all 681 rows it produced - so roles.geography() has nothing to read and
+# the role appears on no map and no /s/<state> page. And the pay is inside the
+# title rather than a comp field, where salary.py never looks.
+#
+# The blocks are still in the markup. _BLOCKY already knows which tags end a
+# line, because plain_html() needs the same fact to keep a salary line off the
+# sentence above it. Splitting on it here costs nothing and hands back the lines
+# the board laid out.
+# SPANS STACKED WITH NOTHING BETWEEN THEM ARE LINES TOO. _card_lines has always
+# split on the markup's OWN newlines as well as on block tags, so a formatted
+# page already comes apart correctly: Dossier writes its location and employment
+# type as sibling spans on separate source lines and they arrive as two lines.
+# A minifier removes exactly that newline. ease-health and k16 Solutions emit
+# the same stacked structure with the tags touching, `</span><span`, and eleven
+# postings came out named "Engineering Software Engineer Remote, U.S. -
+# Full-time" and "Full-time - Remote Software Engineer View role". Treating the
+# touching form as the formatted form is consistency, not a new rule.
+#
+# MEASURED: across every readable html board, thirteen cards split here at all -
+# eleven corrected a title or recovered a desk, two changed nothing, none was
+# made worse.
+#
+# THE ABSENT SPACE IS NOT MEASURED, and is a guard rather than a finding. A span
+# is an inline tag, and "Senior <span>Engineer</span>" is one name; requiring the
+# tags to touch keeps a spaced pair together. Dropping that requirement changes
+# no row in the corpus, so nothing here proves it is needed - it is kept because
+# the failure it prevents renames a job, and because it can only ever split
+# less.
+_SPAN_STACK = re.compile(r"</span\s*><span\b", re.I)
+
+
+def _card_lines(inner: str) -> list[str]:
+    """The lines a job card renders as, from the markup inside its anchor."""
+    s = _SPAN_STACK.sub("</span>\n<span", inner)
+    s = _SCRIPTY.sub(" ", s)
+    s = _BLOCKY.sub("\n", s)
+    s = _ANYTAG.sub(" ", s)
+    return [line for line in (_unescape(x) for x in s.split("\n")) if line]
+
+
+# A LOCATION LINE. Either a work mode stated on its own - "Remote - US",
+# "Hybrid" - or a "Place, Place" address. The comma is what keeps ordinary card
+# furniture out: "Full Time", "Sales", "View role" and "Engineering" all fail it.
+_CARD_LOC = re.compile(r"^(?:[Rr]emote\b|[Hh]ybrid\b|[Oo]n-?site\b"
+                       r"|[A-Z][A-Za-z .'-]*,\s*[A-Z][A-Za-z .]+)")
+
+# A PAY LINE, and nothing that merely contains money. Anchored at both ends so a
+# sentence with a dollar figure in it - a quota, a deal size, a book of business -
+# cannot match; only a line that IS a range, which on a card is the pay field.
+_PAY_CHIP = re.compile(
+    r"^(?:[$£€]|USD|CAD|AUD|NZD|GBP|EUR)\s?[\d,.]+\s*[kK]?\s*(?:[-\u2013\u2014]|to)\s*"
+    r"(?:[$£€]|USD|CAD|AUD|NZD|GBP|EUR)?\s?[\d,.]+\s*[kK]?"
+    r"(?:\s*(?:/|per\s+)(?:hour|hr|year|yr|month|mo|week|wk|day))?$")
+
+
+def card_fields(lines: list[str], flat: str) -> tuple[str, str, dict | None]:
+    """(title, location, comp) from a card's lines, or the flat text unchanged.
+
+    POSITION FIRST, PATTERN SECOND - the rule CLAUDE.md records the capture
+    harvester learning, and the reason this reads the lines in order and only
+    looks for a location among the ones AFTER the title. Testing the location
+    pattern first stole the title whenever one looked like a place.
+
+    The title is the first line that reads like a job, not flatly the first
+    line, because boards stack a DEPARTMENT above it: Dossier's cards begin
+    "Development & Product Management" and Beanstack's begin "Engineering
+    Team". Taking line one there would name eleven postings after a department -
+    and _TITLEISH would then reject every one of them, deleting the roles. The
+    department chips do not contain a job word and the titles under them do, so
+    the job word is what tells them apart.
+
+    NEVER LOSE A ROLE TO AN OVER-EAGER SPLIT. When no single line reads like a
+    job - the card is one block, or the job word straddles two lines - this
+    hands back the flattened text exactly as before. A slightly long title beats
+    a truncated one, and beats a dropped posting by much more.
+    """
+    idx = next((i for i, line in enumerate(lines) if _TITLEISH.search(line)), None)
+    if idx is None:
+        return flat, "", None
+    title = strip_cta(lines[idx])
+    if not (6 <= len(title) <= 90) or _NAV.match(title):
+        return flat, "", None
+    loc, comp = "", None
+    for line in lines[idx + 1:]:
+        # A location never contains a job word. Without that, a card whose
+        # second line is a team name reads as the desk.
+        if not loc and len(line) <= 64 and _CARD_LOC.match(line) \
+                and not _TITLEISH.search(line):
+            loc = line
+        elif comp is None and _PAY_CHIP.match(line):
+            # THE ANCHOR IS THE CARD, NOT A WORD. salary.py refuses a bare
+            # "$120k - 145k" on purpose - in the prose of a sales JD an
+            # unanchored range is as likely to be a quota as a wage, and it
+            # documents that the fix for a miss is a new anchored form, never a
+            # loosened one. Here the anchor is structural: this line is the
+            # card's own pay field, sitting on its own under the title. Saying
+            # so supplies the anchor and changes nothing else - every sanity
+            # bound, the M-multiplier refusal and the percentage refusal all
+            # still apply, and still return None when they should.
+            comp = salary.parse(f"Salary: {line}") if salary else None
+    if not loc:
+        # A CHIP ABOVE THE TITLE, read only once the lines below have come up
+        # empty. ZeroEyes, Leo Technologies and k16 Solutions stack the place
+        # first and the role under it, so twelve postings kept a blank location
+        # with the answer sitting right there in the markup.
+        #
+        # THIS IS NOT THE RULE CLAUDE.md WARNS ABOUT. What went wrong there was
+        # testing the location pattern to decide WHICH LINE THE TITLE WAS, and
+        # "Database Administrator, Infrastructure - UK" duly came back as a job
+        # called Manchester. The title here is already settled - chosen above by
+        # position and by carrying a job word, without the location pattern
+        # being consulted at all - so nothing found in this loop can move it.
+        # All it can do is fill a field that would otherwise stay empty.
+        #
+        # WHAT THE TWELVE ACTUALLY BUY, counted rather than assumed: one becomes
+        # a US desk (Boca Raton, FL). Ten state a work mode that read "not
+        # stated" before. One - "Conshohocken, PA / Honolulu, HI" - names two
+        # cities and correctly yields no desk at all. The ZeroEyes rows say
+        # "Remote / Hybrid / Conshohocken, PA", and REMOTE_RE reads that as
+        # eligibility rather than a seat, so Conshohocken does NOT become an
+        # office. That is the existing rule working, not this one failing.
+        #
+        # BELOW BEATS ABOVE, and no board proves it. Not one card in the corpus
+        # has a location line on both sides of its title, so the ordering here
+        # is a preference for the documented rule rather than a finding, and
+        # gets no test of its own: a case for it would have to be invented.
+        for line in lines[:idx]:
+            if len(line) <= 64 and _CARD_LOC.match(line) \
+                    and not _TITLEISH.search(line):
+                loc = line
+                break
+    return title, loc, comp
+
+
 def fetch_html_titles(url: str) -> list[dict]:
     """Enumerate job titles from a server-rendered careers page.
 
@@ -1129,7 +1273,12 @@ def fetch_html_titles(url: str) -> list[dict]:
         if key in seen:
             continue
         seen.add(key)
-        out.append({"title": text, "location": "",
+        # The gates above stay on the flattened text: they decide whether this
+        # link is a posting at all, and they have their own scars. Only once it
+        # IS one do the card's lines get read, for the three fields that were
+        # being run together into the title.
+        title, loc, comp = card_fields(_card_lines(inner), text)
+        out.append({"title": title, "location": loc, "comp": comp,
                     "url": urllib.parse.urljoin(url, html_lib.unescape(href))})
     if len(out) < 2:
         raise AtsError("no enumerable job links on the page")
