@@ -3000,7 +3000,12 @@ def check_structured_data_claims_no_posting_date() -> int:
                     "board holds is when WE first saw a row, and publishing it "
                     "as the employer's posting date is our crawler's history "
                     "dressed as their hiring")
-    meta = ROOT / "public" / "meta-roles.json"
+    _b = built()
+    if _b is None:
+        return fail(f"selftest cannot build the shipped artifacts "
+                    f"({_BUILT.get('why')}), so the structured-data checks "
+                    f"cannot run. Silence here reads as a pass.")
+    meta = _b / "meta-roles.json"
     if meta.exists():
         roles = json.loads(meta.read_text())
         roles = roles.get("roles", roles)
@@ -3010,9 +3015,14 @@ def check_structured_data_claims_no_posting_date() -> int:
             bad += fail(f"{dated:,} structured roles still carry a date field "
                         f"for the middleware to publish as datePosted")
     src = (ROOT / "scripts" / "build_site.py").read_text()
-    blk = src[src.index('r["ld"] = 1'):]
-    blk = blk[:blk.index("roles[p_[")]
-    if re.search(r'r\["d"\]\s*=', blk):
+    # THE WHOLE FUNCTION, NOT A SLICE. This read from `r["ld"] = 1` to
+    # `roles[p_[`, so writing the crawl date one line lower - after the dict is
+    # stored - fell outside the window and passed. Same boundary bug as
+    # act_capture's split("\n")[1:3][0], and in a check written the same night
+    # that one was fixed.
+    blk = src[src.index("def write_meta_index("):]
+    blk = blk[:blk.index("\ndef ")]
+    if re.search(r'r\["d"\]\s*=|\["d"\]\s*=\s*p_\.get\("first_seen"', blk):
         bad += fail("build_site writes a date onto the structured-data record "
                     "again - the only one available is our crawl date")
 
@@ -3038,10 +3048,13 @@ def check_structured_data_claims_no_posting_date() -> int:
                         f"and those blocks are invalid - a job claim we cannot "
                         f"complete is worse than no claim")
     mwcode = re.sub(r"//.*$", "", mw, flags=re.M)
-    if "TELECOMMUTE" not in mwcode:
-        bad += fail("the middleware no longer emits jobLocationType for a "
-                    "remote posting, so 533 valid blocks lose the only "
-                    "location statement they can make")
+    # THE EXPRESSION, NOT THE WORD. `else if (false) o.jobLocationType =
+    # "TELECOMMUTE";` leaves the string verbatim and emits nothing - the same
+    # disabled-in-place mutation that beat the csvCell check three commits ago.
+    if 'r.tc)o.jobLocationType="TELECOMMUTE"' not in re.sub(r"\s+", "", mwcode):
+        bad += fail("the middleware no longer emits jobLocationType gated on "
+                    "r.tc, so 533 remote postings ship a JobPosting with no "
+                    "location statement at all")
     return bad
 
 
@@ -3088,6 +3101,48 @@ def check_middleware_separates_unreadable_from_gone() -> int:
         bad += fail("the own() guard is defined but not used on both the role "
                     "and company lookups")
     return bad
+
+
+# THE SHIPPED ARTIFACTS, BUILT HERE RATHER THAN READ FROM public/.
+#
+# Five checks read ROOT/"public" - the sitemap, meta-roles, the shipped board,
+# _headers. public/ is in .gitignore, and refresh.yml runs selftest as its
+# FIRST step, before build_board and before build_site. So in CI those files do
+# not exist, every one of those checks takes its `if ... .exists()` escape, and
+# the suite reports all checks passed. Six mutations to real fixes - shipping
+# invalid placeless JobPosting blocks, putting .html back in the sitemap,
+# restoring the companies_read overclaim - were all green.
+#
+# Locally the files DO exist, which is worse: they are whatever the last build
+# produced, so a check can pass against an artifact built before the edit it is
+# meant to be judging.
+#
+# So the suite builds its own, once, from the live data, into a temp directory.
+# Deterministic, present in CI, and always matching the source in the tree.
+_BUILT: dict = {}
+
+
+def built() -> "pathlib.Path | None":
+    """A freshly built public/ for this run, or None if it cannot be built."""
+    if "path" in _BUILT:
+        return _BUILT["path"]
+    import tempfile
+    import build_site
+    try:
+        out = pathlib.Path(tempfile.mkdtemp(prefix="selftest-public-"))
+        board = json.loads((DATA / "board.json").read_text())
+        brand = json.loads((DATA / "brand.json").read_text())
+        (out / "data").mkdir(parents=True, exist_ok=True)
+        build_site.write_meta_index(out, board)
+        build_site.write_crawl_files(out, board, brand)
+        build_site.write_headers(out)
+        _BUILT["path"] = out
+    except Exception as e:                        # noqa: BLE001
+        # A build that cannot run must SAY so rather than let five checks
+        # quietly pass. The caller fails loudly on None.
+        _BUILT["path"] = None
+        _BUILT["why"] = f"{type(e).__name__}: {e}"
+    return _BUILT["path"]
 
 
 TRIPLE_D = chr(34) * 3
@@ -3176,6 +3231,58 @@ def _import_pay_report():
     return pay_report
 
 
+def check_every_check_is_actually_run() -> int:
+    """Every `def check_*` in this file must be called by main().
+
+    Checks here are registered by a hand-written `errors += check_x()` line in
+    main, which is fine until somebody adds the function and forgets the line.
+    Then the file contains a check that has never run once. That happened to
+    check_ship_path_attaches_active within a minute of it being written - the
+    suite printed "all checks passed" with a brand-new guard sitting inert two
+    hundred lines above the call list, and the mutation it was written to
+    catch went green.
+
+    This file's whole job is catching checks that prove nothing. A check that
+    is never called is the limit case of that, and it is the one shape no
+    amount of care inside a check can catch from the inside.
+    """
+    src = pathlib.Path(__file__).read_text()
+    defined = set(re.findall(r"^def (check_[A-Za-z0-9_]+)\(", src, re.M))
+    called = set(re.findall(r"(?<!def )\b(check_[A-Za-z0-9_]+)\(", src))
+    orphans = sorted(defined - called - {"check_every_check_is_actually_run"})
+    bad = 0
+    for name in orphans:
+        bad += fail(f"{name} is defined in this file and never called, so it "
+                    f"has never run and cannot have caught anything")
+    return bad
+
+
+def check_ship_path_attaches_active() -> int:
+    """build_site.main must actually call attach_active.
+
+    THE COST OF EXTRACTING A FUNCTION TO TEST IT. attach_active was inline in
+    main(); moving it out let the badge check call it directly, and that check
+    now passes whether or not the ship path calls it at all. Replacing the
+    call in main() with `board["active"] = []` mutates the site to ship no
+    badge ever, and every other check stayed green.
+
+    Source-level, because main() is a full site build and no test runs it -
+    the same reason check_writes_name_their_author reads source rather than
+    calling the admin's actions.
+    """
+    src = (ROOT / "scripts" / "build_site.py").read_text()
+    i = src.find("\ndef main(")
+    if i < 0:
+        return fail("build_site has no main() - this guard cannot find the "
+                    "ship path it is supposed to be checking")
+    if "attach_active(" not in src[i:]:
+        return fail("build_site.main never calls attach_active, so nothing "
+                    "puts the hiring-hard list on the board and the badge "
+                    "cannot appear on the site - the badge check passes "
+                    "anyway, because it calls attach_active itself")
+    return 0
+
+
 def check_active_badge_is_shipped_honestly() -> int:
     """The badge on the page must be the momentum rules, not a looser copy.
 
@@ -3192,16 +3299,22 @@ def check_active_badge_is_shipped_honestly() -> int:
     whose basis nobody can see is a claim nobody can check.
     """
     bad = 0
-    # THE SHIPPED COPY, not data/board.json. build_site writes `active` onto
-    # the sanitized board on its way out, so data/board.json never has it - and
-    # the first version of this check read that file, found nothing, and
-    # returned 0. A check pointed at the wrong artifact tests nothing, which is
-    # the tenth time today that shape has turned up and the first time in a
-    # check I wrote while fixing the other nine.
-    shipped = ROOT / "public" / "data" / "board.json"
-    if not shipped.exists():
-        return 0                      # nothing built yet
-    board = json.loads(shipped.read_text())
+    # COMPUTED HERE, not read from a file, and the route to that took two
+    # wrong turns worth keeping. First this read data/board.json, which never
+    # carries `active` at all (build_site attaches it on the way out), so the
+    # check found nothing and returned 0. Then it read the SHIPPED board under
+    # public/ - correct artifact, but public/ is gitignored and absent when
+    # this suite runs in CI, so it took its own exists() escape and passed
+    # while the badge could be deleted from the page outright.
+    #
+    # So build_site.attach_active was extracted from main() and is called
+    # here. That closes the CI hole and opens a smaller one: calling the
+    # function directly cannot see whether the SHIP PATH still calls it, which
+    # is what check_ship_path_attaches_active above is for. Extracting code to
+    # make it testable moves it out of the path you were testing.
+    import build_site as _bs
+    board = _bs.attach_active(
+        json.loads((DATA / "board.json").read_text()))
     active = board.get("active")
     if active is None:
         bad += fail("the shipped board carries no `active` list at all, so "
@@ -3223,8 +3336,11 @@ def check_active_badge_is_shipped_honestly() -> int:
             bad += fail(f"{a.get('id')} is marked active with {a['was']} -> "
                         f"{a['now']}, which is not an increase")
     src = (ROOT / "index.html").read_text()
-    if "hotChip(" not in src:
-        bad += fail("index.html no longer renders the active badge")
+    # THE CALL SITE. `function hotChip(` contains "hotChip(", so deleting the
+    # only invocation left this green while the badge vanished from the page.
+    if "${hotChip(" not in src:
+        bad += fail("index.html defines hotChip but never calls it - the badge "
+                    "is gone from the page and nothing here notices")
     blk = src[src.index("function hotChip("):]
     blk = blk[:blk.index("\nfunction ")]
     if "if(!a) return" not in re.sub(r"\s+", "", blk).replace("if(!a)return", "if(!a) return"):
@@ -3271,10 +3387,25 @@ def check_boards_read_agrees_with_coverage() -> int:
                     f"structured + page only is {want:,}. They are two ways of "
                     f"stating one fact and they have drifted, which is exactly "
                     f"what deriving one from the other was meant to prevent")
+    # A SOURCE HALF, because the data half cannot catch this in time.
+    #
+    # The check above reads data/board.json, which only changes after a full
+    # crawl - and refresh.yml runs selftest FIRST, before build_board. So
+    # restoring `= len(companies)` passes the suite, the wrong number ships
+    # that night, and the check fires the next morning against yesterday's
+    # damage. The source is the only half that is current when the suite runs.
     src = (ROOT / "scripts" / "build_board.py").read_text()
-    if 'payload["companies_read"]' not in src:
-        bad += fail("build_board no longer derives companies_read from the "
-                    "coverage split, so the card can drift from the table again")
+    code = re.sub(r"#.*$", "", src, flags=re.M)
+    flat = re.sub(r"\s+", "", code)
+    if 'payload["companies_read"]=(split.get("structured",0)+split.get("pageonly",0))' not in flat:
+        bad += fail("build_board no longer derives companies_read as exactly "
+                    "structured + page only from the coverage split. Any other "
+                    "expression can drift from the table printed beneath it, "
+                    "and len(companies) is the drift that shipped")
+    if re.search(r'companies_read"\]?\s*[:=]\s*len\(', code):
+        bad += fail("build_board sets companies_read to a len() again - that is "
+                    "the original overclaim: every company on file, printed "
+                    "under the label 'boards read this run'")
     return bad
 
 
@@ -3432,7 +3563,12 @@ def check_sitemap_offers_the_job_pages() -> int:
         bad += fail("the sitemap no longer lists role pages - the JobPosting "
                     "markup on 3,524 postings is live and nothing points a "
                     "crawler at it")
-    sm = ROOT / "public" / "sitemap.xml"
+    _b = built()
+    if _b is None:
+        return fail(f"selftest cannot build the shipped artifacts "
+                    f"({_BUILT.get('why')}), so the sitemap checks cannot "
+                    f"run")
+    sm = _b / "sitemap.xml"
     if sm.exists():
         urls = re.findall(r"<loc>(.*?)</loc>", sm.read_text())
         roles = sum(1 for u in urls if "?role=" in u)
@@ -3453,7 +3589,7 @@ def check_sitemap_offers_the_job_pages() -> int:
         # NOT one url per opening: Xplor's 82 cities are 82 real pages with 82
         # real locations, and collapsing them would hide places somebody might
         # search for. Keyed on what the page shows.
-        meta_r = ROOT / "public" / "meta-roles.json"
+        meta_r = _b / "meta-roles.json"
         if meta_r.exists():
             import collections as _c
             import urllib.parse as _up
@@ -3595,7 +3731,8 @@ def check_alerts_page_cannot_be_framed() -> int:
         bad += fail("build_site.main never calls write_headers, so no _headers "
                     "file is written and the deploy ships none. /alerts becomes "
                     "framable - the clickjacking case this exists for")
-    hdr = ROOT / "public" / "_headers"
+    _bh = built()
+    hdr = (_bh / "_headers") if _bh else pathlib.Path("/nonexistent")
     if hdr.exists():
         h = hdr.read_text()
         if "/alerts" not in h or "X-Frame-Options" not in h:
@@ -6115,6 +6252,8 @@ def main() -> int:
     errors += check_structured_data_claims_no_posting_date()
     errors += check_middleware_separates_unreadable_from_gone()
     errors += check_pay_report_states_what_it_omits()
+    errors += check_every_check_is_actually_run()
+    errors += check_ship_path_attaches_active()
     errors += check_active_badge_is_shipped_honestly()
     errors += check_boards_read_agrees_with_coverage()
     errors += check_active_badge_measures_them_not_us()

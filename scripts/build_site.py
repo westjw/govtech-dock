@@ -812,6 +812,42 @@ def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
     return n
 
 
+def attach_active(board: dict) -> dict:
+    """Put the "hiring hard" list on the board. Returns it too, for callers.
+
+    EXTRACTED SO THE SUITE CAN CALL IT. This was inline in main(), which meant
+    the only way to test it was to read public/data/board.json - a gitignored
+    file that does not exist when selftest runs in CI, so the check took its
+    exists() escape and passed while the badge could be deleted outright.
+
+    scripts/momentum.py derives it from our own daily snapshots: their hiring,
+    not our traffic, so no visitor is counted to produce it. Computed at ship
+    time rather than in build_board because it needs the day's history snapshot
+    that build_board writes on its way out, and a signal this cheap should not
+    cost a twenty-minute crawl to refresh.
+
+    A LIST, NEVER A FLAG PER COMPANY. Nothing qualifying means an empty list
+    and no badge at all, which is the same rule the home banner follows when a
+    run was quiet: a badge on everything means nothing, and a badge on nothing
+    is the honest output of a week where nobody surged.
+    """
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import momentum as _mom
+        surge = _mom.surge()
+        board["active"] = ([{"id": c["id"], "was": c["was"], "now": c["now"]}
+                            for c in surge.get("companies", [])]
+                           if surge.get("ready") else [])
+        board["active_since"] = surge.get("since")
+    except Exception as e:                       # noqa: BLE001
+        # A signal that cannot be computed must not cost the build. An empty
+        # list renders nothing, which is what a reader should see when we do
+        # not know - never a badge on a guess.
+        board["active"], board["active_since"] = [], None
+        board["active_error"] = f"{type(e).__name__}: {e}"
+    return board
+
+
 def write_headers(out: pathlib.Path) -> None:
     """public/_headers — the one response header this site actually needs.
 
@@ -1077,36 +1113,9 @@ def main() -> int:
 
     board, stripped = sanitize(board_src)
 
-    # WHICH COMPANIES ARE ACTUALLY PUSHING, onto the shipped board so a reader
-    # can see it. scripts/momentum.py derives it from our own daily snapshots -
-    # their hiring, not our traffic - so no visitor is counted to produce it.
-    #
-    # Computed HERE rather than in build_board because it needs the day's
-    # history snapshot, which build_board writes on its way out, and because a
-    # signal this cheap should not cost a twenty-minute crawl to refresh.
-    #
-    # A LIST, NEVER A FLAG PER COMPANY. If nothing qualifies the key is an
-    # empty list and the page renders no badge at all, which is the same rule
-    # the home banner follows when a run was quiet: a badge that appears on
-    # everything means nothing, and one that appears on nothing is the honest
-    # output of a week where nobody surged.
-    try:
-        sys.path.insert(0, str(ROOT / "scripts"))
-        import momentum as _mom
-        surge = _mom.surge()
-        board["active"] = ([{"id": c["id"], "was": c["was"], "now": c["now"]}
-                            for c in surge.get("companies", [])]
-                           if surge.get("ready") else [])
-        board["active_since"] = surge.get("since")
-        print(f"  active: {len(board['active'])} company(ies) hiring harder "
-              f"since {surge.get('since') or 'n/a'}")
-    except Exception as e:                       # noqa: BLE001
-        # A signal that cannot be computed must not cost the build. An empty
-        # list renders nothing, which is what a reader should see when we do
-        # not know - never a badge on a guess.
-        board["active"], board["active_since"] = [], None
-        print(f"  active: not computed ({type(e).__name__}), no badges shipped")
-    # separators: the site is served gzipped, but 300KB of whitespace is still
+    attach_active(board)
+    print(f"  active: {len(board['active'])} company(ies) hiring harder "
+          f"since {board.get('active_since') or 'n/a'}")
     # 300KB the browser has to parse.
     (out / "data" / "board.json").write_text(
         json.dumps(board, separators=(",", ":")))
