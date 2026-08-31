@@ -1450,11 +1450,11 @@ const ATSHOW={
    none. The day build_board.py copies discovery_log's date onto the org, the
    date appears here with no further change. */
 const POSTS_AT_LABEL={linkedin:"LinkedIn",indeed:"Indeed",glassdoor:"Glassdoor",
-  ziprecruiter:"ZipRecruiter",builtin:"Built In",
+  ziprecruiter:"ZipRecruiter",builtin:"Built In",wellfound:"Wellfound",
   govportal:"a government jobs portal",recruiter:"an outside recruiter",
   email:"by email only",parent:"their parent company's board",
   other:"somewhere else"};
-function postsAtSentence(rec){
+function postsAtSentence(rec,counted){
   if(!rec)return "";
   if(rec.where==="email")
     return "They do not run a public job board — openings go out by email. "
@@ -1472,6 +1472,16 @@ function postsAtSentence(rec){
       +"rather than one of their own, so their roles are not counted here. Most of "
       +"what is on that board will not be theirs.";
   const label=rec.label||POSTS_AT_LABEL[rec.where]||"another site";
+  /* "NOT COUNTED HERE" STOPS BEING TRUE THE MOMENT SOMEBODY CAPTURES THE
+     PAGE. A captured row goes into data/manual.json, build_board keys it
+     exactly like a fetched one, and count_openings counts it - so without
+     this branch the sentence sits directly above the roles it denies. It is
+     still worth saying they were read by hand: nothing re-checks them. */
+  if(counted)
+    return `They advertise their openings on ${label} rather than a job board we can `
+      +`read. The ${counted} role${counted===1?"":"s"} below `
+      +`${counted===1?"was":"were"} read off that page by hand, so nothing refreshes `
+      +`${counted===1?"it":"them"} automatically — the link goes straight to their listings.`;
   return `They advertise their openings on ${label} rather than a job board we can read, `
     +"so the roles are not counted here — the link goes straight to their listings.";
 }
@@ -1510,9 +1520,18 @@ function noBoardNote(o){
     /* The lead only fits the cases where they really are advertising in
        public. "They post, we just cannot count it" over "openings go out by
        email" would be the page contradicting its own next sentence. */
+    /* THE COUNT DECIDES THE HEADLINE, because "we just cannot count it" is
+       flatly contradicted by a list of counted roles underneath it. Capture
+       is the whole point of these records - a person opens the page a fetcher
+       cannot, clicks once, and the rows land in manual.json and are counted
+       like any other. So a posts_at company with roles on file is a SUCCESS
+       state, not a gap, and the card should read as one. */
+    const got=o.open_roles||0;
     const lead=(pa.where==="email"||pa.where==="recruiter")
-      ? "" : "<strong>They post, we just cannot count it.</strong> ";
-    return lead+`${esc(postsAtSentence(pa))}${url?` <a class="golink" href="${esc(url)}"
+      ? ""
+      : got ? "<strong>They post somewhere we cannot fetch, and these were read by hand.</strong> "
+            : "<strong>They post, we just cannot count it.</strong> ";
+    return lead+`${esc(postsAtSentence(pa,got))}${url?` <a class="golink" href="${esc(url)}"
       target="_blank" rel="noopener">See their listings &rarr;</a>`:""}`;
   }
   /* "We could not find a board" and "their site turned us away" are different

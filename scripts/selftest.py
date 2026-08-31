@@ -3274,6 +3274,23 @@ def check_every_check_is_actually_run() -> int:
     for name in orphans:
         bad += fail(f"{name} is defined in this file and never called, so it "
                     f"has never run and cannot have caught anything")
+    # AND NO CHECK MAY BE DEFINED TWICE. Python keeps the LAST definition
+    # silently, so a second copy of a check does not error - it replaces the
+    # first, and every assertion the earlier one carried simply stops
+    # existing. That happened here: a second check_posts_at_vocabulary was
+    # added by somebody who had not found the one already in the file. It sat
+    # 1,300 lines above the original, called a helper that was never defined,
+    # and could not have raised NameError because it never ran. The suite
+    # printed "all checks passed" throughout, and the mutation written to
+    # prove the new assertion went green.
+    #
+    # `defined` above is a set, so it cannot see this. Count the defs.
+    for name in sorted(set(re.findall(r"^def (check_[A-Za-z0-9_]+)\(", src, re.M))):
+        n = len(re.findall(rf"^def {name}\(", src, re.M))
+        if n > 1:
+            bad += fail(f"{name} is defined {n} times in this file. Python "
+                        f"keeps the last one, so the assertions in the others "
+                        f"have silently stopped running")
     return bad
 
 
@@ -4785,6 +4802,94 @@ def check_shared_board_links_open_the_board() -> int:
     return bad
 
 
+# What capture.js must and must not treat as a job link. Every FALSE here is
+# a real thing that came back as a job title before the rule was tightened,
+# and the two rules CLAUDE.md records are both in this table: a job link is
+# the job SEGMENT PLUS SOMETHING AFTER IT (bare /careers matched every nav
+# link and returned CHALLENGES, SOLUTIONS and Cookie Preferences), and the
+# ATS hosts that put the id straight after the company slug need their own
+# arm because no job word appears in the path at all.
+CAPTURE_HREF_CASES = [
+    # Wellfound, the startup default, added when Spout turned up on it. Its
+    # company page is per-company so the link really is only their openings -
+    # but the domain sits behind a Cloudflare bot check that 403s every
+    # fetcher, which is why capture is the only way these get counted.
+    ("https://wellfound.com/jobs/3994536-founding-full-stack-engineer", True),
+    ("https://wellfound.com/company/spout-1/jobs/3145678-account-exec", True),
+    ("https://wellfound.com/company/spout-1/jobs", False),   # the board itself
+    ("https://wellfound.com/company/spout-1", False),        # the profile
+    ("https://wellfound.com/discover/startups", False),
+    # The structured ATSes, every url copied off data/board.json so no case
+    # here rests on a remembered format.
+    ("https://job-boards.greenhouse.io/frontlinewildfire/jobs/4384362009", True),
+    ("https://jobs.lever.co/everbridge/09236dde-4a28-4f44-8423-dd583b48fe9f", True),
+    ("https://jobs.ashbyhq.com/seneca/04229ae5-c83b-410d-ac40-ea6b87f92b74", True),
+    # THE REAL SHAPE, taken off our own board rather than guessed. The first
+    # version of this case invented apply.workable.com/<company>/j/<code>,
+    # which fails the rule and would have been "read" as a capture.js bug.
+    # Workable's job urls carry no company segment at all.
+    ("https://apply.workable.com/j/C004CE0A35", True),
+    ("https://truleo.breezy.hr/p/f352600c2f30-sales-development-representative", True),
+    ("https://amilia.recruitee.com/o/sales-development-representative-16", True),
+    ("https://acme.com/careers?gh_jid=4012345", True),
+    # NAVIGATION, not postings. The whole reason the rule is segment+id.
+    ("https://acme.com/careers", False),
+    ("https://acme.com/careers/", False),
+    ("https://acme.com/jobs", False),
+    ("https://acme.com/about", False),
+    ("https://acme.com/solutions/public-safety", False),
+]
+
+
+def check_capture_link_rule() -> int:
+    """capture.js decides what a job link is, and nothing tested it.
+
+    887 companies have a careers page that produces nothing for a fetcher, and
+    capture is how a person turns one of those into counted roles - so this
+    regex is the difference between a real posting and a nav item filed as a
+    job. CLAUDE.md records two rules it had to learn, and neither was pinned
+    anywhere until Wellfound made the file matter again.
+
+    The pattern is READ OUT OF capture.js rather than restated here. A copy
+    would be a second source of truth for the one rule this file exists to
+    protect, and it would rot exactly the way the alerts vocabulary would
+    without check_alert_vocabulary. capture.js is a browser file with no test
+    runner, so the pattern is lifted from its own source and compiled with
+    Python's re - the constructs in it are common to both engines, and if that
+    ever stops being true this check FAILS rather than skipping, because a
+    guard that quietly opts out is the thing tonight was spent removing.
+    """
+    js = (ROOT / "scripts" / "capture.js").read_text()
+    i = js.find("const HREF_RE")
+    if i < 0:
+        return fail("capture.js no longer defines HREF_RE - the harvester has "
+                    "no rule for what a job link is")
+    seg = js[i:js.index(");", i)]
+    parts = re.findall(r"'((?:[^'\\]|\\.)*)'", seg)
+    if len(parts) < 2:
+        return fail("could not read HREF_RE's pattern out of capture.js; the "
+                    "guard cannot check a rule it cannot find")
+    pattern = "".join(parts[:-1]) if parts[-1] == "i" else "".join(parts)
+    pattern = pattern.replace("\\\\", "\\")
+    try:
+        rx = re.compile(pattern, re.I)
+    except re.error as e:
+        return fail(f"capture.js's HREF_RE no longer compiles under Python re "
+                    f"({e}), so this guard can no longer read it. Either the "
+                    f"pattern uses a JavaScript-only construct or it is "
+                    f"malformed - do not delete this check to make it pass")
+    bad = 0
+    for url, want in CAPTURE_HREF_CASES:
+        got = bool(rx.search(url))
+        if got != want:
+            bad += fail(
+                f"capture.js would {'take' if got else 'skip'} {url} and it "
+                f"should {'take' if want else 'skip'} it - "
+                + ("a nav link captured as a job posting"
+                   if got else "a real posting the harvester would not see"))
+    return bad
+
+
 def check_posts_at_vocabulary() -> int:
     """index.html's copy of the posts_at labels must match posts_at.py.
 
@@ -4815,6 +4920,17 @@ def check_posts_at_vocabulary() -> int:
     for k in sorted(in_page - in_py):
         errors += fail(f"index.html carries a posts_at label {k!r} that "
                        f"posts_at.py cannot store")
+    # THE LABELS, not only the keys. Matching keys spelled two different ways
+    # is the same drift one layer down, and it is sneakier than a missing key:
+    # a stored record carries posts_at.py's spelling in rec["label"] and the
+    # page falls back to its own map only when that is absent, so one service
+    # shows under two names depending on which path rendered the card.
+    for k in sorted(in_py & in_page):
+        want = posts_at.WHERE[k][0]
+        got = re.search(rf'\b{k}\s*:\s*"([^"]*)"', m.group(1))
+        if got and got.group(1) != want:
+            errors += fail(f"posts_at calls {k!r} {want!r} and index.html "
+                           f"calls it {got.group(1)!r} - one service, two names")
     src = "\n".join(l.split("#")[0] for l in
                     (ROOT / "scripts" / "build_board.py").read_text().splitlines())
     if '"posts_at"' not in src:
@@ -5759,7 +5875,13 @@ def check_a_refusal_is_not_a_search() -> int:
     i = html.find("function noBoardNote(")
     if i < 0:
         return errors + fail("index.html: noBoardNote is gone")
-    body = html[i:i + 2600]
+    # THE WHOLE FUNCTION, not a fixed byte window. This read html[i:i+2600]
+    # of an 8,280-character function, so it was checking the first third and
+    # passing on where the branch happened to sit. Adding a comment above that
+    # branch failed the suite while the branch was still there, which is the
+    # tell: it measured layout, not behaviour.
+    j = html.find("\nfunction ", i + 10)
+    body = html[i:j if j > 0 else len(html)]
     if 'probe==="blocked"' not in body.replace(" ", ""):
         errors += fail("noBoardNote does not branch on a blocked probe, so a "
                        "company whose site refused our reader is told to a "
@@ -6579,6 +6701,7 @@ def main() -> int:
     errors += check_public_csv_neutralises_formulas()
     errors += check_pay_band_is_not_an_estimate()
     errors += check_shared_board_links_open_the_board()
+    errors += check_capture_link_rule()
     errors += check_posts_at_vocabulary()
     errors += check_coverage_and_removed()
     errors += check_weekly_report_is_honest()

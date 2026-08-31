@@ -48503,7 +48503,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: AWWA ACE 2026",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "wellfound",
+   "label": "Wellfound",
+   "url": "https://wellfound.com/company/spout-1/jobs",
+   "note": null,
+   "on": "2026-08-31",
+   "by": "agent:claude-code"
+  }
  },
  {
   "id": "waterly-inc",

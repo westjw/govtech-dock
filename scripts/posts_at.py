@@ -43,6 +43,13 @@ WHERE = {
     "glassdoor": ("Glassdoor", r"glassdoor\."),
     "ziprecruiter": ("ZipRecruiter", r"ziprecruiter\.com"),
     "builtin":   ("Built In", r"builtin\."),
+    # WELLFOUND, formerly AngelList Talent, and the startup default. Its
+    # company pages are per-company (wellfound.com/company/<slug>/jobs), so
+    # unlike a multi-tenant board the link really is only their openings -
+    # but the whole domain sits behind a Cloudflare bot check that answers
+    # 403 to any fetcher, so it cannot be an `ats` entry. A person opening
+    # the page sees the jobs; that is what capture is for.
+    "wellfound": ("Wellfound", r"wellfound\.com|angel\.co"),
     "govportal": ("a government jobs portal", r"governmentjobs\.com|neogov|"
                                               r"\.gov/|usajobs\.gov"),
     "recruiter": ("an outside recruiter", None),
@@ -125,8 +132,16 @@ def build(where: str, url: str, by: str = "owner", note: str = "",
     return rec
 
 
-def sentence(rec: dict) -> str:
-    """How the public card says it. Plain, and honest about the limit."""
+def sentence(rec: dict, counted: int = 0) -> str:
+    """How the public card says it. Plain, and honest about the limit.
+
+    `counted` is how many of this company's roles the board is actually
+    showing. It matters because every branch below used to end "so the roles
+    are not counted here", and that stops being true the moment somebody
+    captures the page: capture writes into data/manual.json, build_board keys
+    those rows exactly like fetched ones, and count_openings counts them. The
+    sentence would then sit directly above the roles it says are not there.
+    """
     if not rec:
         return ""
     where = rec.get("where")
@@ -143,6 +158,17 @@ def sentence(rec: dict) -> str:
                 f"{whose} board, alongside everyone else\u2019s. Most of the "
                 f"roles there will not be theirs, so the link is a starting "
                 f"point rather than a list of their jobs.")
-    return (f"They advertise their openings on {rec.get('label') or 'another site'} "
+    where_ = rec.get("label") or "another site"
+    if counted:
+        # READ BY HAND, AND SAID SO. A captured role is a real role and is
+        # counted like any other, but nothing re-checks it on a schedule, so
+        # the card must not imply the same freshness as a monitored board.
+        return (f"They advertise their openings on {where_} rather than a job "
+                f"board we can read. The {counted} role"
+                f"{'s' if counted != 1 else ''} below "
+                f"{'were' if counted != 1 else 'was'} read off that page by "
+                f"hand, so nothing refreshes {'them' if counted != 1 else 'it'} "
+                f"automatically - the link goes straight to their listings.")
+    return (f"They advertise their openings on {where_} "
             f"rather than a job board we can read, so the roles are not counted "
             f"here - the link goes straight to their listings.")
