@@ -863,12 +863,25 @@ def main() -> int:
         # those jobs were removed on purpose because one board is one board,
         # and putting them back under the second name is the double count
         # that rule exists to prevent.
+        from_storage = False
         if not jobs and c["id"] not in owns:
             stored = _stored_roles_as_jobs(c)
             if stored:
                 jobs = stored
                 promoted += len(stored)
                 promoted_names.append(f"{c['name']} ({len(stored)})")
+                # CLEARING err HERE IS DELIBERATE - there are roles to show, so
+                # the "no roles because" machinery must not fire. But it makes
+                # a republished role indistinguishable from one read today,
+                # and the org record's `unreadable` is read 143 lines below
+                # this point, so the companies whose roles ARE stale are
+                # exactly the ones no staleness warning can reach.
+                #
+                # The fact is recorded separately rather than by leaving err
+                # set, because `unreadable` drives five different "we could
+                # not read them" messages in the UI and every one of them is
+                # about a company showing NO roles.
+                from_storage = True
                 err = None
 
         # WHAT "READ" MEANS, counted here because this is the only place that
@@ -1013,6 +1026,11 @@ def main() -> int:
             "quota_roles": 0, "quota_postings": 0,
             "families": {}, "phase": phase({}),
             "unreadable": err,
+            # THESE ROLES WERE NOT CONFIRMED ON THIS RUN. Their board failed
+            # and refresh had them on file from an earlier read, so they are
+            # shown - absence of a successful fetch is not evidence the job is
+            # gone - but a reader is told which they are looking at.
+            "roles_from_storage": from_storage or None,
             "sled_only": sled_only or None,
             "offtopic_dropped": dropped_offtopic or None,
             "shares_board_with": owns.get(c["id"]),

@@ -3480,6 +3480,41 @@ def check_boards_read_agrees_with_coverage() -> int:
     return bad
 
 
+def check_stored_roles_are_labelled_as_stale() -> int:
+    """A role republished from storage must not look like one read today.
+
+    build_board promotes roles it has on file when a board fails to enumerate,
+    which is right - a fetch that failed is not evidence the job is gone, and
+    that is this project's founding rule. But promoting them CLEARS `err`, and
+    the org record reads `unreadable` from `err` 143 lines further down, so
+    the company whose roles are genuinely stale is the one no staleness
+    warning can reach. Absence of evidence, reported as evidence of currency.
+
+    So the promotion records its own fact and the card says so. Source-level
+    on both halves: the promotion branch must set it, and index.html must
+    render it. No test runs a full crawl, and the branch does not fire on
+    every run - it fired zero times the night this was written, which is
+    exactly why a data-only check would have been green and useless.
+    """
+    bad = 0
+    src = (ROOT / "scripts" / "build_board.py").read_text()
+    flat = re.sub(r"\s+", "", re.sub(r"#.*$", "", src, flags=re.M))
+    if "from_storage=True" not in flat:
+        bad += fail("build_board's stored-role promotion no longer records "
+                    "that it fired, so a role republished from a previous run "
+                    "is indistinguishable from one read today")
+    if '"roles_from_storage":from_storage' not in flat:
+        bad += fail("the org record no longer carries roles_from_storage, so "
+                    "nothing downstream can tell a reader that a company's "
+                    "roles were not confirmed on this run")
+    page = (ROOT / "index.html").read_text()
+    if "o.roles_from_storage?" not in re.sub(r"\s+", "", page):
+        bad += fail("index.html never reads roles_from_storage - the board "
+                    "records that a company's roles are stale and the page "
+                    "shows them as though they were read today")
+    return bad
+
+
 def check_pay_report_arithmetic() -> int:
     """The pay report publishes figures somebody negotiates against.
 
@@ -6522,6 +6557,7 @@ def main() -> int:
     errors += check_pay_report_states_what_it_omits()
     errors += check_every_check_is_actually_run()
     errors += check_ship_path_attaches_active()
+    errors += check_stored_roles_are_labelled_as_stale()
     errors += check_pay_report_arithmetic()
     errors += check_built_pages_count_openings_not_rows()
     errors += check_momentum_counts_openings_not_rows()

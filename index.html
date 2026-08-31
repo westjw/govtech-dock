@@ -1746,6 +1746,9 @@ function roleView(id){
     })()}
     ${o.unreadable?`<div class="kv"><span class="chip warn">their board could not be read
       automatically this run, so this list may be incomplete</span></div>`:""}
+    ${o.roles_from_storage?`<div class="kv"><span class="chip warn">their board did not
+      answer this run &mdash; these roles are what we read last time, not confirmed
+      today</span></div>`:""}
 
     ${siblings.length?`<h3 style="font-size:13px;margin-top:22px">Also open at ${esc(p.company)}</h3>
       <div class="list" id="r-sibs"></div>`:""}`;
@@ -3320,12 +3323,20 @@ function drawJobs(){
   if(cta){
     const fresh7=rows.filter(p=>p.first_seen&&dayGap(p.first_seen,D.generated)<=7).length;
     const hist=D.postings.reduce((m,p)=>p.first_seen&&(!m||p.first_seen<m)?p.first_seen:m,"");
+    /* THE "BECAUSE" IS ONLY EARNED WHEN THE READER DID NOT CAUSE IT. `rows`
+       has already been through the age filter, and every horizon this page
+       offers is 7 days or less - so with one set, fresh7 === rows.length by
+       construction, and the sentence blamed the board's short history for a
+       result the reader's own control produced. It is also only true of the
+       board when the board really is that young. */
+    const ageOn=sinceDays!==null;
+    const youngBoard=!!hist&&dayGap(hist,D.generated)<=7;
     cta.innerHTML=`<div class="cta">
       <div style="min-width:0">
         <div class="n">${fresh7.toLocaleString()}</div>
         <div class="t">${fresh7===0
           ? "of these are new in the last 7 days — this search is quiet right now."
-          : fresh7===rows.length&&hist
+          : fresh7===rows.length&&hist&&!ageOn&&youngBoard
             ? `of these — every one — first appeared on this board in the last 7 days,
                because the board only started reading these job boards on ${esc(hist)}.`
             : "of these first appeared on this board in the last 7 days."}</div>
@@ -4818,7 +4829,21 @@ function sinceLastVisit(){
     at ${cos.toLocaleString()} compan${cos===1?"y":"ies"} first reached this board
     since you were last here on ${esc(on)}.${(()=>{
       const h=visitHorizon(on);
-      return h?` <a href="?tab=jobs&amp;since=${esc(h)}">See them &rarr;</a>`:"";
+      if(!h)return "";
+      /* SAY WHERE THE LINK GOES WHEN IT IS NOT EXACTLY HERE. The horizon is
+         the smallest the age filter OFFERS that still covers the span, and it
+         is deliberately never narrower - clipping a day would hide a role,
+         which is the error this board refuses to make. But it is often wider:
+         two days since your visit lands on the 3-day filter, and "See them"
+         then promises a set the destination does not show. Over-showing is
+         the right direction; promising exactly N and delivering more is not,
+         so the link names what it opens. */
+      const ms=Date.parse(D.generated||"")-Date.parse(on);
+      const need=Math.max(1,Math.ceil(ms/86400000));
+      return +h===need
+        ? ` <a href="?tab=jobs&amp;since=${esc(h)}">See them &rarr;</a>`
+        : ` <a href="?tab=jobs&amp;since=${esc(h)}">See the last ${esc(h)} days
+            &rarr;</a>`;
     })()}</div>`;
 }
 /* THE LINK IS BUILT FROM WHAT THE FILTER ACTUALLY OFFERS, and this took two
