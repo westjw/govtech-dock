@@ -277,6 +277,18 @@
      rather than as an error. */
   .postedon{display:block;font-size:11px;color:var(--dim);margin-top:2px;
     font-variant-numeric:tabular-nums}
+  /* The no-JS fallback. Never seen by anyone whose browser runs the app, so
+     it is deliberately plain - readable, printable, and no dependency on a
+     single token the app defines later in the file. */
+  .nojs{max-width:60rem;margin:0 auto;padding:var(--space-8) var(--space-4)}
+  .nojs h1{font-size:28px;margin:0 0 var(--space-3)}
+  .nojs h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--dim);margin:var(--space-8) 0 var(--space-3);
+    border-bottom:1px solid var(--line);padding-bottom:var(--space-2)}
+  .nojs ul{margin:0;padding-left:1.1em}
+  .nojs li{margin-bottom:var(--space-1)}
+  .nojs-cols{columns:4;column-gap:var(--space-6);padding-left:1.1em}
+  @media (max-width:700px){.nojs-cols{columns:2}}
   .unplaced{font-size:13px;color:var(--dim);margin-top:var(--space-2)}
 
   main{max-width:1180px;margin:0 auto;padding:0 var(--space-6) var(--space-8)}
@@ -4631,7 +4643,40 @@ function how(){
   <p class="foot">If a row here is wrong &mdash; a filled role still listed, a board
     pointed at the wrong company, a company we have miscategorised &mdash; the fastest fix
     is to send it in the same way. This page is the record of what the board knows about
-    itself; it is generated from the same file the job list is.</p>`;
+    itself; it is generated from the same file the job list is.</p>
+
+  ${/* THE STATIC PAGES, LINKED FROM SOMEWHERE A PERSON CAN REACH.
+        296 company pages, 38 state pages and 120 conference pages ship every
+        night as plain HTML that needs no JavaScript, and until now NOTHING in
+        this app linked to any of them - no /c/, no /s/, no /e/, no feed.xml.
+        They were reachable only by knowing a url or reading sitemap.xml,
+        which is a page search engines discount and a person cannot use.
+
+        Built from the board rather than listed by hand, so a state that
+        gains or loses its last posting appears or goes on its own. */""}
+  <h3 style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--dim);margin:var(--space-8) 0 var(--space-3);
+    border-bottom:1px solid var(--line);padding-bottom:var(--space-2)">
+    Pages that need no JavaScript</h3>
+  <p class="hint" style="max-width:80ch">One page per state, per company and
+    per conference, rebuilt nightly and readable with scripts off &mdash; which
+    is also how most crawlers other than Google read a site.</p>
+  ${(()=>{
+    const SALES=new Set(["gtm","field"]);
+    const by={};
+    D.postings.forEach(p=>{
+      const st=(p.office||{}).state;
+      if(st&&SALES.has(p.family))(by[st]=by[st]||new Set()).add(p.opening_id);
+    });
+    const codes=Object.keys(by).sort();
+    if(!codes.length)return "";
+    return `<p class="hint" style="columns:4;column-gap:var(--space-6);
+      max-width:80ch">${codes.map(c=>
+      `<a href="/s/${esc(c.toLowerCase())}">${esc(c)}</a>
+       <span class="sub">${by[c].size}</span>`).join("<br>")}</p>
+      <p class="hint"><a href="/feed.xml">The newest roles, as a feed</a>
+       &middot; <a href="/sitemap.xml">every page on this site</a></p>`;
+  })()}`;
 }
 
 /* A NULL-PROTOTYPE map, and the null prototype is the fix.

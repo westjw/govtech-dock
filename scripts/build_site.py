@@ -903,6 +903,72 @@ def attach_active(board: dict) -> dict:
     return board
 
 
+def write_noscript(out: pathlib.Path, board: dict, brand: dict) -> int:
+    """Put something real in the shipped index.html for a reader without JS.
+
+    THE PAGE IS TWO EMPTY DIVS. Everything is drawn in the browser from
+    board.json, so with scripts off the live site yields 385 characters and
+    all of them are furniture - "Saved on this device", "Switch theme", "Add a
+    company". No job, no company, no sentence saying what the site is. There
+    was no <noscript> anywhere.
+
+    AND THE FALLBACK WAS ALREADY BUILT. 296 company pages, 38 state pages and
+    120 conference pages ship every night as plain HTML that needs no
+    JavaScript at all - written for exactly this reader - and NOTHING linked
+    to them. Zero occurrences of /c/, /s/, /e/ or feed.xml in the app. They
+    were reachable only by knowing a url or parsing sitemap.xml, which is a
+    page search engines discount and a person cannot use.
+
+    INJECTED AT SHIP TIME rather than written into the source, because the
+    numbers and the state list have to be true on the day. A hand-maintained
+    list of 38 states in a single-file app is a list that goes stale the first
+    time a state gains or loses its last posting, and a hardcoded count is the
+    kind of frozen figure this project keeps finding and removing.
+    """
+    src = out / "index.html"
+    if not src.exists():
+        return 0
+    html_txt = src.read_text()
+    anchor = '<main><div id="stale"></div><div class="panel" id="view"></div></main>'
+    if anchor not in html_txt:
+        # The body changed shape. Say so rather than silently shipping no
+        # fallback - a missing noscript looks identical to a working one.
+        print("  noscript: could not find the main element; NOT injected")
+        return 0
+
+    t = board.get("totals") or {}
+    name = brand.get("name") or "SLED JOBS"
+    # The states that actually have a page, read off what write_state_pages
+    # wrote rather than guessed at.
+    sdir = out / "s"
+    codes = sorted(f.stem for f in sdir.glob("*.html")) if sdir.exists() else []
+    # The same map write_state_pages uses, so the two pages name a state
+    # identically rather than one saying "Texas" and the other "TX".
+    import roles as role_lib
+    code_to_name = {v: k.title() for k, v in role_lib.STATE_NAMES.items()}
+    links = "".join(
+        f'<li><a href="/s/{c}">{html.escape(code_to_name.get(c.upper(), c.upper()))}</a></li>'
+        for c in codes)
+
+    block = (
+        '<noscript><div class="nojs">'
+        f'<h1>{html.escape(name)}</h1>'
+        f'<p>Every open sales role at state and local government technology '
+        f'companies. <strong>{t.get("openings", 0):,} roles</strong> at '
+        f'{len(board.get("organizations") or []):,} companies, rebuilt every '
+        f'night.</p>'
+        '<p>This page normally assembles itself in your browser. With '
+        'JavaScript off, these pages need none:</p>'
+        f'<h2>Sales roles by state</h2><ul class="nojs-cols">{links}</ul>'
+        '<h2>Everything else</h2><ul>'
+        '<li><a href="/feed.xml">The newest roles, as a feed</a></li>'
+        '<li><a href="/sitemap.xml">Every company, state and conference page</a></li>'
+        '<li><a href="/alerts">Email alerts</a></li>'
+        '</ul></div></noscript>')
+    src.write_text(html_txt.replace(anchor, block + anchor, 1))
+    return len(codes)
+
+
 def write_headers(out: pathlib.Path) -> None:
     """public/_headers — the one response header this site actually needs.
 
@@ -1200,6 +1266,9 @@ def main() -> int:
     n_st = write_state_pages(out, board, brand)
     feeds = write_feeds(out, board, brand)
     n_ev = write_conference_pages(out, board, brand)
+    # AFTER the pages it links to exist, so it can only ever name a page that
+    # was actually written. A fallback advertising a 404 is worse than none.
+    n_ns = write_noscript(out, board, brand)
 
     size = sum(f.stat().st_size for f in out.rglob("*") if f.is_file())
     print(f"wrote {a.out}/: {len(SHIP)} page(s) + data/board.json")
@@ -1208,6 +1277,8 @@ def main() -> int:
     print(f"  {stripped} internal error string(s) replaced with the plain fact")
     print(f"  sitemap.xml: {crawl['urls']} urls ({crawl['companies']} companies "
           f"with an opening), robots.txt, 404.html")
+    print(f"  noscript: a real page for a reader without JavaScript, "
+          f"linking {n_ns} state page(s)")
     print(f"  c/: {n_co} prerendered company pages")
     print(f"  s/: {n_st} state pages")
     print(f"  e/: {n_ev} conference pages")

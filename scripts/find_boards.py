@@ -236,6 +236,16 @@ def look(row: dict) -> dict:
 
 
 def main() -> int:
+    # LINE-BUFFERED, because redirected stdout is block-buffered and a run sent
+    # to a file shows nothing at all until 8KB has accumulated. A 250-page pass
+    # looked hung for its first two minutes while it was working fine, and
+    # CLAUDE.md records the same buffering costing two hours on a build. One
+    # line here beats a flush=True on every print, and cannot be forgotten on
+    # the next one added.
+    try:
+        sys.stdout.reconfigure(line_buffering=True)
+    except (AttributeError, ValueError):     # pragma: no cover
+        pass
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=25)
     ap.add_argument("--write", action="store_true",
