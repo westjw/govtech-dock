@@ -271,6 +271,12 @@
   /* Said out loud rather than silently dropped: a distance search that hides
      desks it could not place is a false "nothing near you", which is the same
      failure as a page scan reporting "no jobs" when it could not read. */
+  /* The employer's own posting date, under our first-seen line. Deliberately
+     quieter than the line above it: ours is the one every row has, theirs is
+     the one that is often absent, and a missing line must read as absence
+     rather than as an error. */
+  .postedon{display:block;font-size:11px;color:var(--dim);margin-top:2px;
+    font-variant-numeric:tabular-nums}
   .unplaced{font-size:13px;color:var(--dim);margin-top:var(--space-2)}
 
   main{max-width:1180px;margin:0 auto;padding:0 var(--space-6) var(--space-8)}
@@ -2292,7 +2298,8 @@ function jobs(){
     live in the description, which is not fetched. &ldquo;Not stated&rdquo; means the
     posting did not say where, not that it is remote.
     <strong>First seen is when this board first read the posting, not when the employer
-    posted it</strong>${D.postings.length?` &mdash; this board&rsquo;s own history starts
+    posted it</strong> &mdash; where their own board publishes a posting date, it is shown
+    underneath as &ldquo;posted&rdquo;, and where it does not there is nothing there${D.postings.length?` &mdash; this board&rsquo;s own history starts
     ${esc(D.postings.reduce((m,p)=>p.first_seen&&(!m||p.first_seen<m)?p.first_seen:m,""))},
     so nothing here can read as older than that`:""}.
     ${payOn?`Pay is shown where the posting states it, which most do not &mdash; a posting
@@ -3295,7 +3302,7 @@ function drawJobs(){
     table.className="jt";
     table.innerHTML=`<thead><tr>
       <th scope="col">Role</th><th scope="col">Company</th><th scope="col">Location</th>
-      <th scope="col">Salary</th><th scope="col">First seen</th>
+      <th scope="col">Salary</th><th scope="col">Dates</th>
       <th scope="col"><span class="sub" style="position:absolute;left:-9999px">Save</span></th>
     </tr></thead><tbody></tbody>`;
     const body=table.querySelector("tbody");
@@ -3322,7 +3329,16 @@ function drawJobs(){
           ? `<button class="locmore" type="button">${n} locations</button>`
           : esc(locCell(p))}</td>
         <td class="sal">${sal}</td>
-        <td class="age"><span class="when ${esc(w.cls)}">${esc(w.txt)}</span></td>
+        <td class="age"><span class="when ${esc(w.cls)}">${esc(w.txt)}</span>${
+          /* THE EMPLOYER'S OWN DATE, where their board published one. It is a
+             different fact from the line above it: that one is the day THIS
+             board first read the row, and every posting here has one inside
+             the last two weeks, so a requisition live since 2022 and one
+             opened yesterday looked identical. Shown only when the board
+             actually said - most do not, and an empty cell is the honest
+             rendering of that. */
+          p.posted?`<span class="postedon" title="the date the employer's own
+            job board gives for this posting">posted ${esc(p.posted)}</span>`:""}</td>
         <td class="act"></td>`;
       // the bookmark carries a handler, so it is built rather than stringified
       tr.querySelector("td.act").appendChild(saveButton(p));
