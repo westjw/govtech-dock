@@ -1,62 +1,69 @@
 {
-  "date": "2026-08-31",
-  "previous": "2026-08-30",
+  "date": "2026-09-01",
+  "previous": "2026-08-31",
   "changes": [
     {
       "company": "Flock Safety",
       "id": "flock-safety",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Community Safety Account Executive (Boston, MA)"
-    },
-    {
-      "company": "Euna Solutions",
-      "id": "euna-solutions",
       "from": "Yes",
       "to": "Sales (non-AE)",
-      "note": "Senior Customer Success Manager (P only"
+      "note": "Associate General Counsel, Revenue only"
     },
     {
-      "company": "Caselle",
-      "id": "caselle",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page too small - likely JS-rendered"
+      "company": "AMP",
+      "id": "amp",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Director, Commercial Origination & only [rendered]"
     },
     {
-      "company": "Singlewire Software",
-      "id": "singlewire-software",
-      "from": "Unknown",
+      "company": "ClearPoint Strategy",
+      "id": "clearpoint-strategy",
+      "from": "None found",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Vanderlande",
-      "id": "vanderlande",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "FeedbackFruits",
-      "id": "feedbackfruits",
+      "company": "Card Integrity",
+      "id": "card-integrity",
       "from": "Yes",
-      "to": "None found",
-      "note": ""
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
     },
     {
-      "company": "Intelligent Video Solutions",
-      "id": "intelligent-video-solutions",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
+      "company": "Saltus Technologies",
+      "id": "saltus-technologies",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
+    },
+    {
+      "company": "Ridango",
+      "id": "ridango",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 500 for https://ridango.bamboohr.co"
+    },
+    {
+      "company": "2NDNATURE",
+      "id": "2ndnature",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 522 for https://www.2ndnaturewater."
+    },
+    {
+      "company": "ikeGPS",
+      "id": "ikegps",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://ikegps.com/open-pos"
     },
     {
       "company": "Collabrios Health",
       "id": "collabrios-health",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
+      "from": "None found",
+      "to": "Yes",
+      "note": "Sales Director, PACE (Remote Worker - N/)"
     }
   ]
 }
