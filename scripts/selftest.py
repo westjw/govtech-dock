@@ -3662,6 +3662,109 @@ def _import_find_linkedin():
     return find_linkedin
 
 
+# Every value the four boards actually send, observed live 2026-09-01. The
+# False/None rows are the point: two of these boards say "not remote" and
+# neither of them says "onsite".
+WORK_MODE_CASES = [
+    ("OnSite", "onsite"), ("Remote", "remote"), ("Hybrid", "hybrid"),   # ashby
+    ("remote", "remote"), ("hybrid", "hybrid"), ("onsite", "onsite"),   # lever
+    ("on-site", "onsite"),
+    (False, None), (True, None),      # a boolean is not a word for a mode
+    ("Flexible", None), ("", None), (None, None),
+]
+
+OFFICE_HINT_CASES = [
+    # ashby, a real US address: the region arrives as a full name
+    (dict(city="Sausalito", region="California", country="United States"),
+     {"city": "Sausalito", "state": "CA", "country": "United States"}),
+    # workable, a real UK address in the SAME SHAPE. "England" must not
+    # become a state - this is the London/Montreal trap in a structured field
+    (dict(city="London", region="England", country="United Kingdom"),
+     {"city": "London", "state": None, "country": "United Kingdom"}),
+    (dict(city="Greater Montreal", country="Canada"),
+     {"city": "Greater Montreal", "state": None, "country": "Canada"}),
+    # lever sends a country and nothing else
+    (dict(country="US"), {"city": None, "state": None, "country": "US"}),
+    (dict(city="Austin", region="TX", country="USA"),
+     {"city": "Austin", "state": "TX", "country": "USA"}),
+    # THE PAIR THAT MAKES THE COUNTRY CHECK LOAD-BEARING. roles.STATE_NAMES
+    # returns GA for "georgia" and cannot tell the country from the state -
+    # CLAUDE.md already lists georgia in AMBIGUOUS_STATE_NAMES for exactly
+    # this. Only the country separates Tbilisi from Atlanta, and without
+    # these two rows the England case passes on the name lookup alone and the
+    # country check can be deleted with the suite still green.
+    (dict(city="Tbilisi", region="Georgia", country="Georgia"),
+     {"city": "Tbilisi", "state": None, "country": "Georgia"}),
+    (dict(city="Atlanta", region="Georgia", country="United States"),
+     {"city": "Atlanta", "state": "GA", "country": "United States"}),
+    (dict(), None),
+]
+
+
+def check_board_stated_mode_and_office() -> int:
+    """What a board states about mode and place beats what we read off prose.
+
+    work_mode reads "not stated" on 3,525 of 4,450 postings and office parses
+    on 1,627 - and both numbers are about OUR regex, not about what employers
+    published. Two primary controls sit over that field: the
+    Remote/Hybrid/Onsite pills reach 117 and 24 rows respectively. Ashby,
+    Lever, Workable and Recruitee all state the mode outright and hand back a
+    structured address in responses this project already downloads.
+
+    TWO TRAPS, AND THE CASES ABOVE ARE BOTH OF THEM.
+
+    A NEGATIVE IS NOT A MODE. Workable sends `telecommuting: false` and Ashby
+    sends `isRemote: false`. Neither means onsite - it means NOT REMOTE, which
+    is onsite or hybrid and the board did not say which. Reading either as
+    onsite publishes a claim about somebody's job that their own posting does
+    not make. On Civica's board that is 69 of 81 rows.
+
+    A FULL REGION NAME IS NOT A STATE CODE. These boards send "California" and
+    "England" in the identical field. The board's state pages and map are US
+    two-letter codes, so a region becomes a state only where the country reads
+    as the United States and the name resolves - which is the structured-field
+    version of the trap CITY_CASES already pins, where "London, UK" and
+    "Montreal, QB" filed 24 postings in states that do not exist.
+    """
+    ats = _import_ats()
+    bad = 0
+    for raw, want in WORK_MODE_CASES:
+        got = ats.work_mode(raw)
+        if got != want:
+            bad += fail(f"ats.work_mode({raw!r}) = {got!r}, expected {want!r}"
+                        + ("  - a board that says 'not remote' has not said "
+                           "onsite" if want is None and isinstance(raw, bool)
+                           else ""))
+    for kw, want in OFFICE_HINT_CASES:
+        got = ats.office_hint(**kw)
+        if got != want:
+            bad += fail(f"ats.office_hint({kw}) = {got}, expected {want}"
+                        + ("  - a region outside the US must never become a "
+                           "state code" if want and want.get("state") is None
+                           else ""))
+    # A COUNTRY ALONE MUST NOT BECOME AN OFFICE. build_board only promotes a
+    # hint to `office` when it has a city or a state, because an office of
+    # {city: None, state: None} is truthy: it passes "has a desk", is excluded
+    # by the "no office stated" filter, and is silently skipped by the map,
+    # which needs both.
+    src = re.sub(r"#.*$", "", (ROOT / "scripts" / "build_board.py").read_text(),
+                 flags=re.M)
+    flat = re.sub(r"\s+", "", src)
+    if 'ifhint.get("city")orhint.get("state"):' not in flat:
+        bad += fail("build_board promotes a board's office hint without "
+                    "checking it names a city or a state, so a country-only "
+                    "hint becomes a truthy office with no place in it")
+    # AND IT ONLY EVER FILLS A BLANK.
+    if 'ifnotgeo["work_mode"]orgeo["work_mode"]=="notstated":' not in flat:
+        bad += fail("build_board overwrites a work mode that geography() read "
+                    "off the location text, so two sources can disagree with "
+                    "no way to tell which won")
+    if 'ifhintandnotgeo.get("office"):' not in flat:
+        bad += fail("build_board overwrites a parsed office with the board's "
+                    "hint instead of only filling a blank")
+    return bad
+
+
 def check_alert_preview_matches_the_digest() -> int:
     """The preview and the email it previews must ask the same question.
 
@@ -7296,6 +7399,7 @@ def main() -> int:
     errors += check_built_pages_count_openings_not_rows()
     errors += check_momentum_counts_openings_not_rows()
     errors += check_active_badge_is_shipped_honestly()
+    errors += check_board_stated_mode_and_office()
     errors += check_alert_preview_matches_the_digest()
     errors += check_linkedin_is_the_companys_own()
     errors += check_find_boards_reads_real_pages()

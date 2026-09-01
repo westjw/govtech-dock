@@ -442,7 +442,27 @@ def fetch_ashby(slug: str) -> list[dict]:
              "url": j.get("jobUrl", "") or j.get("applyUrl", ""),
              "jd": plain_html(j.get("descriptionPlain") or j.get("descriptionHtml") or ""),
              "posted": posted_date(j.get("publishedAt")),
+             # workplaceType is explicit; isRemote is deliberately unused,
+             # because False means not-remote and not onsite.
+             "mode": work_mode(j.get("workplaceType")),
+             "office_hint": _ashby_office(j),
              "comp": _ashby_comp(j)} for j in jobs]
+
+
+def _ashby_office(j: dict) -> dict | None:
+    """Ashby's schema.org postal address, named out rather than transposed.
+
+    The first version mapped the keys with a comprehension that stripped the
+    "address" prefix - addressLocality became `locality`, which is not what
+    office_hint takes, and it raised on the first real row. Three named
+    arguments cannot be wrong in a way that survives a read.
+    """
+    pa = (j.get("address") or {}).get("postalAddress") or {}
+    if not pa:
+        return None
+    return office_hint(city=pa.get("addressLocality"),
+                       region=pa.get("addressRegion"),
+                       country=pa.get("addressCountry"))
 
 
 def _ashby_comp(j: dict) -> dict | None:
@@ -540,6 +560,82 @@ def posted_date(raw) -> str | None:
         return None
 
 
+# WHAT THE BOARD ITSELF SAYS ABOUT MODE AND PLACE, which is a better answer
+# than anything a regex gets out of a location string. work_mode reads "not
+# stated" on 79% of postings and office parses on 37%, and both of those
+# numbers are about OUR reading, not about what employers published: four of
+# the seven structured boards state the mode outright and hand back a
+# structured address, in responses this project already downloads.
+#
+#   ashby      workplaceType "OnSite"/"Remote"/"Hybrid", and
+#              address.postalAddress {addressLocality, addressRegion,
+#              addressCountry} - region as a FULL NAME, "California"
+#   lever      workplaceType "remote"/"hybrid"/"onsite" (lowercase), country
+#              as an ISO-2 code
+#   workable   telecommuting bool, plus city / state / country as full names
+#   recruitee  remote and hybrid booleans, plus city / country / country_code
+#
+# Both helpers below return None rather than a guess. That is the whole point:
+# a field this project fills from the employer's own statement is worth more
+# than one it infers, and a field it cannot fill must stay empty.
+
+# The mode words every one of those boards uses, lowercased. Anything not on
+# this list is a value we have not seen and do not understand, and gets None.
+_MODES = {"onsite": "onsite", "on-site": "onsite", "on site": "onsite",
+          "inoffice": "onsite", "in-office": "onsite",
+          "remote": "remote", "fullyremote": "remote", "fully remote": "remote",
+          "hybrid": "hybrid"}
+
+
+def work_mode(raw) -> str | None:
+    """The board's own word for how a role is worked, or None.
+
+    NEVER INFERRED FROM A NEGATIVE. Workable sends `telecommuting: false` and
+    Ashby sends `isRemote: false`, and neither means onsite - it means NOT
+    REMOTE, which is onsite or hybrid and the board did not say which.
+    Reading either as "onsite" would publish a claim about somebody's job that
+    their own posting does not make, which is the same species of error as
+    reporting "no jobs" for a page we could not read. Callers pass the
+    explicit field where one exists and nothing where it does not.
+    """
+    if raw is None or isinstance(raw, bool):
+        return None
+    key = str(raw).strip().lower().replace("_", "")
+    return _MODES.get(key) or _MODES.get(key.replace(" ", ""))
+
+
+def office_hint(city=None, region=None, country=None) -> dict | None:
+    """A structured office from a board's own address fields, or None.
+
+    A US STATE ONLY WHERE THE ADDRESS IS ACTUALLY IN THE US. The board's state
+    pages and map are keyed on two-letter US codes, and these boards send full
+    region names for everywhere on earth - Ashby sent "California" and
+    Workable sent "England" in the same shape. Filing the second as a state is
+    precisely the trap CITY_CASES pins, where "London, UK" and "Montreal, QB"
+    put 24 postings in states that do not exist.
+
+    So: the country must read as the United States before a region becomes a
+    state, and the region must resolve through roles.STATE_NAMES, which knows
+    California and does not know England. A non-US address still returns its
+    city and country - that is true and useful - with no state on it.
+    """
+    import roles as _roles
+    c = (str(city).strip() if city else "") or None
+    r = (str(region).strip() if region else "") or None
+    k = (str(country).strip() if country else "") or None
+    if not (c or r or k):
+        return None
+    us = bool(k) and k.lower().replace(".", "") in (
+        "us", "usa", "united states", "united states of america")
+    state = None
+    if us and r:
+        rl = r.lower()
+        state = (_roles.STATE_NAMES.get(rl)
+                 or (r.upper() if r.upper() in _roles.US_CODES else None))
+    out = {"city": c, "state": state, "country": k}
+    return out if any(out.values()) else None
+
+
 def fetch_greenhouse(slug: str) -> list[dict]:
     # ?content=true is the same endpoint and the same single request; without it
     # the payload simply omits `content`. Everything else is byte-identical, so
@@ -591,6 +687,10 @@ def fetch_lever(slug: str) -> list[dict]:
              "jd": _lever_jd(j),
              # createdAt is epoch MILLISECONDS on this board.
              "posted": posted_date(j.get("createdAt")),
+             "mode": work_mode(j.get("workplaceType")),
+             # Lever sends an ISO-2 country and no city or region, so this can
+             # place a role in a country and never in a state.
+             "office_hint": office_hint(country=j.get("country")),
              "comp": _lever_comp(j)} for j in data]
 
 
@@ -644,6 +744,12 @@ def fetch_workable(slug: str) -> list[dict]:
     return [{"title": j.get("title", ""), "location": j.get("city", "") or "",
              "url": j.get("url", ""),
              "posted": posted_date(j.get("published_on")),
+             # telecommuting True means remote. FALSE MEANS NOT REMOTE, which
+             # is onsite or hybrid and this board did not say which, so it
+             # asserts nothing.
+             "mode": "remote" if j.get("telecommuting") is True else None,
+             "office_hint": office_hint(j.get("city"), j.get("state"),
+                                        j.get("country")),
              "jd": plain_html(j.get("description") or "")}
             for j in data.get("jobs", [])]
 
@@ -663,6 +769,12 @@ def fetch_recruitee(slug: str) -> list[dict]:
                     # published_at, not created_at and not updated_at - this
                     # board ships all three and they mean different things.
                     "posted": posted_date(j.get("published_at")),
+                    # Two booleans rather than a word. Both false says nothing
+                    # - it is not a statement that the role is onsite.
+                    "mode": ("remote" if j.get("remote") is True
+                             else "hybrid" if j.get("hybrid") is True else None),
+                    "office_hint": office_hint(j.get("city"),
+                                               country=j.get("country")),
                     "jd": "\n\n".join(p for p in jd if p),
                     "comp": _comp(s.get("min"), s.get("max"), s.get("currency"),
                                   _period(s.get("period")))})

@@ -973,6 +973,45 @@ def main() -> int:
                     scope_pending = True
             fam = roles.family(title)
             geo = roles.geography(loc, title)
+            # THE BOARD'S OWN STATEMENT BEATS OUR READING OF ITS PROSE, where
+            # it made one. work_mode reads "not stated" on 79% of postings and
+            # office parses on 37% - both of those are facts about our regex,
+            # not about what employers published. Ashby, Lever, Workable and
+            # Recruitee state the mode outright and hand back a structured
+            # address, in responses already downloaded.
+            #
+            # ONLY EVER FILLS A BLANK. If geography() read a mode or an office
+            # out of the location text, that reading stands: it came from the
+            # same field a human reads on the page, and quietly overwriting it
+            # would make two sources disagree with no way to tell which won.
+            if not geo["work_mode"] or geo["work_mode"] == "not stated":
+                if j.get("mode"):
+                    geo["work_mode"] = j["mode"]
+                    geo["mode_src"] = "board"
+            hint = j.get("office_hint")
+            if hint and not geo.get("office"):
+                # A COUNTRY ALONE IS NOT AN OFFICE. Lever sends an ISO-2 and no
+                # city or region, and an office of {city: None, state: None}
+                # is truthy - it would pass the "has a desk" test, be excluded
+                # by the "no office stated" filter, and be silently skipped by
+                # the map, which needs both. A place needs a place in it.
+                if hint.get("city") or hint.get("state"):
+                    geo["office"] = {"city": hint.get("city"),
+                                     "state": hint.get("state")}
+                    geo["office_src"] = "board"
+            # The country is useful on its own, though, and is the honest way
+            # to settle is_us for a row whose location text says nothing -
+            # Lever sends one for every posting and no city at all.
+            us = roles.is_us(loc, title)
+            if us is None and hint and hint.get("country"):
+                k = str(hint["country"]).strip().lower().replace(".", "")
+                if k in ("us", "usa", "united states",
+                         "united states of america"):
+                    us = True
+                elif len(k) <= 24:
+                    # A named country that is not the US. Length-capped so a
+                    # sentence in a country field cannot assert "not US".
+                    us = False
             postings.append({
                 "scope_pending": scope_pending or None,
                 "id": rid,
@@ -991,7 +1030,7 @@ def main() -> int:
                 "states": geo["territory"]["states"],
                 "region": geo["territory"]["region"],
                 "work_mode": geo["work_mode"],
-                "location": loc, "is_us": roles.is_us(loc, title),
+                "location": loc, "is_us": us,
                 # pay and jd_seen, derived off j["jd"]. The text itself is not
                 # copied into this dict and does not leave this loop.
                 **derived(jd_backfilled(j, url)),
