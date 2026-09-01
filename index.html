@@ -5135,6 +5135,7 @@ function conferences(){
     </select>
     <span class="cfcount" id="cf-n"></span>
   </div>
+  <div id="cf-ratenote"></div>
   <div id="cf-list"></div>`;
 
   const paint=()=>{
@@ -5273,14 +5274,28 @@ function paintRating(box,d){
     score.innerHTML=`${d.average}<small>/10</small>`;
     votes.textContent=`from ${d.n} ${d.n===1?"rating":"ratings"}`;
     votes.className="cfvotes";
+  }else if(d&&d.n){
+    /* Some votes, not enough for an average. Worth saying on the row, because
+       it is a fact about THIS event and it tells a reader their vote is close
+       to making the score appear. */
+    score.innerHTML="";
+    votes.textContent=`${d.n} so far \u2014 ${d.needs||0} more before a score shows`;
+    votes.className="cfthin";
   }else{
-    /* No average yet, and the page says WHY rather than showing a zero or an
-       empty space a reader has to interpret. */
-    score.innerHTML=`&mdash;`;
-    const n=d?d.n:0, need=d?(d.needs||0):3;
-    votes.textContent=n
-      ? `${n} so far \u2014 ${need} more before an average shows`
-      : "no ratings yet";
+    /* NOTHING. No em-dash, no sentence.
+       This printed "&mdash;" and "no ratings yet" on every row, and with zero
+       votes across all 125 events that is 125 identical dashes and 125
+       identical sentences down the page - furniture a reader has to read and
+       discard on every line, which makes the whole tab look broken rather
+       than new.
+       The fact is real and worth stating ONCE, above the list, which
+       cfRatingNote() does. Same rule the rest of the board follows: the home
+       banner drops a slide rather than printing a zero, the coverage card
+       renders nothing rather than a nought, and the hiring badge stays dark.
+       The rate buttons stay - the invitation is the feature, the dash was
+       not. */
+    score.innerHTML="";
+    votes.textContent="";
     votes.className="cfthin";
   }
   stars.innerHTML=Array.from({length:10},(_,i)=>{
@@ -5330,7 +5345,22 @@ async function loadRatings(){
     if(!j||!j.ratings)return;
     const by={}; j.ratings.forEach(x=>by[x.tag]=x);
     boxes.forEach(b=>{ if(by[b.dataset.rate])paintRating(b,by[b.dataset.rate]) });
-  }catch{ /* offline: the placeholders already say "no ratings yet" */ }
+    cfRatingNote(j.ratings);
+  }catch{ /* offline: rows simply carry no score, which is what we know */ }
+}
+
+/* THE ABSENCE, STATED ONCE. Rendered above the list only while it is true of
+   every event, and it removes itself the moment one rating exists anywhere.
+   A reader needs this fact a single time to understand the empty column; they
+   do not need it on all 125 rows. */
+function cfRatingNote(ratings){
+  const host=document.getElementById("cf-ratenote");
+  if(!host)return;
+  const any=(ratings||[]).some(x=>x&&x.n);
+  host.innerHTML=any?"":`<p class="hint" style="margin:0 0 var(--space-4)">
+    <strong>Nobody has rated an event yet.</strong> A score appears once three
+    people have rated the same one, so ratings stay a group's opinion rather
+    than one person's. Rate any event below and yours is the first.</p>`;
 }
 
 /* ---------------------------------------------------------- add to calendar
