@@ -158,16 +158,42 @@ def ats_quota(title: str) -> bool:
         return False
 
 
+def ever_yielded() -> set:
+    """Company ids that have appeared in ANY daily snapshot with a posting.
+
+    THE ORDERING SIGNAL, and the first version of this file had a dead one.
+    It sorted on whether the company currently shows a quota-carrying role -
+    but the worklist only contains companies showing NO roles at all, so the
+    key was false for all 781 and the sort collapsed to alphabetical. A run
+    with --limit 30 worked the A's and would have gone on working the A's.
+
+    A company that used to yield postings and now yields none is the best
+    candidate on this list: their board did not stop existing, it moved or
+    broke. data/history/*.json holds the posting ids of every past run and a
+    posting id begins with the company id, so the answer is already on disk.
+    """
+    out = set()
+    for f in sorted((DATA / "history").glob("*.json")):
+        try:
+            d = json.loads(f.read_text())
+        except (OSError, json.JSONDecodeError):
+            continue
+        for pid in (d.get("ids") or []):
+            out.add(str(pid).split("::")[0])
+    return out
+
+
 def worklist(limit: int | None = None) -> list[dict]:
     """Companies holding a careers page that yields nothing.
 
-    Ordered by whether the company has EVER shown a quota-carrying role, so a
-    run with a small limit spends it on the companies this board exists for.
+    Ordered by whether the company has EVER yielded a posting in any snapshot,
+    so a run with a small limit spends it on boards that used to work.
     """
     companies = json.loads((DATA / "companies.json").read_text())
     board = json.loads((DATA / "board.json").read_text())
     live = {o["id"]: o for o in board.get("organizations", [])}
     done = agents.load()
+    seen_before = ever_yielded()
     out = []
     for c in companies:
         a = c.get("ats") or {}
@@ -180,7 +206,7 @@ def worklist(limit: int | None = None) -> list[dict]:
             continue                          # already proposed once
         out.append({"id": c["id"], "name": c["name"], "url": url,
                     "sector": c.get("sector"),
-                    "ever": bool((live.get(c["id"]) or {}).get("quota_roles"))})
+                    "ever": c["id"] in seen_before})
     out.sort(key=lambda r: (not r["ever"], r["name"]))
     return out[:limit] if limit else out
 

@@ -3734,6 +3734,25 @@ def check_find_boards_reads_real_pages() -> int:
                         f"reports a clean negative for every page it cannot "
                         f"read, which is indistinguishable from there being "
                         f"no board")
+    # ITS ORDERING KEY MUST ACTUALLY DISCRIMINATE. The first version sorted
+    # the worklist on whether a company currently shows a quota-carrying role
+    # - but the worklist only holds companies showing NO roles at all, so the
+    # key was False for all 781 and the sort silently collapsed to
+    # alphabetical. A run with --limit 30 worked the A's, and every later run
+    # would have worked the A's again.
+    #
+    # A dead sort key does not fail. It produces a plausible-looking run over
+    # the wrong slice, forever, and the only tell is that the names are in
+    # alphabetical order.
+    try:
+        rows = fb.worklist()
+    except Exception as e:                       # noqa: BLE001
+        return bad + fail(f"find_boards.worklist raised {type(e).__name__}")
+    if rows and not any(r.get("ever") for r in rows):
+        bad += fail(
+            f"find_boards orders its {len(rows)} companies on a key that is "
+            f"false for every one of them, so a limited run works the same "
+            f"alphabetical prefix every time and never reaches the rest")
     # EVERY TYPE IT CAN PROPOSE MUST BE ONE refresh.py FETCHES. Proposing a
     # host nothing can enumerate would wire a company to a new kind of silence.
     ats = _import_ats()
