@@ -289,6 +289,37 @@
   .nojs li{margin-bottom:var(--space-1)}
   .nojs-cols{columns:4;column-gap:var(--space-6);padding-left:1.1em}
   @media (max-width:700px){.nojs-cols{columns:2}}
+  /* The conferences view toggle and calendar. A year of this market laid out
+     in order is a different tool from a filtered list: the list answers "is
+     X on here", the calendar answers "what is coming and when do I book". */
+  .cfseg{display:inline-flex;gap:0;margin-left:auto}
+  .cfseg button{font:inherit;font-size:12px;padding:5px 12px;cursor:pointer;
+    border:1px solid var(--line);background:var(--bg);color:var(--dim)}
+  .cfseg button+button{border-left:0}
+  .cfseg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);
+    border-color:var(--ink);font-weight:700}
+  .calmon{margin:var(--space-6) 0 var(--space-2);display:flex;
+    align-items:baseline;gap:var(--space-3);border-bottom:2px solid var(--line);
+    padding-bottom:var(--space-2)}
+  .calmon h3{margin:0;font-size:15px;font-weight:800;letter-spacing:-.01em}
+  .calmon .n{font-size:12px;color:var(--dim);font-variant-numeric:tabular-nums}
+  .calrow{display:grid;grid-template-columns:104px 1fr auto;gap:var(--space-3);
+    padding:7px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .calrow:hover{background:var(--panel)}
+  .calrow .when{font-size:12px;color:var(--dim);
+    font-variant-numeric:tabular-nums;white-space:nowrap}
+  .calrow .what{min-width:0}
+  .calrow .what b{font-weight:600}
+  .calrow .where{font-size:12px;color:var(--dim)}
+  .calrow .nums{font-size:12px;color:var(--dim);white-space:nowrap;
+    font-variant-numeric:tabular-nums}
+  .calpast .when,.calpast .what b{opacity:.55}
+  .calundated{background:var(--panel);border:1px solid var(--line);
+    padding:var(--space-4);margin-top:var(--space-6)}
+  @media (max-width:640px){
+    .calrow{grid-template-columns:1fr;gap:2px}
+    .calrow .nums{grid-column:1}
+  }
   .unplaced{font-size:13px;color:var(--dim);margin-top:var(--space-2)}
 
   main{max-width:1180px;margin:0 auto;padding:0 var(--space-6) var(--space-8)}
@@ -5224,6 +5255,10 @@ function conferences(){
       <option value="365">In the next year</option>
     </select>
     <span class="cfcount" id="cf-n"></span>
+    <span class="cfseg" id="cf-view" role="group" aria-label="How to show them">
+      <button type="button" data-v="list" aria-pressed="true">List</button>
+      <button type="button" data-v="cal" aria-pressed="false">Calendar</button>
+    </span>
   </div>
   <div id="cf-ratenote"></div>
   <div id="cf-list"></div>`;
@@ -5252,13 +5287,45 @@ function conferences(){
     shown.forEach(r=>{(g[r.block||"Other"]=g[r.block||"Other"]||[]).push(r)});
     Object.values(g).forEach(v=>v.sort(cfOrder));
     const keys=Object.keys(g).sort();
-    $("#cf-list").innerHTML=keys.length?keys.map(b=>cfBlockHTML(b,g[b])).join(""):
-      `<div class="empty">${GHOST}No conference matches that.<br>
-        <span class="sub">That is ${rows.length} events checked, not a claim
-        that no such conference exists.</span></div>`;
-    wireCfRows();
-    loadRatings();
+    /* Two views over ONE filtered set. Whichever is on screen, the count
+       above it and the rows in it come from the same `shown` - so switching
+       view can never change what a reader is looking at, only how. */
+    $("#cf-list").innerHTML=
+      CF_VIEW==="cal"
+        ? cfCalendarHTML(shown)
+        : (keys.length?keys.map(b=>cfBlockHTML(b,g[b])).join(""):
+          `<div class="empty">${GHOST}No conference matches that.<br>
+            <span class="sub">That is ${rows.length} events checked, not a claim
+            that no such conference exists.</span></div>`);
+    if(CF_VIEW==="cal"){
+      // the calendar's rows open the same event page the list's do
+      // The same destination a list row goes to: the companies tab filtered
+      // to that event's exhibitors. Two views must not lead different places.
+      document.querySelectorAll("#cf-list .calrow[data-cf]").forEach(el=>{
+        el.style.cursor="pointer";
+        el.onclick=()=>{
+          ROLE=null; tab="companies"; render();
+          const box=$("#c-q");
+          if(box){ box.value="conf:"+el.dataset.cf;
+                   box.dispatchEvent(new Event("input",{bubbles:true})); }
+        };
+      });
+      // and the + calendar buttons keep working in this view too
+      wireCfRows();
+    }else{
+      wireCfRows();
+      loadRatings();
+    }
   };
+  const vseg=$("#cf-view");
+  if(vseg)vseg.querySelectorAll("button").forEach(b=>{
+    b.onclick=()=>{
+      CF_VIEW=b.dataset.v;
+      vseg.querySelectorAll("button").forEach(x=>
+        x.setAttribute("aria-pressed", String(x===b)));
+      paint();
+    };
+  });
   ["cf-q","cf-dept","cf-mined","cf-flag","cf-when"].forEach(id=>{
     const el=$("#"+id); if(!el)return;
     el.addEventListener(el.tagName==="SELECT"?"change":"input",paint);
@@ -5346,6 +5413,11 @@ function cfRowHTML(r){
    rebuilt once a day and a rating left this morning would not appear until
    tomorrow, which reads as the vote not registering. One call carries every
    tag on screen. */
+/* Which conferences view is on screen. Not in the url: it is a way of
+   looking, not a filter, and a shared link should carry what somebody
+   filtered to rather than how they happened to be reading it. */
+let CF_VIEW="list";
+
 const RATED_KEY="sled-rated";
 function myRatings(){
   try{ return JSON.parse(localStorage.getItem(RATED_KEY)||"{}") }catch{ return {} }
@@ -5451,6 +5523,96 @@ function cfRatingNote(ratings){
     <strong>Nobody has rated an event yet.</strong> A score appears once three
     people have rated the same one, so ratings stay a group's opinion rather
     than one person's. Rate any event below and yours is the first.</p>`;
+}
+
+/* ------------------------------------------------------ the year, in order
+   A CALENDAR IS A DIFFERENT TOOL FROM A FILTERED LIST. The list answers "is
+   this conference on here"; the calendar answers "what is coming, and when do
+   I have to book". For a seller working a market whose whole buying cycle
+   runs on conference season, the second question is the one with a deadline
+   attached.
+
+   BUILT FROM calRange, the same parser the "+ calendar" buttons already use,
+   so a row here and the .ics a reader downloads from it cannot disagree about
+   a date. It resolves 118 of the 125 events on file.
+
+   The other seven are NOT dropped. Four have not announced a date, two sit
+   behind a page we could not read, and one - the Athletic Business Show -
+   publishes two ranges in one field, "Conference: November 17-19; Expo:
+   November 18-19", which there is no honest way to pick between. They get a
+   block of their own at the end that says which of the three they are. A
+   calendar that silently omits an event a reader knows about is a calendar
+   they stop trusting. */
+const CAL_MONTH_NAME=["January","February","March","April","May","June","July",
+  "August","September","October","November","December"];
+
+function cfCalendarHTML(rows){
+  const today=new Date(D.generated||Date.now());
+  const dated=[], undated=[];
+  rows.forEach(r=>{
+    const v=calRange(r.dates);
+    if(v&&v.start)dated.push({r,v}); else undated.push(r);
+  });
+  // calRange hands back DATE OBJECTS, not the yyyymmdd strings the first
+  // version of this assumed - so it threw on the first sort and paint() left
+  // whatever was already on screen, which looked exactly like the toggle
+  // doing nothing.
+  dated.sort((a,b)=>a.v.start-b.v.start);
+  if(!dated.length&&!undated.length)
+    return `<div class="empty">${GHOST}No conference matches that.</div>`;
+
+  let out="", lastKey="";
+  dated.forEach(({r,v})=>{
+    const d=v.start;
+    const key=`${d.getUTCFullYear()}-${d.getUTCMonth()}`;
+    if(key!==lastKey){
+      lastKey=key;
+      const n=dated.filter(x=>
+        `${x.v.start.getUTCFullYear()}-${x.v.start.getUTCMonth()}`===key).length;
+      out+=`<div class="calmon"><h3>${CAL_MONTH_NAME[d.getUTCMonth()]}
+        ${d.getUTCFullYear()}</h3><span class="n">${n} event${n===1?"":"s"}</span></div>`;
+    }
+    const past=d<today;
+    /* The two numbers a seller actually wants beside an event: how many
+       companies on this board exhibit there, and how many of those are
+       hiring. Both come off the same row the list uses. */
+    const nums=r.companies
+      ? `${r.companies} exhibitor${r.companies===1?"":"s"}`
+        +(r.hiring?` &middot; <strong>${r.hiring} hiring</strong>`:"")
+      : `<span class="cfzero">not mined yet</span>`;
+    out+=`<div class="calrow${past?" calpast":""}" data-cf="${esc(r.tag)}">
+      <span class="when">${esc(calHuman(v))}</span>
+      <span class="what"><b>${esc(r.name)}</b>${r.flagship
+        ?' <span class="cfflag">flagship</span>':""}
+        ${r.city?`<span class="where"> &middot; ${esc(r.city)}</span>`:""}
+        ${past?' <span class="cfpast">past edition</span>':""}</span>
+      <span class="nums">${nums}</span></div>`;
+  });
+
+  if(undated.length){
+    out+=`<div class="calundated"><strong>${undated.length} event${
+      undated.length===1?"":"s"} with no date on this calendar</strong>
+      <p class="hint" style="margin:6px 0 0">Not missing &mdash; each one says
+      why, and every one is still in the list view.</p>
+      <ul class="tight" style="margin-top:8px">${undated.map(r=>{
+        const why=cfNoDates(r)||"the date on file could not be read as one range";
+        return `<li>${esc(r.name)} &mdash; <span class="sub">${esc(why)}</span></li>`;
+      }).join("")}</ul></div>`;
+  }
+  return out;
+}
+
+/* "Oct 17-21", or "Sep 30 - Oct 3" when it straddles a month. UTC throughout,
+   because calRange builds its dates that way and reading them back in local
+   time moves an event a day for anyone west of Greenwich. */
+function calHuman(v){
+  const a=v.start, b=v.end||v.start;
+  const mon=d=>CAL_MONTH_NAME[d.getUTCMonth()].slice(0,3);
+  if(a.getUTCMonth()===b.getUTCMonth()&&a.getUTCFullYear()===b.getUTCFullYear())
+    return a.getUTCDate()===b.getUTCDate()
+      ? `${mon(a)} ${a.getUTCDate()}`
+      : `${mon(a)} ${a.getUTCDate()}\u2013${b.getUTCDate()}`;
+  return `${mon(a)} ${a.getUTCDate()} \u2013 ${mon(b)} ${b.getUTCDate()}`;
 }
 
 /* ---------------------------------------------------------- add to calendar
