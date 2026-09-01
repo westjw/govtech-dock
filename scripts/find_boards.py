@@ -137,12 +137,21 @@ def verify(kind: str, slug: str) -> dict | None:
         return None
     try:
         rows = fn(slug)
-    except Exception:                        # noqa: BLE001
-        # A board that errors is not a board that is wrong; it is one we
-        # learned nothing about. Discarded silently rather than proposed.
-        return None
+    except Exception as e:                   # noqa: BLE001
+        # A BOARD THAT ERRORS IS NOT A BOARD THAT IS WRONG. This returned a
+        # bare None and the caller dropped it, so "that slug does not exist"
+        # and "that fetch failed" were the same outcome - the asymmetric error
+        # inside the tool built to respect it. AMP verified with 16 rows on
+        # one run and errored on the next; under the old code it silently
+        # stopped being a finding. CLAUDE.md records the same thing happening
+        # to a whole build: 47 boards "network error" in one run, and Civica,
+        # Career TEAM and BibliU all read perfectly minutes later.
+        return {"type": kind, "ref": slug, "unreadable": f"{type(e).__name__}"}
     if not rows:
-        return None
+        # An empty board IS an answer - the slug resolved and holds nothing
+        # open. Distinct from the error above and from a 404.
+        return {"type": kind, "ref": slug, "rows": 0, "sample": [], "quota": 0,
+                "empty": True}
     titles = [(r.get("title") or "").strip() for r in rows]
     titles = [t for t in titles if t]
     return {"type": kind, "ref": slug, "rows": len(rows),
@@ -236,18 +245,33 @@ def main() -> int:
     rows = worklist(a.limit)
     print(f"{len(rows)} careers page(s) to look at "
           f"(of {len(worklist())} on the worklist)\n")
-    proposals, hits = [], 0
+    proposals, hits, retry = [], 0, []
     for r in rows:
         got = look(r)
         if got.get("error"):
             print(f"  {r['name'][:30]:32} could not read it ({got['error']})")
             continue
-        if not got["found"]:
-            print(f"  {r['name'][:30]:32} no ATS named on the page")
+        # Three outcomes, kept apart on purpose.
+        answered = [f for f in got["found"] if f.get("rows")]
+        unread = [f for f in got["found"] if f.get("unreadable")]
+        empty = [f for f in got["found"] if f.get("empty")]
+        if not answered:
+            if unread:
+                # NAMED BUT NOT REACHED. Worth saying out loud and worth
+                # retrying; it is not evidence the board is not theirs.
+                retry.extend((r["name"], f) for f in unread)
+                print(f"  {r['name'][:30]:32} named {unread[0]['type']}/"
+                      f"{unread[0]['ref']} - could not reach it "
+                      f"({unread[0]['unreadable']}), RETRY")
+            elif empty:
+                print(f"  {r['name'][:30]:32} {empty[0]['type']}/"
+                      f"{empty[0]['ref']} answered with nothing open")
+            else:
+                print(f"  {r['name'][:30]:32} no ATS named on the page")
             continue
         hits += 1
-        best = max(got["found"], key=lambda f: (f["quota"], f["rows"]))
-        others = [f for f in got["found"] if f is not best]
+        best = max(answered, key=lambda f: (f["quota"], f["rows"]))
+        others = [f for f in answered if f is not best]
         print(f"  {r['name'][:30]:32} {best['type']}/{best['ref']} "
               f"-> {best['rows']} row(s), {best['quota']} quota-carrying")
         for t in best["sample"]:
@@ -273,6 +297,11 @@ def main() -> int:
         })
 
     print(f"\n  {hits} of {len(rows)} page(s) named a board that answered")
+    if retry:
+        print(f"  {len(retry)} named a board this run could not reach. That is "
+              f"not a finding against them - re-run to try again:")
+        for n, f in retry:
+            print(f"    {n[:30]:32} {f['type']}/{f['ref']} ({f['unreadable']})")
     if not a.write:
         print("  LOOKED ONLY. Nothing was written. Re-run with --write.")
         return 0
