@@ -3632,6 +3632,73 @@ def _import_find_boards():
     return find_boards
 
 
+# Company name against the LinkedIn slug its own careers page names, every
+# pair observed on a real page 2026-09-01. The False rows are the point: two
+# of them are a PARENT's page sitting in a subsidiary's footer.
+LINKEDIN_CASES = [
+    ("Kahua", "kahua", True),
+    ("Palo Alto Networks", "palo-alto-networks", True),
+    ("VR Systems", "vr-systems-inc", True),
+    ("24/7 Software", "247software", True),
+    ("AffordableHousing.com", "affordablehousingdotcom", True),
+    ("Schneider Geospatial", "schneider-geospatial", True),
+    # Gordian's footer names Fortive, its parent. A seeker sent there lands on
+    # 4,000 Fortive employees and cannot tell which three are Gordian's - the
+    # same false Yes as pointing a company at a parent's job board.
+    ("Gordian", "fortive", False),
+    ("SITA Information Networking", "axa", False),
+    # A rename that is indistinguishable from a mistake from here. Eccovia
+    # really was CaseWorthy; deciding that is judgement, so it waits.
+    ("Eccovia", "caseworthyinc", False),
+    # The opaque numeric form is a valid LinkedIn address carrying no name at
+    # all, so nothing can confirm it is theirs.
+    ("Saltus Technologies", "819952", False),
+]
+
+
+def _import_find_linkedin():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import find_linkedin
+    return find_linkedin
+
+
+def check_linkedin_is_the_companys_own() -> int:
+    """A LinkedIn address on a card must be that company's, not a parent's.
+
+    find_linkedin reads the slug off the vendor's own careers page - it never
+    touches linkedin.com - and a footer carries the parent's address about as
+    often as its own. Measured on a random 25 of the page-only pile: 23 named
+    a LinkedIn company URL and 5 of those were not the company. Storing all 23
+    would have been 22% wrong, and wrong in the direction CLAUDE.md names
+    explicitly: never point a company at its parent.
+
+    So the name check is the whole guard, and it is deliberately crude. It is
+    not deciding whether a company was renamed - it cannot, and one of the
+    five is a real rename. It separates "obviously theirs" from "needs a
+    person", and only the first pile is ever written.
+    """
+    fl = _import_find_linkedin()
+    bad = 0
+    for name, slug, want in LINKEDIN_CASES:
+        got = fl.resembles(name, slug)
+        if got != want:
+            bad += fail(
+                f"find_linkedin.resembles({name!r}, {slug!r}) = {got}, "
+                f"expected {want}"
+                + ("  - that slug is not this company and storing it points a "
+                   "reader at somebody else's page, usually a parent's"
+                   if want is False else
+                   "  - a real match was refused, so the company keeps no "
+                   "LinkedIn at all and the card has nothing to offer"))
+    # AND A PERSONAL PROFILE IS NEVER A COMPANY. /in/ is somebody's profile.
+    for markup in ('<a href="https://www.linkedin.com/in/wyethwest">me</a>',
+                   '<a href="https://www.linkedin.com/">LinkedIn</a>'):
+        if fl.candidates(markup):
+            bad += fail(f"find_linkedin read a company slug out of {markup!r}, "
+                        f"which names a person or nothing at all")
+    return bad
+
+
 def check_find_boards_reads_real_pages() -> int:
     """find_boards must recognise the forms careers pages actually use.
 
@@ -7151,6 +7218,7 @@ def main() -> int:
     errors += check_built_pages_count_openings_not_rows()
     errors += check_momentum_counts_openings_not_rows()
     errors += check_active_badge_is_shipped_honestly()
+    errors += check_linkedin_is_the_companys_own()
     errors += check_find_boards_reads_real_pages()
     errors += check_posted_date_is_the_employers()
     errors += check_boards_read_agrees_with_coverage()

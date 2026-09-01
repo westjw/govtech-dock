@@ -579,6 +579,13 @@ def write_company_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
                 + (f'<p class="kv"><a href="{html.escape(o["website"])}" '
                    f'rel="nofollow noopener">{html.escape(o["website"])}</a></p>'
                    if o.get("website") else "")
+                # Their LinkedIn, where their own careers page named one whose
+                # slug matches their name. On a prerendered page for a company
+                # whose board will not enumerate, this is often the only place
+                # left to send a reader.
+                + (f'<p class="kv"><a href="{html.escape(o["linkedin"])}" '
+                   f'rel="nofollow noopener">Their LinkedIn</a></p>'
+                   if o.get("linkedin") else "")
                 + f'<h2>{line}</h2><ul>{items}</ul>'
                 + (f'<p class="kv">Showing the first {len(shown)}, sales roles '
                    f'first. {hidden} more are on the board.</p>' if hidden else "")

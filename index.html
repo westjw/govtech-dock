@@ -4270,6 +4270,14 @@ function co(id,fromUrl){
     <p class="colinks">
       ${safeUrl(o.website)?`<a class="golink" href="${esc(safeUrl(o.website))}" target="_blank" rel="noopener">
         Visit ${esc(o.website.replace(/^https?:\/\//,"").replace(/\/$/,""))} &rarr;</a>`:""}
+      ${/* THEIR LINKEDIN, and only where their own careers page named a slug
+            matching their name. It matters most on the cards that have
+            nothing else: 781 companies here hold a board we cannot enumerate
+            and the page otherwise ends at "we could not read it". This is a
+            link to where they are, never a claim about what they have open -
+            the same line posts_at draws. */
+        safeUrl(o.linkedin)?`<a class="golink" href="${esc(safeUrl(o.linkedin))}"
+        target="_blank" rel="noopener">Their LinkedIn &rarr;</a>`:""}
       ${(o.also||[]).map(a=>`<span class="chip">also ${esc(a.sector)} / ${esc(a.category)}</span>`).join("")}
     </p>
     ${/* NOT for a company whose board we never found. board_url falls back to

@@ -1010,6 +1010,12 @@ def main() -> int:
             "location": c.get("location"),
             "year_founded": c.get("year_founded"), "description": c.get("description"),
             "website": c.get("website"), "board_url": board_url(c),
+            # THEIR OWN LINKEDIN, read off their own careers page by
+            # find_linkedin.py and stored only where the slug matches
+            # the company name. It is a LINK, never a job count: for
+            # the 781 companies whose board will not enumerate, the
+            # card otherwise ends at "we could not read their board".
+            "linkedin": c.get("linkedin"),
             "ats": kind, "ats_ranks": ats_tier(kind),
             "tier": TIER.get(c["sector"]),
             "vendor_type": c.get("vendor_type"), "govtech": c.get("govtech"),
