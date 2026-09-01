@@ -191,6 +191,100 @@ def evidence_for(cid: str) -> dict:
     return out
 
 
+# Subdomains that are the ATS or a careers host, not the company's name.
+_SUBS = {"careers", "career", "jobs", "job", "www", "apply", "recruiting",
+         "hire", "talent", "work"}
+
+# Hosts that belong to an applicant tracking system rather than an employer.
+# A company on Greenhouse is not a company owned by Greenhouse.
+_ATS_HOSTS = ("greenhouse", "lever", "ashby", "workable", "recruitee", "breezy",
+              "smartrecruiters", "bamboohr", "workday", "rippling", "jazzhr",
+              "icims", "paylocity", "oracle", "trinethire", "gusto", "jobscore",
+              "ycombinator", "myworkdayjobs", "applytojob", "dayforce", "ukg",
+              "adp", "paycom", "clearcompany", "teamtailor", "personio",
+              "linkedin", "indeed", "paycor", "hrmdirect", "jobvite", "lensa")
+
+
+def _registrable(host: str) -> str:
+    """The name part of a host, past careers./jobs./www.
+
+    The first version of this took the first segment, so careers.fortive.com
+    read as "careers" and half a dozen companies came out owned by a company
+    called Careers In Government. The name is the second-to-last label.
+    """
+    parts = [x for x in (host or "").lower().split(".") if x not in _SUBS]
+    return parts[-2] if len(parts) >= 2 else (parts[0] if parts else "")
+
+
+def exhibits(company: dict) -> bool:
+    """Does this company stand at a conference under its own name?
+
+    THE OWNER'S OWN TEST, in his words: "who has the booth at the conference?
+    Cartegraph or OpenGov?" A company that exhibits is trading under its own
+    name in this market and keeps its own page. One that does not, whose
+    parent does, is the absorbed case.
+
+    Read off the record's conference history rather than asked of anybody:
+    intake stamps `source` with the event a company came off, so a digit in it
+    means a dated conference.
+    """
+    if company.get("conference"):
+        return True
+    return any(ch.isdigit() for ch in str(company.get("source") or ""))
+
+
+def owner_by_domain(company: dict, by_name: list) -> dict | None:
+    """Another company on this board whose name owns this one's careers domain.
+
+    Cartegraph's careers page is opengov.com/careers and OpenGov is on this
+    board, which is a far stronger signal than a slug that merely looks odd -
+    it is the parent naming itself in the url we already fetch every night.
+
+    Refuses an ATS host, because a company on Greenhouse is not owned by
+    Greenhouse, and refuses a match shorter than five characters so a
+    two-letter name cannot swallow a real one.
+    """
+    ref = str((company.get("ats") or {}).get("ref") or "")
+    m = re.search(r"https?://([^/]+)", ref)
+    if not m:
+        return None
+    host = m.group(1).replace("www.", "").lower()
+    if any(h in host for h in _ATS_HOSTS):
+        return None
+    root = _registrable(host)
+    nk = re.sub(r"[^a-z0-9]", "", company["name"].lower())
+    if not root or len(root) < 4 or root in nk or nk[:6] in root:
+        return None                       # their own domain, or too short
+    for kk, other in by_name:
+        if len(kk) < 5 or other["id"] == company["id"]:
+            continue
+        if kk == root or kk.startswith(root) or root.startswith(kk):
+            return other
+    return None
+
+
+def _suggest(company: dict, by_name: list) -> str:
+    """What the booth test says, in a phrase. Never a write.
+
+    The owner's rule: a company standing at a conference under its own name is
+    a standalone and keeps its page; one that does not, while its parent does,
+    has been absorbed and belongs inside the parent as a brand - where it
+    keeps its name, its website and its description, and still answers a
+    search for itself.
+    """
+    own = owner_by_domain(company, by_name)
+    if not own:
+        return ""
+    mine, theirs = exhibits(company), exhibits(own)
+    if mine and theirs:
+        return "both exhibit - keep both, label whose board it is"
+    if mine:
+        return "they exhibit and the parent does not - keep theirs"
+    if theirs:
+        return f"only {own['name']} exhibits - looks absorbed, fold in as a brand"
+    return "neither exhibits - needs a look"
+
+
 def q_acquisitions(companies, board) -> list:
     """Boards that look like they belong to a parent, strongest evidence first.
 
@@ -202,6 +296,10 @@ def q_acquisitions(companies, board) -> list:
     dismissed = _read(DATA / "admin_dismissed.json", {})
     live = {o["id"]: o for o in board.get("organizations", [])}
     by = {c["id"]: c for c in companies}
+
+    # Longest name first, so a short one cannot swallow a real match.
+    by_name = sorted(((re.sub(r"[^a-z0-9]", "", c["name"].lower()), c)
+                      for c in companies), key=lambda t: -len(t[0]))
 
     seen, out = set(), []
     def add(cid, source):
@@ -236,6 +334,15 @@ def q_acquisitions(companies, board) -> list:
             strength, says = "logo", (
                 f'their logo is the same file as {", ".join(others)}, '
                 f'and it was fetched from {f["host"]}')
+        elif owner_by_domain(c, by_name):
+            # THE PARENT NAMING ITSELF IN THE URL WE ALREADY FETCH. Stronger
+            # than a strange slug and weaker than the board calling itself
+            # something: Cartegraph's careers page is opengov.com/careers and
+            # OpenGov is on this board.
+            own = owner_by_domain(c, by_name)
+            strength, says = "domain", (
+                f'their careers page is on {own["name"]}\u2019s domain, '
+                f'and {own["name"]} is on this board too')
         else:
             strength, says = "slug", (
                 f'the board slug is "{(c.get("ats") or {}).get("ref")}", '
@@ -247,6 +354,17 @@ def q_acquisitions(companies, board) -> list:
             "board_owner": c.get("board_owner"),
             "open_roles": o.get("open_roles", 0),
             "strength": strength, "says": says,
+            # THE BOOTH TEST, on the row, because it is the owner's own rule
+            # and it decides the outcome: "who has the booth at the
+            # conference?" A company that exhibits under its own name keeps
+            # its page; one that does not, whose parent does, is absorbed.
+            "exhibits": exhibits(c),
+            "owner_by_domain": (owner_by_domain(c, by_name) or {}).get("name"),
+            "owner_exhibits": exhibits(owner_by_domain(c, by_name) or {}),
+            # A SUGGESTION, never a ruling. Nothing here writes; the call is
+            # still a person's, and the two ownership outcomes still refuse
+            # without a named parent.
+            "suggests": _suggest(c, by_name),
             "titles": (ev.get("titles") or [])[:5],
             "postings_on_that_board": ev.get("postings"),
         })
@@ -269,8 +387,17 @@ def q_acquisitions(companies, board) -> list:
         items = [{"id": k, **v} for k, v in items.items()]
     for i in items or []:
         add(i.get("id"), "slug")
+    # A FIFTH DIRECTION: the careers page sits on a domain belonging to
+    # another company on this board. Cartegraph's is opengov.com/careers and
+    # OpenGov is here too, which is the parent naming itself in a url we
+    # already fetch every night - stronger than a slug that merely looks odd,
+    # and it surfaces companies no other detector sees. Fifteen of the twenty
+    # this finds were reachable by none of the four above.
+    for c in companies:
+        if owner_by_domain(c, by_name):
+            add(c["id"], "domain")
 
-    rank = {"named": 0, "redirect": 1, "logo": 2, "slug": 3}
+    rank = {"named": 0, "redirect": 1, "domain": 2, "logo": 3, "slug": 4}
     out.sort(key=lambda r: (rank[r["strength"]], -(r["open_roles"] or 0)))
     return out
 

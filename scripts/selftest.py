@@ -3701,6 +3701,52 @@ OFFICE_HINT_CASES = [
 ]
 
 
+def check_acquisition_bands_cover_every_strength() -> int:
+    """Every strength the queue can emit must have a heading on the card.
+
+    THIRTY-TWO ROWS DREW THE WORD "undefined". admin.html's band map had
+    named, redirect, domain and slug and no `logo` - and logo-family is the
+    second strongest signal in the queue, 32 of its rows. Every one of them
+    headed its card with a JavaScript mistake, under an evidence line that
+    was perfectly good.
+
+    This is the same failure the queue already has a long comment about: it
+    rendered blank for 82 rows because the server's shape and the client's
+    reader had drifted, and acquisition_rulings.json has never been written
+    once. A band nobody can read is a row nobody rules.
+
+    Source-level on both sides, because a browser cannot import Python and the
+    two lists are necessarily separate - the same reason
+    check_alert_vocabulary exists.
+    """
+    acq = (ROOT / "scripts" / "acquisitions.py").read_text()
+    emits = set(re.findall(r'strength,\s*says\s*=\s*"([a-z_]+)"', acq))
+    page = (ROOT / "admin.html").read_text()
+    m = re.search(r"const head = \{(.*?)\}\[strength\]", page, re.S)
+    if not m:
+        return fail("admin.html no longer defines the acquisition band map, "
+                    "so every row heads its card with nothing")
+    named = set(re.findall(r"(\w+)\s*:\s*['\"]", m.group(1)))
+    bad = 0
+    for k in sorted(emits - named):
+        bad += fail(f"acquisitions.py can emit strength {k!r} and admin.html "
+                    f"has no band for it, so those rows head their card with "
+                    f"the word 'undefined'")
+    # AND A FALLBACK, because the next strength added will be missing too and
+    # the guard only fires after somebody runs it.
+    # UP TO THE END OF THE STATEMENT, not a fixed window. The first version
+    # searched the next 200 characters for "||" and found `s.says || ''` on
+    # the line after next - an unrelated expression - so removing the fallback
+    # left the suite green. A check that passes on adjacent text is not a
+    # check, which is the shape this whole file exists to catch.
+    stmt = page[m.end():page.find(";", m.end()) + 1] if ";" in page[m.end():] else ""
+    if "||" not in stmt:
+        bad += fail("the band map has no fallback for an unknown strength. "
+                    "The guard above catches a new one only when somebody runs "
+                    "the suite; the fallback catches it on the first render")
+    return bad
+
+
 def check_board_stated_mode_and_office() -> int:
     """What a board states about mode and place beats what we read off prose.
 
@@ -7425,6 +7471,7 @@ def main() -> int:
     errors += check_built_pages_count_openings_not_rows()
     errors += check_momentum_counts_openings_not_rows()
     errors += check_active_badge_is_shipped_honestly()
+    errors += check_acquisition_bands_cover_every_strength()
     errors += check_board_stated_mode_and_office()
     errors += check_alert_preview_matches_the_digest()
     errors += check_linkedin_is_the_companys_own()

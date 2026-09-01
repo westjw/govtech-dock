@@ -2539,7 +2539,14 @@ RENDER.acquisitions = s => {
                    pointing at one domain. 22 of the 82. */
                 domain: 'Their board is on another tracked company’s own domain',
                 redirect: 'Their page ends up somewhere else',
-                slug: 'Only the slug looks odd — weakest, most of these are nothing'}[strength];
+                /* MISSING UNTIL 2026-09-01, and 32 of the rows are this one.
+                   The map had no `logo` key, so every logo-family row drew
+                   its band as the literal word "undefined" - the strongest
+                   evidence in the queue after a named board, rendered as a
+                   JavaScript mistake. */
+                logo: 'Their logo is the same file as another company’s',
+                slug: 'Only the slug looks odd — weakest, most of these are nothing'}[strength]
+                || 'Evidence of a kind this page does not have a name for yet';
   const band = el('div', 'kv', head);
   band.style.fontWeight = '700';
   n.appendChild(band);
@@ -2552,6 +2559,26 @@ RENDER.acquisitions = s => {
       (s.open_roles ? ', and ' + s.open_roles + ' roles are on ours under this name' : '')));
   if (s.titles && s.titles.length)
     e.appendChild(el('div', 'kv', 'e.g. ' + s.titles.slice(0, 3).join(' · ')));
+  /* THE BOOTH TEST, which is the owner's own rule and usually decides it:
+     "who has the booth at the conference?" A company standing at one under
+     its own name is a standalone and keeps its page; one that does not, while
+     its parent does, has been absorbed and belongs inside the parent as a
+     brand - where it keeps its name and still answers a search for itself.
+     A SUGGESTION, never a ruling: the three buttons below are unchanged and
+     both ownership outcomes still refuse without a named parent. */
+  if (s.suggests) {
+    const b = el('div', 'kv', s.suggests);
+    b.style.fontWeight = '700';
+    b.style.marginTop = '6px';
+    e.appendChild(b);
+    const ev = [];
+    if (s.owner_by_domain) ev.push('careers page on ' + s.owner_by_domain + '’s domain');
+    ev.push(s.exhibits ? 'they exhibit' : 'they do not exhibit');
+    if (s.owner_by_domain)
+      ev.push(s.owner_exhibits ? s.owner_by_domain + ' exhibits'
+                               : s.owner_by_domain + ' does not exhibit');
+    e.appendChild(el('div', 'kv', ev.join(' · ')));
+  }
   n.appendChild(e);
 
   /* A ruling that says "somebody else" cannot be checked by anyone later, so
