@@ -3762,6 +3762,32 @@ def check_board_stated_mode_and_office() -> int:
     if 'ifhintandnotgeo.get("office"):' not in flat:
         bad += fail("build_board overwrites a parsed office with the board's "
                     "hint instead of only filling a blank")
+
+    # BAMBOOHR KEEPS THE ADDRESS IN atsLocation, and `location` is
+    # {city: null, state: null} on every row of every board checked. Reading
+    # the obvious field returned nothing and looked like the board giving
+    # nothing: 48 of 266 live postings carried a completely empty location
+    # string and 166 had no parsed office, while "Denver, Colorado, United
+    # States" sat one key over.
+    asrc = re.sub(r"#.*$", "", (ROOT / "scripts" / "ats.py").read_text(),
+                  flags=re.M)
+    aflat = re.sub(r"\s+", "", asrc)
+    if 'loc=j.get("atsLocation")orj.get("location")or{}' not in aflat:
+        bad += fail("fetch_bamboohr reads `location` before `atsLocation`. "
+                    "That field is {city: null, state: null} on every row, so "
+                    "the postings come back with no place at all and it looks "
+                    "like the board never said")
+    # SMARTRECRUITERS' remote/hybrid FLAGS ARE NOT READ, ON PURPOSE. Xplor's
+    # board sets remote true on 92 of 100 postings that each carry a real city
+    # - "Phoenix, AZ, United States". Whatever the flag means there, it is not
+    # what work_mode means here, and publishing it would put 92 false "remote"
+    # labels on one company.
+    i = aflat.find("api.smartrecruiters.com/v1/companies/")
+    if i > 0 and 'loc.get("remote")' in aflat[i:i + 2000]:
+        bad += fail("fetch_smartrecruiters now reads that board's `remote` "
+                    "flag as a work mode. It is true on 92 of 100 Xplor "
+                    "postings that all name a real city, so it does not mean "
+                    "what work_mode means here")
     return bad
 
 

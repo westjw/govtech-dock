@@ -812,10 +812,20 @@ def fetch_bamboohr(slug: str) -> list[dict]:
         raise AtsError("unexpected bamboohr payload")
     out = []
     for j in data.get("result", []):
-        loc = j.get("location") or {}
+        # atsLocation FIRST, because `location` is {city: null, state: null}
+        # on every row of every board checked and this read it alone. 48 of
+        # the 266 bamboohr postings on the live board carry a completely empty
+        # location string and 166 have no parsed office, while atsLocation
+        # holds "Denver, Colorado, United States" one key over. An empty
+        # location is not a role with no place - it is a place we did not
+        # look for, and the map and every /s/<state> page paid for it.
+        loc = j.get("atsLocation") or j.get("location") or {}
         parts = [loc.get(k) for k in ("city", "state", "country")]
         out.append({"title": j.get("jobOpeningName", ""),
                     "location": ", ".join(p for p in parts if p),
+                    "office_hint": office_hint(loc.get("city"),
+                                               loc.get("state"),
+                                               loc.get("country")),
                     "url": f"https://{slug}.bamboohr.com/careers/{j.get('id', '')}",
                     "_detail_url": f"https://{slug}.bamboohr.com/careers/"
                                    f"{j.get('id', '')}/detail"})
@@ -851,6 +861,18 @@ def fetch_smartrecruiters(slug: str) -> list[dict]:
                     "location": ", ".join(x for x in [loc.get("city"), loc.get("region")] if x),
                     "url": f"https://jobs.smartrecruiters.com/{slug}/{j.get('id', '')}",
                     "posted": posted_date(j.get("releasedDate")),
+                    # THE ADDRESS, NOT THE MODE. This board's location block
+                    # also carries `remote` and `hybrid` booleans, and they
+                    # are not read on purpose: Xplor's board sets remote true
+                    # on 92 of 100 postings that every one of them gives a
+                    # real city for ("Phoenix, AZ, United States"). Whatever
+                    # that flag means to SmartRecruiters, it does not mean
+                    # what work_mode means here, and publishing it would put
+                    # 92 false "remote" labels on one company. A field we do
+                    # not understand is a field we do not publish.
+                    "office_hint": office_hint(loc.get("city"),
+                                               loc.get("region"),
+                                               loc.get("country")),
                     "_detail_url": j.get("ref") or
                                    f"https://api.smartrecruiters.com/v1/companies/"
                                    f"{slug}/postings/{j.get('id', '')}"})
