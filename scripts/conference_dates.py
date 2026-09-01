@@ -168,12 +168,161 @@ def confirm(c: dict) -> dict:
                     "flag for a person, not a change."}
 
 
+RULED = DATA / "conference_date_rulings.json"
+
+
+def rulings() -> dict:
+    try:
+        return json.loads(RULED.read_text())
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def q_calendar(companies=None, board=None) -> list:
+    """Conferences whose date needs a person, strongest signal first.
+
+    THE CALENDAR IS THE ONE PART OF THIS BOARD THAT ROTS ON A CLOCK. A company
+    that stops hiring is still a true row; a conference that happened last
+    month and still shows a date is a page telling somebody to book a flight
+    to an event that is over. Six are in that state today and one of them went
+    by 190 days ago.
+
+    Three kinds of row, in the order a person should meet them, because they
+    are different questions and only the first is urgent:
+
+      PASSED       the date is behind us and no next edition is recorded.
+                   Arithmetic - no page was read, no false positive possible.
+      NOT FOUND    the event's own page no longer carries the date we hold.
+                   A flag, never a change: see confirm() for why this file
+                   refuses to read a new date off a page.
+      UNDATED      no date on file at all, with the reason already recorded -
+                   unannounced, or a page we could not read.
+
+    A ruled event drops out and is never re-asked, the same rule every other
+    queue here follows.
+    """
+    rows = load()
+    ruled = rulings()
+    today = dt.date.today()
+    report = {}
+    try:
+        rep = json.loads((DATA / "conference_date_report.json").read_text())
+        report = {r["conference"]: r for r in (rep.get("confirmed") or [])}
+    except (OSError, json.JSONDecodeError, KeyError):
+        pass                       # never confirmed yet; the other two still work
+
+    out = []
+    for c in rows:
+        tag = c.get("event_tag") or c["conference"]
+        if tag in ruled:
+            continue
+        held = parsed(c.get("dates") or "")
+        seen = report.get(c["conference"]) or {}
+        if held and held < today and not c.get("next_edition"):
+            out.append({"kind": "passed", "rank": 0,
+                        "says": f"ran {(today - held).days} days ago and no "
+                                f"next edition is on file"})
+        elif not held:
+            out.append({"kind": "undated", "rank": 2,
+                        "says": f"no date on file - recorded as "
+                                f"{c.get('dates_confidence') or 'unknown'}"})
+        elif seen.get("state") == "not found":
+            other = seen.get("other_dates_on_the_page") or []
+            out.append({"kind": "not_found", "rank": 1,
+                        "says": "their own page no longer carries this date"
+                                + (f"; it does carry {', '.join(other[:3])}"
+                                   if other else ""),
+                        "other_dates": other})
+        else:
+            continue
+        out[-1].update({
+            "id": tag, "conference": c["conference"], "dates": c.get("dates"),
+            "url": c.get("url"), "city": c.get("city"),
+            "department": c.get("department"), "flagship": c.get("flagship"),
+            "confidence": c.get("dates_confidence"),
+            "source": c.get("dates_source"),
+            "confirmed_state": seen.get("state"),
+        })
+    out.sort(key=lambda r: (r["rank"], r["conference"]))
+    return out
+
+
+def rule(event_tag: str, outcome: str, dates: str = "", why: str = "",
+         by: str = "owner") -> dict:
+    """Record a decision about one event's date. Returns the stored ruling.
+
+    outcome is one of:
+      set          a date, which the caller must supply and which must parse
+      unannounced  checked, and they have not published one yet
+      ended        the event does not run any more
+      ok           the date on file is right and the flag was noise
+
+    NOTHING HERE TOUCHES conferences.json. The ruling is an opinion appended
+    to its own file, and `conference_dates.py --apply` folds it into the
+    catalogue in one place where the parse is checked - the same division the
+    web admin uses, and for the same reason: a bug in the recording half must
+    not be able to corrupt the catalogue.
+    """
+    if outcome not in ("set", "unannounced", "ended", "ok"):
+        raise ValueError("outcome must be set, unannounced, ended or ok")
+    if outcome == "set":
+        if not parsed(dates):
+            raise ValueError(
+                f"{dates!r} does not read as a date. Give it the way the "
+                f"catalogue writes them - 'October 17-21, 2026' - so the "
+                f"calendar can place it")
+    store = rulings()
+    store[event_tag] = {"outcome": outcome, "dates": dates.strip() or None,
+                        "why": (why or "").strip() or None,
+                        "on": dt.date.today().isoformat(), "by": by}
+    RULED.write_text(json.dumps(store, indent=1) + "\n")
+    return store[event_tag]
+
+
+def apply_rulings(rows: list | None = None) -> dict:
+    """Fold recorded rulings into the catalogue. The ONE place it is edited.
+
+    Returns a report rather than printing, so a caller can refuse to write.
+    """
+    rows = rows if rows is not None else load()
+    ruled = rulings()
+    changed, skipped = [], []
+    by_tag = {(c.get("event_tag") or c["conference"]): c for c in rows}
+    for tag, r in ruled.items():
+        c = by_tag.get(tag)
+        if not c:
+            skipped.append((tag, "no such event on file"))
+            continue
+        if r["outcome"] == "set":
+            if not parsed(r.get("dates") or ""):
+                skipped.append((tag, "the ruled date no longer parses"))
+                continue
+            c["dates"] = r["dates"]
+            c["dates_confidence"] = "owner"
+            c["dates_source"] = f"ruled {r['on']} by {r['by']}"
+            changed.append(tag)
+        elif r["outcome"] == "unannounced":
+            c["dates"] = None
+            c["dates_confidence"] = "unannounced"
+            c["dates_source"] = f"ruled {r['on']} by {r['by']}"
+            changed.append(tag)
+        elif r["outcome"] == "ended":
+            c["dates_confidence"] = "ended"
+            c["dates_source"] = f"ruled {r['on']} by {r['by']}"
+            changed.append(tag)
+        # "ok" changes nothing on purpose: the flag was noise and the row
+        # simply stops being asked about.
+    return {"changed": changed, "skipped": skipped, "rows": rows}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--confirm", action="store_true",
                     help="also re-read each event page (slow, one fetch each)")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--apply", action="store_true",
+                    help="fold recorded rulings into data/conferences.json")
     a = ap.parse_args()
     try:
         sys.stdout.reconfigure(line_buffering=True)
@@ -182,6 +331,35 @@ def main() -> int:
 
     rows = load()
     today = dt.date.today()
+
+    if a.apply:
+        # THE ONE PLACE THE CATALOGUE IS EDITED. The admin appends an opinion
+        # and this folds it in, so a bug in the recording half cannot corrupt
+        # the file - the same division the web admin uses.
+        rep = apply_rulings(rows)
+        if not rep["changed"] and not rep["skipped"]:
+            print("no rulings to apply. Work the Conference dates queue in "
+                  "the admin first.")
+            return 0
+        whole = json.loads((DATA / "conferences.json").read_text())
+        whole["conferences"] = rep["rows"]
+        tmp = DATA / "conferences.json.tmp"
+        tmp.write_text(json.dumps(whole, indent=1) + "\n")
+        try:
+            back = json.loads(tmp.read_text())
+            assert len(back["conferences"]) == len(rows)
+        except Exception as e:                        # noqa: BLE001
+            tmp.unlink(missing_ok=True)
+            print(f"refused: the result did not read back cleanly ({e})",
+                  file=sys.stderr)
+            return 1
+        tmp.replace(DATA / "conferences.json")
+        print(f"applied {len(rep['changed'])} ruling(s): "
+              f"{', '.join(rep['changed'][:8])}")
+        for tag, why in rep["skipped"]:
+            print(f"  skipped {tag}: {why}")
+        print("  build_board.py picks these up on the next run.")
+        return 0
     st, un = stale(rows, today), undated(rows)
 
     report = {"generated": today.isoformat(), "total": len(rows),

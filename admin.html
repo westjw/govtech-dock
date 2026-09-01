@@ -448,6 +448,14 @@ const INTRO = {
   unclassified: 'Titles the role classifier could not place. Most name a rank with no '
     + 'function — "Manager", "Commercial Development" — and the family only exists in the '
     + 'JD body, which the board does not fetch. Assigning one stores it as data, not as a rule.',
+  calendar: 'Conferences whose date needs a person. This is the one part of the board '
+    + 'that rots on a clock: a company that stops hiring is still a true row, but an event '
+    + 'that happened last month and still shows a date is a page telling somebody to book a '
+    + 'flight to something that is over. Three kinds, hardest first — PASSED is arithmetic '
+    + 'and cannot be a false positive; NOT FOUND means their own page no longer carries the '
+    + 'date we hold, which is a flag and never a change; UNDATED is an event that has not '
+    + 'announced one. Nothing here reads a date off their page: measured, every page that '
+    + 'offered one offered a different event’s. A date can only arrive from you.',
   acquisitions: 'The board reads fine but its slug does not match the company name, which '
     + 'usually means the company was acquired and its careers page now redirects to the parent. '
     + 'Confirming wires it up; a parent-company board must never be recorded as the subsidiary’s.',
@@ -2525,6 +2533,79 @@ RENDER.unclassified = p => {
    held a rule() for all three that nothing ever called - so
    acquisition_rulings.json was never written once and every sweep re-proposed
    what you had already looked at. */
+RENDER.calendar = s => {
+  const n = el('div', 'item');
+  n.appendChild(el('h3', null, s.conference || s.id));
+
+  const head = {passed: 'It already happened, and no next edition is on file',
+                not_found: 'Their own page no longer carries this date',
+                undated: 'No date on file at all'}[s.kind]
+               || 'Needs a date decision';
+  const band = el('div', 'kv', head);
+  band.style.fontWeight = '700';
+  n.appendChild(band);
+
+  const e = el('div', 'evi');
+  e.appendChild(document.createTextNode(s.says || ''));
+  const bits = [];
+  if (s.dates) bits.push('on file: ' + s.dates);
+  if (s.city) bits.push(s.city);
+  if (s.confidence) bits.push('confidence: ' + s.confidence);
+  if (s.source) bits.push('source: ' + s.source);
+  if (bits.length) e.appendChild(el('div', 'kv', bits.join(' · ')));
+  if (s.url) {
+    const a = el('a', 'kv');
+    a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = 'open their site →';
+    e.appendChild(a);
+  }
+  n.appendChild(e);
+
+  /* A DATE CAN ONLY COME FROM A PERSON. conference_dates refuses to read one
+     off an event page and the module docstring records why: of the three
+     pages that yielded a date at all, all three yielded a different event's -
+     NACo's site offers two other NACo meetings. So this is a free text box,
+     not a suggestion to accept. */
+  const when = el('input');
+  when.type = 'text';
+  when.placeholder = 'October 17-21, 2026';
+  when.style.cssText = 'width:100%;margin:6px 0 4px';
+  n.appendChild(when);
+
+  const why = el('input');
+  why.type = 'text';
+  why.placeholder = 'where you saw it (optional, but it is what makes this checkable later)';
+  why.style.cssText = 'width:100%;margin-bottom:6px';
+  n.appendChild(why);
+
+  const go = async (outcome) => {
+    const r = await api('/api/conference-date',
+      {id: s.id, outcome, dates: when.value.trim(), why: why.value.trim()});
+    if (r.error) return toast(r.error, true);
+    toast(r.message); n.remove(); refreshCounts();
+  };
+
+  const row = el('div', 'row');
+  const setIt = el('button', 'act go', 'Set this date');
+  setIt.onclick = () => {
+    if (!when.value.trim())
+      return toast('type the date first — nothing here reads one off their page', true);
+    go('set');
+  };
+  const un = el('button', 'act', 'Not announced yet');
+  un.onclick = () => go('unannounced');
+  const end = el('button', 'act', 'Event has ended');
+  end.onclick = () => go('ended');
+  const ok = el('button', 'act mute', 'Date on file is right');
+  ok.onclick = () => go('ok');
+  row.append(setIt, un, end, ok);
+  n.appendChild(row);
+  n.appendChild(el('div', 'kv',
+    'Rulings land in conference_date_rulings.json. '
+    + 'conference_dates.py --apply folds them into the catalogue.'));
+  return n;
+};
+
 RENDER.acquisitions = s => {
   const n = el('div', 'item');
   n.appendChild(el('h3', null, s.name || s.id));

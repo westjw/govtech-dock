@@ -3772,11 +3772,38 @@ def check_conference_dates_engine() -> int:
                 and _n.func.attr in ("write_text", "write_bytes", "open"):
             tgt = _ast.unparse(_n.func.value)
             targets.add(_paths.get(tgt, tgt))
-    if any("conferences.json" in t for t in targets):
-        bad += fail(f"conference_dates.py writes the catalogue: {targets}. "
-                    f"It proposes to a person and never edits - a scraper "
-                    f"that edited would have replaced correct dates with "
-                    f"other events' dates on all three measured cases")
+    # THIS CHECK NARROWED WHEN THE QUEUE LANDED, and its reason did not.
+    # It used to forbid writing the catalogue at all, which was right while
+    # nothing could produce a date a person had approved. The admin's
+    # Conference dates queue now does, so --apply folds those rulings in.
+    #
+    # What is still forbidden is the thing that was ever wrong: a date read
+    # off an event's page reaching the catalogue. confirm() must not produce
+    # one, and the write must be gated on the ruling path.
+    csrc = (ROOT / "scripts" / "conference_dates.py").read_text()
+    conf_fn = csrc[csrc.index("def confirm("):]
+    conf_fn = conf_fn[:conf_fn.index("\ndef ")]
+    # COMMENTS AND THE DOCSTRING STRIPPED FIRST. The comment inside confirm()
+    # explains how ARMA "writes" its dates, and a raw search for that word
+    # failed the suite on correct code - the third time today a check here has
+    # matched prose instead of what runs.
+    conf_code = re.sub(r"#.*$", "", conf_fn, flags=re.M)
+    conf_code = re.sub(r'""".*?"""', "", conf_code, flags=re.S)
+    if "write" in conf_code:
+        bad += fail("conference_dates.confirm writes something. It reads an "
+                    "event page, and every page measured that offered a date "
+                    "offered another event's - NACo's site gave two other "
+                    "NACo meetings against the annual we hold")
+    if "dates_confidence" in conf_code:
+        bad += fail("conference_dates.confirm proposes a date. It answers one "
+                    "question - is what we hold still on their page - and "
+                    "reading a new one off a page is what the measurement "
+                    "showed produces other events' dates")
+    apply_at = csrc.find("if a.apply:")
+    write_at = csrc.find("conferences.json.tmp")
+    if write_at > 0 and not (0 < apply_at < write_at):
+        bad += fail("the catalogue write is not inside the --apply branch, so "
+                    "a plain run could edit dates nobody ruled on")
     if "def confirm(" not in src or "not found" not in src:
         bad += fail("conference_dates no longer distinguishes a date it could "
                     "not find from one that changed. They are different facts "

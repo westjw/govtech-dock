@@ -1397,6 +1397,72 @@ def act_board_proposal(body: dict) -> dict:
                                    f"{block['type']} \u2014 {detail}."}
 
 
+def _q_calendar(companies, board) -> list:
+    """The conference-date queue, in the shape every other queue here takes.
+
+    It reads data/conferences.json rather than companies or the board, so the
+    two arguments are unused - kept so QUEUES stays one uniform table that a
+    caller can iterate without special cases.
+    """
+    import conference_dates as cdates
+    return cdates.q_calendar()
+
+
+def act_conference_date(body: dict) -> dict:
+    """Rule on one conference's date.
+
+    THE CALENDAR IS THE ONE PART OF THIS BOARD THAT ROTS ON A CLOCK. A company
+    that stops hiring is still a true row; a conference that happened last
+    month and still shows a date is a page telling somebody to book a flight
+    to an event that is over. State Healthcare IT Connect has been in that
+    state for 190 days.
+
+    Four outcomes, and they are four different facts:
+
+      SET          a date, given by a person and parsed before it is stored.
+                   conference_dates refuses to read a date off an event page
+                   on purpose - measured, the three pages that yielded one all
+                   yielded another event's - so a real date can only ever
+                   arrive this way.
+      UNANNOUNCED  checked, and they have not published one. A real answer,
+                   and the reason the calendar can say so instead of leaving a
+                   gap a reader has to interpret.
+      ENDED        the event does not run any more.
+      OK           the date on file is right and the flag was noise. Changes
+                   nothing and stops the row being asked about again.
+
+    NOTHING HERE EDITS conferences.json. The ruling is appended to its own
+    file and `conference_dates.py --apply` folds it in, which is the same
+    division the web admin uses: a bug in the recording half must not be able
+    to corrupt the catalogue.
+    """
+    import conference_dates as cdates
+    tag = (body.get("id") or "").strip()
+    outcome = (body.get("outcome") or "").strip()
+    dates = (body.get("dates") or "").strip()
+    why = (body.get("why") or "").strip()
+    by = body.get("by") or "owner"
+    if not tag:
+        return {"error": "which event?"}
+    try:
+        rec = cdates.rule(tag, outcome, dates, why, by=by)
+    except ValueError as e:
+        return {"error": str(e)}
+    # Journalled through the same path every other decision file uses, so this
+    # is undoable like the rest.
+    err = save_decisions("conference_date_rulings.json", cdates.rulings(),
+                         "conference-date", why or f"{tag}: {outcome}", by=by)
+    if err:
+        return {"error": err}
+    msg = {"set": f"{tag} is now {rec['dates']}",
+           "unannounced": f"{tag} has no date announced yet",
+           "ended": f"{tag} no longer runs",
+           "ok": f"{tag} keeps the date on file"}[outcome]
+    return {"ok": True, "message": msg + ". Run `python3 scripts/"
+                                         "conference_dates.py --apply` to "
+                                         "fold it into the catalogue."}
+
+
 def act_acquisition_ruling(body: dict) -> dict:
     """Rule on a board that looks like it belongs to a parent company.
 
@@ -2821,12 +2887,13 @@ def q_proposals(companies, board) -> list:
 
 QUEUES = {"proposals": q_proposals, "leads": q_leads, "boardfound": _q_board_proposals, "founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
           "placement": q_placement, "unclassified": q_unclassified,
-          "acquisitions": q_acquisitions, "review": q_review}
+          "acquisitions": q_acquisitions, "review": q_review,
+          "calendar": _q_calendar}
 
 LABEL = {"proposals": "Agent proposals", "leads": "Warm leads", "boardfound": "Boards we found", "founded": "Founding year", "miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
          "boards": "No board found", "blocked": "Blocked boards", "placement": "Wrong placement",
          "unclassified": "Unclassified roles", "acquisitions": "Acquisitions",
-         "review": "Website review"}
+         "review": "Website review", "calendar": "Conference dates"}
 
 
 # ---------------------------------------------------------------- actions
@@ -3707,7 +3774,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "scope": act_scope, "scope-all": act_scope_all,
            "vendor-scope": act_vendor_scope,
            "vendor-scope-all": act_vendor_scope_all,
-           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "suggest": act_suggest, "board-proposal": act_board_proposal, "acquisition-ruling": act_acquisition_ruling, "set-founded": act_set_founded, "identity-ruling": act_identity_ruling, "place": act_place,
+           "also": act_also, "retry-board": act_retry_board, "save-website": act_save_website, "posts-at": act_posts_at, "suggest": act_suggest, "board-proposal": act_board_proposal, "acquisition-ruling": act_acquisition_ruling, "conference-date": act_conference_date, "set-founded": act_set_founded, "identity-ruling": act_identity_ruling, "place": act_place,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "confirm-founded": act_confirm_founded,
