@@ -3701,6 +3701,89 @@ OFFICE_HINT_CASES = [
 ]
 
 
+# Date strings as the catalogue and real conference pages actually write them.
+# Every one observed, not composed.
+CONF_DATE_CASES = [
+    ("October 17-21, 2026", "2026-10-17"),
+    ("August 30 - September 2, 2026", "2026-08-30"),
+    ("June 26 - July 1, 2027", "2027-06-26"),
+    ("Feb. 21-24, 2026", "2026-02-21"),
+    ("October 25\u201328, 2026", "2026-10-25"),      # en dash
+    ("May 6, 2027", "2027-05-06"),                    # a single day
+    ("", None),
+    ("Conference: November 17-19, 2026; Expo: November 18-19, 2026",
+     "2026-11-17"),        # two ranges: the FIRST start, and the calendar
+                           # still refuses to place it - see cfCalendarHTML
+    ("Sometime in the spring", None),
+]
+
+
+def _import_conference_dates():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import conference_dates
+    return conference_dates
+
+
+def check_conference_dates_engine() -> int:
+    """The calendar's maintenance engine confirms dates and never invents one.
+
+    THE OBVIOUS ENGINE WOULD HAVE MADE THE DATA WORSE. Reading each event's
+    own page and extracting the date was measured on eight events before any
+    of it was written: three pages yielded a date at all and all three were
+    wrong. NACo's page offers "Dec. 3-5, 2026" and "Feb. 11-15 2028" - two
+    OTHER NACo events - against the July 2027 annual we hold. An association
+    runs several events on one site, and picking which is "the" date is
+    judgement. 111 of 126 dates are already high confidence, so a scraper
+    would mostly be replacing good data with bad.
+
+    So the engine makes the weakest claim that is still useful - does the page
+    still carry what we already say - and the half that needs no network at
+    all: an event whose date has passed is stale by arithmetic, with no false
+    positives possible. That is what actually rots a calendar.
+
+    This check pins the parser and the never-writes rule. A date parser that
+    guesses is how 01/02 becomes two different days.
+    """
+    cd = _import_conference_dates()
+    bad = 0
+    for raw, want in CONF_DATE_CASES:
+        got = cd.parsed(raw)
+        got = got.isoformat() if got else None
+        if got != want:
+            bad += fail(f"conference_dates.parsed({raw!r}) = {got!r}, "
+                        f"expected {want!r}")
+    # IT MUST NOT WRITE THE CATALOGUE. The whole design rests on proposing to
+    # a person rather than editing, and one open() in write mode would undo it.
+    src = re.sub(r"#.*$", "", (ROOT / "scripts" / "conference_dates.py").read_text(),
+                 flags=re.M)
+    src = re.sub(r'""".*?"""', "", src, flags=re.S)
+    # Every write target this module has, resolved through the variable it
+    # was assigned to rather than matched on one line - `out.write_text(...)`
+    # names its path two lines up, which a line-wise check cannot see.
+    import ast as _ast
+    targets = set()
+    _tree = _ast.parse((ROOT / "scripts" / "conference_dates.py").read_text())
+    _paths = {}
+    for _n in _ast.walk(_tree):
+        if isinstance(_n, _ast.Assign) and len(_n.targets) == 1 \
+                and isinstance(_n.targets[0], _ast.Name):
+            _paths[_n.targets[0].id] = _ast.unparse(_n.value)
+        if isinstance(_n, _ast.Call) and isinstance(_n.func, _ast.Attribute) \
+                and _n.func.attr in ("write_text", "write_bytes", "open"):
+            tgt = _ast.unparse(_n.func.value)
+            targets.add(_paths.get(tgt, tgt))
+    if any("conferences.json" in t for t in targets):
+        bad += fail(f"conference_dates.py writes the catalogue: {targets}. "
+                    f"It proposes to a person and never edits - a scraper "
+                    f"that edited would have replaced correct dates with "
+                    f"other events' dates on all three measured cases")
+    if "def confirm(" not in src or "not found" not in src:
+        bad += fail("conference_dates no longer distinguishes a date it could "
+                    "not find from one that changed. They are different facts "
+                    "and only one of them is about the conference")
+    return bad
+
+
 def check_acquisition_bands_cover_every_strength() -> int:
     """Every strength the queue can emit must have a heading on the card.
 
@@ -7471,6 +7554,7 @@ def main() -> int:
     errors += check_built_pages_count_openings_not_rows()
     errors += check_momentum_counts_openings_not_rows()
     errors += check_active_badge_is_shipped_honestly()
+    errors += check_conference_dates_engine()
     errors += check_acquisition_bands_cover_every_strength()
     errors += check_board_stated_mode_and_office()
     errors += check_alert_preview_matches_the_digest()
