@@ -3600,6 +3600,83 @@ def _import_ats():
     return ats
 
 
+# Markup fragments taken off REAL careers pages on 2026-09-01, with the slug
+# each one names. The first three are why this table exists: the first draft of
+# find_boards.py was written from memory and found NOTHING on all three, while
+# every one of them carries its board in the served HTML.
+FIND_BOARD_CASES = [
+    # Autura. The `/js` is the part a remembered pattern drops.
+    ('<div id="grnhse_app"></div><script src="https://boards.greenhouse.io'
+     '/embed/job_board/js?for=autura"></script>', ("greenhouse", "autura")),
+    # Nallian names its board only in a mailto on the page.
+    ('send your resume to <a href="mailto:nallian@jobs.workablemail.com">',
+     ("workable", "nallian")),
+    ('<iframe src="https://boards.greenhouse.io/debtbook"></iframe>',
+     ("greenhouse", "debtbook")),
+    ('<a href="https://jobs.lever.co/everbridge">Careers</a>',
+     ("lever", "everbridge")),
+    ('<a href="https://jobs.ashbyhq.com/seneca/04229ae5">Open roles</a>',
+     ("ashby", "seneca")),
+    ('<script src="https://truleo.breezy.hr/embed"></script>',
+     ("breezy", "truleo")),
+    # NOT a slug: a build-tool filename that merely contains the ATS name.
+    ('<link href="/module_Career_-_Greenhouse.min.css">', None),
+    # NOT a slug: the vendor's own marketing site.
+    ('<a href="https://www.greenhouse.io/customers">Greenhouse</a>', None),
+]
+
+
+def _import_find_boards():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import find_boards
+    return find_boards
+
+
+def check_find_boards_reads_real_pages() -> int:
+    """find_boards must recognise the forms careers pages actually use.
+
+    THE FIRST DRAFT OF THIS FILE FOUND NOTHING, on the exact three pages the
+    read trial named as its whole justification - Autura, Nallian and
+    DebtBook. All three carry their board in the SERVED html; the patterns
+    were written from memory and every one was slightly wrong. Autura serves
+    `/embed/job_board/js?for=` and the pattern expected `/embed/job_board?for=`;
+    Nallian names its board only in a mailto at
+    `nallian@jobs.workablemail.com`.
+
+    An extractor that finds nothing does not fail loudly - it reports "no ATS
+    named on the page" for all 781 companies and reads exactly like an honest
+    negative. That is the shape this table exists to catch, so every fragment
+    here was copied off a live page rather than composed.
+
+    The two negatives matter as much: a CSS filename containing "Greenhouse"
+    and a link to the vendor's own site are both things a loosened pattern
+    would file as a company's board.
+    """
+    fb = _import_find_boards()
+    bad = 0
+    for markup, want in FIND_BOARD_CASES:
+        got = fb.candidates(markup)
+        if want is None:
+            if got:
+                bad += fail(f"find_boards read {got} out of markup that names "
+                            f"no board: {markup[:60]!r}. A pattern loose "
+                            f"enough to match a filename will propose one")
+        elif want not in got:
+            bad += fail(f"find_boards did not find {want} in {markup[:70]!r} "
+                        f"- got {got or 'nothing'}. An extractor that misses "
+                        f"reports a clean negative for every page it cannot "
+                        f"read, which is indistinguishable from there being "
+                        f"no board")
+    # EVERY TYPE IT CAN PROPOSE MUST BE ONE refresh.py FETCHES. Proposing a
+    # host nothing can enumerate would wire a company to a new kind of silence.
+    ats = _import_ats()
+    for kind, _rx in fb.PATTERNS:
+        if kind not in ats.FETCHERS:
+            bad += fail(f"find_boards can propose {kind!r}, which is not in "
+                        f"ats.FETCHERS - refresh.py could never read it")
+    return bad
+
+
 def check_posted_date_is_the_employers() -> int:
     """"Posted" must be the employer's date, and absent when they gave none.
 
@@ -7074,6 +7151,7 @@ def main() -> int:
     errors += check_built_pages_count_openings_not_rows()
     errors += check_momentum_counts_openings_not_rows()
     errors += check_active_badge_is_shipped_honestly()
+    errors += check_find_boards_reads_real_pages()
     errors += check_posted_date_is_the_employers()
     errors += check_boards_read_agrees_with_coverage()
     errors += check_active_badge_measures_them_not_us()

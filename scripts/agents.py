@@ -272,6 +272,51 @@ def check_read(p: dict) -> str | None:
     return None
 
 
+def check_board(p: dict) -> str | None:
+    """Refuse a board proposal that cannot be ruled on, or that is a guess.
+
+    THE ONE THING THIS AGENT CAN GET CATASTROPHICALLY WRONG is naming a
+    parent's board as a subsidiary's. CLAUDE.md: "Never point a company at its
+    parent's job board. Several here were acquired and their careers pages
+    redirect to the parent's Workday. Wiring that up would report a
+    parent-company AE req as the subsidiary's, which is a false 'Yes'." That
+    is not a judgement any fetch can make, so nothing here tries - the check
+    instead refuses any proposal that does not carry the evidence a PERSON
+    needs to make it.
+
+    So a proposal must arrive with: the ats type this project can actually
+    fetch, a slug, the row count that slug returned, and sample titles. A
+    proposal with no row count was not verified, and an unverified slug is the
+    exact thing CLAUDE.md says to never write - "always verify a slug with a
+    real fetch before writing it".
+    """
+    kind, ref = (p.get("ats_type") or "").strip(), (p.get("ats_ref") or "").strip()
+    if not kind or not ref:
+        return "a board proposal must name an ats type and a ref"
+    import ats as _ats
+    if kind not in _ats.FETCHERS:
+        return (f"{kind!r} is not a type refresh.py can fetch, so wiring it "
+                f"would leave the company unreadable under a new name")
+    if kind == "html":
+        return "html is another page we cannot enumerate, not a board found"
+    rows = p.get("rows")
+    if not isinstance(rows, int) or rows < 1:
+        return ("a board proposal must carry the row count its slug actually "
+                "returned - an unverified slug is a guess, and slugs that "
+                "look right land on other companies' boards")
+    sample = p.get("sample")
+    if not isinstance(sample, list) or not sample:
+        return ("send sample titles from that board: they are the evidence a "
+                "person rules ownership on, and ownership is the whole "
+                "question here")
+    if not (p.get("evidence") or "").strip().startswith(("http://", "https://")):
+        return "evidence must be the careers page url the board was named on"
+    if rows > 2000:
+        return (f"{rows} postings is a parent's hub, not this company's board "
+                f"- that is the false-Yes this check exists for")
+    return None
+
+
 # ---------------------------------------------------------------- intake
 
 def check_bucket(p: dict, schema: dict) -> str | None:
@@ -312,7 +357,8 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
     for p in proposals:
         key = p.get("key") or f"{kind}:{p.get('id')}"
         bad = (check_bucket(p, schema) if kind == "bucket"
-               else check_read(p) if kind == "read" else None)
+               else check_read(p) if kind == "read"
+               else check_board(p) if kind == "board" else None)
         if bad:
             refused.append({"key": key, "why": bad})
             continue
@@ -329,6 +375,14 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
             # teaching anything later unless you know what was in front of
             # the agent when it answered
             "postings": p.get("postings") or None,
+            # A BOARD PROPOSAL'S WHOLE CASE. Stored beside the answer for the
+            # same reason the brief is: a ruling that cannot be re-read is not
+            # training data, and ownership is judged on these titles.
+            "ats_type": p.get("ats_type"),
+            "ats_ref": p.get("ats_ref"),
+            "rows": p.get("rows"),
+            "quota": p.get("quota"),
+            "sample": p.get("sample") or None,
             "none_found": bool(p.get("none_found")),
             "saw": p.get("saw") or {},
             "by": model or "agent",
