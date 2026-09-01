@@ -3662,6 +3662,65 @@ def _import_find_linkedin():
     return find_linkedin
 
 
+def check_alert_preview_matches_the_digest() -> int:
+    """The preview and the email it previews must ask the same question.
+
+    alerts.html's "preview" is not a mock - it sends the reader to the board
+    carrying their own filters, and its comment says why: "a preview that can
+    disagree with the real thing is worse than no preview, so this reuses the
+    board's own URL keys rather than re-implementing the matching here."
+
+    The intent was right and the board had no key that meant what the digest
+    means. digest.py matches a subscriber's state when the TERRITORY covers it
+    OR the OFFICE is in it. The board had `st` (territory alone, 96 of 4,450
+    postings) and `off` (office alone), and the preview picked `st` - then sent
+    only states[0]. A subscriber choosing NY, NJ, CT previewed 10 postings
+    against the 326 their email would carry. Thirty-three times, on the one
+    screen that asks for an email address.
+
+    Guarded on BOTH sides because it is the same shape as
+    check_alert_vocabulary: a Worker cannot import Python, a browser cannot
+    either, and the drift is silent - the preview simply shows a smaller
+    number and nobody can tell it is the wrong number.
+    """
+    bad = 0
+    al = (ROOT / "alerts.html").read_text()
+    flat_al = re.sub(r"\s+", "", re.sub(r"/\*.*?\*/", "", al, flags=re.S))
+    if 'u.set("anyst",p.states.join(","))' not in flat_al:
+        bad += fail("the alerts preview no longer sends every chosen state to "
+                    "the board's territory-or-office filter. `st` is territory "
+                    "alone and reaches 96 of 4,450 postings; states[0] throws "
+                    "away every choice after the first")
+    if 'u.set("st",p.states[0])' in flat_al:
+        bad += fail("the alerts preview is back on `st` with states[0] - the "
+                    "exact pair that showed a subscriber a thirty-third of "
+                    "their own alert")
+
+    page = (ROOT / "index.html").read_text()
+    flat_pg = re.sub(r"\s+", "", re.sub(r"/\*.*?\*/", "", page, flags=re.S))
+    # The board's side of the same question. Both halves of the union, or the
+    # preview quietly starts disagreeing again in the other direction.
+    if "anyst.some(x=>(p.states||[]).includes(x)" not in flat_pg:
+        bad += fail("index.html's anyst filter no longer matches on the "
+                    "role's territory states, so a preview would drop every "
+                    "territory role the digest would send")
+    if "p.office&&p.office.state===x" not in flat_pg:
+        bad += fail("index.html's anyst filter no longer matches on the "
+                    "office state, so a preview would drop every desk-in-state "
+                    "role the digest would send - which is most of them")
+
+    # AND digest.py must still be asking that question. If it narrows to one
+    # of the two, the board is now the one overstating.
+    dg = re.sub(r"#.*$", "", (ROOT / "scripts" / "digest.py").read_text(),
+                flags=re.M)
+    flat_dg = re.sub(r"\s+", "", dg)
+    if 'here.add(p["office"]["state"])' not in flat_dg:
+        bad += fail("digest.py no longer folds the office state into its "
+                    "state match, so the board's anyst filter now shows a "
+                    "subscriber more than their email will carry")
+    return bad
+
+
 def check_linkedin_is_the_companys_own() -> int:
     """A LinkedIn address on a card must be that company's, not a parent's.
 
@@ -7237,6 +7296,7 @@ def main() -> int:
     errors += check_built_pages_count_openings_not_rows()
     errors += check_momentum_counts_openings_not_rows()
     errors += check_active_badge_is_shipped_honestly()
+    errors += check_alert_preview_matches_the_digest()
     errors += check_linkedin_is_the_companys_own()
     errors += check_find_boards_reads_real_pages()
     errors += check_posted_date_is_the_employers()

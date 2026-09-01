@@ -420,7 +420,17 @@ function settingsView(data){
     if(p.seniority)u.set("sen",p.seniority);
     if(p.sector)u.set("sec",p.sector);
     if(p.work_mode)u.set("mode",p.work_mode);
-    if(p.states.length)u.set("st",p.states[0]);
+    /* EVERY state, and the key that means what the digest means.
+       This was `u.set("st", p.states[0])`, which is wrong twice over. `st` is
+       the board's TERRITORY filter and is set on 96 of 4,450 postings, while
+       digest.py matches a subscriber when the territory covers the state OR
+       the office is in it - 1,627 postings. And states[0] threw away every
+       choice after the first, so somebody who picked NY, NJ, CT previewed NY
+       alone. On the one screen that asks for an email address, the preview
+       showed a seventeenth of what the email would carry.
+       `anyst` is the board filter added for exactly this: it takes the list
+       and matches territory-or-office, which is digest.py's rule. */
+    if(p.states.length)u.set("anyst",p.states.join(","));
     location.href="/?"+u.toString();
   };
   $("#stop").onclick=async()=>{

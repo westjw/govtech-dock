@@ -2975,6 +2975,13 @@ function drawJobs(){
   const f=g("j-fam"),s=g("j-sec"),u=g("j-us"),st=g("j-state"),
         rg=g("j-region"),md=g("j-mode"),sen=g("j-sen"),src=g("j-src"),
         off=g("j-office"),pay=g("j-pay"),since=g("j-since"),sort=g("j-sort");
+  /* A URL-ONLY FILTER, and the only one on this page. It has no control
+     because it is not a browsing filter - it is the alerts screen asking the
+     board the exact question digest.py asks the subscriber list, so that a
+     preview and the email it previews cannot disagree. writeUrl deletes only
+     the keys it knows, so this survives every other filter being changed. */
+  const anyst=(new URLSearchParams(location.search).get("anyst")||"")
+    .split(",").map(x=>x.trim().toUpperCase()).filter(Boolean);
 
   const NEAR=nearState();
   const WANT=parseQuery(q);
@@ -3083,6 +3090,27 @@ function drawJobs(){
     else if(st&&!(p.states||[]).includes(st))return false;
     if(off==="__none"){if(p.office)return false;}
     else if(off&&!(p.office&&p.office.state===off))return false;
+    /* ANY connection to a state: the territory covers it, OR the desk is in
+       it. This exists because digest.py matches subscribers that way and the
+       board had no filter that meant the same thing.
+
+       The alerts preview used `st`, which is TERRITORY ALONE and set on 96 of
+       4,450 postings, while the digest matches territory-or-office and reaches
+       1,627. Somebody choosing NY, NJ, CT on the signup screen pressed
+       "preview" and saw a seventeenth of what their email would carry - on the
+       one screen that asks for their address. It also sent only states[0], so
+       two of their three choices vanished.
+
+       Kept SEPARATE from `st` and `off` rather than replacing them: CLAUDE.md
+       is emphatic that territory (what the role covers) and office (where the
+       desk is) are different facts, and a browser filtering the board still
+       wants them apart. This is the subscriber's question - "roles connected
+       to my state" - which is a third thing, and it takes a list. */
+    if(anyst.length){
+      const hit=anyst.some(x=>(p.states||[]).includes(x)
+        ||(p.office&&p.office.state===x));
+      if(!hit)return false;
+    }
     if(rg&&p.region!==rg)return false;
     if(md&&p.work_mode!==md)return false;
     if(sen&&p.seniority!==sen)return false;
@@ -3508,6 +3536,15 @@ function chipDefs(){
   const seg=$("#j-where"), on=seg&&seg.querySelector('[aria-pressed="true"]');
   if(on&&on.dataset.v)
     out.push({label:esc(on.textContent.trim()),clear:()=>setWhere(seg.children[0])});
+  /* The alerts preview's state filter, shown like any other so it is never
+     silent state. Without a chip a reader arriving from the signup screen
+     would be filtered by something with no control and no label. */
+  const anyq=(new URLSearchParams(location.search).get("anyst")||"").trim();
+  if(anyq) out.push({
+    label:"connected to "+esc(anyq.toUpperCase().split(",").map(x=>x.trim())
+      .filter(Boolean).join(", ")),
+    clear:()=>{const u=new URLSearchParams(location.search);u.delete("anyst");
+      history.replaceState({},"","?"+u.toString());}});
   return out;
 }
 function drawChips(){
