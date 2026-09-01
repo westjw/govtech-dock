@@ -485,6 +485,20 @@ def derived(row: dict) -> dict:
     if comp:
         out["comp_floor"] = comp.get("min")
         out["comp_period"] = comp.get("period")
+    # THE EMPLOYER'S OWN PUBLISH DATE, and it is a different fact from
+    # first_seen. first_seen is OUR date, the day this crawler first saw the
+    # row - on 2026-08-31 every one of 4,442 postings had one inside thirteen
+    # days, so a req opened in 2022 and one opened yesterday read identically.
+    # ats.posted_date reads it from whichever field each board publishes and
+    # returns None when a board publishes none, which is most of the web.
+    #
+    # ABSENT MEANS ABSENT. There is no fallback to first_seen: printing our
+    # crawler's history under the employer's label would be invisible on every
+    # row, and it is the same shape as reporting "no jobs" for a page we could
+    # not read. The column simply stays empty, and the page says which date it
+    # is showing.
+    if row.get("posted"):
+        out["posted"] = row["posted"]
     return out
 
 

@@ -348,7 +348,16 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
         # expiry is how a board ends up advertising dead roles.
         if p_.get("jd_seen"):
             r["ld"] = 1
-            # NO datePosted. IT WAS OUR CRAWL DATE.
+            # datePosted IS THE EMPLOYER'S DATE OR IT IS ABSENT.
+            #
+            # UPDATED 2026-09-01: ats.py now reads a publish date from all
+            # seven structured boards - first_published, publishedAt,
+            # createdAt, releasedDate, published_on, published_at,
+            # published_date - and it rides through as `posted`. Where a board
+            # publishes one, `pd` below carries it and the Worker emits
+            # datePosted. Where it does not, the field is still withheld
+            # entirely. The paragraphs below are why it can never be filled
+            # from our own date, and they still hold.
             #
             # This emitted first_seen, which is the day THIS BOARD first saw
             # the row. 2,183 of 3,524 structured blocks claimed 2026-08-18 or
@@ -363,9 +372,9 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
             # could not read as 'no jobs here'." The page told the truth to a
             # reader and told Google the other thing.
             #
-            # Nothing here reads a posted date: grep ats.py for `posted`,
-            # `created_at`, `publishedAt` and there is nothing to read. So the
-            # field is withheld entirely, which is what this module already
+            # Before that change nothing read a posted date at all, so the
+            # only date on hand was ours. Where a board still gives none the
+            # field is withheld entirely
             # does with validThrough and baseSalary for the same reason.
             # datePosted is optional in Google's JobPosting spec; a wrong one
             # is not.
@@ -404,6 +413,12 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
                     r["tc"] = 1          # jobLocationType: TELECOMMUTE
                 else:
                     r.pop("ld", None)    # no location we can state: no block
+            # THE EMPLOYER'S OWN DATE, now that the board has one. Shipped
+            # only when the board we read published it - `posted` is absent on
+            # every row where it did not, and there is no fallback. See the
+            # note above for why first_seen can never fill this.
+            if p_.get("posted"):
+                r["pd"] = p_["posted"]
         roles[p_["id"]] = r
     for o in board.get("organizations", []):
         cos[o["id"]] = {"n": o.get("name") or "", "s": o.get("sector") or "",

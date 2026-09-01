@@ -3126,7 +3126,18 @@ def check_busy_port_does_not_traceback() -> int:
 
 
 def check_structured_data_claims_no_posting_date() -> int:
-    """JobPosting must not carry a datePosted, because we do not have one.
+    """datePosted may only ever be the EMPLOYER'S date, never ours.
+
+    THIS CHECK CHANGED ON 2026-09-01 AND ITS REASON DID NOT. It used to forbid
+    datePosted outright, and that was correct while the only date this repo
+    held was our own crawl date. ats.py now reads a publish date from all
+    seven structured boards, so a true value exists for the rows whose board
+    publishes one - and Google lists datePosted as required, so withholding it
+    made every one of those blocks ineligible.
+
+    What is still forbidden is the ONE thing that was ever wrong: filling it
+    from first_seen. The guard moved from "no date" to "not that date", which
+    is a narrower claim and the one the reasoning below actually supports.
 
     It emitted `first_seen`, the day THIS BOARD first saw the row. 2,183 of
     3,524 structured blocks claimed 2026-08-18 or 2026-08-19 - our first two
@@ -3139,20 +3150,57 @@ def check_structured_data_claims_no_posting_date() -> int:
     'no jobs here'." The page told the truth to a reader and told Google the
     other thing.
 
-    Nothing in this repository reads a posted date from any board, so there is
-    no true value being passed over - the field was manufactured. It is
-    withheld entirely, like validThrough and baseSalary before it. Optional in
-    the spec; a wrong one is not.
+    Where a board publishes no date the field is still withheld entirely, like
+    validThrough and baseSalary. Optional in the spec; a wrong one is not.
     """
     bad = 0
     mw = (ROOT / "functions" / "_middleware.js").read_text()
     code = re.sub(r"//.*$", "", mw, flags=re.M)
     code = re.sub(r"/\*.*?\*/", "", code, flags=re.S)
-    if "datePosted" in code:
-        bad += fail("the middleware emits datePosted again. The only date this "
-                    "board holds is when WE first saw a row, and publishing it "
-                    "as the employer's posting date is our crawler's history "
-                    "dressed as their hiring")
+    flat = re.sub(r"\s+", "", code)
+    # IT MAY READ `pd` AND NOTHING ELSE. `pd` is the employer's own publish
+    # date; `d` was first_seen, and 2,183 of 3,524 blocks once claimed one of
+    # our first two crawl days as the employer's posting date.
+    if "datePosted" in code and "o.datePosted=r.pd" not in flat:
+        bad += fail("the middleware sets datePosted from something other than "
+                    "r.pd, the employer's own publish date. The only other "
+                    "date on a role is first_seen, which is when WE saw it - "
+                    "our crawler's history dressed as their hiring")
+    if re.search(r"datePosted\s*=\s*r\.d\b", flat.replace("o.datePosted=r.pd", "")):
+        bad += fail("the middleware fills datePosted from r.d, which is "
+                    "first_seen - the exact defect this check was written for")
+    # AND IT MUST BE CONDITIONAL. Emitting it unconditionally publishes
+    # `undefined` as a date on every row whose board gave none.
+    if "datePosted" in code and "if(r.pd)o.datePosted=r.pd" not in flat:
+        bad += fail("the middleware emits datePosted without checking that the "
+                    "employer actually published one, so rows from boards that "
+                    "give no date would carry an empty or undefined value")
+    # AND THE PRODUCER, because moving the fallback one file upstream is the
+    # same defect with a different address - and it is the mutation the
+    # middleware half cannot see. build_site must write `pd` from the
+    # employer's `posted` and from nothing else.
+    bs = re.sub(r"#.*$", "", (ROOT / "scripts" / "build_site.py").read_text(),
+                flags=re.M)
+    bsflat = re.sub(r"\s+", "", bs)
+    if 'r["pd"]=p_["posted"]' not in bsflat:
+        bad += fail("build_site no longer writes pd from the employer's own "
+                    "posted date. Any other source is our crawl date, and "
+                    "2,183 of 3,524 blocks once published one of our first two "
+                    "crawl days as the day the employer posted the job")
+    if 'if p_.get("posted"):' not in bs:
+        bad += fail("build_site writes pd without checking the employer "
+                    "published a date at all")
+    # LINE-WISE, not against the flattened source. The first version of this
+    # searched `\["pd"\]=[^\n]*first_seen` in text that had already had its
+    # newlines stripped, so `[^\n]*` spanned the whole file and it fired on
+    # correct code - a check that reads its own input wrong, which is the
+    # shape this file exists to catch.
+    for line in bs.splitlines():
+        if '["pd"]' in line and "first_seen" in line:
+            bad += fail("build_site falls back to first_seen for pd - that is "
+                        "the crawl-date defect exactly, one file upstream of "
+                        "where it was caught last time")
+            break
     _b = built()
     if _b is None:
         return fail(f"selftest cannot build the shipped artifacts "
@@ -3526,6 +3574,103 @@ def check_active_badge_is_shipped_honestly() -> int:
     if "title=" not in blk:
         bad += fail("the active badge carries no tooltip saying what the "
                     "number is, so the claim cannot be checked by the reader")
+    return bad
+
+
+# Every wire format the seven structured boards actually send, observed live
+# on 2026-09-01 rather than remembered. The last two are the ones that matter:
+# a parser that guesses turns 01/02 into January the second on one board and
+# the first of February on the next.
+POSTED_CASES = [
+    ("2026-08-26T16:02:03-04:00", "2026-08-26"),   # greenhouse first_published
+    ("2025-10-19T18:01:17.960+00:00", "2025-10-19"),  # ashby publishedAt
+    (1784620514622, "2026-07-21"),                 # lever createdAt, epoch ms
+    ("2026-09-01T07:29:04.571Z", "2026-09-01"),    # smartrecruiters releasedDate
+    ("2026-08-27 19:42:19 UTC", "2026-08-27"),     # recruitee published_at
+    ("2026-07-04T03:01:28.931Z", "2026-07-04"),    # breezy published_date
+    ("2026-08-14", "2026-08-14"),                  # workable published_on
+    ("", None), (None, None), ("not a date", None),
+    ("01/02/2026", None),        # ambiguous by design - must refuse, not guess
+]
+
+
+def _import_ats():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    return ats
+
+
+def check_posted_date_is_the_employers() -> int:
+    """"Posted" must be the employer's date, and absent when they gave none.
+
+    Every posting on this board carries first_seen, and that is OUR date - the
+    day this crawler first saw the row. On 2026-08-31 all 4,442 of them fell
+    inside thirteen days, so a Workable req live since 2022-10-27 and one
+    opened yesterday were indistinguishable to a reader. Freshness is the
+    second question anybody asks after relevance and the board could not
+    answer it.
+
+    THE FAILURE THIS GUARDS IS A FALLBACK, not a parse. Filling `posted` from
+    first_seen when a board gives no date would look completely reasonable in
+    a diff, would make every row appear to have an employer date, and would be
+    invisible forever after - our crawler's history published as the
+    employer's claim. It is the same shape as reporting "no jobs" for a page
+    we could not read.
+
+    ONE FIELD PER BOARD AND NO CHAINS. Greenhouse's updated_at moves whenever
+    anything is edited and Recruitee ships created_at, published_at and
+    updated_at side by side. "Posted" and "last touched" are different claims,
+    and a fallback chain would silently prefer whichever the board happened to
+    fill.
+    """
+    ats = _import_ats()
+    bad = 0
+    for raw, want in POSTED_CASES:
+        got = ats.posted_date(raw)
+        if got != want:
+            bad += fail(f"ats.posted_date({raw!r}) = {got!r}, expected {want!r}"
+                        + ("  - a date it cannot read with certainty must be "
+                           "None, never a guess" if want is None else ""))
+    src = (ROOT / "scripts" / "ats.py").read_text()
+    code = re.sub(r"#.*$", "", src, flags=re.M)
+    flat = re.sub(r"\s+", "", code)
+    # SEVEN BOARDS, SEVEN CALLS. A fetcher that stops reading its date does not
+    # error - it just publishes rows with no employer date, and the column
+    # quietly empties for that whole ATS.
+    n = flat.count('"posted":posted_date(')
+    if n < 7:
+        bad += fail(f"only {n} of the 7 structured fetchers read an employer "
+                    f"publish date. A fetcher that stops reading one does not "
+                    f"error, it just empties the column for that whole board")
+    # THE FIELDS THEMSELVES, by name, because reading the wrong one is the
+    # defect that looks correct.
+    for want, why in (('posted_date(j.get("first_published"))',
+                       "greenhouse: updated_at moves on any edit"),
+                      ('posted_date(j.get("publishedAt"))', "ashby"),
+                      ('posted_date(j.get("createdAt"))', "lever, epoch ms"),
+                      ('posted_date(j.get("releasedDate"))', "smartrecruiters"),
+                      ('posted_date(j.get("published_on"))', "workable"),
+                      ('posted_date(j.get("published_at"))',
+                       "recruitee: it also ships created_at and updated_at"),
+                      ('posted_date(j.get("published_date"))', "breezy")):
+        if re.sub(r"\s+", "", want) not in flat:
+            bad += fail(f"a fetcher no longer reads its own publish field "
+                        f"({why}) - {want}")
+    if "updated_at" in flat.replace('j.get("first_published")', ""):
+        bad += fail("something in ats.py reads updated_at as a publish date. "
+                    "It moves whenever a posting is edited, so every edited "
+                    "req would read as newly posted")
+    # AND NO FALLBACK TO OUR OWN DATE, anywhere in the pipeline.
+    bsrc = re.sub(r"#.*$", "", (ROOT / "scripts" / "build_board.py").read_text(),
+                  flags=re.M)
+    bflat = re.sub(r"\s+", "", bsrc)
+    for pat in ('"posted"]=row.get("first_seen")', '"posted"]=first_seen',
+                'out["posted"]=row.get("posted")orfirst_seen',
+                'out["posted"]=row.get("posted")orrow.get("first_seen")'):
+        if pat in bflat:
+            bad += fail("build_board falls back to first_seen for the posted "
+                        "date. That publishes our crawler's history as the "
+                        "employer's claim, on every row, invisibly")
     return bad
 
 
@@ -6929,6 +7074,7 @@ def main() -> int:
     errors += check_built_pages_count_openings_not_rows()
     errors += check_momentum_counts_openings_not_rows()
     errors += check_active_badge_is_shipped_honestly()
+    errors += check_posted_date_is_the_employers()
     errors += check_boards_read_agrees_with_coverage()
     errors += check_active_badge_measures_them_not_us()
     errors += check_sitemap_offers_the_job_pages()

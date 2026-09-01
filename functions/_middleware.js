@@ -215,12 +215,19 @@ function jobLd(id, r, site) {
     url: `${site}/?role=${encodeURIComponent(id)}`,
     directApply: false,
   };
-  // datePosted is deliberately absent - see write_meta_index() in
-  // build_site.py. The only date this board holds is when WE first saw a row,
-  // and publishing that as the employer's posting date is a fact about our
-  // crawler dressed as a fact about their hiring. The field is optional in the
-  // spec; a wrong one is not. `r.d` is no longer written, so this is belt and
-  // braces against a future producer putting it back.
+  // datePosted IS THE EMPLOYER'S OWN DATE, and only theirs. `pd` is written by
+  // write_meta_index() from ats.posted_date, which reads whichever publish
+  // field each of the seven structured boards actually sends - and returns
+  // nothing where a board sends none, which is most of the web. Where it is
+  // absent the field stays absent: it is optional in the spec, and a wrong one
+  // is not.
+  //
+  // NEVER `r.d`. That was first_seen, the day WE first saw the row, and 2,183
+  // of 3,524 blocks once claimed one of our first two crawl days as the day
+  // the employer posted the job. A fact about our crawler dressed as a fact
+  // about their hiring. The name is refused explicitly so a future producer
+  // writing it back in does not silently reach this line.
+  if (r.pd) o.datePosted = r.pd;
   if (loc) o.jobLocation = loc;
   // A JobPosting needs a place or an explicit statement that there is none.
   // `tc` is set only where the posting itself says remote - read verbatim, not

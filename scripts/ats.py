@@ -56,6 +56,7 @@ from __future__ import annotations
 import html as html_lib
 import json
 import os
+import datetime as dt
 import re
 import time
 import urllib.parse
@@ -440,6 +441,7 @@ def fetch_ashby(slug: str) -> list[dict]:
     return [{"title": j.get("title", ""), "location": j.get("location", "") or "",
              "url": j.get("jobUrl", "") or j.get("applyUrl", ""),
              "jd": plain_html(j.get("descriptionPlain") or j.get("descriptionHtml") or ""),
+             "posted": posted_date(j.get("publishedAt")),
              "comp": _ashby_comp(j)} for j in jobs]
 
 
@@ -476,6 +478,68 @@ def _ashby_comp(j: dict) -> dict | None:
     return _ats_text(raw)
 
 
+# WHEN THE EMPLOYER SAYS THEY POSTED IT, which is not a date this project has
+# ever held. Every posting on the board carries `first_seen`, and that is OUR
+# date - the day our crawler first saw the row. On 2026-08-31 every one of the
+# 4,442 postings had a first_seen inside thirteen days, so a requisition opened
+# ten months ago and one opened yesterday looked identical to a reader. Ashby
+# hands back publishedAt 2025-10-19 for a role this board dates to August.
+#
+# ONLY THE PUBLISH DATE, NEVER THE UPDATE DATE. Greenhouse's updated_at moves
+# when anything is edited and Recruitee ships created_at, published_at and
+# updated_at side by side. "Posted" and "last touched" are different claims
+# about a job, and a board that shows the second under the first's label makes
+# every edited req look new. Each fetcher below names one field and no
+# fallback chain.
+#
+# AND NEVER OUR OWN DATE. A board that gives no publish date leaves this None
+# and the column stays empty. Falling back to first_seen would print our
+# crawler's history as the employer's, invisibly, on every row - the same
+# class of error as reporting "no jobs" for a page we could not read.
+_EPOCH_MS = re.compile(r"^\d{12,13}$")
+
+
+def posted_date(raw) -> str | None:
+    """An employer's stated publish date as YYYY-MM-DD, or None.
+
+    Four wire formats across seven boards, all observed live rather than
+    remembered: ISO8601 with an offset (Greenhouse), ISO8601 with a Z
+    (Ashby, SmartRecruiters, Breezy), epoch milliseconds (Lever), and
+    "YYYY-MM-DD HH:MM:SS UTC" (Recruitee). Workable sends a bare date.
+
+    Anything it cannot read with certainty returns None. A date parser that
+    guesses is how 01/02 becomes January the second in one row and the first
+    of February in the next.
+    """
+    if raw is None or raw == "":
+        return None
+    if isinstance(raw, (int, float)) or (isinstance(raw, str) and _EPOCH_MS.match(raw)):
+        try:
+            n = int(raw)
+        except (TypeError, ValueError):
+            return None
+        # Milliseconds if it is thirteen digits, seconds if ten. Both appear in
+        # the wild and a seconds value read as milliseconds lands in 1970.
+        if n > 10_000_000_000:
+            n //= 1000
+        try:
+            return dt.datetime.fromtimestamp(n, dt.timezone.utc).date().isoformat()
+        except (OverflowError, OSError, ValueError):
+            return None
+    if not isinstance(raw, str):
+        return None
+    t = raw.strip().replace(" UTC", "").replace("Z", "+00:00")
+    t = t.replace(" ", "T", 1) if "T" not in t and " " in t else t
+    try:
+        return dt.datetime.fromisoformat(t).date().isoformat()
+    except ValueError:
+        pass
+    try:                                  # a bare YYYY-MM-DD
+        return dt.date.fromisoformat(t[:10]).isoformat()
+    except ValueError:
+        return None
+
+
 def fetch_greenhouse(slug: str) -> list[dict]:
     # ?content=true is the same endpoint and the same single request; without it
     # the payload simply omits `content`. Everything else is byte-identical, so
@@ -486,6 +550,8 @@ def fetch_greenhouse(slug: str) -> list[dict]:
              "location": (j.get("location") or {}).get("name", ""),
              "url": j.get("absolute_url", ""),
              "jd": plain_html(j.get("content") or ""),
+             # first_published, NOT updated_at - the latter moves on any edit.
+             "posted": posted_date(j.get("first_published")),
              "comp": _greenhouse_comp(j)} for j in data.get("jobs", [])]
 
 
@@ -523,6 +589,8 @@ def fetch_lever(slug: str) -> list[dict]:
              "location": (j.get("categories") or {}).get("location", "") or "",
              "url": j.get("hostedUrl", ""),
              "jd": _lever_jd(j),
+             # createdAt is epoch MILLISECONDS on this board.
+             "posted": posted_date(j.get("createdAt")),
              "comp": _lever_comp(j)} for j in data]
 
 
@@ -575,6 +643,7 @@ def fetch_workable(slug: str) -> list[dict]:
     data = _json(_get(url))
     return [{"title": j.get("title", ""), "location": j.get("city", "") or "",
              "url": j.get("url", ""),
+             "posted": posted_date(j.get("published_on")),
              "jd": plain_html(j.get("description") or "")}
             for j in data.get("jobs", [])]
 
@@ -591,6 +660,9 @@ def fetch_recruitee(slug: str) -> list[dict]:
         s = j.get("salary") or {}
         out.append({"title": j.get("title", ""), "location": j.get("location", "") or "",
                     "url": j.get("careers_url", ""),
+                    # published_at, not created_at and not updated_at - this
+                    # board ships all three and they mean different things.
+                    "posted": posted_date(j.get("published_at")),
                     "jd": "\n\n".join(p for p in jd if p),
                     "comp": _comp(s.get("min"), s.get("max"), s.get("currency"),
                                   _period(s.get("period")))})
@@ -608,6 +680,7 @@ def fetch_breezy(slug: str) -> list[dict]:
     out = [{"title": j.get("name", ""),
             "location": (j.get("location") or {}).get("name", "") or "",
             "url": j.get("url", ""),
+            "posted": posted_date(j.get("published_date")),
             "comp": _ats_text(j.get("salary") or "")} for j in data]
     if FETCH_DETAILS:
         _details(out, lambda r: _schema_posting(r["url"]))
@@ -665,6 +738,7 @@ def fetch_smartrecruiters(slug: str) -> list[dict]:
         out.append({"title": j.get("name", ""),
                     "location": ", ".join(x for x in [loc.get("city"), loc.get("region")] if x),
                     "url": f"https://jobs.smartrecruiters.com/{slug}/{j.get('id', '')}",
+                    "posted": posted_date(j.get("releasedDate")),
                     "_detail_url": j.get("ref") or
                                    f"https://api.smartrecruiters.com/v1/companies/"
                                    f"{slug}/postings/{j.get('id', '')}"})
