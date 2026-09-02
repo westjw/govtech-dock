@@ -2725,6 +2725,25 @@ function savedAll(){
   try{return JSON.parse(localStorage.getItem(SAVED_KEY)||"{}")}catch{return {}}
 }
 function isSaved(id){return !!savedAll()[id]}
+/* Take your saved roles with you. The other end of this is job-hunter's
+   scripts/import_saved.py, which matches each row back to a posting it already
+   holds and scores it. Deliberately a FILE and not an api: the roles live in
+   this browser precisely so nothing about what you are looking for has to
+   leave the machine, and a download keeps that true. Whoever exports decides
+   where it goes. */
+function downloadSaved(){
+  const rows=Object.values(savedAll());
+  if(!rows.length)return;
+  const blob=new Blob([JSON.stringify(
+    {exported_at:new Date().toISOString(),site:location.hostname,
+     count:rows.length,saved:rows},null,1)],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download=`${location.hostname.replace(/\./g,"-")}-saved-${
+    new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove()},0);
+}
 function writeSaved(all){try{localStorage.setItem(SAVED_KEY,JSON.stringify(all))}catch{}}
 function toggleSave(p,btn){
   const all=savedAll();
@@ -2957,6 +2976,12 @@ function savedView(){
     : `<div class="syncbar"><span>Kept on this browser only — clearing site data
         loses them.</span>
         <a href="/alerts" style="margin-left:auto">Sync across devices</a></div>`;
+  /* A download, not an upload. Nothing about this list is sent anywhere. */
+  const exportHTML=!all.length?"":`<div class="syncbar">
+      <span>Take these with you as a file.</span>
+      <button class="applybtn" type="button" id="dlsaved"
+        style="margin-left:auto">Download ${all.length} saved role${
+        all.length===1?"":"s"}</button></div>`;
   /* Searches above roles. A saved search is a thing you come BACK to - it is
      the reason to open this tab on a Tuesday - where a saved role is a thing
      you already found. */
@@ -2976,13 +3001,14 @@ function savedView(){
   $("#view").innerHTML=searchHTML+`<div class="sechead"><h3>Saved roles</h3>
       <div class="n">${all.length} ${linked?"kept with your subscription":"kept on this device"}${
         all.length&&nap<all.length?` &middot; ${nap} still to apply to`:""}</div></div>`
-    + bar
+    + bar + exportHTML
     + (all.length?`<div class="list" id="s-list"></div>`
        :`<div class="empty">Nothing saved yet. Use the bookmark on any role and it
           waits here — on this browser, without an account.</div>`);
   $("#view").querySelectorAll(".applybtn[data-qs]").forEach(b=>{
     b.onclick=()=>dropSearch(b.dataset.qs);
   });
+  const dl=$("#dlsaved"); if(dl)dl.onclick=downloadSaved;
   if(!all.length)return;
   const host=$("#s-list");
   all.forEach(p=>{
