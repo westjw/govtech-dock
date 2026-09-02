@@ -170,6 +170,41 @@ chrome.runtime.onMessage.addListener((msg, _sender, respond) => {
 chrome.runtime.onStartup.addListener(() => { drain().catch(() => {}); });
 chrome.runtime.onInstalled.addListener(() => { drain().catch(() => {}); });
 
+/* ---- pages Chrome will not let anything be injected into ---------------
+ *
+ * chrome://, the Web Store, devtools, view-source and the new-tab page are
+ * off limits to every extension, by design. Clicking there used to call
+ * executeScript anyway and throw "Cannot access a chrome:// URL" as an
+ * UNHANDLED PROMISE REJECTION - nothing on screen, nothing on the button, and
+ * the only trace an error in a console the person would have to know to open.
+ *
+ * A tool that does nothing and says nothing when you press it is a tool you
+ * stop trusting on the page where it matters. So the button answers: a short
+ * red badge that says it cannot work here, and then clears itself.
+ *
+ * The .catch() below is the belt to that braces. Chrome can also refuse for
+ * reasons the URL does not show - a page mid-navigation, a PDF viewer, a
+ * policy-blocked host - and those must not become silent rejections either. */
+const NO_INJECT = new RegExp(
+  "^(chrome|chrome-extension|chrome-untrusted|devtools|view-source|about|edge|"
+  + "moz-extension|file):|"
+  + "^https?://(chrome\\.google\\.com/webstore|chromewebstore\\.google\\.com)", "i");
+
+function flash(text, colour) {
+  chrome.action.setBadgeText({ text });
+  chrome.action.setBadgeBackgroundColor({ color: colour });
+  setTimeout(() => chrome.action.setBadgeText({ text: "" }), 2600);
+}
+
 chrome.action.onClicked.addListener((tab) => {
-  chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["capture.js"] });
+  if (!tab || !tab.id || NO_INJECT.test(tab.url || "")) {
+    flash("n/a", "#a3342a");
+    return;
+  }
+  chrome.scripting
+    .executeScript({ target: { tabId: tab.id }, files: ["capture.js"] })
+    .catch((e) => {
+      flash("!", "#a3342a");
+      console.warn("SLED JOBS capture could not run here:", e && e.message);
+    });
 });

@@ -3660,14 +3660,161 @@ def act_search_companies(body: dict) -> dict:
     q = norm(body.get("q") or "")
     if len(q) < 2:
         return {"results": []}
+
+    # WHAT THE BOARD ALREADY KNOWS, sent back with each hit. The overlay used
+    # to get a name and a sector and nothing else, so it could not tell the
+    # person that the company they were about to capture is already read every
+    # night by the crawler. On 2026-09-02 the very first real capture was
+    # BusPatrol - Ashby, thirteen postings already on the board - and the tool
+    # said nothing, then filed two of Ashby's own tabs as jobs.
+    #
+    # None of this is new data. It is three fields already on the record,
+    # carried to the one place the decision is actually made.
+    live = {}
+    try:
+        for p in (json.loads((DATA / "board.json").read_text())
+                  .get("postings") or []):
+            cid = p.get("company_id")
+            if cid:
+                live[cid] = live.get(cid, 0) + 1
+    except Exception:                                   # noqa: BLE001
+        live = {}
+
     out = []
     for c in read_companies():
         n = norm(c["name"])
         if q in n:
+            a = c.get("ats") or {}
             out.append({"id": c["id"], "name": c["name"], "sector": c["sector"],
+                        "ats_type": a.get("type"),
+                        "postings": live.get(c["id"], 0),
+                        "hiring_note": (c.get("hiring") or {}).get("note"),
                         "rank": 0 if n.startswith(q) else 1})
     out.sort(key=lambda r: (r["rank"], len(r["name"])))
     return {"results": out[:12]}
+
+
+def act_worklist(body: dict) -> dict:
+    """What to go and look at next, for the capture extension.
+
+    READ-ONLY, and that is what makes it safe to leave open. OPEN_ACTIONS is
+    the set the extension may call without the console code, and the line
+    those actions already draw is not "no writes" - `capture` writes
+    manual.json and `submit` writes submissions.json. The line is that an open
+    action may write to a STAGING file and never to the map. This one writes
+    nothing at all.
+
+    Four queues, chosen because each is a task that ends with a person on
+    somebody's website - which is the only kind the extension can help with:
+
+      boards    685  read and yielded no board a fetcher can use
+      founded   619  no founding year on file
+      blocked   203  the probe was turned away, so we learned nothing
+      websites   40  no website on file at all
+
+    The order inside each is the queue's own and is not re-sorted here.
+    q_boards in particular sorts by conference floor, most-exhibited first,
+    because that list is worked by floor rather than alphabetically - the
+    owner is standing on one.
+    """
+    which = (body.get("queue") or "boards").strip().lower()
+    try:
+        limit = max(1, min(50, int(body.get("limit") or 12)))
+    except (TypeError, ValueError):
+        limit = 12
+
+    builders = {"boards": q_boards, "founded": q_founded,
+                "blocked": q_blocked, "websites": q_websites}
+    if which not in builders:
+        return {"error": f"unknown queue {which!r}",
+                "queues": sorted(builders)}
+
+    companies = read_companies()
+    board = json.loads((DATA / "board.json").read_text())
+    rows = builders[which](companies, board)
+
+    out = []
+    for r in rows[:limit]:
+        out.append({
+            "id": r.get("id"),
+            "name": r.get("name"),
+            "sector": r.get("sector"),
+            "website": r.get("website"),
+            # The floors this company stands on. The reason the boards queue
+            # is worth working in this order, so it travels with the row.
+            "events": (r.get("events") or [])[:3],
+            "note": r.get("probe_note") or r.get("note") or r.get("why"),
+        })
+    return {"queue": which, "total": len(rows), "rows": out,
+            "counts": {k: len(v(companies, board)) for k, v in builders.items()}}
+
+
+def act_task_note(body: dict) -> dict:
+    """Record what a person found while working the list. STAGING ONLY.
+
+    This is the half of the loop a capture cannot cover. Standing on a
+    company's site, the useful answers are often not "here are their jobs":
+    they are "their board is at this address", "they were founded in 2014",
+    "they only post on LinkedIn", or "there is nothing here". None of those is
+    a posting and all of them are worth keeping.
+
+    WHY IT APPENDS INSTEAD OF WRITING. companies.json is the map, and the map
+    changes in Python behind validate() or not at all. This is the same
+    division of labour the web admin already runs on: the endpoint appends an
+    OPINION and scripts/apply_task_notes.py applies it, so a bug in an
+    extension can mis-record a note and cannot corrupt the dataset. It is also
+    what lets this action sit in OPEN_ACTIONS without handing the extension
+    the console code.
+
+    Nothing here is validated as true - a person typed it. What IS validated
+    is the shape, because a note nobody can act on later is not a note.
+    """
+    kind = (body.get("kind") or "").strip().lower()
+    cid = (body.get("company_id") or "").strip()
+    value = (body.get("value") or "").strip()
+
+    KINDS = {"board", "founded", "posts-at", "website", "nothing"}
+    if kind not in KINDS:
+        return {"error": f"kind must be one of {sorted(KINDS)}"}
+    if not cid:
+        return {"error": "a note has to name the company it is about"}
+    if not any(c["id"] == cid for c in read_companies()):
+        return {"error": f"no company with id {cid!r}"}
+    # "nothing here" is the one kind whose value may be empty: it IS the
+    # finding. Everything else without a value is an empty record.
+    if kind != "nothing" and not value:
+        return {"error": f"a {kind} note needs a value"}
+    if kind in ("board", "website") and not value.startswith(("http://", "https://")):
+        return {"error": "that does not look like an address"}
+    if kind == "founded" and not re.fullmatch(r"(1[89]|20)\d\d", value):
+        return {"error": "a founding year is four digits between 1800 and 2099"}
+
+    path = DATA / "task_notes.json"
+    try:
+        notes = json.loads(path.read_text())
+    except Exception:                                   # noqa: BLE001
+        notes = []
+    notes.append({
+        "company_id": cid,
+        "kind": kind,
+        "value": value or None,
+        # WHAT THE PERSON WAS LOOKING AT. Stored with the answer for the same
+        # reason every ruling here stores its brief: a note whose context is
+        # gone cannot be checked later, and this project treats a label
+        # without its input as useless.
+        "saw": (body.get("page_url") or "").strip() or None,
+        "by": "capture-extension",
+        "at": dt.datetime.now().astimezone().isoformat(timespec="seconds"),
+        "applied": False,
+    })
+    # write_atomic takes the OBJECT and serialises it itself. Handing it a
+    # pre-serialised string writes a JSON *string* to the file, and the next
+    # read comes back as str - which is exactly what the first test of this
+    # function did on its second call.
+    write_atomic("task_notes.json", notes)
+    pending = sum(1 for n in notes if not n.get("applied"))
+    return {"ok": True,
+            "message": f"noted - {pending} waiting for apply_task_notes.py"}
 
 
 def act_dismiss(body: dict) -> dict:
@@ -3771,6 +3918,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "verify-website": act_verify_website, "verify-board": act_verify_board,
            "set-board": act_set_board, "set-family": act_set_family,
            "capture": act_capture, "search-companies": act_search_companies,
+           "worklist": act_worklist, "task-note": act_task_note,
            "scope": act_scope, "scope-all": act_scope_all,
            "vendor-scope": act_vendor_scope,
            "vendor-scope-all": act_vendor_scope_all,
@@ -3817,8 +3965,18 @@ CODE_HEADER = "X-Admin-Code"
 # `capture` writes data/manual.json and `submit` writes data/submissions.json,
 # which the admin's own docs already call "a claim, not a fact". The other
 # three write nothing at all; they fetch a URL and report what they saw.
+# READ-ONLY OR STAGING, NEVER THE MAP. That is the line these six - now
+# eight - have in common, and it is not "no writes": capture writes
+# manual.json and submit writes submissions.json. What none of them touches is
+# companies.json, which stays behind the console code.
+#   worklist   reads four queues and writes nothing at all
+#   task-note  appends to task_notes.json, which apply_task_notes.py then
+#              applies in Python behind validate() - the same division of
+#              labour the web admin already uses for rulings
+# selftest::check_open_actions_never_write_the_map asserts this.
 OPEN_ACTIONS = {"capture", "search-companies", "submit",
-                "inspect-submission", "verify-website", "verify-board"}
+                "inspect-submission", "verify-website", "verify-board",
+                "worklist", "task-note"}
 
 
 def _mint_code() -> str:

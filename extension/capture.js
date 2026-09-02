@@ -18,6 +18,30 @@
   const old = document.getElementById("sscap");
   if (old) { old.remove(); return; }
 
+  /* ---- the panel lives in a shadow root ---------------------------------
+   *
+   * It used to be a plain div appended to the page, which means the PAGE'S
+   * CSS applied to it. On Ashby that collapsed the company-search results on
+   * top of each other into an unreadable smear - the first thing the owner
+   * said about the first real capture was "this needs to be cleaned up".
+   *
+   * A shadow root ends that in both directions: the host page's selectors
+   * cannot match anything inside, and nothing here leaks out onto a page we
+   * are a guest on.
+   *
+   * `all: initial` on the host is the other half and is easy to miss.
+   * Shadow DOM blocks SELECTORS, not INHERITANCE - font, colour, line-height
+   * and direction still flow in from whatever the page set on <body>. The
+   * reset stops that, and the panel then declares everything it needs.
+   *
+   * The id stays on the host, because the host is what a second click has to
+   * find to close. */
+  const host = document.createElement("div");
+  host.id = "sscap";
+  host.style.cssText = "all:initial;position:fixed;top:0;left:0;width:0;"
+    + "height:0;z-index:2147483647";
+  const root = host.attachShadow({ mode: "open" });
+
   const api = (path, body) => new Promise((res) =>
     chrome.runtime.sendMessage({ kind: "api", path, body }, res));
 
@@ -45,7 +69,7 @@
     "^(jobs?|careers?|all jobs|view all|search|apply|apply now|learn more|home"
     + "|about|contact|benefits|culture|life at|our team|back|next|previous"
     + "|see all|open positions|current openings|sign in|log in|share|save"
-    + "|easy apply|show more|load more|dismiss|report)$", "i");
+    + "|easy apply|show more|load more|dismiss|report|overview|application)$", "i");
   const LOC_RE = /^(remote|hybrid|on-?site|[A-Z][A-Za-z .'-]+,\s*[A-Z][A-Za-z .]+)/;
   const CHIP_RE = /^(details|apply|view|new|featured|urgent|[A-Z0-9 &/-]{2,26})$/;
   const clean = (s) => (s || "").replace(/\s+/g, " ").trim();
@@ -133,18 +157,129 @@
   }
 
   /* ---- panel ----------------------------------------------------------- */
-  const jobs = harvestList();
-  const single = jobs.length < 2 ? harvestSingle() : null;
+  /* ---- a detail page is not a board -------------------------------------
+   *
+   * The mode used to be chosen on a count: fewer than two job-shaped links
+   * meant "this is one posting". On an Ashby posting page that test picks the
+   * WRONG branch, because Ashby's own "Overview" and "Application" tabs are
+   * two job-shaped links - and the first real capture duly filed both of them
+   * as jobs at BusPatrol.
+   *
+   * The URL says which it is, and says so before anything is counted. These
+   * are the detail-page shapes of the boards this project actually reads: a
+   * slug, then an opaque id. A listing has no id after the slug.
+   *
+   * The count still decides everywhere else, because most careers pages are
+   * neither shape and there the old test is the right one. */
+  const DETAIL = [
+    /jobs\.ashbyhq\.com\/[^/]+\/[0-9a-f-]{16,}/i,
+    /(boards|job-boards)\.greenhouse\.io\/[^/]+\/jobs\/\d+/i,
+    /jobs\.lever\.co\/[^/]+\/[0-9a-f-]{16,}/i,
+    /\.recruitee\.com\/o\/[^/]+/i,
+    /apply\.workable\.com\/[^/]+\/j\/[A-Z0-9]{6,}/i,
+    /\.breezy\.hr\/p\/[0-9a-f]{8,}/i,
+    /myworkdayjobs\.com\/.+\/job\//i,
+  ];
+  const onDetailPage = DETAIL.some((re) => re.test(location.href));
+
+  const jobs = onDetailPage ? [] : harvestList();
+  const single = (onDetailPage || jobs.length < 2) ? harvestSingle() : null;
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+  /* One stylesheet inside the shadow rather than inline attributes on every
+     element. It cannot escape and the page cannot reach it, so the panel
+     finally looks the same on every site instead of the same on the sites
+     that happened to be tested. */
+  const css = document.createElement("style");
+  css.textContent = `
+    :host { all: initial }
+    .panel {
+      position: fixed; top: 16px; right: 16px; width: 400px; max-height: 86vh;
+      overflow: auto; box-sizing: border-box;
+      background: #FAF7F0; color: #1F2536;
+      border: 1px solid #C9DCE8; border-radius: 0; padding: 14px 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.28);
+      font: 13px/1.5 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+      text-align: left; letter-spacing: normal; text-transform: none;
+    }
+    .panel * { box-sizing: border-box; margin: 0; padding: 0; float: none;
+               position: static; max-width: none; text-indent: 0 }
+    .panel b { font-weight: 700 }
+    .panel label { display: flex; gap: 7px; align-items: flex-start;
+                   padding: 3px 0; cursor: pointer; line-height: 1.45 }
+    .panel input[type=checkbox] { margin: 3px 0 0; flex: 0 0 auto; width: 14px;
+                                  height: 14px; accent-color: #0B57C4 }
+    .panel input[type=text], .panel input:not([type]) {
+      width: 100%; padding: 8px 10px; border: 1px solid #C9DCE8;
+      border-radius: 0; background: #fff; color: #1F2536;
+      font: 13px/1.5 inherit; font-family: inherit;
+    }
+    .panel button {
+      width: 100%; padding: 10px 14px; border: 0; border-radius: 0;
+      background: #0B57C4; color: #FAF7F0; font: 700 13.5px/1.4 inherit;
+      font-family: inherit; cursor: pointer;
+    }
+    .panel button[disabled] { background: #9FB3C4; cursor: default }
+    /* THE LINE THAT WAS BROKEN. Each search result is its own block with its
+       own line box; the page used to collapse these onto one another. */
+    .panel .hit { display: block; padding: 6px 8px; cursor: pointer;
+                  border-bottom: 1px solid #EDF3F7; line-height: 1.45 }
+    .panel .hit:hover { background: #EDF3F7 }
+    .panel a { color: #0B57C4; text-decoration: none }
+    .panel a:hover { text-decoration: underline }
+  `;
+
+
+  /* ---- what the board already knows about this company -------------------
+   *
+   * The first real capture went to BusPatrol: on Ashby, read every night, and
+   * already carrying thirteen postings including the Regional Account
+   * Executive. The tool let that happen without a word, and filed two of
+   * Ashby's own tabs as jobs on top of it.
+   *
+   * So the moment a company is picked, this says what is already true about
+   * it. It does not disable anything - a person standing on a page may have a
+   * reason the board does not know - but the default answer is on screen
+   * before the button is pressed rather than in a queue afterwards.
+   *
+   * `ats: unknown` and `ats: html` are the pile that needs a person: 685
+   * companies whose site was read and yielded no board a fetcher can use. */
+  const STRUCTURED = ["ashby", "greenhouse", "lever", "workable", "recruitee",
+                      "breezy", "smartrecruiters", "bamboohr", "workday",
+                      "rippling", "jazzhr", "icims", "paylocity", "oracle"];
+
+  function verdictOf(c) {
+    const kind = c.ats_type || null;
+    if (STRUCTURED.indexOf(kind) !== -1) {
+      return c.postings > 0
+        ? { tone: "skip",
+            text: `Already read. ${c.name} is on ${kind} and the board carries `
+                + `${c.postings} posting${c.postings === 1 ? "" : "s"} for them. `
+                + `You do not need this one.` }
+        : { tone: "note",
+            text: `${c.name} is on ${kind}, so the crawler reads it - but the `
+                + `board shows no postings. Worth capturing if you can see some.` };
+    }
+    if (kind === "html" || !kind || kind === "unknown") {
+      return { tone: "go",
+               text: `No board a fetcher can read. This is exactly the pile `
+                   + `capture is for.` };
+    }
+    return { tone: "note", text: `On file as ${kind}.` };
+  }
+
+  function say(c) {
+    const v = verdictOf(c);
+    const colour = { skip: "#a3342a", go: "#0F7A4A", note: "#556F82" }[v.tone];
+    const verdictEl = box.querySelector("#ss-verdict");
+    verdictEl.innerHTML =
+      `<div style="border-left:3px solid ${colour};padding:6px 0 6px 9px;`
+      + `margin:0 0 9px;color:#1F2536">${esc(v.text)}</div>`;
+  }
+
   const box = document.createElement("div");
-  box.id = "sscap";
-  box.style.cssText = "position:fixed;top:16px;right:16px;z-index:2147483647;"
-    + "width:400px;max-height:86vh;overflow:auto;background:#FAF7F0;color:#1F2536;"
-    + "border:1px solid #C9DCE8;border-radius:0;padding:14px 16px;"
-    + "box-shadow:0 10px 40px rgba(0,0,0,.28);"
-    + "font:13px/1.5 ui-sans-serif,-apple-system,'Segoe UI',Roboto,sans-serif";
+  box.className = "panel";
 
   const head = single
     ? `Looks like one posting: <b>${esc(single.title)}</b>`
@@ -157,6 +292,7 @@
        <b style="font-size:13.5px">SLED JOBS capture</b>
        <span id="ss-x" style="margin-left:auto;cursor:pointer;color:#7C97AA">close</span></div>
      <div style="color:#556F82;margin-bottom:9px">${head}</div>
+     <div id="ss-verdict"></div>
      <div id="ss-list" style="margin:0 0 10px;max-height:38vh;overflow:auto"></div>
      <input id="ss-q" placeholder="which company? type a name"
        style="width:100%;padding:8px 10px;border:1px solid #C9DCE8;border-radius:0;
@@ -165,7 +301,22 @@
      <button id="ss-go" style="width:100%;padding:9px;border:0;border-radius:0;margin-top:6px;
        background:#0B57C4;color:#FAF7F0;font:inherit;font-weight:600;cursor:pointer">
        Send to SLED JOBS</button>
-     <div id="ss-msg" style="margin-top:8px;color:#556F82"></div>`;
+     <div id="ss-msg" style="margin-top:8px;color:#556F82"></div>
+     <div id="ss-work" style="margin-top:14px;padding-top:11px;
+          border-top:1px solid #C9DCE8">
+       <div style="display:flex;align-items:center;gap:8px">
+         <span style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+               color:#7C97AA">what to hit next</span>
+         <select id="ss-queue" style="margin-left:auto;font:inherit;padding:3px 6px;
+                 border:1px solid #C9DCE8;background:#fff;color:#1F2536">
+           <option value="boards">no board found</option>
+           <option value="founded">founding year</option>
+           <option value="blocked">blocked, retry</option>
+           <option value="websites">no website</option>
+         </select>
+       </div>
+       <div id="ss-rows" style="margin-top:7px;color:#556F82">loading…</div>
+     </div>`;
 
   const list = box.querySelector("#ss-list");
   const picked = single ? [single] : jobs;
@@ -183,7 +334,7 @@
         as a single posting. If the jobs are in an iframe, open the frame directly and click again.</div>`;
   }
 
-  box.querySelector("#ss-x").onclick = () => box.remove();
+  box.querySelector("#ss-x").onclick = () => host.remove();
 
   let company = null, timer;
   const q = box.querySelector("#ss-q"), hits = box.querySelector("#ss-hits"),
@@ -200,11 +351,12 @@
       }
       (r.data.results || []).forEach((c) => {
         const d = document.createElement("div");
-        d.style.cssText = "padding:5px 8px;border-radius:6px;cursor:pointer";
+        d.className = "hit";
         d.innerHTML = `${esc(c.name)} <span style="color:#7C97AA">${esc(c.sector)}</span>`;
-        d.onmouseenter = () => (d.style.background = "#f1eeea");
-        d.onmouseleave = () => (d.style.background = "");
-        d.onclick = () => { company = c; q.value = c.name; hits.innerHTML = ""; };
+        d.onclick = () => {
+          company = c; q.value = c.name; hits.innerHTML = "";
+          say(c);
+        };
         hits.appendChild(d);
       });
     }, 200);
@@ -231,8 +383,47 @@
       : held
       ? `<b style="color:#7a5b00">${esc(trouble(r))}</b>`
       : `<span style="color:#a3342a">${esc(trouble(r))}</span>`;
-    if (sent || held) setTimeout(() => box.remove(), held ? 4200 : 2400);
+    if (sent || held) setTimeout(() => host.remove(), held ? 4200 : 2400);
   };
 
-  document.body.appendChild(box);
+  /* ---- what to hit next ---------------------------------------------------
+   *
+   * Not a mode and not a menu in front of the tool: a list at the BOTTOM of
+   * the panel that is already open. The owner asked to be told what he should
+   * be capturing, not to be asked what he is doing.
+   *
+   * The order is the queue's own and is not re-sorted here. q_boards sorts by
+   * conference floor, most-exhibited first, because that list is worked by
+   * floor - which is the loop this exists to serve: click a row, land on
+   * their site, click the penguin there.
+   */
+  async function loadWork() {
+    const sel = box.querySelector("#ss-queue");
+    const rows = box.querySelector("#ss-rows");
+    rows.textContent = "loading…";
+    const r = await api("/api/worklist", { queue: sel.value, limit: 8 });
+    if (!r || !r.ok || !r.data || r.data.error) {
+      rows.innerHTML = `<span style="color:#a3342a">${esc(trouble(r))}</span>`;
+      return;
+    }
+    const d = r.data;
+    if (!(d.rows || []).length) { rows.textContent = "nothing waiting here."; return; }
+    rows.innerHTML =
+      `<div style="color:#7C97AA;font-size:11.5px;margin-bottom:5px">`
+      + `${d.total} waiting</div>`
+      + d.rows.map((c) =>
+          `<div class="hit" style="cursor:default">`
+          + `<a href="${esc(c.website || "#")}" target="_blank" rel="noopener"`
+          + ` style="font-weight:600">${esc(c.name)}</a>`
+          + (c.events && c.events.length
+              ? ` <span style="color:#7C97AA">${esc(c.events.join(" · "))}</span>` : "")
+          + `</div>`).join("");
+  }
+
+  root.appendChild(css);
+  root.appendChild(box);
+  document.body.appendChild(host);
+
+  box.querySelector("#ss-queue").onchange = loadWork;
+  loadWork();
 })();

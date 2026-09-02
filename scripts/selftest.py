@@ -7832,6 +7832,72 @@ def check_extension_icons() -> int:
     return errors
 
 
+def check_open_actions_never_write_the_map() -> int:
+    """OPEN_ACTIONS may write to a staging file. None of them may touch the map.
+
+    OPEN_ACTIONS is the set the capture extension can call without the console
+    code that is printed on the admin's own terminal. The line those actions
+    draw is easy to state wrong: it is NOT "no writes". `capture` writes
+    manual.json and `submit` writes submissions.json, both by design, because
+    a staging file is reviewed before anything reaches the board.
+
+    The line is that an open action never writes COMPANIES.JSON. That file is
+    the map, it changes in Python behind validate() through save_companies,
+    and everything that edits it sits behind the code.
+
+    This matters more now than it did. Two actions were added for the capture
+    worklist - `worklist`, which only reads, and `task-note`, which appends to
+    task_notes.json for scripts/apply_task_notes.py to apply later. Both are
+    open. If either ever grew a save_companies call, the extension would
+    silently gain the power to rewrite the dataset from any page it is clicked
+    on, and nothing else in this file would notice.
+
+    Checked on the CODE, with docstrings and comments stripped. This project
+    has caught a check reading its own explanatory prose four times; a guard
+    that matches the words "save_companies" inside a docstring explaining that
+    it must not call save_companies would be the fifth.
+    """
+    errors = 0
+    src = (ROOT / "scripts" / "admin.py").read_text()
+
+    m = re.search(r"OPEN_ACTIONS\s*=\s*\{(.*?)\}", src, re.S)
+    if not m:
+        print("  FAIL: OPEN_ACTIONS is gone from admin.py")
+        return 1
+    open_names = set(re.findall(r'"([a-z-]+)"', m.group(1)))
+    if not open_names:
+        print("  FAIL: OPEN_ACTIONS parsed as empty")
+        return 1
+
+    handlers = dict(re.findall(r'"([a-z-]+)"\s*:\s*(act_[a-z_]+)', src))
+    banned = ("save_companies", "companies.json")
+
+    for name in sorted(open_names):
+        fname = handlers.get(name)
+        if not fname:
+            print(f"  FAIL: {name!r} is in OPEN_ACTIONS with no handler in the "
+                  f"dispatch table - it can be called and does not exist")
+            errors += 1
+            continue
+        i = src.find(f"def {fname}(")
+        if i < 0:
+            print(f"  FAIL: {fname} is dispatched for {name!r} but not defined")
+            errors += 1
+            continue
+        j = src.find("\ndef ", i + 1)
+        body = src[i:j if j > 0 else len(src)]
+        body = re.sub(r'"""[\s\S]*?"""', "", body)
+        body = "\n".join(re.sub(r"#.*$", "", ln) for ln in body.splitlines())
+        for bad in banned:
+            if bad in body:
+                print(f"  FAIL: {fname} is an OPEN action and mentions {bad!r} "
+                      f"in its code. An action the extension can call without "
+                      f"the console code must never write the map - stage it "
+                      f"and let a script in Python apply it")
+                errors += 1
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -8364,6 +8430,7 @@ def main() -> int:
     errors += check_embedded_wiring()
     errors += check_capture_parity()
     errors += check_extension_icons()
+    errors += check_open_actions_never_write_the_map()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

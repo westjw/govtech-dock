@@ -44,7 +44,7 @@
     '^(jobs?|careers?|all jobs|view all|search|apply|apply now|learn more|home'
     + '|about|contact|benefits|culture|life at|our team|back|next|previous'
     + '|see all|open positions|current openings|sign in|log in|share|save'
-    + '|easy apply|show more|load more|dismiss|report)$', 'i');
+    + '|easy apply|show more|load more|dismiss|report|overview|application)$', 'i');
 
   const clean = s => (s || '').replace(/\s+/g, ' ').trim();
 
