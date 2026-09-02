@@ -3,17 +3,71 @@
 Everything below needs your accounts and your card, which is why it is yours.
 Everything after it is already automated.
 
-The product is **SLED JOBS**; the domain is still `sledjobs.com` until
-you buy the new one. `data/brand.json` is where both are written down, and
+The product is **SLED JOBS** and the domain is **`sledjobs.com`**, bought
+2026-09-02. `solesourcejobs.com` is being kept for a separate FEDERAL hiring
+board. `data/brand.json` is where the name and domain are written down, and
 `functions/_brand.js` restates the four values a Cloudflare Function needs —
 change the domain in both or `scripts/selftest.py` fails the build. The GitHub
 repo stays `westjw/govtech-dock`; renaming it would break every URL below.
 
 ## 1. Cloudflare account and domain (~10 min)
 1. <https://dash.cloudflare.com> → sign up (free plan is fine).
-2. **Domain Registration → Register Domain** → buy the name
-   (checked free as of 2026-08-21: `sledjobs.com`, `getsolesource.com`,
-   `solesourcehq.com`; `solesource.com/.io/.co` are taken).
+2. **Domain Registration → Register Domain** → buy the name.
+   Done: `solesourcejobs.com` (2026-08), `sledjobs.com` (2026-09-02). The
+   board runs on the second; the first is held for a federal board.
+
+## 1b. Moving the site to sledjobs.com (done in code 2026-09-02; the dashboard half is yours)
+
+The repository already says `sledjobs.com`. What is left is three things in
+the Cloudflare dashboard, **in this order**, because step 2 is a security step.
+
+**Known before you start**, checked 2026-09-02: `sledjobs.com` is already on
+Cloudflare nameservers (`theo` and `adele`, the same pair as the old domain),
+so the zone is in your account and Cloudflare writes the DNS itself. It has no
+A or CNAME record yet, so it currently resolves to nothing. Nobody can reach
+it until step 1.
+
+1. **Pages → Custom domains.** dash.cloudflare.com → **Workers & Pages** →
+   the Pages project (`solesource`) → **Custom domains** → *Set up a custom
+   domain* → type `sledjobs.com` → **Activate domain**. Because the zone is in
+   the same account, Cloudflare creates the record itself — there is no DNS
+   step for you. Repeat for `www.sledjobs.com` if you want www to answer.
+   **Leave `solesourcejobs.com` attached.** Alert emails already sent carry
+   `solesourcejobs.com/alerts?t=…`, and detaching it breaks them.
+
+2. **EXTEND ACCESS TO THE NEW HOSTNAME, immediately.** Your Access application
+   is scoped to `solesourcejobs.com` — verified live: a request to
+   `/admin` there redirects to `solesource-c6g-pages.cloudflareaccess.com`
+   with `hostname: solesourcejobs.com` in the token. **A new custom domain is
+   NOT covered by it.** Until you do this, `sledjobs.com/admin` is reachable
+   by anyone.
+   Zero Trust → **Access → Applications** → open the existing application →
+   **Add a domain / hostname** → `sledjobs.com`, path `admin` → save. Keep the
+   old hostname on the same application; one application can hold both.
+   Writes would still be refused without Access headers — the ruling endpoint
+   fails closed — but the queue pages would be readable, so do not leave a gap.
+
+3. **Verify, from any machine:**
+   ```
+   curl -s -o /dev/null -w "%{http_code}\n" https://sledjobs.com/          # expect 200
+   curl -s -o /dev/null -w "%{http_code}\n" https://sledjobs.com/admin     # expect 302
+   ```
+   200 then 302 means the site is live and the admin is behind Access. A 200
+   on the second is the gap in step 2.
+
+**The sending address has NOT moved and must not yet.** Resend has
+`solesourcejobs.com` verified with SPF and DKIM in this same Cloudflare DNS
+and has never seen `sledjobs.com`. Moving `from_email` before the new domain
+is verified there makes every alert fail to send while the endpoint still
+answers 200. To move it: Resend → **Domains → Add Domain** → `sledjobs.com` →
+it prints DKIM and SPF records → add them in Cloudflare DNS for the new zone →
+wait for **Verified** → then change `from_email` in `data/brand.json` and
+`FROM` in `functions/_brand.js` together, and push.
+
+**Later, when the federal board takes solesourcejobs.com**, remove it from
+this Pages project's custom domains first. Every alert link already mailed
+breaks at that moment; one confirmation email has ever been sent, so that is
+one address.
 
 ## 2. Pages project (~3 min)
 1. **Workers & Pages → Create → Pages → Upload assets** is NOT what we want —
