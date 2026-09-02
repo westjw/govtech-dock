@@ -12,3 +12,9 @@ public/
 /tmp
 *.tmp
 *.orig
+
+# Conditional-request bodies, kept so an unchanged board costs a 304 instead
+# of a full fetch. Local only and rebuilt on demand - a CI runner is a fresh
+# machine each time, so this does nothing there unless the workflow restores
+# it. Never committed: it is other people's page content, and megabytes of it.
+/data/http_cache/

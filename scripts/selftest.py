@@ -14,6 +14,8 @@ import inspect
 import json
 import math
 import re
+import threading
+import time
 import pathlib
 import sys
 
@@ -7445,6 +7447,85 @@ def check_fetchers_page_and_do_not_fake_zeros() -> int:
     return errors
 
 
+def check_the_crawler_paces_itself() -> int:
+    """1,570 requests at servers nobody here owns, and nothing paced them.
+
+    build_board runs a ThreadPoolExecutor over 1,140 boards, and since the
+    paging fixes a single Workday tenant serves ten pages and an iCIMS portal
+    eleven. Before HOST_PAUSE none of that was spaced at all - it went out as
+    fast as the network allowed. 79 companies already sit behind a bot wall
+    that refuses identified crawlers on the first request; those were never
+    earned, and arriving in a burst is how more get earned.
+
+    THE LOCK MUST BE HELD ACROSS THE SLEEP. That is the whole design and it is
+    the thing worth a test: release before sleeping and two threads both read a
+    stale timestamp, both decide they may go, and both hit the host together -
+    the exact burst this exists to prevent, and invisible in any single-threaded
+    check. So this drives it with real threads.
+
+    Per HOST, not globally, or the gate would serialise 866 unrelated company
+    websites behind each other and turn a 15-minute crawl into hours.
+    """
+    errors = 0
+    pause, real = 0.05, ats.HOST_PAUSE
+    ats.HOST_PAUSE = pause
+    try:
+        # Same host from eight threads must come out spaced, not in a burst.
+        ats._HOST_LAST.clear(); ats._HOST_LOCKS.clear()
+        stamps = []
+        lock = threading.Lock()
+
+        def hit(u):
+            ats._host_gate(u)
+            with lock:
+                stamps.append(time.monotonic())
+
+        threads = [threading.Thread(target=hit, args=("https://api.example.com/x",))
+                   for _ in range(8)]
+        for th in threads: th.start()
+        for th in threads: th.join()
+        stamps.sort()
+        gaps = [b - a for a, b in zip(stamps, stamps[1:])]
+        if gaps and min(gaps) < pause * 0.8:
+            print(f"  FAIL: eight concurrent requests to one host came "
+                  f"{min(gaps):.3f}s apart, pause is {pause}s - the gate is not "
+                  f"holding its lock across the sleep and bursts get through")
+            errors += 1
+
+        # Different hosts must NOT queue behind each other.
+        ats._HOST_LAST.clear(); ats._HOST_LOCKS.clear()
+        t0 = time.monotonic()
+        threads = [threading.Thread(target=ats._host_gate,
+                                    args=(f"https://h{i}.example.com/x",))
+                   for i in range(8)]
+        for th in threads: th.start()
+        for th in threads: th.join()
+        if time.monotonic() - t0 > pause:
+            print(f"  FAIL: eight DIFFERENT hosts serialised behind each other - "
+                  f"the gate is global rather than per-host, which would turn "
+                  f"the crawl into hours")
+            errors += 1
+    finally:
+        ats.HOST_PAUSE = real
+        ats._HOST_LAST.clear(); ats._HOST_LOCKS.clear()
+
+    # A 304 whose body we no longer hold is OUR bookkeeping failing, not the
+    # site refusing. It must re-ask, never report a board it cannot read.
+    src = (ROOT / "scripts" / "ats.py").read_text()
+    i = src.find("def _get(url: str")
+    body = src[i:i + 1400] if i >= 0 else ""
+    if "304" not in body:
+        print("  FAIL: _get no longer handles 304, so a conditional request "
+              "would raise AtsError and a live board would read as broken")
+        errors += 1
+    if body.count("requests.get") < 2:
+        print("  FAIL: _get does not re-fetch when a 304 arrives and the cached "
+              "body is gone - that would report an unreadable board for what is "
+              "actually a cache miss")
+        errors += 1
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -7973,6 +8054,7 @@ def main() -> int:
     errors += check_workday_pages_to_the_end()
     errors += check_mail_shell()
     errors += check_fetchers_page_and_do_not_fake_zeros()
+    errors += check_the_crawler_paces_itself()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

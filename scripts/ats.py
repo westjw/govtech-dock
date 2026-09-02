@@ -55,10 +55,14 @@ from __future__ import annotations
 
 import html as html_lib
 import json
+import gzip
+import hashlib
 import os
+import pathlib
 import datetime as dt
 import re
 import sys
+import threading
 import time
 import urllib.parse
 
@@ -224,17 +228,155 @@ def _text_comp(jd: str) -> dict | None:
     return got or None
 
 
-def _get(url: str, **kw) -> requests.Response:
+# --- conditional requests ---------------------------------------------------
+#
+# A crawl re-fetches 1,140 boards in full every run, and most of them have not
+# changed since the last one. HTTP has had an answer to this since 1997: keep
+# the ETag or Last-Modified the server handed us, send it back, and let the
+# server say 304 Not Modified with no body at all.
+#
+# WHAT THIS DOES AND DOES NOT CLAIM. It saves bandwidth, both ours and theirs,
+# and a 304 is the cheapest possible request. It does NOT skip parsing and it
+# does NOT reuse last run's postings - that is the `--reuse-postings` idea
+# CLAUDE.md describes, and that file is explicit that it wants a careful pass
+# with the owner rather than a quick one, because the postings flow through the
+# same loop that builds `orgs` and a bug there corrupts what the public site
+# reads. So this stays underneath the fetchers: a 304 hands back the stored
+# body and every fetcher above parses it exactly as it always did, none of them
+# aware anything happened.
+#
+# ONLY WHEN THE SERVER OFFERS A VALIDATOR. No ETag and no Last-Modified means
+# nothing is stored, which keeps the cache to the hosts that actually support
+# this and stops it growing without bound.
+#
+# IN CI THIS IS INERT unless the workflow restores the directory between runs -
+# a GitHub runner is a fresh machine every time. Locally it works immediately.
+HTTP_CACHE = pathlib.Path(__file__).resolve().parent.parent / "data" / "http_cache"
+
+
+class _Cached:
+    """Enough of a requests.Response for the four things anybody reads."""
+
+    def __init__(self, text: str):
+        self.text = text
+        self.status_code = 200
+        self.from_cache = True
+
+    def json(self):
+        return json.loads(self.text)
+
+
+def _cache_paths(url: str):
+    key = hashlib.sha256(url.encode()).hexdigest()[:40]
+    return HTTP_CACHE / f"{key}.json", HTTP_CACHE / f"{key}.body.gz"
+
+
+def _cache_read(url: str):
+    meta_p, _ = _cache_paths(url)
     try:
-        resp = requests.get(url, headers=UA, timeout=TIMEOUT, **kw)
+        return json.loads(meta_p.read_text())
+    except Exception:                          # noqa: BLE001 - a cache miss
+        return None
+
+
+def _cache_body(url: str) -> str | None:
+    _, body_p = _cache_paths(url)
+    try:
+        return gzip.decompress(body_p.read_bytes()).decode("utf-8", "replace")
+    except Exception:                          # noqa: BLE001
+        return None
+
+
+def _cache_write(url: str, resp) -> None:
+    etag = resp.headers.get("ETag")
+    lastmod = resp.headers.get("Last-Modified")
+    if not etag and not lastmod:
+        return                                 # nothing to revalidate with
+    try:
+        HTTP_CACHE.mkdir(parents=True, exist_ok=True)
+        meta_p, body_p = _cache_paths(url)
+        body_p.write_bytes(gzip.compress(resp.text.encode("utf-8"), 6))
+        meta_p.write_text(json.dumps(
+            {"url": url, "etag": etag, "last_modified": lastmod}))
+    except OSError:
+        pass                                   # a cache we cannot write is not an error
+
+
+# --- one request at a time, per host ---------------------------------------
+#
+# WHY THIS EXISTS. Nothing paced this crawler. It fetches 1,140 boards and,
+# since the paging fixes, makes roughly 1,570 requests - as fast as the network
+# allows, at servers nobody here owns. 79 companies already sit behind a bot
+# wall that refuses identified crawlers on the first request; those were never
+# earned, but the way to earn more is to arrive in a burst.
+#
+# PER HOST, NOT GLOBAL, because that is where the load actually lands. 866 of
+# these are separate company websites hit once each and the gate never fires
+# for them. It fires exactly where we hammer: 65 companies share
+# boards-api.greenhouse.io, a Workday tenant now serves ten pages of one
+# search, an iCIMS portal eleven.
+#
+# THE LOCK IS HELD ACROSS THE SLEEP, and that is the whole design. build_board
+# runs a ThreadPoolExecutor, so releasing before sleeping would let two workers
+# both read a stale timestamp, both decide they may go, and both hit the host
+# together - which is the burst this is meant to prevent. Holding it queues
+# same-host callers behind each other and leaves different hosts free to run in
+# parallel, which is the behaviour we want on both sides.
+#
+# The stamp is taken BEFORE the request rather than after, so the interval
+# means "requests started at least HOST_PAUSE apart" - a slow response does not
+# then buy the next caller a free pass.
+HOST_PAUSE = float(os.environ.get("GOVTECH_DOCK_HOST_PAUSE", "0.5"))
+_HOST_LAST: dict[str, float] = {}
+_HOST_LOCKS: dict[str, threading.Lock] = {}
+_HOST_TABLE = threading.Lock()
+
+
+def _host_gate(url: str) -> None:
+    host = urllib.parse.urlsplit(url).netloc.lower()
+    if not host or HOST_PAUSE <= 0:
+        return
+    with _HOST_TABLE:                       # only guards the dict, never a sleep
+        lock = _HOST_LOCKS.setdefault(host, threading.Lock())
+    with lock:
+        last = _HOST_LAST.get(host)
+        if last is not None:
+            wait = HOST_PAUSE - (time.monotonic() - last)
+            if wait > 0:
+                time.sleep(wait)
+        _HOST_LAST[host] = time.monotonic()
+
+
+def _get(url: str, **kw):
+    _host_gate(url)
+    headers = dict(UA)
+    meta = _cache_read(url) if HTTP_CACHE else None
+    if meta:
+        if meta.get("etag"):
+            headers["If-None-Match"] = meta["etag"]
+        if meta.get("last_modified"):
+            headers["If-Modified-Since"] = meta["last_modified"]
+    try:
+        resp = requests.get(url, headers=headers, timeout=TIMEOUT, **kw)
     except requests.RequestException as exc:
         raise AtsError(f"network error: {exc}") from exc
+    if resp.status_code == 304:
+        body = _cache_body(url)
+        if body is not None:
+            return _Cached(body)
+        # The server says nothing changed and we no longer hold the body. That
+        # is our bookkeeping failing, not the site refusing, so ask again
+        # plainly rather than reporting a board we cannot read.
+        resp = requests.get(url, headers=UA, timeout=TIMEOUT, **kw)
     if resp.status_code != 200:
         raise AtsError(f"HTTP {resp.status_code} for {url}")
+    if HTTP_CACHE:
+        _cache_write(url, resp)
     return resp
 
 
 def _post_json(url: str, body: dict) -> dict:
+    _host_gate(url)
     try:
         resp = requests.post(url, json=body, headers={**UA, "Content-Type": "application/json"},
                              timeout=TIMEOUT)
