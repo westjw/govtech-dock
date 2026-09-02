@@ -12,6 +12,7 @@ import html
 import io
 import inspect
 import json
+import math
 import re
 import pathlib
 import sys
@@ -7123,6 +7124,196 @@ def check_a_board_on_another_members_domain_is_surfaced() -> int:
     return errors
 
 
+def check_workday_pages_to_the_end() -> int:
+    """Workday hands back 20 rows a page and WRAPS past the end, not an empty page.
+
+    Both Workday fetchers used to post {"limit": 20, "offset": 0} once per
+    search term and read the reply, so every tenant was cut to the first 20
+    hits of each query however many it advertised. Motorola's own response
+    reported total=161 for "account executive" and 362 for "sales"; the board
+    published 38 postings for the company. Paging the same queries properly
+    returns 396, including "Channel Sales Executive (Chicago, Western
+    Suburbs)" and a dozen more Channel Account Managers - quota-carrying GTM
+    roles, which is the product.
+
+    THE TRAP, and the reason this check exists rather than a comment. Asking
+    for an offset past the end does not return nothing. Verified live on
+    2026-09-01: offsets 180, 200 and 300 each returned 20 rows byte-identical
+    to offset 0. A paginator written the obvious way - "stop on an empty
+    page" - therefore never stops, and re-requests page one against somebody
+    else's server in a loop. The stop condition has to be a page that adds no
+    path already seen.
+
+    `total` cannot be the bound either: the same walk saw total=161 at offset
+    0, then total=0 at every offset from 20 to 160 while returning 20 real
+    rows each time, then 161 again once it wrapped.
+
+    Driven offline against a fixture that reproduces the wrap, plus a source
+    check for the literal that was the bug, because the regression is someone
+    "simplifying" the loop back to a single request.
+    """
+    errors = 0
+    key = lambda j: j["externalPath"]
+
+    def board(total):
+        def page(off):
+            if off >= total:          # what Workday actually does past the end
+                off = 0
+            return [{"externalPath": f"/job/{i}"}
+                    for i in range(off, min(off + ats.WD_PAGE, total))]
+        return page
+
+    for total in (0, 1, 20, 21, 161, 400):
+        seen_offsets = []
+        raw = board(total)
+
+        def counted(off, _raw=raw, _log=seen_offsets):
+            _log.append(off)
+            return _raw(off)
+
+        rows = ats._paged(counted, key)
+        if len(rows) != total:
+            print(f"  FAIL: a {total}-posting Workday board yielded "
+                  f"{len(rows)} rows")
+            errors += 1
+        if len({key(r) for r in rows}) != total:
+            print(f"  FAIL: duplicate rows survived on a {total}-row board")
+            errors += 1
+        # THE ROW COUNT ALONE DOES NOT PROVE THE STOP CONDITION. Delete the
+        # wrap-around break and every extra page returns rows already seen, so
+        # the totals still come out right - while the walk makes sixty requests
+        # instead of ten against somebody else's server and then reports itself
+        # TRUNCATED because the loop ran to its ceiling. Traffic is the thing
+        # being guarded here, so traffic is what gets asserted.
+        want = 1 if not total else math.ceil(total / ats.WD_PAGE) + 1
+        if len(seen_offsets) != want:
+            print(f"  FAIL: a {total}-posting Workday board took "
+                  f"{len(seen_offsets)} requests, expected {want} - the "
+                  f"wrap-around stop is not firing")
+            errors += 1
+
+    # The wrap must not become an infinite loop, and the ceiling must announce
+    # itself rather than quietly returning a truncated list.
+    calls = []
+
+    def never_repeats(off):
+        calls.append(off)
+        return [{"externalPath": f"/job/{off}/{i}"} for i in range(ats.WD_PAGE)]
+
+    rows = ats._paged(never_repeats, key, label="selftest")
+    if len(calls) != ats.WD_MAX_PAGES:
+        print(f"  FAIL: a board that never repeats made {len(calls)} requests, "
+              f"ceiling is {ats.WD_MAX_PAGES}")
+        errors += 1
+
+    # The bug, as a source shape. Either Workday function posting a literal
+    # zero offset is the defect coming back.
+    src = (ROOT / "scripts" / "ats.py").read_text()
+    for name in ("def fetch_workday(", "def _workday_jobs("):
+        i = src.find(name)
+        if i < 0:
+            print(f"  FAIL: {name} is gone from ats.py")
+            errors += 1
+            continue
+        body = src[i:i + 1800]
+        if '"offset": 0' in body:
+            print(f"  FAIL: {name} posts a literal offset of 0 again - "
+                  f"that is the un-paged fetch this check exists to stop")
+            errors += 1
+        if "_paged(" not in body:
+            print(f"  FAIL: {name} no longer pages through _paged()")
+            errors += 1
+    return errors
+
+
+def check_mail_shell() -> int:
+    """The email shell exists twice, in two languages, and will therefore rot.
+
+    functions/api/alerts.js sends the confirmation and the settings email from
+    a Cloudflare Worker; scripts/digest.py sends the recurring digest from CI.
+    A Worker cannot import Python and the script cannot import the Worker, so
+    the shell - the Penguin band, the Belly plate, the Beak rule, the Outlook
+    guards - is written out in both. That is the same forced duplication as
+    functions/_brand.js and gets the same treatment: a guard, because the
+    failure is SILENT. Nothing errors when they drift. The confirmation email
+    and the digest simply stop looking like the same product, and the person
+    who changed one of them never sees the other.
+
+    THE MARKS BELOW ARE NOT DECORATION, which is why drift matters:
+
+    - `o:PixelsPerInch` - without it Outlook 2016 on a 120/144 DPI display
+      rescales every px dimension and the mascot no longer fits its plate.
+    - The mso font block - Word does not walk a font stack. It takes the first
+      family, fails to find Archivo, and renders the whole email in Times New
+      Roman. The selector list must include div and p, because the type here
+      is set on divs.
+    - `x-apple-disable-message-reformatting` - stops iOS Mail's own scaling.
+    - `[data-ogsc]` - Outlook.com's dark mode ignores prefers-color-scheme and
+      needs its own overrides or the ink inverts and the ground does not.
+    - The bgcolor attributes - a client that reads no CSS at all still gets
+      the palette, which is the whole images-off strategy.
+
+    Also asserted: no SVG (Gmail strips it entirely) and no flex or grid
+    (Word drops both), in either file.
+    """
+    errors = 0
+    js = (ROOT / "functions" / "api" / "alerts.js").read_text()
+    # digest.py builds its shell in an f-string, where a literal CSS brace has
+    # to be written doubled. Comparing raw source would therefore report every
+    # CSS rule as drift, which is the guard crying wolf rather than a finding -
+    # so the doubling is undone before the two are held against each other.
+    # This compares what each file WILL EMIT, which is the thing that has to
+    # match; it is not a claim that the two files are typed identically.
+    py = ((ROOT / "scripts" / "digest.py").read_text()
+          .replace("{{", "{").replace("}}", "}"))
+
+    marks = [
+        ("Outlook DPI",          "o:PixelsPerInch"),
+        ("mso font guard",       "body,table,td,a,span,div,p"),
+        ("Segoe fallback",       "'Segoe UI',Arial,sans-serif !important"),
+        ("iOS reformat guard",   "x-apple-disable-message-reformatting"),
+        ("Outlook.com dark",     "[data-ogsc]"),
+        ("dark-mode media",      "prefers-color-scheme:dark"),
+        ("preheader hidden",     "mso-hide:all"),
+        ("Penguin band",         'bgcolor="#1F2536"'),
+        ("Belly plate 52px",     'bgcolor="#FAF7F0" width="52" height="52"'),
+        ("Beak rule",            'bgcolor="#F5A623"'),
+        ("Frost rule",           "#C9DCE8"),
+        ("band mute token",      "#9FB3C4"),
+        ("Badge button",         'bgcolor="#0B57C4"'),
+        ("the mascot",           "head-on-the-hunt.png"),
+        ("live-text wordmark",   'letter-spacing:.02em'),
+        ("mobile kicker rule",   ".kicker{font-size:10px"),
+    ]
+    for name, mark in marks:
+        in_js, in_py = mark in js, mark in py
+        if not (in_js and in_py):
+            where = "alerts.js" if in_py else "digest.py"
+            print(f"  FAIL: the email shell's {name} ({mark!r}) is missing from "
+                  f"{where} - the two mail shells have drifted")
+            errors += 1
+
+    for label, src in (("alerts.js", js), ("digest.py", py)):
+        # Only the mail shell is being judged here, so look at the part of the
+        # file that builds email rather than the whole module.
+        i = src.find("the shared email shell")
+        if i < 0:
+            print(f"  FAIL: {label} no longer carries the shared email shell")
+            errors += 1
+            continue
+        shell_src = src[i:]
+        if ".svg" in shell_src:
+            print(f"  FAIL: {label}'s email shell references an SVG - Gmail "
+                  f"strips SVG entirely and the mark would simply not appear")
+            errors += 1
+        for css in ("display:flex", "display:grid", "grid-template"):
+            if css in shell_src:
+                print(f"  FAIL: {label}'s email shell uses {css} - Outlook "
+                      f"renders through Word and drops it")
+                errors += 1
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -7648,6 +7839,8 @@ def main() -> int:
     errors += check_redirect_hop()
     errors += check_admin_http()
     errors += check_url_sinks()
+    errors += check_workday_pages_to_the_end()
+    errors += check_mail_shell()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

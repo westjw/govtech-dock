@@ -40,6 +40,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import brand  # noqa: E402
 
 SITE = brand.SITE
+NAME = brand.NAME
 
 CADENCE_DAYS = {
     # weekday numbers as date.weekday(): Monday is 0
@@ -168,6 +169,126 @@ def _where(p: dict) -> str:
     return " · ".join(b for b in bits if b)
 
 
+# --- the shared email shell ------------------------------------------------
+#
+# THE SAME SHELL AS functions/api/alerts.js, restated in Python for the same
+# reason functions/_brand.js restates brand.json: a Cloudflare Worker cannot
+# import this file and this script cannot import that one. The duplication is
+# real and therefore guarded - selftest.py::check_mail_shell fails the build
+# when the two drift, because drift here is silent: the confirmation email and
+# the digest simply stop looking like the same product and nothing errors.
+#
+# Everything that NAMES the product is colour and type, never a pixel: the
+# Penguin band, the wordmark as live text, the Beak rule as a table cell, the
+# Belly plate as a hard 52px cell with a background. Only the mascot's face is
+# an image. Outlook and much of Gmail block images by default, so the design
+# is built around the blocked state and the face is the one optional thing.
+#
+# The MSO conditional is not decoration. Word does not walk a font stack: it
+# takes the first family, fails to find Archivo, and renders the whole email
+# in Times New Roman. The selector list must include div and p.
+MAIL_FONT = "Archivo,'Helvetica Neue',Helvetica,Arial,sans-serif"
+MASCOT = f"{SITE}/assets/mascot/png/head-on-the-hunt.png"
+
+
+def button(href: str, label: str) -> str:
+    """A call to action. Word drops padding on an inline anchor, so the button
+    is a table cell with a bgcolor and the anchor inside it."""
+    return (
+        '<table role="presentation" cellpadding="0" cellspacing="0" border="0"'
+        ' style="border-collapse:collapse"><tr>'
+        '<td bgcolor="#0B57C4" style="background-color:#0B57C4;padding:13px 22px">'
+        f'<a href="{href}" style="display:inline-block;color:#FAF7F0;'
+        f'text-decoration:none;font-weight:700;font-size:15px;'
+        f'font-family:{MAIL_FONT}">{label}</a>'
+        '</td></tr></table>')
+
+
+def shell(preheader: str, body: str, links: list) -> str:
+    foot = " &nbsp;&middot;&nbsp; ".join(
+        f'<a href="{u}" style="color:#556F82;text-decoration:underline">{t}</a>'
+        for t, u in (links or []))
+    return f"""<!doctype html>
+<html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light only">
+<title>{NAME}</title>
+<!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+<!--[if mso]><style type="text/css">body,table,td,a,span,div,p{{font-family:'Segoe UI',Arial,sans-serif !important}}</style><![endif]-->
+<style>
+ :root{{color-scheme:light only;supported-color-schemes:light only}}
+ @media (prefers-color-scheme:dark){{
+  .ice{{background-color:#E8F1F7!important}}.belly{{background-color:#FAF7F0!important}}
+  .band{{background-color:#1F2536!important}}.plate{{background-color:#FAF7F0!important}}
+  .beak{{background-color:#F5A623!important}}.ink{{color:#1F2536!important}}
+  .mute,.mute a{{color:#556F82!important}}.faint{{color:#7C97AA!important}}
+  .onband,.onband a{{color:#E8F1F7!important}}.onbandmute{{color:#9FB3C4!important}}}}
+ [data-ogsc] .ice{{background-color:#E8F1F7!important}}
+ [data-ogsc] .belly{{background-color:#FAF7F0!important}}
+ [data-ogsc] .band{{background-color:#1F2536!important}}
+ [data-ogsc] .plate{{background-color:#FAF7F0!important}}
+ [data-ogsc] .ink{{color:#1F2536!important}}
+ [data-ogsc] .mute{{color:#556F82!important}}
+ [data-ogsc] .onband{{color:#E8F1F7!important}}
+ [data-ogsc] .onbandmute{{color:#9FB3C4!important}}
+ @media only screen and (max-width:620px){{
+  .pad{{padding-left:20px!important;padding-right:20px!important}}
+  .wm{{font-size:22px!important}}
+  .kicker{{font-size:10px!important;letter-spacing:.05em!important}}}}
+</style>
+</head>
+<body class="ice" bgcolor="#E8F1F7" style="margin:0;padding:0;width:100%;
+ background-color:#E8F1F7;-webkit-text-size-adjust:100%">
+<div class="faint" style="display:none;max-height:0;max-width:0;overflow:hidden;
+ mso-hide:all;font-size:1px;line-height:1px;opacity:0;color:#E8F1F7">{preheader}</div>
+<table role="presentation" class="ice" bgcolor="#E8F1F7" width="100%" cellpadding="0"
+ cellspacing="0" border="0" style="width:100%;background-color:#E8F1F7;border-collapse:collapse">
+<tr><td align="center" valign="top" bgcolor="#E8F1F7" style="background-color:#E8F1F7;padding:24px 0">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" align="center"
+ style="width:100%;max-width:600px;border-collapse:collapse">
+ <tr><td class="band pad" bgcolor="#1F2536" style="background-color:#1F2536;padding:18px 24px">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+   style="border-collapse:collapse"><tr>
+   <td class="plate" bgcolor="#FAF7F0" width="52" height="52" valign="middle" align="center"
+    style="background-color:#FAF7F0;width:52px;height:52px;font-size:0;line-height:0;
+    mso-line-height-rule:exactly"><a href="{SITE}" style="text-decoration:none"><img
+    src="{MASCOT}" width="46" height="46" alt="" style="display:block;width:46px;
+    height:46px;border:0;outline:none;text-decoration:none"></a></td>
+   <td width="16" style="width:16px;font-size:0;line-height:0">&nbsp;</td>
+   <td align="left" valign="middle" style="background-color:#1F2536">
+    <div class="wm onband" style="font-family:{MAIL_FONT};font-size:25px;font-weight:800;
+     letter-spacing:.02em;line-height:1.1;color:#E8F1F7"><a href="{SITE}"
+     style="color:#E8F1F7;text-decoration:none">{NAME}</a></div>
+    <div class="kicker onbandmute" style="padding-top:6px;font-family:{MAIL_FONT};font-size:12px;
+     font-weight:600;letter-spacing:.08em;line-height:1.4;text-transform:uppercase;
+     color:#9FB3C4">State &amp; local govtech sales roles</div>
+   </td></tr></table>
+ </td></tr>
+ <tr><td class="beak" height="3" bgcolor="#F5A623" style="background-color:#F5A623;
+  height:3px;line-height:3px;font-size:3px;mso-line-height-rule:exactly">&nbsp;</td></tr>
+ <tr><td class="belly ink pad" align="left" valign="top" bgcolor="#FAF7F0"
+  style="background-color:#FAF7F0;padding:28px 24px;font-family:{MAIL_FONT};font-size:15px;
+  line-height:1.55;color:#1F2536">{body}</td></tr>
+ <tr><td class="belly pad" bgcolor="#FAF7F0" style="background-color:#FAF7F0;
+  padding:0 24px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+  border="0" style="border-collapse:collapse"><tr><td height="1" bgcolor="#C9DCE8"
+  style="height:1px;line-height:1px;font-size:0;background-color:#C9DCE8">&nbsp;</td>
+  </tr></table></td></tr>
+ <tr><td class="belly mute pad" align="left" bgcolor="#FAF7F0" style="background-color:#FAF7F0;
+  padding:14px 24px 26px;font-family:{MAIL_FONT};font-size:12px;line-height:1.7;color:#556F82">
+  <a href="{SITE}" style="color:#0B57C4;text-decoration:none;font-weight:700">{NAME}</a>
+  &mdash; every open sales role at state and local government technology companies.{
+  ("<br>" + foot) if foot else ""}<br>
+  <span class="faint" style="color:#7C97AA">It&rsquo;s tough SLEDing out there.</span>
+ </td></tr>
+</table></td></tr></table></body></html>"""
+
+
 def render(digest: dict, sub: dict, board: dict) -> tuple[str, str, str]:
     """Return (subject, text, html). Plain text is written first and is not a
     fallback: plenty of people read mail as text, and a digest that only makes
@@ -210,25 +331,24 @@ def render(digest: dict, sub: dict, board: dict) -> tuple[str, str, str]:
             '</div></td></tr>')
 
     cards = "".join(card(p) for p in roles[:40])
-    html = f"""<!doctype html><html><body style="margin:0;background:#E8F1F7;
- font:15px/1.55 -apple-system,'Segoe UI',Roboto,sans-serif;color:#1F2536">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0"
- style="max-width:600px;padding:28px 24px">
-<tr><td style="font-size:19px;font-weight:700;letter-spacing:-.015em">{esc(subject)}</td></tr>
-<tr><td style="color:#556F82;font-size:13px;padding-top:4px">
-  On the board since {esc(digest['since'])}. Nothing here has been sent to you before.</td></tr>
-<tr><td><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
-  style="margin-top:10px">{cards}</table></td></tr>
-{f'<tr><td style="color:#556F82;font-size:13px;padding-top:12px">and {n-40} more on the board</td></tr>' if n > 40 else ''}
-<tr><td style="padding-top:22px;font-size:12px;color:#7C97AA;line-height:1.6">
-  <a href="{SITE}" style="color:#0B57C4">SLED JOBS</a> — every open role at
-  {len(board.get('organizations', []))} state and local govtech companies.<br>
-  <a href="{SITE}/alerts?t={esc(sub.get('token',''))}" style="color:#7C97AA">
-  Change what you get</a> ·
-  <a href="{SITE}/alerts?t={esc(sub.get('token',''))}&amp;stop=1" style="color:#7C97AA">
-  Stop these emails</a>
-</td></tr></table></td></tr></table></body></html>"""
+    body = (
+        f'<div style="font-size:20px;font-weight:800;letter-spacing:-.015em;'
+        f'line-height:1.3">{esc(subject)}</div>'
+        f'<div style="color:#556F82;font-size:13px;padding-top:4px">On the board '
+        f"since {esc(digest['since'])}. Nothing here has been sent to you before."
+        '</div>'
+        '<table role="presentation" width="100%" cellpadding="0" cellspacing="0"'
+        f' border="0" style="border-collapse:collapse;margin-top:10px">{cards}</table>'
+        + (f'<div style="color:#556F82;font-size:13px;padding-top:12px">and {n-40} '
+           f'more on the board</div>' if n > 40 else ''))
+
+    tok = esc(sub.get("token", ""))
+    html = shell(
+        f"{n} new role(s) on the board since {esc(digest['since'])}.",
+        body,
+        [("Change what you get", f"{SITE}/alerts?t={tok}"),
+         ("Stop these emails", f"{SITE}/alerts?t={tok}&amp;stop=1")])
+
     return subject, text, html
 
 

@@ -76,6 +76,16 @@ def build_admin_bundle(out: "pathlib.Path") -> None:
     And the payload is stripped of internal reasoning either way, so that if
     Access is ever misconfigured the blast radius is queue contents rather
     than a research file.
+
+    VERIFIED LIVE 2026-09-01. SHIP_ADMIN=1 is now set on the Pages project and
+    the Access application exists: /admin, /admin/, /admin/index.html and
+    /admin/data.json all answer 302 to a cloudflareaccess.com sign-in with
+    auth_status NONE, unauthenticated. Recorded because the variable being set
+    LOOKS like the old leak and reads as alarming on the settings page. Do not
+    conclude the gate is defeated from the variable alone - re-run the probe.
+    Note the account-wide "Access policy across your Workers" toggle is a
+    DIFFERENT feature and is off; the per-application policy is what protects
+    this, so that toggle's state proves nothing either way.
     """
     if os.environ.get("SHIP_ADMIN") != "1":
         print("  admin bundle: NOT shipped (set SHIP_ADMIN=1 once the "

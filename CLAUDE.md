@@ -445,6 +445,59 @@ Nedap's page lists 34 reqs across five business units and only 9 belong to the
 company on file. The boundary the bookmarklet holds, the agent holds too: read
 the page you were pointed at, once.
 
+### Council review: independent attempts, then a blind read (adopted 2026-09-01)
+
+Taken from `karpathy/llm-council`, and it is a rule about **how things get
+built here**, not a feature to add to the site. Its three stages: several
+models answer the same question independently; each then ranks the others'
+answers labelled "Response A, B, C", never learning who wrote which; a chairman
+synthesises from the answers and the rankings together. Names are attached back
+on only at display time, so a reader can follow along.
+
+**The blinding is the part that does the work.** An attempt known to be the
+main attempt gets defended. A reviewer who can see whose work they are holding
+grades the author. Strip the label and the only thing left to judge is the
+answer, which is the thing we wanted judged.
+
+So, for anything load-bearing here — a parser that will publish facts about
+somebody else's company, a scoring rule, a schema change, a guard:
+
+- **Two or more independent attempts before one is chosen.** Not one attempt
+  iterated. Iterating polishes the first idea, and the first idea is usually
+  the most obvious one; this file is largely a list of obvious things that
+  turned out to be wrong.
+- **Review them without knowing which is which** — including mine, especially
+  mine. An agent checking my work while knowing it is mine is the same broken
+  measurement as ruling on a proposal you have already read.
+- **Disagreement is the finding, not a problem to resolve.** Two readers
+  splitting on one company is worth more than either one's confidence label.
+  `agents.py` already refuses high confidence without evidence for the same
+  reason: a lone confident answer is the shape a guess takes.
+- **Synthesise from the winner, but graft what the losers got right.** The
+  runner-up is usually right about one thing the winner missed. Discarding it
+  wholesale turns a review into a vote.
+
+This is the instinct behind two habits already here: `check_admin_game`, and
+verifying a guard by breaking the production code and confirming it fires. An
+answer nobody tried to break is not evidence.
+
+**The corollary at display time: show the raw text beside our reading of it.**
+llm-council prints each model's evaluation in full and puts the parsed ranking
+directly underneath, so a person can catch the parser being wrong rather than
+trusting it. Everywhere this project turns prose into a fact — `salary.py` on a
+stated range, `roles.geography()` on a location string, `scan_pagetext` on a
+careers page — the sentence it read belongs next to the value it produced. A
+wrong parse is published on a public board as a fact about somebody else's
+company, and it is invisible unless the source sits beside it.
+
+**One place the same shape is live in the product** (noted 2026-09-01, not
+ruled): the `miscategorized` card draws the proposed placement, then the
+confidence, then the agree-rate, then the evidence — the answer before the
+reasons. So the agree-rate it carefully collects measures agreement, and
+anchoring produces agreement for free. Reordering it would cost the owner
+ruling speed, so it is his call; it is written down here so the next person
+notices rather than trusting the number.
+
 ## Capture: the bookmarklet and the extension
 
 `scripts/capture.js`, installed from <http://127.0.0.1:8787/capture>, plus a
@@ -632,6 +685,31 @@ as `ALERTS`; add `RESEND_KEY` to the Pages project; add `CF_ACCOUNT_ID`,
 Every one is optional — with none set, the endpoint reports "not configured"
 and the CI step prints that and exits 0. A refresh must never fail because
 nobody set up email.
+**THE FIRST EMAIL SENT ON 2026-09-01.** The KV namespace was already bound;
+the mail half went in that night. `solesourcejobs.com` is a verified Resend
+sending domain (SPF and DKIM written into Cloudflare DNS by Resend's own
+auto-configure; DMARC deliberately not added yet), the API key is scoped to
+sending from that domain alone, and a real signup produced a real confirmation
+in a real inbox from `alerts@solesourcejobs.com`. What is still NOT done is
+the CI half: `send_digests.py` has no `RESEND_KEY` in repository secrets, so
+no digest has ever gone out. The endpoint works; the recurring job does not.
+
+**The hour this cost, so nobody spends it twice.** The secret was first saved
+as `Resend_Key`, and the name was then corrected to `RESEND_KEY` by editing
+the field in place. The row rendered perfectly afterwards — right name, "Value
+encrypted" — and the Function still could not see the variable across two full
+redeploys. Cloudflare appears to key the stored ciphertext to the ORIGINAL
+name, so an in-place rename leaves a row that looks correct with nothing
+behind it. DELETE THE ROW AND ADD IT AGAIN; never rename a Pages secret. The
+dashboard cannot tell you this — the settings page and both deploy logs looked
+healthy the entire time.
+
+Diagnosing it took two requests and sent no mail, which is the method worth
+keeping. `GET /api/alerts` with no token answers 400 `bad_token` when ALERTS
+is bound and 501 when it is not. `POST` with a deliberately invalid address
+answers 400 from `validEmail`, which sits immediately above the `RESEND_KEY`
+check and below the `ALERTS` one. Those two replies bracket the failure to a
+single binding without putting anything in anybody's inbox.
 
 To see what an email would say, without any of that:
 

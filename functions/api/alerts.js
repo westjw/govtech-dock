@@ -214,6 +214,129 @@ async function send(env, to, subject, text, html) {
   return res.ok;
 }
 
+/* --- the shared email shell --------------------------------------------
+ *
+ * Every email this project sends wears the site's own band: Penguin ground,
+ * the mascot's face on a Belly plate, the Beak rule beneath. Same identity,
+ * same reason index.html and alerts.html both restate it - there is no build
+ * step, and this is the one fixed thing across every surface.
+ *
+ * THE DESIGN IS BUILT AROUND A BLOCKED IMAGE, not around a loaded one.
+ * Outlook and much of Gmail suppress images by default, so everything that
+ * NAMES the product is colour and type: the Penguin bgcolor, the wordmark as
+ * live text, the Beak rule as a table cell, the Belly plate as a hard 52px
+ * cell with a background. Only the face is a pixel, and it is the only thing
+ * allowed to be optional. With images off the band keeps its full height and
+ * every cue except the penguin.
+ *
+ * WHY THE MSO CONDITIONAL EXISTS. Outlook 2007-2016 renders through Word,
+ * which does not walk a font stack: it takes the FIRST declared family and,
+ * finding Archivo not installed, falls back to Times New Roman - the whole
+ * email in a serif nobody chose. The conditional block below hands Word a
+ * font it has. The selector list must include div and p, because the type
+ * here is set on divs.
+ *
+ * NO TEMPLATE BRACES REACH A READER. Everything is a function argument;
+ * there is no {{TOKEN}} left for a caller to forget. selftest asserts it.
+ */
+const MASCOT = `${SITE}/assets/mascot/png/head-on-the-hunt.png`;
+const FONT = "Archivo,'Helvetica Neue',Helvetica,Arial,sans-serif";
+
+/* A call to action. Padding on an inline anchor is dropped by Word, so the
+ * button is a table cell with a bgcolor and the anchor inside it. */
+const button = (href, label) =>
+`<table role="presentation" cellpadding="0" cellspacing="0" border="0"
+ style="border-collapse:collapse"><tr>
+ <td bgcolor="#0B57C4" style="background-color:#0B57C4;padding:13px 22px">
+ <a href="${href}" style="display:inline-block;color:#FAF7F0;text-decoration:none;
+ font-weight:700;font-size:15px;font-family:${FONT}">${label}</a>
+ </td></tr></table>`;
+
+function shell(preheader, body, links) {
+  const foot = (links || [])
+    .map(l => `<a href="${l[1]}" style="color:#556F82;text-decoration:underline">${l[0]}</a>`)
+    .join(" &nbsp;&middot;&nbsp; ");
+  return `<!doctype html>
+<html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light only">
+<title>${NAME}</title>
+<!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+<!--[if mso]><style type="text/css">body,table,td,a,span,div,p{font-family:'Segoe UI',Arial,sans-serif !important}</style><![endif]-->
+<style>
+ :root{color-scheme:light only;supported-color-schemes:light only}
+ @media (prefers-color-scheme:dark){
+  .ice{background-color:#E8F1F7!important}.belly{background-color:#FAF7F0!important}
+  .band{background-color:#1F2536!important}.plate{background-color:#FAF7F0!important}
+  .beak{background-color:#F5A623!important}.ink{color:#1F2536!important}
+  .mute,.mute a{color:#556F82!important}.faint{color:#7C97AA!important}
+  .onband,.onband a{color:#E8F1F7!important}.onbandmute{color:#9FB3C4!important}}
+ [data-ogsc] .ice{background-color:#E8F1F7!important}
+ [data-ogsc] .belly{background-color:#FAF7F0!important}
+ [data-ogsc] .band{background-color:#1F2536!important}
+ [data-ogsc] .plate{background-color:#FAF7F0!important}
+ [data-ogsc] .ink{color:#1F2536!important}
+ [data-ogsc] .mute{color:#556F82!important}
+ [data-ogsc] .onband{color:#E8F1F7!important}
+ [data-ogsc] .onbandmute{color:#9FB3C4!important}
+ @media only screen and (max-width:620px){
+  .pad{padding-left:20px!important;padding-right:20px!important}
+  .wm{font-size:22px!important}
+  .kicker{font-size:10px!important;letter-spacing:.05em!important}}
+</style>
+</head>
+<body class="ice" bgcolor="#E8F1F7" style="margin:0;padding:0;width:100%;
+ background-color:#E8F1F7;-webkit-text-size-adjust:100%">
+<div class="faint" style="display:none;max-height:0;max-width:0;overflow:hidden;
+ mso-hide:all;font-size:1px;line-height:1px;opacity:0;color:#E8F1F7">${preheader}</div>
+<table role="presentation" class="ice" bgcolor="#E8F1F7" width="100%" cellpadding="0"
+ cellspacing="0" border="0" style="width:100%;background-color:#E8F1F7;border-collapse:collapse">
+<tr><td align="center" valign="top" bgcolor="#E8F1F7" style="background-color:#E8F1F7;padding:24px 0">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" align="center"
+ style="width:100%;max-width:600px;border-collapse:collapse">
+ <tr><td class="band pad" bgcolor="#1F2536" style="background-color:#1F2536;padding:18px 24px">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+   style="border-collapse:collapse"><tr>
+   <td class="plate" bgcolor="#FAF7F0" width="52" height="52" valign="middle" align="center"
+    style="background-color:#FAF7F0;width:52px;height:52px;font-size:0;line-height:0;
+    mso-line-height-rule:exactly"><a href="${SITE}" style="text-decoration:none"><img
+    src="${MASCOT}" width="46" height="46" alt="" style="display:block;width:46px;
+    height:46px;border:0;outline:none;text-decoration:none"></a></td>
+   <td width="16" style="width:16px;font-size:0;line-height:0">&nbsp;</td>
+   <td align="left" valign="middle" style="background-color:#1F2536">
+    <div class="wm onband" style="font-family:${FONT};font-size:25px;font-weight:800;
+     letter-spacing:.02em;line-height:1.1;color:#E8F1F7"><a href="${SITE}"
+     style="color:#E8F1F7;text-decoration:none">${NAME}</a></div>
+    <div class="kicker onbandmute" style="padding-top:6px;font-family:${FONT};font-size:12px;
+     font-weight:600;letter-spacing:.08em;line-height:1.4;text-transform:uppercase;
+     color:#9FB3C4">State &amp; local govtech sales roles</div>
+   </td></tr></table>
+ </td></tr>
+ <tr><td class="beak" height="3" bgcolor="#F5A623" style="background-color:#F5A623;
+  height:3px;line-height:3px;font-size:3px;mso-line-height-rule:exactly">&nbsp;</td></tr>
+ <tr><td class="belly ink pad" align="left" valign="top" bgcolor="#FAF7F0"
+  style="background-color:#FAF7F0;padding:28px 24px;font-family:${FONT};font-size:15px;
+  line-height:1.55;color:#1F2536">${body}</td></tr>
+ <tr><td class="belly pad" bgcolor="#FAF7F0" style="background-color:#FAF7F0;
+  padding:0 24px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+  border="0" style="border-collapse:collapse"><tr><td height="1" bgcolor="#C9DCE8"
+  style="height:1px;line-height:1px;font-size:0;background-color:#C9DCE8">&nbsp;</td>
+  </tr></table></td></tr>
+ <tr><td class="belly mute pad" align="left" bgcolor="#FAF7F0" style="background-color:#FAF7F0;
+  padding:14px 24px 26px;font-family:${FONT};font-size:12px;line-height:1.7;color:#556F82">
+  <a href="${SITE}" style="color:#0B57C4;text-decoration:none;font-weight:700">${NAME}</a>
+  &mdash; every open sales role at state and local government technology companies.${
+  foot ? `<br>${foot}` : ""}<br>
+  <span class="faint" style="color:#7C97AA">It&rsquo;s tough SLEDing out there.</span>
+ </td></tr>
+</table></td></tr></table></body></html>`;
+}
+
 function confirmMail(token, prefs) {
   const link = `${SITE}/alerts?t=${token}&confirm=1`;
   const when = { daily: "every weekday morning",
@@ -232,21 +355,21 @@ address and the request expires on its own.
 
 The same link is your settings page afterwards: change what you get, or stop
 the alerts, without a password.`;
-  const html =
-`<!doctype html><html><body style="margin:0;background:#E8F1F7;font:15px/1.55
- -apple-system,'Segoe UI',Roboto,sans-serif;color:#1F2536;padding:28px 24px">
-<div style="max-width:520px;margin:0 auto">
-<div style="font-size:19px;font-weight:700">Confirm your SLED JOBS alerts</div>
-<p style="color:#3A4658">Someone &mdash; hopefully you &mdash; asked for govtech
- sales role alerts <strong>${when}</strong>. Until you confirm, nothing is sent.</p>
-<p><a href="${link}" style="display:inline-block;background:#0B57C4;color:#fff;
- text-decoration:none;padding:11px 20px;border-radius:8px;font-weight:600">
- Confirm alerts</a></p>
-<p style="color:#556F82;font-size:13px">If this was not you, ignore this email.
- Nothing further will be sent to this address and the request expires on its own.</p>
-<p style="color:#556F82;font-size:13px">The same link is your settings page
- afterwards &mdash; change what you get, or stop the alerts, no password.</p>
-</div></body></html>`;
+  const html = shell(
+    `Confirm to start getting govtech sales roles ${when}.`,
+    `<div style="font-size:20px;font-weight:800;letter-spacing:-.015em;
+ line-height:1.3">Confirm your ${NAME} alerts</div>
+<p style="margin:12px 0 0;color:#1F2536">Someone &mdash; hopefully you &mdash; asked
+ for govtech sales role alerts <strong>${when}</strong>. Until you confirm,
+ nothing is sent.</p>
+<div style="padding:20px 0 4px">${button(link, "Confirm alerts")}</div>
+<p style="margin:16px 0 0;color:#556F82;font-size:13px">If this was not you,
+ ignore this email. Nothing further will be sent to this address and the
+ request expires on its own.</p>
+<p style="margin:8px 0 0;color:#556F82;font-size:13px">The same link is your
+ settings page afterwards &mdash; change what you get, or stop the alerts,
+ no password.</p>`,
+    []);
   return ["Confirm your SLED JOBS alerts", text, html];
 }
 
@@ -355,8 +478,17 @@ async function subscribe(body, env) {
           `Your settings link:\n\n${SITE}/alerts?t=${existing}\n\n` +
           `You are already subscribed, so nothing changed. Use the link to ` +
           `adjust what you get or stop the emails.`,
-          `<p>Your settings link: <a href="${SITE}/alerts?t=${existing}">open settings</a></p>` +
-          `<p style="color:#556F82">You are already subscribed, so nothing changed.</p>`);
+          shell(
+            "Your settings link - nothing changed on your subscription.",
+            `<div style="font-size:20px;font-weight:800;letter-spacing:-.015em;
+ line-height:1.3">Your ${NAME} settings</div>
+<p style="margin:12px 0 0">You are already subscribed, so nothing changed.
+ Use the link below to adjust what you get, or to stop the emails.</p>
+<div style="padding:20px 0 4px">${button(SITE + "/alerts?t=" + existing,
+              "Open settings")}</div>
+<p style="margin:16px 0 0;color:#556F82;font-size:13px">If you did not ask for
+ this, ignore it &mdash; nothing about your subscription has changed.</p>`,
+            []));
         return same;
       }
       // Pending: re-send the confirmation, but not more than once an hour, so

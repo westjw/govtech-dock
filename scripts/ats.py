@@ -58,6 +58,7 @@ import json
 import os
 import datetime as dt
 import re
+import sys
 import time
 import urllib.parse
 
@@ -897,6 +898,57 @@ def _smartrecruiters_jd(url: str) -> str:
     return "\n\n".join(out)
 
 
+# --- Workday paging ------------------------------------------------------
+#
+# Workday caps `limit` at 20. 50 and 100 both answer HTTP 400, so a bigger
+# page is not available and the only way to the rest of a result set is the
+# offset.
+#
+# PAST THE END IT WRAPS. Verified live 2026-09-01 against motorolasolutions,
+# whose "account executive" search holds 161 postings: offsets 180, 200 and
+# 300 each returned 20 rows byte-identical to offset 0. So the obvious stop
+# condition - an empty page - NEVER ARRIVES, and a loop written that way
+# re-requests page one against somebody else's server until something else
+# breaks it. The stop is a page that contributes no path we have not already
+# seen, which the wrap-around satisfies by construction.
+#
+# `total` is not used as a bound because it is only true on the first reply:
+# the same walk reported total=161 at offset 0, total=0 at offsets 20 through
+# 160 while returning 20 real rows each time, then 161 again once it wrapped.
+WD_PAGE = 20
+WD_MAX_PAGES = 60          # 1,200 postings for one search term at one company
+
+
+def _paged(fetch_page, key, label: str = "") -> list:
+    """Walk offset pages until one adds nothing new, then stop.
+
+    `fetch_page(offset)` returns the raw rows at that offset; `key(row)` is
+    the identity that decides whether a row has been seen. Rows come back in
+    first-seen order with duplicates removed.
+
+    The ceiling is a backstop against a wrap-around we failed to detect, not
+    a limit on real employers. If it ever fires it SAYS SO - a fetcher that
+    quietly returns the first 1,200 of something larger is the exact defect
+    this function was written to remove, and re-introducing it silently one
+    level up would be worse than the original.
+    """
+    out, seen = [], set()
+    for i in range(WD_MAX_PAGES):
+        rows = fetch_page(i * WD_PAGE)
+        if not rows:
+            break
+        fresh = [r for r in rows if key(r) not in seen]
+        if not fresh:
+            break
+        seen.update(key(r) for r in fresh)
+        out.extend(fresh)
+    else:
+        print(f"  workday: hit the {WD_MAX_PAGES}-page ceiling"
+              f"{' on ' + label if label else ''} after {len(out)} postings; "
+              f"this result is TRUNCATED", file=sys.stderr)
+    return out
+
+
 def fetch_workday(ref: list) -> list[dict]:
     """Workday, on either of its two board hosts.
 
@@ -915,14 +967,20 @@ def fetch_workday(ref: list) -> list[dict]:
     base = f"https://{tenant}.{host}.myworkdayjobs.com"
     api = f"{base}/wday/cxs/{tenant}/{site}/jobs"
     out, seen = [], set()
-    # Workday search is paged; two targeted queries beat crawling everything.
+    # Two targeted queries beat crawling everything; _paged then takes ALL of
+    # each query rather than its first 20.
     for term in ("account executive", "sales"):
-        data = _post_json(api, {"limit": 20, "offset": 0, "searchText": term})
-        for j in data.get("jobPostings", []):
-            key = j.get("externalPath", j.get("title", ""))
-            if key in seen:
+        rows = _paged(
+            lambda off, t=term: _post_json(
+                api, {"limit": WD_PAGE, "offset": off, "searchText": t}
+            ).get("jobPostings", []),
+            lambda j: j.get("externalPath", j.get("title", "")),
+            label=f"{tenant}/{term}")
+        for j in rows:
+            k = j.get("externalPath", j.get("title", ""))
+            if k in seen:                      # the two terms overlap heavily
                 continue
-            seen.add(key)
+            seen.add(k)
             path = j.get("externalPath", "") or ""
             out.append({"title": j.get("title", ""),
                         "location": j.get("locationsText", "") or "",
@@ -934,13 +992,18 @@ def fetch_workday(ref: list) -> list[dict]:
 def _workday_jobs(api: str, base: str, site: str) -> list[dict]:
     out, seen = [], set()
     for term in ("account executive", "sales"):
-        data = _post_json(api, {"appliedFacets": {}, "limit": 20, "offset": 0,
-                                "searchText": term})
-        for j in data.get("jobPostings", []):
-            key = j.get("externalPath", j.get("title", ""))
-            if key in seen:
+        rows = _paged(
+            lambda off, t=term: _post_json(
+                api, {"appliedFacets": {}, "limit": WD_PAGE, "offset": off,
+                      "searchText": t}
+            ).get("jobPostings", []),
+            lambda j: j.get("externalPath", j.get("title", "")),
+            label=f"{site}/{term}")
+        for j in rows:
+            k = j.get("externalPath", j.get("title", ""))
+            if k in seen:
                 continue
-            seen.add(key)
+            seen.add(k)
             path = j.get("externalPath", "") or ""
             out.append({"title": j.get("title", ""),
                         "location": j.get("locationsText", "") or "",
