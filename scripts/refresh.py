@@ -317,7 +317,8 @@ def main() -> int:
             snapshot[comp["id"]] = {k: comp["hiring"][k] for k in ("status", "note", "roles")}
             continue
         result = check_company(comp)
-        if result.pop("skipped", False):
+        was_skipped = result.pop("skipped", False)
+        if was_skipped:
             skipped.append(comp["name"])
         old = prev.get(comp["id"], {}).get("status", comp["hiring"]["status"])
         if result["status"] != old:
@@ -328,7 +329,14 @@ def main() -> int:
             print(f"{mark} {comp['name']:<34} {result['status']:<15} {result['note']}")
         comp["hiring"] = {**result, "checked": today}
         snapshot[comp["id"]] = result
-        time.sleep(args.delay)
+        # ONLY AFTER A REQUEST WAS ACTUALLY MADE. This slept unconditionally,
+        # including for the 918 companies with no board on file, which return
+        # before any fetch happens. At 0.5s across 2,058 companies that was
+        # ~17 minutes a run, roughly 7.6 of them spent pacing companies
+        # nobody contacted. Politeness to a server we never called is just
+        # a slower build.
+        if not was_skipped:
+            time.sleep(args.delay)
 
     counts = {}
     for entry in snapshot.values():

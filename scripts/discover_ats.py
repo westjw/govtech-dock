@@ -239,6 +239,15 @@ BODY_CAP = 600_000
 
 def get(url: str) -> Fetch:
     import requests
+    # PACED, like every other fetch here. This function keeps its own body
+    # cap and split timeouts - both were earned and neither belongs in
+    # ats._get - so it borrows the gate rather than the fetcher.
+    #
+    # It matters more here than anywhere else: this is the ONLY script that
+    # has ever earned a 403. All 99 blocks in discovery_log came from sweeps
+    # run by this file, eight workers wide against company front doors, with
+    # nothing spacing them. The board crawl, which is paced, took zero.
+    ats._host_gate(url)
     try:
         # (connect, read) rather than one number. A bare timeout still let an
         # ssl.read sit for over a minute, which stalls a worker and - with an

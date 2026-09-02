@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import collections
 import csv
+import datetime as dt
 import html
 import io
 import inspect
@@ -7508,6 +7509,73 @@ def check_the_crawler_paces_itself() -> int:
     finally:
         ats.HOST_PAUSE = real
         ats._HOST_LAST.clear(); ats._HOST_LOCKS.clear()
+
+    # --- a 429 is an instruction, not a refusal ---------------------------
+    #
+    # _get used to turn "slow down" into an AtsError spelled exactly like a
+    # 404, so the discovery log recorded a cooperative server as blocked and
+    # the 7-day requeue asked again at the same speed, having learned nothing.
+    # Now it backs the host off by what the server asked for - and per host,
+    # or one rude server would slow down 1,139 innocent ones.
+    class _Resp:
+        def __init__(self, code, headers=None):
+            self.status_code, self.headers, self.text = code, headers or {}, ""
+
+    real_get, real_cache, real_pause = ats.requests.get, ats.HTTP_CACHE, ats.HOST_PAUSE
+    ats.HOST_PAUSE, ats.HTTP_CACHE = 0.02, None
+    ats._HOST_LAST.clear(); ats._HOST_LOCKS.clear()
+    try:
+        ats.requests.get = lambda *a, **k: _Resp(429, {"Retry-After": "1"})
+        try:
+            ats._get("https://limited.test/a")
+            print("  FAIL: a 429 did not raise at all")
+            errors += 1
+        except ats.RateLimited:
+            pass
+        except ats.AtsError:
+            print("  FAIL: a 429 raises a plain AtsError, so a server saying "
+                  "'slow down' is recorded identically to a page that is gone")
+            errors += 1
+
+        ats.requests.get = lambda *a, **k: _Resp(200)
+        t0 = time.monotonic(); ats._get("https://limited.test/b")
+        if time.monotonic() - t0 < 0.6:
+            print("  FAIL: the next request to a host that just returned 429 "
+                  "went straight back in - Retry-After was read and ignored")
+            errors += 1
+        t0 = time.monotonic(); ats._get("https://unrelated.test/a")
+        if time.monotonic() - t0 > 0.5:
+            print("  FAIL: one host's 429 backed off an unrelated host - the "
+                  "backoff is global rather than per-host")
+            errors += 1
+
+        ats.requests.get = lambda *a, **k: _Resp(404)
+        try:
+            ats._get("https://gone.test/a")
+        except ats.RateLimited:
+            print("  FAIL: a 404 is being reported as a rate limit")
+            errors += 1
+        except ats.AtsError:
+            pass
+    finally:
+        ats.requests.get, ats.HTTP_CACHE, ats.HOST_PAUSE = real_get, real_cache, real_pause
+        ats._HOST_LAST.clear(); ats._HOST_LOCKS.clear()
+
+    # Both spellings of Retry-After. A parser that reads only the integer form
+    # treats an HTTP-date as no header at all, silently ignoring the server.
+    from email.utils import format_datetime
+    later = format_datetime(dt.datetime.now(dt.timezone.utc) + dt.timedelta(seconds=60))
+    if ats._retry_after("30") != 30:
+        print("  FAIL: Retry-After in seconds is not being read")
+        errors += 1
+    if not (50 <= (ats._retry_after(later) or 0) <= 61):
+        print("  FAIL: Retry-After as an HTTP-date is not being read, so a "
+              "server using that spelling is silently ignored")
+        errors += 1
+    for junk in ("banana", "", None):
+        if ats._retry_after(junk) is not None:
+            print(f"  FAIL: Retry-After {junk!r} should read as absent")
+            errors += 1
 
     # A 304 whose body we no longer hold is OUR bookkeeping failing, not the
     # site refusing. It must re-ask, never report a board it cannot read.

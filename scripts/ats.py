@@ -108,6 +108,23 @@ class AtsError(Exception):
     pass
 
 
+class RateLimited(AtsError):
+    """The server asked us to slow down, which is not the same as a refusal.
+
+    _get used to turn a 429 into an AtsError spelled exactly like a 404, so
+    the discovery log recorded "blocked at the door" for a site that was
+    being cooperative and telling us when to come back. The 7-day requeue
+    then asked again at the same speed, having learned nothing.
+
+    Carries `retry_after` in seconds when the server named one.
+    """
+
+    def __init__(self, url: str, seconds: float | None):
+        self.retry_after = seconds
+        when = f", asked for {seconds:g}s" if seconds else ", no Retry-After given"
+        super().__init__(f"HTTP 429 rate limited for {url}{when}")
+
+
 def plain(s: str) -> str:
     """The text a person reads, from whatever the board encoded it as.
 
@@ -347,6 +364,32 @@ def _host_gate(url: str) -> None:
         _HOST_LAST[host] = time.monotonic()
 
 
+def _retry_after(raw: str | None) -> float | None:
+    """Seconds from a Retry-After header, which comes in two spellings.
+
+    RFC 9110 allows either a delay in seconds or an HTTP date. Both appear in
+    the wild; a parser that reads only the integer form silently treats the
+    date form as no header at all, which is how a server's explicit
+    instruction gets ignored.
+    """
+    if not raw:
+        return None
+    raw = raw.strip()
+    try:
+        return max(0.0, float(raw))
+    except ValueError:
+        pass
+    try:
+        from email.utils import parsedate_to_datetime
+        when = parsedate_to_datetime(raw)
+        if when is None:
+            return None
+        now = dt.datetime.now(when.tzinfo)
+        return max(0.0, (when - now).total_seconds())
+    except Exception:                                  # noqa: BLE001
+        return None
+
+
 def _get(url: str, **kw):
     _host_gate(url)
     headers = dict(UA)
@@ -368,6 +411,18 @@ def _get(url: str, **kw):
         # is our bookkeeping failing, not the site refusing, so ask again
         # plainly rather than reporting a board we cannot read.
         resp = requests.get(url, headers=UA, timeout=TIMEOUT, **kw)
+    if resp.status_code == 429:
+        # HONOUR IT, not just report it. Pushing this host's next-allowed time
+        # forward means the rest of the crawl actually backs off instead of
+        # walking into the same wall on the next posting - and per-host means
+        # one rude server does not slow down 1,139 innocent ones.
+        wait = _retry_after(resp.headers.get("Retry-After"))
+        if wait:
+            host = urllib.parse.urlsplit(url).netloc.lower()
+            with _HOST_TABLE:
+                _HOST_LOCKS.setdefault(host, threading.Lock())
+            _HOST_LAST[host] = time.monotonic() + min(wait, 300) - HOST_PAUSE
+        raise RateLimited(url, wait)
     if resp.status_code != 200:
         raise AtsError(f"HTTP {resp.status_code} for {url}")
     if HTTP_CACHE:

@@ -655,7 +655,6 @@ def main() -> int:
                          "way. GOVTECH_DOCK_JD_DETAILS=1 does the same thing.")
     ap.add_argument("--write-partial", action="store_true",
                     help="allow a --limit/--company run to overwrite the full board")
-    ap.add_argument("--delay", type=float, default=0.4)
     ap.add_argument("--render-budget", type=float, default=1800,
                     help="seconds to spend on the browser fallback in total "
                          "(default 900). Rendering is sequential and costs "
