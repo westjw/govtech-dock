@@ -46,6 +46,30 @@ jobs:
           pip install playwright
           python -m playwright install --with-deps chromium
 
+      # Conditional-request bodies from previous runs. ats._get keeps the
+      # ETag and Last-Modified each board handed over and sends them back, so
+      # a board that has not changed answers 304 with no body at all.
+      #
+      # WITHOUT THIS THE FEATURE IS INERT HERE. A runner is a fresh machine
+      # every night, so the cache starts empty and every one of 1,140 boards
+      # is downloaded in full - which is exactly what it was written to stop.
+      # Restoring it is what turns the second night onward into revalidation.
+      #
+      # The key rolls daily so the store cannot grow without bound, and
+      # restore-keys falls back to yesterday's, which is the whole point:
+      # today's run starts from what last night learned.
+      #
+      # A cache miss is not a failure. Nothing here depends on it; the worst
+      # case is the crawl this workflow already did every night before.
+      - name: Restore the conditional-request cache
+        uses: actions/cache@v4
+        continue-on-error: true
+        with:
+          path: data/http_cache
+          key: http-cache-${{ github.run_id }}
+          restore-keys: |
+            http-cache-
+
       - name: Self-test
         run: python scripts/selftest.py
 
