@@ -1,0 +1,87 @@
+{
+ "event_tag": "IEDC 2026",
+ "conference": "IEDC Annual",
+ "found": true,
+ "source_url": "https://neworleans.iedconline.org/exhibitors",
+ "source_note": "Read from https://neworleans.iedconline.org/exhibitors by scripts/sweep_exhibitors.py. 19 name(s), 17 with a website the page itself linked. Quality: good (26% carry a corporate marker, 0% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "Attendee Toolkit",
+   "website": "https://neworleans.iedconline.org/attendee-toolkit"
+  },
+  {
+   "name": "Centennial Supporters",
+   "website": "https://neworleans.iedconline.org/centennial-sponsors"
+  },
+  {
+   "name": "GIS WebTech",
+   "website": "https://www.linkedin.com/company/gis-webtech/"
+  },
+  {
+   "name": "Grow America",
+   "website": "https://growamerica.org/"
+  },
+  {
+   "name": "growamerica.org",
+   "website": "https://growamerica.org/"
+  },
+  {
+   "name": "Host Committee",
+   "website": "https://neworleans.iedconline.org/host-committee"
+  },
+  {
+   "name": "Hotel & Travel",
+   "website": "https://neworleans.iedconline.org/hotel-and-travel"
+  },
+  {
+   "name": "Justification Letter",
+   "website": "https://neworleans.iedconline.org/justification-letter"
+  },
+  {
+   "name": "Localintel",
+   "website": "https://www.localintel.com/"
+  },
+  {
+   "name": "localintel.com",
+   "website": "https://www.localintel.com/"
+  },
+  {
+   "name": "Partners",
+   "website": null
+  },
+  {
+   "name": "Plan Your Trip",
+   "website": null
+  },
+  {
+   "name": "Resimplifi",
+   "website": "https://resimplifi.com/"
+  },
+  {
+   "name": "resimplifi.com/econ-dev",
+   "website": "http://resimplifi.com/econ-dev"
+  },
+  {
+   "name": "ROI Research on Investment",
+   "website": "https://researchoninvestment.com/"
+  },
+  {
+   "name": "Sponsor & Exhibitor Info",
+   "website": "https://neworleans.iedconline.org/sponsor-exhibitor-information"
+  },
+  {
+   "name": "Tours & Special Events",
+   "website": "https://neworleans.iedconline.org/special-events"
+  },
+  {
+   "name": "Utilities Supporters",
+   "website": "https://neworleans.iedconline.org/utilities"
+  },
+  {
+   "name": "www.giswebtech.com",
+   "website": "https://giswebtech.com/"
+  }
+ ],
+ "why": null,
+ "quality": "good"
+}
