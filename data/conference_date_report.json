@@ -1,0 +1,896 @@
+{
+ "generated": "2026-09-01",
+ "total": 126,
+ "stale": [
+  {
+   "conference": "State Healthcare IT Connect Summit",
+   "tag": "Healthcare IT Connect 2026",
+   "dates": "February 23-26, 2026",
+   "was": "2026-02-23",
+   "days_ago": 190,
+   "next_edition": null,
+   "url": "https://healthcareitconnect.com/"
+  },
+  {
+   "conference": "MESC",
+   "tag": "MESC 2026",
+   "dates": "August 17-20, 2026",
+   "was": "2026-08-17",
+   "days_ago": 15,
+   "next_edition": null,
+   "url": "https://mesconference.org/"
+  },
+  {
+   "conference": "GMIS International",
+   "tag": "GMIS International 2026",
+   "dates": "August 23-26, 2026",
+   "was": "2026-08-23",
+   "days_ago": 9,
+   "next_edition": "2026",
+   "url": "https://www.gmis.org/page/2026homepage"
+  },
+  {
+   "conference": "NAMPI Annual",
+   "tag": "NAMPI 2026",
+   "dates": "August 23-26, 2026",
+   "was": "2026-08-23",
+   "days_ago": 9,
+   "next_edition": null,
+   "url": "https://nampi.net/"
+  },
+  {
+   "conference": "StormCon",
+   "tag": "StormCon 2026",
+   "dates": "August 25-27, 2026",
+   "was": "2026-08-25",
+   "days_ago": 7,
+   "next_edition": "2026",
+   "url": "https://www.stormcon.com/"
+  },
+  {
+   "conference": "APWA PWX",
+   "tag": "PWX 2026",
+   "dates": "August 30 - September 2, 2026",
+   "was": "2026-08-30",
+   "days_ago": 2,
+   "next_edition": "2026",
+   "url": "https://www.apwa.org/events/pwx-conference/"
+  }
+ ],
+ "undated": [
+  {
+   "conference": "NATaT",
+   "why": "unreachable",
+   "dates": null,
+   "url": "https://www.natat.org/"
+  },
+  {
+   "conference": "FTA Annual",
+   "why": "unannounced",
+   "dates": null,
+   "url": "https://taxadmin.org/event/fta-annual-meeting/"
+  },
+  {
+   "conference": "ASTHO",
+   "why": "unannounced",
+   "dates": null,
+   "url": "https://www.astho.org/education/upcoming-events/"
+  },
+  {
+   "conference": "NCSEA Leadership Symposium",
+   "why": "unannounced",
+   "dates": null,
+   "url": "https://www.ncsea.org/ncsea-leadership-symposium/"
+  },
+  {
+   "conference": "NASRO",
+   "why": "unreachable",
+   "dates": null,
+   "url": "https://www.nasro.org/conference/future-nasro-conferences/"
+  },
+  {
+   "conference": "IACLEA",
+   "why": "unannounced",
+   "dates": null,
+   "url": "https://iaclea.org/event/2026-iaclea-annual-conference-exposition/"
+  }
+ ],
+ "confirmed": [
+  {
+   "conference": "ICMA Annual",
+   "state": "not found",
+   "held": "2026-10-17",
+   "url": "https://conference.icma.org/",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NACo Annual",
+   "state": "not found",
+   "held": "2027-07-23",
+   "url": "https://www.naco.org/page/naco-events",
+   "other_dates_on_the_page": [
+    "Dec. 3-5, 2026",
+    "Feb. 11 \u2013 15 2028",
+    "Jul. 23 \u2013 26 2028",
+    "May 25 \u2013 28 2027"
+   ],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NACo Legislative",
+   "state": "not found",
+   "held": "2027-02-19",
+   "url": "https://www.naco.org/event/2026-naco-legislative-conference",
+   "other_dates_on_the_page": [
+    "Feb. 21-24, 2026",
+    "February 19, 2026",
+    "February 22, 2026",
+    "February 23, 2026"
+   ],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NLC City Summit",
+   "state": "confirmed",
+   "held": "2026-11-18",
+   "saw": "November 18, 2026"
+  },
+  {
+   "conference": "USCM Winter/Annual",
+   "state": "confirmed",
+   "held": "2027-01-20",
+   "saw": "January 20-22, 2027"
+  },
+  {
+   "conference": "NGA Summer/Winter",
+   "state": "not found",
+   "held": "2027-02-18",
+   "url": "https://www.nga.org/about/meetings/",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NCSL Legislative Summit",
+   "state": "not found",
+   "held": "2027-08-09",
+   "url": "https://www.ncsl.org/summit",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NALIT",
+   "state": "confirmed",
+   "held": "2026-09-30",
+   "saw": "September 30, 2026"
+  },
+  {
+   "conference": "Smart Cities Connect",
+   "state": "not found",
+   "held": "2026-09-22",
+   "url": "https://smartcitiesconnect.org/",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "IIMC Annual",
+   "state": "confirmed",
+   "held": "2027-05-09",
+   "saw": "May 9 (+2027 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "NAGARA",
+   "state": "confirmed",
+   "held": "2027-07-13",
+   "saw": "July 13 - 16, 2027"
+  },
+  {
+   "conference": "ARMA InfoCon",
+   "state": "confirmed",
+   "held": "2026-10-25",
+   "saw": "October 25 (+2026 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "Election Center National Conference",
+   "state": "not found",
+   "held": "2027-08-25",
+   "url": "https://electioncenter.org/",
+   "other_dates_on_the_page": [
+    "August 22, 2025",
+    "January 13, 2026",
+    "January 21, 2026",
+    "May 16, 2025"
+   ],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NASS Winter/Summer",
+   "state": "confirmed",
+   "held": "2027-02-10",
+   "saw": "Feb 10-13, 2027"
+  },
+  {
+   "conference": "NASED",
+   "state": "confirmed",
+   "held": "2027-02-14",
+   "saw": "February 14 (+2027 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "IMLA Annual",
+   "state": "confirmed",
+   "held": "2026-09-23",
+   "saw": "September 23-27, 2026"
+  },
+  {
+   "conference": "NAAG",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "3CMA",
+   "state": "confirmed",
+   "held": "2026-09-09",
+   "saw": "September 9 - 11, 2026"
+  },
+  {
+   "conference": "NAGC",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "GFOA Annual",
+   "state": "confirmed",
+   "held": "2027-06-06",
+   "saw": "June 6\u20139, 2027"
+  },
+  {
+   "conference": "NASBO",
+   "state": "confirmed",
+   "held": "2026-09-30",
+   "saw": "September 30 (+2026 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "NAST",
+   "state": "confirmed",
+   "held": "2026-09-27",
+   "saw": "September 27-30, 2026"
+  },
+  {
+   "conference": "ALGA",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "NSAA",
+   "state": "not found",
+   "held": "2027-06-14",
+   "url": "https://www.nasact.org/nsaa",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "AGA PDT",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "IAAO Annual",
+   "state": "not found",
+   "held": "2026-10-13",
+   "url": "https://www.iaao.org/events/annual-conference/",
+   "other_dates_on_the_page": [
+    "July 27, 2026"
+   ],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NIGP Forum",
+   "state": "confirmed",
+   "held": "2027-08-07",
+   "saw": "August 7 to 11, 2027"
+  },
+  {
+   "conference": "NASPO Annual",
+   "state": "confirmed",
+   "held": "2026-09-27",
+   "saw": "September 27, 2026"
+  },
+  {
+   "conference": "IPMA-HR International",
+   "state": "not found",
+   "held": "2026-09-28",
+   "url": "https://www.pshra.org/",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NPELRA",
+   "state": "confirmed",
+   "held": "2027-04-11",
+   "saw": "April 11-14, 2027"
+  },
+  {
+   "conference": "NCPERS",
+   "state": "confirmed",
+   "held": "2027-05-16",
+   "saw": "May 16-19, 2027"
+  },
+  {
+   "conference": "PRIMA Annual",
+   "state": "not found",
+   "held": "2027-06-13",
+   "url": "https://conference.primacentral.org/2027/",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NASCIO Annual & Midyear",
+   "state": "confirmed",
+   "held": "2026-09-27",
+   "saw": "September 27 (+2026 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "GMIS International",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "PTI",
+   "state": "confirmed",
+   "held": "2026-11-08",
+   "saw": "November 8-10, 2026"
+  },
+  {
+   "conference": "Esri UC",
+   "state": "confirmed",
+   "held": "2027-07-12",
+   "saw": "July 12\u201316, 2027"
+  },
+  {
+   "conference": "URISA GIS-Pro",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "NSGIC",
+   "state": "confirmed",
+   "held": "2026-11-01",
+   "saw": "November 1 - 6, 2026"
+  },
+  {
+   "conference": "APWA PWX",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "NACE Annual",
+   "state": "confirmed",
+   "held": "2027-04-05",
+   "saw": "April 5 (+2027 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "AASHTO Annual",
+   "state": "not found",
+   "held": "2026-11-15",
+   "url": "https://www.transportation.org/meetings/events/",
+   "other_dates_on_the_page": [
+    "August 18-21, 2024",
+    "August 18-22, 2024",
+    "August 26-27, 2024",
+    "August 28-30, 2024"
+   ],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "TRB Annual",
+   "state": "confirmed",
+   "held": "2027-01-10",
+   "saw": "January 10 - 14, 2027"
+  },
+  {
+   "conference": "ITE Annual",
+   "state": "confirmed",
+   "held": "2027-07-25",
+   "saw": "July 25-28, 2027"
+  },
+  {
+   "conference": "ITS America",
+   "state": "confirmed",
+   "held": "2027-04-12",
+   "saw": "April 12-15, 2027"
+  },
+  {
+   "conference": "NAFA I&E",
+   "state": "confirmed",
+   "held": "2027-04-05",
+   "saw": "April 5-7, 2027"
+  },
+  {
+   "conference": "Government Fleet Expo",
+   "state": "confirmed",
+   "held": "2027-06-15",
+   "saw": "June 15 - 18, 2027"
+  },
+  {
+   "conference": "IFMA World Workplace",
+   "state": "confirmed",
+   "held": "2026-11-18",
+   "saw": "Nov. 18\u201320, 2026"
+  },
+  {
+   "conference": "StormCon",
+   "state": "confirmed",
+   "held": "2026-08-25",
+   "saw": "AUGUST 25-27, 2026"
+  },
+  {
+   "conference": "AWWA ACE",
+   "state": "confirmed",
+   "held": "2027-06-13",
+   "saw": "June 13-16, 2027"
+  },
+  {
+   "conference": "WEFTEC",
+   "state": "confirmed",
+   "held": "2026-09-26",
+   "saw": "September 26\u201330, 2026"
+  },
+  {
+   "conference": "SWANA WASTECON",
+   "state": "confirmed",
+   "held": "2026-09-29",
+   "saw": "September 29 \u2013 October 2, 2026"
+  },
+  {
+   "conference": "WasteExpo",
+   "state": "confirmed",
+   "held": "2027-05-03",
+   "saw": "May 3-6, 2027"
+  },
+  {
+   "conference": "APPA National Conference",
+   "state": "confirmed",
+   "held": "2027-06-18",
+   "saw": "June 18 - 23, 2027"
+  },
+  {
+   "conference": "DISTRIBUTECH",
+   "state": "confirmed",
+   "held": "2027-03-01",
+   "saw": "March 1-4, 2027"
+  },
+  {
+   "conference": "Broadband Nation Expo",
+   "state": "confirmed",
+   "held": "2026-11-18",
+   "saw": "November 18-20, 2026"
+  },
+  {
+   "conference": "NATOA",
+   "state": "confirmed",
+   "held": "2026-09-14",
+   "saw": "September 14-17, 2026"
+  },
+  {
+   "conference": "APTA TRANSform",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "CTAA EXPO",
+   "state": "confirmed",
+   "held": "2027-06-06",
+   "saw": "June 6 (+2027 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "AAAE Annual",
+   "state": "confirmed",
+   "held": "2027-05-16",
+   "saw": "May 16\u201318, 2027"
+  },
+  {
+   "conference": "ACI-NA",
+   "state": "confirmed",
+   "held": "2026-09-14",
+   "saw": "September 14 (+2026 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "AAPA Annual",
+   "state": "not found",
+   "held": "2026-09-27",
+   "url": "https://www.ports.org",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "AAMVA Annual",
+   "state": "confirmed",
+   "held": "2026-09-29",
+   "saw": "Sep 29 - Oct 1, 2026"
+  },
+  {
+   "conference": "IACP Annual",
+   "state": "not found",
+   "held": "2026-10-24",
+   "url": "https://theiacpconference.org/",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NSA Annual",
+   "state": "confirmed",
+   "held": "2027-06-21",
+   "saw": "June 21-24, 2027"
+  },
+  {
+   "conference": "APCO Annual",
+   "state": "not found",
+   "held": "2027-07-25",
+   "url": "https://www.apco2027.org",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NENA",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "IAFC Fire-Rescue International",
+   "state": "confirmed",
+   "held": "2027-08-18",
+   "saw": "August 18 - 20, 2027"
+  },
+  {
+   "conference": "FDIC International",
+   "state": "not found",
+   "held": "2027-04-12",
+   "url": "https://www.fdic.com/",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "EMS World Expo",
+   "state": "not found",
+   "held": "2026-09-28",
+   "url": "https://www.hmpglobalevents.com/emsworldexpo",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "IAEM Annual",
+   "state": "not found",
+   "held": "2026-11-06",
+   "url": "https://www.iaemconference.org/",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "ICC Annual Conference",
+   "state": "confirmed",
+   "held": "2026-10-18",
+   "saw": "October 18\u201321, 2026"
+  },
+  {
+   "conference": "NACM Annual",
+   "state": "not found",
+   "held": "2027-07-18",
+   "url": "https://nacmnet.org/conferences/",
+   "other_dates_on_the_page": [
+    "February 7, 2027",
+    "February 9, 2027"
+   ],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NCSC Court Technology Conference",
+   "state": "confirmed",
+   "held": "2027-09-14",
+   "saw": "September 14-16, 2027"
+  },
+  {
+   "conference": "ACA Congress",
+   "state": "confirmed",
+   "held": "2027-08-19",
+   "saw": "August 19 (+2027 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "AJA Annual",
+   "state": "confirmed",
+   "held": "2027-05-22",
+   "saw": "May 22 (+2027 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "APPA Training Institute",
+   "state": "confirmed",
+   "held": "2027-01-24",
+   "saw": "Jan 24-27, 2027"
+  },
+  {
+   "conference": "CJJ",
+   "state": "not found",
+   "held": "2026-10-13",
+   "url": "https://juvjustice.org/events/conferences/",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NACCHO 360",
+   "state": "confirmed",
+   "held": "2027-07-20",
+   "saw": "July 20-23, 2027"
+  },
+  {
+   "conference": "MESC",
+   "state": "not found",
+   "held": "2026-08-17",
+   "url": "https://mesconference.org/",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "APHSA National HHS Summit",
+   "state": "confirmed",
+   "held": "2027-06-27",
+   "saw": "June 27-30, 2027"
+  },
+  {
+   "conference": "CWLA",
+   "state": "confirmed",
+   "held": "2027-04-05",
+   "saw": "April 5-7, 2027"
+  },
+  {
+   "conference": "NatCon",
+   "state": "confirmed",
+   "held": "2027-04-12",
+   "saw": "April 12-14, 2027"
+  },
+  {
+   "conference": "n4a Annual",
+   "state": "not found",
+   "held": "2027-08-02",
+   "url": "https://www.usaging.org/majorevents",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NACVSO",
+   "state": "not found",
+   "held": "2027-06-13",
+   "url": "https://www.nacvso.org/annual-conference",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "NASWA",
+   "state": "confirmed",
+   "held": "2026-09-16",
+   "saw": "September 16-17, 2026"
+  },
+  {
+   "conference": "Animal Care Expo",
+   "state": "confirmed",
+   "held": "2027-05-06",
+   "saw": "May 6-9, 2027"
+  },
+  {
+   "conference": "APA National Planning Conference",
+   "state": "confirmed",
+   "held": "2027-05-15",
+   "saw": "May 15 - May 18, 2027"
+  },
+  {
+   "conference": "AACE",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "IEDC Annual",
+   "state": "confirmed",
+   "held": "2026-10-25",
+   "saw": "October 25 (+2026 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "NAHRO National Conference",
+   "state": "confirmed",
+   "held": "2026-10-15",
+   "saw": "October 15-17, 2026"
+  },
+  {
+   "conference": "NCSHA Annual",
+   "state": "confirmed",
+   "held": "2026-10-03",
+   "saw": "October 3 \u2013 6, 2026"
+  },
+  {
+   "conference": "ULI Fall Meeting",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "NRPA Annual",
+   "state": "confirmed",
+   "held": "2026-09-29",
+   "saw": "September 29 - October 1, 2026"
+  },
+  {
+   "conference": "Athletic Business Show",
+   "state": "confirmed",
+   "held": "2026-11-17",
+   "saw": "November 17-19, 2026"
+  },
+  {
+   "conference": "NAYS",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "PLA Conference",
+   "state": "confirmed",
+   "held": "2028-03-13",
+   "saw": "March 13 (+2028 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "ALA Annual",
+   "state": "confirmed",
+   "held": "2027-06-24",
+   "saw": "June 24-28, 2027"
+  },
+  {
+   "conference": "AASA National Conference on Education",
+   "state": "confirmed",
+   "held": "2027-02-25",
+   "saw": "Feb 25\u201327, 2027"
+  },
+  {
+   "conference": "NSBA Annual",
+   "state": "confirmed",
+   "held": "2027-04-02",
+   "saw": "April 2-4, 2027"
+  },
+  {
+   "conference": "ASBO International",
+   "state": "confirmed",
+   "held": "2026-10-14",
+   "saw": "October 14\u201316, 2026"
+  },
+  {
+   "conference": "CoSN Annual",
+   "state": "confirmed",
+   "held": "2027-04-12",
+   "saw": "April 12-14, 2027"
+  },
+  {
+   "conference": "ISTELive",
+   "state": "confirmed",
+   "held": "2027-06-27",
+   "saw": "June 27 (+2027 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "NAESP",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "NAPT Summit",
+   "state": "confirmed",
+   "held": "2026-10-03",
+   "saw": "October 3 (+2026 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "SNA ANC",
+   "state": "confirmed",
+   "held": "2027-07-11",
+   "saw": "July 11-13, 2027"
+  },
+  {
+   "conference": "CEC Convention",
+   "state": "confirmed",
+   "held": "2027-03-10",
+   "saw": "March 10, 2027"
+  },
+  {
+   "conference": "EDUCAUSE Annual",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "NACUBO Annual",
+   "state": "confirmed",
+   "held": "2027-07-10",
+   "saw": "July 10 (+2027 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "APPA Leadership in Educational Facilities",
+   "state": "confirmed",
+   "held": "2027-07-12",
+   "saw": "July 12, 2027"
+  },
+  {
+   "conference": "AACRAO",
+   "state": "confirmed",
+   "held": "2027-04-04",
+   "saw": "April 4, 2027"
+  },
+  {
+   "conference": "NASFAA",
+   "state": "confirmed",
+   "held": "2027-06-20",
+   "saw": "June 20 - 23, 2027"
+  },
+  {
+   "conference": "TechConnect",
+   "state": "confirmed",
+   "held": "2027-03-23",
+   "saw": "MARCH 23-25, 2027"
+  },
+  {
+   "conference": "Broadband Communities Summit",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "NAMPI Annual",
+   "state": "not found",
+   "held": "2026-08-23",
+   "url": "https://nampi.net/",
+   "other_dates_on_the_page": [],
+   "note": "the page does not carry our date. It may have been redesigned, or the date may be in an image. This is a flag for a person, not a change."
+  },
+  {
+   "conference": "SALGBA Annual",
+   "state": "confirmed",
+   "held": "2027-04-26",
+   "saw": "April 26 (+2027 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "AIRA National Meeting",
+   "state": "unreadable",
+   "why": "AtsError"
+  },
+  {
+   "conference": "State Healthcare IT Connect Summit",
+   "state": "confirmed",
+   "held": "2026-02-23",
+   "saw": "Feb 23, 2026"
+  },
+  {
+   "conference": "NAMD Fall Conference",
+   "state": "confirmed",
+   "held": "2026-10-21",
+   "saw": "October 21 (+2026 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "NHCAA Annual Training Conference",
+   "state": "confirmed",
+   "held": "2026-11-03",
+   "saw": "November 3 (+2026 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  },
+  {
+   "conference": "NCSEA Policy Forum",
+   "state": "confirmed",
+   "held": "2027-02-02",
+   "saw": "February 2 (+2027 on the page)",
+   "how": "month and start day, with the year elsewhere on the page"
+  }
+ ]
+}

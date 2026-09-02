@@ -236,5 +236,47 @@
    "confidence": "high",
    "description": "Vehicle history data tools for police - exhibited at IACP 2026"
   }
+ },
+ "kpa": {
+  "sector": "General Gov",
+  "category": "HR & Workforce",
+  "on": "2026-09-01",
+  "at": "2026-09-01T13:36:56-04:00",
+  "by": "owner",
+  "why": "compliance training",
+  "saw": {
+   "was": "General Gov / Suppliers & Services",
+   "proposed": "General Gov / HR & Workforce",
+   "confidence": "low",
+   "description": "EHS compliance software and services - exhibited at ICMA 2025"
+  }
+ },
+ "nutanix": {
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "on": "2026-09-01",
+  "at": "2026-09-01T13:37:45-04:00",
+  "by": "owner",
+  "why": "AI IT platform",
+  "saw": {
+   "was": "General Gov / Suppliers & Services",
+   "proposed": "General Gov / IT & AI Platforms",
+   "confidence": "high",
+   "description": "Hyperconverged cloud infrastructure software - exhibited at NACo 2026"
+  }
+ },
+ "palo-alto-networks": {
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "on": "2026-09-01",
+  "at": "2026-09-01T13:38:37-04:00",
+  "by": "owner",
+  "why": "big cyber security",
+  "saw": {
+   "was": "Public Safety / Suppliers & Services",
+   "proposed": "General Gov / IT & AI Platforms",
+   "confidence": "high",
+   "description": "Cybersecurity software and network security platforms - exhibited at IACP 2026, NASCIO 2026, CoSN 2026, EDUCAUSE 2026"
+  }
  }
 }

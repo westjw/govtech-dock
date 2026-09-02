@@ -1,0 +1,41 @@
+{
+ "1kosmos": {
+  "call": "sled",
+  "name": "1Kosmos",
+  "on": "2026-09-01",
+  "at": "2026-09-01T13:24:52-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Passwordless authentication and identity verification platform for workforce, customer and citizen identity",
+   "website": "https://www.1kosmos.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "abnormal-ai": {
+  "call": "sled",
+  "name": "Abnormal AI",
+  "on": "2026-09-01",
+  "at": "2026-09-01T13:25:13-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Behavioral AI email security that blocks business email compromise and account takeover for organizations in every sector",
+   "website": "https://abnormal.ai",
+   "source_event": "NASCIO 2026"
+  }
+ },
+ "action1": {
+  "call": "sled",
+  "name": "Action1",
+  "on": "2026-09-01",
+  "at": "2026-09-01T13:27:13-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Cloud patch management and endpoint vulnerability remediation software for IT teams across industries",
+   "website": "https://www.action1.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ }
+}

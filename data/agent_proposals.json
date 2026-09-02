@@ -1,4 +1,462 @@
 {
+ "board:active911": {
+  "at": "2026-09-01T16:50:15-04:00",
+  "ats_ref": "active911",
+  "ats_type": "greenhouse",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.active911.com/careers",
+  "id": "active911",
+  "kind": "board",
+  "name": "Active911",
+  "none_found": false,
+  "postings": null,
+  "quota": 0,
+  "rows": 1,
+  "sample": [
+   "Accounting Specialist"
+  ],
+  "saw": {
+   "candidates": [
+    "greenhouse/active911"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://www.active911.com/careers",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://www.active911.com/careers names greenhouse board 'active911', which answers with 1 posting(s). Verified by fetching it."
+ },
+ "board:acusensus": {
+  "at": "2026-09-01T16:50:15-04:00",
+  "ats_ref": "acusensus-united-states",
+  "ats_type": "workable",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.acusensus.com/careers",
+  "id": "acusensus",
+  "kind": "board",
+  "name": "Acusensus",
+  "none_found": false,
+  "postings": null,
+  "quota": 1,
+  "rows": 6,
+  "sample": [
+   "Client Engagement Specialist",
+   "Help Desk Supervisor",
+   "Helpdesk Support"
+  ],
+  "saw": {
+   "candidates": [
+    "workable/acusensus-australia",
+    "workable/acusensus-new-zealand",
+    "workable/acusensus-united-states"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://www.acusensus.com/careers",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://www.acusensus.com/careers names workable board 'acusensus-united-states', which answers with 6 posting(s). Verified by fetching it."
+ },
+ "board:aidash": {
+  "at": "2026-09-01T16:50:15-04:00",
+  "ats_ref": "aidashinc",
+  "ats_type": "greenhouse",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.aidash.com/careers",
+  "id": "aidash",
+  "kind": "board",
+  "name": "AiDash",
+  "none_found": false,
+  "postings": null,
+  "quota": 0,
+  "rows": 6,
+  "sample": [
+   "Associate Ecologist",
+   "Business Development Specialist",
+   "Manager, AI Data Ops"
+  ],
+  "saw": {
+   "candidates": [
+    "greenhouse/aidashinc"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://www.aidash.com/careers",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://www.aidash.com/careers names greenhouse board 'aidashinc', which answers with 6 posting(s). Verified by fetching it."
+ },
+ "board:amp": {
+  "at": "2026-09-01T16:05:16-04:00",
+  "ats_ref": "ampsortation",
+  "ats_type": "greenhouse",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://ampsortation.com/careers",
+  "id": "amp",
+  "kind": "board",
+  "name": "AMP",
+  "none_found": false,
+  "postings": null,
+  "quota": 0,
+  "rows": 16,
+  "sample": [
+   "Director, Commercial Origination & Business Development",
+   "End Market Development Manager",
+   "Heavy Equipment Operator"
+  ],
+  "saw": {
+   "candidates": [
+    "greenhouse/ampsortation"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://ampsortation.com/careers",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://ampsortation.com/careers names greenhouse board 'ampsortation', which answers with 16 posting(s). Verified by fetching it."
+ },
+ "board:autura": {
+  "at": "2026-09-01T16:50:15-04:00",
+  "ats_ref": "autura",
+  "ats_type": "greenhouse",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.autura.com/careers",
+  "id": "autura",
+  "kind": "board",
+  "name": "Autura",
+  "none_found": false,
+  "postings": null,
+  "quota": 0,
+  "rows": 6,
+  "sample": [
+   "Autura Sales Talent Network",
+   "Business Development Representative",
+   "Manager, Financial Planning & Analysis (FP&A)"
+  ],
+  "saw": {
+   "candidates": [
+    "greenhouse/autura"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://www.autura.com/careers",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://www.autura.com/careers names greenhouse board 'autura', which answers with 6 posting(s). Verified by fetching it."
+ },
+ "board:cartegraph": {
+  "at": "2026-09-01T16:50:15-04:00",
+  "ats_ref": "opengov",
+  "ats_type": "ashby",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://opengov.com/careers/",
+  "id": "cartegraph",
+  "kind": "board",
+  "name": "Cartegraph",
+  "none_found": false,
+  "postings": null,
+  "quota": 6,
+  "rows": 55,
+  "sample": [
+   "Sr. Software Engineer",
+   "Manager I, Professional Services - IC",
+   "Implementation Consultant"
+  ],
+  "saw": {
+   "candidates": [
+    "ashby/opengov"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://opengov.com/careers/",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://opengov.com/careers/ names ashby board 'opengov', which answers with 55 posting(s). Verified by fetching it."
+ },
+ "board:concourse-tech": {
+  "at": "2026-09-01T16:50:15-04:00",
+  "ats_ref": "concoursetech",
+  "ats_type": "ashby",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://concoursetech.com/careers",
+  "id": "concourse-tech",
+  "kind": "board",
+  "name": "Concourse Tech",
+  "none_found": false,
+  "postings": null,
+  "quota": 0,
+  "rows": 8,
+  "sample": [
+   "Forward Deployed Product Manager",
+   "Platform Engineer",
+   "Deployment Operations & Customer Success Manager"
+  ],
+  "saw": {
+   "candidates": [
+    "ashby/concoursetech"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://concoursetech.com/careers",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://concoursetech.com/careers names ashby board 'concoursetech', which answers with 8 posting(s). Verified by fetching it."
+ },
+ "board:debtbook": {
+  "at": "2026-09-01T16:50:15-04:00",
+  "ats_ref": "debtbook",
+  "ats_type": "greenhouse",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.debtbook.com/current-openings",
+  "id": "debtbook",
+  "kind": "board",
+  "name": "DebtBook",
+  "none_found": false,
+  "postings": null,
+  "quota": 4,
+  "rows": 15,
+  "sample": [
+   "Associate Product Manager",
+   "Associate Quantitative Strategist",
+   "Customer Support Associate"
+  ],
+  "saw": {
+   "candidates": [
+    "greenhouse/debtbook"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://www.debtbook.com/current-openings",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://www.debtbook.com/current-openings names greenhouse board 'debtbook', which answers with 15 posting(s). Verified by fetching it."
+ },
+ "board:dimonoff": {
+  "at": "2026-09-01T16:50:15-04:00",
+  "ats_ref": "Dimonoff",
+  "ats_type": "smartrecruiters",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.dimonoff.com/careers",
+  "id": "dimonoff",
+  "kind": "board",
+  "name": "Dimonoff",
+  "none_found": false,
+  "postings": null,
+  "quota": 0,
+  "rows": 1,
+  "sample": [
+   "Concepteur(trice) logiciel Full Stack senior - Lead Technique"
+  ],
+  "saw": {
+   "candidates": [
+    "smartrecruiters/Dimonoff"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://www.dimonoff.com/careers",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://www.dimonoff.com/careers names smartrecruiters board 'Dimonoff', which answers with 1 posting(s). Verified by fetching it."
+ },
+ "board:droneshield": {
+  "at": "2026-09-01T16:50:15-04:00",
+  "ats_ref": "droneshield",
+  "ats_type": "greenhouse",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.droneshield.com/open-positions",
+  "id": "droneshield",
+  "kind": "board",
+  "name": "DroneShield",
+  "none_found": false,
+  "postings": null,
+  "quota": 1,
+  "rows": 27,
+  "sample": [
+   "ADF Lead",
+   "Business Development Manager - LATAM",
+   "Category Manager"
+  ],
+  "saw": {
+   "candidates": [
+    "greenhouse/droneshield"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://www.droneshield.com/open-positions",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://www.droneshield.com/open-positions names greenhouse board 'droneshield', which answers with 27 posting(s). Verified by fetching it."
+ },
+ "board:fotokite": {
+  "at": "2026-09-01T16:03:39-04:00",
+  "ats_ref": "fotokite",
+  "ats_type": "bamboohr",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://fotokite.bamboohr.com/careers",
+  "id": "fotokite",
+  "kind": "board",
+  "name": "Fotokite",
+  "none_found": false,
+  "postings": null,
+  "quota": 0,
+  "rows": 2,
+  "sample": [
+   "UAS Support Technician",
+   "Sales Engineer"
+  ],
+  "saw": {
+   "candidates": [
+    "bamboohr/fotokite"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://fotokite.bamboohr.com/careers",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://fotokite.bamboohr.com/careers names bamboohr board 'fotokite', which answers with 2 posting(s). Verified by fetching it."
+ },
+ "board:psd-citywide": {
+  "at": "2026-09-01T16:03:39-04:00",
+  "ats_ref": "psd",
+  "ats_type": "bamboohr",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.psdcitywide.com/careers",
+  "id": "psd-citywide",
+  "kind": "board",
+  "name": "PSD Citywide",
+  "none_found": false,
+  "postings": null,
+  "quota": 1,
+  "rows": 6,
+  "sample": [
+   "Account Executive",
+   "Solutions Consultant",
+   "Training Content Specialist"
+  ],
+  "saw": {
+   "candidates": [
+    "bamboohr/psd"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://www.psdcitywide.com/careers",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://www.psdcitywide.com/careers names bamboohr board 'psd', which answers with 6 posting(s). Verified by fetching it."
+ },
+ "board:skedda": {
+  "at": "2026-09-01T16:03:39-04:00",
+  "ats_ref": "skedda",
+  "ats_type": "greenhouse",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://www.skedda.com/careers",
+  "id": "skedda",
+  "kind": "board",
+  "name": "Skedda",
+  "none_found": false,
+  "postings": null,
+  "quota": 0,
+  "rows": 2,
+  "sample": [
+   "Director, Sales (Hybrid / Boston, MA or Remote - East Coast)",
+   "Senior Demand Generation Manager"
+  ],
+  "saw": {
+   "candidates": [
+    "greenhouse/skedda"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://www.skedda.com/careers",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://www.skedda.com/careers names greenhouse board 'skedda', which answers with 2 posting(s). Verified by fetching it."
+ },
+ "board:traction-rec": {
+  "at": "2026-09-01T16:03:39-04:00",
+  "ats_ref": "tractionrec",
+  "ats_type": "bamboohr",
+  "by": "find_boards.py",
+  "category": null,
+  "confidence": "medium",
+  "evidence": "https://tractionrec.com/careers",
+  "id": "traction-rec",
+  "kind": "board",
+  "name": "Traction Rec",
+  "none_found": false,
+  "postings": null,
+  "quota": 0,
+  "rows": 4,
+  "sample": [
+   "Product Developer (Remote)",
+   "Senior Product Developer",
+   "Front End Developer (Hybrid or Remote)"
+  ],
+  "saw": {
+   "candidates": [
+    "bamboohr/tractionrec"
+   ],
+   "method": "one page load, no crawl, no login",
+   "not_checked": "whether this board is theirs or a parent's",
+   "page": "https://tractionrec.com/careers",
+   "verified_by": "a real fetch of the ATS api"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "https://tractionrec.com/careers names bamboohr board 'tractionrec', which answers with 4 posting(s). Verified by fetching it."
+ },
  "read:120water": {
   "at": "2026-08-24T10:57:24-04:00",
   "by": "claude-opus-5 (read-agent measurement, n=60)",
