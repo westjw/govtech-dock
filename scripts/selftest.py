@@ -7898,6 +7898,106 @@ def check_open_actions_never_write_the_map() -> int:
     return errors
 
 
+def check_worklist_drops_what_was_worked() -> int:
+    """A company you just captured must not be back at the top of the list.
+
+    The capture worklist re-offered every company the moment after it was
+    captured, because nothing read manual.json's `checks`. A list that does
+    not shrink as you work it is a list you stop working, and this one is 685
+    deep.
+
+    THIRTY DAYS AND NOT FOREVER. manual.py::STALE_DAYS has meant exactly this
+    since the worklist was written - a hand check is good for a month and then
+    the postings have moved on - so it is reused rather than re-decided. A
+    company that vanished permanently the moment it was touched would never be
+    revisited, and jobs change.
+
+    A CHECK WITH `found: null` DOES NOT COUNT, which is the case worth having
+    a test for. That shape is written when somebody looked at the WRONG PAGE:
+    airitcareers.co.uk is Air IT Group, a British MSP, and the board's AirIT
+    is Air-Transport IT Services of Orlando. Twelve UK IT-support roles were
+    filed against a Florida airport vendor before anyone noticed. The record
+    is still genuinely unchecked, and hiding it would be the tool believing
+    its own mistake.
+    """
+    import admin as _admin
+
+    errors = 0
+    today = dt.date(2026, 9, 2)
+    man = {"checks": {
+        "fresh":    {"checked_on": "2026-09-01", "by": "capture"},
+        "edge":     {"checked_on": "2026-08-04"},          # 29 days - still fresh
+        "stale":    {"checked_on": "2026-07-01"},          # 63 days - back on the list
+        "wrongpage": {"checked_on": "2026-09-02", "found": None},
+        "nothing":  {"checked_on": "2026-09-01", "found": False},
+        "junk":     {"checked_on": "not a date"},
+        "notadict": "whatever",
+    }}
+    got = _admin._checked_recently(man, today)
+    for cid, want, why in [
+        ("fresh", True, "a capture yesterday must hide it"),
+        ("edge", True, "29 days is inside the 30-day window"),
+        ("stale", False, "63 days old - the postings have moved on"),
+        ("wrongpage", False,
+         "found:null means somebody looked at the WRONG COMPANY; that record "
+         "has still never been checked"),
+        ("nothing", True,
+         "found:false is a real answer - a person looked and there was nothing"),
+        ("junk", False, "an unparseable date is not a check"),
+        ("notadict", False, "a malformed entry is not a check"),
+    ]:
+        if (cid in got) != want:
+            print(f"  FAIL: {cid!r} {'should' if want else 'should not'} be "
+                  f"hidden from the worklist - {why}")
+            errors += 1
+
+    # AND THE QUEUE MUST ACTUALLY USE IT. The first version of this check
+    # tested _checked_recently() alone, so deleting the one line in
+    # _board_rows that calls it left the function perfect and the worklist
+    # broken - the mutation passed. That is the fifth time in this project a
+    # check has measured a helper instead of the wiring, so the queue is now
+    # driven end to end against a throwaway data directory.
+    with _sandbox_admin({
+        "companies.json": [
+            {"id": "worked", "name": "Worked", "website": "https://a.test",
+             "sector": "General Gov", "category": "Suppliers & Services",
+             "description": "x", "year_founded": None, "location": None,
+             "ats": {"type": "unknown", "ref": None}, "govtech": True,
+             "vendor_type": "GovTech Product",
+             "hiring": {"status": "Unknown", "note": "", "roles": []}},
+            {"id": "untouched", "name": "Untouched", "website": "https://b.test",
+             "sector": "General Gov", "category": "Suppliers & Services",
+             "description": "x", "year_founded": None, "location": None,
+             "ats": {"type": "unknown", "ref": None}, "govtech": True,
+             "vendor_type": "GovTech Product",
+             "hiring": {"status": "Unknown", "note": "", "roles": []}},
+        ],
+        "manual.json": {"checks": {
+            "worked": {"checked_on": dt.date.today().isoformat(), "by": "capture"}},
+            "postings": []},
+        "admin_dismissed.json": {},
+        "discovery_log.json": [],
+    }):
+        rows = _admin.q_boards(_admin.read_companies(), {"organizations": []})
+        ids = {r["id"] for r in rows}
+        if "worked" in ids:
+            print("  FAIL: q_boards still offers a company captured today - "
+                  "_board_rows is not consulting the manual checks, so the "
+                  "worklist never shrinks as it is worked")
+            errors += 1
+        if "untouched" not in ids:
+            print("  FAIL: q_boards dropped a company nobody has checked - the "
+                  "filter is hiding more than it should")
+            errors += 1
+
+    if _admin.CAPTURE_FRESH_DAYS != 30:
+        print(f"  FAIL: CAPTURE_FRESH_DAYS is {_admin.CAPTURE_FRESH_DAYS}, and "
+              f"manual.py::STALE_DAYS is 30. Two answers to 'how long is a "
+              f"hand check good for' is one too many")
+        errors += 1
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -8431,6 +8531,7 @@ def main() -> int:
     errors += check_capture_parity()
     errors += check_extension_icons()
     errors += check_open_actions_never_write_the_map()
+    errors += check_worklist_drops_what_was_worked()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

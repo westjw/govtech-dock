@@ -530,9 +530,59 @@ def _probe(cid: str) -> dict:
     return {"state": state, "note": note, "on": e.get("on")}
 
 
+# A company somebody just worked by hand should not be back at the top of the
+# list to work by hand. manual.json already records who was checked and when;
+# nothing read it, so the capture worklist re-offered every company the moment
+# after it was captured, which is how a list stops feeling worth working.
+#
+# THIRTY DAYS, and the number is not new: manual.py::STALE_DAYS has meant
+# exactly this since the worklist was written - a hand check is good for a
+# month and then the jobs have moved on. Reused rather than re-decided, so
+# there is one answer to "how long is a check good for" instead of two.
+#
+# NOT PERMANENT, deliberately. A company that disappears the moment it is
+# touched is a company nobody ever revisits, and postings change. This hides
+# it for a month; it comes back on its own.
+CAPTURE_FRESH_DAYS = 30
+
+
+def _checked_recently(man: dict | None = None, today=None) -> set:
+    """Companies a person looked at by hand inside the window.
+
+    A check with `found: null` does NOT count. That is the shape written when
+    somebody looked at the WRONG PAGE - airitcareers.co.uk is a British MSP
+    and not Air-Transport IT Services of Orlando - and the record is still
+    genuinely unchecked. Treating it as done would be the tool believing its
+    own mistake, which is what the null is there to prevent.
+    """
+    if man is None:
+        try:
+            man = json.loads((DATA / "manual.json").read_text())
+        except Exception:                               # noqa: BLE001
+            return set()
+    today = today or dt.date.today()
+    out = set()
+    for cid, chk in (man.get("checks") or {}).items():
+        if not isinstance(chk, dict):
+            continue
+        if chk.get("found", True) is None:
+            continue
+        on = chk.get("checked_on")
+        try:
+            age = (today - dt.date.fromisoformat(str(on))).days
+        except Exception:                               # noqa: BLE001
+            continue
+        if 0 <= age < CAPTURE_FRESH_DAYS:
+            out.add(cid)
+    return out
+
+
 def _board_rows(companies, board):
     orgs = {o["id"]: o for o in board.get("organizations", [])}
+    done = _checked_recently()
     for c in companies:
+        if c["id"] in done:
+            continue
         o = orgs.get(c["id"], {})
         kind = (c.get("ats") or {}).get("type")
         no_board = kind in (None, "unknown")
