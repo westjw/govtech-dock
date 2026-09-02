@@ -1,69 +1,468 @@
 {
-  "date": "2026-09-01",
-  "previous": "2026-08-31",
+  "date": "2026-09-02",
+  "previous": "2026-09-01",
   "changes": [
     {
-      "company": "Flock Safety",
-      "id": "flock-safety",
-      "from": "Yes",
+      "company": "Greyparrot",
+      "id": "greyparrot",
+      "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Associate General Counsel, Revenue only"
+      "note": "VP Sales only"
     },
     {
-      "company": "AMP",
-      "id": "amp",
+      "company": "Holly",
+      "id": "holly",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Kaizen Labs",
+      "id": "kaizen-labs",
       "from": "None found",
       "to": "Sales (non-AE)",
-      "note": "Director, Commercial Origination & only [rendered]"
+      "note": "Senior Recruiter, GTM only"
     },
     {
-      "company": "ClearPoint Strategy",
-      "id": "clearpoint-strategy",
+      "company": "GoGuardian",
+      "id": "goguardian",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Zonar Systems",
+      "id": "zonar-systems",
       "from": "None found",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Strategic Sales Director - Enterpr"
+    },
+    {
+      "company": "Bigbelly",
+      "id": "bigbelly",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Indigov",
+      "id": "indigov",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no jobs parsed from JazzHR board and the"
+    },
+    {
+      "company": "three+one",
+      "id": "three-one",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Business Development Officer only"
+    },
+    {
+      "company": "GOGov",
+      "id": "gogov",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Portage CyberTech",
+      "id": "portage-cybertech",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Repr\u00e9sentant du d\u00e9veloppement des  only"
+    },
+    {
+      "company": "Meridian Knowledge Solutions",
+      "id": "meridian-knowledge-solutions",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Bamboo Health",
+      "id": "bamboo-health",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Unite Us",
+      "id": "unite-us",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Strategic Sales Director - West Co (United States)"
+    },
+    {
+      "company": "ES&S (Election Systems & Software)",
+      "id": "es-s",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "ViaPath Technologies",
+      "id": "viapath-technologies",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sr Account Executive"
+    },
+    {
+      "company": "Wavetronix",
+      "id": "wavetronix",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales Manager (Great Lakes) only"
+    },
+    {
+      "company": "Avolve Software",
+      "id": "avolve-software",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (GovTech SaaS)"
+    },
+    {
+      "company": "Off Duty Management",
+      "id": "off-duty-management",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Fotokite",
+      "id": "fotokite",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales Engineer only"
+    },
+    {
+      "company": "Acusensus",
+      "id": "acusensus",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "EPIC iO",
+      "id": "epic-io",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AIoT Sales Director"
+    },
+    {
+      "company": "JAGGAER",
+      "id": "jaggaer",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Strategic Account Manager (Remote)"
+    },
+    {
+      "company": "Concourse Tech",
+      "id": "concourse-tech",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Deployment Operations & Customer S only"
+    },
+    {
+      "company": "Boostlingo",
+      "id": "boostlingo",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Director of Sales only"
+    },
+    {
+      "company": "TurnKey Corrections",
+      "id": "turnkey-corrections",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "BECS Technology",
+      "id": "becs-technology",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Willowglen Systems",
+      "id": "willowglen-systems",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Business Development Manager"
+    },
+    {
+      "company": "Luminator Technology Group",
+      "id": "luminator-technology-group",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "Card Integrity",
       "id": "card-integrity",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "ICC Innovation",
+      "id": "icc-innovation",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Monday.com",
+      "id": "monday-com",
       "from": "Yes",
       "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "note": "page scan found no listings"
     },
     {
       "company": "Saltus Technologies",
       "id": "saltus-technologies",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "TSO Mobile",
+      "id": "tso-mobile",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Strategic Sales Director - Enterpr"
+    },
+    {
+      "company": "Summer",
+      "id": "summer",
       "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Ascento AG",
+      "id": "ascento-ag",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "RTA Fleet Management",
+      "id": "rta-fleet-management",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative ( only"
+    },
+    {
+      "company": "American Legal Publishing",
+      "id": "american-legal-publishing",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Edmunds GovTech",
+      "id": "edmunds-govtech",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative M only"
+    },
+    {
+      "company": "Dominion Voting Systems",
+      "id": "dominion-voting-systems",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Earth Networks",
+      "id": "earth-networks",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Manager (Remote - Canada)"
+    },
+    {
+      "company": "Edupoint Educational Systems",
+      "id": "edupoint-educational-systems",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Representative (Mesa)"
+    },
+    {
+      "company": "Alma",
+      "id": "alma",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Account Executive"
+    },
+    {
+      "company": "Edlio",
+      "id": "edlio",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Red Rover",
+      "id": "red-rover",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Clever",
+      "id": "clever",
+      "from": "Unknown",
+      "to": "None found",
+      "note": " [rendered]"
+    },
+    {
+      "company": "Key Data Dashboard",
+      "id": "key-data-dashboard",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "VP, Customer Success only"
+    },
+    {
+      "company": "Momentus Technologies",
+      "id": "momentus-technologies",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Director of Solutions Engineering only"
+    },
+    {
+      "company": "FAIRTIQ",
+      "id": "fairtiq",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales & Business Development Manag"
     },
     {
       "company": "Ridango",
       "id": "ridango",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Senior Enterprise Account Executiv (Spain, Spain)"
+    },
+    {
+      "company": "GreenPower Motor Company",
+      "id": "greenpower-motor-company",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Highland Electric Fleets",
+      "id": "highland-electric-fleets",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Manager only"
+    },
+    {
+      "company": "Skedda",
+      "id": "skedda",
       "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 500 for https://ridango.bamboohr.co"
+      "to": "Sales (non-AE)",
+      "note": "Director, Sales (Hybrid / Boston,  only"
     },
     {
       "company": "2NDNATURE",
       "id": "2ndnature",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 522 for https://www.2ndnaturewater."
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
-      "company": "ikeGPS",
-      "id": "ikegps",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 404 for https://ikegps.com/open-pos"
+      "company": "GCR (Woolpert)",
+      "id": "gcr",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Senior Account Executive"
     },
     {
-      "company": "Collabrios Health",
-      "id": "collabrios-health",
+      "company": "GE Vernova",
+      "id": "ge-vernova",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "OpusXenta",
+      "id": "opusxenta",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
+    },
+    {
+      "company": "Pantonium",
+      "id": "pantonium",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
+    },
+    {
+      "company": "Circuit",
+      "id": "circuit",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Karpel Solutions",
+      "id": "karpel-solutions",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Manager (Remote Worker - N/)"
+    },
+    {
+      "company": "DZS",
+      "id": "dzs",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Inside Sales Representative only"
+    },
+    {
+      "company": "TeamDynamix",
+      "id": "teamdynamix",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Associate Customer Success Manager only"
+    },
+    {
+      "company": "Chorus Innovations",
+      "id": "chorus-innovations",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "SimplyAnalytics",
+      "id": "simplyanalytics",
       "from": "None found",
       "to": "Yes",
-      "note": "Sales Director, PACE (Remote Worker - N/)"
+      "note": "Senior Account Executive - B2B Saa"
+    },
+    {
+      "company": "EBSCO Information Services",
+      "id": "ebsco-information-services",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Sales Manager, AMC \u2013 Virg"
+    },
+    {
+      "company": "iCEV",
+      "id": "icev",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "SAND",
+      "id": "sand",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     }
   ]
 }
