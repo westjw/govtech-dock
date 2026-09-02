@@ -7,11 +7,15 @@
  "exhibitors": [
   {
    "name": "AristotleK12",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Cadmium",
-   "website": "https://www.GoCadmium.com"
+   "website": "https://www.GoCadmium.com",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "ClassDojo",
@@ -19,7 +23,9 @@
   },
   {
    "name": "Clear Touch",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Eratesync",
@@ -27,7 +33,9 @@
   },
   {
    "name": "Exteme Networks",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Gaggle",
@@ -35,7 +43,9 @@
   },
   {
    "name": "Give Feedback",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Intellischool",
@@ -43,11 +53,15 @@
   },
   {
    "name": "IPEVO",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Jamf",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Jotit",
@@ -55,11 +69,15 @@
   },
   {
    "name": "K12 Insight",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Lumu Technologies",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "ManagedMethods",
@@ -67,19 +85,27 @@
   },
   {
    "name": "Microsoft",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "NTP Cybersecurity",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Secured Tech",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "simpldiscipline",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Softdocs",
@@ -87,11 +113,15 @@
   },
   {
    "name": "Technical Support",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Tellabs",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Thinkverse",
@@ -99,7 +129,9 @@
   },
   {
    "name": "Trafera",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Typing.com",
@@ -107,11 +139,15 @@
   },
   {
    "name": "Veracity Verification Solutions",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "Xpel by Forward Edge",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   }
  ],
  "why": null,

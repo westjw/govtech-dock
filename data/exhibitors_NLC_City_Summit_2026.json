@@ -7,11 +7,15 @@
  "exhibitors": [
   {
    "name": "4LEAF, Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Accela, Inc",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "AchieveIt",
@@ -19,7 +23,9 @@
   },
   {
    "name": "Advanced Search",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Airbnb",
@@ -51,7 +57,9 @@
   },
   {
    "name": "Apple Safari",
-   "website": "http://support.apple.com/downloads/#safari"
+   "website": "http://support.apple.com/downloads/#safari",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Apptegy",
@@ -83,7 +91,9 @@
   },
   {
    "name": "Axon Enterprise",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Azora Software",
@@ -99,7 +109,9 @@
   },
   {
    "name": "Berliner Play Equipment Corporation",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Best Friends Animal Society",
@@ -123,11 +135,15 @@
   },
   {
    "name": "Bureau Veritas North America, Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Busch Systems International Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "CALEA",
@@ -139,15 +155,21 @@
   },
   {
    "name": "Chandlerthinks",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Check My Calendar",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Chick-fil-A, Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Citibot",
@@ -175,7 +197,9 @@
   },
   {
    "name": "Common Sense",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Crossing Guard Services",
@@ -191,7 +215,9 @@
   },
   {
    "name": "DBT Support, LLC",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Deckard Technologies",
@@ -199,7 +225,9 @@
   },
   {
    "name": "Design-Build Institute of America (DBIA)",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "EarthDaily",
@@ -211,7 +239,9 @@
   },
   {
    "name": "Enhanced",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Esri",
@@ -219,7 +249,9 @@
   },
   {
    "name": "Exhibitor List",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "FlashVote",
@@ -227,7 +259,9 @@
   },
   {
    "name": "Fri Nov, 20",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "GM Fleet",
@@ -235,7 +269,9 @@
   },
   {
    "name": "Google Chrome",
-   "website": "https://www.google.com/chrome/browser/"
+   "website": "https://www.google.com/chrome/browser/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "GoRail",
@@ -243,7 +279,9 @@
   },
   {
    "name": "Gordian",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "GovAI",
@@ -259,11 +297,15 @@
   },
   {
    "name": "Grow America (formerly NDC)",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Harvard University John F. Kennedy School of Government",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "HayDay Services",
@@ -295,15 +337,21 @@
   },
   {
    "name": "Intermountain Slurry Seal, Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "International City/County Management Association",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "Iteris, Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Just Appraised",
@@ -319,7 +367,9 @@
   },
   {
    "name": "LSI",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Master Meter",
@@ -335,15 +385,21 @@
   },
   {
    "name": "Moleaer Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Mon Nov, 23",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Mozilla Firefox",
-   "website": "https://www.mozilla.org/en-US/firefox/new/"
+   "website": "https://www.mozilla.org/en-US/firefox/new/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Munibit",
@@ -363,7 +419,9 @@
   },
   {
    "name": "National Sign Plazas, Inc",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Nightcap",
@@ -371,11 +429,15 @@
   },
   {
    "name": "NLC Hold",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "OBIC",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Off Duty Management",
@@ -383,19 +445,27 @@
   },
   {
    "name": "Ohpynez LLC",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Omicron Technology Solutions, LLC.",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "OpenGov, Inc",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Opportunity Strategies LLC",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "PlayCore",
@@ -403,11 +473,15 @@
   },
   {
    "name": "Playcraft Systems, A PlayCore Company",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "Polimorphic Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Precision Concrete Cutting",
@@ -415,7 +489,9 @@
   },
   {
    "name": "Print",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Public Restroom Company",
@@ -431,15 +507,21 @@
   },
   {
    "name": "Register as attendee",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Revize Government Websites",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "SAFEbuilt, Inc",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Samsara",
@@ -447,7 +529,9 @@
   },
   {
    "name": "Sat Nov, 21",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Schneider Geospatial",
@@ -455,7 +539,9 @@
   },
   {
    "name": "SDL",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Skydio",
@@ -483,7 +569,9 @@
   },
   {
    "name": "Sun Nov, 22",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "TextByChoice",
@@ -491,11 +579,15 @@
   },
   {
    "name": "Thu Nov, 19",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "TIPS - The Interlocal Purchasing System",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "TowerCo",
@@ -503,7 +595,9 @@
   },
   {
    "name": "Tyler Technologies, Inc",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "U-Haul International",
@@ -519,7 +613,9 @@
   },
   {
    "name": "Upgrade Internet Explorer",
-   "website": "http://windows.microsoft.com/en-us/internet-explorer/download-ie"
+   "website": "http://windows.microsoft.com/en-us/internet-explorer/download-ie",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "UTOPIA Fiber",

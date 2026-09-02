@@ -7,19 +7,27 @@
  "exhibitors": [
   {
    "name": "3CMA Officers Meet the Board",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Annual Conference Sept. 9 - 11, 2026",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Breakout Sessions",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Canva",
-   "website": "http://www.canva.com"
+   "website": "http://www.canva.com",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "CASTUS",
@@ -31,19 +39,27 @@
   },
   {
    "name": "Chandlerthinks",
-   "website": "https://chandlerthinks.com/"
+   "website": "https://chandlerthinks.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "CivAll by Social News Desk",
-   "website": "http://civall.com/connect"
+   "website": "http://civall.com/connect",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "civall.com/connect",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "civicplus.com",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "CivicPlus\u00ae",
@@ -51,35 +67,51 @@
   },
   {
    "name": "Conference Apparel",
-   "website": "https://3cmagear.itemorder.com/shop/category/679739/"
+   "website": "https://3cmagear.itemorder.com/shop/category/679739/",
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "Conference Hotel",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "Conference Schedule",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Conference Sponsors",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Copyright Notices",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Digital Accessibility by WeCo",
-   "website": "https://theweco.com/"
+   "website": "https://theweco.com/",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "Evening Networking Events",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Fees",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "FlashVote",
@@ -99,31 +131,45 @@
   },
   {
    "name": "Granite Sky Creative Group",
-   "website": "https://gscreates.com/"
+   "website": "https://gscreates.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Job Board Find Opportunities",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Keynote Speakers",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "linkedin.com/company/civallco",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Meetings & Conferences",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Member Services",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Membership Information Become a Member",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "MindMixer",
@@ -131,19 +177,27 @@
   },
   {
    "name": "North Star Place Branding & Marketing",
-   "website": "http://northstarideas.com"
+   "website": "http://northstarideas.com",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "northstarideas.com",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Notify Me",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Ohpynez",
-   "website": "https://www.ohpynez.com/"
+   "website": "https://www.ohpynez.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Open Point",
@@ -155,19 +209,27 @@
   },
   {
    "name": "Pantheon",
-   "website": "https://pantheon.io/"
+   "website": "https://pantheon.io/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "polimorphic.com",
-   "website": "https://www.polimorphic.com/"
+   "website": "https://www.polimorphic.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Powerfront",
-   "website": "https://www.powerfront.com/"
+   "website": "https://www.powerfront.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Pre-Conference Sessions",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "PublicInput",
@@ -175,11 +237,15 @@
   },
   {
    "name": "Q1Media",
-   "website": "https://www.q1media.com/"
+   "website": "https://www.q1media.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Quick Links",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Raftelis",
@@ -199,27 +265,39 @@
   },
   {
    "name": "Savvy Awards",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Savvy Awards Be Recognized",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Site Map",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Siteimprove.a",
-   "website": "https://www.siteimprove.com/"
+   "website": "https://www.siteimprove.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "SoSu.TV",
-   "website": "https://www.sosu.tv/"
+   "website": "https://www.sosu.tv/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Sponsorship/Exhibitor Information",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Tightrope Media Systems",
@@ -227,15 +305,21 @@
   },
   {
    "name": "TTHM",
-   "website": "https://tthm.com/"
+   "website": "https://tthm.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Webinars Online Training",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "yourveryfavorite.com",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Zencity",

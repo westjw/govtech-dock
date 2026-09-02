@@ -7,175 +7,261 @@
  "exhibitors": [
   {
    "name": "2025 State of the Workforce",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Affiliate Program",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Artificial Intelligence (AI) Resources",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "Bylaws",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Calendar",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Custom Solutions Overview",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "Data Products & Partnerships",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "Facebook",
-   "website": "https://www.facebook.com/NASWAorg/"
+   "website": "https://www.facebook.com/NASWAorg/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Hilton Honors Military Program",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Instagram",
-   "website": "https://www.instagram.com/naswaorg/"
+   "website": "https://www.instagram.com/naswaorg/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Job Board",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Learning & Library",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Legislative Priorities",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Legislative Tracking",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Letters & Testimony",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "LinkedIn",
-   "website": "https://www.linkedin.com/company/national-association-of-state-workforce-agencies"
+   "website": "https://www.linkedin.com/company/national-association-of-state-workforce-agencies",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Member Benefits",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Multistate Data Collaborative",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "NASWA Leadership",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "NASWA Regions",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "NASWA Reports",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "naswa@naswa.org",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "National Labor Exchange",
-   "website": "https://www.naswa.org/national-labor-exchange"
+   "website": "https://www.naswa.org/national-labor-exchange",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "News Releases",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Newsletter",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Past Meetings",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Policy Committees Overview",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Sponsor Opportunities",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "State of the Workforce",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Technology Support Services",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Training Development & Delivery",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Twitter",
-   "website": "https://twitter.com/naswaorg"
+   "website": "https://twitter.com/naswaorg",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Twitter @NASWAORG",
-   "website": "https://twitter.com/naswaorg"
+   "website": "https://twitter.com/naswaorg",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "UI Information Technology Support Center (UI ITSC)",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "UI Integrity Center",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "UI Interstate Connection Network (UI ICON)",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "UI State Information Data Exchange System (UI SIDES)",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "Upcoming Conferences",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Upcoming Meetings & Webinars",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Workforce Information Technology Support Center (Workforce ITSC)",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Workforce Innovation Awards",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Workforce Innovation Awards Nominations",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Workforce Support Services",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   }
  ],
  "why": null,

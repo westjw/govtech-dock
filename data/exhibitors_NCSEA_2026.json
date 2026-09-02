@@ -7,27 +7,39 @@
  "exhibitors": [
   {
    "name": "Adobe",
-   "website": "https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fbusiness.adobe.com%2Findustries%2Fgovernment.html&amp;data=05%7C02%7Cchristopher.wood%40ncsea.org%7C99d652124b9a4121673108de762ada15%7Cac144e41800148f09e1c170716ed06b6%7C0%7C0%7C639078123583077119%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=mlMzYpHGZOv%2BU%2FcIo2JBWjmtaifW4OF8eto8u3r6lXw%3D&amp;reserved=0"
+   "website": "https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fbusiness.adobe.com%2Findustries%2Fgovernment.html&amp;data=05%7C02%7Cchristopher.wood%40ncsea.org%7C99d652124b9a4121673108de762ada15%7Cac144e41800148f09e1c170716ed06b6%7C0%7C0%7C639078123583077119%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=mlMzYpHGZOv%2BU%2FcIo2JBWjmtaifW4OF8eto8u3r6lXw%3D&amp;reserved=0",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Advocacy & Public Policy",
-   "website": "https://www.ncsea.org/advocacy-public-policy/"
+   "website": "https://www.ncsea.org/advocacy-public-policy/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Awards",
-   "website": "https://www.ncsea.org/leadershipawards/"
+   "website": "https://www.ncsea.org/leadershipawards/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Case Management Portal",
-   "website": "https://myalabama.gov/"
+   "website": "https://myalabama.gov/",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "CGI Transcend\u00ae",
-   "website": "https://www.cgi.com/us/en-us/solutions/transcend"
+   "website": "https://www.cgi.com/us/en-us/solutions/transcend",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Child Support Media Guide",
-   "website": "https://www.ncsea.org/resources-info/child-support-media-guide/"
+   "website": "https://www.ncsea.org/resources-info/child-support-media-guide/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Conduent",
@@ -35,35 +47,51 @@
   },
   {
    "name": "Conferences",
-   "website": "https://www.ncsea.org/conferences/"
+   "website": "https://www.ncsea.org/conferences/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "connect with us today!",
-   "website": "https://maximus.com/news-and-events/ncsea?utm_source=ncsea_corp_partner_page&amp;utm_medium=web&amp;utm_campaign=program_modernization&amp;utm_content=event_page"
+   "website": "https://maximus.com/news-and-events/ncsea?utm_source=ncsea_corp_partner_page&amp;utm_medium=web&amp;utm_campaign=program_modernization&amp;utm_content=event_page",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Corporate",
-   "website": "https://www.ncsea.org/membership/corporate/"
+   "website": "https://www.ncsea.org/membership/corporate/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "County and Local IV-D Agency",
-   "website": "https://www.ncsea.org/membership/local-or-international-iv-d-agency/"
+   "website": "https://www.ncsea.org/membership/local-or-international-iv-d-agency/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Courtland Consulting",
-   "website": "https://courtlandconsulting.com/"
+   "website": "https://courtlandconsulting.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "CSG Government Solutions",
-   "website": "https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcsgdelivers.com%2Fprogram-expertise%2Fchild-support%2F&amp;data=05%7C02%7Cchristopher.wood%40ncsea.org%7C15e3e738c8e642dcff6608de9a5dcbeb%7Cac144e41800148f09e1c170716ed06b6%7C0%7C0%7C639117924808782091%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=ZLi0%2FjV5VUjMlKPct%2BNiyr%2BaYXpG9%2BDKnhLz8628Zz4%3D&amp;reserved=0"
+   "website": "https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcsgdelivers.com%2Fprogram-expertise%2Fchild-support%2F&amp;data=05%7C02%7Cchristopher.wood%40ncsea.org%7C15e3e738c8e642dcff6608de9a5dcbeb%7Cac144e41800148f09e1c170716ed06b6%7C0%7C0%7C639117924808782091%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=ZLi0%2FjV5VUjMlKPct%2BNiyr%2BaYXpG9%2BDKnhLz8628Zz4%3D&amp;reserved=0",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "CurrentMediaGroup.net",
-   "website": "https://currentmediagroup.net/"
+   "website": "https://currentmediagroup.net/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Customerservice@ncsea.org",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Deloitte",
@@ -71,115 +99,171 @@
   },
   {
    "name": "Education & Programs",
-   "website": "https://www.ncsea.org/programs-events/"
+   "website": "https://www.ncsea.org/programs-events/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Facebook",
-   "website": "https://www.facebook.com/ncsea1/"
+   "website": "https://www.facebook.com/ncsea1/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Fast Enterprises (FAST)",
-   "website": "https://fastenterprises.com/"
+   "website": "https://fastenterprises.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "For Child Support Professionals",
-   "website": "https://www.ncsea.org/resources-info/for-child-support-professional-parents/"
+   "website": "https://www.ncsea.org/resources-info/for-child-support-professional-parents/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "For Parents",
-   "website": "https://www.ncsea.org/resources-info/parents/"
+   "website": "https://www.ncsea.org/resources-info/parents/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Governance",
-   "website": "https://www.ncsea.org/about/governance/"
+   "website": "https://www.ncsea.org/about/governance/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "GreenCourt",
-   "website": "https://greencourt.com/"
+   "website": "https://greencourt.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Hill Tips \u2013 Resources for Educating Federal & State Legislators",
-   "website": "https://www.ncsea.org/hill-tips/"
+   "website": "https://www.ncsea.org/hill-tips/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Housing Assistance",
-   "website": "https://dfs.wyo.gov/assistance-programs/home-utilities-energy-assistance/"
+   "website": "https://dfs.wyo.gov/assistance-programs/home-utilities-energy-assistance/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Individual Membership",
-   "website": "https://www.ncsea.org/membership/individual/"
+   "website": "https://www.ncsea.org/membership/individual/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "info@ywcss.com",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "International Child Support",
-   "website": "https://www.ncsea.org/resources-info/international-child-support/"
+   "website": "https://www.ncsea.org/resources-info/international-child-support/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "LaTrese Wallace",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "LinkedIn",
-   "website": "https://www.linkedin.com/company/national-child-support-enforcement-association/"
+   "website": "https://www.linkedin.com/company/national-child-support-enforcement-association/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Member Login",
-   "website": "https://online.ncsea.org/account/login.aspx"
+   "website": "https://online.ncsea.org/account/login.aspx",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "NCSEA Apparel Shop",
-   "website": "https://business.landsend.com/store/ncsea/"
+   "website": "https://business.landsend.com/store/ncsea/",
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "NCSEA Board Resolutions & Policy Statements",
-   "website": "https://www.ncsea.org/advocacy-public-policy/ncsea-board-resolutions-policy-statements/"
+   "website": "https://www.ncsea.org/advocacy-public-policy/ncsea-board-resolutions-policy-statements/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "NCSEA Connects",
-   "website": "https://www.ncsea.org/ncsea-connects/"
+   "website": "https://www.ncsea.org/ncsea-connects/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "NCSEA Corporate Partners",
-   "website": "https://www.ncsea.org/ncsea-corporate-partners-2/"
+   "website": "https://www.ncsea.org/ncsea-corporate-partners-2/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "NCSEA Job Board",
-   "website": "https://www.ncsea.org/resources-info/job-board/"
+   "website": "https://www.ncsea.org/resources-info/job-board/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "NCSEA Legislative Updates",
-   "website": "https://www.ncsea.org/advocacy-public-policy/legislative-updates/"
+   "website": "https://www.ncsea.org/advocacy-public-policy/legislative-updates/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "NCSEA News",
-   "website": "https://www.ncsea.org/ncsea-news/"
+   "website": "https://www.ncsea.org/ncsea-news/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "NCSEA On Location Podcast",
-   "website": "https://www.ncsea.org/ncsea-on-location-podcast/"
+   "website": "https://www.ncsea.org/ncsea-on-location-podcast/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "NCSEA U",
-   "website": "https://www.ncsea.org/ncsea-u/"
+   "website": "https://www.ncsea.org/ncsea-u/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Nonprofit",
-   "website": "https://www.ncsea.org/membership/nonprofit/"
+   "website": "https://www.ncsea.org/membership/nonprofit/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Podcast",
-   "website": "https://anchor.fm/ncseaonlocation"
+   "website": "https://anchor.fm/ncseaonlocation",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Program Application",
-   "website": "https://childsupport.wyoming.gov/apply/start.php"
+   "website": "https://childsupport.wyoming.gov/apply/start.php",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Program Case Management Portal",
-   "website": "https://childsupport.wyoming.gov/"
+   "website": "https://childsupport.wyoming.gov/",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "Protech Solutions",
@@ -187,23 +271,33 @@
   },
   {
    "name": "Quick Facts for Legislators & Interested Parties",
-   "website": "https://www.ncsea.org/quickfacts/"
+   "website": "https://www.ncsea.org/quickfacts/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Research & Resources",
-   "website": "https://www.ncsea.org/resources-info/"
+   "website": "https://www.ncsea.org/resources-info/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Research Topics",
-   "website": "https://www.ncsea.org/resources-info/research/"
+   "website": "https://www.ncsea.org/resources-info/research/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "SNAP (Supplemental Nutrition Assistance Program)",
-   "website": "https://dfs.wyo.gov/assistance-programs/food-assistance/supplemental-nutrition-assistance-program-snap/"
+   "website": "https://dfs.wyo.gov/assistance-programs/food-assistance/supplemental-nutrition-assistance-program-snap/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "State, Tribal or International IV-D Agency",
-   "website": "https://www.ncsea.org/membership/state-tribal-or-international-iv-d-agency/"
+   "website": "https://www.ncsea.org/membership/state-tribal-or-international-iv-d-agency/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Stellarware Corporation",
@@ -211,55 +305,81 @@
   },
   {
    "name": "Systems & Methods, Inc . (SMI)",
-   "website": "https://smi-inc.com/"
+   "website": "https://smi-inc.com/",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "TANF (Temporary Assistance for Needy Families)",
-   "website": "https://dfs.wyo.gov/assistance-programs/cash-assistance/"
+   "website": "https://dfs.wyo.gov/assistance-programs/cash-assistance/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Twitter",
-   "website": "https://twitter.com/NCSEA1"
+   "website": "https://twitter.com/NCSEA1",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Veritas HHS",
-   "website": "https://www.veritas-hhs.com/"
+   "website": "https://www.veritas-hhs.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "visit.kpmg.us/hhs",
-   "website": "https://kpmg.com/us/en/industries/health-and-human-services.html?utm_source=vanity&amp;utm_medium=ref"
+   "website": "https://kpmg.com/us/en/industries/health-and-human-services.html?utm_source=vanity&amp;utm_medium=ref",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Volunteer Opportunities",
-   "website": "https://www.ncsea.org/volunteer/"
+   "website": "https://www.ncsea.org/volunteer/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Web-Talks",
-   "website": "https://www.ncsea.org/web-talks-2/"
+   "website": "https://www.ncsea.org/web-talks-2/",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "website",
-   "website": "https://smi-inc.com/"
+   "website": "https://smi-inc.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "www.csgdelivers.com",
-   "website": "https://csgdelivers.com/"
+   "website": "https://csgdelivers.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "www.youngwilliams.com",
-   "website": "https://eur02.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.youngwilliams.com%2F&amp;data=02%7C01%7C%7C9f2f2dbdab9a4580275908d82e6a3a75%7Cac144e41800148f09e1c170716ed06b6%7C0%7C0%7C637310381068547577&amp;sdata=nQpe%2FCjzWo74iOCjX0CeDZCFu31zB%2F4NpnLDQKoD%2Fsc%3D&amp;reserved=0"
+   "website": "https://eur02.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.youngwilliams.com%2F&amp;data=02%7C01%7C%7C9f2f2dbdab9a4580275908d82e6a3a75%7Cac144e41800148f09e1c170716ed06b6%7C0%7C0%7C637310381068547577&amp;sdata=nQpe%2FCjzWo74iOCjX0CeDZCFu31zB%2F4NpnLDQKoD%2Fsc%3D&amp;reserved=0",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "YoungWilliams",
-   "website": "http://www.youngwilliams.com"
+   "website": "http://www.youngwilliams.com",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "\u2014 NCSEA Leadership Symposium",
-   "website": "https://www.ncsea.org/ncsea-leadership-symposium/"
+   "website": "https://www.ncsea.org/ncsea-leadership-symposium/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "\u2014 NCSEA Policy Forum",
-   "website": "https://www.ncsea.org/ncsea-policy-forum/"
+   "website": "https://www.ncsea.org/ncsea-policy-forum/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   }
  ],
  "why": null,

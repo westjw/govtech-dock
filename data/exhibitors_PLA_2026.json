@@ -7,7 +7,9 @@
  "exhibitors": [
   {
    "name": "3branch: Product Design Solutions",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "4imprint",
@@ -15,39 +17,57 @@
   },
   {
    "name": "720 design",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "A2Z Events",
-   "website": "https://mya2zevents.com"
+   "website": "https://mya2zevents.com",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "ABDO",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Adilam Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "AdventureKEEN",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "ALA Office of Intellectual Freedom \u2013 UABB \u2013 Freedom to Read Foundation",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "ALA Publishing & Media and ALA Store",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "AM Quartex",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "AmazeWorks",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Amazon Business",
@@ -55,31 +75,45 @@
   },
   {
    "name": "American Psychological Association",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "Andrews McMeel Publishing",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Annick Press",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Anvil Press",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "APG Books",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Aqua by Adobe",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Arcadia Publishing",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "ASLdeafined",
@@ -91,11 +125,15 @@
   },
   {
    "name": "Association for Rural & Small Libraries",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "Association of Bookmobile and Outreach Services",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "AtoZdatabases",
@@ -107,15 +145,21 @@
   },
   {
    "name": "Backstage Library Works",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Baker Publishing Group",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Beacon Press",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Beanstack",
@@ -123,31 +167,45 @@
   },
   {
    "name": "Beech Street Books",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Better Containers Mfg. Co.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Better World Books",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "BiblioCommons Corp.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Bibliotheca",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "BKV Group",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Blackstone Publishing",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Blick Art Materials",
@@ -155,31 +213,45 @@
   },
   {
    "name": "Bloomsbury",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "BMI Digital Reel",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "Booklist Publications",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Booth #H1",
-   "website": "https://s23.a2zinc.net/clients/corcexpo/PLA2026/Public/Eventmap.aspx?EventId=204&amp;MapItBoothID=354133&amp;MapItBooth=H1&amp;MapID=233"
+   "website": "https://s23.a2zinc.net/clients/corcexpo/PLA2026/Public/Eventmap.aspx?EventId=204&amp;MapItBoothID=354133&amp;MapItBooth=H1&amp;MapID=233",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Booth #K5",
-   "website": "https://s23.a2zinc.net/clients/corcexpo/PLA2026/Public/Eventmap.aspx?EventId=204&amp;MapItBoothID=354134&amp;MapItBooth=K5&amp;MapID=233"
+   "website": "https://s23.a2zinc.net/clients/corcexpo/PLA2026/Public/Eventmap.aspx?EventId=204&amp;MapItBoothID=354134&amp;MapItBooth=K5&amp;MapID=233",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Booth #T1",
-   "website": "https://s23.a2zinc.net/clients/corcexpo/PLA2026/Public/Eventmap.aspx?EventId=204&amp;MapItBoothID=305061&amp;MapItBooth=T1&amp;MapID=233"
+   "website": "https://s23.a2zinc.net/clients/corcexpo/PLA2026/Public/Eventmap.aspx?EventId=204&amp;MapItBoothID=305061&amp;MapItBooth=T1&amp;MapID=233",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "EXHIBITOR DIRECTORY",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   }
  ],
  "why": null,

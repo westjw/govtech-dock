@@ -7,11 +7,15 @@
  "exhibitors": [
   {
    "name": "Attendee Toolkit",
-   "website": "https://neworleans.iedconline.org/attendee-toolkit"
+   "website": "https://neworleans.iedconline.org/attendee-toolkit",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Centennial Supporters",
-   "website": "https://neworleans.iedconline.org/centennial-sponsors"
+   "website": "https://neworleans.iedconline.org/centennial-sponsors",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "GIS WebTech",
@@ -23,19 +27,27 @@
   },
   {
    "name": "growamerica.org",
-   "website": "https://growamerica.org/"
+   "website": "https://growamerica.org/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Host Committee",
-   "website": "https://neworleans.iedconline.org/host-committee"
+   "website": "https://neworleans.iedconline.org/host-committee",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Hotel & Travel",
-   "website": "https://neworleans.iedconline.org/hotel-and-travel"
+   "website": "https://neworleans.iedconline.org/hotel-and-travel",
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "Justification Letter",
-   "website": "https://neworleans.iedconline.org/justification-letter"
+   "website": "https://neworleans.iedconline.org/justification-letter",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Localintel",
@@ -43,15 +55,21 @@
   },
   {
    "name": "localintel.com",
-   "website": "https://www.localintel.com/"
+   "website": "https://www.localintel.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Partners",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Plan Your Trip",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Resimplifi",
@@ -59,27 +77,39 @@
   },
   {
    "name": "resimplifi.com/econ-dev",
-   "website": "http://resimplifi.com/econ-dev"
+   "website": "http://resimplifi.com/econ-dev",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "ROI Research on Investment",
-   "website": "https://researchoninvestment.com/"
+   "website": "https://researchoninvestment.com/",
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "Sponsor & Exhibitor Info",
-   "website": "https://neworleans.iedconline.org/sponsor-exhibitor-information"
+   "website": "https://neworleans.iedconline.org/sponsor-exhibitor-information",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Tours & Special Events",
-   "website": "https://neworleans.iedconline.org/special-events"
+   "website": "https://neworleans.iedconline.org/special-events",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Utilities Supporters",
-   "website": "https://neworleans.iedconline.org/utilities"
+   "website": "https://neworleans.iedconline.org/utilities",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "www.giswebtech.com",
-   "website": "https://giswebtech.com/"
+   "website": "https://giswebtech.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   }
  ],
  "why": null,

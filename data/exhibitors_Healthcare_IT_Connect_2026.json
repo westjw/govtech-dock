@@ -15,13 +15,17 @@
    "name": "EQUIFAX",
    "website": "https://theworknumber.com/solutions/industries/government-verification",
    "tier": "Platinum Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Optum",
    "website": null,
    "tier": "Gold Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "leidos",
@@ -33,25 +37,33 @@
    "name": "Progress",
    "website": null,
    "tier": "Gold Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "EY",
    "website": null,
    "tier": "Gold Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "accenture",
    "website": null,
    "tier": "Gold Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Socure",
    "website": null,
    "tier": "Gold Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Acentra Health",
@@ -69,25 +81,33 @@
    "name": "CITIZ3N Government Solutions",
    "website": null,
    "tier": "Gold Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "gainwell",
    "website": "http://gainwelltechnologies.com",
    "tier": "Gold Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Google",
    "website": null,
    "tier": "Gold Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "salesforce",
    "website": "https://www.salesforce.com/government",
    "tier": "Gold Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "CONDUENT",
@@ -99,49 +119,65 @@
    "name": "GDIT",
    "website": "https://www.gdit.com/",
    "tier": "Silver Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "NORTH HIGHLAND",
    "website": "https://www.northhighland.com/industry-expertise/healthcare",
    "tier": "Silver Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "edifecs",
    "website": null,
    "tier": "Silver Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "CSG Government Solutions",
    "website": "https://csgdelivers.com/",
    "tier": "Silver Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "innovaccer",
    "website": "https://innovaccer.com/",
    "tier": "Silver Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "NTT DATA",
    "website": "https://us.nttdata.com/en/industries/public-sector/government-consulting-and-advisory",
    "tier": "Silver Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "GENESYS",
    "website": null,
    "tier": "Silver Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "infor",
    "website": null,
    "tier": "Silver Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "SteadyIQ",
@@ -153,37 +189,49 @@
    "name": "truv",
    "website": null,
    "tier": "Silver Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "ConfigureTek",
    "website": null,
    "tier": "Silver Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "aws",
    "website": "https://aws.amazon.com/stateandlocal/health-and-human-services/cloud-resources/#medicaid",
    "tier": "Bronze Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "PUBLIC KNOWLEDGE",
    "website": "https://pubknow.com/",
    "tier": "Bronze Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Elyon",
    "website": null,
    "tier": "Bronze Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "verato",
    "website": "https://www.verato.com",
    "tier": "Bronze Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Healthy Together",
@@ -195,13 +243,17 @@
    "name": "HSITAG",
    "website": null,
    "tier": "Bronze Community Sponsor",
-   "sells": "Human Services IT Advisory Group (the expansion printed under the HSITAG mark)"
+   "sells": "Human Services IT Advisory Group (the expansion printed under the HSITAG mark)",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Adobe",
    "website": null,
    "tier": "Bronze Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Berry Dunn",
@@ -213,7 +265,9 @@
    "name": "celonis",
    "website": null,
    "tier": "Bronze Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "findhelp",
@@ -225,13 +279,17 @@
    "name": "TEKsystems",
    "website": "https://www.teksystems.com/en/industries/healthcare-technology-solutions",
    "tier": "Bronze Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "IMO Health",
    "website": null,
    "tier": "Bronze Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "SIMPLIGOV",
@@ -243,25 +301,33 @@
    "name": "InterSystems",
    "website": null,
    "tier": "Bronze Community Sponsor",
-   "sells": "Creative data technology (the line printed under the InterSystems mark)"
+   "sells": "Creative data technology (the line printed under the InterSystems mark)",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "argyle",
    "website": null,
    "tier": "Bronze Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Cúram by Merative",
+   "name": "C\u00faram by Merative",
    "website": null,
    "tier": "Bronze Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "MedImpact",
    "website": null,
    "tier": "Corporate Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "beam",
@@ -273,13 +339,17 @@
    "name": "KPMG",
    "website": null,
    "tier": "Corporate Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "KL&A",
    "website": "https://kunzleigh.com/",
    "tier": "Corporate Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "mirza",
@@ -291,19 +361,25 @@
    "name": "smarty",
    "website": null,
    "tier": "Corporate Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "school of lunch",
    "website": null,
    "tier": "Corporate Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "StackAI",
    "website": null,
    "tier": "Corporate Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   }
  ],
  "why": null

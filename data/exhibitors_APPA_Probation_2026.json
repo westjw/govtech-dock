@@ -7,19 +7,27 @@
  "exhibitors": [
   {
    "name": "Abbott Toxicology",
-   "website": "https://www.toxicology.abbott/us/en/products/sotoxa-mobile-test-system.html"
+   "website": "https://www.toxicology.abbott/us/en/products/sotoxa-mobile-test-system.html",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Abraxas Youth & Family Services",
-   "website": "https://abraxasyfs.org/"
+   "website": "https://abraxasyfs.org/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Being Michelle",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Career Fair",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "CATALIS",
@@ -27,47 +35,69 @@
   },
   {
    "name": "Code of Conduct",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Community Corrections Chase (C3)",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Corporate Members",
-   "website": "https://www.appa-net.org/eweb/DynamicPage.aspx?webcode=AboutAPPA-Corporate-Members"
+   "website": "https://www.appa-net.org/eweb/DynamicPage.aspx?webcode=AboutAPPA-Corporate-Members",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Darlene Webb",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Dennis Maloney Project",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "DIMS Product Suite",
-   "website": "https://dimsservices.com/"
+   "website": "https://dimsservices.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Empower Community Care",
-   "website": "https://www.empowercommunitycare.com/"
+   "website": "https://www.empowercommunitycare.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "EXECUTIVE LEADERSHIP SUMMIT",
-   "website": "https://www.appa-net.org/institutes/2026-Summit/"
+   "website": "https://www.appa-net.org/institutes/2026-Summit/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Exhibitor Information",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Exhibitor Kit",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Exhibitor Kit (PDF)",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "FieldWare",
@@ -75,19 +105,27 @@
   },
   {
    "name": "First Time Attendees Networking Event",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Health and Wellness",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Healthy Walking Challenges",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Hotel Reservation",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "iCEV",
@@ -95,15 +133,21 @@
   },
   {
    "name": "In-Person Schedule",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Intensive Sessions",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "jelhardt@vipertradeshow.com",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Journal Technologies",
@@ -111,79 +155,117 @@
   },
   {
    "name": "Judicial Roundtable",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Justice-Involved Individuals Career Fair",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Justify My Attendance Letter",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Juvenile Justice Track",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Lifelab Studio",
-   "website": "https://www.journeydo.com/lifelabs.html"
+   "website": "https://www.journeydo.com/lifelabs.html",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "LifeSafer",
-   "website": "https://www.lifesafer.com/"
+   "website": "https://www.lifesafer.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Networking Event",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Non-denominational Sunday Service",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "North American Learning Institute",
-   "website": "https://courseforcourt.com/"
+   "website": "https://courseforcourt.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Online Order Form",
-   "website": "https://myexpoleads.expologic.com/index.cfm/order/showCode/APPA26Summer"
+   "website": "https://myexpoleads.expologic.com/index.cfm/order/showCode/APPA26Summer",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "PDF Order Form",
-   "website": "https://myexpoleads.expologic.com/index.cfm/forms/showCode/APPA26Summer/"
+   "website": "https://myexpoleads.expologic.com/index.cfm/forms/showCode/APPA26Summer/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Plenary Sessions",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Privacy Policy",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Procivica",
-   "website": "https://www.procivica.com/"
+   "website": "https://www.procivica.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Purchase Lead Retrieval",
-   "website": "https://myexpoleads.expologic.com/index.cfm/order/showCode/APPAW26"
+   "website": "https://myexpoleads.expologic.com/index.cfm/order/showCode/APPAW26",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Register Now",
-   "website": "https://www.appa-net.org/eweb/DynamicPage.aspx?webcode=EventInfo&Reg_evt_key=e6ad316f-cd68-4ff4-b773-2aab57dc46f0"
+   "website": "https://www.appa-net.org/eweb/DynamicPage.aspx?webcode=EventInfo&Reg_evt_key=e6ad316f-cd68-4ff4-b773-2aab57dc46f0",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Registration Form",
-   "website": "https://www.appa-net.org/eweb/Training/TI-A51.pdf"
+   "website": "https://www.appa-net.org/eweb/Training/TI-A51.pdf",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Review the Full Rules & Regulations (PDF)",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "SCHEDULED EVENTS",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Securus Monitoring",
@@ -191,19 +273,27 @@
   },
   {
    "name": "Smart Start",
-   "website": "https://www.smartstartinc.com/"
+   "website": "https://www.smartstartinc.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Sponsor Deck",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "SPONSORS & EXHIBITORS",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Sunday Plenary Session",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "SuperCOM",
@@ -211,11 +301,15 @@
   },
   {
    "name": "TRAVEL & LODGING",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "Tyler Tech Track",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Tyler Technologies",
@@ -223,19 +317,27 @@
   },
   {
    "name": "UCCI Pop-up Sessions",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Virtual Schedule",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Women's Symposium",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Yoga and Breathwork",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   }
  ],
  "why": null,

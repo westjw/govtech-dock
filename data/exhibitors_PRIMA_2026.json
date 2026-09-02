@@ -7,123 +7,183 @@
  "exhibitors": [
   {
    "name": "Attendee Registration",
-   "website": "https://conference.primacentral.org/registration_form.cfm"
+   "website": "https://conference.primacentral.org/registration_form.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Attendee Service Center (Registered)",
-   "website": "https://conference.primacentral.org/registration_update.cfm"
+   "website": "https://conference.primacentral.org/registration_update.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Back to Top",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Conference Schedule at a Glance",
-   "website": "http://conference.primacentral.org/scheduleataglance.cfm"
+   "website": "http://conference.primacentral.org/scheduleataglance.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Conference Scholarship Opportunities",
-   "website": "https://conference.primacentral.org/scholarships.cfm"
+   "website": "https://conference.primacentral.org/scholarships.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Education",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Enterprise Risk Management Training",
-   "website": "http://conference.primacentral.org/erm.cfm"
+   "website": "http://conference.primacentral.org/erm.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Exhibit Booth Sales",
-   "website": "https://conference.primacentral.org/exhibitor_sales.cfm"
+   "website": "https://conference.primacentral.org/exhibitor_sales.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Exhibit Booth Staff Registration",
-   "website": "https://conference.primacentral.org/exhibitor_service_center.cfm"
+   "website": "https://conference.primacentral.org/exhibitor_service_center.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Exhibit Map",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Exhibitor Marketing & Promotion Resources",
-   "website": "http://conference.primacentral.org/exhibitortoolkit.cfm"
+   "website": "http://conference.primacentral.org/exhibitortoolkit.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Exhibitor Prospectus",
-   "website": "https://issuu.com/moiremarketing/docs/prima26_exhibitor_prospectus?fr=sOGZhZjg0MDc3OTQ"
+   "website": "https://issuu.com/moiremarketing/docs/prima26_exhibitor_prospectus?fr=sOGZhZjg0MDc3OTQ",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Exhibitor Service Center (Registered)",
-   "website": "https://conference.primacentral.org/exhibitor_service_center.cfm"
+   "website": "https://conference.primacentral.org/exhibitor_service_center.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Exhibits",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Hotel & Travel",
-   "website": "https://conference.primacentral.org/2026/hotel.cfm"
+   "website": "https://conference.primacentral.org/2026/hotel.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "Justify Your Attendance Letter",
-   "website": "https://conference.primacentral.org//documents/PRIMA26_Justification_Letter.doc"
+   "website": "https://conference.primacentral.org//documents/PRIMA26_Justification_Letter.doc",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Keynotes & General Sessions",
-   "website": "https://conference.primacentral.org/speakers.cfm"
+   "website": "https://conference.primacentral.org/speakers.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Meet the PRIMA26 Student Scholars",
-   "website": "http://conference.primacentral.org/studentscholars.cfm"
+   "website": "http://conference.primacentral.org/studentscholars.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "meetings@primacentral.org",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Moderators",
-   "website": "http://conference.primacentral.org/moderators_information.cfm"
+   "website": "http://conference.primacentral.org/moderators_information.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "PRIMA Code of Conduct",
-   "website": "http://conference.primacentral.org/codeofconduct.cfm"
+   "website": "http://conference.primacentral.org/codeofconduct.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "PRIMA26 Conference Brochure",
-   "website": "https://issuu.com/moiremarketing/docs/prima26_brochure?fr=sNjFmYTg0MDc3OTQ"
+   "website": "https://issuu.com/moiremarketing/docs/prima26_brochure?fr=sNjFmYTg0MDc3OTQ",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "PRIMA26 General Information",
-   "website": "http://conference.primacentral.org/generalinformation.cfm"
+   "website": "http://conference.primacentral.org/generalinformation.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Primacentral.org",
-   "website": "https://primacentral.org/"
+   "website": "https://primacentral.org/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Promote Your Participation",
-   "website": "http://conference.primacentral.org/attendeetoolkit.cfm"
+   "website": "http://conference.primacentral.org/attendeetoolkit.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Registration",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Speaker Registration",
-   "website": "https://conference.primacentral.org//speaker_service_center.cfm"
+   "website": "https://conference.primacentral.org//speaker_service_center.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Speaker Service Center",
-   "website": "https://conference.primacentral.org/speaker_service_center.cfm"
+   "website": "https://conference.primacentral.org/speaker_service_center.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Special Events",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Transportation",
-   "website": "https://conference.primacentral.org/transportation.cfm"
+   "website": "https://conference.primacentral.org/transportation.cfm",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   }
  ],
  "why": null,

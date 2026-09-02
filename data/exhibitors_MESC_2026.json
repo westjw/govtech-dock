@@ -1,214 +1,268 @@
 {
-  "event_tag": "MESC 2026",
-  "conference": "Medicaid Enterprise Systems Conference (MESC) 2026, August 17-20, 2026, Oregon Convention Center, Portland, OR",
-  "found": true,
-  "source_url": "https://www.globenewswire.com/news-release/2026/08/13/3344826/0/en/carahsoft-partner-pavilion-showcases-federal-healthcare-innovations-at-medicaid-enterprise-systems-conference-2026-in-portland-ore-august-17-20.html",
-  "source_note": "PARTIAL LIST - READ THIS BEFORE INTAKE. This is NOT the conference's exhibitor list. NESCSO published no exhibitor, sponsor or vendor roster for MESC 2026 anywhere public; the roster lived only in the attendee-gated event app and the printed program. What IS recorded here is a genuine published list: the Carahsoft Technology Corp. press release of 2026-08-13 on GlobeNewswire, which enumerates Carahsoft plus 33 named technology partners at MESC 2026 under two headings - 'Carahsoft Partners Participating in Carahsoft's Partner Pavilion' (5 companies, each printed with its booth number) and 'Carahsoft Partners Participating Outside Carahsoft's Partner Pavilion' (28 companies, no booth numbers). All 34 names below are transcribed from those two lists exactly as the release prints them. The release states 'Carahsoft and more than 30 technology partners will showcase a full range of Federal healthcare solutions... connect with Carahsoft's vendor partners throughout the show floor' - so the 28 unnumbered companies are asserted to be on the MESC 2026 show floor, but the release does not say each holds its own booth, and that distinction should survive into the map. SCALE CHECK: the show sold far more than this. The conference site's own booth-selection chart for Exhibit Hall C (loaded from https://mesconference.org/wp-admin/admin-ajax.php, action tc_load_seating_map, chart_id 12060, the same call the public 'Pick your seat(s)' button makes) returns 179 booths marked reserved out of roughly 190 plotted, and the MESC about page claims 'well over 100 exhibitors'. So this file covers on the order of a fifth of the hall. CORROBORATION: every booth number in the release resolves to a real booth in that official chart - 410, 315, 311, 414, 416, 317, 313 are all present in the Exhibit Hall C inventory - which is the cross-check that these are true MESC 2026 booth assignments and not marketing shorthand. TRANSCRIPTION CAVEATS: (1) 'Innovacer Inc.' is printed that way in the release; the company trades as Innovaccer, and the name is recorded as the list prints it and should be corrected on intake. (2) 'Curam' is printed bare here; NESCSO's own materials for a separate 2025 summit print it 'Cúram by Merative'. (3) 'Alivia Analytics' is spelled correctly in this release, which is worth noting because the sibling NAMPI 2026 sponsor tile misspells the same company 'Alivia Analyics'. (4) The release gives a website for no partner - the only URL it publishes is Carahsoft's own - so every other website field is null. (5) 'sells' is null for every partner because the release says nothing about what any of them sells; only Carahsoft describes itself. NOT RECORDED HERE, but real and verifiable if the owner wants them: six more MESC 2026 exhibitors published their own booth numbers on their own sites - Maximus booth 711 plus room B113 (maximus.com/events/mesc), Acentra Health booths 821 and 823 plus demo rooms A108/A109 (acentra.com/events/2026-mesc-conference-event), Catalyst Solutions booth 1010 (catalystsolutions.com), KPMG booth 511 (kpmg.com/us/en/events/2026/kpmg-mesc-2026.html), Gainwell Technologies (gainwelltechnologies.com) and Conduent (conduent.com). Each of those booth numbers also resolves in the official chart. They are vendor self-announcements, not an exhibitor list, so following the same discipline used for NAMD 2025 they are named here rather than recorded as list rows. WHAT WAS TRIED AND FAILED: mesconference.org has no exhibitor or sponsor page - its full page sitemap is 25 pages and the only sponsorship-side pages are a sales page and an 'already a sponsor?' page that just tells sponsors to look for an email; /registration/, /agenda/ and /sponsorships-2026/ now 404 post-event; the WordPress REST API returns 0 items for the 'project' and 'tribe_events' types and nothing sponsor-shaped under any other type; the media library holds 28 items uploaded in 2026 and the only 2026 PDF of substance is a Day-at-a-Glance grid (rendered and read - it is a schedule, no company names). Program PDFs with exhibitor descriptions ARE public for 2017-2019 and 2021-2024, but NESCSO stopped publishing them after 2024 and issued no 2026 program PDF. Wayback holds 5,118 captures of the domain and its newest is June 2026, with no exhibitor page in any year after 2013. THE EVENT APP: the site's 2026-08-10 post 'Registered Attendees - Download the App Today' carries only a QR image, no link. I decoded that QR offline (pure-Python PNG reader plus a QR decoder; version 4, mask 4, EC level M, format bits matched a valid codeword at Hamming distance 0, so the read is exact) and it resolves to https://event-app.cvent.me/dl/SbTtlYULIKb?feature=openEvent - a Cvent Attendee Hub deep link. That URL serves only an app-store landing page and never discloses the event id, and the hub itself is attendee-gated: MESC 2026 sold out and the site posted 'we are at capacity and cannot accommodate any additional attendees.' The 'full MESC floorplan' link inside the Carahsoft release was also chased - it is a GlobeNewswire tracker that redirects back to mesconference.org's exhibit-hall page, whose only floor plan is a 158x277 px unlabeled hall outline. Event is PAST; it finished 2026-08-20, five days before this pass. Everything above was fetched live on 2026-08-25.",
-  "exhibitors": [
-    {
-      "name": "Carahsoft Technology Corp",
-      "website": "https://www.carahsoft.com",
-      "tier": "Booth #410, Carahsoft Pavilion",
-      "sells": "Government IT solutions aggregator and reseller for the healthcare industry - healthcare technology, cybersecurity, multicloud, DevSecOps, artificial intelligence, customer experience and open source, sold to Federal, State and Local government, education and healthcare through contract vehicles."
-    },
-    {
-      "name": "Cloudera",
-      "website": null,
-      "tier": "Booth #315, Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Datadog",
-      "website": null,
-      "tier": "Booth #311, Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Equifax",
-      "website": null,
-      "tier": "Booths #414, #416, Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Nutanix",
-      "website": null,
-      "tier": "Booth #317, Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Wiz",
-      "website": null,
-      "tier": "Booth #313, Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Adobe",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Alivia Analytics",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "AWS",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Curam",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Databricks",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Genesys",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Harmony Healthcare IT",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "HealthTech Solutions",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "IBM",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "ID.me",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Infosys Public Services",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Innovacer Inc.",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Jama Software",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "KPMG",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "LexisNexis",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Progress Federal",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Rubrik",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Salesforce",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "SAS",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "ServiceNow",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Snowflake",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Speridian",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Splunk",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "SteadyIQ",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Telligen",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "TransUnion",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Unite Us",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    },
-    {
-      "name": "Verato",
-      "website": null,
-      "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
-      "sells": null
-    }
-  ],
-  "why": null
+ "event_tag": "MESC 2026",
+ "conference": "Medicaid Enterprise Systems Conference (MESC) 2026, August 17-20, 2026, Oregon Convention Center, Portland, OR",
+ "found": true,
+ "source_url": "https://www.globenewswire.com/news-release/2026/08/13/3344826/0/en/carahsoft-partner-pavilion-showcases-federal-healthcare-innovations-at-medicaid-enterprise-systems-conference-2026-in-portland-ore-august-17-20.html",
+ "source_note": "PARTIAL LIST - READ THIS BEFORE INTAKE. This is NOT the conference's exhibitor list. NESCSO published no exhibitor, sponsor or vendor roster for MESC 2026 anywhere public; the roster lived only in the attendee-gated event app and the printed program. What IS recorded here is a genuine published list: the Carahsoft Technology Corp. press release of 2026-08-13 on GlobeNewswire, which enumerates Carahsoft plus 33 named technology partners at MESC 2026 under two headings - 'Carahsoft Partners Participating in Carahsoft's Partner Pavilion' (5 companies, each printed with its booth number) and 'Carahsoft Partners Participating Outside Carahsoft's Partner Pavilion' (28 companies, no booth numbers). All 34 names below are transcribed from those two lists exactly as the release prints them. The release states 'Carahsoft and more than 30 technology partners will showcase a full range of Federal healthcare solutions... connect with Carahsoft's vendor partners throughout the show floor' - so the 28 unnumbered companies are asserted to be on the MESC 2026 show floor, but the release does not say each holds its own booth, and that distinction should survive into the map. SCALE CHECK: the show sold far more than this. The conference site's own booth-selection chart for Exhibit Hall C (loaded from https://mesconference.org/wp-admin/admin-ajax.php, action tc_load_seating_map, chart_id 12060, the same call the public 'Pick your seat(s)' button makes) returns 179 booths marked reserved out of roughly 190 plotted, and the MESC about page claims 'well over 100 exhibitors'. So this file covers on the order of a fifth of the hall. CORROBORATION: every booth number in the release resolves to a real booth in that official chart - 410, 315, 311, 414, 416, 317, 313 are all present in the Exhibit Hall C inventory - which is the cross-check that these are true MESC 2026 booth assignments and not marketing shorthand. TRANSCRIPTION CAVEATS: (1) 'Innovacer Inc.' is printed that way in the release; the company trades as Innovaccer, and the name is recorded as the list prints it and should be corrected on intake. (2) 'Curam' is printed bare here; NESCSO's own materials for a separate 2025 summit print it 'C\u00faram by Merative'. (3) 'Alivia Analytics' is spelled correctly in this release, which is worth noting because the sibling NAMPI 2026 sponsor tile misspells the same company 'Alivia Analyics'. (4) The release gives a website for no partner - the only URL it publishes is Carahsoft's own - so every other website field is null. (5) 'sells' is null for every partner because the release says nothing about what any of them sells; only Carahsoft describes itself. NOT RECORDED HERE, but real and verifiable if the owner wants them: six more MESC 2026 exhibitors published their own booth numbers on their own sites - Maximus booth 711 plus room B113 (maximus.com/events/mesc), Acentra Health booths 821 and 823 plus demo rooms A108/A109 (acentra.com/events/2026-mesc-conference-event), Catalyst Solutions booth 1010 (catalystsolutions.com), KPMG booth 511 (kpmg.com/us/en/events/2026/kpmg-mesc-2026.html), Gainwell Technologies (gainwelltechnologies.com) and Conduent (conduent.com). Each of those booth numbers also resolves in the official chart. They are vendor self-announcements, not an exhibitor list, so following the same discipline used for NAMD 2025 they are named here rather than recorded as list rows. WHAT WAS TRIED AND FAILED: mesconference.org has no exhibitor or sponsor page - its full page sitemap is 25 pages and the only sponsorship-side pages are a sales page and an 'already a sponsor?' page that just tells sponsors to look for an email; /registration/, /agenda/ and /sponsorships-2026/ now 404 post-event; the WordPress REST API returns 0 items for the 'project' and 'tribe_events' types and nothing sponsor-shaped under any other type; the media library holds 28 items uploaded in 2026 and the only 2026 PDF of substance is a Day-at-a-Glance grid (rendered and read - it is a schedule, no company names). Program PDFs with exhibitor descriptions ARE public for 2017-2019 and 2021-2024, but NESCSO stopped publishing them after 2024 and issued no 2026 program PDF. Wayback holds 5,118 captures of the domain and its newest is June 2026, with no exhibitor page in any year after 2013. THE EVENT APP: the site's 2026-08-10 post 'Registered Attendees - Download the App Today' carries only a QR image, no link. I decoded that QR offline (pure-Python PNG reader plus a QR decoder; version 4, mask 4, EC level M, format bits matched a valid codeword at Hamming distance 0, so the read is exact) and it resolves to https://event-app.cvent.me/dl/SbTtlYULIKb?feature=openEvent - a Cvent Attendee Hub deep link. That URL serves only an app-store landing page and never discloses the event id, and the hub itself is attendee-gated: MESC 2026 sold out and the site posted 'we are at capacity and cannot accommodate any additional attendees.' The 'full MESC floorplan' link inside the Carahsoft release was also chased - it is a GlobeNewswire tracker that redirects back to mesconference.org's exhibit-hall page, whose only floor plan is a 158x277 px unlabeled hall outline. Event is PAST; it finished 2026-08-20, five days before this pass. Everything above was fetched live on 2026-08-25.",
+ "exhibitors": [
+  {
+   "name": "Carahsoft Technology Corp",
+   "website": "https://www.carahsoft.com",
+   "tier": "Booth #410, Carahsoft Pavilion",
+   "sells": "Government IT solutions aggregator and reseller for the healthcare industry - healthcare technology, cybersecurity, multicloud, DevSecOps, artificial intelligence, customer experience and open source, sold to Federal, State and Local government, education and healthcare through contract vehicles."
+  },
+  {
+   "name": "Cloudera",
+   "website": null,
+   "tier": "Booth #315, Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Datadog",
+   "website": null,
+   "tier": "Booth #311, Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Equifax",
+   "website": null,
+   "tier": "Booths #414, #416, Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Nutanix",
+   "website": null,
+   "tier": "Booth #317, Carahsoft Pavilion",
+   "sells": null
+  },
+  {
+   "name": "Wiz",
+   "website": null,
+   "tier": "Booth #313, Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Adobe",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Alivia Analytics",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null
+  },
+  {
+   "name": "AWS",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Curam",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Databricks",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Genesys",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Harmony Healthcare IT",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "HealthTech Solutions",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "IBM",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ID.me",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null
+  },
+  {
+   "name": "Infosys Public Services",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Innovacer Inc.",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Jama Software",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "KPMG",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "LexisNexis",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Progress Federal",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Rubrik",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Salesforce",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "SAS",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ServiceNow",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Snowflake",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Speridian",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null
+  },
+  {
+   "name": "Splunk",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "SteadyIQ",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null
+  },
+  {
+   "name": "Telligen",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "TransUnion",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Unite Us",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null
+  },
+  {
+   "name": "Verato",
+   "website": null,
+   "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  }
+ ],
+ "why": null
 }

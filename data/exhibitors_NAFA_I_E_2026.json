@@ -7,83 +7,123 @@
  "exhibitors": [
   {
    "name": "Attend",
-   "website": "https://www.nafainstitute.org/attend/"
+   "website": "https://www.nafainstitute.org/attend/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "CAFM Live",
-   "website": "https://www.nafainstitute.org/program-schedule/cafm-live/"
+   "website": "https://www.nafainstitute.org/program-schedule/cafm-live/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "CAFM Recertification Points",
-   "website": "https://www.nafainstitute.org/program-schedule/continuing-professional-education-cpe-points/"
+   "website": "https://www.nafainstitute.org/program-schedule/continuing-professional-education-cpe-points/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Contact NAFA",
-   "website": "https://www.nafainstitute.org/contact-nafa/"
+   "website": "https://www.nafainstitute.org/contact-nafa/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Exhibit Space",
-   "website": "https://www.nafainstitute.org/exhibitors-sponsors/exhibit-space/"
+   "website": "https://www.nafainstitute.org/exhibitors-sponsors/exhibit-space/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Exhibits & Sponsors",
-   "website": "https://www.nafainstitute.org/exhibitors-sponsors/"
+   "website": "https://www.nafainstitute.org/exhibitors-sponsors/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "First Timer Program",
-   "website": "https://www.nafainstitute.org/attend/first-timer-program/"
+   "website": "https://www.nafainstitute.org/attend/first-timer-program/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Future Meetings",
-   "website": "https://www.nafainstitute.org/future-meetings/"
+   "website": "https://www.nafainstitute.org/future-meetings/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Hotel & Travel",
-   "website": "https://www.nafainstitute.org/attend/hotel-travel/"
+   "website": "https://www.nafainstitute.org/attend/hotel-travel/",
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
    "name": "Indoor EV Test Track",
-   "website": "https://www.nafainstitute.org/exhibitors-sponsors/indoor-ev-test-track/"
+   "website": "https://www.nafainstitute.org/exhibitors-sponsors/indoor-ev-test-track/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Innovations Showcase",
-   "website": "https://www.nafainstitute.org/exhibitors-sponsors/innovations-showcase/"
+   "website": "https://www.nafainstitute.org/exhibitors-sponsors/innovations-showcase/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Media Day",
-   "website": "https://www.nafainstitute.org/exhibitors-sponsors/media-day/"
+   "website": "https://www.nafainstitute.org/exhibitors-sponsors/media-day/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Pre-Conference Events",
-   "website": "https://www.nafainstitute.org/program-schedule/pre-con/"
+   "website": "https://www.nafainstitute.org/program-schedule/pre-con/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Privacy Policy",
-   "website": "https://www.nafainstitute.org/privacy-policy/"
+   "website": "https://www.nafainstitute.org/privacy-policy/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Ride & Drive",
-   "website": "https://www.nafainstitute.org/exhibitors-sponsors/ride-and-drive/"
+   "website": "https://www.nafainstitute.org/exhibitors-sponsors/ride-and-drive/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Ride & Drive Experience",
-   "website": "https://www.nafainstitute.org/program-schedule/ride-drive/"
+   "website": "https://www.nafainstitute.org/program-schedule/ride-drive/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Sponsorship and Advertising",
-   "website": "https://www.nafainstitute.org/exhibitors-sponsors/sponsorship-opportunities/"
+   "website": "https://www.nafainstitute.org/exhibitors-sponsors/sponsorship-opportunities/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Stay Connected",
-   "website": "https://nafa.ps.membersuite.com/profile/CreateAccount_BasicInfo.aspx"
+   "website": "https://nafa.ps.membersuite.com/profile/CreateAccount_BasicInfo.aspx",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Technician Training",
-   "website": "https://www.nafainstitute.org/program-schedule/technician-training/"
+   "website": "https://www.nafainstitute.org/program-schedule/technician-training/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Terms and Conditions and Code of Conduct",
-   "website": "https://www.nafainstitute.org/terms-and-conditions/"
+   "website": "https://www.nafainstitute.org/terms-and-conditions/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   }
  ],
  "why": null,

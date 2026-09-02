@@ -1,576 +1,748 @@
 {
-  "event_tag": "SALGBA 2026",
-  "conference": "SALGBA Annual (State and Local Government Benefits Association) 2026 National Conference",
-  "found": true,
-  "source_url": "https://s3.amazonaws.com/amo_hub_content/Association119/files/SALGBA2026%20Program-9%28Red2%29.pdf",
-  "source_note": "The official SALGBA 2026 onsite program (PDF), published by the association itself in the S3 bucket that serves salgba.org's file library (bucket amo_hub_content, prefix Association119/files/, the store behind the site's wp-amo plugin). This is the final program revision, 'SALGBA2026 Program-9(Red2).pdf', last modified 2026-05-04 - the conference's own opening day. TWO SECTIONS OF IT ARE USED. (1) Page 57, 'Exhibit Hall List - Alphabetical', is the exhibitor list proper: 88 companies, each with a booth number, and it is the source of every name and booth recorded here. (2) Pages 58-66 are the sponsor pages - Premier (58-61), Diamond (62), Platinum (63-65), Silver and Bronze (66) - and are the only source of the 'tier' levels and of every 'sells' line. The exhibit hall list itself says nothing about what anyone sells and prints no websites, so a company that took a booth but bought no sponsorship has sells null; that is most of the list. PAIRING NAMES TO BOOTHS: page 57 is laid out as two column-pairs and the program is a Canva export whose right-hand column of names sits in a nested form XObject, so a naive text extraction returns all 88 names and then all 88 booth numbers as two separate runs. The left column (44 names, 9amHealth through Linea Solutions) was read row by row with pdfminer, which resolves it directly and unambiguously. The right column (44 names, Lucid Diagnostics through WEX) was paired by order, both runs being alphabetical, and then checked against two outside sources that state their own booth independently: navigatewell.com gives Navigate booth 406 and laborfirst.com/retireefirst gives booth 218, and the order-pairing puts Navigate Wellbeing Solutions at 406 and Retiree First at 218. TWO ANOMALIES IN THE SOURCE, both left as printed: booth 430 is printed twice, against Included Health and against Partnership Health Centers; and Wellworks For You has 'Screen' where a booth number belongs, apparently a floor-plan position rather than a numbered booth. THREE MISSPELLINGS in the exhibit hall list, recorded as the list prints them and flagged for correction on intake - 'Evernoth Health Services' (the program's own sponsor page spells it Evernorth Health Services), 'WebMD Health Servies' (sponsor page: WebMD Health Services), and the Bronze sponsor 'Solrera Health' (almost certainly Solera Health, whose own site carries a SALGBA 2026 page). Where the sponsor pages spell a company differently from the exhibit hall list, an 'also_printed_as' field carries the sponsor-page spelling. FIVE COMPANIES ARE SPONSORS WITH NO BOOTH on the exhibit hall list - CVS Caremark, Aon, Solrera Health, Wondr Health and Candesa Pharmacy Solution - and are recorded with their tier and booth noted as absent. CVS is the one judgement call: the exhibit hall list carries 'CVS Health' (booth 100) and 'CVS Healthspire' (booth 104), and the program separately names 'CVS Caremark' as a Premier sponsor, so CVS Caremark is kept as its own printed name rather than merged. Websites are null except for the four companies whose own blurb prints a URL. The 'tier' field carries the sponsor level and the booth number together because the output schema has one field for both. CROSS-CHECKS AND DEAD ENDS: the conference's Cvent registration site (web.cvent.com/event/af1ad26a-1971-4c80-8db6-67e29beaf7cf) has been taken down and its archived captures render nothing, salgba.org/events has already rolled over to the 2027 Madison meeting, and the members.salgba.org portal is behind a login; the logo carousel on salgba.org is the association's year-round corporate sponsor roster, NOT this conference's exhibitor list, and was deliberately not used. 'SALGBA2026 Final Floor Plan.pdf' in the same bucket is vector art with no extractable text and page 56 of the program, the Exhibit Hall Map, is a flat image, so neither could confirm the booth pairing; the outside booth citations above stand in for them. The 'SALGBA 2026 Exhibitor Service Manual.pdf' is Capital Convention Contractors logistics and names no exhibitors. Event is PAST: it ran May 4-7, 2026 at the Rhode Island Convention Center in Providence, RI (the exhibit hall ran May 4-6). Fetched 2026-08-25 from the live S3 bucket; no archive needed.",
-  "exhibitors": [
-    {
-      "name": "9amHealth",
-      "website": null,
-      "tier": "Booth 131",
-      "sells": null
-    },
-    {
-      "name": "Abacus Health Solutions",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 214",
-      "sells": "Chronic condition cost reduction for diabetes, hypertension and obesity via the Good Health Gateway platform, sold through employers."
-    },
-    {
-      "name": "Aetna",
-      "website": null,
-      "tier": "Premier Sponsor - Wednesday Evening Event Sponsor; Booth 101",
-      "sells": "Traditional, voluntary and consumer-directed health insurance - medical, pharmacy, dental and behavioral health plans, medical management, Medicaid health care management and workers' compensation administrative services."
-    },
-    {
-      "name": "AHIP",
-      "website": null,
-      "tier": "Booth 304",
-      "sells": null
-    },
-    {
-      "name": "Alight Solutions",
-      "website": null,
-      "tier": "Premier Sponsor - Wednesday Reception Sponsor; Booth 306",
-      "sells": "Cloud-based human capital technology; the Alight Worklife platform for benefits management and data-driven insights for public sector employees.",
-      "also_printed_as": "Alight"
-    },
-    {
-      "name": "Ameriflex",
-      "website": null,
-      "tier": "Booth 224",
-      "sells": null
-    },
-    {
-      "name": "Anthem BCBS",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 312",
-      "sells": "Health benefits for 7M+ public sector members across 16 markets - commercial plans for government employees and Medicare Advantage for retirees; a subsidiary of Elevance Health.",
-      "also_printed_as": "Anthem"
-    },
-    {
-      "name": "Aptia",
-      "website": null,
-      "tier": "Booth 425",
-      "sells": null
-    },
-    {
-      "name": "ArrayRX",
-      "website": null,
-      "tier": "Booth 112",
-      "sells": null
-    },
-    {
-      "name": "Benecard PBF",
-      "website": null,
-      "tier": "Booth 225",
-      "sells": null
-    },
-    {
-      "name": "Benefitfocus",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 109",
-      "sells": "Benefits administration technology; a Voya Financial business."
-    },
-    {
-      "name": "BenefitsMe",
-      "website": null,
-      "tier": "Booth 426",
-      "sells": null
-    },
-    {
-      "name": "Bentek",
-      "website": null,
-      "tier": "Booth 125",
-      "sells": null
-    },
-    {
-      "name": "Blue Cross Blue Shield Association- Blue365",
-      "website": null,
-      "tier": "Booth 134",
-      "sells": null
-    },
-    {
-      "name": "Businessolver",
-      "website": null,
-      "tier": "Booth 136",
-      "sells": null
-    },
-    {
-      "name": "CancerNavigator",
-      "website": null,
-      "tier": "Booth 105",
-      "sells": null
-    },
-    {
-      "name": "CareATC",
-      "website": null,
-      "tier": "Booth 135",
-      "sells": null
-    },
-    {
-      "name": "Carrot",
-      "website": null,
-      "tier": "Booth 130",
-      "sells": null
-    },
-    {
-      "name": "Carrum Health",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 206",
-      "sells": "Value-based Centers of Excellence specialty care solution with bundled pricing and care navigation for self-insured employers and plan sponsors."
-    },
-    {
-      "name": "Color Health",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 313",
-      "sells": "Cancer care platform - oncologist-led risk identification, earlier detection, treatment management and survivorship."
-    },
-    {
-      "name": "CTI Audit Solutions",
-      "website": null,
-      "tier": "Booth 307",
-      "sells": null
-    },
-    {
-      "name": "CVS Health",
-      "website": null,
-      "tier": "Booth 100",
-      "sells": null
-    },
-    {
-      "name": "CVS Healthspire",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 104",
-      "sells": "Population health solutions that complement existing benefits - clinical program design and member engagement."
-    },
-    {
-      "name": "Eli Lilly and Company",
-      "website": "https://Lilly.com",
-      "tier": "Diamond Sponsor; Booth 405",
-      "sells": "Pharmaceuticals - medicines reaching more than 51 million people worldwide."
-    },
-    {
-      "name": "Employers Health",
-      "website": null,
-      "tier": "Booth 127",
-      "sells": null
-    },
-    {
-      "name": "Empyrean",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 208",
-      "sells": "Benefits administration SaaS platform and services for employers, serving over 6.5 million people."
-    },
-    {
-      "name": "Evernoth Health Services",
-      "website": null,
-      "tier": "Premier Sponsor - Awards Luncheon Sponsor; Booth 201",
-      "sells": "Integrated prescription benefit offerings through Express Scripts Pharmacy Benefit Services for health plans, employers, labor unions and government agencies.",
-      "also_printed_as": "Evernorth Health Services"
-    },
-    {
-      "name": "EyeMed",
-      "website": null,
-      "tier": "Booth 114",
-      "sells": null
-    },
-    {
-      "name": "finHealth",
-      "website": null,
-      "tier": "Booth 230",
-      "sells": null
-    },
-    {
-      "name": "Form Health",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 404",
-      "sells": "Virtual obesity and cardiometabolic care led by board-certified obesity medicine physicians, sold to employers as a benefit."
-    },
-    {
-      "name": "Galileo",
-      "website": null,
-      "tier": "Booth 116",
-      "sells": null
-    },
-    {
-      "name": "Galleri",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 115",
-      "sells": "Multi-cancer early detection screening using DNA sequencing (GRAIL)."
-    },
-    {
-      "name": "Garner Health",
-      "website": null,
-      "tier": "Booth 330",
-      "sells": null
-    },
-    {
-      "name": "Green Imaging",
-      "website": null,
-      "tier": "Booth 412",
-      "sells": null
-    },
-    {
-      "name": "Health Advocate",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 212",
-      "sells": "Healthcare navigation and advocacy - expert guidance plus AI-powered technology for personalized whole-person care."
-    },
-    {
-      "name": "Healthee",
-      "website": null,
-      "tier": "Booth 435",
-      "sells": null
-    },
-    {
-      "name": "Hello Heart",
-      "website": null,
-      "tier": "Premier Sponsor - Tuesday Lunch Sponsor; Booth 300",
-      "sells": "Connected blood-pressure monitor, pill box and app for heart health, sold to employers, health plans and labor organizations."
-    },
-    {
-      "name": "Hinge Health",
-      "website": null,
-      "tier": "Premier Sponsor - Tuesday Breakfast Sponsor; Booth 401",
-      "sells": "Unified musculoskeletal (MSK) solution for employers and health plans - AI-powered care model with a multidisciplinary care team."
-    },
-    {
-      "name": "HMS",
-      "website": null,
-      "tier": "Booth 231",
-      "sells": null
-    },
-    {
-      "name": "Humana",
-      "website": null,
-      "tier": "Diamond Sponsor; Booth 407",
-      "sells": "Humana insurance services and CenterWell healthcare services for Medicare, Medicaid, families, individuals and military service personnel."
-    },
-    {
-      "name": "IMA",
-      "website": null,
-      "tier": "Booth 331",
-      "sells": null
-    },
-    {
-      "name": "Included Health",
-      "website": null,
-      "tier": "Booth 430",
-      "sells": null
-    },
-    {
-      "name": "Lantern",
-      "website": null,
-      "tier": "Premier Sponsor - Wednesday Breakfast Sponsor; Booth 301",
-      "sells": "Specialty care platform with a curated Network of Excellence for surgery, cancer care and infusions, plus dedicated care teams."
-    },
-    {
-      "name": "Linea Solutions",
-      "website": null,
-      "tier": "Booth 118",
-      "sells": null
-    },
-    {
-      "name": "Lucid Diagnostics",
-      "website": null,
-      "tier": "Booth 128",
-      "sells": null
-    },
-    {
-      "name": "Lyra Health",
-      "website": null,
-      "tier": "Booth 133",
-      "sells": null
-    },
-    {
-      "name": "Maven Clinic",
-      "website": null,
-      "tier": "Booth 129",
-      "sells": null
-    },
-    {
-      "name": "McGriff, A Marsh & McLennan Agency",
-      "website": null,
-      "tier": "Diamond Sponsor; Booth 209",
-      "sells": "Employee health and benefit brokerage and consulting for public employers nationwide.",
-      "also_printed_as": "McGriff a Marsh & McLennan Agency"
-    },
-    {
-      "name": "Medefy",
-      "website": null,
-      "tier": "Booth 207",
-      "sells": null
-    },
-    {
-      "name": "MedImpact",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 215",
-      "sells": "Independent pharmacy benefit management for commercial health plans, government programs and self-insured/employer groups."
-    },
-    {
-      "name": "MetLife",
-      "website": null,
-      "tier": "Booth 205",
-      "sells": null
-    },
-    {
-      "name": "Navigate Wellbeing Solutions",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 406",
-      "sells": "Wellbeing platform - member engagement, point-of-care solution integration, pharmacist-led health coaching and virtual care."
-    },
-    {
-      "name": "Navitus Health Solutions",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 310",
-      "sells": "Transparent pass-through pharmacy benefit management serving 18 million members; brands include Navitus, Lumicera and Archimedes. Owned by SSM Health and Costco Wholesale.",
-      "also_printed_as": "Navitus Health"
-    },
-    {
-      "name": "Novo Nordisk",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 113",
-      "sells": "Pharmaceuticals for diabetes, obesity, rare blood and endocrine disorders."
-    },
-    {
-      "name": "Nox Health",
-      "website": null,
-      "tier": "Booth 228",
-      "sells": null
-    },
-    {
-      "name": "Omada Health",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 309",
-      "sells": "Virtual care for cardiometabolic and musculoskeletal conditions - connected devices, app and human coaching; a HIPAA-covered healthcare provider."
-    },
-    {
-      "name": "Opioid Free America",
-      "website": null,
-      "tier": "Booth 229",
-      "sells": null
-    },
-    {
-      "name": "Optum Rx",
-      "website": null,
-      "tier": "Booth 325",
-      "sells": null
-    },
-    {
-      "name": "Oshi Health",
-      "website": null,
-      "tier": "Booth 328",
-      "sells": null
-    },
-    {
-      "name": "Partnership Health Centers",
-      "website": null,
-      "tier": "Booth 430",
-      "sells": null
-    },
-    {
-      "name": "Pelago",
-      "website": null,
-      "tier": "Booth 234",
-      "sells": null
-    },
-    {
-      "name": "Personify Health",
-      "website": null,
-      "tier": "Silver Sponsor; Booth 107",
-      "sells": "Third-party administration, wellbeing and care navigation combined in one personalized health platform."
-    },
-    {
-      "name": "Pomelo Care",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 305",
-      "sells": "Virtual care across women's health - preconception, pregnancy, pediatric care and hormonal health (peri/menopause) for 25M covered lives."
-    },
-    {
-      "name": "Progyny",
-      "website": null,
-      "tier": "Booth 202",
-      "sells": null
-    },
-    {
-      "name": "Quantum Health",
-      "website": null,
-      "tier": "Premier Sponsor - Until Next Year Sponsor; Booth 400",
-      "sells": "Healthcare navigation for 8M+ members - single point of contact, clinical expertise and predictive AI; acquired Embold Health in 2025."
-    },
-    {
-      "name": "Quizzify",
-      "website": null,
-      "tier": "Booth 324",
-      "sells": null
-    },
-    {
-      "name": "RazorMetrics",
-      "website": null,
-      "tier": "Booth 329",
-      "sells": null
-    },
-    {
-      "name": "Retiree First",
-      "website": null,
-      "tier": "Premier Sponsor - Tuesday Reception Sponsor; Booth 218",
-      "sells": "End-to-end retiree benefits management - designs, implements, manages and administers Medicare benefits for plan sponsors, brokers and consultants.",
-      "also_printed_as": "RetireeFirst"
-    },
-    {
-      "name": "Rightway",
-      "website": null,
-      "tier": "Booth 428",
-      "sells": null
-    },
-    {
-      "name": "Segal",
-      "website": null,
-      "tier": "Diamond Sponsor; Booth 200",
-      "sells": "Consulting to plan sponsors on health care, retirement, compensation and human resources programs; founded 1939, focused on public sector plan sponsors."
-    },
-    {
-      "name": "Sharecare",
-      "website": null,
-      "tier": "Booth 424",
-      "sells": null
-    },
-    {
-      "name": "SlateRx",
-      "website": null,
-      "tier": "Booth 227",
-      "sells": null
-    },
-    {
-      "name": "SmartLight Analytics",
-      "website": null,
-      "tier": "Diamond Sponsor; Booth 408",
-      "sells": "Claims analysis for self-funded plans - proprietary AI plus clinical review to find waste, errors and overpayments in medical, pharmacy and dental billing."
-    },
-    {
-      "name": "Sourcewell",
-      "website": null,
-      "tier": "Booth 126",
-      "sells": null
-    },
-    {
-      "name": "Spring Health",
-      "website": null,
-      "tier": "Booth 326",
-      "sells": null
-    },
-    {
-      "name": "Sword Health",
-      "website": null,
-      "tier": "Booth 427",
-      "sells": null
-    },
-    {
-      "name": "TELUS Health",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 110",
-      "sells": "Benefits and pension administration technology and outsourcing for public sector organizations; SaaS, co-sourcing or full outsourcing for 10M+ participants."
-    },
-    {
-      "name": "The Hartford",
-      "website": null,
-      "tier": "Booth 429",
-      "sells": null
-    },
-    {
-      "name": "The Phia Group",
-      "website": null,
-      "tier": "Booth 327",
-      "sells": null
-    },
-    {
-      "name": "Truven by Merative",
-      "website": null,
-      "tier": "Booth 431",
-      "sells": null
-    },
-    {
-      "name": "Twin Health",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 232",
-      "sells": "AI Digital Twin metabolic care with clinical support, sold to employers and health plans."
-    },
-    {
-      "name": "UnitedHealthCare Retiree Solutions",
-      "website": "https://uhc.com/retiree",
-      "tier": "Premier Sponsor - Opening Reception Sponsor; Booth 319",
-      "sells": "Group-sponsored retiree coverage for 1.7M+ retirees; customizable Medicare Advantage plans with or without prescription drug coverage.",
-      "also_printed_as": "UnitedHealthcare Retiree Solutions"
-    },
-    {
-      "name": "Vera Whole Health",
-      "website": null,
-      "tier": "Booth 204",
-      "sells": null
-    },
-    {
-      "name": "Via Benefits",
-      "website": null,
-      "tier": "Bronze Sponsor; Booth 410",
-      "sells": "Individual marketplace health insurance and spending account administration for employers, plan sponsors, employees and retirees."
-    },
-    {
-      "name": "Virta Health",
-      "website": "https://www.virtahealth.com",
-      "tier": "Diamond Sponsor; Booth 106",
-      "sells": "AI-powered individualized nutrition therapy to reverse metabolic disease, sold to employers, payers and pharmacy benefit managers."
-    },
-    {
-      "name": "WebMD Health Servies",
-      "website": null,
-      "tier": "Platinum Sponsor; Booth 213",
-      "sells": "Employee wellbeing programs and engagement platform for 3,500+ organizations.",
-      "also_printed_as": "WebMD Health Services"
-    },
-    {
-      "name": "Wellworks For You",
-      "website": null,
-      "tier": "Exhibit hall list prints \"Screen\" in place of a booth number",
-      "sells": null
-    },
-    {
-      "name": "WEX",
-      "website": null,
-      "tier": "Booth 226",
-      "sells": null
-    },
-    {
-      "name": "CVS Caremark",
-      "website": "https://business.caremark.com",
-      "tier": "Premier Sponsor - Tuesday Evening Event Sponsor; no booth on the exhibit hall list",
-      "sells": "Pharmacy benefit management for employer and health plan clients - real-time data to analyze trends and optimize pharmacy benefit spend."
-    },
-    {
-      "name": "Aon",
-      "website": null,
-      "tier": "Platinum Sponsor; no booth on the exhibit hall list",
-      "sells": "Public Sector Health and Benefits consulting and actuarial services for states, cities, counties, towns, K-12 districts, benefits pools and federal agencies."
-    },
-    {
-      "name": "Solrera Health",
-      "website": null,
-      "tier": "Silver Sponsor; no booth on the exhibit hall list",
-      "sells": null
-    },
-    {
-      "name": "Wondr Health",
-      "website": null,
-      "tier": "Silver Sponsor; no booth on the exhibit hall list",
-      "sells": "Preventive weight and GLP-1 management - digital behavioral program with configurable GLP-1 coverage strategies, coaching and connected devices."
-    },
-    {
-      "name": "Candesa Pharmacy Solution",
-      "website": null,
-      "tier": "Bronze Sponsor; no booth on the exhibit hall list",
-      "sells": "Pharmacy benefit management; the brand is operated by Lifetime Benefit Solutions, Inc., part of The Lifetime Healthcare Companies."
-    }
-  ],
-  "why": null
+ "event_tag": "SALGBA 2026",
+ "conference": "SALGBA Annual (State and Local Government Benefits Association) 2026 National Conference",
+ "found": true,
+ "source_url": "https://s3.amazonaws.com/amo_hub_content/Association119/files/SALGBA2026%20Program-9%28Red2%29.pdf",
+ "source_note": "The official SALGBA 2026 onsite program (PDF), published by the association itself in the S3 bucket that serves salgba.org's file library (bucket amo_hub_content, prefix Association119/files/, the store behind the site's wp-amo plugin). This is the final program revision, 'SALGBA2026 Program-9(Red2).pdf', last modified 2026-05-04 - the conference's own opening day. TWO SECTIONS OF IT ARE USED. (1) Page 57, 'Exhibit Hall List - Alphabetical', is the exhibitor list proper: 88 companies, each with a booth number, and it is the source of every name and booth recorded here. (2) Pages 58-66 are the sponsor pages - Premier (58-61), Diamond (62), Platinum (63-65), Silver and Bronze (66) - and are the only source of the 'tier' levels and of every 'sells' line. The exhibit hall list itself says nothing about what anyone sells and prints no websites, so a company that took a booth but bought no sponsorship has sells null; that is most of the list. PAIRING NAMES TO BOOTHS: page 57 is laid out as two column-pairs and the program is a Canva export whose right-hand column of names sits in a nested form XObject, so a naive text extraction returns all 88 names and then all 88 booth numbers as two separate runs. The left column (44 names, 9amHealth through Linea Solutions) was read row by row with pdfminer, which resolves it directly and unambiguously. The right column (44 names, Lucid Diagnostics through WEX) was paired by order, both runs being alphabetical, and then checked against two outside sources that state their own booth independently: navigatewell.com gives Navigate booth 406 and laborfirst.com/retireefirst gives booth 218, and the order-pairing puts Navigate Wellbeing Solutions at 406 and Retiree First at 218. TWO ANOMALIES IN THE SOURCE, both left as printed: booth 430 is printed twice, against Included Health and against Partnership Health Centers; and Wellworks For You has 'Screen' where a booth number belongs, apparently a floor-plan position rather than a numbered booth. THREE MISSPELLINGS in the exhibit hall list, recorded as the list prints them and flagged for correction on intake - 'Evernoth Health Services' (the program's own sponsor page spells it Evernorth Health Services), 'WebMD Health Servies' (sponsor page: WebMD Health Services), and the Bronze sponsor 'Solrera Health' (almost certainly Solera Health, whose own site carries a SALGBA 2026 page). Where the sponsor pages spell a company differently from the exhibit hall list, an 'also_printed_as' field carries the sponsor-page spelling. FIVE COMPANIES ARE SPONSORS WITH NO BOOTH on the exhibit hall list - CVS Caremark, Aon, Solrera Health, Wondr Health and Candesa Pharmacy Solution - and are recorded with their tier and booth noted as absent. CVS is the one judgement call: the exhibit hall list carries 'CVS Health' (booth 100) and 'CVS Healthspire' (booth 104), and the program separately names 'CVS Caremark' as a Premier sponsor, so CVS Caremark is kept as its own printed name rather than merged. Websites are null except for the four companies whose own blurb prints a URL. The 'tier' field carries the sponsor level and the booth number together because the output schema has one field for both. CROSS-CHECKS AND DEAD ENDS: the conference's Cvent registration site (web.cvent.com/event/af1ad26a-1971-4c80-8db6-67e29beaf7cf) has been taken down and its archived captures render nothing, salgba.org/events has already rolled over to the 2027 Madison meeting, and the members.salgba.org portal is behind a login; the logo carousel on salgba.org is the association's year-round corporate sponsor roster, NOT this conference's exhibitor list, and was deliberately not used. 'SALGBA2026 Final Floor Plan.pdf' in the same bucket is vector art with no extractable text and page 56 of the program, the Exhibit Hall Map, is a flat image, so neither could confirm the booth pairing; the outside booth citations above stand in for them. The 'SALGBA 2026 Exhibitor Service Manual.pdf' is Capital Convention Contractors logistics and names no exhibitors. Event is PAST: it ran May 4-7, 2026 at the Rhode Island Convention Center in Providence, RI (the exhibit hall ran May 4-6). Fetched 2026-08-25 from the live S3 bucket; no archive needed.",
+ "exhibitors": [
+  {
+   "name": "9amHealth",
+   "website": null,
+   "tier": "Booth 131",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Abacus Health Solutions",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 214",
+   "sells": "Chronic condition cost reduction for diabetes, hypertension and obesity via the Good Health Gateway platform, sold through employers.",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Aetna",
+   "website": null,
+   "tier": "Premier Sponsor - Wednesday Evening Event Sponsor; Booth 101",
+   "sells": "Traditional, voluntary and consumer-directed health insurance - medical, pharmacy, dental and behavioral health plans, medical management, Medicaid health care management and workers' compensation administrative services."
+  },
+  {
+   "name": "AHIP",
+   "website": null,
+   "tier": "Booth 304",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Alight Solutions",
+   "website": null,
+   "tier": "Premier Sponsor - Wednesday Reception Sponsor; Booth 306",
+   "sells": "Cloud-based human capital technology; the Alight Worklife platform for benefits management and data-driven insights for public sector employees.",
+   "also_printed_as": "Alight",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Ameriflex",
+   "website": null,
+   "tier": "Booth 224",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Anthem BCBS",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 312",
+   "sells": "Health benefits for 7M+ public sector members across 16 markets - commercial plans for government employees and Medicare Advantage for retirees; a subsidiary of Elevance Health.",
+   "also_printed_as": "Anthem",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Aptia",
+   "website": null,
+   "tier": "Booth 425",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ArrayRX",
+   "website": null,
+   "tier": "Booth 112",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Benecard PBF",
+   "website": null,
+   "tier": "Booth 225",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Benefitfocus",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 109",
+   "sells": "Benefits administration technology; a Voya Financial business.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "BenefitsMe",
+   "website": null,
+   "tier": "Booth 426",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Bentek",
+   "website": null,
+   "tier": "Booth 125",
+   "sells": null
+  },
+  {
+   "name": "Blue Cross Blue Shield Association- Blue365",
+   "website": null,
+   "tier": "Booth 134",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Businessolver",
+   "website": null,
+   "tier": "Booth 136",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CancerNavigator",
+   "website": null,
+   "tier": "Booth 105",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CareATC",
+   "website": null,
+   "tier": "Booth 135",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Carrot",
+   "website": null,
+   "tier": "Booth 130",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Carrum Health",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 206",
+   "sells": "Value-based Centers of Excellence specialty care solution with bundled pricing and care navigation for self-insured employers and plan sponsors.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Color Health",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 313",
+   "sells": "Cancer care platform - oncologist-led risk identification, earlier detection, treatment management and survivorship.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CTI Audit Solutions",
+   "website": null,
+   "tier": "Booth 307",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "CVS Health",
+   "website": null,
+   "tier": "Booth 100",
+   "sells": null
+  },
+  {
+   "name": "CVS Healthspire",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 104",
+   "sells": "Population health solutions that complement existing benefits - clinical program design and member engagement.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Eli Lilly and Company",
+   "website": "https://Lilly.com",
+   "tier": "Diamond Sponsor; Booth 405",
+   "sells": "Pharmaceuticals - medicines reaching more than 51 million people worldwide.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Employers Health",
+   "website": null,
+   "tier": "Booth 127",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Empyrean",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 208",
+   "sells": "Benefits administration SaaS platform and services for employers, serving over 6.5 million people.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Evernoth Health Services",
+   "website": null,
+   "tier": "Premier Sponsor - Awards Luncheon Sponsor; Booth 201",
+   "sells": "Integrated prescription benefit offerings through Express Scripts Pharmacy Benefit Services for health plans, employers, labor unions and government agencies.",
+   "also_printed_as": "Evernorth Health Services",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "EyeMed",
+   "website": null,
+   "tier": "Booth 114",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "finHealth",
+   "website": null,
+   "tier": "Booth 230",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Form Health",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 404",
+   "sells": "Virtual obesity and cardiometabolic care led by board-certified obesity medicine physicians, sold to employers as a benefit.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Galileo",
+   "website": null,
+   "tier": "Booth 116",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Galleri",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 115",
+   "sells": "Multi-cancer early detection screening using DNA sequencing (GRAIL).",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Garner Health",
+   "website": null,
+   "tier": "Booth 330",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Green Imaging",
+   "website": null,
+   "tier": "Booth 412",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Health Advocate",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 212",
+   "sells": "Healthcare navigation and advocacy - expert guidance plus AI-powered technology for personalized whole-person care.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Healthee",
+   "website": null,
+   "tier": "Booth 435",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Hello Heart",
+   "website": null,
+   "tier": "Premier Sponsor - Tuesday Lunch Sponsor; Booth 300",
+   "sells": "Connected blood-pressure monitor, pill box and app for heart health, sold to employers, health plans and labor organizations."
+  },
+  {
+   "name": "Hinge Health",
+   "website": null,
+   "tier": "Premier Sponsor - Tuesday Breakfast Sponsor; Booth 401",
+   "sells": "Unified musculoskeletal (MSK) solution for employers and health plans - AI-powered care model with a multidisciplinary care team.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "HMS",
+   "website": null,
+   "tier": "Booth 231",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Humana",
+   "website": null,
+   "tier": "Diamond Sponsor; Booth 407",
+   "sells": "Humana insurance services and CenterWell healthcare services for Medicare, Medicaid, families, individuals and military service personnel."
+  },
+  {
+   "name": "IMA",
+   "website": null,
+   "tier": "Booth 331",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Included Health",
+   "website": null,
+   "tier": "Booth 430",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Lantern",
+   "website": null,
+   "tier": "Premier Sponsor - Wednesday Breakfast Sponsor; Booth 301",
+   "sells": "Specialty care platform with a curated Network of Excellence for surgery, cancer care and infusions, plus dedicated care teams.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Linea Solutions",
+   "website": null,
+   "tier": "Booth 118",
+   "sells": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Lucid Diagnostics",
+   "website": null,
+   "tier": "Booth 128",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Lyra Health",
+   "website": null,
+   "tier": "Booth 133",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maven Clinic",
+   "website": null,
+   "tier": "Booth 129",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "McGriff, A Marsh & McLennan Agency",
+   "website": null,
+   "tier": "Diamond Sponsor; Booth 209",
+   "sells": "Employee health and benefit brokerage and consulting for public employers nationwide.",
+   "also_printed_as": "McGriff a Marsh & McLennan Agency",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Medefy",
+   "website": null,
+   "tier": "Booth 207",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "MedImpact",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 215",
+   "sells": "Independent pharmacy benefit management for commercial health plans, government programs and self-insured/employer groups.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "MetLife",
+   "website": null,
+   "tier": "Booth 205",
+   "sells": null
+  },
+  {
+   "name": "Navigate Wellbeing Solutions",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 406",
+   "sells": "Wellbeing platform - member engagement, point-of-care solution integration, pharmacist-led health coaching and virtual care.",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Navitus Health Solutions",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 310",
+   "sells": "Transparent pass-through pharmacy benefit management serving 18 million members; brands include Navitus, Lumicera and Archimedes. Owned by SSM Health and Costco Wholesale.",
+   "also_printed_as": "Navitus Health",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Novo Nordisk",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 113",
+   "sells": "Pharmaceuticals for diabetes, obesity, rare blood and endocrine disorders.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Nox Health",
+   "website": null,
+   "tier": "Booth 228",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Omada Health",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 309",
+   "sells": "Virtual care for cardiometabolic and musculoskeletal conditions - connected devices, app and human coaching; a HIPAA-covered healthcare provider.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Opioid Free America",
+   "website": null,
+   "tier": "Booth 229",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Optum Rx",
+   "website": null,
+   "tier": "Booth 325",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Oshi Health",
+   "website": null,
+   "tier": "Booth 328",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Partnership Health Centers",
+   "website": null,
+   "tier": "Booth 430",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Pelago",
+   "website": null,
+   "tier": "Booth 234",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Personify Health",
+   "website": null,
+   "tier": "Silver Sponsor; Booth 107",
+   "sells": "Third-party administration, wellbeing and care navigation combined in one personalized health platform.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Pomelo Care",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 305",
+   "sells": "Virtual care across women's health - preconception, pregnancy, pediatric care and hormonal health (peri/menopause) for 25M covered lives.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Progyny",
+   "website": null,
+   "tier": "Booth 202",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Quantum Health",
+   "website": null,
+   "tier": "Premier Sponsor - Until Next Year Sponsor; Booth 400",
+   "sells": "Healthcare navigation for 8M+ members - single point of contact, clinical expertise and predictive AI; acquired Embold Health in 2025.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Quizzify",
+   "website": null,
+   "tier": "Booth 324",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "RazorMetrics",
+   "website": null,
+   "tier": "Booth 329",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Retiree First",
+   "website": null,
+   "tier": "Premier Sponsor - Tuesday Reception Sponsor; Booth 218",
+   "sells": "End-to-end retiree benefits management - designs, implements, manages and administers Medicare benefits for plan sponsors, brokers and consultants.",
+   "also_printed_as": "RetireeFirst",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Rightway",
+   "website": null,
+   "tier": "Booth 428",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Segal",
+   "website": null,
+   "tier": "Diamond Sponsor; Booth 200",
+   "sells": "Consulting to plan sponsors on health care, retirement, compensation and human resources programs; founded 1939, focused on public sector plan sponsors.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Sharecare",
+   "website": null,
+   "tier": "Booth 424",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "SlateRx",
+   "website": null,
+   "tier": "Booth 227",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "SmartLight Analytics",
+   "website": null,
+   "tier": "Diamond Sponsor; Booth 408",
+   "sells": "Claims analysis for self-funded plans - proprietary AI plus clinical review to find waste, errors and overpayments in medical, pharmacy and dental billing.",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Sourcewell",
+   "website": null,
+   "tier": "Booth 126",
+   "sells": null
+  },
+  {
+   "name": "Spring Health",
+   "website": null,
+   "tier": "Booth 326",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Sword Health",
+   "website": null,
+   "tier": "Booth 427",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "TELUS Health",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 110",
+   "sells": "Benefits and pension administration technology and outsourcing for public sector organizations; SaaS, co-sourcing or full outsourcing for 10M+ participants.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "The Hartford",
+   "website": null,
+   "tier": "Booth 429",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "The Phia Group",
+   "website": null,
+   "tier": "Booth 327",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Truven by Merative",
+   "website": null,
+   "tier": "Booth 431",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Twin Health",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 232",
+   "sells": "AI Digital Twin metabolic care with clinical support, sold to employers and health plans.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "UnitedHealthCare Retiree Solutions",
+   "website": "https://uhc.com/retiree",
+   "tier": "Premier Sponsor - Opening Reception Sponsor; Booth 319",
+   "sells": "Group-sponsored retiree coverage for 1.7M+ retirees; customizable Medicare Advantage plans with or without prescription drug coverage.",
+   "also_printed_as": "UnitedHealthcare Retiree Solutions",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Vera Whole Health",
+   "website": null,
+   "tier": "Booth 204",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Via Benefits",
+   "website": null,
+   "tier": "Bronze Sponsor; Booth 410",
+   "sells": "Individual marketplace health insurance and spending account administration for employers, plan sponsors, employees and retirees.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Virta Health",
+   "website": "https://www.virtahealth.com",
+   "tier": "Diamond Sponsor; Booth 106",
+   "sells": "AI-powered individualized nutrition therapy to reverse metabolic disease, sold to employers, payers and pharmacy benefit managers.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "WebMD Health Servies",
+   "website": null,
+   "tier": "Platinum Sponsor; Booth 213",
+   "sells": "Employee wellbeing programs and engagement platform for 3,500+ organizations.",
+   "also_printed_as": "WebMD Health Services",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Wellworks For You",
+   "website": null,
+   "tier": "Exhibit hall list prints \"Screen\" in place of a booth number",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "WEX",
+   "website": null,
+   "tier": "Booth 226",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CVS Caremark",
+   "website": "https://business.caremark.com",
+   "tier": "Premier Sponsor - Tuesday Evening Event Sponsor; no booth on the exhibit hall list",
+   "sells": "Pharmacy benefit management for employer and health plan clients - real-time data to analyze trends and optimize pharmacy benefit spend.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Aon",
+   "website": null,
+   "tier": "Platinum Sponsor; no booth on the exhibit hall list",
+   "sells": "Public Sector Health and Benefits consulting and actuarial services for states, cities, counties, towns, K-12 districts, benefits pools and federal agencies.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Solrera Health",
+   "website": null,
+   "tier": "Silver Sponsor; no booth on the exhibit hall list",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Wondr Health",
+   "website": null,
+   "tier": "Silver Sponsor; no booth on the exhibit hall list",
+   "sells": "Preventive weight and GLP-1 management - digital behavioral program with configurable GLP-1 coverage strategies, coaching and connected devices.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Candesa Pharmacy Solution",
+   "website": null,
+   "tier": "Bronze Sponsor; no booth on the exhibit hall list",
+   "sells": "Pharmacy benefit management; the brand is operated by Lifetime Benefit Solutions, Inc., part of The Lifetime Healthcare Companies.",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  }
+ ],
+ "why": null
 }

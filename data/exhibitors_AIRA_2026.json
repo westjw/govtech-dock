@@ -1,154 +1,188 @@
 {
-  "event_tag": "AIRA 2026",
-  "conference": "AIRA National Meeting (American Immunization Registry Association)",
-  "found": true,
-  "source_url": "https://www.airanationalmeeting.org/aira/system/proweb/start.csp?pageID=20363&eventID=28",
-  "source_note": "Sponsor page of the meeting's own registration/event site (Eventsforce), section headed \"AIRA 2026 National Meeting Corporate Partners\" — \"We're grateful to our Corporate Partners whose support help make the AIRA 2026 National Meeting possible!\" The same 24-logo grid, under the same five tier headings and in the same order, also appears on the event site's home page under \"Sponsors\" (https://www.airanationalmeeting.org/aira/system/proweb/start.csp?pageID=19997&eventID=28). CAVEAT ON NAMES: the 2026 grid prints LOGOS with empty alt text, not typed company names, so each name here was resolved from AIRA's own text listings rather than read off the 2026 grid — (a) the \"AIRA 2025 National Meeting Corporate Partners\" bullet list further down the very same page, which types out the same companies, (b) the alt text and link targets on AIRA's own partner roster at https://www.immregistries.org/aira-members (identical roster: same 24 companies, same tiers, same order; its membership graphic is dated 4.30.26, the meeting's closing day), and (c) https://www.immregistries.org/product-directory. Websites are the href each logo links to on the 2026 grid; Oracle Health's logo carries no link there, so its URL is taken from the /aira-members roster. The \"sells\" lines are NOT from the sponsor grid, which says nothing about products — they are condensed from AIRA's own Corporate Partner Product Directory, which describes only these seven partners; all other sells are null. AIRA sells exhibiting as a Corporate Partner benefit (\"sponsorship and exhibitor opportunities at AIRA's National Meeting\"), so this tier list is the exhibitor list; no separate booth or floor-plan listing is published, and no booth numbers exist to record. Not checked: the 2026 agenda PDF (37 MB, cdn.eventsforce.net) was left undownloaded, so if it carries a tabletop map it is unmined. Meeting held April 28-30, 2026 at The Westin Pittsburgh; page fetched 2026-08-25 and still live, not archived.",
-  "exhibitors": [
-    {
-      "name": "Docket",
-      "website": "https://dockethealth.com",
-      "tier": "Titanium",
-      "sells": "IIS-agnostic consumer immunization-record access and reminder/recall app (iOS, Android, web), per AIRA's Corporate Partner Product Directory"
-    },
-    {
-      "name": "Envision Technology Partners, Inc.",
-      "website": "https://www.inductivehealth.com/webiz/",
-      "tier": "Titanium",
-      "sells": "WebIZ immunization information system platform for state and local health agencies; AIRA's Product Directory lists it as \"InductiveHealth | Envision Technology Partners\" after InductiveHealth acquired Envision in 2025"
-    },
-    {
-      "name": "Gainwell Technologies",
-      "website": "https://www.gainwelltechnologies.com/",
-      "tier": "Diamond",
-      "sells": null
-    },
-    {
-      "name": "Merck",
-      "website": "http://merck.com/",
-      "tier": "Diamond",
-      "sells": null
-    },
-    {
-      "name": "Moderna",
-      "website": "https://www.modernatx.com/en-US",
-      "tier": "Diamond",
-      "sells": null
-    },
-    {
-      "name": "Sanofi",
-      "website": "https://www.sanofi.us/",
-      "tier": "Diamond",
-      "sells": null
-    },
-    {
-      "name": "STChealth",
-      "website": "http://www.stchealth.com",
-      "tier": "Diamond",
-      "sells": "STC|ONE IIS, a SaaS immunization information system for public health immunization programs, per AIRA's Corporate Partner Product Directory"
-    },
-    {
-      "name": "Amazon Web Services, Inc.",
-      "website": "https://aws.amazon.com/stateandlocal/health-and-human-services/cloud-resources/",
-      "tier": "Platinum",
-      "sells": null
-    },
-    {
-      "name": "HLN Consulting",
-      "website": "https://www.hln.com/",
-      "tier": "Platinum",
-      "sells": "Immunization Calculation Engine (ICE) open-source evaluation/forecasting software plus IIS consulting and vendor-specific support, per AIRA's Corporate Partner Product Directory"
-    },
-    {
-      "name": "Optimoz, Inc",
-      "website": "https://optimoz.com/",
-      "tier": "Platinum",
-      "sells": "OpenHIT IIS immunization information system platform for public health agencies, per AIRA's Corporate Partner Product Directory"
-    },
-    {
-      "name": "Pfizer",
-      "website": "https://www.pfizer.com/science/focus-areas/vaccines",
-      "tier": "Platinum",
-      "sells": null
-    },
-    {
-      "name": "Strategic Solutions Group",
-      "website": "https://www.ssg-llc.com/",
-      "tier": "Platinum",
-      "sells": "Casetivity-IIS, a modular web-based immunization information system, per AIRA's Corporate Partner Product Directory"
-    },
-    {
-      "name": "Atlantic Management Center, Inc.",
-      "website": "https://www.syntropisolutions.com/",
-      "tier": "Gold",
-      "sells": "Syntropi, software that automates provider lifecycle management alongside an existing IIS, per AIRA's Corporate Partner Product Directory (listed there as \"AMCI\")"
-    },
-    {
-      "name": "GlaxoSmithKline",
-      "website": "http://www.gsk.com",
-      "tier": "Gold",
-      "sells": null
-    },
-    {
-      "name": "IBM",
-      "website": "https://www.ibm.com/consulting/government",
-      "tier": "Gold",
-      "sells": null
-    },
-    {
-      "name": "athenahealth",
-      "website": "https://www.athenahealth.com/",
-      "tier": "Silver",
-      "sells": null
-    },
-    {
-      "name": "Audacious Inquiry",
-      "website": "https://ainq.com/",
-      "tier": "Silver",
-      "sells": null
-    },
-    {
-      "name": "Dynavax",
-      "website": "https://www.dynavax.com/",
-      "tier": "Silver",
-      "sells": null
-    },
-    {
-      "name": "Epic",
-      "website": "https://www.epic.com/",
-      "tier": "Silver",
-      "sells": null
-    },
-    {
-      "name": "IronBridge",
-      "website": "http://www.ironbridgecorp.com/",
-      "tier": "Silver",
-      "sells": null
-    },
-    {
-      "name": "J. Michael Consulting",
-      "website": "https://www.jmichael-consulting.com/",
-      "tier": "Silver",
-      "sells": null
-    },
-    {
-      "name": "LexisNexis Risk Solutions",
-      "website": "http://www.risk.lexisnexis.com/government",
-      "tier": "Silver",
-      "sells": null
-    },
-    {
-      "name": "Oracle Health",
-      "website": "https://www.oracle.com/health/",
-      "tier": "Silver",
-      "sells": null
-    },
-    {
-      "name": "Vault Technologies, Inc.",
-      "website": "https://www.vaulttechinc.com/",
-      "tier": "Silver",
-      "sells": null
-    }
-  ],
-  "why": null
+ "event_tag": "AIRA 2026",
+ "conference": "AIRA National Meeting (American Immunization Registry Association)",
+ "found": true,
+ "source_url": "https://www.airanationalmeeting.org/aira/system/proweb/start.csp?pageID=20363&eventID=28",
+ "source_note": "Sponsor page of the meeting's own registration/event site (Eventsforce), section headed \"AIRA 2026 National Meeting Corporate Partners\" \u2014 \"We're grateful to our Corporate Partners whose support help make the AIRA 2026 National Meeting possible!\" The same 24-logo grid, under the same five tier headings and in the same order, also appears on the event site's home page under \"Sponsors\" (https://www.airanationalmeeting.org/aira/system/proweb/start.csp?pageID=19997&eventID=28). CAVEAT ON NAMES: the 2026 grid prints LOGOS with empty alt text, not typed company names, so each name here was resolved from AIRA's own text listings rather than read off the 2026 grid \u2014 (a) the \"AIRA 2025 National Meeting Corporate Partners\" bullet list further down the very same page, which types out the same companies, (b) the alt text and link targets on AIRA's own partner roster at https://www.immregistries.org/aira-members (identical roster: same 24 companies, same tiers, same order; its membership graphic is dated 4.30.26, the meeting's closing day), and (c) https://www.immregistries.org/product-directory. Websites are the href each logo links to on the 2026 grid; Oracle Health's logo carries no link there, so its URL is taken from the /aira-members roster. The \"sells\" lines are NOT from the sponsor grid, which says nothing about products \u2014 they are condensed from AIRA's own Corporate Partner Product Directory, which describes only these seven partners; all other sells are null. AIRA sells exhibiting as a Corporate Partner benefit (\"sponsorship and exhibitor opportunities at AIRA's National Meeting\"), so this tier list is the exhibitor list; no separate booth or floor-plan listing is published, and no booth numbers exist to record. Not checked: the 2026 agenda PDF (37 MB, cdn.eventsforce.net) was left undownloaded, so if it carries a tabletop map it is unmined. Meeting held April 28-30, 2026 at The Westin Pittsburgh; page fetched 2026-08-25 and still live, not archived.",
+ "exhibitors": [
+  {
+   "name": "Docket",
+   "website": "https://dockethealth.com",
+   "tier": "Titanium",
+   "sells": "IIS-agnostic consumer immunization-record access and reminder/recall app (iOS, Android, web), per AIRA's Corporate Partner Product Directory"
+  },
+  {
+   "name": "Envision Technology Partners, Inc.",
+   "website": "https://www.inductivehealth.com/webiz/",
+   "tier": "Titanium",
+   "sells": "WebIZ immunization information system platform for state and local health agencies; AIRA's Product Directory lists it as \"InductiveHealth | Envision Technology Partners\" after InductiveHealth acquired Envision in 2025"
+  },
+  {
+   "name": "Gainwell Technologies",
+   "website": "https://www.gainwelltechnologies.com/",
+   "tier": "Diamond",
+   "sells": null
+  },
+  {
+   "name": "Merck",
+   "website": "http://merck.com/",
+   "tier": "Diamond",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Moderna",
+   "website": "https://www.modernatx.com/en-US",
+   "tier": "Diamond",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Sanofi",
+   "website": "https://www.sanofi.us/",
+   "tier": "Diamond",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "STChealth",
+   "website": "http://www.stchealth.com",
+   "tier": "Diamond",
+   "sells": "STC|ONE IIS, a SaaS immunization information system for public health immunization programs, per AIRA's Corporate Partner Product Directory"
+  },
+  {
+   "name": "Amazon Web Services, Inc.",
+   "website": "https://aws.amazon.com/stateandlocal/health-and-human-services/cloud-resources/",
+   "tier": "Platinum",
+   "sells": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "HLN Consulting",
+   "website": "https://www.hln.com/",
+   "tier": "Platinum",
+   "sells": "Immunization Calculation Engine (ICE) open-source evaluation/forecasting software plus IIS consulting and vendor-specific support, per AIRA's Corporate Partner Product Directory",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Optimoz, Inc",
+   "website": "https://optimoz.com/",
+   "tier": "Platinum",
+   "sells": "OpenHIT IIS immunization information system platform for public health agencies, per AIRA's Corporate Partner Product Directory",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Pfizer",
+   "website": "https://www.pfizer.com/science/focus-areas/vaccines",
+   "tier": "Platinum",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Strategic Solutions Group",
+   "website": "https://www.ssg-llc.com/",
+   "tier": "Platinum",
+   "sells": "Casetivity-IIS, a modular web-based immunization information system, per AIRA's Corporate Partner Product Directory"
+  },
+  {
+   "name": "Atlantic Management Center, Inc.",
+   "website": "https://www.syntropisolutions.com/",
+   "tier": "Gold",
+   "sells": "Syntropi, software that automates provider lifecycle management alongside an existing IIS, per AIRA's Corporate Partner Product Directory (listed there as \"AMCI\")"
+  },
+  {
+   "name": "GlaxoSmithKline",
+   "website": "http://www.gsk.com",
+   "tier": "Gold",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "IBM",
+   "website": "https://www.ibm.com/consulting/government",
+   "tier": "Gold",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "athenahealth",
+   "website": "https://www.athenahealth.com/",
+   "tier": "Silver",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Audacious Inquiry",
+   "website": "https://ainq.com/",
+   "tier": "Silver",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Dynavax",
+   "website": "https://www.dynavax.com/",
+   "tier": "Silver",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Epic",
+   "website": "https://www.epic.com/",
+   "tier": "Silver",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "IronBridge",
+   "website": "http://www.ironbridgecorp.com/",
+   "tier": "Silver",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "J. Michael Consulting",
+   "website": "https://www.jmichael-consulting.com/",
+   "tier": "Silver",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "LexisNexis Risk Solutions",
+   "website": "http://www.risk.lexisnexis.com/government",
+   "tier": "Silver",
+   "sells": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Oracle Health",
+   "website": "https://www.oracle.com/health/",
+   "tier": "Silver",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Vault Technologies, Inc.",
+   "website": "https://www.vaulttechinc.com/",
+   "tier": "Silver",
+   "sells": null
+  }
+ ],
+ "why": null
 }
