@@ -65,6 +65,40 @@
   "status": "pending",
   "why": "https://www.acusensus.com/careers names workable board 'acusensus-united-states', which answers with 6 posting(s). Verified by fetching it."
  },
+ "board:adashi-systems": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "versaterm",
+  "ats_type": "greenhouse",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://job-boards.greenhouse.io/versaterm",
+  "id": "adashi-systems",
+  "kind": "board",
+  "name": "Adashi Systems",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 37,
+  "sample": [
+   "Account Executive",
+   "Account Executive - ECC",
+   "Account Executive, UK & Western Europe",
+   "Director, Brand and Communications",
+   "Director, Brand and Communications",
+   "Director, Brand and Communications",
+   "Director, Brand and Communications",
+   "Director, Brand and Communications"
+  ],
+  "saw": {
+   "identity": "MISMATCH",
+   "identity_why": "board calls itself \"Versaterm\", we have it as \"Adashi Systems\"",
+   "stored_verified": "34 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the board names another company; who owns it is a judgement a fetch cannot make"
+ },
  "board:aidash": {
   "at": "2026-09-01T16:50:15-04:00",
   "ats_ref": "aidashinc",
@@ -164,38 +198,227 @@
   "status": "pending",
   "why": "https://www.autura.com/careers names greenhouse board 'autura', which answers with 6 posting(s). Verified by fetching it."
  },
+ "board:bigbear-ai": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "internal-bigbearai",
+  "ats_type": "icims",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://internal-bigbearai.icims.com",
+  "id": "bigbear-ai",
+  "kind": "board",
+  "name": "BigBear.ai (Pangiam)",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 87,
+  "sample": [
+   "UX/UI Designer",
+   "Database Engineer",
+   "Data Scientist",
+   "AI Application Engineer",
+   "ConductorOS Engineer",
+   "Senior Enterprise Solutions Architect with Security Clearance",
+   "Senior Technical Lead",
+   "Sr. Systems Administrator"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "no identity probe written for icims",
+   "stored_verified": "72 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+ },
+ "board:camino-technologies": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "clariticloudinc",
+  "ats_type": "greenhouse",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://job-boards.greenhouse.io/clariticloudinc",
+  "id": "camino-technologies",
+  "kind": "board",
+  "name": "Camino Technologies",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 8,
+  "sample": [
+   "Engagement Manager II",
+   "Forward Deployed Engineer",
+   "Implementation Consultant",
+   "Principal Engagement Manager",
+   "Principal Implementation Consultant",
+   "Product Designer (Contract)",
+   "Senior Implementation Consultant",
+   "Technical Support Analyst (Enterprise)"
+  ],
+  "saw": {
+   "identity": "MISMATCH",
+   "identity_why": "board calls itself \"Clariti Cloud Inc.\", we have it as \"Camino Technologies\"",
+   "stored_verified": "9 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the board names another company; who owns it is a judgement a fetch cannot make"
+ },
+ "board:careers-in-government": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "skagit-911",
+  "ats_type": "breezy",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://skagit-911.breezy.hr",
+  "id": "careers-in-government",
+  "kind": "board",
+  "name": "Careers In Government",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 2,
+  "sample": [
+   "Entry Public Safety Telecommunication Trainee Dispatcher",
+   "Lateral Public Safety Telecommunication Trainee Dispatcher"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "no identity probe written for breezy",
+   "stored_verified": "2 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+ },
  "board:cartegraph": {
-  "at": "2026-09-01T16:50:15-04:00",
+  "at": "2026-09-01T23:16:45-04:00",
   "ats_ref": "opengov",
   "ats_type": "ashby",
-  "by": "find_boards.py",
+  "by": "wire_embedded.py",
   "category": null,
-  "confidence": "medium",
-  "evidence": "https://opengov.com/careers/",
+  "confidence": null,
+  "evidence": "https://jobs.ashbyhq.com/opengov",
   "id": "cartegraph",
   "kind": "board",
   "name": "Cartegraph",
   "none_found": false,
   "postings": null,
-  "quota": 6,
+  "quota": null,
   "rows": 55,
   "sample": [
    "Sr. Software Engineer",
    "Manager I, Professional Services - IC",
-   "Implementation Consultant"
+   "Implementation Consultant",
+   "Implementation Engineer III",
+   "Renewals Operations Analyst",
+   "Implementation Engineer II",
+   "Salesforce System Administrator",
+   "Administrative Services Technical Support Specialist"
   ],
   "saw": {
-   "candidates": [
-    "ashby/opengov"
-   ],
-   "method": "one page load, no crawl, no login",
-   "not_checked": "whether this board is theirs or a parent's",
-   "page": "https://opengov.com/careers/",
-   "verified_by": "a real fetch of the ATS api"
+   "identity": "unknown",
+   "identity_why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+   "stored_verified": "46 posting(s) readable"
   },
   "sector": null,
   "status": "pending",
-  "why": "https://opengov.com/careers/ names ashby board 'opengov', which answers with 55 posting(s). Verified by fetching it."
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+ },
+ "board:caseworthy": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "https://recruiting.paylocity.com/recruiting/jobs/All/1d1e59c7-5489-4941-a56e-e93b421869b2/CaseWorthy-LLC",
+  "ats_type": "paylocity",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://recruiting.paylocity.com/recruiting/jobs/All/1d1e59c7-5489-4941-a56e-e93b421869b2/CaseWorthy-LLC",
+  "id": "caseworthy",
+  "kind": "board",
+  "name": "CaseWorthy",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 2,
+  "sample": [
+   "Solutions Consultant",
+   "Executive Account Manager"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "no identity probe written for paylocity",
+   "stored_verified": "2 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+ },
+ "board:catalis": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "https://recruiting.paylocity.com/recruiting/jobs/All/959ba0e3-c5ad-4abc-b549-d28be9607007/CATALIS",
+  "ats_type": "paylocity",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://recruiting.paylocity.com/recruiting/jobs/All/959ba0e3-c5ad-4abc-b549-d28be9607007/CATALIS",
+  "id": "catalis",
+  "kind": "board",
+  "name": "Catalis",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 36,
+  "sample": [
+   "Director, Quality Assurance",
+   "Corporate Tax Accountant",
+   "Benefits Specialist",
+   "Director, Quality Assurance",
+   "Director, Quality Assurance",
+   "Data Migration Specialist I",
+   "Manager, Professional Services",
+   "Solutions Engineer - Tax & CAMA"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "no identity probe written for paylocity",
+   "stored_verified": "33 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+ },
+ "board:centegix": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "https://recruiting.paylocity.com/recruiting/jobs/All/50a02ba4-65ae-4e06-a8ee-62a30814529c/34ED-LLC",
+  "ats_type": "paylocity",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://recruiting.paylocity.com/recruiting/jobs/All/50a02ba4-65ae-4e06-a8ee-62a30814529c/34ED-LLC",
+  "id": "centegix",
+  "kind": "board",
+  "name": "Centegix",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 4,
+  "sample": [
+   "Senior Test Engineer",
+   "Sales Executive - Northeast",
+   "Director, Strategic Alliances",
+   "Director, Sales Training and Enablement"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "no identity probe written for paylocity",
+   "stored_verified": "7 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
  },
  "board:concourse-tech": {
   "at": "2026-09-01T16:50:15-04:00",
@@ -327,6 +550,34 @@
   "status": "pending",
   "why": "https://www.droneshield.com/open-positions names greenhouse board 'droneshield', which answers with 27 posting(s). Verified by fetching it."
  },
+ "board:eccovia": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "https://recruiting.paylocity.com/recruiting/jobs/All/1d1e59c7-5489-4941-a56e-e93b421869b2/CaseWorthy-LLC",
+  "ats_type": "paylocity",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://recruiting.paylocity.com/recruiting/jobs/All/1d1e59c7-5489-4941-a56e-e93b421869b2/CaseWorthy-LLC",
+  "id": "eccovia",
+  "kind": "board",
+  "name": "Eccovia",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 2,
+  "sample": [
+   "Solutions Consultant",
+   "Executive Account Manager"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "no identity probe written for paylocity",
+   "stored_verified": "2 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+ },
  "board:fotokite": {
   "at": "2026-09-01T16:03:39-04:00",
   "ats_ref": "fotokite",
@@ -358,6 +609,305 @@
   "sector": null,
   "status": "pending",
   "why": "https://fotokite.bamboohr.com/careers names bamboohr board 'fotokite', which answers with 2 posting(s). Verified by fetching it."
+ },
+ "board:icsolutions": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "careers-tkcholdings",
+  "ats_type": "icims",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://careers-tkcholdings.icims.com",
+  "id": "icsolutions",
+  "kind": "board",
+  "name": "ICSolutions",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 310,
+  "sample": [
+   "Food Service Worker / Utility Worker",
+   "Food Service Worker - Part - Time",
+   "Assistant Food Service Director",
+   "On-site Technician",
+   "Commissary Operations Team Member",
+   "Machine Operator",
+   "Food Service Worker",
+   "Shift Supervisor"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "no identity probe written for icims",
+   "stored_verified": "25 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+ },
+ "board:ident-a-kid": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "https://recruiting.paylocity.com/recruiting/jobs/All/50a02ba4-65ae-4e06-a8ee-62a30814529c/34ED-LLC",
+  "ats_type": "paylocity",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://recruiting.paylocity.com/recruiting/jobs/All/50a02ba4-65ae-4e06-a8ee-62a30814529c/34ED-LLC",
+  "id": "ident-a-kid",
+  "kind": "board",
+  "name": "Ident-A-Kid",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 4,
+  "sample": [
+   "Senior Test Engineer",
+   "Sales Executive - Northeast",
+   "Director, Strategic Alliances",
+   "Director, Sales Training and Enablement"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "no identity probe written for paylocity",
+   "stored_verified": "7 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+ },
+ "board:matterhorn": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "https://recruiting.paylocity.com/recruiting/jobs/All/959ba0e3-c5ad-4abc-b549-d28be9607007/CATALIS",
+  "ats_type": "paylocity",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://recruiting.paylocity.com/recruiting/jobs/All/959ba0e3-c5ad-4abc-b549-d28be9607007/CATALIS",
+  "id": "matterhorn",
+  "kind": "board",
+  "name": "Matterhorn (Court Innovations)",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 36,
+  "sample": [
+   "Director, Quality Assurance",
+   "Corporate Tax Accountant",
+   "Benefits Specialist",
+   "Director, Quality Assurance",
+   "Director, Quality Assurance",
+   "Data Migration Specialist I",
+   "Manager, Professional Services",
+   "Solutions Engineer - Tax & CAMA"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "no identity probe written for paylocity",
+   "stored_verified": "33 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+ },
+ "board:mdf-commerce": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "sovra",
+  "ats_type": "ashby",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://jobs.ashbyhq.com/sovra",
+  "id": "mdf-commerce",
+  "kind": "board",
+  "name": "mdf commerce",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 6,
+  "sample": [
+   "Public Sector Program Manager",
+   "Marketing Innovation Manager",
+   "Solution Consultant",
+   "Account Executive",
+   "Senior Fullstack Software Developer (.NET Core/C#)",
+   "D\u00e9veloppeur(-euse) logiciel full stack s\u00e9nior (.NET Core/C#)"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+   "stored_verified": "8 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+ },
+ "board:ml-schedules": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "follettsoftware",
+  "ats_type": "greenhouse",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://job-boards.greenhouse.io/follettsoftware",
+  "id": "ml-schedules",
+  "kind": "board",
+  "name": "ML Schedules (Master Library Software)",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 7,
+  "sample": [
+   "Inside Sales Account Executive - Mountain or Pacific Time Zone",
+   "Project Management Associate",
+   "Revenue Accounting Manager (Individual Contributor)",
+   "Senior Director, Software Development",
+   "Senior Product Manager",
+   "Senior Product Operations Manager",
+   "Senior Salesforce Developer"
+  ],
+  "saw": {
+   "identity": "MISMATCH",
+   "identity_why": "board calls itself \"Follett Software, LLC\", we have it as \"ML Schedules (Master Library Software)\"",
+   "stored_verified": "9 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the board names another company; who owns it is a judgement a fetch cannot make"
+ },
+ "board:ncourt": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "https://recruiting.paylocity.com/recruiting/jobs/All/959ba0e3-c5ad-4abc-b549-d28be9607007/CATALIS",
+  "ats_type": "paylocity",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://recruiting.paylocity.com/recruiting/jobs/All/959ba0e3-c5ad-4abc-b549-d28be9607007/CATALIS",
+  "id": "ncourt",
+  "kind": "board",
+  "name": "nCourt",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 36,
+  "sample": [
+   "Director, Quality Assurance",
+   "Corporate Tax Accountant",
+   "Benefits Specialist",
+   "Director, Quality Assurance",
+   "Director, Quality Assurance",
+   "Data Migration Specialist I",
+   "Manager, Professional Services",
+   "Solutions Engineer - Tax & CAMA"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "no identity probe written for paylocity",
+   "stored_verified": "33 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+ },
+ "board:opengov": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "opengov",
+  "ats_type": "ashby",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://jobs.ashbyhq.com/opengov",
+  "id": "opengov",
+  "kind": "board",
+  "name": "OpenGov",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 55,
+  "sample": [
+   "Sr. Software Engineer",
+   "Manager I, Professional Services - IC",
+   "Implementation Consultant",
+   "Implementation Engineer III",
+   "Renewals Operations Analyst",
+   "Implementation Engineer II",
+   "Salesforce System Administrator",
+   "Administrative Services Technical Support Specialist"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+   "stored_verified": "46 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+ },
+ "board:parkhub": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "justpark",
+  "ats_type": "workable",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://apply.workable.com/api/v1/widget/accounts/justpark",
+  "id": "parkhub",
+  "kind": "board",
+  "name": "ParkHub",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 9,
+  "sample": [
+   "AI Enablement Engineer",
+   "Associate Account Executive",
+   "Business Development Manager - Strategic Real Estate",
+   "Client Success Manager",
+   "Customer Support Representative",
+   "Lead Software Engineer",
+   "Senior Client Operations Manager",
+   "Senior Product Manager, Applied AI & Machine Learning - Operator Suite"
+  ],
+  "saw": {
+   "identity": "MISMATCH",
+   "identity_why": "board calls itself \"JustPark\", we have it as \"ParkHub\"",
+   "stored_verified": "7 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the board names another company; who owns it is a judgement a fetch cannot make"
+ },
+ "board:prepared": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "axon",
+  "ats_type": "greenhouse",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://job-boards.greenhouse.io/axon",
+  "id": "prepared",
+  "kind": "board",
+  "name": "Prepared",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 514,
+  "sample": [
+   "Account Executive, Air T1200",
+   "Account Executive, Air T1200",
+   "Account Executive, Air T1200",
+   "Account Executive, Air T1200",
+   "Account Executive, Air T1200",
+   "Account Executive, Air, T1200",
+   "Account Executive, CEW",
+   "Account Executive, CEW"
+  ],
+  "saw": {
+   "identity": "MISMATCH",
+   "identity_why": "board calls itself \"Axon\", we have it as \"Prepared\"",
+   "stored_verified": "500 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "the board names another company; who owns it is a judgement a fetch cannot make"
  },
  "board:psd-citywide": {
   "at": "2026-09-01T16:03:39-04:00",
@@ -392,6 +942,40 @@
   "status": "pending",
   "why": "https://www.psdcitywide.com/careers names bamboohr board 'psd', which answers with 6 posting(s). Verified by fetching it."
  },
+ "board:qscend-technologies": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "https://recruiting.paylocity.com/recruiting/jobs/All/959ba0e3-c5ad-4abc-b549-d28be9607007/CATALIS",
+  "ats_type": "paylocity",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://recruiting.paylocity.com/recruiting/jobs/All/959ba0e3-c5ad-4abc-b549-d28be9607007/CATALIS",
+  "id": "qscend-technologies",
+  "kind": "board",
+  "name": "QScend Technologies",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 36,
+  "sample": [
+   "Director, Quality Assurance",
+   "Corporate Tax Accountant",
+   "Benefits Specialist",
+   "Director, Quality Assurance",
+   "Director, Quality Assurance",
+   "Data Migration Specialist I",
+   "Manager, Professional Services",
+   "Solutions Engineer - Tax & CAMA"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "no identity probe written for paylocity",
+   "stored_verified": "33 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+ },
  "board:skedda": {
   "at": "2026-09-01T16:03:39-04:00",
   "ats_ref": "skedda",
@@ -423,6 +1007,37 @@
   "sector": null,
   "status": "pending",
   "why": "https://www.skedda.com/careers names greenhouse board 'skedda', which answers with 2 posting(s). Verified by fetching it."
+ },
+ "board:sparkrock": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "Ionicpartners",
+  "ats_type": "lever",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://jobs.lever.co/Ionicpartners",
+  "id": "sparkrock",
+  "kind": "board",
+  "name": "Sparkrock",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 5,
+  "sample": [
+   "AI-Enabled .NET Chief Architect (OTE $100,000/year USD), @Sparkrock",
+   "AI-Enabled .NET Chief Architect (OTE $100,000/year USD), @Sparkrock",
+   "AI-Enabled .NET Chief Architect (OTE $100,000/year USD), Sparkrock",
+   "Marketing Manager (OTE $82,500/year CAD), Sparkrock",
+   "Principal AI-Native Engineer, Ionic Partners"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "every apply link is on the ATS's own domain, so the board never says whose it is",
+   "stored_verified": "5 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
  },
  "board:traction-rec": {
   "at": "2026-09-01T16:03:39-04:00",
@@ -456,6 +1071,34 @@
   "sector": null,
   "status": "pending",
   "why": "https://tractionrec.com/careers names bamboohr board 'tractionrec', which answers with 4 posting(s). Verified by fetching it."
+ },
+ "board:veovo": {
+  "at": "2026-09-01T23:16:45-04:00",
+  "ats_ref": "gentrack",
+  "ats_type": "bamboohr",
+  "by": "wire_embedded.py",
+  "category": null,
+  "confidence": null,
+  "evidence": "https://gentrack.bamboohr.com/careers",
+  "id": "veovo",
+  "kind": "board",
+  "name": "Veovo",
+  "none_found": false,
+  "postings": null,
+  "quota": null,
+  "rows": 2,
+  "sample": [
+   "Sales Director Americas",
+   "PMO Business Applications Specialist"
+  ],
+  "saw": {
+   "identity": "unknown",
+   "identity_why": "no identity probe written for bamboohr",
+   "stored_verified": "2 posting(s) readable"
+  },
+  "sector": null,
+  "status": "pending",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
  },
  "read:120water": {
   "at": "2026-08-24T10:57:24-04:00",

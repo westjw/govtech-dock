@@ -7526,6 +7526,105 @@ def check_the_crawler_paces_itself() -> int:
     return errors
 
 
+def check_embedded_wiring() -> int:
+    """The three ways wiring a discovered board publishes somebody else's jobs.
+
+    `data/embedded_ats.json` held 82 boards found behind careers pages, 79 of
+    them never connected. Connecting them is the cheapest coverage this project
+    will ever get - no new requests, and every one moves a company off a
+    fragile HTML fetch onto an API no bot wall refuses. It is also the single
+    easiest place to publish a false "Yes", which is the error CLAUDE.md says
+    never corrects itself.
+
+    Three gates, and each one was earned by a real entry in that file:
+
+    IDENTITY MISMATCH. Prepared's careers page names greenhouse/axon - 502
+    postings. Wiring that record publishes Axon's entire requisition list under
+    Prepared's name.
+
+    ONE BOARD, SEVERAL CLAIMANTS. ashby/opengov is named by both Cartegraph and
+    OpenGov; one Paylocity board by Catalis, Matterhorn, QScend AND nCourt.
+    Wiring them all publishes one company's jobs four times and invents a
+    leader on the board. These are acquisitions, and ownership is a person's
+    call.
+
+    A SLUG THAT IS NOT THE COMPANY'S NAME. 65 of the 82 carry identity
+    "unknown", meaning the board never said whose it was. Without this gate the
+    first draft offered to wire ICSolutions to careers-tkcholdings (its parent,
+    310 postings), Veovo to gentrack (which acquired it), Sparkrock to
+    Ionicpartners and Careers In Government to skagit-911.
+
+    The gate must not be so strict it refuses a company its own board:
+    stripping the ATS's own prefix is what lets careers-viapath match ViaPath.
+    Both directions are asserted, because a guard that refuses everything is
+    not a guard.
+    """
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import wire_embedded as w
+
+    for name, ref, want in [
+        ("ViaPath Technologies", "careers-viapath", True),
+        ("JAGGAER", "careers-jaggaer", True),
+        ("EBSCO Information Services", "careers-ebscoind", True),
+        ("Brinc", "brinc", True),
+        ("ICSolutions", "careers-tkcholdings", False),
+        ("Veovo", "gentrack", False),
+        ("Sparkrock", "Ionicpartners", False),
+        ("Careers In Government", "skagit-911", False),
+    ]:
+        if w.resembles(name, ref) != want:
+            verb = "refused" if want else "accepted"
+            print(f"  FAIL: the slug check {verb} {name!r} -> {ref!r}. "
+                  f"{'A company must not lose its own board to an ATS prefix' if want else 'That is a parent board being published as this company'}")
+            errors += 1
+
+    # The triage itself, on synthetic entries shaped like the real file.
+    entries = [
+        {"id": "a", "name": "Acme", "identity": "MISMATCH",
+         "found": {"type": "greenhouse", "ref": "othercorp"}},
+        {"id": "b", "name": "Beta", "identity": "unknown",
+         "found": {"type": "ashby", "ref": "shared"}},
+        {"id": "c", "name": "Gamma", "identity": "unknown",
+         "found": {"type": "ashby", "ref": "shared"}},
+        {"id": "d", "name": "Delta", "identity": "unknown",
+         "found": {"type": "ashby", "ref": "delta"}},
+        # ALONE ON ITS BOARD, AND THE SLUG IS SOMEBODY ELSE'S NAME. Without
+        # this entry the fixture does not exercise the slug gate at all: every
+        # other candidate here resembles its own company, so deleting the gate
+        # changed nothing and the mutation passed. This is the ICSolutions ->
+        # careers-tkcholdings shape, which is how a parent's board gets
+        # published as a subsidiary's.
+        {"id": "e", "name": "Epsilon", "identity": "unknown",
+         "found": {"type": "ashby", "ref": "someparentco"}},
+    ]
+    by_id = {e["id"]: {"id": e["id"], "ats": {"type": "html"}} for e in entries}
+    clean, mismatch, refused = w.triage(entries, by_id)
+    got = {e["id"] for e in clean}
+    if got != {"d"}:
+        print(f"  FAIL: triage would wire {sorted(got)}; only 'd' is safe - 'a' "
+              f"names another company and 'b'/'c' claim one board between them")
+        errors += 1
+    if len(mismatch) != 1:
+        print(f"  FAIL: triage found {len(mismatch)} mismatch(es), expected 1")
+        errors += 1
+    if {e["id"] for e in refused} != {"b", "c", "e"}:
+        print(f"  FAIL: refused should be both claimants of the shared board "
+              f"AND the one whose slug names another company, got "
+              f"{sorted(e['id'] for e in refused)}")
+        errors += 1
+
+    # A company that already has a real board is never overruled by this.
+    by_id["d"]["ats"] = {"type": "greenhouse", "ref": "delta"}
+    clean, _, _ = w.triage(entries, by_id)
+    if any(e["id"] == "d" for e in clean):
+        print("  FAIL: triage would rewrite a company that already has a "
+              "structured board - this script connects findings, it does not "
+              "overrule a person who already answered")
+        errors += 1
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -8055,6 +8154,7 @@ def main() -> int:
     errors += check_mail_shell()
     errors += check_fetchers_page_and_do_not_fake_zeros()
     errors += check_the_crawler_paces_itself()
+    errors += check_embedded_wiring()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)
