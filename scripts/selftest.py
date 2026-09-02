@@ -7768,6 +7768,70 @@ def check_capture_parity() -> int:
     return errors
 
 
+def check_extension_icons() -> int:
+    """A manifest naming an icon that is not there stops Chrome loading at all.
+
+    Most manifest mistakes degrade; this one refuses. "Load unpacked" fails
+    outright with a file-not-found, and the moment that happens is the moment
+    somebody is standing at a conference trying to install this to capture a
+    floor. So the files are checked against the manifest rather than assumed.
+
+    BOTH KEYS ARE REQUIRED AND THEY ARE NOT THE SAME THING. `icons` dresses
+    the extensions page, the menu and the store listing. `action.default_icon`
+    is the toolbar button. A manifest carrying only the first looks correct
+    everywhere except the one place the owner actually clicks - the toolbar
+    still shows a grey square - which is the whole failure this replaced.
+
+    The declared size is checked against the file's REAL pixel width, not its
+    name. A 512px image called icon-16.png loads happily and renders as mush,
+    and nothing anywhere would say so.
+    """
+    import struct
+
+    errors = 0
+    ext = ROOT / "extension"
+    try:
+        man = json.loads((ext / "manifest.json").read_text())
+    except Exception as exc:                            # noqa: BLE001
+        print(f"  FAIL: extension/manifest.json does not parse ({exc})")
+        return 1
+
+    def png_width(path):
+        """Width from the IHDR chunk. No dependency, and it reads the FILE."""
+        with path.open("rb") as fh:
+            head = fh.read(24)
+        if head[:8] != b"\x89PNG\r\n\x1a\n":
+            return None
+        return struct.unpack(">I", head[16:20])[0]
+
+    for key in ("icons", "action.default_icon"):
+        block = man.get("icons") if key == "icons" else (man.get("action") or {}).get("default_icon")
+        if not block:
+            where = ("the extensions page and menu" if key == "icons"
+                     else "the TOOLBAR BUTTON, which is the one the owner clicks")
+            print(f"  FAIL: extension/manifest.json declares no {key} - "
+                  f"Chrome will draw a grey puzzle piece on {where}")
+            errors += 1
+            continue
+        for size, rel in block.items():
+            f = ext / rel
+            if not f.exists():
+                print(f"  FAIL: {key} names {rel}, which is not in extension/ - "
+                      f"Chrome refuses to load an unpacked extension whose "
+                      f"manifest points at a missing file")
+                errors += 1
+                continue
+            got = png_width(f)
+            if got is None:
+                print(f"  FAIL: {rel} is not a PNG")
+                errors += 1
+            elif got != int(size):
+                print(f"  FAIL: {rel} is declared as {size}px and is actually "
+                      f"{got}px - it loads without complaint and renders blurry")
+                errors += 1
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -8299,6 +8363,7 @@ def main() -> int:
     errors += check_the_crawler_paces_itself()
     errors += check_embedded_wiring()
     errors += check_capture_parity()
+    errors += check_extension_icons()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)
