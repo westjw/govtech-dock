@@ -7,6 +7,7 @@ touching the network. Run after any edit to data/ or scripts/.
 from __future__ import annotations
 
 import collections
+import contextlib
 import csv
 import datetime as dt
 import html
@@ -8811,6 +8812,288 @@ def check_extension_holds_and_refuses() -> int:
     return errors
 
 
+
+def check_a_menu_is_not_a_directory() -> int:
+    """Seven chapter menus were filed as exhibitor directories on 2026-09-02.
+
+    find_event_directories accepted any page whose harvest was not
+    `suspicious` and graded good OR mixed. A chapter's sponsorship page grades
+    "good" on navigation alone, because association menus say Group, Services,
+    Resources and Partners as readily as vendors do. 146 names came off APA
+    Florida's page and the companies among them numbered zero: "Knowledge
+    Center", "Sections Overview", "Back to Main Menu", "Atlantic Coast
+    Section". Promoting those seven would have published seven conference
+    pages whose exhibitors were menu items.
+
+    The detector was MEASURED before it was used, against the 26 staged floors
+    on disk that produced real companies. Worst real floor: nav 0.05, tree
+    0.053. The offenders: 0.315, 0.247, 0.237, 0.234. Threshold 0.10.
+
+    So this check drives it three ways: the shapes it must catch, the real
+    floors it must not, and - the part a helper test would miss - that
+    find_event_directories still CALLS it.
+    """
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import sweep_exhibitors as sw
+
+    menus = [
+        ("APA Florida's sponsorship page",
+         ["Knowledge Center", "Conferences & Events", "Sections", "Sections Overview",
+          "Back to Main Menu", "Atlantic Coast Section", "Broward Section",
+          "Capital Area Section", "Professional Growth", "Professional Growth Overview",
+          "Policy and Advocacy", "Policy and Advocacy Overview", "Career Center",
+          "Community Outreach", "Community Outreach Overview", "Back to Sections"]),
+        ("a menu that nests without saying Overview",
+         ["Membership", "Membership Benefits", "Membership Directory", "Events",
+          "Events Calendar", "Events Archive", "Resources", "Resources Library",
+          "About", "About Our Board", "News", "News Releases"]),
+    ]
+    for label, names in menus:
+        rows = [{"name": n} for n in names]
+        if not sw.reads_as_a_menu(rows):
+            nav, tree = sw.navish(rows)
+            print(f"  FAIL: {label} is not being read as a menu "
+                  f"(nav={nav:.2f} tree={tree:.2f}) - a page like it was filed "
+                  f"as an exhibitor directory for seven APA chapters")
+            errors += 1
+
+    # AND THE REAL FLOORS MUST SURVIVE. A detector that refuses everything is
+    # not a detector; these are the lists that produced actual companies.
+    staged = sorted((DATA).glob("exhibitors_*.json"))
+    if not staged:
+        print("  FAIL: no staged exhibitor files to measure the detector against")
+        return errors + 1
+    for f in staged:
+        d = json.loads(f.read_text())
+        if not d.get("found") or len(d.get("exhibitors") or []) < 10:
+            continue
+        why = sw.reads_as_a_menu(d["exhibitors"])
+        if why:
+            print(f"  FAIL: {d.get('event_tag')} - a floor that produced real "
+                  f"companies is being refused as a menu: {why[:80]}")
+            errors += 1
+
+    # THE CALLER, not just the helper. judge() can stop consulting it and
+    # every assertion above stays green while the gate is wide open again.
+    # The fixture has to GRADE WELL, or judge() would refuse it on the grade
+    # and this would pass with the menu rule deleted - which is what the
+    # first version of this check did. Association menus say Services,
+    # Solutions, Technology and Group as readily as vendors do; that is
+    # exactly why the grade cannot carry this on its own.
+    import find_event_directories as fed
+    menu_names = ["Member Services", "Member Services Overview", "Technology Group",
+                  "Technology Group Overview", "Business Solutions",
+                  "Business Solutions Overview", "Consulting Partners",
+                  "Consulting Partners Overview", "Engineering Systems",
+                  "Engineering Systems Overview", "Back to Main Menu",
+                  "Back to Member Services", "Awards Overview", "Sections Overview"]
+    if sw.quality([{"name": n} for n in menu_names])[0] != "good":
+        print("  FAIL: the menu fixture no longer grades 'good', so this check "
+              "would pass with the menu rule deleted")
+        errors += 1
+    menu_page = "".join(f'<a href="/p{i}">{n}</a>' for i, n in enumerate(menu_names))
+    if fed.judge(menu_page, "https://florida.example.org/sponsorship",
+                 "APA", "Florida")[0] == "directory":
+        print("  FAIL: judge() accepts a page of pure navigation as a directory - "
+              "it is no longer consulting reads_as_a_menu()")
+        errors += 1
+    return errors
+
+
+def check_a_chapter_directory_is_not_its_parents() -> int:
+    """A state chapter's exhibitor list must belong to that chapter.
+
+    North Carolina Police Chiefs' organisation url was myiacp.org/NC__Login -
+    IACP's own login page, matched on the two letters in its path - and
+    walking its links reached a real exhibitor list of 36 companies. It was
+    IACP's NATIONAL 2026 Technology Conference; "north carolina" appeared on
+    it zero times. Accepting it would have tagged three dozen companies with a
+    North Carolina conference they never attended, which is CLAUDE.md's
+    never-point-a-company-at-its-parent's-board rule wearing a conference.
+
+    Two guards, and both were earned by that one row: a login page is not a
+    chapter site, and a two-letter state code is not evidence - not after a
+    dot (NIGP's Alberta chapter, nigpabchapter.ca, was filed as California on
+    the .ca), and not on the parent's own server.
+    """
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import find_event_directories as fed
+    IACP, APA = "https://www.theiacp.org/", "https://www.planning.org/"
+    for page, url, geo, org, parent, want, why in [
+        ("<title>Exhibitors</title> 2026 Tech Conference",
+         "https://events.rdmobile.com/Exhibitors/Index/20070", "North Carolina",
+         "https://www.myiacp.org/NC__Login", IACP, False,
+         "THE TRAP: off-site, names the state nowhere"),
+        ("<title>Sponsors</title>", "http://www.nyplanning.org/about/sponsors",
+         "New York", "http://www.nyplanning.org/", APA, True,
+         "the chapter's own domain settles it"),
+        ("<title>Exhibitors</title>", "https://www.myiacp.org/NC/exhibitors",
+         "North Carolina", "https://www.myiacp.org/x", "https://www.myiacp.org/", False,
+         "on the parent's server the abbreviation is not evidence"),
+        ("<title>North Carolina Chiefs</title>", "https://www.myiacp.org/NC/exhibitors",
+         "North Carolina", "https://www.myiacp.org/x", "https://www.myiacp.org/", True,
+         "on the parent's server, but it names the state"),
+        ("<title>Exhibitors</title>", "https://northcarolina.planning.org/x",
+         "North Carolina", None, None, True, "the state closed up in the host"),
+        ("<title>Exhibitors</title>", "https://x.test/e", "North Carolina", None, None,
+         False, "names the state nowhere at all"),
+    ]:
+        got = fed.owns(page, url, geo, org, parent)
+        if got != want:
+            print(f"  FAIL: owns({url[:44]!r}, {geo!r}) = {got}, expected {want} - {why}")
+            errors += 1
+
+    # The words as they are actually written in these listings: NC__Login,
+    # /s/Sign_In, /OnlineJoinMain.aspx. A "/login" pattern matched none of
+    # them, including the one it was written for.
+    for path, want in [("/NC__Login", True), ("/s/Sign_In", True),
+                       ("/OnlineJoinMain.aspx", True), ("/individual-online-join", True),
+                       ("/registered-members", False), ("/portalside-park", False),
+                       ("/joinville-parks", False), ("/chapters/north-carolina", False)]:
+        if fed.is_sign_in(path) != want:
+            print(f"  FAIL: is_sign_in({path!r}) = {not want}; a sign-in page "
+                  f"filed as a chapter site is where the parent's-event trap began")
+            errors += 1
+
+    # DRIVEN, NOT READ. The first version asserted the word "login" appeared
+    # in stage_parents' source - and it still did after the skip was deleted,
+    # because a second skip list further down also says it. So the stage runs
+    # end to end against a stubbed fetch and a throwaway file, and what is
+    # asserted is the url it CHOSE.
+    import tempfile
+    listing = ('<a href="https://www.myiacp.org/NC__Login">North Carolina</a>'
+               '<a href="https://ncchiefs.example.org/">North Carolina Chiefs</a>'
+               '<a href="http://nigpabchapter.ca">nigpabchapter.ca</a>')
+    events = {"note": "", "events": [
+        {"org_code": "T_NC", "geo": "North Carolina", "parent_national": "IACP",
+         "org_url": None, "status": "needs_url"},
+        {"org_code": "T_CA", "geo": "California", "parent_national": "IACP",
+         "org_url": None, "status": "needs_url"}]}
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-events-")) / "state_events.json"
+    tmp.write_text(json.dumps(events))
+    keep_events, keep_fetch = fed.EVENTS, fed.fetch
+    keep_listings = dict(fed.PARENT_LISTINGS)
+    out = io.StringIO()
+    try:
+        fed.EVENTS = tmp
+        fed.fetch = lambda url: listing if "listing.test" in url else None
+        fed.PARENT_LISTINGS["IACP"] = ("https://listing.test/chapters", "reads in raw html")
+        with contextlib.redirect_stdout(out):
+            fed.stage_parents(True)
+        rows = {r["org_code"]: r for r in json.loads(tmp.read_text())["events"]}
+    finally:
+        fed.EVENTS, fed.fetch = keep_events, keep_fetch
+        fed.PARENT_LISTINGS.clear(); fed.PARENT_LISTINGS.update(keep_listings)
+    nc = rows["T_NC"].get("org_url")
+    if nc and "login" in nc.lower():
+        print(f"  FAIL: stage_parents chose {nc} as North Carolina's chapter site. "
+              f"A login page on the parent's own domain is not a chapter site - "
+              f"that is the row every other trap here grew out of")
+        errors += 1
+    elif nc != "https://ncchiefs.example.org/":
+        print(f"  FAIL: stage_parents chose {nc!r} for North Carolina, expected "
+              f"the chapter's own site")
+        errors += 1
+    ca = rows["T_CA"].get("org_url")
+    if ca:
+        print(f"  FAIL: stage_parents matched California to {ca} - a .ca domain "
+              f"is a country, not a state. That filed NIGP's ALBERTA chapter as "
+              f"California")
+        errors += 1
+
+    # judge() must CONSULT owns(). The helper can be perfect and unused, which
+    # is how the seven menus got in. This fixture is a real exhibitor list -
+    # it grades "good" and passes every other test - so the only thing that
+    # can refuse it is ownership.
+    vendors = ["Acme Technologies Inc", "Beta Solutions LLC", "Gamma Systems Inc",
+               "Delta Consulting Group", "Epsilon Software Corp", "Zeta Services Ltd",
+               "Eta Engineering LLC", "Theta Analytics Inc", "Iota Data Systems",
+               "Kappa Networks Inc", "Lambda Cloud Solutions", "Mu Platform Group"]
+    good_page = "".join(f'<a href="/x{i}">{n}</a>' for i, n in enumerate(vendors))
+    if fed.judge(good_page, "https://events.example.com/list", "IACP", None)[0] != "directory":
+        print("  FAIL: the ownership fixture is not accepted even for a non-state "
+              "event, so this check would pass with owns() deleted")
+        errors += 1
+    if fed.judge(good_page, "https://events.example.com/list", "IACP", "North Carolina",
+                 "https://www.myiacp.org/NC__Login", IACP)[0] == "directory":
+        print("  FAIL: judge() accepts an off-site list that names no state - it "
+              "is no longer consulting owns()")
+        errors += 1
+    return errors
+
+
+def check_chapter_listings_are_looked_up() -> int:
+    """The chapter listing page per parent is a table, not a first-match guess.
+
+    Stage 1 used to fetch each parent's home page and walk the FIRST link
+    whose text matched /chapter|affiliate|section/. That found
+    apcointl.org/technology/spectrum for APCO, awwa.org/careercenter for AWWA,
+    apha.org/membership for APHA, and nothing at all for the ten parents whose
+    home page carries no such link. 26 parents, 338 events, 0 resolved.
+
+    Researched per association and looked up, exactly as PARENT_SITES already
+    is, because the wording differs per body: AWWA has SECTIONS, WEF has
+    MEMBER ASSOCIATIONS, NLC has STATE MUNICIPAL LEAGUES, NACo has STATE
+    ASSOCIATIONS. Every parent in the events file must be accounted for -
+    with a listing, or with a recorded reason there is none.
+    """
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import find_event_directories as fed
+    ev = json.loads((DATA / "state_events.json").read_text())["events"]
+    parents = {e.get("parent_national") for e in ev if e.get("parent_national")}
+    known = set(fed.PARENT_LISTINGS) | set(fed.NO_CHAPTERS) | set(fed.NO_LISTING_PUBLISHED)
+    unaccounted = sorted(parents - known)
+    if unaccounted:
+        print(f"  FAIL: no chapter listing and no recorded reason for "
+              f"{unaccounted} - those events cannot be resolved and nothing "
+              f"says why")
+        errors += 1
+    for code, (url, _note) in fed.PARENT_LISTINGS.items():
+        if not url.startswith("http"):
+            print(f"  FAIL: {code}'s listing url is not an address: {url!r}")
+            errors += 1
+    overlap = set(fed.PARENT_LISTINGS) & (set(fed.NO_CHAPTERS) | set(fed.NO_LISTING_PUBLISHED))
+    if overlap:
+        print(f"  FAIL: {sorted(overlap)} both has a listing and is recorded as "
+              f"having none")
+        errors += 1
+
+    # THE HREF IS UNESCAPED BEFORE THE FRAGMENT IS CUT. NLC writes its 49
+    # chapter links entity-encoded - href="http&#x3A;&#x2F;&#x2F;www.akml.org"
+    # - and a pattern that excluded "#" to skip fragments matched "http&" and
+    # stopped. 19 links read off a page carrying 49; every NLC event lost.
+    got = dict(fed.links(
+        '<a href="http&#x3A;&#x2F;&#x2F;www.akml.org">Alaska Municipal League</a>'
+        '<a href="#top">Skip</a><a href="/x#frag">Deep</a>', "https://www.nlc.org/p/"))
+    if got.get("Alaska Municipal League") != "http://www.akml.org":
+        print(f"  FAIL: an entity-encoded href is not being decoded before the "
+              f"fragment is cut - got {got.get('Alaska Municipal League')!r}. "
+              f"That is all 49 NLC chapters")
+        errors += 1
+    if "Skip" in got:
+        print("  FAIL: a bare fragment link is being treated as a chapter link")
+        errors += 1
+
+    # Proximity, bounded. Half the listings put the state in a heading and
+    # label the link "Web Site"; a state mentioned in prose far above must
+    # not claim an unrelated link.
+    page = ('<h3>California</h3><a href="https://www.calsheriffs.org/">Web Site</a>'
+            '<p>Ohio appears here in prose.</p>' + "x" * 900 +
+            '<a href="https://unrelated.test/">Far away</a>')
+    if fed.link_near_state(page, "https://x/", "california", lambda h: False) \
+            != "https://www.calsheriffs.org/":
+        print("  FAIL: the link following a state heading is not being matched")
+        errors += 1
+    if fed.link_near_state(page, "https://x/", "ohio", lambda h: False) is not None:
+        print(f"  FAIL: a state named in prose claimed a link {fed.NEAR}+ "
+              f"characters away")
+        errors += 1
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -9328,6 +9611,9 @@ def main() -> int:
     errors += check_sweep_keeps_its_own_work()
     errors += check_extension_holds_and_refuses()
     errors += check_intake_writes_only_issued_tags()
+    errors += check_a_menu_is_not_a_directory()
+    errors += check_a_chapter_directory_is_not_its_parents()
+    errors += check_chapter_listings_are_looked_up()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

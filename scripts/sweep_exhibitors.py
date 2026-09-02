@@ -377,6 +377,75 @@ def restage(files: list) -> int:
     return 0
 
 
+# A NAVIGATION TREE, WHICH IS WHAT A SPONSORSHIP PAGE YIELDS. Seven APA
+# chapter "directories" were accepted by find_event_directories on 2026-09-02
+# and every one of them was the chapter site's own menu: 146 names off APA
+# Florida, of which the companies numbered zero - "Knowledge Center",
+# "Sections Overview", "Back to Main Menu", "Atlantic Coast Section". Wiring
+# those into conferences.json would have published seven conference pages
+# whose exhibitors were menu items.
+#
+# MEASURED BEFORE USE, against the 26 staged floors on disk that produced real
+# companies, and against those seven pages:
+#
+#              worst real floor      the seven APA pages
+#   nav        0.05  (NASWA)         0.315 0.234 0.227 0.237 (four of seven)
+#   tree       0.053 (NAFA)          0.247 0.219 0.172 0.152 (the same four)
+#
+# The threshold is 0.10, roughly twice the worst real floor and half the
+# lowest offender. It catches four of the seven outright; the other three are
+# smaller menus without the "Overview" habit and are caught by the grade rule
+# in find_event_directories instead.
+#
+# TWO OTHER SIGNALS WERE MEASURED AND DO NOT WORK. Written down so the next
+# person does not spend the afternoon I spent:
+#
+#   THE LINK PROFILE. "A real exhibitor list links out, navigation links back
+#   into the site" is false. AWWA ACE is 97% same-host and NAHRO 98%, because
+#   a real directory links each exhibitor to its own detail page on the
+#   association's site. Same-host share separates nothing.
+#
+#   OVERLAP WITH THE HOME PAGE. "Navigation appears on every page, so subtract
+#   the home page" is elegant and confounded: AIRA, NAMPI, NASWA, NHCAA and
+#   NAFA all score 1.0 because their exhibitor list IS on the home page or one
+#   redirect from it. It cannot tell a menu from a single-page site.
+NAV_TAIL = re.compile(r"\boverview$|^back to\b|\bhome$|^skip to\b", re.I)
+NAVISH = 0.10
+
+
+def navish(names: list[dict]) -> tuple[float, float]:
+    """(nav-tail share, name-tree share) - how much of this list is a menu.
+
+    NAV TAIL: a name ending in "Overview" or starting with "Back to" is a
+    menu's own furniture and never a company.
+
+    NAME TREE: a name that is another harvested name plus a trailing word -
+    "Sections" and "Sections Overview" and "Sun Coast Section" - is a
+    hierarchy. Exhibitor lists are flat; menus nest.
+    """
+    if not names:
+        return 0.0, 0.0
+    n = len(names)
+    nav = sum(1 for x in names if NAV_TAIL.search(x.get("name") or ""))
+    low = {(x.get("name") or "").lower() for x in names}
+    tree = sum(1 for a in low if a and any(a != b and b and a.startswith(b + " ")
+                                           for b in low))
+    return nav / n, tree / n
+
+
+def reads_as_a_menu(names: list[dict]) -> str | None:
+    """Why this list is the site's navigation, or None if it is not."""
+    nav, tree = navish(names)
+    if nav >= NAVISH:
+        return (f"{nav:.0%} of the names end in 'Overview' or start with 'Back to' "
+                f"- this is the site's own menu, not a list of exhibitors")
+    if tree >= NAVISH:
+        return (f"{tree:.0%} of the names are another name plus a word "
+                f"(\"Sections\", \"Sections Overview\") - a menu nests, an "
+                f"exhibitor list is flat")
+    return None
+
+
 def ready(conferences: list, tag: str | None) -> list:
     out = [c for c in conferences if c.get("exhibitor_url")]
     if tag:

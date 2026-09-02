@@ -561,6 +561,103 @@ end-anchor still loses a real title that ENDS in a board word (none seen);
 `_paged` dedupes within a page now, but no iCIMS or SmartRecruiters page in
 the cache actually repeats a key, so that one is unmeasured.
 
+## State chapter conferences: the 338, and the seven that were never directories
+
+`data/state_events.json` (359 chapter events), `scripts/find_event_directories.py`.
+A conference with no exhibitor directory cannot produce a single company, and
+on 2026-09-02 exactly 7 of the 359 had one. All seven were wrong.
+
+**THE SEVEN WERE MENUS.** APA Florida's "directory" yielded 146 names of which
+the companies numbered zero: "Knowledge Center", "Sections Overview", "Back to
+Main Menu", "Atlantic Coast Section". Every one of the seven was a chapter's
+*sponsorship program* page - how to sponsor us - and the harvester was reading
+the site's own navigation. Promoting them would have published seven conference
+pages whose exhibitors were menu items. The gate accepted them because it took
+any page that was not `suspicious` and graded good OR mixed, and association
+menus say Group, Services, Resources and Partners as readily as vendors do.
+
+**What the detector is, and what it is not.** Three signals were measured
+against the 26 staged floors that produced real companies:
+
+| signal | worst real floor | the seven |
+| --- | --- | --- |
+| names ending "Overview" / starting "Back to" | 0.05 | 0.315, 0.247, 0.237, 0.234 |
+| a name that is another name plus a word | 0.053 | 0.247, 0.219, 0.172, 0.152 |
+
+Threshold 0.10, zero false positives across all 52 staged files. **Two other
+signals were measured and DO NOT WORK** - written down so nobody spends that
+afternoon again. *The link profile*: "a real list links out, a menu links back"
+is false, AWWA ACE is 97% same-host and NAHRO 98%, because real directories
+link each exhibitor to a detail page on the association's own site. *Overlap
+with the home page*: "navigation repeats on every page, so subtract the home
+page" is elegant and confounded - AIRA, NAMPI, NASWA, NHCAA and NAFA all score
+1.0 because their exhibitor list IS the home page.
+
+**A `mixed` grade is now a judgement, not a finding.** Every real floor of 30+
+names graded `good`; `mixed` covers both real small floors (3CMA, CoSN, PRIMA)
+and menus. So `mixed` writes `needs_person` with the candidate url and no
+`directory_url`. Agents propose, people rule.
+
+**THE PARENT'S EVENT, which is the same error as the parent's job board.**
+North Carolina Police Chiefs' organisation url was `myiacp.org/NC__Login` -
+IACP's own login page, matched on the two letters in its path - and walking it
+reached a real exhibitor list of 36 companies. It was IACP's NATIONAL 2026
+Technology Conference; "north carolina" appears on it zero times. Accepting it
+would have tagged three dozen companies with a conference they never attended.
+`owns()` now requires the chapter's own domain, or the state named in the
+address, the title or three times in the body. **On the parent's own server a
+two-letter code is not evidence** - and never after a dot: `nigpabchapter.ca`
+filed NIGP's ALBERTA chapter as California, which is the `[A-Z]{2}` bug that
+once put postings in London, UK wearing a different hat.
+
+**Stage 1 is a lookup table now, and that is why it works.** It used to fetch
+each parent's home page and walk the FIRST link matching
+/chapter|affiliate|section/. That found `apcointl.org/technology/spectrum`,
+`awwa.org/careercenter`, `apha.org/membership`, and nothing at all for the ten
+parents whose home page carries no such link: **26 parents, 338 events, 0
+resolved.** `PARENT_LISTINGS` is researched per association, the same rule
+`PARENT_SITES` already follows, because the wording differs per body - AWWA has
+SECTIONS, WEF has MEMBER ASSOCIATIONS, NLC has STATE MUNICIPAL LEAGUES, NACo
+has STATE ASSOCIATIONS. **0 → 185 organisation urls.**
+
+Three bugs found on the way there, all now guarded:
+
+- **Unescape the href BEFORE cutting the fragment.** NLC writes its links
+  entity-encoded (`href="http&#x3A;&#x2F;&#x2F;www.akml.org"`) and a pattern
+  excluding `#` to skip fragments matched `http&` and stopped. 19 links read
+  off a page carrying 49. That one ordering is all 49 NLC chapters.
+- **Half the listings put the state in a heading, not the link.** NSA writes
+  the url as the link text under a state heading; WEF labels every one "Web
+  Site". Neither carries the state where a text match can see it, and neither
+  can be guessed from the domain - `calsheriffs.org` is California's and
+  `flsheriffs` is Florida's. Position is the evidence instead, bounded to 700
+  characters so a state named in prose cannot claim an unrelated link.
+- **A sign-in page is not a chapter site, and the word is never tidy.** The url
+  this rule exists for is `NC__Login`; NSA writes `/s/Sign_In` and
+  `/OnlineJoinMain.aspx`. A `/login` prefix match caught none of them,
+  including its own founding example. The path is split on punctuation AND
+  camelCase and the tokens are checked, which keeps "registered", "portalside"
+  and "Joinville" out of it.
+
+**Statuses are facts and none is written as another**: `org_found`,
+`directory_found`, `needs_person`, `list_is_an_image` (APA Washington's sponsor
+list is a single file called `Thank You Sponsors.png`, North Carolina's is a
+JPEG - a person can read those and a fetcher never will, which is the capture
+extension's job), `parents_event`, `not_a_directory`, `no_directory_link`,
+`no_chapter_listing`, `org_unreachable`.
+
+**Five parents are recorded as answered rather than missing.** APTA and IAEM
+have no state chapters at all. IACP, IAFC and NSBA have them and publish no
+list. e.Republic runs its state summits itself - matching states against its
+webinar calendar produced a link to "Responsible AI in Government" filed as
+Indiana's summit, so it needs its own matcher against the event calendar.
+`NO_CHAPTERS` and `NO_LISTING_PUBLISHED` hold those reasons so the search is
+not run again.
+
+**APWA and GMIS answer 403 to an identified crawler.** That is their policy and
+it was not evaded; a browser user-agent would have got the page. 33 events sit
+behind it, honestly.
+
 ## Capture: the bookmarklet and the extension
 
 `scripts/capture.js`, installed from <http://127.0.0.1:8787/capture>, plus a

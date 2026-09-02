@@ -81,13 +81,70 @@ STATES = {
 
 
 def links(page: str, base: str) -> list[tuple[str, str]]:
+    """Every outbound anchor, text and resolved href.
+
+    THE HREF IS UNESCAPED BEFORE THE FRAGMENT IS CUT, and that ordering is
+    the whole of NLC's 49 chapters. NLC writes its links entity-encoded -
+    href="http&#x3A;&#x2F;&#x2F;www.akml.org" - and the first version
+    excluded "#" from the href pattern to skip fragment links, so it matched
+    "http&" and stopped dead on every one of them. 19 links read off a page
+    carrying 49. Unescape first, then drop a real fragment.
+    """
     out = []
-    for m in re.finditer(r'<a\b[^>]*href="([^"#]+)"[^>]*>(.*?)</a>', page, re.S | re.I):
+    for m in re.finditer(r'<a\b[^>]*href="([^"]*)"[^>]*>(.*?)</a>', page, re.S | re.I):
         text = re.sub(r"\s+", " ", html_lib.unescape(re.sub(r"<[^>]+>", " ", m.group(2)))).strip()
-        href = up.urljoin(base, html_lib.unescape(m.group(1)))
-        if href.startswith("http") and text:
+        href = html_lib.unescape(m.group(1)).split("#")[0].strip()
+        if not href or not text:
+            continue
+        href = up.urljoin(base, href)
+        if href.startswith("http"):
             out.append((text, href))
     return out
+
+
+def anchors_with_offsets(page: str, base: str) -> list:
+    """(text, href, position) for every outbound-shaped anchor."""
+    out = []
+    for m in re.finditer(r'<a\b[^>]*href="([^"]*)"[^>]*>(.*?)</a>', page, re.S | re.I):
+        text = re.sub(r"\s+", " ", html_lib.unescape(re.sub(r"<[^>]+>", " ", m.group(2)))).strip()
+        href = html_lib.unescape(m.group(1)).split("#")[0].strip()
+        if not href:
+            continue
+        href = up.urljoin(base, href)
+        if href.startswith("http"):
+            out.append((text, href, m.start()))
+    return out
+
+
+NEAR = 700          # characters between a state heading and its link
+
+
+def link_near_state(page: str, base: str, state: str, skip) -> str | None:
+    """The link that FOLLOWS a state's name on the page.
+
+    Half the chapter listings do not put the state in the link. The National
+    Sheriffs' Association writes the url as the link text -
+    "https://www.calsheriffs.org/" under a California heading - and WEF
+    labels every one of them "Web Site". Neither carries the word
+    "California" or "Texas" where a text match can see it, and neither can be
+    guessed from the domain: calsheriffs.org is California's and flsheriffs
+    is Florida's, but so might a dozen other abbreviations be.
+
+    Position is the evidence instead: the association printed the state, then
+    printed its link. Bounded to {NEAR} characters so a state mentioned in
+    prose three paragraphs up cannot claim an unrelated link.
+    """
+    hits = [m.start() for m in re.finditer(rf"\b{re.escape(state)}\b", page, re.I)]
+    if not hits:
+        return None
+    best = None
+    for text, href, pos in anchors_with_offsets(page, base):
+        if skip(href):
+            continue
+        for h in hits:
+            if 0 <= pos - h <= NEAR and (best is None or pos - h < best[0]):
+                best = (pos - h, href)
+    return best[1] if best else None
 
 
 def fetch(url: str) -> str | None:
@@ -124,6 +181,80 @@ PARENT_SITES = {
 }
 
 
+# THE PAGE ON WHICH EACH PARENT LISTS ITS OWN CHAPTERS, looked up rather than
+# inferred - the same rule PARENT_SITES follows above, and for the same
+# reason. The first version of stage 1 took the FIRST link on the home page
+# whose text matched /chapter|affiliate|section/ and walked it. That found
+# apcointl.org/technology/spectrum for APCO, awwa.org/careercenter for AWWA,
+# apha.org/membership for APHA, and nothing at all for ten parents whose home
+# page carries no such link. 26 parents, 0 events resolved.
+#
+# Researched 2026-09-02 (one agent per association, each reading the
+# association's own site). The wording differs per body and that is exactly
+# why it cannot be guessed: AWWA has SECTIONS, WEF has MEMBER ASSOCIATIONS,
+# NLC has STATE MUNICIPAL LEAGUES, APHA has AFFILIATES, NACo has STATE
+# ASSOCIATIONS.
+PARENT_LISTINGS = {
+    # Already on file: this is the org_url_source recorded on all 21 APA rows
+    # by the first pass, so it is an observation rather than a lookup.
+    "APA": ("https://www.planning.org/chapters/", "reads in raw html"),
+    "APCO": ("https://www.apcointl.org/community/chapters/",
+        "reads in raw html"),
+    "APHA": ("https://www.apha.org/about-apha/affiliates/state-and-regional-public-health-associations",
+        "reads in raw html"),
+    "APHSA": ("https://aphsa.org/state-human-services-organizations/",
+        "JS-RENDERED - the names are not in the html a fetcher gets"),
+    "APWA": ("https://www.apwa.org/connections-networking/apwa-chapters/find-an-apwa-chapter/",
+        "reads in raw html"),
+    "ASBO": ("https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx",
+        "reads in raw html"),
+    "AWWA": ("https://www.awwa.org/local-sections/",
+        "reads in raw html"),
+    "COSN": ("https://www.cosn.org/membership-overview/cosn-chapters/",
+        "reads in raw html"),
+    "GFOA": ("https://www.gfoa.org/state-provincial-gfoa/sponsors",
+        "reads in raw html"),
+    "GMIS": ("https://www.gmis.org/page/StateChapters",
+        "JS-RENDERED - the names are not in the html a fetcher gets"),
+    "IAAO": ("https://www.iaao.org/membership/affiliates/",
+        "reads in raw html"),
+    "ICC": ("https://www.iccsafe.org/membership/chapters/icc-chapters-and-boardstaff-liaison-map/",
+        "JS-RENDERED - the names are not in the html a fetcher gets"),
+    "IIMC": ("https://www.iimc.com/152/Municipal-Clerks-Association-Websites",
+        "JS-RENDERED - the names are not in the html a fetcher gets"),
+    "NACO": ("https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
+        "reads in raw html"),
+    "NIGP": ("https://www.nigp.org/directory/chapters",
+        "reads in raw html"),
+    "NLC": ("https://www.nlc.org/membership/state-municipal-leagues/",
+        "reads in raw html"),
+    "NRPA": ("https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
+        "reads in raw html"),
+    "NSA": ("https://www.sheriffs.org/state-sheriffs-associations/",
+        "reads in raw html"),
+    "SWANA": ("https://swana.org/community/chapters/chapter-contacts",
+        "reads in raw html"),
+    "WEF": ("https://www.wef.org/membership--community/membership-center/wef-member-associations/ma-resource-center/wef-member-associations-contacts/",
+        "reads in raw html"),
+}
+
+# NO STATE BODIES AT ALL, which is an answer and not a gap. Recorded so the
+# search is not run again.
+NO_CHAPTERS = {
+    "APTA": "APTA (American Public Transportation Association) has no state chapters or affiliates of its own and publishes no list of state transit associations. ",
+    "IAEM": "IAEM-USA has no state chapters. Its own IAEM-USA page (https://www.iaem.org/global/iaem-usa/) states the council is made up of 'IAEM-USA Membership Re",
+}
+
+# HAS STATE BODIES AND PUBLISHES NO LIST OF THEM. Also an answer: these need a
+# person or another source, not another sweep of the same site.
+NO_LISTING_PUBLISHED = {
+    "EREPUBLIC": "e.Republic RUNS its state Digital Government Summits itself rather than through chapters, so there is no chapter listing to read. events.govtech.com is a webinar and event calendar; matching states against it produced one link to a webinar called 'Responsible AI in Government' filed as Indiana's summit. Needs its own matcher against the event calendar, not this one.",
+    "IACP": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state",
+    "IAFC": "IAFC's own site publishes no list of state fire chiefs associations. I pulled the raw HTML of the home page and extracted every internal link in its f",
+    "NSBA": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V",
+}
+
+
 def parent_sites() -> dict:
     events = json.loads(EVENTS.read_text())["events"]
     codes = sorted({e["parent_national"] for e in events if e.get("parent_national")})
@@ -134,52 +265,95 @@ def parent_sites() -> dict:
 
 
 def stage_parents(write: bool) -> int:
+    """Give every event its organisation's real url, from the parent's own list.
+
+    ONE FETCH PER PARENT, of a page looked up in PARENT_LISTINGS rather than
+    guessed from the home page. The guessing version resolved 0 of 338.
+    """
     doc = json.loads(EVENTS.read_text())
     events = doc["events"]
-    sites = parent_sites()
-    print(f"{len(sites)} parent(s) with a site on file\n")
+    todo = [e for e in events if not e.get("org_url")]
+    codes = sorted({e.get("parent_national") for e in todo if e.get("parent_national")})
+    print(f"{len(todo)} event(s) without an organisation url, "
+          f"under {len(codes)} parent(s)\n")
     found = 0
-    for code, root in sites.items():
-        mine = [e for e in events if e.get("parent_national") == code and not e.get("org_url")]
-        if not mine:
+    for code in codes:
+        mine = [e for e in todo if e.get("parent_national") == code]
+        entry = PARENT_LISTINGS.get(code)
+        if not entry:
+            why = (NO_CHAPTERS.get(code) or NO_LISTING_PUBLISHED.get(code)
+                   or "no chapter listing on file")
+            print(f"  {code:10} {'-':46} {len(mine):3} event(s) skipped: {why[:60]}")
+            for e in mine:
+                e["status"] = "no_chapter_listing"
+                e["status_why"] = why
             continue
-        home = fetch(root)
-        if not home:
-            print(f"  {code:10} {root[:40]:42} site did not answer"); continue
-        cands = [(t, h) for t, h in links(home, root) if CHAPTER_LINK.search(t) or CHAPTER_LINK.search(h)]
-        if not cands:
-            print(f"  {code:10} {root[:40]:42} no chapters/affiliates link on the home page"); continue
-        listing = cands[0][1]
-        page = fetch(listing) or ""
-        home_host = up.urlsplit(root).netloc.lower().replace("www.", "")
+        listing, note = entry
+        page = fetch(listing)
+        if not page:
+            print(f"  {code:10} {listing[:44]:46} the listing did not answer")
+            continue
+        home_host = up.urlsplit(listing).netloc.lower().replace("www.", "")
         list_path = up.urlsplit(listing).path.rstrip("/")
         outbound = []
-        for t, h in links(page, listing):
+        for txt, h in links(page, listing):
             host = up.urlsplit(h).netloc.lower().replace("www.", "")
             path = up.urlsplit(h).path
-            # another domain, or a deeper page under the listing itself
             if host != home_host or (list_path and path.startswith(list_path + "/")):
                 if h.rstrip("/") != listing.rstrip("/"):
-                    outbound.append((t, h))
+                    outbound.append((txt, h))
         hit = 0
         for e in mine:
             geo = (e.get("geo") or "").lower()
             state = next((s for s in STATES if re.search(rf"\b{s}\b", geo)), None)
             if not state:
                 continue
-            ab = STATES[state]
-            for t, h in outbound:
-                blob = f"{t} {up.urlsplit(h).path}".lower()
+            ab = STATES[state].lower()
+            for txt, h in outbound:
+                # A LOGIN PAGE IS NOT A CHAPTER SITE. myiacp.org/NC__Login
+                # matched North Carolina on the two letters in its path and
+                # became that chapter's "organisation url"; everything walked
+                # from there led to IACP's national conference.
+                if is_sign_in(up.urlsplit(h).path):
+                    continue
+                blob = f"{txt} {up.urlsplit(h).path}".lower()
+                closed = re.sub(r"[^a-z0-9]+", "", f"{txt}{up.urlsplit(h).netloc}").lower()
+                # NEVER AFTER A DOT, because that is a TLD and not a state.
+                # NIGP's directory writes some links as the bare domain, so
+                # "nigpabchapter.ca" matched California on the .ca of a
+                # CANADIAN chapter - the NIGP Alberta Chapter, filed as
+                # California. Same shape as the [A-Z]{2} bug that once put 24
+                # postings in London, UK and Montreal, QB.
                 if (re.search(rf"\b{state}\b", blob)
-                        or re.search(rf"(^|[^a-z]){ab.lower()}([^a-z]|$)", blob)):
+                        or state.replace(" ", "") in closed
+                        or re.search(rf"(^|[^a-z.]){ab}([^a-z]|$)", blob)):
                     e["org_url"] = h
                     e["org_url_source"] = listing
+                    e["org_name_observed"] = txt.strip()[:120]
                     e["status"] = "org_found"
                     hit += 1
                     break
+            if not e.get("org_url"):
+                # The state is on the page but not in the link. Position is
+                # the evidence: the association printed the state, then its
+                # link. Same skip rules - a login page is not a chapter site.
+                near = link_near_state(
+                    page, listing, state,
+                    lambda h: (is_sign_in(up.urlsplit(h).path)
+                               or up.urlsplit(h).netloc.lower().replace("www.", "")
+                                  == home_host))
+                if near:
+                    e["org_url"] = near
+                    e["org_url_source"] = listing
+                    e["org_name_observed"] = f"(the link following '{state}' on the listing)"
+                    e["status"] = "org_found"
+                    hit += 1
         found += hit
-        print(f"  {code:10} {cands[0][1][:44]:46} {len(outbound):3} outbound, matched {hit}/{len(mine)}")
-    print(f"\n  {found} event(s) now have an organisation url from their parent's own listing")
+        flag = "" if "reads in raw html" in note else "  (JS-RENDERED)"
+        print(f"  {code:10} {listing[:44]:46} {len(outbound):3} outbound, "
+              f"matched {hit}/{len(mine)}{flag}")
+    print(f"\n  {found} event(s) now have an organisation url from their "
+          f"parent's own listing")
     if write:
         _save(doc)
     else:
@@ -187,38 +361,254 @@ def stage_parents(write: bool) -> int:
     return 0
 
 
-def stage_directories(write: bool, limit: int | None) -> int:
+# A LOGIN PAGE IS NOT A CHAPTER SITE, and these words do not sit tidily at a
+# path segment's start. The url this rule exists for is myiacp.org/NC__Login,
+# and a first version matched "/login" and let its own founding example
+# straight through; NSA writes /s/Sign_In and /OnlineJoinMain.aspx. So the
+# path is split on punctuation AND on camelCase, and the TOKENS are checked -
+# which keeps "registered", "portalside" and "Joinville" out of it.
+SIGN_IN_WORDS = {"login", "signin", "logon", "register", "account", "portal",
+                 "store", "join", "signup"}
+
+
+def _tokens(path: str) -> set:
+    parts = re.split(r"[^A-Za-z]+", path)
+    out = set()
+    for part in parts:
+        for word in re.findall(r"[A-Z]+(?![a-z])|[A-Z][a-z]*|[a-z]+", part):
+            out.add(word.lower())
+    # sign_in and log_in arrive as two tokens; join the adjacent pairs back up
+    flat = [w.lower() for part in parts
+            for w in re.findall(r"[A-Z]+(?![a-z])|[A-Z][a-z]*|[a-z]+", part)]
+    for a, b in zip(flat, flat[1:]):
+        out.add(a + b)
+    return out
+
+
+def is_sign_in(url_path: str) -> bool:
+    return bool(_tokens(url_path) & SIGN_IN_WORDS)
+
+
+CONFERENCE_LINK = re.compile(
+    r"annual (conference|meeting|convention)|conference|convention|"
+    r"summit|expo|symposium|training institute", re.I)
+
+# Names hidden in a picture. APA Washington's sponsor page is one file called
+# "Thank You Sponsors.png"; APA North Carolina's is "2026 Fall Conference
+# Sponsors.jpg". A person reading that page sees the companies and no fetcher
+# ever will, which is a different fact from "there is no list here" and is
+# exactly the capture extension's job.
+SPONSOR_IMAGE = re.compile(r"sponsor|exhibitor|thank ?you|partners", re.I)
+
+
+def image_only(page: str) -> str | None:
+    """A sponsor list that is a picture. Returns the file, or None."""
+    for m in re.finditer(r'<img\b[^>]*>', page, re.I):
+        tag = m.group(0)
+        src = re.search(r'src="([^"]+)"', tag, re.I)
+        alt = re.search(r'alt="([^"]*)"', tag, re.I)
+        blob = up.unquote(f"{src.group(1) if src else ''} {alt.group(1) if alt else ''}")
+        if SPONSOR_IMAGE.search(blob) and not re.search(r"logo|header|banner", blob, re.I):
+            return blob.strip()[:90]
+    return None
+
+
+def owns(page: str, url: str, geo: str | None,
+         org_url: str | None = None, parent_site: str | None = None) -> bool:
+    """Does this exhibitor list belong to the STATE chapter, or to its parent?
+
+    THE TRAP, caught on 2026-09-02. North Carolina Police Chiefs' org url is
+    myiacp.org/NC__Login - IACP's own login page - and walking its links
+    reaches events.rdmobile.com/Exhibitors/Index/20070, a real exhibitor list
+    with 36 companies on it. It is IACP's NATIONAL 2026 Technology Conference.
+    The words "north carolina" appear on it zero times.
+
+    Accepting that would tag three dozen companies as having exhibited at a
+    North Carolina chapter conference they never attended - the conference
+    version of CLAUDE.md's never-point-a-company-at-its-parent's-board rule,
+    and a false fact published on a page per event.
+
+    Three ways to establish ownership, in order:
+
+    THE CHAPTER'S OWN DOMAIN settles it. nyplanning.org/about/sponsors is the
+    New York chapter's however little the page repeats "New York" - the site
+    is the evidence. Never the parent's domain, which is where the trap lived.
+
+    THE ADDRESS, flattened AND closed up, because a url writes it without the
+    space: northcarolina.planning.org.
+
+    THE PAGE, in its title, its first heading, or three times in the body.
+
+    ON THE PARENT'S OWN SERVER the two-letter abbreviation does not count.
+    myiacp.org/NC/exhibitors is either the North Carolina chapter's area or
+    IACP's own page with an unlucky path segment, and "nc" cannot tell them
+    apart - that loose two-letter match is what produced the trap in the
+    first place. The full state name is required there; anything less goes to
+    a person with the url in front of them.
+
+    Deliberately strict, and it will refuse a real one - a conference titled
+    only "2026 NCPCA Annual Meeting" names its state solely inside an
+    acronym. A refusal costs one ruling; a wrong accept costs a permanent
+    invented fact, so the trade runs this way.
+    """
+    state = next((s for s in STATES if re.search(rf"\b{s}\b", (geo or "").lower())), None)
+    if not state:
+        return True                       # not a state event; nothing to check
+
+    def host(u):
+        return up.urlsplit(u or "").netloc.lower().replace("www.", "")
+    here, theirs, parent = host(url), host(org_url), host(parent_site)
+    on_parent = bool(parent) and here == parent
+    if here and theirs and here == theirs and not on_parent:
+        return True
+
+    flat = re.sub(r"[^a-z0-9]+", " ", up.unquote(url).lower())
+    if re.search(rf"\b{state}\b", flat) or state.replace(" ", "") in flat.replace(" ", ""):
+        return True
+    head = " ".join(re.sub(r"<[^>]+>", " ", m.group(1)) for m in
+                    re.finditer(r"<(?:title|h1)[^>]*>(.*?)</(?:title|h1)>",
+                                page[:200000], re.S | re.I)).lower()
+    if re.search(rf"\b{state}\b", head):
+        return True
+    if len(re.findall(rf"\b{state}\b", page, re.I)) >= 3:
+        return True
+    if on_parent:
+        return False                      # the abbreviation is not evidence here
+    ab = STATES[state].lower()
+    return bool(re.search(rf"\b{ab}\b", flat) or re.search(rf"\b{ab}\b", head))
+
+
+def judge(page: str, url: str, host_hint: str | None, geo: str | None = None,
+          org_url: str | None = None, parent_site: str | None = None
+          ) -> tuple[str, str, list]:
+    """Is this page a list of exhibitors? Returns (verdict, why, names).
+
+    THE GATE THAT LET SEVEN MENUS THROUGH. It used to accept any page whose
+    harvest was not `suspicious` and graded good OR mixed - and a chapter's
+    sponsorship page grades "good" on nav alone, because association menus
+    say Group, Services, Resources and Partners as readily as vendors do.
+    Seven APA chapter menus were filed as exhibitor directories on
+    2026-09-02; 146 names off APA Florida contained no company at all.
+
+    Three verdicts now, and the middle one is the point:
+
+      directory   the harvest reads as companies and grades `good`
+      needs_person  it grades `mixed` - a real floor sometimes does (3CMA,
+                  CoSN, PRIMA all did), and so does a menu. That is a
+                  judgement, so it goes to a person with the evidence rather
+                  than being written as a fact. Agents propose, people rule.
+      no          suspicious, or reads as a menu, or grades doubtful
+    """
+    names = sweep.harvest(page, host_hint)
+    doubt = sweep.suspicious(names)
+    if doubt:
+        return "no", doubt, names
+    if not owns(page, url, geo, org_url, parent_site):
+        return "wrong_event", ("this list is not on the chapter's own site and "
+                               "names the state nowhere - it reads as the "
+                               "national parent's event, not this chapter's"), names
+    menu = sweep.reads_as_a_menu(names)
+    if menu:
+        return "no", menu, names
+    grade, note = sweep.quality(names)
+    if grade == "good":
+        return "directory", f"{len(names)} names, good ({note})", names
+    if grade == "mixed":
+        return "needs_person", f"{len(names)} names, mixed ({note})", names
+    return "no", f"{len(names)} names, {grade} ({note})", names
+
+
+def candidates(page: str, base: str) -> list:
+    """Directory links on this page, then directory links one conference deep.
+
+    A chapter publishes its exhibitor list on the CONFERENCE page, not on the
+    chapter home. Following the conference link first is what turns "no
+    directory link on the home page" into a real answer.
+    """
+    direct = [(t, h) for t, h in links(page, base)
+              if DIRECTORY_LINK.search(t) or DIRECTORY_LINK.search(h)]
+    confs = [(t, h) for t, h in links(page, base)
+             if CONFERENCE_LINK.search(t) or CONFERENCE_LINK.search(h)]
+    return direct[:3], confs[:2]
+
+
+def stage_directories(write: bool, limit: int | None, recheck: bool = False) -> int:
     doc = json.loads(EVENTS.read_text())
-    todo = [e for e in doc["events"] if e.get("org_url") and not e.get("directory_url")]
+    if recheck:
+        # RE-JUDGE WHAT WAS ALREADY ACCEPTED. The gate that accepted the first
+        # seven was wrong, and a stored verdict from a wrong gate is not
+        # evidence. Every row with an org url is re-read and re-decided.
+        todo = [e for e in doc["events"] if e.get("org_url")]
+        for e in todo:
+            e.pop("directory_url", None)
+            e.pop("candidate_url", None)
+    else:
+        todo = [e for e in doc["events"] if e.get("org_url") and not e.get("directory_url")]
     if limit:
         todo = todo[:limit]
     print(f"{len(todo)} event(s) with an org url and no directory yet\n")
-    got = 0
+    got = person = 0
     for e in todo:
+        hint = e.get("parent_national")
         page = fetch(e["org_url"])
         if not page:
             e["status"] = "org_unreachable"; continue
-        cands = [(t, h) for t, h in links(page, e["org_url"]) if DIRECTORY_LINK.search(t) or DIRECTORY_LINK.search(h)]
-        if not cands:
-            e["status"] = "no_directory_link"; continue
-        best = None
-        for t, h in cands[:3]:
+        direct, confs = candidates(page, e["org_url"])
+        # the conference page's own directory links, one hop deeper
+        for _t, h in confs:
+            cp = fetch(h)
+            if cp:
+                more, _ = candidates(cp, h)
+                direct += more
+        if not direct:
+            e["status"] = "no_directory_link"
+            e.pop("directory_note", None)
+            continue
+        best = maybe = shot = wrong = None
+        for _t, h in direct[:5]:
             d = fetch(h)
             if not d:
                 continue
-            names = sweep.harvest(d)
-            grade, note = sweep.quality(names)
-            if not sweep.suspicious(names) and grade in ("good", "mixed"):
-                best = (h, len(names), grade, note); break
-        if not best:
+            verdict, why, names = judge(d, h, hint, e.get("geo"),
+                                        e.get("org_url"),
+                                        PARENT_SITES.get(hint or ""))
+            if verdict == "directory":
+                best = (h, why); break
+            if verdict == "wrong_event" and not wrong:
+                wrong = (h, why)
+            if verdict == "needs_person" and not maybe:
+                maybe = (h, why)
+            if not shot:
+                pic = image_only(d)
+                shot = (h, pic) if pic else None
+        if best:
+            e["directory_url"], e["status"] = best[0], "directory_found"
+            e["directory_note"] = best[1]
+            got += 1
+            print(f"  ok      {e['event_name'][:38]:40} {best[1][:34]:36} {best[0]}")
+        elif maybe:
+            # NOT a directory_url. A candidate a person rules on; writing it
+            # would publish a maybe as a fact.
+            e["status"] = "needs_person"
+            e["candidate_url"], e["directory_note"] = maybe[0], maybe[1]
+            person += 1
+            print(f"  person  {e['event_name'][:38]:40} {maybe[1][:34]:36} {maybe[0]}")
+        elif shot:
+            e["status"] = "list_is_an_image"
+            e["candidate_url"] = shot[0]
+            e["directory_note"] = (f"the sponsor list on this page is a picture "
+                                   f"({shot[1]}) - a person can read it, a fetcher "
+                                   f"cannot. One for the capture extension.")
+            print(f"  image   {e['event_name'][:38]:40} {shot[1][:40]}")
+        elif wrong:
+            e["status"] = "parents_event"
+            e["candidate_url"], e["directory_note"] = wrong[0], wrong[1]
+            print(f"  parent  {e['event_name'][:38]:40} {wrong[0]}")
+        else:
             e["status"] = "not_a_directory"
-            print(f"  --  {e['event_name'][:40]:42} links found, none read as a list")
-            continue
-        e["directory_url"], e["status"] = best[0], "directory_found"
-        e["directory_note"] = f"{best[1]} names, {best[2]} ({best[3]})"
-        got += 1
-        print(f"  ok  {e['event_name'][:40]:42} {best[1]:4} names  {best[0][:40]}")
-    print(f"\n  {got} directory url(s) found")
+            e.pop("directory_note", None)
+            print(f"  --      {e['event_name'][:38]:40} links found, none read as a list")
+    print(f"\n  {got} directory url(s) found, {person} candidate(s) for a person")
     if write:
         _save(doc)
     else:
@@ -239,12 +629,14 @@ def main() -> int:
     ap.add_argument("--parents", action="store_true")
     ap.add_argument("--directories", action="store_true")
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--recheck", action="store_true",
+                    help="re-judge rows that already carry a directory url")
     ap.add_argument("--write", action="store_true")
     a = ap.parse_args()
     if a.parents:
         return stage_parents(a.write)
     if a.directories:
-        return stage_directories(a.write, a.limit)
+        return stage_directories(a.write, a.limit, a.recheck)
     ap.print_help()
     return 0
 
