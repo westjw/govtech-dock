@@ -37,7 +37,7 @@ DATA = ROOT / "data"
 # role is there, never that one is not.
 STRUCTURED = {"ashby", "greenhouse", "lever", "workable", "recruitee", "breezy",
               "smartrecruiters", "bamboohr", "workday", "rippling", "jazzhr",
-              "icims", "paylocity", "oracle"}
+              "icims", "paylocity", "oracle", "adp"}
 
 # Log notes that mean "we did not read the page", as opposed to "we read it and
 # there was nothing". Keeping these apart is the whole point of the file.

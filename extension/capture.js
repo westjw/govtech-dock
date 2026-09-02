@@ -331,6 +331,41 @@
     return { tone: "note", text: `On file as ${kind}.` };
   }
 
+  /* ---- is THIS PAGE actually this company's? -----------------------------
+   *
+   * The verdict above says what the board knows about the company. It said
+   * nothing about the page, and the first hour of real capturing filed twelve
+   * UK IT-support roles from airitcareers.co.uk - Air IT Group, a British MSP
+   * - against Air-Transport IT Services of Orlando. Same name, different
+   * company, and the panel had no way to notice.
+   *
+   * So the page's own identity fields - title, description, first h1 - go to
+   * the admin, which runs the same identifies() check this project already
+   * trusts against websites. The reply is advisory: the button stays live,
+   * because a person on a page may know something the check does not. But a
+   * mismatch is on screen before Send, which is where it has to be. */
+  const meta = (n) => {
+    const el = document.querySelector(`meta[name="${n}"],meta[property="${n}"]`);
+    return el ? (el.getAttribute("content") || "") : "";
+  };
+  async function identify(c) {
+    const h1 = document.querySelector("h1");
+    const r = await api("/api/identify", {
+      company_id: c.id, page_url: location.href,
+      title: document.title || "",
+      meta: meta("description") || meta("og:site_name") || meta("og:title") || "",
+      h1: h1 ? (h1.innerText || "") : "",
+    });
+    const el = box.querySelector("#ss-ident");
+    if (!r || !r.ok || !r.data || r.data.error) { el.innerHTML = ""; return; }
+    const d = r.data;
+    if (d.identifies === true || d.identifies === null) { el.innerHTML = ""; return; }
+    el.innerHTML =
+      `<div style="border-left:3px solid #a3342a;padding:6px 0 6px 9px;margin:0 0 9px;`
+      + `color:#1F2536"><b style="color:#a3342a">Different company?</b> `
+      + `${esc(d.says)}</div>`;
+  }
+
   function say(c) {
     const v = verdictOf(c);
     const colour = { skip: "#a3342a", go: "#0F7A4A", note: "#556F82" }[v.tone];
@@ -363,6 +398,7 @@
        <span id="ss-x" style="margin-left:auto;cursor:pointer;color:#7C97AA">close</span></div>
      <div style="color:#556F82;margin-bottom:9px">${head}</div>
      <div id="ss-verdict"></div>
+     <div id="ss-ident"></div>
      <div id="ss-list" style="margin:0 0 10px;max-height:38vh;overflow:auto"></div>
      <input id="ss-q" placeholder="which company? type a name"
        style="width:100%;padding:8px 10px;border:1px solid #C9DCE8;border-radius:0;
@@ -444,6 +480,7 @@
         d.onclick = () => {
           company = c; q.value = c.name; hits.innerHTML = "";
           say(c);
+          identify(c);
         };
         hits.appendChild(d);
       });

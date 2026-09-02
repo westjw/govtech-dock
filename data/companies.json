@@ -16654,7 +16654,7 @@
  {
   "id": "ai-rgus",
   "name": "Ai-RGUS",
-  "website": null,
+  "website": "https://airgus.com/",
   "location": null,
   "year_founded": 2019,
   "sector": "Public Safety",
@@ -31236,10 +31236,10 @@
   "year_founded": 2005,
   "sector": "K-12 Schools",
   "category": "Operations & SIS",
-  "description": "Alternative student transportation for special-needs and McKinney-Vento students",
+  "description": "Alternative student transportation for school districts (formerly ALC Schools): contracted vehicles and drivers for students a yellow bus cannot serve, with dispatch and tracking for the district",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "greenhouse",
+   "ref": "everdriven"
   },
   "hiring": {
    "status": "Unknown",
@@ -31250,7 +31250,45 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also_known_as": [
+   "ALC Schools"
+  ],
+  "also": [
+   {
+    "sector": "K-12 Schools",
+    "category": "Transportation"
+   }
+  ],
+  "brands": [
+   {
+    "name": "ALC Schools",
+    "website": "https://alcschools.com",
+    "description": "The former name of EverDriven. Palladium Equity Partners announced on 2 March 2020 that it had acquired ALC Schools, LLC and Red Rock Technology, LLC - combined, 'ALC', 'a mission-driven provider of alternative transportation solutions' (palladiumequity.com/media/, read 2026-09-02). alcschools.com now answers HTTP 301 straight to www.everdriven.com, verified 2026-09-02; the destination refuses an identified crawler with 403 but a browser lands on EverDriven. There is no separate ALC Schools site, board or booth: this is one company under two names, not a parent and a subsidiary. It sat in the blocked queue as 'we learned nothing' because a 403'd probe cannot follow a redirect.",
+    "status": "folded",
+    "was_id": "alc-schools",
+    "words": null,
+    "confidence": null,
+    "sources": [],
+    "unread": [],
+    "was": {
+     "year_founded": 2004,
+     "location": "Chicago, Illinois",
+     "sector": "K-12 Schools",
+     "category": "Transportation",
+     "source": "competitor sweep",
+     "website": "https://alcschools.com",
+     "vendor_type": "GovTech Product"
+    }
+   }
+  ],
+  "profile": {
+   "description": "Alternative student transportation for school districts: contracted vehicles and drivers for students a yellow bus cannot serve (special needs, McKinney-Vento, out-of-district placements), with a dispatch and tracking platform for the district. Their Greenhouse board at job-boards.greenhouse.io/everdriven carried 12 postings on 2026-09-02 including Account Executive Georgia/Florida, Account Executive Southern California, Regional Sales Director and a BDR - the SLED sales roles this board exists to list. Wired as greenhouse/everdriven the same day.",
+   "sources": [],
+   "unread": [],
+   "confidence": null,
+   "words": null
+  }
  },
  {
   "id": "schoolmint",
@@ -33663,8 +33701,8 @@
   "category": "Benefits & Medicaid Systems",
   "description": "Medicaid enterprise systems, care and utilization management for states",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "html",
+   "ref": "https://careers.acentra.com/us/jobs/careers"
   },
   "hiring": {
    "status": "Unknown",
@@ -38343,30 +38381,6 @@
   "source": "competitor sweep"
  },
  {
-  "id": "alc-schools",
-  "name": "ALC Schools",
-  "website": "https://alcschools.com",
-  "location": "Chicago, Illinois",
-  "year_founded": 2004,
-  "sector": "K-12 Schools",
-  "category": "Transportation",
-  "description": "Alternative student transportation network for districts and special populations",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-02"
-  },
-  "govtech": true,
-  "researched": false,
-  "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
- },
- {
   "id": "kango",
   "name": "Kango",
   "website": "https://www.kango.com",
@@ -39058,8 +39072,8 @@
   "category": "Water",
   "description": "Water meters, AMR/AMI and metering services for municipal utilities - exhibited at AWWA ACE 2026",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "adp",
+   "ref": "20ac4866-f9c5-4399-90d0-8156222d42c4"
   },
   "hiring": {
    "status": "Unknown",
@@ -43311,8 +43325,8 @@
   "category": "Waste & Recycling",
   "description": "Refuse and recycling collection truck bodies for municipal public works fleets",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "adp",
+   "ref": "3cc4b0f3-2230-4631-a0a0-90070b8e4884"
   },
   "hiring": {
    "status": "Unknown",

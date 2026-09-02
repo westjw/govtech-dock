@@ -1863,6 +1863,48 @@ def fetch_html(url: str) -> list[dict]:
     return [{"title": "", "location": "", "url": url, "_pagetext": text}]
 
 
+
+# --- ADP WorkforceNow --------------------------------------------------------
+#
+# The largest single vendor hole on the board. Ten companies sit in the
+# discovery log as "html:https://workforcenow.adp.com/... found but unreadable
+# (page too small - likely JS-rendered)". That page IS a shell: ~5KB that draws
+# nothing until a script asks ADP's career-center API for the requisitions.
+# The API is public and answers JSON, verified 2026-09-02 against Zenner USA
+# (11 requisitions) with a cid read off the company's own careers page.
+#
+# ref is the portal's `cid` - a UUID - optionally followed by "|<ccId>". Most
+# portals answer on the default ccId; the few that need another carry it.
+# Nothing here guesses a cid: it comes from a link the company published.
+ADP_CCID = "19000101_000001"
+
+
+def fetch_adp(ref: str) -> list[dict]:
+    cid, _, cc = str(ref).partition("|")
+    cc = cc or ADP_CCID
+    api = ("https://workforcenow.adp.com/mascsr/default/careercenter/public/events/"
+           f"staffing/v1/job-requisitions?cid={cid}&ccId={cc}&lang=en_US&locale=en_US")
+    data = _json(_get(api))
+    out = []
+    for r in data.get("jobRequisitions") or []:
+        title = plain(r.get("requisitionTitle") or "")
+        if not title:
+            continue
+        # requisitionLocations[].nameCode.shortName reads "Minol - Addison, TX"
+        # - an ADP location label, a site name then a place. The address block
+        # beside it was empty on every row seen, so the label is what there is.
+        locs = []
+        for L in r.get("requisitionLocations") or []:
+            s = ((L.get("nameCode") or {}).get("shortName") or "").strip()
+            if s:
+                locs.append(s.split(" - ", 1)[-1] if " - " in s else s)
+        item = r.get("itemID") or ""
+        url = ("https://workforcenow.adp.com/mascsr/default/mdf/recruitment/"
+               f"recruitment.html?cid={cid}&ccId={cc}&jobId={item}&lang=en_US")
+        out.append({"title": title, "location": ", ".join(dict.fromkeys(locs)),
+                    "url": url, "posted": posted_date(r.get("postDate"))})
+    return out
+
 FETCHERS = {
     "ashby": fetch_ashby,
     "greenhouse": fetch_greenhouse,
@@ -1879,6 +1921,7 @@ FETCHERS = {
     "paylocity": fetch_paylocity,
     "oracle": fetch_oracle,
     "html": fetch_html,
+    "adp": fetch_adp,
 }
 
 

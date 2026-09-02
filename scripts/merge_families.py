@@ -72,6 +72,28 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 FAMILIES = [
     {
+        "key": "everdriven",
+        "survivor": "everdriven",
+        # rule: the record that carries the working board. everdriven was
+        # wired to greenhouse/everdriven on 2026-09-02 with 12 live postings;
+        # alc-schools has never had a board of its own, and its domain now
+        # 301s to everdriven.com. Same company, former name - the 2020
+        # Palladium acquisition combined ALC Schools and Red Rock into what
+        # trades today as EverDriven.
+        "why_survivor": "holds greenhouse/everdriven and its 12 live postings; "
+                        "alcschools.com redirects to everdriven.com",
+        "research": "brand_research_everdriven.json",
+        "members": [
+            {"id": "alc-schools", "brand": "ALC Schools", "research": "alc-schools"},
+        ],
+        "prep": {
+            "description": "Alternative student transportation for school districts "
+                           "(formerly ALC Schools): contracted vehicles and drivers "
+                           "for students a yellow bus cannot serve, with dispatch "
+                           "and tracking for the district",
+        },
+    },
+    {
         "key": "xplor",
         "survivor": "xplor-recreation",
         # rule: the record that already carries the working board and the

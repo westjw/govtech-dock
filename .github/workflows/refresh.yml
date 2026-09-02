@@ -84,17 +84,24 @@ jobs:
         # snapshot stays recoverable in git history, which is the audit trail here.
         # --render-budget: seconds this run may spend driving a browser at
         # JS-shelled careers pages. Boards are taken least-recently-rendered
-        # first, so 1200s (~100 boards) still reaches all ~649 within a week
-        # rather than rendering the same hundred every night.
-        run: python scripts/refresh.py --ci --force --render-budget 1200
+        # first, so the ration still walks the whole backlog over time.
+        # CUT FROM 1200 ON 2026-09-02, ON MEASUREMENT. The 2026-09-01 run
+        # made 252 render attempts across both pipelines and recovered rows
+        # from 15 boards - a 6% hit rate, against the 32% an n=25 trial had
+        # suggested. ~7s an attempt, so 1200s here plus 1800s below was ~50
+        # minutes of browser time a night for 15 boards. Halved, not removed:
+        # it is still the only path for a JS-shelled board. Re-measure before
+        # moving it again - the docstrings in both scripts still quote the
+        # trial's rate, and it is wrong.
+        run: python scripts/refresh.py --ci --force --render-budget 600
 
       - name: Build the job board and market intel
         # Keeps every posting, not only AE reqs: the board and the intel both
         # depend on knowing what KIND of hiring a company is doing.
         # Same rationing, separate queue: refresh renders to learn a STATUS,
-        # this renders to ENUMERATE the postings. 1800s is ~250 boards a night
-        # against a backlog of 564.
-        run: python scripts/build_board.py --render-budget 1800
+        # this renders to ENUMERATE the postings. Halved from 1800 with the
+        # step above and for the same measured reason: 6% of attempts yield.
+        run: python scripts/build_board.py --render-budget 900
 
       - name: Record what is in the queues
         # AFTER the board is rebuilt, because half the queues are derived from

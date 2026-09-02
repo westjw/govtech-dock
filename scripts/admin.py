@@ -3799,6 +3799,57 @@ def act_worklist(body: dict) -> dict:
             "counts": {k: len(v(companies, board)) for k, v in builders.items()}}
 
 
+def act_identify(body: dict) -> dict:
+    """Does the page a person is standing on actually belong to this company?
+
+    READ-ONLY, and the reason it exists is a page that did not. The first hour
+    of real capturing filed twelve UK IT-support roles from airitcareers.co.uk
+    - Air IT Group, "the UK's #1 MSP" - against Air-Transport IT Services of
+    Orlando, an airport-technology vendor. Same name, different company. The
+    panel had told the person what the board knew about the COMPANY and never
+    checked that the PAGE was that company's.
+
+    find_websites.identifies() is the check this project already trusts for
+    exactly that question - CLAUDE.md calls it "the only thing standing between
+    a squatter and the dataset". It reads a page's own identity fields: title,
+    description/og meta, h1. The extension has the live document, so it sends
+    those three and this rebuilds the fragment identifies() reads. Nothing is
+    fetched; the person is already looking at the page.
+
+    It never loosens the check. A false "not this company" costs a moment's
+    doubt; a false "yes" is twelve wrong postings on a public board.
+    """
+    cid = (body.get("company_id") or "").strip()
+    c = next((x for x in read_companies() if x["id"] == cid), None)
+    if not c:
+        return {"error": f"no company with id {cid!r}"}
+    title = (body.get("title") or "").strip()[:300]
+    meta = (body.get("meta") or "").strip()[:300]
+    h1 = (body.get("h1") or "").strip()[:300]
+    if not (title or meta or h1):
+        return {"ok": True, "identifies": None,
+                "says": "the page carries no title, description or heading to check"}
+    esc = lambda s: (s.replace("&", "&amp;").replace("<", "&lt;")
+                      .replace('"', "&quot;"))
+    frag = (f"<title>{esc(title)}</title>"
+            f'<meta name="description" content="{esc(meta)}">'
+            f"<h1>{esc(h1)}</h1>")
+    base = None
+    try:
+        host = urllib.parse.urlsplit(body.get("page_url") or "").netloc.lower()
+        base = host.replace("www.", "").split(".")[0] or None
+    except Exception:                                   # noqa: BLE001
+        pass
+    yes = find_websites.identifies(frag, c["name"], base,
+                                   c.get("also_known_as") or [])
+    page_says = title or h1 or meta
+    return {"ok": True, "identifies": bool(yes), "name": c["name"],
+            "page_says": page_says[:120],
+            "says": (f"the page identifies as {c['name']}" if yes else
+                     f"this page calls itself \"{page_says[:80]}\" - that is not "
+                     f"{c['name']}, or not recognisably. Check before sending.")}
+
+
 def act_task_note(body: dict) -> dict:
     """Record what a person found while working the list. STAGING ONLY.
 
@@ -3969,6 +4020,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "set-board": act_set_board, "set-family": act_set_family,
            "capture": act_capture, "search-companies": act_search_companies,
            "worklist": act_worklist, "task-note": act_task_note,
+           "identify": act_identify,
            "scope": act_scope, "scope-all": act_scope_all,
            "vendor-scope": act_vendor_scope,
            "vendor-scope-all": act_vendor_scope_all,
@@ -4026,7 +4078,7 @@ CODE_HEADER = "X-Admin-Code"
 # selftest::check_open_actions_never_write_the_map asserts this.
 OPEN_ACTIONS = {"capture", "search-companies", "submit",
                 "inspect-submission", "verify-website", "verify-board",
-                "worklist", "task-note"}
+                "worklist", "task-note", "identify"}
 
 
 def _mint_code() -> str:

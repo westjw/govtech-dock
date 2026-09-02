@@ -1,0 +1,12 @@
+{
+ "everdriven": {
+  "name": "EverDriven",
+  "website": "https://everdriven.com",
+  "description": "Alternative student transportation for school districts: contracted vehicles and drivers for students a yellow bus cannot serve (special needs, McKinney-Vento, out-of-district placements), with a dispatch and tracking platform for the district. Their Greenhouse board at job-boards.greenhouse.io/everdriven carried 12 postings on 2026-09-02 including Account Executive Georgia/Florida, Account Executive Southern California, Regional Sales Director and a BDR - the SLED sales roles this board exists to list. Wired as greenhouse/everdriven the same day."
+ },
+ "alc-schools": {
+  "name": "ALC Schools",
+  "website": "https://alcschools.com",
+  "description": "The former name of EverDriven. Palladium Equity Partners announced on 2 March 2020 that it had acquired ALC Schools, LLC and Red Rock Technology, LLC - combined, 'ALC', 'a mission-driven provider of alternative transportation solutions' (palladiumequity.com/media/, read 2026-09-02). alcschools.com now answers HTTP 301 straight to www.everdriven.com, verified 2026-09-02; the destination refuses an identified crawler with 403 but a browser lands on EverDriven. There is no separate ALC Schools site, board or booth: this is one company under two names, not a parent and a subsidiary. It sat in the blocked queue as 'we learned nothing' because a 403'd probe cannot follow a redirect."
+ }
+}

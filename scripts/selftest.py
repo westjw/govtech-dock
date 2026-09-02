@@ -7998,6 +7998,58 @@ def check_worklist_drops_what_was_worked() -> int:
     return errors
 
 
+def check_identify_catches_a_namesake() -> int:
+    """The panel must notice when the page is a different company with the same name.
+
+    Twelve UK IT-support roles from airitcareers.co.uk - Air IT Group, "the
+    UK's #1 MSP" - were filed against Air-Transport IT Services of Orlando on
+    the first day of real capturing. The verdict line had said what the board
+    knew about the company; nothing had checked that the page was that
+    company's. act_identify is that check, and it reuses identifies() rather
+    than inventing a looser one.
+
+    Driven with the actual title the wrong page carried, and with a title the
+    right page would. Read-only-ness is asserted separately by
+    check_open_actions_never_write_the_map, since identify is OPEN.
+    """
+    errors = 0
+    import admin as _admin
+    with _sandbox_admin({
+        "companies.json": [{
+            "id": "airit", "name": "AirIT (Air-Transport IT Services)",
+            "website": "https://www.airit.com", "location": "Orlando, Florida",
+            "sector": "Airports & Aviation", "category": "Terminal & Passenger Experience",
+            "description": "x", "year_founded": None, "ats": {"type": "unknown", "ref": None},
+            "govtech": True, "vendor_type": "GovTech Product",
+            "hiring": {"status": "Unknown", "note": "", "roles": []}}],
+    }):
+        wrong = _admin.act_identify({
+            "company_id": "airit", "page_url": "https://airitcareers.co.uk/",
+            "title": "Air IT Careers | Jobs in IT",
+            "meta": "Be part of the UK's leading managed service provider",
+            "h1": "JOIN THE UK'S #1 MSP"})
+        if wrong.get("identifies") is not False:
+            print(f"  FAIL: identify said {wrong.get('identifies')!r} for Air IT Group's "
+                  f"page against Air-Transport IT Services - the namesake that filed "
+                  f"twelve wrong postings would get through again")
+            errors += 1
+        right = _admin.act_identify({
+            "company_id": "airit", "page_url": "https://www.airit.com/careers",
+            "title": "Careers - Air-Transport IT Services",
+            "meta": "AirIT airport passenger processing", "h1": "AirIT Careers"})
+        if right.get("identifies") is not True:
+            print(f"  FAIL: identify said {right.get('identifies')!r} for the company's "
+                  f"own careers page - a check that refuses the real page is one "
+                  f"somebody switches off")
+            errors += 1
+        empty = _admin.act_identify({"company_id": "airit", "title": "", "meta": "", "h1": ""})
+        if empty.get("identifies") is not None:
+            print("  FAIL: identify must answer None, not a verdict, when the page "
+                  "carries no identity fields at all")
+            errors += 1
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -8532,6 +8584,7 @@ def main() -> int:
     errors += check_extension_icons()
     errors += check_open_actions_never_write_the_map()
     errors += check_worklist_drops_what_was_worked()
+    errors += check_identify_catches_a_namesake()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

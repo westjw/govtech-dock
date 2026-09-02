@@ -194,5 +194,85 @@
   "identity": "unknown",
   "identity_why": "no identity probe written for jazzhr",
   "postings": 0
+ },
+ {
+  "id": "easypark-group",
+  "name": "EasyPark Group",
+  "type": "unknown",
+  "ref": null,
+  "identity": null,
+  "identity_why": null,
+  "slug_tell": null,
+  "postings": 0,
+  "redirect": {
+   "from": "https://easyparkgroup.com",
+   "to": "www.easypark.com",
+   "why": "their homepage https://easyparkgroup.com ends up on www.easypark.com (the destination answered HTTP 404)",
+   "seen": null
+  }
+ },
+ {
+  "id": "frogparking",
+  "name": "Frogparking",
+  "type": "unknown",
+  "ref": null,
+  "identity": null,
+  "identity_why": null,
+  "slug_tell": null,
+  "postings": 0,
+  "redirect": {
+   "from": "https://frogparking.com",
+   "to": "towne.com",
+   "why": "their homepage https://frogparking.com ends up on towne.com",
+   "seen": null
+  }
+ },
+ {
+  "id": "rock-solid-technologies",
+  "name": "Rock Solid Technologies",
+  "type": "unknown",
+  "ref": null,
+  "identity": null,
+  "identity_why": null,
+  "slug_tell": null,
+  "postings": 0,
+  "redirect": {
+   "from": "https://www.rocksolid.com",
+   "to": "granicus.com",
+   "why": "their homepage https://www.rocksolid.com ends up on granicus.com, which is Granicus's domain (the destination answered HTTP 403)",
+   "seen": null
+  }
+ },
+ {
+  "id": "vitech-systems-group",
+  "name": "Vitech Systems Group",
+  "type": "unknown",
+  "ref": null,
+  "identity": null,
+  "identity_why": null,
+  "slug_tell": null,
+  "postings": 0,
+  "redirect": {
+   "from": "https://www.vitechinc.com",
+   "to": "www.majesco.com",
+   "why": "their homepage https://www.vitechinc.com ends up on www.majesco.com",
+   "seen": null
+  }
+ },
+ {
+  "id": "impero-software",
+  "name": "Impero Software",
+  "type": "unknown",
+  "ref": null,
+  "identity": null,
+  "identity_why": null,
+  "slug_tell": null,
+  "postings": 0,
+  "redirect": {
+   "from": "https://imperosoftware.com",
+   "to": "www.ativion.com",
+   "why": "their homepage https://imperosoftware.com ends up on www.ativion.com, which is Ativion's domain",
+   "seen": null
+  }
  }
 ]
