@@ -172,8 +172,42 @@
 
     if (!onDetailPage && !applyish) return null;
 
-    const h = document.querySelector("h1") || document.querySelector("h2");
-    const title = clean(h ? h.innerText : document.title).slice(0, 120);
+    /* THE FIRST H1 IS OFTEN THE BOARD, NOT THE JOB. On Crelate the page opens
+       "Hire Tomorrow - Job Board" and the actual role, "Account Executive,
+       SLED - Texas", is the heading below it. Taking h1 blindly captured the
+       portal's name as a job title with 3,959 characters of the right JD
+       attached to it.
+       So walk the headings in document order and skip the ones that name a
+       BOARD rather than a role. Anchored on the whole heading where it can
+       be - "Careers" is furniture, "Careers Coordinator" is a job. */
+    /* ANCHORED AT THE END, not a substring, and that distinction is the whole
+       rule. Board furniture ENDS with the board word - "Hire Tomorrow - Job
+       Board", "Acme Careers". A job title carries on past it - "Job Board
+       Administrator", "Careers Coordinator". A substring match on "job board"
+       deletes the administrator, which is the same mistake this project made
+       with "report" in the bookmarklet's nav filter a day earlier. */
+    const BOARD_HEADING = new RegExp(
+      "(^|[\\s\\-\u2013\u2014|:])("
+      + "job board|jobs|careers?|open (roles|positions|jobs)|"
+      + "current (openings|opportunities)|opportunities|join (us|our team)|"
+      + "work (with|for) us|vacancies|search jobs|all jobs|job openings|"
+      + "job portal|careers? (portal|cent(er|re)|page|home)"
+      + ")$", "i");
+
+    let title = "";
+    for (const h of document.querySelectorAll("h1,h2,h3")) {
+      const s = clean(h.innerText || "");
+      if (!s || s.length < 3 || s.length > 120) continue;
+      if (BOARD_HEADING.test(s)) continue;
+      title = s;
+      break;
+    }
+    /* Nothing survived - fall back to the tab title, which on a job page is
+       usually the role and the employer. Take the part before the separator:
+       "Account Executive, SLED - Texas | Hire Tomorrow" is the role. */
+    if (!title) {
+      title = clean(document.title).split(/\s+[|\u2013\u2014]\s+/)[0].slice(0, 120);
+    }
     if (!title || title.length < 3) return null;
     const main = document.querySelector("main, article, [class*=description], [class*=job-details]")
       || document.body;
@@ -206,6 +240,7 @@
     /apply\.workable\.com\/[^/]+\/j\/[A-Z0-9]{6,}/i,
     /\.breezy\.hr\/p\/[0-9a-f]{8,}/i,
     /myworkdayjobs\.com\/.+\/job\//i,
+    /jobs\.crelate\.com\/portal\/[^/]+\/job\/[a-z0-9]{8,}/i,
   ];
   const onDetailPage = DETAIL.some((re) => re.test(location.href));
 
