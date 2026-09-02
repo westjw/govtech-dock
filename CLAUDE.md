@@ -51,10 +51,30 @@ appears in prose or UI, it is stale.
 `data/brand.json` is the single source for the name, the tagline, the domain
 and the eight-colour palette. Nothing may hardcode any of them.
 
-- **The domain is `solesourcejobs.com`** and changes when the owner buys the
-  new one. Editing that string and pointing the Pages custom domain at the new
-  name is the whole move: alert links, digest footers, the confirmation email
+- **The domain is `sledjobs.com`** (bought 2026-09-02).
+  **`solesourcejobs.com` is being handed to a separate FEDERAL hiring board**,
+  so nothing in this project may keep using it. Editing brand.json and
+  `functions/_brand.js`, then pointing the Pages custom domain at the new
+  name, is the whole move: alert links, digest footers, the confirmation email
   and the submission form all read it from brand.json.
+- **THE SENDING ADDRESS IS DELIBERATELY STILL `alerts@solesourcejobs.com`.**
+  Resend has that domain verified with SPF and DKIM in Cloudflare DNS and has
+  never seen sledjobs.com. Moving `from_email` before the new domain is
+  verified makes every alert fail to send *while the endpoint still answers
+  200* - the silent failure this project keeps finding. It moves the day
+  Resend shows sledjobs.com verified, in brand.json and `_brand.js` together.
+- **Two strings on the site would not have followed the move**: the iCalendar
+  UID and the description on every conference download had the domain typed
+  into them. They read `location.hostname` now, and
+  `selftest::check_the_domain_lives_in_one_place` refuses a domain written as
+  a string literal in any shipped file. brand.json's claim that a rebrand is
+  "an edit to this file rather than a hunt through five languages" is true
+  again.
+- **Old links keep working until the federal board takes the domain.** Any
+  alert already sent carries `solesourcejobs.com/alerts?t=<token>`; point both
+  domains at this Pages project so those resolve, and expect them to break the
+  day solesourcejobs.com moves. One confirmation email has ever been sent, so
+  the blast radius is one address.
 - **`functions/_brand.js` restates four values** (`SITE`, `DOMAIN`, `NAME`,
   `FROM`) because a Pages Function cannot read a repo file at runtime. That
   duplication is the thing that will rot, so `selftest.py::check_brand` fails

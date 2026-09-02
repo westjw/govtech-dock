@@ -5958,7 +5958,15 @@ def check_calendar_dates_survive_the_round_trip() -> int:
         "Spring 2027",
         "",
     ]
-    script = html[a:b] + """
+    # THE PAGE RUNS IN A BROWSER, so it has `location`; node does not. icsFor
+    # reads location.hostname for the UID and the description, which is the
+    # point - the domain moved on 2026-09-02 and a literal would not have
+    # followed it. The harness models the real runtime by supplying the one
+    # global a browser always has, BEFORE the extracted code, because the
+    # first call to icsFor is forty lines above where a stub would naturally
+    # go and it threw there.
+    script = ('globalThis.location = { hostname: "sledjobs.test" };\n'
+              + html[a:b]) + """
 const CASES = %s, REFUSE = %s;
 const out = {ranges: [], refused: [], loc: null};
 for (const [s] of CASES) {
@@ -6008,8 +6016,16 @@ out.past = {
   unparseable:   isPast("Conference: November 17-19, 2026; Expo: November 18-19, 2026"),
   noDates:       isPast(""),
 };
+/* THE PAGE RUNS IN A BROWSER, so it has `location`. node does not, and
+   icsFor reads location.hostname for the UID and the description - which is
+   the point: the domain moved on 2026-09-02 and a literal would not have
+   followed. The harness has to model the real runtime, so it supplies the
+   one global the browser always has. */
+globalThis.location = { hostname: "sledjobs.test" };
 const one = icsFor({name: "A, B; C", dates: "March 1-4, 2027",
                     city: "Washington, DC", tag: "t"});
+out.uidHost = /UID:t@sledjobs\\.test/.test(one);
+out.descHost = one.includes("sledjobs.test");
 out.loc = /LOCATION:Washington\\\\, DC/.test(one) && /SUMMARY:A\\\\, B\\\\; C/.test(one);
 out.crlf = one.includes("\\r\\n") && !/[^\\r]\\n/.test(one);
 console.log(JSON.stringify(out));
@@ -6032,6 +6048,10 @@ console.log(JSON.stringify(out));
             errors += fail(f"ics {dates!r}: DTEND {ge}, expected {want_e}. "
                            f"DTEND is exclusive - a calendar shows one day "
                            f"less than the conference actually runs")
+    if not got.get("uidHost") or not got.get("descHost"):
+        errors += fail("the .ics UID or description does not carry the host the "
+                       "page is served from - a literal domain is back, and it "
+                       "will not follow the next move")
     for s, refused in zip(refuse, got["refused"]):
         if not refused:
             errors += fail(f"ics: {s!r} was parsed into a date. It is not "
@@ -7501,6 +7521,16 @@ def check_the_crawler_paces_itself() -> int:
             errors += 1
 
         # Different hosts must NOT queue behind each other.
+        #
+        # COMPARED AGAINST THE SAME-HOST CASE, not against a wall clock. The
+        # first version asserted eight different hosts finish inside one
+        # pause, which is true on an idle machine and false on a busy one:
+        # it failed on 2026-09-02 with a load average of 7.7 while six
+        # research agents ran, and passed four times out of four the moment
+        # they stopped. A guard that fails under load is a guard somebody
+        # turns off. The RATIO is what the design actually claims - per-host
+        # gating means eight hosts cost about one wait and eight same-host
+        # calls cost about seven - and it holds however slow the machine is.
         ats._HOST_LAST.clear(); ats._HOST_LOCKS.clear()
         t0 = time.monotonic()
         threads = [threading.Thread(target=ats._host_gate,
@@ -7508,10 +7538,13 @@ def check_the_crawler_paces_itself() -> int:
                    for i in range(8)]
         for th in threads: th.start()
         for th in threads: th.join()
-        if time.monotonic() - t0 > pause:
-            print(f"  FAIL: eight DIFFERENT hosts serialised behind each other - "
-                  f"the gate is global rather than per-host, which would turn "
-                  f"the crawl into hours")
+        spread = time.monotonic() - t0
+        same = stamps[-1] - stamps[0] if len(stamps) > 1 else pause * 7
+        if spread > same / 2:
+            print(f"  FAIL: eight DIFFERENT hosts took {spread:.3f}s against "
+                  f"{same:.3f}s for eight calls to ONE host - the gate is "
+                  f"global rather than per-host, which would turn the crawl "
+                  f"into hours")
             errors += 1
     finally:
         ats.HOST_PAUSE = real
@@ -9299,6 +9332,70 @@ def check_promotion_refuses_a_generated_name() -> int:
     return errors
 
 
+
+def check_the_domain_lives_in_one_place() -> int:
+    """No shipped file may carry the domain as a string literal.
+
+    data/brand.json says a rebrand is "an edit to this file rather than a hunt
+    through five languages", and check_brand holds functions/_brand.js against
+    it. Neither noticed that index.html had the domain typed into it twice -
+    the iCalendar UID and the description on every conference download.
+
+    That came due on 2026-09-02, when the board moved to sledjobs.com and
+    solesourcejobs.com was set aside for a separate FEDERAL board. Two strings
+    on the site would have gone on stamping calendar entries with a domain
+    about to belong to a different product, and nothing would have said so.
+
+    A literal in a COMMENT is fine and this file is full of them - the rule is
+    about strings the program emits. So the search is for the domain inside
+    quotes or backticks, which is where an emitted one lives.
+    """
+    import brand as _brand
+    errors = 0
+    # Both names: the one in use, and the one being handed to another product.
+    domains = {_brand.DOMAIN, "solesourcejobs.com"}
+    allowed = {"data/brand.json", "functions/_brand.js"}
+    pat = re.compile(r"""["'`][^"'`\n]*\b(%s)\b""" %
+                     "|".join(re.escape(d) for d in domains))
+    for rel in ["index.html", "alerts.html", "admin-web.html"]:
+        f = ROOT / rel
+        if f.exists() and pat.search(f.read_text()):
+            m = pat.search(f.read_text())
+            print(f"  FAIL: {rel} carries a domain as a string literal near "
+                  f"{m.group(0)[:60]!r}. The domain lives in data/brand.json; a "
+                  f"page reads location.hostname or is given the value")
+            errors += 1
+    for f in sorted((ROOT / "scripts").glob("*.py")) + \
+             sorted((ROOT / "functions").rglob("*.js")):
+        rel = str(f.relative_to(ROOT))
+        if rel in allowed or f.name == "selftest.py":
+            continue
+        src = f.read_text()
+        if f.suffix == ".py":
+            src = re.sub(r'"""[\s\S]*?"""', "", src)
+            src = "\n".join(re.sub(r"#.*$", "", ln) for ln in src.splitlines())
+        else:
+            src = re.sub(r"/\*[\s\S]*?\*/", "", src)
+            src = "\n".join(re.sub(r"//.*$", "", ln) for ln in src.splitlines())
+        m = pat.search(src)
+        if m:
+            print(f"  FAIL: {rel} carries a domain as a string literal near "
+                  f"{m.group(0)[:60]!r} - import brand (Python) or _brand.js "
+                  f"(Worker) instead")
+            errors += 1
+
+    # And the sending address must stay somewhere Resend has verified. Moving
+    # it to a domain Resend has never seen makes every alert fail to send with
+    # the endpoint still answering 200 - the failure nobody sees.
+    if not _brand.FROM.endswith("@solesourcejobs.com>"):
+        who = _brand.FROM.split("@")[-1].rstrip(">")
+        print(f"  NOTE: the sending address moved to {who}. That is correct "
+              f"ONLY if Resend shows {who} verified with its DNS published; "
+              f"if it does not, alerts fail silently. Delete this check's "
+              f"note once the move is confirmed.")
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -9820,6 +9917,7 @@ def main() -> int:
     errors += check_a_chapter_directory_is_not_its_parents()
     errors += check_chapter_listings_are_looked_up()
     errors += check_promotion_refuses_a_generated_name()
+    errors += check_the_domain_lives_in_one_place()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

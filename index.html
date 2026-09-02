@@ -5741,10 +5741,15 @@ function icsFor(r){
      needs DTEND 22 or the calendar drops the last day. */
   const endEx=new Date(rg.end); endEx.setDate(endEx.getDate()+1);
   const stamp=new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");
-  const uid=`${String(r.tag||r.name||"event").toLowerCase().replace(/[^a-z0-9]+/g,"-")}@solesourcejobs.com`;
+  /* THE HOST WE ARE SERVED FROM, never a literal. The domain moved from
+     solesourcejobs.com to sledjobs.com on 2026-09-02 and these two strings
+     were the only places on the site that would not have followed - a
+     calendar entry quietly stamped with a domain that is about to belong to
+     a different product. location.hostname cannot drift. */
+  const uid=`${String(r.tag||r.name||"event").toLowerCase().replace(/[^a-z0-9]+/g,"-")}@${location.hostname}`;
   const desc=[r.companies?`${r.companies} govtech exhibitors on file`:null,
               r.hiring?`${r.hiring} of them hiring`:null,
-              "via SLED JOBS - solesourcejobs.com"].filter(Boolean).join(". ");
+              `via SLED JOBS - ${location.hostname}`].filter(Boolean).join(". ");
   const lines=["BEGIN:VCALENDAR","VERSION:2.0",
     "PRODID:-//SLED JOBS//Conference catalogue//EN","CALSCALE:GREGORIAN",
     "METHOD:PUBLISH","BEGIN:VEVENT",

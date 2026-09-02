@@ -4,9 +4,9 @@
   "tagline": "Find the right fit",
   "line": "It's tough SLEDing out there.",
   "what": "Every open sales role at state and local government technology companies.",
-  "_domain_comment": "Still the old domain until the new one is bought and pointed at Cloudflare Pages. Changing this string and the Pages custom domain is the whole move: alert links, digest footers, the confirmation email and the submission form all read it from here.",
-  "domain": "solesourcejobs.com",
-  "site": "https://solesourcejobs.com",
+  "_domain_comment": "sledjobs.com, bought 2026-09-02. solesourcejobs.com becomes a separate FEDERAL hiring board later, so this project must stop using it. Changing this string and the Pages custom domain is the whole move: alert links, digest footers, the confirmation email and the submission form all read it from here.",
+  "domain": "sledjobs.com",
+  "site": "https://sledjobs.com",
   "from_email": "alerts@solesourcejobs.com",
   "palette": {
     "ice": {
@@ -72,5 +72,6 @@
         "on_penguin": "4.7:1"
       }
     }
-  }
+  },
+  "_from_email_comment": "STILL ON THE OLD DOMAIN ON PURPOSE. Resend has solesourcejobs.com verified for sending - SPF and DKIM in Cloudflare DNS - and has never seen sledjobs.com. Moving this string before that domain is verified and its DNS published would make every alert fail to send, silently, with the endpoint still answering 200. Change it the day Resend shows sledjobs.com verified, and not before."
 }

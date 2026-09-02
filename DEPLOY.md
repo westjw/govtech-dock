@@ -3,7 +3,7 @@
 Everything below needs your accounts and your card, which is why it is yours.
 Everything after it is already automated.
 
-The product is **SLED JOBS**; the domain is still `solesourcejobs.com` until
+The product is **SLED JOBS**; the domain is still `sledjobs.com` until
 you buy the new one. `data/brand.json` is where both are written down, and
 `functions/_brand.js` restates the four values a Cloudflare Function needs —
 change the domain in both or `scripts/selftest.py` fails the build. The GitHub
@@ -12,7 +12,7 @@ repo stays `westjw/govtech-dock`; renaming it would break every URL below.
 ## 1. Cloudflare account and domain (~10 min)
 1. <https://dash.cloudflare.com> → sign up (free plan is fine).
 2. **Domain Registration → Register Domain** → buy the name
-   (checked free as of 2026-08-21: `solesourcejobs.com`, `getsolesource.com`,
+   (checked free as of 2026-08-21: `sledjobs.com`, `getsolesource.com`,
    `solesourcehq.com`; `solesource.com/.io/.co` are taken).
 
 ## 2. Pages project (~3 min)
@@ -102,14 +102,14 @@ every field from the company's own site, and merging stays a human action.
 
 ## 7. The web admin (~5 min, two steps IN ORDER)
 
-solesourcejobs.com/admin is the judgment half of the admin - Vendor scope
+sledjobs.com/admin is the judgment half of the admin - Vendor scope
 and Wrong bucket - workable from any browser, phone included. Rulings
 commit to the repo as you, and the daily run applies them with validation.
 It ships fail-closed: until both steps below are done, the page is
 read-only and every ruling is refused.
 
 1. **Access first.** Zero Trust -> Access -> Applications -> Add ->
-   Self-hosted. Application domain: `solesourcejobs.com`, path: `admin`.
+   Self-hosted. Application domain: `sledjobs.com`, path: `admin`.
    Policy: your email (and later your employee's), one-time PIN. This is
    what makes the ruling endpoint trust the request; without it, writes are
    refused with "not behind Access".
