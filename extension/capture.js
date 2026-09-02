@@ -351,6 +351,24 @@
          </select>
        </div>
        <div id="ss-rows" style="margin-top:7px;color:#556F82">loading…</div>
+     </div>
+     <div id="ss-note" style="margin-top:12px;padding-top:11px;
+          border-top:1px solid #C9DCE8">
+       <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+            color:#7C97AA;margin-bottom:6px">record what you found</div>
+       <div style="display:flex;gap:6px">
+         <select id="ss-kind" style="font:inherit;padding:6px;border:1px solid #C9DCE8;
+                 background:#fff;color:#1F2536;flex:0 0 auto">
+           <option value="board">board address</option>
+           <option value="founded">founding year</option>
+           <option value="posts-at">posts at</option>
+           <option value="website">website</option>
+           <option value="nothing">nothing here</option>
+         </select>
+         <input id="ss-val" placeholder="paste it" style="flex:1 1 auto">
+       </div>
+       <button id="ss-save" style="margin-top:7px;background:#1F2536">Save note</button>
+       <div id="ss-nmsg" style="margin-top:6px;color:#556F82"></div>
      </div>`;
 
   const list = box.querySelector("#ss-list");
@@ -455,10 +473,63 @@
           + `</div>`).join("");
   }
 
+
+  /* ---- record what you found --------------------------------------------
+   *
+   * The half of the loop a capture cannot cover. Standing on a company's
+   * site, the useful answer is often not "here are their jobs" - it is
+   * "their board is at this address", "founded 2014", "they only post on
+   * LinkedIn", or "I looked and there is nothing". None of those is a
+   * posting and every one is worth keeping.
+   *
+   * It goes to task-note, which APPENDS to a staging file. Nothing here
+   * touches companies.json - scripts/apply_task_notes.py does that in Python
+   * behind validate(), which is why this action can be open to the extension
+   * at all.
+   *
+   * The company is whichever one is picked above. Without one there is
+   * nothing to attach a note to, and saying so beats writing it nowhere. */
+  function wireNote() {
+    const kind = box.querySelector("#ss-kind");
+    const val = box.querySelector("#ss-val");
+    const nmsg = box.querySelector("#ss-nmsg");
+    const sync = () => {
+      const none = kind.value === "nothing";
+      val.disabled = none;
+      val.placeholder = none ? "nothing to type - that IS the finding"
+        : { board: "https://boards.greenhouse.io/…",
+            founded: "2014",
+            "posts-at": "linkedin",
+            website: "https://…" }[kind.value] || "paste it";
+    };
+    kind.onchange = sync;
+    sync();
+
+    box.querySelector("#ss-save").onclick = async () => {
+      if (!company) {
+        nmsg.innerHTML = `<span style="color:#a3342a">Pick a company above `
+          + `first - a note has to be about somebody.</span>`;
+        return;
+      }
+      nmsg.textContent = "saving…";
+      const r = await api("/api/task-note", {
+        kind: kind.value, company_id: company.id,
+        value: val.disabled ? "" : val.value.trim(),
+        page_url: location.href,
+      });
+      const ok = r && r.ok && r.data && !r.data.error;
+      nmsg.innerHTML = ok
+        ? `<b style="color:#0F7A4A">${esc(r.data.message)}</b>`
+        : `<span style="color:#a3342a">${esc(trouble(r))}</span>`;
+      if (ok) { val.value = ""; loadWork(); }
+    };
+  }
+
   root.appendChild(css);
   root.appendChild(box);
   document.body.appendChild(host);
 
   box.querySelector("#ss-queue").onchange = loadWork;
+  wireNote();
   loadWork();
 })();
