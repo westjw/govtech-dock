@@ -7625,6 +7625,81 @@ def check_embedded_wiring() -> int:
     return errors
 
 
+def check_capture_parity() -> int:
+    """The capture extractor exists twice and had drifted BOTH ways.
+
+    `extension/capture.js` and `scripts/capture.js` are copy-pasted, because a
+    bookmarklet has to be one self-contained string and an extension has to be
+    files. That is forced duplication, and this repo already guards two others
+    for the same reason - check_brand holds _brand.js against brand.json,
+    check_alert_vocabulary holds alerts.js against roles.py. This one was
+    missing, and both copies had quietly gained things the other lacked:
+
+      the extension had  |currentJobId in HREF_RE and |dismiss|report in
+                         NOT_RE, and the whole single-posting JD mode
+      the bookmarklet had the sibling-cell location fallback, which had NEVER
+                         existed in the extension - so the extension silently
+                         dropped the location on every board that puts it in a
+                         cell beside the anchor rather than inside it
+
+    Quote style is not drift: a bookmarklet lives inside a javascript: URL and
+    uses single quotes. So the patterns are compared with quotes, whitespace
+    and grouping parens removed - what is compared is what the regex MEANS.
+
+    THE ANCHOR IS CHECKED SEPARATELY AND THAT IS NOT PEDANTRY. Merging
+    |dismiss|report into the bookmarklet put it outside the anchored group:
+    `^(apply|load more)$|dismiss|report` matches any title CONTAINING
+    "report", which would have silently deleted every Reporting Analyst and
+    Report Developer on every board captured. A title filter that is not
+    anchored is a title deleter.
+    """
+    errors = 0
+    ext = (ROOT / "extension" / "capture.js").read_text()
+    bm = (ROOT / "scripts" / "capture.js").read_text()
+
+    def pattern(src, name):
+        m = re.search(rf"const {name}\s*=\s*(.*?);\n", src, re.S)
+        if not m:
+            return None
+        s = re.sub(r"new RegExp\(|,\s*[\"']i[\"']|//[^\n]*", "", m.group(1))
+        return re.sub(r"[\s\"'+()]", "", s)
+
+    for name in ("HREF_RE", "NOT_RE", "CHIP_RE", "LOC_RE"):
+        a, b = pattern(ext, name), pattern(bm, name)
+        if a is None or b is None:
+            print(f"  FAIL: {name} is missing from "
+                  f"{'extension' if a is None else 'scripts'}/capture.js")
+            errors += 1
+        elif a != b:
+            print(f"  FAIL: {name} has drifted between the two capture copies. "
+                  f"One of them is now finding jobs the other cannot.")
+            errors += 1
+
+    for label, needle, why in [
+        ("the link dedup", "seen.indexOf(href)",
+         "keying on the title deletes the second of two same-named reqs"),
+        ("the sibling-cell location fallback", "closest(",
+         "without it the location is dropped on every board that puts it "
+         "beside the anchor rather than inside it"),
+        ("the textContent fallback", "textContent",
+         "a CSS-collapsed anchor has no innerText and its job is lost"),
+    ]:
+        for name, src in (("extension/capture.js", ext), ("scripts/capture.js", bm)):
+            if needle not in src:
+                print(f"  FAIL: {name} lost {label} - {why}")
+                errors += 1
+
+    # An unanchored title filter is a title deleter, so prove it stays anchored.
+    for name, src in (("extension/capture.js", ext), ("scripts/capture.js", bm)):
+        pat = pattern(src, "NOT_RE") or ""
+        if not pat.startswith("^") or not pat.endswith("$"):
+            print(f"  FAIL: {name}'s NOT_RE is not anchored end to end - it "
+                  f"would match any title CONTAINING one of those words, and "
+                  f"'report' alone deletes every Reporting Analyst on a board")
+            errors += 1
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -8155,6 +8230,7 @@ def main() -> int:
     errors += check_fetchers_page_and_do_not_fake_zeros()
     errors += check_the_crawler_paces_itself()
     errors += check_embedded_wiring()
+    errors += check_capture_parity()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

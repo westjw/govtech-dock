@@ -25,9 +25,13 @@
      running" and "the admin refused that" are not the same problem, and only
      the first is fixed by starting the admin - so the reply's own words win
      when it has any. An undefined r is the worker dying before it answered. */
+  /* The worker now sends a written sentence for the unreachable case, so
+     r.error carries it. This fallback is for the shape where the message
+     never arrived at all - the worker asleep, the extension reloaded
+     mid-click - which is the only case left where we know nothing. */
   const trouble = (r) =>
     (r && (r.error || (r.data && r.data.error)))
-    || "The admin did not answer. Is it running?  python3 scripts/admin.py";
+    || "No answer from the extension. Reload the page and click again.";
 
   /* ---- harvest: list pages -------------------------------------------- */
   const HREF_RE = new RegExp(
@@ -43,7 +47,7 @@
     + "|see all|open positions|current openings|sign in|log in|share|save"
     + "|easy apply|show more|load more|dismiss|report)$", "i");
   const LOC_RE = /^(remote|hybrid|on-?site|[A-Z][A-Za-z .'-]+,\s*[A-Z][A-Za-z .]+)/;
-  const CHIP_RE = /^(details|apply|view|new|featured|urgent|promoted|actively hiring|[A-Z0-9 &/-]{2,26})$/;
+  const CHIP_RE = /^(details|apply|view|new|featured|urgent|[A-Z0-9 &/-]{2,26})$/;
   const clean = (s) => (s || "").replace(/\s+/g, " ").trim();
 
   function harvestList() {
@@ -53,7 +57,10 @@
       try { href = new URL(a.getAttribute("href"), location.href).href; }
       catch (e) { continue; }
       if (!HREF_RE.test(href)) continue;
-      const lines = (a.innerText || "").split("\n").map((x) => x.trim()).filter(Boolean);
+      // textContent as well as innerText: a hidden or CSS-collapsed anchor
+      // has no innerText and the bookmarklet has always read both.
+      const raw = a.innerText || a.textContent || "";
+      const lines = raw.split("\n").map((x) => x.trim()).filter(Boolean);
       if (!lines.length) continue;
       const body = lines.filter((l) => !(CHIP_RE.test(l) && l === l.toUpperCase()));
       const title = clean(body[0] || "");
@@ -62,9 +69,28 @@
         if (LOC_RE.test(l) && l.length < 64) { loc = l; break; }
       if (!title || title.length < 3 || title.length > 120) continue;
       if (NOT_RE.test(title)) continue;
-      const k = title.toLowerCase();
-      if (seen.indexOf(k) !== -1) continue;
-      seen.push(k);
+
+      // DEDUP ON THE LINK, NOT THE TITLE. Same rule ats.py states at length
+      // and for the same reason: two genuinely different requisitions often
+      // share a name, and keying on the title deletes the second one. A board
+      // with twelve "Field Service Engineer" reqs captured one.
+      if (seen.indexOf(href) !== -1) continue;
+      seen.push(href);
+
+      // Some boards put the location in a sibling cell rather than inside the
+      // anchor. Only look there when the anchor had none, and keep it short -
+      // an over-wide row swallows the entire rest of the board. This existed
+      // in the bookmarklet from the first commit and was never in the
+      // extension, so the extension silently dropped the location on every
+      // board of that shape.
+      if (!loc) {
+        const row = a.closest("li, tr, article, [class*=job], [class*=post]");
+        if (row && row.innerText && row.innerText.length < 400) {
+          const m = clean(row.innerText).replace(title, "").match(
+            /([A-Z][A-Za-z .'-]+,\s*[A-Z]{2}\b|Remote[A-Za-z ,-]{0,20}|Hybrid[A-Za-z ,-]{0,20})/);
+          if (m) loc = clean(m[1]).slice(0, 60);
+        }
+      }
       out.push({ title, url: href, location: loc.slice(0, 60) });
     }
     return out;
@@ -193,10 +219,19 @@
     const r = await api("/api/capture",
       { company_id: company.id, jobs: chosen, page_url: location.href });
     const sent = r && r.ok && !r.data.error;
+    /* THREE OUTCOMES, NOT TWO. A capture the worker is HOLDING because the
+       admin is off is not a failure - the work is safe and will go when the
+       admin comes back - so it is not painted in the refusal colour, and the
+       panel closes as it does on a success. Painting it red taught the person
+       their click was wasted, which was the opposite of true. */
+    const held = r && r.queued;
     msg.innerHTML = sent
-      ? `<b style="color:#0B57C4">${esc(r.data.message)}</b>`
+      ? `<b style="color:#0B57C4">${esc(r.data.message)}`
+        + `${r.flushed ? ` (and ${r.flushed} held earlier)` : ""}</b>`
+      : held
+      ? `<b style="color:#7a5b00">${esc(trouble(r))}</b>`
       : `<span style="color:#a3342a">${esc(trouble(r))}</span>`;
-    if (sent) setTimeout(() => box.remove(), 2400);
+    if (sent || held) setTimeout(() => box.remove(), held ? 4200 : 2400);
   };
 
   document.body.appendChild(box);

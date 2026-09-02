@@ -3837,7 +3837,7 @@ CONSOLE_CODE = _mint_code()
 # ---------------------------------------------------------------- server
 
 CAPTURE_PAGE = """<!doctype html><meta charset=utf-8>
-<title>GovTech Dock — page capture</title>
+<title>SLED JOBS — page capture</title>
 <style>
  :root{--bg:#fbfaf8;--panel:#fff;--line:#e5e1db;--ink:#1a1815;--dim:#6a655d;
        --faint:#969086;--accent:#2f6f4f;--chip:#f1eeea}
@@ -3861,27 +3861,54 @@ CAPTURE_PAGE = """<!doctype html><meta charset=utf-8>
 </style>
 <main>
 <h1>Page capture</h1>
-<p>For the boards the fetcher cannot read. Your browser runs the widgets, iframes
-and sessions ours does not, so if you can see the jobs, this can take them.</p>
+<p>For the boards the fetcher cannot read. Your browser runs the widgets,
+iframes and sessions ours does not, so if you can see the jobs, this can take
+them. Two ways in: the extension, which sends straight here, and the
+bookmarklet, which goes by the clipboard.</p>
 
-<h2>Install</h2>
-<p>Drag this to your bookmarks bar:</p>
-<a class="drag" href="__LOADER__">GTD capture</a>
-<p style="font-size:13px">If your bookmarks bar is hidden, press
-<code>&#8984;&#8679;B</code> first. Right-clicking the button and copying the link
-also works — make a bookmark by hand and paste it as the URL.</p>
-
-<h2>Use</h2>
+<h2>The extension &mdash; one click, no copying</h2>
 <ol>
- <li>Open a careers page, or a LinkedIn jobs list, in your normal browser.</li>
- <li>Click <b>GTD capture</b>. A panel lists every job link it can see.</li>
+ <li>Open <code>chrome://extensions</code> and turn on
+     <b>Developer mode</b>, top right.</li>
+ <li>Click <b>Load unpacked</b> and choose the
+     <code>extension/</code> folder in this repository.</li>
+ <li><b>SLED JOBS Capture</b> appears in the toolbar. Pin it &mdash; the
+     puzzle-piece menu, then the pin beside its name.</li>
+ <li>On any careers page, click it. A panel lists the jobs, you pick the
+     company, and it lands in <code>data/manual.json</code>.</li>
+</ol>
+<div class="note">
+<b>It keeps your work when this admin is off.</b> A capture made while
+<code>admin.py</code> is not running is held in the extension and sent the
+moment it can reach here again &mdash; so you can work a list on a train and
+start the admin afterwards. The panel tells you how many are waiting.
+</div>
+
+<h2>The bookmarklet &mdash; nothing to install</h2>
+<p>Drag this to your bookmarks bar:</p>
+<a class="drag" href="__LOADER__">SLED JOBS capture</a>
+<p style="font-size:13px">If your bookmarks bar is hidden, press
+<code>&#8984;&#8679;B</code> first. Right-clicking the button and copying the
+link also works &mdash; make a bookmark by hand and paste it as the URL.</p>
+<ol>
+ <li>Open a careers page in your normal browser.</li>
+ <li>Click <b>SLED JOBS capture</b>. A panel lists every job link it can see.</li>
  <li>Uncheck anything that is not a posting, then <b>Copy for admin</b>.</li>
  <li>Paste it into the <a href="/#capture">Capture tab</a> here and pick the
-     company. It lands in <code>data/manual.json</code>.</li>
+     company.</li>
 </ol>
-<p style="font-size:13px">The clipboard is the handoff because the page cannot
-reach this server: Chrome will not let an https site talk to
-<code>127.0.0.1</code>. Copying works everywhere and needs no permissions.</p>
+<p style="font-size:13px">The clipboard is the handoff because a bookmarklet
+runs as the page, and in Chrome a page served over https cannot reach
+<code>127.0.0.1</code>. That is a Chrome behaviour rather than a fact about
+browsers &mdash; Firefox and Safari have not implemented it &mdash; but Chrome
+is where this runs, and the clipboard needs no permission anywhere.</p>
+
+<h2>What to point it at</h2>
+<p>The <a href="/#boards">No board found</a> queue is the worklist. Those are
+companies probed and turned away, most of which hire somewhere a fetcher will
+never read. It is sorted for this, not alphabetically, and the green chips are
+the conference floors each company exhibits on &mdash; the fastest way to work
+it is by floor, standing on it.</p>
 
 <div class="note">
 Captured postings are never deleted by an automated run. Absence from a refresh
@@ -3889,20 +3916,22 @@ means the fetcher still cannot see that company, not that the role closed, so
 only <code>python scripts/manual.py none</code> closes one.
 </div>
 
-<h2>What it does not do</h2>
-<p>It reads the page you have open, once, when you click. It does not scroll,
-paginate, follow links, log in, or run on its own — which is the line between
-reading a page you opened and harvesting a site. On LinkedIn that matters: use it
-on a list you are already looking at, not as a crawler.</p>
+<h2>What neither of them does</h2>
+<p>Both read the page you have open, once, when you click. Neither scrolls,
+paginates, follows links, logs in, or runs on its own &mdash; which is the line
+between reading a page you opened and harvesting a site. The extension holds
+that line by construction: <code>activeTab</code> means it can read nothing at
+all until you click, and then only that one tab.</p>
 
 <h2>When it finds nothing</h2>
 <p>Usually the board is inside an iframe. Right-click it &rarr; <i>This Frame</i>
-&rarr; <i>Show Only This Frame</i>, then click the bookmarklet again.</p>
+&rarr; <i>Show Only This Frame</i>, then click again.</p>
 
 <p style="margin-top:34px;font-size:13px;color:var(--faint)">
-The button carries all of <code>scripts/capture.js</code> (__LINES__ lines,
+The bookmarklet carries all of <code>scripts/capture.js</code> (__LINES__ lines,
 __SIZE__) in its own URL, because a page on https cannot load anything from a
-loopback server. Editing the script means dragging the button again.
+loopback server in Chrome. Editing the script means dragging the button again;
+the extension just needs reloading on <code>chrome://extensions</code>.
 &nbsp;·&nbsp; <a href="/">back to admin</a></p>
 </main>"""
 
@@ -4345,7 +4374,7 @@ def main() -> int:
     a = ap.parse_args()
 
     companies, board = read_companies(), read("board.json", {})
-    print("GovTech Dock admin\n")
+    print("SLED JOBS admin\n")
     for k, f in QUEUES.items():
         print(f"  {len(f(companies, board)):>5}  {LABEL[k]}")
     # Loopback only, on purpose. This writes to companies.json with no auth in

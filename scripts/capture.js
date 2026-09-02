@@ -32,7 +32,7 @@
   const HREF_RE = new RegExp(
     '/(jobs?|careers?|positions?|openings?|vacanc(y|ies)|opportunit(y|ies)'
     + '|postings?|job-details|job_listing)/[^/?#]{3,}'
-    + '|[?&](gh_jid|jobid|job_id|jid|reqid|requisitionid|pid)='
+    + '|[?&](gh_jid|jobid|job_id|jid|reqid|requisitionid|pid|currentJobId)='
     // ATS hosts that put the id straight after the company slug, with no job
     // word anywhere in the path - Lever and Ashby are the common ones.
     + '|(jobs\\.lever\\.co|jobs\\.ashbyhq\\.com|apply\\.workable\\.com'
@@ -44,7 +44,7 @@
     '^(jobs?|careers?|all jobs|view all|search|apply|apply now|learn more|home'
     + '|about|contact|benefits|culture|life at|our team|back|next|previous'
     + '|see all|open positions|current openings|sign in|log in|share|save'
-    + '|easy apply|show more|load more)$', 'i');
+    + '|easy apply|show more|load more|dismiss|report)$', 'i');
 
   const clean = s => (s || '').replace(/\s+/g, ' ').trim();
 
@@ -83,9 +83,11 @@
       }
       if (!title || title.length < 3 || title.length > 120) continue;
       if (NOT_RE.test(title)) continue;
-      const k = title.toLowerCase();
-      if (seen.indexOf(k) !== -1) continue;
-      seen.push(k);
+      // DEDUP ON THE LINK, NOT THE TITLE - the rule ats.py documents at
+      // length. Two different requisitions often share a name, and keying on
+      // the title silently deletes the second.
+      if (seen.indexOf(href) !== -1) continue;
+      seen.push(href);
 
       // Some boards put the location in a sibling cell rather than inside the
       // anchor. Only look there when the anchor had none, and keep it short -
