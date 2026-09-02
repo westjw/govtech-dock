@@ -44,6 +44,7 @@ empty read is never written as an empty exhibitor list.
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import html as html_lib
 import json
 import pathlib
@@ -111,19 +112,64 @@ JUNK = re.compile(
     r"^\d{4}\s+(exhibitor|sponsor|vendor)|"        # "2026 Exhibitor List"
     r"^(all|none|other|misc|n/?a|tbd|tba)$", re.I)
 
+# SITE SECTIONS THAT SURVIVED THE FIRST TWO FILTERS, read off GFOA's staged
+# file after the chevron fix: "Bylaws", "Privacy Policy", "Staff Directory",
+# "Member Communities", "Learning Dashboard", "Empty cart Cart", "Networking
+# and Social Events", "Registration for 2027 Opens Fall 2026". Each is exact
+# and none is a judgement, so they are filtered rather than struck out by hand.
+SECTIONS = re.compile(
+    r"^(bylaws|privacy (policy|statement)|terms of (use|service)|staff( directory)?|"
+    r"leadership|board of directors|member(ship)? (communities|benefits|directory)|"
+    r"learning (dashboard|center|centre)|my (account|dashboard|cart)|"
+    r"(empty )?cart( cart)?|checkout|dashboard|newsletter|press( room)?|"
+    r"media kit|advertis(e|ing)|exhibitor (prospectus|kit|guide|resources)|"
+    r"sponsorship( opportunities)?|code of conduct|photo gallery|"
+    r"networking( and| &)? social events|mobile app|plan your (trip|visit)|"
+    r"things to do|cancellation policy|health (and|&) safety|attendee (info|faq|"
+    r"information)|(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b.*"
+    r"\b(event|session|reception|finale|keynote)s?|registration (for|opens|rates|"
+    r"fees|info).*|call for (proposals|speakers|sessions|presentations))$", re.I)
+
 MIN_NAMES = 8          # fewer than this is a page about an event, not a list
 MAX_NAME = 70          # past this it is a description, not a name
 NAV_SHARE = 0.30       # more chrome than this and the page is not a directory
 
 
+# A CHEVRON IS NOT PART OF A NAME. GFOA's directory renders every menu item
+# twice - once plain, once with a trailing "›" - and the trailing glyph beat
+# both the dedupe key and the anchored NAV filter: "Exhibitors ›" is not
+# "exhibitors", so it survived, twice. Stripped before anything else looks.
+_ARROWS = "\u203a\u00bb\u2192\u25b8\u25be\u25b6\u276f\u00ab\u2039\u2190<>"
+
+
 def clean(s: str) -> str:
-    return re.sub(r"\s+", " ", html_lib.unescape(s or "")).strip()
+    s = re.sub(r"\s+", " ", html_lib.unescape(s or "")).strip()
+    return s.strip(_ARROWS + " ")
 
 
-def looks_like_a_name(s: str) -> bool:
+def host_chrome(host: str | None):
+    """The association's own pages, named after itself.
+
+    GFOA's directory offered "Careers at GFOA", "GFOA's Research & Consulting
+    Center" and "GFOA's 121st Annual Conference" as exhibitors. A name that
+    possesses the host, or sits "at" it, is the host's site and not a company
+    on its floor. "Illinois GFOA" - a chapter that really does exhibit - has
+    neither shape and is kept.
+    """
+    h = re.escape((host or "").strip())
+    if not h:
+        return None
+    return re.compile(rf"\b{h}['\u2019]s\b|\bat {h}\b|^{h}\b.*\b(annual|conference|"
+                      rf"summit|expo|meeting)\b", re.I)
+
+
+def looks_like_a_name(s: str, host: str | None = None) -> bool:
     if not s or len(s) < 2 or len(s) > MAX_NAME:
         return False
-    if NAV.match(s) or TIER.match(s):
+    if NAV.match(s) or TIER.match(s) or SECTIONS.match(s):
+        return False
+    hc = host_chrome(host)
+    if hc and hc.search(s):
         return False
     if s.count(".") > 2 or s.startswith(("http", "©", "#")):
         return False
@@ -146,7 +192,13 @@ def looks_like_a_name(s: str) -> bool:
     return True
 
 
-def harvest(page: str) -> list[dict]:
+def host_of(tag: str | None) -> str | None:
+    """"GFOA 2026" -> "GFOA". The association's short name, off the tag."""
+    m = re.match(r"([A-Za-z&]{2,})", str(tag or ""))
+    return m.group(1) if m else None
+
+
+def harvest(page: str, host: str | None = None) -> list[dict]:
     """Names off an exhibitor directory, with a website where the page gave one.
 
     Reads anchors first - a directory almost always links each exhibitor to
@@ -158,7 +210,7 @@ def harvest(page: str) -> list[dict]:
     for m in re.finditer(r'<a\b[^>]*href="([^"]+)"[^>]*>(.*?)</a>', page, re.S | re.I):
         href, inner = m.group(1), re.sub(r"<[^>]+>", " ", m.group(2))
         name = clean(inner)
-        if not looks_like_a_name(name):
+        if not looks_like_a_name(name, host):
             continue
         site = href if href.startswith("http") else None
         # An anchor pointing back into the conference's own site is a detail
@@ -172,7 +224,7 @@ def harvest(page: str) -> list[dict]:
         for m in re.finditer(
                 r"<(td|li|h[2-5]|strong|b)\b[^>]*>(.*?)</\1>", page, re.S | re.I):
             name = clean(re.sub(r"<[^>]+>", " ", m.group(2)))
-            if looks_like_a_name(name) and name.lower() not in out:
+            if looks_like_a_name(name, host) and name.lower() not in out:
                 out[name.lower()] = {"name": name, "website": None}
 
     return list(out.values())
@@ -248,6 +300,83 @@ def quality(names: list[dict]) -> tuple[str, str]:
     return "mixed", note + " - worth a look before running intake"
 
 
+def merge_into(fresh: dict, out: pathlib.Path) -> bool:
+    """Carry a staged file's rulings onto a re-sweep. False means do not write.
+
+    A re-sweep used to rebuild the file from bare {name, website} rows, so
+    every is_govtech flag classify had written - and any a person had set -
+    was gone. And a directory that answered last week and refuses today
+    overwrote the good list with the refusal. Both are the sweep destroying
+    work it did not do. Flags travel by name; a refusal never replaces a
+    find - it is printed, and the good file stays.
+    """
+    try:
+        old = json.loads(out.read_text())
+    except Exception:                                   # noqa: BLE001
+        return True
+    if old.get("found") and not fresh.get("found"):
+        print(f"        kept: {out.name} holds {len(old.get('exhibitors') or [])} "
+              f"name(s) from an earlier sweep and today's read refused - not "
+              f"overwriting a find with a refusal ({str(fresh.get('why'))[:50]})")
+        return False
+    flags = {(e.get("name") or "").lower(): e for e in (old.get("exhibitors") or [])
+             if "is_govtech" in e}
+    for e in fresh.get("exhibitors") or []:
+        was = flags.get((e.get("name") or "").lower())
+        if was:
+            for k in ("is_govtech", "is_govtech_why"):
+                if k in was:
+                    e[k] = was[k]
+    return True
+
+
+def restage(files: list) -> int:
+    """Re-run the name filter over what is already staged. No network.
+
+    For the day the filter learns something - a chevron, a tier label - and
+    the 26 files on disk were read before it did. Duplicates that the fix
+    now folds together keep whichever copy carried a ruling.
+    """
+    for f in files:
+        d = json.loads(f.read_text())
+        if not d.get("found"):
+            continue
+        before = d.get("exhibitors") or []
+        kept: dict[str, dict] = {}
+        dropped = []
+        host = host_of(d.get("event_tag"))
+        for e in before:
+            name = clean(e.get("name"))
+            if not looks_like_a_name(name, host):
+                dropped.append(e.get("name"))
+                continue
+            key = name.lower()
+            row = dict(e, name=name)
+            if key in kept:
+                # keep the ruling, whichever copy carried it, and any website
+                have = kept[key]
+                for k in ("is_govtech", "is_govtech_why"):
+                    if k not in have and k in row:
+                        have[k] = row[k]
+                if not have.get("website") and row.get("website"):
+                    have["website"] = row["website"]
+                continue
+            kept[key] = row
+        after = sorted(kept.values(), key=lambda r: r["name"].lower())
+        if len(after) == len(before) and not dropped:
+            continue
+        d["exhibitors"] = after
+        d["restaged"] = (f"{len(before)} -> {len(after)} names after re-filtering "
+                         f"on {dt.date.today().isoformat()}")
+        tmp = f.with_suffix(".tmp")
+        tmp.write_text(json.dumps(d, indent=1) + "\n")
+        json.loads(tmp.read_text())
+        tmp.replace(f)
+        print(f"  {f.name[:40]:42} {len(before):4} -> {len(after):4}"
+              + (f"   dropped: {', '.join(str(x)[:22] for x in dropped[:4])}" if dropped else ""))
+    return 0
+
+
 def ready(conferences: list, tag: str | None) -> list:
     out = [c for c in conferences if c.get("exhibitor_url")]
     if tag:
@@ -273,7 +402,7 @@ def sweep(conf: dict) -> dict:
         staged["why"] = f"{type(exc).__name__}: {str(exc)[:90]}"
         return staged
 
-    names = harvest(page)
+    names = harvest(page, host_of(conf.get("event_tag")))
     doubt = suspicious(names)
     grade, note = quality(names)
     if not doubt and grade == "doubtful":
@@ -305,8 +434,12 @@ def main() -> int:
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--tag", help="one event tag")
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--restage", action="store_true",
+                    help="re-filter the staged files on disk; no network")
     ap.add_argument("--write", action="store_true")
     a = ap.parse_args()
+    if a.restage:
+        return restage(sorted(DATA.glob("exhibitors_*.json")))
 
     conf = json.loads((DATA / "conferences.json").read_text())["conferences"]
     todo = ready(conf, a.tag)
@@ -341,6 +474,8 @@ def main() -> int:
         if a.write:
             safe = re.sub(r"[^A-Za-z0-9]+", "_", str(tag)).strip("_")
             out = DATA / f"exhibitors_{safe}.json"
+            if not merge_into(st, out):
+                continue
             tmp = out.with_suffix(".tmp")
             tmp.write_text(json.dumps(st, indent=1) + "\n")
             try:

@@ -72,12 +72,6 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Exhibitor Prospectus",
-   "website": "https://issuu.com/moiremarketing/docs/prima26_exhibitor_prospectus?fr=sOGZhZjg0MDc3OTQ",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Exhibitor Service Center (Registered)",
    "website": "https://conference.primacentral.org/exhibitor_service_center.cfm",
    "is_govtech": false,
@@ -187,5 +181,6 @@
   }
  ],
  "why": null,
- "quality": "mixed"
+ "quality": "mixed",
+ "restaged": "30 -> 29 names after re-filtering on 2026-09-02"
 }

@@ -13,8 +13,11 @@ import html
 import io
 import inspect
 import json
+import gzip
 import math
 import re
+import shutil
+import tempfile
 import threading
 import time
 import pathlib
@@ -7229,6 +7232,26 @@ def check_workday_pages_to_the_end() -> int:
     return errors
 
 
+MAIL_MARKS = [
+    ("Outlook DPI",          "o:PixelsPerInch"),
+    ("mso font guard",       "body,table,td,a,span,div,p"),
+    ("Segoe fallback",       "'Segoe UI',Arial,sans-serif !important"),
+    ("iOS reformat guard",   "x-apple-disable-message-reformatting"),
+    ("Outlook.com dark",     "[data-ogsc]"),
+    ("dark-mode media",      "prefers-color-scheme:dark"),
+    ("preheader hidden",     "mso-hide:all"),
+    ("Penguin band",         'bgcolor="#1F2536"'),
+    ("Belly plate 52px",     'bgcolor="#FAF7F0" width="52" height="52"'),
+    ("Beak rule",            'bgcolor="#F5A623"'),
+    ("Frost rule",           "#C9DCE8"),
+    ("band mute token",      "#9FB3C4"),
+    ("Badge button",         'bgcolor="#0B57C4"'),
+    ("the mascot",           "head-on-the-hunt.png"),
+    ("live-text wordmark",   'letter-spacing:.02em'),
+    ("mobile kicker rule",   ".kicker{font-size:10px"),
+]
+
+
 def check_mail_shell() -> int:
     """The email shell exists twice, in two languages, and will therefore rot.
 
@@ -7270,24 +7293,7 @@ def check_mail_shell() -> int:
     py = ((ROOT / "scripts" / "digest.py").read_text()
           .replace("{{", "{").replace("}}", "}"))
 
-    marks = [
-        ("Outlook DPI",          "o:PixelsPerInch"),
-        ("mso font guard",       "body,table,td,a,span,div,p"),
-        ("Segoe fallback",       "'Segoe UI',Arial,sans-serif !important"),
-        ("iOS reformat guard",   "x-apple-disable-message-reformatting"),
-        ("Outlook.com dark",     "[data-ogsc]"),
-        ("dark-mode media",      "prefers-color-scheme:dark"),
-        ("preheader hidden",     "mso-hide:all"),
-        ("Penguin band",         'bgcolor="#1F2536"'),
-        ("Belly plate 52px",     'bgcolor="#FAF7F0" width="52" height="52"'),
-        ("Beak rule",            'bgcolor="#F5A623"'),
-        ("Frost rule",           "#C9DCE8"),
-        ("band mute token",      "#9FB3C4"),
-        ("Badge button",         'bgcolor="#0B57C4"'),
-        ("the mascot",           "head-on-the-hunt.png"),
-        ("live-text wordmark",   'letter-spacing:.02em'),
-        ("mobile kicker rule",   ".kicker{font-size:10px"),
-    ]
+    marks = MAIL_MARKS
     for name, mark in marks:
         in_js, in_py = mark in js, mark in py
         if not (in_js and in_py):
@@ -7577,20 +7583,6 @@ def check_the_crawler_paces_itself() -> int:
             print(f"  FAIL: Retry-After {junk!r} should read as absent")
             errors += 1
 
-    # A 304 whose body we no longer hold is OUR bookkeeping failing, not the
-    # site refusing. It must re-ask, never report a board it cannot read.
-    src = (ROOT / "scripts" / "ats.py").read_text()
-    i = src.find("def _get(url: str")
-    body = src[i:i + 1400] if i >= 0 else ""
-    if "304" not in body:
-        print("  FAIL: _get no longer handles 304, so a conditional request "
-              "would raise AtsError and a live board would read as broken")
-        errors += 1
-    if body.count("requests.get") < 2:
-        print("  FAIL: _get does not re-fetch when a 304 arrives and the cached "
-              "body is gone - that would report an unreadable board for what is "
-              "actually a cache miss")
-        errors += 1
     return errors
 
 
@@ -7630,6 +7622,7 @@ def check_embedded_wiring() -> int:
     errors = 0
     sys.path.insert(0, str(ROOT / "scripts"))
     import wire_embedded as w
+    PAY = "https://recruiting.paylocity.com/recruiting/jobs/All/0f0f0f0f-0000-0000-0000-000000000000/"
 
     for name, ref, want in [
         ("ViaPath Technologies", "careers-viapath", True),
@@ -7640,12 +7633,36 @@ def check_embedded_wiring() -> int:
         ("Veovo", "gentrack", False),
         ("Sparkrock", "Ionicpartners", False),
         ("Careers In Government", "skagit-911", False),
+        # AN ADDRESS IS A SLUG TOO. Paylocity's ref is the whole recruiting
+        # URL and it ends in the tenant's registered name. The first version
+        # returned True for any http ref, and the board carried AEM's 29
+        # requisitions as Earth Networks' and Liberty Vote's as Dominion's.
+        ("Earth Networks", PAY + "AEM", False),
+        ("Dominion Voting Systems", PAY + "Liberty-Vote-USA-Inc", False),
+        ("American Legal Publishing", PAY + "General-Code", False),
+        ("ICC Innovation", PAY + "INTERNATIONAL-CODE-COUNCIL-INC", False),
+        # and the legal form is not a name - these are their own boards
+        ("ES&S (Election Systems & Software)", PAY + "Election-Systems-Software-LLC", True),
+        ("Bigbelly", PAY + "Big-Belly-Solar-LLC", True),
+        ("Edlio", PAY + "Edlio-LLC", True),
+        ("Brinc", "brinc", True),               # "inc" inside a name is not a suffix
     ]:
         if w.resembles(name, ref) != want:
             verb = "refused" if want else "accepted"
             print(f"  FAIL: the slug check {verb} {name!r} -> {ref!r}. "
                   f"{'A company must not lose its own board to an ATS prefix' if want else 'That is a parent board being published as this company'}")
             errors += 1
+
+    if not w.resembles("DZS", PAY + "Zhone-Technologies-Inc", ["Zhone Technologies"]):
+        print("  FAIL: a former name a person already recorded in also_known_as "
+              "is being doubted again")
+        errors += 1
+    src_w = (ROOT / "scripts" / "wire_embedded.py").read_text()
+    main_src = src_w[src_w.find("def main("):]
+    if "save_companies(" not in main_src or 'with_suffix(".tmp")' in main_src:
+        print("  FAIL: wire_embedded writes companies.json directly again - no "
+              "before-image, nothing for admin_undo.py to take back")
+        errors += 1
 
     # The triage itself, on synthetic entries shaped like the real file.
     entries = [
@@ -7665,6 +7682,10 @@ def check_embedded_wiring() -> int:
         # published as a subsidiary's.
         {"id": "e", "name": "Epsilon", "identity": "unknown",
          "found": {"type": "ashby", "ref": "someparentco"}},
+        # THE SAME SHAPE AS AN ADDRESS. Without this entry the slug gate was
+        # never exercised on a URL ref, which is the 35 Paylocity entries.
+        {"id": "f", "name": "Zeta", "identity": "unknown",
+         "found": {"type": "paylocity", "ref": PAY + "Some-Parent-Co-LLC"}},
     ]
     by_id = {e["id"]: {"id": e["id"], "ats": {"type": "html"}} for e in entries}
     clean, mismatch, refused = w.triage(entries, by_id)
@@ -7676,10 +7697,10 @@ def check_embedded_wiring() -> int:
     if len(mismatch) != 1:
         print(f"  FAIL: triage found {len(mismatch)} mismatch(es), expected 1")
         errors += 1
-    if {e["id"] for e in refused} != {"b", "c", "e"}:
+    if {e["id"] for e in refused} != {"b", "c", "e", "f"}:
         print(f"  FAIL: refused should be both claimants of the shared board "
-              f"AND the one whose slug names another company, got "
-              f"{sorted(e['id'] for e in refused)}")
+              f"AND the two whose slug names another company - one a slug, "
+              f"one an address - got {sorted(e['id'] for e in refused)}")
         errors += 1
 
     # A company that already has a real board is never overruled by this.
@@ -7757,14 +7778,71 @@ def check_capture_parity() -> int:
                 print(f"  FAIL: {name} lost {label} - {why}")
                 errors += 1
 
-    # An unanchored title filter is a title deleter, so prove it stays anchored.
+    # An unanchored title filter is a title deleter, so prove it stays anchored
+    # AS ONE GROUP. The first version of this stripped the parens before it
+    # looked, so `^(apply|load more)$|dismiss|report` read as ^...$ and passed
+    # - while matching any title CONTAINING "report". Grouping is kept here,
+    # and the group that opens after ^ has to be the one that closes before $.
+    def shape(src, name):
+        m = re.search(rf"const {name}\s*=\s*(.*?);\n", src, re.S)
+        if not m:
+            return ""
+        raw = m.group(1).strip()
+        called = raw.startswith("new RegExp(")
+        s = re.sub(r"new RegExp\(|,\s*[\"']i[\"']|//[^\n]*", "", raw)
+        s = re.sub(r"[\s\"'+]", "", s)
+        if called and s.endswith(")"):
+            s = s[:-1]                      # the RegExp call's own paren
+        elif s.startswith("/"):
+            s = re.sub(r"^/|/[a-z]*$", "", s)   # a /literal/i
+        return s
+
+    def one_anchored_group(pat):
+        if not (pat.startswith("^(") and pat.endswith(")$")):
+            return False
+        depth, i, end = 0, 1, len(pat) - 2
+        while i < end:
+            ch = pat[i]
+            if ch == "\\":                    # an escaped char is not grouping
+                i += 3 if pat[i + 1:i + 2] == "\\" else 2
+                continue
+            if ch == "(":
+                depth += 1
+            elif ch == ")":
+                depth -= 1
+                if depth == 0:
+                    return False            # the top group closed early
+            i += 1
+        return depth == 1
+
+    # The test itself, against the shape that got through and a nested one.
+    if one_anchored_group("^(apply|loadmore)$|dismiss|report") or \
+            one_anchored_group("^(apply)$|(report)$") or \
+            not one_anchored_group("^(apply|join(us|ourteam)|\\(x\\))$"):
+        print("  FAIL: the anchor test cannot tell one anchored group from a "
+              "trailing alternative - it is the guard that is broken")
+        errors += 1
     for name, src in (("extension/capture.js", ext), ("scripts/capture.js", bm)):
-        pat = pattern(src, "NOT_RE") or ""
-        if not pat.startswith("^") or not pat.endswith("$"):
-            print(f"  FAIL: {name}'s NOT_RE is not anchored end to end - it "
-                  f"would match any title CONTAINING one of those words, and "
-                  f"'report' alone deletes every Reporting Analyst on a board")
+        if not one_anchored_group(shape(src, "NOT_RE")):
+            print(f"  FAIL: {name}'s NOT_RE is not one group anchored end to end "
+                  f"- an alternative outside the group matches any title "
+                  f"CONTAINING that word, and 'report' alone deletes every "
+                  f"Reporting Analyst on a board")
             errors += 1
+
+    # Two shadow-stylesheet declarations were invalid CSS and silently dropped:
+    # `inherit` is a CSS-wide keyword and cannot sit inside a shorthand.
+    css_i = ext.find("css.textContent")
+    css = ext[css_i:ext.find("`;", css_i)] if css_i > 0 else ""
+    if re.search(r"\bfont:\s*[^;]*\binherit\b", css):
+        print("  FAIL: extension/capture.js sets `font: ... inherit` - that "
+              "shorthand is invalid CSS and the whole declaration is dropped")
+        errors += 1
+    if 'kind === "html" && c.postings > 0' not in ext:
+        print("  FAIL: verdictOf() no longer distinguishes an html board the "
+              "crawler already reads from one it cannot - it will tell the "
+              "person to capture what is already on the board")
+        errors += 1
     return errors
 
 
@@ -7870,7 +7948,35 @@ def check_open_actions_never_write_the_map() -> int:
         return 1
 
     handlers = dict(re.findall(r'"([a-z-]+)"\s*:\s*(act_[a-z_]+)', src))
-    banned = ("save_companies", "companies.json")
+
+    # CODE ONLY, then every def in the file, so a call can be followed. The
+    # first version read the handler's own body and nothing else - so an open
+    # action that called act_set_founded({...}), whose body carries the
+    # save_companies, passed. A writer is a writer however many hops away.
+    code = re.sub(r'"""[\s\S]*?"""', "", src)
+    code = "\n".join(re.sub(r"#.*$", "", ln) for ln in code.splitlines())
+    defs = {}
+    for m in re.finditer(r"^def (\w+)\(", code, re.M):
+        end = code.find("\ndef ", m.end())
+        defs[m.group(1)] = code[m.start():end if end > 0 else len(code)]
+    WRITES = ("save_companies(", 'write_atomic("companies.json"',
+              "write_atomic('companies.json'", '"companies.json").write',
+              '"companies.json").open')
+
+    def reaches_a_writer(fname, seen):
+        body = defs.get(fname, "")
+        if any(w in body for w in WRITES):
+            return [fname]
+        # ANY MENTION, not just a call. act_worklist dispatches through a
+        # dict - builders[which](companies, board) - so the callee's name
+        # never sits before a paren. A name reached is a name that can run.
+        for callee in sorted(set(re.findall(r"\b([A-Za-z_]\w*)\b", body))):
+            if callee in defs and callee != fname and callee not in seen:
+                seen.add(callee)
+                path = reaches_a_writer(callee, seen)
+                if path:
+                    return [fname] + path
+        return None
 
     for name in sorted(open_names):
         fname = handlers.get(name)
@@ -7879,22 +7985,22 @@ def check_open_actions_never_write_the_map() -> int:
                   f"dispatch table - it can be called and does not exist")
             errors += 1
             continue
-        i = src.find(f"def {fname}(")
-        if i < 0:
+        if fname not in defs:
             print(f"  FAIL: {fname} is dispatched for {name!r} but not defined")
             errors += 1
             continue
-        j = src.find("\ndef ", i + 1)
-        body = src[i:j if j > 0 else len(src)]
-        body = re.sub(r'"""[\s\S]*?"""', "", body)
-        body = "\n".join(re.sub(r"#.*$", "", ln) for ln in body.splitlines())
-        for bad in banned:
-            if bad in body:
-                print(f"  FAIL: {fname} is an OPEN action and mentions {bad!r} "
-                      f"in its code. An action the extension can call without "
-                      f"the console code must never write the map - stage it "
-                      f"and let a script in Python apply it")
-                errors += 1
+        if "companies.json" in defs[fname]:
+            print(f"  FAIL: {fname} is an OPEN action and names companies.json "
+                  f"in its code. An action the extension can call without the "
+                  f"console code must never touch the map - stage it and let a "
+                  f"script in Python apply it")
+            errors += 1
+        path = reaches_a_writer(fname, {fname})
+        if path:
+            print(f"  FAIL: {fname} is an OPEN action and reaches a writer of "
+                  f"the map: {' -> '.join(path)}. One hop through a helper is "
+                  f"still the extension rewriting the dataset from any page")
+            errors += 1
     return errors
 
 
@@ -7990,10 +8096,11 @@ def check_worklist_drops_what_was_worked() -> int:
                   "filter is hiding more than it should")
             errors += 1
 
-    if _admin.CAPTURE_FRESH_DAYS != 30:
-        print(f"  FAIL: CAPTURE_FRESH_DAYS is {_admin.CAPTURE_FRESH_DAYS}, and "
-              f"manual.py::STALE_DAYS is 30. Two answers to 'how long is a "
-              f"hand check good for' is one too many")
+    import manual as _manual
+    if _admin.CAPTURE_FRESH_DAYS != _manual.STALE_DAYS:
+        print(f"  FAIL: CAPTURE_FRESH_DAYS is {_admin.CAPTURE_FRESH_DAYS} and "
+              f"manual.py::STALE_DAYS is {_manual.STALE_DAYS}. Two answers to "
+              f"'how long is a hand check good for' is one too many")
         errors += 1
     return errors
 
@@ -8074,6 +8181,598 @@ def check_alert_vocabulary() -> int:
                         f"only in js {sorted(got - want)}, "
                         f"only in python {sorted(want - got)}")
     return bad
+
+
+
+_ACME = {"id": "acme", "name": "Acme", "website": "https://acme.test",
+         "sector": "General Gov", "category": "Suppliers & Services",
+         "description": "x", "year_founded": None, "location": None,
+         "ats": {"type": "unknown", "ref": None}, "govtech": True,
+         "vendor_type": "GovTech Product",
+         "hiring": {"status": "Unknown", "note": "", "roles": []}}
+
+
+class _Resp:
+    """Enough of a requests.Response for _get and _post_json."""
+
+    def __init__(self, code, headers=None, text="", payload=None, url=""):
+        self.status_code, self.headers, self.text = code, headers or {}, text
+        self._payload, self.url = payload if payload is not None else {}, url
+
+    def json(self):
+        return self._payload
+
+
+def check_fetchers_page_through_their_callers() -> int:
+    """The paging helper is tested; this is whether the fetchers USE it.
+
+    check_workday_pages_to_the_end drives _paged() with a fixture and proves
+    the helper stops on the wrap. It proves nothing about fetch_workday,
+    which could take one page, never call _paged, and leave that check green
+    - the sixth time in this project a guard measured a helper instead of
+    the wiring. So each paged fetcher is driven here through a stubbed
+    transport serving MORE than one page, and the assertion is on what came
+    back and how many requests it took to get it.
+    """
+    errors = 0
+    keep = (ats._post_json, ats._get, ats._workday_details, ats.FETCH_DETAILS)
+    try:
+        ats.FETCH_DETAILS = False
+        ats._workday_details = lambda out: out
+
+        # Workday: 45 postings, and past the end it wraps to page one.
+        TOTAL = 45
+        posts = []
+
+        def post(url, body):
+            posts.append(body)
+            off = body.get("offset", 0)
+            if off >= TOTAL:
+                off = 0
+            return {"jobPostings": [
+                {"externalPath": f"/job/{i}", "title": f"Role {i}",
+                 "locationsText": "Austin, TX"}
+                for i in range(off, min(off + ats.WD_PAGE, TOTAL))]}
+
+        ats._post_json = post
+        want_calls = 2 * (math.ceil(TOTAL / ats.WD_PAGE) + 1)     # two search terms
+        for label, call in (
+                ("fetch_workday", lambda: ats.fetch_workday(["acme", "wd5", "Careers"])),
+                ("_workday_jobs", lambda: ats._workday_jobs(
+                    "https://wd1.myworkdaysite.com/wday/cxs/acme/Careers/jobs",
+                    "https://wd1.myworkdaysite.com/recruiting/acme/Careers", "Careers"))):
+            posts.clear()
+            rows = call()
+            if len(rows) != TOTAL:
+                print(f"  FAIL: {label} returned {len(rows)} of {TOTAL} postings "
+                      f"on a {TOTAL}-posting tenant - it is not paging to the end")
+                errors += 1
+            if len(posts) < want_calls:
+                print(f"  FAIL: {label} made {len(posts)} requests for two "
+                      f"search terms over {TOTAL} postings; paging to the end "
+                      f"takes {want_calls}. The helper is fine and the caller "
+                      f"is not using it")
+                errors += 1
+
+        # SmartRecruiters: 250 postings at the 100 the API caps a page to.
+        SR = 250
+        gets = []
+
+        def get(url, **kw):
+            gets.append(url)
+            m = re.search(r"offset=(\d+)", url)
+            off = int(m.group(1)) if m else 0
+            return _Resp(200, payload={"content": [
+                {"id": f"id{i}", "name": f"Role {i}",
+                 "location": {"city": "Austin", "region": "TX", "country": "us"}}
+                for i in range(off, min(off + ats.SR_PAGE, SR))]})
+
+        ats._get = get
+        rows = ats.fetch_smartrecruiters("acme")
+        if len(rows) != SR or len(gets) < 3:
+            print(f"  FAIL: fetch_smartrecruiters returned {len(rows)} of {SR} "
+                  f"in {len(gets)} request(s) - Xplor advertises 251 and the "
+                  f"board published 100")
+            errors += 1
+
+        # iCIMS: nineteen a page, dedup on the href, three pages.
+        IC, PER = 57, 19
+        gets.clear()
+
+        def get2(url, **kw):
+            gets.append(url)
+            m = re.search(r"pr=(\d+)", url)
+            start = (int(m.group(1)) if m else 0) * PER
+            anchors = "".join(
+                f'<a href="https://acme.icims.com/jobs/{i}/x" class="iCIMS_Anchor" '
+                f'title="{i} - Role {i}">x</a>'
+                for i in range(start, min(start + PER, IC)))
+            return _Resp(200, text=f"<html>{anchors}</html>")
+
+        ats._get = get2
+        rows = ats.fetch_icims("acme")
+        if len(rows) != IC or len(gets) < 3:
+            print(f"  FAIL: fetch_icims returned {len(rows)} of {IC} in "
+                  f"{len(gets)} request(s) - Bruker's portal is eleven pages")
+            errors += 1
+    finally:
+        ats._post_json, ats._get, ats._workday_details, ats.FETCH_DETAILS = keep
+    return errors
+
+
+def check_the_gate_is_where_the_requests_are() -> int:
+    """The host gate is tested on its own; this is whether requests pass it.
+
+    Three things, each driven rather than read off the source:
+
+    THE GATE IS WIRED. _get and _post_json both call it. The pacing check
+    drives _host_gate directly, so either transport could drop the call and
+    that check would stay green - and _post_json is where Workday's ten
+    pages a tenant actually go.
+
+    A 429 SURVIVES A SLEEPER. The first backoff wrote a future stamp into
+    _HOST_LAST from outside the lock. A same-host worker already asleep in
+    the gate then woke, stamped "now" over it, and the server's Retry-After
+    was gone before anyone honoured it. Reproduced here with a real thread.
+
+    A 304 WITHOUT A BODY RE-ASKS PLAINLY, THROUGH THE GATE. That used to be
+    asserted by counting the string 'requests.get' in the source, which a
+    re-fetch that re-sent the validators - and so got another 304 - would
+    satisfy. Now the second request's headers are what is checked.
+    """
+    errors = 0
+    keep = (ats._host_gate, ats.requests.get, ats.requests.post,
+            ats.HTTP_CACHE, ats.HOST_PAUSE)
+    gated = []
+    try:
+        ats.HTTP_CACHE = None
+        ats._host_gate = lambda url: gated.append(url)
+        ats.requests.get = lambda *a, **k: _Resp(200)
+        ats.requests.post = lambda *a, **k: _Resp(200, payload={})
+        ats._get("https://a.test/x")
+        ats._post_json("https://a.test/y", {})
+        if gated != ["https://a.test/x", "https://a.test/y"]:
+            print(f"  FAIL: the host gate saw {gated}; _get and _post_json must "
+                  f"both pass through it, or Workday's paging goes out in a burst")
+            errors += 1
+        ats.requests.post = lambda *a, **k: _Resp(429, {"Retry-After": "1"})
+        try:
+            ats._post_json("https://limited.test/p", {})
+            print("  FAIL: a 429 on a POST did not raise")
+            errors += 1
+        except ats.RateLimited:
+            pass
+        except ats.AtsError:
+            print("  FAIL: a 429 on a Workday POST raises a plain AtsError - "
+                  "'slow down' recorded exactly like 'gone'")
+            errors += 1
+    finally:
+        (ats._host_gate, ats.requests.get, ats.requests.post,
+         ats.HTTP_CACHE, ats.HOST_PAUSE) = keep
+
+    # The race, with a real thread asleep in a real gate.
+    ats.HOST_PAUSE = 0.25
+    ats._HOST_LAST.clear(); ats._HOST_LOCKS.clear(); ats._HOST_NOT_BEFORE.clear()
+    try:
+        host = "https://sleepy.test/x"
+        ats._host_gate(host)                          # stamps now
+        th = threading.Thread(target=ats._host_gate, args=(host,))
+        th.start()                                    # asleep for ~0.25s, lock held
+        time.sleep(0.05)
+        try:
+            ats._back_off(host, _Resp(429, {"Retry-After": "1"}))
+        except ats.RateLimited:
+            pass
+        th.join()
+        t0 = time.monotonic()
+        ats._host_gate(host)
+        if time.monotonic() - t0 < 0.6:
+            print("  FAIL: a worker asleep in the gate woke and overwrote the "
+                  "429 backoff - the next request went straight back in")
+            errors += 1
+    finally:
+        ats.HOST_PAUSE = keep[4]
+        ats._HOST_LAST.clear(); ats._HOST_LOCKS.clear(); ats._HOST_NOT_BEFORE.clear()
+
+    # The 304 path, driven.
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-cache-"))
+    gated = []
+    try:
+        ats.HTTP_CACHE, ats.HOST_PAUSE = tmp, 0
+        ats._host_gate = lambda url: gated.append(url)
+        url = "https://cached.test/board"
+        meta_p, body_p = ats._cache_paths(url)
+        meta_p.write_text(json.dumps({"url": url, "etag": "abc", "last_modified": None}))
+        calls = []
+
+        def get(u, headers=None, **kw):
+            calls.append(dict(headers or {}))
+            return _Resp(304) if len(calls) == 1 else _Resp(200, text="fresh")
+
+        ats.requests.get = get
+        r = ats._get(url)
+        if r.text != "fresh" or len(calls) != 2:
+            print(f"  FAIL: a 304 with no cached body came back as "
+                  f"{r.text!r} after {len(calls)} request(s) - that is a cache "
+                  f"miss reported as an unreadable board")
+            errors += 1
+        elif "If-None-Match" in calls[1] or "If-Modified-Since" in calls[1]:
+            print("  FAIL: the re-fetch after a bodiless 304 re-sent the "
+                  "validators, so the second reply is another 304")
+            errors += 1
+        if len(gated) != 2:
+            print(f"  FAIL: the 304 re-fetch skipped the host gate ({len(gated)} "
+                  f"gate call(s) for two requests at one host)")
+            errors += 1
+        body_p.write_bytes(gzip.compress(b"cached body"))
+        calls.clear()
+        r = ats._get(url)
+        if not getattr(r, "from_cache", False) or getattr(r, "url", None) != url:
+            print("  FAIL: a cached 304 reply carries no .url - find_websites."
+                  "probe reads it off every _get result and crashes the run")
+            errors += 1
+    finally:
+        (ats._host_gate, ats.requests.get, ats.requests.post,
+         ats.HTTP_CACHE, ats.HOST_PAUSE) = keep
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
+def check_mail_is_built_from_the_shell() -> int:
+    """check_mail_shell holds two source files against each other. This sends.
+
+    That check compares text and proves drift detection; it does not prove
+    an email is ever BUILT from the shell, so every caller could stop using
+    shell() and it would stay green. And it reads alerts.js as text, which
+    is how the Worker shipped for a day using NAME without importing it:
+    every mail path threw ReferenceError, and nothing in this file ran a
+    line of it. So the Python half is rendered and the JavaScript half is
+    executed under node, and what is asserted is the OUTPUT - the shell's
+    marks present, no template brace, no `undefined` where a value belonged.
+    """
+    errors = 0
+    import digest
+    roles = [{"id": "acme::Account Executive", "title": "Account Executive",
+              "company": "Acme", "sector": "General Gov", "quota_carrying": True,
+              "location": "Austin, TX", "states": ["TX"], "work_mode": "not stated",
+              "office": {"city": "Austin", "state": "TX"}}]
+    subject, text, html_out = digest.render(
+        {"roles": roles, "since": "2026-09-01"}, {"token": "t" * 48}, {})
+    # The digest's links are text links by design; the Badge button is a
+    # call-to-action the confirmation carries and the digest does not.
+    shell_marks = [(n, m) for n, m in MAIL_MARKS if n != "Badge button"]
+    for name, mark in shell_marks:
+        if mark not in html_out:
+            print(f"  FAIL: digest.render() emitted no {name} ({mark!r}) - the "
+                  f"digest is not being built from the shell")
+            errors += 1
+            break
+    # `}}` is legitimate CSS (a rule closing inside a media block); `{{` never
+    # is. It is what an f-string that lost its f would emit.
+    if "{{" in html_out:
+        print("  FAIL: a doubled open brace reached the digest - a shell "
+              "f-string that is no longer one")
+        errors += 1
+    if "Account Executive" not in html_out or "Account Executive" not in text:
+        print("  FAIL: the role did not reach the rendered digest")
+        errors += 1
+
+    if not shutil.which("node"):
+        print("  SKIP: node is not installed here, so functions/api/alerts.js was "
+              "NOT executed - the Worker's mail path is unverified on this machine")
+        return errors
+    # THE REAL IMPORT, resolved to the real _brand.js. The first version of
+    # this replaced the import line with its own constants - so the one bug
+    # it exists to catch, NAME used and never imported, could not reproduce:
+    # the harness had defined NAME itself. Only the specifier is rewritten;
+    # the names the file asks for are the names it gets.
+    src = (ROOT / "functions" / "api" / "alerts.js").read_text()
+    brand = (ROOT / "functions" / "_brand.js").resolve().as_uri()
+    src, n = re.subn(r'from\s*"\.\./_brand\.js"', f'from "{brand}"', src, count=1)
+    if n != 1:
+        print("  FAIL: alerts.js no longer imports from ../_brand.js")
+        return errors + 1
+    src += ('\nconsole.log(JSON.stringify({confirm: confirmMail("t".repeat(48), '
+            '{cadence: "weekly"}), settings: shell("pre", "<div>x</div>", '
+            '[["Change", "https://x/1"]]), button: button("https://x/2", "Go")}));')
+    with tempfile.NamedTemporaryFile("w", suffix=".mjs", delete=False) as f:
+        f.write(src)
+        path = f.name
+    try:
+        import subprocess
+        r = subprocess.run(["node", path], capture_output=True, text=True, timeout=30)
+    finally:
+        pathlib.Path(path).unlink(missing_ok=True)
+    if r.returncode:
+        print(f"  FAIL: alerts.js threw when its mail builders ran: "
+              f"{r.stderr.strip().splitlines()[-1][:120] if r.stderr.strip() else 'no output'}")
+        return errors + 1
+    out = json.loads(r.stdout)
+    subj, _txt, confirm_html = out["confirm"]
+    if "SLED JOBS" not in subj:
+        print(f"  FAIL: the confirmation subject is {subj!r} - NAME did not reach it")
+        errors += 1
+    if 'bgcolor="#0B57C4"' not in confirm_html:
+        print("  FAIL: the confirmation email carries no Badge button - the "
+              "reader has nothing to click")
+        errors += 1
+    for label, page in (("confirmMail", confirm_html), ("the settings shell", out["settings"])):
+        for name, mark in shell_marks:
+            if mark not in page:
+                print(f"  FAIL: {label} emitted no {name} ({mark!r})")
+                errors += 1
+                break
+        for junk in ("${", "{{", "undefined", "[object"):
+            if junk in page:
+                print(f"  FAIL: {label} emitted {junk!r} - a template brace or "
+                      f"a missing value reached a reader")
+                errors += 1
+    if 'href="https://x/2"' not in out["button"] or ">Go<" not in out["button"]:
+        print("  FAIL: button() did not carry its link and label")
+        errors += 1
+    return errors
+
+
+def check_capture_keeps_two_reqs_with_one_title() -> int:
+    """An Account Executive in Austin and one in Denver are two postings.
+
+    act_capture keyed on company::title and kept the first, while build_board
+    re-keys every manual row by (company, title, url, location) and the
+    extension dedups on the link. The second requisition was lost between
+    them. Driven end to end in a sandbox: two same-titled jobs with different
+    links land as two rows, and sending them again lands nothing.
+    """
+    import admin as _admin
+    errors = 0
+    jobs = [{"title": "Account Executive", "url": "https://acme.test/j/1",
+             "location": "Austin, TX"},
+            {"title": "Account Executive", "url": "https://acme.test/j/2",
+             "location": "Denver, CO"}]
+    with _sandbox_admin({"companies.json": [_ACME],
+                         "manual.json": {"checks": {}, "postings": []}}) as tmp:
+        r = _admin.act_capture({"company_id": "acme",
+                                "page_url": "https://acme.test/careers", "jobs": jobs})
+        if r.get("added") != 2:
+            print(f"  FAIL: two requisitions with one title captured as "
+                  f"{r.get('added')} - the second is lost ({r.get('error') or r.get('message')})")
+            errors += 1
+        r = _admin.act_capture({"company_id": "acme",
+                                "page_url": "https://acme.test/careers", "jobs": jobs})
+        if r.get("added") != 0:
+            print(f"  FAIL: re-sending the same capture added {r.get('added')} row(s)")
+            errors += 1
+        man = json.loads((tmp / "manual.json").read_text())
+        ids = [p["id"] for p in man["postings"]]
+        if len(ids) != 2 or len(set(ids)) != 2:
+            print(f"  FAIL: manual.json holds ids {ids}; two distinct rows expected")
+            errors += 1
+        # A row already on file under the old plain key is matched by what it
+        # is, not by its id - so nothing captured before this is doubled.
+        r = _admin.act_capture({"company_id": "acme",
+                                "page_url": "https://acme.test/careers",
+                                "jobs": [dict(jobs[0], url=None)]})   # same posting, link off the page
+        if r.get("added") != 0 and len(json.loads((tmp / "manual.json").read_text())["postings"]) > 3:
+            print("  FAIL: a re-capture with the page url doubled a row")
+            errors += 1
+    return errors
+
+
+def check_task_notes_land_honestly() -> int:
+    """Five note kinds, and the four ways one used to land wrong.
+
+    founded  was written as a string; validate() let it through and the next
+             selftest failed on a file every write had approved.
+    board    an address find_ats could not read was filed as an html board
+             and became the public card's link.
+    posts-at bypassed posts_at.check(), so a LinkedIn brochure went on the
+             card as "where they post".
+    nothing  set a note nothing read; the worklist re-offered the company.
+    And the endpoint accepted 2027-2099, which the founded action refuses.
+    """
+    import admin as _admin
+    import apply_task_notes as atn
+    errors = 0
+
+    c = {"id": "acme", "name": "Acme", "ats": {"type": "greenhouse", "ref": "acme"},
+         "year_founded": None}
+    ok, _ = atn.apply_one({"kind": "founded", "value": "1999"}, c)
+    if not ok or c["year_founded"] != 1999 or isinstance(c["year_founded"], str):
+        print(f"  FAIL: a founded note landed as {c['year_founded']!r}; the map "
+              f"holds years as integers")
+        errors += 1
+    ok, _ = atn.apply_one({"kind": "founded", "value": "2099"}, c)
+    if ok:
+        print("  FAIL: a founding year in the future was applied")
+        errors += 1
+    err = _admin.validate([dict(_ACME, year_founded="1999")])
+    if not err or "year_founded" not in err:
+        print("  FAIL: validate() accepts a founding year stored as a string")
+        errors += 1
+    err = _admin.validate([dict(_ACME, year_founded=1999)])
+    if err and "year_founded" in err:
+        print(f"  FAIL: validate() refuses a plain integer year: {err}")
+        errors += 1
+
+    keep = atn.add_company.find_ats
+    try:
+        atn.add_company.find_ats = lambda url, paths=None: (
+            None, None, ["no careers page or ATS marker found"])
+        c2 = {"id": "b", "name": "B", "ats": {"type": "unknown", "ref": None}}
+        ok, why = atn.apply_one({"kind": "board", "value": "https://b.test/careers"}, c2)
+        if ok or (c2["ats"] or {}).get("type") == "html":
+            print("  FAIL: an address find_ats could not read was filed as an "
+                  "html board - the public card would link a page nobody read")
+            errors += 1
+        atn.add_company.find_ats = lambda url, paths=None: (
+            {"type": "html", "ref": url}, url, [])
+        ok, why = atn.apply_one({"kind": "board", "value": "https://acme.test/careers"}, c)
+        if ok or c["ats"]["type"] != "greenhouse":
+            print("  FAIL: a page scan replaced a structured greenhouse board")
+            errors += 1
+    finally:
+        atn.add_company.find_ats = keep
+
+    ok, why = atn.apply_one({"kind": "posts-at",
+                             "value": "https://www.linkedin.com/company/acme"}, c)
+    if ok:
+        print("  FAIL: a LinkedIn brochure page was recorded as where they post")
+        errors += 1
+    ok, why = atn.apply_one({"kind": "posts-at",
+                             "value": "https://www.linkedin.com/company/acme/jobs"}, c)
+    if not ok or (c.get("posts_at") or {}).get("where") != "linkedin":
+        print(f"  FAIL: a LinkedIn jobs page did not land as posts_at/linkedin ({why})")
+        errors += 1
+
+    n = {"kind": "nothing", "at": "2026-09-02T10:00:00-04:00", "saw": "https://x"}
+    ok, _ = atn.apply_one(n, c)
+    chk = n.get("_check") or {}
+    if not ok or chk.get("found") is not False or chk.get("checked_on") != "2026-09-02":
+        print("  FAIL: a 'nothing here' note does not become a manual check, so "
+              "the worklist keeps re-offering a company somebody already stood on")
+        errors += 1
+
+    with _sandbox_admin({"companies.json": [_ACME], "task_notes.json": []}):
+        r = _admin.act_task_note({"kind": "founded", "company_id": "acme", "value": "2099"})
+        if "error" not in r:
+            print("  FAIL: the task-note endpoint accepts 2099 as a founding year, "
+                  "which validate() and the founded action both refuse")
+            errors += 1
+        r = _admin.act_task_note({"kind": "founded", "company_id": "acme", "value": "1999"})
+        if "error" in r:
+            print(f"  FAIL: the task-note endpoint refused 1999: {r['error']}")
+            errors += 1
+    return errors
+
+
+def check_sweep_keeps_its_own_work() -> int:
+    """Three ways the exhibitor pipeline lost or invented names.
+
+    A trailing chevron beat both the dedupe key and the anchored nav filter,
+    so GFOA staged "CONTACT US ›" and 11 menu items twice. A re-sweep rebuilt
+    the file from bare names and dropped every is_govtech flag classify had
+    written, and a directory that refused today overwrote the good list from
+    last week. classify counted "not already on file" against the labelled
+    set, so 555 names the board already held read as new. And the state-event
+    duplicate guard swallowed its own read error and switched itself off.
+    """
+    import sweep_exhibitors as sw
+    import classify_exhibitors as cx
+    import register_state_events as rse
+    errors = 0
+    if sw.clean("Exhibitors ›") != "Exhibitors":
+        print("  FAIL: clean() leaves a trailing chevron on a name")
+        errors += 1
+    if sw.looks_like_a_name(sw.clean("CONTACT US ›")):
+        print("  FAIL: 'CONTACT US ›' is being staged as an exhibitor")
+        errors += 1
+    for n in ("Careers at GFOA", "GFOA's Research & Consulting Center", "Bylaws",
+              "Privacy Policy", "Empty cart Cart", "Registration for 2027 Opens Fall 2026"):
+        if sw.looks_like_a_name(n, "GFOA"):
+            print(f"  FAIL: {n!r} passes as an exhibitor name")
+            errors += 1
+    for n in ("Illinois GFOA", "Government Window", "Baker Tilly", "Carr, Riggs & Ingram"):
+        if not sw.looks_like_a_name(n, "GFOA"):
+            print(f"  FAIL: {n!r} - a real exhibitor - is being filtered out")
+            errors += 1
+
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-sweep-"))
+    try:
+        f = tmp / "exhibitors_X.json"
+        f.write_text(json.dumps({"found": True, "exhibitors": [
+            {"name": "Acme", "website": None, "is_govtech": True, "is_govtech_why": "ruled"}]}))
+        fresh = {"found": True, "exhibitors": [{"name": "Acme", "website": "https://acme.test"}]}
+        if not sw.merge_into(fresh, f) or fresh["exhibitors"][0].get("is_govtech") is not True:
+            print("  FAIL: a re-sweep drops the is_govtech flag classify wrote")
+            errors += 1
+        if sw.merge_into({"found": False, "why": "HTTP 403", "exhibitors": []}, f):
+            print("  FAIL: a refused read would overwrite a good staged file")
+            errors += 1
+
+        (tmp / "companies.json").write_text(json.dumps(
+            [{"name": "Acme", "also_known_as": ["Acme Corp"]}]))
+        (tmp / "suppliers.json").write_text(json.dumps([{"name": "Bob's Catering"}]))
+        keep = cx.DATA
+        cx.DATA = tmp
+        try:
+            got = cx.on_file()
+        finally:
+            cx.DATA = keep
+        if "bobscatering" not in got or "acmecorp" not in got:
+            print("  FAIL: classify's 'on file' set misses an unstamped supplier "
+                  "or an also_known_as - those names would be counted as new")
+            errors += 1
+
+        keep = rse.DATA
+        rse.DATA = tmp / "nowhere"
+        try:
+            rse.existing_tags()
+            print("  FAIL: existing_tags() answered an empty set for a missing "
+                  "conferences.json - the duplicate guard switched itself off")
+            errors += 1
+        except SystemExit:
+            pass
+        finally:
+            rse.DATA = keep
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
+def check_extension_holds_and_refuses() -> int:
+    """The service worker, executed, with a fake chrome and a fake admin.
+
+    Four facts about the capture queue, each once wrong or unproven:
+    a capture with the admin off is HELD, and says so in words; a capture the
+    admin saw and REFUSED is set aside with the admin's reason and never sent
+    again - it used to go back on the queue and re-send on every flush,
+    forever, silently; a connection failure mid-queue keeps everything
+    behind it in order; and the queue goes when the admin answers.
+    scripts/worker_harness.js is the fake chrome.
+    """
+    if not shutil.which("node"):
+        print("  SKIP: node is not installed here, so extension/background.js "
+              "was NOT executed - the capture queue is unverified on this machine")
+        return 0
+    import subprocess
+    r = subprocess.run(["node", str(ROOT / "scripts" / "worker_harness.js"),
+                        str(ROOT / "extension" / "background.js")],
+                       capture_output=True, text=True, timeout=30)
+    try:
+        out = json.loads(r.stdout.strip().splitlines()[-1])
+    except Exception:                                   # noqa: BLE001
+        print(f"  FAIL: the worker harness produced no result: "
+              f"{(r.stderr or r.stdout).strip()[:200]}")
+        return 1
+    if out.get("crash"):
+        print(f"  FAIL: background.js crashed under the harness: {out['crash'][:200]}")
+        return 1
+    errors = 0
+    held = out.get("held", {})
+    if not held.get("queued") or held.get("pending") != 1 or "not running" not in str(held.get("error")):
+        print(f"  FAIL: a capture with the admin off was not held and explained: {held}")
+        errors += 1
+    if "not running" not in str(out.get("off_search")):
+        print(f"  FAIL: a search with the admin off shows {out.get('off_search')!r} "
+              f"instead of telling the person to start it")
+        errors += 1
+    ref = out.get("refused", {})
+    if ref.get("refused") != 1 or ref.get("pending") != 0 or ref.get("set_aside") != 1 \
+            or ref.get("why") != "no such company":
+        print(f"  FAIL: a capture the admin refused was not set aside with its "
+              f"reason: {ref}")
+        errors += 1
+    if out.get("again", {}).get("captures") != 1:
+        print(f"  FAIL: a refused capture was sent again on the next flush "
+              f"({out.get('again')}) - that is the forever loop")
+        errors += 1
+    if out.get("kept") != ["a", "b"]:
+        print(f"  FAIL: two captures held while the admin was off came back as "
+              f"{out.get('kept')}")
+        errors += 1
+    if out.get("sent", {}).get("flushed") != 2 or out.get("sent", {}).get("pending") != 0:
+        print(f"  FAIL: held captures did not go when the admin answered: {out.get('sent')}")
+        errors += 1
+    return errors
 
 
 def main() -> int:
@@ -8585,6 +9284,13 @@ def main() -> int:
     errors += check_open_actions_never_write_the_map()
     errors += check_worklist_drops_what_was_worked()
     errors += check_identify_catches_a_namesake()
+    errors += check_fetchers_page_through_their_callers()
+    errors += check_the_gate_is_where_the_requests_are()
+    errors += check_mail_is_built_from_the_shell()
+    errors += check_capture_keeps_two_reqs_with_one_title()
+    errors += check_task_notes_land_honestly()
+    errors += check_sweep_keeps_its_own_work()
+    errors += check_extension_holds_and_refuses()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

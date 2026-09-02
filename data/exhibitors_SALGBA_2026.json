@@ -62,6 +62,14 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
+   "name": "Aon",
+   "website": null,
+   "tier": "Platinum Sponsor; no booth on the exhibit hall list",
+   "sells": "Public Sector Health and Benefits consulting and actuarial services for states, cities, counties, towns, K-12 districts, benefits pools and federal agencies.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
    "name": "Aptia",
    "website": null,
    "tier": "Booth 425",
@@ -132,6 +140,14 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
+   "name": "Candesa Pharmacy Solution",
+   "website": null,
+   "tier": "Bronze Sponsor; no booth on the exhibit hall list",
+   "sells": "Pharmacy benefit management; the brand is operated by Lifetime Benefit Solutions, Inc., part of The Lifetime Healthcare Companies.",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
    "name": "CareATC",
    "website": null,
    "tier": "Booth 135",
@@ -170,6 +186,14 @@
    "sells": null,
    "is_govtech": false,
    "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "CVS Caremark",
+   "website": "https://business.caremark.com",
+   "tier": "Premier Sponsor - Tuesday Evening Event Sponsor; no booth on the exhibit hall list",
+   "sells": "Pharmacy benefit management for employer and health plan clients - real-time data to analyze trends and optimize pharmacy benefit spend.",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "CVS Health",
@@ -584,6 +608,14 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
+   "name": "Solrera Health",
+   "website": null,
+   "tier": "Silver Sponsor; no booth on the exhibit hall list",
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
    "name": "Sourcewell",
    "website": null,
    "tier": "Booth 126",
@@ -610,22 +642,6 @@
    "website": null,
    "tier": "Platinum Sponsor; Booth 110",
    "sells": "Benefits and pension administration technology and outsourcing for public sector organizations; SaaS, co-sourcing or full outsourcing for 10M+ participants.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "The Hartford",
-   "website": null,
-   "tier": "Booth 429",
-   "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "The Phia Group",
-   "website": null,
-   "tier": "Booth 327",
-   "sells": null,
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
   },
@@ -704,45 +720,14 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "CVS Caremark",
-   "website": "https://business.caremark.com",
-   "tier": "Premier Sponsor - Tuesday Evening Event Sponsor; no booth on the exhibit hall list",
-   "sells": "Pharmacy benefit management for employer and health plan clients - real-time data to analyze trends and optimize pharmacy benefit spend.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Aon",
-   "website": null,
-   "tier": "Platinum Sponsor; no booth on the exhibit hall list",
-   "sells": "Public Sector Health and Benefits consulting and actuarial services for states, cities, counties, towns, K-12 districts, benefits pools and federal agencies.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Solrera Health",
-   "website": null,
-   "tier": "Silver Sponsor; no booth on the exhibit hall list",
-   "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Wondr Health",
    "website": null,
    "tier": "Silver Sponsor; no booth on the exhibit hall list",
    "sells": "Preventive weight and GLP-1 management - digital behavioral program with configurable GLP-1 coverage strategies, coaching and connected devices.",
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Candesa Pharmacy Solution",
-   "website": null,
-   "tier": "Bronze Sponsor; no booth on the exhibit hall list",
-   "sells": "Pharmacy benefit management; the brand is operated by Lifetime Benefit Solutions, Inc., part of The Lifetime Healthcare Companies.",
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
   }
  ],
- "why": null
+ "why": null,
+ "restaged": "93 -> 91 names after re-filtering on 2026-09-02"
 }

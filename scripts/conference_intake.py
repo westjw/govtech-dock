@@ -28,6 +28,7 @@ import argparse
 import json
 import pathlib
 import re
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -36,6 +37,9 @@ STAGE = DATA / "conference_intake"
 SUFFIX = re.compile(r"\b(inc|llc|corp(oration)?|co|company|ltd|lp|group|"
                     r"holdings?|international|intl|usa?)\b\.?", re.I)
 
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import admin                                            # noqa: E402
 
 def norm(name: str) -> str:
     # parentheticals go the way kebab() sends them, or "SoundThinking
@@ -81,7 +85,12 @@ def main() -> int:
 
     staged = json.loads(pathlib.Path(a.file).read_text())
     event = a.event_tag or staged["conference"]
-    companies = json.loads((DATA / "companies.json").read_text())
+    # THROUGH admin, so the write below is journalled. This script was one of
+    # the seven that wrote companies.json directly; the day it extended 196
+    # descriptions with "GFOA 2026", every one of those records disagreed
+    # with the journal's last after-image and nothing could say which was
+    # right. read_companies() keeps the before-image save_companies needs.
+    companies = admin.read_companies()
     suppliers = json.loads((DATA / "suppliers.json").read_text())
     valid_sectors = {s["name"] for s in
                      json.loads((DATA / "schema.json").read_text())["sectors"]}
@@ -136,10 +145,21 @@ def main() -> int:
     if a.dry_run:
         return 0
 
-    (DATA / "suppliers.json").write_text(json.dumps(suppliers, indent=1,
-                                                    ensure_ascii=False))
-    (DATA / "companies.json").write_text(json.dumps(companies, indent=1,
-                                                    ensure_ascii=False))
+    err = admin.validate(companies)
+    if err:
+        print(f"refused: {err}", file=sys.stderr)
+        return 1
+    admin.write_atomic("suppliers.json", suppliers)
+    # force: the counts were printed above, which is what journal.BLAST asks
+    # for before a write touching more than 25 records. A dry run is the
+    # person looking; the run without it is the person saying go.
+    bad = admin.save_companies(
+        companies, "conference-intake",
+        f"{event}: {tagged} on file tagged, {new_suppliers} suppliers filed",
+        by="agent:conference-intake", force=True)
+    if bad:
+        print(f"refused: {bad}", file=sys.stderr)
+        return 1
     STAGE.mkdir(exist_ok=True)
     cand_path = STAGE / "govtech_candidates.json"
     existing = json.loads(cand_path.read_text()) if cand_path.exists() else []

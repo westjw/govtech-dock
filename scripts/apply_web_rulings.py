@@ -59,7 +59,7 @@ def apply_founded(dry: bool) -> int:
             failed.append((cid, "no such company - merged away since the ruling"))
             continue
         was = c.get("year_founded")
-        c["year_founded"] = str(r["year"])
+        c["year_founded"] = int(r["year"])       # an int, like every other year on the map
         err = admin.validate(companies)
         if err:
             c["year_founded"] = was

@@ -51,12 +51,14 @@ import json
 import pathlib
 import re
 import sys
+import urllib.parse
 from collections import defaultdict
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 sys.path.insert(0, str(ROOT / "scripts"))
 
+import admin                                           # noqa: E402
 import agents                                          # noqa: E402
 import ats                                             # noqa: E402
 
@@ -65,7 +67,42 @@ def norm(s: str) -> str:
     return re.sub(r"[^a-z0-9]", "", (s or "").lower())
 
 
-def resembles(name: str, ref: str) -> bool:
+# A LEGAL FORM IS NOT A NAME. Paylocity tenants are registered as
+# "Big-Belly-Solar-LLC", "Zhone-Technologies-Inc", "Liberty-Vote-USA-Inc";
+# the company half is what gets compared. The separator is REQUIRED - without
+# it "Brinc" loses its own "inc" and refuses its own board.
+LEGAL = re.compile(r"[-_ ](llc|inc|incorporated|ltd|limited|corp|corporation|"
+                   r"co|company|plc|gmbh|lp|usa)$", re.I)
+
+
+def tenant(ref: str) -> str:
+    """The name inside a board ref, for the ATSes whose ref is an address.
+
+    A Paylocity ref is the whole recruiting URL:
+    .../recruiting/jobs/All/<uuid>/<Tenant-Name>. The tenant name is the last
+    path segment that carries letters and is not the opaque id. Everything
+    else is furniture; a slug that is not an address comes back unchanged.
+    """
+    s = str(ref or "").strip()
+    if not s.lower().startswith(("http://", "https://")):
+        return s
+    parts = [p for p in urllib.parse.urlsplit(s).path.split("/") if p]
+    for p in reversed(parts):
+        if re.search(r"[A-Za-z]{2}", p) and not re.fullmatch(r"[0-9a-f-]{20,}", p, re.I):
+            return p
+    return ""
+
+
+def _bare(s: str) -> str:
+    s = str(s or "").strip()
+    while True:
+        t = LEGAL.sub("", s)
+        if t == s:
+            return norm(s)
+        s = t
+
+
+def resembles(name: str, ref: str, aka: list | tuple = ()) -> bool:
     """Is this slug plausibly THIS company's, on the name alone?
 
     Lifted from find_linkedin.py, for the same reason and with the same
@@ -80,9 +117,19 @@ def resembles(name: str, ref: str) -> bool:
     would have published another company's requisitions under this one's name,
     which is the false "Yes" CLAUDE.md calls the error this tool cannot afford.
 
+    AN ADDRESS IS NOT A PASS. The first version returned True for any http
+    ref on the grounds that "the company name is not in it to find" - and it
+    is: Paylocity's URL ends in the tenant's registered name. That clause
+    waved through every one of the 35 Paylocity entries, and the board went
+    on publishing AEM's requisitions as Earth Networks', General Code's as
+    American Legal Publishing's, Liberty Vote's as Dominion's. tenant() reads
+    the name out of the address and it is judged like any other slug.
+
     Deliberately crude and deliberately strict. It cannot tell a rename from a
-    mistake - mdf commerce really did become Sovra - so everything it doubts
-    is PRINTED AND QUEUED, never dropped. Telling those apart is judgement.
+    mistake - mdf commerce really did become Sovra, and DZS really was Zhone -
+    so everything it doubts is PRINTED AND QUEUED, never dropped. Telling
+    those apart is judgement, and `aka` carries the names a person already
+    recorded so a known former name is not doubted twice.
     """
     # ATS FURNITURE IS NOT IDENTITY. iCIMS names tenants `careers-<company>`,
     # and comparing that raw refused ViaPath its own board at careers-viapath,
@@ -91,15 +138,15 @@ def resembles(name: str, ref: str) -> bool:
     # guard: careers-tkcholdings still fails against ICSolutions, because what
     # is left is a different company's name rather than a missing prefix.
     ref = re.sub(r"^(worldwide|us|global|internal|jobs|careers)?[-_]?careers?[-_]",
-                 "", str(ref).strip(), flags=re.I)
-    n, s = norm(name), norm(ref)
-    if not n or not s:
+                 "", tenant(ref), flags=re.I)
+    s = _bare(ref)
+    if not s:
         return False
-    # A paylocity ref is a full recruiting URL rather than a slug, so the
-    # company name is not in it to find. Those are judged on identity alone.
-    if s.startswith("https") or s.startswith("http"):
-        return True
-    return n.startswith(s[:6]) or s.startswith(n[:6]) or s in n or n in s
+    for candidate in [name, *(aka or ())]:
+        n = _bare(candidate)
+        if n and (n.startswith(s[:6]) or s.startswith(n[:6]) or s in n or n in s):
+            return True
+    return False
 
 
 def load(name: str):
@@ -147,7 +194,9 @@ def triage(rows: list, by_id: dict) -> tuple[list, list, list]:
     clean, unsure = [], []
     for e in alone:
         f = e.get("found") or {}
-        if e.get("identity") == "matches" or resembles(e.get("name"), str(f.get("ref"))):
+        c = by_id.get(e.get("id")) or {}
+        if (e.get("identity") == "matches"
+                or resembles(e.get("name"), str(f.get("ref")), c.get("also_known_as") or ())):
             clean.append(e)
         else:
             unsure.append(e)
@@ -209,7 +258,12 @@ def main() -> int:
     a = ap.parse_args()
 
     rows = load("embedded_ats.json")
-    companies = load("companies.json")
+    # THROUGH admin, not json.load: save_companies needs the before-image
+    # read_companies() keeps, or there is nothing to journal and nothing for
+    # admin_undo.py to take back. This script used to be the eighth pipeline
+    # writer that bypassed the journal; a wrong board it wrote was then
+    # recoverable only from git.
+    companies = admin.read_companies()
     by_id = {c["id"]: c for c in companies}
 
     clean, mismatch, shared = triage(rows, by_id)
@@ -273,18 +327,17 @@ def main() -> int:
 
     if a.write and wired:
         # Same discipline as every other writer here: validate the whole file,
-        # then write atomically. A bad edit is refused, never half applied.
-        path = DATA / "companies.json"
-        tmp = path.with_suffix(".tmp")
-        tmp.write_text(json.dumps(companies, indent=1) + "\n")
-        try:
-            json.loads(tmp.read_text())
-        except json.JSONDecodeError:
-            tmp.unlink(missing_ok=True)
-            print("refused: the result did not parse", file=sys.stderr)
+        # journal the before-image, then write atomically. force because the
+        # dry run above already showed a person the count - that is the
+        # condition journal.BLAST asks for.
+        bad = admin.save_companies(
+            companies, "wire-embedded",
+            f"{wired} board(s) found inside careers pages, re-verified live",
+            by="agent:wire_embedded", force=True)
+        if bad:
+            print(f"refused: {bad}", file=sys.stderr)
             return 1
-        tmp.replace(path)
-        print(f"  wrote {wired} board(s) into companies.json")
+        print(f"  wrote {wired} board(s) into companies.json (journalled)")
     elif wired:
         print("  LOOKED ONLY. Nothing was written. Re-run with --write.")
 

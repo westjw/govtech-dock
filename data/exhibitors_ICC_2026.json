@@ -24,12 +24,6 @@
    "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
-   "name": "ICC 2026 Annual Conference & Expo",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Legend",
    "website": null,
    "is_govtech": false,
@@ -73,5 +67,6 @@
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "good",
+ "restaged": "11 -> 10 names after re-filtering on 2026-09-02"
 }

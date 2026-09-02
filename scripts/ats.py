@@ -272,12 +272,20 @@ HTTP_CACHE = pathlib.Path(__file__).resolve().parent.parent / "data" / "http_cac
 
 
 class _Cached:
-    """Enough of a requests.Response for the four things anybody reads."""
+    """Enough of a requests.Response for the five things anybody reads.
 
-    def __init__(self, text: str):
+    `.url` is one of them. find_websites.probe reads it off every _get result
+    to record which candidate domain identified the company, and a cached 304
+    that lacked it crashed the whole run on the first company whose homepage
+    had not changed since the last probe.
+    """
+
+    def __init__(self, text: str, url: str = ""):
         self.text = text
+        self.url = url
         self.status_code = 200
         self.from_cache = True
+        self.headers: dict = {}
 
     def json(self):
         return json.loads(self.text)
@@ -345,6 +353,7 @@ def _cache_write(url: str, resp) -> None:
 # then buy the next caller a free pass.
 HOST_PAUSE = float(os.environ.get("GOVTECH_DOCK_HOST_PAUSE", "0.5"))
 _HOST_LAST: dict[str, float] = {}
+_HOST_NOT_BEFORE: dict[str, float] = {}     # a 429's Retry-After, per host
 _HOST_LOCKS: dict[str, threading.Lock] = {}
 _HOST_TABLE = threading.Lock()
 
@@ -353,15 +362,36 @@ def _host_gate(url: str) -> None:
     host = urllib.parse.urlsplit(url).netloc.lower()
     if not host or HOST_PAUSE <= 0:
         return
-    with _HOST_TABLE:                       # only guards the dict, never a sleep
+    with _HOST_TABLE:                       # only guards the dicts, never a sleep
         lock = _HOST_LOCKS.setdefault(host, threading.Lock())
     with lock:
+        now = time.monotonic()
         last = _HOST_LAST.get(host)
-        if last is not None:
-            wait = HOST_PAUSE - (time.monotonic() - last)
-            if wait > 0:
-                time.sleep(wait)
+        wait = HOST_PAUSE - (now - last) if last is not None else 0.0
+        # A SERVER'S OWN INSTRUCTION OUTRANKS OUR INTERVAL. The first version
+        # folded a 429's Retry-After into _HOST_LAST as a stamp in the future,
+        # written outside this lock - so a same-host worker already asleep
+        # here woke, stamped "now" over it, and the backoff was gone before
+        # anybody honoured it. A separate not-before time, read here and
+        # written under the table lock, cannot be overwritten by a waker.
+        with _HOST_TABLE:
+            hold = _HOST_NOT_BEFORE.get(host, 0.0) - now
+        wait = max(wait, hold)
+        if wait > 0:
+            time.sleep(wait)
         _HOST_LAST[host] = time.monotonic()
+
+
+def _back_off(url: str, resp) -> None:
+    """A 429 is an instruction. Record it where the gate will read it."""
+    wait = _retry_after(resp.headers.get("Retry-After"))
+    if wait:
+        host = urllib.parse.urlsplit(url).netloc.lower()
+        with _HOST_TABLE:
+            _HOST_LOCKS.setdefault(host, threading.Lock())
+            _HOST_NOT_BEFORE[host] = max(_HOST_NOT_BEFORE.get(host, 0.0),
+                                         time.monotonic() + min(wait, 300))
+    raise RateLimited(url, wait)
 
 
 def _retry_after(raw: str | None) -> float | None:
@@ -406,23 +436,17 @@ def _get(url: str, **kw):
     if resp.status_code == 304:
         body = _cache_body(url)
         if body is not None:
-            return _Cached(body)
+            return _Cached(body, url)
         # The server says nothing changed and we no longer hold the body. That
         # is our bookkeeping failing, not the site refusing, so ask again
-        # plainly rather than reporting a board we cannot read.
+        # plainly rather than reporting a board we cannot read - and ask
+        # through the gate, because it is a second request at the same host.
+        _host_gate(url)
         resp = requests.get(url, headers=UA, timeout=TIMEOUT, **kw)
     if resp.status_code == 429:
-        # HONOUR IT, not just report it. Pushing this host's next-allowed time
-        # forward means the rest of the crawl actually backs off instead of
-        # walking into the same wall on the next posting - and per-host means
-        # one rude server does not slow down 1,139 innocent ones.
-        wait = _retry_after(resp.headers.get("Retry-After"))
-        if wait:
-            host = urllib.parse.urlsplit(url).netloc.lower()
-            with _HOST_TABLE:
-                _HOST_LOCKS.setdefault(host, threading.Lock())
-            _HOST_LAST[host] = time.monotonic() + min(wait, 300) - HOST_PAUSE
-        raise RateLimited(url, wait)
+        # HONOUR IT, not just report it. Per host, so one rude server does
+        # not slow down 1,139 innocent ones.
+        _back_off(url, resp)
     if resp.status_code != 200:
         raise AtsError(f"HTTP {resp.status_code} for {url}")
     if HTTP_CACHE:
@@ -437,6 +461,8 @@ def _post_json(url: str, body: dict) -> dict:
                              timeout=TIMEOUT)
     except requests.RequestException as exc:
         raise AtsError(f"network error: {exc}") from exc
+    if resp.status_code == 429:
+        _back_off(url, resp)             # Workday pages ten deep; it will say so
     if resp.status_code != 200:
         raise AtsError(f"HTTP {resp.status_code} for {url}")
     try:
@@ -1160,10 +1186,19 @@ def _paged(fetch_page, key, page: int = WD_PAGE,
         rows = fetch_page(i * page)
         if not rows:
             break
-        fresh = [r for r in rows if key(r) not in seen]
+        # ONE PASS, ADDING AS IT GOES. A page that repeats a key inside itself
+        # used to keep both copies - the filter compared against what earlier
+        # pages had seen and nothing else. The docstring promised duplicates
+        # removed; now it is true within a page as well as across them.
+        fresh = []
+        for r in rows:
+            k = key(r)
+            if k in seen:
+                continue
+            seen.add(k)
+            fresh.append(r)
         if not fresh:
             break
-        seen.update(key(r) for r in fresh)
         out.extend(fresh)
     else:
         print(f"  paging: hit the {max_pages}-page ceiling"

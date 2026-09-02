@@ -144,6 +144,29 @@ def score(name: str, floor: float | None = None) -> tuple[bool, str]:
 # judgement a person can make from that; which company is govtech is not.
 
 
+def on_file() -> set:
+    """Every name the board already holds, in any file, under any name.
+
+    Not labelled(): that set is the names with a RULING, and it leaves out a
+    company with govtech unset and a supplier never stamped false. Both are
+    on file, and intake tags them rather than re-filing them - so counting
+    them as "not already on file" reported 1,282 new names where 727 were.
+    """
+    keys = set()
+    def add(n):
+        k = re.sub(r"[^a-z0-9]", "", (n or "").lower())
+        if k:
+            keys.add(k)
+    for c in json.loads((DATA / "companies.json").read_text()):
+        add(c.get("name"))
+        for a in c.get("also_known_as") or []:
+            add(a)
+    sup = json.loads((DATA / "suppliers.json").read_text())
+    for s in (sup if isinstance(sup, list) else sup.get("suppliers", [])):
+        add(s.get("name"))
+    return keys
+
+
 def labelled() -> list[tuple[str, bool]]:
     """Every name this project has already ruled on, with its answer."""
     out = []
@@ -199,8 +222,7 @@ def measure() -> int:
 
 def apply(write: bool) -> int:
     files = sorted(DATA.glob("exhibitors_*.json"))
-    known = {re.sub(r"[^a-z0-9]", "", n.lower()) for n, _ in labelled()}
-    touched = tally = Counter()
+    known = on_file()
     tally = Counter()
     changed = 0
     for f in files:

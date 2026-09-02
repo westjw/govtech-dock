@@ -276,12 +276,15 @@ code, which is the pattern that file exists to break.
   for a body with no usable fields — so a caller passing the field at the top
   level, which is how every other action here takes its arguments, was told the
   correction landed while the record was untouched.
-- **THE RULE ONLY EVER COVERED `admin.py`.** Seven pipeline scripts write
-  `companies.json` directly — `add_company`, `discover_ats`,
-  `conference_intake`, `find_websites`, `refresh`, `merge_companies`,
-  `promote_candidates`. That is how a merged-away record came back an hour
-  after `merge_families` folded it, with one journal entry for the merge and
-  none for the resurrection. `selftest::check_merged_names_stay_merged` is the
+- **THE RULE ONLY EVER COVERED `admin.py`.** Six pipeline scripts still
+  write `companies.json` directly — `add_company`, `discover_ats`,
+  `find_websites`, `refresh`, `merge_companies`, `promote_candidates`. That
+  is how a merged-away record came back an hour after `merge_families`
+  folded it, with one journal entry for the merge and none for the
+  resurrection. (`conference_intake` and `wire_embedded` were moved onto
+  `read_companies()`/`save_companies()` on 2026-09-02: intake tags hundreds
+  of descriptions in one run, which is exactly the write the journal guard
+  flags when it is not journalled.) `selftest::check_merged_names_stay_merged` is the
   backstop, keyed on the ids a merge actually deleted rather than on
   `also_known_as` — the alias version flagged EagleView and Concourse, which
   are two live records legitimately carrying each other's name while somebody
@@ -497,6 +500,66 @@ reasons. So the agree-rate it carefully collects measures agreement, and
 anchoring produces agreement for free. Reordering it would cost the owner
 ruling speed, so it is his call; it is written down here so the next person
 notices rather than trusting the number.
+
+## The 2026-09-02 review, and what it found about the guards
+
+A 12-agent adversarial pass over the two days of work before it: 38 confirmed
+findings, 5 refuted. Four were HIGH and all four are fixed; the shapes are
+worth more than the list.
+
+**An address was a free pass.** `wire_embedded.resembles()` returned True for
+any `http` ref on the grounds that "the company name is not in it to find".
+It is: Paylocity's ref is a URL ending in the tenant's registered name. That
+one clause let 35 entries past the slug gate, and the board carried AEM's 29
+requisitions as Earth Networks', General Code's as American Legal
+Publishing's, Liberty Vote's as Dominion's — since discovery pass 2 in
+August, not since the wire script. `tenant()` now reads the name out of the
+address and it is judged like any slug; the 11 the corrected gate refused
+were unwired through the journal and queued in Boards we found with live
+sample titles. Five of them are probably renames (DZS/Zhone,
+Momentus/Ungerboeck) — the script cannot tell a rename from a mistake and
+must not guess, so the owner re-wires those with one click.
+
+**The Worker used a name it never imported.** `alerts.js` used `NAME` five
+times with `import { SITE, FROM }`. Every signup after that deploy 500'd,
+and selftest read the file as text. It is now EXECUTED under node, against
+the real `_brand.js` import — the first harness defined `NAME` itself and so
+could never reproduce the bug it existed to catch. A guard that supplies
+what it is testing for is not a guard.
+
+**Six guards measured helpers, not wiring.** The paging check drove `_paged`
+and would have stayed green with `fetch_workday` taking one page; the pacing
+check drove `_host_gate` while `_post_json` could drop the call; the
+open-actions check read each handler's own body while `act_worklist`
+dispatches through a dict and a writer sat two hops down. Each now drives the
+CALLER: the fetchers through a stubbed transport serving more than one page,
+`_get`/`_post_json` through the gate with a real thread asleep in it,
+`act_capture` in a sandbox, `background.js` under node with a fake `chrome`
+(`scripts/worker_harness.js`). Every one was then verified by breaking the
+production code — 27 mutations, 27 caught. **When a guard walks a call graph,
+match names, not `name(`**: a dict-dispatched callee never sits before a
+paren.
+
+**Smaller, all fixed:** a 429 backoff written outside the host lock and
+overwritten by a worker already asleep in the gate (now a separate
+`_HOST_NOT_BEFORE`, read by the gate, written under the table lock);
+`apply_task_notes` and `apply_web_rulings` writing `year_founded` as a
+string (`validate()` now refuses anything but an int in 1800..this year);
+the extension re-sending a refused capture forever (set aside with the
+admin's reason, never re-sent); `act_capture` keying on `company::title`
+while build_board keys on link+location, so two same-titled reqs collapsed
+to one; a trailing chevron that beat both the sweep's dedupe and its anchored
+nav filter (GFOA staged "CONTACT US ›" and 11 menu items twice); a re-sweep
+that rebuilt staged files from bare names and dropped every `is_govtech`
+flag; and `classify` counting "not already on file" against the labelled set
+(1,282 new names where 686 were).
+
+**Still open from the review, deliberately:** the sweep's "starts with a
+preposition" rule drops "The Hartford" and "The Phia Group" — the docstring
+chose that side and it is the owner's call to loosen; `BOARD_HEADING`'s
+end-anchor still loses a real title that ENDS in a board word (none seen);
+`_paged` dedupes within a page now, but no iCIMS or SmartRecruiters page in
+the cache actually repeats a key, so that one is unmeasured.
 
 ## Capture: the bookmarklet and the extension
 

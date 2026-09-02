@@ -71,10 +71,15 @@ def existing_tags() -> set:
     registered twice - the sweep would then attribute one exhibitor list to
     two events and double-count every company on it.
     """
+    # NOT swallowed. An unreadable conferences.json returning an empty set
+    # would switch this guard off silently and register every national event
+    # a second time - the exact double-count it exists to prevent.
     try:
         conf = json.loads((DATA / "conferences.json").read_text())["conferences"]
-    except Exception:                                   # noqa: BLE001
-        return set()
+    except Exception as exc:                            # noqa: BLE001
+        raise SystemExit(f"cannot read conferences.json ({type(exc).__name__}: "
+                         f"{exc}) - refusing to register without it, because "
+                         f"the duplicate guard would be off") from exc
     out = set()
     for c in conf:
         for k in ("conference", "event_tag"):

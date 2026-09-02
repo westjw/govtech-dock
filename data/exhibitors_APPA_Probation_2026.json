@@ -34,12 +34,6 @@
    "website": "https://catalisgov.com"
   },
   {
-   "name": "Code of Conduct",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Community Corrections Chase (C3)",
    "website": null,
    "is_govtech": false,
@@ -83,12 +77,6 @@
   },
   {
    "name": "Exhibitor Information",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibitor Kit",
    "website": null,
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
@@ -226,12 +214,6 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Privacy Policy",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Procivica",
    "website": "https://www.procivica.com/",
    "is_govtech": false,
@@ -246,12 +228,6 @@
   {
    "name": "Register Now",
    "website": "https://www.appa-net.org/eweb/DynamicPage.aspx?webcode=EventInfo&Reg_evt_key=e6ad316f-cd68-4ff4-b773-2aab57dc46f0",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Registration Form",
-   "website": "https://www.appa-net.org/eweb/Training/TI-A51.pdf",
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
   },
@@ -285,12 +261,6 @@
   },
   {
    "name": "SPONSORS & EXHIBITORS",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Sunday Plenary Session",
    "website": null,
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
@@ -341,5 +311,6 @@
   }
  ],
  "why": null,
- "quality": "mixed"
+ "quality": "mixed",
+ "restaged": "58 -> 53 names after re-filtering on 2026-09-02"
 }

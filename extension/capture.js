@@ -42,8 +42,22 @@
     + "height:0;z-index:2147483647";
   const root = host.attachShadow({ mode: "open" });
 
-  const api = (path, body) => new Promise((res) =>
-    chrome.runtime.sendMessage({ kind: "api", path, body }, res));
+  /* A reloaded extension throws SYNCHRONOUSLY from sendMessage ("Extension
+     context invalidated"), which a bare Promise executor turns into a
+     rejection nobody awaits - every handler was left mid-sentence. Caught
+     here and handed to the same reply shape, so trouble() can say so. */
+  const api = (path, body) => new Promise((res) => {
+    try {
+      chrome.runtime.sendMessage({ kind: "api", path, body }, (r) => {
+        if (chrome.runtime.lastError) res({ ok: false, error:
+          "The extension was reloaded under this page. Reload the page and click again." });
+        else res(r);
+      });
+    } catch (e) {
+      res({ ok: false, error:
+        "The extension was reloaded under this page. Reload the page and click again." });
+    }
+  });
 
   /* Three different failures used to read as one sentence. "The admin is not
      running" and "the admin refused that" are not the same problem, and only
@@ -193,12 +207,21 @@
       + "work (with|for) us|vacancies|search jobs|all jobs|job openings|"
       + "job portal|careers? (portal|cent(er|re)|page|home)"
       + ")$", "i");
+    /* And the other end. "Careers at Acme", "Jobs - Acme Corp", "Openings |
+       Acme" START with the board word and carry the company after it. The
+       end-anchor above cannot see those, so they were kept as the title.
+       Only a board word followed by a joiner counts; "Careers Coordinator"
+       has no joiner and stays a job. */
+    const BOARD_START = new RegExp(
+      "^(job board|jobs|careers?|openings|opportunities|vacancies|"
+      + "join (us|our team)|work (with|for) us)"
+      + "(\\s+(at|@|with)\\b|\\s*[\\-\u2013\u2014|:])", "i");
 
     let title = "";
     for (const h of document.querySelectorAll("h1,h2,h3")) {
       const s = clean(h.innerText || "");
       if (!s || s.length < 3 || s.length > 120) continue;
-      if (BOARD_HEADING.test(s)) continue;
+      if (BOARD_HEADING.test(s) || BOARD_START.test(s)) continue;
       title = s;
       break;
     }
@@ -241,6 +264,14 @@
     /\.breezy\.hr\/p\/[0-9a-f]{8,}/i,
     /myworkdayjobs\.com\/.+\/job\//i,
     /jobs\.crelate\.com\/portal\/[^/]+\/job\/[a-z0-9]{8,}/i,
+    /jobs\.smartrecruiters\.com\/[^/]+\/\d{6,}/i,
+    /\.bamboohr\.com\/careers\/\d+/i,
+    /ats\.rippling\.com\/[^/]+\/jobs\/[0-9a-f-]{16,}/i,
+    /\.applytojob\.com\/apply\/[A-Za-z0-9]{6,}/i,
+    /\.icims\.com\/jobs\/\d+\//i,
+    /recruiting\.paylocity\.com\/recruiting\/jobs\/details\/\d+/i,
+    /oraclecloud\.com\/.*\/job\/\d+/i,
+    /workforcenow\.adp\.com\/.*[?&]jobId=\d+/i,
   ];
   const onDetailPage = DETAIL.some((re) => re.test(location.href));
 
@@ -275,12 +306,12 @@
     .panel input[type=text], .panel input:not([type]) {
       width: 100%; padding: 8px 10px; border: 1px solid #C9DCE8;
       border-radius: 0; background: #fff; color: #1F2536;
-      font: 13px/1.5 inherit; font-family: inherit;
+      font-size: 13px; line-height: 1.5; font-family: inherit;
     }
     .panel button {
       width: 100%; padding: 10px 14px; border: 0; border-radius: 0;
-      background: #0B57C4; color: #FAF7F0; font: 700 13.5px/1.4 inherit;
-      font-family: inherit; cursor: pointer;
+      background: #0B57C4; color: #FAF7F0; font-weight: 700; font-size: 13.5px;
+      line-height: 1.4; font-family: inherit; cursor: pointer;
     }
     .panel button[disabled] { background: #9FB3C4; cursor: default }
     /* THE LINE THAT WAS BROKEN. Each search result is its own block with its
@@ -323,10 +354,22 @@
             text: `${c.name} is on ${kind}, so the crawler reads it - but the `
                 + `board shows no postings. Worth capturing if you can see some.` };
     }
+    /* html IS read - as page text, every night - and 26 of those companies
+       carry postings from it. Telling the person "no board a fetcher can
+       read" over a page the fetcher reads had them capture what was already
+       on the board, which build_board then re-keys onto the same posting. */
+    if (kind === "html" && c.postings > 0) {
+      return { tone: "note",
+               text: `The crawler reads this careers page as text and currently `
+                   + `sees ${c.postings} posting${c.postings === 1 ? "" : "s"}. `
+                   + `Capture only if you can see more than that.` };
+    }
     if (kind === "html" || !kind || kind === "unknown") {
       return { tone: "go",
-               text: `No board a fetcher can read. This is exactly the pile `
-                   + `capture is for.` };
+               text: (kind === "html"
+                       ? `The crawler reads this page as text and finds nothing. `
+                       : `No board a fetcher can read. `)
+                   + `This is exactly the pile capture is for.` };
     }
     return { tone: "note", text: `On file as ${kind}.` };
   }
@@ -505,6 +548,12 @@
     msg.innerHTML = sent
       ? `<b style="color:#0B57C4">${esc(r.data.message)}`
         + `${r.flushed ? ` (and ${r.flushed} held earlier)` : ""}</b>`
+        + (r.refused
+           ? `<div style="color:#a3342a;margin-top:6px">${r.refused} capture`
+             + `${r.refused === 1 ? "" : "s"} held earlier ${r.refused === 1 ? "was" : "were"} `
+             + `refused by the admin and set aside - open the extension's service `
+             + `worker console to read why.</div>`
+           : "")
       : held
       ? `<b style="color:#7a5b00">${esc(trouble(r))}</b>`
       : `<span style="color:#a3342a">${esc(trouble(r))}</span>`;

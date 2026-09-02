@@ -41,6 +41,7 @@ silently discarded - the person who wrote it is not here to be asked again.
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import json
 import pathlib
 import sys
@@ -51,6 +52,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import add_company                                      # noqa: E402
 import admin                                            # noqa: E402
+import coverage                                         # noqa: E402
+import posts_at                                         # noqa: E402
 
 NOTES = "task_notes.json"
 
@@ -63,28 +66,68 @@ def pending() -> list:
         return []
 
 
+def _where(value: str) -> tuple[str, str | None, str]:
+    """Read a posts-at note into posts_at's own vocabulary.
+
+    A person types either an address or a word. An address says which service
+    it is; a word is matched against the places posts_at already knows. What
+    does not match is kept as the note, not invented into a category.
+    """
+    v = str(value or "").strip()
+    if v.lower().startswith(("http://", "https://")):
+        return posts_at.guess_where(v) or "other", v, ""
+    key = v.lower().replace(" ", "")
+    for k, (label, _pat) in posts_at.WHERE.items():
+        if key in (k, label.lower().replace(" ", "")):
+            return k, None, ""
+    if "email" in key or "mail" in key:
+        return "email", None, v
+    if "recruit" in key or "agency" in key:
+        return "recruiter", None, v
+    return "other", None, v
+
+
 def apply_one(note: dict, c: dict) -> tuple[bool, str]:
     """Put one note onto one company record. Returns (changed, what happened)."""
     kind, value = note.get("kind"), note.get("value")
+    was_ats = c.get("ats") or {}
 
     if kind == "board":
         # READ THE PAGE, do not trust the address. A person pastes what they
         # are looking at; which ATS is behind it is a question only a fetch
         # answers, and the same one the admin's verify button asks.
         try:
-            block, why, _ = add_company.find_ats(value)
+            block, why, notes = add_company.find_ats(value)
         except Exception as exc:                        # noqa: BLE001
             return False, f"could not read that page: {type(exc).__name__}"
         if not block:
-            c["ats"] = {"type": "html", "ref": value}
-            return True, f"html page scan ({why or 'no ATS detected'})"
+            # NOT FILED AS html. find_ats returns nothing when it could not
+            # read the page OR found no careers page on it, and neither is a
+            # board. Writing the address as an html scan here would make the
+            # public card link a page nobody could read - the note stays
+            # pending with the reason, for a person.
+            return False, f"no board found behind that address ({'; '.join(notes)[:60]})"
+        if (block.get("type") == "html"
+                and was_ats.get("type") in coverage.STRUCTURED):
+            return False, (f"would replace a {was_ats.get('type')} board with a "
+                           f"page scan - rule that in the admin, not from a note")
         c["ats"] = block
-        return True, f"{block.get('type')}/{block.get('ref')}"
+        was = f"{was_ats.get('type')}/{was_ats.get('ref')}" if was_ats.get("type") not in (None, "unknown") else "nothing"
+        return True, f"{was} -> {block.get('type')}/{block.get('ref')}"
 
     if kind == "founded":
+        # AN INTEGER, like every other year on the map. str(value) here once
+        # passed validate() and then failed selftest on the next run.
+        this_year = dt.date.today().year
+        try:
+            year = int(str(value).strip())
+        except ValueError:
+            return False, f"{value!r} is not a year"
+        if not (1800 <= year <= this_year):
+            return False, f"{year} is not a plausible founding year (1800-{this_year})"
         was = c.get("year_founded")
-        c["year_founded"] = str(value)
-        return True, f"{was or 'unknown'} -> {value}"
+        c["year_founded"] = year
+        return True, f"{was or 'unknown'} -> {year}"
 
     if kind == "website":
         was = c.get("website")
@@ -94,19 +137,30 @@ def apply_one(note: dict, c: dict) -> tuple[bool, str]:
     if kind == "posts-at":
         # ITS OWN FIELD, NOT `ats`. `ats` means monitored; filing LinkedIn
         # there would make refresh try, fail, and record a zero. The card says
-        # "they post here and we are not counting it".
-        where = str(value).strip().lower()
-        c["posts_at"] = {"where": where, "label": str(value).strip(),
-                         "url": value if str(value).startswith("http") else None,
-                         "note": None}
-        return True, f"posts at {where}"
+        # "they post here and we are not counting it" - and the record is
+        # built by posts_at, whose check() refuses the shapes that mislead a
+        # reader: a LinkedIn brochure instead of the jobs page, a "parent"
+        # with no name, a link that is really some other service.
+        where, url, free = _where(value)
+        bad = posts_at.check(where, url)
+        if bad:
+            return False, bad
+        c["posts_at"] = posts_at.build(where, url, by="capture-extension", note=free)
+        return True, f"posts at {posts_at.label(where)}"
 
     if kind == "nothing":
         # A person looked and found nothing. Recorded on the record itself so
-        # the queue stops re-offering it as unchecked - which is the whole
-        # reason this kind exists.
+        # the fact is not lost - AND as a manual check, which is what the
+        # worklist actually reads. _checked_recently hides a checked company
+        # for manual.STALE_DAYS and then offers it again, because jobs change;
+        # the note alone hid nothing, and the queue re-offered every company
+        # somebody had already stood on.
         note_txt = "checked by hand, nothing to enumerate here"
         c["ats_note"] = note_txt
+        note["_check"] = {"checked_on": str(note.get("at") or "")[:10]
+                          or dt.date.today().isoformat(),
+                          "by": "task-note", "found": False,
+                          "source": note.get("saw")}
         return True, note_txt
 
     return False, f"unknown kind {kind!r}"
@@ -173,6 +227,31 @@ def main() -> int:
     if bad:
         print(f"refused: {bad}")
         return 1
+
+    # The "nothing" notes become manual checks, so the worklist stops
+    # offering the company for STALE_DAYS. Staged file, written after the map
+    # landed, so a refused map write leaves no orphan check behind.
+    checks = {n["company_id"]: n["_check"] for n in todo if n.get("_check")
+              and any(d[0] == n.get("company_id") and d[1] == "nothing" for d in done)}
+    if checks:
+        man = admin.read("manual.json", {"checks": {}, "postings": []})
+        man.setdefault("checks", {}).update(checks)
+        admin.write_atomic("manual.json", man)
+
+    # RE-READ BEFORE MARKING. The admin appends to this file while this runs;
+    # rewriting the copy read before the board fetches would drop any note
+    # saved in between. Rows are matched on (company, kind, at), and a note
+    # this run never saw is left exactly as it was.
+    applied = {(cid, kind, n.get("at")) for n in todo
+               for cid, kind, _ in done
+               if n.get("company_id") == cid and n.get("kind") == kind}
+    try:
+        rows = json.loads((DATA / NOTES).read_text())
+    except Exception:                                   # noqa: BLE001
+        rows = []
+    for r in rows:
+        if (r.get("company_id"), r.get("kind"), r.get("at")) in applied:
+            r["applied"] = True
     admin.write_atomic(NOTES, rows)
     print(f"\n  applied and journalled")
     return 0

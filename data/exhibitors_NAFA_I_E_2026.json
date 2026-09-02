@@ -84,12 +84,6 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Privacy Policy",
-   "website": "https://www.nafainstitute.org/privacy-policy/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Ride & Drive",
    "website": "https://www.nafainstitute.org/exhibitors-sponsors/ride-and-drive/",
    "is_govtech": false,
@@ -127,5 +121,6 @@
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "good",
+ "restaged": "20 -> 19 names after re-filtering on 2026-09-02"
 }

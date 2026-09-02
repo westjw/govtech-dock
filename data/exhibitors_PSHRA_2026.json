@@ -238,12 +238,6 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Sponsorship Opportunities",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "TestCompany1",
    "website": null,
    "is_govtech": false,
@@ -289,5 +283,6 @@
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "good",
+ "restaged": "51 -> 50 names after re-filtering on 2026-09-02"
 }

@@ -57,6 +57,27 @@ const API = "http://127.0.0.1:8787";
    to throw away work. */
 const QUEUE = "pending_captures";
 const QUEUE_MAX = 200;
+/* A capture the admin SAW AND REFUSED is not retried - it is kept here with
+   the admin's own words, so it is neither re-sent forever nor silently gone.
+   The panel reports the count; the body stays so a person can look. */
+const REFUSED = "refused_captures";
+const REFUSED_MAX = 50;
+
+/* One at a time. enqueue() and drain() both read-modify-write the same key,
+   and a capture arriving while a drain is mid-flight was either posted twice
+   or overwritten out of the queue. A promise chain serialises them. */
+let chain = Promise.resolve();
+const serial = (fn) => {
+  const run = chain.then(fn, fn);
+  chain = run.catch(() => {});
+  return run;
+};
+
+function flash(text, colour) {
+  chrome.action.setBadgeText({ text });
+  chrome.action.setBadgeBackgroundColor({ color: colour });
+  setTimeout(() => chrome.action.setBadgeText({ text: "" }), 2600);
+}
 
 const unreachable = (e) =>
   /failed to fetch|networkerror|load failed|network error/i
@@ -67,37 +88,57 @@ async function queued() {
   return got[QUEUE] || [];
 }
 
-async function enqueue(body) {
-  const q = await queued();
-  if (q.length >= QUEUE_MAX) return { held: q.length, full: true };
-  q.push({ body, at: Date.now() });
-  await chrome.storage.local.set({ [QUEUE]: q });
-  return { held: q.length, full: false };
+function enqueue(body) {
+  return serial(async () => {
+    const q = await queued();
+    if (q.length >= QUEUE_MAX) return { held: q.length, full: true };
+    q.push({ body, at: Date.now() });
+    await chrome.storage.local.set({ [QUEUE]: q });
+    return { held: q.length, full: false };
+  });
+}
+
+async function refuse(item, r) {
+  const got = await chrome.storage.local.get(REFUSED);
+  const list = got[REFUSED] || [];
+  list.push({ body: item.body, at: item.at, status: r.status,
+              error: (r.data && r.data.error) || ("HTTP " + r.status),
+              refused_at: Date.now() });
+  while (list.length > REFUSED_MAX) list.shift();
+  await chrome.storage.local.set({ [REFUSED]: list });
 }
 
 /* Send what is waiting. Stops at the first connection failure rather than
-   working through the whole queue against a port that is still shut. */
-async function drain() {
-  const q = await queued();
-  if (!q.length) return 0;
-  const left = [];
-  let sent = 0;
-  for (let i = 0; i < q.length; i++) {
-    try {
-      let r = await call({ path: "/api/capture", body: q[i].body }, false);
-      if (r.status === 403) r = await call({ path: "/api/capture", body: q[i].body }, true);
-      if (r.status < 400) { sent++; continue; }
-      left.push(q[i]);                  // refused: keep it, never silently drop
-    } catch (e) {
-      left.push(q[i]);
-      if (unreachable(e)) { for (let j = i + 1; j < q.length; j++) left.push(q[j]); break; }
+   working through the whole queue against a port that is still shut.
+
+   THREE OUTCOMES, NOT TWO. Sent: gone from the queue. Unreachable: kept, and
+   everything behind it kept too. REFUSED - the admin answered 4xx or 5xx -
+   moved to the refused list with the reason. The first version put a refusal
+   back on the queue, so a capture for a company merged away since the click
+   was re-sent on every flush, forever, and the person saw nothing. */
+function drain() {
+  return serial(async () => {
+    const q = await queued();
+    if (!q.length) return { sent: 0, refused: 0 };
+    const left = [];
+    let sent = 0, refused = 0;
+    for (let i = 0; i < q.length; i++) {
+      try {
+        let r = await call({ path: "/api/capture", body: q[i].body }, false);
+        if (r.status === 403) r = await call({ path: "/api/capture", body: q[i].body }, true);
+        if (r.status < 400) { sent++; continue; }
+        await refuse(q[i], r);
+        refused++;
+      } catch (e) {
+        left.push(q[i]);
+        if (unreachable(e)) { for (let j = i + 1; j < q.length; j++) left.push(q[j]); break; }
+      }
     }
-  }
-  await chrome.storage.local.set({ [QUEUE]: left });
-  return sent;
+    await chrome.storage.local.set({ [QUEUE]: left });
+    if (refused) flash(String(refused), "#a3342a");
+    return { sent, refused };
+  });
 }
-
-
 
 let auth = null;                     // {header, token} for this worker's life
 
@@ -140,8 +181,9 @@ chrome.runtime.onMessage.addListener((msg, _sender, respond) => {
          queue, so a search that happens to be the first call after the admin
          starts is what flushes the backlog - which is fine, and means the
          panel is usually already open when it lands. */
-      const flushed = r.status < 400 ? await drain() : 0;
-      respond({ ok: r.status < 400, status: r.status, data: r.data, flushed });
+      const d = r.status < 400 ? await drain() : { sent: 0, refused: 0 };
+      respond({ ok: r.status < 400, status: r.status, data: r.data,
+                flushed: d.sent, refused: d.refused });
     } catch (e) {
       /* Unreachable and a capture: keep it rather than lose it. Anything
          else - a refusal, a bad token, a search we could not run - is
@@ -156,6 +198,13 @@ chrome.runtime.onMessage.addListener((msg, _sender, respond) => {
               error: `The admin is not running, so this is being held `
                    + `(${q.held} waiting). Start it and they will send: `
                    + `python3 scripts/admin.py` });
+        return;
+      }
+      /* Not a capture, and the admin is off: say that in words. Chrome's
+         own "Failed to fetch" told the person nothing about what to do. */
+      if (unreachable(e)) {
+        respond({ ok: false, error: "The admin is not running. Start it in "
+                  + "the repo - python3 scripts/admin.py - then click again." });
         return;
       }
       respond({ ok: false, error: String((e && e.message) || e) });
@@ -189,12 +238,6 @@ const NO_INJECT = new RegExp(
   "^(chrome|chrome-extension|chrome-untrusted|devtools|view-source|about|edge|"
   + "moz-extension|file):|"
   + "^https?://(chrome\\.google\\.com/webstore|chromewebstore\\.google\\.com)", "i");
-
-function flash(text, colour) {
-  chrome.action.setBadgeText({ text });
-  chrome.action.setBadgeBackgroundColor({ color: colour });
-  setTimeout(() => chrome.action.setBadgeText({ text: "" }), 2600);
-}
 
 chrome.action.onClicked.addListener((tab) => {
   if (!tab || !tab.id || NO_INJECT.test(tab.url || "")) {

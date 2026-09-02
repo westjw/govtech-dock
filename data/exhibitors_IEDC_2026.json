@@ -66,12 +66,6 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Plan Your Trip",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Resimplifi",
    "website": "https://resimplifi.com/"
   },
@@ -113,5 +107,6 @@
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "good",
+ "restaged": "19 -> 18 names after re-filtering on 2026-09-02"
 }

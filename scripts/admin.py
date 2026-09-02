@@ -27,6 +27,7 @@ import collections
 import contextlib
 import csv
 import datetime as dt
+import hashlib
 import http.server
 import io
 import ipaddress
@@ -243,8 +244,17 @@ def validate(companies: list) -> str | None:
     schema = read("schema.json", {"sectors": []})
     cats = {s["name"]: set(s["categories"]) for s in schema["sectors"]}
     seen = set()
+    this_year = dt.date.today().year
     for c in companies:
         who = c.get("name", "?")
+        # AN INTEGER OR NOTHING. Two appliers once wrote str(year); validate()
+        # let it through and the next selftest failed on a file every write
+        # had approved. The invariant lives here now, where the write is.
+        y = c.get("year_founded")
+        if y is not None and not (isinstance(y, int) and not isinstance(y, bool)
+                                  and 1800 <= y <= this_year):
+            return (f"{who}: year_founded must be a whole year between 1800 and "
+                    f"{this_year}, or null - got {y!r}")
         for f in ("id", "name", "sector", "category", "ats", "hiring"):
             if c.get(f) in (None, ""):
                 return f"{who}: missing {f}"
@@ -3517,6 +3527,17 @@ def act_capture(body: dict) -> dict:
     man = read("manual.json", {"checks": {}, "postings": []})
     today = dt.date.today().isoformat()
     existing = {p["id"] for p in man["postings"]}
+    # THE SAME KEY THE BOARD USES. build_board re-keys every manual row by
+    # posting_id(company, title, url, location), so two requisitions with one
+    # title - an Account Executive in Austin and one in Denver - are two rows
+    # there. This keyed on company::title alone and kept the first, which is
+    # the Xplor trap in reverse: not one advertisement counted 93 times, but
+    # 93 advertisements counted once. The extension already dedups on the
+    # link; this matches it. A row with no link and no location keeps the
+    # plain key, so nothing already on file changes id.
+    signatures = {(p.get("company_id"), p.get("title"),
+                   (p.get("url") or "").strip(), (p.get("location") or "").strip())
+                  for p in man["postings"]}
     added = 0
     suspect = []
     for j in raw:
@@ -3525,10 +3546,18 @@ def act_capture(body: dict) -> dict:
             continue
         if _reads_like_nav(title):
             suspect.append(title)
+        loc = (j.get("location") or "").strip()
+        url = (j.get("url") or body.get("page_url") or "").strip()
+        if (cid, title, url, loc) in signatures:
+            continue
         pid = f"{cid}::{title}"
         if pid in existing:
-            continue
-        loc = (j.get("location") or "").strip()
+            # A same-titled posting already on file with a DIFFERENT link or
+            # place. A second row, keyed by what makes it different.
+            pid += "::" + hashlib.sha1(f"{url}|{loc}".encode()).hexdigest()[:8]
+            if pid in existing:
+                continue
+        signatures.add((cid, title, url, loc))
         terr = roles.territory(loc, title)
         # The extension's single-posting mode sends the JD body - the thing the
         # board never has and scoring always wants. Kept on the manual record
@@ -3543,7 +3572,7 @@ def act_capture(body: dict) -> dict:
             "states": terr["states"], "region": terr["region"],
             "work_mode": terr["work_mode"],
             "location": loc, "is_us": roles.is_us(loc, title),
-            "url": j.get("url") or body.get("page_url"),
+            "url": url or None,
             "sector": c["sector"], "category": c["category"],
             "first_seen": today,
             "captured_from": body.get("page_url"),
@@ -3887,8 +3916,13 @@ def act_task_note(body: dict) -> dict:
         return {"error": f"a {kind} note needs a value"}
     if kind in ("board", "website") and not value.startswith(("http://", "https://")):
         return {"error": "that does not look like an address"}
-    if kind == "founded" and not re.fullmatch(r"(1[89]|20)\d\d", value):
-        return {"error": "a founding year is four digits between 1800 and 2099"}
+    if kind == "founded":
+        # THE SAME CEILING act_set_founded USES. This once accepted 2027-2099,
+        # which the founded action refuses and validate() now refuses too, so
+        # the note would have sat pending forever with no way to land.
+        this_year = dt.date.today().year
+        if not (value.isdigit() and 1800 <= int(value) <= this_year):
+            return {"error": f"a founding year is four digits between 1800 and {this_year}"}
 
     path = DATA / "task_notes.json"
     try:

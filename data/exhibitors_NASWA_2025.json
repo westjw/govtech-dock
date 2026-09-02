@@ -24,12 +24,6 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "Bylaws",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Calendar",
    "website": null,
    "is_govtech": false,
@@ -102,12 +96,6 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Member Benefits",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Multistate Data Collaborative",
    "website": null,
    "is_govtech": true,
@@ -145,12 +133,6 @@
   },
   {
    "name": "News Releases",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Newsletter",
    "website": null,
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
@@ -265,5 +247,6 @@
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "good",
+ "restaged": "43 -> 40 names after re-filtering on 2026-09-02"
 }
