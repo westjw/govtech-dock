@@ -34,7 +34,7 @@
  * as an encrypted variable. Without either, this endpoint reports that it is
  * not configured - it never pretends a signup landed.
  */
-import { SITE, FROM } from "../_brand.js";
+import { SITE, FROM, NAME } from "../_brand.js";
 const MAX_SAVED = 500;          // a person's shortlist, not a scrape target
 const MAX_ID = 300;
 const CONFIRM_COOLDOWN = 3600;  // seconds between confirmation mails per address
