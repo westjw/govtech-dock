@@ -510,6 +510,399 @@ SALARY_RAW_CASES = [
 ]
 
 
+
+def check_company_counts_are_roles_not_postings():
+    """The company page's counters must count openings, never postings.
+
+    ONE OPENING ADVERTISED IN SIX CITIES IS SIX POSTINGS AND ONE JOB. The stat
+    strip's headline is o.open_roles, which the builder dedupes by opening_id.
+    The first render of the turn-6 layout put a posting count beside it and
+    Motorola Solutions read:
+
+        357  OPEN ROLES
+        +393 in the last 30 days
+
+    which is not a rounding difference, it is an impossibility on its face. A
+    reader can only conclude one of the two numbers is wrong, and has no way
+    to tell which.
+
+    THIS CHECK DRIVES THE CALLER AS WELL AS THE HELPER, because the first
+    version of it did not and three of seven mutations walked straight past.
+    A perfect coRoles is worth nothing if co() counts the delta inline again,
+    and that is the exact shape of the bug this file has now caught four
+    separate times: a guard that proves a helper works while the call site
+    that uses it quietly stops calling it. So co()'s body must not name
+    first_seen at all - every date-based count in it goes through coRoles or
+    it does not happen.
+
+    THE FIXTURES ARE BUILT TO SEPARATE THE TWO UNITS, not to look plausible.
+    Nine postings over three openings: a posting counter answers 9 and an
+    opening counter answers 3. Then a second fixture where the two units
+    disagree about the ANSWER and not just the number - five quota postings
+    over one quota opening, which reads as a sales floor being built if you
+    count postings and as ordinary backfill if you count jobs. The first
+    version asserted on a substring and the fixture's own region count
+    supplied the digit it was looking for, so the assertions here are exact.
+
+    node is not a project dependency. If it is absent the check says so and
+    passes: a missing tool is not a broken board.
+    """
+    import shutil, subprocess, json as _json
+
+    html = (ROOT / "index.html").read_text()
+    errors = 0
+
+    # ---- the caller ---------------------------------------------------
+    ca = html.find("function co(id,fromUrl){")
+    cb = html.find("function toggleSaveCompany(")
+    if ca < 0 or cb < 0 or cb <= ca:
+        return fail("index.html: could not find co() to check what it counts")
+    body = html[ca:cb]
+    # first_seen may be READ (coAge stamps one posting with its own age); it
+    # may not be COUNTED. So every occurrence has to be an argument to coAge,
+    # and any counting spelling - a filter, a reduce, a hand-rolled loop -
+    # necessarily reads it somewhere else.
+    import re as _re
+    note_call = _re.search(r"coOpenNote\(([^)]*)\)", body)
+    if note_call is not None and note_call.group(1).count(",") < 2:
+        errors += fail(
+            f"co() calls coOpenNote({note_call.group(1)}) with too few "
+            f"arguments. It needs the postings, the count AND whether the "
+            f"board could be read; without the last one an unreadable zero "
+            f"comes back as 'none seen recently', which files our failed "
+            f"fetch as a fact about their hiring")
+    # THE FIELDS ARE OBJECTS, AND THE HELPERS THAT KNOW THAT ALREADY EXIST.
+    # The company page's role rows shipped reading p.location and p.comp
+    # directly: territory is an object, so every Granicus row rendered
+    # "[object Object]", and comp is an object whose absence carries WHICH
+    # silence it is. locCell and payCell had been getting both right for the
+    # jobs table since the beginning. Reinventing a formatter is how a page
+    # loses a distinction the rest of the board is careful about.
+    rows_at = body.find('class="corow"')
+    if rows_at < 0:
+        errors += fail("index.html: the company page's role rows are gone")
+    else:
+        rows = body[rows_at:rows_at + 1200]
+        if "locCell(" not in rows:
+            errors += fail("the company page's role rows do not call locCell. "
+                           "p.territory is an object and renders as "
+                           "'[object Object]'; p.location is empty on most "
+                           "postings, so a row that reads it directly says "
+                           "nothing about where the job is")
+        if "payCell(" not in rows:
+            errors += fail("the company page's role rows do not call payCell. "
+                           "p.comp is an object, and the dash payCell prints "
+                           "carries which silence it is in its title - a row "
+                           "that prints its own dash throws that away")
+    if "coOpenNote(" not in body:
+        errors += fail("co() no longer calls coOpenNote, so the open-roles "
+                       "evidence line is being written inline again. Every "
+                       "rule about what that number may claim lives in "
+                       "coOpenNote and is worth nothing if the page stops "
+                       "asking it. This repo has now shipped the same shape "
+                       "of bug five times: a guard that proves a helper "
+                       "correct while the call site quietly drops it")
+    # NOT JUST THAT THEY ARE CALLED - THAT THEY ARE TOLD WHETHER THE BOARD
+    # WAS READ. coPhase's refusal is driven by that second argument, and a call
+    # site that stops passing it leaves the helper perfect and the page wrong,
+    # which is this repo's most-repeated bug and the reason both call-site
+    # rules here are written against the arguments and not the name.
+    call = _re.search(r"coPhase\(([^)]*)\)", body)
+    if call is None:
+        errors += fail("co() no longer calls coPhase, so the hiring-phase "
+                       "cell is deciding for itself what a board's history "
+                       "supports")
+    elif "," not in call.group(1):
+        errors += fail(f"co() calls coPhase({call.group(1)}) without telling "
+                       f"it whether the board could be read. Undefined is not "
+                       f"false, so an unreadable board goes back to being "
+                       f"described as quiet")
+    i = body.find("first_seen")
+    while i >= 0:
+        if "coAge(" not in body[max(0, i - 24):i]:
+            near = body[max(0, i - 60):i + 30].strip().replace("\n", " ")
+            errors += fail(
+                f"co() reads first_seen outside coAge: ...{near}... Every "
+                f"date-based COUNT on the company page goes through coRoles, "
+                f"which deduplicates by opening_id; counting inline is how the "
+                f"stat strip came to print '357 open roles, +393 in the last "
+                f"30 days'. Call coRoles(mine, cutoff).size")
+            break
+        i = body.find("first_seen", i + 1)
+
+    # ---- the helpers, executed ----------------------------------------
+    if not shutil.which("node"):
+        note("node not installed; the company-page counters were not executed "
+             "this run (co() was still checked)")
+        return errors
+
+    a = html.find("function coRoles(")
+    b = html.find("function coAge(")
+    if a < 0 or b < 0 or b <= a:
+        return errors + fail(
+            "index.html: coRoles/coPhase are gone, so the company page's "
+            "counters could not be executed. If they were renamed, re-point "
+            "this check; do not delete it")
+    src = html[a:b]
+
+    # 9 postings, 3 openings, 3 cities.
+    spread = [{"id": f"p{i}", "opening_id": oid, "first_seen": "TODAY",
+               "quota_carrying": False, "location": city}
+              for i, (oid, city) in enumerate(
+                  [(o, c) for o in ("op-a", "op-b", "op-c")
+                   for c in ("Austin", "Denver", "Reno")])]
+
+    # A WINDOW LONGER THAN THE RECORD MEASURES US, NOT THEM, so coPhase
+    # refuses to read a 60-day phase off a board we have watched for less
+    # than 60 days. Every phase fixture therefore carries one posting from
+    # 200 days ago to establish that the record is old enough - it sits
+    # outside the 60-day window and so changes no count, only the span.
+    OLD = {"id": "anchor", "opening_id": "op-old", "first_seen": "OLD",
+           "quota_carrying": False, "location": "Austin"}
+
+    mid_fixture = spread + [{"id": "m", "opening_id": "op-m",
+                             "first_seen": "MID", "quota_carrying": False,
+                             "location": "Austin"}]
+
+    # 8 postings, 4 openings, ONE city. Quota: 5 postings, 1 opening.
+    # postings -> 5/8 and 5 >= 3   -> "Building a sales floor"
+    # openings -> 1/4 and 1  < 3   -> "Steady backfill"
+    quota = ([{"id": f"q{i}", "opening_id": "op-a", "first_seen": "TODAY",
+               "quota_carrying": True, "location": "Austin"} for i in range(5)]
+             + [{"id": f"n{i}", "opening_id": f"op-{c}", "first_seen": "TODAY",
+                 "quota_carrying": False, "location": "Austin"}
+                for i, c in enumerate("bcd")])
+
+    script = """
+%s
+const iso = t => new Date(t).toISOString().slice(0,10);
+const today = iso(Date.now()), old = iso(Date.now() - 200*864e5);
+const mid = iso(Date.now() - 20*864e5);
+const stamp = a => a.map(p => ({...p,
+  first_seen: p.first_seen === "OLD" ? old
+            : p.first_seen === "MID" ? mid
+            : p.first_seen === "FORTYFIVE" ? iso(Date.now() - 45*864e5)
+            : p.first_seen === "FIFTYNINE" ? iso(Date.now() - 59*864e5)
+            : today}));
+const spread = stamp(%s), quota = stamp(%s), anchor = stamp([%s]);
+const thin = stamp([{id:"a",opening_id:"o1"},{id:"b",opening_id:"o1"},
+                    {id:"c",opening_id:"o1"},{id:"d",opening_id:"o1"}]);
+console.log(JSON.stringify({
+  all:    coRoles(spread).size,
+  since:  coRoles(spread, Date.now() - 30*864e5).size,
+  before: coRoles(spread, Date.now() + 864e5).size,
+  noId:   coRoles([{id:"solo", first_seen: today}]).size,
+  note:   coPhase(spread.concat(anchor)).note,
+  label:  coPhase(quota.concat(anchor)).value,
+  thin:   coPhase(thin.concat(anchor)).value,
+  // the same postings with NO old anchor: 60 days read off a record that
+  // starts today is the crawl's start date wearing the company's name
+  young:  coPhase(spread).value,
+  span:   coRecordDays(spread.concat(anchor)),
+  undated: coRecordDays([{id:"x", opening_id:"o"}]),
+  // a 20-day record is older than a week and younger than the window, which
+  // is the case a shrunken threshold would wave through
+  midling: coPhase(stamp(%s)).value,
+  // 45 days: past a 30-day threshold, still short of the 60-day window this
+  // phase is read over. Only a record between the two catches a threshold
+  // quietly relaxed to half the window it is supposed to protect.
+  phase45: coPhase(stamp(%s)).value,
+  // 59 days: one day short of the window. Probing 45 caught a threshold
+  // relaxed to 30 but not one relaxed to 50, and chasing each value is a
+  // losing game - a record one day inside the window closes all of them.
+  phase59: coPhase(stamp(%s)).value,
+  // the evidence line under the open-roles number, over every kind of zero
+  // and over a record too young to carry a delta
+  noteYoung: coOpenNote(spread, 3, true),
+  noteAged:  coOpenNote(spread.concat(anchor), 4, true),
+  // 20 days: older than a week, younger than the window. A threshold quietly
+  // shrunk to something the data always clears is the same bug as no
+  // threshold at all, and only a record between the two sizes shows it.
+  noteMid:   coOpenNote(stamp(%s), 4, true),
+  noteUnread: coOpenNote([], 0, false),
+  noteQuiet:  coOpenNote([], 0, true),
+  // an unreadable board, which has no phase rather than a quiet one
+  phaseUnread: coPhase(spread.concat(anchor), false).value,
+  phaseRead:   coPhase(spread.concat(anchor), true).value,
+  // place lives in office and territory on this board, not in p.location,
+  // which is empty on most postings. Three openings across an office state,
+  // a two-state territory and a named region are four places.
+  regions: coPhase(stamp(%s).concat(anchor), true).note,
+}));
+""" % (src, _json.dumps(spread), _json.dumps(quota), _json.dumps(OLD),
+       # POSITIONAL, AND THE ORDER IS THE SCRIPT'S: midling, phase45, noteMid.
+       # Inserting a fixture in the middle once shifted every argument after
+       # it and the failure blamed the wrong assertion.
+       _json.dumps(mid_fixture),
+       _json.dumps(spread + [{"id": "f", "opening_id": "op-f",
+                              "first_seen": "FORTYFIVE", "quota_carrying": False,
+                              "location": "Austin"}]),
+       _json.dumps(spread + [{"id": "n", "opening_id": "op-n",
+                              "first_seen": "FIFTYNINE", "quota_carrying": False,
+                              "location": "Austin"}]),
+       _json.dumps(mid_fixture),
+       _json.dumps([
+           {"id": "r1", "opening_id": "op-r1", "first_seen": "TODAY",
+            "quota_carrying": False, "office": {"state": "CA"}},
+           {"id": "r2", "opening_id": "op-r2", "first_seen": "TODAY",
+            "quota_carrying": False,
+            "territory": {"states": ["TX", "OK"], "stated": True}},
+           {"id": "r3", "opening_id": "op-r3", "first_seen": "TODAY",
+            "quota_carrying": False,
+            "territory": {"states": [], "region": "Midwest", "stated": True}},
+           # a territory the board does NOT vouch for. build_board sets
+           # stated:false when it inferred states rather than reading them,
+           # and an inference is not a place the company said it hires in.
+           {"id": "r4", "opening_id": "op-r4", "first_seen": "TODAY",
+            "quota_carrying": False,
+            "territory": {"states": ["FL"], "stated": False}},
+       ]))
+
+    try:
+        r = subprocess.run(["node", "--input-type=module", "-e", script],
+                           capture_output=True, text=True, timeout=30)
+    except Exception as exc:
+        return errors + fail(f"the company-page counters could not run: {exc}")
+    if r.returncode != 0:
+        return errors + fail(f"the company-page counters threw: "
+                             f"{r.stderr.strip()[:200]}")
+    got = _json.loads(r.stdout)
+
+    if got["all"] != 3:
+        errors += fail(f"coRoles counted {got['all']} over 9 postings carrying "
+                       f"3 opening_ids. It is counting postings, so the stat "
+                       f"strip prints a 30-day delta larger than the number of "
+                       f"roles it sits under")
+    if got["since"] != 3:
+        errors += fail(f"coRoles with a since-date counted {got['since']}, "
+                       f"expected 3 - the '+N in the last 30 days' line is "
+                       f"back in postings")
+    if got["before"] != 0:
+        errors += fail(f"coRoles counted {got['before']} postings first seen "
+                       f"after the cutoff; the date filter is not applied")
+    if got["noId"] != 1:
+        errors += fail("a posting with no opening_id was dropped rather than "
+                       "counted once. Absence of an id is not absence of a job")
+    if not (got["note"] or "").startswith("3 roles opened in 60 days"):
+        errors += fail(f"the hiring-phase evidence reads {got['note']!r}. Over "
+                       f"9 postings carrying 3 openings it must open with "
+                       f"'3 roles opened in 60 days'. Counting postings there, "
+                       f"or calling them reqs, lets a posting count wear a "
+                       f"job's name in the one line a reader checks the label "
+                       f"against")
+    if got["label"] != "Steady backfill":
+        errors += fail(f"a company with 5 postings of ONE quota opening and 3 "
+                       f"other openings was called {got['label']!r}. Counted "
+                       f"as jobs it is 1 quota role in 4, which is backfill; "
+                       f"only a posting count makes it a sales floor being "
+                       f"built. The page would name a hiring phase that is "
+                       f"not happening")
+    if got["young"] != "Not enough history to read":
+        errors += fail(
+            f"a board first read TODAY was given the hiring phase "
+            f"{got['young']!r} off a 60-day window. Motorola Solutions went "
+            f"from 38 readable postings to 393 in one night because the crawl "
+            f"widened, not because they opened 355 jobs; read over a record "
+            f"that does not span the window, that is our start date wearing "
+            f"their hiring's name. The phase must refuse until the record is "
+            f"as old as the window")
+    if got["span"] != 200:
+        errors += fail(f"coRecordDays answered {got['span']} for a board whose "
+                       f"oldest sighting is 200 days old. The span is what "
+                       f"decides whether a window can be read at all")
+    if got["undated"] is not None:
+        errors += fail(f"coRecordDays answered {got['undated']!r} for postings "
+                       f"carrying no date. No record is not a record of zero "
+                       f"length; null is the honest answer and the callers "
+                       f"branch on it")
+    if got["midling"] != "Not enough history to read":
+        errors += fail(
+            f"a board on file for 20 days was given the hiring phase "
+            f"{got['midling']!r} off a 60-day window. The threshold is the "
+            f"window: a record shorter than what is being measured over "
+            f"cannot produce the measurement, and 20 days is not 60")
+    if got["noteYoung"] != "first read here 0 days ago" \
+            and not got["noteYoung"].startswith("first read here"):
+        errors += fail(
+            f"the open-roles evidence over a record that starts today reads "
+            f"{got['noteYoung']!r}. It must say how long we have been reading "
+            f"the board. Motorola Solutions went from 38 readable postings to "
+            f"393 in one night because the crawl widened; printed against a "
+            f"fixed 30-day window that became '+357 in the last 30 days', "
+            f"which is our start date wearing their hiring's name")
+    if got["noteAged"] != "+3 first read in the last 30 days":
+        errors += fail(
+            f"the open-roles evidence over a 200-day record reads "
+            f"{got['noteAged']!r}, expected '+3 first read in the last 30 "
+            f"days'. Three things have to hold at once: the delta counts "
+            f"openings not postings, it only appears once the record spans "
+            f"the window, and it says FIRST READ - we are not told when a job "
+            f"was posted, only when we saw it")
+    if got["phase45"] != "Not enough history to read":
+        errors += fail(
+            f"a board on file for 45 days was given the hiring phase "
+            f"{got['phase45']!r} off a 60-day window. The threshold has to BE "
+            f"the window. Relaxed to half of it, the phase reads 60 days of "
+            f"hiring off 45 days of watching and the missing fortnight is "
+            f"invented as quiet")
+    if got["regions"] != "4 roles opened in 60 days \u00b7 4 regions":
+        errors += fail(
+            f"the hiring-phase evidence over three openings across an office "
+            f"state, a two-state territory and a named region reads "
+            f"{got['regions']!r}, expected '4 roles opened in 60 days \u00b7 "
+            f"4 regions' - the fourth opening carries an UNSTATED territory, "
+            f"which build_board marks that way because it inferred the states "
+            f"rather than reading them, and an inference is not a place the "
+            f"company said it hires in. Place lives in office and territory; "
+            f"p.location is empty on most postings, so counting it alone "
+            f"reports one region for a company hiring across nine states - "
+            f"and the region count is what decides 'Regional push'")
+    if got["phase59"] != "Not enough history to read":
+        errors += fail(
+            f"a board on file for 59 days was given the hiring phase "
+            f"{got['phase59']!r}. The threshold is the window, exactly: one "
+            f"day short of 60 is short of 60, and every relaxed threshold "
+            f"reads days nobody watched as days nothing happened")
+    if got["noteMid"] != "first read here 20 days ago":
+        errors += fail(
+            f"the open-roles evidence over a 20-day record reads "
+            f"{got['noteMid']!r}, expected 'first read here 20 days ago'. "
+            f"20 days is older than a week and younger than the 30-day "
+            f"window: a threshold shrunk to something the data always clears "
+            f"is the same bug as no threshold at all")
+    if got["noteUnread"] != "not measured":
+        errors += fail(
+            f"a zero from a board that could not be read reads "
+            f"{got['noteUnread']!r}. Nobody looked, so nothing was seen, and "
+            f"saying 'none seen recently' files our failure to fetch as a "
+            f"fact about their hiring")
+    if got["noteQuiet"] != "none seen recently":
+        errors += fail(
+            f"a zero from a board we DID read reads {got['noteQuiet']!r}. "
+            f"A read board with no roles is a real measurement and should "
+            f"say so; collapsing it into 'not measured' throws away the one "
+            f"case where the zero means something")
+    if got["phaseUnread"] != "Not measured":
+        errors += fail(
+            f"a company whose board could not be read was given the hiring "
+            f"phase {got['phaseUnread']!r}. Any phrasing about openings "
+            f"asserts that openings were counted, and nobody could count "
+            f"them. Indigov shipped with 'Too few openings to read' one "
+            f"column from a Source cell reading 'Board unreadable' - the "
+            f"strip contradicting itself in four inches")
+    if got["phaseRead"] == "Not measured":
+        errors += fail(
+            "a readable board was also called 'Not measured', so the phase "
+            "cell has stopped reading anything. Refusing every board is not "
+            "caution, it is the same failure in the other direction")
+    if got["thin"] != "Too few openings to read":
+        errors += fail(f"four postings of a SINGLE opening were read as a "
+                       f"hiring phase ({got['thin']!r}). That is one job. The "
+                       f"floor is 3 roles and it has to be measured in roles, "
+                       f"or one job posted in four cities reads as a trend")
+    return errors
+
+
 def check_salary() -> int:
     errors = 0
     for text, expected in SALARY_CASES:
@@ -6518,15 +6911,19 @@ def check_an_unread_board_is_not_a_zero() -> int:
                        "explanation - the same silence-as-fact this board "
                        "refuses everywhere else")
 
-    j = html.find('<div class="lbl">open roles</div>')
-    if j < 0:
-        errors += fail("index.html: the open-roles counter is gone")
-    else:
-        window = html[max(0, j - 700):j]
-        if "unreadable" not in window:
-            errors += fail("the open-roles counter shows a number without "
-                           "checking o.unreadable, so an unread board reports "
-                           "0 open roles as if that were measured")
+    # THE RULE OUTLIVED TWO ANCHORS, WHICH IS THE ARGUMENT FOR EXECUTING IT.
+    # This scanned markup for a counter that the turn-6 rebuild turned into a
+    # stat cell, then scanned the stat cell for a branch that moved into
+    # coOpenNote. Both times the rule was right and the anchor was stale. The
+    # rule itself has never changed: a zero from a board nobody could read
+    # must not carry evidence claiming somebody looked. It is asserted against
+    # the real function now, in check_company_counts_are_roles_not_postings,
+    # which runs coOpenNote under node over both kinds of zero.
+    if html.find("function coOpenNote(") < 0:
+        errors += fail("index.html: coOpenNote is gone. It is the only place "
+                       "that decides what the open-roles count is allowed to "
+                       "claim; if it was renamed, re-point the checks rather "
+                       "than dropping the rule")
     return errors
 
 
@@ -9940,6 +10337,7 @@ def main() -> int:
                 f"ats.card_fields({lines!r}) = {(title, loc, pay)!r}, "
                 f"expected {(w_title, w_loc, w_pay)!r}")
     errors += check_board()
+    errors += check_company_counts_are_roles_not_postings()
     errors += check_salary()
     # What survives a job description, and what must not. Checked against the
     # function rather than the file, so the rule holds even when board.json on

@@ -44,6 +44,162 @@
     --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7; --dim:#A8BCCA;
     --faint:#7C97AA; --accent:#478EF5; --warn:#E46855; --bad:#E46855;
     --beak:#F5A623; --chip:#2E3852; }}
+  /* ---------------------------------------------- company page (turn 6)
+     THE NINE TOKENS THE BUILD SPEC NAMES, and only these. They are scoped to
+     .copage rather than :root because the spec's ground (#151B29) is a step
+     deeper than the site's Penguin (#1F2536) - one page reads darker on
+     purpose - and pushing that onto :root would restyle every other screen.
+     Light mode swaps the same nine by token, never by redesign: same
+     geometry, same rules, same weights.
+
+     They derive from the mascot kit rather than replacing it. --accent is
+     Beanie and stays Beanie in both themes because a fill does not need to
+     lighten; --accent-text is Beanie lifted until it clears AA on the dark
+     ground, which is the same move brand.json already documents for Badge. */
+  .copage{
+    --c-bg:#FAF7F0; --c-rule:#C9DCE8; --c-stroke:#1F2536;
+    --c-ink:#1F2536; --c-ink2:#556F82; --c-ink3:#7C97AA;
+    --c-accent:#C1341F; --c-accent-text:#C1341F; --c-link:#0B57C4;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .copage{
+    --c-bg:#151B29; --c-rule:#2E3A50; --c-stroke:#4A5C71;
+    --c-ink:#E8F1F7; --c-ink2:#A9C3D4; --c-ink3:#7C97AA;
+    --c-accent:#C1341F; --c-accent-text:#E4634A; --c-link:#9CC3FF;
+  }}
+  .copage{background:var(--c-bg);color:var(--c-ink);
+    margin:0 -20px -40px;padding:0 20px 48px;min-height:70vh}
+  .copage a{color:var(--c-link)}
+  /* one measure for the whole page, so nothing is centred against a
+     different edge than the block above it */
+  .cowrap{max-width:1000px;margin:0 auto}
+  .cocrumb{font-size:11px;line-height:1.5;color:var(--c-ink3);
+    padding:14px 0 10px;font-variant-numeric:tabular-nums}
+  .cocrumb a{color:var(--c-ink2);text-decoration:none}
+  .cocrumb a:hover{text-decoration:underline}
+  .cocrumb .sep{padding:0 7px;color:var(--c-rule)}
+  /* identity */
+  .coid{display:flex;gap:16px;align-items:flex-start;padding:2px 0 18px}
+  .coid .logo{width:56px;height:56px;flex:none;display:grid;place-items:center;
+    font:800 22px/1 var(--font-heading);background:#E8F1F7;color:#1F2536}
+  .coid h1{font-size:30px;line-height:1;letter-spacing:-.025em;margin:0 0 8px}
+  .cometa{font-size:11px;line-height:1.5;color:var(--c-ink3);
+    font-variant-numeric:tabular-nums}
+  .cometa .sep{padding:0 8px;color:var(--c-rule)}
+  .cometa a{color:var(--c-ink2)}
+  .coacts{margin-left:auto;display:flex;gap:8px;flex:none}
+  .cobtn{font:800 11px/1 var(--font-heading);padding:10px 14px;cursor:pointer;
+    border:1px solid var(--c-stroke);background:none;color:var(--c-ink)}
+  .cobtn.fill{background:var(--c-accent);border-color:var(--c-accent);color:#FAF7F0}
+  .cobtn.on{background:none;border-color:var(--c-stroke);color:var(--c-ink2)}
+  .cobtn:focus-visible{outline:2px solid var(--c-accent-text);outline-offset:2px}
+  /* stat strip: on the grid, not four cards */
+  .costrip{display:flex;border-top:2px solid var(--c-rule);
+    border-bottom:2px solid var(--c-rule);margin:0 0 30px}
+  .costrip>div{padding:18px 0 16px;padding-right:22px}
+  .costrip>div+div{border-left:1.5px solid var(--c-rule);padding-left:22px}
+  .costrip .v{font:800 34px/1 var(--font-heading);letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums}
+  .costrip .v.txt{font-size:17px;line-height:1.2;letter-spacing:-.01em}
+  .costrip .v.dim{color:var(--c-ink3)}
+  .costrip .v.acc{color:var(--c-accent-text)}
+  .costrip dt{font:800 9.5px/1 var(--font-heading);letter-spacing:.16em;
+    text-transform:uppercase;color:var(--c-ink3);margin:10px 0 7px}
+  .costrip dd{margin:0;font-size:11px;line-height:1.5;color:var(--c-ink2);
+    font-variant-numeric:tabular-nums}
+  /* the two columns */
+  .cobody{display:flex;gap:40px;align-items:flex-start}
+  .cocol{flex:1;min-width:0}
+  .corail{width:262px;flex:none}
+  .cosec{margin:0 0 30px}
+  .cosec>h2{font:800 15px/1 var(--font-heading);display:inline}
+  .cosec .smeta{font-size:11px;color:var(--c-ink3);padding-left:10px}
+  .cosechd{display:flex;align-items:baseline;gap:0;
+    border-bottom:1px solid var(--c-rule);padding-bottom:9px;margin-bottom:14px}
+  .cosechd .chips{margin-left:auto;display:flex;gap:5px}
+  .cochip{font:800 9.5px/1 var(--font-heading);letter-spacing:.1em;
+    text-transform:uppercase;padding:6px 9px;cursor:pointer;
+    border:1px solid var(--c-rule);background:none;color:var(--c-ink3)}
+  .cochip[aria-checked=true]{color:var(--c-ink);border-color:var(--c-stroke)}
+  .coabout p{font-size:13px;line-height:1.65;max-width:560px;margin:0 0 13px;
+    color:var(--c-ink)}
+  .coabout .more{color:var(--c-ink3)}
+  .coquote{border-left:1.5px solid var(--c-rule);padding-left:14px;
+    margin:16px 0 0;font-style:italic;font-size:13px;line-height:1.6;
+    color:var(--c-ink2);max-width:560px}
+  .coquote .src{font-style:normal;font-size:11px;color:var(--c-ink3)}
+  /* news */
+  .conews{max-height:262px;overflow:auto;position:relative}
+  .conewsw{position:relative}
+  .conewsw .fade{position:absolute;left:0;right:0;bottom:0;height:54px;
+    pointer-events:none;background:linear-gradient(transparent,var(--c-bg))}
+  .conews .row{display:flex;gap:0;padding:11px 0;
+    border-bottom:1px solid var(--c-rule);align-items:baseline}
+  .conews .d{width:62px;flex:none;font-size:11px;color:var(--c-ink3);
+    font-variant-numeric:tabular-nums}
+  .conews .k{width:84px;flex:none;font:800 9.5px/1 var(--font-heading);
+    letter-spacing:.16em;text-transform:uppercase;color:var(--c-ink2)}
+  .conews .k.contract{color:var(--c-accent-text)}
+  .conews .t{flex:1;min-width:0;font-size:12.5px;line-height:1.5}
+  .conews .t b{font-weight:800}
+  .conews .t .sub{display:block;color:var(--c-ink2);font-size:11px;
+    line-height:1.5;margin-top:3px}
+  .conews .s{flex:none;padding-left:14px;font-size:11px}
+  /* roles */
+  .cogrp{margin:0 0 14px}
+  .cogrph{display:flex;align-items:baseline;gap:10px;padding:9px 0;
+    border-bottom:1px solid var(--c-rule)}
+  .cogrph h3{font:800 13px/1 var(--font-heading)}
+  .cogrph .n{font-size:11px;color:var(--c-ink3);margin-left:auto}
+  .corow{display:flex;align-items:baseline;padding:9px 0;
+    border-bottom:1px solid var(--c-rule);font-size:12.5px;line-height:1.5}
+  .corow .ti{flex:1;min-width:0;font-weight:800}
+  .corow .lo{width:120px;flex:none;color:var(--c-ink2);font-size:11px}
+  .corow .pa{width:118px;flex:none;color:var(--c-ink2);font-size:11px;
+    font-variant-numeric:tabular-nums}
+  .corow .ag{width:52px;flex:none;color:var(--c-ink3);font-size:11px;
+    font-variant-numeric:tabular-nums}
+  .corow .sv{width:46px;flex:none;text-align:right}
+  .comore{font-size:11px;padding:9px 0;display:inline-block}
+  /* the empty block */
+  .coempty{display:flex;gap:20px;align-items:flex-start;padding:22px 0 4px}
+  .coempty img{width:96px;flex:none;opacity:.85}
+  .coempty h3{font:800 15px/1.2 var(--font-heading);margin:0 0 8px}
+  .coempty p{font-size:12.5px;line-height:1.6;color:var(--c-ink2);
+    max-width:52ch;margin:0 0 14px}
+  /* rail */
+  .corail section{margin:0 0 26px}
+  .corail h2{font:800 9.5px/1.35 var(--font-heading);letter-spacing:.16em;
+    text-transform:uppercase;color:var(--c-ink3);
+    border-bottom:1px solid var(--c-rule);padding-bottom:8px;margin-bottom:4px}
+  .corail .r{display:flex;align-items:baseline;gap:8px;padding:9px 0;
+    border-bottom:1px solid var(--c-rule);font-size:12.5px;line-height:1.45}
+  .corail .r .d{display:block;font-size:11px;color:var(--c-ink3);margin-top:3px}
+  .corail .r .n{margin-left:auto;font-size:11px;color:var(--c-ink2);
+    font-variant-numeric:tabular-nums;flex:none}
+  .corail .tag{margin-left:auto;font:800 9.5px/1 var(--font-heading);
+    letter-spacing:.14em;text-transform:uppercase;color:var(--c-accent-text);
+    flex:none}
+  .corail .note{font-size:11px;line-height:1.5;color:var(--c-ink3);
+    padding-top:9px}
+  .corail .all{font-size:11px;padding-top:9px;display:inline-block}
+  .coclaim{border:1px solid var(--c-stroke);padding:16px}
+  .coclaim.urgent{border-color:var(--c-accent-text)}
+  .coclaim h3{font:800 13px/1.2 var(--font-heading);margin:0 0 8px}
+  .coclaim p{font-size:11.5px;line-height:1.55;color:var(--c-ink2);margin:0 0 13px}
+  .coprov{font-size:10.5px;line-height:1.5;color:var(--c-ink3)}
+  .corail .cobtn{font-size:10.5px;padding:8px 12px}
+  @media (max-width:1080px){.corail{width:220px}}
+  @media (max-width:900px){
+    .cobody{display:block}
+    .corail{width:auto;margin-top:34px}
+    .costrip{flex-wrap:wrap}
+    .costrip>div{flex:1 1 46%!important}
+    .costrip>div:nth-child(3){border-left:0;padding-left:0}
+    .corow{flex-wrap:wrap}
+    .corow .ti{flex:1 1 100%}
+    .corow .lo{width:auto;order:3;flex:1 1 60%}
+    .corow .sv .cobtn{min-height:44px}
+  }
   *{box-sizing:border-box}
   /* Asserted once, here, rather than remembered on forty rules. A single
      rounded corner anywhere on the page is the thing that breaks the system. */
@@ -4307,212 +4463,360 @@ function brandSection(o){
   </div>`;
 }
 
-function co(id,fromUrl){
-  const o=D.organizations.find(x=>x.id===id);
-  /* A company id that is not on the board any more - a merged-away record, a
-     link shared before a rename - says so rather than silently showing the
-     board under the same address, which is the same rule the dropped-filter
-     notice follows. */
-  if(!o){
-    if(fromUrl){ CO=null; CO_MISSING=id; }
-    return;
+/* ============================================================ company page
+   Build spec, turn 6. One reading column and one reference rail on a 1000px
+   measure; every block a direct child of the page grid and nothing a card.
+
+   THE FOUR STAT CELLS NEVER DISAPPEAR, THEY DIM. That is the whole reason
+   the strip is on the grid rather than in four boxes: a company with nothing
+   open renders the same shape as one with 34 roles, so the eye learns one
+   page instead of two. A zero is a fact and it is printed as one.
+
+   AND THE READABILITY WARNING APPEARS IN EXACTLY TWO PLACES: the Source cell
+   and the empty block. Never as a banner, never as a pill beside a link. It
+   is the same rule the rest of this board runs on - "we could not read it" is
+   said once, where it explains the number, and is never allowed to become
+   decoration.
+
+   WHAT THIS PAGE DOES NOT HAVE YET, and does not invent. The spec's About is
+   three editorial paragraphs plus a quote in the company's words; the record
+   holds one researched line. News, the claim state and per-role salary are
+   not on file at all. Each renders as its own honest absence rather than a
+   placeholder that reads like content - a page that says "no news on file"
+   is true, and lorem in its place would be the one thing this project has
+   never shipped. */
+const NEWS_KINDS=["contract","funding","leadership","product","press"];
+let CO_NEWS_FILTER="all", CO_OPEN_GROUPS=null;
+
+/* The hiring phase is an ENUM and it needs evidence to speak. Three roles
+   opened inside 60 days, or it says so and prints the threshold - the same
+   refusal to guess that keeps a page scan from becoming "None found". */
+/* A ROLE IS NOT A POSTING, AND THE PAGE MUST NOT MIX THE TWO IN ONE SENTENCE.
+   One opening advertised in six cities is six postings and one job. The strip
+   headline is o.open_roles, which is deduped that way, so anything printed
+   beside it has to be counted the same or the page states an impossibility:
+   Motorola read "357 open roles, +393 in the last 30 days" on the first
+   render of this layout, and a reader can only conclude one of the numbers is
+   wrong. Both count distinct openings now, through this one helper, so they
+   cannot drift apart again. Falling back to the posting id keeps a posting
+   with no opening_id counted once rather than dropped. */
+function coRoles(posts,since){
+  const out=new Set();
+  for(const p of posts){
+    if(since!=null){ const t=Date.parse(p.first_seen||""); if(!t||t<since) continue; }
+    out.add(p.opening_id||p.id);
   }
-  /* THE COMPANY GETS AN ADDRESS. 2,113 company records are the largest body
-     of unique writing this project owns and none of them could be linked,
-     shared, indexed or given a share card, because co() never touched the
-     url. Mirrors openRole exactly: pushState so Back undoes it, and the
-     board's own query string is remembered so Back returns to the search you
-     came from rather than a bare board. */
+  return out;
+}
+
+/* HOW FAR BACK THE RECORD ACTUALLY GOES FOR THIS COMPANY, in days, or null
+   when nothing here carries a date.
+
+   A WINDOW LONGER THAN THE RECORD MEASURES US, NOT THEM. Motorola Solutions
+   went from 38 readable postings to 393 in one night - not because they
+   opened 355 jobs, but because the crawl widened and could finally read their
+   board. Rendered against a fixed 30-day window that arrived as "+357 in the
+   last 30 days", which a reader can only read as a hiring surge. The whole
+   board's history starts 2026-08-18, so EVERY posting on file is inside a
+   30-day window and always will be until the record is a month old: a delta
+   that cannot come out any other way is not a measurement.
+
+   The rest of this page has said "first read here" rather than "appeared"
+   since the beginning, for exactly this reason. These two counters are the
+   place that forgot. */
+function coRecordDays(mine){
+  let first=null;
+  for(const p of mine){
+    const t=Date.parse(p.first_seen||"");
+    if(t&&(first===null||t<first)) first=t;
+  }
+  return first===null?null:Math.floor((Date.now()-first)/864e5);
+}
+
+/* The evidence line under the open-roles count, as a function rather than a
+   branch inside a template literal - because a template literal cannot be
+   executed by the selftest, and this is the exact line that printed "+357 in
+   the last 30 days" about a company whose board we had read for one night.
+   A rule worth having is a rule a harness can drive. */
+function coOpenNote(mine,open,readable){
+  if(!open) return readable?"none seen recently":"not measured";
+  const span=coRecordDays(mine);
+  if(span!==null&&span<30)
+    return `first read here ${span===0?"today":`${span} day${span===1?"":"s"} ago`}`;
+  const n=coRoles(mine,Date.now()-30*864e5).size;
+  return n?`+${n} first read in the last 30 days`:"none added in 30 days";
+}
+
+function coPhase(mine,readable){
+  /* A BOARD NOBODY COULD READ HAS NO PHASE, NOT A QUIET ONE. Indigov's board
+     has failed to fetch since 2026-08-19, and this cell said "Too few
+     openings to read", which asserts that openings were counted. The Source
+     cell one column over already said the board was unreadable, so the strip
+     was contradicting itself in the space of four inches. */
+  if(readable===false)
+    return {value:"Not measured",tone:"dim",
+            note:"their board could not be read, so there is nothing here to "
+                 +"read a phase from"};
+  const now=Date.now(), d60=now-60*864e5;
+  const fresh=mine.filter(p=>{const t=Date.parse(p.first_seen||"");return t&&t>=d60});
+  const roles=coRoles(fresh).size;
+  /* the record has to span the window before a trend read over it means
+     anything. 60 days of postings out of 15 days of watching is our start
+     date wearing their hiring's name. */
+  const span=coRecordDays(mine);
+  if(span!==null&&span<60)
+    return {value:"Not enough history to read",tone:"dim",
+            note:`we have only been reading this board for ${span} day`
+                 +`${span===1?"":"s"}, and a 60-day phase needs 60`};
+  if(roles<3)
+    return {value:"Too few openings to read",tone:"dim",
+            note:"we need 3+ roles over 60 days to call it"};
+  /* quota share is measured over roles too, or a quota job posted in ten
+     cities would carry the ratio past the half on its own */
+  const q=coRoles(fresh.filter(p=>p.quota_carrying)).size;
+  /* WHERE A ROLE IS, in the board's own vocabulary. p.location is empty on
+     most postings here - place lives in office and territory - so counting it
+     alone reported "1 region" for a company hiring across nine states. */
+  const places=new Set();
+  for(const p of fresh){
+    if(p.office&&p.office.state){ places.add(p.office.state); continue; }
+    const ter=p.territory;
+    if(ter&&ter.stated){
+      if(ter.states&&ter.states.length) ter.states.forEach(s=>places.add(s));
+      else if(ter.region) places.add(ter.region);
+      continue;
+    }
+    if(p.location) places.add(p.location);
+  }
+  const ev=`${roles} role${roles===1?"":"s"} opened in 60 days`
+    +(places.size>1?` · ${places.size} regions`:"");
+  if(q>=3&&q/roles>=.5) return {value:"Building a sales floor",tone:"acc",note:ev};
+  if(places.size>=3) return {value:"Regional push",tone:"acc",note:ev};
+  return {value:"Steady backfill",tone:"acc",note:ev};
+}
+
+function coAge(iso){
+  const t=Date.parse(iso||""); if(!t) return "";
+  const d=Math.floor((Date.now()-t)/864e5);
+  if(d<1) return "today";
+  if(d<30) return d+"d";
+  return new Date(t).toLocaleDateString(undefined,{month:"short",day:"numeric"});
+}
+
+function co(id,fromUrl){
+  const o=(D.organizations||[]).find(x=>x.id===id);
+  /* a ?co= that names nobody is said on the companies tab, where the reader
+     actually is, rather than into the void from here. */
+  if(!o){ CO_MISSING=id; CO=null; tab="companies"; render(); return; }
+  /* THE COMPANY GETS AN ADDRESS. Mirrors openRole: pushState so Back undoes
+     it, and the board's own query string is remembered so Back returns to the
+     search you came from rather than a bare board. */
   CO=id;
   if(!fromUrl){
     LAST_BOARD_QS=CO?LAST_BOARD_QS:location.search;
     history.pushState({co:id,qs:LAST_BOARD_QS},"",
       location.pathname+"?co="+encodeURIComponent(id));
   }
+  if(CO_OPEN_GROUPS===null) CO_OPEN_GROUPS=new Set();
+
   const mine=D.postings.filter(p=>p.company_id===id);
-  const fam=Object.entries(o.families||{}).sort((a,b)=>b[1]-a[1]);
-  const tot=fam.reduce((n,[,v])=>n+v,0);
-  $("#view").innerHTML=`
-    <p><button onclick="tab='companies';render()" style="background:none;border:0;color:var(--dim);cursor:pointer;font:inherit;padding:0">&larr; back</button></p>
-    <div class="cohead">
-      ${tileHTML(o.name,o.id,"cotile")}
-      <div>
-        <h2 style="margin:0 0 2px;font-size:21px;letter-spacing:-.015em">${esc(o.name)}</h2>
-        <div class="sub">${esc(o.sector)} / ${esc(o.category)}${o.location?" &middot; "+esc(o.location):""}
-          ${o.year_founded?" &middot; founded "+o.year_founded:""}${o.tier?" &middot; tier "+o.tier:""}</div>
+  const open=o.open_roles||0, quota=o.quota_roles||0;
+  const readable=o.enumerable!==false&&!o.unreadable;
+  const phase=coPhase(mine,readable);
+  const saved=isSaved("co:"+id);
+
+  /* --- 03 identity ---------------------------------------------------- */
+  const bits=[o.category,o.location,o.year_founded?"founded "+o.year_founded:"",
+              o.tier?"tier "+o.tier:"",
+              /* claim state is not on file for any company, so the page says
+                 nothing rather than asserting "unclaimed" about 2,057 firms */
+              "",
+              (o.brands&&o.brands.length)?`owns ${o.brands.length} brand${o.brands.length===1?"":"s"}`:"",
+              o.parent?`part of <a href="/?co=${encodeURIComponent(o.parent)}">${esc(o.parent)}</a>`:""
+             ].filter(Boolean);
+
+  /* --- 04 stat strip, four cells, always ------------------------------ */
+  const srcTone=readable?"":"acc";
+  const srcVal=readable?(o.ats?o.ats.charAt(0).toUpperCase()+o.ats.slice(1):"Not on file")
+                       :"Board unreadable";
+  const srcNote=readable
+    ? (o.ats&&o.ats!=="html"&&o.ats!=="unknown"
+        ? `read nightly${open?` · all ${open} readable`:""}`
+        : "a page we scan, not a board we can enumerate")
+    : `${o.ats==="html"?"custom HTML":"their board"} · a person checks it`
+      +(o.board_checked_on?` · last ${esc(o.board_checked_on)}`:"");
+  const strip=`<div class="costrip">
+    <dl style="flex:1"><div class="v${open?"":" dim"}">${open}</div>
+      <div class="lbl">open roles</div>
+      <dt hidden>open roles</dt>
+      <dd>${esc(coOpenNote(mine,open,readable))}</dd></dl>
+    <dl style="flex:1"><div class="v${quota?"":" dim"}">${quota||"&mdash;"}</div>
+      <dt>quota-carrying</dt>
+      <dd>${quota?`${Math.round(quota/open*100)}% of open roles`:"nothing to count"}</dd></dl>
+    <dl style="flex:1.3"><div class="v txt ${phase.tone}">${esc(phase.value)}</div>
+      <dt>hiring phase</dt><dd>${esc(phase.note)}</dd></dl>
+    <dl style="flex:1.1"><div class="v txt ${srcTone}">${esc(srcVal)}</div>
+      <dt>source</dt><dd>${srcNote}</dd></dl>
+  </div>`;
+
+  /* --- 05 reading column ---------------------------------------------- */
+  const dom=(o.website||"").replace(/^https?:\/\//,"").replace(/\/.*$/,"");
+  const about=`<section class="cosec coabout">
+    <div class="cosechd"><h2>About</h2><span class="smeta">${
+      o.researched?"researched by SLED JOBS":"from the record"}${
+      dom?` &middot; checked against ${esc(dom)}`:""}</span></div>
+    <p>${esc(o.description||"")}${o.description&&!/[.!?]$/.test(o.description)?".":""}</p>
+    <p class="more">This is the one-line record. The longer write-up the page is
+      built for &mdash; what they sell, who buys it, named customers &mdash; is
+      not on file for this company yet, so nothing stands in for it.</p>
+  </section>`;
+
+  const news=`<section class="cosec">
+    <div class="cosechd"><h2>News</h2><span class="smeta">none on file</span></div>
+    <p style="font-size:12.5px;line-height:1.6;color:var(--c-ink2);margin:0">
+      No news items have been recorded for this company.
+      <a href="#" onclick="tab='submit';render();return false">Suggest an item</a>.</p>
+  </section>`;
+
+  /* roles, grouped by family, biggest group first */
+  const byFam={};
+  mine.forEach(p=>{ (byFam[p.family||"other"]=byFam[p.family||"other"]||[]).push(p); });
+  const groups=Object.entries(byFam).sort((a,b)=>b[1].length-a[1].length);
+  const roleRows=(rows)=>rows.map(p=>`<div class="corow">
+      <span class="ti"><a href="#" onclick="openRole('${esc(p.id)}');return false"
+        >${esc(p.title)}</a></span>
+      <!-- locCell and payCell, NOT p.location and p.comp. Both fields are
+           structured on this board: territory is an object and rendered
+           "[object Object]" here, and comp is an object whose absence carries
+           WHICH silence it is. Both helpers already existed and already got
+           this right for the jobs table; this row reinvented them and got
+           them wrong in the same commit. -->
+      <span class="lo">${esc(locCell(p))}</span>
+      <span class="pa">${payCell(p)}</span>
+      <span class="ag">${coAge(p.first_seen)}</span>
+      <span class="sv"></span></div>`).join("");
+  let rolesInner;
+  if(!mine.length){
+    rolesInner=`<div class="coempty">${GHOST}
+      <div><h3>No open roles we can see.</h3>
+      <p>${readable
+        ? `Their board is one we read every night and it is empty right now.`
+        : `Their board is live but built in a way we cannot read automatically,
+           so this list may be incomplete. A person checks it${
+           o.board_checked_on?` &mdash; last on ${esc(o.board_checked_on)}`:""}.`}</p>
+      ${o.board_url?`<a class="cobtn" href="${safeUrl(o.board_url)}" target="_blank"
+        rel="noopener">Open their hiring board &#8599;</a> `:""}
+      <button class="cobtn" onclick="alertOnCompany('${esc(id)}')"
+        >Alert me when they post</button></div></div>`;
+  }else{
+    rolesInner=groups.map(([fam,rows],i)=>{
+      const openG=i<2||CO_OPEN_GROUPS.has(fam);
+      const q=rows.filter(r=>r.quota_carrying).length;
+      const shown=openG?rows.slice(0,3):[];
+      return `<div class="cogrp"><div class="cogrph">
+          <h3>${esc(FAM[fam]||fam)}</h3>
+          <span class="n">${rows.length} role${rows.length===1?"":"s"}${
+            q?` &middot; ${q} quota-carrying`:""}</span></div>
+        ${roleRows(shown)}
+        ${openG&&rows.length>3
+          ? `<a class="comore" href="#" onclick="coShowAll('${esc(fam)}');return false"
+              >Show ${rows.length-3} more</a>`
+          : (!openG?`<a class="comore" href="#" onclick="coShowAll('${esc(fam)}');return false"
+              >Expand</a>`:"")}
+      </div>`;}).join("");
+  }
+  const roles=`<section class="cosec">
+    <div class="cosechd"><h2>Open roles</h2><span class="smeta">${
+      mine.length?`${open} on file`:"none on file"}</span></div>
+    ${rolesInner}
+    ${(mine.length&&!readable)?`<p class="coprov" style="padding-top:10px"
+      >This list may be incomplete: their board is not one we can read in full.</p>`:""}
+  </section>`;
+
+  /* --- 06 reference rail ---------------------------------------------- */
+  const sibs=(D.organizations||[])
+    .filter(x=>x.id!==id&&x.sector===o.sector&&x.category===o.category
+              &&!(o.brands||[]).some(b=>b.id===x.id))
+    .sort((a,b)=>(b.open_roles||0)-(a.open_roles||0)).slice(0,5);
+  const rail=`<aside class="corail">
+    <section><h2>Links</h2>
+      ${o.website?`<div class="r"><a href="${safeUrl(o.website)}" target="_blank"
+        rel="noopener">${esc(dom)}</a></div>`:""}
+      ${o.board_url?`<div class="r"><a href="${safeUrl(o.board_url)}" target="_blank"
+        rel="noopener">Their hiring board</a>${
+        readable?"":`<span class="tag">unreadable</span>`}</div>`:""}
+    </section>
+    ${(o.brands&&o.brands.length)?`<section><h2>Brands they own</h2>
+      ${o.brands.map(b=>`<div class="r"><span><a href="/?co=${
+        encodeURIComponent(b.id||"")}">${esc(b.name||b)}</a>${
+        b.descriptor?`<span class="d">${esc(b.descriptor)}</span>`:""}</span>${
+        b.openRoles!=null?`<span class="n">${b.openRoles}</span>`:""}</div>`).join("")}
+      <p class="note">Counts are not rolled up: roles above are each company's own.</p>
+    </section>`:""}
+    ${(o.also&&o.also.length)?`<section><h2>Also filed under</h2>
+      ${o.also.map(a=>`<div class="r"><span>${esc(a.sector)} / ${esc(a.category)}</span></div>`).join("")}
+    </section>`:""}
+    ${sibs.length?`<section><h2>Others in ${esc(o.category)}${
+        open?"":" &middot; hiring now"}</h2>
+      ${sibs.map(x=>`<div class="r"><a href="/?co=${encodeURIComponent(x.id)}"
+        >${esc(x.name)}</a><span class="n">${x.open_roles||0}</span></div>`).join("")}
+      <a class="all" href="#" onclick="tab='companies';render();return false"
+        >All in this category &rarr;</a></section>`:""}
+    <section><p class="coprov">Record last verified${
+      o.board_checked_on?" "+esc(o.board_checked_on):""}${
+      o.researched?" by hand":""}. ${
+      readable&&o.ats&&o.ats!=="html"
+        ? `Roles read from ${esc(o.ats)} nightly.`
+        : "Roles are checked by hand."}</p></section>
+  </aside>`;
+
+  $("#view").innerHTML=`<div class="copage"><div class="cowrap">
+    <nav class="cocrumb" aria-label="Breadcrumb">
+      <a href="#" onclick="tab='companies';render();return false">Companies</a>
+      <span class="sep">/</span><a href="#" onclick="tab='companies';render();return false"
+        >${esc(o.sector)}</a>
+      <span class="sep">/</span>${esc(o.category)}</nav>
+    <div class="coid">
+      <div class="logo" aria-hidden="true">${esc((o.name||"?").trim()[0]||"?")}</div>
+      <div style="flex:1;min-width:0">
+        <h1>${esc(o.name)}</h1>
+        <div class="cometa">${bits.join('<span class="sep">&middot;</span>')}</div>
+      </div>
+      <div class="coacts">
+        <button class="cobtn ${saved?"on":"fill"}" id="cosave"
+          >${saved?"Saved":"Save company"}</button>
+        <button class="cobtn" onclick="alertOnCompany('${esc(id)}')"
+          >Alert on new roles</button>
       </div>
     </div>
-    ${companyStory(o,mine).map(par=>
-        `<p class="kv" style="max-width:72ch;margin:0 0 10px">${esc(par)}</p>`).join("")}
-    ${o.parent?`<p class="kv"><span class="chip">part of ${esc(o.parent)}</span>
-      ${esc(o.ats_note||"")}</p>`:""}
-    ${brandRoster(o)}
-    ${/* Directly under the description, not in a footnote at the bottom of
-          the page. This is the single most important sentence on the card for
-          950 of the 2,108 companies here, because without it every one of
-          them reads as "not hiring". */
-      (()=>{const n=noBoardNote(o);
-        return n?`<div class="note flag">${n}</div>`:""})()}
-    <div class="cards" style="margin-top:16px">
-      ${/* A count of zero is a claim, and on a company whose board we never
-            found - OR whose board we could not read this run - it is a claim we
-            cannot make. So the two counters say
-            "not known" instead, in the same colour as every other silence
-            on this board. */""}
-      ${(()=>{
-        /* Unknown for the same reason in two different shapes: a board we never
-           found, and a board we have that would not read this run. Both make a
-           zero a claim we cannot support, so both get the same word. */
-        const unknown=o.no_board_on_file||o.unreadable;
-        const dim=unknown?"font-size:20px;color:var(--faint)":"";
-        return `<div class="card"><div class="bignum" style="${dim}">${
-          unknown?"not known":(o.open_roles||0)}</div><div class="lbl">open roles</div></div>
-      <div class="card"><div class="bignum" style="${dim}">${
-          unknown?"not known":(o.quota_roles||0)}</div><div class="lbl">quota-carrying</div></div>`;
-      })()}
-      <div class="card"><div class="bignum" style="font-size:14px;padding-top:8px">${esc(o.phase||"")}</div>
-        <div class="lbl">hiring phase</div></div>
-      <div class="card"><div class="bignum" style="font-size:13px;padding-top:9px">
-        <span class="chip ${o.ats_ranks==="hard"?"bad":o.ats_ranks==="soft"?"warn":""}">${esc(o.ats||"unknown")}</span></div>
-        <div class="lbl sentence">${esc(ATSNOTE[o.ats_ranks]||"")}</div></div>
-    </div>
-    <p class="colinks">
-      ${safeUrl(o.website)?`<a class="golink" href="${esc(safeUrl(o.website))}" target="_blank" rel="noopener">
-        Visit ${esc(o.website.replace(/^https?:\/\//,"").replace(/\/$/,""))} &rarr;</a>`:""}
-      ${/* THEIR LINKEDIN, and only where their own careers page named a slug
-            matching their name. It matters most on the cards that have
-            nothing else: 781 companies here hold a board we cannot enumerate
-            and the page otherwise ends at "we could not read it". This is a
-            link to where they are, never a claim about what they have open -
-            the same line posts_at draws. */
-        safeUrl(o.linkedin)?`<a class="golink" href="${esc(safeUrl(o.linkedin))}"
-        target="_blank" rel="noopener">Their LinkedIn &rarr;</a>`:""}
-      ${(o.also||[]).map(a=>`<span class="chip">also ${esc(a.sector)} / ${esc(a.category)}</span>`).join("")}
-    </p>
-    ${/* NOT for a company whose board we never found. board_url falls back to
-          the company's own homepage for those, and a link labelled "open their
-          hiring board" pointing at a marketing site contradicts the sentence
-          three lines above it - and sends somebody looking for a job to a
-          page that has none. The website link is right there and says what it
-          actually is. */""}
-    ${/* Whose board this actually is, said at the link rather than in a
-          footnote. An acquired company's careers page often hands you to the
-          parent - Prepared's links to Axon's, 500 postings, every one stamped
-          Axon - and a visitor who clicks "their hiring board" and lands
-          somewhere else has been misled by us, not by them. Where we know the
-          board belongs to a parent, the link says so before it is clicked. */""}
-    ${(safeUrl(o.board_url)&&!o.no_board_on_file)?`<p><a href="${esc(safeUrl(o.board_url))}" target="_blank" rel="noopener">Open ${o.board_owner&&o.board_owner!==o.name?esc(o.board_owner)+"&rsquo;s":"their"} hiring board &rarr;</a>${o.board_owner&&o.board_owner!==o.name?` <span class="chip warn">these roles are posted on ${esc(o.board_owner)}&rsquo;s board${o.parent?", who acquired them":""} &mdash; some may not be ${esc(o.name)} roles</span>`:""}
-      ${o.unreadable?` <span class="chip warn">board could not be read: ${esc(o.unreadable)}</span>`:""}
-      ${o.enumerable===false?` <span class="chip warn">their board is live but its roles cannot be read automatically, so this list may be incomplete</span>`:""}
-      ${o.scan_lead?` <span class="chip">a lead, not a listing &mdash; a sales title appears in the text of this page, but no posting ever loaded for our reader, so the link opens the page and not a job</span>`:""}
-      ${o.checked_by_hand?` <span class="chip">checked by hand ${esc(o.checked_by_hand)}</span>`:""}</p>`
-      :o.unreadable?`<p><span class="chip warn">board could not be read: ${esc(o.unreadable)}</span></p>`:""}
-    ${(()=>{
-      /* What we are unsure about, said plainly. A board people rely on has to
-         admit where its own numbers come with a caveat - a shared board, an
-         owner we could not confirm, a company whose non-government roles we
-         deliberately hide - because finding that out later costs a reader
-         more than being told now. */
-      const notes=[];
-      if(o.shares_board_with){
-        // the field holds an id; a reader needs the name
-        const other=D.organizations.find(x=>x.id===o.shares_board_with);
-        notes.push(`Their postings come from a board shared with
-          <strong>${esc(other?other.name:o.shares_board_with)}</strong>, so some of
-          these roles may belong to the other company.`);
-      }
-      if(o.board_owner_unverified)
-        notes.push(`We could not confirm this board belongs to them rather than a
-          parent or a sibling brand, so treat the list as indicative.`);
-      if(o.sled_only)
-        notes.push(`They sell to many industries. Only their public-sector roles are
-          shown here${o.offtopic_dropped?` — ${o.offtopic_dropped} other openings are
-          deliberately left off`:""}.`);
-      if(o.parent&&!o.shares_board_with)
-        notes.push(`Part of <strong>${esc(o.parent)}</strong>.`);
-      if(o.enumerable===false)
-        notes.push(`Their board is live but its roles cannot be read automatically,
-          so this list is probably incomplete.`);
-      if(o.scan_lead)
-        notes.push(`We found a sales title in the text of their careers page but could
-          not read the posting itself, so nothing is listed above. It is a lead worth
-          checking, not an opening we can vouch for &mdash; and it counts towards no
-          number on this site.`);
-      if(o.unreadable)
-        notes.push(`Their board could not be read on the last run
-          (${esc(o.unreadable)}), so these roles may be stale.`);
-      // no_board_on_file is NOT restated here: it is the note directly under
-      // the description, where a reader actually is, rather than a footnote
-      // under three other footnotes.
-      return notes.length?`<h3 style="font-size:13px;margin-top:20px">What to know about this list</h3>
-        ${notes.map(t=>`<div class="kv" style="max-width:74ch">${t}</div>`).join("")}`:"";
-    })()}
-    ${(()=>{
-      /* WHO ELSE SELLS THIS. A reader on a company card is usually deciding
-         whether a market is worth their time, not just that company - and the
-         board holds the answer already. Marked with who is hiring, because a
-         peer with nothing open is context and a peer with three openings is a
-         next click. Capped at eight: this is a sidebar, not a second board. */
-      const peers=D.organizations.filter(x=>x.id!==o.id&&x.sector===o.sector
-        &&x.category===o.category).sort((a,b)=>(b.open_roles||0)-(a.open_roles||0));
-      if(!peers.length)return "";
-      const shown=peers.slice(0,8);
-      return `<h3 style="font-size:13px;margin-top:20px">Others in
-        ${esc(o.category||o.sector)}</h3>
-        <div class="kv" style="max-width:74ch">${shown.map(x=>
-          `<a href="/?co=${encodeURIComponent(x.id)}">${esc(x.name)}</a>${
-            x.open_roles?` <span class="chip">${x.open_roles}</span>`:""}`).join(" &middot; ")}
-        ${peers.length>8?` &middot; and ${peers.length-8} more`:""}</div>`;
-    })()}
-    ${mine.length?`<h3 style="font-size:13px;margin-top:20px">Where the roles are</h3>
-      <div class="kv" style="max-width:74ch">${whereSummary(mine).map(esc).join(" &middot; ")}</div>`:""}
-    <h3 style="font-size:13px;margin-top:20px">What kind of hiring</h3>
-    ${tot?fam.map(([f,n])=>`<div class="kv"><span style="display:inline-block;width:26px;text-align:right">${n}</span>
-      <span class="barfill" style="width:${Math.max(6,Math.round(n/tot*200))}px"></span>
-      ${esc(FAM[f]||f)}</div>`).join(""):'<div class="kv">No open roles on file.</div>'}
-    <h3 style="font-size:13px;margin-top:20px">Open roles</h3>
-    <div class="wrap"><table><thead><tr><th>Role</th><th>Family</th><th>Location</th></tr></thead><tbody>
-      ${mine.map(p=>`<tr><td>${safeUrl(p.url)?`<a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(p.title)}</a>`:esc(p.title)}
-        ${p.quota_carrying?'<span class="chip ok">quota</span>':""}
-        ${/* only where there is a figure: a column of "not stated" down a
-              company's whole board is noise, and the role page says which
-              silence it is for any one of them */
-          p.comp?`<span class="pay">${esc(payText(p.comp))}</span>`:""}</td>
-        <td class="kv">${esc(FAM[p.family]||p.family)}</td>
-        <td class="kv">${esc(p.location||"not stated")}</td></tr>`).join("")
-        ||`<tr><td colspan="3" class="empty">${
-            /* "No open roles" is a measurement. On a company whose board we
-               never found, or could not read this run, it is a measurement
-               nobody took - and it would sit directly under a card that has
-               just said "not known", contradicting it three lines later. */
-            /* Say the RIGHT silence. A board we never found and a board we
-               could not read are different, and the card three lines up
-               already names which one this is - the table contradicting it
-               with the other would be worse than the bare zero it replaced. */
-            o.unreadable
-              ? "No roles to show &mdash; their board would not load this run, so this is not a count of zero."
-              : o.no_board_on_file
-              ? "No roles to show &mdash; we have not found where they post, so this is not a count of zero."
-              : "No open roles."}</td></tr>`}
-    </tbody></table></div>
-    ${/* Last, because everything above is this company's own story and the
-          roles are what a visitor came for - and the roster twelve lines from
-          the top of the card is what carries a reader down here. */""}
-    ${brandSection(o)}`;
+    ${strip}
+    <div class="cobody"><main class="cocol">${about}${news}${roles}</main>${rail}</div>
+  </div></div>`;
 
-  /* Wired after the write, never stringified into an attribute. A brand name
-     and a company id are both strings this board took verbatim from somebody
-     else's site, and the job row learned what an onclick attribute does to one
-     of those: esc() leaves an apostrophe alone, and an id containing an entity
-     comes back out of the HTML parser as a different string. */
-  const view=$("#view");
-  view.querySelectorAll("[data-brand]").forEach(a=>a.onclick=()=>{
-    const el=$("#brand-"+a.dataset.brand);
-    // no href and no hash: a fragment navigation fires popstate, and this
-    // page re-renders on popstate, which would throw the card away mid-scroll
-    if(el)el.scrollIntoView({behavior:"smooth",block:"start"});
-  });
-  view.querySelectorAll("[data-co]").forEach(a=>a.onclick=()=>co(a.dataset.co));
+  const sv=$("#cosave");
+  if(sv) sv.onclick=()=>{ toggleSaveCompany(o); co(id,true); };
+}
+
+/* Saving a COMPANY, not a role. Same store and the same sync, keyed "co:<id>"
+   so the two never collide in one list. */
+function toggleSaveCompany(o){
+  const all=savedAll(), k="co:"+o.id;
+  if(all[k]){ delete all[k]; tombstone(k); }
+  else{
+    untombstone(k);
+    all[k]={id:k,kind:"company",company_id:o.id,title:o.name,company:o.name,
+      sector:o.sector,category:o.category,
+      saved_on:new Date().toISOString().slice(0,10),
+      saved_at:new Date().toISOString()};
+  }
+  writeSaved(all);
+  const c=$("#savedcount"); if(c)c.textContent=Object.keys(savedAll()).length||"";
+  syncSoon();
+}
+function alertOnCompany(id){ location.href="/alerts?company="+encodeURIComponent(id); }
+function coShowAll(fam){
+  if(CO_OPEN_GROUPS.has(fam)) CO_OPEN_GROUPS.delete(fam); else CO_OPEN_GROUPS.add(fam);
+  co(CO,true);
 }
 
 // ------------------------------------------------------------------ market intel
