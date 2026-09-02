@@ -145,15 +145,42 @@
         }
       } catch (e) { /* not JSON, keep looking */ }
     }
-    // Fallback: the biggest heading plus the page text. Cruder, and the panel
-    // shows exactly what it grabbed before anything is sent.
+    // NO SCHEMA. Everything past this point is a guess about whether this
+    // page is a job at all, so it has to find EVIDENCE before it answers.
+    //
+    // This used to take the biggest heading unconditionally and call it a
+    // posting. On BusPatrol's marketing homepage that produced "School Bus
+    // Safety Starts Here" with 2,463 characters of brochure copy as the job
+    // description, offered for sending with a straight face. A tool that
+    // invents a posting from an h1 is the same failure as a page scan that
+    // reports "no jobs" when it could not read - it states something it does
+    // not know.
+    //
+    // Two things count as evidence and neither is a heuristic about wording:
+    //
+    //   the URL is a known ATS detail page - somebody navigated to one job
+    //   there is an APPLY control - a page offering to take an application
+    //   is a page about a specific job
+    //
+    // Anything else returns null and the panel says so. "I cannot tell what
+    // this page is" is a real answer and the honest one on a homepage.
+    const applyish = [...document.querySelectorAll("a,button,input[type=submit]")]
+      .some((el) => {
+        const s = clean(el.innerText || el.value || el.getAttribute("aria-label") || "");
+        return /^(apply|apply now|apply for this job|submit application|start application|apply here)$/i.test(s);
+      });
+
+    if (!onDetailPage && !applyish) return null;
+
     const h = document.querySelector("h1") || document.querySelector("h2");
     const title = clean(h ? h.innerText : document.title).slice(0, 120);
+    if (!title || title.length < 3) return null;
     const main = document.querySelector("main, article, [class*=description], [class*=job-details]")
       || document.body;
     return { title, location: "", url: location.href,
              jd_text: clean(main.innerText).slice(0, 20000),
-             via: "page heading and text" };
+             via: onDetailPage ? "a job page on a board we know"
+                               : "an apply button on this page" };
   }
 
   /* ---- panel ----------------------------------------------------------- */
@@ -281,11 +308,19 @@
   const box = document.createElement("div");
   box.className = "panel";
 
+  /* Three states, and the third one used to be missing. A page that is
+     neither a board nor a posting - a marketing homepage, an about page -
+     now SAYS so instead of offering an invented job. */
   const head = single
     ? `Looks like one posting: <b>${esc(single.title)}</b>`
       + `<div style="color:#7C97AA;font-size:11.5px;margin-top:2px">read from ${esc(single.via)}`
       + `${single.jd_text ? ` · ${single.jd_text.length.toLocaleString()} chars of JD captured` : ""}</div>`
-    : `${jobs.length} job links on this page. Uncheck anything that is not a posting.`;
+    : jobs.length
+    ? `${jobs.length} job links on this page. Uncheck anything that is not a posting.`
+    : `<b>Nothing here looks like a job.</b>`
+      + `<div style="color:#7C97AA;font-size:11.5px;margin-top:2px">No job links, no `
+      + `posting data, and no apply button. If this is a careers page whose jobs `
+      + `load in a frame, open the frame directly and click again.</div>`;
 
   box.innerHTML =
     `<div style="display:flex;align-items:center;gap:8px;margin-bottom:9px">
