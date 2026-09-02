@@ -471,7 +471,20 @@
       : held
       ? `<b style="color:#7a5b00">${esc(trouble(r))}</b>`
       : `<span style="color:#a3342a">${esc(trouble(r))}</span>`;
-    if (sent || held) setTimeout(() => host.remove(), held ? 4200 : 2400);
+    /* IT USED TO CLOSE ITSELF after a successful send, and that was wrong.
+       The panel is not finished when the jobs land - there is a note to
+       record, a worklist to read, sometimes a second capture on the same
+       site. Closing on success threw all of that away and made the person
+       click the penguin again to get back to where they already were.
+       It stays open. The close link is right there. */
+    if (sent) {
+      box.querySelector("#ss-go").textContent = "Sent \u2014 send again?";
+      // The list stays checked, so a second click would send twice. Clearing
+      // it makes the button honest about what it would do now.
+      box.querySelectorAll("#ss-list input:checked").forEach((cb) => {
+        cb.checked = false;
+      });
+    }
   };
 
   /* ---- what to hit next ---------------------------------------------------
