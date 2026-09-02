@@ -27,6 +27,7 @@ Three outcomes, and only the first writes a company:
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import glob
 import json
 import pathlib
@@ -70,6 +71,80 @@ def norm(name: str) -> str:
     return re.sub(r"\s+", " ", SUFFIX.sub(" ", s)).strip()
 
 
+# THE SAME COMPANY UNDER A LOOSER NAME, which is what a conference floor
+# writes. norm() strips legal suffixes, so "Alteryx, Inc" already matched
+# "Alteryx" - and nothing matched "Tyler Tech" to Tyler Technologies,
+# "Sagitec" to Sagitec Solutions, "Kofile Technologies" to Kofile, or
+# "GoGuardian and Pear Deck Learning" to GoGuardian. On 2026-09-02 that was
+# 28 of 59 proposed cards: twenty-eight duplicate records of companies the
+# board already tracks, which is the pile the Duplicates queue exists to
+# prevent rather than fill.
+#
+# So one normalised name containing the other, on a word boundary, is a
+# match. SIX CHARACTERS MINIMUM either side, because "CORE" or "Vue" inside
+# a longer name is a coincidence and "Sagitec" inside "Sagitec Solutions" is
+# not. It reports WHICH name it matched, so a wrong match is visible rather
+# than a silent skip.
+def same_company(key: str, known: dict) -> str | None:
+    if key in known:
+        return known[key]
+    if len(key) < 6:
+        return None
+    for other, real in known.items():
+        if len(other) < 6:
+            continue
+        a, b = (key, other) if len(key) <= len(other) else (other, key)
+        if a == b or re.search(rf"(^|\s){re.escape(a)}(\s|$)", b):
+            return real
+    return None
+
+
+# A DISTINCTIVE WORD SHARED WITH SOMETHING ALREADY ON FILE. same_company
+# above catches a name that contains another whole; it does not catch "RTA"
+# against "RTA Fleet Management", "CORE" against "CORE Business
+# Technologies", "Slate" against "Slate Solutions", "Vue, Xylem" against
+# "Xylem", or a singular against a plural. Ten of thirty proposed cards were
+# that shape on 2026-09-02.
+#
+# Tuning the matcher further is the wrong move: some of those ARE the same
+# company and some are two companies sharing a word, and no regex tells them
+# apart. So a shared distinctive word does not skip and does not write - it
+# QUEUES, in the Duplicates file a person already rules from. Agents propose,
+# people rule, and the queue exists precisely for this.
+#
+# GENERIC WORDS DO NOT COUNT, or every "Solutions" on a conference floor
+# would match every other one.
+GENERIC = {
+    "solutions", "solution", "systems", "system", "software", "technologies",
+    "technology", "services", "service", "group", "company", "corp", "inc",
+    "llc", "government", "public", "national", "american", "data", "cloud",
+    "digital", "smart", "city", "gov", "the", "and", "for", "of", "by",
+    "management", "consulting", "partners", "associates", "international",
+    "global", "enterprise", "platform", "network", "media", "health", "care",
+}
+
+
+def _words(name: str) -> set:
+    """Distinctive words in a name, INCLUDING what is in parentheses.
+
+    norm() drops parentheticals on purpose, so an id stays stable - but a
+    parenthetical is exactly where a brand name lives. "Cybersoft
+    Technologies (PrimeroEdge)" normalised to "cybersoft technologies", so
+    a floor listing called "SchoolCafe + PrimeroEdge" matched nothing and
+    was about to become a second card for a company already on the board.
+    """
+    words = re.sub(r"[^a-z0-9]+", " ", (name or "").lower()).split()
+    return {w for w in words if len(w) >= 3 and w not in GENERIC}
+
+
+def shares_a_name(key_name: str, by_word: dict) -> str | None:
+    """An existing record that shares a distinctive word. Returns its name."""
+    for w in _words(key_name):
+        if w in by_word:
+            return by_word[w]
+    return None
+
+
 def kebab(name: str) -> str:
     name = re.sub(r"\s*\([^)]*\)", "", name or "")
     return re.sub(r"-+", "-", re.sub(r"[^a-z0-9]+", "-", name.lower())).strip("-")
@@ -91,7 +166,13 @@ def main() -> int:
     schema = json.loads((DATA / "schema.json").read_text())
     cats = {s["name"]: set(s["categories"]) for s in schema["sectors"]}
     taken_ids = {c["id"] for c in companies} | {s["id"] for s in suppliers}
-    known = {norm(c["name"]) for c in companies} | {norm(s["name"]) for s in suppliers}
+    known = {norm(c["name"]): c["name"] for c in companies}
+    known.update({norm(s["name"]): s["name"] for s in suppliers})
+
+    by_word = {}
+    for real in list(known.values()):
+        for w in _words(real):
+            by_word.setdefault(w, real)
 
     rows = []
     for pat in a.files:
@@ -114,8 +195,10 @@ def main() -> int:
             continue
         key = norm(name)
         verdict = r.get("verdict")
-        if key in known:
-            skipped.append((name, "already on file"))
+        match = same_company(key, known)
+        if match:
+            skipped.append((name, f"already on file as {match!r}"
+                            if norm(match) != key else "already on file"))
             continue
         if verdict == "scope_review":
             if key not in seen_review:
@@ -139,7 +222,7 @@ def main() -> int:
                 "ats": {"type": "unknown", "ref": None},
                 "hiring": {"status": "Unknown", "note": "not researched",
                            "roles": [], "checked": None}})
-            known.add(key)
+            known[key] = name
             to_supplier.append(name)
             continue
         if verdict != "govtech":
@@ -152,6 +235,24 @@ def main() -> int:
             continue
         if not (r.get("description") or "").strip():
             skipped.append((name, "no description"))
+            continue
+
+        near = shares_a_name(name, by_word)
+        if near:
+            # NOT a card and NOT a skip. Two companies can share a word and
+            # one company can be written two ways; only a person can say
+            # which this is.
+            if key not in seen_review:
+                review["items"].append({
+                    "name": name, "website": r.get("website"),
+                    "description": r.get("description"),
+                    "why": (f"possible duplicate of {near!r} - they share a "
+                            f"distinctive word. Merge, or confirm they are two "
+                            f"companies and this becomes a card."),
+                    "source_event": r.get("source_event"),
+                    "queued_on": dt.date.today().isoformat()})
+                seen_review.add(key)
+            queued.append(name)
             continue
 
         cid = kebab(name)
@@ -187,7 +288,7 @@ def main() -> int:
             "source": (f"conference sweep: {ev}" if event
                        else (f"research pass: {ev}" if ev else "research pass")),
             "researched": True})
-        known.add(key)
+        known[key] = name
         added.append(name)
 
     print(f"{len(added)} cards | {len(to_supplier)} to suppliers | "

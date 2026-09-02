@@ -55552,5 +55552,149 @@
   "vendor_type": "GovTech Product",
   "source": "research pass: HHS conference exhibitor research 2026-08-25",
   "researched": true
+ },
+ {
+  "id": "counting-opinions",
+  "name": "Counting Opinions",
+  "website": "https://www.countingopinions.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Libraries",
+  "description": "LibPAS performance data management, LibSat patron satisfaction survey and InformsUs data collection software for public, academic, state and consortium libraries - exhibited at PLA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: PLA 2026",
+  "researched": true
+ },
+ {
+  "id": "monster-government-solutions",
+  "name": "Monster Government Solutions",
+  "website": "http://www.monstergov.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Health & Human Services",
+  "category": "Workforce & Labor",
+  "description": "Labor exchange and WIOA case management software (MonsterWorks) for state workforce agencies, local workforce boards and government employers - exhibited at NASWA 2025",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NASWA 2025",
+  "researched": true
+ },
+ {
+  "id": "heymirza",
+  "name": "HeyMirza",
+  "website": "https://heymirza.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Health & Human Services",
+  "category": "Benefits & Medicaid Systems",
+  "description": "Benefits continuity platform that matches, verifies and enrolls people in Medicaid, SNAP, WIC and childcare programs for state agencies, health plans and providers - exhibited at APHSA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: APHSA 2026",
+  "researched": true
+ },
+ {
+  "id": "millonex-llc",
+  "name": "Millonex LLC",
+  "website": "http://www.simplicity-ils.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Libraries",
+  "description": "Simplicity ILS, a cloud integrated library system for circulation, cataloging, patron management and reporting, sold to public libraries and library systems - exhibited at PLA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: PLA 2026",
+  "researched": true
+ },
+ {
+  "id": "smowltech",
+  "name": "SmowlTech",
+  "website": "http://smowl.net/en/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Higher Education",
+  "category": "IT & Administration",
+  "description": "SMOWL online exam proctoring and identity verification software sold to universities and other education institutions - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "cott-systems",
+  "name": "COTT SYSTEMS",
+  "website": "https://cottsystems.com/",
+  "location": "Columbus, OH",
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Citizen Services",
+  "description": "Land, court and official public records recording, imaging, indexing and search software for county recorder and clerk offices - exhibited at Iowa State Association of Counties 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: Iowa State Association of Counties 2026",
+  "researched": true
  }
 ]
