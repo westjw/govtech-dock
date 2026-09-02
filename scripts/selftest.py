@@ -8718,6 +8718,42 @@ def check_sweep_keeps_its_own_work() -> int:
     return errors
 
 
+def check_intake_writes_only_issued_tags() -> int:
+    """The string intake writes into descriptions is the catalog's tag, ever.
+
+    On 2026-09-02 conference_intake fell back to staged["conference"] -
+    "AWWA ACE", "3CMA" - and wrote it into 988 descriptions in one afternoon.
+    The catalog guard above caught it after the fact; this refuses it before
+    the write. Driven, not read: a staged file with no tag, a tag the catalog
+    never issued, and a real one.
+    """
+    import conference_intake as ci
+    errors = 0
+    real = sorted(ci.issued_tags())
+    if not real:
+        print("  FAIL: conferences.json issues no tags at all")
+        return 1
+    tag, why = ci.resolve_tag({"event_tag": real[0], "conference": "Whatever"}, None)
+    if tag != real[0] or why:
+        print(f"  FAIL: a catalog tag was not resolved: {why}")
+        errors += 1
+    tag, why = ci.resolve_tag({"conference": "AWWA ACE"}, None)
+    if tag or not why:
+        print("  FAIL: intake fell back to the conference NAME again - that is "
+              "the string that landed in 988 descriptions")
+        errors += 1
+    tag, why = ci.resolve_tag({"event_tag": real[0]}, "Made Up 2026")
+    if tag or not why:
+        print("  FAIL: an --event-tag the catalog never issued was accepted")
+        errors += 1
+    src = (ROOT / "scripts" / "conference_intake.py").read_text()
+    body = src[src.find("def main("):]
+    if "resolve_tag(" not in body or 'staged["conference"]' in body.split("resolve_tag(")[0]:
+        print("  FAIL: main() no longer resolves the tag through resolve_tag()")
+        errors += 1
+    return errors
+
+
 def check_extension_holds_and_refuses() -> int:
     """The service worker, executed, with a fake chrome and a fake admin.
 
@@ -9291,6 +9327,7 @@ def main() -> int:
     errors += check_task_notes_land_honestly()
     errors += check_sweep_keeps_its_own_work()
     errors += check_extension_holds_and_refuses()
+    errors += check_intake_writes_only_issued_tags()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

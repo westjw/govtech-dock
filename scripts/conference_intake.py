@@ -66,6 +66,37 @@ def add_event(desc: str | None, event: str) -> str:
     return desc.replace(m.group(1), m.group(1) + ", " + event)
 
 
+def issued_tags() -> set:
+    """Every event tag the catalog has ever issued, current and prior."""
+    confs = json.loads((DATA / "conferences.json").read_text())["conferences"]
+    out = {c["event_tag"] for c in confs if c.get("event_tag")}
+    for c in confs:
+        out.update(c.get("prior_tags") or [])
+    return out
+
+
+def resolve_tag(staged: dict, override: str | None) -> tuple[str | None, str | None]:
+    """The string that lands in descriptions, or why it must not.
+
+    THE TAG, NEVER THE NAME. This used to fall back to staged["conference"] -
+    "AWWA ACE", "3CMA", "AIRA National Meeting (American Immunization
+    Registry Association)" - and on 2026-09-02 wrote those into 988
+    descriptions. A tag is "<name> <year>", assigned in conferences.json so
+    acronyms cannot collide, and selftest refuses any description carrying a
+    tag the catalog never issued. So the catalog is asked here, before the
+    write, and a staged file with no issued tag is refused rather than
+    guessed at.
+    """
+    tag = (override or staged.get("event_tag") or "").strip()
+    if not tag:
+        return None, ("the staged file carries no event_tag and none was given; "
+                      "conferences.json assigns them")
+    if tag not in issued_tags():
+        return None, (f"{tag!r} is not a tag conferences.json ever issued - a "
+                      f"description carrying it would fail selftest")
+    return tag, None
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("file")
@@ -84,7 +115,10 @@ def main() -> int:
     a = ap.parse_args()
 
     staged = json.loads(pathlib.Path(a.file).read_text())
-    event = a.event_tag or staged["conference"]
+    event, why = resolve_tag(staged, a.event_tag)
+    if why:
+        print(f"refused: {why}", file=sys.stderr)
+        return 1
     # THROUGH admin, so the write below is journalled. This script was one of
     # the seven that wrote companies.json directly; the day it extended 196
     # descriptions with "GFOA 2026", every one of those records disagreed

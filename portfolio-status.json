@@ -1,26 +1,26 @@
 {
   "project_id": "govtech_dock",
   "repo": "westjw/govtech-dock",
-  "last_updated": "2026-08-31T12:30:00-04:00",
+  "last_updated": "2026-09-02T13:29:41-04:00",
   "status": "Active Build",
   "progress_pct": 47,
-  "progress_note": "47% of the WHOLE scope. The free board is ~89% and its numbers now measure what their labels say. The paid product is still 0%.",
-  "next_move": "Decide what to build across three tracks: the free board, job-hunter, and a recruiter/employer side that does not exist yet. Pricing is explicitly deferred by the owner.",
-  "session_summary": "Ran the full crawl, and killed the first attempt two minutes in after re-reading the counter I had just committed: boards_read tested `err` after three lines had each been able to clear it, so a shared board counted twice and a role republished from last run's storage counted as a fresh read. The corrected run reports 337 boards read where the old card would have claimed 1,140. Then an audit of every public-facing number found 18 confirmed defects, most of them one rule: the headline counts openings, not rows. Mueller Water Products was carrying a false 'hiring hard' badge - 4 openings to 5, under the floor, lit because one job was relisted in a second city. /s/mi claimed 12 roles and 9 quota-carrying against 4 and 1. pay_report's quartiles were an undecremented rank used as an index, right for three n in four, printing a $145k upper quartile where the truth is $130k.",
+  "progress_note": "~47% (free board frame; paid half still has no pricing, billing, accounts or employer side) - 2026-09-02: adversarial review sweep, 38 findings fixed, 11 parent boards off the board and queued, intake on 25 floors",
+  "next_move": "Rule the 11 unwired boards in Boards we found (5 are likely renames to re-wire), then add RESEND_KEY as a repository secret so the first digest can send",
+  "session_summary": "A 12-agent review of the previous two days found four HIGHs: a live false-Yes (AEM's requisitions published as Earth Networks' and ten more like it), the alerts Worker throwing on every signup, and two guard holes. All fixed; every new guard verified by mutation (27/27). Intake ran on 25 staged conference floors: 988 companies tagged, 513 suppliers filed, 37 candidates staged.",
   "recent_work": [
+    "alerts.js NAME import - every signup had 500'd since the shell shipped; probe now answers 400",
+    "11 Paylocity parent/former-name boards unwired through the journal and queued with live sample titles",
+    "Guards rewritten to drive callers: fetchers, gate, capture, task notes, sweep, and background.js under node",
+    "429 backoff under the host lock; _post_json honours 429; 304 re-fetch gated; _Cached carries .url",
+    "conference_intake and wire_embedded now journal; intake refuses any tag the catalog never issued",
+    "Sweep strips chevrons and the host's own pages; --restage; flags survive a re-sweep",
     "boards_read counted the rewrite, not the answer - captured off the wire as fetch_err before the shared-board and stored-role rules can clear it. Run reports 337, not 1,140",
     "momentum counts openings: Mueller's false 'hiring hard' badge removed, InitLive and Bruker remain and are real",
     "/s/<st> and /c/<id> pages count openings - Michigan was 9x, and the state sentence is the meta description Google renders",
-    "pay_report: nearest-rank quartiles (was off by $15k on the remote band), 'not stated' no longer counted as a work mode, hourly exclusions no longer eaten by a type filter",
-    "empty-state offers run the whole pipeline with one filter relaxed - one said 4,442 where the answer is 150",
-    "map counts openings (997, was 1,398); jobs OG card says 152 companies, not 2,113",
-    "roles republished from storage are labelled as not confirmed this run",
-    "selftest builds /c/ and /s/ for the first time; new guards for openings-vs-rows, pay arithmetic, stale-role labelling, and every check being called"
+    "pay_report: nearest-rank quartiles (was off by $15k on the remote band), 'not stated' no longer counted as a work mode, hourly exclusions no longer eaten by a type filter"
   ],
   "blockers": [
-    "PAID HALF NOT STARTED: no pricing, no billing, no accounts, no employer-side posting.",
-    "PUSHED 2026-08-31 (4f24aee..378f51c): the corrected counts, the removed false badge and the pay fixes are on main and reach the live site on the next Pages build.",
-    "866 companies are page-only boards no fetcher can enumerate; only 337 of the 1,140 boards we hold an address for answered last night.",
-    "Owner's remaining two: delete the two stale Cloudflare Pages deployments, and verify the site in Search Console. Pricing deferred by the owner 2026-08-31."
+    "RESEND_KEY not in repository secrets - no digest has ever sent",
+    "338 state events have no directory URL"
   ]
 }
