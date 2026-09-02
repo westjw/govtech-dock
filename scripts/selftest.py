@@ -7314,6 +7314,137 @@ def check_mail_shell() -> int:
     return errors
 
 
+def check_fetchers_page_and_do_not_fake_zeros() -> int:
+    """Three fetchers took the first page of a board and called it the board.
+
+    Measured live on 2026-09-01, all three against real employers:
+
+      SmartRecruiters  asked limit=100 once. Xplor answers totalFound=251 to
+                       that same request. 100 published, 251 available.
+      iCIMS            read three pages on a comment claiming "portals page
+                       at 50". Bruker's serves NINETEEN, over eleven pages.
+                       54 published, 204 available. It also deduped on the
+                       title after stripping the req id - the exact rule
+                       fetch_html_titles documents as the one never to use -
+                       collapsing 204 links to 177 names.
+      JazzHR           capped the title at 90 characters of UNSTRIPPED anchor
+                       text, and JazzHR indents its markup by 77. Thirteen
+                       characters for a job title. Across twelve boards: 51
+                       real postings, 2 published. VGSI advertises 31 and
+                       showed none.
+
+    THE JAZZHR HALF IS THE ONE THAT MATTERS MOST, and it is not about counts.
+    That fetcher returned [] whatever happened, so a board it could not read
+    published as a company with "0 open roles" - a false absence, the one
+    error this project says never corrects itself. Three of those boards do
+    say they have nothing open, and that is a different fact from silence.
+    Driven here against synthetic pages, because the difference between "they
+    have no openings" and "we could not read it" is the whole point.
+    """
+    errors = 0
+
+    # --- JazzHR, driven for real against stubbed pages --------------------
+    PAD = " " * 77
+    def page(anchors, extra=""):
+        rows = "".join(
+            f'<a class="x" href="https://acme.applytojob.com/apply/{i}">'
+            f'{PAD}{a}{PAD}</a>' for i, a in enumerate(anchors))
+        return f"<html><body>{rows}{extra}</body></html>"
+
+    class Stub:
+        def __init__(self, text): self.text = text
+    real_get = ats._get
+    try:
+        cases = [
+            ("a long title survives the padding",
+             page(["Senior Account Executive, State and Local Government"]), 1, False),
+            ("a short title still survives",
+             page(["Sales Manager"]), 1, False),
+            ("a genuinely empty board reports zero",
+             page([], "<p>There are no open positions at this time.</p>"), 0, False),
+            ("an unreadable board RAISES rather than reporting zero",
+             "<html><body><p>Something else entirely</p></body></html>", 0, True),
+        ]
+        for label, html, want, should_raise in cases:
+            ats._get = lambda *_a, **_k: Stub(html)
+            try:
+                got = len(ats.fetch_jazzhr("acme"))
+                if should_raise:
+                    print(f"  FAIL: jazzhr - {label}: returned {got} instead of "
+                          f"raising. An unread board published as a zero is the "
+                          f"false absence this check exists to stop")
+                    errors += 1
+                elif got != want:
+                    print(f"  FAIL: jazzhr - {label}: got {got}, expected {want}")
+                    errors += 1
+            except ats.AtsError:
+                if not should_raise:
+                    print(f"  FAIL: jazzhr - {label}: raised, expected {want} row(s)")
+                    errors += 1
+    finally:
+        ats._get = real_get
+
+    # --- the paging fixes, as source shapes -------------------------------
+    src = (ROOT / "scripts" / "ats.py").read_text()
+
+    def body(name, n=2600):
+        """The function's CODE, with its comments removed.
+
+        Not a nicety. The first version of this check searched raw source and
+        failed instantly on fetch_jazzhr - because that function's comment
+        explains the bug by quoting the old pattern, and the guard matched the
+        explanation. This file has caught the same shape three separate times
+        (a `||` fallback found in a string, an ARMA "writes" comment, an
+        orphan check matching a module's own name in prose), so a source-level
+        assertion here reads code or it reads nothing.
+        """
+        i = src.find(name)
+        if i < 0:
+            return ""
+        window = src[i:i + n]
+        return "\n".join(re.sub(r"#.*$", "", ln) for ln in window.splitlines())
+
+    sr = body("def fetch_smartrecruiters(")
+    if not sr:
+        print("  FAIL: fetch_smartrecruiters is gone from ats.py"); errors += 1
+    else:
+        if "_paged(" not in sr:
+            print("  FAIL: fetch_smartrecruiters no longer pages - it is back to "
+                  "taking SmartRecruiters' maximum page size as the board size")
+            errors += 1
+        if "postings?limit=100\"" in sr:
+            print("  FAIL: fetch_smartrecruiters posts a bare limit=100 with no "
+                  "offset again")
+            errors += 1
+
+    ic = body("def fetch_icims(")
+    if not ic:
+        print("  FAIL: fetch_icims is gone from ats.py"); errors += 1
+    else:
+        if "range(3)" in ic:
+            print("  FAIL: fetch_icims is back to a three-page cap - Bruker's "
+                  "portal is eleven pages and serves 19 a page, not 50")
+            errors += 1
+        if "_paged(" not in ic:
+            print("  FAIL: fetch_icims no longer pages through _paged()")
+            errors += 1
+        if "if title and title not in seen" in ic:
+            print("  FAIL: fetch_icims dedups on the title again - that deletes "
+                  "27 distinct requisitions on Bruker alone")
+            errors += 1
+
+    jz = body("def fetch_jazzhr(")
+    if "{4,90}" in jz:
+        print("  FAIL: fetch_jazzhr measures the length inside the pattern "
+              "again, which counts JazzHR's 77 characters of padding")
+        errors += 1
+    if "raise AtsError" not in jz:
+        print("  FAIL: fetch_jazzhr no longer raises on an unreadable board, so "
+              "it will publish a false 'no open roles'")
+        errors += 1
+    return errors
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -7841,6 +7972,7 @@ def main() -> int:
     errors += check_url_sinks()
     errors += check_workday_pages_to_the_end()
     errors += check_mail_shell()
+    errors += check_fetchers_page_and_do_not_fake_zeros()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

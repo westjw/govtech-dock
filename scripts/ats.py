@@ -853,10 +853,25 @@ def _bamboohr_detail(url: str) -> tuple[str, dict | None]:
 def fetch_smartrecruiters(slug: str) -> list[dict]:
     """The postings list carries no ad text and no pay; /postings/<id> carries
     the ad in named sections. One request per posting."""
-    url = f"https://api.smartrecruiters.com/v1/companies/{slug}/postings?limit=100"
-    data = _json(_get(url))
+    # PAGED. This used to ask for limit=100 once and read the reply, which is
+    # SmartRecruiters' maximum page size and not the size of anybody's board:
+    # Xplor answers totalFound=251 to the very same request whose `content`
+    # holds 100. That is 151 postings the board had the right to and never
+    # asked for, on one company. The reply also echoes `offset`, and past the
+    # end returns an empty page rather than wrapping (verified 2026-09-01 on
+    # Xplor: offset 300 and offset 900 both return zero rows), so this walk
+    # terminates on its own. `totalFound` is stable across offsets here and
+    # could serve as a bound, but is deliberately not used as one - Workday
+    # taught this file that an advertised total is not a promise, and an empty
+    # page is a fact.
+    base = f"https://api.smartrecruiters.com/v1/companies/{slug}/postings"
+    rows = _paged(
+        lambda off: _json(_get(f"{base}?limit={SR_PAGE}&offset={off}"))
+                    .get("content", []),
+        lambda j: j.get("id") or j.get("name", ""),
+        page=SR_PAGE, max_pages=SR_MAX_PAGES, label=slug)
     out = []
-    for j in data.get("content", []):
+    for j in rows:
         loc = j.get("location") or {}
         out.append({"title": j.get("name", ""),
                     "location": ", ".join(x for x in [loc.get("city"), loc.get("region")] if x),
@@ -917,24 +932,35 @@ def _smartrecruiters_jd(url: str) -> str:
 # 160 while returning 20 real rows each time, then 161 again once it wrapped.
 WD_PAGE = 20
 WD_MAX_PAGES = 60          # 1,200 postings for one search term at one company
+SR_PAGE = 100              # SmartRecruiters caps limit at 100; 200 and 500 both return 100
+SR_MAX_PAGES = 40          # 4,000 postings at one company
+ICIMS_MAX_PAGES = 60       # iCIMS pages by NUMBER, ~20 a page, so 1,200
 
 
-def _paged(fetch_page, key, label: str = "") -> list:
+def _paged(fetch_page, key, page: int = WD_PAGE,
+           max_pages: int = WD_MAX_PAGES, label: str = "") -> list:
     """Walk offset pages until one adds nothing new, then stop.
 
     `fetch_page(offset)` returns the raw rows at that offset; `key(row)` is
     the identity that decides whether a row has been seen. Rows come back in
     first-seen order with duplicates removed.
 
-    The ceiling is a backstop against a wrap-around we failed to detect, not
-    a limit on real employers. If it ever fires it SAYS SO - a fetcher that
-    quietly returns the first 1,200 of something larger is the exact defect
-    this function was written to remove, and re-introducing it silently one
-    level up would be worse than the original.
+    TWO STOP CONDITIONS, because the boards do not agree on how a walk ends.
+    SmartRecruiters returns an empty page past the end, which is the polite
+    answer. Workday WRAPS to page one and would loop forever on that
+    condition alone. So this stops on either an empty page or a page that
+    adds nothing new, and the second covers the first - a fetcher that only
+    checked for empty would hammer Workday until something else broke it.
+
+    The ceiling is a backstop against a wrap we failed to detect, not a limit
+    on real employers. If it fires it SAYS SO: a paginator that quietly
+    returns the first N of something larger is the exact defect this function
+    exists to remove, and re-introducing it one level up would be worse than
+    the original.
     """
     out, seen = [], set()
-    for i in range(WD_MAX_PAGES):
-        rows = fetch_page(i * WD_PAGE)
+    for i in range(max_pages):
+        rows = fetch_page(i * page)
         if not rows:
             break
         fresh = [r for r in rows if key(r) not in seen]
@@ -943,8 +969,8 @@ def _paged(fetch_page, key, label: str = "") -> list:
         seen.update(key(r) for r in fresh)
         out.extend(fresh)
     else:
-        print(f"  workday: hit the {WD_MAX_PAGES}-page ceiling"
-              f"{' on ' + label if label else ''} after {len(out)} postings; "
+        print(f"  paging: hit the {max_pages}-page ceiling"
+              f"{' on ' + label if label else ''} after {len(out)} row(s); "
               f"this result is TRUNCATED", file=sys.stderr)
     return out
 
@@ -975,7 +1001,7 @@ def fetch_workday(ref: list) -> list[dict]:
                 api, {"limit": WD_PAGE, "offset": off, "searchText": t}
             ).get("jobPostings", []),
             lambda j: j.get("externalPath", j.get("title", "")),
-            label=f"{tenant}/{term}")
+            page=WD_PAGE, max_pages=WD_MAX_PAGES, label=f"{tenant}/{term}")
         for j in rows:
             k = j.get("externalPath", j.get("title", ""))
             if k in seen:                      # the two terms overlap heavily
@@ -998,7 +1024,7 @@ def _workday_jobs(api: str, base: str, site: str) -> list[dict]:
                       "searchText": t}
             ).get("jobPostings", []),
             lambda j: j.get("externalPath", j.get("title", "")),
-            label=f"{site}/{term}")
+            page=WD_PAGE, max_pages=WD_MAX_PAGES, label=f"{site}/{term}")
         for j in rows:
             k = j.get("externalPath", j.get("title", ""))
             if k in seen:
@@ -1209,10 +1235,37 @@ def fetch_jazzhr(slug: str) -> list[dict]:
     # one, a structured baseSalary are on the posting page.
     url = f"https://{slug}.applytojob.com/apply/"
     resp = _get(url)
-    links = re.findall(r'<a[^>]+href="(https?://[^"]*applytojob\.com/apply/[^"]+)"[^>]*>([^<]{4,90})</a>',
-                       resp.text)
-    out = [{"title": html_lib.unescape(t).strip(), "location": "", "url": u}
-           for u, t in links]
+
+    # MEASURE THE TITLE, NOT THE PADDING. The bound used to live inside the
+    # pattern as {4,90}, which counted the anchor's RAW inner text - and
+    # JazzHR indents its markup by 77 characters. That left thirteen for the
+    # actual title, so anything longer than "Sales Manager" was thrown away
+    # before anyone could strip it. Measured across all twelve boards on
+    # 2026-09-01: 51 real postings, of which the old pattern matched 2. VGSI
+    # alone advertises 31 and published none of them.
+    links = re.findall(
+        r'<a[^>]+href="(https?://[^"]*applytojob\.com/apply/[^"]+)"[^>]*>([^<]+)</a>',
+        resp.text)
+    out = []
+    for u, raw in links:
+        title = html_lib.unescape(raw).strip()
+        if 4 <= len(title) <= 90:
+            out.append({"title": title, "location": "", "url": u})
+
+    # AN UNREADABLE BOARD IS NOT AN EMPTY ONE. This used to return [] whatever
+    # happened, so a board we could not parse published as a company with "0
+    # open roles" - a false absence, which this project treats as the one
+    # error that never corrects itself. Three of these boards really do say
+    # they have nothing open, and that is a different fact from silence: when
+    # the page says so we report the zero, and when it does not we raise and
+    # the company is recorded Unknown.
+    if not out:
+        page = resp.text.lower()
+        if not any(s in page for s in ("no open positions", "there are no open",
+                                       "no current openings", "no openings at")):
+            raise AtsError("no jobs parsed from JazzHR board and the page does "
+                           "not say it has none")
+
     if FETCH_DETAILS:
         _details(out, lambda r: _schema_posting(r["url"]))
     return out
@@ -1234,22 +1287,41 @@ def fetch_icims(ref: str) -> list[dict]:
     """
     base = ref if ref.startswith("http") else f"https://{ref}.icims.com/jobs/search?ss=1"
     joiner = "&" if "?" in base else "?"
-    out, seen = [], set()
-    for page in range(3):                     # portals page at 50; 150 is plenty
-        url = f"{base}{joiner}in_iframe=1&pr={page}"
-        html = _get(url).text
-        found = re.findall(
-            r'<a\s+href="([^"]+)"[^>]*class="iCIMS_Anchor"[^>]*title="([^"]+)"', html)
-        new = 0
-        for href, raw in found:
-            title = re.sub(r"^\d+\s*-\s*", "", html_lib.unescape(raw)).strip()
-            if title and title not in seen:
-                seen.add(title)
-                new += 1
-                out.append({"title": title, "location": "",
-                            "url": html_lib.unescape(href)})
-        if not new:
-            break
+
+    # PAGED TO THE END, AND KEYED ON THE LINK.
+    #
+    # This used to read three pages on the strength of a comment reading
+    # "portals page at 50; 150 is plenty". Measured on 2026-09-01, Bruker's
+    # portal serves NINETEEN on its first page and twenty thereafter: eleven
+    # pages, 204 anchors, then an empty page. Three pages of that is 59, not
+    # 150, and the board published 54. The premise was wrong by more than
+    # double and the cap was written to it.
+    #
+    # It also deduped on the TITLE, after stripping the requisition number off
+    # the front - which is the exact rule fetch_html_titles documents eighty
+    # lines below as the one never to use ("DEDUP ON THE LINK, NOT THE TITLE").
+    # iCIMS rows carry no location, so once the req id is gone two genuinely
+    # different postings are byte-identical and the second is dropped. On
+    # Bruker that is 204 distinct hrefs collapsing to 177 titles: 27 real
+    # requisitions deleted, twelve of them called "Field Service Engineer".
+    #
+    # The old early break compounded both: `if not new` counted new TITLES, so
+    # a page full of distinct reqs that happened to repeat a name ended the
+    # crawl. _paged stops on a page that adds no new LINK, which is a fact
+    # about the portal rather than about its naming.
+    rows = _paged(
+        lambda pr: re.findall(
+            r'<a\s+href="([^"]+)"[^>]*class="iCIMS_Anchor"[^>]*title="([^"]+)"',
+            _get(f"{base}{joiner}in_iframe=1&pr={pr}").text),
+        lambda pair: html_lib.unescape(pair[0]),
+        page=1, max_pages=ICIMS_MAX_PAGES, label=str(ref))
+
+    out = []
+    for href, raw in rows:
+        title = re.sub(r"^\d+\s*-\s*", "", html_lib.unescape(raw)).strip()
+        if title:
+            out.append({"title": title, "location": "",
+                        "url": html_lib.unescape(href)})
     if not out:
         raise AtsError("no jobs parsed from iCIMS portal")
     # The list markup carries titles and hrefs only. Each posting page carries a
