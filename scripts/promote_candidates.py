@@ -81,7 +81,12 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
-    companies = json.loads((DATA / "companies.json").read_text())
+    # THROUGH admin, so the write is journalled and admin_undo can take it
+    # back. This script can add hundreds of cards in one run; on 2026-09-02 a
+    # sibling script tagged 988 descriptions wrongly and the only reason that
+    # was recoverable in twenty commands was the journal's before-images.
+    import admin
+    companies = admin.read_companies()
     suppliers = json.loads((DATA / "suppliers.json").read_text())
     schema = json.loads((DATA / "schema.json").read_text())
     cats = {s["name"]: set(s["categories"]) for s in schema["sectors"]}
@@ -194,13 +199,20 @@ def main() -> int:
 
     # Validate the whole file the way admin does, then land atomically. A bad
     # batch is refused entire rather than half-written.
-    import admin
     problem = admin.validate(companies)
     if problem:
         print(f"REFUSED: {problem}", file=sys.stderr)
         return 1
-    (DATA / "companies.json").write_text(json.dumps(companies, indent=1,
-                                                    ensure_ascii=False))
+    # force: the counts were printed above, which is the condition
+    # journal.BLAST asks for before a write touching more than 25 records.
+    bad = admin.save_companies(
+        companies, "promote-candidates",
+        f"{len(added)} researched candidate(s) promoted to cards, "
+        f"{len(to_supplier)} filed as suppliers",
+        by="agent:promote_candidates", force=True)
+    if bad:
+        print(f"REFUSED: {bad}", file=sys.stderr)
+        return 1
     (DATA / "suppliers.json").write_text(json.dumps(suppliers, indent=1,
                                                     ensure_ascii=False))
     (DATA / "scope_review_queue.json").write_text(json.dumps(review, indent=1,
