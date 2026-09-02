@@ -13,10 +13,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "https://www.njlm.org/",
-   "status": "org_found",
+   "status": "parents_event",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "New Jersey State League of Municipalities"
+   "org_name_observed": "New Jersey State League of Municipalities",
+   "candidate_url": "https://conference.njlm.org/benefits-of-exhibiting/",
+   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
   },
   {
    "org_code": "MUNI_TX",
@@ -30,7 +32,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.tml.org",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Texas Municipal League"
@@ -47,10 +49,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.cacities.org",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "League of California Cities"
+   "org_name_observed": "League of California Cities",
+   "candidate_url": "https://lccexpo2026.mapyourshow.com/8_0/exhview/index.cfm",
+   "directory_note": "the sponsor list on this page is a picture (/mys_shared/globalfiles/floorplan_v8_0_0/img/legend-icons/legend-selected-exhibitor.png Se) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "MUNI_FL",
@@ -64,7 +68,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.flcities.com",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Florida League of Cities Inc"
@@ -81,7 +85,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.mml.org",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Michigan Municipal League"
@@ -98,10 +102,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.lmc.org",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "League of Minnesota Cities"
+   "org_name_observed": "League of Minnesota Cities",
+   "candidate_url": "https://www.lmc.org/marketplace/",
+   "directory_note": "140 names, mixed (8% carry a corporate marker, 4% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "MUNI_IL",
@@ -115,10 +121,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.iml.org",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Illinois Municipal League"
+   "org_name_observed": "Illinois Municipal League",
+   "candidate_url": "https://www.iml.org/sponsors",
+   "directory_note": "the sponsor list on this page is a picture (/cms/files/pages/sponsor-comed.jpg ComEd) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "MUNI_OH",
@@ -132,7 +140,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.omlohio.org",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Ohio Municipal League"
@@ -149,7 +157,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.lwm-info.org",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "League of Wisconsin Municipalities"
@@ -166,7 +174,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "https://www.gacities.com/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Georgia Municipal Association"
@@ -181,12 +189,14 @@
    "name_confidence": "named",
    "est_exhibitors": 150,
    "parent_national": "NLC",
-   "directory_url": null,
+   "directory_url": "https://www.nclm.org/about-us/partners-sponsors",
    "org_url": "http://www.nclm.org",
-   "status": "org_found",
-   "promoted": false,
+   "status": "directory_found",
+   "promoted": true,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "North Carolina League of Municipalities"
+   "org_name_observed": "North Carolina League of Municipalities",
+   "directory_note": "86 names, good (30% carry a corporate marker, 2% name a site section)",
+   "promoted_tag": "North Carolina League of Municipalities 2027"
   },
   {
    "org_code": "MUNI_VA",
@@ -200,10 +210,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.vml.org",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Virginia Municipal League"
+   "org_name_observed": "Virginia Municipal League",
+   "candidate_url": "https://www.vml.org/Community-Engagement/Advertising-Sponsorship",
+   "directory_note": "62 names, mixed (10% carry a corporate marker, 8% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "MUNI_WA",
@@ -217,10 +229,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "https://wacities.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Association of Washington Cities"
+   "org_name_observed": "Association of Washington Cities",
+   "candidate_url": "https://wacities.org/partner-with-awc/exhibit",
+   "directory_note": "53 names, mixed (11% carry a corporate marker, 4% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "MUNI_CO",
@@ -234,7 +248,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.cml.org",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Colorado Municipal League"
@@ -251,7 +265,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.mma.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Massachusetts Municipal Association"
@@ -266,12 +280,14 @@
    "name_confidence": "named",
    "est_exhibitors": 100,
    "parent_national": "NLC",
-   "directory_url": null,
+   "directory_url": "http://www.nycom.org/training/exhibiting-sponsorship",
    "org_url": "http://www.nycom.org",
-   "status": "org_found",
-   "promoted": false,
+   "status": "directory_found",
+   "promoted": true,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "New York State Conference of Mayors and Municipal Officials"
+   "org_name_observed": "New York State Conference of Mayors and Municipal Officials",
+   "directory_note": "34 names, good (21% carry a corporate marker, 6% name a site section)",
+   "promoted_tag": "New York State Conference of Mayors and Muni 2027"
   },
   {
    "org_code": "MUNI_PA",
@@ -285,10 +301,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.pml.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Pennsylvania Municipal League"
+   "org_name_observed": "Pennsylvania Municipal League",
+   "candidate_url": "https://www.pml.org/municipal-leadership-summit/sponsorship/",
+   "directory_note": "72 names, mixed (6% carry a corporate marker, 8% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "MUNI_AZ",
@@ -302,7 +320,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.azleague.org",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "League of Arizona Cities and Towns"
@@ -319,10 +337,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.TML1.org",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Tennessee Municipal League"
+   "org_name_observed": "Tennessee Municipal League",
+   "candidate_url": "http://www.TML1.org/sponsors",
+   "directory_note": "43 names, mixed (14% carry a corporate marker, 5% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "MUNI_MO",
@@ -336,10 +356,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.mocities.com",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Missouri Municipal League"
+   "org_name_observed": "Missouri Municipal League",
+   "candidate_url": "https://pressrelations.nrx.io/bff/export/media_review/c4fd8d31-6083-418f-a5a0-188b57a8be3d",
+   "directory_note": "35 names, mixed (6% carry a corporate marker, 0% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "MUNI_IN",
@@ -353,7 +375,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "https://aimindiana.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Accelerate Indiana Municipalities"
@@ -368,12 +390,14 @@
    "name_confidence": "named",
    "est_exhibitors": 130,
    "parent_national": "NLC",
-   "directory_url": null,
+   "directory_url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
    "org_url": "http://www.mdmunicipal.org/",
-   "status": "org_found",
-   "promoted": false,
+   "status": "directory_found",
+   "promoted": true,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Maryland Municipal League"
+   "org_name_observed": "Maryland Municipal League",
+   "directory_note": "223 names, good (33% carry a corporate marker, 0% name a site section)",
+   "promoted_tag": "Maryland Municipal League 2026"
   },
   {
    "org_code": "MUNI_OR",
@@ -387,7 +411,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.orcities.org",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "League of Oregon Cities"
@@ -404,10 +428,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.ulct.org",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Utah League of Cities and Towns"
+   "org_name_observed": "Utah League of Cities and Towns",
+   "candidate_url": "https://www.ulct.utah.gov/sponsors/",
+   "directory_note": "40 names, mixed (8% carry a corporate marker, 2% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "MUNI_KY",
@@ -419,12 +445,14 @@
    "name_confidence": "named",
    "est_exhibitors": 100,
    "parent_national": "NLC",
-   "directory_url": null,
+   "directory_url": "http://www.klc.org/EventView/13331/klc-conference-expo",
    "org_url": "http://www.klc.org",
-   "status": "org_found",
-   "promoted": false,
+   "status": "directory_found",
+   "promoted": true,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Kentucky League of Cities"
+   "org_name_observed": "Kentucky League of Cities",
+   "directory_note": "47 names, good (17% carry a corporate marker, 6% name a site section)",
+   "promoted_tag": "Kentucky League of Cities 2026"
   },
   {
    "org_code": "MUNI_SC",
@@ -438,10 +466,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.masc.sc",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Municipal Association of South Carolina"
+   "org_name_observed": "Municipal Association of South Carolina",
+   "candidate_url": "http://www.masc.sc/association/sponsorship-opportunities",
+   "directory_note": "93 names, mixed (9% carry a corporate marker, 10% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "MUNI_AL",
@@ -455,10 +485,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "https://almonline.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Alabama League of Municipalities"
+   "org_name_observed": "Alabama League of Municipalities",
+   "candidate_url": "https://almonline.org/EventSponsor.aspx",
+   "directory_note": "106 names, mixed (9% carry a corporate marker, 6% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "MUNI_OK",
@@ -472,7 +504,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.oml.org",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Oklahoma Municipal League Inc"
@@ -489,7 +521,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.iowaleague.org",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Iowa League of Cities"
@@ -506,10 +538,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.arml.org",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Arkansas Municipal League"
+   "org_name_observed": "Arkansas Municipal League",
+   "candidate_url": "https://citysummit.nlc.org/sponsorship/",
+   "directory_note": "the sponsor list on this page is a picture (https://citysummit.nlc.org/wp-content/uploads/2026/02/exhibitor-prospectus-cover-1.png) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "MUNI_CT",
@@ -521,12 +555,14 @@
    "name_confidence": "named",
    "est_exhibitors": 80,
    "parent_national": "NLC",
-   "directory_url": null,
+   "directory_url": "https://www.ccm-ct.org/Member-Benefits/Events/2026-Emergency-Management-Symposium/2026-CT-EMS-Exhibitors-Sponsors",
    "org_url": "http://www.ccm-ct.org",
-   "status": "org_found",
-   "promoted": false,
+   "status": "directory_found",
+   "promoted": true,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Connecticut Conference of Municipalities"
+   "org_name_observed": "Connecticut Conference of Municipalities",
+   "directory_note": "105 names, good (19% carry a corporate marker, 6% name a site section)",
+   "promoted_tag": "Connecticut Conference of Municipalities 2026"
   },
   {
    "org_code": "MUNI_ME",
@@ -540,7 +576,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.memun.org",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Maine Municipal Association"
@@ -557,7 +593,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.nmml.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "New Mexico Municipal League"
@@ -574,10 +610,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.lma.org",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Louisiana Municipal Association"
+   "org_name_observed": "Louisiana Municipal Association",
+   "candidate_url": "http://www.lma.org/Shared_Content/Events/Event_Display.aspx?EventKey=EXLMCI2026",
+   "directory_note": "the sponsor list on this page is a picture (/images/lmci/lmci 2025/Sponsor Benefits.png) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "MUNI_AR",
@@ -591,10 +629,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.arml.org",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Arkansas Municipal League"
+   "org_name_observed": "Arkansas Municipal League",
+   "candidate_url": "https://citysummit.nlc.org/sponsorship/",
+   "directory_note": "the sponsor list on this page is a picture (https://citysummit.nlc.org/wp-content/uploads/2026/02/exhibitor-prospectus-cover-1.png) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "MUNI_MS",
@@ -608,7 +648,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.mmlonline.com",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Mississippi Municipal League"
@@ -625,7 +665,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.lonm.org",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "League of Nebraska Municipalities"
@@ -642,10 +682,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.vml.org",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Virginia Municipal League"
+   "org_name_observed": "Virginia Municipal League",
+   "candidate_url": "https://www.vml.org/Community-Engagement/Advertising-Sponsorship",
+   "directory_note": "62 names, mixed (10% carry a corporate marker, 8% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "MUNI_NV",
@@ -659,7 +701,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "https://nvleague.com/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Nevada League of Cities and Municipalities"
@@ -676,7 +718,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.idahocities.org",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Association of Idaho Cities"
@@ -693,7 +735,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "https://mtleague.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Montana League of Cities and Towns"
@@ -708,12 +750,14 @@
    "name_confidence": "named",
    "est_exhibitors": 60,
    "parent_national": "NLC",
-   "directory_url": null,
+   "directory_url": "http://www.vlct.org/vlcts-business-alliance-program",
    "org_url": "http://www.vlct.org",
-   "status": "org_found",
-   "promoted": false,
+   "status": "directory_found",
+   "promoted": true,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Vermont League of Cities and Towns"
+   "org_name_observed": "Vermont League of Cities and Towns",
+   "directory_note": "123 names, good (15% carry a corporate marker, 5% name a site section)",
+   "promoted_tag": "Vermont League of Cities and Towns 2027"
   },
   {
    "org_code": "MUNI_NH",
@@ -727,10 +771,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "https://www.nhmunicipal.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "New Hampshire Municipal Association"
+   "org_name_observed": "New Hampshire Municipal Association",
+   "candidate_url": "https://www.nhmunicipal.org/marketplace",
+   "directory_note": "90 names, mixed (9% carry a corporate marker, 6% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "MUNI_RI",
@@ -744,7 +790,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.rileague.org",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Rhode Island League of Cities and Towns"
@@ -761,10 +807,12 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.akml.org",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
-   "org_name_observed": "Alaska Municipal League"
+   "org_name_observed": "Alaska Municipal League",
+   "candidate_url": "https://www.akml.org/sponsorship/",
+   "directory_note": "86 names, mixed (13% carry a corporate marker, 1% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "MUNI_SD",
@@ -778,7 +826,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.sdmunicipalleague.org",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "South Dakota Municipal League"
@@ -795,7 +843,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.ndlc.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "North Dakota League of Cities"
@@ -812,7 +860,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "http://www.wyomuni.org",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Wyoming Association of Municipalities"
@@ -829,7 +877,7 @@
    "parent_national": "NLC",
    "directory_url": null,
    "org_url": "https://www.dllg.us/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.nlc.org/membership/state-municipal-leagues/",
    "org_name_observed": "Delaware League of Local Governments"
@@ -846,7 +894,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.csac.counties.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "California State Association of Counties"
@@ -863,7 +911,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.county.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "Texas Association of Counties"
@@ -880,10 +928,12 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.fl-counties.com/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
-   "org_name_observed": "Florida Association of Counties"
+   "org_name_observed": "Florida Association of Counties",
+   "candidate_url": "https://www.fl-counties.com/2026-innovation-and-policy-sponsorships/",
+   "directory_note": "the sponsor list on this page is a picture (https://cdn-fhofm.nitrocdn.com/RNbfIjwypaBHiHyqkmPvmZGbgAvyeYXi/assets/images/optimized/re) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "CNTY_NY",
@@ -897,7 +947,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.nysac.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "New York State Association of Counties"
@@ -912,12 +962,14 @@
    "name_confidence": "named",
    "est_exhibitors": 120,
    "parent_national": "NACO",
-   "directory_url": null,
+   "directory_url": "http://www.pacounties.org/vendors",
    "org_url": "http://www.pacounties.org/",
-   "status": "org_found",
-   "promoted": false,
+   "status": "directory_found",
+   "promoted": true,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
-   "org_name_observed": "County Commissioners Association of Pennsylvania"
+   "org_name_observed": "County Commissioners Association of Pennsylvania",
+   "directory_note": "59 names, good (25% carry a corporate marker, 5% name a site section)",
+   "promoted_tag": "County Commissioners Association of Pennsylv 2026"
   },
   {
    "org_code": "CNTY_OH",
@@ -931,7 +983,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.ccao.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "County Commissioners Association of Ohio"
@@ -946,12 +998,14 @@
    "name_confidence": "named",
    "est_exhibitors": 130,
    "parent_national": "NACO",
-   "directory_url": null,
+   "directory_url": "https://marketplace.accg.org/",
    "org_url": "http://www.accg.org/",
-   "status": "org_found",
-   "promoted": false,
+   "status": "directory_found",
+   "promoted": true,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
-   "org_name_observed": "ACCG \u2013 Advancing Georgia's Counties"
+   "org_name_observed": "ACCG \u2013 Advancing Georgia's Counties",
+   "directory_note": "17 names, good (18% carry a corporate marker, 0% name a site section)",
+   "promoted_tag": "ACCG Advancing Georgia's Counties 2026"
   },
   {
    "org_code": "CNTY_NC",
@@ -965,7 +1019,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.ncacc.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "North Carolina Association of County Commissioners"
@@ -982,7 +1036,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.micounties.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "Michigan Association of Counties"
@@ -999,7 +1053,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.vaco.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "Virginia Association of Counties"
@@ -1016,7 +1070,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://countyofficials.org/index.html",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "Washington Association of County Officials"
@@ -1033,7 +1087,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.ccionline.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "Colorado Counties, Inc."
@@ -1050,7 +1104,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.mncounties.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "Association of Minnesota Counties"
@@ -1065,12 +1119,14 @@
    "name_confidence": "named",
    "est_exhibitors": 90,
    "parent_national": "NACO",
-   "directory_url": null,
+   "directory_url": "https://www.iowacounties.org/member-resources/vendor-directory/",
    "org_url": "http://www.iowacounties.org/",
-   "status": "org_found",
-   "promoted": false,
+   "status": "directory_found",
+   "promoted": true,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
-   "org_name_observed": "Iowa State Association of Counties"
+   "org_name_observed": "Iowa State Association of Counties",
+   "directory_note": "100 names, good (25% carry a corporate marker, 3% name a site section)",
+   "promoted_tag": "Iowa State Association of Counties 2026"
   },
   {
    "org_code": "CNTY_WI",
@@ -1082,12 +1138,13 @@
    "name_confidence": "named",
    "est_exhibitors": 90,
    "parent_national": "NACO",
-   "directory_url": null,
+   "directory_url": "https://www.wicounties.org/conference/",
    "org_url": "http://www.wicounties.org/",
-   "status": "org_found",
+   "status": "directory_found",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
-   "org_name_observed": "Wisconsin Counties Association"
+   "org_name_observed": "Wisconsin Counties Association",
+   "directory_note": "8 names, good (25% carry a corporate marker, 0% name a site section)"
   },
   {
    "org_code": "CNTY_IN",
@@ -1101,10 +1158,12 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.indianacounties.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
-   "org_name_observed": "Association of Indiana Counties"
+   "org_name_observed": "Association of Indiana Counties",
+   "candidate_url": "http://www.indianacounties.org/auditors-vendors.html",
+   "directory_note": "44 names, mixed (9% carry a corporate marker, 7% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "CNTY_MO",
@@ -1118,7 +1177,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.mocounties.com/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "Missouri Association of Counties"
@@ -1135,10 +1194,12 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.tncounties.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
-   "org_name_observed": "Tennessee County Services Association"
+   "org_name_observed": "Tennessee County Services Association",
+   "candidate_url": "https://tncounties.org/events/trade-show/",
+   "directory_note": "31 names, mixed (6% carry a corporate marker, 3% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "CNTY_AL",
@@ -1152,7 +1213,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.alabamacounties.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "Association of County Commissions of Alabama"
@@ -1169,7 +1230,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://oregoncounties.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "Association of Oregon Counties"
@@ -1186,7 +1247,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.arcounties.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "Association of Arkansas Counties"
@@ -1203,7 +1264,7 @@
    "parent_national": "NACO",
    "directory_url": null,
    "org_url": "http://www.sccounties.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations",
    "org_name_observed": "South Carolina Association of Counties"
@@ -1220,7 +1281,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.cprs.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "California Park and Recreation Society"
@@ -1237,10 +1298,12 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.traps.org/",
-   "status": "org_found",
+   "status": "parents_event",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
-   "org_name_observed": "Texas Recreation and Park Society"
+   "org_name_observed": "Texas Recreation and Park Society",
+   "candidate_url": "https://institute.traps.org/sponsors-exhibitors/",
+   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
   },
   {
    "org_code": "PARK_IL",
@@ -1254,7 +1317,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.ilparks.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "Illinois Association of Park Districts"
@@ -1271,7 +1334,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.frpa.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "Florida Recreation and Park Association"
@@ -1288,10 +1351,12 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.njrpa.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
-   "org_name_observed": "New Jersey Recreation and Park Association"
+   "org_name_observed": "New Jersey Recreation and Park Association",
+   "candidate_url": "https://njrpa.org/Sponsors",
+   "directory_note": "38 names, mixed (5% carry a corporate marker, 5% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "PARK_PA",
@@ -1305,7 +1370,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.prps.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "Pennsylvania Recreation and Parks Society"
@@ -1322,7 +1387,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "https://newyorkstaterecreationampparksociety.wildapricot.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "New York State Recreation and Parks Society"
@@ -1339,10 +1404,12 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.grpa.org/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
-   "org_name_observed": "Georgia Recreation and Park Association"
+   "org_name_observed": "Georgia Recreation and Park Association",
+   "candidate_url": "https://georgiarecreationandparkassociation.growthzoneapp.com/ap/Events/Register/XqFEa9liMHDCz",
+   "directory_note": "the sponsor list on this page is a picture ({{vm.EventSettings.ExhibitorImage.Url}}) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "PARK_NC",
@@ -1356,7 +1423,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.ncrpa.net",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "North Carolina Recreation and Park Association"
@@ -1373,10 +1440,12 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "https://www.mparks.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
-   "org_name_observed": "Michigan Recreation and Park Association"
+   "org_name_observed": "Michigan Recreation and Park Association",
+   "candidate_url": "https://www.mparks.org/conference.html",
+   "directory_note": "71 names, mixed (13% carry a corporate marker, 7% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "PARK_OH",
@@ -1390,7 +1459,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.opraonline.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "Ohio Parks and Recreation Association"
@@ -1407,7 +1476,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.vrps.com/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "Virginia Recreation and Park Society"
@@ -1422,12 +1491,14 @@
    "name_confidence": "named",
    "est_exhibitors": 80,
    "parent_national": "NRPA",
-   "directory_url": null,
+   "directory_url": "http://www.wrpatoday.org/sponsors",
    "org_url": "http://www.wrpatoday.org/",
-   "status": "org_found",
-   "promoted": false,
+   "status": "directory_found",
+   "promoted": true,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
-   "org_name_observed": "Washington Recreation and Park Association"
+   "org_name_observed": "Washington Recreation and Park Association",
+   "directory_note": "40 names, good (15% carry a corporate marker, 8% name a site section)",
+   "promoted_tag": "Washington Recreation and Park Association 2027"
   },
   {
    "org_code": "PARK_CO",
@@ -1441,7 +1512,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "https://www.cpra-web.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "Colorado Parks and Recreation Association"
@@ -1458,10 +1529,12 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.mnrpa.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
-   "org_name_observed": "Minnesota Recreation and Park Association"
+   "org_name_observed": "Minnesota Recreation and Park Association",
+   "candidate_url": "https://mnrpa.org/Sponsorships",
+   "directory_note": "51 names, mixed (6% carry a corporate marker, 6% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "PARK_AZ",
@@ -1475,10 +1548,12 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.azpra.org/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
-   "org_name_observed": "Arizona Parks and Recreation Association"
+   "org_name_observed": "Arizona Parks and Recreation Association",
+   "candidate_url": "https://azpra.org/annual-conference/exhibitors-sponsors/",
+   "directory_note": "the sponsor list on this page is a picture (https://growthzonecmsprodeastus.azureedge.net/sites/2276/2025/10/2026-Sponsorship-Deck.jpg) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "PARK_MO",
@@ -1492,10 +1567,12 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.mopark.org/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
-   "org_name_observed": "Missouri Park and Recreation Association"
+   "org_name_observed": "Missouri Park and Recreation Association",
+   "candidate_url": "https://www.mopark.org/marketing-and-sponsorship-opportunities/",
+   "directory_note": "the sponsor list on this page is a picture (data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABPsAAAT3AQAAAAC3XUjhAAAAAnRSTlMAAHaTzTgAAADd) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "PARK_IN",
@@ -1509,10 +1586,12 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.inpra.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
-   "org_name_observed": "Indiana Park and Recreation Association"
+   "org_name_observed": "Indiana Park and Recreation Association",
+   "candidate_url": "http://www.inpra.org/conference-expo",
+   "directory_note": "41 names, mixed (7% carry a corporate marker, 2% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "PARK_TN",
@@ -1526,10 +1605,12 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.trpa.net/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
-   "org_name_observed": "Tennessee Recreation and Parks Association"
+   "org_name_observed": "Tennessee Recreation and Parks Association",
+   "candidate_url": "https://members.trpa.net/ap/Events/Register/kgF3m40CeHVC1",
+   "directory_note": "the sponsor list on this page is a picture ({{vm.EventSettings.ExhibitorImage.Url}}) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "PARK_SC",
@@ -1543,7 +1624,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "https://www.scrpa.org/default.aspx",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "South Carolina Recreation and Parks Association"
@@ -1560,7 +1641,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.wpraweb.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "Wisconsin Park and Recreation Association"
@@ -1577,10 +1658,12 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.mrpanet.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
-   "org_name_observed": "Maryland Recreation and Parks Association"
+   "org_name_observed": "Maryland Recreation and Parks Association",
+   "candidate_url": "https://mdrpa.org/exhibitors-sponsors/",
+   "directory_note": "36 names, mixed (6% carry a corporate marker, 8% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "PARK_UT",
@@ -1594,7 +1677,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "http://www.urpa.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "Utah Recreation and Parks Association"
@@ -1611,7 +1694,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "https://www.iapra.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "Iowa Park and Recreation Association"
@@ -1628,7 +1711,7 @@
    "parent_national": "NRPA",
    "directory_url": null,
    "org_url": "https://www.orpa.org/default.aspx",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/",
    "org_name_observed": "Oregon Recreation and Park Association"
@@ -2020,10 +2103,12 @@
    "parent_national": "WEF",
    "directory_url": null,
    "org_url": "http://www.cwea.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.wef.org/membership--community/membership-center/wef-member-associations/ma-resource-center/wef-member-associations-contacts/",
-   "org_name_observed": "(the link following 'california' on the listing)"
+   "org_name_observed": "(the link following 'california' on the listing)",
+   "candidate_url": "https://www.cwea.org/conferences/exhibitor-sponsorship/",
+   "directory_note": "101 names, mixed (6% carry a corporate marker, 5% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "WTR_CANV",
@@ -2035,12 +2120,13 @@
    "name_confidence": "named",
    "est_exhibitors": 200,
    "parent_national": "AWWA",
-   "directory_url": null,
    "org_url": "https://ace.awwa.org/",
-   "status": "org_found",
+   "status": "parents_event",
    "promoted": false,
    "org_url_source": "https://www.awwa.org/local-sections/",
-   "org_name_observed": "Annual Conference & Expo June 13-16, 2027 San Diego, California"
+   "org_name_observed": "Annual Conference & Expo June 13-16, 2027 San Diego, California",
+   "directory_note": "ace.awwa.org is AWWA's own national ACE conference, a subdomain of the parent - the page names California zero times and is titled 'Become an Exhibitor - American Water Works Association'. The CA-NV Section's own site is elsewhere.",
+   "candidate_url": "https://ace.awwa.org/exhibitors-sponsors/"
   },
   {
    "org_code": "WTR_TX",
@@ -2054,7 +2140,7 @@
    "parent_national": "AWWA",
    "directory_url": null,
    "org_url": "http://www.tawwa.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.awwa.org/local-sections/",
    "org_name_observed": "Texas Section"
@@ -2071,7 +2157,7 @@
    "parent_national": "AWWA",
    "directory_url": null,
    "org_url": "http://www.fsawwa.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.awwa.org/local-sections/",
    "org_name_observed": "Florida Section"
@@ -2088,10 +2174,12 @@
    "parent_national": "WEF",
    "directory_url": null,
    "org_url": "http://www.fwea.org/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.wef.org/membership--community/membership-center/wef-member-associations/ma-resource-center/wef-member-associations-contacts/",
-   "org_name_observed": "(the link following 'florida' on the listing)"
+   "org_name_observed": "(the link following 'florida' on the listing)",
+   "candidate_url": "https://www.fwea.org/chapter_sponsorships.php",
+   "directory_note": "the sponsor list on this page is a picture (https://fwea.org/photos/Key_Sponsor_Benefits-Chapters_04152025115610.PNG) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "WTR_VA",
@@ -2105,10 +2193,12 @@
    "parent_national": "AWWA",
    "directory_url": null,
    "org_url": "http://www.vaawwa.org/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.awwa.org/local-sections/",
-   "org_name_observed": "Virginia Section"
+   "org_name_observed": "Virginia Section",
+   "candidate_url": "http://www.vaawwa.org/page/corporate-sponsors",
+   "directory_note": "the sponsor list on this page is a picture (https://clubrunner.blob.core.windows.net/00000305562/tiny/Images/Sponsors/Timmons-Group.pn) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "WTR_NC",
@@ -2122,7 +2212,7 @@
    "parent_national": "AWWA",
    "directory_url": null,
    "org_url": "http://www.ncsafewater.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.awwa.org/local-sections/",
    "org_name_observed": "North Carolina Section"
@@ -2154,10 +2244,12 @@
    "parent_national": "WEF",
    "directory_url": null,
    "org_url": "http://www.ohiowea.org",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.wef.org/membership--community/membership-center/wef-member-associations/ma-resource-center/wef-member-associations-contacts/",
-   "org_name_observed": "Web Site"
+   "org_name_observed": "Web Site",
+   "candidate_url": "https://www.ohiowea.org/sponsor.php",
+   "directory_note": "42 names, mixed (10% carry a corporate marker, 7% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "WTR_NY",
@@ -2171,7 +2263,7 @@
    "parent_national": "WEF",
    "directory_url": null,
    "org_url": "http://www.nywea.org",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.wef.org/membership--community/membership-center/wef-member-associations/ma-resource-center/wef-member-associations-contacts/",
    "org_name_observed": "(the link following 'new york' on the listing)"
@@ -2188,7 +2280,7 @@
    "parent_national": "WEF",
    "directory_url": null,
    "org_url": "http://www.njwea.org",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.wef.org/membership--community/membership-center/wef-member-associations/ma-resource-center/wef-member-associations-contacts/",
    "org_name_observed": "(the link following 'new jersey' on the listing)"
@@ -2205,7 +2297,7 @@
    "parent_national": "AWWA",
    "directory_url": null,
    "org_url": "http://www.paawwa.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.awwa.org/local-sections/",
    "org_name_observed": "Pennsylvania Section"
@@ -2222,7 +2314,7 @@
    "parent_national": "AWWA",
    "directory_url": null,
    "org_url": "http://www.isawwa.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.awwa.org/local-sections/",
    "org_name_observed": "Illinois Section"
@@ -2239,7 +2331,7 @@
    "parent_national": "AWWA",
    "directory_url": null,
    "org_url": "https://www.mi-water.org",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.awwa.org/local-sections/",
    "org_name_observed": "www.mi-water.org"
@@ -2256,7 +2348,7 @@
    "parent_national": "AWWA",
    "directory_url": null,
    "org_url": "http://www.gawwa.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.awwa.org/local-sections/",
    "org_name_observed": "Georgia Section"
@@ -2273,7 +2365,7 @@
    "parent_national": "AWWA",
    "directory_url": null,
    "org_url": "https://www.azwater.org/default.aspx",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.awwa.org/local-sections/",
    "org_name_observed": "Arizona Section"
@@ -2290,10 +2382,12 @@
    "parent_national": "AWWA",
    "directory_url": null,
    "org_url": "http://www.rmsawwa.org/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.awwa.org/local-sections/",
-   "org_name_observed": "Rocky Mountain AWWA Section Annual Conference Aug. 30-Sep. 2, 2026 Keystone, CO"
+   "org_name_observed": "Rocky Mountain AWWA Section Annual Conference Aug. 30-Sep. 2, 2026 Keystone, CO",
+   "candidate_url": "http://www.rmsawwa.org/section-sponsors",
+   "directory_note": "the sponsor list on this page is a picture (https://rmsawwa.memberclicks.net/assets/images/sponsors/20250609-_AEW0657.jpg) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "WTR_MO",
@@ -2307,7 +2401,7 @@
    "parent_national": "WEF",
    "directory_url": null,
    "org_url": "http://www.mwea.org",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.wef.org/membership--community/membership-center/wef-member-associations/ma-resource-center/wef-member-associations-contacts/",
    "org_name_observed": "(the link following 'missouri' on the listing)"
@@ -2339,7 +2433,7 @@
    "parent_national": "SWANA",
    "directory_url": null,
    "org_url": "https://www.swanacal.com/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://swana.org/community/chapters/chapter-contacts",
    "org_name_observed": "Central California Sierra Chapter"
@@ -2356,7 +2450,7 @@
    "parent_national": "SWANA",
    "directory_url": null,
    "org_url": "https://txswana.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://swana.org/community/chapters/chapter-contacts",
    "org_name_observed": "Texas Lone Star Chapter"
@@ -2373,7 +2467,7 @@
    "parent_national": "SWANA",
    "directory_url": null,
    "org_url": "https://swanafl.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://swana.org/community/chapters/chapter-contacts",
    "org_name_observed": "Florida Sunshine Chapter"
@@ -2390,7 +2484,7 @@
    "parent_national": "SWANA",
    "directory_url": null,
    "org_url": "https://swananys.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://swana.org/community/chapters/chapter-contacts",
    "org_name_observed": "New York Chapter"
@@ -2407,10 +2501,12 @@
    "parent_national": "SWANA",
    "directory_url": null,
    "org_url": "https://keystoneswana.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://swana.org/community/chapters/chapter-contacts",
-   "org_name_observed": "Pennsylvania Keystone Chapter"
+   "org_name_observed": "Pennsylvania Keystone Chapter",
+   "candidate_url": "https://keystoneswana.org/annual-fall-conference/exhibitors/",
+   "directory_note": "21 names, mixed (10% carry a corporate marker, 5% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "SWANA_IL",
@@ -2424,7 +2520,7 @@
    "parent_national": "SWANA",
    "directory_url": null,
    "org_url": "https://swanaillinois.com/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://swana.org/community/chapters/chapter-contacts",
    "org_name_observed": "Illinois Land of Lincoln Chapter"
@@ -2441,10 +2537,12 @@
    "parent_national": "SWANA",
    "directory_url": null,
    "org_url": "https://swanaohio.org/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://swana.org/community/chapters/chapter-contacts",
-   "org_name_observed": "Ohio Buckeye Chapter"
+   "org_name_observed": "Ohio Buckeye Chapter",
+   "candidate_url": "https://swanaohio.org/2026_Golf_Scramble_Sponsors",
+   "directory_note": "the sponsor list on this page is a picture (images/sponsors/Silver_Sponsorship_Image.png) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "SWANA_GA",
@@ -2458,7 +2556,7 @@
    "parent_national": "SWANA",
    "directory_url": null,
    "org_url": "https://gaswana.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://swana.org/community/chapters/chapter-contacts",
    "org_name_observed": "Georgia Chapter"
@@ -2475,7 +2573,7 @@
    "parent_national": "SWANA",
    "directory_url": null,
    "org_url": "https://ncswana.org/?_gl=1*14y1z6w*_gcl_au*MTQ0MDM2NzM5OS4xNzIyMzcyOTE2LjQzNTQzNzgwMy4xNzI2NjkyNTc2LjE3MjY2OTI1NzY.",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://swana.org/community/chapters/chapter-contacts",
    "org_name_observed": "North Carolina Chapter"
@@ -2492,7 +2590,7 @@
    "parent_national": "SWANA",
    "directory_url": null,
    "org_url": "https://swanami.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://swana.org/community/chapters/chapter-contacts",
    "org_name_observed": "Michigan Chapter"
@@ -2669,7 +2767,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "http://www.cmta.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "California Municipal Treasurers Association (CMTA)"
@@ -2686,7 +2784,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "http://www.cmta.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "California Municipal Treasurers Association (CMTA)"
@@ -2703,10 +2801,12 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://gfoat.org/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
-   "org_name_observed": "GFOA of Texas"
+   "org_name_observed": "GFOA of Texas",
+   "candidate_url": "https://gfoat.org/sponsors/",
+   "directory_note": "the sponsor list on this page is a picture (https://gfoat.org/wp-content/uploads/2026/04/Sponsor-SecurityState.jpg) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "FIN_FL",
@@ -2720,7 +2820,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://www.fgfoa.org",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "Florida GFOA"
@@ -2737,7 +2837,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://www.igfoa.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "Illinois GFOA"
@@ -2754,7 +2854,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://www.nysgfoa.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "New York State GFOA"
@@ -2771,7 +2871,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://gfoapa.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "Pennsylvania GFOA"
@@ -2788,10 +2888,12 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://www.ncgfoa.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
-   "org_name_observed": "North Carolina GFOA"
+   "org_name_observed": "North Carolina GFOA",
+   "candidate_url": "https://ncgfoa.org/resources/",
+   "directory_note": "87 names, mixed (8% carry a corporate marker, 3% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "FIN_VA",
@@ -2805,7 +2907,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://www.vgfoa.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "Virginia GFOA"
@@ -2822,7 +2924,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://ggfoa.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "Georgia GFOA"
@@ -2839,10 +2941,12 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://www.ohgfoa.com/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
-   "org_name_observed": "Ohio GFOA"
+   "org_name_observed": "Ohio GFOA",
+   "candidate_url": "https://www.ohgfoa.com/sponsors-and-exhibitors",
+   "directory_note": "the sponsor list on this page is a picture (/assets/2026sponsors/Baker Tilly 2026.png) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "FIN_MI",
@@ -2856,7 +2960,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://www.migfoa.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "Michigan GFOA"
@@ -2873,7 +2977,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://gfoawma.wildapricot.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "Washington DC Metro Area GFOA"
@@ -2890,7 +2994,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://gfoaz.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "GFOA of Arizona"
@@ -2907,7 +3011,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://cgfoa.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "Colorado GFOA"
@@ -2924,7 +3028,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://www.gfoanj.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "New Jersey GFOA"
@@ -2941,10 +3045,12 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://www.mngfoa.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
-   "org_name_observed": "Minnesota GFOA"
+   "org_name_observed": "Minnesota GFOA",
+   "candidate_url": "https://mngfoa.org/Annual_Conference_Sponsorship",
+   "directory_note": "19 names, mixed (5% carry a corporate marker, 5% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "FIN_MO",
@@ -2958,7 +3064,7 @@
    "parent_national": "GFOA",
    "directory_url": null,
    "org_url": "https://www.moccfoa.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.gfoa.org/state-provincial-gfoa/sponsors",
    "org_name_observed": "Missouri City Clerks & Finance Officers Association (MoCCFOA)"
@@ -2989,10 +3095,12 @@
    "parent_national": "NIGP",
    "directory_url": null,
    "org_url": "https://www.nigp.org/directory/chapters/4aab81bb-2266-4909-abec-c8d1a67f9a6f",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.nigp.org/directory/chapters",
-   "org_name_observed": "Central Florida Chapter of NIGP"
+   "org_name_observed": "Central Florida Chapter of NIGP",
+   "candidate_url": "https://www.nigp.org/events/annual-forum-and-products-exposition/forum2026",
+   "directory_note": "the sponsor list on this page is a picture (https://s3.us-east-1.amazonaws.com/nigp-prod-media/assets/images/0-New Navigation/Spotligh) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "PRC_TX",
@@ -3036,10 +3144,12 @@
    "parent_national": "NIGP",
    "directory_url": null,
    "org_url": "http://capavirginia.org",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.nigp.org/directory/chapters",
-   "org_name_observed": "capavirginia.org"
+   "org_name_observed": "capavirginia.org",
+   "candidate_url": "https://eva.virginia.gov/",
+   "directory_note": "46 names, mixed (13% carry a corporate marker, 2% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "PRC_MI",
@@ -3083,10 +3193,12 @@
    "parent_national": "NIGP",
    "directory_url": null,
    "org_url": "https://www.nigp.org/directory/chapters/17d1da42-f70f-463f-8804-8b22300c19e8",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.nigp.org/directory/chapters",
-   "org_name_observed": "Coastal Georgia Chapter of NIGP"
+   "org_name_observed": "Coastal Georgia Chapter of NIGP",
+   "candidate_url": "https://www.nigp.org/events/annual-forum-and-products-exposition/forum2026",
+   "directory_note": "the sponsor list on this page is a picture (https://s3.us-east-1.amazonaws.com/nigp-prod-media/assets/images/0-New Navigation/Spotligh) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "PRC_AZ",
@@ -3100,10 +3212,12 @@
    "parent_national": "NIGP",
    "directory_url": null,
    "org_url": "https://www.nigp.org/directory/chapters/f64b9b8f-c032-44aa-bec8-c433453e86ab",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.nigp.org/directory/chapters",
-   "org_name_observed": "Arizona State Capitol Chapter of NIGP"
+   "org_name_observed": "Arizona State Capitol Chapter of NIGP",
+   "candidate_url": "https://www.nigp.org/events/annual-forum-and-products-exposition/forum2026",
+   "directory_note": "the sponsor list on this page is a picture (https://s3.us-east-1.amazonaws.com/nigp-prod-media/assets/images/0-New Navigation/Spotligh) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "PRC_WA",
@@ -3683,7 +3797,7 @@
    "promoted": false,
    "org_url_source": "https://www.theiacp.org/working-group/sections",
    "candidate_url": "https://events.rdmobile.com/Exhibitors/Index/20070",
-   "directory_note": "this list does not name the state anywhere - it reads as the national parent's event, not this chapter's"
+   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
   },
   {
    "org_code": "PCA_MI",
@@ -3873,7 +3987,7 @@
    "parent_national": "NSA",
    "directory_url": null,
    "org_url": "https://www.calsheriffs.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.sheriffs.org/state-sheriffs-associations/",
    "org_name_observed": "(the link following 'california' on the listing)"
@@ -3890,7 +4004,7 @@
    "parent_national": "NSA",
    "directory_url": null,
    "org_url": "https://www.sheriffstx.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.sheriffs.org/state-sheriffs-associations/",
    "org_name_observed": "(the link following 'texas' on the listing)"
@@ -3905,12 +4019,13 @@
    "name_confidence": "pattern",
    "est_exhibitors": 70,
    "parent_national": "NSA",
-   "directory_url": null,
+   "directory_url": "https://www.flsheriffs.org/get-involved/upcoming-events/annual-partners-sponsors/",
    "org_url": "https://www.flsheriffs.org/",
-   "status": "org_found",
+   "status": "directory_found",
    "promoted": false,
    "org_url_source": "https://www.sheriffs.org/state-sheriffs-associations/",
-   "org_name_observed": "(the link following 'florida' on the listing)"
+   "org_name_observed": "(the link following 'florida' on the listing)",
+   "directory_note": "135 names, good (21% carry a corporate marker, 3% name a site section)"
   },
   {
    "org_code": "SHF_NY",
@@ -3924,7 +4039,7 @@
    "parent_national": "NSA",
    "directory_url": null,
    "org_url": "https://nysheriffs.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.sheriffs.org/state-sheriffs-associations/",
    "org_name_observed": "(the link following 'new york' on the listing)"
@@ -3941,7 +4056,7 @@
    "parent_national": "NSA",
    "directory_url": null,
    "org_url": "https://www.pasheriffs.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.sheriffs.org/state-sheriffs-associations/",
    "org_name_observed": "(the link following 'pennsylvania' on the listing)"
@@ -3988,10 +4103,12 @@
    "parent_national": "NSA",
    "directory_url": null,
    "org_url": "https://georgiasheriffs.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.sheriffs.org/state-sheriffs-associations/",
-   "org_name_observed": "https://georgiasheriffs.org/"
+   "org_name_observed": "https://georgiasheriffs.org/",
+   "candidate_url": "https://georgiasheriffs.org/programs-services/vendor-opportunities/",
+   "directory_note": "50 names, mixed (8% carry a corporate marker, 4% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "SHF_NC",
@@ -4003,12 +4120,14 @@
    "name_confidence": "pattern",
    "est_exhibitors": 70,
    "parent_national": "NSA",
-   "directory_url": null,
+   "directory_url": "https://ncsheriffs.org/corporate-partners-and-sponsors-2026",
    "org_url": "https://ncsheriffs.org/",
-   "status": "org_found",
-   "promoted": false,
+   "status": "directory_found",
+   "promoted": true,
    "org_url_source": "https://www.sheriffs.org/state-sheriffs-associations/",
-   "org_name_observed": "(the link following 'north carolina' on the listing)"
+   "org_name_observed": "(the link following 'north carolina' on the listing)",
+   "directory_note": "130 names, good (18% carry a corporate marker, 1% name a site section)",
+   "promoted_tag": "North Carolina Sheriffs' Association 2026"
   },
   {
    "org_code": "SHF_MI",
@@ -4020,12 +4139,14 @@
    "name_confidence": "pattern",
    "est_exhibitors": 70,
    "parent_national": "NSA",
-   "directory_url": null,
+   "directory_url": "https://www.misheriff.org/vendors/",
    "org_url": "https://www.misheriff.org/",
-   "status": "org_found",
-   "promoted": false,
+   "status": "directory_found",
+   "promoted": true,
    "org_url_source": "https://www.sheriffs.org/state-sheriffs-associations/",
-   "org_name_observed": "(the link following 'michigan' on the listing)"
+   "org_name_observed": "(the link following 'michigan' on the listing)",
+   "directory_note": "117 names, good (36% carry a corporate marker, 2% name a site section)",
+   "promoted_tag": "Michigan Sheriffs Association 2026"
   },
   {
    "org_code": "FCA_CA",
@@ -4279,7 +4400,7 @@
    "parent_national": "APCO",
    "directory_url": null,
    "org_url": "http://www.napco.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.apcointl.org/community/chapters/",
    "org_name_observed": "Northern California"
@@ -4296,7 +4417,7 @@
    "parent_national": "APCO",
    "directory_url": null,
    "org_url": "http://www.txapco.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.apcointl.org/community/chapters/",
    "org_name_observed": "Texas"
@@ -4313,7 +4434,7 @@
    "parent_national": "APCO",
    "directory_url": null,
    "org_url": "https://floridaapco.org",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.apcointl.org/community/chapters/",
    "org_name_observed": "Florida"
@@ -4345,7 +4466,7 @@
    "parent_national": "APCO",
    "directory_url": null,
    "org_url": "http://paapco.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.apcointl.org/community/chapters/",
    "org_name_observed": "Pennsylvania"
@@ -4362,10 +4483,12 @@
    "parent_national": "APCO",
    "directory_url": null,
    "org_url": "http://www.ilapco.org",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.apcointl.org/community/chapters/",
-   "org_name_observed": "Illinois"
+   "org_name_observed": "Illinois",
+   "candidate_url": "https://911conference.org/151/For-Exhibitors",
+   "directory_note": "23 names, mixed (9% carry a corporate marker, 0% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "APCOCH_OH",
@@ -4379,10 +4502,12 @@
    "parent_national": "APCO",
    "directory_url": null,
    "org_url": "http://www.ohioapco.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.apcointl.org/community/chapters/",
-   "org_name_observed": "Ohio"
+   "org_name_observed": "Ohio",
+   "candidate_url": "https://www.ohionena.org/conference-corporatesponsors",
+   "directory_note": "28 names, mixed (7% carry a corporate marker, 7% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "APCOCH_GA",
@@ -4396,7 +4521,7 @@
    "parent_national": "APCO",
    "directory_url": null,
    "org_url": "http://www.gaapco.com",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.apcointl.org/community/chapters/",
    "org_name_observed": "Georgia"
@@ -4413,7 +4538,7 @@
    "parent_national": "APCO",
    "directory_url": null,
    "org_url": "http://www.ncapco.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.apcointl.org/community/chapters/",
    "org_name_observed": "North Carolina"
@@ -4430,7 +4555,7 @@
    "parent_national": "APCO",
    "directory_url": null,
    "org_url": "http://www.miapco.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.apcointl.org/community/chapters/",
    "org_name_observed": "Michigan"
@@ -4790,10 +4915,10 @@
    "est_exhibitors": 70,
    "parent_national": "APA",
    "org_url": "http://www.nyplanning.org/",
-   "status": "parents_event",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.planning.org/chapters/",
-   "directory_note": "this list does not name the state anywhere - it reads as the national parent's event, not this chapter's",
+   "directory_note": "29 names, mixed (7% carry a corporate marker, 7% name a site section - worth a look before running intake)",
    "candidate_url": "http://www.nyplanning.org/about/sponsors"
   },
   {
@@ -5058,7 +5183,7 @@
    "parent_national": "ASBO",
    "directory_url": null,
    "org_url": "http://www.casbo.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx",
    "org_name_observed": "California ASBO"
@@ -5075,10 +5200,12 @@
    "parent_national": "ASBO",
    "directory_url": null,
    "org_url": "http://www.tasbo.org/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx",
-   "org_name_observed": "Texas ASBO"
+   "org_name_observed": "Texas ASBO",
+   "candidate_url": "https://www.tasbo.org/exhibit-sponsor-advertise",
+   "directory_note": "the sponsor list on this page is a picture (/uploads/transforms/_squarishCroppedLarge/7286140/Partner-With-Us-Sponsor-Card-Image.webp ) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "SB_IASBO",
@@ -5092,7 +5219,7 @@
    "parent_national": "ASBO",
    "directory_url": null,
    "org_url": "http://www.iasbo.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx",
    "org_name_observed": "Illinois ASBO"
@@ -5109,7 +5236,7 @@
    "parent_national": "ASBO",
    "directory_url": null,
    "org_url": "http://www.pasbo.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx",
    "org_name_observed": "Pennsylvania ASBO"
@@ -5126,10 +5253,12 @@
    "parent_national": "ASBO",
    "directory_url": null,
    "org_url": "http://www.msbo.org/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx",
-   "org_name_observed": "Michigan ASBO"
+   "org_name_observed": "Michigan ASBO",
+   "candidate_url": "https://www.msbo.org/2026-facops-exhibitors/",
+   "directory_note": "120 names, mixed (8% carry a corporate marker, 6% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "SB_WASBO",
@@ -5143,10 +5272,12 @@
    "parent_national": "ASBO",
    "directory_url": null,
    "org_url": "http://www.wasbo.com/",
-   "status": "org_found",
+   "status": "needs_person",
    "promoted": false,
    "org_url_source": "https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx",
-   "org_name_observed": "Wisconsin ASBO"
+   "org_name_observed": "Wisconsin ASBO",
+   "candidate_url": "https://wasbo.com/Packages",
+   "directory_note": "39 names, mixed (13% carry a corporate marker, 3% name a site section - worth a look before running intake)"
   },
   {
    "org_code": "SB_NYSASBO",
@@ -5160,7 +5291,7 @@
    "parent_national": "ASBO",
    "directory_url": null,
    "org_url": "http://www.asbonewyork.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx",
    "org_name_observed": "New York ASBO"
@@ -5177,10 +5308,12 @@
    "parent_national": "ASBO",
    "directory_url": null,
    "org_url": "http://www.fasbo.org/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx",
-   "org_name_observed": "Florida ASBO"
+   "org_name_observed": "Florida ASBO",
+   "candidate_url": "https://fasbo.org/Sponsor_Partnership_Program",
+   "directory_note": "the sponsor list on this page is a picture (images/FASBO_2026_Partnership_Brochure_1__1_.png) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "SB_OASBO",
@@ -5192,12 +5325,14 @@
    "name_confidence": "named",
    "est_exhibitors": 120,
    "parent_national": "ASBO",
-   "directory_url": null,
+   "directory_url": "https://oasbo-ohio.org/about/meet-oasbo/sponsors",
    "org_url": "https://oasbo-ohio.org/",
-   "status": "org_found",
-   "promoted": false,
+   "status": "directory_found",
+   "promoted": true,
    "org_url_source": "https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx",
-   "org_name_observed": "Ohio ASBO"
+   "org_name_observed": "Ohio ASBO",
+   "directory_note": "83 names, good (17% carry a corporate marker, 8% name a site section)",
+   "promoted_tag": "Ohio ASBO 2026"
   },
   {
    "org_code": "SB_NJASBO",
@@ -5211,7 +5346,7 @@
    "parent_national": "ASBO",
    "directory_url": null,
    "org_url": "http://www.njasbo.com/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx",
    "org_name_observed": "New Jersey ASBO"
@@ -5228,10 +5363,12 @@
    "parent_national": "ASBO",
    "directory_url": null,
    "org_url": "http://www.gasbo.org/",
-   "status": "org_found",
+   "status": "list_is_an_image",
    "promoted": false,
    "org_url_source": "https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx",
-   "org_name_observed": "Georgia ASBO"
+   "org_name_observed": "Georgia ASBO",
+   "candidate_url": "http://www.gasbo.org/sponsors",
+   "directory_note": "the sponsor list on this page is a picture (/assets/images/Sponsors2024/Slide1.JPG) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "SBD_TASB",
@@ -5525,7 +5662,7 @@
    "parent_national": "APHA",
    "directory_url": null,
    "org_url": "http://scpha.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.apha.org/about-apha/affiliates/state-and-regional-public-health-associations",
    "org_name_observed": "California-Southern"
@@ -5542,7 +5679,7 @@
    "parent_national": "APHA",
    "directory_url": null,
    "org_url": "http://www.texaspha.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.apha.org/about-apha/affiliates/state-and-regional-public-health-associations",
    "org_name_observed": "Texas"
@@ -5559,7 +5696,7 @@
    "parent_national": "APHA",
    "directory_url": null,
    "org_url": "https://fpha.wildapricot.org/page-1859830",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.apha.org/about-apha/affiliates/state-and-regional-public-health-associations",
    "org_name_observed": "Florida"
@@ -5576,7 +5713,7 @@
    "parent_national": "APHA",
    "directory_url": null,
    "org_url": "https://www.nyspha.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.apha.org/about-apha/affiliates/state-and-regional-public-health-associations",
    "org_name_observed": "New York State"
@@ -5593,7 +5730,7 @@
    "parent_national": "APHA",
    "directory_url": null,
    "org_url": "http://www.pa-pha.org/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.apha.org/about-apha/affiliates/state-and-regional-public-health-associations",
    "org_name_observed": "Pennsylvania"
@@ -5610,7 +5747,7 @@
    "parent_national": "APHA",
    "directory_url": null,
    "org_url": "http://www.ipha.com/",
-   "status": "org_found",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_source": "https://www.apha.org/about-apha/affiliates/state-and-regional-public-health-associations",
    "org_name_observed": "Illinois"
@@ -5627,7 +5764,7 @@
    "parent_national": "APHA",
    "directory_url": null,
    "org_url": "http://www.ohiopha.org/",
-   "status": "org_found",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_source": "https://www.apha.org/about-apha/affiliates/state-and-regional-public-health-associations",
    "org_name_observed": "Ohio"
@@ -5644,7 +5781,7 @@
    "parent_national": "APHA",
    "directory_url": null,
    "org_url": "http://www.gapha.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.apha.org/about-apha/affiliates/state-and-regional-public-health-associations",
    "org_name_observed": "Georgia"
@@ -5661,7 +5798,7 @@
    "parent_national": "APHA",
    "directory_url": null,
    "org_url": "https://ncpha.com/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.apha.org/about-apha/affiliates/state-and-regional-public-health-associations",
    "org_name_observed": "North Carolina"
@@ -5678,7 +5815,7 @@
    "parent_national": "APHA",
    "directory_url": null,
    "org_url": "http://www.mipha.org/",
-   "status": "org_found",
+   "status": "no_directory_link",
    "promoted": false,
    "org_url_source": "https://www.apha.org/about-apha/affiliates/state-and-regional-public-health-associations",
    "org_name_observed": "Michigan"

@@ -1,0 +1,755 @@
+{
+ "event_tag": "North Carolina Sheriffs' Association 2026",
+ "conference": "North Carolina Sheriffs' Association",
+ "found": true,
+ "source_url": "https://ncsheriffs.org/corporate-partners-and-sponsors-2026",
+ "source_note": "Read from https://ncsheriffs.org/corporate-partners-and-sponsors-2026 by scripts/sweep_exhibitors.py. 130 name(s), 73 with a website the page itself linked. Quality: good (18% carry a corporate marker, 1% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "2026 Election Chart",
+   "website": "https://e1.nmcdn.io/assets/ncsheriff/wp-content/uploads/2026/04/2026-Election-Chart-4.8.pdf",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ahidden@genesyshealth.net",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Altumint",
+   "website": "https://altumint.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "antony.simakov@primehealthservices.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Aramark",
+   "website": "https://www.aramark.com/industries/business-and-government/corrections",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Armor Healthcare",
+   "website": "https://armorhealthcare.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "asmall@mediko.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "AT&T Business Solutions",
+   "website": "https://www.google.com/aclk?sa=L&amp;ai=DChsSEwjp8ciVvMGWAxUHeEcBHdyzNuEYACICCAEQABoCcXU&amp;ae=2&amp;co=1&amp;ase=2&amp;gclid=CjwKCAjwwL_UBhAjEiwAEhuT5IH0GX87itQpuVH1PiQaY2jfI4HqPpJTUr0wfDvxyE_wSgqMsFhfihoC-QsQAvD_BwE&amp;cid=CAAS3gHkaJV_XWTzSgJshEvy4VvS_QM7qpPTqGZ7lKmS7aPWvuzPJLs7wu4HeNkMoN5ZJEk6INGA_kdKzJsZqRgsWfh8Qu_wJDY1PRP1ndtbsU3M5qJtADuUeWiD7KmT2168YIGH8lSshlY1cn7HLAGA1zj75gliCK8Riqi2LviddV1PPVWeQU24qH8YumnLaFfOrja51abFM_Jxsalhvaq-3co7JE50sM2CMJi8hPG2CqSS9tqgtnVMiHoTIPUu2fRk254cxuYmJPJasZ9x-Q7PSmpe8zixQkGXj4sH83OntIU&amp;cce=2&amp;category=acrcp_v1_71&amp;sig=AOD64_27M1myIHuls1x-waYJswnXye9AJg&amp;q&amp;nis=4&amp;adurl&amp;ved=2ahUKEwiup8KVvMGWAxXkEGIAHW9tLJ0Q0Qx6BAgXEAE",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "bang-michelle@aramark.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "bkennedy@oasiscommissary.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Blue Line Solutions",
+   "website": "https://www.bluelinesolutions.com/",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Bob Barker",
+   "website": "http://www.bobbarker.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "bradley.jeffries@equifax.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Brooks Public Safety",
+   "website": "https://brooksnetworkservices.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "cassidy.hairsine@southernhealthpartners.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "cdavis@kellwell.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Chuqlab",
+   "website": "https://www.chuqlab.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Clearview AI",
+   "website": "https://www.clearview.ai/"
+  },
+  {
+   "name": "College Scholarships",
+   "website": "https://ncsheriffs.org/about/scholarships",
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Combined Public Communications",
+   "website": "http://www.cpcjail.com/"
+  },
+  {
+   "name": "cornelius@chuqlab.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Corporate Partners and Sponsors",
+   "website": "https://ncsheriffs.org/corporate-partners-and-sponsors-2026",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Correctional Behavioral Health",
+   "website": "http://cbhjails.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "david.mast@altumint.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "deron.coy@correctionalbehaviorhealth.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "dhrab@kiesler.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "edward.tiedje@verramobility.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ehartle@symbolarts.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Equifax Workforce Solutions",
+   "website": "https://vine.equifax.com/",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Essential Personnel",
+   "website": "https://www.essper.com/"
+  },
+  {
+   "name": "facebook",
+   "website": "https://www.facebook.com/NcSheriffsAssociation"
+  },
+  {
+   "name": "Food Lion",
+   "website": "https://foodlion.com/home",
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "gails@gunbustersusa.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Genesys Health Alliance",
+   "website": "https://www.genesyshealth.net/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Globe Life Family Heritage Division",
+   "website": "https://home.globelifeinsurance.com/familyheritage/home",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "GUARDIAN RFID",
+   "website": "http://www.guardianrfid.com/"
+  },
+  {
+   "name": "GunBusters",
+   "website": "https://gunbustersusa.com/"
+  },
+  {
+   "name": "hailey@essper.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Honorary Membership",
+   "website": "https://membership.ncsheriffs.org/annual-membership",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "IHS Pharmacy",
+   "website": "https://ihspharmacy.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Imprivata",
+   "website": "https://www.imprivata.com/"
+  },
+  {
+   "name": "IMS Correctional Healthcare",
+   "website": "https://imscorrectional.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Indivior",
+   "website": "https://www.indivior.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "instagram",
+   "website": "https://www.instagram.com/ncsheriffsassociation"
+  },
+  {
+   "name": "javier.tunon@armorhealthcare.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "jennifer.bennett@permitium.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "jerry-mac@mcdanielsupply.co",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "jingram@thesheriffapp.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "jjoy@modernauto.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Johnson Industrial Machinery Services, Inc.",
+   "website": "http://www.jimsinc.net/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Keefe Group",
+   "website": "https://www.keefegroup.com/"
+  },
+  {
+   "name": "Kellwell Food Management",
+   "website": "http://www.kellwell.com",
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "kelly.kijanka@elori-na.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Kiesler Police Supply",
+   "website": "http://www.kiesler.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Kimble\u2019s Corrections",
+   "website": "https://www.kimblesfood.com/?utm_source=google&amp;utm_medium=wix-smart-campaign&amp;utm_campaign=google-ads-campaign-2024-10-16-987e024e&amp;gad_source=1&amp;gad_campaignid=21810779742&amp;gbraid=0AAAAA-X33KGLXniMkXRQntKfOZSqPEXhe&amp;gclid=CjwKCAiA2PrMBhA4EiwAwpHyC8TGPOzCZAO8ulqspl3uEYceICYOmZQ5AaIYX139aoS8b9qJZdgn5RoCG2IQAvD_BwE",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "KNC Technologies",
+   "website": "https://knctech.us/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "kyle@protect1family.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Law Enforcement Torch Run for Special Olympics, North Carolina",
+   "website": "https://sonc.net/torch-run/",
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "LAW Publications",
+   "website": "https://www.lawpublications.net/",
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Legislative Reports",
+   "website": "https://ncsheriffs.org/resources/legislative-reports",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "lhardy@moseleyarchitects.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "lmoyar@sonc.net",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "madisonk@zippixtoothpicks.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "mark.shook@smartcommunications.us",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "marketing@bluesolutions.org",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "marks@kimblesfood.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "marks@montgomerytechnology.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "mary.marvin@smartcommunications.us",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "mary@lawpublications.net",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Matthews Specialty Vehicles",
+   "website": "https://www.msvehicles.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "McDaniel Supply Company",
+   "website": "http://www.mcdanielsupplyco.net/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "MEDIKO",
+   "website": "http://www.medikoinc.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "mhurley@paytel.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Modern Automotive",
+   "website": "https://www.modernauto.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "mollyb@ihspharmacy.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Montgomery Technology Systems",
+   "website": "https://www.montgomerytechnology.com/",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Moseley",
+   "website": "https://www.moseleydesigns.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "mrobertson@whartonsmith.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "mruschman@combinedpublic.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "mshupe@msvehicles.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "mwoodmansee@zoll.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "nachia.revels@ncacc.org",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "National Public Safety Group",
+   "website": "http://npsg.org"
+  },
+  {
+   "name": "NCACC County Risk Group Sheriffs\u2019 Risk Management Program",
+   "website": "http://www.ncacc.org/services-for-counties/risk-management",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "NCIC Inmate Communications",
+   "website": "https://www.ncic.com/"
+  },
+  {
+   "name": "NCSA Job Openings",
+   "website": "https://ncsheriffs.org/job-openings",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ncsa@ncsheriffs.net",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Oasis Commissary Services",
+   "website": "http://www.oasiscommissary.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Officer Assistance Network",
+   "website": "https://ncsheriffs.org/officer-assistance-network",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Officers & Executive Committee",
+   "website": "https://ncsheriffs.org/about/people",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Online Store",
+   "website": "https://shop.ncsheriffs.org/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "paige.tierny@imprivata.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Past Presidents",
+   "website": "https://e1.nmcdn.io/assets/ncsheriff/wp-content/uploads/2025/07/NCSA-Past-Presidents.pdf",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "paul.hunt@ncic.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Pay Tel Communications, Inc.",
+   "website": "http://www.paytel.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Peregrine Technologies",
+   "website": "https://www.peregrine.io/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Performance Machine and Fab Inc.",
+   "website": "https://www.performancemfnc.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Permitium",
+   "website": "http://www.permitium.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "pmfinc@performancemfnc.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Prime Health Services, Inc.",
+   "website": "http://www.primehealthservices.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Procurement",
+   "website": "https://ncsheriffs.org/procurement",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Programs",
+   "website": "https://ncsheriffs.org/programs",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Publications",
+   "website": "https://ncsheriffs.org/resources/publications",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ralvarado@vitalcorehs.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "rbrigman@southernsoftware.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ross.blank@guardianrfid.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "sarahtangeman@bobbarker.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "sbrooks@brooksnetworkservices.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "silvana.baxter@foodlion.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "sm6524@att.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Smart Communications",
+   "website": "http://www.smartcommunications.us/"
+  },
+  {
+   "name": "Southern Health Partners, Inc.",
+   "website": "http://www.southernhealthpartners.com/"
+  },
+  {
+   "name": "Southern Software, Inc.",
+   "website": "http://www.southernsoftware.com/",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Specialty License Plates",
+   "website": "https://ncsheriffs.org/specialty-license-plates",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "sperry@npsg.org",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Summit Correctional Services",
+   "website": "https://summitfoodservice.com/"
+  },
+  {
+   "name": "SymbolArts",
+   "website": "http://www.symbolarts.com/"
+  },
+  {
+   "name": "temcdaniel@keefegroup.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "tim.hill@peregrine.io",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "tjjones@knctech.us",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Verra Mobility",
+   "website": "https://www.verramobility.com/"
+  },
+  {
+   "name": "VitalCore Health Strategies",
+   "website": "https://vitalcorehs.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Website Design and Development",
+   "website": "https://www.newmediacampaigns.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Wellpath",
+   "website": "https://wellpathcare.com/"
+  },
+  {
+   "name": "wfulghum@jimsinc.net",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Wharton-Smith, Inc.",
+   "website": "https://whartonsmith.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "william1@indivior.com",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Zippix Toothpicks",
+   "website": "https://zippixtoothpicks.com/?srsltid=AfmBOorpSEWj0bCU63GqHYoqo9ZW1jDgGxYsfClzHVG2iCUxc9dLVBnB",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ZOLL Medical Corporation",
+   "website": "http://www.zoll.com/"
+  },
+  {
+   "name": "zurah.shaker@clearview.ai",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  }
+ ],
+ "why": null,
+ "quality": "good"
+}

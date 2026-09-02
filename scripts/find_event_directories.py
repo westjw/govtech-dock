@@ -40,6 +40,7 @@ event.
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import html as html_lib
 import json
 import pathlib
@@ -255,6 +256,14 @@ NO_LISTING_PUBLISHED = {
 }
 
 
+def on_parent_host(url: str, parent_site: str | None) -> bool:
+    """Is this address the national body's own server, subdomains included?"""
+    def host(u):
+        return up.urlsplit(u or "").netloc.lower().replace("www.", "")
+    here, parent = host(url), host(parent_site)
+    return bool(parent) and (here == parent or here.endswith("." + parent))
+
+
 def parent_sites() -> dict:
     events = json.loads(EVENTS.read_text())["events"]
     codes = sorted({e["parent_national"] for e in events if e.get("parent_national")})
@@ -315,6 +324,12 @@ def stage_parents(write: bool) -> int:
                 # became that chapter's "organisation url"; everything walked
                 # from there led to IACP's national conference.
                 if is_sign_in(up.urlsplit(h).path):
+                    continue
+                # NOR THE PARENT'S OWN SUBDOMAIN. awwa.org/local-sections
+                # links to ace.awwa.org, the national conference; matching a
+                # state to it filed AWWA's own event as the California-Nevada
+                # Section's.
+                if on_parent_host(h, PARENT_SITES.get(code)):
                     continue
                 blob = f"{txt} {up.urlsplit(h).path}".lower()
                 closed = re.sub(r"[^a-z0-9]+", "", f"{txt}{up.urlsplit(h).netloc}").lower()
@@ -451,17 +466,31 @@ def owns(page: str, url: str, geo: str | None,
     acronym. A refusal costs one ruling; a wrong accept costs a permanent
     invented fact, so the trade runs this way.
     """
+    # EIGHT ROWS NAME NO SINGLE STATE - "Multi-state", "WA/OR/ID", "TN/KY",
+    # "NC/SC". The first version returned True for those, which switched this
+    # guard off exactly where a regional body is most likely to be handed its
+    # national parent's event. With no state to look for, the only evidence
+    # left is the site itself, so the same-host rule below has to carry it
+    # alone and everything else is refused to a person.
     state = next((s for s in STATES if re.search(rf"\b{s}\b", (geo or "").lower())), None)
-    if not state:
-        return True                       # not a state event; nothing to check
+    if not state and not (geo or "").strip():
+        return True                       # not a state event at all
 
     def host(u):
         return up.urlsplit(u or "").netloc.lower().replace("www.", "")
     here, theirs, parent = host(url), host(org_url), host(parent_site)
-    on_parent = bool(parent) and here == parent
+    # A SUBDOMAIN OF THE PARENT IS THE PARENT. ace.awwa.org is AWWA's national
+    # ACE conference, and stage 1 had handed it to the California-Nevada
+    # Section as that section's own site; comparing hosts exactly let it pass,
+    # because ace.awwa.org is not awwa.org. The page says "California" zero
+    # times and is titled "Become an Exhibitor - American Water Works
+    # Association".
+    on_parent = bool(parent) and (here == parent or here.endswith("." + parent))
     if here and theirs and here == theirs and not on_parent:
         return True
 
+    if not state:
+        return False                      # a regional geo we cannot check
     flat = re.sub(r"[^a-z0-9]+", " ", up.unquote(url).lower())
     if re.search(rf"\b{state}\b", flat) or state.replace(" ", "") in flat.replace(" ", ""):
         return True
@@ -616,6 +645,243 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False) -> 
     return 0
 
 
+# WHERE A CHAPTER EVENT SITS IN THE CATALOG. state_events.json speaks its own
+# vocabulary ("Municipal Government", "Water & Wastewater") and conferences.json
+# speaks the site's ("Cities (elected)", "Water"). Every pair below already
+# exists in conferences.json - checked before this table was written, because a
+# block or department the site does not know would file the event nowhere.
+CATALOG_PLACE = {
+    "911/Dispatch": ("Public safety", "911 / dispatch"),
+    "Assessment": ("Finance, procurement, HR, IT", "Assessors / property tax"),
+    "Building & Code": ("Community development", "Code enforcement"),
+    "County Government": ("Executive / administration", "Counties"),
+    "District Technology": ("K-12 education", "Technology directors"),
+    "Emergency Management": ("Public safety", "Emergency management"),
+    "Finance & Budget": ("Finance, procurement, HR, IT", "Finance / budget"),
+    "Fire": ("Public safety", "Fire"),
+    "Human Services": ("Health and human services", "Human services"),
+    "Local Government IT": ("Finance, procurement, HR, IT", "IT / CIO (local)"),
+    "Municipal Clerks": ("Clerk, records, elections, legal", "Municipal clerks"),
+    "Municipal Government": ("Executive / administration", "Cities (elected)"),
+    "Parks & Recreation": ("Parks, recreation, libraries", "Parks & recreation"),
+    "Planning & Zoning": ("Community development", "Planning & zoning"),
+    "Police": ("Public safety", "Police"),
+    "Procurement": ("Finance, procurement, HR, IT", "Procurement (local)"),
+    "Public Health": ("Health and human services", "Local public health"),
+    "Public Works": ("Public works and infrastructure", "Public works"),
+    "School Boards": ("K-12 education", "School boards"),
+    "School Business": ("K-12 education", "Business officials"),
+    "Sheriffs": ("Public safety", "Sheriffs"),
+    "Solid Waste": ("Public works and infrastructure", "Solid waste"),
+    "State/Local IT": ("Finance, procurement, HR, IT", "IT / CIO (state)"),
+    "Transit": ("Transportation", "Transit"),
+    "Water & Wastewater": ("Public works and infrastructure", "Water"),
+}
+
+EVENT_WORD = re.compile(r"conference|convention|summit|expo|symposium|"
+                        r"annual meeting|institute|congress|forum", re.I)
+
+
+def confirmed_name(e: dict) -> str | None:
+    """The organisation's real name, or None if it is still a generated guess.
+
+    130 of the 359 staged rows carry name_confidence "pattern" - the name was
+    made by filling a state into a template, and the generator says so itself.
+    conferences.json is PUBLIC, a page per event, so a generated name promoted
+    there is an invented organisation on a live site.
+
+    What settles it is the parent's own listing. NLC publishes "Alaska
+    Municipal League"; NACo publishes "Association of County Commissions of
+    Alabama". stage_parents records that link text as org_name_observed, and
+    THAT is the confirmation register_state_events asks for. A row matched by
+    position rather than by name carries a placeholder there instead, and is
+    not confirmed by it.
+    """
+    seen = (e.get("org_name_observed") or "").strip()
+    if seen and not seen.startswith("(the link following"):
+        return seen
+    if e.get("name_confidence") == "named":
+        return (e.get("org_name") or "").strip() or None
+    return None
+
+
+GENERIC_TITLE = re.compile(r"^(home|welcome|index|main|default|untitled)\b", re.I)
+
+
+def name_from_own_site(e: dict) -> str | None:
+    """The organisation's name as ITS OWN SITE states it.
+
+    The second way to confirm a generated name, and for some rows the only
+    one. A chapter matched by POSITION on the parent's listing - the state in
+    a heading, the link labelled "Web Site" - has no name from that listing,
+    which left three sheriffs' associations carrying 117 to 135 exhibitors
+    unpromotable behind a name nobody had confirmed.
+
+    So the site is asked. It is read, not guessed: the title or first heading,
+    required to NAME THE STATE, so a generic "Home" or another body's page
+    cannot answer for it.
+    """
+    state = next((s for s in STATES if re.search(rf"\b{s}\b", (e.get("geo") or "").lower())), None)
+    if not state or not e.get("org_url"):
+        return None
+    page = fetch(e["org_url"])
+    if not page:
+        return None
+    for m in re.finditer(r"<(?:title|h1)[^>]*>(.*?)</(?:title|h1)>", page[:200000],
+                         re.S | re.I):
+        cand = re.sub(r"\s+", " ", html_lib.unescape(re.sub(r"<[^>]+>", " ", m.group(1)))).strip()
+        cand = re.split(r"\s+[|\u2013\u2014-]\s+", cand)[0].strip()
+        if (3 < len(cand) <= 80 and not GENERIC_TITLE.match(cand)
+                and re.search(rf"\b{state}\b", cand, re.I)):
+            return cand
+    return None
+
+
+def event_name_and_year(page: str, url: str) -> tuple[str | None, str | None]:
+    """What the directory page calls its event, and which year it is for.
+
+    Read, never built. A tag is permanent - it lands inside company
+    descriptions - so an event this cannot name does not get promoted.
+    """
+    heads = [re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", m.group(1))).strip()
+             for m in re.finditer(r"<(?:title|h1|h2)[^>]*>(.*?)</(?:title|h1|h2)>",
+                                  page[:200000], re.S | re.I)]
+    name = next((h for h in heads if EVENT_WORD.search(h) and len(h) <= 90), None)
+    years = re.findall(r"\b(20[2-3]\d)\b", " ".join(heads[:4]) + " " + url)
+    if not years:
+        years = re.findall(r"\b(20[2-3]\d)\b", page[:60000])
+    year = max(years) if years else None
+    return name, year
+
+
+def _tag(base: str, year: str, taken: set, geo: str | None = None) -> str:
+    """A catalog tag: '<name> <year>', unique, in the charset selftest allows.
+
+    THE CHARSET IS NOT COSMETIC. conferences.json's own rule is
+    ^[\w &.'/-]+ 20\d\d$ and a tag lands permanently inside company
+    descriptions, so a parenthesis in a disambiguator makes a row the build
+    refuses - which is how the first version of this failed its own guard.
+    Collisions are broken with the STATE, which also means something, and
+    only then with a number.
+    """
+    def clean(s):
+        return re.sub(r"\s+", " ", re.sub(r"[^\w &.'/-]+", " ", s or "")).strip(" -")
+
+    base = clean(base)[:44].strip()
+    tag = f"{base} {year}"
+    if tag not in taken:
+        return tag
+    if geo:
+        tag = f"{base} {clean(geo)} {year}"[:60]
+        if tag not in taken:
+            return tag
+    n = 2
+    while f"{base} {n} {year}" in taken:
+        n += 1
+    return f"{base} {n} {year}"
+
+
+def stage_promote(write: bool) -> int:
+    """Move confirmed chapter events into the public conference catalog.
+
+    NOTHING DID THIS. `promoted` was written by register_state_events and read
+    by no one, so a directory found here could never become a company: the
+    chain from staged event to conferences.json to sweep to intake had no
+    first link. This is that link, and it refuses far more than it takes.
+
+    Four things must all be true, and each is a fact rather than a guess:
+    a directory that a fetch read as a list of companies; an organisation
+    name the parent's own listing confirms; an event name the directory page
+    states; and a year. Anything missing and the row says which.
+    """
+    doc = json.loads(EVENTS.read_text())
+    cat_p = DATA / "conferences.json"
+    cat = json.loads(cat_p.read_text())
+    taken = {c.get("event_tag") for c in cat["conferences"] if c.get("event_tag")}
+    known_urls = {c.get("exhibitor_url") for c in cat["conferences"] if c.get("exhibitor_url")}
+
+    ready = [e for e in doc["events"]
+             if e.get("status") == "directory_found" and not e.get("promoted")]
+    print(f"{len(ready)} event(s) with a directory and not yet promoted\n")
+    added, refused = [], []
+    for e in ready:
+        org = confirmed_name(e)
+        name_source = e.get("org_url_source")
+        if not org:
+            org = name_from_own_site(e)
+            name_source = e.get("org_url")
+        if not org:
+            refused.append((e["org_code"], "the organisation name is still a "
+                            "generated guess - neither the parent's listing nor "
+                            "the site's own title confirms it"))
+            continue
+        place = CATALOG_PLACE.get(e.get("department") or "")
+        if not place:
+            refused.append((e["org_code"], f"no catalog place for department "
+                                           f"{e.get('department')!r}"))
+            continue
+        if e["directory_url"] in known_urls:
+            refused.append((e["org_code"], "that exhibitor url is already in the "
+                                           "catalog under another event"))
+            continue
+        page = fetch(e["directory_url"])
+        if not page:
+            refused.append((e["org_code"], "the directory stopped answering"))
+            continue
+        name, year = event_name_and_year(page, e["directory_url"])
+        if not year:
+            refused.append((e["org_code"], "the page names no year, and a tag "
+                                           "without one cannot be read back"))
+            continue
+        tag = _tag(org, year, taken, e.get("geo"))
+        taken.add(tag)
+        row = {
+            "block": place[0], "department": place[1],
+            # The event's own name where the page states one, else the
+            # organisation the parent's listing confirmed. Never the generated
+            # event_name, which is scaffolding.
+            "conference": name or org,
+            "flagship": False, "swept": False,
+            "exhibitor_url": e["directory_url"],
+            "fetchability": "readable",
+            "event_tag": tag,
+            "url": e.get("org_url"),
+            "dates": None, "city": None,
+            "dates_source": e["directory_url"],
+            "dates_confidence": "unannounced",
+            "discovery_notes": (
+                f"State chapter event promoted from data/state_events.json on "
+                f"{dt.date.today().isoformat()}. Organisation name confirmed as "
+                f"{org!r} by {name_source}. Directory: "
+                f"{e.get('directory_note')}. Event name "
+                + (f"read from the page as {name!r}." if name else
+                   "not stated on the page; the organisation's name stands in.")),
+            "state_event": {"org_code": e["org_code"], "geo": e.get("geo"),
+                            "parent_national": e.get("parent_national")},
+        }
+        cat["conferences"].append(row)
+        e["promoted"] = True
+        e["promoted_tag"] = tag
+        added.append((e["org_code"], tag, e["directory_url"]))
+
+    for code, tag, url in added:
+        print(f"  promote  {code:14} {tag[:38]:40} {url[:52]}")
+    for code, why in refused:
+        print(f"  refuse   {code:14} {why[:80]}")
+    print(f"\n  {len(added)} promoted, {len(refused)} refused")
+    if not write:
+        print("  LOOKED ONLY. Re-run with --write.")
+        return 0
+    if added:
+        tmp = cat_p.with_suffix(".tmp")
+        tmp.write_text(json.dumps(cat, indent=1) + "\n")
+        json.loads(tmp.read_text())
+        tmp.replace(cat_p)
+        _save(doc)
+        print(f"  wrote {len(added)} conference(s) into conferences.json")
+    return 0
+
+
 def _save(doc: dict) -> None:
     tmp = EVENTS.with_suffix(".tmp")
     tmp.write_text(json.dumps(doc, indent=1) + "\n")
@@ -628,6 +894,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--parents", action="store_true")
     ap.add_argument("--directories", action="store_true")
+    ap.add_argument("--promote", action="store_true",
+                    help="move confirmed events into conferences.json")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--recheck", action="store_true",
                     help="re-judge rows that already carry a directory url")
@@ -637,6 +905,8 @@ def main() -> int:
         return stage_parents(a.write)
     if a.directories:
         return stage_directories(a.write, a.limit, a.recheck)
+    if a.promote:
+        return stage_promote(a.write)
     ap.print_help()
     return 0
 

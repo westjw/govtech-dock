@@ -1,0 +1,523 @@
+{
+ "event_tag": "North Carolina League of Municipalities 2027",
+ "conference": "North Carolina League of Municipalities",
+ "found": true,
+ "source_url": "https://www.nclm.org/about-us/partners-sponsors",
+ "source_note": "Read from https://www.nclm.org/about-us/partners-sponsors by scripts/sweep_exhibitors.py. 86 name(s), 16 with a website the page itself linked. Quality: good (30% carry a corporate marker, 2% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "Actuarial Consulting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ADA Compliance",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Advancing Municipal Leaders",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Advertise With Us Learn More",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Affiliate Associations",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "AML Certificate Programs",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "AML Course Schedule",
+   "website": "https://www.nclm.org/events-training/advancing-municipal-leaders/#AMLcalendar",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "AML Courses",
+   "website": "https://www.nclm.org/events-training/advancing-municipal-leaders/#courses",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "AML On-Demand Programs",
+   "website": "https://www.nclm.org/ondemand",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Associate Members",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Board of Trustees",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Brand Guidelines",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CavMac Learn More",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Certificates & Change Requests",
+   "website": "https://www.nclm.org/insurance-risk-management/property-casualty-trust/#certsdocs",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "City Job Board",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CityVision 2027",
+   "website": "https://www.nclm.org/about-us/partners-sponsors/#cityvisionsponsors",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CityVision Annual Conference",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Claims Portal",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Claims Portal Learn More",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Codification, Ordinances & Meeting Minutes",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "contact Olga Melancon",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Contact Us For More Details",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Contact Us For More Info",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Cybersecurity & IT Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Disaster Recovery Resources",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Education Sponsorships",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Events & Training",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Events Calendar",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Financial & Operational Consulting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "GovDeals Learn More",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Grant Applications",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Grant Funding Opportunities",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "HR Surveys & Studies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Human Resources Support",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ICC Code Solutions Learn More",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Insurance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Insurance & Risk Management",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "League Advocacy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "League Bulletin",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "League Events & Programs",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "League Photos",
+   "website": "https://www.flickr.com/photos/ncleague/albums/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "League Videos",
+   "website": "https://vimeo.com/ncleague",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Legal Consulting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Legislative Goals",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Legislative Hub",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Local Leadership Foundation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Member Login",
+   "website": null
+  },
+  {
+   "name": "Member Services",
+   "website": null
+  },
+  {
+   "name": "Municipal Accounting Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Municipal Directory",
+   "website": "https://www.nclm.org/about-us/municipal-directory/",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Municipal DriveSafe Program",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Municipal Equation Podcast",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Municipal Voluntary Benefits Alliance (MVBA) Learn More",
+   "website": "https://mvbenefitsalliance.com/",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "National League of Cities",
+   "website": "https://www.nlc.org/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "NC CLASS",
+   "website": "https://ncclass.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "NCLM Brand",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "NCLM People Directory",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "NCLM Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "NCLM Town & State Dinner",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "News & Media",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Occasional Offerings",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Online Surplus Auctions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Online Vendor Directory",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Opioid Solutions Toolbox",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Partner Programs",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Partners & Sponsors",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Partnerships",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "People Directory",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Policy Goals Meetings",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Preferred Partner Services",
+   "website": "https://www.nclm.org/about-us/partners-sponsors#preferredpartners",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Property & Casualty Trust",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Research & Surveys",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "RFQ & RFP Directory",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Risk Control/Safety Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Risk Management Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Shield Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Southern City Magazine",
+   "website": "https://www.nclm.org/news-media/southern-city/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Sponsor Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Track Legislation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Training: Cyber Security, Defensive Driving, Online Safety, OSHA-10",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "UNC School of Government",
+   "website": "https://cplg.sog.unc.edu/courses/local-elected-leaders-academy-lela/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "VC3 Learn More",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Vendor Directory",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Voluntary Benefits",
+   "website": "https://mvbenefitsalliance.com/",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Workers' Compensation Self-Audit",
+   "website": "https://www.nclm.org/insurance-risk-management/workers-compensation-trust/#wcaudit",
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Workers' Compensation Trust",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  }
+ ],
+ "why": null,
+ "quality": "good"
+}

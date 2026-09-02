@@ -1,0 +1,1265 @@
+{
+ "event_tag": "Maryland Municipal League 2026",
+ "conference": "Maryland Municipal League",
+ "found": true,
+ "source_url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
+ "source_note": "Read from https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm by scripts/sweep_exhibitors.py. 222 name(s), 1 with a website the page itself linked. Quality: good (33% carry a corporate marker, 0% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "- Exhibitor - FAQ",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "2by2 Industries",
+   "website": null
+  },
+  {
+   "name": "Advanced Drainage Systems, Inc.",
+   "website": null
+  },
+  {
+   "name": "Aggregate Screens and Crushers",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Aiphone Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Alta Grid",
+   "website": null
+  },
+  {
+   "name": "Altumint, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Ameresco, Inc.",
+   "website": null
+  },
+  {
+   "name": "American Fidelity Assurance Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Andy Harris, Congressman",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Angela Alsobrooks, United States Senator",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Annapolis, City of",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "April McClain Delaney, Congresswoman MD06",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ARK Systems, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Asc3nd technology group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Atlantic Heavy Duty",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Atlantic Machinery, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Attorney General, Maryland Office of the",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Axis Communications",
+   "website": null
+  },
+  {
+   "name": "Ballet Theatre of Maryland",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Bates Trucking Trash Removal, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "BEACON at Salisbury University",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Bearing Advisors",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Bel Air, Town of",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Beyond the Surface Pros",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Bladensburg, Town of",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Blue Whale EV",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Buyers Products Company",
+   "website": null
+  },
+  {
+   "name": "Cambridge, City of",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Capital One N.A.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "CareFirst BlueCross BlueShield",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CBIZ InR",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Center for the Study of Economics",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CFR Compliance Group, Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Charles P. Johnson and Associates, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Chemung Supply",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Chesapeake Employers' Insurance Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Chris Van Hollen, United States Senator",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Christmas Decor by Watermark",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CIGNA HealthCare Mid-Atlantic",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Citibot",
+   "website": null
+  },
+  {
+   "name": "Clean Power Wash, Delmarva Christmas Lights",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Code Enforcement and Zoning Officials Association President",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Comcast Business",
+   "website": null
+  },
+  {
+   "name": "Comcate",
+   "website": null
+  },
+  {
+   "name": "Commercial Recreation Products",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Comptroller of Maryland",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Constellation Energy Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CUES, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Cunningham Recreation/Gametime",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Custom Park Surfacing, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Davenport & Company LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Davis, Bowen & Friedel, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Deloitte",
+   "website": null
+  },
+  {
+   "name": "DiCarlo Precision Instrument, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Diligent (BoardDocs)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "EA Engineering, Science, and Technology, Inc., PBC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "EAW Security",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ECS Mid-Atlantic",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Edmunds GovTech",
+   "website": null
+  },
+  {
+   "name": "ELECTEC ELECTION SERVICES",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Energy Future Maryland",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "EquipKo",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ESRGC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Exhibit Sales Form",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Exhibitor - FAQ",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Exhibitor List",
+   "website": null
+  },
+  {
+   "name": "Exhibitor Service Center",
+   "website": null
+  },
+  {
+   "name": "Ferguson Waterworks",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "First Tryon Advisors LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "FirstNet Built with AT&T",
+   "website": null
+  },
+  {
+   "name": "Forest Valley Tree & Turf",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Fort Orange Press",
+   "website": null
+  },
+  {
+   "name": "FORTA",
+   "website": null
+  },
+  {
+   "name": "Fortiline Waterworks",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Frederick, City of",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "GAMBRILLS EQUIPMENT",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "GovDeals",
+   "website": null
+  },
+  {
+   "name": "GovToKnow",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "GovWell",
+   "website": null
+  },
+  {
+   "name": "GranTurk Equipment Co., Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "H.A. DeHart & Son, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Hadco Decorative Lighting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Hagerstown, City of",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Havre de Grace, City of",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Hawkins, Inc.",
+   "website": null
+  },
+  {
+   "name": "HILB Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Holiday Outdoor Decor",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Holophane Lighting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "HPE",
+   "website": null
+  },
+  {
+   "name": "ICC Innovation",
+   "website": null
+  },
+  {
+   "name": "IDEXX",
+   "website": null
+  },
+  {
+   "name": "IMPACT Technology Group, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Infrastructure Solutions Group",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Innovative Building Solutions",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "IP Consulting Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Keenan Pharmacy Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Keystone Sports Construction",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "KOMPAN Playgrounds",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "KW Government Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "LeafFilter Gutter Protection",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Lewis Contractors",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "LGIT Health",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Lindsey + Associates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Local Government Insurance Trust",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Mahan Rykiel Associates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Air National Guard Recruiting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland American Water",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Army National Guard",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Cannabis Administration",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Correctional Enterprises",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Department of Budget and Management",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Department of Commerce",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Department of Emergency Management- 911 Board",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Department of General Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Department of Housing and Community Development",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Department of Natural Resources",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Department of Public Safety and Correctional Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Department of Social and Economic Mobility",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Department of the Environment",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Department of Transportation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Energy Administration",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Environmental Service",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland ESGR",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Fire and Rescue Institute - UMD",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Fire Chiefs Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Maryland Heritage Areas Coalition",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Maryland Industrial Trucks, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Insurance Administration",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Maryland Lottery and Gaming",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Municipal Clerks Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Maryland Municipal League",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Maryland Municipal Parks and Recreation",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Maryland Municipal Public Works Officials Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Maryland Occupational Safety and Health/Maryland Department of Labor",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Relay-Department of Disabilities",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Maryland Rural Water Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Maryland State Firefighters Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Maryland Tourism Coalition",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Maryland Two Fifty Commission",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "McCrone",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "McEnroe Voice & Data",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "McWane Plant and Industrial",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "MD Underground Facilities Damage Prevention Authority",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Medical Access Service Advantage",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "MedImpact",
+   "website": null
+  },
+  {
+   "name": "Mentoring Through Athletics",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Metro Recreation Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Mid-Atlantic Truck & Equipment",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Middlesex Water Maryland",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Miss Utility",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "MissionSquare Retirement",
+   "website": null
+  },
+  {
+   "name": "Mobile Voting",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Mosca Design",
+   "website": null
+  },
+  {
+   "name": "Musco Lighting",
+   "website": null
+  },
+  {
+   "name": "MW Studios",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "National Highway Products, Inc",
+   "website": null
+  },
+  {
+   "name": "National League of Cities",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "National Vision Administrators (NVA)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Neptune TG",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "New Vertical Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Noovis LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "NORESCO",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "NovoaGlobal, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Obvio Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "OpenGov",
+   "website": null
+  },
+  {
+   "name": "Paddock Pool Equipment Company",
+   "website": null
+  },
+  {
+   "name": "Pepco and Delmarva Power Energy Savings for Business Program",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Plak That Sign Co.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Playground Specialists, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Pleasants Construction, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Power Up Maryland",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "PPG Traffic Solutions",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Radarsign LLC",
+   "website": null
+  },
+  {
+   "name": "Ranked Choice Voting Maryland",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Really Clean Streets",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Really Good Equipment",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Redspeed Maryland LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Republic Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Rescue One Training for Life Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "River Valley Recreation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "RK&K",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Royal Plus Disaster Cleanup",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Rules and Regulations",
+   "website": "https://exhibits.mdmunicipal.org/2026/documents/Rules_and_regs_2026_012026.pdf",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Rural Maryland Council",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "SealMaster",
+   "website": null
+  },
+  {
+   "name": "Service Line Program by HomeServe",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "SERVPRO",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Shannon-Baum Signs and Graphics, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ShoreScan Solutions",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Small Business Development Center",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Solar Landscape",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Southern Corrosion, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Sparks at Play, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Stewart-Amos Sweeper Co",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "STH",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Stop Offshore Wind",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Sunbelt Rentals, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Surava",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Susquehanna Operational Services, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Sustainable Maryland Certified",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Syntech Systems",
+   "website": null
+  },
+  {
+   "name": "T-Mobile",
+   "website": null
+  },
+  {
+   "name": "Target Marketing Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Team One Network",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Terex Utilities",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Total Environmental Concepts, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Traffic Safety Supplies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Tyler Technologies",
+   "website": null
+  },
+  {
+   "name": "UNIQUE Paving Materials Corp.",
+   "website": null
+  },
+  {
+   "name": "University of Baltimore, Schaefer Center for Public Policy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "USG Water Solutions",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "ValuGard Anti-Corrosion",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "VC3",
+   "website": null
+  },
+  {
+   "name": "Verizon",
+   "website": null
+  },
+  {
+   "name": "Verkada",
+   "website": null
+  },
+  {
+   "name": "Versalift",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Vialytics",
+   "website": null
+  },
+  {
+   "name": "Water Works Metrology LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Westminster, City of",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "WGL Energy Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Williamsport, Town of",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  }
+ ],
+ "why": null,
+ "quality": "good"
+}

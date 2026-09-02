@@ -8939,10 +8939,40 @@ def check_a_chapter_directory_is_not_its_parents() -> int:
          "North Carolina", None, None, True, "the state closed up in the host"),
         ("<title>Exhibitors</title>", "https://x.test/e", "North Carolina", None, None,
          False, "names the state nowhere at all"),
+        # A SUBDOMAIN OF THE PARENT IS THE PARENT. ace.awwa.org is AWWA's own
+        # national ACE conference and stage 1 had handed it to the
+        # California-Nevada Section as that section's site; comparing hosts
+        # exactly let it through, because ace.awwa.org is not awwa.org.
+        ("<title>Become an Exhibitor - American Water Works Association</title>",
+         "https://ace.awwa.org/exhibitors-sponsors/", "California/Nevada",
+         "https://ace.awwa.org/", "https://www.awwa.org/", False,
+         "the parent's own subdomain is the parent"),
+        ("<title>Sponsors</title>", "https://ca-nv-awwa.org/sponsors", "California/Nevada",
+         "https://ca-nv-awwa.org/", "https://www.awwa.org/", True,
+         "the section's own domain, which is not under the parent's"),
+        # EIGHT ROWS NAME NO SINGLE STATE - Multi-state, WA/OR/ID, TN/KY,
+        # NC/SC. Returning True there switched the guard off exactly where a
+        # regional body is most likely to be handed its parent's event.
+        ("<title>Exhibitors</title>", "https://events.example.com/list", "Multi-state",
+         "https://region.example.org/", "https://parent.example.org/", False,
+         "no state to check and the list is off the body's own site"),
+        ("<title>Exhibitors</title>", "https://region.example.org/list", "Multi-state",
+         "https://region.example.org/", "https://parent.example.org/", True,
+         "no state to check, but it is on the body's own site"),
     ]:
         got = fed.owns(page, url, geo, org, parent)
         if got != want:
             print(f"  FAIL: owns({url[:44]!r}, {geo!r}) = {got}, expected {want} - {why}")
+            errors += 1
+
+    for url, parent, want in [
+        ("https://ace.awwa.org/x", "https://www.awwa.org/", True),
+        ("https://awwa.org/y", "https://www.awwa.org/", True),
+        ("https://ca-nv-awwa.org/", "https://www.awwa.org/", False),
+        ("https://notawwa.org/", "https://www.awwa.org/", False)]:
+        if fed.on_parent_host(url, parent) != want:
+            print(f"  FAIL: on_parent_host({url!r}) should be {want} - a "
+                  f"subdomain of the national body is the national body")
             errors += 1
 
     # The words as they are actually written in these listings: NC__Login,
@@ -9091,6 +9121,181 @@ def check_chapter_listings_are_looked_up() -> int:
         print(f"  FAIL: a state named in prose claimed a link {fed.NEAR}+ "
               f"characters away")
         errors += 1
+    return errors
+
+
+
+def check_promotion_refuses_a_generated_name() -> int:
+    """conferences.json is PUBLIC - a page per event - so what it holds is a claim.
+
+    130 of the 359 staged chapter events carry a name the GENERATOR made by
+    filling a state into a template, and register_state_events says so in the
+    file itself: "a row is promoted only once it has a directory that answers
+    and - if generated - a confirmation that the organisation exists under
+    that name". Nothing enforced that, because nothing promoted anything at
+    all: `promoted` was written by one script and read by none.
+
+    Now something does, so the rule needs a guard. Four facts are required
+    and every one is observed rather than built: a directory a fetch read as
+    companies, an organisation name the PARENT'S OWN LISTING confirms, an
+    event name the directory page states, and a year. This drives the whole
+    stage against a throwaway catalog and asserts what it refused.
+    """
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import find_event_directories as fed
+
+    for row, want, why in [
+        ({"org_name_observed": "Alaska Municipal League", "name_confidence": "pattern"},
+         "Alaska Municipal League", "the parent's listing named it"),
+        ({"org_name_observed": "(the link following 'california' on the listing)",
+          "name_confidence": "pattern"}, None,
+         "matched by position, so the NAME is still unconfirmed"),
+        ({"org_name": "APWA California Chapter", "name_confidence": "pattern"}, None,
+         "a template with a state filled in is not a confirmed organisation"),
+        ({"org_name": "Real Association", "name_confidence": "named"},
+         "Real Association", "observed when the catalogue was built"),
+    ]:
+        got = fed.confirmed_name(row)
+        if got != want:
+            print(f"  FAIL: confirmed_name = {got!r}, expected {want!r} - {why}")
+            errors += 1
+
+    # THE SECOND WAY TO CONFIRM A NAME, and it must not be a looser way. A row
+    # matched by POSITION on the parent's listing has no name from it, which
+    # left three sheriffs' associations carrying 117-135 exhibitors stuck. The
+    # organisation's own site can answer - but only if it NAMES THE STATE, or
+    # a generic "Home" or another body's page answers for it.
+    pages = {
+        "https://ncsheriffs.org/": "<title>North Carolina Sheriffs' Association</title>",
+        "https://generic.test/": "<title>Home</title><h1>Welcome</h1>",
+        "https://other.test/": "<title>Association of Somewhere Else</title>",
+        "https://suffix.test/": "<title>Michigan Sheriffs Association | Home</title>",
+    }
+    keep_fetch = fed.fetch
+    try:
+        fed.fetch = lambda u: pages.get(u)
+        for url, geo, want in [
+            ("https://ncsheriffs.org/", "North Carolina", "North Carolina Sheriffs' Association"),
+            ("https://suffix.test/", "Michigan", "Michigan Sheriffs Association"),
+            ("https://generic.test/", "Florida", None),
+            ("https://other.test/", "Florida", None),
+        ]:
+            got = fed.name_from_own_site({"org_url": url, "geo": geo})
+            if got != want:
+                print(f"  FAIL: name_from_own_site({url}) = {got!r}, expected "
+                      f"{want!r} - a site that does not name its own state has "
+                      f"not confirmed anything")
+                errors += 1
+    finally:
+        fed.fetch = keep_fetch
+
+    # Every tag must satisfy the catalog's own pattern, which selftest enforces
+    # a few hundred lines up. Chapter names carry parentheses, en dashes and
+    # apostrophes; a tag that cannot be written is a promotion that cannot land.
+    for base in ["League of California Cities (Cal Cities)",
+                 "ACCG – Advancing Georgia's Counties", "Texas Municipal League",
+                 "Water Environment Association of Texas / WEAT"]:
+        tag = fed._tag(base, "2026", set())
+        if not re.match(r"^[\w &.'/-]+ 20\d{2}$", tag):
+            print(f"  FAIL: _tag({base!r}) = {tag!r}, which conferences.json's own "
+                  f"tag rule would refuse")
+            errors += 1
+    a = fed._tag("Same Name", "2026", set(), "Texas")
+    b = fed._tag("Same Name", "2026", {a}, "Ohio")
+    c = fed._tag("Same Name", "2026", {a, b}, None)
+    if len({a, b, c}) != 3 or not all(
+            re.match(r"^[\w &.'/-]+ 20\d{2}$", x) for x in (a, b, c)):
+        print(f"  FAIL: colliding names produced {a!r}, {b!r}, {c!r} - tags must "
+              f"be unique AND match the catalog's own charset, which forbids the "
+              f"parentheses the first version reached for")
+        errors += 1
+
+    # Every catalog place must already exist in conferences.json. A block or
+    # department the site does not know files the event nowhere.
+    cat = json.loads((DATA / "conferences.json").read_text())["conferences"]
+    pairs = {(c["block"], c["department"]) for c in cat}
+    for dept, place in fed.CATALOG_PLACE.items():
+        if tuple(place) not in pairs:
+            print(f"  FAIL: {dept!r} maps to {place}, which is not a "
+                  f"(block, department) pair conferences.json already uses")
+            errors += 1
+    staged_depts = {e.get("department") for e in
+                    json.loads((DATA / "state_events.json").read_text())["events"]}
+    unmapped = sorted(d for d in staged_depts if d and d not in fed.CATALOG_PLACE)
+    if unmapped:
+        print(f"  FAIL: staged events use departments with no catalog place: {unmapped}")
+        errors += 1
+
+    # THE STAGE ITSELF, driven. The helpers can all be right and unused.
+    import tempfile
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-promote-"))
+    (tmp / "conferences.json").write_text(json.dumps(
+        {"note": "", "conferences": [
+            {"block": "Executive / administration", "department": "Cities (elected)",
+             "conference": "Existing", "event_tag": "Existing 2026",
+             "exhibitor_url": "https://taken.test/list"}]}))
+    events = {"note": "", "events": [
+        {"org_code": "GOOD", "geo": "Texas", "department": "Municipal Government",
+         "name_confidence": "pattern", "org_name": "Texas Municipal League",
+         "org_name_observed": "Texas Municipal League", "org_url": "https://tml.test/",
+         "org_url_source": "https://www.nlc.org/list", "directory_url": "https://tml.test/exhibitors",
+         "directory_note": "40 names, good", "status": "directory_found", "promoted": False},
+        {"org_code": "GUESS", "geo": "Ohio", "department": "Municipal Government",
+         "name_confidence": "pattern", "org_name": "APWA Ohio Chapter",
+         "org_url": "https://oh.test/", "directory_url": "https://oh.test/exhibitors",
+         "status": "directory_found", "promoted": False},
+        {"org_code": "NOYEAR", "geo": "Iowa", "department": "Public Works",
+         "name_confidence": "named", "org_name": "Iowa Public Works",
+         "org_url": "https://ia.test/", "directory_url": "https://ia.test/exhibitors",
+         "status": "directory_found", "promoted": False},
+        {"org_code": "DUPE", "geo": "Utah", "department": "Municipal Government",
+         "name_confidence": "named", "org_name": "Utah League",
+         "org_url": "https://ut.test/", "directory_url": "https://taken.test/list",
+         "status": "directory_found", "promoted": False},
+    ]}
+    (tmp / "state_events.json").write_text(json.dumps(events))
+    pages = {
+        "https://tml.test/exhibitors": "<title>2026 TML Annual Conference Exhibitors</title>",
+        "https://oh.test/exhibitors": "<title>2026 Annual Conference Sponsors</title>",
+        "https://ia.test/exhibitors": "<title>Exhibitors</title><p>no year anywhere</p>",
+        "https://taken.test/list": "<title>2026 Annual Conference</title>",
+    }
+    keep = (fed.EVENTS, fed.DATA, fed.fetch)
+    out = io.StringIO()
+    try:
+        fed.EVENTS, fed.DATA = tmp / "state_events.json", tmp
+        fed.fetch = lambda u: pages.get(u)
+        with contextlib.redirect_stdout(out):
+            fed.stage_promote(True)
+        got = json.loads((tmp / "conferences.json").read_text())["conferences"]
+        rows = {r["org_code"]: r for r in json.loads((tmp / "state_events.json").read_text())["events"]}
+    finally:
+        fed.EVENTS, fed.DATA, fed.fetch = keep
+    promoted = {c.get("state_event", {}).get("org_code") for c in got if c.get("state_event")}
+    if promoted != {"GOOD"}:
+        print(f"  FAIL: promoted {sorted(promoted)}; only GOOD is confirmed. "
+              f"GUESS carries a generated name, NOYEAR states no year, and DUPE "
+              f"points at a url already in the catalog")
+        errors += 1
+    if rows["GUESS"].get("promoted") or rows["NOYEAR"].get("promoted"):
+        print("  FAIL: a refused row was marked promoted")
+        errors += 1
+    good = next((c for c in got if c.get("state_event", {}).get("org_code") == "GOOD"), None)
+    if good:
+        if good["conference"] != "2026 TML Annual Conference Exhibitors":
+            print(f"  FAIL: the conference name is {good['conference']!r}; the page "
+                  f"states one and it must be read, not built")
+            errors += 1
+        if good["block"] != "Executive / administration" or good["department"] != "Cities (elected)":
+            print(f"  FAIL: GOOD was filed at {good['block']}/{good['department']}")
+            errors += 1
+        if not re.match(r"^[\w &.'/-]+ 20\d{2}$", good.get("event_tag", "")):
+            print(f"  FAIL: promoted tag {good.get('event_tag')!r} is not legal")
+            errors += 1
+        if good.get("swept") is not False or good.get("flagship") is not False:
+            print("  FAIL: a freshly promoted event is neither swept nor flagship")
+            errors += 1
     return errors
 
 
@@ -9614,6 +9819,7 @@ def main() -> int:
     errors += check_a_menu_is_not_a_directory()
     errors += check_a_chapter_directory_is_not_its_parents()
     errors += check_chapter_listings_are_looked_up()
+    errors += check_promotion_refuses_a_generated_name()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

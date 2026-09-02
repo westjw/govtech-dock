@@ -2341,6 +2341,279 @@
    "dates_confidence": "high",
    "dates_source": "https://www.ncsea.org/ncsea-policy-forum/",
    "note": "added 2026-08-25. FOUND BY BEING WRONG ABOUT SOMETHING ELSE: a verifier checking why the NCSEA Leadership Symposium had no 2027 dates discovered NCSEA runs TWO annual conferences, and only the Policy Forum has announced its next edition. The Symposium row was correct to stay blank; this is the other conference, not a fix to it. Read verbatim off ncsea.org/ncsea-policy-forum/, where the 2027 entry sits ABOVE the 'Past Events' heading. Never swept - the exhibitor_url is NCSEA's year-round Corporate Partners roster, the same page the Symposium row uses, so sweeping it would re-import the same 15 partners rather than a Policy Forum floor."
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Cities (elected)",
+   "conference": "North Carolina League of Municipalities",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "https://www.nclm.org/about-us/partners-sponsors",
+   "fetchability": "readable",
+   "event_tag": "North Carolina League of Municipalities 2027",
+   "url": "http://www.nclm.org",
+   "dates": null,
+   "city": null,
+   "dates_source": "https://www.nclm.org/about-us/partners-sponsors",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'North Carolina League of Municipalities' by https://www.nlc.org/membership/state-municipal-leagues/. Directory: 86 names, good (30% carry a corporate marker, 2% name a site section). Event name not stated on the page; the organisation's name stands in.",
+   "state_event": {
+    "org_code": "MUNI_NC",
+    "geo": "North Carolina",
+    "parent_national": "NLC"
+   }
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Cities (elected)",
+   "conference": "Vendor Opportunities - New York Conference of Mayors",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "http://www.nycom.org/training/exhibiting-sponsorship",
+   "fetchability": "readable",
+   "event_tag": "New York State Conference of Mayors and Muni 2027",
+   "url": "http://www.nycom.org",
+   "dates": null,
+   "city": null,
+   "dates_source": "http://www.nycom.org/training/exhibiting-sponsorship",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'New York State Conference of Mayors and Municipal Officials' by https://www.nlc.org/membership/state-municipal-leagues/. Directory: 34 names, good (21% carry a corporate marker, 6% name a site section). Event name read from the page as 'Vendor Opportunities - New York Conference of Mayors'.",
+   "state_event": {
+    "org_code": "MUNI_NY",
+    "geo": "New York",
+    "parent_national": "NLC"
+   }
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Cities (elected)",
+   "conference": "Maryland Municipal League",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
+   "fetchability": "readable",
+   "event_tag": "Maryland Municipal League 2026",
+   "url": "http://www.mdmunicipal.org/",
+   "dates": null,
+   "city": null,
+   "dates_source": "https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Maryland Municipal League' by https://www.nlc.org/membership/state-municipal-leagues/. Directory: 223 names, good (33% carry a corporate marker, 0% name a site section). Event name not stated on the page; the organisation's name stands in.",
+   "state_event": {
+    "org_code": "MUNI_MD",
+    "geo": "Maryland",
+    "parent_national": "NLC"
+   }
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Cities (elected)",
+   "conference": "KLC Conference &amp; Expo",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "http://www.klc.org/EventView/13331/klc-conference-expo",
+   "fetchability": "readable",
+   "event_tag": "Kentucky League of Cities 2026",
+   "url": "http://www.klc.org",
+   "dates": null,
+   "city": null,
+   "dates_source": "http://www.klc.org/EventView/13331/klc-conference-expo",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Kentucky League of Cities' by https://www.nlc.org/membership/state-municipal-leagues/. Directory: 47 names, good (17% carry a corporate marker, 6% name a site section). Event name read from the page as 'KLC Conference &amp; Expo'.",
+   "state_event": {
+    "org_code": "MUNI_KY",
+    "geo": "Kentucky",
+    "parent_national": "NLC"
+   }
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Cities (elected)",
+   "conference": "2026 CT EMERGENCY MANAGEMENT SYMPOSIUM&nbsp;- PARTICIPATING EXHIBITORS AND SPONSORS",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "https://www.ccm-ct.org/Member-Benefits/Events/2026-Emergency-Management-Symposium/2026-CT-EMS-Exhibitors-Sponsors",
+   "fetchability": "readable",
+   "event_tag": "Connecticut Conference of Municipalities 2026",
+   "url": "http://www.ccm-ct.org",
+   "dates": null,
+   "city": null,
+   "dates_source": "https://www.ccm-ct.org/Member-Benefits/Events/2026-Emergency-Management-Symposium/2026-CT-EMS-Exhibitors-Sponsors",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Connecticut Conference of Municipalities' by https://www.nlc.org/membership/state-municipal-leagues/. Directory: 105 names, good (19% carry a corporate marker, 6% name a site section). Event name read from the page as '2026 CT EMERGENCY MANAGEMENT SYMPOSIUM&nbsp;- PARTICIPATING EXHIBITORS AND SPONSORS'.",
+   "state_event": {
+    "org_code": "MUNI_CT",
+    "geo": "Connecticut",
+    "parent_national": "NLC"
+   }
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Cities (elected)",
+   "conference": "Vermont League of Cities and Towns",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "http://www.vlct.org/vlcts-business-alliance-program",
+   "fetchability": "readable",
+   "event_tag": "Vermont League of Cities and Towns 2027",
+   "url": "http://www.vlct.org",
+   "dates": null,
+   "city": null,
+   "dates_source": "http://www.vlct.org/vlcts-business-alliance-program",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Vermont League of Cities and Towns' by https://www.nlc.org/membership/state-municipal-leagues/. Directory: 123 names, good (15% carry a corporate marker, 5% name a site section). Event name not stated on the page; the organisation's name stands in.",
+   "state_event": {
+    "org_code": "MUNI_VT",
+    "geo": "Vermont",
+    "parent_national": "NLC"
+   }
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Counties",
+   "conference": "County Commissioners Association of Pennsylvania",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "http://www.pacounties.org/vendors",
+   "fetchability": "readable",
+   "event_tag": "County Commissioners Association of Pennsylv 2026",
+   "url": "http://www.pacounties.org/",
+   "dates": null,
+   "city": null,
+   "dates_source": "http://www.pacounties.org/vendors",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'County Commissioners Association of Pennsylvania' by https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations. Directory: 59 names, good (25% carry a corporate marker, 5% name a site section). Event name not stated on the page; the organisation's name stands in.",
+   "state_event": {
+    "org_code": "CNTY_PA",
+    "geo": "Pennsylvania",
+    "parent_national": "NACO"
+   }
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Counties",
+   "conference": "ACCG \u2013 Advancing Georgia's Counties",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "https://marketplace.accg.org/",
+   "fetchability": "readable",
+   "event_tag": "ACCG Advancing Georgia's Counties 2026",
+   "url": "http://www.accg.org/",
+   "dates": null,
+   "city": null,
+   "dates_source": "https://marketplace.accg.org/",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as \"ACCG \u2013 Advancing Georgia's Counties\" by https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations. Directory: 17 names, good (18% carry a corporate marker, 0% name a site section). Event name not stated on the page; the organisation's name stands in.",
+   "state_event": {
+    "org_code": "CNTY_GA",
+    "geo": "Georgia",
+    "parent_national": "NACO"
+   }
+  },
+  {
+   "block": "Executive / administration",
+   "department": "Counties",
+   "conference": "Iowa State Association of Counties",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "https://www.iowacounties.org/member-resources/vendor-directory/",
+   "fetchability": "readable",
+   "event_tag": "Iowa State Association of Counties 2026",
+   "url": "http://www.iowacounties.org/",
+   "dates": null,
+   "city": null,
+   "dates_source": "https://www.iowacounties.org/member-resources/vendor-directory/",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Iowa State Association of Counties' by https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations. Directory: 100 names, good (25% carry a corporate marker, 3% name a site section). Event name not stated on the page; the organisation's name stands in.",
+   "state_event": {
+    "org_code": "CNTY_IA",
+    "geo": "Iowa",
+    "parent_national": "NACO"
+   }
+  },
+  {
+   "block": "Parks, recreation, libraries",
+   "department": "Parks & recreation",
+   "conference": "Washington Recreation and Park Association",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "http://www.wrpatoday.org/sponsors",
+   "fetchability": "readable",
+   "event_tag": "Washington Recreation and Park Association 2027",
+   "url": "http://www.wrpatoday.org/",
+   "dates": null,
+   "city": null,
+   "dates_source": "http://www.wrpatoday.org/sponsors",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Washington Recreation and Park Association' by https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/. Directory: 40 names, good (15% carry a corporate marker, 8% name a site section). Event name not stated on the page; the organisation's name stands in.",
+   "state_event": {
+    "org_code": "PARK_WA",
+    "geo": "Washington",
+    "parent_national": "NRPA"
+   }
+  },
+  {
+   "block": "Public safety",
+   "department": "Sheriffs",
+   "conference": "North Carolina Sheriffs' Association",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "https://ncsheriffs.org/corporate-partners-and-sponsors-2026",
+   "fetchability": "readable",
+   "event_tag": "North Carolina Sheriffs' Association 2026",
+   "url": "https://ncsheriffs.org/",
+   "dates": null,
+   "city": null,
+   "dates_source": "https://ncsheriffs.org/corporate-partners-and-sponsors-2026",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as \"North Carolina Sheriffs' Association\" by https://ncsheriffs.org/. Directory: 130 names, good (18% carry a corporate marker, 1% name a site section). Event name not stated on the page; the organisation's name stands in.",
+   "state_event": {
+    "org_code": "SHF_NC",
+    "geo": "North Carolina",
+    "parent_national": "NSA"
+   }
+  },
+  {
+   "block": "Public safety",
+   "department": "Sheriffs",
+   "conference": "Michigan Sheriffs\u2019 Association",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "https://www.misheriff.org/vendors/",
+   "fetchability": "readable",
+   "event_tag": "Michigan Sheriffs Association 2026",
+   "url": "https://www.misheriff.org/",
+   "dates": null,
+   "city": null,
+   "dates_source": "https://www.misheriff.org/vendors/",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Michigan Sheriffs\u2019 Association' by https://www.misheriff.org/. Directory: 117 names, good (36% carry a corporate marker, 2% name a site section). Event name not stated on the page; the organisation's name stands in.",
+   "state_event": {
+    "org_code": "SHF_MI",
+    "geo": "Michigan",
+    "parent_national": "NSA"
+   }
+  },
+  {
+   "block": "K-12 education",
+   "department": "Business officials",
+   "conference": "Ohio ASBO",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "https://oasbo-ohio.org/about/meet-oasbo/sponsors",
+   "fetchability": "readable",
+   "event_tag": "Ohio ASBO 2026",
+   "url": "https://oasbo-ohio.org/",
+   "dates": null,
+   "city": null,
+   "dates_source": "https://oasbo-ohio.org/about/meet-oasbo/sponsors",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Ohio ASBO' by https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx. Directory: 83 names, good (17% carry a corporate marker, 8% name a site section). Event name not stated on the page; the organisation's name stands in.",
+   "state_event": {
+    "org_code": "SB_OASBO",
+    "geo": "Ohio",
+    "parent_national": "ASBO"
+   }
   }
  ]
 }

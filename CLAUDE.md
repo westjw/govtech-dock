@@ -654,6 +654,35 @@ Indiana's summit, so it needs its own matcher against the event calendar.
 `NO_CHAPTERS` and `NO_LISTING_PUBLISHED` hold those reasons so the search is
 not run again.
 
+**THE FIRST STATE FLOORS ARE IN (2026-09-02).** Stage 2 read 183 chapter
+sites and found 16 real exhibitor lists; a re-verify with the corrected
+ownership check dropped one and kept 15. 13 promoted, swept and intaken:
+**177 companies already on the board gained a state event they exhibited at,
+893 suppliers were filed, and 82 candidates went to the research queue.**
+Maryland Municipal League alone lists 222 exhibitors, Vermont 123, Michigan
+Sheriffs 117.
+
+Two refusals worth keeping: Wisconsin Counties' page states no year, and a
+tag without one cannot be read back six months later; Florida Sheriffs'
+own site does not name Florida in its title, so nothing has confirmed the
+organisation and the row waits.
+
+`--promote` is the link that did not exist. `promoted` had been written by
+register_state_events and read by nothing, so a directory found here could
+never become a company. It requires four observed facts and refuses on any
+one: a directory a fetch read as companies, an organisation name confirmed
+by the parent's own listing OR by the site's own title (which must name the
+state), an event name the page states, and a year.
+
+**The subdomain hole, found in the re-verify.** `ace.awwa.org` is AWWA's own
+national conference and stage 1 had handed it to the California-Nevada
+Section as that section's site. `owns()` compared hosts exactly, so
+ace.awwa.org was not awwa.org and the same-host rule passed it. A subdomain
+of the parent IS the parent. Found the same day: a geo naming no single
+state ("Multi-state", "WA/OR/ID", "NC/SC") switched the guard off entirely,
+which is precisely where a regional body is most likely to be handed its
+parent's event; those now require the body's own site or go to a person.
+
 **APWA and GMIS answer 403 to an identified crawler.** That is their policy and
 it was not evaded; a browser user-agent would have got the page. 33 events sit
 behind it, honestly.
