@@ -2726,8 +2726,53 @@ RENDER.leads = c => {
   };
   row.append(why, no, msg);
   n.appendChild(row);
+
+  /* THE OTHER HALF OF THE QUEUE. This tab could only ever say no: the row
+     showed a company advertising sales roles somewhere we cannot enumerate,
+     and the only button dismissed it. "We saw jobs and did nothing" and "we
+     looked and there was nothing" then read the same on the public card,
+     which is the exact confusion posts_at exists to prevent. Saying yes here
+     is saying WHERE they post - which is a fact about them, not a guess -
+     and wiring a real board stays with the boards queue where verification
+     lives. */
+  const yes = el('div', 'row'); yes.style.marginTop = '6px';
+  const place = el('select', 'in');
+  [['', 'they post on…'], ['linkedin', 'LinkedIn'], ['indeed', 'Indeed'],
+   ['glassdoor', 'Glassdoor'], ['ziprecruiter', 'ZipRecruiter'],
+   ['builtin', 'Built In'], ['wellfound', 'Wellfound'],
+   ['govportal', 'a government jobs portal'], ['recruiter', 'an outside recruiter'],
+   ['email', 'by email only'], ['parent', "their parent's board"],
+   ['other', 'somewhere else']].forEach(([v, label]) => {
+    const o = el('option', null, label); o.value = v; place.appendChild(o);
+  });
+  const link = el('input', 'in');
+  link.placeholder = 'link to the page that lists their openings';
+  link.style.flex = '1';
+  const owner = el('input', 'in');
+  owner.placeholder = "whose board (parent only)"; owner.style.width = '12em';
+  owner.style.display = 'none';
+  place.onchange = () => {
+    const p = place.value;
+    owner.style.display = p === 'parent' ? '' : 'none';
+    link.style.display = (p === 'email' || p === 'recruiter') ? 'none' : '';
+  };
+  const save = el('button', 'btn primary', 'They post here');
+  save.onclick = async () => {
+    if (!place.value) { msg.textContent = 'pick where they post first';
+                        msg.style.color = 'var(--warn)'; return; }
+    save.disabled = true;
+    const r = await api('/api/posts-at', {
+      id: c.id, where: place.value, url: link.value.trim(),
+      owner: owner.value.trim(), note: why.value.trim()});
+    save.disabled = false;
+    if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
+    toast(r.message || 'recorded'); n.remove();
+  };
+  yes.append(place, link, owner, save);
+  n.appendChild(yes);
   return n;
 };
+
 
 RENDER.boardfound = c => {
   const n = el('div', 'item');

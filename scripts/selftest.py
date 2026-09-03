@@ -849,6 +849,51 @@ def _run_argv(mod, argv):
         sys.argv = keep
 
 
+def check_warm_leads_can_be_accepted() -> int:
+    """The warm-leads tab can say yes, not only no.
+
+    A row here is a company advertising sales roles somewhere we cannot
+    enumerate. The tab shipped with one button, "Not a lead", so the only
+    recordable outcome was a dismissal - and "we saw jobs and did nothing"
+    then reads on the public card exactly like "we looked and there was
+    nothing", which is the confusion posts_at was built to prevent. Saying
+    where they post is the accept path, and it goes through the same door
+    the no-board queue uses.
+    """
+    import re
+    html = (ROOT / "admin.html").read_text()
+    i = html.find("RENDER.leads = ")
+    if i < 0:
+        return fail("admin.html no longer draws the warm-leads queue")
+    body = html[i:html.find("\nRENDER.", i + 10)]
+    errors = 0
+    for needle, why in (
+            ("/api/posts-at", "the warm-leads row cannot record where a company posts, "
+                              "so the queue can only ever say no"),
+            ("where: place.value", "the row does not send which place was chosen, "
+                                   "so posts_at is called with an empty place"),
+            ("owner: owner.value", "the row never sends whose board it is, so "
+                                   "'their parent's board' can never be recorded"),
+            ("/api/dismiss", "the row lost its 'not a lead' path")):
+        if needle not in body:
+            errors += fail(why)
+    # every place the row offers must be one posts_at accepts
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import posts_at
+    offered = set(re.findall(r"\['([a-z]+)', '", body))
+    unknown = offered - set(posts_at.WHERE)
+    if unknown:
+        errors += fail(f"the row offers place(s) posts_at.check would refuse: "
+                       f"{sorted(unknown)}")
+    if len(offered & set(posts_at.WHERE)) < 5:
+        errors += fail(f"the row offers too few real places: {sorted(offered)}")
+    # 'parent' needs a name, and the row must ask for one
+    if "owner.placeholder" not in body:
+        errors += fail("the row never asks whose board it is, so choosing "
+                       "'their parent's board' is refused with no way to fix it")
+    return errors
+
+
 def check_merge_repoints_competitor_edges() -> int:
     """A merge leaves no edge pointing at the record it removed.
 
@@ -12684,6 +12729,7 @@ def main() -> int:
     errors += check_write_ups_queue_shows_only_exceptions()
     errors += check_users_board_never_stores_an_address()
     errors += check_merge_repoints_competitor_edges()
+    errors += check_warm_leads_can_be_accepted()
     errors += check_add_company_journals_and_reports_already_tracked()
     errors += check_login_endpoint_names_a_handle_never_an_address()
     errors += check_companies_sub_sector_filter_follows_the_sector()
