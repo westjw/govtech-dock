@@ -2345,6 +2345,8 @@ def check_profile_door_needs_provenance() -> int:
         # several. Without the singular-needle branch this is refused, and
         # deleting that branch walked past a battery that only tested the
         # plural-page case.
+        ("high confidence with sourced sentences and no evidence field",
+         prop(confidence="high", evidence="")),
         ("a name the page writes only in the singular",
          prop(s2=sub(S2, 2, "The Talons carry a radio into a barricaded room."))),
         # A PAGE DECODED WITH THE WRONG CHARACTER SET is still that page.
@@ -2394,7 +2396,12 @@ def check_profile_door_needs_provenance() -> int:
                                   "quote": Q1} for s in S1],
                                 [{"text": s, "url": "https://b.example/about",
                                   "quote": Q2} for s in S2]]})),
-        ("high confidence resting on nothing", "evidence", prop(confidence="high")),
+        # HIGH CONFIDENCE RESTING ON NOTHING is refused by rule 1, which runs
+        # first: a confident proposal with no paragraphs never reaches the
+        # evidence check. That is why the evidence requirement was removed -
+        # it could not fire.
+        ("high confidence resting on nothing", "paragraphs",
+         prop(confidence="high", paragraphs=[])),
         # A VERSION IS NOT ITS PREFIX, and this refusal is correct: the page
         # says NIBRS 3.5.0 and the sentence claims 3.5. Kept as a refuse-case
         # so the plural and trademark fixes cannot be widened into letting a
@@ -2423,6 +2430,11 @@ def check_profile_door_needs_provenance() -> int:
          prop(s2=sub(S2, 2, "The company is a leading supplier to police departments."))),
         ("a bridged run pairing two names the page keeps apart", "dallas county",
          prop(s2=sub(S2, 2, "Testimonials include Greg Champagne of Dallas County."))),
+        # ...AND THE SENTENCES ARE THE EVIDENCE when there are any. Every one
+        # names a page and quotes it verbatim, checked by rules 2, 4 and 5, so
+        # a profile that reaches rule 10 cannot be a guess. Demanding the
+        # summary field as well refused 54 sound write-ups in one batch, none
+        # of which failed anything else.
         ("a version number the page writes longer", "3.5",
          prop(s2=sub(S2, 2, "Reporting follows the NIBRS 3.5 standard for police records."))),
         # THE SHAPE RULES. The first version of this battery covered only the

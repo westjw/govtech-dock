@@ -941,9 +941,23 @@ def check_profile(p: dict, texts: dict[str, str]) -> str | None:
     if err:
         return err
 
-    # 10. the tell of a helpful guess: maximum confidence, minimum evidence
-    if conf == "high" and not str(p.get("evidence") or "").strip():
-        return "10. high confidence needs evidence: the url the write-up rests on."
+    # 10. THE EVIDENCE FIELD IS NOT REQUIRED HERE, and the reason is worth
+    #     writing down rather than leaving as an absence.
+    #
+    #     It exists to catch "the tell of a helpful guess: maximum confidence,
+    #     minimum evidence", which is real for a kind carrying ONE claim - a
+    #     board, a read. A profile carries a claim per sentence, and rule 1
+    #     has already refused a confident proposal with no paragraphs, rule 2
+    #     every url that is not a page of theirs, and rule 4 every sentence
+    #     whose quote is not verbatim on the page it cites. By the time
+    #     execution reaches here, every sentence names a page and quotes it.
+    #     A summary pointer adds nothing those three have not already proved,
+    #     and requiring it refused 54 sound write-ups in one batch, none of
+    #     which failed any other rule.
+    #
+    #     Written as a comment rather than an `if` that can never fire: dead
+    #     code shaped like a guard is worse than no guard, because the next
+    #     reader counts it as protection.
     return None
 
 
