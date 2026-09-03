@@ -10,13 +10,20 @@
  * Cloudflare Pages custom domain at the new name. selftest will tell you if
  * you did only one of the first two.
  *
- * FROM IS DELIBERATELY STILL ON solesourcejobs.com. Resend has that domain
- * verified for sending and has never seen sledjobs.com; moving this line
- * before the new domain is verified makes every alert fail to send while the
- * endpoint still answers 200. It moves the day Resend shows sledjobs.com
- * verified.
+ * FROM MOVED TO sledjobs.com ON 2026-09-03, the day Resend verified it. It
+ * was held on the old domain deliberately: sending from a domain Resend has
+ * never seen fails silently, with this endpoint still answering 200, which is
+ * the shape of failure this project spends most of its guards on. The three
+ * records were checked live before the move - a DKIM key distinct from the old
+ * domain's, an SPF include for amazonses.com, and an MX at
+ * feedback-smtp.us-east-1, the same region the old domain sends from.
+ *
+ * ALERTS ALREADY MAILED carry solesourcejobs.com links and still resolve,
+ * because that domain remains attached to this Pages project. They break the
+ * day it is handed to the federal board, and one confirmation email has ever
+ * been sent, so that blast radius is one address.
  */
 export const SITE = "https://sledjobs.com";
 export const DOMAIN = "sledjobs.com";
 export const NAME = "SLED JOBS";
-export const FROM = "SLED JOBS <alerts@solesourcejobs.com>";
+export const FROM = "SLED JOBS <alerts@sledjobs.com>";

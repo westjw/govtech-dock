@@ -7,7 +7,7 @@
   "_domain_comment": "sledjobs.com, bought 2026-09-02. solesourcejobs.com becomes a separate FEDERAL hiring board later, so this project must stop using it. Changing this string and the Pages custom domain is the whole move: alert links, digest footers, the confirmation email and the submission form all read it from here.",
   "domain": "sledjobs.com",
   "site": "https://sledjobs.com",
-  "from_email": "alerts@solesourcejobs.com",
+  "from_email": "alerts@sledjobs.com",
   "palette": {
     "ice": {
       "hex": "#E8F1F7",
@@ -73,5 +73,5 @@
       }
     }
   },
-  "_from_email_comment": "STILL ON THE OLD DOMAIN ON PURPOSE. Resend has solesourcejobs.com verified for sending - SPF and DKIM in Cloudflare DNS - and has never seen sledjobs.com. Moving this string before that domain is verified and its DNS published would make every alert fail to send, silently, with the endpoint still answering 200. Change it the day Resend shows sledjobs.com verified, and not before."
+  "_from_email_comment": "MOVED 2026-09-03, the day Resend verified sledjobs.com. It had been held on solesourcejobs.com on purpose: moving it before the new domain was verified would have made every alert fail to send, silently, with the endpoint still answering 200. Verified before the change, not after: resend._domainkey.sledjobs.com carries a DKIM key distinct from the old domain's, send.sledjobs.com carries v=spf1 include:amazonses.com ~all, and its MX is feedback-smtp.us-east-1.amazonses.com - the same region the old domain sends from. functions/_brand.js restates this and selftest::check_brand fails the build if the two disagree, so they move together or not at all. Links in alerts ALREADY MAILED point at solesourcejobs.com and keep working, because that domain is still attached to this Pages project; they break the day it moves to the federal board."
 }
