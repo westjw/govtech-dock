@@ -2375,6 +2375,176 @@ RENDER.founded = c => {
    company is usually a parent (Prepared's careers page links to Axon's, 500
    postings), and a count wildly out of scale is the same thing wearing a
    disguise. */
+/* ONE RENDERER FOR EVERY PROPOSAL KIND, DRAWN FROM A TABLE. This queue had a
+   tab, a count, and no renderer: clicking it threw at RENDER[key](it) and
+   131 rows were unreachable for a month. A per-kind function is how that
+   happens - the next kind arrives and nobody writes one. The verbs (accept,
+   reject, why, what the agent saw) are the same for every kind; only the
+   evidence block differs, and a table keeps a new kind to one entry. A kind
+   missing from the table still renders, with its raw fields, and says so. */
+const PROPOSAL_KINDS = {
+  read: {
+    accept: 'Accept these postings',
+    evidence(p, line){
+      const e = el('div', 'evi');
+      if (p.none_found) {
+        e.appendChild(line('The read found:', 'nothing - accepting records that and writes no posting'));
+      } else {
+        e.appendChild(line('Read off the page:', p.n + ' posting' + (p.n === 1 ? '' : 's')
+          + (p.evidence ? ' at ' + p.evidence : '')));
+        (p.postings || []).forEach(j => {
+          const d = el('div', 'kv', '• ' + (j.title || j) + (j.location ? ' · ' + j.location : ''));
+          e.appendChild(d);
+        });
+        if (p.n > (p.postings || []).length)
+          e.appendChild(el('div', 'kv', '…and ' + (p.n - p.postings.length) + ' more'));
+      }
+      return e;
+    },
+    needsForce: p => !!p.warn,
+  },
+  board: {
+    accept: 'Wire this board',
+    evidence(p, line){
+      const e = el('div', 'evi');
+      e.appendChild(line('Board found:', (p.ats_type || '?') + ' · ' + String(p.ats_ref || '').slice(0, 70)));
+      if (p.rows != null) e.appendChild(line('It reads:', p.rows + ' row' + (p.rows === 1 ? '' : 's')));
+      (p.sample || []).slice(0, 6).forEach(s => e.appendChild(el('div', 'kv', '• ' + s)));
+      e.appendChild(el('div', 'kv', 'Accepting re-fetches the board and asks whose it is; a MISMATCH refuses.'));
+      return e;
+    },
+    needsForce: p => false,
+  },
+  bucket: {
+    accept: 'File it there',
+    evidence(p, line){
+      const e = el('div', 'evi');
+      e.appendChild(line('Filed now:', p.filed_now || '?'));
+      e.appendChild(line('Agent proposes:', (p.proposed_sector || '?') + ' / ' + (p.proposed_category || '?')));
+      return e;
+    },
+    needsForce: p => false,
+  },
+  rival: {
+    accept: 'Accept the shortlist',
+    evidence(p, line){
+      const e = el('div', 'evi');
+      if (!p.rivals || !p.rivals.length) {
+        e.appendChild(line('Shortlist:', 'nobody on this roster competes with them (asserted)'));
+      } else {
+        e.appendChild(line('Shortlist:', p.rivals.length + ' competitor' + (p.rivals.length === 1 ? '' : 's')));
+        p.rivals.forEach(r => e.appendChild(el('div', 'kv', '• ' + r.id + ' — ' + (r.why || ''))));
+      }
+      return e;
+    },
+    needsForce: p => false,
+  },
+};
+const NO_APPLIER = new Set(['profile', 'news', 'claim', 'card']);
+
+RENDER.proposals = p => {
+  const n = el('div', 'item');
+  n.appendChild(withLogo(el('h3', null, p.name || p.id), p));
+  n.appendChild(el('div', 'kv',
+    [p.kind + ' proposal', p.sector, 'by ' + (p.by || 'agent'),
+     p.at ? String(p.at).slice(0, 10) : ''].filter(Boolean).join(' · ')));
+
+  const line = (label, val) => {
+    const d = el('div');
+    d.appendChild(el('b', null, label + ' '));
+    d.appendChild(document.createTextNode(val));
+    return d;
+  };
+  const spec = PROPOSAL_KINDS[p.kind];
+  if (spec) {
+    n.appendChild(spec.evidence(p, line));
+  } else {
+    const e = el('div', 'evi');
+    e.appendChild(line('No renderer for kind:', p.kind + ' — showing the raw fields'));
+    e.appendChild(el('div', 'kv', JSON.stringify(p).slice(0, 400)));
+    n.appendChild(e);
+  }
+  // the agent's own case sits beside its answer, so a reader rules on the
+  // reasoning and not just the verdict - the council rule
+  const c = el('div', 'kv');
+  c.appendChild(el('b', null, 'Confidence ' + (p.confidence || '?') + '. '));
+  if (p.why) c.appendChild(document.createTextNode(p.why));
+  n.appendChild(c);
+  if (p.warn) {
+    const w = el('div'); w.style.marginTop = '6px';
+    w.appendChild(el('span', 'bad', p.warn));
+    n.appendChild(w);
+  }
+
+  const row = el('div', 'row');
+  if (p.evidence && /^https?:/.test(p.evidence)) {
+    const open = el('a', 'btn'); open.textContent = 'Open the page';
+    open.href = p.evidence; open.target = '_blank'; open.rel = 'noopener noreferrer';
+    row.appendChild(open);
+  }
+  const why = el('input', 'in');
+  why.placeholder = 'why (recorded either way)'; why.style.flex = '1';
+  const yes = el('button', 'btn primary', spec ? spec.accept : 'Accept');
+  const no = el('button', 'btn', 'Reject');
+  const msg = el('div', 'kv'); msg.style.cssText = 'flex-basis:100%;margin-top:4px';
+  if (NO_APPLIER.has(p.kind)) {
+    yes.disabled = true;
+    yes.title = 'no applier for a ' + p.kind + ' proposal yet';
+  }
+  const send = async (accept, force) => {
+    yes.disabled = no.disabled = true;
+    const r = await api('/api/proposal-ruling',
+      {key: p.key, accept, force: !!force, why: why.value.trim()});
+    yes.disabled = NO_APPLIER.has(p.kind); no.disabled = false;
+    if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
+    toast(r.message); n.remove();
+  };
+  yes.onclick = () => send(true, spec && spec.needsForce(p));
+  no.onclick = () => send(false);
+  row.append(why, yes, no, msg);
+  n.appendChild(row);
+  return n;
+};
+
+/* WARM LEADS: no readable board, but a sales title was seen in the page
+   text. This tab too had a count and no renderer. The row's whole case is
+   the note the scan left; the actions are the ones a person can take from
+   the page it points at - read it with the extension, or say it is not a
+   lead. Nothing here writes the map. */
+RENDER.leads = c => {
+  const n = el('div', 'item');
+  n.appendChild(withLogo(el('h3', null, c.name), c));
+  n.appendChild(el('div', 'kv',
+    [c.sector, c.tier === 1 ? 'core govtech' : '', c.checked ? 'scanned ' + c.checked : '']
+      .filter(Boolean).join(' · ')));
+  const e = el('div', 'evi');
+  const d = el('div');
+  d.appendChild(el('b', null, 'The scan saw: '));
+  d.appendChild(document.createTextNode(c.note || '(no note recorded)'));
+  e.appendChild(d);
+  if (c.board) e.appendChild(el('div', 'kv', 'board ref on file: ' + String(c.board).slice(0, 80)));
+  n.appendChild(e);
+  const row = el('div', 'row');
+  if (c.website) {
+    const open = el('a', 'btn'); open.textContent = 'Open their site';
+    open.href = c.website; open.target = '_blank'; open.rel = 'noopener noreferrer';
+    row.appendChild(open);
+  }
+  const why = el('input', 'in'); why.placeholder = 'why'; why.style.flex = '1';
+  const no = el('button', 'btn', 'Not a lead');
+  const msg = el('div', 'kv'); msg.style.cssText = 'flex-basis:100%;margin-top:4px';
+  no.onclick = async () => {
+    no.disabled = true;
+    const r = await api('/api/dismiss', {queue: 'leads', id: c.id, why: why.value.trim()});
+    no.disabled = false;
+    if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
+    toast(r.message || 'dismissed'); n.remove();
+  };
+  row.append(why, no, msg);
+  n.appendChild(row);
+  return n;
+};
+
 RENDER.boardfound = c => {
   const n = el('div', 'item');
   n.appendChild(withLogo(el('h3', null, c.name), c));

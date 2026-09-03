@@ -56,7 +56,10 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 STORE = DATA / "agent_proposals.json"
 
-KINDS = ("bucket", "read", "card", "board", "rival")
+# profile, news and claim are declared ahead of their appliers so the queue
+# can show them; proposal_rulings refuses to land one until the applier
+# exists, by name, rather than raising inside a request handler.
+KINDS = ("bucket", "read", "card", "board", "rival", "profile", "news", "claim")
 CONFIDENCE = ("high", "medium", "low", "unsure")
 
 
@@ -70,8 +73,19 @@ def load() -> dict:
     return json.loads(STORE.read_text()) if STORE.exists() else {}
 
 
-def save(store: dict) -> None:
-    STORE.write_text(json.dumps(store, indent=1, sort_keys=True) + "\n")
+def save(store: dict, action: str = "agent-proposals", why: str = "",
+         by: str = "agent") -> str | None:
+    """Write the store THROUGH THE JOURNAL. Returns a refusal or None.
+
+    This used to be a bare write_text. CLAUDE.md heads a section "Every admin
+    write is reversible" and this file was one of the writers that made that
+    false: a ruling stamped onto a proposal here had no before-image and no
+    --undo. save_decisions journals it like every other decision file, and
+    brings BLAST and the runaway guard to it for the first time.
+    """
+    import admin
+    return admin.save_decisions("agent_proposals.json", store, action,
+                                why=why, by=by)
 
 
 # ---------------------------------------------------------------- briefs
@@ -546,7 +560,12 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
             "status": "pending",
         }
         kept += 1
-    save(store)
+    bad = save(store, "agent-ingest",
+               why=f"{kept} {kind} proposal(s) from {model or 'agent'}",
+               by=model or "agent")
+    if bad:
+        return {"kept": 0, "refused": refused + [{"key": "*", "why": bad}],
+                "total": len(store)}
     return {"kept": kept, "refused": refused, "total": len(store)}
 
 
@@ -563,15 +582,42 @@ def summary() -> dict:
 def main() -> int:
     import argparse
     ap = argparse.ArgumentParser()
-    ap.add_argument("command", choices=["brief", "status", "show"])
+    ap.add_argument("command", choices=["brief", "ingest", "status", "show"])
     ap.add_argument("--kind", default="bucket", choices=KINDS)
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--sector")
+    ap.add_argument("--category")
+    ap.add_argument("--file", help="ingest: a JSON file of proposals")
+    ap.add_argument("--model", default="", help="ingest: who produced them")
     a = ap.parse_args()
 
     if a.command == "brief":
-        briefs = {"bucket": brief_bucket, "read": brief_read}[a.kind](a.limit)
+        # THE DISPATCH USED TO BE A TWO-ENTRY DICT and `--kind rival` raised
+        # KeyError, so the one kind that had actually run was the one the
+        # CLI could not brief. Every kind with a brief is listed; a kind
+        # without one says so instead of crashing.
+        if a.kind == "bucket":
+            briefs = brief_bucket(a.limit)
+        elif a.kind == "read":
+            briefs = brief_read(a.limit)
+        elif a.kind == "rival":
+            briefs = brief_rival(a.sector, a.category, a.limit)
+        else:
+            print(f"no brief builder for {a.kind!r} yet", file=sys.stderr)
+            return 2
         print(json.dumps(briefs, indent=1))
         return 0
+    if a.command == "ingest":
+        if not a.file:
+            ap.error("ingest needs --file")
+        raw = json.loads(pathlib.Path(a.file).read_text())
+        props = raw.get("proposals") if isinstance(raw, dict) else raw
+        rep = ingest(a.kind, props or [], model=a.model)
+        print(f"kept {rep['kept']}, refused {len(rep['refused'])}, "
+              f"store holds {rep['total']}")
+        for r in rep["refused"][:12]:
+            print(f"  REFUSED {r['key']}: {r['why'][:100]}")
+        return 0 if rep["kept"] or not props else 1
     if a.command == "status":
         s = summary()
         print(f"{s['total']} proposal(s): {s['pending']} pending, "
@@ -580,9 +626,9 @@ def main() -> int:
         return 0
     for key, p in sorted(load().items()):
         mark = {"pending": "?", "accepted": "+", "rejected": "-"}.get(p["status"], "?")
-        print(f"{mark} {p['name']}  ->  {p.get('sector') or 'UNSURE'}"
+        print(f"{mark} {p.get('name')}  ->  {p.get('sector') or 'UNSURE'}"
               f"{' / ' + p['category'] if p.get('category') else ''}"
-              f"  [{p['confidence']}]")
+              f"  [{p.get('confidence')}]")
         if p.get("why"):
             print(f"    {p['why'][:110]}")
     return 0

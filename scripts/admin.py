@@ -2868,6 +2868,35 @@ def q_leads(companies, board) -> list:
     return out
 
 
+def proposal_warn(r: dict, c: dict | None) -> str | None:
+    """WHOSE PAGE DID IT READ. The top two read proposals were Aladtec, read
+    off tcpsoftware.com, and Nedap Identification Systems, read off nedap.com's
+    group careers page - the two traps CLAUDE.md names. Accepting either files
+    a parent's requisitions under a subsidiary, the false "Yes" this project
+    exists to refuse. The agent cannot know; the queue can say, and so can the
+    applier, which is why this is one function and not two copies.
+
+    An ATS host is not another company: greenhouse.io is the filing cabinet.
+    edovo.org against edovo.com is one company with two TLDs. Same
+    second-level name means same outfit.
+    """
+    ev, site = r.get("evidence") or "", (c or {}).get("website") or ""
+    if not (ev and site):
+        return None
+
+    def _root(u):
+        h = (urllib.parse.urlparse(u).hostname or "").lower().replace("www.", "")
+        bits = h.split(".")
+        return ".".join(bits[-2:]) if len(bits) >= 2 else h
+
+    _name = lambda u: _root(u).rsplit(".", 1)[0]
+    if (_root(ev) and _root(site) and _root(ev) != _root(site)
+            and _name(ev) != _name(site) and _root(ev) not in ATS_HOSTS):
+        return (f"read off {_root(ev)}, which is not {r.get('name')}'s own "
+                f"domain - check whose requisitions these are before accepting")
+    return None
+
+
 def q_proposals(companies, board) -> list:
     """What the agents proposed, waiting on a person.
 
@@ -2904,38 +2933,32 @@ def q_proposals(companies, board) -> list:
         # names by name. Accepting either would file a parent's requisitions
         # under a subsidiary, which is the false "Yes" this project exists to
         # refuse. The agent cannot know; the queue can say.
-        warn = None
-        ev, site = r.get("evidence") or "", (c or {}).get("website") or ""
-        if ev and site:
-            def _root(u):
-                h = (urllib.parse.urlparse(u).hostname or "").lower().replace("www.", "")
-                bits = h.split(".")
-                return ".".join(bits[-2:]) if len(bits) >= 2 else h
-            # An ATS host is not another company. greenhouse.io is the filing
-            # cabinet; reading a company's own Greenhouse is exactly right, and
-            # flagging it would bury the real warnings under noise. Dominion on
-            # Paylocity and Fotokite on BambooHR were both flagged before this
-            # and both are fine; Brightly on siemens.com is the one that is not.
-            # edovo.org against edovo.com is one company with two TLDs, not
-            # two companies. Same second-level name means same outfit.
-            _name = lambda u: _root(u).rsplit(".", 1)[0]
-            if (_root(ev) and _root(site) and _root(ev) != _root(site)
-                    and _name(ev) != _name(site)
-                    and _root(ev) not in ATS_HOSTS):
-                warn = (f"read off {_root(ev)}, which is not {r.get('name')}'s own "
-                        f"domain - check whose requisitions these are before "
-                        f"accepting")
+        warn = proposal_warn(r, c)
         out.append({
+            # THE STORE KEY TRAVELS WITH THE ROW. A ruling is made on a key,
+            # and a row that carries only the company id cannot say which of
+            # a company's several proposals (a read AND a board, say) it is.
+            "key": r.get("key") or f"{r.get('kind')}:{r.get('id')}",
             "id": r.get("id"), "name": r.get("name") or (c or {}).get("name"),
             "warn": warn,
             "kind": r.get("kind"), "by": r.get("by"), "at": r.get("at"),
             "confidence": r.get("confidence"),
             "evidence": r.get("evidence"),
+            "why": r.get("why"),
             "none_found": bool(r.get("none_found")),
             "n": len(posts),
             "postings": posts[:8],
             "saw": r.get("saw"),
             "sector": (c or {}).get("sector"),
+            # kind-specific evidence, so one renderer can draw every kind
+            # from a table rather than a per-kind function that nobody
+            # writes - which is how this queue came to have none
+            "rivals": r.get("rivals"),
+            "ats_type": r.get("ats_type"), "ats_ref": r.get("ats_ref"),
+            "rows": r.get("rows"), "sample": r.get("sample"),
+            "proposed_sector": r.get("sector") if r.get("kind") == "bucket" else None,
+            "proposed_category": r.get("category") if r.get("kind") == "bucket" else None,
+            "filed_now": (r.get("saw") or {}).get("filed_now"),
         })
     # the ones that found something first: a proposal with postings is a
     # decision worth making today, and "read produced nothing" is a record
@@ -4049,6 +4072,25 @@ def sort_roles() -> dict:
             "titles": rows}
 
 
+def act_proposal_ruling(body: dict) -> dict:
+    """Accept or reject an agent proposal, by store key, through the one door.
+
+    The applier is scripts/proposal_rulings.py, shared with the CLI and with
+    the web admin's apply step, so the gates are identical whichever way a
+    ruling arrives. This function only reads the body and passes it on; a
+    gate that lived here would be a gate the CLI walked past.
+    """
+    import proposal_rulings, agents
+    key = (body.get("key") or "").strip()
+    if not key:
+        return {"error": "need a proposal key"}
+    store = agents.load()
+    return proposal_rulings.rule(store, key, bool(body.get("accept")),
+                                 why=(body.get("why") or ""),
+                                 by=(body.get("by") or "owner"),
+                                 force=bool(body.get("force")))
+
+
 ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "verify-website": act_verify_website, "verify-board": act_verify_board,
            "set-board": act_set_board, "set-family": act_set_family,
@@ -4062,6 +4104,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "submit": act_submit, "resolve-submission": act_resolve_submission,
            "inspect-submission": act_inspect_submission,
            "confirm-founded": act_confirm_founded,
+           "proposal-ruling": act_proposal_ruling,
            "dismiss": act_dismiss}
 
 

@@ -594,6 +594,165 @@ def check_rival_door_refuses_a_category() -> int:
     return errors
 
 
+def check_every_queue_has_a_renderer() -> int:
+    """A queue the admin lists must be a queue the admin can draw.
+
+    admin.html builds one tab per key in META.labels and dispatches clicks
+    through RENDER[key](it). For a month two of the seventeen - Agent
+    proposals (131 rows) and Warm leads (72) - had a tab, a count, and no
+    RENDER entry, so clicking either threw TypeError inside the forEach and
+    203 rows were unreachable from the only UI that holds thirteen of the
+    queues. queue_stats never saw it: the crash was client-side. This is the
+    guard that was missing, and it reads the source because the failure is a
+    missing assignment that no request ever exercises.
+    """
+    import re
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+    html = (ROOT / "admin.html").read_text()
+    drawn = set(re.findall(r"^RENDER\.([a-z_]+)\s*=", html, re.M))
+    errors = 0
+    for key in admin.QUEUES:
+        if key not in drawn:
+            errors += fail(f"admin.QUEUES lists {key!r} and admin.html has no "
+                           f"RENDER.{key}. The tab renders with a count and "
+                           f"throws on click; every row in it is unreachable")
+    for key in drawn - set(admin.QUEUES):
+        note(f"admin.html draws RENDER.{key}, which is not a queue (fine if it "
+             f"is a sub-view)")
+    return errors
+
+
+def check_proposal_rulings_cover_every_kind() -> int:
+    """Every kind in agents.KINDS either lands through the one door or refuses
+    by name - and never raises inside a request handler.
+
+    The spine's other end. agents.KINDS declares kinds ahead of their appliers
+    so the queue can show them; proposal_rulings.rule must therefore answer
+    for EVERY kind, including the ones with nothing behind them, with an
+    explicit refusal rather than a KeyError that takes the whole action down.
+    Executed in a sandbox with the store, the journal and the companies file
+    all pointed at a temp dir - a check that rules on a real proposal is the
+    accident this repo spent a night recovering from.
+    """
+    import json as _json
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin, agents, proposal_rulings
+
+    companies = [{"id": "acme", "name": "Acme", "sector": "Public Safety",
+                  "category": "Police", "description": "CAD for police",
+                  "website": "https://acme.example", "ats": {"type": "unknown", "ref": None},
+                  "hiring": "Unknown", "govtech": True, "vendor_type": "product"}]
+    store = {}
+    for k in agents.KINDS:
+        store[f"{k}:acme"] = {"kind": k, "id": "acme", "name": "Acme",
+                              "status": "pending", "confidence": "medium",
+                              "why": "fixture", "evidence": "https://acme.example/careers",
+                              "postings": [] , "none_found": True,
+                              "rivals": [], "sector": "Public Safety", "category": "Police"}
+    store["read:acme"]["evidence"] = "https://other.example/jobs"   # off-domain
+    # A KIND NOBODY DECLARED. The dispatcher must refuse it in words, not
+    # raise: a request handler that raises is a tab that crashes, which is
+    # the exact defect this queue had.
+    store["bogus:acme"] = dict(store["board:acme"], kind="bogus")
+    files = {"companies.json": companies, "agent_proposals.json": store,
+             "manual.json": {"checks": {}, "postings": []},
+             "admin_dismissed.json": {}, "placement_rulings.json": {}}
+    errors = 0
+    with _sandbox_admin(files) as tmp:
+        keep = agents.STORE
+        agents.STORE = tmp / "agent_proposals.json"
+        try:
+            st = agents.load()
+            # 1. no author, no ruling. Asserted on the REJECT path, which has
+            # no other gate: the first version asserted it on an off-domain
+            # read, which is refused for a different reason, so a dispatcher
+            # that quietly defaulted `by` to "owner" walked past.
+            r = proposal_rulings.rule(st, "board:acme", False, why="x", by="")
+            if not r.get("error") or "author" not in r["error"]:
+                errors += fail(f"a reject with no author was not refused for "
+                               f"want of one: {r}. `by` defaulting to owner is "
+                               f"the attribution trap CLAUDE.md records 86 "
+                               f"writes paying for")
+            if agents.load()["board:acme"].get("status") != "pending":
+                errors += fail("a reject with no author still changed the row")
+            # 1b. an undeclared kind refuses in words
+            r = proposal_rulings.rule(agents.load(), "bogus:acme", True,
+                                      why="x", by="owner")
+            if not r.get("error") or "bogus" not in r["error"]:
+                errors += fail(f"an undeclared kind was not refused by name: {r}")
+            # 2. every kind answers; the unbuilt ones refuse BY NAME
+            for k in agents.KINDS:
+                try:
+                    r = proposal_rulings.rule(agents.load(), f"{k}:acme", True,
+                                              why="fixture", by="owner")
+                except Exception as exc:
+                    errors += fail(f"accepting a {k} proposal RAISED "
+                                   f"{type(exc).__name__}: {exc}. A request "
+                                   f"handler that raises is a tab that crashes")
+                    continue
+                if k in proposal_rulings.NO_APPLIER:
+                    # THE refusal, not any refusal. "unknown proposal kind
+                    # 'profile'" also contains the word profile; the first
+                    # version accepted it and a dispatcher that dropped the
+                    # no-applier branch walked past.
+                    if not r.get("error") or "no applier" not in r["error"] \
+                            or k not in r["error"]:
+                        errors += fail(f"a {k} proposal was not refused as "
+                                       f"'no applier for a {k}'; got {r}. A "
+                                       f"kind with no applier must say so, "
+                                       f"not pretend to land or fall through")
+                elif k == "read":
+                    # off-domain read refuses without force, lands with it
+                    if not r.get("error"):
+                        errors += fail("an off-domain read was accepted without "
+                                       "force. That files a parent's "
+                                       "requisitions under a subsidiary")
+                    r2 = proposal_rulings.rule(agents.load(), "read:acme", True,
+                                               why="fixture", by="owner", force=True)
+                    if r2.get("error"):
+                        errors += fail(f"a forced none_found read did not close: {r2}")
+                    st2 = agents.load()
+                    if st2["read:acme"].get("status") != "accepted" \
+                            or st2["read:acme"].get("ruled_by") != "owner":
+                        errors += fail("an accepted read was not stamped with "
+                                       "status and author in the store")
+            # 3. a reject stamps and keeps the row
+            r = proposal_rulings.rule(agents.load(), "board:acme", False,
+                                      why="not theirs", by="owner")
+            st3 = agents.load()
+            if r.get("error") or st3["board:acme"].get("status") != "rejected" \
+                    or st3["board:acme"].get("ruled_why") != "not theirs":
+                errors += fail(f"a reject did not stamp the row: {r} / "
+                               f"{st3['board:acme']}")
+            if "board:acme" not in st3:
+                errors += fail("a rejected proposal was deleted. Rejecting "
+                               "records; it never removes")
+            # 4. the store write was journalled - THIS ruling's entry, found by
+            # its action. The first version looked for the filename anywhere
+            # in the log, and the rival path's own save had already put it
+            # there, so a dispatcher writing the store directly walked past.
+            log = tmp / "admin_journal.jsonl"
+            acts = []
+            if log.exists():
+                for line in log.read_text().splitlines():
+                    try:
+                        acts.append(_json.loads(line).get("action"))
+                    except ValueError:
+                        pass
+            if "proposal-reject" not in acts or "proposal-accept" not in acts:
+                errors += fail(f"proposal rulings were not journalled under "
+                               f"their own action (saw {sorted(set(acts))}). "
+                               f"admin_undo cannot take one back")
+            # 5. the action is registered and goes through the same door
+            if admin.ACTIONS.get("proposal-ruling") is not admin.act_proposal_ruling:
+                errors += fail("ACTIONS has no proposal-ruling entry; the queue's "
+                               "buttons post into nothing")
+        finally:
+            agents.STORE = keep
+    return errors
+
+
 def check_site_pages_stay_out_of_git() -> int:
     """Other people's page text never reaches the repository.
 
@@ -10643,6 +10802,8 @@ def main() -> int:
                 f"expected {(w_title, w_loc, w_pay)!r}")
     errors += check_board()
     errors += check_rival_door_refuses_a_category()
+    errors += check_every_queue_has_a_renderer()
+    errors += check_proposal_rulings_cover_every_kind()
     errors += check_site_pages_stay_out_of_git()
     errors += check_profile_fetch_stays_first_party()
     errors += check_rival_brief_never_cuts_the_roster()
