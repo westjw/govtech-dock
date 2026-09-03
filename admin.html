@@ -925,9 +925,7 @@ async function show(key) {
   LAST_ITEMS = items; VTHEME = null;
   const body = el('div'); body.id = 'qbody';
   if (res.state || res.belt) v.appendChild(queueHead(key, res, body));
-  // THE OWNER'S BOARD: the form to grant access sits above the roster, and
-  // is there even when nobody has been granted yet.
-  if (key === 'users') body.appendChild(usersForm());
+
   /* The blurb carries a live count rather than a written one. Two of these
      had numbers typed into the prose - "102 companies are here" when there
      were 50, "537 careers pages" when there were 887 - and a number in prose
@@ -969,6 +967,10 @@ async function show(key) {
       + 'which is why this queue is worth doing first.'));
     v.appendChild(u);
   }
+  // THE OWNER'S BOARD: the form to grant access sits above the roster, and
+  // is there even when nobody has been granted yet. Above `body`, because
+  // drawQueue clears the body before it draws.
+  if (key === 'users') v.appendChild(usersForm());
   v.appendChild(body);
   drawQueue(key, items, body);
 }

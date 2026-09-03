@@ -2850,6 +2850,43 @@ def check_derived() -> int:
     return bad
 
 
+def check_manual_merge_never_doubles_a_fetched_row() -> int:
+    """A hand-captured posting whose id the fetcher already carries is not
+    appended a second time. The site resolves a role by id, so a doubled
+    id opens the wrong row; 8 of everdriven's rows were doubled on the
+    2026-09-03 board. Drives build_board.manual_row for the exact shape
+    main() appends, and asserts the guard is the one main() applies."""
+    import build_board
+    mp = {"company_id": "acme", "title": "Account Executive, West",
+          "url": "https://boards.example/acme/jobs/1", "location": "Remote"}
+    # THE FETCHED ROW'S ID, built the way the fetch path builds it - not by
+    # manual_row, or a capture keyed with a prefix would still equal itself.
+    fetched_id = build_board.posting_id("acme", build_board.ats.plain(mp["title"]),
+                                        mp["url"], mp["location"])
+    fetched = {"id": fetched_id, "company_id": "acme", "source": "ats"}
+    row = build_board.manual_row(mp)
+    errors = 0
+    if row["id"] != fetched_id:
+        errors += fail(f"a captured row and a fetched row of the same requisition "
+                       f"do not share an id ({row['id']} vs {fetched_id}), so the "
+                       f"merge cannot see the duplicate")
+    rows, dropped = build_board.dedupe_ids([fetched, row, dict(row, id="acme::other::1")])
+    if dropped != 1 or [r["id"] for r in rows] != [fetched["id"], "acme::other::1"]:
+        errors += fail(f"dedupe_ids kept a doubled id or dropped a distinct one: "
+                       f"{[r['id'] for r in rows]}, dropped {dropped}")
+    if rows[0].get("source") != "ats":
+        errors += fail("the fetched row must win over the capture")
+    # THE CALLER. main() must consult the ids already on the board before
+    # appending a manual row - a helper nobody calls is a guard on nothing.
+    src = (ROOT / "scripts" / "build_board.py").read_text()
+    body = src[src.find("def main("):]
+    if 'seen_ids = {p["id"] for p in postings}' not in body \
+            or 'if row["id"] in seen_ids:' not in body or "manual_dupes += 1" not in body:
+        errors += fail("build_board.main() no longer skips a manual row whose id "
+                       "the fetcher already carries")
+    return errors
+
+
 def check_board() -> int:
     """Invariants on the built board that a person cannot eyeball at 4,242 rows.
 
@@ -8678,8 +8715,14 @@ def check_the_gate_sees_an_unreadable_cliff() -> int:
     # against, so this stays a test of "a healthy board passes" rather than a
     # test of what last night happened to produce.
     n_orgs = max(1, build_site.previous_hiring() or 1)
-    good = {"postings": [{"company_id": f"c{i % n_orgs}"} for i in range(4000)],
-            "organizations": [{"id": f"c{i}", "open_roles": 4000 // n_orgs + 1}
+    # A HEALTHY BOARD IS ONE THE SIZE OF YESTERDAY'S, not a number typed into
+    # a test. This said 4000 for a month; the day the real board passed 5,333
+    # postings, 4000 became a 35% fall and the check failed on the bot's
+    # perfectly good refresh. Sized off the same snapshot the gate reads.
+    prev = build_site.previous_snapshot()
+    n_posts = prev[1] if prev and prev[1] else 4000
+    good = {"postings": [{"company_id": f"c{i % n_orgs}"} for i in range(n_posts)],
+            "organizations": [{"id": f"c{i}", "open_roles": n_posts // n_orgs + 1}
                               for i in range(n_orgs)]}
     objection = build_site.sanity_check(good)
     if objection:
@@ -12051,6 +12094,7 @@ def main() -> int:
             errors += fail(
                 f"ats.card_fields({lines!r}) = {(title, loc, pay)!r}, "
                 f"expected {(w_title, w_loc, w_pay)!r}")
+    errors += check_manual_merge_never_doubles_a_fetched_row()
     errors += check_board()
     errors += check_rival_door_refuses_a_category()
     errors += check_every_queue_has_a_renderer()

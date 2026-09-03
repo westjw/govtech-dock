@@ -608,6 +608,34 @@ def profile_for_board(c: dict) -> dict | None:
         "by_kind": "company" if by.startswith("claim:") else "site",
     }
 
+def manual_row(mp: dict) -> dict:
+    """A hand-captured posting in the board's row shape, keyed the way a
+    fetched row is keyed so "one id, one row" can hold across both sources.
+    BOTH text keys are dropped: `jd` and the extension's `jd_text` (up to
+    20,000 characters of somebody else's job-ad copy); derived() has already
+    taken the two facts worth keeping off them."""
+    row = {**mp, "source": "manual", **derived(mp)}
+    row.pop("jd", None)
+    row.pop("jd_text", None)
+    row["title"] = ats.plain(mp.get("title") or "")
+    row["opening_id"] = opening_id(mp["company_id"], row["title"])
+    row["id"] = posting_id(mp["company_id"], row["title"],
+                           mp.get("url"), mp.get("location") or "")
+    return row
+
+
+def dedupe_ids(postings: list[dict]) -> tuple[list[dict], int]:
+    """The final list, first row per id kept. Returns (rows, dropped)."""
+    seen: set = set()
+    out = []
+    for p in postings:
+        if p.get("id") in seen:
+            continue
+        seen.add(p.get("id"))
+        out.append(p)
+    return out, len(postings) - len(out)
+
+
 def count_openings(postings: list[dict], orgs: list[dict]) -> dict[str, list[dict]]:
     """Group rows into openings, stamp the spread on each row, count the orgs.
 
@@ -1223,7 +1251,8 @@ def main() -> int:
     # run means the fetcher still cannot see the company, not that the role closed.
     # Only `manual.py none` closes a manual posting.
     manual_path = DATA / "manual.json"
-    manual_count = 0
+    manual_count = manual_dupes = 0
+    seen_ids = {p["id"] for p in postings}
     if manual_path.exists():
         man = json.loads(manual_path.read_text())
         checks = man.get("checks", {})
@@ -1239,21 +1268,19 @@ def main() -> int:
             # from manual.json, so it is also the one path by which a `jd` key
             # could ever ride into the public file - derived() rebuilds the
             # pay fields from scratch and the pop removes the text itself.
-            row = {**mp, "source": "manual", **derived(mp)}
-            # BOTH text keys. The pop used to name `jd` alone, which was the
-            # only description key that existed when it was written - and the
-            # capture extension then started storing its own under `jd_text`,
-            # up to 20,000 characters of somebody else's job-ad copy, with
-            # nothing stripping it. Nothing has leaked yet only because no
-            # single-posting capture has run since; the first one would have
-            # published the lot. derived() has already taken the two facts
-            # worth keeping off it.
-            row.pop("jd", None)
-            row.pop("jd_text", None)
-            row["title"] = ats.plain(mp.get("title") or "")
-            row["opening_id"] = opening_id(mp["company_id"], row["title"])
-            row["id"] = posting_id(mp["company_id"], row["title"],
-                                   mp.get("url"), mp.get("location") or "")
+            row = manual_row(mp)
+            # ONE ID, ONE ROW, across both sources. A captured posting is kept
+            # because the fetcher could not read the company; when the fetcher
+            # CAN read it, the same requisition arrives twice - once from
+            # Greenhouse and once from the extension - under the same id, and
+            # the site resolves a role by id, so every duplicate opened the
+            # wrong row. 8 of everdriven's rows were doubled this way on
+            # 2026-09-03. The fetched row wins; the capture stays in
+            # manual.json, it is simply not counted twice.
+            if row["id"] in seen_ids:
+                manual_dupes += 1
+                continue
+            seen_ids.add(row["id"])
             postings.append(row)
             manual_count += 1
         for org in orgs:
@@ -1466,6 +1493,7 @@ def main() -> int:
         "rendered": rendered,
         "no_board_on_file": sum(1 for o in orgs if o.get("no_board_on_file")),
         "manual_postings": manual_count,
+        "manual_already_fetched": manual_dupes,
         "totals": {
             # rows: one per advertisement, which is what the board lists
             "postings": len(postings),
