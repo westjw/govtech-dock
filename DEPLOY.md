@@ -35,7 +35,19 @@ it until step 1.
    **Leave `solesourcejobs.com` attached.** Alert emails already sent carry
    `solesourcejobs.com/alerts?t=…`, and detaching it breaks them.
 
-2. **EXTEND ACCESS TO THE NEW HOSTNAME, immediately.** Your Access application
+2. **~~EXTEND ACCESS TO THE NEW HOSTNAME~~ — DONE, verified 2026-09-03.**
+   All three hostnames answer `/admin` with a 302 to the same Access
+   application: the `aud` claim in the redirect token is identical
+   (`80b769d2…`) on `solesourcejobs.com`, `sledjobs.com` and
+   `www.sledjobs.com`, while the `hostname` claim differs per host. Following
+   the redirect returns an Access login page carrying no admin markup. A
+   Pages custom domain inherits the project's Access policy, so adding the
+   domains covered this; the step below was never needed and this file said
+   otherwise for a day. **Re-verify with the curl in step 3 after adding any
+   new hostname** rather than trusting this paragraph.
+
+   The original instruction, kept because it is what to do if a future
+   hostname ever answers 200: your Access application
    is scoped to `solesourcejobs.com` — verified live: a request to
    `/admin` there redirects to `solesource-c6g-pages.cloudflareaccess.com`
    with `hostname: solesourcejobs.com` in the token. **A new custom domain is
