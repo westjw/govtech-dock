@@ -37,5 +37,44 @@
    "website": "https://www.action1.com",
    "source_event": "EDUCAUSE 2026"
   }
+ },
+ "adaptive-security": {
+  "call": "sled",
+  "name": "Adaptive Security",
+  "on": "2026-09-03",
+  "at": "2026-09-03T18:21:33-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Security awareness training, deepfake and phishing simulation, email security, and AI usage governance for enterprises",
+   "website": "https://adaptivesecurity.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "airia": {
+  "call": "sled",
+  "name": "Airia",
+  "on": "2026-09-03",
+  "at": "2026-09-03T18:21:50-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Enterprise AI discovery, security, governance and agent orchestration platform covering shadow AI inventory, guardrails and compliance reporting",
+   "website": "https://airia.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "armis": {
+  "call": "sled",
+  "name": "Armis",
+  "on": "2026-09-03",
+  "at": "2026-09-03T18:22:16-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Connected asset, IoT, and OT security platform for enterprises, healthcare, manufacturing, and public agencies",
+   "website": "https://www.armis.com",
+   "source_event": "NASCIO 2026"
+  }
  }
 }

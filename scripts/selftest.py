@@ -1268,11 +1268,25 @@ def check_a_company_sits_on_at_most_two_shelves() -> int:
         if bad and "Public Safety / EMS" not in bad:
             errors += fail(f"the refusal does not name the shelves, so nobody can "
                            f"tell which to drop: {bad}")
-        # the write path refuses it too, not only the validator
+        # THE WRITE PATH REFUSES IT, AND SAYS WHAT TO DO. validate()'s message
+        # is "filed on 3 shelves ... drop one before adding another" - true,
+        # unhelpful, and it reads as though the record is already broken
+        # rather than the add being refused. The action knows what was tried,
+        # so it names the shelves the company holds and how to drop one.
         r = admin.act_also({"id": "acme", "sector": "Public Safety",
                             "category": "EMS", "by": "owner"})
-        if not r.get("error") or "shelves" not in r["error"]:
+        if not r.get("error"):
             errors += fail(f"act_also added a third shelf: {r}")
+        else:
+            msg = r["error"]
+            if "already sits on" not in msg:
+                errors += fail(f"the refusal does not name the shelves it holds: {msg}")
+            if "Public Safety / Police" not in msg or "Fleet & Asset Mgmt" not in msg:
+                errors += fail(f"the refusal names neither shelf, so nobody can tell "
+                               f"which to drop: {msg}")
+            if "click" not in msg.lower():
+                errors += fail(f"the refusal gives no way to drop one - clicking the "
+                               f"shelf is what removes it and nothing else says so: {msg}")
         # and dropping one still works, or the cap becomes a trap
         r = admin.act_also({"id": "acme", "sector": "Public Works",
                             "category": "Fleet & Asset Mgmt", "by": "owner"})
@@ -5463,6 +5477,13 @@ def check_publish_gate_legs() -> int:
     return errors
 
 
+# Ids that appear only in fixtures. A journal entry naming one of these was
+# written BY A TEST; an entry naming a real company was written by whoever is
+# using the admin. That is the difference this file has to be able to tell.
+_FIXTURE_IDS = {"acme", "acme-two", "acme-unsure", "keep", "drop", "keep2",
+                "lead", "answered", "brinc-test", "x-test", "bogus"}
+
+
 def _journal_fingerprint() -> tuple:
     """(lines, bytes) of the live journal, or (0, 0) if there is none."""
     p = DATA / "admin_journal.jsonl"
@@ -5471,6 +5492,76 @@ def _journal_fingerprint() -> tuple:
     except OSError:
         return (0, 0)
     return (raw.count(b"\n"), len(raw))
+
+
+def _journal_leaked(before_lines: int) -> list:
+    """New journal entries a CHECK wrote, ignoring ones a person wrote.
+
+    The old test compared line counts, which cannot tell a leaking check from
+    the owner ruling in the admin while the suite runs - and he was, so a
+    clean run reported a leak that did not exist. A flaky guard is a guard
+    people learn to ignore, which is worse than not having it. A test entry
+    names a fixture id; a ruling names a company that exists.
+    """
+    p = DATA / "admin_journal.jsonl"
+    try:
+        lines = p.read_text().splitlines()
+    except OSError:
+        return []
+    out = []
+    for line in lines[before_lines:]:
+        try:
+            d = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        ids = {r.get("id") for r in (d.get("records") or []) if isinstance(r, dict)}
+        blob = line
+        if ids & _FIXTURE_IDS or any(f'"{i}"' in blob for i in _FIXTURE_IDS):
+            out.append(d)
+    return out
+
+
+def check_the_journal_leak_test_knows_a_person_from_a_fixture() -> int:
+    """The leak detector fires on a test's write and not on a real ruling.
+
+    It used to compare line counts, which cannot tell the two apart - and the
+    owner was ruling in the admin while the suite ran, so a clean run reported
+    a leak that did not exist. A guard that cries wolf is one people learn to
+    ignore, which is worse than not having it. Driven against the real
+    function with the journal restored afterwards, byte for byte.
+    """
+    J = DATA / "admin_journal.jsonl"
+    try:
+        backup = J.read_bytes()
+    except OSError:
+        note("no journal on disk; the leak detector was not exercised")
+        return 0
+    before = backup.count(b"\n")
+    fixture = json.dumps({"at": "x", "action": "patch", "by": "owner",
+                          "file": "companies.json",
+                          "records": [{"id": "acme", "name": "Acme"}]})
+    person = json.dumps({"at": "x", "action": "vendor-scope", "by": "owner",
+                         "file": "vendor_scope_decisions.json", "records": []})
+    errors = 0
+    try:
+        J.write_bytes(backup + fixture.encode() + b"\n")
+        if len(_journal_leaked(before)) != 1:
+            errors += fail("the leak detector missed a check writing a fixture "
+                           "record into the real journal")
+        J.write_bytes(backup + person.encode() + b"\n")
+        if _journal_leaked(before):
+            errors += fail("the leak detector calls a person's ruling a leak. It "
+                           "fires on every run somebody is using the admin, and "
+                           "a guard that cries wolf gets ignored")
+        J.write_bytes(backup + person.encode() + b"\n" + fixture.encode() + b"\n")
+        if len(_journal_leaked(before)) != 1:
+            errors += fail("with a ruling and a leak in the same window the "
+                           "detector cannot pick out the leak")
+    finally:
+        J.write_bytes(backup)
+    if J.read_bytes() != backup:
+        errors += fail("this check did not put the journal back")
+    return errors
 
 
 def check_checks_can_fail() -> int:
@@ -13075,6 +13166,7 @@ def main() -> int:
     errors += check_identity_guard()
     errors += check_unreachable_names_the_failure()
     errors += check_search_routes_are_live()
+    errors += check_the_journal_leak_test_knows_a_person_from_a_fixture()
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
     errors += check_crawl_files()
@@ -13253,12 +13345,23 @@ def main() -> int:
           f"{len(CARD_LINE_CASES)} card-line")
     after = _journal_fingerprint()
     if after != _journal_before:
-        errors += fail(
-            f"the selftest wrote to data/admin_journal.jsonl "
-            f"({_journal_before[0]} lines -> {after[0]}). A check that stubs "
-            f"write_atomic must stub journal.record too: it writes through its "
-            f"own io, so the probe lands in the real journal as a ruling "
-            f"nobody made. Remove the entries and stub it.")
+        leaked = _journal_leaked(_journal_before[0])
+        if leaked:
+            errors += fail(
+                f"the selftest wrote {len(leaked)} entr(y/ies) to "
+                f"data/admin_journal.jsonl, naming fixture ids: "
+                f"{[d.get('action') for d in leaked]}. A check that stubs "
+                f"write_atomic must stub journal.record too: it writes through "
+                f"its own io, so the probe lands in the real journal as a "
+                f"ruling nobody made. Remove the entries and stub it.")
+        else:
+            # SOMEBODY IS USING THE ADMIN WHILE THIS RUNS, which is normal and
+            # is not a leak. Said out loud rather than passed over, because a
+            # journal that grew during a test run is worth a glance.
+            print(f"note: the journal grew during this run "
+                  f"({_journal_before[0]} -> {after[0]} lines) and no new entry "
+                  f"names a fixture, so somebody was ruling in the admin. "
+                  f"Not a leak.")
 
     if errors:
         print(f"\n{errors} problem(s) found")

@@ -3454,7 +3454,17 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "also_known_as": [
+   "conduent",
+   "Conduent Transportation"
+  ],
+  "also": [
+   {
+    "sector": "Transit & Parking",
+    "category": "Suppliers & Services"
+   }
+  ]
  },
  {
   "id": "cyvl",
@@ -5793,7 +5803,16 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "also_known_as": [
+   "Via Transportation, Inc."
+  ],
+  "also": [
+   {
+    "sector": "Transit & Parking",
+    "category": "Suppliers & Services"
+   }
+  ]
  },
  {
   "id": "optibus",
@@ -7756,8 +7775,8 @@
   "category": "Citizen Services",
   "description": "Turnkey municipal website and resident app platform (Box Clever division)",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "bamboohr",
+   "ref": "boxclever"
   },
   "hiring": {
    "status": "Unknown",
@@ -7768,7 +7787,16 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "also_known_as": [
+   "Loop - Websites for Municipalities"
+  ],
+  "also": [
+   {
+    "sector": "General Gov",
+    "category": "Suppliers & Services"
+   }
+  ]
  },
  {
   "id": "wordly",
@@ -8695,7 +8723,17 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "also_known_as": [
+   "CityReporter",
+   "CityReporter by Noratek Solutions Inc."
+  ],
+  "also": [
+   {
+    "sector": "General Gov",
+    "category": "Suppliers & Services"
+   }
+  ]
  },
  {
   "id": "tenzing-one",
@@ -23825,7 +23863,16 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "also_known_as": [
+   "Consat Canada"
+  ],
+  "also": [
+   {
+    "sector": "Transit & Parking",
+    "category": "Suppliers & Services"
+   }
+  ]
  },
  {
   "id": "gmv",
@@ -25298,7 +25345,16 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "also_known_as": [
+   "Imagry Autonomous Buses & Shuttles"
+  ],
+  "also": [
+   {
+    "sector": "Transit & Parking",
+    "category": "Suppliers & Services"
+   }
+  ]
  },
  {
   "id": "silverride",
@@ -26628,34 +26684,6 @@
   "researched": false
  },
  {
-  "id": "cityreporter-by-noratek-solutions-inc",
-  "name": "CityReporter Software",
-  "website": "https://www.cityreportersoftware.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Municipal inspection and reporting software - exhibited at ICMA 2025",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-03"
-  },
-  "govtech": true,
-  "vendor_type": "GovTech Product",
-  "source": "ICMA 2025",
-  "researched": false,
-  "also_known_as": [
-   "CityReporter",
-   "CityReporter by Noratek Solutions Inc."
-  ]
- },
- {
   "id": "code-four",
   "name": "Code Four",
   "website": "https://www.codefour.com",
@@ -26736,57 +26764,6 @@
    "by": "owner",
    "why": "concourse.ai is 'Concourse | AI transformation for finance' - 0 mentions of government, 77 of finance. Not govtech. The NIGP 2026 exhibitor of this name is concoursetech.com, now recorded on concourse-tech. This record was an exhibitor name matched to the wrong company's website and job board."
   }
- },
- {
-  "id": "conduent-transportation",
-  "name": "Conduent Transportation",
-  "website": "https://www.conduent.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "Transit & Parking",
-  "category": "Suppliers & Services",
-  "description": "Fare collection and transit management systems - exhibited at APTA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-03"
-  },
-  "govtech": true,
-  "vendor_type": "GovTech Product",
-  "source": "APTA 2026",
-  "researched": false,
-  "also_known_as": [
-   "conduent"
-  ]
- },
- {
-  "id": "consat-canada",
-  "name": "Consat Canada",
-  "website": "https://www.consat.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "Transit & Parking",
-  "category": "Suppliers & Services",
-  "description": "Transit ITS, AVL and real-time information - exhibited at APTA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-03"
-  },
-  "govtech": true,
-  "vendor_type": "GovTech Product",
-  "source": "APTA 2026",
-  "researched": false
  },
  {
   "id": "coreforce",
@@ -27958,30 +27935,6 @@
   "researched": false
  },
  {
-  "id": "imagry-autonomous-buses-shuttles",
-  "name": "Imagry Autonomous Buses & Shuttles",
-  "website": "https://imagry.co/ai-autonomous-driving-for-public-transportation/",
-  "location": null,
-  "year_founded": null,
-  "sector": "Transit & Parking",
-  "category": "Suppliers & Services",
-  "description": "Mapless autonomous driving software for buses - exhibited at APTA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-03"
-  },
-  "govtech": true,
-  "vendor_type": "GovTech Product",
-  "source": "APTA 2026",
-  "researched": false
- },
- {
   "id": "imprivata",
   "name": "Imprivata",
   "website": "https://www.imprivata.com",
@@ -28861,30 +28814,6 @@
    "ruled_by": "agent:review-police-2026-09-03",
    "ruled_on": "2026-09-03"
   }
- },
- {
-  "id": "loop-websites-for-municipalities",
-  "name": "Loop - Websites for Municipalities",
-  "website": "https://www.looponline.co/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Municipal website platform - exhibited at ICMA 2025",
-  "ats": {
-   "type": "bamboohr",
-   "ref": "boxclever"
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-03"
-  },
-  "govtech": true,
-  "vendor_type": "GovTech Product",
-  "source": "ICMA 2025",
-  "researched": false
  },
  {
   "id": "lux-modus",
@@ -31296,33 +31225,6 @@
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
   "researched": false
- },
- {
-  "id": "via-transportation-inc",
-  "name": "Via Transportation",
-  "website": "https://ridewithvia.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "Transit & Parking",
-  "category": "Suppliers & Services",
-  "description": "Microtransit and transit planning software - exhibited at APTA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-03"
-  },
-  "govtech": true,
-  "vendor_type": "GovTech Product",
-  "source": "APTA 2026",
-  "researched": false,
-  "also_known_as": [
-   "Via Transportation, Inc."
-  ]
  },
  {
   "id": "virtual-project-manager",
@@ -61317,7 +61219,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "also_known_as": [
+   "SmowlTech"
+  ]
  },
  {
   "id": "terminalfour",
@@ -62189,7 +62094,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PLA 2026",
-  "researched": true
+  "researched": true,
+  "also_known_as": [
+   "Millonex LLC"
+  ]
  },
  {
   "id": "sirsidynix",
@@ -67427,54 +67335,6 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: APHSA 2026",
-  "researched": true
- },
- {
-  "id": "millonex-llc",
-  "name": "Millonex LLC",
-  "website": "http://www.simplicity-ils.com",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Libraries",
-  "description": "Simplicity ILS, a cloud integrated library system for circulation, cataloging, patron management and reporting, sold to public libraries and library systems - exhibited at PLA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-03"
-  },
-  "govtech": true,
-  "vendor_type": "GovTech Product",
-  "source": "conference sweep: PLA 2026",
-  "researched": true
- },
- {
-  "id": "smowltech",
-  "name": "SmowlTech",
-  "website": "http://smowl.net/en/",
-  "location": null,
-  "year_founded": null,
-  "sector": "Higher Education",
-  "category": "IT & Administration",
-  "description": "SMOWL online exam proctoring and identity verification software sold to universities and other education institutions - exhibited at EDUCAUSE 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-03"
-  },
-  "govtech": true,
-  "vendor_type": "GovTech Product",
-  "source": "conference sweep: EDUCAUSE 2026",
   "researched": true
  },
  {

@@ -2561,6 +2561,18 @@ def act_also(body: dict) -> dict:
     if not dropped:
         if (c["sector"], c["category"]) == (sector, category):
             return {"error": "that is already its primary home"}
+        # THE ACTION KNOWS WHAT YOU TRIED TO DO; validate() only knows the
+        # file is wrong. Its message reads "filed on 3 shelves ... drop one
+        # before adding another", which is true, unhelpful, and looks like
+        # the record is already broken rather than the add being refused.
+        # Name the two it has and say how to remove one - clicking a shelf it
+        # already sits on is what drops it, and nothing else here says so.
+        if len(also) + 1 > MAX_PLACEMENTS - 1:
+            shelves = [f"{c['sector']} / {c['category']}"] + [
+                f"{a['sector']} / {a['category']}" for a in also]
+            return {"error": f"{c['name']} already sits on {' and '.join(shelves)}. "
+                             f"A company may hold {MAX_PLACEMENTS}: drop one first by "
+                             f"clicking the shelf it is on, then add this one."}
         also.append({"sector": sector, "category": category})
     c["also"] = also or None
     if c["also"] is None:
