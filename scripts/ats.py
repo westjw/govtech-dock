@@ -690,6 +690,68 @@ def _details(rows: list[dict], read) -> list[dict]:
 
 # ---------------------------------------------------------------- structured APIs
 
+JIBE_LIMIT = 100          # the API honours it; 86 was BigBear's whole board
+JIBE_MAX_PAGES = 40       # 4,000 openings is far past anything on this map
+
+
+def fetch_jibe(ref: str) -> list[dict]:
+    """Jibe, the front end iCIMS Talent Cloud puts on a company careers site.
+
+    THIS IS NOT WHAT fetch_icims READS. A classic iCIMS portal serves its list
+    inside an iframe and `?in_iframe=1` unwraps it; a Jibe site answers that
+    same parameter with a 143-byte script that bounces the browser back to the
+    careers page, and serves an Angular shell at the portal URL - which is why
+    BigBear.ai read as a JS wall with no board. The jobs are behind a plain
+    JSON API on the careers host, and the apply links still point back at the
+    iCIMS portal, so the two really are one system with two doors.
+
+    `ref` is the careers host ("careers.bigbear.ai") or a full https URL to it.
+    The API reports totalCount and honours limit, so one request takes the
+    whole board; the limit is capped rather than trusted, and the count is
+    checked against what arrived so a silently truncated page is not read as
+    a shrinking board.
+    """
+    base = ref if ref.startswith("http") else f"https://{ref}"
+    base = base.rstrip("/")
+    if not base.endswith("/api/jobs"):
+        base = f"{base}/api/jobs"
+    data = _json(_get(f"{base}?page=1&limit={JIBE_LIMIT}"))
+    jobs = data.get("jobs") or []
+    total = data.get("totalCount")
+    if isinstance(total, int) and total > len(jobs):
+        # PAGED, not truncated. A board bigger than one page must not report
+        # one page as the whole of it - that is a fall this fetcher would
+        # invent, and the publish gate would be right to refuse it.
+        page = 2
+        while len(jobs) < total and page <= JIBE_MAX_PAGES:
+            more = (_json(_get(f"{base}?page={page}&limit={JIBE_LIMIT}")).get("jobs") or [])
+            if not more:
+                break
+            jobs += more
+            page += 1
+    out = []
+    seen = set()
+    for j in jobs:
+        d = j.get("data") if isinstance(j, dict) else None
+        if not isinstance(d, dict):
+            continue
+        url = d.get("apply_url") or ""
+        if url in seen:
+            continue
+        seen.add(url)
+        out.append({"title": d.get("title", "") or "",
+                    "location": d.get("full_location") or d.get("location_name") or "",
+                    "url": url,
+                    "jd": plain_html(d.get("description") or ""),
+                    "posted": posted_date(d.get("create_date")),
+                    "office_hint": office_hint(city=d.get("city"),
+                                               region=d.get("state"),
+                                               country=d.get("country"))})
+    if not out:
+        raise AtsError("no jobs parsed from Jibe API")
+    return out
+
+
 def fetch_ashby(slug: str) -> list[dict]:
     # includeCompensation=true is the same request with one more parameter, and
     # Ashby is the only board here that publishes a pay range as numbers on the
@@ -1989,6 +2051,7 @@ FETCHERS = {
     "rippling": fetch_rippling,
     "jazzhr": fetch_jazzhr,
     "icims": fetch_icims,
+    "jibe": fetch_jibe,
     "paylocity": fetch_paylocity,
     "oracle": fetch_oracle,
     "html": fetch_html,

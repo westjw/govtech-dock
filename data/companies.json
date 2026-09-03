@@ -4482,8 +4482,8 @@
   "category": "Permitting & Licensing",
   "description": "Permitting, budgeting, procurement, and asset management cloud suite (Cox-owned) - exhibited at GFOA 2026, NLC City Summit 2026, NACE 2026, AWWA ACE 2026, GMIS International 2026, Maryland Municipal League 2026",
   "ats": {
-   "type": "html",
-   "ref": "https://opengov.com/careers/"
+   "type": "ashby",
+   "ref": "opengov"
   },
   "hiring": {
    "status": "Yes",
@@ -35263,8 +35263,8 @@
   "category": "Police",
   "description": "Body-worn and in-car video systems for law enforcement agencies",
   "ats": {
-   "type": "html",
-   "ref": "https://www.digitalallyinc.com/careers"
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/da128e01-9066-4f02-b4fc-748054179ac6/Digital-Ally-Inc"
   },
   "hiring": {
    "status": "Unknown",
@@ -37539,8 +37539,8 @@
   "category": "Fleet & Operations",
   "description": "Fleet maintenance software for cities, counties and transit agencies",
   "ats": {
-   "type": "html",
-   "ref": "https://www.rtafleet.com/careers"
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/0a0e566f-6f23-49c1-b072-cd5e24d4d38b/Ron-Turley-Associates-Inc"
   },
   "hiring": {
    "status": "Unknown",
@@ -37628,8 +37628,8 @@
   "category": "Fleet & Operations",
   "description": "FleetCommander motor pool and vehicle sharing for agencies",
   "ats": {
-   "type": "html",
-   "ref": "https://www.agilefleet.com/careers"
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/d128ccca-9c61-4119-af2f-4e417987a520/Agile-Fleet-Inc"
   },
   "hiring": {
    "status": "Unknown",
@@ -42329,8 +42329,8 @@
   "category": "Park Ops & Safety Tech",
   "description": "Lightning detection networks and outdoor alerting for parks and schools",
   "ats": {
-   "type": "html",
-   "ref": "https://www.earthnetworks.com/careers"
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/c3eb3108-ec6a-4180-8380-697d7de90a59/AEM"
   },
   "hiring": {
    "status": "Unknown",
@@ -48184,8 +48184,8 @@
   "category": "Security & Screening",
   "description": "Airport threat detection AI and biometric travel systems for government",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "jibe",
+   "ref": "careers.bigbear.ai"
   },
   "hiring": {
    "status": "Unknown",
@@ -48196,7 +48196,8 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "ats_note": "Jibe (iCIMS Talent Cloud) API at careers.bigbear.ai/api/jobs. The classic iCIMS portal at careers-bigbearai.icims.com answers ?in_iframe=1 with a redirect script and serves an Angular shell, so fetch_icims cannot read it."
  },
  {
   "id": "vision-box",
@@ -53981,8 +53982,8 @@
   "category": "Demand-Response & AV",
   "description": "Electric on-demand shuttle service contracted by cities and transit agencies",
   "ats": {
-   "type": "html",
-   "ref": "https://www.ridecircuit.com/careers"
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/8fd19852-1c86-4dc6-b447-a9d04e59f12e/TFR-Transit-Inc"
   },
   "hiring": {
    "status": "Unknown",

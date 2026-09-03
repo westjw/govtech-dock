@@ -92,6 +92,20 @@ def board_says(kind: str, ref) -> dict:
                 out["name"] = sorted(names)[0]
                 out["how"] = "greenhouse company_name, stated by the employer"
             out["hosts"] = {host_of(j.get("absolute_url", "")) for j in jobs[:8]}
+        elif kind == "jibe":
+            # Jibe states the employer on every row, which is the strongest
+            # signal any of these boards gives: hiring_organization is what
+            # the careers site prints on the posting itself.
+            d = ats._json(ats._get(f"https://{ref}/api/jobs?page=1&limit=50"
+                                   if not str(ref).startswith("http")
+                                   else f"{str(ref).rstrip('/')}/api/jobs?page=1&limit=50"))
+            jobs = [j.get("data") or {} for j in (d.get("jobs") or [])]
+            out["n"] = d.get("totalCount") or len(jobs)
+            names = {j.get("hiring_organization") for j in jobs if j.get("hiring_organization")}
+            if names:
+                out["name"] = sorted(names)[0]
+                out["how"] = "jibe hiring_organization, stated on every posting"
+            out["hosts"] = {host_of(j.get("apply_url", "")) for j in jobs[:8]}
         elif kind == "ashby":
             d = ats._json(ats._get(
                 f"https://api.ashbyhq.com/posting-api/job-board/{ref}"))

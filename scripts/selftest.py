@@ -939,6 +939,93 @@ console.log(JSON.stringify({
     return errors
 
 
+def check_jibe_is_read_and_verifiable() -> int:
+    """The Jibe fetcher parses its API, pages past the first page, and can
+    say whose board it is.
+
+    Jibe is the front end iCIMS Talent Cloud puts on a company careers site.
+    It is NOT what fetch_icims reads: a Jibe site answers ?in_iframe=1 with a
+    script that bounces the browser back to the careers page and serves an
+    Angular shell at the portal URL, so BigBear.ai's 86 openings read as a JS
+    wall with no board. Driven against a stubbed _get, because a fetcher
+    tested only against the live internet is a fetcher nobody can test.
+
+    A NEW ATS TYPE WITHOUT AN IDENTITY PROBE CANNOT BE VERIFIED, and an
+    unverifiable board is one nobody may wire. That half is asserted too.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats, verify_boards as vb
+    import json as _json
+
+    def row(i, org="Acme Corp"):
+        return {"data": {"title": f"Engineer {i}", "full_location": "McLean, Virginia",
+                         "apply_url": f"https://careers-acme.icims.com/jobs/{i}/login",
+                         "description": "<p>Build things.</p>", "create_date": "2026-09-01",
+                         "hiring_organization": org, "client_code": "acme"}}
+    pages = {1: {"jobs": [row(i) for i in range(100)], "totalCount": 130},
+             2: {"jobs": [row(i) for i in range(100, 130)], "totalCount": 130}}
+    calls = []
+
+    class Stub:
+        def __init__(self, payload): self.text = _json.dumps(payload); self.status_code = 200
+        def json(self): return _json.loads(self.text)
+
+    def fake_get(url, **kw):
+        calls.append(url)
+        pg = int(re.search(r"page=(\d+)", url).group(1))
+        return Stub(pages.get(pg, {"jobs": [], "totalCount": 130}))
+
+    keep = ats._get
+    ats._get = fake_get
+    errors = 0
+    try:
+        rows = ats.fetch_jibe("careers.acme.example")
+        if len(rows) != 130:
+            errors += fail(f"fetch_jibe stopped at {len(rows)} of a 130-posting board; "
+                           f"reporting one page as the whole of it is a fall this "
+                           f"fetcher would invent")
+        if not all(r["title"] and r["url"] for r in rows):
+            errors += fail("fetch_jibe produced rows with no title or no url")
+        if rows[0]["location"] != "McLean, Virginia":
+            errors += fail(f"fetch_jibe lost the location: {rows[0]['location']!r}")
+        if "Build things" not in (rows[0]["jd"] or ""):
+            errors += fail("fetch_jibe lost the description, so pay and family are unreadable")
+        if not any("/api/jobs" in c for c in calls):
+            errors += fail(f"fetch_jibe did not call the API path: {calls[:2]}")
+        # a full URL as the ref must work too, not only a bare host
+        calls.clear()
+        if len(ats.fetch_jibe("https://careers.acme.example/")) != 130:
+            errors += fail("fetch_jibe cannot take a full https ref")
+        # an empty board is an error, not an empty list read as "nobody is hiring"
+        pages_empty = {1: {"jobs": [], "totalCount": 0}}
+        ats._get = lambda url, **kw: Stub(pages_empty[1])
+        try:
+            ats.fetch_jibe("careers.acme.example")
+            errors += fail("fetch_jibe returned quietly on a board it could not parse; "
+                           "an unreadable board must raise, never read as zero openings")
+        except ats.AtsError:
+            pass
+        # THE IDENTITY PROBE. Without one, judge() answers "unknown" and the
+        # board cannot be verified - which is what happened when jibe was
+        # first wired.
+        ats._get = fake_get
+        said = vb.board_says("jibe", "careers.acme.example")
+        if said.get("name") != "Acme Corp":
+            errors += fail(f"the jibe identity probe does not read the employer name: {said}")
+        v = vb.judge({"name": "Acme Corp", "website": "https://acme.example"}, said)
+        if v["verdict"] != "matches":
+            errors += fail(f"a jibe board naming its own employer did not verify: {v}")
+        wrong = vb.judge({"name": "Somebody Else", "website": "https://else.example"}, said)
+        if wrong["verdict"] != "MISMATCH":
+            errors += fail(f"a jibe board naming a DIFFERENT employer was not a "
+                           f"mismatch: {wrong}")
+    finally:
+        ats._get = keep
+    if "jibe" not in ats.FETCHERS:
+        errors += fail("jibe is not in ats.FETCHERS, so no company can point at it")
+    return errors
+
+
 def check_merge_repoints_competitor_edges() -> int:
     """A merge leaves no edge pointing at the record it removed.
 
@@ -12773,6 +12860,7 @@ def main() -> int:
     errors += check_proposal_rulings_cover_every_kind()
     errors += check_write_ups_queue_shows_only_exceptions()
     errors += check_users_board_never_stores_an_address()
+    errors += check_jibe_is_read_and_verifiable()
     errors += check_merge_repoints_competitor_edges()
     errors += check_warm_leads_can_be_accepted()
     errors += check_add_company_journals_and_reports_already_tracked()

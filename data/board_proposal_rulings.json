@@ -1,8 +1,50 @@
 {
+ "agile-fleet": {
+  "accept": true,
+  "by": "owner",
+  "on": "2026-09-03",
+  "why": ""
+ },
+ "bigbear-ai": {
+  "accept": false,
+  "by": "owner",
+  "on": "2026-09-03",
+  "why": ""
+ },
+ "circuit": {
+  "accept": true,
+  "by": "owner",
+  "on": "2026-09-03",
+  "why": ""
+ },
  "concourse": {
   "accept": false,
   "by": "claude",
   "on": "2026-08-24",
   "why": "concourse.ai is 'Concourse | AI transformation for finance' - 0 mentions of government, 77 of finance, backed by a16z/CRV/YC. The ashby board is theirs, not the govtech Concourse (concoursetech.com). Unwired 2026-08-24 after seven of its postings reached the public board."
+ },
+ "digital-ally": {
+  "accept": true,
+  "by": "owner",
+  "on": "2026-09-03",
+  "why": ""
+ },
+ "earth-networks": {
+  "accept": true,
+  "by": "owner",
+  "on": "2026-09-03",
+  "why": ""
+ },
+ "opengov": {
+  "accept": true,
+  "by": "owner",
+  "on": "2026-09-03",
+  "why": ""
+ },
+ "rta-fleet-management": {
+  "accept": true,
+  "by": "owner",
+  "on": "2026-09-03",
+  "why": ""
  }
 }
