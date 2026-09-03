@@ -753,6 +753,181 @@ def check_proposal_rulings_cover_every_kind() -> int:
     return errors
 
 
+def check_company_page_profile_states() -> int:
+    """coAbout renders the new profile shape, and NEVER the legacy one.
+
+    Two companies (granicus, everdriven) carry a `profile` whose text is a
+    reviewer's working notes: "their Greenhouse board carried 12 postings...
+    the SLED sales roles this board exists to list". Under the company's own
+    name on a public page that reads as the company describing itself. So the
+    renderer keys on the SHAPE - `paragraphs`, with provenance - and the
+    legacy shape gets the stub, and this check hands it the legacy text and
+    asserts the text does not come out. Executed under node, the way coPhase
+    is, because a template branch cannot be driven and this is the one line
+    on the page most worth driving.
+    """
+    import shutil, subprocess, json as _json
+    html = (ROOT / "index.html").read_text()
+    ca = html.find("function co(id,fromUrl){")
+    cb = html.find("function toggleSaveCompany(")
+    body = html[ca:cb] if ca > 0 and cb > ca else ""
+    errors = 0
+    if "coAbout(" not in body:
+        errors += fail("co() no longer calls coAbout, so the About section is "
+                       "being written inline again and the legacy-shape guard "
+                       "does not apply to it")
+    if not shutil.which("node"):
+        note("node not installed; coAbout was not executed this run")
+        return errors
+
+    def slice_fn(name):
+        # to the function's OWN closing brace at column 0, not to the next
+        # `function` keyword: the first version swallowed 4KB of unrelated
+        # module state after safeUrl, which happened to parse and would not
+        # have the day someone put a `let` there that needed the DOM.
+        i = html.find(f"function {name}(")
+        j = html.find("\n}\n", i + 1)
+        return html[i:j + 2] if i >= 0 and j > i else ""
+
+    def slice_const(name):
+        # `esc` is a const arrow, not a declaration, and the first version of
+        # this slicer looked only for `function esc(` - so coAbout threw
+        # ReferenceError under node on correct code. A statement ends at the
+        # first `;` followed by a newline after its start.
+        i = html.find(f"const {name}=")
+        if i < 0:
+            return ""
+        j = html.find(";\n", i)
+        return html[i:j + 1] if j > i else ""
+    src = "\n".join([slice_const("esc"), slice_fn("safeUrl"), slice_fn("coAbout")])
+    if "function coAbout(" not in src:
+        return errors + fail("index.html: coAbout is gone")
+
+    new = {"paragraphs": ["Brinc builds drones for police departments.",
+                          "The Lemur opens locked doors."],
+           "quote": {"text": "built for public safety", "url": "https://b.example/about"},
+           "sources": [{"url": "https://b.example/", "fetched_on": "2026-09-04"},
+                       {"url": "https://b.example/about", "fetched_on": "2026-09-04"}],
+           "paragraph_sources": [["https://b.example/"], ["https://b.example/about"]],
+           "written_on": "2026-09-05", "by_kind": "site"}
+    legacy = {"description": "INTERNAL their Greenhouse board carried 12 postings",
+              "sources": ["https://g.example"]}
+    # THE PAGE RUNS IN A BROWSER, so it has `location`; node does not, and
+    # safeUrl resolves every href against location.href. Without the stub
+    # every URL came back "" and the check failed on correct code - the
+    # exact lesson the .ics harness above already carries.
+    script = """
+const location = {href: "https://sledjobs.com/"};
+%s
+const base = {description: "One line.", website: "https://b.example", researched: true};
+const out = {
+  site:    coAbout({...base, profile: %s}, "b.example"),
+  claimed: coAbout({...base, profile: {...%s, by_kind: "company"}}, "b.example"),
+  none:    coAbout(base, "b.example"),
+  legacy:  coAbout({...base, profile: %s}, "g.example"),
+};
+console.log(JSON.stringify(out));
+""" % (src, _json.dumps(new), _json.dumps(new), _json.dumps(legacy))
+    r = subprocess.run(["node", "--input-type=module", "-e", script],
+                       capture_output=True, text=True, timeout=30)
+    if r.returncode != 0:
+        return errors + fail(f"coAbout threw under node: {r.stderr.strip()[:200]}")
+    got = _json.loads(r.stdout)
+    s = got["site"]
+    for want in ("Brinc builds drones", "Lemur opens", "built for public safety",
+                 "https://b.example/about", "written from their site",
+                 "Every sentence traces"):
+        if want not in s:
+            errors += fail(f"coAbout with a full profile does not render {want!r}")
+    if "<sup>1</sup>" not in s or "<sup>2</sup>" not in s:
+        errors += fail("paragraphs do not carry their source numbers; a reader "
+                       "cannot check a sentence against the page it came from")
+    if "in their own words" not in got["claimed"]:
+        errors += fail("a claimed-company profile is not marked as the company's "
+                       "own words")
+    if "not on file for this company yet" not in got["none"]:
+        errors += fail("a company with no profile does not get the honest stub")
+    if "INTERNAL" in got["legacy"] or "Greenhouse board carried" in got["legacy"]:
+        errors += fail("coAbout rendered a LEGACY profile's internal notes on the "
+                       "public page. The renderer must key on the paragraphs "
+                       "shape, never on the presence of a `profile` key")
+    if "not on file for this company yet" not in got["legacy"]:
+        errors += fail("a legacy-shape profile did not fall back to the stub")
+    return errors
+
+
+def check_dechrome_keeps_sentences_and_drops_chrome() -> int:
+    """The brief a judge writes from must be the company's sentences, not its
+    menu - and must not lose the sentences while dropping the menu.
+
+    Measured on a 25-site sample before this shipped (median 64% of text
+    kept), and two of the sample's failures are the cases here. A site whose
+    homepage and /about/ were the same document kept 6%: every line
+    "repeated" and the repeat rule ate the whole site. And a cookie banner on
+    a one-page site survived, because it is three words or more and on one
+    page nothing repeats. Each case is one rule; deleting a rule turns one
+    case red.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import fetch_profiles as fp
+
+    body = ("We use analytics cookies to understand how visitors use this site.\n"
+            "Products\n"
+            "Brinc builds drones that police departments stage on station rooftops.\n"
+            "Request a Demo\n"
+            "The company was founded in 2017 and is based in Seattle.\n")
+    home = {"url": "https://x/", "text": body}
+    about = {"url": "https://x/about/", "text": body}      # the same document
+    other = {"url": "https://x/products/",
+             "text": "Products\nRequest a Demo\nThe Lemur drone opens locked doors.\n"
+                     "Brinc builds drones that police departments stage on station rooftops.\n"}
+    errors = 0
+
+    one = fp.dechrome([home])[0]["text"]
+    if "Brinc builds drones" not in one or "founded in 2017" not in one:
+        errors += fail("dechrome dropped a real sentence from a one-page site")
+    if "analytics cookies" in one:
+        errors += fail("dechrome kept a cookie banner. On a one-page site "
+                       "nothing repeats, so the repeat rule cannot catch it; "
+                       "the anchored chrome pattern has to")
+    if "Products" in one.split("\n"):
+        errors += fail("dechrome kept a one-word menu label as a line")
+    # "Request a Demo" is THREE words and SURVIVES on a one-page site, by
+    # design: the rule is "under three words", and a three-word line is a
+    # sentence often enough that dropping it costs real text. What catches a
+    # three-word CTA is the repeat rule, once a second page carries it - the
+    # case asserted below. The first version of this check asserted the CTA
+    # was dropped here and failed on correct code.
+    if "Request a Demo" not in one.split("\n"):
+        note("dechrome dropped a three-word line on a one-page site; the rule "
+             "says under three words, so this is stricter than documented")
+
+    dup = fp.dechrome([home, about])
+    if len(dup) != 1:
+        errors += fail(f"two copies of one document became {len(dup)} pages. "
+                       f"status-solutions-network kept 6% of its text this "
+                       f"way: every line repeated, so every line was chrome")
+    if "Brinc builds drones" not in dup[0]["text"]:
+        errors += fail("the same page under two urls lost its own sentences")
+
+    two = fp.dechrome([home, other])
+    texts = [pg["text"] for pg in two]
+    if any("Brinc builds drones" in tx for tx in texts):
+        errors += fail("a sentence repeated verbatim on two DIFFERENT pages "
+                       "was kept. That is the shape of a tagline in the "
+                       "footer, and a brief that leads with it writes "
+                       "marketing")
+    if any("Request a Demo" in tx.split("\n") for tx in texts):
+        errors += fail("a three-word CTA repeated on two pages was kept. The "
+                       "repeat rule is what catches chrome the length rule "
+                       "cannot")
+    if not any("Lemur drone" in tx for tx in texts):
+        errors += fail("dechrome dropped a sentence that appears on one page only")
+    if not any("founded in 2017" in tx for tx in texts):
+        errors += fail("dechrome dropped a one-page sentence when a second page was present")
+    return errors
+
+
 def check_site_pages_stay_out_of_git() -> int:
     """Other people's page text never reaches the repository.
 
@@ -10804,6 +10979,8 @@ def main() -> int:
     errors += check_rival_door_refuses_a_category()
     errors += check_every_queue_has_a_renderer()
     errors += check_proposal_rulings_cover_every_kind()
+    errors += check_company_page_profile_states()
+    errors += check_dechrome_keeps_sentences_and_drops_chrome()
     errors += check_site_pages_stay_out_of_git()
     errors += check_profile_fetch_stays_first_party()
     errors += check_rival_brief_never_cuts_the_roster()

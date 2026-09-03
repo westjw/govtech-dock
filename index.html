@@ -4668,6 +4668,49 @@ function coRivals(o,sibs,inCat){
       a buyer would build.</p>${link}</section>`;
 }
 
+/* THE ABOUT SECTION, AS A FUNCTION THE SELFTEST CAN DRIVE. Four states, and
+   the fourth is the one that matters: two companies carry a LEGACY `profile`
+   whose text is internal notes ("their Greenhouse board carried 12
+   postings..."). Rendering anything but the new shape - `paragraphs`, with
+   provenance - would put a reviewer's working notes on a public page under
+   the company's name. So the renderer keys on the shape, never on the key.
+
+   Every paragraph wears the numbers of the pages it was written from, and
+   the provenance line names those pages as links, because a sentence about
+   a real company's customers is a claim and the reader should be able to
+   check it against the page it came from in one click. */
+function coAbout(o,dom){
+  const pr=o.profile;
+  const ready=pr&&Array.isArray(pr.paragraphs)&&pr.paragraphs.length>0;
+  const lede=`<p>${esc(o.description||"")}${o.description&&!/[.!?]$/.test(o.description)?".":""}</p>`;
+  if(!ready) return `<section class="cosec coabout">
+    <div class="cosechd"><h2>About</h2><span class="smeta">${
+      o.researched?"researched by SLED JOBS":"from the record"}${
+      dom?` &middot; checked against ${esc(dom)}`:""}</span></div>
+    ${lede}
+    <p class="more">This is the one-line record. The longer write-up the page is
+      built for &mdash; what they sell, who buys it, named customers &mdash; is
+      not on file for this company yet, so nothing stands in for it.</p>
+  </section>`;
+  const srcs=Array.isArray(pr.sources)?pr.sources:[];
+  const pathOf=u=>{try{const x=new URL(u);return (x.pathname==="/"?"":x.pathname).replace(/\/$/,"")||"/"}catch(e){return u}};
+  const num=u=>{const i=srcs.findIndex(s=>s&&s.url===u);return i<0?"":`<sup>${i+1}</sup>`};
+  const paras=pr.paragraphs.map((txt,i)=>{
+    const us=[...new Set(((pr.paragraph_sources||[])[i]||[]))];
+    return `<p>${esc(String(txt))}${us.map(num).join("")}</p>`}).join("");
+  const quote=(pr.quote&&pr.quote.text)
+    ?`<blockquote class="coquote">${esc(pr.quote.text)}${pr.quote.url
+        ?`<span class="src"><a href="${safeUrl(pr.quote.url)}">${esc(pathOf(pr.quote.url))}</a></span>`:""}</blockquote>`:"";
+  const by=pr.by_kind==="company"?"in their own words, claimed page":"written from their site";
+  const when=(srcs[0]&&srcs[0].fetched_on)?`, read ${esc(srcs[0].fetched_on)}`:"";
+  const prov=srcs.length?`<p class="coprov">Written from ${srcs.length} page${srcs.length===1?"":"s"} on ${
+      esc(dom||"their site")}${when}: ${srcs.map((s,i)=>`<a href="${safeUrl(s.url)}">${i+1}&nbsp;${esc(pathOf(s.url))}</a>`).join(", ")}. Every sentence traces to one of them.</p>`:"";
+  return `<section class="cosec coabout">
+    <div class="cosechd"><h2>About</h2><span class="smeta">${by}</span></div>
+    ${lede}${paras}${quote}${prov}
+  </section>`;
+}
+
 function co(id,fromUrl){
   const o=(D.organizations||[]).find(x=>x.id===id);
   /* a ?co= that names nobody is said on the companies tab, where the reader
@@ -4725,15 +4768,7 @@ function co(id,fromUrl){
 
   /* --- 05 reading column ---------------------------------------------- */
   const dom=(o.website||"").replace(/^https?:\/\//,"").replace(/\/.*$/,"");
-  const about=`<section class="cosec coabout">
-    <div class="cosechd"><h2>About</h2><span class="smeta">${
-      o.researched?"researched by SLED JOBS":"from the record"}${
-      dom?` &middot; checked against ${esc(dom)}`:""}</span></div>
-    <p>${esc(o.description||"")}${o.description&&!/[.!?]$/.test(o.description)?".":""}</p>
-    <p class="more">This is the one-line record. The longer write-up the page is
-      built for &mdash; what they sell, who buys it, named customers &mdash; is
-      not on file for this company yet, so nothing stands in for it.</p>
-  </section>`;
+  const about=coAbout(o,dom);
 
   const news=`<section class="cosec">
     <div class="cosechd"><h2>News</h2><span class="smeta">none on file</span></div>

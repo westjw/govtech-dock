@@ -113,6 +113,17 @@ MAX_PAGES = 6           # per company, per bucket
 MAX_TEXT = 24000        # per page, stored
 MAX_HTML = 160000       # raw markup kept for news pages only
 
+# SENTENCES THAT ARE CHROME EVEN WHEN THEY APPEAR ONCE. A cookie banner is
+# three words or more and on a one-page site nothing repeats, so the two
+# rules above let it through (visionations-crimepad's brief opened with "We
+# use analytics cookies to understand how visitors use this site"). Short,
+# anchored, and only the shapes actually seen in the sample.
+CHROME_LINE = re.compile(
+    r"^(we use (analytics |essential )?cookies|this (web)?site uses cookies|"
+    r"by (continuing|using|clicking).{0,60}cookies|accept (all )?cookies|"
+    r"skip to (main )?(content|navigation)|privacy policy$|cookie (policy|settings)$|"
+    r"manage (cookie )?preferences$)", re.I)
+
 TAG = re.compile(r"<(script|style|noscript|svg|head)\b.*?</\1>", re.I | re.S)
 ANY = re.compile(r"<[^>]+>")
 WS = re.compile(r"[ \t\r\f\v]+")
@@ -131,6 +142,62 @@ def text_of(body: str) -> str:
     s = WS.sub(" ", s)
     s = "\n".join(line.strip() for line in s.split("\n"))
     return BLANK.sub("\n\n", s).strip()
+
+
+def dechrome(pages: list[dict]) -> list[dict]:
+    """Strip navigation from a site's pages before a brief is built from them.
+
+    THE FIRST BRIEF OPENED WITH FOURTEEN HUNDRED CHARACTERS OF MENU. brinc's
+    "about" text began Products, Learn More, Back, Request a Demo, because
+    text_of keeps every line the page has and a site's chrome is on every
+    page. An agent handed that writes from nav labels.
+
+    Two rules, both measured on a 25-site sample before this shipped and
+    recorded in the commit that added it:
+      - a line under three words is a label, not a sentence
+      - a line repeated verbatim on two or more of the SAME site's pages is
+        chrome, because a company's own sentences about itself do not
+        repeat across its pages and its menu does
+    The unit is one site's own pages. The exhibitor work found that
+    "subtract the home page" was confounded because for some sites the
+    listing IS the home page; here nothing is subtracted, only repeated
+    lines are, and a one-page site loses nothing.
+
+    Returns new dicts; the stored text is never modified, because the door
+    checks quotes against the FULL text and a quote from a stripped line
+    must still verify.
+    """
+    from collections import Counter
+    split = [[ln.strip() for ln in (pg.get("text") or "").split("\n")] for pg in pages]
+
+    # THE SAME PAGE UNDER TWO URLS IS ONE PAGE, and the 25-site measurement
+    # found it: status-solutions-network kept 6% of its text because its
+    # homepage and its /about/ were the same document, so every line
+    # "repeated" and the repeat rule ate the whole site. Pages whose line
+    # sets overlap by more than 85% are counted once, and only the first is
+    # kept in the brief.
+    keep_idx, sets = [], []
+    for i, lines in enumerate(split):
+        s = {ln for ln in lines if ln}
+        dup = any(len(s & prev) > 0.85 * max(1, min(len(s), len(prev))) for prev in sets)
+        if not dup:
+            keep_idx.append(i)
+            sets.append(s)
+    seen = Counter()
+    for i in keep_idx:
+        for ln in sets[keep_idx.index(i)]:
+            seen[ln] += 1
+    out = []
+    for i in keep_idx:
+        pg, lines = pages[i], split[i]
+        kept = [ln for ln in lines
+                if ln and len(ln.split()) >= 3 and seen[ln] < 2
+                and not CHROME_LINE.match(ln)]
+        out.append({**{k: v for k, v in pg.items() if k not in ("text", "html")},
+                    "text": "\n".join(kept),
+                    "chars_raw": len(pg.get("text") or ""),
+                    "chars_kept": sum(len(ln) for ln in kept)})
+    return out
 
 
 def links(body: str, base: str) -> list[str]:

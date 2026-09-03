@@ -559,6 +559,36 @@ def phase(families: dict) -> str:
     return "mixed: building and selling at once"
 
 
+
+def profile_for_board(c: dict) -> dict | None:
+    """The public shape of a company's write-up, or None.
+
+    Only the NEW shape travels - `paragraphs` with provenance - because the
+    two legacy `profile` rows are a reviewer's working notes and would read
+    as the company's own account of itself. Provenance is folded into what
+    the page needs: which pages each paragraph came from, and the page list.
+    """
+    pr = c.get("profile")
+    if not isinstance(pr, dict) or not isinstance(pr.get("paragraphs"), list) \
+            or not pr["paragraphs"] or c.get("profile_hidden"):
+        return None
+    prov = [x for x in (pr.get("provenance") or []) if isinstance(x, dict)]
+    per_para: list[list[str]] = [[] for _ in pr["paragraphs"]]
+    for x in prov:
+        i, u = x.get("p"), x.get("url")
+        if isinstance(i, int) and 0 <= i < len(per_para) and u and u not in per_para[i]:
+            per_para[i].append(u)
+    by = str(pr.get("by") or "")
+    return {
+        "paragraphs": [str(s) for s in pr["paragraphs"]],
+        "quote": pr.get("quote") if isinstance(pr.get("quote"), dict) else None,
+        "sources": [{"url": s.get("url"), "fetched_on": s.get("fetched_on")}
+                    for s in (pr.get("sources") or []) if isinstance(s, dict) and s.get("url")],
+        "paragraph_sources": per_para,
+        "written_on": pr.get("written_on"),
+        "by_kind": "company" if by.startswith("claim:") else "site",
+    }
+
 def count_openings(postings: list[dict], orgs: list[dict]) -> dict[str, list[dict]]:
     """Group rows into openings, stamp the spread on each row, count the orgs.
 
@@ -1076,6 +1106,12 @@ def main() -> int:
             # from "nobody has looked", which is the whole point of the
             # engine that produced these.
             "competitors": c.get("competitors") or None,
+            # THE WRITE-UP, in the shape the page keys on. Legacy `profile`
+            # rows carry internal notes and no `paragraphs`; they come
+            # through as None and the page shows the one-line record. A
+            # journalled `profile_hidden` is the kill switch a person can
+            # throw on any write-up on sight.
+            "profile": profile_for_board(c),
             "competitors_none_found": bool(c.get("competitors_none_found")) or None,
             "competitors_checked_on": c.get("competitors_checked_on") or None,
             # WHICH EVENT THIS COMPANY CAME OFF, so the Conferences tab can

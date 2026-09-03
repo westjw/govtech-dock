@@ -330,6 +330,92 @@ def brief_rival(sector: str | None = None, category: str | None = None,
             })
     return out[:limit] if limit else out
 
+
+# -------------------------------------------------------------- profile ----
+# THE BRIEF IS THE COMPANY'S OWN PAGES AND NOTHING ELSE. 2,061 of 2,063
+# company pages say the write-up is not on file, and the way to fill that
+# with prose about a real firm's real customers is the exact failure this
+# repo is built around: a model completing a pattern from what it remembers
+# about a name. So the brief carries the text their own site says, cut to
+# what a judge can hold, and a rules block the judge reads. Every sentence
+# it returns has to quote a page in this brief, and check_profile holds the
+# quote against the FULL stored text, so nothing here is invented and
+# nothing is cut so tight that a true sentence cannot verify.
+PROFILE_PAGE_CHARS = 7000
+PROFILE_PAGES = 4            # homepage + up to three about-class pages
+PROFILE_RULES = {
+    "paragraphs": "2 to 3",
+    "words": "80 to 240 in total",
+    "sentence_max_words": 45,
+    "provenance": "every sentence: {url, quote} where quote is verbatim from that url",
+    "quote": "optional pull quote, verbatim, at most 40 words, the company's own words",
+    "forbidden": "first person; em-dashes; marketing adjectives; any customer, "
+                 "number, date or product not on these pages",
+    "absence": "answer confidence 'unsure' with no paragraphs if the pages do not "
+               "say what they sell and to whom. That is a real answer.",
+}
+
+
+def brief_profile(ids: list[str] | None = None, sector: str | None = None,
+                  category: str | None = None, limit: int | None = None,
+                  hiring_first: bool = True) -> list[dict]:
+    """One brief per company with a readable site record and no profile yet."""
+    import fetch_profiles as fp
+    companies = json.loads((DATA / "companies.json").read_text())
+    if isinstance(companies, dict):
+        companies = list(companies.values())
+    try:
+        board = json.loads((DATA / "board.json").read_text())
+        open_by = {o["id"]: o.get("open_roles", 0) for o in board.get("organizations", [])}
+    except Exception:
+        open_by = {}
+    idx = fp.index()
+    done = load()
+    want = set(ids or [])
+    rows = []
+    for c in companies:
+        cid = c.get("id")
+        if not cid or (want and cid not in want):
+            continue
+        if sector and c.get("sector") != sector:
+            continue
+        if category and c.get("category") != category:
+            continue
+        e = idx.get(cid)
+        if not e or e.get("unread"):
+            continue                      # nothing to write from, honestly
+        if f"profile:{cid}" in done:
+            continue                      # already proposed; a re-run does not re-ask
+        prof = c.get("profile")
+        if isinstance(prof, dict) and prof.get("paragraphs"):
+            continue                      # already on file in the new shape
+        rows.append(c)
+    if hiring_first:
+        rows.sort(key=lambda c: (-(open_by.get(c["id"], 0)), c["name"].lower()))
+    out = []
+    for c in rows:
+        rec = fp.load(c["id"])
+        if not rec:
+            continue
+        pages = [pg for pg in (rec.get("about") or []) if pg.get("text")][:PROFILE_PAGES]
+        if not pages:
+            continue
+        clean = fp.dechrome(pages)
+        out.append({
+            "kind": "profile", "key": f"profile:{c['id']}",
+            "id": c["id"], "name": c["name"], "website": c.get("website"),
+            "sector": c.get("sector"), "category": c.get("category"),
+            "description": (c.get("description") or "").strip(),
+            "also_known_as": c.get("also_known_as") or [],
+            "fetched_on": rec.get("fetched_on"),
+            "pages": [{"url": pg["url"], "sha": pg.get("sha"),
+                       "text": pg["text"][:PROFILE_PAGE_CHARS]} for pg in clean],
+            "rules": PROFILE_RULES,
+        })
+        if limit and len(out) >= limit:
+            break
+    return out
+
 def check_read(p: dict) -> str | None:
     """Refuse a read that looks like it scraped the navigation."""
     rows = p.get("postings")
@@ -602,6 +688,8 @@ def main() -> int:
             briefs = brief_read(a.limit)
         elif a.kind == "rival":
             briefs = brief_rival(a.sector, a.category, a.limit)
+        elif a.kind == "profile":
+            briefs = brief_profile(sector=a.sector, category=a.category, limit=a.limit)
         else:
             print(f"no brief builder for {a.kind!r} yet", file=sys.stderr)
             return 2
