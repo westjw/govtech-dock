@@ -2935,7 +2935,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "other",
+   "label": "somewhere else",
+   "url": "https://www.amcsgroup.com/careers/",
+   "note": null,
+   "on": "2026-09-03",
+   "by": "owner"
+  }
  },
  {
   "id": "amp",

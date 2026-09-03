@@ -877,20 +877,65 @@ def check_warm_leads_can_be_accepted() -> int:
             ("/api/dismiss", "the row lost its 'not a lead' path")):
         if needle not in body:
             errors += fail(why)
-    # every place the row offers must be one posts_at accepts
+    # EVERY DROPDOWN OFFERS EVERY PLACE THE MODEL ACCEPTS, and nothing else.
+    # Hand-syncing two lists failed twice: the no-board queue never offered
+    # Wellfound, and NEITHER offered "their own careers page" - the commonest
+    # answer there is, so the only honest-looking choice was "somewhere
+    # else", which sends a reader hunting for an obscure job site when the
+    # openings are on the company's own front door.
     sys.path.insert(0, str(ROOT / "scripts"))
     import posts_at
-    offered = set(re.findall(r"\['([a-z]+)', '", body))
-    unknown = offered - set(posts_at.WHERE)
-    if unknown:
-        errors += fail(f"the row offers place(s) posts_at.check would refuse: "
-                       f"{sorted(unknown)}")
-    if len(offered & set(posts_at.WHERE)) < 5:
-        errors += fail(f"the row offers too few real places: {sorted(offered)}")
-    # 'parent' needs a name, and the row must ask for one
-    if "owner.placeholder" not in body:
-        errors += fail("the row never asks whose board it is, so choosing "
-                       "'their parent's board' is refused with no way to fix it")
+    want = set(posts_at.WHERE)
+    for name, marker in (("warm leads", "const place = el('select', 'in')"),
+                         ("no board found", "const sel = el('select', 'sel')")):
+        at = html.find(marker)
+        if at < 0:
+            errors += fail(f"the {name} queue no longer builds a place dropdown")
+            continue
+        seg = html[at:at + 900]
+        offered = set(re.findall(r"\['([a-z]+)',", seg))
+        missing, unknown = want - offered, offered - want
+        if missing:
+            errors += fail(f"the {name} dropdown cannot record {sorted(missing)}, "
+                           f"which posts_at accepts - a place the model knows and "
+                           f"the UI hides is a fact nobody can write down")
+        if unknown:
+            errors += fail(f"the {name} dropdown offers {sorted(unknown)}, which "
+                           f"posts_at.check would refuse")
+    # THE SENTENCE THE CARD ACTUALLY PRINTS. Without its own branch, "own"
+    # falls through to the generic line - "they advertise on their own
+    # careers page rather than a job board we can read" - which sets the
+    # sentence against itself, because their careers page IS their job board.
+    import subprocess, json as _json
+    src = (ROOT / "index.html").read_text()
+    lab = re.search(r"const POSTS_AT_LABEL=\{.*?\};", src, re.S)
+    fn = src.find("function postsAtSentence(")
+    if not lab or fn < 0:
+        errors += fail("index.html no longer builds the posts_at sentence")
+    else:
+        js = ("const esc = s => String(s);\n" + lab.group(0) + "\n"
+              + src[fn:src.index("\n}\n", fn) + 2] + """
+console.log(JSON.stringify({
+  own: postsAtSentence({where:'own', url:'https://acme.example/careers'}, 0),
+  ownCounted: postsAtSentence({where:'own'}, 3),
+  li: postsAtSentence({where:'linkedin'}, 0),
+}));""")
+        r = subprocess.run(["node", "-e", js], capture_output=True, text=True, timeout=60)
+        if r.returncode:
+            note(f"node could not run postsAtSentence: {r.stderr[:160]}")
+        else:
+            got = _json.loads(r.stdout.strip().splitlines()[-1])
+            if "rather than a job board" in got["own"]:
+                errors += fail("the card tells a reader a company advertises on its "
+                               "own careers page 'rather than a job board we can "
+                               "read'. That page IS their job board; the sentence "
+                               f"contradicts itself: {got['own'][:110]}")
+            if "own careers page" not in got["own"]:
+                errors += fail(f"the card does not name their own careers page: {got['own'][:110]}")
+            if "3 roles" not in got["ownCounted"]:
+                errors += fail(f"the counted variant loses the count: {got['ownCounted'][:110]}")
+            if "LinkedIn" not in got["li"]:
+                errors += fail("the ordinary places lost their label")
     return errors
 
 

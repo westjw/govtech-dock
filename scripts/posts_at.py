@@ -66,6 +66,19 @@ WHERE = {
     # exists to prevent: they land on 4,000 SAP openings and cannot tell which
     # three are Concur's. So this one carries a warning the others do not need.
     "parent":    ("their parent company's board", None),
+    # THEIR OWN CAREERS PAGE, which eleven options managed not to include and
+    # which is the commonest answer of all: the page is right there, a person
+    # can read it, and our fetcher cannot enumerate it - JavaScript, an
+    # embedded widget, a PDF, a form. Without this the only honest-looking
+    # answer was "somewhere else", which sends a reader hunting for an
+    # obscure job site when the openings are on the company's own site.
+    #
+    # It is deliberately NOT the same record as wiring the page as an `html`
+    # board. That says "read this nightly and count what you find". This says
+    # "the openings are here and we cannot count them" - and picking the
+    # wrong one of those is the difference between a page that refreshes and
+    # a page that quietly goes stale.
+    "own":       ("their own careers page", None),
     "other":     ("somewhere else", None),
 }
 

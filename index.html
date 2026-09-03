@@ -1694,7 +1694,7 @@ const POSTS_AT_LABEL={linkedin:"LinkedIn",indeed:"Indeed",glassdoor:"Glassdoor",
   ziprecruiter:"ZipRecruiter",builtin:"Built In",wellfound:"Wellfound",
   govportal:"a government jobs portal",recruiter:"an outside recruiter",
   email:"by email only",parent:"their parent company's board",
-  other:"somewhere else"};
+  own:"their own careers page",other:"somewhere else"};
 function postsAtSentence(rec,counted){
   if(!rec)return "";
   if(rec.where==="email")
@@ -1712,6 +1712,18 @@ function postsAtSentence(rec,counted){
     return `They post through ${rec.owner?esc(rec.owner)+"'s":"their parent company's"} board `
       +"rather than one of their own, so their roles are not counted here. Most of "
       +"what is on that board will not be theirs.";
+  if(rec.where==="own")
+    /* THEIR OWN PAGE IS NOT "ANOTHER SITE". The generic sentence would read
+       "they advertise on their own careers page rather than a job board we
+       can read", which sets the page against itself - their careers page IS
+       their job board. The honest version names why we cannot count it. */
+    return counted
+      ? `Their openings are listed on their own careers page, which our reader cannot `
+        +`work through. The ${counted} role${counted===1?"":"s"} below `
+        +`${counted===1?"was":"were"} read off that page by hand, so nothing refreshes `
+        +`${counted===1?"it":"them"} automatically.`
+      : "Their openings are listed on their own careers page, which our reader cannot "
+        +"work through, so they are not counted here. The link goes straight to it.";
   const label=rec.label||POSTS_AT_LABEL[rec.where]||"another site";
   /* "NOT COUNTED HERE" STOPS BEING TRUE THE MOMENT SOMEBODY CAPTURES THE
      PAGE. A captured row goes into data/manual.json, build_board keys it
