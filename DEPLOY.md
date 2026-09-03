@@ -108,9 +108,14 @@ one address.
 → policy: Emails ending in your address, or a one-time PIN. Free for up to 50
 users, and real auth rather than a shared password.
 
-## 3b. The "Add a company" form (~3 min, optional but visible)
-**Verified live 2026-09-03: the form answers `not_configured` and shows
-"The form is not wired up on this deployment yet."** The endpoint
+## 3b. The "Add a company" form ~~(~3 min)~~ DONE, verified 2026-09-03
+`GITHUB_SUBMIT_TOKEN` is a Pages secret on `solesource` and the form works:
+a POST to `/api/submit` opened issue #12. **A Pages Function reads a new
+variable only after the NEXT deployment** - saving the secret is not enough,
+and the endpoint answered `not_configured` until a push redeployed. The
+token is fine-grained, `westjw/govtech-dock` only, Issues read and write.
+**Check its expiry before it lapses**; when it does, the form silently goes
+back to the fallback link. The original instructions follow. The endpoint
 (`functions/api/submit.js`) opens a GitHub issue and needs a token:
 GitHub → Settings → Developer settings → Fine-grained tokens → one
 repository (`westjw/govtech-dock`), permission **Issues: Read and write**
