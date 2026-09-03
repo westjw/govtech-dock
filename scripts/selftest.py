@@ -2299,7 +2299,11 @@ def check_profile_door_needs_provenance() -> int:
           # two names the page puts side by side with a comma, not 'of'
           "Sheriff Greg Champagne, St. Charles Parish Sheriff, Louisiana. "
           # a product whose NAME contains a word on the marketing list
-          "Talon Premier licences ship annually.")
+          "Talon Premier licences ship annually. "
+          # an ordinary word the page writes in LOWER CASE, which is the
+          # evidence that the same word capitalised at a sentence start is
+          # grammar rather than a name
+          "Departments keep adding units every year.")
     T = {"https://b.example/": P1, "https://b.example/about": P2}
     Q1 = "Brinc builds drones that police departments"
     Q2 = "Customers include the Chula Vista Police Department"
@@ -2355,6 +2359,13 @@ def check_profile_door_needs_provenance() -> int:
         # A PARENTHETICAL IS AN ASIDE, not part of the run.
         ("a run the page interrupts with a parenthetical",
          prop(s2=sub(S2, 2, "The Rocket City HQ is staffed by police veterans."))),
+        # A SENTENCE'S FIRST WORD IS CAPITALISED BY GRAMMAR. "Adding Mastery
+        # Connect puts assessment inside the courses" was refused because the
+        # run read as "Adding Mastery Connect" and only "Mastery Connect" is
+        # on Instructure's pages. Their pages write "adding" in lower case,
+        # which is the evidence that this capital is grammar.
+        ("a sentence opening with an ordinary word the page writes lower case",
+         prop(s2=sub(S2, 2, "Adding Talon Premier licences is what departments do."))),
         # 'OF' IS NOT A STRICTER TEST THAN A COMMA.
         ("two names the page puts side by side, bridged with 'of' in the prose",
          prop(s2=sub(S2, 2, "Testimonials include Greg Champagne of St. Charles Parish."))),
@@ -2419,6 +2430,17 @@ def check_profile_door_needs_provenance() -> int:
          prop(s2=sub(S2, 2, "The Ion module records audio for police departments."))),
         # THE BRIDGE RULE STAYS A RULE: both names are on the pages, far
         # apart, and pairing them is a claim the page does not make.
+        # AND SETTING THE OPENER ASIDE DOES NOT EXCUSE WHAT FOLLOWS. "Adding"
+        # is grammar on their pages; "Zephyr Systems" is on nobody's. The
+        # exemption drops one word, it does not skip the check.
+        ("a grammar capital followed by an invented name", "zephyr",
+         prop(s2=sub(S2, 2, "Adding Zephyr Systems to a fleet is what departments do."))),
+        # ...AND A REAL NAME AT A SENTENCE START IS STILL A CLAIM. Dropping
+        # the opening word wholesale would let this through on the strength
+        # of "Police Department", which IS on the page. "dallas" is not
+        # written in lower case anywhere on their site, so it is not grammar.
+        ("a real name opening a sentence, whose rest IS on the page", "dallas",
+         prop(s2=sub(S2, 2, "Dallas Police Department flies the Lemur nightly."))),
         # AND THE RULE STAYS A RULE. A lone capitalised adjective is not a
         # name, and a capitalised run the page does NOT carry is not one
         # either; both are still marketing.

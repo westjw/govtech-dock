@@ -713,7 +713,7 @@ def _pf_near_bridged(tokens: list[str], corpus: str) -> bool:
 _PF_VERBAL = {"leading": ("to", "up")}   # 'leading to the arrest' is a verb
 
 
-def _pf_marketing_ok(text: str, m: "re.Match", corpus: str) -> bool:
+def _pf_marketing_ok(text: str, m: "re.Match", corpus: str, cased: str = "") -> bool:
     """Is this listed word innocent HERE? Two ways, both narrow.
 
     A NAME. "Autokey is included with Graykey Premier online licenses" was
@@ -747,11 +747,23 @@ def _pf_marketing_ok(text: str, m: "re.Match", corpus: str) -> bool:
         j += 1
     if j == i:
         return False                      # a lone capitalised adjective is not a name
-    return _pf_has(corpus, " ".join(raws[i:j + 1]).strip(_PF_EDGE_PUNCT))
+    run = " ".join(raws[i:j + 1]).strip(_PF_EDGE_PUNCT)
+    if _pf_has(corpus, run):
+        return True
+    # THE SAME GRAMMAR CAPITAL, in a second rule. "Adding Talon Premier
+    # licences" walks back from Premier to a run that starts at the sentence's
+    # first word, and "Adding Talon Premier" is on nobody's page while "Talon
+    # Premier" is. Set the opener aside only when their own pages write it in
+    # lower case, which is the same evidence rule 5 uses.
+    if i == 0 and j - i >= 1 and cased:
+        opener = _pf_key(raws[0])
+        if opener and re.search(r"(?<!\w)" + re.escape(opener) + r"(?!\w)", cased):
+            return _pf_has(corpus, " ".join(raws[1:j + 1]).strip(_PF_EDGE_PUNCT))
+    return False
 
 
 def _pf_entities(text: str, allow_tokens: set[str], allow_phrases: set[tuple[str, ...]],
-                 corpus: str, corpus_aside_free: str = "") -> str | None:
+                 corpus: str, corpus_aside_free: str = "", cased: str = "") -> str | None:
     """Rule 5: the first name or number in `text` that no page carries.
 
     (a) a capitalised token off the sentence start; (b) a run of capitalised
@@ -804,6 +816,34 @@ def _pf_entities(text: str, allow_tokens: set[str], allow_phrases: set[tuple[str
         if j - i >= 2:
             ks = tuple(k for k in keys[i:j] if k)
             span = " ".join(raws[i:j])
+            # A SENTENCE'S FIRST WORD IS CAPITALISED BY GRAMMAR. "Adding
+            # Mastery Connect puts assessment inside the courses" was refused
+            # because the run read as "Adding Mastery Connect", and only
+            # "Mastery Connect" is on Instructure's pages. Dropping the first
+            # word wholesale would be worse - it would let "Dallas Police fly
+            # the Lemur" through on the strength of "Police" - so the opening
+            # word is set aside ONLY when the company's own pages use it in
+            # lower case. That is evidence, not a word list: their pages say
+            # "adding" as ordinary prose, and no page writes "dallas" that
+            # way. The rest of the run is then checked on its own.
+            if i == 0 and j - i >= 3:
+                opener = _pf_key(raws[0])
+                lower_on_page = bool(opener) and bool(re.search(
+                    r"(?<!\w)" + re.escape(opener) + r"(?!\w)", cased))
+                if lower_on_page:
+                    # BELT AND BRACES, and worth saying which. An invented
+                    # word inside the run is already caught by the
+                    # single-token pass above, which runs first - so this
+                    # cannot be the only thing standing between a guess and
+                    # the page, and a mutation removing it changes no
+                    # outcome the fixtures can reach. It is here for the run
+                    # whose every word is separately allowlisted while the
+                    # phrase itself is on nobody's page.
+                    rest = " ".join(raws[1:j])
+                    if _pf_has(corpus, rest) or (corpus_aside_free and
+                                                 _pf_has(corpus_aside_free, rest)):
+                        i = j
+                        continue
             if (ks not in allow_phrases and not _pf_has(corpus, span)
                     and not _pf_has(corpus, " ".join(ks))
                     and not (corpus_aside_free and _pf_has(corpus_aside_free, span))
@@ -900,6 +940,11 @@ def check_profile(p: dict, texts: dict[str, str]) -> str | None:
     # about page may be cited from the homepage, and that is still their claim.
     corpus = "\n".join(_pf_loose(t) for t in pages.values())
     corpus_aside_free = _pf_aside_free(pages)
+    # CASE SURVIVES HERE AND NOWHERE ELSE. `corpus` is casefolded, so it
+    # cannot answer "do their pages write this word in lower case?" - which
+    # is the evidence that a sentence-opening capital is grammar rather than
+    # a name.
+    cased = "\n".join(texts.values())
 
     for s in sentences:
         text = s["text"].strip()
@@ -922,7 +967,7 @@ def check_profile(p: dict, texts: dict[str, str]) -> str | None:
         #    Magnet Forensics sells and "leading to the arrest" is a verb;
         #    both were refused as marketing on their first real batch.
         m = next((m for m in _PF_MARKETING_RE.finditer(text)
-                  if not _pf_marketing_ok(text, m, corpus)), None)
+                  if not _pf_marketing_ok(text, m, corpus, cased)), None)
         if m:
             return f"8. marketing word {m.group(0)!r} in {head!r}."
         # 4. the quote is the provenance; it must be on the page it cites
@@ -932,7 +977,8 @@ def check_profile(p: dict, texts: dict[str, str]) -> str | None:
         if _pf_norm(quote) not in pages[url]:
             return f"4. quote {quote.strip()[:40]!r} is not on {url}."
         # 5. every name and number in the prose is on their pages, by name
-        bad = _pf_entities(text, allow_tokens, allow_phrases, corpus, corpus_aside_free)
+        bad = _pf_entities(text, allow_tokens, allow_phrases, corpus,
+                           corpus_aside_free, cased)
         if bad is not None:
             return f"5. {bad!r} is not on any of their pages."
 
