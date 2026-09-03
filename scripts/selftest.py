@@ -753,6 +753,63 @@ def check_proposal_rulings_cover_every_kind() -> int:
     return errors
 
 
+def check_ingest_keeps_refusals() -> int:
+    """What the door refuses is KEPT, with the rule that refused it.
+
+    The owner's ruling on write-ups is "door only, add some gate reviews",
+    and the gate review's first list is every proposal the door refused, by
+    rule, so a rule that is too tight is visible. A refusal that vanished at
+    intake could never be reviewed, and a door nobody can see being wrong is
+    a door nobody fixes. Asserted in a sandbox against a rival proposal that
+    the existing door refuses (a name not on the roster), then that the
+    admin queue does NOT show it as pending and the profile gate DOES list
+    it as refused.
+    """
+    import json as _json
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin, agents, promote_profiles
+    roster = [{"id": "a", "name": "A"}, {"id": "b", "name": "B"}]
+    bad_prop = {"id": "a", "name": "A", "roster": roster, "confidence": "medium",
+                "rivals": [{"id": "not-on-roster", "why": "a reason long enough to pass"}]}
+    companies = [{"id": "a", "name": "A", "sector": "S", "category": "Police",
+                  "description": "d", "ats": {"type": "unknown", "ref": None},
+                  "hiring": "Unknown", "govtech": True, "vendor_type": "product"}]
+    errors = 0
+    with _sandbox_admin({"companies.json": companies, "agent_proposals.json": {},
+                         "admin_dismissed.json": {}}) as tmp:
+        keep = agents.STORE
+        agents.STORE = tmp / "agent_proposals.json"
+        try:
+            rep = agents.ingest("rival", [bad_prop], model="agent:test")
+            st = agents.load()
+            row = st.get("rival:a")
+            if rep["kept"] != 0 or not rep["refused"]:
+                errors += fail(f"the door did not refuse the fixture: {rep}")
+            if not row or row.get("status") != "refused" or not row.get("refused_why"):
+                errors += fail(f"a refused proposal was not kept in the store "
+                               f"with its reason: {row}. The gate review has "
+                               f"nothing to show")
+            if row and "not on the roster" not in row.get("refused_why", ""):
+                errors += fail("the kept refusal does not carry the door's own "
+                               "sentence, so a person cannot tell which rule fired")
+            # the admin queue shows PENDING rows only
+            shown = admin.q_proposals(companies, {"organizations": []})
+            if any(r.get("id") == "a" for r in shown):
+                errors += fail("a refused proposal appeared in the admin's "
+                               "pending queue")
+            # the profile gate lists a refused profile row under its category
+            st["profile:a"] = {"kind": "profile", "id": "a", "name": "A",
+                               "status": "refused", "refused_why": "4. quote not on page",
+                               "confidence": "high"}
+            g = promote_profiles._by_category(st, companies)
+            if not any(k == "profile:a" for k, _ in g.get("Police", [])):
+                errors += fail("promote_profiles does not list a refused write-up "
+                               "under its category, so --gate cannot show it")
+        finally:
+            agents.STORE = keep
+    return errors
+
+
 def check_company_page_profile_states() -> int:
     """coAbout renders the new profile shape, and NEVER the legacy one.
 
@@ -10996,6 +11053,7 @@ def main() -> int:
     errors += check_rival_door_refuses_a_category()
     errors += check_every_queue_has_a_renderer()
     errors += check_proposal_rulings_cover_every_kind()
+    errors += check_ingest_keeps_refusals()
     errors += check_company_page_profile_states()
     errors += check_dechrome_keeps_sentences_and_drops_chrome()
     errors += check_site_pages_stay_out_of_git()

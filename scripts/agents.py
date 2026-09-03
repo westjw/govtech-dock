@@ -613,6 +613,18 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
                else check_rival(p) if kind == "rival" else None)
         if bad:
             refused.append({"key": key, "why": bad})
+            # A REFUSAL IS KEPT, NOT DROPPED. The gate review the owner asked
+            # for ("door only, add some gate reviews") reads what the door
+            # refused, by rule, so a rule that is too tight is visible. A
+            # refusal that vanished at intake could never be reviewed, and a
+            # door nobody can see being wrong is a door nobody fixes.
+            store[key] = {"kind": kind, "id": p.get("id"), "name": p.get("name"),
+                          "status": "refused", "refused_why": bad,
+                          "confidence": p.get("confidence"),
+                          "why": (p.get("why") or "").strip(),
+                          "proposal": {k: v for k, v in p.items()
+                                       if k not in ("roster", "pages")},
+                          "by": model or "agent", "at": now}
             continue
         store[key] = {
             "kind": kind,
@@ -640,6 +652,12 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
             # a ruling nobody can re-read is not a ruling
             "rivals": p.get("rivals"),
             "roster_size": p.get("roster_size"),
+            # a profile proposal is its paragraphs (each sentence with url and
+            # quote) and its pull quote; the pages it saw travel as shas so a
+            # ruling six months on knows which bytes the prose was checked
+            # against without the bodies being in the repo
+            "paragraphs": p.get("paragraphs"),
+            "quote": p.get("quote") if isinstance(p.get("quote"), dict) else None,
             "saw": p.get("saw") or {},
             "by": model or "agent",
             "at": now,
