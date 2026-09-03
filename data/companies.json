@@ -26957,8 +26957,8 @@
  },
  {
   "id": "decision-optimization-technology-us",
-  "name": "Decision Optimization Technology-US",
-  "website": null,
+  "name": "Decision Optimization Technology",
+  "website": "https://www.bettercapitalplanning.com/",
   "location": null,
   "year_founded": null,
   "sector": "Public Works",
@@ -26977,7 +26977,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "PWX 2026",
-  "researched": false
+  "researched": false,
+  "also_known_as": [
+   "Decision Optimization Technology-US"
+  ]
  },
  {
   "id": "deleteme",
@@ -34563,10 +34566,6 @@
    "Hexagon Asset Lifecycle Intelligence"
   ],
   "also": [
-   {
-    "sector": "Public Safety",
-    "category": "EMS"
-   },
    {
     "sector": "Public Works",
     "category": "Fleet & Asset Mgmt"

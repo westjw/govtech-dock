@@ -939,6 +939,59 @@ console.log(JSON.stringify({
     return errors
 
 
+def check_a_company_sits_on_at_most_two_shelves() -> int:
+    """A company may hold its primary placement and one more, never a third.
+
+    `also` exists because a vendor really can sell into several departments -
+    Tyler sells court case management, municipal ERP and public-safety
+    records - and filing it under one hides it from the others. But a company
+    on four shelves is on none of them: a placement is worth something
+    because somebody browsing that category expected to find them there, and
+    a record that answers every filter says nothing about who it is for.
+    Owner's ruling, 2026-09-03: two, primary included.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+    base = {"name": "Acme", "description": "x", "website": "https://acme.example",
+            "govtech": True, "vendor_type": "product",
+            "ats": {"type": "unknown", "ref": None},
+            "hiring": {"status": "Unknown", "roles": [], "checked": None}}
+    schema = json.loads((ROOT / "data" / "schema.json").read_text())
+    errors = 0
+    if getattr(admin, "MAX_PLACEMENTS", None) != 2:
+        errors += fail(f"MAX_PLACEMENTS is {getattr(admin, 'MAX_PLACEMENTS', None)}, "
+                       f"not the owner's ruling of 2")
+    two = dict(base, id="acme", sector="Public Safety", category="Police",
+               also=[{"sector": "Public Works", "category": "Fleet & Asset Mgmt"}])
+    three = dict(two, also=two["also"] + [{"sector": "Public Safety", "category": "EMS"}])
+    with _sandbox_admin({"companies.json": [two], "schema.json": schema}):
+        if admin.validate([two]) is not None:
+            errors += fail(f"a company on two shelves was refused: {admin.validate([two])}")
+        bad = admin.validate([three])
+        if not bad or "shelves" not in bad:
+            errors += fail(f"a company on THREE shelves was not refused: {bad}")
+        if bad and "Public Safety / EMS" not in bad:
+            errors += fail(f"the refusal does not name the shelves, so nobody can "
+                           f"tell which to drop: {bad}")
+        # the write path refuses it too, not only the validator
+        r = admin.act_also({"id": "acme", "sector": "Public Safety",
+                            "category": "EMS", "by": "owner"})
+        if not r.get("error") or "shelves" not in r["error"]:
+            errors += fail(f"act_also added a third shelf: {r}")
+        # and dropping one still works, or the cap becomes a trap
+        r = admin.act_also({"id": "acme", "sector": "Public Works",
+                            "category": "Fleet & Asset Mgmt", "by": "owner"})
+        if r.get("error"):
+            errors += fail(f"a placement could not be dropped: {r}")
+    # THE LIVE FILE OBEYS IT. A rule the data breaks is a rule that blocks
+    # every write until somebody notices, which is exactly what it did.
+    live = admin.validate(admin.read_companies())
+    if live and "shelves" in live:
+        errors += fail(f"the live file breaks the placement cap, so every admin "
+                       f"write is refused: {live}")
+    return errors
+
+
 def check_jibe_is_read_and_verifiable() -> int:
     """The Jibe fetcher parses its API, pages past the first page, and can
     say whose board it is.
@@ -12860,6 +12913,7 @@ def main() -> int:
     errors += check_proposal_rulings_cover_every_kind()
     errors += check_write_ups_queue_shows_only_exceptions()
     errors += check_users_board_never_stores_an_address()
+    errors += check_a_company_sits_on_at_most_two_shelves()
     errors += check_jibe_is_read_and_verifiable()
     errors += check_merge_repoints_competitor_edges()
     errors += check_warm_leads_can_be_accepted()

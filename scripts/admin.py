@@ -58,6 +58,8 @@ DATA = ROOT / "data"
 # type is legal exactly when something can read it, plus "unknown", which
 # means nothing has looked yet.
 ATS_TYPES = set(ats.FETCHERS) | {"unknown"}
+# A company's primary shelf plus at most one more. Owner's ruling, 2026-09-03.
+MAX_PLACEMENTS = 2
 STATUSES = {"Yes", "Sales (non-AE)", "None found", "Unknown"}
 
 # A company id is a filename in every direction it travels: assets/logos/<id>.png
@@ -283,6 +285,18 @@ def validate(companies: list) -> str | None:
             if (s2, c2) in placements:
                 return f"{who}: filed twice under {s2} / {c2}"
             placements.add((s2, c2))
+        # TWO SHELVES, NOT A CATALOGUE. A vendor really can sell into more
+        # than one department and filing it under one hides it from the
+        # others - that is why `also` exists. But a company on four shelves
+        # is on none of them: the value of a placement is that somebody
+        # browsing that category expected to find them there, and a record
+        # that answers every filter tells a reader nothing about who it is
+        # for. The owner's ruling is two, primary included.
+        if len(placements) > MAX_PLACEMENTS:
+            shelves = ", ".join(f"{s} / {k}" for s, k in sorted(placements))
+            return (f"{who}: filed on {len(placements)} shelves ({shelves}); "
+                    f"a company may sit on {MAX_PLACEMENTS}, its primary and "
+                    f"one more. Drop one before adding another")
         if (c.get("ats") or {}).get("type") not in ATS_TYPES:
             return f"{who}: bad ats type {(c.get('ats') or {}).get('type')}"
         if (c.get("hiring") or {}).get("status") not in STATUSES:
