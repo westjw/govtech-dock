@@ -2923,6 +2923,12 @@ def q_proposals(companies, board) -> list:
     for r in rows:
         if not isinstance(r, dict) or r.get("status") != "pending":
             continue
+        # WRITE-UPS HAVE THEIR OWN TAB. A category of them lands in one batch
+        # behind a gate review; what a person looks at one by one is the
+        # exceptions, and q_profiles is that list. 104 pending Police
+        # write-ups sat in this queue for a morning and buried the 27 reads.
+        if r.get("kind") == "profile":
+            continue
         if is_dismissed("proposals", r.get("id", "")):
             continue
         c = by_id.get(r.get("id"))
@@ -2968,12 +2974,175 @@ def q_proposals(companies, board) -> list:
     return out
 
 
-QUEUES = {"proposals": q_proposals, "leads": q_leads, "boardfound": _q_board_proposals, "founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
+def q_profiles(companies, board) -> list:
+    """Company write-ups that need a person: refused by the door, or written
+    at medium, low or unsure confidence.
+
+    This is the gate review as a tab. A category's write-ups land in one
+    batch (promote_profiles.py --land) after --gate has printed the
+    exceptions; those same exceptions live here so they can be ruled one at
+    a time between batches, sentence beside quote beside URL. High-confidence
+    write-ups that passed the door are NOT here: reading 2,000 of them one by
+    one is the load the owner ruled out ("door only, add some gate reviews"),
+    and the 5% sample of them stays in the CLI gate review.
+
+    A refused row cannot be accepted from here or anywhere: the door said a
+    sentence is not on the company's pages. It can be dismissed, which hides
+    it from this list and changes nothing else; the writer's next pass for
+    that company is a fresh proposal.
+    """
+    raw = read("agent_proposals.json", {})
+    rows = list(raw.values()) if isinstance(raw, dict) else raw
+    keys = {id(v): k for k, v in raw.items()} if isinstance(raw, dict) else {}
+    by_id = {c["id"]: c for c in companies}
+    out = []
+    for r in rows:
+        if not isinstance(r, dict) or r.get("kind") != "profile":
+            continue
+        key = r.get("key") or keys.get(id(r)) or f"profile:{r.get('id')}"
+        st, conf = r.get("status"), (r.get("confidence") or "unsure")
+        if st == "refused":
+            pass
+        elif st == "pending" and conf in ("medium", "low", "unsure"):
+            pass
+        else:
+            continue
+        if is_dismissed("profiles", key):
+            continue
+        c = by_id.get(r.get("id")) or {}
+        pages = ((r.get("saw") or {}).get("pages") or [])
+        out.append({"key": key, "id": r.get("id"), "name": c.get("name") or r.get("name") or r.get("id"),
+                    "sector": c.get("sector"), "category": c.get("category"),
+                    "website": c.get("website"), "confidence": conf, "status": st,
+                    "refused_why": r.get("refused_why"), "why": r.get("why"),
+                    "evidence": r.get("evidence"), "paragraphs": r.get("paragraphs") or [],
+                    "quote": r.get("quote") if isinstance(r.get("quote"), dict) else None,
+                    "pages": [x.get("url") for x in pages if isinstance(x, dict)],
+                    "by": r.get("by"), "at": r.get("at") or r.get("proposed_on")})
+    order = {"refused": 0, "pending": 1}
+    conf_order = {"unsure": 0, "low": 1, "medium": 2}
+    out.sort(key=lambda x: (order.get(x["status"], 9), conf_order.get(x["confidence"], 9), x["name"] or ""))
+    return out
+
+
+# ---------------------------------------------------------------- users
+# WHO MAY REACH WHAT, decided by the owner and nobody else. Cloudflare Access
+# says who a person IS (an email, verified by a code sent to it); this file
+# says what that person may do here: "admin" rules queues from the web admin,
+# "hunter" is the closed Job Hunter beta. The owner holds every role and
+# cannot be revoked or granted from this board.
+#
+# NO ADDRESS IS EVER STORED. The repo is about to go public and an email is
+# a person. What is stored is sha256 of the lower-cased address, which is
+# enough for the login endpoint to recognise a signed-in person and useless
+# to anyone reading the file. The owner types an address once to grant;
+# the board shows the handle and the label the owner gave, never the address.
+#
+# THIS BOARD IS THE OWNER'S. The desk admin (this process, on the owner's
+# machine) is the owner by construction. When it reaches the web admin, the
+# tab must be drawn only for a session whose role is owner; a staff admin
+# granting admin is how a two-person team becomes a twenty-person one.
+USER_ROLES = ("admin", "hunter")
+HANDLE = re.compile(r"^[a-z][a-z0-9-]{1,23}$")
+
+
+def email_key(email: str) -> str:
+    return hashlib.sha256((email or "").strip().lower().encode("utf-8")).hexdigest()
+
+
+def read_users() -> dict:
+    u = read("users.json", {})
+    return u if isinstance(u, dict) else {}
+
+
+def q_users(companies, board) -> list:
+    """Everyone with access, owner first. Revoked people stay listed, marked,
+    so a revocation is visible rather than a row that vanished."""
+    rows = []
+    for handle, u in read_users().items():
+        if not isinstance(u, dict):
+            continue
+        rows.append({"handle": handle, "label": u.get("label") or "",
+                     "roles": list(u.get("roles") or []),
+                     "granted_on": u.get("granted_on"), "granted_by": u.get("granted_by"),
+                     "revoked_on": u.get("revoked_on"),
+                     "owner": "owner" in (u.get("roles") or [])})
+    rows.sort(key=lambda r: (not r["owner"], bool(r["revoked_on"]), r["handle"]))
+    return rows
+
+
+def act_user_grant(body: dict) -> dict:
+    """Grant roles to a person by email; the file keeps the hash and a handle."""
+    email = (body.get("email") or "").strip()
+    handle = (body.get("handle") or "").strip().lower()
+    roles = [r for r in (body.get("roles") or []) if isinstance(r, str)]
+    label = (body.get("label") or "").strip()[:80]
+    by = body.get("by") or "owner"
+    users = read_users()
+    if handle in users and not email:
+        email = None                      # re-grant by handle keeps the hash
+    elif not email or "@" not in email or "." not in email.split("@")[-1]:
+        return {"error": "a grant needs the person's email address; it is hashed, never stored"}
+    if not HANDLE.match(handle):
+        return {"error": "a handle is 2-24 characters: letters, digits, hyphens, starting with a letter"}
+    bad = sorted(set(roles) - set(USER_ROLES))
+    if bad:
+        return {"error": f"roles this board can grant are {', '.join(USER_ROLES)}; "
+                         f"not {', '.join(bad)}. The owner role is not granted from a board"}
+    if not roles:
+        return {"error": "grant at least one role, or revoke instead"}
+    prev = users.get(handle) or {}
+    if "owner" in (prev.get("roles") or []):
+        return {"error": "the owner's roles are not edited from this board"}
+    if email is not None:
+        key = email_key(email)
+        clash = next((h for h, u in users.items() if h != handle and isinstance(u, dict)
+                      and u.get("email_sha256") == key), None)
+        if clash:
+            return {"error": f"that address is already on file as {clash!r}"}
+        prev = dict(prev, email_sha256=key)
+    users[handle] = dict(prev, roles=sorted(set(roles)), label=label or prev.get("label") or "",
+                         granted_on=dt.date.today().isoformat(), granted_by=by, revoked_on=None)
+    bad = save_decisions("users.json", users, "user-grant",
+                         why=f"{handle}: {', '.join(sorted(set(roles)))}", by=by)
+    if bad:
+        return {"error": bad}
+    return {"ok": True, "message": f"{handle} may now use: {', '.join(sorted(set(roles)))}",
+            "user": q_users([], {})}
+
+
+def act_user_revoke(body: dict) -> dict:
+    handle = (body.get("handle") or "").strip().lower()
+    by = body.get("by") or "owner"
+    users = read_users()
+    u = users.get(handle)
+    if not isinstance(u, dict):
+        return {"error": f"no user {handle!r}"}
+    if "owner" in (u.get("roles") or []):
+        return {"error": "the owner cannot be revoked"}
+    users[handle] = dict(u, roles=[], revoked_on=dt.date.today().isoformat(), revoked_by=by)
+    bad = save_decisions("users.json", users, "user-revoke", why=body.get("why") or handle, by=by)
+    if bad:
+        return {"error": bad}
+    return {"ok": True, "message": f"{handle} revoked; the row stays so the revocation is visible"}
+
+
+def who_is(email: str) -> dict | None:
+    """The user record for a signed-in address, or None. What the login
+    endpoint asks; the address goes in, a handle and roles come out."""
+    key = email_key(email)
+    for handle, u in read_users().items():
+        if isinstance(u, dict) and u.get("email_sha256") == key and not u.get("revoked_on"):
+            return {"handle": handle, "roles": list(u.get("roles") or [])}
+    return None
+
+
+QUEUES = {"users": q_users, "profiles": q_profiles, "proposals": q_proposals, "leads": q_leads, "boardfound": _q_board_proposals, "founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
           "placement": q_placement, "unclassified": q_unclassified,
           "acquisitions": q_acquisitions, "review": q_review,
           "calendar": _q_calendar}
 
-LABEL = {"proposals": "Agent proposals", "leads": "Warm leads", "boardfound": "Boards we found", "founded": "Founding year", "miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
+LABEL = {"users": "Users", "profiles": "Write-ups to check", "proposals": "Agent proposals", "leads": "Warm leads", "boardfound": "Boards we found", "founded": "Founding year", "miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
          "boards": "No board found", "blocked": "Blocked boards", "placement": "Wrong placement",
          "unclassified": "Unclassified roles", "acquisitions": "Acquisitions",
          "review": "Website review", "calendar": "Conference dates"}
@@ -4105,7 +4274,8 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "inspect-submission": act_inspect_submission,
            "confirm-founded": act_confirm_founded,
            "proposal-ruling": act_proposal_ruling,
-           "dismiss": act_dismiss}
+           "dismiss": act_dismiss,
+           "user-grant": act_user_grant, "user-revoke": act_user_revoke}
 
 
 # --- who may write a ruling ----------------------------------------------

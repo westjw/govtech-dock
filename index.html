@@ -1065,6 +1065,11 @@
    <a class="row" href="/alerts" id="acctsync">Sync across devices →</a>
    <a class="row" href="/alerts">Email alerts and cadence →</a>
    <a class="row" href="#" id="accttheme">Switch theme →</a>
+   <!-- Signing in is for the people who run the board and the closed beta:
+        a code sent to your email, no password, decided by the owner. The
+        row says "Log in" until /admin/api/whoami says who you are. -->
+   <a class="row" href="/admin/api/login?to=/" id="acctlogin">Log in →</a>
+   <div id="acctdoors"></div>
  </div>
 </header>
 <main><div id="stale"></div><div class="panel" id="view"></div></main>
@@ -3859,8 +3864,10 @@ function companies(){
         onclick="toggleMoreCo(this)">More filters <span class="v" id="c-more-v"></span></button>
     </div>
     <div class="bar" id="c-bar" style="display:none">
-      <select id="c-sec"><option value="">All sectors</option>
+      <select id="c-sec" aria-label="Sector"><option value="">All sectors</option>
         ${secs.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}</select>
+      <select id="c-cat" aria-label="Sub-sector"><option value="">All sub-sectors</option>
+        ${coCatOptions(D.organizations,"").map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}</select>
       <select id="c-phase"><option value="">Any phase</option>
         <option value="selling">Selling</option><option value="building">Building</option>
         <option value="absorbing">Absorbing</option><option value="mixed">Mixed</option></select>
@@ -3899,9 +3906,27 @@ function companies(){
     a field audit of a random sample put roughly 55-63% of them as genuinely boardless,
     which leaves the rest as boards we have not found yet. Open any one of them to read
     what we actually checked.</p>`;
-  ["c-q","c-sec","c-phase","c-reads"].forEach(i=>{
+  ["c-q","c-sec","c-cat","c-phase","c-reads"].forEach(i=>{
     const el=$("#"+i);if(el)el.addEventListener("input",drawCos);});
+  /* The sub-sector list follows the sector: pick Public Safety and the list
+     narrows to its categories; a sub-sector that no longer belongs is dropped
+     rather than silently filtering to nothing. */
+  $("#c-sec")?.addEventListener("input",syncCoCats);
   drawCos();
+}
+/* Categories on the board under one sector, or under every sector when none
+   is chosen. Pure, so it can be driven under node: the same list the
+   dropdown shows is the list this returns. */
+function coCatOptions(orgs,sec){
+  return [...new Set(orgs.filter(o=>o.category&&(!sec||inSector(o,sec))).map(o=>o.category))].sort();
+}
+function coCatOk(o,cat){return !cat||o.category===cat;}
+function syncCoCats(){
+  const sel=$("#c-cat");if(!sel)return;
+  const sec=$("#c-sec")?.value||"",keep=sel.value;
+  const cats=coCatOptions(D.organizations,sec);
+  sel.innerHTML=`<option value="">All sub-sectors</option>`+cats.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("");
+  sel.value=cats.includes(keep)?keep:"";
 }
 
 let CSHOWN=60;
@@ -4173,8 +4198,10 @@ function drawCos(){
     &&W.literal.every(t=>coTerm(t,coHay(o)));
   const hits=o=>!q||named(o)||concept(o)||(CO_TEXT&&mentions(o));
 
+  const ct=g("c-cat");
   const rest=o=>{
     if(s&&!inSector(o,s))return false;
+    if(!coCatOk(o,ct))return false;
     if(ph&&!(o.phase||"").startsWith(ph))return false;
     if(rd==="api"&&!(o.open_roles>0))return false;
     if(rd==="x"&&o.enumerable!==false&&!o.unreadable)return false;
@@ -4267,7 +4294,7 @@ function drawCos(){
              namedIdle:namedIdle,shown:rows.length,says:says,
              bucket:D.organizations.filter(o=>coInGo(o,W.go)).length});
 
-  const extra=["c-sec","c-phase","c-reads"].filter(i=>g(i)).length;
+  const extra=["c-sec","c-cat","c-phase","c-reads"].filter(i=>g(i)).length;
   const mv=$("#c-more-v");
   if(mv){mv.textContent=extra?`${extra} on`:"";mv.className="v"+(extra?" on":"");}
   $("#c-h").textContent=hiringOnly?"Hiring now":"Everyone we track";
@@ -6505,7 +6532,30 @@ function openAcct(open){
   b.setAttribute("aria-expanded",String(show));
 }
 
+/* WHO IS SIGNED IN. Access holds the door on /admin; asking /admin/api/whoami
+   with the browser's cookies either answers, or redirects to the sign-in
+   page - which a fetch with redirect:"manual" sees as an opaque redirect,
+   and that is the signed-out case. Nothing here stores anything: the answer
+   is a handle and roles, and it is asked for fresh on every load. */
+async function whoAmI(){
+  const row=$("#acctlogin"), doors=$("#acctdoors");
+  if(!row||!doors)return;
+  let me=null;
+  try{
+    const r=await fetch("/admin/api/whoami",{credentials:"include",redirect:"manual"});
+    if(r.ok) me=await r.json();
+  }catch(e){ me=null; }
+  if(!me||!me.signed_in){ row.textContent="Log in \u2192"; row.href="/admin/api/login?to="+encodeURIComponent(location.pathname+location.search); return; }
+  const roles=me.roles||[];
+  row.textContent=me.handle?"Signed in as "+me.handle:"Signed in, not on the list yet";
+  row.href="/admin/hunter/";
+  doors.textContent="";
+  const door=(href,label)=>{const a=document.createElement("a");a.className="row";a.href=href;a.textContent=label+" \u2192";doors.appendChild(a);};
+  if(roles.includes("owner")||roles.includes("admin")) door("/admin/","Admin");
+  if(roles.includes("owner")||roles.includes("hunter")) door("/admin/hunter/","Job Hunter beta");
+}
 function wireHeader(){
+  whoAmI();
   // Home from the mark. Every visitor already has this habit; the site simply
   // had nowhere to send them.
   const brand=$("#brandhome");

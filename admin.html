@@ -925,6 +925,9 @@ async function show(key) {
   LAST_ITEMS = items; VTHEME = null;
   const body = el('div'); body.id = 'qbody';
   if (res.state || res.belt) v.appendChild(queueHead(key, res, body));
+  // THE OWNER'S BOARD: the form to grant access sits above the roster, and
+  // is there even when nobody has been granted yet.
+  if (key === 'users') body.appendChild(usersForm());
   /* The blurb carries a live count rather than a written one. Two of these
      had numbers typed into the prose - "102 companies are here" when there
      were 50, "537 careers pages" when there were 887 - and a number in prose
@@ -2440,7 +2443,7 @@ const PROPOSAL_KINDS = {
     needsForce: p => false,
   },
 };
-const NO_APPLIER = new Set(['profile', 'news', 'claim', 'card']);
+const NO_APPLIER = new Set(['news', 'claim', 'card']);
 
 RENDER.proposals = p => {
   const n = el('div', 'item');
@@ -2502,6 +2505,185 @@ RENDER.proposals = p => {
   yes.onclick = () => send(true, spec && spec.needsForce(p));
   no.onclick = () => send(false);
   row.append(why, yes, no, msg);
+  n.appendChild(row);
+  return n;
+};
+
+/* USERS: who may reach what. Cloudflare Access says who a person is; this
+   board says what they may do - "admin" rules queues from the web admin,
+   "hunter" is the closed Job Hunter beta. The owner types an address once
+   to grant it; the file keeps a hash and a handle, never the address, and
+   the board never shows one. Owner-only: the desk admin is the owner by
+   construction, and the web admin must draw this tab for the owner alone. */
+const USER_ROLES = [['admin', 'Web admin'], ['hunter', 'Job Hunter beta']];
+function usersForm() {
+  const f = el('div', 'item');
+  f.appendChild(el('h3', null, 'Give someone access'));
+  f.appendChild(el('div', 'kv', 'Their email is hashed on the way in and never stored. '
+    + 'The handle is what the journal and the board will call them.'));
+  const row = el('div', 'row');
+  const email = el('input', 'in'); email.placeholder = 'email'; email.type = 'email'; email.style.flex = '1';
+  const handle = el('input', 'in'); handle.placeholder = 'handle (jane)'; handle.style.width = '10em';
+  const label = el('input', 'in'); label.placeholder = 'label, e.g. beta tester'; label.style.flex = '1';
+  row.append(email, handle, label);
+  const roles = el('div', 'row');
+  const boxes = USER_ROLES.map(([r, name]) => {
+    const l = el('label'); l.style.marginRight = '14px';
+    const cb = el('input'); cb.type = 'checkbox'; cb.value = r; cb.style.marginRight = '4px';
+    l.append(cb, name); roles.appendChild(l); return cb;
+  });
+  const go = el('button', 'btn primary', 'Grant');
+  const msg = el('div', 'kv'); msg.style.cssText = 'flex-basis:100%;margin-top:4px';
+  go.onclick = async () => {
+    go.disabled = true;
+    const r = await api('/api/user-grant', {email: email.value.trim(), handle: handle.value.trim(),
+      label: label.value.trim(), roles: boxes.filter(b => b.checked).map(b => b.value)});
+    go.disabled = false;
+    if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
+    msg.textContent = ''; toast(r.message); email.value = handle.value = label.value = '';
+    boxes.forEach(b => b.checked = false);
+    show('users');
+  };
+  roles.append(go, msg);
+  f.append(row, roles);
+  return f;
+}
+RENDER.users = u => {
+  const n = el('div', 'item');
+  n.appendChild(el('h3', null, u.handle + (u.owner ? ' · owner' : '')));
+  const bits = [u.label, u.revoked_on ? 'revoked ' + u.revoked_on
+    : (u.granted_on ? 'granted ' + u.granted_on + (u.granted_by ? ' by ' + u.granted_by : '') : '')];
+  n.appendChild(el('div', 'kv', bits.filter(Boolean).join(' · ')));
+  const roles = el('div', 'row');
+  if (u.owner) {
+    roles.appendChild(el('span', 'kv', 'every role; not editable from a board'));
+  } else if (u.revoked_on) {
+    roles.appendChild(el('span', 'kv', 'no access'));
+  } else {
+    USER_ROLES.forEach(([r, name]) => {
+      const on = (u.roles || []).includes(r);
+      const b = el('button', 'btn' + (on ? ' primary' : ''), name + (on ? ' ✓' : ''));
+      b.title = on ? 'click to remove this role' : 'click to grant this role';
+      b.onclick = async () => {
+        const next = on ? (u.roles || []).filter(x => x !== r) : [...(u.roles || []), r];
+        const res = next.length
+          ? await api('/api/user-grant', {handle: u.handle, roles: next})
+          : await api('/api/user-revoke', {handle: u.handle, why: 'last role removed'});
+        if (res.error) { toast(res.error); return; }
+        toast(res.message); show('users');
+      };
+      roles.appendChild(b);
+    });
+    const rv = el('button', 'btn', 'Revoke');
+    rv.onclick = async () => {
+      const res = await api('/api/user-revoke', {handle: u.handle, why: 'revoked from the board'});
+      if (res.error) { toast(res.error); return; }
+      toast(res.message); show('users');
+    };
+    roles.appendChild(rv);
+  }
+  n.appendChild(roles);
+  return n;
+};
+
+/* WRITE-UPS TO CHECK: the gate review as a tab. Refused write-ups with the
+   rule that refused them, and medium/low/unsure ones, each sentence beside
+   the verbatim words on the page it came from. The sentence is what would go
+   on the public page; the italic line is what the site actually says. If the
+   sentence says more than the quote does, that is the thing to catch.
+   Accepting lands ONE write-up through promote_profiles.land, the same
+   function that lands a category; a refused one cannot be accepted here or
+   anywhere, only dismissed. */
+const shortUrl = u => String(u || '').replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '') || '/';
+RENDER.profiles = p => {
+  const n = el('div', 'item');
+  n.appendChild(withLogo(el('h3', null, p.name || p.id), p));
+  n.appendChild(el('div', 'kv',
+    [[p.sector, p.category].filter(Boolean).join(' / '), p.website ? shortUrl(p.website) : '',
+     p.confidence + ' confidence', 'by ' + (p.by || 'agent'),
+     p.at ? String(p.at).slice(0, 10) : ''].filter(Boolean).join(' · ')));
+  if (p.status === 'refused') {
+    const w = el('div', 'kv');
+    w.appendChild(el('b', 'bad', 'Refused by the door. '));
+    w.appendChild(document.createTextNode(p.refused_why || ''));
+    n.appendChild(w);
+  } else if (p.why) {
+    const w = el('div', 'kv');
+    w.appendChild(el('b', null, "Writer's note. "));
+    w.appendChild(document.createTextNode(p.why));
+    n.appendChild(w);
+  }
+  const e = el('div', 'evi');
+  (p.paragraphs || []).forEach((para, i) => {
+    const block = el('div');
+    block.style.cssText = 'margin:6px 0 10px;padding-left:10px;border-left:2px solid var(--line)';
+    (Array.isArray(para) ? para : []).forEach(s => {
+      const row = el('div'); row.style.marginBottom = '6px';
+      const txt = el('div', null, s.text || '');
+      // the refused token, if the door named one, is shown in the sentence
+      if (p.status === 'refused') {
+        const m = /'([^']+)'/.exec(p.refused_why || '');
+        if (m && (s.text || '').includes(m[1])) {
+          txt.textContent = '';
+          const [a, b] = (s.text || '').split(m[1]);
+          txt.append(a, Object.assign(el('mark', null, m[1]), {}), b === undefined ? '' : b);
+        }
+      }
+      row.appendChild(txt);
+      const q = el('div', 'kv');
+      q.style.fontStyle = 'italic';
+      q.textContent = '“' + (s.quote || '') + '” ';
+      const a = el('a'); a.href = s.url || '#'; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      a.textContent = shortUrl(s.url); a.style.fontStyle = 'normal';
+      q.appendChild(a);
+      row.appendChild(q);
+      block.appendChild(row);
+    });
+    e.appendChild(block);
+  });
+  if (p.quote && p.quote.text) {
+    const bq = el('div', 'kv');
+    bq.style.cssText = 'font-style:italic;padding-left:10px;border-left:3px solid var(--acc, #F5A623)';
+    bq.textContent = 'Pull quote: “' + p.quote.text + '”';
+    e.appendChild(bq);
+  }
+  if (p.pages && p.pages.length)
+    e.appendChild(el('div', 'kv', 'Read from ' + p.pages.length + ' page' + (p.pages.length === 1 ? '' : 's')
+      + ': ' + p.pages.map(shortUrl).join(', ')));
+  n.appendChild(e);
+
+  const row = el('div', 'row');
+  if (p.website) {
+    const open = el('a', 'btn'); open.textContent = 'Open their site';
+    open.href = p.website; open.target = '_blank'; open.rel = 'noopener noreferrer';
+    row.appendChild(open);
+  }
+  const why = el('input', 'in');
+  why.placeholder = 'why (recorded either way)'; why.style.flex = '1';
+  const msg = el('div', 'kv'); msg.style.cssText = 'flex-basis:100%;margin-top:4px';
+  if (p.status === 'refused') {
+    const dis = el('button', 'btn', 'Dismiss');
+    dis.onclick = async () => {
+      dis.disabled = true;
+      const r = await api('/api/dismiss', {queue: 'profiles', key: p.key, why: why.value.trim() || 'read'});
+      if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; dis.disabled = false; return; }
+      toast('dismissed; the door\'s refusal stands'); n.remove();
+    };
+    row.append(why, dis, msg);
+  } else {
+    const yes = el('button', 'btn primary', 'Put it on the page');
+    const no = el('button', 'btn', 'Reject');
+    const send = async (accept) => {
+      yes.disabled = no.disabled = true;
+      const r = await api('/api/proposal-ruling', {key: p.key, accept, why: why.value.trim()});
+      yes.disabled = no.disabled = false;
+      if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
+      toast(r.message); n.remove();
+    };
+    yes.onclick = () => send(true);
+    no.onclick = () => send(false);
+    row.append(why, yes, no, msg);
+  }
   n.appendChild(row);
   return n;
 };

@@ -8,6 +8,20 @@
    "by": "owner",
    "context": "Owner asked for this one directly. Flagging what the site says rather than deciding it: civira.com calls itself a 'Digital Solutions Partner' and a 'Digital Studio' - 'we help you figure out the technical stuff'. It never mentions government, cities, schools or the public sector anywhere on the homepage, and there is no careers link. That is the Vendor scope question, so it is the owner's call, not a regex's and not mine.",
    "status": "pending"
+  },
+  {
+   "id": "company-2-2026-09-03",
+   "kind": "company",
+   "on": "2026-09-03",
+   "status": "approved",
+   "url": "https://plowops.com/",
+   "name": "",
+   "title": "",
+   "company_id": "plowops",
+   "location": "",
+   "note": "snow plow removal technology; not on the board. Submitted by the owner via the site form, which answered not_configured (no GITHUB_SUBMIT_TOKEN on Pages)",
+   "submitted_by": "",
+   "resolved_on": "2026-09-03"
   }
  ]
 }

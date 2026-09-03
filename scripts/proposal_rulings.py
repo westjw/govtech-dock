@@ -55,8 +55,14 @@ import agents                                                   # noqa: E402
 # ruling on how 2,000 write-ups reach public pages; ruling one here would walk
 # past the gate. `news` is a parser with no proposals at all. `claim` and
 # `card` are genuinely unbuilt.
-ELSEWHERE = {"profile": "ruled in batches: promote_profiles.py --gate <category>"}
-NO_APPLIER = ("profile", "news", "claim", "card")
+# A PROFILE HAS TWO DOORS AND ONE APPLIER. A category lands in one batch
+# through promote_profiles.py --land after --gate has printed its exceptions;
+# a single write-up lands here, from the admin's Write-ups tab, where the
+# person ruling it has that write-up open sentence by sentence - which is
+# the gate review for one row. Both paths call promote_profiles.land, so the
+# written shape, the journal entry and the author are identical.
+ELSEWHERE = {"profile": "one at a time here, or a category at a time: promote_profiles.py --gate <category>"}
+NO_APPLIER = ("news", "claim", "card")
 
 
 def _stamp(p: dict, status: str, by: str, why: str) -> None:
@@ -133,6 +139,25 @@ def _accept_bucket(p: dict, by: str, why: str, force: bool) -> dict:
                             "description": saw.get("description"), "by": by})
 
 
+def _accept_profile(p: dict, by: str, why: str, force: bool, store: dict,
+                    key: str) -> dict:
+    """Land ONE write-up onto its company through promote_profiles.land, the
+    same function that lands a category, so a single ruling and a batch
+    write the same record with the same provenance. land() refuses anything
+    not pending, which is what keeps a door-refused write-up off the page
+    even from here: the door's word stands, a person can only dismiss it."""
+    import promote_profiles
+    if not promote_profiles._has_text(p):
+        return {"error": "nothing to land: this write-up carries no paragraphs. "
+                         "An unsure answer is a valid answer and stays pending"}
+    companies = admin.read_companies()
+    n = promote_profiles.land(store, companies, [key], by,
+                              why or f"landed {p.get('id')} from the write-ups tab")
+    if not n:
+        return {"error": "the write-up could not be landed; see the journal"}
+    return {"ok": True, "message": f"write-up on the page for {p.get('name') or p.get('id')}"}
+
+
 def _accept_rival(p: dict, by: str, why: str, force: bool, store: dict) -> dict:
     import promote_rivals
     n = promote_rivals.write_accepted(store, [p["id"]], by, why)
@@ -177,13 +202,16 @@ def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
         res = _accept_bucket(p, by, why, force)
     elif kind == "rival":
         res = _accept_rival(p, by, why, force, store)
+    elif kind == "profile":
+        res = _accept_profile(p, by, why, force, store, key)
     else:
         return {"error": f"unknown proposal kind {kind!r}"}
     if res.get("error"):
         return res
-    # promote_rivals stamps and saves its own rows; every other kind is
-    # stamped here, and the store is written through the journal either way
-    if kind != "rival":
+    # promote_rivals and promote_profiles stamp and save their own rows;
+    # every other kind is stamped here, and the store is written through
+    # the journal either way
+    if kind not in ("rival", "profile"):
         _stamp(p, "accepted", by, why)
     bad = _save_store(store, "proposal-accept", why, by)
     if bad:

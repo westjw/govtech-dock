@@ -623,6 +623,261 @@ def check_every_queue_has_a_renderer() -> int:
     return errors
 
 
+def check_companies_sub_sector_filter_follows_the_sector() -> int:
+    """The Companies tab's sub-sector list is the categories under the chosen
+    sector, and a sub-sector that stops belonging when the sector changes is
+    dropped, never left filtering a list to nothing. Driven under node with
+    the real functions sliced from index.html, so the list the dropdown shows
+    is the list this asserts on."""
+    import re, subprocess, json as _json
+    src = (ROOT / "index.html").read_text()
+    pieces = []
+    for name in ("inSector", "inCategory"):
+        m = re.search(rf"^const {name}=.*$", src, re.M)
+        if not m:
+            return fail(f"index.html no longer defines {name}")
+        pieces.append(m.group(0))
+    for name in ("coCatOptions", "coCatOk"):
+        i = src.find(f"function {name}(")
+        if i < 0:
+            return fail(f"index.html no longer defines {name}; the sub-sector "
+                        f"filter on the Companies tab is gone")
+        j = src.find("\n}\n", i) if "\n" in src[i:i + 400] and not src[i:i + 400].startswith(
+            f"function {name}(o,cat){{return") else src.find("}\n", i)
+        pieces.append(src[i:j + 2] if j > i else src[i:src.find("\n", i) + 1])
+    orgs = [{"id": "a", "category": "Police", "sector": "Public Safety"},
+            {"id": "b", "category": "Fire & EMS", "sector": "Public Safety"},
+            {"id": "c", "category": "Permitting", "sector": "General Gov"},
+            {"id": "d", "category": "Police", "sector": "General Gov",
+             "also": [{"sector": "Public Safety", "category": "Police"}]},
+            {"id": "e", "category": None, "sector": "General Gov"}]
+    js = "\n".join(pieces) + f"""
+const orgs = {_json.dumps(orgs)};
+console.log(JSON.stringify({{
+  all: coCatOptions(orgs, ""),
+  ps: coCatOptions(orgs, "Public Safety"),
+  gg: coCatOptions(orgs, "General Gov"),
+  none: coCatOptions(orgs, "Nowhere"),
+  okAny: orgs.filter(o => coCatOk(o, "")).length,
+  okPolice: orgs.filter(o => coCatOk(o, "Police")).map(o => o.id),
+}}));"""
+    r = subprocess.run(["node", "-e", js], capture_output=True, text=True, timeout=60)
+    if r.returncode:
+        return fail(f"the sub-sector functions did not run under node: {r.stderr[:300]}")
+    got = _json.loads(r.stdout.strip().splitlines()[-1])
+    errors = 0
+    if got["all"] != ["Fire & EMS", "Permitting", "Police"]:
+        errors += fail(f"with no sector chosen every category should be offered, "
+                       f"sorted, and a company with no category skipped: {got['all']}")
+    if got["ps"] != ["Fire & EMS", "Police"]:
+        errors += fail(f"under Public Safety the list should be its categories, "
+                       f"including one filed there through `also`: {got['ps']}")
+    if got["gg"] != ["Permitting", "Police"]:
+        errors += fail(f"under General Gov: {got['gg']}")
+    if got["none"] != []:
+        errors += fail(f"a sector with nothing under it offers nothing: {got['none']}")
+    if got["okAny"] != 5 or got["okPolice"] != ["a", "d"]:
+        errors += fail(f"the predicate: no sub-sector keeps everyone, a sub-sector "
+                       f"keeps its companies: {got['okAny']}, {got['okPolice']}")
+    # the control is wired: the dropdown exists, listens, and the predicate is
+    # applied in the same filter that applies the sector
+    for needle, why in ((' id="c-cat"', "the sub-sector dropdown is gone"),
+                        ('"c-cat"', "drawCos no longer listens to the sub-sector"),
+                        ("if(!coCatOk(o,ct))return false;", "the filter no longer applies the sub-sector"),
+                        ('addEventListener("input",syncCoCats)', "the list no longer follows the sector")):
+        if needle not in src:
+            errors += fail(why)
+    return errors
+
+
+def check_login_endpoint_names_a_handle_never_an_address() -> int:
+    """functions/admin/api/whoami.js is the login: Access puts a verified
+    address on the request, this answers with the handle and roles the
+    owner's Users board granted. Driven under node with a fake request and
+    a fake asset store: no header is signed out; a hash on file is a handle
+    with roles; a revoked hash is signed in with none; the address is never
+    in the answer. And login.js sends people only to a path on this site."""
+    import subprocess, json as _json, hashlib
+    who = (ROOT / "functions" / "admin" / "api" / "whoami.js").read_text()
+    login = (ROOT / "functions" / "admin" / "api" / "login.js").read_text()
+    key = hashlib.sha256(b"jane.doe@example.org").hexdigest()
+    gone = hashlib.sha256(b"old@example.org").hexdigest()
+    users = {"jane": {"email_sha256": key, "roles": ["hunter"], "revoked_on": None},
+             "old": {"email_sha256": gone, "roles": ["admin"], "revoked_on": "2026-09-01"}}
+    js = who.replace("export async function onRequestGet", "async function onRequestGet") + "\n" \
+        + login.replace("export async function onRequestGet", "async function onLogin") + f"""
+const USERS = {_json.dumps(users)};
+const env = {{ ASSETS: {{ fetch: async () => new Response(JSON.stringify(USERS), {{status: 200}}) }} }};
+const req = (email) => new Request("https://sledjobs.com/admin/api/whoami",
+  {{ headers: email ? {{ "Cf-Access-Authenticated-User-Email": email }} : {{}} }});
+(async () => {{
+  const out = {{}};
+  out.none = await (await onRequestGet({{ request: req(null), env }})).json();
+  out.jane = await (await onRequestGet({{ request: req(" Jane.Doe@Example.org "), env }})).json();
+  out.old = await (await onRequestGet({{ request: req("old@example.org"), env }})).json();
+  out.stranger = await (await onRequestGet({{ request: req("who@example.org"), env }})).json();
+  out.janeRaw = JSON.stringify(out.jane);
+  const loc = async (to) => (await onLogin({{ request: new Request("https://sledjobs.com/admin/api/login?to=" + encodeURIComponent(to)) }})).headers.get("location");
+  out.home = await loc("/");
+  out.co = await loc("/?co=brinc");
+  out.evil = await loc("https://evil.example/");
+  out.prot = await loc("//evil.example/");
+  console.log(JSON.stringify(out));
+}})();"""
+    r = subprocess.run(["node", "-e", js], capture_output=True, text=True, timeout=60)
+    if r.returncode:
+        return fail(f"whoami.js did not run under node: {r.stderr[:400]}")
+    got = _json.loads(r.stdout.strip().splitlines()[-1])
+    errors = 0
+    if got["none"] != {"signed_in": False}:
+        errors += fail(f"no Access header must be signed out, nothing more: {got['none']}")
+    if got["jane"] != {"signed_in": True, "handle": "jane", "roles": ["hunter"]}:
+        errors += fail(f"a signed-in address on file must answer handle and roles, "
+                       f"matched after trimming and lower-casing: {got['jane']}")
+    if got["old"] != {"signed_in": True, "handle": None, "roles": []}:
+        errors += fail(f"a revoked person is signed in with no handle and no roles: {got['old']}")
+    if got["stranger"] != {"signed_in": True, "handle": None, "roles": []}:
+        errors += fail(f"an address the owner never granted gets no roles: {got['stranger']}")
+    if "@" in got["janeRaw"] or "example.org" in got["janeRaw"]:
+        errors += fail("the login answer carries the address; the page needs a handle, not a person")
+    if got["home"] != "/" or got["co"] != "/?co=brinc":
+        errors += fail(f"login.js must send people back to the path they asked for: {got}")
+    if got["evil"] != "/" or got["prot"] != "/":
+        errors += fail(f"login.js is an open redirect: {got['evil']!r} {got['prot']!r}")
+    # the pieces are wired: the site offers the link, the build ships the file
+    # CODE LINES, NOT PROSE. The first version looked for the path anywhere
+    # in index.html and a comment mentioning it satisfied the check while
+    # the fetch was gone.
+    site = (ROOT / "index.html").read_text()
+    if 'href="/admin/api/login?to=/"' not in site:
+        errors += fail("index.html no longer offers the log-in link")
+    if 'fetch("/admin/api/whoami",{credentials:"include",redirect:"manual"})' not in site:
+        errors += fail("index.html no longer asks /admin/api/whoami with the browser's "
+                       "cookies and a manual redirect; signed-in people would never see it")
+    build = (ROOT / "scripts" / "build_site.py").read_text()
+    if '"users.json"' not in build or "hunter" not in build:
+        errors += fail("build_site no longer ships users.json and the beta page under /admin")
+    return errors
+
+
+def check_users_board_never_stores_an_address() -> int:
+    """The owner grants access by typing an email once; the file keeps a
+    hash and a handle. Executed in a sandbox through the real actions: no
+    address ever reaches users.json, the login lookup finds a person by
+    hash and not after revocation, the owner cannot be granted or revoked
+    from a board, and one address cannot hide under two handles."""
+    import json as _json
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+    files = {"companies.json": [], "users.json": {
+        "wyeth": {"email_sha256": admin.email_key("Owner@Example.com"),
+                  "roles": ["owner", "admin", "hunter"], "label": "owner",
+                  "granted_on": "2026-09-03", "granted_by": "owner"}}}
+    errors = 0
+    with _sandbox_admin(files) as tmp:
+        r = admin.act_user_grant({"email": " Jane.Doe@Example.org ", "handle": "jane",
+                                  "roles": ["hunter"], "label": "beta tester", "by": "owner"})
+        if r.get("error"):
+            errors += fail(f"a plain grant was refused: {r}")
+        raw = (tmp / "users.json").read_text()
+        if "@" in raw or "jane.doe" in raw.lower() or "example.org" in raw.lower():
+            errors += fail("users.json carries an email address or part of one. "
+                           "The repo is about to go public and an address is a person")
+        if admin.email_key("jane.doe@example.org") not in raw:
+            errors += fail("the grant did not store the hash of the lower-cased, "
+                           "trimmed address, so the login endpoint cannot recognise her")
+        who = admin.who_is("JANE.DOE@example.org")
+        if not who or who.get("handle") != "jane" or who.get("roles") != ["hunter"]:
+            errors += fail(f"who_is did not find jane by a differently-cased address: {who}")
+        # roles a board may not grant
+        r = admin.act_user_grant({"email": "x@example.org", "handle": "mallory",
+                                  "roles": ["owner"], "by": "owner"})
+        if not r.get("error") or "owner" not in r["error"]:
+            errors += fail(f"granting the owner role from the board was not refused: {r}")
+        r = admin.act_user_grant({"handle": "wyeth", "roles": ["hunter"], "by": "owner"})
+        if not r.get("error"):
+            errors += fail("the owner's roles were edited from the board")
+        # one address, one handle
+        r = admin.act_user_grant({"email": "jane.doe@example.org", "handle": "jane2",
+                                  "roles": ["admin"], "by": "owner"})
+        if not r.get("error") or "jane" not in r["error"]:
+            errors += fail(f"the same address was granted under a second handle: {r}")
+        # re-grant by handle keeps the hash, changes the roles
+        r = admin.act_user_grant({"handle": "jane", "roles": ["admin", "hunter"], "by": "owner"})
+        if r.get("error") or admin.who_is("jane.doe@example.org")["roles"] != ["admin", "hunter"]:
+            errors += fail(f"re-granting by handle failed or lost the hash: {r}")
+        # revoke: the row stays, access ends
+        r = admin.act_user_revoke({"handle": "jane", "by": "owner"})
+        u = _json.loads((tmp / "users.json").read_text())
+        if r.get("error") or "jane" not in u or u["jane"].get("roles") or not u["jane"].get("revoked_on"):
+            errors += fail(f"revoke did not empty the roles and keep the row: {r} {u.get('jane')}")
+        if admin.who_is("jane.doe@example.org") is not None:
+            errors += fail("a revoked person is still recognised by the login lookup")
+        r = admin.act_user_revoke({"handle": "wyeth", "by": "owner"})
+        if not r.get("error"):
+            errors += fail("the owner was revoked from the board")
+        if "users" not in admin.QUEUES or "users" not in admin.LABEL:
+            errors += fail("the Users board is not a tab")
+        # every write went through the journal with an author
+        log = (tmp / "admin_journal.jsonl").read_text() if (tmp / "admin_journal.jsonl").exists() else ""
+        if log.count('"user-grant"') < 2 or '"user-revoke"' not in log:
+            errors += fail("user grants and revokes are not journalled by action")
+    return errors
+
+
+def check_write_ups_queue_shows_only_exceptions() -> int:
+    """The Write-ups tab is the gate review as a queue: door-refused rows and
+    medium/low/unsure ones, nothing else. High-confidence write-ups that
+    passed the door land a category at a time and never appear here - 2,000
+    of them read one by one is the load the owner ruled out. A dismissed
+    refusal stays dismissed. And the Agent-proposals queue no longer carries
+    profile rows at all: 104 of them buried 27 reads for a morning."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+    companies = [{"id": i, "name": i.title(), "sector": "Public Safety", "category": "Police",
+                  "description": "x", "website": f"https://{i}.example"}
+                 for i in ("ref", "med", "hi", "uns", "dis", "rd")]
+    def prof(i, status, conf, **kw):
+        return dict({"kind": "profile", "id": i, "key": f"profile:{i}", "status": status,
+                     "confidence": conf, "paragraphs": [[{"text": "t", "url": "u", "quote": "q"}]],
+                     "saw": {"pages": [{"url": f"https://{i}.example"}]}}, **kw)
+    store = {"profile:ref": prof("ref", "refused", "high", refused_why="5. 'Dallas' is not on any of their pages."),
+             "profile:med": prof("med", "pending", "medium"),
+             "profile:hi": prof("hi", "pending", "high"),
+             "profile:uns": prof("uns", "pending", "unsure"),
+             "profile:dis": prof("dis", "pending", "low"),
+             "read:rd": {"kind": "read", "id": "rd", "status": "pending", "confidence": "high",
+                         "evidence": "https://rd.example/jobs", "postings": [], "none_found": True}}
+    files = {"companies.json": companies, "agent_proposals.json": store,
+             "board.json": {"organizations": [], "postings": []},
+             "admin_dismissed.json": {"profiles": {"profile:dis": {"why": "read"}}},
+             "manual.json": {"checks": {}, "postings": []}}
+    errors = 0
+    with _sandbox_admin(files):
+        rows = admin.q_profiles(companies, {})
+        keys = [r["key"] for r in rows]
+        if keys != ["profile:ref", "profile:uns", "profile:med"]:
+            errors += fail(f"the write-ups queue should show the refused row first, "
+                           f"then unsure, then medium, and nothing else; got {keys}")
+        ref = rows[0]
+        if ref.get("status") != "refused" or "Dallas" not in (ref.get("refused_why") or "") \
+                or not ref.get("paragraphs"):
+            errors += fail(f"a refused row must carry the rule that refused it and "
+                           f"its sentences, so a person can judge the door: {ref}")
+        if any(r["key"] == "profile:hi" for r in rows):
+            errors += fail("a high-confidence write-up that passed the door is in the "
+                           "one-by-one queue; that is the 2,000-row load the owner "
+                           "ruled out")
+        if any(r["key"] == "profile:dis" for r in rows):
+            errors += fail("a dismissed write-up came back")
+        pk = [r.get("key") or r.get("id") for r in admin.q_proposals(companies, {})]
+        if any(str(k).startswith("profile:") for k in pk):
+            errors += fail(f"the Agent-proposals queue still carries profile rows: {pk}")
+        if not any(str(k) == "read:rd" or k == "rd" for k in pk):
+            errors += fail(f"the Agent-proposals queue lost its read rows: {pk}")
+    return errors
+
+
 def check_proposal_rulings_cover_every_kind() -> int:
     """Every kind in agents.KINDS either lands through the one door or refuses
     by name - and never raises inside a request handler.
@@ -651,6 +906,20 @@ def check_proposal_rulings_cover_every_kind() -> int:
                               "postings": [] , "none_found": True,
                               "rivals": [], "sector": "Public Safety", "category": "Police"}
     store["read:acme"]["evidence"] = "https://other.example/jobs"   # off-domain
+    # A PROFILE LANDS ONE AT A TIME through the same function that lands a
+    # category. The fixture carries text and provenance so accepting it is a
+    # real landing, checked below on the sandbox's companies.json.
+    store["profile:acme"]["paragraphs"] = [[
+        {"text": "Acme builds dispatch software for police departments.",
+         "url": "https://acme.example", "quote": "dispatch software for police departments"},
+        {"text": "The system runs in the cloud.", "url": "https://acme.example",
+         "quote": "runs in the cloud"}]]
+    store["profile:acme"]["saw"] = {"pages": [{"url": "https://acme.example", "sha": "ab12",
+                                               "fetched_on": "2026-09-01"}]}
+    # AN UNSURE ANSWER HAS NOTHING TO LAND: same company, no paragraphs
+    store["profile:acme-unsure"] = {"kind": "profile", "id": "acme", "name": "Acme",
+                                    "status": "pending", "confidence": "unsure",
+                                    "why": "site is a login page"}
     # A KIND NOBODY DECLARED. The dispatcher must refuse it in words, not
     # raise: a request handler that raises is a tab that crashes, which is
     # the exact defect this queue had.
@@ -724,18 +993,57 @@ def check_proposal_rulings_cover_every_kind() -> int:
                             or st2["read:acme"].get("ruled_by") != "owner":
                         errors += fail("an accepted read was not stamped with "
                                        "status and author in the store")
-            # 2b. A KIND WITH AN APPLIER ELSEWHERE MUST NAME IT. Emptying
-            # ELSEWHERE makes the refusal read "no applier for a profile
-            # proposal yet", which is now false - promote_profiles lands them
-            # a category at a time - and a person reading that would go
-            # looking for something to build. The generic branch above cannot
-            # catch this, because "no applier" is a substring of both.
-            r = proposal_rulings.rule(agents.load(), "profile:acme", True,
+            # 2b. A PROFILE LANDS, ONE AT A TIME, THROUGH promote_profiles.land.
+            # The loop above accepted profile:acme as owner; the sandbox's
+            # companies.json must now carry the write-up with its provenance,
+            # and the store row must be stamped. This is the write-ups tab's
+            # accept button, so a regression here is a button that says
+            # "on the page" over a page that did not change.
+            cos = _json.loads((tmp / "companies.json").read_text())
+            acme = next(c for c in (cos if isinstance(cos, list) else cos.values())
+                        if c["id"] == "acme")
+            prof = acme.get("profile") or {}
+            if prof.get("paragraphs") != ["Acme builds dispatch software for police "
+                                          "departments. The system runs in the cloud."]:
+                errors += fail(f"accepting a profile proposal did not land its "
+                               f"paragraphs on companies.json: {prof}")
+            if not prof.get("provenance") or prof.get("ruled_by") != "owner" \
+                    or not prof.get("sources"):
+                errors += fail(f"a landed profile lost its provenance, sources or "
+                               f"author: {prof}")
+            stp = agents.load()["profile:acme"]
+            if stp.get("status") != "accepted" or stp.get("ruled_by") != "owner":
+                errors += fail(f"a landed profile was not stamped in the store: {stp}")
+            r = proposal_rulings.rule(agents.load(), "profile:acme", True, why="x", by="owner")
+            if not r.get("error") or "already ruled" not in r["error"]:
+                errors += fail(f"a landed profile could be landed twice: {r}")
+            # AN UNSURE ANSWER HAS NOTHING TO LAND, and says so rather than
+            # writing an empty profile the page would introduce as "written
+            # from their site".
+            r = proposal_rulings.rule(agents.load(), "profile:acme-unsure", True,
                                       why="x", by="owner")
-            if "promote_profiles" not in (r.get("error") or ""):
-                errors += fail(f"a profile proposal was refused without naming "
-                               f"promote_profiles, which is where it IS ruled: "
-                               f"{r}. 'No applier yet' is false for this kind")
+            if not r.get("error") or "no paragraphs" not in r["error"]:
+                errors += fail(f"an unsure write-up with no paragraphs was not "
+                               f"refused by name: {r}")
+            cos = _json.loads((tmp / "companies.json").read_text())
+            acme = next(c for c in (cos if isinstance(cos, list) else cos.values())
+                        if c["id"] == "acme")
+            if not (acme.get("profile") or {}).get("paragraphs"):
+                errors += fail("accepting the unsure write-up erased the landed one")
+            # AND THE BATCH PATH: --land over a category with an unsure row in
+            # it must skip that row, not overwrite the company's write-up
+            # with an empty one. Mutating land() to drop the text check
+            # walked past the single-row assertion above.
+            import promote_profiles
+            n = promote_profiles.land(agents.load(), _json.loads((tmp / "companies.json").read_text()),
+                                      ["profile:acme-unsure"], "owner", "batch fixture")
+            cos = _json.loads((tmp / "companies.json").read_text())
+            acme = next(c for c in (cos if isinstance(cos, list) else cos.values())
+                        if c["id"] == "acme")
+            if n != 0 or (acme.get("profile") or {}).get("paragraphs") != [
+                    "Acme builds dispatch software for police departments. The system runs in the cloud."]:
+                errors += fail(f"a batch landing wrote an unsure answer over a real "
+                               f"write-up: landed {n}, profile now {acme.get('profile')}")
 
             # 3. a reject stamps and keeps the row
             r = proposal_rulings.rule(agents.load(), "board:acme", False,
@@ -11747,6 +12055,10 @@ def main() -> int:
     errors += check_rival_door_refuses_a_category()
     errors += check_every_queue_has_a_renderer()
     errors += check_proposal_rulings_cover_every_kind()
+    errors += check_write_ups_queue_shows_only_exceptions()
+    errors += check_users_board_never_stores_an_address()
+    errors += check_login_endpoint_names_a_handle_never_an_address()
+    errors += check_companies_sub_sector_filter_follows_the_sector()
     errors += check_deploy_doc_claims_are_dated()
     errors += check_conference_counts_reach_both_events()
     errors += check_news_extractor_refuses_undated()

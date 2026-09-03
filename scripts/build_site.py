@@ -53,6 +53,38 @@ def _public_row(row: dict) -> dict:
     return {k: v for k, v in row.items() if k not in DROP_QUEUE}
 
 
+def _hunter_page(brand: dict) -> str:
+    """The closed-beta holding page under /admin/hunter/. Access signs the
+    person in; whoami says whether the owner granted them the beta."""
+    name = html.escape(brand.get("name") or "SLED JOBS")
+    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Job Hunter beta</title>
+<style>body{{margin:0;font-family:Archivo,"Helvetica Neue",Arial,sans-serif;background:#E8F1F7;color:#1F2536}}
+.band{{background:#1F2536;color:#E8F1F7;padding:12px 20px;font-weight:700}}.band a{{color:inherit;text-decoration:none}}
+main{{max-width:640px;margin:40px auto;padding:0 20px;line-height:1.5}}h1{{font-size:28px;margin:0 0 8px}}
+.kv{{color:#4B5A6B}}.in{{border-left:3px solid #F5A623;padding:10px 14px;background:#FAF7F0;margin:18px 0}}
+a{{color:#0B57C4}}</style></head><body>
+<div class="band"><a href="/">{name}</a> &middot; Job Hunter, closed beta</div>
+<main><h1>Job Hunter</h1><p class="kv" id="who">Checking who you are&hellip;</p><div id="body"></div>
+<p><a href="/">Back to the board</a> &middot; <a href="/admin/">Admin</a></p></main>
+<script>
+(async () => {{
+  const who = document.getElementById("who"), body = document.getElementById("body");
+  let me = {{signed_in: false}};
+  try {{ const r = await fetch("/admin/api/whoami", {{credentials: "include"}}); if (r.ok) me = await r.json(); }} catch (e) {{}}
+  if (!me.signed_in) {{ who.textContent = "You are not signed in."; return; }}
+  const roles = me.roles || [];
+  who.textContent = me.handle ? "Signed in as " + me.handle + "." : "Signed in, but not on the list yet.";
+  if (roles.includes("hunter") || roles.includes("owner")) {{
+    body.innerHTML = '<div class="in"><b>You are in the beta.</b> Job Hunter reads the roles on this board, scores them against what you have told it about yourself, and drafts nothing on its own: every application is yours to send. The tool runs on the desk today; this page is where the browser version will live, and you will hear from the owner when it does.</div>';
+  }} else {{
+    body.innerHTML = '<div class="in">The beta is closed for now. The owner grants access from the Users board; ask and this page will change.</div>';
+  }}
+}})();
+</script></body></html>"""
+
+
 def build_admin_bundle(out: "pathlib.Path") -> None:
     """The web admin: the judgment queues, precomputed at build time.
 
@@ -149,6 +181,24 @@ def build_admin_bundle(out: "pathlib.Path") -> None:
     admin_dir = out / "admin"
     admin_dir.mkdir(parents=True, exist_ok=True)
     (admin_dir / "index.html").write_text((ROOT / "admin-web.html").read_text())
+    # WHO MAY REACH WHAT, for the login endpoint. data/users.json carries
+    # handles, roles and a hash of each address - never an address - and it
+    # is served only behind the Access application like everything else
+    # under /admin. functions/admin/api/whoami.js reads it.
+    users_p = ROOT / "data" / "users.json"
+    users = json.loads(users_p.read_text()) if users_p.exists() else {}
+    for h, u in list(users.items()):
+        if not isinstance(u, dict) or any("@" in str(v) for v in u.values()):
+            raise SystemExit(f"users.json row {h!r} carries an address; refusing to ship it")
+    (admin_dir / "users.json").write_text(json.dumps(users, indent=1))
+    # THE CLOSED JOB HUNTER BETA, behind the same door. A holding page for
+    # now: it says who is signed in and whether the owner has let them in.
+    # The tool itself runs on the desk today; when a browser version exists
+    # this is where it lives, and the Users board already decides who sees it.
+    hunter = admin_dir / "hunter"
+    hunter.mkdir(parents=True, exist_ok=True)
+    brand = json.loads((ROOT / "data" / "brand.json").read_text())
+    (hunter / "index.html").write_text(_hunter_page(brand))
     (admin_dir / "data.json").write_text(json.dumps(payload))
     print(f"  admin bundle: {len(payload['vendors'])} vendors, "
           f"{len(payload['miscategorized'])} wrong-bucket, "

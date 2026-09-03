@@ -30,6 +30,16 @@
         "8701"
       ],
       "port": 8701
+    },
+    {
+      "name": "govtech-dock-admin-check",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "scripts/admin.py",
+        "--port",
+        "8790"
+      ],
+      "port": 8790
     }
   ]
 }

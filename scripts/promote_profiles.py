@@ -144,13 +144,21 @@ def land(store: dict, companies: list, keys: list[str], by: str, why: str) -> in
     seq = companies if isinstance(companies, list) else list(companies.values())
     index = {c["id"]: c for c in seq if c.get("id")}
     today = dt.date.today().isoformat()
-    wrote = 0
+    wrote = skipped = 0
     for start in range(0, len(keys), CHUNK):
         chunk = keys[start:start + CHUNK]
         n = 0
         for k in chunk:
             p = store.get(k)
             if not p or p.get("status") != "pending" or p.get("id") not in index:
+                continue
+            if not _has_text(p):
+                # AN UNSURE ANSWER HAS NOTHING TO LAND. It passed the door
+                # because unsure is a valid answer; landing it would write a
+                # profile with no paragraphs, and the page would say "written
+                # from their site" above nothing. It stays pending and is
+                # counted so the person landing a category sees it.
+                skipped += 1
                 continue
             index[p["id"]]["profile"] = _record(p, by, today)
             index[p["id"]].pop("profile_hidden", None)
@@ -171,7 +179,15 @@ def land(store: dict, companies: list, keys: list[str], by: str, why: str) -> in
             return wrote
         wrote += n
         print(f"  landed {n} (journal entry {start // CHUNK + 1})")
+    if skipped:
+        print(f"  left {skipped} pending: unsure answers with no paragraphs, nothing to land")
     return wrote
+
+
+def _has_text(p: dict) -> bool:
+    return any(isinstance(para, list) and any((s.get("text") or "").strip() for s in para
+                                              if isinstance(s, dict))
+               for para in (p.get("paragraphs") or []))
 
 
 def main() -> int:

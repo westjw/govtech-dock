@@ -108,6 +108,31 @@ one address.
 → policy: Emails ending in your address, or a one-time PIN. Free for up to 50
 users, and real auth rather than a shared password.
 
+## 3b. The "Add a company" form (~3 min, optional but visible)
+**Verified live 2026-09-03: the form answers `not_configured` and shows
+"The form is not wired up on this deployment yet."** The endpoint
+(`functions/api/submit.js`) opens a GitHub issue and needs a token:
+GitHub → Settings → Developer settings → Fine-grained tokens → one
+repository (`westjw/govtech-dock`), permission **Issues: Read and write**
+only. Then Cloudflare Pages → the project → Settings → Variables and
+Secrets → add **encrypted** variable `GITHUB_SUBMIT_TOKEN`. Redeploy is
+not needed for Functions variables. Verify:
+`curl -s -X POST https://sledjobs.com/api/submit -H 'content-type: application/json' -d '{"website":"https://example.com/"}'`
+answers with an issue URL instead of `not_configured`. Until then the form's
+fallback link opens the same issue template by hand, which works.
+
+## 3c. Log in, and who may reach what (nothing to set up)
+Access already covers `/admin` on every hostname (step 2 above), and the
+site's account menu now offers **Log in**, which is `/admin/api/login` -
+Access asks for a code by email, then sends the person back. Who they may
+then reach is the owner's ruling on the desk admin's **Users** tab: `admin`
+(the web admin) and `hunter` (the closed Job Hunter beta at
+`/admin/hunter/`). `data/users.json` carries a handle, roles and a hash of
+the address, never the address; the build refuses to ship a row with an
+`@` in it. Verify: signed out, `curl -s -o /dev/null -w "%{http_code}"
+https://sledjobs.com/admin/api/whoami` is a 302 to Access; signed in, the
+account menu names your handle and shows the doors your roles open.
+
 ## 4. Deploying: already handled, and deliberately only one way
 
 Cloudflare Pages is connected to the repository and builds on every push to
