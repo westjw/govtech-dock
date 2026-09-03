@@ -1145,7 +1145,34 @@ def check_warm_leads_can_be_accepted() -> int:
             ("/api/dismiss", "the row lost its 'not a lead' path")):
         if needle not in body:
             errors += fail(why)
-    # EVERY DROPDOWN OFFERS EVERY PLACE THE MODEL ACCEPTS, and nothing else.
+    # AN ANSWERED QUESTION LEAVES THE QUEUE. Adding a way to say yes without
+    # honouring the yes is worse than having no way to say it: the ruling
+    # looks lost, and the owner ruled AMCS on the morning this shipped and met
+    # it again the same afternoon.
+    import admin as _admin
+    base = {"sector": "Public Works", "category": "Waste & Recycling",
+            "description": "x", "govtech": True, "vendor_type": "product",
+            "ats": {"type": "unknown", "ref": None},
+            "hiring": {"status": "Unknown", "roles": [], "checked": None}}
+    lead = dict(base, id="lead", name="Lead", website="https://lead.example")
+    answered = dict(base, id="answered", name="Answered",
+                    website="https://answered.example",
+                    posts_at={"where": "other", "url": "https://answered.example/jobs",
+                              "on": "2026-09-03", "by": "owner"})
+    board = {"organizations": [{"id": "lead", "scan_lead": True},
+                               {"id": "answered", "scan_lead": True}]}
+    schema = json.loads((ROOT / "data" / "schema.json").read_text())
+    with _sandbox_admin({"companies.json": [lead, answered], "schema.json": schema,
+                         "admin_dismissed.json": {}}):
+        ids = [r["id"] for r in _admin.q_leads([lead, answered], board)]
+        if "answered" in ids:
+            errors += fail("a company whose posts_at is already recorded is still in "
+                           "the warm-leads queue, so the same row comes round again "
+                           "and the ruling looks lost")
+        if "lead" not in ids:
+            errors += fail(f"the queue lost a genuine warm lead: {ids}")
+
+    # every place the row offers must be one posts_at accepts, and nothing else.
     # Hand-syncing two lists failed twice: the no-board queue never offered
     # Wellfound, and NEITHER offered "their own careers page" - the commonest
     # answer there is, so the only honest-looking choice was "somewhere

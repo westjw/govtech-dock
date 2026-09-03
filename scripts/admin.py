@@ -2870,6 +2870,14 @@ def q_leads(companies, board) -> list:
         o = orgs.get(c["id"]) or {}
         if not o.get("scan_lead"):
             continue
+        # AN ANSWERED QUESTION IS NOT A QUEUE ROW. This queue asks "where do
+        # they post?", and posts_at IS that answer - so a company that has one
+        # kept coming back and being ruled again. The owner recorded AMCS on
+        # the morning this accept path shipped and met it again the same
+        # afternoon. Adding a way to say yes without honouring the yes is
+        # worse than having no way to say it: the ruling looks lost.
+        if c.get("posts_at"):
+            continue
         h = c.get("hiring") or {}
         out.append({"id": c["id"], "name": c["name"], "sector": c["sector"],
                     "website": c.get("website"),
