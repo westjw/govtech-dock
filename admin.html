@@ -2945,7 +2945,23 @@ RENDER.placement = c => {
     if (r.error) return toast(r.error, true);
     toast(r.message); n.remove(); refreshCounts();
   };
-  row.append(secSel, catSel, save, dismissBtn('placement', c.id, 'Filed correctly'));
+  /* SOMETIMES BOTH ARE RIGHT, and this queue could only ever say one. Verra
+     Mobility sells school-zone speed cameras, red-light cameras AND bus-lane
+     enforcement: Public Works / Streets is not wrong, and Transit & Parking
+     is not wrong either. Forced to pick, a person either moves it and loses
+     the shelf a reader was browsing, or marks it "filed correctly" and the
+     second shelf never happens. `also` has existed the whole time; the queue
+     that most needs it was the one queue not offering it. */
+  const both = el('button', 'act', 'Also file it there');
+  both.title = 'keep the current shelf and add this one beside it';
+  both.onclick = async () => {
+    const r = await api('/api/also', {id: c.id,
+      sector: secSel.value, category: catSel.value});
+    if (r.error) return toast(r.error, true);
+    toast(r.message); n.remove(); refreshCounts();
+  };
+  row.append(secSel, catSel, save, both,
+             dismissBtn('placement', c.id, 'Filed correctly'));
   n.appendChild(row);
   return n;
 };

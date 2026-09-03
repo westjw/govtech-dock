@@ -1234,6 +1234,44 @@ console.log(JSON.stringify({
     return errors
 
 
+def check_placement_queues_can_say_both() -> int:
+    """A queue that asks "is this on the right shelf?" must be able to answer
+    "both", because sometimes both are right.
+
+    Verra Mobility sells school-zone speed cameras, red-light cameras and
+    bus-lane enforcement. Public Works / Streets is not wrong and Transit &
+    Parking is not wrong either. With only Move it and Filed correctly, a
+    person either moves it and loses the shelf somebody was browsing, or
+    dismisses it and the second shelf never happens - and `also` had existed
+    the whole time. The queue that most needed it was the one not offering it.
+    """
+    import re
+    html = (ROOT / "admin.html").read_text()
+    errors = 0
+    for name, marker in (("wrong placement", "RENDER.placement"),
+                         ("wrong bucket", "RENDER.miscategorized")):
+        i = html.find(marker)
+        if i < 0:
+            note(f"{name}: no renderer on file, skipped")
+            continue
+        body = html[i:html.find("\nRENDER.", i + 10)]
+        if "/api/also" not in body:
+            errors += fail(f"the {name} queue cannot file a company on a second "
+                           f"shelf, so a company that genuinely belongs on two "
+                           f"is either moved off one or dismissed")
+        # THREE ENDPOINTS MOVE A COMPANY and each queue picked one: wrong
+        # bucket calls place, wrong placement patches the two fields. A guard
+        # that knew only two of the three reported a healthy queue as broken.
+        if not any(f"/api/{a}" in body for a in ("patch", "move", "place")):
+            errors += fail(f"the {name} queue lost its move action")
+    # and the action it calls is real
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+    if "also" not in admin.ACTIONS:
+        errors += fail("/api/also is not routed, so the button cannot work")
+    return errors
+
+
 def check_a_company_sits_on_at_most_two_shelves() -> int:
     """A company may hold its primary placement and one more, never a third.
 
@@ -13300,6 +13338,7 @@ def main() -> int:
     errors += check_proposal_rulings_cover_every_kind()
     errors += check_write_ups_queue_shows_only_exceptions()
     errors += check_users_board_never_stores_an_address()
+    errors += check_placement_queues_can_say_both()
     errors += check_a_company_sits_on_at_most_two_shelves()
     errors += check_jibe_is_read_and_verifiable()
     errors += check_merge_repoints_competitor_edges()
