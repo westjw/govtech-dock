@@ -139,6 +139,25 @@ def _accept_bucket(p: dict, by: str, why: str, force: bool) -> dict:
                             "description": saw.get("description"), "by": by})
 
 
+def _retract(p: dict, by: str, why: str) -> str:
+    """Take a rejected write-up off the public file, if it is on it.
+
+    Returns "nothing" when there was nothing published, "pulled" when it
+    came down, and a message starting REFUSED when the journal said no.
+    """
+    companies = admin.read_companies()
+    seq = companies if isinstance(companies, list) else list(companies.values())
+    c = next((x for x in seq if x.get("id") == p.get("id")), None)
+    prof = (c or {}).get("profile")
+    if not isinstance(prof, dict) or not prof.get("paragraphs"):
+        return "nothing"
+    c.pop("profile", None)
+    c.pop("profile_hidden", None)
+    bad = admin.save_companies(companies, "profile-retract",
+                               why=f"rejected: {why}"[:300], by=by)
+    return f"REFUSED by the journal: {bad}" if bad else "pulled"
+
+
 def _accept_profile(p: dict, by: str, why: str, force: bool, store: dict,
                     key: str) -> dict:
     """Land ONE write-up onto its company through promote_profiles.land, the
@@ -174,16 +193,39 @@ def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
     p = store.get(key)
     if not isinstance(p, dict):
         return {"error": f"no proposal on file under {key!r}"}
-    if p.get("status") != "pending":
+    kind = p.get("kind")
+    # A WRITE-UP ON THE PAGE CAN ALWAYS BE TAKEN BACK. Every other ruling is
+    # once-only, and rightly: re-accepting a board or a read twice does work
+    # twice. But a description of a real company that turns out to be wrong
+    # has to come off on sight, and refusing to rule it again is refusing to
+    # correct it. Five landed Police write-ups could not be retracted through
+    # this door for exactly that reason - two of them describing the company
+    # that had bought the one they were filed under.
+    retracting = (kind == "profile" and not accept and p.get("status") == "accepted")
+    if p.get("status") != "pending" and not retracting:
         return {"error": f"{key} was already ruled {p.get('status')} by "
                          f"{p.get('ruled_by')} on {p.get('ruled_on')}"}
-    kind = p.get("kind")
 
     if not accept:
         _stamp(p, "rejected", by, why)
         bad = _save_store(store, "proposal-reject", why, by)
         if bad:
             return {"error": bad}
+        # A REJECTION AFTER THE WRITE-UP HAS LANDED MUST TAKE IT OFF THE PAGE.
+        # Rejecting only stamped the proposal, so five Police write-ups the
+        # second reader threw out stayed on the public pages for 40 minutes -
+        # two of them describing Versaterm under the name of a company it had
+        # bought. The proposal store is not the public file; saying no in one
+        # has to reach the other.
+        # EXPLICIT OUTCOMES, not a truthy string: _retract returned "" on a
+        # successful pull, which is falsy, so the branch reporting the
+        # retraction never ran and the caller was told nothing came down.
+        pulled = _retract(p, by, why) if kind == "profile" else "nothing"
+        if pulled.startswith("REFUSED"):
+            return {"error": pulled}
+        if pulled == "pulled":
+            return {"ok": True, "message": f"rejected {key} AND took the "
+                                           f"published write-up off the page"}
         return {"ok": True, "message": f"rejected {key}; the company stays "
                                        f"proposable, nothing was deleted"}
 

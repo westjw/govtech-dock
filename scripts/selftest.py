@@ -849,6 +849,55 @@ def _run_argv(mod, argv):
         sys.argv = keep
 
 
+def check_merge_repoints_competitor_edges() -> int:
+    """A merge leaves no edge pointing at the record it removed.
+
+    Merging CI Technologies into Versaterm left truleo and
+    benchmark-analytics each listing a competitor id that resolves to
+    nothing - a broken link on a public page, and a shortlist that silently
+    lost an entry. The edge follows the survivor, deduplicates when the
+    survivor was already on that list, and disappears when it would make a
+    company its own competitor.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+    base = {"sector": "Public Safety", "category": "Police", "description": "x",
+            "govtech": True, "vendor_type": "product",
+            "ats": {"type": "unknown", "ref": None},
+            "hiring": {"status": "Unknown", "roles": [], "checked": None}}
+    companies = [
+        dict(base, id="keep", name="Keep", website="https://keep.example"),
+        dict(base, id="drop", name="Drop", website="https://drop.example"),
+        dict(base, id="a", name="A", website="https://a.example",
+             competitors=[{"id": "drop", "why": "same buyer"}]),
+        dict(base, id="b", name="B", website="https://b.example",
+             competitors=[{"id": "keep", "why": "already"}, {"id": "drop", "why": "dupe"}]),
+        dict(base, id="keep2", name="Keep2", website="https://keep2.example"),
+    ]
+    companies[0]["competitors"] = [{"id": "drop", "why": "self after the merge"}]
+    errors = 0
+    # validate() reads the real schema; the sandbox needs its own copy or
+    # every fixture company is "an unknown sector".
+    schema = json.loads((ROOT / "data" / "schema.json").read_text())
+    with _sandbox_admin({"companies.json": companies, "schema.json": schema}) as tmp:
+        r = admin.act_merge({"keep": "keep", "drop": "drop", "why": "fixture", "by": "owner"})
+        if r.get("error"):
+            return fail(f"the merge itself failed: {r}")
+        import json as _json
+        cos = {c["id"]: c for c in _json.loads((tmp / "companies.json").read_text())}
+        ids = lambda cid: [e["id"] for e in (cos[cid].get("competitors") or [])]
+        if "drop" in _json.dumps(cos):
+            errors += fail(f"the merged id survives somewhere: {ids('a')} {ids('b')} {ids('keep')}")
+        if ids("a") != ["keep"]:
+            errors += fail(f"an edge at the dropped record did not follow the survivor: {ids('a')}")
+        if ids("b") != ["keep"]:
+            errors += fail(f"repointing created a duplicate instead of merging into "
+                           f"the existing edge: {ids('b')}")
+        if ids("keep") != []:
+            errors += fail(f"the survivor lists itself as its own competitor: {ids('keep')}")
+    return errors
+
+
 def check_users_board_never_stores_an_address() -> int:
     """The owner grants access by typing an email once; the file keeps a
     hash and a handle. Executed in a sandbox through the real actions: no
@@ -1133,6 +1182,26 @@ def check_proposal_rulings_cover_every_kind() -> int:
                     "Acme builds dispatch software for police departments. The system runs in the cloud."]:
                 errors += fail(f"a batch landing wrote an unsure answer over a real "
                                f"write-up: landed {n}, profile now {acme.get('profile')}")
+
+            # 2c. A REJECTION AFTER LANDING TAKES THE WRITE-UP OFF THE PAGE.
+            # profile:acme was landed above, so rejecting it now must clear
+            # the profile from companies.json - not merely stamp the store.
+            # Five rejected Police write-ups stayed published because
+            # rejecting only ever touched the proposal.
+            r = proposal_rulings.rule(agents.load(), "profile:acme", False,
+                                      why="second reader threw it out", by="owner")
+            if r.get("error"):
+                errors += fail(f"rejecting a landed profile errored: {r}")
+            cos = _json.loads((tmp / "companies.json").read_text())
+            acme = next(c for c in (cos if isinstance(cos, list) else cos.values())
+                        if c["id"] == "acme")
+            if (acme.get("profile") or {}).get("paragraphs"):
+                errors += fail("a rejected write-up is still on the public file. "
+                               "Saying no in the proposal store has to reach the "
+                               "page, or the rejection is a note to nobody")
+            if "took the published write-up off the page" not in (r.get("message") or ""):
+                errors += fail(f"the retraction was not reported to the person "
+                               f"who made it: {r}")
 
             # 3. a reject stamps and keeps the row
             r = proposal_rulings.rule(agents.load(), "board:acme", False,
@@ -12559,6 +12628,7 @@ def main() -> int:
     errors += check_proposal_rulings_cover_every_kind()
     errors += check_write_ups_queue_shows_only_exceptions()
     errors += check_users_board_never_stores_an_address()
+    errors += check_merge_repoints_competitor_edges()
     errors += check_add_company_journals_and_reports_already_tracked()
     errors += check_login_endpoint_names_a_handle_never_an_address()
     errors += check_companies_sub_sector_filter_follows_the_sector()

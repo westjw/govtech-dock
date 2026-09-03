@@ -1953,7 +1953,7 @@
     "why": "Both sell officer-conduct early warning to the same chief: Truleo from bodycam audio, Benchmark First Sign from incident data, competing for one accountability budget line"
    },
    {
-    "id": "ci-technologies",
+    "id": "versaterm",
     "why": "IAPro's internal affairs and early intervention modules solve the same supervision-and-conduct-oversight problem for the same professional standards unit"
    },
    {
@@ -11169,7 +11169,11 @@
    "by": "agent:profile-police-2026-09-03",
    "ruled_by": "agent:review-police-2026-09-03",
    "ruled_on": "2026-09-03"
-  }
+  },
+  "also_known_as": [
+   "Adashi Systems",
+   "CI Technologies"
+  ]
  },
  {
   "id": "niche-technology",
@@ -17249,7 +17253,7 @@
   "researched": true,
   "competitors": [
    {
-    "id": "ci-technologies",
+    "id": "versaterm",
     "why": "IAPro/BlueTeam internal affairs and early intervention for the same chief and IA unit"
    },
    {
@@ -18275,76 +18279,7 @@
    }
   ],
   "competitors_checked_on": "2026-09-02",
-  "competitors_none_found": false,
-  "profile": {
-   "paragraphs": [
-    "Abel Police sells an AI writing suite for police. The site shows an example of a generated report narrative, with edits requested in real time. One suggested change in that example is a grammar and spelling check.",
-    "The suite also includes CJIS-compliant AI chat with a department's policy manual built in. Other features named on the site cover citizen reporting and staff processing. The company raises the idea of every officer speaking 80 languages.",
-    "Abel Police describes full compatibility and zero retraining for rollout across a department's fleet. The company also frames the product as a way to save money and simplify procurement."
-   ],
-   "quote": null,
-   "provenance": [
-    {
-     "p": 0,
-     "s": 0,
-     "url": "https://abelpolice.com",
-     "quote": "The most powerful police AI writing suite on Earth."
-    },
-    {
-     "p": 0,
-     "s": 1,
-     "url": "https://abelpolice.com",
-     "quote": "Request edits to the narrative in real time."
-    },
-    {
-     "p": 0,
-     "s": 2,
-     "url": "https://abelpolice.com",
-     "quote": "Do a grammar and spelling check"
-    },
-    {
-     "p": 1,
-     "s": 0,
-     "url": "https://abelpolice.com",
-     "quote": "CJIS-compliant AI chat with your policy manual built-in."
-    },
-    {
-     "p": 1,
-     "s": 1,
-     "url": "https://abelpolice.com",
-     "quote": "The fastest way for citizens to report and for staff to process."
-    },
-    {
-     "p": 1,
-     "s": 2,
-     "url": "https://abelpolice.com",
-     "quote": "What if every officer spoke 80 languages?"
-    },
-    {
-     "p": 2,
-     "s": 0,
-     "url": "https://abelpolice.com",
-     "quote": "Full compatibility, zero retraining, instant rollout across your fleet."
-    },
-    {
-     "p": 2,
-     "s": 1,
-     "url": "https://abelpolice.com",
-     "quote": "Save money and simplify procurement."
-    }
-   ],
-   "sources": [
-    {
-     "url": "https://abelpolice.com",
-     "sha": "08c09caa10c09779",
-     "fetched_on": "2026-09-02"
-    }
-   ],
-   "written_on": "2026-09-03",
-   "by": "agent:profile-police-2026-09-03",
-   "ruled_by": "owner",
-   "ruled_on": "2026-09-03"
-  }
+  "competitors_none_found": false
  },
  {
   "id": "shark-robotics",
@@ -22959,76 +22894,7 @@
    }
   ],
   "competitors_checked_on": "2026-09-02",
-  "competitors_none_found": false,
-  "profile": {
-   "paragraphs": [
-    "TheSheriffAPP is a product of OCV, LLC. Its product lines are listed as external apps, internal apps, websites, officer wellness and IPAWS. The site says more than 1,000 sheriffs' offices nationwide use it.",
-    "Services listed on the site include native app development, custom feature development, 3rd party integrations and 3rd party feed monitoring. Customers also get a content management system, the OCV Control Panel, social media integrations and app usage analytics. Prospective clients can schedule a demo through the site, and existing clients have a separate login.",
-    "The site carries testimonials from sheriffs including Greg Champagne of St. Charles Parish, Louisiana, Derrick Cunningham of Montgomery County, Alabama, Darren Campbell of Iredell County, North Carolina, and Kandy Fatheree of the Summit County Sheriff's Office, Ohio. It also publishes articles aimed at sheriff's offices, on topics such as back to school as a county event and summer safety."
-   ],
-   "quote": null,
-   "provenance": [
-    {
-     "p": 0,
-     "s": 0,
-     "url": "https://www.thesheriffapp.com",
-     "quote": "COPYRIGHT \u00a9 2026 OCV, LLC & MYOCV.COM"
-    },
-    {
-     "p": 0,
-     "s": 1,
-     "url": "https://www.thesheriffapp.com",
-     "quote": "External Apps | Internal Apps | Websites | Officer Wellness | IPAWS"
-    },
-    {
-     "p": 0,
-     "s": 2,
-     "url": "https://www.thesheriffapp.com",
-     "quote": "TRUSTED BY 1,000+ SHERIFFS' OFFICES NATIONWIDE"
-    },
-    {
-     "p": 1,
-     "s": 0,
-     "url": "https://www.thesheriffapp.com",
-     "quote": "3rd Party Feed Monitoring"
-    },
-    {
-     "p": 1,
-     "s": 1,
-     "url": "https://www.thesheriffapp.com",
-     "quote": "Content Management System"
-    },
-    {
-     "p": 1,
-     "s": 2,
-     "url": "https://www.thesheriffapp.com",
-     "quote": "Client Login Schedule A Demo"
-    },
-    {
-     "p": 2,
-     "s": 0,
-     "url": "https://www.thesheriffapp.com",
-     "quote": "Sheriff Greg Champagne, St. Charles Parish Sheriff, Louisiana"
-    },
-    {
-     "p": 2,
-     "s": 1,
-     "url": "https://www.thesheriffapp.com",
-     "quote": "Back to School Is a County Event"
-    }
-   ],
-   "sources": [
-    {
-     "url": "https://www.thesheriffapp.com",
-     "sha": "83640b03ed69c66c",
-     "fetched_on": "2026-09-02"
-    }
-   ],
-   "written_on": "2026-09-03",
-   "by": "agent:profile-police-2026-09-03",
-   "ruled_by": "owner",
-   "ruled_on": "2026-09-03"
-  }
+  "competitors_none_found": false
  },
  {
   "id": "nexsos",
@@ -26637,76 +26503,7 @@
   "researched": false,
   "competitors": [],
   "competitors_checked_on": "2026-09-02",
-  "competitors_none_found": true,
-  "profile": {
-   "paragraphs": [
-    "CARFAX sells vehicle history products and services that are based only on information supplied to the company. The company states that it does not have the complete history of every vehicle. It positions its search as one tool used alongside a vehicle inspection and a test drive when buying a used car.",
-    "Reports include an estimate of what a car is worth. Owners can sell a car through the site, where CARFAX dealerships compete for it. Drivers can also track a car's maintenance through the site.",
-    "Beyond the consumer site, CARFAX lists offerings for service shops. It also names a banking and insurance line."
-   ],
-   "quote": null,
-   "provenance": [
-    {
-     "p": 0,
-     "s": 0,
-     "url": "https://www.carfax.com",
-     "quote": "CARFAX Vehicle History products and services are based only on information supplied to CARFAX."
-    },
-    {
-     "p": 0,
-     "s": 1,
-     "url": "https://www.carfax.com",
-     "quote": "CARFAX does not have the complete history of every vehicle."
-    },
-    {
-     "p": 0,
-     "s": 2,
-     "url": "https://www.carfax.com",
-     "quote": "Use the CARFAX search as one important tool, along with a vehicle inspection and test drive, to make a better decision about your next used car."
-    },
-    {
-     "p": 1,
-     "s": 0,
-     "url": "https://www.carfax.com",
-     "quote": "Find out how much the car is really worth with every report."
-    },
-    {
-     "p": 1,
-     "s": 1,
-     "url": "https://www.carfax.com",
-     "quote": "Let CARFAX dealerships compete for your car."
-    },
-    {
-     "p": 1,
-     "s": 2,
-     "url": "https://www.carfax.com",
-     "quote": "Track Your Car's Maintenance"
-    },
-    {
-     "p": 2,
-     "s": 0,
-     "url": "https://www.carfax.com",
-     "quote": "CARFAX for Service Shops"
-    },
-    {
-     "p": 2,
-     "s": 1,
-     "url": "https://www.carfax.com",
-     "quote": "CARFAX Banking & Insurance"
-    }
-   ],
-   "sources": [
-    {
-     "url": "https://www.carfax.com",
-     "sha": "bfad6f9ab2144e1e",
-     "fetched_on": "2026-09-02"
-    }
-   ],
-   "written_on": "2026-09-03",
-   "by": "agent:profile-police-2026-09-03",
-   "ruled_by": "owner",
-   "ruled_on": "2026-09-03"
-  }
+  "competitors_none_found": true
  },
  {
   "id": "clipr-ai",
@@ -35430,127 +35227,6 @@
   }
  },
  {
-  "id": "adashi-systems",
-  "name": "Adashi Systems",
-  "website": "https://www.adashisystems.com",
-  "location": "Baltimore, Maryland",
-  "year_founded": 2002,
-  "sector": "Public Safety",
-  "category": "Police",
-  "description": "Incident command and dispatch software for police and fire responders",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-03"
-  },
-  "govtech": true,
-  "researched": false,
-  "vendor_type": "GovTech Product",
-  "source": "competitor sweep",
-  "competitors": [
-   {
-    "id": "prophoenix",
-    "why": "CAD and mobile for police and fire/EMS - the same combined-agency dispatch buyer"
-   },
-   {
-    "id": "centralsquare-technologies",
-    "why": "CAD/911 dispatch platform evaluated by the same 911 center and fire command buyer"
-   },
-   {
-    "id": "hexagon",
-    "why": "Enterprise CAD and dispatch for police and 911 centers, same dispatch procurement"
-   },
-   {
-    "id": "valor-systems",
-    "why": "CAD and mobile dispatch software for the same public safety response buyer"
-   }
-  ],
-  "competitors_checked_on": "2026-09-02",
-  "competitors_none_found": false,
-  "profile": {
-   "paragraphs": [
-    "The site presents public safety software carrying the Versaterm name, including CAD, RMS and community engagement products. The dispatch pitch is that responses get faster when dispatchers and field units work from the same real-time information. A drone operations platform is offered so agencies can add aerial awareness to everyday response while choosing their own equipment.",
-    "Public facing products listed on the site are Versaterm CommunityConnect, Versaterm CommunityReport, Versaterm CallTriage and Versaterm Public Portal. Versaterm IAPro and Versaterm BlueTeam sit alongside professional standards training for internal oversight work. Versaterm Mindbase and Versaterm EIPro address the cumulative toll that public safety work takes on personnel.",
-    "The customer quote on the home page is from the Chief Resilience Officer of the City of Santa Monica. The about page says agencies of any type or size get the same commitment of responsive support."
-   ],
-   "quote": {
-    "text": "For over 47 years, Versaterm has partnered with agencies that refuse to settle for the status quo.",
-    "url": "https://www.adashisystems.com"
-   },
-   "provenance": [
-    {
-     "p": 0,
-     "s": 0,
-     "url": "https://www.adashisystems.com",
-     "quote": "By embracing modern technology like the cloud-based Versaterm CAD, Versaterm RMS and Versaterm CommunityConnect solutions"
-    },
-    {
-     "p": 0,
-     "s": 1,
-     "url": "https://www.adashisystems.com",
-     "quote": "When dispatch and the field operate from the same real-time information, responses are faster and conditions stay clearer as incidents evolve."
-    },
-    {
-     "p": 0,
-     "s": 2,
-     "url": "https://www.adashisystems.com",
-     "quote": "A drone operations platform delivers real-time insight as part of everyday response, while respecting agency choice in equipment and deployment."
-    },
-    {
-     "p": 1,
-     "s": 0,
-     "url": "https://www.adashisystems.com",
-     "quote": "Versaterm CommunityConnect Versaterm CommunityReport Versaterm CallTriage Versaterm Public Portal"
-    },
-    {
-     "p": 1,
-     "s": 1,
-     "url": "https://www.adashisystems.com",
-     "quote": "Versaterm IAPro Versaterm BlueTeam Professional Standards Training"
-    },
-    {
-     "p": 1,
-     "s": 2,
-     "url": "https://www.adashisystems.com",
-     "quote": "Public safety work takes a cumulative toll that is not always visible in the moment."
-    },
-    {
-     "p": 2,
-     "s": 0,
-     "url": "https://www.adashisystems.com",
-     "quote": "Lindsey B. Call, Chief Resilience Officer, City of Santa Monica"
-    },
-    {
-     "p": 2,
-     "s": 1,
-     "url": "https://www.adashisystems.com/about/",
-     "quote": "Regardless of your agency type or size, you get the same commitment of responsive support"
-    }
-   ],
-   "sources": [
-    {
-     "url": "https://www.adashisystems.com",
-     "sha": "9a8984f328246753",
-     "fetched_on": "2026-09-02"
-    },
-    {
-     "url": "https://www.adashisystems.com/about/",
-     "sha": "8e60c61d32bc8530",
-     "fetched_on": "2026-09-02"
-    }
-   ],
-   "written_on": "2026-09-03",
-   "by": "agent:profile-police-2026-09-03",
-   "ruled_by": "owner",
-   "ruled_on": "2026-09-03"
-  }
- },
- {
   "id": "digital-ally",
   "name": "Digital Ally",
   "website": "https://www.digitalallyinc.com",
@@ -37376,114 +37052,6 @@
    "written_on": "2026-09-03",
    "by": "agent:profile-police-2026-09-03",
    "ruled_by": "agent:review-police-2026-09-03",
-   "ruled_on": "2026-09-03"
-  }
- },
- {
-  "id": "ci-technologies",
-  "name": "CI Technologies",
-  "website": "https://www.iapro.com",
-  "location": "Winnipeg, Manitoba, Canada",
-  "year_founded": 1994,
-  "sector": "Public Safety",
-  "category": "Police",
-  "description": "IAPro and BlueTeam internal affairs software for police agencies",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-03"
-  },
-  "govtech": true,
-  "researched": false,
-  "vendor_type": "GovTech Product",
-  "source": "competitor sweep",
-  "competitors": [
-   {
-    "id": "benchmark-analytics",
-    "why": "Officer performance management and early intervention is exactly what IAPro's EIS does for the same professional standards unit"
-   },
-   {
-    "id": "vector-solutions",
-    "why": "Guardian Tracking is the head-to-head officer conduct documentation and early intervention product for the same police supervisor"
-   }
-  ],
-  "competitors_checked_on": "2026-09-02",
-  "competitors_none_found": false,
-  "profile": {
-   "paragraphs": [
-    "The site presents Versaterm IAPro, a professional standards solution used by over 1,100 agencies worldwide. Its subject is complaints filed against law enforcement and correctional personnel.",
-    "The software brings professional standards information together in one place, including use of force, pursuits, collisions, early intervention, grievances and critical incidents. It tracks every investigative milestone and checks that documentation is completed at each stage. Command staff get a real-time view of caseloads and emerging trends across the organization. Built-in reporting tools let command staff and analysts identify trends and build reports without relying on IT or outside support.",
-    "Compliance uses include PREA readiness and accreditation, since CALEA compliance requires agencies to demonstrate systematic accountability. The site also lists the 21st Versaterm IAPro Users Training Conference, held in Phoenix, AZ."
-   ],
-   "quote": {
-    "text": "The Global Standard in Professional Standards",
-    "url": "https://www.iapro.com"
-   },
-   "provenance": [
-    {
-     "p": 0,
-     "s": 0,
-     "url": "https://www.iapro.com",
-     "quote": "over 1,100 agencies worldwide, Versaterm IAPro is a professional standards solution purpose-built for that mission"
-    },
-    {
-     "p": 0,
-     "s": 1,
-     "url": "https://www.iapro.com",
-     "quote": "Every year, complaints are filed against law enforcement and correctional personnel."
-    },
-    {
-     "p": 1,
-     "s": 0,
-     "url": "https://www.iapro.com",
-     "quote": "Versaterm IAPro brings all professional standards information together in one place, including use of force, pursuits, collisions, early intervention, grievances and critical incidents."
-    },
-    {
-     "p": 1,
-     "s": 1,
-     "url": "https://www.iapro.com",
-     "quote": "Versaterm IAPro tracks every investigative milestone and ensures documentation is completed at each stage."
-    },
-    {
-     "p": 1,
-     "s": 2,
-     "url": "https://www.iapro.com",
-     "quote": "Versaterm IAPro gives command staff a real-time view of caseloads and emerging trends across the organization."
-    },
-    {
-     "p": 1,
-     "s": 3,
-     "url": "https://www.iapro.com",
-     "quote": "With built-in reporting tools, command staff and analysts can identify trends and build reports without relying on IT or outside support."
-    },
-    {
-     "p": 2,
-     "s": 0,
-     "url": "https://www.iapro.com",
-     "quote": "CALEA compliance requires agencies to demonstrate systematic accountability."
-    },
-    {
-     "p": 2,
-     "s": 1,
-     "url": "https://www.iapro.com",
-     "quote": "21st Versaterm IAPro Users Training Conference"
-    }
-   ],
-   "sources": [
-    {
-     "url": "https://www.iapro.com",
-     "sha": "4886f08509ed862b",
-     "fetched_on": "2026-09-02"
-    }
-   ],
-   "written_on": "2026-09-03",
-   "by": "agent:profile-police-2026-09-03",
-   "ruled_by": "owner",
    "ruled_on": "2026-09-03"
   }
  },

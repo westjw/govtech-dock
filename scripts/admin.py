@@ -3264,9 +3264,38 @@ def act_merge(body: dict) -> dict:
     if merged_also:
         keep["also"] = merged_also
     remaining = [c for c in companies if c["id"] != drop_id]
+    # AN EDGE POINTING AT A RECORD THAT NO LONGER EXISTS IS A BROKEN LINK ON
+    # A PUBLIC PAGE. Merging CI Technologies into Versaterm left truleo and
+    # benchmark-analytics each listing a competitor id nothing resolves. The
+    # edge is repointed at the survivor, deduped when the survivor is already
+    # on that shortlist, and dropped entirely when it would make a company
+    # its own competitor.
+    repointed = 0
+    for c in remaining:
+        edges = c.get("competitors")
+        if not isinstance(edges, list):
+            continue
+        out, seen = [], set()
+        for e in edges:
+            eid = e.get("id") if isinstance(e, dict) else e
+            if eid == drop_id:
+                eid = keep_id
+                repointed += 1
+                if isinstance(e, dict):
+                    e = dict(e, id=keep_id)
+                else:
+                    e = keep_id
+            if eid == c["id"] or eid in seen:
+                continue
+            seen.add(eid)
+            out.append(e)
+        if out != edges:
+            c["competitors"] = out
     err = validate(remaining)
     if err:
         return {"error": err}
+    if repointed:
+        filled.append(f"repointed {repointed} competitor edge(s)")
     bad = save_companies(remaining, "merge", why=(body.get("why") or ""),
                          by=(body.get("by") or "owner"))
     if bad:
