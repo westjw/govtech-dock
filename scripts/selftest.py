@@ -4904,8 +4904,17 @@ def check_prerendered_pages() -> int:
             if "https://profiled.test/about" not in ph:
                 errors += fail("the profiled page does not link the page the "
                                "write-up was written from")
-            if "open role" in ph:
+            # The strip labels every page's first cell "open roles", so the
+            # substring proves nothing; the claims are the number, the
+            # description and the list.
+            if re.search(r"\d+ open role", ph):
                 errors += fail("a page for a company with nothing open claims open roles")
+            if '<div class="v dim">0</div><dt>open roles</dt>' not in ph:
+                errors += fail("a page for a company with nothing open does not show "
+                               "0 in the open-roles cell, dimmed")
+            if 'class="corow"' in ph or "none on file" not in ph:
+                errors += fail("a page for a company with nothing open lists roles, "
+                               "or does not say none are on file")
             if "is hiring" in ph:
                 errors += fail("the title says 'is hiring' for a company with nothing open")
         co = (tmp / "c" / "seller.html").read_text()
@@ -4952,6 +4961,342 @@ def check_prerendered_pages() -> int:
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
     return errors
+
+
+def check_static_company_page_matches_the_app() -> int:
+    """/c/<id>.html is co() in index.html, ported. It must stay that way.
+
+    A visitor from a search result and a visitor inside the app used to get
+    two different pages for the same company - the static one a 74ch column
+    of lists written before the redesign. The port carries the app's
+    sections in the app's order, its class names, its copy per state, its
+    breakpoints and its dark override, and swaps every client-only control
+    for a plain link. Each of those is one edit from drifting, and none of
+    them is visible from a build that "succeeded".
+
+    Driven through the real write_company_pages over a four-company fixture
+    board, one company per state the page has: a full record (write-up with
+    sources, researched shortlist, roles), roles behind an unreadable board
+    with no write-up, a write-up with nothing open, and a readable board old
+    enough for the phase arithmetic to call a trend. The phase and history
+    cells are COMPUTED from the fixture's dates against the board's own
+    generated date - the check would fail on a hard-coded sentence the day
+    the record is 60 days deep.
+    """
+    import build_site, tempfile, shutil
+    import pathlib as _pl
+    bad = 0
+    brand = {"site": "https://example.test", "name": "SLED JOBS",
+             "palette": {k: {"hex": "#000000"} for k in
+                         ("ice", "belly", "penguin", "frost", "badge", "beak")},
+             "derived": {"deep_fog": {"hex": "#556F82"},
+                         "dark": {"badge": {"hex": "#478EF5"}}}}
+    P1 = "Full Co sells permit software to counties."
+    P2 = "Named customers include the City of Testville."
+    board = {
+        "generated": "2026-09-03",
+        "organizations": [
+            {"id": "full", "name": "Full Co", "sector": "General Gov",
+             "category": "Permitting", "location": "Austin, TX",
+             "year_founded": 2010, "tier": 1, "website": "https://www.full.test/",
+             "board_url": "https://boards.full.test/full", "ats": "greenhouse",
+             "enumerable": True, "unreadable": None, "researched": True,
+             "board_checked_on": "2026-09-01", "open_roles": 3, "quota_roles": 1,
+             "description": "Permit software for counties",
+             "profile": {"paragraphs": [P1, P2],
+                         "paragraph_sources": [["https://www.full.test/about"],
+                                               ["https://www.full.test/customers",
+                                                "https://www.full.test/about"]],
+                         "sources": [{"url": "https://www.full.test/about",
+                                      "fetched_on": "2026-09-01"},
+                                     {"url": "https://www.full.test/customers",
+                                      "fetched_on": "2026-09-01"}],
+                         "quote": {"text": "Permits, done.",
+                                   "url": "https://www.full.test/"},
+                         "written_on": "2026-09-01", "by_kind": "site"},
+             "competitors": [{"id": "rival", "why": "same permit desk, same buyer"},
+                             {"id": "nopage", "why": "a quieter rival"}],
+             "competitors_checked_on": "2026-09-01"},
+            {"id": "rolesonly", "name": "Roles Only", "sector": "General Gov",
+             "category": "Permitting", "website": "https://www.rolesonly.test",
+             "board_url": "https://www.rolesonly.test/careers", "ats": "html",
+             "enumerable": False, "researched": False,
+             "board_checked_on": "2026-08-30", "open_roles": 1, "quota_roles": 0,
+             "description": "Permit software for towns."},
+            {"id": "profonly", "name": "Profile Only", "sector": "General Gov",
+             "category": "Permitting", "ats": "unknown", "enumerable": True,
+             "open_roles": 0, "quota_roles": 0, "description": "Sells maps",
+             "competitors_none_found": True, "competitors_checked_on": "2026-08-28",
+             "profile": {"paragraphs": ["Profile Only sells parcel maps to counties."],
+                         "paragraph_sources": [["https://profonly.test/about"]],
+                         "sources": [{"url": "https://profonly.test/about",
+                                      "fetched_on": "2026-09-01"}],
+                         "by_kind": "company"}},
+            {"id": "floor", "name": "Floor Co", "sector": "General Gov",
+             "category": "Permitting", "ats": "lever", "enumerable": True,
+             "open_roles": 5, "quota_roles": 3, "description": "Permits."},
+            {"id": "rival", "name": "Rival Co", "sector": "General Gov",
+             "category": "Permitting", "open_roles": 2, "description": "Permits too"},
+            {"id": "nopage", "name": "No Page Co", "sector": "General Gov",
+             "category": "Permitting", "open_roles": 0, "description": "Quiet"}],
+        "postings": [
+            {"id": "full::Account Executive::a1", "opening_id": "full::Account Executive",
+             "company_id": "full", "title": "Account Executive", "family": "gtm",
+             "quota_carrying": True, "first_seen": "2026-08-29",
+             "office": {"city": "Austin", "state": "TX"}, "work_mode": "hybrid",
+             "jd_seen": True, "source": "ats",
+             "comp": {"min": 90000, "max": 120000, "currency": "USD", "period": "year"}},
+            {"id": "full::Account Executive::a2", "opening_id": "full::Account Executive",
+             "company_id": "full", "title": "Account Executive", "family": "gtm",
+             "quota_carrying": True, "first_seen": "2026-08-29",
+             "office": {"city": "Denver", "state": "CO"}, "jd_seen": True, "source": "ats",
+             "comp": {"min": 90000, "max": 120000, "currency": "USD", "period": "year"}},
+            {"id": "full::Marketing Lead::b1", "opening_id": "full::Marketing Lead",
+             "company_id": "full", "title": "Marketing Lead", "family": "gtm",
+             "quota_carrying": False, "first_seen": "2026-08-29", "work_mode": "remote",
+             "jd_seen": True, "source": "ats", "comp": {}},
+            {"id": "full::Backend Engineer::c1", "opening_id": "full::Backend Engineer",
+             "company_id": "full", "title": "Backend Engineer", "family": "engineering",
+             "quota_carrying": False, "first_seen": "2026-09-01",
+             "office": {"city": None, "state": None}, "location": "London",
+             "jd_seen": False, "source": "ats", "comp": {}},
+            {"id": "rolesonly::Sales Rep::d1", "opening_id": "rolesonly::Sales Rep",
+             "company_id": "rolesonly", "title": "Sales Rep", "family": "gtm",
+             "quota_carrying": False, "first_seen": "2026-09-02", "source": "manual",
+             "jd_seen": False, "comp": {}},
+            {"id": "rival::AE::r1", "opening_id": "rival::AE", "company_id": "rival",
+             "title": "AE", "family": "gtm", "first_seen": "2026-09-01", "comp": {}}]
+        + [{"id": f"floor::Seller {i}::f{i}", "opening_id": f"floor::Seller {i}",
+            "company_id": "floor", "title": f"Seller {i}", "family": "gtm",
+            "quota_carrying": i < 3, "first_seen": "2026-08-20",
+            "office": {"state": st}, "comp": {}}
+           for i, st in enumerate(("TX", "CO", "WA", "TX"))]
+        + [{"id": "floor::Old Seller::f9", "opening_id": "floor::Old Seller",
+            "company_id": "floor", "title": "Old Seller", "family": "gtm",
+            "quota_carrying": False, "first_seen": "2026-07-01",
+            "office": {"state": "TX"}, "comp": {}}]}
+    tmp = _pl.Path(tempfile.mkdtemp())
+    try:
+        n = build_site.write_company_pages(tmp, board, brand)
+        if n != 5:
+            bad += fail(f"fixture wrote {n} company pages, expected 5 (full, "
+                        f"rolesonly, profonly, floor, rival)")
+        pages = {k: (tmp / "c" / f"{k}.html").read_text()
+                 for k in ("full", "rolesonly", "profonly", "floor")
+                 if (tmp / "c" / f"{k}.html").exists()}
+        if len(pages) != 4:
+            return bad + fail(f"only {sorted(pages)} of the four fixture pages "
+                              f"were written; the rest of this check needs them")
+
+        # 1. THE SKELETON, IN THE APP'S ORDER, ON EVERY PAGE. Markers are the
+        # class names and headings co() emits, and each must come after the
+        # one before it.
+        ORDER = ('<div class="copage">', '<div class="cowrap">',
+                 '<nav class="cocrumb"', '<div class="coid">', '<div class="logo"',
+                 '<div class="cometa">', '<div class="coacts">',
+                 '<div class="costrip">', '<dt>open roles</dt>',
+                 '<dt>quota-carrying</dt>', '<dt>hiring phase</dt>', '<dt>source</dt>',
+                 '<div class="cobody">', '<main class="cocol">',
+                 '<section class="cosec coabout">', '<h2>About</h2>',
+                 '<h2>News</h2>', '<h2>Open roles</h2>', '</main>',
+                 '<aside class="corail">', '<h2>Links</h2>', '<h2>Competitors</h2>',
+                 'Record last verified', '</aside>', 'See this company in the board')
+        for k, src in pages.items():
+            pos = -1
+            for m in ORDER:
+                i = src.find(m, pos + 1)
+                if i < 0:
+                    bad += fail(f"/c/{k}: {m!r} is missing, or out of the app's "
+                                f"order (must follow the marker before it)")
+                    break
+                pos = i
+            # 2. NOTHING CLIENT-ONLY SURVIVES. A static page has no render(),
+            # no openRole(), no localStorage; an onclick here is a dead
+            # control and a button is a control with nothing behind it.
+            for needle in ("onclick=", 'href="#"', "<button", "javascript:"):
+                if needle in src:
+                    bad += fail(f"/c/{k} still carries {needle!r} - a client-only "
+                                f"control that does nothing on a static page")
+            if '<div class="coempty">' in src and "/assets/mascot/svg/head-ghosted.svg" not in src:
+                bad += fail(f"/c/{k}: the empty state's mascot is not an absolute "
+                            f"path, so it 404s from /c/")
+
+        # 3. THE STYLESHEET: the app's tokens and dark override, no rounded
+        # corner anywhere, standing alone. Read from one page; they all share it.
+        src = pages["full"]
+        css = src[src.index("<style>"):src.index("</style>")]
+        # a rule inside a comment is a rule that was dropped, and a comment
+        # nobody closed swallows every rule after it
+        css = re.sub(r"/\*.*?(\*/|$)", "", css, flags=re.S)
+        for want, why in (
+                ("--radius:0px", "the house --radius token"),
+                ("@media (prefers-color-scheme:dark)", "the dark media block"),
+                (":root:not([data-theme=light]) .copage{--c-bg:#151B29",
+                 "the .copage dark tokens under prefers-color-scheme"),
+                (":root[data-theme=dark] .copage{--c-bg:#151B29",
+                 "the .copage dark tokens under an explicit data-theme"),
+                (":root[data-theme=dark]{", "the site dark tokens under data-theme"),
+                (".copage{--c-bg:#FAF7F0", "the .copage light tokens"),
+                ("@media (max-width:1080px)", "the 1080 breakpoint"),
+                ("@media (max-width:900px)", "the 900 breakpoint"),
+                ("@media (max-width:620px)", "the 620 breakpoint"),
+                ('--font-heading:"Archivo"', "Archivo as the face"),
+                (".costrip>dl{", ".costrip cells as dl"),
+                (".coempty{", ".coempty"), (".coquote{", ".coquote"),
+                (".coprov{", ".coprov"), (".corail .tag{", ".corail .tag")):
+            if want not in css:
+                bad += fail(f"the static company stylesheet lost {why} ({want!r})")
+        for m in re.finditer(r"border-radius\s*:\s*([^;}]+)", css):
+            if m.group(1).strip() != "var(--radius)":
+                bad += fail(f"the static company stylesheet rounds a corner: "
+                            f"border-radius:{m.group(1).strip()}. The house rule "
+                            f"is --radius:0 and nothing else")
+        if re.search(r"(?<![-\w])color\s*:\s*var\(\s*--beak\s*\)", css):
+            bad += fail("the static company stylesheet uses --beak as a text colour")
+        if '<link rel="stylesheet" href="/' in src or "@import" in css:
+            bad += fail("the static company page pulls a stylesheet from the site; "
+                        "it must stand alone")
+
+        # 4. STATE COPY, per state. Every sentence below is one co() prints
+        # for the same record, and the phase/history ones are arithmetic.
+        def want(k, *needles):
+            nonlocal bad
+            for s in needles:
+                if s not in pages[k]:
+                    bad += fail(f"/c/{k} does not say {s!r}")
+
+        def refuse(k, *needles):
+            nonlocal bad
+            for s in needles:
+                if s in pages[k]:
+                    bad += fail(f"/c/{k} must not say {s!r}")
+
+        # full: write-up, shortlist, three openings read 5 days ago
+        want("full",
+             '<span class="smeta">written from their site</span>',
+             "<p>Permit software for counties.</p>",
+             f"<p>{P1}<sup>1</sup></p>", f"<p>{P2}<sup>2</sup><sup>1</sup></p>",
+             '<blockquote class="coquote">Permits, done.<span class="src">'
+             '<a href="https://www.full.test/" target="_blank" rel="nofollow noopener">/</a></span></blockquote>',
+             'Written from 2 pages on www.full.test, read 2026-09-01: '
+             '<a href="https://www.full.test/about" target="_blank" rel="nofollow noopener">1&nbsp;/about</a>, '
+             '<a href="https://www.full.test/customers" target="_blank" rel="nofollow noopener">2&nbsp;/customers</a>. '
+             'Every sentence traces to one of them.',
+             '<div class="v">3</div><dt>open roles</dt><dd>first read here 5 days ago</dd>',
+             '<div class="v">1</div><dt>quota-carrying</dt><dd>33% of open roles</dd>',
+             '<div class="v txt dim">Not enough history to read</div><dt>hiring phase</dt>'
+             '<dd>we have only been reading this board for 5 days, and a 60-day phase needs 60</dd>',
+             '<div class="v txt">Greenhouse</div><dt>source</dt><dd>read nightly · all 3 readable</dd>',
+             'Permitting<span class="sep">&middot;</span>Austin, TX<span class="sep">&middot;</span>'
+             'founded 2010<span class="sep">&middot;</span>tier 1',
+             '<span class="smeta">3 on file</span>',
+             '<h3>GTM</h3><span class="n">2 roles &middot; 1 quota-carrying</span>',
+             '<h3>Engineering</h3><span class="n">1 role</span>',
+             '<a href="/?role=full%3A%3AAccount%20Executive%3A%3Aa1">Account Executive</a>',
+             '<span class="lo">Austin, TX (hybrid) and 1 other location</span>',
+             '<span class="pay">$90k – $120k</span>',
+             '<span class="paynone" title="no salary stated">&mdash;</span>',
+             '<span class="paynone" title="we could not read this posting">&mdash;</span>',
+             '<span class="lo">London</span>', '<span class="lo">remote</span>',
+             '<span class="ag">5d</span>', '<span class="ag">2d</span>',
+             '<a href="/c/rival.html">Rival Co</a><span class="d">same permit desk, same buyer</span></span><span class="n">2</span>',
+             '<a href="/?co=nopage">No Page Co</a>',
+             'Who a buyer would shortlist against them, checked 2026-09-01.',
+             'Browse all 6 in Permitting &rarr;',
+             '<a href="https://www.full.test/" target="_blank" rel="nofollow noopener">www.full.test</a>',
+             'Their hiring board</a></div>',
+             'Record last verified 2026-09-01 by hand. Roles read from greenhouse nightly.',
+             '<a class="cobtn fill" href="/?co=full">Open in the board</a>',
+             '<a class="cobtn" href="/alerts?company=full">Alert on new roles</a>',
+             '<a href="/?tab=companies">Companies</a>',
+             '<meta name="description" content="Full Co sells permit software to counties. 3 open roles, 1 of them quota-carrying.">',
+             '<title>Full Co is hiring · SLED JOBS</title>',
+             'canonical" href="https://example.test/c/full"')
+        refuse("full", "This is the one-line record", '<div class="coempty">',
+               "unreadable", "This list may be incomplete", '<a class="comore"')
+        # one row per OPENING: the two Account Executive postings are one row
+        n_rows = pages["full"].count('class="corow"')
+        if n_rows != 3:
+            bad += fail(f"/c/full lists {n_rows} rows for 3 openings - a "
+                        f"requisition in two cities is one row")
+        # rolesonly: no write-up, board unreadable, one hand-captured role
+        want("rolesonly",
+             '<span class="smeta">from the record &middot; checked against www.rolesonly.test</span>',
+             "<p>Permit software for towns.</p>",
+             "This is the one-line record. The longer write-up the page is built for",
+             '<div class="v">1</div><dt>open roles</dt><dd>first read here 1 day ago</dd>',
+             '<div class="v dim">&mdash;</div><dt>quota-carrying</dt><dd>nothing to count</dd>',
+             '<div class="v txt dim">Not measured</div><dt>hiring phase</dt>'
+             '<dd>their board could not be read, so there is nothing here to read a phase from</dd>',
+             '<div class="v txt acc">Board unreadable</div><dt>source</dt>'
+             '<dd>custom HTML · a person checks it · last 2026-08-30</dd>',
+             '<span class="paynone" title="no description to read">&mdash;</span>',
+             '<span class="lo">not stated</span>',
+             'This list may be incomplete: their board is not one we can read in full.',
+             'Their hiring board</a><span class="tag">unreadable</span>',
+             'Not researched yet. The companies below share this category',
+             'Record last verified 2026-08-30. Roles are checked by hand.',
+             '<title>Roles Only is hiring · SLED JOBS</title>')
+        refuse("rolesonly", "<sup>", '<blockquote class="coquote">', "Written from",
+               '<div class="coempty">', "checked 2026", "Nobody else on this board")
+        # profonly: a claimed write-up, nothing open, a scanned page, no rivals
+        want("profonly",
+             '<span class="smeta">in their own words, claimed page</span>',
+             "Profile Only sells parcel maps to counties.<sup>1</sup>",
+             '<div class="v dim">0</div><dt>open roles</dt><dd>none seen recently</dd>',
+             '<div class="v txt dim">Too few openings to read</div><dt>hiring phase</dt>'
+             '<dd>we need 3+ roles over 60 days to call it</dd>',
+             '<div class="v txt">Unknown</div><dt>source</dt>'
+             '<dd>a page we scan, not a board we can enumerate</dd>',
+             '<span class="smeta">none on file</span>',
+             '<div class="coempty"><img src="/assets/mascot/svg/head-ghosted.svg"',
+             "<h3>No open roles we can see.</h3>",
+             "<p>Their board is one we read every night and it is empty right now.</p>",
+             '<a class="cobtn" href="/alerts?company=profonly">Alert me when they post</a>',
+             "Nobody else on this board sells what they sell into this market. "
+             "That is a finding, checked 2026-08-28, not an empty field.",
+             "Record last verified. Roles are checked by hand.",
+             "<h2>Links</h2></section>",
+             '<title>Profile Only · SLED JOBS</title>')
+        refuse("profonly", "is hiring", 'class="corow"', "Open their hiring board",
+               "Not researched yet")
+        if re.search(r"\d+ open role", pages["profonly"]):
+            bad += fail("/c/profonly claims a number of open roles with nothing open")
+        # floor: a record 64 days deep, four openings inside the 60-day
+        # window, three of them quota-carrying across three states - the
+        # arithmetic calls it, and the 30-day counter counts openings rather
+        # than saying "first read here"
+        want("floor",
+             '<div class="v">5</div><dt>open roles</dt><dd>+4 first read in the last 30 days</dd>',
+             '<dd>60% of open roles</dd>',
+             '<div class="v txt acc">Building a sales floor</div><dt>hiring phase</dt>'
+             '<dd>4 roles opened in 60 days · 3 regions</dd>',
+             '<span class="ag">Jul 1</span>', '<span class="ag">14d</span>',
+             '<h3>GTM</h3><span class="n">5 roles &middot; 3 quota-carrying</span>',
+             'Roles read from lever nightly.')
+        refuse("floor", "Not enough history", "first read here")
+        # and the cut: a board bigger than the cap says where the rest is
+        big = dict(board)
+        big["organizations"] = [dict(board["organizations"][3], id="big", name="Big Co",
+                                     open_roles=45, quota_roles=0)]
+        big["postings"] = [{"id": f"big::Seller {i}::x", "opening_id": f"big::Seller {i}",
+                            "company_id": "big", "title": f"Seller {i}",
+                            "family": "gtm" if i < 43 else "ops", "comp": {},
+                            "first_seen": "2026-09-01"} for i in range(45)]
+        build_site.write_company_pages(tmp, big, brand)
+        bp = (tmp / "c" / "big.html").read_text()
+        n_rows = bp.count('class="corow"')
+        if n_rows != 40:
+            bad += fail(f"/c/big lists {n_rows} rows; the cap is 40")
+        for s in ('<a class="comore" href="/?co=big">Show 3 more in the board</a>',
+                  '<a class="comore" href="/?co=big">Show 2 more in the board</a>',
+                  '<h3>Ops / RevOps</h3><span class="n">2 roles</span>'):
+            if s not in bp:
+                bad += fail(f"/c/big does not say {s!r} - the rows past the cap must "
+                            f"be counted and pointed at the board, per group")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    return bad
 
 
 def check_feeds_and_structured_data() -> int:
@@ -6538,20 +6883,23 @@ def check_built_pages_count_openings_not_rows() -> int:
             m = re.search(pat, src)
             if not m:
                 continue
-            # THE ROLES LIST, NOT EVERY LIST. A company page now carries a
-            # second list - its competitors - and counting every <li> on
-            # the page put 5 shortlist entries into the openings tally. When
-            # the page names its roles list, count inside it; a page with
-            # one unnamed list (the state pages) is counted whole as before.
-            a = src.find('<ul class="roles">')
-            if a >= 0:
-                b = src.find("</ul>", a)
-                listed = src[a:b].count("<li>")
+            # THE ROLES LIST, NOT EVERY LIST. A company page carries a
+            # second list - its competitors - and counting every item on
+            # the page put 5 shortlist entries into the openings tally. The
+            # company page is the app's layout: its roles are .corow rows,
+            # one per opening, and nothing else on the page is a .corow. A
+            # state page has one unnamed list and is counted whole.
+            if kind == "c":
+                listed = src.count('class="corow"')
             else:
                 listed = src.count("<li>")
             said = int(m.group(1))
-            capped = "more are on the board" in src or "more compan" in src
-            if not capped and listed and said != listed:
+            capped = ("more in the board" in src or "more are on the board" in src
+                      or "more compan" in src)
+            # a company page that says N and lists nothing is the defect,
+            # not a page with nothing to count; the state list keeps the
+            # old allowance for a page whose items are counted elsewhere
+            if not capped and (listed or kind == "c") and said != listed:
                 bad += fail(
                     f"/{kind}/{f.stem} says {said} {unit} over a list of "
                     f"{listed} items. On this page type the list is one item "
@@ -11970,6 +12318,7 @@ def main() -> int:
     errors += check_weekly_report_is_honest()
     errors += check_map_says_what_it_omits()
     errors += check_prerendered_pages()
+    errors += check_static_company_page_matches_the_app()
     errors += check_feeds_and_structured_data()
     errors += check_share_cards()
     errors += check_semantic_map()
