@@ -18,3 +18,11 @@ public/
 # machine each time, so this does nothing there unless the workflow restores
 # it. Never committed: it is other people's page content, and megabytes of it.
 /data/http_cache/
+# OTHER PEOPLE'S PAGE TEXT, same rule as http_cache. site_pages/ holds one
+# file per company of what their own site says about them, ~50KB each; at
+# 2,000 companies that is 100MB of somebody else's words in the history of a
+# repo that is going public. The committed record is site_pages_index.json:
+# which pages were read, when, their sha, and nothing of what they said.
+/data/site_pages/
+/data/briefs/
+/data/proposals_in/

@@ -36,6 +36,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import hashlib
 import html as htmllib
 import json
 import pathlib
@@ -50,7 +51,46 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import admin                                                   # noqa: E402
 import ats                                                     # noqa: E402
 
-STORE = DATA / "site_pages.json"
+# ONE FILE PER COMPANY, GITIGNORED, AND A SMALL INDEX THAT IS NOT. The first
+# version kept every company's page text in a single committed JSON. At three
+# companies that was 39KB; at 2,024 it is ~100MB of other people's words in
+# the history of a repository that is going public, which is exactly the
+# species .gitignore already refuses for http_cache. So the bodies live in
+# data/site_pages/<id>.json and never reach git, and what IS committed is
+# which pages were read, when, and a sha of each - enough for a proposal
+# that quotes a page to say which bytes it was checked against, six months
+# on, without the bytes themselves being in the repo.
+DIR = DATA / "site_pages"
+INDEX = DATA / "site_pages_index.json"
+
+
+def load(cid: str) -> dict | None:
+    f = DIR / f"{cid}.json"
+    return json.loads(f.read_text()) if f.exists() else None
+
+
+def save(rec: dict) -> None:
+    DIR.mkdir(parents=True, exist_ok=True)
+    (DIR / f"{rec['id']}.json").write_text(json.dumps(rec, indent=1, sort_keys=True))
+
+
+def index() -> dict:
+    return json.loads(INDEX.read_text()) if INDEX.exists() else {}
+
+
+def index_entry(rec: dict) -> dict:
+    """What the committed index knows about one company: never the text."""
+    slim = lambda pages: [{"url": p["url"], "chars": p.get("chars"), "sha": p.get("sha")}
+                          if p.get("text") else {"url": p["url"], "unread": p.get("unread")}
+                          for p in pages]
+    return {"fetched_on": rec.get("fetched_on"), "website": rec.get("website"),
+            "unread": rec.get("unread"), "unread_on": rec.get("unread_on"),
+            "about": slim(rec.get("about") or []), "news": slim(rec.get("news") or []),
+            "no_news_page": bool(rec.get("no_news_page"))}
+
+
+def save_index(idx: dict) -> None:
+    INDEX.write_text(json.dumps(idx, indent=1, sort_keys=True))
 
 # WHAT WE ARE LOOKING FOR, and the two buckets are kept apart because the
 # engines that read them ask different questions. `about` answers "what is
@@ -71,6 +111,7 @@ NOT_A_PAGE = re.compile(r"/(careers?|jobs?|privacy|terms|legal|cookie|login|"
 MIN_TEXT = 200          # below this a "page" is a shell, a redirect or a wall
 MAX_PAGES = 6           # per company, per bucket
 MAX_TEXT = 24000        # per page, stored
+MAX_HTML = 160000       # raw markup kept for news pages only
 
 TAG = re.compile(r"<(script|style|noscript|svg|head)\b.*?</\1>", re.I | re.S)
 ANY = re.compile(r"<[^>]+>")
@@ -132,8 +173,8 @@ def pick(urls: list[str], want: re.Pattern) -> list[str]:
             and not NOT_A_PAGE.search(up.urlsplit(u).path or "/")][:MAX_PAGES]
 
 
-def grab(url: str) -> dict:
-    """One page, as {url, text, chars} or {url, unread: why}."""
+def grab(url: str, keep_html: bool = False) -> dict:
+    """One page, as {url, text, chars, sha} or {url, unread: why}."""
     try:
         resp = ats._get(url)
     except Exception as exc:                      # ats raises its own type
@@ -142,7 +183,16 @@ def grab(url: str) -> dict:
     txt = text_of(body)
     if len(txt) < MIN_TEXT:
         return {"url": url, "unread": f"only {len(txt)} chars of text"}
-    return {"url": url, "text": txt[:MAX_TEXT], "chars": len(txt)}
+    out = {"url": url, "text": txt[:MAX_TEXT], "chars": len(txt),
+           # the sha is of the WHOLE text, not the stored slice, so a quote
+           # checked later is checked against what the page actually said
+           "sha": hashlib.sha256(txt.encode("utf-8")).hexdigest()[:16]}
+    if keep_html:
+        # THE NEWS EXTRACTOR NEEDS ATTRIBUTES. text_of drops <head> and every
+        # <time datetime>, article:published_time and JSON-LD date before a
+        # parser can see them, so news pages keep their markup, capped.
+        out["html"] = body[:MAX_HTML]
+    return out
 
 
 def visit(company: dict) -> dict:
@@ -182,7 +232,7 @@ def visit(company: dict) -> dict:
             continue
         out["about"].append(grab(u))
     for u in pick(found, NEWS):
-        out["news"].append(grab(u))
+        out["news"].append(grab(u, keep_html=True))
 
     if not out["news"]:
         # A REAL FINDING, and the one the news engine must not paper over.
@@ -201,12 +251,19 @@ def main() -> int:
     ap.add_argument("--category")
     ap.add_argument("--refetch", action="store_true",
                     help="revisit companies already in the store")
+    ap.add_argument("--skip-unread-days", type=int, default=7,
+                    help="do not re-ask a host that would not answer within N days")
+    ap.add_argument("--workers", type=int, default=4,
+                    help="companies in flight at once. ats._host_gate already "
+                         "serialises callers to ONE host, so this parallelises "
+                         "across hosts and a rude server stalls only its own lane")
     a = ap.parse_args()
 
     companies = admin.read_companies()
     if isinstance(companies, dict):
         companies = list(companies.values())
-    store = json.loads(STORE.read_text()) if STORE.exists() else {}
+    idx = index()
+    today = dt.date.today()
 
     rows = [c for c in companies if c.get("id")]
     if a.id:
@@ -216,7 +273,21 @@ def main() -> int:
     if a.category:
         rows = [c for c in rows if c.get("category") == a.category]
     if not a.refetch:
-        rows = [c for c in rows if c["id"] not in store]
+        rows = [c for c in rows if c["id"] not in idx]
+    # A HOST THAT WOULD NOT ANSWER LAST WEEK IS NOT ASKED AGAIN TONIGHT. The
+    # discovery log learned this the hard way: two degraded runs wrote 55
+    # false "gave up" notes that persisted for weeks. Here the refusal is
+    # dated and expires, so a site that was down is retried and a site that
+    # is gone stops costing a request a night.
+    def recently_unread(c):
+        e = idx.get(c["id"]) or {}
+        if not e.get("unread") or not e.get("unread_on"):
+            return False
+        try:
+            return (today - dt.date.fromisoformat(e["unread_on"])).days < a.skip_unread_days
+        except ValueError:
+            return False
+    rows = [c for c in rows if not recently_unread(c)]
     if a.limit:
         rows = rows[:a.limit]
 
@@ -230,25 +301,30 @@ def main() -> int:
         print("\n  Re-run with --write to fetch them.")
         return 0
 
+    import concurrent.futures as cf
     got = {"about": 0, "news": 0, "unread": 0}
-    for i, c in enumerate(rows, 1):
-        rec = visit(c)
-        store[c["id"]] = rec
-        if rec.get("unread"):
-            got["unread"] += 1
-        got["about"] += sum(1 for p in rec["about"] if p.get("text"))
-        got["news"] += sum(1 for p in rec["news"] if p.get("text"))
-        if i % 25 == 0:
-            print(f"  ... {i}/{len(rows)}")
-            STORE.write_text(json.dumps(store, indent=1, sort_keys=True))
+    done = 0
+    with cf.ThreadPoolExecutor(max_workers=max(1, a.workers)) as pool:
+        for rec in pool.map(visit, rows):
+            if rec.get("unread"):
+                rec["unread_on"] = today.isoformat()
+                got["unread"] += 1
+            got["about"] += sum(1 for p in rec["about"] if p.get("text"))
+            got["news"] += sum(1 for p in rec["news"] if p.get("text"))
+            save(rec)
+            idx[rec["id"]] = index_entry(rec)
+            done += 1
+            if done % 25 == 0:
+                print(f"  ... {done}/{len(rows)}")
+                save_index(idx)
 
-    STORE.write_text(json.dumps(store, indent=1, sort_keys=True))
-    readable = sum(1 for v in store.values() if not v.get("unread"))
-    nonews = sum(1 for v in store.values() if v.get("no_news_page"))
+    save_index(idx)
+    readable = sum(1 for v in idx.values() if not v.get("unread"))
+    nonews = sum(1 for v in idx.values() if v.get("no_news_page"))
     print(f"\n  {got['about']} about-page(s), {got['news']} news page(s), "
           f"{got['unread']} site(s) unread this run")
-    print(f"  store now holds {len(store)} companies, {readable} readable, "
-          f"{nonews} with no news page found")
+    print(f"  index now holds {len(idx)} companies, {readable} readable, "
+          f"{nonews} with no news page found; bodies in {DIR.relative_to(ROOT)}/")
     print("\n  UNREAD IS NOT EMPTY. A site we could not open has not been "
           "found to\n  have no customers and no news; it has not been read. "
           "Nothing here\n  writes a description in its place.")

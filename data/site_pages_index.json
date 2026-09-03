@@ -1,0 +1,105 @@
+{
+ "brinc": {
+  "about": [
+   {
+    "chars": 12002,
+    "sha": "ec0a6a9b3c50ece1",
+    "url": "https://www.brincdrones.com"
+   },
+   {
+    "chars": 10276,
+    "sha": "5cefc605b6ea1b35",
+    "url": "https://brincdrones.com/about/"
+   }
+  ],
+  "fetched_on": "2026-09-02",
+  "news": [
+   {
+    "chars": 14890,
+    "sha": "32767f7ef12800fc",
+    "url": "https://brincdrones.com/news/brinc-raises-125m-to-put-a-911-response-drone-on-every-police-and-fire-station-roof/"
+   }
+  ],
+  "no_news_page": false,
+  "unread": null,
+  "unread_on": null,
+  "website": "https://www.brincdrones.com"
+ },
+ "peregrine": {
+  "about": [
+   {
+    "chars": 6316,
+    "sha": "a875257653a31358",
+    "url": "https://www.peregrine.io"
+   }
+  ],
+  "fetched_on": "2026-09-02",
+  "news": [
+   {
+    "chars": 5747,
+    "sha": "e049216d5e167fed",
+    "url": "https://www.peregrine.io/newsroom"
+   }
+  ],
+  "no_news_page": false,
+  "unread": null,
+  "unread_on": null,
+  "website": "https://www.peregrine.io"
+ },
+ "verkada": {
+  "about": [
+   {
+    "chars": 3649,
+    "sha": "dfdbe745b54975cf",
+    "url": "https://www.verkada.com"
+   },
+   {
+    "chars": 5370,
+    "sha": "dfa5c7373f15840f",
+    "url": "https://www.verkada.com/customers/"
+   },
+   {
+    "chars": 6042,
+    "sha": "1f9be1521d3e1e70",
+    "url": "https://www.verkada.com/solutions/hybrid-cloud-architecture/"
+   },
+   {
+    "chars": 8244,
+    "sha": "21997ec1878e2ce1",
+    "url": "https://www.verkada.com/solutions/retail/"
+   },
+   {
+    "chars": 9161,
+    "sha": "3026fabce4eee2a9",
+    "url": "https://www.verkada.com/solutions/manufacturing/"
+   },
+   {
+    "chars": 8671,
+    "sha": "870677a17b3d5c1d",
+    "url": "https://www.verkada.com/solutions/k-12/"
+   },
+   {
+    "chars": 8778,
+    "sha": "0ca7cf0a5d5bfefd",
+    "url": "https://www.verkada.com/solutions/healthcare/"
+   }
+  ],
+  "fetched_on": "2026-09-02",
+  "news": [
+   {
+    "chars": 5289,
+    "sha": "85db277910f95773",
+    "url": "https://www.verkada.com/blog/"
+   },
+   {
+    "chars": 2329,
+    "sha": "9c329472e66275b7",
+    "url": "https://www.verkada.com/newsroom/"
+   }
+  ],
+  "no_news_page": false,
+  "unread": null,
+  "unread_on": null,
+  "website": "https://www.verkada.com"
+ }
+}

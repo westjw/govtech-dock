@@ -594,6 +594,60 @@ def check_rival_door_refuses_a_category() -> int:
     return errors
 
 
+def check_site_pages_stay_out_of_git() -> int:
+    """Other people's page text never reaches the repository.
+
+    fetch_profiles.py reads what a company's own site says about it and
+    keeps the text so a later claim can be checked against the bytes. The
+    first version kept all of it in one committed JSON, which at 2,024
+    companies is ~100MB of somebody else's words in the history of a repo
+    that is going public - the exact thing .gitignore already refuses for
+    http_cache. Three things hold the line now, and each is asserted: the
+    bodies directory is ignored, the old single file is gone from the tree,
+    and the committed index carries which pages were read and their shas
+    but never a character of what they said.
+    """
+    import subprocess
+    errors = 0
+    ignore = (ROOT / ".gitignore").read_text()
+    for path in ("/data/site_pages/", "/data/briefs/", "/data/proposals_in/"):
+        if path not in ignore:
+            errors += fail(f".gitignore no longer lists {path}. That directory "
+                           f"holds other people's page text (or briefs made "
+                           f"from it), and one commit puts 100MB of it in the "
+                           f"public history for good")
+    tracked = subprocess.run(["git", "ls-files", "data/site_pages.json",
+                              "data/site_pages"], cwd=ROOT,
+                             capture_output=True, text=True).stdout.split()
+    if tracked:
+        errors += fail(f"page text is tracked by git: {tracked[:3]}. The "
+                       f"bodies live in data/site_pages/ and only the index "
+                       f"is committed")
+    idx = ROOT / "data" / "site_pages_index.json"
+    if idx.exists():
+        raw = idx.read_text()
+        import json as _json
+        d = _json.loads(raw)
+        for cid, e in list(d.items())[:50]:
+            for bucket in ("about", "news"):
+                for pg in e.get(bucket) or []:
+                    if "text" in pg or "html" in pg:
+                        errors += fail(f"site_pages_index.json carries page "
+                                       f"text for {cid}. The index is a list "
+                                       f"of what was read, never what it said")
+                        break
+        # the guard has to read the real shape, not a hopeful one
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import fetch_profiles as fp
+        probe = fp.index_entry({"id": "x", "fetched_on": "2026-01-01",
+                                "about": [{"url": "https://x/", "text": "SECRET",
+                                           "chars": 6, "sha": "abc"}], "news": []})
+        if "SECRET" in _json.dumps(probe):
+            errors += fail("fetch_profiles.index_entry leaks page text into the "
+                           "committed index")
+    return errors
+
+
 def check_profile_fetch_stays_first_party() -> int:
     """Site pages must come from the company's own domain, and nowhere else.
 
@@ -10589,6 +10643,7 @@ def main() -> int:
                 f"expected {(w_title, w_loc, w_pay)!r}")
     errors += check_board()
     errors += check_rival_door_refuses_a_category()
+    errors += check_site_pages_stay_out_of_git()
     errors += check_profile_fetch_stays_first_party()
     errors += check_rival_brief_never_cuts_the_roster()
     errors += check_company_counts_are_roles_not_postings()
