@@ -806,7 +806,7 @@ def check_deploy_doc_claims_are_dated() -> int:
                            f"verified date. An undated 'done' is how a stale "
                            f"status reaches a to-do list, which happened twice "
                            f"on 2026-09-03")
-    if "is not evidence" not in doc and "before believing any status" not in doc:
+    if "is not evidence" not in doc or "before believing any status" not in doc:
         errors += fail("DEPLOY.md no longer tells a reader to verify its status "
                        "claims before believing them. It was wrong about two "
                        "steps at once and nothing in it said so")
