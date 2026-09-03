@@ -159,7 +159,7 @@ async function describe(request, env) {
       // Extensionless: Cloudflare 308s /c/<id>.html to /c/<id>, so the .html
       // form was a canonical pointing at a redirect back to the page that
       // declared it. See write_crawl_files.
-      canonical: c.r ? `${SITE}/c/${encodeURIComponent(co)}`
+      canonical: c.p ? `${SITE}/c/${encodeURIComponent(co)}`
                      : `${SITE}/?co=${encodeURIComponent(co)}`,
       image: `${SITE}/assets/og/companies.png`,
     };

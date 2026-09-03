@@ -3887,7 +3887,23 @@ def check_prerendered_pages() -> int:
                  {"id": "seller", "name": "Seller Co", "open_roles": 2,
                   "quota_roles": 1, "sector": "General Gov",
                   "description": "Sells things to cities"},
-                 {"id": "quiet", "name": "Quiet Co", "open_roles": 0}],
+                 {"id": "quiet", "name": "Quiet Co", "open_roles": 0},
+                 # A WRITE-UP ALONE EARNS A PAGE. The old rule was "nothing
+                 # open, no page", on the argument that near-identical empty
+                 # documents are worthless in an index. Once a company carries
+                 # a sourced write-up its page carries facts a crawler cannot
+                 # get from the app, and the argument inverts.
+                 {"id": "profiled", "name": "Profiled Co", "open_roles": 0,
+                  "description": "Sells maps",
+                  "profile": {"paragraphs": ["Profiled Co sells parcel maps to counties."],
+                              "sources": [{"url": "https://profiled.test/about",
+                                           "fetched_on": "2026-09-04"}],
+                              "paragraph_sources": [["https://profiled.test/about"]],
+                              "written_on": "2026-09-05", "by_kind": "site"}},
+                 # a LEGACY profile is a reviewer's notes, not a write-up; the
+                 # page keys on the paragraphs shape and this gets no page
+                 {"id": "legacy", "name": "Legacy Co", "open_roles": 0,
+                  "profile": {"description": "INTERNAL notes", "sources": []}}],
              # EVERY POSTING CARRIES BOTH IDS, because every real one does -
              # 0 of 4,439 on the live board lack opening_id. This fixture
              # omitted it, and when the company page started grouping by
@@ -3911,12 +3927,33 @@ def check_prerendered_pages() -> int:
     tmp = _pl.Path(tempfile.mkdtemp())
     try:
         n_co = build_site.write_company_pages(tmp, board, brand)
-        if n_co != 1:
-            errors += fail(f"wrote {n_co} company pages for one hiring company - "
-                           f"a company with nothing open must not get a page, or "
-                           f"the index fills with near-identical empty documents")
+        if n_co != 2:
+            errors += fail(f"wrote {n_co} company pages for one hiring company "
+                           f"and one profiled company - expected 2. A company "
+                           f"with nothing to say must not get a page, and one "
+                           f"with a sourced write-up must")
         if (tmp / "c" / "quiet.html").exists():
-            errors += fail("a company with nothing open got a prerendered page")
+            errors += fail("a company with nothing open and no write-up got a "
+                           "prerendered page")
+        if (tmp / "c" / "legacy.html").exists():
+            errors += fail("a company whose only `profile` is a reviewer's notes "
+                           "got a page - the writer keyed on the key, not the shape")
+        pf = tmp / "c" / "profiled.html"
+        if not pf.exists():
+            errors += fail("a company with a sourced write-up and nothing open "
+                           "got no page. Crawlers cannot read the app; the "
+                           "write-up is the reason the page exists")
+        else:
+            ph = pf.read_text()
+            if "parcel maps to counties" not in ph:
+                errors += fail("the profiled page does not carry the write-up")
+            if "https://profiled.test/about" not in ph:
+                errors += fail("the profiled page does not link the page the "
+                               "write-up was written from")
+            if "open role" in ph:
+                errors += fail("a page for a company with nothing open claims open roles")
+            if "is hiring" in ph:
+                errors += fail("the title says 'is hiring' for a company with nothing open")
         co = (tmp / "c" / "seller.html").read_text()
         if "Account Executive" not in co:
             errors += fail("a company page does not list the company's roles")
@@ -5547,7 +5584,18 @@ def check_built_pages_count_openings_not_rows() -> int:
             m = re.search(pat, src)
             if not m:
                 continue
-            said, listed = int(m.group(1)), src.count("<li>")
+            # THE ROLES LIST, NOT EVERY LIST. A company page now carries a
+            # second list - its competitors - and counting every <li> on
+            # the page put 5 shortlist entries into the openings tally. When
+            # the page names its roles list, count inside it; a page with
+            # one unnamed list (the state pages) is counted whole as before.
+            a = src.find('<ul class="roles">')
+            if a >= 0:
+                b = src.find("</ul>", a)
+                listed = src[a:b].count("<li>")
+            else:
+                listed = src.count("<li>")
+            said = int(m.group(1))
             capped = "more are on the board" in src or "more compan" in src
             if not capped and listed and said != listed:
                 bad += fail(

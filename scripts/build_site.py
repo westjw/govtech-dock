@@ -331,6 +331,29 @@ def sanity_check(board: dict) -> list[str]:
     return bad
 
 
+def _reg_host(url: str | None) -> str:
+    """example.com from https://www.example.com/x - two labels, lowercased."""
+    h = (urllib.parse.urlsplit(url or "").hostname or "").lower()
+    h = h[4:] if h.startswith("www.") else h
+    bits = h.split(".")
+    return ".".join(bits[-2:]) if len(bits) >= 2 else h
+
+
+def has_static_page(o: dict) -> bool:
+    """One answer, used by the page writer, the meta index and the sitemap.
+
+    Three places used to ask "open_roles?" separately; the day one of them
+    grew a second condition the other two would have gone stale, and a
+    sitemap listing a page that was never written is a 404 submitted to
+    Google as canonical. A company gets a page when it has something a
+    crawler cannot get from the app: open roles, a sourced write-up, or a
+    researched shortlist.
+    """
+    prof = o.get("profile") if isinstance(o.get("profile"), dict) else None
+    return bool(o.get("open_roles") or (prof and prof.get("paragraphs"))
+                or o.get("competitors"))
+
+
 def write_meta_index(out: pathlib.Path, board: dict) -> dict:
     """The small file the middleware reads to title a page.
 
@@ -433,7 +456,15 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
     for o in board.get("organizations", []):
         cos[o["id"]] = {"n": o.get("name") or "", "s": o.get("sector") or "",
                         "d": (o.get("description") or "")[:180],
-                        "r": o.get("open_roles") or 0}
+                        "r": o.get("open_roles") or 0,
+                        # p: a static /c/ page exists, so the canonical may
+                        # point there. w: the registrable website host, which
+                        # the claim Function needs and cannot read from
+                        # companies.json. Both omitted when false/absent, so
+                        # the file does not grow a byte for the 1,700 that
+                        # carry neither.
+                        **({"p": 1} if has_static_page(o) else {}),
+                        **({"w": _reg_host(o.get("website"))} if _reg_host(o.get("website")) else {})}
     # TWO FILES, not one. A role page has no use for 2,113 company records and
     # a company page has none for 4,475 postings; one combined index made the
     # Worker pull 923KB to write a single <title>. Split, each request fetches
@@ -528,7 +559,14 @@ def write_company_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
         by_co.setdefault(p_["company_id"], []).append(p_)
     n = 0
     for o in board.get("organizations", []):
-        if not o.get("open_roles"):
+        # A COMPANY WITH SOMETHING TO SAY GETS A PAGE. This used to be "only
+        # companies with something open", on the argument that 1,810 pages
+        # reading "nothing open right now" are worthless in an index. That
+        # was right when the page had nothing else. Once a company carries a
+        # sourced write-up or a researched shortlist, its page carries facts
+        # a crawler cannot get from the app, and the argument inverts.
+        prof = o.get("profile") if isinstance(o.get("profile"), dict) else None
+        if not has_static_page(o):
             continue
         # Sales first, then the rest, then capped. This site is about sales
         # roles, so a page opening with forty engineering titles buries the
@@ -575,9 +613,54 @@ def write_company_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
                       f'<div class="meta">{html.escape(loc)}</div></li>')
         desc = (o.get("description") or
                 f"{o['name']} sells into {o.get('sector') or 'state and local government'}.")
+        # THE DESCRIPTION ENDS ITS OWN SENTENCE before anything is appended
+        # to it. "…for law enforcement 27 open roles, 3 of them quota-carrying."
+        # shipped in the meta description of every page whose one-liner had
+        # no terminal punctuation; co() in the app already handles this.
+        if desc and desc[-1] not in ".!?":
+            desc += "."
         nq = o.get("quota_roles") or 0
-        line = (f"{o['open_roles']} open role{'s' if o['open_roles'] != 1 else ''}"
-                + (f", {nq} of them quota-carrying" if nq else ""))
+        line = ((f"{o['open_roles']} open role{'s' if o['open_roles'] != 1 else ''}"
+                 + (f", {nq} of them quota-carrying" if nq else ""))
+                if o.get("open_roles") else "")
+
+        # THE WRITE-UP, with its sources as links. Every paragraph on this
+        # page traces to a page on the company's own site, and the reader
+        # gets those pages by name - a claim about a real firm's customers
+        # is checkable in one click or it is not published here.
+        profile_html = ""
+        if prof and prof.get("paragraphs"):
+            srcs = [s for s in (prof.get("sources") or []) if isinstance(s, dict) and s.get("url")]
+            paras = "".join(f"<p>{html.escape(str(x))}</p>" for x in prof["paragraphs"])
+            q = prof.get("quote") if isinstance(prof.get("quote"), dict) else None
+            quote = (f'<blockquote>{html.escape(q["text"])}</blockquote>'
+                     if q and q.get("text") else "")
+            def _path(u):
+                pth = urllib.parse.urlsplit(u).path or "/"
+                return pth if pth == "/" else pth.rstrip("/")
+            src_line = ""
+            if srcs:
+                links = ", ".join(f'<a href="{html.escape(s["url"])}" rel="nofollow noopener">'
+                                  f'{html.escape(_path(s["url"]))}</a>' for s in srcs)
+                when = srcs[0].get("fetched_on")
+                src_line = (f'<p class="note">Written from {len(srcs)} page'
+                            f'{"s" if len(srcs) != 1 else ""} on their site'
+                            f'{", read " + html.escape(str(when)) if when else ""}: '
+                            f'{links}. Every sentence traces to one of them.</p>')
+            profile_html = f'<h2>About</h2>{paras}{quote}{src_line}'
+
+        comp_html = ""
+        if o.get("competitors"):
+            by_id = {x["id"]: x for x in board.get("organizations", []) if x.get("id")}
+            rows = ""
+            for r in o["competitors"]:
+                other = by_id.get(r.get("id")) or {}
+                nm = other.get("name") or r.get("id") or ""
+                rows += (f'<li><div class="role"><a href="/c/{urllib.parse.quote(r["id"])}.html">'
+                         f'{html.escape(nm)}</a></div>'
+                         f'<div class="meta">{html.escape(r.get("why") or "")}</div></li>')
+            comp_html = ('<h2>Competitors</h2><ul class="rivals">' + rows + '</ul>'
+                         '<p class="kv">Who a buyer would shortlist against them.</p>')
         board_link = ""
         if o.get("board_url"):
             board_link = (f'<p><a class="cta" href="{html.escape(o["board_url"])}" '
@@ -596,18 +679,30 @@ def write_company_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
                 + (f'<p class="kv"><a href="{html.escape(o["linkedin"])}" '
                    f'rel="nofollow noopener">Their LinkedIn</a></p>'
                    if o.get("linkedin") else "")
-                + f'<h2>{line}</h2><ul>{items}</ul>'
+                + profile_html
+                + (f'<h2>{line}</h2><ul class="roles">{items}</ul>' if line else "")
                 + (f'<p class="kv">Showing the first {len(shown)}, sales roles '
                    f'first. {hidden} more are on the board.</p>' if hidden else "")
                 + board_link
+                + comp_html
                 + f'<div class="note">Listed on {html.escape(brand["name"])}, which '
                   f'tracks sales roles at state and local government technology '
                   f'companies. <a href="/?co={urllib.parse.quote(o["id"])}">See this '
                   f'company in the board</a>, where the roles are filterable and '
                   f'kept current.</div>')
+        # the title claims "is hiring" only when something is open, and the
+        # meta description leads with the write-up's first sentence when
+        # there is one - it is the sentence a search result will show
+        first = ""
+        if prof and prof.get("paragraphs"):
+            first = str(prof["paragraphs"][0]).split(". ")[0].strip()
+            if first and first[-1] not in ".!?":
+                first += "."
+        meta = " ".join(x for x in (first or desc, f"{line}." if line else "") if x)
+        title = (f"{o['name']} is hiring · {brand['name']}" if line
+                 else f"{o['name']} · {brand['name']}")
         (d / f"{o['id']}.html").write_text(_page(
-            f"{o['name']} is hiring &middot; {brand['name']}".replace("&middot;", "·"),
-            f"{desc} {line}.", f"{site}/c/{o['id']}", body, brand, "companies"))
+            title, meta, f"{site}/c/{o['id']}", body, brand, "companies"))
         n += 1
     return n
 
@@ -1057,7 +1152,10 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
     urls = [(f"{site}/", "daily", "1.0")]
     for tab in ("jobs", "companies", "conferences", "market", "alerts"):
         urls.append((f"{site}/?tab={tab}", "daily", "0.8"))
-    hiring = [o for o in board.get("organizations", []) if o.get("open_roles")]
+    # every company that HAS a page, not every company that is hiring - the
+    # 1,810-near-identical-documents argument dies once a page carries a
+    # sourced write-up. Same gate as the writer, by construction.
+    hiring = [o for o in board.get("organizations", []) if has_static_page(o)]
     # /c/<id>.html, not ?co=. Both addresses show the same company, so one of
     # them has to be the canonical or they compete with each other; the static
     # page is the one with the facts in its HTML, which is what a crawler that
