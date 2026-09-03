@@ -753,6 +753,146 @@ def check_proposal_rulings_cover_every_kind() -> int:
     return errors
 
 
+def check_news_extractor_refuses_undated() -> int:
+    """A news item is a headline the site printed and a date the site stated.
+
+    No date, no item. A timeline entry with a guessed date is a false fact
+    about when something happened, and "recent news" carrying the wrong year
+    is worse than no news at all. Nothing here is an agent: it republishes a
+    headline and a date from the company's own domain, which is why the owner
+    ruled it needs a door and a kill switch rather than 20,000 rulings.
+
+    Every case below is a bug the measurement actually found on stored pages:
+
+    THE BOUNDARY. ISO_DATE ended in \b, and "2026-06-24T14:47:57" has no word
+    boundary between "4" and "T", so every JSON-LD timestamp on every site
+    failed to parse. 158 of 337 items were refused for "no date" because of
+    one anchor.
+
+    THE INDEX THAT IS AN ARTICLE. A site whose newsroom link points at its
+    latest post gives us that post as the "index"; parsed as a list, its own
+    headline is an anchor to itself with no date beside it, and the site's
+    biggest story was refused.
+
+    THE CARD IN FRONT OF THE HEADLINE. Anchor text is the whole card, so it
+    arrives as "08/10/26 BRINC Drones Adds..." and "Article The Large Load
+    Imperative...". The date and the category are true and belong in their
+    own fields.
+
+    THE SECTION INDEX. /resources/insights/ matches the article shape, so a
+    listing page offered its own og:title, "CredibleMind", as a dated item.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import news
+
+    errors = 0
+    # --- dates the sites actually print, and the ones that are not dates ----
+    for raw, want in [("2026-06-24T14:47:57+00:00", "2026-06-24"),
+                      ("2026-06-24", "2026-06-24"),
+                      ("August 10, 2026", "2026-08-10"),
+                      ("10 August 2026", "2026-08-10"),
+                      ("Aug. 3, 2026", "2026-08-03"),
+                      ("08/10/2026", "2026-08-10"),
+                      ("February 30, 2026", None),
+                      ("Spring 2026", None), ("", None)]:
+        got = news.parse_date(raw)
+        if got != want:
+            errors += fail(f"news.parse_date({raw!r}) = {got!r}, expected {want!r}")
+
+    # --- the headline a reader sees, stripped of the card's chrome ---------
+    for raw, want in [("08/10/26 BRINC Drones Adds Free Wildfire Tracking",
+                       "BRINC Drones Adds Free Wildfire Tracking"),
+                      ("Article The Large Load Imperative",
+                       "The Large Load Imperative"),
+                      ("Customer stories Inside Spokane County's plan",
+                       "Inside Spokane County's plan"),
+                      ("Oct 15, 2025 Psych Hub Partners With The Tour",
+                       "Psych Hub Partners With The Tour"),
+                      ("Board of Directors Adds Two Members",
+                       "Board of Directors Adds Two Members")]:
+        got, _ = news._headline(raw)
+        if got != want:
+            errors += fail(f"news._headline({raw[:40]!r}) = {got!r}, expected {want!r}")
+
+    # --- an index page: dated rows kept, undated rows carried forward ------
+    index = ('<ul>'
+             '<li><a href="/news/city-picks-us/">City of Dallas Picks Acme for Dispatch</a>'
+             '<time datetime="2026-05-04">May 4</time></li>'
+             '<li><a href="/news/no-date-here/">Acme Opens A New Office In Denver</a></li>'
+             '<li><a href="/news/read-more/">Read more about our story</a></li>'
+             '<li><a href="https://elsewhere.example/x/story/">Somebody Else Wrote This Story</a>'
+             '<time datetime="2026-05-04">May 4</time></li>'
+             '</ul>')
+    items = news.items_from_index(index, "https://acme.example/news/")
+    urls = {news._norm_url(i["url"]) for i in items}
+    if "acme.example/news/city-picks-us" not in urls:
+        errors += fail("items_from_index dropped a dated article link")
+    if any("elsewhere.example" in u for u in urls):
+        errors += fail("items_from_index followed a link off the company's domain")
+    if any(i["headline"].startswith("Read more") for i in items):
+        errors += fail("items_from_index kept a 'Read more' anchor as a headline")
+    dated = [i for i in items if i["date"]]
+    if not dated or dated[0]["date"] != "2026-05-04":
+        errors += fail(f"items_from_index lost the <time datetime> date: {items}")
+
+    # --- an article page: JSON-LD wins, the h1 is the headline -------------
+    art = ('<html><head><meta property="og:title" content="Acme Wins Dallas Press Release">'
+           '<script type="application/ld+json">{"@graph":[{"headline":"x",'
+           '"datePublished":"2026-06-24T14:47:57+00:00"}]}</script></head>'
+           '<body><h1>City of Dallas Picks Acme for Dispatch</h1></body></html>')
+    a = news.item_from_article(art, "https://acme.example/news/city-picks-us/")
+    if a["date"] != "2026-06-24" or a["date_source"] != "json-ld":
+        errors += fail(f"item_from_article missed the JSON-LD date: {a}. The "
+                       f"ISO pattern must not end in a word boundary")
+    if a["headline"] != "City of Dallas Picks Acme for Dispatch":
+        errors += fail(f"item_from_article preferred og:title over the visible "
+                       f"h1: {a['headline']!r}. The door checks the headline "
+                       f"against the page TEXT, which has no <head> in it")
+
+    # --- the door ---------------------------------------------------------
+    texts = {"https://acme.example/news/": "City of Dallas Picks Acme for Dispatch "
+                                           "Acme Opens A New Office In Denver"}
+    co = {"website": "https://acme.example", "year_founded": 2015}
+    ok = {"url": "https://acme.example/news/city-picks-us/",
+          "headline": "City of Dallas Picks Acme for Dispatch", "date": "2026-05-04"}
+    if news.check_news_item(ok, texts, co, today="2026-09-03") is not None:
+        errors += fail("the news door refused a dated, first-party, on-page headline")
+    for name, item, token in [
+            ("an undated item", {**ok, "date": None}, "no date"),
+            ("a future date", {**ok, "date": "2099-01-01"}, "future"),
+            ("another company's domain",
+             {**ok, "url": "https://elsewhere.example/x/"}, "own domain"),
+            ("a bare section title", {**ok, "headline": "CredibleMind"}, "not a story"),
+            ("navigation", {**ok, "headline": "Read more about our story"}, "navigation"),
+            ("a headline on no fetched page",
+             {**ok, "headline": "Acme Acquires A Rival For Two Billion"}, "verbatim")]:
+        got = news.check_news_item(item, texts, co, today="2026-09-03")
+        if got is None:
+            errors += fail(f"the news door ACCEPTED {name}. It would appear on a "
+                           f"public timeline as something that happened")
+        elif token not in got.lower():
+            errors += fail(f"the news door refused {name} without saying why "
+                           f"({token!r} not in {got!r})")
+
+    # --- kinds, by rule ---------------------------------------------------
+    for head, want in [("City of Dallas Picks Acme for Dispatch", "contract"),
+                       ("Acme Raises $125 Million in Series C", "funding"),
+                       ("Acme Appoints Jane Roe as Chief Revenue Officer", "leadership"),
+                       ("Acme Launches Wildfire Tracking", "product"),
+                       ("A Note On Our Company Values", "press")]:
+        got, _ = news.kind(head)
+        if got != want:
+            errors += fail(f"news.kind({head[:34]!r}) = {got!r}, expected {want!r}")
+
+    # --- and it never touches the map -------------------------------------
+    src = (ROOT / "scripts" / "news.py").read_text()
+    if "save_companies" in src or "companies.json" in src:
+        errors += fail("news.py writes companies.json. News is derived from "
+                       "somebody else's pages nightly; it belongs in its own "
+                       "store, and only a journalled kill switch touches the map")
+    return errors
+
+
 def check_profile_door_needs_provenance() -> int:
     """A sentence about somebody else's company must quote their own page.
 
@@ -11277,6 +11417,7 @@ def main() -> int:
     errors += check_rival_door_refuses_a_category()
     errors += check_every_queue_has_a_renderer()
     errors += check_proposal_rulings_cover_every_kind()
+    errors += check_news_extractor_refuses_undated()
     errors += check_profile_door_needs_provenance()
     errors += check_ingest_keeps_refusals()
     errors += check_company_page_profile_states()

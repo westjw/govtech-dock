@@ -943,7 +943,85 @@
    }
   ],
   "competitors_checked_on": "2026-09-02",
-  "competitors_none_found": false
+  "competitors_none_found": false,
+  "profile": {
+   "paragraphs": [
+    "Peregrine builds what it calls Operational AI for High-Criticality Organizations. The product is a full-stack platform that turns disconnected data into complete operational context and puts actionable intelligence in front of every person in an organization. Law enforcement is listed as a solution area, and the platform is positioned for public safety work.",
+    "The site lists organizations that include the Atlanta Police Department, the Cuyahoga County Prosecutor's Office, Eagle Fire Department, and Northern Arizona University. Also named are Manatee County Emergency Management, East Pierce Fire-Rescue, the Merced County District Attorney, and Pinellas County Safety & Emergency Services. The Fairfax County Police Department is quoted alongside a case described as a child abduction suspect identified in 13 minutes.",
+    "The platform is laid out in numbered steps: forward deployed engineering, data ingestion and enrichment, organizational context, semantic ontology, intuitive interfaces and AI, and data governance. On governance, the company states that a customer keeps complete control over its data, full visibility into how that data is used, and granular access controls. A banner on the site announces a $250 million Series D."
+   ],
+   "quote": {
+    "text": "Peregrine surfaces the unseen connections in your data. The result: new perspectives, shared awareness, faster action, and new ways of working.",
+    "url": "https://www.peregrine.io"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.peregrine.io",
+     "quote": "Operational AI for High-Criticality Organizations"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.peregrine.io",
+     "quote": "Peregrine's full-stack platform transforms disconnected data into complete operational context. Built around your reality, it puts actionable intelligence in the hands of every person in your organization."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.peregrine.io",
+     "quote": "Solutions Law enforcement"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.peregrine.io",
+     "quote": "Ada county paramedics\nedmonton police service\nNorthern Arizona University\nCuyahoga County Prosecutor's Office\nEagle Fire Department\nAtlanta Police Department"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.peregrine.io",
+     "quote": "Manatee County Emergency Management\nFlorida Fish and Wildlife Conservation Commission\nEast Pierce Fire-Rescue\nMerced County District Attorney\nMiami Police Department\nPinellas County Safety & Emergency Services"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.peregrine.io",
+     "quote": "Child abduction suspect identified in 13 minutes"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.peregrine.io",
+     "quote": "02 Data ingestion and enrichment\n03 Organizational context\n04 Semantic ontology\n05 Intuitive interfaces and AI\n06 Data governance"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.peregrine.io",
+     "quote": "Peregrine gives you complete control over your data, full visibility into how your data is used, and granular access controls, all in a secure and compliant platform."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.peregrine.io",
+     "quote": "$250 million Series D."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.peregrine.io",
+     "sha": "27b41b88d162ffe5",
+     "fetched_on": "2026-09-02"
+    }
+   ],
+   "written_on": "2026-09-02",
+   "by": "agent:profile-trial-2026-09-03",
+   "ruled_by": "agent:profile-trial-2026-09-03",
+   "ruled_on": "2026-09-02"
+  }
  },
  {
   "id": "soundthinking",
@@ -11160,7 +11238,106 @@
    }
   ],
   "competitors_checked_on": "2026-09-02",
-  "competitors_none_found": false
+  "competitors_none_found": false,
+  "profile": {
+   "paragraphs": [
+    "Verkada sells cloud-managed physical security systems that customers around the world use to operate safer, smarter buildings. The line covers cameras, alarms, and unified cloud physical security software with remote access and AI analytics. Customers control an entire physical security operation from Verkada Command.",
+    "The architecture eliminates NVRs and servers by blending the reliability of on-prem with the scalability of the cloud. Onboard camera storage options run 30, 60, 90, 120, or 365 days. Cameras use only 20-50 Kbps of upload bandwidth while recording continuously, even during internet outages.",
+    "More than 30,000 organizations worldwide use Verkada, from small and midsize businesses to Fortune 500 leaders. Customer stories include the City of Los Angeles, which uses Verkada to unify physical security and improve public safety. Another story covers the Winston-Salem Police Department, whose real-time crime center solves homicides with LPR and Verkada integrations. A story from Parkersburg, West Virginia describes local government, law enforcement and IT teams keeping citizens safe."
+   ],
+   "quote": {
+    "text": "Privacy is part of our product DNA, which is why we engineer our platform around six privacy pillars",
+    "url": "https://www.verkada.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.verkada.com/customers/",
+     "quote": "Discover how customers around the world operate safer, smarter buildings with Verkada\u2019s cloud-managed physical security solutions."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.verkada.com/customers/",
+     "quote": "Start your free trial of Verkada's cameras, alarms, and more with free shipping both ways. Includes unified cloud physical security software with remote access and AI analytics."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.verkada.com",
+     "quote": "Control your entire physical security operation from Verkada Command"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.verkada.com",
+     "quote": "Eliminate NVRs and servers by blending the reliability of on-prem with the scalability of the cloud."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.verkada.com/solutions/hybrid-cloud-architecture/",
+     "quote": "choose from 30, 60, 90, 120, or 365 days of onboard storage"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.verkada.com/solutions/hybrid-cloud-architecture/",
+     "quote": "cameras that use only 20-50 Kbps of upload bandwidth while recording continuously, even during internet outages"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.verkada.com",
+     "quote": "More than 30,000 organizations worldwide trust Verkada"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.verkada.com/customers/",
+     "quote": "In this story, the City of Los Angeles uses Verkada to unify physical security and improve public safety."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.verkada.com/customers/",
+     "quote": "This real-time crime center solves homicides with LPR and Verkada integrations."
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://www.verkada.com/customers/",
+     "quote": "Learn how local government, law enforcement and IT teams keep citizens safe."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.verkada.com",
+     "sha": "dfdbe745b54975cf",
+     "fetched_on": "2026-09-02"
+    },
+    {
+     "url": "https://www.verkada.com/customers/",
+     "sha": "dfa5c7373f15840f",
+     "fetched_on": "2026-09-02"
+    },
+    {
+     "url": "https://www.verkada.com/solutions/hybrid-cloud-architecture/",
+     "sha": "1f9be1521d3e1e70",
+     "fetched_on": "2026-09-02"
+    },
+    {
+     "url": "https://www.verkada.com/solutions/retail/",
+     "sha": "21997ec1878e2ce1",
+     "fetched_on": "2026-09-02"
+    }
+   ],
+   "written_on": "2026-09-02",
+   "by": "agent:profile-trial-2026-09-03",
+   "ruled_by": "agent:profile-trial-2026-09-03",
+   "ruled_on": "2026-09-02"
+  }
  },
  {
   "id": "clearview-ai",

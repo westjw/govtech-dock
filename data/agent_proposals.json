@@ -9319,5 +9319,305 @@
   "sector": "Public Safety",
   "status": "accepted",
   "why": "Wrap is close to alone here. Axon is the one real edge: both sell a handheld device an officer deploys at distance to subdue a subject without lethal force, to the same chief and the same equipment line. Excluded StarChase, which also avoids escalation but solves vehicle pursuit rather than subject restraint, and excluded every simulator vendor - training on use of force is not a substitute for the device."
+ },
+ "profile:verkada": {
+  "kind": "profile",
+  "id": "verkada",
+  "name": "Verkada",
+  "sector": null,
+  "category": null,
+  "confidence": "high",
+  "why": "",
+  "evidence": "https://www.verkada.com",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Verkada sells cloud-managed physical security systems that customers around the world use to operate safer, smarter buildings.",
+     "url": "https://www.verkada.com/customers/",
+     "quote": "Discover how customers around the world operate safer, smarter buildings with Verkada\u2019s cloud-managed physical security solutions."
+    },
+    {
+     "text": "The line covers cameras, alarms, and unified cloud physical security software with remote access and AI analytics.",
+     "url": "https://www.verkada.com/customers/",
+     "quote": "Start your free trial of Verkada's cameras, alarms, and more with free shipping both ways. Includes unified cloud physical security software with remote access and AI analytics."
+    },
+    {
+     "text": "Customers control an entire physical security operation from Verkada Command.",
+     "url": "https://www.verkada.com",
+     "quote": "Control your entire physical security operation from Verkada Command"
+    }
+   ],
+   [
+    {
+     "text": "The architecture eliminates NVRs and servers by blending the reliability of on-prem with the scalability of the cloud.",
+     "url": "https://www.verkada.com",
+     "quote": "Eliminate NVRs and servers by blending the reliability of on-prem with the scalability of the cloud."
+    },
+    {
+     "text": "Onboard camera storage options run 30, 60, 90, 120, or 365 days.",
+     "url": "https://www.verkada.com/solutions/hybrid-cloud-architecture/",
+     "quote": "choose from 30, 60, 90, 120, or 365 days of onboard storage"
+    },
+    {
+     "text": "Cameras use only 20-50 Kbps of upload bandwidth while recording continuously, even during internet outages.",
+     "url": "https://www.verkada.com/solutions/hybrid-cloud-architecture/",
+     "quote": "cameras that use only 20-50 Kbps of upload bandwidth while recording continuously, even during internet outages"
+    }
+   ],
+   [
+    {
+     "text": "More than 30,000 organizations worldwide use Verkada, from small and midsize businesses to Fortune 500 leaders.",
+     "url": "https://www.verkada.com",
+     "quote": "More than 30,000 organizations worldwide trust Verkada"
+    },
+    {
+     "text": "Customer stories include the City of Los Angeles, which uses Verkada to unify physical security and improve public safety.",
+     "url": "https://www.verkada.com/customers/",
+     "quote": "In this story, the City of Los Angeles uses Verkada to unify physical security and improve public safety."
+    },
+    {
+     "text": "Another story covers the Winston-Salem Police Department, whose real-time crime center solves homicides with LPR and Verkada integrations.",
+     "url": "https://www.verkada.com/customers/",
+     "quote": "This real-time crime center solves homicides with LPR and Verkada integrations."
+    },
+    {
+     "text": "A story from Parkersburg, West Virginia describes local government, law enforcement and IT teams keeping citizens safe.",
+     "url": "https://www.verkada.com/customers/",
+     "quote": "Learn how local government, law enforcement and IT teams keep citizens safe."
+    }
+   ]
+  ],
+  "quote": {
+   "text": "Privacy is part of our product DNA, which is why we engineer our platform around six privacy pillars",
+   "url": "https://www.verkada.com"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.verkada.com",
+     "sha": "dfdbe745b54975cf",
+     "fetched_on": "2026-09-02"
+    },
+    {
+     "url": "https://www.verkada.com/customers/",
+     "sha": "dfa5c7373f15840f",
+     "fetched_on": "2026-09-02"
+    },
+    {
+     "url": "https://www.verkada.com/solutions/hybrid-cloud-architecture/",
+     "sha": "1f9be1521d3e1e70",
+     "fetched_on": "2026-09-02"
+    },
+    {
+     "url": "https://www.verkada.com/solutions/retail/",
+     "sha": "21997ec1878e2ce1",
+     "fetched_on": "2026-09-02"
+    }
+   ]
+  },
+  "by": "agent:profile-trial-2026-09-03",
+  "at": "2026-09-02T23:17:01-04:00",
+  "status": "accepted",
+  "ruled_by": "agent:profile-trial-2026-09-03",
+  "ruled_on": "2026-09-02",
+  "ruled_why": "trial of the profile engine end to end: three write-ups, every quote and number verified against the company's own pages by hand"
+ },
+ "profile:peregrine": {
+  "kind": "profile",
+  "id": "peregrine",
+  "name": "Peregrine",
+  "sector": null,
+  "category": null,
+  "confidence": "high",
+  "why": "",
+  "evidence": "https://www.peregrine.io",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Peregrine builds what it calls Operational AI for High-Criticality Organizations.",
+     "url": "https://www.peregrine.io",
+     "quote": "Operational AI for High-Criticality Organizations"
+    },
+    {
+     "text": "The product is a full-stack platform that turns disconnected data into complete operational context and puts actionable intelligence in front of every person in an organization.",
+     "url": "https://www.peregrine.io",
+     "quote": "Peregrine's full-stack platform transforms disconnected data into complete operational context. Built around your reality, it puts actionable intelligence in the hands of every person in your organization."
+    },
+    {
+     "text": "Law enforcement is listed as a solution area, and the platform is positioned for public safety work.",
+     "url": "https://www.peregrine.io",
+     "quote": "Solutions Law enforcement"
+    }
+   ],
+   [
+    {
+     "text": "The site lists organizations that include the Atlanta Police Department, the Cuyahoga County Prosecutor's Office, Eagle Fire Department, and Northern Arizona University.",
+     "url": "https://www.peregrine.io",
+     "quote": "Ada county paramedics\nedmonton police service\nNorthern Arizona University\nCuyahoga County Prosecutor's Office\nEagle Fire Department\nAtlanta Police Department"
+    },
+    {
+     "text": "Also named are Manatee County Emergency Management, East Pierce Fire-Rescue, the Merced County District Attorney, and Pinellas County Safety & Emergency Services.",
+     "url": "https://www.peregrine.io",
+     "quote": "Manatee County Emergency Management\nFlorida Fish and Wildlife Conservation Commission\nEast Pierce Fire-Rescue\nMerced County District Attorney\nMiami Police Department\nPinellas County Safety & Emergency Services"
+    },
+    {
+     "text": "The Fairfax County Police Department is quoted alongside a case described as a child abduction suspect identified in 13 minutes.",
+     "url": "https://www.peregrine.io",
+     "quote": "Child abduction suspect identified in 13 minutes"
+    }
+   ],
+   [
+    {
+     "text": "The platform is laid out in numbered steps: forward deployed engineering, data ingestion and enrichment, organizational context, semantic ontology, intuitive interfaces and AI, and data governance.",
+     "url": "https://www.peregrine.io",
+     "quote": "02 Data ingestion and enrichment\n03 Organizational context\n04 Semantic ontology\n05 Intuitive interfaces and AI\n06 Data governance"
+    },
+    {
+     "text": "On governance, the company states that a customer keeps complete control over its data, full visibility into how that data is used, and granular access controls.",
+     "url": "https://www.peregrine.io",
+     "quote": "Peregrine gives you complete control over your data, full visibility into how your data is used, and granular access controls, all in a secure and compliant platform."
+    },
+    {
+     "text": "A banner on the site announces a $250 million Series D.",
+     "url": "https://www.peregrine.io",
+     "quote": "$250 million Series D."
+    }
+   ]
+  ],
+  "quote": {
+   "text": "Peregrine surfaces the unseen connections in your data. The result: new perspectives, shared awareness, faster action, and new ways of working.",
+   "url": "https://www.peregrine.io"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.peregrine.io",
+     "sha": "27b41b88d162ffe5",
+     "fetched_on": "2026-09-02"
+    }
+   ]
+  },
+  "by": "agent:profile-trial-2026-09-03",
+  "at": "2026-09-02T23:17:01-04:00",
+  "status": "accepted",
+  "ruled_by": "agent:profile-trial-2026-09-03",
+  "ruled_on": "2026-09-02",
+  "ruled_why": "trial of the profile engine end to end: three write-ups, every quote and number verified against the company's own pages by hand"
+ },
+ "profile:may-mobility": {
+  "kind": "profile",
+  "id": "may-mobility",
+  "name": "May Mobility",
+  "sector": null,
+  "category": null,
+  "confidence": "high",
+  "why": "",
+  "evidence": "https://maymobility.com",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "May Mobility is an AV company making safe, reliable autonomous rides a reality today.",
+     "url": "https://maymobility.com",
+     "quote": "May Mobility is making safe, reliable autonomous rides a reality today."
+    },
+    {
+     "text": "The company brings autonomous driving technology to ride-hail platforms, cities, campuses and businesses.",
+     "url": "https://maymobility.com",
+     "quote": "Whether you're a ride-hail platform, city, campus or business, May Mobility can bring autonomous driving technology to the transportation challenges that matter most to you."
+    },
+    {
+     "text": "That service reaches from rural Minnesota to Atlanta and to the dense streets of Japan.",
+     "url": "https://maymobility.com",
+     "quote": "From rural Minnesota to Atlanta and to the dense streets of Japan, May Mobility is making safe, reliable autonomous rides a reality today."
+    }
+   ],
+   [
+    {
+     "text": "The cornerstone of the technology is a Multi-Policy Decision Making system, called MPDM.",
+     "url": "https://maymobility.com",
+     "quote": "The cornerstone of our technology lies in our Multi-Policy Decision Making (MPDM) system, which is a major advancement over other AVs in the industry."
+    },
+    {
+     "text": "MPDM is a real-time, reinforcement-learning AI algorithm that is not limited by training data collected ahead of time.",
+     "url": "https://maymobility.com",
+     "quote": "MPDM is real-time, reinforcement-learning AI algorithm that isn't limited by training data collected ahead of time."
+    },
+    {
+     "text": "Vehicles generate training examples relevant to their current environment and learn while driving.",
+     "url": "https://maymobility.com",
+     "quote": "Our vehicles generate training examples relevant to their current environment and learn while driving"
+    },
+    {
+     "text": "That loop runs every 200 milliseconds and is meant to help the system react to new situations and driving scenarios.",
+     "url": "https://maymobility.com",
+     "quote": "every 200 milliseconds! This technology amplifies our autonomous driving system\u2019s ability to learn and react to new situations and driving scenarios over the traditional approaches used by other companies."
+    }
+   ],
+   [
+    {
+     "text": "An autonomous ride-hail preview is now live on Lyft.",
+     "url": "https://maymobility.com",
+     "quote": "May Mobility's autonomous ride-hail preview is now live on Lyft."
+    },
+    {
+     "text": "News listed on the page includes a first autonomous vehicle fleet deployed by Lyft and May Mobility in Atlanta.",
+     "url": "https://maymobility.com",
+     "quote": "Lyft and May Mobility Deploy Their First Autonomous Vehicle Fleet in Atlanta"
+    },
+    {
+     "text": "Another item announces a strategic partnership with Uber to scale autonomous vehicles.",
+     "url": "https://maymobility.com",
+     "quote": "Uber and May Mobility Announce Strategic Partnership to Scale Autonomous Vehicles"
+    },
+    {
+     "text": "A third describes expanding its AV technology into Southeast Asia with Grab investment.",
+     "url": "https://maymobility.com",
+     "quote": "May Mobility to Expand Its AV Technology into Southeast Asia with Grab Investment"
+    }
+   ]
+  ],
+  "quote": {
+   "text": "May Mobility can bring autonomous driving technology to the transportation challenges that matter most to you.",
+   "url": "https://maymobility.com"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://maymobility.com",
+     "sha": "6d09f516116c0a0f",
+     "fetched_on": "2026-09-02"
+    }
+   ]
+  },
+  "by": "agent:profile-trial-2026-09-03",
+  "at": "2026-09-02T23:17:01-04:00",
+  "status": "pending"
  }
 }

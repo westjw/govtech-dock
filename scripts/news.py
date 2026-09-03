@@ -57,7 +57,12 @@ TEXT_DATE = re.compile(
     r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})\b"
     r"|\b(\d{1,2})\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s+(\d{4})\b",
     re.I)
-ISO_DATE = re.compile(r"\b(20\d\d)-(\d\d)-(\d\d)\b")
+# NOT \b AFTER THE DAY. A JSON-LD date is "2026-06-24T14:47:57+00:00", and
+# between "4" and "T" there is no word boundary, so every ISO timestamp on
+# every site failed to parse and the extractor fell through to weaker sources
+# or refused the item outright. 158 of 337 items were refused for "no date"
+# because of this one anchor.
+ISO_DATE = re.compile(r"\b(20\d\d)-(\d\d)-(\d\d)(?!\d)")
 US_DATE = re.compile(r"\b(\d{1,2})/(\d{1,2})/(20\d\d)\b")
 
 # CHROME THAT LOOKS LIKE A HEADLINE. Measured on the stored pages; each of
@@ -73,7 +78,8 @@ NAV_CHROME = re.compile(
 # see why a headline was filed where it was. First match wins.
 NEWS_RULES = (
     ("contract", re.compile(
-        r"\b(award(ed|s)?|select(ed|s)|chooses|chose|deploys?|goes live|went live|"
+        r"\b(award(ed|s)?|select(ed|s)|chooses|chose|picks?|taps?|deploys?|"
+        r"goes live|went live|"
         r"contract|partners? with|signs?|renew(al|ed|s)|adopts?|implements?|rollout|"
         r"rolls? out)\b", re.I)),
     ("funding", re.compile(
@@ -138,8 +144,42 @@ TIME_DT = re.compile(r"""<time\b[^>]*datetime\s*=\s*["']([^"']+)["']""", re.I)
 INNER = re.compile(r"<[^>]+>")
 
 
+# WHAT A CARD PUTS IN FRONT OF THE HEADLINE. Anchor text is the whole card,
+# so it arrives as "08/10/26 BRINC Drones Adds...", "Article The Large Load
+# Imperative...", "Customer stories 'We have a plan'...". The date and the
+# category are true and belong in their own fields, not inside the sentence a
+# reader sees. Anchored to the START only, and only the shapes measured on the
+# stored pages.
+LEAD_DATE = re.compile(
+    r"^(?:\d{1,2}/\d{1,2}/\d{2,4}|20\d\d-\d\d-\d\d|"
+    r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s+20\d\d|"
+    r"\d{1,2}\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?,?\s+20\d\d)"
+    r"[\s|·\u2013\u2014-]*", re.I)
+LEAD_LABEL = re.compile(
+    r"^(article|blog|news|press release|press|customer stor(y|ies)|case stud(y|ies)|"
+    r"insight|insights|resource|resources|story|stories|update|updates|"
+    r"announcement|webinar|guide|report|whitepaper|white paper|ebook|podcast|video)"
+    r"[\s:|·\u2013\u2014-]+(?=[A-Z0-9])", re.I)
+
+
 def _clean(s: str) -> str:
     return re.sub(r"\s+", " ", htmllib.unescape(INNER.sub(" ", s or ""))).strip()
+
+
+def _headline(s: str) -> tuple[str, str | None]:
+    """(headline, a date the card printed in front of it), both cleaned."""
+    s = _clean(s)
+    date = None
+    m = LEAD_DATE.match(s)
+    if m:
+        date = parse_date(m.group(0))
+        s = s[m.end():].strip()
+    for _ in range(2):                    # "Article Customer stories Foo"
+        m2 = LEAD_LABEL.match(s)
+        if not m2:
+            break
+        s = s[m2.end():].strip()
+    return s, date
 
 
 def _block(html: str, i: int, j: int) -> str:
@@ -172,24 +212,24 @@ def items_from_index(html: str, base: str) -> list[dict]:
         if key in seen:
             continue
         block = _block(html, m.start(), m.end())
-        head = _clean(inner)
+        head, lead_date = _headline(inner)
         if len(head.split()) < 4 or NAV_CHROME.match(head):
             # the anchor is "Read more" or an image; the headline is the
             # nearest heading in the same card
-            hs = [_clean(h) for h in HEADING.findall(block)]
+            hs = [_headline(h)[0] for h in HEADING.findall(block)]
             hs = [h for h in hs if len(h.split()) >= 4 and not NAV_CHROME.match(h)]
             head = hs[0] if hs else ""
         if not head:
             continue
         seen.add(key)
-        date = None
+        date, src = lead_date, "card-date"
         tm = TIME_DT.search(block)
-        if tm:
-            date = parse_date(tm.group(1))
+        if not date and tm:
+            date, src = parse_date(tm.group(1)), "time"
         if not date:
-            date = parse_date(_clean(block))
+            date, src = parse_date(_clean(block)), "index-text"
         out.append({"url": u, "headline": head[:MAX_HEAD], "date": date,
-                    "date_source": ("time" if tm and date else "index-text" if date else None)})
+                    "date_source": src if date else None})
     return out
 
 
@@ -238,13 +278,18 @@ def item_from_article(html: str, url: str) -> dict:
         if h1:
             i = h1.start()
             date, src = parse_date(_clean((html or "")[max(0, i - 300):i + 600])), "near-h1"
-    head = metas.get("og:title") or ""
-    if not head:
-        h1 = H1.search(html or "")
-        head = _clean(h1.group(1)) if h1 else ""
+    # THE <h1> FIRST, og:title SECOND. The door checks a headline against the
+    # page TEXT, and text_of strips <head>, so an og:title carrying a suffix
+    # the visible heading lacks ("... Launch Press Release") is refused as
+    # not-on-the-page - a true item lost to a formatting difference. The h1
+    # is the thing a reader actually saw.
+    h1 = H1.search(html or "")
+    head = _headline(h1.group(1))[0] if h1 else ""
+    if len(head.split()) < 4:
+        head = _headline(metas.get("og:title") or "")[0] or head
     if not head:
         tt = TITLE.search(html or "")
-        head = _clean(tt.group(1)) if tt else ""
+        head = _headline(tt.group(1))[0] if tt else ""
         head = re.split(r"\s+[|–—-]\s+", head)[0]      # strip the site suffix
     return {"url": url, "headline": head[:MAX_HEAD], "date": date,
             "date_source": src if date else None}
@@ -277,6 +322,13 @@ def check_news_item(item: dict, texts: dict[str, str], company: dict,
         return f"3. {h!r} is not the company's own domain"
     if len(head) < MIN_HEAD or len(head) > MAX_HEAD:
         return f"4. headline length {len(head)} is outside {MIN_HEAD}..{MAX_HEAD}"
+    # A SECTION INDEX IS NOT AN ITEM. /resources/insights/ matches the article
+    # shape (a path segment plus a slug), so a listing page yielded its own
+    # og:title - "CredibleMind" - as a news item dated by its JSON-LD. An item
+    # is a sentence about something that happened; four words is the same
+    # floor the index parser already applies to an anchor.
+    if len(head.split()) < 4:
+        return f"4. headline {head!r} is {len(head.split())} words, not a story"
     if NAV_CHROME.match(head):
         return f"5. headline {head[:40]!r} is navigation"
     if re.fullmatch(r"[\d\s.,%$]+", head):
@@ -308,10 +360,20 @@ def extract(company: dict, rec: dict, today: str | None = None) -> dict:
                 "items": [], "refused": []}
     texts = {pg["url"]: pg.get("text") or text_of(pg["html"]) for pg in pages}
     by_url: dict[str, dict] = {}
-    # index pages first: headlines with (maybe) dates
+    # AN "INDEX" MAY ITSELF BE AN ARTICLE. fetch_profiles follows /news/ from
+    # a homepage, and on a site whose newsroom link points at the latest post
+    # that page IS the post - brinc's did. Parsed as an index, its own
+    # headline came back as an anchor pointing at itself with no date beside
+    # it, and the site's biggest story ("Raises $125 Million") was refused.
+    # Any page whose own url is article-shaped yields its own item first, and
+    # its links are still read, because a post page also lists related posts.
     for pg in pages:
         if pg.get("from_index"):
             continue
+        if fp.ARTICLE.search(up.urlsplit(pg["url"]).path or ""):
+            own = item_from_article(pg["html"], pg["url"])
+            if own.get("headline"):
+                by_url[_norm_url(pg["url"])] = own
         for it in items_from_index(pg["html"], pg["url"]):
             by_url.setdefault(_norm_url(it["url"]), it)
     # article pages: the authoritative date, and a headline if the index had none
