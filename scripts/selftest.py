@@ -773,6 +773,46 @@ def check_proposal_rulings_cover_every_kind() -> int:
     return errors
 
 
+def check_deploy_doc_claims_are_dated() -> int:
+    """DEPLOY.md's open steps must not assert live state that has gone stale.
+
+    TWICE IN ONE DAY a step in that file was reported to the owner as
+    outstanding work when it had already been done: adding the Pages custom
+    domain, and extending Cloudflare Access to it. Both were copied into a
+    to-do list from the document rather than checked, while the evidence sat
+    in the same terminal - the domain had been curled successfully a dozen
+    times that session.
+
+    That is the project's own rule pointed the wrong way. `scan_pagetext`
+    returns `unreadable` rather than "none found"; `salary.py` stays silent
+    rather than guessing; the board says "not measured" rather than zero. A
+    document reporting a stale status is the same false claim, aimed at the
+    owner instead of a visitor.
+
+    This cannot verify Cloudflare from here, and should not try - a selftest
+    that fails when a network is down is a selftest people learn to skip. It
+    asserts the weaker, sufficient thing: every step this file marks DONE
+    carries the date it was verified, and the file tells a reader to re-check
+    rather than to trust it.
+    """
+    import re
+    doc = (ROOT / "DEPLOY.md").read_text()
+    errors = 0
+    # a struck-through heading is a claim that something is finished
+    for m in re.finditer(r"^\s*\d+\.\s+\*\*~~(.{0,80}?)~~(.{0,120})", doc, re.M):
+        head, rest = m.group(1), m.group(2)
+        if not re.search(r"verified \d{4}-\d{2}-\d{2}", rest):
+            errors += fail(f"DEPLOY.md marks {head[:44]!r} done without a "
+                           f"verified date. An undated 'done' is how a stale "
+                           f"status reaches a to-do list, which happened twice "
+                           f"on 2026-09-03")
+    if "is not evidence" not in doc and "before believing any status" not in doc:
+        errors += fail("DEPLOY.md no longer tells a reader to verify its status "
+                       "claims before believing them. It was wrong about two "
+                       "steps at once and nothing in it said so")
+    return errors
+
+
 def check_conference_counts_reach_both_events() -> int:
     """A company found at two shows is counted for both, and the calendar
     never claims a floor nobody swept.
@@ -11606,6 +11646,7 @@ def main() -> int:
     errors += check_rival_door_refuses_a_category()
     errors += check_every_queue_has_a_renderer()
     errors += check_proposal_rulings_cover_every_kind()
+    errors += check_deploy_doc_claims_are_dated()
     errors += check_conference_counts_reach_both_events()
     errors += check_news_extractor_refuses_undated()
     errors += check_profile_door_needs_provenance()

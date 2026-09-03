@@ -27,7 +27,21 @@ so the zone is in your account and Cloudflare writes the DNS itself. It has no
 A or CNAME record yet, so it currently resolves to nothing. Nobody can reach
 it until step 1.
 
-1. **Pages → Custom domains.** dash.cloudflare.com → **Workers & Pages** →
+1. **~~Pages → Custom domains~~ — DONE, verified 2026-09-03.** `sledjobs.com`
+   and `www.sledjobs.com` both resolve to Cloudflare proxy IPs and serve this
+   Pages project (HTTP 200, the board's own markup, the same deployment stamp
+   as the old domain), and `solesourcejobs.com` is still attached on its own
+   IPs so every alert link already mailed still resolves. Commits pushed on
+   2026-09-03 appeared on `sledjobs.com/c/axon` about twenty seconds later,
+   which only happens through an attached custom domain.
+
+   **THE PARAGRAPH BELOW WAS STALE FOR A DAY AND WAS COPIED INTO A TO-DO LIST
+   TWICE**, alongside step 2, which was also already done. Both were written
+   before the work happened and neither was re-checked. Verify with step 3's
+   two curls before believing any status in this file: this project's own rule
+   is that a document is not evidence, and that applies to this document.
+
+   The original instructions, kept for the next hostname: dash.cloudflare.com → **Workers & Pages** →
    the Pages project (`solesource`) → **Custom domains** → *Set up a custom
    domain* → type `sledjobs.com` → **Activate domain**. Because the zone is in
    the same account, Cloudflare creates the record itself — there is no DNS
