@@ -853,8 +853,17 @@ def write_feeds(out: pathlib.Path, board: dict, brand: dict) -> dict:
                       f"DTSTART;VALUE=DATE:{start}",
                       f"SUMMARY:{_ics_esc(c.get('name') or '')}",
                       f"LOCATION:{_ics_esc(c.get('city') or '')}",
-                      f"DESCRIPTION:{_ics_esc(str(c.get('approx_count') or 0))} "
-                      f"exhibitors tracked. {site}/?tab=conferences",
+                      # WHAT WE HOLD, NOT WHAT THE SHOW CLAIMS, and silence
+                      # at zero. This printed `approx_count`, which is the
+                      # catalogue's estimate of the show's SIZE: APCO 2026 has
+                      # approx_count 250 and companies 0, so its calendar entry
+                      # read "250 exhibitors tracked" over a floor nobody has
+                      # swept. Unswept events read "0 exhibitors tracked",
+                      # which is the "we looked and found none" claim the UI
+                      # refuses everywhere else. icsFor() in index.html has
+                      # always used the real count and omitted the line at
+                      # zero; two writers of one file now follow one rule.
+                      f"DESCRIPTION:{_ics_desc(c, site)}",
                       "END:VEVENT"]
         lines.append("END:VCALENDAR")
         return "\r\n".join(lines) + "\r\n", n
@@ -899,6 +908,16 @@ def _ics_date(dates: str) -> str | None:
     if not mon or not yr:
         return None
     return f"{yr.group(1)}{mon:02d}{int(m.group(2)):02d}"
+
+
+
+def _ics_desc(c: dict, site: str) -> str:
+    """The calendar description for one conference: a count only when we have
+    one, and the link either way."""
+    n = c.get("companies") or 0
+    head = (f"{n} govtech exhibitor{'s' if n != 1 else ''} on file. " if n else "")
+    return _ics_esc(f"{head}{site}/?tab=conferences")
+
 
 
 def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:

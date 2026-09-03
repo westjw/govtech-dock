@@ -773,6 +773,140 @@ def check_proposal_rulings_cover_every_kind() -> int:
     return errors
 
 
+def check_conference_counts_reach_both_events() -> int:
+    """A company found at two shows is counted for both, and the calendar
+    never claims a floor nobody swept.
+
+    TWO BUGS, ONE SUBJECT, both of which made the Conferences tab look
+    precise while being wrong in opposite directions.
+
+    UNDERCOUNT. build_board bucketed a company by `source.split(":")[-1]`,
+    so a record tagged "IACP 2026; NSA 2026" was filed under that whole
+    string as if it named one event, and counted for NEITHER. 110 companies
+    - Axon, Skydio and SoundThinking among them - were missing from every
+    conference they exhibited at.
+
+    OVERCOUNT. The .ics printed `approx_count`, which is the catalogue's
+    estimate of the SHOW's size, not what we hold: APCO 2026 has
+    approx_count 250 and companies 0, so its calendar entry read "250
+    exhibitors tracked" over a floor nobody has swept. And an unswept event
+    read "0 exhibitors tracked", which is the "we looked and found none"
+    claim this project refuses everywhere else. icsFor() in index.html has
+    always used the real count and omitted the line at zero; the two writers
+    of one file follow one rule now.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_board, build_site
+    errors = 0
+
+    # --- the split -------------------------------------------------------
+    companies = [
+        {"id": "both", "name": "Both Co", "source": "conference sweep: IACP 2026; NSA 2026",
+         "sector": "Public Safety", "category": "Police", "description": "d",
+         "ats": {"type": "unknown", "ref": None}, "hiring": "Unknown",
+         "govtech": True, "vendor_type": "product"},
+        {"id": "one", "name": "One Co", "source": "IACP 2026",
+         "sector": "Public Safety", "category": "Police", "description": "d",
+         "ats": {"type": "unknown", "ref": None}, "hiring": "Unknown",
+         "govtech": True, "vendor_type": "product"},
+        {"id": "dupe", "name": "Dupe Co", "source": "IACP 2026; IACP 2026",
+         "sector": "Public Safety", "category": "Police", "description": "d",
+         "ats": {"type": "unknown", "ref": None}, "hiring": "Unknown",
+         "govtech": True, "vendor_type": "product"},
+    ]
+    import collections as _c
+    by_tag = _c.defaultdict(list)
+    for c in companies:
+        src = (c.get("source") or "").strip()
+        for tag in src.split(":")[-1].split(";"):
+            tag = tag.strip()
+            if tag:
+                by_tag[tag].append(c["id"])
+    iacp, nsa = sorted(set(by_tag["IACP 2026"])), sorted(set(by_tag["NSA 2026"]))
+    if iacp != ["both", "dupe", "one"]:
+        errors += fail(f"IACP 2026 holds {iacp}, expected both/dupe/one. A "
+                       f"company found at two shows must count for both")
+    if nsa != ["both"]:
+        errors += fail(f"NSA 2026 holds {nsa}, expected ['both']")
+    # and the real builder must do the same, not just this transcription
+    src_line = (ROOT / "scripts" / "build_board.py").read_text()
+    if 'for tag in src.split(":")[-1].split(";")' not in src_line:
+        errors += fail("build_board no longer splits a composite conference "
+                       "tag, so a company found at two shows counts for none")
+    if "sorted(set(by_tag.get(tag, [])))" not in src_line:
+        errors += fail("build_board no longer dedupes a conference's company "
+                       "ids, so a source repeating a tag counts a company twice")
+
+    # --- the org carries every event it was found at ----------------------
+    for src, want in [("conference sweep: IACP 2026; NSA 2026", ["IACP 2026", "NSA 2026"]),
+                      ("IACP 2026", ["IACP 2026"]),
+                      ("IACP 2026; IACP 2026", ["IACP 2026"]),
+                      ("conference sweep", []),
+                      ("", []), (None, [])]:
+        got = build_board._event_tags(src)
+        if got != want:
+            errors += fail(f"_event_tags({src!r}) = {got!r}, expected {want!r}")
+
+    # --- the three numbers a reader can compare ---------------------------
+    html = (ROOT / "index.html").read_text()
+    # THE FILTER'S OWN LINE, not the string appearing anywhere in 6,600 lines.
+    # A comment mentioning o.conferences kept this green while the filter went
+    # back to matching one tag - the fifth time in this repo a guard has
+    # matched prose instead of code.
+    if "(o.conferences||[o.conference]).some(" not in html:
+        errors += fail("the conf: filter no longer matches against the whole "
+                       "list of a company's events, so a company found at two "
+                       "shows matches neither")
+    # and the builder must SHIP the list for the filter to have anything to read
+    bb = (ROOT / "scripts" / "build_board.py").read_text()
+    if '"conferences": _event_tags(c.get("source")),' not in bb:
+        errors += fail("build_board no longer ships `conferences` on an org. "
+                       "The filter reads a field that is not there and every "
+                       "multi-event company falls out of both events")
+    probe = {"conferences": build_board._event_tags("x: A 2026; B 2026")}
+    if probe["conferences"] != ["A 2026", "B 2026"]:
+        errors += fail(f"the shipped tag list is {probe['conferences']!r}")
+    if "rows.filter(r=>r.swept).length" in html:
+        errors += fail("the Conferences header counts events by the `swept` "
+                       "flag (11) while 33 rows actually carry companies, so "
+                       "it credits every company to a third of the events")
+    if "rows.reduce((n,r)=>n+r.companies,0)" in html:
+        errors += fail("the Conferences header sums per-event company counts. "
+                       "Now that a company found at two shows counts at both, "
+                       "that adds Axon twice; it must count distinct companies")
+    if "unreadableCount()" not in html:
+        errors += fail("index.html has no single unreadableCount(). Market "
+                       "intel printed the last run's fetch failures (17) under "
+                       "a label Companies answers with 912 and How with 762 - "
+                       "three numbers for one question, on one board")
+    for bad in ("${D.unreadable} boards could not be",
+                '<div class="bignum">${D.unreadable}</div>'):
+        if bad in html:
+            errors += fail(f"a surface still prints D.unreadable directly: "
+                           f"{bad[:44]!r}. That is how many boards failed to "
+                           f"FETCH last night, not how many cannot be read")
+
+    # --- the calendar description ----------------------------------------
+    site = "https://example.test"
+    swept = build_site._ics_desc({"companies": 12, "approx_count": 250}, site)
+    if "12 govtech exhibitors on file" not in swept:
+        errors += fail(f"the .ics does not state the real count: {swept!r}")
+    if "250" in swept:
+        errors += fail(f"the .ics printed approx_count, the SHOW's size rather "
+                       f"than what we hold: {swept!r}")
+    unswept = build_site._ics_desc({"companies": 0, "approx_count": 250}, site)
+    if "exhibitor" in unswept:
+        errors += fail(f"an unswept floor's calendar entry claims exhibitors: "
+                       f"{unswept!r}. Zero here means nobody looked, and "
+                       f"'0 exhibitors tracked' asserts that somebody did")
+    if site not in unswept:
+        errors += fail("the calendar description dropped the link at zero")
+    one = build_site._ics_desc({"companies": 1}, site)
+    if "1 govtech exhibitor on file" not in one:
+        errors += fail(f"the .ics does not singularise one exhibitor: {one!r}")
+    return errors
+
+
 def check_news_extractor_refuses_undated() -> int:
     """A news item is a headline the site printed and a date the site stated.
 
@@ -1362,12 +1496,22 @@ def check_site_pages_stay_out_of_git() -> int:
     import subprocess
     errors = 0
     ignore = (ROOT / ".gitignore").read_text()
-    for path in ("/data/site_pages/", "/data/briefs/", "/data/proposals_in/"):
+    # THE BODIES AND WHAT IS MADE FROM THEM, not the proposals. site_pages/
+    # holds other people's page text (~100MB at full scale) and briefs/ is
+    # assembled from it; both must never reach git. data/proposals_in/ is
+    # deliberately NOT here: a proposal is the OUTPUT meant to be read, and a
+    # cloud routine hands one back through a pull request. It carries its own
+    # quotes and a sha of each page, so it is reviewable without the bodies.
+    for path in ("/data/site_pages/", "/data/briefs/"):
         if path not in ignore:
             errors += fail(f".gitignore no longer lists {path}. That directory "
                            f"holds other people's page text (or briefs made "
                            f"from it), and one commit puts 100MB of it in the "
                            f"public history for good")
+    if "/data/proposals_in/" in ignore:
+        errors += fail("data/proposals_in/ is gitignored. That is where a cloud "
+                       "routine leaves its proposals for review, and an ignored "
+                       "directory means the pull request comes back empty")
     tracked = subprocess.run(["git", "ls-files", "data/site_pages.json",
                               "data/site_pages"], cwd=ROOT,
                              capture_output=True, text=True).stdout.split()
@@ -11462,6 +11606,7 @@ def main() -> int:
     errors += check_rival_door_refuses_a_category()
     errors += check_every_queue_has_a_renderer()
     errors += check_proposal_rulings_cover_every_kind()
+    errors += check_conference_counts_reach_both_events()
     errors += check_news_extractor_refuses_undated()
     errors += check_profile_door_needs_provenance()
     errors += check_ingest_keeps_refusals()

@@ -560,6 +560,25 @@ def phase(families: dict) -> str:
 
 
 
+
+def _event_tags(source: str | None) -> list:
+    """The conference tags in a company's `source`, in order, deduped.
+
+    Sweeps write "conference sweep: PLA 2026" and intake writes the tag
+    itself; a company found at two shows carries both, separated by a
+    semicolon. A tag has to contain a year, or "conference sweep" with no
+    event behind it becomes an event.
+    """
+    src = (source or "").strip()
+    if not src:
+        return []
+    out = []
+    for tag in src.split(":")[-1].split(";"):
+        tag = tag.strip()
+        if tag and any(ch.isdigit() for ch in tag) and tag not in out:
+            out.append(tag)
+    return out
+
 def profile_for_board(c: dict) -> dict | None:
     """The public shape of a company's write-up, or None.
 
@@ -1119,9 +1138,15 @@ def main() -> int:
             # sweeps write "conference sweep: PLA 2026" and intake writes
             # "PLA 2026", and two spellings of one event would list as two
             # events. Null for anything not found at a conference.
-            "conference": ((c.get("source") or "").split(":")[-1].strip()
-                           if any(ch.isdigit() for ch in (c.get("source") or ""))
-                           else None),
+            # EVERY EVENT THEY WERE FOUND AT, not the raw source string. A
+            # record tagged "IACP 2026; NSA 2026" was shipped as one
+            # conference whose name was that whole string, so the company
+            # page named an event nobody runs and the tab's filter matched
+            # nothing. `conferences` is the list; `conference` stays as the
+            # first for every reader that expects one, so nothing that reads
+            # it breaks while the list is adopted.
+            "conferences": _event_tags(c.get("source")),
+            "conference": (_event_tags(c.get("source")) or [None])[0],
             # Filled in by count_openings() once every posting exists. Counting
             # here counted rows, missed the manual merge below, and rescanned
             # the whole posting list once per company.
@@ -1360,7 +1385,16 @@ def main() -> int:
             if not src:
                 continue
             # sweeps write "conference sweep: PLA 2026"; intake writes the tag
-            by_tag[src.split(":")[-1].strip()].append(c["id"])
+            #
+            # A COMPANY FOUND AT TWO SHOWS BELONGS TO BOTH. This split on the
+            # last colon and stopped, so a record tagged "IACP 2026; NSA 2026"
+            # was filed under that whole string as if it were one event's
+            # name, and counted for NEITHER. 110 companies - Axon, Skydio,
+            # SoundThinking among them - were missing from every conference
+            # they exhibited at, and the Conferences tab understated itself
+            # by that much while looking precise.
+            for tag in _event_tags(src):
+                by_tag[tag].append(c["id"])
         for row in cat:
             tag = (row.get("event_tag") or "").strip()
             if not tag:
@@ -1373,7 +1407,7 @@ def main() -> int:
             # company sells.
             if row.get("sled") is False:
                 continue
-            ids = by_tag.get(tag, [])
+            ids = sorted(set(by_tag.get(tag, [])))
             hiring = [i for i in ids if open_by_co.get(i, 0) > 0]
             conf_rows.append({
                 "tag": tag,

@@ -4227,7 +4227,10 @@ function drawCos(){
   const confM=/^conf:(.+)$/i.exec((g("c-q")||"").trim());
   if(confM){
     const tag=confM[1].trim().toLowerCase();
-    found=(D.organizations||[]).filter(o=>(o.conference||"").toLowerCase()===tag);
+    /* a company found at two shows matches BOTH. Matching the single
+       `conference` string missed every multi-event record. */
+    found=(D.organizations||[]).filter(o=>
+      (o.conferences||[o.conference]).some(c=>(c||"").toLowerCase()===tag));
     if(hiringOnly){ setHiringPill(false); CO_AUTO_OFF=true; hiringOnly=false; }
   }
 
@@ -4679,6 +4682,15 @@ function coRivals(o,sibs,inCat){
    the provenance line names those pages as links, because a sentence about
    a real company's customers is a claim and the reader should be able to
    check it against the page it came from in one click. */
+/* HOW MANY BOARDS CANNOT BE READ, asked once and answered once. Three
+   surfaces asked it and got three numbers: Market intel printed
+   D.unreadable (17, the last run's fetch failures), Companies said 912 (no
+   board on file at all, a different fact), and How computed 762. A reader
+   comparing two tabs finds the board contradicting itself. */
+function unreadableCount(){
+  return (D.organizations||[]).filter(o=>o.enumerable===false||o.unreadable).length;
+}
+
 function coAbout(o,dom){
   const pr=o.profile;
   const ready=pr&&Array.isArray(pr.paragraphs)&&pr.paragraphs.length>0;
@@ -4930,10 +4942,15 @@ function intel(){
   const topEng=[...D.organizations].sort((a,b)=>(b.families?.engineering||0)-(a.families?.engineering||0)).slice(0,8);
   $("#view").innerHTML=`
     <div class="cards">
-      <div class="card"><div class="bignum">${t.postings}</div><div class="lbl">open postings</div></div>
-      <div class="card"><div class="bignum">${t.quota_carrying}</div><div class="lbl">quota-carrying</div></div>
-      <div class="card"><div class="bignum">${hiring}</div><div class="lbl">companies hiring</div></div>
-      <div class="card"><div class="bignum">${D.unreadable}</div><div class="lbl">boards unreadable</div></div>
+      <div class="card"><div class="bignum">${(t.postings||0).toLocaleString()}</div><div class="lbl">open postings</div></div>
+      <div class="card"><div class="bignum">${(t.quota_carrying||0).toLocaleString()}</div><div class="lbl">quota-carrying</div></div>
+      <div class="card"><div class="bignum">${hiring.toLocaleString()}</div><div class="lbl">companies hiring</div></div>
+      <!-- ONE DEFINITION OF UNREADABLE, SHARED. This printed D.unreadable,
+           which is how many boards failed to FETCH on the last run (17),
+           under a label the Companies tab answers with 912 and the How tab
+           with 762. Three numbers, one question. The honest one is the How
+           tab's: a board exists and its roles cannot be read. -->
+      <div class="card"><div class="bignum">${unreadableCount().toLocaleString()}</div><div class="lbl">boards unreadable</div></div>
     </div>
     <h3 style="font-size:13px">Where the hiring is, by function</h3>
     ${fams.map(([f,n])=>`<div class="kv"><span style="display:inline-block;width:34px;text-align:right">${n}</span>
@@ -4968,7 +4985,7 @@ function intel(){
     </div>
     <p class="hint">Hiring composition is the signal. A company hiring mostly engineers is
     building; one hiring mostly sellers is pushing go to market; one hiring mostly delivery
-    and support is absorbing customers it already won. ${D.unreadable} boards could not be
+    and support is absorbing customers it already won. ${unreadableCount().toLocaleString()} boards could not be
     read this run, so those companies show zero openings rather than none existing.</p>`;
   // built rather than stringified, for the same reason as every other row here
   const leaders=(hostId,list,key)=>{
@@ -5644,8 +5661,14 @@ function conferences(){
   const blocks={};
   rows.forEach(r=>{(blocks[r.block||"Other"]=blocks[r.block||"Other"]||[]).push(r)});
   const order=Object.keys(blocks).sort();
-  const swept=rows.filter(r=>r.swept).length;
-  const tot=rows.reduce((n,r)=>n+r.companies,0);
+  /* AN EVENT WE MINED IS ONE THAT PRODUCED COMPANIES. `swept` is a flag on
+     11 rows; 33 rows actually carry companies, so the sentence credited 947
+     companies to 11 events. And `tot` cannot be the sum of per-event counts
+     now that a company found at two shows is counted at both: it would add
+     Axon twice. It is the number of DISTINCT companies carrying any tag. */
+  const swept=rows.filter(r=>r.companies>0).length;
+  const tot=(D.organizations||[]).filter(o=>(o.conferences||[]).length
+                                           ||o.conference).length;
 
   const depts=[...new Set(rows.map(r=>r.block).filter(Boolean))].sort();
 
