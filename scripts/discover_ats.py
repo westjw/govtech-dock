@@ -263,8 +263,13 @@ def get(url: str) -> Fetch:
     except Exception as exc:
         return Fetch(url=url, outcome="error", status=0,
                      text=type(exc).__name__)
+    # THE SAME CHARSET RULE THE REST OF THE FETCHERS USE. This decoded with
+    # r.encoding, which requests sets to Latin-1 for any text/* body that
+    # carries no charset - so a UTF-8 page arrived here with its punctuation
+    # in three glued characters and every marker match ran against that.
+    enc = ats.best_charset(raw, (r.headers or {}).get("content-type", ""), r.encoding)
     try:
-        body = raw.decode(r.encoding or "utf-8", errors="replace")
+        body = raw.decode(enc, errors="replace")
     except LookupError:
         body = raw.decode("utf-8", errors="replace")
     # 202 is SiteGround's tell; the rest are the usual refusals.

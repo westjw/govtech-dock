@@ -1578,6 +1578,61 @@ def check_news_extractor_refuses_undated() -> int:
     return errors
 
 
+def check_every_html_fetch_uses_the_one_charset_rule() -> int:
+    """No fetcher reads a charset-less UTF-8 page as Latin-1.
+
+    ats._get was fixed for this and add_company.fetch and discover_ats.probe
+    went around it, each calling requests.get directly - so the admin's
+    website check showed bettercapitalplanning.com titling itself
+    "Decision Optimization Technology" with the trademark sign as three
+    glued characters, and every ATS marker match ran against text corrupted
+    the same way. The guard tests the RULE and then asserts each caller
+    reaches it, because this repo's recurring bug is a helper that is fixed
+    while a caller drifts.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    errors = 0
+    try:
+        import ats
+    except ModuleNotFoundError as exc:
+        # ats imports requests at module level. CI installs it; a bare
+        # interpreter may not have it. The source half below still runs,
+        # so a new bypass is still caught here.
+        note(f"{exc.name} not installed; the charset RULE was not executed "
+             f"this run, only its callers checked")
+        ats = None
+    body = "Technology\u2122 \u201cquoted\u201d".encode("utf-8")
+    cases = [
+        ("no charset, body is UTF-8", body, "text/html", "ISO-8859-1", "utf-8"),
+        ("charset declared, believe it", body, "text/html; charset=iso-8859-1",
+         "ISO-8859-1", "ISO-8859-1"),
+        ("no charset, body is not UTF-8", b"\xff\xfe not utf8", "text/html",
+         "ISO-8859-1", "ISO-8859-1"),
+    ]
+    if ats is not None:
+        for name, raw, ctype, declared, want in cases:
+            got = ats.best_charset(raw, ctype, declared)
+            if got != want:
+                errors += fail(f"charset rule, {name}: got {got!r}, wanted {want!r}")
+        # round trip: the rule must actually recover the character
+        enc = ats.best_charset(body, "text/html", "ISO-8859-1")
+        if "\u2122" not in body.decode(enc, errors="replace"):
+            errors += fail("the charset rule did not recover the trademark sign")
+
+    # EVERY CALLER REACHES THE RULE. A source scan here, because these are
+    # network calls; each is named so a new bypass is a failure, not a
+    # silent regression.
+    for f, needle, why in (
+            ("add_company.py", "ats._fix_encoding(r)",
+             "add_company.fetch reads a page for the admin's website check"),
+            ("discover_ats.py", "ats.best_charset(raw,",
+             "discover_ats.probe decodes a streamed body itself"),
+            ("ats.py", "resp.encoding = best_charset(", "ats._get is the shared fetcher")):
+        if needle not in (ROOT / "scripts" / f).read_text():
+            errors += fail(f"{f} no longer uses the shared charset rule, and {why}")
+    return errors
+
+
 def check_fetch_decodes_utf8_without_a_charset() -> int:
     """A text/* body served without a charset is UTF-8 when it decodes as
     UTF-8. requests calls it Latin-1, and eleven of the first 157 company
@@ -12637,6 +12692,7 @@ def main() -> int:
     errors += check_news_extractor_refuses_undated()
     errors += check_profile_door_needs_provenance()
     errors += check_fetch_decodes_utf8_without_a_charset()
+    errors += check_every_html_fetch_uses_the_one_charset_rule()
     errors += check_ingest_keeps_refusals()
     errors += check_company_page_profile_states()
     errors += check_dechrome_keeps_sentences_and_drops_chrome()

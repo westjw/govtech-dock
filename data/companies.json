@@ -26050,7 +26050,7 @@
  {
   "id": "aurionpro",
   "name": "Aurionpro",
-  "website": null,
+  "website": "https://www.aurionpro.com/transit-smart-mobility/",
   "location": null,
   "year_founded": 1997,
   "sector": "Transit & Parking",
@@ -26221,7 +26221,7 @@
  {
   "id": "band",
   "name": "BAND",
-  "website": null,
+  "website": "https://www.band.us",
   "location": null,
   "year_founded": null,
   "sector": "Parks & Rec",
@@ -26409,15 +26409,15 @@
  {
   "id": "blitz",
   "name": "Blitz",
-  "website": null,
+  "website": "https://blitzpermits.ai/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
   "description": "AI permit pre-check and plan review - exhibited at ICMA 2025",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "html",
+   "ref": "https://blitzpermits.ai/careers"
   },
   "hiring": {
    "status": "Unknown",
@@ -26618,8 +26618,8 @@
  },
  {
   "id": "cityreporter-by-noratek-solutions-inc",
-  "name": "CityReporter by Noratek Solutions Inc.",
-  "website": null,
+  "name": "CityReporter Software",
+  "website": "https://www.cityreportersoftware.com/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -26638,7 +26638,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025",
-  "researched": false
+  "researched": false,
+  "also_known_as": [
+   "CityReporter",
+   "CityReporter by Noratek Solutions Inc."
+  ]
  },
  {
   "id": "code-four",
@@ -26725,7 +26729,7 @@
  {
   "id": "conduent-transportation",
   "name": "Conduent Transportation",
-  "website": null,
+  "website": "https://www.conduent.com/",
   "location": null,
   "year_founded": null,
   "sector": "Transit & Parking",
@@ -26744,12 +26748,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": false
+  "researched": false,
+  "also_known_as": [
+   "conduent"
+  ]
  },
  {
   "id": "consat-canada",
   "name": "Consat Canada",
-  "website": null,
+  "website": "https://www.consat.com/",
   "location": null,
   "year_founded": null,
   "sector": "Transit & Parking",
@@ -26991,7 +26998,7 @@
  {
   "id": "deskofficer-inc",
   "name": "DeskOfficer, Inc.",
-  "website": null,
+  "website": "https://deskofficer.ai/",
   "location": null,
   "year_founded": null,
   "sector": "Public Safety",
@@ -27063,7 +27070,7 @@
  {
   "id": "e-ring-software-solutions-inc",
   "name": "E-Ring Software Solutions, Inc.",
-  "website": null,
+  "website": "https://www.ering-cad.com/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -27082,7 +27089,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NACo 2026",
-  "researched": false
+  "researched": false,
+  "also_known_as": [
+   "E-Ring"
+  ]
  },
  {
   "id": "enkon-information-systems-inc",
@@ -27197,8 +27207,8 @@
  },
  {
   "id": "edge-ai-solutions",
-  "name": "Edge AI Solutions",
-  "website": null,
+  "name": "EdgeAI",
+  "website": "https://edgeaisolutions.com/",
   "location": null,
   "year_founded": null,
   "sector": "Public Works",
@@ -27217,7 +27227,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "PWX 2026",
-  "researched": false
+  "researched": false,
+  "also_known_as": [
+   "Edge AI Solutions"
+  ]
  },
  {
   "id": "elovate",
@@ -27329,8 +27342,8 @@
  },
  {
   "id": "faster-by-transit-technologies",
-  "name": "FASTER by Transit Technologies",
-  "website": null,
+  "name": "FASTER",
+  "website": "https://fasterasset.com/",
   "location": null,
   "year_founded": null,
   "sector": "Public Works",
@@ -27349,7 +27362,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "PWX 2026",
-  "researched": false
+  "researched": false,
+  "also_known_as": [
+   "FASTER by Transit Technologies"
+  ]
  },
  {
   "id": "fleetwatch-by-s-a-systems-inc",
@@ -27930,7 +27946,7 @@
  {
   "id": "imagry-autonomous-buses-shuttles",
   "name": "Imagry Autonomous Buses & Shuttles",
-  "website": null,
+  "website": "https://imagry.co/ai-autonomous-driving-for-public-transportation/",
   "location": null,
   "year_founded": null,
   "sector": "Transit & Parking",
@@ -28835,7 +28851,7 @@
  {
   "id": "loop-websites-for-municipalities",
   "name": "Loop - Websites for Municipalities",
-  "website": null,
+  "website": "https://www.looponline.co/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -29010,7 +29026,7 @@
  {
   "id": "mygovernmentonline-scpdc",
   "name": "MyGovernmentOnline(MGO)-SCPDC",
-  "website": null,
+  "website": "https://landing.mgoconnect.org/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -31269,8 +31285,8 @@
  },
  {
   "id": "via-transportation-inc",
-  "name": "Via Transportation, Inc.",
-  "website": null,
+  "name": "Via Transportation",
+  "website": "https://ridewithvia.com/",
   "location": null,
   "year_founded": null,
   "sector": "Transit & Parking",
@@ -31289,7 +31305,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": false
+  "researched": false,
+  "also_known_as": [
+   "Via Transportation, Inc."
+  ]
  },
  {
   "id": "virtual-project-manager",

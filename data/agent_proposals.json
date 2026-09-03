@@ -2644,8 +2644,11 @@
    "verified": "each row checked by hand against the saved page text"
   },
   "sector": null,
-  "status": "pending",
-  "why": "seven rows in the served HTML under 'Job Offers', each with a location and its own URL, mapped to titles in document order. two are badged 'Labrie Group Solutions', the service arm - carried as written. the Workplace filter also lists St-Romuald, Levis, St-Ubalde and San Luis, which suggests more behind a filter; the filter was NOT clicked, so seven is what the page showed."
+  "status": "accepted",
+  "why": "seven rows in the served HTML under 'Job Offers', each with a location and its own URL, mapped to titles in document order. two are badged 'Labrie Group Solutions', the service arm - carried as written. the Workplace filter also lists St-Romuald, Levis, St-Ubalde and San Luis, which suggests more behind a filter; the filter was NOT clicked, so seven is what the page showed.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "read:leadsonline": {
   "at": "2026-08-24T10:57:24-04:00",

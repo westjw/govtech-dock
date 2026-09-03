@@ -455,6 +455,26 @@ def _get(url: str, **kw):
     return resp
 
 
+def best_charset(raw: bytes, ctype: str, declared: str | None) -> str:
+    """Which charset a text/* body is really in. ONE RULE, ONE PLACE.
+
+    A body served without a charset in its Content-Type is UTF-8 if it
+    decodes as UTF-8. requests follows the 1999 RFC and calls it Latin-1,
+    which turns every curly quote and trademark sign into two or three
+    glued characters. A DECLARED charset is always believed - guessing over
+    a server that told us the answer is how you break the pages that were
+    working. Callers that stream raw bytes use this directly; those that
+    read resp.text get it through _fix_encoding.
+    """
+    if "charset" in (ctype or "").lower():
+        return declared or "utf-8"
+    try:
+        raw.decode("utf-8")
+    except (UnicodeDecodeError, AttributeError):
+        return declared or "utf-8"
+    return "utf-8"
+
+
 def _fix_encoding(resp) -> None:
     """A text/* body with no charset in its header is UTF-8 if it decodes as
     UTF-8. requests follows the 1999 RFC and calls it Latin-1, which turns
@@ -463,13 +483,11 @@ def _fix_encoding(resp) -> None:
     way, and the write-up door refused true customer names on them. Fixed
     here so the cache and everything downstream see the page as served."""
     ctype = (resp.headers or {}).get("content-type", "") if hasattr(resp, "headers") else ""
-    if "charset" in ctype.lower():
-        return
     try:
-        resp.content.decode("utf-8")
-    except (UnicodeDecodeError, AttributeError):
+        raw = resp.content
+    except Exception:
         return
-    resp.encoding = "utf-8"
+    resp.encoding = best_charset(raw, ctype, resp.encoding)
 
 
 def _post_json(url: str, body: dict) -> dict:

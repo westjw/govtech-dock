@@ -140,6 +140,13 @@ def fetch(url: str) -> tuple[str, str]:
     try:
         r = requests.get(url, headers=ats.UA, timeout=ats.TIMEOUT,
                          allow_redirects=True)
+        # THE SAME PAGE, READ CORRECTLY. ats._get repairs a body served as
+        # UTF-8 with no charset header, which requests otherwise reads as
+        # Latin-1; this function calls requests directly and so went around
+        # that fix. bettercapitalplanning.com titles itself "Decision
+        # Optimization Technology(tm)" and reached the admin's website check
+        # with the trademark sign as three glued characters.
+        ats._fix_encoding(r)
     except Exception as exc:
         # A BROKEN CERTIFICATE CHAIN IS NOT A DEAD SITE, and until now it was
         # recorded as one. kunzleigh.com - state WIC systems, Medicaid
