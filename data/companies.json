@@ -4128,8 +4128,8 @@
   "category": "Fleet & Asset Mgmt",
   "description": "Asset and work order management for DPWs (part of OpenGov)",
   "ats": {
-   "type": "html",
-   "ref": "https://opengov.com/careers/"
+   "type": "ashby",
+   "ref": "opengov"
   },
   "hiring": {
    "status": "Unknown",
@@ -6175,8 +6175,8 @@
   "category": "Grid & Energy",
   "description": "Satellite + AI vegetation management (IVMS) and climate/asset risk SaaS for utilities",
   "ats": {
-   "type": "html",
-   "ref": "https://www.aidash.com/careers"
+   "type": "greenhouse",
+   "ref": "aidashinc"
   },
   "hiring": {
    "status": "Yes",
@@ -6194,7 +6194,8 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "board_owner": "AiDASH, Inc."
  },
  {
   "id": "nimble-energy",
@@ -7164,8 +7165,8 @@
   "category": "Finance & ERP",
   "description": "Cloud treasury: debt management, GASB 87/96 lease accounting, and cash management for gov finance - exhibited at NACUBO 2026, GFOA 2026",
   "ats": {
-   "type": "html",
-   "ref": "https://www.debtbook.com/current-openings"
+   "type": "greenhouse",
+   "ref": "debtbook"
   },
   "hiring": {
    "status": "Unknown",
@@ -18453,7 +18454,7 @@
   "description": "AI cameras detecting phone use, seatbelt, and speed violations for road authorities",
   "ats": {
    "type": "workable",
-   "ref": "acusensus-australia"
+   "ref": "acusensus-united-states"
   },
   "hiring": {
    "status": "None found",
@@ -18464,7 +18465,8 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "board_owner": "Acusensus United States"
  },
  {
   "id": "novoaglobal",
@@ -42106,7 +42108,7 @@
   "description": "Central irrigation control and smart controllers for municipal parks",
   "ats": {
    "type": "html",
-   "ref": "https://www.rainbird.com/corporate/careers-home"
+   "ref": "https://www.rainbird.com/search-jobs?keyword=&name=All&tid=All"
   },
   "hiring": {
    "status": "Unknown",
@@ -42117,7 +42119,8 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "ats_note": "their /search-jobs listing. careers-home is a landing page with no job links on it, which is why the scan recorded 'no listings' while ten roles were open."
  },
  {
   "id": "hunter-industries",
@@ -48183,8 +48186,8 @@
   "category": "Security & Screening",
   "description": "Airport threat detection AI and biometric travel systems for government",
   "ats": {
-   "type": "jibe",
-   "ref": "careers.bigbear.ai"
+   "type": "icims",
+   "ref": "internal-bigbearai"
   },
   "hiring": {
    "status": "Unknown",

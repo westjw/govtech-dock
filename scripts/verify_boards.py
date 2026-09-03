@@ -92,6 +92,17 @@ def board_says(kind: str, ref) -> dict:
                 out["name"] = sorted(names)[0]
                 out["how"] = "greenhouse company_name, stated by the employer"
             out["hosts"] = {host_of(j.get("absolute_url", "")) for j in jobs[:8]}
+        elif kind == "html":
+            # AN HTML BOARD IS A PAGE, AND THE PAGE'S HOST IS THE EVIDENCE.
+            # 829 companies sit on this type and none of them could be
+            # verified at all - judge() answered "unknown" for every one, so
+            # a careers URL pasted onto the wrong company was checked by
+            # nobody. A listing on the company's own domain cannot be
+            # somebody else's board; one on a third-party host is exactly
+            # what wants a second look, and says so rather than passing.
+            out["hosts"] = {host_of(str(ref))}
+            out["n"] = len(ats.fetch_html_titles(str(ref)))
+            out["how"] = "html board: the page's own host"
         elif kind == "jibe":
             # Jibe states the employer on every row, which is the strongest
             # signal any of these boards gives: hiring_organization is what

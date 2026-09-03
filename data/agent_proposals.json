@@ -62,8 +62,11 @@
    "verified_by": "a real fetch of the ATS api"
   },
   "sector": null,
-  "status": "pending",
-  "why": "https://www.acusensus.com/careers names workable board 'acusensus-united-states', which answers with 6 posting(s). Verified by fetching it."
+  "status": "accepted",
+  "why": "https://www.acusensus.com/careers names workable board 'acusensus-united-states', which answers with 6 posting(s). Verified by fetching it.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "board:adashi-systems": {
   "at": "2026-09-02T13:10:21-04:00",
@@ -129,8 +132,11 @@
    "verified_by": "a real fetch of the ATS api"
   },
   "sector": null,
-  "status": "pending",
-  "why": "https://www.aidash.com/careers names greenhouse board 'aidashinc', which answers with 6 posting(s). Verified by fetching it."
+  "status": "accepted",
+  "why": "https://www.aidash.com/careers names greenhouse board 'aidashinc', which answers with 6 posting(s). Verified by fetching it.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "board:american-legal-publishing": {
   "at": "2026-09-02T13:10:21-04:00",
@@ -259,8 +265,11 @@
    "stored_verified": "72 posting(s) readable"
   },
   "sector": null,
-  "status": "pending",
-  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+  "status": "accepted",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "board:camino-technologies": {
   "at": "2026-09-02T13:10:21-04:00",
@@ -354,8 +363,11 @@
    "stored_verified": "46 posting(s) readable"
   },
   "sector": null,
-  "status": "pending",
-  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+  "status": "accepted",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "board:caseworthy": {
   "at": "2026-09-02T13:10:21-04:00",
@@ -507,8 +519,11 @@
    "stored_verified": "8 posting(s) readable"
   },
   "sector": null,
-  "status": "pending",
-  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+  "status": "accepted",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "board:concourse-tech": {
   "at": "2026-09-01T16:50:15-04:00",
@@ -573,8 +588,11 @@
    "verified_by": "a real fetch of the ATS api"
   },
   "sector": null,
-  "status": "pending",
-  "why": "https://www.debtbook.com/current-openings names greenhouse board 'debtbook', which answers with 15 posting(s). Verified by fetching it."
+  "status": "accepted",
+  "why": "https://www.debtbook.com/current-openings names greenhouse board 'debtbook', which answers with 15 posting(s). Verified by fetching it.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "board:dimonoff": {
   "at": "2026-09-01T16:50:15-04:00",
@@ -1151,8 +1169,11 @@
    "stored_verified": "46 posting(s) readable"
   },
   "sector": null,
-  "status": "pending",
-  "why": "this board is claimed by more than one company on the board - an acquisition to settle"
+  "status": "accepted",
+  "why": "this board is claimed by more than one company on the board - an acquisition to settle",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "board:parkhub": {
   "at": "2026-09-02T13:10:21-04:00",
@@ -1185,8 +1206,11 @@
    "stored_verified": "7 posting(s) readable"
   },
   "sector": null,
-  "status": "pending",
-  "why": "the board names another company; who owns it is a judgement a fetch cannot make"
+  "status": "rejected",
+  "why": "the board names another company; who owns it is a judgement a fetch cannot make",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "board:prepared": {
   "at": "2026-09-02T13:10:21-04:00",
@@ -1998,8 +2022,11 @@
    "verified": "each row checked by hand against the saved page text"
   },
   "sector": null,
-  "status": "pending",
-  "why": "three rows under the page's own heading 'Current Employment Opportunities:', each with its own /employment/<slug>/ page. no locations given on the index; not invented."
+  "status": "accepted",
+  "why": "three rows under the page's own heading 'Current Employment Opportunities:', each with its own /employment/<slug>/ page. no locations given on the index; not invented.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "read:crediblemind": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -2144,8 +2171,11 @@
    "verified": "each row checked by hand against the saved frame text"
   },
   "sector": null,
-  "status": "pending",
-  "why": "the cheap fetch saw an empty 'Current Openings' section. the board is a Greenhouse job_board in a CHILD FRAME - reading only the top document returns nothing from a page that is full of jobs. the frame states '14 jobs' and fourteen rows were read, which agrees. 'Software Engineering Manager' also appears in a Featured Jobs strip above the list and is counted once. THE FINDING WORTH MORE: greenhouse / debtbook is enumerable and refresh.py could keep it current."
+  "status": "accepted",
+  "why": "the cheap fetch saw an empty 'Current Openings' section. the board is a Greenhouse job_board in a CHILD FRAME - reading only the top document returns nothing from a page that is full of jobs. the frame states '14 jobs' and fourteen rows were read, which agrees. 'Software Engineering Manager' also appears in a Featured Jobs strip above the list and is counted once. THE FINDING WORTH MORE: greenhouse / debtbook is enumerable and refresh.py could keep it current.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "read:dimonoff": {
   "at": "2026-08-24T10:57:24-04:00",
@@ -2437,8 +2467,11 @@
    "verified": "each row checked by hand"
   },
   "sector": null,
-  "status": "pending",
-  "why": "six rows drawn late by a Teamtailor widget. THE COUNT IS A FLOOR, NOT A TOTAL: the list ends in a 'Show More' button that was not clicked, so there may be more. the nine 'Teams' blocks above (Machine Learning, App Development, Backend, QC, ...) are department blurbs and are not carried."
+  "status": "accepted",
+  "why": "six rows drawn late by a Teamtailor widget. THE COUNT IS A FLOOR, NOT A TOTAL: the list ends in a 'Show More' button that was not clicked, so there may be more. the nine 'Teams' blocks above (Machine Learning, App Development, Backend, QC, ...) are department blurbs and are not carried.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "read:greenspace-health": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -2875,8 +2908,11 @@
    "url_read": "https://www.myrec.com/careers/"
   },
   "sector": null,
-  "status": "pending",
-  "why": "the page prints 'Check Back Soon' and nothing else job-shaped. carried as the page's words."
+  "status": "accepted",
+  "why": "the page prints 'Check Back Soon' and nothing else job-shaped. carried as the page's words.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "read:nallian": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -2958,8 +2994,11 @@
    "verified": "each row checked by hand against the saved page text"
   },
   "sector": null,
-  "status": "pending",
-  "why": "the list renders in the main document as tab-separated rows (title / type / department / location). page 1 of 4 - the read does not paginate, so this is a floor, not the total."
+  "status": "accepted",
+  "why": "the list renders in the main document as tab-separated rows (title / type / department / location). page 1 of 4 - the read does not paginate, so this is a floor, not the total.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "read:nedap-identification-systems": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -3039,8 +3078,11 @@
    "verified": "each row checked by hand against the saved page text"
   },
   "sector": null,
-  "status": "pending",
-  "why": "SCOPE WARNING - nedap.com is the GROUP careers page and shows 34 reqs across Healthcare, Livestock, Retail, Foundry and Security. only the 9 filed here carry the Security unit, which is the identification business. filing the other 25 under this company would report a parent's postings as the subsidiary's. the page carries the unit on each row, so the scoping is read off the page, not guessed."
+  "status": "accepted",
+  "why": "SCOPE WARNING - nedap.com is the GROUP careers page and shows 34 reqs across Healthcare, Livestock, Retail, Foundry and Security. only the 9 filed here carry the Security unit, which is the identification business. filing the other 25 under this company would report a parent's postings as the subsidiary's. the page carries the unit on each row, so the scoping is read off the page, not guessed.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "read:nimble": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -3430,8 +3472,11 @@
    "url_read": "https://www.rainbird.com/corporate/careers-home"
   },
   "sector": null,
-  "status": "pending",
-  "why": "the corporate careers-home page. four frames rendered and three are a YouTube playlist and a Facebook feed; the main frame is navigation. the role-shaped strings are department landing links ('Sales - All', 'Customer Relations/Training - All'), not reqs."
+  "status": "accepted",
+  "why": "the corporate careers-home page. four frames rendered and three are a YouTube playlist and a Facebook feed; the main frame is navigation. the role-shaped strings are department landing links ('Sales - All', 'Customer Relations/Training - All'), not reqs.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": "https://www.rainbird.com/search-jobs?keyword=&name=All&tid=All&x=43&y=20"
  },
  "read:recycle-coach": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -3456,8 +3501,11 @@
    "verified": "each row checked by hand against the saved page text"
   },
   "sector": null,
-  "status": "pending",
-  "why": "one req under an 'Open opportunities' heading, with its location on the line after the title."
+  "status": "accepted",
+  "why": "one req under an 'Open opportunities' heading, with its location on the line after the title.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-03",
+  "ruled_why": null
  },
  "read:regrid": {
   "at": "2026-08-24T10:57:24-04:00",
