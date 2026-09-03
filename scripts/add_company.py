@@ -39,6 +39,9 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import ats            # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+# The public form's workflow reads this: 0 proposed, 1 could not, 3 we have it.
+ALREADY_TRACKED = 3
+
 DATA = ROOT / "data"
 
 CAREER_PATHS = ["/careers", "/careers/", "/company/careers", "/about/careers",
@@ -275,6 +278,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("url")
     ap.add_argument("--write", action="store_true")
+    ap.add_argument("--by", default=None,
+                    help='who is adding it: "owner", or "bot:<label>"')
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args()
 
@@ -286,8 +291,13 @@ def main() -> int:
     dupe = next((c for c in companies + suppliers
                  if host and host in (c.get("website") or "")), None)
     if dupe:
+        # ALREADY ON THE BOARD IS NOT A FAILURE. Somebody submitted a company
+        # we track; the honest answer is "we have it", and the caller needs to
+        # tell that apart from "the site would not load". The public form's
+        # workflow reported both as a red X, which reads as the submission
+        # being broken when the board is simply already right.
         print(f"already tracked: {dupe['name']} ({dupe['id']})")
-        return 1
+        return ALREADY_TRACKED
 
     home, fetch_note = fetch(url)
     if not home:
@@ -353,8 +363,19 @@ def main() -> int:
         if blockers:
             print("\nrefusing to write while blockers remain.", file=sys.stderr)
             return 1
+        # THROUGH THE JOURNAL, like every other write to this file. This wrote
+        # companies.json directly, so a company added by the public-submission
+        # bot arrived with no before-image and no author, and admin_undo could
+        # not take it back - on the one path where nobody is watching.
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+        import admin
         companies.append(entry)
-        (DATA / "companies.json").write_text(json.dumps(companies, indent=2) + "\n")
+        bad = admin.save_companies(companies, "add-company",
+                                   why=f"added {entry['id']} from {url}",
+                                   by=a.by or "bot:add-company")
+        if bad:
+            print(f"\nREFUSED by the journal: {bad}", file=sys.stderr)
+            return 1
         print(f"\nappended to companies.json ({len(companies)} companies)")
     return 0
 

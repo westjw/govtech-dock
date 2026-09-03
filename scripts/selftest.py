@@ -760,6 +760,95 @@ const req = (email) => new Request("https://sledjobs.com/admin/api/whoami",
     return errors
 
 
+def check_add_company_journals_and_reports_already_tracked() -> int:
+    """The public-submission bot writes through the journal and tells its
+    three outcomes apart.
+
+    Two defects this locks down, both found on the day the submit form went
+    live. add_company.py --write wrote companies.json with a bare write_text,
+    so a company added by the bot arrived with no before-image and no author
+    and admin_undo could not take it back - on the one path nobody watches.
+    And "already tracked" exited 1, indistinguishable from "the site would
+    not load", so the workflow showed a submitter a red X for a board that
+    was already right. Executed: the real main() in a sandbox.
+    """
+    import json as _json
+    import runpy
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import add_company, admin
+    errors = 0
+    src = (ROOT / "scripts" / "add_company.py").read_text()
+    body = src[src.find("if a.write:"):]
+    if ".write_text(" in body.split("return 0")[0]:
+        errors += fail("add_company --write still writes companies.json directly; "
+                       "every write to that file goes through save_companies")
+    write_body = body.split("return 0")[0]
+    if "save_companies(" not in write_body:
+        errors += fail("add_company --write no longer calls save_companies")
+    # AND IT NAMES ITS AUTHOR. by="owner" on the bot's path is the
+    # attribution trap this repo has already paid for once.
+    if "a.by" not in write_body or "bot:add-company" not in write_body:
+        errors += fail("add_company --write does not pass --by through, so the "
+                       "public-submission bot's write is attributed to a person")
+    if getattr(add_company, "ALREADY_TRACKED", None) in (None, 0, 1):
+        errors += fail("add_company has no distinct exit code for a company "
+                       "already on the board, so the form cannot tell "
+                       "'we have it' from 'we could not read it'")
+
+    companies = [{"id": "acme", "name": "Acme", "sector": "Public Safety",
+                  "category": "Police", "description": "CAD for police",
+                  "website": "https://acme.example", "ats": {"type": "unknown", "ref": None},
+                  "hiring": "Unknown", "govtech": True, "vendor_type": "product"}]
+    with _sandbox_admin({"companies.json": companies, "suppliers.json": []}) as tmp:
+        keep = add_company.DATA
+        add_company.DATA = tmp
+        try:
+            rc = add_company.main(["https://acme.example/"]) if _accepts_argv(add_company) \
+                else _run_argv(add_company, ["https://acme.example/"])
+        except SystemExit as e:
+            rc = e.code
+        finally:
+            add_company.DATA = keep
+        if rc != add_company.ALREADY_TRACKED:
+            errors += fail(f"a company already on the board did not return "
+                           f"ALREADY_TRACKED ({add_company.ALREADY_TRACKED}); got {rc}")
+
+    # THE WORKFLOW IS THE CALLER. A code nobody reads is a code that does
+    # nothing: the yaml must branch on it, and its reporting step must run
+    # whatever happened and never fail the run.
+    wf = (ROOT / ".github" / "workflows" / "add-company.yml").read_text()
+    for needle, why in (
+            ("This company is already on the board",
+             "the workflow no longer tells a submitter their company is already "
+             "tracked; they get the generic failure message instead"),
+            ('PROPOSE_STATUS" = "3"', "the workflow does not branch on the already-tracked code"),
+            ("if: always()", "the reporting step is skipped when an earlier step fails, so a "
+                             "submitter is told nothing"),
+            ('--by "bot:add-company"', "the bot's write does not name its author")):
+        if needle not in wf:
+            errors += fail(why)
+    return errors
+
+
+def _accepts_argv(mod) -> bool:
+    import inspect
+    try:
+        return bool(inspect.signature(mod.main).parameters)
+    except (TypeError, ValueError):
+        return False
+
+
+def _run_argv(mod, argv):
+    import contextlib, io
+    keep = sys.argv
+    sys.argv = ["add_company.py", *argv]
+    try:
+        with contextlib.redirect_stdout(io.StringIO()):
+            return mod.main()
+    finally:
+        sys.argv = keep
+
+
 def check_users_board_never_stores_an_address() -> int:
     """The owner grants access by typing an email once; the file keeps a
     hash and a handle. Executed in a sandbox through the real actions: no
@@ -1507,7 +1596,9 @@ def check_profile_door_needs_provenance() -> int:
           # a run interrupted by an aside
           "Rocket City (Huntsville) HQ is in Alabama. "
           # two names the page puts side by side with a comma, not 'of'
-          "Sheriff Greg Champagne, St. Charles Parish Sheriff, Louisiana.")
+          "Sheriff Greg Champagne, St. Charles Parish Sheriff, Louisiana. "
+          # a product whose NAME contains a word on the marketing list
+          "Talon Premier licences ship annually.")
     T = {"https://b.example/": P1, "https://b.example/about": P2}
     Q1 = "Brinc builds drones that police departments"
     Q2 = "Customers include the Chula Vista Police Department"
@@ -1564,6 +1655,15 @@ def check_profile_door_needs_provenance() -> int:
         # 'OF' IS NOT A STRICTER TEST THAN A COMMA.
         ("two names the page puts side by side, bridged with 'of' in the prose",
          prop(s2=sub(S2, 2, "Testimonials include Greg Champagne of St. Charles Parish."))),
+        # A WORD IS NOT AN ADJECTIVE JUST BECAUSE IT IS ON A LIST. "Graykey
+        # Premier" is a product Magnet Forensics sells, printed on their own
+        # page, and it was refused as marketing.
+        ("a product name that contains a word on the marketing list",
+         prop(s2=sub(S2, 2, "Departments buy Talon Premier licences for their officers."))),
+        # 'leading to the arrest' is a verb; the adjective the rule stops is
+        # 'a leading provider'.
+        ("the word leading used as a verb",
+         prop(s2=sub(S2, 2, "One case credits the Lemur with leading to the arrest of a suspect."))),
         # A TRADEMARK SYMBOL IS NOT A LETTER. NFKC maps a trademark sign to
         # the letters TM, so a page writing a product with one normalised to
         # a single glued token and the product read as invented.
@@ -1611,6 +1711,15 @@ def check_profile_door_needs_provenance() -> int:
          prop(s2=sub(S2, 2, "The Ion module records audio for police departments."))),
         # THE BRIDGE RULE STAYS A RULE: both names are on the pages, far
         # apart, and pairing them is a claim the page does not make.
+        # AND THE RULE STAYS A RULE. A lone capitalised adjective is not a
+        # name, and a capitalised run the page does NOT carry is not one
+        # either; both are still marketing.
+        ("a lone capitalised marketing adjective", "premier",
+         prop(s2=sub(S2, 2, "The Lemur is a Premier choice for police departments."))),
+        ("a capitalised run the page does not carry", "world-class",
+         prop(s2=sub(S2, 2, "Departments buy World-Class Rescue Systems from them."))),
+        ("leading as an adjective, not before to", "leading",
+         prop(s2=sub(S2, 2, "The company is a leading supplier to police departments."))),
         ("a bridged run pairing two names the page keeps apart", "dallas county",
          prop(s2=sub(S2, 2, "Testimonials include Greg Champagne of Dallas County."))),
         ("a version number the page writes longer", "3.5",
@@ -12450,6 +12559,7 @@ def main() -> int:
     errors += check_proposal_rulings_cover_every_kind()
     errors += check_write_ups_queue_shows_only_exceptions()
     errors += check_users_board_never_stores_an_address()
+    errors += check_add_company_journals_and_reports_already_tracked()
     errors += check_login_endpoint_names_a_handle_never_an_address()
     errors += check_companies_sub_sector_filter_follows_the_sector()
     errors += check_deploy_doc_claims_are_dated()

@@ -710,6 +710,46 @@ def _pf_near_bridged(tokens: list[str], corpus: str) -> bool:
     return True
 
 
+_PF_VERBAL = {"leading": ("to", "up")}   # 'leading to the arrest' is a verb
+
+
+def _pf_marketing_ok(text: str, m: "re.Match", corpus: str) -> bool:
+    """Is this listed word innocent HERE? Two ways, both narrow.
+
+    A NAME. "Autokey is included with Graykey Premier online licenses" was
+    refused for 'Premier', which is half of a product Magnet Forensics sells
+    and which their own page prints. A listed word capitalised mid-sentence
+    and sitting in a capitalised run that the company's own pages carry is a
+    name, not a claim. The run must be on the page: 'Premier Platform' with
+    no such product is still refused.
+
+    A VERB. "credits CellHawk analysis with leading to the arrest of a murder
+    suspect" was refused for 'leading'. 'leading to' is a verb; the adjective
+    the rule exists to stop is 'a leading provider'.
+    """
+    word = m.group(0)
+    after = text[m.end():].split()
+    key = word.casefold()
+    if key in _PF_VERBAL and after and after[0].strip(_PF_EDGE_PUNCT).casefold() in _PF_VERBAL[key]:
+        return True
+    if not word[:1].isupper() or m.start() == 0:
+        return False
+    # the capitalised run this word belongs to, and whether the page has it
+    raws = text.split()
+    at = len(text[:m.start()].split())
+    if at >= len(raws):
+        return False
+    i = j = at
+    cap = lambda k: bool(raws[k][:1].isupper()) if 0 <= k < len(raws) else False
+    while i > 0 and cap(i - 1):
+        i -= 1
+    while j + 1 < len(raws) and cap(j + 1):
+        j += 1
+    if j == i:
+        return False                      # a lone capitalised adjective is not a name
+    return _pf_has(corpus, " ".join(raws[i:j + 1]).strip(_PF_EDGE_PUNCT))
+
+
 def _pf_entities(text: str, allow_tokens: set[str], allow_phrases: set[tuple[str, ...]],
                  corpus: str, corpus_aside_free: str = "") -> str | None:
     """Rule 5: the first name or number in `text` that no page carries.
@@ -877,8 +917,12 @@ def check_profile(p: dict, texts: dict[str, str]) -> str | None:
         hit = next((m for m in _PF_FIRST_PERSON.finditer(text) if m.group(0) != "US"), None)
         if hit:
             return f"7. pasted marketing: first person {hit.group(0)!r} in {head!r}."
-        # 8. adjectives nobody can check
-        m = _PF_MARKETING_RE.search(text)
+        # 8. adjectives nobody can check - but a WORD IS NOT AN ADJECTIVE
+        #    JUST BECAUSE IT IS ON A LIST. "Graykey Premier" is a product
+        #    Magnet Forensics sells and "leading to the arrest" is a verb;
+        #    both were refused as marketing on their first real batch.
+        m = next((m for m in _PF_MARKETING_RE.finditer(text)
+                  if not _pf_marketing_ok(text, m, corpus)), None)
         if m:
             return f"8. marketing word {m.group(0)!r} in {head!r}."
         # 4. the quote is the provenance; it must be on the page it cites

@@ -32,7 +32,8 @@ jobs:
           # submission is trusted or used: the bot derives every field itself.
           URL=$(printf '%s' "$BODY" | grep -oE 'https?://[^ )>"]+' | head -1)
           if [ -z "$URL" ]; then
-            echo "no URL found" >&2; exit 1
+            echo "::error::no http(s) URL in the issue body, so there is nothing to research" >&2
+            exit 1
           fi
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
@@ -53,8 +54,9 @@ jobs:
           SUBMITTED_URL: ${{ steps.url.outputs.url }}
         run: |
           set +e
-          python scripts/add_company.py "$SUBMITTED_URL" --write
+          python scripts/add_company.py "$SUBMITTED_URL" --write --by "bot:add-company"
           echo "wrote=$?" >> "$GITHUB_OUTPUT"
+          exit 0
 
       - name: Open a pull request
         if: steps.write.outputs.wrote == '0'
@@ -74,14 +76,30 @@ jobs:
               "$SUBMITTED_URL" "${{ github.event.issue.number }}" \
               "$(cat proposal.txt)")"
 
+      # THE LAST STEP MUST NOT BE THE ONE THAT FAILS. Reporting back is how a
+      # submitter learns what happened; a red X here tells them nothing and
+      # hides the finding. It runs whatever came before it, says which of the
+      # three outcomes this was, and never exits nonzero.
       - name: Report back on the issue
+        if: always()
         env:
           GH_TOKEN: ${{ github.token }}
+          PROPOSE_STATUS: ${{ steps.propose.outputs.status }}
+          WROTE: ${{ steps.write.outputs.wrote }}
         run: |
-          if [ "${{ steps.write.outputs.wrote }}" = "0" ]; then
+          set +e
+          if [ "$WROTE" = "0" ]; then
             MSG="A pull request is open with the proposed entry. Monitoring starts on the next daily build once it is merged."
+          elif [ "$PROPOSE_STATUS" = "3" ]; then
+            MSG="This company is already on the board. Nothing to add, and nothing went wrong."
           else
             MSG="The bot could not add this automatically. Its findings are below; a person needs to fill the gaps."
           fi
+          [ -s proposal.txt ] || echo "(the bot produced no output; see the workflow run)" > proposal.txt
           gh issue comment ${{ github.event.issue.number }} \
-            --body "$(printf '%s\n\n```\n%s\n```' "$MSG" "$(cat proposal.txt)")"
+            --body "$(printf '%s\n\n```\n%s\n```' "$MSG" "$(cat proposal.txt)")" || true
+          # ALREADY TRACKED CLOSES THE ISSUE. It is answered, not abandoned.
+          if [ "$PROPOSE_STATUS" = "3" ]; then
+            gh issue close ${{ github.event.issue.number }} --reason "not planned" || true
+          fi
+          exit 0
