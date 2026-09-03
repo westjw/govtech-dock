@@ -49,6 +49,13 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import admin                                                    # noqa: E402
 import agents                                                   # noqa: E402
 
+# Kinds this door cannot land, and WHY each one, because "no applier yet" is
+# two different facts. `profile` has an applier - promote_profiles.py - but it
+# lands a whole category at once behind a gate review, which is the owner's
+# ruling on how 2,000 write-ups reach public pages; ruling one here would walk
+# past the gate. `news` is a parser with no proposals at all. `claim` and
+# `card` are genuinely unbuilt.
+ELSEWHERE = {"profile": "ruled in batches: promote_profiles.py --gate <category>"}
 NO_APPLIER = ("profile", "news", "claim", "card")
 
 
@@ -156,9 +163,12 @@ def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
                                        f"proposable, nothing was deleted"}
 
     if kind in NO_APPLIER:
-        return {"error": f"no applier for a {kind} proposal yet. The queue can "
-                         f"show it; nothing can land it. That is a refusal, "
-                         f"not a landing"}
+        where = ELSEWHERE.get(kind)
+        return {"error": (f"a {kind} proposal is not ruled here: {where}"
+                          if where else
+                          f"no applier for a {kind} proposal yet. The queue can "
+                          f"show it; nothing can land it. That is a refusal, "
+                          f"not a landing")}
     if kind == "read":
         res = _accept_read(p, by, why, force)
     elif kind == "board":
@@ -215,7 +225,9 @@ def main() -> int:
         by_kind[p.get("kind", "?")] = by_kind.get(p.get("kind", "?"), 0) + 1
     print(f"{len(pending)} proposal(s) waiting on a ruling")
     for k, n in sorted(by_kind.items(), key=lambda kv: -kv[1]):
-        print(f"  {n:4}  {k}" + ("   (no applier yet)" if k in NO_APPLIER else ""))
+        tail = (f"   ({ELSEWHERE[k]})" if k in ELSEWHERE
+                else "   (no applier yet)" if k in NO_APPLIER else "")
+        print(f"  {n:4}  {k}{tail}")
     return 0
 
 

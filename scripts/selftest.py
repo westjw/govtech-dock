@@ -694,14 +694,21 @@ def check_proposal_rulings_cover_every_kind() -> int:
                 if k in proposal_rulings.NO_APPLIER:
                     # THE refusal, not any refusal. "unknown proposal kind
                     # 'profile'" also contains the word profile; the first
-                    # version accepted it and a dispatcher that dropped the
-                    # no-applier branch walked past.
-                    if not r.get("error") or "no applier" not in r["error"] \
+                    # version accepted that and a dispatcher that dropped the
+                    # no-applier branch walked past. Two shapes are correct:
+                    # "no applier yet" for a kind nothing can land, and a
+                    # pointer for a kind ruled through another door - a
+                    # profile is landed by promote_profiles a category at a
+                    # time behind a gate review, and ruling one here would
+                    # walk past that gate.
+                    where = proposal_rulings.ELSEWHERE.get(k)
+                    want = where if where else "no applier"
+                    if not r.get("error") or want not in r["error"] \
                             or k not in r["error"]:
-                        errors += fail(f"a {k} proposal was not refused as "
-                                       f"'no applier for a {k}'; got {r}. A "
-                                       f"kind with no applier must say so, "
-                                       f"not pretend to land or fall through")
+                        errors += fail(f"a {k} proposal was not refused with "
+                                       f"{want!r}; got {r}. A kind this door "
+                                       f"cannot land must say so, and say "
+                                       f"where it IS ruled if anywhere")
                 elif k == "read":
                     # off-domain read refuses without force, lands with it
                     if not r.get("error"):
@@ -717,6 +724,19 @@ def check_proposal_rulings_cover_every_kind() -> int:
                             or st2["read:acme"].get("ruled_by") != "owner":
                         errors += fail("an accepted read was not stamped with "
                                        "status and author in the store")
+            # 2b. A KIND WITH AN APPLIER ELSEWHERE MUST NAME IT. Emptying
+            # ELSEWHERE makes the refusal read "no applier for a profile
+            # proposal yet", which is now false - promote_profiles lands them
+            # a category at a time - and a person reading that would go
+            # looking for something to build. The generic branch above cannot
+            # catch this, because "no applier" is a substring of both.
+            r = proposal_rulings.rule(agents.load(), "profile:acme", True,
+                                      why="x", by="owner")
+            if "promote_profiles" not in (r.get("error") or ""):
+                errors += fail(f"a profile proposal was refused without naming "
+                               f"promote_profiles, which is where it IS ruled: "
+                               f"{r}. 'No applier yet' is false for this kind")
+
             # 3. a reject stamps and keeps the row
             r = proposal_rulings.rule(agents.load(), "board:acme", False,
                                       why="not theirs", by="owner")
