@@ -23,6 +23,7 @@ import argparse
 import datetime as dt
 import html
 import json
+import math
 import os
 import pathlib
 import re
@@ -528,38 +529,20 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
     return {"roles": len(roles), "companies": len(cos)}
 
 
-def _page(title: str, desc: str, canonical: str, body: str, brand: dict,
-          og: str = "home") -> str:
-    """One no-JS page, in the brand's own tokens.
-
-    Deliberately not a copy of index.html: this is what a crawler, a
-    link-unfurler and a reader with JavaScript off actually get, so it carries
-    the facts in the HTML rather than fetching them. It links INTO the app for
-    anyone who wants filters.
-    """
+def _default_css(brand: dict) -> str:
+    """The stylesheet of the state and conference pages, in the brand's own
+    tokens. The company page brings its own (COPAGE_CSS)."""
     p_ = brand["palette"]
-    return f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{html.escape(title)}</title>
-<meta name="description" content="{html.escape(desc)}">
-<link rel="canonical" href="{html.escape(canonical)}">
-<link rel="icon" href="/assets/mascot/svg/favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="website">
-<meta property="og:title" content="{html.escape(title)}">
-<meta property="og:description" content="{html.escape(desc)}">
-<meta property="og:url" content="{html.escape(canonical)}">
-<meta property="og:image" content="{brand['site']}/assets/og/{og}.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
-<style>
+    return f"""
  :root{{--bg:{p_['ice']['hex']};--panel:{p_['belly']['hex']};--ink:{p_['penguin']['hex']};
    --line:{p_['frost']['hex']};--dim:{brand['derived']['deep_fog']['hex']};
    --link:{p_['badge']['hex']};--beak:{p_['beak']['hex']}}}
- @media (prefers-color-scheme:dark){{:root{{--bg:{p_['penguin']['hex']};--panel:#28304a;
-   --ink:{p_['ice']['hex']};--line:#39445e;--dim:#93a9ba;
+ @media (prefers-color-scheme:dark){{:root:not([data-theme=light]){{--bg:{p_['penguin']['hex']};--panel:#262E42;
+   --ink:{p_['ice']['hex']};--line:#39435C;--dim:#A8BCCA;
    --link:{brand['derived']['dark']['badge']['hex']}}}}}
+ :root[data-theme=dark]{{--bg:{p_['penguin']['hex']};--panel:#262E42;
+   --ink:{p_['ice']['hex']};--line:#39435C;--dim:#A8BCCA;
+   --link:{brand['derived']['dark']['badge']['hex']}}}
  *{{box-sizing:border-box}}
  body{{margin:0;background:var(--bg);color:var(--ink);
    font:16px/1.6 Archivo,system-ui,sans-serif}}
@@ -582,177 +565,816 @@ def _page(title: str, desc: str, canonical: str, body: str, brand: dict,
  .note{{background:var(--panel);border:1px solid var(--line);padding:12px 14px;
    font-size:14px;color:var(--dim);margin:18px 0}}
  .cta{{display:inline-block;margin-top:8px;font-weight:600}}
-</style></head><body>
+"""
+
+
+def _page(title: str, desc: str, canonical: str, body: str, brand: dict,
+          og: str = "home", css: "str | None" = None, wrap: bool = True) -> str:
+    """One no-JS page, in the brand's own tokens.
+
+    Deliberately not a copy of index.html: this is what a crawler, a
+    link-unfurler and a reader with JavaScript off actually get, so it carries
+    the facts in the HTML rather than fetching them. It links INTO the app for
+    anyone who wants filters.
+
+    `css` is the page's whole stylesheet and `wrap` says whether the body goes
+    inside the default <main> measure. The company page brings its own of
+    both: it is the app's .copage layout, which lays out its own columns and
+    must not sit inside a 74ch column.
+    """
+    css = _default_css(brand) if css is None else css
+    main = f"<main>{body}</main>" if wrap else body
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{html.escape(title)}</title>
+<meta name="description" content="{html.escape(desc)}">
+<link rel="canonical" href="{html.escape(canonical)}">
+<link rel="icon" href="/assets/mascot/svg/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{html.escape(title)}">
+<meta property="og:description" content="{html.escape(desc)}">
+<meta property="og:url" content="{html.escape(canonical)}">
+<meta property="og:image" content="{brand['site']}/assets/og/{og}.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
+<style>{css}</style></head><body>
 <div class="band"><a href="/">{html.escape(brand['name'])}</a></div>
-<main>{body}</main>
+{main}
 </body></html>
 """
 
 
+# ------------------------------------------------------------ company page
+# THE STATIC COMPANY PAGE IS THE APP'S COMPANY PAGE. A visitor from a search
+# result lands on /c/<id>.html; a visitor inside the app opens ?co=<id> and
+# gets co() in index.html. For a while those were two different pages - the
+# static one a 74ch column of lists written before the redesign - and the
+# same company read as two different products depending on the door. What
+# follows is co() ported line for line: the same sections in the same order,
+# the same class names, the same copy per state, the same breakpoints, the
+# same dark override. Anything the app does on the client - save, expand a
+# group, push history - becomes a plain link into the app or is left out.
+#
+# EVERYTHING HERE IS COMPUTED FROM THE RECORD AND THE POSTINGS, never typed
+# in. The phase cell in particular: the app reads it from this company's
+# postings against today's date, and the honest answer for every company on
+# a board whose history began 2026-08-18 is "not enough history to read".
+# That is what this prints, by running the same arithmetic against the
+# board's own generated date, and not by hard-coding the sentence - the day
+# the record is 60 days deep the page starts saying something else on its own.
+
+FAM = {"gtm": "GTM", "cs": "Customer Success", "ops": "Ops / RevOps",
+       "engineering": "Engineering", "product": "Product & Design",
+       "data": "Data & Research", "policy": "Policy & Gov Affairs",
+       "ga": "G&A", "exec": "Executive", "field": "Field & implementation",
+       "other": "Unclassified"}
+SALES_FAMILIES = {"gtm", "field"}
+# Verkada alone carries 247 openings and Motorola 354, which is more list
+# than anybody reads to the end of. The cut is by OPENING, and the page says
+# where the rest are.
+CO_ROLE_CAP = 40
+PAY_PERIOD = {"year": "", "month": "a month", "week": "a week",
+              "day": "a day", "hour": "an hour"}
+
+# The app's .copage stylesheet (index.html), carried whole so the page stands
+# alone. One edit: the app's negative margins cancel its own <main> padding;
+# there is no such padding here, so the block's margin is 0. The tokens the
+# page consumes from the site sheet (--accent for .pay, --faint for .paynone,
+# --beak for the band, the fonts, --radius) are defined on :root above it.
+# Both dark forms are defined - the media query for a reader whose system is
+# dark, and [data-theme=dark] for an explicit choice - because a token with
+# one definition is a token that is wrong in one of the two themes.
+COPAGE_CSS = """
+ :root{--font-heading:"Archivo",system-ui,sans-serif;--font-body:"Archivo",system-ui,sans-serif;--radius:0px}
+ :root{--bg:#E8F1F7;--panel:#FAF7F0;--line:#C9DCE8;--ink:#1F2536;--dim:#556F82;
+   --faint:#7C97AA;--accent:#0B57C4;--warn:#C1341F;--bad:#C1341F;--beak:#F5A623;--chip:#DCE9F1}
+ @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+   --bg:#1F2536;--panel:#262E42;--line:#39435C;--ink:#E8F1F7;--dim:#A8BCCA;
+   --faint:#7C97AA;--accent:#478EF5;--warn:#E46855;--bad:#E46855;--beak:#F5A623;--chip:#2E3852}}
+ :root[data-theme=dark]{
+   --bg:#1F2536;--panel:#262E42;--line:#39435C;--ink:#E8F1F7;--dim:#A8BCCA;
+   --faint:#7C97AA;--accent:#478EF5;--warn:#E46855;--bad:#E46855;--beak:#F5A623;--chip:#2E3852}
+ :root{--hdr-bg:#1F2536;--hdr-ink:#E8F1F7;--hdr-mute:#9FB3C4;--hdr-line:#39435C}
+ *{box-sizing:border-box}
+ button,input,select,textarea,dialog,img,code{border-radius:var(--radius)}
+ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--font-body)}
+ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin:0}
+ a{color:var(--accent);text-underline-offset:2px}
+ .band{background:var(--hdr-bg);color:var(--hdr-ink);border-bottom:3px solid var(--beak);padding:14px 22px}
+ .band a{color:var(--hdr-ink);text-decoration:none;font-weight:800;letter-spacing:.01em}
+ .pay{font-variant-numeric:tabular-nums}
+ .pay{color:var(--accent);font-weight:600;white-space:nowrap}
+ .paynone{color:var(--faint)}
+ .copage{--c-bg:#FAF7F0;--c-rule:#C9DCE8;--c-stroke:#1F2536;--c-ink:#1F2536;--c-ink2:#556F82;--c-ink3:#7C97AA;--c-accent:#C1341F;--c-accent-text:#C1341F;--c-link:#0B57C4}
+ @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .copage{--c-bg:#151B29;--c-rule:#2E3A50;--c-stroke:#4A5C71;--c-ink:#E8F1F7;--c-ink2:#A9C3D4;--c-ink3:#7C97AA;--c-accent:#C1341F;--c-accent-text:#E4634A;--c-link:#9CC3FF}}
+ :root[data-theme=dark] .copage{--c-bg:#151B29;--c-rule:#2E3A50;--c-stroke:#4A5C71;--c-ink:#E8F1F7;--c-ink2:#A9C3D4;--c-ink3:#7C97AA;--c-accent:#C1341F;--c-accent-text:#E4634A;--c-link:#9CC3FF}
+ .copage{background:var(--c-bg);color:var(--c-ink);margin:0;padding:0 20px 48px;min-height:70vh}
+ .copage a{color:var(--c-link)}
+ .cowrap{max-width:1000px;margin:0 auto}
+ .cocrumb{font-size:11px;line-height:1.5;color:var(--c-ink3);padding:14px 0 10px;font-variant-numeric:tabular-nums}
+ .cocrumb a{color:var(--c-ink2);text-decoration:none}
+ .cocrumb a:hover{text-decoration:underline}
+ .cocrumb .sep{padding:0 7px;color:var(--c-rule)}
+ .coid{display:flex;gap:16px;align-items:flex-start;padding:2px 0 18px}
+ .coid .logo{width:56px;height:56px;flex:none;display:grid;place-items:center;font:800 22px/1 var(--font-heading);background:#E8F1F7;color:#1F2536}
+ .coid h1{font-size:30px;line-height:1;letter-spacing:-.025em;margin:0 0 8px}
+ .cometa{font-size:11px;line-height:1.5;color:var(--c-ink3);font-variant-numeric:tabular-nums}
+ .cometa .sep{padding:0 8px;color:var(--c-rule)}
+ .cometa a{color:var(--c-ink2)}
+ .coacts{margin-left:auto;display:flex;gap:8px;flex:none}
+ .cobtn{font:800 11px/1 var(--font-heading);padding:10px 14px;cursor:pointer;border:1px solid var(--c-stroke);background:none;color:var(--c-ink);text-decoration:none;display:inline-block}
+ .cobtn.fill{background:var(--c-accent);border-color:var(--c-accent);color:#FAF7F0}
+ .cobtn.on{background:none;border-color:var(--c-stroke);color:var(--c-ink2)}
+ .cobtn:focus-visible{outline:2px solid var(--c-accent-text);outline-offset:2px}
+ .costrip{display:flex;border-top:2px solid var(--c-rule);border-bottom:2px solid var(--c-rule);margin:0 0 30px}
+ .costrip>dl{padding:18px 0 16px;padding-right:22px;margin:0;flex:1 1 0}
+ .costrip>dl+dl{border-left:1.5px solid var(--c-rule);padding-left:22px}
+ .costrip>dl.wide{flex:1.3 1 0}
+ .costrip>dl.src{flex:1.1 1 0}
+ .costrip .v{font:800 34px/1 var(--font-heading);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+ .costrip .v.txt{font-size:17px;line-height:1.2;letter-spacing:-.01em}
+ .costrip .v.dim{color:var(--c-ink3)}
+ .costrip .v.acc{color:var(--c-accent-text)}
+ .costrip dt{font:800 9.5px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:var(--c-ink3);margin:10px 0 7px}
+ .costrip dd{margin:0;font-size:11px;line-height:1.5;color:var(--c-ink2);font-variant-numeric:tabular-nums}
+ .cobody{display:flex;gap:40px;align-items:flex-start}
+ .cocol{flex:1;min-width:0}
+ .corail{width:262px;flex:none}
+ .cosec{margin:0 0 30px}
+ .cosec>h2{font:800 15px/1 var(--font-heading);display:inline}
+ .cosec .smeta{font-size:11px;color:var(--c-ink3);padding-left:10px}
+ .cosechd{display:flex;align-items:baseline;gap:0;border-bottom:1px solid var(--c-rule);padding-bottom:9px;margin-bottom:14px}
+ .coabout p{font-size:13px;line-height:1.65;max-width:560px;margin:0 0 13px;color:var(--c-ink)}
+ .coabout .more{color:var(--c-ink3)}
+ .coquote{border-left:1.5px solid var(--c-rule);padding-left:14px;margin:16px 0 0;font-style:italic;font-size:13px;line-height:1.6;color:var(--c-ink2);max-width:560px}
+ .coquote .src{font-style:normal;font-size:11px;color:var(--c-ink3)}
+ .cogrp{margin:0 0 14px}
+ .cogrph{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid var(--c-rule)}
+ .cogrph h3{font:800 13px/1 var(--font-heading)}
+ .cogrph .n{font-size:11px;color:var(--c-ink3);margin-left:auto}
+ .corow{display:flex;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--c-rule);font-size:12.5px;line-height:1.5}
+ .corow .ti{flex:1;min-width:0;font-weight:800}
+ .corow .lo{width:120px;flex:none;color:var(--c-ink2);font-size:11px}
+ .corow .pa{width:118px;flex:none;color:var(--c-ink2);font-size:11px;font-variant-numeric:tabular-nums}
+ .corow .ag{width:52px;flex:none;color:var(--c-ink3);font-size:11px;font-variant-numeric:tabular-nums}
+ .corow .sv{width:46px;flex:none;text-align:right}
+ .comore{font-size:11px;padding:9px 0;display:inline-block}
+ .coempty{display:flex;gap:20px;align-items:flex-start;padding:22px 0 4px}
+ .coempty img{width:96px;flex:none;opacity:.85}
+ .coempty h3{font:800 15px/1.2 var(--font-heading);margin:0 0 8px}
+ .coempty p{font-size:12.5px;line-height:1.6;color:var(--c-ink2);max-width:52ch;margin:0 0 14px}
+ .corail section{margin:0 0 26px}
+ .corail h2{font:800 9.5px/1.35 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:var(--c-ink3);border-bottom:1px solid var(--c-rule);padding-bottom:8px;margin-bottom:4px}
+ .corail .r{display:flex;align-items:baseline;gap:8px;padding:9px 0;border-bottom:1px solid var(--c-rule);font-size:12.5px;line-height:1.45}
+ .corail .r .d{display:block;font-size:11px;color:var(--c-ink3);margin-top:3px}
+ .corail .r .n{margin-left:auto;font-size:11px;color:var(--c-ink2);font-variant-numeric:tabular-nums;flex:none}
+ .corail .tag{margin-left:auto;font:800 9.5px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:var(--c-accent-text);flex:none}
+ .corail .note{font-size:11px;line-height:1.5;color:var(--c-ink3);padding-top:9px}
+ .corail .all{font-size:11px;padding-top:9px;display:inline-block}
+ .coprov{font-size:10.5px;line-height:1.5;color:var(--c-ink3)}
+ .cofoot{padding-top:10px;border-top:1px solid var(--c-rule)}
+ @media (max-width:1080px){.corail{width:220px}}
+ @media (max-width:900px){
+   .cobody{display:block}
+   .corail{width:auto;margin-top:34px}
+   .costrip{flex-wrap:wrap}
+   .costrip>dl{flex:1 1 46%!important}
+   .costrip>dl:nth-child(3){border-left:0;padding-left:0}
+   .corow{flex-wrap:wrap}
+   .corow .ti{flex:1 1 100%}
+   .corow .lo{width:auto;order:3;flex:1 1 60%}
+   .coid{flex-wrap:wrap}
+   .coid>div[style]{flex:1 1 60%}
+   .coacts{margin-left:0;flex:1 1 100%;order:3;padding-top:4px}
+   .coacts .cobtn{flex:1 1 0;min-height:44px;display:flex;align-items:center;justify-content:center}
+ }
+ @media (max-width:620px){
+   .costrip>dl{flex:1 1 46%!important;padding-right:14px}
+   .costrip>dl:nth-child(3),.costrip>dl:nth-child(4){flex:1 1 100%!important;border-left:0;padding-left:0}
+   .costrip>dl:nth-child(3){border-top:1.5px solid var(--c-rule);margin-top:2px;padding-top:16px}
+   .coid .logo{width:44px;height:44px}
+   .coid h1{font-size:24px}
+ }
+"""
+
+
+def _co_now(board: dict) -> dt.date:
+    """The day the board was generated, standing in for the app's Date.now().
+    The build runs nightly, so the two agree to within the day; and a page
+    dated by its own data is reproducible, which a page dated by the clock
+    of whichever machine built it is not."""
+    try:
+        return dt.date.fromisoformat(str(board.get("generated") or "")[:10])
+    except ValueError:
+        return dt.date.today()
+
+
+def _co_date(iso) -> "dt.date | None":
+    try:
+        return dt.date.fromisoformat(str(iso or "")[:10])
+    except ValueError:
+        return None
+
+
+def _co_roles(posts: list, since: "dt.date | None" = None) -> set:
+    """Distinct openings, optionally only those first read on or after
+    `since`. Openings, not rows: a requisition in forty cities is one."""
+    out = set()
+    for p in posts:
+        if since is not None:
+            t = _co_date(p.get("first_seen"))
+            if not t or t < since:
+                continue
+        out.add(p.get("opening_id") or p.get("id"))
+    return out
+
+
+def _co_record_days(mine: list, now: dt.date) -> "int | None":
+    """How far back the record goes for this company, in days, or None when
+    nothing here carries a date. A window longer than the record measures
+    us, not them - see coRecordDays in index.html."""
+    first = None
+    for p in mine:
+        t = _co_date(p.get("first_seen"))
+        if t and (first is None or t < first):
+            first = t
+    return None if first is None else (now - first).days
+
+
+def _co_open_note(mine: list, open_: int, readable: bool, now: dt.date) -> str:
+    if not open_:
+        return "none seen recently" if readable else "not measured"
+    span = _co_record_days(mine, now)
+    if span is not None and span < 30:
+        when = "today" if span == 0 else f"{span} day{'' if span == 1 else 's'} ago"
+        return f"first read here {when}"
+    n = len(_co_roles(mine, now - dt.timedelta(days=30)))
+    return f"+{n} first read in the last 30 days" if n else "none added in 30 days"
+
+
+def _co_phase(mine: list, readable: bool, now: dt.date) -> dict:
+    """{value, tone, note} for the hiring-phase cell - coPhase, ported.
+
+    A board nobody could read has no phase, not a quiet one. And the record
+    has to span the window before a trend read over it means anything: 60
+    days of postings out of 15 days of watching is our start date wearing
+    their hiring's name."""
+    if not readable:
+        return {"value": "Not measured", "tone": "dim",
+                "note": "their board could not be read, so there is nothing "
+                        "here to read a phase from"}
+    d60 = now - dt.timedelta(days=60)
+    fresh = []
+    for p in mine:
+        t = _co_date(p.get("first_seen"))
+        if t and t >= d60:
+            fresh.append(p)
+    roles = len(_co_roles(fresh))
+    span = _co_record_days(mine, now)
+    if span is not None and span < 60:
+        return {"value": "Not enough history to read", "tone": "dim",
+                "note": f"we have only been reading this board for {span} "
+                        f"day{'' if span == 1 else 's'}, and a 60-day phase "
+                        f"needs 60"}
+    if roles < 3:
+        return {"value": "Too few openings to read", "tone": "dim",
+                "note": "we need 3+ roles over 60 days to call it"}
+    q = len(_co_roles([p for p in fresh if p.get("quota_carrying")]))
+    places = set()
+    for p in fresh:
+        off = p.get("office")
+        if isinstance(off, dict) and off.get("state"):
+            places.add(off["state"])
+            continue
+        ter = p.get("territory")
+        if isinstance(ter, dict) and ter.get("stated"):
+            if ter.get("states"):
+                places.update(ter["states"])
+            elif ter.get("region"):
+                places.add(ter["region"])
+            continue
+        if p.get("location"):
+            places.add(p["location"])
+    ev = (f"{roles} role{'' if roles == 1 else 's'} opened in 60 days"
+          + (f" · {len(places)} regions" if len(places) > 1 else ""))
+    if q >= 3 and q / roles >= .5:
+        return {"value": "Building a sales floor", "tone": "acc", "note": ev}
+    if len(places) >= 3:
+        return {"value": "Regional push", "tone": "acc", "note": ev}
+    return {"value": "Steady backfill", "tone": "acc", "note": ev}
+
+
+def _co_age(iso, now: dt.date) -> str:
+    t = _co_date(iso)
+    if not t:
+        return ""
+    d = (now - t).days
+    if d < 1:
+        return "today"
+    if d < 30:
+        return f"{d}d"
+    return f"{t:%b} {t.day}"
+
+
+def _loc_cell(p: dict) -> str:
+    """Where a posting is, in the board's own vocabulary - locCell, ported.
+    One divergence: an office with a city and no state prints the city. The
+    app concatenates the null and prints "London, null"; 341 postings on the
+    board are shaped that way."""
+    if p.get("work_mode") == "remote":
+        return "remote"
+    off = p.get("office")
+    if isinstance(off, dict) and (off.get("city") or off.get("state")):
+        parts = [x for x in (off.get("city"), off.get("state")) if x]
+        return ", ".join(parts) + (" (hybrid)" if p.get("work_mode") == "hybrid" else "")
+    ter = p.get("territory")
+    if isinstance(ter, dict) and ter.get("stated"):
+        states = ter.get("states") or []
+        if states:
+            head = ", ".join(states[:3]) + (f" +{len(states) - 3}" if len(states) > 3 else "")
+        else:
+            head = ter.get("region") or ""
+        return f"{head} (territory)"
+    if p.get("location"):
+        return str(p["location"])
+    return "not stated"
+
+
+def _is_num(v) -> bool:
+    return isinstance(v, (int, float)) and not isinstance(v, bool)
+
+
+def _money(n, cur, cents: bool, use_k: bool) -> str:
+    if cents:
+        s = f"{n:.2f}"
+    elif use_k and n >= 1000 and n % 1000 == 0:
+        s = f"{int(n // 1000)}k"
+    else:
+        s = f"{int(math.floor(n + 0.5)):,}"
+    return "$" + s if cur == "USD" else s
+
+
+def _pay_text(c) -> str:
+    """$140k, $142,500, $67.50 - how a person writes it, and never a number
+    the posting did not state. payText, ported."""
+    if not isinstance(c, dict):
+        return ""
+    lo = c.get("min") if _is_num(c.get("min")) else None
+    hi = c.get("max") if _is_num(c.get("max")) else None
+    if lo is None and hi is None:
+        return ""
+    cents = any(v is not None and round(v) != v for v in (lo, hi))
+    use_k = c.get("period") == "year" or not c.get("period")
+    cur = c.get("currency")
+    code = f"{cur} " if cur and cur != "USD" else ""
+    f = lambda v: _money(v, cur, cents, use_k)  # noqa: E731
+    per = PAY_PERIOD.get(c.get("period") or "", "")
+    if lo is not None and hi is not None and lo != hi:
+        core = f"{code}{f(lo)} – {f(hi)}"
+    elif lo is not None and hi is not None:
+        core = f"{code}{f(lo)}"
+    elif lo is not None:
+        core = f"from {code}{f(lo)}"
+    else:
+        core = f"up to {code}{f(hi)}"
+    return core + (f" {per}" if per else "")
+
+
+def _pay_bit(p: dict) -> "tuple | None":
+    """(class, text), or None when this build recorded nothing either way.
+    The two silences are worded differently on purpose."""
+    if "comp" not in p:
+        return None
+    t = _pay_text(p.get("comp"))
+    if t:
+        return ("pay", t)
+    if p.get("jd_seen"):
+        return ("paynone", "no salary stated")
+    return ("paynone", "no description to read" if p.get("source") == "manual"
+            else "we could not read this posting")
+
+
+def _pay_cell(p: dict) -> str:
+    b = _pay_bit(p)
+    if b and b[0] == "pay":
+        return f'<span class="pay">{html.escape(b[1])}</span>'
+    why = b[1] if b else "this build of the board recorded no pay either way"
+    return f'<span class="paynone" title="{html.escape(why)}">&mdash;</span>'
+
+
+def _safe_url(u) -> str:
+    """http(s) and nothing else. A url out of an ATS is a url out of a
+    stranger, and this page is served to strangers."""
+    s = str(u or "").strip()
+    if not s:
+        return ""
+    try:
+        parts = urllib.parse.urlsplit(s)
+    except ValueError:
+        return ""
+    return s if parts.scheme in ("http", "https") and parts.netloc else ""
+
+
+def _path_of(u) -> str:
+    """"/about" for https://x.test/about/, "/" for the homepage, the raw
+    string for anything that is not a url."""
+    try:
+        parts = urllib.parse.urlsplit(str(u))
+    except ValueError:
+        return str(u)
+    if not (parts.scheme and parts.netloc):
+        return str(u)
+    pth = "" if parts.path == "/" else parts.path
+    return pth.rstrip("/") or "/"
+
+
+def _ext_link(url, text: str, cls: str = "") -> str:
+    """An outbound link that opens in a new tab, or the plain text when the
+    url is not one we would send a reader to."""
+    safe = _safe_url(url)
+    if not safe:
+        return text
+    c = f' class="{cls}"' if cls else ""
+    return (f'<a{c} href="{html.escape(safe)}" target="_blank" '
+            f'rel="nofollow noopener">{text}</a>')
+
+
+def _co_href(target_id, by_id: dict) -> str:
+    """Where a company link goes: its own static page when it has one, the
+    app otherwise. The same rule the middleware uses for canonical, so a
+    link on a static page never advertises a 404."""
+    tid = str(target_id or "")
+    if tid and tid in by_id and has_static_page(by_id[tid]):
+        return f"/c/{urllib.parse.quote(tid, safe='')}.html"
+    return f"/?co={urllib.parse.quote(tid, safe='')}"
+
+
+def _co_about(o: dict, dom: str) -> str:
+    """The About section - coAbout, ported. Keys on the SHAPE of profile,
+    never on the key: a legacy profile is a reviewer's notes and renders as
+    the one-line record, not as a write-up."""
+    esc = html.escape
+    pr = o.get("profile") if isinstance(o.get("profile"), dict) else None
+    ready = bool(pr and isinstance(pr.get("paragraphs"), list) and pr["paragraphs"])
+    desc = o.get("description") or ""
+    lede = f"<p>{esc(desc)}{'.' if desc and desc[-1] not in '.!?' else ''}</p>"
+    if not ready:
+        return (f'<section class="cosec coabout">'
+                f'<div class="cosechd"><h2>About</h2><span class="smeta">'
+                f'{"researched by SLED JOBS" if o.get("researched") else "from the record"}'
+                f'{" &middot; checked against " + esc(dom) if dom else ""}</span></div>'
+                f'{lede}'
+                f'<p class="more">This is the one-line record. The longer write-up the page is '
+                f'built for &mdash; what they sell, who buys it, named customers &mdash; is '
+                f'not on file for this company yet, so nothing stands in for it.</p>'
+                f'</section>')
+    srcs = pr.get("sources") if isinstance(pr.get("sources"), list) else []
+
+    def num(u):
+        for i, s in enumerate(srcs):
+            if isinstance(s, dict) and s.get("url") == u:
+                return f"<sup>{i + 1}</sup>"
+        return ""
+    psrc = pr.get("paragraph_sources") if isinstance(pr.get("paragraph_sources"), list) else []
+    paras = ""
+    for i, txt in enumerate(pr["paragraphs"]):
+        us = list(dict.fromkeys(psrc[i] if i < len(psrc) and isinstance(psrc[i], list) else []))
+        paras += f"<p>{esc(str(txt))}{''.join(num(u) for u in us)}</p>"
+    q = pr.get("quote") if isinstance(pr.get("quote"), dict) else None
+    quote = ""
+    if q and q.get("text"):
+        src = (f'<span class="src">{_ext_link(q["url"], esc(_path_of(q["url"])))}</span>'
+               if q.get("url") else "")
+        quote = f'<blockquote class="coquote">{esc(str(q["text"]))}{src}</blockquote>'
+    by = ("in their own words, claimed page" if pr.get("by_kind") == "company"
+          else "written from their site")
+    prov = ""
+    if srcs:
+        first = srcs[0] if isinstance(srcs[0], dict) else {}
+        when = f", read {esc(str(first['fetched_on']))}" if first.get("fetched_on") else ""
+        links = ", ".join(
+            _ext_link((s if isinstance(s, dict) else {}).get("url"),
+                      f"{i + 1}&nbsp;{esc(_path_of((s if isinstance(s, dict) else {}).get('url') or ''))}")
+            for i, s in enumerate(srcs))
+        prov = (f'<p class="coprov">Written from {len(srcs)} page{"" if len(srcs) == 1 else "s"} '
+                f'on {esc(dom or "their site")}{when}: {links}. Every sentence traces to '
+                f'one of them.</p>')
+    return (f'<section class="cosec coabout">'
+            f'<div class="cosechd"><h2>About</h2><span class="smeta">{by}</span></div>'
+            f'{lede}{paras}{quote}{prov}</section>')
+
+
+def _co_rivals(o: dict, n_in_cat: int, by_id: dict) -> str:
+    """The Competitors rail block - coRivals, ported. Three states, three
+    different facts: a researched shortlist, a researched EMPTY, and not
+    researched yet. The third offers the category as navigation, labelled as
+    navigation, and never as the shortlist."""
+    esc = html.escape
+    link = (f'<a class="all" href="/?tab=companies">Browse all {n_in_cat:,} in '
+            f'{esc(o.get("category") or "")} &rarr;</a>' if n_in_cat > 1 else "")
+    checked = o.get("competitors_checked_on")
+    rivals = o.get("competitors") or []
+    if rivals:
+        rows = ""
+        for r in rivals:
+            if not isinstance(r, dict):
+                continue
+            x = by_id.get(r.get("id")) or {}
+            n = (f'<span class="n">{x["open_roles"]}</span>'
+                 if x.get("open_roles") is not None else "")
+            why = f'<span class="d">{esc(r["why"])}</span>' if r.get("why") else ""
+            rows += (f'<div class="r"><span><a href="{_co_href(r.get("id"), by_id)}">'
+                     f'{esc(x.get("name") or r.get("id") or "")}</a>{why}</span>{n}</div>')
+        return (f'<section><h2>Competitors</h2>{rows}'
+                f'<p class="note">Who a buyer would shortlist against them'
+                f'{", checked " + esc(str(checked)) if checked else ""}.</p>{link}</section>')
+    if o.get("competitors_none_found"):
+        return (f'<section><h2>Competitors</h2><p class="note">Nobody else on this board '
+                f'sells what they sell into this market. That is a finding, checked'
+                f'{" " + esc(str(checked)) if checked else ""}, not an empty field.</p>'
+                f'{link}</section>')
+    return (f'<section><h2>Competitors</h2><p class="note">Not researched yet. The '
+            f'companies below share this category, which is the room they are all '
+            f'standing in, not the shortlist a buyer would build.</p>{link}</section>')
+
+
+def _co_roles_html(o: dict, mine: list, readable: bool, now: dt.date) -> str:
+    """The Open roles section body. ONE ROW PER OPENING, grouped by family
+    the way the app groups them, sales families first the way this page
+    always led, and cut at CO_ROLE_CAP with the rest pointed at the board.
+
+    The app's rows are postings, and its "N roles" per group counts them.
+    Here the rows are openings and the counts are openings: Xplor advertised
+    one Account Executive requisition in forty cities, and a static page that
+    printed the title forty times under a strip saying seventeen was the
+    disagreement CLAUDE.md's counting rule exists to stop. The strip, the
+    section label and the group labels all count the same thing."""
+    esc = html.escape
+    cid = o["id"]
+    alert = f'/alerts?company={urllib.parse.quote(cid, safe="")}'
+    if not mine:
+        if readable:
+            why = "Their board is one we read every night and it is empty right now."
+        else:
+            last = (f" &mdash; last on {esc(str(o['board_checked_on']))}"
+                    if o.get("board_checked_on") else "")
+            why = ("Their board is live but built in a way we cannot read automatically, "
+                   f"so this list may be incomplete. A person checks it{last}.")
+        board = (_ext_link(o["board_url"], "Open their hiring board &#8599;", "cobtn") + " "
+                 if o.get("board_url") and _safe_url(o["board_url"]) else "")
+        return (f'<div class="coempty">'
+                f'<img src="/assets/mascot/svg/head-ghosted.svg" alt="" width="88" height="88">'
+                f'<div><h3>No open roles we can see.</h3><p>{why}</p>'
+                f'{board}<a class="cobtn" href="{alert}">Alert me when they post</a>'
+                f'</div></div>')
+    by_fam: dict = {}
+    for p in mine:
+        by_fam.setdefault(p.get("family") or "other", []).append(p)
+    fams = []
+    for fam, rows in by_fam.items():
+        groups: dict = {}
+        for r in rows:
+            groups.setdefault(r["opening_id"], []).append(r)
+        openings = sorted(groups.values(),
+                          key=lambda g: (not g[0].get("quota_carrying"),
+                                         g[0].get("title") or ""))
+        fams.append((fam, openings))
+    fams.sort(key=lambda fo: (fo[0] not in SALES_FAMILIES, -len(fo[1])))
+    left = CO_ROLE_CAP
+    out = ""
+    for fam, openings in fams:
+        n = len(openings)
+        q = sum(1 for g in openings if g[0].get("quota_carrying"))
+        shown = openings[:max(0, left)]
+        left -= len(shown)
+        rows = ""
+        for grp in shown:
+            rep = grp[0]
+            places = {_loc_cell(g) for g in grp}
+            loc = _loc_cell(rep)
+            if len(places) > 1:
+                loc += f" and {len(places) - 1} other location{'s' if len(places) > 2 else ''}"
+            seen = [t for t in (_co_date(g.get("first_seen")) for g in grp) if t]
+            age = _co_age(min(seen).isoformat(), now) if seen else ""
+            rows += (f'<div class="corow">'
+                     f'<span class="ti"><a href="/?role={urllib.parse.quote(str(rep.get("id") or ""), safe="")}">'
+                     f'{esc(rep.get("title") or "")}</a></span>'
+                     f'<span class="lo">{esc(loc)}</span>'
+                     f'<span class="pa">{_pay_cell(rep)}</span>'
+                     f'<span class="ag">{esc(age)}</span>'
+                     f'<span class="sv"></span></div>')
+        hidden = n - len(shown)
+        more = (f'<a class="comore" href="/?co={urllib.parse.quote(cid, safe="")}">'
+                f'Show {hidden} more in the board</a>' if hidden else "")
+        out += (f'<div class="cogrp"><div class="cogrph"><h3>{esc(FAM.get(fam, fam))}</h3>'
+                f'<span class="n">{n} role{"" if n == 1 else "s"}'
+                f'{f" &middot; {q} quota-carrying" if q else ""}</span></div>'
+                f'{rows}{more}</div>')
+    return out
+
+
+def company_page_html(o: dict, mine: list, board: dict, brand: dict,
+                      by_id: dict, by_name: dict, in_cat: int) -> str:
+    """The whole static company page for one organization - co(), ported.
+    Everything on it is read from `o` and `mine`; nothing is typed in."""
+    esc = html.escape
+    site = brand["site"].rstrip("/")
+    now = _co_now(board)
+    cid = o["id"]
+    open_ = o.get("open_roles") or 0
+    quota = o.get("quota_roles") or 0
+    readable = o.get("enumerable") is not False and not o.get("unreadable")
+    phase = _co_phase(mine, readable, now)
+    dom = re.sub(r"/.*$", "", re.sub(r"^https?://", "", o.get("website") or ""))
+    q_id = urllib.parse.quote(cid, safe="")
+
+    # --- identity ---------------------------------------------------------
+    bits = [esc(x) for x in (o.get("category"), o.get("location")) if x]
+    if o.get("year_founded"):
+        bits.append(f"founded {esc(str(o['year_founded']))}")
+    if o.get("tier"):
+        bits.append(f"tier {esc(str(o['tier']))}")
+    # claim state is not on file for any company, so the page says nothing
+    # rather than asserting "unclaimed" about two thousand firms
+    brands = o.get("brands") or []
+    if brands:
+        bits.append(f"owns {len(brands)} brand{'' if len(brands) == 1 else 's'}")
+    if o.get("parent"):
+        # `parent` is a NAME, not an id. Resolved here; a name nobody on the
+        # board answers to is printed as the name and not as a dead link.
+        par = by_name.get(str(o["parent"]).strip().lower())
+        bits.append(f'part of <a href="{_co_href(par["id"], by_id)}">{esc(o["parent"])}</a>'
+                    if par else f"part of {esc(o['parent'])}")
+    initial = (o.get("name") or "?").strip()[:1] or "?"
+    sep = '<span class="sep">&middot;</span>'
+    ident = (f'<div class="coid">'
+             f'<div class="logo" aria-hidden="true">{esc(initial)}</div>'
+             f'<div style="flex:1;min-width:0"><h1>{esc(o["name"])}</h1>'
+             f'<div class="cometa">{sep.join(bits)}</div></div>'
+             f'<div class="coacts">'
+             f'<a class="cobtn fill" href="/?co={q_id}">Open in the board</a>'
+             f'<a class="cobtn" href="/alerts?company={q_id}">Alert on new roles</a>'
+             f'</div></div>')
+
+    # --- stat strip, four cells, always ------------------------------------
+    ats = o.get("ats") or ""
+    if readable:
+        src_val = ats[:1].upper() + ats[1:] if ats else "Not on file"
+        src_note = (f"read nightly{f' · all {open_} readable' if open_ else ''}"
+                    if ats and ats not in ("html", "unknown")
+                    else "a page we scan, not a board we can enumerate")
+    else:
+        src_val = "Board unreadable"
+        src_note = (("custom HTML" if ats == "html" else "their board")
+                    + " · a person checks it"
+                    + (f" · last {esc(str(o['board_checked_on']))}" if o.get("board_checked_on") else ""))
+    pct = f"{int(math.floor(quota / open_ * 100 + 0.5))}% of open roles" if quota and open_ else "nothing to count"
+    strip = (f'<div class="costrip">'
+             f'<dl><div class="v{"" if open_ else " dim"}">{open_}</div><dt>open roles</dt>'
+             f'<dd>{esc(_co_open_note(mine, open_, readable, now))}</dd></dl>'
+             f'<dl><div class="v{"" if quota else " dim"}">{quota or "&mdash;"}</div><dt>quota-carrying</dt>'
+             f'<dd>{pct}</dd></dl>'
+             f'<dl class="wide"><div class="v txt {phase["tone"]}">{esc(phase["value"])}</div>'
+             f'<dt>hiring phase</dt><dd>{esc(phase["note"])}</dd></dl>'
+             f'<dl class="src"><div class="v txt{"" if readable else " acc"}">{esc(src_val)}</div>'
+             f'<dt>source</dt><dd>{src_note}</dd></dl>'
+             f'</div>')
+
+    # --- reading column -----------------------------------------------------
+    about = _co_about(o, dom)
+    news = ('<section class="cosec"><div class="cosechd"><h2>News</h2>'
+            '<span class="smeta">none on file</span></div>'
+            '<p style="font-size:12.5px;line-height:1.6;color:var(--c-ink2);margin:0">'
+            'No news items have been recorded for this company.</p></section>')
+    incomplete = ('<p class="coprov" style="padding-top:10px">This list may be incomplete: '
+                  'their board is not one we can read in full.</p>' if mine and not readable else "")
+    roles = (f'<section class="cosec"><div class="cosechd"><h2>Open roles</h2>'
+             f'<span class="smeta">{f"{open_} on file" if mine else "none on file"}</span></div>'
+             f'{_co_roles_html(o, mine, readable, now)}{incomplete}</section>')
+
+    # --- reference rail -----------------------------------------------------
+    links = ""
+    unreadable_tag = '<span class="tag">unreadable</span>'
+    if o.get("website") and _safe_url(o["website"]):
+        links += f'<div class="r">{_ext_link(o["website"], esc(dom))}</div>'
+    if o.get("board_url") and _safe_url(o["board_url"]):
+        links += (f'<div class="r">{_ext_link(o["board_url"], "Their hiring board")}'
+                  f'{"" if readable else unreadable_tag}</div>')
+    rail = f"<section><h2>Links</h2>{links}</section>"
+    if brands:
+        rows = ""
+        for b in brands:
+            b = b if isinstance(b, dict) else {"name": str(b)}
+            nm = esc(str(b.get("name") or ""))
+            # a brand record carries no id of its own; it links to the folded
+            # company's page only where that company still exists on the
+            # board, and to its own site where the record names one
+            was = b.get("was_id")
+            if was and was in by_id:
+                nm = f'<a href="{_co_href(was, by_id)}">{nm}</a>'
+            elif b.get("website"):
+                nm = _ext_link(b["website"], nm)
+            d = f'<span class="d">{esc(str(b["descriptor"]))}</span>' if b.get("descriptor") else ""
+            n = f'<span class="n">{b["openRoles"]}</span>' if b.get("openRoles") is not None else ""
+            rows += f'<div class="r"><span>{nm}{d}</span>{n}</div>'
+        rail += (f'<section><h2>Brands they own</h2>{rows}'
+                 f'<p class="note">Counts are not rolled up: roles above are each '
+                 f"company's own.</p></section>")
+    if o.get("also"):
+        rows = "".join(f'<div class="r"><span>{esc(str(a.get("sector") or ""))} / '
+                       f'{esc(str(a.get("category") or ""))}</span></div>'
+                       for a in o["also"] if isinstance(a, dict))
+        rail += f"<section><h2>Also filed under</h2>{rows}</section>"
+    rail += _co_rivals(o, in_cat, by_id)
+    # "Roles read from unknown nightly" is what the app prints for a readable
+    # board whose ATS is recorded as "unknown". That is a sentence about a
+    # system that does not exist; the strip one screen up already says the
+    # page is scanned rather than enumerated, and this line agrees with it.
+    nightly = readable and ats and ats not in ("html", "unknown")
+    rail += (f'<section><p class="coprov">Record last verified'
+             f'{" " + esc(str(o["board_checked_on"])) if o.get("board_checked_on") else ""}'
+             f'{" by hand" if o.get("researched") else ""}. '
+             f'{f"Roles read from {esc(ats)} nightly." if nightly else "Roles are checked by hand."}'
+             f'</p></section>')
+
+    foot = (f'<p class="coprov cofoot">Listed on {esc(brand["name"])}, which tracks sales '
+            f'roles at state and local government technology companies. '
+            f'<a href="/?co={q_id}">See this company in the board</a>, where the roles '
+            f'are filterable and kept current.</p>')
+
+    body = (f'<div class="copage"><div class="cowrap">'
+            f'<nav class="cocrumb" aria-label="Breadcrumb">'
+            f'<a href="/?tab=companies">Companies</a><span class="sep">/</span>'
+            f'<a href="/?tab=companies">{esc(o.get("sector") or "")}</a>'
+            f'<span class="sep">/</span>{esc(o.get("category") or "")}</nav>'
+            f'{ident}{strip}'
+            f'<div class="cobody"><main class="cocol">{about}{news}{roles}</main>'
+            f'<aside class="corail">{rail}</aside></div>'
+            f'{foot}</div></div>')
+
+    # --- head: unchanged from the page this replaces ------------------------
+    prof = o.get("profile") if isinstance(o.get("profile"), dict) else None
+    desc = (o.get("description") or
+            f"{o['name']} sells into {o.get('sector') or 'state and local government'}.")
+    # THE DESCRIPTION ENDS ITS OWN SENTENCE before anything is appended to
+    # it. "…for law enforcement 27 open roles, 3 of them quota-carrying."
+    # shipped in the meta description of every page whose one-liner had no
+    # terminal punctuation.
+    if desc and desc[-1] not in ".!?":
+        desc += "."
+    line = ((f"{open_} open role{'s' if open_ != 1 else ''}"
+             + (f", {quota} of them quota-carrying" if quota else "")) if open_ else "")
+    first = ""
+    if prof and prof.get("paragraphs"):
+        first = str(prof["paragraphs"][0]).split(". ")[0].strip()
+        if first and first[-1] not in ".!?":
+            first += "."
+    meta = " ".join(x for x in (first or desc, f"{line}." if line else "") if x)
+    title = (f"{o['name']} is hiring · {brand['name']}" if line
+             else f"{o['name']} · {brand['name']}")
+    return _page(title, meta, f"{site}/c/{cid}", body, brand, "companies",
+                 css=COPAGE_CSS, wrap=False)
+
+
 def write_company_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
-    """A real page per company that is hiring.
+    """A real page per company that has something to say.
 
     Head tags fix how a link UNFURLS. They do not fix crawling: Bing,
     LinkedIn's fetcher and most AI crawlers do not run JavaScript, so they saw
     an empty shell where a company's facts should be. These carry the facts in
     the HTML.
 
-    Only companies with something open. A page saying "nothing open right now"
-    is true, useful in the app where you arrived deliberately, and worthless as
-    1,810 near-identical documents in an index.
+    A COMPANY WITH SOMETHING TO SAY GETS A PAGE. This used to be "only
+    companies with something open", on the argument that 1,810 pages reading
+    "nothing open right now" are worthless in an index. That was right when
+    the page had nothing else. Once a company carries a sourced write-up or a
+    researched shortlist, its page carries facts a crawler cannot get from
+    the app, and the argument inverts. has_static_page is the one gate.
+
+    The page itself is the app's company page, ported: see company_page_html.
     """
-    site = brand["site"].rstrip("/")
     d = out / "c"
     d.mkdir(parents=True, exist_ok=True)
-    by_co = {}
+    orgs = board.get("organizations", [])
+    by_co: dict = {}
     for p_ in board.get("postings", []):
         by_co.setdefault(p_["company_id"], []).append(p_)
+    by_id = {x["id"]: x for x in orgs if x.get("id")}
+    by_name = {str(x["name"]).strip().lower(): x for x in orgs if x.get("name")}
+    # the whole category, counted once, for the "Browse all N" link - the
+    # company itself included, the way the app counts it
+    cat_n: dict = {}
+    for x in orgs:
+        cat_n[(x.get("sector"), x.get("category"))] = cat_n.get((x.get("sector"), x.get("category")), 0) + 1
     n = 0
-    for o in board.get("organizations", []):
-        # A COMPANY WITH SOMETHING TO SAY GETS A PAGE. This used to be "only
-        # companies with something open", on the argument that 1,810 pages
-        # reading "nothing open right now" are worthless in an index. That
-        # was right when the page had nothing else. Once a company carries a
-        # sourced write-up or a researched shortlist, its page carries facts
-        # a crawler cannot get from the app, and the argument inverts.
-        prof = o.get("profile") if isinstance(o.get("profile"), dict) else None
+    for o in orgs:
         if not has_static_page(o):
             continue
-        # Sales first, then the rest, then capped. This site is about sales
-        # roles, so a page opening with forty engineering titles buries the
-        # thing somebody came for - and Verkada alone carries 247 openings,
-        # which is 38KB of list nobody reads to the end of.
-        #
-        # THE LISTING IS ONE ROW PER OPENING, and it was one row per POSTING
-        # while the heading above it counted openings. Xplor's page read "17
-        # open roles, 1 of them quota-carrying", then printed the title
-        # "Account Executive" forty times over - the same requisition in forty
-        # cities - and closed with "60 more are on the board". The reader was
-        # told a hundred jobs sat behind a heading that said seventeen. The
-        # comment that used to be here claimed the page "says so rather than
-        # letting the two disagree"; it was the disagreement.
-        SALES = {"gtm", "field"}
-        groups: dict = {}
-        for r in sorted(by_co.get(o["id"], []),
-                        key=lambda r: (r.get("family") not in SALES,
-                                       not r.get("quota_carrying"),
-                                       r.get("title") or "")):
-            groups.setdefault(r["opening_id"], []).append(r)
-        roles = list(groups.values())
-        shown, hidden = roles[:40], max(0, len(roles) - 40)
-        bits = [x for x in (o.get("sector"), o.get("category")) if x]
-        facts = " &middot; ".join(html.escape(x) for x in (
-            [" / ".join(bits)] if bits else []) + [
-            html.escape(o["location"]) for _ in [1] if o.get("location")] + [
-            "founded " + html.escape(str(o["year_founded"])) for _ in [1] if o.get("year_founded")])
-        items = ""
-        for grp in shown:
-            r = grp[0]
-            # WHERE ONE OPENING IS ADVERTISED, said as places rather than as
-            # repeated rows. The count is of distinct location strings: two
-            # rows at the same desk are one place, and a req with no location
-            # on any row says nothing rather than "0 locations".
-            places = sorted({(g.get("location") or "").strip()
-                             for g in grp} - {""})
-            loc = (places[0] if len(places) == 1 else
-                   f"{places[0]} and {len(places) - 1} other location"
-                   f"{'s' if len(places) > 2 else ''}" if places else "")
-            quota = ' <span class="meta">quota-carrying</span>' if r.get("quota_carrying") else ""
-            items += (f'<li><div class="role">{html.escape(r.get("title") or "")}'
-                      f'{quota}</div>'
-                      f'<div class="meta">{html.escape(loc)}</div></li>')
-        desc = (o.get("description") or
-                f"{o['name']} sells into {o.get('sector') or 'state and local government'}.")
-        # THE DESCRIPTION ENDS ITS OWN SENTENCE before anything is appended
-        # to it. "…for law enforcement 27 open roles, 3 of them quota-carrying."
-        # shipped in the meta description of every page whose one-liner had
-        # no terminal punctuation; co() in the app already handles this.
-        if desc and desc[-1] not in ".!?":
-            desc += "."
-        nq = o.get("quota_roles") or 0
-        line = ((f"{o['open_roles']} open role{'s' if o['open_roles'] != 1 else ''}"
-                 + (f", {nq} of them quota-carrying" if nq else ""))
-                if o.get("open_roles") else "")
-
-        # THE WRITE-UP, with its sources as links. Every paragraph on this
-        # page traces to a page on the company's own site, and the reader
-        # gets those pages by name - a claim about a real firm's customers
-        # is checkable in one click or it is not published here.
-        profile_html = ""
-        if prof and prof.get("paragraphs"):
-            srcs = [s for s in (prof.get("sources") or []) if isinstance(s, dict) and s.get("url")]
-            paras = "".join(f"<p>{html.escape(str(x))}</p>" for x in prof["paragraphs"])
-            q = prof.get("quote") if isinstance(prof.get("quote"), dict) else None
-            quote = (f'<blockquote>{html.escape(q["text"])}</blockquote>'
-                     if q and q.get("text") else "")
-            def _path(u):
-                pth = urllib.parse.urlsplit(u).path or "/"
-                return pth if pth == "/" else pth.rstrip("/")
-            src_line = ""
-            if srcs:
-                links = ", ".join(f'<a href="{html.escape(s["url"])}" rel="nofollow noopener">'
-                                  f'{html.escape(_path(s["url"]))}</a>' for s in srcs)
-                when = srcs[0].get("fetched_on")
-                src_line = (f'<p class="note">Written from {len(srcs)} page'
-                            f'{"s" if len(srcs) != 1 else ""} on their site'
-                            f'{", read " + html.escape(str(when)) if when else ""}: '
-                            f'{links}. Every sentence traces to one of them.</p>')
-            profile_html = f'<h2>About</h2>{paras}{quote}{src_line}'
-
-        comp_html = ""
-        if o.get("competitors"):
-            by_id = {x["id"]: x for x in board.get("organizations", []) if x.get("id")}
-            rows = ""
-            for r in o["competitors"]:
-                other = by_id.get(r.get("id")) or {}
-                nm = other.get("name") or r.get("id") or ""
-                rows += (f'<li><div class="role"><a href="/c/{urllib.parse.quote(r["id"])}.html">'
-                         f'{html.escape(nm)}</a></div>'
-                         f'<div class="meta">{html.escape(r.get("why") or "")}</div></li>')
-            comp_html = ('<h2>Competitors</h2><ul class="rivals">' + rows + '</ul>'
-                         '<p class="kv">Who a buyer would shortlist against them.</p>')
-        board_link = ""
-        if o.get("board_url"):
-            board_link = (f'<p><a class="cta" href="{html.escape(o["board_url"])}" '
-                          f'rel="nofollow noopener" target="_blank">'
-                          f'Open their hiring board &rarr;</a></p>')
-        body = (f'<h1>{html.escape(o["name"])}</h1>'
-                f'<p class="kv">{facts}</p>'
-                f'<p>{html.escape(desc)}</p>'
-                + (f'<p class="kv"><a href="{html.escape(o["website"])}" '
-                   f'rel="nofollow noopener">{html.escape(o["website"])}</a></p>'
-                   if o.get("website") else "")
-                # Their LinkedIn, where their own careers page named one whose
-                # slug matches their name. On a prerendered page for a company
-                # whose board will not enumerate, this is often the only place
-                # left to send a reader.
-                + (f'<p class="kv"><a href="{html.escape(o["linkedin"])}" '
-                   f'rel="nofollow noopener">Their LinkedIn</a></p>'
-                   if o.get("linkedin") else "")
-                + profile_html
-                + (f'<h2>{line}</h2><ul class="roles">{items}</ul>' if line else "")
-                + (f'<p class="kv">Showing the first {len(shown)}, sales roles '
-                   f'first. {hidden} more are on the board.</p>' if hidden else "")
-                + board_link
-                + comp_html
-                + f'<div class="note">Listed on {html.escape(brand["name"])}, which '
-                  f'tracks sales roles at state and local government technology '
-                  f'companies. <a href="/?co={urllib.parse.quote(o["id"])}">See this '
-                  f'company in the board</a>, where the roles are filterable and '
-                  f'kept current.</div>')
-        # the title claims "is hiring" only when something is open, and the
-        # meta description leads with the write-up's first sentence when
-        # there is one - it is the sentence a search result will show
-        first = ""
-        if prof and prof.get("paragraphs"):
-            first = str(prof["paragraphs"][0]).split(". ")[0].strip()
-            if first and first[-1] not in ".!?":
-                first += "."
-        meta = " ".join(x for x in (first or desc, f"{line}." if line else "") if x)
-        title = (f"{o['name']} is hiring · {brand['name']}" if line
-                 else f"{o['name']} · {brand['name']}")
-        (d / f"{o['id']}.html").write_text(_page(
-            title, meta, f"{site}/c/{o['id']}", body, brand, "companies"))
+        in_cat = cat_n.get((o.get("sector"), o.get("category")), 0)
+        (d / f"{o['id']}.html").write_text(company_page_html(
+            o, by_co.get(o["id"], []), board, brand, by_id, by_name, in_cat))
         n += 1
     return n
 
