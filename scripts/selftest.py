@@ -884,6 +884,31 @@ def check_news_extractor_refuses_undated() -> int:
         if got != want:
             errors += fail(f"news.kind({head[:34]!r}) = {got!r}, expected {want!r}")
 
+    # --- an "index" that is itself an article yields its own item ---------
+    # brinc's newsroom link pointed at its latest post, so the page we hold as
+    # the index IS the post. Parsed only as a list, its own headline came back
+    # as an anchor to itself with no date and the site's biggest story was
+    # refused. extract() is driven here, not items_from_index, because the
+    # fix lives in the caller and a check on the parser alone walked past it.
+    post = ('<html><head><script type="application/ld+json">'
+            '{"datePublished":"2026-07-04T09:00:00+00:00"}</script></head>'
+            '<body><h1>Acme Raises Forty Million In Series B</h1>'
+            '<a href="/news/older-story/">An Older Story From Acme</a></body></html>')
+    rec = {"news": [{"url": "https://acme.example/news/acme-raises-forty-million/",
+                     "html": post, "text": ("Acme Raises Forty Million In Series B "
+                                            "An Older Story From Acme")}],
+           "no_news_page": False}
+    got = news.extract({"website": "https://acme.example", "year_founded": 2015},
+                       rec, today="2026-09-03")
+    heads = [i["headline"] for i in got["items"]]
+    if "Acme Raises Forty Million In Series B" not in heads:
+        errors += fail(f"a stored news page that is itself an article did not "
+                       f"yield its own headline: {heads}. The site's own top "
+                       f"story is the one most likely to be lost this way")
+    own = next((i for i in got["items"] if i["headline"].startswith("Acme Raises")), None)
+    if own and own["kind"] != "funding":
+        errors += fail(f"the article's own item was filed as {own['kind']!r}")
+
     # --- and it never touches the map -------------------------------------
     src = (ROOT / "scripts" / "news.py").read_text()
     if "save_companies" in src or "companies.json" in src:
