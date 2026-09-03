@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The claim token travels in the URL, so nothing from this page may carry a
+     Referer containing it. Same reason alerts.html is a separate document. -->
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Claim your page · SLED JOBS</title>
+<link rel="icon" href="/assets/mascot/svg/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&display=swap">
+<style>
+  /* The palette is data/brand.json's, and the four --hdr-* tokens are
+     deliberately NOT theme-swapped: the band stays Penguin in both themes so
+     it is the one fixed thing across every page. --radius is 0 and applies to
+     every control in one rule; a single rounded corner is what breaks the
+     system. alerts.html predates that rule and still rounds - do not copy it. */
+  :root{ --bg:#E8F1F7; --panel:#FAF7F0; --line:#C9DCE8; --ink:#1F2536;
+         --dim:#556F82; --faint:#7C97AA; --accent:#0B57C4; --warn:#C1341F;
+         --beak:#F5A623; --chip:#DCE9F1; --radius:0;
+         --hdr-bg:#1F2536; --hdr-ink:#E8F1F7; --hdr-rule:#F5A623; --hdr-dim:#7C97AA; }
+  @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+    --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7;
+    --dim:#A8BCCA; --faint:#7C97AA; --accent:#478EF5; --warn:#E46855;
+    --chip:#2E3852; }}
+  :root[data-theme=dark]{
+    --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7;
+    --dim:#A8BCCA; --faint:#7C97AA; --accent:#478EF5; --warn:#E46855;
+    --chip:#2E3852; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:15px/1.55 Archivo,"Helvetica Neue",Arial,sans-serif}
+  input,textarea,select,button{border-radius:var(--radius);font:inherit}
+  a{color:var(--accent);text-underline-offset:2px}
+  .band{background:var(--hdr-bg);color:var(--hdr-ink);
+        border-bottom:3px solid var(--hdr-rule);padding:11px 22px;
+        display:flex;align-items:center;gap:11px}
+  .band img{width:34px;height:34px;display:block}
+  .band a{color:var(--hdr-ink);text-decoration:none;font-weight:800;
+          letter-spacing:.01em}
+  .wrap{max-width:660px;margin:0 auto;padding:30px 22px 80px}
+  h1{font-size:25px;margin:0 0 6px;letter-spacing:-.015em;font-weight:800;
+     text-wrap:balance}
+  .sub{color:var(--dim);font-size:14px;margin:0 0 24px;max-width:56ch}
+  .panel{background:var(--panel);border:1px solid var(--line);
+         padding:18px 20px;margin-bottom:14px}
+  h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+     color:var(--faint);margin:0 0 8px;font-weight:600}
+  label{display:block;font-size:13.5px;margin:0 0 5px;color:var(--dim)}
+  input,textarea,select{width:100%;padding:9px 10px;background:var(--bg);
+    color:var(--ink);border:1px solid var(--line)}
+  textarea{min-height:96px;resize:vertical}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+  button{padding:9px 16px;border:1px solid var(--accent);background:var(--accent);
+         color:#FAF7F0;font-weight:600;cursor:pointer}
+  button.plain{background:transparent;color:var(--accent)}
+  button:disabled{opacity:.5;cursor:default}
+  .msg{font-size:13.5px;margin-top:9px}
+  .msg.bad{color:var(--warn)}
+  .note{color:var(--dim);font-size:13px}
+  .flag{border-left:3px solid var(--beak);padding:9px 12px;background:var(--chip);
+        font-size:13.5px;margin:12px 0}
+  .no{border-left:3px solid var(--warn)}
+  .tabs{display:flex;gap:2px;flex-wrap:wrap;margin-bottom:14px}
+  .tabs button{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+    font-weight:500;padding:8px 13px}
+  .tabs button[aria-selected=true]{background:var(--ink);color:var(--bg);
+    border-color:var(--ink);font-weight:600}
+  .who{font-size:13px;color:var(--dim);margin:0 0 18px}
+  dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13.5px}
+  dt{color:var(--faint)}
+  [hidden]{display:none!important}
+  @media (max-width:560px){.wrap{padding:22px 16px 60px}h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="band">
+  <img src="/assets/mascot/svg/mascot-stand.svg" alt="">
+  <a href="/">SLED JOBS</a>
+</div>
+<div class="wrap">
+
+<!-- ── starting a claim ────────────────────────────────────────────────── -->
+<div id="start" hidden>
+  <h1>Claim your company's page</h1>
+  <p class="sub">If you work at the company, you can keep its page accurate:
+    correct what it says, post your open roles, and tell us when we have filed
+    you in the wrong place.</p>
+  <div class="panel">
+    <h2>Which company</h2>
+    <input id="co" placeholder="the company id, e.g. acme" autocomplete="off">
+    <div class="row"></div>
+    <label for="em" style="margin-top:12px">Your work email</label>
+    <input id="em" type="email" placeholder="you@yourcompany.com" autocomplete="email">
+    <p class="note" style="margin-top:8px">It has to be an address at the
+      company's own domain. That is the whole proof — we do not ask for a
+      password, and we never store one.</p>
+    <div class="row"><button id="go">Send me the link</button></div>
+    <div class="msg" id="m1"></div>
+  </div>
+  <div class="flag">A person reviews every change before it appears. Claiming a
+    page does not let you edit it directly, and it never lets you edit who your
+    competitors are.</div>
+</div>
+
+<!-- ── the claimant's page ─────────────────────────────────────────────── -->
+<div id="portal" hidden>
+  <h1 id="ptitle">Your page</h1>
+  <p class="who" id="pwho"></p>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="panel" id="pane-description">
+    <h2>The one-line description</h2>
+    <p class="note">What you sell and to whom, in one line. This is what shows
+      on the board next to your name.</p>
+    <textarea id="f-description" maxlength="300" style="min-height:64px"></textarea>
+    <div class="row"><button data-send="description">Send it for review</button></div>
+    <div class="msg" id="m-description"></div>
+  </div>
+
+  <div class="panel" id="pane-profile" hidden>
+    <h2>The longer description</h2>
+    <p class="note">Two or three paragraphs, one per box. Written the way you
+      would explain the company to somebody who has not heard of it — not a
+      brochure. We keep the version we wrote from your site until this is
+      approved.</p>
+    <textarea id="f-p1" maxlength="700" placeholder="What you sell, and to whom."></textarea>
+    <textarea id="f-p2" maxlength="700" style="margin-top:8px"
+      placeholder="How it works, or what it covers."></textarea>
+    <textarea id="f-p3" maxlength="700" style="margin-top:8px"
+      placeholder="Who uses it. Anything about the company itself."></textarea>
+    <div class="row"><button data-send="profile">Send it for review</button></div>
+    <div class="msg" id="m-profile"></div>
+  </div>
+
+  <div class="panel" id="pane-job" hidden>
+    <h2>Post a role</h2>
+    <p class="note">Link it on your own site or your applicant tracking system.
+      We cannot show a job we cannot check is yours. Posted roles expire after
+      60 days unless your board still carries them.</p>
+    <label for="f-title">Title</label>
+    <input id="f-title" maxlength="120" placeholder="Account Executive, State &amp; Local">
+    <label for="f-location" style="margin-top:10px">Location</label>
+    <input id="f-location" maxlength="90" placeholder="Austin, TX — or Remote (US)">
+    <label for="f-url" style="margin-top:10px">Link to the posting</label>
+    <input id="f-url" maxlength="400" placeholder="https://…">
+    <div class="row"><button data-send="job">Send it for review</button></div>
+    <div class="msg" id="m-job"></div>
+  </div>
+
+  <div class="panel" id="pane-category" hidden>
+    <h2>Where you are filed</h2>
+    <p class="note" id="cat-now"></p>
+    <label for="f-wants">Where it should be</label>
+    <input id="f-wants" maxlength="120" placeholder="Public Safety / Police">
+    <label for="f-why" style="margin-top:10px">Why it belongs there</label>
+    <textarea id="f-why" maxlength="600"
+      placeholder="Who buys it, and what department they sit in."></textarea>
+    <div class="flag">This one is a request, not a change. A shelf is only worth
+      something because somebody browsing it expected to find what is on it, so
+      a person decides — we will not move a company because it asked.</div>
+    <div class="row"><button data-send="category">Send the request</button></div>
+    <div class="msg" id="m-category"></div>
+  </div>
+
+  <div class="panel" id="pane-contact" hidden>
+    <h2>Something else</h2>
+    <p class="note">Anything we have wrong that does not fit above. This reaches
+      a person, not a form handler.</p>
+    <textarea id="f-note" maxlength="600"></textarea>
+    <div class="row"><button data-send="contact">Send it</button></div>
+    <div class="msg" id="m-contact"></div>
+  </div>
+
+  <div class="flag no" id="cannot">
+    <strong>Your competitors are not editable.</strong> Who a buyer would
+    shortlist against you is the part of this board that has to be independent
+    of you. If one is wrong, say so under “Something else” and a person will
+    read it.
+  </div>
+
+  <div class="panel">
+    <h2>The claim itself</h2>
+    <dl id="facts"></dl>
+    <div class="row">
+      <button class="plain" id="release">Hand the claim back</button>
+    </div>
+    <div class="msg" id="m-release"></div>
+  </div>
+</div>
+
+<div id="dead" hidden>
+  <h1>That link has expired</h1>
+  <p class="sub">Claim links last thirty days. Start again and we will send a
+    fresh one.</p>
+  <p><a href="/claim">Claim a page →</a></p>
+</div>
+
+</div>
+<script>
+const $ = (s) => document.querySelector(s);
+const qs = new URLSearchParams(location.search);
+const TOKEN = qs.get("t");
+let ME = null;
+
+async function api(body) {
+  const r = await fetch("/api/claim", {
+    method: "POST", headers: {"content-type": "application/json"},
+    body: JSON.stringify(body),
+  });
+  try { return await r.json(); } catch (e) { return {error: "no answer"}; }
+}
+function say(id, text, bad) {
+  const n = $(id); if (!n) return;
+  n.textContent = text || ""; n.className = "msg" + (bad ? " bad" : "");
+}
+
+/* ── starting ─────────────────────────────────────────────────────────── */
+if (!TOKEN) {
+  $("#start").hidden = false;
+  const co = qs.get("co");
+  if (co) $("#co").value = co;
+  $("#go").onclick = async () => {
+    const b = $("#go"); b.disabled = true; say("#m1", "");
+    const r = await api({action: "claim", company_id: $("#co").value.trim(),
+                         email: $("#em").value.trim()});
+    b.disabled = false;
+    if (r.ok) return say("#m1", "Check your email. The link lasts thirty days.");
+    /* A WRONG DOMAIN GETS A WAY FORWARD, not just a refusal: a mail domain
+       that differs from the website is common and real, and telling somebody
+       "no" with no next step is how a legitimate claim gets abandoned. */
+    say("#m1", r.message || r.error || "That did not work.", true);
+    if (r.differs) {
+      const a = document.createElement("a");
+      a.href = r.differs; a.textContent = " Tell us about it →";
+      $("#m1").appendChild(a);
+    }
+  };
+} else {
+  load();
+}
+
+/* ── the portal ───────────────────────────────────────────────────────── */
+async function load() {
+  const r = await fetch("/api/claim?t=" + encodeURIComponent(TOKEN))
+    .then((x) => x.json()).catch(() => ({error: "x"}));
+  if (!r.ok) { $("#dead").hidden = false; return; }
+  ME = r;
+  if (!r.confirmed) {
+    const c = await api({action: "confirm", token: TOKEN});
+    if (c.ok) ME.confirmed = true;
+  }
+  $("#portal").hidden = false;
+  $("#ptitle").textContent = r.name || "Your page";
+  $("#pwho").innerHTML = "Claimed with " + r.email
+    + ' · <a href="/c/' + encodeURIComponent(r.company_id) + '">see the public page →</a>';
+  $("#cat-now").textContent = "Tell us where you belong and why.";
+  const dl = $("#facts");
+  dl.innerHTML = "";
+  [["Company", r.company_id], ["Confirmed", r.confirmed ? "yes" : "not yet"],
+   ["Sent for review", String(r.proposals || 0)]].forEach(([k, v]) => {
+    const dt = document.createElement("dt"); dt.textContent = k;
+    const dd = document.createElement("dd"); dd.textContent = v;
+    dl.append(dt, dd);
+  });
+
+  const PANES = [["description", "Description"], ["profile", "Longer description"],
+                 ["job", "Post a role"], ["category", "Where you are filed"],
+                 ["contact", "Something else"]];
+  const tabs = $("#tabs");
+  PANES.forEach(([k, label], i) => {
+    const b = document.createElement("button");
+    b.textContent = label; b.setAttribute("aria-selected", i === 0 ? "true" : "false");
+    b.onclick = () => {
+      PANES.forEach(([k2]) => { $("#pane-" + k2).hidden = k2 !== k; });
+      [...tabs.children].forEach((x) => x.setAttribute("aria-selected", String(x === b)));
+    };
+    tabs.appendChild(b);
+  });
+
+  document.querySelectorAll("[data-send]").forEach((btn) => {
+    btn.onclick = async () => {
+      const kind = btn.dataset.send;
+      btn.disabled = true; say("#m-" + kind, "");
+      const body = {action: "propose", token: TOKEN, kind};
+      if (kind === "description") body.description = $("#f-description").value;
+      if (kind === "profile") {
+        body.paragraphs = ["#f-p1", "#f-p2", "#f-p3"]
+          .map((s) => $(s).value.trim()).filter(Boolean);
+      }
+      if (kind === "job") {
+        body.title = $("#f-title").value;
+        body.location = $("#f-location").value;
+        body.url = $("#f-url").value;
+      }
+      if (kind === "category") {
+        body.wants = $("#f-wants").value; body.why = $("#f-why").value;
+      }
+      if (kind === "contact") body.note = $("#f-note").value;
+      const r2 = await api(body);
+      btn.disabled = false;
+      say("#m-" + kind, r2.ok ? (r2.message || "Sent.")
+                              : (r2.message || r2.error || "That did not work."),
+          !r2.ok);
+    };
+  });
+
+  $("#release").onclick = async () => {
+    const r2 = await api({action: "release", token: TOKEN});
+    if (r2.ok) {
+      $("#portal").hidden = true; $("#dead").hidden = false;
+      $("#dead").querySelector("h1").textContent = "Claim handed back";
+      $("#dead").querySelector(".sub").textContent =
+        "The page is unclaimed again. Nothing you sent us is deleted.";
+    } else { say("#m-release", r2.error || "That did not work.", true); }
+  };
+}
+</script>
+</body>
+</html>

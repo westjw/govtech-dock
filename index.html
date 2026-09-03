@@ -4896,6 +4896,28 @@ function co(id,fromUrl){
               &&!(o.brands||[]).some(b=>b.id===x.id));
   const sibs=inCat.filter(x=>x.id!==id)
     .sort((a,b)=>(b.open_roles||0)-(a.open_roles||0)).slice(0,5);
+  /* WHO SAYS SO. A page carrying a description we wrote from their site and
+     a page carrying one the company sent are different claims about the
+     world, and a reader deserves to know which they are reading. The badge
+     is that, and the CTA is the other half: a company that finds a wrong
+     page needs somewhere to go that is not an email address nobody answers.
+
+     It never says "verified" about anything but the address. We know
+     somebody could read mail at their domain; we do not know they speak for
+     the company, and the wording stays inside what was actually checked. */
+  const claimed=o.claimed;
+  const coClaim=(o)=>claimed
+    ? `<section class="coclaim"><h3>Claimed by the company</h3>
+        <p>Somebody at ${esc(dom||o.name)} confirmed an address on that domain${
+          claimed.on?` in ${esc(claimed.on)}`:""}. Corrections from them are
+          reviewed here like any other, and they cannot edit who their
+          competitors are.</p></section>`
+    : `<section class="coclaim"><h3>Work at ${esc(o.name)}?</h3>
+        <p>Claim this page and you can correct what it says, post your open
+          roles, and tell us if we have filed you in the wrong place. It takes
+          an email at your own domain, and no password.</p>
+        <a class="cobtn" href="/claim?co=${encodeURIComponent(o.id)}">Claim this page</a>
+      </section>`;
   const rail=`<aside class="corail">
     <section><h2>Links</h2>
       ${o.website?`<div class="r"><a href="${safeUrl(o.website)}" target="_blank"
@@ -4915,6 +4937,7 @@ function co(id,fromUrl){
       ${o.also.map(a=>`<div class="r"><span>${esc(a.sector)} / ${esc(a.category)}</span></div>`).join("")}
     </section>`:""}
     ${coRivals(o,sibs,inCat)}
+    ${coClaim(o)}
     <section><p class="coprov">Record last verified${
       o.board_checked_on?" "+esc(o.board_checked_on):""}${
       o.researched?" by hand":""}. ${

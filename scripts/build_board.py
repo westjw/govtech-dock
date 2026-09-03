@@ -716,6 +716,19 @@ def _probe_state(cid: str) -> str | None:
             or any(m in note for m in _BLOCKED_MARKERS) else "none-found")
 
 
+def load_claims() -> dict:
+    """Confirmed claims by company id. Absent file means nobody has claimed
+    anything yet, which is a state, not a failure."""
+    p = DATA / "claims.json"
+    if not p.exists():
+        return {}
+    try:
+        d = json.loads(p.read_text())
+    except (json.JSONDecodeError, OSError):
+        return {}
+    return d if isinstance(d, dict) else {}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int)
@@ -811,6 +824,7 @@ def main() -> int:
     # The board belongs to whoever the slug names. Everyone else sharing it is
     # marked and contributes nothing, rather than silently doubling the total.
     shared: dict[tuple, list] = collections.defaultdict(list)
+    _claims = load_claims()
     for c in companies:
         kind = (c.get("ats") or {}).get("type")
         ref = (c.get("ats") or {}).get("ref")
@@ -1244,6 +1258,11 @@ def main() -> int:
             "posts_at": c.get("posts_at") or None,
             "source": c.get("source") or None,
             "researched": bool(c.get("researched")) or None,
+            # WHO SAYS SO. A claimed page reads differently from one we wrote
+            # from a company's site, and the badge is the only thing telling a
+            # reader which they have. Read from data/claims.json, which
+            # sync_claims writes and which never holds a person.
+            "claimed": _claims.get(c["id"]) or None,
         })
 
     # Merge hand-checked findings. These come from companies the fetchers cannot

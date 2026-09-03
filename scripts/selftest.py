@@ -849,6 +849,124 @@ def _run_argv(mod, argv):
         sys.argv = keep
 
 
+def check_claiming_holds_the_domain_line() -> int:
+    """A company may claim its page by proving it reads mail at its own
+    domain, and may then PROPOSE - never edit.
+
+    Run through scripts/claim_harness.mjs, which IMPORTS the module against a
+    fake KV rather than reading it. That matters: the first claim.js used a
+    /x regex flag, which JavaScript does not have; `node --check` accepted it
+    and `import` did not, so the module failed to load at all and a source
+    scan would have called it healthy.
+    """
+    import subprocess, json as _json
+    r = subprocess.run(["node", str(ROOT / "scripts" / "claim_harness.mjs")],
+                       capture_output=True, text=True, timeout=120, cwd=str(ROOT))
+    if r.returncode:
+        return fail(f"the claim endpoint would not run: {r.stderr.strip()[:300]}")
+    d = _json.loads(r.stdout.strip().splitlines()[-1])
+    errors = 0
+
+    def want(key, status, needle=None, why=""):
+        nonlocal errors
+        got = d.get(key) or {}
+        if got.get("status") != status:
+            errors += fail(f"claim {key}: status {got.get('status')}, wanted {status}. {why}")
+            return
+        blob = _json.dumps(got.get("body") or {})
+        if needle and needle not in blob:
+            errors += fail(f"claim {key}: the answer does not say {needle!r}: {blob[:160]}. {why}")
+
+    # WHO MAY CLAIM. Each refusal is a different fact and says which.
+    want("freeMail", 400, "not_a_company_address",
+         "a gmail address is not evidence of working anywhere")
+    want("platform", 400, "not_a_company_address",
+         "a site-builder domain is shared by everyone on it")
+    want("wrongDomain", 400, "wrong_domain",
+         "an address at another domain must be refused, naming the one that works")
+    want("noWebsite", 400, "no_website",
+         "with no website on file there is no domain to check against")
+    want("unknownCo", 404)
+    want("good", 200, "check_your_email")
+    want("subdomain", 200, "check_your_email",
+         "mail.acme.com is still acme.com; refusing it would lock out most companies")
+    want("coUk", 200, "check_your_email",
+         "britco.co.uk must not collapse to co.uk, which every British company shares")
+    want("coUkStranger", 400, "wrong_domain",
+         "if .co.uk collapsed to its public suffix, ANY British company could "
+         "claim any other - which is the direction that actually hurts")
+    if d.get("mailsSent") != 1:
+        errors += fail(f"a refused claim still sent mail: {d.get('mailsSent')} sent "
+                       f"across six attempts, five of which were refusals")
+
+    # A WRONG DOMAIN GETS A WAY FORWARD. A mail domain that differs from the
+    # website is common and real; telling somebody no with no next step is
+    # how a legitimate claim gets abandoned.
+    if "differs" not in _json.dumps((d.get("wrongDomain") or {}).get("body") or {}):
+        errors += fail("a wrong-domain refusal offers no way to tell us about it")
+
+    # THE ADDRESS NEVER COMES BACK OUT. The endpoint holds it to send mail;
+    # the page shows a mask, and a token is not a lookup for somebody's email.
+    for key in ("beforeConfirm", "afterConfirm"):
+        body = (d.get(key) or {}).get("body") or {}
+        if "@acme.com" not in str(body.get("email", "")):
+            errors += fail(f"{key}: no masked address shown at all: {body.get('email')!r}")
+        if body.get("email") == "jane@acme.com":
+            errors += fail(f"{key} hands back the claimant's real address")
+    if not ((d.get("afterConfirm") or {}).get("body") or {}).get("confirmed"):
+        errors += fail("confirming did not stick")
+
+    # WHAT A CLAIMANT MAY NOT DO. Competitors are refused BY NAME: a silent
+    # drop would let somebody believe they had edited them.
+    want("competitors", 400, "not_editable",
+         "a market map where vendors curate their own rivals is worthless")
+    want("unknownKind", 400)
+    want("jobOffDomain", 400, "off_domain",
+         "we cannot show a job we cannot check is theirs")
+    want("categoryNoWhy", 400)
+
+    # WHAT THEY MAY DO.
+    want("description", 200, "queued")
+    want("jobOwnDomain", 200, "queued")
+    want("jobAts", 200, "queued")
+    want("category", 200, "queued")
+    cat = _json.dumps(((d.get("category") or {}).get("body") or {}))
+    if "not move a company onto a shelf because it asked" not in cat:
+        errors += fail("a category request does not say it is a request: the "
+                       "taxonomy belongs to the board, and a company filing "
+                       "itself onto a busier shelf is the oldest trick there is")
+
+    # ONE KEY PER PROPOSAL. Three sent in one click all landed on the same
+    # millisecond and overwrote each other; two of the three vanished.
+    if d.get("propKeys", 0) < 4:
+        errors += fail(f"only {d.get('propKeys')} proposals stored from four "
+                       f"accepted ones - they are overwriting each other")
+
+    # AN UNCONFIRMED TOKEN PROPOSES NOTHING, and stores nothing either.
+    want("unconfirmed", 403)
+    if not d.get("unconfirmedStoredNothing"):
+        errors += fail("an unconfirmed claim still wrote a proposal into the store")
+
+    # RELEASING ENDS IT.
+    want("release", 200)
+    want("afterRelease", 400, "bad_token", "a released token must stop working")
+
+    # THE REST OF THE LOOP EXISTS: a page to claim from, a way in from the
+    # company page, and a sync that never carries a person into the repo.
+    site = (ROOT / "index.html").read_text()
+    if "/claim?co=" not in site:
+        errors += fail("no company page offers a way to claim it")
+    if "coclaim" not in (ROOT / "scripts" / "build_site.py").read_text():
+        errors += fail("the static company page has no claim block, and that is "
+                       "the page a stranger from search actually lands on")
+    if "claim.html" not in (ROOT / "scripts" / "build_site.py").read_text():
+        errors += fail("claim.html is not shipped")
+    sync = (ROOT / "scripts" / "sync_claims.py").read_text()
+    if "EMAILY" not in sync or "REFUSING" not in sync:
+        errors += fail("sync_claims does not refuse to carry an address into the repo")
+    return errors
+
+
 def check_ask_proposes_and_never_writes() -> int:
     """The row's ask box reads what a person typed and PROPOSES; it is not a
     new way to write.
@@ -13066,6 +13184,7 @@ def main() -> int:
     errors += check_a_company_sits_on_at_most_two_shelves()
     errors += check_jibe_is_read_and_verifiable()
     errors += check_merge_repoints_competitor_edges()
+    errors += check_claiming_holds_the_domain_line()
     errors += check_ask_proposes_and_never_writes()
     errors += check_warm_leads_can_be_accepted()
     errors += check_add_company_journals_and_reports_already_tracked()

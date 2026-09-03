@@ -35,7 +35,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 # Everything the public site is allowed to serve. Adding a file here is a
 # deliberate act; nothing is included by walking a directory.
-SHIP = ["index.html", "alerts.html"]
+SHIP = ["index.html", "alerts.html", "claim.html"]
 
 
 # Queue-row fields the admin page never reads. "why" and "evidence" are the
@@ -1288,6 +1288,28 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
                        for a in o["also"] if isinstance(a, dict))
         rail += f"<section><h2>Also filed under</h2>{rows}</section>"
     rail += _co_rivals(o, in_cat, by_id)
+    # WHO SAYS SO, on the page a stranger from search actually lands on. A
+    # description we wrote from their site and one the company sent are
+    # different claims about the world, and the badge is the only thing that
+    # tells them apart. The wording never says "verified" about anything but
+    # the address: we know somebody could read mail at that domain, not that
+    # they speak for the company.
+    claimed = o.get("claimed") if isinstance(o.get("claimed"), dict) else None
+    if claimed:
+        when = esc(str(claimed.get("on") or ""))
+        rail += ('<section class="coclaim"><h3>Claimed by the company</h3>'
+                 f'<p>Somebody at {esc(dom or o["name"])} confirmed an address on '
+                 f'that domain{f" in {when}" if when else ""}. Corrections from them '
+                 f'are reviewed here like any other, and they cannot edit who their '
+                 f'competitors are.</p></section>')
+    else:
+        rail += ('<section class="coclaim">'
+                 f'<h3>Work at {esc(o["name"])}?</h3>'
+                 '<p>Claim this page and you can correct what it says, post your '
+                 'open roles, and tell us if we have filed you in the wrong place. '
+                 'It takes an email at your own domain, and no password.</p>'
+                 f'<a class="cobtn" href="/claim?co={urllib.parse.quote(o["id"])}">'
+                 'Claim this page</a></section>')
     # "Roles read from unknown nightly" is what the app prints for a readable
     # board whose ATS is recorded as "unknown". That is a sentence about a
     # system that does not exist; the strip one screen up already says the
@@ -1801,6 +1823,10 @@ def write_headers(out: pathlib.Path) -> None:
         "  X-Frame-Options: DENY\n"
         "  Content-Security-Policy: frame-ancestors 'none'\n"
         "/alerts.html\n"
+        # A CLAIM PAGE IS NOT A LANDING PAGE. It carries a token in the URL
+        # and answers only to somebody holding one; indexing it would put
+        # dead token links in a search engine.
+        "/claim.html\n"
         "  X-Frame-Options: DENY\n"
         "  Content-Security-Policy: frame-ancestors 'none'\n")
     print("  _headers: frame protection on /alerts")
