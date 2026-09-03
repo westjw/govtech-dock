@@ -557,6 +557,7 @@ def check_company_counts_are_roles_not_postings():
     cb = html.find("function toggleSaveCompany(")
     if ca < 0 or cb < 0 or cb <= ca:
         return fail("index.html: could not find co() to check what it counts")
+    import re as _re
     body = html[ca:cb]
     # first_seen may be READ (coAge stamps one posting with its own age); it
     # may not be COUNTED. So every occurrence has to be an argument to coAge,
@@ -571,6 +572,66 @@ def check_company_counts_are_roles_not_postings():
             f"board could be read; without the last one an unreadable zero "
             f"comes back as 'none seen recently', which files our failed "
             f"fetch as a fact about their hiring")
+    # A SELECTOR THAT MATCHES NOTHING FAILS SILENTLY, WHICH IS WHY IT SURVIVED
+    # A DESKTOP SCREENSHOT. The stat strip's cells are <dl> elements and every
+    # rule for them named div: `.costrip>div` for the padding, `.costrip>div+div`
+    # for the separators, and both responsive rules. None of it applied. The
+    # strip was held together by inline flex values alone, so it looked right
+    # at 1440px and stayed four columns wide at 375px, where each cell gets
+    # eighty pixels and one of them carries a sentence. Nothing errors, nothing
+    # logs; the page just quietly ignores its own stylesheet.
+    # from the OPENING TAG, so the depth counter starts outside the strip and
+    # its cells land at depth 1. Slicing from the attribute made every cell
+    # look like a top-level element and the check read the wrong tier.
+    strip_at = body.find('<div class="costrip"')
+    if strip_at < 0:
+        errors += fail("index.html: the company page's stat strip is gone")
+    else:
+        strip = body[strip_at:body.find("`;", strip_at)]
+        # DIRECT children, computed, not "does this tag appear anywhere".
+        # The first version asked whether <div> was present, and it is - the
+        # big number inside each cell is a div - so a rule targeting
+        # .costrip>div passed while matching nothing. The whole bug is about
+        # the > combinator, so the check has to honour it.
+        kids, depth = set(), 0
+        for m in _re.finditer(r"<(/?)([a-z0-9]+)[^>]*?(/?)>",
+                              _re.sub(r"\$\{[^}]*\}", "", strip)):
+            closing, name, selfclose = m.group(1), m.group(2), m.group(3)
+            if closing:
+                depth -= 1
+                continue
+            if depth == 1:
+                kids.add(name)
+            if not selfclose and name not in ("br", "img", "hr", "input"):
+                depth += 1
+        want = set(_re.findall(r"\.costrip\s*>\s*([a-z]+)", html))
+        for el in sorted(want):
+            if el not in kids:
+                errors += fail(
+                    f"the stylesheet has .costrip>{el} rules but the "
+                    f"strip's direct children are {sorted(kids) or 'none'}. "
+                    f"A selector that matches "
+                    f"nothing throws no error and logs nothing - it just "
+                    f"drops the padding, the separators and every breakpoint, "
+                    f"and the page looks correct on a desktop screenshot "
+                    f"while collapsing on a phone")
+        # AND THE OTHER DIRECTION. Asking only "is every styled element
+        # present" lets one cell change tag and go unstyled while its three
+        # siblings keep the selector alive. Every direct child has to be
+        # covered by a rule, or the strip has a cell nothing applies to.
+        for el in sorted(kids - want):
+            errors += fail(
+                f"the stat strip has a <{el}> child and no .costrip>{el} "
+                f"rule, so that cell gets none of the padding, the "
+                f"separator or the breakpoints its siblings get")
+        if 'style="flex:' in strip:
+            errors += fail(
+                "the stat strip carries inline flex values. They outrank the "
+                "responsive rules and, worse, they held the layout up while "
+                "every .costrip selector was matching nothing - which is how "
+                "a stylesheet that applied to no element went unnoticed. "
+                "Put the widths in classes")
+
     # THE FIELDS ARE OBJECTS, AND THE HELPERS THAT KNOW THAT ALREADY EXIST.
     # The company page's role rows shipped reading p.location and p.comp
     # directly: territory is an object, so every Granicus row rendered

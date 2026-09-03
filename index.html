@@ -95,8 +95,16 @@
   /* stat strip: on the grid, not four cards */
   .costrip{display:flex;border-top:2px solid var(--c-rule);
     border-bottom:2px solid var(--c-rule);margin:0 0 30px}
-  .costrip>div{padding:18px 0 16px;padding-right:22px}
-  .costrip>div+div{border-left:1.5px solid var(--c-rule);padding-left:22px}
+  /* dl, NOT div. The cells are definition lists and every rule here named
+     div, so the padding, the separators and both breakpoints matched nothing
+     at all - the strip was held together by inline flex values alone and
+     stayed four columns wide at 375px, where each cell got eighty pixels and
+     one of them carries a sentence. A selector that matches nothing fails
+     silently, which is why it survived a desktop screenshot. */
+  .costrip>dl{padding:18px 0 16px;padding-right:22px;margin:0;flex:1 1 0}
+  .costrip>dl+dl{border-left:1.5px solid var(--c-rule);padding-left:22px}
+  .costrip>dl.wide{flex:1.3 1 0}
+  .costrip>dl.src{flex:1.1 1 0}
   .costrip .v{font:800 34px/1 var(--font-heading);letter-spacing:-.02em;
     font-variant-numeric:tabular-nums}
   .costrip .v.txt{font-size:17px;line-height:1.2;letter-spacing:-.01em}
@@ -193,12 +201,32 @@
     .cobody{display:block}
     .corail{width:auto;margin-top:34px}
     .costrip{flex-wrap:wrap}
-    .costrip>div{flex:1 1 46%!important}
-    .costrip>div:nth-child(3){border-left:0;padding-left:0}
+    .costrip>dl{flex:1 1 46%!important}
+    .costrip>dl:nth-child(3){border-left:0;padding-left:0}
     .corow{flex-wrap:wrap}
     .corow .ti{flex:1 1 100%}
     .corow .lo{width:auto;order:3;flex:1 1 60%}
     .corow .sv .cobtn{min-height:44px}
+    /* THE BUTTONS WERE SITTING ON TOP OF THE COMPANY'S NAME. .coacts is
+       flex:none and the name's container is min-width:0, so at 375px the
+       heading collapsed to a single letter and the actions covered what was
+       left of it. They get their own line instead of competing for one. */
+    .coid{flex-wrap:wrap}
+    .coid>div[style]{flex:1 1 60%}
+    .coacts{margin-left:0;flex:1 1 100%;order:3;padding-top:4px}
+    .coacts .cobtn{flex:1 1 0;min-height:44px}
+  }
+  @media (max-width:620px){
+    /* four cells across 375px gives each of them 80 pixels, and the phase
+       cell carries a sentence. Two up, and the two that carry prose get a
+       full row each rather than a column the width of a word. */
+    .costrip>dl{flex:1 1 46%!important;padding-right:14px}
+    .costrip>dl:nth-child(3),.costrip>dl:nth-child(4){
+      flex:1 1 100%!important;border-left:0;padding-left:0}
+    .costrip>dl:nth-child(3){border-top:1.5px solid var(--c-rule);
+      margin-top:2px;padding-top:16px}
+    .coid .logo{width:44px;height:44px}
+    .coid h1{font-size:24px}
   }
   *{box-sizing:border-box}
   /* Asserted once, here, rather than remembered on forty rules. A single
@@ -4646,16 +4674,15 @@ function co(id,fromUrl){
     : `${o.ats==="html"?"custom HTML":"their board"} · a person checks it`
       +(o.board_checked_on?` · last ${esc(o.board_checked_on)}`:"");
   const strip=`<div class="costrip">
-    <dl style="flex:1"><div class="v${open?"":" dim"}">${open}</div>
-      <div class="lbl">open roles</div>
-      <dt hidden>open roles</dt>
+    <dl><div class="v${open?"":" dim"}">${open}</div>
+      <dt>open roles</dt>
       <dd>${esc(coOpenNote(mine,open,readable))}</dd></dl>
-    <dl style="flex:1"><div class="v${quota?"":" dim"}">${quota||"&mdash;"}</div>
+    <dl><div class="v${quota?"":" dim"}">${quota||"&mdash;"}</div>
       <dt>quota-carrying</dt>
       <dd>${quota?`${Math.round(quota/open*100)}% of open roles`:"nothing to count"}</dd></dl>
-    <dl style="flex:1.3"><div class="v txt ${phase.tone}">${esc(phase.value)}</div>
+    <dl class="wide"><div class="v txt ${phase.tone}">${esc(phase.value)}</div>
       <dt>hiring phase</dt><dd>${esc(phase.note)}</dd></dl>
-    <dl style="flex:1.1"><div class="v txt ${srcTone}">${esc(srcVal)}</div>
+    <dl class="src"><div class="v txt ${srcTone}">${esc(srcVal)}</div>
       <dt>source</dt><dd>${srcNote}</dd></dl>
   </div>`;
 
