@@ -1089,41 +1089,89 @@ function modeOf(key) {
    ruling, because it must never be the easy way out of deciding. It sends the
    panel's own words along with the argument, so the note still makes sense a
    week later without rebuilding the state that produced it. */
+/* ASK OR TELL. Every queue row is a fixed set of buttons, and the answer a
+   person has is often not one of them: wiring Rain Bird's real job board took
+   four steps by hand when what the owner had was a link. Type a link or a
+   sentence here and the server reads it, probes whatever was pasted, and
+   comes back with ONE proposal naming an existing action - which you accept
+   or ignore. Nothing is written until the click, and the click runs the
+   ordinary action with all of its ordinary gates. Text it cannot read is
+   recorded as a note, which is exactly what this box did before. */
 function attachSuggest(key, item, row) {
   if (!row || !row.appendChild) return;
   const bar = el('div', 'kv');
-  bar.style.cssText = 'margin-top:6px;opacity:.55';
-  const a = el('a', null, 'the logic here is wrong \u2192');
+  bar.style.cssText = 'margin-top:6px';
+  const a = el('a', null, 'ask or tell →');
   a.href = '#';
-  a.style.cssText = 'font-size:12px;text-decoration:none';
+  a.style.cssText = 'font-size:12px;text-decoration:none;opacity:.6';
   a.onclick = e => {
     e.preventDefault();
-    if (bar.querySelector('textarea')) { bar.querySelector('.sg').remove(); return; }
+    if (bar.querySelector('.sg')) { bar.querySelector('.sg').remove(); return; }
     const box = el('div', 'sg');
-    box.style.cssText = 'display:flex;gap:6px;margin-top:6px;flex-wrap:wrap';
+    box.style.cssText = 'margin-top:6px';
+    const line = el('div');
+    line.style.cssText = 'display:flex;gap:6px;flex-wrap:wrap';
     const ta = el('textarea');
-    ta.placeholder = 'what did it get wrong, and what should it do instead?';
-    ta.style.cssText = 'flex:1;min-width:280px;min-height:56px;font:inherit;'
+    ta.placeholder = 'paste a link, or say what is wrong — '
+      + '"rename to X", "belongs under Public Works / Water", "same as Toro"';
+    ta.style.cssText = 'flex:1;min-width:300px;min-height:52px;font:inherit;'
       + 'padding:6px;background:var(--panel);color:var(--ink);'
       + 'border:1px solid var(--line)';
-    const send = el('button', 'btn', 'Record it');
+    const send = el('button', 'btn', 'Read it');
+    const out = el('div');
+    out.style.cssText = 'margin-top:6px';
+    line.append(ta, send);
+    box.append(line, out);
+
     send.onclick = async () => {
       const v = ta.value.trim();
       if (!v) return;
-      send.disabled = true;
-      /* The panel's own text, so the note is readable without the row. */
-      const saw = (row.innerText || '').replace(/\s+/g, ' ').slice(0, 600);
-      const r = await api('/api/suggest', {
-        queue: key, id: item && item.id, name: item && item.name,
-        saw: saw, argument: v});
-      send.disabled = false;
-      if (r.error) return toast(r.error, true);
-      toast(r.message);
-      box.remove();
-      a.textContent = 'noted \u2713';
-      a.onclick = e2 => e2.preventDefault();
+      send.disabled = true; out.textContent = '';
+      out.appendChild(el('div', 'kv', 'reading…'));
+      const r = await api('/api/ask', {id: item && item.id, text: v});
+      send.disabled = false; out.textContent = '';
+      if (r.error) { out.appendChild(el('div', 'kv bad', r.error)); return; }
+
+      const said = el('div', 'kv'); said.textContent = r.says || '';
+      out.appendChild(said);
+      (r.evidence || []).forEach(x => {
+        const d = el('div', 'kv');
+        d.style.cssText = 'opacity:.75;padding-left:10px';
+        d.textContent = '• ' + x;
+        /* A BOARD THAT IS NOT ON THEIR OWN DOMAIN IS THE ONE TO LOOK AT, so
+           it is coloured rather than buried in a list of three bullets. */
+        if (/^CHECK/.test(x)) d.className = 'kv bad';
+        out.appendChild(d);
+      });
+      if (!r.proposal) return;
+
+      const act = el('div', 'row'); act.style.marginTop = '6px';
+      const yes = el('button', 'btn primary',
+        r.proposal.action === 'suggest' ? 'Record it' : 'Do it');
+      const msg = el('div', 'kv'); msg.style.cssText = 'flex-basis:100%;margin-top:4px';
+      yes.onclick = async () => {
+        yes.disabled = true;
+        /* THE ORDINARY ACTION, not a new door. Everything the proposal can
+           name already validates, verifies and journals for itself; this
+           only fills the form in. */
+        const body = Object.assign({}, r.proposal.body);
+        if (r.proposal.action === 'suggest') {
+          body.queue = key;
+          body.saw = (row.innerText || '').replace(/\s+/g, ' ').slice(0, 600);
+          body.argument = body.argument || v;
+          body.name = item && item.name;
+        }
+        const res = await api('/api/' + r.proposal.action, body);
+        yes.disabled = false;
+        if (res.error) { msg.textContent = res.error; msg.style.color = 'var(--warn)'; return; }
+        toast(res.message || 'done');
+        box.remove();
+        a.textContent = 'done ✓';
+        a.onclick = e2 => e2.preventDefault();
+      };
+      act.append(yes, msg);
+      out.appendChild(act);
     };
-    box.append(ta, send);
     bar.appendChild(box);
     ta.focus();
   };

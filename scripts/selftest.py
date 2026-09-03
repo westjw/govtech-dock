@@ -849,6 +849,156 @@ def _run_argv(mod, argv):
         sys.argv = keep
 
 
+def check_ask_proposes_and_never_writes() -> int:
+    """The row's ask box reads what a person typed and PROPOSES; it is not a
+    new way to write.
+
+    Every proposal names an action that already exists, with all of that
+    action's gates. The parser can be wrong - the worst it can then do is
+    offer something a person rejects. Two things are asserted hardest: that
+    every proposed action is one of the reviewed set, and that reading text
+    changes nothing on disk.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ask, admin
+    import json as _json
+    schema = _json.loads((ROOT / "data" / "schema.json").read_text())
+    co = {"id": "acme", "name": "Acme", "website": "https://acme.example",
+          "sector": "Public Safety", "category": "Police"}
+    errors = 0
+
+    # 1. THE PARSER, pure and offline. Each shape is one somebody typed.
+    cases = [
+        ("https://acme.example/careers", "board"),
+        ("https://acme.example/search-jobs?x=1", "board"),
+        ("https://acme.example", "website"),
+        ("https://www.linkedin.com/company/acme/jobs/", "posts_at"),
+        ("https://boards.greenhouse.io/acme", "board"),
+        ("rename to Acme Corporation", "rename"),
+        ("belongs under Public Works / Water", "bucket"),
+        ("also in Fire", "also"),
+        ("duplicate of Tyler Technologies", "merge"),
+        ("there is no website", "no_site"),
+        ("mumble mumble", "note"),
+        ("", "empty"),
+    ]
+    for text, want in cases:
+        got = ask.read(text, co).get("kind")
+        if got != want:
+            errors += fail(f"ask.read({text!r}) read as {got!r}, wanted {want!r}")
+
+    # THEIR OWN DOMAIN DECIDES board-vs-website; a careers page on somebody
+    # else's host is not automatically theirs.
+    if ask.read("https://acme.example/about", co).get("kind") != "website":
+        errors += fail("a non-listing page on their own domain was not read as a website")
+    off = ask.read("https://jobs.other.example/acme", co)
+    if not off.get("offsite"):
+        errors += fail("a board on a third-party host was not flagged as off-site")
+
+    # THE REVIEWED SET IS EXACTLY THIS. Widening it is the change that
+    # matters most here, and it must never happen by accident: each of these
+    # already validates and journals for itself, and an action nobody thought
+    # about is a write path nobody reviewed.
+    want_actions = {"set-board", "save-website", "patch", "place", "also",
+                    "posts-at", "merge", "suggest"}
+    if ask.ACCEPTABLE != want_actions:
+        errors += fail(f"the ask box's reviewed action set changed: "
+                       f"added {sorted(ask.ACCEPTABLE - want_actions)}, "
+                       f"removed {sorted(want_actions - ask.ACCEPTABLE)}")
+
+    # 2. PROPOSALS NAME REVIEWED ACTIONS ONLY.
+    def probe_ok(url):
+        return {"kind": "html", "ref": None, "host": "acme.example",
+                "titles": ["Police Sales Engineer", "Account Executive"], "error": None}
+    for text, _ in cases:
+        out = ask.propose(ask.read(text, co), co, schema=schema,
+                          companies=[co, {"id": "tyler-technologies",
+                                          "name": "Tyler Technologies"}],
+                          probe=probe_ok)
+        if out.get("error"):
+            continue
+        if out.get("action") not in ask.ACCEPTABLE:
+            errors += fail(f"{text!r} proposed {out.get('action')!r}, which is not in "
+                           f"the reviewed set {sorted(ask.ACCEPTABLE)}")
+        if not isinstance(out.get("body"), dict):
+            errors += fail(f"{text!r} proposed no body to send")
+
+    # 3. A PAGE THAT LISTS NOTHING IS NOT A BOARD. Wiring one records zero
+    # openings as a fact about the company.
+    def probe_empty(url):
+        return {"kind": "html", "ref": None, "host": "acme.example",
+                "titles": [], "error": None}
+    out = ask.propose({"kind": "board", "url": "https://acme.example/careers"}, co,
+                      schema=schema, probe=probe_empty)
+    if not out.get("error") or "no job listings" not in out["error"]:
+        errors += fail(f"a page listing nothing was proposed as a board: {out}")
+
+    # 4. AN INVENTED SHELF IS REFUSED, never guessed at.
+    out = ask.propose({"kind": "bucket", "bucket": "Nowhere / Nothing"}, co, schema=schema)
+    if not out.get("error"):
+        errors += fail(f"a shelf that does not exist was proposed anyway: {out}")
+
+    # 5. AN AMBIGUOUS MERGE IS REFUSED. Folding the wrong record is the one
+    # write that deletes something.
+    out = ask.propose({"kind": "merge", "name": "Acme"}, co, schema=schema,
+                      companies=[co, {"id": "acme-two", "name": "Acme Two"}])
+    if not out.get("error"):
+        errors += fail(f"a merge naming this same company was proposed: {out}")
+    # AMBIGUOUS, with the row itself out of it: two other records both match,
+    # so there is no answer and guessing one folds the wrong company.
+    out = ask.propose({"kind": "merge", "name": "Tyler"}, co, schema=schema,
+                      companies=[co, {"id": "tyler-tech", "name": "Tyler Tech"},
+                                 {"id": "tyler-inc", "name": "Tyler Inc"}])
+    if not out.get("error") or "cannot tell which" not in out["error"]:
+        errors += fail(f"a merge matching two companies was proposed anyway: {out}")
+
+    # 6. READING WRITES NOTHING. The endpoint is driven in a sandbox and the
+    # file must come back byte-identical.
+    files = {"companies.json": [dict(co, description="x", govtech=True,
+                                     vendor_type="product",
+                                     ats={"type": "unknown", "ref": None},
+                                     hiring={"status": "Unknown", "roles": [],
+                                             "checked": None})],
+             "schema.json": schema}
+    with _sandbox_admin(files) as tmp:
+        before = (tmp / "companies.json").read_bytes()
+        r = admin.act_ask({"id": "acme", "text": "rename to Acme Corporation"})
+        if (tmp / "companies.json").read_bytes() != before:
+            errors += fail("act_ask wrote to companies.json. It proposes; the "
+                           "person's click is what writes")
+        if not r.get("proposal") or r["proposal"]["action"] != "patch":
+            errors += fail(f"act_ask did not propose the rename: {r}")
+        if r.get("proposal") and "Acme" not in (r["proposal"]["body"]
+                                                .get("fields", {})
+                                                .get("also_known_as") or []):
+            errors += fail("the rename proposal drops the old name instead of "
+                           "keeping it as an alias")
+
+    # 6b. THE ENDPOINT IS THE BACKSTOP. If the parser ever proposes an action
+    # outside the reviewed set - a bug, or a later edit - act_ask refuses it
+    # rather than handing the UI a button that runs it.
+    keep = ask.propose
+    ask.propose = lambda *a, **k: {"action": "capture", "body": {}, "says": "x"}
+    try:
+        with _sandbox_admin(files):
+            r = admin.act_ask({"id": "acme", "text": "anything"})
+        if not r.get("error") or "refusing" not in r["error"]:
+            errors += fail(f"act_ask ran a proposal naming an unreviewed action: {r}")
+    finally:
+        ask.propose = keep
+
+    # 7. THE UI SENDS IT AND RUNS THE ORDINARY ACTION.
+    html = (ROOT / "admin.html").read_text()
+    for needle, why in (("'/api/ask'", "no row can ask anything"),
+                        ("'/api/' + r.proposal.action",
+                         "the accept button does not run the proposed action")):
+        if needle not in html:
+            errors += fail(f"admin.html: {why}")
+    if "ask" not in admin.ACTIONS:
+        errors += fail("/api/ask is not routed")
+    return errors
+
+
 def check_warm_leads_can_be_accepted() -> int:
     """The warm-leads tab can say yes, not only no.
 
@@ -12916,6 +13066,7 @@ def main() -> int:
     errors += check_a_company_sits_on_at_most_two_shelves()
     errors += check_jibe_is_read_and_verifiable()
     errors += check_merge_repoints_competitor_edges()
+    errors += check_ask_proposes_and_never_writes()
     errors += check_warm_leads_can_be_accepted()
     errors += check_add_company_journals_and_reports_already_tracked()
     errors += check_login_endpoint_names_a_handle_never_an_address()

@@ -4187,6 +4187,81 @@ def act_task_note(body: dict) -> dict:
             "message": f"noted - {pending} waiting for apply_task_notes.py"}
 
 
+def _ask_probe(url: str) -> dict:
+    """Read a page a person pasted and say what it is. One fetch, no guessing.
+
+    Returns {kind, ref, titles, host, error}. `kind` is an ATS type when the
+    page carries that ATS's marker, "html" when our reader can enumerate job
+    titles off it, and None when neither - which is an answer, not a failure,
+    and the caller says so rather than wiring a page that lists nothing.
+    """
+    import add_company
+    out = {"kind": None, "ref": None, "titles": [], "host": "", "error": None}
+    clean, why = outward_url(url)
+    if not clean:
+        return dict(out, error=why or "that does not look like a link")
+    out["host"] = (urllib.parse.urlsplit(clean).netloc or "").lower()
+    # the ATS marker table, against the URL itself first - a pasted
+    # boards.greenhouse.io link needs no fetch to be recognised
+    for kindname, pat in add_company.ATS_MARKERS:
+        m = re.search(pat, clean, re.I)
+        if m:
+            return dict(out, kind=kindname, ref=m.group(1))
+    try:
+        html, _note = add_company.fetch(clean)
+    except Exception as exc:
+        return dict(out, error=f"{type(exc).__name__}")
+    if not html:
+        return dict(out, error="the page could not be read")
+    for kindname, pat in add_company.ATS_MARKERS:
+        m = re.search(pat, html, re.I)
+        if m:
+            return dict(out, kind=kindname, ref=m.group(1))
+    try:
+        rows = ats.fetch_html_titles(clean)
+    except Exception as exc:
+        return dict(out, error=str(exc)[:120])
+    out["kind"] = "html"
+    out["titles"] = [r.get("title", "") for r in rows if r.get("title")][:8]
+    return out
+
+
+def act_ask(body: dict) -> dict:
+    """Read what somebody typed on a row and PROPOSE what to do about it.
+
+    The row's buttons are a fixed set and the answer a person has is often
+    not one of them: wiring Rain Bird's real board took four steps by hand
+    when what the owner had was a link. This reads the link, probes it, and
+    comes back with one proposal naming an EXISTING action and the exact
+    body to send it. It writes nothing. The person clicks, and the ordinary
+    action runs with all of its ordinary gates.
+    """
+    import ask as _ask
+    cid = (body.get("id") or "").strip()
+    text = (body.get("text") or "").strip()
+    if not text:
+        return {"error": "type something first"}
+    companies = read_companies()
+    c = next((x for x in companies if x.get("id") == cid), None)
+    if c is None:
+        return {"error": "no such company"}
+    schema = read("schema.json", {"sectors": []})
+    intent = _ask.read(text, c)
+    out = _ask.propose(intent, c, schema=schema, companies=companies,
+                       probe=_ask_probe)
+    if out.get("error"):
+        return {"ok": True, "understood": intent.get("kind"), "proposal": None,
+                "says": out["error"]}
+    action = out.get("action")
+    if action not in _ask.ACCEPTABLE:
+        # A PARSER BUG MAY PROPOSE THE WRONG THING; it may not propose an
+        # operation nobody reviewed. The endpoint refuses rather than runs.
+        return {"error": f"refusing to propose {action!r}"}
+    return {"ok": True, "understood": intent.get("kind"),
+            "proposal": {"action": action, "body": out["body"]},
+            "says": out.get("says", ""), "evidence": out.get("evidence", [])}
+
+
 def act_dismiss(body: dict) -> dict:
     bad = dismiss(body.get("queue", ""), body.get("key", ""),
                   body.get("why", ""), by=(body.get("by") or "owner"))
@@ -4317,7 +4392,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "inspect-submission": act_inspect_submission,
            "confirm-founded": act_confirm_founded,
            "proposal-ruling": act_proposal_ruling,
-           "dismiss": act_dismiss,
+           "dismiss": act_dismiss, "ask": act_ask,
            "user-grant": act_user_grant, "user-revoke": act_user_revoke}
 
 
