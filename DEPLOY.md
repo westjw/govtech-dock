@@ -108,6 +108,27 @@ one address.
 → policy: Emails ending in your address, or a one-time PIN. Free for up to 50
 users, and real auth rather than a shared password.
 
+## 2b. www.solesourcejobs.com loops on sign-in — OPEN, verified 2026-09-03
+Signing in at `www.solesourcejobs.com/admin` ends in ERR_TOO_MANY_REDIRECTS.
+A redirect rule on that zone sends every www path to the apex, **including
+Access's own callback**:
+
+    curl -s -o /dev/null -w '%{http_code} %{redirect_url}' \
+      'https://www.solesourcejobs.com/cdn-cgi/access/authorized?nonce=test'
+    301 https://solesourcejobs.com/cdn-cgi/access/authorized?nonce=test
+
+Access mints the nonce for the hostname the login STARTED on. Moving the
+callback to a different hostname invalidates it, so Access begins again and
+the browser loops. The other three hostnames answer 400 to that fake nonce,
+which is correct: they process it themselves. `www.sledjobs.com` is fine
+because it is a real Pages custom domain rather than a redirect.
+
+**Fix (owner):** add `www.solesourcejobs.com` as a Pages custom domain on
+`solesource`, the same as `www.sledjobs.com` — or exclude `/cdn-cgi/*` from
+the redirect rule. Then clear cookies for the zone. **Until then, sign in at
+`sledjobs.com/admin`.** Re-check with the curl above: anything other than a
+301 means it is fixed.
+
 ## 3b. The "Add a company" form ~~(~3 min)~~ DONE, verified 2026-09-03
 `GITHUB_SUBMIT_TOKEN` is a Pages secret on `solesource` and the form works:
 a POST to `/api/submit` opened issue #12. **A Pages Function reads a new
