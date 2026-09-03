@@ -76,7 +76,7 @@ def load() -> dict:
 
 
 def save(store: dict, action: str = "agent-proposals", why: str = "",
-         by: str = "agent") -> str | None:
+         by: str = "agent", force: bool = False) -> str | None:
     """Write the store THROUGH THE JOURNAL. Returns a refusal or None.
 
     This used to be a bare write_text. CLAUDE.md heads a section "Every admin
@@ -87,7 +87,7 @@ def save(store: dict, action: str = "agent-proposals", why: str = "",
     """
     import admin
     return admin.save_decisions("agent_proposals.json", store, action,
-                                why=why, by=by)
+                                why=why, by=by, force=force)
 
 
 # ---------------------------------------------------------------- briefs
@@ -488,6 +488,12 @@ _PF_COUNTRY = ("United States", "US", "U.S.", "USA", "U.S.A.", "American")
 # against the agent's straight one, a soft hyphen the browser never showed,
 # a zero-width joiner from a CMS. Folded on BOTH sides before comparing.
 _PF_INVISIBLE = "­​‌‍⁠﻿‎‏"
+# A TRADEMARK SYMBOL IS NOT A LETTER, and NFKC disagrees: it maps ™ to the
+# letters TM and ℠ to SM, so a page writing "SafeZone™" normalises to the
+# single token "safezonetm" and a true sentence naming SafeZone is refused as
+# an invented product. Dropped before NFKC on both sides, so needle and
+# corpus agree.
+_PF_MARKS = "™®℠©"
 _PF_TRANS = str.maketrans({
     **{c: "'" for c in "‘’‚‛′ʼ"},         # ‘ ’ ‚ ‛ ′ ʼ
     **{c: '"' for c in "“”„‟″«»"},   # “ ” „ ‟ ″ « »
@@ -532,6 +538,8 @@ def _pf_norm(s: str) -> str:
     if not isinstance(s, str):
         return ""
     s = s.translate(_PF_TRANS)
+    for mark in _PF_MARKS:
+        s = s.replace(mark, "")
     s = unicodedata.normalize("NFKC", s).translate(_PF_TRANS)
     return " ".join(s.casefold().split())
 
@@ -573,9 +581,24 @@ def _pf_has(corpus: str, needle: str, numeric: bool = False) -> bool:
     if not needle:
         return True
     if numeric:
+        # A NUMBER MUST NOT SIT INSIDE A LONGER ONE. 125 is not on a page that
+        # says 1250 or 125.5, and "3.5" is not on a page that says "3.5.0" -
+        # that last refusal is correct and stays: a version is not its prefix.
         pat = r"(?<!\d)(?<!\d\.)" + re.escape(needle) + r"(?!\d)(?!\.\d)"
     else:
-        pat = r"(?<!\w)" + re.escape(needle) + r"(?!\w)"
+        # A PLURAL IS THE SAME NAME, in either direction. FaceTec's page says
+        # "3D FaceVectors" and a sentence naming FaceVector was refused as an
+        # invented product; the reverse happens too when a page names one
+        # thing and the prose names several. Only a trailing s or es, so the
+        # needle still has to be present in full - this widens nothing else.
+        stem = re.escape(needle)
+        if needle.endswith("es") and len(needle) > 4:
+            stem = re.escape(needle[:-2]) + r"(?:es)?"
+        elif needle.endswith("s") and len(needle) > 3:
+            stem = re.escape(needle[:-1]) + r"s?"
+        else:
+            stem = stem + r"(?:e?s)?"
+        pat = r"(?<!\w)" + stem + r"(?!\w)"
     return re.search(pat, corpus) is not None
 
 
@@ -1076,9 +1099,22 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
             "status": "pending",
         }
         kept += 1
+    # THE COUNT IS SHOWN, THEN THE WRITE IS FORCED, which is exactly the deal
+    # journal.py asks for: it refuses a bulk write "unless the caller passes
+    # force=True having shown a person the count". A 109-company category is
+    # one ingest and trips the 25-record blast limit by construction, so
+    # without this the whole batch is refused and the door's real findings -
+    # four invented product names and a quote that is not on the page - are
+    # thrown away with them. The count goes to stdout before the write, and
+    # the journal still records it as one reversible entry.
+    n = kept + len(refused)
+    if n > 25:
+        print(f"  ingesting {n} {kind} proposal(s) ({kept} through the door, "
+              f"{len(refused)} refused) as one journal entry", file=sys.stderr)
     bad = save(store, "agent-ingest",
-               why=f"{kept} {kind} proposal(s) from {model or 'agent'}",
-               by=model or "agent")
+               why=f"{kept} {kind} proposal(s) from {model or 'agent'}, "
+                   f"{len(refused)} refused at the door",
+               by=model or "agent", force=n > 25)
     if bad:
         return {"kept": 0, "refused": refused + [{"key": "*", "why": bad}],
                 "total": len(store)}

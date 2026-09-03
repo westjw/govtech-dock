@@ -1144,7 +1144,15 @@ def check_profile_door_needs_provenance() -> int:
           "as first responders across the city under a waiver from the Federal "
           "Aviation Administration. Brinc raised $1.2M in 2019. The team of 1,200 "
           "serves 40 agencies across the United States and sells through a direct "
-          "field organisation rather than through resellers or distributors.")
+          "field organisation rather than through resellers or distributors. "
+          # THREE SHAPES FROM REAL PAGES, each present in ONE form only, or
+          # the case tests nothing: an earlier version put both forms in the
+          # fixture and four mutations walked past it. Talon appears solely
+          # with a trademark sign, Ravens solely in the plural, and the
+          # version solely as 3.5.0.
+          "The Talon\u2122 carries a radio. Two Ravens were deployed. "
+          "Reporting follows NIBRS 3.5.0. Guardianship transfers are logged "
+          "and the solutions ship quarterly.")
     T = {"https://b.example/": P1, "https://b.example/about": P2}
     Q1 = "Brinc builds drones that police departments"
     Q2 = "Customers include the Chula Vista Police Department"
@@ -1155,7 +1163,7 @@ def check_profile_door_needs_provenance() -> int:
           "The team of 1,200 serves 40 agencies across the United States.",
           "Brinc sells through a direct field organisation rather than through resellers or distributors."]
 
-    def prop(s1=None, s2=None, q1=Q1, q2=Q2, **kw):
+    def prop(s1=None, s2=None, q1=Q1, q2=Q2, texts_extra=False, **kw):
         d = {"key": "profile:b", "id": "b", "confidence": "medium",
              "paragraphs": [[{"text": s, "url": "https://b.example/", "quote": q1}
                              for s in (s1 or S1)],
@@ -1181,6 +1189,22 @@ def check_profile_door_needs_provenance() -> int:
          prop(q1="The founder's first prototype flew in a garage")),
         ("a customer named on the OTHER page than the sentence cites",
          prop(s1=sub(S1, 2, "Chula Vista flies the Lemur as a first responder across the city."))),
+        # A PLURAL IS THE SAME NAME. FaceTec's page says "3D FaceVectors" and
+        # a true sentence naming FaceVector was refused as an invented
+        # product. Both directions: the page may carry either form.
+        ("a name the page writes only in the plural",
+         prop(s2=sub(S2, 2, "The Raven is flown by police departments across the city."))),
+        # THE OTHER DIRECTION: the page names one Talon, the sentence names
+        # several. Without the singular-needle branch this is refused, and
+        # deleting that branch walked past a battery that only tested the
+        # plural-page case.
+        ("a name the page writes only in the singular",
+         prop(s2=sub(S2, 2, "The Talons carry a radio into a barricaded room."))),
+        # A TRADEMARK SYMBOL IS NOT A LETTER. NFKC maps a trademark sign to
+        # the letters TM, so a page writing a product with one normalised to
+        # a single glued token and the product read as invented.
+        ("a product the page marks only with a trademark sign",
+         prop(s2=sub(S2, 2, "The Talon carries a radio into a barricaded room."))),
     ]
     refuse = [
         ("an invented city customer", "baltimore",
@@ -1206,6 +1230,23 @@ def check_profile_door_needs_provenance() -> int:
                                 [{"text": s, "url": "https://b.example/about",
                                   "quote": Q2} for s in S2]]})),
         ("high confidence resting on nothing", "evidence", prop(confidence="high")),
+        # A VERSION IS NOT ITS PREFIX, and this refusal is correct: the page
+        # says NIBRS 3.5.0 and the sentence claims 3.5. Kept as a refuse-case
+        # so the plural and trademark fixes cannot be widened into letting a
+        # number match a longer one.
+        # PLURAL TOLERANCE IS TWO LETTERS, NOT ANY SUFFIX. Widening the stem
+        # to \w* lets an invented product match any longer word on the page
+        # that happens to start the same way: the page says "Guardianship"
+        # and a product called "Guardian" would be accepted.
+        ("an invented name that is a PREFIX of a word on the page", "guardian",
+         prop(s2=sub(S2, 2, "The Guardian console is used by police departments daily."))),
+        # AND THE WORD BOUNDARY ITSELF. The door's own docstring names this
+        # case: a bare substring test finds Ion inside solution. The page says
+        # "solutions" and nothing called Ion exists on it.
+        ("an invented name that sits INSIDE a word on the page", "ion",
+         prop(s2=sub(S2, 2, "The Ion module records audio for police departments."))),
+        ("a version number the page writes longer", "3.5",
+         prop(s2=sub(S2, 2, "Reporting follows the NIBRS 3.5 standard for police records."))),
         # THE SHAPE RULES. The first version of this battery covered only the
         # fabrication rules, and five mutations - deleting the word bounds,
         # the sentence cap, the paragraph count, the quote floor, and the
