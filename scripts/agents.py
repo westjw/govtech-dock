@@ -43,6 +43,7 @@ Agents planned on this spine, all the same shape:
   board    - find the ATS behind a page, so `read` never has to run on it
              again  - and the n=60 trial says this one is worth
              more than `read` is                                (next)
+  rival    - who a buyer would put on the same shortlist        (built)
 """
 from __future__ import annotations
 
@@ -55,7 +56,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 STORE = DATA / "agent_proposals.json"
 
-KINDS = ("bucket", "read", "card", "board")
+KINDS = ("bucket", "read", "card", "board", "rival")
 CONFIDENCE = ("high", "medium", "low", "unsure")
 
 
@@ -242,6 +243,79 @@ NAV_CHROME = {"careers", "jobs", "open positions", "all jobs", "search",
               "our team", "join us", "talent community", "sign in", "log in"}
 
 
+
+# ---------------------------------------------------------------- rival ----
+# A SHORTLIST IS NOT A CATEGORY. The company page shipped a rail headed
+# "Others in Police" listing Verkada, Palantir, Peregrine, Robin Radar and
+# Brinc by open-role count. Every one of those sells to a police department
+# and no two of them compete: cameras, a data platform, data integration,
+# drone detection, drones. A category is the room they are all standing in.
+# A competitor is someone a buyer would put on the same shortlist, and that
+# is a product judgment no keyword count makes.
+#
+# THE UNIT IS THE CATEGORY, NOT THE COMPANY, for a reason that is worth
+# stating: competition is symmetric. Judging one company at a time produces
+# A-competes-with-B without B-competes-with-A, and the two answers disagree
+# on the same page. One agent holding the whole roster can be checked for
+# symmetry mechanically, and check_rival does.
+#
+# A LARGE CATEGORY IS SLICED BY ASSIGNMENT, NEVER BY ROSTER. Police holds 132
+# companies. An agent assigned twenty of them still receives all 132 as
+# candidates, because a roster cut in half cannot propose the edge that
+# crosses the cut, and that missing edge is exactly the invisible false
+# absence this project refuses everywhere else.
+SLICE = 20
+
+
+def brief_rival(sector: str | None = None, category: str | None = None,
+                limit: int | None = None) -> list[dict]:
+    """One brief per slice of a category. Roster whole, assignment partial."""
+    companies = json.loads((DATA / "companies.json").read_text())
+    if isinstance(companies, dict):
+        companies = list(companies.values())
+    board = json.loads((DATA / "board.json").read_text())
+    open_by = {o["id"]: o.get("open_roles", 0)
+               for o in board.get("organizations", [])}
+
+    pools: dict[tuple, list] = {}
+    for c in companies:
+        if not c.get("id") or not c.get("name"):
+            continue
+        pools.setdefault((c.get("sector") or "?", c.get("category") or "?"),
+                         []).append(c)
+
+    done = load()
+    out = []
+    for (sec, cat), pool in sorted(pools.items()):
+        if sector and sec != sector:
+            continue
+        if category and cat != category:
+            continue
+        if len(pool) < 2:
+            continue          # nobody to compete with is a real answer
+        pool.sort(key=lambda c: c["name"].lower())
+        # THE ROSTER EVERY SLICE SEES. One line each: what a shortlist is
+        # decided on is what the company sells and who buys it.
+        roster = [{"id": c["id"], "name": c["name"],
+                   "sells": (c.get("description") or "").strip(),
+                   "brands": [b.get("name") for b in (c.get("brands") or [])
+                              if isinstance(b, dict) and b.get("name")] or None,
+                   "open_roles": open_by.get(c["id"], 0)}
+                  for c in pool]
+        for i in range(0, len(pool), SLICE):
+            chunk = pool[i:i + SLICE]
+            key = f"rival:{sec}/{cat}#{i // SLICE}"
+            if key in done:
+                continue
+            out.append({
+                "kind": "rival", "key": key,
+                "sector": sec, "category": cat,
+                "assigned": [{"id": c["id"], "name": c["name"]} for c in chunk],
+                "roster": roster,
+                "roster_size": len(roster),
+            })
+    return out[:limit] if limit else out
+
 def check_read(p: dict) -> str | None:
     """Refuse a read that looks like it scraped the navigation."""
     rows = p.get("postings")
@@ -346,6 +420,83 @@ def check_bucket(p: dict, schema: dict) -> str | None:
     return None
 
 
+
+# THE CAP IS THE WHOLE GUARD. An agent asked "who competes with Verkada" and
+# handed 132 companies will, if it wants to be helpful, hand back most of the
+# category - and that is precisely the rail this replaces, wearing a better
+# word. A shortlist a buyer actually builds is two to six names. So a proposal
+# naming more than EDGE_CAP rivals, or more than a third of the roster, is
+# refused as a category listing rather than stored as a judgment.
+#
+# SYMMETRY IS RECORDED, NOT REQUIRED. An earlier draft of this door enforced
+# it. That was wrong: Peregrine competes with Palantir and Palantir does not
+# think about Peregrine, and forcing the reciprocal edge would have written a
+# claim nobody made. Direction is kept, one-way edges are surfaced in the
+# queue as information, and a person rules on them.
+EDGE_CAP = 8
+
+
+def check_rival(p: dict) -> str | None:
+    """Refuse a shortlist that is really a category, or an invented name."""
+    roster = {r.get("id") for r in (p.get("roster") or []) if r.get("id")}
+    me = (p.get("id") or "").strip()
+    if not me:
+        return "a rival proposal must name the company it is about"
+    if roster and me not in roster:
+        return f"{me!r} is not in the roster this brief carried"
+
+    rivals = p.get("rivals")
+    if rivals is None:
+        return ("a rival proposal must carry a rivals list, empty if none. "
+                "Absence of the field is not the same answer as an empty one, "
+                "and only one of them is a finding")
+    if not isinstance(rivals, list):
+        return "rivals must be a list"
+
+    # AN EMPTY LIST IS A REAL ANSWER and must survive the door, but only when
+    # it is asserted rather than defaulted to.
+    if not rivals:
+        if not p.get("none_found"):
+            return ("an empty rivals list must set none_found, so that 'nobody "
+                    "here competes with them' is a claim somebody made and not "
+                    "a field that failed to fill")
+        return None
+
+    if len(rivals) > EDGE_CAP:
+        return (f"{len(rivals)} rivals is a category, not a shortlist. A buyer "
+                f"evaluating this company would not carry {len(rivals)} names "
+                f"into the room; the cap is {EDGE_CAP}")
+    if roster and len(rivals) > max(2, len(roster) // 3):
+        return (f"{len(rivals)} rivals out of a {len(roster)}-company roster is "
+                f"most of the category restated. That is the listing this "
+                f"agent exists to replace")
+
+    seen = set()
+    for r in rivals:
+        if not isinstance(r, dict):
+            return "each rival must be an object with an id and a why"
+        rid = (r.get("id") or "").strip()
+        if not rid:
+            return "a rival with no id cannot be linked to anything"
+        if rid == me:
+            return f"{me!r} is listed as its own competitor"
+        if roster and rid not in roster:
+            return (f"{rid!r} is not on the roster. An agent may only choose "
+                    f"from the companies it was shown; a name from memory is "
+                    f"the one thing this door exists to stop")
+        if rid in seen:
+            return f"{rid!r} is listed twice"
+        seen.add(rid)
+        why = (r.get("why") or "").strip()
+        if len(why) < 15:
+            return (f"the edge to {rid!r} carries no reason. An edge without "
+                    f"one is a category listing with a better heading, which "
+                    f"is the exact thing being replaced")
+
+    if p.get("confidence") == "high" and not (p.get("evidence") or "").strip():
+        return "a high-confidence shortlist must say what it rests on"
+    return None
+
 def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
     """Store proposals, refusing the malformed. Returns a small report."""
     if kind not in KINDS:
@@ -358,7 +509,8 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
         key = p.get("key") or f"{kind}:{p.get('id')}"
         bad = (check_bucket(p, schema) if kind == "bucket"
                else check_read(p) if kind == "read"
-               else check_board(p) if kind == "board" else None)
+               else check_board(p) if kind == "board"
+               else check_rival(p) if kind == "rival" else None)
         if bad:
             refused.append({"key": key, "why": bad})
             continue
@@ -384,6 +536,10 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
             "quota": p.get("quota"),
             "sample": p.get("sample") or None,
             "none_found": bool(p.get("none_found")),
+            # a shortlist and the roster it was chosen from, stored together:
+            # a ruling nobody can re-read is not a ruling
+            "rivals": p.get("rivals"),
+            "roster_size": p.get("roster_size"),
             "saw": p.get("saw") or {},
             "by": model or "agent",
             "at": now,

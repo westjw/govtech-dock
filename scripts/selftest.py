@@ -23,6 +23,7 @@ import threading
 import time
 import pathlib
 import sys
+import urllib.parse as up
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import alert     # noqa: E402
@@ -509,6 +510,195 @@ SALARY_RAW_CASES = [
     ("Pay range: $140,000 -\n$200,000 per year", "$140,000 - $200,000 per year"),
 ]
 
+
+
+def check_rival_door_refuses_a_category() -> int:
+    """The competitor door must refuse a category wearing a better word.
+
+    THE BUG THIS REPLACES IS ON THE PUBLIC PAGE RIGHT NOW. The company rail
+    reads "Others in Police" and lists Verkada, Palantir, Peregrine, Robin
+    Radar and Brinc by open-role count: cameras, a data platform, data
+    integration, drone detection, and drones. Five companies, no two of which
+    compete. A category is the room they are standing in; a competitor is
+    someone a buyer would put on the same shortlist.
+
+    An agent asked "who competes with Verkada" and handed a 132-company roster
+    will, if it wants to be helpful, hand most of it back - which is the same
+    rail with a new heading. So the door caps a shortlist, and the cap is the
+    guard. Everything else here refuses a claim that cannot be checked: a name
+    that was never on the roster is the agent answering from memory, and an
+    edge with no reason is a listing again.
+
+    An empty answer must survive, because "nobody on this roster competes with
+    them" is true of a great many of these companies and is the honest thing
+    to publish. It must be ASSERTED though: an empty list that did not set
+    none_found is a field that failed to fill, and the two are different
+    findings wearing one shape.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents
+
+    roster = [{"id": f"c{i}", "name": f"C{i}"} for i in range(33)]
+
+    def prop(**kw):
+        d = {"id": "c0", "roster": roster, "confidence": "medium",
+             "rivals": [{"id": "c1", "why": "both sell RMS to the same police buyer"}]}
+        d.update(kw)
+        return d
+
+    ok_cases = [
+        ("a two-name shortlist", prop()),
+        ("an asserted empty answer", prop(rivals=[], none_found=True)),
+        ("high confidence with evidence",
+         prop(confidence="high", evidence="named together in one RFP shortlist")),
+    ]
+    # A SMALL ROSTER, so the proportion cap binds BEFORE the absolute one.
+    # The first version of this check used a 33-company roster throughout, on
+    # which max(2, 33//3) is 11 and EDGE_CAP of 8 always fired first - so the
+    # proportion rule was never exercised and deleting it changed nothing here.
+    small = [{"id": f"s{i}", "name": f"S{i}"} for i in range(9)]
+
+    refuse_cases = [
+        ("four rivals out of a nine-company category",
+         {"id": "s0", "roster": small, "confidence": "medium",
+          "rivals": [{"id": f"s{i}", "why": "a reason long enough to pass"}
+                     for i in range(1, 5)]}),
+        ("most of the category restated",
+         prop(rivals=[{"id": f"c{i}", "why": "also sells to police departments"}
+                      for i in range(1, 20)])),
+        ("one over the shortlist cap",
+         prop(rivals=[{"id": f"c{i}", "why": "a reason long enough to pass"}
+                      for i in range(1, 10)])),
+        ("a company that was never on the roster",
+         prop(rivals=[{"id": "axon", "why": "they both sell body cameras"}])),
+        ("itself as a competitor",
+         prop(rivals=[{"id": "c0", "why": "a reason long enough to pass"}])),
+        ("an edge carrying no reason", prop(rivals=[{"id": "c1", "why": "same"}])),
+        ("the same rival twice",
+         prop(rivals=[{"id": "c1", "why": "both sell RMS to police"}] * 2)),
+        ("an empty list nobody asserted", prop(rivals=[])),
+        ("no rivals field at all", prop(rivals=None)),
+        ("high confidence resting on nothing", prop(confidence="high")),
+    ]
+
+    errors = 0
+    for name, pr in ok_cases:
+        got = agents.check_rival(pr)
+        if got is not None:
+            errors += fail(f"the rival door refused {name}: {got}")
+    for name, pr in refuse_cases:
+        if agents.check_rival(pr) is None:
+            errors += fail(f"the rival door ACCEPTED {name}. That is the "
+                           f"'Others in Police' rail arriving through a door "
+                           f"built to stop it")
+    return errors
+
+
+def check_profile_fetch_stays_first_party() -> int:
+    """Site pages must come from the company's own domain, and nowhere else.
+
+    THE ENGINES READING THIS STORE ARE TOLD EVERY URL IS FIRST-PARTY, and two
+    of them publish what they find on 2,058 public company pages. A company's
+    press page routinely links out to the trade outlet that covered them; one
+    followed link and a magazine's words are filed as the company's own
+    description of itself, under that company's name, with a citation that
+    looks first-party because the store said it was.
+
+    The dedupe is here for a smaller reason that costs somebody else money:
+    www.brincdrones.com/about/ and brincdrones.com/about/ are one page, and
+    the first pass fetched both - a wasted request at their expense, and the
+    same words stored twice, which would later read as two sources for one
+    claim.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import fetch_profiles as fp
+
+    body = """
+      <a href="/about">about</a>
+      <a href="https://www.acme.com/customers/">customers</a>
+      <a href="https://acme.com/about/">about again, other spelling</a>
+      <a href="https://press.acme.com/news">own subdomain</a>
+      <a href="https://govtechtoday.example/acme-raises-50m">the outlet</a>
+      <a href="https://linkedin.com/company/acme">their profile elsewhere</a>
+      <a href="mailto:hi@acme.com">mail</a>
+      <a href="javascript:void(0)">script</a>
+    """
+    got = fp.links(body, "https://www.acme.com")
+    hosts = {up.urlsplit(u).hostname for u in got}
+    errors = 0
+    for bad in ("govtechtoday.example", "linkedin.com"):
+        if bad in hosts:
+            errors += fail(f"fetch_profiles followed a link to {bad}. The store "
+                           f"promises first-party text; one outside page and "
+                           f"somebody else's words are published as a "
+                           f"company's own account of itself")
+    if "press.acme.com" not in hosts:
+        errors += fail("fetch_profiles dropped the company's own subdomain. "
+                       "press.acme.com is acme.com, and it is usually where "
+                       "the news actually lives")
+    paths = [up.urlsplit(u).path.rstrip("/").lower() for u in got]
+    if paths.count("/about") > 1:
+        errors += fail("fetch_profiles kept www and non-www as two pages. One "
+                       "page fetched twice spends somebody else's server and "
+                       "stores one claim as two sources")
+    for scheme_bad in got:
+        if scheme_bad.lower().startswith(("mailto:", "javascript:")):
+            errors += fail(f"fetch_profiles returned {scheme_bad!r} as a page")
+    return errors
+
+
+def check_rival_brief_never_cuts_the_roster() -> int:
+    """A sliced assignment must still carry every candidate.
+
+    Police holds 132 companies and no agent judges 132 at once, so the work is
+    sliced. THE ROSTER IS NOT. An agent shown half the category cannot propose
+    the edge that crosses the cut, and that missing edge is invisible forever -
+    the false absence this project refuses everywhere else, from `scan_pagetext`
+    to the near-a-city filter. Slice the assignment, never the candidates.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents
+
+    briefs = agents.brief_rival(sector="Public Safety", category="Police")
+    if not briefs:
+        note("no Police briefs to check (all proposed already?)")
+        return 0
+    errors = 0
+    # MEASURE THE LIST, DO NOT READ THE FIELD. The first version compared
+    # roster_size, which brief_rival computes separately from the roster it
+    # ships - so a mutation that sliced the actual candidate list left the
+    # reported number at 132 and walked straight past. A guard that trusts a
+    # count over the thing counted is not checking anything.
+    for b in briefs:
+        if len(b["roster"]) != b["roster_size"]:
+            errors += fail(f"slice {b['key']} reports a roster of "
+                           f"{b['roster_size']} and ships {len(b['roster'])}. "
+                           f"The number is not the thing")
+    sizes = {len(b["roster"]) for b in briefs}
+    if len(sizes) != 1:
+        errors += fail(f"slices of one category saw different rosters {sizes}. "
+                       f"Two agents judging the same category against "
+                       f"different candidate sets cannot be compared, and the "
+                       f"smaller one cannot find what it was not shown")
+    for b in briefs:
+        ids = {r["id"] for r in b["roster"]}
+        missing = [a["id"] for a in b["assigned"] if a["id"] not in ids]
+        if missing:
+            errors += fail(f"slice {b['key']} was assigned {missing[:3]} and "
+                           f"they are not on its own roster")
+        if len(b["assigned"]) > agents.SLICE:
+            errors += fail(f"slice {b['key']} carries {len(b['assigned'])} "
+                           f"assignments over a slice of {agents.SLICE}")
+    covered = [a["id"] for b in briefs for a in b["assigned"]]
+    if len(covered) != len(set(covered)):
+        errors += fail("a company is assigned to two slices, so it would be "
+                       "judged twice and the two answers would disagree on "
+                       "one page")
+    if len(set(covered)) != briefs[0]["roster_size"]:
+        errors += fail(f"{len(set(covered))} companies assigned out of a "
+                       f"{briefs[0]['roster_size']}-company category. The ones "
+                       f"left out get no shortlist and nothing says why")
+    return errors
 
 
 def check_company_counts_are_roles_not_postings():
@@ -10398,6 +10588,9 @@ def main() -> int:
                 f"ats.card_fields({lines!r}) = {(title, loc, pay)!r}, "
                 f"expected {(w_title, w_loc, w_pay)!r}")
     errors += check_board()
+    errors += check_rival_door_refuses_a_category()
+    errors += check_profile_fetch_stays_first_party()
+    errors += check_rival_brief_never_cuts_the_roster()
     errors += check_company_counts_are_roles_not_postings()
     errors += check_salary()
     # What survives a job description, and what must not. Checked against the

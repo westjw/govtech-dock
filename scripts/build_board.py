@@ -1069,6 +1069,15 @@ def main() -> int:
             # company.
             "brands": c.get("brands") or None,
             "also_known_as": c.get("also_known_as") or None,
+            # THE SHORTLIST, AND THE TWO SILENCES BESIDE IT. A researched
+            # empty and an unresearched company are different facts and the
+            # page renders them differently, so both flags travel: without
+            # `none_found` the page cannot tell "nobody competes with them"
+            # from "nobody has looked", which is the whole point of the
+            # engine that produced these.
+            "competitors": c.get("competitors") or None,
+            "competitors_none_found": bool(c.get("competitors_none_found")) or None,
+            "competitors_checked_on": c.get("competitors_checked_on") or None,
             # WHICH EVENT THIS COMPANY CAME OFF, so the Conferences tab can
             # actually open one. The tag alone, not the whole `source` string:
             # sweeps write "conference sweep: PLA 2026" and intake writes

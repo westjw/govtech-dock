@@ -284,7 +284,43 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026; IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "motorola-solutions",
+    "why": "V300 body cameras and CommandCentral evidence, the head-to-head bid at large agencies"
+   },
+   {
+    "id": "digital-ally",
+    "why": "Body-worn and in-car video systems quoted against Axon at the same department"
+   },
+   {
+    "id": "getac-video-solutions",
+    "why": "In-car and body camera video systems for the same agency video contract"
+   },
+   {
+    "id": "lenslock",
+    "why": "Body-worn video with cloud evidence management, the value bid to the same PD"
+   },
+   {
+    "id": "veritone",
+    "why": "iDEMS digital evidence management and Redact competing with Axon Evidence at the same agency"
+   },
+   {
+    "id": "nice",
+    "why": "Digital evidence management and 911 recording bid against Axon Evidence in the same agency"
+   },
+   {
+    "id": "wrap-technologies",
+    "why": "BolaWrap remote restraint sold as the less-lethal alternative to TASER at the same PD"
+   },
+   {
+    "id": "flock-safety",
+    "why": "Real-time crime center and Aerodome DFR competing with Axon's real-time operations for the same agency"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "motorola-solutions",
@@ -573,7 +609,35 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "centralsquare-technologies",
+    "why": "CAD/911 call handling and RMS suite bid head-to-head against Motorola for the same city/county public safety enterprise buyer"
+   },
+   {
+    "id": "hexagon",
+    "why": "Enterprise CAD and dispatch platform for large PDs and 911 centers, the direct alternative to Motorola CommandCentral CAD"
+   },
+   {
+    "id": "mark43",
+    "why": "Cloud-native CAD and RMS pitched as the modern replacement for Motorola's CAD/RMS at the same agency"
+   },
+   {
+    "id": "versaterm",
+    "why": "CAD/RMS public safety suite competing for the same agency-wide dispatch and records contract"
+   },
+   {
+    "id": "genetec",
+    "why": "Security Center VMS and access control competes directly with Motorola's Avigilon video for city surveillance buyers"
+   },
+   {
+    "id": "milestone-systems",
+    "why": "XProtect open-platform VMS is the alternative video management choice to Avigilon for the same municipal camera project"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "flock-safety",
@@ -597,7 +661,43 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "soundthinking",
+    "why": "Acoustic gunshot detection for cities, the direct alternative to Flock's gunshot detection in the same municipal contract"
+   },
+   {
+    "id": "ndi-recognition-systems",
+    "why": "Fixed and mobile ALPR cameras and back-office software, evaluated against Flock's plate-reader network by the same PD"
+   },
+   {
+    "id": "genetec",
+    "why": "AutoVu ALPR sold to the same city or PD choosing one license-plate recognition system"
+   },
+   {
+    "id": "motorola-solutions",
+    "why": "Vigilant ALPR and municipal video surveillance bid against Flock's camera network for the same citywide public-safety camera award"
+   },
+   {
+    "id": "paladin-drones",
+    "why": "Drone-as-first-responder software and hardware auto-launching to 911 calls, the direct alternative to Flock's Aerodome DFR program"
+   },
+   {
+    "id": "skydio",
+    "why": "Autonomous drones for police DFR programs, competing for the same department's drone-first-responder deployment"
+   },
+   {
+    "id": "skyfireai",
+    "why": "Turnkey DFR program software and operations, an alternative way to stand up the same drone-first-responder service"
+   },
+   {
+    "id": "brinc",
+    "why": "911-response drones staged on station rooftops, bought instead of Aerodome for the same DFR program"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "skydio",
@@ -628,7 +728,31 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; ICMA 2025; ICMA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "brinc",
+    "why": "911-response drones staged on police rooftops: same DFR aircraft decision at the same department"
+   },
+   {
+    "id": "paladin-drones",
+    "why": "DFR software and hardware auto-launching to 911 calls: direct alternative for the same program"
+   },
+   {
+    "id": "flock-safety",
+    "why": "Aerodome drone-as-first-responder sold to the same PD launching a DFR program"
+   },
+   {
+    "id": "skyfireai",
+    "why": "DFR program software and turnkey operations competing for the same department DFR contract"
+   },
+   {
+    "id": "defendeye-usa",
+    "why": "Autonomous responder drones for first responder situational awareness, same buyer and mission"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "brinc",
@@ -668,7 +792,31 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "skydio",
+    "why": "Autonomous drones for police DFR programs, the direct head-to-head airframe bid"
+   },
+   {
+    "id": "paladin-drones",
+    "why": "DFR hardware and software auto-launching to 911 calls for the same agency program"
+   },
+   {
+    "id": "skyfireai",
+    "why": "Turnkey DFR program software and operations competing for the same agency drone budget"
+   },
+   {
+    "id": "flock-safety",
+    "why": "Aerodome drone-as-first-responder sold to the same PD, often bundled with LPR"
+   },
+   {
+    "id": "defendeye-usa",
+    "why": "Autonomous rapid-launch drones for the same first-responder situational awareness buy"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "mark43",
@@ -713,7 +861,35 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "centralsquare-technologies",
+    "why": "CAD/911 and RMS suite for the same city and county agency records/dispatch replacement Mark43 bids; the most common incumbent Mark43 displaces."
+   },
+   {
+    "id": "motorola-solutions",
+    "why": "PremierOne/Flex CAD and records sold to the same large-agency dispatch and records buyer."
+   },
+   {
+    "id": "hexagon",
+    "why": "Enterprise CAD, dispatch and records platforms for police and 911 centers - the same big-agency procurement."
+   },
+   {
+    "id": "versaterm",
+    "why": "CAD/RMS public safety suite competing for the same municipal police records and dispatch contract."
+   },
+   {
+    "id": "niche-technology",
+    "why": "NicheRMS365 records management for large and multi-agency forces, bid against Mark43 on the same large RMS replacements."
+   },
+   {
+    "id": "caliber-public-safety",
+    "why": "Cloud CAD, RMS and jail management sold to the same agency evaluating a hosted records/dispatch replacement."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "peregrine",
@@ -743,7 +919,31 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "palantir-technologies",
+    "why": "Data integration and investigative analytics for police, the same unify-agency-data problem for the same department"
+   },
+   {
+    "id": "forcemetrics",
+    "why": "Platform unifying CAD/RMS and community data into officer-facing context, a direct alternative for the same agency"
+   },
+   {
+    "id": "longeye",
+    "why": "AI investigations platform over unified agency data competing for the same detective and analyst deployment"
+   },
+   {
+    "id": "cognyte",
+    "why": "Investigative analytics fusing agency data sources, evaluated by the same LE intelligence and fusion center buyer"
+   },
+   {
+    "id": "firstwatch",
+    "why": "Real-time data analytics and situational awareness dashboards over CAD data for the same public safety command staff"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "soundthinking",
@@ -767,7 +967,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "flock-safety",
+    "why": "Sells gunshot detection to the same city police department deciding on one acoustic detection network"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "liveview-technologies",
@@ -800,7 +1008,15 @@
     "sector": "Public Works",
     "category": "Suppliers & Services"
    }
-  ]
+  ],
+  "competitors": [
+   {
+    "id": "epic-io",
+    "why": "AI video plus IoT sensors with managed connectivity sold to the same city and infrastructure buyer needing monitored surveillance at a site with no existing network."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "truleo",
@@ -835,7 +1051,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "benchmark-analytics",
+    "why": "Both sell officer-conduct early warning to the same chief: Truleo from bodycam audio, Benchmark First Sign from incident data, competing for one accountability budget line"
+   },
+   {
+    "id": "ci-technologies",
+    "why": "IAPro's internal affairs and early intervention modules solve the same supervision-and-conduct-oversight problem for the same professional standards unit"
+   },
+   {
+    "id": "vector-solutions",
+    "why": "Guardian Tracking sells performance documentation and early intervention to the same police supervisor Truleo pitches"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "kaiden-ai",
@@ -859,7 +1091,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "apex-officer",
+    "why": "VR de-escalation and scenario training sold to the same police academy training commander evaluating simulation options."
+   },
+   {
+    "id": "virtra",
+    "why": "Judgmental de-escalation simulators competing for the same academy scenario-training budget."
+   },
+   {
+    "id": "milo-range",
+    "why": "Interactive scenario and use-of-force training simulators bid to the same department training unit."
+   },
+   {
+    "id": "inveris-training-solutions",
+    "why": "FATS virtual training systems target the same academy scenario-training purchase Kaiden pitches against."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "eso",
@@ -7174,7 +7426,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; ICMA 2025",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "detail-kommander",
+    "why": "Off-duty and secondary employment detail management with payment processing for the same department"
+   },
+   {
+    "id": "off-duty-management",
+    "why": "OfficerTRAK off-duty detail scheduling, billing and insurance: same product, same agency buyer"
+   },
+   {
+    "id": "extra-duty-solutions",
+    "why": "Extra-duty detail administration and scheduling software sold to the same police department"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "goodsam",
@@ -9466,7 +9734,43 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026; ICMA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "mark43",
+    "why": "Cloud-native CAD and RMS bidding the same agency-wide dispatch and records replacement RFP"
+   },
+   {
+    "id": "motorola-solutions",
+    "why": "Motorola's 911 call handling, CAD and records suite is the incumbent alternative in the same enterprise procurement"
+   },
+   {
+    "id": "hexagon",
+    "why": "Enterprise CAD/dispatch and records for large police and 911 centers - the same platform decision"
+   },
+   {
+    "id": "versaterm",
+    "why": "CAD/RMS public safety suite competing for the same city police records and dispatch contract"
+   },
+   {
+    "id": "caliber-public-safety",
+    "why": "Cloud CAD, RMS and jail management is the same three-module bundle sold to the same sheriff's office"
+   },
+   {
+    "id": "niche-technology",
+    "why": "NicheRMS365 competes for large and multi-agency records management replacements"
+   },
+   {
+    "id": "eforce-software",
+    "why": "Browser-based CAD, RMS, jail and mobile suite bid against CentralSquare in small and mid agencies"
+   },
+   {
+    "id": "prophoenix",
+    "why": "Browser-based CAD, RMS and jail software for police and fire competing in the same municipal RFP"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "versaterm",
@@ -9511,7 +9815,35 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "centralsquare-technologies",
+    "why": "Big-three CAD/911/RMS suite bid head-to-head with Versaterm for the same mid and large agency records and dispatch replacement"
+   },
+   {
+    "id": "mark43",
+    "why": "Cloud-native CAD and RMS competing for the same modern-platform agency migrating off legacy records systems"
+   },
+   {
+    "id": "hexagon",
+    "why": "Enterprise CAD, dispatch and records for large police departments and 911 centers - the same suite decision Versaterm bids"
+   },
+   {
+    "id": "motorola-solutions",
+    "why": "Motorola's 911 call handling and CAD suite competes for the same large agency dispatch and records platform award"
+   },
+   {
+    "id": "niche-technology",
+    "why": "NicheRMS365 targets the same large and multi-agency forces in North America, UK and Australia for one shared records system"
+   },
+   {
+    "id": "caliber-public-safety",
+    "why": "Cloud CAD, RMS and jail management sold to the same law enforcement agency consolidating onto a single suite"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "niche-technology",
@@ -9535,7 +9867,31 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "mark43",
+    "why": "Cloud-native RMS for large agencies, the modern alternative evaluated against NicheRMS365 by the same multi-agency force"
+   },
+   {
+    "id": "versaterm",
+    "why": "CAD/RMS suite competing for the same large-agency records management replacement contract"
+   },
+   {
+    "id": "motorola-solutions",
+    "why": "Enterprise RMS and CAD sold to the same large police force weighing a records system replacement"
+   },
+   {
+    "id": "hexagon",
+    "why": "Enterprise records and dispatch platform bid against Niche for big-force and regional consortium RMS awards"
+   },
+   {
+    "id": "centralsquare-technologies",
+    "why": "RMS and CAD suite competing for the same agency's records management system of record"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "prophoenix",
@@ -9575,7 +9931,39 @@
     "sector": "Public Safety",
     "category": "Suppliers & Services"
    }
-  ]
+  ],
+  "competitors": [
+   {
+    "id": "eforce-software",
+    "why": "Also browser-based CAD, RMS, jail and mobile sold to the same small/mid municipal police department"
+   },
+   {
+    "id": "caliber-public-safety",
+    "why": "Cloud CAD, RMS and jail management to the same agency replacing one integrated suite"
+   },
+   {
+    "id": "centralsquare-technologies",
+    "why": "CAD/911, RMS and jail suite bid to the same city/county public safety buyer"
+   },
+   {
+    "id": "valor-systems",
+    "why": "CAD, RMS and mobile suite for the same agency choosing a single dispatch-and-records vendor"
+   },
+   {
+    "id": "southern-software",
+    "why": "Integrated CAD, RMS and JMS for the same local-government suite decision"
+   },
+   {
+    "id": "365labs",
+    "why": "CAD, RMS and case management competing for the same agency records-and-dispatch replacement"
+   },
+   {
+    "id": "cody-systems",
+    "why": "Pathfinder RMS/CAD sold to the same small and mid-size police agencies"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "cody-systems",
@@ -9599,7 +9987,39 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "eforce-software",
+    "why": "Browser-based CAD, RMS, jail and mobile suite bid against Pathfinder RMS at the same mid-size agency"
+   },
+   {
+    "id": "prophoenix",
+    "why": "Browser-based CAD/RMS/jail for police and fire competing for the same regional records contract"
+   },
+   {
+    "id": "valor-systems",
+    "why": "CAD, RMS and mobile for public safety agencies - the same dispatch-plus-records purchase"
+   },
+   {
+    "id": "southern-software",
+    "why": "Integrated CAD, RMS and JMS for local government police - same buyer, same suite decision"
+   },
+   {
+    "id": "sun-ridge-systems",
+    "why": "RIMS records and dispatch suite sold to the same police and sheriff records buyer"
+   },
+   {
+    "id": "caliber-public-safety",
+    "why": "Cloud CAD, RMS and jail management competing for the same agency records replacement"
+   },
+   {
+    "id": "centralsquare-technologies",
+    "why": "CAD/911, RMS and jail suite is the large-vendor alternative in the same procurement"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "365labs",
@@ -9623,7 +10043,43 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "mark43",
+    "why": "Cloud-native CAD and RMS bid to the same police records-and-dispatch buyer"
+   },
+   {
+    "id": "centralsquare-technologies",
+    "why": "CAD/911, RMS and jail suite; the incumbent 365Labs displaces at local agencies"
+   },
+   {
+    "id": "caliber-public-safety",
+    "why": "Cloud CAD, RMS and jail management for the same agency records purchase"
+   },
+   {
+    "id": "eforce-software",
+    "why": "Browser-based CAD/RMS/mobile suite quoted to the same small and mid-size PDs"
+   },
+   {
+    "id": "prophoenix",
+    "why": "Browser-based CAD, RMS and mobile suite for the same local police buyer"
+   },
+   {
+    "id": "valor-systems",
+    "why": "CAD, RMS and mobile for the same dispatch-and-records agency decision"
+   },
+   {
+    "id": "cody-systems",
+    "why": "Pathfinder RMS/CAD sold into the same municipal police records budget"
+   },
+   {
+    "id": "civiceye",
+    "why": "Cloud records and case software aimed at the same police-plus-prosecutor buyer"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "omnigo-software",
@@ -9647,7 +10103,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026; IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "civiceye",
+    "why": "Cloud records and case software for police, the alternative incident reporting and case system for the same small/mid agency"
+   },
+   {
+    "id": "kaseware",
+    "why": "Investigative case management platform competing for the same agency and corporate/campus security case management buy"
+   },
+   {
+    "id": "365labs",
+    "why": "RMS and case management for law enforcement, bid as the alternative incident and case system to Omnigo"
+   },
+   {
+    "id": "ecins",
+    "why": "Cloud multi-agency case management and information sharing, an alternative case platform for the same community safety and police unit"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "kaseware",
@@ -9671,7 +10147,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "omnigo-software",
+    "why": "Incident reporting and investigative case management sold to the same agency, campus and corporate security investigations buyer."
+   },
+   {
+    "id": "ecins",
+    "why": "Cloud multi-agency case management for police competes for the same investigations case-management contract."
+   },
+   {
+    "id": "iris-intel",
+    "why": "CJIS-aligned intelligence request and case workflow for the same fusion center and agency intel unit buyer Kaseware targets."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "porter-lee",
@@ -9704,7 +10196,19 @@
     "sector": "Public Safety",
     "category": "Suppliers & Services"
    }
-  ]
+  ],
+  "competitors": [
+   {
+    "id": "veripic",
+    "why": "Physical and digital evidence management for the same property and evidence room custodian tracking chain of custody"
+   },
+   {
+    "id": "invita-healthcare-technologies",
+    "why": "Forensic case management and Track-Kit sexual assault kit tracking bought by the same crime lab and evidence unit"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "veripic",
@@ -9728,7 +10232,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "veritone",
+    "why": "Veritone iDEMS is a digital evidence management system sold to the same agency evidence and records custodian"
+   },
+   {
+    "id": "nice",
+    "why": "Both sell digital evidence management to the same public safety evidence unit consolidating media from many sources"
+   },
+   {
+    "id": "axon",
+    "why": "Axon Evidence is the incumbent digital evidence cloud VeriPic sells against for the same department's evidence storage and sharing decision"
+   },
+   {
+    "id": "porter-lee",
+    "why": "BEAST covers the physical property and evidence room VeriPic also handles, competing for the same property unit's chain-of-custody system"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "caseguard",
@@ -9763,7 +10287,19 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "pimloc-inc",
+    "why": "Both sell AI video redaction software to the agency records unit blurring faces before public-records and discovery release"
+   },
+   {
+    "id": "veritone",
+    "why": "Veritone's aiWARE Redact is the same automated evidence-redaction product sold to the same police records and legal staff"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "cellebrite",
@@ -9787,7 +10323,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "magnet-forensics",
+    "why": "Axiom and Graykey do the same mobile/computer extraction and examination work for the same police digital forensics lab"
+   },
+   {
+    "id": "msab",
+    "why": "XRY/XAMN is the head-to-head mobile device extraction and analysis suite bought by the same forensic examiners"
+   },
+   {
+    "id": "oxygen-forensics",
+    "why": "Mobile and cloud extraction software sold to the same police investigator as an alternative to UFED"
+   },
+   {
+    "id": "adf-solutions",
+    "why": "Field digital forensic triage competes directly with Cellebrite's on-scene triage for the same detective bureau budget"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "magnet-forensics",
@@ -9811,7 +10367,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "cellebrite",
+    "why": "Mobile device forensics and extraction (UFED/Pathfinder) sold to the same police digital forensics lab; the canonical head-to-head against Axiom/Graykey."
+   },
+   {
+    "id": "msab",
+    "why": "XRY/XAMN mobile device forensics competing for the same agency device-extraction and analysis purchase."
+   },
+   {
+    "id": "oxygen-forensics",
+    "why": "Mobile and cloud forensics software bid to the same police digital forensics examiner as an Axiom alternative."
+   },
+   {
+    "id": "adf-solutions",
+    "why": "Field digital forensic triage for investigators - the same on-scene triage job Magnet sells its triage tooling into."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "msab",
@@ -9842,7 +10418,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "cellebrite",
+    "why": "UFED mobile device extraction and analysis, the primary alternative to XRY for the same police digital forensics unit"
+   },
+   {
+    "id": "magnet-forensics",
+    "why": "Graykey and Axiom phone extraction and examination bought instead of XRY/XAMN by the same forensic lab"
+   },
+   {
+    "id": "oxygen-forensics",
+    "why": "Mobile and cloud device forensics software competing for the same examiner seat license budget"
+   },
+   {
+    "id": "adf-solutions",
+    "why": "Field digital forensic triage software competing with XRY Express for the same patrol/investigator field-extraction rollout"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "amped-software",
@@ -9866,7 +10462,19 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "axon",
+    "why": "Axon Investigate is forensic video analysis sold to the same police video-evidence examiner"
+   },
+   {
+    "id": "briefcam",
+    "why": "Video review and analytics software competing for the same investigative video budget and unit"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "cognyte",
@@ -9890,7 +10498,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "penlink",
+    "why": "Lawful intercept, comms analytics and OSINT (PLX + Cobwebs) is the same product line for the same LE and federal intelligence buyer"
+   },
+   {
+    "id": "ss8-networks",
+    "why": "Lawful intercept mediation plus intelligence analytics sold into the same national security and LE programs"
+   },
+   {
+    "id": "palantir-technologies",
+    "why": "Investigative analytics over fused agency data competing for the same large-agency intelligence platform decision"
+   },
+   {
+    "id": "chorus-intelligence",
+    "why": "Digital investigation suite analyzing comms data for the same police intelligence analyst"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "penlink",
@@ -9914,7 +10542,35 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "ss8-networks",
+    "why": "Lawful intercept mediation and comms intelligence analytics, the direct alternative to PLX for the same LE wiretap unit"
+   },
+   {
+    "id": "cognyte",
+    "why": "Intercept and comms/investigative analytics sold to the same law enforcement and federal intelligence buyer"
+   },
+   {
+    "id": "chorus-intelligence",
+    "why": "Comms data cleansing, analysis and evidencing competing with PLX for the same investigator handling CDR and telecom returns"
+   },
+   {
+    "id": "babel-street",
+    "why": "OSINT and identity intelligence bid against the Cobwebs web-intelligence half of Penlink for the same LE analyst seat"
+   },
+   {
+    "id": "shadowdragon",
+    "why": "OSINT investigation tooling competing with Cobwebs for the same police and government open-source investigator"
+   },
+   {
+    "id": "skopenow",
+    "why": "Open-source intelligence investigation platform, an alternative analyst subscription for the same LE intelligence unit"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "flashpoint",
@@ -9938,7 +10594,31 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "babel-street",
+    "why": "OSINT collection and analysis platform sold to the same law enforcement intelligence and fusion-center analyst seat"
+   },
+   {
+    "id": "shadowdragon",
+    "why": "OSINT investigation tooling bought instead of a Flashpoint subscription by the same government investigator"
+   },
+   {
+    "id": "skopenow",
+    "why": "Open-source intelligence investigation platform competing for the same analyst license budget at police and agencies"
+   },
+   {
+    "id": "dataminr",
+    "why": "Real-time threat alerting from public and open data, the alternative subscription for the same emergency-management and security-intel buyer"
+   },
+   {
+    "id": "penlink",
+    "why": "OSINT and comms analytics via Cobwebs sold into the same LE intelligence unit deciding on one open-source intelligence platform"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "trm-labs",
@@ -9962,7 +10642,19 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "chainalysis",
+    "why": "Direct head-to-head: blockchain tracing and investigation software sold to the same LE financial-crimes and federal task force buyer"
+   },
+   {
+    "id": "breadcrumbs",
+    "why": "Both sell on-chain transaction tracing and fund-flow visualization to crypto investigators in law enforcement"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "chorus-intelligence",
@@ -9986,7 +10678,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "penlink",
+    "why": "PLX call-data-record and comms analytics is the same normalize-and-analyze-phone-data product for the same investigative unit"
+   },
+   {
+    "id": "cognyte",
+    "why": "Investigative comms and intelligence analytics bought by the same LE intelligence analysts"
+   },
+   {
+    "id": "ss8-networks",
+    "why": "Intelligence analytics over intercepted and carrier comms data sold to the same law enforcement analyst team"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "leadsonline",
@@ -10017,7 +10725,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": true
  },
  {
   "id": "ss8-networks",
@@ -10041,7 +10752,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "penlink",
+    "why": "Lawful intercept and comms analytics (PLX) for LE and federal: direct product and buyer overlap"
+   },
+   {
+    "id": "cognyte",
+    "why": "Interception-driven investigative analytics for national security and LE, same platform decision"
+   },
+   {
+    "id": "chorus-intelligence",
+    "why": "Comms data cleansing and analysis for police investigations, alternative for the same comms analytics need"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "genetec",
@@ -10065,7 +10792,31 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026; IACP 2026; NIGP 2026; AAAE 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "milestone-systems",
+    "why": "XProtect open-platform VMS is the canonical head-to-head alternative to Security Center for the same city or agency video-management standard"
+   },
+   {
+    "id": "verkada",
+    "why": "Cloud cameras plus access control sold as the bundled alternative to a Security Center VMS-and-access deployment at the same SLED buyer"
+   },
+   {
+    "id": "motorola-solutions",
+    "why": "Avigilon video security and access control bid against Security Center for the same municipal surveillance platform award"
+   },
+   {
+    "id": "flock-safety",
+    "why": "License plate reader network bought instead of AutoVu ALPR by the same police department"
+   },
+   {
+    "id": "ndi-recognition-systems",
+    "why": "Fixed and mobile ALPR with back-office software, the alternative to AutoVu for the same agency plate-recognition project"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "milestone-systems",
@@ -10098,7 +10849,23 @@
     "sector": "Public Safety",
     "category": "Suppliers & Services"
    }
-  ]
+  ],
+  "competitors": [
+   {
+    "id": "genetec",
+    "why": "Security Center VMS sold to the same city, campus and enterprise security buyer specifying a video management platform; the standard XProtect head-to-head."
+   },
+   {
+    "id": "motorola-solutions",
+    "why": "Avigilon Control Center video security platform competing for the same agency/municipal VMS standardization decision."
+   },
+   {
+    "id": "verkada",
+    "why": "Cloud video management and cameras pitched to the same SLED security buyer as a replacement for an on-prem VMS like XProtect."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "verkada",
@@ -10373,7 +11140,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "genetec",
+    "why": "Security Center VMS plus access control is the direct alternative to Verkada's cloud cameras and access control for the same city or campus security buyer"
+   },
+   {
+    "id": "milestone-systems",
+    "why": "XProtect video management competes for the same agency's camera system decision - open platform versus Verkada's cloud appliance"
+   },
+   {
+    "id": "motorola-solutions",
+    "why": "Avigilon video security is bid against Verkada for the same municipal and school district surveillance deployment"
+   },
+   {
+    "id": "i-pro-americas",
+    "why": "Surveillance cameras and video analytics sold to the same public agency physical security procurement"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "clearview-ai",
@@ -10397,7 +11184,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "dataworks-plus",
+    "why": "Facial recognition search against mugshot and biometric galleries for the same police investigator"
+   },
+   {
+    "id": "roc",
+    "why": "US-built face matching software sold to law enforcement as the alternative FR engine for lead generation"
+   },
+   {
+    "id": "nec-corporation-of-america",
+    "why": "NEC biometric ABIS face matching bought by the same state and police identification bureau"
+   },
+   {
+    "id": "safience",
+    "why": "Real-time facial recognition screening against an LE-verified arrest database - same face-search-for-a-lead problem"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "veritone",
@@ -10425,7 +11232,35 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "nice",
+    "why": "Both sell digital evidence management to the same public safety agency consolidating and disclosing case media"
+   },
+   {
+    "id": "axon",
+    "why": "Axon's digital evidence cloud plus its redaction tools compete with iDEMS and Redact for the same department's evidence workflow"
+   },
+   {
+    "id": "veripic",
+    "why": "Digital evidence management for law enforcement, an either/or purchase against iDEMS for the same evidence custodian"
+   },
+   {
+    "id": "caseguard",
+    "why": "CaseGuard Studio is AI audio/video redaction sold to the same police records unit facing public records requests as Veritone Redact"
+   },
+   {
+    "id": "pimloc-inc",
+    "why": "AI video redaction and privacy software competing directly with Veritone Redact for the same disclosure and FOIA workload"
+   },
+   {
+    "id": "briefcam",
+    "why": "BriefCam's video review and object search is the alternative to Veritone Track for the same investigator scanning hours of footage"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "dataminr",
@@ -10499,7 +11334,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "flashpoint",
+    "why": "Threat intelligence and OSINT alerting sold to the same fusion center and agency security operations buyer"
+   },
+   {
+    "id": "babel-street",
+    "why": "Open-source and social monitoring for threat alerting bought by the same fusion center analysts"
+   },
+   {
+    "id": "firstwatch",
+    "why": "Real-time situational awareness and early-warning alerting for the same public safety command staff"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "facetec",
@@ -10523,7 +11374,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "roc",
+    "why": "US-built face matching software licensed as an SDK to government identity programs, the alternative engine for the same face-verification integration"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "ndi-recognition-systems",
@@ -10547,7 +11406,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "flock-safety",
+    "why": "Fixed license plate reader cameras plus a hosted plate-search back office sold to the same police department and municipality"
+   },
+   {
+    "id": "genetec",
+    "why": "AutoVu fixed and mobile ALPR with back-office plate management, the direct alternative for a city LPR procurement"
+   },
+   {
+    "id": "ekin-smart-city-technologies",
+    "why": "AI ALPR mobile patrol and fixed enforcement units sold to the same municipal and law enforcement plate-reader buyer"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "lenslock",
@@ -10571,7 +11446,31 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "axon",
+    "why": "Body cameras, in-car video and cloud digital evidence management - the incumbent LensLock is bid against in nearly every department camera RFP."
+   },
+   {
+    "id": "motorola-solutions",
+    "why": "WatchGuard body-worn and in-car video with cloud evidence management, sold to the same department camera-program buyer."
+   },
+   {
+    "id": "digital-ally",
+    "why": "Body-worn and in-car video systems for law enforcement agencies - the same product for the same agency camera procurement."
+   },
+   {
+    "id": "getac-video-solutions",
+    "why": "In-car and body camera video systems for police, competing for the same department video program."
+   },
+   {
+    "id": "i-pro-americas",
+    "why": "Body cameras and video analytics for public agencies, bid into the same police body-camera program."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "tip411",
@@ -10602,7 +11501,19 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "thesheriffapp",
+    "why": "White-label citizen apps with alerts, most wanted and tips for the same sheriff and PD buyer"
+   },
+   {
+    "id": "nexsos",
+    "why": "Citizen incident reporting into an agency situational-awareness portal, same community-reporting need"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "paladin-drones",
@@ -10626,7 +11537,31 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "brinc",
+    "why": "911-response drones staged on rooftops auto-launching to calls, the direct alternative DFR program for the same police department"
+   },
+   {
+    "id": "skyfireai",
+    "why": "AI drone-as-first-responder program software and turnkey DFR operations, competing for the same agency's DFR contract"
+   },
+   {
+    "id": "flock-safety",
+    "why": "Aerodome drone-as-first-responder deployment sold to the same PD building a 911-launch drone program"
+   },
+   {
+    "id": "skydio",
+    "why": "Autonomous drone platform for police DFR programs, evaluated instead of Paladin's aircraft and dock by the same agency"
+   },
+   {
+    "id": "defendeye-usa",
+    "why": "Autonomous launch-on-demand drones giving first responders instant situational awareness on the same call-response use case"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "skyfireai",
@@ -10650,7 +11585,31 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "paladin-drones",
+    "why": "DFR software and hardware auto-launching to 911 calls: closest match in product and buyer"
+   },
+   {
+    "id": "skydio",
+    "why": "Autonomous drones for police DFR programs, competing for the same department DFR contract"
+   },
+   {
+    "id": "brinc",
+    "why": "911-response drones staged at police stations: alternative DFR program for the same agency"
+   },
+   {
+    "id": "flock-safety",
+    "why": "Aerodome DFR offering sold to the same PD choosing one drone-response provider"
+   },
+   {
+    "id": "defendeye-usa",
+    "why": "Autonomous drones for first responder situational awareness, same responder mission and buyer"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "skysafe",
@@ -10674,7 +11633,35 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "airsight",
+    "why": "AirGuard drone detection locating drones and pilots for prisons and LE: closest product and buyer match"
+   },
+   {
+    "id": "droneshield",
+    "why": "Counter-UAS detection for LE and infrastructure, bid on the same airspace monitoring requirement"
+   },
+   {
+    "id": "sentrycs",
+    "why": "Counter-drone detect and track for LE and prisons, evaluated for the same contraband-drone problem"
+   },
+   {
+    "id": "d-fend-solutions",
+    "why": "RF-cyber counter-drone for prisons and LE competing for the same facility airspace contract"
+   },
+   {
+    "id": "robin-radar-systems",
+    "why": "Drone detection radar for the same security site buyer, radar alternative to RF monitoring"
+   },
+   {
+    "id": "fortem-technologies",
+    "why": "Counter-drone radar for public safety and government facilities, same detection requirement"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "droneshield",
@@ -10698,7 +11685,39 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "d-fend-solutions",
+    "why": "EnforceAir RF-cyber drone takeover competes for the same counter-UAS mitigation requirement at LE and prisons"
+   },
+   {
+    "id": "sentrycs",
+    "why": "Cyber-over-RF detect-track-mitigate counter-drone systems for the same law enforcement airspace buyer"
+   },
+   {
+    "id": "skysafe",
+    "why": "Cloud counter-drone airspace monitoring for the same corrections and LE drone-incursion problem"
+   },
+   {
+    "id": "airsight",
+    "why": "AirGuard drone detection locating drones and pilots at the same prisons, airports and LE agencies"
+   },
+   {
+    "id": "fortem-technologies",
+    "why": "Counter-drone radar and interceptors bid against DroneShield in the same public safety C-UAS program"
+   },
+   {
+    "id": "robin-radar-systems",
+    "why": "Drone detection radar is the competing sensing approach in the same airport and site counter-UAS RFP"
+   },
+   {
+    "id": "echodyne",
+    "why": "MESA radar for counter-UAS is the alternative detection sensor evaluated against DroneShield's RF sensing"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "echodyne",
@@ -10722,7 +11741,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "robin-radar-systems",
+    "why": "Drone detection radar for airports and security sites - the direct head-to-head radar selection"
+   },
+   {
+    "id": "fortem-technologies",
+    "why": "Counter-drone radar sold into the same public safety and government C-UAS programs"
+   },
+   {
+    "id": "droneshield",
+    "why": "Counter-UAS detection systems offering RF sensing as the alternative to radar for the same site"
+   },
+   {
+    "id": "airsight",
+    "why": "Drone detection for prisons, airports and LE - the competing way to see drones over a protected site"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "boston-dynamics",
@@ -10756,7 +11795,19 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "bounce-imaging",
+    "why": "Throwable 360 recon camera bought by the same SWAT and bomb squad for standoff reconnaissance"
+   },
+   {
+    "id": "brinc",
+    "why": "Indoor tactical drone competing for the same SWAT remote-reconnaissance dollar"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "bounce-imaging",
@@ -10780,7 +11831,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "brinc",
+    "why": "Tactical indoor drone sold to the same SWAT team for the same pre-entry look"
+   },
+   {
+    "id": "defendeye-usa",
+    "why": "Tube-launched instant situational awareness drone for the same first-responder recon need"
+   },
+   {
+    "id": "boston-dynamics",
+    "why": "Spot is bought by the same bomb squad and SWAT unit for standoff reconnaissance"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "starchase",
@@ -10804,7 +11871,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": true
  },
  {
   "id": "robin-radar-systems",
@@ -10839,7 +11909,35 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; AAAE 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "echodyne",
+    "why": "MESA radar for counter-UAS and site security: same radar product, same airport/facility security buyer"
+   },
+   {
+    "id": "fortem-technologies",
+    "why": "Counter-drone radar for public safety and government sites, directly against Robin radar"
+   },
+   {
+    "id": "droneshield",
+    "why": "Counter-UAS detection for LE and infrastructure: RF alternative to radar for the same detection requirement"
+   },
+   {
+    "id": "airsight",
+    "why": "AirGuard drone detection locating drones and pilots for prisons, airports and LE: same buyer, same detect question"
+   },
+   {
+    "id": "skysafe",
+    "why": "Cloud counter-drone airspace monitoring for LE and corrections: rival way to detect drones over a facility"
+   },
+   {
+    "id": "sentrycs",
+    "why": "Counter-drone detect and track for LE, prisons and infrastructure, evaluated against radar detection"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "virtra",
@@ -10863,7 +11961,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "milo-range",
+    "why": "Interactive use-of-force and firearms training simulators - the direct head-to-head bid against VirTra for the same academy training budget"
+   },
+   {
+    "id": "inveris-training-solutions",
+    "why": "FATS virtual training systems are the legacy incumbent judgmental simulator agencies evaluate against VirTra"
+   },
+   {
+    "id": "apex-officer",
+    "why": "VR use-of-force and de-escalation training simulators sold to the same police training commander as an alternative simulator format"
+   },
+   {
+    "id": "kaiden-ai",
+    "why": "AI-voiced de-escalation scenario training competes for the same academy de-escalation training dollars as a software-only alternative to a screen-and-projector simulator"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "milo-range",
@@ -10887,7 +12005,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "virtra",
+    "why": "Judgmental use-of-force / de-escalation shoot-house simulators sold to the same police academy and range training director"
+   },
+   {
+    "id": "inveris-training-solutions",
+    "why": "FATS virtual firearms and use-of-force training systems bid against MILO by the same agency training bureau"
+   },
+   {
+    "id": "apex-officer",
+    "why": "VR use-of-force and de-escalation training simulator bought instead of a screen-based MILO lane by the same training unit"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "inveris-training-solutions",
@@ -10918,7 +12052,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "milo-range",
+    "why": "Interactive judgmental use-of-force and firearms simulators sold to the same academy training bureau; MILO and FATS are the classic head-to-head simulator bid."
+   },
+   {
+    "id": "virtra",
+    "why": "Judgmental use-of-force and de-escalation simulators competing for the same department training-simulator budget and floor space."
+   },
+   {
+    "id": "apex-officer",
+    "why": "VR use-of-force and de-escalation simulators pitched to the same training commander as a cheaper alternative to projector-based FATS systems."
+   },
+   {
+    "id": "kaiden-ai",
+    "why": "AI-voiced scenario and de-escalation training sold to the same police academy evaluating scenario simulation options."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "lexipol",
@@ -10942,7 +12096,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "vector-solutions",
+    "why": "Training LMS, policy/accountability content and Guardian Tracking sold to the same chief and training bureau on the same annual content subscription Lexipol bids."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "vector-solutions",
@@ -10966,7 +12128,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "lexipol",
+    "why": "Classic head-to-head: both sell subscription policy content plus online training and wellness to the same public safety chief for compliance and liability reduction"
+   },
+   {
+    "id": "intime-solutions",
+    "why": "Both sell shift scheduling and workforce management to the same police, corrections and 911 scheduling administrator"
+   },
+   {
+    "id": "pace-scheduler",
+    "why": "Cloud shift scheduling for police and dispatch, directly substituting for Vector's scheduling module for the same buyer"
+   },
+   {
+    "id": "benchmark-analytics",
+    "why": "Benchmark's performance management and early intervention overlaps Guardian Tracking, sold to the same professional standards command"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "benchmark-analytics",
@@ -10997,7 +12179,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "ci-technologies",
+    "why": "IAPro/BlueTeam internal affairs and early intervention for the same chief and IA unit"
+   },
+   {
+    "id": "vector-solutions",
+    "why": "Guardian Tracking performance documentation and early intervention, same agency buyer"
+   },
+   {
+    "id": "truleo",
+    "why": "Bodycam audio analysis for officer professionalism, competing for the same supervision budget"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "alli-connect",
@@ -11021,7 +12219,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "lexipol",
+    "why": "First responder wellness programming competing for the same chief's officer-wellness budget"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "intime-solutions",
@@ -11052,7 +12258,19 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "pace-scheduler",
+    "why": "Both sell cloud shift scheduling to the same police, sheriff, corrections and dispatch workforce buyer; a scheduling sergeant evaluates one instead of the other."
+   },
+   {
+    "id": "vector-solutions",
+    "why": "Vector's scheduling and readiness suite competes directly for the same public safety staffing/scheduling contract InTime bids."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "pace-scheduler",
@@ -11076,7 +12294,19 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "intime-solutions",
+    "why": "Shift scheduling and workforce management for police, corrections and 911, the direct alternative for the same agency scheduling sergeant"
+   },
+   {
+    "id": "vector-solutions",
+    "why": "Public safety scheduling and readiness software competing for the same department's shift and personnel scheduling contract"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "off-duty-management",
@@ -11100,7 +12330,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026; ICMA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "rollkall",
+    "why": "Off-duty police detail scheduling, payments and insurance, the direct alternative to OfficerTRAK for the same department and its business customers"
+   },
+   {
+    "id": "detail-kommander",
+    "why": "Off-duty and secondary employment detail management with payment processing, competing for the same agency's detail program"
+   },
+   {
+    "id": "extra-duty-solutions",
+    "why": "Outsourced extra-duty detail administration and scheduling, the same problem for the same department extra-duty coordinator"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "extra-duty-solutions",
@@ -11124,7 +12370,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "rollkall",
+    "why": "Off-duty police detail management with scheduling, payments and insurance, sold to the same chief and off-duty coordinator administering secondary employment"
+   },
+   {
+    "id": "off-duty-management",
+    "why": "OfficerTRAK off-duty detail administration including scheduling, billing and insurance for the same department off-duty program"
+   },
+   {
+    "id": "detail-kommander",
+    "why": "Off-duty and secondary-employment detail management with payment processing, the identical purchase for the same agency buyer"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "policeapp",
@@ -11151,7 +12413,19 @@
   "researched": true,
   "also_known_as": [
    "PoliceApp.com"
-  ]
+  ],
+  "competitors": [
+   {
+    "id": "guardian-alliance-technologies",
+    "why": "Applicant intake and background investigation platform used by the same police hiring unit to take and process online applications"
+   },
+   {
+    "id": "miller-mendel",
+    "why": "eSOPH applicant portal and background investigation workflow bought by the same police hiring and backgrounds unit"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "forcemetrics",
@@ -11181,7 +12455,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "peregrine",
+    "why": "Data integration and real-time intelligence unifying agency systems, the same purchase for the same police data-modernization buyer"
+   },
+   {
+    "id": "palantir-technologies",
+    "why": "Data integration and investigative analytics over police records, the classic alternative to a purpose-built agency data platform"
+   },
+   {
+    "id": "firstwatch",
+    "why": "Real-time analytics and situational awareness built on the agency's own CAD data, competing for the same 'unify our systems' budget"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "abel-police",
@@ -11205,7 +12495,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "barricade-ai",
+    "why": "Multimodal AI drafting police reports from bodycam audio for the same patrol officer"
+   },
+   {
+    "id": "peach-safety",
+    "why": "AI narrative report writing and report management for the same first-responder buyer"
+   },
+   {
+    "id": "axon",
+    "why": "Axon Draft One drafts reports from body-camera audio for the same agency, usually bundled with the BWC contract"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "shark-robotics",
@@ -11823,7 +13129,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "verkada",
+    "why": "Cloud AI video plus sensors sold as a managed city and public-agency deployment, the same smart-city surveillance budget EPIC iO bids"
+   },
+   {
+    "id": "liveview-technologies",
+    "why": "Turnkey deployed video/sensor units for cities bought instead of an AIoT managed video rollout by the same municipal buyer"
+   },
+   {
+    "id": "ekin-smart-city-technologies",
+    "why": "AI smart-city sensing and video systems sold to the same municipality modernizing street-level public safety technology"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "b2gnow",
@@ -12967,7 +14289,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "julota",
+    "why": "Both sell a multi-agency, cross-organization case and information-sharing platform for vulnerable-person / community-safety work, bought by the same police-plus-partner-agency coordinator rather than by investigators"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "barricade-ai",
@@ -12991,7 +14321,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "abel-police",
+    "why": "AI report writing from bodycam audio for the identical patrol-officer workflow"
+   },
+   {
+    "id": "peach-safety",
+    "why": "AI narrative report writing for the same police report-management buyer"
+   },
+   {
+    "id": "axon",
+    "why": "Draft One generates reports from body-camera audio for the same agency, bundled with BWC"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "safience",
@@ -13024,7 +14370,27 @@
     "sector": "Public Safety",
     "category": "Suppliers & Services"
    }
-  ]
+  ],
+  "competitors": [
+   {
+    "id": "clearview-ai",
+    "why": "Face search against a large record database for LE investigations: closest analogue in product and buyer"
+   },
+   {
+    "id": "dataworks-plus",
+    "why": "Facial recognition and biometric identity systems for the same law enforcement agency"
+   },
+   {
+    "id": "roc",
+    "why": "Face and biometric matching software for law enforcement: same matching engine decision"
+   },
+   {
+    "id": "nec-corporation-of-america",
+    "why": "Biometric face identification for police and state agencies, evaluated for the same screening use"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "iris-id-systems",
@@ -13055,7 +14421,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "nec-corporation-of-america",
+    "why": "NEC's multimodal biometric identification and ABIS systems bid the same corrections inmate-ID and state/national identity programs Iris ID sells into."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "itouch-biometrics",
@@ -13079,7 +14453,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "integrated-biometrics",
+    "why": "Both sell FBI-certified fingerprint capture devices to the same agency booking and mobile-ID buyer."
+   },
+   {
+    "id": "nec-corporation-of-america",
+    "why": "NEC's ABIS/AFIS fingerprint identification systems compete for the same state and county agency identification contract iTouch's AFIS offering targets."
+   },
+   {
+    "id": "dataworks-plus",
+    "why": "DataWorks Plus booking/mugshot and biometric identity systems compete for the same county jail booking-station procurement as iTouch livescan stations."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "surepassid",
@@ -13103,7 +14493,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": true
  },
  {
   "id": "fieldware",
@@ -13127,7 +14520,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": true
  },
  {
   "id": "tranquility-ai",
@@ -13151,7 +14547,27 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "flash-ai",
+    "why": "Both sell AI investigative evidence analysis including inmate/jail call review to the same detective bureau trying to make sense of a case's mixed media"
+   },
+   {
+    "id": "longeye",
+    "why": "Both are AI investigations platforms pitched to police investigative units to surface leads across accumulated case evidence"
+   },
+   {
+    "id": "chorus-intelligence",
+    "why": "Both ingest and normalize messy comms/digital evidence into an evidenced investigative picture for police investigators"
+   },
+   {
+    "id": "cellebrite",
+    "why": "Cellebrite Pathfinder does the same job as TimePilot - fusing phone extractions and case data into linked timelines for the same investigator"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "invita-healthcare-technologies",
@@ -13175,7 +14591,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "porter-lee",
+    "why": "BEAST forensic LIMS and evidence tracking overlaps InVita's forensic case management and sexual assault kit tracking for the same crime lab and property/evidence buyer."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "d-fend-solutions",
@@ -13211,7 +14635,31 @@
   "vendor_type": "GovTech Product",
   "source": "NSA 2026; AAAE 2026",
   "researched": true,
-  "ats_note": "careers page was a JS shell; the real board is lever, found by rendering it 2026-08-28"
+  "ats_note": "careers page was a JS shell; the real board is lever, found by rendering it 2026-08-28",
+  "competitors": [
+   {
+    "id": "sentrycs",
+    "why": "Cyber-over-RF counter-drone detect-track-mitigate is the same takeover approach sold to the same prison and LE buyer"
+   },
+   {
+    "id": "droneshield",
+    "why": "Counter-UAS detection and defeat systems bid against EnforceAir for the same rogue-drone mitigation requirement"
+   },
+   {
+    "id": "skysafe",
+    "why": "Counter-drone airspace monitoring and mitigation for the same corrections and law enforcement airspace problem"
+   },
+   {
+    "id": "airsight",
+    "why": "AirGuard drone detection locating drones and pilots for the same prison, airport and LE counter-drone program"
+   },
+   {
+    "id": "fortem-technologies",
+    "why": "Counter-drone radar and interceptors solving the same rogue-drone-over-my-facility problem for public safety"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "sentrycs",
@@ -13235,7 +14683,35 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "d-fend-solutions",
+    "why": "EnforceAir RF-cyber drone takeover for LE, prisons and events: nearly identical technique and buyer"
+   },
+   {
+    "id": "droneshield",
+    "why": "Counter-UAS detect and defeat for LE and infrastructure, bid against the same site protection requirement"
+   },
+   {
+    "id": "skysafe",
+    "why": "Counter-drone airspace monitoring for LE and corrections: alternative for the same prison airspace problem"
+   },
+   {
+    "id": "airsight",
+    "why": "Drone detection locating drones and pilots for prisons and LE, same facility buyer"
+   },
+   {
+    "id": "fortem-technologies",
+    "why": "Counter-drone radar and interceptors for public safety, alternative mitigation for the same buyer"
+   },
+   {
+    "id": "robin-radar-systems",
+    "why": "Drone detection radar for security sites, radar alternative to RF detection for the same requirement"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "airsight",
@@ -13259,7 +14735,39 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "droneshield",
+    "why": "Counter-UAS detection systems for the same prison, airport and LE airspace buyer"
+   },
+   {
+    "id": "sentrycs",
+    "why": "Cyber-over-RF drone detect and track for the same corrections and infrastructure buyer"
+   },
+   {
+    "id": "skysafe",
+    "why": "Cloud counter-drone airspace monitoring sold to the same LE and corrections customer"
+   },
+   {
+    "id": "d-fend-solutions",
+    "why": "RF-cyber drone detection and takeover for the same prison, LE and event buyer"
+   },
+   {
+    "id": "robin-radar-systems",
+    "why": "Drone detection radar answering the same airspace-awareness need at airports and secure sites"
+   },
+   {
+    "id": "echodyne",
+    "why": "MESA radar for counter-UAS site security, bid in the same drone detection procurement"
+   },
+   {
+    "id": "fortem-technologies",
+    "why": "Counter-drone radar for the same public safety airspace monitoring requirement"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "berkeley-varitronics-systems",
@@ -13283,7 +14791,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": true
  },
  {
   "id": "videray-technologies",
@@ -13307,7 +14818,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": true
  },
  {
   "id": "ekin-smart-city-technologies",
@@ -13331,7 +14845,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "ndi-recognition-systems",
+    "why": "Fixed and mobile ALPR cameras plus back-office software sold to the same police and municipal plate-reader buyer"
+   },
+   {
+    "id": "flock-safety",
+    "why": "License plate reader networks bought instead of Ekin's ALPR units by the same city and PD buyer"
+   },
+   {
+    "id": "genetec",
+    "why": "AutoVu mobile and fixed ALPR competes head-to-head for the same municipal patrol plate-recognition deployment"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "securetech-systems",
@@ -13355,7 +14885,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": true
  },
  {
   "id": "pstrax",
@@ -14036,7 +15569,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "kaseware",
+    "why": "Investigative case and intelligence management sold to the same fusion center and agency intel unit that would otherwise run RFIs through IRIS Intel."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "flash-ai",
@@ -14060,7 +15601,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "tranquility-ai",
+    "why": "AI that fuses phone extractions, video and jail-call audio into case timelines, the same investigative evidence-analysis purchase for the same detective unit"
+   },
+   {
+    "id": "longeye",
+    "why": "AI investigations platform analyzing case evidence for law enforcement, evaluated as the alternative to the same AI investigative assistant buy"
+   },
+   {
+    "id": "abel-police",
+    "why": "CJIS-compliant AI assistant for police, overlapping directly on the secure AI chat product sold to the same department IT and investigations buyer"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "peach-safety",
@@ -14084,7 +15641,19 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "abel-police",
+    "why": "AI report writing from bodycam audio for the same patrol officer and records unit trying to cut narrative time"
+   },
+   {
+    "id": "barricade-ai",
+    "why": "Multimodal AI turning bodycam video and audio into draft police reports, the direct alternative narrative-drafting tool for the same department"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "thesheriffapp",
@@ -14117,7 +15686,19 @@
     "sector": "Public Safety",
     "category": "Suppliers & Services"
    }
-  ]
+  ],
+  "competitors": [
+   {
+    "id": "tip411",
+    "why": "Anonymous tips, alerting and community engagement apps sold to the same sheriff and police agencies"
+   },
+   {
+    "id": "nexsos",
+    "why": "Citizen incident submissions feeding an agency portal: alternative citizen-reporting channel for the same buyer"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "nexsos",
@@ -14141,7 +15722,19 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "tip411",
+    "why": "Anonymous citizen tip submission and community alerting feeding an agency portal, the direct alternative for the same PD community engagement budget"
+   },
+   {
+    "id": "thesheriffapp",
+    "why": "White-label citizen mobile app for tips and alerts routed to the agency, competing for the same sheriff's public-facing reporting channel"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "breadcrumbs",
@@ -14165,7 +15758,19 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "chainalysis",
+    "why": "Cryptocurrency tracing and investigation software for the same LE crypto investigator"
+   },
+   {
+    "id": "trm-labs",
+    "why": "Blockchain intelligence for crypto tracing sold to the same LE and regulator buyer"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "detail-kommander",
@@ -14189,7 +15794,23 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "rollkall",
+    "why": "Off-duty police detail management with scheduling, payments and insurance - the same product for the same agency"
+   },
+   {
+    "id": "off-duty-management",
+    "why": "OfficerTRAK off-duty detail scheduling and billing solves the identical secondary-employment administration problem"
+   },
+   {
+    "id": "extra-duty-solutions",
+    "why": "Outsourced extra-duty detail administration plus scheduling software for the same department's off-duty program"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "defendeye-usa",
@@ -14213,7 +15834,31 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "competitors": [
+   {
+    "id": "brinc",
+    "why": "Tactical and 911-response drones giving first responders immediate eyes on scene - same buyer, same mission"
+   },
+   {
+    "id": "skydio",
+    "why": "Autonomous drones for police DFR programs competing for the same rapid situational awareness aircraft purchase"
+   },
+   {
+    "id": "paladin-drones",
+    "why": "Drone-as-first-responder hardware and software auto-launching to calls for the same agency"
+   },
+   {
+    "id": "skyfireai",
+    "why": "AI drone-first-responder program software and turnkey DFR operations for the same police buyer"
+   },
+   {
+    "id": "flock-safety",
+    "why": "Aerodome drone-as-first-responder competes for the same department's rapid aerial response program"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "genfare",
@@ -16977,7 +18622,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "competitors": [],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": true
  },
  {
   "id": "band",
@@ -17261,7 +18909,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "competitors": [],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": true
  },
  {
   "id": "clipr-ai",
@@ -18354,7 +20005,10 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"AI-Powered Solutions Helping ALL First Responders Do Their Best Work\" Fetched https://www.govworx.ai. The site is branded GovWorx and the quoted headline ties it directly to the 'software for first responder agencies' description. The buyer is named precisely \u2014 911 Emergency Communications Centers: 'We deliver AI-powered solutions that help ECCs automate tasks and strengthen, guide, and support first responders.' Named products corroborate the sector rather than a same-name firm elsewhere: the CommsCoach suite (QA and call evaluations, pre-hire testing, training and simulations, real-time call guidance) plus MedAssist for paramedics and BluAssist for law enforcement, with claimed scale of 1.2M+ evaluations monthly across 475+ customers. Own primary domain. No concerns."
    }
-  ]
+  ],
+  "competitors": [],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": true
  },
  {
   "id": "graph-aware-limited",
@@ -19050,7 +20704,10 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"Law Enforcement Data Request Management Software | Kodex\" Fetched https://www.kodexglobal.com (HTTP 200). Page title is the quote above; navigation is built around \"Request Automation, Requester Verification, Sign in with Kodex, Cost Recovery Platform, Threat Intelligence\" with a free tool to \"Look up any law enforcement email or domain\" and solution pages for Legal, Compliance, CISO/Security and Trust & Safety teams at Crypto, Fintech/Banking, Telecom and Betting companies. Footer: \"\u00a9 2026 Kodex. All Rights Reserved\". That matches \"platform for legal data requests to companies\" \u2014 it is the intermediary between government/law-enforcement requesters and the companies that must respond. Company's own primary domain, no parent site involved."
    }
-  ]
+  ],
+  "competitors": [],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": true
  },
  {
   "id": "landapp-by-landgate",
@@ -19270,7 +20927,19 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "competitors": [
+   {
+    "id": "flash-ai",
+    "why": "AI investigative intelligence over case evidence and jail calls with CJIS-compliant AI chat, sold to the same detective bureau."
+   },
+   {
+    "id": "tranquility-ai",
+    "why": "AI fusing video, phone extractions and jail calls into case timelines for the same investigator buyer weighing an AI investigations tool."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "loop-websites-for-municipalities",
@@ -20153,7 +21822,19 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "competitors": [
+   {
+    "id": "caseguard",
+    "why": "AI video, audio and document redaction (CaseGuard Studio) for the same police records and public disclosure unit"
+   },
+   {
+    "id": "veritone",
+    "why": "Veritone Redact automates face and audio redaction of bodycam footage for the same agency FOIA/records staff"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "playeru-software-solutions-llc",
@@ -24866,7 +26547,35 @@
     "sector": "Public Works",
     "category": "Fleet & Asset Mgmt"
    }
-  ]
+  ],
+  "competitors": [
+   {
+    "id": "centralsquare-technologies",
+    "why": "Enterprise CAD/911, RMS and jail suite bid against Hexagon for the same large agency and 911 center platform award"
+   },
+   {
+    "id": "motorola-solutions",
+    "why": "CAD and 911 call handling for large PSAPs, the most common head-to-head against Hexagon in metro dispatch procurements"
+   },
+   {
+    "id": "mark43",
+    "why": "Cloud-native CAD and RMS pitched as the modern replacement in the same large-agency dispatch and records competition"
+   },
+   {
+    "id": "versaterm",
+    "why": "CAD/RMS public safety suite competing for the same agency-wide dispatch and records system replacement"
+   },
+   {
+    "id": "niche-technology",
+    "why": "NicheRMS365 records management for large and multi-agency forces, the alternative records platform for the same big-force buyer"
+   },
+   {
+    "id": "caliber-public-safety",
+    "why": "Cloud CAD, RMS and jail management bid into the same regional agency public-safety platform selection"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "caliber-public-safety",
@@ -24890,7 +26599,43 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "centralsquare-technologies",
+    "why": "CAD/911, RMS and jail suite, the biggest incumbent in the same agency bid"
+   },
+   {
+    "id": "mark43",
+    "why": "Cloud-native CAD and RMS competing for the same agency suite replacement"
+   },
+   {
+    "id": "southern-software",
+    "why": "Integrated CAD, RMS and JMS for the same local sheriff and PD buyer"
+   },
+   {
+    "id": "eforce-software",
+    "why": "Browser-based CAD, RMS and jail suite bid to the same mid-size agency"
+   },
+   {
+    "id": "prophoenix",
+    "why": "Browser-based CAD, RMS and jail software for the same police and fire agency"
+   },
+   {
+    "id": "versaterm",
+    "why": "CAD/RMS public safety suite competing for the same agency platform contract"
+   },
+   {
+    "id": "cody-systems",
+    "why": "Pathfinder RMS/CAD sold to the same municipal police records buyer"
+   },
+   {
+    "id": "365labs",
+    "why": "CAD, RMS and case management quoted to the same law enforcement agency"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "southern-software",
@@ -24914,7 +26659,35 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "centralsquare-technologies",
+    "why": "CAD/911, RMS and jail plus local-government software: closest overlap in suite and municipal buyer"
+   },
+   {
+    "id": "prophoenix",
+    "why": "Browser-based CAD, RMS and jail for the same small/mid agency suite replacement"
+   },
+   {
+    "id": "eforce-software",
+    "why": "CAD, RMS, jail and mobile suite bid to the same police and sheriff buyer"
+   },
+   {
+    "id": "caliber-public-safety",
+    "why": "Cloud CAD, RMS and jail management competing for the same agency suite contract"
+   },
+   {
+    "id": "valor-systems",
+    "why": "CAD, RMS and mobile for the same public safety agency choosing one records platform"
+   },
+   {
+    "id": "365labs",
+    "why": "CAD, RMS and case management sold into the same local agency records-and-dispatch decision"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "sun-ridge-systems",
@@ -24938,7 +26711,35 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "centralsquare-technologies",
+    "why": "CAD/911 and RMS suite bid against RIMS at the same California city and county agencies"
+   },
+   {
+    "id": "mark43",
+    "why": "Cloud-native CAD and RMS competing for the same agency records-and-dispatch replacement"
+   },
+   {
+    "id": "eforce-software",
+    "why": "Browser-based CAD, RMS and mobile suite for the same small/mid police and sheriff buyer"
+   },
+   {
+    "id": "caliber-public-safety",
+    "why": "Cloud CAD, RMS and jail management sold into the same agency suite decision"
+   },
+   {
+    "id": "valor-systems",
+    "why": "CAD, RMS and mobile for the same law enforcement dispatch-and-records buyer"
+   },
+   {
+    "id": "prophoenix",
+    "why": "Browser-based CAD, RMS and jail suite competing for the same municipal agency contract"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "eforce-software",
@@ -24962,7 +26763,43 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "prophoenix",
+    "why": "Browser-based CAD, RMS, mobile and jail suite sold to the same small-to-midsize municipal police and sheriff buyer; near-identical bid response"
+   },
+   {
+    "id": "caliber-public-safety",
+    "why": "Cloud CAD, RMS and jail management competing for the same local agency public-safety software replacement"
+   },
+   {
+    "id": "southern-software",
+    "why": "Integrated CAD/RMS/JMS for local government police and sheriffs, same mid-market procurement"
+   },
+   {
+    "id": "sun-ridge-systems",
+    "why": "RIMS records and dispatch suite bid to the same city police and county sheriff CAD/RMS buyer"
+   },
+   {
+    "id": "cody-systems",
+    "why": "Pathfinder RMS/CAD sold to the same municipal law enforcement records-and-dispatch buyer"
+   },
+   {
+    "id": "valor-systems",
+    "why": "CAD, RMS and mobile for public safety agencies, same agency-wide records/dispatch RFP"
+   },
+   {
+    "id": "versaterm",
+    "why": "CAD/RMS public safety suite competing for the same agency dispatch and records system award"
+   },
+   {
+    "id": "centralsquare-technologies",
+    "why": "CAD/911, RMS and jail suite bid into the same municipal public-safety software replacement"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "civiceye",
@@ -24986,7 +26823,39 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "365labs",
+    "why": "AI-forward CAD, RMS and case management for law enforcement AND prosecutors - the same dual buyer CivicEye targets"
+   },
+   {
+    "id": "mark43",
+    "why": "Cloud-native records management bid against CivicEye in the same modern-RMS replacement"
+   },
+   {
+    "id": "caliber-public-safety",
+    "why": "Cloud CAD/RMS for the same small and mid-size police and sheriff records buyer"
+   },
+   {
+    "id": "eforce-software",
+    "why": "Browser-based RMS and case software competing for the same local agency records contract"
+   },
+   {
+    "id": "prophoenix",
+    "why": "Browser-based RMS and case management for the same municipal police department"
+   },
+   {
+    "id": "southern-software",
+    "why": "Integrated RMS/CAD for local government police agencies - same size buyer, same records decision"
+   },
+   {
+    "id": "valor-systems",
+    "why": "CAD, RMS and citizen reporting bid into the same small-agency records procurement"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "valor-systems",
@@ -25010,7 +26879,39 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "eforce-software",
+    "why": "Browser-based CAD/RMS/jail/mobile suite sold to the same small and mid-size police agency replacing a legacy records system"
+   },
+   {
+    "id": "prophoenix",
+    "why": "Browser-based CAD, RMS, mobile and jail suite competing for the identical mid-market agency RFP"
+   },
+   {
+    "id": "caliber-public-safety",
+    "why": "Cloud CAD, RMS and jail management sold to the same local law enforcement records buyer"
+   },
+   {
+    "id": "cody-systems",
+    "why": "Pathfinder RMS/CAD sold to the same municipal and county police agencies as an integrated dispatch-and-records suite"
+   },
+   {
+    "id": "southern-software",
+    "why": "Integrated CAD/RMS/JMS for local government - the same suite, same small-agency buyer, frequently the same regional bid"
+   },
+   {
+    "id": "sun-ridge-systems",
+    "why": "RIMS records and dispatch suite competing for the same police and sheriff CAD/RMS replacement decision"
+   },
+   {
+    "id": "centralsquare-technologies",
+    "why": "The incumbent big-three CAD/911/RMS suite that mid-market agencies evaluate Valor against in nearly every records procurement"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "diverse-computing",
@@ -25034,7 +26935,10 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": true
  },
  {
   "id": "adashi-systems",
@@ -25058,7 +26962,27 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "prophoenix",
+    "why": "CAD and mobile for police and fire/EMS - the same combined-agency dispatch buyer"
+   },
+   {
+    "id": "centralsquare-technologies",
+    "why": "CAD/911 dispatch platform evaluated by the same 911 center and fire command buyer"
+   },
+   {
+    "id": "hexagon",
+    "why": "Enterprise CAD and dispatch for police and 911 centers, same dispatch procurement"
+   },
+   {
+    "id": "valor-systems",
+    "why": "CAD and mobile dispatch software for the same public safety response buyer"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "digital-ally",
@@ -25082,7 +27006,31 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "axon",
+    "why": "Body cameras plus digital evidence cloud is the head-to-head BWC and in-car award for the same department"
+   },
+   {
+    "id": "getac-video-solutions",
+    "why": "In-car and body camera video systems for police - the same camera-plus-storage procurement"
+   },
+   {
+    "id": "lenslock",
+    "why": "Body-worn and in-car video with cloud evidence management SaaS bid against Digital Ally at the same agency"
+   },
+   {
+    "id": "motorola-solutions",
+    "why": "Motorola's in-car and body video security line competes for the same department camera contract"
+   },
+   {
+    "id": "i-pro-americas",
+    "why": "Body cameras and video analytics for public agencies competing for the same BWC deployment"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "getac-video-solutions",
@@ -25106,7 +27054,31 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "axon",
+    "why": "Body cameras and in-car video with evidence cloud, the default alternative in the same department body-worn camera RFP"
+   },
+   {
+    "id": "digital-ally",
+    "why": "Body-worn and in-car video systems sold to the same police fleet-and-officer video buyer"
+   },
+   {
+    "id": "lenslock",
+    "why": "Body-worn and in-car video with cloud evidence management, competing for the same agency BWC contract"
+   },
+   {
+    "id": "i-pro-americas",
+    "why": "Body cameras and video systems for public agencies, an alternative bid in the same officer video procurement"
+   },
+   {
+    "id": "motorola-solutions",
+    "why": "V300 body cameras and in-car video bid against Getac for the same department's officer video program"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "i-pro-americas",
@@ -25130,7 +27102,35 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "axon",
+    "why": "Body cameras for police, the dominant alternative in the same department body-worn video procurement"
+   },
+   {
+    "id": "verkada",
+    "why": "Cameras and video analytics for public agencies, an alternative surveillance camera standard for the same SLED buyer"
+   },
+   {
+    "id": "getac-video-solutions",
+    "why": "In-car and body camera video systems for police, competing for the same officer and fleet video contract"
+   },
+   {
+    "id": "digital-ally",
+    "why": "Body-worn and in-car video systems sold to the same police video buyer"
+   },
+   {
+    "id": "lenslock",
+    "why": "Body-worn and in-car video with cloud evidence management, an alternative bid in the same agency BWC program"
+   },
+   {
+    "id": "motorola-solutions",
+    "why": "Avigilon surveillance cameras and Motorola body cameras bid against i-PRO for the same agency camera standard"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "briefcam",
@@ -25154,7 +27154,19 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "veritone",
+    "why": "aiWARE Track video analytics for the same police investigative video review need"
+   },
+   {
+    "id": "amped-software",
+    "why": "Video review and analysis software competing for the same forensic video unit budget"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "nice",
@@ -25178,7 +27190,23 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "axon",
+    "why": "Digital evidence cloud (Evidence.com) competing for the same agency's DEMS contract for storing, sharing and disclosing case media"
+   },
+   {
+    "id": "veritone",
+    "why": "iDEMS digital evidence management on aiWARE, bid as the alternative DEMS platform to NICE Investigate for the same agency"
+   },
+   {
+    "id": "veripic",
+    "why": "Digital evidence management for police, an alternative system of record for the same evidence custodian and records unit"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "nec-corporation-of-america",
@@ -25202,7 +27230,27 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "dataworks-plus",
+    "why": "Mugshot, facial recognition and multibiometric identification systems sold to the same state and county law enforcement identification bureau"
+   },
+   {
+    "id": "roc",
+    "why": "US-built face and biometric matching algorithms bid against NEC NeoFace for the same agency face-matching deployment"
+   },
+   {
+    "id": "itouch-biometrics",
+    "why": "Livescan capture and AFIS identification competing for the same sheriff/state booking and fingerprint identification contract"
+   },
+   {
+    "id": "clearview-ai",
+    "why": "Facial recognition search for investigations, evaluated as the alternative face-matching tool by the same detective bureau"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "dataworks-plus",
@@ -25226,7 +27274,31 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "clearview-ai",
+    "why": "Facial recognition search for investigative leads bought by the same police detective bureau"
+   },
+   {
+    "id": "roc",
+    "why": "Face and biometric matching software competing as the FR engine for the same agency"
+   },
+   {
+    "id": "nec-corporation-of-america",
+    "why": "Biometric identification and ABIS for the same state and police identification bureau"
+   },
+   {
+    "id": "safience",
+    "why": "Facial recognition screening plus an arrest-record gallery serving the same identify-this-face need"
+   },
+   {
+    "id": "itouch-biometrics",
+    "why": "Livescan fingerprint/palm capture and AFIS competes for the same booking-station identification contract"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "roc",
@@ -25250,7 +27322,27 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "dataworks-plus",
+    "why": "Mugshot and facial recognition biometric identity systems for the same law enforcement agency"
+   },
+   {
+    "id": "nec-corporation-of-america",
+    "why": "Biometric identification and ABIS face matching sold to the same police and state agency buyer"
+   },
+   {
+    "id": "clearview-ai",
+    "why": "Facial recognition search for law enforcement investigations: same investigative face-match need"
+   },
+   {
+    "id": "safience",
+    "why": "Facial recognition threat screening and matching sold to the same LE buyer"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "integrated-biometrics",
@@ -25274,7 +27366,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "itouch-biometrics",
+    "why": "Both sell FBI/FAP-certified fingerprint and palm capture hardware to the same police booking and field-identification buyer, and bid the same livescan/mobile-ID device solicitations."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "palantir-technologies",
@@ -25298,7 +27398,27 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "peregrine",
+    "why": "Data integration and real-time investigative analytics over CAD/RMS and city data for the same police department buyer"
+   },
+   {
+    "id": "cognyte",
+    "why": "Investigative analytics and intelligence fusion sold to the same law enforcement and national security analyst"
+   },
+   {
+    "id": "forcemetrics",
+    "why": "Data platform unifying CAD/RMS and community data, an alternative way to give the same agency's officers unified context"
+   },
+   {
+    "id": "longeye",
+    "why": "AI investigations platform over agency data, competing for the same detective-facing analytics deployment"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "babel-street",
@@ -25322,7 +27442,31 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "shadowdragon",
+    "why": "OSINT investigation tools for the same police and government investigator seat"
+   },
+   {
+    "id": "skopenow",
+    "why": "Open-source intelligence investigation platform bid for the same intel unit license"
+   },
+   {
+    "id": "penlink",
+    "why": "Cobwebs OSINT and comms analytics sold to the same LE and federal intelligence buyer"
+   },
+   {
+    "id": "flashpoint",
+    "why": "Threat intelligence and OSINT platform competing for the same public safety intel budget"
+   },
+   {
+    "id": "cognyte",
+    "why": "Investigative analytics and security intelligence for the same LE intelligence customer"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "shadowdragon",
@@ -25346,7 +27490,31 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "skopenow",
+    "why": "OSINT investigation platform for law enforcement: same product category, same investigative buyer"
+   },
+   {
+    "id": "babel-street",
+    "why": "OSINT and identity intelligence for LE agencies, competing for the same OSINT license"
+   },
+   {
+    "id": "penlink",
+    "why": "OSINT via Cobwebs plus comms analytics sold to the same LE and federal investigators"
+   },
+   {
+    "id": "flashpoint",
+    "why": "Threat intelligence and OSINT platform pitched to the same public safety intelligence unit"
+   },
+   {
+    "id": "cognyte",
+    "why": "Investigative analytics and open-source intelligence for LE and national security buyers"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "skopenow",
@@ -25370,7 +27538,31 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "shadowdragon",
+    "why": "OSINT investigation tools for police investigators: direct substitute in the same procurement"
+   },
+   {
+    "id": "babel-street",
+    "why": "OSINT and identity intelligence for LE agencies competing for the same OSINT budget"
+   },
+   {
+    "id": "penlink",
+    "why": "Cobwebs OSINT and comms analytics sold to the same law enforcement investigators"
+   },
+   {
+    "id": "flashpoint",
+    "why": "Threat intelligence and OSINT platform for the same public safety intelligence buyer"
+   },
+   {
+    "id": "cognyte",
+    "why": "Investigative analytics and open-source intelligence for the same LE analyst"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "chainalysis",
@@ -25394,7 +27586,19 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "trm-labs",
+    "why": "Blockchain intelligence for crypto tracing sold to the same law enforcement financial-crimes unit"
+   },
+   {
+    "id": "breadcrumbs",
+    "why": "Blockchain transaction analytics tracing and visualizing on-chain funds for the same crypto investigation"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "oxygen-forensics",
@@ -25418,7 +27622,27 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "cellebrite",
+    "why": "UFED mobile and cloud device extraction, the primary alternative examiner tool for the same police digital forensics unit"
+   },
+   {
+    "id": "msab",
+    "why": "XRY/XAMN mobile device forensics competing for the same examiner license and extraction workflow"
+   },
+   {
+    "id": "magnet-forensics",
+    "why": "Axiom and Graykey mobile/cloud forensics evaluated against Oxygen by the same forensic lab"
+   },
+   {
+    "id": "adf-solutions",
+    "why": "Field digital forensic triage software competing for the same investigator-level device extraction rollout"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "adf-solutions",
@@ -25442,7 +27666,31 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "cellebrite",
+    "why": "Mobile forensics extraction and triage for the same law enforcement examiner"
+   },
+   {
+    "id": "magnet-forensics",
+    "why": "Axiom/Graykey device forensics competing for the same agency forensic lab budget"
+   },
+   {
+    "id": "msab",
+    "why": "XRY/XAMN mobile device forensics bought by the same investigative unit"
+   },
+   {
+    "id": "oxygen-forensics",
+    "why": "Mobile and cloud forensics software sold to the same police investigator seat"
+   },
+   {
+    "id": "griffeye",
+    "why": "Media triage and categorization for the same ICAC unit ADF sells its CSAM triage into"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "griffeye",
@@ -25466,7 +27714,19 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "adf-solutions",
+    "why": "Forensic triage software that scans seized media for known illicit images, the same ICAC unit workflow of sorting mass image sets"
+   },
+   {
+    "id": "cellebrite",
+    "why": "Pathfinder media classification and review of seized digital media, an alternative way for the same investigative unit to categorize case imagery"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "miller-mendel",
@@ -25490,7 +27750,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "guardian-alliance-technologies",
+    "why": "Applicant background investigation platform for law enforcement agencies - the same product for the same police hiring/backgrounds unit, and the direct eSOPH alternative."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "guardian-alliance-technologies",
@@ -25514,7 +27782,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "miller-mendel",
+    "why": "ESOPH applicant background investigation software for police hiring units, the same purchase by the same backgrounds sergeant"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "ci-technologies",
@@ -25538,7 +27814,19 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "benchmark-analytics",
+    "why": "Officer performance management and early intervention is exactly what IAPro's EIS does for the same professional standards unit"
+   },
+   {
+    "id": "vector-solutions",
+    "why": "Guardian Tracking is the head-to-head officer conduct documentation and early intervention product for the same police supervisor"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "apex-officer",
@@ -25562,7 +27850,27 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "virtra",
+    "why": "Judgmental use-of-force and de-escalation simulators for the same police training buyer"
+   },
+   {
+    "id": "milo-range",
+    "why": "Interactive use-of-force and firearms training simulators, same academy purchase"
+   },
+   {
+    "id": "inveris-training-solutions",
+    "why": "FATS virtual judgment training systems bid against VR sims for the same training budget"
+   },
+   {
+    "id": "kaiden-ai",
+    "why": "AI-voiced de-escalation scenario training competing for the same academy training spend"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "wrap-technologies",
@@ -25586,7 +27894,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "axon",
+    "why": "Axon's TASER is the incumbent less-lethal remote-incapacitation tool BolaWrap is bid against for the same department's less-lethal equipment budget and use-of-force policy decision"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "fortem-technologies",
@@ -25610,7 +27926,39 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "droneshield",
+    "why": "Counter-UAS detection and defeat systems sold to the same LE, prison and critical-infrastructure airspace-security buyer"
+   },
+   {
+    "id": "d-fend-solutions",
+    "why": "Counter-drone mitigation landing rogue drones, the alternative defeat approach in the same C-UAS procurement"
+   },
+   {
+    "id": "sentrycs",
+    "why": "Counter-drone detect, track and mitigate system competing for the same agency airspace-protection deployment"
+   },
+   {
+    "id": "echodyne",
+    "why": "Radar for counter-UAS and site security, evaluated against Fortem's TrueView radar in the same detection buy"
+   },
+   {
+    "id": "robin-radar-systems",
+    "why": "Drone detection radar bid against Fortem's radar for the same airport, prison or event airspace-monitoring contract"
+   },
+   {
+    "id": "skysafe",
+    "why": "Counter-drone airspace monitoring for LE and corrections, an alternative way to detect and track the same rogue drones"
+   },
+   {
+    "id": "airsight",
+    "why": "Drone detection software locating drones and pilots for prisons, airports and LE, same detection requirement and buyer"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "firstwatch",
@@ -25634,7 +27982,23 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "forcemetrics",
+    "why": "Platform that unifies an agency's CAD and RMS data into real-time operational awareness, sold to the same command staff wanting to see what their own data says"
+   },
+   {
+    "id": "peregrine",
+    "why": "Data integration and real-time intelligence over agency systems, an alternative answer to the same 'make our CAD/RMS data actionable' purchase"
+   },
+   {
+    "id": "palantir-technologies",
+    "why": "Data integration and analytics across police systems bought instead of a dedicated public-safety analytics layer by the same agency"
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "julota",
@@ -25658,7 +28022,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "competitors": [
+   {
+    "id": "ecins",
+    "why": "Cloud multi-agency case management and information sharing for police safeguarding and community safety - the same co-responder/vulnerable-person coordination job for the same city or county buyer."
+   }
+  ],
+  "competitors_checked_on": "2026-09-02",
+  "competitors_none_found": false
  },
  {
   "id": "lytx",

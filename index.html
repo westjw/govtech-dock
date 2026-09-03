@@ -4631,6 +4631,43 @@ function coAge(iso){
   return new Date(t).toLocaleDateString(undefined,{month:"short",day:"numeric"});
 }
 
+/* A CATEGORY IS NOT A SHORTLIST, and this rail claimed it was. It read
+   "Others in Police" over Verkada, Palantir, Peregrine, Robin Radar and Brinc,
+   ranked by open roles: cameras, a data platform, data integration, drone
+   detection, and drones. Five companies, no two of which compete. Everyone in
+   a category sells to the same buyer - that is what a category is - and a
+   reader scanning a heading takes the list under it as the alternatives.
+
+   THREE STATES, AND THEY ARE THREE DIFFERENT FACTS. A researched shortlist,
+   a researched EMPTY (nobody in this category competes with them, which is
+   true of a great many of these and is worth saying), and not researched yet.
+   The third does not fall back to the category listing, because that is the
+   claim this block was built to stop making. It offers the category as
+   NAVIGATION instead, labelled as navigation, which is all it ever was. */
+function coRivals(o,sibs,inCat){
+  const list=o.competitors||[];
+  const n=(inCat||[]).length;
+  const link=n>1?`<a class="all" href="#" onclick="tab='companies';render();return false"
+        >Browse all ${n.toLocaleString()} in ${esc(o.category)} &rarr;</a>`:"";
+  if(list.length) return `<section><h2>Competitors</h2>
+    ${list.map(r=>{const x=(D.organizations||[]).find(y=>y.id===r.id)||{};
+      return `<div class="r"><span><a href="/?co=${encodeURIComponent(r.id)}"
+        >${esc(x.name||r.id)}</a>${r.why?`<span class="d">${esc(r.why)}</span>`:""}</span>${
+        x.open_roles!=null?`<span class="n">${x.open_roles}</span>`:""}</div>`}).join("")}
+    <p class="note">Who a buyer would shortlist against them${
+      o.competitors_checked_on?`, checked ${esc(o.competitors_checked_on)}`:""}.</p>
+    ${link}</section>`;
+  if(o.competitors_none_found) return `<section><h2>Competitors</h2>
+    <p class="note">Nobody else on this board sells what they sell into this
+      market. That is a finding, checked${
+      o.competitors_checked_on?" "+esc(o.competitors_checked_on):""}, not an
+      empty field.</p>${link}</section>`;
+  return `<section><h2>Competitors</h2>
+    <p class="note">Not researched yet. The companies below share this
+      category, which is the room they are all standing in, not the shortlist
+      a buyer would build.</p>${link}</section>`;
+}
+
 function co(id,fromUrl){
   const o=(D.organizations||[]).find(x=>x.id===id);
   /* a ?co= that names nobody is said on the companies tab, where the reader
@@ -4761,9 +4798,14 @@ function co(id,fromUrl){
   </section>`;
 
   /* --- 06 reference rail ---------------------------------------------- */
-  const sibs=(D.organizations||[])
-    .filter(x=>x.id!==id&&x.sector===o.sector&&x.category===o.category
-              &&!(o.brands||[]).some(b=>b.id===x.id))
+  /* COUNT THE CATEGORY, THEN CUT THE LIST. `sibs` is the top five and the
+     browse link is about the whole category, so passing sibs.length made the
+     link read "Browse all 6 in Police" over a category holding 132. A number
+     on a public page is a claim, including the small ones nobody checks. */
+  const inCat=(D.organizations||[])
+    .filter(x=>x.sector===o.sector&&x.category===o.category
+              &&!(o.brands||[]).some(b=>b.id===x.id));
+  const sibs=inCat.filter(x=>x.id!==id)
     .sort((a,b)=>(b.open_roles||0)-(a.open_roles||0)).slice(0,5);
   const rail=`<aside class="corail">
     <section><h2>Links</h2>
@@ -4783,12 +4825,7 @@ function co(id,fromUrl){
     ${(o.also&&o.also.length)?`<section><h2>Also filed under</h2>
       ${o.also.map(a=>`<div class="r"><span>${esc(a.sector)} / ${esc(a.category)}</span></div>`).join("")}
     </section>`:""}
-    ${sibs.length?`<section><h2>Others in ${esc(o.category)}${
-        open?"":" &middot; hiring now"}</h2>
-      ${sibs.map(x=>`<div class="r"><a href="/?co=${encodeURIComponent(x.id)}"
-        >${esc(x.name)}</a><span class="n">${x.open_roles||0}</span></div>`).join("")}
-      <a class="all" href="#" onclick="tab='companies';render();return false"
-        >All in this category &rarr;</a></section>`:""}
+    ${coRivals(o,sibs,inCat)}
     <section><p class="coprov">Record last verified${
       o.board_checked_on?" "+esc(o.board_checked_on):""}${
       o.researched?" by hand":""}. ${
