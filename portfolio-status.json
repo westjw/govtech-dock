@@ -1,26 +1,29 @@
 {
   "project_id": "govtech_dock",
   "repo": "westjw/govtech-dock",
-  "last_updated": "2026-09-02T14:56:57-04:00",
+  "last_updated": "2026-09-02T22:54:33-04:00",
   "status": "Active Build",
-  "progress_pct": 47,
-  "progress_note": "~47% (free board frame; the paid half still has no pricing, billing, accounts or employer side) - 2026-09-02: state chapter events went from 21 to 204 organisation urls, and the seven 'exhibitor directories' turned out to be site menus",
-  "next_move": "Rule the 11 unwired boards in Boards we found (5 are likely renames to re-wire), then add RESEND_KEY as a repository secret so the first digest can send",
-  "session_summary": "Reviewed and rebuilt the state-chapter conference pipeline. The seven directories on file were the chapters' own navigation menus, not exhibitor lists; the gate that accepted them is replaced by a detector measured against 26 real floors. Stage 1 became a researched lookup table and went from 0 to 185 organisation urls. A promotion path into the public conference catalog now exists, and refuses any event whose name is still a generated guess.",
+  "progress_pct": 49,
+  "progress_note": "~49% (free board frame; the paid half still has no pricing, billing, accounts or employer side) - 2026-09-02: full review written as a plan (~/.claude/plans/wise-wondering-giraffe.md); company page rebuilt to the turn-6 spec; competitor engine trialled on Police (132 shortlists); proposals queue no longer crashes; static /c/ pages for 437 companies; profile engine built ahead of its door",
+  "next_move": "Land agents.check_profile (the council-drafted door), wire it into ingest, port the ranker's fixture battery to selftest, then create the profile-run cloud routine and judge the 344 hiring companies first. Owner: Pages custom domain sledjobs.com + extend the Access app in the same sitting (DEPLOY.md 1b).",
+  "session_summary": "A whole-codebase review after three direction decisions: three read-only surveys and two design passes became a 36-decision plan the owner approved. Then the launch path: the store for company site text moved out of git; the agent-proposal queue got its missing renderer and a one-door applier for every kind (203 rows were unreachable); the profile engine's brief, dechrome (measured on 25 sites), page renderer and gate-review CLI landed ahead of its door, which two agents are drafting blind; static company pages render for any company with a write-up or a shortlist (344 -> 437).",
   "recent_work": [
-    "Seven APA 'exhibitor directories' were chapter menus - detector measured against 26 real floors, 0 false positives",
-    "Ownership check: a chapter directory must be the chapter's, not its parent's (IACP's national list was accepted for North Carolina)",
-    "PARENT_LISTINGS researched per association; 0 -> 185 organisation urls for the 338 events",
-    "Three matcher bugs fixed: entity-encoded hrefs (all 49 NLC chapters), state-in-heading proximity, camelCase sign-in paths",
-    "Promotion into conferences.json built and gated - a generated organisation name is refused",
-    "Four new guards, 20 of 20 mutations caught",
-    "alerts.js NAME import - every signup had 500'd since the shell shipped; probe now answers 400",
-    "11 Paylocity parent/former-name boards unwired through the journal and queued with live sample titles",
-    "Guards rewritten to drive callers: fetchers, gate, capture, task notes, sweep, and background.js under node"
+    "Company page rebuilt to the designer's turn-6 spec; four defects found by rendering it fixed (roles vs postings, window vs record, unreadable phase, [object Object])",
+    "Stat strip stylesheet was matching nothing (div vs dl); fixed with a depth-aware selector guard",
+    "Competitor engine v1 on the agents.py spine: roster-only, category as the unit, cap as the guard; Police trialled, 132 shortlists, 464 edges, 0 refused; rail now says competitors or an honest silence",
+    "fetch_profiles.py: first-party crawler, per-company gitignored bodies, sha-only committed index, workers, skip-unread-days",
+    "proposal_rulings.py: one applier for every proposal kind; RENDER.proposals/leads fix the two crashing admin tabs; 10 of 10 mutations caught",
+    "agents.py: kinds profile/news/claim declared; save() journalled; ingest keeps refusals with the rule that refused them; CLI can brief rival and ingest a file",
+    "dechrome measured on 25 sites (median 64% kept); duplicate-page collapse and cookie-banner pattern added from the measurement; 4 of 4 mutations caught",
+    "coAbout renders the new profile shape under node in selftest, four states incl. the legacy-notes shape it must never render; legacy rows renamed profile_research through the journal",
+    "promote_profiles.py: the owner's 'door only, add some gate reviews' - refusals by rule, low confidence, 5% sample, one journal entry per batch, kill switch",
+    "Static /c/ pages for any company with a write-up or shortlist (437), shared has_static_page gate for writer/sitemap/meta index, middleware canonical on p, meta description ends its own sentence",
+    "check_writes_name_their_author covers every writer by glob; the 132-company rival write re-attributed from owner to the agent that made it"
   ],
   "blockers": [
-    "RESEND_KEY not in repository secrets - no digest has ever sent",
-    "APWA and GMIS answer 403 to an identified crawler; 33 chapter events sit behind that",
-    "IACP, IAFC and NSBA have state chapters and publish no list of them; 44 events need another source"
+    "RESEND_KEY is not a repository secret, so no digest has ever sent (owner: delete-and-add, never rename)",
+    "sledjobs.com has no DNS record; the moment it does, /admin on it is unprotected until the Access app is extended (DEPLOY.md 1b step 2)",
+    "agents.check_profile is being drafted by a blind council; nothing can be judged until it lands",
+    "APWA and GMIS 403 an identified crawler (33 chapter events); IACP/IAFC/NSBA publish no chapter list (44 events)"
   ]
 }

@@ -426,8 +426,18 @@ disagree then cannot be compared. Every agent must be able to answer *unsure*,
 and intake refuses a proposal claiming high confidence without evidence,
 because that is the shape a guess takes when a model is trying to be helpful.
 
-Four agents on one spine: `bucket` and `read` are built; `card` (research a new
-company) and `board` (find the ATS behind a page) are next.
+Kinds on the spine, 2026-09-02: `bucket`, `read`, `board`, `rival` (competitors,
+built and trialled on Police), and `profile`, `news`, `claim` declared ahead of
+their appliers so the queue can show them. **The other end of the spine exists
+now**: `scripts/proposal_rulings.py` is the one applier for every kind (the
+admin action, the CLI and the web admin's apply step all call it), and the
+admin's Agent proposals tab renders every kind from one table - it had a tab, a
+count and no renderer for a month, and 131 rows were unreachable. A kind with
+no applier refuses BY NAME rather than raising. `agents.save()` goes through
+the journal. `ingest` KEEPS what a door refuses, with the rule that refused it,
+because the profile gate review reads refusals and a door nobody can see being
+wrong is a door nobody fixes. Every `promote_*.py` is covered by
+`check_writes_name_their_author` by glob.
 
 ### The read trial, measured 2026-08-24, n=25
 
