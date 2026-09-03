@@ -3236,7 +3236,19 @@ def check_writes_name_their_author() -> int:
     Source-level, because the failure is a missing argument: no call runs in a
     test, so nothing at runtime can catch the one somebody forgets next.
     """
-    src = (ROOT / "scripts" / "admin.py").read_text()
+    # EVERY WRITER, NOT ONLY admin.py. The rule used to cover one file, and
+    # promote_rivals.py shipped with `by` defaulting to owner and journalled
+    # an agent's 132-company write as the owner's ruling - re-attributed by
+    # hand the same day. Any script that can call save_companies or
+    # save_decisions is in scope, by glob, so the next promote_*.py is
+    # covered the day it is written.
+    files = [ROOT / "scripts" / "admin.py"] + sorted(
+        (ROOT / "scripts").glob("promote_*.py")) + [
+        ROOT / "scripts" / n for n in ("proposal_rulings.py", "apply_web_rulings.py",
+                                       "agents.py", "conference_intake.py",
+                                       "wire_embedded.py", "apply_task_notes.py")
+        if (ROOT / "scripts" / n).exists()]
+    src = "\n".join(f"# FILE {f.name}\n" + f.read_text() for f in files)
     bad = 0
     # Paren-BALANCED. The first version matched [^)]* and stopped at the first
     # ")", so every call whose arguments contain parens - which is all of them,
@@ -3255,7 +3267,12 @@ def check_writes_name_their_author() -> int:
             continue        # "save_companies()" written in prose, not called
         line = src[:m.start()].count("\n") + 1
         snippet = " ".join(args.split())[:70]
-        bad += fail(f"admin.py:{line}: save_companies({snippet}) does not pass "
+        fstart = src.rfind("# FILE ", 0, m.start())
+        fname = src[fstart + 7:src.find("\n", fstart)] if fstart >= 0 else "admin.py"
+        # the line a person can open: counted from the file's own marker,
+        # not from the top of the concatenation
+        line = src.count("\n", fstart, m.start()) if fstart >= 0 else line
+        bad += fail(f"{fname}:{line}: save_companies({snippet}) does not pass "
                     f"`by`, so this write will be journalled as the owner's "
                     f"whoever actually made it")
     return bad
