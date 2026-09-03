@@ -50,7 +50,9 @@ from __future__ import annotations
 import datetime as dt
 import json
 import pathlib
+import re
 import sys
+import unicodedata
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -416,6 +418,394 @@ def brief_profile(ids: list[str] | None = None, sector: str | None = None,
             break
     return out
 
+
+# ============================================================== profile ====
+# WRITTEN BY A COUNCIL, ADOPTED BLIND. CLAUDE.md requires it for anything
+# load-bearing, and this is the most load-bearing door in the repo: it decides
+# what 2,000 public pages say about other people's companies. Two agents drafted
+# it independently from one spec and a third ran both against a 34-case battery
+# without knowing which was which. A scored 34/34, B 33/34.
+#
+# B'S ONE FAILURE IS THE REASON THE PROCEDURE EXISTS. Given the invented
+# customer "New York Police Department", B trimmed the allowlisted words off
+# the run - New, York, Police are a state and category words - and was left
+# checking the lone token "Department", which really was on page two. It
+# accepted a customer nobody has. A checks the run as a phrase and refuses it,
+# naming it. One draft iterated would very likely have shipped B's version.
+#
+# Grafted from B: the refusal names the bare token, so a possessive reads
+# "'Dallas' is not on any of their pages" rather than "'Dallas's'".
+# Fixed in review: _PF_POINT was an empty string in A as delivered, so the
+# decimal sentinel replaced nothing; it passed only because needle and corpus
+# were transformed identically. Pinned to an explicit escape.
+
+# ------------------------------------------------------------ profile door
+#
+# EVERY SENTENCE OF A PROFILE IS A CLAIM ABOUT SOMEBODY ELSE'S COMPANY on a
+# public page, and the house rule is the whole design: never invent a fact to
+# fill a field. So each sentence must point at a page we fetched and quote it,
+# and every name and number in the prose must appear somewhere on the
+# company's own pages. A sentence that says LESS than the site passes; a
+# sentence that says one thing MORE than the site is refused, naming the thing.
+# Marketing adjectives, first person and em-dashes are refused because they are
+# what pasted copy looks like, and pasted copy is where invented facts hide.
+
+MARKETING = ("leading", "industry-leading", "innovative", "cutting-edge",
+             "world-class", "best-in-class", "state-of-the-art",
+             "next-generation", "revolutionary", "seamless", "robust",
+             "trusted", "premier", "unparalleled", "award-winning",
+             "game-changing")
+
+try:
+    _PF_CONFIDENCE = CONFIDENCE          # the module's own vocabulary
+except NameError:                        # this block imported on its own
+    _PF_CONFIDENCE = ("high", "medium", "low", "unsure")
+
+# Names that are never refused under rule 5. States and months are places and
+# times, not facts about the company; the country words are how a US-market
+# profile is written. Multi-word entries are matched as whole phrases only:
+# 'New' and 'York' alone are not a state.
+_PF_STATES = (
+    "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
+    "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho",
+    "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine",
+    "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi",
+    "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey",
+    "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
+    "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
+    "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia",
+    "Washington", "West Virginia", "Wisconsin", "Wyoming")
+_PF_STATE_CODES = ("AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME "
+                   "MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA "
+                   "RI SC SD TN TX UT VT VA WA WV WI WY").split()
+_PF_MONTHS = ("January", "February", "March", "April", "May", "June", "July",
+              "August", "September", "October", "November", "December",
+              "Jan", "Feb", "Mar", "Apr", "Jun", "Jul", "Aug", "Sep", "Sept",
+              "Oct", "Nov", "Dec")
+_PF_COUNTRY = ("United States", "US", "U.S.", "USA", "U.S.A.", "American")
+
+# Characters that make a true quote fail a naive `in`: a page's curly quote
+# against the agent's straight one, a soft hyphen the browser never showed,
+# a zero-width joiner from a CMS. Folded on BOTH sides before comparing.
+_PF_INVISIBLE = "­​‌‍⁠﻿‎‏"
+_PF_TRANS = str.maketrans({
+    **{c: "'" for c in "‘’‚‛′ʼ"},         # ‘ ’ ‚ ‛ ′ ʼ
+    **{c: '"' for c in "“”„‟″«»"},   # “ ” „ ‟ ″ « »
+    **{c: "-" for c in "‐‑‒–—―⁃−"
+                       "﹘﹣－"},       # ‐ ‑ ‒ – — ― ⁃ − small fullwidth
+    **{c: None for c in _PF_INVISIBLE},
+})
+_PF_EDGE_PUNCT = "\"'()[]{}<>,;:!?.…*"
+_PF_CLOSERS = ",;:!?)]}\"'’”…"
+_PF_OPENERS = "\"'([{‘“"
+# A period ends a name run ('drones. Dallas') unless it belongs to one of
+# these ('Inc. Dallas' is still one name) or the token has inner periods.
+_PF_ABBREV = {"inc", "co", "corp", "ltd", "llc", "plc", "st", "mt", "ft",
+              "dept", "dr", "mr", "mrs", "ms", "jr", "sr", "no", "vs"}
+_PF_BRIDGE = {"of", "&"}                 # 'State of Texas', 'Johnson & Johnson'
+# A sentence-start word that never begins a name, so 'The Lemur weighs' is
+# checked as Lemur while 'Dallas Police fly' is still checked as Dallas Police.
+_PF_OPENING_WORDS = set("""
+    the a an this that these those its their his her our your my some any each
+    every all both no most many several few other another such one two three
+    in on at by for from with without to of as into through across over under
+    after before since until during within among between beyond near around
+    along about against alongside like unlike per via and but or so yet if
+    when while where although though because today now here there then also
+    still once it they he she we you who what which founded based headquartered
+    """.split())
+_PF_POINT = "\ue000"               # private-use stand-in that keeps 2.5 a number
+_PF_FIRST_PERSON = re.compile(r"\b(we|our|us|ours|we're|we've)\b", re.I)
+_PF_MARKETING_RE = re.compile(
+    r"\b(?:" + "|".join(r"[-\s]+".join(re.escape(part) for part in w.split("-"))
+                        for w in MARKETING) + r")\b", re.I)
+_PF_NUMBER = re.compile(r"\d+(?:\.\d+)?")
+
+
+def _pf_norm(s: str) -> str:
+    """Casefold; fold curly quotes and every dash to ASCII; drop soft hyphens
+    and zero-width characters; NFKC; one space per whitespace run.
+
+    Folded before AND after NFKC: NFKC turns a small em-dash into an em-dash
+    and a double prime into two primes, so a single pass in either order
+    leaves one variant behind."""
+    if not isinstance(s, str):
+        return ""
+    s = s.translate(_PF_TRANS)
+    s = unicodedata.normalize("NFKC", s).translate(_PF_TRANS)
+    return " ".join(s.casefold().split())
+
+
+def _pf_loose(s: str) -> str:
+    """Punctuation-blind view of normalised text for the rule-5 search:
+    'Solutions, Inc.' and 'Solutions Inc' are one name and '1,200' is 1200.
+    Apostrophes, hyphens, ampersands and decimal points stay because names
+    and numbers carry them (Brinc's, Wi-Fi, AT&T, 2.5)."""
+    s = re.sub(r"(?<=\d),(?=\d)", "", s)
+    s = re.sub(r"(?<=\d)\.(?=\d)", _PF_POINT, s)
+    s = re.sub(r"[^\w\s'&\-" + _PF_POINT + "]", " ", s)
+    return " ".join(s.replace(_PF_POINT, ".").split())
+
+
+def _pf_key(raw: str) -> str:
+    """One token made comparable: normalised, edge punctuation off,
+    possessive off, so Brinc's, "Brinc" and Brinc, all read brinc."""
+    k = _pf_norm(raw).strip(_PF_EDGE_PUNCT + "-&/")
+    return k[:-2] if k.endswith("'s") else k
+
+
+def _pf_page(url: object, texts: dict[str, str]) -> str | None:
+    """The stored page a url names, tolerating only a trailing slash."""
+    if not isinstance(url, str):
+        return None
+    u = url.strip()
+    for cand in (u, u.rstrip("/"), u + "/"):
+        if cand and cand in texts:
+            return cand
+    return None
+
+
+def _pf_has(corpus: str, needle: str, numeric: bool = False) -> bool:
+    """Whole-word presence in the loose corpus. A bare `in` would find Ion
+    inside solution and Fort inside effort; a number must not sit inside a
+    longer one (125 is not on a page that says 1250 or 125.5)."""
+    needle = _pf_loose(_pf_norm(needle))
+    if not needle:
+        return True
+    if numeric:
+        pat = r"(?<!\d)(?<!\d\.)" + re.escape(needle) + r"(?!\d)(?!\.\d)"
+    else:
+        pat = r"(?<!\w)" + re.escape(needle) + r"(?!\w)"
+    return re.search(pat, corpus) is not None
+
+
+def _pf_allow(company: dict) -> tuple[set[str], set[tuple[str, ...]]]:
+    """The rule-5 allowlist as single-token keys and whole-phrase key tuples.
+    Name, aliases, sector and category are allowed whole and by token; the
+    fixed lists are allowed whole only."""
+    aka = company.get("also_known_as") or []
+    if isinstance(aka, str):
+        aka = [aka]
+    own = [company.get("name") or "", company.get("sector") or "",
+           company.get("category") or "", *aka]
+    tokens: set[str] = set()
+    phrases: set[tuple[str, ...]] = set()
+    for by_token, items in ((True, own), (False, [*_PF_STATES, *_PF_STATE_CODES,
+                                                  *_PF_MONTHS, *_PF_COUNTRY])):
+        for item in items:
+            keys = tuple(k for k in map(_pf_key, str(item).split()) if k)
+            if not keys:
+                continue
+            if len(keys) == 1:
+                tokens.add(keys[0])
+            else:
+                phrases.add(keys)
+                if by_token:
+                    tokens.update(keys)
+    return tokens, phrases
+
+
+def _pf_breaks(raw: str) -> bool:
+    """Does this token close a name run? 'Dallas,' does; 'Inc.' does not."""
+    tail = raw[-1:]
+    if tail in _PF_CLOSERS:
+        return True
+    if tail == ".":
+        core = raw.rstrip(".").casefold()
+        return not ("." in core or core in _PF_ABBREV)
+    return False
+
+
+def _pf_entities(text: str, allow_tokens: set[str], allow_phrases: set[tuple[str, ...]],
+                 corpus: str) -> str | None:
+    """Rule 5: the first name or number in `text` that no page carries.
+
+    (a) a capitalised token off the sentence start; (b) a run of capitalised
+    tokens, checked as a phrase because 'New York Police' is a customer even
+    when every word of it is innocent on its own; (c) a number. A run is
+    exempt only when it IS an allowlisted phrase, never because its tokens
+    are each allowed. The sentence-start token is exempt from (a) as ordinary
+    capitalisation unless it is shouty (NYPD, McKinsey), which prose is not,
+    and it opens a run unless it is a determiner-class word ('The Lemur')."""
+    raws = text.split()
+    keys = [_pf_key(r) for r in raws]
+    caps = [k[:1].isalpha() and len(k) >= 2 and any(ch.isupper() for ch in r)
+            for r, k in zip(raws, keys)]
+    covered: set[int] = set()            # positions inside an allowed phrase
+    for ph in allow_phrases:
+        for i in range(len(keys) - len(ph) + 1):
+            if tuple(keys[i:i + len(ph)]) == ph:
+                covered.update(range(i, i + len(ph)))
+
+    # (a) single tokens, by hyphen/slash part so 'Dallas-based' names Dallas
+    for i, raw in enumerate(raws):
+        if not caps[i] or i in covered:
+            continue
+        core = raw.strip(_PF_EDGE_PUNCT)
+        if i == 0 and not any(ch.isupper() for ch in core[1:]):
+            continue
+        for part in re.split(r"[-/]", core):
+            k = _pf_key(part)
+            if (k[:1].isalpha() and len(k) >= 2 and any(ch.isupper() for ch in part)
+                    and k not in allow_tokens and not _pf_has(corpus, k)):
+                return re.sub(r"['’]s$", "", part.strip(_PF_EDGE_PUNCT))
+
+    # (b) runs, bridged over 'of' and '&' so 'State of Texas' is one claim
+    n, i = len(raws), 0
+    while i < n:
+        if not caps[i] or (i == 0 and keys[0] in _PF_OPENING_WORDS):
+            i += 1
+            continue
+        j = i
+        while not _pf_breaks(raws[j]):
+            nxt = j + 1
+            if (nxt + 1 < n and raws[nxt].casefold() in _PF_BRIDGE
+                    and caps[nxt + 1] and raws[nxt + 1][:1] not in _PF_OPENERS):
+                nxt += 1
+            if nxt < n and caps[nxt] and raws[nxt][:1] not in _PF_OPENERS:
+                j = nxt
+            else:
+                break
+        j += 1
+        if j - i >= 2:
+            ks = tuple(k for k in keys[i:j] if k)
+            span = " ".join(raws[i:j])
+            if (ks not in allow_phrases and not _pf_has(corpus, span)
+                    and not _pf_has(corpus, " ".join(ks))):
+                return span.strip(_PF_EDGE_PUNCT)
+        i = j
+
+    # (c) numbers: commas, $ and % off, unit letters off, so $125M asks for 125
+    for num in _PF_NUMBER.findall(re.sub(r"(?<=\d),(?=\d)", "", text)):
+        if not _pf_has(corpus, num, numeric=True):
+            return num
+    return None
+
+
+def _pf_pull_quote(p: dict, texts: dict[str, str], pages: dict[str, str]) -> str | None:
+    """Rules 2 and 9 for the optional pull quote."""
+    q = p.get("quote")
+    if not q:
+        return None
+    if not isinstance(q, dict) or not isinstance(q.get("text"), str) or not q["text"].strip():
+        return "9. a pull quote must be an object with a text and a url."
+    url = _pf_page(q.get("url"), texts)
+    if url is None:
+        return f"2. url {q.get('url')!r} is not one of this company's pages."
+    qt = q["text"].strip()
+    if len(qt.split()) > 40:
+        return f"9. the pull quote runs over 40 words: {qt[:40]!r}."
+    if _pf_norm(qt) not in pages[url]:
+        return f"9. pull quote {qt[:40]!r} is not on {url}."
+    return None
+
+
+def check_profile(p: dict, texts: dict[str, str]) -> str | None:
+    """Refuse a profile unless the company's own pages back every sentence:
+    each sentence quotes the page it cites, and every name and number in the
+    prose appears on those pages. Returns a numbered sentence a person can
+    read, or None to accept.
+
+    This is the door between an AI-written description and a public page,
+    and the rule behind every check is the house rule: never invent a fact
+    to fill a field. A wrong sentence about a real company's real customers
+    is a defamation-shaped problem, so the door refuses by name and a person
+    can see exactly what the model added."""
+    if not isinstance(p, dict):
+        return "1. a profile proposal must be an object."
+    texts = {u: t for u, t in (texts or {}).items() if isinstance(u, str) and isinstance(t, str)}
+    pages = {u: _pf_norm(t) for u, t in texts.items()}
+
+    # 10. the confidence vocabulary, first because rule 1 branches on it
+    conf = p.get("confidence")
+    if conf not in _PF_CONFIDENCE:
+        return f"10. confidence must be one of {_PF_CONFIDENCE}, got {conf!r}."
+
+    # 1. an id, and unsure means NO paragraphs: that is a complete answer, and
+    #    the only thing it could still carry to a page is a pull quote
+    pid = p.get("id")
+    if not isinstance(pid, str) or not pid.strip():
+        return "1. a profile proposal must carry the id of the company it is about."
+    paras = p.get("paragraphs") or []
+    if conf == "unsure":
+        if paras:
+            return "1. an unsure proposal must not carry paragraphs; unsure is the whole answer."
+        return _pf_pull_quote(p, texts, pages)
+    if not isinstance(paras, list) or not paras:
+        return ("1. a confident proposal must carry paragraphs; if the pages do "
+                "not support a write-up, answer unsure.")
+
+    # 3. shape: 2 to 3 paragraphs, 3+ sentences, 80 to 240 words, none over 45
+    if not 2 <= len(paras) <= 3:
+        return f"3. a profile is 2 to 3 paragraphs, got {len(paras)}."
+    sentences: list[dict] = []
+    for para in paras:
+        if not isinstance(para, list) or not para:
+            return "3. each paragraph must be a non-empty list of sentences."
+        for s in para:
+            if not isinstance(s, dict) or not isinstance(s.get("text"), str) or not s["text"].strip():
+                return "3. each sentence must be an object with a text."
+            sentences.append(s)
+    if len(sentences) < 3:
+        return f"3. a profile needs at least 3 sentences, got {len(sentences)}."
+    counts = [len(s["text"].split()) for s in sentences]
+    for s, w in zip(sentences, counts):
+        if w > 45:
+            return f"3. a sentence runs over 45 words ({w}): {s['text'].strip()[:40]!r}."
+    if not 80 <= sum(counts) <= 240:
+        return f"3. a profile is 80 to 240 words in total, got {sum(counts)}."
+
+    company = p.get("company") if isinstance(p.get("company"), dict) else {}
+    company = {"name": p.get("name"), "sector": p.get("sector"),
+               "category": p.get("category"),
+               "also_known_as": p.get("also_known_as"), **company}
+    allow_tokens, allow_phrases = _pf_allow(company)
+    # Rule 5 reads ALL pages, not the cited one: a customer named on the
+    # about page may be cited from the homepage, and that is still their claim.
+    corpus = "\n".join(_pf_loose(t) for t in pages.values())
+
+    for s in sentences:
+        text = s["text"].strip()
+        head = text[:40]
+        # 2. only pages we fetched exist; anything else is a url from memory
+        url = _pf_page(s.get("url"), texts)
+        if url is None:
+            return f"2. url {s.get('url')!r} is not one of this company's pages."
+        # 6. house style, and the punctuation pasted copy arrives in; NFKC so
+        #    a small em-dash cannot slip past as a different code point
+        if "—" in unicodedata.normalize("NFKC", text) or "―" in text:
+            return f"6. no em-dashes in a sentence (house style): {head!r}."
+        # 7. first person is the company talking, not us describing it;
+        #    an uppercase US is the country
+        hit = next((m for m in _PF_FIRST_PERSON.finditer(text) if m.group(0) != "US"), None)
+        if hit:
+            return f"7. pasted marketing: first person {hit.group(0)!r} in {head!r}."
+        # 8. adjectives nobody can check
+        m = _PF_MARKETING_RE.search(text)
+        if m:
+            return f"8. marketing word {m.group(0)!r} in {head!r}."
+        # 4. the quote is the provenance; it must be on the page it cites
+        quote = s.get("quote")
+        if not isinstance(quote, str) or len(quote.strip()) < 20:
+            return f"4. every sentence needs a quote of at least 20 characters from its page: {head!r}."
+        if _pf_norm(quote) not in pages[url]:
+            return f"4. quote {quote.strip()[:40]!r} is not on {url}."
+        # 5. every name and number in the prose is on their pages, by name
+        bad = _pf_entities(text, allow_tokens, allow_phrases, corpus)
+        if bad is not None:
+            return f"5. {bad!r} is not on any of their pages."
+
+    # 9. the pull quote is verbatim and short
+    err = _pf_pull_quote(p, texts, pages)
+    if err:
+        return err
+
+    # 10. the tell of a helpful guess: maximum confidence, minimum evidence
+    if conf == "high" and not str(p.get("evidence") or "").strip():
+        return "10. high confidence needs evidence: the url the write-up rests on."
+    return None
+
+
 def check_read(p: dict) -> str | None:
     """Refuse a read that looks like it scraped the navigation."""
     rows = p.get("postings")
@@ -597,6 +987,23 @@ def check_rival(p: dict) -> str | None:
         return "a high-confidence shortlist must say what it rests on"
     return None
 
+
+def _profile_texts(p: dict) -> dict:
+    """{url: full page text} for the company a profile proposal is about."""
+    try:
+        import fetch_profiles as fp
+        rec = fp.load(p.get("id") or "")
+    except Exception:
+        rec = None
+    if not rec:
+        return {}
+    out = {}
+    for pg in (rec.get("about") or []) + (rec.get("news") or []):
+        if pg.get("url") and pg.get("text"):
+            out[pg["url"]] = pg["text"]
+    return out
+
+
 def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
     """Store proposals, refusing the malformed. Returns a small report."""
     if kind not in KINDS:
@@ -610,7 +1017,12 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
         bad = (check_bucket(p, schema) if kind == "bucket"
                else check_read(p) if kind == "read"
                else check_board(p) if kind == "board"
-               else check_rival(p) if kind == "rival" else None)
+               else check_rival(p) if kind == "rival"
+               # THE FULL STORED TEXT, not the trimmed brief: a quote from a
+               # region dechrome cut must still verify, or the door refuses
+               # true sentences and the gate review fills with false refusals.
+               else check_profile(p, _profile_texts(p)) if kind == "profile"
+               else None)
         if bad:
             refused.append({"key": key, "why": bad})
             # A REFUSAL IS KEPT, NOT DROPPED. The gate review the owner asked

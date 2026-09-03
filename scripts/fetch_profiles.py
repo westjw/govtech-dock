@@ -99,7 +99,17 @@ ABOUT = re.compile(r"/(about|about-us|company|who-we-are|our-story|mission|"
                    r"platform|product|products|solutions|customers|clients|"
                    r"case-stud(y|ies)|why-us)(/|$|\?)", re.I)
 NEWS = re.compile(r"/(news|newsroom|press|press-releases|media|announcements|"
-                  r"blog|insights|resources/news|company/news)(/|$|\?)", re.I)
+                  r"blog|insights|resources|resources/news|company/news)(/|$|\?)", re.I)
+# ONE ARTICLE: an index path plus a slug, or a dated path. Owned here, imported
+# by news.py, so the fetcher and the extractor cannot disagree about what an
+# article is. Peregrine files 55 of them under /resources/<slug>, which the
+# first version did not count; the "8 ISO dates" a survey found on that page
+# were the year inside a slug ("secure-the-2026-academy-awards").
+ARTICLE = re.compile(
+    r"/(news|newsroom|press|press-releases|media|announcements|blog|insights|"
+    r"resources|stories|updates|articles|posts?)/[a-z0-9][a-z0-9._-]{4,}/?$|"
+    r"/\d{4}/\d{1,2}/[a-z0-9-]{4,}/?$", re.I)
+NEWS_ITEMS = 12          # article pages followed from one index, at most
 
 # Pages that look like the above and are not. A careers page mentions the
 # company constantly and describes none of what it sells; a privacy policy
@@ -125,6 +135,11 @@ CHROME_LINE = re.compile(
     r"manage (cookie )?preferences$)", re.I)
 
 TAG = re.compile(r"<(script|style|noscript|svg|head)\b.*?</\1>", re.I | re.S)
+# what the STORED html sheds: style, svg, and every script that is not
+# JSON-LD (which is where datePublished lives). <head> stays for its metas.
+STRIP_HTML = re.compile(
+    r"<style\b.*?</style>|<svg\b.*?</svg>|<noscript\b.*?</noscript>|"
+    r"<script\b(?![^>]*application/ld\+json)[^>]*>.*?</script>", re.I | re.S)
 ANY = re.compile(r"<[^>]+>")
 WS = re.compile(r"[ \t\r\f\v]+")
 BLANK = re.compile(r"\n\s*\n\s*\n+")
@@ -258,11 +273,17 @@ def grab(url: str, keep_html: bool = False) -> dict:
         # THE NEWS EXTRACTOR NEEDS ATTRIBUTES. text_of drops <head> and every
         # <time datetime>, article:published_time and JSON-LD date before a
         # parser can see them, so news pages keep their markup, capped.
-        out["html"] = body[:MAX_HTML]
+        #
+        # STRIPPED OF WHAT BLOATS IT FIRST. Eight of the first 39 stored news
+        # pages hit the cap, and Peregrine's newsroom came back with zero
+        # article links in 160KB - inline <style> and <script> had used the
+        # whole budget before the list began. Those carry no date and no
+        # headline; JSON-LD is the one <script> that does, and it is kept.
+        out["html"] = STRIP_HTML.sub(" ", body)[:MAX_HTML]
     return out
 
 
-def visit(company: dict) -> dict:
+def visit(company: dict, news_depth: int = 1) -> dict:
     """Everything one company's own site will tell us, or why it would not."""
     site = (company.get("website") or "").strip()
     out = {"id": company["id"], "name": company.get("name"),
@@ -299,7 +320,27 @@ def visit(company: dict) -> dict:
             continue
         out["about"].append(grab(u))
     for u in pick(found, NEWS):
-        out["news"].append(grab(u, keep_html=True))
+        pg = grab(u, keep_html=True)
+        out["news"].append(pg)
+        # THE SECOND HOP. An index page rarely carries a machine-readable
+        # date - 2 of the first 39 had <time datetime> - and the article
+        # itself usually does (JSON-LD datePublished, article:published_time).
+        # So the articles an index links to are fetched too, capped, and the
+        # extractor takes the date from the article when the index has none.
+        # A headline with no date anywhere is not an item.
+        if news_depth and pg.get("html"):
+            try:
+                inner = links(ats._get(u).text, u)
+            except Exception:
+                inner = []
+            arts = [a for a in inner if ARTICLE.search(up.urlsplit(a).path or "")
+                    and not same_page(a, u)][:NEWS_ITEMS]
+            for a_ in arts:
+                if any(same_page(a_, x["url"]) for x in out["news"]):
+                    continue
+                art = grab(a_, keep_html=True)
+                art["from_index"] = u
+                out["news"].append(art)
 
     if not out["news"]:
         # A REAL FINDING, and the one the news engine must not paper over.

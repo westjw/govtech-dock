@@ -753,6 +753,182 @@ def check_proposal_rulings_cover_every_kind() -> int:
     return errors
 
 
+def check_profile_door_needs_provenance() -> int:
+    """A sentence about somebody else's company must quote their own page.
+
+    This is the door that decides what 2,000 public pages say about other
+    people's firms, and it was written by a council: two agents drafted it
+    blind from one spec, a third ranked them against a 34-case battery
+    without knowing which was which. The loser's single failure is the case
+    that matters most and is asserted here by name - given an invented
+    customer whose every word appears somewhere ("New York Police
+    Department"), it trimmed the allowlisted words off the run and checked
+    the lone survivor, which was on the page, and accepted a customer nobody
+    has. The winner checks the run as a phrase.
+
+    The fixture is two pages carrying the hazards that make a TRUE sentence
+    fail a naive check - a curly apostrophe, a comma inside a number, a
+    customer that appears only on the second page - because a door that
+    refuses true sentences fills the gate review with false refusals and
+    gets loosened by whoever is on shift.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents
+
+    P1 = ("Brinc builds drones that police departments and fire departments stage "
+          "on the roofs of their stations so a drone can be flying toward a call "
+          "before a patrol car has left the lot. The Lemur opens locked doors, "
+          "carries a two way radio into a barricaded room and gives a commander a "
+          "live picture of what is inside. Founded in 2017 and based in Seattle, "
+          "Washington. The founder’s first prototype flew in a garage.")
+    P2 = ("Customers include the Chula Vista Police Department, which flies drones "
+          "as first responders across the city under a waiver from the Federal "
+          "Aviation Administration. Brinc raised $1.2M in 2019. The team of 1,200 "
+          "serves 40 agencies across the United States and sells through a direct "
+          "field organisation rather than through resellers or distributors.")
+    T = {"https://b.example/": P1, "https://b.example/about": P2}
+    Q1 = "Brinc builds drones that police departments"
+    Q2 = "Customers include the Chula Vista Police Department"
+    S1 = ["Brinc builds drones that police departments and fire departments stage on the roofs of their stations.",
+          "A drone can be flying toward a call before a patrol car has left the lot.",
+          "The Lemur opens locked doors and carries a two way radio into a barricaded room."]
+    S2 = ["Customers include the Chula Vista Police Department, which flies drones as first responders across the city.",
+          "The team of 1,200 serves 40 agencies across the United States.",
+          "Brinc sells through a direct field organisation rather than through resellers or distributors."]
+
+    def prop(s1=None, s2=None, q1=Q1, q2=Q2, **kw):
+        d = {"key": "profile:b", "id": "b", "confidence": "medium",
+             "paragraphs": [[{"text": s, "url": "https://b.example/", "quote": q1}
+                             for s in (s1 or S1)],
+                            [{"text": s, "url": "https://b.example/about", "quote": q2}
+                             for s in (s2 or S2)]],
+             "company": {"name": "Brinc", "also_known_as": [],
+                         "sector": "Public Safety", "category": "Police"}}
+        d.update(kw)
+        return d
+
+    def sub(lst, i, new):
+        return [new if j == i else x for j, x in enumerate(lst)]
+
+    accept = [
+        ("a clean write-up over two pages", prop()),
+        ("an unsure answer with no paragraphs",
+         {"id": "b", "confidence": "unsure", "why": "one-page brochure"}),
+        ("a number the page writes with a comma",
+         prop(s2=sub(S2, 1, "The team of 1200 serves 40 agencies across the United States."))),
+        ("a state name and the country",
+         prop(s1=sub(S1, 2, "The Lemur is sold in Washington and across the United States."))),
+        ("a straight apostrophe where the page has a curly one",
+         prop(q1="The founder's first prototype flew in a garage")),
+        ("a customer named on the OTHER page than the sentence cites",
+         prop(s1=sub(S1, 2, "Chula Vista flies the Lemur as a first responder across the city."))),
+    ]
+    refuse = [
+        ("an invented city customer", "baltimore",
+         prop(s2=sub(S2, 0, "Customers include the Baltimore Police Department, which flies drones as first responders across the city."))),
+        # THE CASE THE LOSING DRAFT FAILED
+        ("an invented agency whose every word is on a page", "seattle police department",
+         prop(s2=sub(S2, 0, "Customers include the Seattle Police Department, which flies drones as first responders across the city."))),
+        ("an invented headcount", "9400",
+         prop(s2=sub(S2, 1, "The team of 9,400 serves 40 agencies across the United States."))),
+        ("an invented founding year", "2021",
+         prop(s1=sub(S1, 2, "Founded in 2021, the company is based in Seattle and sells to agencies."))),
+        ("a marketing adjective", "leading",
+         prop(s2=sub(S2, 2, "Brinc is the industry-leading vendor selling direct rather than through resellers."))),
+        ("first person", "we",
+         prop(s2=sub(S2, 2, "We sell through a direct field organisation rather than through resellers."))),
+        ("an em-dash", "dash",
+         prop(s2=sub(S2, 2, "Brinc sells direct — never through resellers — across the United States."))),
+        ("a quote that is not on the page", "quote",
+         prop(q1="Brinc manufactures quadcopters for police")),
+        ("a url outside the company's own record", "url",
+         prop(**{"paragraphs": [[{"text": s, "url": "https://elsewhere.example/",
+                                  "quote": Q1} for s in S1],
+                                [{"text": s, "url": "https://b.example/about",
+                                  "quote": Q2} for s in S2]]})),
+        ("high confidence resting on nothing", "evidence", prop(confidence="high")),
+        # THE SHAPE RULES. The first version of this battery covered only the
+        # fabrication rules, and five mutations - deleting the word bounds,
+        # the sentence cap, the paragraph count, the quote floor, and the
+        # unsure exclusivity - walked straight past it. A door is only
+        # guarded on the rules the fixture actually exercises.
+        ("a one-paragraph write-up", "paragraph",
+         {**prop(), "paragraphs": [prop()["paragraphs"][0]]}),
+        ("a four-paragraph write-up", "paragraph",
+         {**prop(), "paragraphs": prop()["paragraphs"] + prop()["paragraphs"]}),
+        ("a write-up under 80 words", "80",
+         {**prop(), "paragraphs": [[{"text": "Brinc builds drones for police.",
+                                     "url": "https://b.example/", "quote": Q1}],
+                                   [{"text": "Customers include Chula Vista.",
+                                     "url": "https://b.example/about", "quote": Q2},
+                                    {"text": "The team serves 40 agencies.",
+                                     "url": "https://b.example/about", "quote": Q2}]]}),
+        # over the word ceiling WITHOUT tripping the 45-word sentence cap:
+        # many short sentences, or the fixture proves the wrong rule
+        ("a write-up over 240 words", "240",
+         {**prop(), "paragraphs": [
+             [{"text": "Brinc builds drones that police departments stage on their station roofs.",
+               "url": "https://b.example/", "quote": Q1}] * 15,
+             [{"text": "Customers include the Chula Vista Police Department in California.",
+               "url": "https://b.example/about", "quote": Q2}] * 15]}),
+        ("a sentence over 45 words", "45",
+         prop(s1=sub(S1, 0, " ".join(["Brinc builds drones that police departments and fire departments stage on the roofs of their stations"] * 5) + "."))),
+        ("a quote under 20 characters", "20", prop(q1="Brinc builds")),
+        ("an unsure answer that still carries paragraphs", "unsure",
+         prop(confidence="unsure")),
+    ]
+
+    errors = 0
+    # THE DOOR HAS TO BE WIRED, NOT ONLY CORRECT. Deleting check_profile from
+    # ingest's dispatch left every case above green and every fabrication
+    # landing in the store - the "guard proves the helper while the caller
+    # drifts" shape this repo has now caught six times. So the wiring is
+    # driven: a fabricated proposal goes through ingest and must be refused
+    # there, not merely refusable in isolation.
+    with _sandbox_admin({"agent_proposals.json": {}}) as tmp:
+        keep = agents.STORE
+        agents.STORE = tmp / "agent_proposals.json"
+        try:
+            import fetch_profiles as fp
+            keep_dir = fp.DIR
+            fp.DIR = tmp / "site_pages"
+            fp.DIR.mkdir(parents=True, exist_ok=True)
+            fp.save({"id": "b", "name": "Brinc", "website": "https://b.example",
+                     "about": [{"url": u, "text": tx, "chars": len(tx), "sha": "x"}
+                               for u, tx in T.items()], "news": []})
+            bad_one = prop(s2=sub(S2, 0, "Customers include the Baltimore Police "
+                                         "Department, which flies drones as first "
+                                         "responders across the city."))
+            rep = agents.ingest("profile", [bad_one], model="agent:test")
+            if rep["kept"] or not rep["refused"]:
+                errors += fail("ingest ACCEPTED a profile naming a customer that "
+                               "is on none of the company's pages. The door is "
+                               "not wired into the door")
+            elif "baltimore" not in rep["refused"][0]["why"].lower():
+                errors += fail(f"ingest refused the fabrication for the wrong "
+                               f"reason: {rep['refused'][0]['why']}")
+            fp.DIR = keep_dir
+        finally:
+            agents.STORE = keep
+
+    for name, p_ in accept:
+        got = agents.check_profile(p_, T)
+        if got is not None:
+            errors += fail(f"the profile door refused {name}: {got}. A door that "
+                           f"refuses true sentences fills the gate review with "
+                           f"false refusals and gets loosened by whoever is on shift")
+    for name, token, p_ in refuse:
+        got = agents.check_profile(p_, T)
+        if got is None:
+            errors += fail(f"the profile door ACCEPTED {name}. That sentence would "
+                           f"be published under a real company's name")
+        elif token not in got.lower():
+            errors += fail(f"the profile door refused {name} without naming "
+                           f"{token!r}: {got}. A refusal a person cannot act on "
+                           f"is a refusal nobody fixes")
+    return errors
+
+
 def check_ingest_keeps_refusals() -> int:
     """What the door refuses is KEPT, with the rule that refused it.
 
@@ -11101,6 +11277,7 @@ def main() -> int:
     errors += check_rival_door_refuses_a_category()
     errors += check_every_queue_has_a_renderer()
     errors += check_proposal_rulings_cover_every_kind()
+    errors += check_profile_door_needs_provenance()
     errors += check_ingest_keeps_refusals()
     errors += check_company_page_profile_states()
     errors += check_dechrome_keeps_sentences_and_drops_chrome()
