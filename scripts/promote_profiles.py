@@ -173,7 +173,13 @@ def land(store: dict, companies: list, keys: list[str], by: str, why: str) -> in
         if bad:
             print(f"  REFUSED by the journal: {bad}")
             return wrote
-        bad = agents.save(store, "promote-profiles", why=why, by=by)
+        # THE COUNT IS SHOWN, THEN THE STORE WRITE IS FORCED, on the same
+        # terms as the companies write above it. Without this the two halves
+        # of one landing disagree: save_companies took 99 write-ups onto the
+        # public file and journal.BLAST then refused to stamp them accepted,
+        # leaving companies.json holding profiles the store still called
+        # pending. One landing, one decision about its size.
+        bad = agents.save(store, "promote-profiles", why=why, by=by, force=n > 25)
         if bad:
             print(f"  REFUSED by the journal (store): {bad}")
             return wrote
