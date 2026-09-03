@@ -31,6 +31,23 @@ PACED THROUGH ats._get, which already gates per host, honours 429 with a
 per-host back-off, and caches with ETag and If-Modified-Since. Re-running this
 over 2,018 sites costs almost nothing on the second pass, which is what makes
 a nightly news read affordable.
+
+THIS CANNOT RUN IN A CLOUD SANDBOX, measured 2026-09-03. A scheduled cloud
+routine was built to do exactly this and its first run read ZERO pages: the
+sandbox's egress proxy answers 403 to every third-party host, confirmed
+against example.com and google.com as well as the 129 company sites it tried.
+The routine stopped rather than working around the proxy, reverted the one
+file it had touched and committed nothing, which is the right behaviour and
+half the reason this note exists.
+
+The other half: the two stages of the write-up engine want different things,
+and the split is clean. FETCHING needs the open web and is I/O bound, one
+request per second per host, so it runs where there is a network. JUDGING
+needs only the text this script has already stored, so it runs anywhere,
+including a sandbox with no egress at all. Never schedule this script
+somewhere it cannot reach the internet and then read its "129 site(s) unread"
+as a fact about those companies. It is a fact about the network, and this
+file's own first rule is that the two are not the same.
 """
 from __future__ import annotations
 
