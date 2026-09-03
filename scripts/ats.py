@@ -449,9 +449,27 @@ def _get(url: str, **kw):
         _back_off(url, resp)
     if resp.status_code != 200:
         raise AtsError(f"HTTP {resp.status_code} for {url}")
+    _fix_encoding(resp)
     if HTTP_CACHE:
         _cache_write(url, resp)
     return resp
+
+
+def _fix_encoding(resp) -> None:
+    """A text/* body with no charset in its header is UTF-8 if it decodes as
+    UTF-8. requests follows the 1999 RFC and calls it Latin-1, which turns
+    every curly apostrophe on such a page into three characters glued to
+    the word before it. Eleven of the first 157 company sites shipped that
+    way, and the write-up door refused true customer names on them. Fixed
+    here so the cache and everything downstream see the page as served."""
+    ctype = (resp.headers or {}).get("content-type", "") if hasattr(resp, "headers") else ""
+    if "charset" in ctype.lower():
+        return
+    try:
+        resp.content.decode("utf-8")
+    except (UnicodeDecodeError, AttributeError):
+        return
+    resp.encoding = "utf-8"
 
 
 def _post_json(url: str, body: dict) -> dict:

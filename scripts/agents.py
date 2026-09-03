@@ -528,6 +528,27 @@ _PF_MARKETING_RE = re.compile(
 _PF_NUMBER = re.compile(r"\d+(?:\.\d+)?")
 
 
+# A PAGE DECODED WITH THE WRONG CHARACTER SET is still that page. Eleven of
+# the first 157 sites served UTF-8 without saying so, requests read them as
+# Latin-1, and every curly apostrophe on them became three characters
+# (a-circumflex and two control bytes) glued to the word before it, so the
+# door refused "Dearborn Heights PD" as a customer not on the page. Runs
+# shaped like that are re-read as the UTF-8 they were; nothing else moves.
+_PF_MOJIBAKE = re.compile("[\u00c2\u00c3\u00e2][\u0080-\u00bf]{1,3}")
+
+
+def _pf_demojibake(s: str) -> str:
+    if "\u00e2" not in s and "\u00c3" not in s and "\u00c2" not in s:
+        return s
+
+    def fix(m: re.Match) -> str:
+        try:
+            return m.group(0).encode("latin-1").decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            return m.group(0)
+    return _PF_MOJIBAKE.sub(fix, s)
+
+
 def _pf_norm(s: str) -> str:
     """Casefold; fold curly quotes and every dash to ASCII; drop soft hyphens
     and zero-width characters; NFKC; one space per whitespace run.
@@ -537,6 +558,7 @@ def _pf_norm(s: str) -> str:
     leaves one variant behind."""
     if not isinstance(s, str):
         return ""
+    s = _pf_demojibake(s)
     s = s.translate(_PF_TRANS)
     for mark in _PF_MARKS:
         s = s.replace(mark, "")
@@ -639,8 +661,57 @@ def _pf_breaks(raw: str) -> bool:
     return False
 
 
+_PF_PAREN = re.compile(r"\([^()]{0,80}\)")
+_PF_NEAR = 120     # chars; two names the page puts this close are one claim
+
+
+def _pf_aside_free(pages_norm: dict) -> str:
+    """The loose corpus with parentheticals removed. "Rocket City (Huntsville)
+    HQ" carries the run "Rocket City HQ" with an aside in the middle, and a
+    sentence naming Rocket City HQ was refused. Used for run checks only:
+    the single-token check still sees Huntsville."""
+    return "\n".join(_pf_loose(_PF_PAREN.sub(" ", t)) for t in pages_norm.values())
+
+
+def _pf_near_bridged(tokens: list[str], corpus: str) -> bool:
+    """A run bridged over 'of' or '&' whose whole phrase is not on the page
+    still holds when the page puts its parts next to each other. The page
+    says "Sheriff Greg Champagne, St. Charles Parish Sheriff" and the writer
+    said "Greg Champagne of St. Charles Parish": a comma would have split
+    the run and passed, so the bridge must not be a stricter test than a
+    comma. Each segment must be on the page AND some occurrence of each
+    must sit within _PF_NEAR chars of the next, so "Greg Champagne of
+    Dallas County" is still refused on a page that names both, far apart."""
+    segs, cur = [], []
+    for tok in tokens:
+        if tok.casefold() in _PF_BRIDGE:
+            if cur:
+                segs.append(cur)
+            cur = []
+        else:
+            cur.append(tok)
+    if cur:
+        segs.append(cur)
+    if len(segs) < 2:
+        return False
+    spots = []
+    for seg in segs:
+        needle = _pf_loose(_pf_norm(" ".join(seg)))
+        if not needle:
+            return False
+        pat = r"(?<!\w)" + re.escape(needle) + r"(?!\w)"
+        pos = [m.start() for m in re.finditer(pat, corpus)]
+        if not pos:
+            return False
+        spots.append(pos[:200])
+    for a, b in zip(spots, spots[1:]):
+        if not any(abs(x - y) <= _PF_NEAR for x in a for y in b):
+            return False
+    return True
+
+
 def _pf_entities(text: str, allow_tokens: set[str], allow_phrases: set[tuple[str, ...]],
-                 corpus: str) -> str | None:
+                 corpus: str, corpus_aside_free: str = "") -> str | None:
     """Rule 5: the first name or number in `text` that no page carries.
 
     (a) a capitalised token off the sentence start; (b) a run of capitalised
@@ -694,7 +765,9 @@ def _pf_entities(text: str, allow_tokens: set[str], allow_phrases: set[tuple[str
             ks = tuple(k for k in keys[i:j] if k)
             span = " ".join(raws[i:j])
             if (ks not in allow_phrases and not _pf_has(corpus, span)
-                    and not _pf_has(corpus, " ".join(ks))):
+                    and not _pf_has(corpus, " ".join(ks))
+                    and not (corpus_aside_free and _pf_has(corpus_aside_free, span))
+                    and not _pf_near_bridged(raws[i:j], corpus)):
                 return span.strip(_PF_EDGE_PUNCT)
         i = j
 
@@ -786,6 +859,7 @@ def check_profile(p: dict, texts: dict[str, str]) -> str | None:
     # Rule 5 reads ALL pages, not the cited one: a customer named on the
     # about page may be cited from the homepage, and that is still their claim.
     corpus = "\n".join(_pf_loose(t) for t in pages.values())
+    corpus_aside_free = _pf_aside_free(pages)
 
     for s in sentences:
         text = s["text"].strip()
@@ -814,7 +888,7 @@ def check_profile(p: dict, texts: dict[str, str]) -> str | None:
         if _pf_norm(quote) not in pages[url]:
             return f"4. quote {quote.strip()[:40]!r} is not on {url}."
         # 5. every name and number in the prose is on their pages, by name
-        bad = _pf_entities(text, allow_tokens, allow_phrases, corpus)
+        bad = _pf_entities(text, allow_tokens, allow_phrases, corpus, corpus_aside_free)
         if bad is not None:
             return f"5. {bad!r} is not on any of their pages."
 

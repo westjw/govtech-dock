@@ -1112,6 +1112,43 @@ def check_news_extractor_refuses_undated() -> int:
     return errors
 
 
+def check_fetch_decodes_utf8_without_a_charset() -> int:
+    """A text/* body served without a charset is UTF-8 when it decodes as
+    UTF-8. requests calls it Latin-1, and eleven of the first 157 company
+    sites came back with every curly apostrophe as three glued characters,
+    so the write-up door refused true customer names on them. Driven
+    through ats._get with requests.get stubbed, so the fix is tested where
+    it runs and not on a helper the caller could drift from."""
+    import requests
+    import ats
+    body = "Dearborn Heights PD\u2019s new equipment".encode("utf-8")
+
+    def fake_get(url, headers=None, timeout=None, **kw):
+        r = requests.Response()
+        r.status_code, r.url, r._content = 200, url, body
+        r.headers["content-type"] = "text/html"          # no charset
+        r.encoding = "ISO-8859-1"                        # what requests would pick
+        return r
+    keep = (requests.get, ats.HTTP_CACHE)
+    requests.get, ats.HTTP_CACHE = fake_get, None
+    try:
+        ats._host_gate.__dict__.pop("last", None)
+        text = ats._get("https://example.invalid/x").text
+    finally:
+        requests.get, ats.HTTP_CACHE = keep
+    assert "PD\u2019s" in text, f"still Latin-1: {text!r}"
+    # and a header that DOES say Latin-1 is believed
+    def fake_latin(url, headers=None, timeout=None, **kw):
+        r = fake_get(url); r.headers["content-type"] = "text/html; charset=iso-8859-1"; return r
+    requests.get, ats.HTTP_CACHE = fake_latin, None
+    try:
+        text = ats._get("https://example.invalid/y").text
+    finally:
+        requests.get, ats.HTTP_CACHE = keep
+    assert "PD\u2019s" not in text, "a declared charset must be honoured"
+    return 0
+
+
 def check_profile_door_needs_provenance() -> int:
     """A sentence about somebody else's company must quote their own page.
 
@@ -1139,7 +1176,10 @@ def check_profile_door_needs_provenance() -> int:
           "before a patrol car has left the lot. The Lemur opens locked doors, "
           "carries a two way radio into a barricaded room and gives a commander a "
           "live picture of what is inside. Founded in 2017 and based in Seattle, "
-          "Washington. The founder’s first prototype flew in a garage.")
+          "Washington. The founder’s first prototype flew in a garage. "
+          # far from every sheriff on P2, so a bridged run that pairs a sheriff
+          # with this county is refused for distance, not absence
+          "Dallas County runs a separate program.")
     P2 = ("Customers include the Chula Vista Police Department, which flies drones "
           "as first responders across the city under a waiver from the Federal "
           "Aviation Administration. Brinc raised $1.2M in 2019. The team of 1,200 "
@@ -1152,7 +1192,14 @@ def check_profile_door_needs_provenance() -> int:
           # version solely as 3.5.0.
           "The Talon\u2122 carries a radio. Two Ravens were deployed. "
           "Reporting follows NIBRS 3.5.0. Guardianship transfers are logged "
-          "and the solutions ship quarterly.")
+          "and the solutions ship quarterly. "
+          # a page decoded as Latin-1: the curly apostrophe after PD became
+          # a-circumflex plus two control bytes, glued to the word
+          "Dearborn Heights PD\u00e2\u0080\u0099s new equipment was boosted. "
+          # a run interrupted by an aside
+          "Rocket City (Huntsville) HQ is in Alabama. "
+          # two names the page puts side by side with a comma, not 'of'
+          "Sheriff Greg Champagne, St. Charles Parish Sheriff, Louisiana.")
     T = {"https://b.example/": P1, "https://b.example/about": P2}
     Q1 = "Brinc builds drones that police departments"
     Q2 = "Customers include the Chula Vista Police Department"
@@ -1200,6 +1247,15 @@ def check_profile_door_needs_provenance() -> int:
         # plural-page case.
         ("a name the page writes only in the singular",
          prop(s2=sub(S2, 2, "The Talons carry a radio into a barricaded room."))),
+        # A PAGE DECODED WITH THE WRONG CHARACTER SET is still that page.
+        ("a customer whose page was read as Latin-1",
+         prop(s2=sub(S2, 2, "Dearborn Heights PD bought new equipment for its officers."))),
+        # A PARENTHETICAL IS AN ASIDE, not part of the run.
+        ("a run the page interrupts with a parenthetical",
+         prop(s2=sub(S2, 2, "The Rocket City HQ is staffed by police veterans."))),
+        # 'OF' IS NOT A STRICTER TEST THAN A COMMA.
+        ("two names the page puts side by side, bridged with 'of' in the prose",
+         prop(s2=sub(S2, 2, "Testimonials include Greg Champagne of St. Charles Parish."))),
         # A TRADEMARK SYMBOL IS NOT A LETTER. NFKC maps a trademark sign to
         # the letters TM, so a page writing a product with one normalised to
         # a single glued token and the product read as invented.
@@ -1245,6 +1301,10 @@ def check_profile_door_needs_provenance() -> int:
         # "solutions" and nothing called Ion exists on it.
         ("an invented name that sits INSIDE a word on the page", "ion",
          prop(s2=sub(S2, 2, "The Ion module records audio for police departments."))),
+        # THE BRIDGE RULE STAYS A RULE: both names are on the pages, far
+        # apart, and pairing them is a claim the page does not make.
+        ("a bridged run pairing two names the page keeps apart", "dallas county",
+         prop(s2=sub(S2, 2, "Testimonials include Greg Champagne of Dallas County."))),
         ("a version number the page writes longer", "3.5",
          prop(s2=sub(S2, 2, "Reporting follows the NIBRS 3.5 standard for police records."))),
         # THE SHAPE RULES. The first version of this battery covered only the
@@ -11691,6 +11751,7 @@ def main() -> int:
     errors += check_conference_counts_reach_both_events()
     errors += check_news_extractor_refuses_undated()
     errors += check_profile_door_needs_provenance()
+    errors += check_fetch_decodes_utf8_without_a_charset()
     errors += check_ingest_keeps_refusals()
     errors += check_company_page_profile_states()
     errors += check_dechrome_keeps_sentences_and_drops_chrome()
