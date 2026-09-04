@@ -421,6 +421,21 @@ function toast(msg, bad) {
   document.body.appendChild(t); setTimeout(() => t.remove(), 4200);
 }
 
+/* WHAT THE RULING OPENED, said on the way past. The queues are seventeen
+   separate questions and answering one used to look like answering one:
+   wiring Rain Bird's board made ten invisible roles live AND made its
+   description writable, and the only feedback was "saved". Every /api/
+   answer now carries `unlocked` when a ruling changed what is possible for
+   that company, and this is where a person sees it. It stays longer than an
+   ordinary toast because it is worth reading rather than acknowledging. */
+function sayUnlocked(res, name) {
+  if (!res || !res.unlocked || !res.unlocked.says) return;
+  const t = el('div', 'toast unlocked');
+  t.textContent = (name ? name + ' ' : '') + res.unlocked.says;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 8000);
+}
+
 const INTRO = {
   duplicates: 'Two records for one vendor. Merging keeps every field the survivor '
     + 'already has and inherits the ones it is missing, so nothing researched is lost — '
@@ -1165,6 +1180,7 @@ function attachSuggest(key, item, row) {
         yes.disabled = false;
         if (res.error) { msg.textContent = res.error; msg.style.color = 'var(--warn)'; return; }
         toast(res.message || 'done');
+        sayUnlocked(res, (typeof c !== 'undefined' && c && c.name) || (typeof p !== 'undefined' && p && p.name) || (typeof item !== 'undefined' && item && item.name) || '');
         box.remove();
         a.textContent = 'done ✓';
         a.onclick = e2 => e2.preventDefault();
@@ -1559,6 +1575,7 @@ async function commit(spec, it, why, card, idx) {
   const r = await api(path, body);
   if (r.error) return refuse(r.error, card);
   toast(r.message);
+  sayUnlocked(r, (typeof c !== 'undefined' && c && c.name) || (typeof p !== 'undefined' && p && p.name) || (typeof item !== 'undefined' && item && item.name) || '');
   BELT.armed = null;
   BELT.ruled++;
   BELT.done.add(idx);
@@ -1593,6 +1610,7 @@ async function settleFamily(it, why, card, idx) {
     theme: it.theme, why: (why.value || '').trim()});
   if (r.error) return refuse(r.error, card);
   toast(r.message);
+  sayUnlocked(r, (typeof c !== 'undefined' && c && c.name) || (typeof p !== 'undefined' && p && p.name) || (typeof item !== 'undefined' && item && item.name) || '');
   BELT.armed = null;
   BELT.ruled += names.length;
   peers.forEach(p => BELT.done.add(p.j));
@@ -1820,6 +1838,7 @@ RENDER.duplicates = g => {
         const r = await api('/api/merge', {keep: m.id, drop: d.id});
         if (r.error) return toast(r.error, true);
         toast(r.message);
+        sayUnlocked(r, (typeof c !== 'undefined' && c && c.name) || (typeof p !== 'undefined' && p && p.name) || (typeof item !== 'undefined' && item && item.name) || '');
       }
       n.remove(); refreshCounts();
     };
@@ -1983,6 +2002,7 @@ RENDER.websites = c => {
           return;
         }
         toast(res.message);
+        sayUnlocked(res, (typeof c !== 'undefined' && c && c.name) || (typeof p !== 'undefined' && p && p.name) || (typeof item !== 'undefined' && item && item.name) || '');
         fix.remove();
         if (res.recheck) check.click();   // show it going green, not just say so
       };
@@ -2130,6 +2150,7 @@ RENDER.websites = c => {
     save.disabled = false; save.textContent = 'Save';
     if (r.error) return toast(r.error, true);
     toast(r.message);
+    sayUnlocked(r, (typeof c !== 'undefined' && c && c.name) || (typeof p !== 'undefined' && p && p.name) || (typeof item !== 'undefined' && item && item.name) || '');
     const won = el('div', 'kv');
     if (r.logo) won.appendChild(el('span', 'chip ok', 'logo'));
     // the board ref was just read off the company's own site
@@ -2165,6 +2186,7 @@ RENDER.blocked = c => {
     retry.disabled = false; retry.textContent = 'Retry now';
     if (r.error) return toast(r.error, true);
     toast(r.message);
+    sayUnlocked(r, (typeof c !== 'undefined' && c && c.name) || (typeof p !== 'undefined' && p && p.name) || (typeof item !== 'undefined' && item && item.name) || '');
     if (/found and verified/.test(r.message)) { n.remove(); refreshCounts(); }
   };
   row.appendChild(retry);
@@ -2316,6 +2338,7 @@ RENDER.boards = c => {
       go.disabled = false;
       if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
       toast(r.message);
+      sayUnlocked(r, (typeof c !== 'undefined' && c && c.name) || (typeof p !== 'undefined' && p && p.name) || (typeof item !== 'undefined' && item && item.name) || '');
       n.remove();
     };
     pa.append(sel, owner, link, go, msg);
@@ -2394,6 +2417,7 @@ RENDER.founded = c => {
     save.disabled = false;
     if (r.error) return fail(r);
     toast(r.message);
+    sayUnlocked(r, (typeof c !== 'undefined' && c && c.name) || (typeof p !== 'undefined' && p && p.name) || (typeof item !== 'undefined' && item && item.name) || '');
     n.remove();
   };
   save.onclick = go;
@@ -2410,6 +2434,7 @@ RENDER.founded = c => {
       ok.disabled = false;
       if (r.error) return fail(r);
       toast(r.message);
+      sayUnlocked(r, (typeof c !== 'undefined' && c && c.name) || (typeof p !== 'undefined' && p && p.name) || (typeof item !== 'undefined' && item && item.name) || '');
       n.remove();
     };
     row.appendChild(ok);
@@ -3227,6 +3252,7 @@ RENDER.miscategorized = c => {
     // the primary is still the supplier bucket, so the row still needs its
     // real fix; removing the card here just brought it back on reload
     toast(r.message + ' — primary still needs filing');
+    sayUnlocked(r, (typeof c !== 'undefined' && c && c.name) || (typeof p !== 'undefined' && p && p.name) || (typeof item !== 'undefined' && item && item.name) || '');
   };
   const move = el('button', 'act good', 'File it here');
   move.onclick = async () => {
@@ -3606,6 +3632,7 @@ async function showCapture() {
       jobs: parsed.jobs, page_url: parsed.page_url});
     if (r.error) return toast(r.error, true);
     toast(r.message);
+    sayUnlocked(r, (typeof c !== 'undefined' && c && c.name) || (typeof p !== 'undefined' && p && p.name) || (typeof item !== 'undefined' && item && item.name) || '');
     ta.value = ''; q.value = ''; company = null; parsed = null;
     go.disabled = true;
     n.querySelectorAll('.evi').forEach(x => x.remove());

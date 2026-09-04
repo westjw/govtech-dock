@@ -4282,6 +4282,63 @@ def act_ask(body: dict) -> dict:
             "says": out.get("says", ""), "evidence": out.get("evidence", [])}
 
 
+def _ledger_state(cid):
+    """One company's completeness, or None when the action names no company.
+
+    Read straight off disk both times, because the point is what the WRITE
+    changed - a cached view would report the ruling as having bought nothing.
+    """
+    if not cid:
+        return None
+    try:
+        import ledger
+        companies = read_companies()
+        c = next((x for x in companies if x.get("id") == cid), None)
+        if c is None:
+            return None
+        board = read("board.json", {})
+        org = next((o for o in board.get("organizations", []) if o.get("id") == cid), None)
+        return ledger.state(c, org)
+    except Exception:
+        # A REPORT MUST NEVER BREAK A RULING. This is commentary on a write
+        # that has already happened; if it cannot be produced, the ruling
+        # still stands and the person simply hears less about it.
+        return None
+
+
+def _ledger_unlocked(before, cid):
+    after = _ledger_state(cid)
+    if after is None:
+        return None
+    try:
+        import ledger
+        u = ledger.unlocked(before, after)
+    except Exception:
+        return None
+    if not u["gained"] and not u["now_possible"]:
+        return None
+    lab = lambda k: ledger.FACTS[k]["label"]
+    said = []
+    if u["gained"]:
+        said.append("now has " + ", ".join(lab(k) for k in u["gained"]))
+    if u["now_possible"]:
+        said.append("which puts " + ", ".join(lab(k) for k in u["now_possible"])
+                    + " within reach")
+    # WHAT A BOARD ACTUALLY BUYS IS ROLES, and they are not in the ledger
+    # because a company with a readable board and nothing open is not
+    # incomplete. But the payoff is the whole reason to wire one, so it is
+    # said - and said as a promise about the next build rather than as a
+    # count, because act_set_board does not fetch and claiming roles that
+    # have not been read yet would be exactly the invented number this
+    # project refuses everywhere else.
+    if "board" in u["gained"]:
+        said.append("its open roles appear on the next build")
+    if "description" in u["gained"]:
+        said.append("and its page now says what the company does")
+    return {"gained": u["gained"], "now_possible": u["now_possible"],
+            "says": "; ".join(said) + "."}
+
+
 def act_dismiss(body: dict) -> dict:
     bad = dismiss(body.get("queue", ""), body.get("key", ""),
                   body.get("why", ""), by=(body.get("by") or "owner"))
@@ -5002,6 +5059,14 @@ class Handler(http.server.BaseHTTPRequestHandler):
             return self._json({"error": "bad request body"}, 400)
         if not isinstance(body, dict):
             return self._json({"error": "bad request body"}, 400)
+        # WHAT THE RULING BOUGHT, read before and after. The queues are
+        # seventeen separate questions and a person answering one could not
+        # see that the answer opened three more: wiring Rain Bird's board
+        # turned ten invisible roles into ten live ones AND made its
+        # description writable for the first time, and nothing said so. A
+        # queue that cannot tell you what your last ruling opened is a queue
+        # that feels like filing.
+        before = _ledger_state(body.get("id"))
         try:
             # Every action, not only the ones that obviously fetch: an action
             # that grows a fetch later inherits the guard instead of having to
@@ -5010,6 +5075,10 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 out = ACTIONS[action](body)
         except Exception as exc:
             return self._json({"error": f"{type(exc).__name__}: {exc}"}, 500)
+        if isinstance(out, dict) and not out.get("error") and before is not None:
+            gained = _ledger_unlocked(before, body.get("id"))
+            if gained:
+                out["unlocked"] = gained
         return self._json(out, 400 if out.get("error") else 200)
 
 

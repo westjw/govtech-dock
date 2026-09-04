@@ -1234,6 +1234,88 @@ console.log(JSON.stringify({
     return errors
 
 
+def check_a_ruling_says_what_it_opened() -> int:
+    """Answering one queue's question tells you what it made possible.
+
+    The queues are seventeen separate questions and answering one looked like
+    answering one. Wiring Rain Bird's board made ten invisible roles live and
+    made its description writable for the first time; the feedback was
+    "saved". The ledger knows what a finished page holds and what each fact
+    depends on, so every action can report what its write changed.
+
+    TWO THINGS ARE ASSERTED HARDEST. That "missing" and "blocked" stay
+    different - a description with no website is not work waiting for a
+    person, and conflating them is what makes a queue feel endless. And that
+    a company with a readable board and nothing open is NOT incomplete: an
+    earlier version of the ledger called 813 companies "missing open roles",
+    which is the absence-reported-as-absence mistake this repo exists to
+    refuse.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ledger, admin
+    errors = 0
+
+    co = {"id": "acme", "name": "Acme", "website": "https://acme.example",
+          "ats": {"type": "unknown", "ref": None}}
+    s = ledger.state(co, {"id": "acme"})
+    if "website" not in s["have"]:
+        errors += fail(f"the ledger cannot see a website: {s}")
+    if "board" not in s["missing"]:
+        errors += fail(f"a company with a website and no board should be able to "
+                       f"start one: {s}")
+    if s["blocked"].get("competitors") != ["description"]:
+        errors += fail(f"a competitor shortlist must be BLOCKED on a description, "
+                       f"not listed as work somebody can start: {s}")
+
+    # NOTHING IS BLOCKED ON A FACT NOBODY CAN SUPPLY, and roles are not a fact.
+    if "roles" in ledger.FACTS:
+        errors += fail("open roles are back in the ledger. A company with a "
+                       "readable board and nothing open is not incomplete, and "
+                       "counting it as missing reports absence of evidence as "
+                       "evidence of absence")
+
+    # A COMPANY WITH NO WEBSITE HAS EVERYTHING DOWNSTREAM BLOCKED, not missing.
+    bare = ledger.state({"id": "x", "name": "X", "ats": {"type": "unknown"}}, None)
+    if set(bare["blocked"]) < {"board", "description"}:
+        errors += fail(f"with no website, the board and the description are not "
+                       f"blocked - so a person is shown work they cannot do: {bare}")
+    if "website" not in bare["missing"]:
+        errors += fail(f"the one thing that CAN be done is not offered: {bare}")
+
+    # WHAT A RULING BOUGHT.
+    after = ledger.state(dict(co, ats={"type": "greenhouse", "ref": "acme"}), {"id": "acme"})
+    u = ledger.unlocked(s, after)
+    if u["gained"] != ["board"]:
+        errors += fail(f"wiring a board did not register as a gain: {u}")
+
+    got = ledger.state(dict(co, profile={"paragraphs": ["x"]}), {"id": "acme"})
+    u2 = ledger.unlocked(s, got)
+    if "competitors" not in u2["now_possible"]:
+        errors += fail(f"landing a description did not put competitors within "
+                       f"reach, which is the whole point of the chain: {u2}")
+
+    # THE ADMIN SAYS IT. A ledger nobody surfaces is a report nobody reads.
+    src = (ROOT / "scripts" / "admin.py").read_text()
+    if "_ledger_unlocked(before" not in src or 'out["unlocked"]' not in src:
+        errors += fail("no action reports what it opened")
+    if "its open roles appear on the next build" not in src:
+        errors += fail("wiring a board does not mention the roles it buys, which "
+                       "is the only reason to wire one")
+    html = (ROOT / "admin.html").read_text()
+    # THE OPEN PAREN IS THE POINT: "function sayUnlocked_unused" contains
+    # "function sayUnlocked", so the loose check passed a page where the
+    # function had been renamed out of every call site.
+    if "function sayUnlocked(" not in html or html.count("sayUnlocked(r") < 5:
+        errors += fail("the admin page does not show the unlock line after a ruling")
+    # AND IT CANNOT THROW. A bare reference to a name that is not in scope is
+    # a ReferenceError at runtime, which a parse check does not catch.
+    if "typeof c !== 'undefined'" not in html:
+        errors += fail("the unlock line reads names that may not be in scope at "
+                       "every call site; a ReferenceError there breaks the ruling "
+                       "it was reporting on")
+    return errors
+
+
 def check_placement_queues_can_say_both() -> int:
     """A queue that asks "is this on the right shelf?" must be able to answer
     "both", because sometimes both are right.
@@ -13391,6 +13473,7 @@ def main() -> int:
     errors += check_proposal_rulings_cover_every_kind()
     errors += check_write_ups_queue_shows_only_exceptions()
     errors += check_users_board_never_stores_an_address()
+    errors += check_a_ruling_says_what_it_opened()
     errors += check_placement_queues_can_say_both()
     errors += check_a_company_sits_on_at_most_two_shelves()
     errors += check_jibe_is_read_and_verifiable()
