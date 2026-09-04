@@ -3014,6 +3014,64 @@ def check_ingest_keeps_refusals() -> int:
     return errors
 
 
+def check_data_writers_are_serialised() -> int:
+    """Two jobs must never push data/ to the default branch at once.
+
+    Neither refresh nor watchdog declared a `concurrency` group, and a news
+    sweep four times a day makes that a third committer. The failure is not a
+    crash: refresh.yml resolves its own pull with `--rebase -X theirs`, so on
+    a conflict the bot's copy WINS and the other job's write is silently
+    dropped. A ruling made from a phone would vanish with nothing red
+    anywhere.
+
+    THE RULE IS ABOUT THE DEFAULT BRANCH, not about workflows in general.
+    add-company.yml also commits data/companies.json, and it is deliberately
+    NOT in the group: it pushes to a feature branch and opens a pull request,
+    so it cannot race on main, and putting it in the group would queue an
+    issue-triggered add behind a two-and-a-half hour refresh for no gain.
+    """
+    import re as _re
+    errors = 0
+    wf = ROOT / ".github" / "workflows"
+    if not wf.exists():
+        note("no workflows on disk")
+        return 0
+    groups, exempt = {}, []
+    for f in sorted(wf.glob("*.yml")):
+        src = f.read_text()
+        if "data/" not in src or "git push" not in src:
+            continue
+        # a push naming a branch variable is a pull-request flow, not main
+        to_branch = _re.search(r"git push[^\n]*origin\s+[\"']?\$", src)
+        m = _re.search(r"^concurrency:\n(?:\s+#[^\n]*\n)*\s+group:\s*(\S+)",
+                       src, _re.M)
+        if to_branch:
+            exempt.append(f.name)
+            continue
+        groups[f.name] = m.group(1) if m else None
+    missing = [n for n, g in groups.items() if not g]
+    if missing:
+        errors += fail(f"{', '.join(missing)} push data/ to the default branch "
+                       f"with no concurrency group. refresh.yml's "
+                       f"`--rebase -X theirs` means a collision silently drops "
+                       f"the other job's write.")
+    named = {g for g in groups.values() if g}
+    if len(named) > 1:
+        errors += fail(f"data-writing jobs declare different concurrency "
+                       f"groups {sorted(named)}; separate groups do not "
+                       f"serialise against each other at all")
+    if not groups:
+        errors += fail("no workflow was recognised as pushing data/ to the "
+                       "default branch, so this check is measuring nothing")
+    # and the exemption must stay an exemption, not a hole
+    for n in exempt:
+        src = (wf / n).read_text()
+        if "pull_request" not in src and "$BR" not in src and "branch" not in src.lower():
+            errors += fail(f"{n} was treated as a pull-request flow but does "
+                           f"not look like one")
+    return errors
+
+
 def check_a_negative_verdict_needs_evidence_too() -> int:
     """A wrong "not this board" hides a company for ever, so it is not the cheap answer.
 
@@ -14285,6 +14343,7 @@ def main() -> int:
     errors += check_the_spend_log_is_a_bill_not_a_transcript()
     errors += check_a_cap_stops_the_call_it_would_pay_for()
     errors += check_an_override_cannot_beat_a_working_rule()
+    errors += check_data_writers_are_serialised()
     errors += check_a_negative_verdict_needs_evidence_too()
     errors += check_a_fact_must_be_quoted_from_their_own_page()
     errors += check_a_place_we_do_not_count_is_never_a_board_we_could()

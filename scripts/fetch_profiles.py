@@ -359,6 +359,34 @@ def visit(company: dict, news_depth: int = 1) -> dict:
                 art["from_index"] = u
                 out["news"].append(art)
 
+    # THE FEED, IF THEY PUBLISH ONE. Read after the news pages because that is
+    # where the <link rel="alternate"> lives, and stored beside them so
+    # news.extract stays pure. An unchanged feed answers 304 through the same
+    # conditional request every other fetch here uses, which is what makes a
+    # sweep four times a day cost almost nothing.
+    try:
+        import feeds as _feeds
+        seen_feeds: list[str] = []
+        for pg in out["news"]:
+            if not pg.get("html"):
+                continue
+            for fu in _feeds.feed_urls(pg["html"], pg["url"]):
+                if fu in seen_feeds:
+                    continue
+                seen_feeds.append(fu)
+                got, _unchanged, note = _feeds.read(fu)
+                if got:
+                    out.setdefault("feed", []).append(
+                        {"url": fu, "shape": _feeds.feed_shape(fu),
+                         "items": got,
+                         # the body is what check_news_item verifies the
+                         # headline against; capped like every other page here
+                         "body": " ".join(i["headline"] for i in got)})
+                elif note:
+                    out.setdefault("feed_notes", []).append({"url": fu, "note": note})
+    except Exception:                       # a feed must never fail a visit
+        pass
+
     if not out["news"]:
         # A REAL FINDING, and the one the news engine must not paper over.
         # No news page is not no news, and the company page has to say the

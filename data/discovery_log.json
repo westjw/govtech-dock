@@ -2427,10 +2427,9 @@
   "note": "no board found"
  },
  "smartmatic": {
-  "on": "2026-08-20",
+  "on": "2026-09-03",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "scytl-election-technologies": {
   "on": "2026-08-20",
@@ -2682,10 +2681,9 @@
   "note": "no board found"
  },
  "proactis": {
-  "on": "2026-08-20",
+  "on": "2026-09-03",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "fluxx": {
   "on": "2026-08-19",
@@ -3237,10 +3235,9 @@
   "retry_soon": true
  },
  "rhythm-engineering": {
-  "on": "2026-08-20",
+  "on": "2026-09-03",
   "found": false,
-  "note": "blocked at the door (HTTP 202)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "sensys-networks": {
   "on": "2026-08-20",
@@ -3975,10 +3972,9 @@
   "retry_soon": true
  },
  "etix": {
-  "on": "2026-08-20",
+  "on": "2026-09-03",
   "found": false,
-  "note": "blocked at the door (HTTP 202)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "24-7-software": {
   "on": "2026-08-20",
@@ -4100,10 +4096,9 @@
   "weak": true
  },
  "priority-dispatch": {
-  "on": "2026-08-20",
+  "on": "2026-09-03",
   "found": false,
-  "note": "html:https://www.paycomonline.net/v4/at found but unreadable (page too small - likely JS-rendered)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "rave-mobile-safety": {
   "on": "2026-08-20",
@@ -4265,9 +4260,9 @@
   "retry_soon": true
  },
  "precision-kiosk-technologies": {
-  "on": "2026-08-20",
+  "on": "2026-09-03",
   "found": false,
-  "note": "gave up after 75s"
+  "note": "retry: no careers page or ATS marker found"
  },
  "od-security-north-america": {
   "on": "2026-08-20",
@@ -4628,10 +4623,9 @@
   "retry_soon": true
  },
  "adf-solutions": {
-  "on": "2026-08-20",
+  "on": "2026-09-03",
   "found": false,
-  "note": "blocked at the door (HTTP 202)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "griffeye": {
   "on": "2026-08-20",

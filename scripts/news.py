@@ -360,6 +360,20 @@ def extract(company: dict, rec: dict, today: str | None = None) -> dict:
                 "items": [], "refused": []}
     texts = {pg["url"]: pg.get("text") or text_of(pg["html"]) for pg in pages}
     by_url: dict[str, dict] = {}
+    # THE FEED FIRST, WHEN THERE IS ONE. 676 of these companies publish an
+    # RSS or Atom feed and every line of the HTML parsing below exists to
+    # recover a date the feed simply states. A feed item is not trusted more
+    # than a parsed one - it goes through check_news_item exactly the same,
+    # and its own body is what the headline is checked against, which is true
+    # by construction and is the point: a feed is the company's own words.
+    #
+    # The fetch happened in fetch_profiles, so this stays pure and testable.
+    for f in (rec.get("feed") or []):
+        body = f.get("body") or ""
+        if body:
+            texts[f["url"]] = body
+        for it in f.get("items") or []:
+            by_url.setdefault(_norm_url(it["url"]), dict(it))
     # AN "INDEX" MAY ITSELF BE AN ARTICLE. fetch_profiles follows /news/ from
     # a homepage, and on a site whose newsroom link points at the latest post
     # that page IS the post - brinc's did. Parsed as an index, its own

@@ -24,6 +24,7 @@ permissions:
   contents: read
   issues: write
 
+
 jobs:
   watch:
     runs-on: ubuntu-latest

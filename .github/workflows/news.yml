@@ -1,0 +1,87 @@
+name: news
+
+# FOUR TIMES A DAY, EVERY COMPANY, and the arithmetic is why that is not
+# reckless. The sweep re-checks 4,259 news index pages across 1,387 distinct
+# hosts - a median of 3 per host, so a run asks any one site about three
+# questions and a day asks it twelve. Almost every one answers 304 Not
+# Modified through ats._get's conditional request, which sends a header and
+# receives a header.
+#
+# The expensive half is the second hop: 12,559 article pages are held on disk
+# because an index page rarely dates its own items. Those are re-followed only
+# when an index actually changed, and for the 676 companies that publish an
+# RSS or Atom feed they are not followed at all - a feed states the date.
+#
+# Clear of the other two jobs by the clock AND by the concurrency group.
+# refresh runs 10:00 and takes ~2.5h; watchdog runs 15:00.
+on:
+  schedule:
+    - cron: "0 1 * * *"
+    - cron: "0 7 * * *"
+    - cron: "0 13 * * *"
+    - cron: "0 19 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  # THE SAME GROUP AS refresh AND watchdog. Three jobs commit into data/ and
+  # none of them declared a group, so an apply and a refresh could commit
+  # concurrently - and refresh.yml's `git pull --rebase -X theirs` lets the
+  # bot's copy WIN that conflict, silently dropping the other job's write.
+  # cancel-in-progress is false because a half-finished sweep that gets killed
+  # leaves the map exactly as stale as not running at all, only with a red X.
+  group: govtech-dock-data
+  cancel-in-progress: false
+
+jobs:
+  news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      TZ: America/New_York        # journal ids key on the date; refresh pins
+                                  # this too and two jobs must agree on it
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Restore the conditional-request cache
+        # WITHOUT THIS EVERY REQUEST IS A FULL FETCH. The cache holds the ETag
+        # and Last-Modified per url; a cold runner has neither, so it cannot
+        # send If-None-Match and every one of the 4,259 pages comes back 200
+        # with a body. The whole cost argument above depends on this step.
+        uses: actions/cache@v4
+        continue-on-error: true
+        with:
+          path: data/http_cache
+          key: news-http-cache-${{ github.run_id }}
+          restore-keys: |
+            news-http-cache-
+            http-cache-
+
+      - name: Self-test
+        run: python scripts/selftest.py
+
+      - name: Re-read the newsrooms and the feeds
+        run: |
+          python scripts/fetch_profiles.py --news --refetch --workers 4 --write
+
+      - name: Extract, behind the door
+        run: python scripts/news.py --write
+
+      - name: Commit what changed
+        run: |
+          git config user.name  "westjw"
+          git config user.email "67345260+westjw@users.noreply.github.com"
+          git add data/news.json data/site_pages_index.json
+          git diff --cached --quiet && echo "nothing new" && exit 0
+          git commit -m "news: $(date -u +%Y-%m-%dT%H:%MZ) sweep"
+          git pull --rebase
+          git push
