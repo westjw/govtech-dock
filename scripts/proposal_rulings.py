@@ -48,6 +48,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import admin                                                    # noqa: E402
 import agents                                                   # noqa: E402
+import roles                                                    # noqa: E402
 
 # Kinds this door cannot land, and WHY each one, because "no applier yet" is
 # two different facts. `profile` has an applier - promote_profiles.py - but it
@@ -137,6 +138,42 @@ def _accept_bucket(p: dict, by: str, why: str, force: bool) -> dict:
                             "proposed": f"{p.get('sector')} / {p.get('category')}",
                             "confidence": p.get("confidence"),
                             "description": saw.get("description"), "by": by})
+
+
+def _accept_family(p: dict, by: str, why: str, force: bool) -> dict:
+    """File one title under one family, in family_overrides.json.
+
+    NOT THROUGH admin.act_set_family, which writes the file with a bare
+    write_atomic and journals nothing. CLAUDE.md heads a section "Every admin
+    write is reversible" and that call is one of six that make it false; a
+    ruling arriving from a nightly model run is the last write that should be
+    the unrecoverable one, so this goes through save_decisions like every
+    other decision file. The owner's own click still takes the old path -
+    fixing that is P4.1 and belongs with the other five, not smuggled in here.
+
+    THE TITLE IS RE-CHECKED AGAINST THE QUEUE at the moment of the write. The
+    door checked it at ingest, which can be weeks earlier: a rule added to
+    roles.py in between would place the title correctly, and this override
+    would silently beat it. That is the one failure this file cannot see
+    afterwards.
+    """
+    title = p.get("title") or p.get("id")
+    fam = p.get("family")
+    if fam not in roles.LABEL or fam == "other":
+        return {"error": f"unknown family {fam!r}"}
+    if title not in agents.unclassified_titles():
+        return {"error": f"{title!r} is no longer unclassified - a rule places "
+                         f"it now, and an override would beat that rule"}
+    over = admin.read("family_overrides.json", {})
+    if title in over:
+        return {"error": f"{title!r} already reads "
+                         f"{over[title].get('family')}; change it in the admin"}
+    over[title] = {"family": fam, "on": dt.date.today().isoformat(), "by": by}
+    bad = admin.save_decisions("family_overrides.json", over, "set-family",
+                               why=(why or p.get("why") or "")[:300], by=by)
+    if bad:
+        return {"error": bad}
+    return {"ok": True, "message": f"{title} -> {roles.LABEL[fam]}"}
 
 
 def _retract(p: dict, by: str, why: str) -> str:
@@ -242,6 +279,8 @@ def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
         res = _accept_board(p, by, why, force)
     elif kind == "bucket":
         res = _accept_bucket(p, by, why, force)
+    elif kind == "family":
+        res = _accept_family(p, by, why, force)
     elif kind == "rival":
         res = _accept_rival(p, by, why, force, store)
     elif kind == "profile":

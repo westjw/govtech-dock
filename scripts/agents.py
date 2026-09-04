@@ -54,6 +54,10 @@ import re
 import sys
 import unicodedata
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+
+import roles                                                    # noqa: E402
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 STORE = DATA / "agent_proposals.json"
@@ -61,7 +65,8 @@ STORE = DATA / "agent_proposals.json"
 # profile, news and claim are declared ahead of their appliers so the queue
 # can show them; proposal_rulings refuses to land one until the applier
 # exists, by name, rather than raising inside a request handler.
-KINDS = ("bucket", "read", "card", "board", "rival", "profile", "news", "claim")
+KINDS = ("bucket", "read", "card", "board", "rival", "profile", "news",
+         "claim", "family")
 CONFIDENCE = ("high", "medium", "low", "unsure")
 
 
@@ -125,6 +130,67 @@ def brief_bucket(limit: int | None = None) -> list[dict]:
             "regex_guess": (f"{r['proposed_sector']} / {r['proposed_category']}"
                             if r.get("proposed_sector") else None),
             "regex_confidence": r.get("confidence"),
+        })
+    return out[:limit] if limit else out
+
+
+def brief_family(limit: int | None = None) -> list[dict]:
+    """One brief per job title `roles.py` could not put in a family.
+
+    756 distinct titles sit in `other`, which is the queue the admin calls
+    Unclassified, and every one of them is a title the pattern rules already
+    read and could not place. So the brief carries no guess: there is nothing
+    to anchor to, which is the opposite of the bucket brief's problem.
+
+    WHAT IT DOES CARRY IS THE COMPANY, and that is the whole reason this is
+    judgment rather than a longer regex. "Implementation Consultant" is field
+    work at a public-safety vendor and professional services at a consultancy;
+    "Solutions Architect" is presales at one company and engineering at
+    another. The title alone genuinely does not say, and a rule that guessed
+    from the title alone would be wrong in both directions at once.
+
+    HOW MANY POSTINGS WEAR THE TITLE is in the brief too, because it decides
+    what the answer is worth. A title on 40 postings across 12 companies is
+    not an override waiting to be typed - it is a rule `roles.py` is missing,
+    and `judge.py` prints those clusters rather than filing 40 overrides that
+    hide the gap.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+
+    companies = json.loads((DATA / "companies.json").read_text())
+    board = json.loads((DATA / "board.json").read_text())
+    rows = admin.q_unclassified(companies, board)
+    cos = {c.get("id"): c for c in companies if c.get("id")}
+    wear: dict = {}
+    for post in board.get("postings", []):
+        if post.get("family") == "other":
+            wear.setdefault(post["title"], []).append(post)
+    done = load()
+    out = []
+    for r in rows:
+        title = r["title"]
+        if f"family:{title}" in done:
+            continue          # already proposed; a re-run does not re-ask
+        posts = wear.get(title, [])
+        firms = []
+        for post in posts:
+            c = cos.get(post.get("company_id")) or {}
+            label = c.get("name") or post.get("company") or ""
+            sector = f"{c.get('sector')} / {c.get('category')}" if c.get("sector") else ""
+            if label and (label, sector) not in firms:
+                firms.append((label, sector))
+        out.append({
+            "kind": "family",
+            "key": f"family:{title}",
+            "id": title,
+            "name": title,
+            "title": title,
+            "postings": len(posts),
+            "at_companies": [{"name": n, "filed": f} for n, f in firms[:6]],
+            "sample_location": r.get("location") or "",
+            "url": r.get("url") or "",
+            "families": {k: v for k, v in roles.LABEL.items() if k != "other"},
         })
     return out[:limit] if limit else out
 
@@ -1093,6 +1159,56 @@ def check_board(p: dict) -> str | None:
 
 # ---------------------------------------------------------------- intake
 
+def unclassified_titles() -> set:
+    """The titles the queue is actually asking about. Read fresh, not cached.
+
+    THE DOOR NEEDS THIS AND THE BRIEF IS NOT ENOUGH. `family_overrides.json`
+    is keyed by exact title and `roles.family()` reads it ON TOP of the
+    pattern rules, so an override for a title the patterns already place
+    SILENTLY BEATS a working rule. Every other kind here proposes against a
+    company that exists; this one can propose against a title nobody asked
+    about, and the damage would be invisible - a correctly-classified title
+    quietly reassigned, no error, no count out of place.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+
+    companies = json.loads((DATA / "companies.json").read_text())
+    board = json.loads((DATA / "board.json").read_text())
+    return {r["title"] for r in admin.q_unclassified(companies, board)}
+
+
+def check_family(p: dict, asked: set) -> str | None:
+    """Refuse a family proposal before it can overwrite a working rule."""
+    title = p.get("title") or p.get("id")
+    fam = p.get("family")
+    conf = p.get("confidence")
+    if conf not in CONFIDENCE:
+        return f"confidence must be one of {CONFIDENCE}"
+    if not title:
+        return "a family proposal names the exact title it is about"
+    if title not in asked:
+        # the dangerous direction, and the only one that is silent
+        return (f"{title!r} is not in the unclassified queue; an override for "
+                f"a title the rules already place would beat that rule")
+    why = (p.get("why") or "").strip()
+    if conf == "unsure":
+        return None if not fam else "an unsure proposal must not name a family"
+    if not fam:
+        return "a confident proposal must name a family"
+    if fam not in roles.LABEL:
+        return f"unknown family {fam!r}"
+    if fam == "other":
+        # `other` is what the title already is. Restating it teaches nothing
+        # and would write an override asserting the unknown as a decision.
+        return "'other' is where it already sits; answer unsure instead"
+    if len(why) < 25:
+        return "say why, in a sentence a person can check"
+    if conf == "high" and not (p.get("evidence") or "").strip():
+        return "high confidence needs the words in the title or the posting"
+    return None
+
+
 def check_bucket(p: dict, schema: dict) -> str | None:
     """Refuse a proposal before it can waste a person's attention."""
     sec, cat = p.get("sector"), p.get("category")
@@ -1219,6 +1335,9 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
     if kind not in KINDS:
         raise ValueError(f"unknown agent kind {kind}")
     schema = _schema()
+    # read ONCE per ingest, not per proposal: a 120-title batch would
+    # otherwise rebuild the queue 120 times off board.json
+    asked = unclassified_titles() if kind == "family" else set()
     store = load()
     now = dt.datetime.now().astimezone().isoformat(timespec="seconds")
     kept, refused = 0, []
@@ -1232,6 +1351,7 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
                # region dechrome cut must still verify, or the door refuses
                # true sentences and the gate review fills with false refusals.
                else check_profile(p, _profile_texts(p)) if kind == "profile"
+               else check_family(p, asked) if kind == "family"
                else None)
         if bad:
             refused.append({"key": key, "why": bad})
@@ -1281,6 +1401,9 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
             "paragraphs": p.get("paragraphs"),
             "quote": p.get("quote") if isinstance(p.get("quote"), dict) else None,
             "saw": p.get("saw") or {},
+            # a family proposal's whole answer: one title, one family
+            "title": p.get("title"),
+            "family": p.get("family"),
             "by": model or "agent",
             "at": now,
             "status": "pending",
@@ -1343,6 +1466,8 @@ def main() -> int:
             briefs = brief_rival(a.sector, a.category, a.limit)
         elif a.kind == "profile":
             briefs = brief_profile(sector=a.sector, category=a.category, limit=a.limit)
+        elif a.kind == "family":
+            briefs = brief_family(a.limit)
         else:
             print(f"no brief builder for {a.kind!r} yet", file=sys.stderr)
             return 2

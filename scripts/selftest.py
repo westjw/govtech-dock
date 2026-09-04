@@ -16,6 +16,8 @@ import inspect
 import json
 import gzip
 import math
+import os
+
 import re
 import shutil
 import tempfile
@@ -1287,6 +1289,263 @@ def check_a_stale_admin_says_so() -> int:
                        "appears only sometimes")
     if "start_commit === META.head_commit" not in html:
         errors += fail("the banner does not compare the two commits")
+    return errors
+
+
+def _code_only(path: pathlib.Path) -> str:
+    """A module's CODE, with its docstrings and comments removed.
+
+    A SOURCE-STRING SCAN READS PROSE AS CODE, and the first version of the
+    guard below proved it on itself: llm.py's docstring says "it does not
+    import admin, it cannot write companies.json", and the check failed the
+    build over its own explanation of why it passes. Every guard in this file
+    that greps a module has the same hole; this is the one place to fix it.
+    """
+    import ast
+    src = path.read_text()
+    lines = src.splitlines()
+    tree = ast.parse(src)
+    blank = set()
+    for node in ast.walk(tree):
+        if not isinstance(node, (ast.Module, ast.FunctionDef,
+                                 ast.AsyncFunctionDef, ast.ClassDef)):
+            continue
+        body = getattr(node, "body", None)
+        if not body:
+            continue
+        first = body[0]
+        if (isinstance(first, ast.Expr) and isinstance(first.value, ast.Constant)
+                and isinstance(first.value.value, str)):
+            blank.update(range(first.lineno, (first.end_lineno or first.lineno) + 1))
+    kept = ["" if n in blank else re.sub(r"#.*$", "", ln)
+            for n, ln in enumerate(lines, 1)]
+    return "\n".join(kept)
+
+
+def check_the_model_cannot_write() -> int:
+    """The one module that calls a model must not be able to change the map.
+
+    Every proposal in this repository has always come from a session somebody
+    was watching. What changes with llm.py is only the SOURCE of a proposal -
+    it lands in the same store, behind the same door, in the same queue. The
+    day that module can reach companies.json, the doors stop being the thing
+    that decides, and nothing on screen would say so.
+
+    Source-level because the failure is an import somebody adds later, and no
+    call in a test would run it. Code-level, not text-level: see _code_only.
+    """
+    import ast
+    errors = 0
+    path = ROOT / "scripts" / "llm.py"
+    tree = ast.parse(path.read_text())
+    imported = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            imported.update(a.name.split(".")[0] for a in node.names)
+        elif isinstance(node, ast.ImportFrom) and node.module:
+            imported.add(node.module.split(".")[0])
+    for bad in ("admin", "agents", "journal", "build_board", "refresh"):
+        if bad in imported:
+            errors += fail(f"llm.py imports {bad}. It returns data; the caller "
+                           f"hands that to agents.ingest and the door rules.")
+    code = _code_only(path)
+    for bad in ("companies.json", "write_atomic", "save_companies",
+                "board.json"):
+        if bad in code:
+            errors += fail(f"llm.py's code names {bad!r}; it must only speak "
+                           f"HTTP and return what came back")
+    j = _code_only(ROOT / "scripts" / "judge.py")
+    if "agents.ingest(" not in j:
+        errors += fail("judge.py does not ingest through agents.ingest")
+    for bad in ("save_companies", "write_atomic", "save_decisions"):
+        if bad in j:
+            errors += fail(f"judge.py's code names {bad!r}; it must only propose")
+    return errors
+
+
+def _llm_sandbox(tmp, reply=None, raiser=None):
+    """llm with a stubbed transport and its log pointed at a temp file."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import llm
+    llm.LOG = pathlib.Path(tmp) / "llm_log.jsonl"
+    llm._calls, llm._spent, llm._said_no_key = 0, 0.0, False
+
+    class R:
+        status_code = 200
+        headers: dict = {}
+
+        def json(self):
+            return reply
+
+    def post(*a, **k):
+        if raiser:
+            raiser(*a, **k)
+        return R()
+    return llm, post
+
+
+def check_the_spend_log_is_a_bill_not_a_transcript() -> int:
+    """What a call cost may be recorded. What it said may not.
+
+    The prompts carry other people's page text - a description brief is four
+    pages of somebody's website - and this repository is about to be public.
+    That is the same rule site_pages/ is gitignored under and the same rule
+    sync_claims scrubs an address by VALUE rather than by key name. A log that
+    quietly grew a `response` field would be the leak nobody looked for.
+
+    Driven, not read: the row is written by ask() and only ask() knows what it
+    put in it.
+    """
+    import tempfile
+    errors = 0
+    secret_in = "PAGE TEXT THAT MUST NOT BE LOGGED"
+    secret_out = "AN ANSWER THAT MUST NOT BE LOGGED"
+    reply = {"content": [{"type": "text",
+                          "text": '{"answers": [], "note": "' + secret_out + '"}'}],
+             "usage": {"input_tokens": 100, "output_tokens": 20},
+             "stop_reason": "end_turn"}
+    with tempfile.TemporaryDirectory() as tmp:
+        llm, post = _llm_sandbox(tmp, reply=reply)
+        real_post, real_key = llm.requests.post, os.environ.get("ANTHROPIC_API_KEY")
+        llm.requests.post = post
+        os.environ["ANTHROPIC_API_KEY"] = "sk-test-not-a-real-key"
+        try:
+            got = llm.ask("system " + secret_in, "user " + secret_in, "probe")
+        finally:
+            llm.requests.post = real_post
+            if real_key is None:
+                os.environ.pop("ANTHROPIC_API_KEY", None)
+            else:
+                os.environ["ANTHROPIC_API_KEY"] = real_key
+        if got is None:
+            errors += fail("ask() lost a well-formed JSON answer")
+        written = llm.LOG.read_text() if llm.LOG.exists() else ""
+        if not written.strip():
+            errors += fail("a paid call wrote no row to the spend log")
+        for leaked, what in ((secret_in, "the prompt"), (secret_out, "the answer")):
+            if leaked in written:
+                errors += fail(f"{what} reached data/llm_log.jsonl. The log is "
+                               f"a bill, not a transcript, and this repo goes "
+                               f"public.")
+        row = json.loads(written.splitlines()[0])
+        for need in ("kind", "model", "in", "out", "usd", "ok"):
+            if need not in row:
+                errors += fail(f"the spend log row has no {need!r}; the owner "
+                               f"cannot see what a run cost")
+    return errors
+
+
+def check_a_cap_stops_the_call_it_would_pay_for() -> int:
+    """A cap checked after the request has already bought the call that broke it.
+
+    The failure this guards is not a wrong answer, it is a loop that asks four
+    thousand times, and by the time anybody notices the bill has happened. So
+    MAX_CALLS and MAX_SPEND are read BEFORE the POST, and a missing key asks
+    nothing at all - send_digests' rule, unchanged: a nightly run must never
+    fail because nobody set up a secret.
+    """
+    import tempfile
+    errors = 0
+    with tempfile.TemporaryDirectory() as tmp:
+        def never(*a, **k):
+            raise AssertionError("the transport was reached")
+        llm, post = _llm_sandbox(tmp, raiser=never)
+        real_post, real_key = llm.requests.post, os.environ.get("ANTHROPIC_API_KEY")
+        llm.requests.post = post
+        try:
+            # no key: None, no exception, nothing asked
+            os.environ.pop("ANTHROPIC_API_KEY", None)
+            try:
+                if llm.ask("s", "u", "probe") is not None:
+                    errors += fail("with no key, ask() must answer None")
+            except AssertionError:
+                errors += fail("with no key, ask() still reached the transport")
+            except Exception as e:                        # noqa: BLE001
+                errors += fail(f"a missing key raised {e!r}; it must not")
+
+            os.environ["ANTHROPIC_API_KEY"] = "sk-test-not-a-real-key"
+            for field, value, label in (("_calls", llm.MAX_CALLS, "the call cap"),
+                                        ("_spent", llm.MAX_SPEND, "the spend cap")):
+                llm._calls, llm._spent = 0, 0.0
+                setattr(llm, field, value)
+                try:
+                    llm.ask("s", "u", "probe")
+                    errors += fail(f"{label} did not stop the call")
+                except llm.Refused:
+                    pass
+                except AssertionError:
+                    errors += fail(f"{label} was checked AFTER the request, "
+                                   f"which has already been paid for")
+                llm._calls, llm._spent = 0, 0.0
+            # and an oversized ask is refused rather than timing out
+            try:
+                llm.ask("s", "u", "probe", max_tokens=llm.MAX_OUTPUT + 1)
+                errors += fail("an output over MAX_OUTPUT was not refused")
+            except llm.Refused:
+                pass
+            except AssertionError:
+                errors += fail("an oversized max_tokens reached the transport")
+        finally:
+            llm.requests.post = real_post
+            if real_key is None:
+                os.environ.pop("ANTHROPIC_API_KEY", None)
+            else:
+                os.environ["ANTHROPIC_API_KEY"] = real_key
+    return errors
+
+
+def check_an_override_cannot_beat_a_working_rule() -> int:
+    """A family override for a title the rules already place is silent damage.
+
+    family_overrides.json is keyed by exact title and roles.family() reads it
+    ON TOP of the pattern rules, so an override for "Account Executive" would
+    beat a rule that works, on every posting, for ever, with nothing to see.
+    Every other proposal kind names a company that exists; this one can name
+    any string, which is why the door checks the title is genuinely in the
+    queue - and the applier checks AGAIN at the write, because a rule added to
+    roles.py in between would make the ingest-time answer stale.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents
+    import judge
+    errors = 0
+    asked = {"Manager", "Commercial Development"}
+    ok = {"title": "Manager", "family": "exec", "confidence": "high",
+          "why": "a rank with no function at a vendor this size",
+          "evidence": "Manager"}
+    if agents.check_family(ok, asked) is not None:
+        errors += fail("the family door refuses a legitimate proposal")
+    strays = (
+        ({**ok, "title": "Account Executive"}, "a title nobody asked about"),
+        ({**ok, "family": "other"}, "'other', which is where it already sits"),
+        ({**ok, "family": "sales"}, "a family that does not exist"),
+        ({**ok, "why": "obvious"}, "a why too short to check"),
+        ({**ok, "evidence": ""}, "high confidence with no evidence"),
+        ({**ok, "confidence": "unsure"}, "an unsure answer naming a family"),
+    )
+    for p, label in strays:
+        if agents.check_family(p, asked) is None:
+            errors += fail(f"the family door accepted {label}")
+    # the applier's own second look
+    src = (ROOT / "scripts" / "proposal_rulings.py").read_text()
+    body = src.split("def _accept_family(", 1)[1].split("\ndef ", 1)[0]
+    if "unclassified_titles()" not in body:
+        errors += fail("_accept_family does not re-check the title against the "
+                       "queue at the moment of the write; a rule added since "
+                       "the ingest would be beaten silently")
+    if "save_decisions" not in body:
+        errors += fail("_accept_family does not journal its write")
+    # an answer for a brief that was never sent is dropped before the door
+    briefs = [{"key": "family:Manager", "id": "Manager", "name": "Manager",
+               "title": "Manager"}]
+    rows = judge._as_proposals("family", [
+        {"title": "Manager", "family": "exec", "confidence": "medium",
+         "why": "x" * 30},
+        {"title": "Invented Title", "family": "gtm", "confidence": "high",
+         "why": "x" * 30, "evidence": "y"}], briefs)
+    if len(rows) != 1 or rows[0]["id"] != "Manager":
+        errors += fail("judge kept an answer for a brief it never sent; an "
+                       "invented title must not reach the door at all")
     return errors
 
 
@@ -13530,6 +13789,10 @@ def main() -> int:
     errors += check_write_ups_queue_shows_only_exceptions()
     errors += check_users_board_never_stores_an_address()
     errors += check_a_stale_admin_says_so()
+    errors += check_the_model_cannot_write()
+    errors += check_the_spend_log_is_a_bill_not_a_transcript()
+    errors += check_a_cap_stops_the_call_it_would_pay_for()
+    errors += check_an_override_cannot_beat_a_working_rule()
     errors += check_a_ruling_says_what_it_opened()
     errors += check_placement_queues_can_say_both()
     errors += check_a_company_sits_on_at_most_two_shelves()
