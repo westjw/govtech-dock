@@ -48,6 +48,23 @@ import admin                                                    # noqa: E402
 import agents                                                   # noqa: E402
 
 READ = DATA / ".profiles_read"       # categories --gate has printed
+# TWO, MEASURED. Six was a guess and four of five requests came back cut off
+# at max_tokens - $1.38 for two usable answers. A write-up is two or three
+# paragraphs with a verbatim quote per sentence, roughly 1,200 output tokens,
+# and adaptive thinking is billed out of the same 8,000. Two fits with room.
+SELF_BATCH = 2
+
+SELF_RULES = """You are writing a description of a company from its own web
+pages. Another reader has answered this question before you, and you are not
+told what they said - answer it yourself, from the pages in front of you, as
+if nobody had.
+
+Your answer will be compared to theirs. Agreement means nobody has to look at
+it; disagreement means a person does. So an answer you are not sure of is
+worth more as "unsure" than as a guess that happens to match.
+
+Never write a fact the pages do not state. If the pages will not support two
+or three paragraphs, answer unsure - that is a complete and useful answer."""
 CHUNK = 500
 SAMPLE = 0.05
 
@@ -119,6 +136,168 @@ def gate(store: dict, companies: list, category: str, seed: int = 0) -> dict:
     print(f"\n  Land the {len(pending)} pending:  python3 scripts/promote_profiles.py "
           f"--land {category!r} --by owner")
     return {"refused": refused, "low": low, "sample": sample, "pending": pending}
+
+
+def _claims(text: str) -> set:
+    """The named things and numbers a write-up asserts.
+
+    THE DOOR ALREADY PROVED EACH TOKEN IS ON A PAGE. What it cannot see is a
+    true token inside a false claim - a partner described as a customer, a
+    number attached to the wrong product, two real names joined by a
+    relationship the page never states. Every token passes rule 5 and the
+    sentence is still wrong.
+
+    So this is not a second provenance check. It is the set of things the
+    write-up NAMES, so it can be compared against what an independent reader
+    of the same pages thought worth naming.
+    """
+    import agents
+    out = set()
+    cased = text or ""
+    for m in agents._PF_NUMBER.finditer(cased):
+        out.add(m.group(0))
+    def named(w: str) -> bool:
+        """A LONE CAPITALISED WORD IS USUALLY NOT A NAME. "Nothing", "Water",
+        "Municipal" all start sentences or clauses and reporting them as
+        claims buries the two that matter. A single word counts only when it
+        LOOKS like a name - internal capitals or a digit, which is what
+        EcoVadis, DR4900 and InfoSense have and what an ordinary word does
+        not. Multi-word runs always count: "Dallas Police", "Amazon Web
+        Services" are exactly the claims a second reader should have made
+        too."""
+        return any(c.isdigit() for c in w) or any(c.isupper() for c in w[1:])
+
+    run: list[str] = []
+    for raw in cased.split():
+        bare = raw.strip(agents._PF_EDGE_PUNCT)
+        # A SENTENCE-OPENING CAPITAL IS NOT A NAME, and the first version of
+        # this reported "only the first reader names Another, Nothing, One,
+        # Buyers" - every one of them the first word of a sentence. The door
+        # solved this already; _PF_OPENING_WORDS is its list, reused rather
+        # than restated.
+        if (bare[:1].isupper() and len(bare) > 2
+                and bare.lower() not in agents._PF_OPENING_WORDS):
+            run.append(bare)
+        else:
+            if len(run) >= 2 or (len(run) == 1 and named(run[0])):
+                out.add(" ".join(run))
+            run = []
+    if len(run) >= 2 or (len(run) == 1 and named(run[0])):
+        out.add(" ".join(run))
+    return {x for x in out if len(x) > 2}
+
+
+def self_read(store: dict, companies: list, category: str, model: str,
+              limit: int | None, dry: bool) -> list:
+    """A blind second reader on every pending write-up. Returns disagreements.
+
+    THE SAMPLE WAS A COMPROMISE WITH COST AND IT NO LONGER HAS TO BE. Reading
+    5% and hoping was right when a second read meant a person; at roughly
+    four tenths of a cent each, all 545 outstanding write-ups can be re-read
+    for about two dollars. So every one gets a second reader and a person
+    reads only where the two disagree.
+
+    BLIND, and that is the whole mechanism. The second reader is handed the
+    same pages and asked the same question. It never sees the first write-up,
+    its confidence, or that a first write-up exists. CLAUDE.md's reason: an
+    attempt known to be the main attempt gets defended, and a reviewer who can
+    see whose work they are holding grades the author. A second reader shown
+    the first answer agrees with it almost always, which looks exactly like
+    verification and is worth nothing.
+
+    WHAT COUNTS AS DISAGREEMENT. Not the prose - two honest readers write
+    different sentences from the same page and both are right. Two things:
+    the second reader declining to write at all where the first was confident,
+    and a NAMED THING the first asserts that the second, reading the same
+    pages, never mentioned. The door already proved every token sits on a
+    page; what it cannot catch is a true token inside a false claim, and that
+    is exactly the shape a lone confident answer takes.
+    """
+    import agents
+    import llm
+
+    names = {c["id"]: c.get("name", c["id"]) for c in companies if c.get("id")}
+    rows = [(k, p) for k, p in _by_category(store, companies).get(category, [])
+            if p.get("status") == "pending" and _has_text(p)]
+    if limit:
+        rows = rows[:limit]
+    if not rows:
+        print(f"\nno pending write-ups in {category!r} to re-read")
+        return []
+
+    briefs = []
+    for k, p in rows:
+        saw = p.get("saw") or {}
+        pages = saw.get("pages") or []
+        texts = agents._profile_texts(p)
+        # the SAME pages, by url, read fresh off disk - never the first
+        # write-up, and never anything derived from it
+        keep = [{"url": u, "text": t[:agents.PROFILE_PAGE_CHARS]}
+                for u, t in texts.items()
+                if not pages or any(pg.get("url") == u for pg in pages)]
+        if not keep:
+            continue
+        briefs.append({"key": k, "id": p.get("id"), "name": names.get(p.get("id")),
+                       "sector": p.get("sector"), "category": p.get("category"),
+                       "pages": keep, "rules": agents.PROFILE_RULES})
+    if not briefs:
+        print("\nnothing carries the pages it was written from")
+        return []
+
+    sysm = (f"{SELF_RULES}\n\nWrite a description of each company below using "
+            f"ONLY the pages given for it, obeying `rules` exactly.\n\n"
+            f'Return: {{"answers": [{{"id": <the exact id>, "confidence": '
+            f'"high"|"medium"|"low"|"unsure", "paragraphs": [[{{"text": ..., '
+            f'"url": ..., "quote": ...}}]], "why": <one sentence>}}]}}')
+    if dry:
+        print(f"\n--- second-read system ---\n{sysm[:700]}\n...")
+        print(f"\n{len(briefs)} write-up(s) would be re-read blind, "
+              f"in {-(-len(briefs) // SELF_BATCH)} request(s). Nothing spent.")
+        return []
+
+    seconds: dict = {}
+    lots = [briefs[i:i + SELF_BATCH] for i in range(0, len(briefs), SELF_BATCH)]
+    for i, lot in enumerate(lots, 1):
+        try:
+            got = llm.ask(sysm, json.dumps({"items": lot}, indent=1),
+                          "profile-second-read", model=model,
+                          max_tokens=llm.MAX_OUTPUT)
+        except llm.Refused as e:
+            print(f"  stopping at request {i}: {e}", file=sys.stderr)
+            break
+        for ans in ((got or {}).get("answers") or []):
+            if ans.get("id"):
+                seconds[ans["id"]] = ans
+        if got is None and llm.LAST_STOP == "max_tokens":
+            print(f"  request {i}/{len(lots)}: CUT OFF at max_tokens and paid "
+                  f"for - lower SELF_BATCH", file=sys.stderr)
+        print(f"  request {i}/{len(lots)}: {len(seconds)} re-read so far")
+
+    out = []
+    for k, p in rows:
+        second = seconds.get(p.get("id"))
+        if not second:
+            continue
+        first_conf = p.get("confidence") or "unsure"
+        second_conf = second.get("confidence") or "unsure"
+        # 1. the second reader would not write at all
+        if second_conf in ("unsure", "low") and first_conf == "high":
+            out.append((k, p, second, f"the second reader answered "
+                                      f"{second_conf} from the same pages"))
+            continue
+        # 2. a named thing only the first reader mentions
+        f_text = " ".join(sent.get("text", "") for para in (p.get("paragraphs") or [])
+                          for sent in (para if isinstance(para, list) else []))
+        s_text = " ".join(sent.get("text", "") for para in (second.get("paragraphs") or [])
+                          for sent in (para if isinstance(para, list) else []))
+        only_first = _claims(f_text) - _claims(s_text)
+        # a name the second reader used INSIDE a longer run still counts as
+        # mentioned; compare on the raw text, not just the extracted set
+        only_first = {c for c in only_first if c.lower() not in s_text.lower()}
+        if only_first:
+            out.append((k, p, second, "only the first reader names "
+                                      + ", ".join(sorted(only_first)[:4])))
+    return out
 
 
 def _record(p: dict, by: str, today: str) -> dict:
@@ -207,6 +386,12 @@ def main() -> int:
     ap.add_argument("--why", default="")
     ap.add_argument("--by", default=None,
                     help='who is ruling: "owner", or "agent:<label>". Required to write.')
+    ap.add_argument("--self", dest="self_read", action="store_true",
+                    help="with --gate: a blind second reader on every pending "
+                         "write-up; you read only the disagreements")
+    ap.add_argument("--limit", type=int, help="with --self: how many to re-read")
+    ap.add_argument("--model", default=None)
+    ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
     if (a.land or a.reject or a.hide or a.unhide) and not a.by:
@@ -227,6 +412,32 @@ def main() -> int:
 
     if a.gate:
         gate(store, seq, a.gate)
+        if a.self_read:
+            import llm
+            print(f"\n== 4. A SECOND READER, blind, on every pending "
+                  f"write-up in {a.gate!r} ==")
+            bad = self_read(store, companies, a.gate,
+                            a.model or llm.DEFAULT_MODEL, a.limit, a.dry_run)
+            if not a.dry_run:
+                calls, usd = llm.spent()
+                print(f"\n   {calls} request(s), ${usd:.2f}")
+                if not bad:
+                    print("   Both readers agreed on every one. That is "
+                          "evidence the door and the prompt are working here; "
+                          "it is not proof.")
+                for k, first, second, why in bad:
+                    nm = next((c.get("name") for c in companies
+                               if c.get("id") == first.get("id")), first.get("id"))
+                    print(f"\n   {str(nm)[:40]:42} {why}")
+                    print(f"     first  ({first.get('confidence')}): "
+                          f"{(first.get('why') or '')[:80]}")
+                    print(f"     second ({second.get('confidence')}): "
+                          f"{(second.get('why') or '')[:80]}")
+                if bad:
+                    print(f"\n   THOSE {len(bad)} ARE THE LIST. Everything "
+                          f"else was written twice, independently, from the "
+                          f"same pages, and the two agreed. Nothing has been "
+                          f"changed - land or reject in the usual way.")
         return 0
 
     if a.reject:

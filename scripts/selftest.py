@@ -1451,6 +1451,13 @@ def check_a_cap_stops_the_call_it_would_pay_for() -> int:
             raise AssertionError("the transport was reached")
         llm, post = _llm_sandbox(tmp, raiser=never)
         real_post, real_key = llm.requests.post, os.environ.get("ANTHROPIC_API_KEY")
+        # NO KEY MEANS NO KEY ANYWHERE. This unset the environment variable
+        # and called that "no key", which stopped being true the moment llm
+        # grew a file fallback - a real key on disk made ask() sail past the
+        # guard and hit the stubbed transport. Point the file somewhere that
+        # does not exist for the duration.
+        real_file = llm.KEY_FILE
+        llm.KEY_FILE = pathlib.Path(tmp) / "no-such-key"
         llm.requests.post = post
         try:
             # no key: None, no exception, nothing asked
@@ -1487,6 +1494,7 @@ def check_a_cap_stops_the_call_it_would_pay_for() -> int:
                 errors += fail("an oversized max_tokens reached the transport")
         finally:
             llm.requests.post = real_post
+            llm.KEY_FILE = real_file
             if real_key is None:
                 os.environ.pop("ANTHROPIC_API_KEY", None)
             else:
@@ -3011,6 +3019,116 @@ def check_ingest_keeps_refusals() -> int:
                                "under its category, so --gate cannot show it")
         finally:
             agents.STORE = keep
+    return errors
+
+
+def check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off() -> int:
+    """545 write-ups can be read twice for about two dollars. Both halves must hold.
+
+    BLIND: the second reader gets the same pages read fresh off disk and never
+    the first write-up, its confidence, or the fact that a first exists. A
+    reader shown the answer agrees with it, which looks like verification and
+    is worth nothing.
+
+    AND IT MUST SAY WHEN IT WAS CUT OFF. The first real run batched six
+    write-ups per request; four of five came back truncated at max_tokens and
+    the caller printed "0 re-read so far" five times. $1.38 for two usable
+    answers, and nothing on screen said why. A truncated answer and a refused
+    one are different problems with different fixes.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import llm
+    import promote_profiles as pp
+    errors = 0
+
+    # --- the claims extractor, which is what a disagreement is built from
+    got = pp._claims("Another vendor. Nothing here. Acme sells to Dallas "
+                     "Police and 300 districts. One more.")
+    for noise in ("Another", "Nothing", "One", "Here"):
+        if noise in got:
+            errors += fail(f"_claims reports {noise!r} as a named thing; a "
+                           f"sentence-opening capital is not a name and this "
+                           f"buries the claims that matter")
+    if "Dallas Police" not in got or "300" not in got:
+        errors += fail(f"_claims missed a real named thing or number: {sorted(got)}")
+    if not {"EcoVadis", "DR4900"} <= pp._claims("The DR4900 earned an EcoVadis rating."):
+        errors += fail("_claims drops single-word product names that carry "
+                       "internal capitals or digits, which is what a brand "
+                       "looks like")
+
+    # --- blind, and truncation reported. Driven with a spy.
+    seen = {}
+    LEAK = "ZZQQXFIRSTWRITEUP"
+    store = {"profile:probe": {
+        "kind": "profile", "id": "probe", "name": "Probe", "status": "pending",
+        "confidence": "high", "why": LEAK,
+        "paragraphs": [[{"text": LEAK + " sells things.",
+                         "url": "https://p.example/", "quote": "sells things"}]],
+        "saw": {"pages": [{"url": "https://p.example/"}]}}}
+    companies = [{"id": "probe", "name": "Probe", "category": "Water"}]
+    import agents
+    real_texts, real_ask, real_stop = agents._profile_texts, llm.ask, llm.LAST_STOP
+    agents._profile_texts = lambda p_: {"https://p.example/": "Probe sells things."}
+
+    def spy(system, user, kind, **kw):
+        seen["blob"] = system + user
+        return {"answers": [{"id": "probe", "confidence": "high",
+                             "paragraphs": [[{"text": "Probe sells things.",
+                                              "url": "https://p.example/",
+                                              "quote": "sells things"}]],
+                             "why": "the page says so"}]}
+    llm.ask = spy
+    try:
+        pp.self_read(store, companies, "Water", "m", None, False)
+    finally:
+        agents._profile_texts, llm.ask = real_texts, real_ask
+    if not seen:
+        errors += fail("self_read never called the model")
+    elif LEAK in seen["blob"]:
+        errors += fail("the first write-up reached the second reader's prompt")
+    elif "https://p.example/" not in seen["blob"]:
+        errors += fail("the second reader was not given the pages the first "
+                       "one read, so a disagreement would mean nothing")
+
+    # a batch size that cannot fit its own answers is the bug that cost $1.38
+    if pp.SELF_BATCH > 3:
+        errors += fail(f"SELF_BATCH is {pp.SELF_BATCH}; a write-up is two or "
+                       f"three paragraphs with a quote per sentence and "
+                       f"adaptive thinking shares the same 8,000 output "
+                       f"tokens. Six came back truncated four times in five.")
+    # and llm must expose WHY nothing came back
+    # BEHAVIOURAL, not hasattr: the name existing proves nothing if nothing
+    # ever assigns it, and that mutation walked straight past.
+    import tempfile as _tf
+    with _tf.TemporaryDirectory() as _t:
+        l2, post = _llm_sandbox(_t, reply={
+            "content": [{"type": "text", "text": "not json at all"}],
+            "usage": {"input_tokens": 5, "output_tokens": 5},
+            "stop_reason": "max_tokens"})
+        rp, rk, rf = l2.requests.post, os.environ.get("ANTHROPIC_API_KEY"), l2.KEY_FILE
+        l2.requests.post = post
+        l2.KEY_FILE = pathlib.Path(_t) / "none"
+        os.environ["ANTHROPIC_API_KEY"] = "sk-ant-test"
+        l2.LAST_STOP = ""
+        try:
+            l2.ask("s", "u", "probe")
+            if l2.LAST_STOP != "max_tokens":
+                errors += fail(f"llm.LAST_STOP is {l2.LAST_STOP!r} after a "
+                               f"truncated answer; a caller cannot tell a cut "
+                               f"off answer from a refused one, which is what "
+                               f"printed '0 re-read' five times for $1.38")
+        finally:
+            l2.requests.post, l2.KEY_FILE = rp, rf
+            if rk is None:
+                os.environ.pop("ANTHROPIC_API_KEY", None)
+            else:
+                os.environ["ANTHROPIC_API_KEY"] = rk
+    code = _code_only(ROOT / "scripts" / "promote_profiles.py")
+    if "LAST_STOP" not in code:
+        errors += fail("self_read never reads llm.LAST_STOP, so a run that is "
+                       "cut off prints '0 re-read' and says nothing about the "
+                       "money it just spent")
+    llm.LAST_STOP = real_stop
     return errors
 
 
@@ -14574,6 +14692,7 @@ def main() -> int:
     errors += check_an_override_cannot_beat_a_working_rule()
     errors += check_the_key_never_reaches_the_repository()
     errors += check_data_writers_are_serialised()
+    errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
     errors += check_the_second_reader_never_sees_the_first_answer()
     errors += check_the_gate_shows_the_exceptions_and_rules_on_nothing()
     errors += check_a_ruling_can_be_re_read()

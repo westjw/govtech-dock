@@ -105,6 +105,11 @@ BACKOFF = 4.0            # seconds, doubled per retry
 _spent = 0.0
 _calls = 0
 _said_no_key = False
+# WHY THE LAST CALL RETURNED NOTHING, for the caller to read. A truncated
+# answer and a refused one are different problems with different fixes, and a
+# caller that cannot tell them apart prints "0 came back" and says nothing
+# about the $1.38 it just spent finding out.
+LAST_STOP = ""
 
 
 class Refused(Exception):
@@ -267,7 +272,7 @@ def ask(system: str, user: str, kind: str, *, model: str = DEFAULT_MODEL,
     that reaches the spend log, so make it the proposal kind ("profile",
     "family") and not a sentence.
     """
-    global _spent, _calls, _said_no_key
+    global _spent, _calls, _said_no_key, LAST_STOP
     if not key():
         if not _said_no_key:
             print("no ANTHROPIC_API_KEY set; nothing will be asked.",
@@ -331,13 +336,16 @@ def ask(system: str, user: str, kind: str, *, model: str = DEFAULT_MODEL,
         text = "".join(b.get("text") or "" for b in payload.get("content", [])
                        if b.get("type") == "text")
         out = _json_from(text)
+        LAST_STOP = payload.get("stop_reason") or ""
         _log({"at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
               "kind": kind, "model": model, "in": tin, "out": tout,
               "usd": round(cost, 4), "ok": out is not None,
               "stop": payload.get("stop_reason")})
         if out is None:
-            print(f"  {kind}: answer was not JSON "
-                  f"(stop_reason {payload.get('stop_reason')})", file=sys.stderr)
+            why = ("the answer was CUT OFF at max_tokens - send fewer items "
+                   "per request" if LAST_STOP == "max_tokens"
+                   else f"the answer was not JSON (stop_reason {LAST_STOP})")
+            print(f"  {kind}: {why}", file=sys.stderr)
         return out
     _log({"at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
           "kind": kind, "model": model, "in": 0, "out": 0, "usd": 0.0,
