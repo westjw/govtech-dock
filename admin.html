@@ -347,6 +347,30 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g,
 
 let META = null, SCHEMA = null, FAMILIES = null, TAB = null, LAST_ITEMS = null;
 
+/* A STALE ADMIN CANNOT NOTICE ITSELF, so the page does it. admin.py loads
+   its queues, actions and validation ONCE at startup; admin.html is re-read
+   per request, so page changes show on reload and Python changes do not.
+   Three times in one day a fix landed and the old behaviour was still on
+   screen - the warm-leads queue kept re-asking about a company that had
+   already been answered, because the process predated the fix by two hours
+   and nothing said so. The server stamps the commit it started from; if the
+   working tree has moved past it, this says so and does not go away. */
+function staleBanner() {
+  const old = document.getElementById('stale-admin');
+  if (old) old.remove();
+  if (!META || !META.start_commit || !META.head_commit) return;
+  if (META.start_commit === META.head_commit) return;
+  const b = el('div');
+  b.id = 'stale-admin';
+  b.style.cssText = 'background:var(--warn);color:#0f1420;padding:9px 16px;'
+    + 'font-weight:600;font-size:13.5px;position:sticky;top:0;z-index:50';
+  b.textContent = 'This admin is running code from an earlier commit ('
+    + META.start_commit + ', the tree is on ' + META.head_commit
+    + '). Queue logic and validation are frozen at startup, so recent fixes '
+    + 'are NOT in effect. Stop it and start it again.';
+  document.body.insertBefore(b, document.body.firstChild);
+}
+
 async function api(path, body) {
   /* Every failure becomes {error}, because half the callers await this inside
      a queue loader whose "loading…" placeholder is removed only on success: a
@@ -508,6 +532,7 @@ const INTRO = {
 
 async function boot() {
   META = await api('/api/queues');
+  staleBanner();
   [SCHEMA, FAMILIES] = await Promise.all([api('/api/schema'), api('/api/families')]);
   $('#sub').textContent = `${META.companies.toLocaleString()} govtech companies · `
     + `${META.postings.toLocaleString()} postings · board built ${META.generated || '—'}`;
@@ -534,6 +559,7 @@ async function boot() {
 
 async function refreshCounts() {
   META = await api('/api/queues');
+  staleBanner();
   document.querySelectorAll('nav button').forEach(b => {
     const n = b.querySelector('.n');
     if (n) n.textContent = META.counts[b.dataset.key];

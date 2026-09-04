@@ -4651,6 +4651,34 @@ the extension just needs reloading on <code>chrome://extensions</code>.
 TOKEN = secrets.token_urlsafe(32)
 TOKEN_HEADER = "X-Admin-Token"
 
+def _head_commit() -> str:
+    """The commit the working tree is on, read from disk each time it is asked.
+
+    A STALE ADMIN CANNOT NOTICE ITSELF any other way. admin.py loads its
+    queues, actions and validation once; admin.html is re-read per request,
+    so page changes appear on reload and PYTHON changes do not. Three times
+    in one day a fix landed and the owner met the old behaviour anyway - the
+    warm-leads queue kept re-asking about a company he had already answered,
+    because the process predated the fix by two hours and nothing said so.
+
+    Reading .git directly rather than shelling out to git: this runs on every
+    meta request, and a subprocess per poll is a cost for no reason.
+    """
+    try:
+        head = (ROOT / ".git" / "HEAD").read_text().strip()
+        if head.startswith("ref: "):
+            ref = (ROOT / ".git" / head[5:]).read_text().strip()
+            return ref[:12]
+        return head[:12]
+    except OSError:
+        return ""
+
+
+# Stamped once, at import. The whole point is that it CANNOT move while the
+# process runs, so a difference from _head_commit() is proof the code on disk
+# has changed underneath it.
+START_COMMIT = _head_commit()
+
 ADMIN_HTML = ROOT / "admin.html"
 CAPTURE_JS = pathlib.Path(__file__).resolve().parent / "capture.js"
 
@@ -4942,6 +4970,10 @@ class Handler(http.server.BaseHTTPRequestHandler):
             return self._json({"counts": {k: len(f(companies, board))
                                           for k, f in QUEUES.items()},
                                "labels": LABEL,
+                               # what this process was started from, and what
+                               # is on disk now
+                               "start_commit": START_COMMIT,
+                               "head_commit": _head_commit(),
                                # which companies have a logo, and in what
                                # format. The page needs this to know whether to
                                # ask for an image at all - guessing the

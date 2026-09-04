@@ -11,7 +11,12 @@
   "by": "agent:overnight-build",
   "at": "2026-08-23T23:58:46-04:00",
   "why": "Workday founded 2005 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
-  "confirmed": null
+  "confirmed": {
+   "by": "owner",
+   "at": "2026-09-03T22:07:41-04:00",
+   "year": 2005,
+   "corrected_from": null
+  }
  },
  "tanium": {
   "year": 2007,
@@ -32,7 +37,12 @@
   "by": "agent:overnight-build",
   "at": "2026-08-24T09:08:28-04:00",
   "why": "Harris founded 1976 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
-  "confirmed": null
+  "confirmed": {
+   "by": "owner",
+   "at": "2026-09-03T22:08:00-04:00",
+   "year": 1976,
+   "corrected_from": null
+  }
  },
  "emburse": {
   "year": 2015,
@@ -53,7 +63,12 @@
   "by": "agent:overnight-build",
   "at": "2026-08-24T09:08:31-04:00",
   "why": "Auror founded 2012 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
-  "confirmed": null
+  "confirmed": {
+   "by": "owner",
+   "at": "2026-09-03T22:09:13-04:00",
+   "year": 2012,
+   "corrected_from": null
+  }
  },
  "starrez": {
   "year": 1992,

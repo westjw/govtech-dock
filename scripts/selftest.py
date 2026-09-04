@@ -1234,6 +1234,62 @@ console.log(JSON.stringify({
     return errors
 
 
+def check_a_stale_admin_says_so() -> int:
+    """A running admin that predates a fix must say so on its own page.
+
+    admin.py loads its queues, actions and validate() ONCE at startup;
+    admin.html is re-read per request. So a page change shows on reload and a
+    PYTHON change does not, and nothing on screen distinguishes the two.
+    Three times in one day a fix landed and the old behaviour was still in
+    front of the owner - the warm-leads queue kept re-asking about a company
+    he had already answered, because the process predated the fix by two
+    hours. Telling him to restart a fourth time is not a fix; the page
+    noticing is.
+
+    The stamp is read at import and cannot move while the process runs, so a
+    difference from the commit on disk is proof the code changed underneath.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+    errors = 0
+    if not admin.START_COMMIT:
+        note("no .git on disk; the stale stamp was not exercised")
+    else:
+        if admin.START_COMMIT != admin._head_commit():
+            errors += fail("admin.START_COMMIT is not the commit on disk at "
+                           "import, so the stamp cannot mean what it claims")
+        # it must read the tree, not a constant
+        head = (ROOT / ".git" / "HEAD").read_text().strip()
+        if head.startswith("ref: "):
+            ref = (ROOT / ".git" / head[5:]).read_text().strip()
+            if not ref.startswith(admin._head_commit()):
+                errors += fail("_head_commit does not return the checked-out commit")
+
+    src = (ROOT / "scripts" / "admin.py").read_text()
+    if '"start_commit": START_COMMIT' not in src or '"head_commit": _head_commit()' not in src:
+        errors += fail("the meta payload does not carry both commits, so the "
+                       "page cannot tell it is stale")
+    # THE STAMP MUST BE FROZEN. Recomputing it per request would make every
+    # admin look current forever, which is the bug this guard exists for.
+    i = src.find("START_COMMIT = ")
+    line = src[i:src.find("\n", i)]
+    if "_head_commit()" not in line:
+        errors += fail(f"START_COMMIT is not stamped from the tree: {line}")
+    if src.count("START_COMMIT = ") != 1:
+        errors += fail("START_COMMIT is assigned more than once, so it is not "
+                       "frozen at import and a stale admin will look current")
+
+    html = (ROOT / "admin.html").read_text()
+    if "function staleBanner(" not in html:
+        errors += fail("admin.html has no stale banner")
+    if html.count("staleBanner();") < 2:
+        errors += fail("the banner is not drawn on every meta load, so it "
+                       "appears only sometimes")
+    if "start_commit === META.head_commit" not in html:
+        errors += fail("the banner does not compare the two commits")
+    return errors
+
+
 def check_a_ruling_says_what_it_opened() -> int:
     """Answering one queue's question tells you what it made possible.
 
@@ -13473,6 +13529,7 @@ def main() -> int:
     errors += check_proposal_rulings_cover_every_kind()
     errors += check_write_ups_queue_shows_only_exceptions()
     errors += check_users_board_never_stores_an_address()
+    errors += check_a_stale_admin_says_so()
     errors += check_a_ruling_says_what_it_opened()
     errors += check_placement_queues_can_say_both()
     errors += check_a_company_sits_on_at_most_two_shelves()
