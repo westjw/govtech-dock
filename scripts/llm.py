@@ -264,15 +264,51 @@ def main() -> int:
     ap.add_argument("--spend", action="store_true")
     a = ap.parse_args()
     if a.check:
+        # WHAT IS WRONG WITH THE KEY, WITHOUT PRINTING IT. Three 401s in a row
+        # cost more attention than they should have, because "set, 47 chars"
+        # was the only fact available and it does not say WHICH 47. Everything
+        # below is safe to read aloud: a length, the prefix every Anthropic
+        # key shares, and whether the string carries the ellipsis the console
+        # puts in a key it is only DISPLAYING.
         k = key()
-        print(f"ANTHROPIC_API_KEY: {'set (' + k[:7] + '...)' if k else 'NOT SET'}")
-        print(f"default model    : {DEFAULT_MODEL}")
-        print(f"caps per run     : {MAX_CALLS} calls, ${MAX_SPEND:.2f}, "
-              f"{MAX_OUTPUT} output tokens, {MAX_INPUT_CHARS:,} prompt chars")
+        print(f"default model : {DEFAULT_MODEL}")
+        print(f"caps per run  : {MAX_CALLS} calls, ${MAX_SPEND:.2f}, "
+              f"{MAX_OUTPUT} output tokens, {MAX_INPUT_CHARS:,} prompt chars\n")
         if not k:
-            print("\nNothing will be asked until that is set. Locally:\n"
-                  "  export ANTHROPIC_API_KEY=...\n"
+            print("ANTHROPIC_API_KEY: NOT SET\n\n"
+                  "Nothing will be asked until it is. In this shell:\n"
+                  "  read -s ANTHROPIC_API_KEY && export ANTHROPIC_API_KEY\n"
                   "In CI: a repository secret of the same name.")
+            return 0
+        raw = os.environ.get("ANTHROPIC_API_KEY", "")
+        print(f"length        : {len(k)}   (a real key is about 108)")
+        print(f"prefix        : {k[:11]!r}")
+        print(f"ellipsis      : {'YES' if ('...' in k or chr(8230) in k) else 'no'}")
+        print(f"whitespace    : {'YES' if raw != raw.strip() else 'no'}")
+        print(f"quotes        : {'YES' if k[:1] in chr(34) + chr(39) else 'no'}\n")
+        if "..." in k or chr(8230) in k:
+            print("THAT IS THE DISPLAY VERSION, not the key. The console shows "
+                  "a key in full exactly once, in the dialog when you create "
+                  "it; the list afterwards shows an abbreviation with an "
+                  "ellipsis in the middle and there is no way to reveal the "
+                  "rest. Create a new key and copy it from that dialog.")
+        elif raw != raw.strip():
+            print("A LEADING OR TRAILING SPACE IS ENOUGH ON ITS OWN. Re-paste "
+                  "it; `read -s` keeps whatever the clipboard had.")
+        elif k.startswith("sk-ant-oat"):
+            print("THAT IS A CLAUDE CODE OAUTH TOKEN, not an API key. The "
+                  "Messages API does not take it. Create an API key at "
+                  "console.anthropic.com -> Settings -> API keys.")
+        elif not k.startswith("sk-ant-api"):
+            print("An API key starts 'sk-ant-api'. This does not, so it is "
+                  "some other credential. console.anthropic.com -> Settings "
+                  "-> API keys -> Create Key.")
+        elif len(k) < 90:
+            print("The prefix is right and the key is too short, so it was cut "
+                  "in the copy. Paste it again from the creation dialog.")
+        else:
+            print("The shape is right. Prove it authenticates:\n"
+                  "  python3 scripts/llm.py --ping")
         return 0
     if a.ping:
         # THE CHEAPEST POSSIBLE REAL REQUEST. --check only says whether a
