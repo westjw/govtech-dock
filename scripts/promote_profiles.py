@@ -52,7 +52,13 @@ READ = DATA / ".profiles_read"       # categories --gate has printed
 # at max_tokens - $1.38 for two usable answers. A write-up is two or three
 # paragraphs with a verbatim quote per sentence, roughly 1,200 output tokens,
 # and adaptive thinking is billed out of the same 8,000. Two fits with room.
-SELF_BATCH = 2
+# ONE. Measured three times, and each measurement was paid for. Six: eleven
+# of thirteen requests cut off at max_tokens. Two, with thinking switched
+# off: still cut off - because Sonnet 5 emits a thinking block whether or not
+# one is asked for, so `thinking=False` does not buy the budget back. A single
+# write-up completes in about 2,200 output tokens with room to spare, and one
+# per request is the only size that has never truncated.
+SELF_BATCH = 1
 
 SELF_RULES = """You are writing a description of a company from its own web
 pages. Another reader has answered this question before you, and you are not
@@ -259,9 +265,15 @@ def self_read(store: dict, companies: list, category: str, model: str,
     lots = [briefs[i:i + SELF_BATCH] for i in range(0, len(briefs), SELF_BATCH)]
     for i, lot in enumerate(lots, 1):
         try:
+            # THINKING OFF, MEASURED. With adaptive thinking on, 11 of 13
+            # requests were cut off at max_tokens even at two write-ups each -
+            # two descriptions are ~2,400 output tokens and the other 5,600
+            # went to thinking. This task is writing prose from pages that are
+            # already in front of it, not reasoning, and $3.74 was spent
+            # finding that out.
             got = llm.ask(sysm, json.dumps({"items": lot}, indent=1),
                           "profile-second-read", model=model,
-                          max_tokens=llm.MAX_OUTPUT)
+                          max_tokens=llm.MAX_OUTPUT, thinking=False)
         except llm.Refused as e:
             print(f"  stopping at request {i}: {e}", file=sys.stderr)
             break
@@ -273,10 +285,17 @@ def self_read(store: dict, companies: list, category: str, model: str,
                   f"for - lower SELF_BATCH", file=sys.stderr)
         print(f"  request {i}/{len(lots)}: {len(seconds)} re-read so far")
 
-    out = []
+    out, unread = [], []
     for k, p in rows:
         second = seconds.get(p.get("id"))
         if not second:
+            # A WRITE-UP NOBODY RE-READ IS NOT ONE TWO READERS AGREED ON, and
+            # the first version of this counted it as agreement: 22 of 26 were
+            # never answered and the summary said "everything else was written
+            # twice, independently, and the two agreed". That is the exact
+            # false reassurance this whole engine is shaped to refuse, and it
+            # cost nothing to say because nobody had checked.
+            unread.append((k, p))
             continue
         first_conf = p.get("confidence") or "unsure"
         second_conf = second.get("confidence") or "unsure"
@@ -291,13 +310,30 @@ def self_read(store: dict, companies: list, category: str, model: str,
         s_text = " ".join(sent.get("text", "") for para in (second.get("paragraphs") or [])
                           for sent in (para if isinstance(para, list) else []))
         only_first = _claims(f_text) - _claims(s_text)
+        # THE COMPANY'S OWN NAME IS NOT A CLAIM. "only the first reader names
+        # Badger Meter" is noise: both write-ups are about Badger Meter.
+        own = {w for w in (p.get("name") or "").split() if len(w) > 2}
+        only_first -= own
+        only_first = {c for c in only_first
+                      if not any(w in c.split() for w in own)}
+        # AND A DIGIT GROUP IS NOT A NUMBER. "150,000" splits into "150" and
+        # "000", and "000" reported as a fact the second reader missed is
+        # noise that buries the one that matters.
+        only_first = {c for c in only_first if c != "000" and not (
+            c.isdigit() and any(c in d for d in _claims(s_text) if d.isdigit()))}
         # a name the second reader used INSIDE a longer run still counts as
         # mentioned; compare on the raw text, not just the extracted set
         only_first = {c for c in only_first if c.lower() not in s_text.lower()}
         if only_first:
             out.append((k, p, second, "only the first reader names "
                                       + ", ".join(sorted(only_first)[:4])))
-    return out
+    if unread:
+        print(f"\n   {len(unread)} of {len(rows)} were NOT re-read - the "
+              f"request they were in returned nothing usable. They are not "
+              f"agreed, they are unchecked:", file=sys.stderr)
+        for k, p in unread[:8]:
+            print(f"     {str(p.get('name') or p.get('id'))[:44]}", file=sys.stderr)
+    return out, unread
 
 
 def _record(p: dict, by: str, today: str) -> dict:
@@ -416,15 +452,22 @@ def main() -> int:
             import llm
             print(f"\n== 4. A SECOND READER, blind, on every pending "
                   f"write-up in {a.gate!r} ==")
-            bad = self_read(store, companies, a.gate,
-                            a.model or llm.DEFAULT_MODEL, a.limit, a.dry_run)
+            got_self = self_read(store, companies, a.gate,
+                                 a.model or llm.DEFAULT_MODEL, a.limit,
+                                 a.dry_run)
+            bad, unread = got_self if isinstance(got_self, tuple) else (got_self, [])
             if not a.dry_run:
                 calls, usd = llm.spent()
                 print(f"\n   {calls} request(s), ${usd:.2f}")
-                if not bad:
+                if unread:
+                    print(f"   {len(unread)} write-up(s) were NOT re-read at "
+                          f"all - unchecked, not agreed.")
+                if not bad and not unread:
                     print("   Both readers agreed on every one. That is "
                           "evidence the door and the prompt are working here; "
                           "it is not proof.")
+                elif not bad:
+                    print("   The ones that WERE re-read all agreed.")
                 for k, first, second, why in bad:
                     nm = next((c.get("name") for c in companies
                                if c.get("id") == first.get("id")), first.get("id"))
@@ -434,9 +477,10 @@ def main() -> int:
                     print(f"     second ({second.get('confidence')}): "
                           f"{(second.get('why') or '')[:80]}")
                 if bad:
-                    print(f"\n   THOSE {len(bad)} ARE THE LIST. Everything "
-                          f"else was written twice, independently, from the "
-                          f"same pages, and the two agreed. Nothing has been "
+                    n_ok = len(bad) + len(unread)
+                    print(f"\n   THOSE {len(bad)} ARE THE LIST. The rest that "
+                          f"were RE-READ agreed; {len(unread)} were never "
+                          f"answered and are unchecked. Nothing has been "
                           f"changed - land or reject in the usual way.")
         return 0
 
