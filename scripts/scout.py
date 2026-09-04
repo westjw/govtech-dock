@@ -196,6 +196,16 @@ def verify(company: dict, a: dict) -> tuple[dict | None, str]:
         "why": (a.get("why") or "").strip(),
         "evidence": a.get("evidence_url") or a.get("read_on") or "",
         "slug_matches": bool(owns),
+        # WHAT THE AGENT SAW, stored beside its answer. CLAUDE.md: store the
+        # input the person saw alongside their answer, or the label is
+        # useless for teaching anything later - and a ruling nobody can
+        # re-read is not a ruling. Without this a board proposal could be
+        # gated but never SECOND-READ, because the question it answered was
+        # gone. The page text is referenced by sha, not carried: the bodies
+        # are gitignored and this store is committed.
+        "saw": {"read_on": a.get("read_on"), "pile": a.get("pile"),
+                "page_sha": a.get("page_sha"),
+                "evidence": (a.get("evidence") or "").strip()},
     }, ("" if owns else
         f"SLUG MISMATCH: {ref!r} does not read as {company.get('name')!r} - "
         f"a person rules whether that is a rename or a parent's board")
@@ -210,6 +220,9 @@ def as_where(company: dict, a: dict) -> dict:
         "confidence": a.get("confidence") or "medium",
         "why": (a.get("why") or "").strip(),
         "evidence": a.get("evidence_url") or a.get("read_on") or "",
+        "saw": {"read_on": a.get("read_on"), "pile": a.get("pile"),
+                "page_sha": a.get("page_sha"),
+                "evidence": (a.get("evidence") or "").strip()},
     }
 
 
@@ -269,6 +282,8 @@ def main() -> int:
                 continue                      # an answer for a brief nobody sent
             c, b = pair
             ans["read_on"] = b.get("read_on")
+            ans["pile"] = a.pile
+            ans["page_sha"] = b.get("page_sha")
             kind = ans.get("answer")
             if kind == "board":
                 prop, note = verify(c, ans)

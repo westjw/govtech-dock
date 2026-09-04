@@ -259,6 +259,8 @@ def read_log() -> list[dict]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
+    ap.add_argument("--ping", action="store_true",
+                    help="one 4-token request, to prove the key authenticates")
     ap.add_argument("--spend", action="store_true")
     a = ap.parse_args()
     if a.check:
@@ -271,6 +273,26 @@ def main() -> int:
             print("\nNothing will be asked until that is set. Locally:\n"
                   "  export ANTHROPIC_API_KEY=...\n"
                   "In CI: a repository secret of the same name.")
+        return 0
+    if a.ping:
+        # THE CHEAPEST POSSIBLE REAL REQUEST. --check only says whether a
+        # string is set, and a key that is present and wrong fails later,
+        # deep inside a batch, as an http 401 buried in a run summary. This
+        # asks the API and reports what it said. Four output tokens, no
+        # thinking: a fraction of a cent.
+        if not key():
+            print("no ANTHROPIC_API_KEY set")
+            return 1
+        got = ask("Reply with the single word: ok",
+                  'Return JSON: {"ok": true}', "ping",
+                  max_tokens=64, thinking=False)
+        if got is None:
+            print("\nThe key did not work, or the reply was not JSON. The line "
+                  "above is what the API said - a 401 means the key is wrong "
+                  "or truncated, a 429 means slow down.")
+            return 1
+        calls, usd = spent()
+        print(f"the key works. {calls} request, ${usd:.4f}")
         return 0
     if a.spend:
         rows = read_log()

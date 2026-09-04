@@ -291,6 +291,10 @@ def board_brief(company: dict, page: dict, pile: str) -> dict:
         "sector": company.get("sector"),
         "why_here": BOARD_PILES.get(pile, pile),
         "read_on": page.get("url"),
+        # the sha travels so a ruling months later knows WHICH bytes were
+        # read, without the bodies being in the repo - the same deal
+        # brief_profile's `saw` strikes
+        "page_sha": page.get("sha"),
         "page_text": (page.get("text") or "")[:PROFILE_PAGE_CHARS],
         "answers": {
             "board": "an ATS this project can fetch is named or linked on the "

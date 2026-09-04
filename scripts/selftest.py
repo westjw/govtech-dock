@@ -3014,6 +3014,177 @@ def check_ingest_keeps_refusals() -> int:
     return errors
 
 
+def check_the_second_reader_never_sees_the_first_answer() -> int:
+    """The blinding IS the mechanism. A reader shown the answer agrees with it.
+
+    CLAUDE.md's council rule, in its own words: an attempt known to be the
+    main attempt gets defended, and a reviewer who can see whose work they are
+    holding grades the author. Strip the label and the only thing left to
+    judge is the answer.
+
+    A second reader handed the first verdict would agree with it nearly
+    always. That would look exactly like verification, cost the same money,
+    and be worth nothing - which is the most dangerous failure available here,
+    because it produces confidence rather than an error.
+
+    Driven, not read: the prompt is assembled inside second_read and only
+    second_read knows what went into it.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import gate
+    import llm
+    errors = 0
+    # a proposal whose answer is unmistakable if it leaks
+    LEAK = "ZZQQXUNIQUEVERDICT"
+    rows = [{"_key": "fact:year_founded:probe", "kind": "fact", "id": "probe",
+             "name": "Probe", "field": "year_founded", "value": LEAK,
+             "confidence": "high", "why": "because " + LEAK,
+             "evidence": LEAK, "status": "pending",
+             "saw": {"id": "probe", "name": "Probe",
+                     "pages": [{"url": "https://p.example/about",
+                                "text": "Probe was founded in 1998."}]}}]
+    seen = {}
+
+    def spy(system, user, kind, **kw):
+        seen["system"], seen["user"] = system, user
+        return {"answers": [{"id": "probe", "field": "year_founded",
+                             "value": 1998, "confidence": "high",
+                             "why": "the about page says so"}]}
+    real = llm.ask
+    llm.ask = spy
+    try:
+        pairs = gate.second_read("fact", rows, "m", dry=False)
+    finally:
+        llm.ask = real
+    if not seen:
+        return errors + fail("second_read never called the model")
+    blob = seen["system"] + seen["user"]
+    if LEAK in blob:
+        errors += fail("the first reader's answer reached the second reader's "
+                       "prompt. A reader shown the answer agrees with it, "
+                       "which costs the same and proves nothing.")
+    for word in ("first reader said", "previous answer", "verify that",
+                 "confirm whether"):
+        if word in blob.lower():
+            errors += fail(f"the second-read prompt says {word!r}, which tells "
+                           f"the reader what it is expected to do rather than "
+                           f"asking the question")
+    if "https://p.example/about" not in blob:
+        errors += fail("the second reader was not given the evidence the "
+                       "first one saw, so a disagreement would mean nothing")
+    if not pairs:
+        errors += fail("second_read returned nothing for a matching answer")
+    # a proposal with no stored `saw` cannot be re-asked, and must say so
+    bare = [dict(rows[0], saw={})]
+    llm.ask = spy
+    try:
+        if gate.second_read("fact", bare, "m", dry=False):
+            errors += fail("second_read re-asked a proposal that carries no "
+                           "record of what its agent saw, so the two readers "
+                           "were not answering the same question")
+    finally:
+        llm.ask = real
+    return errors
+
+
+def check_the_gate_shows_the_exceptions_and_rules_on_nothing() -> int:
+    """Refusals, everything unsure, and a stable sample of what passed.
+
+    Those three lists are the owner's own ruling on how work at this volume
+    reaches a person - "door only, add some gate reviews" - and each one
+    catches a different failure. Refusals show a door that is too TIGHT; the
+    write-up door has refused something true ten times and every one was found
+    in that list. The sample shows a door that is too LOOSE. The unsure pile
+    is the model saying so itself.
+
+    The sample is SEEDED on purpose: an unseeded sample can be re-rolled until
+    it looks clean, which is the same defect as a score that rewards volume.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import gate
+    errors = 0
+    rows = [{"id": f"c{i}", "confidence": "high"} for i in range(100)]
+    a, b = gate.sample(rows), gate.sample(rows)
+    if [x["id"] for x in a] != [x["id"] for x in b]:
+        errors += fail("gate.sample is not stable between calls, so it can be "
+                       "re-rolled until the sample looks clean")
+    if not 3 <= len(a) <= 8:
+        errors += fail(f"a 5% sample of 100 is {len(a)}")
+    if len(gate.sample(rows, n=12)) != 12:
+        errors += fail("gate.sample ignores an explicit size")
+    if gate.sample([]) != []:
+        errors += fail("gate.sample invents rows from an empty list")
+    # confidence split
+    mixed = ([{"confidence": "high"}] * 4 + [{"confidence": "medium"}] * 2
+             + [{"confidence": "unsure"}])
+    low, high = gate.split(mixed)
+    if len(high) != 4 or len(low) != 3:
+        errors += fail(f"gate.split put {len(high)} in high and {len(low)} "
+                       f"below; unsure and medium both need a person")
+    # every kind that can be proposed can be gated
+    for k in ("family", "card", "fact", "board", "where", "bucket", "profile"):
+        if k not in gate.AGREE or k not in gate.SAYS:
+            errors += fail(f"gate has no agreement rule or summary for {k!r}, "
+                           f"so proposals of that kind cannot be second-read")
+    # and it writes nothing, ever
+    code = _code_only(ROOT / "scripts" / "gate.py")
+    for bad in ("save_companies", "write_atomic", "save_decisions",
+                "agents.ingest", "agents.save", "proposal_rulings"):
+        if bad in code:
+            errors += fail(f"gate.py names {bad!r}. It changes what a person "
+                           f"reads, never what is true.")
+    return errors
+
+
+def check_a_ruling_can_be_re_read() -> int:
+    """Every proposal must carry what its agent saw, or it cannot be checked.
+
+    CLAUDE.md: store the INPUT the person saw alongside their answer, or the
+    label is useless for teaching the classifier later. The gate makes that
+    load-bearing rather than aspirational - a second reader with no record of
+    the question is answering a different one, and the disagreement it reports
+    would be noise.
+
+    The scout shipped without it. Its board and posts_at proposals could be
+    gated and never second-read, which is the half of the gate that costs
+    money and is the half the owner asked for by name.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents
+    import ats as _ats
+    import scout
+    errors = 0
+    real = _ats.fetch
+    try:
+        _ats.fetch = lambda blk: [{"title": "Account Executive"},
+                                  {"title": "Sales Engineer"}]
+        prop, _ = scout.verify(
+            {"id": "acme", "name": "Acme", "website": "https://acme.example"},
+            {"ats_type": "greenhouse", "ats_ref": "acme", "confidence": "high",
+             "why": "the page embeds a greenhouse iframe",
+             "read_on": "https://acme.example/careers", "pile": "unread",
+             "page_sha": "abc123"})
+    finally:
+        _ats.fetch = real
+    saw = (prop or {}).get("saw") or {}
+    if not saw.get("read_on"):
+        errors += fail("a board proposal does not record which page it was "
+                       "read on, so it can never be re-asked")
+    if not saw.get("page_sha"):
+        errors += fail("a board proposal records the page url but not its sha, "
+                       "so a re-read cannot tell whether the page has changed "
+                       "since - which is the difference between a disagreement "
+                       "and a stale question")
+    # the brief must supply the sha in the first place
+    brief = agents.board_brief({"id": "x", "name": "X"},
+                               {"url": "https://x/careers", "text": "jobs",
+                                "sha": "deadbeef"}, "unread")
+    if brief.get("page_sha") != "deadbeef":
+        errors += fail("board_brief does not carry the page sha, so nothing "
+                       "downstream can store it")
+    return errors
+
+
 def check_data_writers_are_serialised() -> int:
     """Two jobs must never push data/ to the default branch at once.
 
@@ -14344,6 +14515,9 @@ def main() -> int:
     errors += check_a_cap_stops_the_call_it_would_pay_for()
     errors += check_an_override_cannot_beat_a_working_rule()
     errors += check_data_writers_are_serialised()
+    errors += check_the_second_reader_never_sees_the_first_answer()
+    errors += check_the_gate_shows_the_exceptions_and_rules_on_nothing()
+    errors += check_a_ruling_can_be_re_read()
     errors += check_a_negative_verdict_needs_evidence_too()
     errors += check_a_fact_must_be_quoted_from_their_own_page()
     errors += check_a_place_we_do_not_count_is_never_a_board_we_could()
