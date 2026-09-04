@@ -1,244 +1,188 @@
 {
-  "date": "2026-09-03",
-  "previous": "2026-09-02",
+  "date": "2026-09-04",
+  "previous": "2026-09-03",
   "changes": [
     {
       "company": "ImageTrend",
       "id": "imagetrend",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "MD Ally",
+      "id": "md-ally",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Greyparrot",
+      "id": "greyparrot",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "Verra Mobility",
       "id": "verra-mobility",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
-    },
-    {
-      "company": "BusPatrol",
-      "id": "buspatrol",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Lead Salesforce Developer only"
-    },
-    {
-      "company": "EagleView",
-      "id": "eagleview",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Paladin Drones",
-      "id": "paladin-drones",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Account Executive"
-    },
-    {
-      "company": "TurnKey Corrections",
-      "id": "turnkey-corrections",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "no ATS on file"
-    },
-    {
-      "company": "ICC Innovation",
-      "id": "icc-innovation",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Monday.com",
-      "id": "monday-com",
       "from": "Unknown",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Strategic Account Executive (North Carolina_Rem)"
+    },
+    {
+      "company": "Cartegraph",
+      "id": "cartegraph",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Account Executive (US | Illinois | Ch)"
+    },
+    {
+      "company": "TeamSnap",
+      "id": "teamsnap",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "AiDash",
+      "id": "aidash",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Business Development Specialist only"
+    },
+    {
+      "company": "DebtBook",
+      "id": "debtbook",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Enterprise Account Executive (Charlotte, NC)"
+    },
+    {
+      "company": "Loop",
+      "id": "loop",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Envisio",
+      "id": "envisio",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Remote Account Payable Specialist only"
+    },
+    {
+      "company": "Acusensus",
+      "id": "acusensus",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Sales Executive - Automated Speed"
+    },
+    {
+      "company": "Luminator Technology Group",
+      "id": "luminator-technology-group",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Sales Backoffice Specialist only"
+    },
+    {
+      "company": "Basemap",
+      "id": "basemap",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Digital Ally",
+      "id": "digital-ally",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "RTA Fleet Management",
       "id": "rta-fleet-management",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
-      "company": "American Legal Publishing",
-      "id": "american-legal-publishing",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "company": "Agile Fleet",
+      "id": "agile-fleet",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
-      "company": "Dominion Voting Systems",
-      "id": "dominion-voting-systems",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "no ATS on file"
+      "company": "Rain Bird",
+      "id": "rain-bird",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
       "company": "Earth Networks",
       "id": "earth-networks",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "EverDriven",
-      "id": "everdriven",
       "from": "Unknown",
       "to": "Yes",
-      "note": "Account Executive, Southern Califo (Remote Southern Ca)"
+      "note": "Account Manager (Remote - Canada)"
     },
     {
-      "company": "Clever",
-      "id": "clever",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "company": "EMS LINQ",
+      "id": "ems-linq",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Associate Client Success Manager only"
     },
     {
-      "company": "Key Data Dashboard",
-      "id": "key-data-dashboard",
+      "company": "SchoolMint",
+      "id": "schoolmint",
       "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Momentus Technologies",
-      "id": "momentus-technologies",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "company": "Bitfocus",
+      "id": "bitfocus",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Solutions Consultant only"
     },
     {
       "company": "Singlewire Software",
       "id": "singlewire-software",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "IDEMIA",
-      "id": "idemia",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Account Manager III"
-    },
-    {
-      "company": "Hidden Level",
-      "id": "hidden-level",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Director Business Development - Fe only"
-    },
-    {
-      "company": "Sentinel Offender Services",
-      "id": "sentinel-offender-services",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Zenner USA",
-      "id": "zenner-usa",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "GCR (Woolpert)",
-      "id": "gcr",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "no ATS on file"
-    },
-    {
-      "company": "GE Vernova",
-      "id": "ge-vernova",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "OpusXenta",
-      "id": "opusxenta",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Pantonium",
-      "id": "pantonium",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "BigBear.ai (Pangiam)",
+      "id": "bigbear-ai",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Senior Enterprise Solutions Archit only"
+    },
+    {
+      "company": "Vanderlande",
+      "id": "vanderlande",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Survalent Technology",
+      "id": "survalent-technology",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
     },
     {
       "company": "Circuit",
       "id": "circuit",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Curbtender",
-      "id": "curbtender",
       "from": "Unknown",
       "to": "None found",
       "note": ""
-    },
-    {
-      "company": "DZS",
-      "id": "dzs",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Meadow",
-      "id": "meadow",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "CHESS Health",
-      "id": "chess-health",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Sales Director, Public Sector & Pr (US)"
-    },
-    {
-      "company": "Ad Astra Information Systems",
-      "id": "ad-astra-information-systems",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive (Expansion) (Overland Park, KS,)"
-    },
-    {
-      "company": "Clinically AI",
-      "id": "clinically-ai",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "DivDat Powered by Meridian",
-      "id": "divdat-powered-by-meridian",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "iCEV",
-      "id": "icev",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "no ATS on file"
     }
   ]
 }
