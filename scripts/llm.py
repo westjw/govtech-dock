@@ -62,6 +62,7 @@ import json
 import os
 import pathlib
 import re
+import shutil
 import sys
 import time
 
@@ -73,6 +74,13 @@ LOG = DATA / "llm_log.jsonl"
 
 API = "https://api.anthropic.com/v1/messages"
 VERSION = "2023-06-01"
+
+# THE KEY FILE LIVES OUTSIDE THIS REPOSITORY, deliberately. govtech-dock is
+# about to be public, and a secret inside the working tree is one `git add -A`
+# away from being in the history for ever - the same reasoning that put
+# site_pages/ outside git and that makes sync_claims scrub an address by
+# value. Nothing here can commit what it cannot reach.
+KEY_FILE = pathlib.Path.home() / ".config" / "sledjobs" / "anthropic_key"
 
 # The owner's recorded decision (plan O36): sonnet for the volume work, cost is
 # his. A caller wanting a harder read passes model= and the log records which
@@ -104,7 +112,108 @@ class Refused(Exception):
 
 
 def key() -> str:
-    return os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    """The key, from the environment first and then from the key file.
+
+    THE ENVIRONMENT WINS so a one-off run can override what is stored, and CI
+    can set a repository secret without any file existing at all.
+    """
+    env = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    if env:
+        return env
+    try:
+        return KEY_FILE.read_text().strip()
+    except OSError:
+        return ""
+
+
+def key_source() -> str:
+    if os.environ.get("ANTHROPIC_API_KEY", "").strip():
+        return "the environment"
+    return str(KEY_FILE) if KEY_FILE.exists() else "nowhere"
+
+
+def diagnose(k: str) -> str:
+    """Why a key will not work, in a sentence, or "" when its shape is right.
+
+    NOTHING HERE PRINTS THE KEY. A length, the prefix every Anthropic key
+    shares, and whether the string carries the ellipsis the console puts in a
+    key it is only DISPLAYING.
+    """
+    if not k:
+        return "nothing is set"
+    if "..." in k or "\u2026" in k:
+        return ("that is the DISPLAY version, not the key. The console shows a "
+                "key in full exactly once, in the dialog when you create it; "
+                "the list afterwards abbreviates it with an ellipsis and there "
+                "is no way to reveal the rest. Create a new key.")
+    if k != k.strip():
+        return "it has leading or trailing whitespace, which is enough on its own"
+    if k[:1] in "\"'":
+        return "it is wrapped in quotes; copy the key without them"
+    if k.startswith("sk-ant-oat"):
+        return ("that is a Claude Code OAuth token, not an API key. The "
+                "Messages API does not take it.")
+    if k.startswith(("python", "read ", "export ", "curl ", "/", "-")):
+        return (f"that is a shell command, not a key ({k[:22]!r}...). An "
+                f"interactive prompt swallowed the next thing typed at it.")
+    if not k.startswith("sk-ant-api"):
+        return "an API key starts 'sk-ant-api'; this is some other credential"
+    if len(k) < 90:
+        return f"the prefix is right and it is only {len(k)} characters, so the copy was cut"
+    return ""
+
+
+def set_key_from_clipboard() -> int:
+    """Take the key off the clipboard and store it, 0600, outside the repo.
+
+    THE CLIPBOARD, NOT A PROMPT, AND THAT IS THE WHOLE POINT. `read -s` waits
+    on stdin, and in a terminal driven by a Run button the next thing to
+    arrive on stdin is THE NEXT COMMAND - which it silently accepts as the
+    key. That happened three times here and produced three 401s whose only
+    clue was a length. Reading from /dev/tty would not have helped: the
+    injected keystrokes arrive on the same terminal either way.
+
+    Nothing waits, so nothing can be swallowed. And the key never appears in a
+    command, in shell history, or in anything written down.
+    """
+    import subprocess
+    tool = ("pbpaste" if sys.platform == "darwin"
+            else "wl-paste" if shutil.which("wl-paste") else "xclip")
+    if not shutil.which(tool):
+        print(f"no clipboard tool ({tool}) on this machine. Write the key to "
+              f"{KEY_FILE} yourself, one line, no quotes.", file=sys.stderr)
+        return 1
+    try:
+        args = [tool] if tool != "xclip" else [tool, "-o", "-selection", "clipboard"]
+        got = subprocess.run(args, capture_output=True, text=True, timeout=10)
+    except (OSError, subprocess.SubprocessError) as e:
+        print(f"could not read the clipboard: {e}", file=sys.stderr)
+        return 1
+    k = (got.stdout or "").strip()
+    if not k:
+        print("the clipboard is empty. Copy the key, then run this again.",
+              file=sys.stderr)
+        return 1
+    bad = diagnose(k)
+    if bad:
+        # REFUSED BEFORE IT IS STORED. Writing a key that cannot work, and
+        # then reading it back for weeks, is worse than not having one.
+        print(f"NOT STORED - {bad}", file=sys.stderr)
+        return 1
+    KEY_FILE.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
+    KEY_FILE.write_text(k + "\n")
+    KEY_FILE.chmod(0o600)
+    print(f"stored in {KEY_FILE} (owner-read-only, outside the repository)")
+    print("the clipboard still holds it - clear it when you are done.\n")
+    got = ask("Reply with the single word: ok", 'Return JSON: {"ok": true}',
+              "ping", max_tokens=64, thinking=False)
+    if got is None:
+        print("\nStored, but it did not authenticate. The line above is what "
+              "the API said.", file=sys.stderr)
+        return 1
+    calls, usd = spent()
+    print(f"and it works. {calls} request, ${usd:.4f}")
+    return 0
 
 
 def price(model: str, tin: int, tout: int) -> float:
@@ -259,10 +368,23 @@ def read_log() -> list[dict]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
+    ap.add_argument("--set-key", dest="set_key", action="store_true",
+                    help="take the key off the clipboard, store it 0600 "
+                         "outside the repo, and prove it works")
+    ap.add_argument("--forget-key", dest="forget_key", action="store_true")
     ap.add_argument("--ping", action="store_true",
                     help="one 4-token request, to prove the key authenticates")
     ap.add_argument("--spend", action="store_true")
     a = ap.parse_args()
+    if a.set_key:
+        return set_key_from_clipboard()
+    if a.forget_key:
+        if KEY_FILE.exists():
+            KEY_FILE.unlink()
+            print(f"deleted {KEY_FILE}")
+        else:
+            print("no key file to delete")
+        return 0
     if a.check:
         # WHAT IS WRONG WITH THE KEY, WITHOUT PRINTING IT. Three 401s in a row
         # cost more attention than they should have, because "set, 47 chars"
@@ -273,39 +395,23 @@ def main() -> int:
         k = key()
         print(f"default model : {DEFAULT_MODEL}")
         print(f"caps per run  : {MAX_CALLS} calls, ${MAX_SPEND:.2f}, "
-              f"{MAX_OUTPUT} output tokens, {MAX_INPUT_CHARS:,} prompt chars\n")
+              f"{MAX_OUTPUT} output tokens, {MAX_INPUT_CHARS:,} prompt chars")
+        print(f"key found in  : {key_source()}\n")
         if not k:
-            print("ANTHROPIC_API_KEY: NOT SET\n\n"
-                  "Nothing will be asked until it is. In this shell:\n"
-                  "  read -s ANTHROPIC_API_KEY && export ANTHROPIC_API_KEY\n"
-                  "In CI: a repository secret of the same name.")
+            print("No key anywhere. Copy it to the clipboard, then:\n"
+                  "  python3 scripts/llm.py --set-key\n\n"
+                  "In CI: a repository secret named ANTHROPIC_API_KEY.")
             return 0
-        raw = os.environ.get("ANTHROPIC_API_KEY", "")
+        raw = os.environ.get("ANTHROPIC_API_KEY", "") or k
         print(f"length        : {len(k)}   (a real key is about 108)")
         print(f"prefix        : {k[:11]!r}")
         print(f"ellipsis      : {'YES' if ('...' in k or chr(8230) in k) else 'no'}")
-        print(f"whitespace    : {'YES' if raw != raw.strip() else 'no'}")
-        print(f"quotes        : {'YES' if k[:1] in chr(34) + chr(39) else 'no'}\n")
-        if "..." in k or chr(8230) in k:
-            print("THAT IS THE DISPLAY VERSION, not the key. The console shows "
-                  "a key in full exactly once, in the dialog when you create "
-                  "it; the list afterwards shows an abbreviation with an "
-                  "ellipsis in the middle and there is no way to reveal the "
-                  "rest. Create a new key and copy it from that dialog.")
-        elif raw != raw.strip():
-            print("A LEADING OR TRAILING SPACE IS ENOUGH ON ITS OWN. Re-paste "
-                  "it; `read -s` keeps whatever the clipboard had.")
-        elif k.startswith("sk-ant-oat"):
-            print("THAT IS A CLAUDE CODE OAUTH TOKEN, not an API key. The "
-                  "Messages API does not take it. Create an API key at "
-                  "console.anthropic.com -> Settings -> API keys.")
-        elif not k.startswith("sk-ant-api"):
-            print("An API key starts 'sk-ant-api'. This does not, so it is "
-                  "some other credential. console.anthropic.com -> Settings "
-                  "-> API keys -> Create Key.")
-        elif len(k) < 90:
-            print("The prefix is right and the key is too short, so it was cut "
-                  "in the copy. Paste it again from the creation dialog.")
+        print(f"whitespace    : {'YES' if raw != raw.strip() else 'no'}\n")
+        bad = diagnose(k)
+        if bad:
+            print(f"THAT WILL NOT WORK - {bad}")
+            print("\nCopy the real key to the clipboard, then:\n"
+                  "  python3 scripts/llm.py --set-key")
         else:
             print("The shape is right. Prove it authenticates:\n"
                   "  python3 scripts/llm.py --ping")

@@ -3185,6 +3185,64 @@ def check_a_ruling_can_be_re_read() -> int:
     return errors
 
 
+def check_the_key_never_reaches_the_repository() -> int:
+    """A secret in a working tree that is about to go public is one add away.
+
+    The key file is deliberately under ~/.config, not in data/ and not behind
+    a .gitignore line somebody can delete - nothing here can commit what it
+    cannot reach. And the diagnosis printed about a key must never be the key:
+    a length, a shared prefix, a yes or no.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import llm
+    errors = 0
+    if ROOT in llm.KEY_FILE.parents or str(llm.KEY_FILE).startswith(str(ROOT)):
+        errors += fail(f"the key file {llm.KEY_FILE} is inside the repository")
+    FAKE = "sk-ant-api03-" + "Z" * 95
+    if llm.diagnose(FAKE):
+        errors += fail("diagnose refuses a correctly shaped key")
+    for bad, why in (
+            ("sk-ant-api03-A1b2...Xy9z", "the console's display version"),
+            # LONG ENOUGH THAT ONLY THE ELLIPSIS RULE CAN REFUSE IT. The short
+            # one above is caught by the length check either way, so deleting
+            # the ellipsis rule walked past it.
+            ("sk-ant-api03-" + "A" * 90 + "...Xy9z", "a long display version"),
+            ("sk-ant-oat01-" + "z" * 95, "a Claude Code OAuth token"),
+            ("python3 scripts/llm.py --check", "a shell command a prompt ate"),
+            ("read -s ANTHROPIC_API_KEY", "another shell command"),
+            ("  " + FAKE, "leading whitespace"),
+            (FAKE + " ", "trailing whitespace"),
+            ('"' + FAKE + '"', "a key still wrapped in quotes"),
+            ("sk-ant-api03-tooshort", "a key cut short in the copy"),
+            ("ghp_" + "a" * 36, "a credential that is not Anthropic's"),
+            ("", "nothing at all")):
+        if not llm.diagnose(bad):
+            errors += fail(f"diagnose accepted {why}")
+    # THE MESSAGE IS THE VALUE, not just the refusal. A swallowed shell
+    # command is refused by the sk-ant-api rule anyway, but "some other
+    # credential" sent three 401s round in circles where "that is a shell
+    # command, an interactive prompt ate it" ends the search.
+    for cmd in ("python3 scripts/llm.py --check", "read -s ANTHROPIC_API_KEY"):
+        if "shell command" not in llm.diagnose(cmd):
+            errors += fail(f"diagnose refuses {cmd[:20]!r} without saying it is "
+                           f"a shell command a prompt swallowed, which is the "
+                           f"only part that tells somebody what to do next")
+    # and no printed diagnosis may carry the key itself
+    for probe in (FAKE, "sk-ant-api03-A1b2...Xy9z"):
+        said = llm.diagnose(probe)
+        if probe[13:40] and probe[13:40] in said:
+            errors += fail("the diagnosis prints the body of the key")
+    # nothing key-shaped is committed anywhere in the tree
+    import subprocess
+    out = subprocess.run(["git", "grep", "-lI", "-e", "sk-ant-api0",
+                          "-e", "sk-ant-oat0", "--", ".", ":!scripts/selftest.py"],
+                         cwd=ROOT, capture_output=True, text=True)
+    hits = [x for x in out.stdout.split() if x]
+    if hits:
+        errors += fail(f"a key-shaped string is committed in {hits}")
+    return errors
+
+
 def check_data_writers_are_serialised() -> int:
     """Two jobs must never push data/ to the default branch at once.
 
@@ -14514,6 +14572,7 @@ def main() -> int:
     errors += check_the_spend_log_is_a_bill_not_a_transcript()
     errors += check_a_cap_stops_the_call_it_would_pay_for()
     errors += check_an_override_cannot_beat_a_working_rule()
+    errors += check_the_key_never_reaches_the_repository()
     errors += check_data_writers_are_serialised()
     errors += check_the_second_reader_never_sees_the_first_answer()
     errors += check_the_gate_shows_the_exceptions_and_rules_on_nothing()
