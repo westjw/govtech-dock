@@ -399,7 +399,7 @@ def main() -> int:
         print(f"key found in  : {key_source()}\n")
         if not k:
             print("No key anywhere. Copy it to the clipboard, then:\n"
-                  "  python3 scripts/llm.py --set-key\n\n"
+                  f"  python3 {pathlib.Path(__file__).resolve()} --set-key\n\n"
                   "In CI: a repository secret named ANTHROPIC_API_KEY.")
             return 0
         raw = os.environ.get("ANTHROPIC_API_KEY", "") or k
@@ -410,11 +410,11 @@ def main() -> int:
         bad = diagnose(k)
         if bad:
             print(f"THAT WILL NOT WORK - {bad}")
-            print("\nCopy the real key to the clipboard, then:\n"
-                  "  python3 scripts/llm.py --set-key")
+            print(f"\nCopy the real key to the clipboard, then:\n"
+                  f"  python3 {pathlib.Path(__file__).resolve()} --set-key")
         else:
-            print("The shape is right. Prove it authenticates:\n"
-                  "  python3 scripts/llm.py --ping")
+            print(f"The shape is right. Prove it authenticates:\n"
+                  f"  python3 {pathlib.Path(__file__).resolve()} --ping")
         return 0
     if a.ping:
         # THE CHEAPEST POSSIBLE REAL REQUEST. --check only says whether a
