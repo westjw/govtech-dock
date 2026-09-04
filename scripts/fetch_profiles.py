@@ -300,6 +300,54 @@ def grab(url: str, keep_html: bool = False) -> dict:
     return out
 
 
+def revisit_news(company: dict, prior: dict) -> dict:
+    """Re-read a company's known news pages and feeds. Nothing else.
+
+    THE WATCH SWEEP, and the reason four times a day is affordable. `visit`
+    reads the homepage, follows about links, follows news links and then hops
+    to every article - right for a first read and absurd four times a day.
+    This re-asks only the index pages already on file, and follows articles
+    only from an index that actually CHANGED: ats._get sends the stored ETag,
+    an unchanged page answers 304, and there is nothing new behind it.
+
+    The about pages are left exactly as they were. A description is written
+    from them once; it does not need re-reading because a press release
+    appeared.
+    """
+    out = dict(prior)
+    out["fetched_on"] = dt.date.today().isoformat()
+    keep, changed = [], []
+    for pg in (prior.get("news") or []):
+        if pg.get("from_index"):
+            continue                      # articles are re-derived below
+        fresh = grab(pg["url"], keep_html=True)
+        if fresh.get("unread"):
+            keep.append(pg)               # a failed fetch is not a change
+            continue
+        if fresh.get("sha") != pg.get("sha"):
+            changed.append(fresh)
+        keep.append(fresh)
+    # articles only from an index that moved
+    for pg in changed:
+        try:
+            inner = links(ats._get(pg["url"]).text, pg["url"])
+        except Exception:
+            continue
+        for a_ in [x for x in inner
+                   if ARTICLE.search(up.urlsplit(x).path or "")][:NEWS_ITEMS]:
+            if any(x["url"] == a_ for x in keep):
+                continue
+            art = grab(a_, keep_html=True)
+            art["from_index"] = pg["url"]
+            keep.append(art)
+    # unchanged indexes keep the articles already stored behind them
+    if not changed:
+        keep += [pg for pg in (prior.get("news") or []) if pg.get("from_index")]
+    out["news"] = keep
+    out["news_changed"] = len(changed)
+    return out
+
+
 def visit(company: dict, news_depth: int = 1) -> dict:
     """Everything one company's own site will tell us, or why it would not."""
     site = (company.get("website") or "").strip()
@@ -404,6 +452,13 @@ def main() -> int:
     ap.add_argument("--category")
     ap.add_argument("--refetch", action="store_true",
                     help="revisit companies already in the store")
+    ap.add_argument("--news", action="store_true",
+                    help="WATCH MODE: re-read only the news index pages and "
+                         "feeds already on file, never the homepage or the "
+                         "about pages. This is what a four-times-a-day sweep "
+                         "runs, and it is the whole cost argument: 4,259 "
+                         "index pages answering 304 costs almost nothing, "
+                         "where a full visit re-reads every site from the top.")
     ap.add_argument("--skip-unread-days", type=int, default=7,
                     help="do not re-ask a host that would not answer within N days")
     ap.add_argument("--workers", type=int, default=4,
@@ -425,7 +480,13 @@ def main() -> int:
         rows = [c for c in rows if c.get("sector") == a.sector]
     if a.category:
         rows = [c for c in rows if c.get("category") == a.category]
-    if not a.refetch:
+    if a.news:
+        # ONLY WHAT ALREADY HAS A NEWSROOM. A company with no news page on
+        # file has nothing to re-read, and asking its homepage again four
+        # times a day is exactly the traffic this mode exists to avoid. New
+        # newsrooms are found by the weekly full pass, not by the watch.
+        rows = [c for c in rows if (idx.get(c["id"]) or {}).get("news")]
+    elif not a.refetch:
         rows = [c for c in rows if c["id"] not in idx]
     # A HOST THAT WOULD NOT ANSWER LAST WEEK IS NOT ASKED AGAIN TONIGHT. The
     # discovery log learned this the hard way: two degraded runs wrote 55
@@ -458,12 +519,17 @@ def main() -> int:
     got = {"about": 0, "news": 0, "unread": 0}
     done = 0
     with cf.ThreadPoolExecutor(max_workers=max(1, a.workers)) as pool:
-        for rec in pool.map(visit, rows):
+        # WATCH MODE READS ONLY THE NEWSROOMS. A full visit re-reads the
+        # homepage and every about page, which is right once and absurd four
+        # times a day.
+        one = ((lambda c: revisit_news(c, load(c["id"]) or {})) if a.news
+               else visit)
+        for rec in pool.map(one, rows):
             if rec.get("unread"):
                 rec["unread_on"] = today.isoformat()
                 got["unread"] += 1
-            got["about"] += sum(1 for p in rec["about"] if p.get("text"))
-            got["news"] += sum(1 for p in rec["news"] if p.get("text"))
+            got["about"] += sum(1 for p in (rec.get("about") or []) if p.get("text"))
+            got["news"] += sum(1 for p in (rec.get("news") or []) if p.get("text"))
             save(rec)
             idx[rec["id"]] = index_entry(rec)
             done += 1

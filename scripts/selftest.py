@@ -3361,6 +3361,53 @@ def check_the_key_never_reaches_the_repository() -> int:
     return errors
 
 
+def check_every_workflow_command_would_parse() -> int:
+    """A scheduled job must not die on a flag that does not exist.
+
+    news.yml shipped calling `fetch_profiles.py --news`, copied out of a plan
+    document and never once run. argparse exits 2 on an unknown argument, so
+    the first scheduled sweep failed in 37 seconds with "Process completed
+    with exit code 2" and no news was ever read. Nothing local caught it,
+    because nothing local ran that line.
+
+    So every `python scripts/<x>.py --flags` a workflow contains is checked
+    against the flags that script actually defines. Mechanical, offline, and
+    it fires on exactly the mistake that happened.
+    """
+    import re as _re
+    errors = 0
+    wf = ROOT / ".github" / "workflows"
+    if not wf.exists():
+        note("no workflows on disk")
+        return 0
+    call = _re.compile(r"python3?\s+scripts/([A-Za-z_]+)\.py((?:\s+[^\n|&;]*)?)")
+    checked = 0
+    for f in sorted(wf.glob("*.yml")):
+        for m in call.finditer(f.read_text()):
+            script, argstr = m.group(1), m.group(2)
+            path = ROOT / "scripts" / f"{script}.py"
+            if not path.exists():
+                errors += fail(f"{f.name} runs scripts/{script}.py, which does "
+                               f"not exist")
+                continue
+            src = path.read_text()
+            known = set(_re.findall(r'add_argument\(\s*["\'](--[a-z0-9-]+)["\']',
+                                    src))
+            # a script with no argparse at all takes no flags
+            for flag in _re.findall(r"(?<![\w-])(--[a-z0-9-]+)", argstr):
+                checked += 1
+                if flag not in known:
+                    errors += fail(
+                        f"{f.name} runs `scripts/{script}.py {flag}` and that "
+                        f"script does not define {flag}. argparse exits 2, so "
+                        f"the job dies on its first scheduled run. It accepts: "
+                        f"{sorted(known)}")
+    if not checked:
+        errors += fail("no workflow command was checked, so this guard is "
+                       "measuring nothing")
+    return errors
+
+
 def check_data_writers_are_serialised() -> int:
     """Two jobs must never push data/ to the default branch at once.
 
@@ -14691,6 +14738,7 @@ def main() -> int:
     errors += check_a_cap_stops_the_call_it_would_pay_for()
     errors += check_an_override_cannot_beat_a_working_rule()
     errors += check_the_key_never_reaches_the_repository()
+    errors += check_every_workflow_command_would_parse()
     errors += check_data_writers_are_serialised()
     errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
     errors += check_the_second_reader_never_sees_the_first_answer()

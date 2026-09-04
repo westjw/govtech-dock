@@ -96921,7 +96921,7 @@
     "url": "https://www.pano.ai/about"
    }
   ],
-  "fetched_on": "2026-09-03",
+  "fetched_on": "2026-09-04",
   "news": [
    {
     "chars": 2731,
@@ -106168,7 +106168,7 @@
     "url": "https://www.rain.aero/about-us"
    }
   ],
-  "fetched_on": "2026-09-03",
+  "fetched_on": "2026-09-04",
   "news": [
    {
     "chars": 7520,
@@ -113784,12 +113784,17 @@
     "url": "https://www.seneca.com/product/"
    }
   ],
-  "fetched_on": "2026-09-03",
+  "fetched_on": "2026-09-04",
   "news": [
    {
     "chars": 2452,
     "sha": "a6c2e593ba49ae9a",
     "url": "https://www.seneca.com/news/"
+   },
+   {
+    "chars": 3880,
+    "sha": "9eef2dbe966a2c71",
+    "url": "https://www.seneca.com/news/seneca-aspen-fire/"
    },
    {
     "chars": 3880,
@@ -113805,11 +113810,6 @@
     "chars": 3714,
     "sha": "79f953589ba6983f",
     "url": "https://www.seneca.com/news/seneca-launches/"
-   },
-   {
-    "chars": 3880,
-    "sha": "9eef2dbe966a2c71",
-    "url": "https://www.seneca.com/news/seneca-aspen-fire/"
    }
   ],
   "no_news_page": false,
