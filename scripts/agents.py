@@ -958,8 +958,17 @@ def check_profile(p: dict, texts: dict[str, str]) -> str | None:
         if "—" in unicodedata.normalize("NFKC", text) or "―" in text:
             return f"6. no em-dashes in a sentence (house style): {head!r}."
         # 7. first person is the company talking, not us describing it;
-        #    an uppercase US is the country
-        hit = next((m for m in _PF_FIRST_PERSON.finditer(text) if m.group(0) != "US"), None)
+        #    an uppercase US is the country - AND A PRONOUN CAN BE SOMEBODY'S
+        #    NAME. "Unite Us sells software" was refused for 'Us', which is
+        #    half of the company being described, and "One franchise operator,
+        #    We Rock the Spectrum" for 'We', which is the franchise's name.
+        #    A company called Unite Us could never have had a write-up at all.
+        #    The same evidence test the other rules use: capitalised, inside a
+        #    capitalised run their own pages carry. A lower-case "we" is still
+        #    the company talking.
+        hit = next((m for m in _PF_FIRST_PERSON.finditer(text)
+                    if m.group(0) != "US"
+                    and not _pf_marketing_ok(text, m, corpus, cased)), None)
         if hit:
             return f"7. pasted marketing: first person {hit.group(0)!r} in {head!r}."
         # 8. adjectives nobody can check - but a WORD IS NOT AN ADJECTIVE

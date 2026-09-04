@@ -2303,7 +2303,10 @@ def check_profile_door_needs_provenance() -> int:
           # an ordinary word the page writes in LOWER CASE, which is the
           # evidence that the same word capitalised at a sentence start is
           # grammar rather than a name
-          "Departments keep adding units every year.")
+          "Departments keep adding units every year. "
+          # a company whose NAME contains a first-person pronoun. Unite Us
+          # exists; so does the franchise We Rock the Spectrum.
+          "Unite Us supplies the referral network.")
     T = {"https://b.example/": P1, "https://b.example/about": P2}
     Q1 = "Brinc builds drones that police departments"
     Q2 = "Customers include the Chula Vista Police Department"
@@ -2351,6 +2354,16 @@ def check_profile_door_needs_provenance() -> int:
         # plural-page case.
         ("high confidence with sourced sentences and no evidence field",
          prop(confidence="high", evidence="")),
+        # A PRONOUN CAN BE SOMEBODY'S NAME. "Unite Us sells software" was
+        # refused for 'Us', which is half the company being described - so a
+        # company called Unite Us could never have had a write-up at all.
+        # AN UPPERCASE US IS THE COUNTRY, not the pronoun. It is a lone
+        # capitalised token, so the name exemption cannot save it and the
+        # explicit carve-out is the only thing that does.
+        ("the country abbreviated, not the pronoun",
+         prop(s2=sub(S2, 2, "Police departments across the US fly the Lemur."))),
+        ("a company name that contains a first-person pronoun",
+         prop(s2=sub(S2, 2, "Unite Us supplies the referral network to police departments."))),
         ("a name the page writes only in the singular",
          prop(s2=sub(S2, 2, "The Talons carry a radio into a barricaded room."))),
         # A PAGE DECODED WITH THE WRONG CHARACTER SET is still that page.
@@ -2444,6 +2457,12 @@ def check_profile_door_needs_provenance() -> int:
         # AND THE RULE STAYS A RULE. A lone capitalised adjective is not a
         # name, and a capitalised run the page does NOT carry is not one
         # either; both are still marketing.
+        # ...AND THE RULE STAYS A RULE. Lower-case "we" is the company
+        # talking, which is the pasted-marketing shape rule 7 exists for.
+        ("first person in ordinary prose", "we",
+         prop(s2=sub(S2, 2, "The Lemur is what we fly for police departments."))),
+        ("a capitalised pronoun that is NOT part of a name on the page", "we",
+         prop(s2=sub(S2, 2, "We Fix Drones is not a company on their site."))),
         ("a lone capitalised marketing adjective", "premier",
          prop(s2=sub(S2, 2, "The Lemur is a Premier choice for police departments."))),
         ("a capitalised run the page does not carry", "world-class",
