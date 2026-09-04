@@ -1702,6 +1702,12 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
                # true sentences and the gate review fills with false refusals.
                else check_profile(p, _profile_texts(p)) if kind == "profile"
                else check_family(p, asked) if kind == "family"
+               else check_card(p, schema) if kind == "card"
+               # THE SAME PAGES A PROFILE IS CHECKED AGAINST. A founding year
+               # and a description are the same class of claim about somebody
+               # else's company, so they are held to the same evidence.
+               else check_fact(p, _profile_texts(p)) if kind == "fact"
+               else check_where(p) if kind == "where"
                else None)
         if bad:
             refused.append({"key": key, "why": bad})
@@ -1749,11 +1755,33 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
             # ruling six months on knows which bytes the prose was checked
             # against without the bodies being in the repo
             "paragraphs": p.get("paragraphs"),
-            "quote": p.get("quote") if isinstance(p.get("quote"), dict) else None,
+            # ONE STORED SHAPE FOR A QUOTE, {text, url}, whatever the kind
+            # sent. A profile's pull quote already arrives as that dict; a
+            # fact's arrives as a bare string beside its url, and the
+            # dict-only rule that used to be here would have stored None -
+            # silently dropping the ONE piece of evidence the whole fact
+            # rests on, while the proposal still read as accepted.
+            "quote": (p.get("quote") if isinstance(p.get("quote"), dict)
+                      else {"text": p["quote"], "url": p.get("url")}
+                      if isinstance(p.get("quote"), str) and p["quote"].strip()
+                      else None),
             "saw": p.get("saw") or {},
             # a family proposal's whole answer: one title, one family
             "title": p.get("title"),
             "family": p.get("family"),
+            # a card proposal: which of the three doors this candidate goes
+            # through, and the one-line description a govtech verdict owes
+            "verdict": p.get("verdict"),
+            "description": p.get("description"),
+            "website": p.get("website"),
+            # a fact proposal: one field, one value, and the sentence on their
+            # own page that states it
+            "field": p.get("field"),
+            "value": p.get("value"),
+            "url": p.get("url"),
+            # a where proposal: the place they post that we are not counting
+            "where": p.get("where"),
+            "board_owner": p.get("board_owner"),
             "by": model or "agent",
             "at": now,
             "status": "pending",
@@ -1818,6 +1846,10 @@ def main() -> int:
             briefs = brief_profile(sector=a.sector, category=a.category, limit=a.limit)
         elif a.kind == "family":
             briefs = brief_family(a.limit)
+        elif a.kind == "card":
+            briefs = brief_card(a.limit)
+        elif a.kind == "fact":
+            briefs = brief_fact(a.limit)
         else:
             print(f"no brief builder for {a.kind!r} yet", file=sys.stderr)
             return 2

@@ -48,7 +48,12 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import agents                                                   # noqa: E402
 import llm                                                      # noqa: E402
 
-BATCH = {"family": 60, "bucket": 25}
+# WHAT SETS EACH NUMBER, because none of them is a preference. family and
+# bucket are capped by OUTPUT tokens - 756 titles at ~50 tokens each is five
+# times llm.MAX_OUTPUT. fact is capped by INPUT: each brief carries up to four
+# pages of somebody's website, median 6,312 characters, so 20 is ~126,000 of
+# llm.MAX_INPUT_CHARS' 240,000. card is small at both ends.
+BATCH = {"family": 60, "bucket": 25, "card": 40, "fact": 20}
 
 # THE HOUSE RULES, IN THE PROMPT. Every one of these is a rule this project
 # already enforces at the door, restated where the answer is written: a door
@@ -93,12 +98,68 @@ Return: {"answers": [{"id": <the exact id from the brief>, "sector": ...,
 sentence>, "evidence": <the words in the description that decided it>}]}"""
 
 
+CARD_TASK = """Each item is a company somebody researched off a conference floor
+and nobody has ruled on. It is NOT on this board yet.
+
+Answer one of three verdicts:
+ - "govtech": they sell a technology product to state or local government. This
+   one is expensive to be wrong about in both directions, so it also needs a
+   sector and category from `schema`, and a one-line description of what they
+   sell and to whom.
+ - "supplier": they sell to government but are not a technology product vendor
+   - services, hardware, consulting, staffing, financial advice.
+ - "not_this_board": not a government seller at all.
+
+BOTH DIRECTIONS NEED EVIDENCE, and the negative needs it most. A wrong
+"govtech" is visible on a public page and somebody will say so. A wrong "not
+this board" hides a real company for ever: it stops appearing, nothing errors,
+and nothing ever contradicts it.
+
+The description field is null for every one of these - the research produced a
+name, a website and a one-line vertical and no more. If those do not settle it,
+answer "unsure". Do not write a description you cannot read off something.
+
+Return: {"answers": [{"name": <the exact name from the brief>, "verdict": ...,
+"confidence": "high"|"medium"|"low"|"unsure", "why": <one sentence>,
+"evidence": <the words that decided it>, "sector": ..., "category": ...,
+"description": <one line, only for govtech>}]}"""
+
+FACT_TASK = """Each item is a company and the pages from its own website that we
+have on file, with one or two facts missing: a founding year, a location, or
+both.
+
+Answer ONLY from these pages. The value must appear inside a verbatim quote
+from one of them - not near it, not implied by it, IN it. A year that is merely
+plausible is exactly what gets written when nobody can check, and nothing
+downstream will ever contradict it.
+
+If the pages do not state it, answer "unsure". That is the expected answer
+often, and it costs nothing.
+
+Return: {"answers": [{"id": <the exact id>, "field": "year_founded"|"location",
+"value": <a four-digit year, or "City, ST">, "confidence":
+"high"|"medium"|"low"|"unsure", "url": <which page>, "quote": <verbatim, 20+
+characters, containing the value>, "why": <one sentence>}]}"""
+
+
+TASKS = {"family": FAMILY_TASK, "bucket": BUCKET_TASK,
+         "card": CARD_TASK, "fact": FACT_TASK}
+
+
 def _prompt(kind: str, briefs: list) -> tuple[str, str]:
-    task = FAMILY_TASK if kind == "family" else BUCKET_TASK
     payload: dict = {"items": briefs}
-    if kind == "bucket":
+    if kind in ("bucket", "card"):
         payload["schema"] = agents._schema()
-    return f"{RULES}\n\n{task}", json.dumps(payload, indent=1)
+    if kind == "fact":
+        # ONE COPY OF THE PAGES per company, however many fields it is short.
+        by_id: dict = {}
+        for b in briefs:
+            row = by_id.setdefault(b["id"], {
+                "id": b["id"], "name": b["name"], "website": b.get("website"),
+                "pages": b["pages"], "asking": {}, "rules": b["rules"]})
+            row["asking"][b["field"]] = b["asking"]
+        payload = {"items": list(by_id.values())}
+    return f"{RULES}\n\n{TASKS[kind]}", json.dumps(payload, indent=1)
 
 
 def _as_proposals(kind: str, answers: list, briefs: list) -> list:
@@ -109,10 +170,16 @@ def _as_proposals(kind: str, answers: list, briefs: list) -> list:
     what stops an invented title reaching the door at all - the door would
     catch it too, but a refusal costs a queue row and this costs nothing.
     """
-    by_key = {b["id"]: b for b in briefs}
+    # a fact answer is keyed by BOTH the company and the field: one company
+    # can be short of two, and they refuse independently
+    by_key = ({(b["id"], b["field"]): b for b in briefs} if kind == "fact"
+              else {b["id"]: b for b in briefs})
     out = []
     for a in answers or []:
-        ident = a.get("title") if kind == "family" else a.get("id")
+        ident = (a.get("title") if kind == "family"
+                 else a.get("name") if kind == "card"
+                 else (a.get("id"), a.get("field")) if kind == "fact"
+                 else a.get("id"))
         b = by_key.get(ident)
         if not b:
             continue
@@ -123,6 +190,8 @@ def _as_proposals(kind: str, answers: list, briefs: list) -> list:
                             if k not in ("kind", "key", "families")}})
         if kind == "family":
             row["title"] = b["title"]
+        if kind == "fact":
+            row["field"] = b["field"]
         out.append(row)
     return out
 
@@ -162,7 +231,8 @@ def clusters(rows: list, floor: int = 4) -> list:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--kind", choices=("family", "bucket"), required=True)
+    ap.add_argument("--kind", choices=("family", "bucket", "card", "fact"),
+                    required=True)
     ap.add_argument("--limit", type=int, default=120)
     ap.add_argument("--batch", type=int)
     ap.add_argument("--model", default=llm.DEFAULT_MODEL)
@@ -171,7 +241,16 @@ def main() -> int:
     a = ap.parse_args()
 
     briefs = (agents.brief_family(a.limit) if a.kind == "family"
-              else agents.brief_bucket(a.limit))
+              else agents.brief_bucket(a.limit) if a.kind == "bucket"
+              else agents.brief_card(a.limit) if a.kind == "card"
+              else agents.brief_fact(a.limit))
+    if a.kind == "fact":
+        # SAME COMPANY, SAME BATCH. 13 of 47 companies in the queue are missing
+        # both a founding year and a location, and their briefs carry the same
+        # four pages twice. Sorting by id puts them in one request, where
+        # _prompt sends those pages once - about a quarter of the input tokens
+        # for this queue, for one sort.
+        briefs.sort(key=lambda b: (b["id"], b["field"]))
     if not briefs:
         print(f"nothing unanswered in the {a.kind} queue")
         return 0

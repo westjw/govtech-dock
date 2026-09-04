@@ -63,7 +63,7 @@ import roles                                                    # noqa: E402
 # the gate review for one row. Both paths call promote_profiles.land, so the
 # written shape, the journal entry and the author are identical.
 ELSEWHERE = {"profile": "one at a time here, or a category at a time: promote_profiles.py --gate <category>"}
-NO_APPLIER = ("news", "claim", "card")
+NO_APPLIER = ("news", "claim")
 
 
 def _stamp(p: dict, status: str, by: str, why: str) -> None:
@@ -138,6 +138,177 @@ def _accept_bucket(p: dict, by: str, why: str, force: bool) -> dict:
                             "proposed": f"{p.get('sector')} / {p.get('category')}",
                             "confidence": p.get("confidence"),
                             "description": saw.get("description"), "by": by})
+
+
+FACT_PROVENANCE = "fact_provenance.json"
+
+
+def _accept_fact(p: dict, by: str, why: str, force: bool) -> dict:
+    """Write one founding year or one location, with the sentence that states it.
+
+    THE PROVENANCE IS NOT OPTIONAL AND IT DOES NOT LIVE ON THE COMPANY. A year
+    is a published fact about somebody else's firm, and CLAUDE.md's rule is
+    that we never invent one - so the quote that justified it has to survive
+    the write, or six months from now nobody can tell a researched year from a
+    remembered one. `founded_provenance.json` is the older, hand-ruled version
+    of the same idea; this file is keyed `<id>:<field>` so a location gets the
+    same treatment, and it goes through save_decisions like every other
+    decision file rather than the bare write_atomic that one still uses.
+    """
+    field, value = p.get("field"), p.get("value")
+    if field not in agents.FACT_FIELDS:
+        return {"error": f"unknown field {field!r}"}
+    quote = p.get("quote") or {}
+    text = quote.get("text") if isinstance(quote, dict) else quote
+    url = (quote.get("url") if isinstance(quote, dict) else None) or p.get("url")
+    if not text or not url:
+        return {"error": "the quote and its url did not survive intake; "
+                         "nothing may be written without them"}
+    companies = admin.read_companies()
+    c = next((x for x in companies if x.get("id") == p.get("id")), None)
+    if c is None:
+        return {"error": f"no company {p.get('id')!r}"}
+    # ALREADY ON FILE IS NOT A CORRECTION. A proposal made weeks ago must not
+    # overwrite an answer a person has given since.
+    if c.get(field):
+        return {"error": f"{c.get('name')} already reads {field}="
+                         f"{c[field]!r}; change it in the admin, not here"}
+    c[field] = int(value) if field == "year_founded" else str(value).strip()
+    bad = admin.save_companies(companies, f"set-{field}",
+                               why=(why or p.get("why") or "")[:300], by=by)
+    if bad:
+        return {"error": bad}
+    prov = admin.read(FACT_PROVENANCE, {})
+    prov[f"{p['id']}:{field}"] = {
+        "value": c[field], "url": url, "quote": text[:400],
+        "on": dt.date.today().isoformat(), "by": by}
+    bad = admin.save_decisions(FACT_PROVENANCE, prov, f"{field}-provenance",
+                               why=f"{p['id']} {field}", by=by)
+    if bad:
+        # THE COMPANY WRITE ALREADY LANDED. Say so rather than reporting a
+        # clean failure - admin_undo can take it back and the caller has to
+        # know there is something to take back.
+        return {"error": f"{field} was written but its provenance was refused: "
+                         f"{bad}. Undo the {field} write if that matters."}
+    return {"ok": True, "message": f"{c.get('name')} {field} = {c[field]}"}
+
+
+def _accept_where(p: dict, by: str, why: str, force: bool) -> dict:
+    """Record that a company advertises somewhere we cannot count.
+
+    Deliberately NOT an `ats` entry: `ats` means monitored, and filing
+    LinkedIn there would make refresh try, fail, and write a zero that reads
+    as "nobody is hiring here". This says the opposite and honest thing.
+    """
+    import posts_at as _pa
+    where, url = p.get("where"), (p.get("url") or "").strip()
+    owner = (p.get("board_owner") or "").strip()
+    bad = _pa.check(where, url, owner)
+    if bad:
+        return {"error": bad}
+    companies = admin.read_companies()
+    c = next((x for x in companies if x.get("id") == p.get("id")), None)
+    if c is None:
+        return {"error": f"no company {p.get('id')!r}"}
+    if c.get("posts_at"):
+        return {"error": f"{c.get('name')} already records where they post"}
+    c["posts_at"] = _pa.build(where, url, by, (why or p.get("why") or "")[:200],
+                              owner)
+    bad = admin.save_companies(companies, "set-posts-at",
+                               why=(why or p.get("why") or "")[:300], by=by)
+    return ({"error": bad} if bad else
+            {"ok": True, "message": f"{c.get('name')} posts at {_pa.label(where)}"})
+
+
+def _accept_card(p: dict, by: str, why: str, force: bool) -> dict:
+    """Let a researched candidate onto the board, or file it as a supplier.
+
+    THE INSERT IS promote_candidates', NOT A SECOND COPY OF IT. That script
+    holds three guards this must not lose: an id that collides gets a suffix,
+    a name sharing a distinctive word with a company already on file is a
+    possible duplicate and goes to a person rather than becoming a card, and
+    `source_event` is only written as "exhibited at X" when the catalogue
+    actually issued that tag - a research pass called itself an event once and
+    put ten companies on the Conferences tab claiming they attended it.
+
+    `not_this_board` writes NOTHING, and that is the whole answer. The
+    proposal is stamped, the brief will not re-ask, and no record is created
+    for a company this board does not carry - which is also what makes the
+    ruling reversible: there is nothing to take back.
+    """
+    import promote_candidates as pc
+
+    verdict = p.get("verdict")
+    name = (p.get("name") or "").strip()
+    if verdict not in agents.CARD_VERDICTS:
+        return {"error": f"unknown verdict {verdict!r}"}
+    if verdict == "not_this_board":
+        return {"ok": True, "message": f"{name}: not this board. Nothing was "
+                                       f"written, and it will not be re-asked"}
+    companies = admin.read_companies()
+    suppliers = json.loads((admin.DATA / "suppliers.json").read_text())
+    key = pc.norm(name)
+    known = {pc.norm(c["name"]): c["name"] for c in companies}
+    known.update({pc.norm(s["name"]): s["name"] for s in suppliers})
+    match = pc.same_company(key, known)
+    if match:
+        return {"error": f"{name} is already on file as {match!r}"}
+
+    if verdict == "supplier":
+        suppliers.append({
+            "id": pc.kebab(name), "name": name, "website": p.get("website"),
+            "location": None, "year_founded": None,
+            "sector": "General Gov", "category": "Suppliers & Services",
+            "description": (p.get("description") or "").strip(),
+            "ats": {"type": "unknown", "ref": None},
+            "hiring": {"status": "Unknown", "note": "not researched",
+                       "roles": [], "checked": None}})
+        bad = admin.save_decisions("suppliers.json", suppliers, "add-supplier",
+                                   why=(why or p.get("why") or "")[:300], by=by)
+        return ({"error": bad} if bad else
+                {"ok": True, "message": f"{name} filed as a supplier"})
+
+    sector, cat = p.get("sector"), p.get("category")
+    schema = agents._schema()
+    if sector not in schema or cat not in schema.get(sector, []):
+        return {"error": f"sector/category not in schema: {sector} / {cat}"}
+    desc = (p.get("description") or "").strip().rstrip(".")
+    if not desc:
+        return {"error": "a govtech card needs a one-line description"}
+    by_word: dict = {}
+    for real in list(known.values()):
+        for w in pc._words(real):
+            by_word.setdefault(w, real)
+    near = pc.shares_a_name(name, by_word)
+    if near and not force:
+        return {"error": f"{name} shares a distinctive word with {near!r}. "
+                         f"That is a merge or two companies, and only a person "
+                         f"can say which - rule it again with force to insist"}
+    taken = {c["id"] for c in companies} | {s["id"] for s in suppliers}
+    cid, n = pc.kebab(name), 2
+    while cid in taken:
+        cid = f"{pc.kebab(name)}-{n}"
+        n += 1
+    saw = p.get("saw") or {}
+    ev = saw.get("source_event")
+    event = ev if ev in pc._issued_event_tags() else None
+    companies.append({
+        "id": cid, "name": name, "website": p.get("website"),
+        "location": None, "year_founded": None,
+        "sector": sector, "category": cat,
+        "description": f"{desc} - exhibited at {event}" if event else desc,
+        "ats": {"type": "unknown", "ref": None},
+        "hiring": {"status": "Unknown", "note": "board not discovered yet",
+                   "roles": [], "checked": None},
+        "govtech": True, "vendor_type": "GovTech Product",
+        "source": (f"conference sweep: {ev}" if event
+                   else (f"research pass: {ev}" if ev else "agent card")),
+        "researched": True})
+    bad = admin.save_companies(companies, "add-company",
+                               why=(why or p.get("why") or "")[:300], by=by)
+    return ({"error": bad} if bad else
+            {"ok": True, "message": f"{name} added as {cid} "
+                                    f"({sector} / {cat})"})
 
 
 def _accept_family(p: dict, by: str, why: str, force: bool) -> dict:
@@ -281,6 +452,12 @@ def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
         res = _accept_bucket(p, by, why, force)
     elif kind == "family":
         res = _accept_family(p, by, why, force)
+    elif kind == "fact":
+        res = _accept_fact(p, by, why, force)
+    elif kind == "where":
+        res = _accept_where(p, by, why, force)
+    elif kind == "card":
+        res = _accept_card(p, by, why, force)
     elif kind == "rival":
         res = _accept_rival(p, by, why, force, store)
     elif kind == "profile":

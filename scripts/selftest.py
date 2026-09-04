@@ -3014,6 +3014,339 @@ def check_ingest_keeps_refusals() -> int:
     return errors
 
 
+def check_a_negative_verdict_needs_evidence_too() -> int:
+    """A wrong "not this board" hides a company for ever, so it is not the cheap answer.
+
+    The two errors are not symmetric. A wrong "govtech" puts a company on a
+    public page where somebody sees it and says so. A wrong "not this board"
+    is invisible: the record stops appearing, nothing errors, no count looks
+    odd, and nothing ever contradicts it. That is the same asymmetric error
+    `scan_pagetext` refuses to make, and the door must not let a negative be
+    the lazy default. `unsure` is the cheap answer, deliberately.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents
+    errors = 0
+    sch = agents._schema()
+    sec = list(sch)[0]
+    cat = sch[sec][0]
+    good = {"name": "Acme", "verdict": "govtech", "confidence": "high",
+            "why": "their site sells permitting software to city halls",
+            "evidence": "permitting software for city building departments",
+            "sector": sec, "category": cat,
+            "description": "Permitting software sold to city building departments."}
+    if agents.check_card(good, sch) is not None:
+        errors += fail("the card door refuses a well-formed govtech verdict")
+    neg = {"name": "Acme", "verdict": "not_this_board", "confidence": "high",
+           "why": "they sell laboratory reagents to hospital groups",
+           "evidence": "laboratory reagents for hospital groups"}
+    if agents.check_card(neg, sch) is not None:
+        errors += fail("the card door refuses a well-evidenced negative")
+    for bad, label in (
+            ({**neg, "evidence": ""}, "a negative with no evidence"),
+            ({**good, "evidence": ""}, "a positive with no evidence"),
+            ({**good, "sector": None}, "govtech naming no sector"),
+            ({**good, "category": "Not A Category"}, "a category not in the schema"),
+            ({**good, "description": "Tiny."}, "a description too short to be one"),
+            ({**good, "description": "Industry-leading permitting software."},
+             "marketing copy in the description"),
+            ({**good, "description": "We sell permitting software to cities."},
+             "first person in the description"),
+            ({**good, "verdict": "maybe"}, "a verdict outside the vocabulary"),
+            ({**good, "why": "obvious"}, "a why too short to check"),
+            ({"name": "Acme", "confidence": "unsure", "verdict": "govtech"},
+             "an unsure answer that still carries a verdict")):
+        if agents.check_card(bad, sch) is None:
+            errors += fail(f"the card door accepted {label}")
+    if agents.check_card({"name": "Acme", "confidence": "unsure"}, sch) is not None:
+        errors += fail("the card door refuses a clean unsure, which must stay "
+                       "the cheapest answer available")
+    return errors
+
+
+def check_a_fact_must_be_quoted_from_their_own_page() -> int:
+    """A founding year is a published claim about somebody else's company.
+
+    CLAUDE.md: never invent a fact to fill a field, no guessed founding year.
+    A year that is merely PLAUSIBLE is exactly what gets written when nobody
+    can check, and nothing downstream ever contradicts it - the field simply
+    fills in and looks researched. So the value must sit INSIDE a verbatim
+    quote from a page we fetched: not near it, not implied by it, in it.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents
+    errors = 0
+    U = "https://acme.example/about"
+    # The page carries 1799 and 3000 ON PURPOSE. Without them, an out-of-range
+    # year is refused by the in-quote rule instead and the range check is never
+    # the thing that fires - a mutation deleting it walked straight past.
+    # 2099 IS ON THE PAGE ON PURPOSE. An out-of-range year is normally refused
+    # by the in-quote rule first, so the range check never fires and a mutation
+    # deleting it walks past. 2099 is the only shape that reaches it: _FACT_YEAR
+    # matches 18xx/19xx/20xx, so 1799 cannot get there at all and the LOWER
+    # bound is unreachable belt-and-braces rather than a live rule.
+    T = {U: "Acme was founded in 1998 in Austin, Texas by two engineers. "
+            "Our 2024 revenue grew. The lease runs to 2099 at the latest."}
+    ok = {"field": "year_founded", "value": 1998, "confidence": "high",
+          "url": U, "quote": "Acme was founded in 1998 in Austin"}
+    if agents.check_fact(ok, T) is not None:
+        errors += fail("the fact door refuses a year stated in its own quote")
+    loc = {"field": "location", "value": "Austin, TX", "confidence": "medium",
+           "url": U, "quote": "founded in 1998 in Austin, Texas by two"}
+    if agents.check_fact(loc, T) is not None:
+        errors += fail("the fact door refuses a location stated in its own quote")
+    for bad, label in (
+            ({**ok, "value": 1997}, "a year the quote does not state"),
+            ({**ok, "value": 2024},
+             "a year that is on the PAGE but not in the quote - the whole point"),
+            ({**ok, "quote": "Acme was started in 1998 in Austin"},
+             "a quote that is not on the page"),
+            ({**ok, "url": "https://elsewhere.example/x"},
+             "a page we never fetched"),
+            ({**ok, "quote": "in 1998"}, "a quote too short to be evidence"),
+            ({**ok, "value": 1799}, "a year before 1800"),
+            ({**ok, "value": 2099, "quote": "The lease runs to 2099 at the latest"},
+             "a future year that IS quoted from the page, which only the "
+             "range check can refuse"),
+            ({**ok, "value": "nineteen ninety eight"}, "a year that is not a number"),
+            ({**loc, "value": "Denver, CO"}, "a city the quote does not state"),
+            ({**loc, "value": "Austin"}, "a location with no region"),
+            ({**ok, "field": "revenue"}, "a field this door does not cover"),
+            ({"field": "year_founded", "confidence": "unsure", "value": 1998},
+             "an unsure answer that still carries a value")):
+        if agents.check_fact(bad, T) is None:
+            errors += fail(f"the fact door accepted {label}")
+    if agents.check_fact({"field": "year_founded", "confidence": "unsure"}, T) is not None:
+        errors += fail("the fact door refuses a clean unsure")
+    return errors
+
+
+def check_a_place_we_do_not_count_is_never_a_board_we_could() -> int:
+    """`posts_at` and `ats` are opposite claims and must not be interchangeable.
+
+    `ats` means MONITORED. Filing a Greenhouse address as a posts_at would
+    record "the openings are there and we are not counting them" about a board
+    refresh.py could read every night; filing LinkedIn as an `ats` would make
+    refresh try, fail, and write a zero that reads as nobody hiring. The host
+    list is admin's own, not a second copy - that drift is silent and total.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+    import agents
+    errors = 0
+    ok = {"where": "linkedin", "url": "https://www.linkedin.com/company/acme/jobs",
+          "confidence": "high", "why": "their careers page links straight out to it",
+          "evidence": "https://acme.example/careers"}
+    if agents.check_where(ok) is not None:
+        errors += fail("the where door refuses a well-formed posts_at")
+    for bad, label in (
+            ({**ok, "url": "https://boards.greenhouse.io/acme"},
+             "a Greenhouse board, which refresh.py can read"),
+            ({**ok, "url": "https://acme.myworkdayjobs.com/careers"},
+             "a Workday board, which refresh.py can read"),
+            ({**ok, "url": "https://www.linkedin.com/company/acme"},
+             "a LinkedIn brochure page rather than its jobs page"),
+            ({**ok, "where": "parent", "url": "https://sap.example/jobs",
+              "board_owner": ""}, "a parent's board with no parent named"),
+            ({**ok, "where": "nowhere"}, "a place outside the vocabulary"),
+            ({**ok, "why": "linkedin"}, "a why too short to check"),
+            ({**ok, "evidence": "the careers page"},
+             "evidence that is not the page it was read on"),
+            ({"where": "linkedin", "confidence": "unsure",
+              "url": "https://www.linkedin.com/company/acme/jobs"},
+             "an unsure answer that still names a place")):
+        if agents.check_where(bad) is None:
+            errors += fail(f"the where door accepted {label}")
+    # the host list is shared, not restated
+    src = _code_only(ROOT / "scripts" / "agents.py")
+    if "admin.ATS_HOSTS" not in src:
+        errors += fail("check_where no longer reads admin.ATS_HOSTS. A second "
+                       "copy of that list drifts silently, which is exactly "
+                       "what check_alert_vocabulary exists to stop.")
+    return errors
+
+
+def check_the_scout_proves_a_board_before_it_proposes_one() -> int:
+    """A slug the model named is a guess until something fetches it.
+
+    CLAUDE.md: always verify a slug with a real fetch before writing it -
+    slugs that look right land on other companies' boards. check_board
+    therefore demands the row count the slug ACTUALLY returned and sample
+    titles from it, and no reading of a careers page can produce either. So
+    scout.verify fetches, and the model's own claims about counts are ignored
+    entirely.
+
+    Driven with a stubbed fetcher, because the failure is that verify starts
+    believing the answer instead of the board.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents
+    import ats as _ats
+    import scout
+    errors = 0
+    company = {"id": "acme", "name": "Acme", "website": "https://acme.example"}
+    real_fetch = _ats.fetch
+    try:
+        # a board that answers with three titles
+        _ats.fetch = lambda blk: [{"title": "Account Executive"},
+                                  {"title": "Sales Engineer"},
+                                  {"title": ""}]
+        # the model LIES about the count; the fetch is what counts
+        prop, note = scout.verify(company, {
+            "ats_type": "greenhouse", "ats_ref": "acme", "rows": 900,
+            "confidence": "high", "why": "the page embeds a greenhouse iframe"})
+        if not prop:
+            errors += fail(f"verify refused a board that answered: {note}")
+        elif prop.get("rows") != 2:
+            errors += fail(f"verify reported {prop.get('rows')} rows; the fetch "
+                           f"returned 2 real titles and the model's claim of "
+                           f"900 must be ignored entirely")
+        elif not prop.get("sample"):
+            errors += fail("verify carries no sample titles, which are the "
+                           "evidence a person rules ownership on")
+        elif agents.check_board(dict(prop, evidence="https://acme.example/careers")) is not None:
+            errors += fail("what verify produces does not pass check_board, so "
+                           "the scout cannot land anything")
+
+        # a board that does not answer is dropped, not proposed
+        def boom(blk):
+            raise _ats.AtsError("HTTP 404")
+        _ats.fetch = boom
+        prop, note = scout.verify(company, {"ats_type": "greenhouse",
+                                            "ats_ref": "acme"})
+        if prop is not None:
+            errors += fail("verify proposed a board that did not answer")
+
+        # a board that answers with nothing is NOT "they have nothing open"
+        _ats.fetch = lambda blk: []
+        prop, note = scout.verify(company, {"ats_type": "greenhouse",
+                                            "ats_ref": "acme"})
+        if prop is not None:
+            errors += fail("verify proposed a slug that returned no titles; "
+                           "that is indistinguishable from a wrong slug and "
+                           "wiring it would record a zero every night")
+
+        # a parent's hub is refused by size
+        _ats.fetch = lambda blk: [{"title": f"Role {i}"} for i in range(2500)]
+        prop, note = scout.verify(company, {"ats_type": "greenhouse",
+                                            "ats_ref": "acme"})
+        if prop is not None:
+            errors += fail("verify proposed a 2,500-row hub as one company's board")
+
+        # A TYPE REFRESH CANNOT FETCH IS REFUSED BEFORE ANY REQUEST, and the
+        # stub must SUCCEED to prove it. The first version raised, and
+        # verify's `except Exception` swallowed that identically to a real
+        # fetch failure - so deleting the type check looked exactly like
+        # keeping it and the mutation walked past.
+        _ats.fetch = lambda blk: [{"title": "Account Executive"},
+                                  {"title": "Sales Engineer"}]
+        prop, note = scout.verify(company, {"ats_type": "html", "ats_ref": "x"})
+        if prop is not None:
+            errors += fail("verify proposed an `html` ref as a board found")
+        prop, note = scout.verify(company, {"ats_type": "invented", "ats_ref": "x"})
+        if prop is not None:
+            errors += fail("verify proposed a type that does not exist")
+    finally:
+        _ats.fetch = real_fetch
+    return errors
+
+
+def check_nothing_here_can_say_a_board_is_absent() -> int:
+    """The one answer that would be useful and must never be accepted.
+
+    A false absence is invisible and permanent: the company stops being asked
+    about, nothing errors, no count looks odd, and nothing ever contradicts
+    it. It is the same rule `scan_pagetext` holds between `None found` and
+    `Unknown`, and it is the rule this whole project turns on. So the brief
+    forbids it in words, the answer vocabulary has no slot for it, and a run
+    that finds nothing reports a fact about the READING.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents
+    import scout
+    errors = 0
+    brief = agents.board_brief({"id": "acme", "name": "Acme"},
+                               {"url": "https://acme.example/careers",
+                                "text": "Careers"}, "unread")
+    if "never" not in brief:
+        errors += fail("the board brief no longer forbids answering that no "
+                       "board exists")
+    elif "no board exists" not in brief["never"].lower():
+        errors += fail("the board brief's refusal no longer names the answer "
+                       "it is refusing")
+    if set(brief.get("answers") or {}) != {"board", "posts_at", "unsure"}:
+        errors += fail(f"the board brief offers "
+                       f"{sorted(brief.get('answers') or {})}; an 'absent' or "
+                       f"'none' option is the one thing it must never offer")
+    code = _code_only(ROOT / "scripts" / "scout.py")
+    for word in ('"absent"', '"none_found"', "'absent'", "'none_found'"):
+        if word in code:
+            errors += fail(f"scout.py's code names {word}, so something can "
+                           f"record an absence nobody proved")
+    # and the run summary must frame a null result as a fact about the reading
+    # THE SENTENCE, not a phrase. "not evidence" appears twice in that file,
+    # so deleting the one that matters left the other and the check passed.
+    # THE SENTENCES AS VALUES, not as prose grepped out of a print. The first
+    # version scanned the source and failed on correct code, because the
+    # sentence was split across two f-string fragments and the substring it
+    # looked for never appeared. What a null run SAYS is the invariant here,
+    # so scout holds it in a constant a guard can read and format.
+    if "no board" not in scout.SAW_NOTHING:
+        errors += fail("scout no longer reports how many pages showed no board")
+    if "not evidence that those companies have no board" not in scout.SAW_NOTHING:
+        errors += fail("scout reports a count of pages where it found no board "
+                       "without saying that is not evidence those companies "
+                       "have no board - the false absence this engine exists "
+                       "to refuse")
+    if "not evidence" not in scout.UNREAD_NOTE:
+        errors += fail("scout reports pages that would not load without saying "
+                       "a failed fetch is not a fact about the company")
+    # and they must actually render, with the count in them
+    if "7" not in scout.SAW_NOTHING.format(n=7):
+        errors += fail("scout's null-result sentence drops the count")
+    # AND THE CALLER MUST STILL SAY IT. A constant that is never printed is a
+    # disclaimer nobody reads - this file has now caught the guard-measures-
+    # the-helper-while-the-caller-drifts shape six times. _code_only so a
+    # comment mentioning the name cannot satisfy it.
+    code = _code_only(ROOT / "scripts" / "scout.py")
+    run = code.split("def main(", 1)[-1]
+    for const in ("SAW_NOTHING", "UNREAD_NOTE"):
+        if const not in run:
+            errors += fail(f"scout.main no longer prints {const}, so the "
+                           f"sentence exists and nobody ever sees it")
+    return errors
+
+
+def check_the_refusal_audit_reports_and_never_rules() -> int:
+    """The second reader on the door argues about rules. It must not change one.
+
+    Two of the first 39 flagged refusals came back suspect and both were
+    correct on a closer read - a version number that is a prefix of a longer
+    one, and a marketing word that really was lower case. A tool that decided
+    for itself would have reversed both. And the direction it would be wrong
+    in is the expensive one: loosening a door that publishes facts about real
+    companies.
+    """
+    errors = 0
+    code = _code_only(ROOT / "scripts" / "audit_refusals.py")
+    for bad in ("save_companies", "write_atomic", "save_decisions",
+                "agents.ingest", "agents.save"):
+        if bad in code:
+            errors += fail(f"audit_refusals.py names {bad!r}; it prints a "
+                           f"report and a person edits agents.py by hand")
+    # the free pass must stay the default, or every run costs money
+    src = (ROOT / "scripts" / "audit_refusals.py").read_text()
+    if "if not a.review:" not in src:
+        errors += fail("the token check is no longer the default; the free "
+                       "pass is what found all ten false refusals")
+    # and it must not re-ask what the regex already answered
+    if "sound[:a.limit]" not in src and "sound" not in src.split("todo =")[1][:60]:
+        errors += fail("the second reader is being handed the rows the token "
+                       "check already flagged, which is paying to re-ask a "
+                       "question a regex settled")
+    return errors
+
+
 def check_a_company_card_owns_the_address() -> int:
     """Leaving a company card must take `co` out of the url with it.
 
@@ -13952,6 +14285,12 @@ def main() -> int:
     errors += check_the_spend_log_is_a_bill_not_a_transcript()
     errors += check_a_cap_stops_the_call_it_would_pay_for()
     errors += check_an_override_cannot_beat_a_working_rule()
+    errors += check_a_negative_verdict_needs_evidence_too()
+    errors += check_a_fact_must_be_quoted_from_their_own_page()
+    errors += check_a_place_we_do_not_count_is_never_a_board_we_could()
+    errors += check_the_scout_proves_a_board_before_it_proposes_one()
+    errors += check_nothing_here_can_say_a_board_is_absent()
+    errors += check_the_refusal_audit_reports_and_never_rules()
     errors += check_a_company_card_owns_the_address()
     errors += check_a_search_for_a_company_we_track_says_so()
     errors += check_a_ruling_says_what_it_opened()
