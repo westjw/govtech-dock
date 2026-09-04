@@ -2720,11 +2720,26 @@ function emptyJobs(quotaOnly,fam,where,setAside,q,noQuota,noWhere){
      truth is almost always that we hold Tyler and cannot read their board.
      The generic line below says that in aggregate; this says it about the
      company the reader actually typed, which is the only version that lands. */
-  const needle=(q||"").trim().toLowerCase();
+  /* THE SPACE IS THE WHOLE BUG. This matched the raw name, so a reader who
+     typed "citydetect" got the generic dead end while the board held City
+     Detect with a live page - because "city detect".includes("citydetect") is
+     false. People type a company the way they know it, and they know it from
+     the domain. So both sides drop everything that is not a letter or a
+     digit, and the website host is matched too: citydetect -> citydetect.com. */
+  const squash=t=>(t||"").toLowerCase().replace(/[^a-z0-9]/g,"");
+  const needle=squash(q);
   if(needle.length>=3){
+    /* THE TLD STAYS ON. Stripping it looked tidier and broke the commonest
+       way a reader pastes a company: "citydetect.com" squashes to
+       "citydetectcom", and a host trimmed to "citydetect" cannot contain it.
+       Keeping it matches both directions - "citydetect" and "citydetect.com"
+       both sit inside "citydetectcom" - at the price of a bare "com" matching
+       everything, which the length floor below refuses. */
+    const host=o=>squash((o.website||"").replace(/^https?:\/\/(www\.)?/,"").split("/")[0]);
     const hit=D.organizations.filter(o=>
-      (o.name||"").toLowerCase().includes(needle)
-      ||(o.also_known_as||[]).some(a=>(a||"").toLowerCase().includes(needle)));
+      squash(o.name).includes(needle)
+      ||(o.also_known_as||[]).some(a=>squash(a).includes(needle))
+      ||(needle.length>=4&&host(o).includes(needle)));
     const quiet=hit.filter(o=>!o.open_roles);
     if(quiet.length){
       const o=quiet[0];
@@ -2826,10 +2841,22 @@ let PUSH_NEXT=false;
    tab, the quota pill - creates a new one. That matches what people expect
    Back to undo: your last decision, not your last letter. */
 function writeUrl(push){
-  if(URL_LOADING||ROLE)return;
+  /* A COMPANY CARD OWNS THE ADDRESS while it is open, exactly as a role does,
+     because co() pushes ?co=<id> by itself and this function would overwrite
+     it with the board's filters.
+
+     AND `co` IS DELETED WHEN NO CARD IS OPEN. The rule above this - preserve
+     parameters we do not recognise - exists to keep somebody's utm_source and
+     to stop a back-button loop, and it was quietly applying to `co` as well.
+     So leaving a company card and then searching the board carried the old
+     company forward: `?co=wavetronix&q=citydetect`. Nothing on screen showed
+     it, because `co` has no filter chip, and the link the reader copied
+     reopened Wavetronix instead of their search. A parameter this app writes
+     is not a stranger's; only the ones we never write are. */
+  if(URL_LOADING||ROLE||CO)return;
   const u=new URLSearchParams(location.search);
   Object.keys(URLKEYS).forEach(k=>u.delete(k));
-  ["tab","any","where","paynone","p"].forEach(k=>u.delete(k));
+  ["tab","any","where","paynone","p","co","role"].forEach(k=>u.delete(k));
   if(tab!=="jobs")u.set("tab",tab);
   // page 1 is the default and stays out of the address, so the plain board
   // and "the plain board, page 1" are one url rather than two

@@ -66,7 +66,7 @@ STORE = DATA / "agent_proposals.json"
 # can show them; proposal_rulings refuses to land one until the applier
 # exists, by name, rather than raising inside a request handler.
 KINDS = ("bucket", "read", "card", "board", "rival", "profile", "news",
-         "claim", "family")
+         "claim", "family", "fact", "where")
 CONFIDENCE = ("high", "medium", "low", "unsure")
 
 
@@ -132,6 +132,178 @@ def brief_bucket(limit: int | None = None) -> list[dict]:
             "regex_confidence": r.get("confidence"),
         })
     return out[:limit] if limit else out
+
+
+CANDIDATES = "conference_intake/govtech_candidates.json"
+
+
+def brief_card(limit: int | None = None) -> list[dict]:
+    """One brief per researched candidate nobody has ruled on.
+
+    772 names came off conference floors with a website and a one-line
+    vertical, and `card` has been a declared kind with no applier since it was
+    written - so every one of them has sat undecided. They are not the
+    supplier pile: CLAUDE.md already ruled that 2,776 of the 4,745 suppliers
+    are ANSWERS rather than backlog, and a filter run over the undecided 1,969
+    found no product vendor misfiled among them. This is the 772 that were
+    researched FOR this board and never let in.
+
+    THE BRIEF IS THIN ON PURPOSE AND SAYS SO. Every one of these carries a
+    null description - the vertical line is all the research produced. A model
+    handed a name, a website and eight words cannot honestly write the
+    one-line description `promote_candidates` needs, so the brief tells it to
+    answer unsure rather than fill the field, and check_card refuses a govtech
+    verdict whose description is missing or too short. scout.py fetches the
+    site for the ones worth the request; this brief does not, because 772
+    fetches to answer a question most of these settle without one is the
+    wrong order.
+    """
+    path = DATA / CANDIDATES
+    if not path.exists():
+        return []
+    rows = json.loads(path.read_text())
+    if isinstance(rows, dict):
+        rows = list(rows.values())
+    done = load()
+    known = {(c.get("website") or "").lower() for c in
+             json.loads((DATA / "companies.json").read_text())}
+    out = []
+    for r in rows:
+        if not isinstance(r, dict) or not (r.get("name") or "").strip():
+            continue
+        key = f"card:{_pf_key(r['name']) or r['name']}"
+        if key in done:
+            continue
+        # ALREADY ON THE BOARD IS NOT A QUESTION, and asking it wastes a row.
+        if (r.get("website") or "").lower() in known and r.get("website"):
+            continue
+        out.append({
+            "kind": "card", "key": key, "id": r["name"], "name": r["name"],
+            "website": r.get("website") or "",
+            "vertical": r.get("vertical") or "",
+            "description": r.get("description") or None,
+            "source_event": r.get("source_event") or "",
+            "verdicts": {
+                "govtech": "sells a product to state or local government; "
+                           "needs a sector, a category and a one-line "
+                           "description or it cannot be let in",
+                "supplier": "sells to government but is not a technology "
+                            "product vendor - services, hardware, consulting",
+                "not_this_board": "not a government seller at all",
+            },
+            "note": "the description is null for every one of these. If the "
+                    "name, the website and the vertical do not settle it, "
+                    "answer unsure - do not write a description you cannot "
+                    "read off something.",
+        })
+        if limit and len(out) >= limit:
+            break
+    return out
+
+
+def brief_fact(limit: int | None = None, field: str | None = None) -> list[dict]:
+    """One brief per company missing a founding year or a location.
+
+    447 rows have no founding year and 323 have no location, and the pages
+    that would state them are ALREADY ON DISK - the profile crawl fetched
+    every company's homepage and about pages months of work ago. Nothing has
+    read them for this. That is the cheapest unopened box in the repository.
+
+    ONE FIELD PER BRIEF, not both, because they refuse differently: a year is
+    a number that must appear in the quote, a location is a city that must.
+    Answering two questions in one proposal means one refusal takes down a
+    correct answer with it.
+    """
+    import fetch_profiles as fp
+    companies = json.loads((DATA / "companies.json").read_text())
+    if isinstance(companies, dict):
+        companies = list(companies.values())
+    idx = fp.index()
+    done = load()
+    fields = [field] if field else list(FACT_FIELDS)
+    out = []
+    for c in companies:
+        cid = c.get("id")
+        if not cid:
+            continue
+        e = idx.get(cid)
+        if not e or e.get("unread"):
+            continue                      # nothing to read from, honestly
+        for f in fields:
+            if c.get(f):
+                continue                  # already on file
+            key = f"fact:{f}:{cid}"
+            if key in done:
+                continue
+            rec = fp.load(cid)
+            if not rec:
+                continue
+            pages = [pg for pg in (rec.get("about") or []) if pg.get("text")][:PROFILE_PAGES]
+            if not pages:
+                continue
+            out.append({
+                "kind": "fact", "key": key, "id": cid, "name": c.get("name"),
+                "field": f, "asking": FACT_FIELDS[f],
+                "website": c.get("website") or "",
+                "pages": [{"url": pg["url"], "sha": pg.get("sha"),
+                           "text": pg["text"][:PROFILE_PAGE_CHARS]}
+                          for pg in fp.dechrome(pages)],
+                "rules": {
+                    "value": ("a four-digit year" if f == "year_founded"
+                              else "'City, ST' for the US, else 'City, Country'"),
+                    "quote": "verbatim from one of these pages, 20+ characters, "
+                             "and it must CONTAIN the value itself",
+                    "unsure": "the right answer when the pages do not state it",
+                },
+            })
+            if limit and len(out) >= limit:
+                return out
+    return out
+
+
+BOARD_PILES = {
+    "unread": "a careers page is wired as `html` and reads zero titles",
+    "unknown": "no board has ever been found, and none has been ruled absent",
+}
+
+
+def board_brief(company: dict, page: dict, pile: str) -> dict:
+    """One brief for 'where does this company actually post?', from a fetched page.
+
+    PURE, AND THE FETCH IS THE CALLER'S. scout.py does the IO and hands the
+    page in, so this can be driven under fixtures and so the same brief shape
+    covers both piles. CLAUDE.md's reason for building briefs here rather than
+    letting an agent gather its own holds either way: an agent that fetches
+    its own context fetches different context every run, and two proposals
+    then cannot be compared.
+
+    THE MODEL IS NOT ALLOWED TO CLOSE THIS QUESTION and the brief says so.
+    check_board demands a row count and sample titles from a real fetch, which
+    no reading of a careers page can produce - so the answer here is a
+    CANDIDATE address, and scout verifies it before it is ever a proposal. And
+    "no board exists" is not on the menu at all: a false absence is invisible
+    and permanent, which is the one error this project refuses everywhere.
+    """
+    return {
+        "kind": "board", "key": f"board:{company['id']}",
+        "id": company["id"], "name": company.get("name"),
+        "website": company.get("website") or "",
+        "sector": company.get("sector"),
+        "why_here": BOARD_PILES.get(pile, pile),
+        "read_on": page.get("url"),
+        "page_text": (page.get("text") or "")[:PROFILE_PAGE_CHARS],
+        "answers": {
+            "board": "an ATS this project can fetch is named or linked on the "
+                     "page. Give its type and the slug or url. Do NOT claim a "
+                     "posting count - it will be fetched and checked.",
+            "posts_at": "the openings are somewhere we cannot count - "
+                        "LinkedIn, a parent's board, their own page. Name the "
+                        "place and the link.",
+            "unsure": "the page does not say. Always available, always cheap.",
+        },
+        "never": "Do not answer that no board exists. Nothing on one page "
+                 "proves that, and a wrong 'none' hides a company for ever.",
+    }
 
 
 def brief_family(limit: int | None = None) -> list[dict]:
@@ -1158,6 +1330,184 @@ def check_board(p: dict) -> str | None:
 
 
 # ---------------------------------------------------------------- intake
+
+CARD_VERDICTS = ("govtech", "supplier", "not_this_board")
+
+
+def check_card(p: dict, schema: dict) -> str | None:
+    """Refuse a candidate ruling that would add a wrong company, or lose a right one.
+
+    THE TWO ERRORS ARE NOT SYMMETRIC AND THE DOOR IS NOT EITHER. A wrong
+    "govtech" puts a company on a public board where a person can see it and
+    say so. A wrong "not_this_board" hides a warm door for ever: the record
+    stops appearing, nothing errors, no count looks odd, and nothing ever
+    contradicts it. That is the same asymmetric error `scan_pagetext` refuses
+    to make, and it is why a NEGATIVE verdict here is held to the same
+    evidence bar as a positive one rather than being the cheap default.
+
+    `unsure` is the cheap default, deliberately, and it costs one queue row.
+
+    A govtech verdict must also arrive with the sector, the category and a
+    one-line description, because `promote_candidates` needs all three and
+    CLAUDE.md's rule for that path is explicit: it refuses to invent. A
+    verdict that names none of them is not a ruling, it is a vote.
+    """
+    conf = p.get("confidence")
+    if conf not in CONFIDENCE:
+        return f"confidence must be one of {CONFIDENCE}"
+    if not (p.get("name") or "").strip():
+        return "a card proposal must name the candidate"
+    verdict = p.get("verdict")
+    why = (p.get("why") or "").strip()
+    if conf == "unsure":
+        return (None if not verdict else
+                "an unsure proposal must not also carry a verdict")
+    if verdict not in CARD_VERDICTS:
+        return f"verdict must be one of {CARD_VERDICTS}"
+    if len(why) < 25:
+        return "say why, in a sentence a person can check"
+    # BOTH DIRECTIONS NEED EVIDENCE. See the docstring: the negative is the
+    # invisible one, so it does not get to be the lazy answer.
+    if not (p.get("evidence") or "").strip():
+        return ("every verdict needs evidence - the words that decided it. A "
+                "wrong 'not this board' hides a company for ever and nothing "
+                "ever contradicts it")
+    if verdict != "govtech":
+        return None
+    sec, cat = p.get("sector"), p.get("category")
+    if not sec or not cat:
+        return "a govtech verdict must name a sector and a category"
+    if sec not in schema:
+        return f"unknown sector {sec!r}"
+    if cat not in schema[sec]:
+        return f"{cat!r} is not a category of {sec!r}"
+    desc = (p.get("description") or "").strip()
+    if len(desc) < 20:
+        return ("a govtech verdict must carry a one-line description: what "
+                "they sell and to whom")
+    if len(desc) > 200:
+        return f"the description is one line, got {len(desc)} characters"
+    if _PF_FIRST_PERSON.search(desc):
+        return "the description is ours, not theirs; no 'we' or 'our'"
+    m = _PF_MARKETING_RE.search(desc)
+    if m:
+        return f"{m.group(0)!r} is marketing copy, not what they sell"
+    return None
+
+
+FACT_FIELDS = {"year_founded": "the year the company was founded",
+               "location": "where the company is headquartered"}
+_FACT_YEAR = re.compile(r"(?<!\d)(1[89]\d\d|20\d\d)(?!\d)")
+
+
+def check_fact(p: dict, texts: dict) -> str | None:
+    """Refuse a founding year or a location that the company's own pages do not state.
+
+    THE SAME DOOR AS check_profile, NARROWED TO ONE VALUE. A founding year is
+    a published fact about somebody else's company, and CLAUDE.md's rule is
+    absolute: never invent a fact to fill a field, no guessed founding year.
+    A year that is merely PLAUSIBLE is exactly what a model produces when it
+    wants to be helpful, and nothing downstream would ever contradict it -
+    the field simply fills in and looks researched.
+
+    So the value must sit inside a verbatim quote from a page we fetched:
+    not near it, not implied by it, IN it. That single rule is what makes the
+    difference between reading and remembering.
+    """
+    conf = p.get("confidence")
+    if conf not in CONFIDENCE:
+        return f"confidence must be one of {CONFIDENCE}"
+    field = p.get("field")
+    if field not in FACT_FIELDS:
+        return f"field must be one of {tuple(FACT_FIELDS)}"
+    if conf == "unsure":
+        return (None if p.get("value") in (None, "") else
+                "an unsure proposal must not also carry a value")
+    value, url = p.get("value"), (p.get("url") or "").strip()
+    quote = (p.get("quote") or "").strip()
+    if value in (None, ""):
+        return "a confident proposal must carry the value"
+    texts = {u: t for u, t in (texts or {}).items()
+             if isinstance(u, str) and isinstance(t, str)}
+    if url not in texts:
+        return (f"{url!r} is not a page we fetched for this company; a fact "
+                f"has to come off a page on file")
+    if len(quote) < 20:
+        return "the quote must be at least 20 characters of their own words"
+    if _pf_norm(quote) not in _pf_norm(texts[url]):
+        return f"the quote is not on {url}"
+    if field == "year_founded":
+        try:
+            year = int(str(value).strip())
+        except (TypeError, ValueError):
+            return f"a founding year is a number, got {value!r}"
+        this_year = dt.date.today().year
+        if not 1800 <= year <= this_year:
+            return f"{year} is not a founding year between 1800 and {this_year}"
+        # THE VALUE MUST BE IN THE QUOTE, not merely on the page. A quote that
+        # supports a nearby year supports any year on that page.
+        if str(year) not in _FACT_YEAR.findall(quote):
+            return (f"{year} is not in the quote. The quote has to be the "
+                    f"sentence that states the year, not one beside it")
+        return None
+    loc = str(value).strip()
+    if "," not in loc or len(loc) < 4:
+        return "a location reads 'City, ST' or 'City, Country'"
+    city = loc.split(",")[0].strip()
+    if not city:
+        return "a location needs a city"
+    if not _pf_has(_pf_norm(quote), city):
+        return (f"{city!r} is not in the quote. The quote has to be the "
+                f"sentence that states where they are")
+    return None
+
+
+def check_where(p: dict) -> str | None:
+    """Refuse a 'they post here' record that would mislead a job seeker.
+
+    `posts_at` is not an `ats` entry and the difference is load-bearing: `ats`
+    means MONITORED, and filing LinkedIn there would make refresh try, fail,
+    and record a zero. This says "the openings are here and we are not
+    counting them", which is a different and honest claim.
+
+    It is also the one board-shaped answer a model may give directly, because
+    the dangerous direction is not available to it. A posts_at record claims
+    no number and asserts no absence; the worst it can do is send somebody to
+    the wrong page, which `posts_at.check` already refuses on its own terms.
+    """
+    import posts_at
+
+    conf = p.get("confidence")
+    if conf not in CONFIDENCE:
+        return f"confidence must be one of {CONFIDENCE}"
+    if conf == "unsure":
+        return (None if not p.get("where") else
+                "an unsure proposal must not also name a place")
+    where = p.get("where")
+    if not where:
+        return "a confident proposal must name where they post"
+    bad = posts_at.check(where, (p.get("url") or "").strip(),
+                         (p.get("board_owner") or "").strip())
+    if bad:
+        return bad
+    if len((p.get("why") or "").strip()) < 25:
+        return "say why, in a sentence a person can check"
+    if not (p.get("evidence") or "").strip().startswith(("http://", "https://")):
+        return "evidence must be the page this was read on"
+    # A BOARD WE COULD FETCH IS NOT A posts_at. Filing a Greenhouse address
+    # here would record "the openings are there and we are not counting them"
+    # about a board refresh.py could read nightly. The host list is admin's,
+    # not restated: a second copy is the alerts-vocabulary drift, which is
+    # silent and total.
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+
+    url = (p.get("url") or "").lower()
+    if any(h in url for h in admin.ATS_HOSTS):
+        return ("that is a board a fetcher can read; propose it as a board so "
+                "refresh.py counts it, not as a place we do not count")
+    return None
+
 
 def unclassified_titles() -> set:
     """The titles the queue is actually asking about. Read fresh, not cached.

@@ -3014,6 +3014,165 @@ def check_ingest_keeps_refusals() -> int:
     return errors
 
 
+def check_a_company_card_owns_the_address() -> int:
+    """Leaving a company card must take `co` out of the url with it.
+
+    writeUrl deliberately PRESERVES parameters it does not recognise, so a
+    shared link keeps its utm_source and the back button stops looping. `co`
+    was being preserved by that same rule, and it is not a stranger's
+    parameter - this app writes it. So opening Wavetronix, going back to the
+    board and searching produced `?co=wavetronix&q=citydetect`: the reader saw
+    no chip for it, because `co` has none, and the link they copied reopened
+    Wavetronix instead of their search.
+
+    Source-level on both halves, because writeUrl reads live DOM and history.
+    """
+    errors = 0
+    html = (ROOT / "index.html").read_text()
+    i = html.find("function writeUrl(push){")
+    j = html.find("\nfunction readUrl(", i + 1)
+    body = html[i:j] if i >= 0 and j > i else ""
+    if not body:
+        return errors + fail("index.html: writeUrl is gone")
+    # the app's own view keys are cleared, not preserved
+    for key in ('"co"', '"role"'):
+        if key not in body:
+            errors += fail(f"writeUrl no longer deletes {key} from the url. It "
+                           f"is a parameter this app writes, so the "
+                           f"preserve-unknown-parameters rule must not cover "
+                           f"it, or a stale company rides along invisibly.")
+    # and a card that IS open keeps its own address
+    guard = re.search(r"if\(URL_LOADING\|\|([^)]*)\)return;", body)
+    if not guard:
+        errors += fail("writeUrl lost its early return")
+    elif "CO" not in guard.group(1):
+        errors += fail("writeUrl does not stand aside while a company card is "
+                       "open, so it overwrites the ?co= that co() pushed")
+    return errors
+
+
+def check_a_search_for_a_company_we_track_says_so() -> int:
+    """Typing a company we hold must offer their card, however it is typed.
+
+    The branch existed and did not fire. It matched the raw name, so
+    "citydetect" missed City Detect - `"city detect".includes("citydetect")`
+    is false - and the reader got the generic dead end for a company whose
+    page is live. People type a company the way they know it, and they know
+    it from the domain.
+
+    That matters more than a nicety here: City Detect has a live board whose
+    roles cannot be read, so the honest answer is "we track them and cannot
+    read their board", and the generic line says that only in aggregate.
+
+    Driven under node, the way coAbout is: this is a template branch and the
+    bug was in a string comparison inside it.
+    """
+    import shutil, subprocess
+    errors = 0
+    html = (ROOT / "index.html").read_text()
+    if not shutil.which("node"):
+        note("node not installed; emptyJobs was not executed this run")
+        return errors
+    i = html.find("function emptyJobs(")
+    j = html.find("\n}\n", i + 1)
+    src = html[i:j + 2] if i >= 0 and j > i else ""
+    if "function emptyJobs(" not in src:
+        return errors + fail("index.html: emptyJobs is gone")
+
+    # ONE ROUTE EACH. The first version of these fixtures let every case be
+    # rescued by the host match, so a mutation reverting the name compare to a
+    # raw substring walked straight past - the same "each shape in ONE form
+    # only" failure this file has now had twice. Each org below is reachable
+    # by exactly one branch, and the case list says which.
+    ORGS = [
+        # the reported bug: a space in the name, and the domain agrees
+        {"id": "city-detect", "name": "City Detect",
+         "website": "https://www.citydetect.com",
+         "open_roles": 0, "enumerable": False},
+        # NAME ONLY. "rekorsystems" is not in the raw name (a space splits it)
+        # and not in the host ("rekor"). Only the squashed name reaches it.
+        {"id": "rekor", "name": "Rekor Systems", "website": "https://rekor.ai",
+         "open_roles": 0, "no_board_on_file": True},
+        # HOST ONLY. 340 companies are reachable this way and no other, and
+        # they are the ones whose names are too short to search: Rain,
+        # Perimeter, Prepared, AMP, Pavilion, Holly.
+        {"id": "brinc", "name": "Brinc",
+         "website": "https://www.brincdrones.com",
+         "open_roles": 0, "no_board_on_file": True},
+        # ALSO-KNOWN-AS ONLY. An acquired name is what people still type.
+        {"id": "rave", "name": "Motorola Solutions",
+         "also_known_as": ["Rave Mobile Safety"],
+         "website": "https://www.motorolasolutions.com",
+         "open_roles": 0, "unreadable": "HTTP 403"},
+        # has roles, so it must never be offered as a quiet company
+        {"id": "wavetronix", "name": "Wavetronix",
+         "website": "https://wavetronix.com", "open_roles": 14}]
+    pre = ("const esc=s=>String(s==null?'':s).replace(/[&<>\"']/g,"
+           "c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"
+           "\"'\":'&#39;'}[c]));\n"
+           "const GHOST='';const FAM={};\n"
+           "function paySetAsideText(){return ''}\n"
+           f"const D={json.dumps({'organizations': ORGS})};\n")
+    # every way a reader types a company we hold, and one we do not
+    cases = [("citydetect", True, "the domain spelling, which is how the bug was found"),
+             ("city detect", True, "the name as written"),
+             ("City Detect", True, "the name with its capitals"),
+             ("city-detect", True, "the id"),
+             ("citydetect.com", True, "the full domain, pasted"),
+             ("zzqqxnotacompany", False, "a word matching nothing"),
+             # A COMPANY WITH ROLES IS NEVER QUIET. Offering Wavetronix's card
+             # with "they have nothing open that we can see" would be a plain
+             # falsehood about a company advertising 14 jobs.
+             ("wavetronix", False, "a company that has open roles"),
+             # THE TWO LENGTH FLOORS, which nothing exercised until a mutation
+             # dropped each of them and walked past. Keeping the TLD on the
+             # host is what makes "com" dangerous: without a floor it sits
+             # inside every host on the board.
+             ("com", False, "a bare tld, which is inside every host"),
+             ("ci", False, "two characters, under the branch's own floor")]
+    # each of these is reachable by ONE branch and no other
+    host_cases = [
+        ("rekorsystems", "Rekor Systems", "co=rekor",
+         "the squashed NAME - a space splits it in the raw name and the host "
+         "is only 'rekor'"),
+        ("brincdrones", "Brinc", "co=brinc",
+         "the HOST - a company whose name is too short to search"),
+        ("ravemobilesafety", "Motorola Solutions", "co=rave",
+         "a squashed ALSO-KNOWN-AS - the acquired name people still type")]
+    every = [q for q, _, _ in cases] + [q for q, _, _, _ in host_cases]
+    probe = pre + src + "\n" + "".join(
+        f"console.log(JSON.stringify({{q:{json.dumps(q)},"
+        f"out:emptyJobs(false,'','',null,{json.dumps(q)},0,0)}}));\n"
+        for q in every)
+    r = subprocess.run(["node", "-e", probe], capture_output=True, text=True, timeout=60)
+    if r.returncode != 0:
+        return errors + fail(f"emptyJobs threw under node: {r.stderr[:200]}")
+    got = [json.loads(ln) for ln in r.stdout.splitlines() if ln.strip()]
+    for (q, should_name, why), row in zip(cases, got):
+        # a NEGATIVE case must be checked against every org, not just the one
+        # the positive cases are about: "wavetronix" was silently passing
+        # because it does not name City Detect either.
+        named = ("We track" in row["out"] if not should_name
+                 else "City Detect" in row["out"] and "co=city-detect" in row["out"])
+        if should_name and not named:
+            errors += fail(f"searching {q!r} ({why}) does not offer City "
+                           f"Detect's card, so a company this board holds "
+                           f"reads as a company it does not")
+        if not should_name and named:
+            errors += fail(f"searching {q!r} names City Detect, so the match "
+                           f"is loose enough to point at the wrong company")
+    for (q, name, link, why), row in zip(host_cases, got[len(cases):]):
+        if name not in row["out"] or link not in row["out"]:
+            errors += fail(f"searching {q!r} ({why}) does not offer {name}'s "
+                           f"card. 340 companies are reachable only this way.")
+    # and the reason must be the honest one, not "nothing open"
+    first = got[0]["out"]
+    if "cannot be read automatically" not in first:
+        errors += fail("the card offer does not say WHY there are no roles; "
+                       "an unreadable board must not read as 'not hiring'")
+    return errors
+
+
 def check_company_page_profile_states() -> int:
     """coAbout renders the new profile shape, and NEVER the legacy one.
 
@@ -13793,6 +13952,8 @@ def main() -> int:
     errors += check_the_spend_log_is_a_bill_not_a_transcript()
     errors += check_a_cap_stops_the_call_it_would_pay_for()
     errors += check_an_override_cannot_beat_a_working_rule()
+    errors += check_a_company_card_owns_the_address()
+    errors += check_a_search_for_a_company_we_track_says_so()
     errors += check_a_ruling_says_what_it_opened()
     errors += check_placement_queues_can_say_both()
     errors += check_a_company_sits_on_at_most_two_shelves()
