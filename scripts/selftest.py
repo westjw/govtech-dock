@@ -2395,6 +2395,257 @@ def check_conference_counts_reach_both_events() -> int:
     return errors
 
 
+def check_the_company_page_says_which_kind_of_no_news() -> int:
+    """Five states, five different sentences, and none of them is "no news".
+
+    The news engine, its door, its store and a four-times-a-day sweep were all
+    built. Nothing ever wrote the result onto the board, and the page carried
+    a hardcoded paragraph reading "No news items have been recorded for this
+    company" for every company on the site, while 10,099 dated items sat in
+    the store.
+
+    An empty list means one of five things: their newsroom listed nothing
+    dated, they have no news page, their site did not answer, nobody has
+    looked yet, or a person hid it. Those are different claims about a
+    company, and the difference is the whole project: "no news" about a firm
+    that raised a round last week is the kind of wrong a reader notices.
+
+    Driven under node, the way coAbout is.
+    """
+    import shutil
+    import subprocess
+    html = (ROOT / "index.html").read_text()
+    errors = 0
+    ca = html.find("function co(id,fromUrl){")
+    cb = html.find("function toggleSaveCompany(")
+    body = html[ca:cb] if ca > 0 and cb > ca else ""
+    if "coNews(" not in body:
+        errors += fail("co() no longer calls coNews, so the News section is "
+                       "hardcoded again and says the same thing about every "
+                       "company on the board")
+    if not shutil.which("node"):
+        note("node not installed; coNews was not executed this run")
+        return errors
+
+    i = html.find("const NEWSKIND=")
+    j = html.find("\n}\n", html.find("function coNews(", i))
+    su = html.find("function safeUrl(")
+    src = ((html[su:html.find("\n}\n", su) + 2] if su >= 0 else "")
+           + (html[i:j + 2] if i >= 0 and j > i else ""))
+    if "function coNews(" not in src:
+        return errors + fail("index.html: coNews is gone")
+
+    script = """
+const location = {href: "https://sledjobs.com/"};
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",
+  ">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+%s
+const strip = h => h.replace(/<[^>]+>/g, " ").replace(/\\s+/g, " ").trim();
+const out = {
+  items: strip(coNews({news:[{date:"2026-08-19",kind:"funding",
+    headline:"Raises 125 Million",url:"https://b.example/x"}],
+    news_state:"items", news_checked_on:"2026-09-05"}, "b.example")),
+  none_found:   strip(coNews({news:[],news_state:"none_found"}, "b.example")),
+  no_news_page: strip(coNews({news:[],news_state:"no_news_page"}, "b.example")),
+  unread:       strip(coNews({news:[],news_state:"unread"}, "b.example")),
+  never:        strip(coNews({}, "b.example")),
+  hostile:      coNews({news:[{date:"2026-08-19",kind:"press",
+    headline:"Click me", url:"javascript:alert(1)"}], news_state:"items"}, "b.example"),
+};
+console.log(JSON.stringify(out));
+""" % src
+    try:
+        r = subprocess.run(["node", "-e", script], capture_output=True,
+                           text=True, timeout=30)
+    except subprocess.TimeoutExpired:
+        return errors + fail("coNews did not finish under node")
+    if r.returncode != 0:
+        return errors + fail(f"coNews does not run: {r.stderr.strip()[:160]}")
+    import json as _json
+    out = _json.loads(r.stdout)
+
+    if "Raises 125 Million" not in out["items"]:
+        errors += fail("coNews does not render the headline the site printed")
+    if "2026-08-19" not in out["items"]:
+        errors += fail("coNews renders an item without the date the site "
+                       "stated, and an undated item is exactly what the door "
+                       "refuses to keep")
+    # THE FOUR EMPTIES MUST NOT READ THE SAME. This is the whole check: a
+    # renderer that collapses them is the hardcoded paragraph again, wearing
+    # a function's clothes. Each state is pinned to the words only it may
+    # use, in BOTH halves of the section - the summary line and the sentence
+    # under it - because a first version compared whole strings and a
+    # mutation that made two summaries identical passed on the strength of
+    # the paragraphs still differing.
+    empties = {k: out[k] for k in ("none_found", "no_news_page", "unread", "never")}
+    if len(set(empties.values())) != 4:
+        same = [k for k, v in empties.items()
+                if list(empties.values()).count(v) > 1]
+        errors += fail(f"coNews gives the same answer for different states "
+                       f"{same}. 'their newsroom listed nothing dated', 'they "
+                       f"have no news page', 'their site did not answer' and "
+                       f"'nobody has looked' are four different claims about "
+                       f"a company")
+    for state, must, mustnt in (
+            ("none_found", ("nothing dated", "newsroom is on file"), ("no news page",)),
+            ("no_news_page", ("no news page found", "links to a newsroom"),
+             ("nothing dated",)),
+            ("unread", ("could not be read", "did not answer"),
+             ("nothing dated", "no news page found")),
+            ("never", ("not checked yet", "Nobody has looked"),
+             ("nothing dated", "no news page found"))):
+        for phrase in must:
+            if phrase not in empties[state]:
+                errors += fail(f"the {state} state no longer says {phrase!r}. "
+                               f"Each of these is a different claim about the "
+                               f"company and they may not converge")
+        for phrase in mustnt:
+            if phrase in empties[state]:
+                errors += fail(f"the {state} state now says {phrase!r}, which "
+                               f"belongs to a different state entirely")
+    # A HEADLINE URL IS SCRAPED FROM SOMEBODY ELSE'S PAGE. esc() escapes the
+    # characters that break out of an attribute; it does nothing about a
+    # javascript: scheme sitting inside a perfectly well-formed href.
+    if "javascript:" in out["hostile"]:
+        errors += fail("coNews puts a scraped url straight into an href with "
+                       "no safeUrl behind it, so a javascript: link on a "
+                       "company's own newsroom becomes a link on this page")
+    if "Click me" not in out["hostile"]:
+        errors += fail("a headline whose url was refused vanished; the "
+                       "headline is the item and it should still read")
+    # AND THE BOARD MUST CARRY THE STATE. Everything above drives the
+    # renderer; a mutation that stopped build_board from writing news_state
+    # left every one of those branches correct and unreachable, because the
+    # page would only ever see undefined. Both halves, or neither counts.
+    import ast
+    bb = (ROOT / "scripts" / "build_board.py").read_text()
+    import importlib
+    sys.path.insert(0, str(ROOT / "scripts"))
+    build_board = importlib.import_module("build_board")
+    store = {"x": {"state": "none_found", "checked_on": "2026-09-05", "items": []},
+             "y": {"state": "items", "checked_on": "2026-09-05",
+                   "items": [{"date": "2026-08-19", "kind": "press",
+                              "headline": "H", "url": "https://y.example/a"}]}}
+    if build_board.news_for_board({"id": "x"}, store)[1] != "none_found":
+        errors += fail("news_for_board drops the state, so the page cannot "
+                       "tell 'their newsroom listed nothing' from 'nobody "
+                       "looked'")
+    if build_board.news_for_board({"id": "zzz"}, store)[1] is not None:
+        errors += fail("a company the sweep has never seen came back with a "
+                       "state, so 'not checked yet' is unreachable")
+    if build_board.news_for_board({"id": "y", "news_hidden": True}, store)[0]:
+        errors += fail("news_hidden is not a kill switch; a person cannot "
+                       "take a junk feed off a company's page")
+    keys = {k.value for node in ast.walk(ast.parse(bb))
+            if isinstance(node, ast.Dict)
+            for k in node.keys if isinstance(k, ast.Constant)
+            and isinstance(k.value, str)}
+    for field in ("news", "news_state", "news_checked_on"):
+        if field not in keys:
+            errors += fail(f"build_board never writes {field!r} onto a company, "
+                           f"so the whole news section renders from undefined "
+                           f"however good the renderer is")
+    return errors
+
+
+def check_the_watch_sweep_works_without_the_bodies() -> int:
+    """news.yml ran four times a day and produced nothing, for this reason.
+
+    `data/site_pages/` is gitignored, correctly: it is 1.6 GB of other
+    people's page text in a repo that is going public. The workflow caches
+    `data/http_cache`, which holds the ETags, and nothing else. So every
+    scheduled run started on a machine with validators for bodies it did not
+    have. revisit_news read its worklist from those bodies, found `{}`,
+    re-read zero pages, and news.py extracted nothing. Only the
+    `test -f data/news.json` guard turned that into a visible failure instead
+    of a silent one.
+
+    site_pages_index.json IS committed and carries the url and sha of every
+    news page. That is the record. The bodies are a cache, and a cache being
+    empty must never mean the work does not happen.
+
+    THE SECOND HALF IS WORSE. index_entry rebuilt the committed entry from
+    whatever the run read, and the watch sweep never opens an about page. Had
+    a run ever reached the commit step, it would have erased the about pages
+    of every company it touched, which is the input the profile engine reads.
+    """
+    import fetch_profiles as fp
+    errors = 0
+
+    listed = {"website": "https://example.com",
+              "about": [{"url": "https://example.com/about", "chars": 900,
+                         "sha": "aaaa"}],
+              "news": [{"url": "https://example.com/news", "chars": 500,
+                        "sha": "bbbb"}]}
+
+    # THE WORKLIST. Driven with the network stubbed, so what is asserted is
+    # which urls the sweep decided to ask for, not what came back.
+    asked = []
+
+    def fake_grab(url, keep_html=False):
+        asked.append(url)
+        return {"url": url, "text": "unchanged", "sha": "bbbb", "chars": 500}
+
+    real_grab = fp.grab
+    fp.grab = fake_grab
+    try:
+        fp.revisit_news({"id": "x", "website": "https://example.com"},
+                        {}, listed)
+    finally:
+        fp.grab = real_grab
+    if "https://example.com/news" not in asked:
+        errors += fail("the watch sweep re-read NOTHING when the page bodies "
+                       "were absent, though the committed index names the "
+                       "page. This is why news.yml produced no file, four "
+                       "times a day, for as long as it existed")
+
+    # THE INDEX MUST NOT FORGET. A run that read no about pages knows nothing
+    # new about them.
+    entry = fp.index_entry({"id": "x", "fetched_on": "2026-09-05",
+                            "about": [], "news": []}, listed)
+    if len(entry.get("about") or []) != 1:
+        errors += fail("index_entry erased the about pages of a company the "
+                       "run never opened. The watch sweep never reads one, so "
+                       "every scheduled news run would have wiped the input "
+                       "the profile engine depends on")
+    if len(entry.get("news") or []) != 1:
+        errors += fail("index_entry erased the news pages a run could not read")
+
+    # and a real read still replaces what it read
+    entry = fp.index_entry({"id": "x", "fetched_on": "2026-09-05", "about": [],
+                            "news": [{"url": "https://example.com/news2",
+                                      "text": "x", "chars": 9, "sha": "cccc"}]},
+                           listed)
+    if [p["url"] for p in entry["news"]] != ["https://example.com/news2"]:
+        errors += fail("index_entry no longer records what a run DID read, so "
+                       "the index can never move forward")
+
+    # THE CALLER, NOT ONLY THE HELPER. Everything above drives revisit_news and
+    # index_entry directly, and a mutation that stopped main() from PASSING the
+    # index walked straight past all of it - both functions still behaved, and
+    # both were being handed nothing. This repo has now found that shape often
+    # enough to check for it: the parser knows how many arguments a call site
+    # passes.
+    import ast
+    src = (pathlib.Path(__file__).resolve().parent / "fetch_profiles.py").read_text()
+    for fn, want, why in (
+            ("revisit_news", 3,
+             "the committed index is never handed to the watch sweep, so it "
+             "still reads its worklist from bodies that CI does not have"),
+            ("index_entry", 2,
+             "the existing index entry is never handed to index_entry, so a "
+             "run that read nothing erases what the index already knew")):
+        calls = [n for n in ast.walk(ast.parse(src))
+                 if isinstance(n, ast.Call)
+                 and isinstance(n.func, ast.Name) and n.func.id == fn]
+        if not calls:
+            errors += fail(f"{fn} is called nowhere in fetch_profiles.py")
+            continue
+        if not any(len(c.args) >= want for c in calls):
+            errors += fail(f"no call to {fn}() passes {want} arguments: {why}")
+    return errors
+
+
 def check_news_extractor_refuses_undated() -> int:
     """A news item is a headline the site printed and a date the site stated.
 
@@ -14938,6 +15189,8 @@ def main() -> int:
     errors += check_deploy_doc_claims_are_dated()
     errors += check_conference_counts_reach_both_events()
     errors += check_news_extractor_refuses_undated()
+    errors += check_the_watch_sweep_works_without_the_bodies()
+    errors += check_the_company_page_says_which_kind_of_no_news()
     errors += check_profile_door_needs_provenance()
     errors += check_fetch_decodes_utf8_without_a_charset()
     errors += check_every_html_fetch_uses_the_one_charset_rule()

@@ -579,6 +579,46 @@ def _event_tags(source: str | None) -> list:
             out.append(tag)
     return out
 
+NEWS_ON_BOARD = 12
+
+
+def _news_store() -> dict:
+    """data/news.json, or {} if the sweep has never run.
+
+    Read once and passed down rather than re-read per company. Absent is a
+    real answer: the page says "not checked yet" rather than "no news", which
+    are opposite claims about a company.
+    """
+    p = DATA / "news.json"
+    if not p.exists():
+        return {}
+    try:
+        return json.loads(p.read_text())
+    except Exception:
+        return {}
+
+
+def news_for_board(c: dict, store: dict) -> tuple[list | None, str | None, str | None]:
+    """(items, state, checked_on) for one company.
+
+    THE STATE IS NOT DERIVABLE FROM THE ITEMS, which is why it travels. An
+    empty list means one of four different things: their news page listed
+    nothing dated, they have no news page, their site could not be read, or
+    nobody has looked yet. A page that renders all four as "no news" is
+    making a claim about the company that the record does not support, and
+    "no news" about a firm that raised a round last week is the kind of wrong
+    a reader notices.
+    """
+    if c.get("news_hidden"):
+        return None, "hidden", None
+    rec = store.get(c.get("id"))
+    if not isinstance(rec, dict):
+        return None, None, None
+    items = [i for i in (rec.get("items") or []) if isinstance(i, dict)]
+    items.sort(key=lambda i: i.get("date") or "", reverse=True)
+    return (items[:NEWS_ON_BOARD] or None), rec.get("state"), rec.get("checked_on")
+
+
 def profile_for_board(c: dict) -> dict | None:
     """The public shape of a company's write-up, or None.
 
@@ -825,6 +865,7 @@ def main() -> int:
     # marked and contributes nothing, rather than silently doubling the total.
     shared: dict[tuple, list] = collections.defaultdict(list)
     _claims = load_claims()
+    _newsstore = _news_store()
     for c in companies:
         kind = (c.get("ats") or {}).get("type")
         ref = (c.get("ats") or {}).get("ref")
@@ -1133,6 +1174,8 @@ def main() -> int:
                 "first_seen": today, "source": "ats",
             })
 
+        # WHAT THEIR OWN SITE PRINTED, with the state beside it.
+        _news_items, _news_state, _news_on = news_for_board(c, _newsstore)
         orgs.append({
             "id": c["id"], "name": c["name"], "sector": c["sector"],
             "category": c["category"], "also": c.get("also") or None,
@@ -1173,6 +1216,14 @@ def main() -> int:
             # journalled `profile_hidden` is the kill switch a person can
             # throw on any write-up on sight.
             "profile": profile_for_board(c),
+            # WHAT THEIR OWN SITE PRINTED, with the state beside it. The
+            # engine, the door and the four-times-a-day sweep were all built
+            # and none of this was ever written onto the board, so the page
+            # hardcoded "No news items have been recorded" for every company
+            # on it while 10,099 dated items sat in the store.
+            "news": _news_items,
+            "news_state": _news_state,
+            "news_checked_on": _news_on,
             "competitors_none_found": bool(c.get("competitors_none_found")) or None,
             "competitors_checked_on": c.get("competitors_checked_on") or None,
             # WHICH EVENT THIS COMPANY CAME OFF, so the Conferences tab can

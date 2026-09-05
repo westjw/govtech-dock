@@ -95,15 +95,30 @@ def index() -> dict:
     return json.loads(INDEX.read_text()) if INDEX.exists() else {}
 
 
-def index_entry(rec: dict) -> dict:
-    """What the committed index knows about one company: never the text."""
+def index_entry(rec: dict, prior: dict | None = None) -> dict:
+    """What the committed index knows about one company: never the text.
+
+    `prior` is the entry already in the index. A run that did not READ a thing
+    knows nothing new about it, and writing an empty list in its place is the
+    index forgetting what it committed. That happens on exactly the runs that
+    read least: the watch sweep never opens an about page, so every scheduled
+    news run would have erased the about pages of every company it touched.
+    Only the `test -f data/news.json` guard stopped it reaching a commit.
+    """
     slim = lambda pages: [{"url": p["url"], "chars": p.get("chars"), "sha": p.get("sha")}
                           if p.get("text") else {"url": p["url"], "unread": p.get("unread")}
                           for p in pages]
-    return {"fetched_on": rec.get("fetched_on"), "website": rec.get("website"),
-            "unread": rec.get("unread"), "unread_on": rec.get("unread_on"),
-            "about": slim(rec.get("about") or []), "news": slim(rec.get("news") or []),
-            "no_news_page": bool(rec.get("no_news_page"))}
+    prior = prior or {}
+    entry = {"fetched_on": rec.get("fetched_on"), "website": rec.get("website"),
+             "unread": rec.get("unread"), "unread_on": rec.get("unread_on"),
+             "about": slim(rec.get("about") or []), "news": slim(rec.get("news") or []),
+             "no_news_page": bool(rec.get("no_news_page"))}
+    for field in ("about", "news"):
+        if not entry[field] and prior.get(field):
+            entry[field] = prior[field]
+    if not rec.get("website") and prior.get("website"):
+        entry["website"] = prior["website"]
+    return entry
 
 
 def save_index(idx: dict) -> None:
@@ -300,7 +315,7 @@ def grab(url: str, keep_html: bool = False) -> dict:
     return out
 
 
-def revisit_news(company: dict, prior: dict) -> dict:
+def revisit_news(company: dict, prior: dict, listed: dict | None = None) -> dict:
     """Re-read a company's known news pages and feeds. Nothing else.
 
     THE WATCH SWEEP, and the reason four times a day is affordable. `visit`
@@ -313,11 +328,24 @@ def revisit_news(company: dict, prior: dict) -> dict:
     The about pages are left exactly as they were. A description is written
     from them once; it does not need re-reading because a press release
     appeared.
+
+    THE WORKLIST COMES FROM THE COMMITTED INDEX WHEN THE BODIES ARE GONE, and
+    that is the whole reason news.yml never produced a file. `data/site_pages/`
+    is gitignored (1.6 GB of other people's page text) and is not in the
+    workflow's cache, which holds only the ETags. So every scheduled run
+    started with no bodies at all, `prior` was `{}`, this loop had nothing to
+    iterate, zero pages were re-read, news.py extracted nothing, and the
+    `test -f data/news.json` guard failed the job. Four times a day, since the
+    day it was written.
+
+    site_pages_index.json IS committed and carries the url and sha of every
+    news page for 1,321 companies. That is the record; the bodies are a cache.
     """
+    listed = listed or {}
     out = dict(prior)
     out["fetched_on"] = dt.date.today().isoformat()
     keep, changed = [], []
-    for pg in (prior.get("news") or []):
+    for pg in ((prior.get("news") or []) or (listed.get("news") or [])):
         if pg.get("from_index"):
             continue                      # articles are re-derived below
         fresh = grab(pg["url"], keep_html=True)
@@ -343,6 +371,10 @@ def revisit_news(company: dict, prior: dict) -> dict:
     # unchanged indexes keep the articles already stored behind them
     if not changed:
         keep += [pg for pg in (prior.get("news") or []) if pg.get("from_index")]
+    # A page we could not re-read at all leaves the company exactly as it was
+    # rather than as an empty record. Nothing read means nothing learned.
+    if not keep and prior.get("news"):
+        keep = list(prior["news"])
     out["news"] = keep
     out["news_changed"] = len(changed)
     return out
@@ -522,8 +554,8 @@ def main() -> int:
         # WATCH MODE READS ONLY THE NEWSROOMS. A full visit re-reads the
         # homepage and every about page, which is right once and absurd four
         # times a day.
-        one = ((lambda c: revisit_news(c, load(c["id"]) or {})) if a.news
-               else visit)
+        one = ((lambda c: revisit_news(c, load(c["id"]) or {}, idx.get(c["id"])))
+               if a.news else visit)
         for rec in pool.map(one, rows):
             if rec.get("unread"):
                 rec["unread_on"] = today.isoformat()
@@ -531,7 +563,7 @@ def main() -> int:
             got["about"] += sum(1 for p in (rec.get("about") or []) if p.get("text"))
             got["news"] += sum(1 for p in (rec.get("news") or []) if p.get("text"))
             save(rec)
-            idx[rec["id"]] = index_entry(rec)
+            idx[rec["id"]] = index_entry(rec, idx.get(rec["id"]))
             done += 1
             if done % 25 == 0:
                 print(f"  ... {done}/{len(rows)}")

@@ -4760,6 +4760,53 @@ function unreadableCount(){
   return (D.organizations||[]).filter(o=>o.enumerable===false||o.unreadable).length;
 }
 
+/* THEIR OWN NEWSROOM, and the state matters more than the list.
+   An empty list means one of five different things and a page that renders
+   them all as "no news" makes a claim the record does not support. The
+   engine, the door and the four-times-a-day sweep were all built; nothing
+   ever wrote the result onto the board, so this section was a hardcoded
+   paragraph saying "No news items have been recorded" for every company on
+   the site, while 10,099 dated items sat in the store.
+   Standalone, and driven under node by selftest, the way coAbout is. */
+const NEWSKIND={contract:"contract",funding:"funding",leadership:"people",
+                product:"product",press:"press"};
+function coNews(o,dom){
+  const items=Array.isArray(o.news)?o.news:[];
+  const st=o.news_state;
+  const when=o.news_checked_on?` &middot; read ${esc(o.news_checked_on)}`:"";
+  const meta=items.length
+    ? `${items.length} item${items.length===1?"":"s"}${dom?` from ${esc(dom)}`:""}${when}`
+    : st==="none_found" ? `their news page listed nothing dated${when}`
+    : st==="no_news_page" ? "no news page found on their site"
+    : st==="unread" ? "their site could not be read"
+    : st==="hidden" ? "hidden"
+    : "not checked yet";
+  const head=`<div class="cosechd"><h2>News</h2><span class="smeta">${meta}</span></div>`;
+  if(!items.length) return `<section class="cosec">${head}
+    <p style="font-size:12.5px;line-height:1.6;color:var(--c-ink2);margin:0">${
+      st==="none_found" ? "Their newsroom is on file and nothing on it carried a date we could read. An item without a date is not published here."
+      : st==="no_news_page" ? "Nothing on their site links to a newsroom, a blog or a press page."
+      : st==="unread" ? "Their site did not answer when we last asked. That is a fact about the fetch, not about the company."
+      : "Nobody has looked yet."}
+      <a href="#" onclick="tab='submit';render();return false">Suggest an item</a>.</p>
+  </section>`;
+  /* chips only when more than one kind is present; a single-kind filter is
+     a control that does nothing. */
+  const kinds=[...new Set(items.map(i=>i.kind).filter(Boolean))];
+  const chips=kinds.length>1?`<div style="margin:0 0 6px">${
+    kinds.map(k=>`<span class="cochip">${esc(NEWSKIND[k]||k)}</span>`).join(" ")}</div>`:"";
+  const rows=items.map(i=>`<div class="row">
+    <span class="d">${esc((i.date||"").slice(0,10))}</span>
+    <span class="k ${esc(i.kind||"")}">${esc(NEWSKIND[i.kind]||i.kind||"")}</span>
+    <span class="t">${safeUrl(i.url)
+      ? `<a href="${safeUrl(i.url)}" target="_blank" rel="noopener nofollow"
+          >${esc(i.headline||"")}</a>`
+      : esc(i.headline||"")}</span></div>`).join("");
+  return `<section class="cosec">${head}${chips}
+    <div class="conewsw"><div class="conews">${rows}</div><span class="fade"></span></div>
+  </section>`;
+}
+
 function coAbout(o,dom){
   const pr=o.profile;
   const ready=pr&&Array.isArray(pr.paragraphs)&&pr.paragraphs.length>0;
@@ -4851,12 +4898,7 @@ function co(id,fromUrl){
   const dom=(o.website||"").replace(/^https?:\/\//,"").replace(/\/.*$/,"");
   const about=coAbout(o,dom);
 
-  const news=`<section class="cosec">
-    <div class="cosechd"><h2>News</h2><span class="smeta">none on file</span></div>
-    <p style="font-size:12.5px;line-height:1.6;color:var(--c-ink2);margin:0">
-      No news items have been recorded for this company.
-      <a href="#" onclick="tab='submit';render();return false">Suggest an item</a>.</p>
-  </section>`;
+  const news=coNews(o,dom);
 
   /* roles, grouped by family, biggest group first */
   const byFam={};
