@@ -71,17 +71,29 @@ jobs:
 
       - name: Re-read the newsrooms and the feeds
         run: |
-          python scripts/fetch_profiles.py --news --refetch --workers 4 --write
+          # BOUNDED. Unbounded, one slow night runs into the job timeout and
+          # the sweep is lost entirely rather than partly done.
+          python scripts/fetch_profiles.py --news --refetch --workers 4 \
+            --limit 600 --write
 
       - name: Extract, behind the door
-        run: python scripts/news.py --write
+        run: |
+          python scripts/news.py --write
+          test -f data/news.json || { echo "news.py wrote no file"; exit 1; }
 
       - name: Commit what changed
         run: |
           git config user.name  "westjw"
           git config user.email "67345260+westjw@users.noreply.github.com"
           git add data/news.json data/site_pages_index.json
-          git diff --cached --quiet && echo "nothing new" && exit 0
+          # NOT `git diff --cached --quiet && ... && exit 0`. Actions runs
+          # bash with -e, and when there IS something staged that diff exits
+          # 1, the && list evaluates to 1, and the step aborts BEFORE the
+          # commit - so the only night it fails is a night that had work.
+          if git diff --cached --quiet; then
+            echo "nothing new to commit"
+            exit 0
+          fi
           git commit -m "news: $(date -u +%Y-%m-%dT%H:%MZ) sweep"
           git pull --rebase
           git push

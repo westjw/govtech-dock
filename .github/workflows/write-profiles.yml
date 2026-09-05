@@ -86,7 +86,14 @@ jobs:
           # The index carries shas and counts and no characters of the bodies.
           git add data/agent_proposals.json data/site_pages_index.json \
                   data/llm_log.jsonl data/admin_journal.jsonl
-          git diff --cached --quiet && echo "nothing new" && exit 0
+          # NOT `git diff --cached --quiet && ... && exit 0`. Actions runs
+          # bash with -e, and when there IS something staged that diff exits
+          # 1, the && list evaluates to 1, and the step aborts BEFORE the
+          # commit - so the only night it fails is a night that had work.
+          if git diff --cached --quiet; then
+            echo "nothing new to commit"
+            exit 0
+          fi
           git commit -m "write-ups: ${{ inputs.category }} ($(date -u +%Y-%m-%dT%H:%MZ))"
           git pull --rebase
           git push
