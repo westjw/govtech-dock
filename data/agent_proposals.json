@@ -24249,7 +24249,7 @@
   "kind": "profile",
   "id": "fairtiq",
   "name": "FAIRTIQ",
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'Britain' is not on any of their pages.",
   "confidence": "high",
   "why": "The homepage, product page and about page explain the fare model, the four deployment options, and give founding year, location, headcount and leadership.",
@@ -24357,7 +24357,8 @@
    }
   },
   "by": "agent:descriptions-00",
-  "at": "2026-09-03T19:25:31-04:00"
+  "at": "2026-09-03T19:25:31-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:ad-astra-information-systems": {
   "kind": "profile",
@@ -43881,7 +43882,7 @@
   "kind": "profile",
   "id": "quorum",
   "name": "Quorum",
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'European' is not on any of their pages.",
   "confidence": "high",
   "why": "Four pages describe the product areas, the data coverage, named case studies and explicit security certifications; the AI demo screens on two pages were treated as illustrations, not facts.",
@@ -43999,7 +44000,8 @@
    }
   },
   "by": "agent:descriptions-02",
-  "at": "2026-09-03T20:13:34-04:00"
+  "at": "2026-09-03T20:13:34-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:sand": {
   "kind": "profile",
@@ -47610,7 +47612,7 @@
   "kind": "profile",
   "id": "simplyanalytics",
   "name": "SimplyAnalytics",
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'Canadian' is not on any of their pages.",
   "confidence": "medium",
   "why": "Only the homepage was available, and while it describes the application, its data catalogue and its export options in detail, it says nothing about the company itself beyond a product description.",
@@ -47703,7 +47705,8 @@
    }
   },
   "by": "agent:descriptions-02",
-  "at": "2026-09-03T20:13:34-04:00"
+  "at": "2026-09-03T20:13:34-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:tantalus-systems": {
   "kind": "profile",
@@ -48033,7 +48036,7 @@
   "kind": "profile",
   "id": "accesso-technology-group",
   "name": "accesso Technology Group",
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'Kingdom' is not on any of their pages.",
   "confidence": "medium",
   "why": "The four pages describe the ticketing, payments and analytics products concretely, including regional availability and the Dexibit and Adyen relationships, but give no founding date, headcount or customer counts.",
@@ -48146,7 +48149,8 @@
    }
   },
   "by": "agent:descriptions-02",
-  "at": "2026-09-03T20:13:34-04:00"
+  "at": "2026-09-03T20:13:34-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:portage-cybertech": {
   "kind": "profile",
@@ -56624,7 +56628,7 @@
   "kind": "profile",
   "id": "amazon-web-services",
   "name": "Amazon Web Services (AWS)",
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'North American' is not on any of their pages.",
   "confidence": "high",
   "why": "The home page gives the service count, the customer range and the region and availability zone figures, and the two product pages show examples of packaged offerings and pricing.",
@@ -56722,7 +56726,8 @@
    }
   },
   "by": "agent:descriptions-03",
-  "at": "2026-09-03T20:30:13-04:00"
+  "at": "2026-09-03T20:30:13-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:apply-government-solutions": {
   "kind": "profile",
@@ -61045,7 +61050,7 @@
   "kind": "profile",
   "id": "aerosimple-llc",
   "name": "Aerosimple, LLC",
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'European' is not on any of their pages.",
   "confidence": "high",
   "why": "The homepage, about page, and solutions catalogue set out the module suites, the compliance framings, and the company's own headcount and customer figures.",
@@ -61160,7 +61165,8 @@
    }
   },
   "by": "agent:descriptions-03",
-  "at": "2026-09-03T20:30:13-04:00"
+  "at": "2026-09-03T20:30:13-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:alden-systems": {
   "kind": "profile",
@@ -81165,7 +81171,7 @@
   "kind": "profile",
   "id": "clever",
   "name": "Clever",
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'Kingdom' is not on any of their pages.",
   "confidence": "medium",
   "why": "Only the home page is available and much of it is navigation, though the platform description, product names and regions are stated plainly.",
@@ -81264,7 +81270,8 @@
    }
   },
   "by": "agent:descriptions-05",
-  "at": "2026-09-03T21:07:10-04:00"
+  "at": "2026-09-03T21:07:10-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:collegenet": {
   "kind": "profile",
@@ -83933,7 +83940,7 @@
   "kind": "profile",
   "id": "damarel-systems-international",
   "name": "Damarel Systems International",
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'United' is not on any of their pages.",
   "confidence": "medium",
   "why": "The two pages are largely banners and product names, giving the product categories and a few named systems but no company background.",
@@ -84023,7 +84030,8 @@
    }
   },
   "by": "agent:descriptions-06",
-  "at": "2026-09-03T21:27:46-04:00"
+  "at": "2026-09-03T21:27:46-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:deerfield-solutions-llc": {
   "kind": "profile",
@@ -90220,7 +90228,7 @@
   "kind": "profile",
   "id": "deventit",
   "name": "DEVENTit",
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'Netherlands' is not on any of their pages.",
   "confidence": "medium",
   "why": "A single Dutch homepage describing the Atlantis product in detail, with no page covering company size, founding, or the cemetery software our existing one-liner mentions.",
@@ -90318,7 +90326,8 @@
    }
   },
   "by": "agent:descriptions-06",
-  "at": "2026-09-03T21:27:46-04:00"
+  "at": "2026-09-03T21:27:46-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:decision-optimization-technology-us": {
   "kind": "profile",
@@ -96546,7 +96555,7 @@
   "kind": "profile",
   "id": "fiix",
   "name": "Fiix (Rockwell Automation)",
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'European' is not on any of their pages.",
   "confidence": "high",
   "why": "The homepage, customers page, case study index and partnerships page together cover the product, its modules, the customer counts the company publishes and its partner programs.",
@@ -96654,13 +96663,14 @@
    }
   },
   "by": "agent:descriptions-07",
-  "at": "2026-09-03T21:45:26-04:00"
+  "at": "2026-09-03T21:45:26-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:focal-forensics-redaction": {
   "kind": "profile",
   "id": "focal-forensics-redaction",
   "name": "Focal Forensics Redaction",
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'United' is not on any of their pages.",
   "confidence": "medium",
   "why": "Two pages, a services homepage and a staff biography page, enough for the service list and the credentials claimed but thin on the business itself.",
@@ -96753,7 +96763,8 @@
    }
   },
   "by": "agent:descriptions-07",
-  "at": "2026-09-03T21:45:26-04:00"
+  "at": "2026-09-03T21:45:26-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:garage": {
   "kind": "profile",
@@ -107580,7 +107591,7 @@
   "kind": "profile",
   "id": "hapara",
   "name": null,
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'Australia' is not on any of their pages.",
   "confidence": "high",
   "why": "The one captured page is long and self-descriptive, covering the product areas, browser support, integrations, customer districts and corporate ownership.",
@@ -107663,7 +107674,8 @@
    ]
   },
   "by": "claude-opus-5:profile-batch-08",
-  "at": "2026-09-03T22:09:16-04:00"
+  "at": "2026-09-03T22:09:16-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:hitachi-energy": {
   "kind": "profile",
@@ -109838,7 +109850,7 @@
   "kind": "profile",
   "id": "idox-group",
   "name": null,
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'United' is not on any of their pages.",
   "confidence": "high",
   "why": "Four pages cover the product portfolio, the regulatory and address data lines in depth, the customer base, procurement routes and recent corporate changes.",
@@ -109910,7 +109922,8 @@
    ]
   },
   "by": "claude-opus-5:profile-batch-08",
-  "at": "2026-09-03T22:09:16-04:00"
+  "at": "2026-09-03T22:09:16-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:infosense": {
   "kind": "profile",
@@ -111185,7 +111198,7 @@
   "kind": "profile",
   "id": "goodsam",
   "name": null,
-  "status": "refused",
+  "status": "pending",
   "refused_why": "5. 'United' is not on any of their pages.",
   "confidence": "high",
   "why": "The home and about pages set out the product suite, the founding story, the NHS volunteer programme and the kinds of services that run on it.",
@@ -111268,7 +111281,8 @@
    ]
   },
   "by": "claude-opus-5:profile-batch-08",
-  "at": "2026-09-03T22:09:16-04:00"
+  "at": "2026-09-03T22:09:16-04:00",
+  "reopened_why": "the door refused this and now accepts it unchanged; the refusal was ours"
  },
  "profile:government-window": {
   "kind": "profile",

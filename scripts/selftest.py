@@ -2995,6 +2995,12 @@ def check_profile_door_needs_provenance() -> int:
          prop(s2=sub(S2, 1, "The team of 1200 serves 40 agencies across the United States."))),
         ("a state name and the country",
          prop(s1=sub(S1, 2, "The Lemur is sold in Washington and across the United States."))),
+        # The list was US-only, so 59 of 72 refusals died naming a bare token
+        # out of a country name: 'United', 'Kingdom', 'European', 'British'.
+        # A vendor selling into UK forces cannot be described without them.
+        ("a country outside the US and a region",
+         prop(s2=sub(S2, 1, "The team of 1,200 serves 40 agencies across the "
+                            "United Kingdom and Europe."))),
         ("a straight apostrophe where the page has a curly one",
          prop(q1="The founder's first prototype flew in a garage")),
         ("a customer named on the OTHER page than the sentence cites",
@@ -3054,6 +3060,26 @@ def check_profile_door_needs_provenance() -> int:
          prop(s2=sub(S2, 2, "The Talon carries a radio into a barricaded room."))),
     ]
     refuse = [
+        # GEOGRAPHY IS CONTEXT, A CUSTOMER IS A CLAIM, and the rule-5
+        # allowlist grows by PHRASE for exactly this reason. Widening it from
+        # US-only to include the United Kingdom and Europe cleared 14 of the
+        # 72 refusals on file with no model call. "United Kingdom" being
+        # allowlisted must never allowlist "United": that is the council
+        # failure B made, and it would let an invented airline through on the
+        # strength of a country name.
+        # The refusal names the first token not on their pages, which here is
+        # 'Airlines' rather than the whole run. That is the door's documented
+        # behaviour and it is the point: 'United' was allowlisted as half of
+        # "United Kingdom" and the customer is still refused.
+        ("an invented customer sharing a word with an allowlisted country",
+         "airlines",
+         prop(s2=sub(S2, 0, "Customers include United Airlines, which flies "
+                            "drones as first responders across the city."))),
+        # A CERTIFICATION IS NOT GEOGRAPHY. SOC 2 and a stock listing are
+        # claims a reader acts on, and they stay refused.
+        ("a compliance claim their own site does not make", "soc",
+         prop(s2=sub(S2, 2, "Brinc is audited against SOC 2 every year and "
+                            "publishes the report to customers."))),
         ("an invented city customer", "baltimore",
          prop(s2=sub(S2, 0, "Customers include the Baltimore Police Department, which flies drones as first responders across the city."))),
         # THE CASE THE LOSING DRAFT FAILED

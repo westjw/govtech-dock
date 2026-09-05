@@ -749,7 +749,31 @@ _PF_MONTHS = ("January", "February", "March", "April", "May", "June", "July",
               "August", "September", "October", "November", "December",
               "Jan", "Feb", "Mar", "Apr", "Jun", "Jul", "Aug", "Sep", "Sept",
               "Oct", "Nov", "Dec")
-_PF_COUNTRY = ("United States", "US", "U.S.", "USA", "U.S.A.", "American")
+# GEOGRAPHY IS CONTEXT, NOT A CLAIM, and the list was US-only. 59 of the 72
+# refused write-ups died on rule 5 naming a bare token out of a country name:
+# 'United', 'Kingdom', 'European', 'British'. A vendor selling into UK police
+# forces cannot be described without those words, and refusing them is the
+# door being too tight rather than the write-up being wrong.
+#
+# THESE GO IN AS PHRASES, NOT TOKENS, which is the whole point of the split.
+# "United Kingdom" being allowlisted does not allowlist "United", so an
+# invented customer "United Airlines" is still refused by name. That is B's
+# one council failure, and it is why this list may only ever grow by phrase.
+#
+# WHAT STAYS REFUSED, deliberately: 'SOC' (SOC 2), 'Stock' (London Stock
+# Exchange), and every other certification, standard or listing. Those are
+# claims about the company that a reader would act on, and a compliance claim
+# their own site does not make is exactly what this door is for.
+_PF_COUNTRY = ("United States", "US", "U.S.", "USA", "U.S.A.", "American",
+               "United Kingdom", "UK", "U.K.", "Britain", "British",
+               "England", "Scotland", "Wales", "Northern Ireland", "Ireland",
+               "Irish", "Europe", "European", "European Union", "EU",
+               "Canada", "Canadian", "Australia", "Australian",
+               "New Zealand", "Mexico", "Mexican", "Germany", "German",
+               "France", "French", "Spain", "Spanish", "Netherlands", "Dutch",
+               "India", "Indian", "Israel", "Israeli", "Japan", "Japanese",
+               "Singapore", "North America", "North American",
+               "Latin America", "EMEA", "APAC", "LATAM")
 
 # Characters that make a true quote fail a naive `in`: a page's curly quote
 # against the agent's straight one, a soft hyphen the browser never showed,

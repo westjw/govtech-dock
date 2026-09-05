@@ -110,6 +110,66 @@ answer unsure - do not argue with the door and do not invent a replacement.
 If it names something as "not on any of their pages", that thing has to go."""
 
 
+def recheck_refused(limit: int, apply: bool) -> int:
+    """Re-run the door over write-ups it already refused. No model call.
+
+    A refusal is one of two things and they need opposite treatment. Either
+    the write-up claimed something the company's pages do not say, which is
+    the door working and the answer stays no; or the DOOR was wrong, and the
+    write-up on file was fine all along. Re-asking costs money to reproduce
+    prose we are already holding, and the second answer will not be the same
+    prose, so the refusal that was our fault is not even the thing reviewed.
+
+    Measured on the 72 refusals on file: widening rule 5 from a US-only
+    geography list to one that includes the United Kingdom and Europe cleared
+    14 of them, for nothing. What stayed refused is what the door is for -
+    'Chief Financial Officer Adam Jones', 'Los Angeles County', 'Amazon Web
+    Services', '30000' - none of which appear on the pages they were written
+    from.
+
+    Reopened proposals go back to `pending`, which puts them in the gate
+    review where a person reads them. Nothing here lands anything.
+    """
+    store = agents.load()
+    refused = [(k, v) for k, v in store.items()
+               if isinstance(v, dict) and v.get("kind") == "profile"
+               and v.get("status") == "refused" and v.get("id")]
+    now_ok, still, unread = [], 0, 0
+    for key, prop in refused:
+        rec = fp.load(prop["id"])
+        if not rec:
+            unread += 1
+            continue
+        texts = {pg["url"]: pg.get("text") or ""
+                 for pg in (rec.get("about") or []) if pg.get("url")}
+        if agents.check_profile(prop.get("proposal") or {}, texts) is None:
+            now_ok.append(key)
+        else:
+            still += 1
+    print(f"  {len(refused)} refused write-up(s) on file")
+    print(f"  {len(now_ok)} now pass the door, {still} still refused"
+          + (f", {unread} whose pages are no longer cached" if unread else ""))
+    if not now_ok:
+        return 0
+    if not apply:
+        print("  nothing changed: add --write to reopen them for the gate")
+        return 0
+    for key in now_ok[:limit]:
+        store[key]["status"] = "pending"
+        store[key]["reopened_why"] = ("the door refused this and now accepts "
+                                      "it unchanged; the refusal was ours")
+    bad = agents.save(store, "profile-recheck",
+                      why=f"{len(now_ok[:limit])} write-up(s) the door now "
+                          f"accepts unchanged, moved to pending for review",
+                      by="write-profiles", force=len(now_ok[:limit]) > 25)
+    if bad:
+        print(f"REFUSED by the journal: {bad}", file=sys.stderr)
+        return 1
+    print(f"  reopened {len(now_ok[:limit])} for the gate review. They are "
+          f"PENDING, not landed: promote_profiles.py --gate reads them")
+    return 0
+
+
 def tonight(category: str | None, ids: list[str], limit: int,
             retry_refused: bool) -> list[dict]:
     """The companies to ask about, and nothing already answered."""
@@ -155,11 +215,20 @@ def main() -> int:
     ap.add_argument("--id", action="append", default=[])
     ap.add_argument("--limit", type=int, default=20)
     ap.add_argument("--model", default=llm.DEFAULT_MODEL)
+    ap.add_argument("--write", action="store_true",
+                    help="with --recheck-refused, actually reopen them")
+    ap.add_argument("--recheck-refused", action="store_true",
+                    help="re-run the DOOR over write-ups it already refused, "
+                         "with no model call. A refusal the door itself was "
+                         "wrong about does not need new prose")
     ap.add_argument("--retry-refused", action="store_true",
                     help="re-ask write-ups the door refused, after a brief fix")
     ap.add_argument("--no-repair", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
+
+    if a.recheck_refused:
+        return recheck_refused(a.limit or 10 ** 6, a.write)
 
     # BEFORE THE FETCH. See the docstring: a run that fetches a hundred sites
     # and then finds it cannot ask anything has spent goodwill for nothing.
