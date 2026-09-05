@@ -589,12 +589,30 @@ PROFILE_PAGE_CHARS = 7000
 PROFILE_PAGES = 4            # homepage + up to three about-class pages
 PROFILE_RULES = {
     "paragraphs": "2 to 3",
+    "sentences_min": 3,
     "words": "80 to 240 in total",
     "sentence_max_words": 45,
     "provenance": "every sentence: {url, quote} where quote is verbatim from that url",
-    "quote": "optional pull quote, verbatim, at most 40 words, the company's own words",
+    # A QUOTE IS AN UNBROKEN RUN FROM ONE LINE, and this is the rule that
+    # nine refused write-ups were never told. `dechrome` drops lines under
+    # three words, so the brief shows two page lines as adjacent when the page
+    # has a dropped line between them: aspiraconnect's brief read "Campground
+    # and Lodging Reservations / Day Use and Parking Fulfillment" while the
+    # page has "Customizable Websites" in the middle. The model copied what it
+    # was given, and the door - checking the FULL page, correctly - refused a
+    # true quote. 9 of 12 rule-4 refusals are that, and every one is our bug,
+    # not the model's and not the door's.
+    "quote_source": "a quote must be an unbroken run from ONE entry of a "
+                    "page's `lines`. Never join two lines: lines that look "
+                    "adjacent here may not be adjacent on the page.",
+    "quote_min_chars": 20,
+    "pull_quote": "optional, verbatim, at most 40 words, the company's own words",
     "forbidden": "first person; em-dashes; marketing adjectives; any customer, "
                  "number, date or product not on these pages",
+    # BUILT FROM THE DOOR'S OWN LIST, never restated. A word added to
+    # agents.MARKETING would otherwise start refusing write-ups written under
+    # rules that never mentioned it - the alerts-vocabulary drift again.
+    "marketing_words_refused": None,
     "absence": "answer confidence 'unsure' with no paragraphs if the pages do not "
                "say what they sell and to whom. That is a real answer.",
 }
@@ -652,8 +670,13 @@ def brief_profile(ids: list[str] | None = None, sector: str | None = None,
             "description": (c.get("description") or "").strip(),
             "also_known_as": c.get("also_known_as") or [],
             "fetched_on": rec.get("fetched_on"),
+            # LINES, NOT ONE STRING. See PROFILE_RULES["quote_source"]: a
+            # joined string invites a quote that spans a line dechrome
+            # removed, which the door then refuses although it is true.
             "pages": [{"url": pg["url"], "sha": pg.get("sha"),
-                       "text": pg["text"][:PROFILE_PAGE_CHARS]} for pg in clean],
+                       "lines": [ln for ln in
+                                 pg["text"][:PROFILE_PAGE_CHARS].split("\n")
+                                 if ln.strip()]} for pg in clean],
             "rules": PROFILE_RULES,
         })
         if limit and len(out) >= limit:
@@ -697,6 +720,8 @@ MARKETING = ("leading", "industry-leading", "innovative", "cutting-edge",
              "next-generation", "revolutionary", "seamless", "robust",
              "trusted", "premier", "unparalleled", "award-winning",
              "game-changing")
+
+PROFILE_RULES["marketing_words_refused"] = list(MARKETING)
 
 try:
     _PF_CONFIDENCE = CONFIDENCE          # the module's own vocabulary

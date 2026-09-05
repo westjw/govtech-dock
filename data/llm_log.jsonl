@@ -27,3 +27,6 @@
 {"at": "2026-09-04T05:15:29+00:00", "in": 11708, "kind": "profile-second-read", "model": "claude-sonnet-5", "ok": true, "out": 4978, "stop": "end_turn", "usd": 0.1098}
 {"at": "2026-09-04T05:15:56+00:00", "in": 6998, "kind": "profile-second-read", "model": "claude-sonnet-5", "ok": true, "out": 2992, "stop": "end_turn", "usd": 0.0659}
 {"at": "2026-09-04T05:16:09+00:00", "in": 5048, "kind": "profile-second-read", "model": "claude-sonnet-5", "ok": true, "out": 1354, "stop": "end_turn", "usd": 0.0355}
+{"at": "2026-09-04T21:12:37+00:00", "in": 4995, "kind": "refusal-audit", "model": "claude-sonnet-5", "ok": true, "out": 2903, "stop": "end_turn", "usd": 0.0585}
+{"at": "2026-09-04T21:13:38+00:00", "in": 4847, "kind": "refusal-audit", "model": "claude-sonnet-5", "ok": true, "out": 5771, "stop": "end_turn", "usd": 0.1011}
+{"at": "2026-09-04T21:14:05+00:00", "in": 4556, "kind": "refusal-audit", "model": "claude-sonnet-5", "ok": true, "out": 2500, "stop": "end_turn", "usd": 0.0512}

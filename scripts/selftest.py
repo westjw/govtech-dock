@@ -3408,6 +3408,80 @@ def check_every_workflow_command_would_parse() -> int:
     return errors
 
 
+def check_the_brief_never_makes_a_true_quote_look_false() -> int:
+    """A quote the model read correctly must not be refused by the door.
+
+    `dechrome` drops lines under three words, so a brief that joins a page's
+    text into one string shows two lines as adjacent when the page has a
+    dropped line between them. aspiraconnect's brief read "Campground and
+    Lodging Reservations / Day Use and Parking Fulfillment"; the page has
+    "Customizable Websites" in the middle. The model quoted what it was given
+    and the door, checking the FULL page correctly, refused a true quote.
+
+    NINE OF TWELVE rule-4 refusals on file are that shape. Not the model's
+    fault and not the door's - ours, in the brief, and invisible from either
+    end. The pages travel as `lines` now and the rules say a quote is an
+    unbroken run from ONE of them.
+
+    AND THE RULES MUST NOT DRIFT FROM THE DOOR. check_profile enforces a
+    minimum sentence count and a minimum quote length that PROFILE_RULES
+    never mentioned, so a write-up could obey every stated rule and still be
+    refused. Anything the door enforces, the brief has to say.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents
+    errors = 0
+    R = agents.PROFILE_RULES
+
+    # 1. the pages travel as lines
+    briefs = agents.brief_profile(limit=1)
+    if not briefs:
+        note("no unprofiled company with pages; the brief shape was not driven")
+    else:
+        pg = briefs[0]["pages"][0]
+        if "lines" not in pg:
+            errors += fail("brief_profile no longer sends pages as `lines`; a "
+                           "joined string invites a quote spanning a line "
+                           "dechrome removed, which the door then refuses "
+                           "although it is true")
+        if "text" in pg:
+            errors += fail("brief_profile sends a joined `text` beside the "
+                           "lines, which is the shape the model will quote from")
+        if not isinstance(pg.get("lines"), list) or not pg["lines"]:
+            errors += fail("a page's `lines` is not a non-empty list")
+        elif any("\n" in ln for ln in pg["lines"]):
+            errors += fail("a line still contains a newline, so it is not one line")
+
+    # 2. the rule is stated, in words about lines
+    src = str(R.get("quote_source") or "")
+    if "one" not in src.lower() or "line" not in src.lower():
+        errors += fail("PROFILE_RULES does not tell the model a quote must "
+                       "come from ONE line, which is the whole fix")
+
+    # 3. NO DRIFT: everything the door enforces, the rules state
+    for key, why in (("sentences_min", "check_profile refuses under 3 sentences"),
+                     ("quote_min_chars", "check_profile refuses a quote under 20 characters"),
+                     ("sentence_max_words", "check_profile refuses a sentence over 45 words"),
+                     ("words", "check_profile enforces a total word range")):
+        if key not in R:
+            errors += fail(f"PROFILE_RULES does not state {key!r}, but {why}. "
+                           f"A write-up can obey every stated rule and still "
+                           f"be refused.")
+    if R.get("sentences_min") != 3:
+        errors += fail(f"PROFILE_RULES says {R.get('sentences_min')} sentences "
+                       f"minimum; check_profile refuses under 3")
+    if R.get("quote_min_chars") != 20:
+        errors += fail(f"PROFILE_RULES says a {R.get('quote_min_chars')}-char "
+                       f"quote minimum; check_profile refuses under 20")
+
+    # 4. the marketing list is the door's own, not a second copy
+    if list(R.get("marketing_words_refused") or []) != list(agents.MARKETING):
+        errors += fail("PROFILE_RULES' marketing list is not agents.MARKETING. "
+                       "A second copy drifts, and a word added to the door "
+                       "would start refusing write-ups nobody warned.")
+    return errors
+
+
 def check_data_writers_are_serialised() -> int:
     """Two jobs must never push data/ to the default branch at once.
 
@@ -14739,6 +14813,7 @@ def main() -> int:
     errors += check_an_override_cannot_beat_a_working_rule()
     errors += check_the_key_never_reaches_the_repository()
     errors += check_every_workflow_command_would_parse()
+    errors += check_the_brief_never_makes_a_true_quote_look_false()
     errors += check_data_writers_are_serialised()
     errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
     errors += check_the_second_reader_never_sees_the_first_answer()
