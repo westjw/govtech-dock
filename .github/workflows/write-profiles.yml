@@ -1,0 +1,92 @@
+name: write-profiles
+
+# THE MAP FILLS ITSELF, one category a night, and nothing it writes is
+# published. Proposals land pending; promote_profiles gates and lands them,
+# and a person still reads the disagreements. This job's whole job is to stop
+# the queue being empty.
+#
+# NOT ON A SCHEDULE YET, deliberately. Every run costs real money against the
+# owner's own API balance, and a cron that starts spending the night it is
+# merged is not a decision anybody made. Run it by hand from the Actions tab
+# until the shape and the bill are both familiar, then add:
+#     schedule: [{cron: "0 3 * * *"}]
+on:
+  workflow_dispatch:
+    inputs:
+      category:
+        description: "which category to write tonight"
+        required: true
+      limit:
+        description: "how many companies"
+        default: "20"
+
+permissions:
+  contents: write
+
+concurrency:
+  # The same group as refresh and news. Three jobs commit into data/ and
+  # refresh.yml resolves its own pull with `--rebase -X theirs`, so a
+  # collision silently drops the other job's write.
+  group: govtech-dock-data
+  cancel-in-progress: false
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      TZ: America/New_York        # journal ids key on the date
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Restore the conditional-request cache
+        uses: actions/cache@v4
+        continue-on-error: true
+        with:
+          path: data/http_cache
+          key: profiles-http-cache-${{ github.run_id }}
+          restore-keys: |
+            profiles-http-cache-
+            news-http-cache-
+            http-cache-
+
+      - name: Self-test BEFORE spending anything
+        # A BROKEN DOOR BUYS A HUNDRED PERMANENT REFUSALS. brief_profile never
+        # offers a company that is already in the store, refused included, so
+        # a bad night is not merely wasted - it is unrepeatable.
+        run: python scripts/selftest.py
+
+      - name: What this run may spend
+        run: python scripts/llm.py --check
+
+      - name: Write the write-ups
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python scripts/write_profiles.py \
+            --category "${{ inputs.category }}" \
+            --limit "${{ inputs.limit }}"
+
+      - name: What it cost
+        run: python scripts/llm.py --spend
+
+      - name: Commit the proposals
+        run: |
+          git config user.name  "westjw"
+          git config user.email "67345260+westjw@users.noreply.github.com"
+          # data/site_pages/ is gitignored on purpose - other people's page
+          # text must never enter a repository that is about to be public.
+          # The index carries shas and counts and no characters of the bodies.
+          git add data/agent_proposals.json data/site_pages_index.json \
+                  data/llm_log.jsonl data/admin_journal.jsonl
+          git diff --cached --quiet && echo "nothing new" && exit 0
+          git commit -m "write-ups: ${{ inputs.category }} ($(date -u +%Y-%m-%dT%H:%MZ))"
+          git pull --rebase
+          git push

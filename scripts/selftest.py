@@ -3408,6 +3408,102 @@ def check_every_workflow_command_would_parse() -> int:
     return errors
 
 
+def check_an_unattended_night_fails_in_the_ways_it_should() -> int:
+    """The five failures that only appear when nobody is watching.
+
+    Each was named by the council that designed write_profiles.py, and each is
+    invisible in a session - which is exactly why they need a guard rather
+    than a person's attention.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import journal
+    import llm
+    import write_profiles as wp
+    errors = 0
+    src = (ROOT / "scripts" / "write_profiles.py").read_text()
+    code = _code_only(ROOT / "scripts" / "write_profiles.py")
+
+    # 1. NO KEY COSTS NOTHING, and the check precedes the fetch. A run that
+    #    fetches a hundred sites and then finds it cannot ask has spent
+    #    somebody's goodwill for zero.
+    body = code.split("def main(", 1)[-1]
+    key_at = body.find("llm.key()")
+    fetch_at = min([x for x in (body.find("fp.visit"), body.find("tonight(")) if x > 0]
+                   or [10 ** 9])
+    if key_at < 0:
+        errors += fail("write_profiles never checks for a key at all")
+    elif key_at > fetch_at:
+        errors += fail("write_profiles checks for a key AFTER it starts "
+                       "fetching; a keyless night must cost nothing")
+
+    # 2. A DEGRADED NIGHT MUST NOT RE-MARK A READABLE SITE. CLAUDE.md's scar:
+    #    two bad runs wrote 55 false "gave up after 75s" notes; 42 of 53
+    #    answered fine on retry.
+    # WIRED, not merely named. The first version asserted the word appeared
+    # and a mutation replacing the whole condition with `if False:` walked
+    # past it - the variable was still assigned and the skip still followed.
+    if not re.search(r"if[^\n]*\bunread\b[^\n]*\bwas_readable\b", code):
+        errors += fail("write_profiles does not branch on was_readable when a "
+                       "fetch comes back unread, so one bad network night "
+                       "writes 'unread' across a whole batch - CLAUDE.md's "
+                       "own scar, 55 false notes and 42 of 53 fine on retry")
+
+    # 3. AN INGEST PER COMPANY EVICTS THE JOURNAL. journal.KEEP prunes to the
+    #    last N entries on every write, so a hundred entries a night erases
+    #    the before-images that make admin writes reversible.
+    if wp.INGEST_BATCH < 10:
+        errors += fail(f"INGEST_BATCH is {wp.INGEST_BATCH}; journal.KEEP is "
+                       f"{journal.KEEP} and every write prunes to it, so small "
+                       f"batches erase the before-images in a few nights")
+    if "INGEST_BATCH" not in code.split("agents.ingest", 1)[0][-400:]:
+        errors += fail("write_profiles does not ingest in batches, so it "
+                       "writes one journal entry per company")
+
+    # 4. A SYSTEMATIC REFUSAL MUST STOP THE RUN. brief_profile never offers a
+    #    company that is already in the store, refused included - so a broken
+    #    prompt burns every company it touches, permanently.
+    if not getattr(wp, "BREAKER", 0):
+        errors += fail("write_profiles has no circuit breaker; a broken prompt "
+                       "spends the night refusing companies the brief will "
+                       "never offer again")
+    elif wp.BREAKER > 25:
+        errors += fail(f"the circuit breaker is {wp.BREAKER}, high enough to "
+                       f"burn a category before it trips")
+    elif not re.search(r"in_row\s*(\+=|=\s*in_row\s*\+)", code):
+        errors += fail("BREAKER is defined and in_row is never INCREMENTED, so "
+                       "the breaker can never trip however many refuse")
+    elif not re.search(r"in_row\s*>=\s*BREAKER", code):
+        errors += fail("in_row is counted and never compared to BREAKER")
+
+    # 5. NO PAGE TEXT IN THE PROPOSAL STORE. The store is committed and this
+    #    repo goes public; the bodies are gitignored for that reason.
+    m = re.search(r'saw\s*[=:]\s*\{', code)
+    if not m:
+        errors += fail("write_profiles stores no record of what it saw")
+    elif ("lines" in code[m.end():m.end() + 200]
+          or "text" in code[m.end():m.end() + 200]):
+        errors += fail("write_profiles puts page text in `saw`; only the url "
+                       "and its sha may travel into a committed file")
+
+    # 6. THE DOOR RUNS BEFORE THE STORE, and a repair is handed the door's own
+    #    words rather than a paraphrase of them.
+    # THE FIRST CALL, whose result drives the refusal path - not the one
+    # inside the repair branch, which a mutation left in place while deleting
+    # the one that matters.
+    if not re.search(r"why\s*=\s*agents\.check_profile\(", code):
+        errors += fail("write_profiles never runs the door before ingesting, "
+                       "so a refusal costs a queue row instead of a retry")
+    # and the repair must be handed the door's ACTUAL words. Asserting the
+    # template contains {why} proves nothing about what is substituted.
+    if "{why}" not in src:
+        errors += fail("the repair prompt has no place for the door's words")
+    if not re.search(r"REPAIR\.format\(why\s*=\s*why\)", code):
+        errors += fail("the repair is not handed the door's own refusal "
+                       "string; a paraphrase teaches the model a rule the "
+                       "door does not have")
+    return errors
+
+
 def check_the_brief_never_makes_a_true_quote_look_false() -> int:
     """A quote the model read correctly must not be refused by the door.
 
@@ -14813,6 +14909,7 @@ def main() -> int:
     errors += check_an_override_cannot_beat_a_working_rule()
     errors += check_the_key_never_reaches_the_repository()
     errors += check_every_workflow_command_would_parse()
+    errors += check_an_unattended_night_fails_in_the_ways_it_should()
     errors += check_the_brief_never_makes_a_true_quote_look_false()
     errors += check_data_writers_are_serialised()
     errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
