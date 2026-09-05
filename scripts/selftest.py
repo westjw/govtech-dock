@@ -3075,6 +3075,15 @@ def check_profile_door_needs_provenance() -> int:
          "airlines",
          prop(s2=sub(S2, 0, "Customers include United Airlines, which flies "
                             "drones as first responders across the city."))),
+        # THE CASE THAT PROVES THE MODE, not just the list. Every token here
+        # is separately allowlisted - United and Kingdom as geography, Police
+        # and Department as category words - so a TOKEN-mode allowlist accepts
+        # an agency that does not exist. Only checking the run as a phrase
+        # refuses it. This is B's council failure in one line.
+        ("an invented agency whose every token is allowlisted", "united kingdom",
+         prop(s2=sub(S2, 0, "Customers include the United Kingdom Police "
+                            "Department, which flies drones as first "
+                            "responders across the city."))),
         # A CERTIFICATION IS NOT GEOGRAPHY. SOC 2 and a stock listing are
         # claims a reader acts on, and they stay refused.
         ("a compliance claim their own site does not make", "soc",
