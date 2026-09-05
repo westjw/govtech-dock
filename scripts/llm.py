@@ -297,10 +297,21 @@ def ask(system: str, user: str, kind: str, *, model: str = DEFAULT_MODEL,
         "system": system,
         "messages": [{"role": "user", "content": user}],
     }
-    if thinking:
-        # Adaptive only. budget_tokens is REJECTED on these models, and a 400
-        # from a nightly run reads as "the engine is broken".
-        body["thinking"] = {"type": "adaptive"}
+    # THINKING IS ON UNLESS IT IS EXPLICITLY TURNED OFF, and omitting the key
+    # does NOT turn it off - it defaults to adaptive. Measured, on one real
+    # tailoring brief, same model, same prompt:
+    #
+    #     {"type": "disabled"}  ->  3,377 output tokens, a complete answer
+    #     omitted / adaptive    ->  8,000 output tokens, ALL of them a
+    #                               thinking block, zero characters of text,
+    #                               stop_reason max_tokens
+    #
+    # That is what "thinking=False" quietly failed to prevent, and it cost
+    # $3.40 of truncated profile second-reads before anyone looked inside a
+    # response. For a task that fills in a JSON shape from evidence already in
+    # the prompt, thinking spends the entire output budget deciding how to
+    # write down something it has already been told.
+    body["thinking"] = {"type": "adaptive"} if thinking else {"type": "disabled"}
     if tools:
         body["tools"] = tools
     headers = {"x-api-key": key(), "anthropic-version": VERSION,
