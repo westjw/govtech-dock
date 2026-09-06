@@ -269,7 +269,8 @@ def main() -> int:
         user = json.dumps({"items": [b for _, b in lot]}, indent=1)
         try:
             got = llm.ask(RULES, user, "board", model=a.model,
-                          max_tokens=llm.MAX_OUTPUT)
+                          max_tokens=llm.MAX_OUTPUT,
+                  thinking=False)
         except llm.Refused as e:
             print(f"  stopping at request {i}: {e}", file=sys.stderr)
             break

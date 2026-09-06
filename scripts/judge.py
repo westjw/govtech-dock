@@ -271,7 +271,8 @@ def main() -> int:
     for i, lot in enumerate(lots, 1):
         sysm, user = _prompt(a.kind, lot)
         try:
-            got = llm.ask(sysm, user, a.kind, model=a.model, max_tokens=llm.MAX_OUTPUT)
+            got = llm.ask(sysm, user, a.kind, model=a.model, max_tokens=llm.MAX_OUTPUT,
+                  thinking=False)
         except llm.Refused as e:
             print(f"  stopping at request {i}: {e}", file=sys.stderr)
             break

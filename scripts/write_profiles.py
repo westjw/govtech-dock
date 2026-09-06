@@ -287,8 +287,17 @@ def main() -> int:
     kept, refused_run, in_row = [], 0, 0
     for i, b in enumerate(briefs, 1):
         try:
+            # THINKING OFF, AND THIS IS THE SECOND TIME. llm.ask defaults
+            # `thinking` to True, which sends {"type": "adaptive"}, and the
+            # tailoring path already learned what that costs: the whole
+            # 8,000-token output budget spent on a thinking block that
+            # produced zero characters of text, $3.40 and two wrong diagnoses
+            # before anyone looked at the flag. Everything a write-up needs is
+            # in the brief - the company's own pages and the door's rules -
+            # and this is the OVERNIGHT path, which spends unattended.
             got = llm.ask(TASK, json.dumps(b, indent=1), "profile",
-                          model=a.model, max_tokens=llm.MAX_OUTPUT)
+                          model=a.model, max_tokens=llm.MAX_OUTPUT,
+                          thinking=False)
         except llm.Refused as e:
             print(f"  stopping at {i}: {e}", file=sys.stderr)
             break
@@ -300,7 +309,8 @@ def main() -> int:
         if why and not a.no_repair:
             got2 = llm.ask(TASK + "\n\n" + REPAIR.format(why=why),
                            json.dumps(b, indent=1), "profile-repair",
-                           model=a.model, max_tokens=llm.MAX_OUTPUT)
+                           model=a.model, max_tokens=llm.MAX_OUTPUT,
+                           thinking=False)
             if got2:
                 got2.setdefault("id", b["id"])
                 if agents.check_profile(got2, agents._profile_texts(got2)) is None:

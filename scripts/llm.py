@@ -263,8 +263,19 @@ def _json_from(text: str) -> dict | list | None:
     return None
 
 
-def ask(system: str, user: str, kind: str, *, model: str = DEFAULT_MODEL,
-        max_tokens: int = 4000, thinking: bool = True,
+# NO DEFAULT ON `thinking`, for the same reason promote_rivals refuses to
+# default `by`: a default that costs money is a trap for every caller that did
+# not think about it. It defaulted True, which sends {"type": "adaptive"}, and
+# the tailoring path already paid for that once - the entire 8,000-token
+# output budget spent on a thinking block that produced zero characters of
+# text, $3.40 and two wrong diagnoses before anybody looked at the flag. An
+# audit found five more call sites inheriting it, including the OVERNIGHT
+# profile run, which spends unattended.
+#
+# Required and keyword-only, so every site states its answer and a new caller
+# cannot inherit one.
+def ask(system: str, user: str, kind: str, *, thinking: bool,
+        model: str = DEFAULT_MODEL, max_tokens: int = 4000,
         tools: list | None = None) -> dict | list | None:
     """One request. Returns the parsed JSON answer, or None.
 

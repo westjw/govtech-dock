@@ -1410,7 +1410,7 @@ def check_the_spend_log_is_a_bill_not_a_transcript() -> int:
         llm.requests.post = post
         os.environ["ANTHROPIC_API_KEY"] = "sk-test-not-a-real-key"
         try:
-            got = llm.ask("system " + secret_in, "user " + secret_in, "probe")
+            got = llm.ask("system " + secret_in, "user " + secret_in, "probe", thinking=False)
         finally:
             llm.requests.post = real_post
             if real_key is None:
@@ -1463,7 +1463,7 @@ def check_a_cap_stops_the_call_it_would_pay_for() -> int:
             # no key: None, no exception, nothing asked
             os.environ.pop("ANTHROPIC_API_KEY", None)
             try:
-                if llm.ask("s", "u", "probe") is not None:
+                if llm.ask("s", "u", "probe", thinking=False) is not None:
                     errors += fail("with no key, ask() must answer None")
             except AssertionError:
                 errors += fail("with no key, ask() still reached the transport")
@@ -1476,7 +1476,7 @@ def check_a_cap_stops_the_call_it_would_pay_for() -> int:
                 llm._calls, llm._spent = 0, 0.0
                 setattr(llm, field, value)
                 try:
-                    llm.ask("s", "u", "probe")
+                    llm.ask("s", "u", "probe", thinking=False)
                     errors += fail(f"{label} did not stop the call")
                 except llm.Refused:
                     pass
@@ -1486,7 +1486,7 @@ def check_a_cap_stops_the_call_it_would_pay_for() -> int:
                 llm._calls, llm._spent = 0, 0.0
             # and an oversized ask is refused rather than timing out
             try:
-                llm.ask("s", "u", "probe", max_tokens=llm.MAX_OUTPUT + 1)
+                llm.ask("s", "u", "probe", max_tokens=llm.MAX_OUTPUT + 1, thinking=False)
                 errors += fail("an output over MAX_OUTPUT was not refused")
             except llm.Refused:
                 pass
@@ -2859,6 +2859,44 @@ def check_the_watch_sweep_works_without_the_bodies() -> int:
     return errors
 
 
+def check_no_model_call_inherits_a_costly_default() -> int:
+    """`thinking` has no default, and every call site says which it wants.
+
+    It defaulted True, which sends {"type": "adaptive"}. The tailoring path in
+    the sibling repo paid for that once: the whole output budget spent on a
+    thinking block that produced zero characters of text, and two wrong
+    diagnoses before anybody looked at the flag. An audit then found five more
+    sites inheriting it HERE, including write_profiles - the overnight run,
+    which spends unattended and had been doing it since it was written.
+
+    Same reasoning promote_rivals gives for refusing to default `by`: a
+    default that costs money is a trap for every caller who did not think
+    about it. Read with the parser, so a keyword in a comment does not count.
+    """
+    import ast as _ast
+    root = pathlib.Path(__file__).resolve().parent
+    bad = []
+    for f in sorted(root.glob("*.py")):
+        if f.name in ("selftest.py", "llm.py"):
+            continue
+        try:
+            tree = _ast.parse(f.read_text())
+        except SyntaxError:
+            continue
+        for node in _ast.walk(tree):
+            if isinstance(node, _ast.Call) and isinstance(node.func, _ast.Attribute) \
+                    and node.func.attr == "ask" \
+                    and isinstance(node.func.value, _ast.Name) \
+                    and node.func.value.id == "llm" \
+                    and "thinking" not in {k.arg for k in node.keywords}:
+                bad.append(f"{f.name}:{node.lineno}")
+    if bad:
+        return fail("model call(s) that do not state `thinking`, so they "
+                    "inherit whatever the default is and pay for it: "
+                    + ", ".join(bad))
+    return 0
+
+
 def check_news_extractor_refuses_undated() -> int:
     """A news item is a headline the site printed and a date the site stated.
 
@@ -3610,7 +3648,7 @@ def check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off() -> in
         os.environ["ANTHROPIC_API_KEY"] = "sk-ant-test"
         l2.LAST_STOP = ""
         try:
-            l2.ask("s", "u", "probe")
+            l2.ask("s", "u", "probe", thinking=False)
             if l2.LAST_STOP != "max_tokens":
                 errors += fail(f"llm.LAST_STOP is {l2.LAST_STOP!r} after a "
                                f"truncated answer; a caller cannot tell a cut "
@@ -15436,6 +15474,7 @@ def main() -> int:
     errors += check_companies_sub_sector_filter_follows_the_sector()
     errors += check_deploy_doc_claims_are_dated()
     errors += check_conference_counts_reach_both_events()
+    errors += check_no_model_call_inherits_a_costly_default()
     errors += check_news_extractor_refuses_undated()
     errors += check_a_web_competitor_needs_a_source_somebody_fetched()
     errors += check_the_watch_sweep_works_without_the_bodies()

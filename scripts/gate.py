@@ -223,7 +223,8 @@ def second_read(kind: str, rows: list, model: str, dry: bool) -> list:
         return []
     try:
         got = llm.ask(sysm, user, f"gate-{kind}", model=model,
-                      max_tokens=llm.MAX_OUTPUT)
+                      max_tokens=llm.MAX_OUTPUT,
+                  thinking=False)
     except llm.Refused as e:
         print(f"  {e}", file=sys.stderr)
         return []

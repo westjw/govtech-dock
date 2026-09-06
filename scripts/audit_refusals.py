@@ -163,7 +163,8 @@ def review(rows: list, model: str, batch: int, dry: bool) -> list:
     for i, lot in enumerate(lots, 1):
         try:
             got = llm.ask(REVIEW, json.dumps({"items": lot}, indent=1),
-                          "refusal-audit", model=model, max_tokens=llm.MAX_OUTPUT)
+                          "refusal-audit", model=model, max_tokens=llm.MAX_OUTPUT,
+                  thinking=False)
         except llm.Refused as e:
             print(f"  stopping at request {i}: {e}", file=sys.stderr)
             break
