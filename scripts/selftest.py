@@ -2635,6 +2635,78 @@ def check_a_web_competitor_needs_a_source_somebody_fetched() -> int:
         errors += fail("nine adds beside a kept edge passed the cap, so the "
                        "cap can be bypassed by keeping a few and adding many")
 
+    # INGEST MUST DISPATCH TO IT. Everything above drives check_rival_web
+    # directly. The kind is "rival" for both engines, and ingest sent every
+    # rival proposal to check_rival, which demands a `rivals` list a v2 answer
+    # correctly does not have - so v2 proposals were refused by the wrong door
+    # and the new one was never consulted. Written, tested, and unreachable is
+    # this repo's signature failure and it happened again here.
+    with _sandbox_admin({"agent_proposals.json": {}}) as tmp:
+        keep_store = agents.STORE
+        agents.STORE = tmp / "agent_proposals.json"
+        try:
+            clean = {"kind": "rival", "key": "rivweb:t", "id": "t",
+                     "existing": [], "keep": [],
+                     "searches": [{"q": "t competitors", "hits": []}],
+                     "add": [{"name": "Somebody", "website": "https://s.example",
+                              "why": "both sell to police departments",
+                              "source": {"url": "https://r.example/a",
+                                         "quote": "z" * 30}}]}
+            rep = agents.ingest("rival", [dict(clean)], model="agent:test")
+            if not rep.get("kept"):
+                errors += fail(f"ingest refused a clean v2 proposal: "
+                               f"{rep.get('refused')}. The kind is 'rival' for "
+                               f"both engines and the shape decides which door")
+            agents.STORE.write_text("{}")
+            nosearch = dict(clean, key="rivweb:t2", searches=None)
+            rep = agents.ingest("rival", [nosearch], model="agent:test")
+            if rep.get("kept") or not rep.get("refused"):
+                errors += fail("ingest ACCEPTED a web add with no recorded "
+                               "search. The pipeline has no web, so that name "
+                               "was remembered rather than found")
+            agents.STORE.write_text("{}")
+            v1 = {"kind": "rival", "key": "rival:t", "id": "t",
+                  "roster": [{"id": "t"}, {"id": "u"}],
+                  "rivals": [{"id": "u", "why": "both sell to police forces"}]}
+            rep = agents.ingest("rival", [v1], model="agent:test")
+            if not rep.get("kept"):
+                errors += fail(f"ingest now refuses a v1 roster shortlist: "
+                               f"{rep.get('refused')}. One kind has to serve "
+                               f"both engines")
+        finally:
+            agents.STORE = keep_store
+
+    # A RUN WITH NO WEB MAY NOT REPORT FINDINGS. The door refuses an add with
+    # no recorded `searches`; it cannot refuse a run that invented one. The
+    # runner knows whether the caller had a browser and drops the adds itself.
+    import find_rivals                                          # noqa: E402
+    prop = {"id": "t", "why": "a thesis", "keep": ["u"],
+            "add": [{"name": "Somebody", "website": "https://s.example"}],
+            "searches": [{"q": "t competitors", "hits": []}]}
+    got, dropped = find_rivals.honest(dict(prop), has_web=False)
+    if got.get("add") or dropped != 1:
+        errors += fail("a run with no web kept its adds. Without a browser it "
+                       "cannot have FOUND a competitor, so the name was "
+                       "remembered and a remembered name with a url attached "
+                       "is what this engine exists to refuse")
+    if got.get("keep") != ["u"]:
+        errors += fail("the keep judgment was dropped along with the adds. It "
+                       "is made against edges already on file and needs no web")
+    got, dropped = find_rivals.honest(dict(prop), has_web=True)
+    if not got.get("add") or dropped:
+        errors += fail("a run WITH web access had its adds dropped, so the "
+                       "engine can never propose anything at all")
+
+    # A COMPANY IS ONLY READY ONCE IT HAS A WRITE-UP. Understand them first,
+    # then search: a brief that says only "Verkada, Public Safety/Police"
+    # produces a search for the category rather than for the company.
+    for b in agents.brief_rival_web(limit=5):
+        if not b.get("write_up"):
+            errors += fail(f"{b['id']} was briefed for a competitor search "
+                           f"with no accepted write-up behind it")
+        if b.get("id") in b.get("existing", []):
+            errors += fail(f"{b['id']} is listed as its own existing edge")
+
     # RESOLUTION: a name off the board must resolve to NOTHING, and admin.ident
     # is a normaliser, not a lookup. Used as a resolver it hands back a
     # confident id for every name on earth: "Zzqq Fake Corp" becomes

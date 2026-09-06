@@ -1843,6 +1843,41 @@ def _host(url: str) -> str:
         return ""
 
 
+def check_rival_any(p: dict) -> str | None:
+    """One kind, two engines, DISPATCHED rather than chained.
+
+    v1 answers with a `rivals` list chosen off a roster; v2 answers with
+    `keep`, `add` and `drop` and no roster at all. Running both doors over
+    either proposal refuses the other engine's shape: v1 demands a rivals
+    list, which a v2 answer correctly does not have.
+
+    The shape decides. A proposal carrying any of keep/add/drop is v2.
+    """
+    if any(p.get(k) is not None for k in ("add", "keep", "drop")):
+        return check_rival_web(p, _own_site(p))
+    return check_rival(p)
+
+
+def _own_site(p: dict) -> str | None:
+    """The company's own website, so the door can refuse it as a source.
+
+    A company saying who it competes with is marketing, not an independent
+    reading, and the proposal itself carries the site the brief handed over.
+    """
+    site = p.get("website")
+    if site:
+        return site
+    try:
+        rows = json.loads((DATA / "companies.json").read_text())
+        rows = rows if isinstance(rows, list) else list(rows.values())
+        for c in rows:
+            if c.get("id") == p.get("id"):
+                return c.get("website")
+    except Exception:
+        pass
+    return None
+
+
 def check_rival_web(p: dict, own_site: str | None = None) -> str | None:
     """The v2 half: web-sourced adds and the drops beside them.
 
@@ -1958,7 +1993,7 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
         bad = (check_bucket(p, schema) if kind == "bucket"
                else check_read(p) if kind == "read"
                else check_board(p) if kind == "board"
-               else check_rival(p) if kind == "rival"
+               else check_rival_any(p) if kind == "rival"
                # THE FULL STORED TEXT, not the trimmed brief: a quote from a
                # region dechrome cut must still verify, or the door refuses
                # true sentences and the gate review fills with false refusals.
