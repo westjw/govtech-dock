@@ -575,6 +575,92 @@ def brief_rival(sector: str | None = None, category: str | None = None,
     return out[:limit] if limit else out
 
 
+# ------------------------------------------------------------ rival v2 ----
+# ONE COMPANY PER BRIEF, and only one that has an accepted write-up. v1 briefs
+# a slice of a category and asks "who competes with these"; that is the right
+# question when the roster is all you have. Once a company has a write-up
+# built from its own pages, the better question is "who competes with THIS",
+# with the description in front of the agent, and the answer is allowed to
+# name companies this board has never heard of.
+RIVAL_WEB_RULES = {
+    "unit": "one company. Every add is a competitor of THIS company",
+    "sources": "every add carries {url, quote} from a page that is not the "
+               "company's own site and not LinkedIn. The quote is checked "
+               "against the fetched page before anything is accepted",
+    "searches": "record every search you run, with its query and its hits. An "
+                "add with no search behind it is refused: the pipeline has no "
+                "web, so an unsourced name is something you remembered",
+    "keep": "a subset of `existing`. Not a second way to add",
+    "drop": "an existing edge you think is wrong, with a reason. Proposed "
+            "only; drops are not applied unless a person asks for them",
+    "cap": "keep plus add may not exceed the edge cap (8)",
+    "resolution": "give the name and the website. Do NOT give an id: the door "
+                  "resolves a website to a board id, and an agent that "
+                  "resolves ids invents them",
+    "empty": "no competitors found is a real answer: add nothing and say so",
+}
+RIVAL_WEB_QUERIES = ("{name} competitors", "{name} vs", "{name} alternatives",
+                     "{what} vendors for {buyer}")
+
+
+def brief_rival_web(limit: int | None = None, category: str | None = None,
+                    ids: list | None = None) -> list[dict]:
+    """One brief per company that has an accepted write-up and no web pass yet.
+
+    THE WRITE-UP IS THE POINT. Wyeth's rule, on the record: understand the
+    company FIRST, and let that knowledge fuel the search. A brief that says
+    only "Verkada, Public Safety/Police" produces a search for the category;
+    one that carries three sourced paragraphs about what they sell and who
+    buys it produces a search for the company.
+    """
+    companies = json.loads((DATA / "companies.json").read_text())
+    if isinstance(companies, dict):
+        companies = list(companies.values())
+    by_cat: dict = {}
+    for c in companies:
+        by_cat.setdefault((c.get("sector") or "?", c.get("category") or "?"),
+                          []).append(c)
+    done = load()
+    out = []
+    for c in sorted(companies, key=lambda x: (x.get("name") or "").lower()):
+        cid = c.get("id")
+        if not cid or (ids and cid not in ids):
+            continue
+        if category and c.get("category") != category:
+            continue
+        prof = c.get("profile")
+        if not (isinstance(prof, dict) and prof.get("paragraphs")):
+            continue                      # no write-up: nothing to search FROM
+        key = f"rivweb:{cid}"
+        if key in done:
+            continue
+        pool = by_cat.get((c.get("sector") or "?", c.get("category") or "?"), [])
+        roster = [{"id": r["id"], "name": r["name"],
+                   "sells": (r.get("description") or "").strip()}
+                  for r in pool if r.get("id") and r.get("id") != cid][:120]
+        existing = [e.get("id") if isinstance(e, dict) else e
+                    for e in (c.get("competitors") or [])]
+        what = (c.get("description") or "").strip()
+        buyer = c.get("category") or "government agencies"
+        out.append({
+            "kind": "rival", "key": key, "id": cid, "name": c["name"],
+            "website": c.get("website"),
+            "sector": c.get("sector"), "category": c.get("category"),
+            "write_up": prof.get("paragraphs"),
+            "existing": [e for e in existing if e],
+            "roster": roster,
+            "web": {"max_searches": 6,
+                    "queries": [q.format(name=c["name"], what=what[:60],
+                                         buyer=buyer)
+                                for q in RIVAL_WEB_QUERIES],
+                    "record_every_search": True},
+            "rules": RIVAL_WEB_RULES,
+        })
+        if limit and len(out) >= limit:
+            break
+    return out
+
+
 # -------------------------------------------------------------- profile ----
 # THE BRIEF IS THE COMPANY'S OWN PAGES AND NOTHING ELSE. 2,061 of 2,063
 # company pages say the write-up is not on file, and the way to fill that
@@ -1714,6 +1800,129 @@ def check_rival(p: dict) -> str | None:
 
     if p.get("confidence") == "high" and not (p.get("evidence") or "").strip():
         return "a high-confidence shortlist must say what it rests on"
+    return None
+
+
+# ============================================================ rival v2 ====
+# V1 CHOOSES FROM A ROSTER. That is what makes it safe: an id that is not on
+# the board cannot be invented, because the door only accepts ids it handed
+# over. It is also what makes it thin - Verkada's real competitors are not
+# confined to the companies this board happens to list, and a shortlist that
+# silently means "of the ones we track" is a different claim than the page
+# makes.
+#
+# V2 LETS AN AGENT LOOK OUTWARD, and every rule below exists because that
+# removes the roster guard. What replaces it:
+#
+#   A NAME NEEDS A SOURCE. An `add` carries {url, quote} from a page that is
+#   not the company's own careers site and not LinkedIn, and the quote is
+#   verified against the fetched page by a SEPARATE networked step before
+#   anything is accepted. Memory looks exactly like research until you ask it
+#   for the link.
+#
+#   AN ADD WITHOUT A RECORDED SEARCH IS MEMORY. The routine has the web; the
+#   pipeline does not. If a proposal names a competitor and cannot say which
+#   search surfaced it, the model is completing a pattern about a company
+#   name, which is the one failure this whole repo is built around.
+#
+#   RESOLUTION HAPPENS HERE, NEVER IN THE AGENT. The agent gives a name and a
+#   website; the door turns that into a board id or marks it offboard. An
+#   agent that resolves ids invents them.
+#
+#   THE CAP BINDS ON THE MERGED LIST. keep + add, not add alone, or the cap
+#   is bypassed by keeping seven and adding seven.
+LINKEDIN = ("linkedin.com", "www.linkedin.com")
+SOURCE_QUOTE_MIN = 20
+
+
+def _host(url: str) -> str:
+    try:
+        import urllib.parse as _up
+        return (_up.urlsplit(str(url or "")).hostname or "").lower()
+    except Exception:
+        return ""
+
+
+def check_rival_web(p: dict, own_site: str | None = None) -> str | None:
+    """The v2 half: web-sourced adds and the drops beside them.
+
+    Returns None when there is nothing v2 about the proposal, so a v1 answer
+    passes through untouched and one door serves both.
+    """
+    adds = p.get("add")
+    drops = p.get("drop")
+    keep = p.get("keep")
+    if adds is None and drops is None and keep is None:
+        return None                       # a v1 proposal; nothing to add here
+
+    searches = p.get("searches")
+    if adds and not searches:
+        return ("this proposal adds a competitor and records no search. The "
+                "routine has the web and the pipeline does not, so an add with "
+                "no search behind it is the model remembering a company name, "
+                "which is the one thing this door exists to stop")
+    if searches is not None and not isinstance(searches, list):
+        return "searches must be a list of {q, hits}"
+    for srch in (searches or []):
+        if not isinstance(srch, dict) or not (srch.get("q") or "").strip():
+            return "every recorded search must carry the query that was run"
+
+    existing = {e for e in (p.get("existing") or [])}
+    for k in (keep or []):
+        if existing and k not in existing:
+            return (f"{k!r} is kept but was not an existing edge. `keep` is a "
+                    f"subset of what is already on file, not a second way to "
+                    f"add")
+    for d in (drops or []):
+        if not isinstance(d, dict):
+            return "each drop must be an object with an id and a why"
+        if existing and d.get("id") not in existing:
+            return (f"{d.get('id')!r} is dropped but is not an existing edge")
+        if len((d.get("why") or "").strip()) < 15:
+            return (f"the drop of {d.get('id')!r} carries no reason. Removing a "
+                    f"name from a public page is the one edit nobody can see "
+                    f"happen")
+
+    seen_names = set()
+    for a in (adds or []):
+        if not isinstance(a, dict):
+            return "each add must be an object"
+        name = (a.get("name") or "").strip()
+        if not name:
+            return "an add with no name cannot be resolved to anything"
+        if name.lower() in seen_names:
+            return f"{name!r} is added twice"
+        seen_names.add(name.lower())
+        site = (a.get("website") or "").strip()
+        if not site or _host(site) == "":
+            return (f"the add {name!r} carries no website. A name without one "
+                    f"cannot be resolved to a company or checked by a person")
+        if len((a.get("why") or "").strip()) < 15:
+            return (f"the edge to {name!r} carries no reason")
+        src = a.get("source")
+        if not isinstance(src, dict):
+            return (f"{name!r} has no source. A competitor named with no page "
+                    f"behind it is memory wearing research's clothes")
+        url = (src.get("url") or "").strip()
+        if not url.lower().startswith(("http://", "https://")):
+            return f"the source for {name!r} is not a fetchable http(s) url"
+        host = _host(url)
+        if host in LINKEDIN or host.endswith(".linkedin.com"):
+            return (f"the source for {name!r} is LinkedIn, which is not a "
+                    f"public page this can fetch and check")
+        if own_site and host and host == _host(own_site):
+            return (f"the source for {name!r} is the company's own site. A "
+                    f"company saying who it competes with is a marketing "
+                    f"claim, not an independent one")
+        if len((src.get("quote") or "").strip()) < SOURCE_QUOTE_MIN:
+            return (f"the source for {name!r} carries no quote, or one too "
+                    f"short to verify against the page")
+
+    total = len(keep or []) + len(adds or [])
+    if total > EDGE_CAP:
+        return (f"{total} edges after the merge is a category, not a "
+                f"shortlist; the cap is {EDGE_CAP} and it binds on keep plus "
+                f"add, not on add alone")
     return None
 
 

@@ -2548,6 +2548,147 @@ console.log(JSON.stringify(out));
     return errors
 
 
+def check_a_web_competitor_needs_a_source_somebody_fetched() -> int:
+    """v2 lets an agent look off the roster, and every rule replaces that guard.
+
+    v1 is safe because it only accepts ids it handed over: a name from memory
+    cannot resolve. v2 removes that, so a competitor is now a claim about two
+    real companies made from the open web, published on a page with both their
+    names on it.
+
+    WHAT REPLACES THE ROSTER: a source that is not the company's own site and
+    not LinkedIn; a recorded search, because the pipeline has no web and an
+    add with no search behind it is the model remembering a company name;
+    resolution done here rather than by the agent; and the cap binding on the
+    merged list rather than on the adds alone.
+
+    AND NOTHING VANISHES. The merge is built from `existing`, not from the
+    agent's `keep`, so an edge it simply did not mention cannot disappear from
+    a public page. Over the cap is a refusal, not a truncation, for the same
+    reason: cutting at eight removes whichever edge sorted last, silently.
+    """
+    import agents
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+    import promote_rivals as pr                                 # noqa: E402
+    errors = 0
+
+    good_src = {"url": "https://review.example/compare",
+                "quote": "x" * 30}
+
+    def prop(**kw):
+        d = {"id": "b", "existing": ["x", "y"], "keep": ["x"],
+             "searches": [{"q": "Brinc competitors", "hits": []}],
+             "add": [{"name": "Flock Safety", "website": "https://flocksafety.com",
+                      "why": "both sell to police departments",
+                      "source": dict(good_src)}]}
+        d.update(kw)
+        return d
+
+    if agents.check_rival_web(prop()) is not None:
+        errors += fail(f"a clean web proposal was refused: "
+                       f"{agents.check_rival_web(prop())}")
+
+    # A v1 answer must pass through the v2 half untouched.
+    if agents.check_rival_web({"id": "b", "rivals": [{"id": "x", "why": "w" * 20}]}) is not None:
+        errors += fail("the v2 half refuses a v1 proposal, so one door no "
+                       "longer serves both engines")
+
+    cases = [
+        ("an add with no recorded search", prop(searches=None), "search"),
+        ("an add with no source at all",
+         prop(add=[{"name": "F", "website": "https://f.example",
+                    "why": "both sell to police departments"}]), "source"),
+        ("a LinkedIn source",
+         prop(add=[{"name": "F", "website": "https://f.example",
+                    "why": "both sell to police departments",
+                    "source": {"url": "https://www.linkedin.com/company/f",
+                               "quote": "x" * 30}}]), "linkedin"),
+        ("a source with no quote",
+         prop(add=[{"name": "F", "website": "https://f.example",
+                    "why": "both sell to police departments",
+                    "source": {"url": "https://r.example/a", "quote": "short"}}]),
+         "quote"),
+        ("an add with no website",
+         prop(add=[{"name": "F", "why": "both sell to police departments",
+                    "source": dict(good_src)}]), "website"),
+        ("a keep that was never an existing edge",
+         prop(keep=["x", "zzz"]), "zzz"),
+        ("a drop with no reason",
+         prop(drop=[{"id": "y", "why": "no"}]), "reason"),
+    ]
+    for name, p_, token in cases:
+        got = agents.check_rival_web(p_)
+        if got is None:
+            errors += fail(f"the web door ACCEPTED {name}. That edge would be "
+                           f"published on two real companies' pages")
+        elif token not in got.lower():
+            errors += fail(f"the web door refused {name} without naming "
+                           f"{token!r}: {got}")
+
+    # THE CAP BINDS ON THE MERGE, not on the adds alone.
+    over = prop(keep=["x"] * 1,
+                add=[{"name": f"C{i}", "website": f"https://c{i}.example",
+                      "why": "both sell to police departments",
+                      "source": dict(good_src)} for i in range(9)])
+    over["existing"] = ["x"]
+    if agents.check_rival_web(over) is None:
+        errors += fail("nine adds beside a kept edge passed the cap, so the "
+                       "cap can be bypassed by keeping a few and adding many")
+
+    # RESOLUTION: a name off the board must resolve to NOTHING, and admin.ident
+    # is a normaliser, not a lookup. Used as a resolver it hands back a
+    # confident id for every name on earth: "Zzqq Fake Corp" becomes
+    # "zzqqfake", and the edge points at a company that does not exist.
+    by_host = {"flocksafety.com": "flock-safety", "www.flocksafety.com": "flock-safety"}
+    by_name = {"flocksafety": "flock-safety"}
+    if pr.resolve_add({"name": "Flock Safety",
+                       "website": "https://www.flocksafety.com"},
+                      by_host, by_name) != "flock-safety":
+        errors += fail("a competitor whose website is on the board did not "
+                       "resolve to its id")
+    if pr.resolve_add({"name": "Zzqq Fake Corp", "website": "https://zzqq.example"},
+                      by_host, by_name) is not None:
+        errors += fail("a company that is NOT on the board resolved to an id "
+                       "anyway. admin.ident normalises a string, it does not "
+                       "look one up, and as a resolver it invents an id for "
+                       "every name")
+
+    # THE MERGE: existing is the base, drops are proposed, the cap refuses.
+    co = {"id": "b", "competitors": [{"id": "x", "why": "an old reason here"},
+                                     {"id": "y", "why": "another old reason"}]}
+    edges, problem = pr.merge_web({"keep": ["x"], "add": [],
+                                   "drop": [{"id": "y", "why": "w" * 20}]},
+                                  co, False)
+    ids = [e.get("id") for e in edges]
+    if "y" not in ids:
+        errors += fail("an existing edge the agent did not KEEP vanished from "
+                       "the merge. The base is `existing`; silence must not "
+                       "delete a name off a public page")
+    if problem:
+        errors += fail(f"a clean merge reported a problem: {problem}")
+    edges, _ = pr.merge_web({"keep": ["x"], "add": [],
+                             "drop": [{"id": "y", "why": "w" * 20}]}, co, True)
+    if "y" in [e.get("id") for e in edges]:
+        errors += fail("--with-drops did not apply an accepted drop, so a "
+                       "wrong edge can never be removed at all")
+    big = {"id": "b", "competitors": [{"id": f"c{i}", "why": "r"} for i in range(9)]}
+    _, problem = pr.merge_web({"keep": [], "add": []}, big, False)
+    if not problem:
+        errors += fail("a merge over the cap was truncated instead of refused. "
+                       "Cutting at the cap removes whichever edge sorted last, "
+                       "with no reason recorded anywhere")
+
+    # THE RULES TEXT AND THE CONSTANT MUST AGREE. The cap is written into the
+    # brief as a literal because EDGE_CAP is defined further down the file.
+    import re as _re
+    m = _re.search(r"\((\d+)\)", agents.RIVAL_WEB_RULES["cap"])
+    if not m or int(m.group(1)) != agents.EDGE_CAP:
+        errors += fail(f"the brief tells the agent a cap of "
+                       f"{m.group(1) if m else '?'} and the door enforces "
+                       f"{agents.EDGE_CAP}")
+    return errors
+
+
 def check_the_watch_sweep_works_without_the_bodies() -> int:
     """news.yml ran four times a day and produced nothing, for this reason.
 
@@ -15224,6 +15365,7 @@ def main() -> int:
     errors += check_deploy_doc_claims_are_dated()
     errors += check_conference_counts_reach_both_events()
     errors += check_news_extractor_refuses_undated()
+    errors += check_a_web_competitor_needs_a_source_somebody_fetched()
     errors += check_the_watch_sweep_works_without_the_bodies()
     errors += check_the_company_page_says_which_kind_of_no_news()
     errors += check_profile_door_needs_provenance()
