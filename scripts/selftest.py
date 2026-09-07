@@ -6828,7 +6828,7 @@ def check_redirect_hop() -> int:
     # port 0: the OS picks a free one, so two runs at once cannot collide
     srv = http.server.HTTPServer(("127.0.0.1", 0), Redirect)
     port = srv.server_address[1]
-    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    threading.Thread(target=srv.serve_forever, args=(0.005,), daemon=True).start()
 
     real_public, asked = admin._public, []
 
@@ -6907,7 +6907,7 @@ def check_admin_http() -> int:
 
     srv = http.server.HTTPServer(("127.0.0.1", 0), Quiet)
     base = f"http://127.0.0.1:{srv.server_address[1]}"
-    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    threading.Thread(target=srv.serve_forever, args=(0.005,), daemon=True).start()
     bad = 0
 
     def ask(path, headers=None, method="GET", body=None):
@@ -8948,8 +8948,14 @@ def check_every_check_is_actually_run() -> int:
     # prove the new assertion went green.
     #
     # `defined` above is a set, so it cannot see this. Count the defs.
-    for name in sorted(set(re.findall(r"^def (check_[A-Za-z0-9_]+)\(", src, re.M))):
-        n = len(re.findall(rf"^def {name}\(", src, re.M))
+    # COUNTED IN THE ONE SCAN THAT ALREADY LISTS THE NAMES. This ran a fresh
+    # regex over the whole 826 KB file once per check function - 172 more
+    # scans to count what the first pass had already seen, a full second of
+    # every run of the suite.
+    _defs = collections.Counter(
+        re.findall(r"^def (check_[A-Za-z0-9_]+)\(", src, re.M))
+    for name in sorted(_defs):
+        n = _defs[name]
         if n > 1:
             bad += fail(f"{name} is defined {n} times in this file. Python "
                         f"keeps the last one, so the assertions in the others "
