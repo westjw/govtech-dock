@@ -596,6 +596,45 @@ def check_rival_door_refuses_a_category() -> int:
     return errors
 
 
+def check_every_dismiss_names_its_row() -> int:
+    """A refusal must name the row it refuses.
+
+    act_dismiss reads body["key"]; RENDER.leads sent body["id"]. dismiss()
+    has no empty-key guard, so it wrote admin_dismissed["leads"][""] - ONE
+    nameless refusal standing for all 72 rows - answered {"ok": true}, and
+    the page removed the card. Every "Not a lead" ever clicked came back on
+    the next load, and the count never moved. Three of the four call sites
+    in admin.html sent `key`; this one did not, and nothing compared them.
+
+    Source-level because the failure is a field that is absent: the server
+    is happy, the browser is happy, and the only symptom is a row returning
+    tomorrow.
+    """
+    html = (ROOT / "admin.html").read_text()
+    errors = 0
+    calls = re.findall(r"api\(\s*'/api/dismiss'\s*,\s*\{([^}]*)\}", html)
+    if not calls:
+        return fail("no /api/dismiss call sites found in admin.html; this "
+                    "check is looking for something that has moved")
+    for body in calls:
+        # `key: c.id` and the ES6 shorthand `{queue, key, why}` both count
+        # `key: c.id` and the ES6 shorthand `{queue, key, why}` both count;
+        # `{queue, row: key}` must NOT - there `key` is the value being sent
+        # under another name, which is the same bug wearing a disguise
+        if not re.search(r"(^|[,{])\s*key\s*([:,]|$)", body):
+            errors += fail(
+                f"a /api/dismiss call sends {{{body.strip()[:70]}}} with no "
+                f"`key`. act_dismiss reads body['key'] and dismiss() writes "
+                f"whatever it gets, so this refusal lands under the empty "
+                f"string: it answers ok, the card disappears, and the row is "
+                f"back on the next load")
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+    if "key" not in (admin.act_dismiss.__code__.co_consts or ()):
+        note("act_dismiss no longer reads a literal 'key'; re-read this check")
+    return errors
+
+
 def check_web_ruling_stores_a_handle_not_a_person() -> int:
     """The web door writes a handle, and only an admin may write at all.
 
@@ -15870,6 +15909,7 @@ def main() -> int:
     errors += check_manual_merge_never_doubles_a_fetched_row()
     errors += check_board()
     errors += check_rival_door_refuses_a_category()
+    errors += check_every_dismiss_names_its_row()
     errors += check_web_ruling_stores_a_handle_not_a_person()
     errors += check_no_person_in_the_repo()
     errors += check_admin_writes_are_journalled()

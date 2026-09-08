@@ -2849,11 +2849,78 @@ RENDER.leads = c => {
   const msg = el('div', 'kv'); msg.style.cssText = 'flex-basis:100%;margin-top:4px';
   no.onclick = async () => {
     no.disabled = true;
-    const r = await api('/api/dismiss', {queue: 'leads', id: c.id, why: why.value.trim()});
+    // KEY, NOT ID. The server reads body['key'] (admin.py act_dismiss);
+    // this sent `id`, so dismiss() wrote admin_dismissed['leads'][''] -
+    // one nameless refusal for all 72 rows - returned ok, and the card
+    // was removed from the screen. Every 'Not a lead' ever clicked here
+    // came back on the next load. The other three dismiss call sites in
+    // this file all send `key`; this was the only one that did not.
+    const r = await api('/api/dismiss', {queue: 'leads', key: c.id, why: why.value.trim()});
     no.disabled = false;
     if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
-    toast(r.message || 'dismissed'); n.remove();
+    toast(r.message || 'dismissed'); n.remove(); refreshCounts();
   };
+
+  /* GO AND LOOK, from here. The row says a scan saw a sales title on a
+     page we could not enumerate - which proves those words appeared and
+     nothing more. Confirming it meant opening the site in another tab
+     and reading it by eye, so 72 rows each cost a context switch. This
+     runs the same reader the boards queue uses (verify-board) against
+     the careers URL already on file and prints what it actually finds:
+     an ATS marker if the page has one, otherwise the job titles it can
+     enumerate. Titles on screen mean the lead is real; nothing back is
+     the evidence for 'Not a lead'. It writes nothing either way. */
+  if (c.board) {
+    const look = el('button', 'btn', 'Check the page');
+    look.onclick = async () => {
+      look.disabled = true; look.textContent = 'reading\u2026';
+      msg.style.color = ''; msg.textContent = '';
+      const r = await api('/api/verify-board', {id: c.id, url: c.board});
+      look.disabled = false; look.textContent = 'Check the page';
+      if (r.error) { msg.style.color = 'var(--warn)'; msg.textContent = r.error; return; }
+      const found = (r.titles || []).filter(Boolean);
+      const kind = r.ats && r.ats.type;
+      msg.textContent = '';
+      const head = el('div');
+      if (kind && kind !== 'html') {
+        head.appendChild(el('b', 'good', 'That page is a ' + kind + ' board. '));
+        head.appendChild(document.createTextNode(
+          'Wire it in Boards we found rather than answering here.'));
+      } else if (found.length) {
+        head.appendChild(el('b', 'good', found.length + ' role'
+          + (found.length === 1 ? '' : 's') + ' on the page right now:'));
+      } else {
+        head.appendChild(el('b', 'bad', 'Nothing readable on that page. '));
+        head.appendChild(document.createTextNode(r.note
+          || 'The scan saw words, this reader sees no listing.'));
+      }
+      msg.appendChild(head);
+      found.forEach(t => {
+        const li = el('div', 'kv'); li.style.paddingLeft = '10px';
+        li.textContent = '\u00b7 ' + t; msg.appendChild(li);
+      });
+    };
+    row.appendChild(look);
+
+    /* ONE CLICK FOR THE COMMONEST ANSWER. The board ref is already on the
+       card and the page has just been read; saying "yes, that is where they
+       post" then meant picking "their own careers page" out of a twelve-item
+       select and pasting back the URL sitting two lines above. Same write as
+       the row below - posts_at, where='own', the ref on file - with the
+       retyping removed. It is not a shortcut past a judgement: the judgement
+       is whether that page lists their openings, which is what Check the
+       page is for. */
+    const yep = el('button', 'btn', "Yes, that's the right board");
+    yep.onclick = async () => {
+      yep.disabled = true;
+      const r = await api('/api/posts-at', {id: c.id, where: 'own', url: c.board});
+      yep.disabled = false;
+      if (r.error) { msg.style.color = 'var(--warn)'; msg.textContent = r.error; return; }
+      toast(r.message || 'recorded - they post on their own careers page');
+      n.remove(); refreshCounts();
+    };
+    row.appendChild(yep);
+  }
   row.append(why, no, msg);
   n.appendChild(row);
 
