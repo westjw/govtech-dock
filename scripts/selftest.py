@@ -755,6 +755,13 @@ def check_no_person_in_the_repo() -> int:
         "data/proposals_in/profile-batch-05.json": 1,
         "data/proposed_hhs_cards.json": 1,
         "data/suppliers_view.json": 1,
+        # A PRESS-RELEASE MEDIA CONTACT the news parser swept into a
+        # HEADLINE - "... Media contact: Sherry Howell | CenterEdge |
+        # showell@... | 336.598.5940". Published by the company on its
+        # own newsroom, so it is a business contact and allowed here,
+        # but the headline is wrong and it renders on the public page:
+        # news.py should cut a headline at "Media contact:".
+        "data/board.json": 1,
         # an ATS forwarding address (Workable) in a fixture below, not
         # a person - recorded here rather than exempting this whole file,
         # which is where the guard itself lives
