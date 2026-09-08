@@ -2716,33 +2716,63 @@ RENDER.profiles = p => {
     n.appendChild(w);
   }
   const e = el('div', 'evi');
-  (p.paragraphs || []).forEach((para, i) => {
-    const block = el('div');
-    block.style.cssText = 'margin:6px 0 10px;padding-left:10px;border-left:2px solid var(--line)';
-    (Array.isArray(para) ? para : []).forEach(s => {
-      const row = el('div'); row.style.marginBottom = '6px';
-      const txt = el('div', null, s.text || '');
-      // the refused token, if the door named one, is shown in the sentence
-      if (p.status === 'refused') {
-        const m = /'([^']+)'/.exec(p.refused_why || '');
-        if (m && (s.text || '').includes(m[1])) {
-          txt.textContent = '';
-          const [a, b] = (s.text || '').split(m[1]);
-          txt.append(a, Object.assign(el('mark', null, m[1]), {}), b === undefined ? '' : b);
-        }
-      }
-      row.appendChild(txt);
-      const q = el('div', 'kv');
-      q.style.fontStyle = 'italic';
-      q.textContent = '“' + (s.quote || '') + '” ';
-      const a = el('a'); a.href = s.url || '#'; a.target = '_blank'; a.rel = 'noopener noreferrer';
-      a.textContent = shortUrl(s.url); a.style.fontStyle = 'normal';
-      q.appendChild(a);
-      row.appendChild(q);
-      block.appendChild(row);
+  // THE WRITE-UP AS IT WILL READ, not as it was assembled. This used to put
+  // every sentence on its own line with its quote underneath, which is the
+  // shape of the EVIDENCE, not of the prose - so the one thing being approved
+  // was the one thing that could not be read. Paragraphs now flow, each
+  // sentence carrying a superscript into the numbered evidence below: the
+  // reading first, the provenance a glance away and still on the same screen,
+  // because the door has been wrong before and the quotes are why this queue
+  // exists at all.
+  const refusedTok = (() => {
+    if (p.status !== 'refused') return null;
+    const m = /'([^']+)'/.exec(p.refused_why || '');
+    return m ? m[1] : null;
+  })();
+  const sentence = (host, text) => {
+    if (refusedTok && text.includes(refusedTok)) {
+      const [a, b] = text.split(refusedTok);
+      host.append(a, el('mark', null, refusedTok), b === undefined ? '' : b);
+    } else {
+      host.appendChild(document.createTextNode(text));
+    }
+  };
+
+  let sn = 0;
+  const cited = [];
+  (p.paragraphs || []).forEach(para => {
+    const block = el('p');
+    block.style.cssText = 'margin:0 0 11px;line-height:1.6';
+    (Array.isArray(para) ? para : []).forEach((sx, j) => {
+      sn += 1;
+      cited.push({ n: sn, quote: sx.quote || '', url: sx.url || '' });
+      if (j) block.appendChild(document.createTextNode(' '));
+      sentence(block, sx.text || '');
+      const sup = el('sup', null, String(sn));
+      sup.style.cssText = 'font-size:.68em;opacity:.65;margin-left:1px';
+      block.appendChild(sup);
     });
-    e.appendChild(block);
+    if (block.childNodes.length) e.appendChild(block);
   });
+
+  if (cited.length) {
+    const ev = el('div');
+    ev.style.cssText = 'margin:2px 0 8px;padding-left:10px;' +
+                       'border-left:2px solid var(--line)';
+    cited.forEach(c => {
+      const q = el('div', 'kv');
+      q.style.cssText = 'font-style:italic;margin-bottom:3px';
+      q.appendChild(Object.assign(el('span', null, c.n + '. '),
+                                  { style: 'font-style:normal;opacity:.65' }));
+      q.appendChild(document.createTextNode('\u201c' + c.quote + '\u201d '));
+      const a = el('a'); a.href = c.url || '#'; a.target = '_blank';
+      a.rel = 'noopener noreferrer'; a.textContent = shortUrl(c.url);
+      a.style.fontStyle = 'normal';
+      q.appendChild(a);
+      ev.appendChild(q);
+    });
+    e.appendChild(ev);
+  }
   if (p.quote && p.quote.text) {
     const bq = el('div', 'kv');
     bq.style.cssText = 'font-style:italic;padding-left:10px;border-left:3px solid var(--acc, #F5A623)';
