@@ -1,39 +1,53 @@
 {
-  "date": "2026-09-07",
-  "previous": "2026-09-06",
+  "date": "2026-09-08",
+  "previous": "2026-09-07",
   "changes": [
     {
       "company": "Alcatraz",
       "id": "alcatraz",
-      "from": "None found",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Tvilight",
-      "id": "tvilight",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "GE Vernova",
-      "id": "ge-vernova",
       "from": "Yes",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "Pantonium",
-      "id": "pantonium",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "company": "InitLive (Bloomerang Volunteer)",
+      "id": "initlive",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
     },
     {
-      "company": "simpledu",
-      "id": "simpledu",
-      "from": "Unknown",
+      "company": "Unison (Unison Global)",
+      "id": "unison",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "no jobs parsed from iCIMS portal"
+    },
+    {
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Vanderlande",
+      "id": "vanderlande",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Objective Corporation",
+      "id": "objective-corporation",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Account Director only"
+    },
+    {
+      "company": "TeamDynamix",
+      "id": "teamdynamix",
+      "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     }
