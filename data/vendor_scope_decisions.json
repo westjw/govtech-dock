@@ -76,5 +76,616 @@
    "website": "https://www.armis.com",
    "source_event": "NASCIO 2026"
   }
+ },
+ "axonius": {
+  "call": "sled",
+  "name": "Axonius",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:21:43-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Cyber asset inventory and attack surface management that correlates device, identity and SaaS data for security teams in every industry",
+   "website": "https://www.axonius.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "barracuda-networks": {
+  "call": "sled",
+  "name": "Barracuda Networks",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:21:46-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Email, network, application and data protection security products for businesses, MSPs, education and government",
+   "website": "https://www.barracuda.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "beyondtrust": {
+  "call": "sled",
+  "name": "BeyondTrust",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:21:53-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Privileged access management and identity security software for enterprises, government agencies, and universities",
+   "website": "https://www.beyondtrust.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "black-duck": {
+  "call": "sled",
+  "name": "Black Duck",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:21:57-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Application security testing software - SAST, DAST, and software composition analysis - for software teams in all industries",
+   "website": "https://www.blackduck.com",
+   "source_event": "NASCIO 2026"
+  }
+ },
+ "blumira": {
+  "call": "sled",
+  "name": "Blumira",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:21:58-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Cloud SIEM and automated threat detection and response platform aimed at small IT teams",
+   "website": "https://www.blumira.com",
+   "source_event": "GMIS International 2026"
+  }
+ },
+ "bravura-security": {
+  "call": "sled",
+  "name": "Bravura Security",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:00-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Unified identity, privileged access and password management platform for mid-to-large enterprises in finance, higher education and manufacturing",
+   "website": "https://www.bravurasecurity.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "broadcom": {
+  "call": "sled",
+  "name": "Broadcom",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:01-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Semiconductor and enterprise infrastructure software vendor whose software arm sells VMware virtualization, mainframe tooling and Symantec security to large enterprises",
+   "website": "https://www.broadcom.com",
+   "source_event": "NASCIO 2026"
+  }
+ },
+ "check-point-software": {
+  "call": "sled",
+  "name": "Check Point Software",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:02-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Network, cloud, endpoint and AI security software sold across all industries.",
+   "website": "https://www.checkpoint.com/",
+   "source_event": "GMIS International 2026"
+  }
+ },
+ "check-point-software-technologies": {
+  "call": "sled",
+  "name": "Check Point Software Technologies",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:08-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Network, cloud, endpoint and workspace cybersecurity products for enterprises and governments worldwide",
+   "website": "https://www.checkpoint.com",
+   "source_event": "GMIS International 2026"
+  }
+ },
+ "checkr": {
+  "call": "sled",
+  "name": "Checkr",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:11-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Background check, identity verification and continuous criminal monitoring platform for employers across all industries",
+   "website": "https://checkr.com",
+   "source_event": "APHSA 2026"
+  }
+ },
+ "cloudflare": {
+  "call": "sled",
+  "name": "Cloudflare",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:13-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Global CDN, DDoS protection, zero trust networking and edge compute platform used by websites and applications in every industry",
+   "website": "https://www.cloudflare.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "commvault": {
+  "call": "sled",
+  "name": "Commvault",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:15-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Data backup, cyber recovery, and identity resilience software for enterprises across all industries",
+   "website": "https://www.commvault.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "concentric-ai": {
+  "call": "sled",
+  "name": "Concentric AI",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:17-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "AI data security posture management for discovering, classifying, and governing access to sensitive enterprise data",
+   "website": "https://concentric.ai",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "crashplan": {
+  "call": "sled",
+  "name": "CrashPlan",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:18-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Endpoint, server and SaaS backup and recovery software for government, higher education, financial services and technology organizations",
+   "website": "https://www.crashplan.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "cribl": {
+  "call": "sled",
+  "name": "Cribl",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:19-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Telemetry data pipeline and observability software that routes logs, metrics, and traces for enterprise IT and security teams",
+   "website": "https://cribl.io",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "crowdstrike": {
+  "call": "sled",
+  "name": "CrowdStrike",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:20-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Endpoint detection and response, identity and cloud security platform sold to enterprises and public agencies in every sector",
+   "website": "https://www.crowdstrike.com",
+   "source_event": "NASCIO 2026"
+  }
+ },
+ "delinea": {
+  "call": "sled",
+  "name": "Delinea",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:22-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Privileged access management and identity security platform including secrets vaulting, privilege elevation and access governance for enterprises",
+   "website": "https://delinea.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "dun-bradstreet-inc": {
+  "call": "sled",
+  "name": "Dun & Bradstreet, Inc.",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:23-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Business identity, risk and local-economy data and analytics sold to state and local government agencies.",
+   "website": "https://www.dnb.com/SLED",
+   "source_event": "HHS conference exhibitor research 2026-08-25"
+  }
+ },
+ "eset": {
+  "call": "sled",
+  "name": "ESET",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:24-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Endpoint antivirus, detection and response and email security sold to consumers and organizations in every industry",
+   "website": "https://www.eset.com/us/",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "efficientip": {
+  "call": "sled",
+  "name": "EfficientIP",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:26-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "DNS, DHCP, and IP address management software with DNS security, sold to enterprises and service providers across all industries",
+   "website": "https://efficientip.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "elastic": {
+  "call": "sled",
+  "name": "Elastic",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:28-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Elasticsearch-based search, observability, and security data platform for enterprises and government",
+   "website": "https://www.elastic.co",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "fischer-identity": {
+  "call": "sled",
+  "name": "Fischer Identity",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:29-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Managed identity governance and access management platform automating user lifecycle and provisioning",
+   "website": "https://www.fischeridentity.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "fortinet": {
+  "call": "sled",
+  "name": "Fortinet",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:30-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Network security, firewall, and SASE products for enterprises, service providers, and government",
+   "website": "https://www.fortinet.com",
+   "source_event": "NASCIO 2026"
+  }
+ },
+ "gigamon": {
+  "call": "sled",
+  "name": "Gigamon",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:34-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Deep observability pipeline delivering network-derived telemetry to security and monitoring tools for enterprises and government",
+   "website": "https://www.gigamon.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "gitlab": {
+  "call": "sled",
+  "name": "GitLab",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:37-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "DevOps platform for source control, CI/CD, and security scanning used by software teams in every industry",
+   "website": "https://about.gitlab.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "hackerone": {
+  "call": "sled",
+  "name": "HackerOne",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:38-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Bug bounty, vulnerability disclosure and pentest-as-a-service marketplace used by companies and agencies in every sector",
+   "website": "https://www.hackerone.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "halcyon": {
+  "call": "sled",
+  "name": "Halcyon",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:42-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Anti-ransomware endpoint protection platform and 24/7 ransomware operations service for enterprises across ten industries",
+   "website": "https://www.halcyon.ai",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "huntress": {
+  "call": "sled",
+  "name": "Huntress",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:50-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Managed endpoint detection and response, identity threat detection, and SIEM for small and mid-sized organizations, largely delivered through managed service providers",
+   "website": "https://www.huntress.com",
+   "source_event": "CoSN 2026"
+  }
+ },
+ "igel": {
+  "call": "sled",
+  "name": "IGEL",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:51-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Secure Linux endpoint operating system and management software for VDI, DaaS and cloud workspaces across healthcare, finance, retail, manufacturing and government",
+   "website": "https://www.igel.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "incode-technologies": {
+  "call": "sled",
+  "name": "Incode Technologies",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:56-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Biometric identity verification, liveness and KYC platform sold to banks, fintechs, gaming, telecom, healthcare and government",
+   "website": "https://incode.com",
+   "source_event": "NASWA 2025"
+  }
+ },
+ "jamf": {
+  "call": "sled",
+  "name": "Jamf",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:22:58-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Apple device management and endpoint security for enterprises, schools, universities, healthcare, and small business",
+   "website": "https://www.jamf.com",
+   "source_event": "CoSN 2026"
+  }
+ },
+ "knowbe4": {
+  "call": "sled",
+  "name": "KnowBe4",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:00-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Security awareness training, phishing simulation and email security platform for organizations in any industry",
+   "website": "https://www.knowbe4.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "netskope": {
+  "call": "sled",
+  "name": "Netskope",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:01-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Cloud access security broker, SASE, and zero trust networking software for enterprises and government agencies",
+   "website": "https://www.netskope.com",
+   "source_event": "NASCIO 2026"
+  }
+ },
+ "nomic-networks": {
+  "call": "sled",
+  "name": "Nomic Networks",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:02-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Managed network detection and response and managed security operations for organizations with small IT teams",
+   "website": "https://nomicnetworks.com",
+   "source_event": "GMIS International 2026"
+  }
+ },
+ "okta": {
+  "call": "sled",
+  "name": "Okta",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:04-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Workforce and customer identity and access management platform sold to organizations in every industry",
+   "website": "https://www.okta.com",
+   "source_event": "NASCIO 2026"
+  }
+ },
+ "omnissa": {
+  "call": "sled",
+  "name": "Omnissa",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:05-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Digital workspace, virtual desktop, and endpoint management software (Horizon, Workspace ONE) for enterprise IT",
+   "website": "https://www.omnissa.com",
+   "source_event": "NASCIO 2026"
+  }
+ },
+ "pdq": {
+  "call": "sled",
+  "name": "PDQ",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:06-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Windows and macOS endpoint management, patch deployment, inventory and vulnerability scanning for IT teams",
+   "website": "https://www.pdq.com",
+   "source_event": "CoSN 2026"
+  }
+ },
+ "ping-identity": {
+  "call": "sled",
+  "name": "Ping Identity",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:07-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Identity and access management, verification, and fraud protection software for large enterprises",
+   "website": "https://www.pingidentity.com",
+   "source_event": "NASCIO 2026"
+  }
+ },
+ "rapid7": {
+  "call": "sled",
+  "name": "Rapid7",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:08-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Vulnerability management, exposure management, cloud security, SIEM and managed detection and response for enterprises",
+   "website": "https://www.rapid7.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "recorded-future": {
+  "call": "sled",
+  "name": "Recorded Future",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:09-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Threat intelligence data and analytics platform sold to enterprise security teams, government agencies and defense",
+   "website": "https://www.recordedfuture.com",
+   "source_event": "NASCIO 2026"
+  }
+ },
+ "sailpoint": {
+  "call": "sled",
+  "name": "SailPoint",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:11-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Identity governance and access management platform covering provisioning, access certification, non-employee risk and machine and AI identities",
+   "website": "https://www.sailpoint.com",
+   "source_event": "EDUCAUSE 2026"
+  }
+ },
+ "secto": {
+  "call": "sled",
+  "name": "Secto",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:13-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Browser security software that protects credentials, blocks phishing, and governs employee AI tool use inside existing browsers",
+   "website": "https://secto.io",
+   "source_event": "GMIS International 2026"
+  }
+ },
+ "secto-io": {
+  "call": "sled",
+  "name": "Secto.io",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:14-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Enterprise browser security software for credential, phishing and AI data protection.",
+   "website": "https://secto.io/",
+   "source_event": "GMIS International 2026"
+  }
+ },
+ "securityscorecard": {
+  "call": "sled",
+  "name": "SecurityScorecard",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:16-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Cyber risk ratings and third-party attack surface monitoring for enterprises, insurers and government agencies",
+   "website": "https://securityscorecard.com",
+   "source_event": "NASCIO 2026"
+  }
+ },
+ "sentilink": {
+  "call": "sled",
+  "name": "SentiLink",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:17-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Identity risk and synthetic fraud detection scores used at account application by banks, credit unions, telecoms, and government programs",
+   "website": "https://www.sentilink.com",
+   "source_event": "NASWA 2025"
+  }
+ },
+ "senturo": {
+  "call": "sled",
+  "name": "Senturo",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:18-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Device location tracking, geofencing and security policy enforcement for mobile fleets in schools, healthcare, retail and field services",
+   "website": "https://senturo.com",
+   "source_event": "CoSN 2026"
+  }
+ },
+ "socure": {
+  "call": "sled",
+  "name": "Socure",
+  "on": "2026-09-08",
+  "at": "2026-09-08T17:23:19-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "AI identity verification, fraud detection and risk decisioning platform sold across banking, crypto, gaming, telecom and public sector",
+   "website": "https://www.socure.com",
+   "source_event": "NASWA 2025"
+  }
  }
 }

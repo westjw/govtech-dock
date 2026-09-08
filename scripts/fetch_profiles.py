@@ -556,7 +556,32 @@ def main() -> int:
         # times a day.
         one = ((lambda c: revisit_news(c, load(c["id"]) or {}, idx.get(c["id"])))
                if a.news else visit)
-        for rec in pool.map(one, rows):
+
+        # ONE SITE MUST NOT COST THE NIGHT. ThreadPoolExecutor.map re-raises a
+        # worker's exception when the result is iterated, and nothing caught
+        # it - so a single unreadable site out of 600 killed main(), Python
+        # exited 1, and the two steps that matter ("extract behind the door",
+        # "commit what changed") were skipped by the workflow. Every page read
+        # before the bad one was thrown away. news.yml failed four times a day
+        # for days on end while the same command with --limit 3 passed.
+        #
+        # A site that raises has NOT BEEN READ, which is a state this file
+        # already has a name and a rule for. It is recorded as unread with the
+        # exception as its reason, exactly as a refused fetch is, and the run
+        # carries on. Nothing here writes a description in its place.
+        def guarded(c):
+            try:
+                return one(c)
+            except Exception as exc:                       # noqa: BLE001
+                return {"id": c["id"], "website": c.get("website"),
+                        "unread": True,
+                        "unread_why": f"{type(exc).__name__}: {exc}"[:200],
+                        "about": [], "news": []}
+
+        raised = []
+        for rec in pool.map(guarded, rows):
+            if rec.get("unread_why"):
+                raised.append((rec["id"], rec["unread_why"]))
             if rec.get("unread"):
                 rec["unread_on"] = today.isoformat()
                 got["unread"] += 1
@@ -570,6 +595,13 @@ def main() -> int:
                 save_index(idx)
 
     save_index(idx)
+    if raised:
+        print(f"\n  {len(raised)} site(s) RAISED and were recorded unread "
+              f"rather than ending the run:")
+        for cid, why in raised[:10]:
+            print(f"      {cid}: {why}")
+        if len(raised) > 10:
+            print(f"      ... and {len(raised) - 10} more")
     readable = sum(1 for v in idx.values() if not v.get("unread"))
     nonews = sum(1 for v in idx.values() if v.get("no_news_page"))
     print(f"\n  {got['about']} about-page(s), {got['news']} news page(s), "

@@ -5,7 +5,12 @@ name: add-company
 # moderated by default because merging is a human action.
 on:
   issues:
-    types: [opened, labeled]
+    # OPENED ONLY. functions/api/submit.js creates the issue with the
+    # add-company label already on it, so `labeled` fires in the same breath
+    # as `opened` and the whole job ran TWICE for every submission - two
+    # research passes over the same site, two identical bot comments on the
+    # issue. #18 carries both of them.
+    types: [opened]
 
 permissions:
   contents: write
@@ -59,7 +64,15 @@ jobs:
           exit 0
 
       - name: Open a pull request
-        if: steps.write.outputs.wrote == '0'
+        # BOTH HALVES, AND THE OUTCOME. GitHub Actions compares with LOOSE
+        # equality and coerces to a number, so a skipped step's empty output
+        # ('') and the string '0' both become 0 and test EQUAL. "Write it in"
+        # is skipped for a company already on the board, and this step then
+        # ran anyway, tried to commit an unchanged companies.json, and failed
+        # - turning a correct "already tracked, nothing to do" into a red X on
+        # every duplicate submission. Checking the outcome as well is what
+        # makes the condition mean what it reads as.
+        if: steps.write.outcome == 'success' && steps.write.outputs.wrote == '0'
         env:
           GH_TOKEN: ${{ github.token }}
           SUBMITTED_URL: ${{ steps.url.outputs.url }}

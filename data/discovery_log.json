@@ -2361,10 +2361,9 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "acendre": {
-  "on": "2026-08-20",
+  "on": "2026-09-08",
   "found": false,
-  "note": "could not fetch the site (SSLError)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "vidcruiter": {
   "on": "2026-08-20",
@@ -3029,10 +3028,9 @@
   "weak": true
  },
  "bis-digital": {
-  "on": "2026-08-20",
+  "on": "2026-09-08",
   "found": false,
-  "note": "blocked at the door (HTTP 202)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "viq-solutions": {
   "on": "2026-08-20",
@@ -3129,10 +3127,9 @@
   "note": "no board found; host answers 200 to any path, so a negative here is weak"
  },
  "atlasview": {
-  "on": "2026-08-20",
+  "on": "2026-09-08",
   "found": false,
-  "note": "blocked at the door (HTTP 202)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "atomai-solutions": {
   "on": "2026-08-20",
@@ -4525,9 +4522,9 @@
   "note": "no board found"
  },
  "vocalis": {
-  "on": "2026-08-20",
+  "on": "2026-09-08",
   "found": false,
-  "note": "no board found"
+  "note": "after website saved in admin: no board on the site yet"
  },
  "esleuth-ai": {
   "on": "2026-08-20",
@@ -4857,10 +4854,9 @@
   "retry_soon": true
  },
  "accurate-controls": {
-  "on": "2026-08-20",
+  "on": "2026-09-08",
   "found": false,
-  "note": "blocked at the door (HTTP 202)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "montgomery-technology": {
   "on": "2026-08-20",
@@ -4885,10 +4881,9 @@
   "note": "gave up after 75s"
  },
  "averhealth": {
-  "on": "2026-08-20",
+  "on": "2026-09-08",
   "found": false,
-  "note": "html:https://www.paycomonline.net/v4/at found but unreadable (page too small - likely JS-rendered)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "union-supply-group": {
   "on": "2026-08-20",
@@ -5245,9 +5240,9 @@
   "note": "no board found"
  },
  "pulse-transit-software": {
-  "on": "2026-08-19",
+  "on": "2026-09-08",
   "found": false,
-  "note": "no board found"
+  "note": "after website saved in admin: no board on the site yet"
  },
  "tso-mobile": {
   "on": "2026-08-19",
@@ -5546,10 +5541,9 @@
   "retry_soon": true
  },
  "aequitas-solutions": {
-  "on": "2026-08-20",
+  "on": "2026-09-08",
   "found": false,
-  "note": "could not fetch the site (SSLError)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "ems-linq": {
   "on": "2026-08-19",
@@ -5993,10 +5987,9 @@
   "retry_soon": true
  },
  "camus-energy": {
-  "on": "2026-08-20",
+  "on": "2026-09-08",
   "found": false,
-  "note": "greenhouse:camusenergy found but unreadable (HTTP 404 for https://boards-api.gree)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "utilidata": {
   "on": "2026-08-20",
@@ -6458,10 +6451,9 @@
   "note": "paylocity:Civix reads (4 posting(s)), but does not match 'GCR (Woolpert)'; likely a parent or another company"
  },
  "airit": {
-  "on": "2026-08-20",
+  "on": "2026-09-08",
   "found": false,
-  "note": "blocked at the door (HTTP 403)",
-  "retry_soon": true
+  "note": "retry: no careers page or ATS marker found"
  },
  "grab": {
   "on": "2026-08-20",
@@ -8998,6 +8990,36 @@
   "note": "after website saved in admin: no board on the site yet"
  },
  "soilflo": {
+  "on": "2026-09-08",
+  "found": false,
+  "note": "after website saved in admin: no board on the site yet"
+ },
+ "guard1-by-timekeeping-systems": {
+  "on": "2026-09-08",
+  "found": false,
+  "note": "after website saved in admin: no board on the site yet"
+ },
+ "init-innovations-in-transportation-inc": {
+  "on": "2026-09-08",
+  "found": false,
+  "note": "after website saved in admin: no board on the site yet"
+ },
+ "ebridge-procurement": {
+  "on": "2026-09-08",
+  "found": false,
+  "note": "after website saved in admin: no board on the site yet"
+ },
+ "playeru-software-solutions-llc": {
+  "on": "2026-09-08",
+  "found": false,
+  "note": "after website saved in admin: no board on the site yet"
+ },
+ "peach-ai-inc": {
+  "on": "2026-09-08",
+  "found": false,
+  "note": "after website saved in admin: no board on the site yet"
+ },
+ "lexisnexis-coplogic-solutions": {
   "on": "2026-09-08",
   "found": false,
   "note": "after website saved in admin: no board on the site yet"

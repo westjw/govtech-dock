@@ -775,7 +775,8 @@ def check_no_person_in_the_repo() -> int:
         "data/proposed_websites.json": 7,
         "data/agent_proposals.json": 6,
         "data/proposed_locations.json": 4,
-        "data/admin_journal.jsonl": 3,
+        # not counted, only screened - see COUNT_EXEMPT below
+        "data/admin_journal.jsonl": None,
         "data/exhibitors_NCSEA_2026.json": 2,
         "data/exhibitors_NCSEA_Policy_Forum_2027.json": 2,
         "data/exhibitors_Vermont_League_of_Cities_and_Towns_2027.json": 2,
@@ -869,7 +870,20 @@ def check_no_person_in_the_repo() -> int:
                     f"whoami.js resolves it. An address publishes who someone "
                     f"is, in a public repo, on every row they ever ruled")
 
+    # APPEND-ONLY RECORDS OF RULINGS. The journal keeps a before-image of
+    # every accepted proposal, so it gains a business address whenever a
+    # write-up is accepted whose evidence quotes a page that carries one -
+    # which is a person doing their job, not a leak. It grew by one within a
+    # day of this check landing (2026-09-08#141, a proposal-accept whose
+    # evidence quoted a vendor's contact page). A number raised every afternoon
+    # gets raised without looking, which is worse than not counting. The
+    # free-mail refusal above still applies here in full: what must never
+    # appear is somebody's private mailbox, and that is screened, not counted.
+    COUNT_EXEMPT = {"data/admin_journal.jsonl"}
+
     for rel, n in sorted(counts.items()):
+        if rel in COUNT_EXEMPT:
+            continue
         cap = ALLOWED.get(rel)
         if cap is None:
             errors += fail(
@@ -885,6 +899,8 @@ def check_no_person_in_the_repo() -> int:
                 f"This is how a personal address arrives inside a file that is "
                 f"allowed to hold business ones")
     for rel, cap in ALLOWED.items():
+        if cap is None or rel in COUNT_EXEMPT:
+            continue
         if rel not in counts:
             note(f"{rel} is allowlisted for {cap} address(es) and now holds "
                  f"none; drop the entry once that is deliberate")

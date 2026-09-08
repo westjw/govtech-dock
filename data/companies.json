@@ -1158,6 +1158,14 @@
    "by": "agent:profile-police-2026-09-03",
    "ruled_by": "agent:review-police-2026-09-03",
    "ruled_on": "2026-09-03"
+  },
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.skydio.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
   }
  },
  {
@@ -2740,7 +2748,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://jobs.gusto.com/boards/md-ally-c850a9b3-b1cc-4760-8048-14be33f3c922",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "everbridge",
@@ -3113,7 +3129,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://rehrig.hrmdirect.com/employment/job-openings.php?search=true",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "recycle-track-systems",
@@ -3168,7 +3192,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.econolite.com/about/careers/career-opportunities/",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "verra-mobility",
@@ -4710,7 +4742,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; PWX 2026; ICMA 2026",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://jobs.gusto.com/boards/city-detect-6e1a4cdf-356e-4986-9f1d-55d200b345e9",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "tyler-technologies",
@@ -4915,7 +4955,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "other",
+   "label": "somewhere else",
+   "url": "https://recruiting.ultipro.ca/PAY5000PAYCC/JobBoard/577632a2-3244-45f9-8cc3-e1457962ea52/?q=&o=postedDateDesc",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "invoicecloud",
@@ -5413,8 +5461,8 @@
   "category": "School Safety",
   "description": "CrisisAlert wearable panic buttons for school staff; 18M+ people covered",
   "ats": {
-   "type": "html",
-   "ref": "https://www.centegix.com/careers/"
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/50a02ba4-65ae-4e06-a8ee-62a30814529c/34ED-LLC"
   },
   "hiring": {
    "status": "Yes",
@@ -5432,7 +5480,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.centegix.com/careers/",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "zeroeyes",
@@ -6122,7 +6178,91 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "AAAE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Automotus sells automated curb management systems to cities and airports. The company says it works with cities, airports and fleets to make communities better places to live.",
+    "The cameras attach to existing infrastructure such as streetlight poles. Once installed, the system automates data collection, invoicing and enforcement. Commercial drivers pay for curb time without apps or meters, and agencies can optionally apply discounted rates for electric vehicles. Violations are captured as they occur, with the option of notifying enforcement or issuing a citation automatically. Agencies also receive curb and traffic activity data broken down by every type of vehicle.",
+    "The company describes data security and individual privacy as priorities set from the start. It states that the technology blurs all faces, de-identifies data and captures only the license plates relevant to payment and enforcement. Its privacy policies are presented as independently audited and validated."
+   ],
+   "quote": {
+    "text": "CurbSight cameras bring AI to the curb.",
+    "url": "https://www.automotus.co"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.automotus.co",
+     "quote": "automated curb management for cities + airports"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.automotus.co",
+     "quote": "we work with cities, airports and fleets to make our communities better places to live"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.automotus.co",
+     "quote": "easily attach our tech to existing infrastructure, such as streetlight poles"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.automotus.co",
+     "quote": "instantly automate data collection, invoicing, and enforcement"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.automotus.co",
+     "quote": "eliminating the need for apps or meters, and optionally apply discounted rates for electric vehicles"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.automotus.co",
+     "quote": "capturing in real-time when it occurs, optionally notifying enforcement or automatically issuing a citation"
+    },
+    {
+     "p": 1,
+     "s": 4,
+     "url": "https://www.automotus.co",
+     "quote": "multimodal curb and traffic activity data broken down by every type of vehicle"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.automotus.co",
+     "quote": "and, we've made data security and individual privacy top priorities"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.automotus.co",
+     "quote": "our tech blurs all faces, de-identifies data, and only captures relevant license plates for payment and enforcement"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.automotus.co",
+     "quote": "independently audited + validated privacy policies"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.automotus.co",
+     "sha": "7ce1f5307189ef7c",
+     "fetched_on": "2026-09-03"
+    }
+   ],
+   "written_on": "2026-09-08",
+   "by": "agent:descriptions-04",
+   "ruled_by": "owner",
+   "ruled_on": "2026-09-08"
+  }
  },
  {
   "id": "populus",
@@ -6716,7 +6856,109 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Arly is youth program management software that puts every layer of program operations in one platform. The people who buy it run programs for children, handling enrollment, pricing and payments in the same place.",
+    "Families sign up through a customized portal with one log-in, completing forms and uploading documents. Billing and account processing sit alongside, with revenue tracked in real time. Participants are grouped and staff assigned to them for attendance taking and access to health and safety information. Check-in and check-out verifies authorized pick-up contacts in real time. An assistant called Arly Compass is described as part of the platform itself.",
+    "Curriculum is sold alongside the software, one set of it created in partnership with Scholastic. A summer package runs five to six weeks of ninety-minute daily instruction in reading, writing and math. Testimonials on the site are attributed to program staff at YMCA organizations, including the YMCA of Central Virginia. Staff onboarding includes self-paced learning and support from the company's customer experience team."
+   ],
+   "quote": null,
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://arly.com",
+     "quote": "One platform. Every layer of program operations connected."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://arly.com",
+     "quote": "Manage enrollment, pricing, and payments in one place."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://arly.com/solutions/online-registration",
+     "quote": "Offer a better online registration experience for families with one log-in to your customized portal to complete forms, upload documents and maintain important information."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://arly.com/solutions/online-registration",
+     "quote": "Streamline payments and account processing with the ability to manage billing and track revenue in real-time."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://arly.com/solutions/management-tools-and-resources",
+     "quote": "Group participants and assign staff for quick attendance taking, tracking and access to important health and safety information."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://arly.com/solutions/management-tools-and-resources",
+     "quote": "Manage check-ins and check-outs by creating a safe child pick-up process. Utilize Arly to verify authorized pick-up contacts in real-time."
+    },
+    {
+     "p": 1,
+     "s": 4,
+     "url": "https://arly.com",
+     "quote": "Arly Compass is part of the platform"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://arly.com/solutions/curriculum",
+     "quote": "Created in partnership with Scholastic"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://arly.com/solutions/curriculum",
+     "quote": "Five to six weeks of 90-minute daily instruction available in both reading and writing, as well as math."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://arly.com/solutions/online-registration",
+     "quote": "YMCA of Central Virginia"
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://arly.com/solutions/management-tools-and-resources",
+     "quote": "Provide easy click-by-click steps, self-paced learning and ongoing support from Arly\u2019s customer experience team."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://arly.com",
+     "sha": "5aeb018f028076a1",
+     "fetched_on": "2026-09-03"
+    },
+    {
+     "url": "https://arly.com/solutions/online-registration",
+     "sha": "f44c86018f1df692",
+     "fetched_on": "2026-09-03"
+    },
+    {
+     "url": "https://arly.com/solutions/management-tools-and-resources",
+     "sha": "d47630cadf2f131c",
+     "fetched_on": "2026-09-03"
+    },
+    {
+     "url": "https://arly.com/solutions/curriculum",
+     "sha": "fffe583a254a3e67",
+     "fetched_on": "2026-09-03"
+    }
+   ],
+   "written_on": "2026-09-08",
+   "by": "agent:descriptions-03",
+   "ruled_by": "owner",
+   "ruled_on": "2026-09-08"
+  }
  },
  {
   "id": "quickscores",
@@ -6764,7 +7006,85 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Ankored automates safety and compliance work for youth sports programs, from background checks on adults through to verification of the players themselves. The company says it brings youth and adult requirements under federal, state and governing body standards into one system.",
+    "For clubs and leagues that means automated background checks, training and verification for every coach and volunteer. On the player side it handles age and identity verification. It connects to the sport management tools an organization already runs so coach and player records sit together. Automated reminders and audit ready reports take the place of chasing paperwork.",
+    "Parks and recreation departments are one of the named audiences, with staff, volunteer and youth compliance managed across programs, sites and seasons. One case study on the site describes a parks department replacing paper forms with a digital system covering 26 recreation centers. The company's writing points to more than thirty states that now require background checks."
+   ],
+   "quote": {
+    "text": "From background checks to player verification",
+    "url": "https://ankored.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://ankored.com",
+     "quote": "From background checks to player verification"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://ankored.com",
+     "quote": "We unify youth and adult compliance with federal, state, and governing body standards in one simple, secure system."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://ankored.com",
+     "quote": "Keep every coach, volunteer, and player safe with automated background checks, training, and verification built for fast-moving, multi-team organizations."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://ankored.com",
+     "quote": "Age & identity verification"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://ankored.com",
+     "quote": "Ankored connects to your existing sport management tools , centralizing\u00a0coach and player data for a unified view."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://ankored.com",
+     "quote": "From automated reminders to audit-ready reports, we handle the heavy lifting"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://ankored.com",
+     "quote": "Protect your community with a centralized system that manages staff, volunteers, and youth compliance across every program, site, and season."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://ankored.com",
+     "quote": "Replaced paper forms and manual tracking with a secure, automated system that simplifies coach compliance across 26 recreation centers."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://ankored.com",
+     "quote": "more than 30 states requiring background checks"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://ankored.com",
+     "sha": "d1700061804af843",
+     "fetched_on": "2026-09-03"
+    }
+   ],
+   "written_on": "2026-09-08",
+   "by": "agent:descriptions-03",
+   "ruled_by": "owner",
+   "ruled_on": "2026-09-08"
+  }
  },
  {
   "id": "bchex",
@@ -6993,7 +7313,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; NRPA 2026",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.eproval.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "visit-widget",
@@ -7517,7 +7845,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; NIGP 2026; PWX 2026",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://cloudpermit.com/open-positions",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "comcate",
@@ -7773,7 +8109,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://jobs.govocal.com",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "flashvote",
@@ -8284,7 +8628,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; NIGP 2026",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.clearpointstrategy.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "esper",
@@ -9260,7 +9612,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://teletownhall.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "citystream",
@@ -9726,8 +10086,8 @@
   "category": "Courts & Case Management",
   "description": "Online dispute resolution for courts: traffic, small claims, family - UMich Law spinout",
   "ats": {
-   "type": "html",
-   "ref": "https://catalisgov.com/careers"
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/959ba0e3-c5ad-4abc-b549-d28be9607007/CATALIS"
   },
   "hiring": {
    "status": "Unknown",
@@ -12783,6 +13143,14 @@
    "by": "agent:profile-police-2026-09-03",
    "ruled_by": "agent:review-police-2026-09-03",
    "ruled_on": "2026-09-03"
+  },
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.msab.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
   }
  },
  {
@@ -15473,6 +15841,14 @@
    "by": "agent:profile-police-2026-09-03",
    "ruled_by": "agent:review-police-2026-09-03",
    "ruled_on": "2026-09-03"
+  },
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://home.tip411.com/tip411jobs",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
   }
  },
  {
@@ -15895,8 +16271,8 @@
   "category": "Police",
   "description": "Counter-UAS detection and defeat systems for military, LE, and infrastructure (ASX: DRO)",
   "ats": {
-   "type": "html",
-   "ref": "https://www.droneshield.com/open-positions"
+   "type": "greenhouse",
+   "ref": "droneshield"
   },
   "hiring": {
    "status": "Unknown",
@@ -17801,6 +18177,14 @@
    "by": "agent:profile-police-2026-09-03",
    "ruled_by": "agent:review-police-2026-09-03",
    "ruled_on": "2026-09-03"
+  },
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://intime.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
   }
  },
  {
@@ -23796,7 +24180,79 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "BEA Transit Technologies supplies automated fare collection solutions for transit agencies in North America. The company states that it currently serves over 15,000,000 passengers per day.",
+    "The offering spans a back-end application and a mobile ticketing app alongside the fare equipment itself. Equipment is designed modularly with the transit industry in mind, so an installation can grow both in size and in added functionality. The company describes its fare equipment as the most adaptable on the market and its back-end office application as reliable. A ticketing vending machine also appears among the listed products.",
+    "The company says no fleet is too small for its systems. It describes itself as recognized in the transit industry for delivering on-time and in-budget quality systems."
+   ],
+   "quote": {
+    "text": "No fleet is too small.",
+    "url": "https://www.beattusa.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.beattusa.com",
+     "quote": "Automated Fare Collection Solutions for Transit Agencies in North America"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.beattusa.com",
+     "quote": "Currently serving over 15,000,000 passengers per day."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.beattusa.com",
+     "quote": "BACK-END APPLICATION / MOBILE TICKETING APP"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.beattusa.com",
+     "quote": "designed modularly with the transit industry in mind, so that growth can be done in both the size of installation as well as in added functionality"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.beattusa.com",
+     "quote": "the most adaptable Fare Equipment to the market, as well as a most reliable Back-End office application"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.beattusa.com",
+     "quote": "Ticketing Vending Machine"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.beattusa.com",
+     "quote": "No fleet is too small."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.beattusa.com",
+     "quote": "recognized in the Transit Industry for our dedication and focus to delivering on-time and in-budget quality systems"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.beattusa.com",
+     "sha": "3ea19bb0f148c997",
+     "fetched_on": "2026-09-03"
+    }
+   ],
+   "written_on": "2026-09-08",
+   "by": "agent:descriptions-04",
+   "ruled_by": "owner",
+   "ruled_on": "2026-09-08"
+  }
  },
  {
   "id": "prodata-ptexcellence",
@@ -26833,7 +27289,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NIGP 2026",
-  "researched": false
+  "researched": false,
+  "posts_at": {
+   "where": "other",
+   "label": "somewhere else",
+   "url": "https://recruiting.paylocity.com/recruiting/jobs/All/65049f79-3ad6-46f1-99e4-3d93b6a0f6f3/Pathfinder-Software-LLC",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "code-four",
@@ -27898,7 +28362,7 @@
  {
   "id": "guard1-by-timekeeping-systems",
   "name": "Guard1 By Timekeeping Systems",
-  "website": null,
+  "website": "https://www.guard1.com/",
   "location": null,
   "year_founded": null,
   "sector": "Public Safety",
@@ -27917,7 +28381,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": false
+  "researched": false,
+  "also_known_as": [
+   "guard1"
+  ]
  },
  {
   "id": "hello-heart",
@@ -27977,8 +28444,8 @@
   "category": "Suppliers & Services",
   "description": "Code Council digital permitting/code solutions - exhibited at ICMA 2025, IMLA 2026, Maryland Municipal League 2026",
   "ats": {
-   "type": "html",
-   "ref": "https://www.iccsafe.org/products-and-services/innovation/careers"
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/Recruiting/Jobs/All/1a12da52-a185-495d-9e82-83e9eb874c54/INTERNATIONAL-CODE-COUNCIL-INC"
   },
   "hiring": {
    "status": "Unknown",
@@ -28024,7 +28491,7 @@
  {
   "id": "init-innovations-in-transportation-inc",
   "name": "INIT Innovations in Transportation, Inc.",
-  "website": null,
+  "website": "https://www.initse.com/",
   "location": null,
   "year_founded": null,
   "sector": "Transit & Parking",
@@ -28700,7 +29167,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.leosight.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "lexisnexis",
@@ -28728,8 +29203,8 @@
  },
  {
   "id": "lexisnexis-coplogic-solutions",
-  "name": "LexisNexis Coplogic Solutions",
-  "website": null,
+  "name": "LexisNexis",
+  "website": "https://www.lexisnexis.com/en-us/gateway.page",
   "location": null,
   "year_founded": null,
   "sector": "Public Safety",
@@ -28748,7 +29223,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "also_known_as": [
+   "LexisNexis Coplogic Solutions"
+  ]
  },
  {
   "id": "lexisnexis-risk-solutions",
@@ -29202,7 +29680,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "AB Show 2026",
-  "researched": false
+  "researched": false,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://netchex.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "neutralaiz-inc",
@@ -29653,7 +30139,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.paloaltonetworks.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "parkzilla",
@@ -29734,8 +30228,8 @@
  },
  {
   "id": "peach-ai-inc",
-  "name": "Peach AI inc.",
-  "website": null,
+  "name": "Peach Safety",
+  "website": "https://peachsafety.com/",
   "location": null,
   "year_founded": null,
   "sector": "Public Safety",
@@ -29754,7 +30248,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "also_known_as": [
+   "Peach AI inc."
+  ]
  },
  {
   "id": "peerconnect",
@@ -29953,8 +30450,8 @@
  },
  {
   "id": "playeru-software-solutions-llc",
-  "name": "PlayerU Software Solutions LLC",
-  "website": null,
+  "name": "PlayerU",
+  "website": "https://www.playeru.ai/",
   "location": null,
   "year_founded": null,
   "sector": "Parks & Rec",
@@ -29973,7 +30470,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "AB Show 2026",
-  "researched": false
+  "researched": false,
+  "also_known_as": [
+   "PlayerU Software Solutions LLC"
+  ]
  },
  {
   "id": "police-narratives-ai",
@@ -30167,7 +30667,7 @@
  {
   "id": "pulse-transit-software",
   "name": "Pulse Transit Software",
-  "website": null,
+  "website": "https://www.transitpulse.io/",
   "location": null,
   "year_founded": null,
   "sector": "Transit & Parking",
@@ -30534,7 +31034,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NACo 2026; NIGP 2026",
-  "researched": false
+  "researched": false,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.salesforce.com/company/careers/?bc=HL",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "saltus-technologies",
@@ -31035,7 +31543,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.thomsonreuters.com/en/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "threefold-ai",
@@ -31446,7 +31962,7 @@
  {
   "id": "vocalis",
   "name": "Vocalis",
-  "website": null,
+  "website": "https://www.vocalis.tech/",
   "location": null,
   "year_founded": null,
   "sector": "Public Safety",
@@ -33009,7 +33525,7 @@
  {
   "id": "ebridge-procurement",
   "name": "eBridge Procurement",
-  "website": null,
+  "website": "https://www.ebridgeprocurement.com/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -33986,7 +34502,13 @@
   "govtech": true,
   "researched": true,
   "vendor_type": "GovTech Product",
-  "source": "AAAE 2026"
+  "source": "AAAE 2026",
+  "also": [
+   {
+    "sector": "Transit & Parking",
+    "category": "Fare & Payments"
+   }
+  ]
  },
  {
   "id": "outsight-sa",
@@ -38317,7 +38839,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://jobs.gusto.com/boards/upper-hand-89518d41-1ea4-4e74-8937-17ff05442a66",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "swimtopia",
@@ -38468,7 +38998,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://byga.net/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "sportsplus",
@@ -40405,7 +40943,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.tcpsoftware.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "avue-technologies",
@@ -40836,8 +41382,8 @@
   "category": "Elections",
   "description": "Voting systems, tabulators and election management software for jurisdictions",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/d26bc2af-65c9-44bc-8038-5ec10cc05f98/Liberty-Vote-USA-Inc"
   },
   "hiring": {
    "status": "Unknown",
@@ -41462,7 +42008,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.fortorangepress.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "bell-and-howell",
@@ -43014,8 +43568,8 @@
   "category": "Operations & SIS",
   "description": "ERP, HR and finance on Microsoft for school boards and districts",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "lever",
+   "ref": "Ionicpartners"
   },
   "hiring": {
    "status": "Unknown",
@@ -43108,7 +43662,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.transfinder.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "everdriven",
@@ -43656,7 +44218,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://crowdriff.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "zartico",
@@ -43919,8 +44489,8 @@
   "category": "Events & Tourism",
   "description": "Venue and event management for convention centers and public authorities",
   "ats": {
-   "type": "html",
-   "ref": "https://gomomentus.com/careers"
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/85b61ddb-17f3-4ffa-937d-c3bbf3eed46a/Ungerboeck-Systems-International"
   },
   "hiring": {
    "status": "Yes",
@@ -45209,7 +45779,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://spothero.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "parkhub",
@@ -45221,8 +45799,8 @@
   "category": "Parking & Ground Transport",
   "description": "Parking operations, payments and analytics for airports and venues",
   "ats": {
-   "type": "html",
-   "ref": "https://careers.justpark.com"
+   "type": "workable",
+   "ref": "justpark"
   },
   "hiring": {
    "status": "None found",
@@ -45233,7 +45811,8 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "board_owner": "JustPark"
  },
  {
   "id": "airgarage",
@@ -45360,7 +45939,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://tagmasterna.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "wps-parking-solutions",
@@ -46335,8 +46922,8 @@
   "category": "Procurement & Payments",
   "description": "EProcurement and bid notification platforms for North American public buyers",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "ashby",
+   "ref": "sovra"
   },
   "hiring": {
    "status": "Unknown",
@@ -47683,7 +48270,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://athena-security.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "xtract-one-technologies",
@@ -47742,7 +48337,109 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Anonymous Alerts sells a reporting platform that gives students, staff and community members a way to raise concerns before they turn into serious incidents. It is used by K-12 schools, districts, colleges and public safety organizations nationwide.",
+    "Students can anonymously report bullying, behavioral concerns, threats of violence or mental health risks through a mobile or web interface designed for use across age groups. Designated school administrators receive the information immediately. From a centralized dashboard they can review, manage and investigate reports. Staff can hold real-time conversations with tip submitters while the submitter keeps anonymity. Reporting categories, workflows, notification settings and response protocols can be configured for each organization. A companion panic escalation app lets staff instantly alert administrators and safety personnel.",
+    "The company says the system helps schools comply with state laws requiring anonymous reporting systems for school safety and violence prevention. A dedicated page covers Alyssas Law compliance in New York. Newtown Public School District is named on the site as one district that chose the reporting app. The company lists United States patents on the technology, with additional US and non-US patents pending. Anonymous 2-way Communications is registered with the U.S. Patent and Trademark Office."
+   ],
+   "quote": {
+    "text": "Give students, staff, and community members a safe way to report concerns before they turn into serious incidents.",
+    "url": "https://anonymousalerts.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://anonymousalerts.com",
+     "quote": "Give students, staff, and community members a safe way to report concerns before they turn into serious incidents."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://anonymousalerts.com",
+     "quote": "used by K-12 schools, districts, colleges, and public safety organizations nationwide"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://anonymousalerts.com",
+     "quote": "The system allows students to anonymously report bullying, behavioral concerns, threats of violence, or mental health risks through a simple mobile or web interface designed for easy use by all age groups."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://anonymousalerts.com",
+     "quote": "designated school administrators receive the information immediately"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://anonymousalerts.com",
+     "quote": "School administrators can quickly review, manage, and investigate reports from a centralized dashboard."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://anonymousalerts.com",
+     "quote": "Engage in secure, real-time conversations with tip submitters while maintaining anonymity."
+    },
+    {
+     "p": 1,
+     "s": 4,
+     "url": "https://anonymousalerts.com",
+     "quote": "including reporting categories, workflows, notification settings, and response protocols"
+    },
+    {
+     "p": 1,
+     "s": 5,
+     "url": "https://anonymousalerts.com",
+     "quote": "When seconds matter, staff can instantly alert administrators and safety personnel."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://anonymousalerts.com",
+     "quote": "Anonymous Alerts helps schools comply with state laws requiring anonymous reporting systems for school safety and violence prevention."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://anonymousalerts.com",
+     "quote": "Alyssas Law Compliance in New York"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://anonymousalerts.com",
+     "quote": "Newtown Public School District Chooses Anonymous"
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://anonymousalerts.com",
+     "quote": "additional US and non-US patents pending"
+    },
+    {
+     "p": 2,
+     "s": 4,
+     "url": "https://anonymousalerts.com",
+     "quote": "Anonymous 2-way Communications\u00ae Registered in the U.S. Patent and Trademark Office."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://anonymousalerts.com",
+     "sha": "024b9fa0d4f26235",
+     "fetched_on": "2026-09-03"
+    }
+   ],
+   "written_on": "2026-09-08",
+   "by": "agent:descriptions-03",
+   "ruled_by": "owner",
+   "ruled_on": "2026-09-08"
+  }
  },
  {
   "id": "stopit-solutions",
@@ -49315,7 +50012,91 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Averhealth provides substance use monitoring and treatment solutions. Its work is built around the needs of criminal justice-based substance use monitoring programs.",
+    "Samples ship to the company's laboratory in St. Louis the same day, and results come back the next business day after testing. The laboratory is led by a PhD toxicologist. The company states that the lab is CAP-FDT, CLIA, and DEA accredited. Testing covers more than 1,500 substances in urine, oral fluid, hair, and sweat. Its software, Aversys, supports automated, individualized treatment and supervision programs in a paper-free form.",
+    "The company describes itself as more than just a drug testing provider. Its stated goal is to support customers as they work to drive sustainable behavioral changes. Averhealth, Avertest, and Aversys are registered trademarks or service marks of Avertest, LLC."
+   ],
+   "quote": {
+    "text": "All samples ship to our laboratory in St. Louis the same day so you get results the next business day after testing.",
+    "url": "https://www.averhealth.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.averhealth.com",
+     "quote": "Substance use monitoring and treatment solutions."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.averhealth.com",
+     "quote": "the unique needs of criminal justice-based substance use monitoring programs"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.averhealth.com",
+     "quote": "All samples ship to our laboratory in St. Louis the same day so you get results the next business day after testing."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.averhealth.com",
+     "quote": "Led by a PhD toxicologist,"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.averhealth.com",
+     "quote": "lab is CAP-FDT, CLIA, & DEA accredited."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.averhealth.com",
+     "quote": "test for more than 1,500 substances in urine, oral fluid, hair, and sweat."
+    },
+    {
+     "p": 1,
+     "s": 4,
+     "url": "https://www.averhealth.com",
+     "quote": "supporting automated, individualized treatment and supervision programs in a paper-free, easy-to-use software."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.averhealth.com",
+     "quote": "Averhealth is more than just a drug testing provider."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.averhealth.com",
+     "quote": "To support our customers as they work to drive sustainable behavioral changes."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.averhealth.com",
+     "quote": "Averhealth, Avertest, Aversys, and the associated logos and all associated marks are registered trademarks or service marks of Avertest, LLC."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.averhealth.com",
+     "sha": "41e359db3bdc4a13",
+     "fetched_on": "2026-09-03"
+    }
+   ],
+   "written_on": "2026-09-08",
+   "by": "agent:descriptions-04",
+   "ruled_by": "owner",
+   "ruled_on": "2026-09-08"
+  }
  },
  {
   "id": "union-supply-group",
@@ -50822,8 +51603,8 @@
   "category": "Recreation Management",
   "description": "POS, ticketing and party booking for municipal rec centers and FECs",
   "ats": {
-   "type": "html",
-   "ref": "https://centeredgesoftware.com/company/careers"
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/65049f79-3ad6-46f1-99e4-3d93b6a0f6f3/Pathfinder-Software-LLC"
   },
   "hiring": {
    "status": "Yes",
@@ -50841,7 +51622,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://centeredgesoftware.com/company/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "bond-sports",
@@ -51314,7 +52103,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://cuesinc.com/pages/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "envirosight",
@@ -51465,7 +52262,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.aquasight.io/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "pani-energy",
@@ -51696,8 +52501,8 @@
   "category": "Terminal & Passenger Experience",
   "description": "Passenger flow, queue measurement and airport revenue software for airport operators",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "bamboohr",
+   "ref": "gentrack"
   },
   "hiring": {
    "status": "Unknown",
@@ -51883,7 +52688,95 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "BEUMER Group builds material handling systems, among them the baggage handling and sortation equipment used in airport terminals. The company reports more than 6,000 employees in more than 70 countries.",
+    "Service is handled through a worldwide network of regional service centers that stay with a system across its lifecycle. A locations page lists a German site at Oelder Str. 40 in Beckum. The same page lists a United States address at 800 Apgar Drive, Somerset, New Jersey. A startup incubator called Beam has been building software-focused companies aimed at logistics problems.",
+    "The company describes itself as independent and family-owned, and commits to the principles of sustainable development. It states that it committed to the Science Based Targets Initiative in 2023. Away from logistics, it is the official main and shirt partner of FC Schalke 04."
+   ],
+   "quote": {
+    "text": "As an independent and family-owned company, BEUMER Group is deeply committed to the principles of sustainable development.",
+    "url": "https://www.beumergroup.com/about-us/sustainability/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.beumergroup.com",
+     "quote": "intralogistic solutions for conveying, loading, palletising, packaging, sortation and baggage handling"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.beumergroup.com",
+     "quote": "With more than 6,000 employees in more than 70 countries"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.beumergroup.com",
+     "quote": "Backed by a worldwide network of regional service centers"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.beumergroup.com/about-us/locations/",
+     "quote": "Oelder Str. 40, 59269 Beckum, Germany"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.beumergroup.com/about-us/locations/",
+     "quote": "800 Apgar Drive, Somerset, New Jersey 08873, USA"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.beumergroup.com",
+     "quote": "startup incubator, Beam, has been building numerous software-focused companies"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.beumergroup.com/about-us/sustainability/",
+     "quote": "As an independent and family-owned company, BEUMER Group is deeply committed to the principles of sustainable development."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.beumergroup.com/about-us/sustainability/",
+     "quote": "BEUMER Group committed to the Science Based Targets Initiative in 2023"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.beumergroup.com",
+     "quote": "BEUMER Group is the official main and shirt partner of FC Schalke 04."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.beumergroup.com",
+     "sha": "3d433902a6ef0955",
+     "fetched_on": "2026-09-03"
+    },
+    {
+     "url": "https://www.beumergroup.com/about-us/locations/",
+     "sha": "403481347da6856e",
+     "fetched_on": "2026-09-03"
+    },
+    {
+     "url": "https://www.beumergroup.com/about-us/sustainability/",
+     "sha": "172301b5d5eef808",
+     "fetched_on": "2026-09-03"
+    }
+   ],
+   "written_on": "2026-09-08",
+   "by": "agent:descriptions-04",
+   "ruled_by": "owner",
+   "ruled_on": "2026-09-08"
+  }
  },
  {
   "id": "daifuku-airport-technologies",
@@ -52094,8 +52987,8 @@
   "category": "Terminal & Passenger Experience",
   "description": "Airport IQ operations, property and lease management software for airports",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "paylocity",
+   "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/2debcfe0-b190-4b27-9573-3800c3c0e003/Civix"
   },
   "hiring": {
    "status": "Unknown",
@@ -53694,7 +54587,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.eplansoft.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "epermithub",
@@ -53814,7 +54715,85 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "The software on this site is sold under the name Neumo, and it handles transactions and interactions between government agencies and the communities they serve. The catalog spans revenue compliance, court management, DMV services and integrated payments.",
+    "On the revenue side, the products listed are tax and licensing, short-term rental compliance, auditing and unclaimed property. Court, jury and probation systems sit under the justice line. Public administration covers land records, vitals, records search and pension. A shared platform layer adds reporting and analytics, forms, digital processing, ID verification, eSignatures, alerts and managed IT services.",
+    "The company claims 4,500+ state and local agencies across North America as customers. Those buyers are described as city, county, state and federal agencies. One published case study describes how Oregon DMV extended access beyond office hours with self-service kiosks."
+   ],
+   "quote": {
+    "text": "Neumo provides software that powers transactions and interactions between government and the communities they serve.",
+    "url": "https://www.avenuinsights.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.avenuinsights.com",
+     "quote": "Neumo provides software that powers transactions and interactions between government and the communities they serve."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.avenuinsights.com",
+     "quote": "From revenue compliance and court management to DMV services and integrated payments"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.avenuinsights.com",
+     "quote": "Revenue Compliance Tax & Licensing Short-Term Rental Compliance Auditing Unclaimed Property"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.avenuinsights.com",
+     "quote": "Justice Court Jury Probation"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.avenuinsights.com",
+     "quote": "Public Administration Land Records Vitals Records Search Pension"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.avenuinsights.com",
+     "quote": "Platform Reporting & Analytics Forms Digital Processing ID Verification eSignatures Alerts IT Managed Solutions"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.avenuinsights.com",
+     "quote": "4,500+ state and local agencies across North America"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.avenuinsights.com",
+     "quote": "city, county, state, and federal agencies run on Neumo"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.avenuinsights.com",
+     "quote": "How Oregon DMV Is Expanding Access Beyond Office Hours With Self-Service Kiosks"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.avenuinsights.com",
+     "sha": "201f02120eb59675",
+     "fetched_on": "2026-09-03"
+    }
+   ],
+   "written_on": "2026-09-08",
+   "by": "agent:descriptions-04",
+   "ruled_by": "owner",
+   "ruled_on": "2026-09-08"
+  }
  },
  {
   "id": "objective-corporation",
@@ -56126,7 +57105,15 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.courtsmart.com/employment/",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "bis-digital",
@@ -57887,7 +58874,84 @@
   "vendor_type": "GovTech Product",
   "location": "San Francisco, CA",
   "sled_only": true,
-  "year_founded": 2021
+  "year_founded": 2021,
+  "profile": {
+   "paragraphs": [
+    "Anthropic is an AI safety and research company. It aims to build AI systems that are reliable, interpretable and steerable, and it turns that research into products for businesses, nonprofits and civil society groups.",
+    "The company describes a loop of frontier research, safety techniques applied to what it ships, and deployment through partnerships and products. Its models are sold in tiers, with Opus 5 presented as a step change for the Opus tier on coding, agents and professional work. Alongside the models sit purpose-built applications, including Claude Science for researchers.",
+    "Anthropic is a public benefit corporation whose stated purpose is the responsible development and maintenance of advanced AI for the long-term benefit of humanity. Governance runs through a board of directors elected by stockholders together with a Long-Term Benefit Trust. Staff are described as researchers, engineers, policy experts and operational leaders drawn from a range of disciplines."
+   ],
+   "quote": {
+    "text": "Anthropic is a public benefit corporation dedicated to securing its benefits and mitigating its risks.",
+    "url": "https://www.anthropic.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.anthropic.com/company",
+     "quote": "Anthropic is an AI safety and research company."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.anthropic.com/company",
+     "quote": "practical tools like Claude that benefit businesses, nonprofits and civil society groups"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.anthropic.com/company",
+     "quote": "frontier research, develop and apply a variety of safety techniques, and deploy the resulting systems via a set of partnerships and products"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.anthropic.com",
+     "quote": "Opus 5 is a step change for the Opus tier: stronger coding, more capable agents, and sharper professional work."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.anthropic.com",
+     "quote": "Claude Science is a customizable app that integrates the tools and packages researchers most often use"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.anthropic.com/company",
+     "quote": "Anthropic is a Public Benefit Corporation, whose purpose is the responsible development and maintenance of advanced AI for the long-term benefit of humanity."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.anthropic.com/company",
+     "quote": "Board of Directors is elected by stockholders"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.anthropic.com/company",
+     "quote": "a team of researchers, engineers, policy experts and operational leaders, with experience spanning a variety of disciplines"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.anthropic.com",
+     "sha": "4c93f84d62459eec",
+     "fetched_on": "2026-09-03"
+    },
+    {
+     "url": "https://www.anthropic.com/company",
+     "sha": "10f4dc4dc3fe6566",
+     "fetched_on": "2026-09-03"
+    }
+   ],
+   "written_on": "2026-09-08",
+   "by": "agent:descriptions-00",
+   "ruled_by": "owner",
+   "ruled_on": "2026-09-08"
+  }
  },
  {
   "id": "openai",
@@ -59440,7 +60504,73 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: APPA Probation 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Aventiv Technologies is the holding company for a set of businesses that sell communications, monitoring and payment technology to correctional facilities and supervision agencies. Securus Technologies covers calling and related services for incarcerated people and their families, alongside security tools for the facility.",
+    "That same business supplies education, job training and other reentry resources inside facilities. A second unit, Securus Monitoring, sells electronic monitoring for government agencies, correctional facilities and parole and probation officers. JPay handles the money side, letting families move funds into a trust account while giving the facility an automated system to run and watch.",
+    "The company states that its monitoring arm has more than 900 partnerships across North America. It also describes in-kind support for nonprofits working on recidivism and reentry, and work with corrections leaders to widen access to education and job training."
+   ],
+   "quote": {
+    "text": "Empowering Rehabilitative Justice",
+    "url": "https://www.aventiv.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.aventiv.com",
+     "quote": "Aventiv\u00ae Serves Through Its Affiliate Companies"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.aventiv.com",
+     "quote": "communication solutions that are affordable and accessible for incarcerated individuals and their families while delivering the much-needed security tools to protect facilities and the public"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.aventiv.com",
+     "quote": "Securus also provides incarcerated individuals with education, job training, and other helpful resources to support a successful reentry."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.aventiv.com",
+     "quote": "offers electronic monitoring solutions to support government agencies. correctional facilities, and parole/probation officers"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.aventiv.com",
+     "quote": "JPay\u00ae to easily transfer funds into a trust account for their day to day needs"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.aventiv.com",
+     "quote": "With more than 900 partnerships across North America"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.aventiv.com",
+     "quote": "in-kind support to nonprofit organizations focused on reducing recidivism"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.aventiv.com",
+     "sha": "da8a861c2ac38426",
+     "fetched_on": "2026-09-03"
+    }
+   ],
+   "written_on": "2026-09-08",
+   "by": "agent:descriptions-04",
+   "ruled_by": "owner",
+   "ruled_on": "2026-09-08"
+  }
  },
  {
   "id": "cogsdale-corporation",
@@ -60769,7 +61899,120 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NatCon 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Anonymous Health sells artificial intelligence software to behavioral health providers, positioned as enterprise class AI for that field. Its central product is described as the world's first AI contact center for behavioral health.",
+    "The system handles every call, chat or text on the spot. Intake is automated from paperwork through scheduling. The channels listed are phone, SMS and web chat, running at all hours. Another feature offers real-time coaching to admissions teams at what the site calls the most critical moment of the patient journey. Phone engagement is offered for overflow and overnight calls. During residential stays, interactive programming prepares patients for return to community and for IOP or PHP engagement. Reminder sequences and content programming are used to keep patients engaged. An alumni app is said to support alumni relationships and community referrals.",
+    "The site says the company was founded in 2022 by Dr. Angie Chen and other clinical leaders to solve longstanding problems identified in her clinical practice. It describes early work serving thousands of high-risk Medicaid patients. The company claims its automation improves therapist well-being and boosts efficiency by up to 40 percent. Its stated aim is connecting people in recovery with the care they deserve."
+   ],
+   "quote": {
+    "text": "Connecting people in recovery with the care they deserve.",
+    "url": "https://www.anonymoushealth.com/about"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.anonymoushealth.com",
+     "quote": "Enterprise Class AI for Behavioral Health"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.anonymoushealth.com",
+     "quote": "The World\u2019s First AI Contact Center for Behavioral Health"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.anonymoushealth.com",
+     "quote": "Handles every call, chat or text on the spot."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.anonymoushealth.com",
+     "quote": "Automates intake: from paperwork to scheduling."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.anonymoushealth.com",
+     "quote": "Works 24/7 via phone, SMS, web-chat"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.anonymoushealth.com",
+     "quote": "Real-time AI coaching for admissions teams at the most critical moment of the patient journey."
+    },
+    {
+     "p": 1,
+     "s": 4,
+     "url": "https://www.anonymoushealth.com",
+     "quote": "AI phone engagement for overflow and overnight calls."
+    },
+    {
+     "p": 1,
+     "s": 5,
+     "url": "https://www.anonymoushealth.com",
+     "quote": "Interactive AI programming during residential stays to prepare for return-to-community and IOP / PHP engagement."
+    },
+    {
+     "p": 1,
+     "s": 6,
+     "url": "https://www.anonymoushealth.com",
+     "quote": "reminder sequences, content programming, and more to keep patients engaged"
+    },
+    {
+     "p": 1,
+     "s": 7,
+     "url": "https://www.anonymoushealth.com",
+     "quote": "Alumni app and AI programming and engagement improves alumni relationships and supports community referrals."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.anonymoushealth.com",
+     "quote": "Founded in 2022, Anonymous Health was built by Dr. Angie Chen and other clinical leaders to solve longstanding problems identified in her clinical practice."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.anonymoushealth.com",
+     "quote": "Serving 1,000s of high-risk Medicaid patients"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.anonymoushealth.com",
+     "quote": "improving therapist well-being and boosting efficiency by up to 40%"
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://www.anonymoushealth.com/about",
+     "quote": "Connecting people in recovery with the care they deserve."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.anonymoushealth.com",
+     "sha": "fe64798d47454be7",
+     "fetched_on": "2026-09-03"
+    },
+    {
+     "url": "https://www.anonymoushealth.com/about",
+     "sha": "c6ae029ce2fc285c",
+     "fetched_on": "2026-09-03"
+    }
+   ],
+   "written_on": "2026-09-08",
+   "by": "agent:descriptions-03",
+   "ruled_by": "owner",
+   "ruled_on": "2026-09-08"
+  }
  },
  {
   "id": "chorus-innovations",
@@ -60872,7 +62115,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NatCon 2026",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.planstreet.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "radicle-health",
@@ -61739,7 +62990,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: AWWA ACE 2026",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://aquanuity.com/about/careers/",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "kahua",
@@ -62727,7 +63986,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: GFOA 2026",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://fundviewsoftware.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "sprypoint",
@@ -63835,7 +65102,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: GFOA 2026",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://govsense.com/careers/",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "sympro",
@@ -64918,7 +66193,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: GFOA 2026",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://www.divdat.com/careers",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "harris",
@@ -65172,7 +66455,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: AWWA ACE 2026",
-  "researched": true
+  "researched": true,
+  "posts_at": {
+   "where": "own",
+   "label": "their own careers page",
+   "url": "https://baseform.com/np4/careers.html",
+   "note": null,
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  },
  {
   "id": "epoch-solutions-group",
@@ -66711,7 +68002,10 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: APHSA 2026",
-  "researched": true
+  "researched": true,
+  "also_known_as": [
+   "HeyMirza"
+  ]
  },
  {
   "id": "civic-roundtable",
@@ -67508,30 +68802,6 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NASWA 2025",
-  "researched": true
- },
- {
-  "id": "heymirza",
-  "name": "HeyMirza",
-  "website": "https://heymirza.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "Health & Human Services",
-  "category": "Benefits & Medicaid Systems",
-  "description": "Benefits continuity platform that matches, verifies and enrolls people in Medicaid, SNAP, WIC and childcare programs for state agencies, health plans and providers - exhibited at APHSA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-08"
-  },
-  "govtech": true,
-  "vendor_type": "GovTech Product",
-  "source": "conference sweep: APHSA 2026",
   "researched": true
  },
  {
