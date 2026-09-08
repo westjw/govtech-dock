@@ -59,6 +59,7 @@ import json
 import pathlib
 import re
 import sys
+import threading
 import urllib.parse as up
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -569,19 +570,29 @@ def main() -> int:
         # already has a name and a rule for. It is recorded as unread with the
         # exception as its reason, exactly as a refused fetch is, and the run
         # carries on. Nothing here writes a description in its place.
+        # WHAT RAISED IN *THIS* RUN, recorded where it happened. Reading it
+        # back off the returned record instead looked equivalent and was not:
+        # revisit_news carries the stored record forward, so a site that
+        # raised once kept its unread_why for ever and was reported as raising
+        # on every later sweep, long after it started reading fine.
+        raised: list = []
+        lock = threading.Lock()
+
         def guarded(c):
             try:
-                return one(c)
+                rec = one(c)
+                # last run's failure is not this run's news
+                rec.pop("unread_why", None)
+                return rec
             except Exception as exc:                       # noqa: BLE001
+                why = f"{type(exc).__name__}: {exc}"[:200]
+                with lock:
+                    raised.append((c["id"], why))
                 return {"id": c["id"], "website": c.get("website"),
-                        "unread": True,
-                        "unread_why": f"{type(exc).__name__}: {exc}"[:200],
+                        "unread": True, "unread_why": why,
                         "about": [], "news": []}
 
-        raised = []
         for rec in pool.map(guarded, rows):
-            if rec.get("unread_why"):
-                raised.append((rec["id"], rec["unread_why"]))
             if rec.get("unread"):
                 rec["unread_on"] = today.isoformat()
                 got["unread"] += 1
