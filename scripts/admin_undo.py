@@ -78,7 +78,7 @@ def apply(entry: dict, drop: bool, force: bool) -> int:
         return 1
     restored, conflicts = journal.plan_undo(entry, current)
     if drop:
-        restored = dict(journal.snapshot(current))
+        restored = dict(journal.snapshot(current, entry["file"]))
         for key in entry.get("changes") or {}:
             restored.pop(key, None)
         conflicts = []
@@ -92,7 +92,7 @@ def apply(entry: dict, drop: bool, force: bool) -> int:
         print("Re-run with --force to restore them anyway.")
         return 1
 
-    payload = journal.as_payload(current, restored)
+    payload = journal.as_payload(current, restored, entry["file"])
 
     # companies.json goes back through the same gate every other write uses.
     # An undo that could write an invalid dataset would be a second way in.

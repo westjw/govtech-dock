@@ -71,13 +71,108 @@ RUNAWAY_FLOOR = 60
 KEEP = 500          # entries retained; older ones are pruned on write
 
 
-def snapshot(payload) -> dict:
-    """key -> record, for either shape of file we store.
+# --- WHAT COUNTS AS A RECORD, PER FILE ------------------------------------
+#
+# snapshot() knows two shapes: a list of dicts keyed by "id", and a dict that
+# is already key -> record. Four of the admin's files are neither, which is
+# why they were never journalled - and why routing them through
+# save_decisions WITHOUT this registry would have been worse than leaving
+# them alone:
+#
+#   task_notes.json   a bare LIST whose rows carry no "id". snapshot keyed
+#                     every row None, so four notes collapsed into one entry
+#                     and an undo would have restored whichever row won the
+#                     collision. amcs-group already has two rows.
+#   manual.json       {"checks": {id: rec}, "postings": [rec]} - two
+#                     collections in one file, and act_capture writes to
+#                     both in a single call.
+#   submissions.json  {"items": [rec]}
+#   logic_notes.json  {"notes": [rec]}
+#
+# A shape is a pair. to_records turns the file into key -> record, so diff,
+# BLAST, RUNAWAY and plan_undo work per record instead of treating a whole
+# file as one opaque value. from_records puts the surviving records back in
+# the file's own shape, carrying over any sibling key the action never
+# touched.
+#
+# THE KEY MUST BE STABLE AND UNIQUE. These files are append-only, so a
+# natural key repeats: two task notes for one company in the same second key
+# alike. A repeat gets #n rather than overwriting, because a record that
+# disappears at snapshot time is a record no undo can bring back.
+
+
+def _keyed(rows, fields, prefix: str = "") -> dict:
+    out: dict = {}
+    seen: dict = {}
+    for r in rows:
+        if not isinstance(r, dict):
+            continue
+        base = prefix + "|".join(str(r.get(f) or "") for f in fields)
+        n = seen.get(base, 0)
+        seen[base] = n + 1
+        out[base if not n else f"{base}#{n}"] = r
+    return out
+
+
+def _wrapped(key: str, fields: list):
+    """A file whose records live one level down, under a single key."""
+    def to_records(payload):
+        d = payload if isinstance(payload, dict) else {}
+        return _keyed(d.get(key) or [], fields)
+
+    def from_records(original, records):
+        d = dict(original) if isinstance(original, dict) else {}
+        d[key] = list(records.values())
+        return d
+    return to_records, from_records
+
+
+def _manual_to(payload) -> dict:
+    d = payload if isinstance(payload, dict) else {}
+    out = {f"checks|{cid}": rec
+           for cid, rec in (d.get("checks") or {}).items()}
+    out.update(_keyed(d.get("postings") or [], ["id"], prefix="postings|"))
+    return out
+
+
+def _manual_from(original, records):
+    d = dict(original) if isinstance(original, dict) else {}
+    checks: dict = {}
+    postings: list = []
+    for k, rec in records.items():
+        if k.startswith("checks|"):
+            checks[k.split("|", 1)[1]] = rec
+        elif k.startswith("postings|"):
+            postings.append(rec)
+    d["checks"], d["postings"] = checks, postings
+    return d
+
+
+SHAPES = {
+    # a note is one company's answer on one kind; "at" is what separates a
+    # correction from the note it corrects, both of which are real records
+    "task_notes.json": (
+        lambda p: _keyed(p if isinstance(p, list) else [],
+                         ["company_id", "kind", "at"]),
+        lambda o, r: list(r.values())),
+    "manual.json": (_manual_to, _manual_from),
+    "submissions.json": _wrapped("items", ["id"]),
+    "logic_notes.json": _wrapped("notes", ["queue", "id", "at"]),
+}
+
+
+def snapshot(payload, name: str = "") -> dict:
+    """key -> record, for any shape of file we store.
 
     companies.json is a list keyed by id; the decision files are already
     dicts. Everything below works on the dict form so one code path covers
-    both.
+    both. A file in SHAPES brings its own reader, reached by NAME - the
+    payload alone cannot say which file it came from, which is the reason
+    those four files went unjournalled for as long as they did.
     """
+    shape = SHAPES.get(name)
+    if shape:
+        return shape[0](payload)
     if isinstance(payload, list):
         return {c.get("id"): c for c in payload if isinstance(c, dict)}
     if isinstance(payload, dict):
@@ -85,9 +180,9 @@ def snapshot(payload) -> dict:
     return {}
 
 
-def diff(before, after) -> dict:
+def diff(before, after, name: str = "") -> dict:
     """{key: {"before": ..., "after": ...}} for everything that moved."""
-    b, a = snapshot(before), snapshot(after)
+    b, a = snapshot(before, name), snapshot(after, name)
     out = {}
     for k in set(b) | set(a):
         if b.get(k) != a.get(k):
@@ -127,7 +222,7 @@ def next_id(rows: list[dict] | None = None) -> str:
 
 def check(name: str, before, after, force: bool = False) -> tuple[dict, str | None]:
     """Look at what an action would change. Returns (changes, refusal)."""
-    changes = diff(before, after)
+    changes = diff(before, after, name)
     if not changes:
         return changes, None
     # REWRITING, NOT APPENDING. The share is taken over records that already
@@ -138,7 +233,7 @@ def check(name: str, before, after, force: bool = False) -> tuple[dict, str | No
     # for - was refused outright, and force could not get past it because
     # force only lifts BLAST. Volume is BLAST's job; this one is about
     # destruction.
-    was = snapshot(before)
+    was = snapshot(before, name)
     total = max(len(was), 1)
     rewritten = sum(1 for c in changes.values() if c["before"] is not None)
     share = rewritten / total
@@ -212,7 +307,7 @@ def plan_undo(entry: dict, current) -> tuple[dict, list[str]]:
     changed by something later. Restoring it would silently revert that newer
     work, so those keys are reported rather than quietly included.
     """
-    cur = snapshot(current)
+    cur = snapshot(current, entry.get("file") or "")
     restored = dict(cur)
     conflicts = []
     for key, ch in (entry.get("changes") or {}).items():
@@ -226,8 +321,11 @@ def plan_undo(entry: dict, current) -> tuple[dict, list[str]]:
     return restored, conflicts
 
 
-def as_payload(original, restored: dict):
+def as_payload(original, restored: dict, name: str = ""):
     """Put a restored key->record map back into the file's own shape."""
+    shape = SHAPES.get(name)
+    if shape:
+        return shape[1](original, restored)
     if isinstance(original, list):
         # keep the original ordering for the records that survive, then any
         # that the undo brought back

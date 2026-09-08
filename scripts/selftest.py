@@ -596,6 +596,169 @@ def check_rival_door_refuses_a_category() -> int:
     return errors
 
 
+def check_admin_writes_are_journalled() -> int:
+    """An admin write a person can undo, or an exemption stated by name.
+
+    CLAUDE.md says "every admin write is reversible". It was not true. Twelve
+    write_atomic calls in admin.py went straight to disk with no before-image:
+    act_capture (128 captured postings), act_set_family, act_submit,
+    act_resolve_submission, act_task_note, act_suggest and the founded
+    confirmation. A mis-capture had nothing to undo and --reopen had nothing
+    to reopen, which is exactly the hole save_decisions was written to close
+    for the decision files and then never extended to these.
+
+    Two kinds of write are genuinely exempt, and each is named here rather
+    than waved through by pattern, because "it looked like a log" is how the
+    other twelve got their exemption:
+
+      founded_provenance()  rebuilds itself BY REPLAYING THE JOURNAL. A
+                            journal entry about reading the journal is a
+                            loop, and the next rebuild would consume it.
+      discovery_log.json    the record of an ATTEMPT, written beside a
+                            decision save_companies has already journalled.
+                            Undoing a ruling should not rewrite the history
+                            of having tried - same species as
+                            identity_labels.jsonl and queue_history.jsonl.
+
+    Source-level on purpose: the failure is a call that was never made, and
+    no request exercises a write that does not happen.
+    """
+    import ast
+    src = (ROOT / "scripts" / "admin.py").read_text()
+    tree = ast.parse(src)
+    # the two functions that ARE the door, plus the exemptions, by (fn, file)
+    DOOR = {"save_companies", "save_decisions"}
+    ALLOWED = {
+        ("founded_provenance", "founded_provenance.json"),
+        ("act_save_website", "discovery_log.json"),
+        ("act_retry_board", "discovery_log.json"),
+    }
+    errors = 0
+    seen = set()
+    for fn in ast.walk(tree):
+        if not isinstance(fn, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            continue
+        for node in ast.walk(fn):
+            if not (isinstance(node, ast.Call)
+                    and isinstance(node.func, ast.Name)
+                    and node.func.id == "write_atomic"):
+                continue
+            if fn.name in DOOR:
+                continue
+            target = (node.args[0].value
+                      if node.args and isinstance(node.args[0], ast.Constant)
+                      else "<computed>")
+            pair = (fn.name, target)
+            seen.add(pair)
+            if pair in ALLOWED:
+                continue
+            errors += fail(
+                f"admin.py:{node.lineno} {fn.name}() writes {target} with "
+                f"write_atomic, so nothing records what it overwrote and "
+                f"admin_undo.py cannot reverse it. Route it through "
+                f"save_decisions(), or add it to this check's ALLOWED with "
+                f"the reason it is not a ruling")
+    for pair in ALLOWED - seen:
+        errors += fail(f"this check exempts {pair[0]}() writing {pair[1]}, and "
+                       f"no such write exists any more. Drop the exemption: a "
+                       f"stale allowlist is how the next bypass gets in")
+    return errors
+
+
+def check_journal_shapes_round_trip() -> int:
+    """Every shape survives snapshot -> as_payload, and keys one record each.
+
+    journal.snapshot knew two shapes: a list keyed by "id", and a dict that
+    was already key -> record. task_notes.json is neither - a bare list whose
+    rows carry no id at all - so snapshot keyed EVERY row None and four notes
+    became one. Routing that file through the journal without SHAPES would
+    have been worse than leaving it alone: the undo would have restored
+    whichever row won the collision and silently dropped the rest.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import journal
+    errors = 0
+
+    FIXTURES = {
+        "task_notes.json": [
+            {"company_id": "amcs-group", "kind": "board", "value": "b", "at": "T1"},
+            {"company_id": "amcs-group", "kind": "website", "value": "w", "at": "T2"},
+            {"company_id": "acentra", "kind": "board", "value": "b2", "at": "T3"},
+        ],
+        "manual.json": {"checks": {"buspatrol": {"checked_on": "d"}},
+                        "postings": [{"id": "p1", "title": "A"},
+                                     {"id": "p2", "title": "B"}]},
+        "submissions.json": {"items": [{"id": "s-1", "kind": "job"},
+                                       {"id": "s-2", "kind": "company"}]},
+        "logic_notes.json": {"notes": [{"queue": "boards", "id": "x",
+                                        "argument": "wrong", "at": "T1"}]},
+    }
+    EXPECT = {"task_notes.json": 3, "manual.json": 3,
+              "submissions.json": 2, "logic_notes.json": 1}
+
+    for name, payload in FIXTURES.items():
+        if name not in journal.SHAPES:
+            errors += fail(f"journal.SHAPES has no entry for {name}, so "
+                           f"snapshot falls back to keying on 'id' - which "
+                           f"that file's records do not have")
+            continue
+        recs = journal.snapshot(payload, name)
+        if len(recs) != EXPECT[name]:
+            errors += fail(f"journal.snapshot({name}) returned {len(recs)} "
+                           f"record(s), expected {EXPECT[name]}. Records are "
+                           f"colliding on their key and an undo would restore "
+                           f"whichever one survived")
+        if None in recs:
+            errors += fail(f"journal.snapshot({name}) keyed a record None")
+        back = journal.as_payload(payload, recs, name)
+        if back != payload:
+            errors += fail(f"journal.as_payload({name}) did not round-trip; "
+                           f"an undo would rewrite the file's shape")
+        # A KEY MUST COME FROM THE RECORD, NOT ITS POSITION. _keyed suffixes
+        # a repeat with #n so no record is ever dropped - which also means a
+        # WEAK key set still round-trips and still counts right, and this
+        # check passed a mutation that keyed task notes on company_id alone.
+        # It survived as amcs-group and amcs-group#1. Insert a correction
+        # between them and #1 names a different note, so the undo puts back
+        # the wrong one. A suffix is the signal the fields are too few.
+        positional = [k for k in recs if "#" in k]
+        if positional:
+            errors += fail(
+                f"journal.SHAPES[{name}] needed a positional suffix to keep "
+                f"{len(positional)} record(s) distinct ({positional[:3]}). "
+                f"The key is derived from where a record sits, not what it "
+                f"says: insert one above it and every later key names a "
+                f"different record, and an undo restores the wrong one. "
+                f"Add whatever field actually separates them")
+
+    # THE COLLISION ITSELF, not just the fix. Without the shape, three
+    # distinct notes key alike - this is the bug the registry exists for.
+    naive = journal.snapshot(FIXTURES["task_notes.json"])
+    if len(naive) != 1:
+        errors += fail("the default keying no longer collides on task_notes, "
+                       "so this check is no longer proving anything; rewrite "
+                       "it against whatever shape snapshot now assumes")
+
+    # AND THE UNDO. An appended record must come back out, leaving the rest.
+    before = FIXTURES["manual.json"]
+    after = {"checks": dict(before["checks"]),
+             "postings": before["postings"] + [{"id": "p3", "title": "C"}]}
+    changes = journal.diff(before, after, "manual.json")
+    if list(changes) != ["postings|p3"]:
+        errors += fail(f"journal.diff on a capture saw {list(changes)}; one "
+                       f"appended posting must read as exactly one changed "
+                       f"record, or BLAST counts the wrong thing")
+    entry = {"file": "manual.json", "changes": changes}
+    restored, conflicts = journal.plan_undo(entry, after)
+    undone = journal.as_payload(after, restored, "manual.json")
+    if undone != before:
+        errors += fail(f"undoing one capture did not restore manual.json; "
+                       f"got {undone}")
+    if conflicts:
+        errors += fail(f"a clean undo reported conflicts: {conflicts}")
+    return errors
+
+
 def check_every_queue_has_a_renderer() -> int:
     """A queue the admin lists must be a queue the admin can draw.
 
@@ -12347,6 +12510,12 @@ def check_the_owner_can_argue_with_the_logic() -> int:
     # companies.json, and the reason that rule is in CLAUDE.md.
     notes_path = ROOT / "data" / "logic_notes.json"
     saved = notes_path.read_text() if notes_path.exists() else None
+    # AND THE JOURNAL. suggest is a journalled write now, so the before-image
+    # it records lands in the owner's real audit trail unless this puts it
+    # back too - a test ruling in the journal reads exactly like a real one,
+    # which is the same false record the note above is about.
+    log_path = ROOT / "data" / "admin_journal.jsonl"
+    saved_log = log_path.read_text() if log_path.exists() else None
     before = json.loads((ROOT / "data" / "companies.json").read_text())
     try:
         out = admin.ACTIONS["suggest"]({"queue": "websites", "id": "x",
@@ -12362,6 +12531,10 @@ def check_the_owner_can_argue_with_the_logic() -> int:
             errors += fail("an empty argument was recorded as if it said "
                            "something")
     finally:
+        if saved_log is None:
+            log_path.unlink(missing_ok=True)
+        else:
+            log_path.write_text(saved_log)
         if saved is None:
             notes_path.unlink(missing_ok=True)
         else:
@@ -15441,6 +15614,8 @@ def main() -> int:
     errors += check_manual_merge_never_doubles_a_fetched_row()
     errors += check_board()
     errors += check_rival_door_refuses_a_category()
+    errors += check_admin_writes_are_journalled()
+    errors += check_journal_shapes_round_trip()
     errors += check_every_queue_has_a_renderer()
     errors += check_proposal_rulings_cover_every_kind()
     errors += check_write_ups_queue_shows_only_exceptions()

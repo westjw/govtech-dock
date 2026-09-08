@@ -958,7 +958,12 @@ def act_suggest(body: dict) -> dict:
         "at": now(),
         "by": (body.get("by") or "owner"),
     })
-    write_atomic("logic_notes.json", notes)
+    bad = save_decisions("logic_notes.json", notes, "suggest",
+                         why=argument[:120],
+                         by=(body.get("by") or "owner"),
+                         force=bool(body.get("force")))
+    if bad:
+        return {"error": bad}
     n = len(notes["notes"])
     return {"ok": True,
             "message": f"noted \u2014 {n} argument{'s' if n != 1 else ''} on file. "
@@ -1126,6 +1131,13 @@ def founded_provenance() -> dict:
                           "why": r.get("why") or "", "confirmed": None}
             grew = True
     if grew:
+        # NOT JOURNALLED, AND IT MUST NOT BE. This is a projection, not a
+        # ruling: every record here was DERIVED by replaying journal entries
+        # a moment ago. Journalling the rebuild would write a journal entry
+        # about reading the journal, and the next rebuild would find it.
+        # A person's confirmation on top of one of these IS a ruling, and
+        # _record_confirmation journals that. See selftest's
+        # check_admin_writes_are_journalled, which allows this line by name.
         write_atomic("founded_provenance.json", store)
     return store
 
@@ -1233,24 +1245,33 @@ def act_set_founded(body: dict) -> dict:
     # person looked, disagreed, and put their name on the answer. Leaving it
     # marked unconfirmed would ask again forever.
     if _is_person(by):
-        _record_confirmation(cid, year, by, corrected_from=was)
+        _ok, bad = _record_confirmation(cid, year, by, corrected_from=was)
+        if bad:
+            return {"error": bad}
     return {"ok": True, "message": f"{c['name']}: founded {year}"
                                    + (f" (was {was})" if was and was != year else "")}
 
 
 def _record_confirmation(cid: str, year: int, by: str,
-                         corrected_from=None) -> bool:
-    """Put a person's name on a year an agent proposed. Returns False if there
-    was nothing to confirm."""
+                         corrected_from=None) -> tuple[bool, str | None]:
+    """Put a person's name on a year an agent proposed.
+
+    Returns (found, refusal). found is False when there was nothing on file to
+    confirm; refusal is the journal's message when the write was refused. They
+    are two different answers and a caller that cannot tell them apart reports
+    the wrong one - this used to return a bare bool, and the write it guarded
+    was not journalled at all.
+    """
     store = founded_provenance()
     p = store.get(cid)
     if not p:
-        return False
+        return False, None
     p["confirmed"] = {"by": by, "at": now(), "year": year,
                       "corrected_from": corrected_from
                                         if corrected_from != year else None}
-    write_atomic("founded_provenance.json", store)
-    return True
+    bad = save_decisions("founded_provenance.json", store,
+                         "confirm-founded", why=f"{cid} founded {year}", by=by)
+    return (bad is None), bad
 
 
 def act_confirm_founded(body: dict) -> dict:
@@ -1272,7 +1293,10 @@ def act_confirm_founded(body: dict) -> dict:
         return {"error": "no such company"}
     if not c.get("year_founded"):
         return {"error": "there is no year on that record to confirm"}
-    if not _record_confirmation(cid, c["year_founded"], by):
+    found, bad = _record_confirmation(cid, c["year_founded"], by)
+    if bad:
+        return {"error": bad}
+    if not found:
         return {"error": "nothing on file says that year came from an agent"}
     return {"ok": True,
             "message": f"{c['name']}: {c['year_founded']} confirmed, and the "
@@ -2762,6 +2786,12 @@ def act_save_website(body: dict) -> dict:
     except Exception as exc:  # noqa: BLE001
         steps.append("could not check for a job board just now")
 
+    # THE ATTEMPT, NOT THE ANSWER. discovery_log records that we went
+    # looking and what came back; the decision this ran alongside was
+    # already journalled by save_companies above. It is the same species as
+    # identity_labels.jsonl and queue_history.jsonl - a trail, allowlisted
+    # in check_admin_writes_are_journalled - and undoing a ruling should not
+    # rewrite the history of having tried.
     log = read("discovery_log.json", {})
     log[cid] = {"on": dt.date.today().isoformat(), "found": bool(got_board),
                 "note": f"after website saved in admin: {steps[-1][:90]}"}
@@ -3744,7 +3774,12 @@ def act_set_family(body: dict) -> dict:
         return {"error": f"unknown family {fam}"}
     over = read("family_overrides.json", {})
     over[title] = {"family": fam, "on": dt.date.today().isoformat()}
-    write_atomic("family_overrides.json", over)
+    bad = save_decisions("family_overrides.json", over, "set-family",
+                         why=f"{title} -> {fam}",
+                         by=(body.get("by") or "owner"),
+                         force=bool(body.get("force")))
+    if bad:
+        return {"error": bad}
     return {"ok": True, "message": f"{title} -> {roles.LABEL[fam]}"}
 
 
@@ -3856,7 +3891,18 @@ def act_capture(body: dict) -> dict:
         added += 1
     man["checks"][cid] = {"checked_on": today, "by": "capture",
                           "source": body.get("page_url")}
-    write_atomic("manual.json", man)
+    # FORCE, DELIBERATELY. BLAST asks a person to confirm a count they did
+    # not choose; a capture's count IS the page's, it is chosen by opening
+    # that page, and it is reported straight back ("added 32"). One real
+    # capture on file - tcpsoftware, 32 postings - already sits over the
+    # limit of 25, so leaving BLAST on here would refuse honest work. What
+    # actually guards a runaway page-scan is RUNAWAY, which force cannot
+    # lift, plus the suspect titles this names below rather than counts.
+    bad = save_decisions("manual.json", man, "capture",
+                         why=(body.get("page_url") or "")[:120],
+                         by=(body.get("by") or "capture"), force=True)
+    if bad:
+        return {"error": bad}
     # Named, not counted. "2 look like page furniture" tells somebody nothing;
     # seeing "Cookie Preferences" in the message is what makes them go back and
     # look at what they pasted.
@@ -3901,7 +3947,11 @@ def act_submit(body: dict) -> dict:
         "note": (body.get("note") or "").strip(),
         "submitted_by": (body.get("submitted_by") or "").strip(),
     })
-    write_atomic("submissions.json", subs)
+    bad = save_decisions("submissions.json", subs, "submit",
+                         why=url[:120],
+                         by=((body.get("submitted_by") or "").strip() or "public"))
+    if bad:
+        return {"error": bad}
     return {"ok": True, "id": sid,
             "message": "submitted for review; nothing is published until a "
                        "person approves it"}
@@ -3924,7 +3974,11 @@ def act_resolve_submission(body: dict) -> dict:
         item["status"] = "rejected"
         item["resolved_on"] = dt.date.today().isoformat()
         item["why"] = body.get("why", "")
-        write_atomic("submissions.json", subs)
+        bad = save_decisions("submissions.json", subs, "resolve-submission",
+                             why=(body.get("why") or "rejected"),
+                             by=(body.get("by") or "owner"))
+        if bad:
+            return {"error": bad}
         return {"ok": True, "message": "rejected"}
     if action != "approve":
         return {"error": "action must be approve or reject"}
@@ -3984,7 +4038,11 @@ def act_resolve_submission(body: dict) -> dict:
         item["status"] = "approved"
         item["company_id"] = cid
     item["resolved_on"] = dt.date.today().isoformat()
-    write_atomic("submissions.json", subs)
+    bad = save_decisions("submissions.json", subs, "resolve-submission",
+                         why=(body.get("why") or "approved"),
+                         by=(body.get("by") or "owner"))
+    if bad:
+        return {"error": bad}
     return {"ok": True, "message": f"approved {item.get('name') or item.get('title')}"}
 
 
@@ -4221,7 +4279,10 @@ def act_task_note(body: dict) -> dict:
     # pre-serialised string writes a JSON *string* to the file, and the next
     # read comes back as str - which is exactly what the first test of this
     # function did on its second call.
-    write_atomic("task_notes.json", notes)
+    bad = save_decisions("task_notes.json", notes, "task-note",
+                         why=f"{cid} {kind}", by="capture-extension")
+    if bad:
+        return {"error": bad}
     pending = sum(1 for n in notes if not n.get("applied"))
     return {"ok": True,
             "message": f"noted - {pending} waiting for apply_task_notes.py"}
