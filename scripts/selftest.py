@@ -596,6 +596,255 @@ def check_rival_door_refuses_a_category() -> int:
     return errors
 
 
+def check_web_ruling_stores_a_handle_not_a_person() -> int:
+    """The web door writes a handle, and only an admin may write at all.
+
+    Cloudflare Access hands rule.js the signed-in person's real address, and
+    it used to travel straight into the ruling record and the commit message
+    in a PUBLIC repository. Everything else in this project refuses that:
+    users.json holds email_sha256 and no address, whoami.js answers with a
+    handle, and build_site.py will not build if a users.json row contains an
+    "@". One door was writing what three others were built to keep out, and
+    it had never run in production - so the first person to rule from a phone
+    would have published their own address on every row they touched.
+
+    The same lookup also does a job nobody was doing: Access proves somebody
+    is SIGNED IN; the Users board is what grants "admin". rule.js checked the
+    header and stopped there, so anyone the Access policy admitted could write
+    to the map.
+
+    Driven through scripts/rule_harness.mjs, which imports the real module -
+    a harness that reasons about a copy proves nothing about the file that
+    ships - against a fake ASSETS and a fake GitHub that records every PUT.
+    Then it reads back EVERYTHING the function tried to send, record bodies
+    and commit messages both, and this asserts no address is in it.
+    """
+    import re
+    import shutil
+    import subprocess
+
+    if not shutil.which("node"):
+        note("node is not installed; the web ruling door was not driven")
+        return 0
+    r = subprocess.run(["node", str(ROOT / "scripts" / "rule_harness.mjs")],
+                       capture_output=True, text=True, timeout=90)
+    if r.returncode != 0:
+        return fail(f"rule_harness.mjs did not run: {r.stderr.strip()[:400]}")
+    try:
+        out = json.loads(r.stdout)
+    except Exception as exc:                                    # noqa: BLE001
+        return fail(f"rule_harness.mjs printed no JSON ({exc}): "
+                    f"{r.stdout[:200]}")
+
+    errors = 0
+    cases = out.get("cases", {})
+    if not cases.get("owner_rules", {}).get("ok"):
+        errors += fail(f"an owner with the admin role could not rule at all: "
+                       f"{cases.get('owner_rules')}. The door is shut on the "
+                       f"one person it is for")
+    for name, why in (
+            ("wrong_role", "somebody the Users board granted only 'hunter'"),
+            ("no_row", "somebody Access admits with no Users row at all"),
+            ("revoked", "somebody whose admin was revoked"),
+            ("anonymous", "nobody signed in")):
+        c = cases.get(name) or {}
+        if c.get("ok") or c.get("wrote"):
+            errors += fail(f"{why} was able to write a ruling ({c}). Access "
+                           f"proves a person is signed in; the Users board is "
+                           f"what grants admin, and this door must ask it")
+        elif c.get("status") != 403:
+            errors += fail(f"{why} was refused with {c.get('status')}, not 403")
+
+    blob = out.get("everything_written", "")
+    found = set(re.findall(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}",
+                           blob))
+    if found:
+        errors += fail(
+            f"the web door tried to write {sorted(found)} into the repository. "
+            f"That is a real person's address in a public repo, on every row "
+            f"they ever ruled. Resolve the handle with the users.json lookup "
+            f"whoami.js already does and store that")
+    if "wyeth" not in blob:
+        errors += fail("the ruling it wrote carries no handle at all, so "
+                       "nothing records who made it")
+    return errors
+
+
+def check_no_person_in_the_repo() -> int:
+    """No private individual's address in a file git actually tracks.
+
+    The repository is PUBLIC. raw.githubusercontent.com answers 200 for every
+    tracked file with no login, so a tracked file is a published file and the
+    only boundary that matters is git's.
+
+    That boundary holds today by construction, not by enforcement:
+    data/site_pages/ is gitignored, so the 1.6GB of other people's page text -
+    which does carry personal addresses, 19 free-mail accounts at last count -
+    never reaches GitHub. users.json stores email_sha256, and build_site.py
+    refuses to ship a row containing an address. Nothing checked the rest, and
+    a scraper writing one directory to the left moves personal data across the
+    line in silence. This is what notices.
+
+    WHAT IS REFUSED, and what is not:
+
+      free-mail    somebody's own mailbox. A gmail on an exhibitor list is a
+                   person's private address and is refused wherever it sits.
+      company mail an organisation publishing who to contact - which is what a
+                   trade-show directory is for. Allowed, but COUNTED per file
+                   against a recorded number, because a count that grows is a
+                   new scrape landing contacts where nobody looked.
+      `by`: an @   refused outright. Authorship here is a handle; rule.js
+                   stamping a signed-in email into a ruling is this exact write.
+
+    Three things are not addresses and are not treated as such: reserved
+    placeholder domains (RFC 2606 example.com, and .test/.invalid/.localhost),
+    no-reply machine identities like the bot's users.noreply.github.com, and
+    binary files, whose bytes match this pattern by coincidence - a logo PNG
+    is not a contact list.
+    """
+    import collections
+    import re
+    import subprocess
+
+    ADDR = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}")
+    IMAGE = re.compile(r"\.(png|jpe?g|webp|gif|svg|avif|ico)$", re.I)
+    BINARY = (".png", ".jpg", ".jpeg", ".webp", ".gif", ".ico", ".pdf", ".zip",
+              ".woff", ".woff2", ".ttf", ".xlsx", ".db", ".sqlite")
+    # Not anybody's mailbox: RFC 2606 placeholders, the invented domains this
+    # codebase's own fixtures use, and our own brand address.
+    RESERVED = {"example.com", "example.org", "example.net", "email.com",
+                "acme.com", "evil.com", "yourcompany.com", "nobody.com",
+                "nosite.com", "other.com", "britco.co.uk", "someoneelse.co.uk",
+                "sledjobs.com", "solesourcejobs.com"}
+    FREEMAIL = {
+        "gmail.com", "googlemail.com", "yahoo.com", "yahoo.co.uk", "ymail.com",
+        "hotmail.com", "hotmail.co.uk", "outlook.com", "live.com", "msn.com",
+        "icloud.com", "me.com", "mac.com", "aol.com", "proton.me",
+        "protonmail.com", "gmx.com", "mail.com", "zoho.com", "yandex.com",
+        "comcast.net", "verizon.net", "sbcglobal.net", "att.net", "cox.net",
+    }
+    # A TEST THAT PROVES GMAIL IS REFUSED HAS TO NAME GMAIL. These files hold
+    # invented addresses on purpose; every one is `jane@` or `you@`.
+    FIXTURES = {"scripts/claim_harness.mjs", "scripts/worker_harness.js"}
+    # Business-contact files with the count each held when this was written.
+    # Exhibitor directories and supplier rosters: the addresses are published
+    # by the organisation whose list it is. RAISE A NUMBER ONLY AFTER LOOKING.
+    ALLOWED = {
+        "data/suppliers.json": 67,
+        "data/exhibitors_North_Carolina_Sheriffs_Association_2026.json": 57,
+        "data/jd_cache.json": 14,
+        "data/proposed_websites.json": 7,
+        "data/agent_proposals.json": 6,
+        "data/proposed_locations.json": 4,
+        "data/admin_journal.jsonl": 3,
+        "data/exhibitors_NCSEA_2026.json": 2,
+        "data/exhibitors_NCSEA_Policy_Forum_2027.json": 2,
+        "data/exhibitors_Vermont_League_of_Cities_and_Towns_2027.json": 2,
+        "data/companies.json": 1,
+        "data/conference_intake/govtech_candidates.json": 1,
+        "data/conference_intake/pass1_govtech.json": 1,
+        "data/conference_intake/remaining_candidates.json": 1,
+        "data/conference_intake/researched/final.json": 1,
+        "data/exhibitors_APPA_Probation_2026.json": 1,
+        "data/exhibitors_Connecticut_Conference_of_Municipalities_2026.json": 1,
+        "data/exhibitors_Iowa_State_Association_of_Counties_2026.json": 1,
+        "data/exhibitors_Michigan_Sheriffs_Association_2026.json": 1,
+        "data/exhibitors_NASWA_2025.json": 1,
+        "data/exhibitors_PRIMA_2026.json": 1,
+        "data/news.json": 1,
+        "data/proposals_in/profile-batch-05.json": 1,
+        "data/proposed_hhs_cards.json": 1,
+        "data/suppliers_view.json": 1,
+        # an ATS forwarding address (Workable) in a fixture below, not
+        # a person - recorded here rather than exempting this whole file,
+        # which is where the guard itself lives
+        "scripts/selftest.py": 1,
+    }
+
+    def carried(addr: str) -> bool:
+        """Is this somebody's address, as opposed to a machine or a stand-in?"""
+        dom = addr.rsplit("@", 1)[-1]
+        if dom in RESERVED or dom.endswith((".test", ".invalid", ".localhost")):
+            return False
+        if any(dom.endswith("." + r) for r in RESERVED):   # mail.acme.com
+            return False
+        if "noreply" in addr or "no-reply" in addr:
+            return False
+        return True
+
+    try:
+        tracked = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT,
+                                 capture_output=True, text=True,
+                                 timeout=180).stdout.split("\0")
+    except Exception as exc:                                    # noqa: BLE001
+        return fail(f"could not list tracked files, so this proved nothing: {exc}")
+    if len(tracked) < 50:
+        return fail(f"git ls-files returned {len(tracked)} paths; this check "
+                    f"only means anything against the real tree")
+
+    errors = 0
+    counts: collections.Counter = collections.Counter()
+    for rel in tracked:
+        if not rel or rel.endswith(BINARY) or rel.endswith((".md", ".lock")):
+            continue
+        f = ROOT / rel
+        if not f.is_file():
+            continue
+        try:
+            blob = f.read_bytes()
+        except Exception:                                       # noqa: BLE001
+            continue
+        if b"\0" in blob[:8192] or b"@" not in blob:
+            continue                       # binary, or nothing to look at
+        text = blob.decode("utf-8", "ignore")
+        for raw in set(ADDR.findall(text)):
+            if IMAGE.search(raw):
+                continue
+            addr = raw.lower()
+            if not carried(addr):
+                continue
+            if rel in FIXTURES:
+                continue
+            counts[rel] += 1
+            if addr.split("@")[-1] in FREEMAIL:
+                errors += fail(
+                    f"{rel} carries {addr}, a personal mailbox, in a PUBLIC "
+                    f"repository - raw.githubusercontent serves that file to "
+                    f"anyone. Page text belongs in data/site_pages/, which is "
+                    f"gitignored for exactly this. Remove it, or move whatever "
+                    f"wrote it to the ignored side of the line")
+        for m in re.finditer(
+                r'"(?:by|ruled_by|granted_by|submitted_by)"\s*:\s*"([^"]*@[^"]*)"',
+                text):
+            if carried(m.group(1).lower()) and rel not in FIXTURES:
+                errors += fail(
+                    f"{rel} attributes a write to {m.group(1)!r}. Authorship "
+                    f"here is a handle: users.json holds email_sha256 and "
+                    f"whoami.js resolves it. An address publishes who someone "
+                    f"is, in a public repo, on every row they ever ruled")
+
+    for rel, n in sorted(counts.items()):
+        cap = ALLOWED.get(rel)
+        if cap is None:
+            errors += fail(
+                f"{rel} holds {n} address(es) and is not a known "
+                f"business-contact file. If they are published organisation "
+                f"contacts, add it to ALLOWED with its count and say so; if a "
+                f"scrape put them there, the scrape is writing to the tracked "
+                f"side of the line")
+        elif n > cap:
+            errors += fail(
+                f"{rel} now holds {n} address(es), up from {cap}. Something "
+                f"added {n - cap}: look at what before raising the number. "
+                f"This is how a personal address arrives inside a file that is "
+                f"allowed to hold business ones")
+    for rel, cap in ALLOWED.items():
+        if rel not in counts:
+            note(f"{rel} is allowlisted for {cap} address(es) and now holds "
+                 f"none; drop the entry once that is deliberate")
+    return errors
+
+
 def check_admin_writes_are_journalled() -> int:
     """An admin write a person can undo, or an exemption stated by name.
 
@@ -15614,6 +15863,8 @@ def main() -> int:
     errors += check_manual_merge_never_doubles_a_fetched_row()
     errors += check_board()
     errors += check_rival_door_refuses_a_category()
+    errors += check_web_ruling_stores_a_handle_not_a_person()
+    errors += check_no_person_in_the_repo()
     errors += check_admin_writes_are_journalled()
     errors += check_journal_shapes_round_trip()
     errors += check_every_queue_has_a_renderer()

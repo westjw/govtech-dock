@@ -36,12 +36,55 @@ const json = (obj, status = 200) =>
 const vkey = (name) =>
   String(name || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 
+/* WHO IS RULING, as a handle and never as an address.
+ *
+ * Access hands this function the signed-in person's real email. It used to
+ * travel straight into the ruling record and into the commit message, in a
+ * repository that is PUBLIC - raw.githubusercontent serves every ruling file
+ * to anyone. That is the write the rest of this project refuses everywhere
+ * else: users.json holds email_sha256 and no address, whoami.js answers with
+ * a handle, and build_site.py REFUSES TO BUILD if a users.json row contains
+ * an "@". One door was writing what three others were built to keep out.
+ *
+ * The same lookup whoami.js already does gives the handle, and it does a
+ * second job the write path was skipping entirely: it says whether this
+ * person may rule at all. Access proves somebody is signed in; the Users
+ * board is what grants "admin", and nothing here ever asked. Fails closed -
+ * a users.json that cannot be read grants nothing. */
+async function sha256(s) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function ruler(request, env, email) {
+  const key = await sha256(String(email).trim().toLowerCase());
+  let users = {};
+  try {
+    const res = await env.ASSETS.fetch(new URL("/admin/users.json", request.url));
+    if (res.ok) users = await res.json();
+  } catch (e) { users = {}; }
+  for (const [handle, u] of Object.entries(users || {})) {
+    if (u && u.email_sha256 === key && !u.revoked_on) {
+      const roles = Array.isArray(u.roles) ? u.roles : [];
+      if (roles.includes("admin") || roles.includes("owner")) return handle;
+      return null;
+    }
+  }
+  return null;
+}
+
 export async function onRequestPost({ request, env }) {
-  const who = request.headers.get("Cf-Access-Authenticated-User-Email");
+  const email = request.headers.get("Cf-Access-Authenticated-User-Email");
   const jwt = request.headers.get("Cf-Access-Jwt-Assertion");
-  if (!who || !jwt) {
+  if (!email || !jwt) {
     return json({ error: "not behind Access - the /admin Access application " +
                          "is missing, so writing is refused" }, 403);
+  }
+  // THE HANDLE IS THE ONLY FORM OF THE PERSON THAT MAY BE STORED.
+  const who = await ruler(request, env, email);
+  if (!who) {
+    return json({ error: "signed in, but the Users board has not granted you " +
+                         "admin. Ask the owner to add you." }, 403);
   }
   const token = env.GITHUB_ADMIN_TOKEN;
   if (!token) {
