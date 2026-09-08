@@ -2502,6 +2502,15 @@ def q_miscategorized(companies, board) -> list:
             "category": c["category"], "website": c.get("website"),
             "description": c.get("description"), "open_roles": hiring.get(c["id"], 0),
             "proposed_sector": sec, "proposed_category": cat,
+            # WHERE IT IS ALREADY ALSO FILED. A vendor can genuinely sell into
+            # several departments - "Tyler under Courts is not Tyler leaving
+            # General Gov" is act_also's own rule - and this row never carried
+            # them, so a person ruling saw one home while the record held two.
+            # It matters twice: act_also is an add/remove TOGGLE, so if the
+            # proposal ever matches an entry already here, "Also file here"
+            # REMOVES it rather than adding it. No row is in that state today;
+            # nothing was stopping one.
+            "also": list(c.get("also") or []),
             "confidence": conf, "evidence": why})
     # Hiring first: a wrong bucket on a company with 100 open roles is seen by
     # every visitor, a wrong bucket on a dormant one is seen by nobody.

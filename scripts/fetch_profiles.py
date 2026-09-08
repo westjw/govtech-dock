@@ -535,6 +535,15 @@ def main() -> int:
         except ValueError:
             return False
     rows = [c for c in rows if not recently_unread(c)]
+    # OLDEST FIRST, SO THE LIMIT ROTATES. rows[:limit] takes the same first
+    # 600 companies in company order every time, so the watch re-read seneca
+    # through byga four times a day and the 716 newsrooms after them were
+    # never opened at all. A cap is a rate, not a subset - which is the rule
+    # render_attempts.json already states for boards: recorded on the ATTEMPT,
+    # never the outcome, because the whole point is to rotate turns. Sorting
+    # by when we last fetched gives the same property with no new file, and a
+    # company never fetched sorts first.
+    rows.sort(key=lambda c: ((idx.get(c["id"]) or {}).get("fetched_on") or ""))
     if a.limit:
         rows = rows[:a.limit]
 

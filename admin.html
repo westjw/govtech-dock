@@ -3358,8 +3358,24 @@ RENDER.miscategorized = c => {
   n.appendChild(why);
 
   const row = el('div', 'row');
-  const also = el('button', 'act', 'Also file here');
-  also.title = 'keep its current home and add this one too';
+  /* WHERE IT IS ALREADY FILED, and what that does to this button. act_also
+     is an add/remove TOGGLE, so pressing it on a department the company is
+     already in REMOVES that department. The row never carried `also`, so
+     neither the reader nor the button could tell. */
+  const extra = (c.also || []);
+  if (extra.length) {
+    const e = el('div', 'kv');
+    e.textContent = 'Already also filed under: ' +
+      extra.map(a => a.sector + ' / ' + a.category).join(' · ');
+    n.appendChild(e);
+  }
+  const dupe = extra.some(a => a.sector === c.proposed_sector &&
+                               a.category === c.proposed_category);
+  const also = el('button', 'act',
+                  dupe ? 'Remove that extra filing' : 'Also file here');
+  also.title = dupe
+    ? 'it is ALREADY filed there; this button would take it away'
+    : 'keep its current home and add this one too';
   also.onclick = async () => {
     /* Disabled while in flight. act_also is an add/remove TOGGLE, so a
        double-click was two sequential requests: the first added the
