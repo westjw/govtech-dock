@@ -1,55 +1,139 @@
 {
-  "date": "2026-09-08",
-  "previous": "2026-09-07",
+  "date": "2026-09-09",
+  "previous": "2026-09-08",
   "changes": [
     {
-      "company": "Alcatraz",
-      "id": "alcatraz",
+      "company": "Matterhorn (Court Innovations)",
+      "id": "matterhorn",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive"
+    },
+    {
+      "company": "DroneShield",
+      "id": "droneshield",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Business Development Manager - LAT (S\u00e3o Paulo, Brazil)"
+    },
+    {
+      "company": "Blue Voice",
+      "id": "blue-voice",
+      "from": "None found",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "ICC Innovation",
+      "id": "icc-innovation",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Collins Aerospace, An RTX Business",
+      "id": "collins-aerospace-an-rtx-business",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "HTTP 500 for https://www.collinsaerospac"
+    },
+    {
+      "company": "Upper Hand",
+      "id": "upper-hand",
       "from": "Yes",
       "to": "Unknown",
       "note": "page scan found no listings"
+    },
+    {
+      "company": "Dominion Voting Systems",
+      "id": "dominion-voting-systems",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Sparkrock",
+      "id": "sparkrock",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Momentus Technologies",
+      "id": "momentus-technologies",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Director of Solutions Engineering only"
     },
     {
       "company": "InitLive (Bloomerang Volunteer)",
       "id": "initlive",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive Level 2 (Remote, US)"
     },
     {
-      "company": "Unison (Unison Global)",
-      "id": "unison",
+      "company": "ParkHub",
+      "id": "parkhub",
       "from": "None found",
-      "to": "Unknown",
-      "note": "no jobs parsed from iCIMS portal"
+      "to": "Yes",
+      "note": "Associate Account Executive (Dallas)"
+    },
+    {
+      "company": "mdf commerce",
+      "id": "mdf-commerce",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (United States)"
     },
     {
       "company": "Singlewire Software",
       "id": "singlewire-software",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Hidden Level",
+      "id": "hidden-level",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "CenterEdge Software",
+      "id": "centeredge-software",
       "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Veovo",
+      "id": "veovo",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Sales Director Americas (US-based within th)"
     },
     {
       "company": "Vanderlande",
       "id": "vanderlande",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Objective Corporation",
-      "id": "objective-corporation",
-      "from": "Yes",
+      "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Account Director only"
+      "note": "sales roles, none AE"
     },
     {
-      "company": "TeamDynamix",
-      "id": "teamdynamix",
+      "company": "GCR (Woolpert)",
+      "id": "gcr",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Senior Account Executive"
+    },
+    {
+      "company": "Ad Astra Information Systems",
+      "id": "ad-astra-information-systems",
       "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
+      "to": "Yes",
+      "note": "Account Executive (Expansion) (Overland Park, KS,)"
     }
   ]
 }
