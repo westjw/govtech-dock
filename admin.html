@@ -717,6 +717,61 @@ async function showStart() {
       wrap.append(row, el('div', 'pnote', NOTE[b.name] || ''));
       box.appendChild(wrap);
     });
+    /* BY VENDOR, WITH THE COLUMN THAT DECIDES ANYTHING. A count alone says
+       nothing about whether we can read one: greenhouse turns 77 companies
+       into 1,752 postings and html turns 813 into 919. The hit rate is what
+       says whether a vendor is worth wiring or a page is worth re-probing. */
+    const t = el('table', 'atstab');
+    t.style.cssText = 'width:100%;margin-top:10px;font-size:12.5px;border-collapse:collapse';
+    const hrow = el('tr');
+    ['ATS', 'companies', 'producing', 'postings', 'hit rate'].forEach((h, i) => {
+      const th = el('th', null, h);
+      th.style.cssText = 'text-align:' + (i ? 'right' : 'left')
+        + ';padding:3px 6px;border-bottom:1px solid var(--line);opacity:.7';
+      hrow.appendChild(th);
+    });
+    t.appendChild(hrow);
+    (cv.by_ats || []).forEach(e => {
+      const tr = el('tr');
+      [[e.ats, 0], [e.n.toLocaleString(), 1], [e.producing.toLocaleString(), 1],
+       [e.postings.toLocaleString(), 1], [e.rate + '%', 1]].forEach(([v, r]) => {
+        const td = el('td', null, String(v));
+        td.style.cssText = 'text-align:' + (r ? 'right' : 'left')
+          + ';padding:3px 6px;font-variant-numeric:tabular-nums';
+        if (r === 1 && e.rate < 25) td.style.opacity = '.75';
+        tr.appendChild(td);
+      });
+      t.appendChild(tr);
+    });
+    box.appendChild(t);
+
+    /* IS THERE AN ATS WORTH ADDING? This is the only honest way to ask it: a
+       host here with a real count is a vendor, a tail of ones and twos is
+       not. And the line under it is the answer nobody wants - most unread
+       boards are the company's OWN careers page, which no integration
+       reaches. */
+    const hs = cv.unread_hosts || [];
+    const foot = el('div', 'kv');
+    foot.style.marginTop = '10px';
+    foot.appendChild(el('b', null, 'Boards we hold and cannot read'));
+    box.appendChild(foot);
+    if (hs.length) {
+      const ul = el('div');
+      ul.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin:4px 0';
+      hs.forEach(h => {
+        const chip = el('span', 'kv');
+        chip.style.cssText = 'border:1px solid var(--line);padding:2px 7px';
+        chip.textContent = `${h.host} \u00b7 ${h.n}`;
+        chip.title = h.ids.join(', ');
+        ul.appendChild(chip);
+      });
+      box.appendChild(ul);
+    }
+    box.appendChild(el('div', 'pnote',
+      `${(cv.own_page || 0).toLocaleString()} more are the company's OWN careers `
+      + `page, which no ATS integration reaches \u2014 that is an extraction `
+      + `problem, not a missing vendor.`));
+
     // placed under the hero, where the health score already sets the frame
     if (TAB === '__start') hero.parentNode.insertBefore(box, hero.nextSibling);
   });

@@ -2534,15 +2534,66 @@ def coverage_split(companies, board, sector: str = "") -> dict:
     # progress, and coverage.py's docstring is explicit that 55-63% of the
     # boardless are genuinely boardless - small vendors hiring by email.
     findable = total - n["absent"]
+    # WHICH ATS, AND WHETHER IT ACTUALLY PRODUCES. A count alone says nothing
+    # about whether we can read one: greenhouse turns 77 companies into 1,752
+    # postings and html turns 813 into 919. The hit rate is the column that
+    # decides whether a vendor is worth wiring or a page is worth re-probing.
+    posts = collections.Counter(p["company_id"] for p in board.get("postings", []))
+    per: dict = {}
+    for c in seq:
+        t = (c.get("ats") or {}).get("type") or "none"
+        e = per.setdefault(t, {"ats": t, "n": 0, "producing": 0, "postings": 0})
+        e["n"] += 1
+        got = posts.get(c["id"], 0)
+        e["postings"] += got
+        if got:
+            e["producing"] += 1
+    for e in per.values():
+        e["rate"] = round(100 * e["producing"] / e["n"]) if e["n"] else 0
+
+    # THE BOARDS WE HOLD AND CANNOT READ, by whose host they are on. This is
+    # the only honest way to ask "is there an ATS worth adding": a name in
+    # this list with a real count is a vendor, a long tail of ones and twos is
+    # not. Measured 2026-09-09 it is a tail - the largest is Gusto with five,
+    # and 723 of the 813 page-only boards are on the company's OWN domain,
+    # which is an extraction problem and not an integration one.
+    def _host(u):
+        u = " ".join(u) if isinstance(u, list) else (u or "")
+        return (urllib.parse.urlsplit(u).netloc or "").lower().replace("www.", "")
+    def _own_board_host(c, hostf):
+        h, site = hostf((c.get("ats") or {}).get("ref")), hostf(c.get("website"))
+        return bool(h) and bool(site) and (
+            h == site or h.endswith("." + site) or site.endswith("." + h))
+
+    hosts: dict = {}
+    for c in seq:
+        st = cov.state(c, log.get(c["id"]), orgs.get(c["id"]))
+        if st not in ("page only", "unchecked"):
+            continue
+        h = _host((c.get("ats") or {}).get("ref"))
+        site = _host(c.get("website"))
+        if not h or (site and (h == site or h.endswith("." + site)
+                               or site.endswith("." + h))):
+            continue                      # their own careers page, not a vendor
+        e = hosts.setdefault(h, {"host": h, "n": 0, "ids": []})
+        e["n"] += 1
+        if len(e["ids"]) < 25:
+            e["ids"].append(c["id"])
     return {
         "sector": sector or None,
         "total": total,
         "buckets": [{"name": k, "n": n[k], "pct": round(100 * n[k] / total)}
                     for k in order],
-        "readable": n["structured"] + n["page only"],
-        "findable": findable,
-        "of_findable": round(100 * (n["structured"] + n["page only"]) / findable)
-                       if findable else None,
+        "by_ats": sorted(per.values(), key=lambda e: -e["n"]),
+        "unread_hosts": sorted(hosts.values(), key=lambda e: -e["n"])[:20],
+        # THE BUCKET NO INTEGRATION CAN REACH. A page-only board whose host is
+        # the company's own domain is a careers page, not a vendor - 723 of
+        # the 813, which is why unread_hosts above is a tail and not a
+        # backlog. Reading these is an extraction problem.
+        "own_page": len([
+            c for c in seq
+            if cov.state(c, log.get(c["id"]), orgs.get(c["id"])) == "page only"
+            and _own_board_host(c, _host)]),
     }
 
 
