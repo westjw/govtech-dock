@@ -427,6 +427,9 @@ def main() -> int:
                          "write-up; you read only the disagreements")
     ap.add_argument("--limit", type=int, help="with --self: how many to re-read")
     ap.add_argument("--model", default=None)
+    ap.add_argument("--high-only", action="store_true",
+                    help="with --land: land ONLY the high-confidence write-ups, "
+                         "leaving medium/low/unsure pending for a person")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
@@ -519,8 +522,17 @@ def main() -> int:
                   f"category nobody\n  has looked at is the door alone, and the "
                   f"owner asked for the door plus a look.")
             return 1
+        # WHICH PENDING ONES. --land takes every pending write-up in the
+        # category, which is right after a gate review that read the whole
+        # exception list. It is NOT right when the instruction was "accept the
+        # high-confidence ones": those are the 553 the door passed cleanly and
+        # a person samples, while medium/low/unsure are the 283 the gate exists
+        # to put in front of somebody. Landing both under one word would
+        # publish the unreviewed half silently.
         keys = [k for k, p in _by_category(store, seq).get(a.land, [])
-                if p.get("status") == "pending"]
+                if p.get("status") == "pending"
+                and (not a.high_only
+                     or (p.get("confidence") or "unsure") == "high")]
         n = land(store, seq, keys, a.by, a.why or f"landed {a.land} after gate review")
         print(f"  {n} write-up(s) on the map. Undo a batch: python3 scripts/admin_undo.py")
         return 0
