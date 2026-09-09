@@ -200,6 +200,27 @@ def build_admin_bundle(out: "pathlib.Path") -> None:
     hunter.mkdir(parents=True, exist_ok=True)
     brand = json.loads((ROOT / "data" / "brand.json").read_text())
     (hunter / "index.html").write_text(_hunter_page(brand))
+    # WHAT HAS ALREADY BEEN RULED, shipped behind the same Access door.
+    #
+    # admin-web read these four files from raw.githubusercontent.com, which
+    # works only while the repository is PUBLIC: on a private repo every fetch
+    # 404s, the page's own .catch() turns that into {}, and every row a person
+    # already ruled comes back on the next reload with nothing to say it had
+    # been answered. That made repo visibility a load-bearing part of the
+    # admin, which it should never have been.
+    #
+    # They ship here rather than to /data/ because /admin/ is behind Access
+    # and /data/ is not: a scope ruling is a judgement about a company, and
+    # judgements belong on the side of the door where people sign in.
+    rulings = {}
+    for name in ("vendor_scope_decisions", "placement_rulings",
+                 "web_merge_rulings", "web_founded_rulings"):
+        f = ROOT / "data" / f"{name}.json"
+        try:
+            rulings[name] = json.loads(f.read_text()) if f.exists() else {}
+        except (json.JSONDecodeError, OSError):
+            rulings[name] = {}
+    (admin_dir / "rulings.json").write_text(json.dumps(rulings))
     (admin_dir / "data.json").write_text(json.dumps(payload))
     print(f"  admin bundle: {len(payload['vendors'])} vendors, "
           f"{len(payload['miscategorized'])} wrong-bucket, "

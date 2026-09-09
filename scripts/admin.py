@@ -2505,6 +2505,47 @@ def in_sector(name: str, rows: list, sector: str, companies) -> tuple[list, bool
     return [r for r in rows if row_sector(r, by_id, by_name) == sector], True
 
 
+def coverage_split(companies, board, sector: str = "") -> dict:
+    """How much of this market we can actually READ, in five honest buckets.
+
+    scripts/coverage.py has computed this since August and nothing surfaced
+    it, so the one number the admin showed about boards was a queue count -
+    "722 no board found" - which says how much work is left and nothing about
+    how much of the market is visible. They are different questions and the
+    second is the one that decides where a night is worth spending.
+
+    The classifier is IMPORTED from coverage.py rather than restated. Its
+    buckets carry a judgement each - "blocked" is not a zero, "absent" is a
+    finished state - and a second copy would drift from the definitions the
+    CLI prints, which is how a project ends up with two numbers for one fact.
+    """
+    import coverage as cov
+    seq = companies if isinstance(companies, list) else list(companies.values())
+    if sector:
+        seq = [c for c in seq if c.get("sector") == sector]
+    log = read("discovery_log.json", {})
+    orgs = {o["id"]: o for o in board.get("organizations", [])}
+    n = collections.Counter(
+        cov.state(c, log.get(c["id"]), orgs.get(c["id"])) for c in seq)
+    order = ["structured", "page only", "blocked", "absent", "unchecked"]
+    total = sum(n.values()) or 1
+    # THE DENOMINATOR THAT MEANS SOMETHING. Against every company it reads as
+    # failure; against the companies that HAVE a board to find it reads as
+    # progress, and coverage.py's docstring is explicit that 55-63% of the
+    # boardless are genuinely boardless - small vendors hiring by email.
+    findable = total - n["absent"]
+    return {
+        "sector": sector or None,
+        "total": total,
+        "buckets": [{"name": k, "n": n[k], "pct": round(100 * n[k] / total)}
+                    for k in order],
+        "readable": n["structured"] + n["page only"],
+        "findable": findable,
+        "of_findable": round(100 * (n["structured"] + n["page only"]) / findable)
+                       if findable else None,
+    }
+
+
 def q_miscategorized(companies, board) -> list:
     """Product companies parked in the Suppliers & Services bucket.
 
@@ -5110,6 +5151,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
             companies, board = read_companies(), read("board.json", {})
             return self._send(board_csv(companies, board).encode(),
                               "text/csv; charset=utf-8")
+        if path == "/api/coverage":
+            companies, board = read_companies(), read("board.json", {})
+            want = (urllib.parse.parse_qs(
+                urllib.parse.urlparse(self.path).query).get("sector") or [""])[0]
+            return self._json(coverage_split(companies, board, want))
         if path == "/api/queues":
             companies, board = read_companies(), read("board.json", {})
             want = (urllib.parse.parse_qs(

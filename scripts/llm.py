@@ -89,7 +89,11 @@ DEFAULT_MODEL = "claude-sonnet-5"
 
 # dollars per million tokens, input / output. See the docstring: an estimate.
 PRICES = {
-    "claude-sonnet-5":  (3.0, 15.0),
+    # SONNET 5 IS $2/$10. This said $3/$15, which is SONNET 4.6's price filed
+    # under 5's name - an easy row to carry forward, and wrong by half again
+    # on the model that does the volume work here. Checked 2026-09-09 against
+    # the current model table; opus-5 and haiku-4.5 were already right.
+    "claude-sonnet-5":  (2.0, 10.0),
     "claude-opus-5":    (5.0, 25.0),
     "claude-haiku-4-5-20251001": (1.0, 5.0),
 }

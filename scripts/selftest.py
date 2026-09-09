@@ -3082,7 +3082,9 @@ def check_the_company_page_says_which_kind_of_no_news() -> int:
     i = html.find("const NEWSKIND=")
     j = html.find("\n}\n", html.find("function coNews(", i))
     su = html.find("function safeUrl(")
+    dp = html.find("function coDetailPending(")
     src = ((html[su:html.find("\n}\n", su) + 2] if su >= 0 else "")
+           + (html[dp:html.find("\n}\n", dp) + 2] if dp >= 0 else "")
            + (html[i:j + 2] if i >= 0 and j > i else ""))
     if "function coNews(" not in src:
         return errors + fail("index.html: coNews is gone")
@@ -3094,15 +3096,21 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt
 %s
 const strip = h => h.replace(/<[^>]+>/g, " ").replace(/\\s+/g, " ").trim();
 const out = {
-  items: strip(coNews({news:[{date:"2026-08-19",kind:"funding",
-    headline:"Raises 125 Million",url:"https://b.example/x"}],
-    news_state:"items", news_checked_on:"2026-09-05"}, "b.example")),
-  none_found:   strip(coNews({news:[],news_state:"none_found"}, "b.example")),
-  no_news_page: strip(coNews({news:[],news_state:"no_news_page"}, "b.example")),
-  unread:       strip(coNews({news:[],news_state:"unread"}, "b.example")),
-  never:        strip(coNews({}, "b.example")),
-  hostile:      coNews({news:[{date:"2026-08-19",kind:"press",
-    headline:"Click me", url:"javascript:alert(1)"}], news_state:"items"}, "b.example"),
+  items: strip(coNews({id:"b", news_state:"items", news_checked_on:"2026-09-05"},
+    "b.example", {news:[{date:"2026-08-19",kind:"funding",
+    headline:"Raises 125 Million",url:"https://b.example/x"}]})),
+  none_found:   strip(coNews({id:"b",news_state:"none_found"}, "b.example", {news:[]})),
+  no_news_page: strip(coNews({id:"b",news_state:"no_news_page"}, "b.example", {news:[]})),
+  unread:       strip(coNews({id:"b",news_state:"unread"}, "b.example", {news:[]})),
+  never:        strip(coNews({id:"b"}, "b.example", {})),
+  // THE DETAIL FILE ITSELF HAS TWO STATES OF ITS OWN, and neither may read as
+  // "this company has no news". undefined is the fetch not yet back; null is
+  // the fetch having failed.
+  pending:      strip(coNews({id:"b",news_state:"items"}, "b.example", undefined)),
+  failed:       strip(coNews({id:"b",news_state:"items"}, "b.example", null)),
+  hostile:      coNews({id:"b", news_state:"items"}, "b.example",
+    {news:[{date:"2026-08-19",kind:"press",
+    headline:"Click me", url:"javascript:alert(1)"}]}),
 };
 console.log(JSON.stringify(out));
 """ % src
@@ -5363,7 +5371,10 @@ def check_company_page_profile_states() -> int:
             return ""
         j = html.find(";\n", i)
         return html[i:j + 1] if j > i else ""
-    src = "\n".join([slice_const("esc"), slice_fn("safeUrl"), slice_fn("coAbout")])
+    # coDetailPending too: coAbout calls it for the two states of the detail
+    # file itself, and a harness that stubs it would be testing the stub
+    src = "\n".join([slice_const("esc"), slice_fn("safeUrl"),
+                     slice_fn("coDetailPending"), slice_fn("coAbout")])
     if "function coAbout(" not in src:
         return errors + fail("index.html: coAbout is gone")
 
@@ -5385,10 +5396,14 @@ const location = {href: "https://sledjobs.com/"};
 %s
 const base = {description: "One line.", website: "https://b.example", researched: true};
 const out = {
-  site:    coAbout({...base, profile: %s}, "b.example"),
-  claimed: coAbout({...base, profile: {...%s, by_kind: "company"}}, "b.example"),
-  none:    coAbout(base, "b.example"),
-  legacy:  coAbout({...base, profile: %s}, "g.example"),
+  site:    coAbout(base, "b.example", {profile: %s}),
+  claimed: coAbout(base, "b.example", {profile: {...%s, by_kind: "company"}}),
+  none:    coAbout(base, "b.example", {}),
+  legacy:  coAbout(base, "g.example", {profile: %s}),
+  // the detail file's own two states, which must not read as "no write-up"
+  pending: coAbout(base, "b.example", undefined),
+  failed:  coAbout(base, "b.example", null),
+  nonestr: coAbout(base, "b.example", {}),
 };
 console.log(JSON.stringify(out));
 """ % (src, _json.dumps(new), _json.dumps(new), _json.dumps(legacy))
@@ -5411,6 +5426,23 @@ console.log(JSON.stringify(out));
                        "own words")
     if "not on file for this company yet" not in got["none"]:
         errors += fail("a company with no profile does not get the honest stub")
+    # THE DETAIL FILE'S OWN TWO STATES ARE NOT "NO WRITE-UP". The write-up now
+    # arrives in a second request, so a slow network and a failed fetch each
+    # have to say what they are. Printing the stub for either tells a reader
+    # that a company has no description when the truth is that the page has
+    # not finished asking - the same false absence this project refuses of
+    # every other number it shows.
+    for state in ("pending", "failed"):
+        if "not on file for this company yet" in got[state]:
+            errors += fail(
+                f"coAbout printed the no-write-up stub while the detail was "
+                f"{state}. A request that has not come back, and one that "
+                f"failed, are not evidence that a company has no description")
+        if got[state] == got["nonestr"]:
+            errors += fail(f"the {state} state is identical to 'none on file'")
+    if "could not be loaded" not in got["failed"]:
+        errors += fail("a failed detail fetch does not say it failed, so the "
+                       "reader cannot tell it from a company with nothing")
     if "INTERNAL" in got["legacy"] or "Greenhouse board carried" in got["legacy"]:
         errors += fail("coAbout rendered a LEGACY profile's internal notes on the "
                        "public page. The renderer must key on the paragraphs "

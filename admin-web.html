@@ -150,19 +150,33 @@ async function rule(payload){
   toast(j.message);return j;
 }
 
-const RAW="https://raw.githubusercontent.com/westjw/govtech-dock/main/";
+/* SAME ORIGIN, BEHIND THE SAME DOOR. These four files used to come from
+   raw.githubusercontent.com, which works only while the repository is public:
+   on a private repo every fetch 404s, the .catch() below turns that into {},
+   and every row already ruled comes back on the next reload looking
+   unanswered. build_site now ships them to /admin/rulings.json, which Access
+   protects like the rest of this page. */
 let D=null,RULED={vendor:{},place:{},merge:{},founded:{}},TAB="vendors";
+let RULED_UNKNOWN=false;
 const vkey=n=>String(n||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
 
 async function boot(){
-  const [data,vend,plc,mrg,fnd]=await Promise.all([
+  const [data,ruled]=await Promise.all([
     fetch("data.json").then(r=>r.json()),
-    fetch(RAW+"data/vendor_scope_decisions.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).catch(()=>({})),
-    fetch(RAW+"data/placement_rulings.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).catch(()=>({})),
-    fetch(RAW+"data/web_merge_rulings.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).catch(()=>({})),
-    fetch(RAW+"data/web_founded_rulings.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).catch(()=>({})),
+    fetch("rulings.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
   ]);
-  D=data;RULED.vendor=vend||{};RULED.place=plc||{};RULED.merge=mrg||{};RULED.founded=fnd||{};
+  D=data;
+  /* null is "we could not read what has been ruled", which is NOT the same as
+     "nothing has been ruled" - the second would quietly re-ask every settled
+     row. Say so instead of guessing. */
+  if(!ruled){
+    RULED_UNKNOWN=true;
+  }else{
+    RULED.vendor=ruled.vendor_scope_decisions||{};
+    RULED.place=ruled.placement_rulings||{};
+    RULED.merge=ruled.web_merge_rulings||{};
+    RULED.founded=ruled.web_founded_rulings||{};
+  }
   $("#sub").textContent=`${D.companies.toLocaleString()} companies · `
     +`${D.postings.toLocaleString()} postings · data as of ${D.generated}`;
   const g=D.game||{};

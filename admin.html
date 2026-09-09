@@ -675,6 +675,52 @@ async function showStart() {
   hero.appendChild(hbody);
   v.appendChild(hero);
 
+  /* WHAT WE CAN ACTUALLY READ, which is a different question from what is
+     left to rule. The only board number on this page was a queue count -
+     "722 no board found" - and that says how much work remains, not how much
+     of the market is visible. scripts/coverage.py has computed the honest
+     split since August and nothing surfaced it.
+     Each bucket carries a judgement, so each says its own out loud: blocked
+     is NOT a zero, and absent is a finished state rather than a gap. And the
+     headline percentage is taken against the companies that HAVE a board to
+     find, because against every company it reads as failure when most of the
+     remainder are small vendors hiring by email. */
+  api(secQ('/api/coverage')).then(cv => {
+    if (!cv || !cv.buckets) return;
+    const box = el('div', 'panel');
+    box.style.cssText = 'margin:14px 0;padding:12px 14px;border:1px solid var(--line)';
+    const hd = el('div', 'kv');
+    hd.style.cssText = 'display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap';
+    hd.appendChild(el('b', null, 'What we can read'
+      + (cv.sector ? ' \u00b7 ' + cv.sector : '')));
+    hd.appendChild(el('span', null, cv.of_findable == null ? ''
+      : `${cv.of_findable}% of the ${cv.findable.toLocaleString()} with a board to find`));
+    box.appendChild(hd);
+    const NOTE = {
+      'structured': 'a real API. Titles, locations, links. The number to move.',
+      'page only': 'a careers page a person can read and a fetcher mostly cannot',
+      'blocked': 'a bot wall or a transport error. We learned nothing - NOT a zero',
+      'absent': 'checked, and there is no public board. A finished state',
+      'unchecked': 'never probed, or probed before the current rules',
+    };
+    cv.buckets.forEach(b => {
+      const row = el('div', 'part');
+      row.appendChild(el('span', 'pl', b.name));
+      const bar = el('span', 'pbar');
+      const fill = el('span', 'pfill');
+      fill.style.width = Math.max(1, b.pct) + '%';
+      if (b.name === 'blocked' || b.name === 'unchecked') fill.classList.add('low');
+      bar.appendChild(fill);
+      row.append(bar, el('span', 'ppct', b.n.toLocaleString()));
+      row.title = NOTE[b.name] || '';
+      const wrap = el('div');
+      wrap.append(row, el('div', 'pnote', NOTE[b.name] || ''));
+      box.appendChild(wrap);
+    });
+    // placed under the hero, where the health score already sets the frame
+    if (TAB === '__start') hero.parentNode.insertBefore(box, hero.nextSibling);
+  });
+
   const onTable = (t.counts.vendors || 0) + (t.counts.miscategorized || 0)
                 + (t.counts.duplicates || 0);
   const visible = (t.recommend.find(r => r.queue === 'miscategorized') || {}).n || 0;

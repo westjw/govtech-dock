@@ -4727,8 +4727,53 @@ function unreadableCount(){
    Standalone, and driven under node by selftest, the way coAbout is. */
 const NEWSKIND={contract:"contract",funding:"funding",leadership:"people",
                 product:"product",press:"press"};
-function coNews(o,dom){
-  const items=Array.isArray(o.news)?o.news:[];
+/* THE COMPANY'S OWN DETAIL, fetched when its page opens.
+ *
+ * news and profile were 57% of the gzipped board.json that every visitor
+ * downloads before the job board draws a row, and they are read by exactly
+ * two functions - the two below - which run only when somebody opens one
+ * company. They now live in data/detail/<id>.json, about a kilobyte each.
+ *
+ * THREE STATES, AND THEY MUST NOT LOOK ALIKE. undefined is "we have not
+ * finished asking", null is "we asked and could not get an answer", and {} is
+ * "we asked and this company has none on file". Collapsing the first two into
+ * the third is the false absence this project refuses everywhere else - a
+ * slow network would otherwise print "not on file for this company yet" about
+ * a company whose write-up is sitting right there. */
+const DETAIL={};
+/* Neither "nothing on file" nor a blank space: the section says which of the
+   two it is, so a reader is never told a company has no write-up when the
+   truth is that the request has not come back. */
+function coDetailPending(title,why,failed){
+  return `<section class="cosec"><div class="cosechd"><h2>${title}</h2>
+    <span class="smeta">${esc(why)}</span></div>
+    <p class="more">${failed
+      ? "This is a problem at our end, not a fact about the company. Reload to try again."
+      : "One moment."}</p></section>`;
+}
+function loadDetail(id){
+  if(id in DETAIL) return Promise.resolve(DETAIL[id]);
+  return fetch("data/detail/"+encodeURIComponent(id)+".json")
+    .then(r=>{
+      if(r.ok) return r.json();
+      if(r.status===404) return {};        // no detail on file: a real answer
+      throw new Error(r.status);           // anything else: we do not know
+    })
+    .then(d=>{DETAIL[id]=d; return d;})
+    .catch(()=>{DETAIL[id]=null; return null;});
+}
+/* Called by co() after the page is on screen: fill the two sections in when
+   the answer arrives, and only if the reader is still on that company. */
+function fillDetail(id){
+  if(id in DETAIL) return;
+  loadDetail(id).then(()=>{ if(CO===id) render(); });
+}
+
+function coNews(o,dom,det){
+  if(det===undefined) return coDetailPending("News","reading their newsroom");
+  if(det===null) return coDetailPending("News",
+    "their news could not be loaded just now",true);
+  const items=Array.isArray(det.news)?det.news:[];
   const st=o.news_state;
   const when=o.news_checked_on?` &middot; read ${esc(o.news_checked_on)}`:"";
   const meta=items.length
@@ -4764,8 +4809,11 @@ function coNews(o,dom){
   </section>`;
 }
 
-function coAbout(o,dom){
-  const pr=o.profile;
+function coAbout(o,dom,det){
+  if(det===undefined) return coDetailPending("About","reading the write-up");
+  if(det===null) return coDetailPending("About",
+    "the write-up could not be loaded just now",true);
+  const pr=det.profile;
   const ready=pr&&Array.isArray(pr.paragraphs)&&pr.paragraphs.length>0;
   const lede=`<p>${esc(o.description||"")}${o.description&&!/[.!?]$/.test(o.description)?".":""}</p>`;
   if(!ready) return `<section class="cosec coabout">
@@ -4812,6 +4860,10 @@ function co(id,fromUrl){
   }
   if(CO_OPEN_GROUPS===null) CO_OPEN_GROUPS=new Set();
 
+  // the write-up and the news live in their own file now; ask for it, and
+  // re-render when it lands (fillDetail no-ops if it is already here)
+  fillDetail(id);
+
   const mine=D.postings.filter(p=>p.company_id===id);
   const open=o.open_roles||0, quota=o.quota_roles||0;
   const readable=o.enumerable!==false&&!o.unreadable;
@@ -4853,9 +4905,9 @@ function co(id,fromUrl){
 
   /* --- 05 reading column ---------------------------------------------- */
   const dom=(o.website||"").replace(/^https?:\/\//,"").replace(/\/.*$/,"");
-  const about=coAbout(o,dom);
+  const about=coAbout(o,dom,DETAIL[o.id]);
 
-  const news=coNews(o,dom);
+  const news=coNews(o,dom,DETAIL[o.id]);
 
   /* roles, grouped by family, biggest group first */
   const byFam={};

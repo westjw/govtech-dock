@@ -1700,6 +1700,47 @@ def main() -> int:
 
     DATA.mkdir(exist_ok=True)
     HISTORY.mkdir(exist_ok=True)
+
+    # --- the detail every visitor was downloading and almost nobody read ---
+    #
+    # board.json is fetched in full before the job board can draw a single
+    # row, and `news` and `profile` were 3.45 MB of its 13.2 - 57% of the
+    # gzipped payload - for 1,062 companies. Neither is read by the board, the
+    # companies list, the map or the conferences tab: index.html touches them
+    # only inside coNews() and coAbout(), which run when somebody opens ONE
+    # company. Landing 545 write-ups added 1.18 MB to a file every visitor
+    # pulls, to fill in pages most of them will never open.
+    #
+    # Split out per company: the board loads at 0.65 MB and opening a company
+    # costs one more request of about a kilobyte. The static /c/ pages are
+    # unaffected - build_site reads companies.json for these, not the board.
+    detail_dir = DATA / "detail"
+    detail_dir.mkdir(exist_ok=True)
+    wrote = 0
+    keep = set()
+    for o in payload.get("organizations", []):
+        d = {k: o[k] for k in ("news", "profile") if o.get(k)}
+        if not d:
+            continue
+        keep.add(o["id"])
+        f = detail_dir / f"{o['id']}.json"
+        body = json.dumps(d, indent=1) + "\n"
+        # only rewrite what changed, so a nightly build does not churn 1,062
+        # files through git for a board whose news did not move
+        if not f.exists() or f.read_text() != body:
+            f.write_text(body)
+        wrote += 1
+    # a company that lost its last item must lose its file, or the page keeps
+    # serving news that is no longer on the board
+    for f in detail_dir.glob("*.json"):
+        if f.stem not in keep:
+            f.unlink()
+    for o in payload.get("organizations", []):
+        o.pop("news", None)
+        o.pop("profile", None)
+    print(f"  wrote data/detail/ for {wrote} company(ies); "
+          f"news and profile are no longer in board.json")
+
     prev_path.write_text(json.dumps(payload, indent=1) + "\n")
     # snapshot only the ids: enough for repost detection, small enough to keep
     (HISTORY / f"{today}.json").write_text(json.dumps(
