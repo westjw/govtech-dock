@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Bus icon scaled to fit -->
+  <g transform="translate(4, 2) scale(0.95)">
+    <!-- Bus body -->
+    <path d="M10,12 C10,6 16,2 22,2 L62,2 C68,2 74,6 74,12 L74,60 C74,66 70,68 66,68 L18,68 C14,68 10,66 10,60 Z"
+          fill="rgb(15,182,127)"/>
+    <!-- Route number display -->
+    <rect x="26" y="6" width="32" height="12" rx="3" fill="white" opacity="0.85"/>
+    <!-- Windshield -->
+    <path d="M16,22 L16,38 C16,40 18,42 20,42 L64,42 C66,42 68,40 68,38 L68,22 C68,20 66,18 64,18 L20,18 C18,18 16,20 16,22 Z"
+          fill="white" opacity="0.9"/>
+    <!-- Pulse line -->
+    <polyline
+      points="10,56 22,56 28,56 31,46 34,62 37,40 40,60 43,50 46,56 52,56 74,56"
+      fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Wheels -->
+    <circle cx="22" cy="72" r="5" fill="rgb(15,182,127)"/>
+    <circle cx="62" cy="72" r="5" fill="rgb(15,182,127)"/>
+  </g>
+
+  <!-- "Pulse" text -->
+  <text x="100" y="54" font-family="Quicksand, sans-serif" font-size="48" font-weight="700" fill="white" letter-spacing="-1">Pulse</text>
+
+</svg>
