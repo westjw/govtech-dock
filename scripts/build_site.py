@@ -759,7 +759,8 @@ COPAGE_CSS = """
  .cocrumb a:hover{text-decoration:underline}
  .cocrumb .sep{padding:0 7px;color:var(--c-rule)}
  .coid{display:flex;gap:16px;align-items:flex-start;padding:2px 0 18px}
- .coid .logo{width:56px;height:56px;flex:none;display:grid;place-items:center;font:800 22px/1 var(--font-heading);background:#E8F1F7;color:#1F2536}
+ .coid .logo{width:56px;height:56px;flex:none;display:grid;place-items:center;font:800 22px/1 var(--font-heading);background:#E8F1F7;color:#1F2536;position:relative;overflow:hidden}
+ .coid .logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:4px}
  .coid h1{font-size:30px;line-height:1;letter-spacing:-.025em;margin:0 0 8px}
  .cometa{font-size:11px;line-height:1.5;color:var(--c-ink3);font-variant-numeric:tabular-nums}
  .cometa .sep{padding:0 8px;color:var(--c-rule)}
@@ -1290,9 +1291,17 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
         bits.append(f'part of <a href="{_co_href(par["id"], by_id)}">{esc(o["parent"])}</a>'
                     if par else f"part of {esc(o['parent'])}")
     initial = (o.get("name") or "?").strip()[:1] or "?"
+    # THE LOGO, which this template drew as a letter for as long as it has
+    # existed. 1,916 logo files sit in assets/logos/ and ship to public/, and
+    # the only thing that ever rendered one was a list row - the app's
+    # tileHTML. The company page, the page a search result lands on, showed
+    # an initial for every one of them.
+    _ext = (board.get("logos") or {}).get(o.get("id"))
+    logo_img = (f'<img src="/assets/logos/{o.get("id")}.{_ext}" alt=""'
+                f' decoding="async">' if _ext else "")
     sep = '<span class="sep">&middot;</span>'
     ident = (f'<div class="coid">'
-             f'<div class="logo" aria-hidden="true">{esc(initial)}</div>'
+             f'<div class="logo" aria-hidden="true">{esc(initial)}{logo_img}</div>'
              f'<div style="flex:1;min-width:0"><h1>{esc(o["name"])}</h1>'
              f'<div class="cometa">{sep.join(bits)}</div></div>'
              f'<div class="coacts">'

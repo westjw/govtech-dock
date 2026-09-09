@@ -16259,6 +16259,60 @@ def check_the_static_pages_carry_the_write_up() -> int:
     return errors
 
 
+def check_the_company_page_shows_the_logo() -> int:
+    """A company with a logo on file gets the IMAGE, not just its initial.
+
+    1,916 logo files sit in assets/logos/ and ship to public/. The only
+    thing that ever rendered one was a list row - the app's tileHTML. Both
+    company page headers, the app's and the prerendered one, drew
+    `<div class="logo">C</div>` and nothing else, so the page a search
+    result actually lands on showed a letter for every company that had a
+    logo. Nothing errored; the logos were simply never asked for.
+
+    Driven through the real page builder, and asserted on BOTH renderers,
+    because they are two copies of one header and only one was ever fixed
+    before.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_site as bs
+    errors = 0
+    org = {"id": "fixture-co", "name": "Fixture Co", "sector": "General Gov",
+           "category": "Permitting & Licensing", "description": "They sell a thing",
+           "open_roles": 0, "profile": None, "news": None, "website": "https://f.example"}
+    board = {"organizations": [org], "logos": {"fixture-co": "png"},
+             "postings": [], "generated": "2026-09-09"}
+    brand = json.loads((ROOT / "data" / "brand.json").read_text())
+    try:
+        got = bs.company_page_html(org, [], board, brand,
+                                   {'fixture-co': org}, {}, 1)
+    except Exception as exc:                       # noqa: BLE001
+        return fail(f"company_page_html raised on a minimal fixture: "
+                    f"{type(exc).__name__}: {exc}")
+    if 'assets/logos/fixture-co.png' not in got:
+        errors += fail("the prerendered company page drew the initial and never "
+                       "asked for the logo, though the manifest names one")
+    if '<img' not in got.split('class="coid"', 1)[-1][:400]:
+        errors += fail("the company page header has no <img> in it")
+    # and a company with NO logo must still render, with just the initial
+    board2 = dict(board, logos={})
+    got2 = bs.company_page_html(org, [], board2, brand,
+                                {'fixture-co': org}, {}, 1)
+    if "assets/logos/fixture-co" in got2:
+        errors += fail("a company with no logo on file still linked one - that "
+                       "is a broken image on the page")
+    # the app's copy of the same header
+    app = (ROOT / "index.html").read_text()
+    if "logoImg(o.id)" not in app:
+        errors += fail("index.html's company header does not call logoImg, so "
+                       "the app shows an initial where the static page shows "
+                       "the logo - two copies of one header, one of them fixed")
+    if ".coid .logo img{" not in app:
+        errors += fail("index.html has no rule positioning the header logo; the "
+                       "image sizes against the page, which is what a new "
+                       ".cotile once did at full viewport width")
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -16715,6 +16769,7 @@ def main() -> int:
     errors += check_a_boards_type_matches_its_host()
     errors += check_gusto_and_gem_prove_absence_or_say_unknown()
     errors += check_the_static_pages_carry_the_write_up()
+    errors += check_the_company_page_shows_the_logo()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()

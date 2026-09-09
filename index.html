@@ -80,7 +80,13 @@
   /* identity */
   .coid{display:flex;gap:16px;align-items:flex-start;padding:2px 0 18px}
   .coid .logo{width:56px;height:56px;flex:none;display:grid;place-items:center;
-    font:800 22px/1 var(--font-heading);background:#E8F1F7;color:#1F2536}
+    font:800 22px/1 var(--font-heading);background:#E8F1F7;color:#1F2536;
+    /* the logo is absolutely positioned inside this square; without these two
+       it sizes against the page, which is what a new .cotile once did at full
+       viewport width */
+    position:relative;overflow:hidden}
+  .coid .logo img{position:absolute;inset:0;width:100%;height:100%;
+    object-fit:contain;background:#fff;padding:4px}
   .coid h1{font-size:30px;line-height:1;letter-spacing:-.025em;margin:0 0 8px}
   .cometa{font-size:11px;line-height:1.5;color:var(--c-ink3);
     font-variant-numeric:tabular-nums}
@@ -2146,6 +2152,15 @@ function tileHTML(name, cid, cls){
     + (src?`<img src="${esc(src)}" alt="" decoding="async"
         onerror="this.remove()">`:"")
     + `</div>`;
+}
+/* The company page header is not a .tile - it keeps its own square and its
+   own initial - but it holds the SAME image, addressed the same way. It went
+   a long time drawing only the letter while 1,916 logos sat in assets/logos/,
+   because tileHTML was only ever called from the list rows. */
+function logoImg(cid){
+  const ext=D.logos&&D.logos[cid];
+  return ext?`<img src="assets/logos/${esc(cid)}.${esc(ext)}" alt=""
+    decoding="async" onerror="this.remove()">`:"";
 }
 function tile(name){let h=0;for(const c of name||"")h=(h*31+c.charCodeAt(0))|0;
   return TILE[Math.abs(h)%TILE.length];}
@@ -5037,7 +5052,7 @@ function co(id,fromUrl){
         >${esc(o.sector)}</a>
       <span class="sep">/</span>${esc(o.category)}</nav>
     <div class="coid">
-      <div class="logo" aria-hidden="true">${esc((o.name||"?").trim()[0]||"?")}</div>
+      <div class="logo" aria-hidden="true">${esc((o.name||"?").trim()[0]||"?")}${logoImg(o.id)}</div>
       <div style="flex:1;min-width:0">
         <h1>${esc(o.name)}</h1>
         <div class="cometa">${bits.join('<span class="sep">&middot;</span>')}</div>
