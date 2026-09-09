@@ -346,6 +346,13 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g,
   c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 let META = null, SCHEMA = null, FAMILIES = null, TAB = null, LAST_ITEMS = null;
+/* WHICH DEPARTMENT IS BEING WORKED. '' is the whole board. Every count in the
+   header and every row in a queue is asked for with this, so the numbers a
+   person sees are the numbers of the work actually in front of them. Kept in
+   the URL hash-free query so a reload holds the same shelf. */
+let SECTOR = (new URLSearchParams(location.search)).get('sector') || '';
+const secQ = (u) => SECTOR ? u + (u.includes('?') ? '&' : '?')
+                            + 'sector=' + encodeURIComponent(SECTOR) : u;
 
 /* A STALE ADMIN CANNOT NOTICE ITSELF, so the page does it. admin.py loads
    its queues, actions and validation ONCE at startup; admin.html is re-read
@@ -531,7 +538,7 @@ const INTRO = {
 };
 
 async function boot() {
-  META = await api('/api/queues');
+  META = await api(secQ('/api/queues'));
   staleBanner();
   [SCHEMA, FAMILIES] = await Promise.all([api('/api/schema'), api('/api/families')]);
   $('#sub').textContent = `${META.companies.toLocaleString()} govtech companies · `
@@ -546,9 +553,21 @@ async function boot() {
   const sortBtn = el('button', null, 'Sort board');
   sortBtn.dataset.key = '__sort'; sortBtn.onclick = () => showSort();
   nav.appendChild(sortBtn);
+  drawSectorPicker();
+  const canFilter = new Set(META.filterable || []);
   Object.keys(META.labels).forEach(k => {
     const b = el('button', null, META.labels[k]);
     b.appendChild(el('span', 'n', META.counts[k]));
+    // A TAB THE FILTER CANNOT REACH SAYS SO. Its rows are not about a company
+    // on this board - a candidate vendor, a conference date - so the number
+    // beside it is the whole queue while every other number is this shelf.
+    // Leaving them looking filtered is how an operator reads a full queue as
+    // an empty one.
+    if (SECTOR && !canFilter.has(k)) {
+      b.appendChild(Object.assign(el('span', null, ' \u00b7 all'),
+        { className: 'kv', title: 'this queue has no company to filter by, '
+                                + 'so it shows the whole board' }));
+    }
     b.onclick = () => show(k);
     b.dataset.key = k; nav.appendChild(b);
   });
@@ -557,8 +576,43 @@ async function boot() {
   if (!window.gtdCode || !window.gtdCode.get()) codeBar(false);
 }
 
+function drawSectorPicker() {
+  const wrap = $('#sectorPick') || (() => {
+    const d = el('div'); d.id = 'sectorPick';
+    d.style.cssText = 'margin:6px 0 2px;display:flex;gap:8px;align-items:center';
+    $('#tabs').parentNode.insertBefore(d, $('#tabs').nextSibling);
+    return d;
+  })();
+  wrap.innerHTML = '';
+  const lab = el('span', 'kv', 'Department');
+  const sel = el('select', 'in');
+  sel.style.maxWidth = '260px';
+  [['', 'Everything (' + (META.companies || 0).toLocaleString() + ' companies)']]
+    .concat((META.sectors || []).map(x => [x, x]))
+    .forEach(([v, t]) => {
+      const o = el('option', null, t); o.value = v;
+      if (v === SECTOR) o.selected = true;
+      sel.appendChild(o);
+    });
+  sel.onchange = async () => {
+    SECTOR = sel.value;
+    const u = new URL(location.href);
+    if (SECTOR) u.searchParams.set('sector', SECTOR);
+    else u.searchParams.delete('sector');
+    history.replaceState(null, '', u);
+    await boot();
+    if (TAB) show(TAB);
+  };
+  wrap.append(lab, sel);
+  if (SECTOR) {
+    const note = el('span', 'kv');
+    note.textContent = 'every count below is ' + SECTOR + ' only';
+    wrap.appendChild(note);
+  }
+}
+
 async function refreshCounts() {
-  META = await api('/api/queues');
+  META = await api(secQ('/api/queues'));
   staleBanner();
   document.querySelectorAll('nav button').forEach(b => {
     const n = b.querySelector('.n');
@@ -954,7 +1008,7 @@ async function show(key) {
     b.setAttribute('aria-selected', b.dataset.key === key));
   const v = $('#view'); v.innerHTML = '';
   const load = el('div', 'empty', 'loading…'); v.appendChild(load);
-  const res = await api('/api/queue/' + key);
+  const res = await api(secQ('/api/queue/' + key));
   load.remove();
   if (res.error) {
     v.appendChild(el('div', 'empty', res.error));

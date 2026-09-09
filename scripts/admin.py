@@ -2450,6 +2450,61 @@ def triage(companies, board) -> dict:
     }
 
 
+# --- filtering a worklist by department -----------------------------------
+#
+# THE BOARD IS 2,053 COMPANIES ACROSS TEN SECTORS, and a person clearing
+# queues is usually working one of them - the Police shortlists, the water
+# utilities, whatever is in front of them that afternoon. Every queue count in
+# the header was a whole-board number, so "180 wrong buckets" told somebody
+# working Public Safety nothing about how much of it was theirs.
+#
+# A ROW DOES NOT ALWAYS KNOW ITS COMPANY. Eleven queues carry a company id and
+# resolve exactly. Unclassified carries a posting's company NAME and resolves
+# by name. Five hold rows that are not about a company on this board at all -
+# a candidate vendor, a conference date, a user - and those CANNOT be filtered.
+#
+# What they must never do is quietly return nothing. A queue that cannot answer
+# the question reports that it cannot, keeps its real count, and says so on the
+# tab; a filter that silently empties a queue is the same false absence this
+# project refuses everywhere else, except now it is the operator being misled.
+FILTERABLE = {"profiles", "proposals", "leads", "boardfound", "founded",
+              "miscategorized", "websites", "boards", "blocked", "placement",
+              "acquisitions", "unclassified"}
+
+
+def sector_index(companies) -> tuple[dict, dict]:
+    """(by id, by lowercased name) -> sector."""
+    seq = companies if isinstance(companies, list) else list(companies.values())
+    by_id, by_name = {}, {}
+    for c in seq:
+        sec = c.get("sector")
+        if not sec:
+            continue
+        if c.get("id"):
+            by_id[c["id"]] = sec
+        if c.get("name"):
+            by_name[c["name"].strip().lower()] = sec
+    return by_id, by_name
+
+
+def row_sector(row: dict, by_id: dict, by_name: dict) -> str | None:
+    cid = row.get("id") or row.get("company_id")
+    if cid and cid in by_id:
+        return by_id[cid]
+    name = row.get("company") or row.get("name")
+    if name:
+        return by_name.get(str(name).strip().lower())
+    return None
+
+
+def in_sector(name: str, rows: list, sector: str, companies) -> tuple[list, bool]:
+    """(rows, filtered). filtered is False when this queue cannot answer."""
+    if not sector or name not in FILTERABLE:
+        return rows, False
+    by_id, by_name = sector_index(companies)
+    return [r for r in rows if row_sector(r, by_id, by_name) == sector], True
+
+
 def q_miscategorized(companies, board) -> list:
     """Product companies parked in the Suppliers & Services bucket.
 
@@ -5057,8 +5112,20 @@ class Handler(http.server.BaseHTTPRequestHandler):
                               "text/csv; charset=utf-8")
         if path == "/api/queues":
             companies, board = read_companies(), read("board.json", {})
-            return self._json({"counts": {k: len(f(companies, board))
-                                          for k, f in QUEUES.items()},
+            want = (urllib.parse.parse_qs(
+                urllib.parse.urlparse(self.path).query).get("sector") or [""])[0]
+            counts = {}
+            for k, f in QUEUES.items():
+                rows, _did = in_sector(k, f(companies, board), want, companies)
+                counts[k] = len(rows)
+            return self._json({"counts": counts,
+                               "sectors": sorted({c.get("sector") for c in
+                                                  (companies if isinstance(companies, list)
+                                                   else companies.values())
+                                                  if c.get("sector")}),
+                               # which tabs the number above actually reflects
+                               "filterable": sorted(FILTERABLE),
+                               "sector": want,
                                "labels": LABEL,
                                # what this process was started from, and what
                                # is on disk now
@@ -5077,9 +5144,17 @@ class Handler(http.server.BaseHTTPRequestHandler):
             if name not in QUEUES:
                 return self._json({"error": "no such queue"}, 404)
             companies, board = read_companies(), read("board.json", {})
+            want = (urllib.parse.parse_qs(
+                urllib.parse.urlparse(self.path).query).get("sector") or [""])[0]
             items = QUEUES[name](companies, board)
+            items, did_filter = in_sector(name, items, want, companies)
             return self._json({
                 "items": items[:400],
+                # WHETHER THE NUMBER ABOVE IS THE FILTERED ONE. A queue that
+                # cannot resolve a company reports the whole thing and says so,
+                # rather than answering a question it did not understand.
+                "sector": want or None,
+                "sector_applies": did_filter,
                 # the page shows 400 at most, and must never round that up
                 # into "this is the whole queue"
                 "total": len(items),
