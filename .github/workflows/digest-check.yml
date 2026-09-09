@@ -1,0 +1,39 @@
+name: digest-check
+
+# WHO WOULD GET AN EMAIL, WITHOUT SENDING ONE.
+#
+# The digest has never sent: it runs inside daily-refresh, guarded on
+# CF_API_TOKEN and RESEND_KEY both being present, and until today the three
+# Cloudflare secrets were missing - so every night took the dry-run branch and
+# exited 0 while the workflow stayed green.
+#
+# Turning it on by running daily-refresh would mail a list nobody has looked
+# at, on the first attempt, with no way to take it back. This does the reading
+# half only: it lists the sub: keys in KV and prints the count and the masked
+# addresses.
+#
+# RESEND_KEY IS DELIBERATELY NOT PASSED. Not as a convention - as a property.
+# send_digests refuses a --send with no key, so this job cannot mail anybody
+# even if the flag were added to the line below by mistake.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+
+      - name: Who would be mailed
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_KV_NAMESPACE_ID: ${{ secrets.CF_KV_NAMESPACE_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: python scripts/send_digests.py
