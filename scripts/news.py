@@ -250,6 +250,25 @@ LEAD_LABEL = re.compile(
     r"[\s:|·\u2013\u2014-]+(?=[A-Z0-9])", re.I)
 
 
+# WHERE A HEADLINE STOPS. A press release runs its media-contact block into
+# the same text node as the story, so anchor text and og:title came back as
+# "Natasa Kipper Joins CenterEdge as COO Media contact: Sherry Howell |
+# CenterEdge Software | showell@... | 336.598.5940" - a real headline with a
+# named person's address and phone number welded to the end, published on a
+# public company page. The headline is the part before the boilerplate.
+TAIL = re.compile(
+    r"\s*(?:media|press|investor|analyst)\s+(?:contact|relations|inquiries)\s*:?"
+    r"|\s*(?:for\s+)?(?:more|further)\s+information\s*:?"
+    r"|\s*about\s+[A-Z][\w.&-]*\s*:?\s*$"
+    r"|\s*###\s*$"
+    r"|\s*-30-\s*$", re.I)
+
+
+def cut_tail(head: str) -> str:
+    m = TAIL.search(head or "")
+    return (head[:m.start()].strip() if m else (head or "")).strip(" |-\u2013\u2014")
+
+
 def _clean(s: str) -> str:
     return re.sub(r"\s+", " ", htmllib.unescape(INNER.sub(" ", s or ""))).strip()
 
@@ -316,7 +335,7 @@ def items_from_index(html: str, base: str) -> list[dict]:
             date, src = parse_date(tm.group(1)), "time"
         if not date:
             date, src = parse_date(_clean(block)), "index-text"
-        out.append({"url": u, "headline": head[:MAX_HEAD], "date": date,
+        out.append({"url": u, "headline": cut_tail(head)[:MAX_HEAD], "date": date,
                     "date_source": src if date else None})
     return out
 
@@ -396,7 +415,7 @@ def item_from_article(html: str, url: str) -> dict:
     # resolved above, before the date fallbacks, because the byline rule
     # anchors on it - see _headline_of for the h1/og:title/title order
     head = head_guess
-    return {"url": url, "headline": head[:MAX_HEAD], "date": date,
+    return {"url": url, "headline": cut_tail(head)[:MAX_HEAD], "date": date,
             "date_source": src if date else None}
 
 
@@ -604,8 +623,18 @@ def main() -> int:
             have = {_norm_url(x["url"]): x for x in cur.get("items") or []}
             for x in r["items"]:
                 k = _norm_url(x["url"])
-                if k not in have:
-                    have[k] = {**x, "first_seen": today}
+                # FIRST_SEEN IS OURS AND NEVER MOVES. Everything else is what
+                # the company's page says, and if we read it better today then
+                # today's reading is the accurate one.
+                #
+                # This used to skip a URL already stored, which protected the
+                # date correctly and the HEADLINE by accident - so a parser fix
+                # could never reach anything already published. CenterEdge kept
+                # "... Joins CenterEdge as COO Media contact: Sherry Howell |
+                # showell@... | 336.598.5940" on its public page after the trim
+                # that removes exactly that had shipped, because the item was
+                # stored the day before.
+                have[k] = {**x, "first_seen": (have.get(k) or {}).get("first_seen", today)}
             items = sorted(have.values(), key=lambda x: x["date"], reverse=True)[:KEEP]
             store[cid] = {"checked_on": today, "state": r["state"] if items or r["state"] != "items" else "items",
                           "items": items}

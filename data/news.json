@@ -1323,15 +1323,6 @@
     "url": "https://4sightlabs.com/resources/alcohol-withdrawal-jail-monitoring"
    },
    {
-    "date": "2026-05-07",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-09",
-    "headline": "Transforming Inmate Care: Wearable Sensors Join Forces with Washington Counties Risk Pool",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://4sightlabs.com/resources/transforming-inmate-care-wearable-sensors-join-forces-with-washington-counties-risk-pool"
-   },
-   {
     "date": "2026-04-21",
     "date_source": "json-ld",
     "first_seen": "2026-09-09",
@@ -1384,6 +1375,15 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://4sightlabs.com/resources/how-correctional-technology-ecosystems-are-reshaping-institutional-accountability"
+   },
+   {
+    "date": "2024-12-20",
+    "date_source": "dateline",
+    "first_seen": "2026-09-09",
+    "headline": "Transforming Inmate Care: Wearable Sensors Join Forces with Washington Counties Risk Pool",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://4sightlabs.com/resources/transforming-inmate-care-wearable-sensors-join-forces-with-washington-counties-risk-pool"
    }
   ],
   "state": "items"
@@ -12956,7 +12956,7 @@
     "date": "2026-03-12",
     "date_source": "index-text",
     "first_seen": "2026-09-05",
-    "headline": "The City of St. Louis, Missouri Launches New Investor Relations Website to Enhance Financial Transparency",
+    "headline": "The City of St. Louis, Missouri Launches New",
     "kind": "product",
     "kind_rule": "Launches",
     "url": "https://www.bondlink.com/resources/news/the-city-of-st-louis-missouri-launches-new-investor-relations-website-to-enhance-financial-transparency-209194811295"
@@ -12974,7 +12974,7 @@
     "date": "2026-01-27",
     "date_source": "index-text",
     "first_seen": "2026-09-05",
-    "headline": "St. Joseph County, Indiana Launches New Investor Relations Hub with BondLink",
+    "headline": "St. Joseph County, Indiana Launches New",
     "kind": "product",
     "kind_rule": "Launches",
     "url": "https://www.bondlink.com/resources/news/st-joseph-county-indiana-launches-new-investor-relations-hub-with-bondlink-205976083005"
@@ -13984,10 +13984,10 @@
     "url": "https://www.brightlysoftware.com/blog/how-asset-data-insights-can-drive-the-shift-from-reactive-to-predictive-maintenance"
    },
    {
-    "date": "2026-08-11",
-    "date_source": "time",
+    "date": "2026-08-13",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "Building a future-ready enterprise starts with data governance",
+    "headline": "Deferred maintenance is growing: How healthcare leaders can take back control",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.brightlysoftware.com/blog/deferred-maintenance-is-growing-how-healthcare-leaders-can-take-back-control"
@@ -16764,7 +16764,7 @@
     "date": "2026-05-04",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "News // Natasa Kipper Joins CenterEdge as COO Media contact: Sherry Howell | CenterEdge Software | showell@centeredgesoftware.com | 336.598.5934 Natasa Kipper Joins CenterEdge as COO FOR\u2026 Learn More",
+    "headline": "News // Natasa Kipper Joins CenterEdge as COO",
     "kind": "leadership",
     "kind_rule": "as COO",
     "url": "https://centeredgesoftware.com/news/natasa-kipper-joins-centeredge-as-coo/"
@@ -16818,7 +16818,7 @@
     "date": "2025-08-21",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "News // CenterEdge Now Integrates with PourMyBeer to Help FECs Serve Up Success CenterEdge Now Integrates with PourMyBeer to Help FECs Serve Up Success FOR IMMEDIATE RELEASE Media contact: Sherry Howe",
+    "headline": "News // CenterEdge Now Integrates with PourMyBeer to Help FECs Serve Up Success CenterEdge Now Integrates with PourMyBeer to Help FECs Serve Up Success FOR IMMEDIATE RELEASE",
     "kind": "product",
     "kind_rule": "Integrates with",
     "url": "https://centeredgesoftware.com/news/centeredge-now-integrates-with-pourmybeer-to-help-fecs-serve-up-success/"
@@ -16827,7 +16827,7 @@
     "date": "2025-08-08",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "News // ClawCADE is Newest Concept for Fast-Growing Family Fun Brands ClawCADE is Newest Concept for Fast-Growing Family Fun Brands FOR IMMEDIATE RELEASE Media contact: Sherry Howell | CenterEdge\u2026 Lea",
+    "headline": "News // ClawCADE is Newest Concept for Fast-Growing Family Fun Brands ClawCADE is Newest Concept for Fast-Growing Family Fun Brands FOR IMMEDIATE RELEASE",
     "kind": "press",
     "kind_rule": null,
     "url": "https://centeredgesoftware.com/news/clawcade-is-newest-concept-for-fast-growing-family-fun-brands/"
@@ -16836,7 +16836,7 @@
     "date": "2025-06-04",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "News // CenterEdge Welcomes John Keys as Sales Director CenterEdge Welcomes John Keys as Sales Director FOR IMMEDIATE RELEASE Media contact: Sherry Howell | CenterEdge Software |\u2026 Learn More",
+    "headline": "News // CenterEdge Welcomes John Keys as Sales Director CenterEdge Welcomes John Keys as Sales Director FOR IMMEDIATE RELEASE",
     "kind": "leadership",
     "kind_rule": "Welcomes",
     "url": "https://centeredgesoftware.com/news/centeredge-welcomes-john-keys-as-sales-director/"
@@ -20618,6 +20618,15 @@
   "checked_on": "2026-09-09",
   "items": [
    {
+    "date": "2026-09-09",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "Cognyte to Announce Second Quarter FYE27 Financial Results on September 9, 2026",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.cognyte.com/news/cognyte-to-announce-second-quarter-fye27-financial-results-on-september-9-2026/"
+   },
+   {
     "date": "2026-09-07",
     "date_source": "json-ld",
     "first_seen": "2026-09-09",
@@ -20625,15 +20634,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.cognyte.com/blog/fatf-grey-list-investigative-capabilities/"
-   },
-   {
-    "date": "2026-09-01",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "Cognyte to Announce Second Quarter FYE27 Financial Results on September 9, 2026",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.cognyte.com/news/cognyte-to-announce-second-quarter-fye27-financial-results-on-september-9-2026/"
    },
    {
     "date": "2026-08-12",
@@ -20646,7 +20646,7 @@
    },
    {
     "date": "2026-08-11",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Cognyte to Showcase Financial Crimes Investigation Technology at IAFCI International Conference",
     "kind": "press",
@@ -20655,7 +20655,7 @@
    },
    {
     "date": "2026-08-06",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Cognyte Secures ~$5 Million Expansion with Long-Standing EMEA National Security Customer",
     "kind": "press",
@@ -20664,7 +20664,7 @@
    },
    {
     "date": "2026-08-04",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Cognyte Joins Global Anti-Scam Alliance to Fight Financial Fraud Threats",
     "kind": "press",
@@ -20682,7 +20682,7 @@
    },
    {
     "date": "2026-07-28",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Cognyte Military Intelligence Customer in APAC Expands Partnership with New ~$15-Million Contract",
     "kind": "contract",
@@ -20691,7 +20691,7 @@
    },
    {
     "date": "2026-07-22",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Cognyte Appoints Adam Philpott as Chief Revenue Officer to Lead Global Market Expansion",
     "kind": "leadership",
@@ -20727,7 +20727,7 @@
    },
    {
     "date": "2026-07-14",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Cognyte Wins ~$5 Million Agreement with New Tier-1 National Security Agency in a NATO Member Nation",
     "kind": "press",
@@ -20736,7 +20736,7 @@
    },
    {
     "date": "2026-06-24",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Cognyte Secures ~$5 Million Agreement with National Security Agency in APAC",
     "kind": "press",
@@ -20745,12 +20745,21 @@
    },
    {
     "date": "2026-06-03",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Cognyte Reports First Quarter Fiscal Year 2027 Financial Results",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.cognyte.com/news/cognyte-reports-first-quarter-fiscal-year-2027-financial-results/"
+   },
+   {
+    "date": "2026-06-03",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "Cognyte to Announce First Quarter FYE27 Financial Results on June 3, 2026",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.cognyte.com/news/cognyte-to-announce-first-quarter-fye27-financial-results-on-june-3-2026/"
    },
    {
     "date": "2026-06-01",
@@ -20771,15 +20780,6 @@
     "url": "https://www.cognyte.com/blog/law-enforcement-national-security-challenges-2026/"
    },
    {
-    "date": "2026-05-26",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "Cognyte to Announce First Quarter FYE27 Financial Results on June 3, 2026",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.cognyte.com/news/cognyte-to-announce-first-quarter-fye27-financial-results-on-june-3-2026/"
-   },
-   {
     "date": "2026-05-25",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
@@ -20790,7 +20790,7 @@
    },
    {
     "date": "2026-05-20",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Cognyte Secures ~$5 Million Upgrade Deal with Tier-1 APAC National Security Agency",
     "kind": "press",
@@ -21095,7 +21095,7 @@
     "date": "2024-05-02",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "Find out more Brochure Learn about cHQlite",
+    "headline": "Find out more Brochure Learn",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.collectionhq.com/resources/learn-about-chqlite/"
@@ -28520,8 +28520,8 @@
     "url": "https://www.dimonoff.com/news/wi-sun-alliance-membership/"
    },
    {
-    "date": "2026-01-17",
-    "date_source": "json-ld",
+    "date": "2026-01-23",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Event January 2026 Dimonoff at Connect 351, Boston, January 2026 Dimonoff exhibited at Connect 351, the annual trade show of the Massachusetts Municipal Association, on 22 and 23 January 2026 in Bosto",
     "kind": "press",
@@ -29409,7 +29409,7 @@
     "date": "2024-03-19",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "Unpredictable and Devastating \u2013 Essential Facts About Wildfires",
+    "headline": "Unpredictable and Devastating \u2013 Essential Facts",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.dryad.net/post/facts-about-wildfires"
@@ -30030,7 +30030,7 @@
     "date": "2026-07-30",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "Operational Efficiency in Insurance Is No Longer About Doing...",
+    "headline": "Operational Efficiency in Insurance Is No Longer",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.eagleview.com/blog/operational-efficiency-in-insurance-is-no-longer-about-doing-more-with-less-its-about-knowing-more-before-you-go/"
@@ -31963,7 +31963,7 @@
     "date": "2025-06-10",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "Why Students Abandon Applications \u2013 And What You Can Do About It",
+    "headline": "Why Students Abandon Applications \u2013 And What You Can Do",
     "kind": "press",
     "kind_rule": null,
     "url": "https://goedmo.com/blog/why-students-abandon-applications-and-what-you-can-do-about-it/"
@@ -34558,7 +34558,7 @@
   "items": [
    {
     "date": "2026-08-31",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Community Visioning: What It Is, How the Process Works, and Local Government Examples",
     "kind": "press",
@@ -34567,7 +34567,7 @@
    },
    {
     "date": "2026-08-24",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "How a School Strategic Plan Benefits its Community",
     "kind": "press",
@@ -34576,7 +34576,7 @@
    },
    {
     "date": "2026-07-28",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "How to Report on Infrastructure Projects to Council and the Public",
     "kind": "press",
@@ -34585,7 +34585,7 @@
    },
    {
     "date": "2026-06-22",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "The 5 Best Strategic Planning Software Solutions in 2026",
     "kind": "press",
@@ -34594,7 +34594,7 @@
    },
    {
     "date": "2026-06-17",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "9 Local Government Performance Analytics Dashboard Examples",
     "kind": "press",
@@ -34603,7 +34603,7 @@
    },
    {
     "date": "2026-06-10",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "ClearPoint Strategy vs Envisio: Comparing Strategy and Performance Management Software for the Public Sector",
     "kind": "press",
@@ -34612,7 +34612,7 @@
    },
    {
     "date": "2026-06-04",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "5 Ways to Get Multiple Local Government Plans Under Control",
     "kind": "press",
@@ -34621,7 +34621,7 @@
    },
    {
     "date": "2026-05-22",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "4 Strategic Planning Implementation Best Practices to Engage Employees",
     "kind": "press",
@@ -34666,7 +34666,7 @@
    },
    {
     "date": "2026-02-03",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Keeping the Momentum: Envisio Named to 2026 GovTech 100 Following Record-Breaking Year",
     "kind": "press",
@@ -39241,7 +39241,7 @@
     "date": "2026-09-01",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "Cybercrime at Machine Speed: Key Takeaways from Flashpoint\u2019s 2026 Midyear Threat Intelligence Briefing",
+    "headline": "Cyber Threat Intelligence Cybercrime at Machine Speed: Key Takeaways from Flashpoint\u2019s 2026 Midyear Threat Intelligence Briefing Threat actors are no longer just using automation to execute tasks, the",
     "kind": "press",
     "kind_rule": null,
     "url": "https://flashpoint.io/blog/cybercrime-machine-speed-key-takeaways-flashpoints-2026-midyear-threat-intelligence/"
@@ -40238,7 +40238,7 @@
   "checked_on": "2026-09-09",
   "items": [
    {
-    "date": "2026-09-03",
+    "date": "2026-09-08",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "AI Assistant Ask questions, draft reports, and update records across your account \u2014 the AI Assistant handles it all in Forerunner Register to join",
@@ -40247,7 +40247,7 @@
     "url": "https://withforerunner.com/post/ai-assistant"
    },
    {
-    "date": "2026-09-01",
+    "date": "2026-09-02",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "AI Assistant for Forms",
@@ -40337,15 +40337,6 @@
     "url": "https://withforerunner.com/post/recap-enhancing-disaster-preparedness-and-response-in-floridas-water-sector"
    },
    {
-    "date": "2026-05-04",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "Ready to see how Forerunner can support your community?",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://withforerunner.com/post/warnings-on-community-assets"
-   },
-   {
     "date": "2026-05-01",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
@@ -40353,6 +40344,15 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://withforerunner.com/post/table-summaries"
+   },
+   {
+    "date": "2026-04-20",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "Ready to see how Forerunner can support your community?",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://withforerunner.com/post/warnings-on-community-assets"
    },
    {
     "date": "2026-03-18",
@@ -41097,7 +41097,7 @@
     "date": "2026-07-01",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "Prepare Your District for the New Texas Special Education Funding Model",
+    "headline": "How Frontline Tiers of Intensity Helps Districts Prepare for Texas\u2019s New Special Education Funding Model",
     "kind": "funding",
     "kind_rule": "Funding",
     "url": "https://www.frontlineeducation.com/blog/prepare-your-district-for-the-new-texas-special-education-funding-model/"
@@ -41149,7 +41149,7 @@
    },
    {
     "date": "2026-04-22",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Frontline Education Accelerates AI Innovation Across K-12 with New Advisory Council and Strategic Partnership",
     "kind": "press",
@@ -41158,7 +41158,7 @@
    },
    {
     "date": "2026-03-31",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Frontline Education Launches New Recruiting & Hiring System to Fix Hiring Breakdowns and Help Districts Fill Roles Faster",
     "kind": "product",
@@ -41167,7 +41167,7 @@
    },
    {
     "date": "2026-03-27",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Frontline Education\u2019s \u201cDear Future\u201d AI Campaign Named Finalist in PR Daily\u2019s 2025 Marketing Awards",
     "kind": "contract",
@@ -41185,7 +41185,7 @@
    },
    {
     "date": "2026-02-19",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Frontline Education Releases Third Annual K-12 Lens Report, Revealing Shift in District Pressure Points",
     "kind": "product",
@@ -41194,7 +41194,7 @@
    },
    {
     "date": "2025-08-20",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Frontline Education Launches AI Vision, Brought to Life by Dear Future Campaign",
     "kind": "product",
@@ -41203,7 +41203,7 @@
    },
    {
     "date": "2025-07-28",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Frontline Education Names Joel Sackett as Chief Product Officer",
     "kind": "leadership",
@@ -41212,7 +41212,7 @@
    },
    {
     "date": "2025-06-12",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Frontline Education Announces Jon Kost as Chief Strategy Officer",
     "kind": "press",
@@ -41221,7 +41221,7 @@
    },
    {
     "date": "2025-06-10",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "EdTech Breakthrough Awards Frontline HCM With 2025 \u201cEducation Administration Solution of the Year\u201d",
     "kind": "contract",
@@ -41239,7 +41239,7 @@
    },
    {
     "date": "2025-04-14",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Frontline Education Announces Chris Collins as New Chief Customer Officer",
     "kind": "leadership",
@@ -41248,7 +41248,7 @@
    },
    {
     "date": "2025-03-11",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Frontline Education Releases Second Annual K-12 Lens Report",
     "kind": "product",
@@ -41257,7 +41257,7 @@
    },
    {
     "date": "2025-03-10",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Frontline Education Appoints Melissa McCabe as Chief Revenue Officer",
     "kind": "leadership",
@@ -41266,7 +41266,7 @@
    },
    {
     "date": "2025-01-28",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Frontline Education Honored as One of the Best Places to Work in 2025, A Glassdoor Employees\u2019 Choice Award Winner",
     "kind": "contract",
@@ -45046,10 +45046,28 @@
   "checked_on": "2026-09-09",
   "items": [
    {
+    "date": "2026-09-08",
+    "date_source": "json-ld",
+    "first_seen": "2026-09-05",
+    "headline": "How Florida HB 803 Changes Building Permits",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.govwell.com/resources/how-florida-hb-803-changes-building-permits"
+   },
+   {
+    "date": "2026-09-07",
+    "date_source": "json-ld",
+    "first_seen": "2026-09-05",
+    "headline": "Four Things Municipal Permitting Software Gets Wrong About Special Districts",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.govwell.com/resources/special-district-software"
+   },
+   {
     "date": "2026-09-04",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "The Permitting and Community Development Software RFP Toolkit",
+    "headline": "The Permitting and Community Development Software RFP Toolkit Read Article",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.govwell.com/resources/the-permitting-and-community-development-software-rfp-toolkit"
@@ -45058,7 +45076,7 @@
     "date": "2026-09-04",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "AI in Government Permitting",
+    "headline": "AI in Government Permitting July 2, 2026",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.govwell.com/resources/ai-in-government-permitting"
@@ -45127,15 +45145,6 @@
     "url": "https://www.govwell.com/resources/the-road-to-housing-starts-with-local-government"
    },
    {
-    "date": "2026-08-24",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "Four Things Municipal Permitting Software Gets Wrong About Special Districts Read Article",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.govwell.com/resources/special-district-software"
-   },
-   {
     "date": "2026-08-19",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
@@ -45143,15 +45152,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.govwell.com/resources/the-government-software-request-for-proposal-rfp-guide"
-   },
-   {
-    "date": "2026-07-02",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "How Florida HB 803 Changes Building Permits May 29, 2026",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.govwell.com/resources/how-florida-hb-803-changes-building-permits"
    },
    {
     "date": "2026-07-02",
@@ -58717,7 +58717,7 @@
     "date": "2021-09-03",
     "date_source": "card-date",
     "first_seen": "2026-09-05",
-    "headline": "Climate Tech Is Hot, But VCs Can\u2019t Forget About Water",
+    "headline": "Climate Tech Is Hot, But VCs Can\u2019t Forget",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.klir.com/press/climate-tech-is-hot-but-vcs-cant-forget-about-water"
@@ -60200,7 +60200,7 @@
   "checked_on": "2026-09-09",
   "items": [
    {
-    "date": "2025-02-07",
+    "date": "2026-07-30",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "Interactive State Prevailing Wage Map",
@@ -63269,7 +63269,7 @@
     "date": "2026-08-03",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "The Global Lifeguard Shortage Lifeguard shortages are closing pools in the US, UK, Germany, and beyond. Here's what's driving the crisis, and what operators can actually do about it.",
+    "headline": "The Global Lifeguard Shortage Lifeguard shortages are closing pools in the US, UK, Germany, and beyond. Here's what's driving the crisis, and what operators can actually do",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.lynxight.com/blog/the-global-lifeguard-shortage"
@@ -63591,6 +63591,15 @@
   "checked_on": "2026-09-09",
   "items": [
    {
+    "date": "2026-09-03",
+    "date_source": "json-ld",
+    "first_seen": "2026-09-05",
+    "headline": "On Demand Webinars On Demand Webinars Ask Me Anything: Strengthening eDiscovery with digital forensics Join us for a live, interactive Ask Me Anything (AMA) session where you can ask questions directl",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.magnetforensics.com/resources/ask-me-anything-strengthening-ediscovery-with-digital-forensics/"
+   },
+   {
     "date": "2026-08-31",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
@@ -63628,7 +63637,7 @@
    },
    {
     "date": "2026-08-27",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "White Papers Incident Response Solutions Brief: Connect threat detection and investigation for faster incident response DFIR teams are under increasing pressure to validate, scope and contain complex ",
     "kind": "press",
@@ -63639,7 +63648,7 @@
     "date": "2026-08-24",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "Sep 9 Upcoming Webinars Upcoming Webinars S3:E5 // What to expect when you\u2019re (not) expecting an incident Every organization has an incident response plan and almost none of them survive contact with ",
+    "headline": "S3:E5 // What to expect when you\u2019re (not) \u2026",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.magnetforensics.com/resources/s3e5-what-to-expect-when-youre-not-expecting-an-incident/"
@@ -63711,15 +63720,6 @@
     "date": "2026-08-19",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "Ask Me Anything: Strengthening eDiscovery wi\u2026",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.magnetforensics.com/resources/ask-me-anything-strengthening-ediscovery-with-digital-forensics/"
-   },
-   {
-    "date": "2026-08-19",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
     "headline": "Ask Me Anything: Running faster, defensible \u2026",
     "kind": "press",
     "kind_rule": null,
@@ -63736,7 +63736,7 @@
    },
    {
     "date": "2026-06-19",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "White Papers Evaluating the use of a novel expert system for interpretation of media authentication results As AI has made fake images and videos much more realistic, it\u2019s getting harder for investiga",
     "kind": "press",
@@ -63745,7 +63745,7 @@
    },
    {
     "date": "2026-02-20",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "White Papers State of Enterprise DFIR \u2013 2026 Report Drawing upon a comprehensive survey of private sector domain experts, the sixth annual State of Enterprise Digital Forensics and Incident Response (",
     "kind": "press",
@@ -66740,7 +66740,7 @@
    },
    {
     "date": "2026-06-09",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Jun 09, 2026 Navigating a Changing Mobility Landscape: Why Verifiable Video Traffic Data is Essential for Modern Cities The modern urban mobility landscape is changing faster than ever, and traffic pe",
     "kind": "press",
@@ -66749,7 +66749,7 @@
    },
    {
     "date": "2026-05-20",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "May 20, 2026 Introducing Miovision\u00ae Traffic Optimization The Industry\u2019s First Gen AI-Informed, End-to-End Traffic Optimization and Retiming Solution Reimagining the Traffic Operations Workflow Traffic",
     "kind": "product",
@@ -66758,7 +66758,7 @@
    },
    {
     "date": "2026-05-15",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "May 15, 2026 Traffic Management in Smart Cities: How It Works & Why It Matters A smart city traffic management system leverages real-time data and smart traffic management to reduce congestion and imp",
     "kind": "press",
@@ -66767,7 +66767,7 @@
    },
    {
     "date": "2026-04-28",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Apr 28, 2026 Eliminating Bottlenecks: How Miovision & \u201cMateo\u201d Power the \u201cFreedom to Drive\u201d Initiative The U.S. Department of Transportation recently launched the Freedom to Drive initiative\u2014a bold cal",
     "kind": "product",
@@ -66776,7 +66776,7 @@
    },
    {
     "date": "2026-04-16",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Apr 16, 2026 What is an Intelligent Traffic Management System (ITMS) An intelligent traffic management system uses real-time data and artificial intelligence to optimize traffic flow. By integrating s",
     "kind": "press",
@@ -66785,7 +66785,7 @@
    },
    {
     "date": "2026-04-15",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Apr 15, 2026 Transportation Technology Stack: A Framework for Orchestrated Cities Build a resilient transportation technology stack for cities with this urban mobility framework that connects key syst",
     "kind": "press",
@@ -66794,7 +66794,7 @@
    },
    {
     "date": "2026-03-25",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Mar 25, 2026 How Vision Zero Intelligent Mobility Shrinks Time-to-Safety Achieve Vision Zero goals faster with intelligent mobility solutions. By leveraging traffic safety technology and artificial in",
     "kind": "press",
@@ -66803,7 +66803,7 @@
    },
    {
     "date": "2026-03-23",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Mar 23, 2026 Intelligent Mobility Barriers: Funding, Politics, or Technology? Overcome intelligent mobility barriers by looking beyond the tech. Learn how to navigate city transportation challenges, s",
     "kind": "funding",
@@ -66812,7 +66812,7 @@
    },
    {
     "date": "2026-03-18",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Mar 18, 2026 Breaking Down the Barriers to AI Adoption in Traffic Engineering Table of Contents What the AASHTO survey reveals about where adoption is stalling, and what it will take to cross [\u2026]",
     "kind": "press",
@@ -66830,7 +66830,7 @@
    },
    {
     "date": "2026-03-10",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Mar 10, 2026 February at Miovision: Establishing the Intelligent Transportation System Cities are under pressure to do more with less: shrinking budgets, understaffed teams, and aging infrastructure. ",
     "kind": "press",
@@ -66839,7 +66839,7 @@
    },
    {
     "date": "2026-03-04",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Mar 04, 2026 Why Agentic AI is the Traffic Engineering Partner You\u2019ve Been Waiting For For years, the traffic industry has been caught in a difficult paradox. We are managing more complex networks tha",
     "kind": "press",
@@ -66866,7 +66866,7 @@
    },
    {
     "date": "2026-02-18",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Feb 18, 2026 Let\u2019s Move: Recapping a Milestone January at CES and TRB 2026 Miovision kicked off 2026 at CES and TRB, showcasing Intelligent Mobility traffic solutions. From the Miovision One platform ",
     "kind": "press",
@@ -67783,7 +67783,7 @@
    },
    {
     "date": "2026-08-12",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "The hidden costs of manual operations for field service fleets.",
     "kind": "press",
@@ -72759,7 +72759,7 @@
     "date": "2026-07-05",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "We're asking the wrong questions about housing",
+    "headline": "We're asking the wrong questions",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.objective.com/resources/blog-were-asking-the-wrong-questions-about-housing"
@@ -77055,7 +77055,7 @@
   "items": [
    {
     "date": "2026-09-04",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "AI Search Emerges as Top-3 Way Gen Z Finds Government Services",
     "kind": "press",
@@ -77064,7 +77064,7 @@
    },
    {
     "date": "2026-09-03",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "As State and Local Government Enters the AI Era, New Research Charts the Path to 90%+ Adoption of Digital Services",
     "kind": "press",
@@ -77073,7 +77073,7 @@
    },
    {
     "date": "2026-07-15",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "GR PayIt continues to improve convenience and access for Grand Rapids residents",
     "kind": "press",
@@ -77082,7 +77082,7 @@
    },
    {
     "date": "2026-06-16",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "PayIt introduces Smart Works: AI-powered features to accelerate government modernization",
     "kind": "product",
@@ -82312,7 +82312,7 @@
    },
    {
     "date": "2026-08-14",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Alyssa\u2019s Law in Illinois: Equipping Schools with Compliant Solutions",
     "kind": "press",
@@ -84831,21 +84831,12 @@
    },
    {
     "date": "2026-08-26",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "6 Ways to Streamline Liquid Waste Management and Protect Your Margin August 26, 2026 Blog",
     "kind": "press",
     "kind_rule": null,
     "url": "https://routeware.com/blog/6-ways-to-streamline-liquid-waste-management/"
-   },
-   {
-    "date": "2026-08-24",
-    "date_source": "json-ld",
-    "first_seen": "2026-09-05",
-    "headline": "6 Ways Fleet Dispatching Software Gets You Off the Radio August 24, 2026 Blog",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://routeware.com/blog/fleet-dispatching-software/"
    },
    {
     "date": "2026-08-21",
@@ -84909,6 +84900,15 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://routeware.com/blog/municipal-waste-collection-software-for-reliable-service/"
+   },
+   {
+    "date": "2026-08-06",
+    "date_source": "index-text",
+    "first_seen": "2026-09-05",
+    "headline": "6 Ways Fleet Dispatching Software Gets You Off the Radio August 24, 2026 Blog",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://routeware.com/blog/fleet-dispatching-software/"
    }
   ],
   "state": "items"
@@ -86875,7 +86875,7 @@
     "date": "2025-10-20",
     "date_source": "time",
     "first_seen": "2026-09-05",
-    "headline": "Advanced Technology to Create a Resilient Civilization Fortune falls heavily on those for whom she\u2019s unexpected. The one always on the lookout easily endures. Seneca",
+    "headline": "Advanced Technology to Create a Resilient Civilization",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.seneca.com/news/resilient-civilization/"
@@ -86884,7 +86884,7 @@
     "date": "2025-10-20",
     "date_source": "time",
     "first_seen": "2026-09-05",
-    "headline": "Seneca launches with $60M to equip firefighters, utilities, and communities with advanced wildfire defense technology Today we\u2019re announcing Seneca \u2014 building autonomous aerial systems that launch ins",
+    "headline": "Seneca launches with $60M to equip firefighters, utilities, and communities with advanced wildfire defense technology",
     "kind": "product",
     "kind_rule": "launches",
     "url": "https://www.seneca.com/news/seneca-launches/"
@@ -87726,7 +87726,7 @@
    },
    {
     "date": "2026-07-10",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "In The Field Jul 10, 2026 SewerAI in Trenchless Technology: AI Will Expand Demand for PACP\u2122 Expertise, Not Reduce It Eric Sullivan, SewerAI's Strategic Development lead and NASSCO-certified PACP\u2122, LAC",
     "kind": "press",
@@ -87753,7 +87753,7 @@
    },
    {
     "date": "2026-06-22",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Jun 22, 2026 Why manual CCTV coding is so error-prone (and what consistent coding takes) Put two experienced, NASSCO-certified inspectors in front of the same footage and there's a real chance they'll",
     "kind": "press",
@@ -87771,7 +87771,7 @@
    },
    {
     "date": "2026-06-02",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Jun 2, 2026 SewerAI Secures Major Strategic Investment to Accelerate the Future of Underground Infrastructure Management Investment supports SewerAI's mission to make utilities, engineers, and contrac",
     "kind": "funding",
@@ -89223,7 +89223,7 @@
    },
    {
     "date": "2026-08-13",
-    "date_source": "index-text",
+    "date_source": "near-h1",
     "first_seen": "2026-09-05",
     "headline": "Analyze Artificial Intelligence Exposure and Employment with Social Explorer",
     "kind": "press",
@@ -90553,7 +90553,7 @@
     "date": "2026-08-18",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "Fund Accounting vs. For-Profit Accounting: Why Your ERP Needs to Think Differently About Revenue",
+    "headline": "Fund Accounting vs. For-Profit Accounting: Why Your ERP Needs to Think Differently",
     "kind": "press",
     "kind_rule": null,
     "url": "https://sparkrock.com/knowledge-base/blog/fund-accounting-vs-for-profit-accounting-why-your-erp-needs-to-think-differently-about-revenue/"
@@ -94512,7 +94512,7 @@
     "date": "2026-06-23",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "What is IT Service Management? Learn More About ITSM",
+    "headline": "What is IT Service Management? Learn More",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.teamdynamix.com/blog/what-is-it-service-management/"
@@ -97067,7 +97067,7 @@
    },
    {
     "date": "2026-08-27",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "\u200dTRM Labs Appoints MAS veteran Ziqing Ang as Head of Policy, APAC",
     "kind": "leadership",
@@ -100276,7 +100276,7 @@
   "items": [
    {
     "date": "2026-08-28",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Via Welcomes the Knode.ai Team to Accelerate AI for Public Transit August 28, 2026",
     "kind": "leadership",
@@ -100294,7 +100294,7 @@
    },
    {
     "date": "2026-08-27",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Via and SMART Expand On-Demand Microtransit Into Northern Macomb County August 27, 2026",
     "kind": "press",
@@ -100303,7 +100303,7 @@
    },
    {
     "date": "2026-08-27",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Interviews No Fixed Route? No Problem: The Future of City Transit With Jason Via August 27, 2026",
     "kind": "press",
@@ -100312,7 +100312,7 @@
    },
    {
     "date": "2026-08-27",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Thought Leadership Navigating the Future of Transit: 4 Key Takeaways from Our Industry Summit August 27, 2026",
     "kind": "press",
@@ -100357,7 +100357,7 @@
    },
    {
     "date": "2026-06-25",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "U.S. Conference of Mayors Adopts Landmark Transit Modernization Resolution, Sponsored by West Sacramento, CA Mayor Martha Guerrero June 25, 2026",
     "kind": "contract",
@@ -100393,7 +100393,7 @@
    },
    {
     "date": "2026-06-22",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "How one of Canada\u2019s largest and fastest growing agencies served 30% more paratransit rides with 17% fewer vehicle hours June 22, 2026",
     "kind": "press",
@@ -100429,7 +100429,7 @@
    },
    {
     "date": "2026-05-19",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Via announces launch of Scheduling and Supply Studio May 19, 2026",
     "kind": "product",
@@ -100447,7 +100447,7 @@
    },
    {
     "date": "2026-04-15",
-    "date_source": "json-ld",
+    "date_source": "time",
     "first_seen": "2026-09-05",
     "headline": "Beyond Dashboards: Building a Domain-Specific Agentic AI Assistant April 15, 2026",
     "kind": "press",
@@ -103215,7 +103215,7 @@
     "date": "2026-08-25",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "5 myths about training Discover 5 myths about training",
+    "headline": "5 myths about training Discover 5 myths",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.wooclap.com/en/blog/5-myths-training/"
@@ -104345,7 +104345,7 @@
     "date": "2026-08-20",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "Why Youth Vaping Isn't Slowing Down and What Schools Can Do About It",
+    "headline": "Why Youth Vaping Isn't Slowing Down and What Schools Can Do",
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.zeptive.com/post/why-youth-vaping-isn-t-slowing-down-and-what-schools-can-do-about-it"

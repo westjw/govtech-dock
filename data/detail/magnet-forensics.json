@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "On Demand Webinars On Demand Webinars Ask Me Anything: Strengthening eDiscovery with digital forensics Join us for a live, interactive Ask Me Anything (AMA) session where you can ask questions directl",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/ask-me-anything-strengthening-ediscovery-with-digital-forensics/"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-08-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "White Papers Incident Response Solutions Brief: Connect threat detection and investigation for faster incident response DFIR teams are under increasing pressure to validate, scope and contain complex ",
    "kind": "press",
@@ -49,7 +58,7 @@
    "date": "2026-08-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Sep 9 Upcoming Webinars Upcoming Webinars S3:E5 // What to expect when you\u2019re (not) expecting an incident Every organization has an incident response plan and almost none of them survive contact with ",
+   "headline": "S3:E5 // What to expect when you\u2019re (not) \u2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/s3e5-what-to-expect-when-youre-not-expecting-an-incident/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/keeping-pace-with-evolving-cybercrime-in-west-africa/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The evolving digital investigation landscape\u2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/the-evolving-digital-investigation-landscape-in-africa-a-fireside-chat/"
   }
  ],
  "profile": {

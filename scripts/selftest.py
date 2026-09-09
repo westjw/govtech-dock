@@ -596,6 +596,47 @@ def check_rival_door_refuses_a_category() -> int:
     return errors
 
 
+def check_jobposting_never_invents_a_country() -> int:
+    """addressCountry US only where a US STATE parsed, never off a city.
+
+    _middleware.jobLd hardcodes addressCountry "US" - correctly, because the
+    only place it was ever meant to receive is one roles.geography() resolved
+    to a US state. build_site set the city field independently, so a city with
+    no state was enough to emit the block, and 291 postings went to Google as
+    United States jobs from Leon (Spain), Kitchener (Ontario), London
+    (England) and Buenos Aires.
+
+    _middleware's own docstring calls Google for Jobs "a channel that punishes
+    a lie", and the note in write_meta_index already stated the rule - assert
+    US "only where a real US state parsed". Neither was enforced anywhere.
+
+    A city we cannot place in a country is not a location we can state. The
+    honest block is no block: the posting keeps its title, description and
+    canonical, and falls through to TELECOMMUTE when the employer said remote.
+    """
+    import re
+    src = (ROOT / "scripts" / "build_site.py").read_text()
+    errors = 0
+    # the city assignment must sit INSIDE the state branch
+    m = re.search(r'if off\.get\("state"\):\s*\n\s*r\["st"\] = off\["state"\]\s*\n'
+                  r'\s*if off\.get\("city"\):\s*\n\s*r\["ci"\] = off\["city"\]', src)
+    if not m:
+        errors += fail(
+            'build_site no longer sets r["ci"] only inside the r["st"] '
+            'branch. A city with no state then reaches _middleware, which '
+            'stamps addressCountry "US" on whatever location it is given - '
+            'and the board says 291 of those postings are not in the US')
+    mid = (ROOT / "functions" / "_middleware.js").read_text()
+    if 'addressCountry: "US"' in mid and 'r.ci || r.st' not in mid:
+        note("_middleware's location gate changed shape; re-read this check "
+             "against it")
+    if 'validThrough' in mid.split("function jobLd")[-1][:900]:
+        errors += fail("jobLd emits validThrough. We do not know when a "
+                       "posting expires, and inventing an expiry is how a "
+                       "board ends up advertising dead roles")
+    return errors
+
+
 def check_the_company_detail_ships() -> int:
     """A file that exists in data/ is not a file the site serves.
 
@@ -16173,6 +16214,7 @@ def main() -> int:
     errors += check_manual_merge_never_doubles_a_fetched_row()
     errors += check_board()
     errors += check_rival_door_refuses_a_category()
+    errors += check_jobposting_never_invents_a_country()
     errors += check_the_company_detail_ships()
     errors += check_news_reads_a_date_only_where_a_reader_would()
     errors += check_news_record_names_its_company_without_the_cache()

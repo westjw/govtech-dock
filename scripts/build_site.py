@@ -509,10 +509,24 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
             # block at all for the rest. They keep their title, description and
             # canonical - a page a person can read and a crawler can index -
             # and simply stop making a job claim we cannot complete.
-            if off.get("city"):
-                r["ci"] = off["city"]
+            # A CITY IS NOT A COUNTRY. The note above states the rule this
+            # code did not keep: assert addressCountry "US" only where a real
+            # US STATE parsed. A city alone was enough to emit the block, and
+            # the Worker stamps US onto whatever it gets - so Leon (Spain),
+            # Kitchener (Ontario), London (England) and Buenos Aires went to
+            # Google as United States jobs. 291 of 309 city-only blocks were
+            # flagged is_us false by this board's own record while its
+            # structured data said otherwise.
+            #
+            # Google for Jobs is, in _middleware's own words, "a channel that
+            # punishes a lie". A city with no state is a place we could not
+            # put in a country, and the honest block is no block: the posting
+            # keeps its title, description and canonical, and falls through to
+            # TELECOMMUTE below if the employer said remote.
             if off.get("state"):
                 r["st"] = off["state"]
+                if off.get("city"):
+                    r["ci"] = off["city"]
             if not (r.get("ci") or r.get("st")):
                 if p_.get("work_mode") == "remote":
                     r["tc"] = 1          # jobLocationType: TELECOMMUTE

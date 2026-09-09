@@ -1,10 +1,28 @@
 {
  "news": [
   {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Florida HB 803 Changes Building Permits",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/how-florida-hb-803-changes-building-permits"
+  },
+  {
+   "date": "2026-09-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Four Things Municipal Permitting Software Gets Wrong About Special Districts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/special-district-software"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "The Permitting and Community Development Software RFP Toolkit",
+   "headline": "The Permitting and Community Development Software RFP Toolkit Read Article",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.govwell.com/resources/the-permitting-and-community-development-software-rfp-toolkit"
@@ -13,7 +31,7 @@
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "AI in Government Permitting",
+   "headline": "AI in Government Permitting July 2, 2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.govwell.com/resources/ai-in-government-permitting"
@@ -82,15 +100,6 @@
    "url": "https://www.govwell.com/resources/the-road-to-housing-starts-with-local-government"
   },
   {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Four Things Municipal Permitting Software Gets Wrong About Special Districts Read Article",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/special-district-software"
-  },
-  {
    "date": "2026-08-19",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.govwell.com/resources/the-government-software-request-for-proposal-rfp-guide"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Florida HB 803 Changes Building Permits May 29, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/how-florida-hb-803-changes-building-permits"
   }
  ],
  "profile": {
