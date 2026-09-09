@@ -340,7 +340,7 @@
    * companies whose site was read and yielded no board a fetcher can use. */
   const STRUCTURED = ["ashby", "greenhouse", "lever", "workable", "recruitee",
                       "breezy", "smartrecruiters", "bamboohr", "workday",
-                      "rippling", "jazzhr", "icims", "paylocity", "oracle"];
+                      "rippling", "jazzhr", "icims", "paylocity", "oracle", "jibe", "adp", "gusto", "gem"];
 
   function verdictOf(c) {
     const kind = c.ats_type || null;

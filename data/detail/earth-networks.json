@@ -18,5 +18,50 @@
    "kind_rule": null,
    "url": "https://www.earthnetworks.com/resources/weather-facts/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Earth Networks sells hyperlocal weather intelligence and real-time lightning detection to organizations that have to make safety decisions outdoors. A core use is warning people who work and play outdoors when lightning is approaching.",
+   "The company frames the lightning network as detection rather than prediction. It claims coverage in more than 90 countries. Warnings reach people by email, text message and mobile push notification. Audible outdoor horns carry the same warning across a site. Its Sferic Maps product tracks more than 80 real-time weather conditions on a map. Sferic Connect lets administrators notify staff of dangerous weather on iOS and Android devices, and can stop end users from opting out.",
+   "Meteorological staff are on hand around the clock when a customer is unsure what to do. Product pages point at schools as one setting for the alerts. Airports are another. The company also publishes a report on lightning detected across the United States."
+  ],
+  "quote": {
+   "text": "Real-time detection, not inaccurate prediction",
+   "url": "https://www.earthnetworks.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.earthnetworks.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.earthnetworks.com/product/decision-support-collaboration-tools/sferic-maps/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.earthnetworks.com/product/decision-support-collaboration-tools/sferic-mobile/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.earthnetworks.com/product/sferic-connect/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.earthnetworks.com"
+   ],
+   [
+    "https://www.earthnetworks.com",
+    "https://www.earthnetworks.com/product/decision-support-collaboration-tools/sferic-maps/",
+    "https://www.earthnetworks.com/product/sferic-connect/"
+   ],
+   [
+    "https://www.earthnetworks.com",
+    "https://www.earthnetworks.com/product/decision-support-collaboration-tools/sferic-mobile/"
+   ]
+  ],
+  "written_on": "2026-09-09",
+  "by_kind": "site"
+ }
 }

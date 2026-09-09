@@ -687,5 +687,57 @@
    "website": "https://www.socure.com",
    "source_event": "NASWA 2025"
   }
+ },
+ "core": {
+  "call": "in",
+  "name": "CORE",
+  "on": "2026-09-09",
+  "at": "2026-09-09T14:52:39-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Digital payment and billing platform with online, mobile, kiosk and in-person payments and revenue management for government agencies and municipal utilities.",
+   "website": "http://corebt.com",
+   "source_event": "AWWA ACE 2026"
+  }
+ },
+ "csg": {
+  "call": "sled",
+  "name": "CSG",
+  "on": "2026-09-09",
+  "at": "2026-09-09T14:52:57-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Billing, revenue management, payments, and customer engagement software for telecom, utilities, and other high-volume billers",
+   "website": "https://www.csgi.com",
+   "source_event": "GFOA 2026"
+  }
+ },
+ "clinicmind": {
+  "call": "sled",
+  "name": "ClinicMind",
+  "on": "2026-09-09",
+  "at": "2026-09-09T16:11:56-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "EHR, billing and revenue cycle software for independent chiropractic, mental health, personal injury and multi-specialty private practices",
+   "website": "https://www.clinicmind.com",
+   "source_event": "NatCon 2026"
+  }
+ },
+ "clio": {
+  "call": "sled",
+  "name": "Clio",
+  "on": "2026-09-09",
+  "at": "2026-09-09T16:13:10-04:00",
+  "by": "owner",
+  "why": null,
+  "saw": {
+   "description": "Cloud legal practice management, billing, and document software for law firms",
+   "website": "https://www.clio.com",
+   "source_event": "IMLA 2026"
+  }
  }
 }

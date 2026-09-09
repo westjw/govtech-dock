@@ -1097,7 +1097,7 @@ to prevent.
 - Company `id` = kebab-case name (parenthetical suffixes dropped).
 - `ats.type` ∈ ashby | greenhouse | lever | workable | recruitee | breezy |
   smartrecruiters | bamboohr | workday | rippling | jazzhr | icims | paylocity
-  | oracle | html | unknown.
+  | oracle | jibe | adp | gusto | gem | html | unknown.
   Prefer structured API types; `html` is a last resort; `unknown` means
   "needs discovery" and is skipped by refresh. `coverage.py::STRUCTURED` is the
   list that decides what counts as a real API — add a new type in both places.

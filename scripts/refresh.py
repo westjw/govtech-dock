@@ -71,6 +71,7 @@ _ATS_HOSTS = (
     "applicantpro.com", "hirehive.com", "hrmdirect.com", "ttcportals.com",
     "jobvite.com", "dayforcehcm.com", "adp.com", "ycombinator.com",
     "gnahiring.com", "trakstar.com", "oraclecloud.com", "paycomonline.net",
+    "gem.com",
 )
 
 

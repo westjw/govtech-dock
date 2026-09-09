@@ -29,6 +29,46 @@
    "on": "2026-09-08",
    "at": "2026-09-08T18:15:45-04:00",
    "by": "owner"
+  },
+  {
+   "queue": "missing-websites",
+   "id": "neogov-powerdms-by-neogov",
+   "name": "NEOGOV & PowerDMS by NEOGOV",
+   "saw": "Missing-websites card: Parks & Rec / Suppliers & Services, no website, description says HR, policy and training software for government - exhibited at NRPA 2026",
+   "argument": "NOT A COMPANY - a trade-show booth name. Two brands shared a stand at NRPA 2026 and the exhibitor sweep filed the booth as one entity. Verified from their own site: governmentjobs.com/careers/neogovpe carries a privacy notice naming the legal entity as Governmentjobs.com, Inc. (DBA NEOGOV), with related brands NEOGOV.com, NEOED.com, PowerDMS.com, Governmentjobs.com and Schooljobs.com. So PowerDMS is a BRAND of NEOGOV, not a subsidiary and not a peer. Three records exist today: neogov (the real parent, neogov.com, founded 2000, General Gov / HR & Workforce), power-dms-by-neogov (powerdms.com, Public Safety / Suppliers & Services), and this booth record with no website at all. ONE SHARED BOARD: powerdms.com/careers links to governmentjobs.com/careers/neogovpe, which is NEOGOV hiring on its own product. It is JS-rendered - 0 job links in the HTML, 20 after Chromium renders it - so ats.py cannot read it as html. governmentjobs.com is not in ATS_MARKERS and no other company on this board uses it, so it is not worth an integration. Proposed, NOT APPLIED, owner asked to log only: merge this booth record away, keep neogov as parent with the neogovpe board, keep power-dms-by-neogov as a brand pointing at the same board, and record the parent link.",
+   "on": "2026-09-09",
+   "at": "2026-09-09T14:50:53-04:00",
+   "by": "owner"
+  },
+  {
+   "queue": "acquisitions",
+   "id": "isport360",
+   "name": "iSport360",
+   "saw": "Parks & Rec / Youth Sports & Leagues, isport360.com, founded 2016, ats unknown, source: competitor sweep. Their About page banner reads: iSport360 was recently acquired by Signature Media!",
+   "argument": "ACQUIRED, and the acquirer is not a govtech vendor - this is a scope question, not a merge. Their own announcement: Signature Athletics has officially acquired iSport360 ... This acquisition marks the official launch of Signature Media, the content-to-commerce division of Signature Athletics. So the acquirer is Signature Athletics (signaturelocker.com), whose own meta description reads: Signature Athletics offers custom, on-demand uniforms and sideline swag for Soccer, Field Hockey and Lacrosse programs. That is DTC apparel and team stores, not software sold to a rec department. Signature Media is a division launched by the deal, not the buyer - the homepage banner naming it as the acquirer is loose. Neither Signature entity is on this board. iSport360 has no careers page (404 on /careers and /about/careers) and its ats is unknown; signaturelocker.com/pages/careers answers 200, so any hiring is likely to move there. iSport360 is NOT in the acquisitions queue today because nothing recorded the deal. Proposed, NOT APPLIED, owner asked to log only. TWO QUESTIONS FOR THE OWNER, both scope calls: (1) does a govtech product acquired by a consumer apparel company stay on this board, given the announcement repositions it as content-to-commerce rather than software a Parks and Rec department buys; (2) if it stays, is Signature Athletics added as its parent even though the parent is not govtech and would never qualify on its own.",
+   "on": "2026-09-09",
+   "at": "2026-09-09T14:59:15-04:00",
+   "by": "owner"
+  },
+  {
+   "queue": "leads",
+   "id": "city-detect",
+   "name": "City Detect",
+   "saw": "ats html -> jobs.gusto.com/boards/city-detect-6e1a4cdf..., and a posts_at recorded 2026-09-08 by owner with where=own, label their own careers page, pointing at that same Gusto URL",
+   "argument": "THE posts_at IS MISLABELLED AND POINTS AT THE WRONG PAGE. where=own means their own careers page; the URL stored is jobs.gusto.com, which is a hosted ATS and not their page. Their actual careers page is citydetect.com/careers and it answers 200. The Gusto board answers 403 - a Cloudflare bot challenge on every path, including its API shapes - so it cannot be read and should not be presented as where they post. Checked again 2026-09-09: gusto 403, citydetect.com/careers 200. A research pass on the company also found that citydetect.com/careers lists NO openings today: it has an Open Roles heading with no positions behind it and funnels candidates into a Gem form (gem.com/form?formID=...), which is a talent-CRM pipeline, not a job board. So the honest state is: careers page exists, no openings listed, no readable board. Proposed, NOT APPLIED: point posts_at at citydetect.com/careers, and reconsider whether where=own is right at all given the page lists nothing - careers page with no openings is a different fact from they post here. Related: Gusto is not in ATS_MARKERS and only five companies on this board use it, all behind the same 403, so it is not worth an integration - that is recorded separately.",
+   "on": "2026-09-09",
+   "at": "2026-09-09T15:37:35-04:00",
+   "by": "owner"
+  },
+  {
+   "queue": "leads",
+   "id": "city-detect",
+   "name": "City Detect",
+   "saw": "Correcting my own note from 20 minutes ago, which said citydetect.com/careers lists no openings. It does. The owner sent a screenshot of the page showing three.",
+   "argument": "CORRECTION - THE EARLIER NOTE WAS WRONG, AND THE REASON IT WAS WRONG IS THE FINDING. City Detect has THREE open roles, two of them sales: Account Executive (Remote), Business Development Representative (Remote), Full Stack Product Engineer, Design and Geospatial Focus (Remote). Exactly the content this board exists to carry, and it has been invisible. The board is GEM, at jobs.gem.com/citydetect, and it is hidden two ways at once: the careers page EMBEDS it in an iframe (jobs.gem.com/citydetect?embed=true), so the outer page text contains none of the titles - a plain fetch and even a rendered read of the outer document find only a Join our talent network form - and the Gem page itself is a 4KB JavaScript shell, so fetching it directly finds nothing either. Chromium reading the child frame finds all three. That is why my first pass, the research card, and ats.py all independently concluded there were no openings: each of them read the outer page. THE STORED BOARD IS ALSO WRONG: ats.ref and posts_at.url both point at jobs.gusto.com, which 403s behind a Cloudflare wall and is not their board at all. Gem is not Gusto: jobs.gem.com answers 200 and renders, it just needs a browser. Proposed, NOT APPLIED: set the board to jobs.gem.com/citydetect, correct posts_at, and note that this company has three openings including two quota-carrying. WORTH ASKING SEPARATELY: how many of the 813 page-only companies hide their board in an iframe like this. It is a different failure from a JS shell and nothing in ats.py looks for it - the extension already learned this lesson once, which is why capture.js injects with allFrames true.",
+   "on": "2026-09-09",
+   "at": "2026-09-09T15:42:49-04:00",
+   "by": "owner"
   }
  ]
 }

@@ -202,7 +202,7 @@ _ATS_HOSTS = ("greenhouse", "lever", "ashby", "workable", "recruitee", "breezy",
               "icims", "paylocity", "oracle", "trinethire", "gusto", "jobscore",
               "ycombinator", "myworkdayjobs", "applytojob", "dayforce", "ukg",
               "adp", "paycom", "clearcompany", "teamtailor", "personio",
-              "linkedin", "indeed", "paycor", "hrmdirect", "jobvite", "lensa")
+              "linkedin", "indeed", "paycor", "hrmdirect", "jobvite", "lensa", "gem")
 
 
 def _registrable(host: str) -> str:

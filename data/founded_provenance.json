@@ -145,7 +145,12 @@
   "by": "agent:overnight-build",
   "at": "2026-08-24T09:08:42-04:00",
   "why": "Xplor Recreation founded 1998 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
-  "confirmed": null
+  "confirmed": {
+   "by": "owner",
+   "at": "2026-09-09T16:18:30-04:00",
+   "year": 1988,
+   "corrected_from": 1998
+  }
  },
  "concourse": {
   "year": 2023,
@@ -166,7 +171,12 @@
   "by": "agent:overnight-build",
   "at": "2026-08-24T09:08:45-04:00",
   "why": "GameChanger founded 2009 [written by a build agent while testing the belt, NOT a human ruling - spot-checked correct on Workday, Tanium, DailyPay, Harris, Auror; Arrive looks wrong]",
-  "confirmed": null
+  "confirmed": {
+   "by": "owner",
+   "at": "2026-09-09T16:18:59-04:00",
+   "year": 2009,
+   "corrected_from": null
+  }
  },
  "ease-health": {
   "year": 2025,

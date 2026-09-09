@@ -490,7 +490,7 @@ def _fix_encoding(resp) -> None:
     resp.encoding = best_charset(raw, ctype, resp.encoding)
 
 
-def _post_json(url: str, body: dict) -> dict:
+def _post_json(url: str, body: dict | list) -> dict | list:
     _host_gate(url)
     try:
         resp = requests.post(url, json=body, headers={**UA, "Content-Type": "application/json"},
@@ -2038,6 +2038,308 @@ def fetch_adp(ref: str) -> list[dict]:
                     "url": url, "posted": posted_date(r.get("postDate"))})
     return out
 
+# ------------------------------------------------------------------ Gusto
+#
+# jobs.gusto.com is server-rendered HTML with no API, no JSON-LD and no
+# embedded payload - a parser reads the markup or reads nothing. It earns a
+# place beside the JSON boards for the reason `html` does not: it states its
+# own emptiness in words, so a zero here is a fact the employer published
+# rather than a fetcher's silence. STRUCTURED means enumerable, not JSON.
+#
+# FIVE STATES, each with a POSITIVE marker, checked in a fixed order:
+#   populated  "Open Positions" + /postings/ hrefs      -> rows
+#   empty      "There are no open positions currently"  -> [] -> None found
+#   closed     "This job board is closed."              -> Unknown
+#   gone       body says "404 Error" (served as 404)    -> Unknown
+#   anything else                                       -> Unknown
+#
+# CLOSED IS NOT EMPTY, and that distinction is the whole point of this comment.
+# A closed board means the employer MOVED - City Detect left this vendor for
+# Gem and their Gusto board is still live and still takes applications - not
+# that they stopped hiring. Reading it as a zero deletes a warm door.
+GUSTO_HOST = "jobs.gusto.com"
+GUSTO_BASE = "https://jobs.gusto.com/"
+
+_GUSTO_REF = re.compile(
+    r"^[a-z0-9][a-z0-9-]*-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+    re.I)
+# Measured on every live board: "Careers at MD Ally", "Careers at Kaiden AI".
+# The closed board's title is the bare word "Careers", which is why the
+# trailing \S matters - it is what separates a real board from a shell.
+_GUSTO_CHROME = re.compile(r"<title>\s*Careers at\s+\S", re.I)
+_GUSTO_GONE = re.compile(r"404 Error|can'?t find the page you'?re looking for", re.I)
+_GUSTO_CLOSED = re.compile(r"this\s+job\s+board\s+is\s+closed", re.I)
+_GUSTO_EMPTY = re.compile(r"there\s+are\s+no\s+open\s+positions", re.I)
+_GUSTO_CARD = re.compile(r'<a\b[^>]*href="(/postings/[^"]+)"[^>]*>(.*?)</a>', re.S | re.I)
+_GUSTO_HREF = re.compile(r'href="(/postings/[^"]+)"')
+_GUSTO_UL = re.compile(r'<ul[^>]*class="[^"]*divide-y[^"]*"[^>]*>(.*?)</ul>', re.S | re.I)
+_GUSTO_LI = re.compile(r"<li\b[^>]*>", re.I)
+_GUSTO_H3 = re.compile(r"<h3\b[^>]*>(.*?)</h3>", re.S | re.I)
+_GUSTO_P = re.compile(r"<p\b[^>]*>(.*?)</p>", re.S | re.I)
+_GUSTO_PAGED = re.compile(r'rel="next"|href="[^"]*\?[^"]*\bpage=\d', re.I)
+# The empty boards are 8,586-8,779 bytes; the 404 body is 2,898. A truncated
+# response that happened to retain one sentence must never be read as a claim.
+_GUSTO_MIN_BYTES = 4000
+_GUSTO_TYPES = {"full time", "part time", "contractor", "internship",
+                "temporary", "intern", "contract", "seasonal"}
+_MIDDOT = "\u00b7"
+
+
+def _gusto_seg(ref: str) -> str:
+    """The board path segment, from a bare segment or a full URL.
+
+    Liberal about what is on file, strict about what reaches the network. The
+    segment is NEVER derived from the company id: kaiden-ai's board is
+    `kaiden-incorporated-868aff01-...` and tranquility-ai's is
+    `tranquility-ai-inc-bb9f0c71-...`.
+    """
+    s = str(ref or "").strip()
+    if s.lower().startswith("http"):
+        parts = urllib.parse.urlsplit(s)
+        if parts.netloc.lower() != GUSTO_HOST:
+            raise AtsError("gusto ref is not a jobs.gusto.com board")
+        path = parts.path
+        s = path.split("/boards/", 1)[-1] if "/boards/" in path else path
+    seg = s.split("?")[0].strip("/")
+    if not _GUSTO_REF.match(seg):
+        raise AtsError(f"gusto ref is not a board id: {ref!r}")
+    return seg
+
+
+def _gusto_ptext(frag: str) -> str:
+    """One card <p>'s visible text.
+
+    _ANYTAG is quote-blind, and that is deliberate: two svgs on the live
+    city-detect board carry `class="h-5 w-5 inline mr-1 width="16"` - an
+    unclosed quote. A quote-aware tag regex leaks `16"` into the title. Do not
+    "fix" this into an attribute-aware pattern.
+    """
+    return _unescape(_ANYTAG.sub(" ", _SCRIPTY.sub(" ", frag))).strip()
+
+
+def _gusto_is_meta(line: str) -> bool:
+    """A pay/employment chip rather than a place."""
+    return (_MIDDOT in line or line.lower() in _GUSTO_TYPES
+            or bool(_PAY_CHIP.match(line)))
+
+
+def fetch_gusto(ref: str) -> list[dict]:
+    raw = _get(GUSTO_BASE + "boards/" + _gusto_seg(ref)).text
+    text = plain_html(raw)
+    hrefs = set(_GUSTO_HREF.findall(raw))
+
+    # 1. Truncation. Before any sentence on the page is read as a statement.
+    if len(raw.encode("utf-8", "ignore")) < _GUSTO_MIN_BYTES:
+        raise AtsError("gusto board unreadable: page truncated")
+    # 2. Gone. Keyed on the BODY, not the status code, so it holds whether the
+    #    vendor serves this as 404 (it does today) or as a 200 shell later.
+    if _GUSTO_GONE.search(text):
+        raise AtsError("gusto board not found: page says 404")
+    # 3. Closed. HTTP 200, no postings, no company chrome. They moved.
+    if _GUSTO_CLOSED.search(text):
+        raise AtsError("gusto board is closed - find where they moved")
+    # 4. Contradiction: it both lists postings and disclaims them.
+    if hrefs and _GUSTO_EMPTY.search(text):
+        raise AtsError("gusto board both lists postings and disclaims them")
+    # 5. Pagination. Unknown for a big board is loud and fixable; a truncated
+    #    board published as complete is the SmartRecruiters 100-of-251 failure.
+    if _GUSTO_PAGED.search(raw):
+        raise AtsError("gusto board looks paginated - unhandled")
+    # 6. Populated. STRICTLY BEFORE the empty branch, so a page carrying any
+    #    application link can never be read as empty whatever its scripts say.
+    if hrefs:
+        return _gusto_rows(raw, hrefs)
+    # 7. THE ONLY EMPTY RETURN. The vendor's own sentence, in text that has had
+    #    <script>/<style> stripped by plain_html, on a page whose title names
+    #    the employer, over the byte floor, with no /postings/ anywhere.
+    if _GUSTO_EMPTY.search(text) and _GUSTO_CHROME.search(raw):
+        return []
+    # 8. Looks like dead code and is not. Every unrecognised shape is Unknown.
+    raise AtsError("gusto board markup did not match any known shape")
+
+
+def _gusto_rows(raw: str, hrefs: set) -> list[dict]:
+    """Parse the populated branch, then refuse to report a partial read."""
+    out = []
+    for href, inner in _GUSTO_CARD.findall(raw):
+        h3s = _GUSTO_H3.findall(inner)
+        if not h3s:
+            raise AtsError("gusto card has no title")
+        if len(h3s) > 1:
+            # We would not know which pay belongs to which title, and a salary
+            # published against the wrong job is the one field where being
+            # wrong is worse than being silent.
+            raise AtsError("gusto anchor wraps 2+ headings - grouping changed")
+        title = _unescape(_ANYTAG.sub(" ", h3s[0])).strip()
+        if not title:
+            raise AtsError("gusto card title is empty")
+        lines = [t for t in (_gusto_ptext(x) for x in _GUSTO_P.findall(inner)) if t]
+        # POSITION FIRST, PATTERN SECOND: the first line that is not a chip is
+        # the place. Testing the location pattern first steals a title that
+        # looks like one.
+        location = next((t for t in lines if not _gusto_is_meta(t)), "")
+        comps = []
+        for line in (t for t in lines if _gusto_is_meta(t)):
+            for seg in line.split(_MIDDOT):
+                got = _ats_text(seg.strip())
+                if got:
+                    comps.append(got)
+        if len(comps) > 1:
+            raise AtsError("gusto card states two pay ranges")
+        out.append({"title": title, "location": location,
+                    "url": urllib.parse.urljoin(GUSTO_BASE, href),
+                    "comp": comps[0] if comps else None})
+
+    # Every href is represented. Asymmetric: extra rows are fine, a missing
+    # one is a deleted job nothing counts.
+    missing = hrefs - {urllib.parse.urlsplit(r["url"]).path for r in out}
+    if missing:
+        raise AtsError(f"gusto parsed {len(out)} of {len(hrefs)} postings")
+    # The page's own card count. ALSO ASYMMETRIC, deliberately: fewer rows than
+    # cards means one went unread; more is fine (a <ul> whose class we no
+    # longer recognise still yielded its anchors). Written as equality this
+    # false-alarms the day Gusto splits a board by department.
+    li_total = sum(len(_GUSTO_LI.findall(b)) for b in _GUSTO_UL.findall(raw))
+    if len(out) < li_total:
+        raise AtsError(f"gusto read {len(out)} rows from {li_total} cards")
+    return out
+
+
+# ------------------------------------------------------------------ Gem
+#
+# jobs.gem.com renders NOTHING to a fetch - every page, board index and job
+# alike, is the same ~4KB JavaScript shell with no JobPosting JSON-LD. The
+# shell calls one public GraphQL endpoint that needs no auth, no key and no
+# Referer, and answers ~1.6KB of structured JSON.
+#
+# THE DISCRIMINATOR IS `jobBoardExternal`. A live board with nothing open and a
+# slug that does not exist return a BYTE-IDENTICAL `"jobPostings": []`; only
+# the board object tells them apart. One `or {}` added by somebody tidying up
+# turns every retired or mistyped slug into a public "None found".
+GEM_HOST = "jobs.gem.com"
+GEM_API = "https://jobs.gem.com/api/public/graphql/batch"
+
+_GEM_SLUG = re.compile(r"^[a-z0-9][a-z0-9._-]{0,80}$", re.I)
+_MISSING = object()
+
+# FULL adds exactly one field to the board's own captured query:
+# descriptionHtml on jobPostings, which returns the real ad (2,700-4,100
+# characters on City Detect's three roles) in the SAME single POST.
+_GEM_QUERY_FULL = """query JobBoardList($boardId: String!) {
+  oatsExternalJobPostings(boardId: $boardId) {
+    jobPostings { extId title descriptionHtml
+      locations { city isoCountry isRemote }
+      job { locationType employmentType } } }
+  jobBoardExternal(vanityUrlPath: $boardId) { id teamDisplayName }
+}"""
+
+# The field we added is the field most likely to be removed. Without this
+# fallback a schema change to it would turn every Gem company Unknown.
+_GEM_QUERY_MIN = """query JobBoardList($boardId: String!) {
+  oatsExternalJobPostings(boardId: $boardId) {
+    jobPostings { extId title
+      locations { city isoCountry isRemote }
+      job { locationType employmentType } } }
+  jobBoardExternal(vanityUrlPath: $boardId) { id teamDisplayName }
+}"""
+
+
+def _gem_slug(ref: str) -> str:
+    """The vanity slug. NEVER derived from the company id - City Detect's id
+    is `city-detect` and its Gem slug is `citydetect`."""
+    s = str(ref or "").strip()
+    if s.lower().startswith("http"):
+        parts = urllib.parse.urlsplit(s)
+        if parts.netloc.lower() != GEM_HOST:
+            raise AtsError("gem ref is not a jobs.gem.com board")
+        segs = [x for x in parts.path.split("/") if x]
+        s = segs[0] if segs else ""
+    if not _GEM_SLUG.match(s):
+        raise AtsError(f"gem ref is not a board slug: {ref!r}")
+    return s
+
+
+def _gem_payload(slug: str) -> tuple[dict, bool]:
+    """(data, had_descriptions). Always decided on an error-free response."""
+    for query, full in ((_GEM_QUERY_FULL, True), (_GEM_QUERY_MIN, False)):
+        body = [{"operationName": "JobBoardList",
+                 "variables": {"boardId": slug}, "query": query}]
+        payload = _post_json(GEM_API, body)
+        if not isinstance(payload, list) or not payload or not isinstance(payload[0], dict):
+            raise AtsError("gem: unexpected graphql envelope")
+        if payload[0].get("errors"):
+            if full:
+                continue                  # retry once without the added field
+            raise AtsError("gem: graphql errors")
+        data = payload[0].get("data")
+        if not isinstance(data, dict):
+            raise AtsError("gem: unexpected graphql envelope")
+        return data, full
+    raise AtsError("gem: graphql errors")
+
+
+def fetch_gem(ref: str) -> list[dict]:
+    slug = _gem_slug(ref)
+    data, described = _gem_payload(slug)
+    # THE discriminator. Unknown, never "None found".
+    if data.get("jobBoardExternal") is None:
+        raise AtsError(f"gem board does not exist: {slug}")
+    # A MISSING key proves nothing; only a present-and-empty list proves
+    # absence. `or {}` here would read every drift as "nobody is hiring".
+    node = data.get("oatsExternalJobPostings", _MISSING)
+    if node is _MISSING or not isinstance(node, dict):
+        raise AtsError("gem: postings node missing")
+    posts = node.get("jobPostings", _MISSING)
+    if posts is _MISSING or not isinstance(posts, list):
+        raise AtsError("gem: postings list missing")
+    if not posts:
+        return []                         # live board, nothing open
+    out = []
+    for p in posts:
+        title = (p.get("title") or "").strip()
+        if not title:
+            continue
+        locs = [l for l in (p.get("locations") or []) if isinstance(l, dict)]
+        job = p.get("job") or {}
+        remote = (job.get("locationType") == "REMOTE"
+                  or (locs and all(l.get("isRemote") for l in locs)))
+        # locations[].name MUST NEVER reach a row. Gem's own UI prints team
+        # labels there - "City Detect (AL)", "City Detect Hardware Team" - and
+        # roles.geography reads "(AL)" as an Alabama desk. That is the
+        # two-capitals bug this repo has already recorded three times.
+        cities = list(dict.fromkeys(c for c in (l.get("city") for l in locs) if c))
+        if remote:
+            location = "Remote"
+        else:
+            # Slash-joined so a multi-site req yields NO desk rather than
+            # picking one of them.
+            location = " / ".join(cities)
+        isos = {l.get("isoCountry") for l in locs if l.get("isoCountry")}
+        hint = None
+        if len(locs) == 1 and not remote and locs[0].get("city"):
+            hint = office_hint(city=locs[0].get("city"),
+                               country=locs[0].get("isoCountry"))
+        elif len(isos) == 1:
+            # Sets no office (build_board gates that on city/state) and does
+            # settle is_us from the employer's own field.
+            hint = office_hint(country=next(iter(isos)))
+        row = {"title": title, "location": location,
+               "url": f"https://{GEM_HOST}/{slug}/{p.get('extId')}",
+               # On the MIN retry the field was never asked for. Zero it
+               # explicitly rather than trusting the server not to send one:
+               # "" means "the board did not tell us", and a stale
+               # description would be read for pay by plain_rows.
+               "jd": plain_html(p.get("descriptionHtml") or "") if described else "",
+               "mode": work_mode(job.get("locationType")),
+               "comp": None}
+        if hint:
+            row["office_hint"] = hint
+        out.append(row)
+    if not out:
+        raise AtsError("gem: every posting had a blank title")
+    return out
+
+
 FETCHERS = {
     "ashby": fetch_ashby,
     "greenhouse": fetch_greenhouse,
@@ -2056,6 +2358,8 @@ FETCHERS = {
     "oracle": fetch_oracle,
     "html": fetch_html,
     "adp": fetch_adp,
+    "gusto": fetch_gusto,
+    "gem": fetch_gem,
 }
 
 

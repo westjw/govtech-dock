@@ -15666,6 +15666,534 @@ def check_the_domain_lives_in_one_place() -> int:
     return errors
 
 
+# --- Gusto and Gem fixtures ---------------------------------------------------
+#
+# Trimmed from the real bytes, 2026-09-09, keeping every awkward thing the live
+# markup carries: the MALFORMED svg (class="h-5 w-5 inline mr-1 width="16" - an
+# unclosed quote, two of them on the live city-detect board), the stray </br>,
+# and the &middot; separating pay from employment type.
+_GUSTO_SVG = ('<svg class="h-5 w-5 inline mr-1 width="16" height="12" '
+              'viewBox="0 0 16 12" fill="none"><path d="M0.5 3.3z"/></svg>')
+
+
+def _gusto_card(href, title, loc_p, meta_p):
+    return (f'<li>\n<a class="block hover:bg-gray-50" href="{href}">'
+            f'<div class="px-4 py-4 sm:px-6"><h3 class="text-lg">{title}</h3>'
+            f'<p class="text-gray-500 flex">{_GUSTO_SVG}\n{loc_p}\n</br>\n</p>'
+            f'<p class="text-gray-500 flex items-center">{_GUSTO_SVG}{meta_p}</p>'
+            f'</div></a></li>')
+
+
+def _gusto_page(company, body, pad=True):
+    filler = ("<!-- " + "x" * 6000 + " -->") if pad else ""
+    return (f"<html><head><title>Careers at {company}</title></head><body>"
+            f"<h1>{company}</h1><p>About {company}.</p>{body}{filler}</body></html>")
+
+
+def _gusto_list(cards):
+    return ('<div><div class="mb-8"><h1 class="text-xl leading-6 font-medium '
+            'text-gray-900">\nOpen Positions\n</h1></div>'
+            '<div class="bg-white shadow overflow-hidden sm:rounded-md">'
+            '<ul class="divide-y divide-gray-200">' + "".join(cards) + "</ul></div></div>")
+
+
+_CITYDETECT = _gusto_page("City Detect", _gusto_list([
+    _gusto_card("/postings/city-detect-account-executive-6068685a", "Account Executive",
+                "Remote", "$85,000 - $95,000 per year &middot; Full time"),
+    _gusto_card("/postings/city-detect-bdr-5acbaa05", "Business Development Representative",
+                "Remote", "$65,000 - $75,000 per year &middot; Full time")]))
+
+_UPPERHAND = _gusto_page("Upper Hand", _gusto_list([
+    _gusto_card("/postings/upper-hand-senior-software-engineer-1", "Senior Software Engineer",
+                "INDIANAPOLIS, IN", "Full time")]))
+
+_KAIDEN_EMPTY = _gusto_page(
+    "Kaiden AI", "<h3>There are no open positions currently</h3>")
+
+_GUSTO_404 = ("<html><head><title>Gusto</title></head><body><h1>404 Error</h1>"
+              "<h2>Oh no! We can't find the page you're looking for.</h2>"
+              "</body></html>" + "<!-- " + "y" * 6000 + " -->")
+
+_GUSTO_CLOSED_PAGE = ("<html><head><title>Careers</title></head><body>"
+                      "<p>Careers</p><p>Finish Setup</p>"
+                      "<p>This job board is closed.</p>"
+                      "</body></html>" + "<!-- " + "z" * 6000 + " -->")
+
+
+def _gem_post(ext, title, cities, remote=True, desc="<p>Own the territory.</p>"):
+    # `name` carries Gem's INTERNAL TEAM LABELS, verbatim from the live board -
+    # "City Detect (AL)", "City Detect Hardware Team". They are what the trap
+    # is made of, so the fixture must have them or a mutation that reads them
+    # changes nothing and the guard proves nothing.
+    labels = {"Tuscaloosa": "City Detect (AL)", "Dallas": "City Detect (DAL)",
+              "San Jose": "City Detect (CA)", "Denver": "Nutrislice (CO)"}
+    return {"extId": ext, "title": title, "descriptionHtml": desc,
+            "locations": [{"name": labels.get(c, f"{c} Team"), "city": c,
+                           "isoCountry": "USA", "isRemote": remote}
+                          for c in cities],
+            "job": {"locationType": "REMOTE" if remote else "ONSITE",
+                    "employmentType": "FULL_TIME"}}
+
+
+def _gem_payload(posts, board=True):
+    return [{"data": {
+        "oatsExternalJobPostings": {"jobPostings": posts},
+        "jobBoardExternal": ({"id": "1", "teamDisplayName": "City Detect"}
+                             if board else None)}}]
+
+
+def check_gusto_and_gem_prove_absence_or_say_unknown() -> int:
+    """Neither fetcher may report a zero it did not read.
+
+    DRIVEN THROUGH refresh.check_company, with ats.requests stubbed rather
+    than ats._get, and the assertion is on the PUBLISHED STATUS. Stubbing
+    _get - which is what the jibe check does - stays green for a fetcher
+    that reaches straight for requests and skips the host gate and
+    _fix_encoding, and this repo has now caught that shape six times.
+
+    THE ONE RULE BOTH FETCHERS EXIST TO KEEP: an empty list is returned only
+    where the vendor SAYS it has nothing. Gusto says it in a sentence; Gem
+    says it by returning a board object with an empty postings array. Every
+    other silence - a closed board, a dead slug, markup nobody recognises, a
+    truncated body, a missing key - is Unknown, because a false "None found"
+    silently deletes a warm door and nothing ever contradicts it.
+
+    CLOSED IS NOT EMPTY. tcare-inc's live board answers 200 and says "This
+    job board is closed." That is an employer who MOVED, exactly as City
+    Detect moved off this vendor to Gem, and reading it as a zero is the
+    false absence this file exists to prevent.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats, classify, refresh
+    errors = 0
+    seen = {"get": [], "post": [], "gate": []}
+
+    def serve(text):
+        def fake_get(url, **kw):
+            seen["get"].append(url)
+            return _Resp(200, text=text, url=url)
+        return fake_get
+
+    def status_of(kind, ref, text=None, payloads=None):
+        """The status refresh would publish for this board."""
+        seen["get"].clear(); seen["post"].clear()
+        if text is not None:
+            ats.requests.get = serve(text)
+        if payloads is not None:
+            box = list(payloads)
+
+            def fake_post(url, **kw):
+                seen["post"].append((url, kw.get("json")))
+                return _Resp(200, payload=box.pop(0) if box else [{"data": {}}])
+            ats.requests.post = fake_post
+        got = refresh.check_company({"id": "x", "name": "X", "website": None,
+                                     "ats": {"type": kind, "ref": ref}})
+        return got["status"], got.get("note", ""), got.get("roles", [])
+
+    GREF = "acme-inc-6e1a4cdf-356e-4986-9f1d-55d200b345e9"
+    keep = (ats.requests.get, ats.requests.post, ats.HTTP_CACHE,
+            refresh._try_render, ats._host_gate)
+    try:
+        ats.HTTP_CACHE = None
+        # The render fallback is a different feature; it must not answer for
+        # the fetcher under test.
+        refresh._try_render = lambda *a, **k: None
+        real_gate = ats._host_gate
+        ats._host_gate = lambda url: (seen["gate"].append(url), real_gate(url))[1]
+
+        # -- G1: a populated board, parsed whole, with the board's own pay ----
+        rows = ats.fetch({"type": "gusto", "ref": GREF}) if False else None
+        ats.requests.get = serve(_CITYDETECT)
+        rows = ats.fetch({"type": "gusto", "ref": GREF})
+        if len(rows) != 2:
+            errors += fail(f"gusto: read {len(rows)} of a 2-posting board")
+        else:
+            titles = [r["title"] for r in rows]
+            if titles != ["Account Executive", "Business Development Representative"]:
+                errors += fail(f"gusto: titles came back {titles}")
+            if any('16"' in r["title"] for r in rows):
+                errors += fail("gusto: the malformed svg leaked into a title - "
+                               "_ANYTAG must stay quote-blind")
+            if rows[0]["location"] != "Remote":
+                errors += fail(f"gusto: location read {rows[0]['location']!r}")
+            c = rows[0].get("comp")
+            if not c or c["min"] != 85000 or c["max"] != 95000 or c["period"] != "year":
+                errors += fail(f"gusto: pay chip read as {c}")
+            elif c["source"] != "ats":
+                errors += fail(f"gusto: pay filed as source={c['source']!r}; the "
+                               f"board's own pay field is 'ats', not prose")
+
+        # -- G2: the ONLY empty return, and what it publishes -----------------
+        st, _, _ = status_of("gusto", GREF, text=_KAIDEN_EMPTY)
+        if st != "None found":
+            errors += fail(f"gusto: a board stating it has no openings published {st!r}")
+        if classify.rollup([])[0] != "None found":
+            errors += fail("classify.rollup([]) no longer means None found")
+
+        # -- G3: a dead board, whatever status code carries it ----------------
+        st, note_txt, _ = status_of("gusto", GREF, text=_GUSTO_404)
+        if st != "Unknown":
+            errors += fail(f"gusto: a 404 body published {st!r} - a dead board is "
+                           f"not an employer who stopped hiring")
+        elif "404" not in note_txt:
+            errors += fail(f"gusto: the 404 note reads {note_txt!r}; refresh stores "
+                           f"str(exc)[:40] and a reader must be able to tell why")
+
+        # -- CLOSED: an employer who moved ------------------------------------
+        st, note_txt, _ = status_of("gusto", GREF, text=_GUSTO_CLOSED_PAGE)
+        if st != "Unknown":
+            errors += fail(f"gusto: a CLOSED board published {st!r}. tcare-inc's "
+                           f"live board says 'This job board is closed' at HTTP "
+                           f"200 - they moved, exactly as City Detect did")
+        elif "closed" not in note_txt.lower():
+            errors += fail(f"gusto: the closed-board note reads {note_txt!r}")
+
+        # -- G4: the fourth state, which looks like dead code -----------------
+        st, _, _ = status_of("gusto", GREF,
+                             text=_gusto_page("Acme", "<p>Nothing familiar here.</p>"))
+        if st != "Unknown":
+            errors += fail(f"gusto: unrecognised markup published {st!r}. This is "
+                           f"the branch a future edit turns into 'return []'")
+
+        # -- G5: a card that did not parse must not be silently dropped -------
+        broken = _gusto_list([
+            _gusto_card("/postings/a-1", "Account Executive", "Remote", "Full time"),
+            _gusto_card("/postings/b-2", "Sales Engineer", "Remote", "Full time"),
+            _gusto_card("/postings/c-3", "Renewals Manager", "Remote", "Full time")
+        ]).replace("<h3 class=\"text-lg\">Renewals Manager</h3>",
+                   "<h4 class=\"text-lg\">Renewals Manager</h4>")
+        st, _, _ = status_of("gusto", GREF, text=_gusto_page("Acme", broken))
+        if st != "Unknown":
+            errors += fail(f"gusto: a board whose third card would not parse "
+                           f"published {st!r} - two of three rows reported as a "
+                           f"complete read is the silent-degradation failure")
+
+        # -- G6: a department split must NOT false-alarm ----------------------
+        split = (_gusto_list([_gusto_card("/postings/a-1", "AE", "Remote", "Full time"),
+                              _gusto_card("/postings/b-2", "BDR", "Remote", "Full time")])
+                 + _gusto_list([_gusto_card("/postings/c-3", "SE", "Remote", "Full time"),
+                                _gusto_card("/postings/d-4", "CSM", "Remote", "Full time")]))
+        ats.requests.get = serve(_gusto_page("Acme", split))
+        got = ats.fetch({"type": "gusto", "ref": GREF})
+        if len(got) != 4:
+            errors += fail(f"gusto: a board split across two lists read {len(got)} "
+                           f"of 4. The card-count assertion is asymmetric on "
+                           f"purpose; written as equality it takes live "
+                           f"companies to Unknown for a cosmetic change")
+        # And the case the asymmetry actually exists for: a <ul> whose class we
+        # no longer recognise still yields its anchors, so rows > li_total.
+        # Written as equality THIS is what goes Unknown on a cosmetic change.
+        unknown_ul = _gusto_list([
+            _gusto_card("/postings/a-1", "AE", "Remote", "Full time"),
+            _gusto_card("/postings/b-2", "BDR", "Remote", "Full time")
+        ]).replace('class="divide-y divide-gray-200"', 'class="job-list-v2"')
+        ats.requests.get = serve(_gusto_page("Acme", unknown_ul))
+        got = ats.fetch({"type": "gusto", "ref": GREF})
+        if len(got) != 2:
+            errors += fail(f"gusto: a renamed list class read {len(got)} of 2 rows. "
+                           f"More rows than recognised cards is FINE; fewer is "
+                           f"not, and that is why the test is one-sided")
+
+        # -- G7: a one-posting board is a board -------------------------------
+        ats.requests.get = serve(_UPPERHAND)
+        got = ats.fetch({"type": "gusto", "ref": GREF})
+        if len(got) != 1:
+            errors += fail(f"gusto: a single-posting board read {len(got)} rows. "
+                           f"fetch_html_titles' 'if len(out) < 2: raise' is a "
+                           f"defence for an arbitrary careers page; copied here "
+                           f"it deletes upper-hand's entire board")
+        elif got[0]["location"] != "INDIANAPOLIS, IN":
+            errors += fail(f"gusto: lost a real office: {got[0]['location']!r}")
+
+        # -- G8: position first, pattern second -------------------------------
+        nolocation = _gusto_list([_gusto_card("/postings/a-1", "AE", "Contractor",
+                                              "Full time")])
+        ats.requests.get = serve(_gusto_page("Acme", nolocation))
+        got = ats.fetch({"type": "gusto", "ref": GREF})
+        if got and got[0]["location"] not in ("",):
+            errors += fail(f"gusto: filed {got[0]['location']!r} as a place - an "
+                           f"employment chip is not a location")
+
+        # -- G9: the inert-template scar, both variants -----------------------
+        for label, page in (
+                ("in a <script>", _CITYDETECT.replace(
+                    "</body>", "<script>var m = 'There are no open positions "
+                               "currently';</script></body>")),
+                ("as plain text", _CITYDETECT.replace(
+                    "</body>", "<p>There are no open positions currently</p></body>"))):
+            ats.requests.get = serve(page)
+            try:
+                got = ats.fetch({"type": "gusto", "ref": GREF})
+                if len(got) != 2:
+                    errors += fail(f"gusto: the empty sentence {label} beside live "
+                                   f"cards produced {len(got)} rows")
+            except ats.AtsError:
+                if label == "in a <script>":
+                    errors += fail("gusto: a sentence inside a <script> stopped a "
+                                   "board with live cards being read - match "
+                                   "plain_html(raw), not the raw body")
+        # The same scar with NO cards to fall back on: a page carrying the
+        # sentence ONLY inside a script has not stated anything a reader would
+        # see. Matching the raw body here publishes "nobody is hiring" off a
+        # template literal.
+        st, _, _ = status_of("gusto", GREF, text=_gusto_page(
+            "Acme", "<p>Roles load below.</p><script>var m = 'There are no open "
+                    "positions currently';</script>"))
+        if st != "Unknown":
+            errors += fail(f"gusto: a page whose only empty-state sentence lives "
+                           f"inside a <script> published {st!r}. plain_html strips "
+                           f"scripts precisely so a template literal cannot "
+                           f"announce that an employer stopped hiring")
+
+        # -- G10 / G11: the floor, and the chrome conjunct --------------------
+        st, _, _ = status_of("gusto", GREF, text=_KAIDEN_EMPTY[:900])
+        if st != "Unknown":
+            errors += fail(f"gusto: a 900-byte truncated body published {st!r}")
+        st, _, _ = status_of("gusto", GREF,
+                             text=_KAIDEN_EMPTY.replace("Careers at Kaiden AI", "Careers"))
+        if st != "Unknown":
+            errors += fail(f"gusto: a page with no employer in its title published "
+                           f"{st!r}; that is the shape of the CLOSED board")
+
+        # -- G12: pagination ---------------------------------------------------
+        st, _, _ = status_of("gusto", GREF,
+                             text=_CITYDETECT.replace("</body>",
+                                                      '<a rel="next" href="/x">Next</a></body>'))
+        if st != "Unknown":
+            errors += fail(f"gusto: a paginated board published {st!r} as a complete "
+                           f"read - the SmartRecruiters 100-of-251 failure")
+
+        # -- G13: a bad ref must cost no request ------------------------------
+        for bad in ("https://jobs.example.com/boards/acme-1", "not-a-board"):
+            seen["get"].clear()
+            try:
+                ats.fetch({"type": "gusto", "ref": bad})
+                errors += fail(f"gusto: accepted the ref {bad!r}")
+            except ats.AtsError:
+                pass
+            if seen["get"]:
+                errors += fail(f"gusto: fetched before validating the ref {bad!r}")
+
+        # ================= GEM ================================================
+        three = [_gem_post("aaa", "Account Executive", ["Tuscaloosa", "Dallas"]),
+                 _gem_post("bbb", "Business Development Representative", ["Tuscaloosa"]),
+                 _gem_post("ccc", "Full Stack Product Engineer", ["Tuscaloosa"])]
+
+        def gem_server(url, **kw):
+            """Answers the query it was ACTUALLY SENT.
+
+            A stub that returns descriptionHtml whether or not the query asked
+            for it cannot notice the field being dropped - the fetcher would
+            keep working against the fixture and stop working against Gem.
+            """
+            seen["post"].append((url, kw.get("json")))
+            asked = "descriptionHtml" in (kw.get("json") or [{}])[0].get("query", "")
+            posts = [dict(p) for p in three]
+            if not asked:
+                for p in posts:
+                    p.pop("descriptionHtml", None)
+            return _Resp(200, payload=_gem_payload(posts))
+
+        seen["post"].clear()
+        ats.requests.post = gem_server
+        rows = ats.fetch({"type": "gem", "ref": "citydetect"})
+        if len(rows) != 3:
+            errors += fail(f"gem: read {len(rows)} of 3 postings")
+        else:
+            if rows[0]["url"] != "https://jobs.gem.com/citydetect/aaa":
+                errors += fail(f"gem: posting url built as {rows[0]['url']!r}")
+            if rows[0]["location"] != "Remote" or rows[0].get("mode") != "remote":
+                errors += fail(f"gem: remote row read as {rows[0]['location']!r}")
+            if "Own the territory" not in (rows[0].get("jd") or ""):
+                errors += fail("gem: descriptionHtml did not reach jd - that is the "
+                               "text salary.py and the family rules read")
+            if rows[0].get("comp") is not None:
+                errors += fail("gem: invented a comp; this operation states no pay")
+            h = rows[0].get("office_hint") or {}
+            if h.get("country") != "USA" or h.get("city") or h.get("state"):
+                errors += fail(f"gem: office_hint came back {h!r}; a country-only "
+                               f"hint settles is_us and invents no desk")
+        # M1: the team-label trap, asserted through roles.geography so it
+        # survives a rename rather than a substring search.
+        import roles as _roles
+        for r in rows:
+            off = _roles.geography(r["location"], r["title"]).get("office")
+            if off:
+                errors += fail(f"gem: row {r['title']!r} produced a desk {off!r}. "
+                               f"locations[].name carries team labels like "
+                               f"'City Detect (AL)', and geography reads the two "
+                               f"capitals as a state - a fabricated Alabama office")
+
+        import roles as _roles
+        # M1b: THE ALABAMA DESK. An ONSITE posting is the only shape that
+        # reaches the city/name branch at all - every remote row short-circuits
+        # to "Remote", so a fixture of remote rows cannot prove this and a
+        # mutation reading locations[].name would change nothing.
+        onsite = [_gem_post("ddd", "Field Account Executive",
+                            ["Tuscaloosa", "Dallas"], remote=False)]
+        ats.requests.post = lambda url, **kw: _Resp(200, payload=_gem_payload(onsite))
+        got = ats.fetch({"type": "gem", "ref": "citydetect"})
+        if not got:
+            errors += fail("gem: an onsite posting produced no row")
+        else:
+            loc = got[0]["location"]
+            for label in ("City Detect (AL)", "City Detect (DAL)", "Hardware Team"):
+                if label in loc:
+                    errors += fail(f"gem: the team label {label!r} reached the "
+                                   f"location field as {loc!r}. Gem's own UI "
+                                   f"prints those, which is what makes them look "
+                                   f"usable")
+            off = _roles.geography(loc, got[0]["title"]).get("office")
+            if off:
+                errors += fail(f"gem: an onsite multi-site req produced the desk "
+                               f"{off!r} from {loc!r}. roles.geography reads the "
+                               f"two capitals in 'City Detect (AL)' as a state - "
+                               f"the fabricated-Alabama-office bug, and a "
+                               f"multi-city req has no single desk to name")
+
+        # M2: a live board with nothing open
+        ats.requests.post = lambda url, **kw: _Resp(200, payload=_gem_payload([]))
+        st, _, _ = status_of("gem", "token-transit")
+        if st != "None found":
+            errors += fail(f"gem: a live board with no openings published {st!r}")
+
+        # M3: THE discriminator - a dead slug returns the identical empty array
+        ats.requests.post = lambda url, **kw: _Resp(200, payload=_gem_payload([], board=False))
+        st, _, _ = status_of("gem", "gone-away")
+        if st != "Unknown":
+            errors += fail(f"gem: a slug that does not exist published {st!r}. Its "
+                           f"payload is byte-identical to a live empty board "
+                           f"except for jobBoardExternal; that null check is the "
+                           f"entire discriminator")
+
+        # M4: a MISSING key proves nothing
+        for label, payload in (
+                ("postings key absent",
+                 [{"data": {"oatsExternalJobPostings": {},
+                            "jobBoardExternal": {"teamDisplayName": "X"}}}]),
+                ("postings node null",
+                 [{"data": {"oatsExternalJobPostings": None,
+                            "jobBoardExternal": {"teamDisplayName": "X"}}}]),
+                ("envelope is a dict", {"data": {}}),
+                ("empty envelope", [{}])):
+            ats.requests.post = lambda url, _p=payload, **kw: _Resp(200, payload=_p)
+            st, _, _ = status_of("gem", "citydetect")
+            if st != "Unknown":
+                errors += fail(f"gem: {label} published {st!r}; `or {{}}` here reads "
+                               f"every drift as 'nobody is hiring'")
+
+        # M5: postings present, all blank
+        ats.requests.post = lambda url, **kw: _Resp(
+            200, payload=_gem_payload([_gem_post("a", "", ["X"])]))
+        st, _, _ = status_of("gem", "citydetect")
+        if st != "Unknown":
+            errors += fail(f"gem: postings that all failed to parse published {st!r}")
+
+        # M6: the two-query fallback keeps the decision on a clean response
+        _min_post = _gem_post("a", "Account Executive", ["Tuscaloosa"])
+        _min_post.pop("descriptionHtml")     # MIN never asked for it
+        box = [[{"errors": [{"message": "unknown field descriptionHtml"}]}],
+               _gem_payload([_min_post])]
+        seen["post"].clear()
+        ats.requests.post = lambda url, **kw: (
+            seen["post"].append((url, kw.get("json"))),
+            _Resp(200, payload=box.pop(0)))[1]
+        got = ats.fetch({"type": "gem", "ref": "citydetect"})
+        if len(seen["post"]) != 2:
+            errors += fail(f"gem: the FULL/MIN fallback made {len(seen['post'])} "
+                           f"requests, expected 2")
+        if not got or got[0].get("jd") != "":
+            errors += fail("gem: the MIN retry must return rows with jd empty, "
+                           "never carry a stale description")
+
+        # M7: the slug is the ref, never the company id
+        seen["post"].clear()
+        ats.requests.post = lambda url, **kw: (
+            seen["post"].append((url, kw.get("json"))),
+            _Resp(200, payload=_gem_payload(three)))[1]
+        ats.fetch({"type": "gem", "ref": "citydetect"})
+        url, body = seen["post"][0]
+        if "/api/public/graphql/batch" not in url:
+            errors += fail(f"gem: posted to {url!r}")
+        if body[0]["variables"]["boardId"] != "citydetect":
+            errors += fail(f"gem: sent boardId {body[0]['variables']['boardId']!r}; "
+                           f"City Detect's company id is city-detect and its slug "
+                           f"is citydetect - a derived slug fetches nothing")
+
+        # M8: both fetchers stay behind the host gate
+        seen["gate"].clear(); seen["get"].clear()
+        ats.requests.get = serve(_CITYDETECT)
+        ats.fetch({"type": "gusto", "ref": GREF})
+        ats.fetch({"type": "gem", "ref": "citydetect"})
+        if len(seen["gate"]) != 2:
+            errors += fail(f"the host gate saw {len(seen['gate'])} of 2 requests; a "
+                           f"fetcher reaching past _get/_post_json paces nothing")
+    finally:
+        (ats.requests.get, ats.requests.post, ats.HTTP_CACHE,
+         refresh._try_render, ats._host_gate) = keep
+    return errors
+
+
+def check_every_ats_type_lands_in_a_coverage_bucket() -> int:
+    """Every fetcher's type is countable, and none falls through to 'unchecked'.
+
+    check_structured_matches_the_fetchers compares two hand-written sets.
+    This DRIVES coverage.state(), which is where the consequence lives: a
+    type in FETCHERS but absent from STRUCTURED does not read as 'page
+    only', it falls through to 'unchecked' - so those companies leave the
+    coverage denominator altogether and the published percentage moves.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats, coverage
+    errors = 0
+    for kind in sorted(ats.FETCHERS):
+        got = coverage.state({"ats": {"type": kind}}, None, None)
+        if got not in ("structured", "page only"):
+            errors += fail(f"coverage.state files a {kind!r} board as {got!r}. A "
+                           f"fetcher exists for it, so it is readable; "
+                           f"'unchecked' drops those companies out of the "
+                           f"denominator entirely")
+    return errors
+
+
+def check_a_boards_type_matches_its_host() -> int:
+    """A gusto/gem type points at that vendor, and their hosts are not html.
+
+    The specific thing this pins: City Detect runs a live Gusto board AND a
+    Gem board, and citydetect.com/careers iframes the GEM one and names
+    gusto zero times. The Gusto board is an orphan - live, still taking
+    applications, linked from nowhere the employer controls. Wiring the
+    orphan would publish a door the company stopped advertising, and the
+    pay it states could not be aged because neither board publishes a date.
+    """
+    import json as _json
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    raw = _json.loads((ROOT / "data" / "companies.json").read_text())
+    rows = raw["companies"] if isinstance(raw, dict) else raw
+    for c in rows:
+        a = c.get("ats") or {}
+        kind, ref = a.get("type"), str(a.get("ref") or "")
+        if kind == "gusto":
+            try:
+                ats._gusto_seg(ref)
+            except ats.AtsError as exc:
+                errors += fail(f"{c['id']}: gusto ref will not resolve ({exc})")
+        elif kind == "gem":
+            try:
+                ats._gem_slug(ref)
+            except ats.AtsError as exc:
+                errors += fail(f"{c['id']}: gem ref will not resolve ({exc})")
+        elif kind == "html" and ("jobs.gusto.com" in ref or "jobs.gem.com" in ref):
+            errors += fail(f"{c['id']} points at {ref[:44]} as an html page scan. "
+                           f"Both vendors have a fetcher now; a page scan of a "
+                           f"Gem board reads a JavaScript shell and learns "
+                           f"nothing, and one of a Gusto board cannot tell a "
+                           f"closed board from an empty one")
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -16118,6 +16646,9 @@ def main() -> int:
     errors += check_queue_rows_carry_what_the_page_renders()
     errors += check_queue_strengths_have_a_band()
     errors += check_structured_matches_the_fetchers()
+    errors += check_every_ats_type_lands_in_a_coverage_bucket()
+    errors += check_a_boards_type_matches_its_host()
+    errors += check_gusto_and_gem_prove_absence_or_say_unknown()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()
