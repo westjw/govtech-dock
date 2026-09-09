@@ -1,0 +1,94 @@
+{
+ "news": [
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Transit Is Only as Discoverable as Its Data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://actionfigure.ai/blog/gtfs-ops/"
+  },
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What We Shared and Learned at ACT 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://actionfigure.ai/blog/what-we-shared-and-learned-at-act-2026/"
+  },
+  {
+   "date": "2025-01-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "NYC Congestion Pricing: How does it change employee commuting in Manhattan?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://actionfigure.ai/blog/nyc-congestion-pricing-employee-commuting/"
+  },
+  {
+   "date": "2024-04-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Actionfigure\u2019s new Foresight helps brokers speed up office relocations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://actionfigure.ai/blog/how-actionfigures-new-foresight-helps-brokers-speed-up-office-relocations/"
+  },
+  {
+   "date": "2022-12-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AlivePromo and Actionfigure: Real-Time Transportation Information Solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://actionfigure.ai/blog/alivepromo-real-time-transportation-solutions/"
+  },
+  {
+   "date": "2022-04-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Wells + Associates\u2019 Partnership with Actionfigure",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://actionfigure.ai/blog/wells-associates-partnership/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Actionfigure sells real time transportation information to employers, operators and transportation professionals, delivered through live screens, mobile apps and custom integrations. The products are built around transportation demand management.",
+   "Screen puts real time transportation information and managed communications on displays. Journey is a trip planner a customer can brand and customize. Insight, an add on to those subscriptions, reports how deployments are used, from a scanned QR code through to a trip that gets started. The company also creates and maintains GTFS transit data as a service. MobilityScore is its metric for how much transportation access a location has.",
+   "The business started as TransitScreen, described as the first display to combine real time public transit, bikeshare, carshare and other modes in one place. Matt Caywood incorporated it and was soon joined by co-founder Ryan Croft. The company says it now works with over 1,000 customers in more than 50 cities across ten countries. Its own AI is said to drive trip recommendations and insights for transportation and real estate."
+  ],
+  "quote": {
+   "text": "Today, Actionfigure partners with over 1,000 customers in more than 50 cities across ten countries.",
+   "url": "https://actionfigure.ai/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://www.actionfigure.ai",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://actionfigure.ai/about-us/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://actionfigure.ai/about-us/",
+    "https://www.actionfigure.ai"
+   ],
+   [
+    "https://www.actionfigure.ai",
+    "https://actionfigure.ai/about-us/"
+   ],
+   [
+    "https://actionfigure.ai/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

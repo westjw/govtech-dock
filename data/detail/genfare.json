@@ -1,0 +1,140 @@
+{
+ "news": [
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Tapping into the future: University of Illinois student partnership scales up smart card testing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://genfare.com/blog/tapping-into-the-future-uiuc-partnership/"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Every tap tells a story: Turning transactions into better transit",
+   "kind": "contract",
+   "kind_rule": "tap",
+   "url": "https://genfare.com/blog/every-tap-tells-a-story-turning-transactions-into-better-transit/"
+  },
+  {
+   "date": "2026-07-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Open payment: The benefits outweigh the risks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://genfare.com/blog/open-payment-the-benefits-outweigh-the-risks/"
+  },
+  {
+   "date": "2026-06-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Train to maintain: Hands-on fare collection system maintenance training Mike Horbrook and his colleagues conduct 50-75 hands-on maintenance training courses for hundreds of people\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://genfare.com/blog/maintenance-training/"
+  },
+  {
+   "date": "2026-06-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Modernizing fare collection systems: Why fareboxes still matter in a cloud-based future As transit agencies look to modernize fare collection systems, one question continues to surface: What\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://genfare.com/blog/modernizing-fare-collection-why-fareboxes-still-matter/"
+  },
+  {
+   "date": "2026-05-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Employee spotlight on Luis Cantu Luis Cantu is a Genfare program manager who oversees the end-to-end implementation of fare collection\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://genfare.com/blog/employee-spotlight-on-luis-cantu/"
+  },
+  {
+   "date": "2026-05-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "House introduces the BUILD America 250 Act The House Transportation and Infrastructure Committee has approved the BUILD America 250 Act, a bipartisan\u2026",
+   "kind": "product",
+   "kind_rule": "introduces",
+   "url": "https://genfare.com/blog/house-introduces-build-america-250-act/"
+  },
+  {
+   "date": "2026-04-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Employee spotlight on Rogelio Vicencio UPDATE: Rogelio was promoted to operations manager effective August 17, 2026, replacing Joe Costello as\u2026",
+   "kind": "leadership",
+   "kind_rule": "promoted",
+   "url": "https://genfare.com/blog/employee-spotlight-on-rogelio-vicencio/"
+  },
+  {
+   "date": "2026-04-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The future of fare collection isn\u2019t either/or. It\u2019s also/and. In my role on APTA\u2019s Business Member\u2019s Board of Governors and as Genfare CRO, I\u2019ve\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://genfare.com/blog/in-defense-of-the-farebox/"
+  },
+  {
+   "date": "2026-02-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The challenge: Transit has data but not always insight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://genfare.com/blog/practical-approach-data-interoperability/"
+  },
+  {
+   "date": "2025-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How open payment risk is managed",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://genfare.com/blog/blog-how-to-fight-fare-evasion/"
+  },
+  {
+   "date": "2025-05-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "These types of transactions have different risk profiles",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://genfare.com/blog/open-payment-vs-open-loop/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Genfare sells fare collection systems to public transit agencies, and describes itself as a partner to transit agencies of every size across the United States and Canada for more than forty years. Its systems cover fixed route service, microtransit, paratransit, ferries, and light rail.",
+   "The company is moving its Genfare Link platform to a fully cloud-based software-as-a-service model. Transaction, ridership, and device monitoring data from fareboxes, mobile apps, e-Fare portals, and retail channels are consolidated in one central location. For riders paying with a contactless bank card or phone, existing Fast Fare fareboxes can be upgraded for open payment, or an Open Link validator can be mounted next to the farebox. The Mobile Link application and the e-Fare online ticketing system use open APIs to work with microtransit and shared ride providers.",
+   "Genfare Link is built on Amazon Web Services, with APIs linking agency platforms to each other and to riders. Alongside the hardware and software, the company sells packages for training, maintenance and repair, and technical support."
+  ],
+  "quote": {
+   "text": "Genfare is the only fare collection provider that works with transit agencies of all sizes, whether your fleet has five buses or more than 500.",
+   "url": "https://genfare.com"
+  },
+  "sources": [],
+  "paragraph_sources": [
+   [
+    "https://genfare.com"
+   ],
+   [
+    "https://genfare.com/solutions/cloud-based-software/",
+    "https://genfare.com",
+    "https://genfare.com/solutions/mobile-ticketing/"
+   ],
+   [
+    "https://genfare.com/solutions/internet-of-things/",
+    "https://genfare.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

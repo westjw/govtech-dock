@@ -1,0 +1,76 @@
+{
+ "news": [
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "BRINC Drones Adds Free Wildfire and Smoke Tracking as Agencies Across America Battle Active Fires",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://brincdrones.com/news/brinc-drones-adds-free-wildfire-and-smoke-tracking-as-agencies-across-america-battle-active-fires/"
+  },
+  {
+   "date": "2026-07-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "DFR Is Now Core 911 Infrastructure. And the Integrations Have to Match",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://brincdrones.com/news/dfr-is-now-core-911-infrastructure-and-the-integrations-have-to-match/"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "BRINC Raises $125M to Put a 911 Response Drone on Every Police and Fire Station Roof",
+   "kind": "funding",
+   "kind_rule": "Raises",
+   "url": "https://brincdrones.com/news/brinc-raises-125m-to-put-a-911-response-drone-on-every-police-and-fire-station-roof/"
+  },
+  {
+   "date": "2026-06-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "BRINC Drones and Nova Software Company Partner to Deliver Advanced Aerial Mapping for Public Safety Agencies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://brincdrones.com/news/brinc-drones-and-nova-software-company-partner-to-deliver-advanced-aerial-mapping-for-public-safety-agencies/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "BRINC sells drone hardware, software and services built exclusively for public safety agencies and supported by one partner. The company was founded in response to the 2017 Las Vegas Shooting. An indoor tactical drone was developed over dozens of callouts with the Las Vegas Metro Police Department SWAT team.",
+   "The company's 911 response drone responds to calls 24/7/365 and covers 200 square miles. The site says calls for service can be cleared without dispatching a unit, so drones clear non-priority calls while agencies focus elsewhere. Drones can deliver Narcan, AEDs, EpiPens, cell phones and other equipment anywhere in seconds. For tactical use, a drone can enter dangerous places, generate floor plans mid-flight and de-escalate from a distance with two-way audio.",
+   "BRINC products are deployed by over 900 public safety agencies globally to initiate contact without force. The company states its drones are designed, supported and made in the USA and are NDAA, CJIS and SOC2 compliant. It offers help across a program's stages, from policy development and Part 107/COA work to training, staffing, maintenance and upgrades. BRINC opened a Seattle, WA headquarters to scale out engineering and manufacturing."
+  ],
+  "quote": {
+   "text": "BRINC offers a connected ecosystem of tools designed to save lives.",
+   "url": "https://www.brincdrones.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.brincdrones.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://brincdrones.com/about/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.brincdrones.com",
+    "https://brincdrones.com/about/"
+   ],
+   [
+    "https://www.brincdrones.com"
+   ],
+   [
+    "https://brincdrones.com/about/",
+    "https://www.brincdrones.com"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Esri Canada delivers geospatial solutions built on ArcGIS to organizations in business, government and education. ArcGIS itself is a geographic information system for creating, managing, analyzing, mapping and sharing all types of data.",
+   "Organizations use the platform to know the real-time location and condition of moving and stationary assets. Another common application is land management, using an authoritative geographic database and its tools. The software now embeds artificial intelligence, with more than 75 pretrained models for workflows such as object detection in imagery.",
+   "The company describes itself as private and Canadian-owned, founded in 1984. It is headquartered in Toronto and says it has 15 offices across the country serving more than 12,000 customers. Customer stories on the site include Halifax Regional Municipality, which the company says has treated GIS as a strategic business capability to help teams respond to emergencies faster. Esri Canada also states it has reached Platinum Club status in the Canada's Best Managed Companies program."
+  ],
+  "quote": {
+   "text": "Esri Canada is a private Canadian-owned company founded in 1984",
+   "url": "https://www.esri.ca/en-ca/about/overview"
+  },
+  "sources": [
+   {
+    "url": "https://www.esri.ca",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.esri.ca/en-ca/solutions/lp/geospatial-artificial-intelligence/overview",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.esri.ca/en-ca/about/overview",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.esri.ca/en-ca/products/geospatial-platform/overview",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.esri.ca/en-ca/about/overview",
+    "https://www.esri.ca/en-ca/products/geospatial-platform/overview"
+   ],
+   [
+    "https://www.esri.ca/en-ca/products/geospatial-platform/overview",
+    "https://www.esri.ca/en-ca/solutions/lp/geospatial-artificial-intelligence/overview"
+   ],
+   [
+    "https://www.esri.ca/en-ca/about/overview",
+    "https://www.esri.ca"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,138 @@
+{
+ "news": [
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Liberty Defense Announces Leadership Change",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://libertydefense.com/news/liberty-defense-previews-the-hexwave-i-configuration-at-gsx-2026-for-entrances-that-cannot-give-up-a-lane/"
+  },
+  {
+   "date": "2026-08-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Liberty Announces Closing of Shares for Debt",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://libertydefense.com/news/liberty-defense-announces-leadership-change/"
+  },
+  {
+   "date": "2026-07-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Liberty Announces Closing of Shares for Debt",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://libertydefense.com/news/liberty-announces-closing-of-shares-for-debt/"
+  },
+  {
+   "date": "2026-06-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Liberty Defense Expands Aviation Footprint with New HEXWAVE\u2122 Award at Major International Airport",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://libertydefense.com/news/liberty-defense-expands-aviation-footprint-with-new-hexwave-award-at-major-international-airport/"
+  },
+  {
+   "date": "2026-04-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Liberty Defense Announces Closing of its U.S. Initial Public Offering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://libertydefense.com/news/liberty-defense-announces-closing-of-its-u-s-initial-public-offering/"
+  },
+  {
+   "date": "2026-01-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Cybersecurity predictions 2026: Quantum threats, nation-state attacks and the rise of dark AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://libertydefense.com/news/cybersecurity-predictions-2026-quantum-threats-nation-state-attacks-and-the-rise-of-dark-ai/"
+  },
+  {
+   "date": "2026-01-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Safer Schools, Stronger Societies: Rethinking Student Security for 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://libertydefense.com/news/safer-schools-stronger-societies-rethinking-student-security-for-2026/"
+  },
+  {
+   "date": "2025-12-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "No More Failures of Imagination: Future Proofing Airport Employee Screening",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://libertydefense.com/news/no-more-failures-of-imagination-future-proofing-airport-employee-screening/"
+  },
+  {
+   "date": "2023-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Liberty Defense Delivers HEXWAVE to TSA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://libertydefense.com/news/liberty-defense-delivers-hexwave-system-to-tsa/"
+  },
+  {
+   "date": "2021-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Liberty Defense Featured in CNBC Coverage about Aviation Security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://libertydefense.com/news/cnbc-coverage-aviation-security/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Liberty Defense makes AI-based detection equipment for finding concealed weapons and other threats in urban security and aviation settings. Its main product, HEXWAVE, is a walkthrough portal that screens for nonmetallic and metallic threats without asking people to remove shoes, jewelry, belts or jackets.",
+   "It uses active millimeter wave, video-rate 3D imaging and AI to detect concealed metallic and non-metallic weapons and other prohibited items. The company says the imaging captures over 400,000 voxels. No images are stored, and none are accessible by the security operator. The operator sees only a go or no-go screen with a clear alert. For aviation, Liberty holds exclusive licenses to two solutions developed by PNNL and funded by the Department of Homeland Security.",
+   "The home page states that Liberty delivers HEXWAVE to the TSA. It also says the company is developing screening for aviation workers. Named settings include hotels, schools, airports, public transit systems, places of religion and entertainment venues. On its finances, the company reports completing an initial public offering in the United States that raised approximately $20 million in gross proceeds."
+  ],
+  "quote": {
+   "text": "The system is non-intrusive, protecting the privacy and modesty of those being scanned while offering an unprecedented level of security",
+   "url": "https://libertydefense.com/product/hexwave/"
+  },
+  "sources": [
+   {
+    "url": "https://libertydefense.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://libertydefense.com/company/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://libertydefense.com/product/hexwave/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://libertydefense.com/product/aviation/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://libertydefense.com/company/",
+    "https://libertydefense.com"
+   ],
+   [
+    "https://libertydefense.com/product/hexwave/",
+    "https://libertydefense.com/product/aviation/"
+   ],
+   [
+    "https://libertydefense.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

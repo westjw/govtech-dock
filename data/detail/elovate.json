@@ -1,0 +1,157 @@
+{
+ "news": [
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Human-in-the-Loop: Why Automation Still Requires Oversight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://elovate.com/blog/human-in-the-loop-ai-why-automation-still-requires-oversight/"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Speed Cameras Aren\u2019t Vehicle Recognition Cameras",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://elovate.com/blog/speed-enforcement-arent-vehicle-recognition-cameras/"
+  },
+  {
+   "date": "2026-07-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Enforcement as Infrastructure: ATE in Capital Planning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://elovate.com/blog/enforcement-as-infrastructure-capital-planning/"
+  },
+  {
+   "date": "2026-06-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From Data to Decisions: How Enforcement Information Supports DOT Planning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://elovate.com/blog/how-enforcement-information-supports-dot-planning/"
+  },
+  {
+   "date": "2026-05-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Does It Really Take to Run an ATE Program? The Back-Office Reality",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://elovate.com/blog/what-it-really-take-run-ate-program-back-office-reality/"
+  },
+  {
+   "date": "2026-05-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What It Really Takes to Launch an Automated Enforcement Program (Beyond the Cameras)",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://elovate.com/blog/automated-traffic-enforcement-program-launch/"
+  },
+  {
+   "date": "2026-04-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Elovate Launches Work Zone Speed Enforcement Program with Virginia State Police to Protect Workers and Motorists in Highway Work Zones",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://elovate.com/blog/elovate-launches-automated-speed-enforcement-work-zone-virginia-state-police/"
+  },
+  {
+   "date": "2026-03-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How State DOTs Are Redefining the Future of Work Zone Speed Enforcement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://elovate.com/blog/how-state-dots-redefining-future-of-work-zone-enforcement/"
+  },
+  {
+   "date": "2025-12-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Technology Is Making Holiday Traffic Safer",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://elovate.com/blog/how-technology-is-making-holiday-traffic-safer/"
+  },
+  {
+   "date": "2025-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Recap: Elovate at IACP 2025 \u2013 Innovation, Safety, and the Road Ahead",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://elovate.com/blog/elovate-at-iacp-2025/"
+  },
+  {
+   "date": "2025-07-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "5 New Traffic Rules & Enforcement Technologies You Need to Know in 2025",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://elovate.com/blog/5-new-traffic-rules-enforcement-technologies-2025/"
+  },
+  {
+   "date": "2025-05-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Avoid Speeding Tickets in 2025: 10 Little-Known Tips for Staying Safe and Compliant",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://elovate.com/blog/how-to-avoid-speeding-tickets-10-tips/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Elovate sells automated traffic enforcement programs to communities that want fewer crashes on their streets. State and local agencies are the buyers, and the company frames the work as helping them improve road safety. Four turnkey programs run on one platform, shaped around streets, work zones and school corridors.",
+   "Cameras capture speeding and red-light running events for enforcement. Agencies then handle citations from issuance through resolution in the violation processing software. A product called CiteWeb keeps a chain of custody and an audit trail for every citation. Reporting tools track trends and identify high-need areas so deployment can be adjusted. The company also works with municipalities on outreach campaigns about a program's fairness and transparency.",
+   "Elovate says it has partnered with municipalities across the United States for more than 30 years. It dates its camera enforcement at signalized intersections back to 1997. Its work zone speed enforcement runs programs in six states today."
+  ],
+  "quote": {
+   "text": "Four turnkey programs, one platform.",
+   "url": "https://elovate.com/solutions/"
+  },
+  "sources": [
+   {
+    "url": "https://elovate.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://elovate.com/solutions/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://elovate.com/solutions/speed-enforcement/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://elovate.com/solutions/red-light-safety/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://elovate.com",
+    "https://elovate.com/solutions/"
+   ],
+   [
+    "https://elovate.com/solutions/speed-enforcement/",
+    "https://elovate.com/solutions/"
+   ],
+   [
+    "https://elovate.com",
+    "https://elovate.com/solutions/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

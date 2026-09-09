@@ -1,0 +1,40 @@
+{
+ "news": [
+  {
+   "date": "2025-06-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "New Name. Bigger Network. Same Trusted Experience.",
+   "kind": "leadership",
+   "kind_rule": "Name",
+   "url": "https://network.demandstar.com/news/demandstar-is-now-euna-openbid/"
+  },
+  {
+   "date": "2022-03-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Leading Public Sector Online Marketplace Adds 1,000th Local Government, Surpassing $4.6B in Annual Contract Value",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://network.demandstar.com/news/leading-public-sector-online-marketplace-adds-1000th-local-government-surpassing-4-6b-in-annual-contract-value/"
+  },
+  {
+   "date": "2021-04-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "107 New City & County Government Agencies Join E-Marketplace, Connect to Over 100,000 Business Suppliers in Rapid Start to the Year",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://network.demandstar.com/news/107-new-city-county-government-agencies-join-e-marketplace-connect-to-over-100000-business-suppliers-in-rapid-start-to-the-year/"
+  },
+  {
+   "date": "2021-04-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Are You Stuck Using Excel? Technology Tools to Help Procurement Officers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://network.demandstar.com/news/are-you-stuck-using-excel-technology-tools-to-help-procurement-officers/"
+  }
+ ]
+}

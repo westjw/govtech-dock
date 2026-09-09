@@ -1,0 +1,46 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Aurelian builds software for the 911 centers known as public safety answering points. One of its two products answers non-emergency calls instantly, so callers are not left on hold. The other sits with call-takers during emergencies and gives real-time, context-aware guidance without taking control.",
+   "The automated line resolves routine calls on its own. It detects and escalates emergencies to a person. During live calls, the guidance tool surfaces the relevant SOP checklist for the incident. It also flags missing information before the call ends. The company says the system learns a center's workflows, SOPs, and systems in order to support the full call flow. Aurelian states that humans remain in control of emergencies and decision-making.",
+   "The customers page says PSAPs around the country use Aurelian to cut non-emergency workload and return time to their teams. Published stories include Hamilton County 911 automating more than 300 non-emergency calls a day. The about page says the founders, Max and James, were building call automation technology for hair salons before starting the company. That insight led them to pivot to public safety and build for PSAPs."
+  ],
+  "quote": {
+   "text": "Automate the calls that don't need a telecommunicator.",
+   "url": "https://www.aurelian.io/solutions"
+  },
+  "sources": [
+   {
+    "url": "https://www.aurelian.io",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aurelian.io/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aurelian.io/customers",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aurelian.io/about",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.aurelian.io"
+   ],
+   [
+    "https://www.aurelian.io/solutions",
+    "https://www.aurelian.io"
+   ],
+   [
+    "https://www.aurelian.io/customers",
+    "https://www.aurelian.io/about"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "news": [
+  {
+   "date": "2026-08-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Citrus Heights opened a new path for community reporting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.corveris.com/insights/citrus-heights-police-community-reporting"
+  },
+  {
+   "date": "2026-08-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Laredo opened mobile community reporting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.corveris.com/insights/laredo-police-mobile-community-reporting"
+  },
+  {
+   "date": "2026-08-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What departments ask when intake becomes operational",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.corveris.com/insights/what-departments-ask-after-the-first-online-report"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Ideas / 6 min read Responsible AI starts with the workflow, not the model Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.corveris.com/insights/responsible-ai-starts-with-the-workflow"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "OneReport notes / 7 min read The report is where the work begins Reports tell a department who is involved, what is happening, and where attention is needed. Their value comes from the decisions and w",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.corveris.com/insights/what-makes-a-report-rms-ready"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Ideas / 6 min read People shouldn't have to classify their own crime Good public-safety intake begins with listening: let people describe what happened, then use the conversation to build accurate, re",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.corveris.com/insights/citizens-should-not-classify-their-own-crime"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Corveris builds OneReport, which the company calls the AI intake and workflow agent for public safety. It gives a police department a way to take in what residents report, routing submissions from crime reports to intelligence tips.",
+   "A resident starts in their own words and the software asks follow-up questions, capturing people, places, property, evidence, legal elements and agency-required facts. The company states that it automatically detects and translates more than 100 languages in real time, so a resident can report in their native language. Report types cover theft, vehicle burglary, shoplifting, vandalism, fraud, forgery, harassment, threats and hit and run, and each department configures which ones to turn on. Anything describing an emergency or a crime in progress is pointed to 911 instead.",
+   "Finished records land in a review queue where department personnel correct and approve them before they move into the agency records system. The company lists Versaterm, Axon Records, Tyler Technologies, CentralSquare and Mark43 among the records platforms it pushes reports into. It says the product runs on CJIS-compliant infrastructure hosted on AWS GovCloud, with data encrypted at rest and in transit. Published department stories describe Laredo Police opening a smartphone-friendly reporting path for eligible incidents."
+  ],
+  "quote": {
+   "text": "Building the intelligence layer for public safety.",
+   "url": "https://www.corveris.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.corveris.com",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.corveris.com"
+   ],
+   [
+    "https://www.corveris.com"
+   ],
+   [
+    "https://www.corveris.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

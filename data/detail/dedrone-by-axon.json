@@ -1,0 +1,123 @@
+{
+ "news": [
+  {
+   "date": "2024-10-18",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Campbell Police Department Secures Groundbreaking Waiver for 24/7 Drone as First Responder (DFR) Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://dedrone.com/press/campbell-police-department-secures-groundbreaking-waiver-for-24-7-drone-as-first-responder-dfr-operations"
+  },
+  {
+   "date": "2024-10-18",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Campbell Police Department Secures Groundbreaking Waiver for 24/7 Drone as First Responder (DFR) Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://dedrone.com/resources/newsroom-archive"
+  },
+  {
+   "date": "2024-08-13",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Dedrone Named to 2024 Inc. 5000 List of Fastest-Growing Companies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dedrone.com/press/dedrone-named-to-2024-inc-5000-list-of-fastest-growing-companies"
+  },
+  {
+   "date": "2024-04-23",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Department of Homeland Security Awards Dedrone Designation Status as Only Counter-Drone Company Currently Acknowledged Under the SAFETY Act",
+   "kind": "contract",
+   "kind_rule": "Awards",
+   "url": "https://www.dedrone.com/press/department-of-homeland-security-awards-dedrone-designation-status-as-only-counter-drone-company-currently-acknowledged-under-the-safety-act"
+  },
+  {
+   "date": "2023-05-08",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Dedrone Named to the 2023 CNBC Disruptor 50 for Innovative Leadership in Counterdrone Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dedrone.com/press/dedrone-named-to-the-2023-cnbc-disruptor-50-for-innovative-leadership-in-counterdrone-technology"
+  },
+  {
+   "date": "2023-03-22",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Dedrone Wins 2023 Artificial Intelligence Excellence Award for Best Product",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://www.dedrone.com/press/dedrone-wins-2023-artificial-intelligence-excellence-award-for-best-product"
+  },
+  {
+   "date": "2021-10-15",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Dedrone Achieves Veracode Certification",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dedrone.com/press/dedrone-achieves-veracode-certification"
+  },
+  {
+   "date": "2021-06-14",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Dedrone Achieves CPNI Certification for Second Year Running",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dedrone.com/press/dedrone-achieves-cpni-certification-for-second-year-running"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Dedrone by Axon sells counter-drone systems that secure fixed locations such as airports, correctional facilities and critical infrastructure from unauthorized drones. Law enforcement, military and public safety organizations are named as the buyers for its mobile unit.",
+   "A fixed installation combines radio-frequency sensors, radar and pan-tilt-zoom cameras over the airspace at a site. The radio-frequency sensors analyse signals to detect and locate both the drone and its pilot. Cameras add visual verification of a drone incursion. Command and control software called DedroneTracker.AI fuses those tracks and reports drone and pilot location. A towable trailer packages the same mix for temporary sites and is described as set up in less than twenty minutes. A city-wide option skips installed equipment altogether, letting users mark alert zones and get notified when drones enter them.",
+   "The company states that its fixed-site product is deployed at over 829 sites globally. It says its customers include military organizations, airports, correctional facilities, stadiums and critical infrastructure sites. The city-wide app is described as available in over 50 cities."
+  ],
+  "quote": {
+   "text": "Airspace Security Starts Where the Fence Ends",
+   "url": "https://dedrone.com/solutions/city-wide-drone-detection"
+  },
+  "sources": [
+   {
+    "url": "https://dedrone.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://dedrone.com/solutions/city-wide-drone-detection",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://dedrone.com/solutions/dedrone-fixed-site",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://dedrone.com/solutions/dedrone-trailer",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://dedrone.com/solutions/dedrone-fixed-site",
+    "https://dedrone.com/solutions/dedrone-trailer"
+   ],
+   [
+    "https://dedrone.com/solutions/dedrone-fixed-site",
+    "https://dedrone.com/solutions/dedrone-trailer",
+    "https://dedrone.com/solutions/city-wide-drone-detection"
+   ],
+   [
+    "https://dedrone.com/solutions/dedrone-fixed-site",
+    "https://dedrone.com",
+    "https://dedrone.com/solutions/city-wide-drone-detection"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

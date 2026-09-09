@@ -1,0 +1,68 @@
+{
+ "news": [
+  {
+   "date": "2025-01-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "B2Gnow Launches Certification Sharing Functionality Supporting Interstate Application Timelines Read the Article",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://b2gnow.com/company/news/b2gnow-launches-certification-sharing-functionality-supporting-interstate-application-timelines-strengthens-position-as-dbe-acdbe-compliance-software-leader/"
+  },
+  {
+   "date": "2024-03-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Welcome to the DBE Resource Center",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://b2gnow.com/resources/dbe-resource-center/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "B2Gnow sells compliance software to public agencies and the contractors on their projects, covering vendor programs, prevailing wage labor compliance and grant management. The company lists states, state DOTs, cities, counties, transit agencies, airports, education, general contractors and healthcare among the kinds of clients it names.",
+   "The vendor side is a cloud-based platform covering DBE, MBE, WBE and SBE compliance initiatives. Certification work runs from online applications through agency review to approval. For contract compliance, prime and subcontractor payments are collected, and subcontractors confirm payment directly, monthly or quarterly. Reporting draws on more than 400 standard system reports. A payroll line covers Davis-Bacon and Related Acts, the Service Contract Act, state prevailing wage laws and local living wage ordinances. Grant work runs through BlackCat, from applications to asset management and spend-down tracking.",
+   "The company says the software has been implemented at over 400 organizations. It claims one million users regularly access the system to register, prequalify, submit reports, manage grants and review bid solicitations. The site cites over 25 years of vendor program compliance experience. B2Gnow and eComply have joined together into one platform spanning vendor management and labor compliance. Hosting is described as fully redundant, with guaranteed availability of 99.9% and SOC 2 Type 2 certification."
+  ],
+  "quote": {
+   "text": "Prime and subcontractor payments are collected, with direct subcontractor payment confirmation facilitated monthly or quarterly",
+   "url": "https://b2gnow.com/solutions/vendor-management-software/contract-compliance/"
+  },
+  "sources": [
+   {
+    "url": "https://b2gnow.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://b2gnow.com/solutions/vendor-management-software/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://b2gnow.com/solutions/vendor-management-software/contract-compliance/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://b2gnow.com/solutions/vendor-management-software/certification-management/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://b2gnow.com",
+    "https://b2gnow.com/solutions/vendor-management-software/"
+   ],
+   [
+    "https://b2gnow.com/solutions/vendor-management-software/",
+    "https://b2gnow.com/solutions/vendor-management-software/certification-management/",
+    "https://b2gnow.com/solutions/vendor-management-software/contract-compliance/",
+    "https://b2gnow.com"
+   ],
+   [
+    "https://b2gnow.com/solutions/vendor-management-software/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

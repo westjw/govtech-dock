@@ -1,0 +1,156 @@
+{
+ "news": [
+  {
+   "date": "2026-09-03",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "IQGeo Launches Visual Agent Studio To Bring Automated Validation to Every Field Job Pre-built AI agents configured in natural language let operators deploy visual validation in days, with no model tra",
+   "kind": "contract",
+   "kind_rule": "deploy",
+   "url": "https://www.iqgeo.com/news/iqgeo-launches-visual-agent-studio-to-bring-automated-quality-validation-to-every-field-job"
+  },
+  {
+   "date": "2026-08-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Are Visual AI Agents for Telecom and Utility Network Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iqgeo.com/blog/what-are-visual-ai-agents-for-telecom-and-utility-network-operations"
+  },
+  {
+   "date": "2026-07-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Hidden Problem with Field Data Quality in Telecom and Utility Networks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iqgeo.com/blog/field-data-quality-in-telecom-and-utility-networks"
+  },
+  {
+   "date": "2026-07-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Autonomous Networks in Telecom Depend on Trusted Digital Twins of Physical Infrastructure",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iqgeo.com/blog/autonomous-networks-in-telecom-depend-on-trusted-digital-twins"
+  },
+  {
+   "date": "2026-07-09",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "IQGeo Launches Automated Error Detection for Telecom Network Records Industry-first capability keeps network records synchronized with field reality to support autonomous operations. Cambri... 09 July",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.iqgeo.com/news/iqgeo-launches-automated-error-detection-for-telecom-network-records"
+  },
+  {
+   "date": "2026-07-09",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "IQGeo Signs Agreement with German Telco UGG to Deploy AI-Powered Field QA for Fiber Rollouts NetLux AI will provide real-time verification of fiber installation work, helping UGG accelerate network de",
+   "kind": "contract",
+   "kind_rule": "Signs",
+   "url": "https://www.iqgeo.com/news/iqgeo-signs-agreement-with-german-telco-ugg-to-deploy-ai-powered-field-qa-for-fiber-rollouts"
+  },
+  {
+   "date": "2026-07-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Fiber System of Record for Utilities: Build a Resilient Grid with a Stronger Fiber Network Backbone",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iqgeo.com/blog/fiber-system-of-record-for-utilities"
+  },
+  {
+   "date": "2026-06-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Utility Field Workers of the Future",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iqgeo.com/blog/future-of-utility-field-work-ai"
+  },
+  {
+   "date": "2026-06-18",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "IQGeo Appoints Sophie Gelsthorpe as Chief Human Resources Officer Experienced global HR leader to drive IQGeo\u2019s continued growth and organizational evolution 18 June 2026 Read More",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://www.iqgeo.com/news/iqgeo-appoints-sophie-gelsthorpe-as-chief-human-resources-officer"
+  },
+  {
+   "date": "2026-06-11",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "IQGeo Announces Virgin Media O2, Circet and CityFibre as Winners of 2026 EMEA Meetup Awards Recognizing operators that are leading the charge toward autonomous network operations. 11 June 2026 Read Mo",
+   "kind": "contract",
+   "kind_rule": "Awards",
+   "url": "https://www.iqgeo.com/news/iqgeo-announces-winners-of-2026-emea-meetup-customer-innovations-awards"
+  },
+  {
+   "date": "2026-06-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Visual AI Enables Utility Operators to Power Smart Meter Rollout",
+   "kind": "contract",
+   "kind_rule": "Rollout",
+   "url": "https://www.iqgeo.com/blog/ai-smart-meter-installation-software"
+  },
+  {
+   "date": "2026-05-14",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "IQGeo To Preview Unified Fieldworker App at Fiber Connect 2026 Prototype app integrates visual AI and workflow management directly with the network digital twin 14 May 2026 Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iqgeo.com/news/iqgeo-to-preview-unified-fieldworker-app-at-fiber-connect-2026"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "IQGeo gives telecom and utility operators a single platform to plan, design, build, and operate their physical network infrastructure. It is aimed at telecom, fiber, and utility network operators, including planners, engineers, and construction teams.",
+   "Network Manager Telecom is built to plan, build, and operate fiber and coax networks with accurate data, simple field tools, and automated AI quality checks. Field staff can download their work area, update records offline, and sync changes back automatically. Construction photos are audited with real-time visual AI to verify quality, completeness, and compliance at scale. A companion product, Network Manager Electric, is described as built for geospatial work execution, combining geospatial intelligence with AI-powered workflows across the full lifecycle.",
+   "Buyers choose between two deployment options, an IQGeo SaaS deployment or a private cloud deployment they host themselves. The hosted option is listed with ISO/IEC 27001:2013 certification. The private cloud option is pitched at operators needing bespoke integration with legacy GIS and OSS/BSS systems. The company says electric and gas utilities rely on it for asset management, grid modernization, inspection and field operations. On the telecom side it describes its customers as reaching some of the largest and fastest-growing global telecom operators, managing highly complex, rapidly scaling networks."
+  ],
+  "quote": {
+   "text": "IQGeo gives telecom and utility operators a single, end-to-end platform to plan, design, build, and operate their physical network infrastructure.",
+   "url": "https://www.iqgeo.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.iqgeo.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.iqgeo.com/products/network-manager-telecom?hsLang=en",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.iqgeo.com/products/network-manager-telecom/deployment-options?hsLang=en",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.iqgeo.com/products/network-manager-electric?hsLang=en",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.iqgeo.com"
+   ],
+   [
+    "https://www.iqgeo.com/products/network-manager-telecom?hsLang=en",
+    "https://www.iqgeo.com/products/network-manager-electric?hsLang=en"
+   ],
+   [
+    "https://www.iqgeo.com/products/network-manager-telecom/deployment-options?hsLang=en",
+    "https://www.iqgeo.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,158 @@
+{
+ "news": [
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Hunt or be Hunted: ShieldBreak Zero-Day Learn how Tanium HuntIQ turned a Windows Defender zero-day into a tested mitigation before a CVE was assigned.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/shieldbreak-windows-defender-zero-day-huntiq"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Endpoint Management and Security Start with Autonomous IT As environments scale and tools sprawl, visibility gaps keep widening \u2014 and it's not just a security team problem anymore. This eBook shows ho",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/resources/endpoint-management-autonomous-it-ebook"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Leveraging AI for IT & Security Operations Half of executives rank AI-enabled threats among their top three security risks, yet only 7% have put AI-driven security measures into practice. This eBook s",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/resources/leveraging-ai-it-security-ops-ebook"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "La BCE a lanc\u00e9 le compte \u00e0 rebours : votre feuille de route jusqu\u2019au 31 octobre 2026 La BCE demande aux banques plac\u00e9es sous sa supervision directe un plan d\u2019action contre les cyberattaques pilot\u00e9es p",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/ecb-ai-readiness-roadmap"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "Tanium Reappoints Co-Founder Orion Hindawi as CEO to Drive Next Chapter of Growth",
+   "kind": "leadership",
+   "kind_rule": "as CEO",
+   "url": "https://www.tanium.com/newsroom/press-releases"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "Tanium Reappoints Co-Founder Orion Hindawi as CEO to Drive Next Chapter of Growth",
+   "kind": "leadership",
+   "kind_rule": "as CEO",
+   "url": "https://www.tanium.com/press-releases/tanium-reappoints-co-founder-orion-hindawi-as-ceo-to-drive-next-chapter-of-growth"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Critical macOS Screen Sharing Authentication Bypass \u2014 Under Active Exploitation (CVE-2026-65400) CVE-2026-65400 is a pre-authentication vulnerability in the macOS Screen Sharing daemon (screensharingd",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/guardian-critical-macos-screen-sharing-authentication-bypass-cve-2026-65400"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Slash Commands Bring Expert SecOps Workflows to Atlas With /hunt, /investigate, and /signal, Atlas turns a simple chat interaction into a guided SecOps workflow grounded in live endpoint state.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/atlas-slash-commands"
+  },
+  {
+   "date": "2026-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI Is Accelerating Vulnerability Discovery. Tanium Helps You Keep Up. Daily vulnerability findings across Tanium customer environments jumped from 10-40 billion to as high as 101 billion after mid-Jun",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/keeping-up-with-ai-accelerating-vulnerability-discovery"
+  },
+  {
+   "date": "2026-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ShieldBreak: The Windows Defender 0-Day with No Patch \u2014 And What to Do About It. A public proof-of-concept called ShieldBreak fully bypasses Microsoft's patch for the Windows Defender privilege-escala",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/shieldbreak-mitigation"
+  },
+  {
+   "date": "2026-08-13",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "RESEARCH AI That Acts: What IT and Security teams are really buying, and what it takes to earn their trust IT and security leaders are done settling for AI that just talks. According to new G2 researc",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/resources/g2-ai-that-acts-report"
+  },
+  {
+   "date": "2026-08-03",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "Tanium Delivers Autonomous Security at Black Hat USA 2026, Empowering Operators to Outpace AI-Accelerated Threats",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/press-releases/tanium-delivers-autonomous-security-at-black-hat-usa-2026"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Tanium sells software that gives IT and security teams continuous visibility across an entire endpoint estate. A single agent covers real-time threat hunting, autonomous detection and response, and deep forensics. Vulnerability monitoring runs continuously with risk scoring based on actual exploitability rather than CVSS alone.",
+   "A layer called Atlas sits on top, unifying investigation and remediation with agentic AI over real-time endpoint intelligence. Operators type questions in plain English and Atlas translates them into live endpoint queries. Actions then execute within autonomy limits the operator defines. Native connectors link the platform to ServiceNow, Microsoft and Splunk.",
+   "Customer pages describe Best Buy consolidating data into a single pane of glass. Another describes Leeds and York Partnership NHS Foundation Trust keeping thousands of endpoints patched and up to date. That page says the platform gives full visibility into all 3,000 PCs and servers. The homepage says the company was named a Leader and positioned furthest in Completeness of Vision in a 2026 Gartner report."
+  ],
+  "quote": {
+   "text": "Continuous visibility with volume, velocity, and variety across entire endpoint estate.",
+   "url": "https://www.tanium.com/platform/tanium-atlas"
+  },
+  "sources": [
+   {
+    "url": "https://www.tanium.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.tanium.com/platform/tanium-atlas",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.tanium.com/customers/best-buy",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.tanium.com/customers/leeds-and-york-partnership-nhs-foundation-trust",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.tanium.com/platform/tanium-atlas",
+    "https://www.tanium.com"
+   ],
+   [
+    "https://www.tanium.com/platform/tanium-atlas",
+    "https://www.tanium.com"
+   ],
+   [
+    "https://www.tanium.com/customers/best-buy",
+    "https://www.tanium.com/customers/leeds-and-york-partnership-nhs-foundation-trust",
+    "https://www.tanium.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

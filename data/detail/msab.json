@@ -1,0 +1,67 @@
+{
+ "news": [
+  {
+   "date": "2026-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Q2 2026 Major Release is now available",
+   "kind": "product",
+   "kind_rule": "now available",
+   "url": "https://www.msab.com/updates/q2-2026-major-release-is-now-available/"
+  },
+  {
+   "date": "2021-11-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Mises \u00e0 jour MSAB",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.msab.com/fr/resources/updates/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "MSAB builds mobile device forensics software, and XRY lets forensic experts and frontline users recover data from phones while maintaining evidential integrity. XAMN handles the analysis side, searching, filtering and visualizing hundreds of gigabytes of mobile data for use in a judicial setting. XEC manages the operation itself, updating forensic software instantly and reporting on team performance.",
+   "The stated buyers are law enforcement agencies that want to speed up investigations and eliminate device backlogs. MSAB also sells screening capability to customs and border security. The company says it has over 4,000 customers worldwide.",
+   "MSAB Office is the all-in-one package that installs on any Windows based computer, and MSAB Field is the ruggedized version supplied with a Toughbook computer. The MSAB Kiosk is a turnkey unit that lets users with minimal training process many devices from a fixed location. XRY Pro extracts and decodes data from devices that are locked or encrypted."
+  ],
+  "quote": {
+   "text": "The .xry file format is forensically secure",
+   "url": "https://www.msab.com/products/"
+  },
+  "sources": [
+   {
+    "url": "https://www.msab.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.msab.com/products/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.msab.com/product/xry-extract/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.msab.com/product/xry-extract/xry-pro/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.msab.com/product/xry-extract/",
+    "https://www.msab.com/products/"
+   ],
+   [
+    "https://www.msab.com/products/",
+    "https://www.msab.com"
+   ],
+   [
+    "https://www.msab.com/products/",
+    "https://www.msab.com/product/xry-extract/xry-pro/"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

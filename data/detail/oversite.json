@@ -1,0 +1,112 @@
+{
+ "news": [
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Material Certification Tracking with Auto-Withholding Certifications live inside the inspection and payment workflow, with color-coded status at the item level and automatic withholding when placement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.addoversite.com/blog/material-certification-tracking-auto-withholding"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Pay Request Generation Oversite assembles the pay period, pulls approved inspections, applies withholding and stockpile carryforward, and flags anything missed \u2014 turning an afternoon of Excel work int",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.addoversite.com/blog/pay-request-generation"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Placements Dashboard: Real-Time Quantity Visibility A live, item-by-item view of everything placed across the project \u2014 independent of the approval cycle \u2014 so PMs and owners can see exactly where the ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.addoversite.com/blog/placements-dashboard-real-time-quantity-visibility"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Live Financial Overview Every approval, pay request, and payment updates the dashboard in real time \u2014 so a financial status question takes seconds to answer, from your phone, with no export-and-reconc",
+   "kind": "product",
+   "kind_rule": "updates",
+   "url": "https://www.addoversite.com/blog/live-financial-overview"
+  },
+  {
+   "date": "2026-08-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Construction Pay Applications & Contract Financials for Public Agencies On unit-price public work, the money follows the measurements. How Oversite builds contract financials on the same record as the",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://www.addoversite.com/blog/construction-pay-applications-contract-financials"
+  },
+  {
+   "date": "2026-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI-Powered Inspection Review Agent An automated first pass on every submitted inspection flags narrative gaps, quantity anomalies, and missing certifications before the PM opens it \u2014 and it's conversa",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.addoversite.com/blog/ai-powered-inspection-review-agent"
+  },
+  {
+   "date": "2026-07-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Custom Forms That Export to DOT Formatting Traffic control, SWPPP, EPSC, and DOT-specific forms live inside the daily inspection and export in the exact format the agency expects \u2014 no parallel paper p",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.addoversite.com/blog/custom-forms-export-dot-formatting"
+  },
+  {
+   "date": "2026-07-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Geo-Located Weather Tracking Weather days tied to the project's exact coordinates, pulled automatically \u2014 so the record reflects conditions at the site, not a city 20 miles away, when a change-order q",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.addoversite.com/blog/geo-located-weather-tracking"
+  },
+  {
+   "date": "2026-07-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Item-Level Quantity Tracking with Built-In Calculators Built-in calculators do the spatial math inside the inspection record, show their work, and store the formula alongside the quantity \u2014 so every n",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.addoversite.com/blog/item-level-quantity-tracking-built-in-calculators"
+  },
+  {
+   "date": "2026-07-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Handwritten Note Image Capture Photograph a field book and Oversite transcribes it into the record \u2014 cursive, shorthand, symbols, and equations included \u2014 eliminating the transposition errors that cre",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.addoversite.com/blog/handwritten-note-image-capture"
+  },
+  {
+   "date": "2026-07-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Voice-to-Text Inspection Notes Inspectors can narrate observations in real time from anywhere on the site \u2014 capturing richer, more defensible field narratives without slowing down, and keeping their h",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.addoversite.com/blog/voice-to-text-inspection-notes"
+  },
+  {
+   "date": "2026-07-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Field Inspection Documentation for DOT & Agency Construction The daily inspection is the foundation every pay request, change order, dispute, and audit is built on. How Oversite captures a complete, d",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.addoversite.com/blog/field-inspection-documentation"
+  }
+ ]
+}

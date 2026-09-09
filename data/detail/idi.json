@@ -1,0 +1,59 @@
+{
+ "news": [
+  {
+   "date": "2026-05-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Rethinking identity validation in the era of synthetic fraud",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ididata.com/blog/rethinking-identity-validation-in-the-era-of-synthetic-fraud/"
+  },
+  {
+   "date": "2026-01-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Turning cold case dead ends into breakthroughs with idiCORE",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ididata.com/blog/turning-cold-case-dead-ends-into-breakthroughs-with-idicore/"
+  },
+  {
+   "date": "2026-01-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Please serve yourself: How consumer behavior is reshaping collections and recovery",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ididata.com/blog/please-serve-yourself-how-consumer-behavior-is-reshaping-collections-and-recovery/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "IDI sells identity data and analytics that let an organization find and confirm who people are, locate them and their assets, and see how they are connected to each other. The same data feeds three broad jobs: verifying identities, marketing, and managing risk.",
+   "The core platform pulls billions of scattered data points into unified views for investigations, due diligence and regulatory work. That repository mixes proprietary sources with public record and publicly available data. A separate suite handles customer acquisition and onboarding, including know your customer checks and form filling. Background screening firms get address and alias history plus searches of criminal, court, arrest and sex offender records. A judgment recovery product adds human verification on top of the data, and is billed only when it returns a result.",
+   "Government and law enforcement is named as one of the markets served, alongside collections and recovery and travel and entertainment. The company states that its environment holds SOC 2 Type 2, PCI DSS Level 1 and ISO 27001 certifications."
+  ],
+  "quote": {
+   "text": "idiCORE brings clarity to massive datasets, driving workflow efficiency and enabling organizations to make better decisions.",
+   "url": "https://www.ididata.com/solutions/idicore/"
+  },
+  "sources": [],
+  "paragraph_sources": [
+   [
+    "https://ididata.com"
+   ],
+   [
+    "https://www.ididata.com/solutions/idicore/",
+    "https://ididata.com",
+    "https://www.ididata.com/solutions/idiverified/"
+   ],
+   [
+    "https://ididata.com",
+    "https://www.ididata.com/solutions/idicore/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

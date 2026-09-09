@@ -1,0 +1,47 @@
+{
+ "profile": {
+  "paragraphs": [
+   "SAP Concur sells software for handling business expenses, travel and supplier invoices. The pitch is a single platform that gives a company better visibility and control over spending. The company says the products are designed for businesses of all sizes.",
+   "Concur Expense is cloud-based expense management software covering the stretch from submitting a receipt to being reimbursed. Key details are pulled from receipts and card transactions automatically, so staff key in less data by hand. Submitted expenses are checked against company rules before they move any further along. A companion product handles the step before money is spent, automating requests and approvals against travel and expense policy. A separate audit product applies machine learning to fraud and compliance risks both before and after reimbursement.",
+   "The platform is meant to sit on top of systems a customer already runs, with hundreds of pre-built connectors and open APIs for anything custom. The company says its models are trained on one of the largest expense datasets in the industry and improve as more transactions pass through. Expense pricing is published in US dollars and varies with monthly commitment. The top tier is set aside for businesses that need the most advanced capabilities."
+  ],
+  "quote": {
+   "text": "AI-powered expense, travel, and invoice solutions that unify your data, simplify work, and drive your business forward.",
+   "url": "https://www.concur.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.concur.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.concur.com/products/concur-expense",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.concur.com/products/concur-detect",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.concur.com/products/concur-request",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.concur.com"
+   ],
+   [
+    "https://www.concur.com/products/concur-expense",
+    "https://www.concur.com/products/concur-request",
+    "https://www.concur.com/products/concur-detect"
+   ],
+   [
+    "https://www.concur.com",
+    "https://www.concur.com/products/concur-expense"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,140 @@
+{
+ "news": [
+  {
+   "date": "2026-06-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From the battlefield to civilian skies: Adapting airspace security for public events With the FIFA World Cup 2026\u2122 underway, the need to safeguard stadiums, transport hubs, and surrounding infrastruct",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.robinradar.com/blog/from-the-battlefield-to-civilian-skies-adapting-airspace-security-for-public-events"
+  },
+  {
+   "date": "2026-06-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The main event: How to protect stadiums from the drone threat",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.robinradar.com/blog/the-main-event-how-to-protect-stadiums-from-the-drone-threat"
+  },
+  {
+   "date": "2026-06-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Robin delivers initial hardware for Europe\u2019s first-of-its-kind advanced weather radar",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.robinradar.com/blog/robin-delivers-initial-hardware-for-europes-first-of-its-kind-advanced-weather-radar"
+  },
+  {
+   "date": "2026-05-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Does Micro-Doppler Radar Classify Drones?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.robinradar.com/blog/how-micro-doppler-radar-works"
+  },
+  {
+   "date": "2026-05-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Adapting to the speed of the fight: How IRIS supports Special Operations Forces (SOF)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.robinradar.com/blog/adapting-to-the-speed-of-the-fight-how-iris-supports-special-operations-forces-sof"
+  },
+  {
+   "date": "2026-04-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Radar on the move: Defenture and Robin Radar Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.robinradar.com/blog/radar-on-the-move-defenture-and-robin-radar-systems"
+  },
+  {
+   "date": "2026-04-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beneath the layers: C-UAS as an integrated ecosystem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.robinradar.com/blog/beneath-the-layers-c-uas-as-an-integrated-ecosystem"
+  },
+  {
+   "date": "2026-03-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "\u201cWe have a strong culture of getting the job done\u201d: A chat with Robin CTO, Vivien Croes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.robinradar.com/blog/we-have-a-strong-culture-of-getting-the-job-done-a-chat-with-robin-cto-vivien-cross"
+  },
+  {
+   "date": "2026-03-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Collaboration as a Catalyst: Radar-Guided Counter-UAS with Origin Robotics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.robinradar.com/blog/collaboration-as-a-catalyst-radar-guided-counter-uas-with-origin-robotics"
+  },
+  {
+   "date": "2025-12-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Robin Radar Systems: 2025, A Year in Reflection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.robinradar.com/blog/robin-radar-systems-2025-a-year-in-reflection"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Robin Radar Systems makes 360 degree, 3D radar systems that detect, track and classify small flying objects such as birds, bats and drones. It sells them to aviation, defence, security and ecology teams that want a full view of their airspace. Its two main products are IRIS, a 3D drone radar in a 29 kg package, and MAX, a 3D bird detection radar.",
+   "IRIS uses micro-doppler classification and deep neural network technology to distinguish blades and rotating parts. It combines 360 degree views, 60 degree elevation and a 5 km instrumented range. A software-only update, Long-Range Mode, lets operators switch between 5 km and 12 km instrumented ranges in minutes. MAX pairs with two software interfaces, Bird Viewer for live airspace and Report Viewer for historical analysis. Airports, airfields and wind farms use the bird and bat radars to react to hazards as they emerge.",
+   "The name comes from a 1980 project by the Dutch research institute TNO to prevent bird strikes on Royal Netherlands Air Force planes. Siete Hamminga, now CEO, spun the technology out of TNO in 2010 to found the company. It reports more than 300 radars deployed worldwide and a staff of 150 or more people. In 2024 its shareholders reached an acquisition agreement with the Dutch investment company Parcom. Scarecrow, a maker of bird dispersal and data logging systems based on bio-acoustic technology, is a Robin company."
+  ],
+  "quote": {
+   "text": "Deployed in mission-critical defence and security operations across the globe, IRIS is purpose-built to meet the needs of tactical operators in the field.",
+   "url": "https://www.robinradar.com/products/iris-radar"
+  },
+  "sources": [
+   {
+    "url": "https://www.robinradar.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.robinradar.com/solutions/drone-detection-radar",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.robinradar.com/solutions/bird-detection-radar",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.robinradar.com/products/iris-radar",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.robinradar.com",
+    "https://www.robinradar.com/about"
+   ],
+   [
+    "https://www.robinradar.com/products/iris-radar",
+    "https://www.robinradar.com/products/max-radar",
+    "https://www.robinradar.com/solutions/bird-detection-radar"
+   ],
+   [
+    "https://www.robinradar.com/about",
+    "https://www.robinradar.com/solutions/bird-detection-radar"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

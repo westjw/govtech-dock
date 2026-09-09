@@ -1,0 +1,53 @@
+{
+ "news": [
+  {
+   "date": "2024-01-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Transact Powered by ETA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fairfaxsoftware.com/home/resources/trade-shows-events/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Fairfax Software sells financial transaction processing and intelligent document processing software to commercial businesses and government agencies. The payment side is built around money coming in, whether the payment arrives in person, online, or by mail.",
+   "One product takes counter payments by credit or debit card, cash, and check. The company also sells electronic billing and online payment acceptance. For banks it offers a single platform covering retail, wholesale, property management, digital, and medical lockbox processing. Its document platform handles classification and automated recognition for data extraction, and reads both handwritten and machine-printed text using a deep-learning OCR engine.",
+   "The company says it has over three decades of experience. Its case studies page names the Kern County Treasurer and Tax Collector. Another entry covers the Colorado Division of Motor Vehicles. A questions page for customers goes into motor vehicle work in detail, noting that the state agency issues each provider a temporary license plate range."
+  ],
+  "quote": {
+   "text": "Powered by a deep-learning OCR engine",
+   "url": "https://fairfaxsoftware.com"
+  },
+  "sources": [
+   {
+    "url": "https://fairfaxsoftware.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://fairfaxsoftware.com/home/resources/case-studies/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://fairfaxsoftware.com/home/clients/community-questions-answers/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://fairfaxsoftware.com"
+   ],
+   [
+    "https://fairfaxsoftware.com"
+   ],
+   [
+    "https://fairfaxsoftware.com",
+    "https://fairfaxsoftware.com/home/resources/case-studies/",
+    "https://fairfaxsoftware.com/home/clients/community-questions-answers/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

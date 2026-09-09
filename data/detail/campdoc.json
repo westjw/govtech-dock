@@ -1,0 +1,93 @@
+{
+ "news": [
+  {
+   "date": "2026-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CampDoc and Daxko Expand Integration to Support Child Care Programs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.campdoc.com/blog/daxko-child-care-campdoc-integration/"
+  },
+  {
+   "date": "2026-06-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Operational Debt That Comes Due Every June",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.campdoc.com/blog/camp-health-documentation-budget/"
+  },
+  {
+   "date": "2026-05-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Making the Case for Youth Program Technology Before Your Budget Turns Over",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.campdoc.com/blog/parks-rec-youth-program-budget-planning/"
+  },
+  {
+   "date": "2026-05-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CampDoc + ACTIVENet: A New Integration for Registration and Health Records",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.campdoc.com/blog/campdoc-activenet-integration/"
+  },
+  {
+   "date": "2026-04-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Camp Health Records in Late Spring: What\u2019s Still Worth Fixing Before Campers Arrive",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.campdoc.com/blog/camp-health-records-late-spring-checklist/"
+  },
+  {
+   "date": "2026-04-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Before Arrival Week Becomes Triage: A Parent Readiness System for Camp Health Forms",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.campdoc.com/blog/camp-health-forms-completion-parent-readiness-pack/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "CampDoc sells camp and youth program software built for registration, health management, and day-to-day operations. The buyers are organizations that run programs for children and students, and the company says it powers more than 1,250 camps, youth programs and school programs. Signups, payments, rosters and family-facing workflows sit in one place.",
+   "On the health side, staff collect health forms, manage medications, document incidents, and keep records accessible when they need them. The health forms are digital and use conditional logic. Medication administration runs through an eMAR. Attendance, communication, reporting and daily program operations are kept together in one place. Rosters and health records stay aligned across the system.",
+   "For IT and compliance reviewers, the company points to SOC 2 Type II controls, role-based access to PHI, single sign-on for organizations that require it, and multi-factor authentication. It also states that the platform is HIPAA and FERPA compliant. Plans start at $355 per month. Onboarding, training, support and compliance are included in every plan, according to the pricing section. Published customer stories include a municipal parks and recreation department that replaced paper forms and manual tracking."
+  ],
+  "quote": {
+   "text": "Bring online registration, digital health records, payments, rosters, and reporting together.",
+   "url": "https://www.campdoc.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.campdoc.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.campdoc.com/case-studies/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.campdoc.com"
+   ],
+   [
+    "https://www.campdoc.com"
+   ],
+   [
+    "https://www.campdoc.com",
+    "https://www.campdoc.com/case-studies/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "profile": {
+  "paragraphs": [
+   "CollegeVine sells colleges and universities an AI layer that sits on their existing data and puts software agents into the offices that run the institution. The pitch is deliberately campus-wide rather than a tool for one department.",
+   "Underneath sits what the company calls an ontology, a model of how the institution actually operates, with agents, applications and machine learning models built on top of it. Existing records are ingested as they are and projected into that model. In admissions, an agent answers prospective students by email, text and phone in more than 50 languages. The same office can push transcripts through at a stated rate of 10,000 a day. In advancement, an agent reads each gift agreement and matches restricted funds to students who qualify for them. In the business office, an agent fields staff questions about expense reports, purchase requisitions and policy approvals. It also produces standing board reports, IPEDS filings and dashboards on schedule.",
+   "The company claims hundreds of institutional partners. It describes them as public and private, R1 and community college, liberal arts and HBCU, with operating budgets from $50M to $5B. On compliance, the finance page says the software is designed for FERPA, SOC 2 Type II, HECVAT and role-based access controls. One customer comment on the enrollment page is attributed to a senior vice president for enrollment at Duquesne University."
+  ],
+  "quote": {
+   "text": "Live in weeks, not years",
+   "url": "https://www.collegevine.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.collegevine.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.collegevine.com/solutions/advancement",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.collegevine.com/solutions/enrollment",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.collegevine.com/solutions/finance",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.collegevine.com"
+   ],
+   [
+    "https://www.collegevine.com",
+    "https://www.collegevine.com/solutions/enrollment",
+    "https://www.collegevine.com/solutions/advancement",
+    "https://www.collegevine.com/solutions/finance"
+   ],
+   [
+    "https://www.collegevine.com",
+    "https://www.collegevine.com/solutions/finance",
+    "https://www.collegevine.com/solutions/enrollment"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

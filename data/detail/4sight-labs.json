@@ -1,0 +1,142 @@
+{
+ "news": [
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Change Management for New Monitoring Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/change-management-for-new-monitoring-technology"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "4Sight Labs Expands OptiGuard\u2122",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/4sight-labs-expands-optiguard-tm"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Allegheny County Jail integrates OverWatch",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/allegheny-county-jail-launches-biometric-tracking-for-medically-vulnerable-people"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Bridging the Gap Between Correctional and Medical Staff",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/bridging-the-gap-between-correctional-and-medical-staff"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "The Officer to Detainee Ratio",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/the-officer-to-detainee-ratio"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "What Is Institutional Liability in a Custodial Death Case?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/institutional-liability-in-a-custodial-death-case"
+  },
+  {
+   "date": "2026-06-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Why Oversight Consistency Matters in High-Risk Jail Housing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/why-oversight-consistency-matters-in-high-risk-jail-housing"
+  },
+  {
+   "date": "2026-06-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "4Sight Labs Warns Consumer Wireless Technology Falls Short in Custodial Monitoring Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/4sight-labs-warns-consumer-wireless-technology-falls-short-in-custodial-monitoring-systems"
+  },
+  {
+   "date": "2026-06-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "What Purpose-Built Correctional Monitoring Actually Delivers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/what-purpose-built-correctional-monitoring-actually-delivers"
+  },
+  {
+   "date": "2026-05-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Identifying Blind Spots in High-Risk Housing Units",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/identifying-blind-spots-in-high-risk-housing-units-visibility-challenges-in-detention-supervision"
+  },
+  {
+   "date": "2026-05-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Medical Observation in Jail",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/medical-observation-in-jail"
+  },
+  {
+   "date": "2026-05-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Mental Health Monitoring in Jail",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/mental-health-monitoring-in-jail"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "4Sight Labs sells a biometric monitoring system for correctional facilities, meant to help staff watch over the health of people held in custody. Its main product, OverWatch, is presented as the core of a unified correctional biometric platform built for settings where ordinary monitoring falls short.",
+   "People in custody wear sensors that track heart rate, blood oxygen, skin temperature and motion, along with other indicators of physiological distress. Readings are processed as they arrive, so that anomalies produce structured notifications instead of an after-the-fact review. Thresholds can be set by the facility so staff hear about a pattern that points toward a crisis.",
+   "The company says the platform is built for county detention centers, state systems, private facilities and complex housing units. It also states that the technology is designed and manufactured in the United States, with a controlled hardware and firmware supply chain. The site reports that the Harford County Sheriff's Office publicly announced putting OverWatch into its custody and safety strategy."
+  ],
+  "quote": {
+   "text": "Continuous biometric monitoring allows staff to identify physiological deterioration before it escalates into an emergency.",
+   "url": "https://4sightlabs.com"
+  },
+  "sources": [
+   {
+    "url": "https://4sightlabs.com",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://4sightlabs.com"
+   ],
+   [
+    "https://4sightlabs.com"
+   ],
+   [
+    "https://4sightlabs.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

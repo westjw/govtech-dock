@@ -1,0 +1,150 @@
+{
+ "news": [
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "What Parents Need to Know About ChatGPT\u2019s New Teen Experience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/chatgpt-teen-experience/"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "My Kid Is Being Bullied Online. What Do I Do Right Now?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/kid-bullied-online/"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Bark Watch vs Apple Watch: Here\u2019s the Breakdown",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/the-bark-watch-vs-apple-watch/"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What the Research Actually Says: A Parent\u2019s Guide to Screen Time and Technology Studies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/screen-time-technology-research/"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "To Teens From Bark: How To Actually Tell If You\u2019re Talking to a Real Person Online",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/how-to-tell-if-youre-talking-to-a-real-person-online/"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "I Found Porn on My 11-Year-Old\u2019s Search History. What do I do?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/found-porn-in-childs-search-history/"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "How Do I Raise a Digitally Healthy Kid From an Early Age?",
+   "kind": "funding",
+   "kind_rule": "Raise",
+   "url": "https://www.bark.us/blog/digitally-healthy-kid/"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "7 Things Parents Can Do To Model Healthy Screen Time",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/model-healthy-screen-time-tips/"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How To Talk to Your Kids About Porn At Every Age",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/how-to-talk-to-your-kids-about-porn/"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "5 Tips for Setting up Your Kid\u2019s New Bark Watch",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/set-up-bark-watch/"
+  },
+  {
+   "date": "2026-08-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Summer Is Ending: Here\u2019s How to Reset Your Family\u2019s Tech Rules",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/reset-family-tech-rules-back-to-school/"
+  },
+  {
+   "date": "2026-07-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "When to Move Your Kid From a Watch to a Phone",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/moving-from-watch-to-phone/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Bark sells digital safety products for children, used at home and in schools. Schools set up their account through Google Workspace or Microsoft 365. For families there is a parental control app plus hardware, including a watch for children not yet ready for a phone.",
+   "The software looks for threats to physical and mental well-being and sends real-time alerts to caregivers or educators. Alerts span 26 categories including self-harm, suicidal ideation, disordered eating, cyberbullying, grooming, drugs and alcohol, violence, and sextortion. On the Bark Phone, caregivers can also manage app or website access, set contact permissions for calls and texts, and use location tracking. Beyond the software, the company offers on-site and virtual digital citizenship training.",
+   "The site credits CEO Brian Bason, a father of two, with founding the company. After the Parkland tragedy, it began offering free monitoring to all K-12 schools in the United States. The company says Bark for Schools now helps protect students in thousands of districts. A community partners program extends the same work to nonprofits, funders, treatment centers, and state agencies."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://www.bark.us/schools",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.bark.us/about/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.bark.us/learn/solutions/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.bark.us/learn/solutions/",
+    "https://www.bark.us/schools",
+    "https://www.bark.us/about/"
+   ],
+   [
+    "https://www.bark.us/learn/solutions/"
+   ],
+   [
+    "https://www.bark.us/about/",
+    "https://www.bark.us/learn/solutions/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

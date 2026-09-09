@@ -1,0 +1,56 @@
+{
+ "news": [
+  {
+   "date": "2026-06-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Featured 7 June 2026 Aatral Newsroom Aatral company news, product announcements, partnerships, and enterprise XR deployment updates. View news",
+   "kind": "product",
+   "kind_rule": "updates",
+   "url": "https://aatral.io/news/aatral-newsroom-launch/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Aatral builds extended reality training and guidance software for industrial teams, combining VR, AR, AI and digital twins. It sells to defence and aerospace, automotive, manufacturing, steel, energy and infrastructure teams.",
+   "The platform is arranged around DAXR, described as its core intelligence layer, with verticals for training, field guidance and review. Named products cover safety training, crane simulation, remote guidance, inspection workflows, content deployment and performance intelligence. The safety product is a VR training library for hazard practice, emergency response, SOP awareness and readiness tracking. Module topics run to work at height, confined space, electrical safety, hot work, welding and chemical safety.",
+   "The company states it is headquartered in Chennai, Tamil Nadu, India, with work across India and international markets. Its defence section lists a memorandum of understanding with HAL for XR solutions. Safety modules are presented as standardized across multiple plants and teams."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://aatral.io",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://aatral.io/platform/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://aatral.io/products/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://aatral.io/products/safetizen/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://aatral.io"
+   ],
+   [
+    "https://aatral.io/platform/",
+    "https://aatral.io/products/",
+    "https://aatral.io/products/safetizen/"
+   ],
+   [
+    "https://aatral.io/products/",
+    "https://aatral.io",
+    "https://aatral.io/products/safetizen/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

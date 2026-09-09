@@ -1,0 +1,157 @@
+{
+ "news": [
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Product Research September 1, 2026 What MuniciPay Data Reveals About Online Payment Adoption Read story \u2192",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autoagent.com/news/what-municipay-data-reveals-about-online-payment-adoption/"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Company News Autoagent Ranks No. 1510 on the 2026 Inc. 5000 August 11, 2026 Read story \u2192",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autoagent.com/news/autoagent-ranks-no-1510-on-the-2026-inc-5000/"
+  },
+  {
+   "date": "2026-05-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Company News Autoagent Introduces EquaPay for Monthly Property Taxes May 1, 2026 Read story \u2192",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://www.autoagent.com/news/autoagent-introduces-equapay-for-monthly-property-taxes/"
+  },
+  {
+   "date": "2026-04-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Product Update MuniciPay Adds PayPal and Venmo for Government Payments April 22, 2026 Read story \u2192",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.autoagent.com/news/municipay-adds-paypal-and-venmo-for-government-payments/"
+  },
+  {
+   "date": "2025-05-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Industry News Why Mortgage Lenders Are Leaving Third-Party Processors May 21, 2025 Read story \u2192",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autoagent.com/news/why-mortgage-lenders-are-leaving-third-party-processors/"
+  },
+  {
+   "date": "2025-05-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Industry News Why Mortgage Lenders Should Consider Direct Servicing May 6, 2025 Read story \u2192",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autoagent.com/news/why-mortgage-lenders-should-consider-direct-servicing/"
+  },
+  {
+   "date": "2025-04-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Industry News Top Escrow Tax Payment Challenges for Mortgage Lenders April 29, 2025 Read story \u2192",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autoagent.com/news/top-escrow-tax-payment-challenges-for-mortgage-lenders/"
+  },
+  {
+   "date": "2025-04-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Company News Autoagent Mortgage Survey Reveals Escrow Tax Frustrations April 18, 2025 Read story \u2192",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autoagent.com/news/autoagent-mortgage-survey-reveals-escrow-tax-frustrations/"
+  },
+  {
+   "date": "2024-12-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Industry News How AI and Automation Modernize Municipal Tax Collection December 11, 2024 Read story \u2192",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autoagent.com/news/how-ai-and-automation-modernize-municipal-tax-collection/"
+  },
+  {
+   "date": "2024-11-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Industry News The Role of Streamlined Tax Payment Processes for Retailers November 29, 2024 Read story \u2192",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autoagent.com/news/the-role-of-streamlined-tax-payment-processes-for-retailers/"
+  },
+  {
+   "date": "2024-11-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Industry News The Hidden Costs of Property Tax Escrow Delays November 22, 2024 Read story \u2192",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autoagent.com/news/the-hidden-costs-of-property-tax-escrow-delays/"
+  },
+  {
+   "date": "2024-09-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Industry News Survey Reveals Critical Government Payment Processes Inefficiencies September 5, 2024 Read story \u2192",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autoagent.com/news/survey-reveals-critical-government-payment-processes-inefficiencies/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Autoagent sells payment software to local government offices, built around the work of collecting public revenue. The company says its payment products work together or independently, to fit how a government office operates.",
+   "EscrowCloud handles bulk property tax payments by holding current tax data that mass payers must pay against, so they cannot submit a different amount or pay on an invalid property ID. A tax office adds its start and due dates to the system, and payers are notified of the collection cycle in real time. On the payer side, each parcel is validated and the amounts and exceptions are displayed before payment. The company states that it works with data files from all major tax administration systems. A second product, MuniciPay, brings online, in-person, IVR, eCheck, bankcard and mobile wallet payments into one platform. A third lets residents split an annual property tax bill into monthly payments.",
+   "The company describes county and municipal tax offices across 48 states as its users. It states that the platform integrates directly with more than 900 tax offices nationwide. EscrowCloud is free for property tax offices, with mortgage lenders, tax servicers and property managers paying a per-property fee. The company says the product is PCI DSS Level 1 certified and SOC 2 Type 2 compliant."
+  ],
+  "quote": {
+   "text": "EscrowCloud is always free for property tax offices.",
+   "url": "https://www.autoagent.com/products/escrowcloud/"
+  },
+  "sources": [
+   {
+    "url": "https://autoagent.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.autoagent.com/products/escrowcloud/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.autoagent.com/products/escrowcloud/how-it-works/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.autoagent.com/products/escrowcloud/features/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://autoagent.com"
+   ],
+   [
+    "https://www.autoagent.com/products/escrowcloud/",
+    "https://www.autoagent.com/products/escrowcloud/how-it-works/",
+    "https://www.autoagent.com/products/escrowcloud/features/",
+    "https://autoagent.com"
+   ],
+   [
+    "https://www.autoagent.com/products/escrowcloud/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "profile": {
+  "paragraphs": [
+   "OpenAI describes itself as an AI research and deployment company. Its stated mission is to ensure that artificial general intelligence benefits all of humanity. Alongside the research, it sells its models to organizations.",
+   "The solutions pages sort the offer by the work it is meant to do, and one of the listed uses is supporting essential public services. Another is education, aimed at students, educators, and researchers. Customers can connect their own data to ChatGPT through custom MCP servers. For buyers who need controls, the company points to encryption and configurable policies for keeping data private.",
+   "Recent release notes lean toward regulated and enterprise buyers: mutual TLS and X.509 workload identity federation are generally available for the API. Healthcare plugins are available to eligible ChatGPT for Healthcare and HIPAA-enabled ChatGPT Enterprise workspaces. The company says it consists of a nonprofit foundation and a for-profit group, with the foundation governing the group."
+  ],
+  "quote": {
+   "text": "We are building safe and beneficial AGI, but will also consider our mission fulfilled if our work aids others to achieve this outcome.",
+   "url": "https://openai.com/about/"
+  },
+  "sources": [
+   {
+    "url": "https://openai.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://openai.com/about/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://openai.com/products/release-notes/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://openai.com/solutions/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://openai.com/about/",
+    "https://openai.com/solutions/"
+   ],
+   [
+    "https://openai.com/solutions/"
+   ],
+   [
+    "https://openai.com/products/release-notes/",
+    "https://openai.com/about/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

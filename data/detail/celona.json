@@ -1,0 +1,151 @@
+{
+ "news": [
+  {
+   "date": "2026-08-21",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Why Trust Matters for Orion Trust isn't bolted on, it's built into every layer of Orion's stack. Videos",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/why-trust-matters-for-orion"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "What Orchestrator AI means for enterprise wireless Meet Orchestrator AI: expertise that acts, not just dashboards that alert. Videos",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/what-orchestrator-ai-means-for-enterprise-wireless"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "How Orion brings enterprise wireless together No more choosing between Wi-Fi and private 5G, Orion brings them together in one subscription. Videos",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/how-orion-brings-enterprise-wireless-together"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Introducing Celona Orion Introducing the industry's first agentic, converged wireless platform for the AI-native enterprise. Videos",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://celona.io/resources/introducing-celona-orion"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Unified Security Across Private 5G and Public Cellular One SIM, one identity, one policy, whether the device is on private 5G or public MNO. Videos",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/unified-security-across-private-5g-and-public-cellular"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Self-Healing Private 5G Demo Live demo: how Celona's AI automatically detects and corrects RF issues in minutes. Videos",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/self-healing-private-5g-demo"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Industrial OT Demo Live demo: real-time OT sensor monitoring and safety alerts over industrial 5G. Videos",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/industrial-ot-demo"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Always On Demo Live demo: upgrading the core with zero major downtime, thanks to active-active failover. Videos",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/always-on-demo"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Always Connected Demo See Celona Airflex deliver seamless, lossless mobility, even over Starlink backhaul at remote sites. Videos",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/always-connected-demo"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "AI-Native Network Management Demo: Part 2 See how Celona Orion diagnoses and fixes a device connectivity issue in minutes, no support ticket required. Videos",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/ai-native-network-management-demo-part-2"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Celona Launches Orion, the Agentic Converged Wireless Platform for the AI-Native Enterprise",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://celona.io/news/celona-launches-orion-the-agentic-converged-wireless-platform-for-the-ai-native-enterprise"
+  },
+  {
+   "date": "2026-04-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Rakuten Symphony and Celona to Collaborate on End-to-End Open RAN Private 5G Solutions for Enterprise",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/news/rakuten-symphony-and-celona-to-collaborate-on-end-to-end-open-ran-private-5g-solutions-for-enterprise"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Celona sells enterprise wireless that puts private 5G and Wi-Fi on one subscription, with Wi-Fi access points included at no additional cost. The company says the product is designed for the teams building the AI-native enterprise. Robotics and AI device makers are a second audience, able to embed multi-wireless connectivity into their products.",
+   "Celona Orion is deployed as an overlay that runs on existing physical infrastructure, the same cabling, switches, and network elements. Microsegmentation isolates IT and OT traffic across both Wi-Fi and private 5G. SIM-based authentication can be used on Wi-Fi as well as cellular. The platform delivers deterministic per-device, per-application quality of service on 5G.",
+   "The company says it began from the belief that enterprises deserved wireless purpose-built for their most mission-critical operations. Celona reports more than $135 million in funding. Its resources include published research, among them a study of OT and IT traffic separation in refinery and petrochemical industries."
+  ],
+  "quote": {
+   "text": "One subscription for private 5G and Wi-Fi, with Wi-Fi access points included at no additional cost.",
+   "url": "https://www.celona.io"
+  },
+  "sources": [
+   {
+    "url": "https://www.celona.io",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://celona.io/platform",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://celona.io/company",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.celona.io"
+   ],
+   [
+    "https://celona.io/platform"
+   ],
+   [
+    "https://celona.io/company",
+    "https://celona.io/platform"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

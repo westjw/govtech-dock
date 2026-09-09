@@ -1,0 +1,103 @@
+{
+ "news": [
+  {
+   "date": "2026-07-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July 30, 2026 DataX vs. Custom ETL: The Real Math on Build vs. Buy What a custom pipeline actually costs in salary, timeline, and the projects that don't get done while it's being built. K16 Solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.k16solutions.com/blog/datax-vs-custom-etl-the-real-math-on-build-vs-buy"
+  },
+  {
+   "date": "2026-06-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "June 8, 2026 Why a Backup Plan Belongs in Every Institution's Toolkit Contingency planning isn't a second LMS. It's independent access to the rosters, grades, and course content you already own. K16 S",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.k16solutions.com/blog/why-a-backup-plan-belongs-in-every-institutions-toolkit"
+  },
+  {
+   "date": "2026-05-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Newsroom May 26, 2026 SDSU Achieves Data Continuity During a Canvas Disruption with Scaffold DataX and Canvas Archiving by K16 Solutions Jason Simmons Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.k16solutions.com/news/sdsu-achieves-data-continuity-during-a-canvas-disruption-with-scaffold-datax-and-canvas-archiving-by-k16-solutions"
+  },
+  {
+   "date": "2026-02-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "February 9, 2026 The Hidden Cost of \u201cGood Enough\u201d Data \u201cGood enough\u201d data works\u2014until expectations rise. Fragmented foundations slow analytics, weaken trust, and limit AI readiness long before institu",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.k16solutions.com/blog/the-hidden-cost-of-good-enough-data"
+  },
+  {
+   "date": "2025-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Newsroom November 13, 2025 K16 Solutions Appoints Steve Mildner as Chief Executive Officer K16 Solutions Appoints Steve Mildner as Chief Executive Officer K16 Solutions Read more",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://www.k16solutions.com/news/k16-solutions-appoints-steve-mildner-as-chief-executive-officer"
+  },
+  {
+   "date": "2025-07-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Newsroom July 8, 2025 University of the Pacific Selects Scaffold DataX to Strengthen Endowment Fundraising Strategy University of the Pacific has partnered with Scaffold DataX to enhance its endowment",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.k16solutions.com/news/university-of-the-pacific-selects-scaffold-datax-to-strengthen-endowment-fundraising-strategy"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "K16 Solutions sells data software to colleges and universities, prying campus information out of the systems that hold it and handing it back in usable shape. Everything runs on one patented platform called Scaffold, spanning data warehousing, live LMS course backup, and student data archiving. A fourth product moves online course content from one learning management system to another.",
+   "The warehouse product connects to a campus LMS, SIS, CRM, and ERP through public and private APIs. Data lands in a structure specific to higher education, so a student, a course, and an enrollment get defined once instead of differently in every report. The copy lives in the institution's own governed environment, built on Snowflake and hosted on AWS. Staff can ask in plain language, and the SQL the system writes is shown rather than hidden.",
+   "Campus customers named on the site include San Diego State University. The company reports more than 12 million courses archived, and says its founders worked together for over 18 years across multiple higher education institutions. For institutions facing audits, it lists ISO 27001 certification by Schellman, SOC 2 Type II, data masking, and FERPA-aligned handling of student records."
+  ],
+  "quote": {
+   "text": "Higher ed IT leaders run the systems and control the data layer underneath them.",
+   "url": "https://www.k16solutions.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.k16solutions.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.k16solutions.com/solutions/datax",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.k16solutions.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.k16solutions.com/about",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.k16solutions.com/solutions",
+    "https://www.k16solutions.com"
+   ],
+   [
+    "https://www.k16solutions.com/solutions/datax"
+   ],
+   [
+    "https://www.k16solutions.com",
+    "https://www.k16solutions.com/about",
+    "https://www.k16solutions.com/solutions/datax"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

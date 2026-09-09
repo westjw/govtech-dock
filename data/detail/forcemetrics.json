@@ -1,0 +1,47 @@
+{
+ "profile": {
+  "paragraphs": [
+   "ForceMetrics sells Velocity, a search and analytics platform for public safety agencies that pulls CAD, RMS and other records systems into one search covering people, locations, vehicles and events. Officers, analysts and command staff get structured records, narratives and unstructured content back in under a second, with filters that surface connections across CAD, RMS, JMS and regional data.",
+   "A universal data model links not only an agency's current systems of record but multiple generations of those systems, so historical and current information is searchable together. Flow Static unlocks data from legacy CAD and RMS systems, and Flow Historical adds e-citations, crash reports, court data and EMS records. Flexible Person Merge combines person records from across the agency and multiple jurisdictions into a single enriched profile, and users can merge or unmerge at any time as new information arrives.",
+   "For command staff, FMStat replaces rigid CompStat packets with real-time dashboards that show crime trends and what is driving them. Horizon AI summarizes large volumes of reports and spots patterns across related incidents, with every connection pointing back to the records behind it, inside what the company calls a CJIS-compliant environment. Agencies named on the home page include High Point, NC, New Castle County, DE and Beverly Hills, CA. The company describes its team as veteran law enforcement officials who built the tools they wished they had in the field."
+  ],
+  "quote": {
+   "text": "Drawing on decades of law enforcement experience, we built the tools we wish we had in the field.",
+   "url": "https://www.forcemetrics.com/about-us"
+  },
+  "sources": [
+   {
+    "url": "https://www.forcemetrics.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.forcemetrics.com/product",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.forcemetrics.com/about-us",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.forcemetrics.com/solutions/command-staff",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.forcemetrics.com/product",
+    "https://www.forcemetrics.com"
+   ],
+   [
+    "https://www.forcemetrics.com/product"
+   ],
+   [
+    "https://www.forcemetrics.com",
+    "https://www.forcemetrics.com/product",
+    "https://www.forcemetrics.com/about-us"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

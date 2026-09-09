@@ -1,0 +1,77 @@
+{
+ "news": [
+  {
+   "date": "2026-08-27",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "FOIA Technology Gap Infographic: 5 Pressures Agencies Should Act On Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.casepoint.com/blog/foia-technology-gap-five-pressures-agencies/"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "The Hidden Cost of Fragmented Data Discovery Workflows in Defense Agencies Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.casepoint.com/blog/fragmented-data-discovery-workflows-defense-agencies/"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "How Canadian Legal Teams Can Automate and Simplify Legal Holds Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.casepoint.com/blog/canadian-legal-teams-automate-legal-holds/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Casepoint sells a cloud platform for eDiscovery, FOIA, investigations, and compliance work. Inside it, teams collect, process, analyze, review, and produce data in one place. The pitch is that all the data for a matter is managed in one place rather than moved between tools.",
+   "Connectors pull data straight from platforms such as Slack, Microsoft 365, and Teams. The processing engine supports over 600 file types. A separate FOIA product is built around how agencies respond to public records requests. Requesters use a portal to file requests and pay for them through pay.gov. For Canada, ATIPXpress carries access and privacy requests from submission through search, review, redaction, exemption analysis, and delivery.",
+   "The company describes the platform as purpose-built for corporations and government entities. It states that Casepoint holds FedRAMP Moderate and High authorizations, ISO 27001 certification, and Department of Defense Impact Level 5 and Impact Level 6 authorizations. It also claims to be one of only six SaaS companies globally with DOD IL6 authorization. Its AI is described as built for legal and regulatory work."
+  ],
+  "quote": {
+   "text": "Casepoint is Purpose-Built for Corporations and Government Entities",
+   "url": "https://www.casepoint.com/solutions/ediscovery-software/"
+  },
+  "sources": [
+   {
+    "url": "https://www.casepoint.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.casepoint.com/solutions/ediscovery-software/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.casepoint.com/solutions/foia-request-solution-government-agencies/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.casepoint.com/products/government/atipxpress/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.casepoint.com",
+    "https://www.casepoint.com/solutions/ediscovery-software/"
+   ],
+   [
+    "https://www.casepoint.com/solutions/ediscovery-software/",
+    "https://www.casepoint.com/solutions/foia-request-solution-government-agencies/",
+    "https://www.casepoint.com/products/government/atipxpress/"
+   ],
+   [
+    "https://www.casepoint.com/solutions/ediscovery-software/",
+    "https://www.casepoint.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

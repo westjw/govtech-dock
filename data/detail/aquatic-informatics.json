@@ -1,0 +1,46 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Aquatic Informatics makes water data management software covering the full water cycle, sold to utilities, cities and monitoring agencies. The pitch is consolidating scattered data sources so an agency can report against regulations with an audit trail behind it.",
+   "Aquarius covers environmental monitoring data from acquisition through management to web based publication and decision support. WaterTrax centralizes sampling schedules, remote data collection and compliance reporting for municipalities. Linko handles fats, oils and grease programs, industrial pretreatment and hauled waste records. Tokay is aimed at cross connection control and backflow prevention programs. Hach WIMS stores process data in a central database that provides an audit trail and preserves historical records.",
+   "A module named HydroCorrect applies machine learning inside Aquarius to speed up reaction to environmental events. The company says Hach handed it the WIMS platform in 2021, citing more than twenty years of experience in water data management systems. Aquarius Cloud is offered as a fully managed service hosted on Amazon Web Services."
+  ],
+  "quote": {
+   "text": "One Water. One Platform.",
+   "url": "https://aquaticinformatics.com"
+  },
+  "sources": [
+   {
+    "url": "https://aquaticinformatics.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://aquaticinformatics.com/products/hach-wims-water-information-management-solution-platform/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://aquaticinformatics.com/products/aquarius-environmental-water-data-management/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://aquaticinformatics.com/products/wastewater-compliance-software/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://aquaticinformatics.com"
+   ],
+   [
+    "https://aquaticinformatics.com",
+    "https://aquaticinformatics.com/products/hach-wims-water-information-management-solution-platform/"
+   ],
+   [
+    "https://aquaticinformatics.com/products/aquarius-environmental-water-data-management/",
+    "https://aquaticinformatics.com/products/hach-wims-water-information-management-solution-platform/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

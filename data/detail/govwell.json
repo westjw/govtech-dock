@@ -1,0 +1,148 @@
+{
+ "news": [
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Permitting and Community Development Software RFP Toolkit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/the-permitting-and-community-development-software-rfp-toolkit"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI in Government Permitting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/ai-in-government-permitting"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Next Era of Community Development: 10 Trends to Watch Read Article",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/the-next-era-of-community-development"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Guides and Case Studies Rethinking permitting for a rural community September 4, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/macon-county-case-study"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hands-on support cut planning turnaround by 33%",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/case-study-deployment"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "25 hours a month back for one planning team",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/case-study-planning-and-zoning"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "80% fewer walk-ins, with zero drop in service quality",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/case-study-community-assistant"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Announcing Our $25M Series A",
+   "kind": "funding",
+   "kind_rule": "Series A",
+   "url": "https://www.govwell.com/resources/govwell-series-a"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The ROAD to Housing Starts with Local Government",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/the-road-to-housing-starts-with-local-government"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Four Things Municipal Permitting Software Gets Wrong About Special Districts Read Article",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/special-district-software"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Government Software Request for Proposal (RFP) Guide for Community Development Departments June 26, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/the-government-software-request-for-proposal-rfp-guide"
+  },
+  {
+   "date": "2026-07-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Florida HB 803 Changes Building Permits May 29, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/how-florida-hb-803-changes-building-permits"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "GovWell sells software that city and county governments use to run permitting, licensing, planning, and code enforcement work. Residents and businesses use the same system to reach services, pay, and get answers outside office hours.",
+   "Permits, plan review, and inspections are handled together in one place for staff. Licensing runs online too, with applicants filing, paying, and renewing while staff keep records and approvals on their side. Code enforcement officers track cases, schedule inspections, and follow issues to closure. The company argues that AI can do real work in these processes, reviewing applications against local code, answering resident questions, flagging violations in plans, and routing inspections.",
+   "GovWell says it was founded by the son of a general contractor who watched his father struggle to get permits quickly. Its case for existing is that local governments cannot hire software engineers at competitive salaries. Deployment strategists and configuration tooling are meant to shorten implementations against older systems."
+  ],
+  "quote": {
+   "text": "Then you try to file a building permit.",
+   "url": "https://www.govwell.com/mission"
+  },
+  "sources": [
+   {
+    "url": "https://www.govwell.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.govwell.com/mission",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.govwell.com"
+   ],
+   [
+    "https://www.govwell.com",
+    "https://www.govwell.com/mission"
+   ],
+   [
+    "https://www.govwell.com",
+    "https://www.govwell.com/mission"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

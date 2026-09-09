@@ -1,0 +1,84 @@
+{
+ "news": [
+  {
+   "date": "2026-04-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Eleos Expands AI Agents Across the Full Care Journey",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eleos.health/press-releases/eleos-expands-ai-agents-across-the-full-care-journey/"
+  },
+  {
+   "date": "2026-02-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CalMHSA Selects Eleos as Statewide AI Technology Partner for Behavioral Health",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://eleos.health/press-releases/calmhsa-selects-eleos-as-ai-partner/"
+  },
+  {
+   "date": "2025-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Eleos Earns ISO 42001 Certification, the First Global Standard for AI Systems Development and Security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eleos.health/press-releases/eleos-earns-iso-42001-certification/"
+  },
+  {
+   "date": "2025-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Eleos to Launch Polaris AI Advanced, Purpose-Built Foundational AI Model for Post-Acute Care, built with Google Cloud Technology",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://eleos.health/press-releases/eleos-launches-polaris-ai-built-with-google-cloud/"
+  },
+  {
+   "date": "2025-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Eleos Earns Drummond pDSI-Risk Certification for AI-Enabled Health IT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eleos.health/press-releases/eleos-earns-pdsi-risk-certification/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Eleos Health builds an AI-powered platform for organizations that deliver community-based care. The company pitches it as a system of action built to prevent denials, closing compliance gaps before revenue is ever at risk. The software spans clinical, compliance, and revenue cycle workflows rather than sitting in a single department.",
+   "Real-time suggestions during a session cut the documentation burden carried by providers. Before anything goes out the door, compliance checks flag issues before submission. Automatic scanning of every note is meant to help CQI and audit teams catch risk earlier. An in-workflow clinical co-pilot synthesizes client insights and expert-vetted guidelines for the person delivering care. It integrates with any web-based EHR via a browser extension, which sidesteps custom API work.",
+   "The platform is designed for the compliance requirements of organizations that serve Medicaid populations. The company describes enterprise-grade security built for community-based care. Its stated aim is advancing behavioral care through data, measurement, and personalization. Advisors listed on the company page include Dr. David Shulkin, described as Ninth Secretary of US Department of Veterans Affairs."
+  ],
+  "quote": {
+   "text": "Hindsight reviews what happened. Foresight ensures it happens correctly.",
+   "url": "https://eleos.health"
+  },
+  "sources": [
+   {
+    "url": "https://eleos.health",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://eleos.health/who-we-are/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://eleos.health"
+   ],
+   [
+    "https://eleos.health"
+   ],
+   [
+    "https://eleos.health",
+    "https://eleos.health/who-we-are/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

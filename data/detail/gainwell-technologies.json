@@ -1,0 +1,70 @@
+{
+ "news": [
+  {
+   "date": "2026-08-12",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Gainwell Technologies to Showcase How States Are Modernizing Medicaid at MESC 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gainwelltechnologies.com/resources/news/gainwell-technologies-to-showcase-how-states-are-modernizing-medicaid-at-mesc-2026/"
+  },
+  {
+   "date": "2026-07-08",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Gainwell Provider Everywhere Simplifies Cross-State Medicaid Provider Enrollment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gainwelltechnologies.com/resources/news/gainwell-provider-everywhere-simplifies-cross-state-medicaid-provider-enrollment/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Gainwell sells the systems that run state Medicaid programs, tying together claims and encounter management, provider contracts, capitation and member benefits. Pharmacy is a separate line aimed at medication management and the total cost of care. Another line helps payers avoid and recover improper payments while detecting fraud.",
+   "The claims, encounters and financials module is presented as a modernization step built on automation and interoperability. An EDI gateway lets providers submit all their claims centrally, which the company says simplifies Medicaid billing. Its analytics platform is shaped around Medicaid data and federal compliance requirements. Provider management can be modernized in phases with Provider Flex, replaced outright with Provider+, or extended across state lines through a cross-state provider network.",
+   "The analytics page cites 52 state Medicaid programs. A case study on the home page covers provider enrollment in Vermont. That case study claims an 87.5% reduction in enrollment processing time. Its centralized credentialing platform is described as NCQA accredited. The company points to longstanding experience keeping Medicaid programs running with accurate data for decision making."
+  ],
+  "quote": {
+   "text": "Gainwell streamlines Medicaid operations by integrating claims and encounter management, provider contracts, capitation and financial management, and member benefits.",
+   "url": "https://www.gainwelltechnologies.com/solutions/medicaid-enterprise/"
+  },
+  "sources": [
+   {
+    "url": "https://www.gainwelltechnologies.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.gainwelltechnologies.com/solutions/medicaid-enterprise/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.gainwelltechnologies.com/solutions/data-analytics/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.gainwelltechnologies.com/solutions/provider-solutions/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.gainwelltechnologies.com/solutions/medicaid-enterprise/",
+    "https://www.gainwelltechnologies.com"
+   ],
+   [
+    "https://www.gainwelltechnologies.com/solutions/medicaid-enterprise/",
+    "https://www.gainwelltechnologies.com/solutions/data-analytics/",
+    "https://www.gainwelltechnologies.com/solutions/provider-solutions/"
+   ],
+   [
+    "https://www.gainwelltechnologies.com/solutions/data-analytics/",
+    "https://www.gainwelltechnologies.com",
+    "https://www.gainwelltechnologies.com/solutions/provider-solutions/",
+    "https://www.gainwelltechnologies.com/solutions/medicaid-enterprise/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

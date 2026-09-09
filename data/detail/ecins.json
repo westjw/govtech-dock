@@ -1,0 +1,159 @@
+{
+ "news": [
+  {
+   "date": "2026-04-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Downloadable Social Media Graphic Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/downloadable-social-media-graphic/"
+  },
+  {
+   "date": "2026-02-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Police Administrative Time Datasheet Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/police-administrative-time-datasheet/"
+  },
+  {
+   "date": "2025-12-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Supporting Vulnerable Neighbours Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/supporting-vulnerable-neighbours/"
+  },
+  {
+   "date": "2025-11-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Crime & ASB Infographic Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/crime-asb-infographic/"
+  },
+  {
+   "date": "2025-11-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Is Your ASB Partnership Truly Connected? Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/is-your-asb-partnership-truly-connected/"
+  },
+  {
+   "date": "2025-04-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Mandated Reporter Resources Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/mandated-reporter-resources/"
+  },
+  {
+   "date": "2025-04-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Student Goal Setting Worksheet Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/student-goal-setting-worksheet/"
+  },
+  {
+   "date": "2025-04-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Nutrition Worksheet Resource Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/nutrition-worksheet-resource/"
+  },
+  {
+   "date": "2025-04-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Implementing Mood Journaling for Student Support Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/implementing-mood-journaling-for-student-support/"
+  },
+  {
+   "date": "2025-04-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Links to LGBTQ+ Youth Support Resources Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/links-to-lgbtq-youth-support-resources/"
+  },
+  {
+   "date": "2025-04-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Summer Safety Toolkit Worksheet Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/summer-safety-toolkit/"
+  },
+  {
+   "date": "2023-12-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Frequently Asked Questions from Schools Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ecins.com/resources/frequently-asked-questions-from-schools/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "ECINS sells a license-free cloud system for collaborative case management, built for agencies that coordinate support for vulnerable people. Its case management module is used by tens of thousands of users in the UK, including police, health and councils. The central idea is a single shared record, so a client does not repeat the same information to every agency involved. The company reports results across the UK, the United States and Australia.",
+   "Work usually begins in the referral module, which replaces paper forms with secure online forms that clients and practitioners fill in themselves. Once a referral is approved, its information can be transferred into the case management module. Within case management, staff receive alerts for significant activity such as child protection interventions. They can also track commonalities between individuals through search fields such as addresses, vehicle license plates and educational institutions. A client engagement module and a MyPortal app let clients receive reminders, respond to messages and tasks, and ask questions from their phones.",
+   "Beyond casework, a community collaboration module lets residents, neighbourhood watch groups, business communities, police and local authorities work together on detailed neighbourhood profiles. A staff tasking and oversight module is described as still in development. The homepage claims thousands of users across multiple countries. The system is sold license-free to encourage wide participation at no extra cost."
+  ],
+  "quote": {
+   "text": "ECINS helps teams provide joined-up support to people in need while empowering those being supported.",
+   "url": "https://ecins.com"
+  },
+  "sources": [
+   {
+    "url": "https://ecins.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://ecins.com/products/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://ecins.com/products/reporting-referral/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://ecins.com/products/case-management/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://ecins.com",
+    "https://ecins.com/products/case-management/"
+   ],
+   [
+    "https://ecins.com/products/reporting-referral/",
+    "https://ecins.com/products/case-management/",
+    "https://ecins.com/products/client-engagement/"
+   ],
+   [
+    "https://ecins.com/products/community-collaboration/",
+    "https://ecins.com/products/",
+    "https://ecins.com"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

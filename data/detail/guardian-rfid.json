@@ -1,0 +1,103 @@
+{
+ "news": [
+  {
+   "date": "2020-02-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How do I get 100% Round Compliance",
+   "kind": "funding",
+   "kind_rule": "Round",
+   "url": "https://guardianrfid.com/blog/how-do-i-get-to-100-round-compliance"
+  },
+  {
+   "date": "2020-01-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Breaking the \u201cI\u2019m Good\u201d Code of Silence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://guardianrfid.com/blog/breaking-the-im-good-code-of-silence"
+  },
+  {
+   "date": "2020-01-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "We Suffer in Silence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://guardianrfid.com/blog/we-suffer-in-silence"
+  },
+  {
+   "date": "2020-01-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Feel Your Best When You See the Worst",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://guardianrfid.com/blog/how-to-feel-your-best-when-you-see-the-worst"
+  },
+  {
+   "date": "2018-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Top 4 mistakes CO's make and how to fix them.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://guardianrfid.com/blog/top-4-mistakes-corrections-officers-make-while-doing-security-rounds-and-how-to-fix-them"
+  },
+  {
+   "date": "2018-07-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Deploy GUARDIAN RFID",
+   "kind": "contract",
+   "kind_rule": "Deploy",
+   "url": "https://guardianrfid.com/blog/how-to-deploy-guardian-rfid"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "GUARDIAN RFID sells jails a way to track inmates, run guard tours and log activity as it happens. Fixed readers identify inmates by RFID wristband or RFID card to confirm presence and location. The company is the exclusive distributor of the Clincher wristbands those readers use.",
+   "Behind the hardware sits Command Cloud, a platform of integrated applications and services for corrections staff. Long-range readers create customizable zones over housing units, out of cell areas and corridors. Officers carry a rugged Android handheld for data collection and evidence gathering. Check frequencies can be configured by location and inmate classification. Electronic medication orders carry administration times, allergies, dosage, frequencies and routes.",
+   "The company says over 75,000 corrections staff across the United States rely on it. Facilities need no servers of their own, since the system is cloud based. It integrates with a wide range of jail management systems as well as offender and case management systems. An ongoing System Renewal Fee covers software upgrades for Command Cloud and Mobile Command. That fee is invoiced 12 months after go-live."
+  ],
+  "quote": {
+   "text": "Over 75,000 Warriors across the United States rely on GUARDIAN RFID",
+   "url": "https://guardianrfid.com"
+  },
+  "sources": [
+   {
+    "url": "https://guardianrfid.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://guardianrfid.com/products",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://guardianrfid.com/products/technical-requirements",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://guardianrfid.com/products/system-renewal-fee",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://guardianrfid.com/products"
+   ],
+   [
+    "https://guardianrfid.com",
+    "https://guardianrfid.com/products"
+   ],
+   [
+    "https://guardianrfid.com",
+    "https://guardianrfid.com/products/technical-requirements",
+    "https://guardianrfid.com/products/system-renewal-fee"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Cayenta makes enterprise software for utilities, covering customer management, billing, financials, work management, and human capital management. Its customers are utilities across the United States, Canada, and the Caribbean.",
+   "The customer information system sits at the center, supporting utilities of every size from standard billing through highly complex rate structures. It is built to run the complete meter-to-cash lifecycle inside one system. Work management ties planning, work orders, and cost tracking to that customer and financial data. A financial module handles accounting, budgeting, reporting, and internal controls for utilities and municipalities. An AI layer called Cayla fields customer inquiries across voice and digital channels and answers staff questions inside the application. CayentaCloud provides single-tenant hosting in dedicated environments, and on-premises options remain for utilities not yet ready for the cloud.",
+   "The company dates its founding to 1983. It began as Solutions for Government, created to serve the needs of local governments and utilities. Cayenta later joined Harris Computer, which it describes as a global software organization. Its hosting infrastructure carries SOC 2 certification."
+  ],
+  "quote": {
+   "text": "We proudly serve utilities across the United States, Canada, and the Caribbean.",
+   "url": "https://www.cayenta.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.cayenta.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cayenta.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cayenta.com/about",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.cayenta.com"
+   ],
+   [
+    "https://www.cayenta.com/solutions"
+   ],
+   [
+    "https://www.cayenta.com/about",
+    "https://www.cayenta.com/solutions"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

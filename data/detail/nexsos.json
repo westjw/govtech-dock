@@ -1,0 +1,32 @@
+{
+ "profile": {
+  "paragraphs": [
+   "nexSOS connects citizens and public safety agencies through real-time incident reporting, location sharing, and NOAA weather alerts, backed by a government portal. Citizens use a mobile app to share their GPS location with emergency contacts and first responders, record video reports with the phone's camera, and call emergency services directly. The company stresses that the app is not a 911 replacement.",
+   "Incident reports are stored and routed to a backend portal where public safety agencies filter, review, and monitor incidents across their jurisdiction. Agencies can filter by region, timestamp and category, review video, and see NOAA alerts alongside citizen reports in one view. The page names Emergency Management Offices, County Dispatch Centers and Municipal Safety Agencies as the users it is built for. The pitch to them is early incident context before or alongside 911 calls.",
+   "Government access is licensed annually by jurisdiction size, with a base tier of unlimited citizen users, portal access and 12 months of data retention, and larger tiers adding analytics, heat mapping and extended retention. Qualified agencies can start with a 90-day paid pilot that includes full platform access, onboarding support and a usage summary report. nexSOS says the platform originally launched and ran quietly in production and is now being rebuilt as v2, with modernized infrastructure, user experience and government-facing capabilities."
+  ],
+  "quote": {
+   "text": "nexSOS is a modern emergency reporting and situational awareness platform designed to strengthen the connection between communities and public safety.",
+   "url": "https://nexsos.app"
+  },
+  "sources": [
+   {
+    "url": "https://nexsos.app",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://nexsos.app"
+   ],
+   [
+    "https://nexsos.app"
+   ],
+   [
+    "https://nexsos.app"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

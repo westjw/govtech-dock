@@ -1,0 +1,81 @@
+{
+ "news": [
+  {
+   "date": "2026-08-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Before You Walk the IACP 2026 Floor in Orlando: A Small-Department Chief's Vendor Shortlist Method",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lenslock.com/post/before-you-walk-the-iacp-2026-floor-in-orlando-a-small-department-chief-s-vendor-shortlist-method"
+  },
+  {
+   "date": "2026-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Police Body Camera Footage: What a Fourth of July Rescue Shows",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lenslock.com/post/police-body-camera-footage-truck-rescue"
+  },
+  {
+   "date": "2026-07-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What to Do in the 90 Days Before Your Body Camera Contract Expires",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://www.lenslock.com/post/body-camera-contract-renewal-90-day-checklist"
+  },
+  {
+   "date": "2026-07-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Is Your Body Camera Platform Slowing Down Your Department?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lenslock.com/post/body-camera-platform-slowing-down-department"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "LensLock sells body-worn cameras, in-car video, and CJIS-compliant evidence management to law enforcement agencies. Its pitch to departments is plain: evidence that holds up, upload and redaction that is FBI-compliant, and support staff who answer the phone. The products are designed around how officers work in the field, and a mobile app for iOS and Android handles in-field tagging and review.",
+   "The body cameras run a full shift on one battery, start recording on up to 8 auto-activation triggers, and offload video automatically. Docking stations charge up to 20 cameras at a time while pushing footage to LensLocker, the company's cloud evidence system. In the car, the Titan V system pairs a 4-channel mobile DVR with up to 2 terabytes of storage, GPS with geofencing, and cellular or WiFi offloading. Once footage is in LensLocker, officers can share it with the district attorney and redact faces, plates, and IDs.",
+   "Storage sits on Microsoft Azure Government Cloud, which the company describes as FBI CJIS-compliant and staffed by screened US citizens only. A license plate recognition feature scans video and flags matches from approved watchlists. The site notes that feature availability varies by device and configuration. Jon Handy founded LensLock in 2015 and now serves as Executive Vice President, Sales and Chairman of the Board of Directors. Chief Conrad Pepperman of the Rockaway Borough Police Department in New Jersey is quoted praising the customer service."
+  ],
+  "quote": {
+   "text": "LensLock provides body-worn cameras, in-car video, and CJIS-compliant evidence management designed around how officers work in the field.",
+   "url": "https://www.lenslock.com/solutions"
+  },
+  "sources": [
+   {
+    "url": "https://www.lenslock.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.lenslock.com/about",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.lenslock.com/solutions",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.lenslock.com/solutions",
+    "https://www.lenslock.com"
+   ],
+   [
+    "https://www.lenslock.com/solutions",
+    "https://www.lenslock.com"
+   ],
+   [
+    "https://www.lenslock.com",
+    "https://www.lenslock.com/about"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,122 @@
+{
+ "news": [
+  {
+   "date": "2026-03-12",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "The City of St. Louis, Missouri Launches New Investor Relations Website to Enhance Financial Transparency",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.bondlink.com/resources/news/the-city-of-st-louis-missouri-launches-new-investor-relations-website-to-enhance-financial-transparency-209194811295"
+  },
+  {
+   "date": "2026-02-03",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "BondLink Named to GovTech 100 for Eighth Consecutive Year",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bondlink.com/resources/news/bondlink-named-to-govtech-100-for-eighth-consecutive-year-206768115545"
+  },
+  {
+   "date": "2026-01-27",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "St. Joseph County, Indiana Launches New Investor Relations Hub with BondLink",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.bondlink.com/resources/news/st-joseph-county-indiana-launches-new-investor-relations-hub-with-bondlink-205976083005"
+  },
+  {
+   "date": "2025-08-25",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "San Francisco Bay Area Rapid Transit Launches Modern Investor Platform to Strengthen Market Engagement",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.bondlink.com/resources/news/san-francisco-bay-area-rapid-transit-launches-modern-investor-platform-to-strengthen-market-engagement-195059696256"
+  },
+  {
+   "date": "2025-05-20",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Dallas Independent School District Launches New Transparency Initiative with BondLink",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.bondlink.com/resources/news/dallas-independent-school-district-launches-new-transparency-initiative-with-bondlink-190333869919"
+  },
+  {
+   "date": "2025-04-21",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "City of Riverside Finance Department Expands Digital Access with New Initiative",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bondlink.com/resources/news/city-of-riverside-finance-department-expands-digital-access-with-new-initiative-189153347369"
+  },
+  {
+   "date": "2025-04-03",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "BondLink Launches Parity Plus to Modernize Competitive Bond Sales",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.bondlink.com/resources/news/bondlink-launches-parity-plus-to-modernize-competitive-bond-sales-188299797796"
+  },
+  {
+   "date": "2025-02-12",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "City of Taunton Partners with BondLink to Strengthen Financial Transparency",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.bondlink.com/resources/news/city-of-taunton-partners-with-bondlink-to-strengthen-financial-transparency-186028101898"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "BondLink sells a platform to municipal bond issuers, aimed at making their bond sales go better. It gathers printing, distribution, deal pages, analytics and support into one place. The company describes itself as a single source for investor relations and debt management for issuers.",
+   "On the investor relations side, an issuer gets a website where investors find the finance team, five years of annual reports, project updates and required disclosure documents. Investors who follow a site are alerted when new documents or events are posted to it. An outreach tool lets an issuer filter investors by what they did on the site and email them from inside the product. A debt profile keeps a current view of every outstanding bond, payment and call date so reports and board presentations start from the same data. Exports are meant to line up with what continuing disclosure filings require on EMMA.",
+   "It is pitched at debt professionals working with limited time and resources. The debt management page reports the total amount of debt the platform currently tracks. The company says issuer websites built on it have been viewed more than two million times. A news item on the home page announces being named to the GovTech 100 for an eighth consecutive year."
+  ],
+  "quote": {
+   "text": "BondLink is the sole-source provider of IR and debt management solutions for municipal bond issuers looking for an edge.",
+   "url": "https://www.bondlink.com/platform"
+  },
+  "sources": [
+   {
+    "url": "https://www.bondlink.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.bondlink.com/platform",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.bondlink.com/platform/investor-relations",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.bondlink.com/platform/debt-management",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.bondlink.com/platform",
+    "https://www.bondlink.com"
+   ],
+   [
+    "https://www.bondlink.com/platform/investor-relations",
+    "https://www.bondlink.com/platform/debt-management"
+   ],
+   [
+    "https://www.bondlink.com/platform/debt-management",
+    "https://www.bondlink.com/platform/investor-relations",
+    "https://www.bondlink.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "news": [
+  {
+   "date": "2026-08-11",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "8 min read What is AI waste analytics, and why does it matter for recovery facilities? Tech",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.greyparrot.ai/resources/blog/what-is-ai-waste-analytics"
+  },
+  {
+   "date": "2026-07-28",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "4 min read Announcing Series B, reaching 1 trillion detections, a milestone moment! Company",
+   "kind": "funding",
+   "kind_rule": "Series B",
+   "url": "https://www.greyparrot.ai/resources/blog/series-b-funding"
+  },
+  {
+   "date": "2026-07-16",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "6 min read How FCC Environment automated MRF regulatory reporting with AI Regulation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.greyparrot.ai/resources/blog/fcc-environment-automated-compliance-reporting"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Greyparrot turns the waste passing through materials recovery facilities into data, serving both the teams that sort materials and the brands that design them. Its main product, Analyzer, is a process optimisation tool giving recyclers and waste sorting facilities continuous AI waste analytics across every sorting line.",
+   "Camera units above conveyor belts identify materials continuously, generating a real-time stream of composition, throughput and purity data across every monitored line. That data feeds a portal that organises it into four interlinked dashboards. Staff can review composition down to the minute and replay actual line images to identify where and when issues happened. A second product, Sync, connects Analyzer data into operational control systems and business reporting environments.",
+   "The practice this displaces, manual sampling, ties up operator hours and covers less than 0.1% of throughput. The company lists 250+ Analyzer units active. The same page states ISO 27001 and Cyber Essentials. One named user is KSI Recycling, described as one of the largest recyclers in the Netherlands, which did not deploy the portal all at once. A press item listed on the homepage reports a $27M Series B raise."
+  ],
+  "quote": {
+   "text": "Greyparrot turns the waste flowing through materials recovery facilities globally into actionable intelligence, for the teams that sort materials, and the brands that design them.",
+   "url": "https://www.greyparrot.ai"
+  },
+  "sources": [
+   {
+    "url": "https://www.greyparrot.ai",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.greyparrot.ai/solutions/mrf",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.greyparrot.ai/products/analyzer",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.greyparrot.ai/products/sync",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.greyparrot.ai",
+    "https://www.greyparrot.ai/solutions/mrf"
+   ],
+   [
+    "https://www.greyparrot.ai/products/sync",
+    "https://www.greyparrot.ai/products/analyzer"
+   ],
+   [
+    "https://www.greyparrot.ai/solutions/mrf",
+    "https://www.greyparrot.ai/products/analyzer",
+    "https://www.greyparrot.ai"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

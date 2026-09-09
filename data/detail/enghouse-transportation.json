@@ -1,0 +1,102 @@
+{
+ "news": [
+  {
+   "date": "2026-08-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Hidden Cost of Late Buses",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.enghousetransportation.com/enghouse-resources/blog/the-hidden-cost-of-late-buses/"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Improving Public Transit in Small Cities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.enghousetransportation.com/enghouse-resources/blog/improving-public-transit-in-small-cities/"
+  },
+  {
+   "date": "2026-05-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Reducing Transit Cost Per Passenger with Smart Mobility Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.enghousetransportation.com/enghouse-resources/blog/reducing-transit-cost-per-passenger/"
+  },
+  {
+   "date": "2026-05-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Digital Tools Improving Transit Efficiency",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.enghousetransportation.com/enghouse-resources/blog/digital-tools-transit-efficiency/"
+  },
+  {
+   "date": "2026-05-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Real-Time Rider Alerts Matter",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.enghousetransportation.com/enghouse-resources/blog/real-time-rider-alerts-transit/"
+  },
+  {
+   "date": "2026-05-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Real-Time Transit Information Matters More Than On-Time Performance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.enghousetransportation.com/enghouse-resources/blog/real-time-transit-information-matters-more-than-on-time-performance/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Enghouse Transportation sells operations software for fare collection and ticketing, transit communications, fleet and transport management, and emergency dispatch. Among the organizations it names as buyers are public transport operators, combined authorities and agencies. Separate pages address emergency services and control rooms covering fire, healthcare and police.",
+   "The transit side covers automated fare collection with account-based, open loop and mobile ticketing, plus scheduling, journey planning and passenger information. Dispatch software for police, fire and EMS supports real-time coordination, incident management and control room operations. A contact center and interactive voice response product carries passenger updates on schedules, fares and disruptions across voice and digital channels. That product is described as GDPR compliant and aligned to ISO 27001/2 and Cloud Security Alliance requirements.",
+   "The company says its systems are used by organisations across transportation and public safety, with deployments in Europe and North America. It states that it has supported transit agencies, emergency services, and transport operators for over 40 years with software built for day-to-day operations. Enghouse Transportation is a subsidiary of Enghouse Systems Limited, a software and services company traded on the Toronto Stock Exchange under the symbol ENGH. The about page dates its work in transportation to 1984."
+  ],
+  "quote": {
+   "text": "Connect to existing systems and data sources so you can modernise step-by-step without breaking operations.",
+   "url": "https://www.enghousetransportation.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.enghousetransportation.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.enghousetransportation.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.enghousetransportation.com/solutions/contact-center-for-transportation/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.enghousetransportation.com/about-us/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.enghousetransportation.com"
+   ],
+   [
+    "https://www.enghousetransportation.com",
+    "https://www.enghousetransportation.com/solutions/contact-center-for-transportation/"
+   ],
+   [
+    "https://www.enghousetransportation.com",
+    "https://www.enghousetransportation.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

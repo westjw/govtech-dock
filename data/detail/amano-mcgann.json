@@ -1,0 +1,90 @@
+{
+ "news": [
+  {
+   "date": "2026-04-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "City of West Palm Beach Deploys Amano ONE Parking Platform Across Municipal Parking Facilities",
+   "kind": "contract",
+   "kind_rule": "Deploys",
+   "url": "https://amanomcgann.com/2026/04/west-palm-beach-upgrades-parking-system-with-amano-one/"
+  },
+  {
+   "date": "2025-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Amano ONE\u2019s Expanded LPR Ecosystem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://amanomcgann.com/2025/10/amano-ones-expanded-lpr-ecosystem/"
+  },
+  {
+   "date": "2025-07-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "All In on Amano: New Amano McGann Las Vegas Branch Invigorates the Team",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://amanomcgann.com/2025/07/all-in-on-amano-new-amano-mcgann-las-vegas-branch-invigorates-the-team/"
+  },
+  {
+   "date": "2025-07-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Amano McGann Expands Seattle Presence with New Office to Support Growing Demand for Amano ONE",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://amanomcgann.com/2025/07/amano-mcgann-expands-seattle-presence-with-new-office-to-support-growing-demand-for-amano-one/"
+  },
+  {
+   "date": "2025-07-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Laying Down Roots for Projected Growth: Amano McGann Moves into New Headquarters and Branch Location",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://amanomcgann.com/2025/07/laying-down-roots-for-projected-growth-amano-mcgann-moves-into-new-headquarters-and-branch-location/"
+  },
+  {
+   "date": "2025-07-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Amano McGann Announces Leadership Transition: Greg Brewer Appointed President & CEO Starting July 1st",
+   "kind": "leadership",
+   "kind_rule": "Appointed",
+   "url": "https://amanomcgann.com/2025/07/greg-brewer-appointed-ceo-amano-mcgann/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Amano McGann provides parking, payment and access products to the people who run parking operations. The range takes in on- and off-street parking, access, validation and valet.",
+   "The about page traces the parking technology business to 1931. It says PARCS equipment has been manufactured domestically since 1979. The home page describes manufacturing and software development as United States based. The software is offered from the cloud and pitched as simple to install and support. For municipalities the company offers a full line of on- and off-street parking meant to make revenue and asset tracking easier.",
+   "Airports are a named market, with frequent parker programs, license plate recognition and valet among the options. The site says hundreds of hoteliers across the country have turned to the company. It states 20 branch offices plus a dealer network covering locations throughout the United States and Canada."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://www.amanomcgann.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://amanomcgann.com/about-us/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://amanomcgann.com/about-us/"
+   ],
+   [
+    "https://amanomcgann.com/about-us/",
+    "https://www.amanomcgann.com"
+   ],
+   [
+    "https://amanomcgann.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

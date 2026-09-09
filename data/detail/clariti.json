@@ -1,0 +1,161 @@
+{
+ "news": [
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "City of Toronto Launches AI Pre-Check with Clariti to Speed Up Housing Approvals",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.claritisoftware.com/blog/city-of-toronto-launches-ai-pre-check-with-clariti-to-speed-up-housing-approvals"
+  },
+  {
+   "date": "2026-05-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Clariti Launches AI Studio to Help Cities Approve Housing Faster",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.claritisoftware.com/blog/clariti-launches-ai-studio-to-help-cities-approve-housing-faster"
+  },
+  {
+   "date": "2026-03-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "City of Denver Selects CivCheck to Improve Permitting Efficiency",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.claritisoftware.com/blog/city-of-denver-selects-civcheck-to-improve-permitting-efficiency"
+  },
+  {
+   "date": "2026-03-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "8 Questions to Ask AI Plan Review Vendors Before You Buy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.claritisoftware.com/blog/8-questions-to-ask-ai-plan-review-vendors-before-you-buy"
+  },
+  {
+   "date": "2026-02-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "5 Questions to Assess Your Readiness for AI Plan Review",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.claritisoftware.com/blog/5-questions-to-assess-your-readiness-for-ai-plan-review"
+  },
+  {
+   "date": "2026-02-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Clariti Earns Fifth Straight GovTech 100 Recognition as Permitting Solution Adoption Accelerates",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.claritisoftware.com/blog/clariti-earns-fifth-straight-govtech-100-recognition-as-permitting-solution-adoption-accelerates"
+  },
+  {
+   "date": "2025-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Clariti Acquires CivCheck to Accelerate Permit Approvals with AI",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://www.claritisoftware.com/blog/clariti-acquires-civcheck-to-accelerate-permit-approvals-with-ai"
+  },
+  {
+   "date": "2025-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Long Beach, CA, to \u2018Dramatically Improve\u2019 Permitting Experience with Clariti Enterprise",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.claritisoftware.com/blog/long-beach-selects-clariti-enterprise"
+  },
+  {
+   "date": "2025-08-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How these 7 permitting departments saved time with Clariti\u2019s process automation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.claritisoftware.com/blog/how-these-7-permitting-departments-saved-time-with-claritis-process-automation"
+  },
+  {
+   "date": "2025-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "6. Better reporting and analytics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.claritisoftware.com/blog/how-to-get-the-most-from-your-data-with-clariti-enterprise"
+  },
+  {
+   "date": "2025-05-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "the most configurable platforms",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.claritisoftware.com/blog/what-makes-permitting-software-truly-configurable"
+  },
+  {
+   "date": "2024-04-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How This Permitting Tool Can Help You Cut Counter Visits by 70%",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.claritisoftware.com/blog/how-this-permitting-tool-can-help-you-cut-counter-visits-by-70-percent"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Clariti sells community development software to local governments, pitched at any size and budget. One edition is permitting software for large local governments. A second, Launch, is aimed at small to mid-sized local governments. A third product, CivCheck, uses AI to guide applicants toward a complete and compliant submission and staff through every check.",
+   "The software keeps the permit counter online, where applicants apply, pay, and track status. It also tracks code violations from report to resolution, with automatic case assignment and links to local zoning and codes. Staff can build a report, adjust a page layout, or create a new permit type themselves. The large-jurisdiction edition runs on the Salesforce Platform, whose APIs let a government connect its other tools. Launch customers can copy a peer's permitting workflows using a cloning tool. On the AI side, staff have to approve every interpretation the software makes.",
+   "The company says the large-jurisdiction product was built with input from government customers over 16 years. Its home page names Los Angeles, Phoenix, and Orange County among the cities and counties using Clariti. Launch pricing is stated as based on population rather than user count."
+  ],
+  "quote": {
+   "text": "Reducing permit backlogs is hard. CivCheck makes it easier.",
+   "url": "https://www.claritisoftware.com/products/civcheck-ai-plan-review-software"
+  },
+  "sources": [
+   {
+    "url": "https://www.claritisoftware.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.claritisoftware.com/products/enterprise-permitting-software",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.claritisoftware.com/products/launch-permitting-software",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.claritisoftware.com/products/civcheck-ai-plan-review-software",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.claritisoftware.com",
+    "https://www.claritisoftware.com/products/enterprise-permitting-software",
+    "https://www.claritisoftware.com/products/launch-permitting-software",
+    "https://www.claritisoftware.com/products/civcheck-ai-plan-review-software"
+   ],
+   [
+    "https://www.claritisoftware.com/products/launch-permitting-software",
+    "https://www.claritisoftware.com/products/enterprise-permitting-software",
+    "https://www.claritisoftware.com/products/civcheck-ai-plan-review-software"
+   ],
+   [
+    "https://www.claritisoftware.com/products/enterprise-permitting-software",
+    "https://www.claritisoftware.com",
+    "https://www.claritisoftware.com/products/launch-permitting-software"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

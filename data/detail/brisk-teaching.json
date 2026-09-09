@@ -1,0 +1,112 @@
+{
+ "news": [
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Brisk in New White Paper on AI's Instructional Impact",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.briskteaching.com/post/brisk-whitepaper-measuring-ai-instructional-impact"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "60 Get-to-Know-You Questions for Students (For Every Grade)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.briskteaching.com/post/get-to-know-you-questions-for-students"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "30 Fun First-Day-of-School Activities [2026 Edition]",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.briskteaching.com/post/fun-first-day-of-school-activities-for-the-classroom"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Brisk Comes to Claude: Your Favorite Brisk Tools, Right in Your Claude Chats",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.briskteaching.com/post/announcing-brisk-claude-connector"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Use AI to Create Engaging Activities for Your Students",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.briskteaching.com/post/how-to-use-ai-to-create-engaging-activities-for-students"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Meet the New Brisk: Create Teaching Resources Through a Conversation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.briskteaching.com/post/meet-the-new-brisk-summer-2026"
+  },
+  {
+   "date": "2026-07-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Brisk Teaching announces new Microsoft integration for its AI-powered K-12 classroom tools",
+   "kind": "product",
+   "kind_rule": "announces new",
+   "url": "https://www.briskteaching.com/post/brisk-to-expand-ai-powered-teaching-tools-across-ny-state"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Brisk Teaching sells an AI tool for teachers that turns a resource they already trust into lessons, feedback and student practice without leaving the browser. It is also sold to schools and districts, where the plan gives administrators visibility, controls and support for AI adoption at scale.",
+   "Brisk deploys as a browser extension that lives inside Google and Microsoft, so an IT team installs it once and every teacher has access the next time they open a browser. Its unit plan generator asks for the topic, grade level and standards. Text can be translated into any of the 58 supported languages to create multilingual resources. Brisk drafts personalized comments for each student essay. An inspect writing feature gives a full video playback of a document from start to finish.",
+   "The school and district plan bundles admin dashboards, rostering with a custom DPA, LMS integrations and a dedicated customer success manager. The company says student and teacher data is never used to train its models. It states the product meets WCAG 2.1 AA accessibility standards. Brisk lists itself as an approved vendor with the NYC Department of Education. Pilots can be scoped by grade level, department, or school before a district commits. The site says the product is used in more than ten thousand districts."
+  ],
+  "quote": {
+   "text": "AI that works with the tools you already invested in",
+   "url": "https://www.briskteaching.com/solutions/schools-and-districts"
+  },
+  "sources": [
+   {
+    "url": "https://www.briskteaching.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.briskteaching.com/solutions/schools-and-districts",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.briskteaching.com/solutions/school-and-district-administrators",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.briskteaching.com/solutions/teachers",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.briskteaching.com",
+    "https://www.briskteaching.com/solutions/schools-and-districts"
+   ],
+   [
+    "https://www.briskteaching.com/solutions/schools-and-districts",
+    "https://www.briskteaching.com/solutions/teachers"
+   ],
+   [
+    "https://www.briskteaching.com/solutions/schools-and-districts",
+    "https://www.briskteaching.com/solutions/school-and-district-administrators"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

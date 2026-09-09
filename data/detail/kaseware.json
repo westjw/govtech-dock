@@ -1,0 +1,157 @@
+{
+ "news": [
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From Tradecraft to Standards: The Next Era of Executive Protection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/from-tradecraft-to-standards-the-next-era-of-executive-protection"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From Information Access to Operational Clarity: The Next Stage of Public Safety Technology Modernization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/next-stage-of-public-safety-technology-modernization"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What\u2019s New in Kaseware 6.4: Improving Investigation Management, Data Quality, and Platform Performance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/kaseware-6-4-investigation-management"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Connected Investigations: How Linking People, Events, and Data Reveals Hidden Threats and Suspects",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/connected-investigations-link-analysis"
+  },
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From a One-Size-Fits-All to a Truly Mission-Focused Investigation System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/medicaid-fraud-investigation-software-oig-case-study"
+  },
+  {
+   "date": "2026-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Staying Ahead of Hate, Part VII: The Deciders Under Threat",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/staying-ahead-of-hate-deciders-under-threat"
+  },
+  {
+   "date": "2026-07-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Top Federal Investigation Software for 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/top-federal-investigation-software-for-2026"
+  },
+  {
+   "date": "2026-07-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "For Successful Investigations: The Difference Is in the Details",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/investigative-case-management-critical-details"
+  },
+  {
+   "date": "2026-07-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Workplace Violence Is Not Just a Security Risk \u2014 It Is a Business Risk",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/workplace-violence-business-risk"
+  },
+  {
+   "date": "2026-07-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Forward-Thinking Public Safety Agencies Are Creating Technology Champions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/public-safety-agencies-technology-champions"
+  },
+  {
+   "date": "2026-07-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From Data Overload to Operational Intelligence: How Modern Security Teams Turn Signals Into Action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/data-overload-operational-intelligence-security-teams"
+  },
+  {
+   "date": "2026-06-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Connecting the Dots: Traffickers Count on DeliverFund Missing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/human-trafficking-intelligence-case-study"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Kaseware sells an investigation management platform that centralizes investigative details and case management so teams can close more cases. The buyers are corporate security teams, law enforcement, government agencies, and enterprise organizations with complex investigative or compliance needs. Built-in link analysis and geospatial tools surface connections and trends across investigative data.",
+   "Former FBI Special Agents founded Kaseware, bringing decades of public service and corporate software development experience. They had built Sentinel, which later became the foundation for Kaseware, a platform for incident responsiveness, case management, operations, and record keeping. The company states that more than 30% of the nation's fusion centers, agencies in all 50 US states, and businesses across the globe use Kaseware. DeliverFund is named as a client fighting human trafficking with combined resources and data.",
+   "Kaseware describes itself as CJIS-aligned and SOC2 Type 2 certified, with FedRAMP in progress. A GraphQL-based API supports integrations with OSINT tools, data analytics platforms, HR systems, and regulatory databases. Most deployments can be completed in 3 to 6 months using a phased train-the-trainer approach."
+  ],
+  "quote": {
+   "text": "We help mission-driven teams work together to solve complex investigations and protect people and property.",
+   "url": "https://www.kaseware.com/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.kaseware.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.kaseware.com/platform",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.kaseware.com/solutions",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.kaseware.com/about",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.kaseware.com/platform",
+    "https://www.kaseware.com/solutions",
+    "https://www.kaseware.com"
+   ],
+   [
+    "https://www.kaseware.com/about",
+    "https://www.kaseware.com"
+   ],
+   [
+    "https://www.kaseware.com/solutions"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,121 @@
+{
+ "news": [
+  {
+   "date": "2026-04-23",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Senstar Technologies Corporation Reports Fourth Quarter 2025 Financial Results",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://senstar.com/press-releases/senstar-technologies-corporation-reports-fourth-quarter-2025-financial-results/"
+  },
+  {
+   "date": "2026-04-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Senstar Technologies to Report Fourth Quarter and Year End 2025 Results on Thursday, April 23, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://senstar.com/press-releases/senstar-technologies-to-report-fourth-quarter-and-year-end-2025-results-on-thursday-april-23-2026/"
+  },
+  {
+   "date": "2026-02-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Senstar Technologies Corporation Announces Closing of Blickfeld GmbH Acquisition",
+   "kind": "funding",
+   "kind_rule": "Acquisition",
+   "url": "https://senstar.com/press-releases/senstar-technologies-corporation-announces-closing-of-blickfeld-gmbh-acquisition/"
+  },
+  {
+   "date": "2025-12-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Senstar Technologies Corporation Announces Agreement to Acquire Blickfeld GmbH",
+   "kind": "funding",
+   "kind_rule": "Acquire",
+   "url": "https://senstar.com/press-releases/senstar-technologies-corporation-announces-agreement-to-acquire-blickfeld-gmbh/"
+  },
+  {
+   "date": "2025-11-25",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Senstar Technologies Corporation Reports Third Quarter 2025 Financial Results",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://senstar.com/press-releases/senstar-technologies-corporation-reports-third-quarter-2025-financial-results/"
+  },
+  {
+   "date": "2025-11-25",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Senstar Technologies Corporation to Report Third Quarter 2025 Results on Tuesday, November 25, 2025",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://senstar.com/press-releases/senstar-technologies-corporation-to-report-third-quarter-2025-results-on-tuesday-november-25-2025/"
+  },
+  {
+   "date": "2025-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Senstar Achieves ISO/IEC 27001 Certification, Reinforcing Cybersecurity Commitment When Delivering Physical Security Solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://senstar.com/press-releases/senstar-achieves-iso-iec-27001-certification-reinforcing-cybersecurity-commitment-when-delivering-physical-security-solutions/"
+  },
+  {
+   "date": "2025-08-25",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Senstar Technologies Corporation Reports Second Quarter 2025 Financial Results",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://senstar.com/press-releases/senstar-technologies-corporation-reports-second-quarter-2025-financial-results/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Senstar makes security systems for protecting infrastructure and facilities. The portfolio runs across video management, video analytics, access control and perimeter intrusion detection sensors. Products are designed, manufactured and tested in North America.",
+   "Perimeter sensors mount on the fence, sit above ground or lie buried, and are meant to locate intruders before they enter a secure area. The MultiSensor unit packs short-range radar, an image sensor, dual PIR, an accelerometer and a high frequency sensor into one device. An embedded engine weighs the data from each of those sensors to decide whether an event is a threat. On the software side, Senstar Symphony is a modular platform for security management and data intelligence. It works with analog and IP cameras, encoders, DVRs and other video devices from many manufacturers.",
+   "The company organizes its work by sector, pointing to electrical utility assets exposed to service interruptions from vandalism, theft and targeted attacks. Water treatment plants, pumping stations and storage tanks are another market it names. It states over 40 years of experience working with correctional institutions. A news item on the site reports quarterly financial results for Senstar Technologies Corporation, listed on NASDAQ."
+  ],
+  "quote": {
+   "text": "Senstar is a global technology leader in advanced sensing and information management systems for the protection of infrastructure and facilities.",
+   "url": "https://senstar.com/products/above-ground-sensors/senstar-multisensor/"
+  },
+  "sources": [
+   {
+    "url": "https://senstar.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://senstar.com/products/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://senstar.com/products/above-ground-sensors/senstar-multisensor/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://senstar.com/products/video-management/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://senstar.com/products/above-ground-sensors/senstar-multisensor/",
+    "https://senstar.com"
+   ],
+   [
+    "https://senstar.com",
+    "https://senstar.com/products/above-ground-sensors/senstar-multisensor/",
+    "https://senstar.com/products/video-management/"
+   ],
+   [
+    "https://senstar.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

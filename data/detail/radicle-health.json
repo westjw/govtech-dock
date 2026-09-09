@@ -1,0 +1,119 @@
+{
+ "news": [
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Olmstead Revisited: The 2026 DOJ Opinion & Provider Guidance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicle-health.com/blog/olmstead-revisited-the-2026-doj-opinion-provider-guidance/"
+  },
+  {
+   "date": "2026-03-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Medicaid Work Requirements for Behavioral Health: Protect Your Relationships & Revenue",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicle-health.com/blog/medicaid-work-requirements-behavioral-health-providers/"
+  },
+  {
+   "date": "2026-02-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Putting Evidence-Based Practices to Work in Behavioral Health",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicle-health.com/blog/evidence-based-practice-behavioral-health/"
+  },
+  {
+   "date": "2025-12-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Medicaid News & Compliance: States Step Up When the Fed Fails",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicle-health.com/blog/medicaid-news-december-2025/"
+  },
+  {
+   "date": "2025-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Medicaid News & Compliance: One Cliff After Another",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicle-health.com/blog/medicaid-news-november-2025/"
+  },
+  {
+   "date": "2025-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Medicaid News & Compliance: Keep Calm, Kill the Clipboard.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicle-health.com/blog/medicaid-news-compliance-updates-2025/"
+  },
+  {
+   "date": "2025-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Medicaid Compliance: How EHRs Drive Audit Readiness Amid Change",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicle-health.com/blog/medicaid-compliance-preparing-for-a-medicaid-audit/"
+  },
+  {
+   "date": "2025-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Write a Grant Proposal: Free Template & Checklist",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicle-health.com/blog/how-to-write-a-grant-proposal/"
+  },
+  {
+   "date": "2025-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Your 2025 Guide to Medicaid Reimbursement & Braided Funding",
+   "kind": "funding",
+   "kind_rule": "Funding",
+   "url": "https://radicle-health.com/blog/medicaid-reimbursement-strategies-braided-funding-guide/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Radicle Health builds software for organisations that deliver human services. Its products range from electronic health records to food bank systems and care coordination tools.",
+   "Two of its records systems, AxiomEHR and AWARDS, are built around configurable workflows, dynamic forms and customisable reporting for behavioral health and human services organisations. The same platforms carry revenue cycle tools meant to catch preventable billing problems before claims are submitted. SaraWorks pulls client communication, scheduling, documentation, reminders and outreach into one system that runs alongside an existing case management system. Link2Feed is aimed at food access organisations and their intake work.",
+   "The company states that over 14,000 care providers across the United States and Canada use its software. Its lines are grouped by setting, with one for outpatient behavioral health practices and integrated care providers. Another serves food banks running programs such as CACFP, SFSP and TEFAP. A third is for foster care agencies managing placements, case plans and compliance."
+  ],
+  "quote": {
+   "text": "Human services work is built on relationships.",
+   "url": "https://www.radicle-health.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.radicle-health.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.radicle-health.com/about-us/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.radicle-health.com"
+   ],
+   [
+    "https://www.radicle-health.com"
+   ],
+   [
+    "https://www.radicle-health.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

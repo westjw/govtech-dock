@@ -1,0 +1,68 @@
+{
+ "news": [
+  {
+   "date": "2026-07-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Validation of AquaTwin Sewer 2D Against the UK Environment Agency 2D Hydraulic Model Benchmark Suite",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://aquanuity.com/resources/validation-of-aquatwin-sewer-2d-against-the-uk-environment-agency-2d-hydraulic-model-benchmark-suite/"
+  },
+  {
+   "date": "2026-06-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "COMPARISON OF SWMM5, SWMM6 ALPHA, AND AQUATWIN SEWER ROUTING SCHEMES FOR SEWER NETWORK MODELING",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://aquanuity.com/resources/comparison-of-swmm5-swmm6-alpha-and-aquatwin-sewer-routing-schemes-for-sewer-network-modeling/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Aquanuity sells water, wastewater and stormwater modeling and asset management software that runs inside Esri ArcGIS Pro. Buyers are utilities and the engineering consultants working on their systems across the asset lifecycle.",
+   "AquaTwin Water models a distribution network so users can forecast demand, tune tank and pump operation, cut energy use and look into water quality problems. AquaTwin Sewer covers planning, design and analysis of stormwater, sanitary and combined sewer systems. That product is built on the EPA SWMM 5 engine. An extension named ATLive ties a model to SCADA so it can run against live readings from sensors and control systems. AquaTwin Asset turns condition and risk work into prioritized, costed capital improvement projects.",
+   "The company publishes benchmark papers, one of which reports its sewer solver outperforming the SWMM5 dynamic wave method by at least a factor of eight. It also states that the two-dimensional module did well in the UK Environment Agency hydraulic model benchmark test cases. Aquanuity frames its purpose as helping achieve environmentally, economically and socially sustainable water and wastewater infrastructure."
+  ],
+  "quote": {
+   "text": "The software can effectively be used by both water utilities and their engineering consultants in all phases of the water infrastructure asset lifecycle.",
+   "url": "https://aquanuity.com/products/aquatwin-water/"
+  },
+  "sources": [
+   {
+    "url": "https://aquanuity.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://aquanuity.com/products/aquatwin-asset/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://aquanuity.com/products/aquatwin-water/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://aquanuity.com/products/aquatwin-sewer-2d/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://aquanuity.com/products/aquatwin-asset/",
+    "https://aquanuity.com/products/aquatwin-water/"
+   ],
+   [
+    "https://aquanuity.com/products/aquatwin-water/",
+    "https://aquanuity.com/products/aquatwin-sewer-2d/",
+    "https://aquanuity.com/products/aquatwin-asset/"
+   ],
+   [
+    "https://aquanuity.com/products/aquatwin-sewer-2d/",
+    "https://aquanuity.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

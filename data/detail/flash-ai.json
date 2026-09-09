@@ -1,0 +1,46 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Flash AI builds investigative software in Ohio for law enforcement agencies. Its main product, Flash PD, takes an entire caseload of video, audio, images, documents and phone extractions into one unified system. Flash PD accepts 115+ file types and processes them in parallel. Investigators then ask questions in plain language and get direct answers with linked source evidence and timestamps.",
+   "A second product, Flash Signal, connects to a correctional facility's call recording system so recorded inmate calls flow in as they happen, or historical libraries can be uploaded in batch. Each call is transcribed and scored low, medium or high risk from its content, language and behavioral signals, so investigators open the high-risk calls first. The company says a 60-day pilot at a correctional facility identified 33,004 high-risk signals with zero manual review hours required.",
+   "A third product, Flash Chat, extends private AI chat and document analysis to the rest of an agency, with a free trial for the standard deployment and CJIS deployments available by demo. Flash AI states that queries, uploads and conversations are never used to train AI models, and that hosting is on AWS infrastructure in the United States. The customers page lists Whitehall Police Department and Perry Township Police Department as active deployments, and Muskingum County and Guernsey County sheriff's offices as previous pilots."
+  ],
+  "quote": {
+   "text": "From raw evidence to court-ready intelligence, in minutes.",
+   "url": "https://www.flashai.us"
+  },
+  "sources": [
+   {
+    "url": "https://www.flashai.us",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.flashai.us/products/flash-pd",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.flashai.us/products/flash-signal",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.flashai.us/products/flash-gpt",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.flashai.us",
+    "https://www.flashai.us/products/flash-pd"
+   ],
+   [
+    "https://www.flashai.us/products/flash-signal"
+   ],
+   [
+    "https://www.flashai.us/products/flash-gpt",
+    "https://www.flashai.us/customers"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

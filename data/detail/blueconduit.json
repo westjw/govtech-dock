@@ -1,0 +1,153 @@
+{
+ "news": [
+  {
+   "date": "2026-08-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why static spreadsheets won\u2019t cut it anymore",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blueconduit.com/post/why-static-spreadsheets-wont-cut-it-anymore/"
+  },
+  {
+   "date": "2026-07-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What ACE taught me about the quiet crisis underneath every city",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blueconduit.com/post/what-ace-taught-me-about-the-quiet-crisis-underneath-every-city/"
+  },
+  {
+   "date": "2026-06-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Heading to ACE26: what\u2019s on our mind at BlueConduit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blueconduit.com/post/heading-to-ace26-whats-on-our-mind-at-blueconduit/"
+  },
+  {
+   "date": "2026-03-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The November 2027 LCRI deadline: what utilities need to know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blueconduit.com/post/the-countdown-to-november-1-2027-why-the-next-lcri-deadline-matters/"
+  },
+  {
+   "date": "2026-02-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What happens when lead is found during an inspection?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blueconduit.com/post/if-lead-is-found-during-a-randomized-inspection/"
+  },
+  {
+   "date": "2026-01-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Predictive modeling for water systems: a human approach",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blueconduit.com/post/predictive-modeling-in-water-systems-technology-that-works-with-people/"
+  },
+  {
+   "date": "2025-12-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Lessons from a year in water",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blueconduit.com/post/what-this-year-in-water-taught-me-about-progress-partnership-and-what-comes-next/"
+  },
+  {
+   "date": "2025-12-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Meet the team: Sabrina Calderon",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blueconduit.com/post/meet-the-team-sabrina-calderon/"
+  },
+  {
+   "date": "2025-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Meet the team: Chris Rodriguez",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blueconduit.com/post/meet-the-team-chris-rodriguez/"
+  },
+  {
+   "date": "2025-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Turning unknowns into action: insights from an AWWA webinar",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blueconduit.com/post/turning-unknowns-into-action-insights-from-an-awwa-webinar/"
+  },
+  {
+   "date": "2025-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "An open letter to utility leaders",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blueconduit.com/post/an-open-letter-to-utility-leaders-bridging-the-gap-between-innovation-and-impact/"
+  },
+  {
+   "date": "2025-02-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Des Moines LSL predictive modeling case",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blueconduit.com/post/des-moines-iowa-a-case-study-in-using-predictive-modeling-to-classify-unknown-service-lines/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "BlueConduit sells predictive modeling tools to water systems that need to manage risk and make data-driven decisions about their distribution assets. The customers are municipalities and water utilities.",
+   "One product builds community-specific models that pinpoint high-risk lead and galvanized service lines, which lets a utility classify its inventory and prioritize replacements. Another scores every main segment in a network for likelihood and consequence of failure. A third uses statistical models to confirm the absence of lead in a water system. The company says model processes, important features, and performance metrics are always shared with customers. Output is integrated with Esri ArcGIS.",
+   "The work started at the University of Michigan, where faculty and student researchers saw a use for data science in removing toxic lead from the water supply. In Flint the company used predictive analytics to identify where to dig for lead service lines. A published case study describes Des Moines Water Works classifying unknown service lines and reducing uncertainty by 75% in six months. BlueConduit cites ongoing relationships with EPA and state regulators. Its stated mission is to empower communities to prioritize health and sustainability through data science."
+  ],
+  "quote": {
+   "text": "Empower communities to prioritize health and sustainability through data science",
+   "url": "https://blueconduit.com/mission/"
+  },
+  "sources": [
+   {
+    "url": "https://blueconduit.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://blueconduit.com/case-studies/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://blueconduit.com/mission/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://blueconduit.com",
+    "https://blueconduit.com/case-studies/"
+   ],
+   [
+    "https://blueconduit.com"
+   ],
+   [
+    "https://blueconduit.com/mission/",
+    "https://blueconduit.com/case-studies/",
+    "https://blueconduit.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

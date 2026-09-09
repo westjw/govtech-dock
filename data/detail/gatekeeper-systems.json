@@ -1,0 +1,46 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Gatekeeper Systems sells video recording and data systems for transportation, meant to make travel safer for children, passengers, and public safety personnel across several modes. The company says it uses AI, video analytics, thermal cameras, and mobile data collectors to inter-connect public transit assets within intelligent transportation systems.",
+   "Its mobile data collectors gather video and audio along with GPS tracking and door open and close events, analyzing the data on the bus itself. Those units are ruggedized and crashworthy, serving as black boxes that hold data for accident investigations. Recorders take analog and IP channels at up to 1080P and 30 frames per second, with independently selectable resolutions. Drive caddies have passed MIL SPEC 810F for shock and vibration, and a thermal system warms the hard drive to its prescribed operating temperature before writing or reading in cold weather.",
+   "Fleet software called G4 Vision centralizes system health checks, driver behavior analysis, video management, live streaming, GPS, routing and mapping, and student tracking. An Automated Lane Enforcement product for transit buses is named on the home page. The company describes a Platform-as-a-Service business model. Testimonials on that page are attributed to school district transportation directors."
+  ],
+  "quote": {
+   "text": "Smart video and data solutions for transit and rail safety and effeciency.",
+   "url": "https://www.gatekeeper-systems.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.gatekeeper-systems.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.gatekeeper-systems.com/products/mdc-for-transit/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.gatekeeper-systems.com/products/mdc/y35hd-v3/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.gatekeeper-systems.com/products/mdc/y58v3/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.gatekeeper-systems.com"
+   ],
+   [
+    "https://www.gatekeeper-systems.com/products/mdc-for-transit/",
+    "https://www.gatekeeper-systems.com/products/mdc/y58v3/"
+   ],
+   [
+    "https://www.gatekeeper-systems.com/products/mdc/y35hd-v3/",
+    "https://www.gatekeeper-systems.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

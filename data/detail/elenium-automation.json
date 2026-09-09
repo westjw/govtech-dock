@@ -1,0 +1,110 @@
+{
+ "news": [
+  {
+   "date": "2026-02-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "IDEMIA Public Security and Elenium Sign Global Partnership to Deliver Secure, Seamless Biometric Airport Experience",
+   "kind": "contract",
+   "kind_rule": "Sign",
+   "url": "https://www.elenium.com/blog/idemia-public-security-and-elenium-sign-global-partnership-to-deliver-secure-seamless-biometric-airport-experience/"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Auckland Airport to have new check-in and bag drop off technology installed",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elenium.com/blog/auckland-airport-new-bagdrop-kiosks/"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Sydney (SYD) Airport\u2019s massive T2 upgrade to begin in May",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elenium.com/blog/sydney-airport-massive-t2upgrade/"
+  },
+  {
+   "date": "2022-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Leeds Bradford Airport chooses Elenium for check-in hall upgrade",
+   "kind": "contract",
+   "kind_rule": "chooses",
+   "url": "https://www.elenium.com/blog/leeds-bradford-airport-starts-check-in-hall-upgrade/"
+  },
+  {
+   "date": "2022-07-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Elenium Shortlisted for Aviation Awards",
+   "kind": "contract",
+   "kind_rule": "Awards",
+   "url": "https://www.elenium.com/blog/elenium-shortlisted-for-aviation-awards/"
+  },
+  {
+   "date": "2022-06-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "We\u2019ve Launched Our New Website",
+   "kind": "product",
+   "kind_rule": "Launched",
+   "url": "https://www.elenium.com/blog/weve-launched-our-new-website/"
+  },
+  {
+   "date": "2022-05-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Elenium named 5 in Fast Company\u2019s Top 10 Most Innovative Travel Companies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elenium.com/blog/elenium-named-5-in-fast-companys-top-10-most-innovative-travel-companies/"
+  },
+  {
+   "date": "2022-05-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Ola Barshtman Speaks on International Women\u2019s Day",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elenium.com/blog/ola-barshtman-speaks-on-international-womens-day/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Elenium Automation makes self-service check-in kiosks and bag drops for airports and airlines. The company describes bag drops that cut queues and keep passengers moving through the terminal. It pitches the same equipment to airlines as a way of activating their services instantly at any airport.",
+   "The product suite is called VYGR, short for Voyager, and covers self-service steps of the passenger journey. Elenium says it is built on computer vision, AI, modern UX, and a cloud backbone. The company reports achieving over 97% first-time read rates and sub-15 second processing speeds on its bag drop. In 2020 it launched HealthGate, described as an automated, touchless fever detection device approved by both the Australian Therapeutic Goods Administration and the European Medicines Agency. The company also says it achieved ISO 13485 certification.",
+   "Elenium was founded in 2015 by Aaron Hornlimann, Fred Melki, and Heinz Corona. It says it now operates in over 35 airports, serving more than 45 airlines and 250 million passengers annually across Australasia, Asia, Central Asia, the Middle East, Europe, and the UK. For service, the company describes partnering with Unisys to provide global 24 by 7, remote and onsite support coverage."
+  ],
+  "quote": {
+   "text": "Building a frictionless future",
+   "url": "https://elenium.com"
+  },
+  "sources": [
+   {
+    "url": "https://elenium.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.elenium.com/about/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://elenium.com"
+   ],
+   [
+    "https://www.elenium.com/about/"
+   ],
+   [
+    "https://www.elenium.com/about/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

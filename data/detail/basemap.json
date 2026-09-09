@@ -1,0 +1,156 @@
+{
+ "news": [
+  {
+   "date": "2026-08-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "17.08.2026 Connectivity Moves Centre Stage: Basemap\u2019s View on the New NPPF Policy The latest National Planning Policy Framework puts connectivity firmly at the heart of decisions about where developme",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://basemap.co.uk/news/connectivity-moves-centre-stage-basemaps-view-on-the-new-nppf"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "06.08.2026 The Bus Stop Is Close, but Can You Actually Reach It? TRACC A nearby bus stop does not always mean an accessible bus service. Our analysis reveals how walking routes, pavements, lighting an",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://basemap.co.uk/news/the-bus-stop-is-close-but-can-you-actually-reach-it"
+  },
+  {
+   "date": "2026-07-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "02.07.2026 INRIX Data Now Available On Demand Through DataCutter DataCutter Speed Data INRIX Data Now Available On Demand Through DataCutter for Faster, Project-Ready Transport Analysis and Reporting ",
+   "kind": "product",
+   "kind_rule": "Now Available",
+   "url": "https://basemap.co.uk/news/basemap-and-inrix-partner-to-make-high-precision-transport-data-easier-to-access-through-datacutter"
+  },
+  {
+   "date": "2026-05-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "21.05.2026 Right Vehicle, Right Route: What We Learned at ACT Expo 2026 Events EVR How data, AI and route-level planning are shaping the next phase of fleet decarbonization Learn more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://basemap.co.uk/news/right-vehicle-right-route-what-we-learned-at-act-expo-2026"
+  },
+  {
+   "date": "2026-04-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "28.04.2026 Basemap at 2026 AMPO Conference in Lexington, Kentucky TRACC Our highlights of the 2026 AMPO Conference in Lexington, Kentucky Learn more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://basemap.co.uk/news/key-insights-from-the-2025-ampo-conference-data-resilience-and-the-future-of-transport-planning"
+  },
+  {
+   "date": "2026-03-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "26.03.2026 Measuring Connectivity Across Scotland: Which Settlements Meet the Standard? TRACC DataCutter Use Case Using TRACC to measure settlement connectivity across Scotland based on SESTran guidan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://basemap.co.uk/news/measuring-connectivity-across-scotland-which-settlements-meet-the-standard"
+  },
+  {
+   "date": "2026-01-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "27.01.2026 Councils under pressure to increase their housing targets - how will they be met? TRACC DataCutter Use Case Using TRACC to support housing developments to meet the growing demand of the UK ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://basemap.co.uk/news/councils-under-pressure-to-increase-their-housing-targets"
+  },
+  {
+   "date": "2026-01-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "06.01.2026 TRACC - The leading multi modal Travel Time Tool release V2.5 TRACC Product Release We are excited to announce the release of TRACC V2.5, available for all existing users to upgrade. Learn ",
+   "kind": "product",
+   "kind_rule": "announce the",
+   "url": "https://basemap.co.uk/news/tracc-the-leading-multi-modal-travel-time-tool-release-v2-5"
+  },
+  {
+   "date": "2025-12-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why current data is essential for accessibility analysis",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://basemap.co.uk/news/why-using-the-most-up-to-date-data-is-essential-for-accessibility-analysis"
+  },
+  {
+   "date": "2025-12-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Government calls for \"A New Era of Better Buses\"",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://basemap.co.uk/news/the-governments-call-for-a-new-era-of-better-buses"
+  },
+  {
+   "date": "2024-11-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Impact of Hammersmith Bridge Closure on Journey Times",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://basemap.co.uk/news/the-impact-of-hammersmith-bridge-closure-on-journey-times"
+  },
+  {
+   "date": "2023-05-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Is London a 20 Minute City?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://basemap.co.uk/news/is-london-a-20-minute-city"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Basemap describes itself as an expert in transport software and data for accurate travel analysis. Its main product, TRACC, analyses travel times, optimises transit routes, and identifies accessibility gaps to key destinations. Government departments, city planners, transport operators, and consultants are named as the people who rely on those products.",
+   "Alongside the software, the company produces public transport timetables, average speed, and speed limit data for government agencies. DataCutter handles data management, with extraction tailored to a specific project. An electric vehicle routing product plans routes and forecasts energy consumption using more than 12 factors. Highways Analyst covers traffic data visualisation and analysis.",
+   "The case studies list the UK Department for Transport, which has been developing and publishing journey time statistics for over 10 years. Another describes OC Transpo, the municipal transit provider in Ottawa, starting to use TRACC for route and level of service planning. Leicestershire Tri-Service Fire and Rescue is described using Basemap speed datasets in its command and control system. An NHS case study covers a travel time analysis spanning emergency vehicles and private and public transport."
+  ],
+  "quote": {
+   "text": "Basemap produces accurate public transport timetables, average speed, and speed limit data for government agencies.",
+   "url": "https://basemap.co.uk"
+  },
+  "sources": [
+   {
+    "url": "https://basemap.co.uk",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://basemap.co.uk/case-studies",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://basemap.co.uk/case-studies/portfolio-nhs-stroke-services",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://basemap.co.uk/case-studies/portfolio-saving_lives_data",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://basemap.co.uk"
+   ],
+   [
+    "https://basemap.co.uk"
+   ],
+   [
+    "https://basemap.co.uk/case-studies",
+    "https://basemap.co.uk/case-studies/portfolio-saving_lives_data",
+    "https://basemap.co.uk/case-studies/portfolio-nhs-stroke-services"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

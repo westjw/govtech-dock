@@ -1,0 +1,55 @@
+{
+ "news": [
+  {
+   "date": "2026-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Learn how City of Seattle benefited from our solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aurigo.com/resources/case-studies/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Aurigo Software sells capital program management software to government agencies that plan, build and maintain public infrastructure. It also serves facility owners in areas such as data centers, life sciences, manufacturing, and energy and utilities. The company's platform, Masterworks, brings planning, execution, financials, right of way and analytics together in one system.",
+   "On the delivery side it coordinates contracts, schedules, costs and field work so teams can hold to the original plan and keep a complete audit trail. Compliance, funding transparency and governance are meant to sit inside everyday work so public money stays accountable. Agencies can change forms, workflows, business rules and dashboards through configuration rather than code. An AI layer called Lumina supports decision-making with compliance and governance built in, and the company says every insight and recommendation it produces can be audited and traced.",
+   "Cities, counties, transit agencies and transportation departments across North America use the platform to manage capital programs, replace legacy systems and automate federal reimbursements. The company claims more than 300 customers and over 20 years of capital program expertise behind the product. It also says the software monitors project signals to catch cost, schedule and delivery risks before they turn critical."
+  ],
+  "quote": {
+   "text": "Every capital decision carries public consequences.",
+   "url": "https://www.aurigo.com/products/masterworks/"
+  },
+  "sources": [
+   {
+    "url": "https://www.aurigo.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aurigo.com/case-studies/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aurigo.com/products/masterworks/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.aurigo.com",
+    "https://www.aurigo.com/products/masterworks/"
+   ],
+   [
+    "https://www.aurigo.com/products/masterworks/",
+    "https://www.aurigo.com"
+   ],
+   [
+    "https://www.aurigo.com/case-studies/",
+    "https://www.aurigo.com/products/masterworks/",
+    "https://www.aurigo.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

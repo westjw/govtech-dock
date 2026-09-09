@@ -1,0 +1,47 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Skydio makes autonomous drones, along with the docks and software to run them, and sells drone programs to customers from energy networks to neighborhood precincts to battlefields. Those programs cover Drone as First Responder, automated inspection and site security. Dock for X10 positions Skydio X10 drones at a site so that missions launch remotely without anyone present. The smaller Skydio R10 puts eyes indoors before officers enter.",
+   "Skydio states that more than 1,500 public safety agencies use its drones. In a Drone as First Responder program, Skydio says its drones launch in under 20 seconds and reach incidents autonomously in under 90 seconds. DFR Command is the software from which remote operators launch and manage drones, respond to multiple calls and stream live video to patrol and command. It integrates with RapidSOS and CAD at dispatch, Axon Fusus for live operations, and automatic evidence upload into Axon Evidence. Skydio's customer stories include Brookhaven PD, which it says reached 30 second response times after deploying 8 Docks.",
+   "Skydio Site Security uses the same dock-based drones to verify alarms, patrol perimeters and deliver live visibility across a site. Video streams into Genetec or Milestone, and flights launch automatically when triggered by alarms or access control events. Skydio says its data is encrypted in transit and at rest and that it aligns to SOC 2, ISO 27001 and NIST frameworks."
+  ],
+  "quote": {
+   "text": "Skydio drone programs help even the most dangerous work get done safer, smarter, and faster through remote autonomous flight.",
+   "url": "https://www.skydio.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.skydio.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.skydio.com/solutions/dfr",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.skydio.com/solutions/site-security",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.skydio.com/solutions/asset-inspection",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.skydio.com/solutions",
+    "https://www.skydio.com",
+    "https://www.skydio.com/solutions/dfr"
+   ],
+   [
+    "https://www.skydio.com/solutions/dfr",
+    "https://www.skydio.com"
+   ],
+   [
+    "https://www.skydio.com/solutions/site-security"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

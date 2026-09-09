@@ -1,0 +1,121 @@
+{
+ "news": [
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Better Together Series: 911Tech",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://mark43.com/resources/blog/better-together-series-911tech/"
+  },
+  {
+   "date": "2026-08-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Six Months or 48 Hours: Why Timely Crime Gun Data Solves Cases",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://mark43.com/resources/blog/six-months-or-48-hours-why-timely-crime-gun-data-solves-cases/"
+  },
+  {
+   "date": "2026-07-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From Counting Crimes to Connecting People",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://mark43.com/resources/blog/blog-3-from-counting-crimes-to-connecting-people/"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Rebuild Trust When It\u2019s Broken",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://mark43.com/resources/blog/blog-2-how-to-rebuild-trust-when-its-broken/"
+  },
+  {
+   "date": "2026-07-08",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Mark43: Demystifying the Whiteboard Exercise",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://mark43.com/resources/blog/demystifying-the-whiteboard-exercise-at-mark43/"
+  },
+  {
+   "date": "2026-07-06",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "What Does It Take to Build a Model Police Agency?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://mark43.com/resources/blog/in-conversation-with-chief-andre-anderson-what-does-it-take-to-build-a-model-police-agency/"
+  },
+  {
+   "date": "2026-01-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Making Your Mark: Building at a Defining Moment for Mark43 Engineering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://mark43.com/resources/blog/making-your-mark-building-at-a-defining-moment-for-mark43-engineering/"
+  },
+  {
+   "date": "2025-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Making Your Mark: A Conversation with Callum Gray",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://mark43.com/resources/blog/making-your-mark-a-conversation-with-callum-gray/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Mark43 sells a cloud-native platform for public safety operations. The platform puts computer aided dispatch and records management on a single system. More than 300 public safety agencies of all sizes use it, from federal to state and local.",
+   "Mark43 RMS lets first responders complete reports quickly from anywhere. Compliance validation for NIBRS and State IBRS is built in to improve accuracy and data quality. ReportAI, built into the RMS, drafts reports using CAD data, body-worn camera transcripts, officer notes and event context.",
+   "The company cites CJIS, FedRAMP High and GovRAMP compliance for its cybersecurity. Open APIs connect more than 150 integrations. The Port of San Diego Harbor Police Department selected Mark43 to modernize computer aided dispatch and analytics."
+  ],
+  "quote": {
+   "text": "Mark43 brings your agency together on one AI-empowered unified platform.",
+   "url": "https://www.mark43.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.mark43.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.mark43.com/platform/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://mark43.com/platform/mark43-rms/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://mark43.com/platform/rms/mark43-reportai/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.mark43.com/platform/",
+    "https://www.mark43.com"
+   ],
+   [
+    "https://mark43.com/platform/mark43-rms/",
+    "https://mark43.com/platform/rms/mark43-reportai/"
+   ],
+   [
+    "https://www.mark43.com/platform/",
+    "https://www.mark43.com"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "news": [
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Juvare Partners with California to Strengthen Statewide Behavioral Health Bed Capacity Visibility",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.juvare.com/thought-leadership/news/juvare-partners-with-california-to-strengthen-statewide-behavioral-health-bed-capacity-visibility/"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Juvare Partners with Healthcare Association of Hawai'i to Power Statewide Healthcare Capacity Visibility",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.juvare.com/thought-leadership/news/juvare-partners-with-healthcare-association-of-hawaii-to-power-statewide-healthcare-capacity-visibility/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Juvare sells critical operations software for organizations that need to anticipate disruption and protect communities and assets. Its best-known line, WebEOC Nexus, was built for real-time coordination, routine efficiency, and incident-level accountability from a cloud-based command center.",
+   "WebEOC consolidates internal and external data sources into built-in boards so teams work from current information. During an incident, teams track incident progress, assign tasks, deploy resources, and communicate across jurisdictions. Afterward, they document lessons learned, analyze performance metrics, and facilitate After-Action Reviews. A federal product called UCP runs on FedRAMP High and IL5-authorized infrastructure. Juvare HealthSuite covers routine disruptions through major disasters, letting healthcare teams track resources, share data, and maintain operations.",
+   "The company says UCP is used by more than 60 federal programs and all 50 US states for presidential inaugurations, disaster response, and operational continuity. Healthcare systems use HealthSuite for multi-site incident management, patient tracking, and regulatory compliance during emergencies. Its patient tracking tools are described as compliant with CMS, TJC, NEMSIS and HHS standards."
+  ],
+  "quote": {
+   "text": "When data accuracy and speed of operations are critical, disconnected systems are not an option.",
+   "url": "https://www.juvare.com/products/ucp/"
+  },
+  "sources": [
+   {
+    "url": "https://www.juvare.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.juvare.com/products/ucp/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.juvare.com/products/webeoc-nexus-for-private/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.juvare.com/products/healthsuite/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.juvare.com"
+   ],
+   [
+    "https://www.juvare.com"
+   ],
+   [
+    "https://www.juvare.com",
+    "https://www.juvare.com/products/healthsuite/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,151 @@
+{
+ "news": [
+  {
+   "date": "2026-01-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Being Pulled Toward Something Bigger",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cleverciti.com/en/resources/blog/being-pulled-toward-something-bigger"
+  },
+  {
+   "date": "2025-12-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Cleverciti Appoints Industry Visionary Tobias Marx as Director of Client Success, North America",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://www.cleverciti.com/en/resources/blog/tobias-marx-director-of-client-success"
+  },
+  {
+   "date": "2025-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Bethlehem Parking Authority & Cleverciti Expand Partnership With On-Street Detection, Guided Enforcement & Digital Signage for Wayfinding",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cleverciti.com/en/resources/blog/bethlehem-expansion-cleverciti"
+  },
+  {
+   "date": "2025-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Douglas Court Shopping Centre and Cleverciti Partner to Launch Smart Parking Initiative",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://www.cleverciti.com/en/resources/blog/douglas-court-shopping-cleverciti"
+  },
+  {
+   "date": "2025-08-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Unlocking the Full Power of CleverPortal: What\u2019s New & Why it Matters!",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cleverciti.com/en/resources/blog/cleverportal-updates"
+  },
+  {
+   "date": "2025-04-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "City of Pasadena Partners with Cleverciti for Curb Management Solutions",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.cleverciti.com/en/resources/blog/pasadena-partners-with-cleverciti"
+  },
+  {
+   "date": "2025-04-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "City of Leavenworth Expands with Cleverciti to launch Navigation App & Guided Enforcement solutions",
+   "kind": "product",
+   "kind_rule": "launch",
+   "url": "https://www.cleverciti.com/en/resources/blog/city-of-leavenworth-expands-smart-parking-cleverciti"
+  },
+  {
+   "date": "2025-03-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Bethlehem Parking Authority Partners with Cleverciti for Curb Management Pilot Project",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.cleverciti.com/en/resources/blog/bethpark-cleverciti-curbmanagement"
+  },
+  {
+   "date": "2025-03-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "City of West Palm Beach Launches Cleverciti Solutions",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.cleverciti.com/en/resources/blog/city-of-west-palm-beach-and-cleverciti"
+  },
+  {
+   "date": "2025-03-04",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "Learn how the City of Bend optimized parking with guided enforcement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cleverciti.com/en/resources/blog/cleverciti-guided-enforcement-bend"
+  },
+  {
+   "date": "2025-01-24",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "Park City, UT & Cleverciti",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cleverciti.com/en/resources/blog/parkcity-and-cleverciti"
+  },
+  {
+   "date": "2024-12-18",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "CLEVERCITI: A Decade of Game-Changing Impact",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cleverciti.com/en/resources/blog/10-year-impact-report-cleverciti"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Cleverciti sells outdoor and on-street parking detection, monitoring and guidance systems. The company describes its work as applying integrated technology to parking, congestion and compliance problems using real-time occupancy and payment data. Deployments span retail, smart city, entertainment, education and transportation settings. Airports are one target, where the pitch is winning back customers from off-airport parking.",
+   "Digital signage placed at each intersection and parking aisle entrance keeps drivers from circling or driving into fully occupied areas. The displays are meant to blend into the existing streetscape, wrapping around lampposts. Occupancy data can be published to any other system through a REST API. Rather than launching another app, availability, search and guidance components can be built into an app visitors already use. Fully digital 360 degree displays can push updated messaging visible from all directions.",
+   "Cleverciti was founded in 2012 by Thomas Hohenacker and Konrad Prinz-Dreher. It reports deployments at over 200 locations in over 20 countries. Offices include European headquarters in Munich, Germany, and North American headquarters in Atlanta. Among the projects it describes, the company says it led an on-street guidance deployment in Cologne and supplied the hardware and software to RheinEnergie, the city utility company."
+  ],
+  "quote": {
+   "text": "The average driver spends 20 minutes looking for a parking space.",
+   "url": "https://www.cleverciti.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.cleverciti.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cleverciti.com/en/solutions/parking-guidance",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cleverciti.com/en/about-us",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.cleverciti.com/en/about-us",
+    "https://www.cleverciti.com"
+   ],
+   [
+    "https://www.cleverciti.com/en/solutions/parking-guidance"
+   ],
+   [
+    "https://www.cleverciti.com/en/about-us"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

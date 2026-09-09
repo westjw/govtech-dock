@@ -1,0 +1,147 @@
+{
+ "news": [
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Healthcare Does taking care of a family member count as work for Medicaid? August 21st, 2026 Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/blog/does-taking-care-of-a-family-member-count-as-work-for-medicaid/"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Healthcare What\u2019s changing with Medicaid in New York? August 21st, 2026 Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/blog/what-is-changing-with-medicaid-in-new-york/"
+  },
+  {
+   "date": "2026-08-17",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "June 2026 Pulse Survey",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/insights/june-2026-pulse-survey/"
+  },
+  {
+   "date": "2026-08-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Summer EBT 2026 What to do if your Summer EBT didn't arrive August 14th, 2026 Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/blog/what-to-do-if-your-summer-ebt-didn-t-arrive/"
+  },
+  {
+   "date": "2026-07-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Healthcare What\u2019s changing with Medicaid in 2026? July 27th, 2026 Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/blog/whats-changing-medicaid/"
+  },
+  {
+   "date": "2026-07-07",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "A bridge to restoring benefits July 7th, 2026 Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/insights/restore-benefits/"
+  },
+  {
+   "date": "2026-06-12",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "Beyond Average: How a confidence score flattens expert disagreement June 12th, 2026 Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/insights/beyond-average/"
+  },
+  {
+   "date": "2026-05-13",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "Voice by default: Using AI to navigate the safety net May 13th, 2026 Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/insights/voice-by-default/"
+  },
+  {
+   "date": "2026-01-29",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "Survey December 2025 Pulse Survey January 29th, 2026 Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/insights/december-2025-pulse-survey/"
+  },
+  {
+   "date": "2025-12-12",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "Survey Lasting impact: SNAP households during and after the shutdown December 12th, 2025 Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/insights/lasting-impact-shutdown/"
+  },
+  {
+   "date": "2025-11-24",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "Using AI tools to help SNAP recipients navigate simplified reporting and reduce state error rates November 24th, 2025 Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/insights/ai-to-help-simplified-reporting-reduce-error-rate/"
+  },
+  {
+   "date": "2025-11-19",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "Deep Dive Thanksgiving aftershocks: how the Shutdown is still shaping SNAP families\u2019 Holiday plans November 19th, 2025 Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/insights/thanksgiving-aftershocks/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Propel makes a mobile app for people who receive government benefits on an EBT card, pitched on its own site as the simplest way to check a balance and save money. The app itself costs nothing to use.",
+   "With the cardholder's permission, Propel connects to their state benefits portal. It then gathers the EBT balance and transaction history, makes that easier to read, and displays it in the app. That spares people from calling a 1-800 number or logging in to a state website. Balance checking works in 49 states, the District of Columbia, and several U.S. territories. Iowa is the exception. The app also carries card security features such as suspicious activity monitoring and out of state transaction blocking.",
+   "The company says it was founded to make government benefits better at the speed and scale recipients deserve. The company points to more than a million 5-star reviews of the app. Money comes from advertising. Most of the promotions are free or discounted services available only to EBT cardholders. Propel also runs surveys that reach millions of users nationwide. It says those findings give insight to policymakers working to improve state and federal benefits programs."
+  ],
+  "quote": {
+   "text": "We founded Propel to build technology that makes people\u2019s government benefits better, at the speed and scale they deserve.",
+   "url": "https://www.propel.app/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://www.propel.app",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.propel.app/about-us/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.propel.app"
+   ],
+   [
+    "https://www.propel.app"
+   ],
+   [
+    "https://www.propel.app/about-us/",
+    "https://www.propel.app"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,146 @@
+{
+ "news": [
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Ultra-Wideband Capability Is Vital for Countering Evasive Drones",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/blog/why-ultra-wideband-capability-vital-for-counter-drone-2026"
+  },
+  {
+   "date": "2026-08-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Critical Infrastructure Now Requires Three-Dimensional Security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/blog/critical-infrastructure-now-requires-three-dimensional-security"
+  },
+  {
+   "date": "2026-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "\u2018Global issue\u2019: Drones illegally flying near air bases triggering concern",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/media/news/global-issue-drones-illegally-flying-near-air-bases-triggering-concern"
+  },
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "DroneShield Launches RfRecon, Marking the Evolution from RF Detection to RF Intelligence",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.droneshield.com/media/press-releases/droneshield-launches-rfrecon-marking-the-evolution-from-rf-detection-to-rf-intelligence"
+  },
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Modern Military Installations Demand Persistent RF Awareness",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/blog/military-installations-demand-persistent-rf-awareness"
+  },
+  {
+   "date": "2026-07-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Australian Tech Helps Warfighters Detect Drones They Have Never Seen Before",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/media/news/australian-tech-helps-warfighters-detect-drones-they-have-never-seen-before"
+  },
+  {
+   "date": "2026-07-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "RfAI-3: The Detection Engine That Finally Broke Free of the Catalog",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/blog/rfai3-the-detection-engine-that-finally-broke-free-of-the-catalog"
+  },
+  {
+   "date": "2026-07-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "DroneShield Breaks the Detection Paradigm: RfAI-3 Senses Drones That Have Never Been Seen Before",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/media/press-releases/droneshield-breaks-the-detection-paradigm-rfai-3-senses-drones-never-seen-before"
+  },
+  {
+   "date": "2026-07-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "DroneShield wins AUD $23.2m European defence contracts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/media/news/droneshield-wins-aud-232m-european-defence-contracts"
+  },
+  {
+   "date": "2026-07-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "New DroneShield Report Reveals Serious Gaps in Airport, Critical Infrastructure Counter-Drone Security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/media/news/new-droneshield-report-reveals-serious-gaps-in-airport-critical-infrastructure-counter-drone-security"
+  },
+  {
+   "date": "2026-07-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "DroneShield Q3 Software Release Sharpens Counter-UAS Performance Against Faster, More Evasive Drone Threats",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/media/press-releases/droneshield-q3-software-release-sharpens-counter-uas-performance-against-faster-more-evasive-drone-threats"
+  },
+  {
+   "date": "2026-07-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The FIFA World Cup: A Catalyst for C-UAS Investment, But \u2018Not the Whole Story\u2019",
+   "kind": "funding",
+   "kind_rule": "Investment",
+   "url": "https://www.droneshield.com/media/news/the-fifa-world-cup-a-catalyst-for-c-uas-investmentnbspbut-not-the-whole-story"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "DroneShield sells counter-drone technology, which it calls counter-UAS, to military, government, law enforcement and critical infrastructure operators around the world. The company describes a portfolio that spans RF intelligence, AI, sensor fusion and software. The stated aim is to help customers detect, understand and defeat increasingly complex drone threats. Engineering, manufacturing and support are spread across Australia, the United States and Europe.",
+   "One current product, RfRecon, runs on an AI engine called RfAI-3 and detects, classifies and geolocates AIS/ADS-B signals, unencrypted Remote ID beacons and other RF activity across the spectrum. It interoperates with ATAK-CIV, SAPIENT and third-party command-and-control platforms. Deploying several units across distributed sites yields what the company calls network-scale intelligence.",
+   "DroneShield was founded in 2014 with a single focus on countering the threat posed by drones. The company began in Virginia in the United States. DroneShield Limited is publicly listed on the ASX."
+  ],
+  "quote": {
+   "text": "DroneShield was founded in 2014 with a singular focus: countering the threat posed by drones.",
+   "url": "https://www.droneshield.com/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.droneshield.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.droneshield.com/about",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.droneshield.com/about"
+   ],
+   [
+    "https://www.droneshield.com"
+   ],
+   [
+    "https://www.droneshield.com/about"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

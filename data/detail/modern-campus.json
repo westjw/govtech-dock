@@ -1,0 +1,157 @@
+{
+ "news": [
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "University Website Management: How Large Institutions Run Sites Across Departments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/blog/university-website-management-how-large-institutions-run-sites-across-departments"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Academic Catalog Management Best Practices for Higher Education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/blog/academic-catalog-management-best-practices-for-higher-education"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Continuing Education Administration Teams Can Reduce Complexity Without Growing Staff",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/blog/how-continuing-education-administration-teams-can-reduce-complexity-without-growing-staff"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Makes a Modern Continuing Education Course Catalog?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/blog/what-makes-a-modern-continuing-education-course-catalog"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Student Communication Campaigns Drive Engagement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/blog/how-student-communication-campaigns-drive-engagement"
+  },
+  {
+   "date": "2026-08-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Higher Education Website Redesign Checklist: 10 Things Institutions Should Plan For",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/blog/higher-education-website-redesign-checklist-10-things-institutions-should-plan-for"
+  },
+  {
+   "date": "2026-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Universities Accelerate the Curriculum Approval Process",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/blog/how-universities-accelerate-the-curriculum-approval-process"
+  },
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "When Serving Many Learners Becomes Invisible Labor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/blog/when-serving-many-learners-becomes-invisible-labor"
+  },
+  {
+   "date": "2026-08-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Is Curriculum Governance in Higher Education?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/blog/what-is-curriculum-governance-in-higher-education"
+  },
+  {
+   "date": "2026-06-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "New Partnership Equips Institutions to Build Stronger Continuing Education Portfolios",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/newsroom/new-partnership-equips-institutions-to-build-stronger-continuing-education-portfolios"
+  },
+  {
+   "date": "2026-04-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Continuing Education Gains Momentum as Institutions Expand Workforce-Aligned Learning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/newsroom/continuing-education-gains-momentum"
+  },
+  {
+   "date": "2026-04-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "College Planning Is No Longer Linear \u2014 It\u2019s Personal, Digital, and Increasingly Complex",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/newsroom/2026-college-planning-report-press-release"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Modern Campus sells software to colleges and universities for recruiting students, keeping them enrolled, and drawing them back for further learning. The company builds only for higher education rather than adapting general-purpose tools.",
+   "One product is a web content management system for campus websites, with accessibility compliance checked against WCAG 2.2 by automated testing. A personalization engine tailors content to visitor behavior, demographics, and interests, and a low-code tool lets non-technical staff build pages without waiting on IT. A second product, formerly called Acalog, centralizes the academic catalog so course and program information stays accurate across digital platforms. A career planning product pulls real-time job market data, including salary insights, into the choices students make about programs.",
+   "A further product handles continuing and workforce education, covering course registration, program management, and e-commerce. The company says more than 1,700 colleges, universities, and education providers of all sizes use it. It also says its customer service department has taken a Stevie Award twelve times."
+  ],
+  "quote": {
+   "text": "Today\u2019s learners expect the institution to provide the right mix of human assistance and digital resources at the right time",
+   "url": "https://www.moderncampus.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.moderncampus.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://moderncampus.com/products/web-content-management",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://moderncampus.com/products/career-pathways-planning",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://moderncampus.com/products/catalog-management",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.moderncampus.com"
+   ],
+   [
+    "https://moderncampus.com/products/web-content-management",
+    "https://moderncampus.com/products/catalog-management",
+    "https://moderncampus.com/products/career-pathways-planning"
+   ],
+   [
+    "https://moderncampus.com/products/career-pathways-planning",
+    "https://www.moderncampus.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

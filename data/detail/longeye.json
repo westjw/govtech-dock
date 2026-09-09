@@ -1,0 +1,152 @@
+{
+ "news": [
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why I Joined Longeye: AI for Digital Evidence That Holds Up in Court Carrie Ellis spent almost 32 years in law enforcement. She explains why she joined Longeye, starting with the question she asked fi",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.longeye.com/blog/why-i-joined-longeye-carrie-ellis"
+  },
+  {
+   "date": "2026-07-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Case Closure Actually Takes in the Age of Big Evidence Antoine Sawadogo \u00c2\u00b7 July 22, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.longeye.com/blog/case-closure-digital-evidence"
+  },
+  {
+   "date": "2026-07-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Product Update Danielle Man \u00c2\u00b7 July 2026 July Product Update \u00e2\u009a\u00bd We hope you're enjoying the excitement of the World Cup as much as we are! Here's what we've been building in between sneaking away to ",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.longeye.com/blog/product-update-jul-2026"
+  },
+  {
+   "date": "2026-06-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dave Reinke \u00c2\u00b7 June 12, 2026 Funding Investigative Technology with FY26 COPS TEP If your agency holds FY26 COPS TEP funding with a technology title, here is how evidence-analysis software fits, and wh",
+   "kind": "funding",
+   "kind_rule": "Funding",
+   "url": "https://www.longeye.com/blog/funding-investigative-technology-fy26-cops-tep"
+  },
+  {
+   "date": "2026-06-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Michel Floyd \u00c2\u00b7 June 5, 2026 Can Investigators Use AI Without Breaking CJIS? The FBI's CJIS Security Policy mentions AI exactly once. What that means for investigators using AI on case files, and wher",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.longeye.com/blog/ai-without-breaking-cjis"
+  },
+  {
+   "date": "2026-06-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Product Update Danielle Man \u00c2\u00b7 June 4, 2026 June Product Update Summer is here, and so are a few new things: relationship graphs, a dedicated Drafts page for your reports, and sharper CSAM detection.",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.longeye.com/blog/product-update-jun-2026"
+  },
+  {
+   "date": "2026-05-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Product Update Danielle Man \u00c2\u00b7 May 6, 2026 May Product Update May brings a video rebuild, richer Chat maps and citations, faster image search, password-protected ZIPs, and broader format support.",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.longeye.com/blog/product-update-may-2026"
+  },
+  {
+   "date": "2026-04-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Washington Post: Detectives test out a potential crime-fighting partner: AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.longeye.com/blog/washington-post-detectives-crime-fighting-ai"
+  },
+  {
+   "date": "2026-04-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Product Update Danielle Man \u00c2\u00b7 April 8, 2026 April Product Update April brings Tables: chat with structured data, charts, and GPS routes with court-ready exports. Plus image OCR, speaker naming, and l",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.longeye.com/blog/product-update-apr-2026"
+  },
+  {
+   "date": "2026-03-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ABC7 News: How Longeye's AI is Helping Law Enforcement Crack Cases Faster",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.longeye.com/blog/abc7-news-longeye-ai-law-enforcement"
+  },
+  {
+   "date": "2026-03-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Product Update Danielle Man \u00c2\u00b7 March 1, 2026 March Product Update New month, new features. March brings Longeye's biggest update yet - call timelines, massive PDF support, saved chats, thematic search",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.longeye.com/blog/product-update-mar-2026"
+  },
+  {
+   "date": "2026-03-01",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "Dave Reinke \u00c2\u00b7 February 15, 2026 How Investigations Break Down at Scale \u00e2\u0080\u0094 and What Agencies Can Do About It Investigations slow from digital evidence overload. See how agencies adapt with triage, un",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.longeye.com/blog/how-investigations-break-down-at-scale-agency-adjustments"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Longeye sells an AI-powered investigative workspace that law enforcement agencies use to analyze digital evidence. An investigator uploads video, audio, phone extractions, social media exports, financial records, and images, then asks questions in plain language. Every answer links back to the exact moment in a video, recording, message, or image, so a finding can be checked later.",
+   "Audio and video are transcribed and translated, with searchable transcripts across Spanish, Mandarin, and 99+ more. Each call then lands on a timeline color-coded by relevancy so the conversations most likely to matter come first. A map view plots GPS tracker pings, Cellebrite extraction data, CDR lat/long, and ALPR hits, with a slider that animates movement over time. A standalone product, Longeye Monitor, applies the same engine to jail call review for corrections agencies and jail facilities.",
+   "Longeye says it is deployed across the country, from major metropolitan departments and state bureaus of investigation to corrections intelligence units running jail call analysis. Chief Darrell Lowe of the Redmond Police Department is quoted crediting it with closing gaps in a cold-case homicide. On security, the company states it is SOC 2 Type II certified, isolates evidence per agency on dedicated US infrastructure, and never uses evidence to train a large language model. Longeye has raised $5M in seed funding led by Andreessen Horowitz's American Dynamism Fund."
+  ],
+  "quote": {
+   "text": "The truth is buried in the evidence. Longeye finds it 100x faster.",
+   "url": "https://www.longeye.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.longeye.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.longeye.com/about",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.longeye.com/product",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.longeye.com"
+   ],
+   [
+    "https://www.longeye.com/product",
+    "https://www.longeye.com/blog/product-update-aug-2026"
+   ],
+   [
+    "https://www.longeye.com",
+    "https://www.longeye.com/about"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

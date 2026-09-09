@@ -1,0 +1,158 @@
+{
+ "news": [
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "ABI Research: Motive deepens its AI push across physical operations.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/abi-research-ai-physical-operations/"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Real Safety Story: The mindset behind two million accident-free miles.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/truck-driver-appreciation-2026/"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Motive advances California fleet compliance with BAR Continuous Testing Program application.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/motive-california-bar-continuous-testing-program/"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Highway and Motive reach an agreement to ensure continuity of service for carriers and brokers.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/motive-highway-joint-statement/"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Motive ranks #1 on Momentum Grid reports with a 99% Customer Satisfaction score in G2\u2019s Fall 2026 Reports",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/blog-g2-fall-2026-rankings/"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "5 areas where fleet-based organizations get the most ROI from AI in 2026.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/ai-fleet-management-trends-2026/"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Motive launches Maintenance: Take control of maintenance costs with one system.",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://gomotive.com/blog/motive-maintenance-launch/"
+  },
+  {
+   "date": "2026-08-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Advancing technology in field services: the 2026 state of fleet and workforce management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/advancing-technology-in-field-services-2026/"
+  },
+  {
+   "date": "2026-08-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What\u2019s the ROI of investing in fleet safety? 4 concrete benefits.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/fleet-safety-roi/"
+  },
+  {
+   "date": "2026-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How field service fleets are using AI to solve their top 3 challenges.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/ai-for-field-service-fleets/"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why mobile fleet cards are the next step in fleet spend management.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/mobile-fleet-cards/"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The hidden costs of manual operations for field service fleets.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/hidden-costs-manual-operations-field-service-fleets/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Motive sells fleet software and hardware as one integrated suite built around AI. The buyers are commercial fleets, which the company describes as ranging from five or ten vehicles up to companies running thousands of them.",
+   "On the safety side, cameras and AI flag more than twenty kinds of event on the road. High-confidence events go straight to managers, while a safety team reviews the low-confidence ones to remove false positives. Vehicle tracking uses real-time GPS with traffic updates and weather overlays for route planning. Compliance work such as electronic logs, driver qualification, IFTA and CSA sits in the same platform. Equipment monitoring shows what share of the time an asset is in use and how long it sits dormant. Telematics from various equipment manufacturers is centralized in a single platform.",
+   "The company points to operations running from waste services to construction. It says it was named number one in fleet management across every segment. It also cites top rankings for equipment monitoring in G2 asset tracking reports for summer 2026. Its fleet card is issued by Sutton Bank under a license from Mastercard International."
+  ],
+  "quote": {
+   "text": "AI that makes your operations safer and more efficient.",
+   "url": "https://gomotive.com"
+  },
+  "sources": [
+   {
+    "url": "https://gomotive.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://gomotive.com/products/driver-safety/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://gomotive.com/products/fleet-management/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://gomotive.com/products/equipment-monitoring/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://gomotive.com",
+    "https://gomotive.com/products/fleet-management/"
+   ],
+   [
+    "https://gomotive.com/products/driver-safety/",
+    "https://gomotive.com/products/fleet-management/",
+    "https://gomotive.com/products/equipment-monitoring/"
+   ],
+   [
+    "https://gomotive.com",
+    "https://gomotive.com/products/equipment-monitoring/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "news": [
+  {
+   "date": "2026-07-23",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "July 23, 2026 The City of Owosso, Michigan, Launches Online Portal to Help Residents Track Water Use and Catch Leaks Owosso has launched a new platform, built by Concourse, that notifies residents of ",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://concoursetech.com/newsroom/owosso-water-tracking-portal"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Concourse Tech builds software for public institutions, tailored to how each organization actually works. The company names state agencies, cities and counties, and school districts among the bodies it serves. Its offering is organized as a module library rather than a single product.",
+   "The permitting and licensing module covers applications, reviews, inspections, and renewals. A utility billing module manages water, electricity, and other utilities from meter to bill. Procurement work brings solicitations, contracts, vendors, and obligations together. For courts, case management holds dockets, filings, parties, and outcomes in one record. Projects begin with discovery sessions, since the company says no two entities are the same. Implementation, training, and ongoing support are included.",
+   "The site says deployments are built with SSO, MFA, AES-256 encryption, and zero-trust access. Agencies purchase Concourse through cooperative purchasing. The about page describes a team of people who have served in federal, state, and local government. One case study covers a state procurement deployment holding 1,500 statewide contracts. Case studies span states, cities, transit agencies, and school districts."
+  ],
+  "quote": {
+   "text": "Purpose-built for public institutions and tailored to how you work.",
+   "url": "https://concoursetech.com/solutions"
+  },
+  "sources": [
+   {
+    "url": "https://concoursetech.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://concoursetech.com/about",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://concoursetech.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://concoursetech.com/case-studies",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://concoursetech.com"
+   ],
+   [
+    "https://concoursetech.com/solutions",
+    "https://concoursetech.com"
+   ],
+   [
+    "https://concoursetech.com",
+    "https://concoursetech.com/about",
+    "https://concoursetech.com/case-studies"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

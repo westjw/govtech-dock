@@ -1,0 +1,53 @@
+{
+ "news": [
+  {
+   "date": "2026-08-26",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Camus Energy Selected for Google for Startups Accelerator Program Focused on AI Solutions for the Energy Industry",
+   "kind": "contract",
+   "kind_rule": "Selected",
+   "url": "https://camus.energy/blog/camus-energy-selected-for-google-for-startups-accelerator-program-focused-on-ai-solutions-for-the-energy-industry"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Camus Energy sells software that electric utilities use to interconnect data centers and local generation. What it sells is the flexible grid connection, in which the utility guarantees firm capacity for most of a site's demand and applies conditional limits to the rest.",
+   "Camus uses real utility data to map how much additional load each conductor and substation can safely serve in every hour of the year. Utilities then decide what portion of the load is served firmly and set operating limits for the conditional portion. Day-ahead operating forecasts show when those conditional limits will apply, alongside closed loop controls. The platform pulls SCADA data, GIS assets, network models, AMI, and DER telemetry into one consistent system model. Two applications sit on it: FlexConnect for interconnections and ODMS, which gives utilities a unified view of the distribution grid.",
+   "The company says it supports investor-owned and public power utilities. It counts 12 or more utility partners across the United States. It states that joint studies with Google, AES, and Princeton's ZERO Lab set the benchmark for how utilities and developers evaluate flexibility and grid capacity. On security, it says OAuth authentication, MFA, role-based access, audit logging, and continuous monitoring protect the platform."
+  ],
+  "quote": {
+   "text": "Orchestration is the missing key to the zero-carbon grid",
+   "url": "https://camus.energy/company"
+  },
+  "sources": [
+   {
+    "url": "https://camus.energy",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://camus.energy/company",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://camus.energy/platform",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://camus.energy"
+   ],
+   [
+    "https://camus.energy",
+    "https://camus.energy/platform"
+   ],
+   [
+    "https://camus.energy/company",
+    "https://camus.energy/platform"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

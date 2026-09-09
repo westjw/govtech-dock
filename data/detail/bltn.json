@@ -1,0 +1,47 @@
+{
+ "profile": {
+  "paragraphs": [
+   "BLTN is software that police agencies use to write, share and search intelligence bulletins instead of circulating static documents by email. Analysts push out posts with video, photos and audio attached in one standard format, then edit them as a case develops.",
+   "Each bulletin is placed on a map by location, so clusters and repeat spots become visible, and the view can be filtered by crime type or other criteria. A feature called SmartLink reads across the whole body of bulletins looking for matching methods and related cases a single department might never see. The company states that every update is logged, auditable and CJIS compliant.",
+   "Single departments, fusion centers and multi-agency regions each get their own version of the pitch, with fusion center analysts using it to centralize regional intelligence for the agencies they serve. Agencies that share a region can buy in together at consortium rates. The site claims 60 or more agencies across 14 states."
+  ],
+  "quote": {
+   "text": "purpose-built for law enforcement",
+   "url": "https://www.multitudeinsights.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.multitudeinsights.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.multitudeinsights.com/solutions/agencies/departments",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.multitudeinsights.com/solutions/agencies/fusion-centers",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.multitudeinsights.com/solutions/agencies/regions",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.multitudeinsights.com",
+    "https://www.multitudeinsights.com/solutions/agencies/departments"
+   ],
+   [
+    "https://www.multitudeinsights.com"
+   ],
+   [
+    "https://www.multitudeinsights.com/solutions/agencies/fusion-centers",
+    "https://www.multitudeinsights.com/solutions/agencies/regions",
+    "https://www.multitudeinsights.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

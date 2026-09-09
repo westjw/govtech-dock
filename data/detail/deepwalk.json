@@ -1,0 +1,149 @@
+{
+ "news": [
+  {
+   "date": "2026-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Feature Update Free Sidewalk Mileage: How Cities Use DeepWalk and OpenStreetMaps in Preparation for Sidewalk Assessments Discover how cities can use OpenStreetMap and DeepWalk to estimate sidewalk mil",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.deepwalk.com/blog/free-sidewalk-mileage-how-cities-can-use-deepwalk-and-openstreetmaps-in-preparation-for-sidewalk-assessments"
+  },
+  {
+   "date": "2026-06-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Danville Prioritizes Sidewalk Access DeepWalk's automatic sidewalk inspection tool helped Danville, Illinois evaluate its sidewalk systems for compliance with the Americans with Disabilities Act. D Br",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/danville-prioritizes-sidewalk-access"
+  },
+  {
+   "date": "2026-05-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How-To Video How to Create an Implement Program on DeepWalk Turn sidewalk scan data into funded repair programs. Assign treatment types, add cost estimates, and activate your team's work orders in Dee",
+   "kind": "contract",
+   "kind_rule": "Implement",
+   "url": "https://www.deepwalk.com/blog/how-to-create-an-implement-program-on-deepwalk"
+  },
+  {
+   "date": "2026-05-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How-To Video How to Add and Onboard New Users on DeepWalk Learn how to add and onboard new users to DeepWalk's sidewalk maintenance platform Abi Kavanagh May 4, 2026 2 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/how-to-add-and-onboard-new-users-on-deepwalk"
+  },
+  {
+   "date": "2026-05-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How-To Video How to Reset Your Password on DeepWalk Learn how to reset your password on DeepWalk in just a few steps. Visit app.deepwalkresearch.com, request a reset link, and follow the instructions ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/how-to-reset-your-password-on-deepwalk"
+  },
+  {
+   "date": "2026-05-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Edina Proves Smarter Sidewalk Data Drives Better Communities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/pilot-program-success-story-edina-minnesota"
+  },
+  {
+   "date": "2026-04-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How-To Video How To: Use DeepWalk Flex For Sidewalk Measurements Abi Kavanagh April 7, 2026 4 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/how-to-use-deepwalk-flex-for-sidewalk-measurements"
+  },
+  {
+   "date": "2026-02-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How-To Video How To: Register as a New User on DeepWalk A step-by-step guide to registering as a new user in DeepWalk\u2019s web application, including sign-in, organization setup, project creation, data a",
+   "kind": "contract",
+   "kind_rule": "sign",
+   "url": "https://www.deepwalk.com/blog/how-to-register-as-a-new-user-on-deepwalk"
+  },
+  {
+   "date": "2025-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How-To Video How To: Migrate to DeepWalk's Formal Authentication System Migrating to DeepWalk\u2019s formal authentication system: what to expect, written implementation steps, and comprehensive video guid",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/how-to-migrate-to-deepwalks-formal-authentication-system"
+  },
+  {
+   "date": "2025-08-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Turning Assessment into Action: How Genoa, IL Uses DeepWalk for Sidewalk Inspections",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/turning-assessment-into-action-genoa-il-uses-deepwalk-for-sidewalk-inspections"
+  },
+  {
+   "date": "2025-06-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How-To Video How To: Plan Data Collection Routes for Your Project Learn how to efficiently plan your data collection routes using DeepWalk\u2019s web app. This video walks you through drawing routes, defin",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/how-to-plan-data-collection-routes-for-your-project"
+  },
+  {
+   "date": "2025-06-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How-To Video Understanding DeepWalk's Data Tool - Details Page This video covers everything you need to know about the Details Page under the Data Tool in DeepWalk\u2019s web application. The Details Page ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/understanding-deepwalks-data-tool---details-page"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "DeepWalk sells automated sidewalk inspection software that uses iPhone LiDAR to identify condition and access issues. Work is planned, inspected, analyzed and implemented on one platform. Projects range from small residential work to city-wide deployments.",
+   "Crews scan sidewalk and curb ramps with the LiDAR scanners in iPhone Pros through the mobile app. An automated measurement system then inspects the scans for condition and accessibility issues. Data comes back in the web app and in ArcGIS. There, inspections are managed, conditions reviewed and work orders created for improvements. A higher plan is aimed at large evaluations and long-term planning projects that require slope analysis.",
+   "All plans include the full capability of the mobile app, which is downloaded from the Apple App Store. The site describes a pilot in which Edina, MN, got faster, more efficient data collection. Another story says Genoa, IL, went from data collection to program implementation and earned statewide recognition."
+  ],
+  "quote": {
+   "text": "Plan, inspect, analyze, and implement sidewalk projects all on one platform.",
+   "url": "https://www.deepwalk.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.deepwalk.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.deepwalk.com/solutions",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.deepwalk.com",
+    "https://www.deepwalk.com/solutions"
+   ],
+   [
+    "https://www.deepwalk.com",
+    "https://www.deepwalk.com/solutions"
+   ],
+   [
+    "https://www.deepwalk.com/solutions",
+    "https://www.deepwalk.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

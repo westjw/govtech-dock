@@ -1,0 +1,156 @@
+{
+ "news": [
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Growing Businesses Need Intelligent Spend Control That Can Keep Up Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/blog/growing-businesses-need-intelligent-spend-control-that-can-keep-up"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Control Company Spend Without Constraints It\u2019s Tuesday morning, and your sales lead is booking a cross-country flight to lock down a major enterprise deal. Meanwhile, procurement signed a new vendor c",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/blog/control-company-spend-without-constraints"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "When Workarounds Become the Workflow: 6 Signs You\u2019ve Outgrown Your Current Spend Management As your business grows, complexity is inevitable. You may acquire entities, enter new markets, introduce pay",
+   "kind": "contract",
+   "kind_rule": "Signs",
+   "url": "https://www.emburse.com/blog/6-signs-you-outgrown-your-current-spend-management"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI Adoption Is Broadening. Investment Remains Concentrated. Read more",
+   "kind": "funding",
+   "kind_rule": "Investment",
+   "url": "https://www.emburse.com/blog/ai-adoption-is-broadening-investment-remains-concentrated"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Emburse Spend Expands Globally, Launching in Australia as Its First Market Outside the U.S. Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/company/news/emburse-spend-expands-globally-launching-in-australia-as-its-first-market-outside-the-u-s"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Featured August 28, 2026 The Finance Leader\u2019s Checklist for Trustworthy Agentic AI Agentic AI promises to do more than analyze information or generate an answer. It can retrieve additional context, in",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/blog/finance-leader-checklist-for-agentic-ai"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Emburse Wins 2026 SaaS Award for Best SaaS Product for Business Productivity Read more",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://www.emburse.com/company/news/emburse-wins-2026-saas-award-for-best-saas-product-for-business-productivity"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Emburse Named to the 2026 Inc. 5000 List, Marking Fourth Consecutive Recognition Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/company/news/emburse-named-to-the-2026-inc-5000-list-marking-fourth-consecutive-recognition"
+  },
+  {
+   "date": "2026-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Emburse and Direct Travel Launching Strategic Partnership to Deliver a Connected, AI-Powered Travel and Expense Experience Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/company/news/emburse-and-direct-travel-launching-strategic-partnership-to-deliver-a-connected-ai-powered-travel-and-expense-experience"
+  },
+  {
+   "date": "2026-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Emburse Expands Open Travel and Expense Ecosystem, Delivering Greater Choice and a More Connected Experience Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/company/news/emburse-expands-open-travel-and-expense-ecosystem-delivering-greater-choice-and-a-more-connected-experience"
+  },
+  {
+   "date": "2026-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Emburse Integrates with Cvent to Bring Travel Intelligence to Hotel Sourcing Read more",
+   "kind": "product",
+   "kind_rule": "Integrates with",
+   "url": "https://www.emburse.com/company/news/emburse-integrates-with-cvent-to-bring-travel-intelligence-to-hotel-sourcing"
+  },
+  {
+   "date": "2026-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "BCD Travel and Emburse redefine the travel and expense experience Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/company/news/bcd-travel-and-emburse-redefine-the-travel-and-expense-experience"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Emburse sells travel and expense management software to finance teams. The platform covers expense, travel, accounts payable, cards, invoices and ACH payments, with localization for more than 100 countries.",
+   "Receipts are read by optical character recognition, whether the paper original or a digital copy. Spend is sorted automatically across dozens of categories, with VAT reconciliation and multiple currencies handled along the way. Policies are written once and enforced across the organization rather than checked afterward. A compliance layer examines receipts before and after submission, applying policy consistently and flagging risk early. For travel, the company sits alongside a customer's existing travel management company rather than replacing it, rebooking air and hotel when prices fall under rules the customer sets. It also connects to ERP, finance and accounting systems.",
+   "The company states that it serves over 20,000 organizations in 200 countries and territories. Those customers are described as large enterprises, smaller businesses, public sector agencies and nonprofits. Marne Martin is the chief executive. In July 2026 the company announced that it had been named to CNBC's list of the world's top fintech companies for that year."
+  ],
+  "quote": {
+   "text": "Emburse Assurance adds an AI-powered compliance layer that guides employees in real time",
+   "url": "https://www.emburse.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.emburse.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.emburse.com/company/news/emburse-recognized-among-cnbc-s-world-s-top-fintech-companies-of-2026",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.emburse.com/solutions/expense-management",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.emburse.com/solutions/travel-management",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.emburse.com"
+   ],
+   [
+    "https://www.emburse.com/solutions/expense-management",
+    "https://www.emburse.com",
+    "https://www.emburse.com/solutions/travel-management"
+   ],
+   [
+    "https://www.emburse.com/company/news/emburse-recognized-among-cnbc-s-world-s-top-fintech-companies-of-2026"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

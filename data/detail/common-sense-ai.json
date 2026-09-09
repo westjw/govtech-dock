@@ -1,0 +1,49 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Common Sense sells AI building blocks for local government, aimed at the administrative work that piles up in agencies. The modules cover public records and meeting management, with more beyond those two. Each module is meant to fit an agency's existing setup and account for the policies and laws that apply to it.",
+   "On records requests, the software triages, processes, and responds to incoming requests with full audit trails. It searches document management, email, and IT systems to find responsive records instead of asking each department to dig through its own files. Integrations named include Laserfiche, OnBase, Outlook, and Gmail. Redactions are prepared by the software, but staff review and approve them before documents go out. A second module runs the entire council meeting preparation process. After a meeting it drafts a plain summary of what was discussed and decided. A third module, Composer, builds workflow systems from a description written in plain English.",
+   "The departments named as users run from police and fire to the city clerk, legal, public works, and finance. The company says it is SOC 2 Type II certified and built for public-sector compliance. It states that the meeting product is co-built with the City of Peachtree Corners, Georgia and Starbase, Texas."
+  ],
+  "quote": {
+   "text": "SOC 2 Type II certified. Built for public-sector compliance.",
+   "url": "https://www.commonsensetech.ai"
+  },
+  "sources": [
+   {
+    "url": "https://www.commonsensetech.ai",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.commonsensetech.ai/products/public-records",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.commonsensetech.ai/products/agendas",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.commonsensetech.ai/products/composer",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.commonsensetech.ai"
+   ],
+   [
+    "https://www.commonsensetech.ai",
+    "https://www.commonsensetech.ai/products/public-records",
+    "https://www.commonsensetech.ai/products/agendas",
+    "https://www.commonsensetech.ai/products/composer"
+   ],
+   [
+    "https://www.commonsensetech.ai/products/public-records",
+    "https://www.commonsensetech.ai",
+    "https://www.commonsensetech.ai/products/agendas"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Authorium sells government agencies a platform meant to connect the flow of public funds across the administrative functions that carry it. The company builds only for government and describes itself as a public benefit company. State and local governments are named as buyers.",
+   "On the procurement side, bids are submitted, vendors scored, and evaluation workbooks kept inside the application. Contracts are tracked from request, to award, to obligation management, to renewal. Workflows, templates, rules, and role-based access are meant to be configured without an ongoing technical service contract. A legislative module imports bills and amendments, then tracks them and distributes them to departments and teams for analysis. A smaller product, Authorium Direct, covers direct and non-competitive purchasing in a single, low-cost portal. It is built on AWS GovCloud.",
+   "The company says 60% of its staff worked in government themselves. It reports having completed a SBIR phase II with the U.S. Air Force. Implementation is handled by an in-house team. Authorium says it has been named to the GovTech 100 for a third consecutive year."
+  ],
+  "quote": {
+   "text": "Built exclusively for government by a public benefit company.",
+   "url": "https://authorium.com"
+  },
+  "sources": [
+   {
+    "url": "https://authorium.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://authorium.com/solutions/procurement/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://authorium.com/solutions/legislative-analysis/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://authorium.com/solutions/authorium-direct/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://authorium.com"
+   ],
+   [
+    "https://authorium.com/solutions/procurement/",
+    "https://authorium.com/solutions/legislative-analysis/",
+    "https://authorium.com/solutions/authorium-direct/"
+   ],
+   [
+    "https://authorium.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

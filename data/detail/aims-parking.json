@@ -1,0 +1,43 @@
+{
+ "profile": {
+  "paragraphs": [
+   "AIMS is parking management software from EDC Corporation, built to handle citations, permits and field enforcement for whoever runs the parking operation. The company writes that the system is meant to scale whether the buyer runs a city, a university, a hospital campus or an airport.",
+   "Citations are entered in real time from the field, with photos, GPS coordinates and notes attached to each one. Permits can be virtual or physical, and the software carries waitlists, renewals and permit prioritization. Fixed and mobile plate recognition cameras push reads, hits and occupancy data back into the system as they happen. A self-service portal gives the public round-the-clock access to payments, permits and appeals.",
+   "The site states that more than 300 clients in the United States and Canada use the software. A move onto the platform is described as taking twelve to sixteen weeks. The company describes the system as PCI and SOC 2 compliant. It also says the developers who write the software are the ones who support it."
+  ],
+  "quote": {
+   "text": "Whether you manage a city, a university, a hospital campus or an airport, AIMS is designed to scale.",
+   "url": "https://www.aimsparking.com/about/"
+  },
+  "sources": [
+   {
+    "url": "https://www.aimsparking.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aimsparking.com/solutions/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aimsparking.com/about/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.aimsparking.com",
+    "https://www.aimsparking.com/about/"
+   ],
+   [
+    "https://www.aimsparking.com/solutions/"
+   ],
+   [
+    "https://www.aimsparking.com",
+    "https://www.aimsparking.com/solutions/",
+    "https://www.aimsparking.com/about/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

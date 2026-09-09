@@ -1,0 +1,98 @@
+{
+ "news": [
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The NRTCCA is building a national standard for RTCC readiness",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaiden.ai/post/the-nrtcca-is-building-a-national-standard-for-rtcc-readiness-powered-by-kaiden-ai"
+  },
+  {
+   "date": "2026-07-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Baltimore Police Department Launches Pilot of Kaiden AI to Modernize Training",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.kaiden.ai/post/pilot-announcement-baltimore-pd"
+  },
+  {
+   "date": "2026-02-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Law Enforcement Training Has a Scaling Problem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaiden.ai/post/law-enforcement-training-has-a-scaling-problem"
+  },
+  {
+   "date": "2025-12-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Kaiden AI Achieves SOC 2 Type 1: A Commitment to Secure Training Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaiden.ai/post/kaiden-ai-achieves-soc-2-type-1-attestation-strengthening-trust-and-security-for-law-enforcement-tr"
+  },
+  {
+   "date": "2025-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How AI in Police Training Improves Retention and Readiness",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaiden.ai/post/ai-police-training-retention-readiness"
+  },
+  {
+   "date": "2025-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How AI-Powered Simulations Are Transforming Scenario-Based Law Enforcement Training",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaiden.ai/post/how-ai-powered-simulations-are-transforming-scenario-based-law-enforcement-training"
+  },
+  {
+   "date": "2025-01-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Kaiden AI Raises $1M Pre-Seed Round to Transform Police Training with Realistic AI Simulations",
+   "kind": "funding",
+   "kind_rule": "Raises",
+   "url": "https://www.kaiden.ai/post/kaiden-ai-pre-seed-funding"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Kaiden AI sells AI simulation training software to law enforcement agencies and academies. The product turns an agency's policies and training standards into AI simulations, guided coaching, and evaluations that officers can complete anywhere. Agencies build scenarios, assign practice, and measure officer performance from one platform. The simulations use AI personas meant to cover the full range of people officers encounter in the field.",
+   "The company frames the product around the law enforcement training lifecycle. Recruits get more opportunities to practice communication, judgment, articulation, and policy application before the situations evaluated in the FTO program. For serving officers, scenarios cover policy changes, legal updates, emerging threats, and high-risk encounters, with a separate track for interviewing and investigative decision-making. Instructors can assign targeted practice based on documented performance gaps without adding role-player or instructor burden.",
+   "Testimonials on the site come from the Baltimore and Atlanta police departments; Lt. Jason Foore of Atlanta says recruits using Kaiden AI felt more confident during practical exercises. A blog post says the Baltimore Police Department has launched a pilot of Kaiden AI at the Baltimore Police Academy for academy and in-service programs. The company reports completing a SOC 2 Type 1 attestation to protect agency and trainee data. A January 2025 post announces a $1M pre-seed round."
+  ],
+  "quote": {
+   "text": "Kaiden turns your agency\u2019s policies and training standards into realistic AI simulations, guided coaching, and measurable evaluations officers can complete anywhere.",
+   "url": "https://www.kaiden.ai"
+  },
+  "sources": [
+   {
+    "url": "https://www.kaiden.ai",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.kaiden.ai"
+   ],
+   [
+    "https://www.kaiden.ai"
+   ],
+   [
+    "https://www.kaiden.ai",
+    "https://www.kaiden.ai/blog"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

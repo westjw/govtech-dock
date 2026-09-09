@@ -1,0 +1,67 @@
+{
+ "news": [
+  {
+   "date": "2026-06-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July 2026: We\u2019re Moving!",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://infosense.com/news/movingannouncement/"
+  },
+  {
+   "date": "2026-03-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "New SL-DOG Mobile App Launches March 2026!",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://infosense.com/news/new-sl-dog-mobile-app-launches-march-2026/"
+  },
+  {
+   "date": "2025-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Bridge the Wastewater Infrastructure Gap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://infosense.com/news/how-to-bridge-the-wastewater-infrastructure-gap/"
+  },
+  {
+   "date": "2025-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Tip of the Fatberg: How FOG Affects our Sewer System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://infosense.com/news/the-tip-of-the-fatberg-how-fog-affects-our-sewer-system-2/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "InfoSense sells the equipment, software and services that let a city work out which sewer pipes actually need cleaning before crews are sent out. The centrepiece is a handheld acoustic device that scores blockage conditions in small diameter gravity sewer lines.",
+   "A transmitter goes on one open manhole and a receiver on the next. Within a few minutes the display returns a rating from zero to ten showing whether the pipe is clear or obstructed. Nothing touches the flow and nobody has to enter a confined space. The company reports that two people can cover fifty to sixty segments in a day. Readings feed a companion platform that records, organises and maps the results. Data can be pushed out to mapping and spreadsheet tools already in use.",
+   "Buyers are public works departments and utilities moving away from cleaning on a fixed calendar toward cleaning based on measured condition. The company states that more than 1,350 utilities have used the tool. One published case study covers a small town serving just under ten thousand people. That town is reported to have cut its cleaning workload by more than half."
+  ],
+  "quote": {
+   "text": "Turn Hours into Minutes and Dollars into Sense",
+   "url": "https://www.infosense.com"
+  },
+  "sources": [],
+  "paragraph_sources": [
+   [
+    "https://www.infosense.com"
+   ],
+   [
+    "https://www.infosense.com"
+   ],
+   [
+    "https://www.infosense.com",
+    "https://infosense.com/case-studies/",
+    "https://infosense.com/case-studies/community-spotlight-purcellville-virginia/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

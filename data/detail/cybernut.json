@@ -1,0 +1,159 @@
+{
+ "news": [
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Adaptive Phishing Simulations Improve Staff Response Rates View",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cybernut.com/blog/how-adaptive-phishing-simulations-improve-staff-response-rates"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Cybersecurity Insurance and Training: How Proactive Programs Lower Premiums View",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cybernut.com/blog/cybersecurity-insurance-and-training-how-proactive-programs-lower-premiums"
+  },
+  {
+   "date": "2026-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Evaluate and Implement Cybersecurity Awareness Training for Your School District View",
+   "kind": "contract",
+   "kind_rule": "Implement",
+   "url": "https://www.cybernut.com/blog/how-to-evaluate-and-implement-cybersecurity-awareness-training-for-your-school-district"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Gamified Training Reduces Phishing Click Rates Over Time View",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cybernut.com/blog/how-gamified-training-reduces-phishing-click-rates-over-time"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Questions Every IT Director Should Ask Before Signing a Security Awareness Contract View",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://www.cybernut.com/blog/questions-every-it-director-should-ask-before-signing-a-security-awareness-contract"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "No SOC Team? How CyberNut Fills the Gap for Under-Resourced Districts View",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cybernut.com/blog/no-soc-team-how-cybernut-fills-the-gap-for-under-resourced-districts"
+  },
+  {
+   "date": "2026-07-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "K-12 vs. Enterprise Cybersecurity Tools: Why One-Size-Fits-All Doesn't Work for Schools View",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cybernut.com/blog/k-12-vs-enterprise-cybersecurity-tools-why-one-size-fits-all-doesnt-work-for-schools"
+  },
+  {
+   "date": "2026-07-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CyberNut Acquires Neptune Navigate Digital Citizenship Platform, Expanding Its Student Safety Offering for K-12 Districts",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://www.cybernut.com/news/cybernut-acquires-neptune-navigate-digital-citizenship-platform-expanding-its-student-safety-offering-for-k-12-districts"
+  },
+  {
+   "date": "2026-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Board-Ready Cybersecurity Reporting: What Data to Present and How View",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cybernut.com/blog/board-ready-cybersecurity-reporting-what-data-to-present-and-how"
+  },
+  {
+   "date": "2026-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Implementation in Days, Not Months: What Fast Deployment Actually Looks Like View",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cybernut.com/blog/implementation-in-days-not-months-what-fast-deployment-actually-looks-like"
+  },
+  {
+   "date": "2026-06-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Email Threat Management for School Districts: From Detection to Removal View",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cybernut.com/blog/email-threat-management-for-school-districts-from-detection-to-removal"
+  },
+  {
+   "date": "2026-05-25",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Building a Staff Reporting Culture: When Staff Become Your First Line of Defense View",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cybernut.com/blog/building-a-staff-reporting-culture-when-staff-become-your-first-line-of-defense"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "CyberNut sells phishing simulation training and email threat response to K-12 school districts, for staff and for students. It presents itself as a cheaper, education-first option next to the enterprise awareness vendors it names.",
+   "Districts run simulated phishing campaigns from a library of K-12 templates or their own, aimed at chosen groups, with difficulty adjusting on its own. Someone who clicks is assigned a short lesson automatically. Training runs as 30-second gamified lessons with rewards, leaderboards and progress tracking. When a message is flagged, the Active Threat Manager finds and removes it before it spreads. A learning centre covers NIST and DIR standards in short lessons.",
+   "The company claims more than 500 school districts nationwide. It says every simulation, lesson and report is made for how schools actually work rather than carried over from corporate training. A banner announces the acquisition of Neptune Navigate. The stated aim is to bring student digital citizenship and staff security awareness onto one platform."
+  ],
+  "quote": {
+   "text": "The moment a phishing email is reported, CyberNut deletes it from every inbox in the district.",
+   "url": "https://www.cybernut.com/platform"
+  },
+  "sources": [
+   {
+    "url": "https://www.cybernut.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cybernut.com/platform",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cybernut.com/platform/solutions/active-threat-manager",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cybernut.com/platform/solutions/ai-phishing-simulator-teachers-staff",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.cybernut.com",
+    "https://www.cybernut.com/platform/solutions/ai-phishing-simulator-teachers-staff"
+   ],
+   [
+    "https://www.cybernut.com",
+    "https://www.cybernut.com/platform/solutions/ai-phishing-simulator-teachers-staff",
+    "https://www.cybernut.com/platform/solutions/active-threat-manager",
+    "https://www.cybernut.com/platform"
+   ],
+   [
+    "https://www.cybernut.com/platform",
+    "https://www.cybernut.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

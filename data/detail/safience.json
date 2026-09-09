@@ -1,0 +1,147 @@
+{
+ "news": [
+  {
+   "date": "2022-03-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "NCJTC Partners With Biometrica To Announce Big Data And Facial Recognition Training Program For Law Enforcement And Criminal Justice Professionals",
+   "kind": "contract",
+   "kind_rule": "Partners With",
+   "url": "https://safience.io/2022/03/ncjtc-partners-with-biometrica-to-announce-big-data-and-facial-recognition-training-program-for-law-enforcement-and-criminal-justice-professionals/"
+  },
+  {
+   "date": "2021-06-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Biometrica and SoulSpark Partner to Protect At-Risk Patients Through 24\u00d77, HIPAA-Compliant Background Check",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2021/06/biometrica-and-soulspark-partner-to-protect-at-risk-patients-through-24x7-hipaa-compliant-background-check/"
+  },
+  {
+   "date": "2019-03-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ICMEC & Biometrica Announce Collaboration To Help Find Missing Children, Using Biometrics And Real-Time Big Data To Help Track Abductors",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2019/03/icmec-biometrica-announce-collaboration-to-help-find-missing-children-using-biometrics-and-real-time-big-data-to-help-track-abductors/"
+  },
+  {
+   "date": "2018-12-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Biometrica Announces Corporate HQ To Be Based In AZ; Vegas Will Continue As Casino Operations Base",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2018/12/biometrica-corporate-hq-arizona/"
+  },
+  {
+   "date": "2018-12-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Biometrica Announces eMotive: Facial Recognition-Integrated 24\u00d77 Criminal Background Check",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2018/12/emotive-24x7-criminal-background-check/"
+  },
+  {
+   "date": "2018-12-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "With Eye On Innovation, Biometrica Announces AZ Office; Will Grow Phoenix-Area Operations In 2019",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2018/12/phoenix-office-hiring-2019/"
+  },
+  {
+   "date": "2018-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "NCJTC Partners With Biometrica To Announce Big Data And Facial Recognition Training Program For Law Enforcement And Criminal Justice Professionals",
+   "kind": "contract",
+   "kind_rule": "Partners With",
+   "url": "https://safience.io/2018/09/ncjtc-missing-persons-search-and-rescue/"
+  },
+  {
+   "date": "2018-09-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "With Focus On Missing Persons, National Criminal Justice Training Center And Biometrica Announce Four-Part Expert Series on Security And Public Safety",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2018/09/with-focus-on-missing-persons-national-criminal-justice-training-center-and-biometrica-announce-four-part-expert-series-on-security-and-public-safety/"
+  },
+  {
+   "date": "2018-06-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "NCJTC Partners With Biometrica To Announce Big Data And Facial Recognition Training Program For Law Enforcement And Criminal Justice Professionals",
+   "kind": "contract",
+   "kind_rule": "Partners With",
+   "url": "https://safience.io/2018/06/icmec-missing-children-amazon/"
+  },
+  {
+   "date": "2018-05-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "With Public Safety Prime Focus, Biometrica Announces API Partnership With VSBLTY",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2018/05/with-public-safety-prime-focus-biometrica-announces-api-partnership-with-vsblty/"
+  },
+  {
+   "date": "2018-05-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "NCJTC Partners With Biometrica To Announce Big Data And Facial Recognition Training Program For Law Enforcement And Criminal Justice Professionals",
+   "kind": "contract",
+   "kind_rule": "Partners With",
+   "url": "https://safience.io/2018/05/leo-killed-felony-line-of-duty/"
+  },
+  {
+   "date": "2017-09-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Biometrica Announces Release Of UMbRA, A 100% Law Enforcement-Verified Multi-jurisdictional Database Of Arrests And Convictions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2017/09/umbra-criminal-database/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Safience sells identity intelligence software that looks only for predefined threats, persons of interest and missing persons, matched against a database built from law enforcement records. The site belongs to Biometrica Systems, Inc., a software and data company that supports federal, state, tribal and local law enforcement and private sector safety teams. Its RTIS and RVIS edge sensors capture a single still image rather than video or audio, and any image that does not match a predefined profile is purged immediately. The company states that an alert follows within 60 seconds of a detection and that database queries return in under 5 seconds.",
+   "The database behind the system holds 57.3M+ unique individuals and receives over 50,000 new records per day. Those records come from published law enforcement records, agency JMS/RMS integrations, an OffenderWatch partnership and missing-person records, with no OSINT, social media or consumer data. It also markets the system to airports and mass transit, banks, schools and universities, hospitals, hotels, retailers and stadiums.",
+   "A second product, eMotive, turns a one-time criminal background check into a continuous, FCRA-compliant alert system for employers, with written consent required from each monitored individual. Matching for eMotive is performed by a third-party, NIST-approved provider in an isolated environment, and Biometrica staff do not see employee match notifications. Biometrica holds the U.S. patent for System and Method for Continuous Biometric Monitoring."
+  ],
+  "quote": {
+   "text": "We identify threats or victims in under 60 seconds. Privacy-first. Real-time. Nationwide.",
+   "url": "https://safience.io"
+  },
+  "sources": [
+   {
+    "url": "https://safience.io",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://safience.io/solutions/emotive/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://safience.io",
+    "https://safience.io/2022/03/ncjtc-partners-with-biometrica-to-announce-big-data-and-facial-recognition-training-program-for-law-enforcement-and-criminal-justice-professionals/"
+   ],
+   [
+    "https://safience.io"
+   ],
+   [
+    "https://safience.io/solutions/emotive/"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

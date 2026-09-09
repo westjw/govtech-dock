@@ -1,0 +1,156 @@
+{
+ "news": [
+  {
+   "date": "2026-02-23",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Gaggle Helps School Leaders Stay Ahead of AI Risks with Real-Time Web Filtering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gaggle.net/press/gaggle-helps-stay-ahead-of-ai-risks"
+  },
+  {
+   "date": "2026-01-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Roanoke County Public Schools introduces new virtual counseling for students and families",
+   "kind": "product",
+   "kind_rule": "introduces",
+   "url": "https://www.gaggle.net/media/roanoke-county-public-schools-introduces-new-virtual-counseling-for-students-and-families"
+  },
+  {
+   "date": "2026-01-02",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Gaggle Launches Mobile Incident Management App, Making Student Safety Easier to Manage Anytime, Anywhere",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.gaggle.net/press/gaggle-launches-mobile-incident-management-app"
+  },
+  {
+   "date": "2025-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "School safety tip lines aimed at protecting lives across Tucson",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gaggle.net/media/school-safety-tip-lines-aimed-at-protecting-lives-across-tucson"
+  },
+  {
+   "date": "2025-04-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "North Texas school district says online monitoring software alerted them to attempted sextortion with student",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gaggle.net/media/north-texas-school-district-says-online-monitoring-software-alerted-them-to-attempted-sextortion-with-student"
+  },
+  {
+   "date": "2025-02-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "13-year-old arrested a second time for threatening to shoot up Riverview Learning Center",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gaggle.net/media/13-year-old-arrested-a-second-time-for-threatening-to-shoot-up-riverview-learning-center"
+  },
+  {
+   "date": "2025-01-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Montgomery County high schoolers offered free mental health online program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gaggle.net/media/montgomery-county-high-schoolers-offer-free-mental-health-online-program"
+  },
+  {
+   "date": "2024-04-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Salamanca schools, Gaggle partner to implement student safety management",
+   "kind": "contract",
+   "kind_rule": "implement",
+   "url": "https://www.gaggle.net/media/salamanca-schools-to-implement-gaggle"
+  },
+  {
+   "date": "2024-04-16",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Gaggle awards Charlotte Mecklenburg Schools dispatch officers",
+   "kind": "contract",
+   "kind_rule": "awards",
+   "url": "https://www.gaggle.net/press/gaggle-awards-cms"
+  },
+  {
+   "date": "2023-10-12",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Gaggle's Latest Report Addresses the Ongoing Mental Health Crisis in K-12 Students",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gaggle.net/press/addressing-mental-health-crisis"
+  },
+  {
+   "date": "2023-09-14",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Gaggle Earns iKeepSafe Privacy FERPA Badge",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gaggle.net/press/gaggle-earns-ikeepsafe-privacy-ferpa-badge"
+  },
+  {
+   "date": "2022-12-21",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "VICE News Documentary Tackles Controversy of Student Safety Versus Student Privacy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gaggle.net/press/vice-news-documentary-tackles-student-safety-versus-student-privacy"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Gaggle sells student safety services to schools, with a stated mission of ensuring the safety and well-being of students and schools through people and technology. Its core product uses machine learning and trained safety experts to analyze student-created content in school-issued accounts and devices.",
+   "A web filter blocks inappropriate content and automatically categorizes new sites as it scans them. A therapy service connects students with licensed mental health professionals for weekly teletherapy sessions. A round-the-clock service called ReachOut gives students direct access to confidential care whenever they need support. An archiving product stores files and communications in one searchable, cloud-based system so districts can meet compliance obligations.",
+   "The company says it has been supporting student safety and well-being for more than 20 years. Its founder started the company as a secure student email provider in 1998. It describes itself as the pioneer in helping K-12 districts manage student safety on school-provided technology. The home page puts its reach at over 1,500 K-12 districts, and one case study describes a district choosing the therapy service to meet growing student mental health needs."
+  ],
+  "quote": {
+   "text": "Gaggle\u2019s mission is to ensure the safety and well-being of students and schools by leveraging people and technology.",
+   "url": "https://www.gaggle.net/who-we-are"
+  },
+  "sources": [
+   {
+    "url": "https://www.gaggle.net",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.gaggle.net/case-studies",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.gaggle.net/who-we-are",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.gaggle.net/case-studies/ramsey-public-school-district",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.gaggle.net/who-we-are",
+    "https://www.gaggle.net"
+   ],
+   [
+    "https://www.gaggle.net"
+   ],
+   [
+    "https://www.gaggle.net/who-we-are",
+    "https://www.gaggle.net"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

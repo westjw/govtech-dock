@@ -1,0 +1,139 @@
+{
+ "news": [
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Assessing Your Data Foundation for AI in 90 Days",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://caseworthy.com/articles/assessing-your-data-foundation-for-ai-in-90-days/"
+  },
+  {
+   "date": "2026-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CaseWorthy Announces Strategic Growth Investment from Rubicon Technology Partners",
+   "kind": "funding",
+   "kind_rule": "Investment",
+   "url": "https://caseworthy.com/news/caseworthy-announces-strategic-growth-investment-from-rubicon-technology-partners/"
+  },
+  {
+   "date": "2026-03-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CaseWorthy Expands Strategic Microsoft Collaboration to Accelerate Customer Data Access and Platform Innovation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://caseworthy.com/news/caseworthy-expands-strategic-microsoft-collaboration-to-accelerate-customer-data-access-and-platform-innovation/"
+  },
+  {
+   "date": "2025-12-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CaseWorthy, Inc. Unifies Flagship Applications Into ClientTrack by CaseWorthy\u2014Combining Trusted Technology for Human Services",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://caseworthy.com/news/caseworthy-inc-unifies-flagship-applications-into-clienttrack-by-caseworthy-combining-trusted-technology-for-human-services/"
+  },
+  {
+   "date": "2025-02-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CaseWorthy, Inc. Acquires Adjacent Social and Human Services Software Company Eccovia",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://caseworthy.com/news/caseworthy-inc-acquires-adjacent-social-and-human-services-software-company-eccovia/"
+  },
+  {
+   "date": "2024-11-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CaseWorthy\u2019s MediSked Application Achieves HITRUST Recertification",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://caseworthy.com/news/caseworthys-medisked-platform-achieves-hitrust-recertification/"
+  },
+  {
+   "date": "2024-02-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Introducing ClaimExchange: CaseWorthy\u2019s Innovative Solution Simplifying Medicaid and Healthcare Billing",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://caseworthy.com/news/introducing-claimexchange-caseworthys-innovative-solution-simplifying-medicaid-and-healthcare-billing/"
+  },
+  {
+   "date": "2024-02-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "MediSked, a CaseWorthy Company, Achieves HITRUST Implemented, 1-year (i1) Certification to Manage Data Protection and Mitigate Cybersecurity Threats",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://caseworthy.com/news/medisked-a-caseworthy-company-achieves-hitrust-implemented-1-year-i1-certification-to-manage-data-protection-and-mitigate-cybersecurity-threats/"
+  },
+  {
+   "date": "2023-01-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CaseWorthy Acquires Leading Health and Humans Services Software Company MediSked",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://caseworthy.com/news/caseworthy-acquires-leading-health-and-humans-services-software-company-medisked/"
+  },
+  {
+   "date": "2022-07-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Enterprise SaaS Veterans Join Health and Human Services Technology Innovator",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://caseworthy.com/news/caseworthy-acts-on-commitment-to-expand-tech-framework-and-market-presence-by-appointing-key-executives-to-leadership-team/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "CaseWorthy sells a software platform for case and program management in human services. Its buyers are nonprofit organizations and local and state governments that deliver social care programs.",
+   "The platform pulls programs, people, data and workflows together in one system rather than scattering them across separate tools. Agencies configure their own workflows, forms, assessments and service plans to match how each program operates. Reporting for funders is built into the platform instead of assembled in spreadsheets. Underneath sits a data lakehouse called CORE that consolidates information from CaseWorthy applications and outside sources. CORE ships baseline data models for particular sectors, including HMIS for homeless services, aging services and workforce development metrics.",
+   "Beyond case management there are applications for HCBS and I/DD providers covering care coordination, scheduling and Medicaid-supported service delivery. Another handles scheduling, documentation and billing for Home and Community-Based Services agencies. An AI copilot named Cara is embedded in the platform to reduce documentation time and surface insights. The company states that the organizations it serves touch more than 41% of the US population."
+  ],
+  "quote": {
+   "text": "Serving 1,000+ Nonprofit organizations, local and state governments who touch more than 41% of the US population",
+   "url": "https://caseworthy.com"
+  },
+  "sources": [
+   {
+    "url": "https://caseworthy.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://caseworthy.com/platform/caseworthy-platform/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://caseworthy.com/platform/core/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://caseworthy.com/platform/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://caseworthy.com"
+   ],
+   [
+    "https://caseworthy.com/platform/caseworthy-platform/",
+    "https://caseworthy.com/platform/core/"
+   ],
+   [
+    "https://caseworthy.com/platform/caseworthy-platform/",
+    "https://caseworthy.com/platform/",
+    "https://caseworthy.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

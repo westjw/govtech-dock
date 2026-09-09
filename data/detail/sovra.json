@@ -1,0 +1,48 @@
+{
+ "profile": {
+  "paragraphs": [
+   "SOVRA sells procurement software to public agencies, covering the process from an identified need through the contract lifecycle. The other side of the business serves suppliers looking for government work.",
+   "Requests arrive through intelligent forms where AI suggests inputs and asks follow-up questions. Solicitations reach suppliers through automated bid alerts keyed to commodity codes. Evaluation teams score responses with sealed-bid enforcement and audit tracking in place. Awarded work moves into contract drafting from flexible, pre-approved templates.",
+   "The contract page says over 7,000 public sector entities across North America use it. Named user types run from cities and counties to school boards and healthcare networks. The homepage claims a network of more than one million suppliers connected to thousands of government buyers. Supplier support is handled by a team the sourcing page puts at more than 100 employees."
+  ],
+  "quote": {
+   "text": "Moving to [SOVRA] opened Seguin up to more competitive bids and fairer processes, and it\u2019s saving the city money.",
+   "url": "https://www.sovra.com/government-buyers/solutions/procurement-management/source-network/"
+  },
+  "sources": [
+   {
+    "url": "https://www.sovra.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.sovra.com/government-buyers/solutions/procurement-management/intake/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.sovra.com/government-buyers/solutions/procurement-management/source-network/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.sovra.com/government-buyers/solutions/procurement-management/contract/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.sovra.com"
+   ],
+   [
+    "https://www.sovra.com/government-buyers/solutions/procurement-management/intake/",
+    "https://www.sovra.com/government-buyers/solutions/procurement-management/source-network/",
+    "https://www.sovra.com/government-buyers/solutions/procurement-management/contract/"
+   ],
+   [
+    "https://www.sovra.com/government-buyers/solutions/procurement-management/contract/",
+    "https://www.sovra.com",
+    "https://www.sovra.com/government-buyers/solutions/procurement-management/source-network/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

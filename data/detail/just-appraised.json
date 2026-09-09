@@ -1,0 +1,68 @@
+{
+ "news": [
+  {
+   "date": "2025-12-17",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Why building Just Appraised is the most meaningful work of my career I want people here who want ownership, who want to build with intention, and who want to see the real-world impact of their work. I",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.justappraised.com/post/just-appraised-career"
+  },
+  {
+   "date": "2025-12-04",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "The future of the assessor\u2019s front desk isn\u2019t automation, it\u2019s augmentation If you work in an assessor\u2019s office today, you don\u2019t need a report to tell you the workload is growing. You\u2019re living it. Tr",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.justappraised.com/post/assessors-front-desk-automation"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Just Appraised sells AI software that local government offices use to get through their paperwork. The buyers are county assessor and clerk offices, and the company says more than 300 counties in over 30 states use it. Some workflows are built for particular states, including Prop 19C in California.",
+   "The deeds product automatically imports deeds and recorded documents from the clerk's office. AI then reads those documents and extracts data fields, populating the county's CAMA system. A taxpayer portal lets residents submit forms online, or lets clerks scan paper forms in. Reviewed form data then pushes into the CAMA at the press of a button. A valuations product structures income and expense submissions into searchable financials.",
+   "The deeds page names Cobb County, Georgia as a customer. Williamson CAD in Texas is also listed there. Montgomery CAD in Texas appears on the forms page. Other testimonials are attributed without naming the office, such as a Director of Deeds at a Florida county."
+  ],
+  "quote": {
+   "text": "Trusted by 300+ counties in over 30 states",
+   "url": "https://www.justappraised.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.justappraised.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.justappraised.com/products/deeds-automation",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.justappraised.com/products/taxpayer-portal-forms",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.justappraised.com/products/valuations-appeals",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.justappraised.com"
+   ],
+   [
+    "https://www.justappraised.com/products/deeds-automation",
+    "https://www.justappraised.com/products/taxpayer-portal-forms",
+    "https://www.justappraised.com/products/valuations-appeals"
+   ],
+   [
+    "https://www.justappraised.com/products/deeds-automation",
+    "https://www.justappraised.com/products/taxpayer-portal-forms",
+    "https://www.justappraised.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

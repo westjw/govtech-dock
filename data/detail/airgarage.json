@@ -1,0 +1,128 @@
+{
+ "news": [
+  {
+   "date": "2026-07-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Comparisons July 16, 2026 5 Metropolis Parking Alternatives for Property Owners (2026)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airgarage.com/blog/metropolis-parking-alternatives-2026"
+  },
+  {
+   "date": "2026-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Guides June 16, 2026 How we used real-time data to unlock new revenue for a Class A property.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airgarage.com/blog/parking-strategy-class-a-property"
+  },
+  {
+   "date": "2026-06-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Comparisons June 10, 2026 5 LAZ Parking Alternatives: 5 Top Operator Options (2026)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airgarage.com/blog/laz-parking-alternatives-2026"
+  },
+  {
+   "date": "2026-05-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Guides May 21, 2026 How one test saved a sacred cow from slaughter.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airgarage.com/blog/proration-test-results"
+  },
+  {
+   "date": "2026-05-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Guides May 19, 2026 How competitor pricing affects your parking demand.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airgarage.com/blog/competitor-pricing-parking-demand"
+  },
+  {
+   "date": "2026-05-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "May 14, 2026 Introducing Visibility: A Live View of Your Asset, From Anywhere",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.airgarage.com/blog/visibility-page"
+  },
+  {
+   "date": "2026-05-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Guides May 8, 2026 Here\u2019s how local events impact parking revenue and demand.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airgarage.com/blog/events-impact-parking-demand"
+  },
+  {
+   "date": "2026-05-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Comparisons May 6, 2026 5 5 Top Options for ABM Parking Alternatives (2026)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airgarage.com/blog/abm-parking-alternatives-2026"
+  },
+  {
+   "date": "2026-04-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How parking demand works, and how to influence it.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airgarage.com/blog/how-parking-demand-works"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "AirGarage runs the parking lots and garages that sit on other people's real estate, managing them for the owner. Instead of selling equipment or a booking app on its own, the company takes on the hardware, the software and the daily operations together.",
+   "Cameras on site gather data in real time, and dashboards turn that into a picture of how the property is performing. Rates then move automatically with the market rather than sitting at a fixed posted price. Enforcement is handled by staff on the ground, backed by LPR and aerial camera technology. The company also markets each lot to drivers on the parking aggregator sites they already use. Owners are billed through a revenue share rather than a flat management fee. Agreements run month to month rather than on a long term contract.",
+   "AirGarage started in 2017. It says it now partners with hundreds of properties nationwide, from independent owners to institutional investors. Its published case studies include 75 Saint, a 185-space lot and garage in Boston owned by Jefferson Apartment Group. The about page also lists news coverage of a $12.5M round led by a16z."
+  ],
+  "quote": {
+   "text": "Parking already generates revenue, but for most properties, it\u2019s just the start.",
+   "url": "https://www.airgarage.com/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.airgarage.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.airgarage.com/case-studies",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.airgarage.com/about",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.airgarage.com/case-studies/75-saint",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.airgarage.com"
+   ],
+   [
+    "https://www.airgarage.com"
+   ],
+   [
+    "https://www.airgarage.com/about",
+    "https://www.airgarage.com/case-studies/75-saint"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

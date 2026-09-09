@@ -1,0 +1,130 @@
+{
+ "news": [
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why EU energy and utility resilience depends on turning alerts into coordinated action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/why-eu-energy-and-utility-resilience-depends-on-turning-alerts-into-coordinated-action/"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beyond duty of care: 5 trends redefining travel risk management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/beyond-duty-of-care-5-trends-redefining-travel-risk-management/"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "2026 hospital hurricane preparedness checklist: Are you ready?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/2026-hospital-hurricane-preparedness-checklist-are-you-ready/"
+  },
+  {
+   "date": "2026-04-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dynamically Adaptive Resilience: Autonomous when you want it to be, human-guided when you need it to be",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/dynamically-adaptive-resilience-autonomous-when-you-want-it-to-be-human-guided-when-you-need-it-to-be/"
+  },
+  {
+   "date": "2025-05-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Myth vs. reality: 10 Myths about AI in critical event management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/myth-vs-reality-10-myths-about-ai-in-critical-event-management/"
+  },
+  {
+   "date": "2025-03-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Security leadership in a complex world",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/impact-tolerance-in-operational-resilience/"
+  },
+  {
+   "date": "2025-03-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Myth vs. reality: 10 Myths about AI in critical event management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/security-leadership-in-a-complex-world-2/"
+  },
+  {
+   "date": "2024-08-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Explore the Everbridge product demo center",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/resources/product-demo-center/"
+  },
+  {
+   "date": "2024-02-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Total Economic Impact(TM) Study by Forrester Consulting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/forrester-tei-study-reveals-numerous-everbridge-benefits/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Everbridge sells a platform for managing physical and digital threats from end to end. Some of it protects traveling and remote employees. Other parts are built to inform and protect citizens at scale.",
+   "The method is to identify threats, work out who and what is affected, coordinate the response, communicate, and learn from every incident. Detection draws on risk intelligence, geospatial analysis, operational data and verified external and internal sources. Messages go out across multiple channels, with more than one delivery method per contact. A separate product centralizes business continuity planning, risk assessment, dependency mapping and testing. The main platform is available in three packages aimed at different kinds of organization.",
+   "The company states it has more than 6,500 global customers. Mass notifications are put at 6 billion a year. A customer story describes Fairfax County delivering multilingual safety alerts to over a million people. It cites a Forrester study putting average return on investment for the platform at 358 percent."
+  ],
+  "quote": {
+   "text": "Inform and protect citizens at scale.",
+   "url": "https://www.everbridge.com/products/"
+  },
+  "sources": [
+   {
+    "url": "https://www.everbridge.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.everbridge.com/products/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.everbridge.com/platform/critical-event-management/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.everbridge.com/products/bc-in-the-cloud-everbridge/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.everbridge.com/products/"
+   ],
+   [
+    "https://www.everbridge.com/platform/critical-event-management/",
+    "https://www.everbridge.com/products/",
+    "https://www.everbridge.com/products/bc-in-the-cloud-everbridge/"
+   ],
+   [
+    "https://www.everbridge.com/products/",
+    "https://www.everbridge.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

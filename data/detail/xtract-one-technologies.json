@@ -1,0 +1,77 @@
+{
+ "news": [
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Importance of the Denominator When Calculating\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://xtractone.com/blog/the-importance-of-the-denominator-when-calculating-security-outcomes/"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Case for a Smarter Security Architecture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://xtractone.com/blog/the-case-for-a-smarter-security-architecture/"
+  },
+  {
+   "date": "2026-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Prev Previous Safe, Seamless, Sold Out: What Liverpool FC and Xtract One Told Sports Business Journal About the Future of Venue Security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://xtractone.com/blog/safe-seamless-sold-out-what-liverpool-fc-and-xtract-one-told-sports-business-journal-about-the-future-of-venue-security/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Xtract One makes AI-powered concealed weapons detection systems for building entrances. The company sells them for schools, hospitals, and other public venues.",
+   "The premise is that the systems flag actual threats while ignoring laptops, phones, keys, and everyday items. SmartGateway uses AI-powered passive magnetic field sensor arrays to identify firearms and bladed weapons. It is rated to screen up to 4,000 individuals per hour per lane. A second system, Xtract One Gateway, is built for places where people carry a medium volume of personal belongings, with no conveyor belts or divestment bins. Multiple units are managed centrally through Xtract One View.",
+   "On privacy, the company states that SmartGateway collects no personally identifiable information and does not use facial recognition. It also says the magnetic field sits well below safety limits set by the IEEE, FCC, and international health organizations. Among the deployments it publicizes is Manor ISD, which it says put Gateway across its high school campuses as one of the first Texas districts to do so at scale. Another cites Community Health Network preventing 6,007 weapons across 9 entry points in 6 months."
+  ],
+  "quote": {
+   "text": "There are no conveyor belts, no divestment bins, and no requirement to hold bags overhead.",
+   "url": "https://xtractone.com/products/xtract-one-gateway/"
+  },
+  "sources": [
+   {
+    "url": "https://xtractone.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://xtractone.com/products/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://xtractone.com/products/smartgateway/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://xtractone.com/products/xtract-one-gateway/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://xtractone.com",
+    "https://xtractone.com/products/"
+   ],
+   [
+    "https://xtractone.com",
+    "https://xtractone.com/products/smartgateway/",
+    "https://xtractone.com/products/xtract-one-gateway/"
+   ],
+   [
+    "https://xtractone.com/products/smartgateway/",
+    "https://xtractone.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

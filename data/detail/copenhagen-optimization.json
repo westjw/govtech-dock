@@ -1,0 +1,95 @@
+{
+ "news": [
+  {
+   "date": "2026-01-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Copenhagen Optimization partners with Brisbane International Airport to transform airport security operations",
+   "kind": "contract",
+   "kind_rule": "partners with",
+   "url": "https://copenhagenoptimization.com/news/transforming-airport-security-operations-at-brisbane-airport"
+  },
+  {
+   "date": "2025-12-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Copenhagen Optimization joins forces with Grantley Adams International Airport, Barbados, adding first Caribbean airport to list of partners",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://copenhagenoptimization.com/news/copenhagen-optimization-joins-forces-with-grantley-adams-international-airport-barbados-adding-first-caribbean-airport-to-list-of-partners"
+  },
+  {
+   "date": "2025-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Copenhagen Optimization partners with ISS Pacific to advance airport security operations across leading Australian airports",
+   "kind": "contract",
+   "kind_rule": "partners with",
+   "url": "https://copenhagenoptimization.com/news/copenhagen-optimization-partners-with-iss-pacific-to-advance-airport-security-operations-across-leading-australian-airports/"
+  },
+  {
+   "date": "2025-07-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Copenhagen Optimization cements position winning signature contract with Dallas Fort Worth International Airport to transform the management of its airport operations",
+   "kind": "contract",
+   "kind_rule": "contract",
+   "url": "https://copenhagenoptimization.com/news/dallas-fort-worth-international-airport-operations?hsLang=en"
+  },
+  {
+   "date": "2021-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "JFK Terminal 4 chooses Better Airport\u00ae",
+   "kind": "contract",
+   "kind_rule": "chooses",
+   "url": "https://copenhagenoptimization.com/news/jfk-terminal-4-chooses-better-airport/?hsLang=en"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Copenhagen Optimization sells planning software and consulting to airports that are running into capacity limits in their terminals. Its platform, Better Airport, is a cloud-based system for running core operations such as check-in, baggage, security, stand and gate, and immigration.",
+   "The company says the platform ties together operations that were once run separately, so data can move between them. Consulting sits alongside the software and draws on operational strategy, analytics, planning and optimization. Individual modules cover forecasting, security and shift planning.",
+   "Case studies describe Sydney Airport adopting the suite with two modules and later extending one of them across all terminals. At Manchester Airport, a rostering project cut the security roster count from more than 60 to 10. Heathrow Airport Limited commissioned an assessment of planning maturity across 15 operational areas. The company dates its airport work to 2014."
+  ],
+  "quote": {
+   "text": "Better Airport\u00ae is the only Connected Operations software platform built for airport operators by airport operators.",
+   "url": "https://copenhagenoptimization.com"
+  },
+  "sources": [
+   {
+    "url": "https://copenhagenoptimization.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://copenhagenoptimization.com/resources/case-studies/london-heathrow-airport-operations-planning-capabilities?hsLang=en",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://copenhagenoptimization.com/resources/case-studies/sydney-airport-addressing-capacity-and-efficiency-challenges?hsLang=en",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://copenhagenoptimization.com/resources/case-studies/manchester-airport-better-security-and-airport-rostering?hsLang=en",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://copenhagenoptimization.com"
+   ],
+   [
+    "https://copenhagenoptimization.com",
+    "https://copenhagenoptimization.com/resources/case-studies/manchester-airport-better-security-and-airport-rostering?hsLang=en"
+   ],
+   [
+    "https://copenhagenoptimization.com/resources/case-studies/sydney-airport-addressing-capacity-and-efficiency-challenges?hsLang=en",
+    "https://copenhagenoptimization.com/resources/case-studies/manchester-airport-better-security-and-airport-rostering?hsLang=en",
+    "https://copenhagenoptimization.com/resources/case-studies/london-heathrow-airport-operations-planning-capabilities?hsLang=en",
+    "https://copenhagenoptimization.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

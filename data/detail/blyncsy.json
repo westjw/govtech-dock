@@ -1,0 +1,122 @@
+{
+ "news": [
+  {
+   "date": "2026-05-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Western Cape Department of Infrastructure Partners with Bentley Systems to Modernize Roadway Safety in South Africa",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://blyncsy.com/press-releases/western-cape-department-of-infrastructure-partners-with-bentley-systems-to-modernize-roadway-safety-in-south-africa/"
+  },
+  {
+   "date": "2026-02-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Alabama Department of Transportation Enhances Performance-Based Budgeting with Bentley Systems\u2019 AI-Powered Blyncsy Solution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blyncsy.com/press-releases/alabama-department-of-transportation-enhances-performance-based-budgeting-with-bentley-systems-ai-powered-blyncsy-solution/"
+  },
+  {
+   "date": "2026-01-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hawaii Department of Transportation Creates Safer Roads with Bentley Systems\u2019 Asset Analytics Solution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blyncsy.com/press-releases/hawaii-department-of-transportation-creates-safer-roads-with-bentley-systems-asset-analytics-solution/"
+  },
+  {
+   "date": "2025-07-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Bentley Systems Introduces New Open API and Self-Service Tools in its Blyncsy Roadway Intelligence Offering to Accelerate the Development of Innovative Applications",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://blyncsy.com/press-releases/bentley-systems-introduces-new-open-api-and-self-service-tools-in-its-blyncsy-roadway-intelligence-offering-to-accelerate-the-development-of-innovative-applications/"
+  },
+  {
+   "date": "2025-06-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Bentley Systems\u2019 Acquisition of Blyncsy, Inc.: Paving the Way for a Digital and Autonomous Future",
+   "kind": "funding",
+   "kind_rule": "Acquisition",
+   "url": "https://blyncsy.com/press-releases/bentley-systems-acquisition-of-blyncsy-inc-paving-the-way-for-a-digital-and-autonomous-future/"
+  },
+  {
+   "date": "2024-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Blyncsy Achieves Sustainability Partner Designation in the Google Cloud Partner Advantage Program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blyncsy.com/press-releases/blyncsy-achieves-sustainability-partner-designation-in-the-google-cloud-partner-advantage-program/"
+  },
+  {
+   "date": "2024-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Blyncsy Publishes Map of U.S. Interstate Highways Showing Roadway Assets to Enhance Safety, Maintenance, and Accelerate the Digital Infrastructure Movement Nationally",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blyncsy.com/press-releases/blyncsy-map-interstate-highways/"
+  },
+  {
+   "date": "2024-05-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "City of Fort Worth Partners with Blyncsy on Phase One of Automated, AI-Powered Asset Inventory",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://blyncsy.com/press-releases/city-of-fort-worth-partners-with-blyncsy-on-phase-one-of-automated-ai-powered-asset-inventory/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Blyncsy helps cities and state departments of transportation automate their roadway maintenance and asset inventory activities. Rather than sending crews out to look, it works from crowd-sourced dash camera imagery.",
+   "Machine learning algorithms and image processing applied to that imagery detect where and when pavement needs maintenance. Condition assessments run from pot holes to paint striping and crosswalk conditions. Paint lines are rated from 1, the worst, to 5, the best. In construction zones the same imagery detects work zone equipment to put those zones on the map. Those detections can also check whether a maintenance of traffic plan matches reality. A further model detects the presence of debris on and beside the road. The AI also estimates the size of the debris it finds.",
+   "Results are delivered directly into OpenGIS or another preferred platform. The company claims savings of up to 90% compared to traditional manual inspections. It puts the cost at $10 per centerline mile against $200 or more for a LiDAR scan. News items on the site include a City of Fort Worth partnership on the first phase of automated asset inventory. Another announces a sustainability partner designation in the Google Cloud Partner Advantage Program."
+  ],
+  "quote": {
+   "text": "Pioneering the use of crowd-sourced dash camera imagery for automated roadway management and asset inventory",
+   "url": "https://blyncsy.com"
+  },
+  "sources": [
+   {
+    "url": "https://blyncsy.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://blyncsy.com/solutions/roadway-detections/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://blyncsy.com/solutions/construction-zones/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://blyncsy.com/solutions/vegetation-encroachment/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://blyncsy.com"
+   ],
+   [
+    "https://blyncsy.com/solutions/roadway-detections/",
+    "https://blyncsy.com",
+    "https://blyncsy.com/solutions/construction-zones/",
+    "https://blyncsy.com/solutions/vegetation-encroachment/"
+   ],
+   [
+    "https://blyncsy.com",
+    "https://blyncsy.com/solutions/roadway-detections/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

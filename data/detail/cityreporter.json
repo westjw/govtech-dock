@@ -1,0 +1,57 @@
+{
+ "news": [
+  {
+   "date": "2022-04-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Newest Features & Updates",
+   "kind": "product",
+   "kind_rule": "Updates",
+   "url": "https://www.cityreportersoftware.com/resources/newest-features-updates/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "CityReporter makes inspection and asset management software for local governments. It is designed for smaller municipalities as a cost effective option.",
+   "Parks departments use the paperless tools to streamline park and playground maintenance and repair. A fire and code enforcement module carries a library of fire inspection forms based on the national fire code. That module helps local fire departments and code enforcement staff document concerns and recommendations digitally. The permitting product runs from application through to occupancy. Residents and contractors pay permit fees through a secure online gateway. They can also monitor the status of an application in real time.",
+   "The company says hundreds of municipalities across North America use the software. Its team includes people with backgrounds in municipal operations, risk management, and software development. In February 2026 CityReporter joined Cloudpermit's online platform for local governments."
+  ],
+  "quote": {
+   "text": "CityReporter was born out of a simple question: How can municipalities do more with less while keeping their communities safe?",
+   "url": "https://www.cityreportersoftware.com/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://www.cityreportersoftware.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cityreportersoftware.com/about-us/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cityreportersoftware.com/solutions/planning-development/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cityreportersoftware.com/solutions/fire-prevention-code-enforcement/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.cityreportersoftware.com/about-us/"
+   ],
+   [
+    "https://www.cityreportersoftware.com",
+    "https://www.cityreportersoftware.com/solutions/fire-prevention-code-enforcement/",
+    "https://www.cityreportersoftware.com/solutions/planning-development/"
+   ],
+   [
+    "https://www.cityreportersoftware.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

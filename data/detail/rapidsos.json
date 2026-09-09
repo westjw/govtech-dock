@@ -1,0 +1,50 @@
+{
+ "profile": {
+  "paragraphs": [
+   "RapidSOS connects public safety agencies, enterprises and large numbers of consumer and corporate devices so emergency information reaches responders. The company states it partners with over 250 enterprise companies and 23,500 public safety agencies.",
+   "The premise is that connected systems can share information with responders even before a 911 call is placed. One police department describes adopting a module built around AI-powered live text translation, transcription and call summarization. In an Atlanta deployment, translation covered over 37 languages by voice and over 200 by text. Another center is described using Harmony AI to handle non-emergency calls.",
+   "The homepage says agencies and enterprises on the network safeguard over 99% of the country. Published case studies sort customers into categories such as connected vehicles and telematics. One partner statement on the site is attributed to a VP of Safety at Norfolk Southern. A documented problem it addresses is waiting up to ten minutes for a translator on a 911 call."
+  ],
+  "quote": {
+   "text": "Mission-critical AI for emergency response",
+   "url": "https://www.rapidsos.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.rapidsos.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.rapidsos.com/case-studies/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://rapidsos.com/case-study/the-art-of-readiness/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://rapidsos.com/case-study/el-cajon-pd-bridges-communication-gaps-with-rapidsos-harmony/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.rapidsos.com",
+    "https://www.rapidsos.com/case-studies/"
+   ],
+   [
+    "https://www.rapidsos.com",
+    "https://rapidsos.com/case-study/el-cajon-pd-bridges-communication-gaps-with-rapidsos-harmony/",
+    "https://rapidsos.com/case-study/the-art-of-readiness/",
+    "https://www.rapidsos.com/case-studies/"
+   ],
+   [
+    "https://www.rapidsos.com",
+    "https://www.rapidsos.com/case-studies/",
+    "https://rapidsos.com/case-study/el-cajon-pd-bridges-communication-gaps-with-rapidsos-harmony/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

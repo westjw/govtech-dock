@@ -1,0 +1,139 @@
+{
+ "news": [
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "How Utility Fleets Can Protect Mission-Critical Capacity Without Overbuilding the Fleet",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-utility-fleets-can-protect-mission-critical-capacity-without-overbuilding-the-fleet"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "When Should a Shared Fleet Rent Vehicles Instead of Owning More? A Peak-Demand Decision Framework",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/when-should-a-shared-fleet-rent-vehicles-instead-of-owning-more-a-peak-demand-decision-framework"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Universities Can Tell Whether Department Vehicles Should Move Into a Shared Motor Pool",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-universities-can-tell-whether-department-vehicles-should-move-into-a-shared-motor-pool"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Build a Defensible Fleet Replacement Plan for Government Budget Season",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-to-build-a-defensible-fleet-replacement-plan-for-government-budget-season"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Much Spare Capacity Should a Shared Fleet Keep? Balancing Utilization With Vehicle Availability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-much-spare-capacity-should-a-shared-fleet-keep-balancing-utilization-with-vehicle-availability"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "When Is a Shared Fleet Vehicle Too Expensive to Keep? A Practical Retain, Reassign, or Remove Framework",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/when-is-a-shared-fleet-vehicle-too-expensive-to-keep-a-practical-retain-reassign-or-remove-framework"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Fleet Maintenance Software Alone Is Not Enough for a Shared Vehicle Pool",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/why-fleet-maintenance-software-alone-is-not-enough-for-a-shared-vehicle-pool"
+  },
+  {
+   "date": "2026-08-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Calculate Cost Per Reservation in a Shared Fleet",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-to-calculate-cost-per-reservation-in-a-shared-fleet"
+  },
+  {
+   "date": "2025-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Building a Fleet Policy That Actually Works (and Gets Followed)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/building-a-fleet-policy-that-actually-works-and-gets-followed"
+  },
+  {
+   "date": "2023-01-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Assess Fleet Utilization Without Software: A Practical Guide for Public Sector Fleets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/getting-to-start-how-to-assess-your-fleet-utilization-when-you-dont-have-fleet-technology"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Agile Fleet sells FleetCommander, a fleet management information system, to organizations that run vehicle fleets. The software automates motor pools, vehicle keys, maintenance, fuel and telematics for more than 300,000 drivers across government, university, utility and commercial fleets.",
+   "It is web based, and the motor pool side is aimed at raising utilization while lowering costs. Drivers get access only to vehicles they are licensed or certified to operate. Automated dispatching and around-the-clock kiosks are meant to remove wait times and staff involvement. More than 60 built-in reports flag underused assets for right-sizing. Key control runs on configurable touchscreens with an optional keyboard. Odometer, fuel and return location data are collected automatically at check-in. The maintenance module sends automatic preventive maintenance reminders. Parts are tracked across stockrooms and work orders from one interface.",
+   "Work orders capture hours, labor, parts and status. The company says it has partnered with municipalities, universities and commercial fleets. It also states that the platform is built on AWS GovCloud, aligned to NIST 800-53 and listed in the FedRAMP Marketplace."
+  ],
+  "quote": {
+   "text": "Manual processes waste time and money.",
+   "url": "https://www.agilefleet.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.agilefleet.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.agilefleet.com/solutions/motor-pool-management",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.agilefleet.com/solutions/fleet-key-management",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.agilefleet.com/solutions/fleet-maintenance-management",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.agilefleet.com"
+   ],
+   [
+    "https://www.agilefleet.com/solutions/motor-pool-management",
+    "https://www.agilefleet.com/solutions/fleet-key-management",
+    "https://www.agilefleet.com/solutions/fleet-maintenance-management"
+   ],
+   [
+    "https://www.agilefleet.com/solutions/fleet-maintenance-management",
+    "https://www.agilefleet.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

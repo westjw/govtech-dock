@@ -1,0 +1,148 @@
+{
+ "news": [
+  {
+   "date": "2026-07-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Stop Hunting for Buses. Start Running Your Yard.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://etatransit.com/resources/blog/stop-hunting-for-buses-start-running-your-yard/"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Transit terms, explained plainly",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://etatransit.com/resources/transit-glossary/"
+  },
+  {
+   "date": "2026-06-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beyond the Next Stop. Modern Ways to Use Onboard Infotainment Screens",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://etatransit.com/resources/blog/beyond-the-next-stop-modern-ways-to-use-onboard-infotainment-screens/"
+  },
+  {
+   "date": "2025-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Transit Incident Management Made Simple with SPOT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://etatransit.com/resources/blog/transit-incident-management-made-simple-with-spot/"
+  },
+  {
+   "date": "2025-10-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How an Easy-to-Use CAD/AVL System Reduces Disruption During Transit Staff Turnover",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://etatransit.com/resources/blog/easy-to-use-cad-avl-for-transit-agencies/"
+  },
+  {
+   "date": "2025-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Universities Are Upgrading from legacy solutions to ETA\u2019s CAD/AVL System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://etatransit.com/resources/blog/why-agencies-are-leaving-competitors-for-etatransit/"
+  },
+  {
+   "date": "2025-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Transit Agencies Are Switching Their Legacy CAD/AVL Providers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://etatransit.com/resources/blog/why-transit-agencies-are-switching-their-legacy-cad-avl-providers/"
+  },
+  {
+   "date": "2025-07-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How CAD/AVL Technology Is Powering the Future of Transit Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://etatransit.com/resources/blog/cad-avl-technology-future-transit-operations/"
+  },
+  {
+   "date": "2025-05-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "EV vs. Hydrogen Buses: How U.S. Public Transit Agencies Are Navigating the Zero-Emission Transition",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://etatransit.com/resources/blog/ev-vs-hydrogen-buses-how-u-s-public-transit-agencies-are-navigating-the-zero-emission-transition/"
+  },
+  {
+   "date": "2020-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Are your RFPs getting you the responses you want?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://etatransit.com/resources/blog/are-your-rfps-getting-you-the-responses-you-want/"
+  },
+  {
+   "date": "2017-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Bridge the revenue gap with on-board infotainment systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://etatransit.com/resources/blog/bridge-revenue-gap-board-infotainment-systems/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "ETA sells transit technology to agencies running buses, trains, shuttles, campuses, airports and regional networks.",
+   "Its CAD/AVL system is cloud-hosted and built for real-time visibility, dispatch support, reliable data and flexible integrations. Dispatchers work from a real-time board that manages routes, vehicles and schedules in one interface. On the vehicle, operator software covers service assignments, turn-by-turn guidance, pre-trip inspections and two-way messaging. Rider-facing information covers arrivals, alerts, signage, apps and GTFS/GTFS-RT feeds.",
+   "The product pages address operations, planning and scheduling, executives, IT, maintenance and safety staff. Under enterprise security the company lists single sign-on, role-based access control and SOC 2 compliance. A customer story on the site describes CAD/AVL modernization and custom radio integration with TARTA."
+  ],
+  "quote": {
+   "text": "ETA helps agencies see service clearly, respond faster, and deliver more reliable trips for riders.",
+   "url": "https://etatransit.com"
+  },
+  "sources": [
+   {
+    "url": "https://etatransit.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://etatransit.com/solutions/cad-avl/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://etatransit.com/solutions/cad-avl/onboard-systems/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://etatransit.com/solutions/passenger-information/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://etatransit.com"
+   ],
+   [
+    "https://etatransit.com/solutions/cad-avl/",
+    "https://etatransit.com/solutions/cad-avl/onboard-systems/",
+    "https://etatransit.com/solutions/passenger-information/"
+   ],
+   [
+    "https://etatransit.com/solutions/cad-avl/",
+    "https://etatransit.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "profile": {
+  "paragraphs": [
+   "AidKit sells software that governments and nonprofits use to get cash aid and benefits into people's hands. The company says its work runs from local relief up to statewide and national programs. Among the listed uses is giving disaster survivors immediate relief through pre-positioned aid infrastructure.",
+   "Programs begin with application forms, which the company calls the first touchpoint between recipients and staff. Reviewers get application fraud detection tools built into the eligibility step. When digital checks do not fit a case, there are in-person verification fallbacks. Money moves by RTP, ACH, FedNow, or prepaid debit cards. Reporting arrives through preconfigured dashboards and one-click reports.",
+   "AidKit states that its platform is HIPAA-aligned, SOC 2 Type 2 compliant, and mapped to NIST practices. It also claims conformance with Web Content Accessibility Guidelines 2.1 AA. The City of Boulder partnered with AidKit to administer a guaranteed income program. A second case study covers a basic income pilot for people living in the Amazon."
+  ],
+  "quote": {
+   "text": "AidKit supports each phase of aid and benefits delivery on one platform",
+   "url": "https://www.aidkit.com/platform"
+  },
+  "sources": [
+   {
+    "url": "https://www.aidkit.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aidkit.com/platform",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aidkit.com/case-study/elevate-boulder",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aidkit.com/case-study/cool-earth",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.aidkit.com"
+   ],
+   [
+    "https://www.aidkit.com/platform",
+    "https://www.aidkit.com"
+   ],
+   [
+    "https://www.aidkit.com/platform",
+    "https://www.aidkit.com/case-study/elevate-boulder",
+    "https://www.aidkit.com/case-study/cool-earth"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

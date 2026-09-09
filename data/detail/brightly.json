@@ -1,0 +1,138 @@
+{
+ "news": [
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "From reactive maintenance to strategic capital planning through asset investment planning",
+   "kind": "funding",
+   "kind_rule": "investment",
+   "url": "https://www.brightlysoftware.com/blog/from-reactive-maintenance-to-strategic-capital-planning-through-asset-investment-planning"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Overcoming the trust paradox in asset data management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/overcoming-the-trust-paradox-in-asset-data-management"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Condition-based maintenance explained: Bridging the gap to predictive strategies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/condition-based-maintenance-explained-bridging-the-gap-to-predictive-strategies"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "How smarter operations drive higher resident satisfaction in senior living",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/how-smarter-operations-drive-higher-resident-satisfaction-in-senior-living"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Why younger workers are leaving manufacturing (and how to make them stay)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/why-younger-workers-are-leaving-manufacturing-and-how-to-make-them-stay"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "How the U.S. metals industry can sharpen strategic maintenance to boost resilience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/how-the-us-metals-industry-can-sharpen-strategic-maintenance-to-boost-resilience"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "From work orders to preventive maintenance: Knowing when you're ready for more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/from-work-orders-to-preventive-maintenance-knowing-when-youre-ready-for-more"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Why school maintenance feels harder than it should",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/why-school-maintenance-feels-harder-than-it-should"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Deferred maintenance is growing: How healthcare leaders can take back control",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/how-asset-data-insights-can-drive-the-shift-from-reactive-to-predictive-maintenance"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "Building a future-ready enterprise starts with data governance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/deferred-maintenance-is-growing-how-healthcare-leaders-can-take-back-control"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Brightly sells software to track and manage the entire asset lifecycle for facilities, equipment and infrastructure. After being acquired by Siemens in 2022, the business now goes to market as Siemens.",
+   "Asset Essentials, the maintenance product, combines work order management, data and analytics, and automated preventive maintenance workflows. An AI-powered Maintenance Copilot automates routine work and surfaces instructions, summaries and safety information. Other products handle full asset lifecycle prediction modeling and capital planning. There is facility scheduling and event management software as well. Utilities are covered by cloud-based energy management software. For government infrastructure, the pitch is managing a complex network of assets in one centralized register. Field work is scheduled and allocated with native GIS capabilities.",
+   "The company describes more than 25 years supporting clients across industries in keeping critical assets and infrastructure running. It says 11,000+ organizations use the software to manage asset lifecycles. Case studies on the site include Loyola University New Orleans."
+  ],
+  "quote": {
+   "text": "being acquired by Siemens in 2022, Brightly is now Siemens",
+   "url": "https://www.brightlysoftware.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.brightlysoftware.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.brightlysoftware.com/products",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.brightlysoftware.com/products/asset-essentials",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.brightlysoftware.com/products/assetic",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.brightlysoftware.com"
+   ],
+   [
+    "https://www.brightlysoftware.com/products/asset-essentials",
+    "https://www.brightlysoftware.com/products",
+    "https://www.brightlysoftware.com"
+   ],
+   [
+    "https://www.brightlysoftware.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "news": [
+  {
+   "date": "2020-07-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hear What Our Customers Have to Say",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.guard1.com/resources/testimonials/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Guard1 sells hardware and software that prove where staff have been and when, working with correctional agencies, behavioral healthcare facilities and security teams. The central device is The PIPE, a wand that staff touch to a metal memory button on the wall to document that rounds were completed.",
+   "In practice an officer touches the button with the wand, and a red light flash or a beep confirms the check was recorded. A mobile option swaps the wand for a handheld digital logbook that shows a real-time task list of the checks and activities still to be completed. A separate duress system puts a device on staff and visitors that sends a signal once per second. When the button is pressed, the location is shown on a control room monitor.",
+   "The company says hundreds of agencies have used The PIPE to document officer rounds and hold defensible logs for inspections and incidents. It puts its corrections figure at over 1400 customers served, including 20+ DOCs, hundreds of county jails, ICE facilities and juvenile facilities. For guard tour work more broadly it dates the product to 1990 and claims over 100,000 customers."
+  ],
+  "quote": {
+   "text": "Guard1 is a proof of presence platform that works with correctional agencies, behavioral healthcare facilities, and security teams",
+   "url": "https://www.guard1.com"
+  },
+  "sources": [],
+  "paragraph_sources": [
+   [
+    "https://www.guard1.com"
+   ],
+   [
+    "https://www.guard1.com/solutions/correctional-safety-check-system/",
+    "https://www.guard1.com/solutions/mobile-rfid-inmate-tracking-system/",
+    "https://www.guard1.com/solutions/wearable-jail-and-prison-panic-buttons/"
+   ],
+   [
+    "https://www.guard1.com/solutions/correctional-safety-check-system/",
+    "https://www.guard1.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

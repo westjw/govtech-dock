@@ -2100,6 +2100,50 @@ def main() -> int:
         if src.exists():
             shutil.copy2(src, out / "data" / name)
 
+    # THE COMPANY DETAIL, one small file each. build_board splits news and the
+    # write-up out of board.json because they are 57% of a payload every
+    # visitor downloads and are read only when somebody opens ONE company.
+    # They have to SHIP, or coAbout and coNews get a 404 and every company
+    # page says the write-up could not be loaded - which is exactly the state
+    # this build would have deployed: the files existed in data/ and this
+    # function copies named files, not the tree.
+    src_detail = ROOT / "data" / "detail"
+    if src_detail.exists():
+        dst = out / "data" / "detail"
+        dst.mkdir(parents=True, exist_ok=True)
+        n = 0
+        for f in src_detail.glob("*.json"):
+            shutil.copy2(f, dst / f.name)
+            n += 1
+        print(f"  shipped {n} company detail file(s)")
+    else:
+        print("  NO data/detail/ - run build_board first, or every company "
+              "page will say its write-up could not be loaded")
+
+    # THE BUILD REFUSES TO SHIP A BOARD WITH ITS DETAIL MISSING.
+    #
+    # A selftest cannot check this honestly: the failure is a copy that does
+    # not happen, and every string-level version of the check passed while
+    # the mutation that broke it sat in a comment one line away. So the
+    # assertion lives HERE, where the real files are, and runs on the deploy
+    # itself rather than on a reading of the source.
+    #
+    # The pairing is what matters. build_board strips news and profile out of
+    # the board because they are 57% of a payload every visitor downloads;
+    # coAbout and coNews then fetch data/detail/<id>.json. Ship one without
+    # the other and every company page 404s and says its write-up could not
+    # be loaded - on a build that is otherwise perfectly correct.
+    split = any("news" not in o and "profile" not in o
+                for o in board.get("organizations", [])[:50])
+    shipped = len(list((out / "data" / "detail").glob("*.json"))) \
+        if (out / "data" / "detail").exists() else 0
+    if split and not shipped:
+        raise SystemExit(
+            "refusing to ship: board.json has been split (news and profile "
+            "are not on the organizations) and no data/detail/ went with it. "
+            "Every company page would fetch a 404 and report that its "
+            "write-up could not be loaded.")
+
     schema = json.loads((ROOT / "data" / "schema.json").read_text())
     (out / "data" / "sectors.json").write_text(
         json.dumps([x["name"] for x in schema["sectors"]], separators=(",", ":")))

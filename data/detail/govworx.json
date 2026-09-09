@@ -1,0 +1,95 @@
+{
+ "news": [
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Faster, More Accurate, More Confident: How AI Coaching Is Changing the 9-1-1 Center 9-1-1 QA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govworx.ai/resources/blog/faster-more-accurate-more-confident-how-ai-coaching-is-changing-the-9-1-1-center"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The 9-1-1 Call Is Over. The Work Isn't.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govworx.ai/resources/blog/the-9-1-1-call-is-over-the-work-isnt"
+  },
+  {
+   "date": "2026-08-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "QA and Training Software That Helps Reduce Dispatcher Burnout 9-1-1 QA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govworx.ai/resources/blog/qa-and-training-software-that-helps-reduce-dispatcher-burnout"
+  },
+  {
+   "date": "2026-07-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Closing the Gap: Why Wellness Can't Be an Afterthought in 9-1-1 9-1-1 QA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govworx.ai/resources/blog/closing-the-gap-why-wellness-cant-be-an-afterthought-in-9-1-1"
+  },
+  {
+   "date": "2016-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Which Emergency Communications Training Software Offers Realistic Call Simulations? 9-1-1 Training & Simulations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govworx.ai/resources/blog/which-emergency-communications-training-software-offers-realistic-call-simulations"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "GovWorx sells CommsCoach, an AI-powered software platform that emergency communications centers use to hire, train, evaluate and support 9-1-1 telecommunicators. It is aimed at the ECC leaders responsible for improving the performance of 9-1-1 professionals. Its modules follow a telecommunicator from candidate through career, linking HIRE, TRAIN, QA and ASSIST in one system, with PROMOTE added for choosing supervisors.",
+   "CommsCoach HIRE measures aptitude, resilience, accuracy and composure through structured testing and AI-supported scoring, with tests run onsite or remotely. QA automatically pulls every eligible call and radio transmission, matches transcripts to CAD event data and scores them against the agency's own policies. During live calls, ASSIST listens, transcribes and prompts the call-taker with the policy-specific questions the situation requires. PROMOTE is an evidence-based assessment that identifies leadership potential in supervisor candidates and pairs each result with a personalized development pathway.",
+   "An emergency communications administrator at the O'Fallon Police Department in Missouri is quoted saying call-taking compliance rose from single digits to 96% with ASSIST, APCO guidecards and complete QA. In June 2026 APCO International and GovWorx announced a partnership to bring APCO's communications protocols into CommsCoach ASSIST. In August 2026 GovWorx added NEAL, an adaptive non-emergency call handling tool that escalates to a human telecommunicator whenever judgment is needed."
+  ],
+  "quote": {
+   "text": "Identify, train, assess, manage and ultimately retain 9-1-1 telecommunicators, and operate ECCs at the highest efficiency.",
+   "url": "https://www.govworx.ai/solutions/ecc-pre-hire-training-and-qa"
+  },
+  "sources": [
+   {
+    "url": "https://www.govworx.ai",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.govworx.ai/solutions/ecc-pre-hire-training-and-qa",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.govworx.ai/solutions/ecc-candidate-assessment",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.govworx.ai/solutions/ecc-promote",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.govworx.ai/solutions/ecc-pre-hire-training-and-qa"
+   ],
+   [
+    "https://www.govworx.ai/solutions/ecc-candidate-assessment",
+    "https://www.govworx.ai/solutions/ecc-call-evaluations-qa",
+    "https://www.govworx.ai/solutions/ecc-pre-hire-training-and-qa",
+    "https://www.govworx.ai/solutions/ecc-promote"
+   ],
+   [
+    "https://www.govworx.ai/solutions/ecc-real-time-call-guidance-and-translation",
+    "https://www.govworx.ai"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

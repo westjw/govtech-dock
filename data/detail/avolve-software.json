@@ -1,0 +1,86 @@
+{
+ "news": [
+  {
+   "date": "2026-04-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "5 Signs Your Plan Review Process Needs an Upgrade",
+   "kind": "contract",
+   "kind_rule": "Signs",
+   "url": "https://blog.avolvesoftware.com/blog/5-signs-your-plan-review-process-needs-an-upgrade"
+  },
+  {
+   "date": "2026-01-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Avolve Chose Microsoft and Azure AI for Government Plan Review",
+   "kind": "contract",
+   "kind_rule": "Chose",
+   "url": "https://blog.avolvesoftware.com/blog/why-avolve-chose-microsoft-and-azure-ai-for-government-plan-review"
+  },
+  {
+   "date": "2025-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "do more with less",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.avolvesoftware.com/blog/avolves-purpose-built-innovation-helps-agencies-do-more-with-less"
+  },
+  {
+   "date": "2025-10-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Efficient Plan Review is The Secret Weapon to Maximizing Your City\u2019s Permitting Revenue",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.avolvesoftware.com/blog/why-efficient-plan-review-is-the-secret-weapon-to-maximizing-your-citys-permitting-revenue"
+  },
+  {
+   "date": "2025-08-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "plan review solves this",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.avolvesoftware.com/blog/how-ai-powered-plan-review-helps-local-government-do-more-with-less"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Avolve sells electronic plan review software to state and local government agencies. The product agencies implement for that work is ProjectDox. Customers quoted on the site also name a second product, DigEplan.",
+   "The software carries a review from the applicant's submission through to completion. Avolve describes the plan review as having GIS, AI and field mobility embedded. It is meant to fit whatever permitting stack an agency already runs. In a published case study, a water and sewer commission reviews about 3,500 plan submittals and 34,000 permit transactions a year. After implementing ProjectDox, that agency reported review times falling from eight weeks to two or three.",
+   "That commission serves more than 1.9 million people. Avolve says its plan review is built on insight from more than 350 government customers. Testimonials on its site come from cities and counties, including one crediting ProjectDox with improving operations across Minneapolis."
+  ],
+  "quote": {
+   "text": "Gone are the days when one has to pick up a telephone and call to ask, \u2018Where is my plan in the process?\u2019",
+   "url": "https://www.avolvesoftware.com/case-studies/projectdox-slashes-plan-review-time-by-75-for-water-works-commission/"
+  },
+  "sources": [
+   {
+    "url": "https://www.avolvesoftware.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.avolvesoftware.com/case-studies/projectdox-slashes-plan-review-time-by-75-for-water-works-commission/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.avolvesoftware.com",
+    "https://www.avolvesoftware.com/case-studies/projectdox-slashes-plan-review-time-by-75-for-water-works-commission/"
+   ],
+   [
+    "https://www.avolvesoftware.com",
+    "https://www.avolvesoftware.com/case-studies/projectdox-slashes-plan-review-time-by-75-for-water-works-commission/"
+   ],
+   [
+    "https://www.avolvesoftware.com/case-studies/projectdox-slashes-plan-review-time-by-75-for-water-works-commission/",
+    "https://www.avolvesoftware.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

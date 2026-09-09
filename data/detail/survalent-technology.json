@@ -1,0 +1,50 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Survalent sells control room software to utilities, bringing SCADA, outage management and distribution management into one system. The company describes its buyers as electric, water and wastewater, oil and gas, renewable energy and transit utilities around the world. It argues that running a distribution network well is hard without a modern, centralized supervisory control and data acquisition system.",
+   "One network model and one database sit under every application, so a change made once carries across the platform. Operators work from real-time equipment status, metering data, alarming and control, with the aim of catching problems before outages start. A utility can start with a limited set of feeders, substations and applications and add more over time. A metering interface pulls readings from the AMI system using the MultiSpeak protocol, and a lightning interface fetches strike data and filters it by the utility's area of interest.",
+   "MultiSpeak itself is described as an initiative for rural electric co-ops and municipal utilities. The site says more than 700 utilities worldwide use its SCADA product. It reports 800+ customers around the world and 97.6% customer retention. The company also says it puts 20.3% of revenue into research and development."
+  ],
+  "quote": {
+   "text": "SurvalentONE ADMS is a fully integrated SCADA, OMS, and DMS solution, delivering real-time operational intelligence to proactively respond to issues and take corrective action when necessary.",
+   "url": "https://www.survalent.com/products/survalentone-adms/"
+  },
+  "sources": [
+   {
+    "url": "https://www.survalent.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.survalent.com/products/survalentone-adms/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.survalent.com/products/scada/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.survalent.com/products/interfaces-and-protocols/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.survalent.com/products/survalentone-adms/",
+    "https://www.survalent.com",
+    "https://www.survalent.com/products/scada/"
+   ],
+   [
+    "https://www.survalent.com/products/survalentone-adms/",
+    "https://www.survalent.com/products/scada/",
+    "https://www.survalent.com/products/interfaces-and-protocols/"
+   ],
+   [
+    "https://www.survalent.com/products/interfaces-and-protocols/",
+    "https://www.survalent.com/products/scada/",
+    "https://www.survalent.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "profile": {
+  "paragraphs": [
+   "CCS Health provides training and technology to community-based workforces, organizations and agencies working to improve health outcomes. The work pairs software with a coaching approach that supports clients through transitions of care and builds skills in health management.",
+   "The platform offers standard and customizable data collection along with visual reporting of the processes an organization already runs. That reporting lets administrators and analysts follow community data from participant intake through service completion. A referral product, HealthBridge.care, helps community health workers and organizations source referral partners. Training includes coach training and a Community Health Worker Fundamental certified program. The coaching method traces back to 2003, when Dr. Eric Coleman developed the Care Transitions Intervention approach.",
+   "Partners named on the site include aging networks, federally qualified health centers, accountable care organizations, community HUBs, and state and county agencies. The company says more than 60 communities nationwide use its solutions. It describes more than 10 years of work in this area. The business began when founder Bob Harnach launched Care Coordination Systems. That company later became CCS Health. It states that partners have earned over $30 million in value-based payments. The care coordination products are described as having earned HITRUST risk-based, two-year certification."
+  ],
+  "quote": {
+   "text": "In 2003, Dr. Eric Coleman developed the Care Transitions Intervention approach.",
+   "url": "https://ccs.health/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://ccs.health",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://ccs.health/solutions/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://ccs.health/about-us/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://ccs.health/about-us/",
+    "https://ccs.health/solutions/"
+   ],
+   [
+    "https://ccs.health/solutions/",
+    "https://ccs.health",
+    "https://ccs.health/about-us/"
+   ],
+   [
+    "https://ccs.health",
+    "https://ccs.health/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

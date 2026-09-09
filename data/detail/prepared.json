@@ -1,0 +1,114 @@
+{
+ "news": [
+  {
+   "date": "2026-04-13",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Prepared's NPSTW 2026 Telecommunicator Spotlights",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.prepared911.com/blog/npstw-2026-telecommunicator-spotlights"
+  },
+  {
+   "date": "2026-04-07",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Axon 911: Intelligence That Starts the Moment a Call is Answered",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.prepared911.com/blog/axon-911-intelligence-that-starts-the-moment-a-call-is-answered"
+  },
+  {
+   "date": "2026-03-05",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "911 Centers Don\u2019t Have a Volume Problem. They Have a Capacity Design Problem.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.prepared911.com/blog/911-centers-dont-have-a-volume-problem-they-have-a-capacity-design-problem"
+  },
+  {
+   "date": "2026-01-22",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "911 Interoperability Failures: Lessons from PSAP Call Routing and Overflow Events",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.prepared911.com/blog/911-interoperability-psap-call-sharing"
+  },
+  {
+   "date": "2025-12-11",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Prepared by Axon now integrates with Android Emergency Live Video",
+   "kind": "product",
+   "kind_rule": "integrates with",
+   "url": "https://www.prepared911.com/blog/prepared-axon-integrates-android-emergency-live-video"
+  },
+  {
+   "date": "2025-09-25",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Erie County Uses Prepared to Help Save Four Stranded Boaters",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.prepared911.com/blog/erie-county-uses-prepared-to-help-save-four-stranded-boaters"
+  },
+  {
+   "date": "2025-09-03",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Why Fairfax Deployed Prepared to Handle Non-Emergency Calls",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.prepared911.com/blog/fairfax-911-prepared-non-emergency-calls"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Prepared builds assistive artificial intelligence for 911 centers, aimed at the people who answer emergency calls and send help. The company states that it is now the intelligence layer of Axon 911, an emergency communications platform it describes as covering the full lifecycle of a call.",
+   "During a call the software transcribes speech as it happens, captures details automatically, and translates, so staff can watch the caller rather than the keyboard. Incoming audio is translated automatically in more than 40 languages, according to the homepage. The call-taking page claims support for over 200 languages for callers who do not speak English. Call-takers can also request a livestream from the caller to see the scene. A separate voice assistant answers non-emergency lines and converses with callers in English or Spanish.",
+   "Buyers are public safety answering points, the centers that take 911 calls. Prepared describes the product as a cloud based platform laid over existing systems, with no rip and replace required. Supervisors get automated quality assurance and keyword triggers for visibility into the operation. Its chief executive, Michael Chime, appears in a recorded discussion with three 911 leaders about non-emergency calls."
+  ],
+  "quote": {
+   "text": "Assistive intelligence, built for the people on the headset.",
+   "url": "https://www.prepared911.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.prepared911.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.prepared911.com/platform/overview",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.prepared911.com/platform/non-emergency-triage",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.prepared911.com/platform/call-taking",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.prepared911.com/platform/overview",
+    "https://www.prepared911.com"
+   ],
+   [
+    "https://www.prepared911.com",
+    "https://www.prepared911.com/platform/call-taking",
+    "https://www.prepared911.com/platform/non-emergency-triage"
+   ],
+   [
+    "https://www.prepared911.com",
+    "https://www.prepared911.com/platform/call-taking",
+    "https://www.prepared911.com/platform/non-emergency-triage"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

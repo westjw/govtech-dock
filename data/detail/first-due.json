@@ -1,0 +1,58 @@
+{
+ "news": [
+  {
+   "date": "2026-01-12",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "First Due Announces Axene Integration for EMS Training",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.firstdue.com/news/first-due-announces-axene-continuing-education-integration-to-strengthen-ems-training-compliance"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "First Due sells cloud software that fire and EMS agencies use to run records and daily operations in one place. The suite pulls incident reporting, prevention, pre-incident planning, scheduling, assets, hydrants, training and mobile response behind a single login.",
+   "Incident documentation is built around the national fire reporting standard, with dynamic forms and error checking at submission. The patient care record is written to the NEMSIS data standard. It reads from cardiac monitors so crews do not key the same values twice. Pre-incident plans hold hazardous materials detail down to chemical location and quantity. Those plans can layer in GIS data through an Esri partnership.",
+   "The site describes CAL FIRE moving from a December decision to a July go-live. A county fire department is described using it to coordinate inspections and share preplan information with response crews. The company claims it accounts for nearly half of all NERIS submissions nationwide."
+  ],
+  "quote": {
+   "text": "Born in the cloud and built to run your entire operation in one place.",
+   "url": "https://www.firstdue.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.firstdue.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.firstdue.com/products/neris",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.firstdue.com/products/epcr",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.firstdue.com/products/preincidentplanning",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.firstdue.com"
+   ],
+   [
+    "https://www.firstdue.com/products/neris",
+    "https://www.firstdue.com/products/epcr",
+    "https://www.firstdue.com/products/preincidentplanning"
+   ],
+   [
+    "https://www.firstdue.com",
+    "https://www.firstdue.com/products/neris"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,59 @@
+{
+ "news": [
+  {
+   "date": "2026-03-11",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Featured Assaia Launches Stand and Gate Optimization Solution as Airports Face Growing Capacity Pressure Assaia announces the launch of StandManager, a Resource Management System (RMS) that leverages ",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://assaia.com/resources/assaia-launches-stand-and-gate-optimization-solution-as-airports-face-growing-capacity-pressure"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Assaia sells software that gives airports, airlines, and ground handlers real-time visibility into aircraft turnaround operations. The problem it names is that missing visibility on the ramp produces costly delays, underutilized capacity, miscommunication, accidents, missed service level agreements, and excess emissions.",
+   "Cameras placed across aircraft stands, aerobridges, and the apron generate accurate timestamps for turnaround events in real time. Machine-learning models turn those timestamps into predictions for aircraft off-block and departure readiness. The company says the system can use a wide range of cameras already installed at airports around the world. It runs in the cloud and on premise.",
+   "Beyond the core product, SafetyControl detects unsafe situations on the ramp for airports, airlines, and ground handlers. EmissionsControl gives airports real-time monitoring of auxiliary power unit engine usage. A separate interface is designed for airline users, ground handlers, departure coordinators, and gate managers. The company names JFKIAT and Seattle-Tacoma among the airports where its apron product has been deployed. It also states that the solution is fully compliant with the General Data Protection Regulation."
+  ],
+  "quote": {
+   "text": "The turnaround is a black box for airports and airlines",
+   "url": "https://assaia.com/solutions"
+  },
+  "sources": [
+   {
+    "url": "https://assaia.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://assaia.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://assaia.com/solutions/apron-ai",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://assaia.com/solutions/turnaroundcontrol",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://assaia.com/solutions/apron-ai",
+    "https://assaia.com/solutions"
+   ],
+   [
+    "https://assaia.com/solutions/apron-ai",
+    "https://assaia.com/solutions"
+   ],
+   [
+    "https://assaia.com/solutions",
+    "https://assaia.com/solutions/turnaroundcontrol",
+    "https://assaia.com/solutions/apron-ai"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

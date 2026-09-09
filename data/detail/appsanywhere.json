@@ -1,0 +1,132 @@
+{
+ "news": [
+  {
+   "date": "2026-08-24",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Product Update IT Efficiency: 8 Ways to Cut Costs, Improve ROI and Unlock More Value Discover how AppsAnywhere and LabStats help higher education institutions cut costs, improve ROI and unlock more va",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.appsanywhere.com/blog/it-efficiency-8-ways-to-cut-costs-improve-roi-and-unlock-more-value"
+  },
+  {
+   "date": "2026-07-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Product Update From Insight to Action: A Guide to LabStats Insights LabStats Insights helps higher education IT teams move from reporting to action by surfacing automated reports, alerts, and recommen",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.appsanywhere.com/blog/from-insight-to-action-a-guide-to-labstats-insights"
+  },
+  {
+   "date": "2026-06-09",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Thought Leadership Campus IT Beyond the Computer Room: Meet the \u201cAnywhere Lab\u201d Traditional computer labs are no longer fit for purpose in today\u2019s on-demand learning. Modernizing campus IT requires ins",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.appsanywhere.com/blog/campus-it-beyond-the-computer-room-meet-the-everywhere-lab"
+  },
+  {
+   "date": "2026-06-09",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Product Update Putting the \u201cAuto\u201d Back into Autodesk Autodesk applications are some of the most complex packages we delivery. We're now making it easier, faster and more reliable. Find out how. June 9",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.appsanywhere.com/blog/putting-the-auto-back-into-autodesk"
+  },
+  {
+   "date": "2026-05-26",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Product Update AppsAnywhere 3.6: Bringing Software Access Closer to Learning Introducing our D2L Brightspace integration, clearer Cloud Delivery Reports, and continued platform improvements in our App",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.appsanywhere.com/blog/appsanywhere-3-6-bringing-software-access-closer-to-learning"
+  },
+  {
+   "date": "2026-05-21",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "AppsAnywhere Selected by The Ohio State University College of Engineering to Power BYOD Initiative and Expand Flexible, Student-First Software Access Ohio State Engineering modernizes how software is ",
+   "kind": "contract",
+   "kind_rule": "Selected",
+   "url": "https://www.appsanywhere.com/blog/appsanywhere-selected-by-the-ohio-state-university-college-of-engineering-to-power-byod-initiative-and-expand-flexible-student-first-software-access"
+  },
+  {
+   "date": "2026-04-23",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "The Institutional Knowledge Shift Is Reshaping Higher Ed IT Higher education IT leaders are navigating a quiet but consequential transition. Institutional knowledge, once embedded in long-tenured staf",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.appsanywhere.com/blog/the-institutional-knowledge-shift-is-reshaping-higher-ed-it"
+  },
+  {
+   "date": "2026-04-14",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Product Update Bridge the Gap Between Understanding and Meeting Student Needs Discover how LabStats and AppsAnywhere help higher ed IT teams turn usage insights into seamless, device-agnostic software",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.appsanywhere.com/blog/bridge-the-gap-between-understanding-and-meeting-student-needs"
+  },
+  {
+   "date": "2026-04-01",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Event Recap A sector under pressure, yet filled with possibility: Reflections from UCISA 2026 Reflections from UCISA Leadership Conference 2026 about a sector grappling with financial strain, politica",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.appsanywhere.com/blog/a-sector-under-pressure-yet-filled-with-possibility-reflections-from-ucisa-2026"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "AppsAnywhere sells a cloud-based platform that higher education institutions use to deliver applications at scale to lab devices and student-owned devices alike. It combines physical and virtual workloads to deliver apps on and off campus through one centralized platform for students, staff, and faculty.",
+   "Administrators configure access by context, including user groups, device type, operating system, hardware profiles, and location. The platform then picks a delivery route for each launch based on factors such as device type, operating system, geographical location, and whether the machine is user-owned or university-managed. Real-time app metering shows which titles are underused or not used at all. A managed Cloud Delivery service streams Windows applications to any device directly in a browser, with sessions running in a clean, non-persistent environment that resets each time.",
+   "Institutions start with a catalog of over 150 pre-packaged higher education applications that are updated frequently. The company says it supports integrations with existing delivery technologies so customers need not rip and replace current infrastructure. It states compliance with WCAG 2.2 AA standards, full keyboard and speech navigation, and significant screen-reader functionality. Product translations ship out of the box in languages including Catalan, Norwegian, and Welsh."
+  ],
+  "quote": {
+   "text": "One centralized software portal for students and faculty on any device.",
+   "url": "https://www.appsanywhere.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.appsanywhere.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.appsanywhere.com/product",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.appsanywhere.com/product/features",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.appsanywhere.com/product/cloud-delivery",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.appsanywhere.com/product/features",
+    "https://www.appsanywhere.com/product"
+   ],
+   [
+    "https://www.appsanywhere.com/product",
+    "https://www.appsanywhere.com/product/features",
+    "https://www.appsanywhere.com/product/cloud-delivery"
+   ],
+   [
+    "https://www.appsanywhere.com",
+    "https://www.appsanywhere.com/product",
+    "https://www.appsanywhere.com/product/features"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Oracle Utilities sells software to energy and water providers for serving customers and for managing networks and assets. Billing is presented as one place holding the data, processes and insights a utility needs.",
+   "Billing workflows use AI anomaly detection intended to cut errors on complex accounts. The outage management system is deployed for electric, gas, water or wastewater networks and coordinates restoration with field, mutual aid and asset management teams. Field crews record network updates straight into the network management system rather than relaying them verbally to control room staff. Analytics tools look for trends among customers and pick out electric vehicle owners for targeted recommendations and service. A commercial account product pulls billing history, consumption, appointment scheduling and service interruptions into a single dashboard.",
+   "The outage page states more than 60 million meters in production worldwide. The industry page counts 3.8 trillion AMI data reads managed annually. Those figures carry a footnote saying they are calculated from client deployments from 2009 through 2024. Oracle also cites recognition as a leader in the 2025 IDC MarketScape for utility meter data management."
+  ],
+  "quote": {
+   "text": "Master your data with tools built for utilities",
+   "url": "https://www.oracle.com/industries/utilities/"
+  },
+  "sources": [
+   {
+    "url": "https://www.oracle.com/industries/utilities/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.oracle.com/utilities/products/sales-commercial-account-management/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.oracle.com/utilities/products/outage-management-system/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.oracle.com/utilities/products/analytics-solutions/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.oracle.com/industries/utilities/"
+   ],
+   [
+    "https://www.oracle.com/industries/utilities/",
+    "https://www.oracle.com/utilities/products/outage-management-system/",
+    "https://www.oracle.com/utilities/products/analytics-solutions/",
+    "https://www.oracle.com/utilities/products/sales-commercial-account-management/"
+   ],
+   [
+    "https://www.oracle.com/utilities/products/outage-management-system/",
+    "https://www.oracle.com/industries/utilities/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

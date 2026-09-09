@@ -1,0 +1,67 @@
+{
+ "news": [
+  {
+   "date": "2025-12-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Personalize Your GoReact Demo Experience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://echo360.com/resources/explore-goreact-self-demos/"
+  },
+  {
+   "date": "2024-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "your abc's of l&d",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://echo360.com/resources/resources-center/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Echo360 sells software to create, capture, manage, store and search learning video, together with polling and assessment tools. The institutions it names include traditional higher education in North America, EMEA and APAC, and community colleges in North America. Corporate training is a second market, served by the same suite at scale.",
+   "The suite is called the Echosystem, described as a modular end-to-end set of solutions. EchoVideo covers video creation and capture through content management, with a personal library from which instructors tag, edit, or share. Search runs across content, including presentations, notes, and even discussions. Videos are transcribed automatically with speech recognition, and transcripts can be edited into closed captions. It integrates with major LMS platforms through the LTI standard, and offers APIs with downloadable SDKs for campus integrations. Polling and gamification come from PointSolutions, a formative assessment tool for online and offline use.",
+   "Businesses and non-profits are listed as a segment alongside colleges and universities. Federal, state, and military buyers are listed too. It frames its purpose as making learning more engaging, equitable, and evidence-driven. EchoExam, its test generator, is said to build on a 20+ year history of customer and publisher loyalty. The leadership page names a general manager for the APAC region."
+  ],
+  "quote": {
+   "text": "Effective video management is key to boosting learner engagement and driving positive academic and training outcomes.",
+   "url": "https://echo360.com/platform/video-management/"
+  },
+  "sources": [
+   {
+    "url": "https://echo360.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://echo360.com/platform/video-management/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://echo360.com/company/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://echo360.com/company/leadership-team/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://echo360.com"
+   ],
+   [
+    "https://echo360.com",
+    "https://echo360.com/platform/video-management/"
+   ],
+   [
+    "https://echo360.com/company/",
+    "https://echo360.com/platform/video-management/",
+    "https://echo360.com/company/leadership-team/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

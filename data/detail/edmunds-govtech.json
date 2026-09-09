@@ -1,0 +1,131 @@
+{
+ "news": [
+  {
+   "date": "2026-07-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Edmunds GovTech to Present the 2026 Guts & Glory 5k",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.edmundsgovtech.com/news/edmunds-govtech-to-present-the-2026-guts-glory-5k/"
+  },
+  {
+   "date": "2026-06-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Edmunds GovTech to Attend the 2026 GFOA Annual Conference",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.edmundsgovtech.com/news/edmunds-govtech-to-attend-the-2026-gfoa-annual-conference/"
+  },
+  {
+   "date": "2026-02-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Edmunds GovTech Raises Over $325,000 for Crohn\u2019s & Ulcerative Colitis Research in 2025",
+   "kind": "funding",
+   "kind_rule": "Raises",
+   "url": "https://www.edmundsgovtech.com/news/guts-and-glory-5k-2025-results/"
+  },
+  {
+   "date": "2026-02-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Edmunds GovTech Recognized as a 2026 Top 100 GovTech Company",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.edmundsgovtech.com/news/egt-govtech-100-2026/"
+  },
+  {
+   "date": "2025-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Edmunds GovTech to Host Onsite Career Fair on October 28th, 2025",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.edmundsgovtech.com/news/edmunds-govtech-2025-career-fair/"
+  },
+  {
+   "date": "2025-07-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Edmunds GovTech to Present the 2025 Guts & Glory 5k",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.edmundsgovtech.com/news/guts-and-glory-5k-2025/"
+  },
+  {
+   "date": "2025-06-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Edmunds GovTech to Attend the 2025 GFOA Annual Conference",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.edmundsgovtech.com/news/edmunds-govtech-to-attend-the-2025-gfoa-annual-conference/"
+  },
+  {
+   "date": "2025-04-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Edmunds GovTech, Inc. Acquires RosTech, Inc.",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://www.edmundsgovtech.com/news/edmunds-govtech-inc-acquires-rostech-inc/"
+  },
+  {
+   "date": "2025-01-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Edmunds GovTech Recognized as a 2025 Top 100 GovTech Company",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.edmundsgovtech.com/news/egtgovtech2025/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Edmunds GovTech builds administrative software for municipalities and authorities, covering finance, billing, payments, and community development. The same suite handles payroll and human resources for a local government agency. Tax billing, collection, and reporting sit in a central workspace as well.",
+   "The finance side runs fund accounting with a customizable chart of accounts, unlimited funds, and a single point of entry. Utility billing integrates with meter reading devices, cash collection, and the other Edmunds modules. Residents can apply for, track, manage, and pay for utility services online. The software can run on a jurisdiction's own servers or in the cloud.",
+   "The company describes five decades of focus on local government. It claims a 99% client retention rate over that span. It also says a dedicated team tracks changes to local, state, and federal statutes."
+  ],
+  "quote": {
+   "text": "Local government work matters.",
+   "url": "https://www.edmundsgovtech.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.edmundsgovtech.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.edmundsgovtech.com/solutions/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.edmundsgovtech.com/solutions/local-government-finance/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.edmundsgovtech.com/solutions/local-government-utilities/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.edmundsgovtech.com",
+    "https://www.edmundsgovtech.com/solutions/"
+   ],
+   [
+    "https://www.edmundsgovtech.com/solutions/local-government-finance/",
+    "https://www.edmundsgovtech.com/solutions/local-government-utilities/",
+    "https://www.edmundsgovtech.com/solutions/"
+   ],
+   [
+    "https://www.edmundsgovtech.com",
+    "https://www.edmundsgovtech.com/solutions/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

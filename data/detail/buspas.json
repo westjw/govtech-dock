@@ -1,0 +1,54 @@
+{
+ "news": [
+  {
+   "date": "2026-05-07",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Funding for 14 Innovation Projects!",
+   "kind": "funding",
+   "kind_rule": "Funding",
+   "url": "https://buspas.com/category/press/feature/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "BusPas upgrades, connects and modernizes urban furniture, starting with bus stops. It equips that furniture with sensors and edge computing meant to improve transit, protect user privacy and enhance security. The buyers are municipalities and transit agencies looking to optimize operations and improve services.",
+   "The ORA Ecosystem is the platform side, giving public transit agencies, cities and their officials access to data services linked to infrastructure within their municipality. The stops display real-time bus wait times and occupancy, count waiting passengers, and track boarding and alighting to analyze connections and origins and destinations. The system can also send specific requests to control traffic lights for buses and emergency vehicles. SaferSmart Zones is a turnkey bus and transit lane enforcement offering. Solar panels are added to minimize dependence on the grid. The products are described as a modular ecosystem of solar-powered, AI-enabled street infrastructure for transit reliability, safety, enforcement and passenger experience.",
+   "The company says it started in 2017. It works through standing contracts, so new legislation or an RFP is not required. A statement on the site is attributed to the mayor of Sainte-Julie, Qu\u00e9bec. A headline says its smart stop technology was deployed across the TTC network ahead of the FIFA World Cup 2026."
+  ],
+  "quote": {
+   "text": "Every city needs a digital twin to test the efficacy and impact of programs and make data based decisions.",
+   "url": "https://buspas.com"
+  },
+  "sources": [
+   {
+    "url": "https://buspas.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://buspas.com/about/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://buspas.com/products/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://buspas.com"
+   ],
+   [
+    "https://buspas.com",
+    "https://buspas.com/about/",
+    "https://buspas.com/products/"
+   ],
+   [
+    "https://buspas.com",
+    "https://buspas.com/about/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

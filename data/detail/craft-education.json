@@ -1,0 +1,99 @@
+{
+ "news": [
+  {
+   "date": "2026-08-31",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "One Hospital Can't Justify a Program Alone. A Region Can. Small rural hospitals may hire only a couple surgical techs a year\u2014too little to sponsor an apprenticeship alone. A regional model can share s",
+   "kind": "leadership",
+   "kind_rule": "hire",
+   "url": "https://www.crafteducation.com/post/one-hospital-cant-justify-a-program-alone-a-region-can"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "You Already Have the Budget. It's Just Going to Travelers. A plain-language look at how \"shifting the budget\" works for rural hospital training: where the money already is, how braided funding fits in",
+   "kind": "funding",
+   "kind_rule": "funding",
+   "url": "https://www.crafteducation.com/post/you-already-have-the-budget-its-just-going-to-travelers"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Apprenticeship Intermediaries: Take the First National Survey Employers, providers, and funders all get counted in apprenticeship data. Intermediaries usually don't. Take the first national AFA and Ed",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crafteducation.com/post/apprenticeship-intermediaries-take-the-first-national-survey"
+  },
+  {
+   "date": "2026-08-17",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "What a Hospital Keeps When It Trains Its Own vs. Sends Staff to a Community College When a hospital sends staff to a community college, there's no guarantee they return. An in-house apprenticeship cha",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crafteducation.com/post/what-a-hospital-keeps-when-it-trains-its-own-vs-sends-staff-to-a-community-college"
+  },
+  {
+   "date": "2026-08-10",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Rural Hospitals Start Their Apprenticeship Talent Pipeline From an industry panel on healthcare staffing: why rural hospitals should build talent pipelines starting in middle school, and how to turn t",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crafteducation.com/post/rural-hospitals-start-their-apprenticeship-talent-pipeline"
+  },
+  {
+   "date": "2026-08-03",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "A Traveler is a Renter. We Want Owners. Travel and agency staffing costs keep climbing for rural hospitals. See the numbers, then learn how Craft Education's apprenticeship model builds your own surgi",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crafteducation.com/post/a-traveler-is-a-renter-we-want-homeowners"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Craft Education sells software for running registered apprenticeships and work-based learning programs. The platform, called Craft Connect, is built for employers, education partners, and intermediaries. Healthcare and education are the fields it is designed around first, though the company says the platform itself is field-agnostic.",
+   "A program administrator configures the program to registered-apprenticeship standards and invites learners, employers, and evaluators. Learners then log on-the-job hours against the work-process schedule from any browser. Mentors and reviewers work a queue rather than an inbox, approving hours, submissions, and competencies or sending them back, with every action time-stamped. Sign-offs roll into competency records, and one data model produces the WIOA, Perkins, RAPIDS, and Workforce Pell exports funders and accreditors accept.",
+   "The company describes itself as an essential part of WGU and puts mission before margin. Its stated purpose is to change lives for the better by creating pathways to opportunity. For buyers in IT, security, and procurement, the company states SOC2 compliance, invitation-gated access, and audit-ready records by default. It also cites WCAG 2.2 accessibility with a VPAT available and reporting to USDOL and RAPIDS."
+  ],
+  "quote": {
+   "text": "Craft Connect is not trying to replace the systems you already run.",
+   "url": "https://www.crafteducation.com/platform"
+  },
+  "sources": [
+   {
+    "url": "https://www.crafteducation.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.crafteducation.com/about",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.crafteducation.com/platform",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.crafteducation.com/platform",
+    "https://www.crafteducation.com"
+   ],
+   [
+    "https://www.crafteducation.com/platform"
+   ],
+   [
+    "https://www.crafteducation.com/about",
+    "https://www.crafteducation.com/platform",
+    "https://www.crafteducation.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

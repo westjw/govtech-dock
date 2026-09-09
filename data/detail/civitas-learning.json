@@ -1,0 +1,135 @@
+{
+ "news": [
+  {
+   "date": "2026-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "5 Questions to Ask Before Buying an AI Agent for Higher Ed",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.civitaslearning.com/blog/5-questions-to-ask-before-buying-an-ai-agent-for-higher-ed/"
+  },
+  {
+   "date": "2026-07-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Inaction Has a Price: The Hidden Cost of Delayed Student Success Investments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.civitaslearning.com/blog/inaction-has-a-price-the-hidden-cost-of-delayed-student-success-investments/"
+  },
+  {
+   "date": "2026-05-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beyond Student Success: Evaluating Higher Ed Software, Vendors, & Institutional Fit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.civitaslearning.com/blog/beyond-student-success-evaluating-higher-ed-software-vendors-institutional-fit/"
+  },
+  {
+   "date": "2026-03-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CLOSE the Student Impact Gap: A Modern Operating Model for Student Success",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.civitaslearning.com/blog/close-the-student-impact-gap-a-modern-operating-model-for-student-success/"
+  },
+  {
+   "date": "2026-03-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "If You Have the Data, Why Is Action Still So Hard?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.civitaslearning.com/blog/if-you-have-the-data-why-is-action-still-so-hard/"
+  },
+  {
+   "date": "2026-02-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Civitas Learning Thinks About Data (and Why That Matters)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.civitaslearning.com/blog/how-civitas-learning-thinks-about-data-and-why-that-matters/"
+  },
+  {
+   "date": "2026-02-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Rethinking AI in Higher Ed: It\u2019s Not About Saving Time\u2014It\u2019s About Making Better Decisions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.civitaslearning.com/blog/rethinking-ai-in-higher-ed-its-not-about-saving-time-its-about-making-better-decisions/"
+  },
+  {
+   "date": "2026-01-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Career Readiness Is a Signal \u2014 Not Just an Outcome \u2014 of Student Success",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.civitaslearning.com/blog/why-career-readiness-is-a-signal-not-just-an-outcome-of-student-success/"
+  },
+  {
+   "date": "2025-12-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Retention Can Stall Even When You\u2019re \u201cDoing Everything Right\u201d",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.civitaslearning.com/blog/retention-can-stall-even-when-youre-doing-everything-right/"
+  },
+  {
+   "date": "2025-04-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Congratulations to Our Chief Customer Officer, Meredith Baker, on Being Named a 2025 Leading Woman in AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.civitaslearning.com/press/congratulations-to-our-chief-customer-officer-meredith-baker-on-being-named-a-2025-leading-woman-in-ai/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Civitas Learning sells software that colleges and universities use to turn their own institutional data into predictions and daily operations. It is pitched as covering every stage of the student experience rather than one office.",
+   "The predictive models are trained on an institution's own students, programs, and patterns rather than on national averages. The company states those models are institution specific, rescored nightly, and 89% accurate at predicting outcomes. Data is pulled from the student information system, learning management system, customer relationship system, and other campus technology into one foundation. Advisers get suggested next actions to guide their outreach to students.",
+   "The founders started the company in 2011 to help institutions apply their data to student outcomes. Presidents, provosts, enrollment, student success, academic affairs, and career teams are named as the people working from it. The company says its AI stays auditable through autonomy tiers, contact caps, and a full run history."
+  ],
+  "quote": {
+   "text": "Every vendor sells student success.",
+   "url": "https://www.civitaslearning.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.civitaslearning.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.civitaslearning.com/platform/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.civitaslearning.com/about/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.civitaslearning.com",
+    "https://www.civitaslearning.com/platform/"
+   ],
+   [
+    "https://www.civitaslearning.com",
+    "https://www.civitaslearning.com/platform/"
+   ],
+   [
+    "https://www.civitaslearning.com/about/",
+    "https://www.civitaslearning.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

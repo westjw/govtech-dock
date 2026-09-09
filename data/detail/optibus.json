@@ -1,0 +1,46 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Optibus sells an end-to-end, AI-powered platform for planning and operating more equitable, sustainable, and efficient public transportation. The site groups its buyers into authorities and cities, operators, shuttles, and consultancies.",
+   "One platform covers everything from planning and scheduling to real-time depot operations and sharing information with drivers and passengers. Planning tools let a team plan, analyze, and optimize a network to improve service quality and performance. The scheduling side creates optimal crew and vehicle schedules. Optibus Agent runs inside the platform, connected to real operational data and built around real workflows. That agent is included for all customers at no additional cost.",
+   "The company states that it is ISO 27001:2022 certified and SOC 2 compliant, using advanced encryption. It connects with existing CAD/AVL, HR/payroll, and on-board hardware. For electric fleets it offers tools that account for battery range, charging infrastructure, and grid constraints."
+  ],
+  "quote": {
+   "text": "Making Public Transportation Better.",
+   "url": "https://www.optibus.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.optibus.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://optibus.com/product/agent/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://optibus.com/product/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://optibus.com/product/planning/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.optibus.com"
+   ],
+   [
+    "https://optibus.com/product/",
+    "https://www.optibus.com",
+    "https://optibus.com/product/agent/"
+   ],
+   [
+    "https://optibus.com/product/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

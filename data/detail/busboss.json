@@ -1,0 +1,148 @@
+{
+ "news": [
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Integrating SIS With School Transportation Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/integrating-sis-with-school-transportation-software?hsLang=en-us"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Back-to-School Surge Is Here. Are You Ready?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/the-back-to-school-surge-is-here.-are-you-ready?hsLang=en-us"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Causes Student Boarding Data Errors in Districts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/what-causes-student-boarding-data-errors-in-districts?hsLang=en-us"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dispatch Scalability for School Bus Fleets in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/dispatch-scalability-for-school-bus-fleets-in-2026?hsLang=en-us"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Causes Live Data Sync Failures in School Routing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/what-causes-live-data-sync-failures-in-school-routing"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "9 Criteria for Student Transportation Safety Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/9-criteria-for-student-transportation-safety-software"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "7 Barriers to Adopting School Bus Dispatch Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/7-barriers-to-adopting-school-bus-dispatch-software"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Student Ridership Data Fails in Large Districts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/why-student-ridership-data-fails-in-large-districts"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Best Student Transportation Safety Software for 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/best-student-transportation-safety-software-for-2026"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "7 Reasons School Bus Routing Software Fails",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/7-reasons-school-bus-routing-software-fails"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Districtwide School Bus Dispatch Rollout Guide",
+   "kind": "contract",
+   "kind_rule": "Rollout",
+   "url": "https://www.busboss.com/blog/districtwide-school-bus-dispatch-rollout-guide"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Making School Bus Routing Software Work in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/making-school-bus-routing-software-work-in-2026"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "BusBoss is a school bus routing and transportation management platform for districts that need accurate planning, real-time visibility, and dependable daily operations. The software is aimed at transportation directors, school administrators, and bus contractors.",
+   "Districts can create efficient routes, track buses live, verify student boarding, and respond to changes without paper routes or disconnected systems. A fleet optimization tool automatically generates routes for individual or combined schools while adhering to load counts, bell times, and travel constraints. Route planning shows bus stops and house locations on integrated GIS maps with satellite view underlays. Two GPS applications, TRIPpatrol and STUDENTpatrol, integrate with the transportation software system.",
+   "The company says its routing software is built on more than 25 years of experience. It describes an affordable system that allows for unlimited users without a per-user annual fee. Implementation comes with data conversions meant to maintain the integrity of current student, driver, and routing information. A SuccessRoute training program helps customers learn and get more out of the software."
+  ],
+  "quote": {
+   "text": "You can create efficient routes, track buses live, verify student boarding, and respond quickly to changes without relying on paper routes or disconnected systems.",
+   "url": "https://www.busboss.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.busboss.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.busboss.com/products",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.busboss.com"
+   ],
+   [
+    "https://www.busboss.com",
+    "https://www.busboss.com/products"
+   ],
+   [
+    "https://www.busboss.com",
+    "https://www.busboss.com/products"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

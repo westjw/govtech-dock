@@ -1,0 +1,123 @@
+{
+ "news": [
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Changing the game: securing stadiums for the next wave of mega-events",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/changing-the-game-securing-stadiums-for-the-next-wave-of-mega-events"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why are data centers choosing Alcatraz for mission-critical physical security? April 7, 2025",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/why-are-data-centers-choosing-alcatraz-for-mission-critical-physical-security"
+  },
+  {
+   "date": "2026-07-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Aviation access control: A case for contractor & employee security April 28, 2025",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/aviation-access-control-a-case-for-contractor-employee-security"
+  },
+  {
+   "date": "2026-07-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Effective tailgating mitigation strategies for your business Discover expert tailgating mitigation strategies to prevent physical security breaches. Learn how AI and facial authentication stop unautho",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/tailgating-mitigation-strategies-access-control"
+  },
+  {
+   "date": "2026-07-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Government Building Access Control: Why Outdated Systems Are Failing Federal Facilities 75% of government security failures trace to poor access management. Secure federal facilities with Alcatraz AI'",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/securing-government-buildings-with-access-control-systems"
+  },
+  {
+   "date": "2026-07-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Biometric airport security: modernizing employee access control systems Discover how biometric access control transforms airport employee security for restricted areas. Learn deployment strategies and",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/modern-airport-employee-access-control-systems"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Alcatraz and Genea work together to advance identity-first access control Discover how Alcatraz AI and Genea combine facial authentication and cloud-based access control to strengthen security and",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/alcatraz-genea-identity-first-access-control"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The privacy conversation grew up. Here's what that means for security. Privacy concerns around facial biometrics have evolved. Explore why trust, familiarity, and rising security risks are changing mo",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/privacy-conversation-grew-up-facial-biometrics-security"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Alcatraz makes facial authentication products that work with the badge readers and access control systems an organization already runs. The device, called Rock X, sits in line between the badge reader and the access control panel over Wiegand or OSDP.",
+   "Employees enroll at a station, remotely from a browser or phone, or automatically after repeated badge swipes at a door fitted with the device. Authentication happens on the device itself, and the company states that no sensitive data is stored or transmitted. Profiles are anonymized and tied to the badge ID already held in the customer's access control system. The same unit can act as a passive second factor, so a person badges in as usual and the face confirms the match. In lobbies it can be built directly into certain turnstiles. The management platform runs on premise or in the cloud.",
+   "Airports are one setting the company writes about, pairing face recognition with badges or PINs to add a second factor at restricted doors. One unnamed case summary on the site describes a global enterprise that put the device on turnstiles for more than 150,000 employees. The company says its approach helps customers conform with privacy regulations such as BIPA, CCPA and GDPR."
+  ],
+  "quote": {
+   "text": "authentication happens at the edge ensuring no sensitive data is stored or transmitted",
+   "url": "https://www.alcatraz.ai/"
+  },
+  "sources": [
+   {
+    "url": "https://www.alcatraz.ai/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.alcatraz.ai/platform",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.alcatraz.ai/solutions/biometric-turnstile",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.alcatraz.ai/solutions/multi-factor-authentication",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.alcatraz.ai/",
+    "https://www.alcatraz.ai/platform"
+   ],
+   [
+    "https://www.alcatraz.ai/platform",
+    "https://www.alcatraz.ai/",
+    "https://www.alcatraz.ai/solutions/multi-factor-authentication",
+    "https://www.alcatraz.ai/solutions/biometric-turnstile"
+   ],
+   [
+    "https://www.alcatraz.ai/",
+    "https://www.alcatraz.ai/solutions/biometric-turnstile"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "news": [
+  {
+   "date": "2026-07-29",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Entered easily, communicated seamlessly, trusted everywhere: The new standard for managing disruptions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/new-service-adjustments-enhancements"
+  },
+  {
+   "date": "2026-07-16",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "How Durham Region Transit improved reliability and streamlined costs by unlocking the power of their data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/durham-region-transit-case-study"
+  },
+  {
+   "date": "2026-06-18",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Transit\u2019s World Cup: Keeping riders informed during large events",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/large-event-passenger-communication"
+  },
+  {
+   "date": "2026-06-11",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Empowering operators to run reliable service with Onboard App",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/onboard-app-reliable-service"
+  },
+  {
+   "date": "2026-06-09",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Ghost buses are everywhere. Meet the benchmark haunting them back.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/eta-completeness-benchmark"
+  },
+  {
+   "date": "2026-05-05",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "4 ways ridership data is reshaping transit decisions across every team",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/ridership-data-reshaping-transit-decisions"
+  },
+  {
+   "date": "2026-05-01",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "TextMarks partners with Swiftly to expand access to best-in-class passenger information",
+   "kind": "contract",
+   "kind_rule": "partners with",
+   "url": "https://www.goswift.ly/blog/textmarks-partnership"
+  },
+  {
+   "date": "2026-04-09",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Executive interview: MDOT MTA\u2019s approach to improving on-time performance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/how-mdot-mta-improves-on-time-performance"
+  },
+  {
+   "date": "2026-03-24",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Introducing a game-changer for real-time performance management",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.goswift.ly/blog/issues-in-live-operations"
+  },
+  {
+   "date": "2026-03-04",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Improve on-time performance in 2026\u2014Strategies from a transit agency executive",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/improve-on-time-performance-webinar"
+  },
+  {
+   "date": "2026-02-25",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Serving students: Four essentials for campus transit tech",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/serving-students-four-essentials-for-university-transit-tech"
+  },
+  {
+   "date": "2026-01-07",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "How WeGo powers smarter Transit Signal Priority with real-time data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/lyt-wego-tsp-case-study"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Swiftly sells a cloud platform to public transit agencies for sharing real-time passenger information, running daily operations, and improving service performance. The company puts its customer count above 200 agencies. Those agencies are described as large and small, around the globe.",
+   "The platform combines GTFS schedule data with whatever real-time vehicle location feed an agency already has. It then analyzes billions of data points to say where a vehicle was, where it is, and where it will be next. Operations staff use it to make real-time adjustments for on-time performance and headway adherence. Schedulers work from actual run times, vehicle speeds, and dwell times. APIs push the same data out to rider-facing apps, vehicle hardware, and internal tools.",
+   "Customer service teams are another audience, answering rider questions from the same information. The site carries comments from transit staff, including an operations technology lead at the MBTA in Boston. Another comes from a transportation planner at MDOT MTA in Baltimore. Jonny Simkin co-founded the company and is its chief executive. Swiftly describes itself as a transit reliability platform meant to keep public transportation a fast and attractive alternative to the private vehicle."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://www.goswift.ly",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.goswift.ly/platform",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.goswift.ly/about",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.goswift.ly/platform",
+    "https://www.goswift.ly"
+   ],
+   [
+    "https://www.goswift.ly/platform",
+    "https://www.goswift.ly"
+   ],
+   [
+    "https://www.goswift.ly",
+    "https://www.goswift.ly/about"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

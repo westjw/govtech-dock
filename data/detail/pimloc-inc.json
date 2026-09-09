@@ -1,0 +1,47 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Pimloc sells Secure Redact, an automated system for the bulk redaction of personal data from video. It is aimed at private and public organizations that want to automate data privacy compliance while still getting operational value from their video. Customers use it to process video for data subject access requests and freedom of information requests.",
+   "The system's models recognize identifiers such as faces, heads and license plates the way a human observer would, then redact and classify them automatically. It can be applied selectively, removing some or all faces or all vehicle registration details, and it is trained to perform on low-definition CCTV footage. Pimloc states that Secure Redact detects and anonymizes over 99% of identifiable PII in security video. It also says redaction with its AI runs 200 times faster than doing the job by hand.",
+   "The company says its capabilities are deployed across transport, public safety, telehealth, insurance, retail, policing and local government. A second product, Pholio, classifies visual content, and Pimloc has used it to evaluate automated detection of online harms. Founders Simon Randall, the CEO, and James Leigh, the CTO, co-created the Autographer wearable image capture device at a previous business, and the privacy challenges of always-on capture led them to start Pimloc."
+  ],
+  "quote": {
+   "text": "Automated anonymization is the only way to keep up with changing privacy legislation and to responsibly unlock the value of aggregated video data for business operations.",
+   "url": "https://www.pimloc.com/platform"
+  },
+  "sources": [
+   {
+    "url": "https://www.pimloc.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.pimloc.com/platform",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.pimloc.com/who-we-are",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.pimloc.com/solutions",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.pimloc.com/solutions",
+    "https://www.pimloc.com"
+   ],
+   [
+    "https://www.pimloc.com/platform"
+   ],
+   [
+    "https://www.pimloc.com/platform",
+    "https://www.pimloc.com/solutions",
+    "https://www.pimloc.com/who-we-are"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

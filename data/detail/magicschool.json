@@ -1,0 +1,57 @@
+{
+ "news": [
+  {
+   "date": "2026-07-01",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "What\u2019s New: Tools & Features",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/12386023-what-s-new-tools-features"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "MagicSchool sells an AI platform aimed at schools rather than at general consumers. For teachers it targets the daily grind of planning lessons, supporting different learners, and giving feedback.",
+   "Teachers also get an AI instructional coach alongside the tools. Students use it with guidance, working through ideas and building their own AI skills. Districts adopt it as a way to bring AI into classrooms visibly and in line with how they already work. Rollout comes with structured professional development, and the software plugs into Google Docs, Classroom, and Canvas. The company states that it is SOC 2 certified and compliant with FERPA and COPPA. It also states that student and teacher data is not used to train AI.",
+   "The company says it was founded in Denver in 2023. Its case studies are written around district leaders and educators putting the tools to work across schools. A press item listed on its site reports a $60 million raise framed around teacher burnout."
+  ],
+  "quote": {
+   "text": "Students should learn with AI, not rely on it.",
+   "url": "https://www.magicschool.ai/mission"
+  },
+  "sources": [
+   {
+    "url": "https://www.magicschool.ai",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.magicschool.ai/case-studies",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.magicschool.ai/about-us",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.magicschool.ai/mission",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.magicschool.ai/about-us"
+   ],
+   [
+    "https://www.magicschool.ai",
+    "https://www.magicschool.ai/about-us"
+   ],
+   [
+    "https://www.magicschool.ai/about-us",
+    "https://www.magicschool.ai/case-studies"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

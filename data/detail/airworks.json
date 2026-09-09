@@ -1,0 +1,43 @@
+{
+ "profile": {
+  "paragraphs": [
+   "AirWorks turns raw field data into mapping deliverables that engineering teams can work from. Its customers are teams in the telecom, power and civil sectors.",
+   "Source material can be lidar, orthomosaics, satellite imagery or drone capture. Patented models trained on thousands of miles of infrastructure data use computer vision to automate feature extraction, vectorization and data processing. A team of geospatial experts based in the United States reviews each output before it is delivered. More than a hundred deliverable layers are available, covering roads, curbs, sidewalks, pavement markings, vegetation and utilities.",
+   "For new construction the company supplies the site data engineers use to plan, design and deliver builds. On the maintenance side the same outputs are used to find vegetation risks near infrastructure and keep assets compliant. Operators also use the data to decide where to send field crews."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://www.airworks.io",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.airworks.io/solutions/new-builds",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.airworks.io/solutions/maintenance",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.airworks.io/solutions/geoai",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.airworks.io"
+   ],
+   [
+    "https://www.airworks.io",
+    "https://www.airworks.io/solutions/geoai"
+   ],
+   [
+    "https://www.airworks.io/solutions/new-builds",
+    "https://www.airworks.io/solutions/maintenance"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

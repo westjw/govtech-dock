@@ -1,0 +1,77 @@
+{
+ "news": [
+  {
+   "date": "2026-09-04",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "Not All AI Is Built for Investigations Sep 4, 2026 Insights Not All AI Is Built for Investigations Sep 4, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://tranquility.ai/insights/not-all-ai-is-built-for-investigations"
+  },
+  {
+   "date": "2026-07-28",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "Investigating & Disrupting Transnational Criminal Organizations through OSINT Jul 6, 2026 Insights Investigating & Disrupting Transnational Criminal Organizations through OSINT Jul 6, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://tranquility.ai/insights/investigating-disrupting-transnational-criminal-organizations-through-osint"
+  },
+  {
+   "date": "2026-07-06",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "Uncovering Fraud Activity Buried in Thousands of Financial Reports Jun 8, 2026 Insights Uncovering Fraud Activity Buried in Thousands of Financial Reports Jun 8, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://tranquility.ai/insights/uncovering-fraud-hidden-in-thousands-of-financial-records"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Tranquility AI makes AI-powered evidence analysis software for criminal investigations. Its flagship product, TimePilot, unifies all data sources into a single interface so investigators can surface details quickly. The company describes its technology as serving the entire justice system, from law enforcement to prosecuting attorneys.",
+   "For law enforcement, the company pitches TimePilot to agencies of all sizes as a way to streamline investigation workflows and accelerate case clearance. The company says the software can process months of data in minutes, automate manual evidence review, and build case timelines and summaries. For prosecutors, it says using TimePilot cuts the average time to negotiate a plea from 30 days to 3 days. A corrections version brings together jail calls, contraband phone extractions, drone data and incident reports to surface threats and networks inside and outside a facility.",
+   "Founder and CEO Jim Penrose spent 17 years at the NSA, where he became Technical Director for Counterterrorism, and later held executive roles at BlueVoyant and Darktrace. Testimonials on the site come from a District Attorney in Orleans Parish, Louisiana, Sheriff Max Dorsey of Chester County, South Carolina, and Sheriff Ryan Spurling of Mason County, Washington. A detective at the Adams County Sheriffs Office in Colorado says the tool helped lead to an arrest and additional charges in one of that detective's cases."
+  ],
+  "quote": {
+   "text": "Get to the truth faster with AI-powered evidence analysis.",
+   "url": "https://tranquility.ai"
+  },
+  "sources": [
+   {
+    "url": "https://tranquility.ai",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://tranquility.ai/company",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://tranquility.ai/solutions/law-enforcement",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://tranquility.ai/solutions/prosecution",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://tranquility.ai",
+    "https://tranquility.ai/company"
+   ],
+   [
+    "https://tranquility.ai/solutions/law-enforcement",
+    "https://tranquility.ai/solutions/prosecution",
+    "https://tranquility.ai/solutions/corrections"
+   ],
+   [
+    "https://tranquility.ai/insights/investigating-disrupting-transnational-criminal-organizations-through-osint",
+    "https://tranquility.ai"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "news": [
+  {
+   "date": "2026-05-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What the UK Government\u2019s Better Connected Strategy Means for Integrated Transport",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.vixtechnology.com/insights/better-connected-strategy-integrated-transport?hsLang=en"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Vix Technology builds intelligent transportation systems, automated fare collection and transit analytics. Its customers are transit agencies and operators. The company takes a modular approach so that existing partners and technologies can be embedded into a new system.",
+   "Operators get operations management tools and detailed performance reporting meant to help optimize services. Riders get live updates through physical displays, audio outputs, websites and mobile apps. Mobile ticketing lets passengers find, buy and use travel accounts, tickets and passes. The analytics side is pitched at spotting gaps in demand or late running services.",
+   "The team is over 350 people working from hubs in APAC, Europe and North America. The company says it has helped 200 cities and deployed 500,000 devices. It cites over 35 years in public transit. Vix is part of the ICM Mobility Group, which focuses on private and public transport. It lists BSI ISO certification in quality, health and safety, environment, service management and information security. It also states a commitment to net zero emissions in line with the UK government timeline."
+  ],
+  "quote": {
+   "text": "At Vix, we believe public transit should be available to everyone.",
+   "url": "https://vixtechnology.com/about/"
+  },
+  "sources": [
+   {
+    "url": "https://www.vixtechnology.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://vixtechnology.com/about/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://vixtechnology.com/about/certification-and-accreditation/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://vixtechnology.com/about/environmental-responsibility/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.vixtechnology.com",
+    "https://vixtechnology.com/about/"
+   ],
+   [
+    "https://www.vixtechnology.com"
+   ],
+   [
+    "https://vixtechnology.com/about/",
+    "https://vixtechnology.com/about/certification-and-accreditation/",
+    "https://vixtechnology.com/about/environmental-responsibility/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

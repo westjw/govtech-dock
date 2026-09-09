@@ -1,0 +1,102 @@
+{
+ "news": [
+  {
+   "date": "2026-07-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Five ways AI is showing up in permitting, planning, and licensing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.accela.com/blog/rob-lloyd-ai-civic-innovators/"
+  },
+  {
+   "date": "2026-07-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Faster deployments start with Civira AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.accela.com/blog/faster-deployments-start-with-civira-ai/"
+  },
+  {
+   "date": "2026-06-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What\u2019s new at Accela: June 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.accela.com/blog/whats-new-at-accela-june-2026/"
+  },
+  {
+   "date": "2026-06-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Stockton, California, turned permit data into operational clarity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.accela.com/blog/govtech-data-analytics-stockton/"
+  },
+  {
+   "date": "2026-06-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Accela Managed Services helps agencies extend capacity and accelerate outcomes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.accela.com/blog/how-accela-managed-services-helps-agencies-extend-capacity-and-accelerate-outcomes/"
+  },
+  {
+   "date": "2026-06-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Mesa, Arizona went all-in on digital permitting and never looked back",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.accela.com/blog/digital-permitting-mesa-arizona/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Accela sells software that government agencies use to run permitting, licensing, and asset management from a single system. Its applications are built for individual government service workflows and can operate together or be deployed only where an agency needs them.",
+   "For building departments, intake, plan review, inspections, and permit issuance sit in one workflow rather than in separate disconnected steps. Reviewers from different departments work the same record at once, with annotations and approvals tracked as they happen. Planning teams get the same shared review model, plus automated public notice generation, hearing schedules, and agency notifications. Applicants can see where a case stands and receive consolidated feedback from every reviewing department.",
+   "The company says it has thirty years of government expertise built into the product. Testimonials on the site are attributed to municipal staff, including a chief building official in McAllen, Texas. Residents and businesses who encounter Accela through a local agency are directed to that agency rather than to the company."
+  ],
+  "quote": {
+   "text": "The end-to-end platform for permitting, licensing, asset management and more. Built for high performing agencies.",
+   "url": "https://www.accela.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.accela.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.accela.com/about/contact-us/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.accela.com/solutions/building/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.accela.com/solutions/planning/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.accela.com"
+   ],
+   [
+    "https://www.accela.com/solutions/building/",
+    "https://www.accela.com/solutions/planning/"
+   ],
+   [
+    "https://www.accela.com",
+    "https://www.accela.com/about/contact-us/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

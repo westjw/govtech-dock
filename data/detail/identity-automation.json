@@ -1,0 +1,29 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Identity Automation sells identity and access management software built for education. Its platform, RapidIdentity, covers single sign-on, application rostering, authentication methods, and password management. The company argues that real identity and access management goes beyond student rostering and single sign-on.",
+   "The lifecycle product automates provisioning, deprovisioning, account changes, credential monitoring, and access management for students, staff, partners, and vendors. The governance product automatically identifies orphan accounts in target systems. Login options include QR codes, pictographs, and challenge response questions. A web application firewall called ShieldID lets administrators prevent access outside parameters they set.",
+   "The company says RapidIdentity has managed identities at a country level in Norway, a state level in North Carolina, and across entire college systems. It claims availability rates of higher than 99.99% while serving millions of students and educators every day. One case study covers the Virginia Community College System, which the site says serves over 1.2 million identities across 23 colleges statewide. The site also reports that Jamf has acquired the company."
+  ],
+  "quote": {
+   "text": "Threats controlled, learning unleashed",
+   "url": "https://identityautomation.com"
+  },
+  "sources": [],
+  "paragraph_sources": [
+   [
+    "https://identityautomation.com"
+   ],
+   [
+    "https://www.identityautomation.com/products/identity-lifecycle-management/",
+    "https://www.identityautomation.com/products/access-governance",
+    "https://www.identityautomation.com/products/authentication"
+   ],
+   [
+    "https://identityautomation.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

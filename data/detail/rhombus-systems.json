@@ -1,0 +1,111 @@
+{
+ "news": [
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "More Storage, More Flexibility: What",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rhombus.com/blog/new-n100-relay-core-4tb/"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Introducing the Rhombus Windows Video Wall",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://rhombus.com/blog/rhombus-windows-video-wall/"
+  },
+  {
+   "date": "2026-07-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Are You Ready for Martyn",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rhombus.com/blog/martyns-law/"
+  },
+  {
+   "date": "2026-06-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Rhombus and LenelS2 Elements: Bringing AI-Powered Video and Cloud Access Control Together",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rhombus.com/blog/rhombus-lenels2-elements-integration/"
+  },
+  {
+   "date": "2024-08-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Letter from the Founders: Rhombus Series C and our Growth Journey",
+   "kind": "funding",
+   "kind_rule": "Series C",
+   "url": "https://rhombus.com/blog/rhombus-series-c/"
+  },
+  {
+   "date": "2024-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Keeping Schools Safe with an Open Data Platform",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rhombus.com/blog/keeping-schools-safe/"
+  },
+  {
+   "date": "2022-10-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Top Benefits of After-Hours Security with Rhombus Alarm Monitoring",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rhombus.com/blog/alarm-monitoring-benefits/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Rhombus sells cloud-managed physical security, sold as one platform rather than a set of separate systems. The pitch is to organizations that want to watch their buildings, protect the people in them, and run the whole thing from one place.",
+   "The hardware side covers dome, fisheye, bullet and multisensor cameras. Access control adds door controllers, readers and intercoms, with mobile, card and fob credentials. Sensors cover audio, environmental conditions, motion, entry and panic buttons. The company counts more than fifty integrations to other systems.",
+   "An Indiana school district put cameras and environmental sensors in across every building. A smart locker company reports more than thirteen thousand Rhombus devices in service. A manufacturer secured a new distribution hub with perimeter cameras, video intercoms at employee entrances and controlled doors."
+  ],
+  "quote": {
+   "url": "https://rhombus.com",
+   "text": "Experience the future of cloud-managed physical security that's open, secure, and fully interoperable."
+  },
+  "sources": [
+   {
+    "url": "https://rhombus.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://rhombus.com/case-studies/luxer-one/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://rhombus.com/case-studies/middlebury-community-schools/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://rhombus.com/case-studies/middleby-outdoor/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://rhombus.com"
+   ],
+   [
+    "https://rhombus.com"
+   ],
+   [
+    "https://rhombus.com/case-studies/middlebury-community-schools/",
+    "https://rhombus.com/case-studies/luxer-one/",
+    "https://rhombus.com/case-studies/middleby-outdoor/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

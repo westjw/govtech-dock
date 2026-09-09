@@ -1,0 +1,157 @@
+{
+ "news": [
+  {
+   "date": "2026-07-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Inside our week at the 2026 Esri UC",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3-gis.com/blog/inside-our-week-at-the-2026-esri-uc"
+  },
+  {
+   "date": "2026-07-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Centillion Solutions, an Osmose Company, and 3-GIS partner to unlock more advanced network management for telecom operators",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3-gis.com/blog/centillion-solutions-an-osmose-company-and-3-gis-partner-to-unlock-more-advanced-network-management-for-telecom-operators"
+  },
+  {
+   "date": "2026-05-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Telecom industry pulse: May 2026 recap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3-gis.com/blog/telecom-industry-pulse-may-2026-recap"
+  },
+  {
+   "date": "2026-05-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What network operators are weighing after Fiber Connect 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3-gis.com/blog/our-top-takeaways-from-fiber-connect-2026"
+  },
+  {
+   "date": "2026-05-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "First deep dive into Esri\u2019s Telecom Domain Network \u2013 Rotterdam, April 8\u201310",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3-gis.com/blog/first-deep-dive-into-esris-telecom-domain-network-rotterdam-april-8-10"
+  },
+  {
+   "date": "2026-05-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What\u2019s new in the Lio 1 release of 3-GIS | Web",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3-gis.com/blog/whats-new-in-the-lio-1-release-of-3-gis-web"
+  },
+  {
+   "date": "2026-05-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Our key takeaways from Esri IMGIS International 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3-gis.com/blog/our-key-takeaways-from-esri-imgis-international-2026"
+  },
+  {
+   "date": "2026-04-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Employee spotlight: Seth Straayer",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3-gis.com/blog/employee-spotlight-seth-straayer"
+  },
+  {
+   "date": "2026-04-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What migrating to the Telecom Domain Network actually involves",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3-gis.com/blog/what-migrating-to-the-telecom-domain-network-actually-involves"
+  },
+  {
+   "date": "2026-04-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Trace capabilities for the Telecom Domain Network in 3-GIS | Web",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3-gis.com/blog/exploring-trace-capabilities-for-the-telecom-domain-network"
+  },
+  {
+   "date": "2026-04-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Telecom industry pulse: March 2026 recap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3-gis.com/blog/telecom-industry-pulse-march-2026-recap"
+  },
+  {
+   "date": "2026-03-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What\u2019s new in the Utilities 5.5 release",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3-gis.com/blog/whats-new-in-the-utilities-5.5-release"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "3-GIS is an enterprise software company whose customers are telecom, electric, and gas organizations that plan, build, manage, and maintain complex infrastructure networks. The software is built for telecom and utility networks, turning spatial, asset, and operational data into a more accurate view of critical infrastructure.",
+   "For telecommunications customers it keeps a connected network record for planning, designing, building, documenting, and managing fiber and copper networks. On the utility side it drives Esri Utility Network workflows with tools for editing, tracing, validation, versioning, map production, and data quality. Separate tooling handles third-party pole attachment requests, permits, make-ready coordination, records, communications, compliance support, and billing inputs.",
+   "The about page dates the company's combination of GIS expertise and industry software to 2006. Staff are described as software developers, GIS specialists, telecom and utility experts, implementation consultants, support professionals, and customer success leaders. A published case study describes Oman Broadband needing to move to a modern, GIS-based asset management solution as its previous system neared end of life. An events page lists where the team will be exhibiting, speaking, sponsoring, or attending next."
+  ],
+  "quote": {
+   "text": "network teams need a better way to manage the physical assets that keep people, businesses, and communities connected",
+   "url": "https://www.3-gis.com/about-us"
+  },
+  "sources": [
+   {
+    "url": "https://www.3-gis.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.3-gis.com/about-us",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.3-gis.com/about-us/events",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.3-gis.com/resources/case-study/oman-broadband",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.3-gis.com/about-us",
+    "https://www.3-gis.com"
+   ],
+   [
+    "https://www.3-gis.com"
+   ],
+   [
+    "https://www.3-gis.com/about-us",
+    "https://www.3-gis.com/resources/case-study/oman-broadband",
+    "https://www.3-gis.com/about-us/events"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

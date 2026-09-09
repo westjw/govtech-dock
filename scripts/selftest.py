@@ -596,6 +596,44 @@ def check_rival_door_refuses_a_category() -> int:
     return errors
 
 
+def check_the_company_detail_ships() -> int:
+    """A file that exists in data/ is not a file the site serves.
+
+    build_board splits news and the write-up out of board.json - 57% of a
+    payload every visitor downloads for two sections read only when somebody
+    opens ONE company - into data/detail/<id>.json. build_site copies NAMED
+    files out of data/, not the tree, so the split shipped a board with the
+    fields removed and no detail files behind them. Every company page would
+    have fetched a 404 and said its write-up could not be loaded, on a build
+    that passed every other check because the data was right there on disk.
+
+    Source-level: running a full site build inside the suite costs minutes,
+    and the failure is a copy that does not happen. What it asserts is the
+    pairing - if build_board writes the directory, build_site must ship it.
+    """
+    bb = (ROOT / "scripts" / "build_board.py").read_text()
+    bs = (ROOT / "scripts" / "build_site.py").read_text()
+    errors = 0
+    writes = 'DATA / "detail"' in bb or "DATA / 'detail'" in bb
+    ships = '"data" / "detail"' in bs or "'data' / 'detail'" in bs
+    if writes and not ships:
+        errors += fail(
+            "build_board writes data/detail/ and build_site does not ship it. "
+            "The board would deploy with news and profile stripped out and "
+            "nothing behind them: every company page fetches a 404 and says "
+            "its write-up could not be loaded")
+    if ships and not writes:
+        errors += fail(
+            "build_site ships data/detail/ and nothing writes it any more; "
+            "either the split was reverted or the directory is now stale")
+    # and the board must not carry what was split out, or the payload grew back
+    if writes and 'o.pop("news", None)' not in bb:
+        errors += fail("build_board no longer strips news from the board "
+                       "organizations, so the 57% it was split out to save is "
+                       "back in the file every visitor downloads")
+    return errors
+
+
 def check_news_reads_a_date_only_where_a_reader_would() -> int:
     """The two date rules that let 292 dead newsrooms speak, and their limits.
 
@@ -16135,6 +16173,7 @@ def main() -> int:
     errors += check_manual_merge_never_doubles_a_fetched_row()
     errors += check_board()
     errors += check_rival_door_refuses_a_category()
+    errors += check_the_company_detail_ships()
     errors += check_news_reads_a_date_only_where_a_reader_would()
     errors += check_news_record_names_its_company_without_the_cache()
     errors += check_every_dismiss_names_its_row()

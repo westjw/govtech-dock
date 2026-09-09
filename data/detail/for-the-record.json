@@ -1,0 +1,50 @@
+{
+ "profile": {
+  "paragraphs": [
+   "For The Record makes recording technology for courts, capturing what is said in a proceeding and turning it into text that can be searched. One audience is court administrators trying to keep operations running at lower cost. Judges are a second audience, able to pull up audio, video, and speech-to-text without leaving the bench.",
+   "Recording runs on multiple audio channels, so individual speakers stay distinct even when they talk over one another. Courts that need local infrastructure can run the FTR Gold software in the courthouse rather than in the cloud. The cloud option is described as centralized storage built to NIST 800-53 Rev. 5 with more than a thousand security and privacy controls. Access is governed by role-based permissions, audit trails, and encryption of both transmission and storage.",
+   "The company says it supports courts in more than 80 countries. Its software is API-ready and meant to sit alongside the case management and evidence systems a court already runs. The work extends past software into specifying equipment and installing courtroom hardware."
+  ],
+  "quote": {
+   "text": "A court record is the official, permanent account of a legal case.",
+   "url": "https://www.fortherecord.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.fortherecord.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://fortherecord.com/solutions/stakeholder/judiciary/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://fortherecord.com/solutions/stakeholder/court-administrators/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://fortherecord.com/solutions/stakeholder/court-it/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.fortherecord.com",
+    "https://fortherecord.com/solutions/stakeholder/court-administrators/",
+    "https://fortherecord.com/solutions/stakeholder/judiciary/"
+   ],
+   [
+    "https://fortherecord.com/solutions/stakeholder/judiciary/",
+    "https://www.fortherecord.com",
+    "https://fortherecord.com/solutions/stakeholder/court-it/"
+   ],
+   [
+    "https://www.fortherecord.com",
+    "https://fortherecord.com/solutions/stakeholder/court-it/",
+    "https://fortherecord.com/solutions/stakeholder/court-administrators/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

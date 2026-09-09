@@ -1,0 +1,153 @@
+{
+ "news": [
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "S1:E12 // Presenting the proof: Incorporating digital evidence into opening statements and closing arguments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/legal-unpacked-s1e12-presenting-the-proof-incorporating-digital-evidence-into-opening-statements-and-closing-arguments/"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "eDiscovery Solutions Brief: Accelerate investigations. Reduce review. Defend with confidence.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/ediscovery-solutions-brief-accelerate-investigations-reduce-review-defend-with-confidence/"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Solutions Brief: Smarter investigations powered by Magnet.AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/solutions-brief-smarter-investigations-powered-by-magnet-ai/"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "On Demand Webinars On Demand Webinars S4:E8 // Roadblocks ahead! Navigating the major issues of mobile forensics Mobile Forensics is a constantly evolving field. While many of the roadblocks examiners",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/mobile-unpacked-s4e8-roadblocks-ahead-navigating-the-major-issues-of-mobile-forensics/"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "White Papers Incident Response Solutions Brief: Connect threat detection and investigation for faster incident response DFIR teams are under increasing pressure to validate, scope and contain complex ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/incident-response-solutions-brief-connect-threat-detection-and-investigation-for-faster-incident-response-2/"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Sep 9 Upcoming Webinars Upcoming Webinars S3:E5 // What to expect when you\u2019re (not) expecting an incident Every organization has an incident response plan and almost none of them survive contact with ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/s3e5-what-to-expect-when-youre-not-expecting-an-incident/"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From tip to action: Managing NCMEC cyber tip\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/from-tip-to-action-managing-ncmec-cyber-tips-at-scale/"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Forensic analysis of ChatGPT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/forensic-analysis-of-chatgpt/"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beyond the alert: Investigating AI-enabled c\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/beyond-the-alert-investigating-ai-enabled-cyber-fraud-in-africa/"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Turning chaos into cadence: Rethinking evide\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/turning-chaos-into-cadence-rethinking-evidence-management-frameworks-in-high-volume-arrest-operations/"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Keeping pace with evolving cybercrime in Wes\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/keeping-pace-with-evolving-cybercrime-in-west-africa/"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The evolving digital investigation landscape\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/the-evolving-digital-investigation-landscape-in-africa-a-fireside-chat/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Magnet Forensics sells software and hardware that investigators use to recover, analyze, and report on data from mobile devices, computers, cloud accounts, and vehicles. The company says it has more than 6,000 customers worldwide. The analysis product, Magnet Axiom, brings computer, mobile, cloud, vehicle, and acquired data into a single case.",
+   "Magnet Graykey handles access, preservation, and extraction of data from iOS and Android devices. Graykey goes to agencies only: the company states it is restricted to select countries, is not available to the private sector, and asks that inquiries come from an agency-issued email. Graykey Fastrak runs simultaneous extractions on multiple workstations to scale a lab. A vehicle product, Magnet Autokey, pulls data from infotainment systems over USB rather than through teardowns or chip-off extraction. Autokey is included with Graykey Premier online licenses in the US.",
+   "For private sector work, Magnet Verakey performs consent-based full file system, logical, and category extractions from mobile devices. It captures employee consent and notifies administrators on every extraction. Collected data exports to analysis tools including Magnet Axiom Cyber. Scott Ferro, an examiner at the Rochester Police Department, is quoted saying Graykey makes life a whole lot easier in accessing data on iPhones."
+  ],
+  "quote": {
+   "text": "Graykey is restricted to select countries. Graykey is not available to the private sector.",
+   "url": "https://www.magnetforensics.com/products/magnet-graykey"
+  },
+  "sources": [
+   {
+    "url": "https://www.magnetforensics.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.magnetforensics.com/products/magnet-graykey",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.magnetforensics.com/products/magnet-verakey",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.magnetforensics.com/products/magnet-axiom",
+    "https://www.magnetforensics.com"
+   ],
+   [
+    "https://www.magnetforensics.com/products/magnet-graykey",
+    "https://www.magnetforensics.com/products/magnet-autokey"
+   ],
+   [
+    "https://www.magnetforensics.com/products/magnet-verakey",
+    "https://www.magnetforensics.com"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

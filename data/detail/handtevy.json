@@ -1,0 +1,129 @@
+{
+ "news": [
+  {
+   "date": "2025-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "FL Invests in Handtevy Technology to Transform Rural Emergency Care",
+   "kind": "funding",
+   "kind_rule": "Invests",
+   "url": "https://www.handtevy.com/news/fl-invests-in-handtevy-technology-to-transform-rural-emergency-care/"
+  },
+  {
+   "date": "2025-05-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Patrick Bavaro Named Chief Growth Officer as Handtevy Expands Its Reach",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.handtevy.com/news/patrick-bavaro-named-chief-growth-officer-as-handtevy-expands-its-reach/"
+  },
+  {
+   "date": "2025-05-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "HealthEMS MobileTouch Joins Our Growing List of Trusted Integration Partners",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.handtevy.com/news/epcr-integration-healthems-sansio-mobiletouch/"
+  },
+  {
+   "date": "2025-01-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Handtevy Welcomes Dan Moran as Vice President of Education",
+   "kind": "leadership",
+   "kind_rule": "Welcomes",
+   "url": "https://www.handtevy.com/news/handtevy-welcomes-dan-moran-as-vp-of-education/"
+  },
+  {
+   "date": "2024-04-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "State Partnership Drives Handtevy Adoption in Indiana, Enhancing Lifesaving Emergency Response for EMS",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.handtevy.com/news/indiana-state-partnership-with-handtevy/"
+  },
+  {
+   "date": "2022-05-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Spokane Fire Department adds EMS pediatric tools for baby and child emergency care",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.handtevy.com/news/spokane-fire-department-adds-ems-pediatric-tools-for-baby-and-child-emergency-care/"
+  },
+  {
+   "date": "2022-01-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Virginia to Outfit all EMS Agencies in the Commonwealth with Nationally Renowned Handtevy System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.handtevy.com/news/virginia-state-outfit-ems-agengies-with-handtev/"
+  },
+  {
+   "date": "2021-04-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "More Children\u2019s Lives Will Be Saved as Utah Partners with Handtevy for All EMS Agencies in the State",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.handtevy.com/news/more-childrens-lives-will-be-saved-as-utah-partners-with-handtevy-for-all-ems-agencies-in-the-state/"
+  },
+  {
+   "date": "2019-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Child\u2019s Play: Scoop-and-Run May Not Be Best for Kids in Cardiac Arrest",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.handtevy.com/news/childs-play-scoop-and-run-may-not-be-best-for-kids-in-cardiac-arrest/"
+  },
+  {
+   "date": "2019-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "\u2018Stop the Bleed\u2019 Kits\u2013Preparing Everyone for Mass Casualties",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.handtevy.com/news/stop-the-bleed-kits-preparing-everyone-for-mass-casualties/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Handtevy sells clinical workflow software for emergency medicine, pairing precision dosing and protocol access for clinicians with control and reporting for the administrators who oversee them. The buyers are agencies and hospitals looking to raise their standard of emergency care.",
+   "Handtevy Mobile puts precision dosing, real-time protocols, and clinical decision support directly in clinicians' hands. Weight-based calculations are cross-checked against clinical thresholds and customized to local protocols. An admin portal lets administrators manage pharmacology, protocols, order sets, and checklists across an organization and control exactly what clinicians see at the point of care. The software connects directly with ePCR and EHR platforms, which the company says involves no PHI exposure and no IT infrastructure.",
+   "The company says it is used by more than 200,000 clinicians in all 50 states. Pediatric Emergency Standards, Inc. has operated under the name Handtevy since 2010, offering evidence-based software to healthcare providers domestically and internationally. Its founder, Dr. Peter Antevy, is a practicing pediatric emergency medicine physician and EMS Medical Director. The company started in pediatrics and now describes its goal as improving emergency care for adults as well."
+  ],
+  "quote": {
+   "text": "Handtevy is a preeminent pediatric system of care relied on by clinicians in the emergency medical field worldwide.",
+   "url": "https://www.handtevy.com/about/"
+  },
+  "sources": [
+   {
+    "url": "https://handtevy.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.handtevy.com/about/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://handtevy.com"
+   ],
+   [
+    "https://handtevy.com"
+   ],
+   [
+    "https://handtevy.com",
+    "https://www.handtevy.com/about/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

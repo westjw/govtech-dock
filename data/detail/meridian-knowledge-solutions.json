@@ -1,0 +1,84 @@
+{
+ "news": [
+  {
+   "date": "2026-03-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Configurability Guide: Choosing an LMS for Complex Organizations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://meridianks.com/resources/configurability-guide-choosing-lms-for-complex-organizations/"
+  },
+  {
+   "date": "2026-03-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Meridian FedRAMP\u00ae Buyer\u2019s Guide for Learning Management Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://meridianks.com/resources/meridian-fedramp-buyers-guide-for-learning-management-systems/"
+  },
+  {
+   "date": "2026-01-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The State & Local Government Compliance Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://meridianks.com/resources/the-state-local-government-compliance-guide/"
+  },
+  {
+   "date": "2024-12-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How the Society of Actuaries Transformed Learning with Meridian LMS",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://meridianks.com/resources/the-society-of-actuaries-success-story/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Meridian Knowledge Solutions sells a learning management system built for government and enterprise organizations. The platform supports compliance training, employee onboarding, extended enterprise learning and e-commerce.",
+   "Compliance tracking is automated, and learners can view statuses, download certificates and monitor their progress. In-person and virtual learning can be combined so that participants take part together regardless of location. Reporting runs through dashboards, detailed reports and scheduled data exports. Buyers can adjust settings, workflows, branding and user interfaces without altering the underlying code. For more specialized requirements the development team can extend or modify capabilities at the code level.",
+   "The named markets are federal, state and local governments alongside healthcare, manufacturing, financial services, associations and public safety. The platform is described as FedRAMP 20x Class C Certified. The company also states that the product is built and supported in the United States. Security controls listed include role-based access controls, data encryption and secure cloud hosting. A customer video on the solutions page features Johnson Controls scaling training across the business."
+  ],
+  "quote": {
+   "text": "Meridian LMS: Drive Change Through Learning and Training",
+   "url": "https://www.meridianks.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.meridianks.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://meridianks.com/solutions/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://meridianks.com/solutions/use-cases/employee-onboarding/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://meridianks.com/solutions/use-cases/employee-development/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.meridianks.com"
+   ],
+   [
+    "https://www.meridianks.com",
+    "https://meridianks.com/solutions/use-cases/employee-development/"
+   ],
+   [
+    "https://meridianks.com/solutions/",
+    "https://www.meridianks.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

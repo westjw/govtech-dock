@@ -1,0 +1,81 @@
+{
+ "news": [
+  {
+   "date": "2026-06-04",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "How a Single Upload to TRULEO Surfaced Critical Evidence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://resources.truleo.co/blog/single-upload-to-truleo-surfaced-critical-evidence"
+  },
+  {
+   "date": "2026-05-05",
+   "date_source": "byline",
+   "first_seen": "2026-09-09",
+   "headline": "Detectives: Easier Social Services Reports",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://resources.truleo.co/blog/improving-social-services-reports"
+  },
+  {
+   "date": "2025-03-13",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Why Body Camera Footage Alone Falls Short for Report Writing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://resources.truleo.co/blog/why-body-camera-footage-alone-falls-short-for-report-writing"
+  },
+  {
+   "date": "2025-02-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Snowflake-Taylor (AZ) Police Department implements AI-powered police officer assistant 02.06.2025 | Fox10 Snowflake-Taylor (AZ) Police Department is partnering with TRULEO, an AI-Powered Police Office",
+   "kind": "contract",
+   "kind_rule": "implements",
+   "url": "https://truleo.co/press/snowflake-az?hsLang=en"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "TRULEO sells software to law enforcement agencies that reads the databases a department already has and generates case solvability scores by connecting the dots and surfacing new leads. It sits on top of an agency's RMS and case management system rather than replacing them. When a detective runs a name, jail calls, RMS, OSINT, body-worn camera footage and more than 140 sources are cross-referenced automatically. What comes back are investigative next steps, new leads and ranked case solvability scores.",
+   "The same platform writes shift and intelligence briefings for patrol and command, drafts policies and recommends resource allocation. Earlier press releases describe TRULEO as body-worn camera review software, adopted by agencies such as the Washtenaw County Sheriff's Office and the Queen Creek Police Department. The company states the platform is 100% made in the USA, FBI CJIS compliant, and included in the FBI National Academy curriculum in Quantico, Virginia.",
+   "A 2026 press release describes an on-premise AI agent platform used by hundreds of law enforcement agencies across the US. The CEO and co-founder serves on the board of the FBI National Academy Foundation and has spent his career building COMINT platforms for financial compliance, intelligence and public safety agencies. The CTO and co-founder, Tejas Shastry, holds a PhD from Northwestern University."
+  ],
+  "quote": {
+   "text": "TRULEO isn't another dashboard to check. It actively works your cases, searching, connecting, and surfacing leads so your detectives can focus on closing them.",
+   "url": "https://truleo.co/"
+  },
+  "sources": [
+   {
+    "url": "https://truleo.co/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://truleo.co/about-us",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://truleo.co/case-studies",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://truleo.co/"
+   ],
+   [
+    "https://truleo.co/",
+    "https://truleo.co/press",
+    "https://truleo.co/about-us"
+   ],
+   [
+    "https://truleo.co/press",
+    "https://truleo.co/about-us"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

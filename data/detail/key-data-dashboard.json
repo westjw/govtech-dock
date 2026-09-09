@@ -1,0 +1,156 @@
+{
+ "news": [
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "The Missing Layer in Revenue Management: Performance Validation The Missing Layer in Revenue Management: Performance Validation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://keydatadashboard.com/blog/the-missing-layer-in-revenue-management-performance-validation"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hotel Marketing Guide: The Complete Lodging Picture Hotel Marketing Guide: The Complete Lodging Picture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://keydatadashboard.com/blog/hotel-marketing-guide-the-complete-lodging-picture"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Is a Dynamic Pricing Tool? PriceLabs vs. Beyond vs. Wheelhouse What Is a Dynamic Pricing Tool? PriceLabs vs. Beyond vs. Wheelhouse",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://keydatadashboard.com/blog/what-is-a-dynamic-pricing-tool-pricelabs-vs-beyond-vs-wheelhouse"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "When Rental Caps Change More Than Housing: What Salt Lake City\u2019s New STR Rules Could Mean for Tourism When Rental Caps Change More Than Housing: What Salt Lake City\u2019s New STR Rules Could Mean for Tour",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://keydatadashboard.com/blog/salt-lake-citys-200-night-str-cap-what-it-means-for-destination-tourism"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Modeling the Revenue Impact of Salt Lake City\u2019s 200-Night Short-Term Rental Cap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://keydatadashboard.com/blog/how-salt-lake-citys-200-night-rental-cap-impacts-str-revenue"
+  },
+  {
+   "date": "2026-08-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Revenue Management for Luxury Portfolios: Using Market Data Without Comparing Yourself to the Market",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://keydatadashboard.com/blog/luxury-vacation-rental-pricing-strategy-beyond-the-average"
+  },
+  {
+   "date": "2026-08-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Evolution of Revenue Management in Short-Term Rentals",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://keydatadashboard.com/blog/the-evolution-of-revenue-management-in-short-term-rentals"
+  },
+  {
+   "date": "2026-08-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Spreadsheet-Based Revenue Management Breaks at Scale",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://keydatadashboard.com/blog/why-spreadsheet-revenue-management-breaks-at-scale"
+  },
+  {
+   "date": "2026-08-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Spring Isn't Booking: When to Act, When to Wait",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://keydatadashboard.com/blog/shoulder-season-pricing-strategy-when-to-discount-or-wait"
+  },
+  {
+   "date": "2026-08-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Talk to Owners When the Market Is Down",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://keydatadashboard.com/blog/how-to-explain-a-market-downturn-to-vacation-rental-owners"
+  },
+  {
+   "date": "2026-08-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Portfolio-Level Visibility Changes Revenue Decisions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://keydatadashboard.com/blog/portfolio-level-visibility-and-better-revenue-decisions"
+  },
+  {
+   "date": "2026-08-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Professional STR Operators Forecast Occupancy 90 Days Out",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://keydatadashboard.com/blog/how-to-forecast-vacation-rental-occupancy-90-days-out"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Key Data sells lodging market data and analytics used by vacation rental property managers, destination organizations, investors and enterprise analytics teams. The argument it makes is that its figures come from actual bookings rather than estimates read off public listing calendars.",
+   "The dataset joins direct-source short-term rental reservation data with Airbnb and Vrbo listing coverage and hotel performance benchmarks. The company states integrations with more than 80 property management systems and direct-source data from more than 17,000 property managers, covering over 1.15 million vacation rental properties. Reporting covers occupancy, ADR, RevPAR, guest nights, booking pace and length of stay.",
+   "Destination organizations use it to understand event performance, find high-value feeder markets, time campaigns and report results to boards, elected officials and stakeholders. The company says more than 300 destination organizations choose it. Enterprise teams can take the same data through APIs, flat files, S3 buckets, Snowflake delivery or custom feeds rather than through a dashboard."
+  ],
+  "quote": {
+   "text": "KeyData is not a pricing tool.",
+   "url": "https://keydatadashboard.com/products/prodata"
+  },
+  "sources": [
+   {
+    "url": "https://keydatadashboard.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://keydatadashboard.com/products/prodata",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://keydatadashboard.com/products/destinationdata",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://keydatadashboard.com/products/enterprisedata",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://keydatadashboard.com"
+   ],
+   [
+    "https://keydatadashboard.com",
+    "https://keydatadashboard.com/products/destinationdata"
+   ],
+   [
+    "https://keydatadashboard.com/products/destinationdata",
+    "https://keydatadashboard.com/products/enterprisedata"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,51 @@
+{
+ "news": [
+  {
+   "date": "2024-04-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CostQuest Announces Transition to Employee-Owned Company",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.costquest.com/resources/news/costquest-announces-transition-to-employee-owned-company/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "CostQuest Associates is a broadband consulting, data, and technology firm that collaborates with businesses and governments of all sizes. Its work covers network cost, economics, asset valuation, planning, policy, program support, mapping, and data science.",
+   "The data side of the business builds broadband-specific geographic information system data and applications for service providers, government entities, engineers, and consultants. It begins by pinpointing Broadband Serviceable Locations at the coordinate and address level across the United States. Essential broadband insights are then layered onto each serviceable location, including service availability, competition, funding details, and cost to serve. A consulting services team builds custom cost, business case, valuation, and appraisal models detailing the economics of broadband infrastructure for service providers, engineers, and governments.",
+   "The founders left the corporate telecom world to set out on their own. Over twenty years later, in 2023, the company transitioned to employee ownership. It is headquartered in Cincinnati, Ohio, with a team in Seattle, Washington, and a presence in Washington, D.C. Clients include service providers, engineers, consultants, and governments at the federal, state, and local levels. The company states that it serves as the Broadband Serviceable Location Fabric data provider for the FCC's Broadband Data Collection and for NTIA's BEAD program."
+  ],
+  "quote": {
+   "text": "The Location Fabric data is now the industry standard dataset to track broadband service availability",
+   "url": "https://www.costquest.com/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://www.costquest.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.costquest.com/about-us/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.costquest.com/about-us/our-team/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.costquest.com/about-us/"
+   ],
+   [
+    "https://www.costquest.com/about-us/"
+   ],
+   [
+    "https://www.costquest.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

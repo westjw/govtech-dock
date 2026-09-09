@@ -1,0 +1,156 @@
+{
+ "news": [
+  {
+   "date": "2025-07-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Everyone Benefits from Effective Court Reminders",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fieldware.com/blog/benefits-effective-court-reminders"
+  },
+  {
+   "date": "2025-04-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI, Cybersecurity, and the Future of Public Safety Tech",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fieldware.com/blog/ai-cybersecurity-the-future-public-safety-tech"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Technology Helps Correctional Workforce Do More With Less",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fieldware.com/blog/corrections-workforce-crisis-using-technology-more-with-less"
+  },
+  {
+   "date": "2025-02-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Technology Will Shape Public Safety in 2025",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fieldware.com/blog/how-technology-will-shape-public-safety-2025"
+  },
+  {
+   "date": "2024-12-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Remote Check-In Is Shaping the Future of Community Supervision",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fieldware.com/blog/how-remote-check-shaping-future-community-supervision"
+  },
+  {
+   "date": "2024-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "FieldWare Announces Brian Richards as Director of Product",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fieldware.com/press-releases/fieldware-announces-brian-richards-as-director-of-product"
+  },
+  {
+   "date": "2024-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hurricane Response: How Law Enforcement Uses Data to Save Lives",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fieldware.com/blog/hurricane-response-law-enforcement-uses-data-save-lives"
+  },
+  {
+   "date": "2024-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "FieldWare Announces Leadership Transition",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fieldware.com/press-releases/fieldware-announces-leadership-transition"
+  },
+  {
+   "date": "2024-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Avert Delays and Boost Court Attendance with SaaS Subpoena Software & Mobile App",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fieldware.com/blog/avert-delays-and-boost-court-attendance-with-saas-subpoena-software-mobile-app"
+  },
+  {
+   "date": "2024-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hurricane Response: How Law Enforcement Uses Data to Save Lives",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fieldware.com/blog/remote-check-in-technology-is-revolutionizing-the-way-parole-and-probation-agencies-operate"
+  },
+  {
+   "date": "2024-04-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Digital Transformation of Probation and Parole Services",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fieldware.com/blog/digital-transformation-probation-parole-services"
+  },
+  {
+   "date": "2024-03-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Facilitating Fire & Rescue Collaboration for Large Scale Emergency Response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fieldware.com/blog/facilitating-fire-rescue-collaboration-for-large-scale-emergency-responses"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "FieldWare sells cloud-based software for judicial professionals, community supervision teams, and public safety personnel at city, county, and state agencies. Its modules cover pretrial, parole, and probation supervision, workforce management with a companion mobile app, and court notification and attendance.",
+   "The CourtNotify suite centralizes subpoena processes for courts, prosecutors, defense attorneys, public safety officials, and civilian witnesses, and can serve one agency or unite several. A companion CourtNotify mobile app for iOS and Android carries court notifications in real time and uses geofencing to record officer check in and check out times at courthouses.",
+   "FieldWare hosts in an Azure Government environment it describes as FedRAMP-compliant and runs continuous BreachLock penetration testing. A testimonial attributed to Lt. Gene Summers of the Dallas Police Department says the first year of implementation saved approximately $2.2 million in court overtime."
+  ],
+  "quote": {
+   "text": "FieldWare: Specialized Software for Judicial, Supervision, and Public Safety Teams",
+   "url": "https://fieldware.com"
+  },
+  "sources": [
+   {
+    "url": "https://fieldware.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://fieldware.com/solutions/courtnotify/suite",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://fieldware.com/solutions/courtnotify/subpoena-management",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://fieldware.com/solutions/courtnotify/mobile",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://fieldware.com"
+   ],
+   [
+    "https://fieldware.com/solutions/courtnotify/suite",
+    "https://fieldware.com/solutions/courtnotify/mobile"
+   ],
+   [
+    "https://fieldware.com",
+    "https://fieldware.com/solutions/courtnotify/subpoena-management"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

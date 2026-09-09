@@ -1,0 +1,45 @@
+{
+ "profile": {
+  "paragraphs": [
+   "SurePassID sells deploy-anywhere multi-factor authentication for IT/OT and critical infrastructure, deployable in the cloud, on-premise, or within air-gapped networks. It covers Windows, MacOS, and Linux logins with offline 2FA and fronts cloud and on-prem apps through SAML2, OIDC, and LDAP identity providers. The company cites 99.999% availability, redundancy, and automatic failover, and markets the product for compliance with OMB M-22-09, CMMC 2.0, and NIS2. It supports phishing-resistant MFA through FIDO2/WebAuthn passkeys and security keys as well as OATH HOTP, TOTP, and OCRA tokens and mobile push.",
+   "SurePassID has provided on-premise MFA since its founding in 2012 and says 50% of its customer base, including Fortune 500 companies, uses it on-premise. It also serves financial services, having introduced a private cloud authentication server for online payments licensed by Visa, MasterCard, American Express, First Data, and Discover. About 33% of its install base runs in air-gapped environments, and it provides air-gapped MFA to 11 of 16 critical infrastructure sectors. It offers turnkey MFA for SCIFs and SAPFs and pre-built integrations for SCADA systems such as EcoStruxure Geo SCADA Expert.",
+   "Private cloud deployments run in Microsoft Azure Commercial, GCC, and GCC High and in Amazon AWS and AWS GovCloud. As a SAML 2.0 identity provider it adds MFA to existing IAM tools such as Microsoft Entra, Okta, or Ping, and integrates with Workday, Oracle, and SAP directories."
+  ],
+  "quote": {
+   "text": "SurePassID drives Zero Trust everywhere. Deploy MFA for IT/OT in the cloud, on-premise, or within air-gapped networks.",
+   "url": "https://surepassid.com"
+  },
+  "sources": [
+   {
+    "url": "https://surepassid.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://surepassid.com/solutions/air-gapped-mfa?hsLang=en",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://surepassid.com/solutions/on-premise-mfa?hsLang=en",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://surepassid.com/solutions/hybrid-cloud-mfa?hsLang=en",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://surepassid.com"
+   ],
+   [
+    "https://surepassid.com/solutions/on-premise-mfa?hsLang=en",
+    "https://surepassid.com/solutions/air-gapped-mfa?hsLang=en"
+   ],
+   [
+    "https://surepassid.com/solutions/hybrid-cloud-mfa?hsLang=en"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

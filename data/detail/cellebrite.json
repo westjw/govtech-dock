@@ -1,0 +1,102 @@
+{
+ "news": [
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Cellebrite Guardian: IRAP-Assessed Cloud Platform Achieves PROTECTED Level for Australian Government Agencies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/guardian-irap-assessment-cloud-security-for-australian-agencies-cellebrite/"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Digital Evidence Overload: Why Prosecutors Need Direct Access to Case Data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/direct-access-to-digital-evidence-for-prosecutors/"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Cellebrite Brings Battlefield Intelligence to the Armed Forces with Launch of Portable Tactical Extraction Kit (C-TEK)",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://cellebrite.com/en/resources/cellebrite-brings-battlefield-intelligence-to-the-armed-forces-with-launch-of-portable-tactical-extraction-kit-c-tek/"
+  },
+  {
+   "date": "2026-06-29",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "A Drone Forensics Operation at Scale: 1,200+ UAVs. Nearly 10 TB of Data. One CFID.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/resources/press-releases/"
+  },
+  {
+   "date": "2026-03-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Future of Mobile Security Testing Tools: The Latest New Corellium Products",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/future-of-mobile-security-testingtools-the-latest-new-corellium-products/"
+  },
+  {
+   "date": "2025-09-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From a Closet to the Crime Scene: How Horry County Sheriff\u2019s Office Built a Life-Saving Digital Forensics Program with Cellebrite Read More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/resources/from-a-closet-to-the-crime-scene-how-horry-county-sheriffs-office-built-a-life-saving-digital-forensics-program-with-cellebrite/"
+  },
+  {
+   "date": "2024-12-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "A Drone Forensics Operation at Scale: 1,200+ UAVs. Nearly 10 TB of Data. One CFID.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/newsroom/in-the-news/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Cellebrite sells digital investigation tools that law enforcement agencies use to access, extract, secure and manage digital evidence. Its Tactical Extraction Kit is pitched as everything an agency needs to pull information from digital devices at the point of capture. The company states its mission as enabling customers to protect and save lives by enhancing digital investigations and intelligence gathering.",
+   "For crime analysts, the company describes turning data into actionable intelligence in hours or days instead of months. It says its tools speed data analysis by up to 12x in complex investigations that involve multiple devices. One analyst tool draws on open-source data from social media and public records to help investigators build a profile. A cloud-based service handles sharing, reviewing and managing the digital evidence that results.",
+   "Case studies on the site include the Deschutes County Sheriff's Office, which the company describes as finding success with digital forensics. The Florida Department of Law Enforcement is featured on the crime analyst page, where an analyst supervisor is quoted on the tools. Beyond policing, a line branded Cellebrite Enterprise Solutions offers remote data collection and what the site calls 360\u00b0 insights. Cellebrite Federal Solutions gathers field intelligence for national security and defense operations."
+  ],
+  "quote": {
+   "text": "Cellebrite\u2019s mission is to enable its global customers to protect and save lives by enhancing digital investigations and intelligence gathering to accelerate justice in communities around the world.",
+   "url": "https://cellebrite.com"
+  },
+  "sources": [
+   {
+    "url": "https://cellebrite.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://cellebrite.com/en/solutions/roles/analyst/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://cellebrite.com"
+   ],
+   [
+    "https://cellebrite.com/en/solutions/roles/analyst/"
+   ],
+   [
+    "https://cellebrite.com",
+    "https://cellebrite.com/en/solutions/roles/analyst/"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

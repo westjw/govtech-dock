@@ -1,0 +1,147 @@
+{
+ "news": [
+  {
+   "date": "2026-02-24",
+   "date_source": "byline",
+   "first_seen": "2026-09-09",
+   "headline": "Spring Thaw \u201cTicking Time Bomb\u201d Potholes Detected by AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dareesoft.com/news/riaas-spring-thaw-pothole-ai-solution"
+  },
+  {
+   "date": "2025-10-01",
+   "date_source": "byline",
+   "first_seen": "2026-09-09",
+   "headline": "Dareesoft Selected for NYC DOT\u2013Newlab AI Road Management Pilot",
+   "kind": "contract",
+   "kind_rule": "Selected",
+   "url": "https://www.dareesoft.com/news/dareesoft-selected-for-nyc-dot-newlab-ai-road-management-pilot"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Seattle, WA \u2013 April 2, 2025 \u2014 Dareesoft Inc., an emerging global leader in AI-powered road intelligence, proudly secured 2nd place at the 2025 SCORE Seattle Small Business Pitch Contest, held this wee",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dareesoft.com/news/dareesoft-secures-2nd-place-at-2025-score-seattle-small-business-pitch-contest"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Dareesoft Commands Global Stage at Intertraffic, Amsterdam 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dareesoft.com/news/dareesoft-riaas-intertraffic-amsterdam-2026"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Yangju City has been recognized as an outstanding institution in the 2024 Local Government Innovation Evaluation, organized by the Ministry of the Interior and Safety. The city received high marks for",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dareesoft.com/news/yangju-city-riaas-road-safety-platform-award"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "RiaaS (Road Hazard Information as a Service) Receives Extension of Innovation Product Certification from the Korean government Public Procurement Service",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dareesoft.com/news/dareesoft-pps-certification-extension"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "On September 3rd, a special event was held at Seongnam City Hall to commemorate Gender Equality Week (September 1-7, 2024)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dareesoft.com/news/dareesoft-gender-equality-commendation"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Dareesoft North America participated in the Green Transportation Summit & Expo in Tacoma, WA, from August 20-22, 2024. Exhibiting RiaaS at Booth 315",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dareesoft.com/news/dareesoft-showcases-riaas-at-green-transportation-summit-expo-2024-in-tacoma-wa-usa"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Dareesoft wins contract to deliver Seoul's video-based automatic pothole detection project",
+   "kind": "contract",
+   "kind_rule": "contract",
+   "url": "https://www.dareesoft.com/news/dareesoft-wins-contract-to-deliver-seouls-video-based-automatic-pothole-detection-project"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Roadhazard information service company, participated in City-Tech.Tokyo",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dareesoft.com/news/roadhazard-information-service-company-participated-in-city-techtokyo-3"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Dareesoft featured in KBS for RiaaS deployment in Hwaseong City",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dareesoft.com/news/dareesoft-featured-in-kbs-for-riaas-deployment-in-hwaseong-city"
+  },
+  {
+   "date": "2025-04-02",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Dareesoft displays RiaaS at the Good Roads Conference Toronto Canada",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dareesoft.com/news/dareesoft-displays-riaas-at-the-good-roads-conference-toronto-canada"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Dareesoft sells road hazard detection that rides along in vehicles already using the road network. The offering is packaged as Road Information as a Service, an all-in-one solution for road maintenance. The company describes itself as an integrated road data company.",
+   "A device in the vehicle analyzes the road and transmits hazards to a cloud platform instantly. Each detection carries a high quality image with GPS coordinates, road network, timestamps and object size. Detected hazards appear on a road monitoring dashboard for remote inspection. An API suite lets the hazard data flow into systems an agency already runs.",
+   "Dareesoft was founded in 2020. Its company timeline lists a contract for the Seoul Metropolitan Government video-based pothole detection project. The same timeline records a project secured with Brazoria County, Texas. Another entry lists a project contract signed with New York City for speed signage. It also lists a Series B raise of KRW 4 billion."
+  ],
+  "quote": {
+   "text": "Road Information as a Service is an all-in-one solution for road maintenance.",
+   "url": "https://www.dareesoft.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.dareesoft.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.dareesoft.com/company",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.dareesoft.com",
+    "https://www.dareesoft.com/company"
+   ],
+   [
+    "https://www.dareesoft.com"
+   ],
+   [
+    "https://www.dareesoft.com/company"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

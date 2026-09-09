@@ -1,0 +1,48 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Technosylva sells wildfire and extreme weather risk software to electric utilities and fire agencies. The point of it is turning complicated weather data into something a planning or response team can act on.",
+   "For planning, the company combines large numbers of validated fire simulations with historical weather and a customer's own asset data. Its models estimate what an ignition would mean in acres burned, buildings destroyed and people affected. For operations, simulations run nightly to produce the wildfire risk metrics crews plan around. Utilities use the output to target power shutoffs instead of cutting service broadly. Feeds from computer-aided dispatch and IRWIN bring in incidents from federal and state agencies. Flooding, high wind, extreme temperature and winter storms sit in the same view as fire.",
+   "The homepage points readers toward Xcel Energy, CAL FIRE and CORE. Bryan Spear is named as chief executive. The company has also announced modeling of urban conflagration in the built environment."
+  ],
+  "quote": {
+   "text": "One platform for comprehensive, multi-hazard risk intelligence",
+   "url": "https://www.technosylva.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.technosylva.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://technosylva.com/products/overview/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://technosylva.com/products/wildfire-planning/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://technosylva.com/products/wildfire-operations/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.technosylva.com",
+    "https://technosylva.com/products/overview/"
+   ],
+   [
+    "https://technosylva.com/products/wildfire-planning/",
+    "https://technosylva.com/products/wildfire-operations/",
+    "https://technosylva.com/products/overview/"
+   ],
+   [
+    "https://www.technosylva.com",
+    "https://technosylva.com/products/overview/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "news": [
+  {
+   "date": "2026-03-05",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "SoundThinking statement on city of Chicago-Michael Williams settlement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.soundthinking.com/press-releases/soundthinking-statement-on-city-of-chicago-michael-williams-settlement"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "SoundThinking, Inc., listed on Nasdaq as SSTI, sells AI and data-driven public safety technology to law enforcement, civic leadership, and security professionals. Its ShotSpotter system detects and verifies gunfire incidents in near real time to support awareness and response. ShotSpotter is one part of the SafetySmart Platform, which the company says unifies gunfire alerts, vehicle intelligence, investigations, field awareness, and operational context in one place.",
+   "Alongside ShotSpotter, the platform includes CrimeTracer, a law enforcement search engine, and CaseBuilder, an investigation management system. ResourceRouter directs patrol and community anti-violence resources to where they will have the most effect. SafePointe screens entry points in high-traffic environments for weapons. PlateRanger connects vehicle sightings across time, location, and related events for investigators.",
+   "The company was founded as ShotSpotter in 1996 by physicist Dr. Robert Showen, who was then locating earthquake epicenters at the Stanford Research Institute in Menlo Park, California. After hearing gunshots in a nearby neighborhood, he applied the sound wave principles from his earthquake research to detecting and locating gunfire. Ralph Clark, hired as CEO in 2010, moved the system to a subscription rather than a capital hardware purchase. He also brought the human review of potential gunshots in-house through a centralized Incident Review Center. The gunshot detection service now serves over 170 cities. In 2023 the company rebranded from ShotSpotter to SoundThinking and launched the SafetySmart Platform. It reports more than 300 customers and work with approximately 2,100 agencies."
+  ],
+  "quote": {
+   "text": "Earn the trust of law enforcement to help them provide equal protection for all and strengthen the police-community relationship, ultimately improving public safety.",
+   "url": "https://www.soundthinking.com/company"
+  },
+  "sources": [
+   {
+    "url": "https://www.soundthinking.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.soundthinking.com/company",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.soundthinking.com/company",
+    "https://www.soundthinking.com"
+   ],
+   [
+    "https://www.soundthinking.com/company",
+    "https://www.soundthinking.com"
+   ],
+   [
+    "https://www.soundthinking.com/company"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

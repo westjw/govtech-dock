@@ -1,0 +1,159 @@
+{
+ "news": [
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Autonomous Transit Needs Its Own Playbook",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ridebeep.com/blog/autonomous-transit-needs-its-own-playbook"
+  },
+  {
+   "date": "2026-06-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Autonomous Vehicles Are Poised to Unlock Microtransit\u2019s Significant Benefits",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ridebeep.com/blog/autonomous-vehicles-are-poised-to-unlock-microtransits-significant-benefits"
+  },
+  {
+   "date": "2026-06-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beep & Atlanta Beltline Partner to Launch ATL Spoke: The City's First Autonomous Transit",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://ridebeep.com/press-releases/beep-atlanta-beltline-partner-to-launch-atl-spoke-the-citys-first-autonomous-transit"
+  },
+  {
+   "date": "2026-04-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "MOIA America to expand into new US markets through strategic partnership with Beep, starting in Orlando",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ridebeep.com/press-releases/moia-america-to-expand-into-new-us-markets-through-strategic-partnership-with-beep-starting-in-orlando"
+  },
+  {
+   "date": "2026-04-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Transit Agencies Should Prepare Now for the Inevitability of Autonomous Transit Fleets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ridebeep.com/blog/transit-agencies-should-prepare-now-for-the-inevitability-of-autonomous-transit-fleets"
+  },
+  {
+   "date": "2025-12-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From Pilots to Prime Time: Beep Secures Industry\u2019s Innovation Leadership Award",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://ridebeep.com/blog/from-pilots-to-prime-time-beep-secures-industrys-innovation-leadership-award"
+  },
+  {
+   "date": "2025-12-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beep\u2019s Big Move: Driving the Future of Mobility in Georgia",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ridebeep.com/blog/beeps-big-move-driving-the-future-of-mobility-in-georgia"
+  },
+  {
+   "date": "2025-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beep announces shared AV deployments set to debut with global and regional impact",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ridebeep.com/press-releases/beep-announces-shared-av-deployments-set-to-debut-with-global-and-regional-impact"
+  },
+  {
+   "date": "2025-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beep, Inc. and ADASTEC Announce Alliance Agreement to Scale Shared Autonomous Transportation Services Ahead of Two Upcoming Deployments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ridebeep.com/press-releases/beep-inc-and-adastec-announce-alliance-agreement-to-scale-shared-autonomous-transportation-services-ahead-of-two-upcoming-deployments"
+  },
+  {
+   "date": "2025-06-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beep Begins Operating NAVI: Nation's First Fully Autonomous Public Transit System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ridebeep.com/press-releases/beep-launches-navi-the-nations-first-fully-autonomous-public-transit-system"
+  },
+  {
+   "date": "2025-04-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "JTA Opens Autonomous Innovation Center, Unveils Service Name for Autonomous Vehicle Program",
+   "kind": "leadership",
+   "kind_rule": "Name",
+   "url": "https://ridebeep.com/press-releases/jta-opens-aic"
+  },
+  {
+   "date": "2025-01-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beep Welcomes Leslie Dello Russo as Chief People Officer and Shawn Fallon as Chief Financial Officer, Driving Continued Growth and Innovation",
+   "kind": "leadership",
+   "kind_rule": "Welcomes",
+   "url": "https://ridebeep.com/press-releases/beep-welcomes-leslie-dello-russo-as-chief-people-officer-and-shawn-fallon-as-chief-financial-officer-driving-continued-growth-and-innovation-2"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Beep plans, deploys and manages autonomous shuttles for private and public communities. The services answer demand for alternative modes of transportation within communities, campuses and municipalities. Routes run inside geo-fenced areas at a controlled speed.",
+   "Deployments are built around first and last-mile trips, linking retail to residential areas, remote parking to campus amenities, and underserved communities to transit stops and stations. The service portfolio runs from upfront analysis, planning and design through turnkey operation of an autonomous mobility network. Underneath sits AutonomOS, a vehicle-agnostic platform for multi-passenger autonomous mobility services. It plans service modes from fixed route to demand-responsive variants. In-cabin monitoring built on machine learning lets remote supervisors react to a passenger safety or roadway issue.",
+   "The platform is built for public transit operators and authorities. The company reports deployments in six states and two dozen deployments overall. The purpose-built shuttles carry ADA-compliant wheelchair ramps and restraints. One announced project, ATL Spoke, is a pilot with Atlanta Beltline that the company says is in service and open to the public."
+  ],
+  "quote": {
+   "text": "Beep delivers the next generation of shared mobility services utilizing driverless, multi-passenger vehicles.",
+   "url": "https://ridebeep.com/solutions/mobility-networks"
+  },
+  "sources": [
+   {
+    "url": "https://ridebeep.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://ridebeep.com/solutions/mobility-networks",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://ridebeep.com/solutions/autonomos",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://ridebeep.com/solutions/vehicles",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://ridebeep.com/solutions/mobility-networks",
+    "https://ridebeep.com"
+   ],
+   [
+    "https://ridebeep.com/solutions/mobility-networks",
+    "https://ridebeep.com/solutions/autonomos"
+   ],
+   [
+    "https://ridebeep.com/solutions/autonomos",
+    "https://ridebeep.com/solutions/vehicles",
+    "https://ridebeep.com/solutions/mobility-networks",
+    "https://ridebeep.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

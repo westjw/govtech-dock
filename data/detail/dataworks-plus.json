@@ -1,0 +1,42 @@
+{
+ "profile": {
+  "paragraphs": [
+   "DataWorks Plus sells biometric identity systems to law enforcement and corrections agencies. It has done so since 2000, and it sells turnkey packages that bundle hardware, software, implementation services and support. The company calls its product line the Plus Platform, a set of biometric identification management systems built for law enforcement.",
+   "One product, LiveScan Plus, is a suite for criminal booking and applicant processing that captures fingerprints, palm prints, mugshots, SMTs, signatures and irises. Agencies build a station by picking software, station types and accessories from a menu. Portable units serve mobile book and release, field arrests and large events that need a temporary booking station. For jails and prisons the company recommends its ruggedized cabinet stations. Matching covers fingerprints as well as facial, iris and SMT recognition. A Global Transaction Manager carries the resulting transactions from endpoints and applications out to third-party databases and back. Evolution, the mobile line, offers fingerprint, facial and iris capture on FAP-30 to FAP-60 certified scanners in phone and tablet form factors.",
+   "On security and compliance the company points to CJIS certificates and SOC 2 tier audit controls. It also runs an annual user event, InterConnect\u00b2, with the 2026 edition set for Panama City Beach, Florida on October 26-29."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://www.dataworksplus.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://dataworksplus.com/about/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://dataworksplus.com/products/platform/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://dataworksplus.com/products/software/livescan-plus/",
+    "https://dataworksplus.com/about/",
+    "https://dataworksplus.com/products/platform/"
+   ],
+   [
+    "https://dataworksplus.com/products/software/livescan-plus/",
+    "https://dataworksplus.com/products/platform/",
+    "https://dataworksplus.com/products/software/evolution-rapid-id/"
+   ],
+   [
+    "https://dataworksplus.com/about/",
+    "https://www.dataworksplus.com"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

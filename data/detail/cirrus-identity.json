@@ -1,0 +1,124 @@
+{
+ "news": [
+  {
+   "date": "2026-07-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "May & June 2026 Cirrus Identity Customer Implementations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cirrusidentity.com/blog/may-june-2026-cirrus-identity-customer-implementations"
+  },
+  {
+   "date": "2026-07-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "A World First in Japan: Cisco Duo and Cirrus Bridge Connect Doshisha Women\u2019s University to GakuNin",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cirrusidentity.com/blog/cisco-duo-cirrus-bridge-gakunin-doshisha"
+  },
+  {
+   "date": "2026-06-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Updating & Managing Certificates",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cirrusidentity.com/blog/updating-managing-certificates"
+  },
+  {
+   "date": "2026-05-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "April 2026 Cirrus Identity Customer Implementations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cirrusidentity.com/blog/april-2026-cirrus-identity-customer-implementations"
+  },
+  {
+   "date": "2026-04-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Configuring Cirrus Enterprise Bridge for REFEDS Assurance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cirrusidentity.com/blog/configuring-cirrus-enterprise-bridge-for-refeds-assurance"
+  },
+  {
+   "date": "2026-03-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "February & March 2026 Cirrus Identity Customer Implementations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cirrusidentity.com/blog/february-2026-cirrus-identity-customer-implementations"
+  },
+  {
+   "date": "2026-02-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Rethinking Governance as External Identities Scale",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cirrusidentity.com/blog/rethinking-governance-as-external-identities-scale"
+  },
+  {
+   "date": "2026-02-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "When Slate Credentials Aren\u2019t Enough: Hidden IAM Costs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cirrusidentity.com/blog/when-slate-credentials-arent-enough-the-hidden-iam-cost-of-applicant-access"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Cirrus Identity sells hosted sign-on services to colleges and universities of all sizes, university systems, research institutions, and medical centers. The problem it addresses is that campus identity systems were never designed to work together. Instead of replacing what a school already runs, Cirrus proxies authentication across identity providers, federations, and legacy systems.",
+   "The Bridge solution provides multilateral SAML and CAS for Entra ID, Okta, Duo SSO, and others. That lets a school meet the multilateral federation requirements of eduGAIN federations such as InCommon, CAF, and GakuNin without running Shibboleth, ADFS, or SSP. The Proxy solution handles people outside the enterprise directory, so guests, collaborators, alumni, and lifelong learners sign in without being given enterprise identities. Those users can bring credentials from Google, Microsoft, LinkedIn, Amazon, Apple, an ORCID iD, or a Cirrus Identity OrgBrandedID. Applicants can sign in to selected applications with their existing Slate credentials.",
+   "The buyers named on the site are identity and access management, security and privacy, systems architect, and enterprise application teams. Administrators get a console for reaching log events and configuring the products. The service is fully cloud hosted with 24x365 production support. Pricing is an annual subscription plus a one-time implementation fee, quoted for each use case. The company calls itself an InCommon Catalyst community partner."
+  ],
+  "quote": {
+   "text": "Cirrus connects identity systems that were never designed to work together.",
+   "url": "https://cirrusidentity.com"
+  },
+  "sources": [
+   {
+    "url": "https://cirrusidentity.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cirrusidentity.com/solutions/bridge",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cirrusidentity.com/solutions/proxy",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cirrusidentity.com/products/home",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.cirrusidentity.com/solutions/bridge",
+    "https://cirrusidentity.com"
+   ],
+   [
+    "https://www.cirrusidentity.com/solutions/bridge",
+    "https://cirrusidentity.com",
+    "https://www.cirrusidentity.com/solutions/proxy"
+   ],
+   [
+    "https://www.cirrusidentity.com/solutions/proxy",
+    "https://www.cirrusidentity.com/products/home",
+    "https://www.cirrusidentity.com/solutions/bridge",
+    "https://cirrusidentity.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

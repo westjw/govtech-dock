@@ -1,0 +1,129 @@
+{
+ "news": [
+  {
+   "date": "2025-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What It\u2019s Like to Survive an Active School Shooter Attack",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.zeroeyes.com/blog/what-its-like-to-survive-an-active-school-shooter-attack"
+  },
+  {
+   "date": "2025-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ZeroEyes Gun Detection Models For Security Cameras",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.zeroeyes.com/blog/zeroeyes-gun-detection-models-for-security-cameras"
+  },
+  {
+   "date": "2025-09-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "2024-25 Gun Violence Report: State of School Safety & Actionable Steps",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.zeroeyes.com/blog/2024-25-gun-violence-report-state-of-school-safety-actionable-steps"
+  },
+  {
+   "date": "2025-07-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Outdoor Event Safety: How to Prepare Your Team",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.zeroeyes.com/blog/outdoor-event-safety-how-to-prepare-your-team"
+  },
+  {
+   "date": "2025-06-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Was April 2025 a Warning Sign for U.S. Mass Shootings?",
+   "kind": "contract",
+   "kind_rule": "Sign",
+   "url": "https://www.zeroeyes.com/blog/was-april-2025-a-warning-sign-for-u-s-mass-shootings"
+  },
+  {
+   "date": "2025-05-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Second Watch: The Veterans Behind the Mission at ZeroEyes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.zeroeyes.com/blog/second-watch-the-veterans-behind-the-mission-at-zeroeyes"
+  },
+  {
+   "date": "2025-04-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Metal Detectors vs. AI Gun Detection: Modern Solutions for School Security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.zeroeyes.com/blog/metal-detectors-vs-ai-gun-detection-modern-solutions-for-school-security"
+  },
+  {
+   "date": "2025-03-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Secure Your Outdoor Events in 2025: The Ultimate Guide & Webinar",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.zeroeyes.com/blog/secure-your-outdoor-events-in-2025-the-ultimate-guide-webinar"
+  },
+  {
+   "date": "2025-02-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Top 10 Questions About AI-Driven Security Response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.zeroeyes.com/blog/top-10-questions-about-ai-driven-security-response"
+  },
+  {
+   "date": "2025-02-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Doing More with Less: How AI Reduces Security Costs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.zeroeyes.com/blog/doing-more-with-less-how-ai-reduces-security-costs"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "ZeroEyes sells threat detection software that runs on the security cameras a site already has, spotting visible firearms, knives and intruders in real time. The company aims it at schools, businesses and communities.",
+   "The software analyses live video, and every detection is reviewed by trained analysts in the ZeroEyes Operations Center to confirm the threat. Once verified, alerts go to designated personnel and law enforcement. Beyond firearms, the platform covers knife detection, intrusion, left-behind objects and obstructed cameras. Analysts staff the operations center around the clock.",
+   "The company says it was founded in 2018 by a team of Navy SEALs and technologists after the Marjory Stoneman Douglas school active shooter incident. Its stated mission is to end mass shootings in America. Many of its analysts have law enforcement and military backgrounds. The site says it protects schools, campuses and facilities in U.S. states. It reports over five million images used to train its weapon recognition models."
+  ],
+  "quote": {
+   "text": "Founded in 2018 by a team of Navy SEALs and elite technologists following the Marjory Stoneman Douglas school active shooter incident, ZeroEyes was created to protect people from having to face similar circumstances.",
+   "url": "https://www.zeroeyes.com/about-us"
+  },
+  "sources": [
+   {
+    "url": "https://www.zeroeyes.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.zeroeyes.com/about-us",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.zeroeyes.com"
+   ],
+   [
+    "https://www.zeroeyes.com"
+   ],
+   [
+    "https://www.zeroeyes.com/about-us",
+    "https://www.zeroeyes.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

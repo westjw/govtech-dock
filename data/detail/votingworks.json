@@ -1,0 +1,42 @@
+{
+ "profile": {
+  "paragraphs": [
+   "VotingWorks is a nonpartisan nonprofit that builds election technology for the officials who run American elections. There are two products. VxSuite is a complete voting system designed to the latest federal standard. The organization calls it the only open-source voting system used in United States elections. Arlo is an open-source application for auditing vote tabulation after an election.",
+   "Voters mark a paper ballot by hand or with a ballot-marking device, then scan it in under three seconds. A full precinct sets up in under three minutes and the equipment folds down for transport. Arlo audits tabulation whether the ballots were counted on VxSuite or on another vendor's system, using peer-reviewed statistics. Source code and documentation are published for anyone to verify. Software integrity can be checked in the field in 30 seconds.",
+   "Jurisdictions in New Hampshire and Mississippi run real elections on the voting system. Nine states are listed as using Arlo for statewide risk-limiting audits, among them Georgia, Michigan, Pennsylvania, and Texas. The work dates to 2018. It is organized as a 501c3, funded by equipment sales and support, government contracts and grants, and donations. The equipment complies with the Help America Vote Act, and HAVA grants can be used to buy it."
+  ],
+  "quote": {
+   "text": "Our source code and documentation are open for anyone to verify.",
+   "url": "https://www.voting.works"
+  },
+  "sources": [
+   {
+    "url": "https://www.voting.works",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.voting.works/products",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.voting.works/about",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.voting.works/about",
+    "https://www.voting.works/products"
+   ],
+   [
+    "https://www.voting.works/products",
+    "https://www.voting.works"
+   ],
+   [
+    "https://www.voting.works/about"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

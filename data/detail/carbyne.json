@@ -1,0 +1,114 @@
+{
+ "news": [
+  {
+   "date": "2026-03-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Carbyne Chosen by Metropolitan Washington COG to Power Next-Generation 911 Across the National Capital Region",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://carbyne.com/resources/press/carbyne-chosen-by-metropolitan-washington-cog-to-power-next-generation-911-across-the-national-capital-region/"
+  },
+  {
+   "date": "2025-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Carbyne Named in Prestigious Duns100 List of Best Startup Companies to Work for in Israel",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://carbyne.com/resources/press/carbyne-named-in-prestigious-duns100-list-of-best-startup-companies-to-work-for-in-israel/"
+  },
+  {
+   "date": "2025-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Carbyne Achieves EU-U.S. Data Privacy Framework Certification, Setting a New Standard for Secure Global Public Safety Communications",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://carbyne.com/resources/press/carbyne-achieves-eu-u-s-data-privacy-framework-certification-setting-a-new-standard-for-secure-global-public-safety-communications/"
+  },
+  {
+   "date": "2025-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Carbyne Receives Frost & Sullivan\u2019s 2025 North America Product Leadership Recognition for Excellence in Emergency Cloud Call Handling",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://carbyne.com/resources/press/carbyne-receives-frost-sullivans-2025-north-america-product-leadership-recognition-for-excellence-in-emergency-cloud-call-handling/"
+  },
+  {
+   "date": "2025-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Carbyne and Sourcewell Partner to Modernize Emergency Communications Nationwide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://carbyne.com/resources/press/carbyne-and-sourcewell-partner-to-modernize-emergency-communications-nationwide/"
+  },
+  {
+   "date": "2025-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Carbyne Powers Nationwide Emergency Communications Expansion for Global Medical Response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://carbyne.com/resources/press/carbyne-powers-nationwide-emergency-communications-expansion-for-global-medical-response/"
+  },
+  {
+   "date": "2025-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Carbyne Achieves AWS Government Competency Status",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://carbyne.com/resources/press/carbyne-achieves-aws-government-competency-status/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Carbyne builds and supports Axon 911 Core, a cloud-native infrastructure layer deployed in agencies across the United States and internationally. Its call-handling product, APEX, pulls call management capabilities into a single user interface for telecommunicators.",
+   "Patented live video lets responders see through the eyes of a caller. Location tools pinpoint a caller and track movement as permitted. AI-powered translation arrives directly on the call taker's screen. During call surges, an AI triage tool sorts through calls to identify redundant bystander and onlooker reports, freeing call takers for other emergencies. A continuity option has the AT&T Resolution Center redirect 911 calls and texts to devices running APEX Continuity. That reroute is triggered manually by the center rather than automatically.",
+   "The company states 99.999% call-handling uptime in the cloud. It describes the platform as providing the security of AWS GovCloud. Carbyne counts more than 100 partners and over 40 integrations on its open platform. The site names Orleans Parish Communication District as a center using its Emergency Call Triage."
+  ],
+  "quote": {
+   "text": "Rely on 99.999% call-handling uptime in the cloud",
+   "url": "https://carbyne.com/solutions/apex/"
+  },
+  "sources": [
+   {
+    "url": "https://www.carbyne.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://carbyne.com/solutions/apex/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://carbyne.com/solutions/apex/continuity/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://carbyne.com/solutions/emergency-call-triage/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.carbyne.com",
+    "https://carbyne.com/solutions/apex/"
+   ],
+   [
+    "https://carbyne.com/solutions/apex/",
+    "https://carbyne.com/solutions/emergency-call-triage/",
+    "https://carbyne.com/solutions/apex/continuity/"
+   ],
+   [
+    "https://carbyne.com/solutions/apex/",
+    "https://www.carbyne.com",
+    "https://carbyne.com/solutions/emergency-call-triage/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

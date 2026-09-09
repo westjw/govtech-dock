@@ -1,0 +1,65 @@
+{
+ "news": [
+  {
+   "date": "2021-08-11",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "How Safair Uses D4H To Activate Their Airline Emergency Response Plan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://d4h.com/blog/how-safair-uses-d4h-to-activate-their-airline-emergency-response-plan"
+  },
+  {
+   "date": "2019-08-27",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "How Subsea 7 Uses D4H to Manage and Support Onshore and Offshore Emergencies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://d4h.com/blog/20190820-how-subsea-7-uses-d4h-to-manage-and-support-onshore-and-offshore-emergencies"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "D4H makes cloud software that helps businesses, organizations and public safety agencies plan for, respond to and recover from incidents.",
+   "Its incident management product builds a common operating picture out of forms, tasks, logs, maps and status boards. Customers configure the system themselves without code, including on the fly during an incident. The company says it has been awarded ISO 27001:2022 for information security standards. Data residency is offered in the region the customer picks.",
+   "D4H states that responders use its software across many hundreds of organizations. The founder writes that he started D4H in 2008 based on his own experience in the Coast Guard. The company says it is now part of EcoOnline, and that its headquarters occupies a former lightkeeper training college in Ireland."
+  ],
+  "quote": {
+   "text": "I founded D4H in 2008 based on my own experience in the Coast Guard.",
+   "url": "https://d4h.com/company"
+  },
+  "sources": [
+   {
+    "url": "https://d4h.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://d4h.com/customers",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://d4h.com/company",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://d4h.com/products/incident-management-software",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://d4h.com/company"
+   ],
+   [
+    "https://d4h.com/products/incident-management-software",
+    "https://d4h.com"
+   ],
+   [
+    "https://d4h.com/company"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,142 @@
+{
+ "news": [
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Hobbs Police Department: Turning unclear questions into instant, reliable answers with Peregrine",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/hobbs-police-department-turning-unclear-questions-into-instant-reliable-answers-with-peregrine"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Customer stories 'We have a plan:' Inside Spokane County's school safety strategy Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/we-have-a-plan-inside-spokane-countys-school-safety-strategy"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Guides and reports How to build a crisis response program: Data-driven strategies for measurable outcomes Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/how-to-build-a-crisis-response-program-data-driven-strategies-for-measurable-outcomes"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Saving 40+ hours per year: How St. Petersburg Fire Rescue is streamlining CFAI accreditation reporting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/saving-40-hours-per-year-how-st-petersburg-fire-rescue-is-streamlining-cfai-accreditation-reporting"
+  },
+  {
+   "date": "2026-08-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Connected in crisis: Unifying emergency response in Florida",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/connected-in-crisis-unifying-emergency-response-in-florida"
+  },
+  {
+   "date": "2026-07-24",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Peregrine Technologies Names Adrian Kaplan as CFO",
+   "kind": "leadership",
+   "kind_rule": "Names",
+   "url": "https://www.peregrine.io/resources/peregrine-technologies-names-adrian-kaplan-as-cfo"
+  },
+  {
+   "date": "2026-07-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Connecting Hayward\u2019s vulnerable community members with services through integrated data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/connecting-haywards-vulnerable-community-members-with-services-through-integrated-data"
+  },
+  {
+   "date": "2026-07-10",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Fox 13 Tampa Bay: Manatee County tracks heat emergencies in Peregrine",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/fox-13-tampa-bay-manatee-county-tracks-heat-emergencies-in-peregrine"
+  },
+  {
+   "date": "2026-07-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Working across jurisdictions to create a safer Arizona",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/working-across-jurisdictions-to-create-a-safer-arizona"
+  },
+  {
+   "date": "2026-06-30",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Wavy.com: Virginia Beach PD adopts Peregrine to improve efficiency",
+   "kind": "contract",
+   "kind_rule": "adopts",
+   "url": "https://www.peregrine.io/resources/wavycom-virginia-beach-pd-adopts-peregrine-to-improve-efficiency"
+  },
+  {
+   "date": "2026-06-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What the age of context means for connected communities | Peregrine",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/what-this-moment-requires-a-letter-to-customers-and-communities"
+  },
+  {
+   "date": "2026-06-22",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Peregrine Technologies raises $250 million Series D at $6.8 billion valuation",
+   "kind": "funding",
+   "kind_rule": "raises",
+   "url": "https://www.peregrine.io/resources/peregrine-technologies-raises-250-million-series-d-at-68-billion-valuation"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Peregrine builds what it calls Operational AI for High-Criticality Organizations. The product is a full-stack platform that turns disconnected data into complete operational context and puts actionable intelligence in front of every person in an organization. Law enforcement is listed as a solution area, and the platform is positioned for public safety work.",
+   "The site lists organizations that include the Atlanta Police Department, the Cuyahoga County Prosecutor's Office, Eagle Fire Department, and Northern Arizona University. Also named are Manatee County Emergency Management, East Pierce Fire-Rescue, the Merced County District Attorney, and Pinellas County Safety & Emergency Services. The Fairfax County Police Department is quoted alongside a case described as a child abduction suspect identified in 13 minutes.",
+   "The platform is laid out in numbered steps: forward deployed engineering, data ingestion and enrichment, organizational context, semantic ontology, intuitive interfaces and AI, and data governance. On governance, the company states that a customer keeps complete control over its data, full visibility into how that data is used, and granular access controls. A banner on the site announces a $250 million Series D."
+  ],
+  "quote": {
+   "text": "Peregrine surfaces the unseen connections in your data. The result: new perspectives, shared awareness, faster action, and new ways of working.",
+   "url": "https://www.peregrine.io"
+  },
+  "sources": [
+   {
+    "url": "https://www.peregrine.io",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.peregrine.io"
+   ],
+   [
+    "https://www.peregrine.io"
+   ],
+   [
+    "https://www.peregrine.io"
+   ]
+  ],
+  "written_on": "2026-09-02",
+  "by_kind": "site"
+ }
+}

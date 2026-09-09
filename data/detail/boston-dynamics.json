@@ -1,0 +1,160 @@
+{
+ "news": [
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Ask a Roboticist: Meet Mark",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/ask-a-roboticist-meet-mark/"
+  },
+  {
+   "date": "2026-08-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Ask a Roboticist: Meet Taylor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/ask-a-roboticist-meet-taylor/"
+  },
+  {
+   "date": "2026-07-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Deploying Robots Into (and Onto) the Field",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/deploying-robots-into-and-onto-the-field/"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Bridging the \u2018Porch Gap\u2019",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/bridging-the-porch-gap/"
+  },
+  {
+   "date": "2026-07-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Securing the FIFA World Cup 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/securing-the-fifa-world-cup-2026/"
+  },
+  {
+   "date": "2026-06-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Boston Dynamics Expands Massachusetts Footprint with New 323,000 Square Foot Facility in Waltham",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/news/boston-dynamics-expands-massachusetts-footprint-with-new-323000-square-foot-facility-in-waltham/"
+  },
+  {
+   "date": "2026-06-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Can football teach a robot to move?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/can-football-teach-a-robot-to-move/"
+  },
+  {
+   "date": "2026-06-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Ask a Roboticist: Meet Chastity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/ask-a-roboticist-meet-chastity/"
+  },
+  {
+   "date": "2026-05-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Training a Humanoid Robot for Hard Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/training-a-humanoid-robot-for-hard-work/"
+  },
+  {
+   "date": "2026-04-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Ask a Roboticist: Meet Ethan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/ask-a-roboticist-meet-ethan/"
+  },
+  {
+   "date": "2026-04-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI Visual Intelligence Now Powered by Google Gemini Robotics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/aivi-learning-now-powered-google-gemini-robotics/"
+  },
+  {
+   "date": "2026-04-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Tools for Your To Do List with Spot and Gemini Robotics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/tools-for-your-to-do-list-with-spot-and-gemini-robotics/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Boston Dynamics builds mobile robots that companies use to automate tedious and hazardous work in manufacturing, logistics and other industries. Its product line covers Spot, Stretch, Atlas and Orbit. Spot is a mobile robot that automates sensing and inspection and captures data wherever it is sent. The company states that over 1,500 Spot robots are in customer hands today.",
+   "Spot works on factory floors, construction sites and research labs. As a sensing platform it gives teams insight into routine operations, site health or potentially hazardous situations. In energy and natural resources it performs inspections in energized, radioactive or otherwise hazardous areas. Operators can also use it to remotely investigate, assess and de-escalate tense or hazardous situations, reducing the risk to personnel. With the Spot Arm, operators can handle tasks such as nuclear material handling or suspicious package investigation from a safe distance. Standard payload configurations cover inspection, public safety and innovation, including a Government & Public Safety Kit.",
+   "Stretch, the company's warehouse robot, handles cases and unloads trailers. Orbit, its fleet management software, manages autonomous tasks, operates robots remotely and analyzes data within the context of a facility map. Atlas, a humanoid robot, is in early field testing with Hyundai on real-world sequencing tasks. The company has announced a new 323,000 square foot facility in Waltham, Massachusetts."
+  ],
+  "quote": {
+   "text": "Spot is changing how organizations monitor and operate their sites, ensure the safety of their teams, and make data-driven decisions.",
+   "url": "https://bostondynamics.com/products/spot/"
+  },
+  "sources": [
+   {
+    "url": "https://bostondynamics.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://bostondynamics.com/products/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://bostondynamics.com/products/spot/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://bostondynamics.com/products/spot/arm/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://bostondynamics.com",
+    "https://bostondynamics.com/products/",
+    "https://bostondynamics.com/products/spot/"
+   ],
+   [
+    "https://bostondynamics.com/products/spot/",
+    "https://bostondynamics.com/products/spot/arm/",
+    "https://bostondynamics.com/products/spot/payload/"
+   ],
+   [
+    "https://bostondynamics.com/products/",
+    "https://bostondynamics.com/products/atlas/",
+    "https://bostondynamics.com/news/"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

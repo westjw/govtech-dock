@@ -1,0 +1,154 @@
+{
+ "news": [
+  {
+   "date": "2026-07-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Use a Vehicle Equivalency Analysis to Make Smarter Fleet Staffing Decisions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://collectivedata.com/articles/vehicle-equivalency-analysis/"
+  },
+  {
+   "date": "2026-04-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Release: Collective Data Awarded Statewide Virginia Contract for Fleet and Asset Management Solutions",
+   "kind": "contract",
+   "kind_rule": "Awarded",
+   "url": "https://collectivedata.com/articles/news-release-collective-data-awarded-statewide-virginia-contract-for-fleet-and-asset-management-solutions/"
+  },
+  {
+   "date": "2026-04-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Release: Collective Data Unveils Embedded AI Capabilities at NAFA 2026",
+   "kind": "product",
+   "kind_rule": "Unveils",
+   "url": "https://collectivedata.com/articles/news-release-collective-data-unveils-embedded-ai-capabilities-at-nafa-2026/"
+  },
+  {
+   "date": "2025-12-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "One Cohesive Platform for Fleet and Asset Management: How Integration Boosts Productivity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://collectivedata.com/articles/integration-powers-productivity/"
+  },
+  {
+   "date": "2025-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Fleet Data in Action: Real Strategies to Control Costs and Boost Efficiency",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://collectivedata.com/articles/fleet-data-strategies-to-control-costs/"
+  },
+  {
+   "date": "2025-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Configurability Matters: Real-World Ways Agencies Adapt Collective Data to Their Needs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://collectivedata.com/articles/why-configurability-matters-real-world-ways-agencies-adapt-collective-data-to-their-needs/"
+  },
+  {
+   "date": "2025-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From Spreadsheets to Smart Systems: Why Corrections Facilities Are Going Digital",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://collectivedata.com/articles/from-spreadsheets-to-smart-systems-why-corrections-facilities-are-going-digital/"
+  },
+  {
+   "date": "2025-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "5 Signs Your Fleet Management Process Needs an Upgrade",
+   "kind": "contract",
+   "kind_rule": "Signs",
+   "url": "https://collectivedata.com/articles/signs-fleet-management-needs-upgraded/"
+  },
+  {
+   "date": "2025-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Digital Chain of Custody: How Modern Asset Tracking Strengthens Accountability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://collectivedata.com/blog/asset-tracking-accountability/"
+  },
+  {
+   "date": "2025-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "See Collective Data + Real Time Networks at IACP 2025!",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://collectivedata.com/articles/iacp-2025/"
+  },
+  {
+   "date": "2025-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Procurement Contracts Simplify Buying Asset Management Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://collectivedata.com/articles/how-procurement-contracts-simplify-buying-asset-management-software/"
+  },
+  {
+   "date": "2025-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Is Your Inventory Process Falling Behind?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://collectivedata.com/articles/is-your-asset-management-system-falling-behind/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Collective Data sells configurable asset management software to government agencies and other organizations with heavy operational demands. Its fleet product covers preventative maintenance scheduling, work orders, inspections, inventory control, and shop management.",
+   "Maintenance is scheduled automatically, with work orders and alerts meant to cut downtime and extend vehicle lifespan. Inspection schedules can be set by date, mileage, or engine hours. Telematics, fuel systems, and other tools can feed into the same platform. Data access is controlled by user role, with a full audit trail of changes. Add-on modules include single sign-on that supports OAuth 2.0 and OpenID Connect. A replacement forecasting module was developed with APWA standards in mind, according to the company.",
+   "A separate quartermaster product is built for law enforcement and public safety agencies. It tracks where fixed assets are located, who has them, and when they are due back. Employee signatures are captured during the issuance process. The company says private companies and government agencies have used its software for more than 25 years."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://collectivedata.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://collectivedata.com/solutions/fleet/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://collectivedata.com/solutions/quartermaster/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://collectivedata.com/solutions/addons/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://collectivedata.com",
+    "https://collectivedata.com/solutions/fleet/"
+   ],
+   [
+    "https://collectivedata.com/solutions/fleet/",
+    "https://collectivedata.com/solutions/addons/"
+   ],
+   [
+    "https://collectivedata.com/solutions/quartermaster/",
+    "https://collectivedata.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

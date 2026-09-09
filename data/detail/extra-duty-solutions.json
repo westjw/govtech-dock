@@ -1,0 +1,67 @@
+{
+ "news": [
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "What Counts as Extra Duty? A Field Guide for Command Staff",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://extradutysolutions.com/insights/what-counts-as-extra-duty/"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Extra Duty Solutions Named on the 2026 Inc. 5000 List, a Prestigious Ranking of America\u2019s Fastest-Growing Private Companies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://extradutysolutions.com/news/extra-duty-solutions-named-on-2026-inc-5000-list/"
+  },
+  {
+   "date": "2026-05-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Extra Duty Solutions Announces Michael Nark as Chief Executive Officer",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://extradutysolutions.com/news/extra-duty-solutions-announces-michael-nark-as-chief-executive-officer/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Extra Duty Solutions administers extra duty programs for public safety agencies such as police departments, sheriff offices, state agencies, and fire departments. It also gives law enforcement agencies access to public safety scheduling software from Jivasoft, its IT division. Today it provides scheduling software and administrative support for agencies across the country.",
+   "The about page dates the business to 2015, when it served large corporations and coordinated extra-duty officers for executive protection, factory security, and logistics needs. In 2016 the focus shifted to serving the agencies themselves. In 2017 the company exited the corporate market entirely, which it says removed the conflict of interest that arises when one firm represents both the agency and the corporate customer.",
+   "Extra Duty Solutions acquired Jivasoft, a Texas-based company in law enforcement scheduling software, which brought the On-Duty and Xtra-Duty platforms into its lineup. Milestones listed on the same page include initiating service with a 100th agency. Later entries record surpassing $150M in annualized extra-duty invoicing. The most recent listed milestone is a 250th agency partnership. According to its own news release, the company was ranked No. 2740 on the 2026 Inc. 5000 list of fastest-growing private companies in America."
+  ],
+  "quote": {
+   "text": "Our goal is simple: We handle the administrative complexity so that law enforcement professionals can focus on their primary mission of protecting the community.",
+   "url": "https://extradutysolutions.com/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://www.extradutysolutions.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://extradutysolutions.com/about-us/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.extradutysolutions.com",
+    "https://extradutysolutions.com/about-us/"
+   ],
+   [
+    "https://extradutysolutions.com/about-us/"
+   ],
+   [
+    "https://extradutysolutions.com/about-us/",
+    "https://extradutysolutions.com/news/extra-duty-solutions-named-on-2026-inc-5000-list/"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

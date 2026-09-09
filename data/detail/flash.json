@@ -1,0 +1,70 @@
+{
+ "news": [
+  {
+   "date": "2024-09-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Flash Transforms Parking at Denver International Airport",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.flashparking.com/news/flash-transforms-parking-at-denver-international-airport/"
+  },
+  {
+   "date": "2024-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Flash Partners with Waze: 30,000+ Parking Locations Now Available to Millions of Drivers",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.flashparking.com/news/flash-partners-with-waze/"
+  },
+  {
+   "date": "2024-05-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Flash Wins California Energy Commission $5.8M Grant for EV Charger \u2018Innovation Lab\u2019 in Oakland",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.flashparking.com/news/flash-wins-california-energy-commission-5-8m-grant-for-ev-charger-innovation-lab-in-oakland/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Flash sells parking technology that connects asset owners, operators and drivers through software, hardware and demand channels. It says the platform is implemented across hotels, airports, municipalities, new construction and higher education.",
+   "Drivers reserve through the apps, ticket platforms and vehicle interfaces they already use. Camera-based access lets them enter and exit without stopping at a barrier. Express Pay, powered by Vision AI cameras, delivers automated ticketless parking. Enrollment for that happens once through ParkMobile or ParkWhiz. EV charging sits in the same flow, so drivers locate, reserve and pay for charging alongside parking. A valet product lets customers text to request their car.",
+   "The company's own timeline says the business was founded as Klever Logic. The same timeline records a $250M investment from Vista Equity Partners. It also records a merger between Flash and Arrive. Support runs through a network of regional offices and field technicians. One highlighted result points to work completed in 22 days at Denver International Airport."
+  ],
+  "quote": {
+   "text": "Flash connects asset owners, operators, and drivers through cloud-native software, purpose-built hardware, and demand channels that actively route drivers to your locations",
+   "url": "https://www.flashparking.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.flashparking.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.flashparking.com/about/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.flashparking.com/products/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.flashparking.com"
+   ],
+   [
+    "https://www.flashparking.com"
+   ],
+   [
+    "https://www.flashparking.com/about/",
+    "https://www.flashparking.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

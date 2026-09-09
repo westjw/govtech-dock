@@ -1,0 +1,108 @@
+{
+ "news": [
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Unite Us Names Greg Fitzgerald Chief Technology Officer",
+   "kind": "leadership",
+   "kind_rule": "Names",
+   "url": "https://uniteus.com/press/unite-us-names-greg-fitzgerald-chief-technology-officer/"
+  },
+  {
+   "date": "2026-08-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Unite Us Acquires Vircho Health",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://uniteus.com/press/unite-us-acquires-vircho-health"
+  },
+  {
+   "date": "2026-04-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Unite Us and Ready Computing Announce Strategic Partnership to Advance Integrated Health and Community Care Coordination Across New York State and Beyond",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://uniteus.com/press/unite-us-and-ready-computing-announce-strategic-partnership-to-advance-integrated-health-and-community-care-coordination-across-new-york-state-and-beyond/"
+  },
+  {
+   "date": "2026-04-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Unite Us and WakeMed Expand Collaboration to Scale and Support Whole-Person Care in North Carolina",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://uniteus.com/press/unite-us-and-wakemed-expand-collaboration-to-scale-and-support-whole-person-care-in-north-carolina/"
+  },
+  {
+   "date": "2026-01-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Data-Driven Member Insights Are the New Foundation of Meaningful Member Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://uniteus.com/blog/why-data-driven-member-insights-are-the-new-foundation-of-meaningful-member-management/"
+  },
+  {
+   "date": "2025-12-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Strengthening Rural Housing Access with Espa\u00f1ola Pathways Shelter",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://uniteus.com/blog/strengthening-rural-housing-access-with-espanola-pathways-shelter/"
+  },
+  {
+   "date": "2025-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Unite Us Awarded on TIME\u2019s List of the World\u2019s Top HealthTech Companies 2025",
+   "kind": "contract",
+   "kind_rule": "Awarded",
+   "url": "https://uniteus.com/press/unite-us-awarded-on-times-list-of-the-worlds-top-healthtech-companies-2025/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Unite Us sells software and data infrastructure for coordinating whole-person care across healthcare, government and community-based organizations. Its named audiences include public health and human services agencies. Managed care and Medicaid plans are also on that list.",
+   "The core product is a closed-loop referral system for sending and receiving electronic social care referrals within a network of community partners. Staff can run social needs screenings, after which the platform automatically suggests resources or referrals. A secure chat feature lets users at partner organizations message each other about shared referrals, cases and clients. Integrations let organizations share resources and send referrals without leaving their own system.",
+   "Alongside referrals, the company sells predictive analytics meant to predict long-term risks and measure impact. Its Population Insights tool combines social, economic, environmental and health information with modeling to identify at-risk populations. It also automates payments to community-based organizations. The company states that it partnered with Presbyterian Health Plan to create New Mexico's first statewide closed-loop referral system."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://uniteus.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://uniteus.com/products/social-care-data/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://uniteus.com/solutions/self-sufficiency-score/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://uniteus.com/products/closed-loop-referral-system/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://uniteus.com"
+   ],
+   [
+    "https://uniteus.com/products/closed-loop-referral-system/"
+   ],
+   [
+    "https://uniteus.com/products/social-care-data/",
+    "https://uniteus.com",
+    "https://uniteus.com/products/closed-loop-referral-system/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

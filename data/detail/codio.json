@@ -1,0 +1,134 @@
+{
+ "news": [
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI Courseware Launch Party & Live Demo: Three New Courses, One AI Curriculum for Every Level",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://www.codio.com/blog/ai-courseware-launch-party-live-demo-three-new-courses-one-ai-curriculum-for-every-level"
+  },
+  {
+   "date": "2026-08-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Introducing Codio AI Literacy: The Course Every Discipline Needs, Not Just Computer Science",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.codio.com/blog/introducing-codio-ai-literacy-the-course-every-discipline-needs-not-just-computer-science"
+  },
+  {
+   "date": "2026-05-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Codio's Response to the Canvas LMS Security Incident",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.codio.com/blog/codios-response-to-the-canvas-lms-security-incident"
+  },
+  {
+   "date": "2026-04-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ZyBooks vs Codio: How They Fit into a Modern CS Course",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.codio.com/blog/zybooks-vs-codio"
+  },
+  {
+   "date": "2026-03-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Rethinking Assessment in the Age of AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.codio.com/blog/rethinking-assessment-in-the-age-of-ai"
+  },
+  {
+   "date": "2026-03-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "After GitHub Classroom: What CS Educators Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.codio.com/blog/extending-github-education"
+  },
+  {
+   "date": "2026-02-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI is here, your workforce isn't.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.codio.com/blog/ai-is-here-your-workforce-isnt"
+  },
+  {
+   "date": "2025-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Codio Now Supports AWS Sandboxes for Hands-On Cloud Learning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.codio.com/blog/codio-now-supports-aws-sandboxes-for-hands-on-cloud-learning"
+  },
+  {
+   "date": "2025-04-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Bridging the Data Skills Gap: Insights from Codio\u2019s 2025 Survey",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.codio.com/blog/2025-industry-survey-data-skills-gap"
+  },
+  {
+   "date": "2025-04-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Maximize Cybersecurity Employability With Hands-On Learning Experiences",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.codio.com/blog/maximizing-cybersecurity-employability"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Codio sells a single platform meant to replace the patchwork of IDEs, grading scripts, content and LMS plugins that technical courses usually run on. The pitch is aimed at programs where that patchwork of repos, PDFs and environment tools does not integrate well.",
+   "Students work in a browser-based IDE the company says is ready in under five seconds. Real-time code checks and rubric-based scoring give learners instant, actionable guidance. One-click single sign-on and grade sync push data into the institution's LMS. Instructors can build, version and publish interactive courseware using full Git workflows, and built-in similarity checkers support academic integrity.",
+   "Case studies name the University of Florida, where Codio is used in large computing courses. Another describes Southern New Hampshire University moving its courses onto the platform and eliminating setup problems. The company says GitHub chose it as a commercial partner to help over 3,000 educators and 500,000 students use GitHub in the classroom. Its own team is described as having deep roots in computer science teaching, education research, AI and software industry work."
+  ],
+  "quote": {
+   "text": "Most technical courses rely on a patchwork of repos, PDFs, grading scripts, environment tools, and LMS plugins that don\u2019t integrate well.",
+   "url": "https://www.codio.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.codio.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.codio.com/case-studies",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.codio.com/about-us",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.codio.com"
+   ],
+   [
+    "https://www.codio.com"
+   ],
+   [
+    "https://www.codio.com/case-studies",
+    "https://www.codio.com",
+    "https://www.codio.com/about-us"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

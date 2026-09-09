@@ -1,0 +1,85 @@
+{
+ "news": [
+  {
+   "date": "2026-03-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why $13 Trillion in Construction Still Runs on 1997 Software \u2014 And Why Better Software Alone Won't Fix It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.citiri.com/blog/the-missing-chapter"
+  },
+  {
+   "date": "2023-05-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Citiri Partners with New Industry Association to Present Groundbreaking Opconic Awards to Aviation\u2019s Best in the World of ORAT and Operational Readiness",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.citiri.com/blog/12o5jo47g79wl8dpnc2zff438dlnwo"
+  },
+  {
+   "date": "2021-04-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Fiscal Case for ORAT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.citiri.com/blog/fiscal-case-for-orat"
+  },
+  {
+   "date": "2021-04-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ORAT Gives Airport Leaders Control, Cost-Savings, and Assurance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.citiri.com/blog/orat-airport-leaders"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Citiri sells CitiriOS, a system owners use to define readiness, assign accountability, collect accepted evidence, and govern gate decisions. The company aims it at organizations launching complex infrastructure and services.",
+   "The premise is that finishing construction is not the same as being ready to operate. The discipline the company calls Owner Scope Management runs as a chain in which the owner defines what must be true to operate, evidence proves it, and gates authorize it. The output is a Ready Score along with accepted evidence and gate decisions. An agent named Opti surfaces false greens, aging blockers, and the decisions that still need an owner. People, not the software, approve every evidence and gate decision.",
+   "The company is direct about the boundary, saying CitiriOS is not a PMIS, commissioning tool, EAM/CMMS, document repository, or BI replacement. Citiri says it is helping the ATL team manage a $13B capital program that includes more than 114 distinct projects. It also describes the SFO team using CitiriOS to keep the Harvey Milk Terminal One project on track. A companion layer, OpsCenter, is listed as generally available, while an ecosystem orchestrator called Struxis is listed as limited access."
+  ],
+  "quote": {
+   "text": "Construction complete \u2260 ready to operate",
+   "url": "https://www.citiri.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.citiri.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.citiri.com/platform",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.citiri.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.citiri.com/case-studies",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.citiri.com/platform",
+    "https://www.citiri.com"
+   ],
+   [
+    "https://www.citiri.com",
+    "https://www.citiri.com/platform"
+   ],
+   [
+    "https://www.citiri.com/platform",
+    "https://www.citiri.com/case-studies"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

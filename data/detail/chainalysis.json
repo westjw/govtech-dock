@@ -1,0 +1,157 @@
+{
+ "news": [
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Crime Tracing Crypto in a Narcotics Investigation: FBI Charges Alleged Opioid Distributors September 8, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/fbi-traces-crypto-opioids-distributors/"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Company News Chainalysis Supports HyperEVM with Automatic Token Support September 3, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/chainalysis-supports-hyperevm-with-automatic-token-support/"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Crime FBI Seizes $560K in Crypto From Hamas Fundraising Network September 3, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/fbi-seizes-hamas-crypto-fundraising-network/"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Blockchain Data Tell Us About $457+ Billion in Potentially Taxable Crypto Activity August 26, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/crypto-tax-reporting-carf/"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Chainalysis in Action Operation Lighthouse: Chainalysis\u2019s CSAM-Disruption Sprint IDs Suspects in 125 Countries August 25, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/operation-lighthouse-august-2026/"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Crime OFAC Targets Ministry of Intelligence, Crypto-for-Oil Payments in Latest Iran Sanctions August 25, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/ofac-iran-oil-payments-august-2026/"
+  },
+  {
+   "date": "2026-08-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Machine Learning Has a Specific Role in Blockchain Intelligence August 14, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/ml-role-in-blockchain-intelligence/"
+  },
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Policy & Regulation Understanding the FATF\u2019s DeFi Report: A Functional Approach to Decentralized Finance Regulation August 10, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/understanding-fatf-defi-report-july-2026/"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Company News Penlink Plugs Into Trusted Blockchain Data With Chainalysis August 6, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/penlink-integration-blockchain-intelligence-august-2026/"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Crime Estimated $30 Million Stolen in Violent Crypto Attacks in 2026 as France Records Emerges as Hotspot August 6, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/violent-crypto-wrench-attacks-2026/"
+  },
+  {
+   "date": "2026-08-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Company News Chainalysis Supports Cronos with Automatic Token Support August 5, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/cronos-automatic-token-support/"
+  },
+  {
+   "date": "2026-07-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Markets The 2026 World Cup On-Chain: $20 Billion in Crypto Flows, From Bets to Tickets July 30, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/2026-world-cup-prediction-markets-nft-tickets/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Chainalysis sells blockchain intelligence software that investigators and compliance teams use to investigate illicit activity, manage risk exposure and prevent fraud. Its investigation product, Reactor, is used by law enforcement, intelligence, regulatory and tax agencies, crypto exchanges, financial institutions, and corporate investigation teams. The company says its intelligence is relied on by more than 1,500 organizations worldwide and has been proven in landmark cases.",
+   "Reactor traces funds across 27+ blockchains, 40M+ assets, 325M+ swaps, and 300+ bridges and DEXs. For investigators without blockchain expertise, a companion product called Rapid takes any crypto address and reveals wallet ownership, balances, and where funds came from and went. When a recovery seed turns up in a search or arrest, Wallet Scan checks it across 45+ wallets, 15+ blockchains including privacy coins, and 100+ million addresses per seed. Reactor can run in the cloud, on-premises, or in FedRAMP-certified environments.",
+   "Customer stories on the site include BNY, described as the world's largest custodian bank, which chose Chainalysis as the compliance foundation for its digital asset platform. Calgary Police Service became the first police agency in Canada to create a dedicated blockchain investigation team in partnership with Chainalysis. The site also describes IRS-CI, a 2,000-agent federal agency, using Chainalysis to investigate and prosecute crypto financial crimes."
+  ],
+  "quote": {
+   "text": "The intelligence layer for the crypto economy",
+   "url": "https://www.chainalysis.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.chainalysis.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.chainalysis.com/product/reactor/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.chainalysis.com/product/wallet-scan/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.chainalysis.com/product/rapid/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.chainalysis.com",
+    "https://www.chainalysis.com/product/reactor/"
+   ],
+   [
+    "https://www.chainalysis.com/product/reactor/",
+    "https://www.chainalysis.com/product/rapid/",
+    "https://www.chainalysis.com/product/wallet-scan/"
+   ],
+   [
+    "https://www.chainalysis.com"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

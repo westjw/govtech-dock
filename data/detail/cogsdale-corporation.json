@@ -1,0 +1,58 @@
+{
+ "news": [
+  {
+   "date": "2025-01-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Announcing \u201cCogsdale\u2019s Public Sector and Utility Focused ERP Cloud\u201d",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cogsdale.com/newsroom/migration-accelerator"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Cogsdale sells customer information system and enterprise resource planning software to utilities and local governments. The company describes itself as the provider of choice for utilities, local government agencies and municipalities, and investor-owned companies.",
+   "Its customer information system integrates utility billing, financials, distribution systems, customer management, work management, project management, and procurement. The suite extends to interactive voice response, document management, payment kiosks, and online credit checks. A separate enterprise and asset management product covers large capital projects and the reliability of assets and equipment. The software builds on Microsoft technology, with certification listed for Microsoft Azure and Dynamics 365 Business Central. The partners page calls the company one of the most flexible and integration-ready software providers for utility billing.",
+   "Cogsdale describes itself as a software and services company with over 25 years of experience. It operates as a division of Harris Computer Systems. That page states Harris employs over 1,200 industry professionals in more than 38 offices throughout North America. Harris has been a subsidiary of Constellation Software Incorporated since 1996."
+  ],
+  "quote": {
+   "text": "Cogsdale offers a best-of-breed Customer Information System for Utility Providers",
+   "url": "https://cogsdale.com/solutions"
+  },
+  "sources": [
+   {
+    "url": "https://www.cogsdale.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://cogsdale.com/about-us",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://cogsdale.com/about-us/our-partners",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://cogsdale.com/solutions",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.cogsdale.com",
+    "https://cogsdale.com/about-us"
+   ],
+   [
+    "https://cogsdale.com/solutions",
+    "https://www.cogsdale.com",
+    "https://cogsdale.com/about-us/our-partners"
+   ],
+   [
+    "https://cogsdale.com/about-us"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

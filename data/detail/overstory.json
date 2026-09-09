@@ -1,0 +1,122 @@
+{
+ "news": [
+  {
+   "date": "2026-05-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Wildfire risk in the utility corridor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.overstory.com/blog/wildfire-risk-in-the-utility-corridor"
+  },
+  {
+   "date": "2026-04-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Overstory Unveils First AI Models to Predict Power Outages and Wildfires with Tree-level Precision",
+   "kind": "product",
+   "kind_rule": "Unveils",
+   "url": "https://www.overstory.com/blog/scenariosoutagesignitions"
+  },
+  {
+   "date": "2026-01-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "A Year of Action: A Letter from our CEO",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.overstory.com/blog/a-year-of-action"
+  },
+  {
+   "date": "2025-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Overstory Closes $43m Series B To Scale AI-Driven Wildfire Prevention And Grid Resilience",
+   "kind": "funding",
+   "kind_rule": "Series B",
+   "url": "https://www.overstory.com/blog/series-b-announcement"
+  },
+  {
+   "date": "2025-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Overstory Testifies at FERC\u2019s Wildfire Conference",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.overstory.com/blog/overstory-testifies-at-fercs-wildfire-conference"
+  },
+  {
+   "date": "2025-07-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What New Zealand\u2019s New Vegetation Management Regulation Means for Utilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.overstory.com/blog/opportunities-risks-and-change-what-new-zealands-new-vegetation-management-regulation-means-for-utilities"
+  },
+  {
+   "date": "2025-07-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Rethinking the Build-vs-Buy Debate",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.overstory.com/blog/rethinking-the-build-vs-buy-debate"
+  },
+  {
+   "date": "2025-06-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "6 Lessons for Utility Resilience in the Age of AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.overstory.com/blog/6-lessons-for-utility-resilience-in-the-age-of-ai"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Overstory sells vegetation intelligence to electric utilities, from investor-owned utilities to municipalities and cooperatives. The analysis rests on satellite imagery, which in one European project was used to identify 37 species of vegetation.",
+   "The company notes that vegetation management is typically a utility's greatest operations budget item. Its pitch is spending less on unnecessary trimming and more on riskier areas. Utilities can see strike trees, declining trees and hazard trees individually or aggregated. Encroachment risk, hazard trees and species identification can be laid over wildfire risk maps to show where trimming matters most. The same data lets a utility verify and document risk reduction from work that contractors completed.",
+   "Risk reports are meant to support data-driven conversations with regulators, insurers and executives. Indra den Bakker and Anniek Schouten founded the company in Lisbon in 2018. The company says it has worked with more than 50 investor-owned utilities and cooperatives across the Americas and Europe."
+  ],
+  "quote": {
+   "text": "See the risk. Model the tradeoffs. Make the decision.",
+   "url": "https://www.overstory.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.overstory.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.overstory.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.overstory.com/case-studies",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.overstory.com/about-us",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.overstory.com/solutions",
+    "https://www.overstory.com/case-studies"
+   ],
+   [
+    "https://www.overstory.com",
+    "https://www.overstory.com/solutions"
+   ],
+   [
+    "https://www.overstory.com/solutions",
+    "https://www.overstory.com/about-us",
+    "https://www.overstory.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

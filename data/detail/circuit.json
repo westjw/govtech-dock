@@ -1,0 +1,140 @@
+{
+ "news": [
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "3 Things to Consider When Choosing a Microtransit Provider for Mid-Sized US Cities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ridecircuit.com/blog/3-things-to-consider-when-choosing-a-microtransit-provider-for-mid-sized-us-cities"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Which microtransit platforms do city governments in the United States use?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ridecircuit.com/blog/microtransit-platforms-city-governments-use"
+  },
+  {
+   "date": "2026-07-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Circuit Champions: The People Moving Cities with Erin Wortman",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ridecircuit.com/blog/circuit-champions-erin"
+  },
+  {
+   "date": "2026-05-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Circuit Champions: The People Moving Cities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ridecircuit.com/blog/circuit-champions-yvette"
+  },
+  {
+   "date": "2026-04-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "When Gas Prices Rise, Movement Shifts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ridecircuit.com/blog/when-gas-prices-rise-movement-shifts"
+  },
+  {
+   "date": "2026-04-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Circuit, Powered by People: Camille Santiago",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ridecircuit.com/blog/circuit-powered-by-people-camille-santiago"
+  },
+  {
+   "date": "2026-03-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "3 Things We Learned at Safe Roads Summit 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ridecircuit.com/blog/safe-roads-summit-2026-takeaways"
+  },
+  {
+   "date": "2026-02-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Circuit, Powered by People: BC",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ridecircuit.com/blog/circuit-powered-by-people-bc"
+  },
+  {
+   "date": "2026-02-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Ride-Sharing vs. Ride-Hailing: Why Pooling Algorithms Matter",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ridecircuit.com/blog/the-difference-between-ride-sharing-and-ride-hailing"
+  },
+  {
+   "date": "2026-02-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "3 Things You Should Know About Fixed-Route and On-Demand Service",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ridecircuit.com/blog/fixed-route-vs-on-demand"
+  },
+  {
+   "date": "2025-02-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Circuit raises $17M Series B financing to scale tech-driven shared mobility",
+   "kind": "funding",
+   "kind_rule": "raises",
+   "url": "https://www.ridecircuit.com/blog/series-b?hsLang=en"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Circuit runs electric, on-demand shuttle services with cities, transit agencies, special districts, and private partners. Its stated mission is to provide low-cost, accessible, and eco-friendly rides to all.",
+   "The shuttles cover short distances, offering first and last-mile connections to mass transit and letting visitors park only once. Riders hail them by downloading an app. Partners and advertisers underwrite the service, which is offered at low cost or free. The company says it connects riders in transit deserts and offers wheelchair-accessible vehicle options.",
+   "The fleet has been all-electric since 2011. The site says over 8 million rides have been provided without burning an ounce of gas. Rides are available in more than 40 markets across the United States, from California to New York and Florida to Massachusetts. Case studies on the site describe partners nationwide. One headline describes activating downtown Orlando with free, electric microtransit."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://www.ridecircuit.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.ridecircuit.com/about-us",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.ridecircuit.com/case-studies",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.ridecircuit.com"
+   ],
+   [
+    "https://www.ridecircuit.com/about-us",
+    "https://www.ridecircuit.com"
+   ],
+   [
+    "https://www.ridecircuit.com/about-us",
+    "https://www.ridecircuit.com/case-studies"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

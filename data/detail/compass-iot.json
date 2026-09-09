@@ -1,0 +1,75 @@
+{
+ "news": [
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Compass IoT Wins Google Cloud Cross-Industry Customer Award",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://www.compassiot.com.au/media/compass-iot-wins-google-cloud-cross-industry-customer-award"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Compass IoT Partners with Nearmap",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.compassiot.com.au/media/compass-partners-with-nearmap"
+  },
+  {
+   "date": "2026-06-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Compass IoT wins University of Sydney Student Innovation Prize",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.compassiot.com.au/media/compass-iot-wins-university-of-sydney-student-innovation-prize"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Compass IoT sells connected vehicle data for road networks, taken from the cars themselves rather than roadside equipment or phones. The company says more than 3,000 users globally use its connected vehicle data to understand traffic across their road networks. Its Road Intelligence platform presents that network-wide vehicle data in a browser.",
+   "The data comes from cloud-connected vehicles that have an internet connection. Compass says it receives over a billion connected vehicle data points every day from 64 different car manufacturers. Each record can carry location, timestamp, speed, acceleration, make and model, plus road attributes such as the speed limit and pavement type. Coverage runs across virtually every road in Australia.",
+   "Published case studies show clients using the tools for road safety, city planning, and infrastructure questions. One covers Sunshine Coast Council measuring how speed cushions retrofitted at a pedestrian crossing changed driver behaviour. Afterwards, average speed in both directions dropped to 22km/h. Another describes the Inner West Council using data-driven evidence to lower speed limits for pedestrian and cyclist safety. Compass IoT UK has received funding from EIT Urban Mobility as part of the third SME Expansion Open Call."
+  ],
+  "quote": {
+   "text": "Compass gets over a billion connected vehicle data points every day from 64 different car manufacturers.",
+   "url": "https://compassiot.com.au"
+  },
+  "sources": [
+   {
+    "url": "https://compassiot.com.au",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://compassiot.com.au/case-studies",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://compassiot.com.au/case-studies/creating-safe-routes-to-school",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://compassiot.com.au/case-studies/taylor-swift-and-her-impact-on-surrounding-roads-in-sydney",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://compassiot.com.au"
+   ],
+   [
+    "https://compassiot.com.au"
+   ],
+   [
+    "https://compassiot.com.au/case-studies",
+    "https://compassiot.com.au/case-studies/creating-safe-routes-to-school",
+    "https://compassiot.com.au"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

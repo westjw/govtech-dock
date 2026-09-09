@@ -1,0 +1,59 @@
+{
+ "news": [
+  {
+   "date": "2026-06-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Vendor Identity Glossary: A Primer for AP, Procurement, and Finance Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.paymentworks.com/resources/vendor-identity-glossary/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "PaymentWorks sells software that organizations use to create and maintain vendor records inside their ERP. The company describes the platform as a front door to the ERP that combines vendor onboarding and maintenance, ACH risk transfer, and check-to-digital payment conversion. It is sold into healthcare, higher education, K-12, state and local government, and enterprise.",
+   "Each vendor is vetted through what the company calls a proprietary onboarding system before a payment is approved. That onboarding sits on top of a payee network the site puts at more than 1.5 million authenticated payees. Compliance work is automated alongside it, covering sanctions checks, continuous monitoring, W9 and 1099 information, and audit trails. The site states that ACH payments made through the platform are indemnified, with additional coverage available.",
+   "Published case studies include the University of North Texas. Another describes a county that fell victim to a $2.5M scam after a request to change vendor banking details. The company says it offers a payments security warranty for fraudulent payments. Its about page introduces a leadership team including a co-founder whose patent work in data management led to the founding of the company."
+  ],
+  "quote": {
+   "text": "PaymentWorks is the foundation of vendor master data and helps organizations of all kinds automate vendor onboarding.",
+   "url": "https://www.paymentworks.com/case-study/cabarrus-county-immediate-and-long-term-risk-mitigation-after-a-2-5m-scam/"
+  },
+  "sources": [
+   {
+    "url": "https://www.paymentworks.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.paymentworks.com/case-studies/?v=2",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.paymentworks.com/about-us/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.paymentworks.com/case-study/cabarrus-county-immediate-and-long-term-risk-mitigation-after-a-2-5m-scam/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.paymentworks.com",
+    "https://www.paymentworks.com/case-study/cabarrus-county-immediate-and-long-term-risk-mitigation-after-a-2-5m-scam/"
+   ],
+   [
+    "https://www.paymentworks.com/case-study/cabarrus-county-immediate-and-long-term-risk-mitigation-after-a-2-5m-scam/",
+    "https://www.paymentworks.com"
+   ],
+   [
+    "https://www.paymentworks.com/case-studies/?v=2",
+    "https://www.paymentworks.com/case-study/cabarrus-county-immediate-and-long-term-risk-mitigation-after-a-2-5m-scam/",
+    "https://www.paymentworks.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,138 @@
+{
+ "news": [
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Aquasight exhibiting and speaking at Weftec, New Orleans Sept 26-30, 2026.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aquasight.io/blog/aquasight-exhibiting-and-speaking-at-weftec-new-orleans-sept-26-30-2026?hsLang=en"
+  },
+  {
+   "date": "2026-03-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI & Technology: Promise to Practice: Real Utilities. Real Solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aquasight.io/blog/ai-technology-promise-to-practice-real-utilities.-real-solutions?hsLang=en"
+  },
+  {
+   "date": "2025-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "A New Era of Utility Intelligence: Aquasight Unveils Three Breakthrough Innovations at WEFTEC 2025",
+   "kind": "product",
+   "kind_rule": "Unveils",
+   "url": "https://www.aquasight.io/blog/aquasight-weftec-2025-ai-data-asset-management-innovations"
+  },
+  {
+   "date": "2025-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Digital Twins in Action: How Central San is Reimagining Wastewater Process Optimization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aquasight.io/blog/central-san-digital-twin-efficiency"
+  },
+  {
+   "date": "2025-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How St. Louis MSD and Aquasight Are Future-Proofing Infrastructure Planning with Best Practice Asset Management Digital Workflows",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aquasight.io/blog/st-louis-msd-aquasight-infrastructure-planning"
+  },
+  {
+   "date": "2025-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Regional Smart Water Platforms: Transforming Utility Collaboration and Resilience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aquasight.io/blog/regional-smart-water-platform-glwa-aquasight"
+  },
+  {
+   "date": "2025-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI-Driven Smart Water Solutions: Turning Climate Pressure into Utility Action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aquasight.io/blog/ai-smart-water-climate-resilience"
+  },
+  {
+   "date": "2025-07-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Smarter Lift Station Management: How Utilities Are Using Digital Tools to Prevent Failures and Cut Costs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aquasight.io/blog/lift-station-monitoring-digital-tools"
+  },
+  {
+   "date": "2025-06-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Finding the Invisible Leaks: How Smart Platforms Are Helping Utilities Tackle Water Loss",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aquasight.io/blog/non-revenue-water-leak-detection"
+  },
+  {
+   "date": "2025-06-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Smarter Asset Decisions with AMP\u2122",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aquasight.io/blog/smart-asset-management-amp"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Aquasight sells analytics software for the people who run water and wastewater utilities. The company says the software runs in the cloud and calls for no new hardware.",
+   "One product is a digital twin for sewer mains, lift stations and combined sewer overflow facilities. It forecasts flows, compares them with expected patterns, picks out unexplained anomalies and estimates inflow, infiltration and capacity limits. A second product joins mapping and maintenance management data so that asset risk keeps updating. From that it recommends whether to inspect, repair or replace, and supports capital planning and financial forecasting.",
+   "The company states that it has partnered with over 120 utilities. It says the tools are shaped for operators, engineers, directors and compliance officers alike. A news item announces the company exhibiting and speaking at Weftec in New Orleans in September 2026."
+  ],
+  "quote": {
+   "text": "Shift from guesswork to foresight with systems designed to anticipate and prevent issues before they escalate.",
+   "url": "https://www.aquasight.io/solutions"
+  },
+  "sources": [
+   {
+    "url": "https://www.aquasight.io",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aquasight.io/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aquasight.io/solutions/asset-management-water-wastewater",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aquasight.io/solutions/wastewater-collection-monitoring",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.aquasight.io/solutions"
+   ],
+   [
+    "https://www.aquasight.io/solutions/wastewater-collection-monitoring",
+    "https://www.aquasight.io/solutions/asset-management-water-wastewater"
+   ],
+   [
+    "https://www.aquasight.io",
+    "https://www.aquasight.io/solutions"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

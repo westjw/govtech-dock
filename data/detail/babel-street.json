@@ -1,0 +1,146 @@
+{
+ "news": [
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Talking Tradecraft Part 2: Tradecraft at Scale - How Insights Investigator Brings Expert Methodology to AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/blog/talking-tradecraft-part-2-tradecraft-at-scale"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Babel Street Strengthens Identity Risk Intelligence for High-Stakes Operations and Agentic AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/about-us/newsroom/babel-street-strengthens-identity-risk-intelligence-agentic-ai"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Identity Matching Has Evolved: Building Confidence in Risk Decisions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/blog/identity-matching-risk-intelligence"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "eBooks | Babel Street",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/resources/ebooks"
+  },
+  {
+   "date": "2026-07-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Infographics | Babel Street",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/resources/infographics"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Babel Street Named Security Executive Council Solution Innovation Partner, Providing Mission-Grade Risk Intelligence for Corporate Security Practitioners",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/about-us/newsroom/babel-street-named-security-executive-council-solution-innovation-partner"
+  },
+  {
+   "date": "2026-06-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "White Papers | Babel Street",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/resources/white-papers"
+  },
+  {
+   "date": "2026-06-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Success Stories | Babel Street",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/resources/success-stories"
+  },
+  {
+   "date": "2026-06-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Thought Leadership Climate Migration and Natural Disaster Response: Securing Borders without Closing Doors",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/about-us/newsroom/securing-borders-without-closing-doors"
+  },
+  {
+   "date": "2026-06-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Webinars | Babel Street",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/resources/webinars"
+  },
+  {
+   "date": "2026-05-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Babel Street Launches Agentic Risk Intelligence to Empower Analysts to Outpace AI-Fueled Threats",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.babelstreet.com/about-us/newsroom/babel-street-launches-agentic-risk-intelligence"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Babel Street sells risk intelligence software to national defense and law enforcement agencies, global enterprises and FinTech companies. Its platform combines rights-cleared global data, governed AI agents and Insights Investigator, its investigation interface. Through that interface analysts submit queries in natural language and receive entity relationships, hidden ownership flags, foreign influence signals and cited evidence. The data behind it spans more than 200 languages, with AI trained to catch slang and coded language that translation alone misses.",
+   "For law enforcement, the company says the platform helps agencies investigate and prevent increasingly complex criminal activity. Analysts and police use it to detect early warning signs and uncover behavioral patterns in public data. The identity products process millions of names against watchlists, with matching behavior tuned to reduce false positives and negatives. Border security agencies use the same tools to flag high-risk travelers, cargo and networks.",
+   "Its vendor risk product is delivered as secure SaaS or API and embeds continuous monitoring into procurement workflows. Babel Street says a large majority of U.S. national security agencies use it. It states compliance with NIST 800-171 and ISO 27001. It also says it has earned SOC 2 Type 2 certification."
+  ],
+  "quote": {
+   "text": "The World is Talking and AI is Finally Fast Enough to Hear It",
+   "url": "https://www.babelstreet.com/platform"
+  },
+  "sources": [
+   {
+    "url": "https://www.babelstreet.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.babelstreet.com/solutions/vendor-risk-intelligence",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.babelstreet.com/solutions/identity-risk-intelligence",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.babelstreet.com",
+    "https://www.babelstreet.com/platform",
+    "https://www.babelstreet.com/solutions/vendor-risk-intelligence"
+   ],
+   [
+    "https://www.babelstreet.com/solutions/strategic-threat-intelligence",
+    "https://www.babelstreet.com/solutions/identity-risk-intelligence"
+   ],
+   [
+    "https://www.babelstreet.com/solutions/vendor-risk-intelligence",
+    "https://www.babelstreet.com/solutions/strategic-threat-intelligence",
+    "https://www.babelstreet.com/about-us/trust-center"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

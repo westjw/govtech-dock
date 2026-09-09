@@ -1,0 +1,93 @@
+{
+ "news": [
+  {
+   "date": "2024-06-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AP and Finance Resources",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cardintegrity.com/resources/ap-and-finance-resources/"
+  },
+  {
+   "date": "2024-06-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Card Integrity Service Highlights",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cardintegrity.com/resources/card-integrity-service-highlights/"
+  },
+  {
+   "date": "2024-06-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Sourcing and Procurement Resources",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cardintegrity.com/resources/sourcing-and-procurement-resources/"
+  },
+  {
+   "date": "2024-06-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Compliance Best Practices, eGuides, and White Papers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cardintegrity.com/resources/eguides-and-whitepapers/"
+  },
+  {
+   "date": "2020-12-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Upcoming and On-Demand Webinars",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cardintegrity.com/resources/upcoming-and-on-demand-webinars/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Card Integrity reviews the expense data of universities, corporations, and public institutions so that procurement and sourcing staff can catch policy problems and grow their card programs. The company presents itself as an extension of the client's procurement team, taking the expense review workload off internal staff.",
+   "Its main service covers all of an organization's spend data rather than a sample, looking for fraud, non-compliance, and savings opportunities. A companion service flags duplicate payments across accounts payable invoices and commercial card transactions. Another analyzes the receipts submitted through a client's spend portal and reports back when information is missing or incorrect. The company also builds online commercial card training courses tailored to each client's own policy. Rather than handing over a generic tool, it maintains an in-house system and pairs each client with a dedicated forensic principle.",
+   "The company observes that many businesses still relied on manual transaction reconciliation in 2008 and that many still do. Doug and Anita Hindsley expanded the early services across payment types and founded Card Integrity. It is headquartered in the Chicagoland area and serves clients in the United States and in more than 50 countries. Client programs range from 500 to five million company card transactions a month. The client base is described as including healthcare, higher education, government, infrastructure, military, and not-for-profit organizations."
+  ],
+  "quote": {
+   "text": "Card Integrity provides global expense review services for firms that generate anywhere from 500 to five million monthly company card transactions.",
+   "url": "https://cardintegrity.com/about-us"
+  },
+  "sources": [
+   {
+    "url": "https://cardintegrity.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://cardintegrity.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://cardintegrity.com/about-us",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://cardintegrity.com/our-story/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://cardintegrity.com"
+   ],
+   [
+    "https://cardintegrity.com",
+    "https://cardintegrity.com/about-us"
+   ],
+   [
+    "https://cardintegrity.com/our-story/",
+    "https://cardintegrity.com/about-us"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

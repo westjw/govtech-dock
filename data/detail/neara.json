@@ -1,0 +1,47 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Neara sells physics-based digital twin software to electric utilities, which use it to model their networks. The pitch is to unify assets, surroundings and workflows in a single physics-accurate view.",
+   "The model is built from a utility's existing LiDAR, imagery, GIS and asset records. Teams then simulate wind, ice, thermal, flood, vegetation, reconductoring and new builds on the real network geometry. Outputs include prioritized hardening plans, regulator-ready reports and field-ready work orders. Solution areas cover resiliency and reliability, wildfire mitigation, asset management, risk and value optimization, and design and construction.",
+   "On the asset side, replacement candidates are ranked by measured load rather than by install date. Wildfire work pulls pole loading, asset condition, vegetation, GIS accuracy, weather and consequence into one physics-backed model. Resiliency work prioritizes mitigation by how asset condition, vegetation proximity and environmental conditions interact across the network. Case study quotes on the site are attributed to the chief executive of Essential Energy. Another comes from a general manager of network management at SA Power Networks."
+  ],
+  "quote": {
+   "text": "Utilities on four continents run their networks on Neara, from ambitious regional co-ops to national grid operators.",
+   "url": "https://neara.com"
+  },
+  "sources": [
+   {
+    "url": "https://neara.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://neara.com/solutions/resiliency-reliability",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://neara.com/solutions/wildfire-mitigation",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://neara.com/solutions/asset-management",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://neara.com"
+   ],
+   [
+    "https://neara.com"
+   ],
+   [
+    "https://neara.com/solutions/asset-management",
+    "https://neara.com/solutions/wildfire-mitigation",
+    "https://neara.com/solutions/resiliency-reliability",
+    "https://neara.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

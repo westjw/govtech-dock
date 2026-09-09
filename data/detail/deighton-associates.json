@@ -1,0 +1,94 @@
+{
+ "news": [
+  {
+   "date": "2026-05-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Deighton Associates Ltd. Announces APAC Alliance with Anova Enterprises",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deighton.com/press-releases/deighton-anova-alliance"
+  },
+  {
+   "date": "2026-01-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Deighton Recognized for Five Years of Ongoing Support to SickKids Hospital",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deighton.com/press-releases/deighton-supports-sickkids"
+  },
+  {
+   "date": "2025-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Deighton Achieves ISO 27001 Certification for Information Security Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deighton.com/press-releases/deighton-achieves-iso-27001-certification"
+  },
+  {
+   "date": "2025-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Deighton Associates Ltd. Expands Global Presence with Opening of New Ireland Office",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deighton.com/press-releases/deighton-secures-ireland-office"
+  },
+  {
+   "date": "2019-03-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Transforming the Future of Asset Management in Denmark",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deighton.com/press-releases/transforming-the-future-of-asset-management-in-denmark"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Deighton sells infrastructure asset management software to transportation agencies and other public owners of roads and bridges. The product is dTIMS, the Deighton Total Infrastructure Management System. Roads, bridges, facilities, and other asset classes are managed within it.",
+   "The suite starts with business analytics for life cycle cost analysis, performance modeling, and scenario planning. An operations module manages work orders, service requests, crew scheduling, inventory, and day-to-day maintenance activities. A field-ready app handles inspections and work execution online or offline, keeping condition records current. An environmental module scores maintenance strategies using Global Warming Potential metrics. Agencies of any size can run it in the cloud or on premises.",
+   "The company says the dTIMS suite has been used by agencies in more than 40 countries over four decades. It gives its headquarters as Canada and Ireland, with implementations across North America, Europe, Asia-Pacific, Africa, and the Middle East. Published case studies include adding bridge management to an existing pavement system at Arkansas DOT. Deighton also announced ISO 27001 certification for information security management."
+  ],
+  "quote": {
+   "text": "Turn condition data into actionable maintenance and investment strategies.",
+   "url": "https://www.deighton.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.deighton.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.deighton.com/case-studies",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.deighton.com/about",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.deighton.com/products",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.deighton.com"
+   ],
+   [
+    "https://www.deighton.com",
+    "https://www.deighton.com/products"
+   ],
+   [
+    "https://www.deighton.com/about",
+    "https://www.deighton.com/case-studies",
+    "https://www.deighton.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

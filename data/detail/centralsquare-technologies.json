@@ -1,0 +1,86 @@
+{
+ "news": [
+  {
+   "date": "2026-08-03",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "CentralSquare and Skydio Partner to Bring Native Drone as First Responder Operations Into Public Safety CAD Workflows",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centralsquare.com/news-and-events/press/centralsquare-skydio-dfr-cad-integration"
+  },
+  {
+   "date": "2026-07-30",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "See the Future Through Our Products",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centralsquare.com/resources/articles/public-sector-ai-adoption-barriers"
+  },
+  {
+   "date": "2026-07-02",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "CentralSquare One\u2122: Turn Your Patrol Car Into a Mobile Crime Center",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centralsquare.com/resources/articles/centralsquare-one-mobile-crime-center-patrol-car"
+  },
+  {
+   "date": "2026-01-20",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "CentralSquare Surpasses 1,000 Cloud Deployments, Accelerating Public Sector Modernization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centralsquare.com/news-and-events/press/centralsquare-surpasses-1000-cloud-deployments"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "CentralSquare Technologies sells software to public agencies, from dispatch centers to city halls. On the public safety side, its suite runs from computer aided dispatch and NG911 call handling through to jail management and analytics. On the administration side, the company says public administrators in over 8,000 communities use it for finance, HR, payroll, asset management, permitting and tax collection.",
+   "Public Safety Suite Enterprise connects 911, CAD, RMS, Mobile and Jail in a single platform. A version called Public Safety Suite Pro is designed for small and mid-sized agencies that want one vendor rather than several systems. Vertex NG911 Call Handling gives 911 centers a single platform for voice, text, video and caller location. Vertex also carries built-in text translation and transcription for more than 150 languages, which the company says runs in under 10 seconds. The company says it secures cloud data against cyberattacks through a partnership with Amazon Web Services.",
+   "The homepage counts more than 8,000 agencies nationwide as customers. Customers named on the site include the California Highway Patrol. Case studies include the Edgar County 911 team, whose partnership with CentralSquare serves a community of 16,000 residents. Morgan County 911 in Alabama is featured for upgrading to Vertex NG911 Call Handling."
+  ],
+  "quote": {
+   "text": "Software built for the rigor of public service.",
+   "url": "https://www.centralsquare.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.centralsquare.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.centralsquare.com/solutions",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.centralsquare.com/solutions/public-safety-software/public-safety-suite/enterprise",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.centralsquare.com/solutions/public-safety-software/vertex-ng911-call-handling",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.centralsquare.com/solutions"
+   ],
+   [
+    "https://www.centralsquare.com/solutions/public-safety-software/public-safety-suite/enterprise",
+    "https://www.centralsquare.com/solutions/public-safety-software/public-safety-suite/pro",
+    "https://www.centralsquare.com/solutions/public-safety-software/vertex-ng911-call-handling",
+    "https://www.centralsquare.com/solutions"
+   ],
+   [
+    "https://www.centralsquare.com",
+    "https://www.centralsquare.com/solutions"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

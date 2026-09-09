@@ -1,0 +1,147 @@
+{
+ "news": [
+  {
+   "date": "2026-07-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CAL FIRE demonstrates Dryad Silvanet to Korean National Park Service",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dryad.net/post/cal-fire-demonstrates-dryad-silvanet-to-korean-national-park-service"
+  },
+  {
+   "date": "2026-07-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dryad Networks Reaches XPRIZE Wildfire Finals Milestone, Demonstrating Autonomous Detection and Suppression of Wildfires in Alaska",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dryad.net/post/dryad-networks-reaches-xprize-wildfire-finals-milestone-demonstrating-autonomous-detection-and-supp"
+  },
+  {
+   "date": "2026-05-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dryad Launches Gen-4-Pro Silvanet Wildfire Sensor, Setting New Standard in Ultra-Early Fire Detection",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.dryad.net/post/dryad-launches-gen-4-pro-silvanet-wildfire-sensor-setting-new-standard-in-ultra-early-fire-detectio"
+  },
+  {
+   "date": "2026-01-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dryad Networks Named XPRIZE Wildfire Finalist",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dryad.net/post/dryad-networks-named-xprize-wildfire-finalist"
+  },
+  {
+   "date": "2026-01-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Physical AI for Forests: How Dryad is Building the Intelligence Layer for Climate Infrastructure",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dryad.net/post/physical-ai-for-forests-how-dryad-is-building-the-intelligence-layer-for-climate-infrastructure"
+  },
+  {
+   "date": "2025-11-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dryad Demonstrates Wildfire Detection and Suppression System Sensing, Locating and Extinguishing Fire in Under 12 Minutes \u2013 With No Human Involved",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dryad.net/post/dryad-demonstrates-wildfire-detection-and-suppression-system-sensing-locating-and-extinguishing-fir"
+  },
+  {
+   "date": "2025-03-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dryad Networks Demonstrates First Fully Functional Drone Prototype for Detecting, Locating and Monitoring Wildfires",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dryad.net/post/dryad-networks-demonstrates-drone-for-monitoring-wildfires"
+  },
+  {
+   "date": "2025-03-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dryad Networks Launches in Australia and New Zealand to Combat Bushfires with AI-Driven Early Detection",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.dryad.net/post/dryad-networks-launches-in-australia-and-new-zealand-to-combat-bushfires-with-ai-driven-early-detect"
+  },
+  {
+   "date": "2025-03-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dryad's Silvanet Wins Best Mobile Innovation for Climate Action at the GLOMO Awards 2025",
+   "kind": "contract",
+   "kind_rule": "Awards",
+   "url": "https://www.dryad.net/post/dryad-silvanet-wins-best-mobile-innovation-for-climate-action-at-the-glomo-awards-2025"
+  },
+  {
+   "date": "2025-01-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dryad Networks Leads the Charge in Global Wildfire Mitigation with Record Growth in 2024",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dryad.net/post/dryad-networks-leads-the-charge-in-global-wildfire-mitigation-with-record-growth-in-2024"
+  },
+  {
+   "date": "2024-12-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dryad Reseller Conference 2024: Driving Innovation Together",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dryad.net/post/dryad-reseller-conference-2024"
+  },
+  {
+   "date": "2024-07-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Revolutionizing Wildfire Prevention: How Dryad Networks is Leading the Way",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dryad.net/post/revolutionizing-wildfire-prevention"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Dryad provides ultra-early wildfire detection and autonomous drone systems for public and private forests. The sensors are meant to detect fires within minutes from ignition so firefighters can put them out before they spread out of control.",
+   "The fourth generation sensor combines VOC, CO and PM2.5 sensing to catch a fire as early as the smoldering phase. The units form a wireless environmental sensor network based on LoRaWAN. A patented distributed architecture is meant to allow large-scale deployments in areas without existing network coverage. A cloud platform handles deployment planning, operation, analytics and alerting for those networks. An observation drone is dispatched when a sensor detects a fire, and a second drone applies fire suppressant liquids to extinguish fires autonomously.",
+   "Beyond forest owners, the company pitches utility and grid operators on protection against liabilities. Published case studies include a fire in Lebanon stopped by early detection. The founders say they came to this work after several startups and exits in IT, electronics and telecommunications."
+  ],
+  "quote": {
+   "text": "When it comes to fighting wildfires, speed is everything.",
+   "url": "https://www.dryad.net"
+  },
+  "sources": [
+   {
+    "url": "https://www.dryad.net",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.dryad.net/case-studies",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.dryad.net"
+   ],
+   [
+    "https://www.dryad.net"
+   ],
+   [
+    "https://www.dryad.net",
+    "https://www.dryad.net/case-studies"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

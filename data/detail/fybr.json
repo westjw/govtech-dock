@@ -1,0 +1,72 @@
+{
+ "news": [
+  {
+   "date": "2025-07-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Innovative IoT Solutions for Enhanced Water and Weather Monitoring Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fybr.com/post/innovative-iot-solutions-for-enhanced-water-and-weather-monitoring-systems"
+  },
+  {
+   "date": "2025-06-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Evolution of Modern Parking Best Practices: Revisiting Donald Shoup",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fybr.com/post/modernparkingbestpractices"
+  },
+  {
+   "date": "2025-06-09",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Fybr CEO Bob Gatz Announces Retirement; Patrick Stephens Named Successor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fybr.com/news/gatz-retires-stephens-named-successor"
+  },
+  {
+   "date": "2025-05-21",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "Fybr Unveils its 4th-Generation FybrPuck, a Parking Sensor with Exceptional Accuracy and Connectivity",
+   "kind": "product",
+   "kind_rule": "Unveils",
+   "url": "https://www.fybr.com/news/4th-generation-fybrpuck-introduced"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Fybr sells parking technology and an operations platform built on privacy by design. It turns anonymous, real-time parking activity into the tools that run an operation and the insights to improve it. The range covers every space, facility, and curb.",
+   "The foundation is the FybrPuck, the company's own fourth-generation occupancy sensor, a compact, self-powered, wireless edge device. It covers on-street and off-street spaces, loading zones, no parking zones, ADA spaces, and EV charging stations. Occupancy status feeds real-time guidance through a mobile application, web browsers, and dynamic wayfinding signage. For enforcement, officers can be directed to potential violations rather than running continuous sweeps. Where an ordinance requires vehicle identification, license plate recognition scans vehicles for compliance. Payment is pay-per-use inside the mobile application. A dashboard tracks turnover, session duration, dwell times, rule compliance, peak demand, and utilization trends.",
+   "The homepage carries testimonials from municipal staff, one crediting the real-time enforcement app with helping officers identify issues and respond to violations. Another says the sensor technology improved parking enforcement operations in Marysville. A third says that after the parking system was implemented, spots could be found easily through the app."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://fybr.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.fybr.com/solutions",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://fybr.com",
+    "https://www.fybr.com/solutions"
+   ],
+   [
+    "https://www.fybr.com/solutions"
+   ],
+   [
+    "https://fybr.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

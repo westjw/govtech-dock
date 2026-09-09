@@ -1,0 +1,40 @@
+{
+ "news": [
+  {
+   "date": "2026-06-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "PSD Citywide Launches Citywide Spaces, a New Municipal Facility Management Software",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.psdcitywide.com/announcements/citywide-spaces-facility-management/"
+  },
+  {
+   "date": "2026-06-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "PSD Citywide Expands Leadership Team with New Vice President of Services and Chief Revenue Officer",
+   "kind": "leadership",
+   "kind_rule": "New Vice President",
+   "url": "https://www.psdcitywide.com/announcements/leadership-team-jeff-booth-keith-renneker/"
+  },
+  {
+   "date": "2025-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "PSD Citywide EAM for Norton Shores: First Michigan Client",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.psdcitywide.com/announcements/psd-citywide-eam-for-norton-shores-first-michigan-client/"
+  },
+  {
+   "date": "2025-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "PSD Citywide Partners with Norwest to Fuel Growth of its Cloud-Based Enterprise Asset Management Solutions for Municipalities Across the U.S. and Canada",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.psdcitywide.com/announcements/psd-citywide-partners-norwest-fuel-growth-of-enterprise-asset-management-solutions-for-municipalities/"
+  }
+ ]
+}

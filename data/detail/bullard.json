@@ -1,0 +1,54 @@
+{
+ "news": [
+  {
+   "date": "2025-08-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Heat Related Illness Information",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bullard.com/resources/training/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Bullard makes protective equipment worn on the job: hard hats, face shields, respirators, fire helmets and thermal imaging cameras. Fire departments are among the buyers, taking helmets for protection and thermal imagers as a second set of eyes in smoke.",
+   "The respiratory line serves healthcare, pharmaceutical and industrial settings where workers face pathogens, particulates, mist, vapors and sprays. Abrasive blasting gets its own complete systems, bundling a helmet with airline hose, climate control and a carbon monoxide monitor. Buyers configure gear on the site and get a suggested retail price to take to a distributor.",
+   "The company traces its line of work back to designing the first hard hat in 1919, and has been in blasting equipment for over half a century. It sells through channel partners around the world rather than direct, and lists its address in Cynthiana, Kentucky."
+  ],
+  "quote": {
+   "text": "Because tomorrow matters",
+   "url": "https://www.bullard.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.bullard.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.bullard.com/products/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.bullard.com/products/respiratory/built-for-the-blast/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.bullard.com/products/"
+   ],
+   [
+    "https://www.bullard.com/products/",
+    "https://www.bullard.com/products/respiratory/built-for-the-blast/",
+    "https://www.bullard.com"
+   ],
+   [
+    "https://www.bullard.com/products/respiratory/built-for-the-blast/",
+    "https://www.bullard.com/products/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,105 @@
+{
+ "news": [
+  {
+   "date": "2023-01-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "3 Reasons Vehicles Should Use Mobile Data Tracking",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ecolane.com/blog/3-challenges-in-paratransit-and-how-to-solve-them"
+  },
+  {
+   "date": "2018-11-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "changes will impact service",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ecolane.com/blog/challenges-in-transportation-and-logistics-facing-paratransit"
+  },
+  {
+   "date": "2018-07-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "4 Practices Selecting a Scheduling & Dispatch Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ecolane.com/blog/4-best-practices-for-selecting-the-right-scheduling-and-dispatching-software-provider"
+  },
+  {
+   "date": "2018-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Including Customer Communications in Your Software Implementation Planning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ecolane.com/blog/3-reasons-to-communicate-transit-software-implementations"
+  },
+  {
+   "date": "2018-01-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "3 Operational Transit Goals for the New Year",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ecolane.com/blog/3-operational-goals-for-new-year"
+  },
+  {
+   "date": "2017-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "3 Reasons Every Vehicle Should Use Mobile Data Tablet Tracking Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ecolane.com/blog/3-reasons-every-vehicle-should-use-mobile-data-tablet-tracking-software"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Ecolane sells scheduling and dispatch software designed for public transit agencies that operate paratransit, non-emergency medical transportation, and microtransit services. Whichever way a trip is booked, the optimization that follows is autonomous and does not require manual intervention from a human.",
+   "The software optimizes service at the individual trip level and updates schedules as conditions change during the service day. That lets agencies account for no-shows, cancellations, delays, and staffing changes without rebuilding schedules manually. Eligibility rules, reporting, and compliance are integrated into daily operations. Managers can capture data for every vehicle, including rides per hour, run utilization, on-time performance, and deadhead. For medical trips, the platform helps agencies locate providers, verify rider eligibility, and schedule trips with vehicles equipped to accommodate rider needs.",
+   "Agencies supported by city, county, state, or federal funds are the intended buyers. The company says it is a U.S.-based company with U.S.-based product, engineering, and support teams. It states that its self-service applications are compliant with the Americans with Disabilities Act and Web Content Accessibility Guidelines 2.1 Level AA. It also says it holds three clean Voluntary Product Accessibility Templates. The hosted service is described as providing significant cost savings for transit agencies."
+  ],
+  "quote": {
+   "text": "Ecolane is a U.S.-based company, with U.S.-based product, engineering, and support teams.",
+   "url": "https://www.ecolane.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.ecolane.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.ecolane.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.ecolane.com/solutions/paratransit",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.ecolane.com/solutions/coordinated-transit",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.ecolane.com",
+    "https://www.ecolane.com/solutions"
+   ],
+   [
+    "https://www.ecolane.com",
+    "https://www.ecolane.com/solutions",
+    "https://www.ecolane.com/solutions/coordinated-transit"
+   ],
+   [
+    "https://www.ecolane.com/solutions/paratransit",
+    "https://www.ecolane.com",
+    "https://www.ecolane.com/solutions"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,157 @@
+{
+ "news": [
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "EarthDaily Awarded Government of Canada National Master Standing Offer for Commercial Satellite Imagery",
+   "kind": "contract",
+   "kind_rule": "Awarded",
+   "url": "https://earthdaily.com/blog/earthdaily-awarded-government-of-canada-national-master-standing-offer-for-commercial-satellite-imagery"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "August World in 10: European Crops Deteriorate as Record Rainfall Hits the U.S. Corn Belt",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/august-world-in-10-european-crops-deteriorate-as-record-rainfall-hits-the-u.s.-corn-belt"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "When Space Infrastructure Becomes Earth Infrastructure",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/when-space-infrastructure-becomes-earth-infrastructure"
+  },
+  {
+   "date": "2026-08-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July World in 10: Canadian Crops Defy the Heat as European Corn Deteriorates",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/world-in-10-july-2026-monthly-roundup"
+  },
+  {
+   "date": "2026-07-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Satellite Imagery Still Struggles to Scale in Agriculture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/why-satellite-imagery-still-struggles-to-scale-in-agriculture"
+  },
+  {
+   "date": "2026-07-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Price of Being Trusted: Why Commercial Earth Observation Chose Standards",
+   "kind": "contract",
+   "kind_rule": "Chose",
+   "url": "https://earthdaily.com/blog/the-price-of-being-trusted-why-commercial-earth-observation-chose-standards"
+  },
+  {
+   "date": "2026-07-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "June World in 10: Europe Corn Concerns Rise as Global Crop Conditions Improve Unevenly",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/june-world-in-10-europe-corn-concerns-rise-as-global-crop-conditions-improve-unevenly"
+  },
+  {
+   "date": "2026-07-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Nightshade Helps Make ASM Activity Visible at Scale",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/how-nightshade-helps-make-asm-activity-visible-at-scale"
+  },
+  {
+   "date": "2026-06-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Science-Grade Data and the Detail You Can Trust",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/science-grade-data-and-the-detail-you-can-trust"
+  },
+  {
+   "date": "2026-06-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Effective ASM Monitoring Requires: From Anecdote to Evidence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/what-effective-asm-monitoring-requires-from-anecdote-to-evidence"
+  },
+  {
+   "date": "2026-06-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Science-Grade Data Matters for Governments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/why-science-grade-data-matters-for-governments"
+  },
+  {
+   "date": "2026-06-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Science-Grade Data Matters for Change Detection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/why-science-grade-data-matters-for-change-detection"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "EarthDaily is a geospatial company selling satellite imagery and analytics to governments and enterprises whose work depends on the physical world. Its stated purpose is daily monitoring of the earth's surface for broad area change detection.",
+   "Raw satellite data is captured through a purpose-built constellation and ground system. That data is then processed, calibrated and quality-controlled into scientifically accurate image products. One product, AiRD, is analysis-ready observation data engineered from the start for machine learning. Its spectral bands are calibrated to match Sentinel-2 and Landsat specifications. A second product, Maritime, is tuned for fast processing and detection of anomalies at sea.",
+   "The company focuses its products on agriculture, financial services, infrastructure, forestry and governments. Security organizations, analytics providers and coastal agencies are the named audience for the maritime data. A company timeline states that it was created in partnership with Antarctica Capital. The same timeline lists an acquisition of Descartes Labs and funding from Trinity Capital. It also records more than 500 agreements signed. A news item states the company achieved CEOS Analysis Ready Data compliance."
+  ],
+  "quote": {
+   "text": "A new era of change detection through earth observation has begun.",
+   "url": "https://earthdaily.com"
+  },
+  "sources": [
+   {
+    "url": "https://earthdaily.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://earthdaily.com/about?hsLang=en",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://earthdaily.com/products/aird?hsLang=en",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://earthdaily.com/products/maritime?hsLang=en",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://earthdaily.com/about?hsLang=en"
+   ],
+   [
+    "https://earthdaily.com",
+    "https://earthdaily.com/products/aird?hsLang=en",
+    "https://earthdaily.com/products/maritime?hsLang=en"
+   ],
+   [
+    "https://earthdaily.com/about?hsLang=en",
+    "https://earthdaily.com/products/maritime?hsLang=en"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,153 @@
+{
+ "news": [
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Woolpert and Fulcrum put utility vegetation management risk data in field crews\u2019 hands",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/woolpert-and-fulcrum-partnership-for-vegetation-risk-management/"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Fulcrum and Woolpert Connect Utility Vegetation Risk Data Straight to the Crews Who Act on It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/newsroom/fulcrum-woolpert-partnership/"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Wildnote teams: Build the tool your field team needs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/wildnote-teams-build-the-tool-your-field-team-needs/"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Stormwater compliance starts with better field data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/stormwater-compliance-starts-with-better-field-data/"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What water utilities need to document storm damage for FEMA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/what-water-utilities-need-to-document-storm-damage-for-fema/"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Lead service line inventory and LCRR compliance: what utilities got right (and wrong) after the 2024 deadline",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/lead-service-line-inventory-and-lcrr-compliance/"
+  },
+  {
+   "date": "2026-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Wildnote teams: Your field data shouldn\u2019t wait for a handoff",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/fulcrum-workflow-automations-the-handoff-that-runs-itself/"
+  },
+  {
+   "date": "2026-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Visual proof in the field: How photos and videos strengthen water asset inspections",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/how-photos-and-videos-strengthen-water-asset-inspections/"
+  },
+  {
+   "date": "2026-07-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Water asset management starts with connecting hydrant, valve, and meter records",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/water-asset-management-starts-with-connecting-hydrant-valve-and-meter-records/"
+  },
+  {
+   "date": "2026-07-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What the EPA water infrastructure funding push means for your field operations",
+   "kind": "funding",
+   "kind_rule": "funding",
+   "url": "https://www.fulcrumapp.com/blog/what-epas-water-infrastructure-funding-push-means-for-field-ops/"
+  },
+  {
+   "date": "2026-07-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why pipeline integrity management demands more than most GIS software delivers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/why-pipeline-integrity-management-demands-more-than-most-gis-software-delivers/"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Fulcrum Launches its Field Operations Management Platform to Replace Patchworks of Point Solutions and Paper that Slow Down Utility Field Crews",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.fulcrumapp.com/newsroom/fulcrum-launches-its-field-operations-management-platform/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Fulcrum sells a field operations platform that organizations use to run, record and close out work done away from an office. The pitch is aimed at teams still working from paper forms and a scatter of separate point tools.",
+   "Crews are given location-enabled apps on ordinary mobile devices in place of paperwork. They capture points, lines and polygons using the device's own GPS or a Bluetooth receiver. The collected records move into ArcGIS or other systems through APIs and formats such as shapefiles and GeoJSON. The company treats working without a signal as a baseline rather than an add-on.",
+   "State and local government is one of the named audiences, alongside utilities, construction and public works, with inspections and documentation for community projects. The home page states nearly 3,000 companies and 50,000 users in over 100 countries. On security, the company points to SCIM and SOC 2 compliance, and its timeline records an independent SOC 2 Type 1 certification. Spatial Networks Inc. is named as the maker of Fulcrum, and the company reports acquiring Wildnote to deepen environmental compliance work."
+  ],
+  "quote": {
+   "text": "Fulcrum helps teams deploy mission-critical geospatial workflows in minutes.",
+   "url": "https://www.fulcrumapp.com/company/"
+  },
+  "sources": [
+   {
+    "url": "https://www.fulcrumapp.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.fulcrumapp.com/platform/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.fulcrumapp.com/company/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.fulcrumapp.com/platform/",
+    "https://www.fulcrumapp.com"
+   ],
+   [
+    "https://www.fulcrumapp.com/platform/",
+    "https://www.fulcrumapp.com/company/"
+   ],
+   [
+    "https://www.fulcrumapp.com",
+    "https://www.fulcrumapp.com/company/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

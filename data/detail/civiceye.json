@@ -1,0 +1,48 @@
+{
+ "profile": {
+  "paragraphs": [
+   "CivicEye sells cloud software for law enforcement and prosecutors, pitched as a way to improve daily workflows and community outcomes. The platform has three main products: a records management system for police called CivicRMS, prosecutor case management called CivicCase, and judicial document management called CivicDocs. A fourth, CivicCase for Courts, is aimed at judges and clerks in municipal courts.",
+   "CivicRMS creates NIBRS-compliant reports from incident reports, and its validation tools track errors and point to fixes. Integrations with dispatch and jail systems let officers pull dispatch calls, incident details, arrest records and inmate data without leaving the RMS. CivicDocs holds digital evidence and generates audit logs that track the chain of custody between the arresting agency and the prosecutor's office. Users reach the system through role-based portals for prosecutors, clerks, law enforcement and defense attorneys.",
+   "The company traces its start to 2007, when it built software for police departments in upstate New York under the name J2 Software and later Agisent Technologies. It is now based in Charlotte, North Carolina, and says it has deployed its software to over 95 public safety and criminal justice agencies across the country. It also says its prosecutor software is used across Tennessee, where the entire Tennessee District Attorney General's Conference adopted it."
+  ],
+  "quote": {
+   "text": "Combining a modern cloud infrastructure with field-tested insights from across the U.S., CivicEye is changing the face of criminal justice and public safety software.",
+   "url": "https://www.civiceye.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.civiceye.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.civiceye.com/products/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.civiceye.com/products/civicrms/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.civiceye.com/products/civicdocs/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.civiceye.com/products/",
+    "https://www.civiceye.com/about-us/who-we-are/",
+    "https://www.civiceye.com"
+   ],
+   [
+    "https://www.civiceye.com/products/civicrms/",
+    "https://www.civiceye.com/products/civicdocs/",
+    "https://www.civiceye.com"
+   ],
+   [
+    "https://www.civiceye.com/about-us/who-we-are/"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

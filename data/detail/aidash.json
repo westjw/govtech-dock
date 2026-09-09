@@ -1,0 +1,42 @@
+{
+ "profile": {
+  "paragraphs": [
+   "AiDASH sells software that electric utilities use to find vegetation, asset, wildfire and storm risk before it takes the grid down. The method starts with continuous satellite monitoring, then adds targeted aerial, vehicle-mounted and on-demand inspection.",
+   "Very high resolution satellite passes refresh vegetation health data up to twelve times a year. Higher-cadence imagery tracks fuel load, moisture and burnability up to seven times a week. One system covers asset inspection and monitoring. Another handles wildfire situational awareness and risk mitigation. A storm system predicts outages 120 hours ahead so crews can be pre-positioned. The platform exposes REST APIs for automation or for integrating with systems a utility already runs.",
+   "The company says it was founded by serial entrepreneurs in 2019. Its about page claims more than 150 customers of every size around the world. The platform page states SOC 2 Type 2 certification. A news item on the site announces that Schneider Electric agreed to acquire AiDASH for $350 million."
+  ],
+  "quote": {
+   "text": "The AiDASH Platform unifies vegetation, asset, wildfire, and storm intelligence to protect the grid and the communities it serves.",
+   "url": "https://www.aidash.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.aidash.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aidash.com/platform/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.aidash.com/about/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.aidash.com"
+   ],
+   [
+    "https://www.aidash.com",
+    "https://www.aidash.com/platform/"
+   ],
+   [
+    "https://www.aidash.com/about/",
+    "https://www.aidash.com/platform/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

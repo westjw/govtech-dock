@@ -1,0 +1,124 @@
+{
+ "news": [
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Singapore's Proposed Stablecoin Rules: What the MAS Consultation Means for Issuers, Exchanges, and Banks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/singapores-proposed-stablecoin-rules-what-the-mas-consultation-means-for-issuers-exchanges-and-banks"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Cuba After EO 14404: Following the Money Beyond the Sanctions List",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/cuba-after-eo-14404-following-the-money-beyond-the-sanctions-list"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Number of Price-Manipulation Attacks Hits All-Time High as USD 75 Million Is Stolen From Tectonic",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/number-of-price-manipulation-attacks-hits-all-time-high-as-usd-75-million-is-stolen-from-tectonic"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Unpacking Taiwan's Virtual Asset Service Act: What Crypto and Stablecoin Issuers Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/unpacking-taiwans-virtual-asset-service-act-what-crypto-and-stablecoin-issuers-need-to-know"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Sanctioned Ravin Academy Training Biggest Ever Class of Future Iranian Cyber Fighters, Partners with Russian Firm as US-Iran War Continues",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.trmlabs.com/resources/blog/sanctioned-ravin-academy-training-biggest-ever-class-of-future-iranian-cyber-fighters-partners-with-russian-firm-as-us-iran-war-continues"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "\u200dTRM Labs Appoints MAS veteran Ziqing Ang as Head of Policy, APAC",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://www.trmlabs.com/resources/blog/trm-labs-appoints-mas-veteran-ziqing-ang-as-head-of-policy-apac"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Operation Economic Outcast: Treasury Sanctions Nearly 60 Iran-linked Targets and Names Digital Assets a Sanctionable Sector",
+   "kind": "leadership",
+   "kind_rule": "Names",
+   "url": "https://www.trmlabs.com/resources/blog/operation-economic-outcast-treasury-sanctions-nearly-60-iran-linked-targets-and-names-digital-assets-a-sanctionable-sector"
+  },
+  {
+   "date": "2026-08-17",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Reports and White Papers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/reports-and-whitepapers"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "TRM Labs sells blockchain intelligence data, software and AI agents to government agencies and financial institutions that work against crypto crime. The company says 600+ of them across 75 countries rely on it. Its data maps the criminal economy across 40+ categories of illicit activity. Investigators use the platform to detect, investigate and disrupt crypto-related crime.",
+   "The investigation tool is TRM Forensics, and an AI investigator called Co-Case Agent is built into it. The agent reasons across blockchain records, threat-actor intelligence and victim reports to cluster syndicates, build freeze packages and triage tipline leads. Compliance teams get Compliance360, which the company says covers 184+ chains and 840+ cross-chain bridges. Regulators get Supervision360 for licensing, supervision and enforcement work. National security organizations get NatSec360, which adds the BLOCKINT API and TRM Bulk Data. Through the Beacon Network, VASPs are notified in real time when law enforcement flags illicit funds reaching their services, so they can hold them.",
+   "Law enforcement users can also join LEO Labs, a monthly working group the company runs for law enforcement only. TRM says its intelligence has supported convictions, asset freezes and OFAC designations in multiple jurisdictions. Strategic partners named on the national security page include Flashpoint, Magnet Forensics, Searchlight Cyber and i2."
+  ],
+  "quote": {
+   "text": "TRM empowers investigators to detect, investigate, and disrupt crypto-related crime.",
+   "url": "https://www.trmlabs.com/solutions/investigation-360"
+  },
+  "sources": [
+   {
+    "url": "https://www.trmlabs.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.trmlabs.com/solutions/compliance-360",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.trmlabs.com/solutions/investigation-360",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.trmlabs.com/solutions/natsec-360",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.trmlabs.com",
+    "https://www.trmlabs.com/solutions/investigation-360"
+   ],
+   [
+    "https://www.trmlabs.com",
+    "https://www.trmlabs.com/solutions/compliance-360",
+    "https://www.trmlabs.com/solutions/supervision-360",
+    "https://www.trmlabs.com/solutions/natsec-360"
+   ],
+   [
+    "https://www.trmlabs.com/solutions/investigation-360",
+    "https://www.trmlabs.com",
+    "https://www.trmlabs.com/solutions/natsec-360"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

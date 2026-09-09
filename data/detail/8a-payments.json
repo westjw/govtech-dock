@@ -1,0 +1,39 @@
+{
+ "profile": {
+  "paragraphs": [
+   "8A Payments sells jails a way to take bail payments by card at the booking desk, so a person in custody can pay their own bail without cash. The company describes itself as a payments technology business built specifically for the cash bail market in the United States.",
+   "In the model it describes, the government entity rather than the vendor is the merchant of record. The site says the detainee pays an 8% service fee at checkout and the jail pays nothing. One deployment path ships a card reader straight to the booking desk with no software to install. The other integrates with a jail management system or biometric identification platform a facility already runs. The company states that it is CJIS compliant and PCI DSS certified.",
+   "The buyers named are sheriffs and jail administrators, and the same framework is said to cover court fees, fines and probation payments. A charter program offers a facility live access to the platform without a long term commitment. The company says it was founded and is headquartered in Georgia. It names Worldpay as its payment processing partner. David Forbes is listed as chief executive and majority shareholder, and co-founded the company with three other executives."
+  ],
+  "quote": {
+   "text": "8A Payments LLC is a payments technology company purpose-built to serve the cash bail market in the United States.",
+   "url": "https://www.8a-payments.com/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.8a-payments.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.8a-payments.com/about",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.8a-payments.com",
+    "https://www.8a-payments.com/about"
+   ],
+   [
+    "https://www.8a-payments.com",
+    "https://www.8a-payments.com/about"
+   ],
+   [
+    "https://www.8a-payments.com",
+    "https://www.8a-payments.com/about"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

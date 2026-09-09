@@ -1,0 +1,140 @@
+{
+ "news": [
+  {
+   "date": "2026-09-02",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Vattenfall R&D collaborates with Heimdall Power on DLR",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heimdallpower.com/news/vattenfall-r-d-collaborates-with-heimdall-power-on-dlr"
+  },
+  {
+   "date": "2026-07-27",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Great River Energy Offers U.S. Energy Regulators an Up-Close Look at Grid Intelligence in Action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heimdallpower.com/news/great-river-energy-offers-u-s-energy-regulators-an-up-close-look-at-grid-intelligence-in-action"
+  },
+  {
+   "date": "2026-06-16",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Heimdall Power selected by Statnett for new Dynamic Line Rating project",
+   "kind": "contract",
+   "kind_rule": "selected",
+   "url": "https://www.heimdallpower.com/news/heimdall-power-selected-by-statnett-for-new-dynamic-line-rating-project"
+  },
+  {
+   "date": "2026-04-30",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Heimdall Power wins DLR tender with National Grid UK",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heimdallpower.com/news/heimdall-power-wins-dlr-tender-with-national-grid-uk"
+  },
+  {
+   "date": "2026-04-22",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "\u2022 Company news Heimdall Power and NIE Networks embark major DLR project We\u2019re proud to announce that Heimdall Power has been selected as the sole winner of a competitive tender process with Northern I",
+   "kind": "contract",
+   "kind_rule": "selected",
+   "url": "https://www.heimdallpower.com/news/heimdall-power-and-nie-networks-embark-major-dlr-project"
+  },
+  {
+   "date": "2026-04-08",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "\u2022 Company news From Static to Smart: Ameren\u2019s Push to Unlock Grid Capacity in the Midwest As electricity demand surges across the American Midwest, the pressure on aging transmission infrastructure is",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heimdallpower.com/news/from-static-to-smart-amerens-push-to-unlock-grid-capacity-in-the-midwest"
+  },
+  {
+   "date": "2026-03-27",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "\u2022 Content downloads Speed to Power: Watch Entergy and Heimdall Power\u2019s On-Demand Webinar Most utilities are curious about Dynamic Line Rating. Far fewer have actually deployed it.The gap between those",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heimdallpower.com/news/speed-to-power-watch-entergy-and-heimdall-powers-on-demand-webinar"
+  },
+  {
+   "date": "2026-03-19",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "\u2022 Explainers Three Things U.S. Utilities Need to Know About DOE\u2019s $1.9B SPARK Funding Opportunity On March 12, 2026, the U.S. Department of Energy (DOE) unveiled a $1.9 billion funding opportunity des",
+   "kind": "funding",
+   "kind_rule": "Funding",
+   "url": "https://www.heimdallpower.com/news/three-things-utilities-need-to-know-about-does-spark-funding"
+  },
+  {
+   "date": "2026-02-26",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "\u2022 Company news \u201cSmart Spheres\u201d in the Snow: Minnesota Power Instruments 200 Miles of Transmission Grid Along Lake Superior If you squint, Northern Minnesota looks an awful lot like Norway. Last week, ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heimdallpower.com/news/smart-spheres-in-the-snow-minnesota-power-instruments-200-miles-of-transmission-grid-along-lake-superior"
+  },
+  {
+   "date": "2026-02-04",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "\u2022 Company news Entergy Sets U.S. Record with Multi-State DLR Deployment by Drone In a remarkable five-day effort, Heimdall Power installed 31 Neurons\u2122 by drone in Louisiana, Texas, and Arkansas despit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heimdallpower.com/news/entergy-sets-us-record-with-multi-state-dlr-deployment-by-drone"
+  },
+  {
+   "date": "2026-02-04",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "\u2022 Company news Heimdall Power and Entergy deploy multi-state Dynamic Line Rating (DLR) Project Heimdall Power is proud to announce the successful deployment of a multi-state Dynamic Line Rating (DLR) ",
+   "kind": "contract",
+   "kind_rule": "deploy",
+   "url": "https://www.heimdallpower.com/news/heimdall-power-and-entergy-deploy-multi-state-dynamic-line-rating-dlr-project"
+  },
+  {
+   "date": "2026-01-27",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "\u2022 Company news Meet Heimdall Power at DTECH 2026! Catch us and the \u00abMagic Ball\u00bb in San Diego from February 2-5. Heimdall Power is gearing up for another edition of the biggest annual show in the T&D i",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heimdallpower.com/news/meet-heimdall-power-at-dtech-2026"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Heimdall Power sells sensors and software to electric utilities, with capacity tools meant to help them safely adjust transmission limits, improve operational planning and stay compliant with industry standards. The company was founded in Norway in 2016.",
+   "Its dynamic line rating offering combines physical and virtual Neurons to take real-time, on-line measurements. The sensors report temperature, current and inclination on the conductor. Deployment is handled by an autonomous drone installation system that the company says places Neurons in remote or hard-to-reach areas. A facility ratings module consolidates all ratings into one unified system and is aimed at simplifying NERC FAC-008 compliance. Further tools give grid operators real-time visibility into threats like icing, line movement, electrical faults and wildfire risks.",
+   "The about page states that the company has grown 10x in two years, raised a $25M Series B and expanded with a North American headquarters in Charlotte, NC. A news item on the site reports that Heimdall Power was selected by Statnett for a new Dynamic Line Rating project."
+  ],
+  "quote": {
+   "text": "Autonomous Drone Installation System ensures fast, safe deployment of Neurons in remote or hard-to-reach areas.",
+   "url": "https://www.heimdallpower.com"
+  },
+  "sources": [],
+  "paragraph_sources": [
+   [
+    "https://www.heimdallpower.com/solutions",
+    "https://www.heimdallpower.com/about"
+   ],
+   [
+    "https://www.heimdallpower.com/solutions",
+    "https://www.heimdallpower.com"
+   ],
+   [
+    "https://www.heimdallpower.com/about",
+    "https://www.heimdallpower.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

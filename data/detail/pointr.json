@@ -1,0 +1,160 @@
+{
+ "news": [
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Ultimate Guide to Choosing an Event App in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/ultimate-guide-choosing-event-app"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Pointr's July Demo Day Recap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/july-demo-day"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Evolving Indoor Navigation for Events: Eventbase & Pointr's Roadmap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/evolving-indoor-navigation-for-events-eventbase-pointrs-roadmap"
+  },
+  {
+   "date": "2026-08-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Pointr is Bringing to IAVM VenueConnect 26",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/what-pointr-is-bringing-to-iavm-venueconnect-26"
+  },
+  {
+   "date": "2026-07-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Enhancing the CES Experience: How Eventbase and Pointr Simplified Wayfinding at the World\u2019s Largest Tech Event",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/ces-event-maps-wayfinding-case-study"
+  },
+  {
+   "date": "2026-06-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Implement Maps & Indoor Navigation in Epic MyChart",
+   "kind": "contract",
+   "kind_rule": "Implement",
+   "url": "https://www.pointr.tech/blog/how-to-implement-maps-indoor-navigation-epic-mychart"
+  },
+  {
+   "date": "2026-06-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Inside MapScale\u00ae Galileo: Agentic AI and AI-Native Mapping",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/mapscale-galileo"
+  },
+  {
+   "date": "2026-06-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Pointr\u2019s June Demo Day Recap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/june-demo-day-recap"
+  },
+  {
+   "date": "2026-05-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Workplace Indoor Mapping & Wayfinding RFP Playbook: How to Ask the Key Questions for Success",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/workplace-indoor-mapping-wayfinding-rfp-playbook-key-questions"
+  },
+  {
+   "date": "2025-06-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "second iteration of our AI mapping benchmark",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/ai-mapping-benchmark"
+  },
+  {
+   "date": "2025-05-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "LinkedIn's Path to $2.6M Savings and an Improved Employee Experience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/linkedin-pointr-office-utilization-case-study"
+  },
+  {
+   "date": "2025-04-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Indoor Mapping - The Complete Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/complete-guide-indoor-mapping"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Pointr sells indoor mapping and wayfinding software that turns a venue, office or campus into interactive digital maps. Customers put those maps into their own apps, on the web, or on kiosks, using dedicated mobile and web SDKs. One stated use is guiding travelers to their gate with turn-by-turn updates and estimated arrival times.",
+   "Maps are generated from CAD files by an AI tool called MapScale. Blue dot positioning indoors runs on Bluetooth Low Energy rather than a satellite signal. The site says accuracy holds without fingerprinting or geomagnetism, so the system needs less ongoing maintenance. Geofences drawn on the map trigger actions when visitors enter or leave a zone.",
+   "The company describes itself as the top choice for Fortune 100 companies. Its homepage names product wayfinding work at The Home Depot. It states that its positioning technology is patented, with more than ten years of testing and development behind it. On privacy, the geofencing page says visitor location data is collected anonymously and aligned with GDPR."
+  ],
+  "quote": {
+   "text": "We cracked the code on accurate indoor positioning, scaled to enterprise levels",
+   "url": "https://www.pointr.tech/solutions/location-based-services/indoor-positioning"
+  },
+  "sources": [
+   {
+    "url": "https://www.pointr.tech",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.pointr.tech/solutions/location-based-services/indoor-mapping",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.pointr.tech/solutions/location-based-engagement/geofencing",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.pointr.tech/solutions/location-based-services/indoor-positioning",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.pointr.tech/solutions/location-based-services/indoor-mapping",
+    "https://www.pointr.tech",
+    "https://www.pointr.tech/solutions/location-based-services/indoor-positioning"
+   ],
+   [
+    "https://www.pointr.tech/solutions/location-based-services/indoor-mapping",
+    "https://www.pointr.tech/solutions/location-based-services/indoor-positioning",
+    "https://www.pointr.tech/solutions/location-based-engagement/geofencing"
+   ],
+   [
+    "https://www.pointr.tech",
+    "https://www.pointr.tech/solutions/location-based-services/indoor-positioning",
+    "https://www.pointr.tech/solutions/location-based-engagement/geofencing"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

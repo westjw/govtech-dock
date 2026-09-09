@@ -1,0 +1,156 @@
+{
+ "news": [
+  {
+   "date": "2026-09-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "98 Students from 50 States Wrote You an Acceptable AI Use Policy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/98-students-50-states-wrote-ai-acceptable-use-policy"
+  },
+  {
+   "date": "2026-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Stronger Parent Engagement Starts with Going Beyond CIPA\u2019s Requirements | IT Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/for-it-teams-stronger-parent-engagement-starts-with-going-beyond-cipa-s-requirements"
+  },
+  {
+   "date": "2026-07-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "300 Teachers Reveal Where Digital Distractions Are Rising Fastest in the US | 2026 SURVEY",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/survey-ai-misuse-not-rising-equally-300-teachers-distraction-rates-in-us"
+  },
+  {
+   "date": "2026-07-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "LAUSD\u2019s New Screen Time Policy Is Redefining 1:1 for all K12 Schools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/lausd-new-screen-time-policy-redefine-1-1-k12-schools"
+  },
+  {
+   "date": "2026-06-17",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "Why Chromebook Classroom Management Breaks Down as Usage Scales Up",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/chromebook-classroom-management-breaks-down-as-usage-scales-up"
+  },
+  {
+   "date": "2026-05-22",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "Do AI-Powered Web Filters Comply With K12 Privacy Laws? The Truth",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/ai-web-filters-comply-k12-privacy-laws"
+  },
+  {
+   "date": "2026-05-18",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "Tracking Social-Emotional Learning Goals With K12 Content Filters",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/k12-content-filters-social-emotional-learning"
+  },
+  {
+   "date": "2026-05-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Do We Measure Ed-Tech Success in Device Use?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/how-do-we-measure-ed-tech-success-in-device-use"
+  },
+  {
+   "date": "2025-10-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "1:1 Changed Social-Emotional IEP Goals Forever. What You Need to Know.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/1-1-changed-social-emotional-iep-goals-forever-what-you-need-to-know"
+  },
+  {
+   "date": "2025-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Future of K12 Student Engagement: Insights & Trends",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/insights-for-k12-administrators-boosting-student-engagement"
+  },
+  {
+   "date": "2025-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Ugly Reason Why Teachers Are Losing Student Engagement (It\u2019s Not the Smartphones)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/the-ugly-reason-why-teachers-are-losing-student-engagement-it-s-not-the-smartphones"
+  },
+  {
+   "date": "2025-07-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What 100 Students Wish You Knew about Classroom Engagement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/want-an-engaged-classroom-here-s-what-100-students-wish-you-knew"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Deledao sells web filtering to K-12 schools, built on patented technology the company says analyzes each webpage as a human would. The product line later grew to cover student safety and classroom management.",
+   "The filter blurs, mutes, and screens inappropriate images and video frame by frame. It detects gaming behavior from keyboard and mouse activity without logging keystrokes. Proxy sites students use to bypass filtering are caught automatically. Teachers get visibility into student tabs or screens. Websites can be allowed or blocked by group or by individual student. The wellness product looks for cyberbullying, self-harm, and toxic language across platforms. High-risk alerts receive human review and escalation to the district.",
+   "The company names Shuang Ji as its chief executive. Its first product, a web filter using real-time AI, launched in 2019. It says it now supports schools in the United States, Canada, Europe, New Zealand, and Australia. Case studies on the site describe schools adopting the filter for CIPA compliance and student safety."
+  ],
+  "quote": {
+   "text": "Deledao launched its initial product, a web filter utilizing real-time AI, in 2019.",
+   "url": "https://www.deledao.com/about-us"
+  },
+  "sources": [
+   {
+    "url": "https://deledao.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.deledao.com/case-studies",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.deledao.com/about-us",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.deledao.com/case-studies/westminster-school-district",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://deledao.com",
+    "https://www.deledao.com/about-us"
+   ],
+   [
+    "https://deledao.com"
+   ],
+   [
+    "https://www.deledao.com/about-us",
+    "https://www.deledao.com/case-studies"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

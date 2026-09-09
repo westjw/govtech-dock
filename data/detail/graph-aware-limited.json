@@ -1,0 +1,138 @@
+{
+ "news": [
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "What\u2019s new in GraphAware Hume 3.2",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://graphaware.com/blog/whats-new-in-graphaware-hume-3-2/"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Entity resolution 102: Who decides two records are the same person?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://graphaware.com/blog/entity-resolution-102-who-decides-two-records-are-the-same-person/"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The importance of connected data analytics in modern military intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://graphaware.com/blog/the-importance-of-connected-data-analytics-in-modern-military-intelligence/"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Graph visualisation Understanding graph visualisation \u00b7 5 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://graphaware.com/blog/understanding-graph-viz/"
+  },
+  {
+   "date": "2026-07-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Entity resolution Entity resolution 101: Why it matters by Christophe Willemsen \u00b7 11 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://graphaware.com/blog/entity-resolution-101-why-it-matters/"
+  },
+  {
+   "date": "2026-07-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Product update What\u2019s new in GraphAware Hume 3.1 July 22, 2026 by Danica Stankovic, Miro Marchi \u00b7 4 min read",
+   "kind": "product",
+   "kind_rule": "update",
+   "url": "https://graphaware.com/blog/whats-new-in-graphaware-hume-3-1/"
+  },
+  {
+   "date": "2026-07-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Law enforcement From data to knowledge: transparency in intelligence-led policing \u00b7 5 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://graphaware.com/blog/intelligence-led-policing/"
+  },
+  {
+   "date": "2026-06-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Neo4j acquires GraphAware: Reflections of 13 years of innovation",
+   "kind": "funding",
+   "kind_rule": "acquires",
+   "url": "https://graphaware.com/blog/neo4j-acquires-graphaware-13-years-of-innovation/"
+  },
+  {
+   "date": "2026-04-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "GraphAware Hume 3.0: Built for the reality of intelligence work April 9, 2026 by Miro Marchi \u00b7 6 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://graphaware.com/blog/graphaware-hume-3-0/"
+  },
+  {
+   "date": "2026-03-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Solving the challenges of intelligence analysis with graphs by Dan Newland \u00b7 6 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://graphaware.com/blog/solve-challenges-intelligence-analysis/"
+  },
+  {
+   "date": "2024-02-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "search vs data exploration",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://graphaware.com/blog/search-vs-data-exploration/"
+  },
+  {
+   "date": "2024-01-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Explore the LLM technology we used to build this comprehensive knowledge graph.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://graphaware.com/blog/llms-for-knowledge-graph-3/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "GraphAware is a global team of graph and engineering experts building an approach to intelligence analysis. Its platform, GraphAware Hume, turns siloed data into a connected intelligence picture so analysts can answer their hardest questions.",
+   "Data from separate sources is brought into a connected view structured the way the organisation itself understands it. Analysts then navigate and query that data to find hidden relationships, follow lines of enquiry, and see the patterns that matter. One published case study describes a national security cyber-defense agency that needed to connect, integrate and navigate data.",
+   "The clients described span law enforcement agencies, cyber defence advisories, and financial authorities around the world. The company was established in 2013."
+  ],
+  "quote": {
+   "text": "It\u2019s the result of more than a decade spent helping law enforcement and security organisations make sense of complex connections",
+   "url": "https://graphaware.com/about-us/"
+  },
+  "sources": [],
+  "paragraph_sources": [
+   [
+    "https://graphaware.com/about-us/"
+   ],
+   [
+    "https://graphaware.com",
+    "https://graphaware.com/resources/category/case-studies/"
+   ],
+   [
+    "https://graphaware.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

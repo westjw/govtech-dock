@@ -1,0 +1,160 @@
+{
+ "news": [
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Where Should We Look First? The Question Every Wastewater Collections Manager Asks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/resources/where-should-we-look-first-the-question-every-wastewater-collections-manager-asks/"
+  },
+  {
+   "date": "2026-06-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Your Network Is Losing Water. EO Discover 3.0 Helps Utilities Find Where to Look First",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/resources/your-network-is-losing-water-eo-discover-3-0-helps-utilities-find-where-to-look-first/"
+  },
+  {
+   "date": "2026-06-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Introducing EO Discover 3.0",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://asterra.io/resources/eo-discover-3-0-is-here/"
+  },
+  {
+   "date": "2026-02-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Global Problems, Local Impact: How Utilities Worldwide Used AI to Find, Fix, and Future-Proof Infrastructure",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/resources/global-problems-local-impact-how-utilities-worldwide-used-ai-to-find-fix-and-future-proof-infrastructure/"
+  },
+  {
+   "date": "2026-01-28",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "New Mexico expands state-funded satellite leak detection program following breakthrough success in Truth or Consequences",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/resources/new-mexico-expands-state-funded-satellite-leak-detection-program-following-breakthrough-success-in-truth-or-consequences/"
+  },
+  {
+   "date": "2025-11-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Monitoring Non-Revenue Water and Wastewater Leaks in Mexico: A Critical Step Toward Sustainable Water Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/resources/monitoring-non-revenue-water-and-wastewater-leaks-in-mexico-a-critical-step-toward-sustainable-water-management/"
+  },
+  {
+   "date": "2025-07-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beyond Compliance: How Satellite Leak Detection Uniquely Solves Trunk Mains Challenges",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/resources/beyond-compliance-how-satellite-leak-detection-uniquely-solves-trunk-mains-challenges/"
+  },
+  {
+   "date": "2025-06-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Hidden Cost of Water Loss: How Satellite-Based Leak Detection Saves Municipal Budgets Millions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/resources/the-hidden-cost-of-water-loss-how-satellite-based-leak-detection-saves-municipal-budgets-millions/"
+  },
+  {
+   "date": "2025-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Future of Water Security: Integrating Space Technology with Ground-Based Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/resources/the-future-of-water-security-integrating-space-technology-with-ground-based-systems/"
+  },
+  {
+   "date": "2025-05-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Detecting Underground Water and Sewer Leaks: A Technological Imperative for Urban Resilience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/resources/detecting-underground-water-sewer-leaks/"
+  },
+  {
+   "date": "2022-08-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Netherlands Dikes and Levees: Effective Flood Defenses",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/resources/netherlands-dikes-and-levees/"
+  },
+  {
+   "date": "2021-12-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Finding Leaks: The Role of Satellite Leak Detection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/resources/finding-leaks-the-role-of-satellite-leak-detection/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "ASTERRA sells insight into what lies beneath the ground, produced without breaking ground using patented algorithms and artificial intelligence to detect leaks. Water and wastewater utilities use it for leak detection to reduce non-revenue water and for analysis of potable and wastewater systems. The same approach maps excess soil moisture near or under dams, levees, roads, railways and mining operations.",
+   "The company images a customer's system with polarimetric synthetic aperture radar to sense and evaluate soil moisture. The same regions are revisited every few days or weeks as needed to monitor vast expanses. Results land in EO Discover, described as the repository for all insights from a customer's ASTERRA projects. There, detections, hotspots and network risk appear in a single view. MasterPlan scores pipe segments that show non-surfacing leaks and analyzes leak clusters over time. EarthWorks uses synthetic aperture radar to detect soil moisture up to 10 feet below the surface.",
+   "Field crews log investigation results, leak location and other data using U-Collect or the Esri ArcGIS Field Maps app. Within five minutes that reporting is available in EO Discover. The company ties EarthWorks, MasterPlan and Recover to the United Nations Sustainable Development Goals. MasterPlan is available in the Advise level of an ASTERRA Recover subscription."
+  ],
+  "quote": {
+   "text": "ASTERRA provides a number of industries with intelligence and insights from beneath the surface of their largest installations.",
+   "url": "https://www.asterra.io"
+  },
+  "sources": [
+   {
+    "url": "https://www.asterra.io",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.asterra.io/platform/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.asterra.io/solutions/earthworks/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.asterra.io/solutions/masterplan/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.asterra.io",
+    "https://www.asterra.io/solutions/earthworks/"
+   ],
+   [
+    "https://www.asterra.io/platform/",
+    "https://www.asterra.io",
+    "https://www.asterra.io/solutions/masterplan/",
+    "https://www.asterra.io/solutions/earthworks/"
+   ],
+   [
+    "https://www.asterra.io/platform/",
+    "https://www.asterra.io",
+    "https://www.asterra.io/solutions/masterplan/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

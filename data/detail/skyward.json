@@ -1,0 +1,40 @@
+{
+ "news": [
+  {
+   "date": "2025-09-09",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "west Back to press release",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.skyward.com/about/newsroom/press-releases"
+  },
+  {
+   "date": "2025-09-02",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Skyward Partners with Agilex to Reinvent School Payment Systems",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.skyward.com/about/newsroom/press-releases/skyward-partners-with-agilex-to-reinvent-school-payment-systems"
+  },
+  {
+   "date": "2025-07-31",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Skyward Celebrates 45 Years of Growth and Innovation in Central Wisconsin",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.skyward.com/about/newsroom/press-releases/skyward-celebrates-45-years-of-growth-and-innovation-in-central-wisconsin"
+  },
+  {
+   "date": "2025-07-31",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Panorama Named Preferred Partner By Skyward to bring Best In Class AI and MTSS Solution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.skyward.com/about/newsroom/press-releases/panorama-named-preferred-partner-by-skyward-to-bring-best-in-class-ai-and-mtss-solution"
+  }
+ ]
+}

@@ -1,0 +1,148 @@
+{
+ "news": [
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Hidden Complexity of IDD Billing (And Why Most EHRs Aren't Built for It)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/the-hidden-complexity-of-idd-billing-and-why-most-ehrs-arent-built-for-it"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Data Integrity Matters in an EHR for Addiction Treatment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/why-data-integrity-matters-in-an-ehr-for-addiction-treatment"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Improving Notes in Addiction Treatment Electronic Medical Records",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/improving-notes-in-addiction-treatment-electronic-medical-records"
+  },
+  {
+   "date": "2026-08-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Reducing the SUD Document Burden With a Purpose-Built EHR",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/reducing-the-sud-document-burden-with-a-purpose-built-ehr"
+  },
+  {
+   "date": "2026-07-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Maintaining Medical Necessity in Substance Use RCM Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/maintaining-medical-necessity-in-substance-use-rcm-software"
+  },
+  {
+   "date": "2026-07-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Inside the Revenue Cycle Command Center: A New Standard for Behavioral Health RCM",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/inside-the-revenue-cycle-command-center-a-new-standard-for-behavioral-health-rcm"
+  },
+  {
+   "date": "2026-07-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Substance Use Software\u2019s Role in Navigating Privacy and 42 CFR Part 2",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/substance-use-softwares-role-in-navigating-privacy-and-42-cfr-part-2"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Solving Behavioral Health Care Coordination With a Unified Record",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/solving-behavioral-health-care-coordination-with-a-unified-record"
+  },
+  {
+   "date": "2026-07-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Improving Clinical Decision-Making With an Intelligent Care Record",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/improving-clinical-decision-making-with-an-intelligent-care-record"
+  },
+  {
+   "date": "2026-06-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI in Healthcare: Native vs. Bolted-On Tools in Behavioral Health",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/ai-in-healthcare-native-vs.-bolted-on-tools-in-behavioral-health"
+  },
+  {
+   "date": "2026-04-13",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Core Solutions Introduces the Intelligent Care Record, Setting a New Standard for Behavioral Health",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://www.coresolutionsinc.com/news/core-solutions-introduces-the-intelligent-care-record-setting-a-new-standard-for-behavioral-health"
+  },
+  {
+   "date": "2026-02-26",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Core Solutions Launches the DSP Assist Mobile App for Compliant IDD Service Delivery",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.coresolutionsinc.com/news/core-solutions-launches-the-dsp-assist-mobile-app-for-compliant-idd-service-delivery"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Core Solutions sells software to organizations that treat mental health, substance use, and intellectual and developmental disabilities. The company's platform, Cx360, is described as built exclusively for behavioral health and IDD providers. One configuration is aimed at certified community behavioral health clinics.",
+   "Documentation is a central claim: the site says ambient documentation automates notes. Symptom and trend tracking is offered to guide clinical interventions. A mobile app captures notes, medications, and goals during care delivery. Real-time electronic visit verification and time tracking are used to validate services. Security is described in terms of enterprise-grade protection, privacy safeguards, and compliance tooling.",
+   "The company dates its start to 1999. It launched a first case management product in 2003 and a full-featured web-based enterprise record in 2007. It describes a later stretch of growth in which it won multiple enterprise customers. Customers span enterprise-level, mid-sized, and small organizations."
+  ],
+  "quote": {
+   "text": "Today\u2019s providers need technology that expands access, improves outcomes, drives efficiency, and strengthens organizations.",
+   "url": "https://www.coresolutionsinc.com/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.coresolutionsinc.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.coresolutionsinc.com/about",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.coresolutionsinc.com/about",
+    "https://www.coresolutionsinc.com"
+   ],
+   [
+    "https://www.coresolutionsinc.com",
+    "https://www.coresolutionsinc.com/about"
+   ],
+   [
+    "https://www.coresolutionsinc.com/about"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

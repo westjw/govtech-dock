@@ -1,0 +1,48 @@
+{
+ "profile": {
+  "paragraphs": [
+   "SimpliGov sells a workflow platform for government agencies, built around the applications, approvals and casework that programs run on. Its stated scope is anything that moves through approvals, whatever the department.",
+   "Intake starts with online forms that meet WCAG 2.1 AA accessibility standards. Program teams lay out the steps on a drag-and-drop stage builder instead of writing custom code. The engine routes applications and decisions by rule, data threshold and the agency organizational structure. Approvals are signed inside the workflow with native e-signature tools. Dashboards track processing times, bottlenecks and audit trails.",
+   "Agency examples include New Castle County processing $322.8 million in emergency grants and passing its audit with zero findings. Another describes a California city automating more than 70 workflows and saving 17,000 labor hours a month. The forms page cites a federal accessibility mandate, 28 CFR Part 35, that larger public entities must meet by April 26, 2027. The platform is described as cloud-native and meeting government data privacy, security and accessibility mandates."
+  ],
+  "quote": {
+   "text": "SimpliGov executes complex workflows across state and local governments.",
+   "url": "https://simpligov.com/platform/workflow-automation"
+  },
+  "sources": [
+   {
+    "url": "https://simpligov.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://simpligov.com/platform",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://simpligov.com/platform/workflow-automation",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://simpligov.com/platform/digital-forms",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://simpligov.com/platform",
+    "https://simpligov.com"
+   ],
+   [
+    "https://simpligov.com/platform",
+    "https://simpligov.com/platform/workflow-automation"
+   ],
+   [
+    "https://simpligov.com/platform/workflow-automation",
+    "https://simpligov.com/platform/digital-forms",
+    "https://simpligov.com/platform"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

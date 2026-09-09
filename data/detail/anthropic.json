@@ -1,0 +1,147 @@
+{
+ "news": [
+  {
+   "date": "2026-09-01",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Announcements Developing Enterprise Frontier Safeguards with our customers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/enterprise-frontier-safeguards"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Improving our alignment and security efforts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/improving-alignment-security-efforts"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Announcements Aug 27, 2026 Previewing the Model Hardware Standard We\u2019re opening a research preview of the Model Hardware Standard (MHS), a shared specification for AI agents to safely operate physical",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/model-hardware-standard-research-preview"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Announcements Expanding our support for scientists",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/expanding-support-for-scientists"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Announcements Funding better evaluations of AI\u2019s impact on wellbeing",
+   "kind": "funding",
+   "kind_rule": "Funding",
+   "url": "https://www.anthropic.com/news/wellbeing-research-grants"
+  },
+  {
+   "date": "2026-08-14",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Announcements Aug 14, 2026 How Claude\u2019s text watermark works In this article, we share answers to some of the questions we\u2019ve received about how our chosen watermarking method works, whether it affect",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/claude-text-watermark"
+  },
+  {
+   "date": "2026-08-07",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Product Improving Fable 5's biology safeguards",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards"
+  },
+  {
+   "date": "2026-08-04",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Announcements Mariano-Florentino (Tino) Cu\u00e9llar to join Anthropic as Chief Global Affairs Officer",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/tino-cuellar"
+  },
+  {
+   "date": "2026-07-30",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Investigating three real-world incidents in our cybersecurity evaluations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals"
+  },
+  {
+   "date": "2026-07-27",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Announcements Our position on open-weights models",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/position-open-weights-models"
+  },
+  {
+   "date": "2026-07-24",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Introducing Claude Opus 5",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.anthropic.com/news/claude-opus-5"
+  },
+  {
+   "date": "2026-06-30",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Introducing Claude Sonnet 5",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.anthropic.com/news/claude-sonnet-5"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Anthropic is an AI safety and research company. It aims to build AI systems that are reliable, interpretable and steerable, and it turns that research into products for businesses, nonprofits and civil society groups.",
+   "The company describes a loop of frontier research, safety techniques applied to what it ships, and deployment through partnerships and products. Its models are sold in tiers, with Opus 5 presented as a step change for the Opus tier on coding, agents and professional work. Alongside the models sit purpose-built applications, including Claude Science for researchers.",
+   "Anthropic is a public benefit corporation whose stated purpose is the responsible development and maintenance of advanced AI for the long-term benefit of humanity. Governance runs through a board of directors elected by stockholders together with a Long-Term Benefit Trust. Staff are described as researchers, engineers, policy experts and operational leaders drawn from a range of disciplines."
+  ],
+  "quote": {
+   "text": "Anthropic is a public benefit corporation dedicated to securing its benefits and mitigating its risks.",
+   "url": "https://www.anthropic.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.anthropic.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.anthropic.com/company",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.anthropic.com/company"
+   ],
+   [
+    "https://www.anthropic.com/company",
+    "https://www.anthropic.com"
+   ],
+   [
+    "https://www.anthropic.com/company"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "news": [
+  {
+   "date": "2026-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Deckard Technologies Named 2026 \"AI Solution Provider of the Year\"",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://deckard.com/resources/deckard-technologies-named-ai-solution-provider-of-the-year-proptech-breakthrough-awards"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Lessons from Our July Webinar with the City of Norman, OK",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://deckard.com/resources/lessons-from-our-july-webinar-with-the-city-of-norman-ok"
+  },
+  {
+   "date": "2026-07-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Florida Short-Term Rental Compliance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://deckard.com/resources/florida-short-term-rental-compliance"
+  },
+  {
+   "date": "2026-06-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Path to Compliance Excellence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://deckard.com/resources/path-to-str-compliance-excellence"
+  },
+  {
+   "date": "2026-05-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Housing Data Should Cities Actually Track for Long-Term Rentals?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://deckard.com/resources/housing-data-cities-should-track-long-term-rentals"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Deckard Technologies sells software that local governments use to deal with residential property problems in their jurisdictions. The products cover short-term rentals, long-term rentals, and foreclosed and vacant properties.",
+   "The short-term rental product monitors a jurisdiction by analyzing more than 15 million listings from over 10,000 rental websites in real time. The vacancy and foreclosure side watches court records and mortgage reassignments instead. Other tools handle transient occupancy tax filings and payments. A published case study describes a city adopting the Rentalscape platform in 2024 with a structured letter outreach campaign, in which the vendor develops the mailing list and generates, prints and mails the letters to identified hosts.",
+   "The company was founded in May 2018 by Greg Rose, Jess Flanagan and Tony Moriarty, starting in both Australia and the United States. It now keeps offices in the United States, Colombia and Australia. Its own count of customers is more than 500 jurisdictions worldwide. The company timeline records several seed rounds, among them a Seed-4 raise."
+  ],
+  "quote": {
+   "text": "aims to empower local governments with the data, insights, and tools they need to maximize compliance and unlock vital public revenue.",
+   "url": "https://deckard.com/about-us"
+  },
+  "sources": [
+   {
+    "url": "https://www.deckard.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://deckard.com/about-us",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://deckard.com/case-studies/how-the-city-of-norman-achieved-84-str-compliance-through-personalized-outreach?hsLang=en",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://deckard.com/about-us",
+    "https://www.deckard.com"
+   ],
+   [
+    "https://www.deckard.com",
+    "https://deckard.com/case-studies/how-the-city-of-norman-achieved-84-str-compliance-through-personalized-outreach?hsLang=en"
+   ],
+   [
+    "https://deckard.com/about-us",
+    "https://www.deckard.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

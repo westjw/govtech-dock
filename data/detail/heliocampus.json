@@ -1,0 +1,56 @@
+{
+ "news": [
+  {
+   "date": "2023-01-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "6 Steps to Integrated Planning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heliocampus.com/blog/agile-wayfinding-6-steps-to-reboot-your-integrated-planning-process"
+  },
+  {
+   "date": "2022-11-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Top 5 Institutional Effectiveness Trends",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heliocampus.com/blog/5-institutional-effectiveness-trends-for-2023"
+  },
+  {
+   "date": "2021-12-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Redesigning College Transcripts for Students and Employers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heliocampus.com/blog/redesigning-college-transcripts-for-students-and-employers"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "HelioCampus is an education technology company that provides US colleges and universities with tools for data-driven decision-making. The line takes in a data analytics platform, labor and academic cost analytics, and an assessment management platform.",
+   "The starting problem it names is that core campus systems, including the student information system, CRM, HRIS, ERP and financial aid, each tell only part of the story. A data layer called Theia unites the data models, the semantic layer, and embedded data governance through a component named Analytics Console. Staff ask a question in natural language, and Theia Analyst returns answers backed by the governed data models. The assessment product captures direct assessment data by linking key assignments with outcomes and competencies, and it automates existing program review and self study processes.",
+   "For institutional effectiveness and research offices, one stated aim is to reduce the data prep and management that slows analysis and to formalize data governance. The company says all clients receive ongoing data science services as part of the arrangement. It also states that it has maintained privacy and security standards since its inception."
+  ],
+  "quote": null,
+  "sources": [],
+  "paragraph_sources": [
+   [
+    "https://www.heliocampus.com"
+   ],
+   [
+    "https://www.heliocampus.com/products/data-analytics/modern-data-platform",
+    "https://www.heliocampus.com/products/data-analytics",
+    "https://www.heliocampus.com/products/assessment-management"
+   ],
+   [
+    "https://www.heliocampus.com/products/data-analytics/modern-data-platform",
+    "https://www.heliocampus.com/products/data-analytics"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

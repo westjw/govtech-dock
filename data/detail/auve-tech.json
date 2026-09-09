@@ -1,0 +1,47 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Auve Tech develops and manufactures autonomous transportation systems. What it sells is more than the vehicle: the offer covers integration of the vehicles into a given environment and fleet management alongside them. The stated aim is to extend public transport with a weatherproof first and last mile link running from a bus, tram or train stop to the doorstep.",
+   "The current shuttle, MiCa, is electronically limited to 25 km/h. The specification lists operating time of up to twenty hours a day. Sensing hardware named on the product page includes lidar, radar, GNSS and an inertial measurement unit. Teleoperation and remote monitoring are offered as options. A later software version added dynamic reaction to objects, detection of overtaking vehicles and side detection.",
+   "The company traces its origin to a 2018 project run in cooperation with Tallinn University of Technology. Testing of the earlier Iseauto shuttle on Estonian public streets began in the summer of 2020. One case study describes a scheduled last mile service in Takamatsu, Japan, with the shuttle operated by Boldly. That route ran 2.6 kilometres between a car park and a viewpoint."
+  ],
+  "quote": {
+   "text": "MiCa, the successor to the well-received Iseauto, was launched in 2022.",
+   "url": "https://auve.tech/company/our-story/"
+  },
+  "sources": [
+   {
+    "url": "https://auve.tech",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://auve.tech/company/our-story/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://auve.tech/products/mica/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://auve.tech/case-studies/self-driving-bus-in-takamatsu-experience/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://auve.tech",
+    "https://auve.tech/company/our-story/"
+   ],
+   [
+    "https://auve.tech/products/mica/",
+    "https://auve.tech/company/our-story/"
+   ],
+   [
+    "https://auve.tech/company/our-story/",
+    "https://auve.tech/case-studies/self-driving-bus-in-takamatsu-experience/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

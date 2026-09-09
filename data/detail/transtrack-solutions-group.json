@@ -1,0 +1,129 @@
+{
+ "news": [
+  {
+   "date": "2026-07-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beyond On-Time Performance: Using Transit Data to Understand What's Driving Results",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transtracksystems.net/blog/transit-data-beyond-on-time-performance"
+  },
+  {
+   "date": "2026-07-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "7 Questions Every Transit Agency Should Be Able to Answer With Its Data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transtracksystems.net/blog/transit-business-intelligence-questions"
+  },
+  {
+   "date": "2026-03-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Get APC Certification for NTD Reporting: A Step-by-Step Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transtracksystems.net/blog/how-to-get-apc-certification-for-ntd-reporting-a-step-by-step-guide"
+  },
+  {
+   "date": "2026-03-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why APC Data and Certification Are Essential for Transit Agencies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transtracksystems.net/blog/why-apc-data-and-certification-are-essential-for-transit-agencies"
+  },
+  {
+   "date": "2026-02-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "TransTrack Solutions Group Appoints Leanne Tribe as General Manager",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://www.transtracksystems.net/blog/transtrack-solutions-group-appoints-leanne-tribe-as-general-manager"
+  },
+  {
+   "date": "2025-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Breaking Down the Cost: How Transit Analytics Software Pays for Itself",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transtracksystems.net/blog/breaking-down-the-cost-how-transit-analytics-software-pays-for-itself"
+  },
+  {
+   "date": "2025-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Your Data Is Worth Millions \u2014 If You Know How to Use It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transtracksystems.net/blog/your-data-is-worth-millions-if-you-know-how-to-use-it"
+  },
+  {
+   "date": "2025-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Federal Funding Helps Transit Agencies Do More with Less. Here's How.",
+   "kind": "funding",
+   "kind_rule": "Funding",
+   "url": "https://www.transtracksystems.net/blog/federal-funding-helps-transit-agencies-do-more-with-less"
+  },
+  {
+   "date": "2025-08-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Transparency Isn\u2019t a Buzzword\u2014It\u2019s a Safety Strategy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transtracksystems.net/blog/transparency-is-a-safety-strategy"
+  },
+  {
+   "date": "2025-07-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Public Transit Ridership Is Rebounding\u2014Here\u2019s How Data Can Help Agencies Stay Ahead",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transtracksystems.net/blog/public-transit-ridership-is-rebounding"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "TransTrack Systems writes software for public transit agencies that pulls scattered operating data into one place so performance can be watched and reported. The main application collects data from across an agency so teams can follow trends and produce the reports decisions rest on.",
+   "Much of the appeal is federal reporting: agency data is applied automatically to the required National Transit Database forms, which the company says turns most of the annual filing from weeks of work into days. A companion analytics product presents the same operating data as dashboards, reports and metrics an agency can adjust. The point of it, in the company's framing, is to replace manual spreadsheets and disconnected systems and keep the numbers behind federal funding accurate.",
+   "The firm was formed in 2002 by transit management professionals. More than twenty years on, it describes its business as helping agencies turn operating data into better decisions. Alongside the software it lists consulting work such as transit financial planning and cost analyses. The platform itself was built with transit professionals involved."
+  ],
+  "quote": {
+   "url": "https://www.transtracksystems.net",
+   "text": "TransTrack Systems provides software designed specifically for transit agencies to centralize operational data, monitor performance, and simplify reporting."
+  },
+  "sources": [
+   {
+    "url": "https://www.transtracksystems.net",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.transtracksystems.net/who-we-are",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.transtracksystems.net"
+   ],
+   [
+    "https://www.transtracksystems.net"
+   ],
+   [
+    "https://www.transtracksystems.net/who-we-are",
+    "https://www.transtracksystems.net"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

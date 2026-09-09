@@ -1,0 +1,76 @@
+{
+ "news": [
+  {
+   "date": "2026-07-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Evolution of Blackboard",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackboard.com/blog/our-evolution"
+  },
+  {
+   "date": "2026-05-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Usability starts with U: How your feedback directly informs Blackboard LMS development",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackboard.com/blog/usability-starts-with-u"
+  },
+  {
+   "date": "2026-02-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The results have been great",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.blackboard.com/blog/new-year-new-ui-blackboards-refreshed-course-experience-delivers-results"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Blackboard builds the teaching and learning environment that institutions put in front of their learners. At the core is a learning management system the company describes as rebuilt from the ground up around the learner, AI-native and personalized by design. Around it sit accessibility tools meant to open learning experiences to everyone.",
+   "The accessibility product automatically remediates course content, generates alternative formats and gives an institution a real-time compliance dashboard, and it runs with other vendors' systems too. An AI assistant guides students through course related questions. Lecture capture arrives with AI-generated captions, transcripts and audio descriptions built in. Skills and competency tracking is built into the core system, and separate institutional tools handle measuring and hitting goals.",
+   "Institutions in more than 70 countries are cited as users. The company says its reach spans higher education, government, business and K-12 worldwide. Blackboard was co-founded by Matthew Pittinsky and Michael Chasen with the mission of turning the internet into an environment for teaching and learning. It dates that work back to 1997. Compliance claims include SOC 2, FERPA, GDPR, ISO 27001, 27017 and 27018, FedRAMP Class C and WCAG 2.2 AA, all audited externally. It also reports 350 or more user-requested features released in the last 12 months."
+  ],
+  "quote": {
+   "text": "Where great teaching finds its platform.",
+   "url": "https://www.blackboard.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.blackboard.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.blackboard.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.blackboard.com/company",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.blackboard.com/solutions/lms",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.blackboard.com",
+    "https://www.blackboard.com/solutions"
+   ],
+   [
+    "https://www.blackboard.com/solutions"
+   ],
+   [
+    "https://www.blackboard.com/solutions/lms",
+    "https://www.blackboard.com/company",
+    "https://www.blackboard.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

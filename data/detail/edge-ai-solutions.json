@@ -1,0 +1,58 @@
+{
+ "news": [
+  {
+   "date": "2025-12-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Frustrations and Solutions for Sewer Inspection Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://edgeaisolutions.com/blog/blogs-frustrations-and-solutions-for-sewer-inspection-systems/"
+  },
+  {
+   "date": "2025-12-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "My Experience Entering the Pipeline Assessment Industry",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://edgeaisolutions.com/blog/my-experience-entering-the-pipeline-assessment-industry/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "EdgeAI provides tools and software for pipeline inspection, data analysis and repair. Its Pipe Dream robot is sold as portable, reliable technology for water and wastewater inspection at a fraction of the cost.",
+   "The crawler is designed for pipelines from 6 inches to 48 inches and larger, using optional tractor-lift or tractor-float attachments. It is light enough to be carried into tight easements or remote areas where larger systems cannot reach. The system offers live video streaming and recordings optimized up to 4K. Built-in LTE and 5G connectivity handles data upload from field sites. Customers can code the data themselves, have EdgeAI code it for them, or choose no coding depending on project needs.",
+   "The subscription model includes constant software and hardware updates. Texas BuyBoard is listed as an alternative purchasing route. A testimonial from a borough manager says the equipment saved thousands of dollars and sped up the work of putting cameras through sewer lines. The company page states that the equipment is made in the United States of America."
+  ],
+  "quote": {
+   "text": "We believe inspection should be efficient.",
+   "url": "https://edgeaisolutions.com/company/"
+  },
+  "sources": [
+   {
+    "url": "https://edgeaisolutions.com/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://edgeaisolutions.com/company/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://edgeaisolutions.com/company/",
+    "https://edgeaisolutions.com/"
+   ],
+   [
+    "https://edgeaisolutions.com/"
+   ],
+   [
+    "https://edgeaisolutions.com/",
+    "https://edgeaisolutions.com/company/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

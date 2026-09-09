@@ -1,0 +1,62 @@
+{
+ "news": [
+  {
+   "date": "2025-02-11",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "LOCUS BULLETIN - 2025 - Q1",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deerfieldsolutions.com/news/locus-bulletin-2025-q1"
+  },
+  {
+   "date": "2023-10-25",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "LOCUS Bulletin - 2023 - Q1",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deerfieldsolutions.com/news/locus-bulletin-2023-q1"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Deerfield Solutions is a software and training company in northwestern Pennsylvania built around the LOCUS level-of-care assessment tools. Buyers range from individual providers and hospital systems to payers and county and state governments.",
+   "LOCUS Online is the cloud version. It holds assessment data in one place that can be downloaded and imported into an electronic health record. Where a partnership with an electronic health record vendor exists, the tool can be certified for use inside that vendor's platform. Developers can reach the assessments through an API. An on-premise version is offered for high-volume organizations or those with security concerns.",
+   "The company is a limited liability company owned and operated by Journey Health System. Journey is described as a nonprofit behavioral health company serving adults and children across Pennsylvania. Deerfield has held the same partner role for the past 30 years. That partner is the American Association for Community Psychiatry, for which Deerfield develops and distributes the electronic versions of the LOCUS family of tools. State and county governments are named as long-standing users."
+  ],
+  "quote": {
+   "text": "Another unique feature of our software company is that we exclusively work on LOCUS related software products, without competing demands.",
+   "url": "https://www.deerfieldsolutions.com/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.deerfieldsolutions.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.deerfieldsolutions.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.deerfieldsolutions.com/about",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.deerfieldsolutions.com",
+    "https://www.deerfieldsolutions.com/about"
+   ],
+   [
+    "https://www.deerfieldsolutions.com/solutions"
+   ],
+   [
+    "https://www.deerfieldsolutions.com/about",
+    "https://www.deerfieldsolutions.com/solutions"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

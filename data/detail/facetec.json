@@ -1,0 +1,32 @@
+{
+ "profile": {
+  "paragraphs": [
+   "FaceTec sells face verification software that organizations use to confirm a remote user is real and physically present, both at account onboarding and on later logins. Its products cover 3D liveness checks, KYC and 3D face verification, running from an ordinary 2D camera rather than infrared hardware. During onboarding the software records a quick video selfie, verifies 3D liveness, matches the resulting 3D FaceMap to the photo on the ID and checks the ID for signs of tampering. When the user returns, a new video selfie is compared with the stored FaceMap, and a high match, which FaceTec rates at 1/125M FAR, can grant account access.",
+   "FaceTec has run a Spoof Bounty Program since October 2019 and says it has passed Ingenium, Bixelab, Praetorian and iBeta Testing Lab Level 1-5 PAD and IAD testing with 0% FAR. The bounty currently stands at $600,000. The company's stated best practice is for customers to keep users' biometric data, as 3D FaceMap or 3D FaceVector records, on their own servers, which run FaceTec's software inside the customer's firewall.",
+   "A related product, UR Codes, carries digitally signed biometric data so a codeholder can prove legal identity and age both in person and remotely. FaceTec says it trained its 3D algorithms with the help of over half a million volunteer testers from over 180 countries. It lists more than 90 channel partners worldwide."
+  ],
+  "quote": {
+   "text": "FaceTec proves the Correct User is physically present by Matching them to their ID Photo or 3D FaceMap.",
+   "url": "https://www.facetec.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.facetec.com",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.facetec.com"
+   ],
+   [
+    "https://www.facetec.com"
+   ],
+   [
+    "https://www.facetec.com"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

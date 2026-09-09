@@ -1,0 +1,153 @@
+{
+ "news": [
+  {
+   "date": "2026-08-13",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "8.13.26 How to Constrain AI to Do Its Job Well AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://recidiviz.org/updates/how-to-constrain-ai-to-do-its-job-well"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "8.11.26 A Bigger Bench: How Recidiviz is Partnering with Nonprofits to Scale Reentry Support Product",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://recidiviz.org/updates/a-bigger-bench-how-recidiviz-is-partnering-with-nonprofits-to-scale-reentry-support"
+  },
+  {
+   "date": "2026-07-28",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "7.28.26 Corrections and the Next 250: Developing a Shared Vision for Corrections Corrections Leadership",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://recidiviz.org/updates/corrections-and-the-next-250-developing-a-shared-vision-for-corrections"
+  },
+  {
+   "date": "2026-07-20",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "7.20.26 Under the Hood: Why Our Platform Is Open Source, Modular, and Interoperable Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://recidiviz.org/updates/under-the-hood-why-our-platform-is-open-source-modular-and-interoperable"
+  },
+  {
+   "date": "2026-07-09",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "7.9.26 The Same Side of the Table: Why Recidiviz is a Nonprofit Reflections",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://recidiviz.org/updates/the-same-side-of-the-table-why-recidiviz-is-a-nonprofit"
+  },
+  {
+   "date": "2026-06-08",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "6.8.26 How We Deploy AI, and Why We Do It Carefully AI",
+   "kind": "contract",
+   "kind_rule": "Deploy",
+   "url": "https://recidiviz.org/updates/how-we-deploy-ai-and-why-we-do-it-carefully"
+  },
+  {
+   "date": "2026-06-01",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "6.1.26 May Product Updates: The Right Info at the Right Time Product",
+   "kind": "product",
+   "kind_rule": "Updates",
+   "url": "https://recidiviz.org/updates/may-2026-product-updates"
+  },
+  {
+   "date": "2026-05-07",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "5.7.26 April Product Updates: Informed Sentencing Product",
+   "kind": "product",
+   "kind_rule": "Updates",
+   "url": "https://recidiviz.org/updates/april-2026-product-updates"
+  },
+  {
+   "date": "2026-04-02",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "4.2.26 March Product Updates: The Road Home Product",
+   "kind": "product",
+   "kind_rule": "Updates",
+   "url": "https://recidiviz.org/updates/march-2026-product-updates"
+  },
+  {
+   "date": "2026-03-24",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "3.24.26 Recidiviz Named to Fast Company's Most Innovative Companies of 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://recidiviz.org/updates/most-innovative-2026"
+  },
+  {
+   "date": "2026-03-19",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "3.19.26 Building a Reentry Resource Network within the Case Planning Assistant Product",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://recidiviz.org/updates/reentry-resource-network-case-planning"
+  },
+  {
+   "date": "2026-03-02",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "3.2.26 February Product Updates: Less Paperwork, More Progress Product",
+   "kind": "product",
+   "kind_rule": "Updates",
+   "url": "https://recidiviz.org/updates/february-2026-product-updates"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Recidiviz is a non-profit that partners with criminal justice agencies on technology and data. Its customers are state departments of corrections and the staff who run prisons and community supervision.",
+   "The Corrections Platform is modular, so an agency can replace its legacy software entirely or plug in modules as it wants them. Underneath, the organization joins disconnected agency databases into one standardized data layer that feeds the tools above it. Those tools surface people who are eligible for programs, reclassification, or release.",
+   "Day-to-day users are administrators, case managers, and officers, whom the team says it goes into the field to talk with before designing anything. The organization says it works with 19 state departments of corrections responsible for almost 1 in 2 people in U.S. prisons and on community supervision. It began as a volunteer project at Google. In 2019 it became a standalone non-profit."
+  ],
+  "quote": {
+   "text": "Instead of shareholders seeking financial returns, we have the support of foundations seeking societal returns.",
+   "url": "https://recidiviz.org/platform"
+  },
+  "sources": [
+   {
+    "url": "https://recidiviz.org",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://recidiviz.org/platform",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://recidiviz.org/about",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://recidiviz.org",
+    "https://recidiviz.org/about"
+   ],
+   [
+    "https://recidiviz.org/platform",
+    "https://recidiviz.org/about"
+   ],
+   [
+    "https://recidiviz.org/platform",
+    "https://recidiviz.org/about"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

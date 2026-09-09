@@ -1,0 +1,42 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Avila sells an AI grant platform aimed at local government. The site says it finds the opportunities an agency qualifies for and writes its proposals. It also says it helps governments, schools and nonprofits discover and apply for funding.",
+   "Discovery matches state, local, regional and foundation opportunities to a customer's own projects. For applications, the platform simplifies dense notices of funding opportunity into clearer requirements. It fills in federal forms including SF-424, SF-424A, SF-LLL and program-specific attachments. Once an award lands, it ingests invoices and auto-categorizes expenses against the approved budget. It also flags compliance issues against 2 CFR 200 and the awarding agency's rules.",
+   "Users named on the site include the Houston-Galveston Area Council. One case study describes a mid-sized county government in the western U.S. Another describes a statewide public university system in the northeast. The company states that it is SOC 2 compliant. It says all data is encrypted in transit and at rest. The about page says NVIDIA Inception, Microsoft for Startups and MongoDB have welcomed the company into their programs."
+  ],
+  "quote": {
+   "text": "One platform for the entire grant lifecycle",
+   "url": "https://www.getavila.ai"
+  },
+  "sources": [
+   {
+    "url": "https://www.getavila.ai",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.getavila.ai/about-us",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.getavila.ai/case-studies",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.getavila.ai"
+   ],
+   [
+    "https://www.getavila.ai"
+   ],
+   [
+    "https://www.getavila.ai",
+    "https://www.getavila.ai/case-studies",
+    "https://www.getavila.ai/about-us"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

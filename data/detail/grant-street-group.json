@@ -1,0 +1,42 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Grant Street Group sells software to government entities covering tax calculation, billing, collection and distribution, along with payment processing and online auctions. The company describes those products as secure government cloud solutions for tax collection, e-payment and financial auction services.",
+   "TaxSys is the hosted, web-based system for tax calculation, billing, collection and distribution. PaymentExpress brings payment collection, management and reporting together across every channel. On the delinquent side, LienAuction runs tax lien certificate auctions and DeedAuction handles tax-defaulted property sales. Behind the payment side the company points to PCI-DSS Level 1 compliant security infrastructure.",
+   "The customers are state and county government offices. One client account describes a tax collector office replacing several legacy vendors with a single integrated Grant Street platform. The firm was founded in 1995. More than 500 full-time professionals now make up the staff. The company says its MuniAuction platform hosted the first online bond auction and that it has since hosted over $13 trillion in auction volume. It also claims the first fully hosted cloud-based tax billing and collection system."
+  ],
+  "quote": {
+   "text": "Our success spans more than a quarter century.",
+   "url": "https://grantstreet.com/company"
+  },
+  "sources": [
+   {
+    "url": "https://grantstreet.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://grantstreet.com/clients",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://grantstreet.com/company",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://grantstreet.com/company",
+    "https://grantstreet.com"
+   ],
+   [
+    "https://grantstreet.com"
+   ],
+   [
+    "https://grantstreet.com/clients",
+    "https://grantstreet.com/company"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

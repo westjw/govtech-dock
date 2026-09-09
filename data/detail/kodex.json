@@ -1,0 +1,49 @@
+{
+ "news": [
+  {
+   "date": "2026-06-30",
+   "date_source": "dateline",
+   "first_seen": "2026-09-09",
+   "headline": "The Infrastructure Behind Every Government Data Request",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kodexglobal.com/blog/kodex-builds-the-rails-for-government-data-requests"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Kodex sells a portal for processing subpoenas and other legal data requests, built for the companies that receive them. Those buyers manage requests from law enforcement through one centralized platform that Kodex says protects both compliance obligations and user privacy. The platform verifies every agent, encrypts every exchange, and keeps a complete record of how each request happened, and the company says requests close in days instead of weeks when both sides work in one system.",
+   "Compliance requirements become automated intake forms that catch issues before they start, and a dashboard shows request status, deadlines, and team responses. A single workspace replaces scattered email threads, so a team can work on each request internally and with government agents. Transparency reports generate in seconds, which Kodex pitches as preparation for audits and questions from regulators. Kodex describes itself as the only data request portal used by more than 15,000 government agencies.",
+   "Kodex was founded in 2020 in Boston by former FBI counterterrorism agent Matt Donahue. The company says its verification systems stop thousands of fake law enforcement requests, protecting the integrity of legitimate ones. A Coinbase vice president is quoted calling Kodex a partner when engaging with regulators. Bitget's chief compliance officer is also quoted. The feature list ends with SOC2, GDPR, and PCI compliance."
+  ],
+  "quote": {
+   "text": "Kodex moves critical data exchanges from faxes and emails to a verified, encrypted platform that keeps bad actors away from our data, and off the streets",
+   "url": "https://www.kodexglobal.com/about-us"
+  },
+  "sources": [
+   {
+    "url": "https://www.kodexglobal.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.kodexglobal.com/about-us",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.kodexglobal.com",
+    "https://www.kodexglobal.com/about-us"
+   ],
+   [
+    "https://www.kodexglobal.com"
+   ],
+   [
+    "https://www.kodexglobal.com/about-us",
+    "https://www.kodexglobal.com"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Baseform makes software for networked water infrastructures, sold to utilities as analytics and planning tools. The product is presented as end-to-end software for the operational management of a water or wastewater system.",
+   "It continuously tracks and reconciles utility SCADA, GIS, billing, AMI and other data sources. One module handles event detection, DMA management, component analysis, non-revenue water reporting and infiltration tracking. Another covers failure and condition prediction, risk exposure, renewal planning and capital project generation. A billing module manages meters, consumption, revenue, under-registration and meter changeout. Network hydraulics are factored in continuously rather than treated as an afterthought.",
+   "The results are meant to reach everyone from the technicians who generate the analyses to field crews and top level executives. The stated approach is making better use of data that utilities and cities already collect daily. The company dates its inception to January 2015. It states that it is 100% owned and managed by its founders. One example given on the product page is a Texas public utility using the predictive analytics against a yearly rise in pipe breaks."
+  ],
+  "quote": {
+   "text": "Baseform is proud to be 100% owned and managed by its founders.",
+   "url": "https://www.baseform.com/np4/about/"
+  },
+  "sources": [
+   {
+    "url": "https://www.baseform.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.baseform.com/np4/product/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.baseform.com/np4/about/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.baseform.com/np4/about/",
+    "https://www.baseform.com/np4/product/"
+   ],
+   [
+    "https://www.baseform.com/np4/product/"
+   ],
+   [
+    "https://www.baseform.com/np4/product/",
+    "https://www.baseform.com/np4/about/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

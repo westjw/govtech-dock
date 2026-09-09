@@ -1,0 +1,112 @@
+{
+ "news": [
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Beyond the Deadline: What ADA Title II Means for Higher Education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/beyond-the-deadline-what-ada-title-ii-means-for-higher-education"
+  },
+  {
+   "date": "2026-08-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "and August 11, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/keeping-up-with-clon-aug-2026"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Supporting Successful Classrooms: Meet Hackersjack and Discover What's New This Month",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/partnering-with-classlink-aug-2026"
+  },
+  {
+   "date": "2026-07-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "and July 9, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/when-phone-free-classrooms-meet-secure-campuses"
+  },
+  {
+   "date": "2026-07-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Christine Fox and Michelle Soriano June 29, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/from-compliance-to-capacity-how-accessible-edtech-is-evolving-under-title-ii"
+  },
+  {
+   "date": "2026-06-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "and June 16, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/classlink-academy-jun-2026"
+  },
+  {
+   "date": "2026-04-30",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Eight ClassLink Academy Courses to Supercharge Cyber Readiness",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.classlink.com/blog/eight-essential-cybersecurity-courses"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "ClassLink sells identity, access and analytics software to school systems that have accumulated more educational technology than they can easily manage. The best known piece is LaunchPad, a single sign-on portal that puts a student or teacher's apps behind one login with multi-factor authentication.",
+   "Behind the portal, OneSync handles account creation and management and is pitched at tech teams losing hundreds of hours to that work by hand. Roster Server delivers class rosters and carries 1EdTech certification for interoperability. An add-on called DataGuard masks personally identifiable fields before roster data leaves for a vendor. A separate product, ThreatScan, watches the dark web for district credentials that have already been exposed. Analytics reports digital engagement from the district level down to the individual student.",
+   "The company says over 3,000 school systems use its products. It describes itself as the single sign-on platform chosen by over 25 million users. ClassLink states that it connects to more than 6,000 digital learning resources."
+  ],
+  "quote": {
+   "text": "Identity first schools are safer, faster, and easier to run",
+   "url": "https://www.classlink.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.classlink.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.classlink.com/products/threatscan",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.classlink.com/solutions/identity-and-access-management",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.classlink.com/solutions/k-12-overview",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.classlink.com"
+   ],
+   [
+    "https://www.classlink.com/solutions/identity-and-access-management",
+    "https://www.classlink.com/products/threatscan",
+    "https://www.classlink.com"
+   ],
+   [
+    "https://www.classlink.com",
+    "https://www.classlink.com/solutions/k-12-overview"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

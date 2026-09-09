@@ -1,0 +1,139 @@
+{
+ "news": [
+  {
+   "date": "2026-09-01",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "01 DSM-6: What the APA's Roadmap Says, and Why There's No Release Date LOG_2026_9 // Sep 1, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hiboop.com/insights/dsm-6/"
+  },
+  {
+   "date": "2026-05-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "May 26, 2026 The Clinical Evidence for Measurement-Based Care Jason Morehouse",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hiboop.com/insights/mbc-therapy-guide/"
+  },
+  {
+   "date": "2026-05-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "May 26, 2026 Therapeutic Alliance in Mental Health: Evidence, Measurement & Outcomes Jason Morehouse",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hiboop.com/insights/therapeutic-alliance-guide/"
+  },
+  {
+   "date": "2026-05-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "May 13, 2026 Clinical tools should not cost more for the clinicians who have the least Jason Morehouse",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hiboop.com/insights/clinical-access/"
+  },
+  {
+   "date": "2026-05-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "// May 5, 2026 Inside the UVic research: how peer-reviewed comorbidity data reshaped HiBoop's recommendation logic Read_Article",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hiboop.com/insights/uvic-comorbidity-research/"
+  },
+  {
+   "date": "2026-03-26",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "// Mar 26, 2026 HiBoop at NatCon 2026: Come Find Us at Booth 1441 Read_Article",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hiboop.com/insights/natcon-2026/"
+  },
+  {
+   "date": "2026-03-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "// Mar 18, 2026 From research to code: how the University of Victoria shaped HiBoop's clinical brain Read_Article",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hiboop.com/insights/from-research-to-code/"
+  },
+  {
+   "date": "2026-03-12",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Mar 12, 2026 \"We finally had data that matched our care\": how Alongside You made insight matter with HiBoop Madeline Geneau",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hiboop.com/insights/stories/alongside-you/"
+  },
+  {
+   "date": "2026-03-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "// Mar 9, 2026 AuDHD: What Happens When ADHD and Autism Coexist Read_Article",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hiboop.com/insights/adhd-vs-autism/"
+  },
+  {
+   "date": "2026-01-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Choosing Assessments Evidence-based guidance for selecting the right clinical assessments for your practice and patient population. Clinical Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hiboop.com/insights/choosing-assessments/"
+  },
+  {
+   "date": "2025-07-06",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Jul 6, 2025 Me & Autism: Building a Space That Says Yes Dr. Jilleun Tenning, PhD",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hiboop.com/insights/stories/me-and-autism-building-a-space-that-says-yes/"
+  },
+  {
+   "date": "2025-01-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "// Jan 27, 2025 HiBoop Launches Clinical Pilot for Innovative Mental Health Assessment Platform Read_Article",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.hiboop.com/insights/hiboop-launches-clinical-pilot-for-innovative-mental-health-assessment-platform/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "HiBoop sells an assessment platform for clinicians who practice measurement-based care. Teams use it to automate screening, read scored results before a session, and track what changes between sessions. The stated buyers are clinics, hospitals and private practices.",
+   "The library holds more than fifty validated instruments, scored automatically and tracked session to session. Clients receive a secure link by email, SMS or QR code, with no app download or account required. Scoring triggers real-time notifications for critical items, suicide ideation and clinical deterioration. Rather than writing into the chart directly, the platform exports structured clinical data as PDF reports and CSV.",
+   "The company states HIPAA and PIPEDA compliance by design, with encryption, signed business associate agreements, role-based access and annual third-party security audits. It says client data is stored in Canada. Every account is described as including a dedicated implementation specialist who walks the team through setup. A published case study describes the Canadian Addiction Treatment Centres moving off paper-based assessment workflows."
+  ],
+  "quote": {
+   "text": "The mental health assessment platform for clinical measurement-based care.",
+   "url": "https://www.hiboop.com"
+  },
+  "sources": [],
+  "paragraph_sources": [
+   [
+    "https://www.hiboop.com",
+    "https://www.hiboop.com/case-studies/"
+   ],
+   [
+    "https://www.hiboop.com"
+   ],
+   [
+    "https://www.hiboop.com",
+    "https://www.hiboop.com/case-studies/catc/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

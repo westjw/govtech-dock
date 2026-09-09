@@ -1,0 +1,42 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Adobe sells creative software, and the tools it names first are Photoshop, Illustrator and Premiere. A second line covers documents, using AI to make edits, answer questions, share information and produce polished content. For companies the pitch is to unify data, content and workflows and to personalize at scale.",
+   "Firefly is the generative AI piece, a creative space for making and editing images, video, audio and vector graphics from text prompts. It carries Adobe's own models next to partner models from Google, OpenAI, ElevenLabs, Luma AI and Runway. Adobe says those models are trained on licensed Adobe Stock and public domain content, and that it does not train on users' personal or generated content. Prompts are accepted in more than 100 languages, and audio and video translation covers more than 20.",
+   "The audience Adobe names for Firefly is designers, photographers, video editors, marketers and social media creators. Students and teachers are offered a discount on the creative tools. On provenance, Adobe co-founded the Content Authenticity Initiative in 2019, described as a coalition of over 3,300 members. The company says Firefly has been used to generate over 18 billion assets globally. Its catalog page notes that a purchase can be cancelled within 14 days for a full refund."
+  ],
+  "quote": {
+   "text": "Adobe Firefly has been used to generate over 18 billion assets globally",
+   "url": "https://www.adobe.com/products/firefly.html"
+  },
+  "sources": [
+   {
+    "url": "https://www.adobe.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.adobe.com/products/firefly.html",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.adobe.com/products/catalog.html",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.adobe.com"
+   ],
+   [
+    "https://www.adobe.com/products/firefly.html"
+   ],
+   [
+    "https://www.adobe.com/products/firefly.html",
+    "https://www.adobe.com",
+    "https://www.adobe.com/products/catalog.html"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

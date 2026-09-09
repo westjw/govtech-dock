@@ -1,0 +1,142 @@
+{
+ "news": [
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "May Mobility and NTT Mobility to Launch First Public Rides on Autonomous e-Palette",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://maymobility.com/posts/may-mobility-and-ntt-mobility-to-launch-first-public-rides-on-autonomous-e-palette/"
+  },
+  {
+   "date": "2026-07-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Get to Know May: Mike Diaz, Senior Autonomy Release Engineer",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/posts/get-to-know-may-mike-diaz-senior-autonomy-release-engineer/"
+  },
+  {
+   "date": "2026-07-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Espa\u00f1ol (Estados Unidos) \ud83c\uddfa\ud83c\uddf8",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/es/posts/get-to-know-may-mike-diaz-senior-autonomy-release-engineer/"
+  },
+  {
+   "date": "2026-07-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Get to Know May : Mike Diaz, Senior Autonomy Release Engineer",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/ja/posts/get-to-know-may-mike-diaz-senior-autonomy-release-engineer/"
+  },
+  {
+   "date": "2026-07-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "May Mobility Appoints Balajee Kannan as Senior Vice President of Autonomy Core Engineering",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://maymobility.com/posts/may-mobility-appoints-balajee-kannan-as-senior-vice-president-of-autonomy-core-engineering/"
+  },
+  {
+   "date": "2026-07-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Espa\u00f1ol (Estados Unidos) \ud83c\uddfa\ud83c\uddf8",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/es/posts/may-mobility-appoints-balajee-kannan-as-senior-vice-president-of-autonomy-core-engineering/"
+  },
+  {
+   "date": "2026-07-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "May Mobility Appoints Balajee Kannan as Senior Vice President of Autonomy Core Engineering",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://maymobility.com/ja/posts/may-mobility-appoints-balajee-kannan-as-senior-vice-president-of-autonomy-core-engineering/"
+  },
+  {
+   "date": "2026-07-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Our Autonomous Vehicles Are Actually Thinking",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/posts/what-our-autonomous-vehicles-are-actually-thinking/"
+  },
+  {
+   "date": "2026-07-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Espa\u00f1ol (Estados Unidos) \ud83c\uddfa\ud83c\uddf8",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/es/posts/what-our-autonomous-vehicles-are-actually-thinking/"
+  },
+  {
+   "date": "2026-07-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "What Our Autonomous Vehicles Are Actually Thinking",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/ja/posts/what-our-autonomous-vehicles-are-actually-thinking/"
+  },
+  {
+   "date": "2026-06-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "CaoCao and May Mobility Announce Strategic Partnership to Pioneer Robotaxi Expansion in Europe",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/posts/caocao-and-may-mobility-announce-strategic-partnership-to-pioneer-robotaxi-expansion-in-europe/"
+  },
+  {
+   "date": "2026-06-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Espa\u00f1ol (Estados Unidos) \ud83c\uddfa\ud83c\uddf8",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/es/posts/caocao-and-may-mobility-announce-strategic-partnership-to-pioneer-robotaxi-expansion-in-europe/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "May Mobility develops autonomous driving technology and brings it to ride-hail platforms, cities, campuses and businesses. Its operations run from rural Minnesota to Atlanta and the dense streets of Japan.",
+   "The cornerstone of the technology is a system the company calls Multi-Policy Decision Making. It is described as a real-time, reinforcement-learning AI algorithm. Vehicles generate training examples relevant to their current environment and learn while driving. The sensor stack and the decision-making platform work together to monitor the road and run simulations of possible situations and hazards.",
+   "An autonomous ride-hail preview is live on Lyft. The site notes a first autonomous vehicle fleet deployed with Lyft in Atlanta. It also lists a strategic partnership with Uber to scale autonomous vehicles. An investment from Grab is tied to expansion into Southeast Asia. The chief executive is Edwin Olson."
+  ],
+  "quote": {
+   "text": "The AV company imagining every possibility",
+   "url": "https://maymobility.com"
+  },
+  "sources": [
+   {
+    "url": "https://maymobility.com",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://maymobility.com"
+   ],
+   [
+    "https://maymobility.com"
+   ],
+   [
+    "https://maymobility.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

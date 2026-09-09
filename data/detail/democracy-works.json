@@ -1,0 +1,148 @@
+{
+ "news": [
+  {
+   "date": "2026-09-02",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "TurboVote\u2019s Trusted Guidance Now Available in More Than 20 Languages",
+   "kind": "product",
+   "kind_rule": "Now Available",
+   "url": "https://www.democracy.works/news/turbovotes-trusted-guidance-now-available-in-more-than-20-languages"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "What it Takes to Publish Accurate Election Information",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/what-it-takes-to-publish-accurate-election-information"
+  },
+  {
+   "date": "2026-07-29",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Powering the Election Information Infrastructure AI Depends On",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/infrastructure-ai-depends-on"
+  },
+  {
+   "date": "2026-07-03",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "AI and Our Elections Trust Problem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/ai-and-our-elections-trust-problem"
+  },
+  {
+   "date": "2026-06-30",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "What We Learned About Voter Participation in 2025",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/what-we-learned-about-voter-participation-in-2025"
+  },
+  {
+   "date": "2026-06-18",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Democracy's AI-Fueled Information Challenge",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/democracys-ai-fueled-information-challenge"
+  },
+  {
+   "date": "2026-06-11",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Making it Easier to Find Where to Vote in TurboVote",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/making-it-easier-to-find-where-to-vote-in-turbovote"
+  },
+  {
+   "date": "2026-05-27",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "OpenAI and Democracy Works Announce Partnership",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/democracy-works-partnering-with-openai"
+  },
+  {
+   "date": "2026-05-14",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Democracy Watch '26: What Comes After Louisiana v. Callais?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/democracy-watch-26-what-comes-after-louisiana-vs-callais"
+  },
+  {
+   "date": "2026-04-13",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Democracy Watch \u201826: Understanding Documentary Proof of Citizenship Requirements",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/democracy-watch-26-understanding-documentary-proof-of-citizenship-requirements"
+  },
+  {
+   "date": "2026-03-24",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "The \u201cOpt-Out\u201d Model: Optimizing TurboVote to Engage Students More Strategically",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/the-opt-out-model-optimizing-turbovote-to-engage-students-more-strategically"
+  },
+  {
+   "date": "2026-03-19",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Civic Engagement Is For All Of Us",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/civic-engagement-is-for-all-of-us"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Democracy Works is a nonpartisan nonprofit that builds tools meant to make it easier for voters to take part in every election. It works with election officials, major platforms, civic organizations and companies so that voters can reach accurate information.",
+   "TurboVote, the voter engagement platform, offers personalized support across the whole voting journey. Underneath it sits official election information collected, verified and published straight from state and local election offices. An Elections API delivers that enterprise-grade data across thousands of elections at every level of government. The Voting Information Project gathers voting location data directly from election officials and distributes it to voters through the Google Civic Information API. Participating jurisdictions are not charged for that program. In 2025 the organization published data for 3,462 elections across all 50 states, covering municipal, school board, county and other local contests.",
+   "The organization was founded in 2010 with the goal of making voting easier for Americans. It is a registered 501(c)(3) nonprofit. It has also partnered with platforms such as Perplexity AI and Anthropic to place reliable election information in the AI space. On the employer side, the Civic Alliance it co-founded with the CAA Foundation supports more than 1,300 member businesses."
+  ],
+  "quote": {
+   "text": "Democracy Works provides Americans with the guidance they need to vote in every election, every time.",
+   "url": "https://www.democracy.works/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.democracy.works",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.democracy.works/about",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.democracy.works"
+   ],
+   [
+    "https://www.democracy.works",
+    "https://www.democracy.works/about"
+   ],
+   [
+    "https://www.democracy.works/about",
+    "https://www.democracy.works"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

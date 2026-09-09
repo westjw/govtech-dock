@@ -1,0 +1,42 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Chorus Intelligence sells the Chorus Intelligence Suite, software that investigators use to manage every stage of a digital investigation from one dashboard. The suite provides data cleansing, analysis, search, enrichment and evidential reporting tools, and the company sells it to law enforcement, financial and corporate institutions across the globe. The customers page says it is used every day to help combat serious and organised crime, fraud, human trafficking and terrorism.",
+   "An investigator starts by dragging in raw digital data such as call data records, handset downloads and ANPR, which the suite cleanses and formats automatically. To attribute an entity, the same dashboard can bulk search a name, phone number, email address or alias across multiple data sources at once. Open-source searches run through an IP-obfuscated environment that hides the identity of the person searching. Anything captured online is hashed to SHA 256 standard so its integrity can be checked.",
+   "Case studies on the site describe North Wales Police using the data cleansing and analysis tools to find and convict a crossbow murderer. Another describes West Midlands Police using Chorus on what the company calls the largest modern slavery investigation ever conducted in the UK. The company says its team combines former law enforcement analysts with software developers who specialise in police and financial data."
+  ],
+  "quote": {
+   "text": "A digital intelligence and investigation suite built for the future",
+   "url": "https://chorusintel.com"
+  },
+  "sources": [
+   {
+    "url": "https://chorusintel.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://chorusintel.com/customers/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://chorusintel.com/product/federated-search-capture-enrichment/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://chorusintel.com",
+    "https://chorusintel.com/customers/"
+   ],
+   [
+    "https://chorusintel.com/product/data-cleansing-analysis/",
+    "https://chorusintel.com/product/federated-search-capture-enrichment/"
+   ],
+   [
+    "https://chorusintel.com"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

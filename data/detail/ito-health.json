@@ -1,0 +1,98 @@
+{
+ "news": [
+  {
+   "date": "2026-06-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Medicaid Policy Watch A Big Ugly Policy Situation The new CMS rule implementing H.R.1's Medicaid work requirements puts up to 10 million people at risk of losing coverage, most of them not because the",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.itohealth.org/blog/a-big-ugly-policy-situation"
+  },
+  {
+   "date": "2026-05-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "MediKey Operations Rebuilding the Medicaid Retention Workflow from the Inside Out Dr. Rahul Vanjani on how clinical experience, frontline interviews, and six months of unbilled encounters shaped MediK",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.itohealth.org/resources/medicaid-retention-workflow"
+  },
+  {
+   "date": "2026-05-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Policy Brief H.R. 1 Medicaid Medicaid Coverage Is About to Get a Lot Harder to Keep H.R. 1 introduces the first federal Medicaid work requirements in U.S. history and compresses renewal cycles to ever",
+   "kind": "contract",
+   "kind_rule": "renewal",
+   "url": "https://www.itohealth.org/resources/medicaid-work-requirements"
+  },
+  {
+   "date": "2026-04-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "healthcare health tech Rx: Put the \"Primary\" back in Primary Care Primary care improves outcomes and lowers costs, yet healthcare continues to underinvest in it. Here's why the system treats care as a",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.itohealth.org/blog/why-primary-care-became-a-gate-instead-of-healthcares-foundation"
+  },
+  {
+   "date": "2026-03-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "healthcare health tech Why We Should Stop Talking About Healthcare Costs Healthcare \"costs\" sound unavoidable. Healthcare spending is a choice. Reframing the language reveals who benefits from the sys",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.itohealth.org/blog/why-we-should-stop-talking-about-healthcare-costs"
+  },
+  {
+   "date": "2026-03-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "customer service healthcare Empathy is off-script Most companies train their people to follow specific rules and use scripts to interact with customers \u2013 even in healthcare and health tech. Here's wha",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.itohealth.org/blog/empathy-is-off-script"
+  },
+  {
+   "date": "2026-03-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "consumer research design Human-centered design isn\u2019t enough Every health tech company will tell you they practice human-centered design. Good \u2013 they should, because it matters. Centering the people yo",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.itohealth.org/blog/human-centered-design-isnt-enough"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "ITO Health is a Public Benefit Company built by clinicians and health professionals. It makes tools that help care workers and benefits specialists connect people to the support they need. The customers are health and social care organizations running the workflows behind eligibility decisions, enrollment, and ongoing coordination.",
+   "HealthBase and HealthWorks are the core offerings, sibling configurations of the same platform for different operational needs. HealthBase turns client information into completed benefit applications and real-world actions rather than referrals. HealthWorks is the employer-facing version, a benefit navigation platform for workforces. Eligibility decision support applies deterministic logic across more than 120 federal, state, and local programs to produce auditable determinations.",
+   "HealthBase is built for social service organizations, federally qualified health centers, community health centers, and healthcare systems that coordinate benefits enrollment and social care. The products page puts current eligibility and enrollment coverage at more than 75 federal and local programs. The platform supports HL7 FHIR, custom API integrations, and connections to electronic health records. The company states that it is a HIPAA-compliant organization. It says clinicians founded it."
+  ],
+  "quote": {
+   "text": "ITO Health is a Public Benefit Company built by clinicians and health professionals.",
+   "url": "https://www.itohealth.org"
+  },
+  "sources": [],
+  "paragraph_sources": [
+   [
+    "https://www.itohealth.org",
+    "https://www.itohealth.org/products"
+   ],
+   [
+    "https://www.itohealth.org/products",
+    "https://www.itohealth.org/products/healthbase",
+    "https://www.itohealth.org/products/healthworks",
+    "https://www.itohealth.org"
+   ],
+   [
+    "https://www.itohealth.org/products/healthbase",
+    "https://www.itohealth.org/products",
+    "https://www.itohealth.org"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

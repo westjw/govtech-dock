@@ -1,0 +1,77 @@
+{
+ "news": [
+  {
+   "date": "2024-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Grandview Turned Weeks-Long Licensing Nightmare Into Same-Day Game Changer",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govbuilt.com/stories/grandview-simplifies-license-renewals/"
+  },
+  {
+   "date": "2024-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Springerville Built a Website Worth Bragging About",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govbuilt.com/stories/springerville-az/"
+  },
+  {
+   "date": "2024-03-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Pottawatomie County Reduced Permit Time by 80% Without Adding Staff",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govbuilt.com/stories/pottawatomie-county-saves-permit-time/"
+  },
+  {
+   "date": "2024-03-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Saline County Eliminated Payment Backlogs and Reclaimed Hours Every Day",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govbuilt.com/stories/salineks-ditches-paper/"
+  },
+  {
+   "date": "2024-03-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From Vendor Sprawl to Budget Saved: Salina Rebooted Its Government Website",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govbuilt.com/stories/salinaks-saved-with-govbuilt/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "GovBuilt sells community development software to local government agencies, covering plan review, code enforcement, licensing and compliance in a single platform. On the site the product is presented under the MCCi name, with a claim that an agency can process permits up to 80% faster. The company also builds government websites that it describes as ADA-compliant and mobile-friendly.",
+   "Guided digital forms walk applicants through each requirement and flag missing information before submission. Applicants then get automatic status updates at every stage of the process. Inspectors complete reviews, log photos and update permit statuses from the job site. License records connect to supporting documents, inspection records, correspondence and approval history through a Laserfiche integration. As a license approaches expiration, automated renewal notices go out with what the business owner needs to finish online. For code enforcement, community members submit complaints and track case status through a public-facing portal. Officers document violations with photos and update case records directly from the property.",
+   "The company describes the platform as a browser-based SaaS product hosted on Microsoft Azure. An Android and iOS mobile application is offered for staff and inspectors. Agency staff are said to configure forms, requirements and workflows without submitting IT tickets or calling a vendor. A county planner in Pottawatomie County, KS is quoted saying permits that used to take 10 to 12 days now go out the same day in most cases."
+  ],
+  "quote": {
+   "text": "Government operations without all the busywork.",
+   "url": "https://www.govbuilt.com"
+  },
+  "sources": [],
+  "paragraph_sources": [
+   [
+    "https://www.govbuilt.com"
+   ],
+   [
+    "https://www.govbuilt.com/solutions/permitting/",
+    "https://www.govbuilt.com/solutions/licensing/",
+    "https://www.govbuilt.com/solutions/code-enforcement/"
+   ],
+   [
+    "https://www.govbuilt.com/solutions/permitting/",
+    "https://www.govbuilt.com/solutions/licensing/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

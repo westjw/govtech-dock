@@ -1,0 +1,107 @@
+{
+ "news": [
+  {
+   "date": "2025-12-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "BusPatrol, GHSA, and Safe Kids Worldwide Host Inaugural National School Bus Safety Summit, Bringing Together Nation\u2019s Top Safety Leaders to Confront Growing Crisis on America\u2019s Roads",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://buspatrol.com/press/buspatrol-hosts-inaugural-national-school-bus-safety-summit/"
+  },
+  {
+   "date": "2025-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "BusPatrol Named to Deloitte Technology Fast 500\u2122 and Inc. 5000 for Advancing School Bus Safety",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://buspatrol.com/press/buspatrol-named-to-deloitte-technology-fast-500-and-inc-5000/"
+  },
+  {
+   "date": "2025-08-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hillsborough Leaders Remind Community to Drive Safely Around School Buses as Back-\u200bto-\u200bSchool Approaches Next Week",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://buspatrol.com/press/hillsborough-leaders-remind-community-to-drive-safely-around-school-buses/"
+  },
+  {
+   "date": "2025-07-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Carson City School District and BusPatrol Pilot Program Reveals Alarming Rate of Illegal School Bus Passings",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://buspatrol.com/press/carson-city-and-buspatrol-pilot-program-reveals-alarming-rate-of-illegal-school-bus-passings/"
+  },
+  {
+   "date": "2025-07-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Clark County School District and BusPatrol Pilot Program Reveals Alarming Rate of Illegal School Bus Passings, Over 11,000 Violations in Just Five Months",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://buspatrol.com/press/clark-county-school-district-and-buspatrol-pilot-program-reveals-alarming-rate-of-illegal-school-bus-passings-over-11000-violations-in-just-five-months/"
+  },
+  {
+   "date": "2025-06-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "School Bus Safety Star ts Here",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://buspatrol.com/press/itemDataObject.url"
+  },
+  {
+   "date": "2025-03-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Spring Break Travel Surge: BusPatrol Reminds Drivers to Stay Alert and Stop for School Buses When Students Return",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://buspatrol.com/press/miami-spring-break-release/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "BusPatrol runs school bus stop-arm enforcement programs alongside school districts, municipalities, and law enforcement agencies. The company says communities can enforce the law around stopped buses at no upfront cost.",
+   "Cameras on the bus detect illegal passings and capture video evidence of them. Agencies review the results through dashboards, monthly reports, and compliance tools. The program also runs public awareness and public service campaigns meant to change how drivers behave.",
+   "BusPatrol states that it partners with school districts in 26 states. It says communities using the program see measurable reductions in dangerous driving around stopped school buses. The company traces its origin to a child killed while getting off his school bus in Ontario, Canada. Its staff, by its own description, includes technologists, retired police officers, and teachers."
+  ],
+  "quote": {
+   "text": "Communities across the country choose BusPatrol to modernize their school bus fleet.",
+   "url": "https://www.buspatrol.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.buspatrol.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://buspatrol.com/case-studies/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://buspatrol.com/about-us/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.buspatrol.com",
+    "https://buspatrol.com/about-us/"
+   ],
+   [
+    "https://www.buspatrol.com"
+   ],
+   [
+    "https://buspatrol.com/case-studies/",
+    "https://buspatrol.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

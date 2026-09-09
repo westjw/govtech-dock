@@ -1,0 +1,53 @@
+{
+ "news": [
+  {
+   "date": "2025-07-04",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Your guide to H.R.1, the One Big Beautiful Bill Act",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.adp.com/resources/big-beautiful-bill.aspx"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "ADP sells payroll and HR services to employers looking for solutions that support their people and unlock their teams' potential. The site organizes those offerings by employer size and tells visitors that coverage does not depend on how large the business is.",
+   "Alongside payroll sits SmartCompliance, described as a connected operating system that unifies compliance work living outside or beside a customer's HCM system. That work spans Affordable Care Act compliance, wage garnishments, and employment tax. The product is presented as platform agnostic, integrating with most ERP, HR, third-party and payroll systems. A health compliance module handles eligibility along with IRS Forms 1095-C and 1094-C and state employer reporting requirements.",
+   "The company claims more than 75 years helping organizations manage payroll, HR, and compliance complexity. It says its experts monitor federal, state, and local requirements across 11,000 jurisdictions. By its own count it has filed and furnished over 99 million Forms 1095-C nationwide."
+  ],
+  "quote": {
+   "text": "ADP SmartCompliance is a connected operating system that unifies the compliance work that lives outside or alongside your HCM system.",
+   "url": "https://www.adp.com/what-we-offer/products/adp-smartcompliance.aspx"
+  },
+  "sources": [
+   {
+    "url": "https://www.adp.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.adp.com/what-we-offer/products/adp-smartcompliance.aspx",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.adp.com/what-we-offer/products/adp-smartcompliance/health-compliance.aspx",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.adp.com"
+   ],
+   [
+    "https://www.adp.com/what-we-offer/products/adp-smartcompliance.aspx",
+    "https://www.adp.com/what-we-offer/products/adp-smartcompliance/health-compliance.aspx"
+   ],
+   [
+    "https://www.adp.com/what-we-offer/products/adp-smartcompliance.aspx",
+    "https://www.adp.com/what-we-offer/products/adp-smartcompliance/health-compliance.aspx"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

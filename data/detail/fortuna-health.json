@@ -1,0 +1,152 @@
+{
+ "news": [
+  {
+   "date": "2026-08-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Best Person to Build the Tool is the Person Who Needs It Our CEO built a Medicaid news bot. Our COO built a contracts tracker in an afternoon. How non-engineers vibe code at a healthcare company, ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/the-best-person-to-build-the-tool-is-the-person-who-needs-it"
+  },
+  {
+   "date": "2026-07-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Fortuna Helps With PERM PERM, the Payment Error Rate Measurement program, is how CMS measures improper payments in Medicaid and CHIP. Historically, a high rate meant a corrective action plan. Unde",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/how-fortuna-helps-with-perm"
+  },
+  {
+   "date": "2026-06-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Back to Basics: How Health Plans Are Rebuilding for H.R. 1 Under Pressure Three panels at this year's AHIP Annual Conference kept arriving at the same uncomfortable conclusion. A tough financial envir",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/back-to-basics-how-health-plans-are-rebuilding-for-h-r-1-under-pressure"
+  },
+  {
+   "date": "2026-06-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What the CMS Interim Final Rule Means for Health Plans and Health Systems In June 2026, CMS released the interim final rule implementing the new Medicaid community engagement requirement created by Se",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.fortunahealth.com/resources/community-engagement-interim-final-rule"
+  },
+  {
+   "date": "2026-06-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Does a Medicaid Notice Actually Look Like? Medicaid notices come in many forms - coverage denials, fair-hearing rights, copay changes, plan assignments, service authorizations, and the annual ren",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/what-does-a-medicaid-notice-actually-look-like"
+  },
+  {
+   "date": "2026-05-26",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "The Quiet Eligibility Crisis Coming for Medicare Dual-Eligible Members Most of the conversation about H.R. 1 has focused on work requirements. But buried in the same law is a set of changes that will ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/the-quiet-eligibility-crisis-coming-for-medicare-dual-eligible-members"
+  },
+  {
+   "date": "2026-05-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Stands Out in Nebraska's Medicaid Work Requirements Paperwork On May 1, 2026, Nebraska became the first state to start Medicaid work requirements under H.R. 1. With CMS implementation guidance no",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/what-stands-out-in-nebraskas-medicaid-work-requirements-paperwork"
+  },
+  {
+   "date": "2026-04-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Voice AI vs Human Calls for Medicaid Renewals For the last 2 years, we've been tracking the maturation of voice AI infrastructure closely. Only recently did we feel it had reached the right technical ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/voice-ai-vs-human-calls-for-medicaid-renewals"
+  },
+  {
+   "date": "2026-04-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Consumers Taught Us in Our First Two Years of Building When we started Fortuna, we had a clear hypothesis: Medicaid navigation is broken, and a better consumer product would fix it. We were right",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/what-consumers-taught-us-in-our-first-two-years-of-building"
+  },
+  {
+   "date": "2026-03-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Medicaid Leaders Think About H.R. 1: Themes Across Three AHIP Panels Over two days at AHIP, three separate sessions converged on a consistent picture: H.R. 1 is landing on systems already under p",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/what-medicaid-leaders-think-about-h-r-1-themes-across-three-ahip-panels"
+  },
+  {
+   "date": "2026-03-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What You Need to Know About Medicaid Work Requirements Under the One Big Beautiful Bill Act (H.R. 1), many adults on Medicaid will soon need to regularly show proof of working, volunteering, or attend",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/what-you-need-to-know-about-medicaid-work-requirements"
+  },
+  {
+   "date": "2026-02-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Introducing Fortuna\u2019s Voice AI: Smarter Support for Medicaid Renewals We\u2019re bringing AI-powered voice capabilities into Medicaid renewals - helping plans and states reduce call center load, lower case",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.fortunahealth.com/resources/introducing-fortunas-voice-ai-smarter-support-for-medicaid-renewals"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Fortuna Health runs a digital service that helps people apply for and keep Medicaid and other government health coverage. It reaches consumers through providers and insurers rather than being offered directly to the public.",
+   "A person starts with a screening rather than a long form, and the site says an eligibility check can take as little as 30 seconds. From there the service guides the person through enrollment and renewal for the Medicaid programs that fit their circumstances. Status notifications follow each important administrative action, so deadlines are less likely to slip past unnoticed. The company states that every one of its navigators is certified and licensed to enroll. Live navigation is offered in more than one language.",
+   "Fortuna describes itself as modernizing the infrastructure for Medicaid and government health programs. Case studies on the site include Alomere Health System, described as cutting uncompensated care after working with Fortuna. The company says it is expanding nationwide."
+  ],
+  "quote": {
+   "text": "Everything you need for government coverage from enrollment to renewal.",
+   "url": "https://www.fortunahealth.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.fortunahealth.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.fortunahealth.com/about-us",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.fortunahealth.com/case-studies",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.fortunahealth.com"
+   ],
+   [
+    "https://www.fortunahealth.com"
+   ],
+   [
+    "https://www.fortunahealth.com/about-us",
+    "https://www.fortunahealth.com/case-studies",
+    "https://www.fortunahealth.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

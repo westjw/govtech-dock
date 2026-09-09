@@ -1,0 +1,94 @@
+{
+ "news": [
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Law Enforcement Data Integration: The Information Your Officers Need, When They Need It.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goeis.net/post/law-enforcement-data-integration-the-information-your-officers-need-when-they-need-it"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Breaking Down Data Silos in Law Enforcement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goeis.net/post/breaking-down-data-silos-in-law-enforcement"
+  },
+  {
+   "date": "2026-07-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why System Interoperability Is Make-or-Break for Law Enforcement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goeis.net/post/why-system-interoperability-is-make-or-break-for-law-enforcement"
+  },
+  {
+   "date": "2026-06-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Jail Management System Integration Is the Most Important Decision Your Agency Will Make This Year",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goeis.net/post/jail-management-system-integration"
+  },
+  {
+   "date": "2026-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Civil Process Software: Structural Solutions for Court Administrators and Law Enforcement Officers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goeis.net/post/civil-process-software-structural-solutions"
+  },
+  {
+   "date": "2026-05-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Mitigating Institutional Risk Through Jail Management System Integration",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goeis.net/post/mitigating-institutional-risk-through-jail-management-system-integration"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Executive Information Services builds public safety software for law enforcement agencies, sheriff's offices and detention centers. The suite is pitched at police officers, sheriffs, dispatchers and corrections staff alike.",
+   "The jail management system covers the daily work of correctional staff from intake through release. Computer-aided dispatch gives dispatchers real-time call updates, unit location, call status, special instructions and premises history. A mobile digital computing package supports wireless field computing for law enforcement and fire. Civil process management tracks fees, service attempts and disposition of papers against state and agency mandates. The company says the pieces share a common core, giving a single point of data entry across the suite.",
+   "EIS states it has been delivering public safety software for more than thirty years. It describes itself as a division of N. Harris Computer Corporation. On security, the company states its systems provide complete CJIS compliancy."
+  ],
+  "quote": {
+   "text": "Complete Systems, if we don't have it today, we will make it for you!",
+   "url": "https://www.goeis.net"
+  },
+  "sources": [
+   {
+    "url": "https://www.goeis.net",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.goeis.net/product",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.goeis.net/product",
+    "https://www.goeis.net"
+   ],
+   [
+    "https://www.goeis.net",
+    "https://www.goeis.net/product"
+   ],
+   [
+    "https://www.goeis.net"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

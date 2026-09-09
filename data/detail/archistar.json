@@ -1,0 +1,69 @@
+{
+ "news": [
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The City of Cambridge, Ontario, Adopts AI PreCheck to Accelerate Housing",
+   "kind": "contract",
+   "kind_rule": "Adopts",
+   "url": "https://www.archistar.ai/blog/city-of-cambridge-ontario/"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Importance of Data Interoperability Before Implementing AI for Building Permit Review",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.archistar.ai/blog/data-interoperability-for-ai-permit-review/"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Harris County, Texas, Selects AI PreCheck to Modernize Permitting",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.archistar.ai/blog/harris-county-permitting/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Archistar sells AI plan review software to local governments, with a product called AI PreCheck that speeds building code and zoning compliance checks so permits can be issued faster. The same platform is offered to developers, architects and certifiers, who can check compliance before submitting to a municipality or council.",
+   "Submitters drag and drop design files onto the platform, which accepts PDF, CAD or BIM formats and reviews them in 2D or 3D. The software then evaluates each submission against the city's local codes and regulations. It is built on generative AI, computer vision and machine learning. Applicants receive standardized reports. For municipalities and councils with particular zoning, planning and compliance requirements, tailored and white-labeled versions are offered.",
+   "The company says Archistar was founded by Dr. Benjamin Coorey in 2010 and began life as an education portal. It grew from a university research project into a platform that could read planning rules, run feasibility tests and generate compliant designs in minutes. The site states that Archistar powers digital planning for over 30 cities and governments across Australia, Canada and the United States. Among the municipalities it names supporting are LA County, the City of Los Angeles, the City of Austin and the City of New York. Offices are listed across Los Angeles, Vancouver and Sydney."
+  ],
+  "quote": {
+   "text": "What once took weeks of back-and-forth can now happen in seconds.",
+   "url": "https://www.archistar.ai/our-story"
+  },
+  "sources": [
+   {
+    "url": "https://www.archistar.ai",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.archistar.ai/our-story",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.archistar.ai/case-studies",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.archistar.ai"
+   ],
+   [
+    "https://www.archistar.ai"
+   ],
+   [
+    "https://www.archistar.ai/our-story"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,147 @@
+{
+ "news": [
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "David Archard takes key FIDO US business development role Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fido.tech/news/david-archard-joins-fido-tech-as-us-business-development-consultant/"
+  },
+  {
+   "date": "2026-07-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Mobilize your non-leak staff and unlock hidden field resource Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fido.tech/news/mobilize-non-leak-staff-and-unlock-hidden-field-resource/"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Alex Leyland joins FIDO Tech as Operations Director Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fido.tech/news/alex-leyland-fido-operations-director/"
+  },
+  {
+   "date": "2026-07-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "FIDO Tech appoints Dr Piers Clark to Board of Directors Read more",
+   "kind": "leadership",
+   "kind_rule": "appoints",
+   "url": "https://fido.tech/news/dr-piers-clark-joins-fido-board/"
+  },
+  {
+   "date": "2026-06-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "FIDO Tech announces UK partnership with CIG Ltd Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fido.tech/news/fido-tech-announces-uk-partnership-with-cig-ltd/"
+  },
+  {
+   "date": "2026-06-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "FIDO Tech achieves Cyber Essentials Plus Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fido.tech/news/fido-tech-achieves-cyber-essentials-plus/"
+  },
+  {
+   "date": "2026-05-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Using FIDO AI to respond to winter water leak breakouts Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fido.tech/news/watch-webinar-using-fido-ai-for-winter-water-leak-breakouts/"
+  },
+  {
+   "date": "2026-04-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Amy Prinsloo joins FIDO Tech as Head of Aqua Plus Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fido.tech/news/amy-prinsloo-joins-fido-tech-as-head-of-aqua-plus/"
+  },
+  {
+   "date": "2026-03-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "FIDO Tech named one of UK\u2019s Future Fifty companies Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fido.tech/news/fido-tech-named-one-of-uks-future-fifty-companies-by-tech-nation/"
+  },
+  {
+   "date": "2026-02-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "FIDO Tech named winner in 2026 Earth05 prize Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fido.tech/news/fido-tech-wins-2026-earth05-prize/"
+  },
+  {
+   "date": "2026-02-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "FIDO Tech appoints Jack Canfield as US country director Read more",
+   "kind": "leadership",
+   "kind_rule": "appoints",
+   "url": "https://fido.tech/news/fido-tech-appoints-jack-canfield-as-us-country-director/"
+  },
+  {
+   "date": "2026-01-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Perform multiple water leak correlations at once \u2013 even offline Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fido.tech/news/perform-multiple-water-leak-correlations-at-once/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "FIDO Tech sells water leak detection built on artificial intelligence to utilities, municipalities and businesses. The company describes itself as a global water technology company.",
+   "One service locates a leak on any pressurised distribution pipe, in any material, using the same device. Another monitors system-wide leakage and severity continually, so interventions can be prioritised and investment informed. The company says its system ranks leaks by size, verifies the integrity of repair work and validates volumetric savings.",
+   "Published case studies include leak location for the City of Goodyear, Arizona. Others cover network monitoring for Northumbrian Water in the UK. The company states that its partnership with Microsoft started in 2023 with a joint project to replenish water in London. A news item on the site announces the appointment of Mitch Donnelly as chief executive."
+  ],
+  "quote": {
+   "text": "Locate any water leak on any pressurised distribution pipe in any material using the same versatile device.",
+   "url": "https://fido.tech"
+  },
+  "sources": [
+   {
+    "url": "https://fido.tech",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://fido.tech/case-studies/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://fido.tech"
+   ],
+   [
+    "https://fido.tech"
+   ],
+   [
+    "https://fido.tech/case-studies/",
+    "https://fido.tech"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

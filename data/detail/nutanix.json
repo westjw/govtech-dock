@@ -1,0 +1,156 @@
+{
+ "news": [
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Post Nutanix Recognized as a Challenger in the 2026 Gartner\u00ae Magic Quadrant\u2122 for Container Management NKP is designed to manage Kubernetes\u00ae, virtual machines, and stateful AI workloads under a single ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/nutanix-recognized-as-challenger-in-2026-gartner-magic-quadrant-for-container-management"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Unify Infrastructure & Operations to Minimize Silos in the Hybrid Cloud and Agentic AI Era",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/unify-infrastructure-and-operations-to-minimize-silos"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "MySQL on NDB Architecture Deep Dive: From HA Foundation to Recovery and Security Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/mysql-on-ndb-architecture"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Nutanix Support for Microsoft Azure Virtual Desktop Hybrid is Now Generally Available",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/nutanix-support-for-azure-virtual-desktop-hybrid-is-now-generally-available"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Nutanix\u306b\u3088\u308bMicrosoft Azure Virtual Desktop Hybrid\u306e\u30b5\u30dd\u30fc\u30c8\u304c\u4e00\u822c\u63d0\u4f9b\u958b\u59cb",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/ja/blog/nutanix-support-for-azure-virtual-desktop-hybrid-is-now-generally-available"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Building the Enterprise Foundation for Agentic AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/building-the-enterprise-foundation-for-agentic-ai"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Empowering Enterprises & Service Providers: Migrations to Nutanix Projects",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/empowering-enterprises-and-service-providers"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Charting the Path to Governed Agentic AI with Nutanix Enterprise AI 2.8",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/charting-the-path-to-governed-agentic-ai-with-nutanix-enterprise-ai-2-8"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Nutanix Kubernetes Platform Achieves CNCF Kubernetes AI Conformance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/nutanix-kubernetes-platform-achieves-cncf-kubernetes-ai-conformance"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Introducing NKP Metal: Unlocking a Dual Native Architecture for Deploying Kubernetes on Bare-Metal and Virtual Servers",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.nutanix.com/blog/introducing-nkp-metal"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Agentic AI Needs an Operating Model, Not Just an Application Stack",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/agentic-ai-needs-an-operating-model-not-just-an-application-stack"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Post Don't Let Hardware Stall Modernization: A Practical Playbook for Beating the Supply Chain Squeeze The IT infrastructure market has hit a disruption that separates reactive organizations from resi",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/dont-let-hardware-stall-modernization-a-practical-playbook-for-beating-the-supply-chain-squeeze"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Nutanix sells infrastructure software that lets organizations build, manage and optimize IT across on-premises, edge and public cloud environments. At the core is a platform with hyperconverged compute, storage, virtualization and networking.",
+   "The storage layer consolidates file, object and block storage into one platform with integrated cyber security and ransomware protection. A database service automates provisioning, patching, cloning, backup and recovery, and supports Oracle, Microsoft SQL Server, MySQL, MariaDB, PostgreSQL and MongoDB. Day-to-day work happens in Prism, which monitors and manages VMs, storage and networks across on-premises clusters and public clouds from a single console. Prism is included with Nutanix Cloud Infrastructure at no additional cost. For larger estates, Nutanix Central is a cloud console for viewing and managing Nutanix services deployed on-premises or on Nutanix Cloud Clusters.",
+   "The home page counts more than 30,000 companies as customers. Public sector examples include the Indonesia Election Committee, which the company says improved legal response times by 90% across 210 million voter records. Another describes London Gatwick Airport scaling support to fifty million passengers. The company also reports being named a Leader in the 2025 Gartner Magic Quadrant."
+  ],
+  "quote": {
+   "text": "One Platform to Run Apps and Data Anywhere",
+   "url": "https://www.nutanix.com/products/cloud-platform"
+  },
+  "sources": [
+   {
+    "url": "https://www.nutanix.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.nutanix.com/products/cloud-platform",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.nutanix.com/products/nutanixcentral",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.nutanix.com/products/prism",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.nutanix.com/products/cloud-platform"
+   ],
+   [
+    "https://www.nutanix.com/products/cloud-platform",
+    "https://www.nutanix.com/products/prism",
+    "https://www.nutanix.com/products/nutanixcentral"
+   ],
+   [
+    "https://www.nutanix.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

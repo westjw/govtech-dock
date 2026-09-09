@@ -1,0 +1,128 @@
+{
+ "news": [
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Dataminr 2026 U.S. Midterm Election Security Checklist",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/dataminr-2026-u-s-midterm-election-security-checklist/"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Singapore Just Told Its Critical Infrastructure Operators That Compliance Isn\u2019t the Finish Line",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/singapore-cybersecurity-code-of-practice/"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why PTEM Is Different: Threat-First, All the Way to a Decision",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/why-ptem-is-different-threat-first-all-the-way-to-a-decision/"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Inside Dataminr\u2019s Predictive Threat Exposure Management. From Signal to Business Risk.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/inside-dataminrs-predictive-threat-exposure-management/"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Black Hat 2026: What CISOs Kept Telling Us",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/black-hat-2026-what-cisos-kept-telling-us/"
+  },
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Public Data Contributes to Space Domain Awareness",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/how-public-data-contributes-to-space-domain-awareness/"
+  },
+  {
+   "date": "2025-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From Alerts to Action: Dataminr\u2019s Agentic AI Powers Real-Time, Actionable Intelligence for SIEM, SOAR, and TIP Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/dataminr-pulse-cyber-risk-api/"
+  },
+  {
+   "date": "2025-06-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Building the Next Generation of Risk-Aware Platforms: A Partnership Approach",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/building-the-next-generation-of-risk-aware-platforms-a-partnership-approach/"
+  },
+  {
+   "date": "2025-05-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From Satellites to Supply Chains: How Real-Time Event Detection Is Transforming Multiple Industries",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/from-satellites-to-supply-chains-how-real-time-event-detection-is-transforming-multiple-industries/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Dataminr sells real-time event, threat, and risk intelligence, running an AI platform that detects events as they unfold across 1 million public data sources. The company says its customers include more than 100 United States government agencies, more than 20 international governments, and two-thirds of the Fortune 50.",
+   "First Alert is the government product, reaching users from headquarters to the field by web, mobile, and email, and going directly into government systems through a suite of APIs and connectors. Behind it sit more than 60 purpose-built, specialized LLMs trained on a proprietary archive of historical event data.",
+   "Dataminr for Corporate Security tracks incidents around company locations, including offices, manufacturing plants, operations facilities, and retail stores. A separate product, Dataminr for News, serves more than 1,500 newsrooms and 30,000 journalists who use it to find stories faster."
+  ],
+  "quote": {
+   "text": "From the battlefield to the boardroom, and the command center to the C-suite, Dataminr delivers critical real-time intelligence to protect what matters most.",
+   "url": "https://www.dataminr.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.dataminr.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.dataminr.com/products/corporate-security/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.dataminr.com/products/first-alert",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.dataminr.com/products/dataminr-for-news",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.dataminr.com"
+   ],
+   [
+    "https://www.dataminr.com/products/first-alert"
+   ],
+   [
+    "https://www.dataminr.com/products/corporate-security/",
+    "https://www.dataminr.com/products/dataminr-for-news"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,158 @@
+{
+ "news": [
+  {
+   "date": "2026-06-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "In the News: Financial Engagement Launch",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://cleargov.com/rc/news/in-the-news-financial-engagement-launch"
+  },
+  {
+   "date": "2026-05-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ClearGov Launches Financial Engagement Platform to Build Community Trust Through Budget Transparency",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://cleargov.com/rc/news/engagement-launch"
+  },
+  {
+   "date": "2026-01-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "In the News: ClearGov and Gravity Merger Announcement",
+   "kind": "funding",
+   "kind_rule": "Merger",
+   "url": "https://cleargov.com/rc/news/cleargov-in-the-news-merger"
+  },
+  {
+   "date": "2026-01-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ClearGov and Gravity Announce Merger",
+   "kind": "funding",
+   "kind_rule": "Merger",
+   "url": "https://cleargov.com/rc/news/cleargov-gravity-announcement"
+  },
+  {
+   "date": "2025-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "60% of Local Government Finance Leaders Call Modernization Top Priority for Next Year, New Study Finds",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cleargov.com/rc/news/civic-research-announcement"
+  },
+  {
+   "date": "2025-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ClearGov in the News: ClearGov AI | Government Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cleargov.com/rc/news/cleargov-in-the-news-cleargov-ai-government-technology"
+  },
+  {
+   "date": "2025-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ClearGov Introduces New AI-Driven Capabilities to Make Public Sector Budgeting Easier",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://cleargov.com/rc/news/cleargov-ai-announcement"
+  },
+  {
+   "date": "2025-06-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ClearGov in the News: Flower Mound, TX | Community Impact Newspaper",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cleargov.com/rc/news/flower-mound-tx"
+  },
+  {
+   "date": "2025-04-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ClearGov Named New Mexico Counties NACo Partner",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cleargov.com/rc/news/new-mexico-counties-partner"
+  },
+  {
+   "date": "2025-04-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ClearGov in the News: Lackawanna County, PA | The Times-Tribune",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cleargov.com/rc/news/lackawanna-county-pa"
+  },
+  {
+   "date": "2025-03-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Marketing Veteran David Karel Joins ClearGov as Chief Marketing Officer",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cleargov.com/rc/news/marketing-veteran-david-karel-joins-cleargov-as-chief-marketing-officer"
+  },
+  {
+   "date": "2025-03-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "ClearGov Named Illinois State Association of Counties Corporate Partner",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cleargov.com/rc/news/illinois-state-association-of-counties-partnership"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "ClearGov sells cloud-based software that local governments and school districts use to manage the finance cycle, and it counts more than 2,000 of them as users. Published documents are a large part of the job, with budget books, ACFRs, PAFRs, annual reports, and CIP books built from guided templates.",
+   "Department heads submit capital requests through web-based forms that collect consistent data and feed a central dashboard. Finance staff can build and compare different budget scenarios before settling on a plan. Approved work can be published to automatically updated Public Project Pages carrying timelines, financials, maps, photos, and announcements. A strategic plan can likewise be turned into a website so constituents can follow progress over time. Outputs are generated ADA-compliant for sharing, publishing, or print-ready PDF distribution.",
+   "The company reports $540B in managed budgets. It also cites a 98% customer satisfaction figure. Its customer success team includes former local government finance officers. For counties, a built-in checklist maps to the criteria for the NACo EDGE Excellence in Strategic Planning Award."
+  ],
+  "quote": {
+   "text": "2,000+ local governments and school districts use ClearGov\u2019s cloud-based software to manage the finance cycle.",
+   "url": "https://www.cleargov.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.cleargov.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cleargov.com/products/strategic-planning",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cleargov.com/products/capital-project-tracking",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cleargov.com/products/capital-budgeting",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.cleargov.com"
+   ],
+   [
+    "https://www.cleargov.com/products/capital-budgeting",
+    "https://www.cleargov.com/products/capital-project-tracking",
+    "https://www.cleargov.com/products/strategic-planning",
+    "https://www.cleargov.com"
+   ],
+   [
+    "https://www.cleargov.com",
+    "https://www.cleargov.com/products/strategic-planning"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

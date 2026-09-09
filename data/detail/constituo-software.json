@@ -1,0 +1,68 @@
+{
+ "news": [
+  {
+   "date": "2025-05-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Product & solution demos",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.constituo.com/resources/product-solution-demos/"
+  },
+  {
+   "date": "2025-04-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Thought leadership & case studies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.constituo.com/resources/case-studies/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Constituo sells two platforms to colleges and universities: an integration platform for connecting campus systems and a content services platform for document-driven work. The company says it is 100% focused on the demands of higher education.",
+   "The integration side orchestrates cloud and legacy campus systems so they work together. No-code tools are meant to let any campus team member own the logic and rules for how data is used. Visual workflows build schedules that sync and automate updates across those flows. A remediation interface identifies duplicate records and applies matching rules based on the institution's needs. The content platform automates content tasks and processes for reviews and approvals. Role-based permissions and automated criteria govern access and document lifecycles.",
+   "Advancement offices are one intended audience, connecting experiences and decisions across disparate campus systems. HR teams are another, with tools for hiring, onboarding, and servicing campus employees. The company says it processes over 2 billion education records annually. Its case study index includes scaling integrations with Lake Forest College. Another features the SUNY Suffolk team discussing the company's enterprise iPaaS. On security, the company says an independent firm audited its controls and attested to the suitability of their design."
+  ],
+  "quote": {
+   "text": "processing over 2 billion education records annually",
+   "url": "https://www.constituo.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.constituo.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.constituo.com/products/integration/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.constituo.com/products/content/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.constituo.com/resources/case-studies/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.constituo.com",
+    "https://www.constituo.com/products/integration/"
+   ],
+   [
+    "https://www.constituo.com",
+    "https://www.constituo.com/products/integration/",
+    "https://www.constituo.com/products/content/"
+   ],
+   [
+    "https://www.constituo.com",
+    "https://www.constituo.com/resources/case-studies/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

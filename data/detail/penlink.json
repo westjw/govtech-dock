@@ -1,0 +1,159 @@
+{
+ "news": [
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "How CoAnalyst360 Gives Investigators Their Time Back",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/coanalyst360-investigators-time/"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "OSINT and the New Playbook for Sports Security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/osint-new-playbook-sports-security/"
+  },
+  {
+   "date": "2026-08-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "CoAnalyst360 and the Shift From Generative to Agentic AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/coanalyst360-agentic-ai/"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Strengthening Infrastructure Posture for Agencies Managing Sensitive Data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/strengthening-infrastructure-posture-for-agencies-managing-sensitive-data/"
+  },
+  {
+   "date": "2026-08-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Inside a Single Prompt: How CoAnalyst360 Runs a Multi-Step Investigation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/coanalyst360-workflow-single-prompt/"
+  },
+  {
+   "date": "2026-07-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Post-Event Intelligence Analysis Most Teams Never Finish",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/the-post-event-intelligence-analysis-most-teams-never-finish/"
+  },
+  {
+   "date": "2026-07-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Why Investigators Are Turning to iCloud+",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/beyond-the-device-why-investigators-are-turning-to-icloud-evidence-earlier-than-ever/"
+  },
+  {
+   "date": "2026-07-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "When a Rumor Moves Faster Than Your Security Team Can React",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/when-a-rumor-moves-faster-than-your-security-team-can-react/"
+  },
+  {
+   "date": "2026-07-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Intelligence is Keeping Soccer Fans Safe",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/how-intelligence-is-keeping-soccer-fans-safe/"
+  },
+  {
+   "date": "2026-06-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Insider Threat Detection: How AI-Powered OSINT Catches Risks Early",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/how-ai-powered-osint-detects-insider-threats/"
+  },
+  {
+   "date": "2026-06-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Illuminating the Shadows at Sea: Applying OSINT to Maritime Drug Trafficking Networks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/maritime-drug-trafficking-osint/"
+  },
+  {
+   "date": "2026-05-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What SOC2 Compliance Actually Means for Law Enforcement Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/what-soc2-compliance-actually-means-for-law-enforcement-technology/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Penlink sells a digital intelligence platform to public safety agencies and enterprises, which use it to turn complex data into intelligence for investigations and security work. The platform brings together digital evidence, open-source intelligence, data analytics and live communications to support complex investigations. The company says it has worked alongside law enforcement, national security and corporate safety professionals for nearly forty years.",
+   "Its evidence product, PLX, ingests and normalizes call detail records, tower dumps, social media warrants, email returns, tracking data and mobile extractions into one dashboard. Through PLX the platform also supports lawful live collection of phone calls, texts and web activity. For open-source work, Tangles automates the search and analysis of data from the open, deep and dark web. An AI layer the company calls CoAnalyst360 orchestrates workflows and maintains context from first query to final outcome across open-source intelligence, evidence and live communications. It coordinates discovery, analysis and follow-up across PLX, Tangles and GeoTime in a single workflow.",
+   "The homepage states that more than 1,000 agencies use Penlink. It lists SOC 2, ISO and CJIS compliance. The company reports that one agency raised its solvability rate from 28% to over 40% in its first month using PLX. A partnership with Chainalysis brings blockchain intelligence into the platform, connecting on-chain activity to identities, communications and locations."
+  ],
+  "quote": {
+   "text": "Penlink integrates digital evidence and open-source intelligence to provide comprehensive insights and actionable data.",
+   "url": "https://www.penlink.com/platform/"
+  },
+  "sources": [
+   {
+    "url": "https://penlink.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.penlink.com/platform/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.penlink.com/platform/digital-evidence/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.penlink.com/platform/open-source-intelligence/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://penlink.com"
+   ],
+   [
+    "https://www.penlink.com/platform/digital-evidence/",
+    "https://www.penlink.com/platform/live-communication/",
+    "https://www.penlink.com/platform/open-source-intelligence/",
+    "https://penlink.com"
+   ],
+   [
+    "https://penlink.com",
+    "https://www.penlink.com/platform/digital-evidence/",
+    "https://www.penlink.com/blog/strengthening-infrastructure-posture-for-agencies-managing-sensitive-data/"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,112 @@
+{
+ "news": [
+  {
+   "date": "2026-08-11",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Interloc Solutions Launches interloc.ai, an Enterprise Agentic AI Platform Built Specifically for IBM Maximo",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.interlocsolutions.com/company/news/interloc-solutions-launches-interloc.ai-an-enterprise-agentic-ai-platform-built-specifically-for-ibm-maximo"
+  },
+  {
+   "date": "2026-07-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Re-Introducing Interloc Informer, Part II, or \u201cWhat Happened To The Mobile Part of The Name?\u201d",
+   "kind": "leadership",
+   "kind_rule": "Name",
+   "url": "https://www.interlocsolutions.com/blog/introducing-interloc-informer-part-ii-or-what-happened-to-the-mobile-part-of-the-name"
+  },
+  {
+   "date": "2026-06-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Introducing Interloc Informer, Part I",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.interlocsolutions.com/blog/introducing-interloc-informer-part-i"
+  },
+  {
+   "date": "2026-06-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "OpenShift installation and post-install steps and considerations plus annexes. Part 3 of 3",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/openshift-installation-and-post-install-steps-and-considerations-plus-annexes.-part-3-of-3"
+  },
+  {
+   "date": "2026-06-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Installing an offline OpenShift Cluster and Mirroring the required Image Registries. Part 2 of 3, installing and populating registries.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/installing-an-offline-openshift-cluster-and-mirroring-the-required-image-registries.-part-2-of-3-installing-and-populating-registries"
+  },
+  {
+   "date": "2026-06-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Installing an offline OpenShift Cluster and Mirroring the required Image Registries. Part 1 of 3, preparation and initial installation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/installing-an-offline-openshift-cluster-and-mirroring-the-required-image-registries.-part-1-of-3-preparation-and-initial-installation"
+  },
+  {
+   "date": "2026-05-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Maximo Application Suite Security Bulletins-May 2026-2",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/maximo-application-suite-security-bulletins-may-2027"
+  },
+  {
+   "date": "2026-03-29",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Interloc Solutions Launches Informer EdgeSync for MAS to Deliver Upgrades on Your Timeline, with Zero Downtime",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.interlocsolutions.com/company/news/interloc-solutions-launches-informer-edgesync-for-mas-to-deliver-upgrades-on-your-timeline-with-zero-downtime"
+  },
+  {
+   "date": "2025-11-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "IBM Maximo Application Suite On\u2011Prem Installation: Design Considerations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/ibm-maximo-application-suite-on-prem-installation-design-considerations"
+  },
+  {
+   "date": "2025-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Detecting Air Leaks in Metro Rail Pneumatic Systems with IBM Maximo Monitor Derived Metrics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/detecting-air-leaks-in-metro-rail-pneumatic-systems-with-ibm-maximo-monitor-derived-metrics"
+  },
+  {
+   "date": "2025-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Preparing & Executing Automated DB2 Backups when Running on RedHat OpenShift",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/preparing-executing-automated-db2-backups-when-running-on-redhat-openshift"
+  },
+  {
+   "date": "2025-08-13",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "King County\u2019s Facilities Management Division (FMD) Upgrades to Maximo Application Suite (MAS) 9.01 with Interloc Solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/company/news/king-countys-facilities-management-division-fmd-upgrades-to-maximo-application-suite-mas-9.01-with-interloc-solutions"
+  }
+ ]
+}

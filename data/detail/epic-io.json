@@ -1,0 +1,49 @@
+{
+ "profile": {
+  "paragraphs": [
+   "EPIC iO sells AI-driven monitoring for physical sites, along with the wireless connectivity that keeps those locations online. Its named settings are utilities, oil and gas, construction, retail and industrial sites. Both sides run on a software platform the company calls EPIC Cortex.",
+   "The video analysis is meant to separate security events from environmental activity such as weather or wildlife, which cuts false alarms. License plate recognition adds vehicle awareness at site entrances, along the perimeter and for vehicle activity on site. For police use, the LPR page says the system alerts officers and dispatchers within seconds. On the connectivity side, the company offers primary, backup and failover links across 5G, satellite and fixed networks. The same platform centralizes SIM and device management across multiple carriers with real-time usage monitoring.",
+   "For public safety and critical infrastructure customers, EPIC iO frames its role as situational awareness that supports emergency response without replacing established response protocols. Homepage testimonials are attributed anonymously, by role, to bodies such as a municipal public safety agency. The about page names an AI platform called DeepInsights as the cornerstone of its mission."
+  ],
+  "quote": {
+   "text": "EPIC iO is at the forefront of technology, empowering businesses to thrive in the digital age by harnessing the transformative potential of 5G-ready connectivity and AI + IoT solutions.",
+   "url": "https://www.epicio.com/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://www.epicio.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.epicio.com/about-us/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.epicio.com/solutions/physical-site-security/",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://www.epicio.com/solutions/perimeter-security-monitoring/",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.epicio.com",
+    "https://www.epicio.com/solutions/physical-site-security/"
+   ],
+   [
+    "https://www.epicio.com/solutions/physical-site-security/",
+    "https://www.epicio.com/solutions/license-plate-recognition/",
+    "https://www.epicio.com"
+   ],
+   [
+    "https://www.epicio.com/solutions/access-control/",
+    "https://www.epicio.com",
+    "https://www.epicio.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-03",
+  "by_kind": "site"
+ }
+}

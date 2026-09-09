@@ -1,0 +1,158 @@
+{
+ "news": [
+  {
+   "date": "2026-07-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Department of War Awards Hidden Level $100 Million OTA to Scale Passive Sensing Technology",
+   "kind": "contract",
+   "kind_rule": "Awards",
+   "url": "https://hiddenlevel.com/press/department-of-war-awards-hidden-level-100-million-ota-to-scale-passive-sensing-technology"
+  },
+  {
+   "date": "2026-05-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hidden Level Showcases Passive RF Sensing at SOF Week",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hiddenlevel.com/press/hidden-level-sof-week-2026"
+  },
+  {
+   "date": "2026-05-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hidden Level Completes Two-Year U.S. Air Force Evaluation of Airspace Monitoring Against Group 1 UAS",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hiddenlevel.com/press/hidden-level-usaf-detects-tracks-group-1-drones-live-demo"
+  },
+  {
+   "date": "2026-05-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hidden Level Expands Advanced Manufacturing Capacity to Accelerate Delivery of RF Sensing Systems Protecting the U.S. and Allies Worldwide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hiddenlevel.com/press/advanced-manufacturing-capacity-anechoic-chamber"
+  },
+  {
+   "date": "2026-04-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Antoinett Dufort, Vice President of Operations, has been named MACNY\u2019s 2026 Innovator of the Year",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hiddenlevel.com/press/antoinett-dufort-macny-2026-innovator-of-the-year"
+  },
+  {
+   "date": "2026-03-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hidden Level and Moog Inc. Showcase Advanced Air Defense and Sensing Solutions at AUSA Global Force Symposium & Exposition",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hiddenlevel.com/press/ausa-global-force-symposium-exposition-2026"
+  },
+  {
+   "date": "2026-03-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Jeff Cole Addresses Golden Dome and Integrated Air Defense at Tectonic Defense Summit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hiddenlevel.com/press/golden-dome-and-integrated-air-defense-at-tectonic-defense-summit"
+  },
+  {
+   "date": "2026-03-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hidden Level Showcases Advanced Passive RF Sensing Capabilities at POST 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hiddenlevel.com/press/advanced-passive-rf-sensing-capabilities-at-post-2026"
+  },
+  {
+   "date": "2026-03-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hidden Level Unveils Power in the Sky: A Next-Generation RF Detection Capability for Total Situational Awareness",
+   "kind": "product",
+   "kind_rule": "Unveils",
+   "url": "https://hiddenlevel.com/press/power-in-the-sky"
+  },
+  {
+   "date": "2025-12-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hidden Level Named a Top Performer in DIU\u2019s C-sUAS Low-Cost Sensing Challenge",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hiddenlevel.com/press/hidden-level-named-a-top-performer-in-dius-c-suas-low-cost-sensing-challenge"
+  },
+  {
+   "date": "2025-03-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hidden Level\u2019s Co-Founder and CEO to Speak at Manifest Demo Day, America\u2019s Premier Showcase for Early-Stage Cutting-Edge Defense Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hiddenlevel.com/press/hidden-levels-co-founder-and-ceo-to-speak-at-manifest-demo-day-americas-premier-showcase-for-early-stage-cutting-edge-defense-technology"
+  },
+  {
+   "date": "2025-02-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hidden Level's Drone Tech Gets $100M Funding",
+   "kind": "funding",
+   "kind_rule": "Funding",
+   "url": "https://hiddenlevel.com/press/hidden-levels-drone-tech-gets-100m-funding"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Hidden Level sells radio-frequency sensing hardware and data services to government, defense and commercial security teams. The sensing is passive, which the company says leaves the equipment undetected and hard to jam.",
+   "The Breaker sensor is built for fixed sites and is meant to coexist with infrastructure and telecom equipment already there. The Surge mounts to land and water vehicles and is made to withstand harsh conditions. Customers who would rather not run hardware can buy data from a global sensor network the company owns, operates and maintains. That service pinpoints drone operator location and lets users define zones so alerts arrive only for activity in chosen areas. Data reaches other systems through an open API secured with FIPS 140-2 compliant cryptography, or through a web interface.",
+   "Stated uses include protecting airspace around stadiums, airports and buildings, and preventing contraband drone deliveries to correctional facilities. The hardware page cites FCC compliance along with TRL9 and MIL-STD-810 testing. The company says its sensors analyze the physical characteristics of signals without decoding private information. Researchers can reach the collected captures through APIs for training and benchmarking work."
+  ],
+  "quote": {
+   "text": "Persistent RF awareness without building infrastructure",
+   "url": "https://hiddenlevel.com"
+  },
+  "sources": [
+   {
+    "url": "https://hiddenlevel.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://hiddenlevel.com/products/hardware",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://hiddenlevel.com/products/data-as-a-service",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://hiddenlevel.com/solutions/research-development",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://hiddenlevel.com",
+    "https://hiddenlevel.com/products/hardware"
+   ],
+   [
+    "https://hiddenlevel.com/products/hardware",
+    "https://hiddenlevel.com/products/data-as-a-service"
+   ],
+   [
+    "https://hiddenlevel.com/products/data-as-a-service",
+    "https://hiddenlevel.com/products/hardware",
+    "https://hiddenlevel.com/solutions/research-development"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

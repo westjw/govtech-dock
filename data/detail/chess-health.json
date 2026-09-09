@@ -1,0 +1,149 @@
+{
+ "news": [
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Meeting HEDIS POD Requirements",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/meeting-hedis-pod-requirements/"
+  },
+  {
+   "date": "2026-07-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Digital Health Solutions for Substance Use Disorder",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/digital-health-solutions-for-substance-use-disorder/"
+  },
+  {
+   "date": "2026-07-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "West Virginia and Choctaw Nation to Showcase Recovery Models Built with CHESS Health Technology at NACCHO360",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/press-releases/chess-health-digital-recovery-support-tools-showcased-at-naccho360/"
+  },
+  {
+   "date": "2026-06-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Rural Health Transformation Is Here",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/rural-health-transformation-is-here/"
+  },
+  {
+   "date": "2026-05-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Connections App Named \u201cBest Mental Health App\u201d",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/press-releases/connections-app-named-best-mental-health-app/"
+  },
+  {
+   "date": "2026-03-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Hidden in Plain Sight: Why Alcohol Use Disorder Demands Urgent Attention",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/hidden-in-plain-sight-why-alcohol-use-disorder-demands-urgent-attention/"
+  },
+  {
+   "date": "2026-03-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Compounding Crisis: SUD, Comorbidities, and the Cost of Fragmented Care",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/sud-comorbidities-and-the-cost-of-fragmented-care/"
+  },
+  {
+   "date": "2026-03-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Retention is a Revenue Strategy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/retention-is-a-revenue-strategy/"
+  },
+  {
+   "date": "2026-03-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Loneliness Epidemic: Why Human Connection Can\u2019t Be Automated Away",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/the-loneliness-epidemic/"
+  },
+  {
+   "date": "2026-01-20",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "The Daunting Task of Allocating Opioid Settlement Funds",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/the-daunting-task-of-allocating-opioid-settlement-funds/"
+  },
+  {
+   "date": "2026-01-05",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Substance Use Disorder Readmissions: The Hidden Drain on Star Ratings and Revenue",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/avoiding-substance-use-disorder-readmissions/"
+  },
+  {
+   "date": "2026-01-04",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Meeting HEDIS FUI Requirements",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/meeting-hedis-fui-requirements/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "CHESS Health sells digital health software aimed at the substance use disorder crisis, for providers, health plans, and public sector organizations. Its public sector buyers are described as state health and behavioral health departments, county, tribal and local governments, drug courts, and correctional facilities. On the clinical side the site lists SUD providers, detox facilities, hospitals and emergency departments, clinics, FQHCs, and CCBHCs. Payers listed include managed care organizations, Medicaid plans, and commercial insurance.",
+   "Connections, the patient-facing app, offers 24/7 access to peer support, meetings, and recovery tools. Patients can be signed up automatically, with every patient invited to the app through EHR integration. A second product, eIntervention, is described as streamlining referrals and access to support services for substance use and mental health. A third, eRecovery, covers patient communication, progress tracking, and 24/7 peer support.",
+   "Published case studies include a county coalition in Hancock County, Ohio expanding its reach through community engagement. In one clinic case study, 83% of new patients using the app were still in treatment against 61% of those not using it."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://www.chess.health",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.chess.health/evidence/case-studies/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.chess.health/case-studies/better-retention-increased-revenue/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.chess.health"
+   ],
+   [
+    "https://www.chess.health/case-studies/better-retention-increased-revenue/",
+    "https://www.chess.health/evidence/case-studies/"
+   ],
+   [
+    "https://www.chess.health/evidence/case-studies/",
+    "https://www.chess.health/case-studies/better-retention-increased-revenue/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,99 @@
+{
+ "news": [
+  {
+   "date": "2026-06-01",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Saying Goodbye to Ameelio Mail",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ameelio.org/posts/goodbye-mail"
+  },
+  {
+   "date": "2026-05-06",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Three National Leaders Join Ameelio Board of Directors!",
+   "kind": "leadership",
+   "kind_rule": "Board of Directors",
+   "url": "https://www.ameelio.org/posts/ameelio-board-of-directors-welcomes-three-national-leaders"
+  },
+  {
+   "date": "2025-01-30",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Ameelio and Tech Goes Home Celebrate Grant Award from Massachusetts Broadband Institute",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://www.ameelio.org/posts/ameelio-and-tech-goes-home-celebrate-grant-award-from-massachusetts-broadband-institute"
+  },
+  {
+   "date": "2025-01-07",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Ameelio Recommended for NTIA Digital Equity Competitive Grant to Transform Digital Access in Corrections",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ameelio.org/posts/ameelio-recommended-for-ntia-digital-equity-competitive-grant-to-transform-digital-access-in-corrections"
+  },
+  {
+   "date": "2024-09-18",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Free Calls for Massachusetts Incarcerated Loved Ones: A Vital Law Faces Budget Challenges",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ameelio.org/posts/free-calls-for-massachusetts-incarcerated-loved-ones-a-vital-law-faces-budget-challenges"
+  },
+  {
+   "date": "2024-09-05",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Back to School Behind Bars: How Ameelio is Empowering Incarcerated Learners through Education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ameelio.org/posts/back-to-school-behind-bars-how-ameelio-is-empowering-incarcerated-learners-through-education"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "Ameelio is a technology nonprofit that builds communication and education software for the corrections system. Its stated aim is to widen access to correctional communication and education technology so incarcerated people stay connected to family and to resources.",
+   "For families and friends, the products cover video and voice calls, e-messaging and postal mail. What is actually available depends on the correctional facility. On the education side, a Canvas-based learning system carries programs and instruction to incarcerated students and ties into the calling suite. Agencies can buy ruggedized devices made by Ameelio. The software also runs on devices an agency already owns.",
+   "Ameelio was launched at the height of the COVID-19 pandemic. Its founders went on to start what the organization calls the first and only nonprofit provider of incarcerated persons communication services. The work reaches past prisons and jails to probation and courts, where pre-release programming is offered as part of a continuum of care."
+  ],
+  "quote": {
+   "text": "Ameelio focuses on increasing contact with families and expanding access to education, vocational training, and reentry resources.",
+   "url": "https://www.ameelio.org"
+  },
+  "sources": [
+   {
+    "url": "https://www.ameelio.org",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.ameelio.org/about-us",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.ameelio.org/products/family-communications",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.ameelio.org/about-us",
+    "https://www.ameelio.org"
+   ],
+   [
+    "https://www.ameelio.org/products/family-communications",
+    "https://www.ameelio.org"
+   ],
+   [
+    "https://www.ameelio.org/about-us",
+    "https://www.ameelio.org"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

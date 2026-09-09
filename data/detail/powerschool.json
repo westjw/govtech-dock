@@ -1,0 +1,76 @@
+{
+ "news": [
+  {
+   "date": "2026-04-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "PowerSchool Honored as Gold Stevie\u00ae Award Winner in 2026 American Business Awards\u00ae",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://www.powerschool.com/news/powerschool-honored-as-gold-stevie-award-winner-in-2026-american-business-awards/"
+  },
+  {
+   "date": "2026-02-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "PowerSchool Releases 2026 K\u201312 EdTech Pulse",
+   "kind": "product",
+   "kind_rule": "Releases",
+   "url": "https://www.powerschool.com/news/powerschool-releases-2026-k-12-edtech-pulse/"
+  },
+  {
+   "date": "2025-11-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "PowerSchool Expands AI Capabilities with Multi-Language Support for Students and Teachers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.powerschool.com/news/powerschool-expands-ai-capabilities-with-multi-language-support-for-students-and-teachers/"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "PowerSchool sells software that school districts run from home to classroom to central office, covering the records, communication, and back-office work of running a school system. The company says its software reaches over 60 million students in 90 countries.",
+   "The student information side pulls scattered records into one accurate student record, so staff and families are working from the same source. Teaching and learning products sit alongside it, among them a learning management system. For the central office, finance, human resources, and operations are brought into one connected system. A separate data practice centralizes information that would otherwise sit in district silos.",
+   "PowerBuddy, the company's AI assistant, is described as built for students, families, teachers, and administrators. It is also pitched at IT staff and data analysts working with district data. PowerSchool states that PowerBuddy won a 2024 GESS Education Award. In districts already using its products, the company says teachers are reclaiming at least 10 hours a week."
+  ],
+  "quote": {
+   "text": "PowerSchool centralizes student information into one accurate record, so every stakeholder is working from the same source.",
+   "url": "https://www.powerschool.com/products/"
+  },
+  "sources": [
+   {
+    "url": "https://www.powerschool.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.powerschool.com/solutions/powerschool-ai/powerbuddy/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.powerschool.com/solutions/data-modernization/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.powerschool.com/products/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.powerschool.com/products/",
+    "https://www.powerschool.com"
+   ],
+   [
+    "https://www.powerschool.com/products/",
+    "https://www.powerschool.com/solutions/data-modernization/"
+   ],
+   [
+    "https://www.powerschool.com/solutions/powerschool-ai/powerbuddy/",
+    "https://www.powerschool.com/products/"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}

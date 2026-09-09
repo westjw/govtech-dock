@@ -1,0 +1,156 @@
+{
+ "news": [
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "San Joaquin County Mosquito and Vector Control District Launches 24/7 Voice AI for Resident Service Requests",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.effigov.com/news/san-joaquin-mvcd-launch-2026"
+  },
+  {
+   "date": "2026-07-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July 27, 2026 \u00b7 3 min Real-Time Oversight: How Voice AI Catches a Wrong Answer Mid-Call The most important thing a government voice AI can do is know, mid-sentence, that it is about to be wrong, and s",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.effigov.com/blog/real-time-oversight-voice-ai-mid-call"
+  },
+  {
+   "date": "2026-07-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July 25, 2026 Sumter County Shares One Year of Voice AI Results at Stanford Local Government Institute Assistant County Administrator Stephen Kennedy presented how Sumter County rolled out EffiGov acr",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.effigov.com/news/sumter-county-stanford-lgsi-2026"
+  },
+  {
+   "date": "2026-07-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July 24, 2026 \u00b7 3 min One Number, Every Department: What Citywide Voice AI Actually Looks Like Most AI phone pitches automate a single line. The jurisdictions seeing real deflection did something diff",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.effigov.com/blog/citywide-voice-ai-every-department"
+  },
+  {
+   "date": "2026-07-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July 22, 2026 \u00b7 3 min The Self-Improving Phone Line: How Voice AI Closes Its Own Gaps Most vendors ship a static bot and call it done. The systems that hold up in production are the ones that catch an",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.effigov.com/blog/self-learning-voice-ai-continuous-qa"
+  },
+  {
+   "date": "2026-07-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July 20, 2026 \u00b7 3 min A Recording Is a Paper Trail, Not a Guardrail Every vendor records their calls. Almost none of them can stop a wrong answer before the resident hears it. That gap is the whole ba",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.effigov.com/blog/recording-calls-not-oversight-voice-ai"
+  },
+  {
+   "date": "2026-07-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July 16, 2026 \u00b7 3 min Context Sharing: Why Residents Should Never Repeat Themselves to a Second AI Agent The unglamorous feature that decides whether a multi-agent phone system feels like one organiza",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.effigov.com/blog/context-sharing-ai-agents-local-government"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July 14, 2026 \u00b7 3 min The One Oversight Question to Ask Before You Buy Government Voice AI Skip the feature checklist. There is one question about oversight that sorts serious systems from confident d",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.effigov.com/blog/evaluating-voice-ai-oversight-procurement"
+  },
+  {
+   "date": "2026-07-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July 9, 2026 \u00b7 3 min The 90-Day Countywide Voice AI Rollout, Department by Department A realistic sequence for going from one line to a whole jurisdiction, without a moonshot procurement or a big-bang",
+   "kind": "contract",
+   "kind_rule": "Rollout",
+   "url": "https://www.effigov.com/blog/countywide-voice-ai-rollout-plan"
+  },
+  {
+   "date": "2026-07-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July 8, 2026 \u00b7 3 min When the Provider Goes Down, the Phone Still Rings Your voice AI runs on other people's infrastructure. The question is not whether a provider will have a bad day. It is what happ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.effigov.com/blog/voice-ai-failover-provider-outage-government"
+  },
+  {
+   "date": "2026-07-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July 6, 2026 \u00b7 3 min Your Failed Calls Are a To-Do List: How Voice AI Tells You What's Missing Every call your AI cannot answer is telling you something true about your own organization. The trick is ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.effigov.com/blog/voice-ai-flags-missing-knowledge-failed-calls"
+  },
+  {
+   "date": "2026-07-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "July 2, 2026 \u00b7 3 min What 12,000 Monthly Calls to a County Actually Sound Like Pull the tape on a month of county calls and a pattern jumps out: most of them are the same twenty questions, asked ten t",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.effigov.com/blog/county-voice-ai-12000-monthly-calls"
+  }
+ ],
+ "profile": {
+  "paragraphs": [
+   "EffiGov builds AI phone agents for local government. Every department gets its own agent, trained on that department's own services, hours, and escalation rules. The buyers are cities, counties, and special districts.",
+   "Agents hand a call to each other, or to a person, with the conversation carried forward. Before a resident is connected to staff, the agent briefs that staff member out loud. The agents plug into municipal systems of record, so a call resolves against live data instead of a script. A reported problem becomes a tracked record, with a reference number read back on the call. No phone system is replaced: a government forwards its existing lines to a number EffiGov manages.",
+   "The company says it is live in production across four states. Its homepage counts more than 12,000 calls in a single month, with 72 percent handled without staff. EffiGov states that a SOC 2 Type II audit is in progress. It claims zero data retention with its AI model provider and US-based data. The site says the company is backed by Y Combinator."
+  ],
+  "quote": {
+   "text": "Government isn\u2019t one department, so its AI shouldn\u2019t be one bot.",
+   "url": "https://www.effigov.com/platform/federated-agents"
+  },
+  "sources": [
+   {
+    "url": "https://www.effigov.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.effigov.com/platform/federated-agents",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.effigov.com/platform/integrations",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.effigov.com/case-studies",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.effigov.com",
+    "https://www.effigov.com/platform/federated-agents"
+   ],
+   [
+    "https://www.effigov.com/platform/federated-agents",
+    "https://www.effigov.com/platform/integrations"
+   ],
+   [
+    "https://www.effigov.com"
+   ]
+  ],
+  "written_on": "2026-09-08",
+  "by_kind": "site"
+ }
+}
