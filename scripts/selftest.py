@@ -16194,6 +16194,71 @@ def check_a_boards_type_matches_its_host() -> int:
     return errors
 
 
+def check_the_static_pages_carry_the_write_up() -> int:
+    """A prerendered page shows the write-up that lives in data/detail/.
+
+    build_board splits `profile` and `news` out of board.json to keep the
+    payload small, and the app re-joins them with a second fetch. The
+    STATIC pages have to re-join them too. For three weeks they did not:
+    has_static_page and _co_about both read o["profile"], the split left
+    that None, and all 470 prerendered pages said the write-up was "not on
+    file for this company yet" while 657 of them sat in data/detail/.
+    Nothing errored, the app looked correct, and the pages a crawler reads
+    were the only ones that were wrong.
+
+    Driven through the real functions with the real cache seeded, because
+    the failure is an ABSENCE - a source scan cannot see a join that
+    stopped happening.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_site as bs
+    errors = 0
+    org = {"id": "fixture-co", "name": "Fixture Co", "sector": "General Gov",
+           "description": "They sell a thing to cities", "open_roles": 0,
+           "profile": None, "news": None}
+    keep = dict(bs._DETAIL_CACHE)
+    try:
+        bs._DETAIL_CACHE["fixture-co"] = {
+            "profile": {"paragraphs": ["Fixture Co sells a camera service to counties."],
+                        "sources": [{"url": "https://fixture.example/about",
+                                     "fetched_on": "2026-09-09"}],
+                        "written_on": "2026-09-09"},
+            "news": []}
+        if not bs.has_static_page(org):
+            errors += fail("has_static_page says a company whose only claim to a "
+                           "page is its write-up gets none - the write-up is in "
+                           "data/detail/, and reading o['profile'] alone finds "
+                           "nothing after the split")
+        got = bs._co_about(org, "fixture.example")
+        if "sells a camera service to counties" not in got:
+            errors += fail("the static About section dropped the write-up that "
+                           "lives in data/detail/; the page a crawler reads says "
+                           "the company has none")
+        if "not on file for this company yet" in got:
+            errors += fail("the static About section printed the not-researched "
+                           "stub for a company that HAS a ruled write-up")
+        # An UNSPLIT board still carries the write-up on the organization,
+        # and that copy is the authoritative one: data/detail/ is derived
+        # from it and can be a build behind. Joining must fill a gap, never
+        # overwrite what is already there.
+        bs._DETAIL_CACHE["fixture-co"] = {
+            "profile": {"paragraphs": ["STALE detail copy."]}, "news": []}
+        onboard = dict(org, profile={"paragraphs": ["The board own copy."]})
+        got2 = bs._co_about(onboard, "fixture.example")
+        if "STALE detail copy" in got2 or "The board own copy" not in got2:
+            errors += fail("the detail file overwrote a write-up the board "
+                           "already carried; data/detail/ is derived from "
+                           "board.json and can be a build behind it")
+        # and the absence case must still read as absence
+        bs._DETAIL_CACHE["fixture-co"] = {}
+        if "not on file" not in bs._co_about(org, "fixture.example"):
+            errors += fail("a company with no write-up anywhere no longer renders "
+                           "the not-researched state")
+    finally:
+        bs._DETAIL_CACHE.clear(); bs._DETAIL_CACHE.update(keep)
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -16649,6 +16714,7 @@ def main() -> int:
     errors += check_every_ats_type_lands_in_a_coverage_bucket()
     errors += check_a_boards_type_matches_its_host()
     errors += check_gusto_and_gem_prove_absence_or_say_unknown()
+    errors += check_the_static_pages_carry_the_write_up()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()

@@ -411,6 +411,51 @@ def _reg_host(url: str | None) -> str:
     return ".".join(bits[-2:]) if len(bits) >= 2 else h
 
 
+# --- the company detail, read back for the STATIC pages ----------------------
+#
+# build_board splits `news` and `profile` out of board.json into
+# data/detail/<id>.json, because together they are 57% of a payload every
+# visitor downloads and are read only when somebody opens ONE company. The
+# app re-joins them with a second fetch. THE STATIC PAGES HAVE TO RE-JOIN
+# THEM TOO, and for three weeks they did not: has_static_page and _co_about
+# both read o["profile"], the split emptied it, and every prerendered page
+# said the write-up was "not on file for this company yet" while 657 of them
+# sat in data/detail/. The app looked right, so nothing contradicted it -
+# and the prerendered pages are the ones a crawler reads.
+_DETAIL_CACHE: dict = {}
+
+
+def detail_for(cid: str) -> dict:
+    """{news, profile} for one company, or {} - cached, read once each."""
+    if cid in _DETAIL_CACHE:
+        return _DETAIL_CACHE[cid]
+    f = ROOT / "data" / "detail" / f"{cid}.json"
+    got = {}
+    if f.exists():
+        try:
+            got = json.loads(f.read_text()) or {}
+        except (ValueError, OSError):
+            got = {}
+    _DETAIL_CACHE[cid] = got
+    return got
+
+
+def with_detail(o: dict) -> dict:
+    """The org as the app sees it once its detail has loaded.
+
+    A shallow copy: the board that SHIPS must stay split, so nothing here
+    may write news or profile back onto the organization.
+    """
+    d = detail_for(o.get("id") or "")
+    if not d:
+        return o
+    merged = dict(o)
+    for k in ("news", "profile"):
+        if d.get(k) is not None and merged.get(k) is None:
+            merged[k] = d[k]
+    return merged
+
+
 def has_static_page(o: dict) -> bool:
     """One answer, used by the page writer, the meta index and the sitemap.
 
@@ -421,6 +466,7 @@ def has_static_page(o: dict) -> bool:
     crawler cannot get from the app: open roles, a sourced write-up, or a
     researched shortlist.
     """
+    o = with_detail(o)
     prof = o.get("profile") if isinstance(o.get("profile"), dict) else None
     return bool(o.get("open_roles") or (prof and prof.get("paragraphs"))
                 or o.get("competitors"))
@@ -1051,6 +1097,7 @@ def _co_about(o: dict, dom: str) -> str:
     never on the key: a legacy profile is a reviewer's notes and renders as
     the one-line record, not as a write-up."""
     esc = html.escape
+    o = with_detail(o)
     pr = o.get("profile") if isinstance(o.get("profile"), dict) else None
     ready = bool(pr and isinstance(pr.get("paragraphs"), list) and pr["paragraphs"])
     desc = o.get("description") or ""
@@ -1372,7 +1419,8 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
             f'{foot}</div></div>')
 
     # --- head: unchanged from the page this replaces ------------------------
-    prof = o.get("profile") if isinstance(o.get("profile"), dict) else None
+    prof = with_detail(o).get("profile")
+    prof = prof if isinstance(prof, dict) else None
     desc = (o.get("description") or
             f"{o['name']} sells into {o.get('sector') or 'state and local government'}.")
     # THE DESCRIPTION ENDS ITS OWN SENTENCE before anything is appended to
