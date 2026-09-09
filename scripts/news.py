@@ -74,6 +74,22 @@ NAV_CHROME = re.compile(
     r"cookie (policy|settings)|share (this|on)|follow us|next|previous|"
     r"page \d+|\d+ of \d+)\b", re.I)
 
+# THE SITE'S OWN FURNITURE, as a whole headline. Only ever matched against the
+# ENTIRE string: "News" and "Events and Trade fairs" are sections, while
+# "Newsom Signs Bill..." and "Camus Energy Selected for Google for Startups
+# Accelerator" contain these words and are stories. fullmatch is what keeps
+# the difference.
+SECTION_LABEL = re.compile(
+    r"(?:(?:the|our|all|latest|company|corporate|recent)\s+){0,2}"
+    r"(?:news|newsroom|press|press\s+releases?|media|media\s+library|blog|"
+    r"resources?|insights?|articles?|stories|updates|announcements|events?|"
+    r"trade\s+fairs?|webinars?|case\s+studies|white\s?papers?|publications?)"
+    r"(?:\s*(?:&|and|,|/|\|)\s*"
+    r"(?:news|press|media|blog|resources?|insights?|articles?|stories|updates|"
+    r"announcements|events?|trade\s+fairs?|webinars?|case\s+studies|"
+    r"white\s?papers?|publications?))*"
+    r"\s*", re.I)
+
 # KIND, BY ORDERED RULE, and the rule is recorded on the item so a person can
 # see why a headline was filed where it was. First match wins.
 NEWS_RULES = (
@@ -123,6 +139,78 @@ def parse_date(s: str) -> str | None:
     if m:
         return _iso(int(m.group(3)), int(m.group(1)), int(m.group(2)))
     return None
+
+
+# THE PRESS-RELEASE DATELINE, and why it is a rule rather than a guess.
+# WeRide states no date in any machine-readable place - no JSON-LD, no
+# article:published_time, no <time>, no ISO string anywhere - so twenty-five
+# correctly-parsed headlines were discarded for want of one. The date is in
+# the prose, in the form every wire release uses:
+#
+#     HONG KONG, August 31, 2026 - WeRide (Nasdaq: WRD), a global leader...
+#
+# What makes it safe is the shape, not the position. The SAME article says
+# "changes will take effect on September 14, 2026" further down - a future
+# event, and the date "first date in the body" would have published. A
+# dateline is a place name, a comma, the date, and a dash or a wire tag; the
+# body sentence is none of those. Anything that is not this shape is still
+# refused, and the door still refuses an item with no date at all.
+DATELINE = re.compile(
+    r"(?:^|[>\n\.\u2014]\s{0,3})"                       # start of a line or sentence
+    r"[A-Z][A-Za-z.\u2019'-]{1,24}"                       # CITY / Hong / San
+    r"(?:[ \u00a0][A-Z][A-Za-z.\u2019'-]{1,24}){0,3}"     # ... KONG / Francisco
+    r"(?:,[ \u00a0][A-Z][A-Za-z.]{1,14}){0,2}"            # , Calif. / , China
+    # THE SEPARATOR IS A COMMA *OR* A DASH. "HONG KONG - June 22, 2026 -" and
+    # "SHANGHAI, China - July 17, 2026 -" are the same dateline as the comma
+    # form; requiring a comma here found 3 of WeRide's 12 and missed 5.
+    r"(?:,[ \u00a0]{1,3}|[ \u00a0]{0,3}[-\u2013\u2014][ \u00a0]{0,3})"
+    r"((?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\.?"
+    r"[ \u00a0]\d{1,2},?[ \u00a0]20\d\d)"              # <- the date
+    r"[ \u00a0]{0,3}(?:[-\u2013\u2014]|/[A-Za-z]+/)",     # - or /PRNewswire/
+    re.M)
+
+
+def dateline_date(text: str) -> str | None:
+    """The publication date out of a wire-service dateline, or None."""
+    m = DATELINE.search(text or "")
+    return parse_date(m.group(1)) if m else None
+
+
+def byline_date(text: str, headline: str, window: int = 90) -> str | None:
+    """A date printed immediately before the article's own headline, or None.
+
+    The blog byline, which is where a site that states no machine-readable
+    date usually states one anyway:
+
+        ... Support center Citizen Notifications  July 27, 2026
+        GOGov Customer Spotlight: Goodlettsville, TN
+
+    ADJACENCY IN THE TEXT, NOT IN THE MARKUP, which is what makes this
+    different from the near-h1 rule above and why that rule missed these.
+    near-h1 measures 300 characters of RAW HTML either side of the <h1>; on a
+    61,000-character page two things printed side by side can be thousands of
+    characters apart in the source, and a page with no <h1> at all gets no
+    look. This searches the rendered text and anchors on the headline we have
+    already established, so the only date it can return is one a reader saw
+    printed against that headline.
+
+    It is still narrow on purpose: the date must be within `window` characters
+    BEFORE the headline. A date further up the page, in the body, or after the
+    title is not a byline and is not returned - the door then refuses the item
+    for having no date, which remains the right answer.
+    """
+    if not text or not headline:
+        return None
+    head = " ".join(headline.split())[:60]
+    if len(head) < 12:
+        return None
+    i = text.find(head)
+    if i < 0:
+        return None
+    before = text[max(0, i - window):i]
+    # the LAST date in the window: the one nearest the headline
+    hits = list(TEXT_DATE.finditer(before)) or list(ISO_DATE.finditer(before))
+    return parse_date(before[hits[-1].start():hits[-1].end()]) if hits else None
 
 
 def _iso(y: int, mo: int, d: int) -> str | None:
@@ -258,9 +346,29 @@ def _ld_date(html: str) -> str | None:
     return None
 
 
+def _headline_of(html: str, metas: dict) -> str:
+    """The headline a reader saw: the <h1>, else og:title, else the <title>."""
+    h1 = H1.search(html or "")
+    head = _headline(h1.group(1))[0] if h1 else ""
+    if len(head.split()) < 4:
+        head = _headline(metas.get("og:title") or "")[0] or head
+    if not head:
+        tt = TITLE.search(html or "")
+        head = _headline(tt.group(1))[0] if tt else ""
+        # THE SITE NAME IS NOT ALWAYS THE SUFFIX. "<title>WeRide | WeRide
+        # Included in HKEX Tech 100 Index..." puts it FIRST, and taking [0]
+        # kept "WeRide" and threw the story away - twelve articles reduced to
+        # one word, then refused for being under four. The story is the long
+        # half whichever side it sits on.
+        parts = [x.strip() for x in re.split(r"\s+[|\u2013\u2014-]\s+", head) if x.strip()]
+        head = max(parts, key=lambda x: len(x.split())) if parts else head
+    return head
+
+
 def item_from_article(html: str, url: str) -> dict:
     """{url, headline, date, date_source}; date None when the page states none."""
     metas = _metas(html)
+    head_guess = _headline_of(html, metas)
     date, src = _ld_date(html), "json-ld"
     if not date:
         date, src = parse_date(metas.get("article:published_time", "")), "og:published"
@@ -278,19 +386,16 @@ def item_from_article(html: str, url: str) -> dict:
         if h1:
             i = h1.start()
             date, src = parse_date(_clean((html or "")[max(0, i - 300):i + 600])), "near-h1"
-    # THE <h1> FIRST, og:title SECOND. The door checks a headline against the
-    # page TEXT, and text_of strips <head>, so an og:title carrying a suffix
-    # the visible heading lacks ("... Launch Press Release") is refused as
-    # not-on-the-page - a true item lost to a formatting difference. The h1
-    # is the thing a reader actually saw.
-    h1 = H1.search(html or "")
-    head = _headline(h1.group(1))[0] if h1 else ""
-    if len(head.split()) < 4:
-        head = _headline(metas.get("og:title") or "")[0] or head
-    if not head:
-        tt = TITLE.search(html or "")
-        head = _headline(tt.group(1))[0] if tt else ""
-        head = re.split(r"\s+[|–—-]\s+", head)[0]      # strip the site suffix
+    if not date:
+        # last, and only in shapes a reader would read AS the date: the wire
+        # dateline, then a byline printed against this article's own headline
+        body = text_of(html or "")
+        date, src = dateline_date(body), "dateline"
+        if not date and head_guess:
+            date, src = byline_date(body, head_guess), "byline"
+    # resolved above, before the date fallbacks, because the byline rule
+    # anchors on it - see _headline_of for the h1/og:title/title order
+    head = head_guess
     return {"url": url, "headline": head[:MAX_HEAD], "date": date,
             "date_source": src if date else None}
 
@@ -331,6 +436,15 @@ def check_news_item(item: dict, texts: dict[str, str], company: dict,
         return f"4. headline {head!r} is {len(head.split())} words, not a story"
     if NAV_CHROME.match(head):
         return f"5. headline {head[:40]!r} is navigation"
+    # A SECTION LABEL IS NOT A STORY. jenoptik.com/news/events-and-trade-fairs
+    # is a listing page with an article-shaped URL and a <time> tag, and it
+    # published itself as the item "Events and Trade fairs" - four words, so
+    # the word floor above let it through. The door's own note higher up
+    # names this class ("a section index is not an item"); this is the same
+    # refusal made explicit. A real headline says what happened; a section
+    # label is a noun phrase built out of the site's own furniture.
+    if SECTION_LABEL.fullmatch(head.strip()):
+        return f"5. headline {head[:40]!r} is a section label, not a story"
     if re.fullmatch(r"[\d\s.,%$]+", head):
         return "5. headline is a bare number"
     hay = norm(" ".join(texts.values()))

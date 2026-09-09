@@ -596,6 +596,119 @@ def check_rival_door_refuses_a_category() -> int:
     return errors
 
 
+def check_news_reads_a_date_only_where_a_reader_would() -> int:
+    """The two date rules that let 292 dead newsrooms speak, and their limits.
+
+    A newsroom we fetched and extracted nothing from was the commonest state
+    on this board: 292 companies, some with twenty pages on file. Two shapes
+    accounted for most of it, and neither was a missing fetch.
+
+    THE DATELINE. WeRide states no date in any machine-readable place - no
+    JSON-LD, no article:published_time, no <time>, no ISO string - so
+    twenty-five correctly-parsed headlines were thrown away. The date is in
+    the prose, in the wire form every release uses. What makes it safe is the
+    SHAPE: a place, a separator, the date, a dash. The same WeRide article
+    also says "changes will take effect on September 14, 2026" - a future
+    event, and exactly what "first date in the body" would have published.
+
+    THE BYLINE. gogov prints the date immediately before the headline and
+    nowhere else. near-h1 already tried this and missed it, because near-h1
+    measures 300 characters of RAW HTML and these pages put 61,000 characters
+    of markup between two things printed side by side. byline_date searches
+    the RENDERED text and anchors on the headline already established, so the
+    only date it can return is one a reader saw against that headline.
+
+    THE HEADLINE SIDE. "<title>WeRide | WeRide Included in HKEX..." puts the
+    site name FIRST; taking the first segment kept "WeRide" and lost the
+    story, then refused it for being under four words.
+
+    THE SECTION LABEL. jenoptik.com/news/events-and-trade-fairs is a listing
+    page with an article-shaped URL and a <time> tag, and it published itself
+    as "Events and Trade fairs" - four words, so the word floor let it
+    through. It was the one bad item in fifty-seven.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import news
+    errors = 0
+
+    # 1. the dateline wins over a later date in the body
+    wire = ("<html><body><h1>Co Wins Contract</h1><p>HONG KONG, August 31, 2026 "
+            "&ndash; Co (Nasdaq: X) today announced a thing. The change will "
+            "take effect on September 14, 2026.</p></body></html>")
+    it = news.item_from_article(wire, "https://co.example.com/posts/abc")
+    if it.get("date") != "2026-08-31":
+        errors += fail(f"the dateline date was not taken: got {it.get('date')!r} "
+                       f"from {it.get('date_source')!r}. September 14 is an "
+                       f"event in the body, not the publication date")
+
+    # 2. NEITHER NEW RULE TOUCHES ORDINARY PROSE. Tested against the rules
+    # themselves, not through item_from_article: the older near-h1 rule runs
+    # first and DOES read this date (521 of the 10,099 published items rest on
+    # it, so it is not something to quietly remove inside this change - it is
+    # a live question about 5% of the board's news). What must stay true is
+    # that the two rules added here never widen that surface.
+    prose = ("Co Reports Results On August 12, 2026, the chief executive said "
+             "a thing to a broadcaster.")
+    if news.dateline_date(prose):
+        errors += fail(f"dateline_date read {news.dateline_date(prose)!r} out "
+                       f"of ordinary prose. A dateline is a place, a "
+                       f"separator, the date and a dash - a sentence is not")
+    # THE CLOSING DASH IS THE HALF THAT MAKES IT A DATELINE. A place, a comma
+    # and a date can open an ordinary sentence; a dateline always hands off to
+    # the story with a dash or a wire tag.
+    sentence = "HONG KONG, August 31, 2026 was a busy day for the company."
+    if news.dateline_date(sentence):
+        errors += fail(f"dateline_date read {news.dateline_date(sentence)!r} "
+                       f"from a sentence that merely begins with a place and "
+                       f"a date. Without the closing dash it is not a dateline")
+    if news.byline_date(prose, "Nothing In This Text At All"):
+        errors += fail("byline_date returned a date for a headline that does "
+                       "not appear in the text")
+    # a date AFTER the headline is not a byline either
+    after = "Co Reports Results published August 12, 2026 by the newsroom"
+    if news.byline_date(after, "Co Reports Results"):
+        errors += fail("byline_date read a date printed AFTER the headline; "
+                       "only the date standing before it is the byline")
+
+    # 3. the byline sits against the headline, and beats a stray earlier date
+    blog = ("<html><head><title>Site | Widget Spotlight: Springfield IL</title>"
+            "</head><body><p>Copyright 2019 Founded January 1, 2001 Support "
+            "center Notifications July 27, 2026 Widget Spotlight: Springfield "
+            "IL is our newest story.</p></body></html>")
+    it = news.item_from_article(blog, "https://co.example.com/blog/spotlight")
+    if it.get("date") != "2026-07-27":
+        errors += fail(f"the byline against the headline was not read: got "
+                       f"{it.get('date')!r} via {it.get('date_source')!r}")
+    if "Widget Spotlight" not in (it.get("headline") or ""):
+        errors += fail(f"the story half of the <title> was lost: "
+                       f"{it.get('headline')!r}. The site name can be the "
+                       f"PREFIX, and taking the first segment drops the story")
+
+    # 4. a section label is refused however well dated
+    texts = {"u": "Events and Trade fairs"}
+    co = {"website": "https://co.example.com", "year_founded": 2001}
+    why = news.check_news_item(
+        {"url": "https://co.example.com/news/events-and-trade-fairs",
+         "headline": "Events and Trade fairs", "date": "2026-09-08"}, texts, co)
+    if not why:
+        errors += fail("'Events and Trade fairs' was accepted as a news item. "
+                       "A section index with an article-shaped URL and a <time> "
+                       "tag publishes itself unless the label is refused")
+    # A STORY THAT OPENS WITH A SECTION WORD IS STILL A STORY. This is what
+    # keeps the rule to fullmatch: "News: City of Austin picks Gainwell"
+    # begins with "News" and a prefix match would refuse it.
+    for head in ("Latest Ruling Gives Cities New Authority",
+                 "News: City of Austin picks Gainwell",
+                 "Press Release: Co Wins Statewide Contract",
+                 "Events Platform Acquired by Co for $40M"):
+        real = news.check_news_item(
+            {"url": "https://co.example.com/news/co-wins-city-contract",
+             "headline": head, "date": "2026-09-08"}, {"u": head}, co)
+        if real:
+            errors += fail(f"a real headline was refused: {head!r} -> {real}")
+    return errors
+
+
 def check_news_record_names_its_company_without_the_cache() -> int:
     """The watch sweep must produce a usable record with no bodies on disk.
 
@@ -15990,6 +16103,7 @@ def main() -> int:
     errors += check_manual_merge_never_doubles_a_fetched_row()
     errors += check_board()
     errors += check_rival_door_refuses_a_category()
+    errors += check_news_reads_a_date_only_where_a_reader_would()
     errors += check_news_record_names_its_company_without_the_cache()
     errors += check_every_dismiss_names_its_row()
     errors += check_web_ruling_stores_a_handle_not_a_person()
