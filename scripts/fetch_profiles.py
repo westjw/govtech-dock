@@ -344,6 +344,21 @@ def revisit_news(company: dict, prior: dict, listed: dict | None = None) -> dict
     """
     listed = listed or {}
     out = dict(prior)
+    # IDENTITY COMES FROM THE COMPANY, NEVER FROM THE CACHE. `out` starts as a
+    # copy of the stored body, so with bodies present it inherited id/name/
+    # website and looked correct. In CI there are no bodies - site_pages/ is
+    # gitignored and only the ETags are cached - so `prior` is {} and this
+    # returned a record with NO id. save() then died on rec['id'] before the
+    # first company finished, the extract and commit steps were skipped, and
+    # the job failed. Every scheduled run, twenty in a row.
+    #
+    # The worklist was already fixed to come from the committed index for this
+    # exact reason (see above); the RECORD it builds was still starting from
+    # the cache. visit() has always stamped these three explicitly - this is
+    # the same line it uses, and the company argument is the authority.
+    out["id"] = company["id"]
+    out["name"] = company.get("name")
+    out["website"] = (company.get("website") or "").strip() or None
     out["fetched_on"] = dt.date.today().isoformat()
     keep, changed = [], []
     for pg in ((prior.get("news") or []) or (listed.get("news") or [])):

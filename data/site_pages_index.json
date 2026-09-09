@@ -17295,11 +17295,11 @@
     "url": "https://bostondynamics.com/products/atlas/"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
-    "chars": 6532,
-    "sha": "650fc317db1f8f0f",
+    "chars": 6586,
+    "sha": "823e8bc4b8612978",
     "url": "https://bostondynamics.com/news/"
    },
    {
@@ -17308,8 +17308,8 @@
     "url": "https://bostondynamics.com/resources/webinars/"
    },
    {
-    "chars": 8900,
-    "sha": "15f02b550db270cb",
+    "chars": 8965,
+    "sha": "e69b36f70389fd1e",
     "url": "https://bostondynamics.com/news/boston-dynamics-expands-massachusetts-footprint-with-new-323000-square-foot-facility-in-waltham/"
    },
    {
@@ -17318,8 +17318,8 @@
     "url": "https://bostondynamics.com/blog/aivi-learning-now-powered-google-gemini-robotics/"
    },
    {
-    "chars": 13952,
-    "sha": "17ffae4db32d94e4",
+    "chars": 14011,
+    "sha": "df79ef0e84144428",
     "url": "https://bostondynamics.com/news/boston-dynamics-fieldai-partner-to-bring-robots-into-uncharted-dynamic-environments/"
    },
    {
@@ -17436,6 +17436,21 @@
     "chars": 9739,
     "sha": "6ae8782ad613bca7",
     "url": "https://bostondynamics.com/blog/from-inbound-to-outbound-and-everything-in-between/"
+   },
+   {
+    "chars": 5904,
+    "sha": "8c6681bc714f74ea",
+    "url": "https://bostondynamics.com/news/dynamic-creatures-launches-mobile-interactive-character-robots-for-hospitality-and-entertainment/"
+   },
+   {
+    "chars": 5160,
+    "sha": "c428239582400e84",
+    "url": "https://bostondynamics.com/news/atlas-the-humanoid-robot-delivers-match-ball-at-world-cup/"
+   },
+   {
+    "chars": 6133,
+    "sha": "08b490769afbcee3",
+    "url": "https://bostondynamics.com/news/time100-10-most-influential-hardware-companies-of-2026/"
    }
   ],
   "no_news_page": false,
@@ -23247,7 +23262,7 @@
     "url": "https://chorusintel.com/product/secure-open-source-capture/"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
     "chars": 5672,
@@ -26087,7 +26102,7 @@
     "url": "https://www.clearview.ai"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
     "chars": 5161,
@@ -34585,7 +34600,7 @@
     "url": "https://www.dataminr.com/products/cyber-defense/agentic-ti-ops"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
     "chars": 13233,
@@ -34693,8 +34708,19 @@
     "url": "https://www.dataminr.com/resources/?topic=business-resilience"
    },
    {
-    "unread": "HTTP 429 rate limited for https://www.dataminr.com/resources/?topic=cyber-defense, no Retry-After given",
+    "chars": 5809,
+    "sha": "f192492df3ae4f37",
     "url": "https://www.dataminr.com/resources/?topic=cyber-defense"
+   },
+   {
+    "chars": 9582,
+    "sha": "379d27613d08a4b5",
+    "url": "https://www.dataminr.com/resources/blog/cvss-is-telling-you-the-wrong-thing/"
+   },
+   {
+    "chars": 13188,
+    "sha": "5825067f35b9491f",
+    "url": "https://www.dataminr.com/resources/blog/implications-of-recent-cisa-disclosures-on-iranian-ot-targeting/"
    }
   ],
   "no_news_page": false,
@@ -37424,217 +37450,277 @@
     "url": "https://www.droneshield.com/case-studies"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
-    "chars": 35652,
-    "sha": "f4b20f6cf9c0ae28",
+    "chars": 35653,
+    "sha": "0e48b87e0883cadb",
     "url": "https://www.droneshield.com/blog"
    },
    {
-    "chars": 34948,
-    "sha": "ff4c149a9f92e96d",
+    "chars": 34949,
+    "sha": "b15bea91be2126b7",
     "url": "https://www.droneshield.com/blog/why-ultra-wideband-capability-vital-for-counter-drone-2026"
    },
    {
-    "chars": 36894,
-    "sha": "ab41a6846d480037",
+    "chars": 36895,
+    "sha": "e0ee8ad306217be1",
     "url": "https://www.droneshield.com/blog/critical-infrastructure-now-requires-three-dimensional-security"
    },
    {
-    "chars": 41031,
-    "sha": "2e826b24ab54d16c",
+    "chars": 41032,
+    "sha": "1eabff23cba52843",
     "url": "https://www.droneshield.com/blog/military-installations-demand-persistent-rf-awareness"
    },
    {
-    "chars": 38789,
-    "sha": "4f290f51f9ac156a",
+    "chars": 38790,
+    "sha": "0dcb2ba8121a9db0",
     "url": "https://www.droneshield.com/blog/rfai3-the-detection-engine-that-finally-broke-free-of-the-catalog"
    },
    {
-    "chars": 37104,
-    "sha": "adcf0cf4beee5942",
+    "chars": 37105,
+    "sha": "20fa82b057ed4b3e",
     "url": "https://www.droneshield.com/blog/evolution-of-shahed-threat"
    },
    {
-    "chars": 34065,
-    "sha": "0c08451082d4a6bf",
+    "chars": 34066,
+    "sha": "302c10d7b4d98860",
     "url": "https://www.droneshield.com/blog/the-future-of-counter-uas-will-be-defined-by-interoperability"
    },
    {
-    "chars": 36407,
-    "sha": "6368fba3bc490e20",
+    "chars": 36408,
+    "sha": "deb5fb13e3c33890",
     "url": "https://www.droneshield.com/blog/how-readiness-2030-revived-defence-investment"
    },
    {
-    "chars": 35034,
-    "sha": "48052e27f4bb8159",
+    "chars": 35035,
+    "sha": "3fbb308c9426209b",
     "url": "https://www.droneshield.com/blog/dhs-counter-uas-purchasing-tool-new-era-us-airspace-security"
    },
    {
-    "chars": 42098,
-    "sha": "6f82e7beb39db5a0",
+    "chars": 42099,
+    "sha": "402ddc96560390ba",
     "url": "https://www.droneshield.com/blog/from-hobby-drone-to-weaponized-platform"
    },
    {
-    "chars": 33687,
-    "sha": "e7bbc0a3ee948285",
+    "chars": 33688,
+    "sha": "98bff360c8863395",
     "url": "https://www.droneshield.com/blog/airspace-security-entering-its-interpretative-era"
    },
    {
-    "chars": 37707,
-    "sha": "44d25f6f010fdc23",
+    "chars": 37708,
+    "sha": "850770c7e76389c2",
     "url": "https://www.droneshield.com/blog/growth-of-the-civil-cuas-sector"
    },
    {
-    "chars": 32056,
-    "sha": "ffe1372c16df8181",
+    "chars": 32057,
+    "sha": "0c39533feb5b3835",
     "url": "https://www.droneshield.com/blog/the-year-ahead-will-not-reward-reaction-it-will-expose-it"
    },
    {
-    "chars": 29819,
-    "sha": "f9c99539d88c2332",
+    "chars": 29820,
+    "sha": "5722c081a8df6218",
     "url": "https://www.droneshield.com/media/news"
    },
    {
-    "chars": 27281,
-    "sha": "b1ba24fbaeb562ab",
+    "chars": 27282,
+    "sha": "eb1455741aa3ccc8",
     "url": "https://www.droneshield.com/media/news/global-issue-drones-illegally-flying-near-air-bases-triggering-concern"
    },
    {
-    "chars": 27357,
-    "sha": "4c122f7c78a0b8f8",
+    "chars": 27358,
+    "sha": "38ed396336d5f3ad",
     "url": "https://www.droneshield.com/media/news/australian-tech-helps-warfighters-detect-drones-they-have-never-seen-before"
    },
    {
-    "chars": 27386,
-    "sha": "6e3e1298caa73b36",
+    "chars": 27387,
+    "sha": "b48cb294bdd49e6d",
     "url": "https://www.droneshield.com/media/news/droneshield-wins-aud-232m-european-defence-contracts"
    },
    {
-    "chars": 27388,
-    "sha": "0b3393ab4a5a5247",
+    "chars": 27389,
+    "sha": "d3fe28d0c17c2409",
     "url": "https://www.droneshield.com/media/news/new-droneshield-report-reveals-serious-gaps-in-airport-critical-infrastructure-counter-drone-security"
    },
    {
-    "chars": 27415,
-    "sha": "b213ac46e6598b51",
+    "chars": 27416,
+    "sha": "35667a68b2f303c7",
     "url": "https://www.droneshield.com/media/news/the-fifa-world-cup-a-catalyst-for-c-uas-investmentnbspbut-not-the-whole-story"
    },
    {
-    "chars": 27441,
-    "sha": "12b2967088253180",
+    "chars": 27442,
+    "sha": "e814c4c10a871ab3",
     "url": "https://www.droneshield.com/media/news/drone-reports-near-us-airports-reflect-rising-issue-for-critical-infrastructure"
    },
    {
-    "chars": 27408,
-    "sha": "00e79197007c7bcf",
+    "chars": 27409,
+    "sha": "eeec44994c0efc95",
     "url": "https://www.droneshield.com/media/news/hidden-ways-military-level-drone-threat-over-world-cup-stadiums-is-being-silently-fought-off-revealed-by-ex-fbi-agent"
    },
    {
-    "chars": 27410,
-    "sha": "0c286fb15e9e817d",
+    "chars": 27411,
+    "sha": "78d61abd21b0cda0",
     "url": "https://www.droneshield.com/media/news/how-law-enforcement-is-stopping-drones-at-the-world-cup"
    },
    {
-    "chars": 27363,
-    "sha": "63ac80395e1b92aa",
+    "chars": 27364,
+    "sha": "0eae0dbdc52848aa",
     "url": "https://www.droneshield.com/media/news/8-illegal-drones-seized-after-flying-over-world-cup-events-in-kansas-city"
    },
    {
-    "chars": 27363,
-    "sha": "fafebf1c39199fe2",
+    "chars": 27364,
+    "sha": "de284c6e7465ca45",
     "url": "https://www.droneshield.com/media/news/8-illegal-drones-seized-after-flying-over-world-cup-events-in-kansas-city-5xklz"
    },
    {
-    "chars": 27350,
-    "sha": "3e80662cb668445e",
+    "chars": 27351,
+    "sha": "3cc041ac1ab166f9",
     "url": "https://www.droneshield.com/media/news/world-cup-security-planners-race-to-counter-drone-risks"
    },
    {
-    "chars": 27316,
-    "sha": "6ee739333475610a",
+    "chars": 27317,
+    "sha": "e6cd0431f1911c9b",
     "url": "https://www.droneshield.com/media/news/the-365-million-race-to-drone-proof-the-world-cup"
    },
    {
-    "chars": 34039,
-    "sha": "7825f288cb991a6f",
+    "chars": 34011,
+    "sha": "377ecb38f6bee3d3",
     "url": "https://www.droneshield.com/media/press-releases"
    },
    {
-    "chars": 31529,
-    "sha": "2d427eaa51283acf",
+    "chars": 31643,
+    "sha": "d98ce20774ed8c3a",
     "url": "https://www.droneshield.com/media/press-releases/droneshield-launches-rfrecon-marking-the-evolution-from-rf-detection-to-rf-intelligence"
    },
    {
-    "chars": 31362,
-    "sha": "59c24ddb5c5b1542",
+    "chars": 31363,
+    "sha": "4a771daf67e4abdd",
     "url": "https://www.droneshield.com/media/press-releases/droneshield-breaks-the-detection-paradigm-rfai-3-senses-drones-never-seen-before"
    },
    {
-    "chars": 30945,
-    "sha": "74be8ab5fa46166a",
+    "chars": 30946,
+    "sha": "3664ab4dfe715ab5",
     "url": "https://www.droneshield.com/media/press-releases/droneshield-q3-software-release-sharpens-counter-uas-performance-against-faster-more-evasive-drone-threats"
    },
    {
-    "chars": 32399,
-    "sha": "0ef158712cb0ff88",
+    "chars": 32400,
+    "sha": "4c2a59ec55828820",
     "url": "https://www.droneshield.com/media/press-releases/new-droneshield-report-reveals-serious-gaps-airport-critical-infrastructure-counter-drone-security"
    },
    {
-    "chars": 30539,
-    "sha": "d82942c6c2626211",
+    "chars": 30540,
+    "sha": "06ff7b227139f559",
     "url": "https://www.droneshield.com/media/press-releases/droneshield-launches-polish-supply-chain-campaign-to-support-european-counter-drone-capability"
    },
    {
-    "chars": 30586,
-    "sha": "f9509b5066d132bc",
+    "chars": 30587,
+    "sha": "259d60bea9b0f3fa",
     "url": "https://www.droneshield.com/media/press-releases/rear-admiral-lee-goddard-joins-droneshield"
    },
    {
-    "chars": 30377,
-    "sha": "8da7fde7f9e1a9bd",
+    "chars": 30378,
+    "sha": "4a03efc3ee5f0d76",
     "url": "https://www.droneshield.com/media/press-releases/droneshield-defenture-announce-strategic-partnership-advance-mobile-counter-uas-capability"
    },
    {
-    "chars": 30097,
-    "sha": "41f60f24a6c354e6",
+    "chars": 30098,
+    "sha": "8b26608c67eebb5d",
     "url": "https://www.droneshield.com/media/press-releases/parsons-droneshield-highlight-open-architecture-approach-countering-evolving-drone-threats"
    },
    {
-    "chars": 30202,
-    "sha": "435dae4eaf69ac2f",
+    "chars": 30203,
+    "sha": "01e18036fad80ae8",
     "url": "https://www.droneshield.com/media/press-releases/droneshield-expands-european-sovereign-manufacturing-capability-first-eu-produced-counter-uas-units"
    },
    {
-    "chars": 29848,
-    "sha": "68285c42072ee0e8",
+    "chars": 29849,
+    "sha": "575ce2703090d9cf",
     "url": "https://www.droneshield.com/media/press-releases/droneshield-awarded-jiatf401-contract"
    },
    {
-    "chars": 31246,
-    "sha": "80cf1aa7840f1959",
+    "chars": 31247,
+    "sha": "ca4a6c044bf657a9",
     "url": "https://www.droneshield.com/media/press-releases/droneshield-expands-urban-airspace-security-capabilities-fifa-world-cup-2026"
    },
    {
-    "chars": 30526,
-    "sha": "f2620f019f5651e0",
+    "chars": 30527,
+    "sha": "db7b738b85695b2b",
     "url": "https://www.droneshield.com/media/press-releases/droneshield-launches-german-supply-chain-campaign"
    },
    {
-    "chars": 35908,
-    "sha": "62ade2932f967729",
+    "chars": 35959,
+    "sha": "228b47d9de8aa52f",
     "url": "https://www.droneshield.com/media/image-gallery"
    },
    {
-    "chars": 35908,
-    "sha": "62ade2932f967729",
+    "chars": 35959,
+    "sha": "228b47d9de8aa52f",
     "url": "https://www.droneshield.com/media/videos"
    },
    {
-    "chars": 35908,
-    "sha": "62ade2932f967729",
+    "chars": 35959,
+    "sha": "228b47d9de8aa52f",
     "url": "https://www.droneshield.com/media"
+   },
+   {
+    "chars": 31365,
+    "sha": "153fffa9a0901462",
+    "url": "https://www.droneshield.com/blog/layered-defense-the-power-and-flexibility-of-multi-sensor-integration"
+   },
+   {
+    "chars": 31104,
+    "sha": "d1a5d356a4b62d70",
+    "url": "https://www.droneshield.com/blog/shaping-the-future-of-defence-strategy"
+   },
+   {
+    "chars": 31774,
+    "sha": "0b77dbc132059bd4",
+    "url": "https://www.droneshield.com/media/press-releases/droneshield-launches-dronesentry-c2-enterprise"
+   },
+   {
+    "chars": 29995,
+    "sha": "0e3270078c42cd08",
+    "url": "https://www.droneshield.com/media/press-releases/droneshield-2025tam"
+   },
+   {
+    "chars": 31513,
+    "sha": "2cbc2dbb7227d6fd",
+    "url": "https://www.droneshield.com/blog/how-drones-broke-the-geometry-of-defense-2026"
+   },
+   {
+    "chars": 27313,
+    "sha": "50cc9e349b40b811",
+    "url": "https://www.droneshield.com/media/news/hunter-catcher-drones-to-protect-england-world-cup-base"
+   },
+   {
+    "chars": 29920,
+    "sha": "1d3eb7b88594e9f9",
+    "url": "https://www.droneshield.com/media/press-releases/droneshield-supports-australian-air-force-cadets-australias-future-leaders"
+   },
+   {
+    "chars": 34011,
+    "sha": "377ecb38f6bee3d3",
+    "url": "https://www.droneshield.com/media/press-releases?author=66307a7d88786d30dabe29fd"
+   },
+   {
+    "chars": 29896,
+    "sha": "f6ab71ed830a71cd",
+    "url": "https://www.droneshield.com/media/press-releases/droneshield-establishes-european-manufacturing-footprint-to-advance-sovereign-counter-uas-capability"
+   },
+   {
+    "chars": 30801,
+    "sha": "893cf6baf33324f0",
+    "url": "https://www.droneshield.com/media/press-releases/droneshield-establishes-european-headquarters-accelerate-regional-growth-and-sovereign-cuas-capability"
+   },
+   {
+    "chars": 30331,
+    "sha": "d6f4a6b4c4048ddd",
+    "url": "https://www.droneshield.com/media/press-releases/droneshield-terma-sign-strategic-mou-advance-layered-counter-uas-capabilities"
+   },
+   {
+    "chars": 34011,
+    "sha": "377ecb38f6bee3d3",
+    "url": "https://www.droneshield.com/media/press-releases?category=2026"
    }
   ],
   "no_news_page": false,
@@ -39971,7 +40057,7 @@
     "url": "https://www.echodyne.com/company"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
     "chars": 4737,
@@ -75828,7 +75914,7 @@
     "url": "https://www.lenslock.com/solutions"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
     "chars": 3181,
@@ -82373,57 +82459,82 @@
     "url": "https://www.milestonesys.com/products/software/vision-language-model/"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
-    "chars": 4599,
-    "sha": "b0bff4662d3fc5b7",
+    "chars": 4619,
+    "sha": "1ea81bf3422de21e",
     "url": "https://www.milestonesys.com/resources/events/events/"
    },
    {
-    "chars": 9390,
-    "sha": "eda54b1d2a5fb0aa",
+    "chars": 9410,
+    "sha": "57a9d72872b04d68",
     "url": "https://www.milestonesys.com/company/news/newsroom/"
    },
    {
-    "chars": 5032,
-    "sha": "908224e2bd4f4dba",
+    "chars": 5052,
+    "sha": "e43e0a61db408159",
     "url": "https://www.milestonesys.com/resources/events/webinars/"
    },
    {
-    "chars": 9390,
-    "sha": "eda54b1d2a5fb0aa",
+    "chars": 9410,
+    "sha": "57a9d72872b04d68",
     "url": "https://www.milestonesys.com/company/news/newsroom/"
    },
    {
-    "chars": 7984,
-    "sha": "9ec9daa92a6c8764",
+    "chars": 8004,
+    "sha": "799c5b5b90ac6e65",
     "url": "https://www.milestonesys.com/fr/company/news/newsroom/"
    },
    {
-    "chars": 7851,
-    "sha": "5dea654d8882376a",
+    "chars": 7871,
+    "sha": "f274197269225e63",
     "url": "https://www.milestonesys.com/es/empresa/news/newsroom/"
    },
    {
-    "chars": 7585,
-    "sha": "bb67184211782b32",
+    "chars": 7605,
+    "sha": "de6d95a729eb6f23",
     "url": "https://www.milestonesys.com/it/azienda/news/newsroom/"
    },
    {
-    "chars": 7710,
-    "sha": "30019cab0ebda57d",
+    "chars": 7730,
+    "sha": "c79322d8efbdff16",
     "url": "https://www.milestonesys.com/de/unternehmen/news/newsroom/"
    },
    {
-    "chars": 7307,
-    "sha": "3eaf18ada0982f0a",
+    "chars": 7327,
+    "sha": "771d9343ed32c1da",
     "url": "https://www.milestonesys.com/ja/company/news/newsroom/"
    },
    {
-    "chars": 4709,
-    "sha": "93a62bb99d145083",
+    "chars": 4729,
+    "sha": "0cc98adb37e9d708",
     "url": "https://www.milestonesys.com/resources/learn/recorded-webinars/"
+   },
+   {
+    "chars": 8004,
+    "sha": "799c5b5b90ac6e65",
+    "url": "https://www.milestonesys.com/fr/company/news/newsroom/?epslanguage=fr"
+   },
+   {
+    "chars": 7871,
+    "sha": "f274197269225e63",
+    "url": "https://www.milestonesys.com/es/empresa/news/newsroom/?epslanguage=es"
+   },
+   {
+    "chars": 7605,
+    "sha": "de6d95a729eb6f23",
+    "url": "https://www.milestonesys.com/it/azienda/news/newsroom/?epslanguage=it"
+   },
+   {
+    "chars": 7730,
+    "sha": "c79322d8efbdff16",
+    "url": "https://www.milestonesys.com/de/unternehmen/news/newsroom/?epslanguage=de"
+   },
+   {
+    "chars": 7327,
+    "sha": "771d9343ed32c1da",
+    "url": "https://www.milestonesys.com/ja/company/news/newsroom/?epslanguage=ja"
    }
   ],
   "no_news_page": false,
@@ -95349,7 +95460,7 @@
     "url": "https://www.paladindrones.io/about"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
     "chars": 2056,
@@ -115149,7 +115260,7 @@
     "url": "https://www.skyfireai.com"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
     "chars": 1716,
@@ -115180,56 +115291,56 @@
     "url": "https://www.skysafe.io/case-studies"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
-    "chars": 8717,
-    "sha": "d8ba3d9199245780",
+    "chars": 8687,
+    "sha": "dbf72bb9d8704268",
     "url": "https://www.skysafe.io/press"
    },
    {
-    "chars": 6663,
-    "sha": "b796331d5bf1fb8f",
+    "chars": 6615,
+    "sha": "05e44c6af793bd0e",
     "url": "https://www.skysafe.io/press/cellebrite-expands-exclusive-skysafe-partnership-to-deliver-immediate-drone-detection-and-airspace-intelligence-for-digital-investigations-at-scale"
    },
    {
-    "chars": 6515,
-    "sha": "5e14791853acc37d",
+    "chars": 6495,
+    "sha": "f1382a64378fafd7",
     "url": "https://www.skysafe.io/press/skysafe-and-university-of-illinois-urbana-champaign-extend-partnership-setting-new-standard-for-drone-detection-and-airspace-intelligence"
    },
    {
-    "chars": 7025,
-    "sha": "9d441fb44226feff",
+    "chars": 6993,
+    "sha": "e26f8a2a9abdba0a",
     "url": "https://www.skysafe.io/press/southern-states-enhances-layered-airspace-protection-strategy-with-skysafes-drone-detection-and-airspace-intelligence"
    },
    {
-    "chars": 5702,
-    "sha": "60d49d1cfd37de41",
+    "chars": 5640,
+    "sha": "2467cc1ed2e775e9",
     "url": "https://www.skysafe.io/press/university-of-louisiana-monroe-enhances-campus-safety-with-skysafe"
    },
    {
-    "chars": 5998,
-    "sha": "acd723b38394ea7e",
+    "chars": 5966,
+    "sha": "19baa9e424f2287c",
     "url": "https://www.skysafe.io/press/skysafe-unveils-forensics-as-a-service"
    },
    {
-    "chars": 5399,
-    "sha": "9c82cfc87ee7aefa",
+    "chars": 5381,
+    "sha": "349ca0e73276ca8d",
     "url": "https://www.skysafe.io/press/skysafe-and-state-of-rhode-island-renew-multi-year-contract-expanding-drone-detection-across-the-state"
    },
    {
-    "chars": 4553,
-    "sha": "6be4e17aa44e4847",
+    "chars": 4513,
+    "sha": "b2a677d3cc7143b2",
     "url": "https://www.skysafe.io/press/skysafe-welcomes-eileen-treanor-as-cfo-to-strengthen-financial-leadership-and-scale-operations"
    },
    {
-    "chars": 4056,
-    "sha": "7d46c1d2cad25f01",
+    "chars": 4010,
+    "sha": "0c727ff8b17364b8",
     "url": "https://www.skysafe.io/press/skysafe-with-motorola-solutions-deliver-counter-drone-intelligence-through-command-center-integration"
    },
    {
-    "chars": 4015,
-    "sha": "da3d8729d946e267",
+    "chars": 4009,
+    "sha": "48c7d4cf9c84b7e7",
     "url": "https://www.skysafe.io/press/skysafe-renews-partnership-with-farmers-insurance-open-for-drone-security-at-2025-tournament"
    },
    {
@@ -117969,47 +118080,107 @@
     "url": "https://www.ss8.com/solutions/mobile-network-location-intelligence/"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
-    "chars": 9460,
-    "sha": "6bfbfb5dc394bd66",
+    "chars": 9496,
+    "sha": "a0bea9bf90aef8d5",
     "url": "https://www.ss8.com/blog"
    },
    {
-    "chars": 8234,
-    "sha": "1cb1ec04b47e6bf1",
+    "chars": 8268,
+    "sha": "112120459900ac6e",
     "url": "https://www.ss8.com/category/blog/communication-provider/"
    },
    {
-    "chars": 7149,
-    "sha": "458ea896992c9e1c",
+    "chars": 7183,
+    "sha": "c07163970de89313",
     "url": "https://www.ss8.com/category/blog/emergency-services/"
    },
    {
-    "chars": 7991,
-    "sha": "b31ed09684d6565c",
+    "chars": 8025,
+    "sha": "aa80c7b62afabcb6",
     "url": "https://www.ss8.com/category/blog/innovation/"
    },
    {
-    "chars": 7878,
-    "sha": "7342432bfc7548ad",
+    "chars": 7912,
+    "sha": "83b0ca79f0503b2a",
     "url": "https://www.ss8.com/category/blog/law-enforcement/"
    },
    {
-    "chars": 8024,
-    "sha": "02cdd01ec2fc9de0",
+    "chars": 8058,
+    "sha": "1d63445c0313b64e",
     "url": "https://www.ss8.com/category/blog/lawful-intercept/"
    },
    {
-    "chars": 7830,
-    "sha": "ba278791cfdbc76c",
+    "chars": 7864,
+    "sha": "fb1348d1ad6bada5",
     "url": "https://www.ss8.com/category/blog/location-technology/"
    },
    {
-    "chars": 6057,
-    "sha": "dc675b4e2f8b1caf",
+    "chars": 6084,
+    "sha": "02b7b965a7289866",
     "url": "https://www.ss8.com/resources/"
+   },
+   {
+    "chars": 10352,
+    "sha": "47eaa2a05249f5bd",
+    "url": "https://www.ss8.com/es/category/blog/communication-provider/?wg-choose-original=false"
+   },
+   {
+    "chars": 10673,
+    "sha": "01067a5a5df87b08",
+    "url": "https://www.ss8.com/fr/category/blog/communication-provider/?wg-choose-original=false"
+   },
+   {
+    "chars": 9116,
+    "sha": "150acbd35d710461",
+    "url": "https://www.ss8.com/es/category/blog/emergency-services/?wg-choose-original=false"
+   },
+   {
+    "chars": 9451,
+    "sha": "3aa4186d9b5e56c6",
+    "url": "https://www.ss8.com/fr/category/blog/emergency-services/?wg-choose-original=false"
+   },
+   {
+    "chars": 10161,
+    "sha": "c4ebaa4e9cda2981",
+    "url": "https://www.ss8.com/es/category/blog/innovation/?wg-choose-original=false"
+   },
+   {
+    "chars": 10404,
+    "sha": "5f7382e646a88ad8",
+    "url": "https://www.ss8.com/fr/category/blog/innovation/?wg-choose-original=false"
+   },
+   {
+    "chars": 10178,
+    "sha": "55ab7baa16816756",
+    "url": "https://www.ss8.com/es/category/blog/law-enforcement/?wg-choose-original=false"
+   },
+   {
+    "chars": 10544,
+    "sha": "132838266b1abee5",
+    "url": "https://www.ss8.com/fr/category/blog/law-enforcement/?wg-choose-original=false"
+   },
+   {
+    "chars": 10430,
+    "sha": "de04455255b9290b",
+    "url": "https://www.ss8.com/es/category/blog/lawful-intercept/?wg-choose-original=false"
+   },
+   {
+    "chars": 10725,
+    "sha": "e3a7fb545705157c",
+    "url": "https://www.ss8.com/fr/category/blog/lawful-intercept/?wg-choose-original=false"
+   },
+   {
+    "chars": 9950,
+    "sha": "aaac3f7abfb9fded",
+    "url": "https://www.ss8.com/es/category/blog/location-technology/?wg-choose-original=false"
+   },
+   {
+    "chars": 10167,
+    "sha": "ddf26aa323bbdcd9",
+    "url": "https://www.ss8.com/fr/category/blog/location-technology/?wg-choose-original=false"
    }
   ],
   "no_news_page": false,
@@ -125298,7 +125469,7 @@
     "url": "https://www.tip411.com"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
     "chars": 1392,
@@ -131870,11 +132041,11 @@
     "url": "https://www.verkada.com/solutions/healthcare/"
    }
   ],
-  "fetched_on": "2026-09-02",
+  "fetched_on": "2026-09-09",
   "news": [
    {
-    "chars": 5289,
-    "sha": "85db277910f95773",
+    "chars": 5299,
+    "sha": "130fb40ae4df9a32",
     "url": "https://www.verkada.com/blog/"
    },
    {
@@ -131898,8 +132069,8 @@
     "url": "https://www.verkada.com/blog/verkada-is-now-govramp-moderate-authorized/"
    },
    {
-    "chars": 6953,
-    "sha": "504ec94fcdbba6f1",
+    "chars": 7026,
+    "sha": "fa8fb96bc10abaab",
     "url": "https://www.verkada.com/blog/verkada-achieves-fedramp-authorized-status/"
    },
    {
@@ -131955,6 +132126,16 @@
     "chars": 4431,
     "sha": "10ffd24779f021e6",
     "url": "https://www.verkada.com/newsroom/awards/"
+   },
+   {
+    "chars": 4872,
+    "sha": "3a19ea25950d6c3c",
+    "url": "https://www.verkada.com/blog/introducing-custom-site-roles-and-unified-user-management/"
+   },
+   {
+    "chars": 4131,
+    "sha": "27ce6972482c7352",
+    "url": "https://www.verkada.com/blog/inactivity-detection/"
    }
   ],
   "no_news_page": false,

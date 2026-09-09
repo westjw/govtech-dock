@@ -596,6 +596,71 @@ def check_rival_door_refuses_a_category() -> int:
     return errors
 
 
+def check_news_record_names_its_company_without_the_cache() -> int:
+    """The watch sweep must produce a usable record with no bodies on disk.
+
+    news.yml has failed on every scheduled run since it was written - twenty
+    in a row - and this is why. data/site_pages/ is gitignored (1.6 GB of
+    other people's page text) and the workflow caches only the ETags, so a CI
+    checkout has the committed index and NO bodies. revisit_news built its
+    record as `dict(prior)`, and with no body `prior` is {} - so the returned
+    record carried no id, save() raised KeyError on the first company, and the
+    two steps that matter (extract behind the door, commit what changed) were
+    skipped. Locally it always passed, because locally the bodies exist and
+    the id was inherited from one.
+
+    The worklist had already been fixed to read from the committed index for
+    exactly this reason. The RECORD it built was still starting from the
+    cache. Identity now comes from the company argument, which is the
+    authority - the same three fields visit() has always stamped.
+
+    Driven with prior={} on purpose: that IS the CI state, and any future
+    record shape has to survive it.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import fetch_profiles as fp
+
+    company = {"id": "acme-widgets", "name": "Acme Widgets",
+               "website": "https://acme.example.com"}
+    listed = {"news": []}                      # nothing to fetch: no network
+    rec = fp.revisit_news(company, {}, listed)
+
+    errors = 0
+    if rec.get("id") != "acme-widgets":
+        errors += fail(
+            f"revisit_news with no stored body returned id={rec.get('id')!r}. "
+            f"On a CI checkout every company looks like this, and save() dies "
+            f"on rec['id'] before the first one finishes")
+    if rec.get("website") != "https://acme.example.com":
+        errors += fail(f"the record lost its website: {rec.get('website')!r}")
+    if "fetched_on" not in rec:
+        errors += fail("the record carries no fetched_on, so nothing can tell "
+                       "when it was last looked at")
+    # AND THE CACHE MUST NOT WIN. A stored body carrying an old id - a company
+    # re-slugged, a record merged - would otherwise be copied forward and the
+    # sweep would write its pages to the wrong file. `setdefault` passes the
+    # empty case above and fails this one, which is why both are here.
+    stale = {"id": "acme-widgets-OLD", "website": "https://stale.example.com",
+             "news": []}
+    rec2 = fp.revisit_news(company, stale, listed)
+    if rec2.get("id") != "acme-widgets":
+        errors += fail(
+            f"a stored body claiming id={stale['id']!r} beat the company "
+            f"record: got {rec2.get('id')!r}. Identity is a fact about the "
+            f"company, not about the cache that happens to be on disk")
+    if rec2.get("website") != "https://acme.example.com":
+        errors += fail(f"the stale cache's website survived: "
+                       f"{rec2.get('website')!r}")
+
+    # and it must survive the two calls main() makes on every result
+    try:
+        fp.index_entry(rec, None)
+    except Exception as exc:                                # noqa: BLE001
+        errors += fail(f"index_entry could not read a bodiless record: "
+                       f"{type(exc).__name__}: {exc}")
+    return errors
+
+
 def check_every_dismiss_names_its_row() -> int:
     """A refusal must name the row it refuses.
 
@@ -15925,6 +15990,7 @@ def main() -> int:
     errors += check_manual_merge_never_doubles_a_fetched_row()
     errors += check_board()
     errors += check_rival_door_refuses_a_category()
+    errors += check_news_record_names_its_company_without_the_cache()
     errors += check_every_dismiss_names_its_row()
     errors += check_web_ruling_stores_a_handle_not_a_person()
     errors += check_no_person_in_the_repo()
