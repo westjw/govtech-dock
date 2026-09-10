@@ -66,6 +66,27 @@ def add_event(desc: str | None, event: str) -> str:
     return desc.replace(m.group(1), m.group(1) + ", " + event)
 
 
+def add_source_tag(source: str | None, event: str) -> str:
+    """The event tag on `source`, which is the field the public tab counts.
+
+    `source` is a semicolon-joined list of tags, sometimes behind a prefix
+    ("conference sweep: GFOA 2026"). build_board._event_tags() takes
+    src.split(":")[-1].split(";"), so the prefix survives on the first tag
+    and everything after a semicolon is read. Appending with "; " keeps that
+    true and keeps the prefix meaningful.
+
+    Idempotent by tag, because a re-run of the same floor must not lengthen
+    the string.
+    """
+    src = (source or "").strip()
+    if not src:
+        return f"conference sweep: {event}"
+    tail = src.split(":")[-1]
+    if event in [t.strip() for t in tail.split(";")]:
+        return src
+    return f"{src}; {event}"
+
+
 def issued_tags() -> set:
     """Every event tag the catalog has ever issued, current and prior."""
     confs = json.loads((DATA / "conferences.json").read_text())["conferences"]
@@ -150,6 +171,16 @@ def main() -> int:
         if hit:
             _, row = hit
             row["description"] = add_event(row.get("description"), event)
+            # AND THE FIELD THE SITE ACTUALLY COUNTS.
+            #
+            # build_board._event_tags() reads `source`; this wrote only the
+            # description. So a company already on the board that turned up on
+            # a new floor gained an "exhibited at" note the Conferences tab
+            # could not see, and the event rendered "not mined yet" - under a
+            # sentence that says an empty count "is a fact about us, not about
+            # the conference". Sixteen events said that untruthfully, NLC City
+            # Summit 2026 while holding 41 exhibitors.
+            row["source"] = add_source_tag(row.get("source"), event)
             tagged += 1
         elif ex.get("is_govtech"):
             candidates.append({"name": ex["name"], "website": ex.get("website"),

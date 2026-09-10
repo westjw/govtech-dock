@@ -12007,7 +12007,13 @@ def check_crawl_files() -> int:
     import build_site, tempfile, shutil, json as _json
     import pathlib as _pl
     errors = 0
-    board = {"postings": [], "conferences": [{"event_tag": "APCO 2026"}],
+    board = {"postings": [],
+             # One conference that EARNS a page (it has a date) and one that
+             # does not (no date, no exhibitor). The sitemap must list exactly
+             # the first: it used to list both, and write_conference_pages
+             # wrote only the first, so 17 of 138 advertised addresses 404'd.
+             "conferences": [{"event_tag": "APCO 2026", "dates": "July 25-28, 2027"},
+                             {"event_tag": "Ghost Event 2026"}],
              "organizations": [{"id": "hiring-co", "open_roles": 3},
                                {"id": "quiet-co", "open_roles": 0}]}
     brand = {"site": "https://example.test", "name": "SLED JOBS"}
@@ -12039,6 +12045,18 @@ def check_crawl_files() -> int:
             errors += fail("conferences are missing from the sitemap, or it "
                            "still points at the tab query rather than the "
                            "prerendered conference page")
+        # THE SITEMAP AND THE PAGE WRITER MUST ASK THE SAME QUESTION.
+        if "/e/ghost-event-2026" in sm:
+            errors += fail("the sitemap advertises a conference that gets no "
+                           "page - no date and no exhibitor on file. Handing a "
+                           "crawler a canonical address that 404s is worse than "
+                           "omitting it, and 17 of 138 did exactly that")
+        # and the two are one predicate, not two that happen to agree today
+        rosters = build_site.conference_rosters(board)
+        for c, want in ((board["conferences"][0], True), (board["conferences"][1], False)):
+            if build_site.conference_gets_a_page(c, rosters) is not want:
+                errors += fail(f"conference_gets_a_page disagrees with the "
+                               f"sitemap on {c.get('event_tag')!r}")
         rob = (tmp / "robots.txt").read_text()
         if "Sitemap: https://example.test/sitemap.xml" not in rob:
             errors += fail("robots.txt does not name the sitemap")
@@ -16849,6 +16867,68 @@ def check_the_rescrub_list_is_the_boards_only_you_can_read() -> int:
     return errors
 
 
+def check_an_exhibitor_tag_reaches_the_field_that_counts() -> int:
+    """A company tagged to an event carries that tag where the site reads it.
+
+    conference_intake wrote "exhibited at <tag>" into a company's DESCRIPTION
+    and never touched `source`. build_board._event_tags() counts from
+    `source`. So a company already on the board that turned up on a new floor
+    gained a note nothing rendered, and the event showed "not mined yet" -
+    directly under a sentence that reads "An event with no companies beside
+    it is one we have not mined yet - that is a fact about us, not about the
+    conference."
+
+    Sixteen events said that untruthfully and thirty-nine were understated:
+    NLC City Summit 2026 held 41 exhibitors and displayed none, GFOA 2026 held
+    68 and displayed 22. 375 companies were backfilled.
+
+    The live file is asserted, not only the helper, because the helper was
+    correct the whole time - it simply was not called on `source`.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import conference_intake as ci, build_board as bb, json as _json, re as _re
+    errors = 0
+    for src, ev, want in (
+            (None, "GFOA 2026", "conference sweep: GFOA 2026"),
+            ("conference sweep: IACP 2026", "NSA 2026",
+             "conference sweep: IACP 2026; NSA 2026"),
+            ("conference sweep: IACP 2026", "IACP 2026",
+             "conference sweep: IACP 2026")):
+        got = ci.add_source_tag(src, ev)
+        if got != want:
+            errors += fail(f"add_source_tag({src!r}, {ev!r}) = {got!r}, want {want!r}")
+    # and build_board must read back what we wrote
+    if bb._event_tags("conference sweep: IACP 2026; NSA 2026") != ["IACP 2026", "NSA 2026"]:
+        errors += fail("build_board cannot read back the source string intake writes")
+
+    # THE LIVE FILE. Every issued tag named in a description is in `source`.
+    issued = ci.issued_tags()
+    rows = _json.loads((ROOT / "data" / "companies.json").read_text())
+    rows = rows["companies"] if isinstance(rows, dict) else rows
+    missing = {}
+    for c in rows:
+        m = _re.search(r"exhibited at ([^;.\n]+)", c.get("description") or "")
+        if not m:
+            continue
+        have = [t.strip() for t in (c.get("source") or "").split(":")[-1].split(";")]
+        for t in [x.strip() for x in m.group(1).split(",")]:
+            if t and t in issued and t not in have:
+                missing[t] = missing.get(t, 0) + 1
+    if missing:
+        worst = sorted(missing.items(), key=lambda kv: -kv[1])[:3]
+        errors += fail(f"{sum(missing.values())} company/event pairs name an "
+                       f"event in their description and not in `source`, so the "
+                       f"Conferences tab under-counts {len(missing)} events "
+                       f"({worst}). The tab calls an empty count a fact about "
+                       f"us; that is only true if this is empty")
+    # the intake path itself, so a future edit cannot drop the second write
+    src_txt = (ROOT / "scripts" / "conference_intake.py").read_text()
+    if "add_source_tag(row.get(\"source\")" not in src_txt:
+        errors += fail("conference_intake no longer writes the tag to `source`; "
+                       "the description alone is invisible to the site")
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -17311,6 +17391,7 @@ def main() -> int:
     errors += check_an_acquisition_is_shown_on_both_sides()
     errors += check_a_hand_check_records_what_it_found()
     errors += check_the_rescrub_list_is_the_boards_only_you_can_read()
+    errors += check_an_exhibitor_tag_reaches_the_field_that_counts()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()

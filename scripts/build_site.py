@@ -716,6 +716,8 @@ SALES_FAMILIES = {"gtm", "field"}
 # than anybody reads to the end of. The cut is by OPENING, and the page says
 # where the rest are.
 CO_ROLE_CAP = 40
+# The exhibitor roster on an /e/ page. IACP alone carries 164.
+CO_ROSTER_CAP = 250
 PAY_PERIOD = {"year": "", "month": "a month", "week": "a week",
               "day": "a day", "hour": "an hour"}
 
@@ -1764,6 +1766,31 @@ def _ics_desc(c: dict, site: str) -> str:
 
 
 
+def conference_gets_a_page(c: dict, by_tag: dict) -> bool:
+    """One rule, asked in both places.
+
+    The sitemap listed EVERY conference row while write_conference_pages
+    skipped any row with no roster and no dates, so 17 of the 138 addresses
+    it advertised were 404s. Google was being handed a canonical URL for a
+    page that had never been written. With ~310 events staged behind this,
+    that gap is the difference between a sitemap and a list of broken links.
+    """
+    tag = c.get("tag") or c.get("event_tag")
+    if not tag:
+        return False
+    return bool(by_tag.get(tag) or c.get("dates"))
+
+
+def conference_rosters(board: dict) -> dict:
+    """tag -> the organisations that carry it, from EVERY tag they carry."""
+    out: dict = {}
+    for o in board.get("organizations", []):
+        tags = o.get("conferences") or ([o["conference"]] if o.get("conference") else [])
+        for t in tags:
+            out.setdefault(t, []).append(o)
+    return out
+
+
 def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
     """A page per conference, with the exhibitors we track and who is hiring.
 
@@ -1781,10 +1808,15 @@ def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
     site = brand["site"].rstrip("/")
     d = out / "e"
     d.mkdir(parents=True, exist_ok=True)
-    by_tag: dict = {}
-    for o in board.get("organizations", []):
-        if o.get("conference"):
-            by_tag.setdefault(o["conference"], []).append(o)
+    # EVERY TAG A COMPANY CARRIES, not just the first.
+    #
+    # This read o["conference"] - the legacy single field build_board keeps
+    # beside the list - so a company at two shows appeared only on the first
+    # one's page. Ten events understated their own roster against the count
+    # the Conferences tab prints from the same data: ICMA 2026 named 11 of 40,
+    # NSA 2026 named 60 of 88, and SoundThinking ("IACP 2026; NSA 2026")
+    # appeared on neither, filed under IACP and then cut by the roster cap.
+    by_tag = conference_rosters(board)
 
     n = 0
     for c in board.get("conferences", []) or []:
@@ -1793,14 +1825,14 @@ def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
             continue
         roster = sorted(by_tag.get(tag, []),
                         key=lambda o: (-(o.get("open_roles") or 0), o.get("name") or ""))
-        if not roster and not c.get("dates"):
+        if not conference_gets_a_page(c, by_tag):
             continue      # nothing to say that the catalogue tab does not say
         hiring = [o for o in roster if o.get("open_roles")]
         where = " &middot; ".join(html.escape(x) for x in
                                  (c.get("dates"), c.get("city"), c.get("department"))
                                  if x)
         items = ""
-        for o in roster[:60]:
+        for o in roster[:CO_ROSTER_CAP]:
             n_open = o.get("open_roles") or 0
             link = (f'<a href="/c/{urllib.parse.quote(o["id"])}.html">'
                     f'{html.escape(o["name"])}</a>' if n_open
@@ -1809,9 +1841,9 @@ def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
                     f'{"s" if n_open != 1 else ""}</div>' if n_open else
                     '<div class="meta">nothing open that we can see</div>')
             items += f'<li><div class="role">{link}</div>{note}</li>'
-        more = (f'<p class="kv">Showing {min(len(roster), 60)} of '
+        more = (f'<p class="kv">Showing {min(len(roster), CO_ROSTER_CAP)} of '
                 f'{len(roster)}, the ones hiring first.</p>'
-                if len(roster) > 60 else "")
+                if len(roster) > CO_ROSTER_CAP else "")
         line = (f"{len(hiring)} of the {len(roster)} exhibitors we track here "
                 f"are hiring" if roster else "No exhibitors tracked here yet")
         body = (f'<h1>{html.escape(c.get("name") or tag)}</h1>'
@@ -2033,9 +2065,12 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
                       for p_ in board.get("postings", [])
                       if p_.get("family") in ("gtm", "field")} - {None, ""}):
         urls.append((f"{site}/s/{st.lower()}", "weekly", "0.6"))
+    # THE SAME PREDICATE THE PAGE WRITER USES. Listing a row that never got a
+    # page hands Google a canonical address that 404s; 17 of 138 did.
+    _rosters = conference_rosters(board)
     for c in board.get("conferences", []) or []:
-        tag = c.get("tag") or c.get("event_tag") or c.get("conference")
-        if tag:
+        if conference_gets_a_page(c, _rosters):
+            tag = c.get("tag") or c.get("event_tag")
             urls.append((f"{site}/e/{_slugify(tag)}", "monthly", "0.5"))
 
     # THE ROLE PAGES, WHICH WERE NOT IN HERE AT ALL.
