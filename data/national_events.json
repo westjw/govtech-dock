@@ -972,11 +972,11 @@
    "verified": false,
    "origin": "sources_national2.csv",
    "org_url": "https://www.acrl.org",
-   "status": "parents_event",
+   "status": "off_site_and_unnamed",
    "promoted": false,
    "org_url_why": "names ACRL and ['college', 'libraries', 'research']",
    "candidate_url": "https://www.ala.org/tools/programming",
-   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
+   "directory_note": "this list is on a different host from www.acrl.org and names the organisation nowhere a reader would see whose page it is. Either it belongs to another body, or the organisation's url on file is out of date"
   },
   {
    "key": "ACRL::annual-conference",
@@ -995,11 +995,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.acrl.org",
-   "status": "parents_event",
+   "status": "off_site_and_unnamed",
    "promoted": false,
    "org_url_why": "names ACRL and ['college', 'libraries', 'research']",
    "candidate_url": "https://www.ala.org/tools/programming",
-   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
+   "directory_note": "this list is on a different host from www.acrl.org and names the organisation nowhere a reader would see whose page it is. Either it belongs to another body, or the organisation's url on file is out of date"
   },
   {
    "key": "ACT::international-conference",
@@ -1123,11 +1123,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.advancingstates.org",
-   "status": "parents_event",
+   "status": "needs_person",
    "promoted": false,
    "org_url_why": "its own heading reads 'advancing states'",
    "candidate_url": "https://form.jotform.com/ADvancingStates/2026-hcbs-conference-sponsor--exhib",
-   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
+   "directory_note": "30 names, mixed (13% carry a corporate marker, 0% name a site section - worth a look before running intake)"
   },
   {
    "key": "ADVANCING::membership-meetings",
@@ -1146,11 +1146,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.advancingstates.org",
-   "status": "parents_event",
+   "status": "directory_unattributed",
    "promoted": false,
    "org_url_why": "its own heading reads 'advancing states'",
    "candidate_url": "https://form.jotform.com/ADvancingStates/2026-hcbs-conference-sponsor--exhib",
-   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
+   "directory_note": "nothing here names this event rather than its sibling(s) - looked for ['membership'] in the url and headings"
   },
   {
    "key": "AEE::world-energy-conference-expo",
@@ -3236,11 +3236,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.asfpm.org",
-   "status": "parents_event",
+   "status": "off_site_and_unnamed",
    "promoted": false,
    "org_url_why": "names ASFPM and ['floodplain', 'managers']",
    "candidate_url": "https://www.floods.org/conference/sponsors-and-exhibitors/",
-   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
+   "directory_note": "this list is on a different host from www.asfpm.org and names the organisation nowhere a reader would see whose page it is. Either it belongs to another body, or the organisation's url on file is out of date"
   },
   {
    "key": "ASFPM::state-floodplain-association-conferences",
@@ -3259,11 +3259,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.asfpm.org",
-   "status": "parents_event",
+   "status": "off_site_and_unnamed",
    "promoted": false,
    "org_url_why": "names ASFPM and ['floodplain', 'managers']",
    "candidate_url": "https://www.floods.org/conference/sponsors-and-exhibitors/",
-   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
+   "directory_note": "this list is on a different host from www.asfpm.org and names the organisation nowhere a reader would see whose page it is. Either it belongs to another body, or the organisation's url on file is out of date"
   },
   {
    "key": "ASLA::chapter-events",
@@ -12800,7 +12800,7 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.nclgs.org",
-   "status": "not_a_directory",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_why": "its own heading reads 'national council of legislators from gaming states'"
   },
