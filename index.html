@@ -2737,8 +2737,22 @@ function jobs(){
       <select id="j-sen"><option value="">Any level</option>
         <option value="junior">Junior</option><option value="mid">Mid</option>
         <option value="senior">Senior</option><option value="leadership">Leadership</option></select>
-      <select id="j-us"><option value="">Anywhere in the world</option>
-        <option value="1">US only</option><option value="0">Outside the US</option></select>
+      <!-- DEFAULTS TO THE US, because this is a board about American state
+           and local government and it was showing 1,538 postings it had
+           already established were somewhere else - Motorola in Penang,
+           Verkada in Osaka, Xylem in Warszawa.
+
+           "United States" is not the same as "US only". 1,986 postings state
+           no location at all, and is_us is null on those - not false. Hiding
+           them would delete real openings on the strength of a blank field,
+           which is the absence trap this project refuses everywhere else. So
+           the default shows what is in the US and what we could not place,
+           and says which is which; "US only, confirmed" is there for anybody
+           who wants the stricter cut. -->
+      <select id="j-us"><option value="us" selected>United States</option>
+        <option value="1">US only, confirmed</option>
+        <option value="">Anywhere in the world</option>
+        <option value="0">Outside the US</option></select>
       <select id="j-mode"><option value="">Any work mode</option>
         <option value="remote">Remote</option><option value="hybrid">Hybrid</option>
         <option value="onsite">Onsite</option>
@@ -3620,6 +3634,8 @@ function drawJobs(){
     // a vendor can sell into several departments; a filter on any one
     // of them should find it
     if(s&&!inSector(p,s))return false;
+    // "us" keeps everything we did not positively place OUTSIDE the US.
+    if(u==="us"&&p.is_us===false)return false;
     if(u==="1"&&p.is_us!==true)return false;
     if(u==="0"&&p.is_us!==false)return false;
     if(st==="__none"){if(p.territory&&p.territory.stated)return false;}

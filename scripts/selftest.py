@@ -17820,6 +17820,59 @@ def check_an_acronym_cannot_confirm_itself() -> int:
     return errors
 
 
+def check_the_board_opens_on_the_united_states() -> int:
+    """A board about American state and local government opened on the world.
+
+    Every posting already carries an is_us flag - 3,337 true, 1,554 false,
+    1,965 undeterminable - and the filter that reads it defaulted to "Anywhere
+    in the world". So 1,554 postings the board had ALREADY ESTABLISHED were
+    somewhere else were the first thing a visitor saw: Motorola in Penang,
+    Verkada in Osaka, Xylem in Warszawa.
+
+    THE DEFAULT IS "UNITED STATES", NOT "US ONLY", and the difference is the
+    whole point. is_us is null on 1,965 postings that state no location at
+    all, and null is not false. Defaulting to `is_us === true` would have
+    deleted every one of them on the strength of a blank field - Bruker
+    Detection has 16 postings, 0 confirmed US and 10 unplaced, so the strict
+    cut shows a reader nothing at all where ten plausible American roles sit.
+    That is the absence trap this project refuses everywhere else.
+
+    So the default drops only what was positively placed abroad, and the
+    stricter cut stays on the menu for anybody who wants it.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    page = (ROOT / "index.html").read_text()
+    m = re.search(r'<select id="j-us">(.*?)</select>', page, re.S)
+    if not m:
+        return errors + fail("the j-us control is gone; nothing scopes the "
+                             "board to the United States any more")
+    block = m.group(1)
+    first = re.search(r'<option value="([^"]*)"([^>]*)>', block)
+    if not first or "selected" not in (first.group(2) or ""):
+        errors += fail("the first option of j-us is not marked selected, so "
+                       "the board opens on whatever the browser picks - which "
+                       "was 'Anywhere in the world' and 1,554 foreign postings")
+    if first and first.group(1) != "us":
+        errors += fail(f"j-us defaults to {first.group(1)!r}. 'us' is the value "
+                       f"that keeps the unplaced; '1' would delete 1,965 "
+                       f"postings for stating no location")
+    # THE PREDICATE, not just the markup. "us" must exclude only a positive
+    # false, never a null.
+    if 'u==="us"&&p.is_us===false' not in page.replace(" ", ""):
+        errors += fail(
+            "the 'us' branch does not test `p.is_us === false`. Anything "
+            "looser - !== true, or a falsy test - drops every posting whose "
+            "location could not be read, which is 1,965 of them")
+    if 'u==="1"&&p.is_us!==true' not in page.replace(" ", ""):
+        errors += fail("the strict 'US only, confirmed' branch is gone; it is "
+                       "the escape hatch that makes the softer default honest")
+    return errors
+
+
 def check_a_menu_cannot_be_classified_or_intaken() -> int:
     """The grade has to be consulted by the two commands that write.
 
@@ -19594,6 +19647,7 @@ def main() -> int:
     errors += check_staging_a_catalogue_never_costs_an_observed_fact()
     errors += check_an_organisation_is_not_one_of_its_own_events()
     errors += check_an_acronym_cannot_confirm_itself()
+    errors += check_the_board_opens_on_the_united_states()
     errors += check_a_menu_cannot_be_classified_or_intaken()
     errors += check_an_association_menu_never_grades_as_a_floor()
     errors += check_the_conference_page_is_the_conference_panel()
