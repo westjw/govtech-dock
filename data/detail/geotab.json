@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "European data sovereignty: the next step we've been building toward",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/european-data-sovereignty/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Five EV myths that are costing fleets money",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/5-ev-myths-fleet-costs/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Best construction fleet management software: Features, platforms and buying tips",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/best-construction-fleet-management-software/"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.geotab.com/blog/ev-battery-health-leasing-residual/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "10 best fleet management software to boost performance and cut costs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/best-fleet-management-software/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "11 must-have fleet management software features for smarter fleet operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/fleet-management-software-features/"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Match day in my hometown: Worse traffic, less idling",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/match-day-in-hometown/"
   }
  ],
  "profile": {

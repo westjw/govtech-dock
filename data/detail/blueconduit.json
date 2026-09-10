@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "EPA\u2019s new LCRI tips documents: predictive modeling gets a direct endorsement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blueconduit.com/post/epa-lcri-ai-predictive-modeling/"
+  },
+  {
    "date": "2026-08-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://blueconduit.com/post/an-open-letter-to-utility-leaders-bridging-the-gap-between-innovation-and-impact/"
-  },
-  {
-   "date": "2025-02-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Des Moines LSL predictive modeling case",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blueconduit.com/post/des-moines-iowa-a-case-study-in-using-predictive-modeling-to-classify-unknown-service-lines/"
   }
  ],
  "profile": {

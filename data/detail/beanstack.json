@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "5 Tips for Running Your Beanstack Early Literacy Reading Challenge Read Article",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.beanstack.com/blog/5-tips-for-running-your-beanstack-early-literacy-reading-challenge"
+  },
+  {
    "date": "2026-09-01",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "How to Plan a Reading Fundraiser Read Article",
+   "headline": "How to Plan a Reading Fundraiser",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.beanstack.com/blog/how-to-plan-a-reading-fundraiser"
@@ -13,7 +22,7 @@
    "date": "2026-08-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "6 Lessons for Building Stronger Reading Habits at School Read Article",
+   "headline": "6 Lessons for Building Stronger Reading Habits at School",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.beanstack.com/blog/6-lessons-for-building-stronger-reading-habits-at-school"
@@ -31,7 +40,7 @@
    "date": "2026-08-05",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "How to Choose a Theme for Your School\u2019s Reading Fundraiser Read Article",
+   "headline": "How to Choose a Theme for Your School\u2019s Reading Fundraiser",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.beanstack.com/blog/how-to-choose-the-perfect-theme-for-your-schools-reading-fundraiser"
@@ -40,7 +49,7 @@
    "date": "2026-07-30",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "(Re)Introducing the Reading Culture Awards Read Article",
+   "headline": "(Re)Introducing the Reading Culture Awards",
    "kind": "contract",
    "kind_rule": "Awards",
    "url": "https://www.beanstack.com/blog/reintroducing-the-reading-culture-awards"
@@ -49,7 +58,7 @@
    "date": "2026-07-29",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Embrace the Joy of Reading: Celebrate Library Card Sign-Up Month Read Article",
+   "headline": "Embrace the Joy of Reading: Celebrate Library Card Sign-Up Month",
    "kind": "contract",
    "kind_rule": "Sign",
    "url": "https://www.beanstack.com/blog/celebrate-library-card-sign-up-month"
@@ -58,7 +67,7 @@
    "date": "2026-07-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Beyond Book Fairs: Raising Money and Building Reading Culture Read Article",
+   "headline": "Beyond Book Fairs: Raising Money and Building Reading Culture",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.beanstack.com/blog/beyond-book-fairs-raising-money-and-building-reading-culture"
@@ -85,7 +94,7 @@
    "date": "2025-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Product News \u2022 Oct 15, 2025 Introducing Benny\u2019s Number Cruncher Read Article",
+   "headline": "Introducing Benny\u2019s Number Cruncher",
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.beanstack.com/blog/introducing-bennys-number-cruncher"
@@ -94,19 +103,10 @@
    "date": "2025-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Challenges \u2022 Sep 4, 2025 Our 2026 Winter Reading Challenge Sponsored by Beanstack & Steps to Literacy Read Article",
+   "headline": "Our 2026 Winter Reading Challenge Sponsored by Beanstack & Steps to Literacy",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.beanstack.com/blog/2026-winter-reading-challenge"
-  },
-  {
-   "date": "2025-06-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Book Talks for Reading Engagement Insights",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.beanstack.com/blog/reading-engagement-insights"
   }
  ],
  "profile": {

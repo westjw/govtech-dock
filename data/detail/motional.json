@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-08",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Motional Open-Sources Dataset to Help Autonomous Vehicles Master Human-Like Reasoning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://motional.com/news/motional-open-sources-dataset-help-autonomous-vehicles-master-human-reasoning"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Motional Recognized on Fast Company\u2019s List of the 100 Best Workplaces for Innovators",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://motional.com/news/motional-recognized-fast-companys-list-100-best-workplaces-innovators"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://motional.com/news/why-exceptional-coach-needed-autonomous-vehicles"
-  },
-  {
-   "date": "2025-10-30",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Why is Behavior Prediction Important for Autonomous Driving?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://motional.com/news/why-behavior-prediction-important-autonomous-driving"
-  },
-  {
-   "date": "2025-09-16",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "TreeIRL: Safe Urban Driving with Tree Search and Inverse Reinforcement Learning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://motional.com/news/treeirl-safe-urban-driving-tree-search-and-inverse-reinforcement-learning"
   }
  ]
 }

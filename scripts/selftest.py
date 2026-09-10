@@ -16765,6 +16765,90 @@ def check_a_hand_check_records_what_it_found() -> int:
     return errors
 
 
+def check_the_rescrub_list_is_the_boards_only_you_can_read() -> int:
+    """The standing job: boards a person reads and a fetcher never will.
+
+    The no-board pile is two populations wearing one label. Some companies
+    have no public board at all - that is finished work, and re-asking is
+    asking somebody to keep proving a negative. Others have a board a person
+    can read in their browser and no fetcher ever will: a widget, an iframe,
+    a login, a page that draws itself. Those are a STANDING JOB, because the
+    postings keep changing and nothing here can see it happen.
+
+    Until the capture recorded `found` the two were written down identically,
+    so this list could not be built at all. found:true IS the definition -
+    somebody stood on that page and took rows off it.
+
+    Three ways to get this wrong, all asserted: a confirmed ABSENCE must
+    never appear (that is the negative nobody should re-prove), a company
+    whose board became READABLE must drop off (the job is over), and the
+    link must point at the BOARD rather than the homepage, or the person
+    lands on marketing and has to go hunting.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin, datetime as dt, json as _json
+    errors = 0
+    today = dt.date.today()
+    def ago(d): return (today - dt.timedelta(days=d)).isoformat()
+    comps = [
+        {"id": "hand", "name": "Hand Read", "sector": "Parks & Rec",
+         "category": "Recreation Management", "description": "x",
+         "website": "https://hand.example",
+         "ats": {"type": "html", "ref": "https://hand.example/careers"}},
+        {"id": "none", "name": "No Board", "sector": "Parks & Rec",
+         "category": "Recreation Management", "description": "x",
+         "website": "https://none.example", "ats": {"type": "unknown", "ref": None}},
+        {"id": "fresh", "name": "Just Read", "sector": "Parks & Rec",
+         "category": "Recreation Management", "description": "x",
+         "website": "https://fresh.example",
+         "ats": {"type": "html", "ref": "https://fresh.example/careers"}},
+        {"id": "solved", "name": "Now Readable", "sector": "Parks & Rec",
+         "category": "Recreation Management", "description": "x",
+         "website": "https://solved.example",
+         "ats": {"type": "greenhouse", "ref": "solved"}},
+    ]
+    man = {"checks": {
+        "hand":   {"checked_on": ago(40), "found": True,  "by": "wyeth"},
+        "none":   {"checked_on": ago(40), "found": False, "by": "wyeth"},
+        "fresh":  {"checked_on": ago(1),  "found": True,  "by": "wyeth"},
+        "solved": {"checked_on": ago(40), "found": True,  "by": "wyeth"},
+    }}
+    board = {"organizations": [{"id": c["id"], "open_roles": 3} for c in comps]}
+    real = admin.read
+    admin.read = lambda name, default=None: man if name == "manual.json" else real(name, default)
+    try:
+        got = {r["id"]: r for r in admin.q_rescrub(comps, board)}
+    finally:
+        admin.read = real
+    if "hand" not in got:
+        errors += fail("a board a person read by hand 40 days ago never came "
+                       "back for a re-scrub; nothing else can see it change")
+    if "none" in got:
+        errors += fail("a CONFIRMED ABSENCE is on the re-scrub list. There is "
+                       "nothing to scrub, and it asks somebody to keep proving "
+                       "the same negative")
+    if "fresh" in got:
+        errors += fail("a board read yesterday is already back on the list")
+    if "solved" in got:
+        errors += fail("a company whose board is now READABLE is still on the "
+                       "hand-scrub list; that job is over and the fetcher has it")
+    if got.get("hand", {}).get("website") != "https://hand.example/careers":
+        errors += fail(f"the row links to {got.get('hand', {}).get('website')!r} "
+                       f"instead of the board itself - a person clicking lands "
+                       f"on marketing and has to go hunting for the jobs")
+    # and the extension has to be able to ASK for it
+    if "rescrub" not in (admin.act_worklist({"queue": "boards", "limit": 1})
+                         .get("counts") or {}):
+        errors += fail("act_worklist does not offer the rescrub queue, so the "
+                       "extension cannot ask for the one list it exists to show")
+    ext = (ROOT / "extension" / "capture.js").read_text()
+    if 'value="rescrub"' not in ext:
+        errors += fail("the extension has no re-scrub tab; the queue is built "
+                       "and unreachable, which is how proposals and leads sat "
+                       "for a month with a count and no renderer")
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -17226,6 +17310,7 @@ def main() -> int:
     errors += check_researched_parents_reach_the_queue_with_their_evidence()
     errors += check_an_acquisition_is_shown_on_both_sides()
     errors += check_a_hand_check_records_what_it_found()
+    errors += check_the_rescrub_list_is_the_boards_only_you_can_read()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()

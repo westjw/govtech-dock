@@ -4,7 +4,7 @@
    "date": "2026-09-01",
    "date_source": "card-date",
    "first_seen": "2026-09-05",
-   "headline": "Announcements Developing Enterprise Frontier Safeguards with our customers",
+   "headline": "Developing Enterprise Frontier Safeguards with our customers",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/enterprise-frontier-safeguards"
@@ -22,7 +22,7 @@
    "date": "2026-08-27",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "Announcements Aug 27, 2026 Previewing the Model Hardware Standard We\u2019re opening a research preview of the Model Hardware Standard (MHS), a shared specification for AI agents to safely operate physical",
+   "headline": "Previewing the Model Hardware Standard",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/model-hardware-standard-research-preview"
@@ -31,7 +31,7 @@
    "date": "2026-08-27",
    "date_source": "card-date",
    "first_seen": "2026-09-05",
-   "headline": "Announcements Expanding our support for scientists",
+   "headline": "Expanding our support for scientists",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/expanding-support-for-scientists"
@@ -40,7 +40,7 @@
    "date": "2026-08-25",
    "date_source": "card-date",
    "first_seen": "2026-09-05",
-   "headline": "Announcements Funding better evaluations of AI\u2019s impact on wellbeing",
+   "headline": "Funding better evaluations of AI\u2019s impact on wellbeing",
    "kind": "funding",
    "kind_rule": "Funding",
    "url": "https://www.anthropic.com/news/wellbeing-research-grants"
@@ -49,7 +49,7 @@
    "date": "2026-08-14",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "Announcements Aug 14, 2026 How Claude\u2019s text watermark works In this article, we share answers to some of the questions we\u2019ve received about how our chosen watermarking method works, whether it affect",
+   "headline": "How Claude\u2019s text watermark works",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/claude-text-watermark"
@@ -58,7 +58,7 @@
    "date": "2026-08-07",
    "date_source": "card-date",
    "first_seen": "2026-09-05",
-   "headline": "Product Improving Fable 5's biology safeguards",
+   "headline": "Improving Fable 5's biology safeguards",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards"
@@ -67,7 +67,7 @@
    "date": "2026-08-04",
    "date_source": "card-date",
    "first_seen": "2026-09-05",
-   "headline": "Announcements Mariano-Florentino (Tino) Cu\u00e9llar to join Anthropic as Chief Global Affairs Officer",
+   "headline": "Mariano-Florentino (Tino) Cu\u00e9llar to join Anthropic as Chief Global Affairs Officer",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/tino-cuellar"
@@ -85,7 +85,7 @@
    "date": "2026-07-27",
    "date_source": "card-date",
    "first_seen": "2026-09-05",
-   "headline": "Announcements Our position on open-weights models",
+   "headline": "Our position on open-weights models",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/position-open-weights-models"
@@ -100,13 +100,13 @@
    "url": "https://www.anthropic.com/news/claude-opus-5"
   },
   {
-   "date": "2026-06-30",
+   "date": "2026-07-02",
    "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Introducing Claude Sonnet 5",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.anthropic.com/news/claude-sonnet-5"
+   "first_seen": "2026-09-09",
+   "headline": "More details on Fable 5\u2019s cyber safeguards and our jailbreak framework",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework"
   }
  ],
  "profile": {

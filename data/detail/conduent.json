@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-07-13",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Conduent Recognized on TIME's America's Best Companies 2026 List",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.news.conduent.com/news/conduent-recognized-on-time-s-america-s-best-companies-2026-list"
+  },
+  {
    "date": "2026-06-30",
    "date_source": "dateline",
    "first_seen": "2026-09-09",
@@ -17,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.conduent.com/insights/fragmented-journeys-lost-loyalty/"
+  },
+  {
+   "date": "2026-01-13",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Conduent Launches AI Experience Center to Showcase AI & GenAI-Powered Solutions for Commercial, Transportation and Government Clients",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.news.conduent.com/news/conduent-launches-ai-experience-center-to-showcase-ai-genai-powered-solutions-for-commercial-transportation-and-government-clients"
   }
  ]
 }

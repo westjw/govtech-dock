@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-02-10",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "The Top 14 Fleet Management Metrics: A Data-Driven Roadmap to Success",
    "kind": "press",
@@ -67,7 +67,7 @@
    "date": "2025-09-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Free Download Free Download: Customizable Work Order Template Learn more",
+   "headline": "Free Download: Customizable Work Order Template",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gofmx.com/blog/work-order-form-template/"
@@ -82,6 +82,15 @@
    "url": "https://www.gofmx.com/blog/facility-use-agreement/"
   },
   {
+   "date": "2024-11-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "The Importance of Scalable Facilities Management Solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gofmx.com/blog/scalable-facilities-management-software/"
+  },
+  {
    "date": "2024-10-17",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -91,22 +100,13 @@
    "url": "https://www.gofmx.com/blog/capital-improvement/"
   },
   {
-   "date": "2023-02-03",
+   "date": "2024-10-03",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Spare Parts Inventory Management",
+   "first_seen": "2026-09-09",
+   "headline": "long-term asset management strategies",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.gofmx.com/blog/spare-parts-inventory-management/"
-  },
-  {
-   "date": "2021-10-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Assessment Free Download: 5 Property Maintenance Checklists Learn more",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gofmx.com/blog/property-maintenance-checklists/"
+   "url": "https://www.gofmx.com/blog/asset-management-strategy/"
   }
  ],
  "profile": {

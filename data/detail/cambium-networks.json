@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-04",
+   "date_source": "og:published",
+   "first_seen": "2026-09-09",
+   "headline": "Articles you may like",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cambiumnetworks.com/blog/linkplanner-v6-4-3-more-flexibility-for-planning-and-managing-wireless-networks/"
+  },
+  {
    "date": "2026-08-24",
    "date_source": "og:published",
    "first_seen": "2026-09-05",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cambiumnetworks.com/blog/cambium-networks-and-acnet-deepen-their-partnership-in-poland-and-central-europe/"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "og:published",
+   "first_seen": "2026-09-09",
+   "headline": "Articles you may like",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cambiumnetworks.com/blog/rapid-wi-fi-for-wildfire-air-operations-in-belgium/"
   },
   {
    "date": "2026-08-18",
@@ -19,6 +37,15 @@
    "url": "https://www.cambiumnetworks.com/blog/cambium-networks-epmp-4000-series-surpasses-220000-radios-shipped-globally-tops-50000-6-ghz-units-in-north-america/"
   },
   {
+   "date": "2026-08-17",
+   "date_source": "og:published",
+   "first_seen": "2026-09-09",
+   "headline": "Articles you may like",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cambiumnetworks.com/blog/what-network-admins-taught-us-the-story-behind-the-marketapps-hub-and-property-owner-dashboard/"
+  },
+  {
    "date": "2026-08-11",
    "date_source": "og:published",
    "first_seen": "2026-09-05",
@@ -26,6 +53,33 @@
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://www.cambiumnetworks.com/blog/cambium-networks-launches-marketapps-hub-the-ai-era-app-marketplace-where-anyone-can-build-for-their-network/"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "og:published",
+   "first_seen": "2026-09-09",
+   "headline": "Articles you may like",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cambiumnetworks.com/blog/ai-changed-how-apps-are-built-marketapps-hub-changes-how-they-are-delivered/"
+  },
+  {
+   "date": "2026-07-30",
+   "date_source": "og:published",
+   "first_seen": "2026-09-09",
+   "headline": "Articles you may like",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cambiumnetworks.com/blog/x7-56x-directional-wifi-7-access-point/"
+  },
+  {
+   "date": "2026-07-23",
+   "date_source": "og:published",
+   "first_seen": "2026-09-09",
+   "headline": "Articles you may like",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cambiumnetworks.com/blog/il-futuro-della-connettivita-wireless-ai-banda-6-ghz-e-integrazione-con-il-5g/"
   },
   {
    "date": "2026-07-22",
@@ -37,6 +91,15 @@
    "url": "https://www.cambiumnetworks.com/blog/cambium-networks-introduces-high-density-wi-fi-7-solution-for-the-enterprise/"
   },
   {
+   "date": "2026-07-20",
+   "date_source": "og:published",
+   "first_seen": "2026-09-09",
+   "headline": "Articles you may like",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cambiumnetworks.com/blog/how-wireless-broadband-is-creating-new-opportunities-for-wireless-service-providers/"
+  },
+  {
    "date": "2026-07-15",
    "date_source": "og:published",
    "first_seen": "2026-09-05",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cambiumnetworks.com/blog/cambium-networks-wi-fi-delivers-connectivity-aboard-the-international-space-station/"
-  },
-  {
-   "date": "2026-05-04",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Cambium Networks Pursues Appeal of Nasdaq Delisting, Becomes Current in its SEC Filings",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cambiumnetworks.com/blog/cambium-networks-pursues-appeal-of-nasdaq-delisting-becomes-current-in-its-sec-filings/"
-  },
-  {
-   "date": "2026-04-22",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Cambium Networks Introduces NSE 4000 Next-Gen Firewall with Industry-Leading Performance and a Compelling TCO for Modern Distributed Networks",
-   "kind": "product",
-   "kind_rule": "Introduces",
-   "url": "https://www.cambiumnetworks.com/blog/cambium-networks-expands-security-and-sd-wan-portfolio-with-one-network-innovation-and-nse-4000/"
-  },
-  {
-   "date": "2026-04-14",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Cambium Networks Pursues Appeal of Nasdaq Delisting",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cambiumnetworks.com/blog/cambium-networks-pursues-appeal-of-nasdaq-delisting/"
-  },
-  {
-   "date": "2026-04-02",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Cambium Networks Transitions QoE Responsibility to Bequant, the Solution\u2019s Original Developer, to Drive Continued Innovation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cambiumnetworks.com/blog/cambium-networks-transitions-qoe-responsibility-to-bequant-the-solutions-original-developer-to-drive-continued-innovation/"
-  },
-  {
-   "date": "2026-03-26",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Cambium Networks Announces Nasdaq Delisting",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cambiumnetworks.com/blog/cambium-networks-announces-nasdaq-delisting/"
-  },
-  {
-   "date": "2026-01-14",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Cambium Networks Simplifies LEO Satellite and LTE/5G Cellular Connected Networks with Public IP Addressing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cambiumnetworks.com/blog/cambium-networks-simplifies-leo-satellite-and-lte-5g-cellular-connected-networks-with-public-ip-addressing/"
-  },
-  {
-   "date": "2025-12-18",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Cambium Networks Announces Compliance with Minimum Bid Price Rule and Appointment of Interim Chief Financial Officer",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cambiumnetworks.com/blog/cambium-networks-announces-compliance-with-minimum-bid-price-rule-and-appointment-of-interim-chief-financial-officer/"
   }
  ],
  "profile": {

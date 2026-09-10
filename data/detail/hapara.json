@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "\u201cThe best product we\u2019ve used\u201d: Why Holdrege Public Schools switched to H\u0101para",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hapara.com/blog/holdrege-public-schools-switch-to-hapara/"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Navigating the screen time backlash: How to ensure digital learning is time well spent",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hapara.com/blog/navigating-the-screen-time-backlash/"
+  },
+  {
+   "date": "2026-05-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Edtech tools for teachers: How to go from rollout to buy-in",
+   "kind": "contract",
+   "kind_rule": "rollout",
+   "url": "https://hapara.com/blog/edtech-tools-for-teachers/"
+  },
+  {
+   "date": "2026-03-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Maximize every minute: AI in the classroom with H\u0101para",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hapara.com/blog/ai-in-the-classroom-with-hapara/"
+  },
+  {
    "date": "2025-09-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -8,6 +44,42 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://hapara.com/blog/how-chesterfield-county-public-schools-uses-hapara/"
+  },
+  {
+   "date": "2025-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "How Chesterfield County Public Schools in Virginia provides focused and engaging digital learning with H\u0101para",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hapara.com/blog/how-chesterfield-county-public-schools-uses-hapara-2/"
+  },
+  {
+   "date": "2025-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Creating engaging, effective, efficient and equitable learning through differentiated instruction",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hapara.com/blog/creating-equitable-learning-through-differentiated-instruction/"
+  },
+  {
+   "date": "2025-07-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "The power of the adolescent brain: Strategies for teaching middle and high school students",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hapara.com/blog/the-power-of-the-adolescent-brain-thomas-armstrong/"
+  },
+  {
+   "date": "2025-06-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Combating teacher burnout: Streamlined systems, technology and the gift of time",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hapara.com/blog/combating-teacher-burnout/"
   },
   {
    "date": "2025-05-12",
@@ -35,78 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://hapara.com/blog/how-appleton-area-school-district-uses-hapara/"
-  },
-  {
-   "date": "2025-03-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Pasadena Unified relies on H\u0101para for classroom management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://hapara.com/blog/pasadena-unified-relies-on-hapara-for-classroom-management/"
-  },
-  {
-   "date": "2024-11-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Joliet District 86 uses H\u0101para for digital management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://hapara.com/blog/joliet-district-86-uses-hapara-for-digital-classroom-management/"
-  },
-  {
-   "date": "2024-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Your 2024-2025 back-to-school guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://hapara.com/blog/2024-2025-back-to-school-guide/"
-  },
-  {
-   "date": "2024-07-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to solve student focus challenges with H\u0101para Highlights",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://hapara.com/blog/how-to-hone-student-focusing-abilities/"
-  },
-  {
-   "date": "2024-07-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Middle School 74 uses H\u0101para Highlights",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://hapara.com/blog/middle-school-74-uses-hapara-to-keep-learners-focused/"
-  },
-  {
-   "date": "2024-06-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Ottawa Catholic School Board uses H\u0101para for Deep Learning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://hapara.com/blog/ottawa-catholic-school-board-uses-hapara-for-deep-learning/"
-  },
-  {
-   "date": "2024-04-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Maya High School uses H\u0101para to enhance learner productivity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://hapara.com/blog/how-maya-high-school-uses-hapara-to-help-learners/"
-  },
-  {
-   "date": "2023-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "14 effective classroom management strategies for middle school",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://hapara.com/blog/14-classroom-management-strategies-for-middle-school/"
   }
  ]
 }

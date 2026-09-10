@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-07-22",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "Understanding Our Data Source: How Keenious Uses OpenAlex",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.keenious.com/en/articles/203843-understanding-our-data-source-how-keenious-uses-openalex"
+  },
+  {
    "date": "2025-09-23",
    "date_source": "time",
    "first_seen": "2026-09-05",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://help.keenious.com/en/articles/184819-accessibility"
+  },
+  {
+   "date": "2025-08-31",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "How do I use bookmarks on Keenious?\ud83d\udcd1",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.keenious.com/en/articles/178972-how-do-i-use-bookmarks-on-keenious"
   }
  ]
 }

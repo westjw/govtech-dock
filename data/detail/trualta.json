@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "5 Reasons Why Employers Aren\u2019t Investing More in Eldercare Benefits",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/why-employers-arent-investing-in-eldercare-benefits/"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -19,6 +28,15 @@
    "url": "https://www.trualta.com/resources/blog/bipap-vs-cpap-whats-the-difference/"
   },
   {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Does Caregiver Training Reduce Hospitalizations?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/does-caregiver-training-reduce-hospitalizations/"
+  },
+  {
    "date": "2026-08-19",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -26,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trualta.com/resources/blog/supporting-a-loved-one-through-pulmonary-rehabilitation/"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Employee Resource Groups: Building Infrastructure for Caregiver Support and Retention",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/employee-resource-groups-caregivers-retention/"
   },
   {
    "date": "2026-08-12",
@@ -44,6 +71,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trualta.com/resources/blog/copd-stages-what-caregivers-should-expect/"
+  },
+  {
+   "date": "2026-07-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "How to Add Caregiver Support to a Rural Health Transformation Program Without Duplicating Funds",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/rural-caregiver-support-without-supplanting/"
   },
   {
    "date": "2026-07-29",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trualta.com/resources/blog/interstitial-lung-disease-what-to-expect/"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Most Common COPD Symptoms Explained",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/the-most-common-copd-symptoms-explained/"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "CPAP Machine: A Caregiver\u2019s Complete Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/cpap-machine-a-caregivers-complete-guide/"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "NA Meeting: Support, Community, Recovery",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/na-meeting-support-community-recovery/"
-  },
-  {
-   "date": "2026-06-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Methadone Treatment: How It Works Day to Day",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/methadone-treatment-how-it-works-day-to-day/"
   }
  ]
 }

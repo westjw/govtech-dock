@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Risk-Informed Capital Planning for Utilities: Moving Beyond Asset Age",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.copperleaf.com/blog/risk-informed-capital-planning-for-utilities-moving-beyond-asset-age/"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "From Regulatory Compliance to Regulatory Intelligence: The Next Evolution in Rail Investment Planning",
+   "kind": "funding",
+   "kind_rule": "Investment",
+   "url": "https://www.copperleaf.com/blog/from-regulatory-compliance-to-regulatory-intelligence-the-next-evolution-in-rail-investment-planning/"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.copperleaf.com/blog/cost-of-inaction-in-capital-planning-when-annual-plans-become-outdated/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Long-Term Capital Planning Challenges: Why Infrastructure Planning Must Evolve",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.copperleaf.com/blog/long-term-capital-planning-challenges-why-infrastructure-planning-must-evolve/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "IFS Copperleaf Launches IFS Copperleaf Next, the Next Generation of Asset Investment Planning",
-   "kind": "funding",
-   "kind_rule": "Investment",
-   "url": "https://www.copperleaf.com/news/ifs-copperleaf-launches-copperleaf-next-to-help-infrastructure-organizations-make-faster-more-defensible-investment-decisions/"
   }
  ],
  "profile": {

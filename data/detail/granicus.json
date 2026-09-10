@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Build infrastructure support before projects reach the public Blogs Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://granicus.com/blog/build-infrastructure-support-before-projects-reach-the-public/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Build support before funding conversations begin Blogs Read more",
+   "kind": "funding",
+   "kind_rule": "funding",
+   "url": "https://granicus.com/blog/build-support-before-funding-conversations-begin/"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "What Catalyst taught me about trust, hospitality, and the work we do",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.swiftcomply.com/blog/what-catalyst-taught-me-about-trust-hospitality-and-the-work-we-do/"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Three ways to run a compliance program, and what each one costs you",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.swiftcomply.com/blog/three-ways-to-run-a-compliance-program-and-what-each-one-costs-you/"
+  },
+  {
    "date": "2026-08-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -73,6 +91,15 @@
    "url": "https://www.swiftcomply.com/blog/swiftcomply-acquires-stormwater-software-compliancego/"
   },
   {
+   "date": "2025-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "CCCPH Compliance with SwiftComply Backflow",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.swiftcomply.com/blog/cccph-compliance-with-swiftcomply-backflow/"
+  },
+  {
    "date": "2025-09-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.swiftcomply.com/blog/swiftcomply-named-water-utilities-compliance-management-software-of-the-year-2025/"
-  },
-  {
-   "date": "2025-04-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "SwiftComply Acquires CloudCompli and NPDESPro",
-   "kind": "funding",
-   "kind_rule": "Acquires",
-   "url": "https://www.swiftcomply.com/blog/swiftcomply-acquires-cloudcompli-npdespro/"
-  },
-  {
-   "date": "2025-04-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Caught in the Compliance Storm: Why Water Utilities Are Near Breaking Point",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.swiftcomply.com/blog/water-utility-compliance-challenges/"
-  },
-  {
-   "date": "2023-11-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Industry Poll: The Future of Water Compliance Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.swiftcomply.com/blog/survey-the-future-of-water-compliance-management/"
   }
  ]
 }

@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "School & District Leadership What school leaders should measure during the first month of AI adoption Learn what school leaders should measure during the first month of AI adoption, from usage and saf",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/what-school-leaders-should-measure-during-first-month-ai-adoption"
+  },
+  {
    "date": "2026-08-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Teacher Workflow & Planning What success looks like for school AI tools See what success looks like for school AI tools: time saved, safer learning, and real mastery data for every student. Read artic",
+   "headline": "What success looks like for school AI tools",
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/what-success-looks-like-for-school-ai-tools"
@@ -13,7 +22,7 @@
    "date": "2026-08-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Assessment & Learning Evidence Signs your classroom technology is actually paying off See the clear signs classroom technology is working, from active engagement to real-time student data. Read articl",
+   "headline": "Signs your classroom technology is actually paying off",
    "kind": "contract",
    "kind_rule": "Signs",
    "url": "https://schoolai.com/blog/signs-classroom-technology-is-effective"
@@ -22,10 +31,28 @@
    "date": "2026-08-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Assessment & Learning Evidence How to tell if EdTech is working (and what to do when it isn't) 5 ways to tell if your EdTech is working, from active learning signals to real efficacy data. Read articl",
+   "headline": "How to tell if EdTech is working (and what to do when it isn't)",
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/how-to-tell-if-edtech-is-working"
+  },
+  {
+   "date": "2026-07-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "tools don't share data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/understanding-which-tools-teachers-use"
+  },
+  {
+   "date": "2026-07-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "How to measure whether your classroom technology is actually working",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/classroom-technology-usage-data"
   },
   {
    "date": "2026-07-17",
@@ -35,6 +62,51 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/new-features-2026-2027"
+  },
+  {
+   "date": "2026-02-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Sign 3: learning moves at each student's actual pace",
+   "kind": "contract",
+   "kind_rule": "Sign",
+   "url": "https://schoolai.com/blog/exit-tickets-amplify-real-time-student-feedback"
+  },
+  {
+   "date": "2026-02-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "liability instead of an asset",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/avoid-tech-fatigue-choose-best-ai-tools-school"
+  },
+  {
+   "date": "2026-01-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "AI writing assistants comparison: Why purpose-built tools outperform general LLMs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/save-time-maximize-efficiency-ai-powered-essay-graders"
+  },
+  {
+   "date": "2026-01-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "5 strategies for using AI to personalize learning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/tools-strategies-ai-differentiate-instruction-personalize-learning"
+  },
+  {
+   "date": "2026-01-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "The principal's AI evaluation checklist for selecting school AI tools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/guide-principal-ai-evaluation-checklist-choosing-best-ai-tools"
   }
  ]
 }

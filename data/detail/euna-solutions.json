@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Euna Solutions Launches Euna Supplier Academy to Help Businesses Compete for Public Sector Contracts",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://eunasolutions.com/resources/euna-solutions-launches-euna-supplier-academy/"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eunasolutions.com/resources/euna-solutions-cla-collaborate-grants-compliance/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "2026 State of Public Procurement: Leading Through AI, Accountability, and Change On-Demand Webinar",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/2026-state-of-public-procurement-webinar/"
   }
  ],
  "profile": {

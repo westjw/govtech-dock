@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-07-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Digital Security for Students: 10 Ways Schools Can Ensure Student Safety",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.linewize.com/blog/ensuring-digital-security-for-students"
+  },
+  {
    "date": "2026-07-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -8,6 +17,42 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.linewize.com/blog/k12-state-screen-time-legislation"
+  },
+  {
+   "date": "2026-07-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "What Is DNS Filtering, and How Does It Work?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.linewize.com/blog/what-is-dns-filtering-and-how-does-it-work"
+  },
+  {
+   "date": "2026-06-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "5 Features That Solve Hidden Classroom Issues (And Reduce IT Tickets)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.linewize.com/blog/5-features-that-solve-hidden-classroom-issues-and-reduce-it-tickets"
+  },
+  {
+   "date": "2026-05-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "From Screen Time Limits to Smarter Use: What New Legislation Means for Schools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.linewize.com/blog/from-screen-time-limits-to-smarter-use-what-new-legislation-means-for-schools"
+  },
+  {
+   "date": "2026-03-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Text Analysis for Linewize Filter: 6 Common Filter Workarounds Solved",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.linewize.com/blog/text-analysis-for-linewize-filter"
   }
  ]
 }

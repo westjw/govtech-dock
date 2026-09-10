@@ -47,6 +47,7 @@ import ats  # noqa: E402
 import add_company    # noqa: E402
 import discover_ats   # noqa: E402
 import find_websites  # noqa: E402
+import coverage       # noqa: E402
 import roles          # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -4404,6 +4405,58 @@ def act_search_companies(body: dict) -> dict:
     return {"results": out[:12]}
 
 
+def q_rescrub(companies, board) -> list:
+    """Boards only a PERSON can read, come round again.
+
+    THE GAP THIS FILLS. The no-board queue splits into two populations that
+    look identical until somebody looks: companies with no public board at
+    all, and companies whose board a person can read in their browser and no
+    fetcher ever will - a widget, an iframe, a login, a page that draws
+    itself. The first group is finished work. The second is a STANDING JOB,
+    because their postings keep changing and nothing here can see it.
+
+    Until the capture recorded `found`, the two were written down the same
+    way, so there was no list to build. Now there is: found is true means a
+    person stood on that page and took rows off it, which is exactly the
+    definition of "readable by you, unreadable by us".
+
+    Ordered oldest first, because the whole point is which one has drifted
+    furthest from what the site actually says.
+    """
+    man = read("manual.json", {})
+    checks = man.get("checks") or {}
+    byid = {c["id"]: c for c in companies}
+    orgs = {o["id"]: o for o in board.get("organizations", [])}
+    today = dt.date.today()
+    out = []
+    for cid, chk in checks.items():
+        if not isinstance(chk, dict) or chk.get("found") is not True:
+            continue
+        c = byid.get(cid)
+        if not c or is_dismissed("rescrub", cid):
+            continue
+        # A company whose board we can now READ has left this job behind.
+        if (c.get("ats") or {}).get("type") in coverage.STRUCTURED:
+            continue
+        try:
+            age = (today - dt.date.fromisoformat(str(chk.get("checked_on")))).days
+        except (TypeError, ValueError):
+            continue
+        if age < CAPTURE_FRESH_DAYS:
+            continue
+        o = orgs.get(cid) or {}
+        out.append({"id": cid, "name": c.get("name"), "sector": c.get("sector"),
+                    "website": (c.get("posts_at") or {}).get("url")
+                               or (c.get("ats") or {}).get("ref")
+                               or c.get("website"),
+                    "note": (f"you read this board {age} days ago and took "
+                             f"{o.get('open_roles') or 0} role(s) off it"),
+                    "last_seen": chk.get("checked_on"), "age": age,
+                    "by": chk.get("by")})
+    out.sort(key=lambda r: r["last_seen"] or "")
+    return out
+
+
 def act_worklist(body: dict) -> dict:
     """What to go and look at next, for the capture extension.
 
@@ -4434,7 +4487,8 @@ def act_worklist(body: dict) -> dict:
         limit = 12
 
     builders = {"boards": q_boards, "founded": q_founded,
-                "blocked": q_blocked, "websites": q_websites}
+                "blocked": q_blocked, "websites": q_websites,
+                "rescrub": q_rescrub}
     if which not in builders:
         return {"error": f"unknown queue {which!r}",
                 "queues": sorted(builders)}

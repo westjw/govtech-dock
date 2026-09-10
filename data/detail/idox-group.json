@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Why Auditability Matters in Deputyship Services",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.idoxgroup.com/news/idox-caspargov-deputyship-appointeeship-services/"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "The Future of Deputyship & Appointeeship Services Webinar",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.idoxgroup.com/news/caspargov-deputyship-appointeeship-webinar/"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "paper: Taking digital to the engineering sphere",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.idoxgroup.com/insights/insight-paper-taking-digital-to-the-engineering-sphere/"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "paper: Six steps to increase your engineering document control efficiency",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.idoxgroup.com/insights/insight-paper-six-steps-to-increase-your-engineering-document-control-efficiency/"
+  },
+  {
    "date": "2026-08-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -17,6 +53,15 @@
    "kind": "leadership",
    "kind_rule": "appoints",
    "url": "https://www.idoxgroup.com/news/rob-grigg-cto-appointment/"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Growth Company Investor list Idox as a new recommendation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.idoxgroup.com/news/growth-company-investor-new-recommendation/"
   },
   {
    "date": "2026-07-29",
@@ -62,51 +107,6 @@
    "kind": "product",
    "kind_rule": "launches",
    "url": "https://www.idoxgroup.com/news/idox-ehc-hub-launches-mediation-and-tribunal-module/"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Celebrating excellence: Idox directory customers shine at NAFIS awards",
-   "kind": "contract",
-   "kind_rule": "awards",
-   "url": "https://www.idoxgroup.com/news/idox-nafis-awards/"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Idox enhances EHC Hub ahead of SEND reforms",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.idoxgroup.com/news/ehc-hub-enhancements/"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why most service data is fragmented",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.idoxgroup.com/news/directory-connect-service-data-fragmentation/"
-  },
-  {
-   "date": "2026-06-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Idox signs the partnership with Intellisolutions, Algeria",
-   "kind": "contract",
-   "kind_rule": "signs",
-   "url": "https://www.idoxgroup.com/news/idox-edms-partnership-algeria/"
-  },
-  {
-   "date": "2026-06-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beyond AddressBase Premium: Why energy providers need a central address management strategy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.idoxgroup.com/blog/idox-ams-central-address-management-utilities/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Beyond the Announcement: How to Build Communication Journeys Around Campus Traditions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://moderncampus.com/blog/beyond-the-announcement-how-to-build-communication-journeys-around-campus-traditions"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -82,31 +91,22 @@
    "url": "https://moderncampus.com/blog/what-is-curriculum-governance-in-higher-education"
   },
   {
-   "date": "2026-06-10",
+   "date": "2026-07-14",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "New Partnership Equips Institutions to Build Stronger Continuing Education Portfolios",
+   "first_seen": "2026-09-09",
+   "headline": "the end of linear education",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://moderncampus.com/newsroom/new-partnership-equips-institutions-to-build-stronger-continuing-education-portfolios"
+   "url": "https://moderncampus.com/blog/lifelong-learning-trends-the-end-of-linear-education"
   },
   {
-   "date": "2026-04-24",
+   "date": "2026-07-14",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Continuing Education Gains Momentum as Institutions Expand Workforce-Aligned Learning",
+   "first_seen": "2026-09-09",
+   "headline": "academic catalog management today",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://moderncampus.com/newsroom/continuing-education-gains-momentum"
-  },
-  {
-   "date": "2026-04-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "College Planning Is No Longer Linear \u2014 It\u2019s Personal, Digital, and Increasingly Complex",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://moderncampus.com/newsroom/2026-college-planning-report-press-release"
+   "url": "https://moderncampus.com/blog/academic-catalog-management-isnt-just-admin-work-anymore"
   }
  ],
  "profile": {

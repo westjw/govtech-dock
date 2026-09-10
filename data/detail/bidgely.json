@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Crawl, Walk, Run: How FortisBC Built My Energy Use 2.0",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bidgely.com/insights/crawl-walk-run-how-fortisbc-built-my-energy-use-2.0"
+  },
+  {
    "date": "2026-09-01",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bidgely.com/insights/shaping-a-distributed-energy-future"
-  },
-  {
-   "date": "2025-05-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Future of Grid Management: Hydro One's Data-Driven Non-Wires Alternatives",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bidgely.com/insights/the-future-of-grid-management-hydro-ones-data-driven-non-wires-alternatives"
   }
  ]
 }

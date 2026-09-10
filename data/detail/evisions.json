@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "HEat Index, Issue 121 \u2013 Oral Exams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evisions.com/blog/heat-index-issue-121-oral-exams/"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Argos Web Viewer Support Will End June 30, 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evisions.com/blog/argos-web-viewer-support-will-end-june-30-2027/"
+  },
+  {
    "date": "2026-08-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.evisions.com/blog/heat-index-issue-114-a-coming-worker-shortage-vs-collapsing-confidence-in-higher-ed/"
-  },
-  {
-   "date": "2026-07-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "HEat Index, Issue 113 \u2013 International Student Enrollment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.evisions.com/blog/heat-index-issue-113-international-student-enrollment/"
-  },
-  {
-   "date": "2026-06-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Evisions Introduces Dashboard Designer, Bringing Modern Dashboard Creation to Argos X",
-   "kind": "product",
-   "kind_rule": "Introduces",
-   "url": "https://www.evisions.com/blog/evisions-introduces-dashboard-designer-bringing-modern-dashboard-creation-to-argos-x/"
   }
  ],
  "profile": {

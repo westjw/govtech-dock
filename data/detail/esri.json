@@ -1,4 +1,78 @@
 {
+ "news": [
+  {
+   "date": "2026-02-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "The 3D Model Running Vietnam\u2019s Busiest Port",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.esri.com/about/newsroom/blog/video-the-3d-model-running-vietnams-busiest-port"
+  },
+  {
+   "date": "2026-01-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "How Utah\u2014America\u2019s Most Urban State\u2014Uses Data to Solve Housing Affordability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.esri.com/about/newsroom/blog/utah-data-driven-housing-affordability"
+  },
+  {
+   "date": "2025-07-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Western Governors Map Ways Out of the Housing Crisis with GIS Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.esri.com/about/newsroom/blog/western-governors-map-affordable-housing"
+  },
+  {
+   "date": "2025-05-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "AI-Powered Maps Fuel the New Geography of Business",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.esri.com/about/newsroom/blog/video-ai-powered-maps-fuel-the-new-geography-of-business"
+  },
+  {
+   "date": "2025-03-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Maps Reveal Hidden Housing Realities in Massachusetts to Address an Affordability Crisis",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.esri.com/about/newsroom/blog/massachusetts-maps-housing-affordability"
+  },
+  {
+   "date": "2025-03-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "How Marriott Uses Maps to Transform Global Risk Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.esri.com/about/newsroom/blog/video-marriotts-advanced-gis-tools-ensure-guest-safety-and-environmental-responsibility"
+  },
+  {
+   "date": "2024-06-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "At NBCUniversal, GIS Powers Large-scale Facilities Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.esri.com/about/newsroom/blog/nbcuniversal-gis-powers-large-scale-facilities-management"
+  },
+  {
+   "date": "2024-05-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Smart Maps Help Open Tight US Housing Market to Buyers in the Margins",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.esri.com/about/newsroom/blog/ginnie-mae-maps-homeownership-gap"
+  }
+ ],
  "profile": {
   "paragraphs": [
    "Esri builds ArcGIS, its geographic information system software for mapping and spatial analysis. The company describes itself as the global market leader in GIS software, location intelligence, and mapping. Its stated audience is business, government, and society.",

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Community Story Twinsburg, Ohio Issues Building Permits in 2 Days September 9, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/twinsburg-ohio-issues-building-permits-in-2-days"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Community Story Perinton, New York is Setting a New Standard for Permitting September 9, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/perinton-new-york-is-setting-a-new-standard-for-permitting"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -17,42 +35,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.govwell.com/resources/special-district-software"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Permitting and Community Development Software RFP Toolkit Read Article",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/the-permitting-and-community-development-software-rfp-toolkit"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI in Government Permitting July 2, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/ai-in-government-permitting"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Next Era of Community Development: 10 Trends to Watch Read Article",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/the-next-era-of-community-development"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Guides and Case Studies Rethinking permitting for a rural community September 4, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/macon-county-case-study"
   },
   {
    "date": "2026-09-04",
@@ -82,6 +64,42 @@
    "url": "https://www.govwell.com/resources/case-study-community-assistant"
   },
   {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Permitting and Community Development Software RFP Toolkit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/the-permitting-and-community-development-software-rfp-toolkit"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI in Government Permitting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/ai-in-government-permitting"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Next Era of Community Development: 10 Trends to Watch",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/the-next-era-of-community-development"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Rethinking permitting for a rural community",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/macon-county-case-study"
+  },
+  {
    "date": "2026-08-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "funding",
    "kind_rule": "Series A",
    "url": "https://www.govwell.com/resources/govwell-series-a"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The ROAD to Housing Starts with Local Government",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/the-road-to-housing-starts-with-local-government"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Government Software Request for Proposal (RFP) Guide for Community Development Departments June 26, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/the-government-software-request-for-proposal-rfp-guide"
   }
  ],
  "profile": {

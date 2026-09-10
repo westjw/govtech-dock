@@ -70260,7 +70260,7 @@
  {
   "id": "sightbit",
   "name": "Sightbit",
-  "website": "https://www.sightbit.com",
+  "website": null,
   "location": "Ashdod, Israel",
   "year_founded": 2018,
   "sector": "Parks & Rec",
@@ -70279,7 +70279,14 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "website_note": {
+   "was": "https://www.sightbit.com",
+   "why": "sightbit.com now serves \"Tigoals | Situs Nonton Bola Online Gratis dengan Streaming HD\" - an Indonesian streaming/gambling page, lang=\"id\". HTTP 200, so every check that only looks at a status code passes it.",
+   "on": "2026-09-09",
+   "by": "agent:hijack-check",
+   "restore_if": "the company recovers the domain"
+  }
  },
  {
   "id": "earth-networks",
@@ -91639,7 +91646,7 @@
  {
   "id": "materna-ips",
   "name": "Materna IPS",
-  "website": "https://www.materna-ips.com",
+  "website": null,
   "location": "Dortmund, Germany",
   "year_founded": 2016,
   "sector": "Airports & Aviation",
@@ -91658,7 +91665,14 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "website_note": {
+   "was": "https://www.materna-ips.com",
+   "why": "materna-ips.com 302s to efabre.net serving \"BETBERRY Link Daftar Games Digital\" - an Indonesian gambling page. HTTP 200 at the end of the redirect.",
+   "on": "2026-09-09",
+   "by": "agent:hijack-check",
+   "restore_if": "the company recovers the domain"
+  }
  },
  {
   "id": "embross",

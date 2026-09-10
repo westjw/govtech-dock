@@ -2,21 +2,12 @@
  "news": [
   {
    "date": "2026-07-21",
-   "date_source": "time",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
-   "headline": "21 July 2026 Voice Preservation: How AI gave Pierre Lemaire his voice back",
+   "headline": "Voice Preservation: How AI gave Pierre Lemaire his voice back",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.acapela-group.com/news/voice-preservation-my-own-voice-pierre-lemaire/"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "29 June 2026 Arabic AI : Rediscover Leila, Acapela\u2019s AI-enhanced Arabic voice",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.acapela-group.com/news/arabic-acapelas-ai-voice-leila/"
   },
   {
    "date": "2026-07-21",
@@ -56,12 +47,12 @@
   },
   {
    "date": "2026-06-29",
-   "date_source": "time",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
-   "headline": "06 May 2026 Custom AI Voices Hit the Road: Trucker Path Teams Up with Acapela Group for Driver Navigation",
+   "headline": "Arabic AI : Rediscover Leila, Acapela\u2019s AI-enhanced Arabic voice",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.acapela-group.com/news/trucker-path-teams-up-with-acapela-group-for-driver-navigation/"
+   "url": "https://www.acapela-group.com/news/arabic-acapelas-ai-voice-leila/"
   },
   {
    "date": "2026-06-29",
@@ -92,12 +83,12 @@
   },
   {
    "date": "2026-05-06",
-   "date_source": "time",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
-   "headline": "29 January 2026 Voice Preservation: Protecting Your Digital Voice with a Secure USB Solution",
+   "headline": "Custom AI Voices Hit the Road: Trucker Path Teams Up with Acapela Group for Driver Navigation",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.acapela-group.com/news/voice-preservation-on-usb/"
+   "url": "https://www.acapela-group.com/news/trucker-path-teams-up-with-acapela-group-for-driver-navigation/"
   },
   {
    "date": "2026-05-06",
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.acapela-group.com/fr/news/preservation-de-la-voix-acapela-group-accompagne-charles-bietry-avec-my-own-voice/"
+  },
+  {
+   "date": "2026-05-06",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "29 January 2026 Voice Preservation: Protecting Your Digital Voice with a Secure USB Solution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.acapela-group.com/de/news/voice-preservation-on-usb/"
   }
  ],
  "profile": {

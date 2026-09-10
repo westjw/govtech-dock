@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "A Look at Federal Q4 Contract Awards",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://govspend.com/blog/a-look-at-federal-q4-contract-awards/"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -91,22 +100,13 @@
    "url": "https://govspend.com/blog/other-transactions-ots-the-18-3-billion-market-every-federal-contractor-should-understand/"
   },
   {
-   "date": "2024-08-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Deep Water Point & Associates and GovSpend Forge Strategic Alliance to Enhance Federal Contractor Success",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/media/globe-newswire/"
-  },
-  {
-   "date": "2024-04-29",
+   "date": "2026-06-25",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "data-led federal contracting research",
+   "first_seen": "2026-09-09",
+   "headline": "GovSpend Is Now in Slack",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://govspend.com/blog/data-driven-decisions-in-federal-contracting/"
+   "url": "https://govspend.com/blog/govspend-is-now-in-slack/"
   }
  ]
 }

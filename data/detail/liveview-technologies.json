@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Which Industries Benefit Most from Mobile Surveillance Units?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/which-industries-benefit-most-from-mobile-surveillance-units"
+  },
+  {
    "date": "2026-09-06",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -55,58 +64,49 @@
    "url": "https://www.lvt.com/resources/arcadia-police-department-partners-with-lvt"
   },
   {
-   "date": "2026-08-26",
+   "date": "2026-08-27",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The $379 Billion Data Problem Hiding Behind Retail Theft",
+   "first_seen": "2026-09-09",
+   "headline": "LVT's private cellular network",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.lvt.com/blog/the-379-billion-data-problem-hiding-behind-retail-theft"
+   "url": "https://www.lvt.com/resources/lvt-differentiator-connectivity"
   },
   {
-   "date": "2026-08-21",
+   "date": "2026-08-27",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Detroit Weighs In: ACCESS Taskforce 2.0",
+   "first_seen": "2026-09-09",
+   "headline": "LVT takes reliability seriously",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.lvt.com/blog/detroit-weighs-in-access-taskforce-2-0"
+   "url": "https://www.lvt.com/resources/lvt-differentiator-reliability"
   },
   {
-   "date": "2026-08-20",
+   "date": "2026-08-27",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Happens After a Security Alert? Building a Physical Security Incident Response Workflow",
+   "first_seen": "2026-09-09",
+   "headline": "See it in action",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.lvt.com/blog/what-happens-after-a-security-alert-building-a-physical-security-incident-response-workflow"
+   "url": "https://www.lvt.com/resources/lvt-in-action-defending-retail-parking-lots"
   },
   {
-   "date": "2026-08-10",
+   "date": "2026-08-27",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Industrial Security Is Having a Moment\u2014And Who's Leading the Charge",
+   "first_seen": "2026-09-09",
+   "headline": "how the LVT Unit secures parking lots",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.lvt.com/blog/why-industrial-security-is-having-a-moment--and-whos-leading-the-charge"
+   "url": "https://www.lvt.com/resources/parking-lot-security-with-the-lvt-unit"
   },
   {
-   "date": "2026-06-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "LVT Recognizes Five Defender of the Year Winners at 2026 S3 Event",
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "LVT In Action\u2014Deter Intruders with Automated Responses",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.lvt.com/press/five-defender-of-the-year-winners"
-  },
-  {
-   "date": "2026-03-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "LVT Launches GuardGate to Bolster Its Intelligent Site Management and Safety Ecosystem",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.lvt.com/press/lvt-launches-guardgate"
+   "url": "https://www.lvt.com/resources/automated-deterrence-providing-proactive-security"
   }
  ],
  "profile": {

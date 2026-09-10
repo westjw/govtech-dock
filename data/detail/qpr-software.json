@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "QPR brings Snowflake-native Process Intelligence directly to enterprise AI agents",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/news/snowflake-native-process-intelligence-directly-to-enterprise-ai-agents"
+  },
+  {
    "date": "2026-08-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.qpr.com/news/qpr-software-recognized-visionary-fourth-consecutive-year-2026-gartner-magic-quadrant-process-intelligence-platforms"
-  },
-  {
-   "date": "2026-05-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Process Mining Helped a Global Manufacturer Avoid a \u20ac3M ERP Investment",
-   "kind": "funding",
-   "kind_rule": "Investment",
-   "url": "https://www.qpr.com/blog/process-mining-manufacturing-case-study-erp-optimization"
   }
  ]
 }

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "You're Measuring Your Behavioral Health EHR's Value Wrong",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/youre-measuring-your-behavioral-health-ehrs-value-wrong"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Clinical Documentation Improvement: A Key to Mental Health Funding",
+   "kind": "funding",
+   "kind_rule": "Funding",
+   "url": "https://www.coresolutionsinc.com/blog/clinical-documentation-improvement-a-key-to-mental-health-funding"
+  },
+  {
    "date": "2026-09-01",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -17,6 +35,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.coresolutionsinc.com/blog/why-data-integrity-matters-in-an-ehr-for-addiction-treatment"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Behavioral Health Revenue Analytics & KPIs: Targeting the Best Metrics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/behavioral-health-revenue-analytics-kpis-targeting-the-best-metrics"
+  },
+  {
+   "date": "2026-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Behavioral Health RCM: Why Specialized Tech Expertise Matters",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/behavioral-health-rcm-why-specialized-tech-expertise-matters"
   },
   {
    "date": "2026-08-11",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.coresolutionsinc.com/blog/solving-behavioral-health-care-coordination-with-a-unified-record"
-  },
-  {
-   "date": "2026-07-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Improving Clinical Decision-Making With an Intelligent Care Record",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/improving-clinical-decision-making-with-an-intelligent-care-record"
-  },
-  {
-   "date": "2026-06-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI in Healthcare: Native vs. Bolted-On Tools in Behavioral Health",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/ai-in-healthcare-native-vs.-bolted-on-tools-in-behavioral-health"
-  },
-  {
-   "date": "2026-04-13",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Core Solutions Introduces the Intelligent Care Record, Setting a New Standard for Behavioral Health",
-   "kind": "product",
-   "kind_rule": "Introduces",
-   "url": "https://www.coresolutionsinc.com/news/core-solutions-introduces-the-intelligent-care-record-setting-a-new-standard-for-behavioral-health"
-  },
-  {
-   "date": "2026-02-26",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Core Solutions Launches the DSP Assist Mobile App for Compliant IDD Service Delivery",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.coresolutionsinc.com/news/core-solutions-launches-the-dsp-assist-mobile-app-for-compliant-idd-service-delivery"
   }
  ],
  "profile": {

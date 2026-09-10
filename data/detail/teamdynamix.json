@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Building Blocks for ITSM Modernization: From AI to Automation to DEX",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.teamdynamix.com/blog/itsm-modernization-ai-automation-dex/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "From Alert to Asset: How ITAM Data Makes DEX Diagnostics Smarter and IT Service Faster",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.teamdynamix.com/blog/itam-data-dex-diagnostics/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "From Reactive to Proactive IT: How DEX Changes the Way Support Teams Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.teamdynamix.com/blog/reactive-to-proactive-it-dex/"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.teamdynamix.com/blog/what-is-it-service-management/"
-  },
-  {
-   "date": "2025-04-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What is Enterprise Service Management (ESM)?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.teamdynamix.com/blog/what-is-enterprise-service-management/"
-  },
-  {
-   "date": "2025-03-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "InformationWeek Report: State of Chatbots and Conversational AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://hub.teamdynamix.com/insights/state-of-chatbots-and-conversational-ai"
-  },
-  {
-   "date": "2024-04-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Market Insights & Reports",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.teamdynamix.com/resources/market-insights-reports"
   }
  ],
  "profile": {

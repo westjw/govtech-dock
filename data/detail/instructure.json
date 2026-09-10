@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-09",
+   "headline": "Scaling Healthcare Training: Moving Beyond Completion Records Without Admin Burden",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.instructure.com/resources/blog/scaling-healthcare-training-moving-beyond-completion-records-without-admin-burden"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-09",
+   "headline": "Designing for Every Learner: Accessibility and Inclusivity in Higher Education LMS Platforms",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.instructure.com/resources/blog/designing-every-learner-accessibility-and-inclusivity-higher-education-lms-platforms"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-09",
+   "headline": "The Digital Skills Exchange: The Alchemy of Turning Skills into Opportunities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.instructure.com/resources/blog/digital-skills-exchange-alchemy-turning-skills-opportunities"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-09",
+   "headline": "Breaking Up With Paper Records Is Easier Than You Think",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.instructure.com/resources/blog/breaking-paper-records-easier-you-think"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-09",
+   "headline": "Competency-Based Education and Flexible Pathways: What They Require From Your LMS",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.instructure.com/resources/blog/competency-based-education-and-flexible-pathways-what-they-require-your-lms"
+  },
+  {
    "date": "2026-08-25",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -8,6 +53,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.instructure.com/resources/blog/finding-sensible-middle-ai-literacy-cognitive-offloading-and-student-voice-classroom"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-09",
+   "headline": "LMS as the Learning Analytics Hub: Early Alert Systems in Higher Ed",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.instructure.com/resources/blog/lms-learning-analytics-hub-early-alert-systems-higher-ed"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-09",
+   "headline": "AI Changed the Math for Education, Including Security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.instructure.com/resources/blog/ai-changed-math-education-including-security"
   },
   {
    "date": "2026-08-14",
@@ -37,67 +100,13 @@
    "url": "https://www.instructure.com/resources/blog/disease-and-cure-technology-and-academic-fraud-generative-age"
   },
   {
-   "date": "2026-08-07",
+   "date": "2026-08-10",
    "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "New Tools to Elevate Teaching, Learning, and Student Success: July 2026 Product Updates",
-   "kind": "product",
-   "kind_rule": "Updates",
-   "url": "https://www.instructure.com/resources/blog/new-tools-elevate-teaching-learning-and-student-success-july-2026-product-updates"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Educators Need an AI Skills Map, Not Another Tool",
+   "first_seen": "2026-09-09",
+   "headline": "Using AI to Streamline Course Management in Higher Education",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.instructure.com/resources/blog/educators-need-ai-skills-map-not-another-tool"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Art in Motion with Louisville\u2019s Next Generation of Artists at InstructureCon",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.instructure.com/resources/blog/art-motion-louisvilles-next-generation-artists-instructurecon"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Why this one feels different",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.instructure.com/resources/blog/struggle-worth-protecting-k-12-classrooms"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Designing for the AI Learner: Agency, Judgment, and Adaptability",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.instructure.com/resources/blog/designing-ai-learner-agency-judgment-and-adaptability"
-  },
-  {
-   "date": "2026-06-30",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Designing AI That Coaches Students Instead of Doing Their Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.instructure.com/resources/blog/designing-ai-coaches-students-instead-doing-their-work"
-  },
-  {
-   "date": "2026-06-02",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Rethinking Higher Ed Assessment in the Age of AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.instructure.com/resources/blog/rethinking-higher-ed-assessment-age-ai"
+   "url": "https://www.instructure.com/resources/blog/using-ai-streamline-course-management-higher-education"
   }
  ]
 }

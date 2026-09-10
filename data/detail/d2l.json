@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "The 10 Best Asynchronous Learning Tools (And What to Look for in Each)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/asynchronous-learning-tools/"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "UNSW Selects D2L for Institution-Wide Learning Transformation Reaching Over 80,000 Learners",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.d2l.com/newsroom/unsw-selects-d2l-for-institution-wide-learning-transformation/"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.d2l.com/newsroom/d2l-report-reveals-what-educators-want-from-ai-in-higher-education/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Personalized Learning Impacts Your Nonprofit\u2019s Mission",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/how-personalized-learning-impacts-your-nonprofits-mission/"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Complete LMS Evaluation Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/lms-evaluation/"
   }
  ],
  "profile": {

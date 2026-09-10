@@ -10,10 +10,19 @@
    "url": "https://www.peregrine.io/resources/hobbs-police-department-turning-unclear-questions-into-instant-reliable-answers-with-peregrine"
   },
   {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Newsroom Making cities awesome: Peregrine on Sequoia Capital's Training Data podcast Read more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/making-cities-awesome-peregrine-on-sequoia-capitals-training-data-podcast"
+  },
+  {
    "date": "2026-08-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Customer stories 'We have a plan:' Inside Spokane County's school safety strategy Read more",
+   "headline": "'We have a plan:' Inside Spokane County's school safety strategy",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.peregrine.io/resources/we-have-a-plan-inside-spokane-countys-school-safety-strategy"
@@ -22,7 +31,7 @@
    "date": "2026-08-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Guides and reports How to build a crisis response program: Data-driven strategies for measurable outcomes Read more",
+   "headline": "How to build a crisis response program: Data-driven strategies for measurable outcomes",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.peregrine.io/resources/how-to-build-a-crisis-response-program-data-driven-strategies-for-measurable-outcomes"
@@ -82,6 +91,15 @@
    "url": "https://www.peregrine.io/resources/working-across-jurisdictions-to-create-a-safer-arizona"
   },
   {
+   "date": "2026-07-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Peregrine access policies: Data governance built for public trust",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/peregrine-access-policies-data-governance-built-for-public-trust"
+  },
+  {
    "date": "2026-06-30",
    "date_source": "card-date",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "contract",
    "kind_rule": "adopts",
    "url": "https://www.peregrine.io/resources/wavycom-virginia-beach-pd-adopts-peregrine-to-improve-efficiency"
-  },
-  {
-   "date": "2026-06-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What the age of context means for connected communities | Peregrine",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.peregrine.io/resources/what-this-moment-requires-a-letter-to-customers-and-communities"
-  },
-  {
-   "date": "2026-06-22",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Peregrine Technologies raises $250 million Series D at $6.8 billion valuation",
-   "kind": "funding",
-   "kind_rule": "raises",
-   "url": "https://www.peregrine.io/resources/peregrine-technologies-raises-250-million-series-d-at-68-billion-valuation"
   }
  ],
  "profile": {

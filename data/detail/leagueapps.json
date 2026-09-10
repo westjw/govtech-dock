@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "What to Evaluate When Switching Youth Sports Management Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leagueapps.com/blog/switch-youth-sports-management-software/"
+  },
+  {
    "date": "2026-09-01",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,6 +89,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://leagueapps.com/blog/sportsdog-storytellers-winner-2025/"
+  },
+  {
+   "date": "2025-02-13",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "4 Women Who Are Changing Youth Sports for the Better",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leagueapps.com/blog/4-women-in-youth-sports-ngwsd/"
+  },
+  {
+   "date": "2024-10-22",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Unique Unity: SPORTSDOG Storytellers Contest Winner Makenna Hall\u2019s Essay",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leagueapps.com/blog/sportsdog-storytellers-contest-winner-makenna-halls-essay/"
   }
  ]
 }

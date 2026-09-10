@@ -459,6 +459,7 @@
                color:#7C97AA">what to hit next</span>
          <select id="ss-queue" style="margin-left:auto;font:inherit;padding:3px 6px;
                  border:1px solid #C9DCE8;background:#fff;color:#1F2536">
+           <option value="rescrub">due for a re-scrub</option>
            <option value="boards">no board found</option>
            <option value="founded">founding year</option>
            <option value="blocked">blocked, retry</option>

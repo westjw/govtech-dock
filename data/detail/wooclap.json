@@ -1,22 +1,76 @@
 {
  "news": [
   {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Digital Ecosystem: How Wooflash Fits In Discover how Wooflash fits into your digital ecosystem. Integrate with Microsoft Teams and Moodle to make revision...",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wooclap.com/en/blog/wooflash-digital-ecosystem/"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Corporate training solutions: success stories from our partners Discover how organizations across industries use Wooclap to run effective corporate training programs and the real...",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wooclap.com/en/blog/corporate-training-solutions-success-stories/"
+  },
+  {
    "date": "2026-09-01",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "What's new in Wooclap: better LMS workflows, and a smarter picture of how your sessions went Product update: September 2026",
-   "kind": "product",
-   "kind_rule": "update",
+   "headline": "What's new in Wooclap: better LMS workflows, and a smarter picture of how your sessions went",
+   "kind": "press",
+   "kind_rule": null,
    "url": "https://www.wooclap.com/en/blog/whats-new/"
   },
   {
    "date": "2026-08-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "What is instructional design? Discover how instructional design helps you build effective training programs that drive real learning outcomes.",
+   "headline": "What is instructional design?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wooclap.com/en/blog/instructional-design/"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "How to use Wooclap in Moodle",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://docs.wooclap.com/en/articles/14619595-how-to-use-wooclap-in-moodle"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "How to use Wooclap in Canvas",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://docs.wooclap.com/en/articles/14623833-how-to-use-wooclap-in-canvas"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "How to use Wooclap in Blackboard",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://docs.wooclap.com/en/articles/14623841-how-to-use-wooclap-in-blackboard"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "integrate your Wooclap questions into your PowerPoint presentation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://docs.wooclap.com/en/articles/2130961-how-to-use-wooclap-in-powerpoint"
   },
   {
    "date": "2026-08-25",
@@ -28,85 +82,31 @@
    "url": "https://www.wooclap.com/en/blog/5-myths-training/"
   },
   {
-   "date": "2026-08-06",
+   "date": "2026-08-25",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Best AI Quiz Generators Creating a good quiz takes time. Here's how AI can do it in minutes.",
+   "first_seen": "2026-09-09",
+   "headline": "Study methods for high school students Discover the study methods that actually work for high school students, and how to build them into your routine.",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/top-quiz-ia/"
+   "url": "https://www.wooclap.com/en/blog/study-methods-for-high-school-students/"
   },
   {
-   "date": "2026-07-24",
+   "date": "2026-08-20",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Personalized learning in education: how to reach every student Not every student learns at the same pace. Here's how personalized learning helps you adapt your teaching to meet each...",
+   "first_seen": "2026-09-09",
+   "headline": "Digital Transformation in Higher Education Digital transformation in higher education is no longer a buzzword. It's the new baseline for how universities operate, ...",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/inclusion-and-personalization/"
+   "url": "https://www.wooclap.com/en/blog/digital-transformation-in-higher-education/"
   },
   {
-   "date": "2026-06-24",
+   "date": "2026-08-18",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Wooclap comparisons: A complete guide",
+   "first_seen": "2026-09-09",
+   "headline": "\"I Can't Live Without Wooclap\": The Joke That Became a Teaching Method Diego Fraille turned a running joke about not being able to live without Wooclap into a full teaching method, one built ...",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/wooclap-comparisons/"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Active recall: a proven way to remember more",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/active-recall/"
-  },
-  {
-   "date": "2026-06-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Training effectiveness: knowing whether it actually works What if you could prove that your training actually works with evidence? That's exactly what measuring training...",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/training-effectiveness/"
-  },
-  {
-   "date": "2026-06-02",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "How to integrate and use Wooclap with a Learning Management System (LMS)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://docs.wooclap.com/en/articles/13285037-how-to-integrate-and-use-wooclap-with-a-learning-management-system-lms"
-  },
-  {
-   "date": "2026-06-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Neuroscience and education: how brain science is reshaping modern teaching What if your students remembered every lesson? Educational neuroscience makes it possible with evidence-based...",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/neuroscience-education/"
-  },
-  {
-   "date": "2026-05-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Learning from Learning Traces: The Promises and Blind Spots of Learning Data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/learning-traces/"
-  },
-  {
-   "date": "2026-04-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Interactivity shouldn\u2019t require extra steps",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/interactivity-training-friction/"
+   "url": "https://www.wooclap.com/en/blog/nebrija-active-learning-wooclap-testimonial/"
   }
  ]
 }

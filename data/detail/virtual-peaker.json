@@ -1,10 +1,28 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Post Sep 9, 2026 BESS & the Duck Curve: Leveraging DERs to Manage Peaks The duck curve, the duck-shaped chart showing the difference between electric-demand and the amount of available photovoltaic so",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://virtual-peaker.com/blog/bess-the-duck-curve-leveraging-ders-to-manage-peaks/"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Post Sep 4, 2026 What Are Distributed Energy Resource Management Systems (DERMS)? A distributed energy resource management system (DERMS) is the software layer that lets a utility see, group, and disp",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://virtual-peaker.com/blog/distributed-energy-resource-management-systems-derms/"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Post Sep 2, 2026 How to Future-Proof Your Virtual Power Plant (VPP) An aggregation of distributed energy resources (DERs), virtual power plants (VPPs) have become a critical component of U.S. load fle",
+   "headline": "How to Future-Proof Your Virtual Power Plant (VPP)",
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/how-to-future-proof-your-virtual-power-plant-vpp/"
@@ -13,7 +31,7 @@
    "date": "2026-08-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Post Aug 28, 2026 What is Demand Response? Demand response is a more than 40-year old demand flexibility strategy that involves shifting demand to off-peak periods of usage. [\u2026] Sydney Hughes Marketin",
+   "headline": "What is Demand Response?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/what-is-demand-response/"
@@ -22,7 +40,7 @@
    "date": "2026-08-26",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Post Aug 26, 2026 Smart Water Heaters & Demand Flexibility: What Utilities Should Know Before Launching a Program Water heaters are quietly becoming one of the most valuable tools in a utility\u2019s deman",
+   "headline": "Smart Water Heaters & Demand Flexibility: What Utilities Should Know Before Launching a Program",
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/smart-water-heaters-demand-flexibility-what-utilities-should-know-before-launching-a-program/"
@@ -31,7 +49,7 @@
    "date": "2026-08-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Post Aug 21, 2026 What is a Virtual Power Plant? A virtual power plant (VPP) is a network of distributed energy resources (DERs) including rooftop solar, home batteries, electric vehicles, [\u2026] Greg Le",
+   "headline": "What is a Virtual Power Plant?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/what-is-a-virtual-power-plant/"
@@ -40,7 +58,7 @@
    "date": "2026-08-19",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Post Aug 19, 2026 What is Firm Load Shedding? Firm load shedding is the deliberate, controlled disconnection of \u201cfirm\u201d customer load, which is the electricity service utilities are contractually [\u2026] S",
+   "headline": "What is Firm Load Shedding?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/what-is-firm-load-shedding/"
@@ -49,7 +67,7 @@
    "date": "2026-08-14",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Post Aug 14, 2026 How Much Can Demand Response Programs Save Utilities in Avoided Peak Costs? Peak demand has always been expensive, and progressively more so every year. As electrification, increasin",
+   "headline": "How Much Can Demand Response Programs Save Utilities in Avoided Peak Costs?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/how-much-can-demand-response-programs-save-utilities-in-avoided-peak-costs/"
@@ -58,7 +76,7 @@
    "date": "2026-08-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Post Aug 12, 2026 4 Things You Know About Critical Peaks (And 1 You Probably Don\u2019t) Every hot summer day or cold winter morning, utilities watch the same number climb: system demand. Most of that dema",
+   "headline": "4 Things You Know About Critical Peaks (And 1 You Probably Don\u2019t)",
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/4-things-you-know-about-critical-peaks-and-1-you-probably-dont/"
@@ -67,7 +85,7 @@
    "date": "2026-08-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Post Aug 7, 2026 Team Q&A: Juliann Major \u2013 Client Success Manager For our new Client Success Manager, sustainability efforts take a community to realize. That\u2019s everything from taking responsibility f",
+   "headline": "Team Q&A: Juliann Major \u2013 Client Success Manager",
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/team-qa-juliann-major-client-success-manager/"
@@ -76,7 +94,7 @@
    "date": "2026-08-05",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Post Aug 5, 2026 Smart Thermostats & Demand Flexibility: What Utilities Should Know Before Launching a Program Smart thermostats are one of the most accessible entry points into demand flexibility pro",
+   "headline": "Smart Thermostats & Demand Flexibility: What Utilities Should Know Before Launching a Program",
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/smart-thermostats-demand-flexibility-what-utilities-should-know-before-launching-a-program/"
@@ -85,28 +103,10 @@
    "date": "2026-07-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Post Jul 31, 2026 Team Q&A: Sierra Milosh \u2013 Client Success IT Implementation Lead Connecting with the energy sector through the lens of renewable energy during college, Sierra Milosh went to work to m",
+   "headline": "Team Q&A: Sierra Milosh \u2013 Client Success IT Implementation Lead",
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/team-qa-sierra-milosh-client-success-it-implementation-lead/"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "In The News Jul 30, 2026 Rappahannock Electric Cooperative Turns to Smart-Device Technology as Virginia Power Costs Rise and Demand Grows New partnership with Virtual Peaker will let REC members enrol",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://virtual-peaker.com/news/rappahannock-electric-cooperative-turns-to-smart-device-technology-as-virginia-power-costs-rise-and-demand-grows/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Post Jul 29, 2026 Managing C&I Load Flexibility: How DERMS Extends Beyond Residential DERs Demand flexibility programs often start with the residential customer: distributed energy resources (DERs) li",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://virtual-peaker.com/blog/managing-ci-load-flexibility-how-derms-extends-beyond-residential-ders/"
   }
  ],
  "profile": {

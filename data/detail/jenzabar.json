@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-02",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "Workforce Pell Playbook, Pt. 1: Eligibility Shapes Program Design",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://jenzabar.com/blog/workforce-pell-playbook-pt-one-eligibility-shapes-program-design"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "Why Automation Alone Isn't Enough",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://jenzabar.com/blog/why-automation-alone-isnt-enough"
+  },
+  {
    "date": "2026-08-26",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -8,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://jenzabar.com/blog/higher-educations-big-four-part-one-the-financial-tightrope"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "Moving to SaaS? Here Are 4 Key Considerations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://jenzabar.com/blog/moving-to-saas-here-are-four-key-considerations"
   },
   {
    "date": "2026-08-26",
@@ -58,15 +85,6 @@
    "date": "2026-08-26",
    "date_source": "time",
    "first_seen": "2026-09-05",
-   "headline": "Moving to SaaS? Here Are 4 Key Considerations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://jenzabar.com/blog/moving-to-saas-here-are-four-key-considerations"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
    "headline": "Automating Manual Financial Operations: How to Reduce Risk and Innovate",
    "kind": "press",
    "kind_rule": null,
@@ -85,28 +103,10 @@
    "date": "2026-08-26",
    "date_source": "time",
    "first_seen": "2026-09-05",
-   "headline": "Why Automation Alone Isn't Enough",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://jenzabar.com/blog/why-automation-alone-isnt-enough"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
    "headline": "Reframing Risk: Ownership, Accountability, and the Path to SaaS in Higher Education",
    "kind": "press",
    "kind_rule": null,
    "url": "https://jenzabar.com/blog/reframing-risk-ownership-accountability-and-the-path-to-saas-in-higher-education"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "2026 AI Pulse: As Optimism Grows, So Does the Need for Policy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://jenzabar.com/blog/2026-ai-pulse-as-optimism-grows-so-does-the-need-for-policy"
   }
  ]
 }

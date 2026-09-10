@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-08",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Murray State College Selects YuJa Lumina to Boost Online Classroom Engagement September 8, 2026 | < 1 min read",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.yuja.com/blog/news/murray-state-yuja-lumina/"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "Texas A&M University Expands Digital Accessibility Capabilities with YuJa Structural Remediation Max September 4, 2026 | < 1 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.yuja.com/blog/news/texas-am-university-yuja-structural-remediation-max/"
+  },
+  {
    "date": "2026-08-28",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -22,7 +40,7 @@
    "date": "2026-08-25",
    "date_source": "og:published",
    "first_seen": "2026-09-05",
-   "headline": "New Features August 25, 2026 YuJa Lumina: Reuse videos across Drupal and turn them into proctored learning experiences YuJa Lumina v26.6.0 Release Over the next few weeks, YuJa Lumina will be adding s",
+   "headline": "YuJa Lumina: Reuse videos across Drupal and turn them into proctored learning experiences",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.yuja.com/blog/new-features-in-yuja-lumina-proctored-video-quizzes-customizable-settings-and-more/"
@@ -76,7 +94,7 @@
    "date": "2026-08-13",
    "date_source": "og:published",
    "first_seen": "2026-09-05",
-   "headline": "New Features August 13, 2026 What\u2019s New in YuJa EqualGround \u2013 AI Generation for Compliance, Quick Wins Emails, and More YuJa EqualGround v26.6.0 Release Over the next few weeks, YuJa EqualGround will ",
+   "headline": "What\u2019s New in YuJa EqualGround \u2013 AI Generation for Compliance, Quick Wins Emails, and More",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.yuja.com/blog/whats-new-in-yuja-equalground-ai-generation/"
@@ -89,24 +107,6 @@
    "kind": "contract",
    "kind_rule": "Selects",
    "url": "https://www.yuja.com/blog/news/suny-delhi-yuja-lumina/"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "New Features August 11, 2026 What\u2019s New for YuJa Panorama \u2013 New PDF Remediation Enhancements, Dashboards, and More! YuJa Panorama v26.6.0 Over the next few weeks, YuJa Panorama will be adding enhancem",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.yuja.com/blog/yuja-panorama-pdf-remediation-enhancements/"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Wellesley College Adopts YuJa Panorama to Strengthen Accessibility in LMS Courses August 10, 2026 | < 1 min read",
-   "kind": "contract",
-   "kind_rule": "Adopts",
-   "url": "https://www.yuja.com/blog/news/wellesley-college-yuja-panorama/"
   }
  ],
  "profile": {

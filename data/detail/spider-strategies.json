@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "How to Write Strategic Objectives That Actually Drive Execution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.spiderstrategies.com/blog/how-to-write-strategic-objectives/"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Evaluating Strategy Management Solutions for Retirement Organizations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.spiderstrategies.com/blog/retirement-strategy-management/"
+  },
+  {
+   "date": "2026-09-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "What Great Strategy Reporting Looks Like \u2014 and Why Most Falls Short",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.spiderstrategies.com/blog/strategy-reporting/"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "What Utility Organizations Should Measure \u2014 Beyond Reliability and Cost",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.spiderstrategies.com/blog/utility-performance-metrics/"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -55,6 +91,15 @@
    "url": "https://www.spiderstrategies.com/blog/strategic-reporting-tools/"
   },
   {
+   "date": "2026-08-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Organizational Goal Alignment: Building a Connected Strategy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.spiderstrategies.com/blog/organizational-alignment/"
+  },
+  {
    "date": "2026-07-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.spiderstrategies.com/blog/centralized-performance-management-system/"
-  },
-  {
-   "date": "2026-06-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Strategy Stack: Integrating BI, Automation, and Governance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.spiderstrategies.com/blog/strategy-stack/"
-  },
-  {
-   "date": "2026-06-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Operational Metrics: What They Are and Why They Matter",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.spiderstrategies.com/blog/operational-metrics/"
-  },
-  {
-   "date": "2026-05-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How AI Can Speed Up Strategy Reviews and Performance Analysis",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.spiderstrategies.com/blog/ai-for-strategy-reviews/"
-  },
-  {
-   "date": "2026-03-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Outcome vs. Output Metrics: Why Activity Doesn\u2019t Equal Progress",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.spiderstrategies.com/blog/outcome-vs-output-metrics/"
-  },
-  {
-   "date": "2025-11-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How No-Code Apps Turn Spreadsheet Chaos Into Strategic Advantage",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.spiderstrategies.com/blog/no-code-strategic-advantage/"
   }
  ]
 }
