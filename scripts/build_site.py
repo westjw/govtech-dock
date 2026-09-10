@@ -1878,6 +1878,21 @@ def conference_rosters(board: dict) -> dict:
     return out
 
 
+def _cf_place(c: dict) -> str | None:
+    """The venue, or the state we know it is in, or nothing.
+
+    A city is a venue and is said plainly. A state is NOT a venue, so it is
+    said as what it is - "across North Carolina" - because printing "North
+    Carolina" where every other row prints "Denver, CO" reads as a place the
+    event is held rather than the only thing we know about where it is.
+    """
+    city = (c.get("city") or "").strip()
+    if city:
+        return city
+    state = (c.get("state") or "").strip()
+    return f"across {state}" if state else None
+
+
 def _cf_initials(name: str) -> str:
     w = [x for x in re.sub(r"[^A-Za-z0-9 ]", " ", name or "").split() if x]
     return ((w[0][0] if w else "?") + (w[1][0] if len(w) > 1 else "")).upper()
@@ -1907,7 +1922,7 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list) -> str:
     """
     name = c.get("name") or tag
     esc = html.escape
-    bits = [x for x in (c.get("dates") or _cf_no_dates(c), c.get("city")) if x]
+    bits = [x for x in (c.get("dates") or _cf_no_dates(c), _cf_place(c)) if x]
     chips = []
     if c.get("companies"):
         chips.append(f'<span class="cfchip"><b>{c["companies"]}</b> '

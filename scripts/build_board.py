@@ -1599,6 +1599,18 @@ def main() -> int:
                 # evidence has to arrive as absence of evidence.
                 "dates_confidence": row.get("dates_confidence") or None,
                 "city": row.get("city") or None,
+                # THE STATE WE ALREADY KNEW. 18 conferences carried no city and
+                # read on the board as events happening nowhere - but 13 of
+                # them were promoted out of the chapter registry and have
+                # carried their state in state_event.geo the whole time. A
+                # state association's conference is in that state; not knowing
+                # the hotel is not the same as not knowing the place.
+                #
+                # Kept in its own field rather than written into `city`. "North
+                # Carolina" is not a city, and a distance filter that treated
+                # it as one would put the event at the middle of the state and
+                # call that a venue.
+                "state": (row.get("state_event") or {}).get("geo") or None,
                 "approx_count": row.get("approx_count") or None,
                 "companies": len(ids),
                 "hiring": len(hiring),
