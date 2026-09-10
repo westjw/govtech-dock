@@ -177,6 +177,13 @@ def main() -> int:
 
     p = DATA / "national_events.json"
     payload = json.loads(p.read_text())
+    # READ, EDIT IN PLACE, WRITE BACK - which is what keeps the "registry"
+    # stamp on the file. Rebuilding the envelope here instead would drop it
+    # and find_event_directories would refuse the registry outright.
+    if payload.get("registry") != "national":
+        print(f"refusing: {p.name} is stamped {payload.get('registry')!r}, "
+              f"not 'national'", file=sys.stderr)
+        return 1
     n = 0
     for r in payload["events"]:
         got = found.get(r.get("org_code"))

@@ -17413,6 +17413,97 @@ def check_an_acronym_cannot_confirm_itself() -> int:
     return errors
 
 
+def check_a_recheck_never_costs_a_directory_it_did_not_look_at() -> int:
+    """--recheck may replace a stored verdict. It may not delete one unread.
+
+    The strip ran over every row carrying an org url and --limit narrowed the
+    work only afterwards, so `--recheck --limit 5 --write` re-judged five rows
+    and cleared directory_url and candidate_url on all the rest - 15 directory
+    urls and 64 candidate urls in the chapter registry, each one the end of a
+    crawl through a parent's listing, gone without being looked at.
+
+    The second half is worse because it needs no flag at all. A row whose site
+    does not answer takes `status = org_unreachable` and continues, and the
+    pop above it is never undone: one afternoon of downtime at one association
+    permanently deletes a directory that took a crawl to find. Both are the
+    same mistake - assuming a row is about to be decided again, and destroying
+    the old answer before the new one exists.
+
+    Replacing a verdict is fine and is what the flag is for. This pins the two
+    cases where nothing replaces it.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import find_event_directories as fed
+
+    def run(limit, fetcher, rows):
+        tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-recheck-"))
+        path = tmp / "state_events.json"
+        path.write_text(json.dumps({"registry": "state", "note": "",
+                                    "events": rows}))
+        keep = (dict(fed.REGISTRIES), fed.fetch)
+        try:
+            fed.REGISTRIES["state"] = path
+            fed.fetch = fetcher
+            with contextlib.redirect_stdout(io.StringIO()):
+                fed.stage_directories(True, limit, True, "state")
+            return {r["org_code"]: r
+                    for r in json.loads(path.read_text())["events"]}
+        finally:
+            fed.REGISTRIES.clear(); fed.REGISTRIES.update(keep[0])
+            fed.fetch = keep[1]
+            shutil.rmtree(tmp, ignore_errors=True)
+
+    # ONE: --limit must not strip the rows it never reaches.
+    rows = [{"org_code": f"T_{i}", "geo": "Texas", "event_name": f"Event {i}",
+             "org_url": f"https://org{i}.test/",
+             "directory_url": f"https://org{i}.test/exhibitors",
+             "candidate_url": None, "status": "directory_found"}
+            for i in range(4)]
+    got = run(1, lambda u: None, rows)
+    untouched = [c for c in ("T_1", "T_2", "T_3")
+                 if not got[c].get("directory_url")]
+    if untouched:
+        errors += fail(
+            f"--recheck --limit 1 cleared the directory url on {untouched}, "
+            f"rows it never re-judged. The strip must happen per row inside "
+            f"the loop, after --limit has narrowed the work - not over every "
+            f"row that merely carries an org url")
+
+    # TWO: a site that does not answer has not re-judged anything.
+    rows = [{"org_code": "DOWN", "geo": "Texas", "event_name": "Annual",
+             "org_url": "https://down.test/",
+             "directory_url": "https://down.test/exhibitors",
+             "directory_note": "36 companies, reads as a list",
+             "status": "directory_found"}]
+    got = run(None, lambda u: None, rows)["DOWN"]
+    if got.get("directory_url") != "https://down.test/exhibitors":
+        errors += fail(
+            f"a recheck whose fetch failed left directory_url as "
+            f"{got.get('directory_url')!r}. The site being down is not a "
+            f"verdict; the prior evidence has to go back exactly as it was")
+    if got.get("directory_note") != "36 companies, reads as a list":
+        errors += fail("the fetch failed and the row kept its url but lost the "
+                       "note that says what was read there - restore all of it "
+                       "or none of it")
+
+    # THREE: a real re-judgement still replaces. The flag must keep working.
+    rows = [{"org_code": "REAL", "geo": "Texas", "event_name": "Annual",
+             "org_url": "https://real.test/",
+             "directory_url": "https://real.test/old",
+             "status": "directory_found"}]
+    got = run(None, lambda u: "<html><body>nothing here</body></html>",
+              rows)["REAL"]
+    if got.get("directory_url") == "https://real.test/old":
+        errors += fail("a page that answered and offered no directory left the "
+                       "old url standing. --recheck exists to replace a stored "
+                       "verdict; only a failed fetch is exempt")
+    return errors
+
+
 def check_a_registry_cannot_be_saved_over_the_other() -> int:
     """One writer, two registries, and no way to confuse them.
 
@@ -17507,6 +17598,39 @@ def check_a_registry_cannot_be_saved_over_the_other() -> int:
         fed.REGISTRIES.clear()
         fed.REGISTRIES.update(keep)
         shutil.rmtree(tmp, ignore_errors=True)
+
+    # EVERY WRITER STAMPS, or the stamp is worth nothing. find_event_directories
+    # refuses an unstamped registry, so a script that rebuilds the envelope
+    # without the key does not merely lose a label - it takes the file out of
+    # service for every stage downstream. register_state_events built its
+    # payload from scratch on every run and would have done exactly that.
+    import register_national_events as rne
+    keep_out = rne.OUT
+    try:
+        rne.OUT = pathlib.Path(tempfile.mkdtemp(prefix="gtd-fresh-")) / "nope.json"
+        fresh = rne.load()
+        if fresh.get("registry") != "national":
+            errors += fail("register_national_events builds a fresh registry "
+                           "with no stamp, so the first --write leaves a file "
+                           "find_event_directories will refuse to open")
+        stale = rne.OUT.parent / "stale.json"
+        stale.write_text(json.dumps({"note": "", "events": []}))
+        rne.OUT = stale
+        if rne.load().get("registry") != "national":
+            errors += fail("register_national_events read an unstamped registry "
+                           "and carried the gap forward instead of restoring "
+                           "the stamp")
+    finally:
+        shutil.rmtree(rne.OUT.parent, ignore_errors=True)
+        rne.OUT = keep_out
+
+    for mod, stamp in (("register_state_events", '"registry": "state"'),
+                       ("register_national_events", '"registry": "national"')):
+        src = (ROOT / "scripts" / f"{mod}.py").read_text()
+        if stamp not in src:
+            errors += fail(f"{mod}.py writes a registry without {stamp}. An "
+                           f"unstamped file is refused by _load, so the next "
+                           f"stage cannot open what this script just wrote")
 
     # AND NO SECOND DOOR. A module-level EVENTS constant used to exist and
     # every stage read it, so a test could redirect the module by patching it.
@@ -17989,6 +18113,7 @@ def main() -> int:
     errors += check_staging_a_catalogue_never_costs_an_observed_fact()
     errors += check_an_organisation_is_not_one_of_its_own_events()
     errors += check_an_acronym_cannot_confirm_itself()
+    errors += check_a_recheck_never_costs_a_directory_it_did_not_look_at()
     errors += check_a_registry_cannot_be_saved_over_the_other()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()

@@ -598,19 +598,47 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False,
         # seven was wrong, and a stored verdict from a wrong gate is not
         # evidence. Every row with an org url is re-read and re-decided.
         todo = [e for e in doc["events"] if e.get("org_url")]
-        for e in todo:
-            e.pop("directory_url", None)
-            e.pop("candidate_url", None)
     else:
         todo = [e for e in doc["events"] if e.get("org_url") and not e.get("directory_url")]
     if limit:
         todo = todo[:limit]
+    # THE STRIP HAPPENS PER ROW, INSIDE THE LOOP, AND NOT BEFORE --limit.
+    # It used to clear directory_url and candidate_url on every row carrying an
+    # org url, and only then did --limit cut the work down. `--recheck --limit
+    # 5 --write` therefore re-judged five rows and silently erased the evidence
+    # on the other 199 - 15 directory urls and 64 candidate urls that took a
+    # crawl of every parent's listing to win, deleted without being looked at.
     print(f"{len(todo)} event(s) with an org url and no directory yet\n")
     got = person = 0
     for e in todo:
         hint = e.get("parent_national")
+        was = None
+        if recheck:
+            was = {k: e.get(k) for k in
+                   ("directory_url", "candidate_url", "directory_note", "status")}
+            # the note describes the url being cleared, so it goes too - a
+            # note outliving the verdict it explains is a stale sentence
+            # pointing at nothing.
+            e.pop("directory_url", None)
+            e.pop("candidate_url", None)
+            e.pop("directory_note", None)
         page = fetch(e["org_url"])
         if not page:
+            # A FETCH THAT DID NOT ANSWER IS NOT A RE-JUDGEMENT. The strip
+            # above assumed this row was about to be decided again; it was
+            # not, so the prior evidence goes back exactly as it was. A site
+            # down for an afternoon must not cost a directory nobody can
+            # find twice.
+            if was:
+                for k, v in was.items():
+                    if v is None:
+                        e.pop(k, None)
+                    else:
+                        e[k] = v
+                if was.get("directory_url"):
+                    print(f"  kept    {e['event_name'][:38]:40} "
+                          f"the site did not answer; its directory url stands")
+                    continue
             e["status"] = "org_unreachable"; continue
         direct, confs = candidates(page, e["org_url"])
         # the conference page's own directory links, one hop deeper
@@ -667,6 +695,12 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False,
             e["status"] = "not_a_directory"
             e.pop("directory_note", None)
             print(f"  --      {e['event_name'][:38]:40} links found, none read as a list")
+        # A RE-JUDGE THAT TAKES SOMETHING AWAY SAYS SO. Replacing a stored
+        # verdict is the point of --recheck, but losing one is a thing a
+        # person has to be able to see in the output rather than diff for.
+        if was and was.get("directory_url") and not e.get("directory_url"):
+            print(f"          ^ this row HAD a directory url and no longer does: "
+                  f"{was['directory_url']}")
     print(f"\n  {got} directory url(s) found, {person} candidate(s) for a person")
     if write:
         _save(doc, which)

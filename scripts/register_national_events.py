@@ -297,8 +297,13 @@ def from_blocks(path: pathlib.Path) -> list:
 
 def load() -> dict:
     if OUT.exists():
-        return json.loads(OUT.read_text())
-    return {"note": NOTE, "events": []}
+        doc = json.loads(OUT.read_text())
+        # An existing file may predate the stamp, or have been written by a
+        # tool that dropped it. Put it back rather than carrying the gap
+        # forward - find_event_directories refuses an unstamped registry.
+        doc["registry"] = "national"
+        return doc
+    return {"registry": "national", "note": NOTE, "events": []}
 
 
 def merge(existing: list, fresh: list) -> tuple:

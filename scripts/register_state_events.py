@@ -179,6 +179,10 @@ def main() -> int:
         return 0
 
     payload = {
+        # WHICH REGISTRY THIS IS. find_event_directories reads and writes two
+        # of them and refuses a file that does not say which one it is, so a
+        # writer that omits the stamp takes the file out of service.
+        "registry": "state",
         "note": ("State and local chapter conferences, staged for the "
                  "URL-finding pass. NOT conferences.json: nothing here has a "
                  "verified exhibitor directory, and name_confidence 'pattern' "
