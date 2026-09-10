@@ -38,6 +38,7 @@ from __future__ import annotations
 import argparse
 import collections
 import json
+import re
 import pathlib
 import sys
 import time
@@ -59,7 +60,20 @@ PAUSE = 1.1        # their policy is 1/sec; this is deliberately over it
 
 
 def cities_on_board() -> collections.Counter:
-    """Every (city, state) the board names, with how many postings sit there."""
+    """Every (city, state) the board names, with how many postings sit there.
+
+    AND EVERY CITY A CONFERENCE IS HELD IN. This read postings only, so the
+    lookup covered the cities companies have desks in and nothing else - and
+    the conferences tab, which wants to say how far an event is, could place
+    69 of its 138 venues. Anaheim, Savannah, Grapevine and New Orleans host
+    conferences and employ nobody we track, so they were simply absent, and a
+    distance a reader cannot see reads as "not near me" rather than "we could
+    not place it".
+
+    Venues are counted once each: the weight orders the queue by how many
+    postings sit somewhere, and one conference is not busier than a city with
+    forty desks in it.
+    """
     board = json.loads((DATA / "board.json").read_text())
     seen = collections.Counter()
     for p in board.get("postings", []):
@@ -67,32 +81,88 @@ def cities_on_board() -> collections.Counter:
         off = g.get("office")
         if off and off.get("city") and off.get("state"):
             seen[(off["city"], off["state"])] += 1
+    for c in board.get("conferences", []):
+        got = venue_city(c.get("city"))
+        if got:
+            seen[got] += 1
     return seen
 
 
-def ask(city: str, state: str) -> dict | None:
-    """One lookup, or None. None means unresolved, never a default."""
+def venue_city(text: str | None) -> tuple | None:
+    """("Denver", "CO") out of "Denver, CO". None when it is not that shape.
+
+    Deliberately narrow. "Calgary, AB, Canada" returns None rather than
+    ("Calgary", "AB"): ask() searches the United States only, so a Canadian
+    venue would come back either empty or as the wrong Calgary, and a
+    coordinate forty miles out is invisible where a blank is not.
+    """
+    parts = [x.strip() for x in (text or "").split(",")]
+    if len(parts) != 2:
+        return None
+    city, state = parts
+    if not city or not re.fullmatch(r"[A-Z]{2}", state):
+        return None
+    return (city, state)
+
+
+# "We asked and there is no such place" - a real answer, worth writing down.
+# Distinct from None, which now means only "we could not ask".
+NO_MATCH = object()
+
+
+def ask(city: str, state: str):
+    """A coordinate, NO_MATCH, or None.
+
+    THE ABSENCE TRAP, IN A GEOCODER. This returned None for three different
+    things - a genuine no-match, an HTTP error, and a dead socket - and the
+    caller wrote all three down identically as "nominatim: no match". So a
+    rate limit became a permanent record that a city does not exist, and
+    because the row was then on file, no later run would ever ask again.
+
+    Measured on 2026-09-10: a 206-city run recorded 107 failures, and Spokane
+    WA, Bozeman MT, Miami Beach FL and Grapevine TX were among them. All four
+    answer on a single request. They were not missing; we were throttled.
+
+    That is this project's oldest rule wearing a different hat - a page scan
+    never proves absence - and the cost is the same shape: a distance filter
+    silently answering "nothing near you" about a city it was rate-limited
+    out of asking about.
+    """
     q = f"{city}, {state}, United States"
-    try:
-        r = requests.get(ENDPOINT, params={"q": q, "format": "json", "limit": 1,
-                                           "countrycodes": "us"},
-                         headers={"User-Agent": UA}, timeout=20)
+    hits = None
+    for attempt in range(3):
+        try:
+            r = requests.get(ENDPOINT, params={"q": q, "format": "json",
+                                               "limit": 1,
+                                               "countrycodes": "us"},
+                             headers={"User-Agent": UA}, timeout=20)
+        except Exception:
+            time.sleep(2 * (attempt + 1))
+            continue
+        if r.status_code in (429, 503, 502, 504):
+            # being asked to slow down is not an answer about the city
+            time.sleep(5 * (attempt + 1))
+            continue
         if not r.ok:
             return None
-        hits = r.json()
-    except Exception:
-        return None
+        try:
+            hits = r.json()
+        except Exception:
+            return None
+        break
+    if hits is None:
+        return None                      # never asked successfully
     if not hits:
-        return None
+        return NO_MATCH                  # asked, and there is no such place
     h = hits[0]
     try:
         lat, lon = float(h["lat"]), float(h["lon"])
     except (KeyError, TypeError, ValueError):
-        return None
+        return NO_MATCH        # it answered, the answer was unusable
     # A US city that lands outside the US bounding box means the geocoder
     # matched something else with the same name. Refuse it rather than plot it.
     if not (18.0 <= lat <= 72.0 and -180.0 <= lon <= -66.0):
-        return None
+        return NO_MATCH        # it matched something, elsewhere on earth
     return {"lat": round(lat, 4), "lon": round(lon, 4),
             "query": q, "matched": h.get("display_name", "")[:120],
             "source": "nominatim.openstreetmap.org"}
@@ -116,14 +186,17 @@ def main() -> int:
     print(f"{len(board)} cities on the board, {len(have)} already on file")
     print(f"asking about {len(todo)}, one a second\n", flush=True)
 
-    found = missed = 0
+    found = missed = unasked = 0
     for i, (city, state) in enumerate(todo, 1):
         got = ask(city, state)
         key = f"{city}|{state}"
-        if got:
-            have[key] = got
-            found += 1
-        else:
+        if got is None:
+            # WE NEVER ASKED. Write nothing: an absent row is one the next run
+            # picks up, and a "no match" row is one it skips forever.
+            unasked += 1
+            print(f"  could not ask: {city}, {state} "
+                  f"(left off file so the next run retries)", flush=True)
+        elif got is NO_MATCH:
             # Recorded as a failure so the next run knows it asked, and so
             # nobody mistakes an absent city for one nobody looked up.
             have[key] = {"lat": None, "lon": None,
@@ -131,13 +204,17 @@ def main() -> int:
                          "matched": None, "source": "nominatim: no match"}
             missed += 1
             print(f"  no match: {city}, {state}", flush=True)
+        else:
+            have[key] = got
+            found += 1
         if i % 25 == 0:
             print(f"  ... {i}/{len(todo)} ({found} found)", flush=True)
         time.sleep(PAUSE)
 
     OUT.write_text(json.dumps(have, indent=1, sort_keys=True) + "\n")
     live = sum(1 for v in have.values() if v.get("lat") is not None)
-    print(f"\n{found} resolved, {missed} unresolved this run")
+    print(f"\n{found} resolved, {missed} genuinely not found, "
+          f"{unasked} never asked (left off file to retry)")
     print(f"{OUT.name} now holds {len(have)} cities, {live} with coordinates")
     print("\nA city with no coordinate is left with lat null. It is NOT at "
           "0,0 and must never be filtered as though it were somewhere.")

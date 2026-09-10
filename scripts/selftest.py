@@ -17800,6 +17800,103 @@ def check_an_acronym_cannot_confirm_itself() -> int:
     return errors
 
 
+def check_a_throttled_lookup_is_not_a_city_that_does_not_exist() -> int:
+    """The absence trap, in the geocoder.
+
+    ask() returned None for three different things - a genuine no-match, an
+    HTTP error, and a dead socket - and the caller wrote all three down
+    identically as "nominatim: no match". So being rate-limited became a
+    permanent record that a city does not exist, and because the row was then
+    on file, no later run would ever ask about it again.
+
+    Measured on 2026-09-10: a 206-city run recorded 107 failures, among them
+    Spokane WA, Bozeman MT, Miami Beach FL and Grapevine TX. Every one of
+    them answers on a single request. Re-run after the fix, on a working
+    connection: 105 resolved, 2 genuinely not found, 0 never asked. They were
+    never missing - we were throttled, and wrote the throttling down as
+    geography.
+
+    Downstream that is a distance filter answering "nothing near you" about a
+    conference in the next town, which is this project's oldest rule wearing
+    a different hat: a scan that failed never proves absence.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import geocode_cities as gc
+
+    class Resp:
+        def __init__(self, code, payload=None, boom=False):
+            self.status_code, self._p, self._boom = code, payload, boom
+            self.ok = 200 <= code < 300
+        def json(self):
+            if self._boom:
+                raise ValueError("not json")
+            return self._p
+
+    keep_get, keep_sleep = gc.requests.get, gc.time.sleep
+    calls = {"n": 0}
+    try:
+        gc.time.sleep = lambda *_a, **_k: None
+
+        # 1. THROTTLED THROUGHOUT. Never an answer about the place, so None -
+        #    and the caller must write nothing at all.
+        gc.requests.get = lambda *a, **k: (calls.__setitem__("n", calls["n"] + 1)
+                                           or Resp(429))
+        got = gc.ask("Spokane", "WA")
+        if got is not None:
+            errors += fail(
+                f"a lookup that was rate-limited every time returned {got!r}. "
+                f"Only None may mean 'we could not ask' - anything else is "
+                f"written down as a fact about the city")
+        if calls["n"] < 2:
+            errors += fail(f"a 429 was accepted on the first try ({calls['n']} "
+                           f"request). Being asked to slow down is not an "
+                           f"answer; it has to be retried")
+
+        # 2. THROTTLED, THEN ANSWERED. The retry is the point.
+        seq = [Resp(429), Resp(200, [{"lat": "47.6588", "lon": "-117.4260",
+                                      "display_name": "Spokane, Washington"}])]
+        gc.requests.get = lambda *a, **k: seq.pop(0)
+        got = gc.ask("Spokane", "WA")
+        if not isinstance(got, dict) or got.get("lat") is None:
+            errors += fail(f"a lookup that answered on the second try came "
+                           f"back as {got!r} instead of a coordinate")
+
+        # 3. ASKED, AND THERE IS GENUINELY NO SUCH PLACE. A real answer, and
+        #    the only one that may be recorded as a failure.
+        gc.requests.get = lambda *a, **k: Resp(200, [])
+        if gc.ask("Nowhereville", "ZZ") is not gc.NO_MATCH:
+            errors += fail("an empty result set did not come back as NO_MATCH, "
+                           "so a real 'no such city' cannot be told apart from "
+                           "a connection that failed")
+
+        # 4. A DEAD SOCKET IS NOT AN ANSWER EITHER.
+        def boom(*a, **k):
+            raise OSError("connection reset")
+        gc.requests.get = boom
+        if gc.ask("Bozeman", "MT") is not None:
+            errors += fail("a dead socket was reported as something other than "
+                           "'we could not ask'")
+    finally:
+        gc.requests.get, gc.time.sleep = keep_get, keep_sleep
+
+    # AND THE LIVE FILE CARRIES NO PHANTOM FAILURES. Every city recorded as a
+    # no-match must be one the geocoder actually got an answer about.
+    store = json.loads((DATA / "cities.json").read_text())
+    dead = [k for k, v in store.items() if v.get("lat") is None]
+    real = {"Waukesha Ridgeview|WI", "Protective Services Unit SCOTTSDALE|AZ"}
+    phantom = [k for k in dead if k not in real and " " not in k.split("|")[0]]
+    if len(dead) > 12:
+        errors += fail(
+            f"{len(dead)} cities are on file with no coordinate. After the "
+            f"retry fix a full run left 2. A pile of them means throttling is "
+            f"being recorded as geography again: {sorted(dead)[:5]}")
+    return errors
+
+
 def check_two_rows_cannot_promote_the_same_exhibitor_url() -> int:
     """The duplicate-url refusal was blind inside its own run.
 
@@ -19103,6 +19200,7 @@ def main() -> int:
     errors += check_staging_a_catalogue_never_costs_an_observed_fact()
     errors += check_an_organisation_is_not_one_of_its_own_events()
     errors += check_an_acronym_cannot_confirm_itself()
+    errors += check_a_throttled_lookup_is_not_a_city_that_does_not_exist()
     errors += check_two_rows_cannot_promote_the_same_exhibitor_url()
     errors += check_one_event_staged_twice_becomes_one_row_with_both_halves()
     errors += check_a_state_is_matched_whole_and_not_inside_another()

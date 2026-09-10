@@ -6,6 +6,13 @@
   "query": "A Dallas, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Abilene|TX": {
+  "lat": 32.4464,
+  "lon": -99.7476,
+  "matched": "Abilene, Taylor County, Texas, United States",
+  "query": "Abilene, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Account Management Dallas|TX": {
   "lat": null,
   "lon": null,
@@ -25,6 +32,13 @@
   "lon": -96.83,
   "matched": "Addison, Dallas County, Texas, United States",
   "query": "Addison, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Adrian|MI": {
+  "lat": 41.8975,
+  "lon": -84.0373,
+  "matched": "Adrian, Lenawee County, Michigan, 49221, United States",
+  "query": "Adrian, MI, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Albany|NY": {
@@ -62,11 +76,32 @@
   "query": "Allen, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Alpharetta|GA": {
+  "lat": 34.0756,
+  "lon": -84.2946,
+  "matched": "Alpharetta, Fulton County, Georgia, United States",
+  "query": "Alpharetta, GA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Altoona|PA": {
   "lat": 40.5194,
   "lon": -78.3968,
   "matched": "Altoona, Blair County, Pennsylvania, 16601, United States",
   "query": "Altoona, PA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Amarillo|TX": {
+  "lat": 35.2073,
+  "lon": -101.8371,
+  "matched": "Amarillo, Potter County, Texas, United States",
+  "query": "Amarillo, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Anaheim|CA": {
+  "lat": 33.8348,
+  "lon": -117.9117,
+  "matched": "Anaheim, Orange County, California, United States",
+  "query": "Anaheim, CA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Andover|MA": {
@@ -81,6 +116,13 @@
   "lon": -83.7485,
   "matched": "Ann Arbor, Washtenaw County, Michigan, United States",
   "query": "Ann Arbor, MI, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Annapolis|MD": {
+  "lat": 38.9786,
+  "lon": -76.4928,
+  "matched": "Annapolis, Anne Arundel County, Maryland, United States",
+  "query": "Annapolis, MD, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Arlington|TX": {
@@ -111,6 +153,13 @@
   "query": "Ashland, KY, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Ashland|VA": {
+  "lat": 37.7594,
+  "lon": -77.4807,
+  "matched": "Ashland, Hanover County, Virginia, 23005, United States",
+  "query": "Ashland, VA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Atlanta|GA": {
   "lat": 33.7545,
   "lon": -84.3898,
@@ -118,11 +167,32 @@
   "query": "Atlanta, GA, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Atlantic City|NJ": {
+  "lat": 39.3643,
+  "lon": -74.4229,
+  "matched": "Atlantic City, Atlantic County, New Jersey, United States",
+  "query": "Atlantic City, NJ, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Augusta|ME": {
+  "lat": 44.3148,
+  "lon": -69.7744,
+  "matched": "Augusta, Kennebec County, Maine, 04330, United States",
+  "query": "Augusta, ME, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Aurora|CO": {
   "lat": 39.7401,
   "lon": -104.8733,
   "matched": "Aurora, Adams County, Colorado, United States",
   "query": "Aurora, CO, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Aurora|IL": {
+  "lat": 41.7572,
+  "lon": -88.3148,
+  "matched": "Aurora, Aurora Township, Kane County, Illinois, United States",
+  "query": "Aurora, IL, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Austin|TX": {
@@ -137,6 +207,20 @@
   "lon": -76.6108,
   "matched": "Baltimore, Maryland, United States",
   "query": "Baltimore, MD, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Barre|VT": {
+  "lat": 44.1969,
+  "lon": -72.5007,
+  "matched": "Barre, Washington County, Vermont, 05641, United States",
+  "query": "Barre, VT, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Bastrop|TX": {
+  "lat": 30.0541,
+  "lon": -97.3888,
+  "matched": "Bastrop County, Texas, United States",
+  "query": "Bastrop, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Baton Rogue|LA": {
@@ -160,11 +244,53 @@
   "query": "Battle Creek, MI, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Beaumont|TX": {
+  "lat": 30.0829,
+  "lon": -94.0984,
+  "matched": "Beaumont, Jefferson County, Texas, United States",
+  "query": "Beaumont, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Bellevue|WA": {
+  "lat": 47.6144,
+  "lon": -122.1923,
+  "matched": "Bellevue, King County, Washington, United States",
+  "query": "Bellevue, WA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Beltsville|MD": {
+  "lat": 39.0398,
+  "lon": -76.9272,
+  "matched": "Beltsville, Prince George's County, Maryland, 20705, United States",
+  "query": "Beltsville, MD, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Bennington|VT": {
+  "lat": 42.8789,
+  "lon": -73.1968,
+  "matched": "Bennington, Bennington County, Vermont, United States",
+  "query": "Bennington, VT, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Bensalem|PA": {
+  "lat": 40.1046,
+  "lon": -74.9513,
+  "matched": "Bensalem Township, Bucks County, Pennsylvania, United States",
+  "query": "Bensalem, PA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Benton Harbor|MI": {
   "lat": 42.1167,
   "lon": -86.4542,
   "matched": "Benton Harbor, Berrien County, Michigan, United States",
   "query": "Benton Harbor, MI, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Bethlehem|PA": {
+  "lat": 40.6179,
+  "lon": -75.3787,
+  "matched": "Bethlehem, Northampton County, Pennsylvania, United States",
+  "query": "Bethlehem, PA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Beverly|MA": {
@@ -181,11 +307,46 @@
   "query": "Big Spring, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Binghamton|NY": {
+  "lat": 42.0987,
+  "lon": -75.9125,
+  "matched": "City of Binghamton, Broome County, New York, 13905, United States",
+  "query": "Binghamton, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Birmingham|AL": {
+  "lat": 33.5207,
+  "lon": -86.8024,
+  "matched": "Birmingham, Jefferson County, Alabama, United States",
+  "query": "Birmingham, AL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Bloomington|MN": {
+  "lat": 44.8322,
+  "lon": -93.3205,
+  "matched": "Bloomington, Hennepin County, Minnesota, United States",
+  "query": "Bloomington, MN, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Boca Raton|FL": {
+  "lat": 26.3587,
+  "lon": -80.0831,
+  "matched": "Boca Raton, Palm Beach County, Florida, United States",
+  "query": "Boca Raton, FL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Boise|ID": {
   "lat": 43.6166,
   "lon": -116.2009,
   "matched": "Boise, Ada County, Idaho, United States",
   "query": "Boise, ID, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Bolingbrook|IL": {
+  "lat": 41.7003,
+  "lon": -88.0718,
+  "matched": "Bolingbrook, Will County, Illinois, United States",
+  "query": "Bolingbrook, IL, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Boston|MA": {
@@ -200,6 +361,34 @@
   "lon": -105.2705,
   "matched": "Boulder, Boulder County, Colorado, United States",
   "query": "Boulder, CO, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Bozeman|MT": {
+  "lat": 45.6794,
+  "lon": -111.044,
+  "matched": "Bozeman, Gallatin County, Montana, United States",
+  "query": "Bozeman, MT, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Brattleboro|VT": {
+  "lat": 42.8508,
+  "lon": -72.5573,
+  "matched": "Brattleboro, Windham County, Vermont, United States",
+  "query": "Brattleboro, VT, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Brea|CA": {
+  "lat": 33.917,
+  "lon": -117.8889,
+  "matched": "Brea, Orange County, California, United States",
+  "query": "Brea, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Bridgeport|NJ": {
+  "lat": 39.8006,
+  "lon": -75.3476,
+  "matched": "Bridgeport, Cooper, Bridgeport, Logan Township, Gloucester County, New Jersey, 08014, United States",
+  "query": "Bridgeport, NJ, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Bridgeport|TX": {
@@ -223,11 +412,46 @@
   "query": "Brooklyn, NY, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Broomfield|CO": {
+  "lat": 39.9404,
+  "lon": -105.0521,
+  "matched": "Broomfield, Colorado, United States",
+  "query": "Broomfield, CO, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Brownwood|TX": {
+  "lat": 31.7209,
+  "lon": -98.9819,
+  "matched": "Brownwood, Brown County, Texas, 76801, United States",
+  "query": "Brownwood, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Bryan|TX": {
   "lat": 30.6744,
   "lon": -96.37,
   "matched": "Bryan, Brazos County, Texas, United States",
   "query": "Bryan, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Buffalo|NY": {
+  "lat": 42.8864,
+  "lon": -78.8781,
+  "matched": "Buffalo, Erie County, New York, United States",
+  "query": "Buffalo, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Burleson|TX": {
+  "lat": 30.4765,
+  "lon": -96.6353,
+  "matched": "Burleson County, Texas, United States",
+  "query": "Burleson, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Burlington|VT": {
+  "lat": 44.4762,
+  "lon": -73.2129,
+  "matched": "Burlington, Chittenden County, Vermont, United States",
+  "query": "Burlington, VT, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Calabasas|CA": {
@@ -237,11 +461,39 @@
   "query": "Calabasas, CA, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Carlton|TX": {
+  "lat": 31.9182,
+  "lon": -98.172,
+  "matched": "Carlton, Hamilton County, Texas, 76436, United States",
+  "query": "Carlton, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Carterville|IL": {
+  "lat": 37.7619,
+  "lon": -89.0773,
+  "matched": "Carterville, Williamson County, Illinois, United States",
+  "query": "Carterville, IL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Cary|NC": {
+  "lat": 35.7874,
+  "lon": -78.7812,
+  "matched": "Cary, Wake County, North Carolina, United States",
+  "query": "Cary, NC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Cedar Rapids|IA": {
   "lat": 41.9759,
   "lon": -91.6704,
   "matched": "Cedar Rapids, Linn County, Iowa, United States",
   "query": "Cedar Rapids, IA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Cerritos|CA": {
+  "lat": 33.8644,
+  "lon": -118.0539,
+  "matched": "Cerritos, Los Angeles County, California, 90715, United States",
+  "query": "Cerritos, CA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Champaign|IL": {
@@ -258,6 +510,20 @@
   "query": "Chandler, AZ, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Chantilly|VA": {
+  "lat": 38.8852,
+  "lon": -77.4487,
+  "matched": "Chantilly, Fairfax County, Virginia, United States",
+  "query": "Chantilly, VA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Charleston|SC": {
+  "lat": 32.7884,
+  "lon": -79.9399,
+  "matched": "Charleston, Charleston County, South Carolina, United States",
+  "query": "Charleston, SC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Charlotte|NC": {
   "lat": 35.2272,
   "lon": -80.8431,
@@ -272,11 +538,25 @@
   "query": "Chattanooga, TN, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Cheektowaga|NY": {
+  "lat": 42.9034,
+  "lon": -78.7548,
+  "matched": "Town of Cheektowaga, Erie County, New York, United States",
+  "query": "Cheektowaga, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Chelmsford|MA": {
   "lat": 42.5969,
   "lon": -71.3518,
   "matched": "Chelmsford, Middlesex County, Massachusetts, United States",
   "query": "Chelmsford, MA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Cherry Hill|NJ": {
+  "lat": 39.9348,
+  "lon": -75.0307,
+  "matched": "Cherry Hill Township, Camden County, New Jersey, United States",
+  "query": "Cherry Hill, NJ, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Chicago|IL": {
@@ -286,11 +566,25 @@
   "query": "Chicago, IL, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Chino|CA": {
+  "lat": 34.0134,
+  "lon": -117.6901,
+  "matched": "Chino, San Bernardino County, California, United States",
+  "query": "Chino, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Cincinnati|OH": {
   "lat": 39.1013,
   "lon": -84.5127,
   "matched": "Cincinnati, Hamilton County, Ohio, United States",
   "query": "Cincinnati, OH, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Clearwater|FL": {
+  "lat": 27.9659,
+  "lon": -82.8001,
+  "matched": "Clearwater, Pinellas County, Florida, United States",
+  "query": "Clearwater, FL, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Cleburne|TX": {
@@ -321,6 +615,13 @@
   "query": "Clinton, MS, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Coconut Grove|FL": {
+  "lat": 25.7126,
+  "lon": -80.257,
+  "matched": "Coconut Grove, Miami, Miami-Dade County, Florida, 33146, United States",
+  "query": "Coconut Grove, FL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "College Park|MD": {
   "lat": 38.9807,
   "lon": -76.9369,
@@ -328,11 +629,25 @@
   "query": "College Park, MD, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "College Station|TX": {
+  "lat": 30.6184,
+  "lon": -96.3456,
+  "matched": "College Station, Brazos County, Texas, United States",
+  "query": "College Station, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Colorado Springs|CO": {
   "lat": 38.834,
   "lon": -104.8253,
   "matched": "Colorado Springs, El Paso County, Colorado, United States",
   "query": "Colorado Springs, CO, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Columbia|SC": {
+  "lat": 34.0008,
+  "lon": -81.0352,
+  "matched": "Columbia, Richland County, South Carolina, United States",
+  "query": "Columbia, SC, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Columbus|OH": {
@@ -349,11 +664,46 @@
   "query": "Commerce City, CO, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Conroe|TX": {
+  "lat": 30.3119,
+  "lon": -95.4561,
+  "matched": "Conroe, Montgomery County, Texas, United States",
+  "query": "Conroe, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Cookeville|TN": {
   "lat": 36.1624,
   "lon": -85.4997,
   "matched": "Cookeville, Putnam County, Middle Tennessee, Tennessee, United States",
   "query": "Cookeville, TN, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Corpus Christi|TX": {
+  "lat": 27.7635,
+  "lon": -97.4033,
+  "matched": "Corpus Christi, Nueces County, Texas, United States",
+  "query": "Corpus Christi, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Corsicana|TX": {
+  "lat": 32.0938,
+  "lon": -96.4647,
+  "matched": "Corsicana, Navarro County, Texas, United States",
+  "query": "Corsicana, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Costa Mesa|CA": {
+  "lat": 33.6633,
+  "lon": -117.9033,
+  "matched": "Costa Mesa, Orange County, California, United States",
+  "query": "Costa Mesa, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Country Club Hills|IL": {
+  "lat": 41.5681,
+  "lon": -87.7203,
+  "matched": "Country Club Hills, Bremen Township, Cook County, Illinois, 60478, United States",
+  "query": "Country Club Hills, IL, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Covington|TN": {
@@ -363,11 +713,25 @@
   "query": "Covington, TN, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Cranford|NJ": {
+  "lat": 40.6565,
+  "lon": -74.3036,
+  "matched": "Cranford, Union County, New Jersey, 07016, United States",
+  "query": "Cranford, NJ, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Crossville|TN": {
   "lat": 35.9497,
   "lon": -85.0275,
   "matched": "Crossville, Cumberland County, East Tennessee, Tennessee, United States",
   "query": "Crossville, TN, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Culver City|CA": {
+  "lat": 34.0211,
+  "lon": -118.3965,
+  "matched": "Culver City, Los Angeles County, California, 90232, United States",
+  "query": "Culver City, CA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Dallas-Fort Worth|TX": {
@@ -405,6 +769,13 @@
   "query": "Davie, FL, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Dayton|OH": {
+  "lat": 39.7589,
+  "lon": -84.1916,
+  "matched": "Dayton, Montgomery County, Ohio, United States",
+  "query": "Dayton, OH, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Dearborn|MI": {
   "lat": 42.3223,
   "lon": -83.1763,
@@ -440,6 +811,13 @@
   "query": "Des Moines, IA, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Detroit|MI": {
+  "lat": 42.3316,
+  "lon": -83.0466,
+  "matched": "Detroit, Wayne County, Michigan, United States",
+  "query": "Detroit, MI, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Development Dallas|TX": {
   "lat": 32.7259,
   "lon": -96.9019,
@@ -447,11 +825,25 @@
   "query": "Development Dallas, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "District of Columbia|DC": {
+  "lat": 38.8951,
+  "lon": -77.0364,
+  "matched": "Washington, District of Columbia, United States",
+  "query": "District of Columbia, DC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Dover|DE": {
   "lat": 39.1582,
   "lon": -75.5244,
   "matched": "Dover, Kent County, Delaware, United States",
   "query": "Dover, DE, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Dover|NH": {
+  "lat": 43.1981,
+  "lon": -70.874,
+  "matched": "Dover, Strafford County, New Hampshire, 03820, United States",
+  "query": "Dover, NH, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Draper|UT": {
@@ -468,11 +860,53 @@
   "query": "Dublin, OH, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Dubois|PA": {
+  "lat": 41.1187,
+  "lon": -78.7622,
+  "matched": "DuBois, Clearfield County, Pennsylvania, 15801, United States",
+  "query": "Dubois, PA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Durant|OK": {
+  "lat": 33.992,
+  "lon": -96.3777,
+  "matched": "Durant, Bryan County, Oklahoma, United States",
+  "query": "Durant, OK, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Durham|NC": {
   "lat": 35.9967,
   "lon": -78.9018,
   "matched": "Durham, Durham County, North Carolina, United States",
   "query": "Durham, NC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Easley|SC": {
+  "lat": 34.8269,
+  "lon": -82.5817,
+  "matched": "Easley, Pickens County, South Carolina, 29642, United States",
+  "query": "Easley, SC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "East Rutherford|NJ": {
+  "lat": 40.834,
+  "lon": -74.0971,
+  "matched": "East Rutherford, Bergen County, New Jersey, 07073, United States",
+  "query": "East Rutherford, NJ, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "East Syracuse|NY": {
+  "lat": 43.0653,
+  "lon": -76.0785,
+  "matched": "Village of East Syracuse, Town of DeWitt, Onondaga County, New York, United States",
+  "query": "East Syracuse, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Easton|PA": {
+  "lat": 40.6916,
+  "lon": -75.21,
+  "matched": "Easton, Northampton County, Pennsylvania, United States",
+  "query": "Easton, PA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Eden Prairie|MN": {
@@ -489,6 +923,13 @@
   "query": "El Camino, CA, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "El Monte|CA": {
+  "lat": 34.0752,
+  "lon": -118.0368,
+  "matched": "El Monte, Los Angeles County, California, United States",
+  "query": "El Monte, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "El Paso|TX": {
   "lat": 31.7601,
   "lon": -106.487,
@@ -496,11 +937,53 @@
   "query": "El Paso, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Elgin|IL": {
+  "lat": 42.0373,
+  "lon": -88.2811,
+  "matched": "Elgin, Elgin Township, Kane County, Illinois, United States",
+  "query": "Elgin, IL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Elizabethtown|KY": {
+  "lat": 37.694,
+  "lon": -85.8591,
+  "matched": "Elizabethtown, Hardin County, Kentucky, 42701, United States",
+  "query": "Elizabethtown, KY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Elizabeth|NJ": {
+  "lat": 40.664,
+  "lon": -74.2107,
+  "matched": "Elizabeth, Union County, New Jersey, United States",
+  "query": "Elizabeth, NJ, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Elkhart|IN": {
+  "lat": 41.6013,
+  "lon": -85.8591,
+  "matched": "Elkhart County, Indiana, United States",
+  "query": "Elkhart, IN, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Elmira|NY": {
+  "lat": 42.0898,
+  "lon": -76.8077,
+  "matched": "City of Elmira, Chemung County, New York, United States",
+  "query": "Elmira, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Emeryville|CA": {
   "lat": 37.8314,
   "lon": -122.2865,
   "matched": "Emeryville, Alameda County, California, 94608, United States",
   "query": "Emeryville, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Erie|PA": {
+  "lat": 42.1295,
+  "lon": -80.0853,
+  "matched": "Erie, Erie County, Pennsylvania, United States",
+  "query": "Erie, PA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Everett|WA": {
@@ -524,6 +1007,13 @@
   "query": "Fayetteville, NC, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Federal BOSTON|MA": {
+  "lat": 42.3527,
+  "lon": -71.0534,
+  "matched": "Federal Reserve Bank of Boston, 600, Atlantic Avenue, Church Green, Downtown, Boston, Suffolk County, Massachusetts, 022",
+  "query": "Federal BOSTON, MA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Flat Rock|NC": {
   "lat": 35.2712,
   "lon": -82.4415,
@@ -545,11 +1035,32 @@
   "query": "Florence, KY, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Fontana|CA": {
+  "lat": 34.0923,
+  "lon": -117.4343,
+  "matched": "Fontana, San Bernardino County, California, United States",
+  "query": "Fontana, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Fort Collins|CO": {
   "lat": 40.5872,
   "lon": -105.077,
   "matched": "Fort Collins, Larimer County, Colorado, United States",
   "query": "Fort Collins, CO, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Fort Lauderdale|FL": {
+  "lat": 26.1223,
+  "lon": -80.1434,
+  "matched": "Fort Lauderdale, Broward County, Florida, United States",
+  "query": "Fort Lauderdale, FL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Fort Meade|MD": {
+  "lat": 39.1032,
+  "lon": -76.7465,
+  "matched": "Fort Meade, Anne Arundel County, Maryland, 20755, United States",
+  "query": "Fort Meade, MD, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Fort Mill|SC": {
@@ -571,6 +1082,27 @@
   "lon": -97.3327,
   "matched": "Fort Worth, Tarrant County, Texas, United States",
   "query": "Fort Worth, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Fresno|CA": {
+  "lat": 36.7394,
+  "lon": -119.7848,
+  "matched": "Fresno, Fresno County, California, United States",
+  "query": "Fresno, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Frisco|TX": {
+  "lat": 33.1506,
+  "lon": -96.8238,
+  "matched": "Frisco, Collin County, Texas, United States",
+  "query": "Frisco, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Garland|TX": {
+  "lat": 32.9126,
+  "lon": -96.6389,
+  "matched": "Garland, Dallas County, Texas, United States",
+  "query": "Garland, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Gastonia|NC": {
@@ -622,6 +1154,13 @@
   "query": "Goodyear, AZ, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Gothenburg|NE": {
+  "lat": 40.9277,
+  "lon": -100.162,
+  "matched": "Gothenburg, Dawson County, Nebraska, United States",
+  "query": "Gothenburg, NE, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Grand Blanc|MI": {
   "lat": 42.9275,
   "lon": -83.63,
@@ -634,6 +1173,13 @@
   "lon": -93.5302,
   "matched": "Grand Rapids, Itasca County, Minnesota, 55744, United States",
   "query": "Grand Rapids, MN, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Grapevine|TX": {
+  "lat": 32.9337,
+  "lon": -97.0789,
+  "matched": "Grapevine, Tarrant County, Texas, United States",
+  "query": "Grapevine, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Grayson|KY": {
@@ -650,11 +1196,39 @@
   "query": "Green Bay, WI, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Greensboro|NC": {
+  "lat": 36.0726,
+  "lon": -79.792,
+  "matched": "Greensboro, Guilford County, North Carolina, United States",
+  "query": "Greensboro, NC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Greenville|NC": {
+  "lat": 35.6132,
+  "lon": -77.3725,
+  "matched": "Greenville, Pitt County, North Carolina, United States",
+  "query": "Greenville, NC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Greenville|SC": {
   "lat": 34.8514,
   "lon": -82.3985,
   "matched": "Greenville, Greenville County, South Carolina, United States",
   "query": "Greenville, SC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Greenville|TX": {
+  "lat": 33.1384,
+  "lon": -96.1108,
+  "matched": "Greenville, Hunt County, Texas, United States",
+  "query": "Greenville, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Greenwood Village|CO": {
+  "lat": 39.6172,
+  "lon": -104.9508,
+  "matched": "Greenwood Village, Arapahoe County, Colorado, United States",
+  "query": "Greenwood Village, CO, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Grenada|CA": {
@@ -664,6 +1238,13 @@
   "query": "Grenada, CA, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Hackensack|NJ": {
+  "lat": 40.8871,
+  "lon": -74.0411,
+  "matched": "Hackensack, Bergen County, New Jersey, 07601, United States",
+  "query": "Hackensack, NJ, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Harrisburg|PA": {
   "lat": 40.2663,
   "lon": -76.8861,
@@ -671,11 +1252,32 @@
   "query": "Harrisburg, PA, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Hartford|CT": {
+  "lat": 41.7646,
+  "lon": -72.6909,
+  "matched": "Hartford, Capitol Planning Region, Connecticut, United States",
+  "query": "Hartford, CT, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Hayward|CA": {
+  "lat": 37.6688,
+  "lon": -122.0808,
+  "matched": "Hayward, Alameda County, California, United States",
+  "query": "Hayward, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Hazard|KY": {
   "lat": 37.249,
   "lon": -83.1934,
   "matched": "Hazard, Perry County, Kentucky, United States",
   "query": "Hazard, KY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Hazelwood|MO": {
+  "lat": 38.7761,
+  "lon": -90.3716,
+  "matched": "Hazelwood, Saint Louis County, Missouri, 63042, United States",
+  "query": "Hazelwood, MO, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Hazleton|PA": {
@@ -697,6 +1299,34 @@
   "lon": -114.9823,
   "matched": "Henderson, Clark County, Nevada, United States",
   "query": "Henderson, NV, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Herndon|VA": {
+  "lat": 38.9695,
+  "lon": -77.3859,
+  "matched": "Herndon, Fairfax County, Virginia, United States",
+  "query": "Herndon, VA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "High Point|NC": {
+  "lat": 35.9557,
+  "lon": -80.0053,
+  "matched": "High Point, Guilford County, North Carolina, United States",
+  "query": "High Point, NC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Hillsboro|TX": {
+  "lat": 32.0109,
+  "lon": -97.1304,
+  "matched": "Hillsboro, Hill County, Texas, 76645, United States",
+  "query": "Hillsboro, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Holland|MI": {
+  "lat": 42.7876,
+  "lon": -86.1091,
+  "matched": "Holland, Ottawa County, Michigan, 49423, United States",
+  "query": "Holland, MI, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Honolulu|HI": {
@@ -734,6 +1364,13 @@
   "query": "Huntsville, AL, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Huntsville|TX": {
+  "lat": 30.7235,
+  "lon": -95.5508,
+  "matched": "Huntsville, Walker County, Texas, United States",
+  "query": "Huntsville, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Hutto|TX": {
   "lat": 30.5428,
   "lon": -97.5469,
@@ -762,11 +1399,39 @@
   "query": "II Dallas, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Indianapolis|IN": {
+  "lat": 39.7683,
+  "lon": -86.1584,
+  "matched": "Indianapolis, Center Township, Marion County, Indiana, United States",
+  "query": "Indianapolis, IN, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Indio|CA": {
   "lat": 33.7193,
   "lon": -116.2188,
   "matched": "Indio, Riverside County, California, United States",
   "query": "Indio, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Inglewood|CA": {
+  "lat": 33.9562,
+  "lon": -118.3531,
+  "matched": "Inglewood, Los Angeles County, California, United States",
+  "query": "Inglewood, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Irvine|CA": {
+  "lat": 33.6857,
+  "lon": -117.826,
+  "matched": "Irvine, Orange County, California, United States",
+  "query": "Irvine, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Irving|TX": {
+  "lat": 32.8295,
+  "lon": -96.9442,
+  "matched": "Irving, Dallas County, Texas, United States",
+  "query": "Irving, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Ithaca|NY": {
@@ -790,6 +1455,20 @@
   "query": "Kalamazoo, MI, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Kansas City|MO": {
+  "lat": 39.1001,
+  "lon": -94.5781,
+  "matched": "Kansas City, Jackson County, Missouri, United States",
+  "query": "Kansas City, MO, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Kaufman|TX": {
+  "lat": 32.6016,
+  "lon": -96.3375,
+  "matched": "Kaufman County, Texas, United States",
+  "query": "Kaufman, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Kenosha|WI": {
   "lat": 42.5847,
   "lon": -87.8212,
@@ -797,11 +1476,25 @@
   "query": "Kenosha, WI, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Kerrville|TX": {
+  "lat": 30.0485,
+  "lon": -99.1399,
+  "matched": "Kerrville, Kerr County, Texas, United States",
+  "query": "Kerrville, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Kimball|TN": {
   "lat": 35.0479,
   "lon": -85.6719,
   "matched": "Kimball, Marion County, East Tennessee, Tennessee, United States",
   "query": "Kimball, TN, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Kinston|NC": {
+  "lat": 35.2627,
+  "lon": -77.5816,
+  "matched": "Kinston, Lenoir County, North Carolina, United States",
+  "query": "Kinston, NC, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Knowledge Architecture Dallas|TX": {
@@ -816,6 +1509,20 @@
   "lon": -118.2399,
   "matched": "La Crescenta Avenue, La Crescenta, Los Angeles County, California, 91046, United States",
   "query": "La Crescenta-Montrose, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "La Mirada|CA": {
+  "lat": 33.9061,
+  "lon": -118.0107,
+  "matched": "La Mirada, Los Angeles County, California, United States",
+  "query": "La Mirada, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Lafayette|CO": {
+  "lat": 39.9936,
+  "lon": -105.0897,
+  "matched": "Lafayette, Boulder County, Colorado, 80026, United States",
+  "query": "Lafayette, CO, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Lafayette|LA": {
@@ -839,6 +1546,13 @@
   "query": "Lakewood, CO, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Lancaster|CA": {
+  "lat": 34.6981,
+  "lon": -118.1366,
+  "matched": "Lancaster, Los Angeles County, California, United States",
+  "query": "Lancaster, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Landover|MD": {
   "lat": 38.9253,
   "lon": -76.8815,
@@ -860,11 +1574,25 @@
   "query": "Latrobe, PA, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Lawrence|MA": {
+  "lat": 42.707,
+  "lon": -71.1631,
+  "matched": "Lawrence, Essex County, Massachusetts, United States",
+  "query": "Lawrence, MA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Lawton|OK": {
   "lat": 34.6052,
   "lon": -98.3952,
   "matched": "Lawton, Comanche County, Oklahoma, United States",
   "query": "Lawton, OK, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Lehi|UT": {
+  "lat": 40.3881,
+  "lon": -111.8486,
+  "matched": "Lehi, Utah County, Utah, United States",
+  "query": "Lehi, UT, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Levelland|TX": {
@@ -874,6 +1602,13 @@
   "query": "Levelland, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Lewiston|ME": {
+  "lat": 44.0991,
+  "lon": -70.2177,
+  "matched": "Lewiston, Androscoggin County, Maine, 04240, United States",
+  "query": "Lewiston, ME, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Lexington|KY": {
   "lat": 38.0464,
   "lon": -84.497,
@@ -881,11 +1616,67 @@
   "query": "Lexington, KY, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Linthicum|MD": {
+  "lat": 39.2106,
+  "lon": -76.6626,
+  "matched": "Linthicum, Anne Arundel County, Maryland, United States",
+  "query": "Linthicum, MD, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Little Rock|AR": {
+  "lat": 34.7465,
+  "lon": -92.2896,
+  "matched": "Little Rock, Big Rock Township, Pulaski County, Arkansas, United States",
+  "query": "Little Rock, AR, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Livermore|CA": {
+  "lat": 37.6821,
+  "lon": -121.7681,
+  "matched": "Livermore, Alameda County, California, United States",
+  "query": "Livermore, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Liverpool|NY": {
+  "lat": 43.1065,
+  "lon": -76.2177,
+  "matched": "Village of Liverpool, Town of Salina, Onondaga County, New York, United States",
+  "query": "Liverpool, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Long Beach/Los Angeles County|CA": {
+  "lat": 33.7606,
+  "lon": -118.1362,
+  "matched": "United States Post Office, Granada Avenue, Belmont Shore, Long Beach, Los Angeles County, California, 90803, United Stat",
+  "query": "Long Beach/Los Angeles County, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Long Beach|CA": {
+  "lat": 33.769,
+  "lon": -118.1916,
+  "matched": "Long Beach, Los Angeles County, California, United States",
+  "query": "Long Beach, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Long Island|NY": {
   "lat": 40.8515,
   "lon": -73.0994,
   "matched": "Long Island, New York, United States",
   "query": "Long Island, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Longview|TX": {
+  "lat": 32.5007,
+  "lon": -94.7405,
+  "matched": "Longview, Gregg County, Texas, United States",
+  "query": "Longview, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Los Angeles East|CA": {
+  "lat": 34.0192,
+  "lon": -118.1987,
+  "matched": "Lugo Station Los Angeles Post Office, East 8th Street, Los Angeles, Los Angeles County, California, 90023, United States",
+  "query": "Los Angeles East, CA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Los Angeles|CA": {
@@ -916,11 +1707,39 @@
   "query": "Louisville, KY, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Lowell|MA": {
+  "lat": 42.6414,
+  "lon": -71.3085,
+  "matched": "Lowell, Middlesex County, Massachusetts, United States",
+  "query": "Lowell, MA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Madison|WI": {
   "lat": 43.0747,
   "lon": -89.3842,
   "matched": "Madison, Dane County, Wisconsin, United States",
   "query": "Madison, WI, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Manchester|NH": {
+  "lat": 42.9956,
+  "lon": -71.4548,
+  "matched": "Manchester, Hillsborough County, New Hampshire, United States",
+  "query": "Manchester, NH, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Mansfield|TX": {
+  "lat": 32.5635,
+  "lon": -97.142,
+  "matched": "Mansfield, Tarrant County, Texas, 76063, United States",
+  "query": "Mansfield, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Marble Falls|TX": {
+  "lat": 30.5778,
+  "lon": -98.2757,
+  "matched": "Marble Falls, Burnet County, Texas, 76654, United States",
+  "query": "Marble Falls, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Marshall|TX": {
@@ -951,11 +1770,25 @@
   "query": "McKinney, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "McLean|VA": {
+  "lat": 38.9367,
+  "lon": -77.1858,
+  "matched": "McLean, Fairfax County, Virginia, United States",
+  "query": "McLean, VA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Melbourne|FL": {
   "lat": 28.0785,
   "lon": -80.6078,
   "matched": "Melbourne, Brevard County, Florida, United States",
   "query": "Melbourne, FL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Melissa|TX": {
+  "lat": 33.2862,
+  "lon": -96.5722,
+  "matched": "Melissa, Collin County, Texas, 75454, United States",
+  "query": "Melissa, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Memphis|TN": {
@@ -965,11 +1798,39 @@
   "query": "Memphis, TN, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Menlo Park|CA": {
+  "lat": 37.452,
+  "lon": -122.178,
+  "matched": "Menlo Park, San Mateo County, California, 94025, United States",
+  "query": "Menlo Park, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Menomonee Falls|WI": {
+  "lat": 43.1791,
+  "lon": -88.1171,
+  "matched": "Menomonee Falls, Waukesha County, Wisconsin, United States",
+  "query": "Menomonee Falls, WI, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Meriden|CT": {
+  "lat": 41.5382,
+  "lon": -72.8026,
+  "matched": "Meriden, South Central Connecticut Planning Region, Connecticut, United States",
+  "query": "Meriden, CT, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Mesa|AZ": {
   "lat": 33.4151,
   "lon": -111.8315,
   "matched": "Mesa, Maricopa County, Arizona, United States",
   "query": "Mesa, AZ, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Miami Beach|FL": {
+  "lat": 25.7929,
+  "lon": -80.1353,
+  "matched": "Miami Beach, Miami-Dade County, Florida, United States",
+  "query": "Miami Beach, FL, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Miami Shores|FL": {
@@ -984,6 +1845,13 @@
   "lon": -80.1936,
   "matched": "Miami, Miami-Dade County, Florida, United States",
   "query": "Miami, FL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Midland|TX": {
+  "lat": 31.8369,
+  "lon": -102.0104,
+  "matched": "Midland County, Texas, United States",
+  "query": "Midland, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Milpitas Ames|CA": {
@@ -1014,11 +1882,46 @@
   "query": "Mobile, AL, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Montebello|CA": {
+  "lat": 34.0159,
+  "lon": -118.112,
+  "matched": "Montebello, Los Angeles County, California, United States",
+  "query": "Montebello, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Montgomery|AL": {
   "lat": 32.3777,
   "lon": -86.3091,
   "matched": "Montgomery, Montgomery County, Alabama, United States",
   "query": "Montgomery, AL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Montpelier|VT": {
+  "lat": 44.2602,
+  "lon": -72.575,
+  "matched": "Montpelier, Washington County, Vermont, 05602, United States",
+  "query": "Montpelier, VT, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Morrisville|NC": {
+  "lat": 35.8243,
+  "lon": -78.83,
+  "matched": "Morrisville, Wake County, North Carolina, 27650, United States",
+  "query": "Morrisville, NC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Morton Grove|IL": {
+  "lat": 42.0406,
+  "lon": -87.7826,
+  "matched": "Morton Grove, Niles Township, Cook County, Illinois, 60053, United States",
+  "query": "Morton Grove, IL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Mountain View|CA": {
+  "lat": 37.3894,
+  "lon": -122.0832,
+  "matched": "Mountain View, Santa Clara County, California, United States",
+  "query": "Mountain View, CA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Mt Sterling|KY": {
@@ -1035,6 +1938,13 @@
   "query": "Muskegon, MI, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Myrtle Beach|SC": {
+  "lat": 33.6956,
+  "lon": -78.89,
+  "matched": "Myrtle Beach, Horry County, South Carolina, United States",
+  "query": "Myrtle Beach, SC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Nashville|TN": {
   "lat": 36.1623,
   "lon": -86.7743,
@@ -1042,11 +1952,46 @@
   "query": "Nashville, TN, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "National Harbor|MD": {
+  "lat": 38.7833,
+  "lon": -77.0148,
+  "matched": "National Harbor, Prince George's County, Maryland, 20745, United States",
+  "query": "National Harbor, MD, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Nederland|TX": {
+  "lat": 29.9744,
+  "lon": -93.9924,
+  "matched": "Nederland, Jefferson County, Texas, 77627, United States",
+  "query": "Nederland, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Needham|MA": {
+  "lat": 42.2803,
+  "lon": -71.2361,
+  "matched": "Needham, Norfolk County, Massachusetts, United States",
+  "query": "Needham, MA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "New Bern|NC": {
   "lat": 35.1068,
   "lon": -77.0399,
   "matched": "New Bern, Craven County, North Carolina, United States",
   "query": "New Bern, NC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "New Haven|CT": {
+  "lat": 41.3082,
+  "lon": -72.9251,
+  "matched": "New Haven, South Central Connecticut Planning Region, Connecticut, United States",
+  "query": "New Haven, CT, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "New Orleans|LA": {
+  "lat": 29.9561,
+  "lon": -90.0734,
+  "matched": "New Orleans, Orleans Parish, Louisiana, United States",
+  "query": "New Orleans, LA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "New York City|NY": {
@@ -1077,11 +2022,25 @@
   "query": "Newburgh, NY, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Newport News|VA": {
+  "lat": 36.9775,
+  "lon": -76.4298,
+  "matched": "Newport News, Virginia, United States",
+  "query": "Newport News, VA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Niagara|NY": {
   "lat": 43.2042,
   "lon": -78.7676,
   "matched": "Niagara County, New York, United States",
   "query": "Niagara, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "North Charleston|SC": {
+  "lat": 32.8546,
+  "lon": -79.9748,
+  "matched": "North Charleston, Charleston County, South Carolina, United States",
+  "query": "North Charleston, SC, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Norwalk|CT": {
@@ -1126,6 +2085,13 @@
   "query": "Okaloosa County, FL, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Oklahoma City|OK": {
+  "lat": 35.473,
+  "lon": -97.5171,
+  "matched": "Oklahoma City, Oklahoma County, Oklahoma, United States",
+  "query": "Oklahoma City, OK, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Operations Dallas|TX": {
   "lat": 32.8496,
   "lon": -96.8756,
@@ -1145,6 +2111,27 @@
   "lon": -117.8722,
   "matched": "Orange County, California, United States",
   "query": "Orange County, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Orem|UT": {
+  "lat": 40.2982,
+  "lon": -111.6944,
+  "matched": "Orem, Utah County, Utah, United States",
+  "query": "Orem, UT, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Orlando|FL": {
+  "lat": 28.5421,
+  "lon": -81.379,
+  "matched": "Orlando, Orange County, Florida, United States",
+  "query": "Orlando, FL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Oroville|CA": {
+  "lat": 39.5138,
+  "lon": -121.5564,
+  "matched": "Oroville, Butte County, California, United States",
+  "query": "Oroville, CA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Overland Park|KS": {
@@ -1182,6 +2169,13 @@
   "query": "Park City, UT, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Pasadena|CA": {
+  "lat": 34.1477,
+  "lon": -118.1442,
+  "matched": "Pasadena, Los Angeles County, California, United States",
+  "query": "Pasadena, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Pawtucket|RI": {
   "lat": 41.879,
   "lon": -71.3821,
@@ -1201,6 +2195,13 @@
   "lon": -89.5891,
   "matched": "Peoria, Peoria County, Illinois, United States",
   "query": "Peoria, IL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Pewaukee|WI": {
+  "lat": 43.0846,
+  "lon": -88.2139,
+  "matched": "City of Pewaukee, Waukesha County, Wisconsin, United States",
+  "query": "Pewaukee, WI, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Pflugerville|TX": {
@@ -1252,6 +2253,27 @@
   "query": "Plano, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Plantation|FL": {
+  "lat": 26.1276,
+  "lon": -80.2331,
+  "matched": "Plantation, Broward County, Florida, United States",
+  "query": "Plantation, FL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Plattsburgh|NY": {
+  "lat": 44.6961,
+  "lon": -73.4543,
+  "matched": "City of Plattsburgh, Clinton County, New York, United States",
+  "query": "Plattsburgh, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Point Comfort|TX": {
+  "lat": 28.6797,
+  "lon": -96.5603,
+  "matched": "Point Comfort, Calhoun County, Texas, 77978, United States",
+  "query": "Point Comfort, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Pompano Beach|FL": {
   "lat": 26.2379,
   "lon": -80.1248,
@@ -1271,6 +2293,13 @@
   "lon": -70.2587,
   "matched": "Portland, Cumberland County, Maine, United States",
   "query": "Portland, ME, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Portland|OR": {
+  "lat": 45.5202,
+  "lon": -122.6742,
+  "matched": "Portland, Multnomah County, Oregon, United States",
+  "query": "Portland, OR, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Portsmouth|VA": {
@@ -1294,6 +2323,20 @@
   "query": "Prescott, AZ, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Prosper|TX": {
+  "lat": 33.2372,
+  "lon": -96.7977,
+  "matched": "Prosper, Collin County, Texas, 75078, United States",
+  "query": "Prosper, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Protective Services Unit SCOTTSDALE|AZ": {
+  "lat": null,
+  "lon": null,
+  "matched": null,
+  "query": "Protective Services Unit SCOTTSDALE, AZ, United States",
+  "source": "nominatim: no match"
+ },
  "Providence|RI": {
   "lat": 41.824,
   "lon": -71.4128,
@@ -1315,11 +2358,25 @@
   "query": "Raleigh, NC, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Randolph|MA": {
+  "lat": 42.1626,
+  "lon": -71.0413,
+  "matched": "Randolph, Norfolk County, Massachusetts, 02368, United States",
+  "query": "Randolph, MA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Reading|PA": {
   "lat": 40.3353,
   "lon": -75.9279,
   "matched": "Reading, Berks County, Pennsylvania, United States",
   "query": "Reading, PA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Reston|VA": {
+  "lat": 38.9533,
+  "lon": -77.3465,
+  "matched": "Reston, Fairfax County, Virginia, United States",
+  "query": "Reston, VA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Richardson|TX": {
@@ -1343,6 +2400,13 @@
   "query": "Richmond, VA, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Roanoke|VA": {
+  "lat": 37.271,
+  "lon": -79.9414,
+  "matched": "Roanoke, Virginia, United States",
+  "query": "Roanoke, VA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Rochester|MN": {
   "lat": 44.0234,
   "lon": -92.463,
@@ -1364,11 +2428,39 @@
   "query": "Rockford, IL, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Rosemead|CA": {
+  "lat": 34.0809,
+  "lon": -118.0732,
+  "matched": "Rosemead, Los Angeles County, California, 91770, United States",
+  "query": "Rosemead, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Rosenberg|TX": {
+  "lat": 29.558,
+  "lon": -95.8068,
+  "matched": "Rosenberg, Fort Bend County, Texas, 77471, United States",
+  "query": "Rosenberg, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Round Rock|TX": {
   "lat": 30.5086,
   "lon": -97.6788,
   "matched": "Round Rock, Williamson County, Texas, United States",
   "query": "Round Rock, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Roxboro|NC": {
+  "lat": 36.3938,
+  "lon": -78.9828,
+  "matched": "Roxboro, Person County, North Carolina, 27573, United States",
+  "query": "Roxboro, NC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Rutland|VT": {
+  "lat": 43.6085,
+  "lon": -72.9725,
+  "matched": "Rutland City, Rutland County, Vermont, 05702, United States",
+  "query": "Rutland, VT, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Sacramento|CA": {
@@ -1404,6 +2496,13 @@
   "lon": -111.8868,
   "matched": "Salt Lake City, Salt Lake County, Utah, United States",
   "query": "Salt Lake City, UT, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "San Angelo|TX": {
+  "lat": 31.465,
+  "lon": -100.4405,
+  "matched": "San Angelo, Tom Green County, Texas, United States",
+  "query": "San Angelo, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "San Antonio|TX": {
@@ -1455,6 +2554,13 @@
   "query": "San Francisco, CA, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "San Gabriel|CA": {
+  "lat": 34.0991,
+  "lon": -118.1086,
+  "matched": "San Gabriel, Los Angeles County, California, United States",
+  "query": "San Gabriel, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "San Jose|CA": {
   "lat": 37.3362,
   "lon": -121.8906,
@@ -1469,6 +2575,13 @@
   "query": "San Juan Capistrano, CA, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "San Marcos|TX": {
+  "lat": 29.8826,
+  "lon": -97.9406,
+  "matched": "San Marcos, Hays County, Texas, 78666, United States",
+  "query": "San Marcos, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "San Mateo|CA": {
   "lat": 37.4969,
   "lon": -122.3331,
@@ -1481,6 +2594,27 @@
   "lon": -79.1803,
   "matched": "Sanford, Lee County, North Carolina, United States",
   "query": "Sanford, NC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Santa Ana|CA": {
+  "lat": 33.7495,
+  "lon": -117.8732,
+  "matched": "Santa Ana, Orange County, California, United States",
+  "query": "Santa Ana, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Santa Clarita|CA": {
+  "lat": 34.4128,
+  "lon": -118.5538,
+  "matched": "Santa Clarita, Los Angeles County, California, United States",
+  "query": "Santa Clarita, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Santa Monica|CA": {
+  "lat": 34.0195,
+  "lon": -118.4912,
+  "matched": "Santa Monica, Los Angeles County, California, United States",
+  "query": "Santa Monica, CA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Santa Rosa|CA": {
@@ -1502,6 +2636,20 @@
   "lon": -73.7854,
   "matched": "City of Saratoga Springs, Saratoga County, New York, 12866, United States",
   "query": "Saratoga Springs, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Savannah|GA": {
+  "lat": 32.079,
+  "lon": -81.0921,
+  "matched": "Savannah, Chatham County, Georgia, United States",
+  "query": "Savannah, GA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Schaumburg|IL": {
+  "lat": 42.0334,
+  "lon": -88.0834,
+  "matched": "Schaumburg, Schaumburg Township, Cook County, Illinois, United States",
+  "query": "Schaumburg, IL, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Science Lowell|MA": {
@@ -1532,6 +2680,20 @@
   "query": "Seattle, WA, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Sherman|TX": {
+  "lat": 36.2452,
+  "lon": -101.8859,
+  "matched": "Sherman County, Texas, United States",
+  "query": "Sherman, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Shreveport|LA": {
+  "lat": 32.5135,
+  "lon": -93.7478,
+  "matched": "Shreveport, Caddo Parish, Louisiana, United States",
+  "query": "Shreveport, LA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Sierra Madre|CA": {
   "lat": 34.1617,
   "lon": -118.0528,
@@ -1544,6 +2706,13 @@
   "lon": -96.7294,
   "matched": "Sioux Falls, Sioux Falls Township, Minnehaha County, South Dakota, United States",
   "query": "Sioux Falls, SD, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Skokie|IL": {
+  "lat": 42.0263,
+  "lon": -87.7521,
+  "matched": "Skokie, Niles Township, Cook County, Illinois, United States",
+  "query": "Skokie, IL, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Smithfield|NC": {
@@ -1572,6 +2741,41 @@
   "lon": -71.0995,
   "matched": "Somerville, Middlesex County, Massachusetts, United States",
   "query": "Somerville, MA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Southlake|TX": {
+  "lat": 32.9412,
+  "lon": -97.1342,
+  "matched": "Southlake, Tarrant County, Texas, 76092, United States",
+  "query": "Southlake, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Spartanburg|SC": {
+  "lat": 34.9498,
+  "lon": -81.932,
+  "matched": "Spartanburg, Spartanburg County, South Carolina, United States",
+  "query": "Spartanburg, SC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Spokane|WA": {
+  "lat": 47.6572,
+  "lon": -117.4235,
+  "matched": "Spokane, Spokane County, Washington, United States",
+  "query": "Spokane, WA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Springfield|IL": {
+  "lat": 39.799,
+  "lon": -89.644,
+  "matched": "Springfield, Sangamon County, Illinois, United States",
+  "query": "Springfield, IL, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Springville|UT": {
+  "lat": 40.1652,
+  "lon": -111.6115,
+  "matched": "Springville, Utah County, Utah, 84663, United States",
+  "query": "Springville, UT, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "St. Louis|MO": {
@@ -1609,11 +2813,32 @@
   "query": "Sterling, VA, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Stevens Point|WI": {
+  "lat": 44.5234,
+  "lon": -89.5844,
+  "matched": "Stevens Point, Portage County, Wisconsin, United States",
+  "query": "Stevens Point, WI, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Strasburg|PA": {
   "lat": 39.9832,
   "lon": -76.1841,
   "matched": "Strasburg, Lancaster County, Pennsylvania, 17579, United States",
   "query": "Strasburg, PA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Suffolk|VA": {
+  "lat": 36.7281,
+  "lon": -76.5835,
+  "matched": "Suffolk, Virginia, United States",
+  "query": "Suffolk, VA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Sugar Land|TX": {
+  "lat": 29.6197,
+  "lon": -95.6349,
+  "matched": "Sugar Land, Fort Bend County, Texas, United States",
+  "query": "Sugar Land, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Sunnyvale|CA": {
@@ -1644,6 +2869,13 @@
   "query": "Syracuse, NY, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Tacoma|WA": {
+  "lat": 47.2455,
+  "lon": -122.4383,
+  "matched": "Tacoma, Pierce County, Washington, United States",
+  "query": "Tacoma, WA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Tallahassee|FL": {
   "lat": 30.4381,
   "lon": -84.2809,
@@ -1658,12 +2890,33 @@
   "query": "Tampa, FL, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Tbd|NY": {
+  "lat": 33.0669,
+  "lon": -80.2564,
+  "matched": "TBD, Dorchester County, South Carolina, 28483, United States",
+  "query": "Tbd, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Teaneck|NJ": {
+  "lat": 40.886,
+  "lon": -74.0073,
+  "matched": "Teaneck Township, Bergen County, New Jersey, United States",
+  "query": "Teaneck, NJ, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Telengana|IN": {
   "lat": null,
   "lon": null,
   "matched": null,
   "query": "Telengana, IN, United States",
   "source": "nominatim: no match"
+ },
+ "Temecula Valley|CA": {
+  "lat": 33.501,
+  "lon": -117.1163,
+  "matched": "Temecula Valley High School, Via Cerda, Temecula, Riverside County, California, 95291, United States",
+  "query": "Temecula Valley, CA, United States",
+  "source": "nominatim.openstreetmap.org"
  },
  "Temecula|CA": {
   "lat": 33.4946,
@@ -1686,6 +2939,48 @@
   "query": "Terrell, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Tewksbury|MA": {
+  "lat": 42.6106,
+  "lon": -71.2342,
+  "matched": "Tewksbury, Middlesex County, Massachusetts, 01876, United States",
+  "query": "Tewksbury, MA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Texarkana|AR": {
+  "lat": 33.4254,
+  "lon": -94.0431,
+  "matched": "Texarkana, Miller County, Arkansas, 71854, United States",
+  "query": "Texarkana, AR, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "The Woodlands|TX": {
+  "lat": 30.1734,
+  "lon": -95.5047,
+  "matched": "The Woodlands, Montgomery County, Texas, United States",
+  "query": "The Woodlands, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Thousand Oaks|CA": {
+  "lat": 34.1706,
+  "lon": -118.8376,
+  "matched": "Thousand Oaks, Ventura County, California, United States",
+  "query": "Thousand Oaks, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Tonawanda|NY": {
+  "lat": 43.0207,
+  "lon": -78.8784,
+  "matched": "City of Tonawanda, Erie County, New York, United States",
+  "query": "Tonawanda, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Torrance|CA": {
+  "lat": 33.8371,
+  "lon": -118.3414,
+  "matched": "Torrance, Los Angeles County, California, United States",
+  "query": "Torrance, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Trenton|NJ": {
   "lat": 40.2203,
   "lon": -74.7659,
@@ -1698,6 +2993,13 @@
   "lon": -73.6918,
   "matched": "City of Troy, Rensselaer County, New York, United States",
   "query": "Troy, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Tualatin|OR": {
+  "lat": 45.3809,
+  "lon": -122.7694,
+  "matched": "Tualatin, Washington County, Oregon, 97062, United States",
+  "query": "Tualatin, OR, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Tucson|AZ": {
@@ -1721,11 +3023,25 @@
   "query": "Tullahoma, TN, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Tulsa|OK": {
+  "lat": 36.1563,
+  "lon": -95.9928,
+  "matched": "Tulsa, Oklahoma, United States",
+  "query": "Tulsa, OK, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Ukiah|CA": {
   "lat": 39.1502,
   "lon": -123.2078,
   "matched": "Ukiah, Mendocino County, California, 95482, United States",
   "query": "Ukiah, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Usa|AZ": {
+  "lat": 33.6661,
+  "lon": -111.9738,
+  "matched": "SUMCO USA, Desert View, Phoenix, Maricopa County, Arizona, United States",
+  "query": "Usa, AZ, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Usa|CA": {
@@ -1763,6 +3079,13 @@
   "query": "Usa, NY, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Usa|UT": {
+  "lat": 40.7516,
+  "lon": -111.8897,
+  "matched": "Grifols Biomat USA, 38, 800 South, Ballpark, Salt Lake City, Salt Lake County, Utah, 84111, United States",
+  "query": "Usa, UT, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Uvalde|TX": {
   "lat": 29.3004,
   "lon": -99.7733,
@@ -1784,11 +3107,25 @@
   "query": "Waco, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Wake|NC": {
+  "lat": 35.7979,
+  "lon": -78.6118,
+  "matched": "Wake County, North Carolina, United States",
+  "query": "Wake, NC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Waltham|MA": {
   "lat": 42.3762,
   "lon": -71.2356,
   "matched": "Waltham, Middlesex County, Massachusetts, United States",
   "query": "Waltham, MA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Warrenton|VA": {
+  "lat": 38.7135,
+  "lon": -77.7954,
+  "matched": "Warrenton, Fauquier County, Virginia, United States",
+  "query": "Warrenton, VA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Washington|DC": {
@@ -1804,6 +3141,20 @@
   "matched": "Waterbury Center, Waterbury, Washington County, Vermont, United States",
   "query": "Waterbury Center, VT, United States",
   "source": "nominatim.openstreetmap.org"
+ },
+ "Watertown|MA": {
+  "lat": 42.3653,
+  "lon": -71.1843,
+  "matched": "Watertown, Middlesex County, Massachusetts, United States",
+  "query": "Watertown, MA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Waukesha Ridgeview|WI": {
+  "lat": null,
+  "lon": null,
+  "matched": null,
+  "query": "Waukesha Ridgeview, WI, United States",
+  "source": "nominatim: no match"
  },
  "Wausau|WI": {
   "lat": 44.9598,
@@ -1833,6 +3184,13 @@
   "query": "Weslaco, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "West Dallas|TX": {
+  "lat": 32.7675,
+  "lon": -96.6036,
+  "matched": "VFW Post, 509, West Main Street, Mesquite, Dallas County, Texas, 75149, United States",
+  "query": "West Dallas, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "West Hollywood|CA": {
   "lat": 34.0923,
   "lon": -118.3693,
@@ -1854,6 +3212,34 @@
   "query": "Westchester, NY, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Westminster|CA": {
+  "lat": 33.7579,
+  "lon": -117.9859,
+  "matched": "Westminster, Orange County, California, United States",
+  "query": "Westminster, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Westminster|CO": {
+  "lat": 39.8367,
+  "lon": -105.0372,
+  "matched": "Westminster, Adams County, Colorado, United States",
+  "query": "Westminster, CO, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "White Plains|NY": {
+  "lat": 41.034,
+  "lon": -73.7629,
+  "matched": "City of White Plains, Westchester County, New York, United States",
+  "query": "White Plains, NY, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Whittier|CA": {
+  "lat": 33.9749,
+  "lon": -118.0339,
+  "matched": "Whittier, Los Angeles County, California, United States",
+  "query": "Whittier, CA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Wichita Falls|TX": {
   "lat": 33.9005,
   "lon": -98.5021,
@@ -1861,11 +3247,25 @@
   "query": "Wichita Falls, TX, United States",
   "source": "nominatim.openstreetmap.org"
  },
+ "Wichita|KS": {
+  "lat": 37.6922,
+  "lon": -97.3375,
+  "matched": "Wichita, Sedgwick County, Kansas, United States",
+  "query": "Wichita, KS, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
  "Wilkes-Barre|PA": {
   "lat": 41.2465,
   "lon": -75.8817,
   "matched": "Wilkes-Barre, Luzerne County, Pennsylvania, United States",
   "query": "Wilkes-Barre, PA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Williamsburg|VA": {
+  "lat": 37.2712,
+  "lon": -76.7,
+  "matched": "Williamsburg, Virginia, United States",
+  "query": "Williamsburg, VA, United States",
   "source": "nominatim.openstreetmap.org"
  },
  "Williamsport|PA": {
@@ -1880,6 +3280,48 @@
   "lon": -75.5466,
   "matched": "Wilmington, New Castle County, Delaware, United States",
   "query": "Wilmington, DE, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Winchester|VA": {
+  "lat": 39.1852,
+  "lon": -78.1652,
+  "matched": "Winchester, Virginia, United States",
+  "query": "Winchester, VA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Winston-Salem|NC": {
+  "lat": 36.0998,
+  "lon": -80.2441,
+  "matched": "Winston-Salem, Forsyth County, North Carolina, United States",
+  "query": "Winston-Salem, NC, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Woburn|MA": {
+  "lat": 42.4793,
+  "lon": -71.1523,
+  "matched": "Woburn, Middlesex County, Massachusetts, 01801, United States",
+  "query": "Woburn, MA, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Woodward|TX": {
+  "lat": 28.5336,
+  "lon": -99.3209,
+  "matched": "Woodward, La Salle County, Texas, United States",
+  "query": "Woodward, TX, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Yellow Springs|OH": {
+  "lat": 39.8045,
+  "lon": -83.8925,
+  "matched": "Yellow Springs, Miami Township, Greene County, Ohio, 45387, United States",
+  "query": "Yellow Springs, OH, United States",
+  "source": "nominatim.openstreetmap.org"
+ },
+ "Ypsilanti|MI": {
+  "lat": 42.2411,
+  "lon": -83.6118,
+  "matched": "Ypsilanti, Washtenaw County, Michigan, United States",
+  "query": "Ypsilanti, MI, United States",
   "source": "nominatim.openstreetmap.org"
  }
 }
