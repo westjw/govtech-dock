@@ -522,6 +522,15 @@ def _names_the_org(page: str, url: str, org_url: str | None,
         return True
     if not words:
         return False              # nothing to look for is not evidence of ours
+    # THE NAME RUN TOGETHER, which is how a url writes it. ADvancing States
+    # sells its floor at form.jotform.com/ADvancingStates/2026-hcbs-... - the
+    # organisation is named outright, and a word-boundary test cannot see it,
+    # because "advancing" and "states" are one token there. So the WHOLE name
+    # closed up is accepted, which is specific; a single word inside a longer
+    # token is not, because that is how "kansas" was found inside "arkansas".
+    joined = "".join(words)
+    if len(joined) >= 8 and joined in re.sub(r"[^a-z0-9]", "", hay):
+        return True
     hit = sum(1 for w in words if re.search(rf"\b{re.escape(w)}\b", hay))
     return hit >= min(2, len(words))
 
@@ -641,9 +650,17 @@ def distinguishing(event_name: str, siblings, org_name: str = "",
     "NARUC Annual Meeting" are - one event registered twice, a duplicate for
     a person to merge rather than a directory to hunt for.
     """
+    # TWO CHARACTERS CAN BE THE WHOLE DISTINCTION. A three-letter floor threw
+    # away exactly the tokens that tell these events apart - ARTBA's "P3
+    # Conference" from its National Convention, SPORTSETA's "4S Summit" from
+    # its Symposium - and both were then reported as one event staged twice,
+    # which would have a person merge two real conferences. Short function
+    # words are handled by name, not by length.
+    short = {"of", "on", "at", "to", "by", "in", "an", "or", "a"}
+
     def toks(t):
         return {w for w in re.findall(r"[a-z0-9]+", (t or "").lower())
-                if len(w) > 2}
+                if len(w) >= 2 and w not in short}
     mine = toks(event_name) - _NOISE - toks(org_name) - toks(org_code)
     for sib in siblings:
         mine -= toks(sib)
@@ -769,9 +786,23 @@ def judge(page: str, url: str, host_hint: str | None, geo: str | None = None,
     if doubt:
         return "no", doubt, names
     if not owns(page, url, geo, org_url, parent_site, org_name, org_code):
-        return "wrong_event", ("this list is not on the chapter's own site and "
-                               "names the state nowhere - it reads as the "
-                               "national parent's event, not this chapter's"), names
+        if (geo or "").strip():
+            return "wrong_event", ("this list is not on the chapter's own site "
+                                   "and names the state nowhere - it reads as "
+                                   "the national parent's event, not this "
+                                   "chapter's"), names
+        # A NATIONAL ROW HAS NO PARENT, so saying "the parent's event" would
+        # be a sentence that is not true. floods.org IS the Association of
+        # State Floodplain Managers - the org_url on file, asfpm.org, is the
+        # stale half - and filing that as somebody's parent's event sends a
+        # person looking for the wrong thing. Two real possibilities, and the
+        # note names both.
+        theirs = up.urlsplit(org_url or "").netloc or "the organisation url"
+        return "off_site", (f"this list is on a different host from {theirs} "
+                            f"and names the organisation nowhere a reader "
+                            f"would see whose page it is. Either it belongs "
+                            f"to another body, or the organisation's url on "
+                            f"file is out of date"), names
     mine, why_not = attributes(page, url, event_name, siblings,
                                org_name, org_code)
     if not mine:
@@ -871,7 +902,7 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False,
             e["status"] = "no_directory_link"
             e.pop("directory_note", None)
             continue
-        best = maybe = shot = wrong = unnamed = None
+        best = maybe = shot = wrong = unnamed = offsite = None
         for _t, h in direct[:5]:
             d = fetch(h)
             if not d:
@@ -888,6 +919,8 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False,
                 best = (h, why); break
             if verdict == "wrong_event" and not wrong:
                 wrong = (h, why)
+            if verdict == "off_site" and not offsite:
+                offsite = (h, why)
             if verdict == "unattributed" and not unnamed:
                 unnamed = (h, why)
             if verdict == "needs_person" and not maybe:
@@ -898,7 +931,8 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False,
             # below - so a page refused as somebody else's event was filed as
             # "the sponsor list is a picture" and queued for the capture
             # extension, with the ownership verdict thrown away.
-            if not shot and verdict not in ("wrong_event", "unattributed"):
+            if not shot and verdict not in ("wrong_event", "unattributed",
+                                            "off_site"):
                 pic = image_only(d)
                 shot = (h, pic) if pic else None
         if best:
@@ -924,6 +958,10 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False,
             e["status"] = "parents_event"
             e["candidate_url"], e["directory_note"] = wrong[0], wrong[1]
             print(f"  parent  {e['event_name'][:38]:40} {wrong[0]}")
+        elif offsite:
+            e["status"] = "off_site_and_unnamed"
+            e["candidate_url"], e["directory_note"] = offsite[0], offsite[1]
+            print(f"  offsite {e['event_name'][:38]:40} {offsite[0]}")
         elif shot:
             e["status"] = "list_is_an_image"
             e["candidate_url"] = shot[0]

@@ -972,11 +972,11 @@
    "verified": false,
    "origin": "sources_national2.csv",
    "org_url": "https://www.acrl.org",
-   "status": "directory_unattributed",
+   "status": "parents_event",
    "promoted": false,
    "org_url_why": "names ACRL and ['college', 'libraries', 'research']",
    "candidate_url": "https://www.ala.org/tools/programming",
-   "directory_note": "'ACRL Conference' and 'Annual Conference' both reduce to the same phrase once the organisation's name is taken out - they read as one event staged twice, which is a merge for a person, not a directory to find"
+   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
   },
   {
    "key": "ACRL::annual-conference",
@@ -995,11 +995,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.acrl.org",
-   "status": "directory_unattributed",
+   "status": "parents_event",
    "promoted": false,
    "org_url_why": "names ACRL and ['college', 'libraries', 'research']",
    "candidate_url": "https://www.ala.org/tools/programming",
-   "directory_note": "'Annual Conference' and 'ACRL Conference' both reduce to the same phrase once the organisation's name is taken out - they read as one event staged twice, which is a merge for a person, not a directory to find"
+   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
   },
   {
    "key": "ACT::international-conference",
@@ -1123,11 +1123,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.advancingstates.org",
-   "status": "needs_person",
+   "status": "parents_event",
    "promoted": false,
    "org_url_why": "its own heading reads 'advancing states'",
    "candidate_url": "https://form.jotform.com/ADvancingStates/2026-hcbs-conference-sponsor--exhib",
-   "directory_note": "30 names, mixed (13% carry a corporate marker, 0% name a site section - worth a look before running intake)"
+   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
   },
   {
    "key": "ADVANCING::membership-meetings",
@@ -1146,11 +1146,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.advancingstates.org",
-   "status": "directory_unattributed",
+   "status": "parents_event",
    "promoted": false,
    "org_url_why": "its own heading reads 'advancing states'",
    "candidate_url": "https://form.jotform.com/ADvancingStates/2026-hcbs-conference-sponsor--exhib",
-   "directory_note": "nothing here names this event rather than its sibling(s) - looked for ['membership'] in the url and headings"
+   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
   },
   {
    "key": "AEE::world-energy-conference-expo",
@@ -3236,11 +3236,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.asfpm.org",
-   "status": "directory_unattributed",
+   "status": "parents_event",
    "promoted": false,
    "org_url_why": "names ASFPM and ['floodplain', 'managers']",
    "candidate_url": "https://www.floods.org/conference/sponsors-and-exhibitors/",
-   "directory_note": "'Annual Conference' is made only of words every one of this organisation's events uses, so no page can name it rather than 'State floodplain association conferences'. A person gives it the name it goes by, or rules on the page directly"
+   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
   },
   {
    "key": "ASFPM::state-floodplain-association-conferences",
@@ -3259,11 +3259,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.asfpm.org",
-   "status": "directory_unattributed",
+   "status": "parents_event",
    "promoted": false,
    "org_url_why": "names ASFPM and ['floodplain', 'managers']",
    "candidate_url": "https://www.floods.org/conference/sponsors-and-exhibitors/",
-   "directory_note": "nothing here names this event rather than its sibling(s) - looked for ['floodplain', 'state'] in the url and headings"
+   "directory_note": "this list is not on the chapter's own site and names the state nowhere - it reads as the national parent's event, not this chapter's"
   },
   {
    "key": "ASLA::chapter-events",
@@ -10741,9 +10741,11 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.naruc.org",
-   "status": "org_unreachable",
+   "status": "directory_unattributed",
    "promoted": false,
-   "org_url_why": "names NARUC and ['commissioners', 'regulatory', 'utility']"
+   "org_url_why": "names NARUC and ['commissioners', 'regulatory', 'utility']",
+   "candidate_url": "https://www.naruc.org/summer-summit/sponsorship/",
+   "directory_note": "'NARUC Annual Meeting' is made only of words every one of this organisation's events uses, so no page can name it rather than 'Summer Policy Summit'. A person gives it the name it goes by, or rules on the page directly"
   },
   {
    "key": "NARUC::summer-policy-summit",
@@ -10762,7 +10764,7 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.naruc.org",
-   "status": "org_unreachable",
+   "status": "not_a_directory",
    "promoted": false,
    "org_url_why": "names NARUC and ['commissioners', 'regulatory', 'utility']"
   },
@@ -10783,9 +10785,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.naruc.org",
-   "status": "org_unreachable",
+   "status": "directory_unattributed",
    "promoted": false,
-   "org_url_why": "names NARUC and ['commissioners', 'regulatory', 'utility']"
+   "org_url_why": "names NARUC and ['commissioners', 'regulatory', 'utility']",
+   "candidate_url": "https://www.naruc.org/summer-summit/sponsorship/",
+   "directory_note": "nothing here names this event rather than its sibling(s) - looked for ['winter'] in the url and headings"
   },
   {
    "key": "NARUC_S::naruc-summer-policy-summit",

@@ -8536,9 +8536,26 @@ def _data_fingerprint() -> dict:
     out = {}
     for f in sorted(DATA.glob("*.json")):
         try:
-            out[f.name] = hashlib.sha256(f.read_bytes()).hexdigest()
+            raw = f.read_bytes()
         except OSError:
-            out[f.name] = "unreadable"
+            out[f.name] = ("unreadable", -1)
+            continue
+        # THE SIZE OF THE RECORD, not just its bytes. A file that merely
+        # changed may be a crawl writing results in another terminal while
+        # the suite runs, which is normal and not this check's business. A
+        # file that got SHORTER is the failure this exists for.
+        try:
+            d = json.loads(raw)
+            if isinstance(d, list):
+                n = len(d)
+            elif isinstance(d, dict):
+                n = max([len(v) for v in d.values()
+                         if isinstance(v, (list, dict))] or [len(d)])
+            else:
+                n = -1
+        except Exception:
+            n = -1
+        out[f.name] = (hashlib.sha256(raw).hexdigest(), n)
     return out
 
 
@@ -15556,6 +15573,36 @@ def check_a_chapter_directory_is_not_its_parents() -> int:
               "the name has to be where a reader would see whose page this is")
         errors += 1
 
+    # A NATIONAL BODY HAS NO PARENT, so a refusal must not say it has one.
+    # floods.org IS the Association of State Floodplain Managers; the org_url
+    # on file, asfpm.org, is the stale half. Filing that as "the parent's
+    # event" sends a person looking for a parent that does not exist, when
+    # what is actually wrong is a url they could fix in a minute.
+    v, why, _ = fed.judge(good_page, "https://www.floods.org/sponsors", "X",
+                          None, "https://www.asfpm.org", None, "", (),
+                          "ASFPM (Floodplain Managers)", "ASFPM")
+    if v == "wrong_event":
+        errors += fail("a geo-less row was refused as its PARENT's event. It "
+                       "has no parent - the honest answer is that the page is "
+                       "off-site and names the organisation nowhere")
+    if v != "off_site":
+        errors += fail(f"expected an off_site verdict for a national row on "
+                       f"another host, got {v!r}")
+    if "out of date" not in why:
+        errors += fail(f"the refusal does not offer the likelier cause - that "
+                       f"the organisation's url on file is stale: {why[:90]!r}")
+
+    # THE NAME RUN TOGETHER IS STILL THE NAME. ADvancing States sells its
+    # floor at form.jotform.com/ADvancingStates/... - named outright, and a
+    # word-boundary test cannot see it.
+    if fed.judge(good_page,
+                 "https://form.jotform.com/ADvancingStates/2026-hcbs-sponsor",
+                 "X", None, "https://www.advancingstates.org", None, "", (),
+                 "ADvancing States", "ADVANCING")[0] != "directory":
+        errors += fail("a third-party page whose url names the organisation "
+                       "run together was refused. That is how a url writes a "
+                       "name, and refusing it deletes a real door")
+
     # AND THE SITE ITSELF STILL SETTLES IT, with no name on the page at all.
     # theiacp.org/exhibitors is IACP's however little the page repeats it -
     # the same rule that makes nyplanning.org/about/sponsors New York's.
@@ -18944,16 +18991,33 @@ def main() -> int:
     # unguarded until a mutation-tested check called the real _save() and
     # emptied both event registries without a single guard noticing.
     _data_after = _data_fingerprint()
-    _touched = sorted(f for f in set(_data_before) | set(_data_after)
-                      if _data_before.get(f) != _data_after.get(f)
-                      and f != "admin_journal.jsonl")
-    if _touched:
+    _touched, _shrank = [], []
+    for f in sorted(set(_data_before) | set(_data_after)):
+        if f == "admin_journal.jsonl":
+            continue
+        was, now = _data_before.get(f), _data_after.get(f)
+        if was == now:
+            continue
+        _touched.append(f)
+        if was and now and was[1] > 0 and now[1] < was[1]:
+            _shrank.append(f"{f} ({was[1]} -> {now[1]})")
+    if _shrank:
         errors += fail(
-            f"the selftest changed {len(_touched)} file(s) in data/ while "
-            f"running: {_touched}. A check must work on a copy, never on what "
-            f"it checks - a probe that only stays harmless while the code it "
-            f"probes is correct is not a probe. Restore them from git "
-            f"(`git checkout -- data/`) and point the check at a tempdir.")
+            f"{len(_shrank)} file(s) in data/ got SHORTER while the suite ran: "
+            f"{_shrank}. That is the failure this exists for - a check called "
+            f"the real writer to prove it would refuse, the refusal was "
+            f"mutated away, and 359 chapter rows with 204 org urls were "
+            f"replaced by an empty document with every guard still green. "
+            f"Restore from git (`git checkout -- data/`) and point the check "
+            f"at a tempdir.")
+    elif _touched:
+        # CHANGED BUT NOT SHORTER. Usually a crawl writing results in another
+        # terminal, which is normal - the same reason the journal check
+        # tolerates somebody using the admin while the suite runs. Said out
+        # loud so it is never a silent tolerance.
+        print(f"note: data/ changed while the suite ran, nothing shorter: "
+              f"{_touched}. If no crawl was running, a check is writing to "
+              f"what it checks")
 
     after = _journal_fingerprint()
     if after != _journal_before:
