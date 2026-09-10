@@ -2699,8 +2699,61 @@ const PROPOSAL_KINDS = {
     },
     needsForce: p => false,
   },
+  fact: {
+    accept: 'Write it',
+    evidence(p, line){
+      const e = el('div', 'evi');
+      e.appendChild(line('Proposes:', (p.field || '?') + ' = ' + (p.value == null ? '?' : p.value)));
+      /* THE SENTENCE BESIDE THE VALUE, which is the council rule and the
+         reason _accept_fact refuses a fact whose quote did not survive
+         intake. A year with no quote is a remembered year. */
+      const q = p.quote && typeof p.quote === 'object' ? p.quote : {};
+      const txt = q.text || (typeof p.quote === 'string' ? p.quote : '');
+      e.appendChild(el('div', 'kv', txt ? '“' + txt + '”' : 'no quote survived intake — this cannot be written'));
+      if (q.url || p.url) e.appendChild(el('div', 'kv', q.url || p.url));
+      return e;
+    },
+    needsForce: p => false,
+  },
+  claim: {
+    accept: 'Accept their correction',
+    evidence(p, line){
+      /* THE COMPANY IS THE SOURCE HERE, so what a reader needs is the words
+         themselves and the domain they came from - not a citation, which is
+         what every other kind's evidence block is. */
+      const e = el('div', 'evi');
+      const ed = p.edit || {};
+      e.appendChild(line('Sent by somebody at:', ed.by_domain || 'unknown domain'));
+      if (ed.kind === 'description') {
+        e.appendChild(line('They would like it to read:', ''));
+        e.appendChild(el('div', 'kv', ed.description || ''));
+      } else if (ed.kind === 'profile') {
+        (ed.paragraphs || []).forEach(t => e.appendChild(el('div', 'kv', t)));
+        e.appendChild(el('div', 'kv', 'Lands as their own words — the page will say so, and carry no citation.'));
+      } else if (ed.kind === 'job') {
+        e.appendChild(line('Role:', (ed.title || '') + (ed.location ? ' · ' + ed.location : '')));
+        e.appendChild(el('div', 'kv', ed.url || ''));
+      } else if (ed.kind === 'category') {
+        e.appendChild(line('They ask to be filed under:', ed.wants || '?'));
+        e.appendChild(el('div', 'kv', ed.why || ''));
+        e.appendChild(el('div', 'kv', 'A request, not an edit. Accepting is refused here — move them on the wrong-bucket queue if it is right.'));
+      } else if (ed.kind === 'contact') {
+        e.appendChild(el('div', 'kv', ed.note || ''));
+      } else {
+        e.appendChild(line('Kind:', String(ed.kind)));
+      }
+      return e;
+    },
+    needsForce: p => false,
+  },
 };
-const NO_APPLIER = new Set(['news', 'claim', 'card']);
+/* THE BROWSER'S COPY OF proposal_rulings.NO_APPLIER, and it had drifted:
+   it disabled Accept for `claim` and `card` when Python dispatches both, so
+   the button was dead for two kinds whose doors were open. Kept in step by
+   check_the_two_applier_lists_agree, for the same reason check_brand holds
+   _brand.js against brand.json - a duplicated constant is the one that rots,
+   and this one rots silently into a button nobody can press. */
+const NO_APPLIER = new Set(['news']);
 
 RENDER.proposals = p => {
   const n = el('div', 'item');

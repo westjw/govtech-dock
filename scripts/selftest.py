@@ -7944,6 +7944,298 @@ def check_merged_names_stay_merged() -> int:
     return errors
 
 
+def check_the_claim_queue_draws_what_was_sent() -> int:
+    """A claim row must show the words, not a truncated JSON blob.
+
+    RENDER.proposals falls back to `JSON.stringify(p).slice(0, 400)` for a kind
+    with no entry in PROPOSAL_KINDS. That fallback is deliberate and it is not
+    good enough to rule on: a person deciding whether to publish a sentence
+    about somebody else's company has to be able to read the sentence. Twenty
+    `fact` proposals are being ruled through that blob today, which is how this
+    was noticed.
+
+    Driven under node against the real object literal - a harness that stubbed
+    PROPOSAL_KINDS would be testing the stub, the lesson coAbout already
+    carries.
+    """
+    import json as _json
+    import subprocess
+
+    src = (ROOT / "admin.html").read_text()
+    i = src.find("const PROPOSAL_KINDS = {")
+    j = src.find("\n};\n", i)
+    if i < 0 or j < 0:
+        return fail("admin.html: PROPOSAL_KINDS is gone or no longer ends at "
+                    "column 0, so this guard cannot reach it")
+    literal = src[i:j + 3]
+
+    rows = {
+        "description": {"kind": "description", "by_domain": "acme.com",
+                        "description": "Acme sells CAD to police."},
+        "profile": {"kind": "profile", "by_domain": "acme.com",
+                    "paragraphs": ["We build dispatch software."]},
+        "job": {"kind": "job", "by_domain": "acme.com", "title": "AE, Ohio",
+                "location": "Columbus, OH", "url": "https://acme.com/j/1"},
+        "category": {"kind": "category", "by_domain": "acme.com",
+                     "wants": "Courts & Case Management", "why": "we sell to clerks"},
+        "contact": {"kind": "contact", "by_domain": "acme.com",
+                    "note": "Our HQ moved to Dayton."},
+    }
+    script = """
+// the page's own el(); a stub of the RENDERER would test the stub, but the
+// DOM underneath it has to come from somewhere
+function el(tag, cls, text){
+  const n = {tag, cls, text: text == null ? "" : String(text), kids: []};
+  n.appendChild = (c) => { n.kids.push(c); return c; };
+  return n;
+}
+const document = {createTextNode: (t) => el("#text", null, t)};
+function flat(n){ return (n.text || "") + " " + (n.kids || []).map(flat).join(" "); }
+const line = (label, val) => { const d = el("div"); d.appendChild(el("b", null, label + " "));
+                               d.appendChild(document.createTextNode(val)); return d; };
+%s
+const rows = %s;
+const out = {};
+for (const [k, edit] of Object.entries(rows)) {
+  out[k] = flat(PROPOSAL_KINDS.claim.evidence({kind: "claim", id: "acme", edit}, line));
+}
+console.log(JSON.stringify(out));
+""" % (literal, _json.dumps(rows))
+    r = subprocess.run(["node", "-e", script], capture_output=True, text=True,
+                       timeout=30)
+    if r.returncode != 0:
+        return fail(f"the claim renderer threw under node: "
+                    f"{r.stderr.strip()[:300]}")
+    got = _json.loads(r.stdout)
+    errors = 0
+    want = {
+        "description": ["acme.com", "Acme sells CAD to police."],
+        # the words, and the fact that they will be published AS the company's
+        "profile": ["We build dispatch software.", "own words"],
+        "job": ["AE, Ohio", "Columbus, OH", "https://acme.com/j/1"],
+        # a category row must say on its face that accepting is refused, or
+        # the owner clicks Accept and learns it from an error
+        "category": ["Courts & Case Management", "we sell to clerks", "request"],
+        "contact": ["Our HQ moved to Dayton."],
+    }
+    for kind, needles in want.items():
+        for n in needles:
+            if n not in got[kind]:
+                errors += fail(f"the {kind} claim row does not show {n!r} - a "
+                               f"person cannot rule on what they cannot read")
+    return errors
+
+
+def check_the_two_applier_lists_agree() -> int:
+    """admin.html's NO_APPLIER must be proposal_rulings.NO_APPLIER.
+
+    The browser keeps its own copy because a page cannot import Python, which
+    is the same duplication check_brand and check_alert_vocabulary exist for -
+    and this copy had already drifted. It held `claim` and `card` when Python
+    dispatched both, so the Accept button was disabled on two kinds whose
+    doors were open, and the failure is silent in the worst way: the queue
+    renders, the count is right, the row is there, and the button simply does
+    not respond. Nothing errors and nobody is told why.
+
+    Drift the other way is worse still - a kind ENABLED here with no applier
+    behind it lets somebody click Accept and get a refusal they were told
+    would not happen.
+    """
+    import re as _re
+
+    import proposal_rulings as PR
+
+    src = (ROOT / "admin.html").read_text()
+    m = _re.search(r"const NO_APPLIER = new Set\(\[([^\]]*)\]\)", src)
+    if not m:
+        return fail("admin.html no longer declares NO_APPLIER where this guard "
+                    "can find it; the two lists can now drift unwatched")
+    page = {s.strip().strip("'\"") for s in m.group(1).split(",") if s.strip()}
+    code = set(PR.NO_APPLIER)
+    if page != code:
+        return fail(
+            f"admin.html NO_APPLIER={sorted(page)} but "
+            f"proposal_rulings.NO_APPLIER={sorted(code)}. "
+            + (f"Accept is dead for {sorted(page - code)} though the door is "
+               f"open. " if page - code else "")
+            + (f"Accept is live for {sorted(code - page)} with nothing behind "
+               f"it. " if code - page else ""))
+    return 0
+
+
+def check_a_company_can_correct_its_own_record() -> int:
+    """The claim door lands what the company sent, through the doors that own it.
+
+    `claim` sat in NO_APPLIER from the day the endpoint shipped: a company
+    could verify its domain, send a correction, be told "a person reviews every
+    change before it appears", and no person could land it. This drives the
+    real `rule()` for each kind claim.js can send, so a kind that loses its
+    door again fails here rather than at somebody else's keyboard.
+
+    Sandboxed - stubs every writer, and points the employer log at a temp file.
+    The suite must not write to what it checks.
+    """
+    import importlib
+
+    import admin
+    import employer_log as EL
+    import proposal_rulings as PR
+
+    errors = 0
+    if "claim" in PR.NO_APPLIER:
+        errors += fail("`claim` is back in NO_APPLIER: a company can send a "
+                       "correction and nobody can accept it")
+
+    real_log = EL.LOG
+    saved = {k: getattr(admin, k) for k in
+             ("read_companies", "save_companies", "save_decisions", "validate",
+              "act_capture")}
+
+    def run(kind, payload, company=None, domain="acme.com"):
+        """One ruling, returning (result, the company record it saw)."""
+        c = company or {"id": "acme", "name": "Acme", "sector": "Public Safety",
+                        "category": "Police", "description": "Old line about Acme."}
+        cos = [c]
+        admin.read_companies = lambda: cos
+        admin.save_companies = lambda *a, **k: None
+        admin.save_decisions = lambda *a, **k: None
+        admin.validate = lambda x: None
+        admin.act_capture = lambda body: captured.append(body) or {"ok": True,
+                                                                   "message": "1 added"}
+        p = {"kind": "claim", "id": c["id"], "name": c["name"], "status": "pending",
+             "edit": dict(payload, kind=kind, by_domain=domain)}
+        return PR.rule({"k": p}, "k", True, why="looks right", by="owner"), c
+
+    captured: list = []
+    tmp = pathlib.Path(tempfile.mkdtemp()) / "employer_events.jsonl"
+    EL.LOG = tmp
+    try:
+        # A REQUEST IS NOT AN EDIT. Landing a category here would silently turn
+        # the one thing claim.js promises is a request into an edit.
+        res, _ = run("category", {"wants": "Courts & Case Management",
+                                  "why": "we sell to clerks"})
+        if not res.get("error") or "request" not in res["error"].lower():
+            errors += fail(f"a claimant's category request was landed as an "
+                           f"edit: {res}")
+        # REFUSED BY NAME, which is claim.js's own rule: a silent drop or a
+        # generic "unknown kind" lets somebody believe they edited it.
+        res, _ = run("competitors", {"drop": "axon"})
+        if not res.get("error"):
+            errors += fail("a claimant edited their own competitor list")
+        elif "no door here" in res["error"]:
+            # The catch-all at the bottom refuses it too, but it refuses it as
+            # an UNKNOWN kind - and the kind's own name appears in that
+            # sentence, which is why a keyword assertion passes over it. A
+            # claimant told "we do not recognise that" learns something
+            # different from one told "that is not yours to edit".
+            errors += fail("a competitors claim falls through to the unknown-"
+                           "kind refusal instead of being refused by name")
+
+        # Unattributable: it would read as the company's own words and nothing
+        # could say whose they were.
+        res, _ = run("description", {"description": "A perfectly fine new line."},
+                     domain="")
+        if not res.get("error"):
+            errors += fail("a correction with no claimant domain was landed")
+
+        # A description overwrites, because a correction to what we wrote is
+        # the point of claiming - and every company already has one.
+        res, c = run("description", {"description": "Acme sells CAD to police."})
+        if res.get("error"):
+            errors += fail(f"a claimant's description was refused: {res}")
+        elif c["description"] != "Acme sells CAD to police.":
+            errors += fail("a claimant's description was accepted and not written")
+
+        # ...but a write that changes nothing must say so.
+        res, _ = run("description", {"description": "Old line about Acme."})
+        if not res.get("error"):
+            errors += fail("a description identical to the one on file was "
+                           "reported as an update")
+
+        # claim.js holds the same floor at the endpoint. It is held again here
+        # because the endpoint is not the only way a proposal can reach this
+        # door - sync_claims replays KV, and a record written before that
+        # floor existed would walk straight through.
+        res, c = run("description", {"description": "We do CAD."})
+        if not res.get("error"):
+            errors += fail(f"a nine-character description overwrote a real "
+                           f"one: {c.get('description')!r}")
+
+        # A write-up lands as the COMPANY's words, with NO manufactured
+        # citation. build_board reads `by` starting "claim:" to stamp
+        # by_kind=company, which is what makes the page say "in their own
+        # words" instead of "written from their site".
+        res, c = run("profile", {"paragraphs": ["We build dispatch software.",
+                                                "Founded by two dispatchers."]})
+        if res.get("error"):
+            errors += fail(f"a claimant's write-up was refused: {res}")
+        else:
+            pr = c.get("profile") or {}
+            if not str(pr.get("by", "")).startswith("claim:"):
+                errors += fail(f"a company's own write-up is not marked as "
+                               f"theirs (by={pr.get('by')!r}); the page will "
+                               f"say 'written from their site' over words we "
+                               f"did not write")
+            if pr.get("provenance") or pr.get("sources"):
+                errors += fail("a company's own write-up was given a citation "
+                               "we never fetched - that dresses an assertion "
+                               "up as a verified reading")
+            if len(pr.get("paragraphs") or []) != 2:
+                errors += fail("paragraphs were lost landing a claimed write-up")
+
+        # A job goes THROUGH act_capture, which owns the junk filter and the
+        # posting key build_board re-derives.
+        captured.clear()
+        res, _ = run("job", {"title": "Account Executive, Ohio",
+                             "location": "Columbus, OH",
+                             "url": "https://acme.com/careers/ae-oh"})
+        if res.get("error"):
+            errors += fail(f"a claimant's posting was refused: {res}")
+        if not captured:
+            errors += fail("a claimant's posting did not go through "
+                           "act_capture, so it skipped the junk filter and the "
+                           "board's own posting key")
+        elif captured[0].get("company_id") != "acme":
+            errors += fail("a claimant's posting was captured against the "
+                           "wrong company")
+
+        # A message appends; it never replaces what was written before.
+        res, c = run("contact", {"note": "Our HQ moved to Dayton."},
+                     company={"id": "acme", "name": "Acme",
+                              "sector": "Public Safety", "category": "Police",
+                              "description": "Old line about Acme.",
+                              "notes": [{"text": "earlier", "by": "owner",
+                                         "on": "2026-01-01", "reads": []}]})
+        if res.get("error"):
+            errors += fail(f"a claimant's message was refused: {res}")
+        elif len(c.get("notes") or []) != 2:
+            errors += fail("a claimant's message replaced the notes already on "
+                           "file instead of appending")
+
+        # BOTH RULINGS ARE EVENTS, and the reject half matters more: an
+        # accept rate built only from accepts is 100% by construction.
+        admin.read_companies = lambda: [{"id": "acme", "name": "Acme"}]
+        admin.save_decisions = lambda *a, **k: None
+        PR.rule({"n": {"kind": "claim", "id": "acme", "name": "Acme",
+                       "status": "pending",
+                       "edit": {"kind": "description", "by_domain": "acme.com",
+                                "description": "something we disagree with"}}},
+                "n", False, why="not what their site says", by="owner")
+        kinds = {e["kind"] for e in EL.events()}
+        for want in ("proposal_accepted", "proposal_rejected"):
+            if want not in kinds:
+                errors += fail(f"ruling on a claimant's proposal wrote no "
+                               f"{want} to the employer log; the funnel can "
+                               f"count what companies sent and never what we "
+                               f"did about it")
+    finally:
+        EL.LOG = real_log
+        for k, v in saved.items():
+            setattr(admin, k, v)
+        importlib.reload(admin)
+    return errors
+
+
 def check_the_employer_log_stores_transitions() -> int:
     """The employer trail must answer a question about a PAST date.
 
@@ -18891,6 +19183,9 @@ def main() -> int:
     errors += check_promotion_refuses_a_generated_name()
     errors += check_the_domain_lives_in_one_place()
     errors += check_the_employer_log_stores_transitions()
+    errors += check_a_company_can_correct_its_own_record()
+    errors += check_the_two_applier_lists_agree()
+    errors += check_the_claim_queue_draws_what_was_sent()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)

@@ -63,8 +63,14 @@ import roles                                                    # noqa: E402
 # person ruling it has that write-up open sentence by sentence - which is
 # the gate review for one row. Both paths call promote_profiles.land, so the
 # written shape, the journal entry and the author are identical.
+# CLAIM LEFT THIS LIST ON 2026-09-10. It had been "genuinely unbuilt" since
+# the claim endpoint shipped, which meant a company could verify its own
+# domain, send a correction or post a role, be told "a person reviews every
+# change before it appears" - and no person could land it however much they
+# agreed. That is the 131-unreachable-rows shape one layer down, and worse,
+# because the promise was made to somebody outside.
 ELSEWHERE = {"profile": "one at a time here, or a category at a time: promote_profiles.py --gate <category>"}
-NO_APPLIER = ("news", "claim")
+NO_APPLIER = ("news",)
 
 
 def _log_employer_ruling(p: dict, key: str, accepted: bool, by: str,
@@ -223,6 +229,135 @@ def _accept_fact(p: dict, by: str, why: str, force: bool) -> dict:
         return {"error": f"{field} was written but its provenance was refused: "
                          f"{bad}. Undo the {field} write if that matters."}
     return {"ok": True, "message": f"{c.get('name')} {field} = {c[field]}"}
+
+
+def _accept_claim(p: dict, by: str, why: str, force: bool) -> dict:
+    """Land a correction the company itself sent, through the door that owns it.
+
+    THE ONE PLACE THE COMPANY IS THE SOURCE. Every other kind here is an agent
+    reading somebody else's page, so the rules are all about evidence: a fact
+    needs its quote, a board needs a verifying fetch, a card needs a duplicate
+    check. A claimant is the firm the record is about, mailing us from its own
+    domain - which changes what counts as evidence and changes nothing about
+    who decides. A person still rules, for the reason claim.js states: a
+    company that could rewrite its own entry unreviewed could rewrite its
+    competitors' context.
+
+    NOTHING IS WRITTEN HERE. Each kind is handed to the door that already owns
+    that write, with the gates that door holds - act_capture's junk filter and
+    posting key for a job, promote_profiles' record shape for a write-up,
+    notes.add's append-never-replace for a message. A gate reimplemented in two
+    places is two gates that drift, and these four are all reachable.
+
+    A DESCRIPTION IS THE ONE OVERWRITE, and it is deliberate. `_accept_fact`
+    refuses a field already on file, correctly - a proposal made weeks ago must
+    not overwrite an answer a person gave since. That rule cannot apply here:
+    all 2,053 companies already carry a description, so refusing an occupied
+    field would refuse every correction, and a correction to what we wrote is
+    the entire point of claiming. The safety net is the one this repo already
+    relies on: save_companies journals the before-image, so admin_undo can take
+    it back, and the why names the domain it came from.
+
+    A CATEGORY IS REFUSED BY NAME. claim.js already tells the claimant it is a
+    request rather than an edit; landing it here would quietly make it an edit,
+    which is the oldest trick in directory listings and the reason that rule
+    exists. It goes to a person on the wrong-bucket queue like any other
+    placement question.
+    """
+    import notes as _notes
+    import promote_profiles as _pp
+
+    edit = p.get("edit") if isinstance(p.get("edit"), dict) else {}
+    kind = edit.get("kind")
+    cid = p.get("id")
+    domain = (edit.get("by_domain") or "").strip()
+    if not cid:
+        return {"error": "this claim proposal names no company"}
+    if not domain:
+        # An unattributable correction is worse than none: it reads as the
+        # company's own words and nothing can say whose they were.
+        return {"error": "no claimant domain survived intake, so nothing here "
+                         "can be attributed to the company. Refuse it."}
+
+    if kind == "category":
+        return {"error": "a category is a REQUEST, not an edit - claim.js says "
+                         "so to the claimant's face, and landing it here would "
+                         f"make it one. Move {p.get('name') or cid} on the "
+                         "wrong-bucket queue if the request is right."}
+    if kind == "competitors":
+        return {"error": "a company does not edit who it is shortlisted "
+                         "against. This should never have reached the queue."}
+
+    companies = admin.read_companies()
+    c = next((x for x in companies if x.get("id") == cid), None)
+    if c is None:
+        return {"error": f"no company {cid!r}"}
+    note = f"correction from {domain}" + (f": {why}" if why else "")
+
+    if kind == "description":
+        text = (edit.get("description") or "").strip()
+        if len(text) < 20:
+            return {"error": "a description that short is not a description"}
+        if text == (c.get("description") or "").strip():
+            # A WRITE THAT CHANGES NOTHING MUST SAY SO - act_patch reported
+            # "updated" over an untouched record and a caller believed it.
+            return {"error": f"{c.get('name')} already reads exactly that; "
+                             f"nothing to write"}
+        c["description"] = text
+        bad = admin.save_companies(companies, "claim-description", why=note, by=by)
+        return ({"error": bad} if bad else
+                {"ok": True, "message": f"{c.get('name')} describes itself: "
+                                        f"{text[:80]}"})
+
+    if kind == "profile":
+        paras = edit.get("paragraphs")
+        if not isinstance(paras, list) or not any(str(s).strip() for s in paras):
+            return {"error": "a write-up with no paragraphs has nothing to land"}
+        try:
+            c["profile"] = _pp.record_from_company(paras, domain, by)
+        except ValueError as e:
+            return {"error": str(e)}
+        # An accepted write-up must be visible; a company that had been hidden
+        # and has now written its own is no longer hidden.
+        c.pop("profile_hidden", None)
+        bad = admin.save_companies(companies, "claim-profile", why=note, by=by)
+        return ({"error": bad} if bad else
+                {"ok": True, "message": f"{c.get('name')} write-up, in their "
+                                        f"own words ({len(c['profile']['paragraphs'])} para)"})
+
+    if kind == "job":
+        title = (edit.get("title") or "").strip()
+        url = (edit.get("url") or "").strip()
+        if not title or not url:
+            return {"error": "a posting needs a title and a link"}
+        # THROUGH act_capture, not around it. It holds the junk and evergreen
+        # filters, the nav-lookalike warning, and the posting key build_board
+        # re-derives - company::title::hash(url+location) - so two reqs with
+        # one title stay two rows. Keying a claimant's job any other way is
+        # the Xplor trap in reverse.
+        res = admin.act_capture({"company_id": cid, "page_url": url,
+                                 "jobs": [{"title": title, "url": url,
+                                           "location": edit.get("location") or ""}]})
+        if res.get("error"):
+            return res
+        return {"ok": True, "message": f"{c.get('name')}: {title} - "
+                                       f"{res.get('message') or 'captured'}"}
+
+    if kind == "contact":
+        text = (edit.get("note") or "").strip()
+        if not text:
+            return {"error": "nothing was written"}
+        try:
+            _notes.add(c, text, by=f"claim:{domain}")
+        except ValueError as e:
+            return {"error": str(e)}
+        bad = admin.save_companies(companies, "claim-note", why=note, by=by)
+        return ({"error": bad} if bad else
+                {"ok": True, "message": f"noted against {c.get('name')}"})
+
+    return {"error": f"a claim of kind {kind!r} has no door here. The kinds "
+                     f"claim.js sends are description, profile, job, category "
+                     f"and contact"}
 
 
 def _accept_where(p: dict, by: str, why: str, force: bool) -> dict:
@@ -491,6 +626,8 @@ def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
         res = _accept_where(p, by, why, force)
     elif kind == "card":
         res = _accept_card(p, by, why, force)
+    elif kind == "claim":
+        res = _accept_claim(p, by, why, force)
     elif kind == "rival":
         res = _accept_rival(p, by, why, force, store)
     elif kind == "profile":

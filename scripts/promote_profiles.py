@@ -354,6 +354,34 @@ def _record(p: dict, by: str, today: str) -> dict:
             "ruled_by": by, "ruled_on": today}
 
 
+def record_from_company(paragraphs: list, domain: str, ruled_by: str,
+                        today: str | None = None) -> dict:
+    """The same written shape, for a write-up the COMPANY sent us itself.
+
+    IT LIVES HERE RATHER THAN IN THE CLAIM DOOR because a shape written in two
+    places is two shapes that drift, and this one is read by build_board,
+    build_site and two selftest fixtures. The claim door supplies the words;
+    this decides what the record looks like.
+
+    THE PROVENANCE IS EMPTY, AND THAT IS THE HONEST ANSWER, not a gap to fill.
+    An agent's write-up carries a url and a quote per sentence because it read
+    them off a page and a reader has to be able to check it. A company writing
+    about itself IS the source: there is no page we fetched, no sentence we
+    quoted, and manufacturing a citation that points at their homepage would
+    dress an assertion up as a verified reading. `by` starts with "claim:" so
+    build_board stamps by_kind="company" and the page says "in their own
+    words, claimed page" instead of "written from their site" - which is the
+    whole of what a reader needs to weigh it.
+    """
+    today = today or dt.date.today().isoformat()
+    paras = [str(s).strip() for s in (paragraphs or []) if str(s).strip()]
+    if not paras:
+        raise ValueError("a write-up needs at least one paragraph")
+    return {"paragraphs": paras, "quote": None, "provenance": [], "sources": [],
+            "written_on": today, "by": f"claim:{domain}",
+            "ruled_by": ruled_by, "ruled_on": today}
+
+
 def land(store: dict, companies: list, keys: list[str], by: str, why: str) -> int:
     """Write accepted write-ups onto companies.json, at most CHUNK per journal entry."""
     seq = companies if isinstance(companies, list) else list(companies.values())
