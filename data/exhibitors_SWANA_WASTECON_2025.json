@@ -1,9 +1,1402 @@
 {
  "event_tag": "SWANA WASTECON 2025",
  "conference": "SWANA WASTECON",
- "found": false,
+ "found": true,
  "source_url": "https://swana.org/docs/default-source/default-document-library/exhibitor-list_11-4-2025.pdf",
- "source_note": "39KB read, 0 candidate name(s) after filtering. Not staged as exhibitors: only 0 name(s) survived the filter, which is a page about an event rather than a list of who is standing at it",
- "exhibitors": [],
- "why": "only 0 name(s) survived the filter, which is a page about an event rather than a list of who is standing at it"
+ "source_note": "Read from the show's own exhibitor-list PDF on 2026-09-10 (7 pages, dated 'As of 11.4.2025'). Each line is a company name followed by a booth number; the number is kept as `booth`. The PDF is the directory - there is no readable web page for this floor.",
+ "exhibitors": [
+  {
+   "name": "Great Lakes Fusion",
+   "booth": "102",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Trash Bin Cleaners Direct LLC (Mfg)",
+   "booth": "103",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Qingdao SOCO New Material Co., Ltd.",
+   "booth": "105",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CommanderAI",
+   "booth": "106",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "E Tech Group",
+   "booth": "107",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "AGRU America",
+   "booth": "108",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Viridi",
+   "booth": "109",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Stonhard",
+   "booth": "110",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Core & Main",
+   "booth": "112",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "SignalFire Wireless Telemetry",
+   "booth": "113",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Fetch Waste Solutions",
+   "booth": "114",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "ClearSpan Structures",
+   "booth": "115",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Your Very Favorite",
+   "booth": "116",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "STYROPEK",
+   "booth": "118",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Perennial Energy, LLC",
+   "booth": "119",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Recycle Coach",
+   "booth": "120",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "PumpOne Environmental",
+   "booth": "121",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Aljon",
+   "booth": "125",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "IPL North America",
+   "booth": "131",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CSG Forte",
+   "booth": "133",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Revive Environmental Technology",
+   "booth": "135",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Boos Resource and Technology Group",
+   "booth": "201",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Enthalpy Analytical",
+   "booth": "203",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Fire Rover, LLC",
+   "booth": "204",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Blackhawk Technology Co",
+   "booth": "205",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Veolia",
+   "booth": "206",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Lytx",
+   "booth": "208",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "BOMAG Americas",
+   "booth": "209",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Machinex",
+   "booth": "210",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Petersen Industries, Inc.",
+   "booth": "213",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Waga Energy",
+   "booth": "214",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Monitoring, Control, & Compliance + BioVac",
+   "booth": "216",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Elkins Earthworks, LLC",
+   "booth": "218",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "RouteSmart Technologies, Inc.",
+   "booth": "220",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Sourcewell",
+   "booth": "225",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Raftelis",
+   "booth": "227",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Safety Vision",
+   "booth": "230",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Ovivo USA",
+   "booth": "231",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Seek Thermal",
+   "booth": "232",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "PaintCare",
+   "booth": "233",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Lummus Technology, LLC",
+   "booth": "234",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Vishay Transducers, Ltd.",
+   "booth": "235",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Rochem Americas",
+   "booth": "239",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ENCON Evaporators",
+   "booth": "241",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Organics Management",
+   "booth": "243",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Ken\u2019s Truck Repair",
+   "booth": "249",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Northland Capital Equipment Finance",
+   "booth": "251",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "METTLER TOLEDO",
+   "booth": "253",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Leachate Management Specialists",
+   "booth": "255",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Commercial Solar Panel Recycling",
+   "booth": "259",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Heartland Industrial Solutions",
+   "booth": "261",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "DNV Chemical",
+   "booth": "263",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Adsorption Research, Inc.",
+   "booth": "265",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Cascade Cart Solutions",
+   "booth": "300",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Waste Advantage Magazine",
+   "booth": "301",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Autostar Heavy Duty",
+   "booth": "302",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "RRT Design & Construction",
+   "booth": "303",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Clean Composting Company",
+   "booth": "304",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Solmax",
+   "booth": "305",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Sennebogen LLC",
+   "booth": "306",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ECT2",
+   "booth": "307",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "WSP USA",
+   "booth": "308",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Qualpay",
+   "booth": "309",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Geotech Environmental Equipment, Inc.",
+   "booth": "313",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Humdinger Equipment",
+   "booth": "317",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Motive",
+   "booth": "319",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "CurbWaste",
+   "booth": "321",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "KEITH MANUFACTURING CO",
+   "booth": "325",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Carolina Software",
+   "booth": "326",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Tiger Payment Solutions",
+   "booth": "328",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Keystone Waste Solutions, LLC",
+   "booth": "330",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "TRC Companies",
+   "booth": "332",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Strong Data",
+   "booth": "334",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Point and Pay",
+   "booth": "338",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "HDR Engineering",
+   "booth": "339",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "MAC Trailer Enterprises, Inc.",
+   "booth": "340",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Morrow Energy, LLC",
+   "booth": "341",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Progressive Environmental Services, LLC",
+   "booth": "342",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "North American Hazardous Materials Management Association (NAHMMA)",
+   "booth": "343",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Cimarron",
+   "booth": "347",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Brown Bear / Broyhill",
+   "booth": "348",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "BDP Industries",
+   "booth": "349",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "DOD Labs, A Division of DOD Technologies, Inc.",
+   "booth": "350",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Komar Industries",
+   "booth": "351",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Reworld",
+   "booth": "352",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "AMERICAN INTERNATIONAL INC",
+   "booth": "353",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Heartland",
+   "booth": "354",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Atmos Technologies",
+   "booth": "358",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Metalcrete Industries",
+   "booth": "360",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Lancaster County Solid Waste Management Authority (LCSWMA)",
+   "booth": "361",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Contenur",
+   "booth": "362",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Schaefer Plastics North America",
+   "booth": "400",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "SCS Engineers",
+   "booth": "401",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Neptune Wash Solutions",
+   "booth": "404",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Paradigm Software, LLC",
+   "booth": "407",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Tarpomatic, Inc.",
+   "booth": "408",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Gershman, Brickner & Bratton, Inc.",
+   "booth": "412",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Watershed Geo",
+   "booth": "413",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CARLSON SOFTWARE",
+   "booth": "416",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Geo-Logic Associates",
+   "booth": "418",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "CQA Solutions, Ltd.",
+   "booth": "419",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "LSC Environmental Products",
+   "booth": "420",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Toter/Wastequip",
+   "booth": "425",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Weaver Consultants Group",
+   "booth": "432",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "PFAS Laboratories",
+   "booth": "438",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "LoCI Controls",
+   "booth": "439",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Brigade Electronics",
+   "booth": "441",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Synergen Met Ltd",
+   "booth": "442",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Suzhou JONO Environmental Technology Co.,LTD",
+   "booth": "443",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "GCI (Grace Consulting, Inc.)",
+   "booth": "447",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "The EcoHero Show",
+   "booth": "448",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Samsara",
+   "booth": "449",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Civil & Environmental Consultants, Inc (CEC)",
+   "booth": "450",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "The Hauler Magazine",
+   "booth": "452",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Firefly AB",
+   "booth": "453",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "VIA Technologies, Inc.",
+   "booth": "454",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "VLS Environmental Solutions",
+   "booth": "455",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Otto Environmental Systems",
+   "booth": "500",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Safewaste USA LLC",
+   "booth": "501",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "SETCO Solid Tire & Rim",
+   "booth": "503",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Burns & McDonnell",
+   "booth": "507",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Tetra Tech",
+   "booth": "509",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Hallco Industries",
+   "booth": "513",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Allonnia",
+   "booth": "514",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Rehrig Pacific Company",
+   "booth": "517",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Green Machine",
+   "booth": "519",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Bigbelly Solar, LLC",
+   "booth": "521",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Waste360/WasteExpo",
+   "booth": "524",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Routeware",
+   "booth": "525",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Envirosuite / Byers Scientific",
+   "booth": "538",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Synagro Technologies, Inc.",
+   "booth": "542",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Terramac",
+   "booth": "543",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Evonik Corporation",
+   "booth": "546",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "MRU Instruments Inc.",
+   "booth": "547",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Environmental Solutions Group",
+   "booth": "548",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Eggersmann Recycling Technology Inc.",
+   "booth": "549",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Environmental Equipment Sales & Services",
+   "booth": "550",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "BTR",
+   "booth": "551",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Coviana",
+   "booth": "552",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Leadpoint Business Services",
+   "booth": "553",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Thermal Instrument Company",
+   "booth": "554",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Diamondback Products, Inc.",
+   "booth": "555",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Ecotec Solutions",
+   "booth": "600",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Republic Services",
+   "booth": "601",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Lorentz Energy",
+   "booth": "602",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Ludlum Measurement Inc",
+   "booth": "603",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "AMP",
+   "booth": "605",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "ECONWARD TECH LLC",
+   "booth": "606",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Vecoplan",
+   "booth": "607",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Bandit Industries, Inc.",
+   "booth": "608",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "tarpARMOR",
+   "booth": "609",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Rotochopper, Inc.",
+   "booth": "612",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "E-Pak Manufacturing",
+   "booth": "614",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "SCAN~LINK Technologies Inc.",
+   "booth": "616",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "The Water & Carbon Group",
+   "booth": "620",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Hauler Hero",
+   "booth": "625",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Qnergy Inc",
+   "booth": "627",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "WIS",
+   "booth": "635",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "EARTHRES, A Division of RESPEC",
+   "booth": "639",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Apis Innovation",
+   "booth": "641",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Jacobs",
+   "booth": "645",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "IETLink",
+   "booth": "646",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Company Wrench",
+   "booth": "648",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Macpactor",
+   "booth": "652",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "APTIM",
+   "booth": "654",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Valicor Environmental Services",
+   "booth": "659",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "TruckPay",
+   "booth": "661",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Bluewater Engineered Storage Systems",
+   "booth": "663",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Buckeye Fluid Solutions",
+   "booth": "665",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Profile Products LLC",
+   "booth": "713",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Enerflex",
+   "booth": "715",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Cardoza Waste Parts Nation",
+   "booth": "724",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "RWI Enhanced Evaporation",
+   "booth": "725",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Skagen Energy Services Inc.",
+   "booth": "726",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Compactor Rentals of America",
+   "booth": "731",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "BWF Envirotec, US",
+   "booth": "733",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Franzen North America Inc",
+   "booth": "735",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Waste Today / Recycling Today Media Group",
+   "booth": "738",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Jacobi Carbons, Inc.",
+   "booth": "739",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Assist Services LLC",
+   "booth": "740",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Euclid Chemical",
+   "booth": "741",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Factory Direct Promos",
+   "booth": "742",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ISCO",
+   "booth": "743",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "EcoVision Environmental",
+   "booth": "758",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Ecodrum",
+   "booth": "760",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Sniffer Robotics",
+   "booth": "762",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Strata Geosystems LLC",
+   "booth": "764",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Lyten",
+   "booth": "812",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "WastAway",
+   "booth": "814",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Kimble Recycling & Disposal, Inc.",
+   "booth": "816",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Ecoverse",
+   "booth": "820",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Larson Design Group",
+   "booth": "822",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Plum Creek Environmental",
+   "booth": "826",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "TRI Environmental",
+   "booth": "828",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Wayste",
+   "booth": "832",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Mighty Binz",
+   "booth": "834",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ZwitterCo",
+   "booth": "836",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "AMCS Group",
+   "booth": "842",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Recoup Technologies Inc.",
+   "booth": "846",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  }
+ ]
 }

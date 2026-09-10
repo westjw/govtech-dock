@@ -1,9 +1,499 @@
 {
  "event_tag": "NAPT Summit 2026",
  "conference": "NAPT Summit",
- "found": false,
+ "found": true,
  "source_url": "https://homebase.map-dynamics.com/napt2026/floorplan",
- "source_note": "46KB read, 1 candidate name(s) after filtering. Not staged as exhibitors: only 1 name(s) survived the filter, which is a page about an event rather than a list of who is standing at it",
- "exhibitors": [],
- "why": "only 1 name(s) survived the filter, which is a page about an event rather than a list of who is standing at it"
+ "source_note": "Read in a real browser on 2026-09-10. map-dynamics draws the plan in JS and lists booth number then company name; the numbers are stripped and kept as booth. This event has no Categories tab, unlike CTAA on the same platform.",
+ "exhibitors": [
+  {
+   "name": "247Security Inc.",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "ADROIT Alternative Transportation Solutions",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "AlphaRoute",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "AMF BRUNS AMERICA",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "AngelTrax",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "AUTO-JET MUFFLER CORP.",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "BESI, Inc",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "BraunAbility",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "BSI",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Buckled In",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Bus Gates, Inc",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Bus Gates, Inc.",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Bus IQ",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "BusPlanner",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "BusRight",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Cadex Insurance Recovery",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Collins Bus",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Easy Way Safety Services Inc",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Education Logistics (Edulog)",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "EverDriven",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "First Light Safety Products",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "First Student, Inc.",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Gatekeeper Systems",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Heliox, A Siemens Business",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "HopSkipDrive",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Hydro-Chem Systems",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Innovative Products, Inc.",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Jasper Engines & Transmissions",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Jenoptik Smart Mobility Solutions",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Lippert",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "METS - Midwest Educational Transportation Services",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Model 1 Commercial Vehicles",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "NAPT HQ",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Nextcom Inc",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "O2 COOL MANUFACTURING, LLC",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Onspot of North America",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Pro-Vision",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Q'Straint/Sure-Lok",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "REI",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "RIDE",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Rite-Hite",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Robotronics",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Rosco Vision",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "S.T.A.R.T. - Levine Security Solutions",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Safe Fleet/Seon",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "SafeGuard/IMMI",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "SaferWatch",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Safety Vision",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Samsara",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "School Bus Fleet",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "School Bus Logistics",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "School Bus Safety Company",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "School BUSRide",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "School Transportation News",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "School-Radio",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "SMART tag",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Sourcewell",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "SPATCO Energy Solutions",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Spheros north America",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Synovia",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Tait Communications",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Thomas Built Buses",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Transit Technologies",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Tyler Technologies",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "United Safety and Survivability Corporation",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Food & Beverage",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Attendee Seating",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  },
+  {
+   "name": "Expo Company Area",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Exhibitor Help Area",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Food and Beverage",
+   "website": null,
+   "detail_url": null,
+   "is_govtech": false,
+   "is_govtech_why": "names a trade that is not a product vendor"
+  }
+ ]
 }

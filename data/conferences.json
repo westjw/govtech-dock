@@ -101,7 +101,7 @@
    "url": "https://www.natat.org/",
    "dates_source": null,
    "dates_confidence": "unreachable",
-   "dates_note": "The National Association of Towns and Townships' entire website is down. natat.org resolves and answers, but every path returns HTTP 500 with the WordPress fatal-error page: 'WordPress \u203a Error / There has been a critical error on this website.' I tried /, /events/, /natat-membership/, /wp-json/wp/v2/pages and /sitemap_index.xml, and tried four different clients - the repo fetcher, plain requests with a desktop Chrome User-Agent, WebFetch, and a real browser - all four got the identical 500. Nothing about any NATaT event can be confirmed from its own source while the site is in this state. This is a site outage, not proof that no NATaT event exists; it is worth re-checking rather than writing off."
+   "dates_note": "The National Association of Towns and Townships' entire website is down. natat.org resolves and answers, but every path returns HTTP 500 with the WordPress fatal-error page: 'WordPress › Error / There has been a critical error on this website.' I tried /, /events/, /natat-membership/, /wp-json/wp/v2/pages and /sitemap_index.xml, and tried four different clients - the repo fetcher, plain requests with a desktop Chrome User-Agent, WebFetch, and a real browser - all four got the identical 500. Nothing about any NATaT event can be confirmed from its own source while the site is in this state. This is a site outage, not proof that no NATaT event exists; it is worth re-checking rather than writing off."
   },
   {
    "block": "Executive / administration",
@@ -185,7 +185,9 @@
    "city": "Fort Worth, TX",
    "next_edition": "2027",
    "dates_source": "https://www.iimc.com/483/2027-IIMC-Annual-Conference",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "sweep_blocked": "The url points at a 32-page CONFERENCE PROGRAMME, not an exhibitor list - session times and room numbers. IIMC's floor needs a different document.",
+   "sweep_blocked_on": "2026-09-10"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -830,7 +832,9 @@
    "city": "Salt Lake City, UT",
    "next_edition": "2027",
    "dates_source": "https://www.itsamericaevents.com/expo/en-us.html",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "sweep_blocked": "The directory now reads '2026 EXHIBITOR DIRECTORY - 0 Exhibitors' and the site advertises the April 2027 event. The 2026 floor was emptied after the show; this needs the 2027 url when it opens.",
+   "sweep_blocked_on": "2026-09-10"
   },
   {
    "block": "Public works and infrastructure",
@@ -1207,7 +1211,7 @@
    "platform": "CadmiumCD eventScribe / Conference Harvester",
    "event_year": "2026",
    "approx_count": 250,
-   "discovery_notes": "APCO 2026, San Antonio, Aug 2-5 2026 (just held). Official 'Exhibitor List / Floor Plan' link from https://apco2026.org/expo/ goes to the eventScribe floor plan (same data at https://www.conferenceharvester.com/floorplan/v2/index.asp?EventKey=JBBFWNZS); both are JS-rendered with no names in HTML. However, the /expo/ page itself is readable and lists sponsors by name (FirstNet, Axon, L3Harris, Motorola, RapidSOS, Comcast, General Motors, Eventide) \u2014 a person opening the floor plan will get the full 250+ exhibitor list.",
+   "discovery_notes": "APCO 2026, San Antonio, Aug 2-5 2026 (just held). Official 'Exhibitor List / Floor Plan' link from https://apco2026.org/expo/ goes to the eventScribe floor plan (same data at https://www.conferenceharvester.com/floorplan/v2/index.asp?EventKey=JBBFWNZS); both are JS-rendered with no names in HTML. However, the /expo/ page itself is readable and lists sponsors by name (FirstNet, Axon, L3Harris, Motorola, RapidSOS, Comcast, General Motors, Eventide) — a person opening the floor plan will get the full 250+ exhibitor list.",
    "event_tag": "APCO 2026",
    "url": "https://www.apco2027.org",
    "dates": "July 25-28, 2027",
@@ -1302,7 +1306,9 @@
    "city": "Long Beach, CA",
    "next_edition": "2026",
    "dates_source": "https://www.iaem.org/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "sweep_blocked": "iaem2026.mapyourshow.com now redirects to iaemconference.org; the mapyourshow instance is gone. Needs a fresh url.",
+   "sweep_blocked_on": "2026-09-10"
   },
   {
    "block": "Public safety",
@@ -1385,7 +1391,9 @@
    "city": "Columbus, OH",
    "next_edition": "2027",
    "dates_source": "https://www.aca.org/conferences/future-conferences",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "sweep_blocked": "The a2z exhibitor page renders nothing without a cookie choice, and eventmap.aspx?shMode=E has no readable booth links. One for a person.",
+   "sweep_blocked_on": "2026-09-10"
   },
   {
    "block": "Courts, corrections, justice",
@@ -1476,7 +1484,7 @@
    "url": "https://www.astho.org/education/upcoming-events/",
    "dates_source": null,
    "dates_confidence": "unannounced",
-   "dates_note": "astho.org answers fine. I read three of ASTHO's own event listings - astho.org/education/upcoming-events/, account.astho.org/Events/Calendar-of-Events and my.astho.org/events/calendar - and every one lists only webinars plus an October 6-7, 2026 Leading Change workshop. No annual meeting or conference edition is posted with dates. my.astho.org/asthoannualmeeting/home returns ASTHO's own \u201cPage Not Found\u201d. I will not name dates ASTHO has not posted."
+   "dates_note": "astho.org answers fine. I read three of ASTHO's own event listings - astho.org/education/upcoming-events/, account.astho.org/Events/Calendar-of-Events and my.astho.org/events/calendar - and every one lists only webinars plus an October 6-7, 2026 Leading Change workshop. No annual meeting or conference edition is posted with dates. my.astho.org/asthoannualmeeting/home returns ASTHO's own “Page Not Found”. I will not name dates ASTHO has not posted."
   },
   {
    "block": "Health and human services",
@@ -1557,7 +1565,7 @@
    "platform": "custom HTML (WordPress on ncsea.org)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "No event-specific exhibitor directory found for the 2026 Leadership Symposium (Aug 10-13, Galt House, Louisville KY) \u2014 the symposium page has no sponsor/exhibitor section. Recorded instead NCSEA's current Corporate Partners page (Platinum: CGI, Conduent, Deloitte, SMI; Gold: Adobe, FAST, GreenCourt, Protech, Stellarware; Silver: Courtland, CSG, Maximus, KPMG, Veritas HHS, YoungWilliams), which is the de facto symposium sponsor roster. ~15 companies listed.",
+   "discovery_notes": "No event-specific exhibitor directory found for the 2026 Leadership Symposium (Aug 10-13, Galt House, Louisville KY) — the symposium page has no sponsor/exhibitor section. Recorded instead NCSEA's current Corporate Partners page (Platinum: CGI, Conduent, Deloitte, SMI; Gold: Adobe, FAST, GreenCourt, Protech, Stellarware; Silver: Courtland, CSG, Maximus, KPMG, Veritas HHS, YoungWilliams), which is the de facto symposium sponsor roster. ~15 companies listed.",
    "event_tag": "NCSEA 2026",
    "sweep": {
     "captured": 15,
@@ -1693,7 +1701,9 @@
    "city": "Houston, TX",
    "next_edition": "2027",
    "dates_source": "https://www.planning.org/conference/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "sweep_blocked": "maps.goeshow.com/planning/national/2026/exhibitor_list.cfm returns an empty body (1 byte) in a real browser. The url is stale or needs a session.",
+   "sweep_blocked_on": "2026-09-10"
   },
   {
    "block": "Community development",
@@ -1907,7 +1917,9 @@
    "city": "Atlanta, GA",
    "next_edition": "2027",
    "dates_source": "https://nce.aasa.org/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "sweep_blocked": "smithbucklin.expocad.com draws the floor in ExpoCAD's canvas and never renders a text exhibitor list - 'Loading Floorplan' is all the DOM holds. Clicking 'Exhibitor List' changes nothing readable. One for a person.",
+   "sweep_blocked_on": "2026-09-10"
   },
   {
    "block": "K-12 education",
@@ -1944,7 +1956,9 @@
    "city": "Pittsburgh, PA",
    "next_edition": "2026",
    "dates_source": "https://network.asbointl.org/annualconference2026/about",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "sweep_blocked": "s6.goeshow.com/asbo/annual/2026/exhibitor_hall_map.cfm renders a page titled 'Exhibit Hall Floorplan' with a zero-length body in a real browser.",
+   "sweep_blocked_on": "2026-09-10"
   },
   {
    "block": "K-12 education",
@@ -2492,7 +2506,7 @@
   {
    "block": "Executive / administration",
    "department": "Counties",
-   "conference": "ACCG \u2013 Advancing Georgia's Counties",
+   "conference": "ACCG – Advancing Georgia's Counties",
    "flagship": false,
    "swept": false,
    "exhibitor_url": "https://marketplace.accg.org/",
@@ -2503,7 +2517,7 @@
    "city": null,
    "dates_source": "https://marketplace.accg.org/",
    "dates_confidence": "unannounced",
-   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as \"ACCG \u2013 Advancing Georgia's Counties\" by https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations. Directory: 17 names, good (18% carry a corporate marker, 0% name a site section). Event name not stated on the page; the organisation's name stands in.",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as \"ACCG – Advancing Georgia's Counties\" by https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations. Directory: 17 names, good (18% carry a corporate marker, 0% name a site section). Event name not stated on the page; the organisation's name stands in.",
    "state_event": {
     "org_code": "CNTY_GA",
     "geo": "Georgia",
@@ -2576,7 +2590,7 @@
   {
    "block": "Public safety",
    "department": "Sheriffs",
-   "conference": "Michigan Sheriffs\u2019 Association",
+   "conference": "Michigan Sheriffs’ Association",
    "flagship": false,
    "swept": false,
    "exhibitor_url": "https://www.misheriff.org/vendors/",
@@ -2587,7 +2601,7 @@
    "city": null,
    "dates_source": "https://www.misheriff.org/vendors/",
    "dates_confidence": "unannounced",
-   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Michigan Sheriffs\u2019 Association' by https://www.misheriff.org/. Directory: 117 names, good (36% carry a corporate marker, 2% name a site section). Event name not stated on the page; the organisation's name stands in.",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Michigan Sheriffs’ Association' by https://www.misheriff.org/. Directory: 117 names, good (36% carry a corporate marker, 2% name a site section). Event name not stated on the page; the organisation's name stands in.",
    "state_event": {
     "org_code": "SHF_MI",
     "geo": "Michigan",
