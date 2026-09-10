@@ -17895,6 +17895,19 @@ def check_a_sibling_event_cannot_claim_its_neighbours_floor() -> int:
             f"{why[:110]!r}. Acting on that merges two real conferences - the "
             f"refusal is right, the reason is not")
 
+    # 5c. TWO CHARACTERS CAN BE THE WHOLE DISTINCTION. A three-letter floor
+    #     on what counts as a word threw away exactly the tokens that tell
+    #     these apart, and both were then reported as one event staged twice.
+    for name, sib, tok in (("P3 Conference", "National Convention", "p3"),
+                           ("4S Summit", "Symposium", "4s")):
+        got = fed.distinguishing(name, [sib], "ARTBA", "ARTBA")
+        if tok not in got:
+            errors += fail(
+                f"{name!r} reduces to {sorted(got)} beside {sib!r}, losing "
+                f"{tok!r}. A two-character token is often the entire "
+                f"difference between two of an organisation's events, and "
+                f"dropping it reports two real conferences as one")
+
     # 6. AN ONLY CHILD IS UNAFFECTED. 201 chapter rows own their org_url
     #    alone, and this rule must cost them nothing.
     ok, why = fed.attributes("<title>Exhibitors</title>", "https://x.test/e",
