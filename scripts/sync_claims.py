@@ -36,6 +36,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import admin                                                    # noqa: E402
 import agents                                                   # noqa: E402
+import employer_log                                             # noqa: E402
 
 CLAIMS = "claims.json"
 EMAILY = re.compile(r"[^\s@]+@[^\s@]+\.[a-z]{2,}", re.I)
@@ -68,16 +69,32 @@ def scrub(rec: dict) -> dict:
     return out
 
 
-def pull(kv) -> tuple[dict, list]:
-    """Returns (claims by company id, claim proposals)."""
+def pull(kv) -> tuple[dict, list, list]:
+    """Returns (claims by company id, claim proposals, the whole trail).
+
+    The trail carries the UNCONFIRMED claims too, which the claims file
+    deliberately does not: a claim that was started and never confirmed is not
+    a claim, so it must never reach the badge - but it is the top of the
+    funnel, and a funnel that only counts the people who finished cannot tell
+    you where anybody stopped. It goes to employer_log, scrubbed, and nowhere
+    else.
+    """
     claims: dict = {}
+    trail: list = []
     for key in kv.keys("claim:"):
         rec = kv.get(key.split("/")[-1] if "/" in key else key) or {}
-        if not isinstance(rec, dict) or not rec.get("confirmed"):
+        if not isinstance(rec, dict) or not rec.get("company_id"):
+            continue
+        # THE TAIL, NEVER THE TOKEN. The KV key IS the credential - it is the
+        # whole of a claimant's identity, since this project has no passwords
+        # - and this repository is public. Six characters distinguish two
+        # people at one company and grant nothing, which is the same trade
+        # claim.js already made when it stamped `token_tail` on a proposal.
+        tok = (key.split("/")[-1] if "/" in key else key).split(":", 1)[-1]
+        trail.append(dict(scrub(rec), token_tail=tok[-6:]))
+        if not rec.get("confirmed"):
             continue
         cid = rec.get("company_id")
-        if not cid:
-            continue
         on = str(rec.get("confirmed_at") or rec.get("created") or "")[:7]
         prior = claims.get(cid) or {}
         # the EARLIEST confirmation is the one the badge names: a second
@@ -89,7 +106,63 @@ def pull(kv) -> tuple[dict, list]:
         rec = kv.get(key) or {}
         if isinstance(rec, dict) and rec.get("company_id"):
             props.append(dict(scrub(rec), _key=key))
-    return claims, props
+    return claims, props, trail
+
+
+def log_trail(trail: list, props: list, write: bool) -> dict:
+    """Project the KV records into the employer event log.
+
+    THE LOG IS NOT A SECOND CLAIMS FILE. claims.json answers "who holds this
+    page today", which is the one thing the badge needs. This answers "when
+    did that happen, and what happened before it" - the questions current
+    state structurally cannot hold, and the ones every employer-side number
+    will be built from. Both come from the same KV records, so neither can
+    drift from the other; they are two projections, not two sources.
+
+    Replayable by construction: each event carries the identity of the KV fact
+    it came from, so a nightly run over the same records adds nothing the
+    second time.
+    """
+    seen = employer_log.seen_keys()
+    added: dict = {"claim_started": 0, "claim_confirmed": 0, "proposal_sent": 0}
+    for rec in trail:
+        cid, dom = rec.get("company_id"), rec.get("domain")
+        tail = rec.get("token_tail") or ""
+        if not (cid and dom and tail):
+            continue
+        for kind, when in (("claim_started", rec.get("created")),
+                           ("claim_confirmed", rec.get("confirmed_at"))):
+            if not when:
+                continue
+            if not write:
+                if (kind, f"{cid}:{tail}:{when}") not in seen:
+                    added[kind] += 1
+                continue
+            if employer_log.record_once(
+                    kind, cid, by="script:sync-claims",
+                    source_key=f"{cid}:{tail}:{when}", seen=seen,
+                    at=when, domain=dom, token_tail=tail):
+                added[kind] += 1
+    for p in props:
+        cid, key = p.get("company_id"), p.get("_key")
+        kind, dom = p.get("kind"), p.get("by_domain")
+        # A proposal with no domain on it cannot be attributed, and an event
+        # that cannot say who sent it is worse than no event: it inflates
+        # every count built on the log while proving nothing. It is left
+        # unlogged and the sync says how many, rather than filled in.
+        if not (cid and key and kind and dom):
+            added["unattributable"] = added.get("unattributable", 0) + 1
+            continue
+        if not write:
+            if ("proposal_sent", key) not in seen:
+                added["proposal_sent"] += 1
+            continue
+        if employer_log.record_once(
+                "proposal_sent", cid, by="claimant", source_key=key, seen=seen,
+                at=p.get("at"), domain=dom, proposal_kind=kind,
+                token_tail=p.get("token_tail") or ""):
+            added["proposal_sent"] += 1
+    return added
 
 
 def as_proposals(props: list, companies: list) -> list:
@@ -119,8 +192,9 @@ def main() -> int:
     if kv is None:
         print("no CF_* secrets set; claiming is not configured. Nothing to do.")
         return 0
-    claims, props = pull(kv)
-    print(f"{len(claims)} confirmed claim(s), {len(props)} proposal(s) waiting")
+    claims, props, trail = pull(kv)
+    print(f"{len(claims)} confirmed claim(s), {len(props)} proposal(s) waiting, "
+          f"{len(trail)} claim record(s) in KV")
     for cid, rec in sorted(claims.items()):
         print(f"  {cid:28} {rec['domain']}  since {rec['on']}  "
               f"{rec['people']} person(s)")
@@ -128,9 +202,14 @@ def main() -> int:
     if EMAILY.search(blob):
         print("REFUSING: an address reached the claims file", file=sys.stderr)
         return 1
+    would = log_trail(trail, props, write=False)
+    new = {k: v for k, v in would.items() if v}
+    print("  employer log: " + (", ".join(f"{v} {k}" for k, v in new.items())
+                                if new else "nothing new to record"))
     if not a.write:
         print("\ndry run: nothing written")
         return 0
+    log_trail(trail, props, write=True)
     bad = admin.save_decisions(CLAIMS, claims, "sync-claims",
                                why=f"{len(claims)} confirmed claim(s)",
                                by="sync-claims", force=len(claims) > 25)

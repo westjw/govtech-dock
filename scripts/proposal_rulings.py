@@ -48,6 +48,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import admin                                                    # noqa: E402
 import agents                                                   # noqa: E402
+import employer_log                                             # noqa: E402
 import roles                                                    # noqa: E402
 
 # Kinds this door cannot land, and WHY each one, because "no applier yet" is
@@ -64,6 +65,37 @@ import roles                                                    # noqa: E402
 # written shape, the journal entry and the author are identical.
 ELSEWHERE = {"profile": "one at a time here, or a category at a time: promote_profiles.py --gate <category>"}
 NO_APPLIER = ("news", "claim")
+
+
+def _log_employer_ruling(p: dict, key: str, accepted: bool, by: str,
+                         why: str) -> None:
+    """A ruling on a CLAIMANT's proposal is an event in the employer trail.
+
+    Only `claim` proposals: the rest come from agents and belong to the map's
+    own history, not to a company's relationship with this board. Recording
+    them all here would make the accept rate a statement about our agents
+    wearing the label of a statement about our employers.
+
+    The store key carries the company and the moment the claimant sent it, so
+    a ruling joins back to its `proposal_sent` on those two facts. Failing to
+    log must never fail the ruling - the person's decision has already landed
+    in a journalled file, and losing the audit line is the smaller loss of the
+    two - so this reports and returns.
+    """
+    if p.get("kind") != "claim":
+        return
+    cid = p.get("id")
+    if not cid:
+        return
+    kind = ((p.get("edit") or {}).get("kind")) or "unknown"
+    try:
+        employer_log.record_once(
+            "proposal_accepted" if accepted else "proposal_rejected",
+            cid, by=by, source_key=key, proposal_kind=kind,
+            why=why or ("accepted" if accepted else "no reason given"),
+            proposal_key=key)
+    except Exception as e:                                  # noqa: BLE001
+        print(f"employer_log: could not record {key}: {e}", file=sys.stderr)
 
 
 def _stamp(p: dict, status: str, by: str, why: str) -> None:
@@ -428,6 +460,7 @@ def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
         # EXPLICIT OUTCOMES, not a truthy string: _retract returned "" on a
         # successful pull, which is falsy, so the branch reporting the
         # retraction never ran and the caller was told nothing came down.
+        _log_employer_ruling(p, key, False, by, why)
         pulled = _retract(p, by, why) if kind == "profile" else "nothing"
         if pulled.startswith("REFUSED"):
             return {"error": pulled}
@@ -474,6 +507,7 @@ def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
     bad = _save_store(store, "proposal-accept", why, by)
     if bad:
         return {"error": bad}
+    _log_employer_ruling(p, key, True, by, why)
     return res
 
 

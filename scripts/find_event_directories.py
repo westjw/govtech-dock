@@ -55,7 +55,36 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import ats                                              # noqa: E402
 import sweep_exhibitors as sweep                        # noqa: E402
 
-EVENTS = DATA / "state_events.json"
+# TWO REGISTRIES, ONE WRITER. state_events.json holds 359 chapter events and
+# 204 hand-won org urls; national_events.json holds 883 staged national ones.
+# The stages below read and write both, and a doc saved to the wrong file
+# would erase the other registry whole. So the file is never implied: every
+# read names a registry, the doc read back states which registry it is, and
+# the save refuses any doc whose stamp does not match its destination. Being
+# wrong about the file is the one mistake that cannot be walked back.
+REGISTRIES = {
+    "state": DATA / "state_events.json",
+    "national": DATA / "national_events.json",
+}
+# There is deliberately no module-level EVENTS constant any more. One existed,
+# every stage read it, and a test could redirect the whole module by patching
+# it. Under two registries that patch point silently stopped working - the
+# stages read REGISTRIES and the patched name was ignored, so two guards went
+# on passing while reading live data instead of their fixture. A name that can
+# be set and quietly do nothing is worse than no name at all: patch
+# REGISTRIES[which], and a stale reference is a NameError you can see.
+
+
+def _load(which: str) -> dict:
+    """Read a registry and confirm the file says it is that registry."""
+    path = REGISTRIES[which]
+    doc = json.loads(path.read_text())
+    stamp = doc.get("registry")
+    if stamp != which:
+        raise SystemExit(
+            f"refusing to work on {path.name}: it is stamped "
+            f"registry={stamp!r}, not {which!r}")
+    return doc
 
 CHAPTER_LINK = re.compile(
     r"chapter|affiliate|state league|state municipal|state association|"
@@ -265,7 +294,7 @@ def on_parent_host(url: str, parent_site: str | None) -> bool:
 
 
 def parent_sites() -> dict:
-    events = json.loads(EVENTS.read_text())["events"]
+    events = _load("state")["events"]
     codes = sorted({e["parent_national"] for e in events if e.get("parent_national")})
     missing = [c for c in codes if c not in PARENT_SITES]
     if missing:
@@ -273,13 +302,13 @@ def parent_sites() -> dict:
     return {c: PARENT_SITES[c] for c in codes if c in PARENT_SITES}
 
 
-def stage_parents(write: bool) -> int:
+def stage_parents(write: bool, which: str = "state") -> int:
     """Give every event its organisation's real url, from the parent's own list.
 
     ONE FETCH PER PARENT, of a page looked up in PARENT_LISTINGS rather than
     guessed from the home page. The guessing version resolved 0 of 338.
     """
-    doc = json.loads(EVENTS.read_text())
+    doc = _load(which)
     events = doc["events"]
     todo = [e for e in events if not e.get("org_url")]
     codes = sorted({e.get("parent_national") for e in todo if e.get("parent_national")})
@@ -370,7 +399,7 @@ def stage_parents(write: bool) -> int:
     print(f"\n  {found} event(s) now have an organisation url from their "
           f"parent's own listing")
     if write:
-        _save(doc)
+        _save(doc, which)
     else:
         print("  LOOKED ONLY. Re-run with --write.")
     return 0
@@ -561,8 +590,9 @@ def candidates(page: str, base: str) -> list:
     return direct[:3], confs[:2]
 
 
-def stage_directories(write: bool, limit: int | None, recheck: bool = False) -> int:
-    doc = json.loads(EVENTS.read_text())
+def stage_directories(write: bool, limit: int | None, recheck: bool = False,
+                      which: str = "state") -> int:
+    doc = _load(which)
     if recheck:
         # RE-JUDGE WHAT WAS ALREADY ACCEPTED. The gate that accepted the first
         # seven was wrong, and a stored verdict from a wrong gate is not
@@ -639,7 +669,7 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False) -> 
             print(f"  --      {e['event_name'][:38]:40} links found, none read as a list")
     print(f"\n  {got} directory url(s) found, {person} candidate(s) for a person")
     if write:
-        _save(doc)
+        _save(doc, which)
     else:
         print("  LOOKED ONLY. Re-run with --write.")
     return 0
@@ -781,7 +811,7 @@ def _tag(base: str, year: str, taken: set, geo: str | None = None) -> str:
     return f"{base} {n} {year}"
 
 
-def stage_promote(write: bool) -> int:
+def stage_promote(write: bool, which: str = "state") -> int:
     """Move confirmed chapter events into the public conference catalog.
 
     NOTHING DID THIS. `promoted` was written by register_state_events and read
@@ -794,7 +824,7 @@ def stage_promote(write: bool) -> int:
     name the parent's own listing confirms; an event name the directory page
     states; and a year. Anything missing and the row says which.
     """
-    doc = json.loads(EVENTS.read_text())
+    doc = _load(which)
     cat_p = DATA / "conferences.json"
     cat = json.loads(cat_p.read_text())
     taken = {c.get("event_tag") for c in cat["conferences"] if c.get("event_tag")}
@@ -877,17 +907,26 @@ def stage_promote(write: bool) -> int:
         tmp.write_text(json.dumps(cat, indent=1) + "\n")
         json.loads(tmp.read_text())
         tmp.replace(cat_p)
-        _save(doc)
+        _save(doc, which)
         print(f"  wrote {len(added)} conference(s) into conferences.json")
     return 0
 
 
-def _save(doc: dict) -> None:
-    tmp = EVENTS.with_suffix(".tmp")
+def _save(doc: dict, which: str) -> None:
+    # THE DOC DECIDES WHERE IT GOES. A caller that passes the wrong registry
+    # name is caught here, before anything is overwritten, because the doc
+    # carries the stamp it was read with.
+    path = REGISTRIES[which]
+    stamp = doc.get("registry")
+    if stamp != which:
+        raise SystemExit(
+            f"refusing to save to {path.name}: this doc is stamped "
+            f"registry={stamp!r}. Saving it here would erase {which}.")
+    tmp = path.with_suffix(".tmp")
     tmp.write_text(json.dumps(doc, indent=1) + "\n")
     json.loads(tmp.read_text())
-    tmp.replace(EVENTS)
-    print("  saved")
+    tmp.replace(path)
+    print(f"  saved {path.name}")
 
 
 def main() -> int:
@@ -900,13 +939,23 @@ def main() -> int:
     ap.add_argument("--recheck", action="store_true",
                     help="re-judge rows that already carry a directory url")
     ap.add_argument("--write", action="store_true")
+    ap.add_argument("--national", action="store_true",
+                    help="work on data/national_events.json instead of the "
+                         "state chapter registry")
     a = ap.parse_args()
+    which = "national" if a.national else "state"
     if a.parents:
+        if a.national:
+            # A national body is the parent. There is no listing above it to
+            # walk, so this stage has nothing to do and must not pretend.
+            print("stage 1 walks a national parent's chapter listing. A "
+                  "national body is that parent - nothing to walk.")
+            return 1
         return stage_parents(a.write)
     if a.directories:
-        return stage_directories(a.write, a.limit, a.recheck)
+        return stage_directories(a.write, a.limit, a.recheck, which)
     if a.promote:
-        return stage_promote(a.write)
+        return stage_promote(a.write, which)
     ap.print_help()
     return 0
 

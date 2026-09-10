@@ -7943,6 +7943,121 @@ def check_merged_names_stay_merged() -> int:
     return errors
 
 
+def check_the_employer_log_stores_transitions() -> int:
+    """The employer trail must answer a question about a PAST date.
+
+    This is the one guard that would catch the schema mistake the competitor
+    research says 32 of 137 recruiting vendors made: storing where each thing
+    is instead of when it moved. A log that only answers "what is true now" is
+    a second claims.json, and the whole reason for the file disappears without
+    anything erroring.
+
+    So the assertion is a time-travel one. Given a claim confirmed on 1 August
+    and a proposal sent on 3 August, `state()` on 2 August must report the
+    claim held and NOTHING sent. Any implementation that reads current state
+    gets that wrong, and only that.
+
+    Driven against a temporary log, never the real one - the suite must not
+    write to what it checks, which is the rule nineteen fake journal entries
+    were written to establish.
+    """
+    import employer_log as EL
+
+    errors = 0
+    real = EL.LOG
+    tmp = pathlib.Path(tempfile.mkdtemp()) / "employer_events.jsonl"
+    EL.LOG = tmp
+    try:
+        EL.record("claim_started", "acme", "script:selftest",
+                  domain="acme.com", at="2026-08-01T10:00:00+00:00")
+        EL.record("claim_confirmed", "acme", "script:selftest",
+                  domain="acme.com", at="2026-08-01T10:05:00+00:00")
+        EL.record("proposal_sent", "acme", "claimant", domain="acme.com",
+                  proposal_kind="description", at="2026-08-03T09:00:00+00:00")
+        EL.record("claim_released", "acme", "script:selftest",
+                  domain="acme.com", at="2026-08-09T09:00:00+00:00")
+
+        then = EL.state("acme", "2026-08-02")
+        if not then["claimed"]:
+            errors += fail("employer_log.state: a claim confirmed on 1 Aug does "
+                           "not read as held on 2 Aug")
+        if then["proposals_sent"] != 0:
+            errors += fail("employer_log.state on 2 Aug counts a proposal sent "
+                           "on 3 Aug - it is reporting current state, not the "
+                           "state on the date asked for, which is the whole "
+                           "point of the file")
+        now = EL.state("acme", "2026-08-10")
+        if now["claimed"]:
+            errors += fail("employer_log.state: a released claim still reads as "
+                           "held")
+        if now["proposals_sent"] != 1:
+            errors += fail("employer_log.state: proposal not counted after it "
+                           "was sent")
+
+        # A REPLAY ADDS NOTHING. sync_claims runs nightly over the same KV
+        # records; without this every count on the log grows by the number of
+        # times the job has run, and nothing looks wrong.
+        seen = EL.seen_keys()
+        first = EL.record_once("claim_confirmed", "beta", "script:selftest",
+                               source_key="beta:abcdef:1", seen=seen,
+                               domain="beta.io")
+        again = EL.record_once("claim_confirmed", "beta", "script:selftest",
+                               source_key="beta:abcdef:1", seen=seen,
+                               domain="beta.io")
+        if not first or again is not None:
+            errors += fail("employer_log.record_once is not idempotent: a "
+                           "second projection of the same KV fact adds a "
+                           "second event")
+
+        # NO PERSON IN THE FILE, and it says what it dropped rather than
+        # dropping in silence.
+        ev = EL.record("proposal_sent", "acme", "claimant", domain="acme.com",
+                       proposal_kind="contact", note="reach me at jane@acme.com")
+        if "note" in ev or "jane@acme.com" in json.dumps(ev):
+            errors += fail("employer_log wrote an address into a public file")
+        if ev.get("scrubbed") != ["note"]:
+            errors += fail("employer_log dropped a field without saying which")
+
+        # An author is not optional, and a handle is not an address.
+        for args, kw, what in (
+                (("claim_started", "acme", ""), {"domain": "a.com"}, "no author"),
+                (("claim_started", "acme", "jane@acme.com"), {"domain": "a.com"},
+                 "an address as the author"),
+                (("claimed", "acme", "owner"), {}, "a state as a kind"),
+                (("proposal_rejected", "acme", "owner"),
+                 {"proposal_kind": "job"}, "a rejection with no reason")):
+            try:
+                EL.record(*args, **kw)
+                errors += fail(f"employer_log accepted {what}")
+            except ValueError:
+                pass
+
+        # `by` MUST HAVE NO DEFAULT, and this is checked on the SIGNATURE
+        # because no runtime probe can catch it: a default only fires for a
+        # caller that passes nothing, and that caller is the one somebody
+        # writes next year. It is the trap save_companies laid - nine actions
+        # journalled an agent's, an extension's and a script's writes as the
+        # owner's, and 86 of them had to be re-attributed by hand.
+        import inspect
+        for fn in (EL.record, EL.record_once):
+            par = inspect.signature(fn).parameters.get("by")
+            if par is None or par.default is not inspect.Parameter.empty:
+                errors += fail(
+                    f"employer_log.{fn.__name__} gives `by` a default "
+                    f"({par.default!r}) - every event that forgets to name its "
+                    f"author will be filed under it, and nothing at runtime "
+                    f"can notice")
+
+        # An accept rate over zero rulings is not 0%, it is unknown - the same
+        # rule check_admin_game holds on the agree-rate.
+        if EL.funnel()["accept_rate"] is not None:
+            errors += fail("employer_log.funnel reports an accept rate before "
+                           "anything has been ruled")
+    finally:
+        EL.LOG = real
+    return errors
+
+
 def check_writes_name_their_author() -> int:
     """No admin write may fall back to the default author.
 
@@ -15329,25 +15444,25 @@ def check_a_chapter_directory_is_not_its_parents() -> int:
     listing = ('<a href="https://www.myiacp.org/NC__Login">North Carolina</a>'
                '<a href="https://ncchiefs.example.org/">North Carolina Chiefs</a>'
                '<a href="http://nigpabchapter.ca">nigpabchapter.ca</a>')
-    events = {"note": "", "events": [
+    events = {"registry": "state", "note": "", "events": [
         {"org_code": "T_NC", "geo": "North Carolina", "parent_national": "IACP",
          "org_url": None, "status": "needs_url"},
         {"org_code": "T_CA", "geo": "California", "parent_national": "IACP",
          "org_url": None, "status": "needs_url"}]}
     tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-events-")) / "state_events.json"
     tmp.write_text(json.dumps(events))
-    keep_events, keep_fetch = fed.EVENTS, fed.fetch
+    keep_events, keep_fetch = fed.REGISTRIES["state"], fed.fetch
     keep_listings = dict(fed.PARENT_LISTINGS)
     out = io.StringIO()
     try:
-        fed.EVENTS = tmp
+        fed.REGISTRIES["state"] = tmp
         fed.fetch = lambda url: listing if "listing.test" in url else None
         fed.PARENT_LISTINGS["IACP"] = ("https://listing.test/chapters", "reads in raw html")
         with contextlib.redirect_stdout(out):
             fed.stage_parents(True)
         rows = {r["org_code"]: r for r in json.loads(tmp.read_text())["events"]}
     finally:
-        fed.EVENTS, fed.fetch = keep_events, keep_fetch
+        fed.REGISTRIES["state"], fed.fetch = keep_events, keep_fetch
         fed.PARENT_LISTINGS.clear(); fed.PARENT_LISTINGS.update(keep_listings)
     nc = rows["T_NC"].get("org_url")
     if nc and "login" in nc.lower():
@@ -15568,7 +15683,7 @@ def check_promotion_refuses_a_generated_name() -> int:
             {"block": "Executive / administration", "department": "Cities (elected)",
              "conference": "Existing", "event_tag": "Existing 2026",
              "exhibitor_url": "https://taken.test/list"}]}))
-    events = {"note": "", "events": [
+    events = {"registry": "state", "note": "", "events": [
         {"org_code": "GOOD", "geo": "Texas", "department": "Municipal Government",
          "name_confidence": "pattern", "org_name": "Texas Municipal League",
          "org_name_observed": "Texas Municipal League", "org_url": "https://tml.test/",
@@ -15594,17 +15709,17 @@ def check_promotion_refuses_a_generated_name() -> int:
         "https://ia.test/exhibitors": "<title>Exhibitors</title><p>no year anywhere</p>",
         "https://taken.test/list": "<title>2026 Annual Conference</title>",
     }
-    keep = (fed.EVENTS, fed.DATA, fed.fetch)
+    keep = (fed.REGISTRIES["state"], fed.DATA, fed.fetch)
     out = io.StringIO()
     try:
-        fed.EVENTS, fed.DATA = tmp / "state_events.json", tmp
+        fed.REGISTRIES["state"], fed.DATA = tmp / "state_events.json", tmp
         fed.fetch = lambda u: pages.get(u)
         with contextlib.redirect_stdout(out):
             fed.stage_promote(True)
         got = json.loads((tmp / "conferences.json").read_text())["conferences"]
         rows = {r["org_code"]: r for r in json.loads((tmp / "state_events.json").read_text())["events"]}
     finally:
-        fed.EVENTS, fed.DATA, fed.fetch = keep
+        fed.REGISTRIES["state"], fed.DATA, fed.fetch = keep
     promoted = {c.get("state_event", {}).get("org_code") for c in got if c.get("state_event")}
     if promoted != {"GOOD"}:
         print(f"  FAIL: promoted {sorted(promoted)}; only GOOD is confirmed. "
@@ -17267,6 +17382,99 @@ def check_an_acronym_cannot_confirm_itself() -> int:
     return errors
 
 
+def check_a_registry_cannot_be_saved_over_the_other() -> int:
+    """One writer, two registries, and no way to confuse them.
+
+    find_event_directories used to read and write a single file. It now works
+    on two: state_events.json, 359 chapter rows carrying 204 org urls that
+    took a crawl of every parent's listing to win, and national_events.json,
+    883 staged national rows. Both share an envelope and both are saved by the
+    same _save(). A doc handed to the wrong destination does not merge or
+    conflict - it REPLACES, and the other registry is gone whole.
+
+    So the file is never implied. Each one carries a "registry" stamp, _load
+    refuses a file that is not the registry asked for, and _save refuses a doc
+    whose stamp does not match where it is going. The doc decides where it may
+    land, and it learned that from the file it was read out of.
+
+    The unstamped case is the one that matters most in practice: a doc built
+    by hand, or a file written before the stamp existed, must be refused
+    rather than waved through on the grounds that it does not disagree.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import find_event_directories as fed
+
+    for which in ("state", "national"):
+        path = fed.REGISTRIES[which]
+        if not path.exists():
+            errors += fail(f"the {which} registry is missing from {path}")
+            continue
+        doc = json.loads(path.read_text())
+        if doc.get("registry") != which:
+            errors += fail(f"{path.name} is not stamped registry={which!r}; "
+                           f"without the stamp nothing downstream can tell the "
+                           f"two registries apart")
+
+    # THE WHOLE POINT. Every wrong pairing must raise, and raise before it
+    # touches the disk - so each is tried against the real files, whose bytes
+    # are compared afterwards.
+    before = {w: fed.REGISTRIES[w].read_bytes() for w in fed.REGISTRIES}
+    try:
+        state_doc = fed._load("state")
+        nat_doc = fed._load("national")
+    except SystemExit as e:
+        return errors + fail(f"a registry would not load at all: {e}")
+
+    wrong = [("a national doc", nat_doc, "state"),
+             ("a state doc", state_doc, "national"),
+             ("an unstamped doc", {"note": "", "events": []}, "state"),
+             ("an unstamped doc", {"note": "", "events": []}, "national")]
+    for label, doc, dest in wrong:
+        try:
+            fed._save(doc, dest)
+            errors += fail(f"{label} was saved into the {dest} registry. That "
+                           f"does not merge - it replaces, and the other "
+                           f"registry is gone")
+        except SystemExit:
+            pass
+
+    for w, was in before.items():
+        if fed.REGISTRIES[w].read_bytes() != was:
+            errors += fail(f"the {w} registry changed on disk while refusing a "
+                           f"bad save - a refusal must not be a partial write")
+
+    # A LOAD MUST CHECK TOO, not just the save. Reading the national file as
+    # the state registry would hand every downstream stage 883 rows of the
+    # wrong shape, and the first save would then be perfectly consistent.
+    keep = fed.REGISTRIES["state"]
+    try:
+        fed.REGISTRIES["state"] = fed.REGISTRIES["national"]
+        try:
+            fed._load("state")
+            errors += fail("_load read the national file as the state registry; "
+                           "the stamp is checked on save but not on the way in")
+        except SystemExit:
+            pass
+    finally:
+        fed.REGISTRIES["state"] = keep
+
+    # AND NO SECOND DOOR. A module-level EVENTS constant used to exist and
+    # every stage read it, so a test could redirect the module by patching it.
+    # Under two registries that patch silently stopped working - two guards
+    # went on passing while reading live data instead of their fixture. If the
+    # name comes back, so does the silence.
+    if hasattr(fed, "EVENTS"):
+        errors += fail("find_event_directories has an EVENTS constant again. "
+                       "It is a patch point that can be set and quietly do "
+                       "nothing, which is how two guards passed while reading "
+                       "the real registry instead of their own fixture")
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -17733,6 +17941,7 @@ def main() -> int:
     errors += check_staging_a_catalogue_never_costs_an_observed_fact()
     errors += check_an_organisation_is_not_one_of_its_own_events()
     errors += check_an_acronym_cannot_confirm_itself()
+    errors += check_a_registry_cannot_be_saved_over_the_other()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()
@@ -17805,6 +18014,7 @@ def main() -> int:
     errors += check_chapter_listings_are_looked_up()
     errors += check_promotion_refuses_a_generated_name()
     errors += check_the_domain_lives_in_one_place()
+    errors += check_the_employer_log_stores_transitions()
 
     for raw, expected in TITLE_TEXT_CASES:
         got = ats.plain(raw)
