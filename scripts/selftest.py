@@ -16929,6 +16929,123 @@ def check_an_exhibitor_tag_reaches_the_field_that_counts() -> int:
     return errors
 
 
+def check_staging_a_catalogue_never_costs_an_observed_fact() -> int:
+    """Re-ingesting the registry keeps what the fetchers established.
+
+    register_state_events.py builds its payload from the CSV alone and
+    replaces the file. That is safe for a one-shot seed and fatal for a
+    catalogue somebody keeps adding to: run it twice and 204 org_urls, 15
+    directory_urls and 13 promoted flags are gone, with nothing to say they
+    ever existed. So the national loader merges by key, and this is the
+    assertion that keeps it merging.
+
+    Also asserted, because both were wrong in the first parse of the source
+    document: an organisation that goes by no acronym still gets its own
+    code - filing Esri, Bobit and Nan McKay & Assoc together under
+    UNSPECIFIED collides 121 bodies the moment anything groups by
+    organisation - and a non-SLED scope reaches the row. Scope is not a
+    column in that document; it is a table at the foot naming events per
+    block, and a parse that only reads the status column finds SLED
+    everywhere and never notices.
+
+    And the rule the owner set: publish everything, sweep only SLED
+    vendor-bearing floors. `harvest` records that once, here.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import register_national_events as rne
+    errors = 0
+
+    # merge keeps every observed fact and still refreshes the descriptive half
+    existing = [dict(rne.row("ACME", "Acme Assn", "Acme Annual",
+                             registry_status="LIKELY"),
+                     org_url="https://acme.example/", directory_url="https://acme.example/x",
+                     status="directory_found", promoted=True, promoted_tag="ACME 2026")]
+    fresh = [rne.row("ACME", "Acme Association", "Acme Annual",
+                     registry_status="TABLETOP")]
+    merged, added, updated = rne.merge(existing, fresh)
+    got = merged[0]
+    for field, want in (("org_url", "https://acme.example/"),
+                        ("directory_url", "https://acme.example/x"),
+                        ("status", "directory_found"), ("promoted", True),
+                        ("promoted_tag", "ACME 2026")):
+        if got.get(field) != want:
+            errors += fail(f"a re-ingest destroyed {field!r} - it read "
+                           f"{got.get(field)!r}, not {want!r}. That is the flaw "
+                           f"that makes register_state_events unusable here")
+    if got.get("org_name") != "Acme Association":
+        errors += fail("the merge did not refresh the descriptive half")
+    if added != 0:
+        errors += fail(f"an existing key was added again ({added})")
+
+    # a genuinely new key still lands
+    merged2, added2, _ = rne.merge(existing, fresh + [rne.row("NEWCO", "New Co", "First Event")])
+    if added2 != 1 or len(merged2) != 2:
+        errors += fail(f"a new key did not land: added={added2}, rows={len(merged2)}")
+
+    # an organisation with no acronym gets its OWN code - DRIVEN THROUGH THE
+    # PARSER, not by calling the two helpers the parser happens to use. The
+    # first version of this assertion composed them itself, so breaking the
+    # call site left it green.
+    import tempfile as _tf, pathlib as _pl
+    doc = ("## Block 9 - Things\n\n"
+           "### Some Topic\n\n"
+           "| Event | Org | Status | Registry |\n|---|---|---|---|\n"
+           "| User Conference | Esri | LIKELY | NEW |\n"
+           "| Green Fleet | Bobit | LIKELY | NEW |\n"
+           "| State events (50) | State associations | LIKELY | NEW |\n")
+    tmpd = _pl.Path(_tf.mkdtemp()) / "blocks.md"
+    tmpd.write_text(doc)
+    parsed = {r["event_name"]: r for r in rne.from_blocks(tmpd)}
+    esri = parsed.get("User Conference", {})
+    bobit = parsed.get("Green Fleet", {})
+    if not esri or not bobit:
+        errors += fail(f"the block parser lost a row: {sorted(parsed)}")
+    elif esri["org_code"] == bobit["org_code"] or "UNSPECIFIED" in (
+            esri["org_code"], bobit["org_code"]):
+        errors += fail(f"two acronym-less organisations share a code "
+                       f"({esri['org_code']} / {bobit['org_code']}). Filing "
+                       f"Esri and Bobit together collides 121 bodies the "
+                       f"moment anything groups by organisation")
+    if rne._acronym("State associations"):
+        errors += fail("prose was read as an organisation code; 'State "
+                       "associations' describes a class, not a body")
+    if rne._acronym("NASPD (State Park Directors)") != "NASPD":
+        errors += fail("a real acronym was not read out of its cell")
+
+    # harvest: publish everything, sweep only SLED vendor-bearing
+    for scope, status, want in (("SLED", "LIKELY", True), ("SLED", "TABLETOP", True),
+                                ("SLED", "SPONSOR", True), ("SLED", "TRAINING", False),
+                                ("SLED", "UNKNOWN", False), ("INDUSTRY", "LIKELY", False),
+                                ("ADJACENT", "LIKELY", False), ("PROVIDER", "SPONSOR", False)):
+        if rne.harvestable(scope, status) is not want:
+            errors += fail(f"harvestable({scope}, {status}) is not {want}. The "
+                           f"ruling is: everything publishes, only SLED "
+                           f"vendor-bearing floors are ever swept")
+
+    # the scope table at the foot of the document is read
+    text = ("| Block | Rows | Scope | Why |\n|---|---|---|---|\n"
+            "| B2 | The Pool & Spa Show, GCSAA | INDUSTRY | Private pool trade |\n")
+    exc = rne.scope_exceptions("Scope exceptions - non-SLED rows\n" + text)
+    if exc.get("gcssa") is not None or exc.get("gcsaa") != "INDUSTRY":
+        errors += fail(f"the scope exceptions table was not read: {exc}")
+
+    # and the live file: nothing staged may claim to be verified or promoted
+    import json as _json
+    f = ROOT / "data" / "national_events.json"
+    if f.exists():
+        ev = _json.loads(f.read_text())["events"]
+        if any(r.get("verified") for r in ev):
+            errors += fail("a staged row claims `verified` - the source "
+                           "registry says five of ~840 events are verified and "
+                           "the rest are recalled")
+        if any(r.get("promoted") for r in ev):
+            errors += fail("a staged row is marked promoted before any "
+                           "directory was ever read")
+        if len({r["key"] for r in ev}) != len(ev):
+            errors += fail("duplicate keys in national_events.json")
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -17392,6 +17509,7 @@ def main() -> int:
     errors += check_a_hand_check_records_what_it_found()
     errors += check_the_rescrub_list_is_the_boards_only_you_can_read()
     errors += check_an_exhibitor_tag_reaches_the_field_that_counts()
+    errors += check_staging_a_catalogue_never_costs_an_observed_fact()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()
