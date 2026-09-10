@@ -1,9 +1,1752 @@
 {
  "event_tag": "APCO 2026",
- "conference": "APCO Annual",
- "found": false,
+ "conference": "APCO",
+ "found": true,
  "source_url": "https://apco2026.eventscribe.net/exhibitors/floorplan/floorplan.asp",
- "source_note": "71KB read, 11 candidate name(s) after filtering. Not staged as exhibitors: this url is the association's own site rather than a list of who exhibits at it (0% carry a corporate marker, 0% name a site section - this reads as the association's own pages)",
- "exhibitors": [],
- "why": "this url is the association's own site rather than a list of who exhibits at it (0% carry a corporate marker, 0% name a site section - this reads as the association's own pages)"
+ "source_note": "Read in a real browser on 2026-09-10. eventscribe renders the floor plan in JS; each booth is an anchor whose text is the booth number followed by the company name, so the number is kept as `booth` rather than being parsed off and thrown away. Names are unique by company, so a company holding two booths appears once. Dropped the page's own controls where they matched the booth-plus-name shape: 'to Top' and the like.",
+ "exhibitors": [
+  {
+   "name": "10-8 Systems",
+   "booth": "528",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "2J Antennas USA, Corp.",
+   "booth": "1022",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "365LABS",
+   "booth": "452",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "911 Emerge-N-See",
+   "booth": "2353",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "911 Tech - DORWorks.com",
+   "booth": "1138",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "911 Training Institute",
+   "booth": "922",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "911Simulators.com",
+   "booth": "1030",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Absolute Software",
+   "booth": "720",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Active911",
+   "booth": "431",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "ADDER Technology",
+   "booth": "429",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "AFC Industries",
+   "booth": "3124",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Aikitech, Inc",
+   "booth": "1333",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "ALIVE TELECOM",
+   "booth": "543",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Allerium",
+   "booth": "2426",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Alleviate LLC",
+   "booth": "2747",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "American Power Systems, LLC",
+   "booth": "538",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "AMP Global Strategies",
+   "booth": "847",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Anritsu Company",
+   "booth": "946",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "APCO California",
+   "booth": "3118",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "APCO Exhibit Sales & Exhibit Managers Office",
+   "booth": "1836",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "APCO International",
+   "booth": "2437",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "APS Firehouse Alerting",
+   "booth": "1647",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Aselsan",
+   "booth": "3200",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Astronics Test Systems",
+   "booth": "2901",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Aurelian",
+   "booth": "3009",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Avari Wireless",
+   "booth": "1250",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Aviat Networks",
+   "booth": "2910",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Axon 911 - Prepared + Carbyne",
+   "booth": "1455",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Axon 911 - The Future of 911",
+   "booth": "552",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Base Case",
+   "booth": "2923",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "BerryDunn",
+   "booth": "523",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "BK Technologies",
+   "booth": "736",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Black Box",
+   "booth": "3140",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Blood Donation",
+   "booth": "3348",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "BodyBilt Seating",
+   "booth": "447",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "CALEA",
+   "booth": "2749",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Cape Radio Products",
+   "booth": "3020",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Career Advancement Center",
+   "booth": "1211",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Carfax",
+   "booth": "1655",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Catalyst Communications Technologies Inc.",
+   "booth": "2711",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "CentralSquare Technologies",
+   "booth": "2637",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Cogito Innovations",
+   "booth": "1234",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Columbia Southern University",
+   "booth": "920",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Commercial Electronics Corp.",
+   "booth": "3220",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "CommSys, Inc.",
+   "booth": "2917",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Communication Center Specialists",
+   "booth": "1248",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Communications-Applied Technology",
+   "booth": "3017",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Computer Information Systems, Inc.",
+   "booth": "3000",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "ComSonics",
+   "booth": "423",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Concept Seating",
+   "booth": "2801",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Convey911, LLC",
+   "booth": "2846",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "CPI",
+   "booth": "3138",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Critical Response Group, Inc.",
+   "booth": "1529",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "CritiCall Pre-Employment Testing Software",
+   "booth": "3137",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Crown Castle",
+   "booth": "3104",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "CSS-Mindshare",
+   "booth": "1431",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "CTI Products",
+   "booth": "3117",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "DataTech911",
+   "booth": "3037",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "dbSpectra Inc.",
+   "booth": "2921",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Denise Amber Lee Foundation",
+   "booth": "1135",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "DeskOfficer, Inc.",
+   "booth": "1532",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Domestic Preparedness",
+   "booth": "3024",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "DragonForce",
+   "booth": "3039",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Durabook Americas Inc.",
+   "booth": "948",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Earphone Connection",
+   "booth": "837",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Education Row",
+   "booth": "1123",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "EFJohnson, a JVCKENWOOD Company",
+   "booth": "1447",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "EMERES, Inc.",
+   "booth": "2647",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "EMR Corporation",
+   "booth": "3016",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Engineered Tower Solutions, PLLC",
+   "booth": "1037",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Epic Recruiting",
+   "booth": "3236",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Equature",
+   "booth": "2810",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Esri",
+   "booth": "952",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Evans Consoles",
+   "booth": "947",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Eventide Communications",
+   "booth": "2609",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Evoltix",
+   "booth": "2717",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "EXACOM, Inc.",
+   "booth": "1147",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Exhibitor Lounge",
+   "booth": "1828",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Expo Eatery",
+   "booth": "100",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "First Responders Children's Foundation",
+   "booth": "1246",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "First Responders Expo",
+   "booth": "1023",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "FirstNet, Built with AT&T",
+   "booth": "2523",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Flight Tactics",
+   "booth": "3218",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Fountainhead Control Rooms",
+   "booth": "540",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Garmin International, Inc.",
+   "booth": "3049",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "GateKeeper Proximity",
+   "booth": "830",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Genesis",
+   "booth": "953",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Genovation Inc",
+   "booth": "851",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "GeoComm",
+   "booth": "2929",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "George Mason University",
+   "booth": "1123",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "getResQ911",
+   "booth": "2949",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "GM/OnStar",
+   "booth": "2517",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "GME",
+   "booth": "2916",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Goserco, Inc.",
+   "booth": "2552",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "govhost",
+   "booth": "3121",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "GovWorx",
+   "booth": "2845",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "G-Way Solutions, LLC",
+   "booth": "2708",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Hascall-Denke",
+   "booth": "2837",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Headshot Lounge",
+   "booth": "1119",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "HigherGround, Inc.",
+   "booth": "836",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "HipLink Software",
+   "booth": "929",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Hypha USA",
+   "booth": "3021",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "i3 Verticals",
+   "booth": "1649",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "i911 International",
+   "booth": "437",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "ID Networks",
+   "booth": "1243",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "iLOQ",
+   "booth": "2823",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Impact Power Technologies LLC",
+   "booth": "1635",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "INDIGITAL",
+   "booth": "752",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Infinity Massage Chairs",
+   "booth": "3145",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "InterTalk",
+   "booth": "2710",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Intrado",
+   "booth": "2725",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "IRON HORSE Seating",
+   "booth": "622",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "IS-Wireless",
+   "booth": "1522",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Joe Serio Enterprises, LLC",
+   "booth": "2553",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "JPL Telecom LLC",
+   "booth": "848",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "JPS Interoperability Solutions, Inc.",
+   "booth": "1436",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "JTS | Johnston Technical Services, Inc.",
+   "booth": "3100",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "K9 Dog Demo Area",
+   "booth": "610",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Kathrein SCALA",
+   "booth": "620",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Kimberly A. Miller & Associates, LLC",
+   "booth": "1432",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Klein Electronics, Inc.",
+   "booth": "2925",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "L3Harris Technologies",
+   "booth": "2700",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "LanguageLine Solutions",
+   "booth": "2920",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "LDZ Hidow",
+   "booth": "3120",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Leonardo US Cyber & Security Solutions, LLC",
+   "booth": "928",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "LevelUp 911 Training",
+   "booth": "3144",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "LocusUSA",
+   "booth": "855",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Locution Systems Inc.",
+   "booth": "730",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "LumenServe, Inc.",
+   "booth": "3126",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Mark43",
+   "booth": "547",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "MCM Technology, LLC",
+   "booth": "2509",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Microwave Networks Inc",
+   "booth": "840",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Miller at Work",
+   "booth": "2825",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Mission Critical Partners",
+   "booth": "1337",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "MissionWise",
+   "booth": "1228",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Modirum Platforms",
+   "booth": "1029",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "ModUcom (Modular Communications System)",
+   "booth": "3119",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Moetivations, Inc",
+   "booth": "1428",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Motorola Solutions",
+   "booth": "1253",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Motorola Solutions: Assist - Public Safety AI",
+   "booth": "1231",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "NASPO ValuePoint",
+   "booth": "1534",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "National Public Safety Group",
+   "booth": "2947",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "NBCP Communications System",
+   "booth": "1020",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "NCMEC",
+   "booth": "3041",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Network & Recharge Lounge (1)",
+   "booth": "940",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "NGA",
+   "booth": "2501",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "NICE",
+   "booth": "2412",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "NJTI-TERT",
+   "booth": "536",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Northland & Companies",
+   "booth": "2924",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Octave",
+   "booth": "2418",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Officer Media Group",
+   "booth": "1028",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "OMCT Solutions",
+   "booth": "3044",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Omnitronics, Inc.",
+   "booth": "1047",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Oscilloquartz",
+   "booth": "1122",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "OTM Cyber",
+   "booth": "3019",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Pace Scheduler",
+   "booth": "1140",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Panasonic Connect",
+   "booth": "3045",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Panorama Antennas",
+   "booth": "3046",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Parsec Technologies, Inc.",
+   "booth": "3238",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Parsons Corporation",
+   "booth": "828",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "PCTEL, Inc.",
+   "booth": "1035",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Pelsue",
+   "booth": "832",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Pipeline Operators Safety Partnership",
+   "booth": "3003",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Power Products Unlimited",
+   "booth": "3006",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "PowerDMS",
+   "booth": "921",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Presentation Theater",
+   "booth": "3302",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Prism-IPX Systems, LLC",
+   "booth": "1039",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Project 25 Technology Interest Group (PTIG)",
+   "booth": "1051",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "ProPhoenix Corporation",
+   "booth": "3109",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "PSN Americas",
+   "booth": "2809",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Public Safety Group",
+   "booth": "748",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Public Safety Solutions MO, LLC",
+   "booth": "3125",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Public Safety Vehicles Area 1",
+   "booth": "2852",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Public Safety Vehicles Area 2",
+   "booth": "811",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Pulsiam",
+   "booth": "3148",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "PURVIS Systems",
+   "booth": "1421",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Radio Club of America",
+   "booth": "1528",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "RAM Mounts",
+   "booth": "853",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "RapidSOS",
+   "booth": "2301",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "ReflexAI",
+   "booth": "950",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Regroup",
+   "booth": "3130",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Rescue 42",
+   "booth": "2817",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Resume Review",
+   "booth": "1212",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Revcord",
+   "booth": "747",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "RF Technology Americas",
+   "booth": "621",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "RoGO Communications",
+   "booth": "618",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Russ Bassett",
+   "booth": "3029",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Ryzyliant",
+   "booth": "721",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "SAF North America",
+   "booth": "534",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Safran",
+   "booth": "829",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "SAIMON VISION",
+   "booth": "3244",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Samsung",
+   "booth": "634",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Schedule Express by SafeCities",
+   "booth": "1129",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Schweitzer Engineering Laboratories",
+   "booth": "1134",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "SDR, Inc.",
+   "booth": "722",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Secure Headset Group",
+   "booth": "934",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "SENCOMMUNICATIONS, INC.",
+   "booth": "835",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Siento",
+   "booth": "1230",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Sinclair Technologies",
+   "booth": "3004",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Slatercom - WCD",
+   "booth": "1131",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Smart Response Technologies",
+   "booth": "2848",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "SmartCOP, Inc.",
+   "booth": "3102",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "SOFTIL",
+   "booth": "2805",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "SOS Technologies",
+   "booth": "435",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Sourcewell",
+   "booth": "1634",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Southern Software, Inc.",
+   "booth": "2653",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "SPX Aids to Navigation",
+   "booth": "2821",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Stancil Corporation",
+   "booth": "1657",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "STI-CO Industries, Inc.",
+   "booth": "2808",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Sunny Communications Inc",
+   "booth": "3001",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Sustema",
+   "booth": "2900",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Swissphone, LLC",
+   "booth": "1639",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Syncworks",
+   "booth": "746",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Syniverse",
+   "booth": "3136",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Tait Communications",
+   "booth": "2617",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Team Health Network",
+   "booth": "537",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Telewave.io",
+   "booth": "1146",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Telex Radio Dispatch",
+   "booth": "3128",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "TESSCO LLC",
+   "booth": "2905",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Testforce",
+   "booth": "846",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "The Headset Team",
+   "booth": "1429",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "The Healthy Dispatcher",
+   "booth": "1137",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "ThisGen",
+   "booth": "1128",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "TL Exhibitor Care Center",
+   "booth": "1846",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Tyler Technologies",
+   "booth": "1439",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "UR International, Inc.",
+   "booth": "535",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "US Digital Designs, Inc.",
+   "booth": "1336",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "UsedTwoWayRadios",
+   "booth": "3022",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Valor Systems, Inc.",
+   "booth": "3025",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "V-COMM, L.L.C.",
+   "booth": "2652",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Vector Solutions",
+   "booth": "1237",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Verint Systems",
+   "booth": "1148",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Versaterm",
+   "booth": "2937",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "VFP, Inc.",
+   "booth": "2452",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "VIAVI Solutions",
+   "booth": "640",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Virtual Academy 9-1-1",
+   "booth": "823",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Vista Com",
+   "booth": "2453",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Washington Radio Reports",
+   "booth": "3240",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Watson Consoles",
+   "booth": "2911",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Waveband Communications, INC",
+   "booth": "3116",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Wellness Zone",
+   "booth": "3330",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Westnet, LLC",
+   "booth": "820",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Westone",
+   "booth": "3141",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Wilmac Technologies",
+   "booth": "1329",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Winsted",
+   "booth": "529",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Wireless Supply",
+   "booth": "935",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "X-keys",
+   "booth": "2709",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Xybix Systems, Inc.",
+   "booth": "1141",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Zetron",
+   "booth": "1154",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  }
+ ]
 }

@@ -1,9 +1,15 @@
 {
  "event_tag": "AJA 2027",
- "conference": "AJA Annual",
- "found": false,
- "source_url": "https://aja2027.mapyourshow.com/8_0/index.cfm",
- "source_note": "606KB read, 11 candidate name(s) after filtering. Not staged as exhibitors: this url is the association's own site rather than a list of who exhibits at it (0% carry a corporate marker, 0% name a site section - this reads as the association's own pages)",
- "exhibitors": [],
- "why": "this url is the association's own site rather than a list of who exhibits at it (0% carry a corporate marker, 0% name a site section - this reads as the association's own pages)"
+ "conference": "AJA",
+ "found": true,
+ "source_url": "https://aja2027.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
+ "source_note": "Read in a real browser on 2026-09-10. The directory is live and readable and holds exactly ONE exhibitor - the show is in 2027 and the floor has not been sold yet. This is a real count, not a failed read: Show All was clicked and there was no Load More.",
+ "exhibitors": [
+  {
+   "name": "National Commission on Correctional Health Care",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  }
+ ]
 }

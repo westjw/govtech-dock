@@ -1,9 +1,663 @@
 {
  "event_tag": "NACCHO 360 2026",
  "conference": "NACCHO 360",
- "found": false,
- "source_url": "https://naccho2026.mapyourshow.com/8_0/explore/exhibitor-gallery.cfm",
- "source_note": "360KB read, 10 candidate name(s) after filtering. Not staged as exhibitors: this url is the association's own site rather than a list of who exhibits at it (0% carry a corporate marker, 0% name a site section - this reads as the association's own pages)",
- "exhibitors": [],
- "why": "this url is the association's own site rather than a list of who exhibits at it (0% carry a corporate marker, 0% name a site section - this reads as the association's own pages)"
+ "found": true,
+ "source_url": "https://naccho2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
+ "source_note": "Read in a real browser on 2026-09-10; the alpha list renders behind JS. 109 unique exhid values, A ('AchieveIt') through V ('ViiV Healthcare'). Note this is a public-health floor: much of it is universities, foundations and pharma rather than vendors, and 'Exhibit Hall Activity', 'NACCHO Membership Booth', 'QA' and 'Pet Therapy' are the show's own stands, kept verbatim rather than dropped.",
+ "exhibitors": [
+  {
+   "name": "AchieveIt",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Alosa Health",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Alzheimer's Association",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Amergis Government Staffing",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "American Kidney Fund",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "American Public Health Association APHA",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Amneal Pharmaceuticals",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Arclet",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Association of Public Health Nurses",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Association of Schools and Programs of Public Health (ASPPH)",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Association of State & Territorial Dental Directors & ASTDD Foundation, Inc.",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "BAO Systems",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Bavarian Nordic Inc.",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Bavarian Nordic Medical Affairs",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "BME Strategies",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Business House",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "CDP, Inc.",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Champ Software",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Charlie's Kids",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "CHESS Health",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Child Source",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "City Health Dashboard",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "COMMANDO",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "CompleteSMS",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Conduent Healthy Communities Institute",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Cority",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "CredibleMind",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Cribs for Kids",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Crisis Prevention Institute",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "CureMD Healthcare",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Datamation Imaging Services Corporation",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "de Beaumont Foundation",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Deterra",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "EKF Diagnostics",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Exhibit Hall Activity",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "FamilyTrac, Inc.",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Findhelp",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Fresh Baby",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Gilead Sciences",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Grifols",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Health Management Associates, Inc",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Healthcare Staffing Professionals",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "HealthHIV",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "HLN Consulting, LLC",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Hub Public Benefit Corp",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Illinois Supply Company",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Initium Health",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Institute for Healthcare Advancement (IHA)",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Johns Hopkins Bloomberg School of Public Health",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Juno Health",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Kentucky Association of Local Boards of Health",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Kentucky Health Departments Association",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "LanguageLine Solutions",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "LHD Academy of Science",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Mamava",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "McWilliams School of Biomedical Informatics at UTHealth Houston",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Metopio",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Microsoft",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Moxley Public Health",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "NACCHO Membership Booth",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "National Board of Public Health Examiners (NBPHE)",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "National Hispanic Health Foundation",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "National Indian Health Board",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "National Network of Public Health Institutes",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Neelyx Labs",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Netsmart",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "OpenELIS Foundation",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Opioid Response Network",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Padagis",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Patagonia Health",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Pear Suite",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Perseid Kit Co.",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Persimmony",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Pet Therapy",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "PH360 AI by F&T Labs",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Pivto Better Learning",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "PlanStreet Inc",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Plusoptix, Inc",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Public Consulting Group",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Public Health Accreditation Board (PHAB)",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Public Health Informatics Institute",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Public Health Law Center",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Public Health Resource Center",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Public Health Training Center Network",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Purdue University",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "QA",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Remedy Healthcare Consulting LLC",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Rescue | The Behavior Change Agency",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "RSM US LLP",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Rx Destroyer",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Star PPE LLC",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Team Health Network",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "TECPHI Network Coordinating Center",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "The Network for Public Health Law",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "TruMed Systems",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Trust for America's Health",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "TRX Development Solutions, LLC",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Tulane Celia Scott Weatherhead School of Public Health and Tropical Medicine",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "U.S. Census Bureau",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "University of Kentucky College of Public Health",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "University of Louisville School of Public Health & Information Sciences",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "University of Miami Department of Public Health Sciences",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "University of Nebraska Medical Center - College of Public Health",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "University of South Florida (USF) College of Public Health",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "University of South Florida DISTA",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Valneva",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Vector Disease Control International",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Venesky & Company",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "ViiV Healthcare",
+   "website": null,
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
+  }
+ ]
 }
