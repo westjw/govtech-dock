@@ -136,6 +136,18 @@ def main() -> int:
     a = ap.parse_args()
 
     staged = json.loads(pathlib.Path(a.file).read_text())
+    # THE LAST GATE BEFORE THE BOARD. sweep_exhibitors grades a capture `menu`
+    # when its names read as the association's own navigation rather than a
+    # floor. Twenty files on disk are one, holding site sections, "EXPO HALL
+    # HOURS", a hotel, and in ACCG's case a county job board - and this is the
+    # command that would turn them into suppliers and research candidates.
+    # Refused here as well as in the classifier, because a person running this
+    # by hand on one file skips the classifier entirely.
+    if staged.get("quality") == "menu":
+        print(f"refusing {a.file}: this capture is graded `menu` - it reads as "
+              f"the association's own pages rather than an exhibitor floor. "
+              f"Re-sweep it from a real directory url first.", file=sys.stderr)
+        return 1
     event, why = resolve_tag(staged, a.event_tag)
     if why:
         print(f"refused: {why}", file=sys.stderr)

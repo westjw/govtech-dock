@@ -225,9 +225,19 @@ def apply(write: bool) -> int:
     known = on_file()
     tally = Counter()
     changed = 0
+    skipped: list = []
     for f in files:
         d = json.loads(f.read_text())
         if not d.get("found"):
+            continue
+        # A GRADE NOTHING CONSULTS IS NOT A GATE. sweep_exhibitors grades a
+        # capture `menu` when the names read as the association's own
+        # navigation rather than a floor, and twenty of the files on disk are
+        # one - Ohio ASBO's site sections, ICC's "EXPO HALL HOURS", ACCG's
+        # county job board. Classifying them is the step just before intake
+        # writes them to the board, so this is where it stops.
+        if d.get("quality") == "menu":
+            skipped.append(f.name)
             continue
         n = 0
         for ex in d.get("exhibitors") or []:
@@ -251,6 +261,13 @@ def apply(write: bool) -> int:
                 continue
             tmp.replace(f)
         changed += n
+    if skipped:
+        print(f"  refused {len(skipped)} capture(s) graded `menu` - the "
+              f"association's own pages, not a floor:")
+        for name in skipped[:6]:
+            print(f"     {name}")
+        if len(skipped) > 6:
+            print(f"     ... and {len(skipped) - 6} more")
     print(f"{len(files)} staged file(s); {sum(tally.values())} name(s) not already on file")
     print(f"  {tally[True]} would go to CANDIDATES for research")
     print(f"  {tally[False]} would go to suppliers")

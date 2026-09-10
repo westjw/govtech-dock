@@ -21,6 +21,7 @@ import os
 import re
 import hashlib
 import shutil
+import subprocess
 import tempfile
 import threading
 import time
@@ -17819,6 +17820,90 @@ def check_an_acronym_cannot_confirm_itself() -> int:
     return errors
 
 
+def check_a_menu_cannot_be_classified_or_intaken() -> int:
+    """The grade has to be consulted by the two commands that write.
+
+    sweep_exhibitors grading a capture `menu` accomplishes nothing on its
+    own - the helper can be perfect and unused, which is how seven menus
+    became exhibitor directories the first time. Twenty files on disk are
+    graded menu right now, holding association site sections, "EXPO HALL
+    HOURS", a hotel, and ACCG's county job board.
+
+    Two commands stand between those files and the board, and both refuse:
+    classify_exhibitors, which sets the is_govtech flag, and
+    conference_intake, which writes suppliers and research candidates. Both,
+    not one - somebody running intake by hand on a single file never touches
+    the classifier.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    cls = (ROOT / "scripts" / "classify_exhibitors.py").read_text()
+    itk = (ROOT / "scripts" / "conference_intake.py").read_text()
+    for name, src in (("classify_exhibitors", cls), ("conference_intake", itk)):
+        if '"menu"' not in src or "quality" not in src:
+            errors += fail(
+                f"{name}.py does not consult the capture's quality grade. "
+                f"sweep_exhibitors can grade a page `menu` all day; if the "
+                f"command that writes to the board never reads it, the grade "
+                f"is decoration")
+
+    # DRIVE IT, rather than trusting the grep. A menu-graded file handed to
+    # intake must be refused with a non-zero exit and nothing written.
+    # Neither the directory nor the file may carry the word "menu": the
+    # refusal prints the path, and a path containing it satisfies the
+    # does-it-say-why check whatever the message says.
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-capture-"))
+    # NOT named menu.json: the refusal prints the file path, so a fixture
+    # with "menu" in its name satisfies the does-it-say-why check whatever
+    # the message actually says.
+    f = tmp / "capture.json"
+    f.write_text(json.dumps({
+        "event_tag": "TEST 2026", "conference": "Test", "found": True,
+        "quality": "menu",
+        "exhibitors": [{"name": "Advocacy", "is_govtech": True},
+                       {"name": "Membership Directory", "is_govtech": True}]}))
+    try:
+        r = subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "conference_intake.py"),
+             str(f), "--dry-run"],
+            cwd=str(ROOT), capture_output=True, text=True, timeout=120)
+        if r.returncode == 0:
+            errors += fail(
+                "conference_intake accepted a capture graded `menu` and "
+                "exited 0. That is the command that turns names into "
+                "suppliers and research candidates")
+        if "menu" not in (r.stderr + r.stdout).lower():
+            errors += fail("intake refused a menu without saying why - the "
+                           "person running it cannot tell a refusal from a "
+                           "crash")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    # AND A REAL FLOOR STILL GOES THROUGH. A gate that refuses everything is
+    # not a gate either.
+    real = sorted((DATA).glob("exhibitors_*.json"))
+    good = None
+    for c in real:
+        d = json.loads(c.read_text())
+        if d.get("quality") == "good" and len(d.get("exhibitors") or []) > 20:
+            good = c
+            break
+    if not good:
+        return errors + fail("no capture on disk grades `good`, so this check "
+                             "cannot show the gate lets a real floor past")
+    r = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "conference_intake.py"),
+         str(good), "--dry-run"],
+        cwd=str(ROOT), capture_output=True, text=True, timeout=180)
+    if r.returncode != 0:
+        errors += fail(f"conference_intake refused {good.name}, which grades "
+                       f"`good`: {(r.stderr or '')[:120]}")
+    return errors
+
+
 def check_an_association_menu_never_grades_as_a_floor() -> int:
     """Eleven pages of navigation were graded `good`.
 
@@ -19509,6 +19594,7 @@ def main() -> int:
     errors += check_staging_a_catalogue_never_costs_an_observed_fact()
     errors += check_an_organisation_is_not_one_of_its_own_events()
     errors += check_an_acronym_cannot_confirm_itself()
+    errors += check_a_menu_cannot_be_classified_or_intaken()
     errors += check_an_association_menu_never_grades_as_a_floor()
     errors += check_the_conference_page_is_the_conference_panel()
     errors += check_a_throttled_lookup_is_not_a_city_that_does_not_exist()
