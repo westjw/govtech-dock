@@ -16620,6 +16620,112 @@ def check_an_acquisition_is_shown_on_both_sides() -> int:
     return errors
 
 
+def check_a_hand_check_records_what_it_found() -> int:
+    """A person who looked leaves a record of what they saw, and the queue
+    believes it.
+
+    THE MECHANISM READ A FIELD NOTHING WROTE. `_checked_recently` hides a
+    company for a window and skips any check whose `found` is null, on the
+    grounds that a null means somebody landed on the wrong page. act_capture
+    never wrote `found` at all - so all 23 checks on file were missing it,
+    and the thirty-day window had never once suppressed anything. Every
+    scan somebody did read back as a company nobody had touched.
+
+    Worse, `absent` meant two opposite things a line apart:
+    `chk.get("found", True)` defaulted a missing key to True and skipped the
+    null test, then the window line read the same missing key as falsy. One
+    read of the field now, one meaning.
+
+    And the commonest outcome on the no-board queue had no way to be said at
+    all: act_capture refused an empty capture, so "I looked and there is no
+    public board" - which is a FINDING, and true of most of that pile - was
+    thrown away and the company came back looking untouched.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin, json as _json, datetime as dt
+    errors = 0
+    today = dt.date.today()
+    co = [{"id": "acme", "name": "Acme", "sector": "Parks & Rec",
+           "category": "Recreation Management", "description": "They sell a thing",
+           "website": "https://acme.example", "govtech": True,
+           "ats": {"type": "unknown", "ref": None},
+           "hiring": {"status": "Unknown", "note": "", "roles": [],
+                      "checked": today.isoformat()}}]
+    files = {"companies.json": co, "suppliers.json": [],
+             "manual.json": {"checks": {}, "postings": []}}
+    with _sandbox_admin(files):
+        # 1. a confirmed absence is accepted and recorded as one
+        got = admin.act_capture({"company_id": "acme", "jobs": [],
+                                 "page_url": "https://acme.example/careers",
+                                 "found": False, "by": "jane",
+                                 "note": "hires on LinkedIn"})
+        if got.get("error"):
+            errors += fail(f"a confirmed absence was refused: {got['error']!r}. "
+                           f"Most of the no-board queue has no board; refusing "
+                           f"that report throws the work away")
+        man = admin.read("manual.json", {})
+        chk = (man.get("checks") or {}).get("acme") or {}
+        if chk.get("found") is not False:
+            errors += fail(f"the check did not record WHAT was found: {chk!r}")
+        if chk.get("by") != "jane":
+            errors += fail(f"the check has no author: by={chk.get('by')!r}. A "
+                           f"ruling without one cannot be scored or trusted")
+        # 2. an empty capture that does NOT claim an absence is still refused
+        got2 = admin.act_capture({"company_id": "acme", "jobs": [],
+                                  "page_url": "https://acme.example/careers"})
+        if not got2.get("error"):
+            errors += fail("an empty capture with no verdict was accepted; a "
+                           "page that would not read is not a board that is "
+                           "empty, and recording it as one is a false absence")
+    # 3. THREE STATES, NOT TWO, and absent is not the same as null.
+    #    An explicit null is the wrong-page shape and leaves the company
+    #    unchecked. A MISSING key is a legacy capture: act_capture refused
+    #    empty captures until today, so a record without the field could only
+    #    have been written when rows came off a page, and reading it as
+    #    "nobody looked" would put 22 real finds back on the worklist.
+    if "acme" in admin._checked_recently(
+            {"checks": {"acme": {"checked_on": today.isoformat(), "found": None}}}, today):
+        errors += fail("an explicit null suppressed the row - that is the "
+                       "wrong-page shape, and the company is still unchecked")
+    if "acme" not in admin._checked_recently(
+            {"checks": {"acme": {"checked_on": today.isoformat()}}}, today):
+        errors += fail("a legacy check with no `found` field stopped counting; "
+                       "every one of those was a successful capture, and "
+                       "un-suppressing them puts real finds back on the queue")
+    # 4. the two windows are different, and the long one is for a found absence
+    old = (today - dt.timedelta(days=90)).isoformat()
+    yes = {"checks": {"acme": {"checked_on": old, "found": True}}}
+    no = {"checks": {"acme": {"checked_on": old, "found": False}}}
+    if "acme" in admin._checked_recently(yes, today):
+        errors += fail("a board FOUND 90 days ago is still suppressed; the "
+                       "postings behind it are what go stale")
+    if "acme" not in admin._checked_recently(no, today):
+        errors += fail("a confirmed absence 90 days old came back to the queue; "
+                       "that asks a person to keep proving the same negative")
+    # 5. their own site announcing a raise or a sale reopens it early
+    news = {"acme": {"items": [{"date": today.isoformat(), "kind": "funding",
+                                "headline": "Acme raises $20M Series B"}]}}
+    if "acme" not in admin._reopened_by_news(no, news):
+        errors += fail("a company that raised money AFTER we last looked was "
+                       "not reopened - a raise is the likeliest reason a "
+                       "boardless company grows a board")
+    # AND IT HAS TO BE WIRED, not merely correct on its own. The reopen was a
+    # working function nothing called for exactly as long as it took to write
+    # this line: _checked_recently is what the queue asks, so that is where
+    # the assertion belongs.
+    if "acme" in admin._checked_recently(no, today, news):
+        errors += fail("a company that raised money since the last check is "
+                       "still suppressed from the queue. _reopened_by_news "
+                       "returns it; the queue never asked")
+    stale = {"checks": {"acme": {"checked_on": today.isoformat(), "found": False}}}
+    old_news = {"acme": {"items": [{"date": "2019-01-01", "kind": "funding",
+                                    "headline": "Acme raises a seed round"}]}}
+    if "acme" in admin._reopened_by_news(stale, old_news):
+        errors += fail("news from before the check reopened the row; a 2019 "
+                       "round is not a reason to re-read a page seen today")
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -17080,6 +17186,7 @@ def main() -> int:
     errors += check_the_headline_is_the_headline_not_the_card()
     errors += check_researched_parents_reach_the_queue_with_their_evidence()
     errors += check_an_acquisition_is_shown_on_both_sides()
+    errors += check_a_hand_check_records_what_it_found()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()

@@ -450,6 +450,7 @@
      <button id="ss-go" style="width:100%;padding:9px;border:0;border-radius:0;margin-top:6px;
        background:#0B57C4;color:#FAF7F0;font:inherit;font-weight:600;cursor:pointer">
        Send to SLED JOBS</button>
+      <button id="ss-none" style="width:100%;padding:8px;border:1px solid #C9D6DF;border-radius:0;margin-top:6px;background:transparent;color:#1F2536;font:inherit;font-size:12px;cursor:pointer">No board on this page</button>
      <div id="ss-msg" style="margin-top:8px;color:#556F82"></div>
      <div id="ss-work" style="margin-top:14px;padding-top:11px;
           border-top:1px solid #C9DCE8">
@@ -528,6 +529,24 @@
         hits.appendChild(d);
       });
     }, 200);
+  };
+
+  /* THE OTHER ANSWER. Most of the no-board queue has no public board at all,
+     and until this button existed the only way to report that was to close
+     the panel - which recorded nothing, so the company came back next week
+     looking as untouched as before. A confirmed absence is a finding and it
+     goes on file with the person's name against it. */
+  const none = box.querySelector("#ss-none");
+  if (none) none.onclick = async () => {
+    if (!company) { msg.textContent = "Pick a company first."; return; }
+    msg.textContent = "recording…";
+    const r = await api("/api/capture", {
+      company_id: company.id, jobs: [], page_url: location.href,
+      found: false, note: "no board on this page, checked by hand" });
+    const sent = r && r.ok && !r.data.error;
+    msg.textContent = sent ? "recorded: no board here"
+      : ((r && r.data && r.data.error) || "could not record that");
+    if (sent) setTimeout(() => box.remove(), 900);
   };
 
   box.querySelector("#ss-go").onclick = async () => {

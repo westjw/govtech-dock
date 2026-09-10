@@ -585,15 +585,72 @@ def _probe(cid: str, log: dict | None = None) -> dict:
 # it for a month; it comes back on its own.
 CAPTURE_FRESH_DAYS = 30
 
+# A CONFIRMED ABSENCE IS A FINDING, NOT A GAP. Somebody read the site and
+# there is no public board - they hire on LinkedIn or by email, which is true
+# of most of this queue. That answer does not rot in thirty days, and asking
+# again every month is asking a person to keep proving the same negative.
+# It is not permanent either: companies raise money and start hiring, get
+# acquired and move, and `_reopened_by_news` below brings those back the
+# moment their own site says something happened.
+NO_BOARD_FRESH_DAYS = 365
 
-def _checked_recently(man: dict | None = None, today=None) -> set:
+
+# Headlines that mean "look at this company again". A funding round or a new
+# owner is the single most likely reason a company that had no public board
+# last year has one now: they hire, or they move onto the parent's system.
+_REOPEN = re.compile(
+    r"\b(raises?|raised|series\s+[a-e]\b|funding|investment|acquir\w+|"
+    r"acquisition|merger|merges?|is\s+now\s+part\s+of|joins\s+forces)\b", re.I)
+
+
+def _reopened_by_news(man: dict | None = None, news: dict | None = None) -> set:
+    """Companies whose own site announced something AFTER we last looked.
+
+    A check is good for a year when it found no board (above), and that
+    would be too long on its own: the whole reason a boardless company grows
+    a board is that something happened to it. This is the something. The
+    news is already on file for 1,316 companies, dated, so "they raised in
+    March and we last looked in January" is a question the data can ask
+    without anybody remembering to.
+
+    Only items dated AFTER the check count. An acquisition from 2019 is not
+    a reason to re-read a page somebody read last week.
+    """
+    if man is None:
+        man = read("manual.json", {})
+    if news is None:
+        news = read("news.json", {})
+    out = set()
+    for cid, chk in (man.get("checks") or {}).items():
+        if not isinstance(chk, dict) or not chk.get("checked_on"):
+            continue
+        rec = news.get(cid) or {}
+        for item in (rec.get("items") or []):
+            when, head = item.get("date"), item.get("headline") or ""
+            if not when or str(when) <= str(chk["checked_on"]):
+                continue
+            if item.get("kind") == "funding" or _REOPEN.search(head):
+                out.add(cid)
+                break
+    return out
+
+
+def _checked_recently(man: dict | None = None, today=None,
+                      news: dict | None = None) -> set:
     """Companies a person looked at by hand inside the window.
 
-    A check with `found: null` does NOT count. That is the shape written when
-    somebody looked at the WRONG PAGE - airitcareers.co.uk is a British MSP
-    and not Air-Transport IT Services of Orlando - and the record is still
-    genuinely unchecked. Treating it as done would be the tool believing its
-    own mistake, which is what the null is there to prevent.
+    Three states, and they are not two. `true` is a board found; `false` is a
+    person confirming there is no public board, which is a FINDING and holds
+    for a year; `null` is the shape written when somebody landed on the WRONG
+    PAGE - airitcareers.co.uk is a British MSP and not Air-Transport IT
+    Services of Orlando - and leaves the company genuinely unchecked.
+
+    ABSENT READ AS BOTH ANSWERS A LINE APART. `chk.get("found", True)`
+    defaulted a missing key to True; a later line read the same missing key
+    as falsy and gave it the long window. One read of the field now, and the
+    default stays True because it is CORRECT for every record that has one:
+    act_capture refused empty captures until today, so a check on file could
+    only have been written when rows came off a page.
     """
     if man is None:
         try:
@@ -601,18 +658,39 @@ def _checked_recently(man: dict | None = None, today=None) -> set:
         except Exception:                               # noqa: BLE001
             return set()
     today = today or dt.date.today()
+    reopen = _reopened_by_news(man, news)
     out = set()
     for cid, chk in (man.get("checks") or {}).items():
+        if cid in reopen:
+            continue                      # their own site says something changed
         if not isinstance(chk, dict):
             continue
-        if chk.get("found", True) is None:
+        # ABSENT MEANS FOUND, AND THAT IS NOT A GUESS. Until today
+        # act_capture REFUSED an empty capture, so a check could only ever be
+        # written when rows came off a page - every one of the 23 legacy
+        # records is a successful find that simply predates the field.
+        # Explicit null is the different thing: the shape written when
+        # somebody landed on the wrong page, which leaves the company
+        # genuinely unchecked.
+        found = chk.get("found", True)
+        if found is None:
             continue
         on = chk.get("checked_on")
         try:
             age = (today - dt.date.fromisoformat(str(on))).days
         except Exception:                               # noqa: BLE001
             continue
-        if 0 <= age < CAPTURE_FRESH_DAYS:
+        # HOW LONG A CHECK IS GOOD FOR DEPENDS ON WHAT IT FOUND.
+        #
+        # One window for every outcome makes a finished answer look exactly
+        # like an unfinished one. "I read their site and they have no public
+        # board, they hire on LinkedIn" is a FINDING - re-asking it every
+        # thirty days is asking somebody to keep proving a negative. A board
+        # that was found is off this queue anyway, and it is the postings
+        # behind it that go stale, which is what the thirty days is really
+        # measuring.
+        window = CAPTURE_FRESH_DAYS if found else NO_BOARD_FRESH_DAYS
+        if 0 <= age < window:
             out.add(cid)
     return out
 
@@ -4012,7 +4090,17 @@ def act_capture(body: dict) -> dict:
     if not c:
         return {"error": "pick a company to attribute these to"}
     raw = body.get("jobs") or []
-    if not raw:
+    # "I LOOKED AND THERE IS NOTHING HERE" IS THE COMMONEST OUTCOME ON THIS
+    # QUEUE, and until now there was no way to say it. Most of the no-board
+    # pile genuinely has no public board - they hire on LinkedIn or by email -
+    # so the person who confirms that has done the work, and refusing their
+    # empty-handed report threw it away. They had to close the panel and the
+    # company came back next week looking untouched.
+    #
+    # It is only accepted when the caller SAYS so. An empty jobs list on its
+    # own still means the page would not read, which is not the same fact and
+    # must not be recorded as one.
+    if not raw and body.get("found") is not False:
         return {"error": "no job titles in that capture"}
     man = read("manual.json", {"checks": {}, "postings": []})
     today = dt.date.today().isoformat()
@@ -4069,7 +4157,26 @@ def act_capture(body: dict) -> dict:
         })
         existing.add(pid)
         added += 1
-    man["checks"][cid] = {"checked_on": today, "by": "capture",
+    # WHAT THE PERSON FOUND, which is the whole point of their having looked.
+    #
+    # This wrote `found` nowhere for a month, and _checked_recently skips a
+    # null on purpose - it is the shape written when somebody landed on the
+    # WRONG PAGE and the company is still genuinely unchecked. So every
+    # capture recorded itself as a non-check: 22 of 23 rows in this file, and
+    # the thirty-day window has never once suppressed anything. A mechanism
+    # read a field nothing wrote.
+    #
+    # Rows come off the page, so a capture that added any IS a find. Zero
+    # added is genuinely ambiguous - an empty board and a page that would not
+    # render look identical from here - so the caller says which, and only a
+    # caller who says nothing leaves the null that means "look again".
+    found = body.get("found")
+    if found is None and added:
+        found = True
+    man["checks"][cid] = {"checked_on": today,
+                          "by": body.get("by") or "capture",
+                          "found": found,
+                          "note": (body.get("note") or "")[:200] or None,
                           "source": body.get("page_url")}
     # FORCE, DELIBERATELY. BLAST asks a person to confirm a count they did
     # not choose; a capture's count IS the page's, it is chosen by opening
