@@ -10,6 +10,15 @@
    "url": "https://www.ibm.com/quantum/blog/gordon-bell-finalists-2026"
   },
   {
+   "date": "2026-09-09",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "Cleveland Clinic, RIKEN, IBM named Gordon Bell finalists",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://research.ibm.com/quantum/blog/gordon-bell-finalists-2026"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -19,6 +28,15 @@
    "url": "https://www.ibm.com/quantum/blog/nighthawk-r2"
   },
   {
+   "date": "2026-08-31",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "IBM Quantum Nighthawk r2\u2014more circuits, faster",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://research.ibm.com/quantum/blog/nighthawk-r2"
+  },
+  {
    "date": "2026-08-24",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
@@ -26,6 +44,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ibm.com/quantum/blog/qiskit-fermions"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "Qiskit Fermions: a modular toolbox for fermionic systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://research.ibm.com/quantum/blog/qiskit-fermions"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "IBM\u2019s new modular architecture for cryogenic systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://research.ibm.com/quantum/blog/modular-cryogenics"
   },
   {
    "date": "2026-08-12",
@@ -55,6 +91,15 @@
    "url": "https://www.ibm.com/think/news/claude-can-reason-can-it-feel"
   },
   {
+   "date": "2026-07-30",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "Researchers demonstrate quantum advantage through trusted quantum computation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://research.ibm.com/quantum/blog/quantum-advantage"
+  },
+  {
    "date": "2026-07-23",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ibm.com/quantum/blog/spin-qubits"
-  },
-  {
-   "date": "2026-07-16",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "How to measure the performance of a quantum computer",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/quantum/blog/hardware-metrics-2026"
-  },
-  {
-   "date": "2026-06-29",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Apply to IBM Quantum Developer Conference 2026 29 Jun 2026 \u2022 Catherine Dundon Community Network",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/quantum/blog/qdc-application-2026"
-  },
-  {
-   "date": "2026-06-22",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Explore next-gen quantum algorithms with IBM Quantum Credits 22 Jun 2026 \u2022 Sieglinde Pfaendler, Robert Davis Algorithms Community Research",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/quantum/blog/credits-recipients"
-  },
-  {
-   "date": "2026-06-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "IBM products recognized in TrustRadius 2026 Top Rated Awards",
-   "kind": "contract",
-   "kind_rule": "Awards",
-   "url": "https://www.ibm.com/new/announcements/ibm-products-win-trustradius-2026-top-rated-awards?lnk=hpfp1us"
-  },
-  {
-   "date": "2026-03-16",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Doubling down on open-access quantum computing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/quantum/blog/open-plan-updates"
   }
  ]
 }

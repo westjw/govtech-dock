@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "How the Best Web Content Filtering Software Helps Schools Manage AI Tools Safely",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://managedmethods.com/blog/manage-ai-tools-with-the-best-web-content-filtering-software/"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://managedmethods.com/blog/google-docs-phishing-oauth-attack/"
-  },
-  {
-   "date": "2026-07-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cloud Monitor Updates: More Visibility, Less Busy Work for K-12 IT Teams",
-   "kind": "product",
-   "kind_rule": "Updates",
-   "url": "https://managedmethods.com/blog/cloud-monitor-updates/"
   }
  ]
 }

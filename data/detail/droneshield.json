@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "DroneShield Appoints Rebecca Lowde as Chief Financial Officer",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://www.droneshield.com/media/press-releases/droneshield-appoints-rebecca-lowde-chief-financial-officer"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "DroneShield Supports Australian Air Force Cadets to Help Develop Australia\u2019s Future Leaders",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/media/press-releases/droneshield-supports-australian-air-force-cadets-australias-future-leaders"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -46,6 +64,15 @@
    "url": "https://www.droneshield.com/blog/military-installations-demand-persistent-rf-awareness"
   },
   {
+   "date": "2026-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Airspace Security During The FIFA World Cup\u2122",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/blog/droneshield-layered-airspace-security-fifa-world-cup-2026"
+  },
+  {
    "date": "2026-07-30",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.droneshield.com/media/news/droneshield-wins-aud-232m-european-defence-contracts"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "New DroneShield Report Reveals Serious Gaps in Airport, Critical Infrastructure Counter-Drone Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/media/news/new-droneshield-report-reveals-serious-gaps-in-airport-critical-infrastructure-counter-drone-security"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "DroneShield Q3 Software Release Sharpens Counter-UAS Performance Against Faster, More Evasive Drone Threats",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/media/press-releases/droneshield-q3-software-release-sharpens-counter-uas-performance-against-faster-more-evasive-drone-threats"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The FIFA World Cup: A Catalyst for C-UAS Investment, But \u2018Not the Whole Story\u2019",
-   "kind": "funding",
-   "kind_rule": "Investment",
-   "url": "https://www.droneshield.com/media/news/the-fifa-world-cup-a-catalyst-for-c-uas-investmentnbspbut-not-the-whole-story"
   }
  ],
  "profile": {

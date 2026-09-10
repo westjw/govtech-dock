@@ -1,10 +1,28 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "OFAC and DOJ Strike Xinbi, a Multibillion-Dollar Marketplace for Cybercriminals",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/ofac-sanctions-xinbi-cybercriminal-crypto-marketplace/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "How The $320M Exploit of Liquid Network Went Down",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/320m-exploit-liquid-network/"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Crime Tracing Crypto in a Narcotics Investigation: FBI Charges Alleged Opioid Distributors September 8, 2026",
+   "headline": "Tracing Crypto in a Narcotics Investigation: FBI Charges Alleged Opioid Distributors",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.chainalysis.com/blog/fbi-traces-crypto-opioids-distributors/"
@@ -13,7 +31,7 @@
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Company News Chainalysis Supports HyperEVM with Automatic Token Support September 3, 2026",
+   "headline": "Chainalysis Supports HyperEVM with Automatic Token Support",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.chainalysis.com/blog/chainalysis-supports-hyperevm-with-automatic-token-support/"
@@ -22,7 +40,7 @@
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Crime FBI Seizes $560K in Crypto From Hamas Fundraising Network September 3, 2026",
+   "headline": "FBI Seizes $560K in Crypto From Hamas Fundraising Network",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.chainalysis.com/blog/fbi-seizes-hamas-crypto-fundraising-network/"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.chainalysis.com/blog/violent-crypto-wrench-attacks-2026/"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Chainalysis Supports Cronos with Automatic Token Support",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/cronos-automatic-token-support/"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The 2026 World Cup On-Chain: $20 Billion in Crypto Flows, From Bets to Tickets",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/2026-world-cup-prediction-markets-nft-tickets/"
   }
  ],
  "profile": {

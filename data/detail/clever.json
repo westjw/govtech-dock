@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-08-03",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "District-Wide Defense: A Texas School District\u2019s Successful Rollout of Student MFA",
    "kind": "contract",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-08-03",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "One Sync, Half a Million Students: TDSB\u2019s Rostering Transformation",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-07-07",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Newcastle Grammar School Meets Essential 8 Compliance with Clever MFA",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-06-03",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-09",
    "headline": "MFA by 2026: How Vita MAT Beat the Cyber Essentials Deadline",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-05-29",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "How This Queensland Campus Uses Passwordless MFA \u2013 No Phones Required",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-05-12",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Clever Announces Smarter MFA for Schools on Microsoft: Introducing Device Trust",
    "kind": "product",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-05-08",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "How Clever Helps App Partners Prepare for Back to School",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-03-12",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "The Infrastructure of Trust: Winning the United States K-12 Market in 2026",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2025-10-17",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Cracking the K-12 Code: Where Corporations Stumble",
    "kind": "press",
@@ -83,30 +83,30 @@
   },
   {
    "date": "2025-10-16",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "A Unified Future: Why a Single Identity Platform Is the Key to Secure and Scalable Learning",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.clever.com/blog/2025/10/a-unified-future"
+   "url": "https://www.clever.com/blog/2025/10/a-unified-future?preview=true&_thumbnail_id=12907"
   },
   {
    "date": "2024-11-11",
    "date_source": "near-h1",
    "first_seen": "2026-09-09",
-   "headline": "Barrier 3: The Business Case Battle",
-   "kind": "press",
-   "kind_rule": null,
+   "headline": "Big Ideas Learning launches new LMS integration 4x faster with Clever LMS Connect",
+   "kind": "product",
+   "kind_rule": "launches",
    "url": "https://www.clever.com/blog/2024/12/big-ideas-learing-launches-new-lms-integration-4x-faster"
   },
   {
-   "date": "2024-06-25",
+   "date": "2024-11-01",
    "date_source": "near-h1",
-   "first_seen": "2026-09-09",
-   "headline": "Rocket Math saw a 500% increase in school connections",
+   "first_seen": "2026-09-10",
+   "headline": "as shared by Kanawha County Schools",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.clever.com/blog/2024/06/rocket-math-unlocks-500-increase-in-school-connections"
+   "url": "https://www.clever.com/blog/2024/10/kanawha-pioneers-clever-lms-connect-integration"
   }
  ]
 }

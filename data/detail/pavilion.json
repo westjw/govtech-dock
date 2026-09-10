@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-08-31",
-   "date_source": "card-date",
+   "date_source": "byline",
    "first_seen": "2026-09-05",
    "headline": "AVI-SPL wins new public sector deals faster with Pavilion",
    "kind": "press",
@@ -10,26 +10,8 @@
    "url": "https://www.withpavilion.com/about/resources/avi-spl-wins-new-public-sector-deals-faster-with-pavilion"
   },
   {
-   "date": "2026-08-18",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Share your contracts on Pavilion: Help your entity find the right contracts \u2013 including your own",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.withpavilion.com/about/resources/share-your-contracts-on-pavilion"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Procurement Impossible: Scaling Without Self-Destructing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.withpavilion.com/about/resources/procurement-impossible-scaling-without-self-destructing"
-  },
-  {
    "date": "2026-08-03",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "The Great Procurement Bake Off: Baking Compliance Into Every Purchase",
    "kind": "press",
@@ -47,7 +29,16 @@
   },
   {
    "date": "2026-06-29",
-   "date_source": "card-date",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Procurement Impossible: Scaling Without Self-Destructing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.withpavilion.com/about/resources/procurement-impossible-scaling-without-self-destructing"
+  },
+  {
+   "date": "2026-06-26",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Procurement Survivor: 5 Lessons Procurement Leaders Shared About Surviving Year-End",
    "kind": "press",
@@ -58,7 +49,7 @@
    "date": "2026-05-06",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
-   "headline": "On-demand webinar May 6, 2026 [Pavilion x GovMVMT] The Procurement Leader's Playbook for 2026 Resource title Unlock webinar",
+   "headline": "[Pavilion x GovMVMT] The Procurement Leader's Playbook for 2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.withpavilion.com/about/resources/pavilion-x-govmvmt-the-procurement-leaders-playbook-for-2026"
@@ -67,46 +58,55 @@
    "date": "2026-05-06",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
-   "headline": "recap May 6, 2026 Bringing Pavilion to every agency in Virginia! Resource title Read more",
+   "headline": "Bringing Pavilion to every agency in Virginia!",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.withpavilion.com/about/resources/bringing-pavilion-to-every-agency-in-virginia"
   },
   {
    "date": "2026-03-25",
-   "date_source": "index-text",
+   "date_source": "card-date",
    "first_seen": "2026-09-09",
-   "headline": "March 25, 2026 Pavilion and VAGP Are Partnering to Bring Smarter Sourcing to Virginia Agencies Resource title Read more",
+   "headline": "Pavilion and VAGP Are Partnering to Bring Smarter Sourcing to Virginia Agencies",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.withpavilion.com/about/resources/pavilion-vagp-partnership"
   },
   {
    "date": "2026-02-27",
-   "date_source": "index-text",
+   "date_source": "card-date",
    "first_seen": "2026-09-09",
-   "headline": "February 27, 2026 From \"Department of No\" to Department of Go: The City of Houston\u2019s Procurement Transformation Playbook Resource title Read now",
+   "headline": "From \"Department of No\" to Department of Go: The City of Houston\u2019s Procurement Transformation Playbook",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.withpavilion.com/about/resources/from-department-of-no-to-department-of-go-the-city-of-houstons-procurement-transformation-playbook"
   },
   {
    "date": "2025-11-07",
-   "date_source": "index-text",
+   "date_source": "card-date",
    "first_seen": "2026-09-09",
-   "headline": "November 7, 2025 ServiceWear Apparel Wins New Public Sector Accounts with Pavilion Pro \u2014 Achieves 9X ROI Resource title Read now",
+   "headline": "ServiceWear Apparel Wins New Public Sector Accounts with Pavilion Pro \u2014 Achieves 9X ROI",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.withpavilion.com/about/resources/servicewear-apparel-wins-new-public-sector-accounts-with-pavilion-pro-achieves-9x-roi"
   },
   {
    "date": "2025-11-07",
-   "date_source": "index-text",
+   "date_source": "card-date",
    "first_seen": "2026-09-09",
-   "headline": "November 7, 2025 Small business Kickbox Leasing expands \u201cexponentially\u201d with Pavilion Pro, achieving 6x ROI Resource title Read now",
+   "headline": "Small business Kickbox Leasing expands \u201cexponentially\u201d with Pavilion Pro, achieving 6x ROI",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.withpavilion.com/about/resources/small-business-kickbox-leasing-expands-exponentially-with-pavilion-pro"
+  },
+  {
+   "date": "2025-10-06",
+   "date_source": "byline",
+   "first_seen": "2026-09-05",
+   "headline": "Small Technology Reseller 4Tech Solutions Competes with Industry Names and Grows Government Sales with Pavilion Pro",
+   "kind": "leadership",
+   "kind_rule": "Names",
+   "url": "https://www.withpavilion.com/about/resources/small-technology-reseller-4tech-competes-with-industry-names-and-grows-government-sales-with-pavilion-pro"
   }
  ]
 }

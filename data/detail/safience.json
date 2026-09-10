@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2023-03-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Drug Offenses Made Up Nearly One-Third Of All Cases In FY 2022: USSC Report",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2023/03/drug-offenses-made-up-nearly-one-third-of-all-cases-in-fy-2022-ussc-report/"
+  },
+  {
+   "date": "2023-03-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Early Gangs Of Britain and America: The \u2018Mohocks,\u2019 And The Forty Elephants",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2023/03/early-gangs-of-britain-and-america-the-mohocks-and-the-forty-elephants/"
+  },
+  {
+   "date": "2023-01-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "How You Can Help In The Fight Against Human Trafficking",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2023/01/how-you-can-help-in-the-fight-against-human-trafficking/"
+  },
+  {
    "date": "2022-03-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -8,6 +35,33 @@
    "kind": "contract",
    "kind_rule": "Partners With",
    "url": "https://safience.io/2022/03/ncjtc-partners-with-biometrica-to-announce-big-data-and-facial-recognition-training-program-for-law-enforcement-and-criminal-justice-professionals/"
+  },
+  {
+   "date": "2021-12-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "United States, Australia Sign Deal To Combat Serious Crime",
+   "kind": "contract",
+   "kind_rule": "Sign",
+   "url": "https://safience.io/2021/12/united-states-australia-sign-deal-to-combat-serious-crime/"
+  },
+  {
+   "date": "2021-12-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "NCJTC Partners With Biometrica To Announce Big Data And Facial Recognition Training Program For Law Enforcement And Criminal Justice Professionals",
+   "kind": "contract",
+   "kind_rule": "Partners With",
+   "url": "https://safience.io/2021/12/bjs-survey-finds-violent-victimization-rate-dropped-22-between-2019-and-2020/"
+  },
+  {
+   "date": "2021-12-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Bipartisan Act That Will Modernize And Make Access To Court Records Cheaper Progresses Through Senate",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2021/12/bipartisan-act-that-will-modernize-and-make-access-to-court-records-cheaper-progresses-through-senate/"
   },
   {
    "date": "2021-06-01",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://safience.io/2018/12/phoenix-office-hiring-2019/"
-  },
-  {
-   "date": "2018-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "NCJTC Partners With Biometrica To Announce Big Data And Facial Recognition Training Program For Law Enforcement And Criminal Justice Professionals",
-   "kind": "contract",
-   "kind_rule": "Partners With",
-   "url": "https://safience.io/2018/09/ncjtc-missing-persons-search-and-rescue/"
-  },
-  {
-   "date": "2018-09-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "With Focus On Missing Persons, National Criminal Justice Training Center And Biometrica Announce Four-Part Expert Series on Security And Public Safety",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2018/09/with-focus-on-missing-persons-national-criminal-justice-training-center-and-biometrica-announce-four-part-expert-series-on-security-and-public-safety/"
-  },
-  {
-   "date": "2018-06-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "NCJTC Partners With Biometrica To Announce Big Data And Facial Recognition Training Program For Law Enforcement And Criminal Justice Professionals",
-   "kind": "contract",
-   "kind_rule": "Partners With",
-   "url": "https://safience.io/2018/06/icmec-missing-children-amazon/"
-  },
-  {
-   "date": "2018-05-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "With Public Safety Prime Focus, Biometrica Announces API Partnership With VSBLTY",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2018/05/with-public-safety-prime-focus-biometrica-announces-api-partnership-with-vsblty/"
-  },
-  {
-   "date": "2018-05-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "NCJTC Partners With Biometrica To Announce Big Data And Facial Recognition Training Program For Law Enforcement And Criminal Justice Professionals",
-   "kind": "contract",
-   "kind_rule": "Partners With",
-   "url": "https://safience.io/2018/05/leo-killed-felony-line-of-duty/"
-  },
-  {
-   "date": "2017-09-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Biometrica Announces Release Of UMbRA, A 100% Law Enforcement-Verified Multi-jurisdictional Database Of Arrests And Convictions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2017/09/umbra-criminal-database/"
   }
  ],
  "profile": {

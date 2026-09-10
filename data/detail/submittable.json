@@ -1,25 +1,7 @@
 {
  "news": [
   {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "The Win-Win-Win of Skills-Based Volunteering",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://submittable.com/blog/the-win-win-win-of-skills-based-volunteering"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "The state of grant compliance in 2024: What you need to know about the latest Uniform Guidance updates",
-   "kind": "product",
-   "kind_rule": "updates",
-   "url": "https://submittable.com/blog/grant-compliance-in-2024"
-  },
-  {
-   "date": "2026-09-04",
+   "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "How Government Grantmakers Create a Positive Citizen Experience",
@@ -28,7 +10,7 @@
    "url": "https://submittable.com/blog/citizen-experience"
   },
   {
-   "date": "2026-09-04",
+   "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "The Keys to Nonprofit Corporate Partnerships",
@@ -37,7 +19,7 @@
    "url": "https://submittable.com/blog/the-keys-to-nonprofit-corporate-partnerships"
   },
   {
-   "date": "2026-09-04",
+   "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Impact Over Volume: Crafting Transformative Corporate Volunteering Programs",
@@ -46,25 +28,7 @@
    "url": "https://submittable.com/blog/transformative-corporate-volunteering"
   },
   {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Employee Volunteering and DEI Go Hand in Hand",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://submittable.com/blog/employee-volunteering-and-dei"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How to Build an Inclusive Volunteering Program",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://submittable.com/blog/inclusive-volunteering"
-  },
-  {
-   "date": "2026-09-03",
+   "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Introducing Submittable\u2019s Responsible AI Principles",
@@ -73,7 +37,7 @@
    "url": "https://submittable.com/blog/responsible-ai-principles-blog"
   },
   {
-   "date": "2026-09-03",
+   "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Use This Framework to Modernize Your Government Grant Program",
@@ -82,31 +46,67 @@
    "url": "https://submittable.com/blog/modernize-your-government-grant-program"
   },
   {
-   "date": "2026-08-14",
+   "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "How much does grant management software actually cost?",
+   "headline": "How grant management software can make or break your career",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://submittable.com/blog/cost-of-grant-management-software"
+   "url": "https://submittable.com/blog/grant-management-software-can-make-your-career"
   },
   {
-   "date": "2026-08-14",
+   "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Post-Award Grant Management: A Practical Guide for Grantmakers",
-   "kind": "contract",
-   "kind_rule": "Award",
-   "url": "https://submittable.com/blog/post-award-grant-management"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Grant fraud: How to protect your program",
+   "headline": "2024: Our Year in Review",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://submittable.com/blog/grant-fraud"
+   "url": "https://submittable.com/blog/2024-our-year-in-review"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What We Learned Applying a Trust-Based Approach to Our Corporate Grants Program in 2023",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://submittable.com/blog/submittable-gives-2023"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Grant management in 2026: Everything you need to know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://submittable.com/blog/grant-management-how-to"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Pass-through Grants: Everything You Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://submittable.com/blog/pass-through-grant"
+  },
+  {
+   "date": "2026-09-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The 6 keys to a strong CSR strategy [Updated for 2026]",
+   "kind": "product",
+   "kind_rule": "Updated",
+   "url": "https://submittable.com/blog/csr-strategy"
+  },
+  {
+   "date": "2026-09-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "How to Measure the Impact of Corporate Volunteering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://submittable.com/blog/impact-of-corporate-volunteering"
   }
  ]
 }

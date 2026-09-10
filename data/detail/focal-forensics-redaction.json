@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "School Surveillance Video Redaction Under FERPA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://focalforensics.com/blog/school-surveillance-video-redaction-ferpa"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://focalforensics.com/blog/october-is-cybersecurity-awareness-month"
-  },
-  {
-   "date": "2025-09-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "When to Call a Forensic Audio/Video Expert",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://focalforensics.com/blog/when-to-call-a-forensic-audiovideo-expert"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "CLEAR Airport Guide: Denver International Airport",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/airport-guide-den"
+  },
+  {
    "date": "2026-08-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -17,6 +26,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://clearme.com/blog/clear-zola-partnership"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "CLEAR Airport Guide: Los Angeles International Airport",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/airport-guide-lax"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "CLEAR Airport Guide: John F. Kennedy International Airport",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/airport-guide-jfk"
   },
   {
    "date": "2026-08-18",
@@ -38,7 +65,7 @@
   },
   {
    "date": "2026-08-06",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "CLEAR Airport Guide: Seattle-Tacoma International Airport",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://clearme.com/blog/winter-travel-chaos"
-  },
-  {
-   "date": "2025-12-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Best Places to Travel in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/the-best-places-to-travel-in-2026"
-  },
-  {
-   "date": "2025-11-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Get Cheap Flights Last Minute",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/how-to-get-cheap-flights-last-minute"
-  },
-  {
-   "date": "2025-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What's the Difference Between Economy vs. Premium Economy?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/economy-vs-premium-economy"
   }
  ]
 }

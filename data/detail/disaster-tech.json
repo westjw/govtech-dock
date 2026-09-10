@@ -1,25 +1,7 @@
 {
  "news": [
   {
-   "date": "2026-04-07",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "PRATUS and Fathom: Better Together for Operational Readiness",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pratus.disastertech.com/blog/pratus-and-fathom-better-together-for-operational-readiness"
-  },
-  {
    "date": "2026-02-11",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Industry Leader Angela Barrow Joins PRATUS\u00ae as Senior Advisor",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pratus.disastertech.com/blog/industry-leader-angela-barrow-joins-pratus-as-senior-advisor"
-  },
-  {
-   "date": "2026-01-14",
    "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "George Bamford Joins PRATUS\u00ae Team | Senior Advisor",
@@ -28,34 +10,7 @@
    "url": "https://pratus.disastertech.com/blog/george-bamford-joins-pratus-team-senior-advisor"
   },
   {
-   "date": "2025-09-10",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Strengthened PRATUS Leadership with Kevin Sligh",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pratus.disastertech.com/blog/strengthens-pratus-leadership-with-kevin-sligh"
-  },
-  {
    "date": "2025-08-29",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Closing Out National Emergency Management Awareness Month: A Look Through History and Into the Future",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pratus.disastertech.com/blog/closing-out-national-emergency-management-awareness-month-a-look-through-history-and-into-the-future"
-  },
-  {
-   "date": "2025-08-22",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Modernizing Emergency Management: AI-Driven Hurricane Track Prediction and Analytics",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pratus.disastertech.com/blog/improving-hurricane-track-prediction-ai"
-  },
-  {
-   "date": "2025-07-30",
    "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Data Analytics in Public Safety & Emergency Response | Key Takeaways",
@@ -64,16 +19,16 @@
    "url": "https://pratus.disastertech.com/blog/data-analytics-public-safety"
   },
   {
-   "date": "2024-02-15",
+   "date": "2025-07-30",
    "date_source": "time",
    "first_seen": "2026-09-05",
-   "headline": "Engineering Extreme Weather Hazard Risk to the Power Grid: A Thought Leadership Piece",
+   "headline": "Closing Out National Emergency Management Awareness Month: A Look Through History and Into the Future",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://pratus.disastertech.com/blog/engineering-extreme-weather-hazard-risk-to-the-power-grid"
+   "url": "https://pratus.disastertech.com/blog/closing-out-national-emergency-management-awareness-month-a-look-through-history-and-into-the-future"
   },
   {
-   "date": "2023-11-28",
+   "date": "2023-11-21",
    "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "The Power of Giving Tuesday in Crisis Management",
@@ -93,6 +48,15 @@
   {
    "date": "2023-08-15",
    "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "Modernizing Emergency Management: AI-Driven Hurricane Track Prediction and Analytics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pratus.disastertech.com/blog/improving-hurricane-track-prediction-ai"
+  },
+  {
+   "date": "2023-08-15",
+   "date_source": "time",
    "first_seen": "2026-09-09",
    "headline": "The Cost of Climate Changes to the Electrical Grid",
    "kind": "press",
@@ -107,6 +71,42 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://pratus.disastertech.com/blog/qa-with-intern-elaine-famutimi"
+  },
+  {
+   "date": "2023-07-20",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "Q&A with Intern, Shagun Sengupta",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pratus.disastertech.com/blog/qa-with-intern-shagun-sengupta"
+  },
+  {
+   "date": "2021-03-25",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "PRATUS and Fathom: Better Together for Operational Readiness",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pratus.disastertech.com/blog/pratus-and-fathom-better-together-for-operational-readiness"
+  },
+  {
+   "date": "2021-03-25",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "Industry Leader Angela Barrow Joins PRATUS\u00ae as Senior Advisor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pratus.disastertech.com/blog/industry-leader-angela-barrow-joins-pratus-as-senior-advisor"
+  },
+  {
+   "date": "2021-03-25",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "Engineering Extreme Weather Hazard Risk to the Power Grid: A Thought Leadership Piece",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pratus.disastertech.com/blog/engineering-extreme-weather-hazard-risk-to-the-power-grid"
   }
  ],
  "profile": {

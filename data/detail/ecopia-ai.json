@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI-Powered 3D Land Cover Data Strengthens Climate Resilience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ecopiatech.com/resources/blog/ai-powered-3d-land-cover-data-strengthens-climate-resilience"
+  },
+  {
    "date": "2026-08-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Transportation Planning Mapping What Matters: Building Safer Transportation Systems with Pedestrian Asset Data",
+   "headline": "Mapping What Matters: Building Safer Transportation Systems with Pedestrian Asset Data",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ecopiatech.com/resources/blog/mapping-what-matters-building-safer-transportation-systems-with-pedestrian-asset-data"
@@ -13,7 +22,7 @@
    "date": "2026-08-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Southeast Michigan Council of Governments (SEMCOG)",
+   "headline": "Top 3 Municipal Use Cases for Geospatial Data",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ecopiatech.com/resources/blog/ai-powered-geospatial-analysis-for-municipal-decision-making"
@@ -22,7 +31,7 @@
    "date": "2026-08-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Climate resilience and stormwater management",
+   "headline": "The Ultimate Guide to Impervious Surface Data",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ecopiatech.com/resources/blog/impervious-surface-mapping"
@@ -31,7 +40,7 @@
    "date": "2026-08-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "data across more than 38,000 miles",
+   "headline": "Top 5 Applications for 3D GIS Data",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ecopiatech.com/resources/blog/top-5-applications-for-3d-gis-data"
@@ -49,7 +58,7 @@
    "date": "2026-08-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Insurance The Importance of High-Precision Geolocation in Wildfire Risk Estimation",
+   "headline": "The Importance of High-Precision Geolocation in Wildfire Risk Estimation",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ecopiatech.com/resources/blog/the-importance-of-high-precision-geolocation-in-wildfire-risk-estimation"
@@ -58,7 +67,7 @@
    "date": "2026-08-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "our artificial intelligence (AI)-based mapping systems regularly ingest high-resolution geospatial imagery",
+   "headline": "AI-Powered Imagery Analysis for P&C Insurance",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ecopiatech.com/resources/blog/ai-powered-imagery-analysis-for-p-c-insurance"
@@ -67,7 +76,7 @@
    "date": "2026-08-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "the first and only complete map of buildings in the US",
+   "headline": "The Most Comprehensive Map of Buildings in the USA",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ecopiatech.com/resources/blog/the-most-comprehensive-map-of-buildings-in-the-usa"
@@ -76,7 +85,7 @@
    "date": "2026-08-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "the foundation for a wide range of analytics",
+   "headline": "Property Intelligence Examples & Where to Get the Data",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ecopiatech.com/resources/blog/property-intelligence-examples-where-to-get-the-data"
@@ -85,7 +94,7 @@
    "date": "2026-08-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "more on that here",
+   "headline": "The Ultimate Guide to Geospatial Data for Insurance",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ecopiatech.com/resources/blog/the-ultimate-guide-to-geospatial-data-for-insurance"
@@ -94,19 +103,10 @@
    "date": "2026-08-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "a record of building changes to a property",
+   "headline": "Geospatial Master Data Management Checklist",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ecopiatech.com/resources/blog/geospatial-master-data-management-checklist"
-  },
-  {
-   "date": "2026-08-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "technology still has a long way to go",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ecopiatech.com/resources/blog/expert-opinion-mdm-geospatial-lineage-insurance"
   }
  ],
  "profile": {

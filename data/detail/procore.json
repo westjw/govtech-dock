@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-09-02",
+   "date": "2026-09-09",
    "date_source": "time",
+   "first_seen": "2026-09-10",
+   "headline": "Procore acquires DroneDeploy to bring visual intelligence to every jobsite",
+   "kind": "funding",
+   "kind_rule": "acquires",
+   "url": "https://www.procore.com/blog/procore-acquires-dronedeploy-to-bring-visual-intelligence-to-every-jobsite"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Procore Explore: Test new features before they touch your jobsites",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-09-02",
-   "date_source": "time",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "How Procore works for manufacturing owners",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-08-05",
-   "date_source": "card-date",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Procore Introduces Asset Register Within Asset Management to Simplify Handover from Contractor to Owner",
    "kind": "product",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-07-29",
-   "date_source": "card-date",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Procore Announces Second Quarter 2026 Financial Results",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-07-29",
-   "date_source": "card-date",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Procore to Acquire DroneDeploy, Creating Next-Generation Platform That Sees, Understands, and Acts on the Jobsite",
    "kind": "funding",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-07-23",
-   "date_source": "card-date",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Procore Introduces Digital Coworker Packages, Expands AI Agent Library, and Previews Skills to Help Construction Teams Put AI to Work",
    "kind": "product",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-07-22",
-   "date_source": "time",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Your digital coworkers are ready to work",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.procore.com/press/procore-announces-timing-of-second-quarter-fiscal-year-2026-earnings-call"
-  },
-  {
-   "date": "2026-06-30",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Track your construction materials from purchase to installation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.procore.com/blog/track-your-construction-materials-from-purchase-to-installation"
   }
  ]
 }

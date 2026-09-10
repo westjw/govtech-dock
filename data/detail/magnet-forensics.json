@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "S4:E9 // Siri-ous intelligence: What iOS 27 means for digital forensics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/s4e9-siri-ous-intelligence-what-ios-27-means-for-digital-forensics/"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -58,7 +67,7 @@
    "date": "2026-08-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "S3:E5 // What to expect when you\u2019re (not) \u2026",
+   "headline": "S3:E5 // What to expect when you\u2019re (not) expecting an incident",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/s3e5-what-to-expect-when-youre-not-expecting-an-incident/"
@@ -67,7 +76,7 @@
    "date": "2026-08-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "From tip to action: Managing NCMEC cyber tip\u2026",
+   "headline": "From tip to action: Managing NCMEC cyber tips at scale",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/from-tip-to-action-managing-ncmec-cyber-tips-at-scale/"
@@ -85,7 +94,7 @@
    "date": "2026-08-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Beyond the alert: Investigating AI-enabled c\u2026",
+   "headline": "Beyond the alert: Investigating AI-enabled cyber fraud in Africa",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/beyond-the-alert-investigating-ai-enabled-cyber-fraud-in-africa/"
@@ -94,19 +103,10 @@
    "date": "2026-08-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Turning chaos into cadence: Rethinking evide\u2026",
+   "headline": "Turning chaos into cadence: Rethinking evidence management frameworks in high-volume arrest operations",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/turning-chaos-into-cadence-rethinking-evidence-management-frameworks-in-high-volume-arrest-operations/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Keeping pace with evolving cybercrime in Wes\u2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/keeping-pace-with-evolving-cybercrime-in-west-africa/"
   }
  ],
  "profile": {

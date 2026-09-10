@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Diesel prices just hit an all-time record. Here\u2019s what it\u2019s doing to the freight recovery, and what you can still control.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/diesel-prices-freight-recovery/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Big news for Canadian fleets: Motive Card is launching in Canada.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/motive-card-now-available-in-canada/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Une grande nouvelle pour les flottes au Canada : lancement de la carte Motive au Canada.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/carte-motive-au-canada/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Fleet maintenance best practices: how to reduce downtime and extend vehicle life",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/fleet-maintenance-best-practices/"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomotive.com/blog/advancing-technology-in-field-services-2026/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What\u2019s the ROI of investing in fleet safety? 4 concrete benefits.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/fleet-safety-roi/"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How field service fleets are using AI to solve their top 3 challenges.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/ai-for-field-service-fleets/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why mobile fleet cards are the next step in fleet spend management.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/mobile-fleet-cards/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "The hidden costs of manual operations for field service fleets.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/hidden-costs-manual-operations-field-service-fleets/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "The Optimal MIH-CP Balance: Quality, Safety, and Access",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/the-optimal-mih-cp-balance-quality-safety-and-access/"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.julota.com/news/hospital-at-home-meets-mih-cp-where-community-paramedics-fit-in-the-acute-hospital-care-home-model/"
-  },
-  {
-   "date": "2026-06-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "What Co-Responder Outcomes Matter to City Administrators?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/what-co-responder-outcomes-matter-to-city-administrators/"
   }
  ],
  "profile": {

@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-07-21",
-   "date_source": "card-date",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Voice Preservation: How AI gave Pierre Lemaire his voice back",
    "kind": "press",
@@ -13,7 +13,7 @@
    "date": "2026-07-21",
    "date_source": "time",
    "first_seen": "2026-09-09",
-   "headline": "21 juillet 2026 Retrouver sa voix qu\u2019il pensait perdue: le parcours de Pierre Lemaire",
+   "headline": "Retrouver sa voix qu\u2019il pensait perdue: le parcours de Pierre Lemaire",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.acapela-group.com/fr/news/preservation-de-la-voix-my-own-voice-pierre-lemaire/"
@@ -22,55 +22,37 @@
    "date": "2026-07-21",
    "date_source": "time",
    "first_seen": "2026-09-09",
-   "headline": "29 juin 2026 Voix IA en Arabe : red\u00e9couvrez Leila, optimis\u00e9e par l\u2019IA",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.acapela-group.com/fr/news/voix-ia-en-arabe-redecouvrez-leila-optimisee-par-lia/"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "21 July 2026 Voice Preservation: How AI gave Pierre Lemaire his voice back",
+   "headline": "Voice Preservation: How AI gave Pierre Lemaire his voice back",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.acapela-group.com/de/news/voice-preservation-my-own-voice-pierre-lemaire/"
   },
   {
-   "date": "2026-07-21",
+   "date": "2026-06-29",
    "date_source": "time",
    "first_seen": "2026-09-09",
-   "headline": "29 June 2026 Arabic AI : Rediscover Leila, Acapela\u2019s AI-enhanced Arabic voice",
+   "headline": "Voix IA en Arabe : red\u00e9couvrez Leila, optimis\u00e9e par l\u2019IA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.acapela-group.com/fr/news/voix-ia-en-arabe-redecouvrez-leila-optimisee-par-lia/"
+  },
+  {
+   "date": "2026-06-29",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "Arabic AI : Rediscover Leila, Acapela\u2019s AI-enhanced Arabic voice",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.acapela-group.com/de/news/arabic-ai-rediscover-leila-acapelas-ai-enhanced-arabic-voice/"
   },
   {
    "date": "2026-06-29",
-   "date_source": "card-date",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Arabic AI : Rediscover Leila, Acapela\u2019s AI-enhanced Arabic voice",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.acapela-group.com/news/arabic-acapelas-ai-voice-leila/"
-  },
-  {
-   "date": "2026-06-29",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "06 mai 2026 Les voix IA Acapela prennent la route avec Trucker Path",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.acapela-group.com/fr/news/les-voix-ia-acapela-prennent-la-route-avec-trucker-path/"
-  },
-  {
-   "date": "2026-06-29",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "06 May 2026 Ma\u00dfgeschneiderte KI-Stimmen gehen auf die Stra\u00dfe: Trucker Path kooperiert mit der Acapela Group bei der Fahrernavigation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.acapela-group.com/de/news/massgeschneiderte-ki-stimmen-gehen-auf-die-strasse-trucker-path-kooperiert-mit-der-acapela-group-bei-der-fahrernavigation/"
   },
   {
    "date": "2026-06-29",
@@ -83,7 +65,25 @@
   },
   {
    "date": "2026-05-06",
-   "date_source": "card-date",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "Les voix IA Acapela prennent la route avec Trucker Path",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.acapela-group.com/fr/news/les-voix-ia-acapela-prennent-la-route-avec-trucker-path/"
+  },
+  {
+   "date": "2026-05-06",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "Ma\u00dfgeschneiderte KI-Stimmen gehen auf die Stra\u00dfe: Trucker Path kooperiert mit der Acapela Group bei der Fahrernavigation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.acapela-group.com/de/news/massgeschneiderte-ki-stimmen-gehen-auf-die-strasse-trucker-path-kooperiert-mit-der-acapela-group-bei-der-fahrernavigation/"
+  },
+  {
+   "date": "2026-05-06",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Custom AI Voices Hit the Road: Trucker Path Teams Up with Acapela Group for Driver Navigation",
    "kind": "press",
@@ -94,16 +94,16 @@
    "date": "2026-05-06",
    "date_source": "time",
    "first_seen": "2026-09-09",
-   "headline": "24 f\u00e9vrier 2026 Pr\u00e9servation de la voix : Acapela Group accompagne Charles Bi\u00e9try avec My-Own-Voice",
+   "headline": "Pr\u00e9servation de la voix : Acapela Group accompagne Charles Bi\u00e9try avec My-Own-Voice",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.acapela-group.com/fr/news/preservation-de-la-voix-acapela-group-accompagne-charles-bietry-avec-my-own-voice/"
   },
   {
-   "date": "2026-05-06",
+   "date": "2026-01-29",
    "date_source": "time",
    "first_seen": "2026-09-09",
-   "headline": "29 January 2026 Voice Preservation: Protecting Your Digital Voice with a Secure USB Solution",
+   "headline": "Voice Preservation: Protecting Your Digital Voice with a Secure USB Solution",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.acapela-group.com/de/news/voice-preservation-on-usb/"

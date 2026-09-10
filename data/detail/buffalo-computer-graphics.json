@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-09",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-09",
    "headline": "How to Choose the Right Emergency Management Software for Your Agency",
    "kind": "press",
@@ -10,8 +10,17 @@
    "url": "https://www.bcgeng.com/blog/emergency-management-software-platform"
   },
   {
-   "date": "2026-09-08",
+   "date": "2026-09-09",
    "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "How to Choose the Right Emergency Management Software for Your Agency",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/content/images/blog/pexels-mikhail-nilov-8943103_7213b84d7126446b84f3dc190847ed8f_1600.jpg"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "near-h1",
    "first_seen": "2026-09-09",
    "headline": "Disaster Management Software: Key Features to Evaluate Before You Buy",
    "kind": "press",
@@ -19,8 +28,17 @@
    "url": "https://www.bcgeng.com/blog/disaster-management-software-best-features"
   },
   {
-   "date": "2026-08-24",
+   "date": "2026-09-08",
    "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "Disaster Management Software: Key Features to Evaluate Before You Buy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/content/images/blog/pexels-marina-zvada-844583049-28495269_82cac06c22b8a5e69ed6041768843d10_1600.jpg"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Why 24/7 Emergency Response Depends on Modern Duty Officer Software",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-06-02",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Empowering Everyone - Why Buffalo Computer Graphics Is Built for Usability Not Just the IT Experts",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-05-01",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "More Than Just Software - The Buffalo Computer Graphics Difference in Customer Support",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-02-19",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "From the Ground Up - The Story Behind Buffalo Computer Graphics - and Why It Matters for Your Organization",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2025-12-03",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Practice Makes Perfect: How Buffalo Computer Graphics Transforms Emergency Preparedness Through Realistic Training",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2025-12-03",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Tired of Per-Seat Pricing? How Buffalo Computer Graphics' Flexible Licensing Saves You Money",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2025-12-03",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Beyond Emergencies: Everyday Ways BCG's DLAN Streamlines Operations and Improves Efficiency",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bcgeng.com/blog/beyond-emergencies-everyday-ways-bcgs-dlan-streamlines-operations-and-improves-efficiency"
-  },
-  {
-   "date": "2025-12-03",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Practice Makes Perfect: How Buffalo Computer Graphics Transforms Emergency Preparedness Through Realistic Training",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/content/images/blog/Training_Blog.jpg"
-  },
-  {
-   "date": "2025-12-03",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Tired of Per-Seat Pricing? How Buffalo Computer Graphics' Flexible Licensing Saves You Money",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/content/images/blog/Flexible-Licensing.jpg"
   }
  ]
 }
