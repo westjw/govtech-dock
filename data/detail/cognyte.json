@@ -2,12 +2,12 @@
  "news": [
   {
    "date": "2026-09-09",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Cognyte to Announce Second Quarter FYE27 Financial Results on September 9, 2026",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Cognyte Reports Strong Second Quarter Results with Accelerating Software Growth and Expanding Profitability",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.cognyte.com/news/cognyte-to-announce-second-quarter-fye27-financial-results-on-september-9-2026/"
+   "url": "https://www.cognyte.com/news/cognyte-reports-strong-second-quarter-results-with-accelerating-software-growth-and-expanding-profitability/"
   },
   {
    "date": "2026-09-07",
@@ -17,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cognyte.com/blog/fatf-grey-list-investigative-capabilities/"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Cognyte to Announce Second Quarter FYE27 Financial Results on September 9, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cognyte.com/news/cognyte-to-announce-second-quarter-fye27-financial-results-on-september-9-2026/"
   },
   {
    "date": "2026-08-12",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-08-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Cognyte to Showcase Financial Crimes Investigation Technology at IAFCI International Conference",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-08-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Cognyte Secures ~$5 Million Expansion with Long-Standing EMEA National Security Customer",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-08-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Cognyte Joins Global Anti-Scam Alliance to Fight Financial Fraud Threats",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-07-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Cognyte Military Intelligence Customer in APAC Expands Partnership with New ~$15-Million Contract",
    "kind": "contract",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-07-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Cognyte Appoints Adam Philpott as Chief Revenue Officer to Lead Global Market Expansion",
    "kind": "leadership",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cognyte.com/blog/national-security-threats-2026/"
-  },
-  {
-   "date": "2026-07-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "LUMINAR 2026 Threat Landscape Report Audio Brief",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cognyte.com/blog/luminar-2026-threat-landscape-report-audio-brief/"
   }
  ],
  "profile": {

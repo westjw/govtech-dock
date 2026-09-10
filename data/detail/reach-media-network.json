@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Microsoft Teams Integration for Digital Signage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://reachmedianetwork.com/resources/microsoft-teams-integration-digital-signage/"
+  },
+  {
    "date": "2026-08-26",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -82,6 +91,15 @@
    "url": "https://reachmedianetwork.com/resources/improve-room-scheduling-with-reach-and-screenfeeds-momentus-integration/"
   },
   {
+   "date": "2026-04-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "centralized digital signage software,",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://reachmedianetwork.com/resources/reach-and-brightsign-an-integrated-approach-to-modern-digital-signage/"
+  },
+  {
    "date": "2026-03-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://reachmedianetwork.com/resources/reach-and-amazon-deliver-an-easy-and-affordable-digital-signage-solution/"
-  },
-  {
-   "date": "2026-01-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "JOIN REACH AT ISE 2026 FOR GIN & JAZZ NIGHT!",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://reachmedianetwork.com/resources/join-reach-at-ise-2026-for-gin-jazz-night/"
-  },
-  {
-   "date": "2025-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Easily Integrate Microsoft Teams with REACH Media Network",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://reachmedianetwork.com/resources/reach-media-network-integrates-with-microsoft-teams-for-web-based-digital-signage/"
   }
  ]
 }

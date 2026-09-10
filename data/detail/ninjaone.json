@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-06-09",
+   "date_source": "dateline",
+   "first_seen": "2026-09-10",
+   "headline": "NinjaOne Reaches $12.3B Valuation as IT Operations Market Consolidates Around a Single Platform",
+   "kind": "funding",
+   "kind_rule": "Valuation",
+   "url": "https://www.ninjaone.com/press/12-3-billion-valuation/"
+  },
+  {
    "date": "2026-04-01",
    "date_source": "byline",
    "first_seen": "2026-09-09",
@@ -13,7 +22,7 @@
    "date": "2026-03-11",
    "date_source": "byline",
    "first_seen": "2026-09-09",
-   "headline": "MSP Sales Cadences Stats: When and How Often to Reach Out to Leads",
+   "headline": "MSP Sales Outreach: Boost Response Rates with the Right Cadence",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ninjaone.com/blog/msp-sales-outreach/"
@@ -26,6 +35,33 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ninjaone.com/blog/bad-technology-experiences-are-eroding-patient-care/"
+  },
+  {
+   "date": "2026-01-07",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "NinjaOne Named a Leader in Gartner Magic Quadrant for Endpoint Management Tools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ninjaone.com/press/leader-2026-gartner-magic-quadrant-mq/"
+  },
+  {
+   "date": "2025-12-17",
+   "date_source": "dateline",
+   "first_seen": "2026-09-10",
+   "headline": "NinjaOne Named a Leader in Two IDC MarketScapes for Endpoint Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ninjaone.com/press/idc-marketscapes-2025/"
+  },
+  {
+   "date": "2025-02-24",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "NinjaOne Secures $5 Billion Valuation and $500 Million Funding to Redefine Automated Endpoint Management",
+   "kind": "funding",
+   "kind_rule": "Valuation",
+   "url": "https://www.ninjaone.com/press/500m-series-c-extensions-5b-valuation/"
   }
  ]
 }

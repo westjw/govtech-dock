@@ -1,6 +1,78 @@
 {
  "news": [
   {
+   "date": "2026-09-04",
+   "date_source": "time",
+   "first_seen": "2026-09-10",
+   "headline": "Trust Shouldn\u2019t Be a Product Feature. It Has to Be the Foundation.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/blog/data-trust-foundation/"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "time",
+   "first_seen": "2026-09-10",
+   "headline": "4 Flow Types for Marketers Getting Started with Salesforce Flow",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/blog/4-flow-types-for-marketers-getting-started-with-salesforce-flow/"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "time",
+   "first_seen": "2026-09-10",
+   "headline": "Agentforce Marketing: A Practical Framework for Successful Implementation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/blog/agentforce-marketing-a-practical-framework-for-successful-implementation/"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "time",
+   "first_seen": "2026-09-10",
+   "headline": "Build Your Dreamforce 2026 Agenda",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/blog/dreamforce-agenda-schedule/"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "time",
+   "first_seen": "2026-09-10",
+   "headline": "The Gift of Subscriber Signals",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/blog/the-gift-of-subscriber-signals/"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "time",
+   "first_seen": "2026-09-10",
+   "headline": "Three Perfect Days at Dreamforce \u2014 A Marketer\u2019s Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/blog/three-perfect-days-at-dreamforce-a-marketers-guide/"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "What Does Salesforce Do?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/blog/what-does-salesforce-do/"
+  },
+  {
+   "date": "2026-07-31",
+   "date_source": "time",
+   "first_seen": "2026-09-10",
+   "headline": "How Tom Tailor Revamped and Future-Proofed Its Loyalty Program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/blog/tom-tailor-loyalty-program/"
+  },
+  {
    "date": "2026-01-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -35,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.salesforce.com/blog/media-companies-streamlining-data/"
-  },
-  {
-   "date": "2020-10-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Film and TV Studios and Production Companies Can Put AI Into Lights, Camera, Action",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/artificial-intelligence-for-film-and-tv-studios/"
   }
  ]
 }

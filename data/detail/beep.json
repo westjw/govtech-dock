@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Beep Closes Series B To Accelerate Commercial Deployment Of Autonomous Mobility Networks",
+   "kind": "funding",
+   "kind_rule": "Series B",
+   "url": "https://ridebeep.com/press-releases/beep-closes-series-b-to-accelerate-commercial-deployment-of-autonomous-mobility-networks"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "Name",
    "url": "https://ridebeep.com/press-releases/jta-opens-aic"
-  },
-  {
-   "date": "2025-01-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beep Welcomes Leslie Dello Russo as Chief People Officer and Shawn Fallon as Chief Financial Officer, Driving Continued Growth and Innovation",
-   "kind": "leadership",
-   "kind_rule": "Welcomes",
-   "url": "https://ridebeep.com/press-releases/beep-welcomes-leslie-dello-russo-as-chief-people-officer-and-shawn-fallon-as-chief-financial-officer-driving-continued-growth-and-innovation-2"
   }
  ],
  "profile": {

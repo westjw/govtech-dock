@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Build Faster with Free Trial Access to Eagleview\u2019s...",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eagleview.com/blog/build-faster-with-free-trial-access-to-eagleviews-property-data/"
+  },
+  {
    "date": "2026-08-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -22,7 +31,7 @@
    "date": "2026-07-30",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Operational Efficiency in Insurance Is No Longer",
+   "headline": "Operational Efficiency in Insurance Is No Longer About Doing More with Less. It\u2019s About Knowing More Before You Go.",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eagleview.com/blog/operational-efficiency-in-insurance-is-no-longer-about-doing-more-with-less-its-about-knowing-more-before-you-go/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eagleview.com/press-releases/eagleview-white-paper-warns-geospatial-intelligence-is-about-to-change-forever/"
-  },
-  {
-   "date": "2026-01-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Eagleview One Flight Meetup Series: 2025 Recap & What\u2019s Ahead",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eagleview.com/blog/eagleview-one-flight-meetup-series-2025-recap-and-whats-ahead/"
   }
  ],
  "profile": {

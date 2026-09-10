@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "MDR vs. MSSP vs. vSOC: What's the Difference?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/mdr-vs.-mssp-vs.-vsoc-whats-the-difference"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://radicl.com/resources/carbonix-dario-valenza-long-endurance-vtol-drones"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What the CMMC Phase II Pause Means for Your Compliance Program",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/what-the-cmmc-phase-two-pause-means-for-your-compliance-program"
   }
  ]
 }

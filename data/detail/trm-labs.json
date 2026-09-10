@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "The US Sanctions Xinbi, One of Southeast Asia's Largest Illicit Crypto Marketplaces",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/the-us-sanctions-xinbi-one-of-southeast-asias-largest-illicit-crypto-marketplaces"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "TRM Labs Announces Series C Expansion at USD 2 Billion Valuation to Continue Building Crimefighting AI",
+   "kind": "funding",
+   "kind_rule": "Series C",
+   "url": "https://www.trmlabs.com/resources/blog/trm-labs-announces-series-c-expansion-at-usd-2-billion-valuation-to-continue-building-crimefighting-ai"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -8,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trmlabs.com/resources/blog/singapores-proposed-stablecoin-rules-what-the-mas-consultation-means-for-issuers-exchanges-and-banks"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "2026\u2019s Biggest Hack To Date: Attackers Drained USD 319 Million in Bitcoin From Liquid Network, Then Returned 85% of Funds",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/2026s-biggest-hack-to-date-attackers-drained-usd-319-million-in-bitcoin-from-liquid-network-then-returned-85-of-funds"
   },
   {
    "date": "2026-09-02",
@@ -55,12 +82,12 @@
    "url": "https://www.trmlabs.com/resources/blog/trm-labs-appoints-mas-veteran-ziqing-ang-as-head-of-policy-apac"
   },
   {
-   "date": "2026-08-24",
+   "date": "2026-08-20",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "Operation Economic Outcast: Treasury Sanctions Nearly 60 Iran-linked Targets and Names Digital Assets a Sanctionable Sector",
-   "kind": "leadership",
-   "kind_rule": "Names",
+   "headline": "named digital assets a sanctionable sector of the Iranian economy",
+   "kind": "press",
+   "kind_rule": null,
    "url": "https://www.trmlabs.com/resources/blog/operation-economic-outcast-treasury-sanctions-nearly-60-iran-linked-targets-and-names-digital-assets-a-sanctionable-sector"
   },
   {
@@ -71,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trmlabs.com/resources/reports-and-whitepapers"
+  },
+  {
+   "date": "2026-08-07",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "How Shelbit Became a USD 6.3 Billion Settlement Layer for Iran's Illicit Economy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/how-shelbit-became-a-usd-6-3-billion-settlement-layer-for-irans-illicit-economy"
   }
  ],
  "profile": {

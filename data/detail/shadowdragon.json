@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "View 10 OSINT analysis techniques to accelerate investigations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://shadowdragon.io/resources/osint-analysis-techniques/"
+  },
+  {
    "date": "2026-08-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "View OSINT Framework: What is a better alternative?",
+   "headline": "OSINT Framework: What is a better alternative?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://shadowdragon.io/resources/osint-framework-alternative/"
@@ -13,7 +22,7 @@
    "date": "2026-08-26",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "View Google dorks: the ultimate list of search operators and commands",
+   "headline": "Google dorks: the ultimate list of search operators and commands",
    "kind": "press",
    "kind_rule": null,
    "url": "https://shadowdragon.io/resources/google-dorks/"
@@ -22,7 +31,7 @@
    "date": "2026-07-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "View 45+ Top OSINT Websites and Resources",
+   "headline": "45+ Top OSINT Websites and Resources",
    "kind": "press",
    "kind_rule": null,
    "url": "https://shadowdragon.io/resources/top-osint-websites-and-resources/"
@@ -31,7 +40,7 @@
    "date": "2026-07-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "View OSINT social media search: Find any hidden profile",
+   "headline": "OSINT social media search: Find any hidden profile",
    "kind": "press",
    "kind_rule": null,
    "url": "https://shadowdragon.io/resources/osint-social-media-search/"
@@ -40,7 +49,7 @@
    "date": "2026-07-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "View Automating OSINT: 7 Steps to an Intelligence Workflow",
+   "headline": "Automating OSINT: 7 Steps to an Intelligence Workflow",
    "kind": "press",
    "kind_rule": null,
    "url": "https://shadowdragon.io/resources/automating-osint/"
@@ -49,7 +58,7 @@
    "date": "2026-07-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "View OSINT Email Search: 30 Best Tools (2026 Guide)",
+   "headline": "OSINT Email Search: 30 Best Tools (2026 Guide)",
    "kind": "press",
    "kind_rule": null,
    "url": "https://shadowdragon.io/resources/osint-email-search-tools/"
@@ -58,7 +67,7 @@
    "date": "2026-06-16",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "View Navigating EU law enforcement data collection requirements",
+   "headline": "Navigating EU law enforcement data collection requirements",
    "kind": "press",
    "kind_rule": null,
    "url": "https://shadowdragon.io/resources/eu-law-enforcement-data-collection/"
@@ -67,7 +76,7 @@
    "date": "2026-06-16",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "View From device extraction to actionable intelligence: Connecting Cellebrite workflows with The Horizon\u00ae Platform",
+   "headline": "From device extraction to actionable intelligence: Connecting Cellebrite workflows with The Horizon\u00ae Platform",
    "kind": "press",
    "kind_rule": null,
    "url": "https://shadowdragon.io/resources/cellebrite-investigation-workflow/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://shadowdragon.io/resources/unmasking-the-fentanyl-trade-in-illicit-online-marketplaces/"
-  },
-  {
-   "date": "2026-06-16",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "View Navigating election monitoring: Insights on security, disinformation, and social media trends",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://shadowdragon.io/resources/navigating-election-monitoring-insights-on-security-disinformation-and-social-media-trends/"
   }
  ]
 }

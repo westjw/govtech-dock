@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "European data sovereignty: the next step we've been building toward",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Five EV myths that are costing fleets money",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Best construction fleet management software: Features, platforms and buying tips",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Fleet accident management: How to improve safety and reduce costs",
    "kind": "press",
@@ -100,13 +100,13 @@
    "url": "https://www.geotab.com/blog/police-fleet-expo-2026-insights/"
   },
   {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What an EV battery is actually worth at the end of a lease",
+   "date": "2026-08-24",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "Heavy equipment telematics to maximize fleet efficiency",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.geotab.com/blog/ev-battery-health-leasing-residual/"
+   "url": "https://www.geotab.com/blog/heavy-equipment-telematics/"
   }
  ],
  "profile": {

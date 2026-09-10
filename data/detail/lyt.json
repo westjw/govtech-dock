@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "LAVTA/Wheels Selects LYT for Cloud-Based Transit Signal Priority",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://lyt.ai/blog/lavta-selects-lyt"
+  },
+  {
    "date": "2026-08-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://lyt.ai/blog/wbur-interviews-mbta"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Clearing a Pathway in Rancho Cordova",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://lyt.ai/blog/clearing-a-pathway-in-rancho-cordova"
   }
  ]
 }

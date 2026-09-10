@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "My 4 Favorite Things About Cellebrite\u2019s Expanded 101 Community",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/my-4-favorite-things-about-cellebrites-expanded-101-community/"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cellebrite.com/en/blog/guardian-irap-assessment-cloud-security-for-australian-agencies-cellebrite/"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Cellebrite Announces Upcoming Investor Events in September Read Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/resources/press-releases/cellebrite-announces-upcoming-investor-events-in-september/"
   },
   {
    "date": "2026-09-02",
@@ -19,6 +37,24 @@
    "url": "https://cellebrite.com/en/blog/direct-access-to-digital-evidence-for-prosecutors/"
   },
   {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Cellebrite Guardian Completes IRAP Assessment: Achieves PROTECTED Level for Australian Government Agencies Read Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/resources/press-releases/cellebrite-guardian-completes-irap-assessment-achieves-protected-level-for-australian-government-agencies/"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Cellebrite Federal Solutions, Inc. (CFSI) Achieves U.S. Department of War\u2019s Advanced Cybersecurity Standard, Reinforcing Commitment to Secure Federal Operations Read Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/resources/press-releases/cellebrite-federal-solutions-inc-cfsi-achieves-u-s-department-of-wars-advanced-cybersecurity-standard-reinforcing-commitment-to-secure-federal-operations/"
+  },
+  {
    "date": "2026-08-26",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -28,40 +64,49 @@
    "url": "https://cellebrite.com/en/resources/cellebrite-brings-battlefield-intelligence-to-the-armed-forces-with-launch-of-portable-tactical-extraction-kit-c-tek/"
   },
   {
-   "date": "2026-06-29",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "A Drone Forensics Operation at Scale: 1,200+ UAVs. Nearly 10 TB of Data. One CFID.",
+   "date": "2026-08-19",
+   "date_source": "card-date",
+   "first_seen": "2026-09-10",
+   "headline": "Cellebrite Genesis for Enterprise Now Generally Available, Regional Availability Expands to More Global Markets",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://cellebrite.com/en/resources/press-releases/"
+   "url": "https://cellebrite.com/en/resources/cellebrite-genesis-for-enterprise-now-generally-available-regional-availability-expands-to-more-global-markets/"
   },
   {
-   "date": "2026-03-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Future of Mobile Security Testing Tools: The Latest New Corellium Products",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/blog/future-of-mobile-security-testingtools-the-latest-new-corellium-products/"
+   "date": "2026-08-13",
+   "date_source": "card-date",
+   "first_seen": "2026-09-10",
+   "headline": "Cellebrite Appoints Shiven Ramji Chief Executive Officer, Succeeding Thomas E. Hogan",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://cellebrite.com/en/resources/press-releases/cellebrite-appoints-shiven-ramji-chief-executive-officer-succeeding-thomas-e-hogan/"
   },
   {
-   "date": "2025-09-19",
+   "date": "2026-08-12",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From a Closet to the Crime Scene: How Horry County Sheriff\u2019s Office Built a Life-Saving Digital Forensics Program with Cellebrite",
+   "first_seen": "2026-09-10",
+   "headline": "Will iOS 26 Cause Your Mobile App to Fail PCI Compliance? Read Now",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://cellebrite.com/en/resources/from-a-closet-to-the-crime-scene-how-horry-county-sheriffs-office-built-a-life-saving-digital-forensics-program-with-cellebrite/"
+   "url": "https://cellebrite.com/en/blog/will-ios-26-cause-your-mobileapp-to-fail-pci-compliance/"
   },
   {
-   "date": "2024-12-12",
+   "date": "2026-08-06",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "A Drone Forensics Operation at Scale: 1,200+ UAVs. Nearly 10 TB of Data. One CFID.",
+   "first_seen": "2026-09-10",
+   "headline": "iOS Jailbreaking Is Over: What It Means for Your Security Team Read Now",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://cellebrite.com/en/newsroom/in-the-news/"
+   "url": "https://cellebrite.com/en/blog/ios-risk-for-mobile-app-developers-and-security-teams/"
+  },
+  {
+   "date": "2026-07-21",
+   "date_source": "card-date",
+   "first_seen": "2026-09-10",
+   "headline": "Cellebrite to Report Second-Quarter 2026 Financial Results on August 13, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/resources/cellebrite-to-report-second-quarter-2026-financial-results-on-august-13-2026/"
   }
  ],
  "profile": {

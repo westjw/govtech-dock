@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Budgeting for a Jail Monitoring System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/budgeting-for-a-jail-monitoring-system"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Opioid Withdrawal in Jail",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/opioid-withdrawal-in-jail"
+  },
+  {
    "date": "2026-08-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -55,6 +73,24 @@
    "url": "https://4sightlabs.com/resources/institutional-liability-in-a-custodial-death-case"
   },
   {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "What Is Data Chain of Custody for Correctional Monitoring Data?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/what-is-data-chain-of-custody-for-correctional-monitoring-data"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Observation Standards in Detention Facilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/observation-standards-in-detention-facilities"
+  },
+  {
    "date": "2026-06-19",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://4sightlabs.com/resources/4sight-labs-warns-consumer-wireless-technology-falls-short-in-custodial-monitoring-systems"
-  },
-  {
-   "date": "2026-06-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "What Purpose-Built Correctional Monitoring Actually Delivers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/what-purpose-built-correctional-monitoring-actually-delivers"
-  },
-  {
-   "date": "2026-05-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Identifying Blind Spots in High-Risk Housing Units",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/identifying-blind-spots-in-high-risk-housing-units-visibility-challenges-in-detention-supervision"
-  },
-  {
-   "date": "2026-05-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Medical Observation in Jail",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/medical-observation-in-jail"
-  },
-  {
-   "date": "2026-05-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Mental Health Monitoring in Jail",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/mental-health-monitoring-in-jail"
   }
  ],
  "profile": {

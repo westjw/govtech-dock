@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Identity Security Signals: AI tests security boundaries, digital trust faces new pressures, critical infrastructure risks grow",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/blog/identity-security-signals-ai-tests-security-boundaries-digital-trust-faces-new-pressures"
+  },
+  {
    "date": "2026-08-26",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imprivata.com/company/press/imprivata-research-finds-only-32-percent-agencies-cjis-compliant"
-  },
-  {
-   "date": "2026-06-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The hidden risk of lost mobile devices in healthcare: Why asset management is the fix",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/hidden-risk-lost-mobile-devices-healthcare-why-asset-management-fix"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Dynamic Creatures Launches New Category of Mobile, Interactive Character Robots for Hospitality and Entertainment",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://bostondynamics.com/news/dynamic-creatures-launches-mobile-interactive-character-robots-for-hospitality-and-entertainment/"
+  },
+  {
    "date": "2026-08-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -35,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://bostondynamics.com/blog/bridging-the-porch-gap/"
+  },
+  {
+   "date": "2026-07-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Atlas, the humanoid robot, delivers match ball at World Cup",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/news/atlas-the-humanoid-robot-delivers-match-ball-at-world-cup/"
   },
   {
    "date": "2026-07-01",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://bostondynamics.com/blog/ask-a-roboticist-meet-ethan/"
-  },
-  {
-   "date": "2026-04-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI Visual Intelligence Now Powered by Google Gemini Robotics",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/blog/aivi-learning-now-powered-google-gemini-robotics/"
-  },
-  {
-   "date": "2026-04-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Tools for Your To Do List with Spot and Gemini Robotics",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/blog/tools-for-your-to-do-list-with-spot-and-gemini-robotics/"
   }
  ],
  "profile": {
