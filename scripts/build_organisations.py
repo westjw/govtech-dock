@@ -41,14 +41,57 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT = DATA / "organisations.json"
 
-# Codes the parser mints from a description rather than a name. Each is a
-# CLASS of organisation - "the fifty state sheriffs' associations" - and the
-# events under it are real while the body is not one body.
-CLASS_CODES = {
-    "STATEASSOCIATIONS", "STATEAFFILIATES", "VARIOUS", "STATEAGENCIES",
-    "STATEDOTS", "STATEJUDICIARIES", "STATEAOCS", "STATESAGS", "STATEOFFICES",
-    "STATELTAPCENTERS", "UNSPECIFIED", "FIRE", "STATE",
-}
+# A CLASS OF BODIES IS NOT A BODY, and it is the NAME that says so, not a
+# list of codes. A hardcoded list went stale the moment the parser learned to
+# derive codes from names: STATEASSOCIATION, STATEPARKSRECCHA and four others
+# arrived after it was written and were treated as real associations with a
+# website and a history.
+#
+# The registry's own vocabulary for a class: a plural of bodies ("State
+# associations", "AAAE chapters", "State affiliates"), an unnamed source
+# ("Various"), or a parenthetical count ("State parks & rec chapters (25 in
+# registry)"). A named body never reads like that.
+_CLASS_NAME = re.compile(
+    r"^(various|unspecified|—|-)$"
+    r"|\b(associations|affiliates|agencies|chapters|centers|centres|"
+    r"judiciaries|offices|departments|dots|aocs|sags|boards|councils)\b"
+    r"|\(\s*\d+\s+in\s+registry\s*\)", re.I)
+CLASS_CODES = {"UNSPECIFIED"}
+
+
+# "AAAE chapters" is not a class of body. It is AAAE, described by the row
+# that happened to name it - and AAAE runs a published conference on this
+# board. Stripping the qualifier gives the association back its own name.
+_CLASS_TAIL = re.compile(r"\s+(chapters|affiliates|sections|districts)\s*$", re.I)
+
+
+def is_a_class(code: str, name: str, *, has_real_event: bool = False) -> bool:
+    """Does this record name one organisation, or a class of them?
+
+    The name is the evidence - "State associations" means fifty bodies - but
+    it is not the only evidence, and taken alone it was wrong eight times.
+    AAAE, APCO, GFOA, NENA, ACA, AGA, IFMA and NARC were each filed as a
+    class because the only name available was "<CODE> chapters", while every
+    one of them runs a conference in the published catalogue. A body with a
+    curated event is a body; the catalogue is hand-made and holds no classes.
+    """
+    if (code or "").upper() in CLASS_CODES:
+        return True
+    if has_real_event:
+        return False
+    # THE HEAD OF THE NAME, not a parenthetical. "NARC (Regional Councils /
+    # COGs)" is the National Association of Regional Councils - one body,
+    # whose gloss happens to contain a class word. "State associations" is
+    # fifty. Only the part before the bracket decides.
+    head = re.sub(r"\s*\(.*", "", (name or "").strip())
+    return bool(_CLASS_NAME.search(head))
+
+
+def tidy_name(name: str, is_class: bool) -> str:
+    """A real association keeps its own name, not the row's description."""
+    if is_class:
+        return name
+    return _CLASS_TAIL.sub("", (name or "").strip()) or name
 
 NOTE = (
     "Derived, never authored: every field is read from conferences.json, "
@@ -90,7 +133,7 @@ def build() -> dict:
         code = (code or "").strip().upper() or "UNSPECIFIED"
         o = orgs.setdefault(code, {
             "code": code, "name": name or code, "url": None,
-            "is_a_class": code in CLASS_CODES, "_named": False,
+            "is_a_class": False, "_named": False,
             "scopes": set(), "blocks": set(), "departments": set(),
             "events": [],
         })
@@ -172,6 +215,14 @@ def build() -> dict:
         # A FLOOR NOBODY HAS READ IS NOT A FLOOR WITH NOTHING ON IT. The count
         # a page shows must be able to say which of those it means.
         o["harvest_count"] = sum(1 for e in ev if e.get("harvest"))
+        # decided on the FINAL name, and on whether the catalogue holds a
+        # curated event for this body - both only knowable once every source
+        # has been read
+        real = any(e["source"] == "catalogue" for e in ev)
+        o["is_a_class"] = is_a_class(o["code"], o["name"], has_real_event=real)
+        o["name"] = tidy_name(o["name"], o["is_a_class"])
+        if o["is_a_class"]:
+            o["url"] = None       # a class has no website of its own
         o.pop("_named", None)
         out.append(o)
     out.sort(key=lambda o: (-o["event_count"], o["code"]))

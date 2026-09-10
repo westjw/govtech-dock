@@ -469,6 +469,140 @@
    "harvest_count": 8
   },
   {
+   "code": "STATEASSOCIATION",
+   "name": "State associations",
+   "url": null,
+   "is_a_class": true,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 10 — Clerks, Records, Elections & Legal",
+    "Block 15 — Libraries",
+    "Block 3 — Public Safety",
+    "Block 4 — Transit, Parking & Transportation",
+    "Block 5 — Public Works & Infrastructure",
+    "Block 7 — K-12 & Higher Education"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "STATEASSOCIATION::state-coroner-association-conferences",
+     "name": "State coroner association conferences",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEASSOCIATION::state-election-official-conferences",
+     "name": "State election official conferences",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEASSOCIATION::state-em-association-conferences-50",
+     "name": "State EM association conferences (50)",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEASSOCIATION::state-fire-chiefs-conferences-50",
+     "name": "State fire chiefs conferences (50)",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEASSOCIATION::state-fire-marshal-conferences",
+     "name": "State fire marshal conferences",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEASSOCIATION::state-library-association-conferences-50",
+     "name": "State library association conferences (~50)",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEASSOCIATION::state-ms4-stormwater-conferences",
+     "name": "State MS4 / stormwater conferences",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEASSOCIATION::state-police-chiefs-conferences-50",
+     "name": "State police chiefs conferences (50)",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEASSOCIATION::state-school-board-conferences",
+     "name": "State school board conferences",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEASSOCIATION::state-sheriffs-conferences-50",
+     "name": "State sheriffs conferences (50)",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEASSOCIATION::state-transit-association-conferences",
+     "name": "State transit association conferences",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "event_count": 11,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 7
+  },
+  {
    "code": "APTA",
    "name": "American Public Transportation Association",
    "url": "https://www.apta.com/event/apta-2026-transform-expo/",
@@ -717,115 +851,6 @@
    "harvest_count": 6
   },
   {
-   "code": "FIRE",
-   "name": "NC Assn of Fire Chiefs",
-   "url": null,
-   "is_a_class": true,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 3 — Public Safety"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "FIRE::annual-meeting",
-     "name": "Annual Meeting",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "SPONSOR",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "FIRE::fdic-international",
-     "name": "FDIC International",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "FIRE::fire-rescue-east",
-     "name": "Fire Rescue East",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "FIRE::firehouse-expo",
-     "name": "Firehouse Expo",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "FIRE::south-atlantic-fire-rescue-expo-safre",
-     "name": "South Atlantic Fire Rescue Expo (SAFRE)",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "FIRE::state-fire-chiefs-conferences-50",
-     "name": "State fire chiefs conferences (50)",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "FIRE::state-fire-marshal-conferences",
-     "name": "State fire marshal conferences",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "FIRE::state-firefighters-association-conventions",
-     "name": "State firefighters association conventions",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "FIRE::station-design-conference",
-     "name": "Station Design Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    }
-   ],
-   "event_count": 9,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 7
-  },
-  {
    "code": "NRPA",
    "name": "National Recreation and Park Association",
    "url": "https://conference.nrpa.org/",
@@ -940,7 +965,7 @@
   },
   {
    "code": "AAAE",
-   "name": "AAAE chapters",
+   "name": "AAAE",
    "url": "https://aaae.org/annual",
    "is_a_class": false,
    "scopes": [
@@ -1347,6 +1372,108 @@
    "harvest_count": 4
   },
   {
+   "code": "STATEAGENCIES",
+   "name": "State agencies",
+   "url": null,
+   "is_a_class": true,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 3 — Public Safety",
+    "Block 5 — Public Works & Infrastructure",
+    "Block 6 — Health & Human Services",
+    "Block 8 — Finance, Procurement, HR & IT"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "STATEAGENCIES::state-behavioral-health-conferences",
+     "name": "State behavioral health conferences",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEAGENCIES::state-broadband-office-bead-events",
+     "name": "State broadband office / BEAD events",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEAGENCIES::state-child-care-administrator-meetings",
+     "name": "State child care administrator meetings",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEAGENCIES::state-ciso-cyber-summits",
+     "name": "State CISO / cyber summits",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEAGENCIES::state-human-services-conferences",
+     "name": "State human services conferences",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEAGENCIES::state-post-training-commission-conferences",
+     "name": "State POST / training commission conferences",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEAGENCIES::state-snap-tanf-administrator-meetings",
+     "name": "State SNAP/TANF administrator meetings",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "STATEAGENCIES::state-workforce-board-conferences",
+     "name": "State workforce board conferences",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
+     "published": false
+    }
+   ],
+   "event_count": 8,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 0
+  },
+  {
    "code": "CSG",
    "name": "Council of State Governments",
    "url": null,
@@ -1531,183 +1658,10 @@
    "harvest_count": 1
   },
   {
-   "code": "STATEASSOCIATION",
-   "name": "State associations",
-   "url": null,
-   "is_a_class": false,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 10 — Clerks, Records, Elections & Legal",
-    "Block 15 — Libraries",
-    "Block 3 — Public Safety",
-    "Block 5 — Public Works & Infrastructure",
-    "Block 7 — K-12 & Higher Education"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "STATEASSOCIATION::state-coroner-association-conferences",
-     "name": "State coroner association conferences",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "STATEASSOCIATION::state-election-official-conferences",
-     "name": "State election official conferences",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "STATEASSOCIATION::state-em-association-conferences-50",
-     "name": "State EM association conferences (50)",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "STATEASSOCIATION::state-library-association-conferences-50",
-     "name": "State library association conferences (~50)",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "STATEASSOCIATION::state-ms4-stormwater-conferences",
-     "name": "State MS4 / stormwater conferences",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "STATEASSOCIATION::state-school-board-conferences",
-     "name": "State school board conferences",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "STATEASSOCIATION::state-sheriffs-conferences-50",
-     "name": "State sheriffs conferences (50)",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    }
-   ],
-   "event_count": 7,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 4
-  },
-  {
-   "code": "STATEAGENCIES",
-   "name": "State agencies",
-   "url": null,
-   "is_a_class": true,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 6 — Health & Human Services",
-    "Block 8 — Finance, Procurement, HR & IT"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "STATEAGENCIES::state-behavioral-health-conferences",
-     "name": "State behavioral health conferences",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "STATEAGENCIES::state-child-care-administrator-meetings",
-     "name": "State child care administrator meetings",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "STATEAGENCIES::state-ciso-cyber-summits",
-     "name": "State CISO / cyber summits",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "STATEAGENCIES::state-human-services-conferences",
-     "name": "State human services conferences",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "STATEAGENCIES::state-snap-tanf-administrator-meetings",
-     "name": "State SNAP/TANF administrator meetings",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "STATEAGENCIES::state-workforce-board-conferences",
-     "name": "State workforce board conferences",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    }
-   ],
-   "event_count": 6,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 0
-  },
-  {
    "code": "STATEPARKSRECCHA",
    "name": "State parks & rec chapters (25 in registry)",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -1781,6 +1735,88 @@
    "published_count": 0,
    "swept_count": 0,
    "harvest_count": 2
+  },
+  {
+   "code": "UNSPECIFIED",
+   "name": "—",
+   "url": null,
+   "is_a_class": true,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 3 — Public Safety",
+    "Block 4 — Transit, Parking & Transportation",
+    "Block 5 — Public Works & Infrastructure",
+    "Block 7 — K-12 & Higher Education"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "UNSPECIFIED::digital-learning-annual-conference-dlac",
+     "name": "Digital Learning Annual Conference (DLAC)",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "UNSPECIFIED::global-waste-management-symposium",
+     "name": "Global Waste Management Symposium",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "UNSPECIFIED::intl-disaster-conference-expo-idce",
+     "name": "Intl Disaster Conference & Expo (IDCE)",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "UNSPECIFIED::micromobility-america",
+     "name": "Micromobility America",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "UNSPECIFIED::mountain-connect",
+     "name": "Mountain Connect",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "UNSPECIFIED::national-hurricane-conference",
+     "name": "National Hurricane Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "event_count": 6,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 6
   },
   {
    "code": "WEF",
@@ -1937,7 +1973,7 @@
   },
   {
    "code": "APCO",
-   "name": "APCO chapters",
+   "name": "APCO",
    "url": "https://www.apco2027.org",
    "is_a_class": false,
    "scopes": [
@@ -2010,7 +2046,7 @@
   },
   {
    "code": "AWWA",
-   "name": "AWWA sections",
+   "name": "AWWA",
    "url": "https://ace.awwa.org/",
    "is_a_class": false,
    "scopes": [
@@ -2301,62 +2337,65 @@
    "harvest_count": 3
   },
   {
-   "code": "POLICE",
-   "name": "Major Cities Chiefs Assn",
+   "code": "VARIOUS",
+   "name": "Various",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
    "blocks": [
-    "Block 3 — Public Safety"
+    "Block 1 — Housing & Community Development",
+    "Block 3 — Public Safety",
+    "Block 4 — Transit, Parking & Transportation",
+    "Block 5 — Public Works & Infrastructure"
    ],
    "departments": [],
    "events": [
     {
      "source": "staged",
-     "key": "POLICE::biannual-meetings",
-     "name": "Biannual meetings",
+     "key": "VARIOUS::coc-state-regional-conferences",
+     "name": "CoC state/regional conferences",
      "url": null,
      "status": "needs_url",
-     "harvest": true,
-     "registry_status": "SPONSOR",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
      "published": false
     },
     {
      "source": "staged",
-     "key": "POLICE::lifesavers-conference",
-     "name": "Lifesavers Conference",
+     "key": "VARIOUS::hud-ta-data-trainings",
+     "name": "HUD TA / data trainings",
      "url": null,
      "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
+     "harvest": false,
+     "registry_status": "TRAINING",
      "published": false
     },
     {
      "source": "staged",
-     "key": "POLICE::police-security-expo",
-     "name": "Police Security Expo",
+     "key": "VARIOUS::state-firefighters-association-conventions",
+     "name": "State firefighters association conventions",
      "url": null,
      "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
      "published": false
     },
     {
      "source": "staged",
-     "key": "POLICE::state-police-chiefs-conferences-50",
-     "name": "State police chiefs conferences (50)",
+     "key": "VARIOUS::state-regional-fleet-association-events",
+     "name": "State/regional fleet association events",
      "url": null,
      "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
      "published": false
     },
     {
      "source": "staged",
-     "key": "POLICE::state-post-training-commission-conferences",
-     "name": "State POST / training commission conferences",
+     "key": "VARIOUS::tsmo-traffic-incident-mgmt-events",
+     "name": "TSMO / Traffic Incident Mgmt events",
      "url": null,
      "status": "needs_url",
      "harvest": false,
@@ -2367,7 +2406,7 @@
    "event_count": 5,
    "published_count": 0,
    "swept_count": 0,
-   "harvest_count": 4
+   "harvest_count": 0
   },
   {
    "code": "AACRAO",
@@ -2623,7 +2662,7 @@
   },
   {
    "code": "ACA",
-   "name": "ACA affiliates",
+   "name": "ACA",
    "url": "https://www.aca.org/conferences/future-conferences",
    "is_a_class": false,
    "scopes": [
@@ -2687,7 +2726,7 @@
   },
   {
    "code": "AGA",
-   "name": "AGA chapters",
+   "name": "AGA",
    "url": "https://pdt.agacgfm.org/",
    "is_a_class": false,
    "scopes": [
@@ -2940,7 +2979,7 @@
   },
   {
    "code": "GFOA",
-   "name": "GFOA affiliates",
+   "name": "GFOA",
    "url": "https://www.gfoa.org/conference",
    "is_a_class": false,
    "scopes": [
@@ -3003,7 +3042,7 @@
   },
   {
    "code": "IFMA",
-   "name": "IFMA chapters",
+   "name": "IFMA",
    "url": "https://worldworkplace.ifma.org/",
    "is_a_class": false,
    "scopes": [
@@ -3563,7 +3602,7 @@
   },
   {
    "code": "NENA",
-   "name": "NENA chapters",
+   "name": "NENA",
    "url": "https://www.nena.org/events/EventDetails.aspx?id=1963341",
    "is_a_class": false,
    "scopes": [
@@ -3623,65 +3662,6 @@
    "published_count": 1,
    "swept_count": 0,
    "harvest_count": 3
-  },
-  {
-   "code": "TRANSIT",
-   "name": "State associations",
-   "url": null,
-   "is_a_class": false,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 4 — Transit, Parking & Transportation"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "TRANSIT::micromobility-america",
-     "name": "Micromobility America",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "TRANSIT::move-america",
-     "name": "MOVE America",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "TRANSIT::rail-volution",
-     "name": "Rail~Volution",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "TRANSIT::state-transit-association-conferences",
-     "name": "State transit association conferences",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    }
-   ],
-   "event_count": 4,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 4
   },
   {
    "code": "TRB",
@@ -3808,187 +3788,6 @@
    "published_count": 1,
    "swept_count": 0,
    "harvest_count": 2
-  },
-  {
-   "code": "UNSPECIFIED",
-   "name": "—",
-   "url": null,
-   "is_a_class": true,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 3 — Public Safety",
-    "Block 5 — Public Works & Infrastructure",
-    "Block 7 — K-12 & Higher Education"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "UNSPECIFIED::digital-learning-annual-conference-dlac",
-     "name": "Digital Learning Annual Conference (DLAC)",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "UNSPECIFIED::global-waste-management-symposium",
-     "name": "Global Waste Management Symposium",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "UNSPECIFIED::intl-disaster-conference-expo-idce",
-     "name": "Intl Disaster Conference & Expo (IDCE)",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "UNSPECIFIED::national-hurricane-conference",
-     "name": "National Hurricane Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    }
-   ],
-   "event_count": 4,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 4
-  },
-  {
-   "code": "UTILITIES",
-   "name": "Fiber Broadband Assn",
-   "url": null,
-   "is_a_class": false,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 5 — Public Works & Infrastructure"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "UTILITIES::distributech-international",
-     "name": "DISTRIBUTECH International",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "UTILITIES::fiber-connect",
-     "name": "Fiber Connect",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "UTILITIES::mountain-connect",
-     "name": "Mountain Connect",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "UTILITIES::state-broadband-office-bead-events",
-     "name": "State broadband office / BEAD events",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    }
-   ],
-   "event_count": 4,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 3
-  },
-  {
-   "code": "VARIOUS",
-   "name": "Various",
-   "url": null,
-   "is_a_class": true,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 1 — Housing & Community Development",
-    "Block 4 — Transit, Parking & Transportation",
-    "Block 5 — Public Works & Infrastructure"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "VARIOUS::coc-state-regional-conferences",
-     "name": "CoC state/regional conferences",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "VARIOUS::hud-ta-data-trainings",
-     "name": "HUD TA / data trainings",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "TRAINING",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "VARIOUS::state-regional-fleet-association-events",
-     "name": "State/regional fleet association events",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "VARIOUS::tsmo-traffic-incident-mgmt-events",
-     "name": "TSMO / Traffic Incident Mgmt events",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    }
-   ],
-   "event_count": 4,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 0
   },
   {
    "code": "AACE",
@@ -4501,6 +4300,56 @@
    "harvest_count": 1
   },
   {
+   "code": "CLARION",
+   "name": "Clarion",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 3 — Public Safety",
+    "Block 5 — Public Works & Infrastructure"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "CLARION::distributech-international",
+     "name": "DISTRIBUTECH International",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "CLARION::ems-today",
+     "name": "EMS Today",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "CLARION::fdic-international",
+     "name": "FDIC International",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "event_count": 3,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 3
+  },
+  {
    "code": "CLEAR",
    "name": "Council on Licensure, Enforcement & Regulation",
    "url": null,
@@ -4705,6 +4554,57 @@
    "harvest_count": 1
   },
   {
+   "code": "ENDEAVOR",
+   "name": "Endeavor",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "INDUSTRY",
+    "SLED"
+   ],
+   "blocks": [
+    "Block 3 — Public Safety",
+    "Block 5 — Public Works & Infrastructure"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "ENDEAVOR::firehouse-expo",
+     "name": "Firehouse Expo",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "ENDEAVOR::national-pavement-expo",
+     "name": "National Pavement Expo",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "LIKELY",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "ENDEAVOR::stormcon",
+     "name": "StormCon",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "event_count": 3,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 2
+  },
+  {
    "code": "ESRI",
    "name": "Esri",
    "url": "https://www.esri.com/en-us/about/events/uc/overview",
@@ -4812,7 +4712,7 @@
   },
   {
    "code": "IAAO",
-   "name": "IAAO chapters",
+   "name": "IAAO",
    "url": "https://www.iaao.org/events/annual-conference/",
    "is_a_class": false,
    "scopes": [
@@ -5424,7 +5324,7 @@
    "code": "NAHMA",
    "name": "NAHMA affiliates",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "PROVIDER"
    ],
@@ -6307,7 +6207,7 @@
   },
   {
    "code": "NIGP",
-   "name": "NIGP chapters",
+   "name": "NIGP",
    "url": "https://www.nigp.org/forum",
    "is_a_class": false,
    "scopes": [
@@ -6362,7 +6262,7 @@
    "code": "NRWA",
    "name": "NRWA affiliates (49)",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -6564,7 +6464,7 @@
   },
   {
    "code": "PRIMA",
-   "name": "PRIMA chapters",
+   "name": "PRIMA",
    "url": "https://conference.primacentral.org/2027/",
    "is_a_class": false,
    "scopes": [
@@ -6719,7 +6619,7 @@
   },
   {
    "code": "SWANA",
-   "name": "SWANA chapters",
+   "name": "SWANA",
    "url": "https://swana.org/events/rcon2026",
    "is_a_class": false,
    "scopes": [
@@ -7068,7 +6968,7 @@
    "code": "AESA",
    "name": "Assn of Educational Service Agencies",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -7148,7 +7048,7 @@
    "code": "AFWA",
    "name": "Assn of Fish & Wildlife Agencies",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -8337,7 +8237,7 @@
    "code": "COSLA",
    "name": "Chief Officers of State Library Agencies",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -8585,46 +8485,6 @@
    "harvest_count": 2
   },
   {
-   "code": "ENDEAVOR",
-   "name": "Endeavor",
-   "url": null,
-   "is_a_class": false,
-   "scopes": [
-    "INDUSTRY",
-    "SLED"
-   ],
-   "blocks": [
-    "Block 5 — Public Works & Infrastructure"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "ENDEAVOR::national-pavement-expo",
-     "name": "National Pavement Expo",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "ENDEAVOR::stormcon",
-     "name": "StormCon",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    }
-   ],
-   "event_count": 2,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 1
-  },
-  {
    "code": "EREPUBLIC",
    "name": "e.Republic",
    "url": null,
@@ -8745,7 +8605,7 @@
    "code": "HIMSS",
    "name": "HIMSS chapters",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "ADJACENT"
    ],
@@ -8951,7 +8811,7 @@
    "code": "IAIABC",
    "name": "Intl Assn of Industrial Accident Boards & Commissions",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -9188,7 +9048,7 @@
    "code": "IPMA-HR",
    "name": "IPMA-HR chapters",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -9567,7 +9427,7 @@
   },
   {
    "code": "NACD",
-   "name": "National Assn of Conservation Districts",
+   "name": "National Assn of Conservation",
    "url": null,
    "is_a_class": false,
    "scopes": [
@@ -9610,7 +9470,7 @@
    "code": "NACDD",
    "name": "Natl Assn of Councils on Developmental Disabilities",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -10274,7 +10134,7 @@
    "code": "NASASP",
    "name": "Natl Assn of State Agencies for Surplus Property",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -10440,7 +10300,7 @@
    "code": "NASCLA",
    "name": "Natl Assn of State Contractors Licensing Agencies",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -11095,7 +10955,7 @@
    "code": "NCSAB",
    "name": "National Council of State Agencies for the Blind",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -11257,7 +11117,7 @@
    "code": "NEHA",
    "name": "NEHA affiliates",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -15089,7 +14949,7 @@
   },
   {
    "code": "ASR_TX",
-   "name": "Texas Assn of Appraisal Districts",
+   "name": "Texas Assn of Appraisal",
    "url": null,
    "is_a_class": false,
    "scopes": [
@@ -15162,6 +15022,35 @@
      "source": "staged",
      "key": "ATHLETICBUSINESS::athletic-business-show",
      "name": "Athletic Business Show",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "ATLANTICCITY",
+   "name": "Atlantic City",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 3 — Public Safety"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "ATLANTICCITY::police-security-expo",
+     "name": "Police Security Expo",
      "url": null,
      "status": "needs_url",
      "harvest": true,
@@ -15920,35 +15809,6 @@
      "status": "needs_url",
      "harvest": true,
      "registry_status": "SPONSOR",
-     "published": false
-    }
-   ],
-   "event_count": 1,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 1
-  },
-  {
-   "code": "CLARION",
-   "name": "Clarion",
-   "url": null,
-   "is_a_class": false,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 3 — Public Safety"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "CLARION::ems-today",
-     "name": "EMS Today",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
      "published": false
     }
    ],
@@ -19131,6 +18991,35 @@
    "harvest_count": 0
   },
   {
+   "code": "FIBERBROADBANDAS",
+   "name": "Fiber Broadband Assn",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 5 — Public Works & Infrastructure"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "FIBERBROADBANDAS::fiber-connect",
+     "name": "Fiber Connect",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
    "code": "FIN_AZ",
    "name": "Arizona GFOA",
    "url": "https://gfoaz.org/",
@@ -19653,6 +19542,35 @@
    "harvest_count": 0
   },
   {
+   "code": "FIREHOUSE",
+   "name": "Firehouse",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 3 — Public Safety"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "FIREHOUSE::station-design-conference",
+     "name": "Station Design Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
    "code": "FIRE_FDSOA",
    "name": "Fire Department Safety Officers Assn",
    "url": null,
@@ -19901,6 +19819,35 @@
      "source": "staged",
      "key": "FLORIDA::governor-s-hurricane-conference",
      "name": "Governor's Hurricane Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "FLORIDAFIRECHIEF",
+   "name": "Florida Fire Chiefs",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 3 — Public Safety"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "FLORIDAFIRECHIEF::fire-rescue-east",
+     "name": "Fire Rescue East",
      "url": null,
      "status": "needs_url",
      "harvest": true,
@@ -20172,6 +20119,35 @@
      "status": "needs_url",
      "harvest": true,
      "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "HIGHWAYSAFETY",
+   "name": "Highway safety",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 3 — Public Safety"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "HIGHWAYSAFETY::lifesavers-conference",
+     "name": "Lifesavers Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
      "published": false
     }
    ],
@@ -20709,7 +20685,7 @@
    "code": "ICMA_ST",
    "name": "ICMA state associations (~48)",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -21466,7 +21442,7 @@
    "code": "LIB_STATE",
    "name": "State library associations (~50)",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -21483,6 +21459,35 @@
      "status": "needs_url",
      "harvest": true,
      "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "MAJORCITIESCHIEF",
+   "name": "Major Cities Chiefs Assn",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 3 — Public Safety"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "MAJORCITIESCHIEF::biannual-meetings",
+     "name": "Biannual meetings",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "SPONSOR",
      "published": false
     }
    ],
@@ -21638,6 +21643,35 @@
    "published_count": 1,
    "swept_count": 0,
    "harvest_count": 0
+  },
+  {
+   "code": "METROFIRECHIEFS",
+   "name": "Metro Fire Chiefs",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 3 — Public Safety"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "METROFIRECHIEFS::annual-meeting",
+     "name": "Annual Meeting",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "SPONSOR",
+     "published": false
+    }
+   ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
   },
   {
    "code": "MS-ISAC",
@@ -22977,7 +23011,7 @@
    "code": "NACAA_AIR",
    "name": "National Assn of Clean Air Agencies",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -23702,7 +23736,7 @@
    "code": "NASAA_ARTS",
    "name": "National Assn of State Arts Agencies",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -24778,6 +24812,35 @@
    "harvest_count": 0
   },
   {
+   "code": "NCASSNOFFIRECHIE",
+   "name": "NC Assn of Fire Chiefs",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 3 — Public Safety"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "NCASSNOFFIRECHIE::south-atlantic-fire-rescue-expo-safre",
+     "name": "South Atlantic Fire Rescue Expo (SAFRE)",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
    "code": "NCHC",
    "name": "NCHC",
    "url": null,
@@ -25037,6 +25100,35 @@
    "published_count": 0,
    "swept_count": 0,
    "harvest_count": 0
+  },
+  {
+   "code": "NEWENGLANDPARKIN",
+   "name": "New England Parking Council",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 4 — Transit, Parking & Transportation"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "NEWENGLANDPARKIN::annual-conference",
+     "name": "Annual Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
   },
   {
    "code": "NEWPORTBOARDGROU",
@@ -25857,6 +25949,35 @@
    "harvest_count": 0
   },
   {
+   "code": "OHIOPARKINGASSOC",
+   "name": "Ohio Parking Association",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 4 — Transit, Parking & Transportation"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "OHIOPARKINGASSOC::annual-conference",
+     "name": "Annual Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
    "code": "OKLAHOMA",
    "name": "Oklahoma",
    "url": null,
@@ -25959,35 +26080,6 @@
     {
      "source": "staged",
      "key": "P2F2::annual-conference",
-     "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    }
-   ],
-   "event_count": 1,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 1
-  },
-  {
-   "code": "PARKING",
-   "name": "New England Parking Council",
-   "url": null,
-   "is_a_class": false,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 4 — Transit, Parking & Transportation"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "PARKING::annual-conference",
      "name": "Annual Conference",
      "url": null,
      "status": "needs_url",
@@ -28128,6 +28220,35 @@
    "harvest_count": 0
   },
   {
+   "code": "RAILVOLUTION",
+   "name": "Rail~Volution",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 4 — Transit, Parking & Transportation"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "RAILVOLUTION::rail-volution",
+     "name": "Rail~Volution",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
    "code": "REMA",
    "name": "ReMA (formerly ISRI)",
    "url": null,
@@ -28247,7 +28368,7 @@
    "code": "SBD_CSBA",
    "name": "California School Boards Association",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -28276,7 +28397,7 @@
    "code": "SBD_FSBA",
    "name": "Florida School Boards Association",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -28305,7 +28426,7 @@
    "code": "SBD_GSBA",
    "name": "Georgia School Boards Association",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -28334,7 +28455,7 @@
    "code": "SBD_IASB",
    "name": "Illinois Assn of School Boards",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -28363,7 +28484,7 @@
    "code": "SBD_MASB",
    "name": "Michigan Assn of School Boards",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -28392,7 +28513,7 @@
    "code": "SBD_NCSBA",
    "name": "NC School Boards Association",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -28421,7 +28542,7 @@
    "code": "SBD_NYSSBA",
    "name": "NY State School Boards Association",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -28450,7 +28571,7 @@
    "code": "SBD_OSBA",
    "name": "Ohio School Boards Association",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -28479,7 +28600,7 @@
    "code": "SBD_PSBA",
    "name": "PA School Boards Association",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -28508,7 +28629,7 @@
    "code": "SBD_TASB",
    "name": "Texas Assn of School Boards",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -29439,7 +29560,7 @@
    "code": "STATEOFFICESASSO",
    "name": "State offices/associations",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -30100,6 +30221,35 @@
      "status": "needs_url",
      "harvest": true,
      "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "TERRAPINN",
+   "name": "Terrapinn",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 4 — Transit, Parking & Transportation"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "TERRAPINN::move-america",
+     "name": "MOVE America",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
      "published": false
     }
    ],

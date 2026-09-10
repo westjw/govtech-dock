@@ -261,7 +261,12 @@ def from_blocks(path: pathlib.Path) -> list:
             # from those produced STATE, FL, US - 500 distinct organisations
             # where the registry names 252. When the cell is not an acronym
             # the section heading still owns the row.
-            code = _acronym(name) or code
+            # THE ORG COLUMN NAMES THIS ROW'S BODY, so it owns the code -
+            # the section heading does not. Inheriting the section's code
+            # when the cell had no acronym filed "Major Cities Chiefs Assn"
+            # under POLICE and "Fiber Broadband Assn" under UTILITIES, which
+            # says two different associations are one.
+            code = _acronym(name) or _code_from_name(name)
         if not code:
             # NOT ONE SHARED CODE FOR ALL OF THEM. Esri, Bobit and Nan McKay
             # & Assoc are real organisations that simply do not go by an
@@ -297,14 +302,26 @@ def load() -> dict:
 
 
 def merge(existing: list, fresh: list) -> tuple:
-    """Fresh rows in, observed facts kept.
+    """Fresh rows in, observed facts kept, corrected parses not left behind.
 
     THE POINT OF THIS SCRIPT. Re-running an ingest must never cost an org_url
     somebody's fetch established, a directory_url a judge accepted, or a
     promoted flag. Only the descriptive half is refreshed; everything a later
     stage wrote is carried across untouched.
+
+    AND A CORRECTED PARSE MUST NOT LEAVE A GHOST. The key carries the
+    organisation code, so improving how codes are read changes keys - fixing
+    the rule that filed "Major Cities Chiefs Assn" under POLICE moved nine
+    rows and left nine orphans behind, still on file, still claiming to be
+    events. "Never lose work" cannot mean "never fix a parse".
+
+    So a row the parser no longer produces is dropped ONLY when it carries
+    nothing observed. One that has a url, a directory or a promotion is kept
+    and reported, because that is somebody's work and no re-parse gets to
+    decide it was a mistake.
     """
     by_key = {r["key"]: r for r in existing}
+    fresh_keys = {f["key"] for f in fresh}
     added = updated = 0
     for f in fresh:
         cur = by_key.get(f["key"])
@@ -318,7 +335,18 @@ def merge(existing: list, fresh: list) -> tuple:
             if f.get(field) not in (None, "") and cur.get(field) != f[field]:
                 cur[field] = f[field]
                 updated += 1
-    return sorted(by_key.values(), key=lambda r: r["key"]), added, updated
+    dropped, orphaned = 0, []
+    for k in list(by_key):
+        if k in fresh_keys:
+            continue
+        r = by_key[k]
+        if r.get("org_url") or r.get("directory_url") or r.get("promoted"):
+            orphaned.append(k)          # kept, and said out loud
+            continue
+        del by_key[k]
+        dropped += 1
+    return (sorted(by_key.values(), key=lambda r: r["key"]),
+            added, updated, dropped, orphaned)
 
 
 def main() -> int:
@@ -346,14 +374,19 @@ def main() -> int:
 
     payload = load()
     before = len(payload.get("events") or [])
-    events, added, updated = merge(payload.get("events") or [], deduped)
+    events, added, updated, dropped, orphaned = merge(
+        payload.get("events") or [], deduped)
     payload["note"] = NOTE
     payload["events"] = events
 
     kept = sum(1 for r in events if r.get("org_url") or r.get("directory_url")
                or r.get("promoted"))
     print(f"  read     {len(deduped)} row(s) from the registry")
-    print(f"  on file  {before} -> {len(events)}  (+{added} new, {updated} field(s) refreshed)")
+    print(f"  on file  {before} -> {len(events)}  (+{added} new, "
+          f"{updated} field(s) refreshed, -{dropped} the parser no longer produces)")
+    if orphaned:
+        print(f"  KEPT     {len(orphaned)} row(s) the parser no longer produces but "
+              f"which carry observed work: {orphaned[:4]}")
     print(f"  kept     {kept} row(s) that already carry an observed fact")
     print(f"  harvest  {sum(1 for r in events if r['harvest'])} of {len(events)}"
           f"  ({sum(1 for r in events if not r['harvest'])} publish-only)")

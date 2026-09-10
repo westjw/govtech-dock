@@ -16962,7 +16962,7 @@ def check_staging_a_catalogue_never_costs_an_observed_fact() -> int:
                      status="directory_found", promoted=True, promoted_tag="ACME 2026")]
     fresh = [rne.row("ACME", "Acme Association", "Acme Annual",
                      registry_status="TABLETOP")]
-    merged, added, updated = rne.merge(existing, fresh)
+    merged, added, updated, dropped, orphaned = rne.merge(existing, fresh)
     got = merged[0]
     for field, want in (("org_url", "https://acme.example/"),
                         ("directory_url", "https://acme.example/x"),
@@ -16978,26 +16978,56 @@ def check_staging_a_catalogue_never_costs_an_observed_fact() -> int:
         errors += fail(f"an existing key was added again ({added})")
 
     # a genuinely new key still lands
-    merged2, added2, _ = rne.merge(existing, fresh + [rne.row("NEWCO", "New Co", "First Event")])
+    merged2, added2, _u, _d, _o = rne.merge(
+        existing, fresh + [rne.row("NEWCO", "New Co", "First Event")])
     if added2 != 1 or len(merged2) != 2:
         errors += fail(f"a new key did not land: added={added2}, rows={len(merged2)}")
+
+    # A CORRECTED PARSE MUST NOT LEAVE A GHOST, and must not eat somebody's
+    # work either. Improving how organisation codes are read changes keys:
+    # fixing the rule that filed "Major Cities Chiefs Assn" under POLICE moved
+    # nine rows and left nine orphans still claiming to be events.
+    stale_bare = rne.row("OLDCODE", "Old", "Some Event")
+    stale_work = dict(rne.row("OLDWORK", "Old Work", "Other Event"),
+                      org_url="https://old.example/", status="org_found")
+    merged3, _a, _u, dropped3, orphaned3 = rne.merge(
+        [stale_bare, stale_work], [rne.row("NEWCODE", "New", "Some Event")])
+    keys3 = {r["key"] for r in merged3}
+    if any(k.startswith("OLDCODE") for k in keys3) or dropped3 != 1:
+        errors += fail("a row the parser no longer produces, carrying nothing "
+                       "observed, survived a re-ingest as a ghost event")
+    if not any(k.startswith("OLDWORK") for k in keys3) or not orphaned3:
+        errors += fail("a row the parser no longer produces was deleted DESPITE "
+                       "carrying an org_url somebody's fetch established. "
+                       "'Never lose work' outranks 'match the current parse'")
 
     # an organisation with no acronym gets its OWN code - DRIVEN THROUGH THE
     # PARSER, not by calling the two helpers the parser happens to use. The
     # first version of this assertion composed them itself, so breaking the
     # call site left it green.
     import tempfile as _tf, pathlib as _pl
+    # The section carries a code AND the rows name their own bodies. That is
+    # the shape that filed "Major Cities Chiefs Assn" under POLICE: the Org
+    # cell had no acronym, so the row inherited the heading and two different
+    # associations became one.
     doc = ("## Block 9 - Things\n\n"
-           "### Some Topic\n\n"
+           "### POLICE - Policing bodies\n\n"
            "| Event | Org | Status | Registry |\n|---|---|---|---|\n"
            "| User Conference | Esri | LIKELY | NEW |\n"
            "| Green Fleet | Bobit | LIKELY | NEW |\n"
+           "| Chiefs Meeting | Major Cities Chiefs Assn | LIKELY | NEW |\n"
            "| State events (50) | State associations | LIKELY | NEW |\n")
     tmpd = _pl.Path(_tf.mkdtemp()) / "blocks.md"
     tmpd.write_text(doc)
     parsed = {r["event_name"]: r for r in rne.from_blocks(tmpd)}
     esri = parsed.get("User Conference", {})
     bobit = parsed.get("Green Fleet", {})
+    chiefs = parsed.get("Chiefs Meeting", {})
+    if chiefs.get("org_code") == "POLICE":
+        errors += fail("a row whose Org column names its own body inherited the "
+                       "SECTION's code instead. That filed 'Major Cities Chiefs "
+                       "Assn' under POLICE and 'Fiber Broadband Assn' under "
+                       "UTILITIES - two associations reported as one")
     if not esri or not bobit:
         errors += fail(f"the block parser lost a row: {sorted(parsed)}")
     elif esri["org_code"] == bobit["org_code"] or "UNSPECIFIED" in (
@@ -17092,6 +17122,22 @@ def check_an_organisation_is_not_one_of_its_own_events() -> int:
             not any(e["source"] == "staged" for e in nrpa["events"]):
         errors += fail("an organisation did not gather events from both the "
                        "published catalogue and the staging file")
+
+    # A REAL ASSOCIATION IS NOT A CLASS BECAUSE OF ONE WORD IN ITS NAME.
+    # AAAE, APCO, GFOA, NENA, ACA, AGA and IFMA were each filed as a class
+    # because the only name on offer was "<CODE> chapters" - while every one
+    # runs a conference in the hand-curated catalogue. And NARC's gloss
+    # "(Regional Councils / COGs)" tripped the same rule from inside a
+    # parenthetical.
+    for code in ("AAAE", "APCO", "GFOA", "NENA", "NARC"):
+        o = byc.get(code)
+        if o and o["is_a_class"]:
+            errors += fail(f"{code} is filed as a CLASS of body: {o['name']!r}. "
+                           f"A body with a curated catalogue event is a body, "
+                           f"and a class word inside a parenthetical is a gloss")
+        if o and o["name"].lower().endswith((" chapters", " affiliates")):
+            errors += fail(f"{code} is named after the row that described it, "
+                           f"not itself: {o['name']!r}")
 
     # a class of body is marked as one
     classes = [o for o in built if o["is_a_class"]]
