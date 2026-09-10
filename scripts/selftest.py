@@ -17707,9 +17707,28 @@ def check_a_sibling_event_cannot_claim_its_neighbours_floor() -> int:
     ok, why = fed.attributes("<title>NARUC Annual Meeting</title>",
                              "https://naruc.org/annual", "Annual Meeting",
                              ["NARUC Annual Meeting"], "NARUC", "NARUC")
-    if ok or "one event" not in why and "twice" not in why:
+    if ok or "twice" not in why:
         errors += fail(f"a row that names nothing its sibling does not was not "
                        f"refused as a duplicate: ok={ok} why={why[:80]!r}")
+
+    # 5b. AND A GENERIC NAME IS NOT A DUPLICATE. CSDA runs an "Annual
+    #     Conference & Expo" and a "Special District Leadership Academy".
+    #     The first reduces to nothing once "CSDA", "annual", "conference"
+    #     and "expo" are struck out - but the second is plainly a different
+    #     event, and telling a person these are one event staged twice would
+    #     have them merge two real conferences into one.
+    ok, why = fed.attributes(
+        "<title>CSDA Sponsors</title>", "https://csda.net/exhibitor-sponsor",
+        "CSDA Annual Conference & Expo",
+        ["Special District Leadership Academy"], "CSDA", "CSDA")
+    if ok:
+        errors += fail("a generically named event claimed a page that names "
+                       "neither it nor its sibling")
+    if "twice" in why:
+        errors += fail(
+            f"two different CSDA events were reported as one staged twice: "
+            f"{why[:110]!r}. Acting on that merges two real conferences - the "
+            f"refusal is right, the reason is not")
 
     # 6. AN ONLY CHILD IS UNAFFECTED. 201 chapter rows own their org_url
     #    alone, and this rule must cost them nothing.

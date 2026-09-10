@@ -633,10 +633,28 @@ def attributes(page: str, url: str, event_name: str, siblings,
         return True, ""                    # nothing to be confused with
     mine = distinguishing(event_name, sibs, org_name, org_code)
     if not mine:
-        return False, (f"'{event_name}' names nothing its sibling events do "
-                       f"not - it and {sibs[0]!r} read as one event staged "
-                       f"twice, which is a merge for a person, not a "
-                       f"directory to find")
+        # TWO WAYS TO NAME NOTHING, AND THEY ASK A PERSON FOR OPPOSITE THINGS.
+        # If a sibling also reduces to nothing, the two rows are one event
+        # staged twice and want merging. If the sibling has words of its own,
+        # these are different events and only THIS one is generically named -
+        # telling a person to merge them would destroy a real event. CSDA's
+        # "Annual Conference & Expo" against its "Special District Leadership
+        # Academy" is exactly that, and the first draft of this said they
+        # read as one event.
+        twin = next((s for s in sibs
+                     if not distinguishing(s, [event_name] +
+                                           [x for x in sibs if x != s],
+                                           org_name, org_code)), None)
+        if twin:
+            return False, (f"'{event_name}' and {twin!r} both reduce to the "
+                           f"same phrase once the organisation's name is "
+                           f"taken out - they read as one event staged twice, "
+                           f"which is a merge for a person, not a directory "
+                           f"to find")
+        return False, (f"'{event_name}' is made only of words every one of "
+                       f"this organisation's events uses, so no page can name "
+                       f"it rather than {sibs[0]!r}. A person gives it the "
+                       f"name it goes by, or rules on the page directly")
     where = re.sub(r"[^a-z0-9]+", " ", up.unquote(url).lower())
     heads = " ".join(re.sub(r"<[^>]+>", " ", m.group(1)) for m in
                      re.finditer(r"<(?:title|h1|h2)[^>]*>(.*?)</(?:title|h1|h2)>",
