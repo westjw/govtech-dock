@@ -228,6 +228,24 @@ def text_of(html: str) -> str:
 A_TAG = re.compile(r"<a\b([^>]*)>(.*?)</a>", re.I | re.S)
 HREF = re.compile(r"""href\s*=\s*(["'])(.*?)\1""", re.I | re.S)
 HEADING = re.compile(r"<h[1-6]\b[^>]*>(.*?)</h[1-6]>", re.I | re.S)
+# A card built entirely from generic block elements - Framer, Webflow, most
+# page builders - has NO heading to prefer. It still has structure: the
+# headline is one block and the teaser is the next. Flattening the anchor to
+# one string throws that away and glues them together.
+BLOCK_END = re.compile(r"</(?:p|div|h[1-6]|li|section|article|figcaption)\s*>", re.I)
+
+
+def _skippable(seg: str) -> bool:
+    """A block a card may legitimately print ahead of its headline."""
+    if not seg or len(seg.split()) < 3:
+        return True                       # "5", "mins read", "Sep 4"
+    return bool(NAV_CHROME.match(seg) or SECTION_LABEL.fullmatch(seg)
+                or READ_TIME.match(seg) or LEAD_DATE.fullmatch(seg.strip()))
+
+
+def _segments(inner_html: str) -> list[str]:
+    """The card's own block texts, in order, cleaned and non-empty."""
+    return [t for t in (_clean(x) for x in BLOCK_END.split(inner_html or "")) if t]
 TIME_DT = re.compile(r"""<time\b[^>]*datetime\s*=\s*["']([^"']+)["']""", re.I)
 INNER = re.compile(r"<[^>]+>")
 
@@ -243,6 +261,11 @@ LEAD_DATE = re.compile(
     r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s+20\d\d|"
     r"\d{1,2}\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?,?\s+20\d\d)"
     r"[\s|·\u2013\u2014-]*", re.I)
+# "5 mins read", "7 min read" - a reading-time chip the card prints beside the
+# headline. It is not part of the story, and on sites that put it first it was
+# the first thing the anchor text handed us.
+READ_TIME = re.compile(r"^\s*\d{1,3}\s*min(?:ute)?s?\s+read\b[\s:|\u00b7\u2013\u2014-]*", re.I)
+
 LEAD_LABEL = re.compile(
     r"^(article|blog|news|press release|press|customer stor(y|ies)|case stud(y|ies)|"
     r"insight|insights|resource|resources|story|stories|update|updates|"
@@ -277,15 +300,25 @@ def _headline(s: str) -> tuple[str, str | None]:
     """(headline, a date the card printed in front of it), both cleaned."""
     s = _clean(s)
     date = None
-    m = LEAD_DATE.match(s)
-    if m:
-        date = parse_date(m.group(0))
-        s = s[m.end():].strip()
-    for _ in range(2):                    # "Article Customer stories Foo"
-        m2 = LEAD_LABEL.match(s)
-        if not m2:
+    # A card prints these in whatever order its designer chose - "7 min read
+    # July 31, 2026 If you want to turn ideas into reality" leads with the
+    # reading time, then the date, then the story. Stripping each ONCE in a
+    # fixed order left whichever one came second glued to the front, so peel
+    # until nothing peels.
+    for _ in range(6):
+        before = s
+        m = LEAD_DATE.match(s)
+        if m:
+            date = date or parse_date(m.group(0))
+            s = s[m.end():].strip()
+        m2 = READ_TIME.match(s)
+        if m2:
+            s = s[m2.end():].strip()
+        m3 = LEAD_LABEL.match(s)
+        if m3:
+            s = s[m3.end():].strip()
+        if s == before:
             break
-        s = s[m2.end():].strip()
     return s, date
 
 
@@ -320,12 +353,56 @@ def items_from_index(html: str, base: str) -> list[dict]:
             continue
         block = _block(html, m.start(), m.end())
         head, lead_date = _headline(inner)
+        hs = [_headline(h)[0] for h in HEADING.findall(block)]
+        hs = [h for h in hs if len(h.split()) >= 4 and not NAV_CHROME.match(h)]
         if len(head.split()) < 4 or NAV_CHROME.match(head):
             # the anchor is "Read more" or an image; the headline is the
             # nearest heading in the same card
-            hs = [_headline(h)[0] for h in HEADING.findall(block)]
-            hs = [h for h in hs if len(h.split()) >= 4 and not NAV_CHROME.match(h)]
             head = hs[0] if hs else ""
+        elif hs:
+            # THE OPPOSITE FAILURE, and the common one: the anchor wraps the
+            # WHOLE card - label, headline, teaser, byline, date - so it is
+            # never short enough to trigger the fallback above and the whole
+            # blob shipped as the headline. 1,669 of 11,349 stored items read
+            # like "News & Press 120Water Launches Sample Manager ... Sample
+            # Manager simplifies how utilities manage samp".
+            # A heading element the card printed IS the headline. Take it only
+            # when the anchor text actually contains it, so this can only ever
+            # narrow a blob to the title inside it, never swap in some other
+            # card's heading.
+            inner_norm = norm(head)
+            better = next((h for h in hs
+                           if len(h) < len(head) and norm(h) and norm(h) in inner_norm), None)
+            if better:
+                head = better
+        else:
+            # No heading anywhere in the card. Fall back to the card's own
+            # BLOCK boundaries: City Detect's cards are Framer divs where the
+            # reading time, the headline and the teaser are three separate
+            # <p>s, so the flattened anchor read "5 mins read Back-to-School
+            # Means More than School Zones: ... As students head back to s".
+            # Position first: the first block that is not chrome is the
+            # headline. Taken only when it is genuinely shorter and sits
+            # inside the flattened text, so it can only ever narrow.
+            segs = [_headline(x)[0] for x in _segments(inner)]
+            # THE HEADLINE IS THE FIRST BLOCK THAT IS NOT CHROME, and every
+            # block before it must be something a card legitimately prints
+            # ahead of a headline: a section label, a reading time, a date, a
+            # word or two. TeamSnap's card is "Introducing: Street Lacrosse |
+            # By: TeamSnap | New on TeamSnap: Street Lacrosse, from the
+            # Premier Lacrosse League...". Filtering blocks by length and
+            # taking the first survivor skipped the three-word headline and
+            # published the TEASER - pattern before position, which is the
+            # trap the capture harvester already learned.
+            cand = None
+            for seg in segs:
+                if _skippable(seg):
+                    continue
+                cand = seg
+                break
+            if (cand and len(cand) < len(head) and norm(cand)
+                    and norm(cand) in norm(head)):
+                head = cand
         if not head:
             continue
         seen.add(key)

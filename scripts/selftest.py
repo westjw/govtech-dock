@@ -16313,6 +16313,129 @@ def check_the_company_page_shows_the_logo() -> int:
     return errors
 
 
+def check_the_headline_is_the_headline_not_the_card() -> int:
+    """A card's anchor wraps more than the story; the headline is the story.
+
+    items_from_index fell back to a heading element only when the anchor
+    text was TOO SHORT ("Read more", an image). The common failure is the
+    opposite: the anchor wraps the WHOLE card - section label, headline,
+    teaser, byline, reading time, date - so it is never short enough to
+    trigger the fallback and the entire blob shipped as the headline.
+    1,669 of 11,349 stored items read like "News & Press 120Water Launches
+    Sample Manager ... Sample Manager simplifies how utilities manage samp",
+    and LYT's read as its tag list: "Blog, HAAS Alert, Artificial
+    Intelligence, Integration, Fremont, 2022, EVP...".
+
+    A heading the card printed IS the headline, and it is taken only when
+    the anchor text CONTAINS it, so this can narrow a blob to the title
+    inside it and can never swap in another card's heading.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import news
+    errors = 0
+
+    def one(html, base="https://acme.example/news/"):
+        got = news.items_from_index(html, base)
+        return got[0]["headline"] if got else ""
+
+    card = ('<li><a href="/news/acme-launches-sample-manager">'
+            '<span>News &amp; Press</span>'
+            '<h3>Acme Launches Sample Manager for Utilities</h3>'
+            '<p>Sample Manager simplifies how utilities manage samples across '
+            'every site they operate and report on.</p>'
+            '<time datetime="2026-08-27">Aug 27, 2026</time></a></li>')
+    got = one(card)
+    if got != "Acme Launches Sample Manager for Utilities":
+        errors += fail(f"the card's own <h3> was not taken as the headline; got "
+                       f"{got[:90]!r}")
+
+    # the reading-time chip, and a date behind it
+    chip = ('<li><a href="/news/how-to-build-an-ai-task-force">'
+            '<h2>7 min read July 31, 2026 How to Build an AI Task Force</h2>'
+            '</a></li>')
+    got = one(chip)
+    if got != "How to Build an AI Task Force":
+        errors += fail(f"a reading-time chip and the date behind it stayed on the "
+                       f"headline: {got[:90]!r}. A card prints those in whatever "
+                       f"order it likes, so they peel in a loop, not once each")
+
+    # THE SHORT-ANCHOR FALLBACK MUST STILL WORK
+    readmore = ('<li><h3>Council Picks Acme for Permitting</h3>'
+                '<p>The city named Acme this week.</p>'
+                '<a href="/news/council-picks-acme">Read more</a>'
+                '<time datetime="2026-08-01">Aug 1</time></li>')
+    got = one(readmore)
+    if got != "Council Picks Acme for Permitting":
+        errors += fail(f'a "Read more" anchor no longer falls back to the card\'s '
+                       f'heading: {got[:90]!r}')
+
+    # A HEADING FROM ANOTHER CARD MUST NEVER WIN. The anchor here is a real
+    # headline; the only heading in the block belongs to a neighbour.
+    # The foreign heading sits INSIDE the anchor's own block - a "related"
+    # or sidebar heading in the same <li> - and is SHORTER than the anchor
+    # text, so a rule that just took the shortest heading would swap it in.
+    neighbour = ('<li><h3>Entirely Different Story Here</h3>'
+                 '<a href="/news/acme-wins-award">'
+                 'Acme Wins the 2026 Municipal Innovation Award</a>'
+                 '<time datetime="2026-08-02">Aug 2</time></li>')
+    got = one(neighbour)
+    if got != "Acme Wins the 2026 Municipal Innovation Award":
+        errors += fail(f"the anchor's own headline was replaced: {got[:90]!r}")
+    if "Entirely Different" in got:
+        errors += fail(f"a heading from a DIFFERENT card replaced this one's "
+                       f"headline: {got[:90]!r}. The heading is taken only when "
+                       f"the anchor text contains it")
+
+    # A CARD WITH NO HEADING AT ALL. Framer, Webflow and most page builders
+    # emit nested divs: City Detect's cards put the reading time, the
+    # headline and the teaser in three separate <p>s, and flattening them
+    # gave "5 mins read Back-to-School Means More than School Zones: ... As
+    # students head back to s".
+    framer = ('<li><a href="/news/back-to-school-code-enforcement">'
+              '<div><p>5</p><p>mins read</p></div>'
+              '<div><p>Back-to-School Means More than School Zones</p></div>'
+              '<div><p>As students head back to school, neighborhoods face '
+              'more than traffic changes and overgrown lots.</p></div>'
+              '</a><time datetime="2026-08-27">Aug 27</time></li>')
+    got = one(framer)
+    if got != "Back-to-School Means More than School Zones":
+        errors += fail(f"a card built from plain <p> blocks glued its teaser to "
+                       f"the headline: {got[:90]!r}")
+
+    # THE BLOCK WE TAKE MUST BE WHAT THE CARD LEADS WITH, not merely a block
+    # that survives a word filter. TeamSnap's card is "Introducing: Street
+    # Lacrosse" - three words - then a byline, then a long teaser. Filtering
+    # blocks by length and taking the first survivor published the TEASER.
+    teamsnap = ('<li><a href="/news/introducing-street-lacrosse">'
+                '<div><p>Introducing: Street Lacrosse</p></div>'
+                '<div><p>By: TeamSnap</p></div>'
+                '<div><p>New on TeamSnap: Street Lacrosse, from the Premier '
+                'Lacrosse League, is the easiest way to run a league.</p></div>'
+                '</a><time datetime="2026-08-04">Aug 4</time></li>')
+    got = one(teamsnap)
+    if got != "Introducing: Street Lacrosse":
+        errors += fail(f"the card's teaser was published as its headline: "
+                       f"{got[:90]!r}. The headline is what the card LEADS "
+                       f"with, so the block taken must be a prefix of the "
+                       f"flattened text, not merely inside it")
+
+    # a bare section label is not a headline, however early it appears
+    labelled = ('<li><a href="/news/acme-wins-contract">'
+                '<div><p>News &amp; Press</p></div>'
+                '<div><p>Acme Wins the Denver Permitting Contract</p></div>'
+                '</a><time datetime="2026-08-05">Aug 5</time></li>')
+    got = one(labelled)
+    if got != "Acme Wins the Denver Permitting Contract":
+        errors += fail(f"a section label was taken as the headline: {got[:90]!r}")
+
+    # and a clean headline is left alone
+    clean = ('<li><a href="/news/acme-opens-denver-office"><h3>Acme Opens a Denver Office</h3>'
+             '</a><time datetime="2026-08-03">Aug 3</time></li>')
+    if one(clean) != "Acme Opens a Denver Office":
+        errors += fail("a clean headline was altered")
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -16770,6 +16893,7 @@ def main() -> int:
     errors += check_gusto_and_gem_prove_absence_or_say_unknown()
     errors += check_the_static_pages_carry_the_write_up()
     errors += check_the_company_page_shows_the_logo()
+    errors += check_the_headline_is_the_headline_not_the_card()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()
