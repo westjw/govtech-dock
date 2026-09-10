@@ -16471,18 +16471,152 @@ def check_researched_parents_reach_the_queue_with_their_evidence() -> int:
                            f"reason is a queue nobody can rule - which is why "
                            f"acquisition_rulings.json went a month unwritten")
             break
-    # the claim must NOT already be in companies.json
-    leaked = [cid for cid in research
-              if any(c["id"] == cid and c.get("parent") and
-                     _json.dumps(c.get("parent")).strip('"').lower()
-                     in (research[cid].get("parent_claim") or "").lower()
-                     and cid not in ("bookking",)
-                     for c in comps)]
-    if len(leaked) > 3:
-        errors += fail(f"{len(leaked)} researched parents are already written "
-                       f"into companies.json. Staged research is a proposal; "
-                       f"applying it without a ruling is the bulk claim this "
-                       f"project does not make")
+    # A RESEARCHED PARENT MAY LAND, BUT ONLY THROUGH A RULING.
+    #
+    # The first version of this check asserted the claims were ABSENT from
+    # companies.json, which was right while none had been ruled and wrong the
+    # moment thirty were. The invariant was never "research must not land" -
+    # it is "research must not land BY ITSELF". So what is checked is the
+    # ruling: a parent that matches a staged claim carries an `acquired`
+    # block naming who ruled it and when. A parent written straight out of the
+    # file, with nothing recording that a person agreed, is the bulk claim
+    # this project does not make.
+    byid = {c["id"]: c for c in comps}
+    unruled = []
+    for cid, r in research.items():
+        c = byid.get(cid)
+        if not c or not c.get("parent"):
+            continue
+        claim = (r.get("parent_claim") or "").lower()
+        if str(c["parent"]).lower() not in claim:
+            continue                      # a different parent, ruled elsewhere
+        acq = c.get("acquired") or {}
+        if not acq.get("ruled_by"):
+            unruled.append(cid)
+    if unruled:
+        errors += fail(f"{len(unruled)} researched parent(s) sit in "
+                       f"companies.json with nothing recording who ruled them "
+                       f"({unruled[:4]}). Staged research is a proposal; a "
+                       f"parent that arrived without a ruling is a claim about "
+                       f"who owns somebody that nobody agreed to")
+    return errors
+
+
+def check_an_acquisition_is_shown_on_both_sides() -> int:
+    """Who bought whom, in a size a reader can see, on both companies.
+
+    The parent was already on the page as four words of grey meta type
+    beside the founding year - the right size for a fact nobody asked
+    about, and the wrong size for the answer to "who owns this company".
+    And the brands rail was a list of names, which answers "who do they
+    own" and stops exactly where the reader's next question starts.
+
+    Both halves are asserted here because they are two renderings of one
+    fact and only one of them was ever built at a time: the acquired
+    company's own page, and the buyer's rail. Nothing in either is
+    composed - the paragraph is the stored description, the history is the
+    sentence the acquisition was ruled from.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_site as bs, build_board as bb, json as _json
+    errors = 0
+    rows = _json.loads((ROOT / "data" / "companies.json").read_text())
+    rows = rows["companies"] if isinstance(rows, dict) else rows
+    parent = {"id": "p", "name": "Parent Co", "sector": "Parks & Rec",
+              "category": "Recreation Management", "description": "They sell a thing",
+              "open_roles": 0, "profile": None, "news": None,
+              "brands": [{"name": "Folded Brand", "website": "https://folded.example",
+                          "does": "Folded Brand sold campground reservations.",
+                          "acquired_year": 2019, "deal": "Bought in 2019, announced in March.",
+                          "source": "https://parent.example/news/folded"}]}
+    child = {"id": "k", "name": "Child Co", "sector": "Parks & Rec",
+             "category": "Recreation Management", "description": "They sell another thing",
+             "open_roles": 0, "profile": None, "news": None, "parent": "Parent Co",
+             "acquired": {"parent": "Parent Co", "year": 2022,
+                          "deal": "Child Co was acquired by Parent Co, announced 1 May 2022.",
+                          "ruled_by": "owner",
+                          "source": "https://parent.example/news/child"}}
+    board = {"organizations": [parent, child], "logos": {}, "postings": [],
+             "generated": "2026-09-09"}
+    brand = _json.loads((ROOT / "data" / "brand.json").read_text())
+    byid = {"p": parent, "k": child}
+
+    kid_page = bs.company_page_html(child, [], board, brand, byid, {}, 1)
+    if "coacq" not in kid_page:
+        errors += fail("the acquired company's page has no ownership block; "
+                       "'part of X' stays four words of grey meta type")
+    for needle, what in (("acquired 2022", "the year"),
+                         ("announced 1 May 2022", "the sentence it was ruled from"),
+                         ("parent.example/news/child", "the announcement link")):
+        if needle not in kid_page:
+            errors += fail(f"the acquired company's page is missing {what}")
+
+    par_page = bs.company_page_html(parent, [], board, brand, byid, {}, 1)
+    for needle, what in (("sold campground reservations", "what the brand did"),
+                         ("acquired 2019", "the year it changed hands"),
+                         ("parent.example/news/folded", "the announcement link")):
+        if needle not in par_page:
+            errors += fail(f"the brands rail is missing {what} - a list of names "
+                           f"stops where the reader's next question starts")
+
+    # a brand with nothing stored must still render, not vanish or invent
+    bare = dict(parent, brands=[{"name": "Bare Brand"}])
+    got = bs.company_page_html(bare, [], dict(board, organizations=[bare, child]),
+                               brand, {"p": bare, "k": child}, {}, 1)
+    if "Bare Brand" not in got:
+        errors += fail("a brand with no description stopped rendering at all")
+
+    # THE ENRICHMENT ITSELF, driven rather than inferred from the page.
+    #
+    # A brand is one of two things and they resolve differently. A folded-away
+    # one (PerfectMind, ePACT) has no record left, so its paragraph is the
+    # write-up stored on the brand entry. A live one (RecDesk, Vermont
+    # Systems) DOES have a record, and its paragraph must come from there -
+    # which is the half a fallback silently covers for, because the folded
+    # ones keep working when resolution breaks.
+    fake_parent = {"id": "fp", "name": "Fake Parent",
+                   "brands": [{"name": "Bare Brand"},
+                              {"name": "Folded", "description": "Folded did a thing."},
+                              # LISTED BY HAND *and* still a company. This is
+                              # the entry `resolve` exists for: the second loop
+                              # below never sees it, because it is already in
+                              # `brands`, so if resolution breaks this brand
+                              # keeps its bare name and nothing else notices.
+                              {"name": "Listed Kid", "was_id": "kid2"}]}
+    kid_rec = {"id": "kid", "name": "Kid Brand", "parent": "Fake Parent",
+               "description": "Kid Brand sells pool scheduling.",
+               "acquired": {"year": 2021, "deal": "Bought 2021."}}
+    kid2 = {"id": "kid2", "name": "Listed Kid", "parent": "Fake Parent",
+            "description": "Listed Kid sells turf sensors.",
+            "acquired": {"year": 2018, "deal": "Bought 2018."}}
+    got = bb._brands_with_history(fake_parent, [fake_parent, kid_rec, kid2]) or []
+    listed = next((b for b in got if b.get("name") == "Listed Kid"), None)
+    if not listed or listed.get("does") != "Listed Kid sells turf sensors.":
+        errors += fail(f"a hand-listed brand did not resolve to its own company "
+                       f"record: {(listed or {}).get('does')!r}. The parent-pointer "
+                       f"loop cannot cover this one - it is already in `brands`")
+    if listed and listed.get("acquired_year") != 2018:
+        errors += fail("a hand-listed brand resolved but lost its year")
+    names = {b.get("name") for b in got}
+    if "Bare Brand" not in names:
+        errors += fail("a brand with nothing stored was dropped by the "
+                       "enrichment; the name is all some of them have")
+    live = next((b for b in got if b.get("name") == "Kid Brand"), None)
+    if not live:
+        errors += fail("a live company pointing here through `parent` never "
+                       "reached the rail, so a brand still on the board is "
+                       "invisible on its owner's page")
+    else:
+        if live.get("does") != "Kid Brand sells pool scheduling.":
+            errors += fail(f"a live brand's paragraph did not come from its own "
+                           f"company record: {live.get('does')!r}")
+        if live.get("acquired_year") != 2021:
+            errors += fail("a live brand reached the rail without the year it "
+                           "changed hands")
+    folded = next((b for b in got if b.get("name") == "Folded"), None)
+    if not folded or folded.get("does") != "Folded did a thing.":
+        errors += fail("a folded-away brand lost the write-up stored on it - "
+                       "that text exists nowhere else")
     return errors
 
 
@@ -16945,6 +17079,7 @@ def main() -> int:
     errors += check_the_company_page_shows_the_logo()
     errors += check_the_headline_is_the_headline_not_the_card()
     errors += check_researched_parents_reach_the_queue_with_their_evidence()
+    errors += check_an_acquisition_is_shown_on_both_sides()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()

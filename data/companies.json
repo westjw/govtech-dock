@@ -9333,7 +9333,16 @@
     "by": "claude",
     "on": "2026-08-24T11:01:34-04:00"
    }
-  ]
+  ],
+  "acquired": {
+   "parent": "Xplor Recreation",
+   "year": 2025,
+   "deal": "RecDesk is a subsidiary of Clubessential Holdings (About Us). Clubessential Holdings merged with Xplor Technologies to form the new Xplor Technologies, announced on RecDesk's own blog in September 2025 and confirmed as completed in an April 2026 post: \"Our parent company Clubessential Holdings has officially merged with Xplor Technologies\".",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "myrec-com",
@@ -9399,7 +9408,16 @@
     "by": "claude",
     "on": "2026-08-24T11:01:34-04:00"
    }
-  ]
+  ],
+  "acquired": {
+   "parent": "Xplor Recreation",
+   "year": 2020,
+   "deal": "Acquired by Clubessential Holdings in 2020 (stated on /our-story/, which also says \"Vermont Systems is a subsidiary of Clubessential Holdings\"). Vermont Systems itself acquired ePACT Network (2022) and CampBrain (2023) \u2014 the CampBrain deal is announced on their own /news/ page (May 2023, \"Vermont Systems Announces Acquisition of CampBrain\"). Their /news/ and /blog/ also carry \"Clubessential Holdin",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "active-network",
@@ -9534,7 +9552,17 @@
     "sector": "Parks & Rec",
     "category": "Camps & Youth Programs"
    }
-  ]
+  ],
+  "parent": "Global Payments",
+  "acquired": {
+   "parent": "Global Payments",
+   "year": 2017,
+   "deal": "Acquired by Global Payments in 2017 (about-us timeline: \"ACTIVE is also acquired by Global Payments and announces strategic partnership with Vista Equity Partners\"). Has itself acquired RegOnline (2009), ReserveAmerica (2009), IPICO Sports (2015), JumpForward (2016) and TeamPages (2017).",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "amilia",
@@ -9741,7 +9769,17 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "parent": "PlayMetrics",
+  "acquired": {
+   "parent": "PlayMetrics",
+   "year": 2026,
+   "deal": "Acquired by PlayMetrics from Versant Media Group, announced 2026-05-01 on PlayMetrics' own blog. SportsEngine itself acquired SSCI (Southeastern Security Consultants) in 2017; that is not stated on any sportsengine.com page that would render. No acquisition is stated on any sportsengine.com page that would render. https://www.sportsengine.com/terms-of-use lists brands operated under SportsEngine, ",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "teamsnap",
@@ -13423,7 +13461,17 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026",
-  "researched": true
+  "researched": true,
+  "parent": "Banyan Software",
+  "acquired": {
+   "parent": "Banyan Software",
+   "year": 2024,
+   "deal": "Acquired by Banyan Software on 12 June 2024, terms undisclosed; founder Bob Cote stayed on as CEO. Announced on the acquirer's own site: https://banyansoftware.com/2024/06/12/subitup. SubItUp's own site makes no mention of it.",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "arly",
@@ -32095,7 +32143,17 @@
     "sector": "Parks & Rec",
     "category": "Events, Venues & Ticketing"
    }
-  ]
+  ],
+  "parent": "Poppulo",
+  "acquired": {
+   "parent": "Poppulo",
+   "year": 2025,
+   "deal": "Acquired by Poppulo; announced 2025-03-04",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "volunteerlocal",
@@ -37534,7 +37592,17 @@
     "sector": "Parks & Rec",
     "category": "Events, Venues & Ticketing"
    }
-  ]
+  ],
+  "parent": "PlayCore",
+  "acquired": {
+   "parent": "PlayCore",
+   "year": null,
+   "deal": "Acquired by PlayCore; year not stated on their site",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "tinymobilerobots",
@@ -47991,6 +48059,16 @@
    "by": "agent:descriptions-01",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
+  },
+  "parent": "DICK'S Sporting Goods",
+  "acquired": {
+   "parent": "DICK'S Sporting Goods",
+   "year": null,
+   "deal": "Owned by DICK'S Sporting Goods. gc.com/about states \"GameChanger is owned and operated by DICK'S Sporting Goods, one of the largest sporting goods retailers in the United States,\" and gc.com/careers repeats \"GameChanger is a proud member of the DICK'S Sporting Goods Family.\" No acquisition made by GameChanger is mentioned on the pages checked (homepage, /about, /careers, /content-hub).",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
   }
  },
  {
@@ -54704,6 +54782,15 @@
    "by": "agent:descriptions-02",
    "ruled_by": "owner",
    "ruled_on": "2026-09-09"
+  },
+  "acquired": {
+   "parent": "Xplor Technologies",
+   "year": 2020,
+   "deal": "Acquired by Xplor Technologies in 2020, stated on nextrec.com/perfectmind-software: PerfectMind \"was acquired by Xplor Technologies in 2020\" and \"In 2022, PerfectMind rebranded to become nextRec.\" Xplor Technologies in turn announced a merger with Clubessential Holdings on 16 September 2025 (Advent International release). PerfectMind's Crunchbase profile records the acquirer as TSG (Transaction Se",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
   }
  },
  {
@@ -62339,7 +62426,17 @@
     "sector": "Parks & Rec",
     "category": "Facility Booking & Workforce"
    }
-  ]
+  ],
+  "parent": "DaySmart Software",
+  "acquired": {
+   "parent": "DaySmart Software",
+   "year": 2018,
+   "deal": "DaySmart Software has acquired many companies, listed on its own About page: PupKeep (2018), AppointmentPlus (2020), Vetter Software (2021), Dash Platform (2021), TeamUp (2022), ReCPro (2023), AthleteTrax (2023), Sawyer (2023), Time To Pet (2024), BoxMate (2025), Slick (2026). DaySmart Recreation is the Dash Platform acquisition (2021), rebranded.",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "ezfacility",
@@ -62467,7 +62564,17 @@
     "sector": "Parks & Rec",
     "category": "Youth Sports & Leagues"
    }
-  ]
+  ],
+  "parent": "Jonas Software",
+  "acquired": {
+   "parent": "Jonas Software",
+   "year": 2009,
+   "deal": "Both directions, stated on ezfacility.com. Acquired: Jonas Software acquired EZFacility on 30 September 2009 via PYXiS Software Group (pyxissoftware.com announcement; ezfacility.com/press/jonas-software-acquires-ezfacility). Acquirer: EZFacility acquired eFit Financial (SaaS billing and collections for health clubs), 11 May 2010, and SDA Solutions (UK leisure and fitness centre management software",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "upper-hand",
@@ -62583,7 +62690,17 @@
     "sector": "Parks & Rec",
     "category": "Recreation Management"
    }
-  ]
+  ],
+  "parent": "Daxko",
+  "acquired": {
+   "parent": "Daxko",
+   "year": 2020,
+   "deal": "Acquired by Daxko, announced 2020-01-24 (PR Newswire, \"Daxko Acquires PlayerSpace to Bring Streamlined, Integrated Youth Program Management to a Growing Number of Health and Wellness Centers\").",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "demosphere-international",
@@ -62936,7 +63053,17 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "parent": "Signature Athletics",
+  "acquired": {
+   "parent": "Signature Athletics",
+   "year": 2025,
+   "deal": "Acquired by Signature Athletics, announced 10 September 2025, alongside the launch of Signature Media",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "teamgenius",
@@ -62990,7 +63117,17 @@
     "sector": "Parks & Rec",
     "category": "Volunteer Management"
    }
-  ]
+  ],
+  "parent": "First Advantage",
+  "acquired": {
+   "parent": "First Advantage",
+   "year": 2026,
+   "deal": "Acquired: Sterling Check was acquired by First Advantage. The About page states 'Sterling is now a First Advantage company' and links a press release titled 'First Advantage completes acquisition of Sterling Check'; the footer reads '\u00a9 2026 Sterling, a First Advantage company'. No year is given on the Sterling Volunteers pages read.",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "national-center-for-safety-initiatives",
@@ -63020,7 +63157,17 @@
     "sector": "Parks & Rec",
     "category": "Youth Sports & Leagues"
    }
-  ]
+  ],
+  "parent": "LeagueApps",
+  "acquired": {
+   "parent": "LeagueApps",
+   "year": 2026,
+   "deal": "Acquired by LeagueApps, announced 8 July 2026 (terms undisclosed). Before that, NCSI was acquired by SportsEngine in March 2017 alongside Southeastern Security Consultants (SSCI), and the seller in the 2026 deal was Versant Media Group, Inc. (NASDAQ: VSNT); trade coverage reports NCSI was held out of SportsEngine's 2026 sale to PlayMetrics and sold separately. NCSI itself has not acquired any comp",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "jdp",
@@ -63274,7 +63421,16 @@
     "sector": "Parks & Rec",
     "category": "Facility Booking & Workforce"
    }
-  ]
+  ],
+  "acquired": {
+   "parent": "Univerus",
+   "year": 2022,
+   "deal": "Univerus announced on 27 May 2022 that \"Book King has joined innovative software solutions provider, Univerus, in a move that will act as a springboard for development activity and bring improved recreation management products to customers throughout North America.\" bookking.ca now redirects to univerussportandrecreation.com.",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "https://www.univerus.com/post/book-king-joins-univerus"
+  }
  },
  {
   "id": "rectimes",
@@ -63304,7 +63460,17 @@
     "sector": "Parks & Rec",
     "category": "Recreation Management"
    }
-  ]
+  ],
+  "parent": "LeagueApps",
+  "acquired": {
+   "parent": "LeagueApps",
+   "year": 2025,
+   "deal": "Acquired by LeagueApps on 8 May 2025; the product continues as 'LeagueApps Facilities' (leagueapps.com media room announcement). No acquisitions made by RecTimes.",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "sportskey",
@@ -69976,6 +70142,16 @@
    "by": "agent:descriptions-04",
    "ruled_by": "owner",
    "ruled_on": "2026-09-09"
+  },
+  "parent": "HydroPoint Data Systems",
+  "acquired": {
+   "parent": "HydroPoint Data Systems",
+   "year": 2016,
+   "deal": "Acquired by HydroPoint Data Systems in 2016. Stated on HydroPoint's own newsroom: https://www.hydropoint.com/newsroom/hydropoint-acquires-smart-irrigation-provider-baseline-2/, dated June 8, 2016, and repeated on https://www.hydropoint.com/company/ which references the 2016 acquisition of Baseline Systems.",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
   }
  },
  {
@@ -70255,6 +70431,16 @@
    "by": "agent:descriptions-06",
    "ruled_by": "owner",
    "ruled_on": "2026-09-09"
+  },
+  "parent": "AEM",
+  "acquired": {
+   "parent": "AEM",
+   "year": 2018,
+   "deal": "Earth Networks was acquired into AEM (Advanced Environmental Monitoring) by Union Park Capital. AEM's brand page says \"In 2018, Earth Networks joined the AEM family of brands\"; Earth Networks' own press release announcing the deal is dated 2019-12-10.",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
   }
  },
  {
@@ -70396,6 +70582,16 @@
    "by": "agent:descriptions-00",
    "ruled_by": "owner",
    "ruled_on": "2026-09-09"
+  },
+  "parent": "TBG AG",
+  "acquired": {
+   "parent": "TBG AG",
+   "year": 2025,
+   "deal": "Acquired Tandem Concepts (announced 2025-11-04 on DTN's own newsroom, \"Tandem Concepts Joins DTN; Extends DTN Fuel Intelligence\"). Wikipedia additionally reports DTN itself was acquired by TBG AG in April 2017, and earlier DTN acquisitions of Spensa (2018), Weatherzone (2019), ClearAg/ClearPath (2020) and Farm Market iD (2021) \u2014 none of which are stated on dtn.com.",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
   }
  },
  {
@@ -70635,7 +70831,17 @@
     "sector": "Parks & Rec",
     "category": "Destination Marketing & Tourism"
    }
-  ]
+  ],
+  "parent": "Tyler Technologies",
+  "acquired": {
+   "parent": "Tyler Technologies",
+   "year": 2022,
+   "deal": "Acquired by Tyler Technologies, Inc.; announced February 8, 2022",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "novo-solutions",
@@ -70779,7 +70985,17 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "parent": "Waverock Software",
+  "acquired": {
+   "parent": "Waverock Software",
+   "year": 2023,
+   "deal": "Acquired by Waverock Software (Scottsdale, Arizona) \u2014 completed April 2023, announced in a PRWeb release dated 2023-04-17 and in PlanIT Geo's own post 'PlanIT Geo Acquired By Waverock Software. This Is What It Means' (2023-04-21). No acquisitions made by PlanIT Geo found.",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "knightscope",
@@ -72850,7 +73066,17 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "parent": "AirDNA",
+  "acquired": {
+   "parent": "AirDNA",
+   "year": 2023,
+   "deal": "Acquired by AirDNA, announced 17 July 2023 \u2014 \"AirDNA Announces Acquisition of Arrivalist, Expanding its Leadership in Travel and Hospitality Data\", on airdna.co (/press/airdna-a-global-short-term-rental-data-authority). Arrivalist's own site does not mention it.",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "jackrabbit-systems",
@@ -73253,7 +73479,17 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "parent": "Accela",
+  "acquired": {
+   "parent": "Accela",
+   "year": 2024,
+   "deal": "Acquired by Accela, announced 22 July 2024 - accela.com/blog/accelas-exciting-acquisition-of-opencounter/ is dated July 22, 2024 and describes Accela acquiring OpenCounter; a site-wide banner on opencounter.com reads 'Accela Acquires OpenCounter'. (Correction: the card previously said the year was unverified because the Accela post could not be opened; it opened this time.) Before that OpenCounter",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "apply4-technology",
@@ -73384,6 +73620,16 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
+  },
+  "parent": "ClearGov",
+  "acquired": {
+   "parent": "ClearGov",
+   "year": 2022,
+   "deal": "Acquired by ClearGov on 1 June 2022 and rebranded ClearForms \u2014 https://citygrows.com/blog/citygrows-is-now-clearforms (post dated 10 August 2022) states \"On June 1, 2022, ClearGov acquired the CityGrows software platform\", and /info/about states \"In June of 2022, ClearGov, a leading local government budgeting platform, acquired the CityGrows platform.\"",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
   }
  },
  {
@@ -73622,7 +73868,17 @@
     "sector": "Parks & Rec",
     "category": "Park Assets, Forestry & Visitor Data"
    }
-  ]
+  ],
+  "parent": "24/7 Group",
+  "acquired": {
+   "parent": "24/7 Group",
+   "year": 2025,
+   "deal": "24/7 Group acquired Safesight, announced 11 March 2025 (\"24/7 Group Acquires Safesight to Expand Global Reach and Innovation in Operations Management\", on 24/7 Software's own press-releases page)",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "marketwurks",
@@ -73799,7 +74055,17 @@
     "sector": "Parks & Rec",
     "category": "Recreation Management"
    }
-  ]
+  ],
+  "parent": "Better Impact",
+  "acquired": {
+   "parent": "Better Impact",
+   "year": 2024,
+   "deal": "Two, in both directions. ACQUIRED HandsOn Connect in February 2024 \u2014 https://www.galaxydigital.com/products/handson-connect states \"In February 2024, Get Connected acquired HandsOn Connect, a respected Salesforce-based volunteer management solution\", and the About page carries the headline \"Get Connected Acquires HandsOn Connect to Strengthen Volunteer Technology Leadership\". WAS ACQUIRED by Bette",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "better-impact",
@@ -73940,7 +74206,17 @@
     "sector": "Parks & Rec",
     "category": "Recreation Management"
    }
-  ]
+  ],
+  "parent": "The Brydon Group",
+  "acquired": {
+   "parent": "The Brydon Group",
+   "year": 2026,
+   "deal": "Acquired Galaxy Digital, maker of the Get Connected volunteer management system, announced March 2026 \u2014 https://www.betterimpact.com/better-together states \"Better Impact has acquired Galaxy Digital, the creators of the Get Connected volunteer management system.\" Get Connected now appears as one of Better Impact's products.",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "volgistics",
@@ -74134,6 +74410,16 @@
    "by": "agent:descriptions-01",
    "ruled_by": "owner",
    "ruled_on": "2026-09-09"
+  },
+  "parent": "Bloomerang",
+  "acquired": {
+   "parent": "Bloomerang",
+   "year": 2023,
+   "deal": "InitLive was acquired by Bloomerang, announced 2023-03-01, and relaunched as Bloomerang Volunteer.",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
   }
  },
  {
@@ -74432,7 +74718,17 @@
     "sector": "Parks & Rec",
     "category": "Events, Venues & Ticketing"
    }
-  ]
+  ],
+  "parent": "BID Equity",
+  "acquired": {
+   "parent": "BID Equity",
+   "year": 2025,
+   "deal": "Acquired by BID Equity, 2025",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "idss",
@@ -87985,7 +88281,17 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "parent": "Jonas Software",
+  "acquired": {
+   "parent": "Jonas Software",
+   "year": 2017,
+   "deal": "Acquired by Jonas Software; announced 13 March 2017",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "maximum-solutions",
@@ -88015,7 +88321,17 @@
     "sector": "Parks & Rec",
     "category": "Facility Booking & Workforce"
    }
-  ]
+  ],
+  "parent": "Active Network",
+  "acquired": {
+   "parent": "Active Network",
+   "year": 2017,
+   "deal": "Maximum Solutions was acquired by ACTIVE Network, announced 4 January 2017",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "skedda",
@@ -88180,7 +88496,17 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "parent": "CivicPlus",
+  "acquired": {
+   "parent": "CivicPlus",
+   "year": 2017,
+   "deal": "Acquired by CivicPlus, January 2017",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "campminder",
@@ -88580,7 +88906,17 @@
     "sector": "Parks & Rec",
     "category": "Recreation Management"
    }
-  ]
+  ],
+  "parent": "Banyan Software",
+  "acquired": {
+   "parent": "Banyan Software",
+   "year": 2022,
+   "deal": "Acquired by Banyan Software in 2022 - Our Story timeline entry \"Camis is acquired by Banyan Software\".",
+   "confidence": "confirmed",
+   "ruled_by": "owner",
+   "on": "2026-09-09",
+   "source": "parks-rec vendor research"
+  }
  },
  {
   "id": "roller",

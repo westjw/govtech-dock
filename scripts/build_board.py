@@ -102,6 +102,78 @@ _SLUG_GENERIC = {
 }
 
 
+def _brands_with_history(c: dict, companies: list) -> list | None:
+    """The brands under a company, each with what it does and how it arrived.
+
+    A bare list of names answers "who do they own" and nothing else. The
+    reader's next question is always the same - what was that, and when did
+    it change hands - and both facts are already on file: every company
+    carries a one-line description, and an acquisition ruled through the
+    queue carries its year and the sentence it was ruled from.
+
+    Two sources, because a brand can be either. `brands` is hand-curated and
+    holds the folded-away ones, which no longer have a record of their own
+    (PerfectMind, ePACT). A live company pointing at this one through
+    `parent` is the other kind, and it does have a record - RecDesk and
+    Vermont Systems are both still on the board. Neither list alone is the
+    set, so both are read and matched by was_id, then by name.
+
+    Nothing here is composed. The paragraph is the stored description and
+    the stored deal sentence; where a brand has neither, it renders as the
+    name it always did.
+    """
+    listed = list(c.get("brands") or [])
+    byid = {x["id"]: x for x in companies}
+    byname = {(x.get("name") or "").strip().lower(): x for x in companies}
+    seen = set()
+    out = []
+
+    def resolve(entry):
+        was = entry.get("was_id")
+        if was and was in byid:
+            return byid[was]
+        return byname.get((entry.get("name") or "").strip().lower())
+
+    for b in listed:
+        b = dict(b) if isinstance(b, dict) else {"name": str(b)}
+        # A FOLDED-AWAY BRAND HAS NO RECORD TO RESOLVE TO, and it is the one
+        # that most needs the paragraph: PerfectMind and ePACT exist nowhere
+        # else. The write-up somebody did from their own materials is stored
+        # on the brand entry itself, so it is the fallback.
+        if b.get("description") and not b.get("does"):
+            b["does"] = b["description"]
+        kid = resolve(b)
+        if kid:
+            seen.add(kid["id"])
+            b.setdefault("was_id", kid["id"] if kid.get("parent") else b.get("was_id"))
+            b["does"] = kid.get("description") or None
+            acq = kid.get("acquired") or {}
+            if acq.get("year"):
+                b["acquired_year"] = acq["year"]
+            if acq.get("deal"):
+                b["deal"] = acq["deal"]
+            src = acq.get("source")
+            if isinstance(src, str) and src.startswith("http"):
+                b["source"] = src
+        out.append(b)
+
+    # A child that points here through `parent` and was never listed by hand.
+    for kid in companies:
+        if kid.get("parent") != c.get("name") or kid["id"] in seen or kid["id"] == c["id"]:
+            continue
+        acq = kid.get("acquired") or {}
+        entry = {"name": kid.get("name"), "website": kid.get("website"),
+                 "was_id": kid["id"], "does": kid.get("description") or None}
+        if acq.get("year"):
+            entry["acquired_year"] = acq["year"]
+        if acq.get("deal"):
+            entry["deal"] = acq["deal"]
+        if isinstance(acq.get("source"), str) and acq["source"].startswith("http"):
+            entry["source"] = acq["source"]
+        out.append(entry)
+    return out or None
+
+
 def _domain_root(u: str) -> str:
     from urllib.parse import urlparse
     h = (urlparse(u or "").hostname or "").lower().replace("www.", "")
@@ -1201,7 +1273,11 @@ def main() -> int:
             # actually track. `also_known_as` rides along for the same reason:
             # it is where every dropped name went, and a name has to find the
             # company.
-            "brands": c.get("brands") or None,
+            "brands": _brands_with_history(c, companies),
+            # The other half of the same fact. A company that was bought
+            # says so on its own page, with the year and the sentence it
+            # was ruled from - not only on the buyer's.
+            "acquired": c.get("acquired") or None,
             "also_known_as": c.get("also_known_as") or None,
             # THE SHORTLIST, AND THE TWO SILENCES BESIDE IT. A researched
             # empty and an unresearched company are different facts and the

@@ -813,6 +813,18 @@ COPAGE_CSS = """
  .corail .r .d{display:block;font-size:11px;color:var(--c-ink3);margin-top:3px}
  .corail .r .n{margin-left:auto;font-size:11px;color:var(--c-ink2);font-variant-numeric:tabular-nums;flex:none}
  .corail .tag{margin-left:auto;font:800 9.5px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:var(--c-accent-text);flex:none}
+ .coacq .acqhead{font-size:14px;font-weight:700;margin:0 0 6px}
+ .coacq p{font-size:12.5px;line-height:1.6;color:var(--c-ink2);margin:0 0 6px}
+ .corail .b{padding:11px 0;border-bottom:1px solid var(--c-rule)}
+ .corail .b:last-of-type{border-bottom:0}
+ .corail .bh{display:flex;align-items:baseline;gap:8px;font-size:12.5px;font-weight:600}
+ .corail .bh .yr{font:800 9.5px/1 var(--font-heading);letter-spacing:.1em;
+   text-transform:uppercase;color:var(--c-ink3)}
+ .corail .bh .n{margin-left:auto;font-size:11px;color:var(--c-ink2)}
+ .corail .does,.corail .deal{font-size:11px;line-height:1.55;color:var(--c-ink2);
+   margin:5px 0 0}
+ .corail .deal{color:var(--c-ink3)}
+ .corail .src-l{font-size:11px;margin:5px 0 0}
  .corail .note{font-size:11px;line-height:1.5;color:var(--c-ink3);padding-top:9px}
  .corail .all{font-size:11px;padding-top:9px;display:inline-block}
  .coprov{font-size:10.5px;line-height:1.5;color:var(--c-ink3)}
@@ -1093,6 +1105,38 @@ def _co_href(target_id, by_id: dict) -> str:
     return f"/?co={urllib.parse.quote(tid, safe='')}"
 
 
+def _co_acquired(o: dict, by_id: dict) -> str:
+    """"Part of X" as a block a reader can actually read.
+
+    The parent was already on the page - four words of grey meta type beside
+    the founding year. That is the right size for a fact nobody asked about
+    and the wrong size for the answer to "who owns this company", which is
+    the question a seller asks second. The year and the sentence the ruling
+    was made from are both stored; neither was being shown anywhere.
+    """
+    esc = html.escape
+    acq = o.get("acquired") if isinstance(o.get("acquired"), dict) else None
+    parent = (acq or {}).get("parent") or o.get("parent")
+    if not parent:
+        return ""
+    who = esc(str(parent))
+    hit = next((cid for cid, x in by_id.items()
+                if (x.get("name") or "").strip().lower() == str(parent).strip().lower()), None)
+    if hit:
+        who = f'<a href="{_co_href(hit, by_id)}">{who}</a>'
+    yr = (acq or {}).get("year")
+    head = f"Part of {who}" + (f", acquired {esc(str(yr))}" if yr else "")
+    deal = (f'<p>{esc(str(acq["deal"]))}</p>' if acq and acq.get("deal") else "")
+    src = (acq or {}).get("source")
+    link = (f'<p class="coprov">{_ext_link(src, "Read the announcement")}</p>'
+            if isinstance(src, str) and src.startswith("http") else "")
+    if not deal and not yr:
+        return ""            # a bare parent name is what the meta line already says
+    return (f'<section class="cosec coacq"><div class="cosechd"><h2>Ownership</h2>'
+            f'<span class="smeta">ruled from their own announcement</span></div>'
+            f'<p class="acqhead">{head}</p>{deal}{link}</section>')
+
+
 def _co_about(o: dict, dom: str) -> str:
     """The About section - coAbout, ported. Keys on the SHAPE of profile,
     never on the key: a legacy profile is a reviewer's notes and renders as
@@ -1335,6 +1379,7 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
 
     # --- reading column -----------------------------------------------------
     about = _co_about(o, dom)
+    acq = _co_acquired(o, by_id)
     news = ('<section class="cosec"><div class="cosechd"><h2>News</h2>'
             '<span class="smeta">none on file</span></div>'
             '<p style="font-size:12.5px;line-height:1.6;color:var(--c-ink2);margin:0">'
@@ -1367,9 +1412,22 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
                 nm = f'<a href="{_co_href(was, by_id)}">{nm}</a>'
             elif b.get("website"):
                 nm = _ext_link(b["website"], nm)
-            d = f'<span class="d">{esc(str(b["descriptor"]))}</span>' if b.get("descriptor") else ""
             n = f'<span class="n">{b["openRoles"]}</span>' if b.get("openRoles") is not None else ""
-            rows += f'<div class="r"><span>{nm}{d}</span>{n}</div>'
+            yr = (f'<span class="yr">acquired {esc(str(b["acquired_year"]))}</span>'
+                  if b.get("acquired_year") else "")
+            # THE PARAGRAPH IS THE POINT. A list of names answers "who do they
+            # own" and stops there; the reader's next question is always what
+            # that was and when it changed hands. Both are stored - the
+            # company's own one-liner, and the sentence the acquisition was
+            # ruled from - so neither is composed here.
+            does = (f'<p class="does">{esc(str(b["does"]))}</p>'
+                    if b.get("does") else "")
+            deal = (f'<p class="deal">{esc(str(b["deal"]))}</p>'
+                    if b.get("deal") else "")
+            src = (f'<p class="src-l">{_ext_link(b["source"], "the announcement")}</p>'
+                   if b.get("source") else "")
+            rows += (f'<div class="b"><div class="bh"><span>{nm}</span>{yr}{n}</div>'
+                     f'{does}{deal}{src}</div>')
         rail += (f'<section><h2>Brands they own</h2>{rows}'
                  f'<p class="note">Counts are not rolled up: roles above are each '
                  f"company's own.</p></section>")
@@ -1423,7 +1481,7 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
             f'<a href="/?tab=companies">{esc(o.get("sector") or "")}</a>'
             f'<span class="sep">/</span>{esc(o.get("category") or "")}</nav>'
             f'{ident}{strip}'
-            f'<div class="cobody"><main class="cocol">{about}{news}{roles}</main>'
+            f'<div class="cobody"><main class="cocol">{about}{acq}{news}{roles}</main>'
             f'<aside class="corail">{rail}</aside></div>'
             f'{foot}</div></div>')
 
