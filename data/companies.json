@@ -5073,7 +5073,11 @@
    "by": "agent:descriptions-02",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "government (cities, municipalities, school districts, police) for red-light/speed/school-bus stop-arm camera enforcement; commercial fleets and rental car companies for toll and violation processing \u2014 both are major, distinct business lines",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Company itself was formerly named American Traffic Solutions (ATS, formally established Oct 2003, roots to 1987); acquired by Platinum Equity (May 2017); rebranded Verra Mobility 2018; acquired Highway Toll Administration (Mar 2018), Euro Parking Collection (Apr 2018), Pagatelia (Oct 2019), Redflex Holdings (Jun 2021), T2 Systems (Dec 2021)",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "rekor-systems",
@@ -5370,7 +5374,13 @@
    "by": "agent:descriptions-01",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Cities and transit agencies (named deployments: Santa Monica, San Francisco, Washington DC, plus Philadelphia and Barcelona per blog posts).",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Cities and transit agencies (named deployments: Santa Monica, San Francisco, Washington DC, plus Philadelphia and Barcelona per blog posts).",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "obvio",
@@ -11338,7 +11348,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies (fare collection / intelligent transportation division); Cubic's separate Defense unit sells mission systems to defense and intelligence agencies",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (fare collection / intelligent transportation division); Cubic's separate Defense unit sells mission systems to defense and intelligence agencies",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "clever-devices",
@@ -11479,7 +11495,13 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Transit agencies (bus, rail, paratransit) of all sizes, from 30-vehicle city agencies to 6,000+ vehicle providers",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (bus, rail, paratransit) of all sizes, from 30-vehicle city agencies to 6,000+ vehicle providers",
+  "acquisition_note": "Clever Devices acquired Digital Recorders (2012), RSM Services Corporation (2015), and M.A.I.O.R., an Italian transit software firm (2017). Clever Devices was itself acquired by Hitachi Rail, with the deal announced April 2026 and closed July 1, 2026 \u2014 confirmed on cleverdevices.com's own news page and homepage (\"Clever Devices, a Hitachi Group Company\").",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "via",
@@ -11647,7 +11669,13 @@
    "by": "agent:descriptions-02",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "transit agency / city government (primary \u2014 cities, transit authorities, and paratransit operators are the named customers); also sells to school districts, universities, corporations, and healthcare providers",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency / city government (primary \u2014 cities, transit authorities, and paratransit operators are the named customers); also sells to school districts, universities, corporations, and healthcare ",
+  "acquisition_note": "Acquired Remix in 2021 (announced March 10, 2021) and Citymapper in 2023 (announced March 16, 2023); also announced welcoming the Knode.ai team in August 2026 (framed as an acqui-hire/team addition, not explicitly called an acquisition)",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "optibus",
@@ -11770,7 +11798,13 @@
    "by": "agent:descriptions-01",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Public transit agencies, cities, and transit operators (also serves workforce-shuttle companies and transportation consultancies, but transit agencies/operators are primary)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit agencies, cities, and transit operators (also serves workforce-shuttle companies and transportation consultancies, but transit agencies/operators are primary)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "swiftly",
@@ -11914,7 +11948,17 @@
    "by": "agent:descriptions-02",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Transit agencies (ridership/data analytics customers); Swiftly overall serves 200+ agencies including LA Metro, MBTA, SEPTA, and Sound Transit.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (ridership/data analytics customers); Swiftly overall serves 200+ agencies including LA Metro, MBTA, SEPTA, and Sound Transit.",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true,
+  "acquisition_note": "Absorbed into Swiftly: hopthru.com fully redirects to goswift.ly, and platform.hopthru.com (the still-live product login) carries the page title \"Swiftly Ridership\" with metadata author \"hopthru.com\" and keywords listing both \"swiftly\" and \"hopthru\" \u2014 i.e. Hopthru's product now operates under the Swiftly brand. Swiftly's own press/about pages did not state an explicit acquisition announcement or y",
+  "also_known_as": [
+   "Hopthru"
+  ]
  },
  {
   "id": "masabi",
@@ -11938,7 +11982,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies and operators \u2014 the site cites 200 agencies and operators served globally",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and operators \u2014 the site cites 200 agencies and operators served globally",
+  "acquisition_note": "Acquired Passenger Technology Group, announced 2 Feb 2026 (masabi.com/press-releases/); the site also brands the acquired unit as 'Passenger, a Masabi company' elsewhere.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "token-transit",
@@ -11962,7 +12012,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies (200+ across North America per site, including AC Transit, Metro Transit Minnesota, Miami-Dade Transit, Jacksonville Transportation Authority)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (200+ across North America per site, including AC Transit, Metro Transit Minnesota, Miami-Dade Transit, Jacksonville Transportation Authority)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "passport",
@@ -11986,7 +12042,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "buyer": "Municipal parking authorities and cities are named first and the site cites '800+ agencies' served; universities and private operators also buy, but government reads as primary.",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "parkmobile",
@@ -12010,7 +12070,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "buyer": "municipalities and transit/airport authorities (general government / transit) primary for on-street and facility parking payment; also serves event venues, private operators, college campuses, and individual consumers",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Part of Arrive \u2014 careers.arrive.com states Arrive \"includes brands like EasyPark, Flowbird, RingGo, ParkMobile and Parkopedia,\" and arrive.com/about names ParkWhiz and BestParking as Arrive-owned consumer apps; this parent relationship is not stated on parkmobile.io itself",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "ips-group",
@@ -12034,7 +12098,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "buyer": "municipalities and higher-education institutions (general government) primary, also private parking operators \u2014 public sector named first of three customer segments",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as municipalities and higher-education institutions (general government) primary, also private parking operators \u2014 public sector named first of three customer segments",
+  "acquisition_note": "Acquired Populus (curb/mobility management) \u2014 press release \"IPS Acquires Populus, Expanding Smart Mobility and Transportation Solutions\" dated November 4, 2025 on ipsgroup.com/resources/",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "automotus",
@@ -12142,7 +12212,11 @@
    "by": "agent:descriptions-04",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Cities and airports are the primary named buyers \u2014 recent case studies name New York City DOT, Houston, Nashville DOT, ParkHouston, Sacramento International Airport, and Gerald R. Ford International Airport. The homepage also lists 'Fleets & Drivers' as a segment, but every dated announcement read is with a public-sector or airport authority, not a private fleet.",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "populus",
@@ -12166,7 +12240,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "buyer": "Municipal governments / city transportation departments \u2014 over 100 city partners named (Chicago, Oakland, Miami, Santa Monica, Hoboken); no commercial buyer is mentioned, so government is the sole stated buyer.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Municipal governments / city transportation departments \u2014 over 100 city partners named (Chicago, Oakland, Miami, Santa Monica, Hoboken); no commercial buyer is mentioned, so government is the sole sta",
+  "acquisition_note": "Acquired by IPS Group, Inc. in Nov 2025, per Populus's own blog post: 'Populus has been acquired by IPS Group, Inc., a global leader in smart parking and curb management solutions.' Site states products/services and core teams continue unchanged.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "ubicquia",
@@ -13032,7 +13112,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "TechConnect 2026; AAAE 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "general government (municipal governments are named first among target customers) alongside university administrations, airport operators, healthcare institutions, and private corporate/theme-park campuses",
+  "sells_to_gov": "yes",
+  "acquisition_note": "unclear",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "premium-parking",
@@ -13056,7 +13140,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "TechConnect 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Homepage frames customers as 'individuals and businesses seeking convenient, reliable, and affordable parking' \u2014 reads as a private lot/garage operator rather than a software vendor selling to government. No municipal, airport, or agency buyer was confirmed in the pages fetched.",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "campdoc",
@@ -14929,7 +15017,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026; NRPA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Government entities at federal, state, provincial, county, and municipal levels \u2014 parking, mass transit, and parks & recreation agencies \u2014 plus private parking/transit operators; the named product lines (Enforcement, Mass Transit Ticketing, Parks & Recreation Ticketing) point to government as primary.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Government entities at federal, state, provincial, county, and municipal levels \u2014 parking, mass transit, and parks & recreation agencies \u2014 plus private parking/transit operators; the named product lin",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "bs-a-software",
@@ -31740,7 +31834,13 @@
    "by": "agent:descriptions-04",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "mixed \u2014 sells to both law-enforcement/government (managing towing programs, per the 'Government' and 'Law Enforcement' customer pages) and private towing/recovery/impound-lot operators; site says it serves '3,000+ towing companies' and ~400,000 impounds/year across North America, so the private towing-company side reads as the larger volume even though government is a named buyer",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as mixed \u2014 sells to both law-enforcement/government (managing towing programs, per the 'Government' and 'Law Enforcement' customer pages) and private towing/recovery/impound-lot operators; site says it s",
+  "acquisition_note": "own /about page states: \"Shaped by a 2024 merger with TRAXERO and other acquisitions, Autura...\" \u2014 names TRAXERO as a predecessor/merger partner in 2024, but does not give Autura's own founding year or name the other acquisitions",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "t2-systems",
@@ -31771,7 +31871,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Universities and municipalities are named first among client types (also airports, hospitals, corporate campuses, private operators); named clients include multiple public universities and the City of Houston, suggesting public-sector institutions are the primary buyer.",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Acquired by Verra Mobility in 2021, per t2systems.com/about-us/, which describes T2 as \"a Verra Mobility Company\" (NASDAQ: VRRM).",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "municipal-parking-services",
@@ -31795,7 +31899,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "cities, municipalities, and university systems (police/public works enforcement) primary \u2014 named deployments in Massachusetts, New Jersey, Albuquerque; also serves private lots and marinas",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as cities, municipalities, and university systems (police/public works enforcement) primary \u2014 named deployments in Massachusetts, New Jersey, Albuquerque; also serves private lots and marinas",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "laserfiche",
@@ -39044,7 +39154,13 @@
    "by": "claude-opus-5:profile-batch-08",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Transit agencies \u2014 fixed route, microtransit, paratransit, ferries, and light rail operators",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies \u2014 fixed route, microtransit, paratransit, ferries, and light rail operators",
+  "acquisition_note": "Part of SPX Corporation \u2014 genfare.com's careers page links to a spx.com Modern Slavery Statement and to careers.spx.com; no acquisition year stated on genfare.com itself.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "scheidt-bachmann",
@@ -39068,7 +39184,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies (fare collection division, relevant here); the wider company also sells to railway companies, energy retailers, and parking operators",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (fare collection division, relevant here); the wider company also sells to railway companies, energy retailers, and parking operators",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "littlepay",
@@ -39180,7 +39302,13 @@
    "by": "agent:descriptions-01",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Transit agencies and mobility operators (e.g. Transport for New South Wales, Caltrans, HSL, Transdev, Kinetic, Metro Lisbon)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and mobility operators (e.g. Transport for New South Wales, Caltrans, HSL, Transdev, Kinetic, Metro Lisbon)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "o-city",
@@ -39204,7 +39332,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies, municipalities, and parking/toll authorities (public sector primary); site also mentions merchants as a customer segment",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies, municipalities, and parking/toll authorities (public sector primary); site also mentions merchants as a customer segment",
+  "acquisition_note": "O-CITY is described on its own site as a platform built on payment technology from parent company BPC; not framed as an acquisition, more a product/brand of BPC",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "tmoney",
@@ -39228,7 +39362,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Individual transit riders/commuters in South Korea (consumer-facing transit card, app, and tap payment); site references K-Pass, a Korean national transit pass program, suggesting some government-program integration",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "kuba",
@@ -39252,7 +39390,16 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "transit agency (public transit operators/authorities are the stated customer; no private/commercial buyer is named on the site)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (public transit operators/authorities are the stated customer; no private/commercial buyer is named on the site)",
+  "acquisition_note": "Kuba's own About page (kubapay.com/en/company/) states Kuba is 'a proud member of the ICM family' (parent group), but does not name any acquisitions outright, including no mention of 'Unwire' by name anywhere on the site pages checked. Separately, unwire.com (a distinct company covered elsewhere in this batch) now 302-redirects to kubapay.com -- a fact observed directly, not stated on Kuba's own p",
+  "acquisitions_checked_on": "2026-09-10",
+  "also_known_as": [
+   "Unwire"
+  ]
  },
  {
   "id": "modeshift",
@@ -39276,7 +39423,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies \u2014 the site cites more than 30 agencies across the USA and Europe",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies \u2014 the site cites more than 30 agencies across the USA and Europe",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "straffic-america",
@@ -39300,7 +39453,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "transit agency (their own press page names BART and New York MTA as customers for fare-collection systems; toll authorities and airports are also named as buyers of other product lines)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (their own press page names BART and New York MTA as customers for fare-collection systems; toll authorities and airports are also named as buyers of other product lines)",
+  "acquisition_note": "Their own press page (straffic.com/user/movePage/36/view) has a dated release from 2026-08-07 titled (translated) 'STraffic signs contract to acquire LS Electric's railway-signalling business' -- STraffic is the acquirer, not the acquired.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "matawan",
@@ -39324,7 +39483,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "not found",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "bea-transit-technologies",
@@ -39665,7 +39828,13 @@
    "by": "agent:descriptions-04",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "public transit agencies (e.g. StanRTA is named as a customer)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as public transit agencies (e.g. StanRTA is named as a customer)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "giro",
@@ -39786,7 +39955,13 @@
    "by": "agent:descriptions-01",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Transit agencies (bus, rail, on-demand transport) primary, e.g. LA Metro cited as largest HASTUS installation; also sells to postal operators (e.g. An Post) which are often public-sector too",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (bus, rail, on-demand transport) primary, e.g. LA Metro cited as largest HASTUS installation; also sells to postal operators (e.g. An Post) which are often public-sector too",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "ivu-traffic-technologies",
@@ -39900,7 +40075,13 @@
    "by": "claude-opus-5:profile-batch-08",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Bus and rail transit operators and public transport authorities worldwide (Deutsche Bahn, Trenitalia, DSB, SJ, SBB, plus municipal transit authorities)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Bus and rail transit operators and public transport authorities worldwide (Deutsche Bahn, Trenitalia, DSB, SJ, SBB, plus municipal transit authorities)",
+  "acquisition_note": "Acquired TTI AG (2001), which enabled creation of the IVU.suite product",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "modaxo",
@@ -39928,7 +40109,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transportation operators and agencies across its portfolio brands (bus, rail, demand response, taxi, aviation); serves 3,500+ customers in 35+ countries, mixing public transit agencies and private operators",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Numerous acquisitions under the Modaxo umbrella stated on its own site: launched Aerivo via acquisition of ADB SAFEGATE's Airport Terminal Systems business (2026), welcomed SISCOG (2025), launched Intelliscape (2025), and signed a definitive agreement to acquire Conduent's Public Transit Business (announced 2026, pending)",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "vontas",
@@ -39952,7 +40137,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "transit agency \u2014 case studies name RTC of Washoe County, COTA, DART, PRTC, Greater Cleveland RTA, and Monterey-Salinas Transit",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency \u2014 case studies name RTC of Washoe County, COTA, DART, PRTC, Greater Cleveland RTA, and Monterey-Salinas Transit",
+  "acquisition_note": "own news archive headline states \"Vontas, a Modaxo company, Acquires Orion Labs to Expand Communication Offering\" \u2014 year not given in the headline text captured",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "enghouse-transportation",
@@ -40081,7 +40272,11 @@
    "by": "agent:descriptions-07",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Transit agencies and combined transport authorities, plus emergency services (police, fire, EMS) and logistics operators; public-sector transit is primary based on site framing (\"600+ customers\", \"public services\")",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Subsidiary of publicly traded parent Enghouse Systems Limited (TSX: ENGH); the about-us page says Enghouse Systems has grown \"through the acquisition of well-regarded global companies including Telexis and Locus Solutions\" but gives no years for those deals",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "consat",
@@ -40208,7 +40403,13 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Public transit operators/authorities (named customers: Skyss and Kolumbus in Norway, Tide Buss and Din Tur and \u00d6stg\u00f6tatrafiken in Sweden, Unibuss in Oslo, Ventura Bus Lines in Australia, Eletra in Brazil)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit operators/authorities (named customers: Skyss and Kolumbus in Norway, Tide Buss and Din Tur and \u00d6stg\u00f6tatrafiken in Sweden, Unibuss in Oslo, Ventura Bus Lines in Australia, Eletra in Bra",
+  "acquisition_note": "Bonnier Capital (Bonnier Group's investment arm) took a strategic ownership stake in Consat Telematics, announced June 1, 2026, per Consat's own newsroom on mynewsdesk.com. Framed by both parties as a strategic partnership rather than a full buyout; Consat states it retains its existing management and operational independence.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "gmv",
@@ -40232,7 +40433,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies (e.g. LA Metro/LADOT contract cited on the US site) \u2014 general government transit authorities",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (e.g. LA Metro/LADOT contract cited on the US site) \u2014 general government transit authorities",
+  "acquisition_note": "gmv.com footer lists \"Al\u00e9n Space\" and \"Autek Ingenier\u00eda\" as \"Other GMV sites\", suggesting related group companies, but the site does not state these as acquisitions",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "transtrack-solutions-group",
@@ -40468,31 +40675,13 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
- },
- {
-  "id": "transitcheck",
-  "name": "TransitCheck",
-  "website": "https://www.transit-check.com",
-  "location": "Rocklin, CA",
-  "year_founded": 2007,
-  "sector": "Transit & Parking",
-  "category": "Fleet & Operations",
-  "description": "Tablet-based electronic vehicle inspection (EVIR) for transit, school bus, and fleets (Revecorp)",
-  "ats": {
-   "type": "unknown",
-   "ref": null
   },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-09"
-  },
-  "govtech": true,
-  "vendor_type": "GovTech Product",
-  "source": "APTA 2026",
-  "researched": true
+  "buyer": "Public transit agencies, private transit operators, and school boards (school transportation named as a specific service line)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit agencies, private transit operators, and school boards (school transportation named as a specific service line)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "transit-systems",
@@ -40516,7 +40705,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "transit agency (public transit, university campus bus, and on-demand shuttle operations named)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (public transit, university campus bus, and on-demand shuttle operations named)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "connixt",
@@ -40646,7 +40841,13 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Transit agencies (named customers include LA Metro, Metrolink, LADOT, OCTA, BC Transit, Foothill Transit)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (named customers include LA Metro, Metrolink, LADOT, OCTA, BC Transit, Foothill Transit)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "interloc-solutions",
@@ -40670,7 +40871,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Primarily transit agencies, airports, and utilities (e.g., BART, JFK Terminal 4, Aruba Airport); also serves private manufacturing and healthcare clients",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Primarily transit agencies, airports, and utilities (e.g., BART, JFK Terminal 4, Aruba Airport); also serves private manufacturing and healthcare clients",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "wi-tronix",
@@ -40694,7 +40901,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "not found",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "quester-tangent",
@@ -40718,7 +40929,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "buyer": "Train manufacturers (new-build and fleet-renewal projects) and transit authorities/operators (fleet management and operations) are both named as customer segments",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "tracsis",
@@ -40742,7 +40957,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Rail/transit operators and UK government transport bodies (Network Rail, Department for Transport, LNER, Southeastern named); general government/transit is the primary buyer",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Rail/transit operators and UK government transport bodies (Network Rail, Department for Transport, LNER, Southeastern named); general government/transit is the primary buyer",
+  "acquisition_note": "Own site states the company has made \"seventeen successful acquisitions\" since its 2007 IPO, describing itself as \"a naturally acquisitive business\"; individual acquired-company names and years were not present on the pages fetched (tracsis.com/about-tracsis/acquisitions returned a 404 for the specific list)",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "railroad-software",
@@ -40766,7 +40987,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Freight railroads (Class 1/2/3), rail contractors, and maintenance-of-way operations appear to be the primary named customers (Conrail, Herzog, Anacostia Rail Holdings); commuter rail/transit agencies (e.g. Metrolink) are also named buyers",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Freight railroads (Class 1/2/3), rail contractors, and maintenance-of-way operations appear to be the primary named customers (Conrail, Herzog, Anacostia Rail Holdings); commuter rail/transit agencies",
+  "acquisition_note": "Now one of four rail-tech companies (with ZEDAS, Raspberry Software, Automated Rail) unified under new parent Waynova Group, itself backed by Arcadea Group as permanent-equity owner",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "willowglen-systems",
@@ -40830,7 +41057,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies and freight rail operators",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and freight rail operators",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "sil4-systems",
@@ -40854,7 +41087,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Rail transit agencies and railroad operators (onboard train-control and signaling hardware)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Rail transit agencies and railroad operators (onboard train-control and signaling hardware)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "cylus",
@@ -40983,7 +41222,13 @@
    "by": "agent:descriptions-06",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Rail, metro, and infrastructure operators (public transit/rail authorities primary, e.g. Tel Aviv NTA Red Line); also markets to freight rail operators which may be private",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Rail, metro, and infrastructure operators (public transit/rail authorities primary, e.g. Tel Aviv NTA Red Line); also markets to freight rail operators which may be private",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "citiri",
@@ -41112,7 +41357,11 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Infrastructure owners \u2014 primarily airports (site's own case studies and newsroom center on airports/Munich Airport); transit systems, data centers, healthcare, energy/utilities, and oil & gas are also listed as served sectors but not evidenced with named customers",
+  "sells_to_gov": "unclear",
+  "acquisition_note": "Site shows a visual pairing \"Citiri and MAI\" (Munich Airport International) and 2021 press about \"Munich Airport subsidiary\" and \"MAI Partners with Citiri,\" but the nature of the relationship (investment, ownership, or partnership) is not explained in text on the pages checked.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "connx",
@@ -41136,7 +41385,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies (recent named contracts: Wisconsin statewide, Pennsylvania) \u2014 appears to sell only to public-sector transit buyers, no commercial-side evidence found",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (recent named contracts: Wisconsin statewide, Pennsylvania) \u2014 appears to sell only to public-sector transit buyers, no commercial-side evidence found",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "csit",
@@ -41160,7 +41415,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies (named contracts: New York City Transit/MTA, City of Quebec LRT, FGC in Spain)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (named contracts: New York City Transit/MTA, City of Quebec LRT, FGC in Spain)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "knaq",
@@ -41184,7 +41445,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026; AAAE 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Airports and transit agencies primarily (Newark Liberty, Denver, JFK, LaGuardia, Memphis International; Metro Transit, Sound Transit, RTD); also sells to hospitals, universities, and real-estate portfolios",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Airports and transit agencies primarily (Newark Liberty, Denver, JFK, LaGuardia, Memphis International; Metro Transit, Sound Transit, RTD); also sells to hospitals, universities, and real-estate portf",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "rok-brothers",
@@ -41208,7 +41475,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Government and public safety \u2014 sold through NASPO ValuePoint, Sourcewell, and state contracts including North Carolina and Virginia sheriffs' associations, Georgia DOAS, and Mississippi ITS",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Government and public safety \u2014 sold through NASPO ValuePoint, Sourcewell, and state contracts including North Carolina and Virginia sheriffs' associations, Georgia DOAS, and Mississippi ITS",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "in-a-blink",
@@ -41232,7 +41505,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies and public transportation operators (bus, rail) managing CCTV, fare collection, and CAD-AVL systems",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and public transportation operators (bus, rail) managing CCTV, fare collection, and CAD-AVL systems",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "lyt",
@@ -41256,7 +41535,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026; IAFC FRI 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies, fire/EMS, police departments, and city DOTs/public works (customers named include MBTA, LA Metro, TRIMET, SEPTA, King County, City of Seattle)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies, fire/EMS, police departments, and city DOTs/public works (customers named include MBTA, LA Metro, TRIMET, SEPTA, King County, City of Seattle)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "sahay-ai",
@@ -41280,7 +41565,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Pursuing contracts with both public transit agencies and private freight railroads, per a Penn Center for Innovation writeup; no confirmed live customers named on their own site",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "transify",
@@ -41304,7 +41593,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "transit agency (Barrie Transit, Brampton Transit, and Niagara Region Transit named as clients)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (Barrie Transit, Brampton Transit, and Niagara Region Transit named as clients)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "angeltrax",
@@ -41446,7 +41741,13 @@
    "by": "agent:descriptions-00",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "schools (school bus safety programs are a named product line); also public transit agencies, paratransit services, universities, and motorcoach operators",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as schools (school bus safety programs are a named product line); also public transit agencies, paratransit services, universities, and motorcoach operators",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "safety-vision",
@@ -41470,7 +41771,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026; NSA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "School districts are the largest named segment (700+ districts, 30M+ bus route miles); also mass transit agencies (25M+ commuters), EMS/emergency services, and commercial trucking",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "r2p",
@@ -41494,7 +41799,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit and rail operators worldwide",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit and rail operators worldwide",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "rosco-vision",
@@ -41518,7 +41829,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "buyer": "Fleet operators broadly \u2014 public safety and school (pupil) transportation are named buyer segments, alongside large commercial delivery fleets (Amazon, UPS, FedEx, USPS) which the site features most prominently",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Fleet operators broadly \u2014 public safety and school (pupil) transportation are named buyer segments, alongside large commercial delivery fleets (Amazon, UPS, FedEx, USPS) which the site features most p",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "gatekeeper-systems",
@@ -41641,7 +41958,13 @@
    "by": "agent:descriptions-07",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "School districts (student transportation) primary, based on \"Student Protector\" branding and press releases about school-system contracts; also sells to transit agencies and police departments",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as School districts (student transportation) primary, based on \"Student Protector\" branding and press releases about school-system contracts; also sells to transit agencies and police departments",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "march-networks",
@@ -41665,7 +41988,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Primarily private commercial customers (1,730+ financial institutions, 675+ retailers, 735+ commercial/industrial clients); transit agencies and government are also served through a dedicated transit product line (RideSafe mobile video recorders)",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Now part of Delta Group (Delta Electronics); its branded video-security business has been integrated with VIVOTEK",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "streamax-america",
@@ -41689,7 +42016,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Sells to both private commercial fleets (trucking, taxi, mining) and public-sector fleets (public transit, school bus); private-sector verticals are listed more prominently, so commercial fleets appear primary",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "protran-technology",
@@ -41713,7 +42044,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies and railway operators",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and railway operators",
+  "acquisition_note": "Protran Technology is a division of Harsco Rail, stated on their own About page (\"Protran Technology is a division of Harsco Rail, a global manufacturer and supplier of railway track maintenance and construction equipment\")",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "xovis",
@@ -41737,7 +42074,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "buyer": "primarily airports and transportation (trains/public transit), with retail, smart buildings, museums/libraries and live events also named as buyers on the company page \u2014 own-site language: 'In the airport, retail, transportation and smart building sector Xovis is one of the market leaders'",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "infodev-edi",
@@ -41761,7 +42102,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies and rail operators (Toronto Transit Commission, SEPTA, Edmonton Transit, Calgary Transit); also supplies bus/rail manufacturers (New Flyer, Volvo, Siemens, BYD) as an OEM channel",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "urban-transportation-associates",
@@ -41785,7 +42130,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "not found",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "visual-counter",
@@ -41809,7 +42158,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Sells to both retail chains and transit operators (bus/train/metro); the site gives Retail and Mobility (transit) equal top-level billing, so it is unclear which is primary",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "transit",
@@ -41842,7 +42195,11 @@
     "sector": "Transit & Parking",
     "category": "Suppliers & Services"
    }
-  ]
+  ],
+  "buyer": "consumer riders are the primary user base (free app, paid Royale tier); transit agencies are a secondary paying customer for partnership/customization features",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "papercast",
@@ -41873,7 +42230,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "transit agency (bus, rail) primary, buying real-time passenger info displays; also airports, highways, and event venues",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (bus, rail) primary, buying real-time passenger info displays; also airports, highways, and event venues",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "connectpoint",
@@ -41897,7 +42260,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies (named clients include Pittsburgh Port Authority, Dallas DART, Alexandria DASH, Cleveland RTA, Richmond GRTC, Seattle King County Metro, Chicago Pace, Portland TriMet, Detroit SMART, San Antonio VIA, and Fort Worth Trinity Metro).",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (named clients include Pittsburgh Port Authority, Dallas DART, Alexandria DASH, Cleveland RTA, Richmond GRTC, Seattle King County Metro, Chicago Pace, Portland TriMet, Detroit SMART, ",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "peak-transit",
@@ -41921,7 +42290,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "transit agency \u2014 municipal bus systems, plus university, airport, and hospital/healthcare shuttle operators",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency \u2014 municipal bus systems, plus university, airport, and hospital/healthcare shuttle operators",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "luminator-technology-group",
@@ -41945,7 +42320,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies and operators (bus and rail) are primary \u2014 site claims \"3,000+ Agencies and Operators Using Luminator Globally\" and names Capital Metro; the company also sells aircraft lighting to aerospace/military customers through its Luminator Aerospace division, a secondary line.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and operators (bus and rail) are primary \u2014 site claims \"3,000+ Agencies and Operators Using Luminator Globally\" and names Capital Metro; the company also sells aircraft lighting to ae",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "aesys",
@@ -42080,7 +42461,13 @@
    "by": "agent:descriptions-03",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Transit agencies and departments of transportation buy passenger-information and rail/bus displays and variable message signs; the same company also sells advertising, sports-venue, and industrial display systems commercially, but transit/government appears to be a primary named sector alongside those.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and departments of transportation buy passenger-information and rail/bus displays and variable message signs; the same company also sells advertising, sports-venue, and industrial dis",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "hanover-displays",
@@ -42104,7 +42491,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Public transport operators (bus and rail); site claims customers in over 80 countries without naming specific US agencies.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Public transport operators (bus and rail); site claims customers in over 80 countries without naming specific US agencies.",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "signagent",
@@ -42128,7 +42521,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "mixed \u2014 transit systems (Metra, Translink), airports, and municipal road signage on one side; private hospitals, universities, and commercial real estate on the other; no single primary evident from the site",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "basemap",
@@ -42257,7 +42654,11 @@
    "by": "agent:descriptions-00",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "not found",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "axon-vibe",
@@ -42370,7 +42771,13 @@
    "by": "agent:descriptions-04",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Public transport operators and city/national rail authorities (named clients: MTA, Deutsche Bahn, RATP Smart Systems, SBB, GVB, JR East, Translink) \u2014 transit agencies are the primary buyer.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Public transport operators and city/national rail authorities (named clients: MTA, Deutsche Bahn, RATP Smart Systems, SBB, GVB, JR East, Translink) \u2014 transit agencies are the primary buyer.",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "buspas",
@@ -42506,7 +42913,13 @@
    "by": "agent:descriptions-04",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Municipalities, transit agencies, and city officials; company describes itself as enabling public transit agencies and cities to access data services linked to infrastructure. Deployments named in Quebec (Canada), New Jersey (USA), and Barcelona (Europe).",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Municipalities, transit agencies, and city officials; company describes itself as enabling public transit agencies and cities to access data services linked to infrastructure. Deployments named in Que",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "waysine",
@@ -42530,7 +42943,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "transit agency",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "spare",
@@ -42659,7 +43078,16 @@
    "by": "agent:descriptions-02",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Transit agencies \u2014 named customers include MBTA, LA Metro, CapMetro, PSTA, and Votran",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies \u2014 named customers include MBTA, LA Metro, CapMetro, PSTA, and Votran",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true,
+  "also_known_as": [
+   "Spare Labs"
+  ]
  },
  {
   "id": "rideco",
@@ -42690,7 +43118,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "transit agencies and municipalities (customers named on site include Houston METRO, SEPTA, RTC Las Vegas, MARTA, Kansas City)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agencies and municipalities (customers named on site include Houston METRO, SEPTA, RTC Las Vegas, MARTA, Kansas City)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "the-routing-company",
@@ -42714,7 +43148,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "transit agencies and counties (named partners include Virginia Commonwealth University, city of Winona MN, Fairfield County OH, Arrowhead Transit MN); also licenses routing tech to Zoox",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agencies and counties (named partners include Virginia Commonwealth University, city of Winona MN, Fairfield County OH, Arrowhead Transit MN); also licenses routing tech to Zoox",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "uzurv",
@@ -42738,7 +43178,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "transit agency / paratransit programs (e.g. GRTC, Metro Mobility, METROLift are named customers); also serves health plans and nonprofits",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency / paratransit programs (e.g. GRTC, Metro Mobility, METROLift are named customers); also serves health plans and nonprofits",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "qryde-by-hbss",
@@ -42762,7 +43208,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Statewide agencies, regional transit authorities, transportation brokerages, and nonprofit/private transit providers; general government/transit is primary buyer per site's own list",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Statewide agencies, regional transit authorities, transportation brokerages, and nonprofit/private transit providers; general government/transit is primary buyer per site's own list",
+  "acquisition_note": "HBSS acquired TranWare (fleet management technology firm founded by Steve Furniss); year not stated",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "it-curves",
@@ -42786,7 +43238,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "transit agency / paratransit and NEMT operators (public and private transportation companies), per itcurves.net/about-us description of client base",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency / paratransit and NEMT operators (public and private transportation companies), per itcurves.net/about-us description of client base",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "tss-paratransit",
@@ -42810,7 +43268,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "public transit agencies, community transport services, and mobility providers per site's own description",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as public transit agencies, community transport services, and mobility providers per site's own description",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "may-mobility",
@@ -42924,7 +43388,11 @@
    "by": "agent:descriptions-01",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Cities and transit agencies are named as a distinct customer category on their own site (AV shuttle/robotaxi pilots); commercial ride-hail partners (Uber, Lyft) are the newer, expanding side. Site language treats municipal/city deployment as primary alongside ride-hail.",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "beep",
@@ -43059,7 +43527,13 @@
    "by": "agent:descriptions-04",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Public transit operators and municipalities primary; also campuses and airports",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit operators and municipalities primary; also campuses and airports",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "adastec",
@@ -43083,7 +43557,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Bus OEMs (e.g. Karsan) are the direct buyer; transit agencies and mobility operators are the end deployer of the automated buses",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "imagry",
@@ -43116,7 +43594,11 @@
     "sector": "Transit & Parking",
     "category": "Suppliers & Services"
    }
-  ]
+  ],
+  "buyer": "transit agency / public transportation authority (public transit authorities and bus fleet operators running fixed routes, per own site); OEM partners (Continental, UNVI) are integration partners, not the end buyer",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "silverride",
@@ -43140,7 +43622,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "primarily private/individual riders and healthcare (PACE) programs, with paratransit partnerships (e.g. King County Metro, SamTrans) as a secondary public-sector channel",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as primarily private/individual riders and healthcare (PACE) programs, with paratransit partnerships (e.g. King County Metro, SamTrans) as a secondary public-sector channel",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "ontra-mobility",
@@ -43164,7 +43652,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "Transit agencies and city departments of transportation \u2014 named clients include DC Department of Transportation, Madera Metro, City of Fresno, and a Transit Tech Lab partnership with MTA NYCT and LIRR.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and city departments of transportation \u2014 named clients include DC Department of Transportation, Madera Metro, City of Fresno, and a Transit Tech Lab partnership with MTA NYCT and LIRR",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "rideshark",
@@ -43188,7 +43682,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "general government (countries, states/provinces, municipalities) alongside corporate and campus customers; site lists government as one of three co-equal segments, not clearly primary",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "applied-information",
@@ -43578,30 +44076,6 @@
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
   }
- },
- {
-  "id": "zoox",
-  "name": "Zoox",
-  "website": "https://zoox.com",
-  "location": "Foster City, CA",
-  "year_founded": 2014,
-  "sector": "Transit & Parking",
-  "category": "Demand-Response & AV",
-  "description": "Purpose-built driverless robotaxi service (Amazon-owned); consumer-paid rides, live in Las Vegas, SF, Austin, Miami, Atlanta, LA",
-  "ats": {
-   "type": "greenhouse",
-   "ref": "zoox"
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "HTTP 404 for https://boards-api.greenhou",
-   "roles": [],
-   "checked": "2026-09-09"
-  },
-  "govtech": true,
-  "vendor_type": "GovTech Product",
-  "source": "direct add",
-  "researched": true
  },
  {
   "id": "jacobs",
@@ -44325,7 +44799,13 @@
    "by": "agent:descriptions-03",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "mixed \u2014 transit agencies (BVG Berlin, Transport for London, Trafikverket) are named customers for voice announcements, but accessibility device makers (AssistiveWare, Tobii Dynavox) and customer-service platforms (Genesys) are also major buyers; transit is not clearly the primary market",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as mixed \u2014 transit agencies (BVG Berlin, Transport for London, Trafikverket) are named customers for voice announcements, but accessibility device makers (AssistiveWare, Tobii Dynavox) and customer-servi",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "activu-corporation",
@@ -44349,7 +44829,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "mixed \u2014 utilities, transportation/transit, public safety, and federal government/defense agencies are named alongside corporate enterprise and sports/entertainment control rooms; government/public-mission sectors appear to be the larger part of the customer list",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "adobe",
@@ -44533,7 +45017,13 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"Home | AlmavivA\" https://www.almaviva.it 301-redirects to http://www.almaviva.it/it_IT/, which renders the Almaviva S.p.A. group site (page <title> is 'Home | AlmavivA'). It ties to the description directly: 'Trasporti e Logistica' is one of its named industry sectors, the site describes 'competenze esclusive in ambito ferroviario' and 'il trasporto pubblico locale integrato e la logistica intermodale', and it promotes its own 'Moova Mobility Platform' (headline: 'Moova Mobility Platform sbarca in Nord America'), which is Almaviva's transit/ticketing/mobility product. IMPORTANT NEGATIVE CHECK: almaviva.com is a DIFFERENT company entirely - it resolves to 'Atelier Almaviva', a tile workshop ('Fabrication Azulejos, carreaux de Delft, Zellige'). So the .it domain is not merely preferred, it is required; do not let anyone 'fix' this to .com. Caveat for the board: this is the Italian parent group's own site (correct, since the record is named plainly 'Almaviva', not a subsidiary), but its 'Lavora con noi' careers feed is overwhelmingly Italy-based, so US SLED AE roles will be rare to nonexistent."
    }
-  ]
+  ],
+  "buyer": "mixed \u2014 government/public administration ('Smart PA') and transportation/rail are named sectors, alongside banking, telecom, energy, and other private clients; no single primary buyer is evident from the site",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as mixed \u2014 government/public administration ('Smart PA') and transportation/rail are named sectors, alongside banking, telecom, energy, and other private clients; no single primary buyer is evident from ",
+  "acquisition_note": "Site references a takeover bid ('OPA') on Almawave S.p.A., described as part of the Almaviva Group; no year given and relationship (subsidiary vs. acquisition target) is not spelled out",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "alpha-vision",
@@ -44849,7 +45339,13 @@
    "by": "agent:descriptions-00",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "parking operators and city/government decision-makers are named first on the homepage, alongside public-transport operators, fleet managers/businesses, and automakers \u2014 public-sector side (parking authorities, city planning) reads as primary given the ordering and emphasis on their own page",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as parking operators and city/government decision-makers are named first on the homepage, alongside public-transport operators, fleet managers/businesses, and automakers \u2014 public-sector side (parking aut",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "aurionpro",
@@ -44873,7 +45369,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "mixed \u2014 banks and fintechs appear to be the primary customer base; government bodies and transit agencies (Noida Metro, Sacramento Light Rail Transit) are named as public-sector buyers of related products",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as mixed \u2014 banks and fintechs appear to be the primary customer base; government bodies and transit agencies (Noida Metro, Sacramento Light Rail Transit) are named as public-sector buyers of related prod",
+  "acquisition_note": "Integro Technologies named as an Aurionpro subsidiary; no acquisition year or further detail given on the page checked",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "auror",
@@ -45237,7 +45739,11 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"Revoluciona la gesti\u00f3n de rutas y usuarios con Bus Tracker de BatOnRoute\" batonroute.com returns HTTP 200 and is a live product site, not parked (page <title>: 'Bus Tracker - Gesti\u00f3n de Rutas de Viajeros | BatOnRoute'). It matches the description on both halves: its Soluciones menu lists 'Transporte escolar' (school transport) and 'Transporte de empleados' (employee/staff transport), alongside transporte adaptado, a demanda and optimizaci\u00f3n de rutas. PARENT-DOMAIN CHECK PASSED DELIBERATELY: the footer states 'Batonroute es una soluci\u00f3n del Grupo Nunsys' and the privacy notice names Nunsys as data controller, so BatOnRoute is a brand of the Spanish IT group Nunsys - but the URL under review is the product's OWN domain, which is the correct choice. nunsys.com would be the parent's corporate site and must NOT be substituted here. Caveat for the board: this is a Spain-based, Spanish-language product selling to 'Entidades p\u00fablicas' in Spain; it is a legitimate URL for the record but its relevance to a US state-and-local AE job board is doubtful, and batonroute.com carries no jobs section I could find."
    }
-  ]
+  ],
+  "buyer": "Diversified: schools (student transport), corporate shuttle programs, private bus/tour operators, care facilities, and insurers; municipal/public transit agencies are named as one of several verticals, not clearly the primary buyer",
+  "sells_to_gov": "unclear",
+  "acquisition_note": "Site homepage identifies the product as operated under Grupo Nunsys, but no explicit acquisition or founding narrative was read.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "bentley-systems",
@@ -45266,7 +45772,13 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"the infrastructure engineering software company\" www.bentley.com identifies itself verbatim as 'the infrastructure engineering software company' and states it helps people 'design, build, and operate better, more resilient infrastructure through the adoption of our intelligent digital twin solutions.' That matches 'Infrastructure engineering and asset software' precisely: the site covers the full infrastructure lifecycle across engineering disciplines, with CAD, construction planning, structural analysis and water network products, serving engineering firms and owner-operators (including public agencies) across 189 countries. This is Bentley Systems' own corporate domain - Bentley is the top-level public company here, not a subsidiary of anyone, so no parent-domain concern applies."
    }
-  ]
+  ],
+  "buyer": "Owner-operators including cities/government, transportation, energy, and water agencies, plus private engineering/construction firms and academic institutions; public sector is one of several named buyer segments, not stated as primary",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Owner-operators including cities/government, transportation, energy, and water agencies, plus private engineering/construction firms and academic institutions; public sector is one of several named bu",
+  "acquisition_note": "About-us page lists Cesium, Cohesive, and Seequent as 'our businesses' (subsidiaries), implying prior acquisitions, but does not state acquisition years.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "blackrainbow-inc",
@@ -46866,7 +47378,7 @@
   "name": "ETA",
   "website": "https://etatransit.com",
   "location": null,
-  "year_founded": null,
+  "year_founded": 2003,
   "sector": "Transit & Parking",
   "category": "Suppliers & Services",
   "description": "Transit CAD/AVL and asset management software - exhibited at APTA 2026",
@@ -46975,7 +47487,14 @@
    "by": "agent:descriptions-06",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Public transit agencies (named customers include TARTA/Toledo Area Regional Transit Authority, High Valley Transit, and Indiana University's shuttle system)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit agencies (named customers include TARTA/Toledo Area Regional Transit Authority, High Valley Transit, and Indiana University's shuttle system)",
+  "founded_source": "https://etatransit.com/company/ (states ETA Transit was established in 2003)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "eyeride",
@@ -47723,7 +48242,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "Public transit agencies (site states '90+ Transit Agencies' and '50,000+ Vehicles' served); product of S & A Systems, Inc.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit agencies (site states '90+ Transit Agencies' and '50,000+ Vehicles' served); product of S & A Systems, Inc.",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "first-arriving",
@@ -48690,7 +49215,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026; GFOA 2026; NASWA 2025; APHSA 2026; AIRA 2026; MESC 2026; NAMPI 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "General government (IBM maintains a dedicated government-industry practice covering cloud, AI, cybersecurity, and citizen-experience tools); government is one of many industry verticals IBM sells into, alongside a much larger private-enterprise business \u2014 not stated as primary",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as General government (IBM maintains a dedicated government-industry practice covering cloud, AI, cybersecurity, and citizen-experience tools); government is one of many industry verticals IBM sells into",
+  "acquisition_note": "A September 9, 2026 newsroom item ('LTM Collaborates with IBM and Red Hat on Lightwell...') refers to Red Hat as an IBM-affiliated entity, consistent with IBM's known acquisition of Red Hat, but this page does not itself state an acquisition.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "icc-innovation",
@@ -48823,7 +49354,7 @@
   "name": "INIT Innovations in Transportation, Inc.",
   "website": "https://www.initse.com/",
   "location": null,
-  "year_founded": null,
+  "year_founded": 1983,
   "sector": "Transit & Parking",
   "category": "Suppliers & Services",
   "description": "Transit ITS, fare collection, scheduling software - exhibited at APTA 2026",
@@ -48840,7 +49371,14 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "Public transit agencies (named customers include Honolulu, Frankfurt, and National Express); site cites 250,000 vehicles monitored and 140+ ticketing systems deployed worldwide",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit agencies (named customers include Honolulu, Frankfurt, and National Express); site cites 250,000 vehicles monitored and 140+ ticketing systems deployed worldwide",
+  "founded_source": "https://www.initse.com/ende/company/history/",
+  "acquisition_note": "Company history page states INIT acquired the MFS 90 planning system from Krupp in 1999. A 2016-era press archive (same site) additionally records: acquisition of 'a leading German provider of sales and customer management systems for public transport' (Sept 2016), a strategic investment in a North American mobile-ticketing provider (Aug 2016), and a planned majority stake in sensor specialist iri",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "intangles-usa-inc",
@@ -48864,7 +49402,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "Primarily private commercial fleet operators (trucking/long-haul, construction, mining, agriculture, oil & gas, waste management, marine); transit and coach operators are named as one vertical among many, not clearly the primary buyer",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "imagesource-inc",
@@ -49029,7 +49571,13 @@
     "sector": "Airports & Aviation",
     "category": "Airfield & Operations"
    }
-  ]
+  ],
+  "buyer": "Government and transportation authorities (ports, airports, railways) and defense forces across 140+ countries, per site's own framing; also serves healthcare systems",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Government and transportation authorities (ports, airports, railways) and defense forces across 140+ countries, per site's own framing; also serves healthcare systems",
+  "acquisition_note": "Homepage references 'Minsait' and 'IndraMind' as Indra business divisions/brands; Minsait is widely known as Indra's digital-transformation subsidiary but this was not framed as an explicit acquisition on the pages read.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "infor",
@@ -49151,8 +49699,12 @@
   "category": "Suppliers & Services",
   "description": "Security and intelligence analytics software - exhibited at APTA 2026",
   "ats": {
-   "type": "unknown",
-   "ref": null
+   "type": "workday",
+   "ref": [
+    "volarisgroup",
+    "wd3",
+    "Intellicene"
+   ]
   },
   "hiring": {
    "status": "Unknown",
@@ -49163,7 +49715,12 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026; AAAE 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "Airport authorities, rail/subway system operators, and government 'safe cities' programs are named buyers; company also serves private retail and casino security clients, so public-sector transit/airport security is one of several verticals rather than singularly primary",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Careers link routes to Volaris Group's own Workday tenant, implying Intellicene is owned by / operates under Volaris Group (a Constellation Software operating group); this parent relationship was not stated in plain text on the pages read, only inferred from the job-board URL.",
+  "acquisitions_checked_on": "2026-09-10",
+  "ats_note": "Posts to parent Volaris Group's Workday tenant, but on a brand-specific site path (/Intellicene), so the board is Intellicene's alone. Found 2026-09-10 from a link on intellicene.com."
  },
  {
   "id": "intelligent-clinical-systems-llc",
@@ -49993,7 +50550,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "Primarily private infrastructure asset owners (energy, power, rail, construction); no government or transit agency is explicitly named as a customer in the content read",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "mcci",
@@ -50735,7 +51296,11 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"Onward Health, Inc., a Delaware corporation\" Fetched https://www.onwardrides.com (HTTP 200) and https://www.onwardrides.com/terms. The homepage title is \"Transportation Management Solutions | Onward\" and it sells a \"Door-Through-Door\u2120 Assisted Rideshare Solution\" plus software to \"Order, track and manage all healthcare transportation with one simple tool\", serving Hospitals & Health Systems, PACE Programs, Health Plans, Veterans Healthcare, Transit Agencies and Senior Living Communities \u2014 i.e. non-emergency medical transportation and ride management, matching the description. The name gap between the board record (\"Onward Health\") and the site brand (footer: \"\u00a92025 Onward Rides. All rights reserved.\") is resolved by the Terms of Service, which name the operator as \"Onward Health, Inc., a Delaware corporation\". Same company; onwardrides.com is its own primary domain, no parent involved."
    }
-  ]
+  ],
+  "buyer": "not found",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "operative-iq",
@@ -51550,7 +52115,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "Government and critical-infrastructure operators \u2014 airports, seaports, border security, military bases, and utility companies; holds a GSA contract (47QTCA21D009V), which suggests public-sector sales are primary over any private/commercial use",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Government and critical-infrastructure operators \u2014 airports, seaports, border security, military bases, and utility companies; holds a GSA contract (47QTCA21D009V), which suggests public-sector sales ",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "qualtrics",
@@ -52267,7 +52838,11 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"Strategic Mapping Inc. was born in 2006, when a small team of transportation technologists came together\" Fetched https://www.mapstrat.com. The name/domain mismatch flagged in the task resolves cleanly: \"mapstrat\" is a contraction of MAPping STRATegic, and the About copy names the company outright in the quoted sentence. All three product lines in the description are present verbatim in the site's own nav: \"CAD/AVL COMPUTER AIDED DISPATCH / AUTOMATIC VEHICLE LOCATION\", \"APC AUTOMATIC PASSENGER COUNTING\", plus passenger information offerings (Automated Stop Announcements, Transit On-Board Infotainment, Passenger Wi-Fi). Transit/fleet operations focus stated in the same sentence: \"to modernize transit and fleet operations\". Company's own primary domain, not an aggregator."
    }
-  ]
+  ],
+  "buyer": "not found",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "surety-2000",
@@ -52391,7 +52966,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "Serves both public fleets (pupil transportation, transit) and private commercial fleets (freight, logistics, construction, utilities) per its acquirer's description; no single buyer type is stated as primary",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Acquired by Zonar in December 2024 as part of the combination of GPS Trackit and Zonar (quote: \"TSO Mobile joined the Zonar family as part of the December 2024 combination of GPS Trackit and Zonar\")",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "tanium",
@@ -52544,7 +53123,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "School districts and transit agencies are prominent named buyers (case studies cite Stockton Unified School District and Porterville Unified School District fleet electrification); also serves commercial fleet operators \u2014 public-sector school/transit use appears primary based on the newsroom's case studies",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "thepoliceapp-com",
@@ -52758,7 +53341,11 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "This product line names public transit agencies (\"more than 100 transit agencies\" use it to complement existing networks) and higher-education institutions (\"700 universities and colleges\") as buyers; Uber's overall business is consumer-facing rideshare/delivery, so this is a narrow product line within a much larger company",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "uptale-usa-inc",
@@ -60525,7 +61112,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Primarily private commercial fleets (trucking, distribution, retail, field services \u2014 e.g. Walmart, Ryder); also serves public-sector transit and government fleets (e.g. Pierce Transit) as a named vertical",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Acquired the Surfsight product line to expand global distribution (year not stated)",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "netradyne",
@@ -60670,7 +61261,11 @@
    "by": "agent:descriptions-01",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Private fleet/logistics operators are the primary buyer (trucking, delivery, construction, waste); school districts and transit agencies buy the platform for student-transportation and passenger-transit safety as named but secondary verticals",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "calamp",
@@ -60799,7 +61394,13 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "General government / public works (municipal fleets, police departments); also sells commercially to private transportation and insurance markets \u2014 public-sector page names VDOT, Miami Police Dept, and Mecklenburg County as customers",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as General government / public works (municipal fleets, police departments); also sells commercially to private transportation and insurance markets \u2014 public-sector page names VDOT, Miami Police Dept, an",
+  "acquisition_note": "Serial acquirer: Gardiner Group (1999), Vytek Corp (2003), Dataradio (2006), Aercept/AirIQ (2007), Wireless Matrix (2012), Crashboxx (2015), LoJack Corporation (2016), LoJack licensees Car Track/Tracker (2019), Synovia Solutions (2019, school-bus/transit tracking). CalAmp later divested LoJack's US stolen-vehicle-recovery business to Spireon (2021) and filed for Chapter 11 in 2024.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "rta-fleet-management",
@@ -60833,7 +61434,13 @@
     "category": "Fleet & Asset Mgmt"
    }
   ],
-  "ats_note": "unwired 2026-09-02: the Paylocity tenant is 'Ron-Turley-Associates-Inc', which is not this company's name - a parent's board or a former name. Queued in Boards we found for a person to rule."
+  "ats_note": "unwired 2026-09-02: the Paylocity tenant is 'Ron-Turley-Associates-Inc', which is not this company's name - a parent's board or a former name. Queued in Boards we found for a person to rule.",
+  "buyer": "Public-sector fleets \u2014 government agencies, transit authorities, and K-12/higher-ed fleets; the site claims 750+ public-sector fleet customers",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Public-sector fleets \u2014 government agencies, transit authorities, and K-12/higher-ed fleets; the site claims 750+ public-sector fleet customers",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "chevin-fleet-solutions",
@@ -60968,7 +61575,13 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Utilities and general government fleets (DC Water, Hydro Ottawa, Anglian Water, Severn Trent Water named as customers) alongside commercial and construction fleets \u2014 public utilities appear to be a named vertical, not the sole buyer",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Utilities and general government fleets (DC Water, Hydro Ottawa, Anglian Water, Severn Trent Water named as customers) alongside commercial and construction fleets \u2014 public utilities appear to be a na",
+  "acquisition_note": "Chevin's own site names no parent, but its careers/job board is hosted on Volaris Group's Workday tenant (volarisgroup.wd3.myworkdayjobs.com), indicating Chevin is a Volaris Group (Constellation Software) portfolio company.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "dossier-systems",
@@ -60999,7 +61612,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Both government fleets (transit, school/charter bus, emergency services, public works, per AMCS's own solutions page) and private fleets (waste/recycling, trucking); a featured case study is a private waste hauler (Athens Services), so the primary side is unclear",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Acquired by AMCS in 2021",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "agile-fleet",
@@ -61140,7 +61757,11 @@
    "by": "agent:descriptions-03",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "general government, universities, and utility fleets (named first on site as \"government, university, utility, and commercial fleets\")",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "fleet-complete",
@@ -61275,7 +61896,11 @@
    "by": "agent:descriptions-07",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Primarily private commercial fleets (transportation & logistics, courier/delivery, construction, oil & gas, mining, rental); government fleets and school transportation are named as served verticals but appear secondary to the commercial base",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Acquired by Powerfleet, Inc.; deal closed October 2024 and the brand is transitioning fully to \"Powerfleet\"",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "utilimarc",
@@ -61299,7 +61924,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Utilities and municipal government fleets are the named clients (American Electric Power, PSEG, City of Columbus, Xcel Energy, Southern Company); one private client (Purolator) is also named, but public-sector/utility fleets appear primary based on the client list shown",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Utilities and municipal government fleets are the named clients (American Electric Power, PSEG, City of Columbus, Xcel Energy, Southern Company); one private client (Purolator) is also named, but publ",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "whip-around",
@@ -61428,7 +62059,11 @@
    "by": "agent:descriptions-02",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "primarily private commercial fleets \u2014 homepage names construction, landscaping, oil & gas, trucking/delivery, and waste & recycling; a 'passenger transportation' vertical is listed too but no specific government or transit-agency buyer is named on the homepage",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "ridecell",
@@ -61452,7 +62087,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Commercial \u2014 automotive leasing and finance companies and their fleet clients; no public-sector buyer is named on the site",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "omnitracs",
@@ -61476,7 +62115,12 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Private trucking/logistics companies are the primary buyer; \"public administration & transit\" is listed as one of several served industry sectors on the site, so government transit fleets are a secondary buyer",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Formed in 1998 as a division of Qualcomm (stated on their own About page); now operates under parent Solera, evidenced by a \"Solera-Omnitracs\" logo and Solera careers/privacy links on omnitracs.com, though no acquisition year for the Solera deal is stated on the site",
+  "acquisitions_checked_on": "2026-09-10",
+  "ats_note": "Omnitracs posts into parent Solera's Workday tenant at solera.wd5.myworkdayjobs.com/Global_Career_Site - Solera's WHOLE company, 188 jobs across Audatex, Identifix, Omnitracs and the rest, with no per-brand site path. Wiring Omnitracs to it would file all 188 as theirs, which is the never-point-a-company-at-its-parent's-board rule. Left unwired on purpose; checked 2026-09-10. Needs a brand filter on that board, or a person reading it."
  },
  {
   "id": "apollo-video-technology",
@@ -61524,7 +62168,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Colleges/universities and municipalities are named first among served markets, alongside healthcare, corporate campuses, airports, paratransit, and residential communities \u2014 mixed public/private but public-sector transit/campus buyers are named first",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "vix-technology",
@@ -61665,7 +62313,13 @@
    "by": "agent:descriptions-02",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "transit agency \u2014 named customers on their own site include Cambridge, Beijing Metro, Bangkok's Skytrain, and Dallas Area Rapid Transit (DART); site says deployments in over 200 cities/regions",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency \u2014 named customers on their own site include Cambridge, Beijing Metro, Bangkok's Skytrain, and Dallas Area Rapid Transit (DART); site says deployments in over 200 cities/regions",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "bytemark",
@@ -61689,31 +62343,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
- },
- {
-  "id": "spare-labs",
-  "name": "Spare Labs",
-  "website": "https://sparelabs.com",
-  "location": "Vancouver, BC, Canada",
-  "year_founded": 2015,
-  "sector": "Transit & Parking",
-  "category": "Fleet & Operations",
-  "description": "Demand-responsive transit and paratransit platform for agencies",
-  "ats": {
-   "type": "ashby",
-   "ref": "spare"
-  },
-  "hiring": {
-   "status": "None found",
-   "note": "",
-   "roles": [],
-   "checked": "2026-09-09"
-  },
-  "govtech": true,
-  "researched": false,
-  "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "public transit agencies (e.g. Hampton Roads Transit, York Region Transit, King County Metro, CapMetro named as customers)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as public transit agencies (e.g. Hampton Roads Transit, York Region Transit, King County Metro, CapMetro named as customers)",
+  "acquisition_note": "Bytemark is stated on its own site to be \"a Siemens Company\" (meta description) within Siemens Mobility, with footer copyright reading \"Siemens Mobility Inc.\"; no acquisition year is given on the site itself",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "liftango",
@@ -61737,7 +62373,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Public transit agencies, bus operators, and schools/universities primarily; also sells corporate carpooling programs to private employers",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "padam-mobility",
@@ -61761,7 +62401,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Public transport authorities and transport operators; the site also names private companies as clients but authorities/operators (RATP, Keolis, HSL) are the headline customers",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Joined the Siemens group in 2021 (\"In 2021, Padam Mobility joins the Siemens group and completes its portfolio of digital intermodal solutions\")",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "flowbird",
@@ -61785,7 +62429,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Cities, municipalities, and parking authorities (on-street/off-street parking) plus transit agencies (fare collection, ticketing, MaaS); public sector is primary based on named customers (e.g. City of Rochester NY, University of Arkansas)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Cities, municipalities, and parking authorities (on-street/off-street parking) plus transit agencies (fare collection, ticketing, MaaS); public sector is primary based on named customers (e.g. City of",
+  "acquisition_note": "Acquired by EasyPark Group; acquisition closed January 15, 2025, with the combined company now operating as \"Arrive\"",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "civicsmart",
@@ -61919,7 +62569,13 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Parking authorities and city general government",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Parking authorities and city general government",
+  "acquisition_note": "CivicSmart was formed in 2015 when it acquired Duncan Parking Technologies, consolidating the US parking-meter business of Duncan Solutions (itself a 2005 merger of Duncan Parking Technologies, Enforcement Technology, Reino International, and Professional Account Management). Duncan Parking Technologies now operates as a wholly-owned subsidiary of CivicSmart.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "paybyphone",
@@ -62059,7 +62715,13 @@
    "by": "agent:descriptions-01",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Parking authorities and city governments are the operator/paying side of the platform (drivers use the app free); the site also serves businesses/fleets, but municipal parking operators are primary",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Parking authorities and city governments are the operator/paying side of the platform (drivers use the app free); the site also serves businesses/fleets, but municipal parking operators are primary",
+  "acquisition_note": "Own press page states a transition \"post the transition from Corpay\" to new ownership by Lightyear Capital, confirming Corpay was a prior parent; no year given",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "gtechna",
@@ -62083,7 +62745,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Cities and municipalities, parking authorities/operators, universities and colleges, and police departments \u2014 general government/parking authority is primary",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Cities and municipalities, parking authorities/operators, universities and colleges, and police departments \u2014 general government/parking authority is primary",
+  "acquisition_note": "gtechna's own about page does not mention Harris Computer or Constellation Software, but the Workday job-board URL (harriscomputer.wd3.myworkdayjobs.com/gtechna) indicates it operates under Harris Computer, a Constellation Software subsidiary",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "skidata",
@@ -62107,7 +62775,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Parking authorities, municipalities, and airports on the government/public side; also ski resorts, stadiums, and entertainment venues commercially",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Parking authorities, municipalities, and airports on the government/public side; also ski resorts, stadiums, and entertainment venues commercially",
+  "acquisition_note": "Acquired by ASSA ABLOY Group (2024); previously became part of the Kudelski Group in 2001",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "amano-mcgann",
@@ -62217,7 +62891,11 @@
    "by": "agent:descriptions-03",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "mixed \u2014 municipalities and airports are named verticals alongside healthcare, hospitality, office, and retail; public-sector share of revenue is not stated",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Formed via a 2007 merger of Amano USA Holdings' parking business with Terry McGann & Associates, per third-party trade press (not stated on Amano McGann's own site); parent company Amano Corporation (Japan) is named on Amano McGann's own About page as \"a parking technology market leader since 1931\"",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "stack-sports",
@@ -80610,7 +81288,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Transit agencies in North America, paratransit operators, and government transportation organizations",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies in North America, paratransit operators, and government transportation organizations",
+  "acquisition_note": "Trapeze Group operates as a subsidiary of Modaxo Inc. (\"a Modaxo company\"); footer copyright reads \"\u00a9 2026 Modaxo Inc., its subsidiaries and affiliates\"",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "easypark-group",
@@ -80634,7 +81318,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Cities and parking operators buy the management/permit/dashboard systems; individual drivers pay for the consumer app. Public-sector (parking authority/city) side appears primary given the enforcement and permit-digitization products.",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "emovis",
@@ -80757,31 +81445,13 @@
    "by": "agent:descriptions-07",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
- },
- {
-  "id": "unwire",
-  "name": "Unwire",
-  "website": "https://unwire.com",
-  "location": "Copenhagen, Denmark",
-  "year_founded": 2003,
-  "sector": "Transit & Parking",
-  "category": "Fare & Payments",
-  "description": "Mobile ticketing and MaaS platform for transit agencies in US and Europe",
-  "ats": {
-   "type": "unknown",
-   "ref": null
   },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-09"
-  },
-  "govtech": true,
-  "researched": false,
-  "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "buyer": "Tolling agencies and mobility/transportation operators managing free-flow toll roads",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Tolling agencies and mobility/transportation operators managing free-flow toll roads",
+  "acquisition_note": "Part of Abertis Mobility Services / Abertis Group \u2014 parent relationship referenced in Emovis's own news content ('Abertis Senior Leadership Visits Emovis Miami Headquarters'); no acquisition year stated.",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "fairtiq",
@@ -80811,7 +81481,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Public transport agencies and operators (the app is offered to riders on behalf of the transit operator that contracts FAIRTIQ)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Public transport agencies and operators (the app is offered to riders on behalf of the transit operator that contracts FAIRTIQ)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "ridango",
@@ -80940,7 +81616,13 @@
    "by": "agent:descriptions-02",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Public transport authorities and operators; site also mentions school transport as a use case",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Public transport authorities and operators; site also mentions school transport as a use case",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "moovit",
@@ -80964,7 +81646,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Transit agencies, cities, and government mobility departments (MaaS/B2B side); the consumer trip-planning app is free to riders and monetized separately",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Became part of Mobileye (Nasdaq: MBLY), an Intel company, in 2022",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "lightspeed-systems",
@@ -86496,7 +87182,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Municipalities, universities, hospitals, and downtown authorities across the US and Canada \u2014 public-sector buyers are named exclusively alongside private parking operators.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Municipalities, universities, hospitals, and downtown authorities across the US and Canada \u2014 public-sector buyers are named exclusively alongside private parking operators.",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "nwave-technologies",
@@ -86520,7 +87212,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "mixed \u2014 municipalities and universities (general government / higher ed) named alongside commercial clients (airports, enterprises, healthcare); Amazon, Microsoft, and Facebook are named as prominently as government customers, so no clear primary side",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "fybr",
@@ -86648,7 +87344,13 @@
    "by": "agent:descriptions-07",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "municipalities/cities (general government) \u2014 named customers Dublin OH, Marysville OH, St. Charles MO",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as municipalities/cities (general government) \u2014 named customers Dublin OH, Marysville OH, St. Charles MO",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "eleven-x",
@@ -86774,7 +87476,13 @@
    "by": "agent:descriptions-02",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "municipalities and university campuses (general government / higher ed) primary, also private organizations \u2014 named customers Arlington County VA and City of Delray Beach FL",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as municipalities and university campuses (general government / higher ed) primary, also private organizations \u2014 named customers Arlington County VA and City of Delray Beach FL",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "park-assist",
@@ -86807,120 +87515,11 @@
     "sector": "Airports & Aviation",
     "category": "Parking & Ground Transport"
    }
-  ]
- },
- {
-  "id": "curbiq",
-  "name": "CurbIQ",
-  "website": "https://curbiq.io",
-  "location": "Toronto, Ontario, Canada",
-  "year_founded": 2020,
-  "sector": "Transit & Parking",
-  "category": "Parking & Curb",
-  "description": "Curb inventory, regulation digitization and curb management for cities",
-  "ats": {
-   "type": "html",
-   "ref": "https://careers.arcadis.com/"
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
-   "roles": [],
-   "checked": "2026-09-09"
-  },
-  "govtech": true,
-  "researched": false,
-  "vendor_type": "GovTech Product",
-  "source": "competitor sweep",
-  "profile": {
-   "paragraphs": [
-    "CurbIQ sells curb management software to cities, universities and airports, giving them one place to keep curb regulations and usage data. The problem it addresses is balancing curb access among pedestrians, parking, deliveries, rideshares and vendors.",
-    "The platform pulls curb regulation and usage data from multiple sources into a single database. Records are held in curb data standards including CDS, D-TRO and CurbLR. Map overlays show when and where regulations are in effect, and the tool models what a proposed policy change would do. Data sharing runs through APIs so couriers, ride-hailing companies and navigation platforms can see the current rules.",
-    "CurbIQ was founded by Peter Richards, formerly chair of the Institute of Transportation Engineers Parking Standing Committee. The team managed the Southern California Association of Governments Curb Space Management Study. The company belongs to the Open Mobility Foundation, a nonprofit that builds open-source tools for cities. CurbIQ itself is a product of the design firm Arcadis."
-   ],
-   "quote": {
-    "text": "We digitize curbside regulations, empowering cities and businesses to create a planet-positive future.",
-    "url": "https://curbiq.io/about"
-   },
-   "provenance": [
-    {
-     "p": 0,
-     "s": 0,
-     "url": "https://curbiq.io",
-     "quote": "Our curb management solution is a digital hub for curb regulations and usage data, empowering cities, universities, and airports to build intelligent policies that align with strategic goals."
-    },
-    {
-     "p": 0,
-     "s": 1,
-     "url": "https://curbiq.io",
-     "quote": "CurbIQ helps balance curb access for pedestrians, parking, deliveries, rideshares, vendors, and more"
-    },
-    {
-     "p": 1,
-     "s": 0,
-     "url": "https://curbiq.io",
-     "quote": "CurbIQ takes curb regulations and usage data from multiple sources and centralizes it in one convenient database."
-    },
-    {
-     "p": 1,
-     "s": 1,
-     "url": "https://curbiq.io",
-     "quote": "Store data in industry-standard formats ( CDS, D-TRO or CurbLR )"
-    },
-    {
-     "p": 1,
-     "s": 2,
-     "url": "https://curbiq.io",
-     "quote": "Map overlays show exactly when and where curb regulations are in effect and accurately models the impact of policy changes"
-    },
-    {
-     "p": 1,
-     "s": 3,
-     "url": "https://curbiq.io",
-     "quote": "Ensure 3 rd parties (e.g. couriers, TNCs, navigation platforms, and CAVs) know the latest regulations"
-    },
-    {
-     "p": 2,
-     "s": 0,
-     "url": "https://curbiq.io/about",
-     "quote": "CurbIQ was founded by Peter Richards , the former chair of the Institute of Transportation Engineers (ITE) Parking Standing Committee"
-    },
-    {
-     "p": 2,
-     "s": 1,
-     "url": "https://curbiq.io/about",
-     "quote": "CurbIQ also managed the Southern California Association of Governments (SCAG) Curb Space Management Study"
-    },
-    {
-     "p": 2,
-     "s": 2,
-     "url": "https://curbiq.io/about",
-     "quote": "CurbIQ is a member of the Open Mobility Foundation (OMF), a nonprofit industry association that develops open-source tools for cities"
-    },
-    {
-     "p": 2,
-     "s": 3,
-     "url": "https://curbiq.io/about",
-     "quote": "CurbIQ is a product of technology-driven design firm Arcadis"
-    }
-   ],
-   "sources": [
-    {
-     "url": "https://curbiq.io",
-     "sha": "4c4b5fa7732138fa",
-     "fetched_on": "2026-09-03"
-    },
-    {
-     "url": "https://curbiq.io/about",
-     "sha": "b8db84479b303f31",
-     "fetched_on": "2026-09-03"
-    }
-   ],
-   "written_on": "2026-09-08",
-   "by": "agent:descriptions-06",
-   "ruled_by": "owner",
-   "ruled_on": "2026-09-08"
-  }
+  ],
+  "buyer": "unclear \u2014 pages read describe \"your parking facility\" generically without naming a public- or private-sector buyer",
+  "sells_to_gov": "unclear",
+  "acquisition_note": "Owned by TKH Group; \"TKH Security, an entity also owned by Park Assist's parent company TKH Group, merged with Park Assist in January 2021\"",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "whoosh",
@@ -86944,7 +87543,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "not found",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "data-ticket",
@@ -86968,7 +87571,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "cities, counties, universities, and colleges (general government) \u2014 site states 450+ clients across the US",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as cities, counties, universities, and colleges (general government) \u2014 site states 450+ clients across the US",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "turbo-data-systems",
@@ -86992,7 +87601,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Municipal governments and universities running parking, traffic, and code enforcement citation programs, per client testimonials on the homepage.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Municipal governments and universities running parking, traffic, and code enforcement citation programs, per client testimonials on the homepage.",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "complus-data-innovations",
@@ -87016,7 +87631,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "cities/municipalities (general government / parking authority) \u2014 named clients Athens OH, White Plains NY, Thousand Oaks CA",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as cities/municipalities (general government / parking authority) \u2014 named clients Athens OH, White Plains NY, Thousand Oaks CA",
+  "acquisition_note": "Homepage header states \"Learn about Passport's acquisition of Complus (CDI)\" \u2014 Passport acquired Complus Data Innovations; year not given on the page",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "aims-parking",
@@ -87134,7 +87755,13 @@
    "by": "agent:descriptions-03",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "general government / higher education \u2014 named customers on the homepage include the City of Spokane, City of Las Vegas, College Park, University of Maryland, University of North Texas, and University of Colorado Boulder; site says '300+ clients' in the US and Canada",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as general government / higher education \u2014 named customers on the homepage include the City of Spokane, City of Las Vegas, College Park, University of Maryland, University of North Texas, and University ",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "busboss",
@@ -96582,7 +97209,13 @@
    "by": "agent:descriptions-06",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "transit agency (paratransit/NEMT/microtransit operators); primary buyer is public transit agencies, per solutions pages naming transit agencies and mobility providers",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (paratransit/NEMT/microtransit operators); primary buyer is public transit agencies, per solutions pages naming transit agencies and mobility providers",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "cts-software",
@@ -96637,7 +97270,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Transit agencies, including urban, rural, and Indigenous community transit services, per their own on-demand-transit and public-transit product pages.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies, including urban, rural, and Indigenous community transit services, per their own on-demand-transit and public-transit product pages.",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "blaise-transit",
@@ -96769,7 +97408,13 @@
    "by": "agent:descriptions-04",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Transit authorities and municipal transportation providers (over 70 communities, primarily Canada and the US)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit authorities and municipal transportation providers (over 70 communities, primarily Canada and the US)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "liberty-mobility-now",
@@ -96793,7 +97438,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "not found",
+  "sells_to_gov": "unclear",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "circuit",
@@ -96915,7 +97564,11 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Cities and business improvement districts primary; also private developments and advertiser-funded routes",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "freebee",
@@ -96939,7 +97592,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "public works / transportation department (municipal governments contract Freebee to run free shuttle service in their city, per multiple city .gov pages, e.g. Miami Beach, Delray Beach); also sells advertising/sponsorship to local businesses as a secondary revenue stream",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as public works / transportation department (municipal governments contract Freebee to run free shuttle service in their city, per multiple city .gov pages, e.g. Miami Beach, Delray Beach); also sells ad",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "door2door",
@@ -96963,7 +97622,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Transit agencies and municipal utilities/transport authorities (e.g. Stadtwerke M\u00fcnster, MVG Munich); also NEMT and Middle East shuttle deployments",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and municipal utilities/transport authorities (e.g. Stadtwerke M\u00fcnster, MVG Munich); also NEMT and Middle East shuttle deployments",
+  "acquisition_note": "Acquired by Swvl Inc. in 2022 (deal announced March 24, 2022, closed Q2 2022)",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "shotl",
@@ -96987,7 +97652,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "general government/transit agencies (cities, districts) primary, alongside corporate and accessibility-service operators",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Shotl operates as part of Swvl (Nasdaq: SWVL), per Shotl's own news post: \"Shotl, as part of Swvl, has become a publicly listed company (NDAQ: SWVL)\"",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "moia",
@@ -97011,14 +97680,18 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Primarily businesses and consumers (corporate ridepooling contracts and a direct-to-rider app in Hamburg); a December 2023 post on their own blog announced opening the ridepooling ecosystem to \"cities and local transport operators,\" so a public-sector/transit-operator buyer exists but is secondary to the commercial/consumer side.",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "tripshot",
   "name": "TripShot",
   "website": "https://tripshot.com",
   "location": null,
-  "year_founded": null,
+  "year_founded": 2008,
   "sector": "Transit & Parking",
   "category": "Demand-Response & AV",
   "description": "Transit operations, on-demand and shuttle management software for agencies and campuses",
@@ -97035,7 +97708,12 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "public transit agencies as well as universities and private employer shuttle programs; site lists 'public' and 'private' as parallel segments with no stated primary",
+  "sells_to_gov": "yes",
+  "founded_source": "https://www.tripshot.com/about states 'Our story began in 2008 when our core team was a custom SaaS firm serving the most demanding clients in Silicon Valley'",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "mjm-innovations",
@@ -97059,7 +97737,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Transit agencies (e.g. Maryland Transit Administration, LA Dept of Transportation, Harris County) and Area Agencies on Aging/senior centers; general government and non-profit human-services buyers are primary, per their own case studies.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (e.g. Maryland Transit Administration, LA Dept of Transportation, Harris County) and Area Agencies on Aging/senior centers; general government and non-profit human-services buyers are",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "glydways",
@@ -97083,7 +97767,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "transit agency / city DOT / airport authority (named deployments include Atlanta, Contra Costa County, San Jose Airport, and Newark Liberty International Airport)",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency / city DOT / airport authority (named deployments include Atlanta, Contra Costa County, San Jose Airport, and Newark Liberty International Airport)",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "swyft-cities",
@@ -97107,7 +97797,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "unclear \u2014 pitched to cities/municipal projects (e.g. Irvine's Great Park, Plano, Sugar Land) but also to private real-estate developments; site frames the customer as development sites generally rather than naming a department",
+  "sells_to_gov": "unclear",
+  "acquisition_note": "Swyft Cities is 'sole licensee of Whoosh\u00ae Transportation Technology in North America and other designated geographies,' with Whoosh owned by a separate entity, Whoosh Hold LP",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "easymile",
@@ -97243,7 +97937,11 @@
    "by": "agent:descriptions-06",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Airport authorities and industrial/logistics operators; 2026 announcements show a strategic shift toward heavy-duty industrial autonomy (airport cargo, factory towing) over passenger shuttles",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "navya",
@@ -97267,7 +97965,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Cities/transit programs for passenger shuttle deployments and airports/ports/industrial operators for cargo tractors (Charlatte Autonom line) \u2014 a mixed public/private customer base, with recent news skewing toward airport and industrial cargo clients.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Cities/transit programs for passenger shuttle deployments and airports/ports/industrial operators for cargo tractors (Charlatte Autonom line) \u2014 a mixed public/private customer base, with recent news s",
+  "acquisition_note": "navya.tech/about-us names Macnica and NTT WEST, Inc. (Japan) as major shareholders, and the site's own news feed covers an NTT West investment in \"GAUSSIN MACNICA MOBILITY.\" External sources (Gaussin press release, sustainable-bus.com \u2014 not opened as primary evidence here beyond the search snippet) describe Navya undergoing a 2023 insolvency/asset sale to Gaussin and Macnica, but navya.tech itself",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "holon",
@@ -97291,7 +97995,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "transit agency / general government (US Transit Vehicle Manufacturer status obtained for Jacksonville, FL deployments; also pilots with transit-adjacent private operators such as CharterUP)",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Parent is BENTELER Group, stated plainly on Holon's own careers page ('Backed by the strength of the BENTELER Group'); separately, Holon's own news page reports 'BENTELER acquires ioki' (Jan 5, 2026) -- a sibling acquisition by the parent, not by Holon itself",
+  "acquisitions_checked_on": "2026-09-10"
  },
  {
   "id": "karsan",
@@ -97315,7 +98023,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "transit agency / general government (public bus/transit operators); also OEM/commercial partnerships (Menarinibus-badged buses, Hyundai H350 LCV)",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "aurrigo",
@@ -97339,7 +98051,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Airport authorities and airlines primary (Auto-DollyTug, Auto-Cargo, Auto-Shuttle); a separate automotive division serves private OEM/Tier-1 vehicle manufacturers",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "2getthere",
@@ -97446,7 +98162,11 @@
    "by": "agent:descriptions-03",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Transit agencies and airport authorities primary; also sells to private campuses, business parks, and theme parks",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "perrone-robotics",
@@ -97470,31 +98190,11 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
- },
- {
-  "id": "forterra",
-  "name": "Forterra",
-  "website": "https://forterra.ai",
-  "location": "Clarksburg, MD",
-  "year_founded": null,
-  "sector": "Transit & Parking",
-  "category": "Demand-Response & AV",
-  "description": "Autonomous driving systems for government fleets including transit and defense vehicles",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-09"
-  },
-  "govtech": true,
-  "researched": false,
-  "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Public transit agencies are the growing focus \u2014 a dedicated Transit Division formed in 2025, USDOT SMART grant-funded bus retrofits with NEORide member agencies, and deployments with Detroit's transit system and Tulsa; the site also names Fortune 500 companies, automotive OEMs, and tier-1 suppliers as customers more broadly.",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "oxa",
@@ -97518,155 +98218,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
- },
- {
-  "id": "weride",
-  "name": "WeRide",
-  "website": "https://www.weride.ai",
-  "location": "Guangzhou, China",
-  "year_founded": 2017,
-  "sector": "Transit & Parking",
-  "category": "Demand-Response & AV",
-  "description": "Autonomous robobuses and robotaxis deployed with transit authorities and cities",
-  "ats": {
-   "type": "lever",
-   "ref": "weride"
-  },
-  "hiring": {
-   "status": "None found",
-   "note": "",
-   "roles": [],
-   "checked": "2026-09-09"
-  },
-  "govtech": true,
-  "researched": false,
-  "vendor_type": "GovTech Product",
   "source": "competitor sweep",
-  "profile": {
-   "paragraphs": [
-    "WeRide develops autonomous driving technology ranging from driver assistance up to fully driverless Level 4 systems. Its footprint now spans more than 60 cities across 13 countries.",
-    "The portfolio holds five products: robotaxis, robobuses, robovans, robosweepers and a driver-assistance system. Between them they cover passenger mobility, logistics and street sanitation. The robobus is offered for public operations including day transport, bus rapid transit and night shuttle service. Robotaxi public operations are listed in cities including Guangzhou, Abu Dhabi, Zurich, Dubai and Singapore. The driverless stack runs on a computing platform rated at 2,000 TOPS.",
-    "The company was established in 2017 and has run an autonomous vehicle fleet for more than 2,500 days. It is listed on Nasdaq and the Hong Kong Stock Exchange. It states that its products hold autonomous driving permits in eight markets, among them China, the United Arab Emirates, Singapore and France. Named partners include global carmakers, ride-hailing firms and Tier 1 suppliers."
-   ],
-   "quote": {
-    "text": "Established in 2017, WeRide has operated an autonomous vehicle fleet for more than 2,500 days",
-    "url": "https://www.weride.ai/about"
-   },
-   "provenance": [
-    {
-     "p": 0,
-     "s": 0,
-     "url": "https://www.weride.ai/about",
-     "quote": "develops autonomous driving technologies from Level 2 to Level 4"
-    },
-    {
-     "p": 0,
-     "s": 1,
-     "url": "https://www.weride.ai/about",
-     "quote": "footprint now spans more than 60 cities across 13 countries"
-    },
-    {
-     "p": 1,
-     "s": 0,
-     "url": "https://www.weride.ai/products",
-     "quote": "including Robotaxi, Robobus, Robovan, Robosweeper, and advanced driver-assistance system (ADAS)"
-    },
-    {
-     "p": 1,
-     "s": 1,
-     "url": "https://www.weride.ai/about",
-     "quote": "spanning smart mobility, smart logistics, and smart sanitation applications"
-    },
-    {
-     "p": 1,
-     "s": 2,
-     "url": "https://www.weride.ai/products",
-     "quote": "Fully autonomous service worldwide for public operations (including day transport, Bus Rapid Transit and night shuttle services)"
-    },
-    {
-     "p": 1,
-     "s": 3,
-     "url": "https://www.weride.ai/products",
-     "quote": "With public operations - Guangzhou, Beijing, Abu Dhabi, Z\u00fcrich, Dubai, Riyadh, Singapore"
-    },
-    {
-     "p": 1,
-     "s": 4,
-     "url": "https://www.weride.ai/products",
-     "quote": "2,000TOPS AI computing power"
-    },
-    {
-     "p": 2,
-     "s": 0,
-     "url": "https://www.weride.ai/about",
-     "quote": "Established in 2017, WeRide has operated an autonomous vehicle fleet for more than 2,500 days"
-    },
-    {
-     "p": 2,
-     "s": 1,
-     "url": "https://www.weride.ai",
-     "quote": "WeRide is listed on Nasdaq and the Hong Kong Stock Exchange"
-    },
-    {
-     "p": 2,
-     "s": 2,
-     "url": "https://www.weride.ai/about",
-     "quote": "products have received autonomous driving permits in eight markets: China, the UAE, Singapore, France, Switzerland, Saudi Arabia, Belgium"
-    },
-    {
-     "p": 2,
-     "s": 3,
-     "url": "https://www.weride.ai/about",
-     "quote": "OEMs and Tier 1 companies including Renault-Nissan-Mitsubishi Alliance, Uber, Grab, GAC Group, and Bosch"
-    }
-   ],
-   "sources": [
-    {
-     "url": "https://www.weride.ai",
-     "sha": "0b1e3789c88ba5b0",
-     "fetched_on": "2026-09-03"
-    },
-    {
-     "url": "https://www.weride.ai/products",
-     "sha": "1f1d77676b0ca940",
-     "fetched_on": "2026-09-03"
-    },
-    {
-     "url": "https://www.weride.ai/about",
-     "sha": "9165f196f5c9a0a9",
-     "fetched_on": "2026-09-03"
-    }
-   ],
-   "written_on": "2026-09-08",
-   "by": "agent:descriptions-02",
-   "ruled_by": "owner",
-   "ruled_on": "2026-09-08"
-  }
- },
- {
-  "id": "motional",
-  "name": "Motional",
-  "website": "https://motional.com",
-  "location": "Boston, MA",
-  "year_founded": 2020,
-  "sector": "Transit & Parking",
-  "category": "Demand-Response & AV",
-  "description": "Driverless vehicle technology for shared autonomous mobility services",
-  "ats": {
-   "type": "html",
-   "ref": "https://motional.com/careers"
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "page scan found no listings",
-   "roles": [],
-   "checked": "2026-09-09"
-  },
-  "govtech": true,
-  "researched": false,
-  "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "buyer": "Primarily industrial businesses (ports, airports, manufacturing, solar-farm monitoring) per their own site's stated customer description; also involved in government-linked projects such as a Dubai Future Foundation joint venture and public-road AV shuttle trials in Northern Ireland, so a public-sector side exists but industrial/commercial appears primary.",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "transit run 2026-09-10: buyer stated as Primarily industrial businesses (ports, airports, manufacturing, solar-farm monitoring) per their own site's stated customer description; also involved in government-linked projects such as a Dubai Fu",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "auve-tech",
@@ -97801,14 +98359,18 @@
    "by": "agent:descriptions-04",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Municipalities and transit operators running rural/last-mile routes primary; also airports and private campuses/ports",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "ohmio-automotion",
   "name": "Ohmio Automotion",
   "website": "https://ohmio.com",
   "location": "Auckland, New Zealand",
-  "year_founded": null,
+  "year_founded": 2017,
   "sector": "Transit & Parking",
   "category": "Demand-Response & AV",
   "description": "Autonomous shuttles for public transport agencies, airports and campuses",
@@ -97825,7 +98387,12 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "buyer": "Airports and cities/transit authorities (JFK, Schiphol, Brussels, Milton Keynes, Birmingham, Riverside, Tampere) are listed first among deployment types on their own site, alongside universities, hotels, and theme parks \u2014 transit/airport-authority buyers appear primary.",
+  "sells_to_gov": "yes",
+  "founded_source": "https://www.ohmio.com/about-us \u2014 \"2017\" is listed under Ohmio's key milestones in the \"Our Growth, Our Impact\" section",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "tomra",
@@ -101724,31 +102291,11 @@
    "by": "agent:descriptions-03",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
- },
- {
-  "id": "hopthru",
-  "name": "Hopthru",
-  "website": "https://www.hopthru.com",
-  "location": "Seattle, Washington",
-  "year_founded": 2019,
-  "sector": "Transit & Parking",
-  "category": "Rider Experience",
-  "description": "Ridership and passenger counting analytics for public transit agencies",
-  "ats": {
-   "type": "unknown",
-   "ref": null
   },
-  "hiring": {
-   "status": "Unknown",
-   "note": "no ATS on file",
-   "roles": [],
-   "checked": "2026-09-09"
-  },
-  "govtech": true,
-  "researched": false,
-  "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "buyer": "Mixed: commercial real estate and employers appear primary (transportation-demand-management programs for workplaces/residential), with transit agencies, universities, and venues as a secondary segment; named clients include Amazon, Google, Brookfield, Harvard, and Georgetown.",
+  "sells_to_gov": "yes",
+  "acquisitions_checked_on": "2026-09-10",
+  "acquisitions_none_found": true
  },
  {
   "id": "alertsense",
