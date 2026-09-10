@@ -807,6 +807,29 @@ def q_acquisitions(companies, board) -> list:
             # in this file point at one domain.
             "strength": "domain",
             "on": dt.date.today().isoformat()})
+    # THIRD SIGNAL: a parent named by outside research, with its source.
+    #
+    # The two signals above are both things this repo noticed on its own - a
+    # slug that reads oddly, and a board sitting on a domain another record
+    # already claims. Neither can see an acquisition that left no trace in the
+    # board address, and most do not: Book King's careers link looked ordinary
+    # until somebody read the announcement. This file is research a person
+    # commissioned, staged and never applied, so a parent still has to be
+    # ruled here before it reaches companies.json.
+    research = read("acquisitions_research.json", {})
+    known = {c["id"] for c in companies}
+    for cid, r in (research.items() if isinstance(research, dict) else []):
+        if cid in seen or cid not in known:
+            continue
+        seen.add(cid)
+        items.append({
+            "id": cid,
+            "note": r.get("says") or r.get("parent_claim") or "",
+            "says": r.get("says") or r.get("parent_claim") or "",
+            "parent_claim": r.get("parent_claim"),
+            "confidence": r.get("confidence"),
+            "strength": "research",
+            "on": r.get("on")})
     items = [i for i in items if not is_dismissed("acquisitions", i.get("id", ""))]
     return [_acquisition_row(i, companies) for i in items]
 

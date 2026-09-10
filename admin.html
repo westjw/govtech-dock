@@ -3394,6 +3394,11 @@ RENDER.acquisitions = s => {
                    evidence in the queue after a named board, rendered as a
                    JavaScript mistake. */
                 logo: 'Their logo is the same file as another company’s',
+                /* Outside research, staged in acquisitions_research.json and
+                   never applied. The other signals are things this repo spots
+                   on its own; none of them can see an acquisition that left no
+                   trace in the board address, which is most of them. */
+                research: 'A parent named by outside research — read the source before ruling',
                 slug: 'Only the slug looks odd — weakest, most of these are nothing'}[strength]
                 || 'Evidence of a kind this page does not have a name for yet';
   const band = el('div', 'kv', head);

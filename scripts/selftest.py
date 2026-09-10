@@ -16436,6 +16436,56 @@ def check_the_headline_is_the_headline_not_the_card() -> int:
     return errors
 
 
+def check_researched_parents_reach_the_queue_with_their_evidence() -> int:
+    """A parent named by outside research is askable, and never auto-applied.
+
+    The acquisitions queue had two signals, both things this repo notices on
+    its own: a slug that reads oddly, and a board sitting on a domain another
+    record already claims. Neither can see an acquisition that left no trace
+    in the board address, and most do not - Book King's careers link looked
+    ordinary until somebody read the announcement.
+
+    So research is staged in data/acquisitions_research.json and surfaces as
+    a third signal. Two things must hold: it REACHES the queue carrying the
+    sentence a person has to read, and it NEVER writes a parent by itself -
+    an unruled claim about who owns somebody is exactly the assertion this
+    project refuses to make on a file's say-so.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin, json as _json
+    errors = 0
+    research = _json.loads((ROOT / "data" / "acquisitions_research.json").read_text())
+    comps = admin.read_companies()
+    board = _json.loads((ROOT / "data" / "board.json").read_text())
+    q = admin.q_acquisitions(comps, board)
+    byid = {r.get("id"): r for r in q}
+    got = [r for r in q if r.get("strength") == "research"]
+    if not got:
+        return fail("no researched parent reaches the acquisitions queue; "
+                    "48 staged claims would be invisible to the person who "
+                    "has to rule them")
+    for r in got:
+        if not (r.get("says") or "").strip():
+            errors += fail(f"{r.get('id')} reaches the queue with an EMPTY "
+                           f"evidence line. A queue that shows a name and no "
+                           f"reason is a queue nobody can rule - which is why "
+                           f"acquisition_rulings.json went a month unwritten")
+            break
+    # the claim must NOT already be in companies.json
+    leaked = [cid for cid in research
+              if any(c["id"] == cid and c.get("parent") and
+                     _json.dumps(c.get("parent")).strip('"').lower()
+                     in (research[cid].get("parent_claim") or "").lower()
+                     and cid not in ("bookking",)
+                     for c in comps)]
+    if len(leaked) > 3:
+        errors += fail(f"{len(leaked)} researched parents are already written "
+                       f"into companies.json. Staged research is a proposal; "
+                       f"applying it without a ruling is the bulk claim this "
+                       f"project does not make")
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -16894,6 +16944,7 @@ def main() -> int:
     errors += check_the_static_pages_carry_the_write_up()
     errors += check_the_company_page_shows_the_logo()
     errors += check_the_headline_is_the_headline_not_the_card()
+    errors += check_researched_parents_reach_the_queue_with_their_evidence()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()
