@@ -7570,7 +7570,7 @@
   "also": [
    {
     "sector": "Parks & Rec",
-    "category": "Events & Tourism"
+    "category": "Destination Marketing & Tourism"
    }
   ],
   "notes": [
@@ -9528,7 +9528,13 @@
    "by": "agent:descriptions-03",
    "ruled_by": "owner",
    "ruled_on": "2026-09-09"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Camps & Youth Programs"
+   }
+  ]
  },
  {
   "id": "amilia",
@@ -9675,7 +9681,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "AB Show 2026",
-  "researched": true
+  "researched": true,
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Camps & Youth Programs"
+   }
+  ]
  },
  {
   "id": "leagueapps",
@@ -9699,7 +9711,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Facility Booking & Workforce"
+   }
+  ]
  },
  {
   "id": "sportsengine",
@@ -13009,7 +13027,7 @@
   "location": "Ann Arbor, MI",
   "year_founded": 2009,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Camps & Youth Programs",
   "description": "Camp management software with electronic health records for camps, schools, and youth programs",
   "ats": {
    "type": "html",
@@ -13131,7 +13149,13 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "camplife",
@@ -13140,7 +13164,7 @@
   "location": "Nashville, TN",
   "year_founded": 2006,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Outdoor Rec & Reservations",
   "description": "Campground reservation and park management software for RV parks and public campgrounds",
   "ats": {
    "type": "html",
@@ -13259,7 +13283,13 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Camps & Youth Programs"
+   }
+  ]
  },
  {
   "id": "barkpass",
@@ -13268,7 +13298,7 @@
   "location": "Waukee, IA",
   "year_founded": 2019,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Outdoor Rec & Reservations",
   "description": "Pet licensing and dog park permit/membership software for municipalities and rec departments - exhibited at Animal Care Expo 2026",
   "ats": {
    "type": "unknown",
@@ -13378,7 +13408,7 @@
   "location": "Bedford, NH",
   "year_founded": 2010,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Facility Booking & Workforce",
   "description": "Employee scheduling and workforce management for campus rec and parks & rec",
   "ats": {
    "type": "html",
@@ -13402,7 +13432,7 @@
   "location": "Boston, MA",
   "year_founded": 2023,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Camps & Youth Programs",
   "description": "AI-embedded youth program management (enrollment, payments, safety) from nonprofit BellXcel",
   "ats": {
    "type": "unknown",
@@ -13519,7 +13549,13 @@
    "by": "agent:descriptions-03",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "quickscores",
@@ -13552,7 +13588,7 @@
   "location": "Boston, MA",
   "year_founded": 2021,
   "sector": "Parks & Rec",
-  "category": "Youth Sports & Leagues",
+  "category": "Screening, Safety & Compliance",
   "description": "Safety and compliance platform: background checks, training, and certification tracking for youth sports",
   "ats": {
    "type": "unknown",
@@ -13645,7 +13681,13 @@
    "by": "agent:descriptions-03",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Youth Sports & Leagues"
+   }
+  ]
  },
  {
   "id": "bchex",
@@ -13654,7 +13696,7 @@
   "location": "Huntersville, NC",
   "year_founded": 1995,
   "sector": "Parks & Rec",
-  "category": "Youth Sports & Leagues",
+  "category": "Screening, Safety & Compliance",
   "description": "Background screening and volunteer management for schools and youth-serving organizations",
   "ats": {
    "type": "html",
@@ -13773,7 +13815,7 @@
   "location": "Lannion, France",
   "year_founded": 1999,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Park Assets, Forestry & Visitor Data",
   "description": "Pedestrian, bike, and trail counters with Eco-Visio analytics for parks, cities, and DOTs",
   "ats": {
    "type": "html",
@@ -13797,7 +13839,7 @@
   "location": "Huntsville, AL",
   "year_founded": 2007,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Park Assets, Forestry & Visitor Data",
   "description": "SmartLink IoT remote monitoring and control of lighting, power, and assets for parks and campuses",
   "ats": {
    "type": "html",
@@ -13812,7 +13854,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026",
-  "researched": true
+  "researched": true,
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Grounds, Irrigation & Turf"
+   }
+  ]
  },
  {
   "id": "playground-guardian",
@@ -13821,7 +13869,7 @@
   "location": "Charlotte, NC",
   "year_founded": 2007,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Park Assets, Forestry & Visitor Data",
   "description": "Playground safety inspections plus Park Protector inspection/asset software for munis and schools",
   "ats": {
    "type": "unknown",
@@ -13836,7 +13884,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026",
-  "researched": true
+  "researched": true,
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Screening, Safety & Compliance"
+   }
+  ]
  },
  {
   "id": "istrike-alerts",
@@ -13845,7 +13899,7 @@
   "location": "Palm Desert, CA",
   "year_founded": 1999,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Weather & Outdoor Safety",
   "description": "Subscription lightning detection alerts and sirens for parks, schools, and outdoor venues",
   "ats": {
    "type": "unknown",
@@ -13869,7 +13923,7 @@
   "location": "St. Louis, MO",
   "year_founded": 2017,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Aquatics",
   "description": "Cloud aquatics operations suite: facility, staff, compliance, and water chemistry for municipal pools",
   "ats": {
    "type": "unknown",
@@ -13893,7 +13947,7 @@
   "location": "Atlanta, GA",
   "year_founded": 2018,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Events, Venues & Ticketing",
   "description": "Event management SaaS: vendor applications, ticketing, maps, and sponsors for festivals and city events",
   "ats": {
    "type": "rippling",
@@ -14040,7 +14094,7 @@
   "location": "Seattle, WA",
   "year_founded": 2015,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Events, Venues & Ticketing",
   "description": "Vendor, exhibitor, and sponsor management marketplace for fairs, festivals, and muni special events",
   "ats": {
    "type": "unknown",
@@ -14063,8 +14117,8 @@
   "website": "https://www.eproval.com",
   "location": "Vancouver, BC, Canada",
   "year_founded": 2015,
-  "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "sector": "General Gov",
+  "category": "Permitting & Licensing",
   "description": "Special event, film, and complex permit approval workflow SaaS for cities",
   "ats": {
    "type": "html",
@@ -14208,7 +14262,7 @@
   "location": "Austin, TX",
   "year_founded": 2016,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "Branded destination guide apps, AI concierge, and kiosks for DMOs, cities, and park systems",
   "ats": {
    "type": "unknown",
@@ -14223,7 +14277,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "plotbox",
@@ -23269,7 +23329,7 @@
   "location": "Singapore",
   "year_founded": 2020,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Park Assets, Forestry & Visitor Data",
   "description": "Lidar digital-twin tree inventories and urban forest management for cities (US via Davey partnership)",
   "ats": {
    "type": "html",
@@ -23293,7 +23353,7 @@
   "location": "Garland, TX",
   "year_founded": 1945,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Grounds, Irrigation & Turf",
   "description": "Smart irrigation controllers and SmartLink water management SaaS for parks, campuses, and cities",
   "ats": {
    "type": "html",
@@ -31759,7 +31819,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026",
-  "researched": true
+  "researched": true,
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Park Assets, Forestry & Visitor Data"
+   }
+  ]
  },
  {
   "id": "upace",
@@ -31768,7 +31834,7 @@
   "location": "Washington, DC",
   "year_founded": 2015,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Facility Booking & Workforce",
   "description": "Member engagement, reservations, and branded mobile apps for Ys, JCCs, and parks & rec",
   "ats": {
    "type": "unknown",
@@ -31783,7 +31849,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026",
-  "researched": true
+  "researched": true,
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "yodel-pass",
@@ -31792,7 +31864,7 @@
   "location": "New York, NY",
   "year_founded": 2020,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Outdoor Rec & Reservations",
   "description": "Digital pass, parking, and entry management for state parks and outdoor rec (e.g., Mass DCR)",
   "ats": {
    "type": "unknown",
@@ -31807,7 +31879,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026",
-  "researched": true
+  "researched": true,
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Events, Venues & Ticketing"
+   }
+  ]
  },
  {
   "id": "perry-weather",
@@ -31816,7 +31894,7 @@
   "location": "Dallas, TX",
   "year_founded": 2013,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Weather & Outdoor Safety",
   "description": "Weather safety platform: WBGT heat monitoring, lightning alerts, stations and sirens for parks and athletics",
   "ats": {
    "type": "ashby",
@@ -31948,7 +32026,13 @@
    "by": "agent:descriptions-02",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Youth Sports & Leagues"
+   }
+  ]
  },
  {
   "id": "productive-parks",
@@ -31957,7 +32041,7 @@
   "location": "Lombard, IL",
   "year_founded": 2014,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Park Assets, Forestry & Visitor Data",
   "description": "Parks maintenance management SaaS: work orders, inspections, and asset tracking",
   "ats": {
    "type": "unknown",
@@ -31990,7 +32074,7 @@
   "location": "Eden Prairie, MN",
   "year_founded": 2005,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Park Assets, Forestry & Visitor Data",
   "description": "Digital signage CMS on ~30,000 screens across rec centers, schools, and municipalities",
   "ats": {
    "type": "html",
@@ -32005,7 +32089,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026",
-  "researched": true
+  "researched": true,
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Events, Venues & Ticketing"
+   }
+  ]
  },
  {
   "id": "volunteerlocal",
@@ -32014,7 +32104,7 @@
   "location": "Des Moines, IA",
   "year_founded": 2003,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Volunteer Management",
   "description": "Volunteer registration, scheduling, and management for events, munis, and parks",
   "ats": {
    "type": "unknown",
@@ -32029,7 +32119,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026",
-  "researched": true
+  "researched": true,
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Events, Venues & Ticketing"
+   }
+  ]
  },
  {
   "id": "teamlinkt",
@@ -36867,7 +36963,7 @@
   "location": "St. Augustine, FL",
   "year_founded": 2016,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Facility Booking & Workforce",
   "description": "Court booking, membership, and event management for tennis, pickleball, and padel facilities incl. muni complexes",
   "ats": {
    "type": "html",
@@ -36993,7 +37089,13 @@
    "by": "agent:descriptions-06",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "playsight",
@@ -37002,7 +37104,7 @@
   "location": "Boston, MA",
   "year_founded": 2010,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Youth Sports & Leagues",
   "description": "AI connected-camera video capture, streaming, and analytics for courts and gyms (70+ NCAA programs)",
   "ats": {
    "type": "html",
@@ -37017,7 +37119,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "AB Show 2026",
-  "researched": true
+  "researched": true,
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Facility Booking & Workforce"
+   }
+  ]
  },
  {
   "id": "onsight",
@@ -37026,7 +37134,7 @@
   "location": "Evanston, IL",
   "year_founded": 2025,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Suppliers & Services",
   "description": "Sensor-based equipment intelligence: machine usage, occupancy, and preventative maintenance for fitness facilities",
   "ats": {
    "type": "unknown",
@@ -37050,7 +37158,7 @@
   "location": "Atlanta, GA",
   "year_founded": 2018,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Grounds, Irrigation & Turf",
   "description": "Autonomous mowing software retrofitting commercial mowers, sold via OEMs to grounds and parks crews",
   "ats": {
    "type": "jazzhr",
@@ -37169,7 +37277,7 @@
   "location": "St. Louis, MO",
   "year_founded": 1991,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Aquatics",
   "description": "BECSys pool chemistry automation controllers with cloud remote monitoring for municipal aquatic centers",
   "ats": {
    "type": "paylocity",
@@ -37294,7 +37402,7 @@
   "location": "Loveland, CO",
   "year_founded": 1972,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Aquatics",
   "description": "Aquatic timing systems, touchpads, scoreboards, and meet management software for municipal pools (PlayCore)",
   "ats": {
    "type": "html",
@@ -37420,7 +37528,13 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Events, Venues & Ticketing"
+   }
+  ]
  },
  {
   "id": "tinymobilerobots",
@@ -37429,7 +37543,7 @@
   "location": "Malling, Denmark",
   "year_founded": 2015,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Grounds, Irrigation & Turf",
   "description": "GPS-guided autonomous field line-marking robots with cloud field design for parks, schools, and municipalities",
   "ats": {
    "type": "unknown",
@@ -37468,7 +37582,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "AB Show 2026",
-  "researched": true
+  "researched": true,
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Events, Venues & Ticketing"
+   }
+  ]
  },
  {
   "id": "varidx",
@@ -37788,7 +37908,7 @@
   "location": null,
   "year_founded": 2024,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Facility Booking & Workforce",
   "description": "Staff scheduling software built for parks and rec departments (flat annual pricing)",
   "ats": {
    "type": "unknown",
@@ -37890,7 +38010,7 @@
   "location": "Raleigh, NC",
   "year_founded": null,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Volunteer Management",
   "description": "Volunteer registration and tracking with integrated background screening (CRC product)",
   "ats": {
    "type": "unknown",
@@ -50065,8 +50185,8 @@
   "website": "https://www.neogov.com",
   "location": null,
   "year_founded": 2000,
-  "sector": "Parks & Rec",
-  "category": "Suppliers & Services",
+  "sector": "General Gov",
+  "category": "HR & Workforce",
   "description": "HR, policy and training software for government - exhibited at NRPA 2026",
   "ats": {
    "type": "unknown",
@@ -50089,8 +50209,8 @@
   "website": "https://netchex.com",
   "location": "Covington, LA",
   "year_founded": 2003,
-  "sector": "Parks & Rec",
-  "category": "Suppliers & Services",
+  "sector": "General Gov",
+  "category": "HR & Workforce",
   "description": "Payroll and HR software - exhibited at AB Show 2026",
   "ats": {
    "type": "html",
@@ -62091,7 +62211,7 @@
   "location": "Ann Arbor, MI",
   "year_founded": 1998,
   "sector": "Parks & Rec",
-  "category": "Youth Sports & Leagues",
+  "category": "Recreation Management",
   "description": "Rec facility, league and ice scheduling software for municipalities",
   "ats": {
    "type": "unknown",
@@ -62213,7 +62333,13 @@
    "by": "agent:descriptions-06",
    "ruled_by": "owner",
    "ruled_on": "2026-09-09"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Facility Booking & Workforce"
+   }
+  ]
  },
  {
   "id": "ezfacility",
@@ -62222,7 +62348,7 @@
   "location": "Plainview, NY",
   "year_founded": 2003,
   "sector": "Parks & Rec",
-  "category": "Youth Sports & Leagues",
+  "category": "Facility Booking & Workforce",
   "description": "Facility, league and program scheduling for rec centers and parks",
   "ats": {
    "type": "html",
@@ -62335,7 +62461,13 @@
    "by": "agent:descriptions-06",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Youth Sports & Leagues"
+   }
+  ]
  },
  {
   "id": "upper-hand",
@@ -62391,7 +62523,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Aquatics"
+   }
+  ]
  },
  {
   "id": "leaguelobster",
@@ -62439,7 +62577,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "demosphere-international",
@@ -62825,7 +62969,7 @@
   "location": "Independence, OH",
   "year_founded": 2013,
   "sector": "Parks & Rec",
-  "category": "Youth Sports & Leagues",
+  "category": "Screening, Safety & Compliance",
   "description": "Volunteer and coach background screening for leagues and rec depts",
   "ats": {
    "type": "unknown",
@@ -62840,7 +62984,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Volunteer Management"
+   }
+  ]
  },
  {
   "id": "national-center-for-safety-initiatives",
@@ -62849,7 +62999,7 @@
   "location": "Cleveland, OH",
   "year_founded": 2008,
   "sector": "Parks & Rec",
-  "category": "Youth Sports & Leagues",
+  "category": "Screening, Safety & Compliance",
   "description": "Background screening for youth sports coaches and volunteers",
   "ats": {
    "type": "unknown",
@@ -62864,7 +63014,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Youth Sports & Leagues"
+   }
+  ]
  },
  {
   "id": "jdp",
@@ -62873,7 +63029,7 @@
   "location": "Pittsburgh, PA",
   "year_founded": 2009,
   "sector": "Parks & Rec",
-  "category": "Youth Sports & Leagues",
+  "category": "Screening, Safety & Compliance",
   "description": "Background checks for youth sports organizations and rec programs",
   "ats": {
    "type": "unknown",
@@ -62897,7 +63053,7 @@
   "location": "Marietta, GA",
   "year_founded": 1995,
   "sector": "Parks & Rec",
-  "category": "Youth Sports & Leagues",
+  "category": "Screening, Safety & Compliance",
   "description": "Volunteer and coach screening for youth sports and municipalities",
   "ats": {
    "type": "unknown",
@@ -62912,7 +63068,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Youth Sports & Leagues"
+   }
+  ]
  },
  {
   "id": "praesidium",
@@ -62921,7 +63083,7 @@
   "location": "Arlington, TX",
   "year_founded": 1992,
   "sector": "Parks & Rec",
-  "category": "Youth Sports & Leagues",
+  "category": "Screening, Safety & Compliance",
   "description": "Abuse prevention training and screening for youth-serving agencies - exhibited at NatCon 2026",
   "ats": {
    "type": "unknown",
@@ -62945,7 +63107,7 @@
   "location": "Minneapolis, MN",
   "year_founded": 2016,
   "sector": "Parks & Rec",
-  "category": "Youth Sports & Leagues",
+  "category": "Screening, Safety & Compliance",
   "description": "Risk management, insurance and safety compliance for youth sports",
   "ats": {
    "type": "bamboohr",
@@ -63071,7 +63233,13 @@
    "by": "agent:descriptions-02",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Youth Sports & Leagues"
+   }
+  ]
  },
  {
   "id": "bookking",
@@ -63080,7 +63248,7 @@
   "location": "Ottawa, Ontario, Canada",
   "year_founded": 1997,
   "sector": "Parks & Rec",
-  "category": "Youth Sports & Leagues",
+  "category": "Recreation Management",
   "description": "Facility and league booking software for Canadian and US rec depts",
   "ats": {
    "type": "unknown",
@@ -63100,6 +63268,12 @@
   "also_known_as": [
    "Univerus Sport & Rec",
    "Book King"
+  ],
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Facility Booking & Workforce"
+   }
   ]
  },
  {
@@ -63109,7 +63283,7 @@
   "location": "Waterloo, Ontario, Canada",
   "year_founded": 2012,
   "sector": "Parks & Rec",
-  "category": "Youth Sports & Leagues",
+  "category": "Facility Booking & Workforce",
   "description": "Ice and field scheduling for municipal arenas and rec facilities",
   "ats": {
    "type": "unknown",
@@ -63124,7 +63298,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "sportskey",
@@ -63133,7 +63313,7 @@
   "location": "Belfast, United Kingdom",
   "year_founded": 2019,
   "sector": "Parks & Rec",
-  "category": "Youth Sports & Leagues",
+  "category": "Facility Booking & Workforce",
   "description": "Sports field and facility booking software for councils and parks depts",
   "ats": {
    "type": "unknown",
@@ -63148,7 +63328,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Youth Sports & Leagues"
+   }
+  ]
  },
  {
   "id": "telensa",
@@ -69530,7 +69716,7 @@
   "location": "Azusa, CA",
   "year_founded": 1933,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Grounds, Irrigation & Turf",
   "description": "Central irrigation control and smart controllers for municipal parks",
   "ats": {
    "type": "html",
@@ -69562,7 +69748,7 @@
   "location": "San Marcos, CA",
   "year_founded": 1981,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Grounds, Irrigation & Turf",
   "description": "Commercial irrigation controllers and central control for parks departments",
   "ats": {
    "type": "unknown",
@@ -69586,7 +69772,7 @@
   "location": "Petaluma, CA",
   "year_founded": 2002,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Grounds, Irrigation & Turf",
   "description": "WeatherTRAK smart irrigation and water management for public agencies",
   "ats": {
    "type": "html",
@@ -69685,7 +69871,7 @@
   "location": "Boise, ID",
   "year_founded": 1998,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Grounds, Irrigation & Turf",
   "description": "Two-wire smart irrigation control for municipal parks and schools",
   "ats": {
    "type": "unknown",
@@ -69799,7 +69985,7 @@
   "location": "Carlsbad, CA",
   "year_founded": 1986,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Grounds, Irrigation & Turf",
   "description": "Irrigation central control and flow monitoring for cities and school districts",
   "ats": {
    "type": "html",
@@ -69854,7 +70040,7 @@
   "location": "Tel Aviv, Israel",
   "year_founded": 2018,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Aquatics",
   "description": "AI drowning-detection and lifeguard assist for public aquatic centers",
   "ats": {
    "type": "html",
@@ -69878,7 +70064,7 @@
   "location": "Sandefjord, Norway",
   "year_founded": 2005,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Aquatics",
   "description": "Underwater camera drowning detection for municipal pools worldwide",
   "ats": {
    "type": "unknown",
@@ -69902,7 +70088,7 @@
   "location": "Ashdod, Israel",
   "year_founded": 2018,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Aquatics",
   "description": "AI beach and waterfront drowning-prevention monitoring for municipalities",
   "ats": {
    "type": "unknown",
@@ -69926,7 +70112,7 @@
   "location": "Germantown, MD",
   "year_founded": 1993,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Weather & Outdoor Safety",
   "description": "Lightning detection networks and outdoor alerting for parks and schools",
   "ats": {
    "type": "paylocity",
@@ -70078,7 +70264,7 @@
   "location": "Sunrise, FL",
   "year_founded": 1974,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Weather & Outdoor Safety",
   "description": "Lightning prediction and warning horns for parks, pools and schools",
   "ats": {
    "type": "unknown",
@@ -70102,7 +70288,7 @@
   "location": "Bloomington, MN",
   "year_founded": 1984,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Weather & Outdoor Safety",
   "description": "Weather intelligence and severe weather alerting for public agencies",
   "ats": {
    "type": "workday",
@@ -70219,7 +70405,7 @@
   "location": "Tallahassee, FL",
   "year_founded": 2014,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Weather & Outdoor Safety",
   "description": "On-site weather stations and lightning alerting for parks and school districts",
   "ats": {
    "type": "html",
@@ -70234,7 +70420,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Youth Sports & Leagues"
+   }
+  ]
  },
  {
   "id": "baron-weather",
@@ -70243,7 +70435,7 @@
   "location": "Huntsville, AL",
   "year_founded": 1989,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Weather & Outdoor Safety",
   "description": "Weather data, alerting and decision tools for government agencies",
   "ats": {
    "type": "html",
@@ -70368,7 +70560,7 @@
   "location": "Canmore, Alberta, Canada",
   "year_founded": 2001,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Park Assets, Forestry & Visitor Data",
   "description": "Trail, vehicle and visitor counters for parks and land agencies",
   "ats": {
    "type": "unknown",
@@ -70392,7 +70584,7 @@
   "location": "Dallas, TX",
   "year_founded": 2017,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Outdoor Rec & Reservations",
   "description": "Campground, park and license reservation systems for state park agencies",
   "ats": {
    "type": "greenhouse",
@@ -70407,7 +70599,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "us-edirect",
@@ -70416,7 +70614,7 @@
   "location": "Farmingdale, NY",
   "year_founded": 1999,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Outdoor Rec & Reservations",
   "description": "Camping and park reservation/permitting systems for state and federal parks",
   "ats": {
    "type": "unknown",
@@ -70431,7 +70629,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Destination Marketing & Tourism"
+   }
+  ]
  },
  {
   "id": "novo-solutions",
@@ -70440,7 +70644,7 @@
   "location": "Virginia Beach, VA",
   "year_founded": 1999,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Park Assets, Forestry & Visitor Data",
   "description": "Work order and park maintenance management software for municipalities",
   "ats": {
    "type": "unknown",
@@ -70464,7 +70668,7 @@
   "location": "Boston, MA",
   "year_founded": 2015,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Grounds, Irrigation & Turf",
   "description": "Drone-based turf and grounds health analytics for parks and golf",
   "ats": {
    "type": "html",
@@ -70545,7 +70749,13 @@
    "by": "claude-opus-5:profile-batch-08",
    "ruled_by": "owner",
    "ruled_on": "2026-09-09"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Park Assets, Forestry & Visitor Data"
+   }
+  ]
  },
  {
   "id": "planit-geo",
@@ -70554,7 +70764,7 @@
   "location": "Arvada, CO",
   "year_founded": 2012,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Park Assets, Forestry & Visitor Data",
   "description": "TreePlotter urban forestry inventory and canopy software for municipalities",
   "ats": {
    "type": "html",
@@ -70578,7 +70788,7 @@
   "location": "Mountain View, CA",
   "year_founded": 2013,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Park Assets, Forestry & Visitor Data",
   "description": "Autonomous security robots and emergency call boxes for parks and cities",
   "ats": {
    "type": "bamboohr",
@@ -70602,7 +70812,7 @@
   "location": "Oakland, CA",
   "year_founded": 2013,
   "sector": "Parks & Rec",
-  "category": "Park Ops & Safety Tech",
+  "category": "Park Assets, Forestry & Visitor Data",
   "description": "Trail and park data management plus visitor apps for land agencies",
   "ats": {
    "type": "unknown",
@@ -72309,7 +72519,7 @@
   "location": "Charleston, SC",
   "year_founded": null,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "Destination websites, CRM and digital marketing for DMOs and CVBs",
   "ats": {
    "type": "html",
@@ -72324,7 +72534,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Events, Venues & Ticketing"
+   }
+  ]
  },
  {
   "id": "bandwango",
@@ -72333,7 +72549,7 @@
   "location": "Salt Lake City, UT",
   "year_founded": 2016,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "Digital destination passes and experience bundles for DMOs and cities",
   "ats": {
    "type": "unknown",
@@ -72468,7 +72684,7 @@
   "location": "Toronto, Canada",
   "year_founded": 2013,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "Visual content and UGC management for destination marketing organizations",
   "ats": {
    "type": "html",
@@ -72595,7 +72811,7 @@
   "location": "Salt Lake City, UT",
   "year_founded": 2019,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "Destination operating system and visitor data analytics for DMOs",
   "ats": {
    "type": "html",
@@ -72619,7 +72835,7 @@
   "location": "New York, NY",
   "year_founded": 2010,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "Travel location and arrivals analytics for state tourism offices and DMOs",
   "ats": {
    "type": "unknown",
@@ -72643,7 +72859,7 @@
   "location": "Bozeman, MT",
   "year_founded": 1999,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "BookDirect availability and booking tools for DMO and tourism websites",
   "ats": {
    "type": "unknown",
@@ -72667,7 +72883,7 @@
   "location": "Charleston, SC",
   "year_founded": 2018,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "Lodging occupancy and vacation-rental benchmarking data for DMOs",
   "ats": {
    "type": "paylocity",
@@ -72778,7 +72994,7 @@
   "location": "Denver, CO",
   "year_founded": 2015,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "Short-term rental market data for tourism offices and city agencies",
   "ats": {
    "type": "lever",
@@ -72895,8 +73111,8 @@
   "website": "https://harmari.com",
   "location": "Toronto, Canada",
   "year_founded": 2012,
-  "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "sector": "General Gov",
+  "category": "Permitting & Licensing",
   "description": "Short-term rental compliance monitoring and enforcement for municipalities",
   "ats": {
    "type": "unknown",
@@ -73021,8 +73237,8 @@
   "website": "https://www.opencounter.com",
   "location": "San Francisco, CA",
   "year_founded": 2013,
-  "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "sector": "General Gov",
+  "category": "Permitting & Licensing",
   "description": "Special event, business and permit application portals for cities",
   "ats": {
    "type": "unknown",
@@ -73045,8 +73261,8 @@
   "website": "https://apply4.com",
   "location": "Nottingham, UK",
   "year_founded": 2010,
-  "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "sector": "General Gov",
+  "category": "Permitting & Licensing",
   "description": "EventApp and FilmApp permitting software for city and county governments",
   "ats": {
    "type": "unknown",
@@ -73069,8 +73285,8 @@
   "website": "https://www.citygrows.com",
   "location": "Los Angeles, CA",
   "year_founded": 2015,
-  "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "sector": "General Gov",
+  "category": "Permitting & Licensing",
   "description": "No-code government workflow and permit software including event permits",
   "ats": {
    "type": "unknown",
@@ -73177,7 +73393,7 @@
   "location": "Charlotte, NC",
   "year_founded": 2002,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "Film office location, permitting and CRM software for public film commissions",
   "ats": {
    "type": "unknown",
@@ -73201,7 +73417,7 @@
   "location": "O'Fallon, MO",
   "year_founded": 1985,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Events, Venues & Ticketing",
   "description": "Venue and event management for convention centers and public authorities",
   "ats": {
    "type": "paylocity",
@@ -73217,7 +73433,13 @@
   "researched": false,
   "vendor_type": "GovTech Product",
   "source": "competitor sweep",
-  "ats_note": "unwired 2026-09-02: the Paylocity tenant is 'Ungerboeck-Systems-International', which is not this company's name - a parent's board or a former name. Queued in Boards we found for a person to rule."
+  "ats_note": "unwired 2026-09-02: the Paylocity tenant is 'Ungerboeck-Systems-International', which is not this company's name - a parent's board or a former name. Queued in Boards we found for a person to rule.",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Facility Booking & Workforce"
+   }
+  ]
  },
  {
   "id": "accesso-technology-group",
@@ -73226,7 +73448,7 @@
   "location": "Lake Mary, FL",
   "year_founded": 2002,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Events, Venues & Ticketing",
   "description": "ShoWare ticketing and guest experience for municipal arenas and attractions",
   "ats": {
    "type": "greenhouse",
@@ -73241,7 +73463,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Destination Marketing & Tourism"
+   }
+  ]
  },
  {
   "id": "etix",
@@ -73250,7 +73478,7 @@
   "location": "Morrisville, NC",
   "year_founded": 2000,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Events, Venues & Ticketing",
   "description": "Event ticketing for municipal venues, fairgrounds and public amphitheaters",
   "ats": {
    "type": "unknown",
@@ -73274,7 +73502,7 @@
   "location": "Boca Raton, FL",
   "year_founded": 1996,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Events, Venues & Ticketing",
   "description": "Incident, event day and operations management for public venues and cities",
   "ats": {
    "type": "html",
@@ -73388,7 +73616,13 @@
    "by": "agent:descriptions-03",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Park Assets, Forestry & Visitor Data"
+   }
+  ]
  },
  {
   "id": "marketwurks",
@@ -73397,7 +73631,7 @@
   "location": "Nanaimo, BC, Canada",
   "year_founded": 2015,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Events, Venues & Ticketing",
   "description": "Farmers market and public market vendor management for municipalities",
   "ats": {
    "type": "unknown",
@@ -73421,7 +73655,7 @@
   "location": "Columbus, OH",
   "year_founded": 2003,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Events, Venues & Ticketing",
   "description": "Vendor applications and market management for city-run farmers markets",
   "ats": {
    "type": "unknown",
@@ -73445,7 +73679,7 @@
   "location": "Asheville, NC",
   "year_founded": 2009,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Volunteer Management",
   "description": "Get Connected volunteer management for municipalities and public agencies",
   "ats": {
    "type": "unknown",
@@ -73559,7 +73793,13 @@
    "by": "agent:descriptions-07",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "better-impact",
@@ -73568,7 +73808,7 @@
   "location": "Hamilton, Ontario, Canada",
   "year_founded": 1999,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Volunteer Management",
   "description": "Volunteer management software for parks, libraries and government agencies - exhibited at Animal Care Expo 2026",
   "ats": {
    "type": "unknown",
@@ -73694,7 +73934,13 @@
    "by": "agent:descriptions-04",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "volgistics",
@@ -73703,7 +73949,7 @@
   "location": "Grand Rapids, MI",
   "year_founded": 2004,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Volunteer Management",
   "description": "Volunteer scheduling and tracking for municipal parks and public agencies",
   "ats": {
    "type": "html",
@@ -73718,7 +73964,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "point",
@@ -73727,7 +73979,7 @@
   "location": "Indianapolis, IN",
   "year_founded": 2019,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Volunteer Management",
   "description": "Volunteer engagement platform for cities, parks and community events",
   "ats": {
    "type": "unknown",
@@ -73751,7 +74003,7 @@
   "location": "Ottawa, Canada",
   "year_founded": 2012,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Volunteer Management",
   "description": "Event volunteer scheduling and check-in for festivals and public events",
   "ats": {
    "type": "greenhouse",
@@ -73891,7 +74143,7 @@
   "location": "Jackson, WY",
   "year_founded": 2011,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "GPS-triggered audio tours for parks, tourism offices and municipalities",
   "ats": {
    "type": "unknown",
@@ -73906,7 +74158,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Park Assets, Forestry & Visitor Data"
+   }
+  ]
  },
  {
   "id": "stqry",
@@ -73915,7 +74173,7 @@
   "location": "Wellington, New Zealand",
   "year_founded": 2006,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "Visitor apps, tours and guides for museums, parks and tourism agencies",
   "ats": {
    "type": "html",
@@ -73930,7 +74188,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Park Assets, Forestry & Visitor Data"
+   }
+  ]
  },
  {
   "id": "brandkit",
@@ -73939,7 +74203,7 @@
   "location": "Napier, New Zealand",
   "year_founded": 1994,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "Digital asset management and media libraries for DMOs and tourism boards",
   "ats": {
    "type": "unknown",
@@ -74069,7 +74333,7 @@
   "location": "Boston, MA",
   "year_founded": 2014,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "Digital membership, guides and engagement for public museums and cultural sites",
   "ats": {
    "type": "html",
@@ -74162,7 +74426,13 @@
    "by": "agent:descriptions-06",
    "ruled_by": "owner",
    "ruled_on": "2026-09-09"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Events, Venues & Ticketing"
+   }
+  ]
  },
  {
   "id": "idss",
@@ -74171,7 +74441,7 @@
   "location": "Rockville, MD",
   "year_founded": 2010,
   "sector": "Parks & Rec",
-  "category": "Events & Tourism",
+  "category": "Destination Marketing & Tourism",
   "description": "Cloud CRM and destination sales system for CVBs and tourism bureaus",
   "ats": {
    "type": "unknown",
@@ -87739,7 +88009,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Facility Booking & Workforce"
+   }
+  ]
  },
  {
   "id": "skedda",
@@ -87748,7 +88024,7 @@
   "location": "Boston, Massachusetts",
   "year_founded": 2013,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Facility Booking & Workforce",
   "description": "Space and facility booking platform used by municipal and campus facilities",
   "ats": {
    "type": "greenhouse",
@@ -87913,7 +88189,7 @@
   "location": "Boulder, Colorado",
   "year_founded": 2004,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Camps & Youth Programs",
   "description": "Camp management and registration software for camps including municipal programs",
   "ats": {
    "type": "greenhouse",
@@ -88048,7 +88324,7 @@
   "location": "Grand Rapids, Michigan",
   "year_founded": 2015,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Outdoor Rec & Reservations",
   "description": "Campground reservation and management software for public and private campgrounds",
   "ats": {
    "type": "rippling",
@@ -88183,7 +88459,7 @@
   "location": "Guelph, Ontario, Canada",
   "year_founded": 1986,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Outdoor Rec & Reservations",
   "description": "Reservation and park operations systems for state, provincial and federal parks",
   "ats": {
    "type": "html",
@@ -88298,7 +88574,13 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "roller",
@@ -88307,7 +88589,7 @@
   "location": "Melbourne, Australia",
   "year_founded": 2010,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Events, Venues & Ticketing",
   "description": "Venue management, ticketing and POS for aquatic centers and attractions",
   "ats": {
    "type": "greenhouse",
@@ -88442,7 +88724,13 @@
    "by": "agent:descriptions-02",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "centeredge-software",
@@ -88451,7 +88739,7 @@
   "location": "Roxboro, North Carolina",
   "year_founded": 2004,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Events, Venues & Ticketing",
   "description": "POS, ticketing and party booking for municipal rec centers and FECs",
   "ats": {
    "type": "paylocity",
@@ -88579,7 +88867,13 @@
    "by": "agent:descriptions-05",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "bond-sports",
@@ -88588,7 +88882,7 @@
   "location": "New York, New York",
   "year_founded": 2020,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Facility Booking & Workforce",
   "description": "Sports facility and program management for municipal and community facilities",
   "ats": {
    "type": "html",
@@ -88693,7 +88987,13 @@
    "by": "agent:descriptions-00",
    "ruled_by": "owner",
    "ruled_on": "2026-09-09"
-  }
+  },
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Recreation Management"
+   }
+  ]
  },
  {
   "id": "playeasy",
@@ -88702,7 +89002,7 @@
   "location": "Boston, Massachusetts",
   "year_founded": 2018,
   "sector": "Parks & Rec",
-  "category": "Recreation Management",
+  "category": "Destination Marketing & Tourism",
   "description": "Sports facility discovery and booking network for municipalities and sports commissions",
   "ats": {
    "type": "unknown",
@@ -88717,7 +89017,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "also": [
+   {
+    "sector": "Parks & Rec",
+    "category": "Events, Venues & Ticketing"
+   }
+  ]
  },
  {
   "id": "neptune-technology-group",

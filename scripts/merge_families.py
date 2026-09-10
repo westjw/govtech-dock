@@ -26,9 +26,9 @@ A refusal names the board and stops that member; it does not stop the family.
 
 AFTER - three kinds of research live in the DROPPED record's shape rather than
 in its fields, and inheritance cannot carry them:
-  * its market placement. Simpleview is filed Parks & Rec / Events & Tourism
+  * its market placement. Simpleview is filed Parks & Rec / Destination Marketing & Tourism
     and Granicus is General Gov / Citizen Services. Fold one into the other and
-    the tourism placement is simply gone, so a filter on Events & Tourism stops
+    the tourism placement is simply gone, so a filter on that category stops
     finding 53 real postings. `also` is where a second placement belongs, and
     carrying one is a judgement (a conference row's guessed category is not a
     researched placement), so it is declared per family here, never automatic.
@@ -165,9 +165,10 @@ FAMILIES = [
                            "APHSA 2026",
             "researched": True,
             # Granicus is General Gov / Citizen Services and Simpleview is
-            # Parks & Rec / Events & Tourism. Without this the fold would take
+            # Parks & Rec / Destination Marketing & Tourism. Without this the fold would take
             # 53 postings out of every tourism filter on the site.
-            "also": [{"sector": "Parks & Rec", "category": "Events & Tourism"}],
+            "also": [{"sector": "Parks & Rec",
+                       "category": "Destination Marketing & Tourism"}],
             "note": "Merged brand family. Simpleview was acquired by Granicus "
                     "(press release 2026-09-05 on granicus.com) and Granicus's "
                     "destinations FAQ answers \"Is Simpleview now part of "
