@@ -17413,6 +17413,76 @@ def check_an_acronym_cannot_confirm_itself() -> int:
     return errors
 
 
+def check_two_rows_cannot_promote_the_same_exhibitor_url() -> int:
+    """The duplicate-url refusal was blind inside its own run.
+
+    stage_promote builds `known_urls` once from conferences.json and refuses
+    any row whose directory_url is already there - "that exhibitor url is
+    already in the catalog under another event". It is the one existing guard
+    against several events claiming one floor. But the set was never added to
+    as rows were promoted, so it could only ever see urls that were in the
+    catalogue when the run STARTED.
+
+    Four sibling rows carrying one directory_url therefore all pass it in a
+    single --promote --write: the first legitimately, the other three because
+    the set is stale. The catalogue gains four public conferences with the
+    identical exhibitor url, and one sweep of that page tags every exhibitor
+    on it with four event tags. `taken` - the tag-collision set two lines
+    away - was already updated in the loop for exactly this reason.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import find_event_directories as fed
+
+    page = ("<title>2026 Annual Conference Exhibitors</title>"
+            + "".join(f'<a href="/x{i}">{n}</a>' for i, n in enumerate(
+                ["Acme Technologies Inc", "Beta Solutions LLC",
+                 "Gamma Systems Inc", "Delta Consulting Group",
+                 "Epsilon Software Corp", "Zeta Services Ltd",
+                 "Eta Engineering LLC", "Theta Analytics Inc",
+                 "Iota Data Systems", "Kappa Networks Inc",
+                 "Lambda Cloud Solutions", "Mu Platform Group"])))
+    dept = next(iter(fed.CATALOG_PLACE))
+    rows = [{"org_code": f"TWIN{i}", "geo": "Texas", "department": dept,
+             "name_confidence": "named", "org_name": f"Texas Body {i}",
+             "org_url": f"https://twin{i}.test/",
+             "directory_url": "https://shared.test/exhibitors",
+             "status": "directory_found", "promoted": False}
+            for i in (1, 2)]
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-twin-"))
+    (tmp / "state_events.json").write_text(
+        json.dumps({"registry": "state", "note": "", "events": rows}))
+    (tmp / "conferences.json").write_text(json.dumps({"conferences": []}))
+    keep = (dict(fed.REGISTRIES), fed.DATA, fed.fetch)
+    try:
+        fed.REGISTRIES["state"], fed.DATA = tmp / "state_events.json", tmp
+        fed.fetch = lambda u: page
+        with contextlib.redirect_stdout(io.StringIO()):
+            fed.stage_promote(True)
+        got = json.loads((tmp / "conferences.json").read_text())["conferences"]
+    finally:
+        fed.REGISTRIES.clear(); fed.REGISTRIES.update(keep[0])
+        fed.DATA, fed.fetch = keep[1], keep[2]
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    shared = [c for c in got
+              if c.get("exhibitor_url") == "https://shared.test/exhibitors"]
+    if len(shared) > 1:
+        errors += fail(
+            f"{len(shared)} conferences were published with the SAME exhibitor "
+            f"url in one run. The refusal only sees the catalogue as it was "
+            f"when the run started, so every sibling after the first walks "
+            f"straight through - and one sweep of that page then tags each "
+            f"company with {len(shared)} events")
+    if not shared:
+        errors += fail("neither row promoted at all, so this check proves "
+                       "nothing about the duplicate refusal")
+    return errors
+
+
 def check_one_event_staged_twice_becomes_one_row_with_both_halves() -> int:
     """The organisation's own name is not part of the event's name.
 
@@ -18633,6 +18703,7 @@ def main() -> int:
     errors += check_staging_a_catalogue_never_costs_an_observed_fact()
     errors += check_an_organisation_is_not_one_of_its_own_events()
     errors += check_an_acronym_cannot_confirm_itself()
+    errors += check_two_rows_cannot_promote_the_same_exhibitor_url()
     errors += check_one_event_staged_twice_becomes_one_row_with_both_halves()
     errors += check_a_state_is_matched_whole_and_not_inside_another()
     errors += check_a_sibling_event_cannot_claim_its_neighbours_floor()

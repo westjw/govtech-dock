@@ -1093,6 +1093,16 @@ def stage_promote(write: bool, which: str = "state") -> int:
             continue
         tag = _tag(org, year, taken, e.get("geo"))
         taken.add(tag)
+        # AND THE URL IS SPOKEN FOR TOO, from this moment on. known_urls was
+        # built once from conferences.json and never added to, so the refusal
+        # above could only see urls that were already in the catalogue when
+        # the run started. Four sibling rows carrying one directory_url all
+        # passed it in a single --promote: the first legitimately, the other
+        # three because the set was stale. The catalogue would have gained
+        # four public conferences with the identical exhibitor url, and one
+        # sweep of that page would tag every exhibitor with four events.
+        # `taken` was already updated here for exactly this reason.
+        known_urls.add(e["directory_url"])
         row = {
             "block": place[0], "department": place[1],
             # The event's own name where the page states one, else the
