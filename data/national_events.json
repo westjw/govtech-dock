@@ -395,10 +395,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.aafco.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names AAFCO and ['control', 'feed', 'officials']"
   },
   {
    "key": "AAFCO::annual-meeting",
@@ -416,10 +417,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.aafco.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names AAFCO and ['control', 'feed', 'officials']"
   },
   {
    "key": "AAFS::annual-scientific-meeting",
@@ -1004,10 +1006,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.acrl.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ACRL and ['college', 'libraries', 'research']"
   },
   {
    "key": "ACRL::annual-conference",
@@ -1025,10 +1028,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.acrl.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ACRL and ['college', 'libraries', 'research']"
   },
   {
    "key": "ACT::international-conference",
@@ -1151,10 +1155,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.advancingstates.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "its own heading reads 'advancing states'"
   },
   {
    "key": "ADVANCING::membership-meetings",
@@ -1172,10 +1177,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.advancingstates.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "its own heading reads 'advancing states'"
   },
   {
    "key": "AEE::world-energy-conference-expo",
@@ -1277,10 +1283,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.afdo.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names AFDO and ['drug', 'food', 'officials']"
   },
   {
    "key": "AFDO::regional-affiliate-meetings",
@@ -1298,10 +1305,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.afdo.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names AFDO and ['drug', 'food', 'officials']"
   },
   {
    "key": "AFFORDABLEHOUSIN::ahf-live",
@@ -1865,10 +1873,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.ampo.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names AMPO and ['metropolitan', 'organizations', 'planning']"
   },
   {
    "key": "AMPO::annual-meetings",
@@ -1886,10 +1895,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ampo.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names AMPO and ['metropolitan', 'organizations', 'planning']"
   },
   {
    "key": "AMWA::executive-management-conference",
@@ -3062,10 +3072,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.arsl.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ARSL and ['libraries', 'rural', 'small']"
   },
   {
    "key": "ARSL::arsl-annual-conference",
@@ -3083,10 +3094,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.arsl.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ARSL and ['libraries', 'rural', 'small']"
   },
   {
    "key": "ARTBA::federal-issues-program",
@@ -3251,10 +3263,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.ascld.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "its own heading reads 'american society of crime laboratory directors'"
   },
   {
    "key": "ASCLD::symposium",
@@ -3272,10 +3285,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ascld.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "its own heading reads 'american society of crime laboratory directors'"
   },
   {
    "key": "ASDSO::dam-safety-conference",
@@ -3314,10 +3328,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.asdwa.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ASDWA and ['administrators', 'drinking', 'water']"
   },
   {
    "key": "ASDWA::asdwa-annual-conference",
@@ -3335,10 +3350,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.asdwa.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ASDWA and ['administrators', 'drinking', 'water']"
   },
   {
    "key": "ASFPM::annual-conference",
@@ -3356,10 +3372,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.asfpm.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ASFPM and ['floodplain', 'managers']"
   },
   {
    "key": "ASFPM::state-floodplain-association-conferences",
@@ -3377,10 +3394,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.asfpm.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ASFPM and ['floodplain', 'managers']"
   },
   {
    "key": "ASLA::chapter-events",
@@ -5288,10 +5306,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.csavr.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "its own heading reads 'council of state administrators of vocational rehabilitation'"
   },
   {
    "key": "CSAVR::spring-fall-conferences",
@@ -5309,10 +5328,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.csavr.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "its own heading reads 'council of state administrators of vocational rehabilitation'"
   },
   {
    "key": "CSDA::annual-conference-expo",
@@ -5330,10 +5350,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://csda.net",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ['california', 'districts', 'special']"
   },
   {
    "key": "CSDA::csda-annual-conference-expo",
@@ -5351,10 +5372,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://csda.net",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ['california', 'districts', 'special']"
   },
   {
    "key": "CSDA::special-district-leadership-academy",
@@ -5372,10 +5394,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://csda.net",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ['california', 'districts', 'special']"
   },
   {
    "key": "CSG::annual-meeting",
@@ -5708,10 +5731,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.cvsa.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "its own heading reads 'commercial vehicle safety alliance'"
   },
   {
    "key": "CVSA::cvsa-annual-conference",
@@ -5729,10 +5753,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.cvsa.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "its own heading reads 'commercial vehicle safety alliance'"
   },
   {
    "key": "CWLA::national-conference",
@@ -5876,10 +5901,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.ecos.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ECOS and ['environmental']"
   },
   {
    "key": "ECOS::spring-fall-meetings",
@@ -5897,10 +5923,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ecos.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ECOS and ['environmental']"
   },
   {
    "key": "ED-FI::ed-fi-summit",
@@ -9194,10 +9221,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nabca.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ['alcohol', 'beverage', 'control']"
   },
   {
    "key": "NABCA::nabca-annual-conference",
@@ -9215,10 +9243,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.nabca.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names ['alcohol', 'beverage', 'control']"
   },
   {
    "key": "NACA::training-conference",
@@ -11126,10 +11155,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.naruc.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NARUC and ['commissioners', 'regulatory', 'utility']"
   },
   {
    "key": "NARUC::naruc-annual-meeting",
@@ -11147,10 +11177,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.naruc.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NARUC and ['commissioners', 'regulatory', 'utility']"
   },
   {
    "key": "NARUC::summer-policy-summit",
@@ -11168,10 +11199,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.naruc.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NARUC and ['commissioners', 'regulatory', 'utility']"
   },
   {
    "key": "NARUC::winter-policy-summit",
@@ -11189,10 +11221,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.naruc.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NARUC and ['commissioners', 'regulatory', 'utility']"
   },
   {
    "key": "NARUC_S::naruc-summer-policy-summit",
@@ -11483,10 +11516,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nasca.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NASCA and ['administrators', 'chief']"
   },
   {
    "key": "NASCA::nasca-annual-conference",
@@ -11504,10 +11538,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.nasca.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NASCA and ['administrators', 'chief']"
   },
   {
    "key": "NASCIO::annual-conference",
@@ -11840,10 +11875,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.naseo.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NASEO and ['energy', 'officials']"
   },
   {
    "key": "NASEO::energy-policy-outlook-conference",
@@ -11861,10 +11897,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.naseo.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NASEO and ['energy', 'officials']"
   },
   {
    "key": "NASEO::naseo-annual-meeting",
@@ -11882,10 +11919,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.naseo.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NASEO and ['energy', 'officials']"
   },
   {
    "key": "NASEO_EPO::energy-policy-outlook-conference",
@@ -11966,10 +12004,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://nasfa.net",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NASFA and ['administrators', 'facilities']"
   },
   {
    "key": "NASFA::nasfa-annual-conference",
@@ -11987,10 +12026,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://nasfa.net",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NASFA and ['administrators', 'facilities']"
   },
   {
    "key": "NASFAA::leadership-conference",
@@ -12281,10 +12321,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.naspl.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NASPL and ['lotteries', 'provincial']"
   },
   {
    "key": "NASPL::naspl-annual-conference",
@@ -12302,10 +12343,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.naspl.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NASPL and ['lotteries', 'provincial']"
   },
   {
    "key": "NASPO::annual-conference",
@@ -12785,10 +12827,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nathpo.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NATHPO and ['historic', 'officers', 'preservation']"
   },
   {
    "key": "NATHPO::nathpo-annual-meeting",
@@ -12806,10 +12849,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.nathpo.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NATHPO and ['historic', 'officers', 'preservation']"
   },
   {
    "key": "NATIONALCOUNCILF::natcon",
@@ -13226,10 +13270,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ncchc.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NCCHC and ['correctional', 'health']"
   },
   {
    "key": "NCCHC::spring-conference",
@@ -13247,10 +13292,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ncchc.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NCCHC and ['correctional', 'health']"
   },
   {
    "key": "NCDA::annual-conference",
@@ -13436,10 +13482,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nclgs.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "its own heading reads 'national council of legislators from gaming states'"
   },
   {
    "key": "NCLGS::nclgs-annual-meeting",
@@ -13457,10 +13504,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.nclgs.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "its own heading reads 'national council of legislators from gaming states'"
   },
   {
    "key": "NCMM/EASTERSEALS::national-center-for-mobility-mgmt-events",
@@ -13919,10 +13967,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ncwm.com",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NCWM and ['measures', 'weights']"
   },
   {
    "key": "NCWM::interim-meeting",
@@ -13940,10 +13989,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ncwm.com",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NCWM and ['measures', 'weights']"
   },
   {
    "key": "NCWM::ncwm-annual-meeting",
@@ -13961,10 +14011,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.ncwm.com",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names NCWM and ['measures', 'weights']"
   },
   {
    "key": "NDAA::capital-conference",
@@ -17279,10 +17330,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.strima.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names STRIMA and ['insurance', 'management', 'risk']"
   },
   {
    "key": "STRIMA::strima-annual-conference",
@@ -17300,10 +17352,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.strima.org",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "names STRIMA and ['insurance', 'management', 'risk']"
   },
   {
    "key": "SUMC::shared-use-mobility-summit",

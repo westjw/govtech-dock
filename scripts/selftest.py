@@ -17172,6 +17172,101 @@ def check_an_organisation_is_not_one_of_its_own_events() -> int:
     return errors
 
 
+def check_an_acronym_cannot_confirm_itself() -> int:
+    """A proposed address is written down only when the page names the body.
+
+    resolve_org_sites does not look an association up - it PROPOSES a few
+    addresses one plausibly uses, nrpa.org from NRPA, and then requires the
+    page that answers to say who it is. That distinction is the whole design,
+    because acronyms collide badly here: aca.org could be the American Camp
+    Association, the American Correctional Association or the American
+    Counseling Association, and all three run conferences with exhibitor
+    floors. Taking the first 200 would file one association's floor under
+    another's name.
+
+    THE BUG THIS EXISTS FOR, WHICH I WROTE AND THEN CAUGHT. Relaxing the rule
+    so a one-distinctive-word name like "Council of State Governments" could
+    confirm also let the ACRONYM count as its own distinctive word - so
+    ncda.org "confirmed" NCDA because the page said NCDA, and clarion.org
+    confirmed "Clarion". Five bodies were accepted on nothing at all before
+    the run was stopped. The acronym is excluded from its own evidence.
+
+    Measured on the live registry: 24 confirmations out of 124 attempts, and
+    all 24 verified correct by hand against the page title.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import resolve_org_sites as ros
+    errors = 0
+
+    # the acronym is not one of its own distinctive words
+    for code, name in (("NCDA", "NCDA"), ("CLARION", "Clarion"), ("BOBIT", "Bobit")):
+        if ros.words(name, code):
+            errors += fail(f"{code} has 'distinctive' words {ros.words(name, code)} - "
+                           f"its recorded name IS its acronym, so there is nothing "
+                           f"to check a page against")
+    if "governments" not in ros.words("Council of State Governments", "CSG"):
+        errors += fail("a real distinctive word was stop-worded away; CSG would "
+                       "then be unconfirmable for the wrong reason")
+
+    # a page carrying only the acronym confirms nothing
+    only_ac = "<title>NCDA</title><h1>NCDA</h1>"
+    ok, why = ros.page_names_it(only_ac, "NCDA", "NCDA")
+    if ok:
+        errors += fail(f"a page saying only the acronym confirmed the body: {why}. "
+                       f"That is how three different associations at one domain "
+                       f"become whichever one asked first")
+
+    # the collision case, concretely
+    camp = "<title>American Camp Association</title>"
+    ok, _ = ros.page_names_it(camp, "ACA", "American Correctional Association")
+    if ok:
+        errors += fail("the American Camp Association's page confirmed the "
+                       "American CORRECTIONAL Association - one acronym, two "
+                       "real bodies, and their exhibitor floors are different")
+
+    # ONE DISTINCTIVE WORD, WITHOUT THE ACRONYM, IS A COINCIDENCE. A page
+    # about Camp Fire USA says "camp"; that does not make it the American
+    # Camp Association's site.
+    coincidence = "<title>Camp Fire USA - youth programs</title>"
+    ok, _ = ros.page_names_it(coincidence, "ACA", "American Camp Association")
+    if ok:
+        errors += fail("one distinctive word confirmed a body with no acronym "
+                       "on the page - 'camp' appears on any camp's site")
+
+    # THE OTHER ROUTE: a page can also confirm by naming the body fully, with
+    # no acronym anywhere. Three distinctive words is that bar.
+    spelled = ("<title>Association of Metropolitan Planning "
+               "Organizations</title>")
+    ok, _ = ros.page_names_it(spelled, "ZZZ",
+                              "Assn of Metropolitan Planning Organizations")
+    if not ok:
+        errors += fail("a page spelling the organisation out in full was "
+                       "refused because its acronym was not also present")
+
+    # a page that does name the body is accepted
+    good = ("<title>ASDWA - Association of State Drinking Water "
+            "Administrators</title>")
+    ok, why = ros.page_names_it(good, "ASDWA",
+                                "Assn of State Drinking Water Administrators")
+    if not ok:
+        errors += fail(f"a page naming the body outright was refused: {why}")
+
+    # one distinctive word plus the acronym is enough when that is all we hold
+    csg = "<title>The Council of State Governments | CSG</title>"
+    ok, _ = ros.page_names_it(csg, "CSG", "Council of State Governments")
+    if not ok:
+        errors += fail("a body whose name reduces to one distinctive word can "
+                       "never be confirmed; the rule must ask for every word we "
+                       "have, up to two, not a fixed two")
+
+    # and nothing is written for an unconfirmed proposal
+    src = (ROOT / "scripts" / "resolve_org_sites.py").read_text()
+    if "if got and not r.get(\"org_url\")" not in src:
+        errors += fail("resolve_org_sites writes an org_url without checking it "
+                       "was confirmed, or overwrites one already established")
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -17637,6 +17732,7 @@ def main() -> int:
     errors += check_an_exhibitor_tag_reaches_the_field_that_counts()
     errors += check_staging_a_catalogue_never_costs_an_observed_fact()
     errors += check_an_organisation_is_not_one_of_its_own_events()
+    errors += check_an_acronym_cannot_confirm_itself()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()

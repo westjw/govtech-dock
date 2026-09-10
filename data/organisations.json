@@ -3356,7 +3356,7 @@
   {
    "code": "NARUC",
    "name": "National Assn of Regulatory Utility Commissioners",
-   "url": null,
+   "url": "https://www.naruc.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -3372,8 +3372,8 @@
      "source": "staged",
      "key": "NARUC::annual-meeting",
      "name": "Annual Meeting",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.naruc.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -3382,8 +3382,8 @@
      "source": "staged",
      "key": "NARUC::naruc-annual-meeting",
      "name": "NARUC Annual Meeting",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.naruc.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -3392,8 +3392,8 @@
      "source": "staged",
      "key": "NARUC::summer-policy-summit",
      "name": "Summer Policy Summit",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.naruc.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -3402,8 +3402,8 @@
      "source": "staged",
      "key": "NARUC::winter-policy-summit",
      "name": "Winter Policy Summit",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.naruc.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -4452,7 +4452,7 @@
   {
    "code": "CSDA",
    "name": "CSDA (California Special Districts)",
-   "url": null,
+   "url": "https://csda.net",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -4468,8 +4468,8 @@
      "source": "staged",
      "key": "CSDA::annual-conference-expo",
      "name": "Annual Conference & Expo",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://csda.net",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -4478,8 +4478,8 @@
      "source": "staged",
      "key": "CSDA::csda-annual-conference-expo",
      "name": "CSDA Annual Conference & Expo",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://csda.net",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -4488,8 +4488,8 @@
      "source": "staged",
      "key": "CSDA::special-district-leadership-academy",
      "name": "Special District Leadership Academy",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://csda.net",
+     "status": "org_found",
      "harvest": false,
      "registry_status": "TRAINING",
      "published": false
@@ -5634,7 +5634,7 @@
   {
    "code": "NASEO",
    "name": "National Assn of State Energy Officials",
-   "url": null,
+   "url": "https://www.naseo.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -5650,8 +5650,8 @@
      "source": "staged",
      "key": "NASEO::annual-meeting",
      "name": "Annual Meeting",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.naseo.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "TABLETOP",
      "published": false
@@ -5660,8 +5660,8 @@
      "source": "staged",
      "key": "NASEO::energy-policy-outlook-conference",
      "name": "Energy Policy Outlook Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.naseo.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -5670,8 +5670,8 @@
      "source": "staged",
      "key": "NASEO::naseo-annual-meeting",
      "name": "NASEO Annual Meeting",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.naseo.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -6108,7 +6108,7 @@
   {
    "code": "NCWM",
    "name": "National Conference on Weights & Measures",
-   "url": null,
+   "url": "https://www.ncwm.com",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -6124,8 +6124,8 @@
      "source": "staged",
      "key": "NCWM::annual-meeting",
      "name": "Annual Meeting",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ncwm.com",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "TABLETOP",
      "published": false
@@ -6134,8 +6134,8 @@
      "source": "staged",
      "key": "NCWM::interim-meeting",
      "name": "Interim Meeting",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ncwm.com",
+     "status": "org_found",
      "harvest": false,
      "registry_status": "TRAINING",
      "published": false
@@ -6144,8 +6144,8 @@
      "source": "staged",
      "key": "NCWM::ncwm-annual-meeting",
      "name": "NCWM Annual Meeting",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ncwm.com",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -6805,7 +6805,7 @@
   {
    "code": "AAFCO",
    "name": "Assn of American Feed Control Officials",
-   "url": null,
+   "url": "https://www.aafco.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -6821,8 +6821,8 @@
      "source": "staged",
      "key": "AAFCO::aafco-annual-meeting",
      "name": "AAFCO Annual Meeting",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.aafco.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -6831,8 +6831,8 @@
      "source": "staged",
      "key": "AAFCO::annual-meeting",
      "name": "Annual Meeting",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.aafco.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "TABLETOP",
      "published": false
@@ -6887,7 +6887,7 @@
   {
    "code": "ACRL",
    "name": "Assn of College & Research Libraries",
-   "url": null,
+   "url": "https://www.acrl.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -6903,8 +6903,8 @@
      "source": "staged",
      "key": "ACRL::acrl-conference",
      "name": "ACRL Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.acrl.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -6913,8 +6913,8 @@
      "source": "staged",
      "key": "ACRL::annual-conference",
      "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.acrl.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -6928,7 +6928,7 @@
   {
    "code": "ADVANCING",
    "name": "ADvancing States",
-   "url": null,
+   "url": "https://www.advancingstates.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -6942,8 +6942,8 @@
      "source": "staged",
      "key": "ADVANCING::hcbs-conference",
      "name": "HCBS Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.advancingstates.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -6952,8 +6952,8 @@
      "source": "staged",
      "key": "ADVANCING::membership-meetings",
      "name": "Membership meetings",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.advancingstates.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -7008,7 +7008,7 @@
   {
    "code": "AFDO",
    "name": "AFDO (Food & Drug Officials)",
-   "url": null,
+   "url": "https://www.afdo.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -7022,8 +7022,8 @@
      "source": "staged",
      "key": "AFDO::annual-educational-conference",
      "name": "Annual Educational Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.afdo.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "TABLETOP",
      "published": false
@@ -7032,8 +7032,8 @@
      "source": "staged",
      "key": "AFDO::regional-affiliate-meetings",
      "name": "Regional affiliate meetings",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.afdo.org",
+     "status": "org_found",
      "harvest": false,
      "registry_status": "UNKNOWN",
      "published": false
@@ -7297,7 +7297,7 @@
   {
    "code": "AMPO",
    "name": "Assn of Metropolitan Planning Organizations",
-   "url": null,
+   "url": "https://www.ampo.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -7313,8 +7313,8 @@
      "source": "staged",
      "key": "AMPO::ampo-annual-conference",
      "name": "AMPO Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ampo.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -7323,8 +7323,8 @@
      "source": "staged",
      "key": "AMPO::annual-meetings",
      "name": "Annual meetings",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ampo.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "TABLETOP",
      "published": false
@@ -7416,7 +7416,7 @@
   {
    "code": "ARSL",
    "name": "Assn for Rural & Small Libraries",
-   "url": null,
+   "url": "https://www.arsl.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -7432,8 +7432,8 @@
      "source": "staged",
      "key": "ARSL::annual-conference",
      "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.arsl.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "TABLETOP",
      "published": false
@@ -7442,8 +7442,8 @@
      "source": "staged",
      "key": "ARSL::arsl-annual-conference",
      "name": "ARSL Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.arsl.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -7539,7 +7539,7 @@
   {
    "code": "ASCLD",
    "name": "American Society of Crime Laboratory Directors",
-   "url": null,
+   "url": "https://www.ascld.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -7555,8 +7555,8 @@
      "source": "staged",
      "key": "ASCLD::ascld-symposium",
      "name": "ASCLD Symposium",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ascld.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -7565,8 +7565,8 @@
      "source": "staged",
      "key": "ASCLD::symposium",
      "name": "Symposium",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ascld.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "TABLETOP",
      "published": false
@@ -7580,7 +7580,7 @@
   {
    "code": "ASDWA",
    "name": "Assn of State Drinking Water Administrators",
-   "url": null,
+   "url": "https://www.asdwa.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -7596,8 +7596,8 @@
      "source": "staged",
      "key": "ASDWA::annual-conference",
      "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.asdwa.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -7606,8 +7606,8 @@
      "source": "staged",
      "key": "ASDWA::asdwa-annual-conference",
      "name": "ASDWA Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.asdwa.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -7621,7 +7621,7 @@
   {
    "code": "ASFPM",
    "name": "ASFPM (Floodplain Managers)",
-   "url": null,
+   "url": "https://www.asfpm.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -7635,8 +7635,8 @@
      "source": "staged",
      "key": "ASFPM::annual-conference",
      "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.asfpm.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -7645,8 +7645,8 @@
      "source": "staged",
      "key": "ASFPM::state-floodplain-association-conferences",
      "name": "State floodplain association conferences",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.asfpm.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "TABLETOP",
      "published": false
@@ -8320,7 +8320,7 @@
   {
    "code": "CSAVR",
    "name": "Council of State Administrators of Vocational Rehabilitation",
-   "url": null,
+   "url": "https://www.csavr.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -8336,8 +8336,8 @@
      "source": "staged",
      "key": "CSAVR::csavr-spring-fall-conferences",
      "name": "CSAVR Spring & Fall Conferences",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.csavr.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -8346,8 +8346,8 @@
      "source": "staged",
      "key": "CSAVR::spring-fall-conferences",
      "name": "Spring & Fall Conferences",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.csavr.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "TABLETOP",
      "published": false
@@ -8361,7 +8361,7 @@
   {
    "code": "CVSA",
    "name": "Commercial Vehicle Safety Alliance",
-   "url": null,
+   "url": "https://www.cvsa.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -8377,8 +8377,8 @@
      "source": "staged",
      "key": "CVSA::annual-conference",
      "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.cvsa.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "TABLETOP",
      "published": false
@@ -8387,8 +8387,8 @@
      "source": "staged",
      "key": "CVSA::cvsa-annual-conference",
      "name": "CVSA Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.cvsa.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -8446,7 +8446,7 @@
   {
    "code": "ECOS",
    "name": "ECOS (Environmental Council of States)",
-   "url": null,
+   "url": "https://www.ecos.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -8462,8 +8462,8 @@
      "source": "staged",
      "key": "ECOS::ecos-spring-fall-meetings",
      "name": "ECOS Spring & Fall Meetings",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ecos.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -8472,8 +8472,8 @@
      "source": "staged",
      "key": "ECOS::spring-fall-meetings",
      "name": "Spring & Fall Meetings",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ecos.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -9387,7 +9387,7 @@
   {
    "code": "NABCA",
    "name": "National Alcohol Beverage Control Assn",
-   "url": null,
+   "url": "https://www.nabca.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -9403,8 +9403,8 @@
      "source": "staged",
      "key": "NABCA::annual-conference",
      "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.nabca.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "TABLETOP",
      "published": false
@@ -9413,8 +9413,8 @@
      "source": "staged",
      "key": "NABCA::nabca-annual-conference",
      "name": "NABCA Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.nabca.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -10258,7 +10258,7 @@
   {
    "code": "NASCA",
    "name": "National Assn of State Chief Administrators",
-   "url": null,
+   "url": "https://www.nasca.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -10274,8 +10274,8 @@
      "source": "staged",
      "key": "NASCA::annual-conference",
      "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.nasca.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -10284,8 +10284,8 @@
      "source": "staged",
      "key": "NASCA::nasca-annual-conference",
      "name": "NASCA Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.nasca.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -10424,7 +10424,7 @@
   {
    "code": "NASFA",
    "name": "National Assn of State Facilities Administrators",
-   "url": null,
+   "url": "https://nasfa.net",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -10440,8 +10440,8 @@
      "source": "staged",
      "key": "NASFA::annual-conference",
      "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://nasfa.net",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "TABLETOP",
      "published": false
@@ -10450,8 +10450,8 @@
      "source": "staged",
      "key": "NASFA::nasfa-annual-conference",
      "name": "NASFA Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://nasfa.net",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -10545,7 +10545,7 @@
   {
    "code": "NASPL",
    "name": "North American Assn of State & Provincial Lotteries",
-   "url": null,
+   "url": "https://www.naspl.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -10561,8 +10561,8 @@
      "source": "staged",
      "key": "NASPL::annual-conference",
      "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.naspl.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -10571,8 +10571,8 @@
      "source": "staged",
      "key": "NASPL::naspl-annual-conference",
      "name": "NASPL Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.naspl.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -10627,7 +10627,7 @@
   {
    "code": "NATHPO",
    "name": "Natl Assn of Tribal Historic Preservation Officers",
-   "url": null,
+   "url": "https://www.nathpo.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -10643,8 +10643,8 @@
      "source": "staged",
      "key": "NATHPO::annual-meeting",
      "name": "Annual Meeting",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.nathpo.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -10653,8 +10653,8 @@
      "source": "staged",
      "key": "NATHPO::nathpo-annual-meeting",
      "name": "NATHPO Annual Meeting",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.nathpo.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -10792,7 +10792,7 @@
   {
    "code": "NCCHC",
    "name": "NCCHC (Correctional Health)",
-   "url": null,
+   "url": "https://www.ncchc.org",
    "is_a_class": false,
    "scopes": [
     "PROVIDER"
@@ -10806,8 +10806,8 @@
      "source": "staged",
      "key": "NCCHC::national-conference",
      "name": "National Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ncchc.org",
+     "status": "org_found",
      "harvest": false,
      "registry_status": "LIKELY",
      "published": false
@@ -10816,8 +10816,8 @@
      "source": "staged",
      "key": "NCCHC::spring-conference",
      "name": "Spring Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ncchc.org",
+     "status": "org_found",
      "harvest": false,
      "registry_status": "TABLETOP",
      "published": false
@@ -10870,7 +10870,7 @@
   {
    "code": "NCLGS",
    "name": "National Council of Legislators from Gaming States",
-   "url": null,
+   "url": "https://www.nclgs.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -10886,8 +10886,8 @@
      "source": "staged",
      "key": "NCLGS::annual-meeting",
      "name": "Annual Meeting",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.nclgs.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -10896,8 +10896,8 @@
      "source": "staged",
      "key": "NCLGS::nclgs-annual-meeting",
      "name": "NCLGS Annual Meeting",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.nclgs.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -11936,7 +11936,7 @@
   {
    "code": "STRIMA",
    "name": "State Risk & Insurance Management Assn",
-   "url": null,
+   "url": "https://www.strima.org",
    "is_a_class": false,
    "scopes": [
     "SLED"
@@ -11952,8 +11952,8 @@
      "source": "staged",
      "key": "STRIMA::annual-conference",
      "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.strima.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "TABLETOP",
      "published": false
@@ -11962,8 +11962,8 @@
      "source": "staged",
      "key": "STRIMA::strima-annual-conference",
      "name": "STRIMA Annual Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.strima.org",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
