@@ -185,157 +185,6 @@
    "harvest_count": 6
   },
   {
-   "code": "APPA",
-   "name": "APPA (Educational Facilities)",
-   "url": "https://www.publicpower.org/national-conference",
-   "is_a_class": false,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 5 — Public Works & Infrastructure",
-    "Block 7 — K-12 & Higher Education",
-    "Block 9 — Courts, Corrections & Justice",
-    "Courts, corrections, justice",
-    "Higher education",
-    "Public works and infrastructure"
-   ],
-   "departments": [
-    "Facilities",
-    "Probation & parole",
-    "Public power"
-   ],
-   "events": [
-    {
-     "source": "catalogue",
-     "tag": "APPA Public Power 2026",
-     "name": "APPA National Conference",
-     "url": "https://www.publicpower.org/national-conference",
-     "dates": "June 18 - 23, 2027",
-     "city": "Orlando, FL",
-     "swept": false,
-     "exhibitor_url": "https://www.publicpower.org/national-conference",
-     "published": true
-    },
-    {
-     "source": "catalogue",
-     "tag": "APPA Probation 2026",
-     "name": "APPA Training Institute",
-     "url": "https://www.appa-net.org/eweb/",
-     "dates": "January 24-27, 2027",
-     "city": "New Orleans, LA",
-     "swept": false,
-     "exhibitor_url": "https://www.appa-net.org/institutes/2026-Chicago/exhibitor.html",
-     "published": true
-    },
-    {
-     "source": "catalogue",
-     "tag": "APPA Educational Facilities 2026",
-     "name": "APPA Leadership in Educational Facilities",
-     "url": "https://www.appa.org/events/appa-2027-annual-conference",
-     "dates": "July 12-15, 2027",
-     "city": "Salt Lake City, UT",
-     "swept": false,
-     "exhibitor_url": null,
-     "published": true
-    },
-    {
-     "source": "staged",
-     "key": "APPA::annual-conference-expo",
-     "name": "Annual Conference & Expo",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "APPA::business-financial-conference",
-     "name": "Business & Financial Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "APPA::customer-connections-conference",
-     "name": "Customer Connections Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "APPA::engineering-operations-technical-conference",
-     "name": "Engineering & Operations Technical Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "APPA::legislative-rally",
-     "name": "Legislative Rally",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "SPONSOR",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "APPA::national-conference",
-     "name": "National Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "APPA::regional-conferences",
-     "name": "Regional conferences",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "APPA::training-institute",
-     "name": "Training Institute",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "APPA::winter-training-institute",
-     "name": "Winter Training Institute",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    }
-   ],
-   "event_count": 12,
-   "published_count": 3,
-   "swept_count": 0,
-   "harvest_count": 9
-  },
-  {
    "code": "IAFC",
    "name": "International Association of Fire Chiefs",
    "url": "https://www.iafc.org/events/fire-rescue-international",
@@ -1474,97 +1323,6 @@
    "harvest_count": 0
   },
   {
-   "code": "CSG",
-   "name": "Council of State Governments",
-   "url": null,
-   "is_a_class": false,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 11 — State Agency Officials & Legislative Staff"
-   ],
-   "departments": [
-    "State Legislatures"
-   ],
-   "events": [
-    {
-     "source": "staged",
-     "key": "CSG::annual-meeting",
-     "name": "Annual Meeting",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "CSG::csg-national-conference",
-     "name": "CSG National Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "CSG::eastern-regional-conference",
-     "name": "Eastern Regional Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "CSG::justice-center-events",
-     "name": "Justice Center events",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "TRAINING",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "CSG::midwestern-legislative-conference",
-     "name": "Midwestern Legislative Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "CSG::national-conference",
-     "name": "National Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "CSG::southern-legislative-conference",
-     "name": "Southern Legislative Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    }
-   ],
-   "event_count": 7,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 6
-  },
-  {
    "code": "ICC",
    "name": "International Code Council",
    "url": "https://www.iccsafe.org/about/news-and-events/annual-conferences-hearings/future-annual-meetings/",
@@ -2043,6 +1801,82 @@
    "published_count": 1,
    "swept_count": 0,
    "harvest_count": 4
+  },
+  {
+   "code": "APPA",
+   "name": "APPA",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 5 — Public Works & Infrastructure",
+    "Block 9 — Courts, Corrections & Justice"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "APPA::business-financial-conference",
+     "name": "Business & Financial Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "APPA::customer-connections-conference",
+     "name": "Customer Connections Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "APPA::engineering-operations-technical-conference",
+     "name": "Engineering & Operations Technical Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "APPA::legislative-rally",
+     "name": "Legislative Rally",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "SPONSOR",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "APPA::winter-training-institute",
+     "name": "Winter Training Institute",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "APPA (Educational Facilities)",
+    "APPA (Probation & Parole)",
+    "APPA (Public Power)"
+   ],
+   "names_no_body": true,
+   "event_count": 5,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 5
   },
   {
    "code": "AWWA",
@@ -5167,56 +5001,6 @@
    "published_count": 1,
    "swept_count": 0,
    "harvest_count": 1
-  },
-  {
-   "code": "NACAA",
-   "name": "NACAA (Consumer Agency Administrators)",
-   "url": null,
-   "is_a_class": false,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 13 — Environment & Natural Resources",
-    "Block 16 — Agriculture & Consumer Protection"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "NACAA::annual-conference",
-     "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "TRAINING",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "NACAA::annual-meeting",
-     "name": "Annual Meeting",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "SPONSOR",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "NACAA::cooperative-extension-national-meetings",
-     "name": "Cooperative Extension national meetings",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    }
-   ],
-   "event_count": 3,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 2
   },
   {
    "code": "NACCED",
@@ -8359,6 +8143,53 @@
    "harvest_count": 2
   },
   {
+   "code": "CSG",
+   "name": "CSG",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 11 — State Agency Officials & Legislative Staff"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "CSG::justice-center-events",
+     "name": "Justice Center events",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "TRAINING",
+     "published": false
+    },
+    {
+     "source": "staged",
+     "key": "CSG::national-conference",
+     "name": "National Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "CSG East",
+    "CSG Midwest",
+    "CSG South",
+    "CSG West",
+    "Council of State Governments"
+   ],
+   "names_no_body": true,
+   "event_count": 2,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
    "code": "CVSA",
    "name": "Commercial Vehicle Safety Alliance",
    "url": "https://www.cvsa.org",
@@ -8641,46 +8472,6 @@
    "harvest_count": 0
   },
   {
-   "code": "IACA",
-   "name": "IACA (Court Administration)",
-   "url": null,
-   "is_a_class": false,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 3 — Public Safety",
-    "Block 9 — Courts, Corrections & Justice"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "IACA::annual-conference",
-     "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "IACA::annual-training-conference",
-     "name": "Annual Training Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    }
-   ],
-   "event_count": 2,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 2
-  },
-  {
    "code": "IACLEA",
    "name": "IACLEA",
    "url": "https://iaclea.org/event/2026-iaclea-annual-conference-exposition/",
@@ -8806,47 +8597,6 @@
    "published_count": 1,
    "swept_count": 0,
    "harvest_count": 1
-  },
-  {
-   "code": "IAIABC",
-   "name": "Intl Assn of Industrial Accident Boards & Commissions",
-   "url": null,
-   "is_a_class": true,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 12 — Regulatory & Licensing Agencies"
-   ],
-   "departments": [
-    "Workers Comp"
-   ],
-   "events": [
-    {
-     "source": "staged",
-     "key": "IAIABC::annual-convention",
-     "name": "Annual Convention",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "TABLETOP",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "IAIABC::iaiabc-annual-convention",
-     "name": "IAIABC Annual Convention",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "LIKELY",
-     "published": false
-    }
-   ],
-   "event_count": 2,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 2
   },
   {
    "code": "IAWF",
@@ -10664,46 +10414,6 @@
    "published_count": 0,
    "swept_count": 0,
    "harvest_count": 2
-  },
-  {
-   "code": "NATIONALCOUNCILO",
-   "name": "National Council on Independent Living",
-   "url": null,
-   "is_a_class": false,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 6 — Health & Human Services",
-    "Block 7 — K-12 & Higher Education"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "NATIONALCOUNCILO::annual-conference",
-     "name": "Annual Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "TRAINING",
-     "published": false
-    },
-    {
-     "source": "staged",
-     "key": "NATIONALCOUNCILO::annual-meeting",
-     "name": "Annual meeting",
-     "url": null,
-     "status": "needs_url",
-     "harvest": true,
-     "registry_status": "SPONSOR",
-     "published": false
-    }
-   ],
-   "event_count": 2,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 1
   },
   {
    "code": "NATOA",
@@ -14049,6 +13759,260 @@
    "harvest_count": 1
   },
   {
+   "code": "APPA",
+   "name": "APPA National Conference",
+   "url": "https://www.publicpower.org/national-conference",
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Public works and infrastructure"
+   ],
+   "departments": [
+    "Public power"
+   ],
+   "events": [
+    {
+     "source": "catalogue",
+     "tag": "APPA Public Power 2026",
+     "name": "APPA National Conference",
+     "url": "https://www.publicpower.org/national-conference",
+     "dates": "June 18 - 23, 2027",
+     "city": "Orlando, FL",
+     "swept": false,
+     "exhibitor_url": "https://www.publicpower.org/national-conference",
+     "published": true
+    }
+   ],
+   "code_shared_with": [
+    "APPA (Educational Facilities)",
+    "APPA (Probation & Parole)",
+    "APPA (Public Power)"
+   ],
+   "names_no_body": true,
+   "event_count": 1,
+   "published_count": 1,
+   "swept_count": 0,
+   "harvest_count": 0
+  },
+  {
+   "code": "APPA",
+   "name": "APPA Training Institute",
+   "url": "https://www.appa-net.org/eweb/",
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Courts, corrections, justice"
+   ],
+   "departments": [
+    "Probation & parole"
+   ],
+   "events": [
+    {
+     "source": "catalogue",
+     "tag": "APPA Probation 2026",
+     "name": "APPA Training Institute",
+     "url": "https://www.appa-net.org/eweb/",
+     "dates": "January 24-27, 2027",
+     "city": "New Orleans, LA",
+     "swept": false,
+     "exhibitor_url": "https://www.appa-net.org/institutes/2026-Chicago/exhibitor.html",
+     "published": true
+    }
+   ],
+   "code_shared_with": [
+    "APPA (Educational Facilities)",
+    "APPA (Probation & Parole)",
+    "APPA (Public Power)"
+   ],
+   "names_no_body": true,
+   "event_count": 1,
+   "published_count": 1,
+   "swept_count": 0,
+   "harvest_count": 0
+  },
+  {
+   "code": "APPA",
+   "name": "APPA Leadership in Educational Facilities",
+   "url": "https://www.appa.org/events/appa-2027-annual-conference",
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Higher education"
+   ],
+   "departments": [
+    "Facilities"
+   ],
+   "events": [
+    {
+     "source": "catalogue",
+     "tag": "APPA Educational Facilities 2026",
+     "name": "APPA Leadership in Educational Facilities",
+     "url": "https://www.appa.org/events/appa-2027-annual-conference",
+     "dates": "July 12-15, 2027",
+     "city": "Salt Lake City, UT",
+     "swept": false,
+     "exhibitor_url": null,
+     "published": true
+    }
+   ],
+   "code_shared_with": [
+    "APPA (Educational Facilities)",
+    "APPA (Probation & Parole)",
+    "APPA (Public Power)"
+   ],
+   "names_no_body": true,
+   "event_count": 1,
+   "published_count": 1,
+   "swept_count": 0,
+   "harvest_count": 0
+  },
+  {
+   "code": "APPA",
+   "name": "APPA (Educational Facilities)",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 7 — K-12 & Higher Education"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "APPA::annual-conference-expo",
+     "name": "Annual Conference & Expo",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "APPA (Educational Facilities)",
+    "APPA (Probation & Parole)",
+    "APPA (Public Power)"
+   ],
+   "names_no_body": true,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "APPA",
+   "name": "APPA (Public Power)",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 5 — Public Works & Infrastructure"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "APPA::national-conference",
+     "name": "National Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "APPA (Educational Facilities)",
+    "APPA (Probation & Parole)",
+    "APPA (Public Power)"
+   ],
+   "names_no_body": true,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "APPA",
+   "name": "APPA regions",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 7 — K-12 & Higher Education"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "APPA::regional-conferences",
+     "name": "Regional conferences",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "APPA (Educational Facilities)",
+    "APPA (Probation & Parole)",
+    "APPA (Public Power)"
+   ],
+   "names_no_body": true,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "APPA",
+   "name": "APPA (Probation & Parole)",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 9 — Courts, Corrections & Justice"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "APPA::training-institute",
+     "name": "Training Institute",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "APPA (Educational Facilities)",
+    "APPA (Probation & Parole)",
+    "APPA (Public Power)"
+   ],
+   "names_no_body": true,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
    "code": "APWA_AZ",
    "name": "APWA Arizona Chapter",
    "url": null,
@@ -16943,6 +16907,186 @@
      "published": false
     }
    ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "CSG",
+   "name": "CSG West",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 11 — State Agency Officials & Legislative Staff"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "CSG::annual-meeting",
+     "name": "Annual Meeting",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "CSG East",
+    "CSG Midwest",
+    "CSG South",
+    "Council of State Governments"
+   ],
+   "names_no_body": false,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "CSG",
+   "name": "Council of State Governments",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [],
+   "departments": [
+    "State Legislatures"
+   ],
+   "events": [
+    {
+     "source": "staged",
+     "key": "CSG::csg-national-conference",
+     "name": "CSG National Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "CSG East",
+    "CSG Midwest",
+    "CSG South",
+    "CSG West"
+   ],
+   "names_no_body": false,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "CSG",
+   "name": "CSG East",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 11 — State Agency Officials & Legislative Staff"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "CSG::eastern-regional-conference",
+     "name": "Eastern Regional Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "CSG Midwest",
+    "CSG South",
+    "CSG West",
+    "Council of State Governments"
+   ],
+   "names_no_body": false,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "CSG",
+   "name": "CSG Midwest",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 11 — State Agency Officials & Legislative Staff"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "CSG::midwestern-legislative-conference",
+     "name": "Midwestern Legislative Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "CSG East",
+    "CSG South",
+    "CSG West",
+    "Council of State Governments"
+   ],
+   "names_no_body": false,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "CSG",
+   "name": "CSG South",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 11 — State Agency Officials & Legislative Staff"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "CSG::southern-legislative-conference",
+     "name": "Southern Legislative Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "CSG East",
+    "CSG Midwest",
+    "CSG West",
+    "Council of State Governments"
+   ],
+   "names_no_body": false,
    "event_count": 1,
    "published_count": 0,
    "swept_count": 0,
@@ -20534,6 +20678,74 @@
    "harvest_count": 0
   },
   {
+   "code": "IACA",
+   "name": "IACA (Court Administration)",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 9 — Courts, Corrections & Justice"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "IACA::annual-conference",
+     "name": "Annual Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "IACA (Court Administration)",
+    "IACA (Crime Analysts)"
+   ],
+   "names_no_body": true,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "IACA",
+   "name": "IACA (Crime Analysts)",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 3 — Public Safety"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "IACA::annual-training-conference",
+     "name": "Annual Training Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "IACA (Court Administration)",
+    "IACA (Crime Analysts)"
+   ],
+   "names_no_body": true,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
    "code": "IACME",
    "name": "IACME (Coroners & MEs)",
    "url": null,
@@ -20590,6 +20802,73 @@
    "published_count": 0,
    "swept_count": 0,
    "harvest_count": 0
+  },
+  {
+   "code": "IAIABC",
+   "name": "IAIABC (Workers' Comp Boards)",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 12 — Regulatory & Licensing Agencies"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "IAIABC::annual-convention",
+     "name": "Annual Convention",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "IAIABC (Workers' Comp Boards)",
+    "Intl Assn of Industrial Accident Boards & Commissions"
+   ],
+   "names_no_body": true,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "IAIABC",
+   "name": "Intl Assn of Industrial Accident Boards & Commissions",
+   "url": null,
+   "is_a_class": true,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [],
+   "departments": [
+    "Workers Comp"
+   ],
+   "events": [
+    {
+     "source": "staged",
+     "key": "IAIABC::iaiabc-annual-convention",
+     "name": "IAIABC Annual Convention",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "LIKELY",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "IAIABC (Workers' Comp Boards)"
+   ],
+   "names_no_body": false,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
   },
   {
    "code": "IAPE",
@@ -23008,6 +23287,111 @@
    "harvest_count": 1
   },
   {
+   "code": "NACAA",
+   "name": "NACAA (Consumer Agency Administrators)",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 16 — Agriculture & Consumer Protection"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "NACAA::annual-conference",
+     "name": "Annual Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "TRAINING",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "NACAA (Air Pollution Agencies)",
+    "NACAA (Consumer Agency Administrators)",
+    "NACAA (Extension Agents)"
+   ],
+   "names_no_body": true,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 0
+  },
+  {
+   "code": "NACAA",
+   "name": "NACAA (Air Pollution Agencies)",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 13 — Environment & Natural Resources"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "NACAA::annual-meeting",
+     "name": "Annual Meeting",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "SPONSOR",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "NACAA (Air Pollution Agencies)",
+    "NACAA (Consumer Agency Administrators)",
+    "NACAA (Extension Agents)"
+   ],
+   "names_no_body": true,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "NACAA",
+   "name": "NACAA (Extension Agents)",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 16 — Agriculture & Consumer Protection"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "NACAA::cooperative-extension-national-meetings",
+     "name": "Cooperative Extension national meetings",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "TABLETOP",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "NACAA (Air Pollution Agencies)",
+    "NACAA (Consumer Agency Administrators)",
+    "NACAA (Extension Agents)"
+   ],
+   "names_no_body": true,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
    "code": "NACAA_AIR",
    "name": "National Assn of Clean Air Agencies",
    "url": null,
@@ -24516,6 +24900,72 @@
      "published": false
     }
    ],
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 1
+  },
+  {
+   "code": "NATIONALCOUNCILO",
+   "name": "National Council on Independent Living",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 6 — Health & Human Services"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "NATIONALCOUNCILO::annual-conference",
+     "name": "Annual Conference",
+     "url": null,
+     "status": "needs_url",
+     "harvest": false,
+     "registry_status": "TRAINING",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "National Council on School Facilities"
+   ],
+   "names_no_body": false,
+   "event_count": 1,
+   "published_count": 0,
+   "swept_count": 0,
+   "harvest_count": 0
+  },
+  {
+   "code": "NATIONALCOUNCILO",
+   "name": "National Council on School Facilities",
+   "url": null,
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 7 — K-12 & Higher Education"
+   ],
+   "departments": [],
+   "events": [
+    {
+     "source": "staged",
+     "key": "NATIONALCOUNCILO::annual-meeting",
+     "name": "Annual meeting",
+     "url": null,
+     "status": "needs_url",
+     "harvest": true,
+     "registry_status": "SPONSOR",
+     "published": false
+    }
+   ],
+   "code_shared_with": [
+    "National Council on Independent Living"
+   ],
+   "names_no_body": false,
    "event_count": 1,
    "published_count": 0,
    "swept_count": 0,

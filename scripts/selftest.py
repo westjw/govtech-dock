@@ -17413,6 +17413,143 @@ def check_an_acronym_cannot_confirm_itself() -> int:
     return errors
 
 
+def check_a_shared_acronym_is_not_a_shared_organisation() -> int:
+    """org_code is minted from an acronym, and an acronym is not an identity.
+
+    Five unrelated associations answer to APPA - Educational Facilities,
+    Public Power, Probation & Parole, a regions row and a bare one - and
+    merging them on the shared letters produced ONE organisation record named
+    for the educational facilities association, carrying the American Public
+    Power Association's conference url, over twelve events belonging to five
+    bodies. NATIONALCOUNCILO did the same by a different route: a 16-character
+    truncation gives National Council on Independent Living and National
+    Council on School Facilities one code, so School Facilities' annual
+    meeting was filed as an Independent Living event.
+
+    That is a record wearing another record's identity - the same rule that
+    forbids pointing a company at its parent's job board, and the same one
+    that already stops an organisation being named after its own event.
+
+    The bare-name case is the subtle half. "APPA" on its own could be any of
+    the three; folding it into whichever body sorted first is the mistake,
+    not the fix. Two unknowns are not the same unknown either: an
+    unattributed url must not come to rest beside an unattributed name from
+    a different association.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import build_organisations as bo
+
+    orgs = bo.build()
+    recs = orgs["organisations"] if isinstance(orgs, dict) else orgs
+
+    # ONE RECORD MUST NOT SPAN TWO BODIES. Read the live registries for the
+    # codes that genuinely carry several, and require each to have been split.
+    from collections import defaultdict
+    names = defaultdict(set)
+    for f in ("national_events.json", "state_events.json"):
+        for r in bo._read(f, "events"):
+            c = (r.get("org_code") or "").strip().upper()
+            if c and r.get("org_name"):
+                names[c].add(bo.tidy_name(r["org_name"], False))
+    multi = {c: bo.bodies_under(c, ns) for c, ns in names.items()
+             if len(bo.bodies_under(c, ns)) > 1}
+    if not multi:
+        return errors + fail(
+            "no org_code in either registry resolves to more than one "
+            "organisation, so this check is testing nothing. It was written "
+            "against APPA, NACAA, IACA and NATIONALCOUNCILO - if those are "
+            "genuinely resolved, retire it rather than leave it passing "
+            "vacuously")
+    for want in ("APPA", "NATIONALCOUNCILO"):
+        if want not in multi:
+            errors += fail(
+                f"{want} no longer reads as several organisations. It is the "
+                f"case this check exists for - five bodies answer to APPA, "
+                f"and a 16-character truncation gives Independent Living and "
+                f"School Facilities one code")
+
+    for code, bodies in sorted(multi.items()):
+        mine = [r for r in recs if r.get("code") == code]
+        if len(mine) < len(bodies):
+            errors += fail(
+                f"org_code {code} resolves to {len(bodies)} organisations "
+                f"({sorted(bodies.values())[:3]}) and was published as "
+                f"{len(mine)} record(s). An acronym is not an identity: each "
+                f"body gets its own record, or one wears another's name and url")
+
+    # AND NOTHING CROSSES WITHIN A CODE. Two bodies sharing an acronym must
+    # never share a url - that is the publicpower.org-on-the-educational-
+    # facilities-name failure, stated as a rule.
+    for code in multi:
+        seen = {}
+        for r in recs:
+            if r.get("code") != code or not r.get("url"):
+                continue
+            seen.setdefault(r["url"], set()).add(r.get("name"))
+        for u, who in seen.items():
+            if len({w for w in who if w}) > 1:
+                errors += fail(
+                    f"under org_code {code}, one url sits on "
+                    f"{len(who)} different organisation names: {u} -> "
+                    f"{sorted(w for w in who if w)[:3]}")
+
+    # THE MERGE HALF, which is the same mistake pointing the other way.
+    # "ASCLD (Crime Lab Directors)" and "American Society of Crime Laboratory
+    # Directors" are one association written twice by two catalogues; 45 of
+    # the shared codes are that shape, and splitting them manufactures an
+    # organisation that does not exist.
+    same = bo.bodies_under("ASCLD", ["ASCLD (Crime Lab Directors)",
+                                     "American Society of Crime "
+                                     "Laboratory Directors"])
+    if len(same) != 1:
+        errors += fail(
+            f"a gloss and its spelled-out name were read as {len(same)} "
+            f"organisations: {sorted(same.values())}. One body written twice "
+            f"is a duplicate to merge, not two associations")
+    if list(same.values()) != ["American Society of Crime Laboratory Directors"]:
+        errors += fail(f"the merge kept {list(same.values())} rather than the "
+                       f"spelled-out name a reader would recognise")
+
+    # A CLASS ROW NAMES NOBODY. "APPA regions" is a class of body, not a body.
+    classy = bo.bodies_under("AFDO", ["AFDO (Food & Drug Officials)",
+                                      "AFDO regions"])
+    if len(classy) != 1:
+        errors += fail(f"'AFDO regions' was counted as an organisation: "
+                       f"{sorted(classy.values())}. A class of body is not a body")
+
+    # THE BARE NAME MUST NOT BE ADOPTED. A row offering only the acronym is
+    # not evidence for any of the qualified bodies.
+    fixture = ["APPA", "APPA (Public Power)", "APPA (Educational Facilities)"]
+    got = bo.bodies_under("APPA", fixture)
+    if sorted(got.values()) != ["APPA (Educational Facilities)",
+                                "APPA (Public Power)"]:
+        errors += fail(
+            f"bodies_under read {fixture} as {sorted(got.values())}. The bare "
+            f"acronym names NO body - it could be either of them, and adding "
+            f"it to one is the mistake - so exactly the two glossed bodies "
+            f"come back")
+
+    # AND THE ROW ITSELF STILL LANDS SOMEWHERE. Naming no body is not a
+    # reason to drop an event on the floor; it gets an unattributed record,
+    # separate from every named one, so nothing of its own is lost and
+    # nothing of anyone else's attaches to it.
+    appa = [r for r in recs if r.get("code") == "APPA"]
+    unattributed = [r for r in appa if r.get("names_no_body")]
+    if not unattributed:
+        errors += fail("every APPA row was attributed to a named body, but "
+                       "some name only the bare acronym - those must land in "
+                       "a record of their own, flagged, not be assigned")
+    for r in unattributed:
+        if not r.get("events"):
+            errors += fail(f"an unattributed APPA record carries no events, "
+                           f"so a row was dropped rather than parked: {r.get('name')!r}")
+    return errors
+
+
 def check_a_recheck_never_costs_a_directory_it_did_not_look_at() -> int:
     """--recheck may replace a stored verdict. It may not delete one unread.
 
@@ -18113,6 +18250,7 @@ def main() -> int:
     errors += check_staging_a_catalogue_never_costs_an_observed_fact()
     errors += check_an_organisation_is_not_one_of_its_own_events()
     errors += check_an_acronym_cannot_confirm_itself()
+    errors += check_a_shared_acronym_is_not_a_shared_organisation()
     errors += check_a_recheck_never_costs_a_directory_it_did_not_look_at()
     errors += check_a_registry_cannot_be_saved_over_the_other()
     errors += check_ats_advice_covers_the_board()

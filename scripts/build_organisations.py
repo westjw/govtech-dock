@@ -117,8 +117,118 @@ def _read(name: str, key: str) -> list:
     return d.get(key, []) if isinstance(d, dict) else d
 
 
+_GLOSS = re.compile(r"^\s*\((.+)\)\s*$")
+_REGION = re.compile(r"^(east|west|north|south|midwest|northeast|northwest|"
+                     r"southeast|southwest|central|mountain|pacific|"
+                     r"great lakes|new england)\b", re.I)
+_CLASSY = re.compile(r"^(regions?|chapters?|affiliates?|sections?|"
+                     r"states?|members?)\b", re.I)
+
+
+def _significant(text: str) -> list:
+    return [w for w in re.findall(r"[a-z0-9]+", (text or "").lower())
+            if len(w) > 2 and w not in
+            {"the", "and", "for", "assn", "association", "of", "on", "national",
+             "american", "society", "council", "inc"}]
+
+
+def _same_body(gloss: str, full: str) -> bool:
+    """Is this parenthetical gloss a short form of this spelled-out name?
+
+    "AAFCO (Feed Control Officials)" and "Assn of American Feed Control
+    Officials" are one association written twice, which is what 47 of the
+    staged pairs are. "Crime Lab Directors" against "American Society of
+    Crime Laboratory Directors" is the same claim with lab/laboratory in the
+    way, so the test is a prefix match per word, not equality.
+    """
+    want, have = _significant(gloss), _significant(full)
+    if not want or not have:
+        return False
+    hit = sum(1 for w in want
+              if any(h.startswith(w) or w.startswith(h) for h in have))
+    return hit * 2 >= len(want)
+
+
+def bodies_under(code: str, names) -> dict:
+    """Which distinct organisations share this org_code, and under what name.
+
+    AN ACRONYM IS NOT AN IDENTITY. Five unrelated associations answer to
+    APPA - Educational Facilities, Public Power, Probation & Parole, plus a
+    regions row and a bare one - and merging them on the shared letters
+    produced ONE record named for the educational facilities association
+    carrying the American Public Power Association's conference url, over
+    twelve events belonging to five bodies. NATIONALCOUNCILO does it by a
+    different route: a 16-character truncation gives Independent Living and
+    School Facilities one code, so School Facilities' annual meeting was
+    filed as an Independent Living event.
+
+    But the opposite mistake is just as easy, and more common in this data.
+    "ASCLD (Crime Lab Directors)" and "American Society of Crime Laboratory
+    Directors" are ONE body written twice, once by each source catalogue -
+    45 of the shared codes are that shape. Splitting them would manufacture
+    an organisation, which is the same error pointing the other way.
+
+    So the rule reads the shape of the names, not their number:
+
+      CODE (gloss)   - a distinct body IF its gloss names something the
+                       other names do not
+      spelled out    - a distinct body unless it expands one of the glosses
+      CODE Region    - a regional body of its own (CSG East, CSG Midwest)
+      CODE regions   - a CLASS of body, not a body; names nobody
+      CODE alone     - names nobody when the code holds several, because it
+                       could be any of them, and picking is the mistake
+
+    Returns {casefolded key: canonical name}.
+    """
+    glosses, fulls, regions = {}, [], {}
+    for n in names:
+        t = (n or "").strip()
+        if not t:
+            continue
+        tail = t[len(code):].strip() if t.upper().startswith(code.upper()) else None
+        if tail is not None:
+            m = _GLOSS.match(tail)
+            if m:
+                glosses[m.group(1).strip()] = t
+                continue
+            if not tail:                      # the bare acronym
+                continue
+            if _CLASSY.match(tail):           # "APPA regions" - a class
+                continue
+            if _REGION.match(tail):
+                regions[tail.casefold()] = t
+                continue
+        fulls.append(t)
+
+    out = {}
+    for g, canonical in glosses.items():
+        out[g.casefold()] = canonical
+    for t in regions.values():
+        out[t.casefold()] = t
+    for f in fulls:
+        joined = next((g for g in glosses if _same_body(g, f)), None)
+        if joined is not None:
+            # ONE BODY, TWO NAMES. Keep the spelled-out one: it is what a
+            # reader recognises, and the gloss is a catalogue's shorthand.
+            out[joined.casefold()] = f
+        else:
+            out[f.casefold()] = f
+    return out
+
+
 def build() -> dict:
     orgs: dict = {}
+    # Which codes carry more than one body, decided before anything is slotted
+    # so the first row under a shared code cannot claim the code for itself.
+    shared: dict = {}
+    for f, key in (("national_events.json", "org_name"),
+                   ("state_events.json", "org_name")):
+        for r in _read(f, "events"):
+            c = (r.get("org_code") or "").strip().upper()
+            if c and r.get(key):
+                shared.setdefault(c, set()).add(r[key])
+    shared = {c: bodies_under(c, ns) for c, ns in shared.items()
+              if len(bodies_under(c, ns)) > 1}
 
     def slot(code: str, name: str, *, is_org_name: bool = False) -> dict:
         """`is_org_name` says the caller read this from a field that names the
@@ -131,12 +241,31 @@ def build() -> dict:
         later. An event name is a last resort, never a tie-break.
         """
         code = (code or "").strip().upper() or "UNSPECIFIED"
-        o = orgs.setdefault(code, {
-            "code": code, "name": name or code, "url": None,
-            "is_a_class": False, "_named": False,
+        # A SHARED CODE IS NOT ONE RECORD. Where several bodies answer to the
+        # same letters, each gets its own, keyed by its own name, so no url or
+        # event can cross from one to another. A row that offers only the
+        # bare code, or only an event name, names no body and gets a record of
+        # its own rather than being handed to whichever body sorted first.
+        key, body = code, None
+        if code in shared:
+            t = tidy_name(name or "", False) if is_org_name else ""
+            body = shared[code].get(t.casefold()) if t else None
+            # TWO UNKNOWNS ARE NOT THE SAME UNKNOWN. A row that names no body
+            # stands on its own, keyed by what it does say, so an unattributed
+            # url cannot land beside an unattributed name from a different
+            # association - which is how publicpower.org came to sit on
+            # "APPA Leadership in Educational Facilities".
+            key = f"{code}::{body}" if body else f"{code}::?{(name or '').strip()}"
+        o = orgs.setdefault(key, {
+            "code": code, "name": (body or name or code), "url": None,
+            "is_a_class": False, "_named": bool(body),
             "scopes": set(), "blocks": set(), "departments": set(),
             "events": [],
         })
+        if code in shared:
+            o["code_shared_with"] = sorted(v for v in shared[code].values()
+                                           if v != body)
+            o["names_no_body"] = body is None
         if not name:
             return o
         if is_org_name:
