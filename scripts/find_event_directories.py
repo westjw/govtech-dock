@@ -493,8 +493,42 @@ def state_in(geo: str | None) -> str | None:
                key=len, default=None)
 
 
+def _names_the_org(page: str, url: str, org_url: str | None,
+                   org_name: str, org_code: str = "") -> bool:
+    """The site itself, or the organisation's name where a reader would see it."""
+    def host(u):
+        return up.urlsplit(u or "").netloc.lower().replace("www.", "")
+    here, theirs = host(url), host(org_url)
+    if here and theirs and (here == theirs or here.endswith("." + theirs)
+                            or theirs.endswith("." + here)):
+        return True
+    head = " ".join(re.sub(r"<[^>]+>", " ", m.group(1)) for m in
+                    re.finditer(r"<(?:title|h1|h2)[^>]*>(.*?)</(?:title|h1|h2)>",
+                                page[:200000], re.S | re.I)).lower()
+    hay = f"{re.sub(r'[^a-z0-9]+', ' ', up.unquote(url).lower())} " \
+          f"{re.sub(r'[^a-z0-9]+', ' ', head)}"
+    words = [w for w in re.findall(r"[a-z0-9]+", (org_name or "").lower())
+             if len(w) > 2 and w not in
+             {"the", "and", "for", "assn", "association", "of", "on", "inc",
+              "national", "american", "society", "council", "institute"}]
+    # THE ACRONYM COUNTS HERE, and this is not the circular case. When a
+    # domain is PROPOSED from an acronym, a page saying that acronym proves
+    # nothing - the domain and the evidence are one fact, which is why
+    # resolve_org_sites strikes it out. A third-party expo host is not
+    # derived from the acronym, so "AAFCO" in the title of a cvent page is
+    # independent evidence, and it is what such a page actually prints.
+    ac = re.sub(r"[^a-z0-9]+", "", (org_code or "").lower())
+    if len(ac) >= 3 and re.search(rf"\b{re.escape(ac)}\b", hay):
+        return True
+    if not words:
+        return False              # nothing to look for is not evidence of ours
+    hit = sum(1 for w in words if re.search(rf"\b{re.escape(w)}\b", hay))
+    return hit >= min(2, len(words))
+
+
 def owns(page: str, url: str, geo: str | None,
-         org_url: str | None = None, parent_site: str | None = None) -> bool:
+         org_url: str | None = None, parent_site: str | None = None,
+         org_name: str = "", org_code: str = "") -> bool:
     """Does this exhibitor list belong to the STATE chapter, or to its parent?
 
     THE TRAP, caught on 2026-09-02. North Carolina Police Chiefs' org url is
@@ -539,7 +573,20 @@ def owns(page: str, url: str, geo: str | None,
     # alone and everything else is refused to a person.
     state = state_in(geo)
     if not state and not (geo or "").strip():
-        return True                       # not a state event at all
+        # NO GEO AT ALL - every one of the 837 national rows. This used to
+        # return True before looking at anything, which switched the whole
+        # guard off for the registry that needs it most: judge() produces
+        # "wrong_event" only through owns(), so no national page could ever
+        # be refused as somebody else's.
+        #
+        # A national body has no state to name, so the evidence is the site
+        # and the organisation's own name. Requiring the org's own HOST would
+        # be too strict to be honest - associations run their exhibitor sales
+        # on cvent, jotform and growthzone, and refusing those deletes real
+        # doors. But a third-party page selling AAFCO's floor says AAFCO in
+        # its title, so that is the bar: the org's host, or the page naming
+        # the organisation where a heading can be read.
+        return _names_the_org(page, url, org_url, org_name, org_code)
 
     def host(u):
         return up.urlsplit(u or "").netloc.lower().replace("www.", "")
@@ -721,7 +768,7 @@ def judge(page: str, url: str, host_hint: str | None, geo: str | None = None,
     doubt = sweep.suspicious(names)
     if doubt:
         return "no", doubt, names
-    if not owns(page, url, geo, org_url, parent_site):
+    if not owns(page, url, geo, org_url, parent_site, org_name, org_code):
         return "wrong_event", ("this list is not on the chapter's own site and "
                                "names the state nowhere - it reads as the "
                                "national parent's event, not this chapter's"), names

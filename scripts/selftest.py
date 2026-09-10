@@ -15521,9 +15521,57 @@ def check_a_chapter_directory_is_not_its_parents() -> int:
                "Eta Engineering LLC", "Theta Analytics Inc", "Iota Data Systems",
                "Kappa Networks Inc", "Lambda Cloud Solutions", "Mu Platform Group"]
     good_page = "".join(f'<a href="/x{i}">{n}</a>' for i, n in enumerate(vendors))
-    if fed.judge(good_page, "https://events.example.com/list", "IACP", None)[0] != "directory":
-        print("  FAIL: the ownership fixture is not accepted even for a non-state "
-              "event, so this check would pass with owns() deleted")
+    # A ROW WITH NO GEO IS NOT A ROW WITH NO OWNER. This case used to require
+    # judge() to ACCEPT this page for a geo-less row, on the reasoning that
+    # otherwise the check would pass with owns() deleted. That reasoning was
+    # sound and the assertion was not: geo-less is the state of all 837
+    # national rows, so it wrote the national hole down as the correct answer.
+    # owns() returned True before looking at anything, and since owns() is the
+    # only producer of "wrong_event", no national page could ever be refused.
+    #
+    # The purpose survives intact - deleting owns() still fails this pair -
+    # but the halves now say what is true. A national body has no state to
+    # name, so the evidence is its site or its own name in a heading.
+    named = ("<title>IACP Annual Conference Exhibitors</title>" + good_page)
+    if fed.judge(good_page, "https://events.example.com/list", "IACP", None,
+                 "https://www.theiacp.org/", None, "", (),
+                 "Intl Assn of Chiefs of Police", "IACP")[0] == "directory":
+        print("  FAIL: an off-site list that names neither the organisation nor "
+              "a state was accepted for a geo-less row. There is no state to "
+              "look for, so the site or the organisation's own name is the "
+              "whole of the evidence - and this page carries neither")
+        errors += 1
+    # THE BODY IS NOT A HEADING. A page hosted anywhere can mention IACP in
+    # a footer, a sponsor blurb or a link to the parent - that is where the
+    # false positive lives, and it is the same reason owns() reads titles and
+    # h1s for a state rather than the whole document.
+    in_body = ("<title>Exhibitors</title>" + good_page +
+               "<p>Presented in partnership with IACP. IACP members receive "
+               "a discount. Contact IACP for details.</p>")
+    if fed.judge(in_body, "https://events.example.com/list", "IACP", None,
+                 "https://www.theiacp.org/", None, "", (),
+                 "Intl Assn of Chiefs of Police", "IACP")[0] == "directory":
+        print("  FAIL: an off-site list was accepted because the organisation "
+              "is mentioned in its BODY. A footer credit is not ownership - "
+              "the name has to be where a reader would see whose page this is")
+        errors += 1
+
+    # AND THE SITE ITSELF STILL SETTLES IT, with no name on the page at all.
+    # theiacp.org/exhibitors is IACP's however little the page repeats it -
+    # the same rule that makes nyplanning.org/about/sponsors New York's.
+    if fed.judge(good_page, "https://www.theiacp.org/exhibitors", "IACP", None,
+                 "https://www.theiacp.org/", None, "", (),
+                 "Intl Assn of Chiefs of Police", "IACP")[0] != "directory":
+        print("  FAIL: a list on the organisation's OWN host was refused "
+              "because the page did not also repeat the name. The site is the "
+              "evidence")
+        errors += 1
+    if fed.judge(named, "https://events.example.com/list", "IACP", None,
+                 "https://www.theiacp.org/", None, "", (),
+                 "Intl Assn of Chiefs of Police", "IACP")[0] != "directory":
+        print("  FAIL: an off-site list whose own title names the organisation "
+              "was refused. Associations sell their floors on cvent, jotform "
+              "and growthzone; requiring their own host deletes real doors")
         errors += 1
     if fed.judge(good_page, "https://events.example.com/list", "IACP", "North Carolina",
                  "https://www.myiacp.org/NC__Login", IACP)[0] == "directory":

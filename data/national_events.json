@@ -400,7 +400,6 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.aafco.org",
-   "directory_url": null,
    "status": "no_directory_link",
    "promoted": false,
    "org_url_why": "names AAFCO and ['control', 'feed', 'officials']",
@@ -973,12 +972,11 @@
    "verified": false,
    "origin": "sources_national2.csv",
    "org_url": "https://www.acrl.org",
-   "directory_url": null,
    "status": "directory_unattributed",
    "promoted": false,
    "org_url_why": "names ACRL and ['college', 'libraries', 'research']",
    "candidate_url": "https://www.ala.org/tools/programming",
-   "directory_note": "'ACRL Conference' names nothing its sibling events do not - it and 'Annual Conference' read as one event staged twice, which is a merge for a person, not a directory to find"
+   "directory_note": "'ACRL Conference' and 'Annual Conference' both reduce to the same phrase once the organisation's name is taken out - they read as one event staged twice, which is a merge for a person, not a directory to find"
   },
   {
    "key": "ACRL::annual-conference",
@@ -997,12 +995,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.acrl.org",
-   "directory_url": null,
    "status": "directory_unattributed",
    "promoted": false,
    "org_url_why": "names ACRL and ['college', 'libraries', 'research']",
    "candidate_url": "https://www.ala.org/tools/programming",
-   "directory_note": "'Annual Conference' names nothing its sibling events do not - it and 'ACRL Conference' read as one event staged twice, which is a merge for a person, not a directory to find"
+   "directory_note": "'Annual Conference' and 'ACRL Conference' both reduce to the same phrase once the organisation's name is taken out - they read as one event staged twice, which is a merge for a person, not a directory to find"
   },
   {
    "key": "ACT::international-conference",
@@ -1126,7 +1123,6 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.advancingstates.org",
-   "directory_url": null,
    "status": "needs_person",
    "promoted": false,
    "org_url_why": "its own heading reads 'advancing states'",
@@ -1150,7 +1146,6 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.advancingstates.org",
-   "directory_url": null,
    "status": "directory_unattributed",
    "promoted": false,
    "org_url_why": "its own heading reads 'advancing states'",
@@ -1241,7 +1236,6 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.afdo.org",
-   "directory_url": null,
    "status": "directory_unattributed",
    "promoted": false,
    "org_url_why": "names AFDO and ['drug', 'food', 'officials']",
@@ -1265,7 +1259,6 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.afdo.org",
-   "directory_url": null,
    "status": "directory_unattributed",
    "promoted": false,
    "org_url_why": "names AFDO and ['drug', 'food', 'officials']",
@@ -1800,12 +1793,11 @@
    "verified": false,
    "origin": "sources_national2.csv",
    "org_url": "https://www.ampo.org",
-   "directory_url": null,
    "status": "directory_unattributed",
    "promoted": false,
    "org_url_why": "names AMPO and ['metropolitan', 'organizations', 'planning']",
    "candidate_url": "https://ampo.org/news-events/ampo-annual-conference/2024-annual-conference-sponsor-prospectus/",
-   "directory_note": "'AMPO Annual Conference' names nothing its sibling events do not - it and 'Annual meetings' read as one event staged twice, which is a merge for a person, not a directory to find"
+   "directory_note": "'AMPO Annual Conference' and 'Annual meetings' both reduce to the same phrase once the organisation's name is taken out - they read as one event staged twice, which is a merge for a person, not a directory to find"
   },
   {
    "key": "AMPO::annual-meetings",
@@ -1824,12 +1816,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.ampo.org",
-   "directory_url": null,
    "status": "directory_unattributed",
    "promoted": false,
    "org_url_why": "names AMPO and ['metropolitan', 'organizations', 'planning']",
    "candidate_url": "https://ampo.org/news-events/ampo-annual-conference/2024-annual-conference-sponsor-prospectus/",
-   "directory_note": "'Annual meetings' names nothing its sibling events do not - it and 'AMPO Annual Conference' read as one event staged twice, which is a merge for a person, not a directory to find"
+   "directory_note": "'Annual meetings' and 'AMPO Annual Conference' both reduce to the same phrase once the organisation's name is taken out - they read as one event staged twice, which is a merge for a person, not a directory to find"
   },
   {
    "key": "AMWA::executive-management-conference",
@@ -3006,11 +2997,9 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.arsl.org",
-   "directory_url": null,
    "status": "not_a_directory",
    "promoted": false,
    "org_url_why": "names ARSL and ['libraries', 'rural', 'small']",
-   "candidate_url": "https://www.arsl.org/sponsors-and-exhibitors-2026",
    "registry_status_alt": "LIKELY"
   },
   {
@@ -3180,11 +3169,9 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.ascld.org",
-   "directory_url": null,
    "status": "not_a_directory",
    "promoted": false,
    "org_url_why": "its own heading reads 'american society of crime laboratory directors'",
-   "candidate_url": "https://www.ascld.org/donate/",
    "registry_status_alt": "TABLETOP"
   },
   {
@@ -3228,7 +3215,6 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.asdwa.org",
-   "directory_url": null,
    "status": "no_directory_link",
    "promoted": false,
    "org_url_why": "names ASDWA and ['administrators', 'drinking', 'water']"
@@ -3250,12 +3236,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.asfpm.org",
-   "directory_url": null,
    "status": "directory_unattributed",
    "promoted": false,
    "org_url_why": "names ASFPM and ['floodplain', 'managers']",
    "candidate_url": "https://www.floods.org/conference/sponsors-and-exhibitors/",
-   "directory_note": "'Annual Conference' names nothing its sibling events do not - it and 'State floodplain association conferences' read as one event staged twice, which is a merge for a person, not a directory to find"
+   "directory_note": "'Annual Conference' is made only of words every one of this organisation's events uses, so no page can name it rather than 'State floodplain association conferences'. A person gives it the name it goes by, or rules on the page directly"
   },
   {
    "key": "ASFPM::state-floodplain-association-conferences",
@@ -3274,7 +3259,6 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.asfpm.org",
-   "directory_url": null,
    "status": "directory_unattributed",
    "promoted": false,
    "org_url_why": "names ASFPM and ['floodplain', 'managers']",
@@ -5104,7 +5088,6 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.csavr.org",
-   "directory_url": null,
    "status": "no_directory_link",
    "promoted": false,
    "org_url_why": "its own heading reads 'council of state administrators of vocational rehabilitation'",
@@ -5130,12 +5113,11 @@
     "sources_national2.csv"
    ],
    "org_url": "https://csda.net",
-   "directory_url": null,
    "status": "directory_unattributed",
    "promoted": false,
    "org_url_why": "names ['california', 'districts', 'special']",
    "candidate_url": "https://csda.net/exhibitor-sponsor",
-   "directory_note": "'CSDA Annual Conference & Expo' names nothing its sibling events do not - it and 'Special District Leadership Academy' read as one event staged twice, which is a merge for a person, not a directory to find"
+   "directory_note": "'CSDA Annual Conference & Expo' is made only of words every one of this organisation's events uses, so no page can name it rather than 'Special District Leadership Academy'. A person gives it the name it goes by, or rules on the page directly"
   },
   {
    "key": "CSDA::special-district-leadership-academy",
@@ -5154,7 +5136,6 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://csda.net",
-   "directory_url": null,
    "status": "list_is_an_image",
    "promoted": false,
    "org_url_why": "names ['california', 'districts', 'special']",
@@ -5478,11 +5459,9 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.cvsa.org",
-   "directory_url": null,
    "status": "not_a_directory",
    "promoted": false,
    "org_url_why": "its own heading reads 'commercial vehicle safety alliance'",
-   "candidate_url": "https://cvsa.org/sponsorship/",
    "registry_status_alt": "LIKELY"
   },
   {
@@ -5631,7 +5610,6 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.ecos.org",
-   "directory_url": null,
    "status": "no_directory_link",
    "promoted": false,
    "org_url_why": "names ECOS and ['environmental']"
@@ -8915,13 +8893,12 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.nabca.org",
-   "directory_url": null,
    "status": "needs_person",
    "promoted": false,
    "org_url_why": "names ['alcohol', 'beverage', 'control']",
+   "registry_status_alt": "LIKELY",
    "candidate_url": "https://www.nabca.org/ai-beverage-alcohol-marketplace-simply-basics",
-   "directory_note": "49 names, mixed (14% carry a corporate marker, 6% name a site section - worth a look before running intake)",
-   "registry_status_alt": "LIKELY"
+   "directory_note": "49 names, mixed (14% carry a corporate marker, 6% name a site section - worth a look before running intake)"
   },
   {
    "key": "NACA::training-conference",
@@ -10764,7 +10741,6 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.naruc.org",
-   "directory_url": null,
    "status": "org_unreachable",
    "promoted": false,
    "org_url_why": "names NARUC and ['commissioners', 'regulatory', 'utility']"
@@ -10786,7 +10762,6 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.naruc.org",
-   "directory_url": null,
    "status": "org_unreachable",
    "promoted": false,
    "org_url_why": "names NARUC and ['commissioners', 'regulatory', 'utility']"
@@ -10808,8 +10783,7 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.naruc.org",
-   "directory_url": null,
-   "status": "no_directory_link",
+   "status": "org_unreachable",
    "promoted": false,
    "org_url_why": "names NARUC and ['commissioners', 'regulatory', 'utility']"
   },
@@ -11072,7 +11046,6 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.nasca.org",
-   "directory_url": null,
    "status": "no_directory_link",
    "promoted": false,
    "org_url_why": "names NASCA and ['administrators', 'chief']"
@@ -11377,7 +11350,6 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.naseo.org",
-   "directory_url": null,
    "status": "no_directory_link",
    "promoted": false,
    "org_url_why": "names NASEO and ['energy', 'officials']",
@@ -11400,7 +11372,6 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.naseo.org",
-   "directory_url": null,
    "status": "no_directory_link",
    "promoted": false,
    "org_url_why": "names NASEO and ['energy', 'officials']"
@@ -11471,7 +11442,6 @@
     "sources_national2.csv"
    ],
    "org_url": "https://nasfa.net",
-   "directory_url": null,
    "status": "no_directory_link",
    "promoted": false,
    "org_url_why": "names NASFA and ['administrators', 'facilities']",
@@ -11752,7 +11722,6 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.naspl.org",
-   "directory_url": null,
    "status": "no_directory_link",
    "promoted": false,
    "org_url_why": "names NASPL and ['lotteries', 'provincial']"
@@ -12205,7 +12174,6 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.nathpo.org",
-   "directory_url": null,
    "status": "needs_person",
    "promoted": false,
    "org_url_why": "names NATHPO and ['historic', 'officers', 'preservation']",
@@ -12611,12 +12579,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.ncchc.org",
-   "directory_url": null,
    "status": "directory_unattributed",
    "promoted": false,
    "org_url_why": "names NCCHC and ['correctional', 'health']",
    "candidate_url": "https://ncchc.org/education-events/sponsorship-exhibits/",
-   "directory_note": "'National Conference' names nothing its sibling events do not - it and 'Spring Conference' read as one event staged twice, which is a merge for a person, not a directory to find"
+   "directory_note": "'National Conference' is made only of words every one of this organisation's events uses, so no page can name it rather than 'Spring Conference'. A person gives it the name it goes by, or rules on the page directly"
   },
   {
    "key": "NCCHC::spring-conference",
@@ -12635,7 +12602,6 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.ncchc.org",
-   "directory_url": null,
    "status": "directory_unattributed",
    "promoted": false,
    "org_url_why": "names NCCHC and ['correctional', 'health']",
@@ -12830,11 +12796,9 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.nclgs.org",
-   "directory_url": null,
    "status": "not_a_directory",
    "promoted": false,
-   "org_url_why": "its own heading reads 'national council of legislators from gaming states'",
-   "candidate_url": "https://nclgs.org/become-a-sponsor/"
+   "org_url_why": "its own heading reads 'national council of legislators from gaming states'"
   },
   {
    "key": "NCMM/EASTERSEALS::national-center-for-mobility-mgmt-events",
@@ -13245,7 +13209,6 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.ncwm.com",
-   "directory_url": null,
    "status": "no_directory_link",
    "promoted": false,
    "org_url_why": "names NCWM and ['measures', 'weights']",
@@ -13268,7 +13231,6 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.ncwm.com",
-   "directory_url": null,
    "status": "no_directory_link",
    "promoted": false,
    "org_url_why": "names NCWM and ['measures', 'weights']"
@@ -16573,11 +16535,9 @@
     "sources_national2.csv"
    ],
    "org_url": "https://www.strima.org",
-   "directory_url": null,
    "status": "not_a_directory",
    "promoted": false,
    "org_url_why": "names STRIMA and ['insurance', 'management', 'risk']",
-   "candidate_url": "https://strima.org/news-events/2025-sponsors.html",
    "registry_status_alt": "LIKELY"
   },
   {
