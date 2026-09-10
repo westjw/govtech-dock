@@ -17046,6 +17046,86 @@ def check_staging_a_catalogue_never_costs_an_observed_fact() -> int:
     return errors
 
 
+def check_an_organisation_is_not_one_of_its_own_events() -> int:
+    """The body behind the events, derived and never authored.
+
+    conferences.json is a flat list with no organisation field at all - the
+    organiser exists only as a substring of the event name and the tag. That
+    held while the catalogue was 139 curated events. It does not now: 232
+    organisations run more than one, and NRPA alone runs the Annual
+    Conference plus Directors School, Revenue School, Green School,
+    Innovation Labs, a Legislative Forum and four certification programmes.
+    A reader on one of those could not reach the others.
+
+    THE BUG THIS EXISTS FOR. Having no organisation field, the catalogue pass
+    can only offer an EVENT name, and letting that compete on length made APA
+    read "APA National Planning Conference" while national_events.json held
+    "American Planning Association" three rows later. An event name is a last
+    resort, never a tie-break.
+
+    And a CLASS of body is not a body. The registry says "State associations"
+    where it means fifty of them; grouping those under one code with a name
+    and a website would assert something false about all fifty.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_organisations as bo, json as _json
+    errors = 0
+    built = bo.build()["organisations"]
+    byc = {o["code"]: o for o in built}
+
+    # the name precedence, driven through build() rather than asserted on a helper
+    apa = byc.get("APA")
+    if not apa:
+        errors += fail("APA reached no organisation record at all")
+    elif "Conference" in (apa["name"] or ""):
+        errors += fail(f"an organisation is named after one of its own events: "
+                       f"{apa['name']!r}. conferences.json has no organisation "
+                       f"field, so an event name is a last resort - it must "
+                       f"never beat a real one on length")
+
+    # an organisation gathers every event it runs, from all three files
+    nrpa = byc.get("NRPA")
+    if not nrpa or nrpa["event_count"] < 2:
+        errors += fail(f"NRPA reached {(nrpa or {}).get('event_count')} event(s); "
+                       f"the point of this file is the body that runs several")
+    elif not any(e["source"] == "catalogue" for e in nrpa["events"]) or \
+            not any(e["source"] == "staged" for e in nrpa["events"]):
+        errors += fail("an organisation did not gather events from both the "
+                       "published catalogue and the staging file")
+
+    # a class of body is marked as one
+    classes = [o for o in built if o["is_a_class"]]
+    if not classes:
+        errors += fail("no organisation is marked as a class of body, though "
+                       "the registry says 'State associations' where it means "
+                       "fifty of them")
+    for o in classes:
+        if o["url"]:
+            errors += fail(f"{o['code']} is a class of body and carries a "
+                           f"website, which asserts it is one organisation")
+
+    # DERIVED, NEVER AUTHORED: rebuilding twice gives the same answer, and
+    # nothing is written back to the files it reads
+    again = {o["code"]: o for o in bo.build()["organisations"]}
+    if sorted(again) != sorted(byc):
+        errors += fail("two builds disagree; this file must be reproducible "
+                       "from its sources on every run")
+    src = (ROOT / "scripts" / "build_organisations.py").read_text()
+    if "save_companies" in src or "write_atomic" in src:
+        errors += fail("build_organisations writes through an admin path; it "
+                       "derives and must never write back to its sources")
+
+    # published counts must not overstate: an event is published only if the
+    # catalogue holds it or a staged row was actually promoted
+    for o in built:
+        pub = sum(1 for e in o["events"] if e.get("published"))
+        if pub != o["published_count"]:
+            errors += fail(f"{o['code']} published_count disagrees with its own "
+                           f"events list ({o['published_count']} vs {pub})")
+            break
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -17510,6 +17590,7 @@ def main() -> int:
     errors += check_the_rescrub_list_is_the_boards_only_you_can_read()
     errors += check_an_exhibitor_tag_reaches_the_field_that_counts()
     errors += check_staging_a_catalogue_never_costs_an_observed_fact()
+    errors += check_an_organisation_is_not_one_of_its_own_events()
     errors += check_ats_advice_covers_the_board()
     errors += check_jd_backfill_targets_real_pages()
     errors += check_public_csv_neutralises_formulas()
