@@ -17413,6 +17413,168 @@ def check_an_acronym_cannot_confirm_itself() -> int:
     return errors
 
 
+def check_a_sibling_event_cannot_claim_its_neighbours_floor() -> int:
+    """One organisation, many events, one address - and only one of them owns
+    any given exhibitor list.
+
+    Every one of the 53 staged national rows that has an org url shares it
+    with a sibling. NARUC has four: Annual Meeting, Summer Policy Summit,
+    Winter Policy Summit and a duplicate. A crawl from naruc.org finds the
+    SAME candidate pages for all four, and judge() was never given the row's
+    event name, so the first directory found would have been written as every
+    sibling's directory_url. Observed live before this rule: 'HCBS Conference'
+    and 'Membership meetings' - different events - were both handed one
+    jotform sponsor form.
+
+    A sweep of that one page then tags every exhibitor on it with four
+    conference tags, three naming events those companies never attended. It
+    is never-point-a-record-at-a-related-record's-evidence wearing a
+    conference, and it is undetectable afterwards because each row looks
+    individually well sourced.
+
+    Both halves are pinned here, because either alone is wrong: the page must
+    name THIS event, and it must not equally name a sibling.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import find_event_directories as fed
+
+    SIBS = ["Summer Policy Summit", "Winter Policy Summit", "Annual Meeting"]
+
+    # 1. THE POSITIVE HALF. A page whose title names this event, and not a
+    #    sibling's, is attributable.
+    ok, why = fed.attributes(
+        "<title>NARUC Summer Policy Summit 2026 - Exhibitors</title>",
+        "https://naruc.org/exhibit", "Summer Policy Summit",
+        [s for s in SIBS if s != "Summer Policy Summit"], "NARUC", "NARUC")
+    if not ok:
+        errors += fail(f"a page titled for this very event was refused: {why}")
+
+    # 2. THE NEGATIVE HALF, and the whole point. The same page must not be
+    #    accepted for the sibling that it does not name.
+    ok, why = fed.attributes(
+        "<title>NARUC Summer Policy Summit 2026 - Exhibitors</title>",
+        "https://naruc.org/exhibit", "Winter Policy Summit",
+        [s for s in SIBS if s != "Winter Policy Summit"], "NARUC", "NARUC")
+    if ok:
+        errors += fail("the Summer Policy Summit's exhibitor page was accepted "
+                       "as the WINTER summit's. One page, two events, and the "
+                       "companies on it would carry a conference tag naming an "
+                       "event they never attended")
+
+    # 3. NAMING SEVERAL IS NAMING NONE. An organisation-wide sponsorship form
+    #    is not attributable to whichever row was tested first.
+    both = ("<title>NARUC Sponsorship - Summer Policy Summit and Winter "
+            "Policy Summit</title>")
+    ok, why = fed.attributes(both, "https://naruc.org/sponsor",
+                             "Summer Policy Summit",
+                             [s for s in SIBS if s != "Summer Policy Summit"],
+                             "NARUC", "NARUC")
+    if ok:
+        errors += fail("a form naming both summits was attributed to one of "
+                       "them - present-for-both is unattributable, not "
+                       "attributable to the row that happened to be tested first")
+
+    # 4. THE BODY IS NOT EVIDENCE. 'winter' in association prose, or in a nav
+    #    link to the sibling's page, must not attribute anything.
+    # NOTE: this page names ONLY this event's word, nowhere near a heading.
+    # An earlier draft mentioned the sibling too, so the names-several rule
+    # refused it and the body rule was never the thing under test.
+    body = ("<title>NARUC</title><p>See the Winter Policy Summit page for "
+            "details of winter sponsorship.</p>")
+    ok, _ = fed.attributes(body, "https://naruc.org/sponsor",
+                           "Winter Policy Summit",
+                           [s for s in SIBS if s != "Winter Policy Summit"],
+                           "NARUC", "NARUC")
+    if ok:
+        errors += fail("the word 'winter' in the body attributed the page to "
+                       "the Winter Policy Summit. A sibling is routinely named "
+                       "in the nav of its sibling's page - the body is where "
+                       "the false positive lives")
+
+    # 5. A DUPLICATE IS NOT A DIRECTORY TO HUNT FOR. 'Annual Meeting' and
+    #    'NARUC Annual Meeting' reduce to the same phrase; 47 staged pairs are
+    #    that shape and they are a merge for a person.
+    if fed.distinguishing("Annual Meeting", ["NARUC Annual Meeting"],
+                          "NARUC", "NARUC"):
+        errors += fail("'Annual Meeting' and 'NARUC Annual Meeting' still read "
+                       "as different events. They are one event staged twice")
+    ok, why = fed.attributes("<title>NARUC Annual Meeting</title>",
+                             "https://naruc.org/annual", "Annual Meeting",
+                             ["NARUC Annual Meeting"], "NARUC", "NARUC")
+    if ok or "one event" not in why and "twice" not in why:
+        errors += fail(f"a row that names nothing its sibling does not was not "
+                       f"refused as a duplicate: ok={ok} why={why[:80]!r}")
+
+    # 6. AN ONLY CHILD IS UNAFFECTED. 201 chapter rows own their org_url
+    #    alone, and this rule must cost them nothing.
+    ok, why = fed.attributes("<title>Exhibitors</title>", "https://x.test/e",
+                             "Annual Conference", [])
+    if not ok:
+        errors += fail(f"a row with no siblings was put through the sibling "
+                       f"rule and refused: {why}")
+
+    # 7. AND THE CALLER HONOURS IT. The helper can be perfect and unused -
+    #    that is how seven menus got in. This drives stage_directories itself
+    #    with two siblings on one org url and one page that names only one.
+    vendors = ["Acme Technologies Inc", "Beta Solutions LLC",
+               "Gamma Systems Inc", "Delta Consulting Group",
+               "Epsilon Software Corp", "Zeta Services Ltd",
+               "Eta Engineering LLC", "Theta Analytics Inc",
+               "Iota Data Systems", "Kappa Networks Inc",
+               "Lambda Cloud Solutions", "Mu Platform Group"]
+    real = "".join(f'<a href="/x{i}">{n}</a>' for i, n in enumerate(vendors))
+    pages = {
+        "https://naruc.test/": '<a href="https://naruc.test/exhibitors">Exhibitors</a>',
+        "https://naruc.test/exhibitors":
+            f"<title>NARUC Summer Policy Summit Exhibitors</title>{real}",
+    }
+    rows = [{"org_code": "NARUC", "org_name": "NARUC", "geo": "",
+             "event_name": "Summer Policy Summit",
+             "org_url": "https://naruc.test/", "status": "org_found"},
+            {"org_code": "NARUC", "org_name": "NARUC", "geo": "",
+             "event_name": "Winter Policy Summit",
+             "org_url": "https://naruc.test/", "status": "org_found"}]
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-sib-"))
+    path = tmp / "national_events.json"
+    path.write_text(json.dumps({"registry": "national", "note": "",
+                                "events": rows}))
+    keep = (dict(fed.REGISTRIES), fed.fetch)
+    try:
+        fed.REGISTRIES["national"] = path
+        fed.fetch = lambda u: pages.get(u)
+        with contextlib.redirect_stdout(io.StringIO()):
+            fed.stage_directories(True, None, False, "national")
+        out = {r["event_name"]: r
+               for r in json.loads(path.read_text())["events"]}
+    finally:
+        fed.REGISTRIES.clear(); fed.REGISTRIES.update(keep[0])
+        fed.fetch = keep[1]
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    if not out["Summer Policy Summit"].get("directory_url"):
+        errors += fail("stage_directories refused the summit's own exhibitor "
+                       "page, which names it in the title")
+    if out["Winter Policy Summit"].get("directory_url"):
+        errors += fail(
+            f"stage_directories gave the WINTER summit the summer summit's "
+            f"exhibitor list "
+            f"({out['Winter Policy Summit']['directory_url']}). judge() can "
+            f"refuse it perfectly and it counts for nothing if the caller "
+            f"writes it anyway")
+    if out["Winter Policy Summit"].get("status") != "directory_unattributed":
+        errors += fail(
+            f"the winter row was filed as "
+            f"{out['Winter Policy Summit'].get('status')!r}. A real list that "
+            f"names no single event is its own answer - not parents_event, "
+            f"which is a peer's event and not the parent's, and not "
+            f"not_a_directory, which would be a plain false negative")
+    return errors
+
+
 def check_a_shared_acronym_is_not_a_shared_organisation() -> int:
     """org_code is minted from an acronym, and an acronym is not an identity.
 
@@ -18250,6 +18412,7 @@ def main() -> int:
     errors += check_staging_a_catalogue_never_costs_an_observed_fact()
     errors += check_an_organisation_is_not_one_of_its_own_events()
     errors += check_an_acronym_cannot_confirm_itself()
+    errors += check_a_sibling_event_cannot_claim_its_neighbours_floor()
     errors += check_a_shared_acronym_is_not_a_shared_organisation()
     errors += check_a_recheck_never_costs_a_directory_it_did_not_look_at()
     errors += check_a_registry_cannot_be_saved_over_the_other()

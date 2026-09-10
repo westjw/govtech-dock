@@ -536,9 +536,97 @@ def owns(page: str, url: str, geo: str | None,
     return bool(re.search(rf"\b{ab}\b", flat) or re.search(rf"\b{ab}\b", head))
 
 
+_NOISE = {"annual", "conference", "conferences", "meeting", "meetings",
+          "convention", "summit", "expo", "exposition", "show", "event",
+          "events", "the", "and", "for", "of", "national", "assn",
+          "association", "society", "council", "institute", "training",
+          "forum", "symposium", "congress", "session", "sessions"}
+
+
+def distinguishing(event_name: str, siblings, org_name: str = "",
+                   org_code: str = "") -> set:
+    """The words that tell THIS event from the others its organisation runs.
+
+    NARUC runs an Annual Meeting, a Summer Policy Summit and a Winter Policy
+    Summit off one url. "Annual", "policy" and "summit" are worth nothing
+    between them; "summer" and "winter" are the whole of the evidence. So the
+    words a sibling also uses are struck out, and so are the organisation's
+    own name and code, which every one of its pages says.
+
+    An EMPTY result is the useful answer, not a failure: it means this row
+    names nothing its siblings do not, which is what "Annual Meeting" and
+    "NARUC Annual Meeting" are - one event registered twice, a duplicate for
+    a person to merge rather than a directory to hunt for.
+    """
+    def toks(t):
+        return {w for w in re.findall(r"[a-z0-9]+", (t or "").lower())
+                if len(w) > 2}
+    mine = toks(event_name) - _NOISE - toks(org_name) - toks(org_code)
+    for sib in siblings:
+        mine -= toks(sib)
+    return mine
+
+
+def attributes(page: str, url: str, event_name: str, siblings,
+               org_name: str = "", org_code: str = "") -> tuple[bool, str]:
+    """Does this page prove it is THIS event's floor, not a sibling's?
+
+    One national organisation runs many events off one address. Every one of
+    the 53 staged rows that has an org url shares it with a sibling - NARUC
+    has four - so a crawl from that address finds the SAME candidate pages for
+    all of them, and the first directory found would be written as every
+    sibling's. A sweep of it then tags each exhibitor with three conferences
+    they never attended: the conference form of never-point-a-record-at-a-
+    related-record's-evidence, and undetectable afterwards, because each row
+    looks individually well sourced.
+
+    Where it looks: the url path, the title and the headings. NOT the body.
+    owns() allows a state name three times in the body and that is fair for a
+    proper noun, but "winter" and "policy" occur throughout association prose,
+    and a sibling event is routinely named in the nav of its sibling's page.
+    The body is where the false positive lives.
+
+    And the negative half, which is what turns "names this event" into
+    "proves this event": if a SIBLING's distinguishing words are on the same
+    page, it names several and belongs to none in particular. An
+    organisation-wide sponsorship form is not attributable to whichever row
+    happened to be tested first.
+    """
+    sibs = [s for s in siblings if s]
+    if not sibs:
+        return True, ""                    # nothing to be confused with
+    mine = distinguishing(event_name, sibs, org_name, org_code)
+    if not mine:
+        return False, (f"'{event_name}' names nothing its sibling events do "
+                       f"not - it and {sibs[0]!r} read as one event staged "
+                       f"twice, which is a merge for a person, not a "
+                       f"directory to find")
+    where = re.sub(r"[^a-z0-9]+", " ", up.unquote(url).lower())
+    heads = " ".join(re.sub(r"<[^>]+>", " ", m.group(1)) for m in
+                     re.finditer(r"<(?:title|h1|h2)[^>]*>(.*?)</(?:title|h1|h2)>",
+                                 page[:200000], re.S | re.I)).lower()
+    hay = f"{where} {re.sub(r'[^a-z0-9]+', ' ', heads)}"
+    said = {w for w in mine if re.search(rf"\b{re.escape(w)}\b", hay)}
+    if not said:
+        return False, (f"nothing here names this event rather than its "
+                       f"sibling(s) - looked for {sorted(mine)[:3]} in the "
+                       f"url and headings")
+    for sib in sibs:
+        theirs = distinguishing(sib, [event_name] + [x for x in sibs if x != sib],
+                                org_name, org_code)
+        also = {w for w in theirs if re.search(rf"\b{re.escape(w)}\b", hay)}
+        if also:
+            return False, (f"this page names {sorted(said)[:2]} AND "
+                           f"{sorted(also)[:2]} from {sib!r} - it names "
+                           f"several of the organisation's events and belongs "
+                           f"to none of them in particular")
+    return True, f"names {sorted(said)[:3]} where its siblings are not named"
+
+
 def judge(page: str, url: str, host_hint: str | None, geo: str | None = None,
-          org_url: str | None = None, parent_site: str | None = None
-          ) -> tuple[str, str, list]:
+          org_url: str | None = None, parent_site: str | None = None,
+          event_name: str = "", siblings=(), org_name: str = "",
+          org_code: str = "") -> tuple[str, str, list]:
     """Is this page a list of exhibitors? Returns (verdict, why, names).
 
     THE GATE THAT LET SEVEN MENUS THROUGH. It used to accept any page whose
@@ -556,6 +644,24 @@ def judge(page: str, url: str, host_hint: str | None, geo: str | None = None,
                   judgement, so it goes to a person with the evidence rather
                   than being written as a fact. Agents propose, people rule.
       no          suspicious, or reads as a menu, or grades doubtful
+
+    And a fourth, once one organisation runs several events off one address:
+
+      unattributed  the list is real and it is theirs, but nothing on it says
+                  WHICH of the organisation's events it belongs to. Not
+                  `parents_event`, which is a different fact - a sibling's
+                  floor is a PEER's event, not the parent's. Not
+                  `needs_person`, which already asks "is this list real?"
+                  where this asks "is this list yours?" - a different
+                  question with different evidence on screen. And not
+                  `not_a_directory`, which would be a plain false negative,
+                  since the page IS a directory, just not provably this row's.
+
+    The test lives HERE and not at the call site, because the candidate loop
+    breaks on the first "directory" verdict: refusing candidate #1 outside
+    judge() would leave #2 to #5 unfetched and file the row as having no
+    directory at all, turning a mis-attribution into a false "none found" -
+    which is the failure this codebase ranks worst.
     """
     names = sweep.harvest(page, host_hint)
     doubt = sweep.suspicious(names)
@@ -565,6 +671,10 @@ def judge(page: str, url: str, host_hint: str | None, geo: str | None = None,
         return "wrong_event", ("this list is not on the chapter's own site and "
                                "names the state nowhere - it reads as the "
                                "national parent's event, not this chapter's"), names
+    mine, why_not = attributes(page, url, event_name, siblings,
+                               org_name, org_code)
+    if not mine:
+        return "unattributed", why_not, names
     menu = sweep.reads_as_a_menu(names)
     if menu:
         return "no", menu, names
@@ -608,8 +718,17 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False,
     # 5 --write` therefore re-judged five rows and silently erased the evidence
     # on the other 199 - 15 directory urls and 64 candidate urls that took a
     # crawl of every parent's listing to win, deleted without being looked at.
+    # WHO SHARES AN ADDRESS WITH WHOM, computed once from the whole registry
+    # rather than from `todo`, so a --limit run still knows about the siblings
+    # it is not looking at.
+    def _norm(u):
+        return (u or "").strip().rstrip("/").lower()
+    kin: dict = {}
+    for e in doc["events"]:
+        if e.get("org_url"):
+            kin.setdefault(_norm(e["org_url"]), []).append(e.get("event_name") or "")
     print(f"{len(todo)} event(s) with an org url and no directory yet\n")
-    got = person = 0
+    got = person = unattributed = 0
     for e in todo:
         hint = e.get("parent_national")
         was = None
@@ -651,21 +770,34 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False,
             e["status"] = "no_directory_link"
             e.pop("directory_note", None)
             continue
-        best = maybe = shot = wrong = None
+        best = maybe = shot = wrong = unnamed = None
         for _t, h in direct[:5]:
             d = fetch(h)
             if not d:
                 continue
+            sibs = [n for n in kin.get(_norm(e.get("org_url")), [])
+                    if n and n != e.get("event_name")]
             verdict, why, names = judge(d, h, hint, e.get("geo"),
                                         e.get("org_url"),
-                                        PARENT_SITES.get(hint or ""))
+                                        PARENT_SITES.get(hint or ""),
+                                        e.get("event_name") or "", sibs,
+                                        e.get("org_name") or "",
+                                        e.get("org_code") or "")
             if verdict == "directory":
                 best = (h, why); break
             if verdict == "wrong_event" and not wrong:
                 wrong = (h, why)
+            if verdict == "unattributed" and not unnamed:
+                unnamed = (h, why)
             if verdict == "needs_person" and not maybe:
                 maybe = (h, why)
-            if not shot:
+            # A PAGE AN OWNERSHIP VERDICT REFUSED IS NOT A FORMATTING PROBLEM.
+            # image_only() used to run on every candidate whatever judge() had
+            # just said, and `shot` was checked before `wrong` in the chain
+            # below - so a page refused as somebody else's event was filed as
+            # "the sponsor list is a picture" and queued for the capture
+            # extension, with the ownership verdict thrown away.
+            if not shot and verdict not in ("wrong_event", "unattributed"):
                 pic = image_only(d)
                 shot = (h, pic) if pic else None
         if best:
@@ -680,6 +812,17 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False,
             e["candidate_url"], e["directory_note"] = maybe[0], maybe[1]
             person += 1
             print(f"  person  {e['event_name'][:38]:40} {maybe[1][:34]:36} {maybe[0]}")
+        elif unnamed:
+            # NOT a directory_url. The list is real and it is this
+            # organisation's; nothing on it says which of their events it is.
+            e["status"] = "directory_unattributed"
+            e["candidate_url"], e["directory_note"] = unnamed[0], unnamed[1]
+            unattributed += 1
+            print(f"  unnamed {e['event_name'][:38]:40} {unnamed[1][:34]:36} {unnamed[0]}")
+        elif wrong:
+            e["status"] = "parents_event"
+            e["candidate_url"], e["directory_note"] = wrong[0], wrong[1]
+            print(f"  parent  {e['event_name'][:38]:40} {wrong[0]}")
         elif shot:
             e["status"] = "list_is_an_image"
             e["candidate_url"] = shot[0]
@@ -687,10 +830,6 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False,
                                    f"({shot[1]}) - a person can read it, a fetcher "
                                    f"cannot. One for the capture extension.")
             print(f"  image   {e['event_name'][:38]:40} {shot[1][:40]}")
-        elif wrong:
-            e["status"] = "parents_event"
-            e["candidate_url"], e["directory_note"] = wrong[0], wrong[1]
-            print(f"  parent  {e['event_name'][:38]:40} {wrong[0]}")
         else:
             e["status"] = "not_a_directory"
             e.pop("directory_note", None)
@@ -701,7 +840,8 @@ def stage_directories(write: bool, limit: int | None, recheck: bool = False,
         if was and was.get("directory_url") and not e.get("directory_url"):
             print(f"          ^ this row HAD a directory url and no longer does: "
                   f"{was['directory_url']}")
-    print(f"\n  {got} directory url(s) found, {person} candidate(s) for a person")
+    print(f"\n  {got} directory url(s) found, {person} candidate(s) for a "
+          f"person, {unattributed} real list(s) that name no single event")
     if write:
         _save(doc, which)
     else:
