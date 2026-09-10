@@ -1,0 +1,84 @@
+name: discovery
+
+# NOBODY HAS EVER RUN THIS ON A SCHEDULE, and that is the whole reason the
+# no-board queue looks frozen. discover_ats.py has had a 45-day retry window
+# since it was written, so it already knows not to re-ask about a company it
+# probed last month - but the window only means something if the sweep runs.
+# It has not: 1,712 rows in data/discovery_log.json and the dates cluster on
+# 2026-08-19, -20 and -23, which is the week somebody ran it by hand.
+#
+# So "have they added a board, or taken the old one down" has gone unasked
+# since August for 1,700 companies. A boardless vendor that raised money in
+# September and started hiring in October looks, on this board, exactly like
+# one that has never hired at all.
+#
+# WEEKLY, NOT QUARTERLY, and that is not a contradiction of the quarterly
+# cadence. RETRY_DAYS = 45 gates which companies a run may touch, so a weekly
+# job re-probes each company at most every six or seven weeks and spends the
+# rest of its time on whoever has come due. Running the job quarterly instead
+# would mean a company that fell due the day after a run waits three months
+# for its turn, which is the window plus the schedule rather than the window.
+on:
+  schedule:
+    - cron: "0 4 * * 0"        # Sunday 04:00 UTC, clear of every other job
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  # THE SAME GROUP AS refresh, news AND watchdog. Four jobs commit into data/
+  # now, and refresh.yml's `git pull --rebase -X theirs` lets the bot's copy
+  # WIN a conflict, silently dropping another job's write.
+  group: govtech-dock-data
+  cancel-in-progress: false
+
+jobs:
+  discovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      TZ: America/New_York        # journal ids key on the date
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Restore the conditional-request cache
+        uses: actions/cache@v4
+        continue-on-error: true
+        with:
+          path: data/http_cache
+          key: discovery-http-cache-${{ github.run_id }}
+          restore-keys: |
+            discovery-http-cache-
+            http-cache-
+
+      - name: Self-test
+        run: python scripts/selftest.py
+
+      - name: Probe the companies that have come due
+        run: |
+          # BOUNDED, like the news sweep. Unbounded, one slow Sunday runs into
+          # the timeout and the whole sweep is lost rather than partly done.
+          # --limit takes the oldest first, so the backlog drains in order
+          # instead of the same fast sites being re-probed every week.
+          python scripts/discover_ats.py --limit 300 --workers 4 --write
+
+      - name: Commit what changed
+        run: |
+          git config user.name  "westjw"
+          git config user.email "67345260+westjw@users.noreply.github.com"
+          git add data/companies.json data/discovery_log.json
+          if git diff --cached --quiet; then
+            echo "nothing new to commit"
+            exit 0
+          fi
+          git commit -m "discovery: $(date -u +%Y-%m-%dT%H:%MZ) sweep"
+          git pull --rebase
+          git push

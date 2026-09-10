@@ -575,7 +575,7 @@ def _probe(cid: str, log: dict | None = None) -> dict:
 # nothing read it, so the capture worklist re-offered every company the moment
 # after it was captured, which is how a list stops feeling worth working.
 #
-# THIRTY DAYS, and the number is not new: manual.py::STALE_DAYS has meant
+# FOURTEEN DAYS, and the number is shared: manual.py::STALE_DAYS has meant
 # exactly this since the worklist was written - a hand check is good for a
 # month and then the jobs have moved on. Reused rather than re-decided, so
 # there is one answer to "how long is a check good for" instead of two.
@@ -583,7 +583,12 @@ def _probe(cid: str, log: dict | None = None) -> dict:
 # NOT PERMANENT, deliberately. A company that disappears the moment it is
 # touched is a company nobody ever revisits, and postings change. This hides
 # it for a month; it comes back on its own.
-CAPTURE_FRESH_DAYS = 30
+# A BOARD WE FOUND BUT STILL CANNOT READ IS THE ONE THAT GOES STALE FASTEST.
+# The capture is a snapshot a person took; the fetcher still cannot enumerate
+# that page, so nothing refreshes it in between. A month of drift on a board
+# somebody is actively hiring from is a month of postings the site does not
+# have and roles that have closed. Twice a month, not once.
+CAPTURE_FRESH_DAYS = 14
 
 # A CONFIRMED ABSENCE IS A FINDING, NOT A GAP. Somebody read the site and
 # there is no public board - they hire on LinkedIn or by email, which is true
@@ -592,7 +597,13 @@ CAPTURE_FRESH_DAYS = 30
 # It is not permanent either: companies raise money and start hiring, get
 # acquired and move, and `_reopened_by_news` below brings those back the
 # moment their own site says something happened.
-NO_BOARD_FRESH_DAYS = 365
+# QUARTERLY, matching the discovery sweep. A confirmed absence is a finding
+# and does not rot in a month - but it is not permanent either, because the
+# question is not "do they have a board" so much as "have they added one, or
+# taken the old one down". Three months is the owner's call and it lines up
+# with discover_ats's own retry window, so the automated probe and the human
+# queue ask at roughly the same rhythm rather than drifting apart.
+NO_BOARD_FRESH_DAYS = 90
 
 
 # Headlines that mean "look at this company again". A funding round or a new

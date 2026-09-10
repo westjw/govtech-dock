@@ -14316,11 +14316,15 @@ def check_worklist_drops_what_was_worked() -> int:
     not shrink as you work it is a list you stop working, and this one is 685
     deep.
 
-    THIRTY DAYS AND NOT FOREVER. manual.py::STALE_DAYS has meant exactly this
-    since the worklist was written - a hand check is good for a month and then
-    the postings have moved on - so it is reused rather than re-decided. A
-    company that vanished permanently the moment it was touched would never be
-    revisited, and jobs change.
+    NOT FOREVER, AND THE WINDOW DEPENDS ON THE ANSWER. A board a person had
+    to capture by hand is one no fetcher can enumerate, so nothing refreshes
+    it in between and it goes stale fastest - CAPTURE_FRESH_DAYS, shared with
+    manual.py::STALE_DAYS rather than re-decided. A person confirming there is
+    no public board at all is a different fact with a different half-life:
+    NO_BOARD_FRESH_DAYS, quarterly, matching the discovery sweep. The dates
+    below are computed FROM those constants, because the first version of this
+    test wrote "29 days - still fresh" as a literal and went red the day the
+    window moved, which taught nothing about the code.
 
     A CHECK WITH `found: null` DOES NOT COUNT, which is the case worth having
     a test for. That shape is written when somebody looked at the WRONG PAGE:
@@ -14334,25 +14338,33 @@ def check_worklist_drops_what_was_worked() -> int:
 
     errors = 0
     today = dt.date(2026, 9, 2)
+    cap, none = _admin.CAPTURE_FRESH_DAYS, _admin.NO_BOARD_FRESH_DAYS
+    ago = lambda d: (today - dt.timedelta(days=d)).isoformat()
     man = {"checks": {
-        "fresh":    {"checked_on": "2026-09-01", "by": "capture"},
-        "edge":     {"checked_on": "2026-08-04"},          # 29 days - still fresh
-        "stale":    {"checked_on": "2026-07-01"},          # 63 days - back on the list
-        "wrongpage": {"checked_on": "2026-09-02", "found": None},
-        "nothing":  {"checked_on": "2026-09-01", "found": False},
+        "fresh":    {"checked_on": ago(1), "by": "capture"},
+        "edge":     {"checked_on": ago(cap - 1)},      # inside the capture window
+        "stale":    {"checked_on": ago(cap + 1)},      # past it - back on the list
+        "wrongpage": {"checked_on": ago(0), "found": None},
+        "nothing":  {"checked_on": ago(cap + 1), "found": False},
+        "gone_long": {"checked_on": ago(none + 1), "found": False},
         "junk":     {"checked_on": "not a date"},
         "notadict": "whatever",
     }}
     got = _admin._checked_recently(man, today)
     for cid, want, why in [
         ("fresh", True, "a capture yesterday must hide it"),
-        ("edge", True, "29 days is inside the 30-day window"),
-        ("stale", False, "63 days old - the postings have moved on"),
+        ("edge", True, f"{cap - 1} days is inside the {cap}-day capture window"),
+        ("stale", False, f"{cap + 1} days old - the postings have moved on"),
         ("wrongpage", False,
          "found:null means somebody looked at the WRONG COMPANY; that record "
          "has still never been checked"),
         ("nothing", True,
-         "found:false is a real answer - a person looked and there was nothing"),
+         f"found:false is a real answer and holds longer: {cap + 1} days is "
+         f"past the capture window but well inside the {none}-day one"),
+        ("gone_long", False,
+         f"even a confirmed absence comes back - {none + 1} days is past the "
+         f"quarterly window, and the question is whether they have ADDED a "
+         f"board since, not whether they had one then"),
         ("junk", False, "an unparseable date is not a check"),
         ("notadict", False, "a malformed entry is not a check"),
     ]:
@@ -16693,14 +16705,14 @@ def check_a_hand_check_records_what_it_found() -> int:
                        "every one of those was a successful capture, and "
                        "un-suppressing them puts real finds back on the queue")
     # 4. the two windows are different, and the long one is for a found absence
-    old = (today - dt.timedelta(days=90)).isoformat()
+    old = (today - dt.timedelta(days=60)).isoformat()
     yes = {"checks": {"acme": {"checked_on": old, "found": True}}}
     no = {"checks": {"acme": {"checked_on": old, "found": False}}}
     if "acme" in admin._checked_recently(yes, today):
-        errors += fail("a board FOUND 90 days ago is still suppressed; the "
+        errors += fail("a board FOUND 60 days ago is still suppressed; the "
                        "postings behind it are what go stale")
     if "acme" not in admin._checked_recently(no, today):
-        errors += fail("a confirmed absence 90 days old came back to the queue; "
+        errors += fail("a confirmed absence 60 days old came back to the queue; "
                        "that asks a person to keep proving the same negative")
     # 5. their own site announcing a raise or a sale reopens it early
     news = {"acme": {"items": [{"date": today.isoformat(), "kind": "funding",
@@ -16723,6 +16735,33 @@ def check_a_hand_check_records_what_it_found() -> int:
     if "acme" in admin._reopened_by_news(stale, old_news):
         errors += fail("news from before the check reopened the row; a 2019 "
                        "round is not a reason to re-read a page seen today")
+    # A FIXTURE COMPUTED FROM A CONSTANT CANNOT SEE THAT CONSTANT MOVE.
+    #
+    # Every date above is derived from CAPTURE_FRESH_DAYS and
+    # NO_BOARD_FRESH_DAYS, which is what stops this test rotting the day a
+    # window is deliberately retuned. It also means the test slides with the
+    # constant: setting NO_BOARD_FRESH_DAYS to a hundred thousand moves the
+    # "past the window" fixture out to a hundred thousand days too, and every
+    # assertion still passes while a confirmed absence has quietly become
+    # permanent. Measured: three of four mutations on these numbers survived.
+    #
+    # So the numbers are also held inside a range somebody chose out loud. Not
+    # equality - the point of a constant is that it can be tuned - but bounds
+    # wide enough to allow tuning and narrow enough that "never ask again" and
+    # "ask every day" both fail.
+    if not 7 <= admin.CAPTURE_FRESH_DAYS <= 30:
+        errors += fail(f"CAPTURE_FRESH_DAYS is {admin.CAPTURE_FRESH_DAYS}. A "
+                       f"board nothing can enumerate is refreshed by nobody "
+                       f"between visits, so under a week is churn and over a "
+                       f"month is a page of roles that have closed")
+    if not 60 <= admin.NO_BOARD_FRESH_DAYS <= 180:
+        errors += fail(f"NO_BOARD_FRESH_DAYS is {admin.NO_BOARD_FRESH_DAYS}. "
+                       f"A confirmed absence is a finding, not a permanent "
+                       f"one: companies raise money and start hiring. "
+                       f"Quarterly, give or take")
+    if admin.NO_BOARD_FRESH_DAYS <= admin.CAPTURE_FRESH_DAYS:
+        errors += fail("a confirmed absence expires no later than a capture, "
+                       "which collapses two different facts into one window")
     return errors
 
 

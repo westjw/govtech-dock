@@ -38,7 +38,11 @@ MANUAL = DATA / "manual.json"
 # How long a hand check stays trustworthy. A month is a compromise: shorter and
 # the worklist becomes a chore nobody does, longer and "nothing open" stops
 # meaning anything.
-STALE_DAYS = 30
+# TWICE A MONTH, NOT ONCE. A board a person had to capture by hand is one
+# no fetcher can enumerate, so nothing refreshes it between visits - a
+# month of drift is a month of closed roles still on the site. Moved with
+# admin.CAPTURE_FRESH_DAYS, which selftest holds equal to this on purpose.
+STALE_DAYS = 14
 # Cap the worklist. A list of 43 companies gets ignored; a list of 8 gets done.
 WORKLIST_CAP = 8
 
