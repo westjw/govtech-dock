@@ -6375,11 +6375,18 @@ function cfEnds(r){
    is the honest thing to print - "verified" over a date nobody checked would
    be a claim we cannot support. */
 function cfProvenance(r){
-  const c=(r.dates_confidence||"").toLowerCase();
-  if(c==="high")return "dates read off the event's own page";
-  if(c==="medium")return "dates from a secondary source";
-  if(c)return `dates: ${c} confidence`;
-  return "dates unconfirmed";
+  /* Every value the catalogue actually uses, said in words rather than
+     interpolated. The fallback printed "dates: unannounced confidence" on 17
+     events, which reads as a grade of a date rather than what it means -
+     that the organisation has not announced one. */
+  switch((r.dates_confidence||"").toLowerCase()){
+    case "high":        return "dates read off the event's own page";
+    case "medium":      return "dates from a secondary source";
+    case "owner":       return "dates confirmed by the organisation";
+    case "unannounced": return "the next edition has not been announced";
+    case "unreachable": return "their site did not answer when we last looked";
+    default:            return "dates unconfirmed";
+  }
 }
 let CF_OPEN=null;
 function cfOpenPanel(tag){
