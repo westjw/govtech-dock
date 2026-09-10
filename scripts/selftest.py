@@ -8618,6 +8618,11 @@ def check_rating_scale() -> int:
     total: the page offers a 1-10 button, the endpoint rejects anything over
     5, and every vote past halfway fails with an error nobody sees coming.
 
+    The scale changed from 1-10 to a yes/no vote shown as stars out of five,
+    and the store moved to a `worth:` prefix rather than converting the old
+    records - a 7 out of ten is not a "yes", and reading it as one would put
+    an opinion in somebody's mouth.
+
     Also pins MIN_SHOWN, because it is a promise about honesty rather than a
     preference. Below it the API returns no average, and the page says how
     many more it needs. Somebody lowering it to 1 turns a single anonymous
@@ -8639,17 +8644,31 @@ def check_rating_scale() -> int:
                        "`const NAME = <int>;` so this guard can read them")
         return errors
 
-    # the page builds exactly `hi` buttons and labels the scale `/hi`
-    n = re.search(r"Array\.from\(\{length:(\d+)\}", page)
-    if not n or int(n.group(1)) != hi:
-        errors += fail(f"rating scale: rate.js accepts {lo}-{hi} but index.html "
-                       f"draws {n.group(1) if n else 'an unknown number of'} "
-                       f"buttons. A vote the page offers and the endpoint "
-                       f"refuses fails with an error nobody sees coming.")
-    if f"/{hi}</small>" not in page:
-        errors += fail(f"rating scale: index.html does not print '/{hi}' beside "
-                       f"the average, so the page and the endpoint disagree "
-                       f"about what the number means")
+    # THE VOTE IS YES OR NO. The page offers exactly the values the endpoint
+    # accepts - it used to draw ten buttons for a 1-10 scale, and the same
+    # drift is possible with two.
+    if (lo, hi) != (0, 1):
+        errors += fail(f"rate.js now accepts {lo}-{hi}. The page votes yes or "
+                       f"no, so anything but 0-1 is a value it can send and "
+                       f"the endpoint refuses, or one the endpoint takes and "
+                       f"nobody can cast")
+    m2 = re.search(r"const CF_VOTES=\[(.+?)\];", page)
+    offered = sorted(set(re.findall(r'"(\d+)"', m2.group(1)))) if m2 else []
+    if offered != ["0", "1"]:
+        errors += fail(f"index.html offers data-v {offered}, and rate.js "
+                       f"accepts {lo}-{hi}. A vote the page offers and the "
+                       f"endpoint refuses fails with an error nobody sees")
+    # AND THE NUMBER BESIDE IT IS SAID IN STARS, not in the raw share. 0.75 is
+    # what the endpoint stores; 3.8 out of five is what a reader is shown, and
+    # the page must be the one doing that conversion.
+    if "out of 5 stars" not in page:
+        errors += fail("index.html no longer labels the score as stars out of "
+                       "five. The endpoint returns a share of yes votes and a "
+                       "bare 0.75 beside a Yes/No control reads as nothing")
+    if "say yes" not in page:
+        errors += fail("index.html no longer prints how many of how many said "
+                       "yes. Stars alone hide whether they came from three "
+                       "votes or thirty")
     if floor < 3:
         errors += fail(f"rating floor: MIN_SHOWN is {floor}. Under 3, one "
                        f"anonymous rating publishes as an average - a badge, "
@@ -17916,6 +17935,31 @@ def check_the_conference_page_is_the_conference_panel() -> int:
             "It inherits the panel's width:min(560px,100%) and min-height:100% "
             "from a rule written for a drawer, and the page renders as a "
             "narrow column against the left edge")
+
+    # 3b. THE PANEL'S "FULL PAGE" LINK MUST LAND ON A FILE THAT EXISTS. The
+    #     app builds that address with its own slug function; build_site names
+    #     the file with _slugify. Two spellings of one rule is a 404 for every
+    #     conference whose tag happens to differ between them.
+    import re as _re
+    app_raw = (ROOT / "index.html").read_text()
+    m = _re.search(r"function cfSlug\(tag\)\{(.+?)\n\}", app_raw, _re.S)
+    if not m:
+        errors += fail("the app no longer has cfSlug, so the panel cannot name "
+                       "the /e/ page it is a rendering of")
+    else:
+        for tag in [c.get("tag") for c in board.get("conferences", [])][:400]:
+            if not tag:
+                continue
+            want = bs._slugify(tag)
+            # the app's rule, applied here: lowercase, non-alphanumeric runs
+            # to a hyphen, trimmed
+            got = _re.sub(r"^-|-$", "",
+                          _re.sub(r"[^a-z0-9]+", "-", tag.lower()))
+            if got != want:
+                errors += fail(
+                    f"the app and build_site disagree about {tag!r}: the panel "
+                    f"links /e/{got}.html and the file is /e/{want}.html")
+                break
 
     # 4. THE SAME NUMBERS, on a real conference with a real roster.
     if f'<b>{row["companies"]}</b> govtech exhibitors' not in body:

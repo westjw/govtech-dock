@@ -33,7 +33,7 @@
  *
  * WHY IT SHARES THE ALERTS NAMESPACE
  *
- * Ratings live under a `rate:` prefix in the KV namespace bound as ALERTS,
+ * Ratings live under a `worth:` prefix in the KV namespace bound as ALERTS,
  * where subscribers are `sub:`. A second namespace would mean a second setup
  * step for the owner before any of this works, and the two never collide.
  * If ratings ever outgrow it, moving them is a key rename.
@@ -57,10 +57,20 @@ const notConfigured = () =>
   json({ error: "not_configured",
          message: "Ratings are not switched on yet." }, 501);
 
-/** The scale. 1-10, and the whole file reads it from here so changing it is
- *  one edit rather than a hunt. */
-const MIN = 1;
-const MAX = 10;
+/** The scale. A vote is YES or NO - 1 or 0 - and the page shows the share
+ *  that said yes as stars out of five: all yes is five, all no is nought,
+ *  an even split is two and a half.
+ *
+ *  WHY IT CHANGED, AND WHY THE KEY CHANGED WITH IT. This was 1-10. "Was it
+ *  worth the booth fee" is a yes-or-no question that people answer
+ *  confidently, where the difference between a 6 and a 7 out of ten is
+ *  noise somebody has to invent. But the two are not the same question, so
+ *  their answers must not be averaged together: a 7/10 is not "yes" and
+ *  reading it as one would be putting an opinion in somebody's mouth. The
+ *  store moved to a `worth:` prefix rather than converting anything. Any
+ *  1-10 records stay where they are, unread and unharmed. */
+const MIN = 0;
+const MAX = 1;
 
 /** Below this many ratings we publish the COUNT and no average. */
 const MIN_SHOWN = 3;
@@ -99,7 +109,10 @@ function publicShape(tag, rec) {
   const n = rec ? rec.n || 0 : 0;
   const out = { tag, n, min_shown: MIN_SHOWN };
   if (n >= MIN_SHOWN) {
-    out.average = Math.round((rec.sum / n) * 10) / 10;
+    // `sum` is the number who said yes, because a yes is 1 and a no is 0.
+    out.yes = rec.sum || 0;
+    // Stars to one decimal: an even split is 2.5 and must not round to 3.
+    out.average = Math.round((rec.sum / n) * 50) / 10;
   } else {
     // Deliberately no average, and the page is told WHY rather than left to
     // infer that a missing field means zero.
@@ -120,7 +133,7 @@ export async function onRequestGet({ request, env }) {
   if (many) {
     const tags = many.split(",").map(cleanTag).filter(Boolean).slice(0, 200);
     const rows = await Promise.all(tags.map(async (t) => {
-      const raw = await env.ALERTS.get("rate:" + t);
+      const raw = await env.ALERTS.get("worth:" + t);
       return publicShape(t, raw ? JSON.parse(raw) : null);
     }));
     return json({ ok: true, ratings: rows });
@@ -128,7 +141,7 @@ export async function onRequestGet({ request, env }) {
 
   const tag = cleanTag(url.searchParams.get("tag"));
   if (!tag) return json({ error: "bad_tag" }, 400);
-  const raw = await env.ALERTS.get("rate:" + tag);
+  const raw = await env.ALERTS.get("worth:" + tag);
   return json({ ok: true, ...publicShape(tag, raw ? JSON.parse(raw) : null) });
 }
 
@@ -152,7 +165,7 @@ export async function onRequestPost({ request, env }) {
   const score = Number(body.score);
   if (!Number.isInteger(score) || score < MIN || score > MAX)
     return json({ error: "bad_score",
-                  message: `A rating is a whole number from ${MIN} to ${MAX}.` },
+                  message: "A vote is 1 for yes or 0 for no." },
                 400);
 
   // The per-day cap. Checked BEFORE the write, and the counter moves whether
@@ -167,7 +180,7 @@ export async function onRequestPost({ request, env }) {
   // here needs a sweeper.
   await env.ALERTS.put(key, String(used + 1), { expirationTtl: 172800 });
 
-  const k = "rate:" + tag;
+  const k = "worth:" + tag;
   const raw = await env.ALERTS.get(k);
   const rec = raw ? JSON.parse(raw) : { n: 0, sum: 0 };
   rec.n += 1;

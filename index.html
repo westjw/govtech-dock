@@ -378,9 +378,14 @@
      One search bar, then the same filtered set as a list, a grid or a
      calendar. Every colour is a token, so the dark theme comes along without
      a second palette to keep in step. */
+  /* NO overflow:hidden. It kept the pill's corners tidy and clipped every
+     popover that hangs below the bar - the picker rendered, reported itself
+     open, and could not be seen. The corners are handled by the radius on the
+     bar and on its first and last fields instead. */
   .cfsearch{display:flex;align-items:stretch;gap:0;background:var(--panel);
     border:1px solid var(--line);border-radius:999px;padding:4px;
-    margin-bottom:var(--space-3);overflow:hidden}
+    margin-bottom:var(--space-3)}
+  .cfs-field:first-child{border-radius:999px 0 0 999px}
   .cfs-field{display:flex;flex-direction:column;justify-content:center;
     gap:2px;padding:8px 16px;min-width:0;
     border-left:1px solid var(--line)}
@@ -399,6 +404,72 @@
   .cfs-go{display:grid;place-items:center;width:40px;height:40px;
     margin:auto 2px auto 8px;border-radius:50%;background:var(--accent);
     color:#fff;font-size:16px;flex:0 0 auto}
+  /* the pickers */
+  .cfs-pop{position:relative}
+  .cfs-btn{font:inherit;font-size:14px;border:0;background:transparent;
+    color:var(--ink);padding:0;text-align:left;cursor:pointer;width:100%}
+  .cfs-btn.on{font-weight:700;color:var(--accent)}
+  .cfpop{position:absolute;z-index:40;top:calc(100% + 14px);left:-8px;
+    min-width:min(520px,86vw);background:var(--panel);
+    border:1px solid var(--line);border-radius:14px;padding:var(--space-4);
+    box-shadow:0 18px 44px rgba(15,22,36,.22)}
+  .cfpop-grid{display:grid;gap:2px 22px;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+  .cfpop-row{display:flex;justify-content:space-between;gap:12px;
+    align-items:center;font:inherit;font-size:14px;text-align:left;
+    background:none;border:0;color:var(--ink);cursor:pointer;
+    padding:8px 10px;border-radius:8px;width:100%}
+  .cfpop-row:hover{color:var(--accent)}
+  .cfpop-row b{font-weight:600;color:var(--dim);font-variant-numeric:tabular-nums}
+  .cfpop-row.on{background:var(--bg);font-weight:700}
+  .cfpop-row.on b{color:var(--accent)}
+  .cfpop-foot{display:flex;justify-content:space-between;align-items:center;
+    margin-top:var(--space-3);padding-top:var(--space-3);
+    border-top:1px solid var(--line)}
+  .cfpop-hint{font-size:12.5px;color:var(--faint)}
+  .cfpop-clear,.cfpop-done{font:inherit;font-size:14px;background:none;
+    border:0;cursor:pointer;padding:6px 10px}
+  .cfpop-clear{color:var(--dim)}
+  .cfpop-done{color:var(--accent);font-weight:700}
+  /* Anchored to its own right edge. The department picker sits mid-bar and
+     can hang left; this one is the second-from-last field, so hanging left
+     put it off the side of the window. */
+  .cfstarbar{position:relative;display:inline-block;white-space:nowrap;
+    line-height:1;font-size:16px;letter-spacing:2px}
+  .cfstarbg{color:var(--line)}
+  /* Not --beak. brand.json says Beak is never a text colour, and a star is a
+     glyph however much it looks like an icon. */
+  .cfstarfg{position:absolute;left:0;top:0;overflow:hidden;color:var(--accent);
+    white-space:nowrap}
+  .cfp-rate .cfstars button{font:inherit;font-size:13px;font-weight:700;
+    border:1px solid var(--line);background:var(--panel);color:var(--ink);
+    border-radius:999px;padding:6px 16px;margin-left:6px;cursor:pointer}
+  .cfp-rate .cfstars button:hover:not(:disabled){border-color:var(--accent);
+    color:var(--accent)}
+  .cfp-rate .cfstars button[aria-pressed=true]{background:var(--accent);
+    border-color:var(--accent);color:#fff}
+  .cfpop-near{min-width:min(460px,88vw);left:auto;right:-8px}
+  .cfnear-top{display:flex;justify-content:space-between;align-items:baseline;
+    gap:12px;margin-bottom:var(--space-3)}
+  .cfnear-from{font-weight:700;font-size:14px;display:flex;gap:6px;
+    align-items:baseline}
+  .cfnear-from input{font:inherit;font-size:14px;font-weight:400;border:0;
+    border-bottom:1px dashed var(--line);background:transparent;
+    color:var(--accent);width:11em}
+  .cfnear-from input:focus{outline:none;border-bottom-color:var(--accent)}
+  .cfnear-count{font-size:13px;color:var(--dim)}
+  .cfpop-near input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+  .cfnear-ticks{display:flex;justify-content:space-between;font-size:11.5px;
+    color:var(--faint);margin-top:4px}
+  .cfnear-states{display:flex;flex-wrap:wrap;gap:6px;align-items:center;
+    margin-top:var(--space-3);padding-top:var(--space-3);
+    border-top:1px solid var(--line)}
+  .cfnear-or{font-size:12.5px;color:var(--dim);margin-right:4px}
+  .cfst{font:inherit;font-size:12px;font-weight:700;letter-spacing:.03em;
+    border:1px solid var(--line);background:var(--bg);color:var(--dim);
+    border-radius:999px;padding:3px 8px;cursor:pointer}
+  .cfst:hover{color:var(--accent);border-color:var(--accent)}
+  .cfst.on{background:var(--accent);border-color:var(--accent);color:#fff}
   .cfchips{display:flex;align-items:center;gap:var(--space-3);
     flex-wrap:wrap;margin-bottom:var(--space-4)}
   .cfnearnote{margin:calc(-1 * var(--space-2)) 0 var(--space-4)}
@@ -6004,26 +6075,42 @@ function conferences(){
       <input type="search" id="cf-q" placeholder="Try &ldquo;fire conferences where chiefs show up&rdquo;"
              aria-label="Search conferences">
     </label>
-    <label class="cfs-field">
+    <div class="cfs-field cfs-pop">
       <span class="cfs-label">Department</span>
-      <select id="cf-dept" aria-label="Department">
-        <option value="">Any department</option>
-        ${depts.map(d=>`<option value="${esc(d)}">${esc(d)}</option>`).join("")}
-      </select>
-    </label>
-    <label class="cfs-field">
+      <button type="button" id="cf-dept-btn" class="cfs-btn"
+              aria-haspopup="listbox" aria-expanded="false">Any department</button>
+      <div class="cfpop" id="cf-dept-pop" hidden role="listbox"
+           aria-multiselectable="true" aria-label="Department"></div>
+    </div>
+    <div class="cfs-field cfs-pop">
       <span class="cfs-label">Distance</span>
-      <span class="cfs-pair">
-        <input type="search" id="cf-near" placeholder="Anywhere"
-               aria-label="Near which city" autocomplete="off">
-        <select id="cf-miles" aria-label="How far">
-          <option value="100">100 mi</option>
-          <option value="300">300 mi</option>
-          <option value="600" selected>600 mi</option>
-          <option value="1500">1,500 mi</option>
-        </select>
-      </span>
-    </label>
+      <button type="button" id="cf-near-btn" class="cfs-btn"
+              aria-haspopup="dialog" aria-expanded="false">Anywhere</button>
+      <div class="cfpop cfpop-near" id="cf-near-pop" hidden role="dialog"
+           aria-label="Distance">
+        <div class="cfnear-top">
+          <label class="cfnear-from">From
+            <input type="search" id="cf-near" placeholder="a city"
+                   aria-label="Near which city" autocomplete="off">
+          </label>
+          <span class="cfnear-count" id="cf-near-count"></span>
+        </div>
+        <input type="range" id="cf-miles" min="0" max="4" step="1" value="2"
+               aria-label="How far">
+        <div class="cfnear-ticks">
+          <span>Driveable &middot; 100</span><span>300</span><span>600</span>
+          <span>1,000</span><span id="cf-any">Anywhere</span>
+        </div>
+        <div class="cfnear-states" id="cf-near-states"></div>
+        <div class="cfpop-foot">
+          <span class="cfpop-hint" id="cf-miles-now">600 mi</span>
+          <span>
+            <button type="button" class="cfpop-clear" data-cfnclear>Clear</button>
+            <button type="button" class="cfpop-done" data-cfndone>Done</button>
+          </span>
+        </div>
+      </div>
+    </div>
     <label class="cfs-field">
       <span class="cfs-label">When</span>
       <select id="cf-when" aria-label="How soon">
@@ -6058,7 +6145,7 @@ function conferences(){
 
   const paint=()=>{
     const q=($("#cf-q").value||"").trim().toLowerCase();
-    const dept=$("#cf-dept").value, mined=$("#cf-mined").value,
+    const mined=$("#cf-mined").value,
           flag=$("#cf-flag").value, when=$("#cf-when").value;
     const soon=r=>withinDays(r.dates, when);
     /* The free box searches the block too, because "public safety" is what a
@@ -6069,15 +6156,28 @@ function conferences(){
          ||(r.city||"").toLowerCase().includes(q)
          ||(r.block||"").toLowerCase().includes(q)
          ||(r.department||"").toLowerCase().includes(q))
-      &&(!dept||r.block===dept)
+      &&(!CF_DEPTS.size||CF_DEPTS.has(r.block||"Other"))
       &&(!mined||(mined==="1"?r.companies>0:r.companies===0))
       &&(!flag||r.flagship)
       &&soon(r);
     let shown=rows.filter(keep);
     /* DISTANCE LAST, and out loud. Applied after the rest so the note can say
        how many of THOSE it could not place, not how many of all 138. */
-    const near=cfNear(); NEAR_AT=null;
+    /* STATES FIRST and on their own terms. An event we know only by state
+       has no point to measure from, so a radius can never return it; picking
+       the state is the only filter that can. */
     const note=$("#cf-nearnote");
+    if(CF_STATES.size){
+      shown=shown.filter(r=>CF_STATES.has(cfState(r)));
+      const nostate=rows.filter(r=>!cfState(r)).length;
+      if(note)note.innerHTML=`<span class="cfwhy">In
+        ${[...CF_STATES].sort().join(", ")}.
+        ${nostate?`${nostate} event(s) name no state at all and cannot match
+          any state filter &mdash; that is a gap in what we hold, not a
+          claim that they are nowhere.`:""}</span>`;
+      NEAR_AT=null;
+    }else{
+    const near=cfNear(); NEAR_AT=null;
     if(near&&near.unknown){
       if(note)note.innerHTML=`<span class="cfwhy">No city called
         &ldquo;${esc(near.unknown)}&rdquo; on file, so distance is off.
@@ -6091,21 +6191,26 @@ function conferences(){
       NEAR_AT=near.at;
       const before=shown.length;
       const placed=shown.filter(r=>cfCoords(r));
-      shown=placed.filter(r=>cfMiles(r,near.at)<=near.miles);
+      shown=near.miles===Infinity?placed
+            :placed.filter(r=>cfMiles(r,near.at)<=near.miles);
       const lost=before-placed.length;
       if(note)note.innerHTML=`<span class="cfwhy">Within
-        ${near.miles.toLocaleString()} miles of
+        ${near.miles===Infinity?"any distance":near.miles.toLocaleString()+" miles"} of
         ${esc(near.key.replace("|",", "))}.
         ${lost?`${lost} more matched everything else and we could not place
           on a map &mdash; they are not shown, and that is a gap in our city
           list, not a statement about where they are.`:""}</span>`;
     }else if(note){ note.innerHTML=""; }
+    }
     /* The count says what is on screen AND what it is out of, because "12
        events" alone reads as the whole catalogue to somebody who did not
        notice a filter was on. */
     $("#cf-n").textContent=shown.length===rows.length
       ? `${rows.length} events`
       : `${shown.length} of ${rows.length} events`;
+    // the same number, said again where the distance is being chosen
+    const nc=$("#cf-near-count");
+    if(nc)nc.textContent=`${shown.length} event${shown.length===1?"":"s"} in range`;
     const g={};
     shown.forEach(r=>{(g[r.block||"Other"]=g[r.block||"Other"]||[]).push(r)});
     Object.values(g).forEach(v=>v.sort(cfOrder));
@@ -6156,8 +6261,9 @@ function conferences(){
       paint();
     };
   });
-  ["cf-q","cf-dept","cf-mined","cf-flag","cf-when",
-   "cf-near","cf-miles"].forEach(id=>{
+  cfWireDept(rows, paint);
+  cfWireNear(rows, paint);
+  ["cf-q","cf-mined","cf-flag","cf-when"].forEach(id=>{
     const el=$("#"+id); if(!el)return;
     el.addEventListener(el.tagName==="SELECT"?"change":"input",paint);
   });
@@ -6210,6 +6316,218 @@ function cfNoDates(r){
    silently drops what it could not find on a map answers "nothing near you"
    while the event sits there. Same failure as a page scan reporting "no
    listings" when it could not read the page. */
+/* The venue, or the state we know it is in, or nothing. A state is NOT a
+   venue: printing "North Carolina" where every other row prints "Denver, CO"
+   reads as where the event is held rather than as the only thing we know
+   about where it is. 13 conferences carried a state in the chapter registry
+   the whole time and showed on the board as happening nowhere. */
+/* The slider's stops. "Anywhere" is a stop rather than a separate control,
+   because it is what a person means by dragging all the way right. */
+const CF_STOPS=[100,300,600,1000,Infinity];
+/* Which states are picked outright, as an alternative to a radius. This is
+   how the 13 conferences we know only by state become findable at all: they
+   have no venue to measure a distance from, so a radius can never return
+   them, and before this they were unreachable by any geographic filter. */
+let CF_STATES=new Set();
+const CF_ABBR={"alabama":"AL","alaska":"AK","arizona":"AZ","arkansas":"AR",
+ "california":"CA","colorado":"CO","connecticut":"CT","delaware":"DE",
+ "florida":"FL","georgia":"GA","hawaii":"HI","idaho":"ID","illinois":"IL",
+ "indiana":"IN","iowa":"IA","kansas":"KS","kentucky":"KY","louisiana":"LA",
+ "maine":"ME","maryland":"MD","massachusetts":"MA","michigan":"MI",
+ "minnesota":"MN","mississippi":"MS","missouri":"MO","montana":"MT",
+ "nebraska":"NE","nevada":"NV","new hampshire":"NH","new jersey":"NJ",
+ "new mexico":"NM","new york":"NY","north carolina":"NC","north dakota":"ND",
+ "ohio":"OH","oklahoma":"OK","oregon":"OR","pennsylvania":"PA",
+ "rhode island":"RI","south carolina":"SC","south dakota":"SD",
+ "tennessee":"TN","texas":"TX","utah":"UT","vermont":"VT","virginia":"VA",
+ "washington":"WA","west virginia":"WV","wisconsin":"WI","wyoming":"WY",
+ "district of columbia":"DC"};
+/* The state an event is in, however we happen to know it - off the end of a
+   venue string, or off the chapter registry for one with no venue at all. */
+function cfState(r){
+  const city=(r.city||"").trim();
+  if(city){
+    const m=city.match(/,\s*([A-Z]{2})\b/);
+    if(m)return m[1];
+  }
+  const st=(r.state||"").trim().toLowerCase();
+  return CF_ABBR[st]||"";
+}
+
+/* WHICH DEPARTMENTS ARE PICKED. A set rather than a value, because the
+   design asks for several at once - "Pick several with shift" - and one
+   department was never how somebody shops: a person selling to public safety
+   also sells to courts. */
+let CF_DEPTS=new Set();
+
+/* The count beside each department is how many events that department has IN
+   THE WHOLE CATALOGUE, not under the filters currently set. Two reasons: a
+   count that shrank as you picked would make "Public safety 17" read as 17
+   left rather than 17 there, and a department whose count fell to nought
+   would look unavailable when it is simply not what you asked for a moment
+   ago. */
+function cfDeptCounts(rows){
+  const n={};
+  rows.forEach(r=>{ const b=r.block||"Other"; n[b]=(n[b]||0)+1; });
+  return n;
+}
+function cfDeptLabel(){
+  if(!CF_DEPTS.size)return "Any department";
+  if(CF_DEPTS.size===1)return [...CF_DEPTS][0];
+  return `${CF_DEPTS.size} departments`;
+}
+function cfDeptPopHTML(rows){
+  const n=cfDeptCounts(rows);
+  const keys=Object.keys(n).sort();
+  const row=(label,count,on,val)=>
+    `<button type="button" role="option" aria-selected="${on}"
+       class="cfpop-row${on?" on":""}" data-dept="${esc(val)}">
+       <span>${esc(label)}</span><b>${count.toLocaleString()}</b></button>`;
+  return `<div class="cfpop-grid">
+      ${row("All departments", rows.length, !CF_DEPTS.size, "")}
+      ${keys.map(k=>row(k, n[k], CF_DEPTS.has(k), k)).join("")}
+    </div>
+    <div class="cfpop-foot">
+      <span class="cfpop-hint">Pick several &mdash; they add up</span>
+      <span>
+        <button type="button" class="cfpop-clear" data-cfclear>Clear</button>
+        <button type="button" class="cfpop-done" data-cfdone>Done</button>
+      </span>
+    </div>`;
+}
+function cfMilesNow(){
+  const el=$("#cf-miles");
+  return CF_STOPS[el?+el.value:2];
+}
+function cfNearLabel(){
+  if(CF_STATES.size)return [...CF_STATES].sort().join(" ");
+  const el=$("#cf-near"), v=el?el.value.trim():"";
+  if(!v)return "Anywhere";
+  const m=cfMilesNow();
+  return m===Infinity?v:`${m} mi of ${v}`;
+}
+function cfWireNear(rows,paint){
+  const btn=$("#cf-near-btn"), pop=$("#cf-near-pop");
+  if(!btn||!pop)return;
+  const slider=$("#cf-miles"), states=$("#cf-near-states");
+  const redraw=()=>{
+    const m=cfMilesNow();
+    const now=$("#cf-miles-now");
+    if(now)now.textContent=m===Infinity?"Anywhere":`${m.toLocaleString()} mi`;
+    btn.textContent=cfNearLabel();
+    btn.classList.toggle("on", CF_STATES.size>0||!!($("#cf-near")||{}).value.trim());
+    /* WHICH STATES ARE OFFERED. The ones the events on screen are actually
+       in, not all fifty - a state with nothing in it is a filter that can
+       only ever return nothing. Sorted, capped, and the rest counted. */
+    const seen={};
+    rows.forEach(r=>{ const st=cfState(r); if(st)seen[st]=(seen[st]||0)+1; });
+    const keys=Object.keys(seen).sort();
+    states.innerHTML=`<span class="cfnear-or">Or by state</span>`
+      + keys.map(k=>`<button type="button" class="cfst${
+          CF_STATES.has(k)?" on":""}" data-st="${k}"
+          title="${seen[k]} event${seen[k]===1?"":"s"} in ${k}">${k}</button>`).join("");
+    states.querySelectorAll("[data-st]").forEach(b=>{
+      b.onclick=e=>{
+        e.stopPropagation();
+        const v=b.dataset.st;
+        if(CF_STATES.has(v))CF_STATES.delete(v); else CF_STATES.add(v);
+        redraw(); paint();
+      };
+    });
+  };
+  const close=()=>{ pop.hidden=true; btn.setAttribute("aria-expanded","false"); };
+  btn.onclick=e=>{
+    e.stopPropagation();
+    const open=pop.hidden;
+    pop.hidden=!open; btn.setAttribute("aria-expanded",String(open));
+    if(open){ redraw(); const i=$("#cf-near"); if(i)i.focus(); }
+  };
+  if(slider)slider.oninput=()=>{ redraw(); paint(); };
+  const near=$("#cf-near");
+  if(near)near.oninput=()=>{ redraw(); paint(); };
+  pop.onclick=e=>e.stopPropagation();
+  const clr=pop.querySelector("[data-cfnclear]");
+  if(clr)clr.onclick=e=>{
+    e.stopPropagation();
+    CF_STATES.clear(); if(near)near.value=""; if(slider)slider.value=2;
+    redraw(); paint();
+  };
+  const done=pop.querySelector("[data-cfndone]");
+  if(done)done.onclick=e=>{ e.stopPropagation(); close(); };
+  if(!cfWireNear._bound){
+    cfWireNear._bound=true;
+    document.addEventListener("click",ev=>{
+      const p2=$("#cf-near-pop"), b2=$("#cf-near-btn");
+      if(p2&&!p2.hidden&&!p2.contains(ev.target)&&ev.target!==b2){
+        p2.hidden=true; if(b2)b2.setAttribute("aria-expanded","false");
+      }
+    });
+    document.addEventListener("keydown",ev=>{
+      if(ev.key!=="Escape")return;
+      const p2=$("#cf-near-pop"), b2=$("#cf-near-btn");
+      if(p2){ p2.hidden=true; if(b2)b2.setAttribute("aria-expanded","false"); }
+    });
+  }
+  redraw();
+}
+
+function cfWireDept(rows,paint){
+  const btn=$("#cf-dept-btn"), pop=$("#cf-dept-pop");
+  if(!btn||!pop)return;
+  const close=()=>{ pop.hidden=true; btn.setAttribute("aria-expanded","false"); };
+  const draw=()=>{
+    pop.innerHTML=cfDeptPopHTML(rows);
+    btn.textContent=cfDeptLabel();
+    btn.classList.toggle("on", CF_DEPTS.size>0);
+    pop.querySelectorAll("[data-dept]").forEach(b=>{
+      b.onclick=e=>{
+        e.stopPropagation();
+        const v=b.dataset.dept;
+        if(!v){ CF_DEPTS.clear(); }
+        else if(CF_DEPTS.has(v)) CF_DEPTS.delete(v);
+        else CF_DEPTS.add(v);
+        draw(); paint();
+      };
+    });
+    pop.querySelector("[data-cfclear]").onclick=e=>{
+      e.stopPropagation(); CF_DEPTS.clear(); draw(); paint(); };
+    pop.querySelector("[data-cfdone]").onclick=e=>{
+      e.stopPropagation(); close(); };
+  };
+  btn.onclick=e=>{
+    e.stopPropagation();
+    const open=pop.hidden;
+    pop.hidden=!open;
+    btn.setAttribute("aria-expanded", String(open));
+    if(open)draw();
+  };
+  /* ONE listener for the tab, not one per repaint. paint() runs on every
+     keystroke, and registering a fresh pair each time leaves hundreds of
+     closures holding stale nodes. */
+  if(!cfWireDept._bound){
+    cfWireDept._bound=true;
+    document.addEventListener("click",ev=>{
+      const p2=$("#cf-dept-pop"), b2=$("#cf-dept-btn");
+      if(p2&&!p2.hidden&&!p2.contains(ev.target)&&ev.target!==b2){
+        p2.hidden=true; if(b2)b2.setAttribute("aria-expanded","false");
+      }
+    });
+    document.addEventListener("keydown",ev=>{
+      if(ev.key!=="Escape")return;
+      const p2=$("#cf-dept-pop"), b2=$("#cf-dept-btn");
+      if(p2){ p2.hidden=true; if(b2)b2.setAttribute("aria-expanded","false"); }
+    });
+  }
+  draw();
+}
+
+function cfPlace(r){
+  const city=(r.city||"").trim();
+  if(city)return city;
+  const st=(r.state||"").trim();
+  return st?`across ${st}`:"";
+}
+
 function cfCoords(r){
   const t=(r.city||"").trim();
   if(!t||!D.cities)return null;
@@ -6230,7 +6548,7 @@ function cfNear(){
   const r=resolveNear(el.value);
   if(!r)return {unknown:el.value.trim()};
   if(r.ambiguous)return r;
-  return {key:r, at:coordsOf(r), miles:+($("#cf-miles")||{value:600}).value};
+  return {key:r, at:coordsOf(r), miles:cfMilesNow()};
 }
 
 function cfBlockHTML(b,list){
@@ -6307,7 +6625,7 @@ function cfPanelHTML(r){
   const away=cfMiles(r,NEAR_AT);
   const site=safeUrl(r.url);
   const ends=cfEnds(r);
-  const bits=[r.dates||cfNoDates(r), r.city,
+  const bits=[r.dates||cfNoDates(r), cfPlace(r),
               away==null?null:`<b>${away.toLocaleString()} mi away</b>`, ends]
              .filter(Boolean);
   return `<div class="cfp-card" role="dialog" aria-modal="true"
@@ -6325,6 +6643,7 @@ function cfPanelHTML(r){
          rel="noopener noreferrer">Event site &nearr;</a>`:""}
       ${calRange(r.dates)?`<button type="button" class="cfp-alt"
          data-cal="${esc(r.tag)}">+ Calendar</button>`:""}
+      <a class="cfp-alt" href="/e/${esc(cfSlug(r.tag))}.html">Full page &nearr;</a>
       <span class="cfp-src">${esc(cfProvenance(r))}</span>
     </div>
 
@@ -6388,10 +6707,25 @@ function cfProvenance(r){
     default:            return "dates unconfirmed";
   }
 }
-let CF_OPEN=null;
-function cfOpenPanel(tag){
+let CF_OPEN=null, CF_LAST_QS="";
+/* _slugify() from build_site, mirrored. The /e/ page is this panel rendered
+   server-side, so the panel has to be able to name it. */
+function cfSlug(tag){
+  return (tag||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+}
+function cfOpenPanel(tag,fromUrl){
   const r=(D.conferences||[]).find(x=>x.tag===tag);
   if(!r)return;
+  /* THE EVENT GETS AN ADDRESS. Mirrors co() and openRole: pushState so Back
+     closes the panel instead of leaving the tab, and the tab's own query
+     string is remembered so Back returns to the search somebody came from
+     rather than a bare catalogue. Without this the panel was a dead end -
+     nothing to share, and Back threw you off the page. */
+  if(!fromUrl){
+    CF_LAST_QS=CF_OPEN?CF_LAST_QS:location.search;
+    history.pushState({e:tag,qs:CF_LAST_QS},"",
+      location.pathname+"?e="+encodeURIComponent(tag));
+  }
   CF_OPEN=tag;
   let host=$("#cf-panel");
   if(!host){
@@ -6414,11 +6748,16 @@ function cfOpenPanel(tag){
   loadRatings();
   const x=host.querySelector(".cfp-x"); if(x)x.focus();
 }
-function cfClosePanel(){
+function cfClosePanel(fromUrl){
   const host=$("#cf-panel");
   if(host){ host.hidden=true; host.innerHTML=""; }
   document.body.classList.remove("cfp-lock");
+  const was=CF_OPEN;
   CF_OPEN=null;
+  if(was&&!fromUrl){
+    history.pushState({qs:CF_LAST_QS},"",
+      location.pathname+(CF_LAST_QS||"?tab=conferences"));
+  }
 }
 /* The destination a row has always had: the companies tab, filtered to the
    people who stood at this event. */
@@ -6454,7 +6793,7 @@ function cfCardsHTML(list){
       <span class="cfc-name">${esc(r.name)}${
         isNow(r.dates)?`<i class="cfdot" title="Running today"></i>`:""}${
         r.flagship?`<span class="cfflag">Flagship</span>`:""}</span>
-      <span class="cfc-where">${esc([r.city,r.block].filter(Boolean).join(" \u00b7 "))}</span>
+      <span class="cfc-where">${esc([cfPlace(r),r.block].filter(Boolean).join(" \u00b7 "))}</span>
       ${r.companies?`
         <span class="cfc-row"><span class="cfc-k">Vendors</span>
           <span class="cfc-v">${cfFacts(r)}</span></span>`:`
@@ -6490,7 +6829,7 @@ function cfRowHTML(r){
                  title="This edition has already happened">past edition</span>`:""}
             </span>
             <span class="cfline2">
-              ${r.city?`${esc(r.city)}${away?" &middot; "+away:""} &middot; `:away?away+" &middot; ":""}
+              ${cfPlace(r)?`${esc(cfPlace(r))}${away?" &middot; "+away:""} &middot; `:away?away+" &middot; ":""}
               ${esc(r.block||"")}
             </span>
           </span>
@@ -6524,14 +6863,36 @@ function rememberRating(tag,score){
        localStorage.setItem(RATED_KEY,JSON.stringify(all)); }catch{}
 }
 
+/* THE VALUES THIS PAGE MAY SEND, named rather than inline so the endpoint's
+   MIN and MAX can be checked against them. rate.js accepts 0-1; a page
+   offering anything else fails on submit with an error nobody sees coming. */
+const CF_VOTES=[["1","Yes"],["0","No"]];
+
+/* Five stars, the last one clipped to the fraction. Written as two stacked
+   rows rather than per-star glyphs so a half is exactly a half. */
+function cfStarsHTML(v){
+  const pct=Math.max(0,Math.min(5,v))/5*100;
+  return `<span class="cfstarbar" role="img"
+    aria-label="${v.toFixed(1)} out of 5 stars">
+      <span class="cfstarbg">\u2605\u2605\u2605\u2605\u2605</span>
+      <span class="cfstarfg" style="width:${pct}%">\u2605\u2605\u2605\u2605\u2605</span>
+    </span>`;
+}
+
 function paintRating(box,d){
   const mine=myRatings()[box.dataset.rate];
   const score=box.querySelector("[data-score]");
   const votes=box.querySelector("[data-votes]");
   const stars=box.querySelector("[data-stars]");
   if(d&&d.average!=null){
-    score.innerHTML=`${d.average}<small>/10</small>`;
-    votes.textContent=`from ${d.n} ${d.n===1?"rating":"ratings"}`;
+    /* STARS, out of five, from the share who said yes. Half stars are drawn
+       with a clipped overlay rather than a different glyph, so 2.5 is
+       visibly half of one star and not a rounded 3. */
+    score.innerHTML=cfStarsHTML(d.average)
+      + `<small>${d.average.toFixed(1)}</small>`;
+    votes.textContent=(d.yes!=null)
+      ? `${d.yes} of ${d.n} say yes`
+      : `from ${d.n} ${d.n===1?"vote":"votes"}`;
     votes.className="cfvotes";
   }else if(d&&d.n){
     /* Some votes, not enough for an average. Worth saying on the row, because
@@ -6557,18 +6918,26 @@ function paintRating(box,d){
     votes.textContent="";
     votes.className="cfthin";
   }
-  stars.innerHTML=Array.from({length:10},(_,i)=>{
-    const v=i+1;
-    return `<button type="button" data-v="${v}"
-      aria-pressed="${mine===v?"true":"false"}"
-      ${mine?"disabled":""}
-      aria-label="Rate ${v} out of 10"
-      title="${mine?`You rated this ${mine}`:`Rate ${v} out of 10`}">${v}</button>`;
-  }).join("")+(mine?`<span class="cfmine">your ${mine}</span>`:"");
-  if(!mine) stars.querySelectorAll("button").forEach(b=>{
+  /* TWO BUTTONS, because the question is one people answer confidently.
+     "Was the booth worth it" is a yes or a no; the difference between a 6
+     and a 7 out of ten was a number somebody had to invent. */
+  stars.innerHTML=CF_VOTES.map(([v,label])=>
+    `<button type="button" data-v="${v}"
+      aria-pressed="${String(mine)===v?"true":"false"}"
+      ${mine!==undefined?"disabled":""}
+      title="${mine!==undefined
+        ?`You said ${String(mine)==="1"?"yes":"no"}`
+        :`Was this worth it? ${label}`}">${label}</button>`).join("")
+    +(mine!==undefined
+      ?`<span class="cfmine">you said ${String(mine)==="1"?"yes":"no"}</span>`
+      :"");
+  /* `mine === 0` is a NO, which is an answer. Testing it for truthiness
+     re-enabled the buttons for everybody who voted no and let them vote
+     again. */
+  if(mine===undefined) stars.querySelectorAll("button").forEach(b=>{
     b.onclick=async e=>{
       e.stopPropagation();
-      const v=+b.dataset.v;
+      const v=+b.dataset.v;      // 1 for yes, 0 for no
       stars.querySelectorAll("button").forEach(x=>x.disabled=true);
       try{
         const r=await fetch("/api/rate",{method:"POST",
@@ -7230,6 +7599,13 @@ function start(d){
     // second pass or it is written after the page it belongs on.
     if(CO_MISSING)render();
   }
+  /* A pasted ?e= opens straight onto the event, the way ?co= opens onto a
+     company. The tab has to be the conferences one underneath it, or closing
+     the panel drops somebody onto the home page they never asked for. */
+  if(PENDING_URL&&PENDING_URL.get("e")){
+    if(tab!=="conferences"){ tab="conferences"; render(); }
+    cfOpenPanel(PENDING_URL.get("e"),true);
+  }
   // Sync runs after the first paint and never blocks it: the board must work
   // with the network gone, and a saved list is the last thing worth waiting on.
   // Its own try for the same reason: a sync that throws must not replace a
@@ -7248,6 +7624,8 @@ function start(d){
     tab=tabFromUrl(PENDING_URL,"home");
     render();
     if(CO){ co(CO,true); if(CO_MISSING)render(); }
+    const ev=PENDING_URL?PENDING_URL.get("e"):null;
+    if(ev)cfOpenPanel(ev,true); else if(CF_OPEN)cfClosePanel(true);
   });
 }
 </script>
