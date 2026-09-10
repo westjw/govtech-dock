@@ -19,6 +19,7 @@ import math
 import os
 
 import re
+import hashlib
 import shutil
 import tempfile
 import threading
@@ -8032,6 +8033,15 @@ def check_the_employer_log_stores_transitions() -> int:
             except ValueError:
                 pass
 
+        # EVERY LINE IS ADDRESSABLE. Two events can share a second - claim.js
+        # found that when three proposals sent in one click collided on one
+        # millisecond and two were lost - so a line in an append-only file
+        # that nothing can name is a line nothing can ever refer back to.
+        ids = [e.get("event_id") for e in EL.events()]
+        if not all(ids) or len(set(ids)) != len(ids):
+            errors += fail("employer_log lines are not uniquely addressable: "
+                           f"{len(ids)} events, {len(set(ids))} distinct ids")
+
         # `by` MUST HAVE NO DEFAULT, and this is checked on the SIGNATURE
         # because no runtime probe can catch it: a default only fires for a
         # caller that passes nothing, and that caller is the one somebody
@@ -8509,6 +8519,27 @@ def _journal_fingerprint() -> tuple:
     except OSError:
         return (0, 0)
     return (raw.count(b"\n"), len(raw))
+
+
+def _data_fingerprint() -> dict:
+    """(bytes, mtime-blind digest) of every json file the suite reads.
+
+    The journal got this protection after nineteen checks wrote real rulings
+    into it. It was never generalised, and the gap cost the two event
+    registries: a check called the real _save() to prove it would be refused,
+    a mutation removed the refusal, and 359 chapter rows with 204 hand-won
+    org urls were replaced by an empty document - the national registry with
+    them. Git had both, so nothing was lost, but nothing NOTICED either. The
+    suite ran green afterwards, because an empty registry disagrees with no
+    guard. This makes the whole of data/ as loud as the journal already is.
+    """
+    out = {}
+    for f in sorted(DATA.glob("*.json")):
+        try:
+            out[f.name] = hashlib.sha256(f.read_bytes()).hexdigest()
+        except OSError:
+            out[f.name] = "unreadable"
+    return out
 
 
 def _journal_leaked(before_lines: int) -> list:
@@ -17419,48 +17450,63 @@ def check_a_registry_cannot_be_saved_over_the_other() -> int:
                            f"without the stamp nothing downstream can tell the "
                            f"two registries apart")
 
-    # THE WHOLE POINT. Every wrong pairing must raise, and raise before it
-    # touches the disk - so each is tried against the real files, whose bytes
-    # are compared afterwards.
-    before = {w: fed.REGISTRIES[w].read_bytes() for w in fed.REGISTRIES}
+    # ON COPIES, NEVER THE REAL FILES. The first draft of this check called
+    # _save() against data/ to prove the refusal, and the day the refusal was
+    # mutated away to see whether this check would notice, the save went
+    # through: 359 chapter rows and 204 org urls replaced by an empty doc, and
+    # the same again for the 883 national ones. Both came back out of git, but
+    # a check that is only safe while the code it checks is correct is not a
+    # check - it is the thing main() has said since the journal incident, that
+    # the suite must not write to what it checks.
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-registries-"))
+    keep = dict(fed.REGISTRIES)
     try:
-        state_doc = fed._load("state")
-        nat_doc = fed._load("national")
-    except SystemExit as e:
-        return errors + fail(f"a registry would not load at all: {e}")
+        for w, real in keep.items():
+            copy = tmp / real.name
+            copy.write_bytes(real.read_bytes())
+            fed.REGISTRIES[w] = copy
 
-    wrong = [("a national doc", nat_doc, "state"),
-             ("a state doc", state_doc, "national"),
-             ("an unstamped doc", {"note": "", "events": []}, "state"),
-             ("an unstamped doc", {"note": "", "events": []}, "national")]
-    for label, doc, dest in wrong:
+        before = {w: fed.REGISTRIES[w].read_bytes() for w in fed.REGISTRIES}
         try:
-            fed._save(doc, dest)
-            errors += fail(f"{label} was saved into the {dest} registry. That "
-                           f"does not merge - it replaces, and the other "
-                           f"registry is gone")
-        except SystemExit:
-            pass
+            state_doc = fed._load("state")
+            nat_doc = fed._load("national")
+        except SystemExit as e:
+            return errors + fail(f"a registry would not load at all: {e}")
 
-    for w, was in before.items():
-        if fed.REGISTRIES[w].read_bytes() != was:
-            errors += fail(f"the {w} registry changed on disk while refusing a "
-                           f"bad save - a refusal must not be a partial write")
+        wrong = [("a national doc", nat_doc, "state"),
+                 ("a state doc", state_doc, "national"),
+                 ("an unstamped doc", {"note": "", "events": []}, "state"),
+                 ("an unstamped doc", {"note": "", "events": []}, "national")]
+        for label, doc, dest in wrong:
+            try:
+                fed._save(doc, dest)
+                errors += fail(f"{label} was saved into the {dest} registry. "
+                               f"That does not merge - it replaces, and the "
+                               f"other registry is gone")
+            except SystemExit:
+                pass
 
-    # A LOAD MUST CHECK TOO, not just the save. Reading the national file as
-    # the state registry would hand every downstream stage 883 rows of the
-    # wrong shape, and the first save would then be perfectly consistent.
-    keep = fed.REGISTRIES["state"]
-    try:
+        for w, was in before.items():
+            if fed.REGISTRIES[w].read_bytes() != was:
+                errors += fail(f"the {w} registry changed on disk while "
+                               f"refusing a bad save - a refusal must not be "
+                               f"a partial write")
+
+        # A LOAD MUST CHECK TOO, not just the save. Reading the national file
+        # as the state registry would hand every downstream stage 883 rows of
+        # the wrong shape, and the first save would then be consistent.
         fed.REGISTRIES["state"] = fed.REGISTRIES["national"]
         try:
             fed._load("state")
-            errors += fail("_load read the national file as the state registry; "
-                           "the stamp is checked on save but not on the way in")
+            errors += fail("_load read the national file as the state "
+                           "registry; the stamp is checked on save but not "
+                           "on the way in")
         except SystemExit:
             pass
     finally:
-        fed.REGISTRIES["state"] = keep
+        fed.REGISTRIES.clear()
+        fed.REGISTRIES.update(keep)
+        shutil.rmtree(tmp, ignore_errors=True)
 
     # AND NO SECOND DOOR. A module-level EVENTS constant used to exist and
     # every stage read it, so a test could redirect the module by patching it.
@@ -17484,6 +17530,8 @@ def main() -> int:
     # attributed to the owner that he never made. Stubbing is per-check and
     # easy to forget; this notices when somebody forgets.
     _journal_before = _journal_fingerprint()
+    # AND THE SAME FOR THE REST OF data/. See _data_fingerprint.
+    _data_before = _data_fingerprint()
 
     companies = json.load(open(DATA / "companies.json"))
     schema = json.load(open(DATA / "schema.json"))
@@ -18123,6 +18171,22 @@ def main() -> int:
           f"{len(PAGESCAN_CASES)} page-scan, {len(TITLE_TEXT_CASES)} title-text, "
           f"{len(CTA_CASES)} button-label, {len(CARD_CASES)} card-split, "
           f"{len(CARD_LINE_CASES)} card-line")
+    # DID A CHECK CHANGE THE DATA IT WAS CHECKING? The journal has asked this
+    # since nineteen fixture rulings landed in it. Everything else in data/ was
+    # unguarded until a mutation-tested check called the real _save() and
+    # emptied both event registries without a single guard noticing.
+    _data_after = _data_fingerprint()
+    _touched = sorted(f for f in set(_data_before) | set(_data_after)
+                      if _data_before.get(f) != _data_after.get(f)
+                      and f != "admin_journal.jsonl")
+    if _touched:
+        errors += fail(
+            f"the selftest changed {len(_touched)} file(s) in data/ while "
+            f"running: {_touched}. A check must work on a copy, never on what "
+            f"it checks - a probe that only stays harmless while the code it "
+            f"probes is correct is not a probe. Restore them from git "
+            f"(`git checkout -- data/`) and point the check at a tempdir.")
+
     after = _journal_fingerprint()
     if after != _journal_before:
         leaked = _journal_leaked(_journal_before[0])
