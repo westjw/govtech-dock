@@ -343,7 +343,7 @@ def stage_parents(write: bool, which: str = "state") -> int:
         hit = 0
         for e in mine:
             geo = (e.get("geo") or "").lower()
-            state = next((s for s in STATES if re.search(rf"\b{s}\b", geo)), None)
+            state = state_in(geo)
             if not state:
                 continue
             ab = STATES[state].lower()
@@ -361,15 +361,32 @@ def stage_parents(write: bool, which: str = "state") -> int:
                 if on_parent_host(h, PARENT_SITES.get(code)):
                     continue
                 blob = f"{txt} {up.urlsplit(h).path}".lower()
-                closed = re.sub(r"[^a-z0-9]+", "", f"{txt}{up.urlsplit(h).netloc}").lower()
+                # THE CLOSED-UP FORM IS FOR HOSTS, so it is tested on host
+                # LABELS. It used to be a bare substring test over link text
+                # and host mashed together, which put Kansas at the Arkansas
+                # Municipal League - "kansas" sits inside "arkansas" - while
+                # the same expression ran re.sub before .lower() and so
+                # DELETED every capital rather than lowering it, leaving
+                # "rkansasunicipaleague", which cannot match its own state.
+                # A label matches only outright, so northcarolina.planning.org
+                # still resolves and kansascity.org does not become Kansas.
+                labels = [l for l in re.split(r"[.\-_]",
+                          f"{up.urlsplit(h).netloc} {txt}".lower()) if l]
                 # NEVER AFTER A DOT, because that is a TLD and not a state.
                 # NIGP's directory writes some links as the bare domain, so
                 # "nigpabchapter.ca" matched California on the .ca of a
                 # CANADIAN chapter - the NIGP Alberta Chapter, filed as
                 # California. Same shape as the [A-Z]{2} bug that once put 24
                 # postings in London, UK and Montreal, QB.
+                # AND ANCHORED. A bare substring test puts Kansas at the
+                # Arkansas Municipal League, because "kansas" sits inside
+                # "arkansas". The closed-up form exists for hosts that drop
+                # the space (northcarolina.planning.org), so it is kept and
+                # required to start at a boundary.
+                flatstate = state.replace(" ", "")
+                closed_hit = flatstate in labels
                 if (re.search(rf"\b{state}\b", blob)
-                        or state.replace(" ", "") in closed
+                        or closed_hit
                         or re.search(rf"(^|[^a-z.]){ab}([^a-z]|$)", blob)):
                     e["org_url"] = h
                     e["org_url_source"] = listing
@@ -457,6 +474,25 @@ def image_only(page: str) -> str | None:
     return None
 
 
+def state_in(geo: str | None) -> str | None:
+    """The state a geo names - the LONGEST match, never the first.
+
+    STATES is a dict in insertion order and "virginia" is listed before "west
+    virginia", so a first-match search over `\bvirginia\b` answers "virginia"
+    for a geo of "West Virginia". All three places that pick a state did that.
+    The consequence is not cosmetic: stage 2 would fetch the Virginia
+    Municipal League's exhibitor list for West Virginia's row, owns() would
+    confirm "virginia" in the title, and every company on that floor would
+    gain a West Virginia conference it never attended.
+
+    Neither state is in the registry today, which is what makes this worth
+    fixing now rather than after somebody adds one.
+    """
+    g = (geo or "").lower()
+    return max((s for s in STATES if re.search(rf"\b{s}\b", g)),
+               key=len, default=None)
+
+
 def owns(page: str, url: str, geo: str | None,
          org_url: str | None = None, parent_site: str | None = None) -> bool:
     """Does this exhibitor list belong to the STATE chapter, or to its parent?
@@ -501,7 +537,7 @@ def owns(page: str, url: str, geo: str | None,
     # national parent's event. With no state to look for, the only evidence
     # left is the site itself, so the same-host rule below has to carry it
     # alone and everything else is refused to a person.
-    state = next((s for s in STATES if re.search(rf"\b{s}\b", (geo or "").lower())), None)
+    state = state_in(geo)
     if not state and not (geo or "").strip():
         return True                       # not a state event at all
 
@@ -925,7 +961,7 @@ def name_from_own_site(e: dict) -> str | None:
     required to NAME THE STATE, so a generic "Home" or another body's page
     cannot answer for it.
     """
-    state = next((s for s in STATES if re.search(rf"\b{s}\b", (e.get("geo") or "").lower())), None)
+    state = state_in(e.get("geo"))
     if not state or not e.get("org_url"):
         return None
     page = fetch(e["org_url"])

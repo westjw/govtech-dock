@@ -17413,6 +17413,208 @@ def check_an_acronym_cannot_confirm_itself() -> int:
     return errors
 
 
+def check_one_event_staged_twice_becomes_one_row_with_both_halves() -> int:
+    """The organisation's own name is not part of the event's name.
+
+    One catalogue wrote "AAFCO Annual Meeting" and the other wrote "Annual
+    Meeting". 47 events were staged twice on that difference, and it was not
+    untidiness: two rows for one event are each other's SIBLING, and
+    find_event_directories refuses to hand a directory to a row that names
+    nothing its siblings do not. ARSL's exhibitor list, plainly ARSL's, could
+    be given to neither of ARSL's two rows. The duplicates were not noise
+    around the harvest - they were blocking it.
+
+    The collapse has to union, not choose. The two halves carry DISJOINT
+    data: the CSV row is the only source of `department` in all 47 - and
+    stage_promote refuses any row whose department has no CATALOG_PLACE entry
+    - while the blocks row is the only source of `block`. Dropping either row
+    whole does not lose a string, it makes that organisation's conference
+    unpromotable forever, or loses its place in the catalogue.
+
+    And where the two catalogues DISAGREE - registry_status differs on 31 of
+    the 47 - neither is picked. Both are kept. A claim two sources dispute is
+    the fact worth keeping, not the one worth flattening.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import register_national_events as rne
+
+    # ONE IDENTITY. The prefixed and bare names must mint the same key, or
+    # nothing downstream can tell they are one event.
+    if rne.key("AAFCO", "AAFCO Annual Meeting") != rne.key("AAFCO", "Annual Meeting"):
+        errors += fail("'AAFCO Annual Meeting' and 'Annual Meeting' still mint "
+                       "different keys, so the same event stays staged twice "
+                       "and each blocks the other from claiming a directory")
+    # AND NOT TOO EAGER. A code that merely PREFIXES another event's name is
+    # not the same event.
+    if rne.key("NCWM", "Annual Meeting") == rne.key("NCWM", "Interim Meeting"):
+        errors += fail("two genuinely different meetings collapsed into one key")
+
+    csv_row = {"key": "X::annual-meeting", "org_code": "X",
+               "event_name": "X Annual Meeting", "org_name": "The X Assn",
+               "block": "", "department": "Feed Regulation",
+               "vertical": "Ag", "tier": "1", "source_type": "expo",
+               "est_exhibitors": 120, "registry_status": "LIKELY",
+               "origin": "sources_national2.csv", "harvest": True,
+               "org_url": "https://x.test/"}
+    blocks_row = {"key": "X::annual-meeting", "org_code": "X",
+                  "event_name": "Annual Meeting", "org_name": "X (Feed)",
+                  "block": "Block 2 - Agriculture", "department": "",
+                  "vertical": "", "tier": "", "source_type": "",
+                  "est_exhibitors": None, "registry_status": "TABLETOP",
+                  "origin": "CONFERENCE_BLOCKS.md", "harvest": False,
+                  "org_url": None}
+    got = rne.fuse(csv_row, blocks_row)
+
+    if got.get("department") != "Feed Regulation":
+        errors += fail(
+            f"the collapse lost `department` ({got.get('department')!r}). Only "
+            f"the CSV row carries one, and stage_promote refuses a row whose "
+            f"department has no CATALOG_PLACE entry - so losing it does not "
+            f"lose a string, it makes the conference unpromotable forever")
+    if got.get("block") != "Block 2 - Agriculture":
+        errors += fail(f"the collapse lost `block` ({got.get('block')!r}). Only "
+                       f"the blocks row carries one, in all 47 pairs")
+    for f, want in (("est_exhibitors", 120), ("vertical", "Ag"),
+                    ("tier", "1"), ("source_type", "expo"),
+                    ("org_url", "https://x.test/")):
+        if got.get(f) != want:
+            errors += fail(f"the collapse lost {f} ({got.get(f)!r}, wanted "
+                           f"{want!r}) - a field only one of the two rows held")
+
+    # THE NAME THAT NAMES THE ORGANISATION SURVIVES.
+    if got.get("event_name") != "X Annual Meeting":
+        errors += fail(f"the merged row is called {got.get('event_name')!r}. "
+                       f"Keep the name that places the event for a reader")
+
+    # A DISAGREEMENT IS KEPT, NOT RESOLVED.
+    kept = {got.get("registry_status"), got.get("registry_status_alt")}
+    if kept != {"LIKELY", "TABLETOP"}:
+        errors += fail(
+            f"the two catalogues said LIKELY and TABLETOP about this floor and "
+            f"the merge kept {sorted(x for x in kept if x)}. Neither is "
+            f"picked: a claim two sources dispute is the fact worth keeping")
+
+    # TWO DOCUMENTS PRODUCED IT, SO IT HAS TWO ORIGINS.
+    if sorted(got.get("origin") or []) != ["CONFERENCE_BLOCKS.md",
+                                           "sources_national2.csv"]:
+        errors += fail(f"origin reads {got.get('origin')!r}. A row two "
+                       f"documents produced has two origins, and the audit "
+                       f"trail is what the field is for")
+
+    # HARVEST IS THE UNION, never the second row's answer.
+    if not got.get("harvest"):
+        errors += fail("a row one catalogue marked harvestable came out of the "
+                       "merge unharvestable")
+
+    # AND THE LIVE FILE IS ACTUALLY COLLAPSED.
+    doc = json.loads((DATA / "national_events.json").read_text())
+    seen = {}
+    for r in doc["events"]:
+        k = rne.key(r.get("org_code"), r.get("event_name"))
+        seen.setdefault(k, []).append(r.get("event_name"))
+    dupes = {k: v for k, v in seen.items() if len(v) > 1}
+    # IAIABC is a legitimate refusal: one code, two bodies no rule can
+    # confirm are one, so two rows stand rather than a wrong merge.
+    unexplained = {k: v for k, v in dupes.items() if not k.startswith("IAIABC")}
+    if unexplained:
+        errors += fail(
+            f"{len(unexplained)} event(s) are still staged twice, so each "
+            f"blocks the other from claiming a directory: "
+            f"{list(unexplained)[:3]}")
+    return errors
+
+
+def check_a_state_is_matched_whole_and_not_inside_another() -> int:
+    """Two ways a state name matches the wrong state, both silent.
+
+    THE FIRST IS ORDER. STATES is a dict in insertion order with "virginia"
+    listed before "west virginia", and all three places that picked a state
+    took the FIRST match over a word boundary - so a geo of "West Virginia"
+    answered "virginia". Stage 2 would then fetch the Virginia Municipal
+    League's exhibitor list for West Virginia's row, owns() would confirm
+    "virginia" in the title, and every company on that floor would gain a
+    West Virginia conference it never attended.
+
+    THE SECOND IS CONTAINMENT. The closed-up form - which exists so
+    northcarolina.planning.org resolves for "North Carolina" - was a bare
+    substring test over link text and host mashed together, and "kansas" sits
+    inside "arkansas", so Kansas's row matched the Arkansas Municipal League.
+    The same expression ran re.sub(r"[^a-z0-9]+") BEFORE .lower(), deleting
+    every capital instead of lowering it: "Arkansas Municipal League" became
+    "rkansasunicipaleague", which cannot match its own state and can match
+    somebody else's.
+
+    Neither state is in the registry today. That is the reason to fix it now
+    - the trap is loaded and nothing fires until somebody adds a row.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import find_event_directories as fed
+
+    for geo, want in (("West Virginia", "west virginia"),
+                      ("Virginia", "virginia"),
+                      ("West Virginia Municipal League", "west virginia"),
+                      ("North Carolina", "north carolina"),
+                      ("Carolina", None)):
+        got = fed.state_in(geo)
+        if got != want:
+            errors += fail(f"state_in({geo!r}) is {got!r}, expected {want!r}. "
+                           f"The longest matching name wins, or West Virginia "
+                           f"is filed as Virginia")
+
+    # THE CONTAINMENT HALF, driven through stage_parents so the caller is what
+    # is tested. The listing offers only Arkansas's league; Kansas's row must
+    # come back with nothing rather than with Arkansas's site.
+    listing = ('<a href="https://www.arml.org/">Arkansas Municipal League</a>'
+               '<a href="https://northcarolina.planning.org/">NC Chapter</a>')
+    rows = [{"org_code": "T_KS", "geo": "Kansas", "parent_national": "T_P",
+             "org_url": None, "status": "needs_url"},
+            {"org_code": "T_AR", "geo": "Arkansas", "parent_national": "T_P",
+             "org_url": None, "status": "needs_url"},
+            {"org_code": "T_NC", "geo": "North Carolina", "parent_national": "T_P",
+             "org_url": None, "status": "needs_url"}]
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-states-"))
+    path = tmp / "state_events.json"
+    path.write_text(json.dumps({"registry": "state", "note": "", "events": rows}))
+    keep = (dict(fed.REGISTRIES), fed.fetch, dict(fed.PARENT_LISTINGS))
+    try:
+        fed.REGISTRIES["state"] = path
+        fed.fetch = lambda u: listing if "listing.test" in u else None
+        fed.PARENT_LISTINGS["T_P"] = ("https://listing.test/c", "reads in raw html")
+        with contextlib.redirect_stdout(io.StringIO()):
+            fed.stage_parents(True)
+        out = {r["org_code"]: r for r in json.loads(path.read_text())["events"]}
+    finally:
+        fed.REGISTRIES.clear(); fed.REGISTRIES.update(keep[0])
+        fed.fetch = keep[1]
+        fed.PARENT_LISTINGS.clear(); fed.PARENT_LISTINGS.update(keep[2])
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    if out["T_KS"].get("org_url"):
+        errors += fail(
+            f"Kansas was pointed at {out['T_KS']['org_url']} - 'kansas' is "
+            f"inside 'arkansas', and every candidate walked from there would "
+            f"be Arkansas's")
+    if out["T_AR"].get("org_url") != "https://www.arml.org/":
+        errors += fail(
+            f"Arkansas did not match its OWN league, coming back with "
+            f"{out['T_AR'].get('org_url')!r}. The closed-up form deleted its "
+            f"capitals, so the state could not find itself")
+    if out["T_NC"].get("org_url") != "https://northcarolina.planning.org/":
+        errors += fail(
+            f"North Carolina lost its own subdomain, coming back with "
+            f"{out['T_NC'].get('org_url')!r}. The closed-up form exists for "
+            f"exactly this host shape and must keep working")
+    return errors
+
+
 def check_a_sibling_event_cannot_claim_its_neighbours_floor() -> int:
     """One organisation, many events, one address - and only one of them owns
     any given exhibitor list.
@@ -18412,6 +18614,8 @@ def main() -> int:
     errors += check_staging_a_catalogue_never_costs_an_observed_fact()
     errors += check_an_organisation_is_not_one_of_its_own_events()
     errors += check_an_acronym_cannot_confirm_itself()
+    errors += check_one_event_staged_twice_becomes_one_row_with_both_halves()
+    errors += check_a_state_is_matched_whole_and_not_inside_another()
     errors += check_a_sibling_event_cannot_claim_its_neighbours_floor()
     errors += check_a_shared_acronym_is_not_a_shared_organisation()
     errors += check_a_recheck_never_costs_a_directory_it_did_not_look_at()

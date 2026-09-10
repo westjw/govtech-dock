@@ -65,9 +65,67 @@ NOTE = (
 
 
 def key(org_code: str, event_name: str) -> str:
-    """The row identity. A national body runs more than one event."""
-    slug = re.sub(r"[^a-z0-9]+", "-", (event_name or "").lower()).strip("-")
-    return f"{(org_code or '').strip().upper()}::{slug}"[:120]
+    """The row identity. A national body runs more than one event.
+
+    THE ORGANISATION'S OWN NAME IS NOT PART OF THE EVENT'S. One catalogue
+    writes "AAFCO Annual Meeting" and the other writes "Annual Meeting", and
+    they are the same meeting - 47 events were staged twice on that
+    difference alone. Worse than untidy: two rows for one event are each
+    other's SIBLING, and find_event_directories refuses to hand a directory
+    to a row that names nothing its siblings do not. So ARSL's exhibitor
+    list, plainly theirs, could not be given to either of ARSL's two rows.
+    The duplicates were not noise around the harvest, they were blocking it.
+    """
+    code = (org_code or "").strip().upper()
+    name = (event_name or "").strip()
+    if code and name.upper().startswith(code + " "):
+        name = name[len(code):].strip()
+    slug = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+    return f"{code}::{slug}"[:120]
+
+
+# Fields only one catalogue carries. sources_national2.csv is the only source
+# of a department - and stage_promote refuses any row whose department has no
+# CATALOG_PLACE entry - so a collapse that keeps the other row does not merely
+# lose a string, it makes that organisation's conference unpromotable forever.
+# CONFERENCE_BLOCKS.md is the only source of `block`. Whichever row survives,
+# half the record dies unless the fields are unioned.
+_UNION = ("block", "department", "vertical", "tier", "source_type",
+          "est_exhibitors", "org_name", "org_url", "directory_url",
+          "candidate_url", "directory_note", "status", "scope", "harvest",
+          "promoted", "verified", "key")
+
+
+def fuse(a: dict, b: dict) -> dict:
+    """One event staged twice, made one row, losing nothing either observed.
+
+    Three cases, and the third is the one that matters. One side empty and
+    one filled: take the filled one. Both equal: keep it. Both filled and
+    DIFFERENT: never pick - the two catalogues looked at the same event and
+    said different things, and that disagreement is a fact worth keeping,
+    not one worth flattening. registry_status disagrees on 31 of the 47.
+    """
+    out = dict(a)
+    # the name that names the organisation survives: "AAFCO Annual Meeting"
+    # over "Annual Meeting", because it is what a reader can place
+    names = [x.get("event_name") or "" for x in (a, b)]
+    out["event_name"] = max(names, key=len)
+    for f in _UNION:
+        av, bv = a.get(f), b.get(f)
+        if av in (None, "", False) and bv not in (None, "", False):
+            out[f] = bv
+    if a.get("registry_status") != b.get("registry_status"):
+        out["registry_status"] = a.get("registry_status") or b.get("registry_status")
+        out["registry_status_alt"] = b.get("registry_status") or a.get("registry_status")
+    origins = []
+    for x in (a, b):
+        o = x.get("origin")
+        origins += o if isinstance(o, list) else ([o] if o else [])
+    # a row two documents produced has two origins, and the audit trail is
+    # what the field is for
+    out["origin"] = sorted(set(origins))
+    out["harvest"] = bool(a.get("harvest")) or bool(b.get("harvest"))
+    return out
 
 
 def harvestable(scope: str, status: str) -> bool:
@@ -370,12 +428,18 @@ def main() -> int:
         fresh += from_blocks(a.blocks)
     # a key can arrive from both inputs; the CSV is the more structured, so
     # it is read first and wins on conflict
-    seen, deduped = set(), []
+    # A DEDUPE THAT DISCARDS A ROW LOSES THE HALF ONLY THAT ROW CARRIES.
+    # This used to `continue` on a repeated key, which threw away the blocks
+    # row whole - and with it `block`, in every one of the 47 pairs - before
+    # merge() ever saw it, with no message.
+    seen, deduped = {}, []
     for r in fresh:
-        if r["key"] in seen:
-            continue
-        seen.add(r["key"])
-        deduped.append(r)
+        at = seen.get(r["key"])
+        if at is None:
+            seen[r["key"]] = len(deduped)
+            deduped.append(r)
+        else:
+            deduped[at] = fuse(deduped[at], r)
 
     payload = load()
     before = len(payload.get("events") or [])
