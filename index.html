@@ -374,21 +374,153 @@
      visible as "exhibited at IACP 2026" inside a description. For a seller it
      is the more useful cut: which event puts the most HIRING govtech vendors
      in one room is a travel-budget question with a real answer. */
+  /* ── conferences, row 3 ────────────────────────────────────────────────
+     One search bar, then the same filtered set as a list, a grid or a
+     calendar. Every colour is a token, so the dark theme comes along without
+     a second palette to keep in step. */
+  .cfsearch{display:flex;align-items:stretch;gap:0;background:var(--panel);
+    border:1px solid var(--line);border-radius:999px;padding:4px;
+    margin-bottom:var(--space-3);overflow:hidden}
+  .cfs-field{display:flex;flex-direction:column;justify-content:center;
+    gap:2px;padding:8px 16px;min-width:0;
+    border-left:1px solid var(--line)}
+  .cfs-field:first-child{border-left:0}
+  .cfs-grow{flex:1 1 40%}
+  .cfs-label{font-size:11px;font-weight:700;color:var(--ink);
+    letter-spacing:.01em}
+  .cfsearch input,.cfsearch select{font:inherit;font-size:14px;border:0;
+    background:transparent;color:var(--ink);padding:0;min-width:0;width:100%}
+  .cfsearch input::placeholder{color:var(--faint)}
+  .cfsearch input:focus,.cfsearch select:focus{outline:2px solid var(--accent);
+    outline-offset:3px;border-radius:4px}
+  .cfs-pair{display:flex;align-items:center;gap:6px}
+  .cfs-pair input{width:7.5em}
+  .cfs-pair select{width:auto;color:var(--dim)}
+  .cfs-go{display:grid;place-items:center;width:40px;height:40px;
+    margin:auto 2px auto 8px;border-radius:50%;background:var(--accent);
+    color:#fff;font-size:16px;flex:0 0 auto}
+  .cfchips{display:flex;align-items:center;gap:var(--space-3);
+    flex-wrap:wrap;margin-bottom:var(--space-4)}
+  .cfnearnote{margin:calc(-1 * var(--space-2)) 0 var(--space-4)}
+
+  /* the list row */
+  .cfdate{flex:0 0 74px;display:flex;flex-direction:column;line-height:1.15;
+    text-align:left}
+  .cfd-day{font-family:var(--font-heading);font-weight:800;font-size:20px}
+  .cfd-dow,.cfd-mon{font-size:11px;color:var(--dim)}
+  .cfd-none{font-size:12px;color:var(--dim)}
+  .cfmain{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:2px;
+    border-left:1px solid var(--line);padding-left:var(--space-4)}
+  .cfline1{display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap}
+  .cfline2{font-size:13px;color:var(--dim)}
+  .cfaway{color:var(--accent)}
+  .cffaces{display:inline-flex}
+  .cfface{display:grid;place-items:center;width:26px;height:26px;
+    border-radius:50%;background:var(--ink);color:var(--panel);
+    font-size:9.5px;font-weight:700;margin-left:-7px;
+    border:2px solid var(--panel);flex:0 0 auto}
+  .cffaces .cfface:first-child{margin-left:0}
+  .cffacts{font-size:12.5px;color:var(--dim);max-width:26em;
+    text-align:right;line-height:1.35}
+  .cfopen{display:grid;place-items:center;width:32px;height:32px;flex:0 0 auto;
+    border-radius:50%;border:1px solid var(--line);color:var(--dim)}
+  .cfrow:hover .cfopen{border-color:var(--accent);color:var(--accent)}
+
+  /* the card grid */
+  .cfgrid{display:grid;gap:var(--space-4);
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  .cfcard{display:flex;flex-direction:column;gap:6px;text-align:left;
+    font:inherit;cursor:pointer;background:var(--panel);color:var(--ink);
+    border:1px solid var(--line);border-radius:14px;
+    padding:var(--space-4)}
+  .cfcard:hover{border-color:var(--accent)}
+  .cfc-top{display:flex;justify-content:space-between;font-size:12px;
+    color:var(--dim)}
+  .cfc-away{color:var(--accent);font-weight:700}
+  .cfc-name{font-family:var(--font-heading);font-weight:800;font-size:18px;
+    display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .cfdot{width:8px;height:8px;border-radius:50%;background:#E8A33D;
+    display:inline-block}
+  .cfc-where{font-size:13px;color:var(--dim)}
+  .cfc-row{display:flex;gap:8px;font-size:12.5px;margin-top:2px}
+  .cfc-k{flex:0 0 62px;font-size:10.5px;font-weight:700;color:var(--faint);
+    letter-spacing:.08em;text-transform:uppercase;padding-top:2px}
+  .cfc-v{color:var(--dim)}
+  .cfc-foot{display:flex;align-items:center;justify-content:space-between;
+    margin-top:auto;padding-top:var(--space-3);border-top:1px solid var(--line)}
+
+  /* the panel */
+  .cfp-wrap{position:fixed;inset:0;z-index:60;background:rgba(15,22,36,.45);
+    display:flex;justify-content:flex-end;overflow-y:auto}
+  body.cfp-lock{overflow:hidden}
+  .cfp-card{position:relative;background:var(--bg);color:var(--ink);
+    width:min(560px,100%);min-height:100%;padding:var(--space-6);
+    display:flex;flex-direction:column;gap:var(--space-3)}
+  .cfp-x{position:absolute;top:var(--space-4);right:var(--space-4);width:36px;
+    height:36px;border-radius:50%;border:1px solid var(--line);
+    background:var(--panel);color:var(--ink);font-size:18px;cursor:pointer}
+  .cfp-name{font-family:var(--font-heading);font-weight:800;font-size:26px;
+    margin:0;padding-right:44px;display:flex;align-items:center;gap:8px;
+    flex-wrap:wrap}
+  .cfp-org,.cfp-when{margin:0;font-size:14px;color:var(--dim)}
+  .cfp-acts{display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap;
+    margin:var(--space-2) 0}
+  .cfp-go{background:var(--accent);color:#fff;text-decoration:none;
+    font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px}
+  .cfp-alt{font:inherit;font-size:14px;font-weight:600;padding:10px 18px;
+    border-radius:999px;border:1px solid var(--line);background:var(--panel);
+    color:var(--ink);cursor:pointer}
+  .cfp-src{margin-left:auto;font-size:12px;color:var(--faint);text-align:right}
+  .cfp-chips{display:flex;gap:8px;flex-wrap:wrap}
+  .cfchip{font-size:12.5px;background:var(--panel);border:1px solid var(--line);
+    border-radius:999px;padding:6px 12px;color:var(--dim)}
+  .cfchip b{color:var(--ink)}
+  .cfp-sec{background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;padding:var(--space-4)}
+  .cfp-sec h4{margin:0 0 var(--space-3);font-size:11px;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--faint);display:flex;
+    justify-content:space-between;align-items:center}
+  .cfp-all{font-size:12px;text-transform:none;letter-spacing:0;font-weight:700}
+  .cfp-roster{list-style:none;margin:0;padding:0;display:grid;gap:10px;
+    grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+  .cfp-roster li{display:flex;align-items:center;gap:8px;font-size:14px}
+  .cfp-roster em{font-style:normal;font-size:11px;color:var(--accent);
+    margin-left:auto}
+  .cfp-note{margin:var(--space-3) 0 0;font-size:12.5px;color:var(--dim)}
+  .cfp-rate .cfrate{border:0;padding:0}
+  @media (max-width:640px){
+    .cfsearch{flex-direction:column;border-radius:14px}
+    .cfs-field{border-left:0;border-top:1px solid var(--line)}
+    .cfs-field:first-child{border-top:0}
+    .cfs-go{margin:var(--space-2) 0 0;width:100%;border-radius:999px}
+    .cfp-card{width:100%}
+  }
+
   .cfblock{margin-bottom:var(--space-8)}
   .cfblock h3{font-family:var(--font-heading);font-weight:800;font-size:16px;
     letter-spacing:.06em;text-transform:uppercase;color:var(--dim);
     margin:0 0 var(--space-3);padding-bottom:var(--space-2);
     border-bottom:1px solid var(--line)}
-  .cfrow{display:flex;gap:var(--space-3);align-items:baseline;
+  /* Four columns: when, what, who, open. `align-items:center` rather than
+     baseline - the date block is two lines and the name one, and baseline
+     hung them off each other's first line. */
+  .cfrow{display:flex;gap:var(--space-4);align-items:center;
     padding:var(--space-3) 0;border-bottom:1px solid var(--line);
     cursor:pointer;background:none;border-left:0;border-right:0;border-top:0;
     width:100%;text-align:left;font:inherit;color:inherit}
+  /* The facts column has a real width and wraps inside it. Left to flex it
+     squeezed to nothing beside a long name and ran under the open button. */
+  .cfnums{margin-left:auto;flex:0 1 auto;display:flex;align-items:center;
+    gap:var(--space-3);justify-content:flex-end;min-width:0}
   .cfrow:hover .cfname{color:var(--accent)}
   .cfname{font-weight:600;font-size:15px}
   .cfflag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;
     font-weight:700;color:var(--bg);background:var(--dim);padding:1px 5px}
-  .cfnums{margin-left:auto;display:flex;gap:var(--space-6);
-    font-variant-numeric:tabular-nums;font-size:13.5px;white-space:nowrap}
+  /* NOTE: .cfnums is laid out above, with the row-3 list row. What is left
+     here is only what still applies - the nowrap and the wide gap belonged to
+     the old two-number row and squeezed the facts column into the open
+     button. */
+  .cfnums{font-variant-numeric:tabular-nums;font-size:13.5px}
   .cfnums b{font-weight:700}
   .cfnums .q{color:var(--dim)}
   .cfzero{color:var(--faint)}
@@ -831,7 +963,7 @@
     border:0;border-bottom:1px dotted var(--dim);cursor:pointer}
   .locmore:hover{border-bottom-color:var(--ink)}
   .jt tr.sub td{color:var(--dim);background:var(--chip)}
-  .jt tr.sub td.loc{padding-left:var(--space-5)}
+  .jt tr.sub td.loc{padding-left:var(--space-4)}
 
   /* Square, like every control here - --radius is 0 and one rounded corner is
      what breaks the system. Quiet until hovered: it sits on every saved row
@@ -5860,13 +5992,50 @@ function conferences(){
   <!-- A 118-row catalogue needs a way in. The department dropdown is the cut
        a person actually thinks in - "I sell to public safety" - and the box
        is for when they already know the name. -->
-  <div class="filters" id="cf-bar">
-    <input type="search" id="cf-q" placeholder="Conference name"
-           aria-label="Search conferences" style="min-width:220px">
-    <select id="cf-dept" aria-label="Department">
-      <option value="">Every department</option>
-      ${depts.map(d=>`<option value="${esc(d)}">${esc(d)}</option>`).join("")}
-    </select>
+  <!-- ONE BAR, four things a person actually knows: roughly what they want,
+       who attends, how far they will travel, and when. The five separate
+       selects this replaces asked the same questions in the site's
+       vocabulary rather than theirs. Mined / flagship survive as chips
+       underneath: they are ours-not-theirs facts and belong second, but
+       deleting a filter somebody was using is not a redesign. -->
+  <div class="cfsearch" id="cf-bar">
+    <label class="cfs-field cfs-grow">
+      <span class="cfs-label">Ask for anything</span>
+      <input type="search" id="cf-q" placeholder="Try &ldquo;fire conferences where chiefs show up&rdquo;"
+             aria-label="Search conferences">
+    </label>
+    <label class="cfs-field">
+      <span class="cfs-label">Department</span>
+      <select id="cf-dept" aria-label="Department">
+        <option value="">Any department</option>
+        ${depts.map(d=>`<option value="${esc(d)}">${esc(d)}</option>`).join("")}
+      </select>
+    </label>
+    <label class="cfs-field">
+      <span class="cfs-label">Distance</span>
+      <span class="cfs-pair">
+        <input type="search" id="cf-near" placeholder="Anywhere"
+               aria-label="Near which city" autocomplete="off">
+        <select id="cf-miles" aria-label="How far">
+          <option value="100">100 mi</option>
+          <option value="300">300 mi</option>
+          <option value="600" selected>600 mi</option>
+          <option value="1500">1,500 mi</option>
+        </select>
+      </span>
+    </label>
+    <label class="cfs-field">
+      <span class="cfs-label">When</span>
+      <select id="cf-when" aria-label="How soon">
+        <option value="">Any time</option>
+        <option value="90">Next 90 days</option>
+        <option value="180">Next 6 months</option>
+        <option value="365">Next year</option>
+      </select>
+    </label>
+    <span class="cfs-go" aria-hidden="true">&#9906;</span>
+  </div>
+  <div class="cfchips">
     <select id="cf-mined" aria-label="Whether we have mined it">
       <option value="">Mined or not</option>
       <option value="1">Exhibitors on file</option>
@@ -5876,18 +6045,14 @@ function conferences(){
       <option value="">Any size</option>
       <option value="1">Flagship events only</option>
     </select>
-    <select id="cf-when" aria-label="How soon">
-      <option value="">Any time</option>
-      <option value="90">In the next 3 months</option>
-      <option value="180">In the next 6 months</option>
-      <option value="365">In the next year</option>
-    </select>
     <span class="cfcount" id="cf-n"></span>
     <span class="cfseg" id="cf-view" role="group" aria-label="How to show them">
       <button type="button" data-v="list" aria-pressed="true">List</button>
+      <button type="button" data-v="cards" aria-pressed="false">Cards</button>
       <button type="button" data-v="cal" aria-pressed="false">Calendar</button>
     </span>
   </div>
+  <div id="cf-nearnote" class="cfnearnote"></div>
   <div id="cf-ratenote"></div>
   <div id="cf-list"></div>`;
 
@@ -5896,15 +6061,45 @@ function conferences(){
     const dept=$("#cf-dept").value, mined=$("#cf-mined").value,
           flag=$("#cf-flag").value, when=$("#cf-when").value;
     const soon=r=>withinDays(r.dates, when);
+    /* The free box searches the block too, because "public safety" is what a
+       person types and it is a block, not a department. */
     const keep=r=>
       (!q||(r.name||"").toLowerCase().includes(q)
          ||(r.tag||"").toLowerCase().includes(q)
+         ||(r.city||"").toLowerCase().includes(q)
+         ||(r.block||"").toLowerCase().includes(q)
          ||(r.department||"").toLowerCase().includes(q))
       &&(!dept||r.block===dept)
       &&(!mined||(mined==="1"?r.companies>0:r.companies===0))
       &&(!flag||r.flagship)
       &&soon(r);
-    const shown=rows.filter(keep);
+    let shown=rows.filter(keep);
+    /* DISTANCE LAST, and out loud. Applied after the rest so the note can say
+       how many of THOSE it could not place, not how many of all 138. */
+    const near=cfNear(); NEAR_AT=null;
+    const note=$("#cf-nearnote");
+    if(near&&near.unknown){
+      if(note)note.innerHTML=`<span class="cfwhy">No city called
+        &ldquo;${esc(near.unknown)}&rdquo; on file, so distance is off.
+        Every other filter still applies.</span>`;
+    }else if(near&&near.ambiguous){
+      if(note)note.innerHTML=`<span class="cfwhy">More than one
+        ${esc(near.ambiguous[0].split("|")[0])} &mdash;
+        ${near.ambiguous.map(k=>esc(k.replace("|",", "))).join(", ")}.
+        Add the state and distance switches on.</span>`;
+    }else if(near&&near.at){
+      NEAR_AT=near.at;
+      const before=shown.length;
+      const placed=shown.filter(r=>cfCoords(r));
+      shown=placed.filter(r=>cfMiles(r,near.at)<=near.miles);
+      const lost=before-placed.length;
+      if(note)note.innerHTML=`<span class="cfwhy">Within
+        ${near.miles.toLocaleString()} miles of
+        ${esc(near.key.replace("|",", "))}.
+        ${lost?`${lost} more matched everything else and we could not place
+          on a map &mdash; they are not shown, and that is a gap in our city
+          list, not a statement about where they are.`:""}</span>`;
+    }else if(note){ note.innerHTML=""; }
     /* The count says what is on screen AND what it is out of, because "12
        events" alone reads as the whole catalogue to somebody who did not
        notice a filter was on. */
@@ -5921,6 +6116,11 @@ function conferences(){
     $("#cf-list").innerHTML=
       CF_VIEW==="cal"
         ? cfCalendarHTML(shown)
+        : CF_VIEW==="cards"
+        ? (shown.length?cfCardsHTML(shown.slice().sort(cfOrder)):
+          `<div class="empty">${GHOST}No conference matches that.<br>
+            <span class="sub">That is ${rows.length} events checked, not a claim
+            that no such conference exists.</span></div>`)
         : (keys.length?keys.map(b=>cfBlockHTML(b,g[b])).join(""):
           `<div class="empty">${GHOST}No conference matches that.<br>
             <span class="sub">That is ${rows.length} events checked, not a claim
@@ -5944,6 +6144,8 @@ function conferences(){
       wireCfRows();
       loadRatings();
     }
+    // whichever view is up, a tile or row opens the same panel
+    wireCfOpen();
   };
   const vseg=$("#cf-view");
   if(vseg)vseg.querySelectorAll("button").forEach(b=>{
@@ -5954,7 +6156,8 @@ function conferences(){
       paint();
     };
   });
-  ["cf-q","cf-dept","cf-mined","cf-flag","cf-when"].forEach(id=>{
+  ["cf-q","cf-dept","cf-mined","cf-flag","cf-when",
+   "cf-near","cf-miles"].forEach(id=>{
     const el=$("#"+id); if(!el)return;
     el.addEventListener(el.tagName==="SELECT"?"change":"input",paint);
   });
@@ -6000,41 +6203,297 @@ function cfNoDates(r){
   }
 }
 
+/* WHERE A CONFERENCE IS, IN MILES. The same cities table and the same
+   haversine the jobs tab uses - a venue is a place like any other. Returns
+   null when either end cannot be placed, and null is NOT "far away": the
+   filter below counts those and says so, because a distance search that
+   silently drops what it could not find on a map answers "nothing near you"
+   while the event sits there. Same failure as a page scan reporting "no
+   listings" when it could not read the page. */
+function cfCoords(r){
+  const t=(r.city||"").trim();
+  if(!t||!D.cities)return null;
+  const k=resolveNear(t);
+  return (k&&!k.ambiguous)?coordsOf(k):null;
+}
+function cfMiles(r,at){
+  if(!at)return null;
+  const c=cfCoords(r);
+  return c?Math.round(milesBetween(at,c)):null;
+}
+/* What the person typed in the Distance box, resolved. Its own reader rather
+   than nearState(): that one is bound to the jobs tab's ids, and two tabs
+   sharing one input is how a filter starts applying where nobody set it. */
+function cfNear(){
+  const el=$("#cf-near");
+  if(!el||!el.value.trim())return null;
+  const r=resolveNear(el.value);
+  if(!r)return {unknown:el.value.trim()};
+  if(r.ambiguous)return r;
+  return {key:r, at:coordsOf(r), miles:+($("#cf-miles")||{value:600}).value};
+}
+
 function cfBlockHTML(b,list){
   return `<div class="cfblock"><h3>${esc(b)}</h3>${list.map(r=>cfRowHTML(r)).join("")}</div>`;
 }
 
+/* WHO WE KNOW IS STANDING THERE. Computed from the organizations already in
+   memory rather than baked per event, because a company found at two shows
+   belongs to both and duplicating it into each row's payload is how one
+   company becomes two. */
+function cfRoster(tag){
+  return (D.organizations||[]).filter(o=>
+    (o.conferences||[]).includes(tag)||o.conference===tag);
+}
+function cfInitials(name){
+  const w=(name||"").replace(/[^A-Za-z0-9 ]/g," ").trim().split(/\s+/);
+  return ((w[0]||"?")[0]+((w[1]||"")[0]||"")).toUpperCase();
+}
+function cfFaces(tag,n){
+  const list=cfRoster(tag).slice(0,n);
+  if(!list.length)return "";
+  return `<span class="cffaces">${list.map(o=>
+    `<span class="cfface" title="${esc(o.name)}">${esc(cfInitials(o.name))}</span>`
+  ).join("")}</span>`;
+}
+/* The line of facts under a name. Each clause is dropped rather than zeroed:
+   "0 hiring" is furniture on 100 rows, and "not mined yet" already says the
+   one thing worth saying about an event with nobody beside it. */
+function cfFacts(r){
+  const out=[];
+  if(r.companies)out.push(`<b>${r.companies}</b> exhibitors`);
+  if(r.companies&&r.approx_count&&r.approx_count>r.companies)
+    out.push(`of about ${r.approx_count} on the floor`);
+  if(r.hiring)out.push(`<b>${r.hiring}</b> hiring`);
+  if(r.department)out.push(esc(r.department));
+  return out.length?out.join(" &middot; "):`<span class="cfzero">not mined yet</span>`;
+}
+/* The date block on the left. "9-11 / Wed-Fri" when we can read the days out
+   of the string we hold, the string itself when we cannot, and the reason
+   when we hold no date at all - never a guess at a month. */
+function cfWhen(r){
+  const c=calRange(r.dates);
+  if(!c)return `<span class="cfd-none">${esc(r.dates||cfNoDates(r))}</span>`;
+  const a=c.start, b=c.end, D2=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const same=a.getMonth()===b.getMonth();
+  const days=a.getDate()===b.getDate()?`${a.getDate()}`
+            :same?`${a.getDate()}\u2013${b.getDate()}`
+            :`${a.getDate()} \u2013 ${b.getDate()}`;
+  const dow=a.getDate()===b.getDate()?D2[a.getDay()]
+           :`${D2[a.getDay()]}\u2013${D2[b.getDay()]}`;
+  return `<span class="cfd-day">${days}</span>
+          <span class="cfd-dow">${dow}</span>
+          <span class="cfd-mon">${a.toLocaleString(undefined,{month:"short"})}
+            ${a.getFullYear()}</span>`;
+}
+function cfAway(r){
+  const m=cfMiles(r,NEAR_AT);
+  return m==null?"":`<b class="cfaway">${m.toLocaleString()} mi away</b>`;
+}
+
+/* 3c. The same filtered set as the list, laid out as tiles. Two views must
+   never disagree about what is on screen - both render `shown`, so switching
+   changes how a reader is looking and never what at. */
+/* 3d. ONE EVENT, EVERYTHING WE HOLD ABOUT IT - and nothing we do not.
+   The design also called for booths-by-year, a sponsorship price list, how
+   many of the viewer's rivals are going, a session count and a floor-plan
+   upload. We hold none of those: there is one year of counts per event, no
+   pricing anywhere, no notion of who the viewer is on a public board, no
+   session data, and nowhere to put a file. Drawing those panels with
+   plausible numbers in them is the one thing this board never does, so they
+   are absent rather than invented, and the gap is a fact about us. */
+function cfPanelHTML(r){
+  const roster=cfRoster(r.tag);
+  const away=cfMiles(r,NEAR_AT);
+  const site=safeUrl(r.url);
+  const ends=cfEnds(r);
+  const bits=[r.dates||cfNoDates(r), r.city,
+              away==null?null:`<b>${away.toLocaleString()} mi away</b>`, ends]
+             .filter(Boolean);
+  return `<div class="cfp-card" role="dialog" aria-modal="true"
+               aria-label="${esc(r.name)}">
+    <button type="button" class="cfp-x" data-cfclose aria-label="Close">&times;</button>
+    <h3 class="cfp-name">${esc(r.name)}
+      ${r.flagship?`<span class="cfflag">Flagship</span>`:""}
+      ${isNow(r.dates)?`<span class="cfnow">On now</span>`:""}
+      ${isPast(r.dates)?`<span class="cfpast">past edition</span>`:""}</h3>
+    <p class="cfp-org">${esc([r.department,r.block].filter(Boolean).join(" \u00b7 "))}</p>
+    <p class="cfp-when">${bits.join(" &middot; ")}</p>
+
+    <div class="cfp-acts">
+      ${site?`<a class="cfp-go" href="${esc(site)}" target="_blank"
+         rel="noopener noreferrer">Event site &nearr;</a>`:""}
+      ${calRange(r.dates)?`<button type="button" class="cfp-alt"
+         data-cal="${esc(r.tag)}">+ Calendar</button>`:""}
+      <span class="cfp-src">${esc(cfProvenance(r))}</span>
+    </div>
+
+    <div class="cfp-chips">
+      ${r.companies?`<span class="cfchip"><b>${r.companies}</b> govtech exhibitors</span>`:""}
+      ${r.companies&&r.approx_count&&r.approx_count>r.companies
+        ?`<span class="cfchip">about ${r.approx_count} on the floor</span>`:""}
+      ${r.hiring?`<span class="cfchip"><b>${r.hiring}</b> hiring</span>`:""}
+      ${r.open_roles?`<span class="cfchip"><b>${r.open_roles}</b> open roles</span>`:""}
+      ${r.department?`<span class="cfchip">${esc(r.department)}</span>`:""}
+    </div>
+
+    <section class="cfp-sec">
+      <h4>Who has a booth
+        ${roster.length>8?`<a href="#" data-cfall="${esc(r.tag)}"
+           class="cfp-all">All ${roster.length} &rarr;</a>`:""}</h4>
+      ${roster.length?`<ul class="cfp-roster">${
+        roster.slice(0,8).map(o=>`<li><span class="cfface">${
+          esc(cfInitials(o.name))}</span><span>${esc(o.name)}</span>${
+          o.open_roles?`<em>${o.open_roles} open</em>`:""}</li>`).join("")}</ul>
+        ${r.approx_count&&r.approx_count>roster.length
+          ?`<p class="cfp-note">We track ${roster.length} of about
+             ${r.approx_count} who stood here. The rest are companies we do
+             not follow, not companies that were absent.</p>`:""}`
+       :`<p class="cfp-note">We have not mined this floor yet &mdash; that is
+          a fact about us, not about the conference.</p>`}
+    </section>
+
+    <section class="cfp-sec cfp-rate">
+      <h4>Worth it?</h4>
+      <div class="cfrate" data-rate="${esc(r.tag)}">
+        <span class="cfscore" data-score>&mdash;</span>
+        <span class="cfvotes" data-votes>&nbsp;</span>
+        <span class="cfstars" data-stars></span>
+      </div>
+    </section>
+  </div>`;
+}
+/* "ends Friday" only while it is running, because that is the only time the
+   sentence tells a reader something they can act on. */
+function cfEnds(r){
+  const c=calRange(r.dates);
+  if(!c||!isNow(r.dates))return null;
+  const D2=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  return `ends ${D2[c.end.getDay()]}`;
+}
+/* WHERE THE DATE CAME FROM. The catalogue grades its own dates and the grade
+   is the honest thing to print - "verified" over a date nobody checked would
+   be a claim we cannot support. */
+function cfProvenance(r){
+  const c=(r.dates_confidence||"").toLowerCase();
+  if(c==="high")return "dates read off the event's own page";
+  if(c==="medium")return "dates from a secondary source";
+  if(c)return `dates: ${c} confidence`;
+  return "dates unconfirmed";
+}
+let CF_OPEN=null;
+function cfOpenPanel(tag){
+  const r=(D.conferences||[]).find(x=>x.tag===tag);
+  if(!r)return;
+  CF_OPEN=tag;
+  let host=$("#cf-panel");
+  if(!host){
+    host=document.createElement("div");
+    host.id="cf-panel"; host.className="cfp-wrap";
+    document.body.appendChild(host);
+  }
+  host.innerHTML=cfPanelHTML(r);
+  host.hidden=false;
+  document.body.classList.add("cfp-lock");
+  host.onclick=e=>{ if(e.target===host)cfClosePanel(); };
+  host.querySelectorAll("[data-cfclose]").forEach(b=>b.onclick=cfClosePanel);
+  host.querySelectorAll("[data-cal]").forEach(b=>b.onclick=e=>{
+    e.stopPropagation(); downloadIcs(r);
+  });
+  host.querySelectorAll("[data-cfall]").forEach(a=>a.onclick=e=>{
+    e.preventDefault(); cfClosePanel(); cfToCompanies(tag);
+  });
+  // the panel's rating widget is the same one the rows use
+  loadRatings();
+  const x=host.querySelector(".cfp-x"); if(x)x.focus();
+}
+function cfClosePanel(){
+  const host=$("#cf-panel");
+  if(host){ host.hidden=true; host.innerHTML=""; }
+  document.body.classList.remove("cfp-lock");
+  CF_OPEN=null;
+}
+/* The destination a row has always had: the companies tab, filtered to the
+   people who stood at this event. */
+function cfToCompanies(tag){
+  ROLE=null; tab="companies"; render();
+  const box=$("#c-q");
+  if(box){ box.value="conf:"+tag;
+           box.dispatchEvent(new Event("input",{bubbles:true})); }
+}
+function wireCfOpen(){
+  document.querySelectorAll(".cfrow,.cfcard").forEach(b=>{
+    b.onclick=e=>{
+      if(e.target.closest("[data-cal],a"))return;
+      cfOpenPanel(b.dataset.tag);
+    };
+    if(b.getAttribute("aria-disabled")==="true")b.style.cursor="pointer";
+  });
+}
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&CF_OPEN)cfClosePanel();
+});
+
+function cfCardsHTML(list){
+  if(!list.length)return "";
+  return `<div class="cfgrid">${list.map(r=>{
+    const away=cfAway(r);
+    return `<button type="button" class="cfcard" data-tag="${esc(r.tag)}"
+              ${r.companies?"":'aria-disabled="true"'}>
+      <span class="cfc-top">
+        <span class="cfc-when">${esc(r.dates?shortDates(r.dates):cfNoDates(r))}</span>
+        ${away?`<span class="cfc-away">${away}</span>`:""}
+      </span>
+      <span class="cfc-name">${esc(r.name)}${
+        isNow(r.dates)?`<i class="cfdot" title="Running today"></i>`:""}${
+        r.flagship?`<span class="cfflag">Flagship</span>`:""}</span>
+      <span class="cfc-where">${esc([r.city,r.block].filter(Boolean).join(" \u00b7 "))}</span>
+      ${r.companies?`
+        <span class="cfc-row"><span class="cfc-k">Vendors</span>
+          <span class="cfc-v">${cfFacts(r)}</span></span>`:`
+        <span class="cfc-row"><span class="cfc-v cfzero">not mined yet</span></span>`}
+      <span class="cfc-foot">${cfFaces(r.tag,4)}
+        <span class="cfopen" aria-hidden="true">&nearr;</span></span>
+    </button>`;
+  }).join("")}</div>`;
+}
+/* "Sep 9-11" out of whatever the catalogue holds, or the string itself. */
+function shortDates(t){
+  const c=calRange(t);
+  if(!c)return t;
+  const a=c.start, b=c.end, m=d=>d.toLocaleString(undefined,{month:"short"});
+  return a.getMonth()===b.getMonth()
+    ? `${m(a)} ${a.getDate()}\u2013${b.getDate()}`
+    : `${m(a)} ${a.getDate()} \u2013 ${m(b)} ${b.getDate()}`;
+}
+
 function cfRowHTML(r){
+  const away=cfAway(r);
   return `
         <button type="button" class="cfrow" data-tag="${esc(r.tag)}"
                 ${r.companies?"":'aria-disabled="true"'}>
-          <span class="cfname">${esc(r.name)}</span>
-          ${r.flagship?`<span class="cfflag">flagship</span>`:""}
-          ${r.dates?`<span class="cfmeta">${esc(r.dates)}</span>`
-                    :`<span class="cfwhy">${esc(cfNoDates(r))}</span>`}
-          ${isPast(r.dates)?`<span class="cfpast"
-             title="This edition has already happened">past edition</span>`:""}
-          ${isNow(r.dates)?`<span class="cfnow"
-             title="This event is running today">on now</span>`:""}
-          ${r.city?`<span class="cfmeta">${esc(r.city)}</span>`:""}
-          <span class="cfnums">
-            ${r.companies
-              ? `<span><b>${r.companies}</b> exhibitors here</span>
-                 <span class="${r.hiring?"":"cfzero"}"><b>${r.hiring}</b> hiring</span>`
-              : `<span class="cfzero">not mined yet</span>`}
+          <span class="cfdate">${cfWhen(r)}</span>
+          <span class="cfmain">
+            <span class="cfline1">
+              <span class="cfname">${esc(r.name)}</span>
+              ${r.flagship?`<span class="cfflag">Flagship</span>`:""}
+              ${isNow(r.dates)?`<span class="cfnow"
+                 title="This event is running today">On now</span>`:""}
+              ${isPast(r.dates)?`<span class="cfpast"
+                 title="This edition has already happened">past edition</span>`:""}
+            </span>
+            <span class="cfline2">
+              ${r.city?`${esc(r.city)}${away?" &middot; "+away:""} &middot; `:away?away+" &middot; ":""}
+              ${esc(r.block||"")}
+            </span>
           </span>
+          <span class="cfnums">
+            ${cfFaces(r.tag,4)}
+            <span class="cffacts">${cfFacts(r)}</span>
+          </span>
+          <span class="cfopen" aria-hidden="true">&nearr;</span>
         </button>
-        <div class="cfrate" data-rate="${esc(r.tag)}">
-          <span class="cfscore" data-score>&mdash;</span>
-          <span class="cfvotes" data-votes>&nbsp;</span>
-          ${safeUrl(r.url)?`<a class="cfsite" href="${esc(safeUrl(r.url))}"
-             target="_blank" rel="noopener noreferrer"
-             title="Open the official page for ${esc(r.name)}">event site &nearr;</a>`:""}
-          ${calRange(r.dates)?`<button type="button" class="cfcal"
-             data-cal="${esc(r.tag)}"
-             title="Download an .ics for ${esc(r.name)}">+ calendar</button>`:""}
-          <span class="cfstars" data-stars></span>
-        </div>`;
+`;
 }
 
 /* Ratings are fetched at RUNTIME, not baked into board.json: the board is
@@ -6045,6 +6504,9 @@ function cfRowHTML(r){
    looking, not a filter, and a shared link should carry what somebody
    filtered to rather than how they happened to be reading it. */
 let CF_VIEW="list";
+/* The origin the current filter resolved to, so a row can print its own
+   distance without re-resolving the box on every one of 138 rows. */
+let NEAR_AT=null;
 
 const RATED_KEY="sled-rated";
 function myRatings(){
