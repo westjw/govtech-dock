@@ -728,6 +728,7 @@
    "is_govtech_why": "nothing in the name either way"
   }
  ],
- "why": null,
- "restaged": "93 -> 91 names after re-filtering on 2026-09-02"
+ "why": "12% carry a corporate marker, 0% name a site section, 0% use the words a site names itself with - worth a look before running intake",
+ "restaged": "93 -> 91 names after re-filtering on 2026-09-02",
+ "quality": "mixed"
 }

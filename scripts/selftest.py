@@ -17819,6 +17819,115 @@ def check_an_acronym_cannot_confirm_itself() -> int:
     return errors
 
 
+def check_an_association_menu_never_grades_as_a_floor() -> int:
+    """Eleven pages of navigation were graded `good`.
+
+    quality() looked for corporate markers and for section nouns AT THE START
+    of a name. Neither separates a floor from a site map: 3CMA is a real floor
+    with 11% corporate markers and Ohio ASBO is pure navigation with 16%, and
+    the anchored section test reads "Advocacy" while missing "Advocacy Chats
+    Recordings", "2026 Fall Conference" and "Annual Conference & Expo
+    Sponsors".
+
+    So eleven association websites graded `good`, holding 596 names - site
+    navigation, a hotel, "EXPO HALL HOURS", "RENT BOOTH NOW", and in ACCG's
+    case a county JOB BOARD ("Appraiser I", "Building Inspector I - Building
+    Department"). One conference_intake run away from becoming suppliers and
+    research candidates on the board.
+
+    The signal that does separate them, measured 2026-09-10 over ten known
+    floors and nine known site maps, is how many names use the vocabulary a
+    site names ITSELF with, anywhere in the name rather than at the front:
+
+      real floors  EDUCAUSE 0%  PLA 0%  GFOA 0%  AWWA 0%  SNA 0%  NACUBO 0%
+                   CoSN 1%  NatCon 2%  NAHRO 2%  3CMA 5%
+      site maps    KLC 12%  Vermont 18%  NC League 30%  NYCOM 32%
+                   ITS 33%  CCAP 42%  WRPA 47%  Ohio ASBO 56%
+
+    Nothing sits between 5% and 12%. The line is 10%.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import sweep_exhibitors as sw
+
+    def rows(names):
+        return [{"name": n} for n in names]
+
+    # A REAL FLOOR. Company names, nothing a site calls its own sections.
+    floor = rows(["Tyler Technologies", "OpenGov", "Granicus", "CivicPlus",
+                  "Accela Inc", "Esri", "Motorola Solutions", "Axon",
+                  "NEOGOV", "Laserfiche", "Bentley Systems", "Trimble"])
+    g, why = sw.quality(floor)
+    if g == "menu":
+        errors += fail(f"a page of twelve plain company names graded as "
+                       f"navigation: {why}")
+
+    # AN ASSOCIATION'S OWN SITE, which is what eleven of these were.
+    menu = rows(["Advocacy", "Advocacy Chats Recordings", "2026 Fall Conference",
+                 "Annual Conference & Expo Sponsors", "Membership Directory",
+                 "Training Resources", "Awards", "Board of Directors",
+                 "Newsletter Archive", "Contact Us", "Login",
+                 "Municipal Policy Committees"])
+    g, why = sw.quality(menu)
+    if g != "menu":
+        errors += fail(
+            f"a page of pure association navigation graded {g!r}: {why}. This "
+            f"is the eleven-menus case, and the next step after this grade is "
+            f"conference_intake writing every one of them to the board")
+
+    # THE BOUNDARY CASE, and the one that matters. The pure-navigation page
+    # above is 58% and would be refused by almost any threshold; the real
+    # site maps run from 12%, and the words sit in the MIDDLE of the name
+    # rather than at the front - "2026 Fall Conference", "Annual Conference &
+    # Expo Sponsors". A fixture made only of "Advocacy" and "Login" tests
+    # neither the line nor the anchoring.
+    edge = rows(["Tyler Technologies", "OpenGov", "Granicus", "CivicPlus",
+                 "Accela Inc", "Esri", "Motorola Solutions", "Axon",
+                 "NEOGOV", "Laserfiche", "Bentley Systems", "Trimble",
+                 "Clearview AI", "Rekor Systems", "Mark43", "Peregrine",
+                 "2026 Fall Conference", "Annual Conference & Expo Sponsors",
+                 "Municipal Policy Committees", "Fall Training Schedule"])
+    g, why = sw.quality(edge)
+    if g != "menu":
+        errors += fail(
+            f"a page that is 20% site vocabulary graded {g!r}: {why}. Real "
+            f"site maps start at 12% and real floors stop at 5%, so anything "
+            f"that lets 20% through has moved the line past every menu this "
+            f"was measured on")
+
+    # AND THE VOCABULARY IS FOUND ANYWHERE, not only at the front - that is
+    # the whole difference between the old rule and this one.
+    if not sw.SITE_WORD.search("Advocacy Chats Recordings"):
+        errors += fail("SITE_WORD misses 'Advocacy Chats Recordings'")
+    if not sw.SITE_WORD.search("2026 Fall Conference"):
+        errors += fail("SITE_WORD misses '2026 Fall Conference'")
+    if sw.SITE_WORD.search("Tyler Technologies"):
+        errors += fail("SITE_WORD matches a plain company name, which would "
+                       "refuse real floors")
+
+    # THE LIVE FILES. Every floor that has been hand-verified and landed must
+    # still pass; anything the rule now refuses must not already be on the
+    # board as though it were read.
+    staged = sorted((DATA / "conference_intake" / "staged").glob("*.json"))
+    if len(staged) < 20:
+        return errors + fail(f"only {len(staged)} staged floors on disk; this "
+                             f"check needs the real ones to mean anything")
+    refused = []
+    for f in staged:
+        ex = json.loads(f.read_text()).get("exhibitors") or []
+        if ex and sw.quality(ex)[0] == "menu":
+            refused.append(f.stem)
+    if refused:
+        errors += fail(
+            f"{len(refused)} floor(s) that were hand-verified and landed are "
+            f"now graded as navigation: {refused[:4]}. Either the rule is too "
+            f"tight or those companies came off a menu")
+    return errors
+
+
 def check_the_conference_page_is_the_conference_panel() -> int:
     """One conference, two doors, and it must not be two products.
 
@@ -19400,6 +19509,7 @@ def main() -> int:
     errors += check_staging_a_catalogue_never_costs_an_observed_fact()
     errors += check_an_organisation_is_not_one_of_its_own_events()
     errors += check_an_acronym_cannot_confirm_itself()
+    errors += check_an_association_menu_never_grades_as_a_floor()
     errors += check_the_conference_page_is_the_conference_panel()
     errors += check_a_throttled_lookup_is_not_a_city_that_does_not_exist()
     errors += check_two_rows_cannot_promote_the_same_exhibitor_url()

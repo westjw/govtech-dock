@@ -264,6 +264,29 @@ SECTION = re.compile(r"^(advocacy|awards|benefits|board of directors|committees|
                      r"leadership|governance|history|mission|staff|chapters|"
                      r"collections|authors?|abstracts?|posters?|papers?|"
                      r"proceedings|archives?|newsletters?|webinars?)\b", re.I)
+# THE SAME VOCABULARY, ANYWHERE IN THE NAME. SECTION is anchored, so it reads
+# "Advocacy" and misses "Advocacy Chats Recordings", "2026 Fall Conference"
+# and "Annual Conference & Expo Sponsors" - which is how eleven pages of pure
+# association navigation were all graded `good`.
+#
+# MEASURED, on 2026-09-10, over ten directories known to be real floors and
+# nine known to be site maps. The rate of names carrying any of these words
+# ANYWHERE separates them with nothing in between:
+#
+#   real floors   EDUCAUSE 0%  PLA 0%  GFOA 0%  AWWA 0%  SNA 0%  NACUBO 0%
+#                 CoSN 1%  NatCon 2%  NAHRO 2%  3CMA 5%
+#   site maps     KLC 12%  Vermont 18%  NC League 30%  NYCOM 32%
+#                 ITS America 33%  CCAP 42%  WRPA 47%  Ohio ASBO 56%
+#
+# Corporate markers do NOT separate them - 3CMA is a real floor at 11% and
+# Ohio ASBO is a menu at 16% - which is why the old rule passed all eleven.
+SITE_WORD = re.compile(r"\b(advocacy|training|membership|conferences?|"
+                       r"newsletters?|director(y|ies)|resources?|awards?|"
+                       r"committees?|login|register|registration|policy|"
+                       r"about|contact|events?|programs?|blogs?|news|"
+                       r"chapters?|affiliates?|sponsorships?|exhibiting|"
+                       r"schedule|hours|booth|legend|print|attend|"
+                       r"webinars?|podcasts?|publications?)\b", re.I)
 
 
 def quality(names: list[dict]) -> tuple[str, str]:
@@ -292,7 +315,16 @@ def quality(names: list[dict]) -> tuple[str, str]:
         return "empty", "nothing survived the filter"
     corp = sum(1 for n in names if CORP.search(n["name"])) / len(names)
     sect = sum(1 for n in names if SECTION.match(n["name"])) / len(names)
-    note = f"{corp:.0%} carry a corporate marker, {sect:.0%} name a site section"
+    site = sum(1 for n in names if SITE_WORD.search(n["name"])) / len(names)
+    note = (f"{corp:.0%} carry a corporate marker, {sect:.0%} name a site "
+            f"section, {site:.0%} use the words a site names itself with")
+    # THE STRONGEST SIGNAL FIRST. Ten real floors top out at 5% and nine site
+    # maps start at 12%, so this is the line - and it is the one that was
+    # missing when eleven menus graded `good` and 596 navigation items and
+    # county job postings sat one command away from the board.
+    if site >= 0.10:
+        return "menu", (note + " - this reads as the association's own "
+                        "navigation rather than a floor")
     if sect >= 0.10 or corp < 0.05:
         return "doubtful", note + " - this reads as the association's own pages"
     if corp >= 0.15:

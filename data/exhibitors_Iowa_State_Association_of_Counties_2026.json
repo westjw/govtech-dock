@@ -66,7 +66,7 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Corporate Partners \u25bc",
+   "name": "Corporate Partners ▼",
    "website": "https://www.iowacounties.org/corporate-opportunities/",
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
@@ -222,7 +222,7 @@
    "is_govtech_why": "names a trade that is not a product vendor"
   },
   {
-   "name": "Iowa County Attorney\u2019s Case Management Project",
+   "name": "Iowa County Attorney’s Case Management Project",
    "website": "https://www.iowacounties.org/programs/icacmp/",
    "is_govtech": false,
    "is_govtech_why": "names a trade that is not a product vendor"
@@ -308,7 +308,7 @@
    "website": "https://www.iowacounties.org/legislative/legislative-priorities/"
   },
   {
-   "name": "Legislative \u25bc",
+   "name": "Legislative ▼",
    "website": "https://www.iowacounties.org/legislative/",
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
@@ -342,7 +342,7 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Meetings \u25bc",
+   "name": "Meetings ▼",
    "website": "https://www.iowacounties.org/meetings/",
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
@@ -426,7 +426,7 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Programs \u25bc",
+   "name": "Programs ▼",
    "website": "https://www.iowacounties.org/programs/",
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
@@ -466,7 +466,7 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Resources \u25bc",
+   "name": "Resources ▼",
    "website": "https://www.iowacounties.org/member-resources/",
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
@@ -586,6 +586,6 @@
    "is_govtech_why": "nothing in the name either way"
   }
  ],
- "why": null,
- "quality": "good"
+ "why": "25% carry a corporate marker, 3% name a site section, 15% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
+ "quality": "menu"
 }
