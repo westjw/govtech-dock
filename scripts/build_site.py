@@ -729,6 +729,93 @@ PAY_PERIOD = {"year": "", "month": "a month", "week": "a week",
 # Both dark forms are defined - the media query for a reader whose system is
 # dark, and [data-theme=dark] for an explicit choice - because a token with
 # one definition is a token that is wrong in one of the two themes.
+# THE STATIC CONFERENCE PAGE IS THE APP'S CONFERENCE PANEL, for the same
+# reason the company page is the app's company page: a conference read as two
+# different products depending on whether somebody clicked a row or followed a
+# link is two things to keep in step, and they do not stay in step. What
+# follows is cfPanelHTML() ported - the same sections in the same order, the
+# same class names, the same copy per state. The panel's own stylesheet is
+# carried whole below, minus the two rules that only make sense as an overlay:
+# the fixed wrapper and the close button.
+#
+# The app's spacing tokens are not defined on these pages, so they are
+# declared on :root here. --beak comes from the site sheet above.
+CFPAGE_CSS = """
+ :root{--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;
+   --accent:var(--link);--faint:var(--dim)}
+  /* the panel */
+  .cfp-wrap{position:fixed;inset:0;z-index:60;background:rgba(15,22,36,.45);
+    display:flex;justify-content:flex-end;overflow-y:auto}
+  body.cfp-lock{overflow:hidden}
+  .cfp-card{position:relative;background:var(--bg);color:var(--ink);
+    width:min(560px,100%);min-height:100%;padding:var(--space-6);
+    display:flex;flex-direction:column;gap:var(--space-3)}
+  .cfp-x{position:absolute;top:var(--space-4);right:var(--space-4);width:36px;
+    height:36px;border-radius:50%;border:1px solid var(--line);
+    background:var(--panel);color:var(--ink);font-size:18px;cursor:pointer}
+  .cfp-name{font-family:var(--font-heading);font-weight:800;font-size:26px;
+    margin:0;padding-right:44px;display:flex;align-items:center;gap:8px;
+    flex-wrap:wrap}
+  .cfp-org,.cfp-when{margin:0;font-size:14px;color:var(--dim)}
+  .cfp-acts{display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap;
+    margin:var(--space-2) 0}
+  .cfp-go{background:var(--accent);color:#fff;text-decoration:none;
+    font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px}
+  .cfp-alt{font:inherit;font-size:14px;font-weight:600;padding:10px 18px;
+    border-radius:999px;border:1px solid var(--line);background:var(--panel);
+    color:var(--ink);cursor:pointer}
+  .cfp-src{margin-left:auto;font-size:12px;color:var(--faint);text-align:right}
+  .cfp-chips{display:flex;gap:8px;flex-wrap:wrap}
+  .cfchip{font-size:12.5px;background:var(--panel);border:1px solid var(--line);
+    border-radius:999px;padding:6px 12px;color:var(--dim)}
+  .cfchip b{color:var(--ink)}
+  .cfp-sec{background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;padding:var(--space-4)}
+  .cfp-sec h4{margin:0 0 var(--space-3);font-size:11px;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--faint);display:flex;
+    justify-content:space-between;align-items:center}
+  .cfp-all{font-size:12px;text-transform:none;letter-spacing:0;font-weight:700}
+  .cfp-roster{list-style:none;margin:0;padding:0;display:grid;gap:10px;
+    grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+  .cfp-roster li{display:flex;align-items:center;gap:8px;font-size:14px}
+  .cfp-roster em{font-style:normal;font-size:11px;color:var(--accent);
+    margin-left:auto}
+  .cfp-note{margin:var(--space-3) 0 0;font-size:12.5px;color:var(--dim)}
+  .cfp-rate .cfrate{border:0;padding:0}
+
+  .cfflag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    font-weight:700;color:var(--bg);background:var(--dim);padding:1px 5px}
+  .cfnow{font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    font-weight:700;color:var(--ink);background:transparent;padding:1px 5px;
+    border:2px solid var(--beak);white-space:nowrap}
+  .cfpast{font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    font-weight:700;color:var(--panel);background:var(--dim);padding:1px 5px;
+    white-space:nowrap}
+  .cfface{display:grid;place-items:center;width:26px;height:26px;
+    border-radius:50%;background:var(--ink);color:var(--panel);
+    font-size:9.5px;font-weight:700;margin-left:-7px;
+    border:2px solid var(--panel);flex:0 0 auto}
+  .cfzero{color:var(--faint)}
+ /* -- the two differences, stated rather than edited into the rules above --
+    The panel's stylesheet is carried WHOLE and on purpose: an edited copy is
+    a copy that drifts. What a page is and a drawer is not goes here.
+
+    The card is not an overlay. It has no fixed wrapper to sit in, so it
+    takes a measure and centres, and it stops being full height. .cfp-wrap,
+    body.cfp-lock and .cfp-x have no element on this page at all - left in
+    place rather than deleted so a diff against the app's sheet stays
+    readable. */
+ .cfp-card{width:auto;max-width:660px;margin:0 auto;min-height:0;
+   padding:28px 22px 70px}
+ .cfp-name{font-size:30px;padding-right:0}
+ .cfp-sec h2{margin:0 0 var(--space-3);font-size:11px;letter-spacing:.09em;
+   text-transform:uppercase;color:var(--faint)}
+ .cfp-roster a{color:var(--link)}
+ .cfp-card .note{margin-top:var(--space-4)}
+"""
+
+
+
 COPAGE_CSS = """
  :root{--font-heading:"Archivo",system-ui,sans-serif;--font-body:"Archivo",system-ui,sans-serif;--radius:0px}
  :root{--bg:#E8F1F7;--panel:#FAF7F0;--line:#C9DCE8;--ink:#1F2536;--dim:#556F82;
@@ -1791,6 +1878,112 @@ def conference_rosters(board: dict) -> dict:
     return out
 
 
+def _cf_initials(name: str) -> str:
+    w = [x for x in re.sub(r"[^A-Za-z0-9 ]", " ", name or "").split() if x]
+    return ((w[0][0] if w else "?") + (w[1][0] if len(w) > 1 else "")).upper()
+
+
+def _cf_provenance(c: dict) -> str:
+    """The same five sentences the panel prints. Kept beside it deliberately -
+    two surfaces grading the same date differently is the drift this whole
+    arrangement exists to prevent."""
+    return {"high": "dates read off the event's own page",
+            "medium": "dates from a secondary source",
+            "owner": "dates confirmed by the organisation",
+            "unannounced": "the next edition has not been announced",
+            "unreachable": "their site did not answer when we last looked",
+            }.get((c.get("dates_confidence") or "").lower(), "dates unconfirmed")
+
+
+def _conference_body(c: dict, tag: str, roster: list, hiring: list) -> str:
+    """cfPanelHTML(), ported. Same sections, same order, same class names.
+
+    Everything the panel does on the client becomes a plain link or is left
+    out: no rating buttons (the API needs JS and a page with dead buttons is
+    worse than a page without them), no calendar download, no close button.
+    The rating SCORE is not printed either - it is fetched at runtime in the
+    app precisely because a nightly build would show this morning's vote as
+    missing.
+    """
+    name = c.get("name") or tag
+    esc = html.escape
+    bits = [x for x in (c.get("dates") or _cf_no_dates(c), c.get("city")) if x]
+    chips = []
+    if c.get("companies"):
+        chips.append(f'<span class="cfchip"><b>{c["companies"]}</b> '
+                     f'govtech exhibitors</span>')
+    if c.get("companies") and (c.get("approx_count") or 0) > c["companies"]:
+        chips.append(f'<span class="cfchip">about {c["approx_count"]} '
+                     f'on the floor</span>')
+    if hiring:
+        chips.append(f'<span class="cfchip"><b>{len(hiring)}</b> hiring</span>')
+    if c.get("open_roles"):
+        chips.append(f'<span class="cfchip"><b>{c["open_roles"]}</b> '
+                     f'open roles</span>')
+    if c.get("department"):
+        chips.append(f'<span class="cfchip">{esc(c["department"])}</span>')
+
+    shown = roster[:CO_ROSTER_CAP]
+    items = ""
+    for o in shown:
+        n_open = o.get("open_roles") or 0
+        label = esc(o.get("name") or "")
+        if n_open:
+            label = (f'<a href="/c/{urllib.parse.quote(o["id"])}.html">'
+                     f'{label}</a>')
+        items += (f'<li><span class="cfface">{esc(_cf_initials(o.get("name")))}'
+                  f'</span><span>{label}</span>'
+                  + (f'<em>{n_open} open</em>' if n_open else "") + '</li>')
+
+    if roster:
+        note = (f'<p class="cfp-note">We track {len(roster)} of about '
+                f'{c["approx_count"]} who stood here. The rest are companies '
+                f'we do not follow, not companies that were absent.</p>'
+                if (c.get("approx_count") or 0) > len(roster) else "")
+        if len(roster) > CO_ROSTER_CAP:
+            note += (f'<p class="cfp-note">Showing {len(shown)} of '
+                     f'{len(roster)}, the ones hiring first.</p>')
+        booth = f'<ul class="cfp-roster">{items}</ul>{note}'
+    else:
+        booth = ('<p class="cfp-note">We have not mined this floor yet '
+                 '&mdash; that is a fact about us, not about the '
+                 'conference.</p>')
+
+    site_url = c.get("url")
+    org_line = esc(" \u00b7 ".join(
+        x for x in (c.get("department"), c.get("block")) if x))
+    when_line = esc(" \u00b7 ".join(bits))
+    flag = '<span class="cfflag">Flagship</span>' if c.get("flagship") else ""
+    go = (f'<a class="cfp-go" href="{esc(site_url)}" rel="nofollow noopener">'
+          f'Event site &nearr;</a>') if site_url else ""
+    return f'''<div class="cfp-card">
+    <h1 class="cfp-name">{esc(name)}
+      {flag}</h1>
+    <p class="cfp-org">{org_line}</p>
+    <p class="cfp-when">{when_line}</p>
+    <div class="cfp-acts">
+      {go}
+      <a class="cfp-alt" href="/?tab=conferences">All conferences</a>
+      <span class="cfp-src">{esc(_cf_provenance(c))}</span>
+    </div>
+    <div class="cfp-chips">{"".join(chips)}</div>
+    <section class="cfp-sec">
+      <h2>Who has a booth</h2>
+      {booth}
+    </section>
+    <div class="note">These are the exhibitors <em>we</em> track from this
+      show, not the show's exhibitor list. We hold a roster for some
+      conferences and not others, so a short list here means we know less
+      about this floor, never that the floor was small.</div>
+  </div>'''
+
+
+def _cf_no_dates(c: dict) -> str:
+    return {"unannounced": "next edition not announced yet",
+            "unreachable": "their site did not answer when we last looked",
+            }.get((c.get("dates_confidence") or "").lower(), "dates unconfirmed")
+
+
 def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
     """A page per conference, with the exhibitors we track and who is hiring.
 
@@ -1828,41 +2021,18 @@ def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
         if not conference_gets_a_page(c, by_tag):
             continue      # nothing to say that the catalogue tab does not say
         hiring = [o for o in roster if o.get("open_roles")]
-        where = " &middot; ".join(html.escape(x) for x in
-                                 (c.get("dates"), c.get("city"), c.get("department"))
-                                 if x)
-        items = ""
-        for o in roster[:CO_ROSTER_CAP]:
-            n_open = o.get("open_roles") or 0
-            link = (f'<a href="/c/{urllib.parse.quote(o["id"])}.html">'
-                    f'{html.escape(o["name"])}</a>' if n_open
-                    else html.escape(o["name"]))
-            note = (f'<div class="meta">{n_open} open role'
-                    f'{"s" if n_open != 1 else ""}</div>' if n_open else
-                    '<div class="meta">nothing open that we can see</div>')
-            items += f'<li><div class="role">{link}</div>{note}</li>'
-        more = (f'<p class="kv">Showing {min(len(roster), CO_ROSTER_CAP)} of '
-                f'{len(roster)}, the ones hiring first.</p>'
-                if len(roster) > CO_ROSTER_CAP else "")
+        # The <meta description> is what a search result and a link unfurl
+        # show, so it says the one thing this page can answer that nothing
+        # else can - and says it about US, never about the show's floor.
         line = (f"{len(hiring)} of the {len(roster)} exhibitors we track here "
                 f"are hiring" if roster else "No exhibitors tracked here yet")
-        body = (f'<h1>{html.escape(c.get("name") or tag)}</h1>'
-                + (f'<p class="kv">{where}</p>' if where else "")
-                + f'<h2>{line}</h2>'
-                + (f'<ul>{items}</ul>{more}' if roster else "")
-                + f'<div class="note">These are the exhibitors <em>we</em> track '
-                  f'from this show, not the show\'s exhibitor list. We hold a '
-                  f'roster for some conferences and not others, so a short list '
-                  f'here means we know less about this floor, never that the '
-                  f'floor was small. '
-                  + (f'<a href="{html.escape(c["url"])}" rel="nofollow noopener">'
-                     f'The event\'s own site</a> has the real one. ' if c.get("url") else "")
-                  + f'<a href="/?tab=conferences">All conferences</a>.</div>')
+        body = _conference_body(c, tag, roster, hiring)
         (d / f"{_slugify(tag)}.html").write_text(_page(
             f"{c.get('name') or tag}: who is hiring · {brand['name']}",
             f"{line}. " + (f"{c.get('dates')}, {c.get('city')}. " if c.get("dates") else "")
             + "Sales roles at the govtech companies on this floor.",
-            f"{site}/e/{_slugify(tag)}", body, brand, "conferences"))
+            f"{site}/e/{_slugify(tag)}", body, brand, "conferences",
+            css=_default_css(brand) + CFPAGE_CSS, wrap=False))
         n += 1
     return n
 

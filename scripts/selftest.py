@@ -17800,6 +17800,162 @@ def check_an_acronym_cannot_confirm_itself() -> int:
     return errors
 
 
+def check_the_conference_page_is_the_conference_panel() -> int:
+    """One conference, two doors, and it must not be two products.
+
+    The company page already learned this: /c/<id>.html was a 74ch column of
+    lists while the app drew something else, and the same company read as two
+    different products depending on whether somebody clicked a row or followed
+    a link. co() was ported line for line to fix it.
+
+    The conference had the same split - a panel in the app, and an /e/ page
+    written before it. So cfPanelHTML() is ported into _conference_body(): the
+    same sections in the same order, the same class names, the same sentence
+    for each state, and the panel's stylesheet carried whole rather than
+    edited into a copy that drifts.
+
+    This pins the parts that would drift silently. Not the markup - two
+    languages will never be byte-identical - but the vocabulary, the honesty
+    sentences, and the numbers, which are the things a reader would notice
+    disagreeing between the two doors.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import build_site as bs
+
+    # WHITESPACE- AND QUOTE-BLIND. Both sides wrap these sentences across
+    # source lines, and Python splits them across adjacent string literals, so
+    # a plain search finds them in neither. What is compared is the sentence,
+    # not how it was typed.
+    def flat(t: str) -> str:
+        return re.sub(r"\s+", " ", t.replace("'", "").replace('"', ""))
+    app = flat((ROOT / "index.html").read_text())
+    src = flat((ROOT / "scripts" / "build_site.py").read_text())
+
+    # 1. THE SAME VOCABULARY. A class the page invents is a rule the panel's
+    #    stylesheet does not carry, which is where a look starts diverging.
+    # Rendered first, because CFPAGE_CSS mentions every one of these class
+    # names: searching the module finds them whether the page writes them or
+    # not, which is how a renamed wrapper survived this check.
+    board = json.loads((DATA / "board.json").read_text())
+    rosters = bs.conference_rosters(board)
+    row = next((c for c in board.get("conferences", [])
+                if rosters.get(c.get("tag")) and c.get("companies")
+                and (c.get("approx_count") or 0) > len(rosters[c["tag"]])), None)
+    if not row:
+        row = next((c for c in board.get("conferences", [])
+                    if rosters.get(c.get("tag")) and c.get("companies")), None)
+    if not row:
+        return errors + fail("no conference on the board carries a roster, so "
+                             "this check compared nothing")
+    roster = rosters[row["tag"]]
+    hiring = [o for o in roster if o.get("open_roles")]
+    body = bs._conference_body(row, row["tag"], roster, hiring)
+    empty = dict(row); empty["companies"] = 0
+    blank = bs._conference_body(empty, row["tag"], [], [])
+
+    for cls in ("cfp-card", "cfp-name", "cfp-org", "cfp-when", "cfp-acts",
+                "cfp-chips", "cfp-sec", "cfp-roster", "cfp-note", "cfp-go",
+                "cfp-src", "cfchip", "cfface"):
+        where = blank if cls == "cfp-note" else body
+        if f'class="{cls}"' not in where and f'class="{cls} ' not in where:
+            errors += fail(
+                f"the rendered /e/ page does not carry .{cls}. The panel's "
+                f"stylesheet is what dresses this page, so a class it does "
+                f"not know is an element with no styling at all")
+        if cls not in app:
+            errors += fail(f"the app no longer uses .{cls}, which the /e/ page "
+                           f"still writes - one door has been restyled and the "
+                           f"other has not")
+
+    # 2. THE SAME SENTENCE FOR THE SAME STATE. These are the honesty lines the
+    #    whole tab rests on; a page that softened one would be making a claim
+    #    the app refuses to make.
+    for phrase in ("a fact about us, not about the conference",
+                   "The rest are companies",
+                   "not companies that were absent",
+                   "dates read off the event's own page",
+                   "the next edition has not been announced",
+                   "their site did not answer when we last looked",
+                   "dates confirmed by the organisation",
+                   "dates from a secondary source"):
+        want = flat(phrase)          # the phrases carry apostrophes too
+        if want not in app:
+            errors += fail(f"the app stopped saying {phrase!r} while the /e/ "
+                           f"page still does")
+        if want not in src:
+            errors += fail(f"the /e/ page stopped saying {phrase!r} while the "
+                           f"app still does")
+
+    # 3. THE PANEL'S STYLESHEET, CARRIED WHOLE. An edited copy drifts; this is
+    #    the mechanism that stops it, so it is worth a check of its own.
+    a = app.index("/* the panel */")
+    b = app.index("@media (max-width:640px){", a)
+    for rule in app[a:b].split("\n"):
+        r = rule.strip()
+        if r.startswith(".cfp-") and "{" in r and r not in bs.CFPAGE_CSS:
+            errors += fail(f"the /e/ page's stylesheet no longer carries the "
+                           f"panel's rule {r[:48]!r} - it has become an edited "
+                           f"copy, and an edited copy drifts")
+            break
+
+    #    AND THE PAGE'S OWN TWO DIFFERENCES SURVIVE. The panel's .cfp-card is
+    #    a 560px drawer pinned to the right of a fixed wrapper. On a page
+    #    there is no wrapper, so without an override the card renders as a
+    #    narrow column jammed against the left edge - which is exactly what it
+    #    did the first time this was built. The override is the whole reason
+    #    the sheet can be carried whole rather than edited.
+    css = bs.CFPAGE_CSS
+    tail = css[css.index("the two differences"):] if "the two differences" in css else ""
+    if "max-width" not in tail or ".cfp-card{" not in tail:
+        errors += fail(
+            "CFPAGE_CSS no longer gives .cfp-card a page measure of its own. "
+            "It inherits the panel's width:min(560px,100%) and min-height:100% "
+            "from a rule written for a drawer, and the page renders as a "
+            "narrow column against the left edge")
+
+    # 4. THE SAME NUMBERS, on a real conference with a real roster.
+    if f'<b>{row["companies"]}</b> govtech exhibitors' not in body:
+        errors += fail(
+            f"the /e/ page for {row['tag']} does not print "
+            f"{row['companies']} govtech exhibitors, which is what the row it "
+            f"shares with the app says. Two doors, two counts")
+    if len(roster) != row["companies"]:
+        errors += fail(
+            f"{row['tag']}: the board row says {row['companies']} companies "
+            f"and conference_rosters finds {len(roster)}. The app counts the "
+            f"first and the page lists the second")
+    if hiring and f'<b>{len(hiring)}</b> hiring' not in body:
+        errors += fail(f"the /e/ page for {row['tag']} does not print "
+                       f"{len(hiring)} hiring")
+
+    # 5. AND THE SENTENCES WHERE THEY ACTUALLY LAND - in the rendered html,
+    #    not in the source that happens to contain them. A page whose empty
+    #    state says something softer than the app's is the whole failure this
+    #    check exists for, and only the output can show it.
+    if (row.get("approx_count") or 0) > len(roster):
+        if flat("not companies that were absent") not in flat(body):
+            errors += fail(
+                f"the /e/ page for {row['tag']} lists fewer companies than the "
+                f"floor held and does not say the rest are ones we do not "
+                f"follow. That silence reads as a claim about the show")
+        elif 'class="cfp-note"' not in body:
+            errors += fail(
+                f"the /e/ page for {row['tag']} says the rest are companies we "
+                f"do not follow, but not in a .cfp-note - the panel's sheet "
+                f"does not dress whatever it is in, so the caveat renders as "
+                f"unstyled body text")
+    if flat("a fact about us, not about the conference") not in flat(blank):
+        errors += fail(
+            "the /e/ page for a conference with no roster does not say the "
+            "gap is a fact about us. The app says it; a page that leaves it "
+            "out reads as a floor with nobody on it")
+    return errors
+
+
 def check_a_throttled_lookup_is_not_a_city_that_does_not_exist() -> int:
     """The absence trap, in the geocoder.
 
@@ -19200,6 +19356,7 @@ def main() -> int:
     errors += check_staging_a_catalogue_never_costs_an_observed_fact()
     errors += check_an_organisation_is_not_one_of_its_own_events()
     errors += check_an_acronym_cannot_confirm_itself()
+    errors += check_the_conference_page_is_the_conference_panel()
     errors += check_a_throttled_lookup_is_not_a_city_that_does_not_exist()
     errors += check_two_rows_cannot_promote_the_same_exhibitor_url()
     errors += check_one_event_staged_twice_becomes_one_row_with_both_halves()
