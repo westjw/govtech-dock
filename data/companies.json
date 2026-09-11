@@ -7950,13 +7950,15 @@
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
   },
-  "buyer": "Public sector - local, state and federal government, special districts, elected officials, educational institutions, and destination marketing/tourism organizations.",
+  "buyer": "General government: clerks (agenda and meeting management), communications offices (email/SMS outreach), records officers (GovQA public records), and IT/web teams in local and state government. Federal agencies are a newer line (Federal Experience Cloud, April 2026). The only non-government buyers are destination marketing organizations via Simpleview. Government is primary by far.",
   "sells_to_gov": "yes",
-  "buyer_source": "https://www.granicus.com",
+  "buyer_source": "Gov IT & Cyber run 2026-09-11",
   "buyer_checked_on": "2026-09-11",
   "scope_note": "Homepage claims 7,000+ public sector customers, 48 of the 50 largest US cities, and 100% of US federal cabinet-level agencies; named buyers include City of Austin, Nashville, Honolulu, Oregon Dept of Corrections, Oklahoma Health Care Authority and Unified Government of Wyandotte County/KCK. Markets menu is Local, State, Federal, Education, Destinations. One edge worth flagging: the Destinations market (https://granicus.com/market/destinations/) sells to DMOs and convention bureaus - most are public authorities or publicly funded (Las Vegas, Hamilton County, Melbourne Convention Bureau), but so",
   "sled_only": true,
-  "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Public sector - local, state and federal government, special districts, elected officials, educational institutions, and destination marketing/tourism organizations."
+  "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as General government: clerks (agenda and meeting management), communications offices (email/SMS outreach), records officers (GovQA public records), and IT/web teams in local and state government. Federa",
+  "acquisition_note": "Acquirer. The About page names: GovDelivery merger (2017), Vision Internet (2018), Firmstep (2019), Bang the Table and OpenCities (2021), GovQA (2021), Rock Solid (2022), Simpleview (2024), Indigov (2025; the newsroom lists 'Granicus Buys Indigov to Strengthen Constituent Engagement', December 10, 2025). Tripepi Smith also lists Novus Agenda (2017) and SouthTech Systems (2018).",
+  "acquisitions_checked_on": "2026-09-11"
  },
  {
   "id": "civicplus",
@@ -7966,7 +7968,7 @@
   "year_founded": 1994,
   "sector": "General Gov",
   "category": "Citizen Services",
-  "description": "Municipal websites, 311/CRM, mass notification, and agenda software - exhibited at NLC City Summit 2026, AWWA ACE 2026, 3CMA 2026, WEFTEC 2026",
+  "description": "Municipal websites, 311/CRM, mass notification, and agenda software - exhibited at NLC City Summit 2026, AWWA ACE 2026, 3CMA 2026, WEFTEC 2026, StormCon 2026",
   "ats": {
    "type": "html",
    "ref": "https://jobs.jobvite.com/civicplus/search"
@@ -7979,8 +7981,16 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "APTA 2026; ICMA 2025; NACo 2026; NIGP 2026; NRPA 2026; PWX 2026; ICMA 2026; NLC City Summit 2026; AWWA ACE 2026; 3CMA 2026; WEFTEC 2026",
-  "researched": true
+  "source": "APTA 2026; ICMA 2025; NACo 2026; NIGP 2026; NRPA 2026; PWX 2026; ICMA 2026; NLC City Summit 2026; AWWA ACE 2026; 3CMA 2026; WEFTEC 2026; StormCon 2026",
+  "researched": true,
+  "buyer": "General government (clerks, communications, IT), with public works, parks/recreation, utilities and special districts as department buyers; public sector only. No stormwater-specific product found \u2014 Public Works page offers 311 CRM and general asset management.",
+  "buyer_source": "StormCon Expo run 2026-09-10",
+  "buyer_checked_on": "2026-09-11",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "StormCon Expo run 2026-09-10: buyer stated as General government (clerks, communications, IT), with public works, parks/recreation, utilities and special districts as department buyers; public sector only. No stormwater-specific product found \u2014 P",
+  "acquisition_note": "Acquirer: Rec1 (2017, became CivicRec), BoardSync (2017, became CivicClerk), Virtual Towns & Schools (2018), SeeClickFix (2020), Optimere with ArchiveSocial, NextRequest and Monsido (2022), Streamline incl. DocAccess (announced Dec 18, 2025). Monsido sold to Acquia in 2024. Networks Plus sister business sold 2014.",
+  "acquisitions_checked_on": "2026-09-11"
  },
  {
   "id": "polimorphic",
@@ -8004,7 +8014,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; NACo 2026; ICMA 2026; NLC City Summit 2026; 3CMA 2026; GMIS International 2026; APHSA 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "General government (city and county administration / clerk and resident-services offices), sometimes individual departments such as a county surrogate; public sector only as far as the site shows.",
+  "buyer_source": "Gov IT & Cyber run 2026-09-11",
+  "buyer_checked_on": "2026-09-11",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as General government (city and county administration / clerk and resident-services offices), sometimes individual departments such as a county surrogate; public sector only as far as the site shows.",
+  "acquisitions_checked_on": "2026-09-11",
+  "acquisitions_none_found": true
  },
  {
   "id": "polco",
@@ -8376,13 +8394,15 @@
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; NIGP 2026; NRPA 2026; PWX 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026; NACE 2026; AWWA ACE 2026; GMIS International 2026; Maryland Municipal League 2026; WEFTEC 2026",
   "researched": true,
-  "buyer": "US state and local government - cities, counties, townships, special districts, school districts, utilities and state agencies.",
+  "buyer": "General government, led by finance (ERP, budgeting, procurement); also public works (asset management), community development (permitting), utilities (utility billing), and some school districts and transit agencies. Public sector only.",
   "sells_to_gov": "yes",
-  "buyer_source": "https://www.opengov.com",
+  "buyer_source": "Gov IT & Cyber run 2026-09-11",
   "buyer_checked_on": "2026-09-11",
   "scope_note": "Homepage states it serves \"cities, counties, townships, special districts, school districts, utilities, and state agencies across the United States,\" claims 2,000+ governments and 4,500+ implementations, and names Tucson, Orlando, Minneapolis, San Antonio, Miami, Tampa, Kansas City, San Diego, Boston, LA, Taylor County and others. Every named buyer is public. Note for the board: the site is much broader than our \"Permitting & Licensing\" category - it leads with finance/budgeting, procurement, public works and utilities alongside community development.",
   "sled_only": true,
-  "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. US state and local government - cities, counties, townships, special districts, school districts, utilities and state agencies."
+  "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as General government, led by finance (ERP, budgeting, procurement); also public works (asset management), community development (permitting), utilities (utility billing), and some school districts and t",
+  "acquisition_note": "Acquired: Cartegraph (operations/asset management; announced 2022, Cox-financed), iGovServices ('Tax & Revenue', May 1, 2024), Ignatius (low-code forms/workflow, Feb 11, 2025). Itself: Cox Enterprises acquired majority ownership, Feb 27, 2024, at a $1.8B valuation.",
+  "acquisitions_checked_on": "2026-09-11"
  },
  {
   "id": "clariti",
@@ -8823,13 +8843,15 @@
     "category": "Courts & Case Management"
    }
   ],
-  "buyer": "State and local government exclusively: the site's own list is Federal Agencies, States, Counties, Municipalities, K-12 Education and Special Districts, plus courts, corrections, public safety and health-and-human-services agencies.",
+  "buyer": "Many departments: general government / finance (ERP, cashiering, budgeting), courts and justice (eCourts, digital court recording), police / 911 (CAD, mobile, RMS, jail management), clerks and recorders (land records), state licensing agencies, and schools (My Ride K-12 bus tracking). Public sector only.",
   "sells_to_gov": "yes",
-  "buyer_source": "https://www.tylertech.com/",
+  "buyer_source": "Gov IT & Cyber run 2026-09-11",
   "buyer_checked_on": "2026-09-11",
   "scope_note": "About as clean a SLED-only record as this board will see. The homepage carries a section headed \"We Serve the Public Sector\" listing exactly those six buyer types, with the line \"From small rural counties to large metropolitan cities, we've got you covered\", and the page title is \"Software & Services for the Public Sector\". Every one of the dozens of product lines is a government function - appraisal and tax, court case management, jail administration, CAD and law-enforcement records, hunting and fishing licensing, school ERP, student transportation. Nothing on the site names a commercial buye",
   "sled_only": true,
-  "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. State and local government exclusively: the site's own list is Federal Agencies, States, Counties, Municipalities, K-12 Education and Special Districts, plus courts, corrections, p"
+  "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as Many departments: general government / finance (ERP, cashiering, budgeting), courts and justice (eCourts, digital court recording), police / 911 (CAD, mobile, RMS, jail management), clerks and recorde",
+  "acquisition_note": "Serial acquirer. On its own IR site: For The Record (digital court recording, about $212.5M cash, announced Feb 2, 2026, expected to close Q1 2026). Business Wire: CODY Systems (public-safety RMS / COBRAnet, Jul 31, 2026) and Emergency Networking (Jul 28, 2025). Tyler has not itself been acquired; it is a public company (NYSE: TYL, S&P 500).",
+  "acquisitions_checked_on": "2026-09-11"
  },
  {
   "id": "euna-solutions",
@@ -13393,7 +13415,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; NACo 2026; TechConnect 2026; ICMA 2026; NLC City Summit 2026; GMIS International 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "General government / IT (city and county administration); police services also appear among clients. Government-only: every client shown on the homepage is a public agency.",
+  "buyer_source": "Gov IT & Cyber run 2026-09-11",
+  "buyer_checked_on": "2026-09-11",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as General government / IT (city and county administration); police services also appear among clients. Government-only: every client shown on the homepage is a public agency.",
+  "acquisitions_checked_on": "2026-09-11",
+  "acquisitions_none_found": true
  },
  {
   "id": "threefold",
@@ -15327,7 +15357,15 @@
    "by": "agent:descriptions-07",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Schools (K-12 facilities, maintenance, and operations departments); also higher-ed facilities and municipal public works/facilities. Public side is primary: 1,300+ of its roughly 2,600 customers are school districts (K-12 page; Luminate release), and it has a 'Built for K-12' page and K-12 pricing by enrollment. Manufacturing, healthcare, and property management are secondary.",
+  "buyer_source": "Gov IT & Cyber run 2026-09-11",
+  "buyer_checked_on": "2026-09-11",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as Schools (K-12 facilities, maintenance, and operations departments); also higher-ed facilities and municipal public works/facilities. Public side is primary: 1,300+ of its roughly 2,600 customers are s",
+  "acquisition_note": "No acquisitions either way. Investors: Five Elms Capital (strategic investment, October 2019, on FMX's own blog) and Luminate Capital Partners (strategic growth investment, July 21, 2025, PR Newswire; Five Elms kept a significant stake).",
+  "acquisitions_checked_on": "2026-09-11"
  },
  {
   "id": "govdeals",
@@ -17740,7 +17778,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; GFOA 2026; AWWA ACE 2026; GMIS International 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "General government (county and city manager's offices, IT) and water districts (utilities). Public sector only; no private-sector line was seen.",
+  "buyer_source": "Gov IT & Cyber run 2026-09-11",
+  "buyer_checked_on": "2026-09-11",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as General government (county and city manager's offices, IT) and water districts (utilities). Public sector only; no private-sector line was seen.",
+  "acquisitions_checked_on": "2026-09-11",
+  "acquisitions_none_found": true
  },
  {
   "id": "common-sense-ai",
@@ -23579,7 +23625,7 @@
   "year_founded": 2019,
   "sector": "Public Works",
   "category": "Water",
-  "description": "Floodplain management software: NFIP/CRS compliance, elevation certificates; $26.3M Series B",
+  "description": "Floodplain management software: NFIP/CRS compliance, elevation certificates; $26.3M Series B - exhibited at StormCon 2026",
   "ats": {
    "type": "greenhouse",
    "ref": "forerunner"
@@ -23592,7 +23638,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "PWX 2026",
+  "source": "PWX 2026; StormCon 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -23694,7 +23740,15 @@
    "by": "agent:descriptions-07",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Primarily local government: floodplain managers, building and permitting departments, code enforcement, and public works/stormwater programs, plus state agencies. The title tag also names 'regulated industries' (utilities, construction, energy), but the customers it names are all government agencies.",
+  "buyer_source": "StormCon Expo run 2026-09-10",
+  "buyer_checked_on": "2026-09-11",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "StormCon Expo run 2026-09-10: buyer stated as Primarily local government: floodplain managers, building and permitting departments, code enforcement, and public works/stormwater programs, plus state agencies. The title tag also names 'regulated i",
+  "acquisitions_checked_on": "2026-09-11",
+  "acquisitions_none_found": true
  },
  {
   "id": "iseechange",
@@ -51174,7 +51228,13 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; GMIS International 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "General government: clerks and records offices, community development/permitting, plus AP/HR process automation. It also serves law enforcement, K-12, higher ed and commercial clients, but government is primary (2,100+ agencies; most blog content addresses government agencies).",
+  "buyer_source": "Gov IT & Cyber run 2026-09-11",
+  "buyer_checked_on": "2026-09-11",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Acquired GovBuilt (low-code permitting and licensing, Manhattan KS) in Nov 2023 (own blog post 'MCCi Acquires Community Development Solution', 2023-11-13; Business Wire 2023-11-14). JustFOIA is an MCCi-created brand, not an acquisition: conceived in 2012, spun into a dedicated entity in 2020, still 'an MCCi brand' (justfoia.com). Ownership: Century Park Capital Partners invested in 2018, and MCCi ",
+  "acquisitions_checked_on": "2026-09-11"
  },
  {
   "id": "mcm-technology-llc",
@@ -51535,7 +51595,7 @@
   "name": "NinjaOne",
   "website": "https://www.ninjaone.com",
   "location": null,
-  "year_founded": null,
+  "year_founded": 2013,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
   "description": "Endpoint management and IT automation software - exhibited at NSA 2026, GMIS International 2026, EDUCAUSE 2026",
@@ -51559,7 +51619,14 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026; GMIS International 2026; EDUCAUSE 2026",
-  "researched": false
+  "researched": false,
+  "buyer": "Private sector is primary: the platform is sold to corporate IT teams and MSPs (about-us page), and SLED was 1,400+ of ~30,000 customers per the Aug 2025 GovRAMP release. Public-sector buyer is central IT for cities, counties, state agencies, school districts and universities (named: City of North Adams MA, Beekmantown Central School District NY, East Texas A&M University).",
+  "buyer_source": "Gov IT & Cyber run 2026-09-11",
+  "buyer_checked_on": "2026-09-11",
+  "sells_to_gov": "yes",
+  "founded_source": "https://www.ninjaone.com/ai-info-page/ \u2014 established in 2013 by Sal Sferlazza and Chris Matarese, launched publicly in 2015 (as NinjaRMM). Built In Austin also lists 2013.",
+  "acquisition_note": "Acquired Dropsuite (SaaS backup and data protection), completed June 2, 2025, about US$270M (ninjaone.com/press/ninjaone-completes-acquistion-of-dropsuite/). Not itself acquired: founder-led, co-founders retain majority control (ai-info-page, June 9, 2026 release).",
+  "acquisitions_checked_on": "2026-09-11"
  },
  {
   "id": "noti-fly-inc",
@@ -91147,7 +91214,7 @@
   "year_founded": 1976,
   "sector": "Public Works",
   "category": "Water",
-  "description": "Water quality and level monitoring instruments for agencies and utilities - exhibited at AWWA ACE 2026, WEFTEC 2026",
+  "description": "Water quality and level monitoring instruments for agencies and utilities - exhibited at AWWA ACE 2026, WEFTEC 2026, StormCon 2026",
   "ats": {
    "type": "html",
    "ref": "https://in-situ.com/careers"
@@ -91161,7 +91228,13 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep; AWWA ACE 2026; WEFTEC 2026"
+  "source": "competitor sweep; AWWA ACE 2026; WEFTEC 2026; StormCon 2026",
+  "buyer": "Mixed. Public side: cities, counties and agencies for flood/stormwater monitoring (flood-monitoring page). Private side: environmental consulting, remediation, aquaculture, energy, mining and research users (root page). Which side is primary is not stated.",
+  "buyer_source": "StormCon Expo run 2026-09-10",
+  "buyer_checked_on": "2026-09-11",
+  "sells_to_gov": "yes",
+  "acquisition_note": "Acquired by Veralto (NYSE: VLTO): agreement announced 2025-11-25 for $435M, joining OTT HydroMet in Veralto's Water Quality segment. PitchBook gives the close as 2026-01-22. Earlier, per PitchBook, In-Situ bought PR Aqua (2011), Mace water monitoring (2017), ASA Analytics (2019), Partech Instruments (2020) and Ajax Environmental & Safety Supply (2020).",
+  "acquisitions_checked_on": "2026-09-11"
  },
  {
   "id": "fathom",
@@ -91924,7 +91997,7 @@
   "year_founded": 1975,
   "sector": "Public Works",
   "category": "Water",
-  "description": "Sewer flow monitoring and I&I analytics for municipal wastewater utilities - exhibited at WEFTEC 2026",
+  "description": "Sewer flow monitoring and I&I analytics for municipal wastewater utilities - exhibited at WEFTEC 2026, StormCon 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.adsenv.com/about-us/ads-careers"
@@ -91938,7 +92011,7 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep; WEFTEC 2026",
+  "source": "competitor sweep; WEFTEC 2026; StormCon 2026",
   "profile": {
    "paragraphs": [
     "ADS Environmental Services provides flow, level and rainfall monitoring for wastewater, storm and surface water systems. The buyers are municipal owners who need to know what is happening in their collection systems when it rains. The problems addressed include sanitary sewer overflows, sewer cleaning, combined sewer overflows and inflow and infiltration.",
@@ -92043,7 +92116,15 @@
    "by": "agent:descriptions-03",
    "ruled_by": "owner",
    "ruled_on": "2026-09-08"
-  }
+  },
+  "buyer": "Municipal sewer, wastewater, and stormwater utilities (every customer named on the site is a public utility or city). Sells hardware, software (PRISM, SLiiCER), and monitoring-as-a-service.",
+  "buyer_source": "StormCon Expo run 2026-09-10",
+  "buyer_checked_on": "2026-09-11",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "StormCon Expo run 2026-09-10: buyer stated as Municipal sewer, wastewater, and stormwater utilities (every customer named on the site is a public utility or city). Sells hardware, software (PRISM, SLiiCER), and monitoring-as-a-service.",
+  "acquisition_note": "Part of IDEX Corporation: the own-site careers page says 'ADS within IDEX Corporation', and idexcorp.com redirects to adsenv.com. IDEX acquired ADS LLC in 2008 (announced Nov 2007, closed Jan 2008, ~$156\u2013160M) per a third-party acquisition history. The about page also mentions ACCUSONIC, relationship unexplained.",
+  "acquisitions_checked_on": "2026-09-11"
  },
  {
   "id": "infosense",
@@ -117561,7 +117642,15 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: GMIS International 2026",
-  "researched": true
+  "researched": true,
+  "buyer": "County government IT / information security offices (general government); homepage also addresses 'U.S. Critical Infrastructure Leaders'. Public sector appears primary: every named program and customer quote is county government.",
+  "buyer_source": "Gov IT & Cyber run 2026-09-11",
+  "buyer_checked_on": "2026-09-11",
+  "sells_to_gov": "yes",
+  "sled_only": true,
+  "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as County government IT / information security offices (general government); homepage also addresses 'U.S. Critical Infrastructure Leaders'. Public sector appears primary: every named program and custome",
+  "acquisitions_checked_on": "2026-09-11",
+  "acquisitions_none_found": true
  },
  {
   "id": "stellarware-corporation",

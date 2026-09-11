@@ -6466,5 +6466,34 @@
   "vertical": null,
   "description": null,
   "source_event": "SWANA WASTECON 2025"
+ },
+ {
+  "name": "BioBase",
+  "website": "https://www.biobasemaps.com/",
+  "vertical": "Water",
+  "description": "Automated sonar mapping of lakes and ponds: bathymetry, aquatic vegetation and fish layers for water and fisheries managers",
+  "source_event": "StormCon 2026"
+ },
+ {
+  "name": "Hyfi",
+  "website": "https://www.hyfi.io/",
+  "vertical": "Water",
+  "description": "Wireless water level sensors, flood alerts, and dashboards for municipal stormwater and flood response teams",
+  "source_event": "StormCon 2026"
+ },
+ {
+  "name": "Silt Tracker",
+  "website": "https://silttracker.com/",
+  "vertical": "Water",
+  "description": "SWPPP inspection and maintenance-tracking app for construction-site sediment and erosion control compliance",
+  "source_event": "StormCon 2026"
+ },
+ {
+  "name": "Check Point Software Technologies Ltd.",
+  "website": "https://www.checkpoint.com/",
+  "vertical": "IT & AI Platforms",
+  "description": "Cybersecurity platform: network firewalls, cloud, email, endpoint and SASE security, plus threat intelligence, for enterprises and governments",
+  "source_event": null,
+  "source_note": "35 names pasted by the owner on 2026-09-11 with NO event named. The run guessed a state/local gov-IT or GMIS-style exhibitor list and that guess is not evidence, so no conference tag is claimed here. Staged as a plain research list."
  }
 ]
