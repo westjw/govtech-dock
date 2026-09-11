@@ -1629,6 +1629,86 @@ def act_board_proposal(body: dict) -> dict:
                                    f"{block['type']} \u2014 {detail}."}
 
 
+def _sweep_state(conf_row: dict) -> tuple:
+    """Has this floor been read, and how do we know? (state, evidence).
+
+    THREE RECORDS OF THE SAME FACT, and none of them wrote the others. The
+    board said eleven conferences were swept; forty had been. `swept: true`
+    is an old hand flag on twelve rows, `sweep: {...}` is a capture record on
+    thirteen OTHERS - zero overlap between them - and twenty-eight staged
+    files in conference_intake/staged sit beside both. Every one of those
+    staged captures had landed: each has companies on the board. Nothing was
+    lost, the bookkeeping simply never caught up.
+
+    So this asks the question once, from all three, and the queue counts what
+    is actually true rather than what one flag happens to say.
+    """
+    tag = conf_row.get("event_tag") or ""
+    if conf_row.get("sweep"):
+        s = conf_row["sweep"]
+        return ("swept", f"captured {s.get('captured')} on {s.get('swept_on')}, "
+                         f"{s.get('govtech')} judged govtech")
+    if conf_row.get("swept"):
+        return ("swept", "marked swept by hand, before capture records existed")
+    slug = re.sub(r"[^A-Za-z0-9]+", "_", tag)
+    raw = DATA / f"exhibitors_{slug}.json"
+    if raw.exists():
+        try:
+            d = json.loads(raw.read_text())
+        except json.JSONDecodeError:
+            d = {}
+        names = d.get("exhibitors") or []
+        if d.get("quality") == "menu":
+            return ("menu", f"{len(names)} names read, and they are the "
+                            f"association's own navigation - not a floor")
+        if names:
+            return ("swept", f"{len(names)} names captured, graded "
+                             f"{d.get('quality')}")
+    if conf_row.get("sweep_blocked"):
+        return ("blocked", conf_row["sweep_blocked"])
+    if conf_row.get("exhibitor_url"):
+        return ("ready", "")
+    return ("no_directory", "")
+
+
+def q_sweeps(companies, board) -> list:
+    """Which conference floors are still unread, and what each one needs.
+
+    Ordered by how big the floor is, because this list is worked by floor -
+    one afternoon on WEFTEC is worth a week of small ones - and not
+    alphabetically or by how recently we looked.
+    """
+    conf = read("conferences.json", {}).get("conferences") or []
+    tagged = {}
+    for o in board.get("organizations", []):
+        for t in (o.get("conferences") or ([o["conference"]] if o.get("conference") else [])):
+            tagged[t] = tagged.get(t, 0) + 1
+    out = []
+    for c in conf:
+        tag = c.get("event_tag")
+        if not tag:
+            continue
+        state, why = _sweep_state(c)
+        if state == "swept":
+            continue                      # done is not a queue item
+        if is_dismissed("sweeps", tag):
+            continue
+        out.append({
+            "id": tag, "conference": c.get("conference") or tag,
+            "kind": state, "says": why,
+            "url": c.get("exhibitor_url") or c.get("url"),
+            "site": c.get("url"),
+            "fetchability": c.get("fetchability"),
+            "approx": c.get("approx_count"),
+            "on_board": tagged.get(tag, 0),
+            "dates": c.get("dates"), "city": c.get("city"),
+            "department": c.get("department"),
+        })
+    # biggest floor first; an unknown size sorts last rather than as zero
+    out.sort(key=lambda r: -(r.get("approx") or 0))
+    return out
+
+
 def _q_calendar(companies, board) -> list:
     """The conference-date queue, in the shape every other queue here takes.
 
@@ -3494,12 +3574,13 @@ def who_is(email: str) -> dict | None:
 QUEUES = {"users": q_users, "profiles": q_profiles, "proposals": q_proposals, "leads": q_leads, "boardfound": _q_board_proposals, "founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
           "placement": q_placement, "unclassified": q_unclassified,
           "acquisitions": q_acquisitions, "review": q_review,
-          "calendar": _q_calendar}
+          "calendar": _q_calendar, "sweeps": q_sweeps}
 
 LABEL = {"users": "Users", "profiles": "Write-ups to check", "proposals": "Agent proposals", "leads": "Warm leads", "boardfound": "Boards we found", "founded": "Founding year", "miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
          "boards": "No board found", "blocked": "Blocked boards", "placement": "Wrong placement",
          "unclassified": "Unclassified roles", "acquisitions": "Acquisitions",
-         "review": "Website review", "calendar": "Conference dates"}
+         "review": "Website review", "calendar": "Conference dates",
+         "sweeps": "Conference floors"}
 
 
 # ---------------------------------------------------------------- actions

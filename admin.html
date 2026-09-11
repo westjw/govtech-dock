@@ -494,6 +494,18 @@ const INTRO = {
   unclassified: 'Titles the role classifier could not place. Most name a rank with no '
     + 'function — "Manager", "Commercial Development" — and the family only exists in the '
     + 'JD body, which the board does not fetch. Assigning one stores it as data, not as a rule.',
+  sweeps: 'Conference floors we have not read, biggest first, because this list is '
+    + 'worked by floor - one afternoon on WEFTEC is worth a week of small ones. Four kinds, '
+    + 'and they need different things. READY has a directory url and simply has not been '
+    + 'swept. MENU means the url we hold points at the association\'s own navigation rather '
+    + 'than a floor - eleven of these were once graded "good" and held site sections, a hotel, '
+    + 'and in one case a county job board, all one command from the supplier list - so they '
+    + 'need a real directory url, not another attempt at the same page. BLOCKED is a floor '
+    + 'somebody already tried and could not read, with the reason on the row so the next run '
+    + 'starts from what was learned. NO DIRECTORY is the biggest group and the honest one: we '
+    + 'have never found an exhibitor list for it at all. What is NOT here is anything already '
+    + 'swept - and "swept" is asked of all three records that claim it, because the board said '
+    + 'eleven when forty had been read.',
   calendar: 'Conferences whose date needs a person. This is the one part of the board '
     + 'that rots on a clock: a company that stops hiring is still a true row, but an event '
     + 'that happened last month and still shows a date is a page telling somebody to book a '
@@ -3354,6 +3366,57 @@ RENDER.unclassified = p => {
    held a rule() for all three that nothing ever called - so
    acquisition_rulings.json was never written once and every sweep re-proposed
    what you had already looked at. */
+RENDER.sweeps = s => {
+  const n = el('div', 'item');
+  n.appendChild(el('h3', null, s.conference || s.id));
+
+  const head = {ready: 'Has a directory we have not read',
+                menu: 'The url we hold is the association\'s own site, not a floor',
+                blocked: 'Somebody tried this and could not read it',
+                no_directory: 'No exhibitor list found for this event at all'}[s.kind]
+               || 'Needs a look';
+  const band = el('div', 'kv', head);
+  band.style.fontWeight = '700';
+  n.appendChild(band);
+
+  const e = el('div', 'evi');
+  if (s.says) e.appendChild(document.createTextNode(s.says));
+  const bits = [];
+  /* THE FLOOR SIZE IS THEIRS, NOT OURS, and the label says so - it is the
+     event's own estimate, and printing a bare number beside our count reads
+     as two measurements of the same thing. */
+  if (s.approx) bits.push('about ' + s.approx + ' on the floor, by their count');
+  if (s.on_board) bits.push(s.on_board + ' of them already on the board');
+  if (s.fetchability) bits.push('fetchability: ' + s.fetchability);
+  if (s.department) bits.push(s.department);
+  if (s.dates) bits.push(s.dates);
+  if (s.city) bits.push(s.city);
+  if (bits.length) e.appendChild(el('div', 'kv', bits.join(' · ')));
+
+  if (s.url) {
+    const a = el('a', 'kv');
+    a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = s.kind === 'no_directory'
+      ? 'open their site and look for an exhibitor list →'
+      : 'open the directory →';
+    e.appendChild(a);
+  }
+  /* A MENU ROW GETS THE EVENT'S OWN SITE TOO. The directory url is the thing
+     that is wrong on these, so sending somebody back to it is sending them
+     to the page that already failed. */
+  if (s.kind === 'menu' && s.site && s.site !== s.url) {
+    const a2 = el('a', 'kv');
+    a2.href = s.site; a2.target = '_blank'; a2.rel = 'noopener';
+    a2.textContent = 'their site, to find the real one →';
+    e.appendChild(a2);
+  }
+  n.appendChild(e);
+  const row = el('div', 'row');
+  row.appendChild(dismissBtn('sweeps', s.id, 'No floor to read here'));
+  n.appendChild(row);
+  return n;
+};
+
 RENDER.calendar = s => {
   const n = el('div', 'item');
   n.appendChild(el('h3', null, s.conference || s.id));
