@@ -774,5 +774,1015 @@
   "confidence": "high",
   "evidence_url": "https://mangolanguages.com",
   "note": "The homepage splits the whole business into seven named segments: Libraries, K-12, Higher Ed, Business, Government, Homeschool and individual/family subscriptions. The libraries page carries the SLED evidence with real names — Cuyahoga County Public Library, Hawaii State Public Library System, Salt Lake County Library, Maryland State Library, Lexington Public Library, Pikes Peak Library District, East Baton Rouge Parish Library, Calabasas Library — and frames it as \"From single branches to statewide systems.\" So the public-sector side is deep and specifically state-and-local, not federal window dressing. sells_outside_government is \"yes\" on strength of the Business segment (\"equip teams for cross-cultural work\") and the direct-to-consumer Individual and Family plans, which are plainly non-government buyers. Their /government page is the weakest of the set: it talks about \"military and government personnel\" and \"civilian agencies and public-sector teams\" but names no agency and leans federal/military, which is not SLED — the state and local money here clearly comes through the library and school channels instead. Our \"Libraries\" category is the right primary read."
+ },
+ {
+  "id": "motorola-solutions",
+  "name": "Motorola Solutions",
+  "buyer": "Law enforcement, fire and EMS agencies and corrections departments first, alongside K-12 and higher education, plus a large commercial book covering manufacturing, mining, retail, hospitality, oil and gas, utilities, transportation and logistics, healthcare and stadiums, and separately U.S. federal government and the military.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.motorolasolutions.com",
+  "note": "The homepage industry menu lists public-safety and public-sector verticals (Law Enforcement, Fire & EMS, Corrections, Education) side by side with plainly commercial ones (Manufacturing, Mining, Retail, Hospitality, Oil & Gas, Stadiums, Transportation & Logistics), and separately U.S. Federal Government and Military. Our 'Police' category is well supported by their own site, but it captures only part of the business: this is a dual public-safety/enterprise vendor, not a police-only one."
+ },
+ {
+  "id": "palantir-technologies",
+  "name": "Palantir Technologies",
+  "buyer": "Mostly large commercial enterprises by named example: Wendy's, Citi Wealth, Heineken USA, Panasonic Energy, General Mills, Lowe's, United Airlines, Airbus, Kinder Morgan, Swiss Re, Sompo, Lennar, Eaton, Archer Aviation, HCA Healthcare, Cleveland Clinic and Tampa General Hospital, with a public-sector side aimed at federal defense, intelligence and health, plus the World Food Programme.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.palantir.com/impact/",
+  "note": "Their own words: platforms are 'used throughout the public, private, and non-profit sectors.' Every customer quoted by name on the Impact page is commercial or a private hospital system. FINDING against our 'Police' category: the offerings index on that page lists Defense, Intelligence, Federal Health, Govt Financial Management, Procurement and Veterans - federal-facing - and carries no law-enforcement or police offering at all. The only state-and-local reference I found on their site is the HHS & CDC impact study describing connectivity 'across United States federal, state, and local health departments' for COVID-19. So they do sell to government, but their site does not present them as a SLED police vendor. Their main site is JavaScript-rendered and returns near-empty text to WebFetch; I read it in a browser."
+ },
+ {
+  "id": "verkada",
+  "name": "Verkada",
+  "buyer": "A broad mix of organizations: retail, manufacturing and healthcare on the commercial side, and K-12 education, cities and counties, and law enforcement on the public side, spanning what they call small and midsize businesses up to Fortune 500 leaders.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.verkada.com/",
+  "note": "The homepage vertical menu names Cities & Counties, Law Enforcement and K-12 Education alongside Retail, Manufacturing and Healthcare, so both answers are directly evidenced. They claim over 30,000 organizations as customers. Our 'Police' category is supported but narrow: law enforcement is one of six named verticals, and the company sells physical security hardware broadly rather than police-specific software. Note the /industries/ path 404s; the vertical list is on the homepage."
+ },
+ {
+  "id": "samsara",
+  "name": "Samsara",
+  "buyer": "Fleet and physical-operations organizations across construction, food and beverage, field services, transportation and logistics, and passenger transit, plus a named Public Sector segment covering K-12 schools, state and local government, and higher education.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.samsara.com/industries/",
+  "note": "The industries page carries a Public Sector entry that breaks out K-12 Schools, State and Local Government, and Higher Education by name - that is SLED explicitly, not just 'government'. It sits alongside clearly commercial verticals (Construction, Food & Beverage, Transportation & Logistics, Field Services), so this is a commercial fleet-telematics vendor with a real SLED practice, matching our Fleet & Asset Mgmt category."
+ },
+ {
+  "id": "workday",
+  "name": "Workday",
+  "buyer": "Enterprise and midsize organizations across financial services, banking, insurance, retail, manufacturing, technology, hospitality, media, communications, transportation, life sciences and professional services, plus a public-sector book covering state and local government, special districts, higher education, healthcare and nonprofits, and U.S. federal government.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.workday.com/en-us/homepage.html",
+  "note": "Their industry navigation names State & Local Government, Special Districts, Higher Education and Public Sector outright, so the SLED fit for our Finance & ERP category holds. But the same menu names Banking & Capital Markets, Insurance, Retail, Hospitality, Media & Entertainment and Technology, so government is one segment of a broad horizontal HR/finance platform, not the core market. The /en-us/industries.html path 301-redirects to the homepage; the industry list is in the homepage navigation."
+ },
+ {
+  "id": "motive",
+  "name": "Motive",
+  "buyer": "Commercial fleet operators in trucking and logistics, construction, oil and gas, agriculture, delivery, food and beverage, waste and recycling, utilities and telecom, and field service, plus state, municipal and county agencies, school districts, transit, public works and fire/police/EMS.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://gomotive.com/solutions/public-sector/",
+  "note": "The public-sector page is unambiguously SLED: it addresses 'state, municipal, and local agencies', breaks out public works (parks and recreation, water authority, permitting/licensing/code enforcement, waste and sanitation), mass transit and school transit, and fire/police/EMS, and names three government customers - Hickman County Sheriff's Office, City of Dodge City, and Aspen School District. The commercial side is larger: the products page lists eleven industries, most of them private fleets. Good fit for our Fleet & Asset Mgmt category. Note the industries/public-sector URL 404s; the live path is /solutions/public-sector/."
+ },
+ {
+  "id": "harris",
+  "name": "Harris",
+  "buyer": "In their own tagline, the Public Sector, Healthcare, Utilities, Private Sector and Insurance markets globally - a holding company whose acquired software businesses are each tagged to one of those five verticals.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.harriscomputer.com/solutions",
+  "note": "Harris is a Constellation Software roll-up, not a single product company. Their Solutions page tags each acquired business unit by vertical, and Public Sector is the single most common tag across the North American portfolio - but 'Private Sector' and 'Insurance' are two of the five categories they use, which settles sells_outside_government as yes on their own labelling. Our Finance & ERP category is reasonable for the public-sector units but does not describe the whole company; a job posted under 'Harris' could belong to a utilities, healthcare or insurance business unit with no government exposure at all. Worth flagging on the board. Their site returns 403 to WebFetch; I read it in a browser."
+ },
+ {
+  "id": "geotab",
+  "name": "Geotab",
+  "buyer": "Commercial fleets across transportation and logistics, truckload carriers, courier and last-mile delivery, rental and leasing, construction, waste and recycling, utilities, mining, oil and gas, agriculture, pharmaceutical, field services, towing and dealerships, plus state and local government, public works, student transportation, police and first responders, motorpool and smart city, and federal government.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.geotab.com/industries/",
+  "note": "The industries page has a distinct public-sector block naming State and Local Government, Public Works, Student Transportation, Winter Operations, Police & First Responders, Motorpool and Smart City - all SLED - alongside Federal Government. The commercial list is roughly twice as long. Solid fit for our Fleet & Asset Mgmt category, with government as a named but minority segment."
+ },
+ {
+  "id": "civica",
+  "name": "Civica",
+  "buyer": "Public bodies only: local and state government councils and authorities, justice and courts, healthcare, schools, colleges and libraries, social care providers and commissioners, police, and social housing organisations.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "medium",
+  "evidence_url": "https://www.civica.com/en-us/",
+  "note": "This is a genuine pure-play: they call themselves a 'global GovTech champion' and every buyer named is public - over 6,000 public bodies, 1,500 councils and local authorities, 3,000 schools/colleges/libraries, 2,000 care providers. No private or commercial customer appears anywhere on the page. Two caveats for the board. First, Civica is UK-origin and the scale figures (councils, Police Scotland) are UK, not US state-and-local, so their actual US SLED footprint is smaller than the headline numbers suggest. Second, on our 'Permitting & Licensing' category: the US-facing page frames the portfolio as local and state government, justice and courts, health, education, care and housing - it does not foreground permitting or licensing, so that category label is not confirmed by the page I read. Confidence is medium only because I read the US landing page rather than a US product or customer page."
+ },
+ {
+  "id": "career-team",
+  "name": "Career TEAM",
+  "buyer": "Public workforce agencies - workforce development boards, state and county government - who contract them to operate American Job Centers and who license their Career Edge platform; employers and job seekers are the people served under those contracts rather than the paying customers.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "medium",
+  "evidence_url": "https://careerteam.com/services",
+  "note": "Their services page describes operating 50+ American Job Centers, running WIOA Title I, TANF Choices and SNAP E&T programs, and managing over $300 million in public workforce contracts - the money comes from workforce boards, states and counties, which is squarely SLED and fits our Workforce & Labor category. They do name 'Employer & Business Services' as a service line, but that is standard WIOA-funded recruitment support provided to employers at no charge under the public contract, so I read employers as beneficiaries rather than buyers and answered sells_outside_government 'no'. If the board wants to be conservative, 'cannot tell' would also be defensible there - the site never says employers pay. Worth noting their homepage is unhelpful: it reads as generic template copy ('a high-velocity digital ecosystem architected for data-driven teams') and names no customer type at all; the substance is on /services and /about. No individual client agency is named anywhere I looked, which is why confidence is medium rather than high."
+ },
+ {
+  "id": "sand",
+  "name": "SAND",
+  "buyer": "Government agencies and ministries plus water, energy, telecom and healthcare operators — the site says it is \"trusted across government, water, energy, telecom, and healthcare\" and describes its users as grid controllers, water-utility ops and ministry case workers, agency managers and policy leaders.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.sandtech.com/smart-cities/",
+  "note": "Government is named repeatedly but almost always anonymised: the smart-cities case study says only \"A government agency sought to understand how large-scale traffic interventions affected air quality across their capital city urban transport network,\" and the water-utilities case study names no utility either. The one named customer anywhere I read is Telkomsel, Indonesia's largest telecom operator (https://www.sandtech.com/telecommunications/) — a commercial carrier, which is what makes sells_outside_government yes. Language like \"ministry case workers\" and \"capital city\" points at national governments overseas rather than US states, counties or school districts; no US SLED customer is named anywhere on the site. Our \"IT & AI Platforms\" category fits (the Symmetri data/AI platform), but a SLED job board should know the public-sector proof here is generic, not American state and local."
+ },
+ {
+  "id": "ivalua",
+  "name": "Ivalua",
+  "buyer": "Large enterprises across 11 industries, and separately a named Public Sector practice buying procurement software — state governments, cities and national governments.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.ivalua.com/solutions/industry/public-sector/",
+  "note": "The Public Sector industry page carries a logo wall of genuine SLED buyers: Arizona (az.gov), Ohio (ohio.gov), State of South Carolina, Commonwealth of Virginia Department of General Services, New York City, plus British Columbia Lottery Corporation and the Government of Canada. That is state and local, not just federal. The page is thin on detail — \"A Proven, Reliable Partner for the Global Public Sector\" and logos, no buyer-type breakdown. The homepage makes the commercial side unambiguous (IKEA, Volkswagen, Michelin, Louis Vuitton, Whirlpool, Booking.com, Crédit Agricole, Rolls Royce, BAE Systems), so public sector is one vertical of eleven, not the business. Matches our \"Procurement & Payments\" category."
+ },
+ {
+  "id": "instructure",
+  "name": "Instructure",
+  "buyer": "K-12 school districts and higher education institutions first, and a smaller Business & Government segment buying Canvas for corporate and association training.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.instructure.com/business",
+  "note": "The homepage splits the company three ways — K-12, Higher Education, Business & Government — and names public buyers directly: Hamilton County Schools (Chattanooga TN), Fairfield County Schools, Passaic County Technical Vocational Schools, University of Cincinnati, Seminole State College of Florida, University of Wyoming with five community colleges. Overwhelmingly a SLED company. sells_outside_government is yes only because of the /business page, which names PGA of America, General Assembly, USA Swimming, Kinesio University and Compass Partners in Learning alongside LA County Department of Public Health — associations, a for-profit bootcamp and nonprofits, i.e. genuinely non-public buyers. Our \"IT & Administration\" category understates it; this is an education (LMS) company."
+ },
+ {
+  "id": "neara",
+  "name": "Neara",
+  "buyer": "Electric utilities and grid operators — the site's own line is \"Utilities on four continents run their networks on Neara, from ambitious regional co-ops to national grid operators.\"",
+  "sells_to_gov": "unclear",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://neara.com/",
+  "note": "This is a deliberate \"unclear\" under house rule 1. The words government, public, municipal, state, council and agency never appear on the site describing customers — only \"utilities\", \"co-ops\" and \"network operators\". Electric co-ops are member-owned, not public bodies. The named US customers are all investor-owned utilities (CenterPoint Energy, Xcel Energy, Oncor, Portland General Electric), which is what makes sells_outside_government a clear yes. Several overseas names on the customer wall are state-owned in reality (ESB Networks in Ireland, HEDNO in Greece, and the Australian networks), but the site never says so, and I am not letting outside knowledge stand in for evidence. For a US state-and-local board the practical read is: no municipal/public-power utility, no state agency, no public authority is named anywhere on neara.com. Our \"Grid & Energy\" category is right; the SLED fit is not established by their site."
+ },
+ {
+  "id": "emburse",
+  "name": "Emburse",
+  "buyer": "Mid-to-large commercial enterprises across finance, legal, manufacturing, tech and professional services, plus a named public sector practice covering state governments and municipalities, and higher education.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.emburse.com/industries",
+  "note": "The homepage alone would have read as purely commercial — every logo and case study there is Toyota, General Motors, Microsoft, Databricks, Garmin, General Mills, Slalom, Duane Morris LLP — and would have produced a wrong \"unclear\". The /industries page is where the public sector shows up: a Public Sector vertical described as covering \"federal departments, agencies, contractors, state governments, municipalities,\" and a separate Higher Education vertical pitched on \"grants, cost centers, encumbrances, travel, and study abroad expenses,\" which is unmistakably university back-office work. So genuine SLED, but as two verticals among fifteen. No named government or university customer appears — the public-sector claim is descriptive, not evidenced by a logo. Matches our \"Procurement & Payments\" category."
+ },
+ {
+  "id": "aladtec",
+  "name": "Aladtec (TCP Software)",
+  "buyer": "For Aladtec itself: 24/7 public safety agencies — fire departments, EMS, law enforcement and corrections. For the parent, TCP Software, also private employers in healthcare, retail, hospitality, manufacturing and construction.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://tcpsoftware.com/products/aladtec/",
+  "note": "Two things worth flagging. First, the website on our record is stale: aladtec.com now 308-redirects to https://tcpsoftware.com/products/aladtec/ — Aladtec is a product line inside TCP Software, not a standalone site. Second, the answer depends on how you scope the company. The Aladtec product page is public-safety only (\"public safety scheduling software built for 24/7 agencies\") and names Gloucester County EMS, Manassas Park Fire and Rescue and the Minnesota Department of Corrections — all public, no commercial buyer at all. But TCP Software's industries page sells the same workforce-management platform to Healthcare, Retail, Hospitality, Manufacturing, Construction, Business Services and Small Business alongside Government, Public Safety, K-12 Education and Higher Education, with Marriott and Google cited as customers. I answered sells_outside_government yes for the parent; if the board means the Aladtec product narrowly, that answer would be no. Our \"EMS\" category is right for the product but too narrow for the vendor — Aladtec is fire/EMS/police/corrections scheduling."
+ },
+ {
+  "id": "brinc",
+  "name": "Brinc",
+  "buyer": "Public safety agencies only — police departments, sheriffs, state police, fire departments and 911/search-and-rescue agencies.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.brincdrones.com/case/law-enforcement/",
+  "note": "About as clean a SLED-only profile as this list gets. The site claims deployment \"by Over 900 Public Safety Agencies in all 50 States\" and names Las Vegas Metro PD, Kansas City PD, Fort Wayne PD (IN), Beverly Hills PD, Atlanta PD, Connecticut State Police, Chula Vista PD and NYPD. The pitch is literally \"Put a 911 Response Drone on Every Police and Fire Station Roof\" (drone-as-first-responder). No private security, no corporate, no military buyer named anywhere I read. Our \"Police\" category is correct, though fire and search-and-rescue are equally prominent."
+ },
+ {
+  "id": "amcs-group",
+  "name": "AMCS Group",
+  "buyer": "Private waste, recycling, transport and resources companies first — Recology, SUEZ Recycling and Recovery UK, Peninsula Sanitary Service, Rema — and separately municipalities buying municipal-services software.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.amcsgroup.com/industries/municipal-waste/",
+  "note": "The municipal-waste page is explicit about the public buyer: \"A connected solution for modern municipalities. Helping to automate, optimize, and unite municipal services for safer, smarter service delivery,\" covering waste collection, street cleaning, winter maintenance and park upkeep — that is a city public works department. But no municipality is named; every named customer on the site is a private hauler or recycler (Recology, SUEZ, PSSI, Rema, Unicon, nemlig.com), and there are separate industry pages for Commercial & Industrial, Metal Recycling, Transport and Utilities. So the honest picture for the board is: a commercial waste-software vendor with a real municipal product line, not a government-first vendor. Our \"Waste & Recycling\" category is right."
+ },
+ {
+  "id": "droneshield",
+  "name": "DroneShield",
+  "buyer": "Its own words: \"Our capabilities are used to protect Military, Government, Law Enforcement, Critical Infrastructure, Commercial and VIPs.\"",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.droneshield.com/",
+  "note": "Flagging this one for the board's purposes: the weight of the site is military and national/federal security, not state and local. The six sector pages are Military, Critical Infrastructure, Public Safety, Border Security, Aviation Facilities and Correctional Facilities — of those, only Public Safety (law enforcement), Correctional Facilities and arguably Aviation Facilities (airport authorities) are SLED. Border security is federal. \"Commercial and VIPs\" is named outright on the homepage, and the footer navigation lists Corporations, Events & Stadiums, Executive Protection, Maritime Security and Oil, Gas & Mining, which is why sells_outside_government is yes — I could not load those individual sector pages (/sectors/corporations 301s back to /sectors, /sectors/critical-infrastructure 404s), so the commercial detail rests on the homepage sentence and the footer, hence medium not high. No customer is named anywhere on the site. Our \"Police\" category captures only one slice of a counter-drone company that is primarily defence."
+ },
+ {
+  "id": "versaterm",
+  "name": "Versaterm",
+  "buyer": "Public safety agencies — police and sheriffs, fire and EMS, 911 emergency communications centers and PSAPs, crime labs, court systems, and schools working with school resource officers.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.versaterm.com/",
+  "note": "Its \"Who We Serve\" menu is six industries and all six are public: Law Enforcement, Fire & EMS, ECCs & PSAPs, Crime Labs & Forensic Units, School & Education, Court Systems. Named customers are Glendale Police, Sumner County Sheriff's Office, City of Santa Monica (cloud CAD and RMS) and Charlotte County Sheriff's Office — city and county government throughout. No private security or commercial buyer appears anywhere I read. The School & Education page (https://www.versaterm.com/industry/school-education/) is about schools partnering with law enforcement on SRO programs rather than districts buying the full suite, and even there the named customer is a sheriff's office. Our \"Police\" category is right, though CAD/911 dispatch and courts are as central as police records."
+ },
+ {
+  "id": "viapath-technologies",
+  "name": "ViaPath Technologies",
+  "buyer": "Correctional facilities and the government agencies that run them — the site says it has partnered with more than 2,300 correctional facilities nationwide and serves \"government facilities and state agencies\" — with a second revenue stream from the families and friends of incarcerated people, who pay ViaPath's own consumer brands (ConnectNetwork, GettingOut, TouchPay Direct) for calls, messaging and deposits.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.viapath.com/facilities/",
+  "note": "The contracting buyer is always a corrections agency — the site names no private prison operator, no commercial market, nothing outside corrections. I answered sells_outside_government \"yes\" only because the site runs a whole Family & Friends section (https://www.viapath.com/friends-family/) where consumers pay ViaPath brands directly for communications and deposits, and consumers count as a non-government buyer under the house rules. If you mean procurement buyers rather than end-payers, the honest answer is \"no\" — every contract on this site is with a public corrections agency. The site never distinguishes county jail from state DOC from federal BOP, so the SLED share is unknowable from the site. Our \"Corrections\" category is exactly right."
+ },
+ {
+  "id": "robin-radar-systems",
+  "name": "Robin Radar Systems",
+  "buyer": "Defence ministries, air forces and national security agencies, plus airport operators and — on the bird-radar side — wind farm developers and energy companies. The homepage names the Royal Air Force, the Royal Netherlands Air Force, the Dutch Ministry of Defence, the U.S. Department of Homeland Security and Amsterdam Airport Schiphol; the wind-farm page names Equinor, Eneco, Rijkswaterstaat, NINA and Waardenburg Ecology.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.robinradar.com/markets/wind-farm-bird-radar",
+  "note": "Two findings worth your attention. First, our category \"Police\" is not supported by their own site: their markets menu is Defence & Counter-UAS, Security, Government Infrastructure, Civil Aviation, Military Aviation, Wind Farms and Maritime — there is no law-enforcement market page and no police customer named anywhere I read. Second, the government they sell to is national and mostly European (Dutch MoD, RAF, RNLAF) or US federal (DHS), which is not SLED. The only SLED-shaped public buyers on the site are airport authorities. The non-government side is unambiguous: Equinor and Eneco are energy companies, and Boeing and Thales appear as partners/integrators."
+ },
+ {
+  "id": "matterhorn",
+  "name": "Matterhorn (Court Innovations)",
+  "buyer": "Courts — municipal, district, county and state trial courts. The live court list names Pinal County Superior Court (AZ), the Delaware Justice of the Peace Court, Miami-Dade's Eleventh Judicial Circuit traffic court, Coweta County State Court (GA), a dozen Michigan district courts, Suffolk County Traffic and Parking Violations Agency (NY), Maumee and Wayne County municipal courts (OH), Hamilton County General Sessions (TN) and Farmers Branch Municipal Court (TX).",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://courtinnovations.com",
+  "note": "Heads-up on the URL in our record: https://getmatterhorn.com now 301-redirects to https://catalisgov.com/matterhorn-LP — Matterhorn has been absorbed into Catalis, which describes itself as \"modernizing governments across North America.\" The Catalis landing page names no customers at all; the actual named court list lives on courtinnovations.com, which is where I read the answer. Every buyer named on either site is a court or a public agency, so sells_outside_government is \"no\". Our \"Courts & Case Management\" category is correct, and these are state and local courts, not federal."
+ },
+ {
+  "id": "d-fend-solutions",
+  "name": "D-Fend Solutions",
+  "buyer": "Counter-drone buyers across a wide sector list the company publishes itself: Military and Special Forces, National Security and Homeland Security, Law Enforcement Agencies and First Responders, Airport Safety & Security, Border Protection, VIP Protection, Maritime Security & Safety, Critical Facilities and Infrastructure, Stadiums and Arenas, Media, Prisons, Landmarks and Govt Buildings, Local Governmental, and Enterprise.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://d-fendsolutions.com/by-sector/",
+  "note": "Public-sector selling is beyond doubt — they publish a \"Local Governmental\" sector page alongside Law Enforcement, Prisons, Airports and Landmarks/Govt Buildings. For sells_outside_government I deliberately did NOT count their \"Enterprise\" sector, per the house rule that the label proves nothing. What does support \"yes\" is \"Media\" (broadcasters are private companies) and \"Stadiums and Arenas,\" whose page frames venue management as the purchaser: \"Security planning for large events already requires close coordination between federal agencies, local law enforcement, private security providers, and cyber teams.\" Confidence is medium because no individual customer is named anywhere on the site — every sector page is written in the abstract. Caveat on category: our \"Police\" tag is defensible but narrow; the site leads with military and homeland security, and law enforcement is one sector of fourteen."
+ },
+ {
+  "id": "mark43",
+  "name": "Mark43",
+  "buyer": "Public safety agencies only — \"over 300 public safety agencies of all sizes, from federal to state and local, across the world.\" Named: California Highway Patrol, Boston Police, Seattle Police, Albuquerque Police, San Antonio Police, Richmond Police, Louisville Police, DC Metropolitan Police, Morgan-style county agencies including Fresno County Sheriff and Alameda County Sheriff, San Diego Harbor Police, Elk Grove PD, plus US Secret Service, Defense Intelligence Agency, US Capitol Police and the Department of the Interior, and Cumbria Constabulary in the UK.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.mark43.com",
+  "note": "The cleanest record in this batch. Every customer named on the site is a police department, sheriff's office, campus police, port/transit police or a federal agency — no commercial buyer appears anywhere, so sells_outside_government is \"no\". Worth knowing for the board that their customer list mixes federal (Secret Service, DIA, Capitol Police, Interior) in with the state and local agencies; the state/local half is large and clearly the core, so this is a genuine SLED vendor, not a federal one. Our \"Police\" category is right, though they also serve dispatch/911 and campus and port agencies."
+ },
+ {
+  "id": "mueller-water-products",
+  "name": "Mueller Water Products",
+  "buyer": "Water and gas utilities and the municipalities that own them, alongside industrial and commercial infrastructure owners. The company describes serving \"utilities and industrial and commercial water and gas infrastructure systems,\" and its brand pages say Singer valve solutions are used by \"governments, cities, companies and contractors,\" with Pratt valves sold into industrial and power generation markets and Jones products into fire protection lines.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.muellerwaterproducts.com/our-brands",
+  "note": "Their own phrase \"governments, cities, companies and contractors\" settles both questions in one line: cities and governments on the public side, companies and contractors on the private side. The homepage adds \"industrial and commercial\" explicitly and mentions data center cooling as an application, which is plainly commercial. This is a manufacturer selling largely through distributors and contractors rather than direct to agencies, so treat it as an infrastructure supplier to the SLED water market rather than a software vendor procured by a city. Our \"Water\" category is right but understates them — they do gas distribution and fire protection too. Note two dead URLs on their site: /about-us and /company both return 404."
+ },
+ {
+  "id": "knightscope",
+  "name": "Knightscope",
+  "buyer": "Whoever runs physical security at a site — the homepage addresses \"the Chief Security Officers of the United States of America\" and lists the verticals it protects as Retail, Industrial, Healthcare and Education, with imagery and copy covering parking lots, big-box stores, storage yards, hospital campuses, school entrances, residential communities, casinos and utility sites. It claims 434 clients across 42 US states but names not one of them.",
+  "sells_to_gov": "unclear",
+  "sells_outside_government": "yes",
+  "confidence": "low",
+  "evidence_url": "https://www.knightscope.com",
+  "note": "Two problems, and you should treat this record as unfinished. First, their site is a single-page app that returned the identical homepage shell for every sub-URL I tried (/the-force, /comms, /briefing, /use-cases/who-we-serve, /use-cases/schools, /use-cases/federal) — so I could not actually read any of the pages that would answer the government question, and /clients and /industries 404. The only government evidence I could read anywhere was \"Government / Federal\" appearing as an option in an inquiry form's sector dropdown, which is not a claim about customers, so I set sells_to_gov to \"unclear\" rather than \"yes\". A page titled \"Federal Government | Knightscope\" does exist in their nav but I could not retrieve its contents, and I have not counted it. Second, and more actionable: our category \"Park Assets, Forestry & Visitor Data\" does not match this company at all. Knightscope makes autonomous security robots and emergency blue-light communication towers — it is a physical-security vendor. That category should be corrected. sells_outside_government is \"yes\" with real confidence: retail, casinos, residential communities and corporate sites are unambiguously private buyers and all appeared in readable homepage copy."
+ },
+ {
+  "id": "flock-safety",
+  "name": "Flock Safety",
+  "buyer": "Both halves of the market, openly. Public: police and sheriffs (Fort Worth PD, Castle Rock PD, Whitehall PD, Morgan Hill PD, Spokane County Sheriff's Office, Tulsa PD), school districts (Spring Branch ISD, Licking Heights Schools), the University of Iowa, plus corrections and parks agencies. Private: HOAs and neighborhood associations, multifamily communities, retail and grocery (Academy Sports is named), retail banking, healthcare, hospitality, logistics, manufacturing, builders and developers, property managers and places of worship.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.flocksafety.com/customers",
+  "note": "Their customers page states the split itself: \"5,000+ Law Enforcement Agencies,\" \"6,000+ Communities\" and \"1,000+ Businesses.\" The HOA page makes the private buyer explicit — \"Your HOA owns all footage and data\" and \"Law enforcement only gains access if your HOA opts in\" — so the HOA, not a city, is the contracting party there. Our \"Police\" category captures their largest and most visible segment and is fair, but be aware roughly half their published industry pages are commercial; if the board ever filters on \"government-only vendors,\" Flock should not be in that bucket."
+ },
+ {
+  "id": "gridware",
+  "name": "Gridware",
+  "buyer": "Electric utilities of every ownership type. The customers page states they partner with \"Investor-Owned Utilities (IOU), Customer-Owned Utilities (COU), Electric Cooperatives, Municipal Utilities, and Public Utility Districts,\" and the case studies name PG&E, Puget Sound Energy, Xcel Energy and Brigham City Public Power.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.gridware.io/customers",
+  "note": "This one is genuinely mixed and the site says so in a single sentence. Municipal Utilities and Public Utility Districts are public buyers and there is a named example — \"Brigham City Public Power Averts Wildfire on Festival Day.\" But the marquee case studies are PG&E, Puget Sound Energy and Xcel Energy, which are investor-owned, i.e. private companies, and electric cooperatives are member-owned rather than public. So the public-power share of their business looks like the minority. Our \"Grid & Energy\" category is right. If the board is trying to surface SLED-relevant roles, the municipal-utility and PUD side is the part that qualifies."
+ },
+ {
+  "id": "core-business-technologies",
+  "name": "CORE Business Technologies",
+  "buyer": "Mostly local government — \"1,000+ Government Agencies Served\" across \"49 U.S. States with Active Clients,\" reaching \"28% of the U.S. Population,\" with the product aimed at Finance Directors, IT Directors and City Managers. Named clients are counties and cities: Grand County UT, Washington County UT, Beaver County UT, Juab County UT and the City of Davenport IA. They also publish Healthcare and Higher Education verticals.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://corebt.com",
+  "note": "Government is the overwhelming majority and is beyond dispute — named counties and cities, a dedicated /government/ section, and copy about \"digital-first public service.\" I set sells_outside_government to \"yes\" on thinner evidence: their healthcare page quotes a clinical informatics specialist at Jefferson Health, a private nonprofit health system, and references \"enterprise retail and ambulatory pharmacies,\" which are commercial. That page never states whether its hospital buyers are public or private, so the non-government read rests on the Jefferson Health mention plus retail pharmacy. Higher education counts as public under our rules either way. Our \"Procurement & Payments\" category fits — they are a payments and revenue-collection platform for local government."
+ },
+ {
+  "id": "starrez",
+  "name": "StarRez",
+  "buyer": "Primarily universities and colleges managing on-campus housing, alongside private purpose-built student accommodation (PBSA) operators, build-to-rent and co-living developments, boarding schools and staff-housing operators.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.starrez.com",
+  "note": "The homepage lists its markets as Higher Education, Student Property Management (PBSA), Build to Rent, Boarding Schools, Co-Living, Staff Housing and Conference & Events, and names public universities (Montana State, University of Oregon, University of Oklahoma, Oklahoma State) next to Abodus, a private UK student-accommodation operator. Public higher ed is clearly the core, but the build-to-rent, co-living and PBSA markets are genuinely private commercial landlords, so this is not a public-only vendor. Our category of 'IT & Administration' is fair but understates how specifically this is student-housing software."
+ },
+ {
+  "id": "invoicecloud",
+  "name": "InvoiceCloud",
+  "buyer": "Local governments, county tax offices and public utilities/water districts taking resident bill payments, plus insurance carriers collecting premiums and paying claims.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.invoicecloud.net/",
+  "note": "www.invoicecloud.com 301-redirects to www.invoicecloud.net; I read the destination. The site's own four industries are Utilities, Insurance, Local Government and County Tax, and it names City of Clearwater, El Dorado County, New Hanover County, Sacramento Suburban Water District and City of Carmel Utilities on the public side. Insurance is the clear non-government market, named directly: American Farmers & Ranchers Mutual Insurance and HEMIC (a workers' comp carrier). Alaska Village Electric Cooperative is a member-owned co-op rather than a public utility, which is another non-government buyer. Strong SLED fit for our 'Procurement & Payments' category, though the product is citizen-facing billing rather than procurement."
+ },
+ {
+  "id": "everbridge",
+  "name": "Everbridge",
+  "buyer": "State and local governments and public safety agencies sending resident alerts, universities, and hospitals, alongside a large commercial book: banks, manufacturers, retailers, insurers and global corporations managing employee safety.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.everbridge.com",
+  "note": "The homepage names State of Oregon and Fairfax County (alerting over a million residents) on the public side and lists State & Local Government, Higher Education and Healthcare among its solution verticals. It equally names Goldman Sachs, Royal Bank of Canada, Siemens, Sony PlayStation and Diebold Nixdorf, so the commercial market is named outright, not inferred from a segment label. Clean fit for our 'Emergency Mgmt' category."
+ },
+ {
+  "id": "the-weather-company",
+  "name": "The Weather Company",
+  "buyer": "Airlines and their dispatch and ground-operations teams, broadcast and digital media newsrooms, advertisers and brands, insurers and energy companies, government and defense agencies, plus consumers through The Weather Channel, Weather Underground and Storm Radar apps.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.weathercompany.com/government/",
+  "note": "Two findings worth a human's attention. First, the government the site actually evidences is federal/defense, not SLED: the Government & Defense page's only named proof point is SOCOM exercises for its DROP platform, and no state, county, city, DOT or emergency-management customer is named anywhere I read. Second, our category of 'Airfield & Operations' does not match what the aviation page sells: the named aviation customers are all airlines (Breeze Airways, Southwest, ITA Airways, Alitalia, EL AL) and the buyers described are dispatchers, pilots, hub and station managers, with no airport or airport authority named. Commercial breadth is beyond doubt (NASCAR, CAA Club Group, advertising, consumer apps). Confidence is medium only because sells_to_gov rests on a federal/defense page and the state-and-local relevance this board cares about is not demonstrated on their site."
+ },
+ {
+  "id": "vertigis",
+  "name": "VertiGIS",
+  "buyer": "Local governments, public safety and transportation authorities, and public utilities, alongside private utilities, telecom network operators, oil and gas firms, engineering and construction companies, manufacturers and real-estate/facility managers.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.vertigis.com",
+  "note": "The site claims 5,300+ clients and names public buyers directly: City of Austin, City of Windsor, City of Brandon, Vancouver Police Department, Kuwait Airport, Brisbane Airport, CFL (Luxembourg railways) and University of Jena. It also names unambiguously commercial buyers: Georgia Power, Omya, Scaletta Immobilien and several German municipal-utility and telecom operators, plus an Oil & Gas vertical. One mismatch worth noting: our category 'Fleet & Asset Mgmt' is only partly right, since this is GIS software (Esri-ecosystem mapping, field and utility network tools), with asset management as one application rather than the product."
+ },
+ {
+  "id": "roller",
+  "name": "ROLLER",
+  "buyer": "Privately operated attractions and leisure venues - trampoline parks, family entertainment centres, water parks, escape rooms, climbing gyms, play centres and theme parks.",
+  "sells_to_gov": "no",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.roller.software/customer-stories",
+  "note": "I read the homepage and the customer-stories page (/customers and /case-studies both 404). Every named customer is a private operator: Sky Zone, Elevate Trampoline Park, American Dream, Escape Hunt, Boom Battle Bar, We Rock the Spectrum, Area 51, Stuntwerk, QUEENS London, Lollipops Playland. No government, municipal, council-run or school-district venue is named anywhere I read, so under the house rule this would normally be 'unclear' rather than 'no'. I set sells_to_gov to 'no' because the site's positioning is squarely a commercial attractions business, but the caveat is real and should be checked: ROLLER does list Museums and Zoos & Aquariums as venue types it serves, and many of those in the US are city- or county-owned, so a public buyer is plausible even though their site never names one. If you want the stricter reading, downgrade this to 'unclear'. Our 'Events, Venues & Ticketing' category describes the product accurately; the question is only whether the buyer is ever public."
+ },
+ {
+  "id": "everdriven",
+  "name": "EverDriven",
+  "buyer": "K-12 school districts arranging alternative student transportation - special education students with IEPs and 504 plans, students in foster care and McKinney-Vento homeless students - plus charter, magnet and private schools.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://everdriven.com/school-districts/",
+  "note": "The site says 800+ school districts across 38 states and names Chicago Public Schools, Houston ISD, Plano ISD, Cypress-Fairbanks ISD, Burbank Unified, Los Gatos Union, Seaford, Gilbert Public Schools, Chandler Unified, Wichita Public Schools, Appleton Area and Capistrano Unified. Every named customer is a public district or a charter school, which is why I answered 'no' to selling outside government. One thing for a person to weigh: the page states plainly that it serves 'Public school districts, Private schools, Charter schools, and Magnet schools', so private K-12 schools are a stated buyer type even though none is named as a customer. Our category 'Operations & SIS' is wrong for this one - EverDriven is student transportation, not a student information system."
+ },
+ {
+  "id": "dataminr",
+  "name": "Dataminr",
+  "buyer": "Corporate security, cyber and risk teams at large enterprises (two-thirds of the Fortune 50), financial services and insurance firms, newsrooms, and government agencies including US federal and defense customers.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.dataminr.com/public-sector",
+  "note": "The public-sector evidence on their own site is federal and international, not state and local: '100+ US government agencies, 20+ international governments' and a $318M Department of War contract. Law Enforcement, Emergency Management, Force Protection and Transportation & Infrastructure Protection appear as use-case categories, but I read the dedicated law-enforcement page and it names no police department, sheriff's office, city or county customer at all. So for this board specifically - state and local - the site does not demonstrate the buyer our 'Police' category implies; a human should decide whether a federal-and-enterprise vendor with an unnamed law-enforcement use case belongs on a SLED board. Commercial selling is beyond question: Fortune 50/100 corporate security, financial services, insurance, supply chain, and 1,500+ newsrooms."
+ },
+ {
+  "id": "yuja",
+  "name": "YuJa",
+  "buyer": "Universities, colleges and community colleges first, then K-12 districts and state government agencies, with healthcare and finance organizations also named as target markets.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.yuja.com",
+  "note": "Named customers are overwhelmingly public education - Texas A&M, University of Arizona, University of North Dakota System, Southern Illinois University Edwardsville, Angelo State, South Texas College, Motlow State, Meridian Community College, Murray State College, LA Pierce College - plus two clear government buyers, the South Carolina Department of Education and the province of Alberta. The reason sells_outside_government is 'yes' rather than 'no' is one sentence in their own words: 'Our products and solutions enable enterprises in higher education, K-12, healthcare, finance, and government...'. Finance and healthcare are named as markets, but no corporate, bank or hospital customer is named anywhere I could reach (/industries/, /customers/ and /enterprise/ all 404), so the non-government business is asserted rather than evidenced - hence medium confidence. Our 'IT & Administration' category fits, though the site now positions itself around digital accessibility and compliance rather than only lecture capture."
+ },
+ {
+  "id": "govwell",
+  "name": "GovWell",
+  "buyer": "City, town and county governments - building departments, planning and zoning, licensing and code enforcement staff - mostly in small and mid-sized municipalities.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.govwell.com",
+  "note": "Every named customer is a municipality or county: Clarksville IN, Perinton NY, Nederland TX, Lawrenceburg TN, Collinsville OK, Paradise CA, Hampton GA, Brevard NC, Cold Spring KY, Hutto TX, Black Mountain NC, Macon County NC, Butte-Silver Bow MT, La Porte County IN, North Royalton and Niles OH, Clewiston and Eustis FL, Middlebury CT, Vermillion SD. The site names no state agency and no non-government buyer of any kind, and the posted populations show the focus is small towns and counties. Exact match for our 'Permitting & Licensing' category."
+ },
+ {
+  "id": "wavetronix",
+  "name": "Wavetronix",
+  "buyer": "State transportation departments and city traffic agencies that run highways and signalized intersections.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.wavetronix.com",
+  "note": "Every customer the site actually names is public: Delaware DOT, Montana DOT, City of Lehi, Utah. The applications page describes only agency use cases (adaptive signal control, ramp metering, tolling, FHWA reporting, federal funding) and names no private buyer. One caveat worth a human eye: the news page carries a podcast episode with Avenue Consultants, a private traffic-engineering consultancy — a guest appearance, not a stated customer, so I did not count it. Traffic consultants plausibly buy these sensors for data collection, but the site never says so. Our 'Streets' category fits."
+ },
+ {
+  "id": "miovision",
+  "name": "Miovision",
+  "buyer": "Cities, state DOTs and transit agencies, plus private traffic-engineering and data-collection consultancies that do the work for them.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://miovision.com/case-studies/",
+  "note": "Public side is overwhelming and explicit: Chicago, Detroit, NYC, Denver, Las Vegas, Escambia County, MassDOT, Idaho DOT, Texas DOT, WSDOT, New York State, SFMTA, Golden Gate Transit, Memphis MATA. The homepage audience list is literally 'Traffic Engineers & Planners, Traffic Agencies, First Responders, Transit Agencies'. What makes sells_outside_government 'yes' is the case-study roster, which also names private firms as customers in their own right: TERRA Engineering, Modus Consult (a German traffic engineering firm), McElhanney, Imperial Traffic & Data Collection, Traffic Databank, Fish Transportation Group. These are consultancies serving public agencies, so it is a thin kind of commercial market, but they are named as non-government buyers. Our 'Streets' category fits."
+ },
+ {
+  "id": "pointr",
+  "name": "Pointr",
+  "buyer": "Large private enterprises for indoor mapping and wayfinding — retailers, workplaces and pharma — alongside airport operators and hospital systems.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.pointr.tech/sectors/aviation",
+  "note": "The commercial market is unambiguous and is clearly the bulk of the business: The Home Depot (2,300 stores), Microsoft, Cisco, Nike, KPMG, EY, PwC, Siemens, Honeywell, Sanofi, and sectors named as Workplace, Events, Retail, Hospitality. The public side is real but thinner: the aviation page's customer logo wall includes Boston Logan (operated by Massport, a public port authority) and what reads as MWAA (Metropolitan Washington Airports Authority), plus Dubai Airports and Hamad International, which are foreign state-owned — not SLED. Healthcare case study is UCHealth, the University of Colorado system. Confidence is medium because the US public-authority evidence is logo alt-text on a 'Trusted by the largest brands in the world' strip rather than a named case study, and a human should confirm Boston Logan and MWAA before relying on it. Our 'Terminal & Passenger Experience' category is a narrow slice of what they actually sell."
+ },
+ {
+  "id": "bidgely",
+  "name": "Bidgely",
+  "buyer": "Electric and gas utilities — mostly investor-owned private ones, plus a number of municipal and state-owned public power utilities.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://bidgely.com/resources/?assetType=Case+Study",
+  "note": "The homepage logo wall is almost entirely investor-owned private utilities: Ameren, APS, Avista, NV Energy, PacifiCorp, PNM, PSEG, Rocky Mountain Power, SDG&E, SoCalGas, TEP, Nova Scotia Power, Sorgenia. That is a clear commercial buyer, so sells_outside_government is 'yes' with no hesitation. The public-sector answer rests on the resources/case-study library, which names SMUD (Sacramento Municipal Utility District, a public utility district), Austin Energy (city-owned), OUC (Orlando Utilities Commission, a municipal commission), Santee Cooper (South Carolina's state-owned utility) and rural electric cooperatives such as Central Electric Cooperative and Middle Tennessee Electric. Those are public authorities under our definition. Confidence is medium because that evidence comes from webinar and video listings rather than a dedicated customer page, and the center of gravity of this company is plainly the IOU market, not SLED. Worth a human deciding whether public power utilities belong on this board at all."
+ },
+ {
+  "id": "acentra-health",
+  "name": "Acentra Health",
+  "buyer": "State health and Medicaid agencies, plus the federal Centers for Medicare & Medicaid Services.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://acentra.com/clients-and-testimonials/",
+  "note": "Cleanest case in this batch. Every named client is a government agency: Washington State Health Care Authority, West Virginia DoHS, Utah DHHS, Oregon Health Authority, Michigan DHHS, Alabama Medicaid Agency, Wyoming Department of Health, Arizona AHCCCS, Hawaii Med-QUEST. The company describes itself as built 'to deliver maximum value and impact to government healthcare programs'. No commercial health plan, insurer or private employer appears anywhere. Note the mix: they also contract with CMS, which is federal and therefore not SLED, but the state Medicaid work is the dominant and clearly-stated business. Our 'Benefits & Medicaid Systems' category is accurate."
+ },
+ {
+  "id": "goguardian",
+  "name": "GoGuardian",
+  "buyer": "K-12 school districts — district administrators, IT staff and teachers.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.goguardian.com",
+  "note": "The site is single-market and says so: 'The #1 choice for K-12 web filtering on any OS', 'Supporting 50% of US K-12 students', '2M+ educators'. Named districts include Clark County School District, Chicago Public Schools, NYC Public Schools, Camdenton, Neosho, Chagrin Falls and Lee County Schools — all public districts. No commercial, higher-ed or consumer buyer is named anywhere on the homepage; a /customers page does not exist (404). One framing caveat for the board: our category is 'School Safety' and GoGuardian does sell student-safety monitoring, but the homepage leads with web filtering and classroom management, so the category is narrower than the product."
+ },
+ {
+  "id": "caseguard",
+  "name": "CaseGuard",
+  "buyer": "Police departments, sheriffs' offices and city and county government for video redaction, and equally a broad commercial market including casinos, retailers, insurers, banks and law firms.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://caseguard.com",
+  "note": "Both answers are directly supported. Public customers named on the homepage: Wichita Police Department, Spokane Police Department, City of Sedona Police Department, Medina Police Department, Pine Bluff Police Department, St. Johns County Sheriff's Office, University of Arizona Police Department, Long Beach City Prosecutor's Office, Manatee County Government, Salem-Keizer Public Schools, Village of Channahon. Commercial is equally explicit — their use-case menu lists Casinos, Retail, Insurance, Financial Services, Media & Entertainment and Call Centers, and Roxell Richards Injury Law Firm is a named customer. So our 'Police' category is correct but partial: law enforcement is one of fourteen named verticals, not the whole business."
+ },
+ {
+  "id": "auror",
+  "name": "Auror",
+  "buyer": "Retailers, primarily — the platform is sold to retail chains, with law enforcement agencies presented as a second audience that collaborates on the same network.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.auror.co/auror-for-le",
+  "note": "This one needs a human call and I want to be plain about why. The paying market on the site is unmistakably retail: H&M, Best Buy, Ulta Beauty, Lululemon, REI, Primark, Boots, Morrisons, Woolworths NZ, Holland & Barrett, Travis Perkins, plus verticals for grocery, fuel, apparel and pharmacy. The homepage positions it as 'Your central hub for resolving and preventing retail crime'. There is a dedicated 'Auror for Law Enforcement' product page with its own Book a Demo call to action, which is why I answered sells_to_gov 'yes' — but that page never says whether agencies pay, are funded by the retailers, or get access free, and it names no police agency as a customer (only a quote from an individual detective sergeant and a UK retail-crime unit working with Boots). If the board's test is 'does a public agency write them a check', the site does not establish that, and I would not defend a 'yes' past the fact that they market a product at police. Our 'Police' category oversells the relationship."
+ },
+ {
+  "id": "wastequip",
+  "name": "Wastequip",
+  "buyer": "Waste hauling companies and municipalities, plus industrial, commercial and institutional customers across North America.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.wastequip.com/our-company/",
+  "note": "The company page states its customers in one line: 'waste haulers, municipalities, and various industrial, commercial, and institutional clients across North America', and elsewhere 'national waste haulers'. Municipalities is an explicit public buyer, so sells_to_gov is 'yes'; haulers and industrial/commercial clients are explicit non-government buyers, so sells_outside_government is 'yes'. Caveat for the board: this is a manufacturer of dumpsters, compactors and roll-off containers selling largely through distribution, and it names no individual customer anywhere on the site — no case studies, no customer logos, no markets pages. So the categories are their own words but there is no named-account evidence behind either answer. Our 'Waste & Recycling' category fits."
+ },
+ {
+  "id": "frontline-wildfire-defense",
+  "name": "Frontline Wildfire Defense",
+  "buyer": "Homeowners, first and foremost, plus production homebuilders, architects and contractors, wineries and vineyards, summer camps and commercial property owners.",
+  "sells_to_gov": "no",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.frontlinewildfire.com/commercial-defense-systems/",
+  "note": "This is the one record in the batch I think is miscategorized, and I want to flag it rather than bury it. The entire product navigation is private buyers: Homeowners, Architects & Contractors, Production Homebuilders, Summer Camps, Wineries & Vineyards, Commercial Defense System — and there is even a consumer financing page for the sprinkler system. The only named customer is Woodside Homes, a production homebuilder. The commercial page lists 'warehouses and distribution centers, data centers, manufacturing facilities, medical centers and healthcare campuses, commercial office and retail properties' and specifically 'private schools and camps'. No fire department, municipality, county, state or any public agency appears anywhere on the site as a customer or partner. I used 'no' rather than 'unclear' because the site does not merely fail to mention government — it makes clear it sells somewhere else entirely, to residential and private commercial property. They publish free public wildfire maps and an app, which is probably what reads as civic, but that is content, not a buyer. Our 'Fire' category implies a fire-service vendor and this is a consumer and commercial exterior-sprinkler company."
+ },
+ {
+  "id": "obvio",
+  "name": "Obvio",
+  "buyer": "Small-town municipal governments and their police departments — the site's testimonials are all Maryland town police chiefs and a town manager.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.obvio.ai",
+  "note": "Homepage testimonials name Chief Tracy Stone (Town of Colmar Manor, MD), Chief Dan Franklin (Morningside, MD), Chief Anthony Ayers (Cottage City, MD) and Joy Ren, Town Manager (Capitol Heights, MD). The /solutions page states plainly that they partner with municipalities to build a culture of safety in their communities. No commercial buyer appears anywhere on the site. Our 'Streets' category is fair — it's AI stop-sign/traffic-safety enforcement cameras — though the buying department is police, not public works.",
+  "sells_outside_government_detail": ""
+ },
+ {
+  "id": "initlive",
+  "name": "InitLive (Bloomerang Volunteer)",
+  "buyer": "Nonprofit organizations that manage volunteers — the page's named customers are a hospice, a low-cost animal clinic, a scholarship nonprofit and a homeless-services charity.",
+  "sells_to_gov": "unclear",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://bloomerang.com/volunteer",
+  "note": "InitLive is now sold as Bloomerang Volunteer, and this page sits inside Bloomerang's nonprofit-fundraising site. Named customers: Hope Healthcare Services, FACE Low-Cost Animal Clinic, Scholar Match, and ShowerUp as a case study. Every one is a private nonprofit, so sells_outside_government is yes. The page names no city, county, school district, university, library or public agency at all — hence 'unclear' rather than 'no' on sells_to_gov. Worth flagging for the board: on this evidence the product is aimed at charities, not public volunteer programs, so our SLED framing of it is not supported by the vendor's own page.",
+  "sells_outside_government_detail": ""
+ },
+ {
+  "id": "eso",
+  "name": "ESO",
+  "buyer": "Fire departments, EMS agencies, hospitals and government agencies — ESO's homepage breaks its own market into exactly those four.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.eso.com",
+  "note": "Homepage names four buyer segments — Fire, EMS, Hospital, Government — with the government pitch being 'go beyond compliance with insights that help your team anticipate risk.' Municipal buyers are explicit: the EMS page quotes Captain Tami Wires of Nelsonville, Ohio. The non-government side is real too: the hospital page quotes a project director at Children's Hospital Colorado (a private nonprofit hospital), and the homepage case study features Allegiance Mobile Health, a private ambulance operator. So this is a genuine both-sides vendor, not a gov-only one. Our 'EMS' category is right.",
+  "sells_outside_government_detail": ""
+ },
+ {
+  "id": "hello-heart",
+  "name": "Hello Heart",
+  "buyer": "Self-insured employers first, plus health plans, public-sector employers and labor unions — sold as a benefit to a workforce, not to a government program.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.helloheart.com",
+  "note": "The site has a dedicated /for-businesses/public-sector page alongside /employers, /health-plans and /labor-unions. Named public customers: City of Minneapolis, Minnesota (quoted: Ricka Stenerson, Director of Total Compensation) and Northern Michigan University. Named commercial customer: Extended Stay America, a hotel chain — that alone settles sells_outside_government as yes. Our 'HR & Workforce' category is accurate: the SLED buyer here is a benefits/total-comp office, not a health department.",
+  "sells_outside_government_detail": ""
+ },
+ {
+  "id": "sentinel-offender-services",
+  "name": "Sentinel Offender Services",
+  "buyer": "County sheriffs, district attorneys, courts and community-supervision agencies that need electronic monitoring and GPS tracking of offenders.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "medium",
+  "evidence_url": "https://www.sentineladvantage.com",
+  "note": "Named customers in the homepage testimonials are Riverside County Sheriff's Department (CA), Canyon County Sheriff's Office (ID), and a chief attorney from the Wichita, Kansas District Attorney's office; the site claims use in 48 states. Every named buyer is a county or court agency, so sells_outside_government is no — but that 'no' rests on a thin site: there is no customers page or industries page, and customer information appears only in homepage testimonials, which is why confidence is medium rather than high. Our 'Corrections' category holds up; note the buying agency is usually a county sheriff or court, not a state DOC.",
+  "sells_outside_government_detail": ""
+ },
+ {
+  "id": "zenner-usa",
+  "name": "Zenner USA",
+  "buyer": "Water utilities, sold largely through a distributor network; the hydrant-meter page names municipalities and businesses as the users being billed for.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.zennerusa.com/hydrantmeters",
+  "note": "This site names no customer anywhere — no case studies, no logos, no customers page; the contact structure is distributors by state and regional sales managers, so they sell through channel. The only buyer language I could find on their own pages: the hydrant-meter page says the meters let 'municipalities and businesses' track and bill water usage from hydrants; the About page refers to 'the utilities we serve' and to water-utility tradeshows; the AMR/AMI page says the system is 'designed from the ground up for utility and industrial applications.' That is enough for yes on both questions but not for high confidence, and I would not claim any specific public customer. /about-us, /company and /water-meters all 404 — the live paths are /about and /products. Our 'Water' category is right.",
+  "sells_outside_government_detail": ""
+ },
+ {
+  "id": "stellic",
+  "name": "Stellic",
+  "buyer": "Colleges and universities — registrars, provosts, advisors and CIOs at large public universities, community colleges, R1 research institutions and small private colleges.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.stellic.com",
+  "note": "Customer logos and success stories are entirely higher education: public institutions include Florida State, University of Virginia, The Ohio State University, Indiana University, University of Nebraska, University of Utah, Santa Monica College and Johnson County Community College; private ones include Carnegie Mellon, Cornell, Duke, Johns Hopkins, Columbia, Wesleyan, Quinnipiac, TCU, Case Western and Colorado College. Under the house rule that colleges and universities are public buyers whether public or private, that makes sells_outside_government a no. Some customers are foreign (UNSW Sydney, University of Newcastle Australia, Qatar University), which is outside SLED geographically but still public. One correction to our record: 'IT & Administration' undersells it — this is higher-ed student-success, degree-audit and academic-planning software, and the buyer is the registrar/provost office, so a Higher Ed or Student Success category would fit better.",
+  "sells_outside_government_detail": ""
+ },
+ {
+  "id": "routeware",
+  "name": "Routeware",
+  "buyer": "Two distinct markets it addresses separately on its own site: city and county waste operations, and private waste haulers.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://routeware.com/",
+  "note": "The site is split into 'For Governments' (routeware.com/for-governments/) and 'For Haulers' (routeware.com/for-waste-haulers/), and claims 1,500 customers worldwide. Named public buyers: City of Atlanta, City of Denver, City of Austin, University of Michigan, and Falkirk Council in the UK. Named private buyers: Waste Pro and Casella Waste Systems, both commercial haulers. So this is unambiguously a both-sides vendor. Minor note: www.routeware.com 301-redirects to the bare http://routeware.com/, which is where I read this. Our 'Waste & Recycling' category is correct.",
+  "sells_outside_government_detail": ""
+ },
+ {
+  "id": "bs-a-software",
+  "name": "BS&A Software",
+  "buyer": "Local governments only — cities, townships, towns and counties buying financial management, HR, utility billing, community development and assessing/property tax software.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.bsasoftware.com/resources/case-studies/",
+  "note": "The homepage headline is ERP software designed for local government and claims 2,100+ organizations. The case studies page confirms it with named customers and nothing else: Big Rapids MI, Northville Township MI, New Buffalo MI, Lowell AR, North Little Rock AR, Streetsboro OH, Brainerd MN, Cape Canaveral FL, Cooper City FL, Gulf Breeze FL, Dahlonega GA, Woodstock GA, Easley SC, Angola IN, Chester NH, Greenfield WI, Overland MO and Cole County MO. Every one is a municipal or county government; no school district and no commercial customer appears. Heavy Michigan concentration, which matches their own 'a majority of Michigan municipalities' claim. Our 'Finance & ERP' category is right.",
+  "sells_outside_government_detail": ""
+ },
+ {
+  "id": "icc-innovation",
+  "name": "ICC Innovation",
+  "buyer": "Local jurisdictions — building departments, towns, boroughs and counties buying codification, ePermitting, electronic plan review and code-enforcement tools.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "cannot tell",
+  "confidence": "medium",
+  "evidence_url": "https://icc-cds.com/municity/",
+  "note": "The Innovation page itself is a portfolio index rather than a product page — it points at Digital Codes Premium, General Code (eCode360, eCode ALP, MapLink/ZoningHub), American Legal Publishing, and ICC Community Development Solutions (Municity, DigEplan, Laserfiche), plus ICC Online Learning and PRONTO testing. Its only buyer language is aimed at jurisdictions: enabling 'employees and citizens' to conduct business from anywhere, and providing 'your constituents' with options that help your community grow. Named public customers come from the Municity product page on ICC's own icc-cds.com: Southeast Ohio Building Department, Borough of Emmaus PA, Town of Dover NY, Town of Glenville, and the Government of the US Virgin Islands. I set sells_outside_government to 'cannot tell' deliberately: ICC's Digital Codes Premium and professional development are widely bought by architects, engineers and contractors too, but codes.iccsafe.org returned HTTP 403 so I could not confirm that on their own site, and no ICC page I could read names a private buyer. One caveat for the board: 'ICC Innovation' is a product-suite landing page inside the International Code Council's site, not a standalone company, and our 'Suppliers & Services' category does not describe it — this is govtech software (permitting, plan review, codification).",
+  "sells_outside_government_detail": ""
+ },
+ {
+  "id": "rain-bird",
+  "name": "Rain Bird",
+  "buyer": "Rain Bird sells irrigation equipment through six named customer segments on its own navigation - homeowners, landscape contractors, golf courses, agriculture/farms, public agencies, and commercial/sports-turf projects - so public agencies are one division of a much broader consumer and commercial business.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.rainbird.com/agency",
+  "note": "The homepage nav lists 'Public Agency' as a first-class customer segment alongside Homeowners, Landscape Professionals, Golf Course Irrigation and Agriculture, and rainbird.com/agency is a dedicated agency portal (training, rewards, water-efficiency, sports turf, and California's MWELO ordinance). That page names no individual city, parks department, school or water district as a customer, which is why confidence is medium rather than high - the segment is clearly real, the named references are not. Outside government is unambiguous: homeowners, golf courses and farms are not public buyers. Worth knowing for the board: Rain Bird is a manufacturer with a public-agency division, not a govtech vendor, so SLED is a minority of its business."
+ },
+ {
+  "id": "parkhub",
+  "name": "ParkHub",
+  "buyer": "ParkHub no longer exists under that name - parkhub.com 301-redirects to justpark.com/business, and the company's own rebrand post says the combined business serves stadiums and entertainment venues, airports, universities, parking operators, commercial real estate, hospitality and UK local authorities.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.justpark.com/business/blog/parkhub-rebrands-as-justpark",
+  "note": "IMPORTANT DATA ISSUE: https://parkhub.com and https://www.parkhub.com both return HTTP 301 to https://www.justpark.com/business/. ParkHub merged with UK-based JustPark and rebranded as JustPark in April 2025, so the board's company name and URL are both stale. Reading the successor's own site: the rebrand post names Rose Bowl (owned by the City of Pasadena), Las Vegas Convention Center (Las Vegas Convention and Visitors Authority, a public authority), Reno Tahoe International Airport (an airport authority) and US university campus parking - all public buyers - which is what supports sells_to_gov yes. It also names Mercedes-Benz Stadium and lists Parking Operators, Commercial Real Estate and Hospitality as segments, and the UK business page names Hilton, Sainsbury's and ASDA, so it plainly sells outside government too. The UK business page does list a 'Local Authorities & Public Sector' sector (/uk/business/sectors/local-authority), but that is the UK side. Confidence is medium only because no page under the ParkHub name survives to verify against."
+ },
+ {
+  "id": "recidiviz",
+  "name": "Recidiviz",
+  "buyer": "Recidiviz is a nonprofit that partners with state criminal justice agencies - its homepage names the Michigan, Colorado, North Dakota and Maine departments of corrections and claims experience across 20 states.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://recidiviz.org",
+  "note": "Every buyer named on the site is a state department of corrections; the site describes itself as a nonprofit that 'partners with criminal justice agencies,' so 'sells' is a loose fit but the buyer relationship is unambiguous and entirely state government. No commercial, private-prison or vendor customer appears anywhere on the homepage. Our 'Corrections' category is accurate. The platform is pitched as working 'alongside or in place of your current software,' i.e. it sits next to incumbent DOC case management systems."
+ },
+ {
+  "id": "overstory",
+  "name": "Overstory",
+  "buyer": "Overstory sells vegetation and wildfire-risk intelligence to electric utilities - its named customers are investor-owned utilities (PG&E, AEP, Eversource, ComEd, Portland General, Mississippi Power, Oklahoma Gas & Electric) and rural electric cooperatives (Holy Cross Energy, Sho-Me Power, Powder River, Central Virginia Electric, Inland Power), not government agencies.",
+  "sells_to_gov": "unclear",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.overstory.com/case-studies",
+  "note": "This one does not fit the board's premise well. Every US customer named on the homepage, case studies and /wildfire page is an investor-owned utility or a member-owned electric cooperative - both private entities, not public buyers. The only publicly-owned utilities named are foreign: BC Hydro (British Columbia crown corporation), Hydro Ottawa (owned by the City of Ottawa), Copel (Brazilian state-controlled) and Red Electrica (Spain). No US state, county, city, fire agency or land-management agency appears anywhere I read, so sells_to_gov is 'unclear' for SLED purposes rather than 'no' - the foreign public utilities are real public buyers, just not US state-and-local. Our 'Fire' category is defensible in subject matter (wildfire risk, /wildfire page) but misleading in buyer: the wildfire product is sold to utility vegetation-management teams, not fire departments."
+ },
+ {
+  "id": "clariti",
+  "name": "Clariti",
+  "buyer": "Clariti sells permitting, licensing and land-management software exclusively to local governments, naming the City of Los Angeles, City of Phoenix, Orange County CA, Dona Ana County NM, City of Albany NY, City and County of Honolulu, City of Santa Clarita and City of Tampa.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.claritisoftware.com",
+  "note": "Clean SLED-only vendor. The site tiers its products explicitly by government size - Enterprise for 'large local governments,' Launch for 'small to mid-sized local governments,' CivCheck for 'governments of all sizes' - which is a good example of house rule 2: the word 'Enterprise' here means a big city, not a commercial market. No private-sector buyer is named anywhere. Our 'Permitting & Licensing' category matches the site exactly."
+ },
+ {
+  "id": "concourse-tech",
+  "name": "Concourse Tech",
+  "buyer": "Concourse Tech sells to public institutions only - its own words are 'State agencies, cities and counties, school districts, colleges and universities, special districts,' and it claims more than 100 public sector organizations 'from rural towns to enormous state agencies.'",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://concoursetech.com/case-studies",
+  "note": "The case studies confirm it: City of Owosso MI, Rides Mass Transit District IL, Houston-Galveston Area Council, State of Oklahoma OMES, a regional transit authority, a county parks department, an urban school district, a community college, a state treasury, a state judiciary and a state water resources board. Not one private business appears. Note the product footprint is far wider than our 'Procurement & Payments' category - the site lists twelve solution areas including permitting, legislative/public meetings, utility billing, courts and public safety, parks and recreation, grants, and asset management. Most case studies anonymize the customer ('a West Coast city,' 'a state treasury department'), so the named-logo evidence is thinner than the volume of case studies suggests."
+ },
+ {
+  "id": "invita-healthcare-technologies",
+  "name": "InVita Healthcare Technologies",
+  "buyer": "InVita sells mainly to healthcare organizations - hospitals and health systems, blood and plasma centers, organ/eye/tissue donation organizations, ambulatory surgery centers and pharmaceutical companies - with one forensic product line aimed at 'crime labs and CODIS labs' and sexual assault kit tracking programs.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.invitahealth.com/who-we-serve/",
+  "note": "Our 'Police' category is a stretch and should probably be revisited. Three of InVita's four solution lines are healthcare (blood management, donation/transplant, tissue/implant); only the STACS forensic DNA line touches public safety, and even there the stated buyer is the crime lab and CODIS lab, not a police department - the site never uses the words 'police,' 'law enforcement,' 'medical examiner' or 'coroner' on the pages I read. Government is inferable because US CODIS labs and statewide sexual assault kit tracking programs are state/local agencies, but InVita does not say so itself, hence medium confidence on sells_to_gov. Outside government is beyond doubt: named customers include Mayo Clinic, Merck, New York Blood Center, OneBlood, ProMedica, Atlantic Health System, Versiti and Donor Network of Arizona. Note /solutions/dna-forensic-sample-management/ 404s; the working path is under /who-we-serve/."
+ },
+ {
+  "id": "nutanix",
+  "name": "Nutanix",
+  "buyer": "Nutanix sells cloud/HCI infrastructure across ten named industries - financial services, retail, manufacturing, automotive, healthcare, media, pharma, legal, service providers and government and education - with a dedicated state-and-local page naming County of San Mateo, Harris County TX, City of Cape Coral, City of Westfield MA, California Office of Emergency Services and Bay Area Rapid Transit.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.nutanix.com/solutions/government-and-education/state-local",
+  "note": "Both answers are firmly documented on their own pages. The state-and-local page names six SLED customers including a transit authority (BART) and a state emergency-management agency, and the site splits Government and Education into Federal, State and Local, and Education sub-pages. Equally clearly commercial: Home Depot, Caterpillar, Vodafone, Edward Jones, Westgate Resorts and London Gatwick Airport appear on the homepage, and it claims 32,000+ companies. SLED is one vertical inside a large global enterprise vendor, not the business - relevant if the board wants to flag how much of a company's hiring is actually public-sector."
+ },
+ {
+  "id": "flash",
+  "name": "FLASH",
+  "buyer": "FLASH sells parking and mobility technology to seven named verticals - Municipalities, Airport, Higher Education, Healthcare, Venues & Events, Commercial Real Estate (REITs) and New Build/Design - so public and private buyers sit side by side on the same page.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.flashparking.com",
+  "note": "Public evidence is specific, not just a vertical label: Denver International Airport ('144 lanes in only 22 days'), Oakland California (446 EV chargers funded by a California Energy Commission grant), and more than 30 Philadelphia locations launching Express Pay. Commercial evidence is equally plain - Commercial Real Estate/REITs, hospitality valet operations, and a Waze integration covering 30K locations. Our 'Parking & Ground Transport' category matches. Note this is the same market as the ParkHub/JustPark record, so the two entries overlap."
+ },
+ {
+  "id": "emergency-reporting",
+  "name": "Emergency Reporting",
+  "buyer": "Emergency Reporting is now part of ESO and its own site only says it serves 'first responders' across 'the entire health and public safety spectrum,' while ESO's site organizes its buyers into four segments - Fire, EMS, Hospital and Government - and names South Snohomish County Fire Rescue on the fire page.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "cannot tell",
+  "confidence": "medium",
+  "evidence_url": "https://emergencyreporting.com/",
+  "note": "DATA ISSUE: emergencyreporting.com is now a transition page - no products, no customers, no solutions nav - that states Emergency Reporting is part of ESO and directs visitors to ESO.com and an ESO demo form. The board should probably fold this record into ESO or mark it acquired. Sells_to_gov is yes on the strength of ESO's Fire and Government segments plus the one named fire customer, South Snohomish County Fire Rescue, a public regional fire authority. Sells_outside_government is 'cannot tell' deliberately: Emergency Reporting's own pages name no buyer at all, and the only hospital named on ESO's site is Children's Hospital Colorado, a private nonprofit - so the parent does appear to sell beyond government, but the fire/EMS records product this record is about serves public fire and EMS agencies. A human should decide whether to score the parent or the product."
+ },
+ {
+  "id": "embross",
+  "name": "Embross",
+  "buyer": "Airlines and airport/port authorities buy Embross self-service kiosks, bag-drop and biometric boarding hardware — the homepage names Delta Air Lines, Port of Oakland, Calgary Airport, Billy Bishop Airport, Aeroport Marseille Provence and the Turks and Caicos Islands Airports Authority.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.embross.com",
+  "note": "Split buyer. Public side is real but is airport and port authorities (Port of Oakland, Turks and Caicos Islands Airports Authority) rather than states, counties or school districts; commercial side is airlines, with Delta Air Lines called out for 'the first biometric terminal in the U.S.' The case-studies index (https://www.embross.com/case-studies/) is mostly non-US airports (Nuremberg, Deauville-Normandie, Greenland, Ivory Coast, La Reunion, Indian airports), so US SLED exposure looks narrow — essentially airport and port authorities. Our 'Terminal & Passenger Experience' category is accurate."
+ },
+ {
+  "id": "tantalus-systems",
+  "name": "Tantalus Systems",
+  "buyer": "Community-scale electric utilities — the homepage says it serves 'public power and electric cooperative utilities' and claims more than 320 utility partners; case studies name Farmersville Utilities & Public Works, Estes Park Light and Power, BrightRidge, Highland (IL), BEA, La Plata Electric Association and Appalachian Electric Coop.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.tantalus.com",
+  "note": "Public power utilities are city- or district-owned, so this is squarely a local-government buyer (Farmersville Utilities & Public Works, Estes Park Light and Power are city utilities). The 'yes' on selling outside government is a technicality worth reading carefully: the other half of the named base is electric cooperatives (La Plata Electric Association, Appalachian Electric Coop, Tri-County), which are member-owned private nonprofits, not public authorities. There is no commercial or investor-owned market named — the site explicitly positions against large IOUs. If the board treats co-ops as public-adjacent, this is effectively a pure public-power vendor."
+ },
+ {
+  "id": "oclc",
+  "name": "OCLC",
+  "buyer": "Libraries of every type, as members rather than ordinary customers — the site's own navigation splits them into public, academic, school, research, special libraries and groups/consortia.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.oclc.org/en/home.html",
+  "note": "sells_to_gov is not in doubt: public libraries, K-12 school libraries and public universities are named buyer categories with their own landing pages. The 'yes' on outside-government is marginal and I want to flag it rather than let it stand plainly. The only non-public buyers I could find named anywhere are on the special-libraries page (https://www.oclc.org/en/special.html): The Huntington Library, described there as a private research library, and the Victoria and Albert Museum's National Art Library. Everything else on that page is also public (CSIC and CSIRO are national research councils; the Harry Ransom Center is at UT Austin). So there is no commercial market here at all — private nonprofit research libraries and museums are the entire exception. If the board's rule counts 'libraries' as public regardless of ownership, this should read 'no'. The homepage names no specific customer; it describes itself as 'a member-driven library organization'."
+ },
+ {
+  "id": "kloudgin",
+  "name": "KloudGin",
+  "buyer": "Municipalities and public-sector utility operators — the public-sector page promises 'work and asset management solutions for municipalities and the public sector' and the only named customer anywhere on the site is the City of Pasadena, for water and electric asset and construction work management.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "cannot tell",
+  "confidence": "high",
+  "evidence_url": "https://kloudgin.com/public-sector/",
+  "note": "Strong public-sector evidence, thin evidence either way on a commercial market. KloudGin runs vertical pages for water/wastewater, gas, electric, telecom and refuse, and in the US gas and electric verticals would normally mean investor-owned utilities — but the site never names one. The gas page says only 'best in class work and asset management solutions for gas utilities' with no customer. The telecom and refuse pages sit under the municipal/public-sector umbrella, not as commercial telco offerings. The one private company named, Black & Veatch, is announced as a delivery partner, not a customer. So: certainly sells to local government, and I cannot tell from their own site whether they also sell to private utilities. Our 'Fleet & Asset Mgmt' category is roughly right but understates it — this is field service plus enterprise asset plus construction work management."
+ },
+ {
+  "id": "ease-health",
+  "name": "Ease Health",
+  "buyer": "Behavioral health treatment organizations — addiction treatment centers, MAT clinics, IOP/PHP programs, residential facilities, outpatient practices and community mental health centers; the homepage names Youth Health Associates, Sandia Crest, Christian Counseling Associates, Sophros, Canopy Pines, Grand Union Holistic, American School for the Deaf and MONARCH, Inc.",
+  "sells_to_gov": "unclear",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://easehealth.com",
+  "note": "This one does not look like a SLED vendor on its own evidence, and I think that is a finding worth surfacing. The site is a CRM/EHR/RCM platform sold to provider organizations; the solutions page (https://easehealth.com/solutions) lists only facility types, and the three case studies (https://easehealth.com/case-studies) are Christian Counseling Associates, Treatment Trends and NOW Counseling — all private or nonprofit providers. No county behavioral health department, state agency or public health system appears anywhere I looked. 'Community Mental Health Centers' is the closest thing, and some CMHCs are county-run, but the site never says so. American School for the Deaf and MONARCH, Inc. are private nonprofits, not public agencies. Our 'Behavioral Health' category is correct as a subject matter, but the buyer is private-sector, so I set sells_to_gov to unclear rather than yes."
+ },
+ {
+  "id": "aurelian",
+  "name": "Aurelian",
+  "buyer": "911 centers — PSAPs and emergency communications centers, plus sheriff's offices; the customers page names Volusia Sheriff's Office, Snohomish County 911, Kalamazoo County, Hamilton County 911, Cowlitz 911, Summit ECC, Akron Safety Communications, PenCom, MACC 911, MACECOM and South Summit Dispatch.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.aurelian.com/customers",
+  "note": "As pure a local-government buyer as this list gets — every named customer is a county 911 center, a sheriff's office or a municipal dispatch agency, and the products (AVA for non-emergency call handling, CORA for live call guidance) have no non-government use case on the site. Two housekeeping notes for the board. First, the URL we carry is stale: https://www.aurelian.io 308-redirects to https://www.aurelian.com/, so the record should be updated. Second, our category says 'EMS' — the site is about PSAP/911 dispatch generally, covering law enforcement, fire and EMS calls, so '911 / Emergency Communications' would describe it better."
+ },
+ {
+  "id": "recdesk",
+  "name": "RecDesk",
+  "buyer": "Recreation organizations — municipal parks and recreation departments first, alongside aquatic centers, community centers, schools and universities, homeowners associations and nonprofits.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.recdesk.com",
+  "note": "Parks and rec departments are the lead segment on the homepage and have their own page (/parks-and-recreation/), so the local-government buyer is clear. The outside-government answer rests on a dedicated HOA page (https://www.recdesk.com/hoa/), which says 'Homeowners Associations across the country rely on RecDesk' for managing pools, tennis courts, cabanas and resident memberships — an HOA is a private community association, not a public body — plus a named nonprofit segment. Customer names on the site are thin: testimonials are first-name only with town references (Goffstown, Somerton), and there is no case-study library. Our 'Recreation Management' category is accurate."
+ },
+ {
+  "id": "aidash",
+  "name": "AiDash",
+  "buyer": "Electric and gas utilities buying satellite-based vegetation management, asset inspection and wildfire/storm risk software; the customer-stories page names Entergy, Xcel Energy, National Grid, Alabama Power, PNM, SWEPCO, El Paso Electric, Avista, Nova Scotia Power alongside Omaha Public Power District, Klickitat PUD, Trinity PUD and several rural co-ops.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.aidash.com/customer-stories/",
+  "note": "Genuinely mixed, and the commercial half is the larger half. The public buyers are real SLED entities — Omaha Public Power District is a political subdivision of Nebraska, and Klickitat and Trinity PUDs are public utility districts, which are special districts. But most named logos are investor-owned utilities (Entergy, Xcel, National Grid, Alabama Power, Avista), which are private companies. The homepage also lists mining and transportation as served industries, which pushes further commercial. Our 'Grid & Energy' category fits; a board reader should know that a job here is more likely to be an IOU account than a municipal one."
+ },
+ {
+  "id": "sovra",
+  "name": "SOVRA",
+  "buyer": "Two sides of the same marketplace: public procurement teams — states, counties, cities, school districts and universities — and, on paid subscriptions, the private suppliers bidding into them.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.sovra.com",
+  "note": "The strongest SLED record in this batch. The homepage names more than twenty public buyers including the states of Oregon, New Jersey, Nevada, Massachusetts and Illinois, Fulton County, Pima County, Bexar County, Dutchess County, the cities of Knoxville, Boulder, Pensacola and Newburgh, Albany County Airport Authority, Dearborn Public Schools, Georgetown ISD, Texas A&M San Antonio, Colorado State, Oakland University and Seminole State College. The outside-government 'yes' is not a commercial pivot — it is the supplier side of the same network: https://www.sovra.com/pricing-suppliers/ sells private vendors Bidnet Direct subscriptions at $100 to $330 a month and MERX for Canadian tenders, so companies pay to find public bids. Note that a meaningful share of named buyers are Canadian (City of Ottawa, Newfoundland & Labrador, MERX), so not every role will be US SLED. Our 'Procurement & Payments' category is correct."
+ },
+ {
+  "id": "starbridge",
+  "name": "Starbridge",
+  "buyer": "Go-to-market teams at private companies that sell into government and education — sales leaders, SDR/BDR and account-executive teams; named customers are Fortinet, Airtable, Instructure, Clever, MagicSchool, Aramark, Bobcat, Ramp, Zencity, Mark43, McGraw Hill, Panorama Education, ClearGov, SimpliGov and similar vendors.",
+  "sells_to_gov": "no",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://starbridge.ai/customer-testimonials",
+  "note": "This contradicts our record and the board should look at it. We have Starbridge filed under 'Procurement & Payments', which reads as software an agency buys. It is the opposite: a sales-intelligence and RFP-discovery platform sold to the vendors chasing public contracts. The site says it serves '500+ GTM teams selling to government agencies, K-12, and higher education', and every named customer on the testimonials page is a private company — several of them other govtech vendors (Mark43, Zencity, ClearGov, SimpliGov, GovWell, Kaizen Labs). Agencies are the subject of Starbridge's data, not its buyers; I found no government agency shown as a paying customer. I set sells_to_gov to 'no' rather than 'unclear' because the site is explicit and consistent about who pays. It is still govtech-adjacent, and jobs there are public-sector-facing sales roles, so the board may want to keep it — but not as a vendor that sells to SLED."
+ },
+ {
+  "id": "monday-com",
+  "name": "Monday.com",
+  "buyer": "Commercial enterprises and SMBs first — Coca-Cola, McDonald's, Canva, Universal Music Group, Lionsgate, Carrefour — with a dedicated public-sector vertical that claims 800+ state and local government agency clients.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://monday.com/w/industries/public-sector",
+  "note": "Horizontal work-management platform, not a govtech company. The homepage lists Government alongside Retail/CPG, Technology, Manufacturing, Advertising and Media as industries, and names only commercial logos. The public-sector page claims '800+ state and local government agency clients' and 'Trusted by government organizations across the nation', but names exactly one public customer: a testimonial from the Sr. Director of Enterprise PMO at San Diego County Office of Education. It also cites NASCIO and NACo as partnerships, not customers. So SLED is real but is one vertical of a mostly commercial business — our 'IT & AI Platforms' category is fair, but a job seeker should not expect a government-focused employer."
+ },
+ {
+  "id": "outsight-sa",
+  "name": "Outsight SA",
+  "buyer": "Operators of large physical sites — airports first (Dallas Fort Worth, Rome Fiumicino/Aeroporti di Roma, Groupe ADP), plus a named US city (City of Bellevue, smart intersections), alongside hospitals, retail, quick-service restaurants, manufacturing and distribution centers.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://outsight.ai",
+  "note": "WebFetch and curl both got a Cloudflare 403 on this domain; I read the homepage through a real browser instead, so the evidence is first-hand. Industry list on the homepage is explicitly split into Smart Places (Hospitals, Retail, Tourism & Stadiums, Quick Service Restaurants), Transportation Hubs (Airports, Railway Stations, Ports & Seaways, Public Transport), Industrial & Logistics (Manufacturing, Distribution Centers, Energy) and Government (Smart Cities, Highways & Roads, Multi-Modal Transportation, Parking Monitoring, Curbside & Intersections). Public buyers are named directly: City of Bellevue on smart intersections, and DFW Airport (an airport authority) for 'the World's Largest 3D LiDAR Deployment'. Our 'Terminal & Passenger Experience' category matches the aviation half but understates a company that is equally industrial and retail, and it is a French firm whose flagship references are European airports."
+ },
+ {
+  "id": "simpligov",
+  "name": "SimpliGov",
+  "buyer": "State and local government agencies only — State of California, State of New Jersey, City of San Jose, City of Cupertino, Guilford County NC, and the California Community Colleges Board of Governors.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://simpligov.com",
+  "note": "Purely public-sector. Positions itself as 'The platform government programs run on'. Solutions are organized by government function on both the constituent side (vehicle & transportation, licensing & permitting, health & human services, public safety & justice) and the internal side (HR, procurement & finance, legal & compliance, IT & administration). No commercial customer, industry or use case appears anywhere on the homepage. Our 'Citizen Services' category fits, though the internal-operations half (HR, procurement) is just as prominent as citizen-facing services."
+ },
+ {
+  "id": "iworq-systems",
+  "name": "iWorQ Systems",
+  "buyer": "Cities and counties — specifically community development and public works departments; North Ogden, UT is the one named client.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://iworq.com",
+  "note": "Local government only, and says so plainly: 'Local Government Software Solutions' and 'Management Software Built for Community Development & Public Works Departments'. Reinforced by '100% U.S. Owned & Operated' and hosting on AWS GovCloud. No private-sector buyer named anywhere. Our 'Citizen Services' category is defensible but the product is really departmental operations software for public works and community development (permits, code enforcement, asset management) rather than a resident-facing portal."
+ },
+ {
+  "id": "authorium",
+  "name": "Authorium",
+  "buyer": "Government agencies — state and local first (CalPERS is the named customer), plus federal work with the U.S. Air Force.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://authorium.com",
+  "note": "Public-sector only; no commercial buyer named. Describes itself as 'A single platform to transform documents and data into operational value and connect the flow of public funds across mission-critical government functions', and says roughly 60% of its staff have worked in government. FINDING: our category 'HR & Workforce' looks wrong. The site's named functions are procurement, contract lifecycle management, budget requests, grants management and legislative analysis — that is procurement/contracting and grants, not HR. Worth re-categorizing. Also note the federal U.S. Air Force work sits outside SLED, though CalPERS is squarely state."
+ },
+ {
+  "id": "ems-linq",
+  "name": "EMS LINQ",
+  "buyer": "K-12 school districts first — Culver City, Eagle County, Hernando, Mesa, Willard, St. Vrain Valley School District CO — plus state education agencies.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.linq.com",
+  "note": "Entirely K-12 public education. Mission line on the homepage is 'Feed every kid. Pay every teacher. Use every dollar.' Buyer personas are named by district role: nutrition leaders, finance and business operations leaders, HR leaders, superintendents, technology directors. Product lines are school nutrition, K-12 ERP ('budgets, payroll, and more with tools built for the way K-12 districts actually work') and payments. No non-education buyer appears. Our 'Operations & SIS' category is close but slightly off: LINQ is nutrition + ERP + payments, not a student information system."
+ },
+ {
+  "id": "classlink",
+  "name": "ClassLink",
+  "buyer": "K-12 school systems first (Rowan-Salisbury Schools, Collierville ISD, Harwood Unified Union SD, South Heart Schools), plus colleges and community colleges (Cedar Crest College, Laramie County Community College, Dunwoody College of Technology) and statewide education agencies.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.classlink.com",
+  "note": "Education only. Homepage claims '3,000+ School Systems', '25M+ Students & Staff', '50 States', '42 Countries' and says the products are 'built for education'. Beyond K-12 the site carries a higher-ed overview naming colleges and community colleges and a statewide solution plus a StateLink product for state education agencies — all still public/institutional buyers under the SLED definition, so nothing here counts as an outside-government market. Our 'Operations & SIS' category fits loosely; the actual product is identity, single sign-on and rostering rather than a student information system."
+ },
+ {
+  "id": "purvis-systems",
+  "name": "PURVIS Systems",
+  "buyer": "City and county fire, EMS and 911 dispatch agencies (FDNY, Boston Fire, Washington DC, Jacksonville, Naperville IL, Charleston County SC, Williamson County TX) alongside a long-running federal defense business with the U.S. Navy, NIH and Fort Detrick — and, on the defense side, private prime contractors and small businesses.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.purvis.com/clients/",
+  "note": "Two distinct businesses. The SLED half is fire station alerting and dispatch for municipal and county public-safety agencies — 'trusted advisor to FDNY for 45+ years', Charleston County covering '2 dispatch locations, and 75+ fire & EMS departments'. The defense half is federal: 'trusted partner to the U.S. Navy for over 40 years', NIH, Fort Detrick, and CMMC Level 2 certification. The only non-public buyer is on the defense page, which says PURVIS is 'Trusted by the U.S. Navy and Federal Agencies, as well as large prime contractors and small businesses' — those primes are private companies, which is why sells_outside_government is yes, but it is a federal-supply-chain relationship, not a commercial market. Our 'EMS' category captures only the fire/EMS side."
+ },
+ {
+  "id": "rhombus-systems",
+  "name": "Rhombus Systems",
+  "buyer": "Any organization with buildings to secure — retail, manufacturing, healthcare, finance and banking, hotels and hospitality, commercial real estate, construction, storage and warehouse, gyms, places of worship — alongside education (Middlebury Community Schools, Jesuit High School, Los Angeles Film School) and government (City of Sacramento, South Mississippi Housing Authority).",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://rhombus.com/industries/government/",
+  "note": "Broad-market cloud video security and access control, not a school-safety specialist. The site's own industries menu runs to fourteen verticals of which only Education and Government are public. The government page names small public buyers — Ventura County Air Pollution, Beaver County Tourism, Big Fork Water and Sewer, Village of Palm Springs FL, Dawsonville GA, City of Centerville — and generically targets 'city halls', 'courthouses', 'police stations' and 'fire departments'; a City of Sacramento case study exists too. FINDING: our 'School Safety' category is too narrow. K-12 is a genuine and heavily marketed segment (many school-security blog posts, campus-safety events, FETC), but it is one vertical among many in a company that sells just as hard to retail and manufacturing."
+ },
+ {
+  "id": "objective-corporation",
+  "name": "Objective Corporation",
+  "buyer": "Government first — city and regional councils, state and national agencies and regulators (Tauranga City Council, Redland City Council, Salford City Council, Queensland Police, NSW Premier and Cabinet, Scottish Government, Welsh Government, IP Australia, Land Information New Zealand, Wage Inspectorate Victoria) — plus a separate financial-services line sold to investment, fund and asset managers (HUB24, Future Fund) and other regulated companies.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.objective.com/solutions/investment-reporting",
+  "note": "Majority public sector, but genuinely not exclusively: the Objective Keystone line is sold to 'Investment, Fund and Asset Managers' and to 'financial services companies and regulated entities worldwide', with solutions for investment reporting, product disclosure, design and distribution obligations and ESG disclosure. ResMed (healthcare manufacturer) also appears as a customer. FINDING for the board: this is an Australian company and nearly every named customer is Australian, New Zealand or UK — councils, state governments, national regulators. The site lists a North America region alongside Australia, NZ, Singapore and the UK, but no US state or local customer is named on the pages I read, so US SLED presence looks thin. Our 'Permitting & Licensing' category matches real product lines (planning and building solutions, statutory planning, electronic plan review, licensing) but the company is much wider than that — records management, information governance and regulatory tech."
+ },
+ {
+  "id": "nearmap",
+  "name": "Nearmap",
+  "buyer": "Aerial imagery and property-data subscriptions sold to local, state and federal government agencies (City of Grapevine, City of Sioux Falls, Oklahoma County, Village of Huntley, City of Southfield, Eastvale) and, in equal measure, to P&C insurers, architecture/engineering/construction firms, telecom, utilities, solar, roofing and real estate companies.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.nearmap.com/solutions/government",
+  "note": "Their government page names seven municipal/county customers by name and quotes a City of Grapevine GIS Manager; the homepage claims \"1,500 government agencies worldwide.\" But government is one of ten industries on their industries page - Insurance, AECO, Telecommunications, Roofing, Utilities, Solar, Real Estate, Property Services and Transportation are the rest, and the homepage brags that \"All 10 of the top 10 P&C carriers choose Nearmap.\" So genuinely dual-market, not a govtech pure-play. Category flag: our record files them under Strategy & Performance, but the site sells aerial imagery, AI feature detection and GIS basemaps - a mapping/imagery product, closer to GIS than to strategy or performance management."
+ },
+ {
+  "id": "seneca",
+  "name": "Seneca",
+  "buyer": "Autonomous fire-suppression drone systems sold to fire agencies (Aspen Fire, San Bernardino County Fire, San Mateo County) and alongside them to real estate developers, HOAs and utilities protecting private property.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.seneca.com/",
+  "note": "One sentence on their site does all the work: \"Seneca works with fire agencies, real estate developers, HOAs, and utilities to protect properties and ecosystems from destructive fires.\" Public side is real and named - endorsement quotes from the Aspen Fire chief and the San Bernardino County Fire chief, plus CALFIRE and a San Mateo County recruit academy. Private side is equally explicit, so the non-government answer is a clear yes rather than a guess. Other names on the page (Palantir, Watch Duty, Convective Capital, Red Sky Summit) read as partners and investors, not buyers."
+ },
+ {
+  "id": "payit",
+  "name": "PayIt",
+  "buyer": "State and local government agencies only - city and county treasurers, tax assessors and finance directors, state DMVs and conservation/natural-resources departments, court clerks and municipal utility departments.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.payitgov.com",
+  "note": "The cleanest record in this batch. Site's own words: \"PayIt is a customer experience and payments platform for state and local government.\" Named customers are all public - Harris County Tax Assessor-Collector, North Carolina DMV, Minnesota DNR, Missouri Department of Conservation, Arkansas Game and Fish Commission, Guilford County NC, City of Grand Rapids MI, City of Columbia MO, and the Kansas iKan state system. Not one commercial buyer appears anywhere on the page. Matches our Procurement & Payments category exactly."
+ },
+ {
+  "id": "securly",
+  "name": "Securly",
+  "buyer": "K-12 school districts - named district customers include Wichita Public Schools, Elgin School District U-46 (IL), Sheboygan Area School District (WI), Howard-Suamico School District (WI), Everett Area School District (PA) and Massac Unit School District #1 (IL).",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.securly.com",
+  "note": "Homepage and about page both frame the entire business as K-12: \"27,000+ Schools,\" \"20M+ Students supported,\" \"K-12 schools keep their students safe.\" Every named customer is a public school district, which is a public buyer, so sells_outside_government is no. One thing worth flagging rather than hiding: Securly Home is a parent-facing app, and parents are not government. I tried the parents page and the Securly Home product page to see whether parents pay directly and neither states who pays - the product is described as controlling \"your child's school device,\" i.e. reaching parents through the district's deployment rather than as a retail purchase. I did not find a consumer price anywhere on the site, so I am not counting parents as a separate buyer."
+ },
+ {
+  "id": "acusensus",
+  "name": "Acusensus",
+  "buyer": "State and local traffic-enforcement agencies - North Carolina State Highway Patrol, Arkansas DOT, the State of Connecticut, South Lake Minnetonka Police Department, plus programs in Kentucky and Georgia; internationally the New South Wales and Queensland governments and Suffolk Police in the UK.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.acusensus.com/united-states/",
+  "note": "Their US page names public agencies and nothing else: \"North Carolina State Highway Patrol engaged Acusensus in a state-wide Commercial Motor Vehicle (CMV) enforcement program,\" a Connecticut \"five-year agreement... to deliver a state-wide automated speed enforcement program,\" and the Arkansas Speed work-zone program with ARDOT. They also say they have deployed \"in 20 states through demonstrations, pilot programs, or contractual engagements.\" Buyers skew state-level (highway patrols and DOTs) with at least one municipal police department; no commercial customer appears anywhere. Good fit for our Streets category."
+ },
+ {
+  "id": "gamechanger",
+  "name": "GameChanger",
+  "buyer": "Youth sports families and volunteer coaches - the app is free for coaches and team staff, and parents, guardians, family members and fans pay a consumer subscription starting at $3.33/month.",
+  "sells_to_gov": "unclear",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://gc.com",
+  "note": "This is a consumer subscription business, not a public-sector one. Their own FAQ: \"All GameChanger features are completely free for Coaches and Staff to use for their team\" and \"For families who want more, additional features for Parents/Guardians, Family Members, and Fans... are available with a monthly or annual subscription starting as low as $3.33/month.\" The organizations page talks about leagues, tournaments and travel orgs and about admins scheduling games, but names no buyer type at all - no parks and recreation department, no school district, no high school. Named affiliations (MLB, Little League, USA Baseball, USA Softball) are private and nonprofit governing bodies, not government. I am leaving sells_to_gov at unclear rather than no because municipal rec leagues plainly use the app and nothing on the site rules that out - but the site itself never names a public buyer, and the revenue clearly comes from families. Worth a second look before this stays on a SLED board under Youth Sports & Leagues."
+ },
+ {
+  "id": "selux",
+  "name": "Selux",
+  "buyer": "Architectural and street lighting sold into public projects (Rittenhouse Square Park, East River State Park, Lincoln Park Long Beach, Denver International Airport, Kona International Airport, Vancouver Fraser Port Authority, White Plains Station) and into private commercial work (T-Mobile CSOC, Heineken Headquarters, Pokemon office, Cabana Bay Beach Resort, Gordon Ramsay Steak).",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "high",
+  "evidence_url": "https://www.selux.us/usa/en/cases",
+  "note": "www.selux.com redirects to www.selux.us for the US site; the project gallery there is the real evidence. Public projects are abundant and specific - city parks, two airports, a port authority, a transit station, plus college campuses (Wellesley College, Emily Carr University, Western Technical College) - and they market Smart City Ready poles and a \"Lighting for Education\" line, with Buy American positioning that reads as written for public procurement. But corporate offices, a resort and a restaurant are on the same page, so the commercial half is not a guess. One practical caveat for the board: they are a luminaire manufacturer selling through specifiers, lighting designers and distributors, so the public agency is often the project owner rather than the direct purchaser."
+ },
+ {
+  "id": "paynearme",
+  "name": "PayNearMe",
+  "buyer": "Mostly commercial billers - auto and consumer lenders, credit unions, buy-here-pay-here dealers, mortgage servicers, iGaming and sports betting operators, and law firms; named customers include OneMain Financial, United Auto Credit, CAR Financial Services, Northwoods Automotive and FanDuel. Their one public-sector vertical is tolling, where The Toll Roads of Orange County is the named customer.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://home.paynearme.com/industries/toll-operators/",
+  "note": "paynearme.com redirects to home.paynearme.com. The site lists seven verticals and six are plainly commercial: Auto & Consumer Lending, Credit Unions, iGaming, Buy Here Pay Here, Mortgage Servicing and Law Firms. There is no government vertical. The only SLED-relevant one is Tolling, which addresses \"toll authorities\" and \"toll operators\" and features The Toll Roads of Orange County - operated by a public joint-powers toll authority, which our own rules count as a public buyer, though the page itself never calls it government. That is why I set sells_to_gov to yes but confidence to medium: the public read depends on knowing what The Toll Roads is, not on the site saying so. Worth flagging against our Procurement & Payments category - this is a consumer-finance payments company with a tolling side, not a government payments platform like PayIt."
+ },
+ {
+  "id": "navblue",
+  "name": "NAVBLUE",
+  "buyer": "Airlines and aircraft operators - named customers on the live site are Corsair, Japan Airlines, Hong Kong Air Cargo and AirAsia. No airport, air navigation service provider or government aviation authority is named as a buyer anywhere I could read.",
+  "sells_to_gov": "unclear",
+  "sells_outside_government": "yes",
+  "confidence": "medium",
+  "evidence_url": "https://www.skywise.com/",
+  "note": "Important change: www.navblue.aero no longer serves its own site. Every URL I tried, the root and individual product and news pages, 301-redirects to www.skywise.com - NAVBLUE has been merged into Skywise, \"an Airbus digital services company,\" and the brand is being absorbed. So the website in our record is effectively dead and should be updated. Reading the surviving site, the only customers named are commercial airlines, and the positioning line is about \"all operators, including those with non-Airbus fleets\" - operators, not agencies. NAVBLUE's older boilerplate described serving \"airlines, airports and Air Navigation Service Providers,\" which would be SLED-relevant since US airport and port authorities are public, but I only saw that in a search snippet and could not confirm it on any page the site still serves, so I am not treating it as evidence. Category flag: our Airfield & Operations label fits the old airport/ATM business, not the airline flight-operations software the live site actually sells."
+ },
+ {
+  "id": "devnet-inc",
+  "name": "DEVNET Inc",
+  "buyer": "County government offices and municipal assessors - named customers are McLean County IL IT, Piatt County IL Clerk and Recorder, Bond County IL Clerk and Recorder, Morgan County IL GIS, the Wauwatosa WI Assessor, and the Oakland County MI Treasurer.",
+  "sells_to_gov": "yes",
+  "sells_outside_government": "no",
+  "confidence": "high",
+  "evidence_url": "https://www.devnetinc.com/about/testimonials/",
+  "note": "A government-only vendor. Their Edge platform page says \"One solution to serve government\" and describes opening records to \"the public, local offices, outside agencies and partner organizations.\" Every named customer across the homepage and testimonials page is a county office or a city assessor, and the product line - CAMA and assessment administration, tax billing and collection, records management, permitting and zoning, tax bill printing and mailing - only makes sense for a county courthouse. No commercial buyer appears anywhere. Mild category note: we file them under Finance & ERP, which is defensible for the tax billing and collection side, but the core of the product is property assessment and land records rather than general government ERP."
  }
 ]
