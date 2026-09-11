@@ -173,6 +173,15 @@ def looks_like_a_name(s: str, host: str | None = None) -> bool:
         return False
     if s.count(".") > 2 or s.startswith(("http", "©", "#")):
         return False
+    # AN EMAIL ADDRESS IS NOT AN EXHIBITOR, and it is worse than noise here.
+    # Association footers are full of them, and this project keeps addresses
+    # off the tracked side of the line entirely, so staging one puts a
+    # contact detail into a committed file. Caught by the address guard on
+    # 2026-09-11, after five association footers put seven of them into three
+    # capture files - and caught a second time when this very comment quoted
+    # two of them as examples.
+    if "@" in s and re.search(r"[\w.+-]+@[\w-]+\.[A-Za-z]{2,}", s):
+        return False
     # A name has letters. A price, a booth number and a date do not qualify.
     if not re.search(r"[A-Za-z]{2}", s):
         return False

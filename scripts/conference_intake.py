@@ -143,8 +143,18 @@ def main() -> int:
     # command that would turn them into suppliers and research candidates.
     # Refused here as well as in the classifier, because a person running this
     # by hand on one file skips the classifier entirely.
-    if staged.get("quality") == "menu":
-        print(f"refusing {a.file}: this capture is graded `menu` - it reads as "
+    # `doubtful` IS REFUSED TOO. It means "this reads as the association's own
+    # pages" - the same finding as `menu`, reached by a different branch - and
+    # nothing enforced it. Measured on the seven floors swept 2026-09-11: five
+    # captured 233 names between them, every one graded doubtful by the old
+    # rule and menu by the new one, and every one was navigation. NACE gave
+    # their office address, Animal Care Expo gave "Cats", IMLA gave a staff
+    # member, and SNA ANC gave a LOGIN PAGE - "Apple Safari", "Forgot
+    # Password". A grade that says "probably not a floor" and is then ignored
+    # by the only command that writes is not a grade.
+    if staged.get("quality") in ("menu", "doubtful"):
+        print(f"refusing {a.file}: this capture is graded "
+              f"`{staged.get('quality')}` - it reads as "
               f"the association's own pages rather than an exhibitor floor. "
               f"Re-sweep it from a real directory url first.", file=sys.stderr)
         return 1

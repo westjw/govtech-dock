@@ -1,9 +1,91 @@
 {
  "event_tag": "SNA ANC 2027",
  "conference": "SNA ANC",
- "found": false,
+ "found": true,
  "source_url": "https://fp37.a2zinc.net/clients/fpSNA10/ANC2027/Public/EventMap.aspx?shMode=E",
- "source_note": "454KB read, 20 candidate name(s) after filtering. Not staged as exhibitors: this url is the association's own site rather than a list of who exhibits at it (0% carry a corporate marker, 0% name a site section - this reads as the association's own pages)",
- "exhibitors": [],
- "why": "this url is the association's own site rather than a list of who exhibits at it (0% carry a corporate marker, 0% name a site section - this reads as the association's own pages)"
+ "source_note": "Read from https://fp37.a2zinc.net/clients/fpSNA10/ANC2027/Public/EventMap.aspx?shMode=E by scripts/sweep_exhibitors.py. 20 name(s), 5 with a website the page itself linked. Quality: menu (0% carry a corporate marker, 0% name a site section, 25% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "Apple Safari",
+   "website": "http://support.apple.com/downloads/#safari"
+  },
+  {
+   "name": "Change Password",
+   "website": null
+  },
+  {
+   "name": "Check My Calendar",
+   "website": null
+  },
+  {
+   "name": "Data Usage and Privacy Policy",
+   "website": "https://a2zevents.zendesk.com/hc/en-us/articles/14736239343373-Data-Usage-and-Privacy-Policy"
+  },
+  {
+   "name": "Exhibitor List",
+   "website": null
+  },
+  {
+   "name": "Forgot Password",
+   "website": null
+  },
+  {
+   "name": "Google Chrome",
+   "website": "https://www.google.com/chrome/browser/"
+  },
+  {
+   "name": "Legend",
+   "website": null
+  },
+  {
+   "name": "Login using Email and Password",
+   "website": null
+  },
+  {
+   "name": "Logout",
+   "website": null
+  },
+  {
+   "name": "Main Map",
+   "website": null
+  },
+  {
+   "name": "Mon Jul, 12",
+   "website": null
+  },
+  {
+   "name": "Mozilla Firefox",
+   "website": "https://www.mozilla.org/en-US/firefox/new/"
+  },
+  {
+   "name": "New Profile",
+   "website": null
+  },
+  {
+   "name": "Personalized Planner Please login to download Show Guide",
+   "website": null
+  },
+  {
+   "name": "Print",
+   "website": null
+  },
+  {
+   "name": "Sun Jul, 11",
+   "website": null
+  },
+  {
+   "name": "Tue Jul, 13",
+   "website": null
+  },
+  {
+   "name": "Upgrade Internet Explorer",
+   "website": "http://windows.microsoft.com/en-us/internet-explorer/download-ie"
+  },
+  {
+   "name": "Welcome,",
+   "website": null
+  }
+ ],
+ "why": null,
+ "quality": "menu"
 }

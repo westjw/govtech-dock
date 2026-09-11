@@ -1,9 +1,339 @@
 {
  "event_tag": "Animal Care Expo 2026",
  "conference": "Animal Care Expo",
- "found": false,
+ "found": true,
  "source_url": "https://humanepro.org/expo/past-exhibitors-and-sponsors",
- "source_note": "48KB read, 88 candidate name(s) after filtering. Not staged as exhibitors: this url is the association's own site rather than a list of who exhibits at it (5% carry a corporate marker, 3% name a site section - this reads as the association's own pages)",
- "exhibitors": [],
- "why": "this url is the association's own site rather than a list of who exhibits at it (5% carry a corporate marker, 3% name a site section - this reads as the association's own pages)"
+ "source_note": "Read from https://humanepro.org/expo/past-exhibitors-and-sponsors by scripts/sweep_exhibitors.py. 82 name(s), 9 with a website the page itself linked. Quality: menu (5% carry a corporate marker, 4% name a site section, 12% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "Adopters Welcome",
+   "website": null
+  },
+  {
+   "name": "Adoptions",
+   "website": null
+  },
+  {
+   "name": "Animal Control/Field Services",
+   "website": null
+  },
+  {
+   "name": "Attend",
+   "website": null
+  },
+  {
+   "name": "Breed Discrimination",
+   "website": null
+  },
+  {
+   "name": "Building Communities",
+   "website": null
+  },
+  {
+   "name": "Cats",
+   "website": null
+  },
+  {
+   "name": "Community Cats",
+   "website": null
+  },
+  {
+   "name": "Community Engagement Policy",
+   "website": null
+  },
+  {
+   "name": "Community Outreach",
+   "website": null
+  },
+  {
+   "name": "Continuing Education",
+   "website": null
+  },
+  {
+   "name": "Copyright & Use of Content",
+   "website": null
+  },
+  {
+   "name": "Cruelty + Neglect",
+   "website": null
+  },
+  {
+   "name": "Customer Service",
+   "website": null
+  },
+  {
+   "name": "Disaster Prep + Response",
+   "website": null
+  },
+  {
+   "name": "Dogs",
+   "website": null
+  },
+  {
+   "name": "Employer Support",
+   "website": null
+  },
+  {
+   "name": "Euthanasia",
+   "website": null
+  },
+  {
+   "name": "Eviction Response Toolkit",
+   "website": "https://www.humananimalsupportservices.org/keeping-families-together/"
+  },
+  {
+   "name": "Exhibit and Sponsor",
+   "website": null
+  },
+  {
+   "name": "Exhibit Hall Map",
+   "website": "https://exhibit-reg.bravuratechnologies.com/exh-fpstatus?id=34500418"
+  },
+  {
+   "name": "Exhibit Information",
+   "website": null
+  },
+  {
+   "name": "Expo Gives Back",
+   "website": null
+  },
+  {
+   "name": "Expo Home",
+   "website": null
+  },
+  {
+   "name": "Fact Sheets",
+   "website": null
+  },
+  {
+   "name": "Fundraising/Grants",
+   "website": null
+  },
+  {
+   "name": "Grants",
+   "website": null
+  },
+  {
+   "name": "Horses + Equines",
+   "website": null
+  },
+  {
+   "name": "Host a Round Table",
+   "website": null
+  },
+  {
+   "name": "Hotel and Travel",
+   "website": null
+  },
+  {
+   "name": "Humane Education",
+   "website": null
+  },
+  {
+   "name": "Humane Veterinary Medical Alliance",
+   "website": "https://www.humanevma.org/"
+  },
+  {
+   "name": "HumanePro",
+   "website": null
+  },
+  {
+   "name": "HumanePro on Facebook",
+   "website": "https://www.facebook.com/officialhumanepro"
+  },
+  {
+   "name": "HumanePro on Instagram",
+   "website": "https://www.instagram.com/humane_pro/"
+  },
+  {
+   "name": "HumanePro on LinkedIn",
+   "website": "http://linkedin.com/company/officialhumanepro"
+  },
+  {
+   "name": "HumanePro on Twitter",
+   "website": "https://twitter.com/Humane_Pro"
+  },
+  {
+   "name": "HumanePro Store",
+   "website": null
+  },
+  {
+   "name": "Jobs",
+   "website": null
+  },
+  {
+   "name": "Law Enforcement Training Center",
+   "website": null
+  },
+  {
+   "name": "Laws + Public Policies",
+   "website": null
+  },
+  {
+   "name": "Learn",
+   "website": null
+  },
+  {
+   "name": "Magazine Archive",
+   "website": null
+  },
+  {
+   "name": "Past Exhibitors and Sponsors",
+   "website": null
+  },
+  {
+   "name": "Pet-Inclusive Housing",
+   "website": null
+  },
+  {
+   "name": "Pets and People Together",
+   "website": "https://petsandpeopletogether.org/"
+  },
+  {
+   "name": "Pets Are Welcome",
+   "website": null
+  },
+  {
+   "name": "Pets for Life",
+   "website": null
+  },
+  {
+   "name": "Photo Album",
+   "website": null
+  },
+  {
+   "name": "Present a Workshop",
+   "website": null
+  },
+  {
+   "name": "Presentation Proposal Process FAQ",
+   "website": null
+  },
+  {
+   "name": "Programs",
+   "website": null
+  },
+  {
+   "name": "Rabbits + Small Animals",
+   "website": null
+  },
+  {
+   "name": "Rescue Groups",
+   "website": null
+  },
+  {
+   "name": "Resources",
+   "website": null
+  },
+  {
+   "name": "Resources by Species",
+   "website": null
+  },
+  {
+   "name": "Rural Area Veterinary Services",
+   "website": null
+  },
+  {
+   "name": "Shelter + Rescue Operations",
+   "website": null
+  },
+  {
+   "name": "Shelter and Rescue Partners",
+   "website": null
+  },
+  {
+   "name": "Shelter Design",
+   "website": null
+  },
+  {
+   "name": "Shelter Medicine",
+   "website": null
+  },
+  {
+   "name": "Shelter Mentorship Program",
+   "website": null
+  },
+  {
+   "name": "Social Media Submission Form",
+   "website": null
+  },
+  {
+   "name": "Social Media Submissions",
+   "website": null
+  },
+  {
+   "name": "Spay/Neuter",
+   "website": null
+  },
+  {
+   "name": "Speaking at Expo",
+   "website": null
+  },
+  {
+   "name": "Staff/Volunteer Management",
+   "website": null
+  },
+  {
+   "name": "State Director Lookup",
+   "website": "https://www.humanesociety.org/resources/contact-your-local-state-director"
+  },
+  {
+   "name": "Store",
+   "website": null
+  },
+  {
+   "name": "Surrender Prevention",
+   "website": null
+  },
+  {
+   "name": "Taking Action for Animals",
+   "website": null
+  },
+  {
+   "name": "Testimonials",
+   "website": null
+  },
+  {
+   "name": "Tools + Resources",
+   "website": null
+  },
+  {
+   "name": "Trailblazer Honorees",
+   "website": null
+  },
+  {
+   "name": "Trainings + Events",
+   "website": null
+  },
+  {
+   "name": "Transfer + Transport",
+   "website": null
+  },
+  {
+   "name": "Video Learning Library",
+   "website": null
+  },
+  {
+   "name": "Virtual Tote Bag",
+   "website": null
+  },
+  {
+   "name": "Volunteer",
+   "website": null
+  },
+  {
+   "name": "Wildlife",
+   "website": null
+  },
+  {
+   "name": "Wildlife Webinars",
+   "website": null
+  },
+  {
+   "name": "Workshops",
+   "website": null
+  }
+ ],
+ "why": null,
+ "quality": "menu"
 }

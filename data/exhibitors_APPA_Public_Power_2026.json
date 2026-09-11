@@ -1,9 +1,59 @@
 {
  "event_tag": "APPA Public Power 2026",
  "conference": "APPA National Conference",
- "found": false,
+ "found": true,
  "source_url": "https://www.publicpower.org/national-conference",
- "source_note": "59KB read, 19 candidate name(s) after filtering. Not staged as exhibitors: this url is the association's own site rather than a list of who exhibits at it (0% carry a corporate marker, 0% name a site section - this reads as the association's own pages)",
- "exhibitors": [],
- "why": "this url is the association's own site rather than a list of who exhibits at it (0% carry a corporate marker, 0% name a site section - this reads as the association's own pages)"
+ "source_note": "Read from https://www.publicpower.org/national-conference by scripts/sweep_exhibitors.py. 12 name(s), 6 with a website the page itself linked. Quality: menu (0% carry a corporate marker, 0% name a site section, 25% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "Antitrust Statement",
+   "website": null
+  },
+  {
+   "name": "Back to PublicPower.org",
+   "website": null
+  },
+  {
+   "name": "Contact us to learn more",
+   "website": null
+  },
+  {
+   "name": "Facebook",
+   "website": "https://www.facebook.com/americanpublicpower"
+  },
+  {
+   "name": "Instagram",
+   "website": "https://www.instagram.com/publicpowerorg"
+  },
+  {
+   "name": "LinkedIn",
+   "website": "https://www.linkedin.com/company/american-public-power-association/"
+  },
+  {
+   "name": "Location",
+   "website": null
+  },
+  {
+   "name": "National Conference",
+   "website": "https://www.publicpower.org/national-conference"
+  },
+  {
+   "name": "Photos",
+   "website": null
+  },
+  {
+   "name": "Registration",
+   "website": null
+  },
+  {
+   "name": "Twitter",
+   "website": "https://x.com/publicpowerorg"
+  },
+  {
+   "name": "YouTube",
+   "website": "https://www.youtube.com/c/AmericanPublicPowerAssociationWashington"
+  }
+ ],
+ "why": null,
+ "quality": "menu"
 }

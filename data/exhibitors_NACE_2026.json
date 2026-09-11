@@ -1,9 +1,239 @@
 {
  "event_tag": "NACE 2026",
  "conference": "NACE Annual",
- "found": false,
+ "found": true,
  "source_url": "https://www.countyengineers.org/2025/12/22/2026-exhibitor-list/",
- "source_note": "263KB read, 59 candidate name(s) after filtering. Not staged as exhibitors: this url is the association's own site rather than a list of who exhibits at it (24% carry a corporate marker, 10% name a site section - this reads as the association's own pages)",
- "exhibitors": [],
- "why": "this url is the association's own site rather than a list of who exhibits at it (24% carry a corporate marker, 10% name a site section - this reads as the association's own pages)"
+ "source_note": "Read from https://www.countyengineers.org/2025/12/22/2026-exhibitor-list/ by scripts/sweep_exhibitors.py. 57 name(s), 50 with a website the page itself linked. Quality: menu (25% carry a corporate marker, 11% name a site section, 58% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "2026 NACE Annual Conference- Arlington, TX",
+   "website": "https://www.countyengineers.org/2026-nace-annual-conference-arlington-tx/"
+  },
+  {
+   "name": "2027 NACE Annual Conference- Cleveland, OH",
+   "website": "https://www.countyengineers.org/2026-nace-annual-conference-arlington-tx-copy/"
+  },
+  {
+   "name": "660 North Capitol Street, NW, Suite 400, Washington, DC 20001",
+   "website": "https://www.google.com/maps/place/660+North+Capitol+St+NW+%23420,+Washington,+DC+20001/@38.8986309,-77.0096742,17z/data=!3m1!4b1!4m5!3m4!1s0x89b7b820ae2909ef:0x6d5eff9d02dec149!8m2!3d38.8986309!4d-77.0096742?entry=ttu"
+  },
+  {
+   "name": "Address",
+   "website": "https://www.google.com/maps/place/660+North+Capitol+St+NW+%23420,+Washington,+DC+20001/@38.8986309,-77.0096742,17z/data=!3m1!4b1!4m5!3m4!1s0x89b7b820ae2909ef:0x6d5eff9d02dec149!8m2!3d38.8986309!4d-77.0096742?entry=ttu"
+  },
+  {
+   "name": "Advocacy",
+   "website": "https://www.countyengineers.org/advocacy/"
+  },
+  {
+   "name": "Affiliate Archive Reports",
+   "website": "https://www.countyengineers.org/affiliate-archive-reports/"
+  },
+  {
+   "name": "Annual Conference & Events",
+   "website": null
+  },
+  {
+   "name": "Associate Membership Information",
+   "website": "https://www.countyengineers.org/associate-membership-information/"
+  },
+  {
+   "name": "Awards",
+   "website": null
+  },
+  {
+   "name": "Awards Committee",
+   "website": "https://www.countyengineers.org/awards-committee/"
+  },
+  {
+   "name": "Commitment to Serve",
+   "website": "https://www.countyengineers.org/commitment-to-serve/"
+  },
+  {
+   "name": "Committees",
+   "website": null
+  },
+  {
+   "name": "Constitution & Bylaws Committee",
+   "website": "https://www.countyengineers.org/constitution-bylaws-committee/"
+  },
+  {
+   "name": "Corporate Member Offers",
+   "website": "https://www.countyengineers.org/corporate-member-offers/"
+  },
+  {
+   "name": "Corporate Members",
+   "website": "https://www.countyengineers.org/corporate-members/"
+  },
+  {
+   "name": "Corporate Membership Benefits",
+   "website": "https://www.countyengineers.org/corporate-membership-benefits/"
+  },
+  {
+   "name": "Corporate Services Committee",
+   "website": "https://www.countyengineers.org/corporate-services-committee/"
+  },
+  {
+   "name": "County Membership Benefits",
+   "website": "https://www.countyengineers.org/county-membership-benefits/"
+  },
+  {
+   "name": "David P. Brand Safety Award",
+   "website": "https://www.countyengineers.org/david-b-brand-safety-award/"
+  },
+  {
+   "name": "Email",
+   "website": null
+  },
+  {
+   "name": "Emergency Response & Preparedness Committee",
+   "website": "https://www.countyengineers.org/emergencey-response-preparedness-committee/"
+  },
+  {
+   "name": "Events Calendar",
+   "website": "https://www.countyengineers.org/events-calendar/"
+  },
+  {
+   "name": "Facebook",
+   "website": "https://www.facebook.com/engineersnace"
+  },
+  {
+   "name": "Future Meetings",
+   "website": "https://www.countyengineers.org/future-meetings/"
+  },
+  {
+   "name": "GrowthZone",
+   "website": "http://www.growthzone.com/"
+  },
+  {
+   "name": "Honorary Members",
+   "website": "https://www.countyengineers.org/honorary-members/"
+  },
+  {
+   "name": "In the News",
+   "website": "https://www.countyengineers.org/in-the-news/"
+  },
+  {
+   "name": "Job Postings",
+   "website": "https://www.countyengineers.org/job-postings/"
+  },
+  {
+   "name": "Legislative committee",
+   "website": "https://www.countyengineers.org/legislative-committee/"
+  },
+  {
+   "name": "Life Members",
+   "website": "https://www.countyengineers.org/life-members/"
+  },
+  {
+   "name": "Member Forum Login",
+   "website": "https://members.countyengineers.org/MIC/Login"
+  },
+  {
+   "name": "Member Login",
+   "website": "https://members.countyengineers.org/MIC/Login"
+  },
+  {
+   "name": "Member Services Committee",
+   "website": "https://www.countyengineers.org/member-services-committee/"
+  },
+  {
+   "name": "Membership & Benefits",
+   "website": null
+  },
+  {
+   "name": "Monthly Officer & Vice President Update",
+   "website": "https://www.countyengineers.org/monthly-president-vice-president-update/"
+  },
+  {
+   "name": "NACE Connect",
+   "website": "https://www.countyengineers.org/nace-connect/"
+  },
+  {
+   "name": "NACE Connect & Member Events",
+   "website": "https://www.countyengineers.org/56846-2/"
+  },
+  {
+   "name": "NACE Connect Archives",
+   "website": "https://www.countyengineers.org/nace-connect-archives/"
+  },
+  {
+   "name": "NACE Constitution & Bylaws",
+   "website": "https://www.countyengineers.org/nace-constitution-bylaws/"
+  },
+  {
+   "name": "NACE Former Leaders (NFL)",
+   "website": "https://www.countyengineers.org/nace-former-leaders-nfl/"
+  },
+  {
+   "name": "NACE Leadership, 2026-2027",
+   "website": "https://www.countyengineers.org/home-2/nace-leadership-2/"
+  },
+  {
+   "name": "NACE Mission, Vision & Strategic Priorities",
+   "website": "https://www.countyengineers.org/56741-2/"
+  },
+  {
+   "name": "NACE News",
+   "website": "https://www.countyengineers.org/nace-news/"
+  },
+  {
+   "name": "NACE Safety Resource Center",
+   "website": "https://www.countyengineers.org/nace-safety-resource-center/"
+  },
+  {
+   "name": "NACE Staff & Headquarters",
+   "website": "https://www.countyengineers.org/nace-staff-headquarters/"
+  },
+  {
+   "name": "Past Award Recipients",
+   "website": "https://www.countyengineers.org/past-award-recipients/"
+  },
+  {
+   "name": "Pavement Preservation Committee",
+   "website": "https://www.countyengineers.org/pavement-preservation-committee/"
+  },
+  {
+   "name": "Presidential Appointed Committees & Task Forces",
+   "website": "https://www.countyengineers.org/presidential-appointed-committees-task-forces/"
+  },
+  {
+   "name": "Project/Program Manager of the Year",
+   "website": "https://www.countyengineers.org/project-program-manager-of-the-year/"
+  },
+  {
+   "name": "Rural Engineer of the Year",
+   "website": "https://www.countyengineers.org/rural-engineer-of-the-year/"
+  },
+  {
+   "name": "Safety & Technology Committee",
+   "website": "https://www.countyengineers.org/safety-technology-committee/"
+  },
+  {
+   "name": "Scroll To Top",
+   "website": null
+  },
+  {
+   "name": "Staff Affiliate Offices",
+   "website": "https://www.countyengineers.org/staff-affiliate-offices/"
+  },
+  {
+   "name": "Structures & Environment Committee",
+   "website": "https://www.countyengineers.org/structures-environment-committee/"
+  },
+  {
+   "name": "Telephone",
+   "website": null
+  },
+  {
+   "name": "Unpaved Roads Committee",
+   "website": "https://www.countyengineers.org/unpaved-roads-committee/"
+  },
+  {
+   "name": "Urban Engineer of the Year",
+   "website": "https://www.countyengineers.org/urban-engineer-of-the-year/"
+  }
+ ],
+ "why": null,
+ "quality": "menu"
 }

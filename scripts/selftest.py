@@ -17895,7 +17895,17 @@ def check_a_menu_cannot_be_classified_or_intaken() -> int:
 
     cls = (ROOT / "scripts" / "classify_exhibitors.py").read_text()
     itk = (ROOT / "scripts" / "conference_intake.py").read_text()
+    # BOTH REFUSED GRADES, not just one. `doubtful` says the same thing as
+    # `menu` by a different branch - "this reads as the association's own
+    # pages" - and for a while nothing enforced it: the seven floors swept
+    # 2026-09-11 produced five captures the OLD rule already called doubtful,
+    # and intake would have written all 233 names anyway.
     for name, src in (("classify_exhibitors", cls), ("conference_intake", itk)):
+        if '"doubtful"' not in src:
+            errors += fail(
+                f"{name}.py refuses `menu` but not `doubtful`. They are the "
+                f"same finding by different branches, and a grade the writing "
+                f"command ignores is not a grade")
         if '"menu"' not in src or "quality" not in src:
             errors += fail(
                 f"{name}.py does not consult the capture's quality grade. "
@@ -17934,6 +17944,16 @@ def check_a_menu_cannot_be_classified_or_intaken() -> int:
                            "crash")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
+
+    # AN EMAIL ADDRESS IS NEVER AN EXHIBITOR. Association footers are full of
+    # them and this project keeps addresses out of tracked files entirely, so
+    # the sweeper has to drop them before they are ever staged.
+    import sweep_exhibitors as sw2
+    if sw2.looks_like_a_name("finance@example.org"):
+        errors += fail("the sweeper stages an email address as an exhibitor "
+                       "name; the address guard then refuses the whole file")
+    if not sw2.looks_like_a_name("Tyler Technologies"):
+        errors += fail("the email rule rejects an ordinary company name")
 
     # AND A REAL FLOOR STILL GOES THROUGH. A gate that refuses everything is
     # not a gate either.

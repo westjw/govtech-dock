@@ -1,0 +1,686 @@
+[
+ {
+  "id": "xplor-recreation",
+  "name": "Xplor Recreation",
+  "website": "https://www.nextrec.com",
+  "description": "Parks and recreation management software; brands NextRec (formerly PerfectMind), Vermont Systems, RecDesk and ePACT - exhibited at AB Show 2026, NRPA 2026",
+  "category": "Recreation Management",
+  "postings": 252,
+  "off_signal_pct": 12
+ },
+ {
+  "id": "xylem",
+  "name": "Xylem",
+  "website": "https://www.xylem.com",
+  "description": "Water infrastructure: pumps, treatment, smart meters (Sensus), and analytics - exhibited at AWWA ACE 2026, WEFTEC 2026",
+  "category": "Water",
+  "postings": 231,
+  "off_signal_pct": 10
+ },
+ {
+  "id": "bruker-detection",
+  "name": "Bruker Detection",
+  "website": "https://bruker.com",
+  "description": "Explosive and chemical trace detection instruments for aviation security",
+  "category": "Security & Screening",
+  "postings": 213,
+  "off_signal_pct": 8
+ },
+ {
+  "id": "zoll-medical",
+  "name": "ZOLL Medical",
+  "website": "https://www.zoll.com",
+  "description": "Defibrillators, monitors, and EMS software (ePCR, dispatch, billing)",
+  "category": "EMS",
+  "postings": 126,
+  "off_signal_pct": 30
+ },
+ {
+  "id": "tyler-technologies",
+  "name": "Tyler Technologies",
+  "website": "https://www.tylertech.com",
+  "description": "The govtech giant: ERP, courts, public safety, permitting, and payments - exhibited at GFOA 2026, NLC City Summit 2026, PSHRA 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, GMIS International 2026, NACM 2026, APPA Probatio",
+  "category": "Finance & ERP",
+  "postings": 108,
+  "off_signal_pct": 1
+ },
+ {
+  "id": "gainwell-technologies",
+  "name": "Gainwell Technologies",
+  "website": "https://www.gainwelltechnologies.com",
+  "description": "Medicaid MMIS, pharmacy and program integrity systems for states - exhibited at AIRA 2026",
+  "category": "Benefits & Medicaid Systems",
+  "postings": 100,
+  "off_signal_pct": 10
+ },
+ {
+  "id": "peregrine",
+  "name": "Peregrine",
+  "website": "https://www.peregrine.io",
+  "description": "Data integration and real-time intelligence platform for police and city agencies - exhibited at IAFC FRI 2026",
+  "category": "Police",
+  "postings": 89,
+  "off_signal_pct": 8
+ },
+ {
+  "id": "bigbear-ai",
+  "name": "BigBear.ai (Pangiam)",
+  "website": "https://bigbear.ai",
+  "description": "Airport threat detection AI and biometric travel systems for government",
+  "category": "Security & Screening",
+  "postings": 81,
+  "off_signal_pct": 1
+ },
+ {
+  "id": "metropolis",
+  "name": "Metropolis",
+  "website": "https://www.metropolis.io",
+  "description": "Computer-vision checkout-free parking payment platform (drive-in/drive-out billing) plus parking operations and revenue management for airports; owner of SP+.",
+  "category": "Parking & Ground Transport",
+  "postings": 74,
+  "off_signal_pct": 14
+ },
+ {
+  "id": "opengov",
+  "name": "OpenGov",
+  "website": "https://www.opengov.com",
+  "description": "Permitting, budgeting, procurement, and asset management cloud suite (Cox-owned) - exhibited at GFOA 2026, NLC City Summit 2026, NACE 2026, AWWA ACE 2026, GMIS International 2026, Maryland Municipal League 2026, WEFTEC 2",
+  "category": "Permitting & Licensing",
+  "postings": 70,
+  "off_signal_pct": 26
+ },
+ {
+  "id": "granicus",
+  "name": "Granicus",
+  "website": "https://www.granicus.com",
+  "description": "Resident communications (govDelivery), meeting and agenda management, digital services; destination marketing as Simpleview, now Granicus Destinations - exhibited at 3CMA 2026, GMIS International 2026, APHSA 2026",
+  "category": "Citizen Services",
+  "postings": 55,
+  "off_signal_pct": 18
+ },
+ {
+  "id": "bibliu",
+  "name": "BibliU",
+  "website": "https://bibliu.com",
+  "description": "Digital textbook and courseware delivery platform for colleges, universities, and school districts - exhibited at NACUBO 2026",
+  "category": "IT & Administration",
+  "postings": 52,
+  "off_signal_pct": 2
+ },
+ {
+  "id": "tanium",
+  "name": "Tanium",
+  "website": "https://www.tanium.com",
+  "description": "Endpoint management and security platform - exhibited at NACo 2026, NASCIO 2026, EDUCAUSE 2026",
+  "category": "IT & AI Platforms",
+  "postings": 49,
+  "off_signal_pct": 29
+ },
+ {
+  "id": "euna-solutions",
+  "name": "Euna Solutions",
+  "website": "https://www.eunasolutions.com",
+  "description": "Procurement, budgeting, and grants suite - Bonfire, Questica, eCivis (formerly GTY) - exhibited at NACUBO 2026, GFOA 2026",
+  "category": "Finance & ERP",
+  "postings": 44,
+  "off_signal_pct": 5
+ },
+ {
+  "id": "powerschool",
+  "name": "PowerSchool",
+  "website": "https://www.powerschool.com",
+  "description": "Student information system giant plus enrollment, comms, and analytics - exhibited at CoSN 2026",
+  "category": "Operations & SIS",
+  "postings": 41,
+  "off_signal_pct": 32
+ },
+ {
+  "id": "everlaw",
+  "name": "Everlaw",
+  "website": "https://www.everlaw.com",
+  "description": "Cloud ediscovery and litigation platform for law firms, corporations, county DAs, and state AGs - exhibited at IMLA 2026, NASCIO 2026",
+  "category": "Prosecution & Defense",
+  "postings": 36,
+  "off_signal_pct": 19
+ },
+ {
+  "id": "ookla",
+  "name": "Ookla",
+  "website": "https://www.ookla.com",
+  "description": "Speed test and broadband coverage data licensed to broadband offices and regulators",
+  "category": "Broadband & Connectivity",
+  "postings": 34,
+  "off_signal_pct": 12
+ },
+ {
+  "id": "prepared",
+  "name": "Prepared",
+  "website": "https://www.prepared911.com",
+  "description": "Assistive AI for 911 centers: transcription, translation, text-to-911, and video",
+  "category": "EMS",
+  "postings": 33,
+  "off_signal_pct": 6
+ },
+ {
+  "id": "boston-dynamics",
+  "name": "Boston Dynamics",
+  "website": "https://bostondynamics.com",
+  "description": "Spot and Stretch robots; Spot widely used by bomb squads and hazmat teams (Hyundai)",
+  "category": "Police",
+  "postings": 33,
+  "off_signal_pct": 3
+ },
+ {
+  "id": "clear",
+  "name": "CLEAR (Alclear)",
+  "website": "https://clearme.com",
+  "description": "Biometric identity lanes operated under airport and TSA agreements",
+  "category": "Security & Screening",
+  "postings": 32,
+  "off_signal_pct": 16
+ },
+ {
+  "id": "vision-government-solutions",
+  "name": "Vision Government Solutions",
+  "website": "https://www.vgsi.com",
+  "description": "CAMA and property appraisal software for assessors and municipalities",
+  "category": "Finance & ERP",
+  "postings": 31,
+  "off_signal_pct": 6
+ },
+ {
+  "id": "perry-weather",
+  "name": "Perry Weather",
+  "website": "https://perryweather.com",
+  "description": "Weather safety platform: WBGT heat monitoring, lightning alerts, stations and sirens for parks and athletics",
+  "category": "Weather & Outdoor Safety",
+  "postings": 30,
+  "off_signal_pct": 3
+ },
+ {
+  "id": "earth-networks",
+  "name": "Earth Networks",
+  "website": "https://www.earthnetworks.com",
+  "description": "Lightning detection networks and outdoor alerting for parks and schools",
+  "category": "Weather & Outdoor Safety",
+  "postings": 30,
+  "off_signal_pct": 30
+ },
+ {
+  "id": "adtran",
+  "name": "Adtran",
+  "website": "https://www.adtran.com",
+  "description": "Fiber access and broadband network equipment for municipal and rural providers",
+  "category": "Broadband & Connectivity",
+  "postings": 29,
+  "off_signal_pct": 31
+ },
+ {
+  "id": "explorance",
+  "name": "Explorance",
+  "website": "https://explorance.com",
+  "description": "Course evaluation, survey, and AI feedback analysis software - Blue, MLY, and Metrics That Matter - for universities and corporate learning teams - exhibited at EDUCAUSE 2026",
+  "category": "IT & Administration",
+  "postings": 29,
+  "off_signal_pct": 7
+ },
+ {
+  "id": "debtbook",
+  "name": "DebtBook",
+  "website": "https://www.debtbook.com",
+  "description": "Cloud treasury: debt management, GASB 87/96 lease accounting, and cash management for gov finance - exhibited at NACUBO 2026, GFOA 2026",
+  "category": "Finance & ERP",
+  "postings": 26,
+  "off_signal_pct": 31
+ },
+ {
+  "id": "badger-meter",
+  "name": "Badger Meter",
+  "website": "https://www.badgermeter.com",
+  "description": "Water meters and ORION AMI networks for utilities - exhibited at AWWA ACE 2026, WEFTEC 2026",
+  "category": "Water",
+  "postings": 25,
+  "off_signal_pct": 4
+ },
+ {
+  "id": "idemia",
+  "name": "IDEMIA",
+  "website": "https://idemia.com",
+  "description": "Biometric identity, TSA PreCheck enrollment and airport boarding systems",
+  "category": "Security & Screening",
+  "postings": 23,
+  "off_signal_pct": 9
+ },
+ {
+  "id": "fleetio",
+  "name": "Fleetio",
+  "website": "https://www.fleetio.com",
+  "description": "Fleet maintenance SaaS: work orders, inspections, fuel for commercial and gov fleets - exhibited at NAFA I&E 2026",
+  "category": "Fleet & Asset Mgmt",
+  "postings": 20,
+  "off_signal_pct": 10
+ },
+ {
+  "id": "dailypay",
+  "name": "DailyPay",
+  "website": "https://www.dailypay.com",
+  "description": "Earned wage access platform for employers - exhibited at NACo 2026",
+  "category": "HR & Workforce",
+  "postings": 20,
+  "off_signal_pct": 20
+ },
+ {
+  "id": "merative",
+  "name": "Merative",
+  "website": "https://www.merative.com",
+  "description": "Curam social program management for state health and human services - exhibited at Healthcare IT Connect 2026",
+  "category": "Benefits & Medicaid Systems",
+  "postings": 20,
+  "off_signal_pct": 20
+ },
+ {
+  "id": "hidden-level",
+  "name": "Hidden Level",
+  "website": "https://hiddenlevel.com",
+  "description": "Passive airspace monitoring sensors for airports and government agencies",
+  "category": "Security & Screening",
+  "postings": 20,
+  "off_signal_pct": 10
+ },
+ {
+  "id": "alertus-technologies",
+  "name": "Alertus Technologies",
+  "website": "https://alertus.com",
+  "description": "Emergency mass notification hardware and software for schools and agencies - exhibited at EDUCAUSE 2026",
+  "category": "School Safety",
+  "postings": 19,
+  "off_signal_pct": 5
+ },
+ {
+  "id": "kaizen-labs",
+  "name": "Kaizen Labs",
+  "website": "https://www.kaizenlabs.co",
+  "description": "Modern resident services platform born in parks & rec registration; $21M Series A (NEA, a16z, Accel)",
+  "category": "Recreation Management",
+  "postings": 17,
+  "off_signal_pct": 18
+ },
+ {
+  "id": "energyhub",
+  "name": "EnergyHub",
+  "website": "https://www.energyhub.com",
+  "description": "DERMS and virtual power plant programs for utilities including public power",
+  "category": "Grid & Energy",
+  "postings": 17,
+  "off_signal_pct": 6
+ },
+ {
+  "id": "amp",
+  "name": "AMP",
+  "website": "https://www.ampsortation.com",
+  "description": "AI robotic sorting systems for recycling facilities (MRFs) - exhibited at SWANA WASTECON 2025",
+  "category": "Waste & Recycling",
+  "postings": 16,
+  "off_signal_pct": 6
+ },
+ {
+  "id": "uveye",
+  "name": "UVeye",
+  "website": "https://uveye.com",
+  "description": "Automated vehicle inspection portals for airports, borders and government",
+  "category": "Security & Screening",
+  "postings": 16,
+  "off_signal_pct": 6
+ },
+ {
+  "id": "pano-ai",
+  "name": "Pano AI",
+  "website": "https://www.pano.ai",
+  "description": "AI mountaintop camera stations for early wildfire detection and confirmed alerts",
+  "category": "Fire",
+  "postings": 15,
+  "off_signal_pct": 13
+ },
+ {
+  "id": "ebsco-information-services",
+  "name": "EBSCO Information Services",
+  "website": "https://about.ebsco.com",
+  "description": "Research databases, ebook collections and discovery software licensed to public libraries, academic libraries, schools and healthcare organizations - exhibited at PLA 2026",
+  "category": "Libraries",
+  "postings": 15,
+  "off_signal_pct": 13
+ },
+ {
+  "id": "survalent-technology",
+  "name": "Survalent Technology",
+  "website": "https://www.survalent.com",
+  "description": "SCADA, ADMS and outage management for municipal utilities and co-ops",
+  "category": "Grid & Energy",
+  "postings": 14,
+  "off_signal_pct": 21
+ },
+ {
+  "id": "hopskipdrive",
+  "name": "HopSkipDrive",
+  "website": "https://www.hopskipdrive.com",
+  "description": "Vetted small-vehicle student rides supplementing district bus fleets - exhibited at NAPT Summit 2026",
+  "category": "Transportation",
+  "postings": 13,
+  "off_signal_pct": 8
+ },
+ {
+  "id": "highland-electric-fleets",
+  "name": "Highland Electric Fleets",
+  "website": "https://highlandfleets.com",
+  "description": "Electric school bus fleet-as-a-service subscriptions for districts",
+  "category": "Transportation",
+  "postings": 12,
+  "off_signal_pct": 8
+ },
+ {
+  "id": "buspatrol",
+  "name": "BusPatrol",
+  "website": "https://www.buspatrol.com",
+  "description": "School bus stop-arm cameras with violator-funded safety programs",
+  "category": "Streets",
+  "postings": 11,
+  "off_signal_pct": 9
+ },
+ {
+  "id": "accela",
+  "name": "Accela",
+  "website": "https://www.accela.com",
+  "description": "Permitting, licensing, and code enforcement platform for state and local government - exhibited at NLC City Summit 2026",
+  "category": "Permitting & Licensing",
+  "postings": 11,
+  "off_signal_pct": 9
+ },
+ {
+  "id": "unite-us",
+  "name": "Unite Us",
+  "website": "https://uniteus.com",
+  "description": "Social care coordination network connecting health and social service referrals for govs and payers - exhibited at MESC 2026",
+  "category": "Case Management & Social Care",
+  "postings": 11,
+  "off_signal_pct": 9
+ },
+ {
+  "id": "limble",
+  "name": "Limble",
+  "website": "https://limblecmms.com",
+  "description": "Cloud CMMS for municipal facilities, water plants and public works",
+  "category": "Fleet & Asset Mgmt",
+  "postings": 11,
+  "off_signal_pct": 9
+ },
+ {
+  "id": "sewerai",
+  "name": "SewerAI",
+  "website": "https://www.sewerai.com",
+  "description": "AI defect detection and coding for sewer inspection video - exhibited at AWWA ACE 2026, WEFTEC 2026",
+  "category": "Water",
+  "postings": 10,
+  "off_signal_pct": 30
+ },
+ {
+  "id": "rec",
+  "name": "Rec",
+  "website": "https://www.rec.us",
+  "description": "Parks & rec program management and booking platform founded by early Uber employees",
+  "category": "Recreation Management",
+  "postings": 10,
+  "off_signal_pct": 10
+ },
+ {
+  "id": "portage-cybertech",
+  "name": "Portage CyberTech",
+  "website": "https://www.portagecybertech.com",
+  "description": "Citizen identity and digital service portals (CitizenOne) plus digital trust/signatures (Notarius)",
+  "category": "Citizen Services",
+  "postings": 10,
+  "off_signal_pct": 20
+ },
+ {
+  "id": "govworx",
+  "name": "GovWorx",
+  "website": "https://www.govworx.ai",
+  "description": "Software for first responder agencies - exhibited at IACP 2026, APCO 2026",
+  "category": "Police",
+  "postings": 10,
+  "off_signal_pct": 20
+ },
+ {
+  "id": "lightspeed-systems",
+  "name": "Lightspeed Systems",
+  "website": "https://lightspeedsystems.com",
+  "description": "Web filtering and student safety monitoring for school districts - exhibited at CoSN 2026",
+  "category": "School Safety",
+  "postings": 10,
+  "off_signal_pct": 30
+ },
+ {
+  "id": "neighborly-software",
+  "name": "Neighborly Software",
+  "website": "https://www.neighborlysoftware.com",
+  "description": "Grant and program administration software for affordable housing, disaster recovery, vouchers and energy rebate programs run by local and state agencies - exhibited at NAHRO 2026",
+  "category": "Housing & Assistance",
+  "postings": 10,
+  "off_signal_pct": 10
+ },
+ {
+  "id": "technosylva",
+  "name": "Technosylva",
+  "website": "https://www.technosylva.com",
+  "description": "Wildfire spread modeling and risk analytics used by CAL FIRE and major utilities",
+  "category": "Fire",
+  "postings": 9,
+  "off_signal_pct": 22
+ },
+ {
+  "id": "bamboo-health",
+  "name": "Bamboo Health",
+  "website": "https://bamboohealth.com",
+  "description": "Care coordination and PDMP network software (PMP AWARxE, OpenBeds) for states, counties, and health systems (Appriss lineage)",
+  "category": "Behavioral Health",
+  "postings": 9,
+  "off_signal_pct": 22
+ },
+ {
+  "id": "kpa",
+  "name": "KPA",
+  "website": "https://kpa.io",
+  "description": "EHS compliance software and services - exhibited at ICMA 2025",
+  "category": "HR & Workforce",
+  "postings": 9,
+  "off_signal_pct": 22
+ },
+ {
+  "id": "propel",
+  "name": "Propel",
+  "website": "https://www.propel.app",
+  "description": "SNAP and EBT benefits mobile app for recipients, plus Propel for States tooling for state benefits agencies - exhibited at APHSA 2026",
+  "category": "Benefits & Medicaid Systems",
+  "postings": 9,
+  "off_signal_pct": 11
+ },
+ {
+  "id": "ad-astra-information-systems",
+  "name": "Ad Astra Information Systems",
+  "website": "https://www.aais.com",
+  "description": "Academic scheduling, course demand analytics, and room and event management software for colleges and universities - exhibited at EDUCAUSE 2026",
+  "category": "IT & Administration",
+  "postings": 9,
+  "off_signal_pct": 11
+ },
+ {
+  "id": "nedap-identification-systems",
+  "name": "Nedap Identification Systems",
+  "website": "https://www.nedapidentification.com",
+  "description": "Long-range vehicle ID and access control for airport ground transport",
+  "category": "Parking & Ground Transport",
+  "postings": 9,
+  "off_signal_pct": 33
+ },
+ {
+  "id": "benchmark-analytics",
+  "name": "Benchmark Analytics",
+  "website": "https://www.benchmarkanalytics.com",
+  "description": "Officer performance management and research-based early intervention (First Sign)",
+  "category": "Police",
+  "postings": 8,
+  "off_signal_pct": 25
+ },
+ {
+  "id": "imagetrend",
+  "name": "ImageTrend",
+  "website": "https://www.imagetrend.com",
+  "description": "Incident records and ePCR data platform for EMS and fire agencies - exhibited at IAFC FRI 2026",
+  "category": "EMS",
+  "postings": 7,
+  "off_signal_pct": 14
+ },
+ {
+  "id": "zonar-systems",
+  "name": "Zonar Systems",
+  "website": "https://www.zonarsystems.com",
+  "description": "School bus telematics, electronic inspections, and ridership tracking",
+  "category": "Transportation",
+  "postings": 7,
+  "off_signal_pct": 29
+ },
+ {
+  "id": "virtra",
+  "name": "VirTra",
+  "website": "https://www.virtra.com",
+  "description": "Judgmental use-of-force and de-escalation simulators (Nasdaq: VTSI)",
+  "category": "Police",
+  "postings": 6,
+  "off_signal_pct": 17
+ },
+ {
+  "id": "paymentworks",
+  "name": "PaymentWorks",
+  "website": "https://www.paymentworks.com",
+  "description": "Supplier onboarding and payee identity verification preventing payments fraud for gov and higher-ed - exhibited at GFOA 2026",
+  "category": "Procurement & Payments",
+  "postings": 6,
+  "off_signal_pct": 33
+ },
+ {
+  "id": "quorum",
+  "name": "Quorum",
+  "website": "https://www.quorum.us",
+  "description": "Public affairs and legislative tracking software - exhibited at NACo 2026, NLC City Summit 2026",
+  "category": "Strategy & Performance",
+  "postings": 6,
+  "off_signal_pct": 33
+ },
+ {
+  "id": "dtn",
+  "name": "DTN",
+  "website": "https://www.dtn.com",
+  "description": "Weather intelligence and severe weather alerting for public agencies",
+  "category": "Weather & Outdoor Safety",
+  "postings": 6,
+  "off_signal_pct": 17
+ },
+ {
+  "id": "momentus-technologies",
+  "name": "Momentus Technologies",
+  "website": "https://gomomentus.com",
+  "description": "Venue and event management for convention centers and public authorities",
+  "category": "Events, Venues & Ticketing",
+  "postings": 6,
+  "off_signal_pct": 33
+ },
+ {
+  "id": "senstar",
+  "name": "Senstar",
+  "website": "https://senstar.com",
+  "description": "Perimeter intrusion detection and fence sensors for airports and utilities",
+  "category": "Security & Screening",
+  "postings": 6,
+  "off_signal_pct": 33
+ },
+ {
+  "id": "transoft-solutions",
+  "name": "Transoft Solutions",
+  "website": "https://www.transoftsolutions.com",
+  "description": "Aviation design and simulation software (AviPLAN, AeroTURN, GuideSIGN) used by airport planners for aircraft movement, apron layout and airside safety analysis.",
+  "category": "Airfield & Operations",
+  "postings": 5,
+  "off_signal_pct": 20
+ },
+ {
+  "id": "intrado-life-safety",
+  "name": "Intrado Life & Safety",
+  "website": "https://www.intrado.com",
+  "description": "911 call routing, Viper call handling and NG911 for PSAPs",
+  "category": "EMS",
+  "postings": 5,
+  "off_signal_pct": 20
+ },
+ {
+  "id": "zensors",
+  "name": "Zensors",
+  "website": "https://www.zensors.com",
+  "description": "Camera AI analytics for airport queue times, cleanliness and space use",
+  "category": "Terminal & Passenger Experience",
+  "postings": 5,
+  "off_signal_pct": 20
+ },
+ {
+  "id": "banyan-water",
+  "name": "Banyan Water",
+  "website": "https://banyanwater.com",
+  "description": "Water use analytics and leak detection for municipal and campus grounds",
+  "category": "Water",
+  "postings": 4,
+  "off_signal_pct": 25
+ },
+ {
+  "id": "rapidsos",
+  "name": "RapidSOS",
+  "website": "https://www.rapidsos.com",
+  "description": "Intelligent 911 platform streaming device location and data to dispatch - exhibited at APCO 2026",
+  "category": "EMS",
+  "postings": 3,
+  "off_signal_pct": 33
+ },
+ {
+  "id": "eventeny",
+  "name": "Eventeny",
+  "website": "https://www.eventeny.com",
+  "description": "Event management SaaS: vendor applications, ticketing, maps, and sponsors for festivals and city events",
+  "category": "Events, Venues & Ticketing",
+  "postings": 3,
+  "off_signal_pct": 33
+ },
+ {
+  "id": "niche-technology",
+  "name": "Niche Technology",
+  "website": "https://nicherms.com",
+  "description": "NicheRMS365 records management for large and multi-agency forces (NA, UK, AU)",
+  "category": "Police",
+  "postings": 3,
+  "off_signal_pct": 33
+ },
+ {
+  "id": "k16-solutions",
+  "name": "K16 Solutions",
+  "website": "https://www.k16solutions.com",
+  "description": "Scaffold platform for LMS migration, course archiving, and data warehousing across LMS, SIS, and CRM systems at colleges and universities - exhibited at EDUCAUSE 2026",
+  "category": "IT & Administration",
+  "postings": 3,
+  "off_signal_pct": 33
+ },
+ {
+  "id": "mango-languages",
+  "name": "Mango Languages",
+  "website": "https://mangolanguages.com",
+  "description": "Language learning platform in 70+ languages licensed by public libraries, school districts, universities and government agencies - exhibited at PLA 2026",
+  "category": "Libraries",
+  "postings": 3,
+  "off_signal_pct": 33
+ }
+]

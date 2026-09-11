@@ -1,9 +1,231 @@
 {
  "event_tag": "IMLA 2026",
  "conference": "IMLA Annual",
- "found": false,
+ "found": true,
  "source_url": "https://imla.org/annual-conference/",
- "source_note": "",
- "exhibitors": [],
- "why": "AtsError: network error: HTTPSConnectionPool(host='imla.org', port=443): Read timed out. (read timeo"
+ "source_note": "Read from https://imla.org/annual-conference/ by scripts/sweep_exhibitors.py. 55 name(s), 47 with a website the page itself linked. Quality: menu (5% carry a corporate marker, 13% name a site section, 33% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "[email protected]",
+   "website": null
+  },
+  {
+   "name": "Advocacy",
+   "website": "https://imla.org/legal-advocacy/"
+  },
+  {
+   "name": "Awards",
+   "website": "https://imla.org/awards/"
+  },
+  {
+   "name": "Benefits",
+   "website": "https://imla.org/imla-benefits/"
+  },
+  {
+   "name": "Caroline Storer",
+   "website": null
+  },
+  {
+   "name": "Check out our step-by-step video",
+   "website": "https://imla.org/member-portal-faq/"
+  },
+  {
+   "name": "CLE Corner",
+   "website": "https://imla.org/cle-corner/"
+  },
+  {
+   "name": "Committees",
+   "website": "https://imla.org/committees/"
+  },
+  {
+   "name": "DeWitt F. \u201cMac\u201d McCarley Scholarship Application",
+   "website": "https://imla.org/wp-content/uploads/2023/06/DeWitt-F.-Mac-McCarley-Scholarship.pdf"
+  },
+  {
+   "name": "here",
+   "website": "https://imla.org/wp-content/uploads/2023/06/DeWitt-F.-Mac-McCarley-Scholarship.pdf"
+  },
+  {
+   "name": "Home Rule Teaching Module",
+   "website": "https://imla.org/home-rule-teaching-module/"
+  },
+  {
+   "name": "Hotel Rate Sheet",
+   "website": "https://imla.org/wp-content/uploads/2026/03/Hotel-Rate-Sheet-SLC-2026.pdf"
+  },
+  {
+   "name": "IMLA By Laws",
+   "website": "https://imla.org/imla-by-laws/"
+  },
+  {
+   "name": "IMLA eNews",
+   "website": "https://imla.org/imla-newsletters-usa/"
+  },
+  {
+   "name": "IMLA in Canada",
+   "website": "https://imla.org/imla-in-canada/"
+  },
+  {
+   "name": "IMLA Listservs",
+   "website": "https://imla.org/imla-listservs/"
+  },
+  {
+   "name": "IMLA Member Portal",
+   "website": "https://members.imla.org/"
+  },
+  {
+   "name": "IMLA Past Presidents",
+   "website": "https://imla.org/imla-past-presidents/"
+  },
+  {
+   "name": "Job Board",
+   "website": "https://imla.org/job-board/"
+  },
+  {
+   "name": "Kitchen Sink",
+   "website": "https://imla.org/kitchen-sink/"
+  },
+  {
+   "name": "Legal Action Tracker",
+   "website": "https://imla.org/legal-action-tracker/"
+  },
+  {
+   "name": "Local Government Fellows Program",
+   "website": "https://imla.org/local-government-fellows-program/"
+  },
+  {
+   "name": "Local Government Legal Center",
+   "website": "https://imla.org/local-government-legal-center/"
+  },
+  {
+   "name": "Mentorship Program",
+   "website": "https://imla.org/mentorship-program/"
+  },
+  {
+   "name": "Mid-Year Seminar",
+   "website": "https://imla.org/seminars-2/"
+  },
+  {
+   "name": "Model City/County Attorney Agreement/Retainer",
+   "website": "https://imla.org/model-city-county-attorney-agreement-retainer/"
+  },
+  {
+   "name": "Model Construction Documents",
+   "website": "https://imla.org/ccdi-documents/"
+  },
+  {
+   "name": "Model Ordinances, Policies & Guidance Documents",
+   "website": "https://imla.org/model-ordinances-policies-and-guideline-documents/"
+  },
+  {
+   "name": "Municipal Law as a Career",
+   "website": "https://imla.org/municipal-law-as-a-career/"
+  },
+  {
+   "name": "Municipal Lawyer Magazine",
+   "website": "https://imla.org/municipal-lawyer-magazine/"
+  },
+  {
+   "name": "Music Licensing Agreements",
+   "website": "https://imla.org/music-licensing-agreements/"
+  },
+  {
+   "name": "Network",
+   "website": null
+  },
+  {
+   "name": "New Government Lawyer Bootcamp",
+   "website": "https://imla.org/new-government-lawyer-bootcamp/"
+  },
+  {
+   "name": "Nominating Committee",
+   "website": "https://imla.org/nominating-committee/"
+  },
+  {
+   "name": "On-Demand Library",
+   "website": "https://members.imla.org/commerce/store"
+  },
+  {
+   "name": "On-Demand Webinars",
+   "website": "https://members.imla.org/commerce/store"
+  },
+  {
+   "name": "Other Events",
+   "website": "https://imla.org/other-imla-events/"
+  },
+  {
+   "name": "Past Events",
+   "website": "https://imla.org/past-events/"
+  },
+  {
+   "name": "Past Recordings",
+   "website": "https://imla.org/past-recordings/"
+  },
+  {
+   "name": "Regional VPs & Chairs",
+   "website": "https://imla.org/imla-regional-vice-presidents-and-chairs/"
+  },
+  {
+   "name": "Registration",
+   "website": null
+  },
+  {
+   "name": "Resource Library",
+   "website": null
+  },
+  {
+   "name": "Resource Library Login",
+   "website": "https://imla.org/membership-login/"
+  },
+  {
+   "name": "Resources",
+   "website": null
+  },
+  {
+   "name": "Salary Survey",
+   "website": "https://imla.org/salary-survey/"
+  },
+  {
+   "name": "Scholarship",
+   "website": null
+  },
+  {
+   "name": "Scholarships",
+   "website": "https://imla.org/scholarships/"
+  },
+  {
+   "name": "Sections",
+   "website": "https://imla.org/sections/"
+  },
+  {
+   "name": "Senior Advisors Program",
+   "website": "https://imla.org/senior-advisors-program/"
+  },
+  {
+   "name": "Sound Strategies",
+   "website": "https://soundst.com/"
+  },
+  {
+   "name": "Upcoming Events",
+   "website": null
+  },
+  {
+   "name": "Webinar Schedule",
+   "website": "https://imla.org/webinar-schedule/"
+  },
+  {
+   "name": "Webinars",
+   "website": "https://imla.org/webinars-from-imla/"
+  },
+  {
+   "name": "Working Group Resources",
+   "website": "https://imla.org/working-group-resources/"
+  },
+  {
+   "name": "Working Groups",
+   "website": "https://imla.org/working-groups/"
+  }
+ ],
+ "why": null,
+ "quality": "menu"
 }

@@ -236,7 +236,7 @@ def apply(write: bool) -> int:
         # one - Ohio ASBO's site sections, ICC's "EXPO HALL HOURS", ACCG's
         # county job board. Classifying them is the step just before intake
         # writes them to the board, so this is where it stops.
-        if d.get("quality") == "menu":
+        if d.get("quality") in ("menu", "doubtful"):
             skipped.append(f.name)
             continue
         n = 0
