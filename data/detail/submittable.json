@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "What it takes to get RHTP compliance right",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://submittable.com/blog/rhtp-compliance"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -91,22 +100,13 @@
    "url": "https://submittable.com/blog/pass-through-grant"
   },
   {
-   "date": "2026-09-05",
+   "date": "2026-09-09",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The 6 keys to a strong CSR strategy [Updated for 2026]",
-   "kind": "product",
-   "kind_rule": "Updated",
-   "url": "https://submittable.com/blog/csr-strategy"
-  },
-  {
-   "date": "2026-09-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "How to Measure the Impact of Corporate Volunteering",
+   "first_seen": "2026-09-11",
+   "headline": "See the relationship as the outcome.",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://submittable.com/blog/impact-of-corporate-volunteering"
+   "url": "https://submittable.com/blog/impact-of-unrestricted-funding"
   }
  ]
 }

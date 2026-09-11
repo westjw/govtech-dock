@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Objective Isoplan Solution Overview",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.objective.com/resources/objective-isoplan-solution-overview"
+  },
+  {
    "date": "2026-08-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -26,6 +35,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.objective.com/resources/connect-sharepoint-integration-product-brief"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Five Ways to Securely Share SharePoint Files Externally",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.objective.com/resources/sharepoint-use-case"
   },
   {
    "date": "2026-07-27",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.objective.com/resources/how-amp-modernised-disclosure-governance-with-objective-keystone"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beyond personal productivity: Rethinking work in the age of AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.objective.com/resources/webinar-beyond-personal-productivity-rethinking-work-in-the-age-of-ai"
-  },
-  {
-   "date": "2026-03-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From File Sharing to Mission-Critical Collaboration",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.objective.com/resources/podcast-lets-connect"
   }
  ],
  "profile": {

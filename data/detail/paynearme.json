@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "What AI Looks Like in Payments in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://home.paynearme.com/blog/what-ai-looks-like-in-payments-in-2026/"
+  },
+  {
    "date": "2026-09-01",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "How A Top 20 Bank Transformed Payments into a Strategic Advantage",
+   "headline": "How a Top 20 Bank Transformed Payments Into a Strategic Advantage",
    "kind": "press",
    "kind_rule": null,
    "url": "https://home.paynearme.com/blog/how-a-top-20-bank-transformed-payments-into-a-strategic-advantage/"
@@ -35,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://home.paynearme.com/resources/the-payment-experience-gap/"
+  },
+  {
+   "date": "2025-11-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "How First Texas Auto Credit Drove a 275% Increase in Autopay with a Better Payment Experience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://home.paynearme.com/blog/case-study-first-texas-auto-credit-paynearme-payxm/"
   },
   {
    "date": "2025-05-12",

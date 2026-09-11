@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "The Missing Layer in Modern Physical Security: Assurance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnilert.com/blog/the-missing-layer-in-modern-physical-security"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Why Camera Performance Monitoring Matters for Modern Security Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnilert.com/blog/camera-performance-monitoring"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Omnilert Launches AI Camera Health Monitoring to Help Organizations Ensure Security Cameras Perform When It Matters Most",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.omnilert.com/blog/omnilert-launches-ai-camera-health-monitoring-to-help-organizations-ensure-security-cameras-perform-when-it-matters-most"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnilert.com/blog/cost-of-gun-violence"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Active vs. Passive Surveillance: Why Real-Time Threat Detection Matters",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnilert.com/blog/active-vs-passive-surveillance"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "FBI 2025 Active Shooter Report Reflections",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnilert.com/blog/fbi-2025-active-shooter-report"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI Video Analytics: Helping Security Teams See What Their Eyes Alone Might Miss",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnilert.com/blog/ai-video-analytics"
   }
  ]
 }

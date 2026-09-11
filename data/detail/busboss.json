@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Signs Your School Bus Routing Software Won't Scale",
+   "kind": "contract",
+   "kind_rule": "Signs",
+   "url": "https://www.busboss.com/blog/signs-your-school-bus-routing-software-wont-scale"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/7-barriers-to-adopting-school-bus-dispatch-software"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Student Ridership Data Fails in Large Districts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/why-student-ridership-data-fails-in-large-districts"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Security Automation Speeds Detection, Not Decisions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.singlewire.com/news/security-automation-speeds-detection"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "adopts",
    "url": "https://www.singlewire.com/news/edgewood-adopts-informacast-wearable-to-speed-up-response"
-  },
-  {
-   "date": "2026-08-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Anaheim school district implements wearable safety badge",
-   "kind": "contract",
-   "kind_rule": "implements",
-   "url": "https://www.singlewire.com/news/anaheim-school-district-implements-wearable-safety-badge"
   }
  ]
 }
