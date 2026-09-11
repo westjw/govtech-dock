@@ -37,13 +37,23 @@
      text. --faint IS Fog, labels only. Beak is a highlight and never text. */
   :root{ --bg:#E8F1F7; --panel:#FAF7F0; --line:#C9DCE8; --ink:#1F2536; --dim:#556F82;
          --faint:#7C97AA; --accent:#0B57C4; --warn:#C1341F; --bad:#C1341F;
-         --beak:#F5A623; --chip:#DCE9F1; }
+         --beak:#F5A623; --chip:#DCE9F1;
+         /* 3a's lead card is the one nearest thing, and it earns that by
+            INVERTING the ground. On Ice that is Penguin, exactly as the
+            design draws it. In dark mode Penguin IS the ground, so a literal
+            #1F2536 made the card disappear into the page - which is why this
+            is a token per theme and not a hex in the rule. */
+         --cf-lead:#1F2536; --cf-lead-ink:#E8F1F7; --cf-lead-dim:#9FB3C4; }
   @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
     /* ground becomes Penguin. Badge falls to 2.3:1 there, so both accents
        lighten along their own hue until they clear AA again. */
     --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7; --dim:#A8BCCA;
     --faint:#7C97AA; --accent:#478EF5; --warn:#E46855; --bad:#E46855;
-    --beak:#F5A623; --chip:#2E3852; }}
+    --beak:#F5A623; --chip:#2E3852;
+    /* Not inverted to white here. The header stays Penguin in both themes on
+       purpose and a white card beside it would be the loudest thing on the
+       page; lifting to --chip keeps the lead card first without shouting. */
+    --cf-lead:#2E3852; --cf-lead-ink:#E8F1F7; --cf-lead-dim:#A8BCCA; }}
   /* ---------------------------------------------- company page (turn 6)
      THE NINE TOKENS THE BUILD SPEC NAMES, and only these. They are scoped to
      .copage rather than :root because the spec's ground (#151B29) is a step
@@ -567,11 +577,67 @@
     .cfp-card{width:100%}
   }
 
+  /* ── 3a: the spotlight strip ───────────────────────────────────────────
+     THREE EVENTS, ABOVE 138 ROWS. A catalogue opens on its own index and
+     asks the reader to do the sorting; this answers "what is near me and
+     close" before they touch a filter. The first card is Penguin and the
+     other two are Belly, so the strip reads as one near thing and two after
+     it rather than three equal choices.
+
+     EVERY FACT ON A CARD IS ONE WE HOLD. The mockup's rivals, session
+     counts and booth prices are marked illustrative in the design file and
+     none of them exists in board.json, so none is drawn - exhibitors,
+     hiring and the honest not-mined line are the whole vocabulary, exactly
+     as cfFacts() already rules for the rows. */
+  .cfspot{margin:var(--space-8) 0 var(--space-6)}
+  .cfspot-head{display:flex;align-items:baseline;gap:var(--space-3)}
+  .cfspot-head .lab{font-size:13px;font-weight:700;letter-spacing:.06em;
+    color:var(--faint)}
+  .cfspot-head .rule{flex:1;height:1px;background:var(--line)}
+  .cfspot-head .of{font-size:13px;color:var(--dim)}
+  .cfspot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:var(--space-4);margin-top:var(--space-4)}
+  .cfcardx{border-radius:16px;padding:22px 24px 20px;display:flex;
+    flex-direction:column;gap:14px;min-height:200px;text-align:left;
+    border:0;cursor:pointer;font:inherit;background:var(--panel);
+    color:var(--ink);box-shadow:0 1px 2px rgba(31,37,54,.05),
+    0 10px 30px rgba(31,37,54,.06)}
+  .cfcardx.lead{background:var(--cf-lead);color:var(--cf-lead-ink);box-shadow:none}
+  .cfcardx-top{display:flex;align-items:center;justify-content:space-between;
+    gap:var(--space-2)}
+  .cfcardx-when{display:inline-flex;align-items:center;gap:7px;font-size:12px;
+    font-weight:600;color:var(--dim)}
+  .cfcardx.lead .cfcardx-when{color:var(--cf-lead-ink)}
+  .cfcardx-when i{width:8px;height:8px;border-radius:50%;background:var(--beak);
+    display:inline-block;flex:none}
+  .cfcardx-mi{font-size:13px;font-weight:600;color:var(--accent)}
+  .cfcardx.lead .cfcardx-mi{color:var(--cf-lead-ink);font-weight:700}
+  .cfcardx-name{font-size:26px;font-weight:700;letter-spacing:-.025em;
+    line-height:1.05}
+  .cfcardx-sub{font-size:14px;color:var(--dim);margin-top:6px}
+  .cfcardx.lead .cfcardx-sub{color:var(--cf-lead-dim)}
+  .cfcardx-foot{margin-top:auto;font-size:13px;color:var(--dim);
+    display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap}
+  .cfcardx.lead .cfcardx-foot{color:var(--cf-lead-dim)}
+  .cfcardx:hover .cfcardx-name{color:var(--accent)}
+  .cfcardx.lead:hover .cfcardx-name{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--beak)}
+  @media (max-width:900px){.cfspot-grid{grid-template-columns:1fr}}
+
+  /* ── 3a: months, not blocks ────────────────────────────────────────────
+     TIME IS THE AXIS NOW. Grouping by block answered "who is this for",
+     which the department filter already answers and which a reader has
+     usually decided before arriving. A seller plans a year, so the question
+     the page should answer on sight is WHEN - and an event with no date
+     still has to live somewhere, so it groups last under its own honest
+     heading rather than being dropped. */
   .cfblock{margin-bottom:var(--space-8)}
   .cfblock h3{font-family:var(--font-heading);font-weight:800;font-size:16px;
     letter-spacing:.06em;text-transform:uppercase;color:var(--dim);
     margin:0 0 var(--space-3);padding-bottom:var(--space-2);
-    border-bottom:1px solid var(--line)}
+    border-bottom:1px solid var(--line);
+    display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-3)}
+  .cfblock h3 .n{font-weight:600;letter-spacing:0;text-transform:none;
+    font-size:13px;color:var(--faint)}
   /* Four columns: when, what, who, open. `align-items:center` rather than
      baseline - the date block is two lines and the name one, and baseline
      hung them off each other's first line. */
@@ -6242,7 +6308,7 @@ function conferences(){
           `<div class="empty">${GHOST}No conference matches that.<br>
             <span class="sub">That is ${rows.length} events checked, not a claim
             that no such conference exists.</span></div>`)
-        : (keys.length?keys.map(b=>cfBlockHTML(b,g[b])).join(""):
+        : (shown.length?cfSpotlightHTML(shown,rows.length)+cfByMonth(shown):
           `<div class="empty">${GHOST}No conference matches that.<br>
             <span class="sub">That is ${rows.length} events checked, not a claim
             that no such conference exists.</span></div>`);
@@ -6568,7 +6634,109 @@ function cfNear(){
 }
 
 function cfBlockHTML(b,list){
-  return `<div class="cfblock"><h3>${esc(b)}</h3>${list.map(r=>cfRowHTML(r)).join("")}</div>`;
+  return `<div class="cfblock"><h3>${esc(b)}
+    <span class="n">${list.length} event${list.length===1?"":"s"}</span></h3>${
+    list.map(r=>cfRowHTML(r)).join("")}</div>`;
+}
+
+/* 3a groups by MONTH. calRange is the parser the "+ calendar" buttons and the
+   calendar view already use, so a row cannot land in a month the .ics it
+   offers would disagree about.
+
+   AN UNDATED EVENT IS NOT DROPPED AND NOT GUESSED AT. 17 published events
+   have no date on file; they group last under a heading that says so, because
+   filing them under a month we invented is the one thing worse than showing
+   them late. */
+const CF_MONTH_NAMES=["January","February","March","April","May","June","July",
+  "August","September","October","November","December"];
+function cfMonthKey(r){
+  const rg=calRange(r.dates);
+  return rg?`${rg.start.getFullYear()}-${String(rg.start.getMonth()).padStart(2,"0")}`:"zzz";
+}
+function cfMonthLabel(k){
+  if(k==="zzz")return "Dates not announced";
+  const [y,m]=k.split("-");
+  return `${CF_MONTH_NAMES[+m]} ${y}`;
+}
+function cfByMonth(list){
+  const g={};
+  list.forEach(r=>{(g[cfMonthKey(r)]=g[cfMonthKey(r)]||[]).push(r)});
+  /* UPCOMING FIRST, PAST LAST, AND NEITHER IS DROPPED. A plain sort put
+     February 2026 above September because the string sorts before it - four
+     months a reader cannot attend, at the top of a page they use to plan the
+     year. Past editions still belong here: a company page cites the tag and
+     somebody arriving from one needs the event to exist. So they sit at the
+     bottom, most recent first, rather than being filtered away. */
+  const now=new Date();
+  const thisKey=`${now.getFullYear()}-${String(now.getMonth()).padStart(2,"0")}`;
+  const keys=Object.keys(g);
+  const undated=keys.filter(k=>k==="zzz");
+  const future=keys.filter(k=>k!=="zzz"&&k>=thisKey).sort();
+  const past=keys.filter(k=>k!=="zzz"&&k<thisKey).sort().reverse();
+  const draw=k=>cfBlockHTML(cfMonthLabel(k)+(k!=="zzz"&&k<thisKey?" · past":""),
+    g[k].slice().sort((a,b)=>{
+      const A=calRange(a.dates), B=calRange(b.dates);
+      if(A&&B)return A.start-B.start;
+      return (a.name||"").localeCompare(b.name||"");
+    }));
+  return [...future,...undated,...past].map(draw).join("");
+}
+
+/* "Sep 9-11" for a card, as one plain string. cfWhen() returns the two-line
+   date BLOCK the rows use - markup, not text - and running it through esc()
+   printed the span tags on the card face. A card wants a sentence. */
+function cfSpotDate(r){
+  const rg=calRange(r.dates);
+  if(!rg)return r.dates||"";
+  const M=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const a=rg.start, b=rg.end;
+  if(a.getTime()===b.getTime())return `${M[a.getMonth()]} ${a.getDate()}`;
+  return a.getMonth()===b.getMonth()
+    ? `${M[a.getMonth()]} ${a.getDate()}–${b.getDate()}`
+    : `${M[a.getMonth()]} ${a.getDate()} – ${M[b.getMonth()]} ${b.getDate()}`;
+}
+
+/* THIS WEEK, NEAR YOU - three events off the top of what is already filtered,
+   so the strip answers the question the reader just asked rather than a
+   different one. Soonest first, past editions excluded: a spotlight is a
+   thing you can still go to. */
+function cfSpotlightHTML(shown,total){
+  const up=shown.filter(r=>calRange(r.dates)&&!isPast(r.dates))
+    .sort((a,b)=>calRange(a.dates).start-calRange(b.dates).start).slice(0,3);
+  if(up.length<2)return "";     /* one card is not a strip */
+  const card=(r,i)=>{
+    const rg=calRange(r.dates), now=isNow(r.dates), away=cfAway(r);
+    const days=Math.round((rg.start-new Date())/86400000);
+    const when=now?"On now":days<=7?`In ${days} day${days===1?"":"s"}`
+      :days<=21?`In ${Math.round(days/7)} weeks`:`In ${days} days`;
+    /* The one line of facts, and it never prints a zero. An unmined floor
+       says so and offers the door we hold, which is the whole reason the
+       strip is worth more than a count. */
+    const foot=r.companies
+      ? `<b>${r.companies}</b> exhibitor${r.companies===1?"":"s"}${
+          r.hiring?` &middot; <b>${r.hiring}</b> hiring`:""}`
+      : `Exhibitor list not mined yet${r.exhibitor_url?
+          ` &middot; <span class="cflink">their directory &nearr;</span>`:""}`;
+    return `<button type="button" class="cfcardx${i===0?" lead":""}"
+        data-tag="${esc(r.tag)}">
+      <span class="cfcardx-top">
+        <span class="cfcardx-when">${now?"<i></i>":""}${esc(when)}</span>
+        ${away?`<span class="cfcardx-mi">${esc(away)}</span>`:""}
+      </span>
+      <span>
+        <span class="cfcardx-name">${esc(r.name)}</span>
+        <span class="cfcardx-sub">${esc(cfSpotDate(r))}${
+          cfPlace(r)?` &middot; ${esc(cfPlace(r))}`:""}</span>
+      </span>
+      <span class="cfcardx-foot">${foot}</span>
+    </button>`;
+  };
+  return `<div class="cfspot">
+    <div class="cfspot-head"><span class="lab">NEXT UP</span>
+      <span class="rule"></span>
+      <span class="of">${up.length} of ${total}</span></div>
+    <div class="cfspot-grid">${up.map(card).join("")}</div>
+  </div>`;
 }
 
 /* WHO WE KNOW IS STANDING THERE. Computed from the organizations already in
@@ -6784,7 +6952,7 @@ function cfToCompanies(tag){
            box.dispatchEvent(new Event("input",{bubbles:true})); }
 }
 function wireCfOpen(){
-  document.querySelectorAll(".cfrow,.cfcard").forEach(b=>{
+  document.querySelectorAll(".cfrow,.cfcard,.cfcardx").forEach(b=>{
     b.onclick=e=>{
       if(e.target.closest("[data-cal],a"))return;
       cfOpenPanel(b.dataset.tag);

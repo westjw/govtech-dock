@@ -1768,22 +1768,43 @@ def write_feeds(out: pathlib.Path, board: dict, brand: dict) -> dict:
     # Calendars. One for everything, one per department block, so somebody who
     # only sells into public safety is not subscribed to library conferences.
     confs = [c for c in (board.get("conferences") or []) if c.get("dates")]
+    # DTSTAMP for every event in this build. Taken from the board's own
+    # `generated` rather than the wall clock, so rebuilding an unchanged board
+    # produces identical bytes and the deploy diff stays honest.
+    stamp = (re.sub(r"[-:]", "", str(gen).split(".")[0]).replace(" ", "T")
+             or dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%S"))
+    if not stamp.endswith("Z"):
+        stamp = stamp.rstrip("Z") + "Z"
+    if "T" not in stamp:                 # a bare date needs a time to be valid
+        stamp = stamp[:8] + "T000000Z"
+
     def ics(rows, name):
         lines = ["BEGIN:VCALENDAR", "VERSION:2.0",
                  f"PRODID:-//{brand['name']}//conferences//EN",
                  "CALSCALE:GREGORIAN", f"X-WR-CALNAME:{name}"]
         n = 0
         for c in rows:
-            start = _ics_date(c.get("dates"))
-            if not start:
+            span = _ics_range(c.get("dates"))
+            if not span:
                 continue          # a date we could not parse is not invented
+            first, last = span
             n += 1
             lines += ["BEGIN:VEVENT",
+                      # DTSTAMP is REQUIRED by RFC 5545 3.6.1 and no event in
+                      # this feed carried one. Built from the run's own
+                      # timestamp rather than the wall clock, so two builds of
+                      # the same board produce the same bytes.
+                      f"DTSTAMP:{stamp}",
                       # slugified: a UID with a space in it is not a valid
                       # iCalendar identifier and some clients drop the event
                       f"UID:{_slugify(c.get('tag') or c.get('name') or 'event')}"
                       f"@{brand['domain']}",
-                      f"DTSTART;VALUE=DATE:{start}",
+                      f"DTSTART;VALUE=DATE:{first.strftime('%Y%m%d')}",
+                      # DTEND ON AN ALL-DAY EVENT IS EXCLUSIVE. A conference
+                      # ending the 15th needs DTEND 16 or the calendar drops
+                      # the last day - the same sentence icsFor() carries.
+                      f"DTEND;VALUE=DATE:"
+                      f"{(last + dt.timedelta(days=1)).strftime('%Y%m%d')}",
                       f"SUMMARY:{_ics_esc(c.get('name') or '')}",
                       f"LOCATION:{_ics_esc(c.get('city') or '')}",
                       # WHAT WE HOLD, NOT WHAT THE SHOW CLAIMS, and silence
@@ -1797,9 +1818,15 @@ def write_feeds(out: pathlib.Path, board: dict, brand: dict) -> dict:
                       # always used the real count and omitted the line at
                       # zero; two writers of one file now follow one rule.
                       f"DESCRIPTION:{_ics_desc(c, site)}",
+                      "TRANSP:TRANSPARENT",
                       "END:VEVENT"]
+            # The event's own page, so a subscriber can get from a calendar
+            # entry back to the roster. icsFor() carries it and this did not.
+            if c.get("url") and re.match(r"^https?://", str(c["url"])):
+                lines.insert(len(lines) - 2,
+                             f"URL:{_ics_esc(str(c['url']))}")
         lines.append("END:VCALENDAR")
-        return "\r\n".join(lines) + "\r\n", n
+        return "\r\n".join(_ics_fold(x) for x in lines) + "\r\n", n
 
     cal = out / "cal"
     cal.mkdir(parents=True, exist_ok=True)
@@ -1820,27 +1847,120 @@ def _ics_esc(s: str) -> str:
     return str(s).replace("\\", "\\\\").replace(",", "\\,").replace(";", "\\;").replace("\n", " ")
 
 
-def _ics_date(dates: str) -> str | None:
-    """YYYYMMDD from the catalogue's date string, or None.
+_ICS_MONTHS = {m.lower(): i for i, m in enumerate(
+    ["January", "February", "March", "April", "May", "June", "July",
+     "August", "September", "October", "November", "December"], 1)}
+
+
+def _ics_month(word: str) -> int | None:
+    """A month from its name or any unambiguous prefix ('Sept', 'Aug')."""
+    w = str(word or "").lower().rstrip(".")
+    if w in _ICS_MONTHS:
+        return _ICS_MONTHS[w]
+    hits = [v for k, v in _ICS_MONTHS.items() if len(w) >= 3 and k.startswith(w)]
+    return hits[0] if len(hits) == 1 else None
+
+
+def _ics_range(dates: str) -> tuple[dt.date, dt.date] | None:
+    """(first day, last day INCLUSIVE) from the catalogue's date string.
+
+    A PORT OF calRange() IN index.html, AND IT HAS TO STAY ONE. Those two are
+    the only writers of this file format and they disagreed about every event
+    in it: the button on a card wrote DTSTART and DTEND, this wrote DTSTART
+    alone, so a reader who clicked "+ calendar" got Fire-Rescue International
+    as August 12-15 and a reader who SUBSCRIBED to the same feed got it as
+    August 12. 118 of 118 events in conferences.ics were one day long.
+
+    The start day disagreed too, and more quietly. The old parser searched for
+    the first `20\\d{2}` anywhere in the string and matched a month name at the
+    front with `re.match`, so a row reading "Sponsorship opens May 1;
+    conference August 12-15, 2026" yielded May 1 2026 - a date nobody stated,
+    for a conference in August. calRange refuses any string carrying ';' or
+    ':' for exactly that reason, and so does this.
 
     Returns None rather than guessing. A calendar entry on the wrong day is
     worse than no calendar entry, because somebody books travel around it.
     """
-    m = re.search(r"(\d{4})-(\d{2})-(\d{2})", str(dates or ""))
+    txt = str(dates or "").strip()
+    if not txt or ";" in txt or ":" in txt:
+        return None
+
+    def mk(y1, m1, d1, y2, m2, d2):
+        # date() rejects February 30 where a naive constructor would roll it
+        # into March. mkRange() reads its days back off the Date for the same
+        # reason; here the exception IS the check.
+        try:
+            s, e = dt.date(y1, m1, d1), dt.date(y2, m2, d2)
+        except ValueError:
+            return None
+        return (s, e) if e >= s else None
+
+    m = re.fullmatch(r"(\d{4})-(\d{2})-(\d{2})", txt)
     if m:
-        return m.group(1) + m.group(2) + m.group(3)
-    m = re.match(r"\s*([A-Za-z]+)\s+(\d{1,2})", str(dates or ""))
-    if not m:
-        return None
-    months = {mn.lower(): i for i, mn in enumerate(
-        ["January", "February", "March", "April", "May", "June", "July",
-         "August", "September", "October", "November", "December"], 1)}
-    mon = months.get(m.group(1).lower()[:3] and
-                     next((k for k in months if k.startswith(m.group(1).lower()[:3])), ""))
-    yr = re.search(r"(20\d{2})", str(dates or ""))
-    if not mon or not yr:
-        return None
-    return f"{yr.group(1)}{mon:02d}{int(m.group(2)):02d}"
+        return mk(*(int(x) for x in m.groups()), *(int(x) for x in m.groups()))
+
+    M, D, Y = r"([A-Za-z]+\.?)", r"(\d{1,2})", r"(\d{4})"
+    DASH = r"\s*[-–—]\s*"
+
+    # September 30 - October 3, 2026
+    m = re.fullmatch(rf"{M}\s+{D}{DASH}{M}\s+{D},\s*{Y}", txt)
+    if m:
+        a, b = _ics_month(m.group(1)), _ics_month(m.group(3))
+        # A range running backwards through the months means the year rolls
+        # over, and the trailing year could mean either end of it. Nothing in
+        # the catalogue does this today; when something does it gets a person.
+        if a is None or b is None or b < a:
+            return None
+        return mk(int(m.group(5)), a, int(m.group(2)),
+                  int(m.group(5)), b, int(m.group(4)))
+
+    # October 17-21, 2026
+    m = re.fullmatch(rf"{M}\s+{D}{DASH}{D},\s*{Y}", txt)
+    if m:
+        a = _ics_month(m.group(1))
+        if a is None or int(m.group(3)) < int(m.group(2)):
+            return None
+        return mk(int(m.group(4)), a, int(m.group(2)),
+                  int(m.group(4)), a, int(m.group(3)))
+
+    # October 17, 2026
+    m = re.fullmatch(rf"{M}\s+{D},\s*{Y}", txt)
+    if m:
+        a = _ics_month(m.group(1))
+        if a is None:
+            return None
+        return mk(int(m.group(3)), a, int(m.group(2)),
+                  int(m.group(3)), a, int(m.group(2)))
+    return None
+
+
+def _ics_date(dates: str) -> str | None:
+    """YYYYMMDD for the first day, or None."""
+    r = _ics_range(dates)
+    return r[0].strftime("%Y%m%d") if r else None
+
+
+def _ics_fold(line: str) -> str:
+    """RFC 5545 caps a content line at 75 OCTETS, not characters.
+
+    Unfolded lines are what a strict parser truncates, and the longest line in
+    the shipped feed was 82. Folding is counted in bytes because a city like
+    'Montréal' is more bytes than characters, and a split landing inside a
+    multi-byte character produces mojibake in somebody's calendar.
+    """
+    raw = line.encode("utf-8")
+    if len(raw) <= 75:
+        return line
+    out, cur = [], bytearray()
+    for ch in line:
+        b = ch.encode("utf-8")
+        # 74 leaves room for the leading space every continuation line carries
+        if len(cur) + len(b) > (75 if not out else 74):
+            out.append(bytes(cur).decode("utf-8"))
+            cur = bytearray()
+        cur += b
+    out.append(bytes(cur).decode("utf-8"))
+    return "\r\n ".join(out)
 
 
 
