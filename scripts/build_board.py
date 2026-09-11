@@ -841,6 +841,98 @@ def load_claims() -> dict:
     return d if isinstance(d, dict) else {}
 
 
+def conference_rows(cat: list, orgs: list, companies: list) -> list:
+    """The Conferences tab's rows, derived from the catalogue and the map.
+
+    LIFTED OUT OF main() SO THERE IS STILL ONLY ONE WRITER. These rows depend
+    on nothing that has to be fetched - the catalogue file, the companies'
+    own source tags, and open-role counts already computed for `orgs` - so a
+    conference date or a new floor can reach the site without re-crawling a
+    few hundred third-party job boards to redraw a tab. CLAUDE.md records
+    four such rebuilds run in one day for metadata-only edits.
+
+    scripts/refresh_conference_rows.py calls this against an existing
+    board.json; main() calls it during a real build. Copying the body into
+    the refresher instead would have made a second writer of the same rows,
+    which is the bug just fixed in the calendar feed.
+    """
+    conf_rows = []
+    if cat:
+        open_by_co = {o["id"]: o.get("open_roles", 0) for o in orgs}
+        by_tag = collections.defaultdict(list)
+        for c in companies:
+            src = (c.get("source") or "").strip()
+            if not src:
+                continue
+            # sweeps write "conference sweep: PLA 2026"; intake writes the tag
+            #
+            # A COMPANY FOUND AT TWO SHOWS BELONGS TO BOTH. This split on the
+            # last colon and stopped, so a record tagged "IACP 2026; NSA 2026"
+            # was filed under that whole string as if it were one event's
+            # name, and counted for NEITHER. 110 companies - Axon, Skydio,
+            # SoundThinking among them - were missing from every conference
+            # they exhibited at, and the Conferences tab understated itself
+            # by that much while looking precise.
+            for tag in _event_tags(src):
+                by_tag[tag].append(c["id"])
+        for row in cat:
+            tag = (row.get("event_tag") or "").strip()
+            if not tag:
+                continue
+            # An event ruled out of scope stays in the catalogue file so a
+            # later sweep does not rediscover it and propose it back, but it
+            # is not a govcon event and does not belong in a govcon
+            # catalogue. The companies found there are a separate question
+            # and keep their place: where a company was found is not what a
+            # company sells.
+            if row.get("sled") is False:
+                continue
+            ids = sorted(set(by_tag.get(tag, [])))
+            hiring = [i for i in ids if open_by_co.get(i, 0) > 0]
+            conf_rows.append({
+                "tag": tag,
+                "name": row.get("conference") or tag,
+                "block": row.get("block"),
+                "department": row.get("department"),
+                "flagship": bool(row.get("flagship")),
+                "swept": bool(row.get("swept")),
+                "url": row.get("url") or None,
+                "dates": row.get("dates") or None,
+                # WHY the dates are missing, carried through to the page. The
+                # catalogue is careful about this - "unannounced" means the
+                # organiser has not published the next edition, "unreachable"
+                # means their site would not answer us - and a blank on the
+                # board flattened the two into "we did not bother". Absence of
+                # evidence has to arrive as absence of evidence.
+                "dates_confidence": row.get("dates_confidence") or None,
+                "city": row.get("city") or None,
+                # THE STATE WE ALREADY KNEW. 18 conferences carried no city and
+                # read on the board as events happening nowhere - but 13 of
+                # them were promoted out of the chapter registry and have
+                # carried their state in state_event.geo the whole time. A
+                # state association's conference is in that state; not knowing
+                # the hotel is not the same as not knowing the place.
+                #
+                # Kept in its own field rather than written into `city`. "North
+                # Carolina" is not a city, and a distance filter that treated
+                # it as one would put the event at the middle of the state and
+                # call that a venue.
+                "state": (row.get("state_event") or {}).get("geo") or None,
+                "approx_count": row.get("approx_count") or None,
+                "companies": len(ids),
+                "hiring": len(hiring),
+                "open_roles": sum(open_by_co.get(i, 0) for i in ids),
+            })
+        # By DEPARTMENT, then name. Sorting by how many companies we happen to
+        # have found makes this a report on our own sweeping progress; a
+        # catalogue is ordered so somebody can find the event they came for.
+        conf_rows.sort(key=lambda r: ((r.get("department") or "zz").lower(),
+                                      r["name"].lower()))
+
+    return conf_rows
+
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int)
@@ -1548,79 +1640,10 @@ def main() -> int:
     cpath = DATA / "conferences.json"
     if cpath.exists():
         try:
-            cat = json.loads(cpath.read_text()).get("conferences", [])
+            _cat = json.loads(cpath.read_text()).get("conferences", [])
         except (json.JSONDecodeError, OSError):
-            cat = []
-        open_by_co = {o["id"]: o.get("open_roles", 0) for o in orgs}
-        by_tag = collections.defaultdict(list)
-        for c in companies:
-            src = (c.get("source") or "").strip()
-            if not src:
-                continue
-            # sweeps write "conference sweep: PLA 2026"; intake writes the tag
-            #
-            # A COMPANY FOUND AT TWO SHOWS BELONGS TO BOTH. This split on the
-            # last colon and stopped, so a record tagged "IACP 2026; NSA 2026"
-            # was filed under that whole string as if it were one event's
-            # name, and counted for NEITHER. 110 companies - Axon, Skydio,
-            # SoundThinking among them - were missing from every conference
-            # they exhibited at, and the Conferences tab understated itself
-            # by that much while looking precise.
-            for tag in _event_tags(src):
-                by_tag[tag].append(c["id"])
-        for row in cat:
-            tag = (row.get("event_tag") or "").strip()
-            if not tag:
-                continue
-            # An event ruled out of scope stays in the catalogue file so a
-            # later sweep does not rediscover it and propose it back, but it
-            # is not a govcon event and does not belong in a govcon
-            # catalogue. The companies found there are a separate question
-            # and keep their place: where a company was found is not what a
-            # company sells.
-            if row.get("sled") is False:
-                continue
-            ids = sorted(set(by_tag.get(tag, [])))
-            hiring = [i for i in ids if open_by_co.get(i, 0) > 0]
-            conf_rows.append({
-                "tag": tag,
-                "name": row.get("conference") or tag,
-                "block": row.get("block"),
-                "department": row.get("department"),
-                "flagship": bool(row.get("flagship")),
-                "swept": bool(row.get("swept")),
-                "url": row.get("url") or None,
-                "dates": row.get("dates") or None,
-                # WHY the dates are missing, carried through to the page. The
-                # catalogue is careful about this - "unannounced" means the
-                # organiser has not published the next edition, "unreachable"
-                # means their site would not answer us - and a blank on the
-                # board flattened the two into "we did not bother". Absence of
-                # evidence has to arrive as absence of evidence.
-                "dates_confidence": row.get("dates_confidence") or None,
-                "city": row.get("city") or None,
-                # THE STATE WE ALREADY KNEW. 18 conferences carried no city and
-                # read on the board as events happening nowhere - but 13 of
-                # them were promoted out of the chapter registry and have
-                # carried their state in state_event.geo the whole time. A
-                # state association's conference is in that state; not knowing
-                # the hotel is not the same as not knowing the place.
-                #
-                # Kept in its own field rather than written into `city`. "North
-                # Carolina" is not a city, and a distance filter that treated
-                # it as one would put the event at the middle of the state and
-                # call that a venue.
-                "state": (row.get("state_event") or {}).get("geo") or None,
-                "approx_count": row.get("approx_count") or None,
-                "companies": len(ids),
-                "hiring": len(hiring),
-                "open_roles": sum(open_by_co.get(i, 0) for i in ids),
-            })
-        # By DEPARTMENT, then name. Sorting by how many companies we happen to
-        # have found makes this a report on our own sweeping progress; a
-        # catalogue is ordered so somebody can find the event they came for.
-        conf_rows.sort(key=lambda r: ((r.get("department") or "zz").lower(),
-                                      r["name"].lower()))
+            _cat = []
+        conf_rows = conference_rows(_cat, orgs, companies)
 
     payload = {
         "generated": today,

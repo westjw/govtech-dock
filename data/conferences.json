@@ -482,13 +482,14 @@
    "conference": "FTA Annual",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://hub.taxadmin.org/e/annual-meeting-2026#sponsors",
    "fetchability": null,
    "event_tag": "FTA 2026",
    "url": "https://taxadmin.org/event/fta-annual-meeting/",
    "dates_source": null,
    "dates_confidence": "unannounced",
-   "dates_note": "2027 dates not yet announced. The 2026 FTA Annual Meeting was June 7-10, 2026 at the Loews Vanderbilt Hotel, Nashville, TN and is past. I read taxadmin.org's own events calendar three ways - the /events/ listing, the /calendar/ page, and the site's own WordPress events API (wp-json/tribe/events/v1/events) queried from 2025-01-01 through 2029-12-31. The API returns 24 events and the last one on the calendar is the November 1-4, 2026 WSATA Annual Meeting. There is no 2027 FTA Annual Meeting entry anywhere on the official calendar, and the annual-meeting page still shows the 2026 event. The site is live and healthy; FTA simply has not posted 2027 yet."
+   "dates_note": "2027 dates not yet announced. The 2026 FTA Annual Meeting was June 7-10, 2026 at the Loews Vanderbilt Hotel, Nashville, TN and is past. I read taxadmin.org's own events calendar three ways - the /events/ listing, the /calendar/ page, and the site's own WordPress events API (wp-json/tribe/events/v1/events) queried from 2025-01-01 through 2029-12-31. The API returns 24 events and the last one on the calendar is the November 1-4, 2026 WSATA Annual Meeting. There is no 2027 FTA Annual Meeting entry anywhere on the official calendar, and the annual-meeting page still shows the 2026 event. The site is live and healthy; FTA simply has not posted 2027 yet.",
+   "exhibitor_url_source": "read 2026-09-11, confirmed by a second reader: 19 company names visible"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -2065,14 +2066,15 @@
    "conference": "NASRO",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://www.nasro.org/conference-sponsors/",
    "fetchability": null,
    "event_tag": "NASRO 2026",
    "url": "https://www.nasro.org/conference/future-nasro-conferences/",
    "dates_source": "https://web.archive.org/web/20260702182047if_/https://www.nasro.org/clientuploads/directory/homepage_slideshow/NASHVILLE.png",
    "dates_confidence": "unreachable",
-   "dates_note": "2027 dates ARE announced - they sit on NASRO's own Future Conferences page, which a domain-restricted search can see - but nasro.org serves a maintenance page on every path, so we cannot read them. Three mutually inconsistent candidates exist: July 4-9 (the homepage slideshow banner, re-read at full resolution and unambiguous), July 6-7 (the indexed text of the official Future Conferences page, returned across three separate queries including one that primed July 4-9 and was pushed back on), and July 4-6 (that same page's own Sun-Tue pattern for 2028, 2029 and 2030). Picking one would be a guess. Nashville is confirmed. Recorded unreachable rather than unannounced: the organiser HAS announced, we simply cannot read it, and those are different facts about NASRO.",
-   "city": "Nashville, TN"
+   "dates_note": "read 2026-09-11: could not read a next-edition date - DATES ARE UNREADABLE, NOT UNANNOUNCED. NASRO's 36th annual National School Safety Conference ran June 28 - July 2, 2026 at the Peppermill Casino and Resort, Ren",
+   "city": "Nashville, TN",
+   "exhibitor_url_source": "read 2026-09-11, confirmed by a second reader: 8 company names visible"
   },
   {
    "block": "K-12 education",
@@ -2192,13 +2194,17 @@
    "conference": "IACLEA",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://web.cvent.com/event/4015ec2d-7612-418e-b17c-fb5c8f134d06/websitePage:806d1c1e-0d40-47a3-8801-b76248c2fb40",
    "fetchability": null,
    "event_tag": "IACLEA 2026",
    "url": "https://iaclea.org/event/2026-iaclea-annual-conference-exposition/",
-   "dates_source": null,
-   "dates_confidence": "unannounced",
-   "dates_note": "iaclea.org is live and serves fine, but nothing on it announces a 2027 Annual Conference & Exposition. The 2026 edition is past: 'IACLEA's premier event for campus law enforcement and public safety is headed to Orlando, FL - June 25-28, 2026' at the Caribe Royale Orlando. The only conference link on the homepage goes to the Cvent page for that same 2026 event (web.cvent.com/event/4015ec2d-7612-418e-b17c-fb5c8f134d06/summary, 'Thursday, June 25 - Sunday, June 28'). Checked the homepage, /events/list/ pages 1 and 2, /annual-conference (404), and the WordPress sitemap - iaclea.org/tribe_events-sitemap.xml lists a 2025 and a 2026 annual conference event and no 2027 one. So: site live, next edition simply not posted yet."
+   "dates_source": "https://iaclea.org/event/2026-iaclea-annual-conference-exposition/",
+   "dates_confidence": "high",
+   "dates_note": "iaclea.org is live and serves fine, but nothing on it announces a 2027 Annual Conference & Exposition. The 2026 edition is past: 'IACLEA's premier event for campus law enforcement and public safety is headed to Orlando, FL - June 25-28, 2026' at the Caribe Royale Orlando. The only conference link on the homepage goes to the Cvent page for that same 2026 event (web.cvent.com/event/4015ec2d-7612-418e-b17c-fb5c8f134d06/summary, 'Thursday, June 25 - Sunday, June 28'). Checked the homepage, /events/list/ pages 1 and 2, /annual-conference (404), and the WordPress sitemap - iaclea.org/tribe_events-sitemap.xml lists a 2025 and a 2026 annual conference event and no 2027 one. So: site live, next edition simply not posted yet.",
+   "dates": "June 25-28, 2026",
+   "dates_checked_on": "2026-09-11",
+   "city": "Orlando, FL",
+   "exhibitor_url_source": "read 2026-09-11, confirmed by a second reader: 99 company names visible"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -2366,16 +2372,17 @@
    "fetchability": "readable",
    "event_tag": "North Carolina League of Municipalities 2027",
    "url": "http://www.nclm.org",
-   "dates": null,
-   "city": null,
-   "dates_source": "https://www.nclm.org/about-us/partners-sponsors",
-   "dates_confidence": "unannounced",
+   "dates": "May 4-6, 2027",
+   "city": "Winston-Salem, NC",
+   "dates_source": "https://www.nclm.org/about-us/partners-sponsors/",
+   "dates_confidence": "high",
    "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'North Carolina League of Municipalities' by https://www.nlc.org/membership/state-municipal-leagues/. Directory: 86 names, good (30% carry a corporate marker, 2% name a site section). Event name not stated on the page; the organisation's name stands in.",
    "state_event": {
     "org_code": "MUNI_NC",
     "geo": "North Carolina",
     "parent_national": "NLC"
-   }
+   },
+   "dates_checked_on": "2026-09-11"
   },
   {
    "block": "Executive / administration",
@@ -2387,16 +2394,17 @@
    "fetchability": "readable",
    "event_tag": "New York State Conference of Mayors and Muni 2027",
    "url": "http://www.nycom.org",
-   "dates": null,
-   "city": null,
-   "dates_source": "http://www.nycom.org/training/exhibiting-sponsorship",
-   "dates_confidence": "unannounced",
+   "dates": "September 14-18, 2026",
+   "city": "Saratoga Springs, NY",
+   "dates_source": "https://www.nycom.org/training/exhibiting-sponsorship",
+   "dates_confidence": "high",
    "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'New York State Conference of Mayors and Municipal Officials' by https://www.nlc.org/membership/state-municipal-leagues/. Directory: 34 names, good (21% carry a corporate marker, 6% name a site section). Event name read from the page as 'Vendor Opportunities - New York Conference of Mayors'.",
    "state_event": {
     "org_code": "MUNI_NY",
     "geo": "New York",
     "parent_national": "NLC"
-   }
+   },
+   "dates_checked_on": "2026-09-11"
   },
   {
    "block": "Executive / administration",
@@ -2429,16 +2437,17 @@
    "fetchability": "readable",
    "event_tag": "Kentucky League of Cities 2026",
    "url": "http://www.klc.org",
-   "dates": null,
-   "city": null,
-   "dates_source": "http://www.klc.org/EventView/13331/klc-conference-expo",
-   "dates_confidence": "unannounced",
+   "dates": "September 22-25, 2026",
+   "city": "Covington, KY",
+   "dates_source": "https://www.klc.org/EventView/13331/klc-conference-expo",
+   "dates_confidence": "high",
    "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Kentucky League of Cities' by https://www.nlc.org/membership/state-municipal-leagues/. Directory: 47 names, good (17% carry a corporate marker, 6% name a site section). Event name read from the page as 'KLC Conference &amp; Expo'.",
    "state_event": {
     "org_code": "MUNI_KY",
     "geo": "Kentucky",
     "parent_national": "NLC"
-   }
+   },
+   "dates_checked_on": "2026-09-11"
   },
   {
    "block": "Executive / administration",
@@ -2471,16 +2480,19 @@
    "fetchability": "readable",
    "event_tag": "Vermont League of Cities and Towns 2027",
    "url": "http://www.vlct.org",
-   "dates": null,
-   "city": null,
-   "dates_source": "http://www.vlct.org/vlcts-business-alliance-program",
-   "dates_confidence": "unannounced",
+   "dates": "October 7, 2026",
+   "city": "South Burlington, VT",
+   "dates_source": "https://www.vlct.org/town-fair-2026",
+   "dates_confidence": "high",
    "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Vermont League of Cities and Towns' by https://www.nlc.org/membership/state-municipal-leagues/. Directory: 123 names, good (15% carry a corporate marker, 5% name a site section). Event name not stated on the page; the organisation's name stands in.",
    "state_event": {
     "org_code": "MUNI_VT",
     "geo": "Vermont",
     "parent_national": "NLC"
-   }
+   },
+   "dates_checked_on": "2026-09-11",
+   "exhibitor_url_candidate": "https://www.vlct.org/2026-27-business-alliance-members",
+   "exhibitor_url_candidate_note": "read 2026-09-11: a second reader confirmed 13 company names here. The url on file is http://www.vlct.org/vlcts-business-alliance-program - rule which."
   },
   {
    "block": "Executive / administration",
@@ -2492,16 +2504,19 @@
    "fetchability": "readable",
    "event_tag": "County Commissioners Association of Pennsylv 2026",
    "url": "http://www.pacounties.org/",
-   "dates": null,
-   "city": null,
-   "dates_source": "http://www.pacounties.org/vendors",
-   "dates_confidence": "unannounced",
+   "dates": "August 1-4, 2027",
+   "city": "Erie, PA",
+   "dates_source": "https://www.pacounties.org/calendar/conferences/2027-ccap-annual-conference-and-trade-show",
+   "dates_confidence": "high",
    "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'County Commissioners Association of Pennsylvania' by https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations. Directory: 59 names, good (25% carry a corporate marker, 5% name a site section). Event name not stated on the page; the organisation's name stands in.",
    "state_event": {
     "org_code": "CNTY_PA",
     "geo": "Pennsylvania",
     "parent_national": "NACO"
-   }
+   },
+   "dates_checked_on": "2026-09-11",
+   "exhibitor_url_candidate": "https://www.pacounties.org/education/annual-conference",
+   "exhibitor_url_candidate_note": "read 2026-09-11: a second reader confirmed 42 company names here. The url on file is http://www.pacounties.org/vendors - rule which."
   },
   {
    "block": "Executive / administration",
@@ -2513,16 +2528,19 @@
    "fetchability": "readable",
    "event_tag": "ACCG Advancing Georgia's Counties 2026",
    "url": "http://www.accg.org/",
-   "dates": null,
-   "city": null,
-   "dates_source": "https://marketplace.accg.org/",
-   "dates_confidence": "unannounced",
+   "dates": "April 22-25, 2027",
+   "city": "Savannah/Chatham County, GA",
+   "dates_source": "https://www.accg.org/conferences.php",
+   "dates_confidence": "high",
    "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as \"ACCG – Advancing Georgia's Counties\" by https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations. Directory: 17 names, good (18% carry a corporate marker, 0% name a site section). Event name not stated on the page; the organisation's name stands in.",
    "state_event": {
     "org_code": "CNTY_GA",
     "geo": "Georgia",
     "parent_national": "NACO"
-   }
+   },
+   "dates_checked_on": "2026-09-11",
+   "exhibitor_url_candidate": "https://mart-navigator.accg.engagifii.in/",
+   "exhibitor_url_candidate_note": "read 2026-09-11: a second reader confirmed 176 company names here. The url on file is https://marketplace.accg.org/ - rule which."
   },
   {
    "block": "Executive / administration",
@@ -2555,16 +2573,19 @@
    "fetchability": "readable",
    "event_tag": "Washington Recreation and Park Association 2027",
    "url": "http://www.wrpatoday.org/",
-   "dates": null,
-   "city": null,
-   "dates_source": "http://www.wrpatoday.org/sponsors",
-   "dates_confidence": "unannounced",
+   "dates": "May 11-14, 2027",
+   "city": "Spokane, WA",
+   "dates_source": "http://www.wrpatoday.org/",
+   "dates_confidence": "medium",
    "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Washington Recreation and Park Association' by https://www.nrpa.org/about-national-recreation-and-park-association/state-and-national-affiliates/. Directory: 40 names, good (15% carry a corporate marker, 8% name a site section). Event name not stated on the page; the organisation's name stands in.",
    "state_event": {
     "org_code": "PARK_WA",
     "geo": "Washington",
     "parent_national": "NRPA"
-   }
+   },
+   "dates_checked_on": "2026-09-11",
+   "exhibitor_url_candidate": "https://wrpaconf.memberclicks.net/",
+   "exhibitor_url_candidate_note": "read 2026-09-11: a second reader confirmed 7 company names here. The url on file is http://www.wrpatoday.org/sponsors - rule which."
   },
   {
    "block": "Public safety",
@@ -2618,16 +2639,17 @@
    "fetchability": "readable",
    "event_tag": "Ohio ASBO 2026",
    "url": "https://oasbo-ohio.org/",
-   "dates": null,
-   "city": null,
-   "dates_source": "https://oasbo-ohio.org/about/meet-oasbo/sponsors",
-   "dates_confidence": "unannounced",
+   "dates": "March 16-19, 2027",
+   "city": "Columbus, OH",
+   "dates_source": "https://oasbo-ohio.org/annual-conference",
+   "dates_confidence": "high",
    "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Ohio ASBO' by https://www.asbointl.org/web/Web/About/Find_an_Affiliate.aspx. Directory: 83 names, good (17% carry a corporate marker, 8% name a site section). Event name not stated on the page; the organisation's name stands in.",
    "state_event": {
     "org_code": "SB_OASBO",
     "geo": "Ohio",
     "parent_national": "ASBO"
-   }
+   },
+   "dates_checked_on": "2026-09-11"
   }
  ]
 }

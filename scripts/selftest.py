@@ -14966,6 +14966,78 @@ def check_identify_catches_a_namesake() -> int:
     return errors
 
 
+def check_calendar_writers_agree() -> int:
+    """conferences.ics and the "+ calendar" button must date an event alike.
+
+    TWO WRITERS OF ONE FILE FORMAT, and they disagreed about every dated event
+    in the catalogue. build_site.ics() wrote DTSTART alone; icsFor() in
+    index.html wrote DTSTART and an exclusive DTEND. So a reader who clicked
+    "+ calendar" on Fire-Rescue International got August 12-15 and a reader who
+    SUBSCRIBED to the same feed got August 12 - 118 of 118 events one day long,
+    silently, in somebody's real calendar.
+
+    The start day disagreed too, and more quietly: the old Python matched a
+    month name at the front of the string and took the year from the first
+    `20\\d{2}` anywhere in it, so "Sponsorship opens May 1; conference August
+    12-15, 2026" yielded May 1. calRange refuses any string carrying ';' or
+    ':'; _ics_range does now as well.
+
+    This EXECUTES index.html's own calRange through scripts/ics_parity.js
+    rather than re-implementing it, for the reason the alerts harness carries:
+    a guard that supplies what it is testing for is not a guard.
+    """
+    import shutil
+    import subprocess
+
+    if not shutil.which("node"):
+        note("node is not installed; the two calendar writers were not compared")
+        return 0
+    import build_site
+    board = json.loads((DATA / "board.json").read_text())
+    r = subprocess.run(["node", str(ROOT / "scripts" / "ics_parity.js")],
+                       capture_output=True, text=True, timeout=60)
+    if r.returncode != 0:
+        return fail(f"ics_parity.js did not run: {r.stderr.strip()[:300]}")
+    try:
+        js = json.loads(r.stdout)
+    except Exception as exc:                                    # noqa: BLE001
+        return fail(f"ics_parity.js printed no JSON ({exc}): {r.stdout[:200]}")
+
+    bad = 0
+    for c in board.get("conferences") or []:
+        span = build_site._ics_range(c.get("dates"))
+        mine = None if not span else [
+            span[0].strftime("%Y%m%d"),
+            (span[1] + dt.timedelta(days=1)).strftime("%Y%m%d")]
+        theirs = js.get(c["tag"])
+        if mine != theirs:
+            bad += fail(
+                f"{c['tag']}: conferences.ics would date {c.get('dates')!r} as "
+                f"{mine} and the + calendar button as {theirs}. One reader "
+                f"books travel around the wrong one.")
+            if bad >= 5:
+                break
+    if bad:
+        return bad
+    # AND THE FEED ITSELF CARRIES WHAT RFC 5545 REQUIRES. A DTSTAMP is not
+    # optional (3.6.1) and no event in the shipped feed had one.
+    ics = ROOT / "public" / "conferences.ics"
+    if ics.exists():
+        body = ics.read_text()
+        n = body.count("BEGIN:VEVENT")
+        for prop in ("DTSTAMP", "DTEND"):
+            if n and body.count(prop) < n:
+                bad += fail(f"public/conferences.ics has {n} event(s) and only "
+                            f"{body.count(prop)} {prop} line(s)")
+        for line in body.splitlines():
+            if len(line.encode("utf-8")) > 75:
+                bad += fail(f"conferences.ics line is "
+                            f"{len(line.encode('utf-8'))} octets, over the "
+                            f"75-octet fold RFC 5545 sets: {line[:60]}...")
+                break
+    return bad
+
+
 def check_alert_vocabulary() -> int:
     """functions/api/alerts.js must accept exactly what roles.py can assign."""
     js = (ROOT / "functions" / "api" / "alerts.js")
@@ -19612,6 +19684,9 @@ def main() -> int:
     # happily stores, no posting ever carries it, and their alert silently
     # never arrives - no error anywhere. So the duplication is checked here.
     errors += check_alert_vocabulary()
+    # Same duplication, same reason: a Worker cannot import Python and a
+    # browser cannot either, so the conference date parser exists twice.
+    errors += check_calendar_writers_agree()
     errors += check_merged_names_stay_merged()
     errors += check_journal_matches_reality()
     errors += check_writes_name_their_author()
