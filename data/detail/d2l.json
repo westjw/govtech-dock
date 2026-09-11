@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "ASAE Annual 2026 Recap: Learning as a Core Organizational Strategy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/asae-annual-2026-recap/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.d2l.com/blog/upskill-with-purpose-building-a-workforce-thats-ready-for-the-future/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Create Learning Content That Drives Business Outcomes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/why-does-your-organization-need-a-content-strategy-for-learning/"
   }
  ],
  "profile": {

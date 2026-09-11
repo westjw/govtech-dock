@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "You don\u2019t know SN*P",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/blog/you-dont-know-snap-propel/"
+  },
+  {
    "date": "2026-08-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -40,15 +49,6 @@
    "date": "2026-08-14",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
-   "headline": "Does Medicaid cover braces?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.propel.app/blog/does-medicaid-cover-braces/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
    "headline": "Is Ambetter the same thing as Medicaid?",
    "kind": "press",
    "kind_rule": null,
@@ -65,15 +65,6 @@
   },
   {
    "date": "2026-08-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "How many people are on welfare (TANF)?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.propel.app/blog/how-many-people-are-on-welfare/"
-  },
-  {
-   "date": "2026-08-14",
    "date_source": "time",
    "first_seen": "2026-09-09",
    "headline": "What to do if your Summer EBT didn't arrive",
@@ -82,13 +73,13 @@
    "url": "https://www.propel.app/blog/summer-ebt-2026/"
   },
   {
-   "date": "2026-08-05",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Does Medicaid cover therapy?",
+   "date": "2026-08-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Leer este art\u00edculo en espa\u00f1ol",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.propel.app/blog/does-medicaid-cover-therapy/"
+   "url": "https://www.propel.app/es/blog/que-hacer-si-su-summer-ebt-no-llego-es/"
   },
   {
    "date": "2026-07-27",
@@ -100,13 +91,22 @@
    "url": "https://www.propel.app/blog/whats-changing-medicaid/"
   },
   {
-   "date": "2026-07-27",
-   "date_source": "index-text",
+   "date": "2026-07-22",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "What changes should I report to Medicaid at renewal?",
-   "kind": "contract",
-   "kind_rule": "renewal",
-   "url": "https://www.propel.app/blog/what-to-report-to-medicaid-at-renewal/"
+   "headline": "Is it cheaper to make your own dog food?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/blog/is-it-cheaper-to-make-your-own-dog-food/"
+  },
+  {
+   "date": "2026-07-07",
+   "date_source": "og:published",
+   "first_seen": "2026-09-05",
+   "headline": "A bridge to restoring benefits",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/insights/restore-benefits/"
   }
  ],
  "profile": {

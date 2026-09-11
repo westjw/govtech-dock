@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Kahua vs. e-Builder: Compare Construction PM Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kahua.com/articles/kahua-vs-e-builder/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://kahua.com/articles/kahua-vs-procore/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Innovation Showcase: How Technology Leaders are using Microsoft for the Next Wave of AI Innovation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kahua.com/articles/using-microsoft-for-ai-innovation-ignite/"
   }
  ]
 }

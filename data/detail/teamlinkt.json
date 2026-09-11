@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-01",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Switching from Crossbar to TeamLinkt: What the Migration Actually Looks Like",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-08-25",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How Fort Saskatchewan Soccer Cut Registration Costs by 50% with TeamLinkt",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-08-12",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Switching from LeagueLineup to TeamLinkt: What the Migration Actually Looks Like",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-08-06",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How the Second-Largest Little League in the World Runs Its Programs on TeamLinkt",
    "kind": "press",

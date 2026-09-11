@@ -10,6 +10,15 @@
    "url": "https://www.nutanix.com/blog/nutanix-recognized-as-leader-in-gartner-magic-quadrant-for-distributed-hybrid-infrastructure"
   },
   {
+   "date": "2026-09-09",
+   "date_source": "og:published",
+   "first_seen": "2026-09-11",
+   "headline": "Nutanix Flow and eBPF: Redefining Cloud-Native Security and Observability for NKP",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/tech-center/blog/nutanix-flow-and-ebpf-redefining-cloud-native-security-and-observability-for-nkp"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nutanix.com/blog/nutanix-kubernetes-platform-achieves-cncf-kubernetes-ai-conformance"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Introducing NKP Metal: Unlocking a Dual Native Architecture for Deploying Kubernetes on Bare-Metal and Virtual Servers",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.nutanix.com/blog/introducing-nkp-metal"
   }
  ],
  "profile": {
