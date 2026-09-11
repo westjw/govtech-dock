@@ -1151,6 +1151,37 @@ async function show(key) {
       : INTRO[key];
     v.appendChild(intro);
   }
+  /* A KIND FILTER, for a queue whose rows need different things. The
+     conference floors are four jobs wearing one label: READY needs an hour,
+     MENU needs a better url, BLOCKED needs somebody to look at why, and NO
+     DIRECTORY needs the url found in the first place. Working them mixed
+     together means changing task on every row.
+
+     Client-side on purpose. The set is 91 rows, the server already sent all
+     of them, and a round trip per chip would be slower than the filter it
+     replaces. The counts come off the items actually loaded, so they cannot
+     drift from what is on screen. */
+  if (key === 'sweeps' && items.length) {
+    const KINDS = [['', 'Everything'], ['ready', 'Ready to read'],
+                   ['menu', 'Wrong url'], ['blocked', 'Blocked'],
+                   ['no_directory', 'No directory found']];
+    const bar = el('div', 'seg'); bar.style.margin = '0 0 14px';
+    KINDS.forEach(([k, label]) => {
+      const n = k ? items.filter(i => i.kind === k).length : items.length;
+      if (k && !n) return;                       // no chip for an empty kind
+      const b = el('button', null, `${label} ${n.toLocaleString()}`);
+      b.setAttribute('aria-pressed', String((SWEEP_KIND || '') === k));
+      b.onclick = () => {
+        SWEEP_KIND = k;
+        [...bar.children].forEach(x =>
+          x.setAttribute('aria-pressed', String(x === b)));
+        drawQueue(key, k ? items.filter(i => i.kind === k) : items, body);
+      };
+      bar.appendChild(b);
+    });
+    v.appendChild(bar);
+  }
+
   /* The cap notice for queues that render no queueHead. It lived only inside
      queueHead, which only queues with a named end state or a belt get - so
      founded (644) and unclassified (456) served 400 rows with nothing on the
@@ -1180,11 +1211,20 @@ async function show(key) {
   // drawQueue clears the body before it draws.
   if (key === 'users') v.appendChild(usersForm());
   v.appendChild(body);
-  drawQueue(key, items, body);
+  drawQueue(key,
+    (key === 'sweeps' && SWEEP_KIND)
+      ? items.filter(i => i.kind === SWEEP_KIND)
+      : items,
+    body);
 }
 
 /* The named end state, on the header where it can be seen. A bar that fills
    toward "Clean shelves" finishes; a percentage does not. */
+/* Which kind of conference floor is on screen. A way of looking, not a
+   filter on the data, so it is not in the url - same rule the conferences
+   tab follows for list-versus-cards. */
+let SWEEP_KIND = '';
+
 function queueHead(key, res, body) {
   const h = el('div', 'qhead');
   const top = el('div', 'qtop');
