@@ -4,7 +4,7 @@
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "School & District Leadership What school leaders should measure during the first month of AI adoption Learn what school leaders should measure during the first month of AI adoption, from usage and saf",
+   "headline": "What school leaders should measure during the first month of AI adoption",
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/what-school-leaders-should-measure-during-first-month-ai-adoption"
@@ -37,10 +37,19 @@
    "url": "https://schoolai.com/blog/how-to-tell-if-edtech-is-working"
   },
   {
+   "date": "2026-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "give yourself a month",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/managing-ai-implementation-in-schools"
+  },
+  {
    "date": "2026-07-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "tools don't share data",
+   "headline": "Understanding which tools teachers use: A guide to educational technology tools",
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/understanding-which-tools-teachers-use"
@@ -49,7 +58,7 @@
    "date": "2026-07-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "How to measure whether your classroom technology is actually working",
+   "headline": "Classroom technology usage data",
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/classroom-technology-usage-data"
@@ -64,49 +73,40 @@
    "url": "https://schoolai.com/blog/new-features-2026-2027"
   },
   {
-   "date": "2026-02-02",
+   "date": "2026-07-02",
    "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Sign 3: learning moves at each student's actual pace",
+   "first_seen": "2026-09-10",
+   "headline": "District AI Rollout Plan, Rolling Out AI Across a School District",
    "kind": "contract",
-   "kind_rule": "Sign",
-   "url": "https://schoolai.com/blog/exit-tickets-amplify-real-time-student-feedback"
+   "kind_rule": "Rollout",
+   "url": "https://schoolai.com/blog/digital-tools-for-school-districts"
   },
   {
-   "date": "2026-02-02",
+   "date": "2026-06-30",
    "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "liability instead of an asset",
+   "first_seen": "2026-09-10",
+   "headline": "frameworks to manage it responsibly",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://schoolai.com/blog/avoid-tech-fatigue-choose-best-ai-tools-school"
+   "url": "https://schoolai.com/blog/ai-guardrails-keeping-students-safe-and-learning-on-track"
   },
   {
-   "date": "2026-01-29",
+   "date": "2026-06-15",
    "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "AI writing assistants comparison: Why purpose-built tools outperform general LLMs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://schoolai.com/blog/save-time-maximize-efficiency-ai-powered-essay-graders"
+   "first_seen": "2026-09-10",
+   "headline": "rollout practices that make adoption stick",
+   "kind": "contract",
+   "kind_rule": "rollout",
+   "url": "https://schoolai.com/blog/district-wide-technology-rollout-strategies"
   },
   {
-   "date": "2026-01-20",
+   "date": "2026-06-08",
    "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "5 strategies for using AI to personalize learning",
+   "first_seen": "2026-09-10",
+   "headline": "Tools built with student privacy protections in mind from the start",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://schoolai.com/blog/tools-strategies-ai-differentiate-instruction-personalize-learning"
-  },
-  {
-   "date": "2026-01-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "The principal's AI evaluation checklist for selecting school AI tools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://schoolai.com/blog/guide-principal-ai-evaluation-checklist-choosing-best-ai-tools"
+   "url": "https://schoolai.com/blog/ai-tools-with-student-privacy-protections"
   }
  ]
 }

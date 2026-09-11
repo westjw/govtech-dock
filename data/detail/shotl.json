@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2025-10-25",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-10",
+   "headline": "Sense by Mybuxi: a new area, real results \u2014 powered by Shotl",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://shotl.com/news/sense-by-mybuxi-a-new-area-real-results-powered-by-shotl"
+  },
+  {
+   "date": "2025-06-28",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "Mybuxi and Shotl launch a new on-demand mobility service in Maur (Zurich)",
+   "kind": "product",
+   "kind_rule": "launch",
+   "url": "https://shotl.com/news/mybuxi-and-shotl-launch-a-new-on-demand-mobility-service-in-maur-zurich"
+  },
+  {
    "date": "2024-11-04",
    "date_source": "near-h1",
    "first_seen": "2026-09-09",
@@ -8,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://shotl.com/news/baix-empordas-cliccat-service"
+  },
+  {
+   "date": "2018-12-03",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-10",
+   "headline": "Improving mobility in smaller towns",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://shotl.com/news/improving-mobility-in-smaller-towns"
   }
  ]
 }

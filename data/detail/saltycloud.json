@@ -46,13 +46,22 @@
    "url": "https://www.saltycloud.com/blog/what-is-cjis/"
   },
   {
-   "date": "2026-06-25",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Where the Policy Stands Right Now",
+   "date": "2026-07-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Cybersecurity Maturity Model Certification",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.saltycloud.com/blog/nist-csf/"
+   "url": "https://www.saltycloud.com/blog/everything-about-the-cmmc-complete-cmmc-guide/"
+  },
+  {
+   "date": "2026-07-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "NIST SP 800-171 Rev 2",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.saltycloud.com/blog/nist-800-171/"
   },
   {
    "date": "2026-06-18",
@@ -91,22 +100,13 @@
    "url": "https://www.saltycloud.com/resources/nist-csf-scorecard/"
   },
   {
-   "date": "2025-05-11",
+   "date": "2026-03-13",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Conducting an IT Security Risk Assessment, 2025 Complete Guide",
+   "first_seen": "2026-09-09",
+   "headline": "Where the Policy Stands Right Now",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.saltycloud.com/blog/it-security-risk-assessment/"
-  },
-  {
-   "date": "2025-04-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "information security risk management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.saltycloud.com/blog/building-an-information-security-risk-management-isrm-program-complete-guide/"
+   "url": "https://www.saltycloud.com/blog/nist-csf/"
   }
  ]
 }

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "The dawn of hybrid workforce management: A WFM leader\u2019s guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nice.com/resources/the-dawn-of-hybrid-workforce-management-a-wfm-leaders-guide"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Brochure NiCE World 2026 Innovation Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nice.com/resources/nice-world-2026-innovation-guide"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -89,24 +107,6 @@
    "kind": "contract",
    "kind_rule": "Award",
    "url": "https://www.nice.com/resources/metristar-top-customer-sentiment-award-workforce-engagement-management-suites"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "MetriStar Top Provider Award: Agent Assist Applications",
-   "kind": "contract",
-   "kind_rule": "Award",
-   "url": "https://www.nice.com/resources/metristar-top-provider-award-agent-assist-applications"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "MetriStar Top Provider Award: Contact Center-as-a-Service Platforms",
-   "kind": "contract",
-   "kind_rule": "Award",
-   "url": "https://www.nice.com/resources/metristar-top-provider-award-contact-center-as-a-service-platforms"
   }
  ],
  "profile": {

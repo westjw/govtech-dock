@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "Switzerland will soon get its first IBM Quantum System Two",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/quantum/blog/swiss-innovation-hub"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "Switzerland will soon get its first IBM Quantum System Two",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://research.ibm.com/quantum/blog/swiss-innovation-hub"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
@@ -79,7 +97,7 @@
    "headline": "What Anthropic\u2019s J-space research means for the future of AI",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.ibm.com/think/news/what-anthropic-j-space-research-means-future-ai?lnk=hprc2us"
+   "url": "https://www.ibm.com/think/news/what-anthropic-j-space-research-means-future-ai"
   },
   {
    "date": "2026-08-11",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ibm.com/think/news/claude-can-reason-can-it-feel"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Researchers demonstrate quantum advantage through trusted quantum computation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://research.ibm.com/quantum/blog/quantum-advantage"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "What are spin qubits?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/quantum/blog/spin-qubits"
   }
  ]
 }

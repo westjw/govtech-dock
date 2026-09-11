@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "What Makes Budget Planning Software for Schools Different?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.linq.com/blog/what-makes-budget-planning-software-for-schools-different/"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "How to Close Direct Certification Gaps and Maximize School Funding",
+   "kind": "funding",
+   "kind_rule": "Funding",
+   "url": "https://www.linq.com/blog/how-to-close-direct-certification-gaps-and-maximize-school-funding/"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.linq.com/blog/breakfast-in-the-classroom-minus-the-paper-chase/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Nobody Wants a Bad Audit: What Compliance Really Means for a K-12 CFO",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.linq.com/blog/nobody-wants-a-bad-audit-what-compliance-really-means-for-a-k-12-cfo/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Simplifying Free and Reduced-Price Meal Applications for Families and Staff",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.linq.com/blog/simplifying-the-free-and-reduced-price-meal-applications-for-families-and-staff/"
   }
  ]
 }

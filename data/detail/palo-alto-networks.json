@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Secure AI Coding: Governing every agent, artifact, and identity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.paloaltonetworks.com/blog/2026/09/secure-ai-coding-governing-every-agent-artifact-and-identity/"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Palo Alto Networks Named a Leader in the 2026 Gartner\u00ae Magic Quadrant\u0212...",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.paloaltonetworks.com/blog/2026/09/palo-alto-networks-named-a-leader-in-the-2026-gartner-magic-quadrant-for-hybrid-mesh-firewall-securing-every-environment-at-the-speed-of-frontier-ai/"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.paloaltonetworks.com/blog/2026/08/prisma-airs-unified-data-protection-for-claude/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Redefining Network Security for the Frontier AI Era",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.paloaltonetworks.com/blog/2026/08/redefining-network-security-for-the-frontier-ai-era/"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Introducing Unit 42 Threat Intelligence: Know What Matters, Understand the Adversary, and Act Faster",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.paloaltonetworks.com/blog/2026/08/introducing-unit-42-threat-intelligence-know-what-matters-understand-the-adversary-and-act-faster/"
   }
  ],
  "profile": {

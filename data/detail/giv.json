@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-04-14",
-   "date_source": "card-date",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Why consistency is the foundation of quality care",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-04-06",
-   "date_source": "card-date",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "DSP retention and technology: Supporting the workforce that delivers care",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-03-27",
-   "date_source": "card-date",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "EMR in behavioral health: What providers need to know",
    "kind": "press",
@@ -29,12 +29,21 @@
   },
   {
    "date": "2026-03-17",
-   "date_source": "card-date",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "What is Behavioral Health EHR software?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://givhealthcare.com/blog/articles/what-is-behavioral-health-ehr-software"
+  },
+  {
+   "date": "2024-12-10",
+   "date_source": "time",
+   "first_seen": "2026-09-10",
+   "headline": "How to access Medicaid for IDD?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://givhealthcare.com/blog/articles/how-to-access-medicaid-for-idd"
   },
   {
    "date": "2024-11-04",
@@ -44,6 +53,33 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://givhealthcare.com/blog/articles/how-much-does-idd-software-cost"
+  },
+  {
+   "date": "2024-11-04",
+   "date_source": "time",
+   "first_seen": "2026-09-10",
+   "headline": "How does IDD software help group home care?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://givhealthcare.com/blog/articles/how-does-idd-software-help-group-home-care"
+  },
+  {
+   "date": "2024-10-28",
+   "date_source": "time",
+   "first_seen": "2026-09-10",
+   "headline": "What is IDD software?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://givhealthcare.com/blog/articles/what-is-idd-software"
+  },
+  {
+   "date": "2024-10-28",
+   "date_source": "time",
+   "first_seen": "2026-09-10",
+   "headline": "Why do you need IDD software?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://givhealthcare.com/blog/articles/why-do-you-need-idd-software"
   }
  ]
 }

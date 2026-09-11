@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "og:published",
+   "first_seen": "2026-09-10",
+   "headline": "Proofpoint Expands AI-Powered Investigations to Microsoft 365 and Deepens Insider Risk Visibility into AI Activity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.proofpoint.com/uk/newsroom/press-releases/proofpoint-expands-ai-powered-investigations-microsoft-365-and-deepens"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "og:published",
+   "first_seen": "2026-09-10",
+   "headline": "Proofpoint ampl\u00eda las investigaciones impulsadas por IA a Microsoft 365 y profundiza la visibilidad sobre el riesgo interno asociado a la actividad de IA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.proofpoint.com/es/newsroom/press-releases/proofpoint-amplia-las-investigaciones-impulsadas-por-ia-microsoft-365-y"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "og:published",
+   "first_seen": "2026-09-10",
+   "headline": "Proofpoint enrichit ses fonctionnalit\u00e9s d'investigation aliment\u00e9es par l'IA pour Microsoft 365 et approfondit la visibilit\u00e9 des risques internes li\u00e9s \u00e0 l'activit\u00e9 IA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.proofpoint.com/fr/newsroom/press-releases/proofpoint-enrichit-ses-fonctionnalites-dinvestigation-alimentees-par-lia"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "og:published",
+   "first_seen": "2026-09-10",
+   "headline": "Proofpoint estende le indagini basate su AI a Microsoft 365 e aumenta la visibilit\u00e0 sui rischi interni nelle attivit\u00e0 di AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.proofpoint.com/it/newsroom/press-releases/proofpoint-estende-le-indagini-basate-su-ai-microsoft-365-e-aumenta-la"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "og:published",
+   "first_seen": "2026-09-10",
+   "headline": "Proofpoint erweitert KI-gest\u00fctzte Untersuchungen auf Microsoft 365 und verbessert Einsicht in Insider-Risiken durch KI-Nutzung",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.proofpoint.com/de/newsroom/press-releases/proofpoint-erweitert-ki-gestuetzte-untersuchungen-auf-microsoft-365-und"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "time",
    "first_seen": "2026-09-09",
@@ -8,6 +53,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.proofpoint.com/uk/blog/corporate-news"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "og:published",
+   "first_seen": "2026-09-10",
+   "headline": "Proofpoint Expands AI-Powered Investigations to Microsoft 365 and Deepens Insider Risk Visibility into AI Activity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.proofpoint.com/us/newsroom/press-releases/proofpoint-expands-ai-powered-investigations-microsoft-365-and-deepens"
   },
   {
    "date": "2026-09-08",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.proofpoint.com/au/newsroom/press-releases/pressure-mounts-australian-security-leaders-cyber-fears-rise-and-ai-mandates"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "og:published",
-   "first_seen": "2026-09-10",
-   "headline": "Proofpoint 2026 Voice of the CISO Report Finds 93% of CISOs in India Rank Human Risk as Biggest Vulnerability, as AI Expands Their Mandate",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.proofpoint.com/au/newsroom/press-releases/proofpoint-2026-voice-ciso-report-finds-93-cisos-india-rank-human-risk"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "og:published",
-   "first_seen": "2026-09-09",
-   "headline": "08 Sep Proofpoint Strengthens Executive Leadership Team with Appointment of Chief Legal Officer and Chief People Officer",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.proofpoint.com/us/newsroom/press-releases/proofpoint-exec-leadership-appointment-clo-cpo"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "og:published",
-   "first_seen": "2026-09-09",
-   "headline": "English: Europe, Middle East, Africa",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.proofpoint.com/uk/newsroom/press-releases/proofpoint-soc-analyst-agent-openai-daybreak"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Read the press release",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.proofpoint.com/us/newsroom/press-releases/proofpoint-soc-analyst-agent-openai-daybreak"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "og:published",
-   "first_seen": "2026-09-09",
-   "headline": "09 Sep Proofpoint 2026 Voice of the CISO Report Finds Cyber Resilience Improving, While AI Expands the CISO Mandate",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.proofpoint.com/us/newsroom/press-releases/proofpoint-2026-voice-ciso-report-finds-cyber-resilience-improving-while-ai"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "og:published",
-   "first_seen": "2026-09-09",
-   "headline": "English: Europe, Middle East, Africa",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.proofpoint.com/uk/newsroom/press-releases/proofpoint-joins-google-unified-security-recommended-program-help"
   }
  ]
 }

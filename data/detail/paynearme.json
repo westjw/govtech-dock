@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "How A Top 20 Bank Transformed Payments into a Strategic Advantage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://home.paynearme.com/blog/how-a-top-20-bank-transformed-payments-into-a-strategic-advantage/"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Why Payment Experience Management Will Determine Which Credit Unions Win the Next Generation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://home.paynearme.com/blog/why-payment-experience-management-will-determine-which-credit-unions-win-the-next-generation/"
+  },
+  {
+   "date": "2026-08-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Spotlight Series: A Conversation with Carley Parker",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://home.paynearme.com/blog/spotlight-series-a-conversation-with-carley-parker/"
+  },
+  {
    "date": "2026-06-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -10,6 +37,15 @@
    "url": "https://home.paynearme.com/resources/the-payment-experience-gap/"
   },
   {
+   "date": "2025-05-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "The Impact of Payment Experience on Toll Revenue Leakage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://home.paynearme.com/resources/the-impact-of-payment-experience-on-toll-revenue-leakage/"
+  },
+  {
    "date": "2025-02-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -17,6 +53,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://home.paynearme.com/resources/beyond-transaction-fees/"
+  },
+  {
+   "date": "2024-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Understanding Generational Loan Payment Preferences",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://home.paynearme.com/resources/understanding-generational-loan-payment-preferences/"
   },
   {
    "date": "2024-08-20",

@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Big Rapids Built a New K-5 Literacy Framework in One Day with Panorama Solara",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.panoramaed.com/blog/success-stories-big-rapids"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Spring ISD Met Texas's Tiered Funding Deadline with Panorama Solara",
+   "kind": "funding",
+   "kind_rule": "Funding",
+   "url": "https://www.panoramaed.com/blog/success-story-spring-isd"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From 61% to 90% Daily Attendance: How Earlville Reversed Chronic Absenteeism in High School",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.panoramaed.com/blog/success-story-earlville"
+  },
+  {
    "date": "2026-08-06",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -10,31 +37,13 @@
    "url": "https://www.panoramaed.com/blog/success-story-boardman"
   },
   {
-   "date": "2026-08-04",
+   "date": "2026-07-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Panorama Student Success Earns Research-Based Learning Analytics Certification from Digital Promise",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.panoramaed.com/blog/panorama-student-success-earns-research-based-certification-digital-promise"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Big Rapids Built a New K-5 Literacy Framework in One Day with Panorama Solara",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.panoramaed.com/blog/success-stories-big-rapids"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Build Personalized Graduation Plans [+ Free Template]",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.panoramaed.com/blog/how-to-build-individual-graduation-plans-free-template"
   },
   {
    "date": "2026-07-23",
@@ -49,19 +58,10 @@
    "date": "2026-07-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Special Education at Scale: How Spring ISD Met Texas's Tiered Funding Deadline with Panorama Solara",
-   "kind": "funding",
-   "kind_rule": "Funding",
-   "url": "https://www.panoramaed.com/blog/success-story-spring-isd"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From 61% to 90% Daily Attendance: How Earlville Reversed Chronic Absenteeism in High School",
+   "headline": "How to Build Personalized Graduation Plans [+ Free Template]",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.panoramaed.com/blog/success-story-earlville"
+   "url": "https://www.panoramaed.com/blog/how-to-build-individual-graduation-plans-free-template"
   },
   {
    "date": "2026-07-06",
@@ -73,40 +73,40 @@
    "url": "https://www.panoramaed.com/blog/ai-platform-of-the-year-2026-edtech-breakthrough-awards"
   },
   {
-   "date": "2026-06-03",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "John Danielson, Accomplished Education Leader, Joins Board of Directors at Panorama June 3, 2026 --> Education policy veteran John Danielson joins Panorama Education's board, bringing 30+ years of exp",
-   "kind": "leadership",
-   "kind_rule": "Board of Directors",
-   "url": "https://www.panoramaed.com/blog/john-danielson-joins-board-of-directors"
-  },
-  {
-   "date": "2026-04-24",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Leading with Intention: AI in Practice at Pecos-Barstow-Toyah ISD April 24, 2026 --> Discover how Pecos-Barstow-Toyah ISD effectively integrated AI into teaching, saving time and enhancing lesson plan",
+   "date": "2026-07-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Panorama Solara Named 2026 EdTech AI Platform of the Year by EdTech Breakthrough",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.panoramaed.com/blog/success-story-pecos-barstow-toyah"
+   "url": "https://www.panoramaed.com/blog/panorama-solara-named-2026-edtech-ai-platform-of-the-year-by-edtech-breakthrough"
   },
   {
-   "date": "2026-03-12",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Turning AI Strategy into Schoolwide Practice: Takeaways from Panorama\u2019s Virtual Summit for District & School Leaders March 12, 2026 --> Discover key takeaways from Panorama\u2019s virtual summit on impleme",
+   "date": "2026-06-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "AI Can Accelerate HQIM Implementation\u2014With These 6 Conditions in Place",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.panoramaed.com/blog/summit-takeaways-for-district-school-leaders"
+   "url": "https://www.panoramaed.com/blog/how-ai-can-accelerate-hqim-implementation"
   },
   {
-   "date": "2026-02-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Panorama Earns Top Privacy Rating from Common Sense February 10, 2026 --> Panorama Education earns the Common Sense Privacy Seal, affirming its commitment to rigorous data privacy and security standar",
+   "date": "2026-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "6 AI Tool Use Cases That Are Transforming Special Education (And How to Build Them)",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.panoramaed.com/blog/panorama-earns-top-privacy-rating-from-common-sense"
+   "url": "https://www.panoramaed.com/blog/special-education-ai-use-cases"
+  },
+  {
+   "date": "2026-06-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "The 8-Step Framework Special Ed Directors Use to Build Custom AI Tools (That Actually Fit Your District)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.panoramaed.com/blog/the-8-step-framework-special-ed-directors-use-to-build-custom-ai-tools"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "When Should Post-Incident Training Happen at Schools?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/blog/post-incident-training-for-schools/"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://raptortech.com/resources/blog/alyssas-law-illinois/"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "The Dangers of Online Gaming for Children: Grooming and Radicalization",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/blog/dangers-of-online-gaming/"
   }
  ],
  "profile": {

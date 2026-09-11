@@ -1,7 +1,34 @@
 {
  "news": [
   {
-   "date": "2026-09-03",
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Securing the Future of Small Water Systems: A Conversation with Scott Huckaby of Talbot County, GA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.120water.com/blog/securing-the-future-of-small-water-systems-a-conversation-with-scott-huckaby-of-talbot-county-ga"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Starting Your LCRI Journey",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.120water.com/blog/starting-your-lcri-journey"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Life After Inventory, When LCRR Compliance Really Starts.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.120water.com/blog/life-after-inventory"
+  },
+  {
+   "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Celebrating Our Customers: 120Water Clients Honored by the LSLR Collaborative",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.120water.com/blog/from-reactive-to-proactive-closing-the-water-compliance-gap"
-  },
-  {
-   "date": "2025-11-18",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "120Water Launches Sample Manager to Bring Confidence and Predictability to Compliance",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.120water.com/news/120water-launches-sample-manager-to-bring-confidence-and-predictability-to-compliance"
-  },
-  {
-   "date": "2025-11-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Securing the Future of Small Water Systems: A Conversation with Scott Huckaby of Talbot County, GA",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.120water.com/blog/securing-the-future-of-small-water-systems-a-conversation-with-scott-huckaby-of-talbot-county-ga"
-  },
-  {
-   "date": "2025-11-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Starting Your LCRI Journey",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.120water.com/blog/starting-your-lcri-journey"
   }
  ],
  "profile": {

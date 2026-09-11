@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Nutanix Recognized as a Leader in the Gartner\u00ae Magic Quadrant\u2122 for Distributed Hybrid Infrastructure",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/nutanix-recognized-as-leader-in-gartner-magic-quadrant-for-distributed-hybrid-infrastructure"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -46,6 +55,15 @@
    "url": "https://www.nutanix.com/ja/blog/nutanix-support-for-azure-virtual-desktop-hybrid-is-now-generally-available"
   },
   {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Use Cases: AI ML",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/ja/blog/neoclouds-vs-hyperscalers"
+  },
+  {
    "date": "2026-08-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.nutanix.com/blog/introducing-nkp-metal"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Agentic AI Needs an Operating Model, Not Just an Application Stack",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nutanix.com/blog/agentic-ai-needs-an-operating-model-not-just-an-application-stack"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Don't Let Hardware Stall Modernization: A Practical Playbook for Beating the Supply Chain Squeeze",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nutanix.com/blog/dont-let-hardware-stall-modernization-a-practical-playbook-for-beating-the-supply-chain-squeeze"
   }
  ],
  "profile": {

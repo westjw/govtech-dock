@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "The Body Camera Council Presentation: A Chief\u2019s Plain-English Budget Defense Packet for FY 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lenslock.com/post/body-camera-council-presentation"
+  },
+  {
    "date": "2026-08-17",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -35,6 +44,42 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lenslock.com/post/body-camera-platform-slowing-down-department"
+  },
+  {
+   "date": "2026-03-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Digital Evidence Management Guide for Law Enforcement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lenslock.com/post/digital-evidence-management-guide"
+  },
+  {
+   "date": "2026-02-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Open vs. Closed: Why Your Evidence Should Never Be Held Hostage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lenslock.com/post/open-vs-closed-why-your-evidence-should-never-be-held-hostage"
+  },
+  {
+   "date": "2025-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "From Demo to Deployment: Your Complete LensLock Customer Journey for Police Body Cameras",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lenslock.com/post/from-demo-to-deployment-your-complete-lenslock-customer-journey-for-police-body-cameras"
+  },
+  {
+   "date": "2023-01-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Microsoft Azure Government Cloud",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lenslock.com/post/data-storage-on-premise-vs-cloud"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Degree Audit: What It Is, How It Works, and How Universities Can Automate It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/degree-audit/"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -64,6 +73,24 @@
    "url": "https://goedmo.com/blog/how-university-admissions-work/"
   },
   {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "AI in Higher Education Admissions: A Complete Guide for Universities and Colleges",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/ai-in-higher-education-admissions/"
+  },
+  {
+   "date": "2026-07-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "How to Evaluate Admission Applications Faster",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/how-to-evaluate-student-applications-faster/"
+  },
+  {
    "date": "2026-07-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -73,40 +100,13 @@
    "url": "https://goedmo.com/blog/press/podcast/"
   },
   {
-   "date": "2026-07-03",
+   "date": "2026-07-09",
    "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Looking Beyond Slate CRM? Top Alternatives for Universities",
+   "first_seen": "2026-09-10",
+   "headline": "HubSpot CRM vs Slate for Admissions: A Complete Comparison Guide",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://goedmo.com/blog/slate-crm-alternatives/"
-  },
-  {
-   "date": "2026-06-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Student Copilot Just Got Smarter: Introducing SMS Support for Enrollment Conversations",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://goedmo.com/blog/student-copilot-supports-sms-texting/"
-  },
-  {
-   "date": "2026-06-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How Different Grading Systems Convert to GPA: A Practical Guide for Admission Staff",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/how-different-grading-systems-converts-to-gpa/"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "EDMO Launches Email Doc Extractor to Automate Admissions Document Processing",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://goedmo.com/blog/edmo-launches-email-doc-extractor-to-automate-admissions-document-processing/"
+   "url": "https://goedmo.com/blog/hubspot-vs-slate-for-admissions/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Competitive bidding and more: A DME briefing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/competitive-bidding-and-more-a-dme-briefing/"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/new-employment-guidelines-every-employer-must-know-your-wellsky-covid-19-weekly-briefing/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Five ways long-term care administrators can foster healthy stress management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/five-ways-long-term-care-administrators-can-foster-healthy-stress-management/"
   }
  ]
 }

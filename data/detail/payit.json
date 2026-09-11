@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "AI transparency is key for local governments, residents say",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://payitgov.com/news/ai-transparency-is-key-for-local-governments-residents-say/"
+  },
+  {
    "date": "2026-09-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "AI Search Emerges as Top-3 Way Gen Z Finds Government Services",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "As State and Local Government Enters the AI Era, New Research Charts the Path to 90%+ Adoption of Digital Services",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-07-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "GR PayIt continues to improve convenience and access for Grand Rapids residents",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-03-11",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How better reporting improves efficiency in government agencies",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2025-12-04",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "2026 government technology trend predictions",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2025-10-09",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Ins and outs of government payment processing admin portals",
    "kind": "press",

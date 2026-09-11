@@ -1,139 +1,132 @@
 {
-  "date": "2026-09-09",
-  "previous": "2026-09-08",
+  "date": "2026-09-10",
+  "previous": "2026-09-09",
   "changes": [
     {
-      "company": "Matterhorn (Court Innovations)",
-      "id": "matterhorn",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive"
-    },
-    {
-      "company": "DroneShield",
-      "id": "droneshield",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Business Development Manager - LAT (S\u00e3o Paulo, Brazil)"
-    },
-    {
-      "company": "Blue Voice",
-      "id": "blue-voice",
+      "company": "Greyparrot",
+      "id": "greyparrot",
       "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Director of Sales only"
+    },
+    {
+      "company": "Token Transit",
+      "id": "token-transit",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "GOGov",
+      "id": "gogov",
+      "from": "Sales (non-AE)",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "ICC Innovation",
-      "id": "icc-innovation",
+      "company": "GUARDIAN RFID",
+      "id": "guardian-rfid",
       "from": "Unknown",
       "to": "None found",
       "note": ""
+    },
+    {
+      "company": "GameChanger",
+      "id": "gamechanger",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Account Manager (GameChanger Remote)"
     },
     {
       "company": "Collins Aerospace, An RTX Business",
       "id": "collins-aerospace-an-rtx-business",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "HTTP 500 for https://www.collinsaerospac"
-    },
-    {
-      "company": "Upper Hand",
-      "id": "upper-hand",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Dominion Voting Systems",
-      "id": "dominion-voting-systems",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Sparkrock",
-      "id": "sparkrock",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Momentus Technologies",
-      "id": "momentus-technologies",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Director of Solutions Engineering only"
-    },
-    {
-      "company": "InitLive (Bloomerang Volunteer)",
-      "id": "initlive",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive Level 2 (Remote, US)"
-    },
-    {
-      "company": "ParkHub",
-      "id": "parkhub",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Associate Account Executive (Dallas)"
-    },
-    {
-      "company": "mdf commerce",
-      "id": "mdf-commerce",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive (United States)"
-    },
-    {
-      "company": "Singlewire Software",
-      "id": "singlewire-software",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Hidden Level",
-      "id": "hidden-level",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "CenterEdge Software",
-      "id": "centeredge-software",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Veovo",
-      "id": "veovo",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Sales Director Americas (US-based within th)"
-    },
-    {
-      "company": "Vanderlande",
-      "id": "vanderlande",
       "from": "Unknown",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "GCR (Woolpert)",
-      "id": "gcr",
+      "company": "Stack Sports",
+      "id": "stack-sports",
       "from": "Unknown",
-      "to": "Yes",
-      "note": "Senior Account Executive"
+      "to": "None found",
+      "note": ""
     },
     {
-      "company": "Ad Astra Information Systems",
-      "id": "ad-astra-information-systems",
+      "company": "Upper Hand",
+      "id": "upper-hand",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Player's Health",
+      "id": "player-s-health",
       "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Edmunds GovTech",
+      "id": "edmunds-govtech",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Ecopia AI",
+      "id": "ecopia-ai",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Skyward",
+      "id": "skyward",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Technical Special only"
+    },
+    {
+      "company": "In-Situ",
+      "id": "in-situ",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 520 for https://in-situ.com/careers"
+    },
+    {
+      "company": "Vanderlande",
+      "id": "vanderlande",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "IQGeo",
+      "id": "iqgeo",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Sales Engineer only"
+    },
+    {
+      "company": "BibliU",
+      "id": "bibliu",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
+    },
+    {
+      "company": "Panorama Education",
+      "id": "panorama-education",
+      "from": "Unknown",
       "to": "Yes",
-      "note": "Account Executive (Expansion) (Overland Park, KS,)"
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Nutrislice",
+      "id": "nutrislice",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     }
   ]
 }

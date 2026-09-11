@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "44 Weeds: The Hidden Value of Non-Hazard Data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.illuminex.ai/post/44-weeds-the-hidden-value-of-non-hazard-data"
+  },
+  {
    "date": "2026-06-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.illuminex.ai/post/advancing-airport-safety-how-ai-can-help-airports-improve-fod-detection-management"
-  },
-  {
-   "date": "2025-01-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI Inspections Aren\u2019t Set-and-Forget. Why Vendor Support and Expertise Matter",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.illuminex.ai/post/ai-inspections-aren-t-set-and-forget-why-vendor-support-and-expertise-matter"
   }
  ]
 }

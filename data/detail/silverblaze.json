@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-08-12",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-09-05",
    "headline": "AI Chatbots for Utilities: Cut Call Volume Without Losing the Human Touch",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-07-24",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-09-05",
    "headline": "How Modern Utility Billing Software Handles Complex Rate Structures: Time-of-Use, Tiered, and Demand Charges",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-06-24",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-09-05",
    "headline": "Understanding the Value of a Utility Billing System",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-06-05",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-09-05",
    "headline": "How an Outage Management System Improves Utility Response",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-05-14",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-09-05",
    "headline": "How AMI Utility Data Supports Better Decision Making",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-05-06",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How Utility Billing Solutions Improve Efficiency with Real-Time Data and Cloud Integration",
    "kind": "press",

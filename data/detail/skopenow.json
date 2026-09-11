@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Skopenow Partners with Esri to Integrate Grid with ArcGIS",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.skopenow.com/news/skopenow-partners-esri"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.skopenow.com/news/networks-and-techniques-of-money-launderers"
-  },
-  {
-   "date": "2026-02-06",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Event Security: Using OSINT to Improve Safety and Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.skopenow.com/news/event-security-using-osint-to-improve-safety-and-operations"
   }
  ],
  "profile": {

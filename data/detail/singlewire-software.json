@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "New Data Shows How K-12 Schools Use Critical Communication Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.singlewire.com/news/data-shows-how-k12-schools-use-critical-communication-systems"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "implements",
    "url": "https://www.singlewire.com/news/anaheim-school-district-implements-wearable-safety-badge"
-  },
-  {
-   "date": "2026-05-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Accountability Gap: Why Analog Hall Passes Fail Under Pressure",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.singlewire.com/blog/why-analog-hall-passes-fail"
   }
  ]
 }

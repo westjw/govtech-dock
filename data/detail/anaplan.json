@@ -1,13 +1,22 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-10",
+   "headline": "Anaplan Achieves ISO/IEC 42001 Certification for Responsible AI Governance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anaplan.com/news/anaplan-achieves-iso-iec42001-certification-for-responsible-ai-governance/"
+  },
+  {
    "date": "2026-09-01",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Anaplan Opens First Customer Experience Center in APAC as Part of Multi-Million-Dollar Expansion",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.anaplan.com/news/anaplan-opens-first-customer-experience-center-in-apac"
+   "url": "https://www.anaplan.com/news/anaplan-opens-first-customer-experience-center-in-apac/"
   },
   {
    "date": "2026-07-14",
@@ -16,7 +25,7 @@
    "headline": "Anaplan Expands Collaboration with Google Cloud to Advance AI-Driven Decision-Making for Businesses in France",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.anaplan.com/news/anaplan-extends-collaboration-with-google-cloud-in-france"
+   "url": "https://www.anaplan.com/news/anaplan-extends-collaboration-with-google-cloud-in-france/"
   },
   {
    "date": "2026-07-09",
@@ -44,6 +53,15 @@
    "kind": "product",
    "kind_rule": "Introduces",
    "url": "https://www.anaplan.com/news/anaplan-introduces-the-agentic-enterprise/"
+  },
+  {
+   "date": "2026-06-30",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-10",
+   "headline": "Anaplan Introduces the Agentic Enterprise, a Trusted AI-Driven Decision Infrastructure That Drives Efficient Resource Allocation and Increased Decision Quality and Velocity at Scale",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://www.anaplan.com/news/anaplan-introduces-the-agentic-enterprise.html"
   },
   {
    "date": "2026-06-23",

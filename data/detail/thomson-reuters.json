@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "og:published",
+   "first_seen": "2026-09-10",
+   "headline": "5 questions to ask tax software vendors before October 15",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://tax.thomsonreuters.com/blog/5-questions-to-ask-tax-software-vendors-before-october-15/"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "og:published",
+   "first_seen": "2026-09-10",
+   "headline": "Senators decry Treasury refusal to amend private jet valuation rule",
+   "kind": "funding",
+   "kind_rule": "valuation",
+   "url": "https://tax.thomsonreuters.com/news/senators-decry-treasury-refusal-to-amend-private-jet-valuation-rule/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "og:published",
+   "first_seen": "2026-09-10",
+   "headline": "Bipartisan duo seek to ensure nonprofit status does not constitute \u2018government handout\u2019",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://tax.thomsonreuters.com/news/bipartisan-duo-seek-to-ensure-nonprofit-status-does-not-constitute-government-handout/"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "og:published",
    "first_seen": "2026-09-09",
@@ -17,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://tax.thomsonreuters.com/blog/the-real-reason-automated-retail-indirect-tax-compliance-still-feels-reactive/"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "og:published",
+   "first_seen": "2026-09-10",
+   "headline": "Groups urge Tax Court to halt interest on pre-COVID debts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://tax.thomsonreuters.com/news/groups-urge-tax-court-to-halt-interest-on-pre-covid-debts/"
   },
   {
    "date": "2026-09-03",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://tax.thomsonreuters.com/blog/3-stages-of-the-indirect-tax-transaction-lifecycle-where-retail-compliance-gets-complicated/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "og:published",
-   "first_seen": "2026-09-09",
-   "headline": "From hours to minutes: How AI changes HS product classification and trade research",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://tax.thomsonreuters.com/blog/from-hours-to-minutes-how-ai-is-revolutionalizing-hs-product-classification/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "og:published",
-   "first_seen": "2026-09-09",
-   "headline": "The e-invoicing readiness gap most retailers don\u2019t see coming",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://tax.thomsonreuters.com/blog/the-e-invoicing-readiness-gap-most-retailers-dont-see-coming/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "og:published",
-   "first_seen": "2026-09-10",
-   "headline": "6 common tax AI implementation mistakes (and how to avoid them)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://tax.thomsonreuters.com/blog/6-common-tax-ai-implementation-mistakes-and-how-to-avoid-them/"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "og:published",
-   "first_seen": "2026-09-10",
-   "headline": "How ONESOURCE and Orbitax turn Pillar Two compliance into an automated process",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://tax.thomsonreuters.com/blog/how-onesource-and-orbitax-turn-pillar-two-compliance-into-an-automated-process/"
   }
  ]
 }

@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "How Family Segmentation Turns Attendance Data Into Action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.schoolstatus.com/blog/family-segmentation-attendance"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Family Engagement Sep 8, 2026 Why Mass Blast Communications Are Failing Your Families read more",
+   "headline": "Why Mass Blast Communications Are Failing Your Families",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.schoolstatus.com/blog/why-mass-blast-communications-fail-families"
@@ -13,7 +22,7 @@
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Attendance Sep 4, 2026 Why We Still Mail Attendance Interventions in 2026 read more",
+   "headline": "Why We Still Mail Attendance Interventions in 2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.schoolstatus.com/blog/mailed-attendance-letters"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.schoolstatus.com/blog/one-system-eighteen-schools-attendance"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "How to Improve School Attendance: 12 Proven Strategies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.schoolstatus.com/blog/how-to-improve-school-attendance"
   }
  ]
 }

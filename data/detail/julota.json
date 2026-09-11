@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "First Responder Burnout: Recognizing the Stages Before They Cost You Your Career",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/first-responder-burnout-recognizing-the-stages-before-they-cost-you-your-career/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.julota.com/news/wound-care-at-home-how-community-paramedics-are-closing-the-gap-for-post-surgical-and-diabetic-patients/"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Hospital-at-Home Meets MIH-CP: Where Community Paramedics Fit in the Acute Hospital Care Home Model",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/hospital-at-home-meets-mih-cp-where-community-paramedics-fit-in-the-acute-hospital-care-home-model/"
   }
  ],
  "profile": {

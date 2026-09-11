@@ -10,6 +10,15 @@
    "url": "https://www.imprivata.com/blog/identity-security-signals-ai-tests-security-boundaries-digital-trust-faces-new-pressures"
   },
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Authentication and the role of identity: Today, tomorrow and the future",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/uk/blog/authentication-and-role-identity-today-tomorrow-and-future"
+  },
+  {
    "date": "2026-08-26",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-08-12",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "AI agents are becoming enterprise identities\u2014and a new major attack vector",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-08-05",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Identity Security Signals: Autonomous agents, third-party risk, the growing need for accountable access",
    "kind": "press",
@@ -82,31 +91,22 @@
    "url": "https://www.imprivata.com/blog/why-mostly-cjis-compliant-risky-place-public-safety-agencies-be"
   },
   {
-   "date": "2026-07-21",
+   "date": "2026-08-03",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Five emerging questions that belong in every IAM strategy discussion",
+   "first_seen": "2026-09-10",
+   "headline": "Industry Voice: The critical shift from Frontline Digitisation to Frontline Productivity at NHS England",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/five-emerging-questions-belong-every-iam-strategy-discussion"
+   "url": "https://www.imprivata.com/uk/blog/industry-voice-critical-shift-frontline-digitisation-frontline-productivity-nhs-england"
   },
   {
-   "date": "2026-07-08",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Identity Security Signals: Operational resilience, AI oversight, and the widening access attack surface",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/identity-security-signals-operational-resilience-ai-oversight-and-widening-access-attack"
-  },
-  {
-   "date": "2026-06-30",
+   "date": "2026-07-28",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Imprivata Research Finds that Only 32% of Public Safety Agencies are Fully Compliant with Criminal Justice Information Services Requirements",
+   "first_seen": "2026-09-10",
+   "headline": "Inaugural Connect Benelux comes to Utrecht: Join healthcare leaders on 10 September 2026",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.imprivata.com/company/press/imprivata-research-finds-only-32-percent-agencies-cjis-compliant"
+   "url": "https://www.imprivata.com/uk/blog/inaugural-connect-benelux-comes-utrecht-join-healthcare-leaders-10-september-2026"
   }
  ],
  "profile": {

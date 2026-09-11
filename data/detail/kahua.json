@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "How to Speed Up Your Procurement Process and Create Faster Time to Value",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kahua.com/articles/how-to-speed-up-your-procurement-process/"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://kahua.com/articles/using-microsoft-for-ai-innovation-ignite/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Here They Are, the 12 Greatest Moments in Construction Innovation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kahua.com/articles/here-they-are-the-12-greatest-moments-in-construction-innovation/"
   }
  ]
 }

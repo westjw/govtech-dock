@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-01-07",
-   "date_source": "index-text",
+   "date_source": "dateline",
    "first_seen": "2026-09-10",
    "headline": "NinjaOne Named a Leader in Gartner Magic Quadrant for Endpoint Management Tools",
    "kind": "press",
@@ -56,12 +56,21 @@
   },
   {
    "date": "2025-02-24",
-   "date_source": "index-text",
+   "date_source": "dateline",
    "first_seen": "2026-09-10",
    "headline": "NinjaOne Secures $5 Billion Valuation and $500 Million Funding to Redefine Automated Endpoint Management",
    "kind": "funding",
    "kind_rule": "Valuation",
    "url": "https://www.ninjaone.com/press/500m-series-c-extensions-5b-valuation/"
+  },
+  {
+   "date": "2025-01-27",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "NinjaOne Announces Intent to Acquire SaaS Backup and Data Protection Leader Dropsuite",
+   "kind": "funding",
+   "kind_rule": "Acquire",
+   "url": "https://www.ninjaone.com/press/ninjaone-announces-intent-to-acquire-dropsuite/"
   }
  ]
 }

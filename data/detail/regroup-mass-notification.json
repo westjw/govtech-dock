@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Employee Safety: What Are Your Employees\u2019 Priorities? -->",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.regroup.com/blog/employee-safety-priorities/"
+  },
+  {
    "date": "2026-08-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "How to Build an Emergency and Crisis Communication Plan for Today\u2019s Risk Environment -->",
+   "headline": "How to Build an Emergency and Crisis Communication Plan for Today\u2019s Risk Environment",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.regroup.com/blog/how-to-build-an-emergency-and-crisis-communication-plan-for-todays-risk-environment/"
@@ -13,7 +22,7 @@
    "date": "2026-08-13",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Remote Work Changed Emergency Communication. Has Your Plan Kept Up? -->",
+   "headline": "Remote Work Changed Emergency Communication. Has Your Plan Kept Up?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.regroup.com/blog/remote-work-emergency-communication-plan/"
@@ -22,7 +31,7 @@
    "date": "2026-08-05",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Regroup for Education: Enhancing Campus Communication & Safety -->",
+   "headline": "Regroup for Education: Enhancing Campus Communication & Safety",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.regroup.com/blog/regroup-for-education-enhancing-campus-communication-safety/"
@@ -31,7 +40,7 @@
    "date": "2026-07-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "From Code Blue to Plain Language: How Hospitals Are Modernizing Emergency Alerting -->",
+   "headline": "From Code Blue to Plain Language: How Hospitals Are Modernizing Emergency Alerting",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.regroup.com/blog/from-code-blue-to-plain-language-how-hospitals-are-modernizing-emergency-alerting/"
@@ -40,7 +49,7 @@
    "date": "2026-07-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Inside Customer Onboarding for Mass Notification Systems: Regroup\u2019s 6-Step Go-Live Process -->",
+   "headline": "Inside Customer Onboarding for Mass Notification Systems: Regroup\u2019s 6-Step Go-Live Process",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.regroup.com/blog/inside-customer-onboarding-for-mass-notification-systems-regroups-6-step-go-live-process/"
@@ -49,7 +58,7 @@
    "date": "2026-06-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Streamlining Business Communications with Regroup -->",
+   "headline": "Streamlining Business Communications with Regroup",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.regroup.com/blog/streamlining-business-communications-with-regroup/"
@@ -58,7 +67,7 @@
    "date": "2026-06-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Introducing Regroup Incident Management: A Smarter Way to Coordinate Critical Communications -->",
+   "headline": "Introducing Regroup Incident Management: A Smarter Way to Coordinate Critical Communications",
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.regroup.com/blog/introducing-regroup-incident-management-a-smarter-way-to-coordinate-critical-communications/"
@@ -67,7 +76,7 @@
    "date": "2026-05-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Regroup wins the 2026 Govies Awards in the Emergency Communication Systems Category -->",
+   "headline": "Regroup wins the 2026 Govies Awards in the Emergency Communication Systems Category",
    "kind": "contract",
    "kind_rule": "Awards",
    "url": "https://www.regroup.com/blog/regroup-mass-notification-system-govies-award/"
@@ -76,7 +85,7 @@
    "date": "2026-05-19",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Regroup for Government: Building Safer, More Connected Communities -->",
+   "headline": "Regroup for Government: Building Safer, More Connected Communities",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.regroup.com/blog/building-safer-more-connected-communities-with-regroup/"
@@ -85,7 +94,7 @@
    "date": "2026-05-14",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Regroup Mass Notification Wins the Spring 2026 Top Performer Award in Mass Notification from SourceForge -->",
+   "headline": "Regroup Mass Notification Wins the Spring 2026 Top Performer Award in Mass Notification from SourceForge",
    "kind": "contract",
    "kind_rule": "Award",
    "url": "https://www.regroup.com/blog/regroup-mass-notification-wins-the-spring-2026-top-performer-award-in-mass-notification-from-sourceforge/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.regroup.com/blog/mass-notification-system-10-reasons-to-choose-regroup/"
-  },
-  {
-   "date": "2022-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Mass Notification System Buyer\u2019s Guide: How to Choose the Right Emergency Communication Platform",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.regroup.com/blog/mass-notification-a-buyers-guide/"
   }
  ],
  "profile": {

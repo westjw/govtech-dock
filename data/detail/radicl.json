@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "EP 120 \u2014 Crow Industries' James Crowell On Why The U.S. Army Is Betting On Smaller Ground Robots",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/james-crowell-smaller-ground-robots"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "How a 2-Person IT Team Passed CMMC and Won Their Biggest Contract Ever",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://radicl.com/resources/how-a-2-person-it-team-passed-cmmc-and-won-their-biggest-contract-ever"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://radicl.com/resources/phil-duong-noda-ai-mission-command"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Signal & Noise, Volume 6",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/signal-noise-volume-6"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "EP 116 \u2014 Carbonix's Dario Valenza On Building 10-Hour Flight Drones That Compete With Helicopters",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/carbonix-dario-valenza-long-endurance-vtol-drones"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Law Enforcement and OCD: What\u2019s the Connection?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lexipol.com/resources/blog/law-enforcement-and-ocd-whats-the-connection/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lexipol.com/resources/blog/building-community-trust-in-public-safety-before-a-crisis-hits/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "ALPR Cameras in Law Enforcement: What Responsible Use Looks Like",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lexipol.com/resources/blog/alpr-cameras-what-responsible-use-looks-like/"
   }
  ],
  "profile": {

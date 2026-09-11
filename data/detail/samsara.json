@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-10",
+   "headline": "Introducing Samsara Driver Perks, exclusive offers and discounts for professional drivers",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.samsara.com/blog/introducing-samsara-driver-perks"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "near-h1",
    "first_seen": "2026-09-09",
@@ -17,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.samsara.com/blog/hats-off-to-drivers"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-10",
+   "headline": "Introducing Samsara Competitions: Building driver engagement for safer habits",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.samsara.com/blog/introducing-samsara-competitions"
   },
   {
    "date": "2026-08-26",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.samsara.com/blog/samsaras-new-innovations-increase-efficiency"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Samsara's agentic AI powers innovations that sense, decide, and act to drive the next evolution of physical operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.samsara.com/blog/samsaras-new-innovations-digitally-transform-operations"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Announcing new innovations to reduce risk, increase efficiency, and digitally transform operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.samsara.com/blog/announcing-new-innovations-to-reduce-risk-increase-efficiency-and-digitally-transform-operations"
   }
  ],
  "profile": {

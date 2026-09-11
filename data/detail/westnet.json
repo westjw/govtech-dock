@@ -46,6 +46,15 @@
    "url": "https://westnetpublicsafety.com/blog/business-case-fire-station-alerting-system-upgrade"
   },
   {
+   "date": "2026-04-01",
+   "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "Westnet Public Safety Acquires Low Voltage Installations",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://westnetpublicsafety.com/blog/westnet-acquires-low-voltage-installations"
+  },
+  {
    "date": "2026-03-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -58,7 +67,7 @@
    "date": "2026-02-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "science of safe alerting and firefighter health performance",
+   "headline": "The Science of Safe Alerting: How Alerting System Design Affects Firefighter Health and Performance",
    "kind": "press",
    "kind_rule": null,
    "url": "https://westnetpublicsafety.com/blog/science-of-safe-alerting-firefighter-health-performance"
@@ -67,7 +76,7 @@
    "date": "2026-02-17",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "installation support and lifecycle maintenance best practices",
+   "headline": "Installation, Support, and Lifecycle Maintenance Best Practices",
    "kind": "press",
    "kind_rule": null,
    "url": "https://westnetpublicsafety.com/blog/installation-support-lifecycle-maintenance-best-practices"
@@ -76,7 +85,7 @@
    "date": "2026-02-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "engineering considerations for new fire station builds",
+   "headline": "Engineering Considerations for New Fire Station Builds",
    "kind": "press",
    "kind_rule": null,
    "url": "https://westnetpublicsafety.com/blog/engineering-consideengineering-considerations-for-new-fire-station-buildsrations-for-new-fire-station-builds"
@@ -85,7 +94,7 @@
    "date": "2026-02-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "how to buy through GSA, Sourcewell, or HGACBuy",
+   "headline": "Buying Fire Station Alerting via GSA, Sourcewell, or HGACBuy",
    "kind": "press",
    "kind_rule": null,
    "url": "https://westnetpublicsafety.com/blog/how-to-buy-fire-station-alerting-through-gsa-sourcewell-hgacbuy"
@@ -94,19 +103,10 @@
    "date": "2026-01-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "planning and procuring fire station alerting systems",
+   "headline": "Planning, Designing, and Procuring a Fire Station Alerting System: A Practical Buyer's Guide",
    "kind": "press",
    "kind_rule": null,
    "url": "https://westnetpublicsafety.com/blog/fire-station-alerting-system-planning-design-procurement-guide"
-  },
-  {
-   "date": "2026-01-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "building redundancy into dispatch alerting infrastructure",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://westnetpublicsafety.com/blog/building-redundancy-into-dispatch-alerting-infrastructure"
   }
  ]
 }

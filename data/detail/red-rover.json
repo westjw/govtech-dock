@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-08-18",
+   "date": "2026-09-09",
    "date_source": "index-text",
+   "first_seen": "2026-09-10",
+   "headline": "Why K-12 Needs a Room Built for HR and Payroll Leaders",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.redroverk12.com/blog/why-k-12-needs-a-room-built-for-hr-and-payroll-leaders"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Four Reasons Hiring and Records Belong on One Platform",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-08-11",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "What the First Week of School Reveals About Your Absence Management System",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-08-04",
-   "date_source": "index-text",
+   "date_source": "dateline",
    "first_seen": "2026-09-05",
    "headline": "Red Rover Shares Practical Strategies to Help K-12 Districts Sustain Back-to-School Momentum Long After the First Bell Rings",
    "kind": "press",
@@ -28,8 +37,17 @@
    "url": "https://www.redroverk12.com/blog/red-rover-shares-practical-strategies-to-help-k-12-districts-sustain-back-to-school-momentum-long-after-the-first-bell-rings"
   },
   {
+   "date": "2026-08-04",
+   "date_source": "dateline",
+   "first_seen": "2026-09-05",
+   "headline": "Red Rover Accelerates Growth as K-12 Districts Seek Modern Workforce Management Solutions to Overcome Operational Complexities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.redroverk12.com/blog/red-rover-accelerates-growth-as-k-12-districts-seek-modern-workforce-management-solutions-to-overcome-operational-complexities"
+  },
+  {
    "date": "2026-07-23",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "5 Reasons to Attend the Red Rover K\u201312 HR & Payroll Leadership Forum",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-07-07",
-   "date_source": "index-text",
+   "date_source": "dateline",
    "first_seen": "2026-09-05",
    "headline": "Red Rover Hosts First Ever HR & Payroll Leadership Forum to Support K-12 Workforce Management Challenges",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-06-29",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "FOBO: The Hiring Mistake K-12 Districts Don't Know They're Making",
    "kind": "press",
@@ -55,26 +73,17 @@
    "url": "https://www.redroverk12.com/blog/fobo-the-hiring-mistake-k-12-districts-dont-know-theyre-making"
   },
   {
-   "date": "2026-06-09",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Red Rover Accelerates Growth as K-12 Districts Seek Modern Workforce Management Solutions to Overcome Operational Complexities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.redroverk12.com/blog/red-rover-accelerates-growth-as-k-12-districts-seek-modern-workforce-management-solutions-to-overcome-operational-complexities"
-  },
-  {
    "date": "2026-05-19",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
-   "headline": "One Size Does Not Fit All When it Comes to Your Sub Strategy Most school districts have one substitute teacher job posting. One onboarding..",
+   "headline": "One Size Does Not Fit All When it Comes to Your Sub Strategy",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.redroverk12.com/blog/one-size-does-not-fit-all-when-it-comes-to-your-sub-strategy"
   },
   {
    "date": "2026-05-06",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "What 18,000 Substitute Teachers Tell Us About Today's Workforce",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-05-06",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "National Survey of Substitute Teachers Emphasize Focus Areas for Districts",
    "kind": "press",
@@ -94,19 +103,10 @@
    "date": "2026-01-20",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
-   "headline": "The Real Reason K-12 Payroll Gets Messy? Disconnected Absence and Time Systems Why Your Absence and Time Systems Need to Talk to Each Other It\u2019s Friday..",
+   "headline": "The Real Reason K-12 Payroll Gets Messy? Disconnected Absence and Time Systems",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.redroverk12.com/blog/the-real-reason-k-12-payroll-gets-messy-disconnected-absence-and-time-systems"
-  },
-  {
-   "date": "2025-09-25",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "The 4 \u201cCs\u201d Every K-12 Recruiter Needs To Keep Candidates Engaged Let\u2019s face it: Retention in K-12 education is tough right now. HR teams have..",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.redroverk12.com/blog/the-4-cs-every-k-12-recruiter-needs-to-keep-candidates-engaged"
   }
  ],
  "profile": {

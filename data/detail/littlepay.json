@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Contactless payments go live on Liverpool City Region\u2019s franchised buses",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://littlepay.com/resource-hub/blog/articles/contactless-payments-go-live-on-liverpool-city-regions-franchised-buses/"
+  },
+  {
    "date": "2026-08-17",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -73,6 +82,15 @@
    "url": "https://littlepay.com/resource-hub/blog/articles/bringing-contactless-emv-to-uk-rail-littlepay-powers-merseyrails-new-open-loop-system/"
   },
   {
+   "date": "2025-08-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "How Micro Mobility Is Transforming Transit Agencies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://littlepay.com/resource-hub/blog/articles/how-micro-mobility-is-transforming-transit-agencies/"
+  },
+  {
    "date": "2025-05-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -82,31 +100,13 @@
    "url": "https://littlepay.com/resource-hub/blog/articles/project-highlights-washington-dcs-record-breaking-upgrade-to-accept-open-loop-payments/"
   },
   {
-   "date": "2024-08-14",
+   "date": "2025-03-20",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Monterey Salinas Transit teams up with Google Wallet and Littlepay to enhance passenger experience across their network",
+   "first_seen": "2026-09-10",
+   "headline": "How Plug And Play Technologies Offer a Modular Approach To Fare Collection",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://littlepay.com/resource-hub/blog/articles/monterey-salinastransit-teams-up-with-google-wallet-and-littlepay-to-enhance-passenger-experience-across-their-network/"
-  },
-  {
-   "date": "2024-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Understanding Fare Capping: A Comprehensive Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://littlepay.com/resource-hub/blog/articles/understanding-fare-capping-a-comprehensive-guide/"
-  },
-  {
-   "date": "2024-05-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Littlepay begins city-wide, multi-modal rollout of contactless payments in Athens, Greece",
-   "kind": "contract",
-   "kind_rule": "rollout",
-   "url": "https://littlepay.com/resource-hub/blog/articles/littlepay-begins-city-wide-multi-modal-rollout-of-contactless-payments-in-athens-greece/"
+   "url": "https://littlepay.com/resource-hub/blog/articles/how-plug-and-play-technologies-offer-a-modular-approach-to-fare-collection/"
   }
  ],
  "profile": {

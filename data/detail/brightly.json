@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "The reliability leader\u2019s guide to building a learning culture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/the-reliability-leaders-guide-to-building-a-learning-culture"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -19,6 +28,24 @@
    "url": "https://www.brightlysoftware.com/blog/from-reactive-maintenance-to-strategic-capital-planning-through-asset-investment-planning"
   },
   {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "From reactive maintenance to strategic capital planning through asset investment planning",
+   "kind": "funding",
+   "kind_rule": "investment",
+   "url": "https://www.brightlysoftware.com/en-gb/blog/from-reactive-maintenance-to-strategic-capital-planning-through-asset-investment-planning"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "From reactive maintenance to strategic capital planning through asset investment planning",
+   "kind": "funding",
+   "kind_rule": "investment",
+   "url": "https://www.brightlysoftware.com/en-au/blog/from-reactive-maintenance-to-strategic-capital-planning-through-asset-investment-planning"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -26,6 +53,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.brightlysoftware.com/blog/overcoming-the-trust-paradox-in-asset-data-management"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Overcoming the trust paradox in asset data management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/en-gb/blog/overcoming-the-trust-paradox-in-asset-data-management"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Overcoming the trust paradox in asset data management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/en-au/blog/overcoming-the-trust-paradox-in-asset-data-management"
   },
   {
    "date": "2026-09-01",
@@ -37,6 +82,24 @@
    "url": "https://www.brightlysoftware.com/blog/condition-based-maintenance-explained-bridging-the-gap-to-predictive-strategies"
   },
   {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Condition-based maintenance explained: Bridging the gap to predictive strategies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/en-gb/blog/condition-based-maintenance-explained-bridging-the-gap-to-predictive-strategies"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Condition-based maintenance explained: Bridging the gap to predictive strategies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/en-au/blog/condition-based-maintenance-explained-bridging-the-gap-to-predictive-strategies"
+  },
+  {
    "date": "2026-08-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -44,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.brightlysoftware.com/blog/how-smarter-operations-drive-higher-resident-satisfaction-in-senior-living"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Why younger workers are leaving manufacturing (and how to make them stay)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.brightlysoftware.com/blog/why-younger-workers-are-leaving-manufacturing-and-how-to-make-them-stay"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How the U.S. metals industry can sharpen strategic maintenance to boost resilience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.brightlysoftware.com/blog/how-the-us-metals-industry-can-sharpen-strategic-maintenance-to-boost-resilience"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "From work orders to preventive maintenance: Knowing when you're ready for more",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.brightlysoftware.com/blog/from-work-orders-to-preventive-maintenance-knowing-when-youre-ready-for-more"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Why school maintenance feels harder than it should",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.brightlysoftware.com/blog/why-school-maintenance-feels-harder-than-it-should"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How asset data insights can drive the shift from reactive to predictive maintenance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.brightlysoftware.com/blog/how-asset-data-insights-can-drive-the-shift-from-reactive-to-predictive-maintenance"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Deferred maintenance is growing: How healthcare leaders can take back control",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.brightlysoftware.com/blog/deferred-maintenance-is-growing-how-healthcare-leaders-can-take-back-control"
   }
  ],
  "profile": {

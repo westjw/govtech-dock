@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Motive secures more than $1.3 billion to scale AI across physical operations.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/motive-financing-general-catalyst/"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-10",
+   "headline": "Add Custom Map Layers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://helpcenter.gomotive.com/hc/en-us/articles/37259126413725-Add-Custom-Map-Layers"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-10",
+   "headline": "Maintenance Reports and Alerts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://helpcenter.gomotive.com/hc/en-us/articles/31053547120413-Maintenance-Reports-and-Alerts"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -37,6 +64,15 @@
    "url": "https://gomotive.com/blog/fleet-maintenance-best-practices/"
   },
   {
+   "date": "2026-09-09",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-10",
+   "headline": "Severe Weather Events on Live Map",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://helpcenter.gomotive.com/hc/en-us/articles/36069175651997-Severe-Weather-Events-on-Live-Map"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -55,6 +91,15 @@
    "url": "https://gomotive.com/blog/truck-driver-appreciation-2026/"
   },
   {
+   "date": "2026-09-07",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-10",
+   "headline": "Trip History on Fleet App",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://helpcenter.gomotive.com/hc/en-us/articles/6189043718045-Trip-History-on-Fleet-App"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomotive.com/blog/motive-california-bar-continuous-testing-program/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Highway and Motive reach an agreement to ensure continuity of service for carriers and brokers.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/motive-highway-joint-statement/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Motive ranks #1 on Momentum Grid reports with a 99% Customer Satisfaction score in G2\u2019s Fall 2026 Reports",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/blog-g2-fall-2026-rankings/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "5 areas where fleet-based organizations get the most ROI from AI in 2026.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/ai-fleet-management-trends-2026/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Motive launches Maintenance: Take control of maintenance costs with one system.",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://gomotive.com/blog/motive-maintenance-launch/"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Advancing technology in field services: the 2026 state of fleet and workforce management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/advancing-technology-in-field-services-2026/"
   }
  ],
  "profile": {

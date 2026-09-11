@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "DOT Annual Inspection Requirements: Can You Do Your Own?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://whiparound.com/blog/dot-annual-inspection/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://whiparound.com/blog/rising-cost-of-fleet-parts/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Free DVIR Checklist and Form for Faster, Safer Inspections",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://whiparound.com/blog/the-detailed-dvir-checklist/"
   }
  ],
  "profile": {

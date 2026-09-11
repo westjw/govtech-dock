@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Concourse vs. Trovata: How the Two Compare in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/concourse-vs-trovata"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "The AI Treasury Analyst: Automating the Cash Desk",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/ai-treasury-analyst"
+  },
+  {
    "date": "2026-09-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.concourse.ai/insights/ai-agents-for-treasury-reporting"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Treasury Management System Cost: What a TMS Really Costs in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/treasury-management-system-cost"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "8 Best ION Treasury Alternatives in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/ion-treasury-alternatives"
   }
  ],
  "profile": {

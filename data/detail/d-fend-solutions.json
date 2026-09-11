@@ -1,13 +1,22 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "From Stadiums to Prisons: Building Persistent SLTT Counter-Drone Readiness",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://d-fendsolutions.com/blog/building-sltt-counter-drone-readiness/"
+  },
+  {
    "date": "2026-09-06",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "What Is Counter-UAS (C-UAS)? A Guide to Drone Defense",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/what-is-counter-uas-c-uas-a-guide-to-drone-defense/"
+   "url": "http://d-fendsolutions.com/blog/what-is-counter-uas-c-uas-a-guide-to-drone-defense/"
   },
   {
    "date": "2026-09-03",
@@ -16,7 +25,7 @@
    "headline": "The Unseen D-Fender: How the 2026 World Cup Proved the Case for SLTT Airspace Security",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/world-cup-drone-airspace-security/"
+   "url": "http://d-fendsolutions.com/blog/world-cup-drone-airspace-security/"
   },
   {
    "date": "2026-08-20",
@@ -25,7 +34,7 @@
    "headline": "A Key Factor in Determining Rogue Drones\u2019 Impact: The Environment",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/a-key-factor-in-determining-rogue-drones-impact/"
+   "url": "http://d-fendsolutions.com/blog/a-key-factor-in-determining-rogue-drones-impact/"
   },
   {
    "date": "2026-08-04",
@@ -34,7 +43,7 @@
    "headline": "Drone Countermeasures: The Advantages of a Layered Approach",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/drone-countermeasures-the-advantages-of-a-layered-approach/"
+   "url": "http://d-fendsolutions.com/blog/drone-countermeasures-the-advantages-of-a-layered-approach/"
   },
   {
    "date": "2026-07-29",
@@ -43,7 +52,7 @@
    "headline": "H1 2026 Drone Incident Trends: A Maturing Threat Landscape",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/h1-2026-drone-incident-trends/"
+   "url": "http://d-fendsolutions.com/blog/h1-2026-drone-incident-trends/"
   },
   {
    "date": "2026-07-27",
@@ -52,7 +61,7 @@
    "headline": "Drone Countermeasures: Detecting a Rogue Drone is Only Half the Battle",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/drone-countermeasures/"
+   "url": "http://d-fendsolutions.com/blog/drone-countermeasures/"
   },
   {
    "date": "2026-07-22",
@@ -61,7 +70,7 @@
    "headline": "The Sovereign Defense Balancing Act: Optimizing Counter-UAS Layers for Rapid Readiness",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/the-sovereign-defense-balancing-act-optimizing-counter-uas-layers-for-rapid-readiness/"
+   "url": "http://d-fendsolutions.com/blog/the-sovereign-defense-balancing-act-optimizing-counter-uas-layers-for-rapid-readiness/"
   },
   {
    "date": "2026-07-15",
@@ -70,7 +79,7 @@
    "headline": "Consequential Drone Incidents Hit 3 Sectors in June 2026",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/rogue-drone-incident-briefing-june-2026/"
+   "url": "http://d-fendsolutions.com/blog/rogue-drone-incident-briefing-june-2026/"
   },
   {
    "date": "2026-07-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://d-fendsolutions.com/blog/rogue-drone-incident-briefing-may-2026/"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "The Counter-Drone Blind Spot: Public Education Enhances Drone Airspace Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/blog-drone-airspace-security-public-education/"
   }
  ],
  "profile": {

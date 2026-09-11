@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "The City of Sunnyvale launches Sunnyvale Beam, citywide zero-emission microtransit for workers, students, residents, and visitors",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://ridewithvia.com/news/the-city-of-sunnyvale-launches-sunnyvale-beam-citywide-zero-emission-microtransit-for-workers-students-residents-and-visitors?hsLang=en"
+  },
+  {
    "date": "2026-08-28",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Via Welcomes the Knode.ai Team to Accelerate AI for Public Transit",
    "kind": "leadership",
@@ -16,11 +25,11 @@
    "headline": "3 things we learned about how AI can improve call center performance",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://ridewithvia.com/resources/3-things-we-learned-about-how-ai-can-improve-call-center-performance?hsLang=en"
+   "url": "https://ridewithvia.com/resources/3-things-we-learned-about-how-ai-can-improve-call-center-performance"
   },
   {
    "date": "2026-08-27",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Via and SMART Expand On-Demand Microtransit Into Northern Macomb County",
    "kind": "press",
@@ -29,21 +38,21 @@
   },
   {
    "date": "2026-08-27",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "No Fixed Route? No Problem: The Future of City Transit With Jason Via",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://ridewithvia.com/resources/no-fixed-route-no-problem-the-future-of-city-transit-with-jason-via"
+   "url": "https://ridewithvia.com/resources/no-fixed-route-no-problem-the-future-of-city-transit-with-jason-via?hsLang=en"
   },
   {
    "date": "2026-08-27",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Navigating the Future of Transit: 4 Key Takeaways from Our Industry Summit",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://ridewithvia.com/resources/navigating-the-future-of-transit-4-key-takeaways-from-our-industry-summit"
+   "url": "https://ridewithvia.com/resources/navigating-the-future-of-transit-4-key-takeaways-from-our-industry-summit?hsLang=en"
   },
   {
    "date": "2026-08-24",
@@ -52,11 +61,11 @@
    "headline": "How the City of Mobile, Alabama rewrote its transit contract to improve service delivery",
    "kind": "contract",
    "kind_rule": "contract",
-   "url": "https://ridewithvia.com/resources/city-of-mobile-alabama-improves-transit-delivery?hsLang=en"
+   "url": "https://ridewithvia.com/resources/city-of-mobile-alabama-improves-transit-delivery"
   },
   {
    "date": "2026-08-20",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Navigating Capitol Hill: Reauthorization, Midterms, and Federal Transit Funding",
    "kind": "funding",
@@ -79,7 +88,7 @@
    "headline": "Introducing the Rider Experience Dashboard",
    "kind": "product",
    "kind_rule": "Introducing",
-   "url": "https://ridewithvia.com/resources/introducing-the-rider-experience-dashboard?hsLang=en"
+   "url": "https://ridewithvia.com/resources/introducing-the-rider-experience-dashboard"
   },
   {
    "date": "2026-07-28",
@@ -88,25 +97,16 @@
    "headline": "AI insights help you find your next service improvement in seconds",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://ridewithvia.com/resources/ai-insights-help-you-find-your-next-service-improvement-in-seconds?hsLang=en"
+   "url": "https://ridewithvia.com/resources/ai-insights-help-you-find-your-next-service-improvement-in-seconds"
   },
   {
    "date": "2026-07-23",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Mind the Gap: How Fixing Local Buses Built a Prime Minister",
    "kind": "press",
    "kind_rule": null,
    "url": "https://ridewithvia.com/resources/mind-the-gap-how-fixing-local-buses-built-a-prime-minister?hsLang=en"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "5 \"Golden\" Transit Awards from the Citymapper's Fan Trail",
-   "kind": "contract",
-   "kind_rule": "Awards",
-   "url": "https://ridewithvia.com/resources/5-golden-transit-awards-from-the-citymappers-fan-trail?hsLang=en"
   }
  ],
  "profile": {

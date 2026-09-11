@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "IST Supports BBVA\u2019s Launch of AI-Designed Personalized Payment Cards",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://www.idemia.com/news/ist-supports-bbvas-launch-ai-designed-personalized-payment-cards-2026-09-10"
+  },
+  {
    "date": "2026-09-01",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -82,31 +91,22 @@
    "url": "https://www.idemia.com/news/idemia-secure-transactions-and-commercial-bank-ceylon-launch-google-pay-sri-lanka-2026-02-17"
   },
   {
-   "date": "2025-10-08",
+   "date": "2026-01-29",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Shaping the Future of Border Control",
+   "first_seen": "2026-09-10",
+   "headline": "HYPERFORM achieves its first milestone in quantum-safe data protection",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.idemia.com/insights/shaping-future-border-control"
+   "url": "https://www.idemia.com/news/hyperform-achieves-its-first-milestone-quantum-safe-data-protection-2026-01-29"
   },
   {
-   "date": "2025-09-02",
+   "date": "2025-10-23",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Fairness by Design: Our Commitment to Responsible AI in Biometrics",
+   "first_seen": "2026-09-10",
+   "headline": "3 cybersecurity technologies every CISO and CTO should know",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.idemia.com/insights/fairness-design-our-commitment-responsible-ai-biometrics"
-  },
-  {
-   "date": "2025-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Futurist: Invisible Innovation, Real-World Impact",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.idemia.com/news/futurist-invisible-innovation-real-world-impact-2025-06-24"
+   "url": "https://www.idemia.com/insights/3-cybersecurity-technologies-every-ciso-and-cto-should-know"
   }
  ]
 }

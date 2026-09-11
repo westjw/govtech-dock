@@ -25,7 +25,7 @@
    "headline": "Hands-on support cut planning turnaround by 33%",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.govwell.com/resources/case-study-deployment"
+   "url": "https://govwell.com/resources/case-study-deployment"
   },
   {
    "date": "2026-09-09",
@@ -44,6 +44,33 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.govwell.com/resources/case-study-community-assistant"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "AI in Government Permitting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/ai-in-government-permitting"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "65% more capacity with the same code enforcement team",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govwell.com/resources/case-study-code-enforcement"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Issuing permits twice as fast, with more volume than ever",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govwell.com/resources/case-study-building-permitting"
   },
   {
    "date": "2026-09-08",
@@ -70,16 +97,7 @@
    "headline": "The Permitting and Community Development Software RFP Toolkit",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.govwell.com/resources/the-permitting-and-community-development-software-rfp-toolkit"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI in Government Permitting",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/ai-in-government-permitting"
+   "url": "https://govwell.com/resources/the-permitting-and-community-development-software-rfp-toolkit"
   },
   {
    "date": "2026-09-04",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.govwell.com/resources/the-next-era-of-community-development"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Rethinking permitting for a rural community",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/macon-county-case-study"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Announcing Our $25M Series A",
-   "kind": "funding",
-   "kind_rule": "Series A",
-   "url": "https://www.govwell.com/resources/govwell-series-a"
   }
  ],
  "profile": {

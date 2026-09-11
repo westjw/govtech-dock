@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Public Procurement Teams Strained by Rising Costs, Compliance Demands and Technology Gaps: Euna Solutions Report",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eunasolutions.com/resources/2026-state-of-public-procurement-report/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -8,6 +17,15 @@
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://eunasolutions.com/resources/euna-solutions-launches-euna-supplier-academy/"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Is Your Procurement Process Encouraging Competition?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eunasolutions.com/resources/procurement-competition-checklist/"
   },
   {
    "date": "2026-09-03",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eunasolutions.com/resources/build-vs-buy-ai-government-payments/"
-  },
-  {
-   "date": "2026-08-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How to Evaluate Government Payment and Reconciliation Systems: A 2026 GovTech Buyer\u2019s Guide for Finance Officers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/how-to-evaluate-government-payment-systems/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Euna Solutions and CLA Announce Strategic Collaboration to Help Public Agencies Strengthen Grants Compliance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/euna-solutions-cla-collaborate-grants-compliance/"
   }
  ],
  "profile": {

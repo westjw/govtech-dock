@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "dateline",
+   "first_seen": "2026-09-10",
+   "headline": "Want to learn more?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://spare.com/press-releases/bc-transit-launches-spare-technology-in-chilliwack-and-central-fraser-valley"
+  },
+  {
    "date": "2026-06-22",
    "date_source": "dateline",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://spare.com/press-releases/massachusetts-bay-transportation-authority-mbta-partners-with-spare-to-deliver-the-largest-fully-automated-paratransit-service-in-north-america"
-  },
-  {
-   "date": "2024-09-26",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Paratransit September 26, 2024 New Scheduling Software Coming for St. Louis Area Paratransit Customers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://spare.com/blog/new-scheduling-software-coming-for-st-louis-area-paratransit-customers"
   }
  ],
  "profile": {

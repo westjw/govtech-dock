@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Limble to Unveil New State of Maintenance Research at 2026 Maintenance Hero Summit",
+   "kind": "product",
+   "kind_rule": "Unveil",
+   "url": "https://limblecmms.com/news/limble-maintenance-research-at-2026-maintenance-hero-summit"
+  },
+  {
    "date": "2026-08-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Read the article arrow_right_alt",
+   "headline": "Scaling Your CMMS: How to Build a Global Maintenance Program",
    "kind": "press",
    "kind_rule": null,
    "url": "https://limblecmms.com/blog/scaling-a-cmms-global-program"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://limblecmms.com/news/limble-and-vibecloud"
-  },
-  {
-   "date": "2026-03-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Limble Receives Honors from Software Advice for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://limblecmms.com/news/software-advice-honors"
   }
  ],
  "profile": {
