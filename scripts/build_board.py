@@ -897,6 +897,14 @@ def conference_rows(cat: list, orgs: list, companies: list) -> list:
                 "flagship": bool(row.get("flagship")),
                 "swept": bool(row.get("swept")),
                 "url": row.get("url") or None,
+                # THE DOOR, CARRIED THROUGH. 61 rows in the catalogue hold an
+                # exhibitor_url and not one of them reached a reader, because
+                # this shape never carried the field. The conferences tab and
+                # the /e/ pages both say "we have not read this floor yet -
+                # that is a fact about us" and then offer nothing to do about
+                # it; the organiser's own list is the one useful thing we can
+                # hand somebody standing on an unmined row.
+                "exhibitor_url": row.get("exhibitor_url") or None,
                 "dates": row.get("dates") or None,
                 # WHY the dates are missing, carried through to the page. The
                 # catalogue is careful about this - "unannounced" means the

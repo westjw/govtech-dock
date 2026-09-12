@@ -74,15 +74,40 @@ PRIVATE = re.compile(
 # absence bug in this repo: the word is present, the fact is not. So a hit
 # preceded by a negation inside the same clause does not count, and a sentence
 # whose every hit is negated names no private buyer at all.
-NEGATED = re.compile(r"\b(no|not|never|zero|without|nothing)\b[^.;:]{0,40}$", re.I)
+NEGATOR = re.compile(r"\b(no|not|never|zero|without|nothing)\b", re.I)
+# A negation stops reaching at a clause boundary. "Public agencies are the
+# core, without question, and also corporate campuses" has 'without' 40
+# characters before 'corporate' and negates nothing about it - the 'and'
+# starts a new clause. Same for "states with no procurement vehicle AND
+# private utilities", and "not least the large ones, ALONG WITH commercial
+# haulers". Without this the rule reads three real private buyers as absent,
+# sets sled_only, and build_board then drops every non-SLED-titled posting
+# at that company off the public board.
+BREAK = re.compile(r"[,;:]|\b(and|but|or|also|plus|along with|as well as|"
+                   r"while|whereas|though|however)\b", re.I)
 
 
 def names_a_private_buyer(buyer: str) -> bool:
     """True when the sentence names a buyer who is not a government."""
-    hits = list(PRIVATE.finditer(buyer or ""))
+    text = buyer or ""
+    hits = list(PRIVATE.finditer(text))
     if not hits:
         return False
-    return any(not NEGATED.search(buyer[:h.start()]) for h in hits)
+
+    def negated(h) -> bool:
+        before = text[:h.start()]
+        m = None
+        for m in NEGATOR.finditer(before):
+            pass                       # the LAST negator before the hit
+        if not m:
+            return False
+        gap = before[m.end():]
+        # It has to be close AND in the same clause. 40 characters was the
+        # window; what was missing is that nothing may open a new clause
+        # between the two.
+        return len(gap) <= 40 and not BREAK.search(gap)
+
+    return any(not negated(h) for h in hits)
 
 
 # The cases that drove the rule, checked on import so a later tightening of
@@ -98,6 +123,15 @@ for _sentence, _expect in [
     # Enterprise/mid-market/SMB are SLED shapes, not private buyers - except
     # where the sentence says "enterprise customers", which names a buyer.
     ("Enterprise and mid-market local government agencies.", False),
+    # THE NEGATION HAS TO ATTACH. Each of these carries a negator within 40
+    # characters of a real private buyer while negating something else, and
+    # each was read as government-only until the clause check landed. The six
+    # fixtures above could never catch it: all of them put the negator
+    # directly on the buyer word, so they only exercised the case that worked.
+    ("Public agencies are the core, without question, and also corporate campuses.", True),
+    ("Sold to states with no procurement vehicle and to private utilities.", True),
+    ("Counties and cities buy it, not least the large ones, along with commercial haulers.", True),
+    ("Cities, and no shortage of them, plus commercial property managers.", True),
 ]:
     if names_a_private_buyer(_sentence) is not _expect:
         raise SystemExit(f"PRIVATE rule broke on: {_sentence!r}")

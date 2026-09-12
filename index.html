@@ -6706,8 +6706,15 @@ function cfSpotlightHTML(shown,total){
   if(up.length<2)return "";     /* one card is not a strip */
   const card=(r,i)=>{
     const rg=calRange(r.dates), now=isNow(r.dates), away=cfAway(r);
-    const days=Math.round((rg.start-new Date())/86400000);
-    const when=now?"On now":days<=7?`In ${days} day${days===1?"":"s"}`
+    /* CALENDAR DAYS, NOT ELAPSED HOURS. calRange builds LOCAL MIDNIGHT, so
+       subtracting `new Date()` measures the time to that midnight: at 2pm an
+       event tomorrow is ten hours out, rounds to 0, and the card reads "In 0
+       days". Both sides floor to local midnight so the answer is the number
+       of times the date changes, which is what "in 2 days" means. */
+    const midnight=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate());
+    const days=Math.round((midnight(rg.start)-midnight(new Date()))/86400000);
+    const when=now?"On now":days<=1?(days<=0?"Today":"Tomorrow")
+      :days<=7?`In ${days} days`
       :days<=21?`In ${Math.round(days/7)} weeks`:`In ${days} days`;
     /* The one line of facts, and it never prints a zero. An unmined floor
        says so and offers the door we hold, which is the whole reason the
@@ -6721,7 +6728,7 @@ function cfSpotlightHTML(shown,total){
         data-tag="${esc(r.tag)}">
       <span class="cfcardx-top">
         <span class="cfcardx-when">${now?"<i></i>":""}${esc(when)}</span>
-        ${away?`<span class="cfcardx-mi">${esc(away)}</span>`:""}
+        ${away?`<span class="cfcardx-mi">${away}</span>`:""}
       </span>
       <span>
         <span class="cfcardx-name">${esc(r.name)}</span>

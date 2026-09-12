@@ -83,14 +83,30 @@ def main() -> int:
 
     board["conferences"] = after
     tmp = bpath.with_suffix(".tmp")
-    tmp.write_text(json.dumps(board, ensure_ascii=False, separators=(",", ":")))
+    # THE SAME BYTES build_board.py WRITES, and that is not a style choice.
+    # This wrote the file minified while build_board writes `indent=1` plus a
+    # trailing newline, so the two writers fought over all 354,003 lines of a
+    # TRACKED 7.7MB dataset: whichever ran last reformatted the whole thing,
+    # and every real change - a posting gained, a conference count moved - was
+    # then invisible inside a whole-file diff. A repo whose data discipline
+    # rests on readable before-images cannot afford an unreadable diff.
+    tmp.write_text(json.dumps(board, indent=1) + "\n")
     reread = json.loads(tmp.read_text())          # it parses or nothing moves
     if len(reread.get("postings") or []) != len(board.get("postings") or []):
         print("  REFUSED: postings count changed", file=sys.stderr)
         tmp.unlink()
         return 1
     tmp.replace(bpath)
-    print("  written to board.json (conferences only)")
+    print("  written to data/board.json (conferences only)")
+    # AND IT HAS NOT REACHED THE SITE YET. The browser fetches
+    # public/data/board.json and public/conferences.ics, both written by
+    # build_site.py from this file. Printing an unqualified success here let a
+    # corrected conference date sit in data/ while the live page and the
+    # subscribed calendar still carried the old one - which is the exact
+    # failure the calendar-parity guard exists to prevent, arriving by a
+    # different door.
+    print("  NOT LIVE YET: run `python3 scripts/build_site.py` to copy this "
+          "into public/data/board.json and rebuild public/conferences.ics.")
     return 0
 
 

@@ -1781,7 +1781,14 @@ def write_feeds(out: pathlib.Path, board: dict, brand: dict) -> dict:
     def ics(rows, name):
         lines = ["BEGIN:VCALENDAR", "VERSION:2.0",
                  f"PRODID:-//{brand['name']}//conferences//EN",
-                 "CALSCALE:GREGORIAN", f"X-WR-CALNAME:{name}"]
+                 "CALSCALE:GREGORIAN",
+                 # ESCAPED LIKE EVERY OTHER TEXT VALUE HERE. A comma is the
+                 # value separator inside an iCalendar TEXT (RFC 5545 3.3.11),
+                 # and 4 of the 12 block names carry one, so "Clerk, records,
+                 # elections, legal" subscribed as a calendar named "SLED
+                 # JOBS: Clerk". SUMMARY, LOCATION, DESCRIPTION and URL all
+                 # went through _ics_esc; this was the one that did not.
+                 f"X-WR-CALNAME:{_ics_esc(name)}"]
         n = 0
         for c in rows:
             span = _ics_range(c.get("dates"))
