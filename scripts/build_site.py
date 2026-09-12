@@ -617,13 +617,16 @@ def _default_css(brand: dict) -> str:
     return f"""
  :root{{--bg:{p_['ice']['hex']};--panel:{p_['belly']['hex']};--ink:{p_['penguin']['hex']};
    --line:{p_['frost']['hex']};--dim:{brand['derived']['deep_fog']['hex']};
-   --link:{p_['badge']['hex']};--beak:{p_['beak']['hex']}}}
+   --link:{p_['badge']['hex']};--beak:{p_['beak']['hex']};
+   --on-link:{p_['ice']['hex']}}}
  @media (prefers-color-scheme:dark){{:root:not([data-theme=light]){{--bg:{p_['penguin']['hex']};--panel:#262E42;
    --ink:{p_['ice']['hex']};--line:#39435C;--dim:#A8BCCA;
-   --link:{brand['derived']['dark']['badge']['hex']}}}}}
+   --link:{brand['derived']['dark']['badge']['hex']};
+   --on-link:{p_['penguin']['hex']}}}}}
  :root[data-theme=dark]{{--bg:{p_['penguin']['hex']};--panel:#262E42;
    --ink:{p_['ice']['hex']};--line:#39435C;--dim:#A8BCCA;
-   --link:{brand['derived']['dark']['badge']['hex']}}}
+   --link:{brand['derived']['dark']['badge']['hex']};
+   --on-link:{p_['penguin']['hex']}}}
  *{{box-sizing:border-box}}
  body{{margin:0;background:var(--bg);color:var(--ink);
    font:16px/1.6 Archivo,system-ui,sans-serif}}
@@ -741,6 +744,87 @@ PAY_PERIOD = {"year": "", "month": "a month", "week": "a week",
 # The app's spacing tokens are not defined on these pages, so they are
 # declared on :root here. --beak comes from the site sheet above.
 CFPAGE_CSS = """
+  /* ── turn 3: the conference page proper ─────────────────────────────────
+     THREE STATES, ONE PAGE. The design file draws them as 3g (swept, people
+     hiring), 3e (dates known, floor unread - "the 800-page case") and 3h (no
+     dates announced). They are not three templates: the header, the facts
+     table, the doors, "Run by" and "Where this came from" are identical, and
+     what changes is the one section in the middle that answers "who is on
+     this floor". Sections with no data are DROPPED rather than rendered
+     empty, which is what keeps state 3 from reading as a broken state 1.
+
+     Every colour is a token from the kit, so both themes come along. */
+  .cfx{max-width:900px;margin:0 auto;padding:0 var(--space-4) 64px}
+  .cfx-crumb{font-size:13px;color:var(--dim);margin:var(--space-6) 0 var(--space-4)}
+  .cfx-crumb a{color:var(--link);text-decoration:none}
+  .cfx-crumb a:hover{text-decoration:underline}
+  .cfx-eyebrow{display:flex;align-items:center;gap:var(--space-3);
+    font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--faint)}
+  .cfx-flag{color:var(--ink);border:1px solid var(--line);padding:2px 7px}
+  .cfx h1{font-family:var(--font-heading);font-weight:800;font-size:31px;
+    letter-spacing:-.02em;line-height:1.12;margin:var(--space-2) 0 var(--space-3);
+    text-wrap:balance}
+  .cfx-state{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;
+    font-weight:600;border:1px solid var(--line);padding:4px 10px;
+    color:var(--dim);margin-bottom:var(--space-4)}
+  .cfx-state i{width:8px;height:8px;background:var(--beak);flex:none}
+  .cfx-state.read i{background:var(--link)}
+  .cfx-lede{font-size:16px;line-height:1.55;margin:0 0 var(--space-6);
+    color:var(--ink)}
+  .cfx-lede b{font-weight:700}
+  /* the facts table - a label column and a value column, nothing else */
+  .cfx-facts{display:grid;grid-template-columns:150px 1fr;gap:2px var(--space-4);
+    margin:0 0 var(--space-6);font-size:14.5px}
+  .cfx-facts dt{font-size:11px;font-weight:700;letter-spacing:.07em;
+    text-transform:uppercase;color:var(--faint);padding-top:5px}
+  .cfx-facts dd{margin:0;padding:3px 0;border-bottom:1px solid var(--line)}
+  .cfx-doors{display:flex;flex-wrap:wrap;gap:var(--space-2);margin:0 0 var(--space-8)}
+  .cfx-door{display:inline-block;padding:11px 18px;font-size:14px;font-weight:600;
+    text-decoration:none;border:1px solid var(--line);color:var(--ink)}
+  .cfx-door.lead{background:var(--link);border-color:var(--link);
+    color:var(--on-link)}
+  .cfx-door:hover{border-color:var(--link);color:var(--link)}
+  .cfx-door.lead:hover{color:var(--on-link);opacity:.92}
+  .cfx-sec{margin:0 0 var(--space-8)}
+  .cfx-sec h2{font-size:11px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--faint);margin:0 0 var(--space-3);
+    padding-bottom:6px;border-bottom:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-3)}
+  .cfx-sec h2 span{font-weight:600;letter-spacing:0;text-transform:none;font-size:13px}
+  /* THE HONEST PANEL. State 3's whole job, and it is prose rather than a
+     table because it is a statement about us. */
+  .cfx-note{border-left:3px solid var(--beak);padding:2px 0 2px var(--space-4);
+    font-size:14.5px;line-height:1.6;color:var(--ink)}
+  .cfx-note p{margin:0 0 var(--space-3)}
+  .cfx-note p:last-child{margin:0}
+  .cfx-roster{width:100%;border-collapse:collapse;font-size:14px}
+  .cfx-roster th{text-align:left;font-size:11px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--faint);
+    padding:0 var(--space-3) 7px 0;border-bottom:1px solid var(--line)}
+  .cfx-roster td{padding:9px var(--space-3) 9px 0;border-bottom:1px solid var(--line);
+    vertical-align:top}
+  .cfx-roster td.n{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+  .cfx-roster a{color:var(--link);text-decoration:none}
+  .cfx-roster a:hover{text-decoration:underline}
+  .cfx-more{font-size:13px;color:var(--dim);margin-top:var(--space-3)}
+  .cfx-org{font-size:14.5px;line-height:1.5}
+  .cfx-org a{font-weight:700;color:var(--link);text-decoration:none;font-size:16px}
+  .cfx-org .meta{color:var(--dim);font-size:13px;margin-top:3px}
+  .cfx-next{display:grid;gap:var(--space-2)}
+  .cfx-next a{display:flex;justify-content:space-between;gap:var(--space-4);
+    text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);
+    padding:9px 0;font-size:14px}
+  .cfx-next a:hover .nm{color:var(--link)}
+  .cfx-next .when{color:var(--dim);font-size:13px;flex:none;
+    font-variant-numeric:tabular-nums}
+  .cfx-src{font-size:13px;color:var(--dim);line-height:1.6}
+  @media (max-width:640px){
+    .cfx h1{font-size:25px}
+    .cfx-facts{grid-template-columns:1fr;gap:0}
+    .cfx-facts dt{padding-top:var(--space-3)}
+    .cfx-door{width:100%;text-align:center}
+  }
  :root{--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;
    --accent:var(--link);--faint:var(--dim)}
   /* the panel */
@@ -759,7 +843,7 @@ CFPAGE_CSS = """
   .cfp-org,.cfp-when{margin:0;font-size:14px;color:var(--dim)}
   .cfp-acts{display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap;
     margin:var(--space-2) 0}
-  .cfp-go{background:var(--accent);color:#fff;text-decoration:none;
+  .cfp-go{background:var(--accent);color:var(--on-link);text-decoration:none;
     font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px}
   .cfp-alt{font:inherit;font-size:14px;font-weight:600;padding:10px 18px;
     border-radius:999px;border:1px solid var(--line);background:var(--panel);
@@ -1992,6 +2076,38 @@ def conference_gets_a_page(c: dict, by_tag: dict) -> bool:
     tag = c.get("tag") or c.get("event_tag")
     if not tag:
         return False
+    # A TAG IS ENOUGH NOW, because state 4 exists. This required a roster OR
+    # dates and the comment said an undated, unswept row had "nothing to say
+    # that the catalogue tab does not say" - true of the old panel port, false
+    # of turn 3's page, which names the organisation, its other events, the
+    # department, the event site, and says out loud that no dates are on file
+    # and we are not guessing. Four rows were getting no page while the design
+    # drew one specifically for them. The sitemap reads this same function, so
+    # the two cannot drift apart.
+    return True
+
+
+def conference_is_worth_crawling(c: dict, by_tag: dict) -> bool:
+    """Should the SITEMAP advertise this conference's page?
+
+    TWO DIFFERENT QUESTIONS, and collapsing them was wrong in both
+    directions. `conference_gets_a_page` asks whether there is a page - and
+    since turn 3 there always is, because state 4 is drawn for precisely the
+    undated, unswept row. A sitemap entry is a different claim: that the url
+    is worth a crawler's time. This file's own company rule says the same
+    thing more sharply - it refuses to list 1,800 near-identical no-openings
+    pages, because that is how a site teaches a crawler to stop believing it.
+
+    So a conference we can say something specific about - a roster, or a date
+    somebody could plan around - is advertised. Four rows with neither still
+    get a page, reachable from the tab and from any company that carries the
+    tag, and are simply not pushed at Google. The invariant that actually
+    matters is that everything advertised RESOLVES, and it does: this is a
+    subset of what the page writer writes, which selftest asserts both ways.
+    """
+    tag = c.get("tag") or c.get("event_tag")
+    if not tag or not conference_gets_a_page(c, by_tag):
+        return False
     return bool(by_tag.get(tag) or c.get("dates"))
 
 
@@ -2037,93 +2153,304 @@ def _cf_provenance(c: dict) -> str:
             }.get((c.get("dates_confidence") or "").lower(), "dates unconfirmed")
 
 
-def _conference_body(c: dict, tag: str, roster: list, hiring: list) -> str:
-    """cfPanelHTML(), ported. Same sections, same order, same class names.
+def _conference_body(c: dict, tag: str, roster: list, hiring: list,
+                     org: dict | None = None, same_dept: list | None = None) -> str:
+    """Turn 3's conference page: states 3g, 3e and 3h, drawn from one shape.
 
-    Everything the panel does on the client becomes a plain link or is left
-    out: no rating buttons (the API needs JS and a page with dead buttons is
-    worse than a page without them), no calendar download, no close button.
-    The rating SCORE is not printed either - it is fetched at runtime in the
-    app precisely because a nightly build would show this morning's vote as
-    missing.
+    The design file draws three. They are not three templates - the header,
+    the facts table, the doors, "Run by" and "Where this came from" are
+    identical in all three, and the only thing that changes is the section
+    that answers WHO IS ON THIS FLOOR:
+
+      state 1 (3g) swept        -> the roster, hiring first, and what the read found
+      state 3 (3e) dates, unread-> "we have not read this floor", and the door we hold
+      state 4 (3h) no dates     -> the same, plus "no dates on file and we are not
+                                   guessing"
+
+    TWO BLOCKS THE DESIGN ASKS FOR ARE NOT HERE, and their absence is the
+    honest half of this page. "From last year's read" and "Past editions" want
+    a previous edition of the same event; the catalogue holds 138 events and
+    138 distinct editions, no conference has a sibling year, and no company on
+    the board carries a tag from 2024 or earlier. There is no last year to read
+    from. Rendering those sections empty would turn the best idea in the design
+    into furniture, and filling them would be an invented fact. They land the
+    day an event rolls over and we keep the old tag beside the new one.
+
+    "What it is" is missing for the same reason: there is no conference
+    description anywhere in the data, and writing one here would be this file
+    asserting something no page said.
     """
-    name = c.get("name") or tag
     esc = html.escape
-    bits = [x for x in (c.get("dates") or _cf_no_dates(c), _cf_place(c)) if x]
-    chips = []
-    if c.get("companies"):
-        chips.append(f'<span class="cfchip"><b>{c["companies"]}</b> '
-                     f'govtech exhibitors</span>')
-    if c.get("companies") and (c.get("approx_count") or 0) > c["companies"]:
-        chips.append(f'<span class="cfchip">about {c["approx_count"]} '
-                     f'on the floor</span>')
-    if hiring:
-        chips.append(f'<span class="cfchip"><b>{len(hiring)}</b> hiring</span>')
-    if c.get("open_roles"):
-        chips.append(f'<span class="cfchip"><b>{c["open_roles"]}</b> '
-                     f'open roles</span>')
-    if c.get("department"):
-        chips.append(f'<span class="cfchip">{esc(c["department"])}</span>')
+    name = c.get("name") or tag
+    swept = bool(roster)
+    has_dates = bool(c.get("dates"))
+    dept = c.get("department") or ""
+    block = c.get("block") or ""
+    n_hire = len(hiring)
+    open_roles = sum(o.get("open_roles") or 0 for o in roster)
 
-    shown = roster[:CO_ROSTER_CAP]
-    items = ""
-    for o in shown:
-        n_open = o.get("open_roles") or 0
-        label = esc(o.get("name") or "")
-        if n_open:
-            label = (f'<a href="/c/{urllib.parse.quote(o["id"])}.html">'
-                     f'{label}</a>')
-        items += (f'<li><span class="cfface">{esc(_cf_initials(o.get("name")))}'
-                  f'</span><span>{label}</span>'
-                  + (f'<em>{n_open} open</em>' if n_open else "") + '</li>')
+    # ── header ────────────────────────────────────────────────────────────
+    crumb = ['<a href="/?tab=conferences">Conferences</a>']
+    if block:
+        crumb.append(esc(block))
+    if dept and dept != block:
+        crumb.append(esc(dept))
+    eyebrow = [f'<span>{esc(tag)}</span>']
+    if c.get("flagship"):
+        eyebrow.append('<span class="cfx-flag">Flagship</span>')
 
-    if roster:
-        note = (f'<p class="cfp-note">We track {len(roster)} of about '
-                f'{c["approx_count"]} who stood here. The rest are companies '
-                f'we do not follow, not companies that were absent.</p>'
-                if (c.get("approx_count") or 0) > len(roster) else "")
-        if len(roster) > CO_ROSTER_CAP:
-            note += (f'<p class="cfp-note">Showing {len(shown)} of '
-                     f'{len(roster)}, the ones hiring first.</p>')
-        booth = f'<ul class="cfp-roster">{items}</ul>{note}'
+    if swept:
+        state = ('<span class="cfx-state read"><i></i>Floor read</span>')
+        where = f"{esc(block)} &rarr; {esc(dept)}. " if block and dept else ""
+        # NO SUM OF open_roles HERE, AND THAT IS THE POINT. The design reads
+        # "9 hiring right now across 20 open sales roles", which assumes the
+        # third figure belongs to this floor. It does not: open_roles is a
+        # company's whole board, so APCO's 32 exhibitors summed to 358 because
+        # Motorola Solutions carries 352 reqs worldwide - "Channel Account
+        # Executive - ITALY" among them - and the sentence then reads as a
+        # claim about a dispatch show in Anaheim. The per-company counts are
+        # in the roster table below, where each number sits beside the company
+        # it belongs to and cannot be mistaken for the floor's total.
+        lede = (f'{where}We read this floor: <b>{len(roster)}</b> '
+                f'{"company" if len(roster) == 1 else "companies"} on file'
+                + (f', <b>{n_hire}</b> of them hiring a seller today'
+                   if n_hire else
+                   ', and none of them is hiring a seller today')
+                + '.')
     else:
-        booth = ('<p class="cfp-note">We have not mined this floor yet '
-                 '&mdash; that is a fact about us, not about the '
-                 'conference.</p>')
+        state = '<span class="cfx-state"><i></i>Floor not read yet</span>'
+        where = f"{esc(block)} &rarr; {esc(dept)}. " if block and dept else ""
+        lede = (f'{where}The tag <b>{esc(tag)}</b> is what company pages cite '
+                f'when we know a company exhibited here.')
 
-    site_url = c.get("url")
-    org_line = esc(" \u00b7 ".join(
-        x for x in (c.get("department"), c.get("block")) if x))
-    when_line = esc(" \u00b7 ".join(bits))
-    flag = '<span class="cfflag">Flagship</span>' if c.get("flagship") else ""
-    go = (f'<a class="cfp-go" href="{esc(site_url)}" rel="nofollow noopener">'
-          f'Event site &nearr;</a>') if site_url else ""
-    return f'''<div class="cfp-card">
-    <h1 class="cfp-name">{esc(name)}
-      {flag}</h1>
-    <p class="cfp-org">{org_line}</p>
-    <p class="cfp-when">{when_line}</p>
-    <div class="cfp-acts">
-      {go}
-      <a class="cfp-alt" href="/?tab=conferences">All conferences</a>
-      <span class="cfp-src">{esc(_cf_provenance(c))}</span>
-    </div>
-    <div class="cfp-chips">{"".join(chips)}</div>
-    <section class="cfp-sec">
-      <h2>Who has a booth</h2>
-      {booth}
-    </section>
-    <div class="note">These are the exhibitors <em>we</em> track from this
-      show, not the show's exhibitor list. We hold a roster for some
-      conferences and not others, so a short list here means we know less
-      about this floor, never that the floor was small.</div>
-  </div>'''
+    # ── the facts table: only rows we hold ────────────────────────────────
+    facts = []
+    facts.append(("Dates", esc(c.get("dates") or _cf_no_dates(c))))
+    if _cf_place(c):
+        facts.append(("City", esc(_cf_place(c))))
+    if dept:
+        facts.append(("Department",
+                      esc(f"{block} → {dept}" if block and block != dept else dept)))
+    facts.append(("Event tag", esc(tag)))
+    facts_html = "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in facts)
+
+    # ── the doors ─────────────────────────────────────────────────────────
+    doors = []
+    if c.get("url"):
+        doors.append(f'<a class="cfx-door lead" href="{esc(c["url"])}" '
+                     f'rel="nofollow noopener">Event site &amp; registration '
+                     f'&nearr;</a>')
+    # THE DIRECTORY, WHICH REACHED NO READER UNTIL TODAY. 61 rows carry one and
+    # the conference row shape did not pass it through, so every unmined page
+    # said "we have not read this floor" and offered nothing to do about it.
+    if c.get("exhibitor_url"):
+        doors.append(f'<a class="cfx-door" href="{esc(c["exhibitor_url"])}" '
+                     f'rel="nofollow noopener">Exhibitor directory &nearr;</a>')
+    # ONLY WHEN THE FILE EXISTS. _ics_range refuses a date string it cannot
+    # parse, so `has_dates` is not the same question as "is there a calendar":
+    # five rows carry prose a person can read and the parser will not guess at.
+    if _ics_range(c.get("dates")):
+        doors.append(f'<a class="cfx-door" href="/e/{_slugify(tag)}.ics">'
+                     f'Add to calendar (.ics)</a>')
+
+    secs = []
+
+    # ── the middle: what we know about this floor ────────────────────────
+    if swept:
+        rows = []
+        for o in roster[:10]:
+            n = o.get("open_roles") or 0
+            place = " / ".join(x for x in (o.get("sector"), o.get("category")) if x)
+            rows.append(
+                f'<tr><td><a href="/c/{esc(o.get("id") or "")}.html">'
+                f'{esc(o.get("name") or "")}</a></td>'
+                f'<td>{esc(place)}</td>'
+                f'<td class="n">{n or "&mdash;"}</td></tr>')
+        more = ""
+        if len(roster) > 10:
+            more = (f'<p class="cfx-more">Showing 10 of {len(roster)}, the ones '
+                    f'hiring first.</p>')
+        # TWO DIFFERENT TRUNCATIONS, and only one of them is about the show.
+        # `more` above is our display cap. This is the other gap: the catalogue
+        # records roughly how big the floor was, and it is usually far larger
+        # than the number of exhibitors we follow - APCO lists about 250 and we
+        # track 32. Printing 32 under a heading about the floor, with nothing
+        # said about the other 218, reads as a claim that the show was small.
+        # The app refuses to make that claim and so does this.
+        gap = ""
+        approx = c.get("approx_count") or 0
+        if approx > len(roster):
+            gap = (f'<div class="cfx-note"><p>About <b>{approx}</b> exhibitors '
+                   f'were on this floor and we follow <b>{len(roster)}</b> of '
+                   f'them. The rest are companies we do not follow &mdash; '
+                   f'not companies that were absent.</p></div>')
+        secs.append(
+            f'<section class="cfx-sec"><h2>Who exhibits here &middot; hiring first'
+            f'<span>{len(roster)} '
+            f'{"company" if len(roster) == 1 else "companies"}'
+            f'{f" &middot; {n_hire} hiring" if n_hire else ""}</span></h2>'
+            f'<table class="cfx-roster"><thead><tr><th>Company</th>'
+            f'<th>On the board</th><th class="n">Open sales roles</th></tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table>{more}'
+            f'<p class="cfx-more">These are the exhibitors <em>we</em> track from '
+            f'this show, not the show&rsquo;s own list. A short roster here means '
+            f'we know less about this floor, never that the floor was small.</p>'
+            f'{gap}</section>')
+        # What the read found - only where a sweep record exists to say it.
+        sw = c.get("sweep") or {}
+        if sw.get("swept_on") or sw.get("captured"):
+            found = []
+            if sw.get("swept_on"):
+                found.append(f'Read on <b>{esc(str(sw["swept_on"]))}</b>')
+            if sw.get("captured"):
+                found.append(f'<b>{sw["captured"]}</b> names captured')
+            if sw.get("govtech"):
+                found.append(f'<b>{sw["govtech"]}</b> read as govtech')
+            secs.append(f'<section class="cfx-sec"><h2>What the read found</h2>'
+                        f'<p class="cfx-org">{" &middot; ".join(found)}</p>'
+                        f'</section>')
+    else:
+        # THE 800-PAGE CASE. An empty count is a fact about us and this says so
+        # in the same words the catalogue tab uses, then hands over the only
+        # useful thing we have: the organiser's own list.
+        door = ""
+        if c.get("exhibitor_url"):
+            door = (f'<p>They publish an exhibitor directory, so when it is read '
+                    f'this page fills in on its own. '
+                    f'<a href="{esc(c["exhibitor_url"])}" rel="nofollow noopener">'
+                    f'Open their exhibitor directory &nearr;</a></p>')
+        else:
+            door = ('<p>We have not found an exhibitor list for this event at '
+                    'all. If you know where one is, that is one page of ours '
+                    'made correct.</p>')
+        no_dates = ""
+        if not has_dates:
+            no_dates = ('<p><b>No dates on file, and we are not guessing.</b> '
+                        'The organiser has not published the next edition where '
+                        'we can read it; this page updates itself the day they '
+                        'do.</p>')
+        secs.append(
+            f'<section class="cfx-sec"><h2>The floor here</h2>'
+            f'<div class="cfx-note">'
+            # THE PHRASE STAYS ON ONE LINE. selftest greps this module's own
+            # source for it, so splitting it across two f-string fragments
+            # renders correctly and fails the check - which is fair, because a
+            # phrase nobody can find by searching is a phrase that drifts.
+            f'<p>We have not read this floor yet &mdash;'
+            f' that is a fact about us, not about the conference.</p>'
+            f'{no_dates}{door}</div></section>')
+
+    # ── run by ────────────────────────────────────────────────────────────
+    if org and org.get("name"):
+        meta = []
+        if org.get("event_count"):
+            meta.append(f'{org["event_count"]} '
+                        f'{"event" if org["event_count"] == 1 else "events"} '
+                        f'in the catalogue')
+        if org.get("swept_count"):
+            meta.append(f'{org["swept_count"]} '
+                        f'{"floor" if org["swept_count"] == 1 else "floors"} read')
+        host = ""
+        if org.get("url"):
+            host = urllib.parse.urlparse(org["url"]).netloc.replace("www.", "")
+        link = (f'<a href="{esc(org["url"])}" rel="nofollow noopener">'
+                f'{esc(org["name"])}</a>' if org.get("url")
+                else f'<b>{esc(org["name"])}</b>')
+        secs.append(f'<section class="cfx-sec"><h2>Run by</h2>'
+                    f'<div class="cfx-org">{link}'
+                    f'<div class="meta">'
+                    f'{" &middot; ".join([esc(host)] + meta) if host else " &middot; ".join(meta)}'
+                    f'</div></div></section>')
+
+    # ── same department, next up ───────────────────────────────────────────
+    if same_dept:
+        rows = []
+        for x in same_dept[:4]:
+            tail = (f'{x["companies"]} exhibitors' if x.get("companies")
+                    else "floor not read yet")
+            rows.append(
+                f'<a href="/e/{_slugify(x["tag"])}.html">'
+                f'<span class="nm">{esc(x.get("name") or x["tag"])}</span>'
+                f'<span class="when">{esc(x.get("dates") or _cf_no_dates(x))}'
+                f' &middot; {tail}</span></a>')
+        secs.append(f'<section class="cfx-sec">'
+                    f'<h2>Same department, next up</h2>'
+                    f'<div class="cfx-next">{"".join(rows)}</div></section>')
+
+    # ── where this came from ──────────────────────────────────────────────
+    secs.append(f'<section class="cfx-sec"><h2>Where this came from</h2>'
+                f'<p class="cfx-src">{esc(_cf_provenance(c))}</p></section>')
+
+    return f'''<div class="cfx">
+  <nav class="cfx-crumb">{" &rsaquo; ".join(crumb)}</nav>
+  <div class="cfx-eyebrow">{"".join(eyebrow)}</div>
+  <h1>{esc(name)}</h1>
+  {state}
+  <p class="cfx-lede">{lede}</p>
+  <dl class="cfx-facts">{facts_html}</dl>
+  <div class="cfx-doors">{"".join(doors)}</div>
+  {"".join(secs)}
+</div>'''
 
 
 def _cf_no_dates(c: dict) -> str:
     return {"unannounced": "next edition not announced yet",
             "unreachable": "their site did not answer when we last looked",
             }.get((c.get("dates_confidence") or "").lower(), "dates unconfirmed")
+
+
+def _ics_stamp(board: dict) -> str:
+    """DTSTAMP for this build, from the board's own `generated`.
+
+    Shared by the feed and the per-event files so two writers of one format
+    cannot disagree about when the build happened, and so an unchanged board
+    rebuilds to identical bytes.
+    """
+    gen = board.get("generated") or dt.date.today().isoformat()
+    stamp = re.sub(r"[-:]", "", str(gen).split(".")[0]).replace(" ", "T")
+    stamp = stamp.rstrip("Z")
+    if "T" not in stamp:
+        stamp = stamp[:8] + "T000000"
+    return stamp + "Z"
+
+
+def _one_event_ics(c: dict, tag: str, brand: dict, site: str,
+                   stamp: str) -> str | None:
+    """One conference as a subscribable .ics, or None if it has no date.
+
+    THE BUTTON HAS TO LEAD SOMEWHERE. The panel this page replaced carried no
+    calendar download and said why: "a page with dead buttons is worse than a
+    page without them". Turn 3 draws "Add to calendar (.ics)", so the file has
+    to exist - 128 pages shipped a link to a path nothing wrote before this.
+
+    Same writer discipline as the feed: DTSTAMP and an EXCLUSIVE DTEND, every
+    TEXT value escaped, every line folded at 75 octets.
+    """
+    span = _ics_range(c.get("dates"))
+    if not span:
+        return None
+    first, last = span
+    lines = ["BEGIN:VCALENDAR", "VERSION:2.0",
+             f"PRODID:-//{brand['name']}//conferences//EN",
+             "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+             f"X-WR-CALNAME:{_ics_esc(c.get('name') or tag)}",
+             "BEGIN:VEVENT",
+             f"DTSTAMP:{stamp}",
+             # DERIVED WHEN IT IS NOT GIVEN. brand.json carries `domain`, but
+             # two selftest harnesses build a partial brand and this crashed
+             # on the second one - and the value is already implied by `site`,
+             # so asking for it twice was the mistake.
+             f"UID:{_slugify(tag)}@"
+             f"{brand.get('domain') or urllib.parse.urlparse(site).netloc}",
+             f"DTSTART;VALUE=DATE:{first.strftime('%Y%m%d')}",
+             f"DTEND;VALUE=DATE:"
+             f"{(last + dt.timedelta(days=1)).strftime('%Y%m%d')}",
+             f"SUMMARY:{_ics_esc(c.get('name') or tag)}",
+             f"LOCATION:{_ics_esc(c.get('city') or '')}",
+             f"DESCRIPTION:{_ics_desc(c, site)}",
+             f"URL:{_ics_esc(f'{site}/e/{_slugify(tag)}')}",
+             "TRANSP:TRANSPARENT", "END:VEVENT", "END:VCALENDAR"]
+    return "\r\n".join(_ics_fold(x) for x in lines) + "\r\n"
 
 
 def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
@@ -2153,9 +2480,40 @@ def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
     # appeared on neither, filed under IACP and then cut by the roster cap.
     by_tag = conference_rosters(board)
 
+    # ONE READ, NOT 138. "Run by" needs the organisation behind each event and
+    # organisations.json already holds the counts the design asks for -
+    # event_count and swept_count - so the page states a number it did not
+    # compute here. All 138 conferences resolve to a real body and none is an
+    # is_a_class grouping, so the section never renders a placeholder.
+    org_by_tag: dict = {}
+    _orgp = ROOT / "data" / "organisations.json"
+    if _orgp.exists():
+        _orgs = json.loads(_orgp.read_text())
+        _orgs = _orgs.get("organisations", _orgs) if isinstance(_orgs, dict) else _orgs
+        for _o in _orgs:
+            for _e in (_o.get("events") or []):
+                if _e.get("tag"):
+                    org_by_tag[_e["tag"]] = _o
+
+    # "Same department, next up" - the soonest OTHER events in this department,
+    # by the same parser the calendar and the .ics use, and only ones that get
+    # a page of their own. 66 of 138 share a department with at least one other
+    # event; the rest drop the section rather than showing a lonely link.
+    dept_index: dict = {}
+    for _c in board.get("conferences") or []:
+        if _c.get("department"):
+            dept_index.setdefault(_c["department"], []).append(_c)
+
     n = 0
     for c in board.get("conferences", []) or []:
-        tag = c.get("tag")
+        # THE SAME ACCESSOR THE PREDICATE USES. This read only `tag` while
+        # conference_gets_a_page reads `tag or event_tag`, so the two disagreed
+        # about what identifies a conference. It works in production only
+        # because build_board writes `tag` - a row in conferences.json shape
+        # was judged page-worthy and then silently skipped by the writer, which
+        # is precisely the sitemap-advertises-a-404 failure this pair exists to
+        # prevent, arriving from the other side.
+        tag = c.get("tag") or c.get("event_tag")
         if not tag:
             continue
         roster = sorted(by_tag.get(tag, []),
@@ -2168,7 +2526,20 @@ def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
         # else can - and says it about US, never about the show's floor.
         line = (f"{len(hiring)} of the {len(roster)} exhibitors we track here "
                 f"are hiring" if roster else "No exhibitors tracked here yet")
-        body = _conference_body(c, tag, roster, hiring)
+        span = _ics_range(c.get("dates"))
+        peers = [x for x in dept_index.get(c.get("department") or "", [])
+                 if x.get("tag") != tag and conference_gets_a_page(x, by_tag)]
+        # soonest first, and an event already past is not "next up"
+        peers = sorted(
+            (x for x in peers if _ics_range(x.get("dates"))),
+            key=lambda x: _ics_range(x["dates"])[0])
+        peers = [x for x in peers
+                 if _ics_range(x["dates"])[1] >= dt.date.today()]
+        body = _conference_body(c, tag, roster, hiring,
+                               org=org_by_tag.get(tag), same_dept=peers)
+        cal = _one_event_ics(c, tag, brand, site, _ics_stamp(board))
+        if cal:
+            (d / f"{_slugify(tag)}.ics").write_text(cal)
         (d / f"{_slugify(tag)}.html").write_text(_page(
             f"{c.get('name') or tag}: who is hiring · {brand['name']}",
             f"{line}. " + (f"{c.get('dates')}, {c.get('city')}. " if c.get("dates") else "")
@@ -2377,11 +2748,13 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
                       for p_ in board.get("postings", [])
                       if p_.get("family") in ("gtm", "field")} - {None, ""}):
         urls.append((f"{site}/s/{st.lower()}", "weekly", "0.6"))
-    # THE SAME PREDICATE THE PAGE WRITER USES. Listing a row that never got a
-    # page hands Google a canonical address that 404s; 17 of 138 did.
+    # A SUBSET OF WHAT THE PAGE WRITER WRITES. Listing a row that never got a
+    # page hands Google a canonical address that 404s; 17 of 138 once did.
+    # Every page exists now, so the question here is the narrower one -
+    # whether the url is worth crawling. See conference_is_worth_crawling.
     _rosters = conference_rosters(board)
     for c in board.get("conferences", []) or []:
-        if conference_gets_a_page(c, _rosters):
+        if conference_is_worth_crawling(c, _rosters):
             tag = c.get("tag") or c.get("event_tag")
             urls.append((f"{site}/e/{_slugify(tag)}", "monthly", "0.5"))
 

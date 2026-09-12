@@ -12465,6 +12465,42 @@ def check_posts_at_vocabulary() -> int:
     return errors
 
 
+def check_a_page_never_links_to_a_file_that_is_not_there() -> int:
+    """Every local file a shipped page links to must exist in public/.
+
+    THE THIRD TIME THIS SHAPE HAS COME UP. The panel that /e/ replaced carried
+    no calendar download and its docstring said why - "a page with dead buttons
+    is worse than a page without them". Turn 3 draws "Add to calendar (.ics)",
+    I wrote the link and not the file, and 128 pages shipped a button that
+    404s. The sitemap half of this has a guard already; the pages did not.
+
+    Deliberately narrow: only same-origin links to a file extension we build
+    (.ics, .xlsx, .json, .xml, .txt). Extensionless paths are Cloudflare's
+    prettified routes and .html is covered by the sitemap check.
+    """
+    pub = ROOT / "public"
+    if not pub.exists():
+        note("public/ has not been built, so no page links were followed")
+        return 0
+    import re as _re
+    exts = (".ics", ".xlsx", ".xml", ".txt", ".json")
+    dead: list[tuple[str, str]] = []
+    pages = 0
+    for f in pub.rglob("*.html"):
+        pages += 1
+        for href in _re.findall(r'(?:href|src)="(/[^"#?]+)"', f.read_text()):
+            if not href.endswith(exts):
+                continue
+            if not (pub / href.lstrip("/")).exists():
+                dead.append((str(f.relative_to(pub)), href))
+    if dead:
+        shown = "; ".join(f"{n} -> {h}" for n, h in dead[:4])
+        return fail(f"{len(dead)} link(s) on {pages} shipped page(s) point at a "
+                    f"file public/ does not contain, so the control is dead in "
+                    f"a reader's hands: {shown}")
+    return 0
+
+
 def check_crawl_files() -> int:
     """A single-page app cannot be indexed by luck.
 
@@ -12491,10 +12527,20 @@ def check_crawl_files() -> int:
                              {"event_tag": "Ghost Event 2026"}],
              "organizations": [{"id": "hiring-co", "open_roles": 3},
                                {"id": "quiet-co", "open_roles": 0}]}
-    brand = {"site": "https://example.test", "name": "SLED JOBS"}
+    # THE REAL PALETTE, because the page writer renders a full stylesheet and
+    # a two-key stub cannot. Only `site` and `name` are overridden, so the
+    # sitemap assertions below still read example.test.
+    brand = {**_json.loads((DATA / "brand.json").read_text()),
+             "site": "https://example.test", "name": "SLED JOBS"}
     tmp = _pl.Path(tempfile.mkdtemp())
     try:
         build_site.write_crawl_files(tmp, board, brand)
+        # AND THE PAGES THEMSELVES, in the same temp tree. This harness used to
+        # assert only that the two PREDICATES agreed, which is a weaker claim
+        # than the one that matters: it could not have caught a sitemap entry
+        # whose page the writer skipped for any other reason. Now both run and
+        # the files are compared.
+        build_site.write_conference_pages(tmp, board, brand)
         for f in ("robots.txt", "sitemap.xml", "404.html"):
             if not (tmp / f).exists():
                 errors += fail(f"build_site did not write {f}")
@@ -12520,18 +12566,37 @@ def check_crawl_files() -> int:
             errors += fail("conferences are missing from the sitemap, or it "
                            "still points at the tab query rather than the "
                            "prerendered conference page")
-        # THE SITEMAP AND THE PAGE WRITER MUST ASK THE SAME QUESTION.
+        # A THIN ROW IS NOT ADVERTISED. Ghost Event has no date and no
+        # exhibitor, so there is nothing specific to promise a crawler; the
+        # company half of this check refuses 1,800 near-identical empty pages
+        # for the same reason.
         if "/e/ghost-event-2026" in sm:
-            errors += fail("the sitemap advertises a conference that gets no "
-                           "page - no date and no exhibitor on file. Handing a "
-                           "crawler a canonical address that 404s is worse than "
-                           "omitting it, and 17 of 138 did exactly that")
-        # and the two are one predicate, not two that happen to agree today
+            errors += fail("the sitemap advertises a conference with no date "
+                           "and no exhibitor on file - a sitemap full of "
+                           "near-identical thin pages teaches a crawler to "
+                           "stop believing this one")
+        # BUT IT STILL GETS A PAGE, and that is the change turn 3 made: state
+        # 4 is drawn for exactly this row, so it is reachable from the tab and
+        # from any company carrying the tag. Two questions, two predicates.
         rosters = build_site.conference_rosters(board)
-        for c, want in ((board["conferences"][0], True), (board["conferences"][1], False)):
-            if build_site.conference_gets_a_page(c, rosters) is not want:
-                errors += fail(f"conference_gets_a_page disagrees with the "
-                               f"sitemap on {c.get('event_tag')!r}")
+        ghost = board["conferences"][1]
+        if not build_site.conference_gets_a_page(ghost, rosters):
+            errors += fail("an undated, unswept conference gets no page at "
+                           "all - turn 3 draws state 4 for precisely that "
+                           "row, and the tab links to it")
+        if build_site.conference_is_worth_crawling(ghost, rosters):
+            errors += fail("conference_is_worth_crawling would advertise a row "
+                           "with no date and no exhibitor")
+        # THE INVARIANT THAT ACTUALLY MATTERS: everything advertised resolves.
+        # Asserted from the files on disk rather than from the predicate, so a
+        # future change to either one cannot quietly reintroduce a 404.
+        import re as _re
+        adv = set(_re.findall(r"<loc>[^<]*/e/([^<]+)</loc>", sm))
+        on_disk = {f.stem for f in (tmp / "e").glob("*.html")}
+        if adv - on_disk:
+            errors += fail(f"the sitemap advertises {len(adv - on_disk)} "
+                           f"conference page(s) that were never written: "
+                           f"{sorted(adv - on_disk)[:3]}")
         rob = (tmp / "robots.txt").read_text()
         if "Sitemap: https://example.test/sitemap.xml" not in rob:
             errors += fail("robots.txt does not name the sitemap")
@@ -18252,23 +18317,43 @@ def check_the_conference_page_is_the_conference_panel() -> int:
                              "this check compared nothing")
     roster = rosters[row["tag"]]
     hiring = [o for o in roster if o.get("open_roles")]
-    body = bs._conference_body(row, row["tag"], roster, hiring)
+    # WITH AN ORGANISATION, because the page takes one and "Run by" is a
+    # section a reader sees on all 138. Driving the writer without it left the
+    # whole block untested and the class list below reporting a phantom fault.
+    org = {"name": "Test Association", "url": "https://example.test",
+           "event_count": 4, "swept_count": 1}
+    body = bs._conference_body(row, row["tag"], roster, hiring, org=org)
     empty = dict(row); empty["companies"] = 0
-    blank = bs._conference_body(empty, row["tag"], [], [])
+    blank = bs._conference_body(empty, row["tag"], [], [], org=org)
 
-    for cls in ("cfp-card", "cfp-name", "cfp-org", "cfp-when", "cfp-acts",
-                "cfp-chips", "cfp-sec", "cfp-roster", "cfp-note", "cfp-go",
-                "cfp-src", "cfchip", "cfface"):
-        where = blank if cls == "cfp-note" else body
+    # THE PAGE'S OWN CLASSES, AND ITS OWN SHEET. This checked the cfp-* set
+    # and required index.html to use each one too, because the /e/ page WAS a
+    # port of the panel and borrowed the app's stylesheet. Turn 3 made it a
+    # page in its own right with a cfx-* vocabulary shipped in CFPAGE_CSS, so
+    # app parity is the wrong question now - but the invariant underneath it is
+    # not, and it is the one that actually bites: a class the stylesheet does
+    # not define is an element with no styling at all. So each class the page
+    # writes is looked up in the sheet the page ships.
+    sheet = bs.CFPAGE_CSS
+    for cls in ("cfx", "cfx-crumb", "cfx-eyebrow", "cfx-state", "cfx-lede",
+                "cfx-facts", "cfx-doors", "cfx-door", "cfx-sec", "cfx-note",
+                "cfx-roster", "cfx-more", "cfx-org", "cfx-src"):
+        where = blank if cls in ("cfx-note",) else body
         if f'class="{cls}"' not in where and f'class="{cls} ' not in where:
             errors += fail(
-                f"the rendered /e/ page does not carry .{cls}. The panel's "
-                f"stylesheet is what dresses this page, so a class it does "
-                f"not know is an element with no styling at all")
-        if cls not in app:
-            errors += fail(f"the app no longer uses .{cls}, which the /e/ page "
-                           f"still writes - one door has been restyled and the "
-                           f"other has not")
+                f"the rendered /e/ page does not carry .{cls} - the page's own "
+                f"structure changed and this check was not told")
+        if f".{cls}" not in sheet:
+            errors += fail(f"the /e/ page writes .{cls} and CFPAGE_CSS does not "
+                           f"define it, so it renders as unstyled body text")
+    # AND NOTHING IT WRITES IS UNDRESSED. The list above can go stale; this
+    # cannot, because it reads the classes out of the rendered html.
+    import re as _re2
+    for cls in sorted({c for attr in _re2.findall(r'class="([^"]+)"', body + blank)
+                       for c in attr.split()}):
+        if f".{cls}" not in sheet and cls not in ("nm", "when", "meta", "n"):
+            errors += fail(f"the /e/ page renders class {cls!r} which CFPAGE_CSS "
+                           f"never defines - unstyled text on a public page")
 
     # 2. THE SAME SENTENCE FOR THE SAME STATE. These are the honesty lines the
     #    whole tab rests on; a page that softened one would be making a claim
@@ -18342,7 +18427,7 @@ def check_the_conference_page_is_the_conference_panel() -> int:
                 break
 
     # 4. THE SAME NUMBERS, on a real conference with a real roster.
-    if f'<b>{row["companies"]}</b> govtech exhibitors' not in body:
+    if f'<b>{row["companies"]}</b> compan' not in body:
         errors += fail(
             f"the /e/ page for {row['tag']} does not print "
             f"{row['companies']} govtech exhibitors, which is what the row it "
@@ -18352,7 +18437,7 @@ def check_the_conference_page_is_the_conference_panel() -> int:
             f"{row['tag']}: the board row says {row['companies']} companies "
             f"and conference_rosters finds {len(roster)}. The app counts the "
             f"first and the page lists the second")
-    if hiring and f'<b>{len(hiring)}</b> hiring' not in body:
+    if hiring and f'<b>{len(hiring)}</b> of them hiring' not in body:
         errors += fail(f"the /e/ page for {row['tag']} does not print "
                        f"{len(hiring)} hiring")
 
@@ -18366,7 +18451,7 @@ def check_the_conference_page_is_the_conference_panel() -> int:
                 f"the /e/ page for {row['tag']} lists fewer companies than the "
                 f"floor held and does not say the rest are ones we do not "
                 f"follow. That silence reads as a claim about the show")
-        elif 'class="cfp-note"' not in body:
+        elif 'class="cfx-note"' not in body:
             errors += fail(
                 f"the /e/ page for {row['tag']} says the rest are companies we "
                 f"do not follow, but not in a .cfp-note - the panel's sheet "
@@ -19779,6 +19864,7 @@ def main() -> int:
     errors += check_the_journal_leak_test_knows_a_person_from_a_fixture()
     errors += check_checks_can_fail()
     errors += check_decision_files_are_journalled()
+    errors += check_a_page_never_links_to_a_file_that_is_not_there()
     errors += check_crawl_files()
     errors += check_busy_port_does_not_traceback()
     errors += check_structured_data_claims_no_posting_date()
