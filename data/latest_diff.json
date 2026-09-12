@@ -1,97 +1,13 @@
 {
   "date": "2026-09-12",
-  "previous": "2026-09-11",
+  "previous": "2026-09-12",
   "changes": [
-    {
-      "company": "ImageTrend",
-      "id": "imagetrend",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Klir",
-      "id": "klir",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Solutions Engineer only"
-    },
-    {
-      "company": "CivicPlus",
-      "id": "civicplus",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Bamboo Health",
-      "id": "bamboo-health",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Bamboo Bridge Strategic Account Ma"
-    },
-    {
-      "company": "Procurated",
-      "id": "procurated",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Intellicene",
-      "id": "intellicene",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Enterprise Sales Executive \u2013 New L (2 Locations)"
-    },
-    {
-      "company": "KPA",
-      "id": "kpa",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "ParkHub",
-      "id": "parkhub",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Client Success Manager only"
-    },
-    {
-      "company": "Vanderlande",
-      "id": "vanderlande",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Oracle Utilities",
-      "id": "oracle-utilities",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "OpusXenta",
-      "id": "opusxenta",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
     {
       "company": "Pantonium",
       "id": "pantonium",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Radicle Health",
-      "id": "radicle-health",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Customer Success Manager only"
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
     }
   ]
 }
