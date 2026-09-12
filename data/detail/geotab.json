@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "EV fleet transition: How to plan a successful fleet electrification strategy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/ev-fleet-transition/"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "index-text",
+   "first_seen": "2026-09-11",
+   "headline": "Fleet electrification ROI: How to calculate and maximize savings",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/fleet-electrification-roi/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
@@ -73,6 +91,15 @@
    "url": "https://www.geotab.com/blog/dash-cam-program-guide/"
   },
   {
+   "date": "2026-08-27",
+   "date_source": "index-text",
+   "first_seen": "2026-09-12",
+   "headline": "The 'ghost fleet' crisis: Why idle rental vehicles are your biggest liability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/uk/blog/decrease-rental-fleet-idling/"
+  },
+  {
    "date": "2026-08-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.geotab.com/blog/autonomous-vehicles-leasing/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Lone worker safety for utility fleets: A checklist for the sites beyond cellular reach",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/lone-worker-safety-utility-fleets/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Police Fleet Expo: What public safety agencies are really asking about AI, EVs and accountability",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/police-fleet-expo-2026-insights/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Heavy equipment telematics to maximize fleet efficiency",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/heavy-equipment-telematics/"
   }
  ],
  "profile": {

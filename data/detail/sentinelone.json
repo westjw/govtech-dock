@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-11",
+   "headline": "The Good, the Bad and the Ugly in Cybersecurity \u2013 Week 37 (2026)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-37-8/"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "near-h1",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/blog/from-triage-grind-to-strategic-operator-the-new-ai-soc-career-path/"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Agentic SOC: Transforming Data into Defensive Velocity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/the-agentic-soc-transforming-data-into-defensive-velocity/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Commemorating the 25th Anniversary of 9/11 | Peregrine",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://peregrine.io/resources/commemorating-the-25th-anniversary-of-911"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -97,16 +106,7 @@
    "headline": "Data governance built for public trust: Peregrine access policies | Peregrine",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.peregrine.io/resources/peregrine-access-policies-data-governance-built-for-public-trust"
-  },
-  {
-   "date": "2026-06-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Wavy.com: Virginia Beach PD deploys Peregrine to streamline operations | Peregrine",
-   "kind": "contract",
-   "kind_rule": "deploys",
-   "url": "https://www.peregrine.io/resources/wavycom-virginia-beach-pd-adopts-peregrine-to-improve-efficiency"
+   "url": "https://peregrine.io/resources/peregrine-access-policies-data-governance-built-for-public-trust"
   }
  ],
  "profile": {

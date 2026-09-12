@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "The Missing Piece of Your AI Stack",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/the-missing-piece-of-your-ai-stack/"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://bostondynamics.com/blog/training-a-humanoid-robot-for-hard-work/"
-  },
-  {
-   "date": "2026-04-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Ask a Roboticist: Meet Ethan",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/blog/ask-a-roboticist-meet-ethan/"
   }
  ],
  "profile": {

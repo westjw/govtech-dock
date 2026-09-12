@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Fleet Chargeback Systems: A Guide to Cost Allocation, Rates, and Billing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rtafleet.com/blog/fleet-chargeback-systems-a-guide-to-cost-allocation-rates-and-billing"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://rtafleet.com/blog/fleet-right-sizing-two-methods-every-government-fleet-manager-should-know"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "What Are You Missing? Five Questions Every Fleet Manager Should Ask Each Year",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://rtafleet.com/blog/what-are-you-missing-five-questions-every-fleet-manager-should-ask-each-year"
   }
  ]
 }

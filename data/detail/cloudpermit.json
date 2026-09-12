@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Small Municipalities Should Think Bigger",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cloudpermit.com/blog/small-municipalities-should-think-bigger-about-technology"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -88,7 +97,7 @@
    "headline": "Cloudpermit Expands Its Local Government Software Suite with CityReporter Acquisition",
    "kind": "funding",
    "kind_rule": "Acquisition",
-   "url": "https://cloudpermit.com/blog/cloudpermit-expands-its-local-government-software-suite-with-cityreporter-acquisition?hsLang=en"
+   "url": "https://cloudpermit.com/blog/cloudpermit-expands-its-local-government-software-suite-with-cityreporter-acquisition"
   },
   {
    "date": "2026-02-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cloudpermit.com/blog/how-bilingual-municipal-software-serves-everyone?hsLang=en"
-  },
-  {
-   "date": "2026-01-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Top 5 Budget Considerations for Local Governments in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cloudpermit.com/blog/top-5-budget-considerations-for-local-governments-in-2026"
   }
  ],
  "profile": {

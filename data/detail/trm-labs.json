@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "The Evolution of Terrorist Financing, 25 Years After 9/11",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/evolution-of-terrorist-financing-25-years-after-9-11"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "As Much as 30% of a Blockchain's Transfers Are Spam. Here's What It Means for Sanctions Screening.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/as-much-as-30-of-a-blockchains-transfers-are-spam-heres-what-it-means-for-sanctions-screening"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trmlabs.com/resources/blog/operation-economic-outcast-treasury-sanctions-nearly-60-iran-linked-targets-and-names-digital-assets-a-sanctionable-sector"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Reports and White Papers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/reports-and-whitepapers"
-  },
-  {
-   "date": "2026-08-07",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "How Shelbit Became a USD 6.3 Billion Settlement Layer for Iran's Illicit Economy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/how-shelbit-became-a-usd-6-3-billion-settlement-layer-for-irans-illicit-economy"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "The ASTERRA US Channel Program Launches With Dynamic Water Concepts and Yentes Associates",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://asterra.io/resources/asterra-us-channel-program-launched/"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://asterra.io/resources/where-should-we-look-first-the-question-every-wastewater-collections-manager-asks/"
+  },
+  {
+   "date": "2026-06-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "ASTERRA unveils EO Discover 3.0, giving utilities a path from satellite intelligence to optimized field action",
+   "kind": "product",
+   "kind_rule": "unveils",
+   "url": "https://asterra.io/resources/asterra-unveils-eo-discover-3-0-giving-utilities-a-path-from-satellite-intelligence-to-optimized-field-action/"
   },
   {
    "date": "2026-06-09",
@@ -38,12 +56,21 @@
   },
   {
    "date": "2026-01-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "New Mexico expands state-funded satellite leak detection program following breakthrough success in Truth or Consequences",
    "kind": "press",
    "kind_rule": null,
    "url": "https://asterra.io/resources/new-mexico-expands-state-funded-satellite-leak-detection-program-following-breakthrough-success-in-truth-or-consequences/"
+  },
+  {
+   "date": "2025-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "New Mexico sets national standard in smart water management with ASTERRA partnership",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://asterra.io/resources/new-mexico-sets-national-standard-in-smart-water-management-with-asterra-partnership/"
   },
   {
    "date": "2025-11-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://asterra.io/resources/the-future-of-water-security-integrating-space-technology-with-ground-based-systems/"
-  },
-  {
-   "date": "2025-05-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Detecting Underground Water and Sewer Leaks: A Technological Imperative for Urban Resilience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://asterra.io/resources/detecting-underground-water-sewer-leaks/"
-  },
-  {
-   "date": "2022-08-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Netherlands Dikes and Levees: Effective Flood Defenses",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://asterra.io/resources/netherlands-dikes-and-levees/"
-  },
-  {
-   "date": "2021-12-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Finding Leaks: The Role of Satellite Leak Detection",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://asterra.io/resources/finding-leaks-the-role-of-satellite-leak-detection/"
   }
  ],
  "profile": {

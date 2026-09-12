@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "How AI and GIS Are Transforming Pavement Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vialytics.com/blog/how-ai-and-gis-are-transforming-pavement-management"
+  },
+  {
    "date": "2026-08-17",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.vialytics.com/blog/keeping-municipal-road-data-secure-in-the-united-states"
-  },
-  {
-   "date": "2025-02-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Garver and vialytics Announce Strategic Partnership",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.vialytics.com/blog/garver-and-vialytics-announce-strategic-partnership"
   }
  ]
 }

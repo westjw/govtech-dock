@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Cross-border compliance checklist: How to keep freight compliant and avoid delays.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/cross-border-compliance/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://helpcenter.gomotive.com/hc/en-us/articles/6189043718045-Trip-History-on-Fleet-App"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Motive advances California fleet compliance with BAR Continuous Testing Program application.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/motive-california-bar-continuous-testing-program/"
   }
  ],
  "profile": {

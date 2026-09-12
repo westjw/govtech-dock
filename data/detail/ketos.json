@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "The Week in Water: Chlorine\u2019s Fine Print",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ketos.co/resources/the-week-in-water-chlorines-fine-print-september-2026"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "Tap",
    "url": "https://ketos.co/resources/is-tap-water-safe-to-drink"
-  },
-  {
-   "date": "2026-05-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Poor Water Quality Affects Real Estate Prices: The 2026 Research Review",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ketos.co/resources/how-water-quality-affects-real-estate-prices/"
   }
  ]
 }

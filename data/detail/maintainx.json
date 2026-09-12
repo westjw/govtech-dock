@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "A Beginner\u2019s Guide to Keeping Asset Data Clean In Your CMMS",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/how-to-keep-cmms-asset-data-clean"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.getmaintainx.com/blog/g2-fall-2026-reports"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What 20 Years of Vibration Monitoring Taught Us About Getting Predictive Maintenance Right",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/what-20-years-of-vibration-monitoring-taught-us-about-getting-predictive-maintenance-right"
   }
  ]
 }

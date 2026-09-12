@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Financial Close Automation: How AI Agents Do the Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/financial-close-automation"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Journal Entry Automation: How AI Agents Draft and Post JEs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/journal-entry-automation"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Bank Fee Analysis: How AI Agents Catch Overcharges",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/bank-fee-analysis"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Intercompany Reconciliation: How AI Agents Automate It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/intercompany-reconciliation"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Covenant Monitoring: How AI Agents Track Loan Covenants",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/covenant-monitoring"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -37,6 +82,15 @@
    "url": "https://www.concourse.ai/insights/best-cash-positioning-software"
   },
   {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "8 Best Hedge Accounting Software Tools in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/best-hedge-accounting-software"
+  },
+  {
    "date": "2026-09-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.concourse.ai/insights/roi-of-ai-agents-in-finance"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Kyriba Pricing in 2026: What a TMS Actually Costs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/kyriba-pricing"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "8 Best Datarails Alternatives for FP&A Teams in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/datarails-alternatives"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "AI Agents for Finance in Oil and Gas",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/ai-agents-for-finance-in-oil-and-gas"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Concourse vs. Kyriba: How the Two Compare in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/concourse-vs-kyriba"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The AI Financial Analyst: What It Actually Does",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/ai-financial-analyst"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Build vs. Buy for Treasury Systems",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/treasury-build-vs-buy"
   }
  ],
  "profile": {

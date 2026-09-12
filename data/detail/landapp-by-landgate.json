@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Can You Sell Farmland That Is Currently Being Leased?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.landapp.com/post/can-you-sell-farmland-that-is-currently-being-leased"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -28,6 +37,15 @@
    "url": "https://www.landapp.com/post/what-crops-grow-best-under-solar-panels"
   },
   {
+   "date": "2026-08-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "USDA Farmland Values Reach a Record High in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.landapp.com/post/usda-farmland-values-reach-a-record-high-in-2026"
+  },
+  {
    "date": "2026-08-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -35,6 +53,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.landapp.com/post/what-states-are-best-for-wind-energy"
+  },
+  {
+   "date": "2026-07-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Farmland for Sale: How to Find, Compare, and Buy the Right Property",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.landapp.com/post/farmland-for-sale-how-to-find-compare-and-buy-the-right-property"
+  },
+  {
+   "date": "2026-07-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "What are the Best Ways to Sell Farmland Online?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.landapp.com/post/what-are-the-best-ways-to-sell-farmland-online"
   },
   {
    "date": "2026-06-01",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.landapp.com/post/how-much-do-data-centers-pay-for-land"
-  },
-  {
-   "date": "2026-04-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Does My Land Qualify for a Data Center?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.landapp.com/post/does-my-land-qualify-for-a-data-center"
-  },
-  {
-   "date": "2026-03-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Market Land for Data Centers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.landapp.com/post/how-to-market-land-for-data-centers"
-  },
-  {
-   "date": "2025-11-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What is a Land Option Agreement?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.landapp.com/post/what-is-a-land-option-agreement"
-  },
-  {
-   "date": "2025-10-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Agrivoltaics: Balancing Energy & Agriculture",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.landapp.com/post/agrivoltaics-balancing-energy-agriculture"
   }
  ]
 }

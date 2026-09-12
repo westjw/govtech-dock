@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Hunt or be Hunted: FalconFlank Zero-Day",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/falconflank-zero-day-privilege-escalation-huntiq"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -31,7 +40,7 @@
    "date": "2026-08-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "La BCE a lanc\u00e9 le compte \u00e0 rebours : votre feuille de route jusqu\u2019au 31 octobre 2026",
+   "headline": "The clock is ticking: Your roadmap to 31st October 2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tanium.com/blog/ecb-ai-readiness-roadmap"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tanium.com/resources/g2-ai-that-acts-report"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Tanium Delivers Autonomous Security at Black Hat USA 2026, Empowering Operators to Outpace AI-Accelerated Threats",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/press-releases/tanium-delivers-autonomous-security-at-black-hat-usa-2026"
   }
  ],
  "profile": {

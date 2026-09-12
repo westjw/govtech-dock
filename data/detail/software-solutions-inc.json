@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Manual Payroll In Local Government And What It's Costing You",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mysoftwaresolutions.com/news/manual-payroll-in-local-government-and-what-its-costing-you-beyond-time"
+  },
+  {
    "date": "2026-08-26",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "Chose",
    "url": "https://www.mysoftwaresolutions.com/news/why-mcdonough-county-il-chose-vip-to-replace-a-legacy-system"
-  },
-  {
-   "date": "2026-05-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Customer Success Stories: Cities, Counties, Utilities, and Libraries",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mysoftwaresolutions.com/news/customer-success-stories-cities-counties-utilities-and-libraries"
   }
  ]
 }

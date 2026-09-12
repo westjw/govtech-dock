@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "When remote access reaches the physical world: Vulnerabilities and consequences",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/blog/when-remote-access-reaches-physical-world-vulnerabilities-and-consequences"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imprivata.com/uk/blog/industry-voice-critical-shift-frontline-digitisation-frontline-productivity-nhs-england"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Inaugural Connect Benelux comes to Utrecht: Join healthcare leaders on 10 September 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/uk/blog/inaugural-connect-benelux-comes-utrecht-join-healthcare-leaders-10-september-2026"
   }
  ],
  "profile": {

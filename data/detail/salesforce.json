@@ -2,16 +2,7 @@
  "news": [
   {
    "date": "2026-09-04",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "Trust Shouldn\u2019t Be a Product Feature. It Has to Be the Foundation.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/data-trust-foundation/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "4 Flow Types for Marketers Getting Started with Salesforce Flow",
    "kind": "press",
@@ -20,7 +11,7 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "Agentforce Marketing: A Practical Framework for Successful Implementation",
    "kind": "press",
@@ -29,7 +20,7 @@
   },
   {
    "date": "2026-08-31",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "Build Your Dreamforce 2026 Agenda",
    "kind": "press",
@@ -38,7 +29,7 @@
   },
   {
    "date": "2026-08-31",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "The Gift of Subscriber Signals",
    "kind": "press",
@@ -47,7 +38,7 @@
   },
   {
    "date": "2026-08-28",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "Three Perfect Days at Dreamforce \u2014 A Marketer\u2019s Guide",
    "kind": "press",
@@ -65,7 +56,7 @@
   },
   {
    "date": "2026-07-31",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "How Tom Tailor Revamped and Future-Proofed Its Loyalty Program",
    "kind": "press",
@@ -73,40 +64,49 @@
    "url": "https://www.salesforce.com/blog/tom-tailor-loyalty-program/"
   },
   {
-   "date": "2026-06-25",
+   "date": "2026-07-29",
    "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "BACA Systems Runs Its Entire Business with AIforce",
+   "first_seen": "2026-09-12",
+   "headline": "Why Data Privacy and Archiving Are the New Marketing Growth Engines",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/baca-systems-customer-story/"
+   "url": "https://www.salesforce.com/blog/data-privacy-marketing/"
   },
   {
-   "date": "2026-06-23",
+   "date": "2026-07-24",
    "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "Automate Manual Compliance Processes with Agentforce in Privacy Center",
+   "first_seen": "2026-09-12",
+   "headline": "Why Marketers Need to Move Beyond Attribution and Embrace Agentic Optimization",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/agentforce-in-privacy-center/"
+   "url": "https://www.salesforce.com/blog/agentic-marketing-optimization/"
   },
   {
-   "date": "2026-06-17",
+   "date": "2026-07-16",
    "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "Securing the Agentic Enterprise: Why Trust is the Engine of AIforce",
+   "first_seen": "2026-09-10",
+   "headline": "Trust Shouldn\u2019t Be a Product Feature. It Has to Be the Foundation.",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/headless-360-security/"
+   "url": "https://www.salesforce.com/blog/data-trust-foundation/"
   },
   {
-   "date": "2026-06-09",
+   "date": "2026-07-15",
    "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "Salesforce Backup & Recover Named a 2026 Leader in SaaS Backup",
+   "first_seen": "2026-09-12",
+   "headline": "Breaking Down the Stack: Browser-Bound vs. Headless Architecture",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/salesforce-backup-and-recover-named-g2-leader/"
+   "url": "https://www.salesforce.com/blog/headless-architecture-vs-browser-bound/"
+  },
+  {
+   "date": "2026-07-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Simplify Security Visibility with Security Center Essentials",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/blog/simplify-security-visibility-with-security-center-essentials/"
   }
  ]
 }

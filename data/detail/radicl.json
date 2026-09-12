@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Signal & Noise, Volume 10",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/signal-noise-volume-10"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://radicl.com/resources/signal-noise-volume-7"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "EP 117 \u2014 NODA AI's Phil Duong On Building Mission Command For Autonomous Forces",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/phil-duong-noda-ai-mission-command"
   }
  ]
 }

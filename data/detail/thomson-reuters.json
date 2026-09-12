@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "og:published",
+   "first_seen": "2026-09-12",
+   "headline": "D.C. Circuit blocks IRS from sharing taxpayer data with ICE",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://tax.thomsonreuters.com/news/d-c-circuit-blocks-irs-from-sharing-taxpayer-data-with-ice/"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "og:published",
+   "first_seen": "2026-09-12",
+   "headline": "SEC examines PCAOB\u2019s audit inspections, citing industry concerns, other reasons",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://tax.thomsonreuters.com/news/sec-examines-pcaobs-audit-inspections-citing-industry-concerns-other-reasons/"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "og:published",
+   "first_seen": "2026-09-12",
+   "headline": "Key 2027 figures calculated by Thomson Reuters Checkpoint based on inflation data now available",
+   "kind": "product",
+   "kind_rule": "now available",
+   "url": "https://tax.thomsonreuters.com/news/key-2027-figures-calculated-by-thomson-reuters-checkpoint-based-on-inflation-data-now-available/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "og:published",
    "first_seen": "2026-09-10",
@@ -19,6 +46,15 @@
    "url": "https://tax.thomsonreuters.com/news/senators-decry-treasury-refusal-to-amend-private-jet-valuation-rule/"
   },
   {
+   "date": "2026-09-10",
+   "date_source": "og:published",
+   "first_seen": "2026-09-12",
+   "headline": "Stock sweeteners for departing employees would face stricter accounting under new proposal",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://tax.thomsonreuters.com/news/stock-sweeteners-for-departing-employees-would-face-stricter-accounting-under-new-proposal/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "og:published",
    "first_seen": "2026-09-10",
@@ -35,6 +71,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://tax.thomsonreuters.com/news/pcaob-scales-back-quality-control-standard-following-audit-firm-criticism-over-implementation-burden/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "og:published",
+   "first_seen": "2026-09-12",
+   "headline": "If a Group Health Plan\u2019s Business Associate Provides HIPAA Breach Notices, Must the Plan Also Send Notices?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://tax.thomsonreuters.com/news/if-a-group-health-plans-business-associate-provides-hipaa-breach-notices-must-the-plan-also-send-notices/"
   },
   {
    "date": "2026-09-08",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://tax.thomsonreuters.com/news/groups-urge-tax-court-to-halt-interest-on-pre-covid-debts/"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "og:published",
-   "first_seen": "2026-09-11",
-   "headline": "Multistate Monitor \u2014 As states decouple from OBBB, expert explains how to address now-incorrect tax estimates",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://tax.thomsonreuters.com/news/multistate-monitor-as-states-decouple-from-obbb-expert-explains-how-to-address-now-incorrect-tax-estimates-2/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "og:published",
-   "first_seen": "2026-09-11",
-   "headline": "New IRS easement office ought to prioritize faster settlements, expert says",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://tax.thomsonreuters.com/news/new-irs-easement-office-ought-to-prioritize-faster-settlements-expert-says/"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "og:published",
-   "first_seen": "2026-09-09",
-   "headline": "Tax professional skills AI cannot replace",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://tax.thomsonreuters.com/blog/tax-professional-skills-ai-cannot-replace/"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "og:published",
-   "first_seen": "2026-09-10",
-   "headline": "Why connected data matters for tax technology modernization",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://tax.thomsonreuters.com/blog/why-connected-data-matters-for-tax-technology-modernization/"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "og:published",
-   "first_seen": "2026-09-10",
-   "headline": "What advisory information does tax software not capture?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://tax.thomsonreuters.com/blog/why-tax-knowledge-management-matters-for-advisory/"
   }
  ]
 }

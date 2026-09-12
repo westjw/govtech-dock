@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "what happens to your credits when you change your major",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/what-happens-to-credits-when-you-change-your-major"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "how many credits you need to graduate",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/how-many-credits-to-graduate-college"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "degree audit vs. unofficial transcript",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/degree-audit-vs-unofficial-transcript"
+  },
+  {
    "date": "2026-08-14",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -8,6 +35,33 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.stellic.com/resources/how-to-build-a-4-year-college-plan"
+  },
+  {
+   "date": "2026-08-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "the catalog year an audit runs on",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/what-is-a-catalog-year"
+  },
+  {
+   "date": "2026-07-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "how early alert systems work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/what-is-an-early-alert-system"
+  },
+  {
+   "date": "2026-07-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Supporting First-Generation Students: From Access to Completion",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/supporting-first-generation-students"
   },
   {
    "date": "2026-07-15",
@@ -22,7 +76,7 @@
    "date": "2026-06-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "what a degree audit is and how to read one",
+   "headline": "What Is a Degree Audit, and How Do You Actually Read One?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.stellic.com/resources/what-is-a-degree-audit"
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.stellic.com/resources/9-critical-questions-best-platforms-degree-planning"
-  },
-  {
-   "date": "2026-05-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Higher Ed Buyer's Guide to Student Success Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/higher-ed-buyers-guide-to-student-success-software"
-  },
-  {
-   "date": "2026-05-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Corequisites Have Been Holding Out on You",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/connected-courses"
-  },
-  {
-   "date": "2026-03-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "College Degree Planning: How to Create Your 4-Year Plan (And Actually Stick to It)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/how-to-create-your-college-degree-plan"
-  },
-  {
-   "date": "2026-03-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "7 Signs Your Institution Needs a Modern Degree Planner",
-   "kind": "contract",
-   "kind_rule": "Signs",
-   "url": "https://www.stellic.com/resources/degree-planner"
-  },
-  {
-   "date": "2026-02-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Five Questions to Ask When Modernizing Campus Tech",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/modernizing-campus-tech"
-  },
-  {
-   "date": "2026-01-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Better Together: The Real Impact of Connecting People, Systems and Processes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/better-together-ebook"
   }
  ],
  "profile": {

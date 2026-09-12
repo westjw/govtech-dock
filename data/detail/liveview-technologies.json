@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Snipes: Throwing Brick Story",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/snipes-ad-throwing-brick"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Snipes: Million Dollar Savings",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/snipes-ad-million-dollar-savings"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Snipes: Green Jumpsuit Theft Story",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/snipes-ad-green-jumpsuit-theft"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Snipes: Grab and Run",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/snipes-ad-grab-and-run"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Snipes: Creating a Better Customer Experience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/snipes-ad-creating-better-cx"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Snipes: Criminals Have Changed",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/snipes-ad-criminals-have-changed"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "The Best Defense Is a Good Offense: Securing Game-Day Parking Lots with Mobile Security Units",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/the-best-defense-is-a-good-offense-securing-game-day-parking-lots-with-mobile-security-units"
+  },
+  {
    "date": "2026-09-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lvt.com/blog/how-to-evaluate-a-security-technology-vendor-10-questions-to-ask"
-  },
-  {
-   "date": "2026-08-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why High Uptime Is Important",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/why-high-uptime-is-important"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Arcadia Police Department Partners with LVT",
-   "kind": "contract",
-   "kind_rule": "Partners with",
-   "url": "https://www.lvt.com/resources/arcadia-police-department-partners-with-lvt"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "LVT's private cellular network",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/resources/lvt-differentiator-connectivity"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "LVT takes reliability seriously",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/resources/lvt-differentiator-reliability"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "LVT In Action\u2014Defending Retail Parking Lots",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/resources/lvt-in-action-defending-retail-parking-lots"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Parking Lot Security With The LVT Unit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/resources/parking-lot-security-with-the-lvt-unit"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "LVT In Action\u2014Deter Intruders with Automated Responses",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/resources/automated-deterrence-providing-proactive-security"
   }
  ],
  "profile": {

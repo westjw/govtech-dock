@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Fleet Maintenance Software: Building a Program That Keeps Waste Trucks on the Route",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/fleet-maintenance-software/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "Industrial Waste Collection Software: What Roll-Off and C&I Haulers Actually Need from It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/industrial-waste-collection-software/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Industrial Waste Collection Software: What Roll-Off and C&I Haulers Actually Need from It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/en_gb/blog/industrial-waste-collection-software/"
+  },
+  {
+   "date": "2026-09-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "GRI Reporting for Municipal Waste: It Starts With Your Data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/global-reporting-initiative-reporting-municipal-waste/"
+  },
+  {
+   "date": "2026-09-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "GRI Reporting for Municipal Waste: It Starts With Your Data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/en_gb/blog/global-reporting-initiative-reporting-municipal-waste/"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://routeware.com/blog/6-ways-to-streamline-liquid-waste-management/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Waste Management Solutions: How Cities Are Modernizing Their Waste Programs in 2027",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/blog-waste-management-solutions-municipalities/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Commercial Waste Software: Why No Two Commercial Accounts Bill the Same",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/commercial-waste-software/"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Managing Holiday Collection Schedule Changes: A Guide for Public Works",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/managing-holiday-collection-schedule-changes/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Hauler Software: Running a Trash Hauling Operation From Bin to Invoice",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/hauler-software-what-runs-a-trash-hauling-business/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Campus Waste Management: Driving Recycling on a Campus That Never Stops Changing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/campus-waste-management-for-universities/"
   }
  ],
  "profile": {

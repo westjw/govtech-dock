@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2025-05-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "The ELD Handbook: Electronic Logging Devices Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnitracs.com/blog/electronic-logging-devices/"
+  },
+  {
    "date": "2025-03-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -46,6 +55,15 @@
    "url": "https://www.omnitracs.com/blog/how-will-ai-trucking-disrupt-the-supply-chain"
   },
   {
+   "date": "2025-01-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "How Will AI Trucking Disrupt the Supply Chain?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnitracs.com/blog/ai-trucking/"
+  },
+  {
    "date": "2024-12-26",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnitracs.com/blog/creating-a-fleet-safety-policy-9-steps-for-success"
-  },
-  {
-   "date": "2024-12-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "9 Trucking Technology Trends Reshaping the Industry",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnitracs.com/blog/9-trucking-technology-trends-reshaping-the-industry"
-  },
-  {
-   "date": "2024-12-09",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Automotive Fleet Maintenance: 12 Critical Steps to Ensure Peak Performance and Safety",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnitracs.com/blog/automotive-fleet-maintenance-12-critical-steps-to-ensure-peak-performance-and-safety"
   }
  ]
 }
