@@ -15003,7 +15003,12 @@ def check_calendar_writers_agree() -> int:
     except Exception as exc:                                    # noqa: BLE001
         return fail(f"ics_parity.js printed no JSON ({exc}): {r.stdout[:200]}")
 
-    bad = 0
+    # EVERY EVENT IS COMPARED AND THE TRUE COUNT IS REPORTED. This stopped at
+    # the fifth mismatch and then returned 5, so "5 problems" meant "at least
+    # 5" - and the one number a reader would use to tell a typo from a broken
+    # parser was the one number it could not give them. The printing is capped,
+    # the counting is not.
+    mism = []
     for c in board.get("conferences") or []:
         span = build_site._ics_range(c.get("dates"))
         mine = None if not span else [
@@ -15011,30 +15016,66 @@ def check_calendar_writers_agree() -> int:
             (span[1] + dt.timedelta(days=1)).strftime("%Y%m%d")]
         theirs = js.get(c["tag"])
         if mine != theirs:
-            bad += fail(
-                f"{c['tag']}: conferences.ics would date {c.get('dates')!r} as "
-                f"{mine} and the + calendar button as {theirs}. One reader "
-                f"books travel around the wrong one.")
-            if bad >= 5:
-                break
-    if bad:
-        return bad
-    # AND THE FEED ITSELF CARRIES WHAT RFC 5545 REQUIRES. A DTSTAMP is not
-    # optional (3.6.1) and no event in the shipped feed had one.
+            mism.append((c["tag"], c.get("dates"), mine, theirs))
+    bad = 0
+    for tag, dates, mine, theirs in mism[:5]:
+        bad += fail(
+            f"{tag}: conferences.ics would date {dates!r} as {mine} and the "
+            f"+ calendar button as {theirs}. One reader books travel around "
+            f"the wrong one.")
+    if len(mism) > 5:
+        bad += fail(f"...and {len(mism) - 5} more event(s) the two writers "
+                    f"date differently ({len(mism)} of "
+                    f"{len(board.get('conferences') or [])} in total)")
+
+    # AND THE FEED ITSELF CARRIES WHAT RFC 5545 REQUIRES. These used to sit
+    # behind `if bad: return bad`, so a single date disagreement skipped the
+    # structural checks entirely - the run reported the cheap bug and hid the
+    # expensive one behind it. They are independent questions and both get
+    # asked every time.
     ics = ROOT / "public" / "conferences.ics"
     if ics.exists():
-        body = ics.read_text()
-        n = body.count("BEGIN:VEVENT")
-        for prop in ("DTSTAMP", "DTEND"):
-            if n and body.count(prop) < n:
-                bad += fail(f"public/conferences.ics has {n} event(s) and only "
-                            f"{body.count(prop)} {prop} line(s)")
-        for line in body.splitlines():
-            if len(line.encode("utf-8")) > 75:
-                bad += fail(f"conferences.ics line is "
-                            f"{len(line.encode('utf-8'))} octets, over the "
-                            f"75-octet fold RFC 5545 sets: {line[:60]}...")
+        # BYTES, NOT read_text(). Python's universal-newline translation turns
+        # every CRLF into a bare LF on the way in, so splitting the result on
+        # "\r\n" returns the WHOLE FILE as one 39,484-octet "line" and the fold
+        # check reported a fault on a correct feed. iCalendar is a CRLF format
+        # and the octet count is the thing being measured, so it is read
+        # exactly as it was written.
+        body = ics.read_bytes().decode("utf-8")
+        # PER EVENT, NOT PER FILE. This counted DTSTAMP across the whole file
+        # and compared the total to the number of VEVENTs, so one event
+        # carrying two and another carrying none balanced out and passed. An
+        # absence is a fact about one event and has to be asked of one event.
+        blocks = body.split("BEGIN:VEVENT")[1:]
+        for prop in ("DTSTAMP", "DTSTART", "DTEND", "UID", "SUMMARY"):
+            missing = [i for i, b in enumerate(blocks, 1)
+                       if not re.search(rf"^{prop}[;:]", b.split("END:VEVENT")[0],
+                                        re.M)]
+            if missing:
+                bad += fail(
+                    f"public/conferences.ics: {len(missing)} of {len(blocks)} "
+                    f"VEVENT(s) carry no {prop} line (first at event "
+                    f"#{missing[0]}). RFC 5545 3.6.1 requires it.")
+        # DTEND must also be AFTER DTSTART, which a count can never tell you.
+        for i, b in enumerate(blocks, 1):
+            b = b.split("END:VEVENT")[0]
+            s = re.search(r"^DTSTART[^:]*:(\d{8})", b, re.M)
+            e = re.search(r"^DTEND[^:]*:(\d{8})", b, re.M)
+            if s and e and e.group(1) <= s.group(1):
+                bad += fail(f"public/conferences.ics event #{i}: DTEND "
+                            f"{e.group(1)} is not after DTSTART {s.group(1)}; "
+                            f"an all-day DTEND is exclusive, so it must be the "
+                            f"day AFTER the last day.")
                 break
+        # ALL of them, not the first. A fold bug is systematic and the count is
+        # how you tell one long conference name from a broken folder.
+        over = [l for l in body.split("\r\n")
+                if len(l.encode("utf-8")) > 75]
+        if over:
+            bad += fail(f"conferences.ics: {len(over)} line(s) over the "
+                        f"75-octet fold RFC 5545 sets, longest "
+                        f"{max(len(l.encode('utf-8')) for l in over)}: "
+                        f"{over[0][:60]}...")
     return bad
 
 

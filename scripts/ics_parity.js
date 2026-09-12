@@ -22,20 +22,71 @@ const ROOT = path.resolve(__dirname, "..");
 const html = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
 
 /* Cut a top-level `function name(` ... matching-brace block out of the file.
- * Brace counting rather than a regex, because calRange's body contains both
- * braces and regex literals holding braces. */
+ *
+ * THE COUNTER HAS TO KNOW WHAT IT IS COUNTING. The first version incremented
+ * on every `{` and decremented on every `}` wherever they appeared, and its
+ * comment claimed that beat a regex "because calRange's body contains regex
+ * literals holding braces" - which is exactly the case blind counting does NOT
+ * survive. It works today only because every brace in those three functions
+ * happens to be balanced: one `/[{]/` or one "unmatched { in a string" and the
+ * lift silently returns the wrong slice, `new Function` compiles something
+ * that is not the shipped parser, and a guard built to execute the real code
+ * quietly executes something else. So: strings, template literals, regex
+ * literals and comments are skipped rather than counted.
+ *
+ * AND THE MATCH HAS TO BE UNIQUE. indexOf takes the FIRST occurrence in the
+ * file, including one inside an HTML comment or a JS comment - so documenting
+ * `function calRange(` in a comment above the real one would lift the prose.
+ * Every occurrence is found and more than one is an error that names them. */
 function lift(name, kind) {
   const head = kind === "const" ? `const ${name}=` : `function ${name}(`;
-  const i = html.indexOf("\n" + head);
-  if (i < 0) throw new Error(`${name} not found in index.html`);
-  let j = html.indexOf(kind === "const" ? "{" : "{", i);
-  let depth = 0;
-  for (let k = j; k < html.length; k++) {
-    if (html[k] === "{") depth++;
-    else if (html[k] === "}") {
+  const at = [];
+  for (let i = html.indexOf("\n" + head); i >= 0;
+       i = html.indexOf("\n" + head, i + 1)) at.push(i);
+  if (!at.length) throw new Error(`${name} not found in index.html`);
+  if (at.length > 1) {
+    throw new Error(
+      `${name} appears ${at.length} times at top level in index.html ` +
+      `(offsets ${at.join(", ")}). lift() cannot know which one ships - ` +
+      `rename one or delete the duplicate.`);
+  }
+  const i = at[0];
+  const open = html.indexOf("{", i);
+  if (open < 0) throw new Error(`no body found for ${name}`);
+
+  let depth = 0, k = open;
+  // `prev` is the last significant character, which is how a regex literal is
+  // told from a division: `/` after a value divides, `/` after an operator or
+  // a `(` `,` `=` `:` `[` `!` `&` `|` `?` `{` `}` `;` opens a regex.
+  let prev = "";
+  while (k < html.length) {
+    const c = html[k], two = html.slice(k, k + 2);
+    if (two === "//") { k = html.indexOf("\n", k); if (k < 0) break; continue; }
+    if (two === "/*") { k = html.indexOf("*/", k) + 2; continue; }
+    if (c === '"' || c === "'" || c === "`") {
+      k++;
+      while (k < html.length && html[k] !== c) k += html[k] === "\\" ? 2 : 1;
+      k++; prev = "x"; continue;
+    }
+    if (c === "/" && /[([{,;:=!&|?+\-*%<>~^]/.test(prev)) {
+      k++;                                   // a regex literal
+      let cls = false;
+      while (k < html.length) {
+        if (html[k] === "\\") { k += 2; continue; }
+        if (html[k] === "[") cls = true;
+        else if (html[k] === "]") cls = false;
+        else if (html[k] === "/" && !cls) break;
+        k++;
+      }
+      k++; prev = "x"; continue;
+    }
+    if (c === "{") depth++;
+    else if (c === "}") {
       depth--;
       if (depth === 0) return html.slice(i + 1, k + 1);
     }
+    if (!/\s/.test(c)) prev = c;
+    k++;
   }
   throw new Error(`unbalanced braces lifting ${name}`);
 }

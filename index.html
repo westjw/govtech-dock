@@ -7221,13 +7221,13 @@ function cfCalendarHTML(rows){
   let out="", lastKey="";
   dated.forEach(({r,v})=>{
     const d=v.start;
-    const key=`${d.getUTCFullYear()}-${d.getUTCMonth()}`;
+    const key=`${d.getFullYear()}-${d.getMonth()}`;
     if(key!==lastKey){
       lastKey=key;
       const n=dated.filter(x=>
-        `${x.v.start.getUTCFullYear()}-${x.v.start.getUTCMonth()}`===key).length;
-      out+=`<div class="calmon"><h3>${CAL_MONTH_NAME[d.getUTCMonth()]}
-        ${d.getUTCFullYear()}</h3><span class="n">${n} event${n===1?"":"s"}</span></div>`;
+        `${x.v.start.getFullYear()}-${x.v.start.getMonth()}`===key).length;
+      out+=`<div class="calmon"><h3>${CAL_MONTH_NAME[d.getMonth()]}
+        ${d.getFullYear()}</h3><span class="n">${n} event${n===1?"":"s"}</span></div>`;
     }
     const past=d<today;
     /* The two numbers a seller actually wants beside an event: how many
@@ -7262,14 +7262,23 @@ function cfCalendarHTML(rows){
 /* "Oct 17-21", or "Sep 30 - Oct 3" when it straddles a month. UTC throughout,
    because calRange builds its dates that way and reading them back in local
    time moves an event a day for anyone west of Greenwich. */
+/* LOCAL GETTERS, because mkRange() builds LOCAL midnight.
+   These read those Dates back with getUTC* until 2026-09-11, so
+   every reader east of Greenwich saw each event a day early and an
+   event starting on the 1st filed under the PREVIOUS month's
+   heading - `new Date(2026,9,1)` is 30 September in UTC from Berlin.
+   Nobody here noticed because the US personas are all west of it,
+   where the two agree. icsFor()'s ymd() already reads local, which
+   is why the .ics and the calendar view disagreed about the day.
+   One clock or the other, never both. */
 function calHuman(v){
   const a=v.start, b=v.end||v.start;
-  const mon=d=>CAL_MONTH_NAME[d.getUTCMonth()].slice(0,3);
-  if(a.getUTCMonth()===b.getUTCMonth()&&a.getUTCFullYear()===b.getUTCFullYear())
-    return a.getUTCDate()===b.getUTCDate()
-      ? `${mon(a)} ${a.getUTCDate()}`
-      : `${mon(a)} ${a.getUTCDate()}\u2013${b.getUTCDate()}`;
-  return `${mon(a)} ${a.getUTCDate()} \u2013 ${mon(b)} ${b.getUTCDate()}`;
+  const mon=d=>CAL_MONTH_NAME[d.getMonth()].slice(0,3);
+  if(a.getMonth()===b.getMonth()&&a.getFullYear()===b.getFullYear())
+    return a.getDate()===b.getDate()
+      ? `${mon(a)} ${a.getDate()}`
+      : `${mon(a)} ${a.getDate()}\u2013${b.getDate()}`;
+  return `${mon(a)} ${a.getDate()} \u2013 ${mon(b)} ${b.getDate()}`;
 }
 
 /* ---------------------------------------------------------- add to calendar
