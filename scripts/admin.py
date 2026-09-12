@@ -1664,6 +1664,25 @@ def _sweep_state(conf_row: dict) -> tuple:
         if names:
             return ("swept", f"{len(names)} names captured, graded "
                              f"{d.get('quality')}")
+        # A REFUSAL IS A RESULT, AND THE QUEUE HAS TO SEE IT. sweep_exhibitors
+        # stages `found: false` with the reason it refused, and this read only
+        # a file WITH names - so four rows that had been swept and honestly
+        # refused kept coming back as "ready", inviting the same fetch against
+        # the same wrong url forever. The dismissals file exists so a queue
+        # stops re-asking what somebody settled; this is the machine's own
+        # version of that, and the reason travels with it so the next reader
+        # knows what was tried rather than guessing.
+        # BLOCKED FIRST, because the two are different facts and the file is
+        # explicit about it: `blocked` means somebody tried and the SITE
+        # refused us - a 403, a cookie wall, a host that answers everything -
+        # and belongs on a manual worklist. `wrong_url` means we fetched fine
+        # and what came back was not a floor. Checking the staged refusal
+        # first collapsed all six blocked rows into wrong_url and lost the one
+        # thing that tells you which of the two a person can actually fix.
+        if d.get("found") is False and (d.get("note") or d.get("why")):
+            if conf_row.get("sweep_blocked"):
+                return ("blocked", conf_row["sweep_blocked"])
+            return ("wrong_url", str(d.get("note") or d.get("why")))
     if conf_row.get("sweep_blocked"):
         return ("blocked", conf_row["sweep_blocked"])
     if conf_row.get("exhibitor_url"):

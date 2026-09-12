@@ -1162,8 +1162,16 @@ async function show(key) {
      replaces. The counts come off the items actually loaded, so they cannot
      drift from what is on screen. */
   if (key === 'sweeps' && items.length) {
+    /* FIVE KINDS, FIVE DIFFERENT JOBS, and the labels have to say which.
+       `menu` was labelled "Wrong url", which then collided with the real
+       wrong_url kind and left those rows reachable only under Everything.
+       The distinction is what tells you who can fix it: a menu needs a better
+       url found, a tried-and-refused row needs a person to look at the page,
+       and blocked needs the capture extension or nothing. */
     const KINDS = [['', 'Everything'], ['ready', 'Ready to read'],
-                   ['menu', 'Wrong url'], ['blocked', 'Blocked'],
+                   ['menu', 'Reads as a menu'],
+                   ['wrong_url', 'Tried, not a list'],
+                   ['blocked', 'Blocked'],
                    ['no_directory', 'No directory found']];
     const bar = el('div', 'seg'); bar.style.margin = '0 0 14px';
     KINDS.forEach(([k, label]) => {
@@ -3441,10 +3449,11 @@ RENDER.sweeps = s => {
       : 'open the directory →';
     e.appendChild(a);
   }
-  /* A MENU ROW GETS THE EVENT'S OWN SITE TOO. The directory url is the thing
-     that is wrong on these, so sending somebody back to it is sending them
-     to the page that already failed. */
-  if (s.kind === 'menu' && s.site && s.site !== s.url) {
+  /* A MENU OR TRIED-AND-REFUSED ROW GETS THE EVENT'S OWN SITE TOO. On both
+     kinds the directory url is the thing that is wrong, so sending somebody
+     back to it is sending them to the page that already failed. */
+  if ((s.kind === 'menu' || s.kind === 'wrong_url')
+      && s.site && s.site !== s.url) {
     const a2 = el('a', 'kv');
     a2.href = s.site; a2.target = '_blank'; a2.rel = 'noopener';
     a2.textContent = 'their site, to find the real one →';
