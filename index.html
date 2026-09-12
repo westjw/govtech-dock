@@ -757,6 +757,69 @@
   .cfseg button+button{border-left:0}
   .cfseg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);
     border-color:var(--ink);font-weight:700}
+  /* ── 3b: the month grid ────────────────────────────────────────────────
+     A YEAR OF THIS MARKET IS A SHAPE, and a list cannot show it. The old
+     "calendar" was the list grouped by month, which answers "what is coming"
+     no better than the list already did. This answers the question the design
+     names: where the year is DENSE - late September is nine events in four
+     days, and a seller who can see that plans differently.
+
+     Each week is its own 7-column grid and an event becomes one bar spanning
+     the days it runs, so a multi-day show reads as a length rather than as a
+     row. An event crossing a week boundary is drawn in both weeks with an
+     arrow, never split silently into two events. */
+  .calnav{display:flex;align-items:center;gap:var(--space-4);
+    margin:var(--space-6) 0 var(--space-3)}
+  .calnav h3{margin:0;font-family:var(--font-heading);font-size:19px;
+    font-weight:800;letter-spacing:-.02em;min-width:9.5em}
+  .calnav button{font:inherit;font-size:16px;line-height:1;width:30px;
+    height:30px;border:1px solid var(--line);background:var(--panel);
+    color:var(--ink);cursor:pointer}
+  .calnav button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+  .calnav button:disabled{opacity:.35;cursor:default}
+  .calnav .n{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums}
+  .calnav .today{margin-left:auto;font-size:13px;background:none;border:0;
+    width:auto;height:auto;color:var(--accent);text-decoration:underline;
+    cursor:pointer;padding:0}
+  .calkey{display:flex;flex-wrap:wrap;gap:var(--space-4);font-size:12px;
+    color:var(--dim);margin:0 0 var(--space-3)}
+  .calkey span{display:inline-flex;align-items:center;gap:6px}
+  .calkey i{width:11px;height:11px;flex:none;background:var(--chip)}
+  .calkey i.near{background:var(--accent)}
+  .calkey i.now{background:var(--beak)}
+  .calgrid{border:1px solid var(--line);border-bottom:0}
+  .calhead,.calweek-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+  .calhead span{font-size:10.5px;font-weight:700;letter-spacing:.07em;
+    text-transform:uppercase;color:var(--faint);padding:7px 8px;
+    border-bottom:1px solid var(--line)}
+  .calweek{border-bottom:1px solid var(--line)}
+  .calweek-days span{font-size:12px;color:var(--dim);padding:6px 8px 2px;
+    font-variant-numeric:tabular-nums;min-height:26px}
+  .calweek-days span.out{color:var(--faint)}
+  .calweek-days span.is-today{color:var(--accent);font-weight:700}
+  .calbars{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));
+    gap:3px 0;padding:0 0 7px}
+  .calbar{display:block;font-size:12px;line-height:1.25;padding:4px 7px;
+    margin:0 2px;background:var(--chip);color:var(--ink);text-align:left;
+    border:0;font:inherit;font-size:12px;cursor:pointer;overflow:hidden;
+    text-overflow:ellipsis;white-space:nowrap;border-left:3px solid var(--line)}
+  .calbar:hover{border-left-color:var(--accent);color:var(--accent)}
+  .calbar.near{border-left-color:var(--accent)}
+  .calbar.now{border-left-color:var(--beak)}
+  .calbar.past{opacity:.55}
+  .calbar b{font-weight:600}
+  .calbar .cut{color:var(--faint)}
+  .calnote{font-size:13px;color:var(--dim);margin:var(--space-3) 0 0;
+    line-height:1.5}
+  @media (max-width:700px){
+    /* A SEVEN-COLUMN GRID IS NOT A PHONE LAYOUT. Below 700px the month grid
+       is hidden and the month-grouped list below it is the calendar - same
+       events, same order, from the same filtered set.
+       THE NAV GOES WITH IT. Leaving .calnav visible left a reader with ‹ ›
+       buttons that page a month they cannot see - a dead control, which is
+       the same defect as the .ics button that linked to nothing. */
+    .calgrid,.calhead,.calkey,.calnav{display:none}
+  }
   .calmon{margin:var(--space-6) 0 var(--space-2);display:flex;
     align-items:baseline;gap:var(--space-3);border-bottom:2px solid var(--line);
     padding-bottom:var(--space-2)}
@@ -6316,7 +6379,12 @@ function conferences(){
       // the calendar's rows open the same event page the list's do
       // The same destination a list row goes to: the companies tab filtered
       // to that event's exhibitors. Two views must not lead different places.
-      document.querySelectorAll("#cf-list .calrow[data-cf]").forEach(el=>{
+      // THE BARS GO WHERE THE ROWS GO. Two views of one dataset must not
+      // lead different places, so the grid's bars and the list's rows share
+      // this handler - .calbar is matched alongside .calrow rather than given
+      // its own, which is how the two drifted apart last time.
+      document.querySelectorAll("#cf-list .calrow[data-cf], #cf-list .calbar[data-cf]")
+        .forEach(el=>{
         el.style.cursor="pointer";
         el.onclick=()=>{
           ROLE=null; tab="companies"; render();
@@ -6325,6 +6393,22 @@ function conferences(){
                    box.dispatchEvent(new Event("input",{bubbles:true})); }
         };
       });
+      // Month navigation. Steps through the months that actually HOLD events
+      // rather than calendar months, so a reader never lands on an empty grid
+      // between two clusters - the catalogue has gaps of four months.
+      const monthsWith=[...new Set(shown.map(r=>calRange(r.dates))
+        .filter(Boolean).map(v=>cal_key(v.start)))].sort();
+      document.querySelectorAll("#cf-list [data-calstep]").forEach(b=>{
+        b.onclick=()=>{
+          const i=monthsWith.indexOf(cal_key(CF_CAL_AT));
+          const j=i+ (+b.dataset.calstep);
+          if(j<0||j>=monthsWith.length)return;
+          const [y,m]=monthsWith[j].split("-").map(Number);
+          CF_CAL_AT=new Date(y,m,1); paint();
+        };
+      });
+      const home=document.querySelector("#cf-list [data-calhome]");
+      if(home)home.onclick=()=>{ CF_CAL_AT=null; paint(); };
       // and the + calendar buttons keep working in this view too
       wireCfRows();
     }else{
@@ -7203,8 +7287,103 @@ function cfRatingNote(ratings){
 const CAL_MONTH_NAME=["January","February","March","April","May","June","July",
   "August","September","October","November","December"];
 
+/* Which month the grid is showing. Not in the url for the same reason
+   CF_VIEW is not: it is a way of looking, and a shared link should carry what
+   somebody filtered to rather than where they had scrolled. */
+let CF_CAL_AT=null;
+
+const CAL_DOW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const cal_mid=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate());
+const cal_add=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x;};
+const cal_key=d=>`${d.getFullYear()}-${d.getMonth()}`;
+
+/* The span the grid actually DRAWS: the Sunday on or before the 1st through
+   the Saturday that completes the last week. Shared by the grid and the count
+   above it, because a month grid necessarily shows a few days of its
+   neighbours - September's last row carries Oct 1-3 - and a count of "23
+   events" over 25 visible bars is the kind of small lie a reader checks. */
+/* "2026-09-12" AS A LOCAL DAY, NOT A UTC INSTANT. new Date("2026-09-12")
+   is midnight UTC, which is 8pm on the 11th in Denver - so the grid drew
+   "today" on the wrong square for every reader west of Greenwich, and every
+   past/upcoming comparison was a day out for part of each day. Same family as
+   the getUTC* bug in calHuman: one clock or the other, never both. */
+function calToday(){
+  const g=D.generated;
+  const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(String(g||""));
+  return m?new Date(+m[1],+m[2]-1,+m[3]):new Date();
+}
+
+function cfCalWindow(at){
+  const first=new Date(at.getFullYear(),at.getMonth(),1);
+  const last=new Date(at.getFullYear(),at.getMonth()+1,0);
+  const start=cal_add(first,-first.getDay());
+  const nWeeks=Math.ceil((last.getDate()+first.getDay())/7);
+  return {start, end:cal_add(start,nWeeks*7-1), nWeeks};
+}
+
+/* The month grid. One bar per event per week it touches, spanning the days it
+   actually runs, so a four-day show reads as four days wide.
+
+   CROSSING A WEEK IS DRAWN, NOT SPLIT. WEFTEC runs Sep 26 - Oct 1; it appears
+   in both weeks with an arrow on the cut side, because two silent halves read
+   as two different conferences. */
+function cfMonthGridHTML(dated,today,at){
+  const win=cfCalWindow(at);
+  const gridStart=win.start, nWeeks=win.nWeeks;
+  let out=`<div class="calgrid"><div class="calhead">${
+    CAL_DOW.map(d=>`<span>${d}</span>`).join("")}</div>`;
+  const tkey=cal_mid(today).getTime();
+  for(let w=0;w<nWeeks;w++){
+    const ws=cal_add(gridStart,w*7), we=cal_add(ws,6);
+    const days=[];
+    for(let i=0;i<7;i++){
+      const d=cal_add(ws,i);
+      const out_of=d.getMonth()!==at.getMonth();
+      const isT=cal_mid(d).getTime()===tkey;
+      days.push(`<span class="${out_of?"out":""}${isT?" is-today":""}">${
+        d.getDate()}</span>`);
+    }
+    /* Events overlapping THIS week, longest first so a long bar takes the top
+       lane and short ones tuck under it rather than leapfrogging. */
+    const here=dated.filter(({v})=>cal_mid(v.end)>=cal_mid(ws)&&cal_mid(v.start)<=cal_mid(we))
+      .sort((a,b)=>(b.v.end-b.v.start)-(a.v.end-a.v.start)||a.v.start-b.v.start);
+    /* LANES ARE PACKED, NOT COUNTED. Giving each event its own row made the
+       last week of September 524px tall for nine events, most of which do not
+       overlap at all - a week that reads as denser than it is, which is the
+       opposite of what this view is for. Each bar takes the first lane with
+       room to its left. */
+    const lanes=[];
+    const laneOf=(a,b)=>{
+      for(let L=0;L<lanes.length;L++){
+        if(lanes[L]<a){lanes[L]=b;return L;}
+      }
+      lanes.push(b);return lanes.length-1;
+    };
+    const bars=here.map(({r,v})=>{
+      const s0=Math.max(0,Math.round((cal_mid(v.start)-cal_mid(ws))/86400000));
+      const e0=Math.min(6,Math.round((cal_mid(v.end)-cal_mid(ws))/86400000));
+      const cutL=cal_mid(v.start)<cal_mid(ws), cutR=cal_mid(v.end)>cal_mid(we);
+      const mi=cfMiles(r,NEAR_AT);
+      const cls=[isNow(r.dates)?"now":"",mi!=null&&mi<=cfMilesNow()?"near":"",
+                 cal_mid(v.end)<cal_mid(today)?"past":""].filter(Boolean).join(" ");
+      const bits=[r.city?esc(r.city):null,
+                  r.companies?`${r.companies} exhibitor${r.companies===1?"":"s"}`:null
+                 ].filter(Boolean).join(" &middot; ");
+      const lane=laneOf(s0,e0);
+      return `<button type="button" class="calbar ${cls}" data-cf="${esc(r.tag)}"
+        style="grid-column:${s0+1}/${e0+2};grid-row:${lane+1}"
+        title="${esc(r.name)}${r.city?" — "+esc(r.city):""}">${
+        cutL?'<span class="cut">&rarr; </span>':""}<b>${esc(r.name)}</b>${
+        bits?` &middot; ${bits}`:""}${cutR?'<span class="cut"> &rarr;</span>':""}</button>`;
+    }).join("");
+    out+=`<div class="calweek"><div class="calweek-days">${days.join("")}</div>
+      <div class="calbars">${bars}</div></div>`;
+  }
+  return out+"</div>";
+}
+
 function cfCalendarHTML(rows){
-  const today=new Date(D.generated||Date.now());
+  const today=calToday();
   const dated=[], undated=[];
   rows.forEach(r=>{
     const v=calRange(r.dates);
@@ -7218,7 +7397,51 @@ function cfCalendarHTML(rows){
   if(!dated.length&&!undated.length)
     return `<div class="empty">${GHOST}No conference matches that.</div>`;
 
-  let out="", lastKey="";
+  /* THE GRID FIRST, then the same events as a list beneath it. The list is
+     not redundant: it is the phone layout (the grid is display:none under
+     700px), it carries the undated events a grid cannot place, and it is what
+     a screen reader reads in order. */
+  let out="";
+  if(dated.length){
+    /* Default to the month holding the next event a reader can still attend,
+       not to today - the catalogue runs to 2028 and opening on an empty month
+       looks like a broken filter. */
+    const upcoming=dated.find(({v})=>cal_mid(v.end)>=cal_mid(today));
+    const anchorAt=(upcoming||dated[0]).v.start;
+    const months=[...new Set(dated.map(({v})=>cal_key(v.start)))];
+    if(!CF_CAL_AT||!months.includes(cal_key(CF_CAL_AT)))
+      CF_CAL_AT=new Date(anchorAt.getFullYear(),anchorAt.getMonth(),1);
+    const at=CF_CAL_AT;
+    const win=cfCalWindow(at);
+    const inMonth=dated.filter(({v})=>
+      !(cal_mid(v.end)<cal_mid(win.start)||cal_mid(v.start)>cal_mid(win.end)));
+    const near=NEAR_AT?inMonth.filter(({r})=>{
+      const m=cfMiles(r,NEAR_AT); return m!=null&&m<=cfMilesNow();}).length:null;
+    const ord=months.slice().sort();
+    const i=ord.indexOf(cal_key(at));
+    out+=`<div class="calnav">
+      <button type="button" data-calstep="-1" ${i<=0?"disabled":""}
+        aria-label="Previous month">&lsaquo;</button>
+      <h3>${CAL_MONTH_NAME[at.getMonth()]} ${at.getFullYear()}</h3>
+      <button type="button" data-calstep="1" ${i>=ord.length-1?"disabled":""}
+        aria-label="Next month">&rsaquo;</button>
+      <span class="n">${inMonth.length} event${inMonth.length===1?"":"s"}${
+        near!=null?` &middot; ${near} within ${cfMilesNow().toLocaleString()} mi`:""}</span>
+      ${cal_key(at)!==cal_key(anchorAt)
+        ?`<button type="button" class="today" data-calhome="1">Back to ${
+           CAL_MONTH_NAME[anchorAt.getMonth()].slice(0,3)}</button>`:""}
+    </div>
+    <div class="calkey">
+      ${NEAR_AT?`<span><i class="near"></i>Near you</span>`:""}
+      <span><i></i>Elsewhere</span>
+      <span><i class="now"></i>On now</span>
+      <span>A bar spans the days the event runs; &rarr; means it carries into
+        the next week.</span>
+    </div>`;
+    out+=cfMonthGridHTML(dated,today,at);
+  }
+
+  let lastKey="";
   dated.forEach(({r,v})=>{
     const d=v.start;
     const key=`${d.getFullYear()}-${d.getMonth()}`;

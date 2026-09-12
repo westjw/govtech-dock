@@ -35,6 +35,7 @@ import collections
 import concurrent.futures as cf
 import datetime as dt
 import hashlib
+import html
 import json
 import pathlib
 import re
@@ -891,7 +892,15 @@ def conference_rows(cat: list, orgs: list, companies: list) -> list:
             hiring = [i for i in ids if open_by_co.get(i, 0) > 0]
             conf_rows.append({
                 "tag": tag,
-                "name": row.get("conference") or tag,
+                # ENTITIES DECODED ONCE, HERE. Two catalogue names were
+                # scraped with their HTML entities intact - "KLC Conference
+                # &amp; Expo" and a symposium title carrying "&nbsp;" - so
+                # every renderer escaped them a second time and a reader saw
+                # the literal "&amp;". Decoding at the render boundary would
+                # mean un-escaping data on its way onto a page, which is the
+                # wrong direction; the name is wrong in the record and this is
+                # where the record is built.
+                "name": html.unescape(row.get("conference") or tag),
                 "block": row.get("block"),
                 "department": row.get("department"),
                 "flagship": bool(row.get("flagship")),
