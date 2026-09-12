@@ -19698,6 +19698,47 @@ def main() -> int:
         if got != expected:
             errors += fail(f"scan_pagetext({text[:32]!r}...) = {got}, expected {expected}")
 
+    # THROUGH THE REAL EXTRACTOR, FROM REAL MARKUP. Every case above hands
+    # scan_pagetext text that is already clean, so none of them could see the
+    # bug that mattered: `<[^>]+>` eats `<!--<tr class="...">` as one tag, the
+    # comment opener vanishes, and the dead markup inside becomes page text.
+    # Pantonium's careers table renders ONE Operations opening and says
+    # "Positions Opening Soon!" under Sales & Marketing, with three Sales
+    # Director rows commented out below it - and the board published
+    # "Yes - AE-type role" off those. This drives ats.plain_html() into
+    # classify.scan_pagetext(), which is the pair production actually runs.
+    # THE ANCHOR INSIDE THE COMMENT IS LOAD-BEARING IN THIS FIXTURE. _BLOCKY
+    # turns <tr>/<td> into newlines and leaves a bare `<!--`, and _ANYTAG's
+    # `<[^>]+>` then runs from that `<!--` to the next `>` - which, in a comment
+    # holding only block tags, is the `>` of `-->`, so the whole comment gets
+    # eaten by accident and nothing leaks. The leak needs a NON-BLOCK tag
+    # inside: the `>` of `<a href=...>` ends that match early and everything
+    # after it becomes page text. A fixture without the anchor passes whether
+    # the fix is present or not, which is a guard that cannot fail.
+    import ats as _ats
+    for html_in, expected, why in [
+        ("<tr><td>Operations &amp; Client Support</td><td>Toronto, ON</td></tr>"
+         "<tr><td>Sales &amp; Marketing</td></tr>"
+         "<tr><td>Positions Opening Soon!</td></tr>"
+         "<!--<tr><td>Sales Director</td><td>Southwest U.S.</td>"
+         "<td><a href=\"https://x/job/1\">Apply now!</a></td></tr>"
+         "<tr><td>Sales Director</td><td>Central U.S.</td></tr>-->",
+         "unreadable", "a commented-out Sales Director is not a live role"),
+        # and the converse: a real one in the same shape must still be found,
+        # or the fix has bought a false absence, which is the worse error.
+        ("<table><tr><td>Sales Director</td><td>Central U.S.</td></tr></table>",
+         "ae", "a Sales Director that is NOT commented out must still read"),
+        ("<div>Careers</div>"
+         "<!--<div>there are currently no open positions</div>"
+         "<a href=\"/x\">apply</a>-->"
+         "<div>Solutions Pricing About</div>",
+         "unreadable", "a no-openings claim inside a comment is not a claim"),
+    ]:
+        got = classify.scan_pagetext(_ats.plain_html(html_in))
+        if got != expected:
+            errors += fail(f"plain_html -> scan_pagetext = {got}, expected "
+                           f"{expected}: {why}")
+
     # an unreadable page scan must surface as Unknown, never as None found
     status, note, _ = classify.rollup([{"url": "x", "_pagetext": "Solutions Pricing About Us"}])
     if status != "Unknown":

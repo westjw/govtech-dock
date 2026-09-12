@@ -167,6 +167,22 @@ def _unescape(s: str) -> str:
 # Block-level tags become a line break before every tag is dropped; everything
 # else is noise once the text is out.
 _SCRIPTY = re.compile(r"<(script|style)[^>]*>.*?</\1\s*>", re.S | re.I)
+# A COMMENTED-OUT JOB IS A JOB THE EMPLOYER TOOK DOWN, and it must not read as
+# a live one. `<[^>]+>` eats `<!--<tr class="...">` as a single tag - from the
+# `<` to the FIRST `>` - so the comment opener disappears and everything inside
+# survives as page text. Pantonium's careers table renders one Operations
+# opening and says "Positions Opening Soon!" under Sales & Marketing, with
+# three Sales Director rows commented out below it; the scan read those, matched
+# AE_PAT on "Sales Director", and the board published "Yes - AE-type role" for
+# roles nobody can apply to. On an `html` board the page text IS the evidence,
+# so it has to be the text a person actually sees.
+#
+# TERMINATED COMMENTS ONLY, deliberately. A browser hides everything after an
+# unterminated `<!--` too, but a regex that drops to end-of-string on a stray
+# opener would manufacture an empty board out of one typo - and a false "no
+# openings" is the failure this file is most careful about. Scripts and styles
+# are already gone above, which is where a bare `<!--` usually lives.
+_COMMENT = re.compile(r"<!--.*?-->", re.S)
 _BLOCKY = re.compile(r"</?(?:p|div|br|li|ul|ol|tr|td|th|h[1-6]|section|article|"
                      r"blockquote|table|thead|tbody|header|footer|figure|hr)\b"
                      r"[^>]*/?>", re.I)
@@ -198,6 +214,9 @@ def plain_html(s: str) -> str:
     if "<" not in s and "&lt;" in s:
         s = html_lib.unescape(s)
     s = _SCRIPTY.sub(" ", s)
+    # BEFORE the block and tag passes, or `<!--` is eaten as a tag and the
+    # dead markup inside the comment becomes page text. See _COMMENT.
+    s = _COMMENT.sub(" ", s)
     s = _BLOCKY.sub("\n", s)
     s = _ANYTAG.sub(" ", s)
     lines = (_unescape(line) for line in s.split("\n"))
@@ -1469,6 +1488,13 @@ _ANYTAG = re.compile(r"<[^>]+>")
 def _page_text(url: str) -> str:
     resp = _get(url)
     text = _TAG.sub(" ", resp.text)
+    # A COMMENTED-OUT JOB IS NOT AN OPENING, and this is the extractor
+    # that decides it. _ANYTAG below runs from a bare `<!--` to the next
+    # `>`, which swallows a comment holding only block tags and leaks one
+    # holding an <a href>: Pantonium's three commented-out Sales Director
+    # rows each carry an "Apply now!" anchor, so AE_PAT matched and the
+    # board published "Yes - AE-type role" for roles nobody can apply to.
+    text = _COMMENT.sub(" ", text)
     text = _ANYTAG.sub(" ", text)
     text = html_lib.unescape(text)
     return re.sub(r"\s+", " ", text)
@@ -1603,6 +1629,7 @@ def fetch_jazzhr(slug: str) -> list[dict]:
 
 def _strip(raw: str) -> str:
     text = _TAG.sub(" ", raw)
+    text = _COMMENT.sub(" ", text)   # see _page_text; same leak, same fix
     text = _ANYTAG.sub(" ", text)
     return re.sub(r"\s+", " ", html_lib.unescape(text))
 
@@ -1802,6 +1829,7 @@ def _card_lines(inner: str) -> list[str]:
     """The lines a job card renders as, from the markup inside its anchor."""
     s = _SPAN_STACK.sub("</span>\n<span", inner)
     s = _SCRIPTY.sub(" ", s)
+    s = _COMMENT.sub(" ", s)      # a commented-out card line is not a line
     s = _BLOCKY.sub("\n", s)
     s = _ANYTAG.sub(" ", s)
     return [line for line in (_unescape(x) for x in s.split("\n")) if line]
@@ -2114,7 +2142,8 @@ def _gusto_ptext(frag: str) -> str:
     unclosed quote. A quote-aware tag regex leaks `16"` into the title. Do not
     "fix" this into an attribute-aware pattern.
     """
-    return _unescape(_ANYTAG.sub(" ", _SCRIPTY.sub(" ", frag))).strip()
+    return _unescape(
+        _ANYTAG.sub(" ", _COMMENT.sub(" ", _SCRIPTY.sub(" ", frag)))).strip()
 
 
 def _gusto_is_meta(line: str) -> bool:
