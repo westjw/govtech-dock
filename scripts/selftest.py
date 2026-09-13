@@ -5280,6 +5280,118 @@ def check_a_site_that_names_somebody_else_is_read_correctly() -> int:
     return errors
 
 
+def check_a_gate_review_only_covers_what_it_saw() -> int:
+    """A write-up written after its category was gated does not land.
+
+    THE MARKER USED TO BE A LIST OF CATEGORY NAMES. "Somebody gated Police"
+    says nothing about WHICH write-ups they read, so a category gated last
+    week and written to again tonight carried the same mark and tonight's
+    arrivals landed behind a review that never saw them. The more write-ups
+    arrive, the more the mark certifies work nobody did.
+
+    FOUND BY BUILDING --land-all ON TOP OF IT. 69 new proposals sat in
+    categories all marked read, and one command would have published every
+    one. The mechanism was not wrong per category; making it bulk is what made
+    the hole obvious.
+
+    A wrong write-up on a public page is a claim about somebody else's company
+    that nobody checked, which is the expensive error here - so a proposal
+    that cannot prove it was on screen is held back, including one carrying no
+    timestamp at all.
+    """
+    import json as _json
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin, agents, promote_profiles as pp
+
+    companies = [{"id": f"c{i}", "name": f"C{i}", "sector": "Public Safety",
+                  "category": "Police", "description": "CAD for police",
+                  "website": f"https://c{i}.example",
+                  "ats": {"type": "unknown", "ref": None}, "hiring": "Unknown",
+                  "govtech": True, "vendor_type": "product"} for i in range(3)]
+    def prop(cid, at):
+        return {"kind": "profile", "id": cid, "name": cid.upper(),
+                "status": "pending", "confidence": "high", "why": "fixture",
+                "at": at,
+                "paragraphs": [[{"text": "It builds dispatch software.",
+                                 "url": f"https://{cid}.example",
+                                 "quote": "dispatch software"}]],
+                "saw": {"pages": [{"url": f"https://{cid}.example", "sha": "a1"}]}}
+    store = {"profile:c0": prop("c0", "2026-09-01T10:00:00"),   # before the gate
+             "profile:c1": prop("c1", "2026-09-20T10:00:00"),   # after it
+             "profile:c2": dict(prop("c2", "2026-09-01T10:00:00"), at=None)}
+    files = {"companies.json": companies, "agent_proposals.json": store,
+             "manual.json": {"checks": {}, "postings": []},
+             "admin_dismissed.json": {}, "placement_rulings.json": {}}
+    errors = 0
+    with _sandbox_admin(files) as tmp:
+        keep = (agents.STORE, pp.READ)
+        agents.STORE = tmp / "agent_proposals.json"
+        pp.READ = tmp / ".profiles_read"
+        try:
+            pp.READ.write_text(_json.dumps({"Police": "2026-09-10T00:00:00"}))
+            st = agents.load()
+            seq = admin.read_companies()
+            rows = [(k, v) for k, v in st.items()]
+            when = pp._read_gates().get("Police")
+            keys = [k for k, v in rows if not pp._after_gate(v, when)]
+            held = [k for k, v in rows if pp._after_gate(v, when)]
+            if "profile:c0" not in keys:
+                errors += fail("a write-up written BEFORE its gate review was "
+                               "held back; the review did see it")
+            if "profile:c1" not in held:
+                errors += fail("a write-up written AFTER its category's gate "
+                               "review is landable. The mark certifies a "
+                               "review that never saw it, and the more arrive "
+                               "the more it certifies work nobody did")
+            if "profile:c2" not in held:
+                errors += fail("a write-up carrying NO timestamp is landable. "
+                               "It cannot prove it was on screen, and a "
+                               "description of somebody else's company that "
+                               "nobody read is the expensive mistake here")
+            pp.land(st, seq, keys, "selftest", "fixture")
+            landed = {c["id"]: c for c in admin.read_companies()}
+            if not landed["c0"].get("profile"):
+                errors += fail("the write-up the review DID see never landed")
+            for cid, why in (("c1", "written after the gate"),
+                             ("c2", "carrying no timestamp")):
+                if landed[cid].get("profile"):
+                    errors += fail(f"a write-up {why} reached a public page")
+
+            # A CATEGORY WITH NO GATE AT ALL HOLDS EVERYTHING. --land and
+            # --land-all both refuse an ungated category before they ever ask
+            # this, so it is defence in depth - and defence in depth that
+            # nobody tested is just an untested branch.
+            for k, v in rows:
+                if not pp._after_gate(v, None):
+                    errors += fail(f"{k} is landable in a category NOBODY has "
+                                   f"gated. The whole review step is optional "
+                                   f"if this returns False")
+
+            # THE LEGACY SHAPE STILL READS. A list of bare names is what is on
+            # disk today, and reading it as "gated at an unknown time" would
+            # either strand every category or wave every one through.
+            pp.READ.write_text(_json.dumps(["Police", "Water"]))
+            g = pp._read_gates()
+            if g.get("Police") != pp.LEGACY_GATE or g.get("Water") != pp.LEGACY_GATE:
+                errors += fail(f"the old list-of-names marker no longer "
+                               f"migrates to a time: {g}")
+
+            # AND A MAP IS NOT A REVIEW. --gate with no category prints what is
+            # waiting; if it stamped them read, one command would certify 59
+            # categories nobody opened.
+            pp.READ.write_text(_json.dumps({}))
+            import contextlib, io
+            with contextlib.redirect_stdout(io.StringIO()):
+                pp.gate_map(agents.load(), admin.read_companies())
+            if pp._read_gates():
+                errors += fail("gate_map marked categories as gated. A map of "
+                               "the work is not the work, and stamping them "
+                               "would manufacture the appearance of a review")
+        finally:
+            agents.STORE, pp.READ = keep
+    return errors
+
+
 def check_the_buyer_door_holds() -> int:
     """The scope door, case by case, and the shape of the answer it protects.
 
@@ -21159,6 +21271,7 @@ def main() -> int:
     errors += check_federal_is_out_and_a_city_is_not_federal()
     errors += check_one_subscriber_never_silences_the_rest()
     errors += check_a_site_that_names_somebody_else_is_read_correctly()
+    errors += check_a_gate_review_only_covers_what_it_saw()
     errors += check_the_buyer_door_holds()
     errors += check_the_buyer_rules_say_what_the_buyer_door_enforces()
     errors += check_landing_refuses_a_category_nobody_gated()

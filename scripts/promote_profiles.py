@@ -2,6 +2,8 @@
 """The gate review for company write-ups, and the door that lands them.
 
     python3 scripts/promote_profiles.py                      # the funnel
+    python3 scripts/promote_profiles.py --gate               # every category waiting
+    python3 scripts/promote_profiles.py --land-all --by owner
     python3 scripts/promote_profiles.py --gate Police        # what a person reads
     python3 scripts/promote_profiles.py --show brinc         # one, sentence by source
     python3 scripts/promote_profiles.py --land Police --by owner
@@ -49,7 +51,21 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import admin                                                    # noqa: E402
 import agents                                                   # noqa: E402
 
-READ = DATA / ".profiles_read"       # categories --gate has printed
+READ = DATA / ".profiles_read"       # categories --gate has printed, and WHEN
+
+# THE MARKER USED TO BE A LIST OF NAMES AND THAT WAS NOT ENOUGH. "Somebody
+# gated Police" says nothing about WHICH write-ups they read. A category gated
+# last week and written to again tonight carries the same mark, so tonight's
+# arrivals land behind a review that never saw them - and the more write-ups
+# arrive, the more the mark certifies work nobody did. Found the day a bulk
+# --land-all was built on top of it: 69 new proposals sat in categories all
+# marked read, and the command would have published every one.
+#
+# So it records a TIME per category, and a proposal written after that time is
+# held back and named. The legacy list is migrated to the moment before the
+# run that produced everything then on file, because that is what those gate
+# reviews actually covered - and not one second later.
+LEGACY_GATE = "2026-09-03T23:59:59"
 # A SEPARATE FILE, AND NOT FOR TIDINESS. Reading a category's write-ups tells
 # a person nothing about whether its buyer answers are sound - different
 # claims, different evidence, different failure. One file would let a gate
@@ -80,6 +96,39 @@ Never write a fact the pages do not state. If the pages will not support two
 or three paragraphs, answer unsure - that is a complete and useful answer."""
 CHUNK = 500
 SAMPLE = 0.05
+
+
+def _read_gates() -> dict:
+    """{category: when it was gated}. Tolerates the old list-of-names shape."""
+    if not READ.exists():
+        return {}
+    try:
+        raw = json.loads(READ.read_text())
+    except Exception:                                           # noqa: BLE001
+        return {}
+    if isinstance(raw, list):
+        return {c: LEGACY_GATE for c in raw}
+    return raw if isinstance(raw, dict) else {}
+
+
+def _mark_gated(category: str) -> None:
+    gates = _read_gates()
+    gates[category] = dt.datetime.now().astimezone().isoformat(timespec="seconds")
+    READ.write_text(json.dumps(gates, indent=1))
+
+
+def _after_gate(p: dict, when: str | None) -> bool:
+    """Was this write-up created after the gate review that covers it?
+
+    A PROPOSAL WITH NO TIMESTAMP IS TREATED AS UNREAD. It cannot prove it was
+    on screen, and the asymmetric rule applies: publishing a description of
+    somebody else's company that nobody reviewed is the expensive mistake,
+    holding one back for a second look is the cheap one.
+    """
+    if not when:
+        return True
+    at = p.get("at")
+    return not isinstance(at, str) or at > when
 
 
 def _by_category(store: dict, companies: list, kind: str = "profile") -> dict:
@@ -142,10 +191,7 @@ def gate(store: dict, companies: list, category: str, seed: int = 0) -> dict:
     print(f"\n== 3. Sample of what passed: {len(sample)} of {len(high)} ==")
     for k, p in sample:
         show(p, names.get(p.get("id"), p.get("id")))
-    read = json.loads(READ.read_text()) if READ.exists() else []
-    if category not in read:
-        read.append(category)
-        READ.write_text(json.dumps(read))
+    _mark_gated(category)
     print(f"\n  Land the {len(pending)} pending:  python3 scripts/promote_profiles.py "
           f"--land {category!r} --by owner")
     return {"refused": refused, "low": low, "sample": sample, "pending": pending}
@@ -357,6 +403,69 @@ def land_buyer(store: dict, companies: list, keys: list[str], by: str,
         if len(held) > 20:
             print(f"     ... and {len(held) - 20} more")
     return {"wrote": wrote, "sled": sled, "held": held}
+
+
+def gate_map(store: dict, companies: list) -> dict:
+    """Every category with write-ups waiting, and what each one would cost.
+
+    THE FRICTION THIS REMOVES IS REAL AND IT WAS MINE. 291 landable write-ups
+    sit across 55 categories, and the only way to reach them was --gate with a
+    category name you had to already know. Nothing listed them. So the queue
+    that a person is meant to work through was addressable only by guessing
+    its addresses, which is the 131-unreachable-rows shape wearing a
+    friendlier face.
+
+    IT MARKS NOTHING AS READ, deliberately. --land refuses until --gate has
+    PRINTED that category's exceptions, because the owner's ruling was "door
+    only, add some gate reviews" and the review is the part a person does.
+    A map of the work is not the work. Printing 291 write-ups in one wall of
+    text and stamping all 55 read would manufacture the appearance of a review
+    and destroy the only thing the marker is for.
+    """
+    names = {c["id"]: c.get("name", c["id"]) for c in companies if c.get("id")}
+    read = json.loads(READ.read_text()) if READ.exists() else []
+    by = _by_category(store, companies)
+    rows = []
+    for cat, rs in by.items():
+        pend = [(k, p) for k, p in rs if p.get("status") == "pending"]
+        land = [(k, p) for k, p in pend if _has_text(p)]
+        if not pend and not any(p.get("status") == "refused" for _, p in rs):
+            continue
+        rows.append({
+            "category": cat,
+            "landable": len(land),
+            "high": sum(1 for _, p in land if p.get("confidence") == "high"),
+            "read_first": sum(1 for _, p in land
+                              if (p.get("confidence") or "unsure") != "high"),
+            "unsure": len(pend) - len(land),
+            "refused": sum(1 for _, p in rs if p.get("status") == "refused"),
+            "gated": cat in read,
+        })
+    rows.sort(key=lambda r: -r["landable"])
+    tot = {k: sum(r[k] for r in rows)
+           for k in ("landable", "high", "read_first", "unsure", "refused")}
+    print(f"WRITE-UPS WAITING: {tot['landable']} landable across "
+          f"{len(rows)} categor(y/ies)\n")
+    print(f"  {'category':34} {'land':>5} {'high':>5} {'read':>5} "
+          f"{'unsure':>7} {'refused':>8}  gated")
+    for r in rows:
+        print(f"  {r['category'][:34]:34} {r['landable']:5} {r['high']:5} "
+              f"{r['read_first']:5} {r['unsure']:7} {r['refused']:8}"
+              f"  {'yes' if r['gated'] else '-'}")
+    print(f"  {'TOTAL':34} {tot['landable']:5} {tot['high']:5} "
+          f"{tot['read_first']:5} {tot['unsure']:7} {tot['refused']:8}")
+    print(f"\n  land   = carries paragraphs, could go on a public page")
+    print(f"  high   = the door passed it cleanly; --gate samples these")
+    print(f"  read   = medium/low; --gate shows EVERY one, in full")
+    print(f"  unsure = a complete answer with nothing to land")
+    ungated = [r for r in rows if not r["gated"] and r["landable"]]
+    print(f"\n  {len(ungated)} categor(y/ies) have never been gated. Read one:")
+    for r in ungated[:3]:
+        print(f"     python3 scripts/promote_profiles.py --gate {r['category']!r}")
+    print(f"\n  Then land everything gated, in one journalled batch each:")
+    print(f"     python3 scripts/promote_profiles.py --land-all --by owner")
+    print(f"     ... add --high-only to leave medium/low/unsure for a person")
+    return {"rows": rows, "totals": tot}
 
 
 def _claims(text: str) -> set:
@@ -656,8 +765,15 @@ def _has_text(p: dict) -> bool:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--gate", metavar="CATEGORY")
+    ap.add_argument("--gate", metavar="CATEGORY", nargs="?", const="",
+                    help="with a category, the exception review for it. With "
+                         "NO category, a map of every category waiting - which "
+                         "marks nothing as read, because a map is not a review")
     ap.add_argument("--land", metavar="CATEGORY")
+    ap.add_argument("--land-all", action="store_true",
+                    help="land every category a --gate has printed in this "
+                         "checkout. Categories nobody has gated are refused "
+                         "and named, never quietly skipped")
     ap.add_argument("--gate-buyer", metavar="CATEGORY",
                     help="what a person reads before any buyer answer lands")
     ap.add_argument("--land-buyer", metavar="CATEGORY",
@@ -684,7 +800,8 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
-    if (a.land or a.land_buyer or a.reject or a.hide or a.unhide) and not a.by:
+    if (a.land or a.land_all or a.land_buyer or a.reject or a.hide
+            or a.unhide) and not a.by:
         ap.error("--by is required to rule: \"owner\", or \"agent:<label>\"")
 
     store = agents.load()
@@ -698,6 +815,69 @@ def main() -> int:
             print(f"no write-up proposal on file for {a.show!r}")
             return 1
         show(p, names.get(a.show, a.show))
+        return 0
+
+    if a.gate == "":
+        # --gate WITH NO CATEGORY. `nargs="?"` makes the bare flag land here
+        # as an empty string rather than None, which is how this stays one
+        # flag instead of two that a person has to choose between.
+        gate_map(store, seq)
+        return 0
+
+    if a.land_all:
+        gates = _read_gates()
+        by = _by_category(store, seq)
+        done, skipped, total, unread = [], [], 0, []
+        for cat in sorted(by):
+            rows = [(k, p) for k, p in by[cat]
+                    if p.get("status") == "pending"
+                    and (not a.high_only
+                         or (p.get("confidence") or "unsure") == "high")]
+            when = gates.get(cat)
+            newer = [(k, p) for k, p in rows if _after_gate(p, when)]
+            keys = [k for k, p in rows if not _after_gate(p, when)]
+            if newer:
+                unread.append((cat, len(newer)))
+            if not rows:
+                continue
+            if cat not in gates:
+                # NEVER QUIETLY SKIPPED. A category nobody gated is the whole
+                # reason --land refuses, and a bulk landing that silently
+                # passed over it would be the door alone wearing the gate's
+                # name.
+                skipped.append((cat, len(rows)))
+                continue
+            if not keys:
+                continue
+            n = land(store, seq, keys, a.by,
+                     a.why or f"landed {cat} after gate review")
+            if n:
+                done.append((cat, n)); total += n
+        for cat, n in done:
+            print(f"  {cat}: {n}")
+        print(f"\n  {total} write-up(s) on the map, across {len(done)} "
+              f"categor(y/ies)")
+        if skipped:
+            print(f"\n  REFUSED, never gated - {sum(n for _, n in skipped)} "
+                  f"write-up(s) in {len(skipped)} categor(y/ies):")
+            for cat, n in skipped[:12]:
+                print(f"     {n:4}  {cat}")
+            if len(skipped) > 12:
+                print(f"     ... and {len(skipped) - 12} more")
+            print(f"  Read one, then re-run:  python3 "
+                  f"scripts/promote_profiles.py --gate {skipped[0][0]!r}")
+        if unread:
+            # WRITTEN SINCE SOMEBODY LOOKED. The category was gated; these
+            # arrived afterwards, so the mark on it certifies a review that
+            # never saw them.
+            print(f"\n  HELD BACK, written after their category's gate review "
+                  f"- {sum(n for _, n in unread)} write-up(s) in "
+                  f"{len(unread)} categor(y/ies):")
+            for cat, n in unread[:12]:
+                print(f"     {n:4}  {cat}  (gated {str(gates.get(cat))[:16]})")
+            if len(unread) > 12:
+                print(f"     ... and {len(unread) - 12} more")
+        print(f"  Undo a batch: python3 scripts/admin_undo.py")
         return 0
 
     if a.gate:
@@ -795,8 +975,8 @@ def main() -> int:
         return 0
 
     if a.land:
-        read = json.loads(READ.read_text()) if READ.exists() else []
-        if a.land not in read:
+        gates = _read_gates()
+        if a.land not in gates:
             print(f"  REFUSED. --gate {a.land!r} has not printed in this checkout.\n"
                   f"  The gate review is the part a person reads; landing a "
                   f"category nobody\n  has looked at is the door alone, and the "
@@ -809,10 +989,23 @@ def main() -> int:
         # a person samples, while medium/low/unsure are the 283 the gate exists
         # to put in front of somebody. Landing both under one word would
         # publish the unreviewed half silently.
-        keys = [k for k, p in _by_category(store, seq).get(a.land, [])
+        rows = [(k, p) for k, p in _by_category(store, seq).get(a.land, [])
                 if p.get("status") == "pending"
                 and (not a.high_only
                      or (p.get("confidence") or "unsure") == "high")]
+        when = gates.get(a.land)
+        fresh = [(k, p) for k, p in rows if _after_gate(p, when)]
+        keys = [k for k, p in rows if not _after_gate(p, when)]
+        if fresh:
+            print(f"  {len(fresh)} write-up(s) were created AFTER the gate "
+                  f"review of {a.land!r} on {str(when)[:16]}, so nobody has "
+                  f"read them. Held back:")
+            for k, p in fresh[:8]:
+                print(f"     {str(p.get('name') or p.get('id'))[:38]:40} "
+                      f"written {str(p.get('at'))[:16]}")
+            if len(fresh) > 8:
+                print(f"     ... and {len(fresh) - 8} more")
+            print(f"  Re-run --gate {a.land!r} to read them, then land again.")
         n = land(store, seq, keys, a.by, a.why or f"landed {a.land} after gate review")
         print(f"  {n} write-up(s) on the map. Undo a batch: python3 scripts/admin_undo.py")
         return 0
