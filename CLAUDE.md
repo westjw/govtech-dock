@@ -439,6 +439,112 @@ because the profile gate review reads refusals and a door nobody can see being
 wrong is a door nobody fixes. Every `promote_*.py` is covered by
 `check_writes_name_their_author` by glob.
 
+### Two questions off one set of pages: the `buyer` kind, added 2026-09-12
+
+Every write-up answered *what does this company sell*. Nothing ever asked
+*and who buys it*. **1,678 of 2,044 companies carry no answer** — 172 of them
+with 548 live postings on the board right now. The pages that settle it are
+already on disk: all 1,678 have a cached site record, fetched for a write-up
+and read for one question when it could have been read for two.
+
+`buyer` is a kind of its own, not a field on a profile, and the reason is that
+**the two answers fail separately**. A write-up refused at rule 5 for naming a
+customer the pages do not carry can still have read the buyer correctly off
+the same page; a sound write-up can be paired with a buyer answer resting on
+nothing. One status for both throws away whichever half was good. And **505
+companies already have a landed write-up and no buyer answer** — under a
+field-on-a-profile design they are unreachable for ever, because their profile
+proposal is accepted and `brief_profile` never offers them again.
+
+```
+python3 scripts/write_profiles.py --category Police --limit 20   # both questions
+python3 scripts/write_profiles.py --buyer-only --limit 20        # the 505
+python3 scripts/promote_profiles.py --gate-buyer Police
+python3 scripts/promote_profiles.py --land-buyer Police --by owner
+```
+
+**`--buyer-only` reads off disk and fetches nothing.** `fp.visit` always goes
+to the network, so a buyer pass over 505 companies whose pages we already hold
+would re-crawl 505 third-party sites to re-ask a question of bytes in
+`data/site_pages/`. `--no-fetch` is the default in that mode; `--fetch`
+overrides it for a company whose cache is stale enough to matter.
+
+**The two verdicts are not symmetrical, and `check_buyer` is built around
+that.** A `yes` is a claim about what a page says and needs a verbatim quote
+from a page we fetched. A `no` is a claim about what these pages do *not* say,
+which no quote can prove — so a quote is never required for one, and a quote
+that IS offered is checked anyway, because a person reading the gate sees
+something in quotation marks and takes it for evidence. `unclear` is the
+answer for "the pages do not say", and it cannot be high confidence: the
+verdict there is that there is no verdict.
+
+**The model is never asked for `sled_only`, and rule 8 refuses it by name.**
+That flag makes `build_board` drop every posting whose title does not name the
+public sector, so a wrong one deletes real jobs off a public board and leaves
+no mark. `buyer_sled_eligible()` *derives* eligibility from the two verdicts
+using the rule the 2026-09-11 scope pass measured — verdict `yes`, no
+non-government buyer named, high confidence — and it still takes a person:
+`--land-buyer` records the buyer, and only `--with-sled` sets the flag, after
+a gate review that prints how many postings are at stake. The admin's
+single-row Accept never sets it and the card says so on its face.
+
+**`--gate-buyer` has its own marker file.** Reading a category's write-ups
+tells a person nothing about whether its buyer verdicts are sound — different
+claims, different evidence, different way of being wrong — so `.buyer_read` is
+separate from `.profiles_read` and `--gate` does not unlock `--land-buyer`.
+`check_landing_refuses_a_category_nobody_gated` drives both through `main()`;
+nothing had ever checked either refusal.
+
+**`land_buyer` never overwrites an answer already on file** and never silently
+skips: a company answered between the ask and the landing is held back,
+counted and NAMED.
+
+**The trap that cost the profile door nine refusals is clean here, measured.**
+Both briefs build pages through one `_brief_pages()`, so a quote taken off the
+brief's `lines` verifies against the full stored text the door checks —
+15,480 of 15,480 quotable lines across 150 companies, zero false refusals. A
+sample of that runs in selftest.
+
+**IT IS CALLED `buyer` AND NOT `scope` ON PURPOSE.** The admin already has
+*Scope review* (does this POSTING belong on the board) and *Vendor scope*
+(does this COMPANY), so a third sense would be one word carrying three
+meanings in one product — the defect this file names under "a sector is never
+also a category". Free to fix the day it landed, because zero rows were stored
+under the old key, and never free again. Buyer rows are also kept OUT of the
+Agent proposals tab for the reason 104 Police write-ups were: 1,447 of them
+would bury every read and board proposal in a queue nobody clicks through one
+by one.
+
+**Six guards, mutation-tested: 29 unique mutations, 28 caught** (plus 11
+re-runs after the rename, confirming no guard was blinded by it). Both misses
+are worth keeping:
+
+- A guard asserted `sled_only_why` was non-empty, and a mutation that gutted
+  the sentence left a truthy stub — "their own pages name no " — behind it.
+  *A presence check is not an evidence check.* It now asserts the buyer
+  sentence itself travels with the flag, and its re-run caught.
+- **The standing one: nothing guards buyer rows staying out of the Agent
+  proposals tab.** It is a queue-quality property rather than a correctness
+  one, so it is named here instead of covered by a thin guard — if that
+  exclusion is ever dropped, 1,447 rows bury every read and board proposal
+  and no check will say so.
+
+**THE FIRST LIVE CALL PAID FOR ITSELF, at three cents.** `split_answer` read a
+flat `--buyer-only` reply under the combined ask's nested key and emptied it,
+so a correct answer was refused at rule 2 for carrying no confidence — a
+systematic refusal that read as the model's fault, on a path whose breaker
+would have burned eight companies before stopping. Both reply shapes now go
+through the real splitter and the real door in selftest.
+
+**What the corpus can actually support, scanned before committing to a run:**
+920 of 1,446 cached page sets (63%) carry government-buyer language at all, so
+a `yes` has a sentence available; the other 526 will honestly answer
+`unclear`, as Adobe did on the first real call — its homepage, Firefly and
+catalogue pages name students, teachers and businesses and no buyer
+organisation, so the answer was `unclear`/`unclear` at low confidence and NOT
+sled-eligible. That is the house rule working: an `unclear` we can show the
+pages for is a real answer, and it is one we do not have today.
+
 ### The read trial, measured 2026-08-24, n=25
 
 **This corrects what this file used to say.** The old text asserted that

@@ -66,7 +66,7 @@ STORE = DATA / "agent_proposals.json"
 # can show them; proposal_rulings refuses to land one until the applier
 # exists, by name, rather than raising inside a request handler.
 KINDS = ("bucket", "read", "card", "board", "rival", "profile", "news",
-         "claim", "family", "fact", "where")
+         "claim", "family", "fact", "where", "buyer")
 CONFIDENCE = ("high", "medium", "low", "unsure")
 
 
@@ -704,6 +704,23 @@ PROFILE_RULES = {
 }
 
 
+def _brief_pages(pages: list) -> list:
+    """The page shape every brief written from a company's own site uses.
+
+    LINES, NOT ONE STRING. See PROFILE_RULES["quote_source"]: a joined string
+    invites a quote that spans a line dechrome removed, which the door then
+    refuses although it is true - 9 of 12 rule-4 refusals were exactly that.
+    It lives in one function because the scope brief is checked by a door with
+    the same quote rule, and a shape written twice is two shapes that drift.
+    """
+    import fetch_profiles as fp
+    return [{"url": pg["url"], "sha": pg.get("sha"),
+             "lines": [ln for ln in
+                       pg["text"][:PROFILE_PAGE_CHARS].split("\n")
+                       if ln.strip()]}
+            for pg in fp.dechrome(pages)]
+
+
 def brief_profile(ids: list[str] | None = None, sector: str | None = None,
                   category: str | None = None, limit: int | None = None,
                   hiring_first: bool = True) -> list[dict]:
@@ -748,7 +765,6 @@ def brief_profile(ids: list[str] | None = None, sector: str | None = None,
         pages = [pg for pg in (rec.get("about") or []) if pg.get("text")][:PROFILE_PAGES]
         if not pages:
             continue
-        clean = fp.dechrome(pages)
         out.append({
             "kind": "profile", "key": f"profile:{c['id']}",
             "id": c["id"], "name": c["name"], "website": c.get("website"),
@@ -756,14 +772,83 @@ def brief_profile(ids: list[str] | None = None, sector: str | None = None,
             "description": (c.get("description") or "").strip(),
             "also_known_as": c.get("also_known_as") or [],
             "fetched_on": rec.get("fetched_on"),
-            # LINES, NOT ONE STRING. See PROFILE_RULES["quote_source"]: a
-            # joined string invites a quote that spans a line dechrome
-            # removed, which the door then refuses although it is true.
-            "pages": [{"url": pg["url"], "sha": pg.get("sha"),
-                       "lines": [ln for ln in
-                                 pg["text"][:PROFILE_PAGE_CHARS].split("\n")
-                                 if ln.strip()]} for pg in clean],
+            "pages": _brief_pages(pages),
             "rules": PROFILE_RULES,
+        })
+        if limit and len(out) >= limit:
+            break
+    return out
+
+
+def brief_buyer(ids: list[str] | None = None, sector: str | None = None,
+                category: str | None = None, limit: int | None = None,
+                hiring_first: bool = True, include_answered: bool = False) -> list[dict]:
+    """One brief per company whose buyer nobody has read off their own site.
+
+    OFFERED INDEPENDENTLY OF THE WRITE-UP, which is the whole reason this is
+    its own kind. 505 companies carry a landed write-up and no scope answer:
+    their pages were fetched, read, quoted and published from, and the second
+    question was never put. brief_profile can never offer them again because
+    their profile proposal is accepted. This offers exactly them, and the
+    1,173 nobody has written up either, off the same cached pages.
+
+    ALREADY ANSWERED IS NOT RE-ASKED. A company carrying `sells_to_gov` was
+    answered by the 2026-09-11 scope pass or by a person, and paying to
+    reproduce an answer we are holding is the thing --recheck exists to avoid.
+    --include-answered is there for the day a rule changes and the old answers
+    need re-reading; it is never the default.
+    """
+    import fetch_profiles as fp
+    companies = json.loads((DATA / "companies.json").read_text())
+    if isinstance(companies, dict):
+        companies = list(companies.values())
+    try:
+        board = json.loads((DATA / "board.json").read_text())
+        open_by = {o["id"]: o.get("open_roles", 0) for o in board.get("organizations", [])}
+    except Exception:
+        open_by = {}
+    idx = fp.index()
+    done = load()
+    want = set(ids or [])
+    rows = []
+    for c in companies:
+        cid = c.get("id")
+        if not cid or (want and cid not in want):
+            continue
+        if sector and c.get("sector") != sector:
+            continue
+        if category and c.get("category") != category:
+            continue
+        e = idx.get(cid)
+        if not e or e.get("unread"):
+            continue                      # nothing to read from, honestly
+        if f"buyer:{cid}" in done:
+            continue                      # already proposed; a re-run does not re-ask
+        if c.get("sells_to_gov") and not include_answered:
+            continue                      # somebody already answered this one
+        rows.append(c)
+    if hiring_first:
+        # HIRING FIRST IS NOT DECORATION HERE. A scope answer on a company
+        # with no postings changes a recorded fact; on one with postings it is
+        # what decides whether 548 live rows belong on this board.
+        rows.sort(key=lambda c: (-(open_by.get(c["id"], 0)), c["name"].lower()))
+    out = []
+    for c in rows:
+        rec = fp.load(c["id"])
+        if not rec:
+            continue
+        pages = [pg for pg in (rec.get("about") or []) if pg.get("text")][:PROFILE_PAGES]
+        if not pages:
+            continue
+        out.append({
+            "kind": "buyer", "key": f"buyer:{c['id']}",
+            "id": c["id"], "name": c["name"], "website": c.get("website"),
+            "sector": c.get("sector"), "category": c.get("category"),
+            "description": (c.get("description") or "").strip(),
+            "also_known_as": c.get("also_known_as") or [],
+            "fetched_on": rec.get("fetched_on"),
+            "pages": _brief_pages(pages),
+            "rules": BUYER_RULES,
         })
         if limit and len(out) >= limit:
             break
@@ -1393,6 +1478,201 @@ def check_profile(p: dict, texts: dict[str, str]) -> str | None:
     return None
 
 
+# ================================================================ scope ====
+# TWO QUESTIONS, NOT ONE, AND THE SECOND ONE WAS NEVER ASKED. Every write-up
+# answers "what does this company sell". 1,678 of 2,044 companies have no
+# answer at all to "and who buys it" - 172 of them are on the board right now
+# with 548 live postings. The pages that would settle it are already on disk:
+# every one of those 1,678 has a cached site record, fetched for the write-up
+# and read for one question when it could have been read for two.
+#
+# WHY A KIND OF ITS OWN AND NOT A FIELD ON A PROFILE. Because the two answers
+# fail separately. A write-up refused at rule 5 for naming a customer the
+# pages do not carry can still have read the buyer correctly off the same
+# page, and a sound write-up can be paired with a scope answer that rests on
+# nothing. One status for both would throw away whichever half was good. And
+# 505 companies already HAVE a landed write-up and no scope answer - under a
+# field-on-a-profile design they are unreachable for ever, because their
+# profile proposal is already accepted and brief_profile will never offer
+# them again.
+#
+# WHAT THE MODEL IS NOT ASKED. It is never asked for `sled_only`. That flag
+# makes build_board drop every posting whose title does not name the public
+# sector, so a wrong one deletes real jobs off a public board and leaves no
+# mark. What the model answers is two verdicts with a quote behind each;
+# buyer_sled_eligible() derives eligibility from them using the rule the
+# 2026-09-11 scope pass measured, and a person still has to ask for it.
+
+BUYER_RULES = {
+    "question": "who buys this company's product, and is a government one of "
+                "them? Answer from these pages only.",
+    "sells_to_gov": "'yes' ONLY where a page names a government buyer: a city, "
+                    "county, state, school district, transit agency, utility "
+                    "district, police or fire department, or the public sector "
+                    "named as a market they sell to. 'no' where the pages name "
+                    "who buys and none of them is a government. 'unclear' where "
+                    "the pages do not say who buys.",
+    "buyer": "one sentence under 300 characters naming who these pages say "
+             "buys, in the pages' own terms. Never a buyer the pages do not name.",
+    "buyer_evidence": "a 'yes' needs buyer_url and buyer_quote: an unbroken "
+                      "verbatim run of at least 20 characters from that page "
+                      "naming the government buyer. A quote is the only thing "
+                      "that can carry a 'yes'.",
+    "names_other_buyers": "'yes' where a page names a buyer who is NOT a "
+                          "government - and then other_url and other_quote must "
+                          "prove it the same way. 'no' means exactly this: I "
+                          "read these pages and not one of them names a "
+                          "non-government buyer. 'unclear' where you cannot tell.",
+    # THE RULE THE WHOLE ANSWER TURNS ON, and it is the house rule wearing a
+    # different hat. A page that does not mention hospitals is not evidence
+    # that they do not sell to hospitals.
+    "absence": "these pages are not the whole company. Not finding a buyer is "
+               "a fact about the pages, and 'unclear' is the answer for it. "
+               "Never write 'no' to mean 'I did not see one'.",
+    # STATED BECAUSE THE DOOR ENFORCES IT. Rule 7 refuses an 'unclear' verdict
+    # at high confidence and nothing here said so until a drift guard was
+    # written - which is the exact defect the profile rules already paid for:
+    # an answer can obey every stated rule and still be refused, and the
+    # refusal then reads as the model's fault.
+    "confidence": "about the verdict, not about the reading. An 'unclear' "
+                  "verdict cannot be high confidence - the verdict there is "
+                  "that there is no verdict. Answer medium or low.",
+    "quote_source": "a quote must be an unbroken run from ONE entry of a "
+                    "page's `lines`. Never join two lines: lines that look "
+                    "adjacent here may not be adjacent on the page.",
+    "no_flags": "do not propose sled_only, or any flag, or any consequence. "
+                "You answer two questions and quote the pages for each. What "
+                "follows from the answers is not yours to decide.",
+}
+
+_BUYER_VERDICT = ("yes", "unclear", "no")
+BUYER_MAX = 300
+
+
+def buyer_sled_eligible(p: dict) -> bool:
+    """Does this scope answer clear the bar sled_only was measured at?
+
+    THE RULE IS apply_scope_pass's, NOT A NEW ONE. Ten agents read 76 sites on
+    2026-09-11 and sled_only landed only where the verdict was yes, the site
+    named no non-government buyer at all, and the agent said high. Anything
+    softer was left for a person with the evidence in front of them. Restated
+    here in one place rather than re-derived, because a rule written twice is
+    two rules that drift - and this one silently removes postings.
+
+    ELIGIBLE IS NOT LANDED. promote_profiles.land_buyer writes the flag only
+    when a person passes --with-sled, having read the gate.
+    """
+    return (isinstance(p, dict)
+            and p.get("sells_to_gov") == "yes"
+            and p.get("names_other_buyers") == "no"
+            and p.get("confidence") == "high")
+
+
+def check_buyer(p: dict, texts: dict[str, str]) -> str | None:
+    """Refuse a scope answer unless the company's own pages carry the verdict.
+
+    The profile door's shape, for a claim that is one line instead of three
+    paragraphs: a positive verdict has to quote the page that states it, and
+    the quote has to be on that page. What is different is the treatment of
+    absence, because the two verdicts are not symmetrical:
+
+      'yes'     a claim about what a page says   -> a verbatim quote, required
+      'no'      a claim about what these pages
+                do NOT say                       -> a quote is welcome and
+                                                    never required; it cannot
+                                                    be proved by one
+      'unclear' the honest answer when the pages
+                do not say                       -> no quote at all
+
+    A page scan never proves absence, so nothing here lets a 'no' assert one:
+    it is recorded, it is shown in the gate, and it removes nothing. The one
+    place an absence is load-bearing - names_other_buyers 'no', which is what
+    sled_only rests on - is a claim about THESE PAGES, which the model read in
+    full, and it still takes a person to act on.
+    """
+    if not isinstance(p, dict):
+        return "1. a scope proposal must be an object."
+    texts = {u: t for u, t in (texts or {}).items()
+             if isinstance(u, str) and isinstance(t, str)}
+    pages = {u: _pf_norm(t) for u, t in texts.items()}
+
+    pid = p.get("id")
+    if not isinstance(pid, str) or not pid.strip():
+        return "1. a scope proposal must carry the id of the company it is about."
+
+    conf = p.get("confidence")
+    if conf not in _PF_CONFIDENCE:
+        return f"2. confidence must be one of {_PF_CONFIDENCE}, got {conf!r}."
+
+    verdict = p.get("sells_to_gov")
+    if verdict not in _BUYER_VERDICT:
+        return (f"3. sells_to_gov must be one of {_BUYER_VERDICT}, "
+                f"got {verdict!r}.")
+    other = p.get("names_other_buyers")
+    if other not in _BUYER_VERDICT:
+        return (f"3. names_other_buyers must be one of {_BUYER_VERDICT}, "
+                f"got {other!r}.")
+
+    buyer = p.get("buyer")
+    if not isinstance(buyer, str) or len(buyer.strip()) < 10:
+        return ("4. buyer must be one sentence saying who these pages say "
+                "buys; if they do not say, that sentence says so.")
+    if len(buyer.strip()) > BUYER_MAX:
+        return (f"4. buyer is one sentence, at most {BUYER_MAX} characters, "
+                f"got {len(buyer.strip())}.")
+
+    # 5/6. A QUOTE OFFERED IS A QUOTE CHECKED, whatever the verdict. Requiring
+    #      one only for 'yes' would leave a 'no' free to carry an invented
+    #      sentence that nobody ever verified and a person later reads as
+    #      evidence.
+    def quoted(url_key: str, quote_key: str, rule: str,
+               required: bool, what: str) -> str | None:
+        q, u = p.get(quote_key), p.get(url_key)
+        has = isinstance(q, str) and q.strip()
+        if not has:
+            if required:
+                return (f"{rule}. {what} needs {quote_key}: a verbatim run of "
+                        f"at least 20 characters from one of their pages.")
+            return None
+        if len(q.strip()) < 20:
+            return (f"{rule}. {quote_key} must be at least 20 characters, "
+                    f"got {len(q.strip())}: {q.strip()[:40]!r}.")
+        page = _pf_page(u, texts)
+        if page is None:
+            return (f"{rule}. {url_key} {u!r} is not one of this company's pages.")
+        if _pf_norm(q) not in pages[page]:
+            return f"{rule}. {quote_key} {q.strip()[:40]!r} is not on {page}."
+        return None
+
+    err = quoted("buyer_url", "buyer_quote", "5", verdict == "yes",
+                 "a 'yes' on sells_to_gov")
+    if err:
+        return err
+    err = quoted("other_url", "other_quote", "6", other == "yes",
+                 "a 'yes' on names_other_buyers")
+    if err:
+        return err
+
+    # 7. AN ANSWER CANNOT BE BOTH SURE AND UNSURE. "high confidence that the
+    #    pages do not say" is the tell of a guess dressed up: the confidence
+    #    field is about the verdict, and the verdict here is that there is no
+    #    verdict.
+    if verdict == "unclear" and conf == "high":
+        return ("7. an 'unclear' verdict cannot be high confidence; "
+                "answer medium or low, or say what the pages do state.")
+
+    # 8. THE MODEL DOES NOT PROPOSE CONSEQUENCES. sled_only is derived by
+    #    buyer_sled_eligible from the two verdicts above and landed only by a
+    #    person. A value arriving here would be dead on the floor - and a dead
+    #    field shaped like a decision is what the next reader wires up.
+    for flag in ("sled_only", "sled_only_why", "drop_postings"):
+        if p.get(flag) is not None:
+            return (f"8. a scope proposal does not carry {flag!r}. Answer the "
+                    f"two questions and quote the pages; what follows from "
+                    f"the answers is not yours to decide.")
+    return None
+
+
 def check_read(p: dict) -> str | None:
     """Refuse a read that looks like it scraped the navigation."""
     rows = p.get("postings")
@@ -2005,6 +2285,12 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
                # else's company, so they are held to the same evidence.
                else check_fact(p, _profile_texts(p)) if kind == "fact"
                else check_where(p) if kind == "where"
+               # THE SAME PAGES AGAIN, AND THE SAME REASON. A buyer sentence
+               # is a claim about somebody else's company read off their own
+               # site, so it is checked against the FULL stored text, not the
+               # trimmed brief - a quote from a region dechrome cut is still
+               # true and must still verify.
+               else check_buyer(p, _profile_texts(p)) if kind == "buyer"
                else None)
         if bad:
             refused.append({"key": key, "why": bad})
@@ -2079,6 +2365,23 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
             # a where proposal: the place they post that we are not counting
             "where": p.get("where"),
             "board_owner": p.get("board_owner"),
+            # a scope proposal: two verdicts, each with the page and the
+            # sentence on it that carries the verdict. `buyer` is prose a
+            # person reads; the two verdicts are what anything acts on.
+            "buyer": (p.get("buyer") or "").strip() or None,
+            "sells_to_gov": p.get("sells_to_gov"),
+            "names_other_buyers": p.get("names_other_buyers"),
+            "buyer_quote": p.get("buyer_quote"),
+            "buyer_url": p.get("buyer_url"),
+            "other_quote": p.get("other_quote"),
+            "other_url": p.get("other_url"),
+            # DERIVED HERE, ASSERTED NOWHERE. The model is refused if it sends
+            # a flag (rule 8); this is the repo computing what the two verdicts
+            # mean under the rule the scope pass measured. Stored so the gate
+            # can show it and land_buyer does not re-derive it out of sight -
+            # and it is still only eligibility, not the flag.
+            "sled_eligible": (buyer_sled_eligible(p) if kind == "buyer"
+                              else None),
             "by": model or "agent",
             "at": now,
             "status": "pending",
@@ -2147,6 +2450,8 @@ def main() -> int:
             briefs = brief_card(a.limit)
         elif a.kind == "fact":
             briefs = brief_fact(a.limit)
+        elif a.kind == "buyer":
+            briefs = brief_buyer(sector=a.sector, category=a.category, limit=a.limit)
         else:
             print(f"no brief builder for {a.kind!r} yet", file=sys.stderr)
             return 2

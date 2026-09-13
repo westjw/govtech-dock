@@ -4686,6 +4686,629 @@ def check_every_workflow_command_would_parse() -> int:
     return errors
 
 
+# Who buys, read off the company's own pages. Each case is a proposal and the
+# rule number that must refuse it, or None to accept. THE TWO VERDICTS ARE
+# NOT SYMMETRICAL and most of these cases exist to hold that line: a 'yes' is
+# a claim about what a page says and needs a quote; a 'no' is a claim about
+# what these pages do NOT say and can never be proved by one.
+BUYER_CASES = [
+    ("a yes with a real quote on a real page",
+     {"sells_to_gov": "yes", "names_other_buyers": "unclear",
+      "buyer_quote": "serving cities, counties and school districts"}, None),
+    ("an invented quote",
+     {"sells_to_gov": "yes", "names_other_buyers": "unclear",
+      "buyer_quote": "trusted by the Government of Mars since 1987"}, "5."),
+    ("a url we never fetched",
+     {"sells_to_gov": "yes", "names_other_buyers": "unclear",
+      "buyer_quote": "serving cities, counties and school districts",
+      "buyer_url": "https://acme.example/invented"}, "5."),
+    ("a yes with no quote at all",
+     {"sells_to_gov": "yes", "names_other_buyers": "unclear"}, "5."),
+    ("a quote too short to be evidence",
+     {"sells_to_gov": "yes", "names_other_buyers": "unclear",
+      "buyer_quote": "cities"}, "5."),
+    # A 'NO' CARRYING AN INVENTED SENTENCE. Nothing requires a quote here, and
+    # that is exactly why one offered has to be checked: a person reading the
+    # gate sees a sentence in quotation marks and takes it for evidence.
+    ("a no carrying an invented quote",
+     {"sells_to_gov": "no", "confidence": "medium",
+      "names_other_buyers": "yes",
+      "other_quote": "we sell only to private hotel chains worldwide",
+      "buyer_quote": "we have never sold to any government anywhere"}, "5."),
+    ("a no carrying no quote at all, which is the honest shape",
+     {"sells_to_gov": "no", "confidence": "medium",
+      "names_other_buyers": "yes",
+      "other_quote": "our retail and hospitality customers"}, None),
+    ("names_other_buyers yes with nothing behind it",
+     {"sells_to_gov": "yes", "names_other_buyers": "yes",
+      "buyer_quote": "serving cities, counties and school districts"}, "6."),
+    ("unclear at high confidence, which is sure about being unsure",
+     {"sells_to_gov": "unclear", "names_other_buyers": "unclear"}, "7."),
+    ("unclear at medium, which is a complete answer",
+     {"sells_to_gov": "unclear", "names_other_buyers": "unclear",
+      "confidence": "medium"}, None),
+    ("a verdict word nobody defined",
+     {"sells_to_gov": "probably", "names_other_buyers": "unclear"}, "3."),
+    ("a buyer essay instead of a sentence",
+     {"sells_to_gov": "unclear", "names_other_buyers": "unclear",
+      "confidence": "low", "buyer": "x" * 400}, "4."),
+    ("no buyer sentence at all",
+     {"sells_to_gov": "unclear", "names_other_buyers": "unclear",
+      "confidence": "low", "buyer": ""}, "4."),
+    # THE MODEL PROPOSING A CONSEQUENCE. sled_only subtracts postings from a
+    # public board; the answer to who buys is not the decision to drop jobs.
+    ("the model proposing sled_only itself",
+     {"sells_to_gov": "yes", "names_other_buyers": "no", "sled_only": True,
+      "buyer_quote": "serving cities, counties and school districts"}, "8."),
+    ("a confidence word nobody defined",
+     {"sells_to_gov": "unclear", "names_other_buyers": "unclear",
+      "confidence": "pretty sure"}, "2."),
+    ("no id at all",
+     {"sells_to_gov": "unclear", "names_other_buyers": "unclear",
+      "confidence": "low", "id": ""}, "1."),
+]
+
+BUYER_PAGE = ("Acme Dispatch\n"
+              "We build computer-aided dispatch software.\n"
+              "serving cities, counties and school districts across the US\n"
+              "our retail and hospitality customers use the same platform\n")
+
+
+def check_both_asks_reach_the_door_with_an_answer_in_them() -> int:
+    """A model reply must survive the splitter, in BOTH shapes.
+
+    FOUND ON THE FIRST LIVE CALL AND NOWHERE ELSE, which is the point of this
+    guard. TASK asks for the buyer answer NESTED under `buyer` beside the
+    write-up; BUYER_TASK asks for it FLAT, because it is the whole of what was
+    asked. split_answer looked for the nested key in both modes, so every
+    --buyer-only reply came out EMPTY and was refused at rule 2 for carrying no
+    confidence. The model had answered correctly. The door was right. The
+    splitter in between dropped the answer, and every symptom pointed at the
+    model.
+
+    THAT IS THE WORST SHAPE A BUG CAN TAKE HERE: a systematic refusal that
+    reads as the model's fault, on a path whose circuit breaker would have
+    stopped the run after eight companies and left eight rows burned - because
+    brief_buyer never offers a company already in the store, refused included.
+
+    So both shapes are driven through the real splitter and the real door, and
+    what is asserted is that the VERDICT arrives - not merely that something
+    did.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents, write_profiles as wp
+    texts = {"https://acme.example": BUYER_PAGE}
+    answer = {"confidence": "high", "why": "their pages name the buyer",
+              "sells_to_gov": "yes", "names_other_buyers": "yes",
+              "buyer": "Cities, counties and school districts buy it.",
+              "buyer_url": "https://acme.example",
+              "buyer_quote": "serving cities, counties and school districts",
+              "other_url": "https://acme.example",
+              "other_quote": "our retail and hospitality customers"}
+    errors = 0
+    shapes = [
+        # what BUYER_TASK asks for: the answer IS the reply
+        ("--buyer-only", True, dict(answer, id="acme")),
+        # what TASK asks for: the answer nested beside a write-up
+        ("the combined ask", False, {"id": "acme", "confidence": "high",
+                                     "paragraphs": [], "buyer": dict(answer)}),
+    ]
+    for label, buyer_only, got in shapes:
+        _, sc = wp.split_answer(got, "acme", buyer_only)
+        for field in ("sells_to_gov", "names_other_buyers", "confidence",
+                      "buyer_quote"):
+            if sc.get(field) != answer[field]:
+                errors += fail(f"{label}: split_answer dropped {field!r} from "
+                               f"a reply that carried it ({sc.get(field)!r}). "
+                               f"The door then refuses an answer the model got "
+                               f"right, and every symptom points at the model")
+        if sc.get("id") != "acme":
+            errors += fail(f"{label}: the split answer carries no company id")
+        why = agents.check_buyer(sc, texts)
+        if why:
+            errors += fail(f"{label}: a sound reply was refused after the "
+                           f"split: {why}")
+    # AND THE ONE REFUSAL THE DOOR CANNOT PHRASE: a combined reply that simply
+    # did not answer the second question. It must say so in those words, not
+    # report a missing confidence field.
+    _, sc = wp.split_answer({"id": "acme", "confidence": "high"}, "acme", False)
+    why = wp._buyer_verdict(sc, {"id": "acme", "confidence": "high"}, False)
+    if not why or "not answered" not in why:
+        errors += fail(f"a combined reply carrying no buyer object was not "
+                       f"refused as an unanswered question: {why!r}. A person "
+                       f"reading that in the gate cannot act on it")
+    return errors
+
+
+def check_the_buyer_door_holds() -> int:
+    """The scope door, case by case, and the shape of the answer it protects.
+
+    WHY THIS DOOR EXISTS AT ALL. 1,678 of 2,044 companies carry no answer to
+    "who buys this", 172 of them with live postings on the board. The pages
+    that settle it are already on disk. Asking is cheap; asking badly is not,
+    because a buyer sentence is a claim about somebody else's company and one
+    of the two verdicts feeds a flag that deletes postings.
+
+    THE CASES ARE THE RULE. A future loosening that lets a 'yes' through
+    without a quote, or lets the model hand us a flag, fails here by name.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents
+    texts = {"https://acme.example": BUYER_PAGE}
+    errors = 0
+    for label, patch, want in BUYER_CASES:
+        prop = {"id": "acme", "confidence": "high",
+                "buyer": "Their pages name cities and counties as who buys.",
+                "buyer_url": "https://acme.example",
+                "other_url": "https://acme.example"}
+        prop.update(patch)
+        got = agents.check_buyer(prop, texts)
+        if want is None and got is not None:
+            errors += fail(f"the buyer door refused a sound answer - "
+                           f"{label}: {got}")
+        elif want is not None and (got is None or not got.startswith(want)):
+            errors += fail(f"the buyer door should have refused {label} under "
+                           f"rule {want} and said {got!r}")
+
+    # THE DERIVED FLAG IS THE 2026-09-11 PASS'S RULE, NOT A NEW ONE, and it is
+    # the only thing here that can subtract from a public board. All three
+    # conditions, each broken in turn.
+    sound = {"id": "acme", "confidence": "high", "sells_to_gov": "yes",
+             "names_other_buyers": "no", "buyer": "cities and counties buy it."}
+    if not agents.buyer_sled_eligible(sound):
+        errors += fail("an answer meeting all three of the measured "
+                       "conditions is not read as sled-eligible")
+    for field, worse in (("confidence", "medium"), ("sells_to_gov", "unclear"),
+                         ("names_other_buyers", "yes")):
+        if agents.buyer_sled_eligible(dict(sound, **{field: worse})):
+            errors += fail(f"sled_only eligibility survives {field}={worse!r}; "
+                           f"the scope pass measured all three and left "
+                           f"anything softer to a person")
+    return errors
+
+
+def check_a_buyer_answer_survives_the_whole_spine() -> int:
+    """Ask, refuse, store, gate, land - driven end to end in a sandbox.
+
+    A GUARD THAT DRIVES THE HELPER PROVES NOTHING ABOUT THE CALLER, and this
+    spine has four places a verdict can be silently dropped between the door
+    and the map. The one that bit hardest in review: agents.ingest stores a
+    FIXED set of keys, so a verdict the door accepted can pass through intake
+    and arrive at land_buyer as a row that "carries no verdict" - held back
+    for ever, no error, no count moving. So the real ingest runs here, and
+    what comes out of the store is what gets landed.
+
+    FOUR THINGS ARE ASSERTED ON THE FILE ITSELF, not on a return value:
+
+      1. a verdict the door accepted survives ingest and reaches companies.json
+      2. a verdict the door REFUSED is kept, and lands nothing
+      3. sled_only is NOT set without with_sled, however eligible the row
+      4. an answer already on file is never overwritten, and is NAMED
+    """
+    import json as _json
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin, agents, promote_profiles
+
+    def company(cid, **kw):
+        return dict({"id": cid, "name": cid.title(), "sector": "Public Safety",
+                     "category": "Police", "description": "CAD for police",
+                     "website": f"https://{cid}.example",
+                     "ats": {"type": "unknown", "ref": None},
+                     "hiring": "Unknown", "govtech": True,
+                     "vendor_type": "product"}, **kw)
+
+    companies = [company("acme"), company("beta"),
+                 company("gamma", sells_to_gov="no",
+                         buyer_checked_on="2026-09-11")]
+    texts = {"https://acme.example": BUYER_PAGE}
+    errors = 0
+
+    def proposal(cid, **kw):
+        return dict({"kind": "buyer", "key": f"buyer:{cid}", "id": cid,
+                     "name": cid.title(), "sector": "Public Safety",
+                     "category": "Police", "confidence": "high",
+                     "why": "their pages name the buyer outright",
+                     "sells_to_gov": "yes", "names_other_buyers": "no",
+                     "buyer": "Cities, counties and school districts buy it.",
+                     "buyer_url": "https://acme.example",
+                     "buyer_quote": "serving cities, counties and school districts",
+                     }, **kw)
+
+    files = {"companies.json": companies, "agent_proposals.json": {},
+             "manual.json": {"checks": {}, "postings": []},
+             "admin_dismissed.json": {}, "placement_rulings.json": {}}
+    with _sandbox_admin(files) as tmp:
+        keep_store, keep_read = agents.STORE, promote_profiles.BUYER_READ
+        keep_texts = agents._profile_texts
+        agents.STORE = tmp / "agent_proposals.json"
+        promote_profiles.BUYER_READ = tmp / ".buyer_read"
+        # THE PAGES ARE THE FIXTURE'S, not this checkout's. _profile_texts
+        # reads data/site_pages off disk, and a guard that silently found no
+        # pages would refuse every case for the wrong reason and still look
+        # like it was testing the door.
+        agents._profile_texts = lambda p: texts
+        try:
+            rep = agents.ingest("buyer", [
+                proposal("acme"),
+                # REFUSED AT THE DOOR: a quote that is not on the page.
+                proposal("beta", buyer_quote="trusted by every state in America"),
+                # ALREADY ANSWERED on the company, by an earlier pass.
+                proposal("gamma"),
+            ], model="selftest")
+            if rep["kept"] != 2 or len(rep["refused"]) != 1:
+                errors += fail(f"ingest took {rep['kept']} buyer proposal(s) "
+                               f"and refused {len(rep['refused'])}; the "
+                               f"fixture is two sound and one invented quote")
+            store = agents.load()
+            row = store.get("buyer:acme") or {}
+            # 1. THE VERDICT SURVIVED INTAKE. ingest stores a fixed key set;
+            #    a verdict missing from it arrives at land_buyer as "carries
+            #    no verdict" and is held back silently, for ever.
+            for field, want in (("sells_to_gov", "yes"),
+                                ("names_other_buyers", "no"),
+                                ("buyer_quote",
+                                 "serving cities, counties and school districts")):
+                if row.get(field) != want:
+                    errors += fail(f"ingest dropped {field!r} from a scope "
+                                   f"proposal the door accepted: {row.get(field)!r}. "
+                                   f"The verdict never reaches the map and "
+                                   f"nothing reports a problem")
+            if not row.get("sled_eligible"):
+                errors += fail("a yes / no / high answer was not stored as "
+                               "sled-eligible, so the gate can never offer it")
+            if (store.get("buyer:beta") or {}).get("status") != "refused":
+                errors += fail("a buyer answer the door refused was not kept "
+                               "as refused; the gate review reads refusals, "
+                               "and a door nobody can see being wrong is a "
+                               "door nobody fixes")
+
+            # 2. LANDING REFUSES AN UNGATED CATEGORY.
+            seq = admin.read_companies()
+            keys = ["buyer:acme", "buyer:beta", "buyer:gamma"]
+            rep2 = promote_profiles.land_buyer(store, seq, keys, "selftest",
+                                               "fixture", with_sled=False)
+            if rep2["wrote"] != 1:
+                errors += fail(f"land_buyer wrote {rep2['wrote']} row(s); only "
+                               f"acme is pending with a verdict and unanswered")
+            if rep2["sled"]:
+                errors += fail("land_buyer set sled_only without with_sled. "
+                               "That flag drops every posting whose title does "
+                               "not name the public sector, off a public board")
+            named = " ".join(f"{n} {r}" for n, r in rep2["held"])
+            if "Gamma" not in named or "already answered" not in named:
+                errors += fail(f"a company already carrying an answer was not "
+                               f"held back and NAMED: {rep2['held']}")
+
+            landed = {c["id"]: c for c in admin.read_companies()}
+            if landed["acme"].get("sells_to_gov") != "yes":
+                errors += fail("the verdict never reached companies.json")
+            if landed["acme"].get("buyer_source") != "https://acme.example":
+                errors += fail("the page the verdict was read off did not land "
+                               "beside it; a verdict nobody can re-check is "
+                               "not evidence")
+            if landed["acme"].get("sled_only"):
+                errors += fail("sled_only reached a company without with_sled")
+            if landed["gamma"].get("sells_to_gov") != "no":
+                errors += fail("land_buyer overwrote an answer already on "
+                               "file. The newer answer is not automatically "
+                               "the better one and this is not the place to "
+                               "decide")
+            if landed["beta"].get("sells_to_gov"):
+                errors += fail("a door-refused answer landed on the map")
+
+            # 3. WITH the word, the flag lands - and only on the eligible row.
+            store2 = agents.load()
+            store2["buyer:acme"]["status"] = "pending"
+            landed["acme"].pop("sells_to_gov", None)
+            seq2 = admin.read_companies()
+            for c in seq2:
+                if c["id"] == "acme":
+                    c.pop("sells_to_gov", None)
+            rep3 = promote_profiles.land_buyer(store2, seq2, ["buyer:acme"],
+                                               "selftest", "fixture",
+                                               with_sled=True)
+            after = {c["id"]: c for c in admin.read_companies()}
+            if rep3["sled"] != 1 or not after["acme"].get("sled_only"):
+                errors += fail("with_sled did not set the flag on an eligible "
+                               "row, so the opt-in path is unreachable")
+            # THE SENTENCE, NOT A SENTENCE. A mutation that emptied the
+            # buyer half of this string left a truthy stub - "their own pages
+            # name no " - and a presence check walked straight past it. What
+            # makes the flag reviewable is the BUYER EVIDENCE travelling with
+            # it, so that is what is asserted.
+            said = str(after["acme"].get("sled_only_why") or "")
+            if "Cities, counties and school districts" not in said:
+                errors += fail(f"sled_only landed without the buyer sentence "
+                               f"behind it: {said!r}. A flag that removes "
+                               f"postings and cannot say what it rests on is "
+                               f"not reviewable")
+        finally:
+            agents.STORE, promote_profiles.BUYER_READ = keep_store, keep_read
+            agents._profile_texts = keep_texts
+    return errors
+
+
+def check_the_buyer_rules_say_what_the_buyer_door_enforces() -> int:
+    """Anything check_buyer refuses for, BUYER_RULES has to state.
+
+    THE PROFILE DOOR ALREADY PAID FOR THIS LESSON: check_profile enforced a
+    minimum sentence count and a minimum quote length the rules never
+    mentioned, so a write-up could obey every stated rule and still be
+    refused, and the refusal read as the model's fault. Found the same way
+    here - rule 7 refuses an 'unclear' verdict at high confidence and nothing
+    in BUYER_RULES said so until this guard was written.
+
+    The numbers are read off the door's own constants, never restated, so
+    raising BUYER_MAX and forgetting the rules text fails here by name.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import agents
+    errors = 0
+    R = agents.BUYER_RULES
+    text = " ".join(str(v) for v in R.values()).lower()
+
+    # 1. the pages travel as lines, the same shape the profile brief uses,
+    #    because the two doors share the quote rule and the helper behind it
+    briefs = agents.brief_buyer(limit=1)
+    if not briefs:
+        note("no company with unread scope and pages; the brief was not driven")
+    else:
+        pg = briefs[0]["pages"][0]
+        if "lines" not in pg or "text" in pg:
+            errors += fail("brief_buyer no longer sends pages as `lines`; a "
+                           "joined string invites a quote spanning a line "
+                           "dechrome removed, which the door then refuses "
+                           "although it is true")
+        elif any("\n" in ln for ln in pg["lines"]):
+            errors += fail("a line still contains a newline, so it is not one line")
+        if briefs[0].get("rules") is not R:
+            errors += fail("brief_buyer sends something other than BUYER_RULES; "
+                           "a second copy is a second set of rules that drifts")
+
+    # 1b. A QUOTE TAKEN OFF THE BRIEF MUST VERIFY AT THE DOOR. This is the
+    #     defect that cost the profile door nine refusals, and it is invisible
+    #     from both ends: the brief shows a page as `lines`, the door checks
+    #     the FULL stored text, and if the two disagree the model quotes what
+    #     it was given and is refused for telling the truth. Measured over 150
+    #     companies when this landed: 15,480 of 15,480 quotable lines verified.
+    #     A sample here rather than all of them, so selftest stays fast.
+    checked = 0
+    for b in agents.brief_buyer(limit=8):
+        full = agents._profile_texts({"id": b["id"]})
+        for pg in b["pages"]:
+            body = full.get(pg["url"])
+            if body is None:
+                errors += fail(f"brief_buyer sent {b['id']} a page url the "
+                               f"door will not have: {pg['url']}. Every quote "
+                               f"from it is refused as not on their pages")
+                continue
+            norm = agents._pf_norm(body)
+            for ln in pg["lines"]:
+                if len(ln.strip()) < 20:
+                    continue
+                checked += 1
+                if agents._pf_norm(ln) not in norm:
+                    errors += fail(f"a line the brief offers {b['id']} is not "
+                                   f"found in the page the door checks: "
+                                   f"{ln[:60]!r}. The model quotes what it is "
+                                   f"given and the door refuses a true quote")
+                    break
+    if not checked:
+        note("no cached pages; the brief-to-door quote path was not driven")
+
+    # 2. every verdict word the door accepts is named to the model
+    for word in agents._BUYER_VERDICT:
+        if word not in text:
+            errors += fail(f"BUYER_RULES never names the verdict {word!r} that "
+                           f"check_buyer accepts, so the model cannot give it")
+
+    # 3. NO DRIFT on the numbers, read off the door
+    if str(agents.BUYER_MAX) not in text:
+        errors += fail(f"BUYER_RULES does not state the {agents.BUYER_MAX}-"
+                       f"character limit check_buyer refuses a buyer sentence "
+                       f"over. A rule enforced and never stated is a refusal "
+                       f"the model cannot act on")
+    if "20" not in text:
+        errors += fail("BUYER_RULES does not state the 20-character minimum "
+                       "check_buyer refuses a quote under")
+
+    # 4. THE THREE REFUSALS THAT ARE NOT ABOUT A NUMBER, each of which a model
+    #    obeying the stated rules could still walk into.
+    if "unbroken" not in text or "one" not in text:
+        errors += fail("BUYER_RULES does not say a quote is an unbroken run "
+                       "from ONE line - the rule nine profile refusals were "
+                       "never told")
+    if "sled_only" not in text:
+        errors += fail("BUYER_RULES does not tell the model not to send "
+                       "sled_only, and check_buyer rule 8 refuses it by name")
+    if "high" not in text or "unclear" not in text:
+        errors += fail("BUYER_RULES does not say an 'unclear' verdict cannot "
+                       "be high confidence, and check_buyer rule 7 refuses it")
+    # 5. AND THE RULE TEXT MUST NOT PROMISE WHAT THE DOOR WILL NOT HONOUR.
+    #    'no' is the one verdict a quote can never prove; if the rules ever
+    #    start demanding one for it, the model will invent one.
+    sound = {"id": "acme", "confidence": "medium", "sells_to_gov": "no",
+             "names_other_buyers": "unclear",
+             "buyer": "These pages name retail chains and nobody in government."}
+    if agents.check_buyer(sound, {"https://acme.example": "retail chains\n"}):
+        errors += fail("the door now refuses a 'no' that carries no quote. A "
+                       "page scan never proves absence, and demanding proof "
+                       "of one is how an invented sentence gets written")
+    return errors
+
+
+def check_landing_refuses_a_category_nobody_gated() -> int:
+    """--land and --land-buyer each refuse until THEIR OWN gate has printed.
+
+    "DOOR ONLY, ADD SOME GATE REVIEWS" is the owner's ruling on how write-ups
+    reach public pages, and this refusal is the whole of the "plus a look"
+    half. Nothing checked it until now: both branches read a marker file that
+    only the matching gate writes, and a refactor dropping either read would
+    land a category nobody opened - silently, successfully, with the right
+    count printed and no error anywhere.
+
+    TWO MARKERS, TWO GATES, AND THE CROSS-CHECK IS THE POINT. Reading a
+    category's WRITE-UPS tells a person nothing about whether its BUYER
+    answers are sound: different claims, different evidence, different way of
+    being wrong. So --gate must not unlock --land-buyer, and this drives that
+    directly rather than trusting two file names to stay distinct.
+
+    Driven through main() with a real argv, because a guard that calls
+    land_buyer() straight would skip the branch that does the refusing.
+    """
+    import contextlib
+    import io
+    import json as _json
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin, agents, promote_profiles
+
+    companies = [{"id": "acme", "name": "Acme", "sector": "Public Safety",
+                  "category": "Police", "description": "CAD for police",
+                  "website": "https://acme.example",
+                  "ats": {"type": "unknown", "ref": None},
+                  "hiring": "Unknown", "govtech": True,
+                  "vendor_type": "product"}]
+    store = {"buyer:acme": {
+        "kind": "buyer", "id": "acme", "name": "Acme", "status": "pending",
+        "confidence": "high", "why": "their pages name the buyer",
+        "sells_to_gov": "yes", "names_other_buyers": "unclear",
+        "buyer": "Cities and counties buy it.",
+        "buyer_url": "https://acme.example",
+        "buyer_quote": "serving cities, counties and school districts"}}
+    files = {"companies.json": companies, "agent_proposals.json": store,
+             "manual.json": {"checks": {}, "postings": []},
+             "admin_dismissed.json": {}, "placement_rulings.json": {}}
+    errors = 0
+    with _sandbox_admin(files) as tmp:
+        keeps = (agents.STORE, promote_profiles.READ,
+                 promote_profiles.BUYER_READ, sys.argv)
+        agents.STORE = tmp / "agent_proposals.json"
+        promote_profiles.READ = tmp / ".profiles_read"
+        promote_profiles.BUYER_READ = tmp / ".buyer_read"
+        try:
+            def run(*argv):
+                sys.argv = ["promote_profiles.py", *argv]
+                out = io.StringIO()
+                with contextlib.redirect_stdout(out):
+                    rc = promote_profiles.main()
+                return rc, out.getvalue()
+
+            rc, out = run("--land-buyer", "Police", "--by", "selftest")
+            if rc == 0 or "REFUSED" not in out:
+                errors += fail(f"--land-buyer landed a category no gate had "
+                               f"printed (rc={rc}). The gate review is the "
+                               f"part a person reads; landing without it is "
+                               f"the door alone")
+            if admin.read_companies()[0].get("sells_to_gov"):
+                errors += fail("a refused --land-buyer still wrote to "
+                               "companies.json")
+
+            # THE WRONG GATE MUST NOT UNLOCK IT. --gate reads write-ups.
+            run("--gate", "Police")
+            rc, out = run("--land-buyer", "Police", "--by", "selftest")
+            if rc == 0 or "REFUSED" not in out:
+                errors += fail("a WRITE-UP gate review unlocked the landing of "
+                               "buyer answers. Reading a category's prose says "
+                               "nothing about whether its buyer verdicts are "
+                               "sound - different claims, different evidence")
+
+            # and the right one does
+            rc, out = run("--gate-buyer", "Police")
+            if not promote_profiles.BUYER_READ.exists():
+                errors += fail("--gate-buyer printed and wrote no marker, so "
+                               "--land-buyer can never be unlocked at all")
+            rc, out = run("--land-buyer", "Police", "--by", "selftest")
+            if rc != 0 or "REFUSED" in out:
+                errors += fail(f"--land-buyer still refuses after its own gate "
+                               f"printed: {out[:200]}")
+            elif admin.read_companies()[0].get("sells_to_gov") != "yes":
+                errors += fail("--land-buyer reported success and wrote "
+                               "nothing to companies.json")
+        finally:
+            (agents.STORE, promote_profiles.READ,
+             promote_profiles.BUYER_READ, sys.argv) = keeps
+    return errors
+
+
+def check_the_buyer_queue_draws_the_verdict_and_the_sentence() -> int:
+    """A scope row must show the words on the page, not a JSON blob.
+
+    THE SAME RULE AS THE CLAIM QUEUE, for a harder case. RENDER.proposals
+    falls back to `JSON.stringify(p).slice(0, 400)` for a kind with no entry
+    in PROPOSAL_KINDS, and a person deciding whether a company belongs on a
+    board about government cannot rule on a truncated blob.
+
+    AND ONE THING THE CARD MUST SAY OUT LOUD: a row the door marked
+    sled-eligible looks like a decision sitting on the card, and accepting it
+    here deliberately does NOT set that flag - sled_only subtracts postings
+    from a public board and is set from the CLI behind a gate review that
+    prints how many. A person who learns that from an error afterwards has
+    already made a decision they did not know they were making.
+
+    Driven under node against the real object literal.
+    """
+    import json as _json
+    import subprocess
+
+    src = (ROOT / "admin.html").read_text()
+    i = src.find("const PROPOSAL_KINDS = {")
+    j = src.find("\n};\n", i)
+    if i < 0 or j < 0:
+        return fail("admin.html: PROPOSAL_KINDS is gone or no longer ends at "
+                    "column 0, so this guard cannot reach it")
+    literal = src[i:j + 3]
+    rows = {
+        "eligible": {"kind": "buyer", "id": "acme", "sells_to_gov": "yes",
+                     "names_other_buyers": "no", "sled_eligible": True,
+                     "buyer": "Cities, counties and school districts buy it.",
+                     "buyer_url": "https://acme.example/about",
+                     "buyer_quote": "serving cities, counties and school districts"},
+        "refused_shape": {"kind": "buyer", "id": "beta", "sells_to_gov": "yes",
+                          "names_other_buyers": "unclear",
+                          "buyer": "Their pages name a government buyer."},
+    }
+    script = """
+function el(tag, cls, text){
+  const n = {tag, cls, text: text == null ? "" : String(text), kids: []};
+  n.appendChild = (c) => { n.kids.push(c); return c; };
+  return n;
+}
+const document = {createTextNode: (t) => el("#text", null, t)};
+function flat(n){ return (n.text || "") + " " + (n.kids || []).map(flat).join(" "); }
+const line = (label, val) => { const d = el("div"); d.appendChild(el("b", null, label + " "));
+                               d.appendChild(document.createTextNode(val)); return d; };
+%s
+const rows = %s;
+const out = {};
+for (const [k, p] of Object.entries(rows)) out[k] = flat(PROPOSAL_KINDS.buyer.evidence(p, line));
+console.log(JSON.stringify(out));
+""" % (literal, _json.dumps(rows))
+    r = subprocess.run(["node", "-e", script], capture_output=True, text=True,
+                       timeout=30)
+    if r.returncode != 0:
+        return fail(f"the buyer renderer threw under node: "
+                    f"{r.stderr.strip()[:300]}")
+    got = _json.loads(r.stdout)
+    errors = 0
+    want = {
+        "eligible": ["yes", "Cities, counties and school districts buy it.",
+                     "serving cities, counties and school districts",
+                     "https://acme.example/about",
+                     # the card says what accepting does NOT do
+                     "does NOT set that flag"],
+        # a 'yes' whose quote did not survive intake cannot be recorded, and
+        # the card has to say so rather than offer a button that will refuse
+        "refused_shape": ["no quote survived intake"],
+    }
+    for kind, needles in want.items():
+        for n in needles:
+            if n not in got[kind]:
+                errors += fail(f"the buyer queue row ({kind}) does not show "
+                               f"{n!r} - a person cannot rule on what they "
+                               f"cannot read")
+    return errors
+
+
 def check_an_unattended_night_fails_in_the_ways_it_should() -> int:
     """The five failures that only appear when nobody is watching.
 
@@ -4763,22 +5386,51 @@ def check_an_unattended_night_fails_in_the_ways_it_should() -> int:
         errors += fail("write_profiles puts page text in `saw`; only the url "
                        "and its sha may travel into a committed file")
 
-    # 6. THE DOOR RUNS BEFORE THE STORE, and a repair is handed the door's own
-    #    words rather than a paraphrase of them.
+    # 6. BOTH DOORS RUN BEFORE THE STORE, and a repair is handed their own
+    #    words rather than a paraphrase.
     # THE FIRST CALL, whose result drives the refusal path - not the one
     # inside the repair branch, which a mutation left in place while deleting
-    # the one that matters.
-    if not re.search(r"why\s*=\s*agents\.check_profile\(", code):
-        errors += fail("write_profiles never runs the door before ingesting, "
-                       "so a refusal costs a queue row instead of a retry")
-    # and the repair must be handed the door's ACTUAL words. Asserting the
+    # the one that matters. `why` carries the write-up's refusal and `sc_why`
+    # the buyer answer's; they are separate variables because the two halves
+    # are refused separately and a single one would hide whichever failed.
+    if not re.search(r"\bwhy\s*=\s*\(?\s*agents\.check_profile\(", code):
+        errors += fail("write_profiles never runs the write-up door before "
+                       "ingesting, so a refusal costs a queue row instead of "
+                       "a retry")
+    # THE SCOPE DOOR IS REACHED THROUGH _buyer_verdict, which adds the one
+    # refusal check_buyer cannot phrase - a reply that carried no scope object
+    # at all. Both halves are asserted: the helper is called for sc_why, and
+    # the helper actually calls the door. A helper that returned None would
+    # otherwise pass this while checking nothing.
+    if not re.search(r"\bsc_why\s*=\s*_buyer_verdict\(", code):
+        errors += fail("write_profiles never runs the buyer door before "
+                       "ingesting, so a buyer answer resting on nothing is "
+                       "stored as pending and lands on the map")
+    helper = code.split("def _buyer_verdict", 1)[-1].split("\ndef ", 1)[0]
+    if "agents.check_buyer(" not in helper:
+        errors += fail("_buyer_verdict never calls agents.check_buyer, so the "
+                       "buyer door is named and not run")
+    # and the repair must be handed the doors' ACTUAL words. Asserting the
     # template contains {why} proves nothing about what is substituted.
     if "{why}" not in src:
-        errors += fail("the repair prompt has no place for the door's words")
-    if not re.search(r"REPAIR\.format\(why\s*=\s*why\)", code):
-        errors += fail("the repair is not handed the door's own refusal "
-                       "string; a paraphrase teaches the model a rule the "
-                       "door does not have")
+        errors += fail("the repair prompt has no place for the doors' words")
+    m = re.search(r"REPAIR\.format\(why\s*=\s*(\w+)\)", code)
+    if not m:
+        errors += fail("the repair is not handed a refusal string at all")
+    else:
+        # WHAT IS SUBSTITUTED MUST BE BUILT FROM THE REFUSALS AND NOTHING
+        # ELSE. Passing `why` directly is one correct answer; joining the two
+        # refusals is another. A THIRD string assembled from somewhere else is
+        # a paraphrase, which teaches the model a rule the door does not have.
+        name = m.group(1)
+        if name not in ("why", "sc_why"):
+            built = re.search(rf"\b{name}\s*=\s*(.+)", code)
+            joined = built.group(1) if built else ""
+            if "why" not in joined or "sc_why" not in joined:
+                errors += fail(f"the repair is handed {name!r}, which is not "
+                               f"built from both doors' own refusal strings; "
+                               f"a paraphrase teaches the model a rule the "
+                               f"doors do not have")
     return errors
 
 
@@ -20042,6 +20694,12 @@ def main() -> int:
     errors += check_an_override_cannot_beat_a_working_rule()
     errors += check_the_key_never_reaches_the_repository()
     errors += check_every_workflow_command_would_parse()
+    errors += check_both_asks_reach_the_door_with_an_answer_in_them()
+    errors += check_the_buyer_door_holds()
+    errors += check_the_buyer_rules_say_what_the_buyer_door_enforces()
+    errors += check_landing_refuses_a_category_nobody_gated()
+    errors += check_the_buyer_queue_draws_the_verdict_and_the_sentence()
+    errors += check_a_buyer_answer_survives_the_whole_spine()
     errors += check_an_unattended_night_fails_in_the_ways_it_should()
     errors += check_the_brief_never_makes_a_true_quote_look_false()
     errors += check_data_writers_are_serialised()

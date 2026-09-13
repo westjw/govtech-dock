@@ -3382,6 +3382,14 @@ def q_proposals(companies, board) -> list:
         # write-ups sat in this queue for a morning and buried the 27 reads.
         if r.get("kind") == "profile":
             continue
+        # AND BUYER ANSWERS, FOR THE SAME REASON AND AT TEN TIMES THE SCALE.
+        # 1,447 companies can be asked who buys off pages already on disk;
+        # they land a category at a time behind promote_profiles --gate-buyer,
+        # and listing them here would bury every read and board proposal under
+        # a queue nobody is meant to click through one by one. proposal_rulings
+        # still answers for the kind, so the web admin and gate.py can rule one.
+        if r.get("kind") == "buyer":
+            continue
         if is_dismissed("proposals", r.get("id", "")):
             continue
         c = by_id.get(r.get("id"))

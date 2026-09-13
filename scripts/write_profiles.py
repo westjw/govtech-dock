@@ -82,25 +82,61 @@ import llm                                                      # noqa: E402
 INGEST_BATCH = 40      # journal.KEEP is 500 and every write prunes to it
 BREAKER = 8            # consecutive refusals before a run stops asking
 
-TASK = """Write a description of this company using ONLY the pages given.
+TASK = """Answer TWO questions about this company using ONLY the pages given.
 
-Every sentence carries the url it came from and a verbatim quote from that
-page. Obey `rules` exactly - they are the door's rules, and a write-up that
-breaks one is refused rather than published.
+WHAT THEY SELL. Every sentence carries the url it came from and a verbatim
+quote from that page. Obey `rules` exactly - they are the door's rules, and a
+write-up that breaks one is refused rather than published.
 
 "unsure" is a real and useful answer. If these pages will not support two or
 three paragraphs about what the company sells and to whom, say so and write
 nothing: a thin page is a fact about the page, and an invented sentence about
 a real company is published on a public board under their name.
 
+WHO BUYS IT. A separate answer, judged separately, in `buyer`. Obey
+`buyer_rules`. It is not a summary of the write-up and it does not stand or
+fall with it: a write-up refused for one sentence can carry a sound buyer
+answer read off the same page, and a good write-up can be paired with a buyer
+answer that rests on nothing. Answer it as if nothing else were being asked.
+
 Return ONE JSON object:
 {"id": <the exact id>, "confidence": "high"|"medium"|"low"|"unsure",
  "why": <one sentence on what the pages did and did not support>,
  "evidence": <the url that carried the most>,
  "paragraphs": [[{"text": ..., "url": ..., "quote": ...}]],
- "quote": {"text": <optional pull quote>, "url": ...}}"""
+ "quote": {"text": <optional pull quote>, "url": ...},
+ "buyer": {"confidence": "high"|"medium"|"low"|"unsure",
+           "why": <one sentence on what the pages did and did not settle>,
+           "sells_to_gov": "yes"|"unclear"|"no",
+           "buyer": <one sentence naming who these pages say buys>,
+           "buyer_url": <the page that names a government buyer>,
+           "buyer_quote": <verbatim from that page; required for "yes">,
+           "names_other_buyers": "yes"|"unclear"|"no",
+           "other_url": <the page that names a non-government buyer>,
+           "other_quote": <verbatim from that page; required for "yes">}}"""
 
-REPAIR = """That write-up was refused by the door. Here is exactly why:
+BUYER_TASK = """Answer ONE question about this company using ONLY the pages
+given: who buys what they sell, and is a government one of them?
+
+Obey `rules` exactly - they are the door's rules, and an answer that breaks
+one is refused rather than recorded.
+
+These pages are not the whole company. "unclear" is a real and complete
+answer, and it is the right one whenever the pages do not say who buys.
+Never write "no" to mean "I did not see one".
+
+Return ONE JSON object:
+{"id": <the exact id>, "confidence": "high"|"medium"|"low"|"unsure",
+ "why": <one sentence on what the pages did and did not settle>,
+ "sells_to_gov": "yes"|"unclear"|"no",
+ "buyer": <one sentence naming who these pages say buys>,
+ "buyer_url": <the page that names a government buyer>,
+ "buyer_quote": <verbatim from that page; required for "yes">,
+ "names_other_buyers": "yes"|"unclear"|"no",
+ "other_url": <the page that names a non-government buyer>,
+ "other_quote": <verbatim from that page; required for "yes">}"""
+
+REPAIR = """That answer was refused at the door. Here is exactly why:
 
     {why}
 
@@ -108,6 +144,40 @@ Fix ONLY what the refusal names and return the same JSON shape. If the pages
 genuinely do not support the sentence it objects to, delete that sentence or
 answer unsure - do not argue with the door and do not invent a replacement.
 If it names something as "not on any of their pages", that thing has to go."""
+
+
+def split_answer(got: dict, bid: str, buyer_only: bool = False) -> tuple[dict, dict]:
+    """One reply, two proposals: the write-up and the buyer answer.
+
+    THEY TRAVEL TOGETHER AND THEY ARE JUDGED APART, which is the whole point
+    of asking both in one request. The pages are fetched once, read once and
+    paid for once; the two claims they carry then go through two doors, get
+    two statuses and land through two commands. A single status would throw
+    away whichever half was sound.
+
+    The buyer block carries its OWN confidence and why. Nothing is defaulted
+    in from the write-up's: "high confidence that the pages support three
+    paragraphs" is not "high confidence about who buys", and copying one into
+    the other would manufacture a certainty nobody stated.
+
+    TWO TASKS, TWO SHAPES, AND THIS FUNCTION HAS TO KNOW WHICH. TASK asks for
+    the buyer answer NESTED under `buyer` beside the write-up; BUYER_TASK asks
+    for it FLAT, because it is the whole of what was asked. The first version
+    looked for the nested key in both modes, so every --buyer-only reply was
+    silently emptied and refused at rule 2 for carrying no confidence - the
+    model had answered correctly and the splitter threw it away. Found on the
+    first live call, for three cents, which is what that call was for.
+    """
+    if buyer_only:
+        sc = dict(got)
+        sc["id"] = sc.get("id") or bid
+        return {}, sc
+    prof = {k: v for k, v in got.items() if k != "buyer"}
+    prof.setdefault("id", bid)
+    raw = got.get("buyer")
+    sc = dict(raw) if isinstance(raw, dict) else {}
+    sc["id"] = prof["id"]
+    return prof, sc
 
 
 def recheck_refused(limit: int, apply: bool) -> int:
@@ -171,9 +241,19 @@ def recheck_refused(limit: int, apply: bool) -> int:
 
 
 def tonight(category: str | None, ids: list[str], limit: int,
-            retry_refused: bool) -> list[dict]:
+            retry_refused: bool, buyer_only: bool = False) -> list[dict]:
     """The companies to ask about, and nothing already answered."""
     companies = admin.read_companies()
+    if buyer_only:
+        # A DIFFERENT QUESTION HAS A DIFFERENT ALREADY-ANSWERED. The 505
+        # companies this mode exists for all carry a landed write-up, so the
+        # profile filter below would skip every one of them. brief_buyer holds
+        # the rule that matters - no scope proposal on file, no sells_to_gov
+        # on the company - and it is the same rule the brief will apply in a
+        # moment, so asking it here is not a second opinion about who is due.
+        want = {r["id"] for r in agents.brief_buyer(ids=ids or None,
+                                                    category=category)}
+        return [c for c in companies if c.get("id") in want][:limit]
     if retry_refused:
         # THE NINE. Refusals stay in the store so the gate review can read
         # them, which also means brief_profile will never offer them again.
@@ -209,6 +289,20 @@ def tonight(category: str | None, ids: list[str], limit: int,
     return want[:limit]
 
 
+def _buyer_verdict(sc: dict, got: dict, buyer_only: bool) -> str | None:
+    """The scope door, plus the one refusal the door itself cannot phrase.
+
+    A reply with no `scope` key at all is not a malformed scope answer, it is
+    a question that went unanswered, and check_buyer would report it as a
+    missing confidence field - true, unhelpful, and the kind of refusal a
+    person reads in the gate and cannot act on. It gets its own sentence.
+    """
+    if not buyer_only and not isinstance(got.get("buyer"), dict):
+        return ("0. the reply carried no `buyer` object at all; the buyer "
+                "question was not answered.")
+    return agents.check_buyer(sc, agents._profile_texts(sc))
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--category")
@@ -223,6 +317,17 @@ def main() -> int:
                          "wrong about does not need new prose")
     ap.add_argument("--retry-refused", action="store_true",
                     help="re-ask write-ups the door refused, after a brief fix")
+    ap.add_argument("--buyer-only", action="store_true",
+                    help="ask ONLY who buys, for companies whose write-up is "
+                         "already landed and whose buyer nobody has read")
+    ap.add_argument("--no-fetch", action="store_true",
+                    help="read the cached site record instead of re-fetching. "
+                         "ON by default with --buyer-only: those pages are "
+                         "already on disk and re-crawling 500 sites to ask a "
+                         "question of bytes we hold is traffic nobody owes us")
+    ap.add_argument("--fetch", dest="force_fetch", action="store_true",
+                    help="with --buyer-only: re-fetch anyway, for a company "
+                         "whose cached pages are stale enough to matter")
     ap.add_argument("--no-repair", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
@@ -237,7 +342,7 @@ def main() -> int:
               "asked, nothing spent.")
         return 0
 
-    rows = tonight(a.category, a.id, a.limit, a.retry_refused)
+    rows = tonight(a.category, a.id, a.limit, a.retry_refused, a.buyer_only)
     if not rows:
         print("nothing to write tonight")
         return 0
@@ -245,13 +350,25 @@ def main() -> int:
           + (f", category {a.category!r}" if a.category else ""))
 
     idx = fp.index()
+    # CACHED BY DEFAULT FOR THE BUYER QUESTION. fp.visit always goes to the
+    # network; the 1,447 companies brief_buyer can offer all have a site
+    # record on disk already, fetched for a write-up and read for one question
+    # when it could have been read for two. Re-crawling them to re-ask is a
+    # cost paid by other people's servers for nothing.
+    no_fetch = (a.no_fetch or a.buyer_only) and not a.force_fetch
     fetched, skipped = [], []
     for c in rows:
         cid = c["id"]
         was_readable = bool(idx.get(cid)) and not (idx.get(cid) or {}).get("unread")
-        if a.dry_run:
-            if fp.load(cid):
+        if a.dry_run or no_fetch:
+            rec = fp.load(cid)
+            if rec and not rec.get("unread"):
                 fetched.append(c)
+            elif not a.dry_run:
+                # NOT A FACT ABOUT THE COMPANY. Nothing on disk means nothing
+                # was ever fetched, or the fetch that ran failed; either way
+                # this run learned nothing about them and says so.
+                skipped.append((c.get("name"), "no readable pages on disk"))
             continue
         rec = fp.visit(c, news_depth=0)
         if rec.get("unread") and was_readable:
@@ -264,27 +381,40 @@ def main() -> int:
         idx[cid] = fp.index_entry(rec)
         if not rec.get("unread"):
             fetched.append(c)
-    if not a.dry_run:
+    if not a.dry_run and not no_fetch:
         fp.save_index(idx)
     print(f"  {len(fetched)} readable, {len(skipped)} skipped "
-          f"(a failed fetch tonight is not a fact about the company)")
+          f"(a failed fetch tonight is not a fact about the company)"
+          + ("  [read off disk, nothing fetched]" if no_fetch else ""))
     if not fetched:
         print("  nothing readable; the bodies are gitignored, so a fresh "
               "runner starts with none and this is what that looks like.")
         return 0
 
-    briefs = agents.brief_profile(ids=[c["id"] for c in fetched], limit=a.limit)
+    # BOTH QUESTIONS OFF ONE SET OF PAGES, or the buyer question alone for the
+    # 505 companies whose write-up is already landed and whose buyer nobody
+    # ever read. Same doors either way.
+    if a.buyer_only:
+        briefs = agents.brief_buyer(ids=[c["id"] for c in fetched], limit=a.limit)
+        task = BUYER_TASK
+    else:
+        briefs = [dict(b, buyer_rules=agents.BUYER_RULES)
+                  for b in agents.brief_profile(ids=[c["id"] for c in fetched],
+                                                limit=a.limit)]
+        task = TASK
     print(f"  {len(briefs)} brief(s) built")
     if a.dry_run:
         if briefs:
             b = dict(briefs[0])
             b["pages"] = [{"url": p["url"], "lines": p["lines"][:6]} for p in b["pages"]]
-            print(f"\n--- task ---\n{TASK}")
-            print(f"\n--- one brief ---\n{json.dumps(b, indent=1)[:1500]}\n...")
+            print(f"\n--- task ---\n{task}")
+            print(f"\n--- one brief ---\n{json.dumps(b, indent=1)[:1800]}\n...")
         print(f"\ndry run: {len(briefs)} request(s) would be sent, nothing spent")
         return 0
 
-    kept, refused_run, in_row = [], 0, 0
+    kept, scoped = [], []
+    refused_run, buyer_refused_run = 0, 0
+    in_row, buyer_in_row, cut_off = 0, 0, 0
     for i, b in enumerate(briefs, 1):
         try:
             # THINKING OFF, AND THIS IS THE SECOND TIME. llm.ask defaults
@@ -292,58 +422,120 @@ def main() -> int:
             # tailoring path already learned what that costs: the whole
             # 8,000-token output budget spent on a thinking block that
             # produced zero characters of text, $3.40 and two wrong diagnoses
-            # before anyone looked at the flag. Everything a write-up needs is
+            # before anyone looked at the flag. Everything an answer needs is
             # in the brief - the company's own pages and the door's rules -
             # and this is the OVERNIGHT path, which spends unattended.
-            got = llm.ask(TASK, json.dumps(b, indent=1), "profile",
+            got = llm.ask(task, json.dumps(b, indent=1),
+                          "buyer" if a.buyer_only else "profile",
                           model=a.model, max_tokens=llm.MAX_OUTPUT,
                           thinking=False)
         except llm.Refused as e:
             print(f"  stopping at {i}: {e}", file=sys.stderr)
             break
         if got is None:
+            # A TRUNCATED ANSWER IS PAID FOR AND SILENT. llm._json_from
+            # refuses to repair one, so it arrives here as None and the loop
+            # used to move on saying nothing. The buyer question adds a field
+            # to a reply that already measured at ~2,200 of 8,000 output
+            # tokens, which should be nowhere near the cap - and "should be"
+            # is exactly the kind of claim this file is supposed to measure
+            # rather than assume. Counted and named at the end.
+            cut_off += llm.LAST_STOP == "max_tokens"
             continue
-        got.setdefault("id", b["id"])
-        # THE DOOR, HERE, against the corpus it will use at intake.
-        why = agents.check_profile(got, agents._profile_texts(got))
-        if why and not a.no_repair:
-            got2 = llm.ask(TASK + "\n\n" + REPAIR.format(why=why),
-                           json.dumps(b, indent=1), "profile-repair",
+        prof, sc = split_answer(got, b["id"], a.buyer_only)
+
+        # THE DOORS, HERE, against the corpus they will use at intake.
+        # A scope-only run stores no write-up, so there is none to refuse -
+        # and running check_profile over an absent one would manufacture a
+        # refusal about a claim nobody made.
+        why = None
+        if not a.buyer_only:
+            why = agents.check_profile(prof, agents._profile_texts(prof))
+        sc_why = _buyer_verdict(sc, got, a.buyer_only)
+
+        if (why or sc_why) and not a.no_repair:
+            # ONE REPAIR CALL FOR BOTH, naming both refusals. A second request
+            # per half would double the bill to fix two things the model can
+            # see at once.
+            told = "\n    ".join(x for x in (why, sc_why) if x)
+            got2 = llm.ask(task + "\n\n" + REPAIR.format(why=told),
+                           json.dumps(b, indent=1),
+                           "buyer-repair" if a.buyer_only else "profile-repair",
                            model=a.model, max_tokens=llm.MAX_OUTPUT,
                            thinking=False)
             if got2:
-                got2.setdefault("id", b["id"])
-                if agents.check_profile(got2, agents._profile_texts(got2)) is None:
-                    got, why = got2, None
-        kept.append(dict(got, kind="profile", key=f"profile:{b['id']}",
-                         name=b.get("name"), sector=b.get("sector"),
-                         category=b.get("category"),
-                         also_known_as=b.get("also_known_as") or [],
-                         saw={"pages": [{"url": p["url"], "sha": p.get("sha")}
-                                        for p in b["pages"]]}))
-        in_row = in_row + 1 if why else 0
-        refused_run += bool(why)
-        print(f"  {i}/{len(briefs)}: {'REFUSED - ' + why[:60] if why else 'passed the door'}")
-        if in_row >= BREAKER:
-            # A BROKEN PROMPT MUST NOT BURN A HUNDRED COMPANIES. They would be
-            # in the store as refusals and brief_profile never offers those
-            # again.
-            print(f"\n  STOPPING: {BREAKER} refusals in a row. Something is "
-                  f"wrong with the prompt or the door, not with these "
-                  f"companies - and every one asked is one the brief will "
-                  f"never offer again.", file=sys.stderr)
+                prof2, sc2 = split_answer(got2, b["id"], a.buyer_only)
+                # EACH HALF IS TAKEN ON ITS OWN MERITS, and mixing them is
+                # honest precisely because they are independent claims: both
+                # answers were written from the same pages and each half kept
+                # here passed the same door against the same bytes. Taking the
+                # repair wholesale would throw away a sound write-up to rescue
+                # a buyer sentence, or the reverse.
+                if why is not None and agents.check_profile(
+                        prof2, agents._profile_texts(prof2)) is None:
+                    prof, why = prof2, None
+                if sc_why is not None:
+                    sc_why2 = _buyer_verdict(sc2, got2, a.buyer_only)
+                    if sc_why2 is None:
+                        sc, sc_why = sc2, None
+
+        common = dict(name=b.get("name"), sector=b.get("sector"),
+                      category=b.get("category"),
+                      saw={"pages": [{"url": p["url"], "sha": p.get("sha")}
+                                     for p in b["pages"]]})
+        if not a.buyer_only:
+            kept.append(dict(prof, kind="profile", key=f"profile:{b['id']}",
+                             also_known_as=b.get("also_known_as") or [],
+                             **common))
+            in_row = in_row + 1 if why else 0
+            refused_run += bool(why)
+        # A SCOPE ANSWER IS STORED EVEN WHEN THE DOOR REFUSED IT, the same way
+        # a refused write-up is: the gate review reads refusals by rule, and a
+        # door nobody can see being wrong is a door nobody fixes.
+        scoped.append(dict(sc, kind="buyer", key=f"buyer:{b['id']}", **common))
+        buyer_in_row = buyer_in_row + 1 if sc_why else 0
+        buyer_refused_run += bool(sc_why)
+
+        line = ("REFUSED - " + why[:52] if why else "passed") if not a.buyer_only else None
+        sline = "REFUSED - " + sc_why[:52] if sc_why else "passed"
+        print(f"  {i}/{len(briefs)}: "
+              + (f"write-up {line}, " if line else "")
+              + f"buyer {sline}")
+
+        # A BROKEN PROMPT MUST NOT BURN A HUNDRED COMPANIES. They would be in
+        # the store as refusals and neither brief offers those again. TWO
+        # counters, because the two halves break independently: a scope rule
+        # that refuses everything would otherwise run all night behind a
+        # write-up prompt that is working perfectly.
+        if in_row >= BREAKER or buyer_in_row >= BREAKER:
+            which = "write-up" if in_row >= BREAKER else "buyer"
+            print(f"\n  STOPPING: {BREAKER} {which} refusals in a row. "
+                  f"Something is wrong with the prompt or the door, not with "
+                  f"these companies - and every one asked is one the brief "
+                  f"will never offer again.", file=sys.stderr)
             break
 
     calls, usd = llm.spent()
-    print(f"\n{len(kept)} answer(s), {refused_run} refused, "
-          f"{calls} request(s), ${usd:.2f}")
+    print(f"\n{len(scoped)} buyer answer(s), {buyer_refused_run} refused"
+          + (f"; {len(kept)} write-up(s), {refused_run} refused" if kept else "")
+          + f"; {calls} request(s), ${usd:.2f}")
+    if cut_off:
+        print(f"  {cut_off} reply/replies were CUT OFF at max_tokens and paid "
+              f"for. Both halves of those are lost - shorten the ask or raise "
+              f"the cap before the next run.", file=sys.stderr)
     for i in range(0, len(kept), INGEST_BATCH):
         rep = agents.ingest("profile", kept[i:i + INGEST_BATCH],
                             model=f"{a.model}:write-profiles")
-        print(f"  ingest: {rep['kept']} through, {len(rep['refused'])} refused")
-    print(f"\nPending in the admin. Gate and land the usual way:\n"
-          f"  python3 scripts/promote_profiles.py --gate "
-          f"{a.category or '<category>'!r} --self")
+        print(f"  write-up ingest: {rep['kept']} through, {len(rep['refused'])} refused")
+    for i in range(0, len(scoped), INGEST_BATCH):
+        rep = agents.ingest("buyer", scoped[i:i + INGEST_BATCH],
+                            model=f"{a.model}:write-profiles")
+        print(f"  buyer ingest: {rep['kept']} through, {len(rep['refused'])} refused")
+    cat = a.category or "<category>"
+    print(f"\nPending in the admin. Gate and land each half separately:")
+    if kept:
+        print(f"  python3 scripts/promote_profiles.py --gate {cat!r} --self")
+    print(f"  python3 scripts/promote_profiles.py --gate-buyer {cat!r}")
     return 0
 
 

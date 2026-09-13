@@ -115157,5 +115157,63 @@
   "by": "claude-sonnet-5:judge-fact",
   "at": "2026-09-04T00:29:40-04:00",
   "status": "pending"
+ },
+ "buyer:adobe": {
+  "kind": "buyer",
+  "id": "adobe",
+  "name": "Adobe",
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "confidence": "low",
+  "why": "The pages describe Adobe's creative, PDF, and AI products and general audiences like students, teachers, businesses, and creators, but do not name any specific government or non-government buyer entity.",
+  "evidence": "",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": null,
+  "quote": null,
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.adobe.com",
+     "sha": "858de3d2082a2049"
+    },
+    {
+     "url": "https://www.adobe.com/products/firefly.html",
+     "sha": "7caa7b7c36262ee7"
+    },
+    {
+     "url": "https://www.adobe.com/products/catalog.html",
+     "sha": "24fd8324d68ee11e"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": "Pages mention students, teachers, creators, businesses, and design teams as users, but no specific buyer organizations are named.",
+  "sells_to_gov": "unclear",
+  "names_other_buyers": "unclear",
+  "buyer_quote": "",
+  "buyer_url": "",
+  "other_quote": "",
+  "other_url": "",
+  "sled_eligible": false,
+  "by": "claude-sonnet-5:write-profiles",
+  "at": "2026-09-12T21:28:23-04:00",
+  "status": "pending"
  }
 }

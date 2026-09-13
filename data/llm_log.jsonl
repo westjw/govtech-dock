@@ -30,3 +30,6 @@
 {"at": "2026-09-04T21:12:37+00:00", "in": 4995, "kind": "refusal-audit", "model": "claude-sonnet-5", "ok": true, "out": 2903, "stop": "end_turn", "usd": 0.0585}
 {"at": "2026-09-04T21:13:38+00:00", "in": 4847, "kind": "refusal-audit", "model": "claude-sonnet-5", "ok": true, "out": 5771, "stop": "end_turn", "usd": 0.1011}
 {"at": "2026-09-04T21:14:05+00:00", "in": 4556, "kind": "refusal-audit", "model": "claude-sonnet-5", "ok": true, "out": 2500, "stop": "end_turn", "usd": 0.0512}
+{"at": "2026-09-13T01:22:35+00:00", "in": 5725, "kind": "buyer", "model": "claude-sonnet-5", "ok": true, "out": 232, "stop": "end_turn", "usd": 0.0138}
+{"at": "2026-09-13T01:22:37+00:00", "in": 5876, "kind": "buyer-repair", "model": "claude-sonnet-5", "ok": true, "out": 180, "stop": "end_turn", "usd": 0.0136}
+{"at": "2026-09-13T01:28:23+00:00", "in": 5725, "kind": "buyer", "model": "claude-sonnet-5", "ok": true, "out": 191, "stop": "end_turn", "usd": 0.0134}

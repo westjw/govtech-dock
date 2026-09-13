@@ -69,7 +69,8 @@ import roles                                                    # noqa: E402
 # change before it appears" - and no person could land it however much they
 # agreed. That is the 131-unreachable-rows shape one layer down, and worse,
 # because the promise was made to somebody outside.
-ELSEWHERE = {"profile": "one at a time here, or a category at a time: promote_profiles.py --gate <category>"}
+ELSEWHERE = {"profile": "one at a time here, or a category at a time: promote_profiles.py --gate <category>",
+             "buyer": "one at a time here, or a category at a time: promote_profiles.py --gate-buyer <category>"}
 NO_APPLIER = ("news",)
 
 
@@ -552,6 +553,38 @@ def _accept_profile(p: dict, by: str, why: str, force: bool, store: dict,
     return {"ok": True, "message": f"write-up on the page for {p.get('name') or p.get('id')}"}
 
 
+def _accept_buyer(p: dict, by: str, why: str, force: bool, store: dict,
+                  key: str) -> dict:
+    """Land ONE buyer answer through promote_profiles.land_buyer, the same
+    function that lands a category, so a single ruling and a batch write the
+    same fields with the same provenance.
+
+    IT NEVER SETS sled_only FROM HERE, and that is not an oversight. The flag
+    makes build_board drop every posting whose title does not name the public
+    sector, so accepting one row in a queue would silently subtract jobs from
+    a public board. land_buyer takes `with_sled` and only the CLI passes it,
+    behind a gate review that prints how many postings are at stake first.
+    """
+    import promote_profiles
+    if not p.get("sells_to_gov") or not p.get("buyer"):
+        return {"error": "nothing to land: this row carries no verdict. A "
+                         "refused answer stays where it is, for reading"}
+    companies = admin.read_companies()
+    rep = promote_profiles.land_buyer(
+        store, companies, [key], by,
+        why or f"landed {p.get('id')} from the proposals queue",
+        with_sled=False)
+    if not rep.get("wrote"):
+        held = "; ".join(f"{n}: {r}" for n, r in (rep.get("held") or [])[:2])
+        return {"error": f"the buyer answer could not be landed"
+                         + (f" - {held}" if held else "; see the journal")}
+    tail = ("  It is eligible for sled_only and did NOT get it: that flag "
+            "removes postings and is set from the CLI behind a gate review."
+            if p.get("sled_eligible") else "")
+    return {"ok": True, "message": f"buyer recorded for "
+                                   f"{p.get('name') or p.get('id')}.{tail}"}
+
+
 def _accept_rival(p: dict, by: str, why: str, force: bool, store: dict) -> dict:
     import promote_rivals
     n = promote_rivals.write_accepted(store, [p["id"]], by, why)
@@ -632,6 +665,8 @@ def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
         res = _accept_rival(p, by, why, force, store)
     elif kind == "profile":
         res = _accept_profile(p, by, why, force, store, key)
+    elif kind == "buyer":
+        res = _accept_buyer(p, by, why, force, store, key)
     else:
         return {"error": f"unknown proposal kind {kind!r}"}
     if res.get("error"):

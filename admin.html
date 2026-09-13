@@ -2775,6 +2775,40 @@ const PROPOSAL_KINDS = {
     },
     needsForce: p => false,
   },
+  buyer: {
+    accept: 'Record who buys',
+    evidence(p, line){
+      /* THE VERDICT, THEN THE SENTENCE IT WAS READ OFF, in that order and
+         never the verdict alone. A buyer answer is a claim about somebody
+         else's company and one of its two verdicts feeds a flag that removes
+         postings from a public board, so the words on the page belong on the
+         card - the council rule, the same one the fact row follows. */
+      const e = el('div', 'evi');
+      e.appendChild(line('Sells to government:', String(p.sells_to_gov || '?')));
+      e.appendChild(line('Names other buyers:', String(p.names_other_buyers || '?')));
+      if (p.buyer) e.appendChild(el('div', 'kv', p.buyer));
+      const say = (label, q, u) => {
+        if (!q) return;
+        e.appendChild(el('div', 'kv', label + ' \u201c' + q + '\u201d'));
+        if (u) e.appendChild(el('div', 'kv', u));
+      };
+      say('government buyer:', p.buyer_quote, p.buyer_url);
+      say('other buyer:', p.other_quote, p.other_url);
+      if (!p.buyer_quote && p.sells_to_gov === 'yes')
+        e.appendChild(el('div', 'kv', 'no quote survived intake - this cannot be recorded'));
+      /* WHAT ACCEPTING DOES NOT DO. sled_eligible looks like a decision on
+         the card and is not one: accepting here records the buyer and never
+         sets sled_only, because that flag subtracts postings and belongs
+         behind a gate review that prints how many. Saying so on the card is
+         cheaper than a person learning it from a message afterwards. */
+      if (p.sled_eligible)
+        e.appendChild(el('div', 'kv', 'Eligible for sled_only. Accepting records the buyer '
+          + 'and does NOT set that flag - it drops postings, and it is set from the CLI '
+          + 'behind a gate review.'));
+      return e;
+    },
+    needsForce: p => false,
+  },
   claim: {
     accept: 'Accept their correction',
     evidence(p, line){

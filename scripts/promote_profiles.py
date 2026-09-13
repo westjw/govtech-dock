@@ -7,6 +7,8 @@
     python3 scripts/promote_profiles.py --land Police --by owner
     python3 scripts/promote_profiles.py --reject brinc --why "..." --by owner
     python3 scripts/promote_profiles.py --hide brinc --why "..." --by owner
+    python3 scripts/promote_profiles.py --gate-buyer Police     # who buys, reviewed
+    python3 scripts/promote_profiles.py --land-buyer Police --by owner
 
 "DOOR ONLY, ADD SOME GATE REVIEWS" is the owner's ruling on how 2,024
 write-ups reach public pages, and this is that shape. The door is
@@ -48,6 +50,11 @@ import admin                                                    # noqa: E402
 import agents                                                   # noqa: E402
 
 READ = DATA / ".profiles_read"       # categories --gate has printed
+# A SEPARATE FILE, AND NOT FOR TIDINESS. Reading a category's write-ups tells
+# a person nothing about whether its buyer answers are sound - different
+# claims, different evidence, different failure. One file would let a gate
+# review of the prose unlock the landing of 500 scope verdicts nobody read.
+BUYER_READ = DATA / ".buyer_read"
 # TWO, MEASURED. Six was a guess and four of five requests came back cut off
 # at max_tokens - $1.38 for two usable answers. A write-up is two or three
 # paragraphs with a verbatim quote per sentence, roughly 1,200 output tokens,
@@ -75,11 +82,11 @@ CHUNK = 500
 SAMPLE = 0.05
 
 
-def _by_category(store: dict, companies: list) -> dict:
+def _by_category(store: dict, companies: list, kind: str = "profile") -> dict:
     cat = {c["id"]: (c.get("category") or "?") for c in companies if c.get("id")}
     out: dict[str, list] = {}
     for k, p in store.items():
-        if not isinstance(p, dict) or p.get("kind") != "profile":
+        if not isinstance(p, dict) or p.get("kind") != kind:
             continue
         out.setdefault(cat.get(p.get("id"), "?"), []).append((k, p))
     return out
@@ -142,6 +149,206 @@ def gate(store: dict, companies: list, category: str, seed: int = 0) -> dict:
     print(f"\n  Land the {len(pending)} pending:  python3 scripts/promote_profiles.py "
           f"--land {category!r} --by owner")
     return {"refused": refused, "low": low, "sample": sample, "pending": pending}
+
+
+def show_buyer(p: dict, name: str) -> None:
+    """One buyer answer, with the sentence off their page under each verdict."""
+    print(f"\n  {name}  [{p.get('confidence')}]  {p.get('status')}"
+          + ("  SLED-ELIGIBLE" if p.get("sled_eligible") else "")
+          + (f"  REFUSED: {p['refused_why']}" if p.get("status") == "refused" else ""))
+    src = p if p.get("sells_to_gov") else (p.get("proposal") or {})
+    print(f"     sells to government: {src.get('sells_to_gov')}"
+          f"   names other buyers: {src.get('names_other_buyers')}")
+    print(f"     buyer: {(src.get('buyer') or '')[:170]}")
+    for label, q, u in (("gov", src.get("buyer_quote"), src.get("buyer_url")),
+                        ("other", src.get("other_quote"), src.get("other_url"))):
+        if q:
+            print(f"       {label}: \"{str(q)[:110]}\"")
+            print(f"            {u or ''}")
+    if src.get("why"):
+        print(f"     why: {str(src['why'])[:160]}")
+
+
+def gate_buyer(store: dict, companies: list, category: str, seed: int = 0) -> dict:
+    """What a person reads before any buyer answer in a category lands.
+
+    THE EXCEPTION LIST IS NOT THE WRITE-UPS' EXCEPTION LIST, because the two
+    answers go wrong differently. A write-up goes wrong by asserting a fact
+    the pages do not carry, which the door catches by name. A buyer answer
+    goes wrong in two ways the door cannot see:
+
+      A 'NO' IS A SCOPE RULING AND IT BELONGS TO A PERSON. The 2026-09-11
+      pass said so in its own docstring and left three companies untouched
+      for exactly this reason. It is shown in full, every one, never sampled.
+
+      SLED-ELIGIBLE IS THE ONE THAT DELETES THINGS. build_board drops every
+      posting whose title does not name the public sector on a company
+      carrying sled_only, and a wrong flag takes real jobs off a public board
+      with no mark left behind. Every eligible row is shown in full, and
+      landing the flag takes a second, separate word on the command line.
+    """
+    names = {c["id"]: c.get("name", c["id"]) for c in companies if c.get("id")}
+    posts = _postings_by_company(companies)
+    rows = _by_category(store, companies, "buyer").get(category, [])
+    refused = [(k, p) for k, p in rows if p.get("status") == "refused"]
+    pending = [(k, p) for k, p in rows if p.get("status") == "pending"]
+    says_no = [(k, p) for k, p in pending if p.get("sells_to_gov") == "no"]
+    sled = [(k, p) for k, p in pending if p.get("sled_eligible")]
+    low = [(k, p) for k, p in pending
+           if (p.get("confidence") or "unsure") in ("medium", "low", "unsure")
+           and (k, p) not in says_no and (k, p) not in sled]
+    rest = [(k, p) for k, p in pending
+            if (k, p) not in says_no and (k, p) not in sled and (k, p) not in low]
+    rng = random.Random(seed or dt.date.today().toordinal())
+    sample = rng.sample(rest, max(1, int(len(rest) * SAMPLE))) if rest else []
+
+    print(f"SCOPE GATE REVIEW: {category}  ({len(rows)} buyer answer(s) on file)")
+    print(f"\n== 1. Refused by the door: {len(refused)} ==")
+    by_rule: dict[str, int] = {}
+    for _, p in refused:
+        rule = (p.get("refused_why") or "?").split(".")[0][:60]
+        by_rule[rule] = by_rule.get(rule, 0) + 1
+    for rule, n in sorted(by_rule.items(), key=lambda kv: -kv[1]):
+        print(f"   {n:4}  {rule}")
+    for k, p in refused[:12]:
+        print(f"   - {names.get(p.get('id'), p.get('id'))}: {p.get('refused_why', '')[:120]}")
+
+    print(f"\n== 2. Read as NOT selling to government: {len(says_no)} ==")
+    print("   A scope ruling is a person's. Landing these records the answer "
+          "and removes nothing.")
+    for k, p in says_no:
+        show_buyer(p, names.get(p.get("id"), p.get("id")))
+
+    print(f"\n== 3. Eligible for sled_only: {len(sled)} ==")
+    if sled:
+        n_posts = sum(posts.get(p.get("id"), 0) for _, p in sled)
+        # THE COST, SAID PLAINLY AND BEFORE THE FACT. scope_sweep prints the
+        # same number for the same reason: a flag whose price is invisible
+        # until after it is paid is not a decision anybody made.
+        print(f"   These carry {n_posts} posting(s) between them. Landing the "
+              f"flag keeps only the roles whose titles name the public "
+              f"sector; the rest stop appearing.")
+    for k, p in sled:
+        show_buyer(p, names.get(p.get("id"), p.get("id")))
+
+    print(f"\n== 4. Medium / low / unsure confidence: {len(low)} ==")
+    for k, p in low:
+        show_buyer(p, names.get(p.get("id"), p.get("id")))
+    print(f"\n== 5. Sample of the rest: {len(sample)} of {len(rest)} ==")
+    for k, p in sample:
+        show_buyer(p, names.get(p.get("id"), p.get("id")))
+
+    read = json.loads(BUYER_READ.read_text()) if BUYER_READ.exists() else []
+    if category not in read:
+        read.append(category)
+        BUYER_READ.write_text(json.dumps(read))
+    print(f"\n  Land the {len(pending)} pending:  python3 scripts/promote_profiles.py "
+          f"--land-buyer {category!r} --by owner")
+    if sled:
+        print(f"  The {len(sled)} sled_only flag(s) need a second word: "
+              f"add --with-sled")
+    return {"refused": refused, "no": says_no, "sled": sled,
+            "low": low, "sample": sample, "pending": pending}
+
+
+def _postings_by_company(companies: list) -> dict:
+    """How many live postings each company carries, or {} if no board is built."""
+    try:
+        board = json.loads((DATA / "board.json").read_text())
+    except Exception:
+        return {}
+    out: dict = {}
+    for p in board.get("postings", []):
+        cid = p.get("company_id")
+        if cid:
+            out[cid] = out.get(cid, 0) + 1
+    return out
+
+
+def land_buyer(store: dict, companies: list, keys: list[str], by: str,
+               why: str, with_sled: bool = False) -> dict:
+    """Write accepted buyer answers onto companies.json.
+
+    THE SAME FIELDS THE 2026-09-11 PASS WROTE, deliberately, because a second
+    shape for the same fact is a second thing every reader has to learn:
+    `buyer`, `sells_to_gov`, `buyer_source`, `buyer_checked_on`.
+
+    IT NEVER OVERWRITES AN ANSWER ALREADY ON FILE. brief_buyer does not offer
+    a company that carries `sells_to_gov`, so a row reaching here with one is
+    a company somebody answered BETWEEN the ask and the landing - by hand, or
+    by the scope pass. The newer answer is not automatically the better one
+    and this is not the place to decide; it is skipped, counted and NAMED,
+    never silently dropped.
+
+    SLED_ONLY IS SEPARATE AND OPT-IN. It is the only field here that changes
+    what the public board shows, and what it does is subtract. So it needs
+    `with_sled`, it needs the row to have cleared buyer_sled_eligible at the
+    door, and it is never removed here - taking a flag off is its own
+    decision with its own evidence.
+    """
+    seq = companies if isinstance(companies, list) else list(companies.values())
+    index = {c["id"]: c for c in seq if c.get("id")}
+    today = dt.date.today().isoformat()
+    wrote = sled = 0
+    held: list = []
+    for start in range(0, len(keys), CHUNK):
+        chunk = keys[start:start + CHUNK]
+        n = 0
+        for k in chunk:
+            p = store.get(k)
+            if not p or p.get("status") != "pending" or p.get("id") not in index:
+                continue
+            c = index[p["id"]]
+            if not p.get("sells_to_gov") or not p.get("buyer"):
+                # A REFUSED ANSWER STORES NO VERDICT, and a pending row with
+                # none is a shape nothing here can land. Counted, not skipped.
+                held.append((c.get("name") or p["id"], "carries no verdict"))
+                continue
+            if c.get("sells_to_gov"):
+                held.append((c.get("name") or p["id"],
+                             f"already answered {c['sells_to_gov']!r} on "
+                             f"{c.get('buyer_checked_on') or 'an earlier pass'}"))
+                continue
+            c["buyer"] = p["buyer"]
+            c["sells_to_gov"] = p["sells_to_gov"]
+            c["buyer_source"] = p.get("buyer_url") or None
+            c["buyer_checked_on"] = today
+            if (p.get("why") or "").strip():
+                c["scope_note"] = str(p["why"]).strip()[:600]
+            if with_sled and p.get("sled_eligible") and not c.get("sled_only"):
+                c["sled_only"] = True
+                c["sled_only_why"] = (
+                    f"scope read {today}: their own pages name no "
+                    f"non-government buyer. {str(p['buyer'])[:180]}")
+                sled += 1
+            p["status"] = "accepted"
+            p["ruled_by"], p["ruled_on"], p["ruled_why"] = by, today, why
+            n += 1
+        if not n:
+            continue
+        bad = admin.save_companies(companies, "promote-buyer",
+                                   why=why or f"landed {n} buyer answer(s)",
+                                   by=by, force=n > 25)
+        if bad:
+            print(f"  REFUSED by the journal: {bad}")
+            return {"wrote": wrote, "sled": sled, "held": held}
+        # ONE LANDING, ONE DECISION ABOUT ITS SIZE - the scar `land` carries
+        # two functions up: save_companies took 99 rows onto the public file
+        # and journal.BLAST then refused to stamp them accepted, leaving the
+        # two halves disagreeing about what happened.
+        bad = agents.save(store, "promote-buyer", why=why, by=by, force=n > 25)
+        if bad:
+            print(f"  REFUSED by the journal (store): {bad}")
+            return {"wrote": wrote, "sled": sled, "held": held}
+        wrote += n
+        print(f"  landed {n} (journal entry {start // CHUNK + 1})")
+    if held:
+        print(f"  held back {len(held)}, each named:")
+        for name, reason in held[:20]:
+            print(f"     {str(name)[:36]:38} {reason}")
+        if len(held) > 20:
+            print(f"     ... and {len(held) - 20} more")
+    return {"wrote": wrote, "sled": sled, "held": held}
 
 
 def _claims(text: str) -> set:
@@ -443,6 +650,14 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--gate", metavar="CATEGORY")
     ap.add_argument("--land", metavar="CATEGORY")
+    ap.add_argument("--gate-buyer", metavar="CATEGORY",
+                    help="what a person reads before any buyer answer lands")
+    ap.add_argument("--land-buyer", metavar="CATEGORY",
+                    help="land the buyer answers a --gate-buyer has printed")
+    ap.add_argument("--with-sled", action="store_true",
+                    help="with --land-buyer: ALSO set sled_only on the rows "
+                         "the door found eligible. This subtracts postings "
+                         "from the public board, so it is its own word")
     ap.add_argument("--show", metavar="ID")
     ap.add_argument("--reject", action="append", default=[], metavar="ID")
     ap.add_argument("--hide", action="append", default=[], metavar="ID")
@@ -461,7 +676,7 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
-    if (a.land or a.reject or a.hide or a.unhide) and not a.by:
+    if (a.land or a.land_buyer or a.reject or a.hide or a.unhide) and not a.by:
         ap.error("--by is required to rule: \"owner\", or \"agent:<label>\"")
 
     store = agents.load()
@@ -541,6 +756,35 @@ def main() -> int:
         print(bad or f"  hidden {len(a.hide)}, unhidden {len(a.unhide)}; the page "
                      f"shows the one-line record by the next build")
         return 1 if bad else 0
+
+    if a.gate_buyer:
+        gate_buyer(store, seq, a.gate_buyer)
+        return 0
+
+    if a.land_buyer:
+        read = json.loads(BUYER_READ.read_text()) if BUYER_READ.exists() else []
+        if a.land_buyer not in read:
+            print(f"  REFUSED. --gate-buyer {a.land_buyer!r} has not printed in "
+                  f"this checkout.\n  A buyer answer decides whether a company "
+                  f"belongs on a board about government;\n  landing a "
+                  f"category's worth on the door alone is not the deal.")
+            return 1
+        keys = [k for k, p in _by_category(store, seq, "buyer").get(a.land_buyer, [])
+                if p.get("status") == "pending"]
+        rep = land_buyer(store, seq, keys, a.by,
+                         a.why or f"landed {a.land_buyer} buyer answers after "
+                                  f"the scope gate review", a.with_sled)
+        print(f"  {rep['wrote']} buyer answer(s) recorded"
+              + (f", {rep['sled']} sled_only flag(s) set" if rep["sled"]
+                 else ", no sled_only flags set"))
+        if not a.with_sled:
+            eligible = sum(1 for k in keys
+                           if (store.get(k) or {}).get("sled_eligible"))
+            if eligible:
+                print(f"  {eligible} row(s) were eligible for sled_only and did "
+                      f"NOT get it. Add --with-sled to set them.")
+        print(f"  Undo a batch: python3 scripts/admin_undo.py")
+        return 0
 
     if a.land:
         read = json.loads(READ.read_text()) if READ.exists() else []
